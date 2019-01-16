@@ -1,13 +1,10 @@
 ---
-title: Azure における IP アドレスの種類 (クラシック) | Microsoft Docs
+title: Azure における IP アドレスの種類 (クラシック)
+titlesuffix: Azure Virtual Network
 description: Azure でのパブリック IP アドレスとプライベート IP アドレス (クラシック) について説明します。
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011695"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024571"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -44,7 +41,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 * アプリケーション ゲートウェイ
 
 ### <a name="allocation-method"></a>割り当て方法
-パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。 この IP アドレスは、リソースが停止したときに解放されます。 クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[クラウド サービス](#Cloud-services)」セクションを参照)。
+パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。 この IP アドレスは、リソースが停止したときに解放されます。 クラウド サービスの場合、この解放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[クラウド サービス](#Cloud-services)」セクションを参照)。
 
 > [!NOTE]
 > Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「 [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
@@ -63,9 +60,9 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 静的 (予約済み) パブリック IP アドレスは、通常は次のようなクラウド サービスのシナリオで使用されます。
 
-* エンドユーザーがファイアウォール規則をセットアップする必要がある。
+* エンドユーザーがファイアウォール規則を設定する必要がある。
 * 外部 DNS 名の解決に依存し、動的 IP が A レコードの更新を必要とする。
-* IP ベースのセキュリティ モデルを使用する外部 Web サービスを使用する。
+* IP ベースのセキュリティ モデルを使用する外部 Web サービスを利用する。
 * IP アドレスにリンクされている SSL 証明書を使用する。
 
 > [!NOTE]

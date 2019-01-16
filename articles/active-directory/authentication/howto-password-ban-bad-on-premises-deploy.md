@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5774af4e0550ceb7a51e399fcab203a503a7f23f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011495"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033606"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>プレビュー: Azure AD パスワード保護を展開する
+# <a name="preview-deploy-azure-ad-password-protection"></a>更新:Azure AD のパスワード保護をデプロイする
 
 |     |
 | --- |
@@ -86,6 +86,9 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 2. AzureADPasswordProtectionProxy.msi MSI パッケージを使用して、パスワード ポリシー プロキシ サービス ソフトウェアをインストールします。
    * このソフトウェアのインストールでは、再起動は必要ありません。 ソフトウェアのインストールは、標準 MSI プロシージャ (例: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`) を使用して自動化できます。
 
+      > [!NOTE]
+      > Windows Firewall サービスは必ず、AzureADPasswordProtectionProxy.msi の MSI パッケージをインストールする前に実行されている必要があります。そうでない場合は、インストール エラーが発生します。 Windows Firewall が実行されないように構成されている場合は、回避策として、インストール プロセスの間、一時的に Windows Firewall サービスを有効化して開始します。 インストール後は、プロキシ ソフトウェアでは Windows Firewall 上に特定の依存関係を保持しません。 サードパーティのファイアウォールを使用している場合は、やはりデプロイの要件を満たすように構成する必要があります (動的または静的を問わず、ポート 135 とプロキシ RPC サーバー ポートへの受信アクセスを許可します)。 「[デプロイ要件](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)」を確認してください。
+
 3. 管理者として PowerShell ウィンドウを開きます。
    * Azure AD パスワード保護プロキシ ソフトウェアには、AzureADPasswordProtection という名前の新しい PowerShell モジュールが含まれています。 次の手順は、この PowerShell モジュールのさまざまなコマンドレットの実行に基づいており、新しい PowerShell ウィンドウを開いて、新しいモジュールを次のようにインポートしていることを前提としています。
       * `Import-Module AzureADPasswordProtection`
@@ -142,7 +145,7 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
    > [!NOTE]
    > `Register-AzureADPasswordProtectionForest` を少なくとも 1 台の Windows Server 2012 以降で成功させるには、プロキシ サーバーのドメイン内でドメイン コントローラーを使用できる必要があります。 ただし、この手順に先立って、任意のドメイン コントローラーに DC エージェント ソフトウェアをインストールするという要件はありません。
 
-6. 省略可能: 特定のポートでリッスンするように Azure AD パスワード保護プロキシ サービスを構成します。
+6. 省略可能:特定のポートでリッスンするように Azure AD パスワード保護プロキシ サービスを構成します。
    * Azure AD パスワード保護プロキシ サービスと通信するために、ドメイン コントローラー上の Azure AD パスワード保護 DC エージェント ソフトウェアによって、TCP 経由で RPC が使用されます。 既定では、Azure AD パスワード保護パスワード ポリシー プロキシ サービスは、使用可能な動的 RPC エンドポイントでリッスンします。 ネットワーク トポロジまたはファイアウォールの要件応じて、必要であれば、特定の TCP ポートでリッスンするようにサービスを構成できます。
       * 静的ポートで実行するようにサービスを構成するには、`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
          ```

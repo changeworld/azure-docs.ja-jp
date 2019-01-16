@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998396"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037414"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
 
@@ -68,7 +68,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
    * **type**。 テンプレートによって作成されるリソースのタイプ。 この場合、タイプは `Microsoft.Network/applicationGateways` です。これは、アプリケーション ゲートウェイを表します。
    * **name**。 リソースの名前です。 `[parameters('applicationGatewayName')]` が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
-   * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
+   * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。 テンプレート内のアプリケーション ゲートウェイの JSON 構文とプロパティについては、[Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways) に関するページを参照してください。
 
 1. [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf) に戻ります。
 1. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
@@ -183,7 +183,7 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 1. **[Azure へのデプロイ]** をクリックします。
 
-    ![[Deploy to Azure (Azure へのデプロイ)]](./media/create-vmss-template/deploytoazure.png)
+    ![Deploy to Azure (Azure へのデプロイ)](./media/create-vmss-template/deploytoazure.png)
     
 1. ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]** をクリックします。
 
@@ -203,7 +203,7 @@ cert=$( base64 <certificate path and name>.pfx )
 echo $cert
 ```
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>次の手順
 
-SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](tutorial-ssl-cli.md)に関するページをご覧ください。
+SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](tutorial-ssl-cli.md)に関するページを参照してください。
 
-内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](redirect-internal-site-cli.md)に関するページをご覧ください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](redirect-internal-site-cli.md)に関するページを参照してください。
 
 負荷分散オプション全般の詳細については、次の記事をご覧ください。
 

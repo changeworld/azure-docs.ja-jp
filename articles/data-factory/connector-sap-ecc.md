@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ab9d28212e471a9fe3d59ff30a8225b7440655d7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048585"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022497"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -44,7 +43,7 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)を参照してください。
+コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
 
 次のセクションでは、SAP ECC コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -54,7 +53,7 @@ SAP ECC のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SapEcc** に設定する必要があります | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapEcc** | [はい] |
 | url | SAP ECC OData サービスの URL。 | [はい] |
 | username | SAP ECC への接続に使うユーザー名。 | いいえ  |
 | password | SAP ECC への接続に使うプレーンテキスト パスワード。 | いいえ  |
@@ -91,7 +90,7 @@ SAP ECC からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| パス | SAP ECC OData エンティティのパス。 | [はい] |
+| path | SAP ECC OData エンティティのパス。 | [はい] |
 
 **例**
 
@@ -121,8 +120,8 @@ SAP ECC からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SapEccSource** に設定する必要があります。 | [はい] |
-| クエリ | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapEccSource** | [はい] |
+| query | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
 
 **例:**
 

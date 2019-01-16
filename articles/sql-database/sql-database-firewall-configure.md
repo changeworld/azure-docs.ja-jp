@@ -11,21 +11,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/03/2019
+ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945469"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035272"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database と SQL Data Warehouse のファイアウォール規則
 
 Microsoft Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、Azure とその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
 
 > [!NOTE]
-> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 
-
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 > [!IMPORTANT]
 > この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。 必要なネットワーク構成について詳しくは、[Managed Instance への接続](sql-database-managed-instance-connect-app.md)に関する記事をご覧ください。
 
@@ -58,9 +57,9 @@ Azure SQL サーバーにある 1 つのデータベースにのみ選択的に�
 
 ただし、セキュリティを強化しデータベースの移植性を高めるため、可能な限りデータベースレベルのファイアウォール規則を使用することをお勧めします。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用します。
 
-> [!Important]
+> [!IMPORTANT]
 > Windows Azure SQL Database は、最大 128 個のファイアウォール規則をサポートしています。
-> [!Note]
+> [!NOTE]
 > ビジネス継続性のコンテキストにおける移植可能なデータベースについては、[障害復旧の認証要件](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
 
 ### <a name="connecting-from-the-internet"></a>インターネットからの接続
@@ -102,7 +101,7 @@ Azure ポータルでサーバー レベルのファイアウォール規則を�
 
 ### <a name="from-database-overview-page"></a>データベースの概要ページから
 
-1. データベースの概要ページからサーバー レベルのファイアウォール規則を設定するには、次の画像に示されているように、ツールバーの **[サーバー ファイアウォールの設定]** をクリックします。これで、SQL Database サーバーの **[ファイアウォールの設定]** ページが開きます。
+1. データベースの概要ページからサーバー レベルのファイアウォール規則を設定するには、次の画像に示されているように、ツールバー上の **[サーバー ファイアウォールの設定]** をクリックします。SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
       ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
@@ -223,7 +222,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 - **ローカル ファイアウォールの構成:**
 
-  Azure SQL Database へアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。 Azure クラウド境界内で接続を行う場合は、追加のポートをいくつか開かなければならない場合があります。 詳細については、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事の **SQL Database の外部と内部**に関するセクションを参照してください。
+  Azure SQL Database へアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。 Azure クラウド境界内で接続を行う場合は、追加のポートをいくつか開かなければならない場合があります。 詳細については、**SQL Database の外部と内部**に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事で確認してください。
 
 - **ネットワーク アドレス変換 (NAT):**
 
@@ -248,7 +247,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 - データベース レベルおよびサーバー レベルのファイアウォール規則の作成に関するクイック スタートについては、「[Azure SQL データベースの作成](sql-database-get-started-portal.md)」を参照してください。
 - オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
-- 他に開くことが必要な可能性のあるポートの詳細については、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事の **SQL Database の外部と内部**に関するセクションを参照してください。
+- 他に開くことが必要な可能性のあるポートの詳細については、**SQL Database の外部と内部**に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事で確認してください。
 - Azure SQL Database のセキュリティの概要については、「[データベースの保護](sql-database-security-overview.md)」を参照してください。
 
 <!--Image references-->

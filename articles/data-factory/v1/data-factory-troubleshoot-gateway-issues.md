@@ -8,17 +8,16 @@ ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047566"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022540"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -169,7 +168,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="resolution"></a>解決策
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
-1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 IP アドレスは、Windows イベント ログで調べることができます (ID = 401): アクセス許可 XX.XX.XX.XX:9350 で禁止されている方法でソケットにアクセスしようとしました。
+1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 Windows イベント ログ (ID == 401) の"An attempt was made to access a socket in a way forbidden by its access permissions XX.XX.XX.XX:9350 (アクセス許可 XX.XX.XX.XX:9350 によって禁止されている方法でソケットへのアクセスが試みられました)" というメッセージから、IP アドレスを検出できます。
 * ゲートウェイのプロキシ設定を構成します。 詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
 * ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 

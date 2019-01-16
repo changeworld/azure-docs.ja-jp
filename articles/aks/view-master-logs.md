@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5d8aa2c25bf79278b10b96f93733e3abf89e4783
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971183"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040746"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -31,18 +31,15 @@ Log Analytics の有効化と管理は、Azure Portal で行います。 AKS ク
 1. AKS クラスターのリソース グループを選択します (*myResourceGroup* など)。 個別の AKS クラスター リソースを含んだリソース グループは選択しないでください (*MC_myResourceGroup_myAKSCluster_eastus* など)。
 1. 左側で、**[診断設定]** を選択します。
 1. AKS クラスター (*myAKSCluster* など) を選択し、**[診断をオンにする]** を選択します。
-1. 名前 (*myAKSLogs* など) を入力し、**[Log Analytics への送信]** オプションを選択します。
+1. 名前 (*myAKSClusterLogs* など) を入力し、**[Log Analytics への送信]** オプションを選択します。
     * Log Analytics の *[構成]* を選択し、既存のワークスペースまたは **[新しいワークスペースの作成]** を選択します。
     * ワークスペースを作成する必要がある場合は、名前、リソース グループ、および場所を指定します。
-1. 使用可能なログの一覧で、有効にするログを選択します (*kube-apiserver*、*kube-controller-manager*、*kube-scheduler* など)。 Log Analytics が有効になった後、構成画面に戻り、収集されるログを変更することもできます。
+1. 使用可能なログの一覧から、有効にするログを選択します。 既定で、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* ログが有効になっています。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics が有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
 
 次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、Log Analytics ワークスペースを作成するオプションの例です。
 
 ![AKS クラスターの Log Analytics に使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
 

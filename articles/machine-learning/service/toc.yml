@@ -159,6 +159,8 @@ items:
   - name: Monitoring SDK
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -174,9 +176,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 098c8a9f9bc8d0458490adf4d80e2eaf69dd9f7f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a6975a6aaefb3a750ee73b1e9738f534be24f2ba
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266078"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319726"

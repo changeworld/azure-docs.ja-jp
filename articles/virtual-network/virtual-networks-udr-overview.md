@@ -1,26 +1,23 @@
 ---
-title: Azure 仮想ネットワーク トラフィックのルーティング | Microsoft Docs
+title: Azure 仮想ネットワーク トラフィックのルーティング
+titlesuffix: Azure Virtual Network
 description: Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: c0b60b523409225e93cd4849b42fb5cfb318bea9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b2a262e6829aca75f03db41ff72ab0cc067c93be
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135731"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025795"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -62,7 +59,7 @@ Azure では、Azure のさまざまな機能を有効にした場合に限り�
 
 |ソース                 |アドレス プレフィックス                       |次ホップの種類|ルートの追加先となる仮想ネットワークのサブネット|
 |-----                  |----                                   |---------                    |--------|
-|既定値                |仮想ネットワークに固有 (例: 10.1.0.0/16)|VNET ピアリング                 |All|
+|既定値                |仮想ネットワークに固有 (例: 10.1.0.0/16|VNET ピアリング                 |All|
 |仮想ネットワーク ゲートウェイ|BGP 経由でオンプレミスからアドバタイズされたプレフィックス、またはローカル ネットワーク ゲートウェイで構成されているプレフィックス     |仮想ネットワーク ゲートウェイ      |All|
 |既定値                |複数                               |VirtualNetworkServiceEndpoint|サービス エンドポイントが有効になっているサブネットのみ|
 

@@ -226,6 +226,8 @@ items:
     href: web-service-error-codes.md
   - name: REST 管理 API
     href: /rest/api/machinelearning
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.machinelearning/allversions
 - name: リソース
   items:
   - name: 価格
@@ -240,9 +242,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: R 開発者ガイド
     href: ../r-developers-guide.md
-ms.openlocfilehash: c7b407e7db087992a2b667162aaf4572d657f380
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f8fa65cfb7c61cd3d359331f1872d279ab113d19
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303499"
+ms.locfileid: "54320516"

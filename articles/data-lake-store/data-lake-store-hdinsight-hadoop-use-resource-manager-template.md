@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0f6f485bb251bfae942c258b9be879c0aff5f5b9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955688"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035905"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -66,6 +66,12 @@ Get-AzureRmSubscription
 # Select a subscription
 Set-AzureRmContext -SubscriptionId <subscription ID>
 ```
+
+テンプレートでは、次のリソースの種類をデプロイします。
+
+* [Microsoft.DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)
 
 ## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 へのサンプル データのアップロード
 Resource Manager テンプレートでは、新しい Data Lake Storage Gen1 アカウントが作成され、HDInsight クラスターに関連付けられます。 この時点で、いくつかのサンプル データを Data Lake Storage Gen1 にアップロードする必要があります。 このデータは、チュートリアルの後半で Data Lake Storage Gen1 アカウント内のデータにアクセスするジョブを HDInsight クラスターから実行するために必要です。 データをアップロードする方法の詳細については、[Data Lake Storage Gen1 アカウントへのファイルのアップロード](data-lake-store-get-started-portal.md#uploaddata)に関するセクションを参照してください。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。

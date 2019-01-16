@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698759"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022310"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -152,7 +151,7 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 
 > [!NOTE]
 > 1. お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業や Windows のファイアウォールのホワイトリストに追加する必要があります。
-> 2. 一部のクラウド データベース ([Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) など) では、そのファイアウォールの構成でゲートウェイ コンピューターの IP アドレスをホワイトリストに追加する必要があります。
+> 2. 一部のクラウド データベース (例: [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) など) では、そのファイアウォールの構成でゲートウェイ コンピューターの IP アドレスをホワイトリストに追加する必要があります。
 >
 >
 
@@ -182,9 +181,9 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 
 3 つの構成オプションがあります。
 
-* **プロキシを使用しない**: ゲートウェイは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
-* **システム プロキシを使用する**: ゲートウェイは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが構成されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。
-* **カスタム プロキシを使用する**: diahost.exe.config と diawp.exe.config の構成は使用せず、HTTP プロキシ設定をゲートウェイ用に構成します。アドレスとポートが必要です。  ユーザー名とパスワードは、プロキシの認証設定によっては省略できます。  すべての設定が、ゲートウェイの資格情報証明書を使用して暗号化され、ゲートウェイ ホスト コンピューターにローカルで格納されます。
+* **プロキシを使用しない**:ゲートウェイは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
+* **システム プロキシを使用する**:ゲートウェイは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが構成されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。
+* **カスタム プロキシを使用する**:diahost.exe.config と diawp.exe.config の構成は使用せず、HTTP プロキシ設定をゲートウェイ用に構成します。アドレスとポートが必要です。  ユーザー名とパスワードは、プロキシの認証設定によっては省略できます。  すべての設定が、ゲートウェイの資格情報証明書を使用して暗号化され、ゲートウェイ ホスト コンピューターにローカルで格納されます。
 
 データ管理ゲートウェイのホスト サービスは、更新済みのプロキシ設定を保存した後に自動的に再起動されます。
 
@@ -307,7 +306,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 1. **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
-2. **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダーの実行可能ファイル **ConfigManager.exe** を実行します。
+2. 次のフォルダー内にある実行可能な **ConfigManager.exe** を実行します: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**。
 
 ### <a name="home-page"></a>ホーム ページ
 ホーム ページでは、次の操作を行うことができます。
@@ -363,7 +362,7 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 監視のプロパティ | 説明
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
-[Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
+[Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン/オフライン/制限/ など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
 Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。 

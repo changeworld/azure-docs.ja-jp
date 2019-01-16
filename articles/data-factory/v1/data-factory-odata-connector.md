@@ -9,22 +9,21 @@ ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: be2150147d950d708404aff53ce0aa4e0776ac33
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cb2d3bc128a3508f85ac349242d9a33f2a88424e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051169"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022752"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-odata-connector.md)
-> * [Version 2 (現在のバージョン)](../connector-odata.md)
+> * [バージョン 2 (最新バージョン)](../connector-odata.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の OData コネクタ](../connector-odata.md)に関するページを参照してください。
@@ -45,9 +44,9 @@ OData ストアから、サポートされている任意のシンク データ 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、OData ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -55,7 +54,7 @@ OData ストアから、サポートされている任意のシンク データ 
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: OData ソースから Azure BLOB へのデータのコピー](#json-example-copy-data-from-odata-source-to-azure-blob)」をご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: OData ソースから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odata-source-to-azure-blob)」のセクションを参照してください。 
 
 次のセクションでは、OData ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -64,9 +63,9 @@ OData ストアから、サポートされている任意のシンク データ 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OData** |[はい] |
-| url |OData サービスの URL です。 |[はい] |
-| authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OData** |[はい] |
+| url |OData サービスの URL です。 |はい |
+| authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
 | authorizedCredential |OAuth を使用している場合は、Data Factory コピー ウィザードまたはエディターの **[承認]** ボタンをクリックして資格情報を入力すると、このプロパティの値が自動生成されます。 |はい (OAuth 認証を使用している場合のみ) |
@@ -149,7 +148,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| パス |OData リソースへのパス |いいえ  |
+| path |OData リソースへのパス |いいえ  |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -160,7 +159,7 @@ source の種類が **RelationalSource** (OData を含む) である場合は、
 
 | プロパティ | 説明 | 例 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ  |
+| query |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ  |
 
 ## <a name="type-mapping-for-odata"></a>OData の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
@@ -191,7 +190,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 > [!Note]
 > OData の複雑なデータ型 (オブジェクト型など) はサポートされていません。
 
-## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON の使用例: OData ソースから Azure Blob にデータをコピーする
+## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON の使用例:OData ソースから Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、OData ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。 このサンプルでは、次の Data Factory のエンティティがあります。
 
 1. [OData](#linked-service-properties)型のリンクされたサービス。

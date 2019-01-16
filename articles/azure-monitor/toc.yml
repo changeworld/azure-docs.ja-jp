@@ -948,6 +948,12 @@ items:
       href: /rest/api/monitor/
     - name: ログ
       href: /rest/api/loganalytics
+  - name: Resource Manager テンプレート
+    items:
+    - name: 監視
+      href: /azure/templates/microsoft.insights/allversions
+    - name: ログ
+      href: /azure/templates/microsoft.operationalinsights/allversions
   - name: メトリック
     items:
     - name: サポートされるメトリック
@@ -1009,9 +1015,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ab0a3de001a775480f46f5a434a313f62e82623d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 17eb4c93d7e8cb27175c2ffb0a4d0161863aa522
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231055"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321468"

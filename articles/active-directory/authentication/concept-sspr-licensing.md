@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159000"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043041"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) には、Free、Basic、Premium P1、および
    * この機能は、Azure AD Premium P1 と Azure AD Premium P2 の各エディションに備わっています。
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランは、**パスワード ライトバックをサポートしていません**。この機能を動作させるには、Azure AD Premium P1 と Azure AD Premium P2 のどちらかのエディションが必要になります。
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD Premium P1 または Premium P2 を含むプランが必要になります。
 >
 
 追加のライセンス情報 (コストを含む) については、以下のページをご覧ください。

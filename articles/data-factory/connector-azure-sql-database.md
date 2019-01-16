@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: fcf5b5d0064292c11abeb361b0c046b5a3388457
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346711"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025693"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [Version 1](v1/data-factory-azure-sql-connector.md)
 > * [現在のバージョン](connector-azure-sql-database.md)
 
@@ -104,7 +103,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 
 1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者は、Azure AD ユーザーまたは Azure AD グループでなければなりませんが、サービス プリンシパルにはなれません。 このステップは、次のステップで Azure AD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
 
-1. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。
+1. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -164,7 +163,7 @@ MSI ベースの Azure AD アプリケーション トークン認証を使う�
     
 1. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 MSI を持つグループに管理者ロールを付与する場合は、手順 3 および 4 をスキップします。 管理者には、データベースへのフル アクセスがあります。
 
-1. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。
+1. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータベースに接続します。 次の T-SQL を実行します。 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
@@ -328,9 +327,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-    select *
-    from dbo.UnitTestSrcTable
-    where dbo.UnitTestSrcTable.stringData != stringData
+     select *
+     from dbo.UnitTestSrcTable
+     where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -344,7 +343,7 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、**SqlSink** に設定する必要があります。 | はい |
 | writeBatchSize | バッファー サイズが **writeBatchSize** に達したら、SQL テーブルにデータを挿入します。<br/> 使用可能な値は **integer** (行数) です。 | いいえ。 既定値は 10000 です。 |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/> 使用可能な値は **timespan** です。 例: "00:30:00" (30 分)。 | いいえ  |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/> 使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ  |
 | preCopyScript | コピー アクティビティがデータを Azure SQL Database に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ  |
 | sqlWriterStoredProcedureName | ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 たとえば、独自のビジネス ロジックを使用してアップサートまたは変換するような場合です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出されます**。 1 回だけ実行され、ソース データと関係のない操作の場合は、`preCopyScript` プロパティを使います。 たとえば、削除や切り詰めなどの操作です。 | いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ  |
@@ -433,8 +432,8 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 ```sql
 create table dbo.SourceTbl
 (
-    name varchar(100),
-    age int
+       name varchar(100),
+       age int
 )
 ```
 
@@ -443,9 +442,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
+       identifier int identity(1,1),
+       name varchar(100),
+       age int
 )
 ```
 
@@ -493,7 +492,7 @@ create table dbo.TargetTbl
 ```
 
 > [!NOTE]
-> ソース テーブルとターゲット テーブルのスキーマが異なります。
+> ソース テーブルとターゲット テーブルのスキーマが異なります。 
 
 ターゲットには ID 列が追加されています。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
@@ -569,7 +568,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ストアド プロシージャ機能は [テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
 
 >[!NOTE]
->ストアド プロシージャを呼び出すことで Money または Smallmoney のデータ型に書き込む場合、値が四捨五入される可能性があります。 緩和するには、Money または Smallmoney の代わりに Decimal として、TVP の対応するデータ型を指定します。
+>ストアド プロシージャを呼び出すことで Money または Smallmoney のデータ型に書き込む場合、値が四捨五入される可能性があります。 緩和するには、Money または Smallmoney の代わりに Decimal として、TVP の対応するデータ型を指定します。 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL Database のデータ型のマッピング
 

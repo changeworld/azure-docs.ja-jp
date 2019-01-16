@@ -10,17 +10,16 @@ ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3419f8718396bfb4ec894310e545f6a8a5b8f718
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049266"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024860"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -41,8 +40,8 @@ ms.locfileid: "37049266"
 ## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。
 
-* [チュートリアル: Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [チュートリアル: Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
+* [チュートリアル:Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [チュートリアル:Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub の Data Factory テンプレート
 GitHub の次の Azure クイック スタート テンプレートもご覧ください。

@@ -9,22 +9,21 @@ ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4038ea5a450f32a46f24a306d1ee30bd61308a5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a8283ebe135c5204dd64d8955295fdece38e0ebe
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054587"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023500"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-sqlserver-connector.md)
-> * [Version 2 (現在のバージョン)](../connector-sql-server.md)
+> * [バージョン 2 (最新バージョン)](../connector-sql-server.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の SQL Server コネクタ](../connector-sql-server.md)に関するページを参照してください。
@@ -41,7 +40,7 @@ ms.locfileid: "37054587"
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
-この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされている、次のバージョンのインスタンスとの間でのデータのコピーをサポートしています: SQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005
+この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされているバージョンSQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005 のインスタンスとの間で、データのコピーをサポートしています。
 
 ## <a name="enabling-connectivity"></a>接続を有効にする
 オンプレミスまたは Azure IaaS (サービスとしてのインフラストラクチャ) VM でホストされている SQL Server と接続するために必要な概念と手順は同じです。 いずれの場合でも、接続には Data Management Gateway を使用する必要があります。
@@ -53,9 +52,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -75,9 +74,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、 **OnPremisesSqlServer**に設定されます。 |[はい] |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |[はい] |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |[はい] |
+| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 
@@ -167,7 +166,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ  |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |クエリ ステートメント。 |いいえ  |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ  |
@@ -177,9 +176,9 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>SQL Server 間でのデータのコピーに関する JSON の例
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているいずれかのシンクに、任意のソースからデータを **直接** コピーすることができます。     
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。     
 
-## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例: SQL Server から Azure BLOB へのデータのコピー
+## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例:SQL Server から Azure BLOB にデータをコピーする
 次のサンプルは以下を示しています。
 
 1. [OnPremisesSqlServer](#linked-service-properties)型のリンクされたサービス。
@@ -363,7 +362,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) に関する記述を参照してください。
 
-## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>例: Azure BLOB から SQL Server へのデータのコピー
+## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>例:Azure BLOB から SQL Server にデータをコピーする
 次のサンプルは以下を示しています。
 
 1. [OnPremisesSqlServer](#linked-service-properties)型のリンクされたサービス。

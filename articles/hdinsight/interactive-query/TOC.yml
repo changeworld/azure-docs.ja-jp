@@ -374,6 +374,8 @@ items:
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.hdinsight/allversions
 - name: リソース
   items:
   - name: リリース ノート
@@ -396,9 +398,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 285c0718e92d8b20d820e9680c968747a370f668
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 00c9e4dc362009c8813f80dedf010a00c77d247f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606590"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320176"
