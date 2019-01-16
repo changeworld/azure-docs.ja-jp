@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 36764b661d88f034b306251f76d47d72298308dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139998"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054828"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
@@ -27,7 +27,7 @@ ms.locfileid: "53139998"
 
 この記事では、選択した保存先に応じて Azure Storage Blob または Azure Data Lake Store にキャプチャされるイベントの指定方法についても取り上げます。
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
+テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[ resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
 
 Azure リソースの名前付け規則のパターンとプラクティスの詳細については、[Azure リソースの名前付け規則][Azure Resources naming conventions]に関するページを参照してください。
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 1bf93ce9aa1733634b46c2a15b587d4cc0826ba1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c15c79e90b69fd72ed6b8968d35be95da50f838b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090935"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023874"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -108,7 +107,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
         ```
 
     * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -116,7 +115,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>ソース Azure SQL Database のリンクされたサービスを作成する
 
-1. 以下の内容を記述した **AzureSqlDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダー内に作成します (ADFv2TutorialBulkCopy フォルダーがない場合は作成します)。
+1. 次の内容を記述した **AzureSqlDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。(ADFv2TutorialBulkCopy フォルダーがまだ存在しない場合は作成してください)。
 
     > [!IMPORTANT]
     > &lt;servername&gt;、&lt;databasename&gt;、&lt;username&gt;@&lt;servername&gt;、&lt;password&gt; を実際の Azure SQL データベースの値に置き換えてからファイルを保存してください。
@@ -271,7 +270,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>シンク SQL Data Warehouse のデータセットを作成する
 
-1. **C:\ADFv2TutorialBulkCopy** フォルダーに、**AzureSqlDWDataset.json** という名前で以下の内容の JSON ファイルを作成します。"tableName" がパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティによって、実際の値がデータセットに渡されます。
+1. 次の内容を記述した **AzureSqlDWDataset.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。"tableName" はパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティを使用して、実際の値をデータセットに渡します。
 
     ```json
     {

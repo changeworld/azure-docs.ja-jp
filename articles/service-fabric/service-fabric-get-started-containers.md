@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: 587ba52a1a30d187268119567b84d2dd8e471b8d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300593"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063830"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -330,6 +330,61 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 </ServiceManifestImport>
 ```
 
+### <a name="configure-cluster-wide-credentials"></a>クラスター全体の資格情報を構成する
+
+6.3 ランタイム以降、Service Fabric では、アプリケーションから既定のリポジトリ資格情報として使用できるクラスター全体の資格情報を構成できるようになりました。
+
+`true` または `false` の値を指定した `UseDefaultRepositoryCredentials` 属性を ApplicationManifest.xml の `ContainerHostPolicies` に追加することで、この機能を有効または無効にすることができます。
+
+```xml
+<ServiceManifestImport>
+    ...
+    <Policies>
+        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
+            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
+        </ContainerHostPolicies>
+    </Policies>
+    ...
+</ServiceManifestImport>
+```
+
+Service Fabric では、`Hosting` セクションの ClusterManifest に指定できる既定のリポジトリ資格情報が使用されます。  `UseDefaultRepositoryCredentials` が `true` の場合、Service Fabric で ClusterManifest から次の値が読み取られます。
+
+* DefaultContainerRepositoryAccountName (文字列)
+* DefaultContainerRepositoryPassword (文字列)
+* IsDefaultContainerRepositoryPasswordEncrypted (ブール値)
+* DefaultContainerRepositoryPasswordType (文字列) --- 6.4 ランタイム以降でサポートされています
+
+ClusterManifestTemplate.json ファイルの `Hosting` セクション内に追加できる内容の例を次に示します。 詳細については、[Service Fabric クラスター設定の変更](service-fabric-cluster-fabric-settings.md)と [Service Fabric アプリケーションのシークレット管理](service-fabric-application-secret-management.md)に関するページを参照してください。
+
+```json
+      {
+        "name": "Hosting",
+        "parameters": [
+          {
+            "name": "EndpointProviderEnabled",
+            "value": "true"
+          },
+          {
+            "name": "DefaultContainerRepositoryAccountName",
+            "value": "someusername"
+          },
+          {
+            "name": "DefaultContainerRepositoryPassword",
+            "value": "somepassword"
+          },
+          {
+            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
+            "value": "false"
+          },
+          {
+            "name": "DefaultContainerRepositoryPasswordType",
+            "value": "PlainText"
+          }
+        ]
+      },
+```
+
 ## <a name="configure-isolation-mode"></a>分離モードの構成
 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 プロセス分離モードでは、同じホスト コンピューターで実行されているすべてのコンテナーがホストとカーネルを共有します。 Hyper-V 分離モードでは、各 Hyper-V コンテナーとコンテナー ホスト間でカーネルが分離されます。 分離モードは、アプリケーション マニフェスト ファイルの `ContainerHostPolicies` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 Windows Server ホスト上での既定値は、プロセス分離モードです。 Windows 10 ホストでサポートされているのは、HYPER-V 分離モードのみなので、コンテナーはその分離モードの設定に関係なく、HYPER-V 分離モードで実行されます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
@@ -342,7 +397,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 次のリソースのリソースの制限を設定できます。Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み)。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>
@@ -386,7 +441,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 
 **[発行]** をクリックします。
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![Error][1]
 
 ```Ready``` 状態になったら、アプリケーションの準備は完了しています。![準備完了][2]
 

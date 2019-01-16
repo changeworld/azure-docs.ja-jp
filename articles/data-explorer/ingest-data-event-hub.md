@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654106"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064697"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 Event Hubs は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 [Event Hubs](/azure/event-hubs/event-hubs-about) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 * [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
-* データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+* データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 ご使用のシステムにサンプル アプリをダウンロードしてください。
 
 * サンプル アプリを実行する [Visual studio 2017 Version 15.3.2 以降](https://www.visualstudio.com/vs/)
 
@@ -37,7 +37,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 このクイック スタートでは、サンプル データを生成してイベント ハブに送信します。 最初の手順は、イベント ハブの作成です。 Azure portal で Azure Resource Manager テンプレートを使用してこの処理を行います。
 
-1. 次のボタンを使用してデプロイを開始します。 この記事の手順の残り部分を実行できるように、別のタブまたはウィンドウでリンクを開くことをお勧めします。
+1. イベント ハブを作成するには、次のボタンを使用してデプロイを開始します。 この記事の残りの手順を実行できるよう、リンクを右クリックして **[新しいウィンドウで開く]** を選択し、別のタブまたはウィンドウで開いてください。
 
     [![Azure へのデプロイ](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -79,7 +79,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -87,12 +87,11 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![クエリの作成の実行](media/ingest-data-event-hub/run-create-query.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    このコマンドによって、受信 JSON データがテーブル (TestTable) の列名とデータ型にマップされます。
 
 ## <a name="connect-to-the-event-hub"></a>イベント ハブへの接続
 
@@ -112,13 +111,23 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![イベント ハブの接続](media/ingest-data-event-hub/event-hub-connection.png)
 
+    データ ソース: 
+
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | データ接続名 | *test-hub-connection* | Azure データ エクスプローラーで作成する接続の名前。|
     | イベント ハブの名前空間 | 一意の名前空間名 | 以前に選択した、名前空間を識別する名前。 |
     | イベント ハブ | *test-hub* | 作成したイベント ハブ。 |
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
-    | ターゲット テーブル | **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。 | ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 動的ルーティングを使用することもでき、その場合は必要なルーティング情報をデータに含めます。 |
+    | | |
+
+    ターゲット テーブル: 
+
+    ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 そのため、**[My data includes routing info]\(データにルーティング情報が含まれている\)** はオフのままにしておきます。
+    動的ルーティングを使用することもでき、その場合は必要なルーティング情報をデータに含めます。
+
+     **設定** | **推奨値** | **フィールドの説明**
+    |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
     | データ形式 | *JSON* | JSON 形式と CSV 形式がサポートされています。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
@@ -138,7 +147,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ## <a name="generate-sample-data"></a>サンプル データを作成する
 
-Azure Data Explorer とイベント ハブが接続されたので、ダウンロードした[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)を使用してデータを生成します。
+ダウンロードした[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)を使用してデータを生成します。
 
 1. Visual Studio でサンプル アプリ ソリューションを開きます。
 
@@ -162,8 +171,6 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
 
     ![イベント ハブ グラフ](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. メッセージ 99 に達したら、サンプル アプリに戻って停止します。
-
 1. これまでにデータベースに届いたメッセージ数を確認するには、テスト データベースで次のクエリを実行します。
 
     ```Kusto
@@ -177,9 +184,12 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
     TestTable
     ```
 
-    結果は次のようになります。
+    結果セットは次のようになっている必要があります。
 
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
+
+    > [!NOTE]
+    > ADX には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -198,4 +208,4 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

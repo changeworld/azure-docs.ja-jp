@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 088d8155fda6c370d89cded516bfa6c174c9380a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b8b3b28d2bf7fc75b9f70d145290af1edf44c94f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438033"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063187"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
 Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
@@ -186,6 +186,21 @@ New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroup
 New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+前述の例では、regexDelimiter は改行のために "\\n" と定義されていました。 ログの区切り記号はタイムスタンプにすることもできます。  サポートされる形式は次のとおりです。
+
+| 形式 | Json RegEx 形式では、標準の RegEx 内のすべての \ に 2 つの \\ が使用されるので、RegEx アプリでテストする場合は \\ を \ に減らします |
+| --- | --- |
+| YYYY-MM-DD HH:MM:SS  | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| M/D/YYYY HH:MM:SS AM/PM | (([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm) |
+| dd/MMM/yyyy HH:MM:SS | ((([0-3]\\\\d)\|(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]) |
+| MMM dd yyyy HH:MM:SS | (((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?)) |
+| yyMMdd HH:mm:ss | ([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
+| ddMMyy HH:mm:ss | (([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
+| MMM d HH:mm:ss | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9]) |
+| MMM  d HH:mm:ss<br> MMM の後に 2 つのスペース | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
+| MMM d HH:mm:ss | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
+| dd/MMM/yyyy:HH:mm:ss +zzzz<br> この + は + または - です<br> zzz は時刻のオフセットです | (([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4}) |
+| yyyy-MM-ddTHH:mm:ss<br> T はリテラル文字の T です | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する
 エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データが Log Analytics に直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff862dcee77fb874511ea1b9bcc907a5e4b60dcc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998984"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015274"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート:スキルとサンプル データを使用してコグニティブ検索パイプラインを作成する
 
@@ -26,9 +26,9 @@ ms.locfileid: "53998984"
 
 > [!div class="checklist"]
 > * Azure Blob Storage のサンプル データから始める
-> * [データのインポート ウィザード](search-import-data-portal.md)をコグニティブのインデックス作成とエンリッチメント用に構成する 
+> * [**データのインポート**](search-import-data-portal.md) ウィザードをコグニティブのインデックス作成とエンリッチメント用に構成する 
 > * ウィザードを実行する (エンティティ スキルで人、場所、および組織を検出する)
-> * [Search エクスプローラー](search-explorer.md)を使って、エンリッチされたデータのクエリを実行する
+> * [**検索エクスプローラー**](search-explorer.md)を使って、エンリッチされたデータのクエリを実行する
 
 ## <a name="supported-regions"></a> サポートされているリージョン
 
@@ -51,7 +51,7 @@ ms.locfileid: "53998984"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金が開始されるようになります。 また、この日には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始されます。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
 >
 > 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金されますが、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
@@ -98,9 +98,9 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
 
-1. Azure Blob Storage にサインアップしてストレージ アカウントを作成し、Storage Explorer にサインインしてコンテナーを作成します。 パブリック アクセス レベルは**コンテナー**に設定します。 詳しくは、非構造化データの検索のチュートリアルの「[コンテナーを作成する](../storage/blobs/storage-unstructured-search.md#create-a-container)」セクションをご覧ください。
+1. Azure Blob Storage にサインアップしてストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。 コンテナーで、パブリック アクセス レベルを **[コンテナー]** に設定します。 詳しくは、"*非構造化データの検索*" のチュートリアルの「[コンテナーを作成する](../storage/blobs/storage-unstructured-search.md#create-a-container)」セクションをご覧ください。
 
-1. 作成したコンテナーで、**[アップロード]** をクリックしてサンプル ファイルをアップロードします。
+1. 作成したコンテナーで、**[アップロード]** をクリックし、前の手順でダウンロードしたサンプル ファイルをアップロードします。
 
   ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -110,7 +110,7 @@ Azure Search サービスのダッシュボード ページに戻り、コマン
 
   ![[データのインポート] コマンド](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>ステップ 1:データ ソースを作成する
+### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
 **[データへの接続]** で、**[Azure Blob Storage]** を選択し、作成したアカウントとコンテナーを選択します。 データ ソースの名前を指定し、残りの部分には既定値を使用します。 
 

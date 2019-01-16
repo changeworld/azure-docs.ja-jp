@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 45a4a43ae95b42174f368122f89831a356410f2b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3c89c5cc0b299852f85836dd416b5bb270757719
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004080"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061042"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
 
 [Azure Database for MySQL の REST API](https://docs.microsoft.com/en-us/rest/api/mysql/) により、DevOps エンジニアは、Azure 内のマネージド MySQL サーバーおよびデータベースのプロビジョニング、構成、操作を自動化および統合できます。  API を使用して、Azure Database for MySQL サービス上の MySQL サーバーおよびデータベースを作成、列挙、管理、削除できます。
 
-Azure Resource Manager テンプレートでは、基になる REST API を利用し、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) または [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
+Azure Resource Manager では、基になる REST API を利用し、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) または [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
 
 このチュートリアルでは、Azure Resource Manager テンプレートとその他のユーティリティを使用して、次のことを行う方法を説明します。
 
@@ -32,7 +32,7 @@ Azure Resource Manager テンプレートでは、基になる REST API を利�
 
 ## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、VNet サービス エンドポイントによって Azure Database for MySQL サーバーを作成する
 
-Azure Database for MySQL サーバー用の JSON テンプレート リファレンスを取得するには、Microsoft.DBforMySQL サーバー テンプレート リファレンス (https://docs.microsoft.com/en-us/azure/templates/microsoft.dbformysql/servers)) をご覧ください。 VNet サービス エンドポイントを使用して Azure Database for MySQL を実行する新しいサーバーを作成するために使用できるサンプルの JSON テンプレートを次に示します。
+Azure Database for MySQL サーバー用の JSON テンプレート リファレンスを取得するには、[Microsoft.DBforMySQL サーバー](/azure/templates/microsoft.dbformysql/servers) テンプレート リファレンスをご覧ください。 VNet サービス エンドポイントを使用して Azure Database for MySQL を実行する新しいサーバーを作成するために使用できるサンプルの JSON テンプレートを次に示します。
 ```json
 {
   "apiVersion": "2017-12-01",

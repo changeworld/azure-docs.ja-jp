@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 94269056a7bf0a89c3d1b2f4968ad9ff90abbc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e062495b9a16474cef70e9a19bdd62b6e9e13752
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106646"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013901"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -89,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
@@ -106,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. サブスクリプションにまだリソース グループ ADFTutorialResourceGroup が存在しない場合は、作成します。 
+3. リソース グループを作成します。サブスクリプションにまだ ADFTutorialResourceGroup が存在しない場合は作成します。 
 
     ```powershell
     New-AzureRmResourceGroup -Name $resourceGroupName -Location "East Us" 

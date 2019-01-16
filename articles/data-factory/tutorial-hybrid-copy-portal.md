@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614023"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021987"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -195,7 +194,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     ![統合ランタイムの名前](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. **[Option 1: Express setup]\(オプション 1: 高速セットアップ\)** の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 
+1. **[Option 1:Express setup]\(オプション 1: 高速セットアップ\)** の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 
 
     ![高速セットアップのリンク](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

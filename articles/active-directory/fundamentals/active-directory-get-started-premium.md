@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fd5f9567c92201b4dfa08c74574df97fa8c91ae2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073994"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065564"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディションにサインアップする
 Azure Active Directory (Azure AD) Premium エディションを購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。
@@ -39,7 +39,7 @@ Active Directory Premium 1 または Premium 2 にサインアップする前に
 Azure または Office 365 のサブスクライバーである場合、Azure Active Directory Premium Edition をオンラインでご購入いただけます。 詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Enterprise Mobility + Security ライセンス プランを使用してサインアップする
-Enterprise Mobility + Security は Azure AD Premium、Azure Information Protection、および Microsoft Intune で構成されるスイートです。 EMS ライセンスを既にお持ちの場合は、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
+Enterprise Mobility + Security は、Azure AD Premium、Azure Information Protection、および Microsoft Intune で構成されるスイートです。 EMS ライセンスを既にお持ちの場合は、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
 
 EMS の詳細については、[Enterprise Mobility + Security の Web サイト](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)をご覧ください。
 
@@ -64,7 +64,7 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 ### <a name="to-activate-your-license-plan"></a>ライセンス プランをアクティブ化するには、次の手順を実行します。
 - サインアップした後に Microsoft から受信した確認の電子メールを開き、**[サインイン]** または **[サインアップ]** のどちらかをクリックします。
    
-    ![[サインイン]](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![サインイン](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **[サインイン]**。 既存のテナントがある場合は、このリンクをクリックし、既存の管理者アカウントを使ってサインインします。 ライセンスがアクティブ化されているテナント上で、グローバル管理者になっている必要があります。
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 description: Azure DevOps で Cosmos DB エミュレーター ビルド タスクを使用してビルドとリリースのワークフローを設定する方法のチュートリアル
-services: cosmos-db
-keywords: Azure Cosmos DB Emulator
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: sngun
+ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810644"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053706"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -66,7 +65,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 次に、エミュレーターを使用するテストを構成します。 エミュレーター ビルド タスクによって、"CosmosDbEmulator.Endpoint" という環境変数がエクスポートされます。ビルド パイプライン内の後続のタスクは、このエンドポイントに対して要求を発行できます。 
 
-このチュートリアルでは、[Visual Studio Test タスク](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、**.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)を参照してください。
+このチュートリアルでは、[Visual Studio Test タスク](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、**.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)を参照してください。 このドキュメントで使用する Todo アプリケーションの完全なコード サンプルは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) から入手できます
 
 以下は、アプリケーションの単体テストに渡されるパラメーターを定義する **.runsettings** ファイルの例です。 使用されている `authKey` 変数が、エミュレーターの[既知のキー](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests)であることに注意してください。 この `authKey` はエミュレーター ビルド タスクで必要なキーであり、**.runsettings** ファイルで定義する必要があります。
 

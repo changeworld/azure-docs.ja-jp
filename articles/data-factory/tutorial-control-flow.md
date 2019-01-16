@@ -9,21 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 9aab9df353ea5691b4132741e9b4a97b0afd9d17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262150"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025829"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
 
-シナリオの概要: ![概要](media/tutorial-control-flow/overview.png)
+シナリオの概要:![概要](media/tutorial-control-flow/overview.png)
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -95,7 +94,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
         // Set variables
@@ -204,7 +203,7 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照し、次の内容を記述します。
 
-- コピー元 BLOB の場所: **FolderPath** と **FileName**。
+- コピー元 BLOB の場所:**FolderPath** と **FileName**。
 - FolderPath ではパラメーターが使用されていることに注意してください。 "sourceBlobContainer" はパラメーターの名前であり、この式は実行パイプラインに渡された値に置き換えられます。 パラメーターを定義する構文は `@pipeline().parameters.<parameterName>` です。
 
 Program.cs ファイルで "SourceBlobDatasetDefinition" 関数を作成します。
@@ -258,13 +257,13 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>C# クラス EmailRequest を作成する
+## <a name="create-a-c-class-emailrequest"></a>C# クラスを作成する:EmailRequest
 C# プロジェクトで、**EmailRequest** という名前のクラスを作成します。 これは、パイプラインで電子メールが送信されるときに要求本文で送信されるプロパティを定義します。 このチュートリアルでは、パイプラインから電子メールに次の 4 つのプロパティが送信されます。
 
 - **Message**: 電子メールの本文。 成功したコピーでは、このプロパティには実行の詳細 (書き込まれたデータの数) が含まれています。 失敗したコピーでは、このプロパティにはエラーの詳細が含まれています。
 - **Data factory name**: データ ファクトリの名前
 - **Pipeline name**: パイプラインの名前
-- **Receiver**: 渡されるパラメーター。 このプロパティは、電子メールの受信者を指定します。
+- **Receiver**:渡されるパラメーター。 このプロパティは、電子メールの受信者を指定します。
 
 ```csharp
     class EmailRequest

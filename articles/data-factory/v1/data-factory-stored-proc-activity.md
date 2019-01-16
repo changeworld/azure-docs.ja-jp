@@ -9,17 +9,16 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047390"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017703"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -223,7 +222,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 ## <a name="chaining-with-other-activities"></a>他のアクティビティとの連鎖
 アップストリーム アクティビティをこのアクティビティと連鎖させる場合は、アップストリーム アクティビティの出力をこのアクティビティの入力として指定します。 この場合、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力データセットが使用可能 (準備完了状態) になるまでストアド プロシージャ アクティビティは実行されません。 複数のアップストリーム アクティビティの出力データセットを、ストアド プロシージャ アクティビティの入力データセットとして指定できます。 この場合、ストアド プロシージャ アクティビティは、入力データセットのすべてのスライスが使用可能である場合にのみ実行されます。  
 
-次の例では、コピー アクティビティの出力である OutputDataset が、ストアド プロシージャ アクティビティの入力になります。 そのため、コピー アクティビティが完了し、OutputDataset のスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 複数の入力データセットを指定した場合、入力データセットのすべてのスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 入力データセットは、ストアド プロシージャ アクティビティのパラメーターとして直接使用することはできません。 
+次の例では、コピー アクティビティの出力は OutputDataset です。これがストアド プロシージャ アクティビティの入力になります。 そのため、コピー アクティビティが完了し、OutputDataset のスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 複数の入力データセットを指定した場合、入力データセットのすべてのスライスが使用可能 (準備完了状態) になるまで、ストアド プロシージャ アクティビティは実行されません。 入力データセットは、ストアド プロシージャ アクティビティのパラメーターとして直接使用することはできません。 
 
 連鎖するアクティビティの詳細については、「[パイプライン内の複数アクティビティ](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)」をご覧ください。
 
@@ -311,12 +310,12 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name | アクティビティの名前 |[はい] |
-| description  |アクティビティの用途を説明するテキストです。 |いいえ  |
-| type | **SqlServerStoredProcedure** に設定する必要があります | [はい] |
+| name | アクティビティの名前 |はい |
+| description |アクティビティの用途を説明するテキストです。 |いいえ  |
+| type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ  |
-| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |[はい] |
-| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |[はい] |
+| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |はい |
+| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ  |
 
 ## <a name="passing-a-static-value"></a>静的な値を渡す

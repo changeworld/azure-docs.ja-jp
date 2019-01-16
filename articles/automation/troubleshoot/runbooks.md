@@ -4,16 +4,16 @@ description: Azure Automation Runbook のエラーをトラブルシューティ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/04/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5663842a4d861ed6eb76de859b870aa7114cb04
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015468"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063643"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -94,13 +94,15 @@ The subscription named <subscription name> cannot be found.
 Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
 1. Azure Automation の外部でスクリプトをテストし、スクリプトがスタンドアロンで機能することを確認します。
-2. **Select-AzureSubscription** コマンドレットを実行する前に、必ず **Add-AzureAccount** コマンドレットを実行してください。  
-3. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
+2. `Select-AzureSubscription` コマンドレットを実行する前に、必ず `Add-AzureAccount` コマンドレットを実行してください。 
+3. Runbook の先頭に `Disable-AzureRmContextAutosave –Scope Process` を追加します。 こうすることで、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
+4. それでもエラー メッセージが表示される場合は、`Add-AzureAccount` コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
 
    ```powershell
+   Disable-AzureRmContextAutosave –Scope Process
+
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
--ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
    $context = Get-AzureRmContext
 
@@ -147,21 +149,24 @@ Exception: A task was canceled.
 
 Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。 モジュールの更新の詳細については、「[Azure Automation で Azure モジュールを更新する](../automation-update-azure-modules.md)」を参照してください。
 
-### <a name="child-runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに子 Runbook が失敗する
+### <a name="runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに Runbook が失敗する
 
 #### <a name="issue"></a>問題
 
-`Start-AzureRmRunbook` を使用して子 Runbook を実行したときに、子 Runbook が Azure リソースを管理できません。
+`Start-AzureRmAutomationRunbook` を使用して Runbook を実行したときに、Runbook が Azure リソースを管理できません。
 
 #### <a name="cause"></a>原因
 
-子 Runbook は、実行中に正しいコンテキストを使用していません。
+Runbook が、実行中に正しいコンテキストを使用していません。
 
 #### <a name="resolution"></a>解決策
 
-複数のサブスクリプションを使用している場合は、子 Runbook を呼び出したときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが子 Runbook に渡されるようにするには、コマンドレットに `AzureRmContext` パラメーターを追加してそれにコンテキストを渡します。
+複数のサブスクリプションを使用している場合は、Runbook を呼び出したときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが Runbook に渡されるようにするには、コマンドレットに `AzureRmContext` パラメーターを追加してそれにコンテキストを渡します。 また、使用する資格情報が現在の Runbook のみに使用されるように、**Process** スコープを指定して `Disable-AzureRmContextAutosave` コマンドレットを使用することもお勧めします。
 
 ```azurepowershell-interactive
+# Ensures that any credentials apply only to the execution of this runbook
+Disable-AzureRmContextAutosave –Scope Process
+
 # Connect to Azure with RunAs account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
@@ -222,11 +227,11 @@ The job was tried three times but it failed
 
 このエラーは次の理由で発生する可能性があります。
 
-1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
+1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
 
-1. ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
+2. ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
 
-1. モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
+3. モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
 
 #### <a name="resolution"></a>解決策
 
@@ -328,9 +333,9 @@ Runbook が、Azure サンドボックスの fair share によって許可され
 
 推奨される解決策の 1 つは、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。
 
-Hybrid Worker には、Azure サンドボックスのような [fair share](../automation-runbook-execution.md#fair-share) による 3 時間の Runbook 制限はありません。 Hybrid Runbook Worker は 3 時間の fair share 制限では制限されていないものの、この Hybrid Runbook Worker 上で実行される Runbook は、予期しないローカル インフラストラクチャの問題が発生したときに再起動の動作がサポートされるよう、今後も開発していく必要があります。
+Hybrid Worker には、Azure サンドボックスのような [fair share](../automation-runbook-execution.md#fair-share) による 3 時間の Runbook 制限はありません。 Hybrid Runbook Worker は 3 時間の fair share 制限では制限されていないものの、この Hybrid Runbook Worker 上で実行される Runbook は、予期しないローカル インフラストラクチャの問題が発生した場合に再起動の動作がサポートされるよう、今後も開発していく必要があります。
 
-もう 1 つのオプションは、[子 Runbook](../automation-child-runbooks.md) を作成して Runbook を最適化することです。 Runbook によって多数のリソース上で同じ関数をループ処理する場合 (複数のデータベースで同じデータベース操作を行うなど)、その関数を子 Runbook に移動することができます。 これらの各子 Runbook は、別々のプロセスで並列に実行されるため、親 Runbook が完了するまでの合計時間が減ります。
+もう 1 つのオプションは、[子 Runbook](../automation-child-runbooks.md) を作成して Runbook を最適化することです。 Runbook によって多数のリソース上で同じ関数をループ処理する場合 (複数のデータベースで同じデータベース操作を行うなど)、その関数を子 Runbook に移動することができます。 これらの各子 Runbook は別々のプロセスで並列に実行されます。 この動作によって、親 Runbook の完了までにかかる合計時間は減ります。
 
 子 Runbook のシナリオを実現する PowerShell コマンドレットは次のとおりです。
 
@@ -354,13 +359,13 @@ Azure Automation Runbook の Webhook を呼び出そうとすると、次のエ�
 
 #### <a name="resolution"></a>解決策
 
-Webhook が無効な場合は、Azure portal から Webhook を再度有効にすることができます。 Webhook が期限切れの場合は、Webhook を削除して再作成する必要があります。 Webhook がまだ期限切れではない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-webhook)できます。
+Webhook が無効な場合は、Azure portal から Webhook を再度有効にすることができます。 Webhook の期限が切れたら、Webhook を削除して再作成する必要があります。 Webhook がまだ期限切れではない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-webhook)できます。
 
 ### <a name="429"></a>シナリオ:429:The request rate is currently too large. Please try again (現在、要求レートが大きすぎます。もう一度実行してください)
 
 #### <a name="issue"></a>問題
 
-`Get-AzureRmAutomationJobOutput` コマンドレットを実行すると、次のエラー メッセージが表示される場合があります。
+`Get-AzureRmAutomationJobOutput` コマンドレットを実行すると、次のエラー メッセージを受け取ります。
 
 ```
 429: The request rate is currently too large. Please try again
@@ -375,7 +380,7 @@ Webhook が無効な場合は、Azure portal から Webhook を再度有効に�
 このエラーを解決するには、次の 2 つの方法があります。
 
 * Runbook を編集し、出力されるジョブ ストリームの数を減らします。
-* コマンドレットを実行するときに取得されるストリーム数を減らします。 この場合は、`Get-AzureRmAutomationJobOutput` コマンドレットに `-Stream Output` パラメーターを指定して出力ストリームのみを取得します。 
+* コマンドレットを実行するときに取得されるストリーム数を減らします。 この動作の後に、`Get-AzureRmAutomationJobOutput` コマンドレットに `-Stream Output` パラメーターを指定して出力ストリームのみを取得することができます。 
 
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 

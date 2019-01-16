@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039430"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062946"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -59,6 +59,24 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 ![ワークスペースがありません](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+
+サポートするマッピングを次の表に示します。
+
+|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|西ヨーロッパ|西ヨーロッパ|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+
 有効にしない仮想マシンの横のチェックボックスをオフにします。 有効にできない仮想マシンは既に選択解除されています。
 
 **[有効にする]** をクリックしてソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
@@ -80,13 +98,13 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
 
-1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+2. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png)にも掲載されています。
 
    続行するかどうかを確認するプロンプトが表示されます。
 
-1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+3. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 
@@ -106,37 +124,37 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM reports to a different workspace: '\<workspaceName\>' (VM のレポート先が異なるワークスペース <ワークスペース名> である)。  Change configuration to use it for enabling (これを使用するように構成を変更して有効化できるようにしてください)
 
-**原因**: このエラーは、使用準備しようとしている VM のレポート先が別のワークスペースであることを示しています。
+**原因**:このエラーは、使用準備しようとしている VM のレポート先が別のワークスペースであることを示しています。
 
-**ソリューション**: **[構成として使用する]** をクリックして、対象の Automation アカウントおよび Log Analytics ワークスペースを変更します。
+**解決策**:**[構成として使用する]** をクリックして、対象の Automation アカウントおよび Log Analytics ワークスペースを変更します。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM reports to a workspace that is not available in this subscription (VM のレポート先がこのサブスクリプションで使用できないワークスペースである)
 
-**原因**: 仮想マシンのレポート先ワークスペースが次のいずれかです。
+**原因**:仮想マシンのレポート先ワークスペースが次のいずれかです。
 
 * 別のサブスクリプションにある
 * 存在しない
 * アクセス許可がないリソース グループにある
 
-**ソリューション**: VM のレポート先のワークスペースに関連付けられた Automation アカウントを探し、スコープ構成を変更して仮想マシンを使用準備します。
+**解決策**:VM のレポート先のワークスペースに関連付けられた Automation アカウントを探し、スコープ構成を変更して仮想マシンを使用準備します。
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>VM operating system version or distribution is not supported (VM のオペレーティング システムのバージョンまたはディストリビューションがサポートされていない)
 
 **原因:** このソリューションは、すべての Linux ディストリビューションまたはすべてのバージョンの Windows に対してサポートされているわけではありません。
 
-**ソリューション:** [サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
+**解決策:**[サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Classic VMs cannot be enabled (クラシック VM を有効にできない)
 
-**原因**: クラシック デプロイ モデルを使用する仮想マシンはサポートされていません。
+**原因**:クラシック デプロイ モデルを使用する仮想マシンはサポートされていません。
 
-**ソリューション**: 仮想マシンをリソース マネージャー デプロイ モデルに移行します。 この方法については、「[Migrate classic deployment model resources](../virtual-machines/windows/migration-classic-resource-manager-overview.md)」(クラシック デプロイ モデル リソースの移行) を参照してください。
+**解決策**:仮想マシンをリソース マネージャー デプロイ モデルに移行します。 この方法については、「[Migrate classic deployment model resources](../virtual-machines/windows/migration-classic-resource-manager-overview.md)」(クラシック デプロイ モデル リソースの移行) を参照してください。
 
 ### <a name="vm-is-stopped-deallocated"></a>VM is stopped. (deallocated) (VM が停止 (割り当て解除) している)
 
-**原因**: 仮想マシンが**実行**状態ではありません。
+**原因**:仮想マシンが**実行**状態ではありません。
 
-**ソリューション**: VM がソリューションを使用できるようにするためには VM は実行中である必要があります。 **[VM の起動]** インライン リンクをクリックし、ページから移動せずに VM を起動します。
+**解決策**:VM がソリューションを使用できるようにするためには VM は実行中である必要があります。 **[VM の起動]** インライン リンクをクリックし、ページから移動せずに VM を起動します。
 
 ## <a name="next-steps"></a>次の手順
 

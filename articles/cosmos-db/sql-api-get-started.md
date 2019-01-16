@@ -1,23 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL API の使用に関するチュートリアル'
+title: Azure Cosmos DB は:SQL API の使用に関するチュートリアル
 description: SQL API を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。
-keywords: NoSQL チュートリアル, オンライン データベース, C# コンソール アプリケーション
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867531"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043449"
 ---
-# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: SQL API の使用に関するチュートリアル
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB は:SQL API の使用に関するチュートリアル
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -60,7 +58,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>手順 2: Visual Studio ソリューションをセットアップする
+## <a id="SetupVS"></a>手順 2:Visual Studio ソリューションを設定する
 1. コンピューターで **Visual Studio 2017** を開きます。
 2. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]** / **[Visual C#]** / **[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
@@ -156,7 +154,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 
 お疲れさまでした。 これで、Azure Cosmos DB アカウントに接続できました。続いて、Azure Cosmos DB リソースの使用方法について説明します。  
 
-## <a name="step-4-create-a-database"></a>手順 4: データベースを作成する
+## <a name="step-4-create-a-database"></a>手順 4:データベースを作成する
 データベースを作成するコードを追加する前に、コンソールに書き込むためのヘルパー メソッドを追加します。
 
 **WriteToConsoleAndPromptToContinue** メソッドをコピーして、**GetStartedDemo** メソッドの後に貼り付けます。
@@ -184,7 +182,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 
 お疲れさまでした。 これで、Azure Cosmos DB データベースが作成されました。  
 
-## <a id="CreateColl"></a>手順 5: コレクションを作成する
+## <a id="CreateColl"></a>手順 5: コレクションの作成
 > [!WARNING]
 > **CreateDocumentCollectionIfNotExistsAsync** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 > 
@@ -205,7 +203,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 
 お疲れさまでした。 これで、Azure Cosmos DB ドキュメント コレクションが作成されました。  
 
-## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
+## <a id="CreateDoc"></a>手順 6: JSON ドキュメントの作成
 ドキュメントは、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
 
 まず、この例の Azure Cosmos DB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 **GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
@@ -367,7 +365,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>手順 7: Azure Cosmos DB リソースにクエリを実行する
+## <a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
 Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](how-to-sql-query.md)がサポートされています。  次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。Azure Cosmos DB SQL 構文と LINQ の両方が使用されています。
 
 **ExecuteSimpleQuery** メソッドをコピーし、**CreateFamilyDocumentIfNotExists** メソッドの後に貼り付けます。
@@ -538,7 +536,7 @@ Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、�
 
 
 ## <a name="next-steps"></a>次の手順
-* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 「[ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)」を参照してください。
+* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 [ASP.NET MVC チュートリアルの Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)に関するページを参照してください。
 * Azure Cosmos DB のスケールとパフォーマンスをテストする場合には、 「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 * [Azure Cosmos DB の要求、使用状況、およびストレージを監視する](monitor-accounts.md)方法を確認します。
 * [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。

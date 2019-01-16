@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993817"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074535"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -674,6 +674,10 @@ C# やその他の .NET 言語では、*function.json* の宣言型のバイン�
 ## <a name="functionjson-file-schema"></a>function.json ファイル スキーマ
 
 *function.json* ファイル スキーマは [http://json.schemastore.org/function](http://json.schemastore.org/function) から入手できます。
+
+## <a name="testing-bindings"></a>バインドのテスト
+
+ローカルで関数を開発するときは、Visual Studio 2017 または Visual Studio Code を使用してバインドをテストできます。 詳細については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。 REST API を使用して HTTP 以外のバインドを呼び出すこともできます。 詳細については、「[HTTP によってトリガーされない関数を手動で実行する](functions-manually-run-non-http.md)」を参照してください。
 
 ## <a name="handling-binding-errors"></a>バインド エラーの処理
 

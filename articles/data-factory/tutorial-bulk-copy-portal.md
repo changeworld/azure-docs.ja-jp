@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e7c134881cbf8745a4e4ef9102a418f7d47a6f8c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43098030"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020015"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -93,7 +92,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 1. **バージョン**として **[V2]** を選択します。
-1. データ ファクトリの **場所** を選択します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+1. データ ファクトリの **場所** を選択します。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 1. **[ダッシュボードにピン留めする]** をオンにします。     
 1. **Create** をクリックしてください。
 1. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
@@ -208,7 +207,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ![データセット パラメーター ビルダー](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>パイプラインを作成する
-このチュートリアルでは、2 つのパイプライン **IterateAndCopySQLTables** と **GetTableListAndTriggerCopyData** を作成します。 
+このチュートリアルでは、2 つのパイプラインを作成します。**IterateAndCopySQLTables** と **GetTableListAndTriggerCopyData** です。 
 
 **GetTableListAndTriggerCopyData** パイプラインは、次の 2 つの手順を実行します。
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs'
+title: チュートリアル:REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs
 description: このチュートリアルでは、REST API を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce344292577dd286abcd7fbf9e067800da0e0b3
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 8b12df3e31b46fa29f5726946be1d7509018fcbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958994"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025846"
 ---
-# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
+# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル:REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -47,7 +46,7 @@ ms.locfileid: "49958994"
 > [!NOTE]
 > この記事では、すべての Data Factory REST API を取り上げているわけではありません。 Data Factory REST API に関する包括的なドキュメントについては、 [Data Factory REST API リファレンス](/rest/api/datafactory/) を参照してください。
 >  
-> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
@@ -285,7 +284,7 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
  
 **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2017-02-03" と "2017-02-03T00:00:00Z" は同じです。
  
-start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
+start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2016-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
  
 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
  
@@ -351,7 +350,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 以下の点に注意してください。
 
-* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"** というエラーが表示される場合は、次の手順に従います。  
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に"**データ ファクトリ名 "ADFCopyTutorialDF" は使用できません**" というエラーが表示される場合は、次の手順に従います。  
   
   1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 
@@ -360,7 +359,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
+* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。 
   
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 
@@ -377,7 +376,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。 最初に、ソース データ ストアや保存先データ ストアを自分のデータ ストアにリンクするリンクされたサービスを作成します。 次に、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。 最後に、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure HDInsight、Azure Data Lake Analytics などのコンピューティング サービスを使用しません。 ここでは、Azure Storage (ソース) と Azure SQL Database (ターゲット) の 2 種類のデータ ストアを使用します。 したがって、タイプが AzureStorage と AzureSqlDatabase の、AzureStorageLinkedService と AzureSqlLinkedService という名前の 2 つのリンクされたサービスを作成します。  
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure HDInsight、Azure Data Lake Analytics などのコンピューティング サービスを使用しません。 ここでは、Azure Storage (ソース) と Azure SQL Database (ターゲット) の 2 種類のデータ ストアを使用します。 したがって、AzureStorageLinkedService と AzureSqlLinkedService という名前の 2 つのリンクされたサービスを作成します (タイプ: AzureStorage、AzureSqlDatabase)。  
 
 AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このストレージ アカウントは、[前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部としてコンテナーを作成し、データをアップロードしたストレージ アカウントです。   
 
@@ -487,7 +486,7 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
     Write-Host $results
     ```
 
-**お疲れさまでした。** Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
+**お疲れさまでした。**  Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 この手順では、Data Factory REST API を使用して、パイプラインによって生成されるスライスを監視します。

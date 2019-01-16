@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4ba25da1f356f6164137dead467bd8bc948ce3d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789248"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037839"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -45,7 +45,7 @@ ms.locfileid: "53789248"
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]** の順にクリックします。
+2. **[リソースの作成]** > **[管理ツール]** > **[Backup and Site Recovery]** の順にクリックします。
 3. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループ **ContosoRG** を作成します。
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。

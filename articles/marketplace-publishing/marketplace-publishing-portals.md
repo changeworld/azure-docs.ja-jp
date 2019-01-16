@@ -3,7 +3,7 @@ title: Marketplace のプランを作成するために必要なさまざまな�
 description: Marketplace のプランを作成するために必要なさまざまなポータルの概要
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
-ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: d1cc0efa1da90d90bd035eaa495a1336b6ff96c2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715915"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074191"
 ---
 # <a name="portals-you-will-need"></a>必要なポータル
-プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure Portal の概要を、やり取りする順番で示します。                                                                            
+
+プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure portal の概要を、やり取りする順番で示します。                                                                            
 
 ## <a name="developer-center"></a>デベロッパー センター
 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
@@ -36,7 +38,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 > 
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
-配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com など)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
+理想的には、この値は配布リストまたはセキュリティ グループです (たとえば、azurepublishing@*partnercompany*.com)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
 
 > [!TIP]
 > 個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。
@@ -47,21 +49,21 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
 ### <a name="description"></a>説明
-このポータルではプランを処理し、それを発行します (該当する場合、マーケティング、価格設定、発行、認定など)。
+
+この値は、オファーを処理し、それを発行するポータルです (該当する場合、マーケティング、価格設定、発行、認定など)。
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
-発行ポータルに初めてサインインする際には、前述の配布リストまたはセキュリティ グループを使用する必要があります。 他のユーザーは後で共同管理者として追加できます。 このようにして、デベロッパー センターの登録データにマップされます。
+発行ポータルに初めてサインインする際には、前述の配布リストまたはセキュリティ グループを使用する必要があります。 他のユーザーは後で共同管理者として追加できます。 この一覧のように、デベロッパー センターの登録データにマップされます。
 
-## <a name="azure-portal"></a>Azure Portal
-[https://portal.azure.com](https://portal.azure.com)
+## <a name="azure-portal"></a>Azure ポータル
+[Azure Portal](https://portal.azure.com)
 
 ### <a name="description"></a>説明
-このポータルでは、Azure Marketplace でステージングされたプランと発行されたプランを表示できます (VM、ソリューション テンプレート、および Azure リソース マネージャー ベースの開発者サービスに適用)。
+この値は、Azure Marketplace でステージングされたオファーと発行されたオファーを表示できるポータルです (VM、ソリューション テンプレート、および Azure Resource Manager ベースの開発者サービスに適用されます)。
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
 発行ポータルからオファーをステージングしている間、サブスクリプション ID をホワイトリストに登録する必要があります。 このポータルにサインインして、ステージングされたオファーをテストする間、同じサブスクリプション (関連付けられたユーザー名とパスワードがあります) を使用する必要があります。
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace にオファーを発行する方法](marketplace-publishing-getting-started.md)
 

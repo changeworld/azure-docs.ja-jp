@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076357"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074378"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -483,12 +483,12 @@ o- / ...........................................................................
 
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
-1. <https://portal.azure.com> に移動します
+1. <https\://portal.azure.com> にアクセスします
 1. [Azure Active Directory] ブレードを開きます  
    [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost)) を入力します。その後、[作成] をクリックします
+1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http\://localhost) を入力して、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
@@ -525,7 +525,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。
 
-1. https://portal.azure.com に移動します
+1. https\://portal.azure.com にアクセスします
 1. [All resources] \(すべてのリソース) ブレードを開きます
 1. 1 つ目のクラスター ノードの仮想マシンを選択します
 1. [アクセス制御 (IAM)] を選択します

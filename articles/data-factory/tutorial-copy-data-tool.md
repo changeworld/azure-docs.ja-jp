@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a9ba02478b17b29343236a91fe637357c1414717
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718091"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015324"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](tutorial-copy-data-tool.md)
 
@@ -37,9 +37,9 @@ ms.locfileid: "44718091"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure Storage アカウント**: "_ソース_" データ ストアとして Blob Storage を使用します。 Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
-* **Azure SQL Database**: "_シンク_" データ ストアとして SQL データベースを使用します。 SQL データベースがない場合は、「[SQL Database の作成](../sql-database/sql-database-get-started-portal.md)」の手順を参照してください。
+* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* **Azure ストレージ アカウント**:Blob Storage を "_ソース_" データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
+* **Azure SQL Database**:"_シンク_" データ ストアとして SQL データベースを使用します。 SQL データベースがない場合は、「[SQL Database の作成](../sql-database/sql-database-get-started-portal.md)」の手順を参照してください。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Custom Vision Service REST API を使用する'
+title: チュートリアル:Custom Vision Service REST API を使用する
 titlesuffix: Azure Cognitive Services
 description: REST API を使用してカスタム ビジョン モデルを作成、トレーニング、テスト、およびエクスポートします。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: a38f737b5281903328a53d6552b1666ca4f58d80
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 5e5cf04bb631585c14d2ec7403bf0332f41dc626
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364960"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054211"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>チュートリアル: Custom Vision REST API の使用
+# <a name="tutorial-use-the-custom-vision-rest-api"></a>チュートリアル:Custom Vision REST API を使用する
 
 Custom Vision REST API を使用してモデルを作成、トレーニング、テスト、およびエクスポートする方法について説明します。
 
@@ -37,11 +37,11 @@ Custom Vision REST API を使用してモデルを作成、トレーニング、
 
 * bash (Bourne Again Shell) と [curl](https://curl.haxx.se) ユーティリティ、または Windows PowerShell 3.0 (以上)。
 
-* Custom Vision アカウント。 詳細については、「[分類子の構築](getting-started-build-a-classifier.md)」ドキュメントを参照してください。
+* Custom Vision アカウント。 詳細については、「[分類器の構築](getting-started-build-a-classifier.md)」ドキュメントを参照してください。
 
 ## <a name="get-keys"></a>キーの取得
 
-REST API を使用するときは、キーを使用して認証する必要があります。 管理またはトレーニング操作を実行するときは、__トレーニング キー__ を使用します。 モデルを使用して予測を行うときは、__予測キー__ を使用します。
+REST API を使用するときは、キーを使用して認証する必要があります。 管理またはトレーニング操作を実行するときは、__トレーニング キー__を使用します。 モデルを使用して予測を行うときは、__予測キー__を使用します。
 
 要求を行うとき、キーが要求ヘッダーとして送信されます。
 
@@ -100,7 +100,7 @@ $resp.Content
 > [!TIP]
 > 応答内の `id` エントリは新しいプロジェクトの ID です。 これは、このドキュメントの後半にある他の例で使用されます。
 
-この要求の詳細については、[CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8290) を参照してください。
+この要求の詳細については、[CreateProject](https://go.microsoft.com/fwlink/?linkid=865446) を参照してください。
 
 ### <a name="specific-domains"></a>特定のドメイン
 

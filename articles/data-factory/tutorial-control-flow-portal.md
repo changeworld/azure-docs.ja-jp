@@ -9,21 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 4cb133cc617ecc121fb93a4da816120986e131e8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086928"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015425"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
 
-シナリオの概要: ![概要](media/tutorial-control-flow-portal/overview.png)
+シナリオの概要:![概要](media/tutorial-control-flow-portal/overview.png)
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -277,7 +276,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![パイプラインの検証](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[すべて公開]** を選択します。 **[正常に発行されました]** というメッセージが表示されるまで待機します。
 
-    ![[発行]](./media/tutorial-control-flow-portal/publish-button.png)
+    ![発行](./media/tutorial-control-flow-portal/publish-button.png)
  
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>成功するパイプラインの実行をトリガーする
 1. パイプラインの実行を**トリガー**するために、ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 

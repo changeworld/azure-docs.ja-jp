@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 793aa52c0eb49d122f520ead3ee80a869e7b62d9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 88538aa9528059458f6e73485f4839693caa943b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251336"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054495"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する
 
@@ -178,7 +178,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Databricks に Spark クラスターを作成し、Azure Storage のデータを使って Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 Resource Manager テンプレートを見て、[カスタム VNET アドレスで Azure Databricks ワークスペースを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)することもできます。
+この記事では、Azure Databricks に Spark クラスターを作成し、Azure Storage のデータを使って Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 Resource Manager テンプレートを見て、[カスタム VNET アドレスで Azure Databricks ワークスペースを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address)することもできます。 テンプレートで使用する JSON の構文とプロパティについては、[Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) テンプレート リファレンスを参照してください。
 
 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
 

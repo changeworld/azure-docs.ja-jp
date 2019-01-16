@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 13054ed0da2ad3fc38bdd4a39d9092dc72e39de9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601663"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021324"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -39,26 +39,29 @@ ms.locfileid: "53601663"
 
 Azure サブスクリプションをまだお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-**AzureRM.Sql** 4.8.1-preview モジュールをインストールして、エラスティック ジョブの最新のコマンドレットを入手してください。 管理アクセス権で次の PowerShell コマンドを実行します。
+- **AzureRM.Sql** 4.8.1-preview モジュールをインストールして、エラスティック ジョブの最新のコマンドレットを入手してください。 管理アクセス権で次の PowerShell コマンドを実行します。
 
-```powershell
-# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
-Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  ```powershell
+  # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+  Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  
+  # Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+  Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+  
+  # Restart your powershell session with administrative access
+  
+  # Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
+  Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+  
+  # Import the AzureRM.Sql 4.8.1 module
+  Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+  
+  # Confirm if module successfully imported - if the imported version is 4.8.1, then continue
+  Get-Module AzureRM.Sql
+  ```
 
-# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
-Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+- このチュートリアルには、**AzureRM.Sql** 4.8.1-preview モジュールに加えて、*sqlserver* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)」を参照してください。
 
-# Restart your powershell session with administrative access
-
-# Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
-
-# Import the AzureRM.Sql 4.8.1 module
-Import-Module AzureRM.Sql -RequiredVersion 4.8.1
-
-# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-Get-Module AzureRM.Sql
-```
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 

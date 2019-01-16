@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: 60dc0e88998580732b50cb202fb5d00a7cfcae21
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a8ac93d5a820b7d15b46efceb5db383d5b83a804
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106683"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019811"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure Portal を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -224,12 +223,12 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
         ![スクリプトの設定](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. **[スクリプト] タブ**で、**[詳細]** セクションを展開します。 
     6. **[パラメーター]** の **[Auto-fill from script]\(スクリプトから自動入力\)** をクリックします。 
-    7. **[出力]** パラメーターの値を `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 形式で入力します。 たとえば、「 `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`」のように入力します。
+    7. **[出力]** パラメーターの値を `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 形式で入力します。 (例: `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`)。
  
         ![[スクリプトの引数]](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. アーティファクトを Data Factory に公開するために、**[発行]** をクリックします。
 
-    ![[発行]](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![発行](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 

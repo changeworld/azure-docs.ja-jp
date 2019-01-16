@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: cdc53aeb0ecbea5714a8587c8d03ab6aa292394c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27e946dfdbb71bec03d3e4001ec63bd2d889e1b9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635000"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063507"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
@@ -22,7 +22,7 @@ ms.locfileid: "34635000"
 Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、Azure Resource Manager テンプレートを使用して PowerShell で IoT Hub を作成する方法を説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Azure Resource Manager デプロイ モデルの使用について説明します。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Azure Resource Manager とクラシックです](../azure-resource-manager/resource-manager-deployment-model.md)。 この記事では、Azure Resource Manager デプロイ モデルの使用について説明します。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -144,6 +144,7 @@ JSON テンプレートを使用して、リソース グループに IoT Hub �
 
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
 * Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
+* テンプレートで使用する JSON 構文とプロパティについては、「[Microsoft.Devices resource types (Microsoft.Devices のリソースの種類)](/azure/templates/microsoft.devices/iothub-allversions)」を参照してください。
 
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 

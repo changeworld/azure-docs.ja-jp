@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296552"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074055"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -65,13 +64,13 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 ## <a name="error-responses"></a>エラー応答  
  エラー処理では、HTTP の状態コードを使います。 一般的な結果は次のとおりです。  
 
--   2xx – 成功: 通常の操作に使用されます。 応答本文には、予期される結果が含まれます  
+-   2xx - 成功:通常の操作に使用されます。 応答本文には、予期される結果が含まれます  
 
--   3xx – リダイレクト: 304 "Not Modified" は、条件付き GET を実行するために返される場合があります。 その他の 3xx コードは、将来的に、DNS とパスの変更を示すために使用される可能性があります。  
+-   3xx - リダイレクト:304 "Not Modified" は、条件付き GET を実行するために返される場合があります。 その他の 3xx コードは、将来的に、DNS とパスの変更を示すために使用される可能性があります。  
 
--   4xx – クライアント エラー: 不正な要求、見つからないキー、構文エラー、無効なパラメーター、認証エラーなどに使用されます。応答本文には、詳細なエラーの説明が含まれます。  
+-   4xx - クライアント エラー:不正な要求、見つからないキー、構文エラー、無効なパラメーター、認証エラーなどに使用されます。応答本文には、詳細なエラーの説明が含まれます。  
 
--   5xx – サーバー エラー: 内部サーバー エラーに使用されます。 応答本文には、エラーの要約情報が含まれます。  
+-   5xx - サーバー エラー:内部サーバー エラーに使用されます。 応答本文には、エラーの要約情報が含まれます。  
 
  システムは、プロキシまたはファイアウォールの背後で動作するように設計されています。 そのため、クライアントは他のエラー コードを受け取る可能性があります。  
 
@@ -115,9 +114,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  WWW-Authenticate ヘッダーのパラメーターは次のとおりです。  
 
--   authorization: 要求のアクセス トークンの取得に使用できる OAuth2 承認サービスのアドレス。  
+-   authorization:要求のアクセス トークンの取得に使用できる OAuth2 承認サービスのアドレス。  
 
--   resource: 承認要求で使用するリソースの名前。  
+-   resource:承認要求で使用するリソースの名前。  
 
 ## <a name="see-also"></a>関連項目  
  [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)

@@ -1,7 +1,7 @@
 ---
 title: チュートリアル - Azure DevOps Services を使用して Jenkins から Azure VM への CI/CD を設定する | Microsoft Docs
 description: このチュートリアルでは、Visual Studio Team Services または Microsoft Team Foundation Server の Release Management から Jenkins を使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法を説明します
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388493"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074769"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル: Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
 継続的インテグレーション (CI) と継続的デプロイ (CD) は、コードのビルド、リリース、デプロイに使用できるパイプラインを生成します。 Azure DevOps Services には、Azure へのデプロイに使用できる機能が一式そろった CI/CD 自動化ツールが用意されています。 Jenkins は、よく使われているサードパーティの CI/CD サーバーベースのツールであり、CI/CD 自動化機能も備えています。 Azure DevOps Services と Jenkins を一緒に使用して、クラウド アプリまたはサービスの提供方法をカスタマイズできます。
 
@@ -68,7 +68,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 
 ## <a name="configure-jenkins-plug-ins"></a>Jenkins プラグインを構成する
 
-まず **NodeJS** 用と **VS Team Services Continuous Deployment** 用の 2 つの Jenkins プラグインを構成する必要があります。
+最初に、2 つの Jenkins プラグインを構成する必要があります。**NodeJS** と **VS Team Services Continuous Deployment** です。
 
 1. Jenkins アカウントを開き、**[Jenkins の管理]** を選択します。
 2. **[Jenkins の管理]** ページで、**[プラグインの管理]** を選択します。
@@ -164,7 +164,7 @@ Azure Pipelines でリリース パイプラインを作成するには、次の
 
 1. **[+ リリース]** を選択し、**[リリースの作成]** を選択します。
 2. 強調表示されているドロップダウン リストから完了したビルドを選択し、**[キュー]** を選択します。
-3. ポップアップ メッセージでリリース リンクを選択します。 たとえば、"リリース **Release-1** が作成されました" と表示されます。
+3. ポップアップ メッセージでリリース リンクを選択します。 例: "リリース **Release-1** が作成されました。"
 4. **[ログ]** タブを開いて、リリース コンソールの出力を確認します。
 5. ブラウザーで、デプロイ グループに追加したサーバーのいずれかについて URL を開きます。 たとえば、**http://{your-server-ip-address}** と入力します。
 6. ソース Git リポジトリに移動し、app/views/index.jade ファイル内の **[h1]** 見出しの内容を、変更を行ったテキストで変更します。

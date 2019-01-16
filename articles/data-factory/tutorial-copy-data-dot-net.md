@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3240b3ecfe8de8644d2ac1fd4a880fc0d2dcc76b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ad344d3169643128a4860c9b0856f845d9656cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237130"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021358"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 このチュートリアルでは、Azure Blob Storage から Azure SQL Database にデータをコピーする Data Factory パイプラインを作成します。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -119,7 +118,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
     
-2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
     // Set variables
@@ -232,8 +231,8 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.Ser
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照し、次の内容を記述します。
 
-- コピー元 BLOB の場所: **FolderPath** と **FileName**。
-- 内容の解析方法を示す BLOB 形式: **TextFormat** とその設定 (たとえば、列区切り文字)。
+- コピー元 BLOB の場所:**FolderPath** と **FileName**。
+- コンテンツの解析方法を示す BLOB 形式:**TextFormat** とその設定 (たとえば、列区切り記号)。
 - 列名とデータ型を含むデータ構造。ここでは、シンク SQL テーブルにマップされます。
 
 ```csharp
