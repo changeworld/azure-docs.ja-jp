@@ -3,17 +3,17 @@ title: Ansible を使用して Azure 内の仮想マシン スケール セッ�
 description: Ansible を使用して仮想マシン スケール セットを構成し、Azure 内にあるこの仮想マシン スケール セットにアプリケーションをデプロイする方法について説明します。
 ms.service: ansible
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408376"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156546"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内の仮想マシン スケール セットにアプリケーションをデプロイする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 また、Ansible を使用して、Azure にアプリケーションをデプロイすることもできます。 この記事では、Java アプリケーションを Azure 仮想マシン スケール セット (VMSS) にデプロイする方法について説明します。  
@@ -150,7 +150,7 @@ Ansible プレイブックの次のセクションでは、**saclesethosts** と
 上記のサンプルの Ansible プレイブックを `vmss-setup-deploy.yml` という名前で保存するか、[サンプルのプレイブック全体をダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss)します。 
 
 接続の種類として ssh を使用する場合、パスワードを併用するには、sshpass プログラムをインストールする必要があります。 
-  - Ubunto 16.04 の場合は、コマンド `apt-get install sshpass` を実行します。
+  - Ubuntu 16.04 の場合は、コマンド `apt-get install sshpass` を実行します。
   - CentOS 7.4 の場合は、コマンド `yum install sshpass` を実行します。
 
 **[Using an SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.Add this host's fingerprint to your known_hosts file to manage this host.]\(ホスト キーのチェックが有効になっていますが、sshpass ではこれがサポートされません。そのため、キーの代わりに SSH パスワードを使用することはできません。このホストを管理するには、ホストのフィンガープリントを既知のホスト ファイルに追加してください。\)** このエラーが発生した場合は、ホスト キーの検査を無効にするために、`/etc/ansible/ansible.cfg` ファイルまたは `~/.ansible.cfg` ファイルに次の行を追加します。

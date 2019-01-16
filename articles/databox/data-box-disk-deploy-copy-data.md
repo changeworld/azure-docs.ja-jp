@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913822"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155203"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
 このチュートリアルでは、ホスト コンピューターからデータをコピーして、データ整合性を確認するためのチェックサムを生成する方法について説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "50913822"
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に次の点を確認します。
-- [Azure Data Box Disk のインストールと構成に関するチュートリアル](data-box-disk-deploy-set-up.md)を完了していること。
+- [チュートリアル:Azure Data Box Disk のインストールと構成](data-box-disk-deploy-set-up.md)を完了していること。
 - ディスクは、ロックが解除されてクライアント コンピューターに接続されます。
 - ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)が実行されている必要があります。
 - データのための目的のストレージの種類が、[サポートされるストレージの種類](data-box-disk-system-requirements.md#supported-storage-types)と一致することを確認します。
@@ -70,7 +70,7 @@ ms.locfileid: "50913822"
     |パラメーター/オプション  |説明 |
     |--------------------|------------|
     |ソース            | コピー元ディレクトリのパスを指定します。        |
-    |変換先       | コピー先ディレクトリのパスを指定します。        |
+    |宛先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
     |/R: <N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |
@@ -148,19 +148,32 @@ ms.locfileid: "50913822"
     C:\Users>
     ```
  
+    パフォーマンスを最適化するには、データをコピーするときに、次の robocopy パラメーターを使用します。
+
+    |    プラットフォーム    |    ほとんどが小さいファイル (< 512 KB)                           |    ほとんどが中規模のファイル (512 KB ～ 1 MB)                      |    ほとんどが大きいファイル (> 1 MB)                             |   
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
+    |    Data Box Disk        |    4 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |  |
     
-7. コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにログ ファイルをダウンロードしてください。 ログ ファイルは、robobopy コマンドで指定した場所に格納されます。
+    *"*各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。*"
+    
+    >[!NOTE]
+    > 上記で推奨されているパラメーターは、社内テストで使用された環境に基づいています。
+    
+    Robocopy コマンドについて詳しくは、「[Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)」(Robocopy といくつかの例) をご覧ください。
+
+6. コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにログ ファイルをダウンロードしてください。 ログ ファイルは、robobopy コマンドで指定した場所に格納されます。
  
-
-
 > [!IMPORTANT]
 > - データはお客様の責任で、適切なデータ形式に対応するフォルダーにコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用のフォルダーにコピーしてください。 データ形式が適切なフォルダー (ストレージの種類) と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
-> -  データのコピー中は、そのサイズが [Azure Storage と Data Box Disk の制限](data-box-disk-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。 
+> -  データのコピー中は、そのサイズが [Azure Storage と Data Box Disk の制限](data-box-disk-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。
 > - Data Box Disk によってアップロードされているデータが、Data Box Disk の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 
 ### <a name="split-and-copy-data-to-disks"></a>データを分割してディスクにコピーする
 
 このオプションの手順は、複数のディスクを使用しており、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用できます。 Data Box 分割コピー ツールは、Windows コンピューター上でデータを分割してコピーするのに役立ちます。
+
+>[!IMPORTANT]
+> Data Box 分割コピー ツールでは、お客様のデータの検証も行われます。 Data Box 分割コピー ツールを使用してデータをコピーすると、[検証手順](#validate-data)をスキップできます。
 
 1. Windows コンピューターで、Data Box 分割コピー ツールがダウンロードされ、ローカル フォルダーに抽出されていることを確認します。 このツールは、Windows 用の Data Box Disk ツールセットをダウンロードしたときにダウンロードされました。
 2. エクスプローラーを開きます。 Data Box Disk に割り当てられたデータ ソース ドライブと ドライブ文字をメモしておきます。 
@@ -176,26 +189,26 @@ ms.locfileid: "50913822"
 
          ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. ソフトウェアが抽出されるフォルダーに移動します。 そのフォルダー内で SampleConfig.json ファイルを見つけます。 これは、変更して保存できる読み取り専用ファイルです。
+4. ソフトウェアが抽出されるフォルダーに移動します。 そのフォルダーで `SampleConfig.json` ファイルを見つけます。 これは、変更して保存できる読み取り専用ファイルです。
 
    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. SampleConfig.json ファイルを変更します。
+5. `SampleConfig.json` ファイルを変更します。
  
     - ジョブ名を指定します。 これにより、Data Box Disk にフォルダーが作成され、最終的にこれらのディスクに関連付けられた Azure ストレージ アカウント内のコンテナーになります。 ジョブ名は、Azure コンテナーの名前付け規則に従う必要があります。 
-    - ソース パスを指定して SampleConfigFile.json のパス形式をメモします。 
+    - ソース パスを指定して `SampleConfigFile.json` のパス形式をメモします。 
     - ターゲット ディスクに対応するドライブ文字を入力します。 データはソース パスから取得され、複数のディスクにコピーされます。
-    - ログ ファイルのパスを指定します。 既定では、.exe がある現在のディレクトリに送信されます。
+    - ログ ファイルのパスを指定します。 既定では、`.exe` がある現在のディレクトリに送信されます。
 
      ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. ファイル形式を検証するには、JSONlint に移動します。 ConfigFile.json として保存します。 
+6. ファイル形式を検証するには、`JSONlint` に移動します。 ファイルを `ConfigFile.json`という名前で保存します。 
 
      ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
-8. DataBoxDiskSplitCopy.exe を実行します。 type
+8. `DataBoxDiskSplitCopy.exe` を実行します。 type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -214,7 +227,7 @@ ms.locfileid: "50913822"
     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-10.png)
     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    n: ドライブの内容をさらに調べると、ブロック BLOB およびページ BLOB 形式データに対応して 2 つのサブフォルダーが作成されていることがわかります。
+    `n:` ドライブの内容をさらに調べると、ブロック BLOB およびページ BLOB 形式データに対応して 2 つのサブフォルダーが作成されていることがわかります。
     
      ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -222,15 +235,14 @@ ms.locfileid: "50913822"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+データのコピーが完了した後、お客様のデータの検証に進むことができます。 分割コピー ツールを使用した場合は、検証をスキップして (分割コピー ツールで検証も行われます)、次のチュートリアルに進んでください。
 
-データのコピーが完了したら、次にデータを検証します。 
 
+## <a name="validate-data"></a>データの検証
 
-## <a name="validate-data"></a>データの検証 
+データのコピーに分割コピー ツールを使用しなかった場合は、お客様のデータを検証する必要があります。 データを確認するには、次の手順を実行します。
 
-データを確認するには、次の手順を実行します。
-
-1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 
+1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。
     
     ![Data Box Disk 検証ツールの出力](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -240,7 +252,7 @@ ms.locfileid: "50913822"
 
     > [!TIP]
     > - 2 回の実行の間にツールをリセットします。
-    > - オプション 1 を使用して、小さなファイル (KB 単位まで) を含む大きなデータセットだけを扱うファイルを検証します。 これらの場合、チェックサムの生成に非常に長い時間がかかり、パフォーマンスが非常に低いことがあります。
+    > - 小さなファイル (KB 単位まで) を含む大きなデータ セットを扱う場合、オプション 1 を使用します。 チェックサムの生成に非常に長い時間がかかり、パフォーマンスが非常に低くなる場合があるので、このオプションではファイルの検証だけを行います。
 
 3. 複数のディスクを使用している場合は、ディスクごとにコマンドを実行します。
 
@@ -256,4 +268,3 @@ ms.locfileid: "50913822"
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に返送する](./data-box-disk-deploy-picked-up.md)
-

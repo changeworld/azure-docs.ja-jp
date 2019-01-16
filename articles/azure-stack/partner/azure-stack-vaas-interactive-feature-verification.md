@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a483a8e5e4c37c51c4efce13ad69b4abc83a402d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972067"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105374"
 ---
 # <a name="interactive-feature-verification-testing"></a>対話型機能検証テスト  
 

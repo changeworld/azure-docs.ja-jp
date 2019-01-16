@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c8edd73a287d5bca2f3deb68448ba951b7a3367
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999052"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106564"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>クイック スタート:Python SDK を使用して Azure Machine Learning の利用を開始する
 
@@ -76,7 +76,7 @@ SDK をインストールする前に、分離された Python 環境を作成�
 
 アクティブにした conda 環境に SDK をインストールします。 このコードによって、Machine Learning SDK の主要なコンポーネントがインストールされます。 conda 環境に Jupyter Notebook サーバーもインストールされます。 お使いのマシンの構成によっては、インストールが完了するまでに数分かかります。
 
-```sh
+```shell
 # Install Jupyter
 conda install nb_conda
 
@@ -86,7 +86,7 @@ pip install azureml-sdk[notebooks]
 
 追加のキーワードを使用して、SDK の他のコンポーネントをインストールできます。
 
-```sh
+```shell
 # Install the base SDK and auto ml components
 pip install azureml-sdk[automl]
 
@@ -97,13 +97,8 @@ pip install azureml-sdk[explain]
 pip install azureml-sdk[contrib]
 ```
 
-Azure Databricks 環境では、代わりに次のインストール コマンドを使用します。
-
-```
-# Install the base SDK and automl components in the Azure Databricks environment.
-# For more information, see https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks.
-pip install azureml-sdk[databricks]
-```
+Azure Databricks 環境では、代わりに [Databricks のインストール手順](how-to-configure-environment.md#azure-databricks
+)を使用します。
 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
@@ -143,11 +138,7 @@ pip install azureml-sdk[databricks]
 
 構成ファイル内のワークスペースの詳細を現在のディレクトリに保存します。 このファイルは、*aml_config\config.json* という名前です。  
 
-このワークスペース構成ファイルを使用すると、後で同じワークスペースを簡単に読み込むことができます。 同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-`write_config()` API 呼び出しでは、構成ファイルが現在のディレクトリに作成されます。 *config.json* ファイルには、以下のスクリプトが含まれています。
+`write_config()` API 呼び出しでは、構成ファイルが現在のディレクトリに作成されます。 *config.json* ファイルには、以下が含まれています。
 
 ```json
 {
@@ -156,6 +147,12 @@ pip install azureml-sdk[databricks]
     "workspace_name": "myworkspace"
 }
 ```
+
+このワークスペース構成ファイルを使用すると、後で同じワークスペースを簡単に読み込むことができます。 同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。 
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+
 
 ## <a name="use-the-workspace"></a>ワークスペースの使用
 
@@ -190,7 +187,7 @@ print(run.get_portal_url())
 
 1. ブラウザーで、ノートブックを閉じます。
 1. コマンド ライン ウィンドウで Ctrl+C キーを押して、Jupyter Notebook サーバーを停止します。
-1. 追加パッケージをインストールします。
+1. 追加パッケージをインストールします。  前に `azureml-sdk[automl]` をインストールしなかった場合は、ここでインストールします。
 
     ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy
@@ -200,6 +197,6 @@ print(run.get_portal_url())
 これらのパッケージのインストール後、モデルのトレーニングとデプロイを行うチュートリアルに進みます。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
+> [チュートリアル:画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
 
 [GitHub でより高度な例](https://aka.ms/aml-notebooks)を確認することもできます。

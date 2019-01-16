@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115078"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077252"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル: Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
 
@@ -48,16 +48,16 @@ ms.locfileid: "49115078"
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
 
-運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=localhost" の証明書を作成します。
+運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=mytestcert" の証明書を作成します。
 
 ```powershell
-PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
+PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
 ```
 
 既に証明書 PFX ファイルがある場合は、次のコマンドを実行して証明書を `Cert:\LocalMachine\My` 証明書ストアにインポートします。
@@ -158,7 +158,7 @@ serviceContext =>
         }))
 ```
 
-さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "localhost" に置き換えます。または、証明書の CN を使用します。
+さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -238,7 +238,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ソリューション エクスプローラーで、**[VotingWeb]** を右クリックし、**[追加]**->**[新しい項目]** の順に選択し、"SetCertAccess.ps1" という名前の新しいファイルを追加します。  *SetCertAccess.ps1* ファイルを編集して、次のスクリプトを追加します。
 
 ```powershell
-$subject="localhost"
+$subject="mytestcert"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
@@ -349,7 +349,7 @@ if ($cert -eq $null)
 
 アプリケーションを Azure にデプロイする前に、リモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
 
-最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[localhost]* を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
+最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
 
 ![証明書をエクスポートします。][image4]
 

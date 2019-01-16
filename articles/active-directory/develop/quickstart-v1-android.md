@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5d284e8f7756e3e9bff5b08d28a8ed911a60572
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311067"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158875"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -127,7 +127,7 @@ mAuthResult.getAccessToken()
 
 1. ライブラリの構造と、新しいシナリオと機能の構成方法の詳細については、[ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki) を確認してください。
 2. ネイティブ シナリオでは、アプリには埋め込み Webview が使用され、アプリ画面は表示されたままになります。 `Redirect URI` には任意の値を入力できます。
-3. 問題や要望がある場合は、 Stackoverflow でタグ `azure-active-directory` を指定して問題を作成するか、投稿してください。
+3. 問題や要望がある場合は、 Stack Overflow でタグ `azure-active-directory` を指定して問題を作成するか、投稿してください。
 
 ### <a name="cross-app-sso"></a>クロス アプリ SSO
 

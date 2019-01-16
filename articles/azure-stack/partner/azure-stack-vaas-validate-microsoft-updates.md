@@ -10,21 +10,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 7fcc7d5a1d87fe93d32772dbbb84f1d3c91d5631
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c90b81cdb6df5477d658d53dc93d0c3bbc47c1ff
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648787"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106445"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Microsoft のソフトウェア更新プログラムの検証
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Microsoft は、Azure Stack ソフトウェアの更新プログラムを定期的にリリースします。 これらの更新プログラムは、Azure Stack の共同エンジニアリング パートナーが各自のソリューションを前提に検証し、Microsoft にフィードバックを送ることができるよう、公開前にこれらのパートナーに提供されます。
+Microsoft は、Azure Stack ソフトウェアの更新プログラムを定期的にリリースします。 これらの更新プログラムは、Azure Stack 共同エンジニアリング パートナーに提供されます。 更新プログラムの一般公開より前に提供されます。 独自のソリューションに対して更新プログラムのチェックを行い、Microsoft にフィードバックを返すことができます。
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -34,11 +34,15 @@ Microsoft は、Azure Stack ソフトウェアの更新プログラムを定期�
 
 ## <a name="create-a-workflow"></a>ワークフローを作成する
 
-更新プログラムの検証では、**パッケージの検証**と同じワークフローを使用します。 「[パッケージの検証ワークフローの作成](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow)」の手順に従ってください。
+更新プログラムの検証では、**ソリューションの検証**と同じワークフローを使用します。
 
 ## <a name="run-tests"></a>テストの実行
 
-更新プログラムの検証では、**パッケージの検証**と同じワークフローを使用します。 [パッケージの検証テストの実行](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)に関する説明の手順に従ってください。
+1. 更新プログラムの検証では、**ソリューションの検証**と同じワークフローを使用します。 
+
+2. [ソリューションの検証テストの実行](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)に関する手順に従ってください。 代わりに、以下のテストを選択します。
+    - Monthly Azure Stack Update Verification (月次 Azure Stack 更新プログラムの検証)
+    - Cloud Simulation Engine (クラウド シミュレーション エンジン)
 
 更新プログラムの検証のためにパッケージの署名を要求する必要はありません。
 

@@ -10,16 +10,15 @@ ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed940
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: dae5e1ab6244d2898bc218ed5db3b6b2b90150cf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: de9243a0a95c14a048be124976b07853a48a9a08
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294055"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075228"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
@@ -37,15 +36,15 @@ ms.locfileid: "44294055"
 
    {  
      "error": {  
-     "code": "BadRequest",  
-     "message": "キー コンテナーの SKU が無効です。"  
+     "code":"BadRequest",  
+     "message":"The key vault sku is invalid."  
      }  
    }  
 
 |要素名 | type | 説明 |
 |---|---|---|
-| code | string | 発生したエラーの種類。|
-| message | string | エラーの原因の説明。 |
+| code | 文字列 | 発生したエラーの種類。|
+| message | 文字列 | エラーの原因の説明。 |
 
 
 

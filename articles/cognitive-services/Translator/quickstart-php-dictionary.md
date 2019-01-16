@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を探す、PHP - Translator Text API'
+title: 2 か国語辞書で単語を検索する、PHP - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と PHP を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d48ab8d0178b2d3fbcba2ee631ee97b30518f88
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649769"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156886"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-php"></a>クイック スタート: Translator Text REST API を使用して翻訳の代替候補を探す (PHP)
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>クイック スタート:PHP を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、Translator Text API を使って、特定の用語の翻訳について考えられる代替候補の情報とそれらの代替候補の用例を探します。
 

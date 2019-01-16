@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: d02557ecd84ea14db297ee07f7055a08304e7fcd
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 00c001b5c0c2c3dab86477fca798ec651f7b6c93
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091217"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189968"
 ---
-# <a name="tutorial-order-azure-data-box"></a>チュートリアル: Azure Data Box を注文する
+# <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
 Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド ソリューションです。 お客様は、Microsoft 提供の 80 TB (使用可能容量) ストレージ デバイスにデータを転送した後、そのデバイスを Microsoft に戻します。 その後、このデータは Azure にアップロードされます。
 
@@ -38,7 +38,7 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
 - Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
-    - 使用量 - 従量課金制。 Azure の従量課金制サブスクリプションについての詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0003p/)です。
+    - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
 - Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
 

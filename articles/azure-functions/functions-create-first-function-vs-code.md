@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633760"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104524"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
 
@@ -27,7 +27,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-現在、この拡張機能では、C#、JavaScript、Java 関数がサポートされています。 この記事の手順は、Azure Functions プロジェクト用に選択した言語によって異なる場合があります。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
+現在、この拡張機能では、C#、JavaScript、Java 関数が完全にサポートされており、Python のサポートはプレビュー段階です。 この記事の手順は、Azure Functions プロジェクト用に選択した言語によって異なる場合があります。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 * 選択した言語に固有の要件をインストールします。
 
-    | Language | 内線番号 |
+    | 言語 | 拡張機能 |
     | -------- | --------- |
     | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
     | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
@@ -55,7 +55,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="create-an-http-triggered-function"></a>HTTP によってトリガーされる関数の作成
 
-1. **[Azure: Functions]** で [関数の作成] アイコンを選択します。
+1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
 
     ![関数を作成する](./media/functions-create-first-function-vs-code/create-function.png)
 
@@ -93,7 +93,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![ブラウザーでの関数 localhost の応答](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. デバッグを停止するには、Shift キーを押しながら F1 キーを押します。
+1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 

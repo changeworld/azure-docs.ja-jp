@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261804"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105545"
 ---
 # <a name="validate-oem-packages"></a>OEM パッケージの検証
 
@@ -35,7 +35,7 @@ ms.locfileid: "52261804"
 
 **パッケージの検証**ワークフローを使用してパッケージを検証する場合は、**Azure Storage Blob** への URL を指定する必要があります。 この BLOB は、デプロイ時にソリューションにインストールされた OEM パッケージです。 設定中に作成した Azure Storage アカウントを使用して BLOB を作成します ([サービスとしての検証のリソースの設定](azure-stack-vaas-set-up-resources.md)に関するページを参照してください)。
 
-### <a name="prerequisite-provision-a-storage-container"></a>前提条件: ストレージ コンテナーをプロビジョニングする
+### <a name="prerequisite-provision-a-storage-container"></a>前提条件:ストレージ コンテナーをプロビジョニングする
 
 パッケージ BLOB のストレージ アカウントにコンテナーを作成します。 このコンテナーは、すべてのパッケージの検証の実行に使用できます。
 
@@ -56,7 +56,7 @@ ms.locfileid: "52261804"
 
 VaaS ポータルで**パッケージの検証**ワークフローを作成する場合、パッケージが含まれている Azure Storage BLOB への URL を指定する必要があります。
 
-#### <a name="option-1-generating-an-account-sas-url"></a>オプション 1: アカウントの SAS URL を生成する
+#### <a name="option-1-generating-an-account-sas-url"></a>オプション 1:アカウントの SAS URL を生成する
 
 1. [Azure portal](https://portal.azure.com/) でストレージ アカウントに移動し、パッケージが含まれている .zip に移動します
 
@@ -70,7 +70,7 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 **BLOB SAS URL** は、VaaS ポータルで新しい**パッケージの検証**ワークフローを開始するときに使用します。
 
-#### <a name="option-2-using-public-read-container"></a>オプション 2: パブリック読み取りコンテナーを使用する
+#### <a name="option-2-using-public-read-container"></a>オプション 2:パブリック読み取りコンテナーを使用する
 
 > [!CAUTION]
 > このオプションでは、匿名の読み取り専用アクセス用にコンテナーを開放します。
@@ -113,9 +113,23 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 ## <a name="run-package-validation-tests"></a>パッケージの検証テストの実行
 
-**パッケージの検証テストの概要**ページには、検証を完了するために必要なテストの一覧が表示されます。 このワークフローのテストは約 24 時間実行されます。
+1. **パッケージの検証テストの概要**のページには、検証を完了するために必要なテストの一覧が表示されます。 このワークフローのテストは約 24 時間実行されます。
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+    検証ワークフローでは、テストを**スケジュール設定**するときに、ワークフローの作成時に指定したワークフロー レベルの一般的なパラメーターを使用します (「[Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター](azure-stack-vaas-parameters.md)」を参照してください)。 テスト パラメーター値のいずれかが無効になった場合は、[ワークフロー パラメーターの変更](azure-stack-vaas-monitor-test.md#change-workflow-parameters)に関するセクションの手順に従ってパラメーター値を再度指定する必要があります。
+
+    > [!NOTE]
+    > 既存のインスタンスに対して検証テストをスケジュール設定すると、ポータルの古いインスタンスに代わる新しいインスタンスが作成されます。 古いインスタンスのログは保持されますが、ポータルからアクセスできません。  
+    テストが正常に完了すると、**[スケジュール]** アクションが無効になります。
+
+2. テストを実行するエージェントを選択します。 ローカル テストの実行エージェントの追加については、「[ローカル エージェントをデプロイする](azure-stack-vaas-local-agent.md)」を参照してください。
+
+3. 以下の各テストに対して、手順 4. と 5. を実行します。
+    - OEM Extension Package Verification (OEM 拡張機能パッケージの検証)
+    - Cloud Simulation Engine (クラウド シミュレーション エンジン)
+
+4. テスト インスタンスをスケジュール設定するためのプロンプトを開くには、コンテキスト メニューの **[スケジュール]** を選択します。
+
+5. テスト パラメーターを確認し、**[送信]** を選択してテストの実行をスケジュール設定します。
 
 すべてのテストが正常に完了したら、VaaS ソリューションとパッケージの検証の名前を [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) に送信して、パッケージの署名を要求してください。
 

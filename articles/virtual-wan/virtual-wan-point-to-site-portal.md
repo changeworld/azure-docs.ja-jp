@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/07/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d5533932ef9ab521b623c18a0c3a27b663c56f8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261810"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077404"
 ---
-# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
+# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
 
 このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv2) または OpenVPN VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、クライアント コンピューターでクライアントを構成する必要があります。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
@@ -42,7 +42,7 @@ ms.locfileid: "51261810"
 
 ## <a name="register"></a>この機能を登録する
 
-Azure Cloud Shell を使用してこの機能を簡単に登録するには、**[TryIt]** をクリックします。
+Azure Cloud Shell を使用してこの機能を簡単に登録するには、**[TryIt]** をクリックします。 PowerShell をローカルで実行する場合は、最新バージョンであることを確認し、**Connect-AzureRmAccount** および **Select-AzureRmSubscription** コマンドを使用してサインインしてください。
 
 >[!NOTE]
 >この機能を登録しないと、それを使用できなくなるか、またはポータルで表示できなくなります。
@@ -168,7 +168,7 @@ VPN プロファイルを使用してクライアントを構成します。
 #### <a name="openvpn"></a>OpenVPN
 
 1.  TunnelBlik などの OpenVPN クライアントを https://tunnelblick.net/downloads.html からダウンロードしてインストールします。 
-2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
+2.  ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイトの構成] タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
 3.  プロファイルを展開します。 メモ帳で OpenVPN フォルダーの vpnconfig.ovpn 構成ファイルを開きます。
 4.  P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 証明書をエクスポートしてエンコードされた公開キーを取得する方法については、こちらを参照してください。
 5.  秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーを抽出する方法については、こちらを参照してください。

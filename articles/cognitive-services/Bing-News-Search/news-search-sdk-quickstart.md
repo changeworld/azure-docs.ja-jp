@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258765"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156801"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>クイック スタート:Bing News Search SDK for C# を使ってニュース検索を実行する
 
@@ -35,14 +35,14 @@ Bing News Search SDK を使用してコンソール アプリケーションを�
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>News Search クライアント
-`NewsSearchAPI` クライアントのインスタンスを作成するには、次のディレクティブを追加します。
+`NewsSearchClient` のインスタンスを作成するには、次の using ディレクティブを追加します。
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 次に、クライアントをインスタンス化します。
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Console.WriteLine("Search news for query \"Quantum  Computing\" with market and 
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>最近のニュース、freshness および sortBy パラメーター
 次のコードは、`freshness` および `sortBy` パラメーターを使用して、"Artificial Intelligence" (人工知能) に関する最新のニュースを検索します。 結果の数を確認し、最初のニュース結果について提供元の `totalEstimatedMatches`、`name`、`url`、`description`、`published time`、および `name` を出力します。
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ namespace NewsSrchSDK
 ## <a name="category-news-safe-search"></a>カテゴリのニュース、セーフ サーチ
 次のコードでは、セーフ サーチを使用して、映画とテレビのエンターテイメントに関するカテゴリのニュースを検索します。  結果の数を確認し、最初のニュース結果について提供元の `category`、`name`、`url`、`description`、`published time`、および `name` を出力します。
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ namespace NewsSrchSDK
 ## <a name="trending-topics"></a>トレンドのトピック
 次のコードは、Bing でトレンドのニュース トピックを検索します。 結果の数を確認し、最初のニュース結果の `name`、`text of query`、`webSearchUrl`、`newsSearchUrl`、および `image.Url` を出力します。
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

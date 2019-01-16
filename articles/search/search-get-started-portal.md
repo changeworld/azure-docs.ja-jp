@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001789"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121551"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 サービス ダッシュボードのセクションには、既に存在するインデックス、インデクサー、データ ソースの数が表示されます。 
 
-![インデックス、インデックス、データソースの一覧][media/search-get-started-portal/tiles-indexers-datasources2.png]
+![インデックス、インデクサー、およびデータソースの一覧](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a>インデックスの作成とデータの読み込み
 
@@ -124,9 +124,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="view-the-index"></a>インデックスの表示
 
-**[インデックス]** 一覧には、ウィザードで作成した *realestate-us-sample* インデックスを含む既存のインデックスが表示されます。
+メイン サービス ページには、Azure Search サービスで作成されたリソースへのリンクがあります。  作成したインデックスを表示するには、リンクの一覧の **[インデックス]** をクリックします。 
 
-この一覧から、インデックス スキーマを表示し、必要に応じて新しいフィールドを追加できますが、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
+   ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
+
+この一覧で、作成した *realestate-us-sample* インデックスをクリックすると、インデックス スキーマが表示されます。 また、必要に応じて新しいフィールドを追加できます。 
+
+**[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
 
    ![サンプル インデックスの定義](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="query-index"></a> Search エクスプローラーを使用してクエリを実行する
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
+
+**Search エクスプローラー**は、[REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
 > [Azure Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から 次の手順のデモをご覧いただけます。
@@ -150,11 +156,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. 検索バーで次のクエリ文字列を入力して、**[検索]** をクリックします。
+3. 検索バーで次のクエリ文字列を貼り付けて、**[検索]** をクリックします。
 
-    > [!NOTE]
-    > **Search エクスプローラー**は [REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理する機能のみを備えています。 Search エクスプローラーは、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文に加え、[ドキュメント検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作で使用できるすべての検索パラメーターを受け取ります。
-    >
+   ![クエリ文字列と検索ボタン](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>クエリの例
 

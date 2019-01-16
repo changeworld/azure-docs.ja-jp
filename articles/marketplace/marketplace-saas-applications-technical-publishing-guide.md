@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123484"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074718"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-SaaS アプリケーションは、"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" の 3 つの行動喚起を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
+SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -94,7 +94,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [Active Directory に重点を置いた Microsoft Azure ビデオ](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 無料の Azure Active Directory トレーニングは以下で利用できます。  
-* [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [IT プロ向けの Microsoft Azure コンテンツ シリーズ:Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
 * [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
@@ -145,10 +145,11 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 | サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
 
 ## <a name="next-steps"></a>次の手順
-まだ行っていない場合は、 
+まだ行っていない場合は、
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させる
+- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
+- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)」を参照してください。

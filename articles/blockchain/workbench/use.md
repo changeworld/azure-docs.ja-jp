@@ -1,25 +1,33 @@
 ---
 title: Azure Blockchain Workbench でのアプリケーションの使用
-description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法。
+description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法に関するチュートリアル。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b43b125f7e96ac58a9094fc1e0e18b38f10d3e2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242088"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107074"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのアプリケーションの使用
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
 
 Blockchain Workbench では、コントラクトを作成し、それらのコントラクトに対してアクションを実行できます。 また、状態やトランザクション履歴などのコントラクト詳細を表示することもできます。
+
+学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * 新しいコントラクトを作成する
+> * コントラクトに対してアクションを実行する
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +71,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
     |---------|---------|
     | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
     | 詳細 | コントラクトの現在の値です |
-    | アクションを表示します。 | 直近のアクションに関する詳細です |
+    | Action | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |
     
 3. **[アクション]** セクションで、**[アクションの実行]** を選択します。
@@ -82,4 +90,4 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench のトラブルシューティング方法](troubleshooting.md)
+> [Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)

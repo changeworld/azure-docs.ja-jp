@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602394"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075500"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances のクォータとリージョンの可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "53602394"
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Azure Container Instances は、指定された CPU とメモリ制限を備えた以下のリージョンで利用できます。 値は公開時現在のものです。 最新情報については、[一覧表示機能](/rest/api/container-instances/listcapabilities/listcapabilities) API を使用します。
+Azure Container Instances は、指定された CPU とメモリ制限を備えた以下のリージョンで利用できます。 値は公開時現在のものです。 最新情報については、[一覧表示機能](/rest/api/container-instances/listcapabilities/listcapabilities) API を使用します。 Azure Container Instances と[仮想ネットワーク](container-instances-vnet.md) (プレビュー) または [GPU リソース](container-instances-gpu.md) (プレビュー) を使用する場合、可用性とリソースの制限は異なる場合があります。
 
 | 場所 | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |

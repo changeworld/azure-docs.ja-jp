@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 44b47a595c422f62cae13fb1aeb582e0c15787d6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 181addbcf4d0cfd51e74a24677de63f66e6fec1d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973504"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190521"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
@@ -179,7 +179,9 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、IoT Edge モジュールをプッシュし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。
+このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure portal を使用して、IoT Edge モジュールをデプロイし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 
+
+この場合は、プッシュしたモジュールによって、テストに使用できるサンプル データが作成されます。 シミュレートされた温度センサー モジュールによって、後でテストに使用できる環境データが生成されます。 シミュレートされたセンサーは、マシンと、マシンの周囲の環境の両方を監視します。 たとえば、このセンサーは、サーバー ルーム、工場のフロア、または風力タービンに配置されている可能性があります。 メッセージには、周囲の温度と湿度、機械の温度と圧力、タイムスタンプが含まれます。 IoT Edge のチュートリアルでは、このモジュールによって作成されたデータを分析用のテスト データとして使用します。
 
 再び IoT Edge デバイスでコマンド プロンプトを開くか、Azure CLI から SSH 接続を使用します。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
@@ -199,8 +201,6 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
    >IoT Edge のコマンドでは、モジュール名を参照する際に大文字と小文字が区別されます。
 
    ![モジュールからのデータを表示する](./media/quickstart-linux/iotedge-logs.png)
-
-ログに表示されている最後の行が "**Using transport Mqtt_Tcp_Only**" の場合、温度センサー モジュールが Edge ハブへの接続を待機している可能性があります。 モジュールを停止し、Edge エージェントによる再起動を試みてください。 停止するには、`sudo docker stop SimulatedTemperatureSensor` コマンドを使用します。
 
 [Visual Studio Code 用の Azure IoT Hub Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称: Azure IoT Toolkit 拡張機能) を使用して、IoT ハブに到着したメッセージを監視することもできます。 
 
@@ -226,20 +226,6 @@ IoT Edge ランタイムを削除します。
 
    ```bash
    sudo apt-get remove --purge iotedge
-   ```
-
-IoT Edge ランタイムが削除されると、作成したコンテナーは停止されますが、デバイスには残っています。 すべてのコンテナーを表示します。
-
-   ```bash
-   sudo docker ps -a
-   ```
-
-IoT Edge ランタイムによってデバイス上に作成されたコンテナーを削除します。 
-
-   ```bash
-   sudo docker rm -f SimulatedTemperatureSensor
-   sudo docker rm -f edgeHub
-   sudo docker rm -f edgeAgent
    ```
 
 コンテナー ランタイムを削除します。

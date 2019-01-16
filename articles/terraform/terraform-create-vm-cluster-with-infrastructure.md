@@ -4,17 +4,17 @@ description: Azure で Terraform と HashiCorp Configuration Language (HCL) を�
 services: terraform
 ms.service: terraform
 keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667602"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075356"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
 
@@ -62,7 +62,7 @@ ms.locfileid: "43667602"
 
 6. Terraform の変数の値を含む新しいファイルを作成します。 Terraform は現在のディレクトリにある `terraform.tfvars` という名前のファイル (または `*.auto.tfvars` というパターンのファイル) を自動的に読み込むので、Terraform 変数ファイルの名前は `terraform.tfvars` にするのが一般的です。 
 
-7. 変数ファイルに次のコードをコピーします。 プレースホルダーは次のように置き換えます。`subscription_id` には、`az account set` を実行するときに指定した Azure サブスクリプション ID を使います。 `tenant_id` には、`az ad sp create-for-rbac` から返された `tenant` の値を使います。 `client_id` には、`az ad sp create-for-rbac` から返された `appId` の値を使います。 `client_secret` には、`az ad sp create-for-rbac` から返された `password` の値を使います。
+7. 変数ファイルに次のコードをコピーします。 次のように、必ずプレースホルダーを置き換えます。`subscription_id` には、`az account set` の実行時に指定した Azure サブスクリプション ID を使用します。 `tenant_id` には、`az ad sp create-for-rbac` から返された `tenant` の値を使います。 `client_id` には、`az ad sp create-for-rbac` から返された `appId` の値を使います。 `client_secret` には、`az ad sp create-for-rbac` から返された `password` の値を使います。
 
   ```tf
   subscription_id = "<azure-subscription-id>"
