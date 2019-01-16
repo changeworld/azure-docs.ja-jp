@@ -53,11 +53,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
-    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します。        |
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国西部 2]** を選択します。        |
     |**価格レベル**     |  **[Standard]** を選択します。     |
 
@@ -120,7 +120,7 @@ Data Lake Storage Gen2 ストレージ アカウントにデータを格納す�
         "fs.azure.account.oauth2.client.id": "<service-client-id>",
         "fs.azure.account.oauth2.client.secret": "<service-credentials>",
         "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-     
+
     dbutils.fs.mount(
         source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
         mount_point = "/mnt/<mount-name>",
