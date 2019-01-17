@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 13fdf3257ed44212f45eeb3d2820a2022f54d777
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 5df10ce2bb7508aad0abe7f9972ffc9b886a098d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585240"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302359"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 ## <a name="overview"></a>概要
 
@@ -85,7 +85,7 @@ BLOB ストレージには、3 つの種類の BLOB が用意されています�
 
 ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のテーブルを含めることができ、テーブルには任意の数のエンティティを保存できます。
 
-### <a name="queue-storage"></a>Queue Storage
+### <a name="queue-storage"></a>ストレージ
 
 拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage では、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、信頼性の高いメッセージング ソリューションによって、アプリケーション コンポーネント間の非同期通信が実行されます。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 

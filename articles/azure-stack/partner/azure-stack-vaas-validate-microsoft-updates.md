@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/07/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c90b81cdb6df5477d658d53dc93d0c3bbc47c1ff
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcb56789b2781cd1d081af8c112222a1f1269a74
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106445"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304892"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Microsoft のソフトウェア更新プログラムの検証
 

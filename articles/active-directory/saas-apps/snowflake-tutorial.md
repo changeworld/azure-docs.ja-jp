@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 72d557ec2fa0e23dafb498d94c86296a3a534f88
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: cc72cd3139a17017a645f749d906fad64603401e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064017"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル:Azure Active Directory と Snowflake の統合
 
@@ -115,7 +115,7 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
     **[サインオン URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Snowflake クライアント サポート チーム](https://support.snowflake.net/s/snowflake-support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Snowflake クライアント サポート チーム](https://support.snowflake.net/s/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

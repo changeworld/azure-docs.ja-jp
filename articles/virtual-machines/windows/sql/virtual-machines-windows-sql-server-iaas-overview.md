@@ -3,7 +3,7 @@ title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
 description: Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
@@ -13,13 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2018
-ms.author: jroth
-ms.openlocfilehash: 416d1c7d45902735f58e397dd9195185ba0867df
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: e9edf4cd9a1dd0a110e89187b2fca3f85745fe56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315249"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330486"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -43,7 +44,7 @@ SQL Server Azure VM では[自動バックアップ](virtual-machines-windows-sq
 
 高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の SQL Server Azure VM を使用します。 高可用性ソリューションは手動で構成できるほか、Azure Portal からテンプレートを使用して自動で構成することもできます。 高可用性を実現する各種方法の概要については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 SQL VM は、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供します。 SQL VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 

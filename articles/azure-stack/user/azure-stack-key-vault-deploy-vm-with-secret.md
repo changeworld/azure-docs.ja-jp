@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8410c6fd2dd40656152209bc9951b6526c68dca6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8d853ec6b81340577598a66e048d69fe9b15a83c
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192569"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302631"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Azure Stack Key Vault に格納されているセキュリティ保護されたパスワードを使用して仮想マシンを作成する
 

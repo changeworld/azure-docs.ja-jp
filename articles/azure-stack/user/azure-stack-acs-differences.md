@@ -14,12 +14,13 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: 947886a96ab31150cf81ebea0a3cdd69e0273b01
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717876"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305756"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ:相違点と考慮事項
 

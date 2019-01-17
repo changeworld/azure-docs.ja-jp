@@ -13,15 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1b6326f9b3d9565739d97b32b119a2f362f24e65
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7d456ed76ea425f8870b2045283df5cc307d05fd
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954625"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302478"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Python を使用してデータ ファクトリとパイプラインを作成する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-python.md)
 
@@ -44,10 +44,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     John|Doe
     Jane|Doe
     ```
-2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **input** フォルダーを作成します。 次に、**input** フォルダーに **input.txt** ファイルをアップロードします。
+2.  [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **input** フォルダーを作成します。 次に、**input** フォルダーに **input.txt** ファイルをアップロードします。
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```
@@ -104,9 +104,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-    ```
 
-3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    ```
+3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```python
     def main():
@@ -217,6 +217,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
     print_item(p)
 ```
+
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
@@ -372,7 +373,7 @@ def main():
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1), datetime.now() + timedelta(1)))
     print_activity_run_details(activity_runs_paged[0])
 
 # Start the main method
@@ -415,6 +416,7 @@ Number of bytes read: 18
 Number of bytes written: 18
 Copy duration: 4
 ```
+
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 データ ファクトリを削除するには、プログラムに次のコードを追加します。

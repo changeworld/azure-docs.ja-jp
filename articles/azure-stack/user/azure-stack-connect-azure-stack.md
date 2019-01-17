@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: e982df514784c37de29c9931da063f37d6886655
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2183467bab423fc3190bfe08f519ddc75dcd2874
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377329"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304450"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 

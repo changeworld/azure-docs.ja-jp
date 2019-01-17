@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: f28b15a5268f1c31cbf17508139960d53dd6e0a3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a68d290bc21a8cdc36d5c85f770752ad67a4e91e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034507"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330760"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -113,14 +113,14 @@ CQLSH コマンドライン ユーティリティは、Apache Cassandra 3.1.1 �
 set SSL_VERSION=TLSv1_2 
 SSL_CERTIFICATE=<path to Baltimore root ca cert>
 set CQLSH_PORT=10350 
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 **Unix/Linux/Mac:**
 
 ```bash
 export SSL_VERSION=TLSv1_2 
 export SSL_CERTFILE=<path to Baltimore root ca cert>
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
 ```
 
 ## <a name="cql-commands"></a>CQL コマンド

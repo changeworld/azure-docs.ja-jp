@@ -11,18 +11,18 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079240"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321876"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
 このチュートリアルでは、Azure Machine Learning Data Prep SDK を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。  
 
-このチュートリアルは、2 部構成のチュートリアル シリーズの第 1 部です。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
+このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
 
 このチュートリアルでは、次のことを行いました。
 
