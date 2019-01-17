@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 48cbd33d4cbaff5d362731d67bbd3d4041e26f89
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025648"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331301"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -46,40 +46,41 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 ```JSON
 {
-    "name": "HiveActivitySamplePipeline",
-      "properties": {
+  "name": "HiveActivitySamplePipeline",
+  "properties": {
     "activities": [
-        {
-            "name": "Pig Activity",
-            "description": "description",
-            "type": "HDInsightPig",
-            "inputs": [
-                  {
-                    "name": "input tables"
-                  }
-            ],
-            "outputs": [
-                  {
-                    "name": "output tables"
-                  }
-            ],
-            "linkedServiceName": "MyHDInsightLinkedService",
-            "typeProperties": {
-                  "script": "Pig script",
-                  "scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
-                  "defines": {
-                    "param1": "param1Value"
-                  }
-            },
-               "scheduler": {
-                  "frequency": "Day",
-                  "interval": 1
-            }
+      {
+        "name": "Pig Activity",
+        "description": "description",
+        "type": "HDInsightPig",
+        "inputs": [
+          {
+            "name": "input tables"
           }
+        ],
+        "outputs": [
+          {
+            "name": "output tables"
+          }
+        ],
+        "linkedServiceName": "MyHDInsightLinkedService",
+        "typeProperties": {
+          "script": "Pig script",
+          "scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
+          "defines": {
+            "param1": "param1Value"
+          }
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 1
+        }
+      }
     ]
   }
 }
 ```
+
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -127,11 +128,11 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
    
    > [!NOTE]
    > また、**script** プロパティを使用して、アクティビティ定義で Pig スクリプトをインライン化することもできます。 ただし、スクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。 手順 4. の使用をお勧めします。
-   > 
-   > 
+   >
+   >
 5. HDInsightPig アクティビティでパイプラインを作成します。 このアクティビティは、HDInsight クラスターで Pig スクリプトを実行して、入力データを処理します。
 
-    ```JSON   
+    ```JSON
     {
       "name": "PigActivitySamplePipeline",
       "properties": {
@@ -154,14 +155,14 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
               "scriptPath": "adfwalkthrough\\scripts\\enrichlogs.pig",
               "scriptLinkedService": "StorageLinkedService"
             },
-               "scheduler": {
-                  "frequency": "Day",
-                  "interval": 1
+            "scheduler": {
+              "frequency": "Day",
+              "interval": 1
             }
           }
         ]
       }
-    } 
+    }
     ```
 6. パイプラインをデプロイします。 詳細については、 [パイプラインの作成](data-factory-create-pipelines.md) に関する記事を参照してください。 
 7. データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。 詳細については、 [Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) に関する記事を参照してください。
@@ -173,54 +174,54 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 
 * **defines**でパラメーターを定義します。
 
-    ```JSON  
+    ```JSON
     {
-        "name": "PigActivitySamplePipeline",
-          "properties": {
+      "name": "PigActivitySamplePipeline",
+      "properties": {
         "activities": [
-            {
-                "name": "PigActivitySample",
-                "type": "HDInsightPig",
-                "inputs": [
-                      {
-                        "name": "PigSampleIn"
-                      }
-                ],
-                "outputs": [
-                      {
-                        "name": "PigSampleOut"
-                      }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                      "scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
-                      "scriptLinkedService": "StorageLinkedService",
-                      "defines": {
-                        "Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0:MM}/dayno={0: dd}/',SliceStart)",
-                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
-                      }
-                },
-                   "scheduler": {
-                      "frequency": "Day",
-                      "interval": 1
-                }
+          {
+            "name": "PigActivitySample",
+            "type": "HDInsightPig",
+            "inputs": [
+              {
+                "name": "PigSampleIn"
               }
+            ],
+            "outputs": [
+              {
+                "name": "PigSampleOut"
+              }
+            ],
+            "linkedServiceName": "HDInsightLinkedService",
+            "typeproperties": {
+              "scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
+              "scriptLinkedService": "StorageLinkedService",
+              "defines": {
+                "Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0:MM}/dayno={0: dd}/',SliceStart)",
+                "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
+              }
+            },
+            "scheduler": {
+              "frequency": "Day",
+              "interval": 1
+            }
+          }
         ]
       }
     }
-    ```  
+    ```
 * 次の例に示すように、'**$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
 
-    ```  
-    PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);    
-    GroupProfile = Group PigSampleIn all;        
-    PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);        
+    ```
+    PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
+    GroupProfile = Group PigSampleIn all;
+    PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
+
 ## <a name="see-also"></a>関連項目
 * [Hive アクティビティ](data-factory-hive-activity.md)
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
