@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -130,15 +130,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[アプリの登録]** を選択します。
 
-    ![[アプリの登録] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-app-registrations.png)
+   ![[アプリの登録] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-app-registrations.png)
 
 3. **[新しいアプリケーションの登録]** を選択します。
 
-    ![アプリを追加する](./media/databricks-extract-load-sql-data-warehouse/select-add-app.png)
+   ![アプリを追加する](./media/databricks-extract-load-sql-data-warehouse/select-add-app.png)
 
 4. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、**[Web アプリ/API]** を選択します。 サインオン URL を指定し、**[作成]** を選択します。
 
-    ![アプリケーションの名前指定](./media/databricks-extract-load-sql-data-warehouse/create-app.png)
+   ![アプリケーションの名前指定](./media/databricks-extract-load-sql-data-warehouse/create-app.png)
 
 Azure Databricks から Data Lake Store アカウントにアクセスするには、作成した Azure Active Directory のサービス プリンシパルに関して、次の値が必要となります。
 - アプリケーション ID
@@ -153,27 +153,27 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 
 1. Azure Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
-    ![アプリケーションを選択する](./media/databricks-extract-load-sql-data-warehouse/select-app.png)
+   ![アプリケーションを選択する](./media/databricks-extract-load-sql-data-warehouse/select-app.png)
 
 2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 一部の[サンプル アプリケーション](#log-in-as-the-application)では、この値はクライアント ID と呼ばれます。
 
-    ![クライアント ID](./media/databricks-extract-load-sql-data-warehouse/copy-app-id.png)
+   ![クライアント ID](./media/databricks-extract-load-sql-data-warehouse/copy-app-id.png)
 
 3. 認証キーを生成するには、**[設定]** を選択します。
 
-    ![設定を選択](./media/databricks-extract-load-sql-data-warehouse/select-settings.png)
+   ![設定を選択](./media/databricks-extract-load-sql-data-warehouse/select-settings.png)
 
 4. 認証キーを生成するには、**[キー]** を選択します。
 
-    ![[キー] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-keys.png)
+   ![[キー] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-keys.png)
 
 5. キーの説明を入力し、キーの期間を指定します。 操作が完了したら、**[保存]** をクリックします。
 
-    ![キーを保存する](./media/databricks-extract-load-sql-data-warehouse/save-key.png)
+   ![キーを保存する](./media/databricks-extract-load-sql-data-warehouse/save-key.png)
 
-    キーを保存すると、キーの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてログインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
+   キーを保存すると、キーの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてログインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
 
-    ![保存されたキー](./media/databricks-extract-load-sql-data-warehouse/copy-key.png)
+   ![保存されたキー](./media/databricks-extract-load-sql-data-warehouse/copy-key.png)
 
 ### <a name="get-tenant-id"></a>テナント ID を取得する
 
@@ -181,15 +181,15 @@ Azure Databricks から Data Lake Store アカウントにアクセスするに�
 
 1. **[Azure Active Directory]** を選択します。
 
-    ![[Azure Active Directory] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-active-directory.png)
+   ![[Azure Active Directory] を選択する](./media/databricks-extract-load-sql-data-warehouse/select-active-directory.png)
 
 1. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。
 
-    ![Azure AD のプロパティを選択する](./media/databricks-extract-load-sql-data-warehouse/select-ad-properties.png)
+   ![Azure AD のプロパティを選択する](./media/databricks-extract-load-sql-data-warehouse/select-ad-properties.png)
 
 1. **ディレクトリ ID** をコピーします。 この値がテナント ID です。
 
-    ![テナント ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
+   ![テナント ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
 
 ## <a name="upload-data-to-data-lake-store"></a>Data Lake Store にデータをアップロードする
 
@@ -434,7 +434,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 ![Databricks クラスターを停止する](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
