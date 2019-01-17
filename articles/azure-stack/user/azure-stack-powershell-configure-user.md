@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
-ms.reviewer: Balsu.G
-ms.openlocfilehash: cf0d0f5bb87d1a7750775d3e22c8c50dcd8cf24d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: bganapa
+ms.openlocfilehash: bc6d48e0b805d8efa2efe88242aff53f797a6a12
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159436"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243901"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack に接続する
 

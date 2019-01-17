@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544585"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354452"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
@@ -53,8 +53,7 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 
 サーバーの作成中および作成後に、ストレージ容量を追加できます。 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
-ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、容量の上限、ストレージの割合、ストレージの使用量、および IO の割合です。
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 
@@ -64,7 +63,7 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 
 サーバーのストレージがしきい値に近づいたときに、それを通知するアラートを設定しておくことで、読み取り専用状態に入るのを防ぐことをお勧めします。 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+詳細については、[アラートの設定方法](howto-alert-metric.md)に関するドキュメントをご覧ください。
 
 ## <a name="backup"></a>バックアップ
 

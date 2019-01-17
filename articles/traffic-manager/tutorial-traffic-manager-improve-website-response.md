@@ -2,7 +2,6 @@
 title: チュートリアル - Web サイトの応答を向上させるために Azure Traffic Manager を使用してトラフィックをルーティングする
 description: このチュートリアル記事では、応答性の高い Web サイトを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: fcbacb14ae1cf0d8fa31d84e281c96fab5e3b0d3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1b12e17bb8dd666bd48e937b7fed40e40f22ecf0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052089"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200770"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる 
 

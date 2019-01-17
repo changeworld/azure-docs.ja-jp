@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 4560d1d338b1260a010755397d99b7ebb134d84b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 82ce7c4d61870a10daad22c61759084c75c3aae6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119596"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318850"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
@@ -44,7 +44,7 @@ Windows 10 では、既定で 5.1 がインストールされています。 こ
 
 次のスクリプトを実行します。
 
-```
+```powershell
 ####################################
 # User Configuration Section Begins
 ####################################
@@ -201,7 +201,7 @@ try
 
     $adApp = New-AzureRmADApplication -DisplayName $siteName -HomePage $azureSite -IdentifierUris $azureSite -Password $clientSecret
 
-    Write-Host "AzureAD application created succesfully!!"
+    Write-Host "AzureAD application created successfully!!"
 }
 catch
 {
@@ -249,7 +249,7 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete the AzureRm AD Application if configuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
     # Delete the deployed web app if configuration fails

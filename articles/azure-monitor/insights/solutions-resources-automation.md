@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d2a1be55f00b1b31609f44bd0187fd839340773
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a72df28fbaed89076976f567774bd5fdb15bc2f9
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185130"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229491"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -281,7 +281,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 | データ型 | 説明 | 例 | 結果 |
 |:--|:--|:--|:--|
-| string   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
+| 文字列   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | 数値  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
 | ブール値  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
 | Datetime | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
@@ -397,7 +397,7 @@ Runbook で使用する[グローバル モジュール](../../automation/automa
         "scheduleStartTime": {
           "type": "string",
           "metadata": {
-            "Description": "Start time for shedule."
+            "Description": "Start time for schedule."
           }
         },
         "scheduleTimeZone": {

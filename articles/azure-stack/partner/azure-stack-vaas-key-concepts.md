@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6a14a806b48b30d84b021a84a1ef0a2f4318ea94
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: d5b0c15fe5e4740a06af5de8a47b79c6d7528a2c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106474"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243816"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>サービスとしての検証の主要概念
 

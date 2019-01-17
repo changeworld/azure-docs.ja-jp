@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f4456200d6f497a87424f12a23034dbff00c75aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d9c428e3fa8d9fe964b83ae345bb70fd49a6ce1a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26373943"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215305"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -63,7 +63,7 @@ ms.locfileid: "26373943"
 
 *   Azure PowerShell がインストールされている。 Azure PowerShell モジュールをインストールするには、次の手順を実行します。
     * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
-    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0)」の手順に従います。
+    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux?view=azurermps-4.4.0)」の手順に従います。
 
 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0)」をご覧ください。
 
@@ -174,6 +174,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)。

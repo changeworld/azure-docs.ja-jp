@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134830"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213724"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -62,7 +62,7 @@ ms.locfileid: "53134830"
 
 許可されていないというエラーが表示された場合は、ユーザーがアプリケーションに割り当てられていません。 このエラーは、Azure Active Directory またはバックエンド アプリケーションのどちらかで発生することがあります。
 
-ユーザーを Azure 内のアプリケーションに割り当てる方法については、[構成ドキュメント](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user)を参照してください。
+ユーザーを Azure 内のアプリケーションに割り当てる方法については、[構成ドキュメント](application-proxy-add-on-premises-application.md#test-the-application)を参照してください。
 
 ユーザーが Azure 内のアプリケーションに割り当てられていることを確認する場合は、バックエンド アプリケーションでユーザー構成をチェックします。 Kerberos の制約付き委任/統合 Windows 認証を使用している場合は、「KCD トラブルシューティング」ページのガイドラインを参照してください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 503b0dffa00c6cba973f4bc51d8e3b2f3a7b8c57
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386639"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200413"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 
@@ -43,7 +43,7 @@ Linux クラスターの場合、Service Fabric が証明書として受け付�
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType の使用
 
-.NET と Java SDK では、**SecurityCredentialsType** に対して **X509** を指定できます。 これは、`SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)) の `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials)) タイプに対応します。
+.NET と Java SDK では、**SecurityCredentialsType** に対して **X509** を指定できます。 これは、`SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) の `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) タイプに対応します。
 
 **X509** 参照では、証明書ストア内の証明書の場所が特定されます。 次の XML は、証明書の場所を指定するためのパラメーターを示したものです。
 
@@ -74,7 +74,7 @@ Linux 上で実行されるサービスの場合、**LocalMachine**/**My** は�
 
 ### <a name="using-x5092-securitycredentialstype"></a>X509_2 SecurityCredentialsType の使用
 
-Java SDK では、**SecurityCredentialsType** に **X509_2** を指定することができます。 これは、`SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)) の `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials2)) タイプに対応します。 
+Java SDK では、**SecurityCredentialsType** に **X509_2** を指定することができます。 これは、`SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) の `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) タイプに対応します。 
 
 **X509_2** 参照では、パスのパラメーターを指定するので、*/var/lib/sfcerts* 以外のディレクトリにある証明書を特定することができます。  次の XML は、証明書の場所を指定するためのパラメーターを示したものです。 
 

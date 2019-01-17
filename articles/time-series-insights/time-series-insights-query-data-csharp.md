@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07d1b7f801639ca6b4e314f13fbf564c0d525345
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f921cc5af9d7f0ad8a072f5c14a24692e837e382
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555355"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198878"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 
@@ -457,4 +457,4 @@ namespace TimeSeriesInsightsQuerySample
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [クエリ API リファレンス](/rest/api/time-series-insights/time-series-insights-reference-queryapi)。
+> [クエリ API リファレンス](/rest/api/time-series-insights/ga-query-api)。

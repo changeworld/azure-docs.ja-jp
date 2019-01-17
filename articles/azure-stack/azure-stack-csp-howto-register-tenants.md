@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: alfredo
-ms.openlocfilehash: be240ea17a8679d25623f971f7be5ea5c3ad2e8f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.reviewer: alfredop
+ms.openlocfilehash: 5dbaa00b51f791bdf400ff4498b22952addddb24
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053244"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246298"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 

@@ -355,6 +355,8 @@ items:
         href: cloudfoundry-get-started.md
       - name: 初めてのアプリのデプロイ
         href: cloudfoundry-deploy-your-first-app.md
+    - name: Cassandra
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: OpenShift
       items:
       - name: OpenShift の概要
@@ -545,9 +547,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: c6668017755f748a0c9b1ac1b9e816a222abf9d1
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c230e40c62b3f7f1c485eb4051bed3a0314aa08d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306575"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360141"

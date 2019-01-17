@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187419"
+ms.locfileid: "54198527"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Application Gateway で HTTP ヘッダーを書き換える (パブリック プレビュー)
 
@@ -116,8 +116,6 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
 ## <a name="limitations"></a>制限事項
 
 - HTTP ヘッダーを書き換えるこの機能は、現時点で、Azure PowerShell、Azure API、および Azure SDK を通じてのみ使用できます。 ポータルと Azure CLI でのサポートは間もなく提供される予定です。
-
-- お使いのアプリケーション ゲートウェイでヘッダーの書き換えを適用したら、ポータルでこの機能がサポートされるまで、ポータルを使用してそのアプリケーション ゲートウェイに対する以降の変更を行わないようにしてください。 書き換えルールの適用後に、ポータルを使用してアプリケーション ゲートウェイに変更を加えると、ヘッダー書き換えルール。 引き続き、Azure PowerShell、Azure API、または Azure SDK を使用して変更を行えます。
 
 - HTTP ヘッダーの書き換えは、新しい SKU の [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみサポートされます この機能は古い SKU ではサポートされません。
 

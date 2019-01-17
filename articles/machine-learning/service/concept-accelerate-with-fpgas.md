@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313634"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306123"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>FPGA および Project Brainwave とは?
 
@@ -39,7 +39,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 ## <a name="project-brainwave-on-azure"></a>Azure 上での Project Brainwave
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) は Microsoft のハードウェア アーキテクチャです。 リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) は Microsoft のハードウェア アーキテクチャです。 リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
 
 FPGA によって、リアルタイムの推論要求に関して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの Project Brainwave の実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
 

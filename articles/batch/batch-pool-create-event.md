@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 794b3c83ff58967ef8169bed98f7b369335029ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246516"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259842"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -59,7 +59,7 @@ ms.locfileid: "51246516"
 |targetDedicated|Int32|プールに要求されたコンピューティング ノード数。|
 |enableAutoScale|ブール値|プールのサイズを自動的に調整し続けるかどうかを指定します。|
 |enableInterNodeCommunication|ブール値|ノード間の直接的な通信に対し、プールが設定されるかどうかを指定します。|
-|isAutoPool|ブール値|ジョブの AutoPool メカニズムを経由して、プールが作成されているかどうかを指定します。|
+|isAutoPool|ブール値|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
 |maxTasksPerNode|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
 |vmFillType|String|プール内のコンピューティング ノード間で Batch サービスがタスクを分散する方法を定義します。 有効な値は、分散またはパックです。|
 

@@ -5,6 +5,7 @@ description: 正常性プローブを使用して Load Balancer の背後にあ�
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fb8b3ac69797400af962ae40816943d6a32b8ec6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538687"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245550"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 

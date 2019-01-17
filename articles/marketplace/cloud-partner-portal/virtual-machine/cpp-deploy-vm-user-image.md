@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9c163ddf7859246fcdaa28edfd4b598a24a32be2
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 48be60a7ba5770f8c329cb6323a5caa8fcf7f961
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195798"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265058"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>ユーザー VHD から Azure VM をデプロイする
 
@@ -41,7 +41,7 @@ ms.locfileid: "53195798"
 | vmName                     | 仮想マシンの名前                                                    |
 | vaultName                  | Key Vault の名前                                                          |
 | vaultResourceGroup         | Key Vault のリソース グループ
-| certificateUrl             | キー コンテナーに格納されているバージョンを含む証明書の URL (例: https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7) |
+| certificateUrl             | キー コンテナーに格納されているバージョンを含む証明書の URL (例: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`) |
 | vhdUrl                     | 仮想ハード ディスクの URL                                                   |
 | vmSize                     | 仮想マシン インスタンスのサイズ                                           |
 | publicIPAddressName        | パブリック IP アドレスの名前                                                  |

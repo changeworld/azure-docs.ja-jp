@@ -13,13 +13,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/12/2019
+ms.openlocfilehash: 716c4caa1b28cc40470d366e5fc6901de9462f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063879"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267268"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 
@@ -172,9 +172,9 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 - システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
-- Azure Storage Explorer などのツールを使用して、監査ログを調査できます。 Azure Storage では、監査ログは sqldbauditlogs という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、BLOB 監査ログ形式のリファレンスに関する記事を参照してください。
+- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/en-us/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは sqldbauditlogs という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
 
-- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing)」をご覧ください。
+- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)」をご覧ください。
 
 > [!IMPORTANT]
 > 現在、マネージド インスタンスについては、Azure portal ([監査レコード] ウィンドウ) から監査レコードを表示することはできません。

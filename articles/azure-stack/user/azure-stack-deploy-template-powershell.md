@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 76348ef6984585856565ff39bfa707f1319477bb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.reviewer: unknown
+ms.openlocfilehash: 7a56b18130ffbeccc4756ef52c285633770d009b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107211"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243607"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>PowerShell を使用して Azure Stack にテンプレートをデプロイする
 

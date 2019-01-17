@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: aa09183d1dbb78822b6c46333dada3ed7f54811a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554573"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201263"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整方法 
 
@@ -200,4 +200,4 @@ Azure Time Series Insights テーブル、(平坦化後):
 
 ## <a name="next-steps"></a>次の手順
 
-これらのガイドラインを実際に使用する、TSI データ アクセス REST API のクエリ構文の詳細については、[Azure Time Series Insights のクエリの構文](/rest/api/time-series-insights/time-series-insights-reference-query-syntax)に関する記事を参照してください。
+これらのガイドラインを実際に使用する、TSI データ アクセス REST API のクエリ構文の詳細については、[Azure Time Series Insights のクエリの構文](/rest/api/time-series-insights/ga-query-syntax)に関する記事を参照してください。

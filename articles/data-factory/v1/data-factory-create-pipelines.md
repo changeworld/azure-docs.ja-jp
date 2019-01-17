@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e1fe5af1769a0a1a83a3ce849a7eb1874369ce9a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fb0448e5ad5bd91c63c2fcde9887ec23544bed3f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023370"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331352"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-create-pipelines.md)
 > * [バージョン 2 (最新バージョン)](../concepts-pipelines-activities.md)
 
@@ -102,7 +102,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | isPaused | true に設定すると、パイプラインは実行されません。 一時停止状態になります。 既定値 = false。 このプロパティを使用してパイプラインを有効または無効にすることができます。 |いいえ  |
 | pipelineMode | パイプラインの実行のスケジューリングを行うためのメソッドです。 使用可能な値: "Scheduled" (既定)、"Onetime"。<br/><br/>"Scheduled" は、パイプラインがアクティブな期間 (開始時刻と終了時刻) に応じて、指定された間隔で実行されることを意味します。 "Onetime" はパイプラインが 1回だけ実行されることを意味します。 現時点では、作成された Onetime パイプラインを変更または更新することはできません。 1 回限りの設定の詳細については、「[1 回限りのパイプライン](#onetime-pipeline)」を参照してください。 |いいえ  |
 | expirationTime | [ワンタイム パイプライン](#onetime-pipeline)の作成後に、パイプラインが有効であり、プロビジョニングされた状態が維持される必要がある時間。 パイプラインは、アクティブ、エラー、または保留中の実行がない限り、有効期限に達すると自動的に削除されます。 既定値: `"expirationTime": "3.00:00:00"`|いいえ  |
-| datasets |パイプラインで定義されたアクティビティで使用されるデータセットの一覧。 このプロパティは、このパイプラインに固有の、Data Factory 内で定義されていないデータセットを定義するために使用できます。 このパイプライン内で定義されているデータセットは、このパイプラインでのみ使用でき、共有することはできません。 詳細については、「 [範囲指定されたデータセット](data-factory-create-datasets.md#scoped-datasets) 」を参照してください。 |いいえ  |
+| データセット |パイプラインで定義されたアクティビティで使用されるデータセットの一覧。 このプロパティは、このパイプラインに固有の、Data Factory 内で定義されていないデータセットを定義するために使用できます。 このパイプライン内で定義されているデータセットは、このパイプラインでのみ使用でき、共有することはできません。 詳細については、「 [範囲指定されたデータセット](data-factory-create-datasets.md#scoped-datasets) 」を参照してください。 |いいえ  |
 
 ## <a name="activity-json"></a>アクティビティ JSON
 **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 各アクティビティには、次のような最上位構造があります。
@@ -141,7 +141,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | typeProperties |**typeProperties** セクションのプロパティは、アクティビティの種類によって異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ  |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ  |
 | scheduler | "scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |いいえ  |
-
 
 ### <a name="policies"></a>ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。 次の表で詳細に説明します。
@@ -286,7 +285,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 このサンプルの Pipeline1 には、Dataset1 を入力として受け取り、Dataset2 を出力として生成するアクティビティのみが含まれます。 Pipeline2 にも、Dataset2 を入力として受け取り、Dataset3 を出力として生成するアクティビティのみが含まれます。
 
 詳細については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。
-
 ## <a name="create-and-monitor-pipelines"></a>パイプラインの作成と監視
 次のツールや SDK のいずれかを使用してパイプラインを作成できます。
 
@@ -307,7 +305,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 - [Azure ポータルのブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)
 - [監視と管理アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)
-
 
 ## <a name="onetime-pipeline"></a>1 回限りのパイプライン
 パイプライン定義で指定した開始時刻から終了時刻までの間に定期的に (毎時、毎日など) 実行するパイプラインを作成し、スケジュールを設定することができます。 詳細については、「 [スケジュール設定のアクティビティ](#scheduling-and-execution) 」をご覧ください。 1 回だけ実行するパイプラインを作成することもできます。 これを行うには、次の JSON サンプルに示すように、パイプライン定義の **pipelineMode** プロパティを **onetime** に設定します。 このプロパティの既定値は **scheduled**です。
@@ -354,7 +351,6 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 * Data Factory で値が使用されない場合でも、入力データセットと出力データセットの**abailability** (**freqeuncy** と **interval**) は指定します。
 * ダイアグラム ビューには、1 回限りのパイプラインは表示されません。 この動作は仕様です。
 * 1 回限りのパイプラインを更新することはできません。 1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。
-
 
 ## <a name="next-steps"></a>次の手順
 - データセットの詳細については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。

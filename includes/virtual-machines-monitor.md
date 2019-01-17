@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0bc44dc31de4a45127468b956d01d7c3f8d92985
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122821"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242350"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -31,7 +31,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 ## <a name="alerts"></a>アラート
 
-特定のパフォーマンス メトリックに基づいて[アラート](../articles/azure-monitor/platform/alerts-overview.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)、[Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md)、[Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) のいずれかで行うことができます。
+特定のパフォーマンス メトリックに基づいて[アラート](../articles/azure-monitor/platform/alerts-overview.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure Portal](../articles/azure-monitor/platform/alerts-classic-portal.md)、[Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell)、[Azure CLI](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli) のいずれかで行うことができます。
 
 ## <a name="azure-service-health"></a>Azure Service Health
 

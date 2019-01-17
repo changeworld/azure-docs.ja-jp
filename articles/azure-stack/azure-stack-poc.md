@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 89552bc568ce38c6153683e9c3b0f3f26f569083
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 530bb7b164ec7d7b31e6d4a58bca97aa17dc62fa
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959543"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357880"
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 
@@ -29,8 +29,6 @@ Microsoft Azure Stack は、データセンター内の Azure のサービスを
 
 Azure Stack には、お客様のニーズに合わせて 2 つのデプロイ オプションが用意されています。
 
-## <a name="azure-stack-integrated-systems"></a>Azure Stack 統合システム
-Azure Stack 統合システムは Microsoft と[ハードウェア パートナー](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) のパートナーシップによって提供され、クラウドと歩調を合わせた革新と、コンピューティングの管理のしやすさを両立させたソリューションを実現します。 Azure Stack は統合されたハードウェアおよび ソフトウェア システムとして提供されているため、必要な柔軟性やコントロールが得られるほか、クラウドから革新を図ることができます。 Azure Stack 統合システムには 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。  Azure Stack 統合システムの使用により、運用ワークロードに向けて、新しいシナリオを作成し、新しいソリューションをデプロイできます。
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
 
@@ -44,6 +42,9 @@ ASDK には次の制限事項があります。
 * ASDK は、単一の Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
 * Azure Stack のコンポーネントは単一のホスト コンピューターにデプロイされるため、テナントのリソースに対して使用できる物理リソースは限られています。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
 * 単一のホストと NIC のデプロイ要件により、ネットワークのシナリオは限られています。
+
+## <a name="azure-stack-integrated-systems"></a>Azure Stack 統合システム
+Azure Stack 統合システムは Microsoft と[ハードウェア パートナー](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) のパートナーシップによって提供され、クラウドと歩調を合わせた革新と、コンピューティングの管理のしやすさを両立させたソリューションを実現します。 Azure Stack は統合されたハードウェアおよび ソフトウェア システムとして提供されているため、必要な柔軟性やコントロールが得られるほか、クラウドから革新を図ることができます。 Azure Stack 統合システムには 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。  Azure Stack 統合システムの使用により、運用ワークロードに向けて、新しいシナリオを作成し、新しいソリューションをデプロイできます。
 
 ## <a name="next-steps"></a>次の手順
 

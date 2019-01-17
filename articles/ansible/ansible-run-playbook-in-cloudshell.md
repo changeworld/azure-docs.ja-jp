@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/07/2018
-ms.topic: article
-ms.openlocfilehash: 6bfac47e4afa41b4c75a8d33b4eea1ff5103296d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.topic: quickstart
+ms.openlocfilehash: 61b23b5bc2620c82051b0ba1de4bb54b44a495e0
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050899"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359189"
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash を使用した Ansible の実行
 

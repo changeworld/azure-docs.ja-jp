@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: alfredo
-ms.openlocfilehash: 6e3bb2712137970e0ef3c7dd35b7ef602bd8ef5c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.reviewer: alfredop
+ms.openlocfilehash: f898ebcaac68cb3d12a0ddd2f68fc46bc1132c05
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063472"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247743"
 ---
 # <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>クラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ
 

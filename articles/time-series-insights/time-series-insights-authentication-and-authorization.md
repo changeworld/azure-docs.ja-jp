@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 17ca5430a0fdba0bf11d7c2caecd19ec0a402c0e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556698"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197999"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -106,7 +106,7 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
 
 ## <a name="next-steps"></a>次の手順
 - Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
-- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/time-series-insights-reference-queryapi)に関するページをご覧ください。
+- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
 
 > [!div class="nextstepaction"]
 > [サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)

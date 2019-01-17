@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960098"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247675"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -54,14 +54,13 @@ SAS を使用して 1 つのデバイスを IoT Central に接続するのは簡
 
     他の言語を使用する場合の参照を以下に示します。
 
-    *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
+    *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
 
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
-         
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
 
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
     *   **Node.js:** Node.js を使う場合は、[こちら](tutorial-add-device.md#prepare-the-client-code)の「**クライアント コードの準備**」セクション以降の手順に従います。
@@ -118,12 +117,12 @@ CSV ファイルには次の列 (とヘッダー) が必要です
 
 他の言語を使用する場合の参照を以下に示します。
 
-   *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
+   *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
     * **Node.js:** Node.js を使う場合は、[こちら](tutorial-add-device.md#prepare-the-client-code)の「**クライアント コードの準備**」セクション以降の手順に従います。
 

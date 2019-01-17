@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
-ms.topic: article
-ms.openlocfilehash: d684c4238a7550ca3ec34629fffdc9791db55954
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.topic: overview
+ms.openlocfilehash: 55dcda953454ce3eb4e19dabbf198f886d028180
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052702"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357932"
 ---
 # <a name="ansible-with-azure"></a>Ansible と Azure
 

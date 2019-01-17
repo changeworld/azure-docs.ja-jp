@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074089"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213623"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -69,7 +69,7 @@ Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プラ�
 |Dynamics 365 for Finance and Operations (Enterprise Edition)  |  Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) コンピテンシーと、過去 12 か月間でのクラウド運用の収益 25,000 米ドル以上。       |
 |Dynamics 365 for Finance and Operations (Business Edition)  |  [クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/cloud-solution-provider) または[デジタル指名パートナー (DPOR) ](https://partner.microsoft.com/membership/digital-partner-of-record)として 1 人以上の顧客にサービスを提供している。      |
 |Power BI、Power BI カスタム ビジュアル | [ソリューション パートナーの条件](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)を満たしている。|
-|PowerApps | 公開済みの[パートナー ショーケース]() ソリューションを備える。
+|PowerApps | 公開済みの[パートナー ショーケース](https://appsource.microsoft.com/partners) ソリューションを備える。
 
 <b>詳細については、[Microsoft Partner Network を通じたコンピテンシー](https://partner.microsoft.com/membership/competencies)に関するページをご覧ください。</b>
  

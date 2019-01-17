@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 33da0b09339460d66650c492ec125461bc0980b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730581"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215101"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する
 Microsoft Cloud App Security (MCAS) を使用してリアルタイムで監視を行うように、オンプレミス アプリケーションを Azure Active Directory (Azure AD) で構成します。 MCAS では、条件付きアクセス ポリシーに基づいたリアルタイムでのセッションの監視と制御に、アプリの条件付きアクセス制御が使用されます。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。
@@ -27,7 +27,7 @@ MCAS を使用して作成できるポリシーの種類の例をいくつか次
 - クライアント証明書またはデバイスのコンプライアンスを使用して、アンマネージド デバイスからの特定のアプリケーションへのアクセスをブロックする。
 - 企業ネットワーク外からのユーザー セッションを制限する。 ご自身の企業ネットワークの外からアプリケーションにアクセスするユーザーには、制限付きアクセスを付与できます。 たとえば、この制限付きアクセスによって、ユーザーによる機密ドキュメントのダウンロードをブロックできます。
 
-詳細については、[Microsoft Cloud App Security のアプリの条件付きアクセス制御によるアプリの保護](/cloud-app-security/proxy-intro-aad.md)に関するページをご覧ください。
+詳細については、[Microsoft Cloud App Security のアプリの条件付きアクセス制御によるアプリの保護](/cloud-app-security/proxy-intro-aad)に関するページをご覧ください。
 
 ## <a name="requirements"></a>必要条件
 

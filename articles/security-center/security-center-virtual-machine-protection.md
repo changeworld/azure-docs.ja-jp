@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723231"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321592"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -44,7 +44,6 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 - **[Cloud Services]\(クラウド サービス\)**: Security Center によって監視されている Web および worker ロールの一覧。
 - **[App Services (プレビュー)]**: アプリ サービス環境の一覧と、それぞれの現在のセキュリティ状態。
 - **[コンテナー (プレビュー)]**: IaaS Linux マシン上でホストされているコンテナーや Docker 構成のセキュリティ評価の一覧。
-- **[Virtual Machine Scale Sets (プレビュー)]**: スケール セットと各推奨事項の一覧。
 - **[コンピューティング リソース (プレビュー)]**: Service Fabric クラスターやイベント ハブなど、コンピューティング リソースの推奨事項の一覧。
 
 続行するには、**[リソース セキュリティの検疫]** で **[計算とアプリ]** を選択します。
@@ -162,24 +161,6 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 
     ![App Service の自動修復](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>Virtual Machine Scale Sets (プレビュー)
-Security Center は自動的にスケール セットがあるかどうかを検出し、これらのスケール セットに Microsoft Monitoring Agent をインストールすることを推奨します。 
-
-Microsoft Monitoring Agent をインストールするには 
-
-1. 推奨事項 **[仮想マシン スケール セットに監視エージェントをインストールする]** を選択します。 監視されていないスケール セットの一覧が表示されます。
-2. 異常なスケール セットを選択します。 既存の挿入済みのワークスペースを使用して監視エージェントをインストールするか、または新しいものを作成するという指示に従います。 ワークスペースの[価格レベル](security-center-pricing.md)が設定されていない場合は設定します。
-
- ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには
-1. Azure Policy に移動して、**[定義]** をクリックします。
-2. **[Windows VM スケール セット用の Log Analytics エージェントのデプロイ]** ポリシーを検索してクリックします。
-3. **[割り当て]** をクリックします。
-4. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
-
-既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、**[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
-
 
 ## <a name="compute-and-app-recommendations"></a>コンピューティングとアプリの推奨事項
 |リソースの種類|セキュリティ スコア|推奨|説明|
@@ -238,11 +219,7 @@ Microsoft Monitoring Agent をインストールするには
 |マシン|30|仮想マシンに脆弱性評価ソリューションをインストールする|仮想マシンに脆弱性評価ソリューションをインストールする|
 |マシン|1|仮想マシンを新しい Azure Resource Manager リソースに移行する|Azure Resource Manager を仮想マシンに使用して、セキュリティの拡張機能を提供します。たとえば、アクセス制御の強化 (RBAC)、監査の改善、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレット取得のための Key Vault へのアクセス、Azure AD に基づく認証、セキュリティ管理を容易にするタグとリソース グループのサポートがあります。 |
 |マシン|30|脆弱性評価ソリューションを使用して脆弱性を修復する|脆弱性評価のサード パーティ製ソリューションがデプロイされている仮想マシンは、アプリケーションと OS の脆弱性に関して継続的に評価され続けています。 そのような脆弱性が検出されるたびに、推奨事項の一部として、詳細を参照できるようにこれらが提供されます。|
-|仮想マシン スケール セット |4|Virtual Machine Scale Sets で診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、調査目的でアクティビティ証跡を再作成できます。 これは、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に便利です。|
-|仮想マシン スケール セット|35|仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する|仮想マシン スケール セットのセキュリティ構成の脆弱性を修復し、攻撃から保護します。 |
-|仮想マシン スケール セット|5|仮想マシン スケール セットにおけるエンドポイントの保護の正常性エラーを修復する|脅威と脆弱性から保護するため、仮想マシン スケール セット上で発生したエンドポイントの保護の正常性エラーを修復します。 |
-|仮想マシン スケール セット|10|仮想マシン スケール セットにエンドポイントの保護のソリューションをインストールする|脅威と脆弱性から保護するため、仮想マシン スケール セットにエンドポイントの保護のソリューションをインストールします。 |
-|仮想マシン スケール セット|40|仮想マシン スケール セットにシステムの更新プログラムをインストールする|不足しているシステム セキュリティの更新プログラムと重要な更新プログラムをインストールして、Windows と Linux の仮想マシン スケール セットをセキュリティで保護します。 |
+
  
 
 

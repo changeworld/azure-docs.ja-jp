@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f7d5fcf1905200bc214a3ff42db9b7b511768dd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628342"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214897"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -37,7 +37,7 @@ ms.locfileid: "53628342"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
+[Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
 ```powershell
 Get-AzEnvironment
@@ -71,7 +71,7 @@ Get-AzLocation | select Location, DisplayName
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Get-AzEnvironment を使用してエンドポイントを取得する 
 
-[Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment) を使用してエンドポイントを取得します。 エンドポイントは、環境の *StorageEndpointSuffix* プロパティです。 この処理方法を、次のコード スニペットで示します。 これらすべてのコマンドは、"core.cloudapp.net" や "core.cloudapi.de" などを返します。これをストレージ サービスに追加して、このサービスにアクセスします。 たとえば、"queue.core.cloudapi.de" は、German Cloud 内のキュー サービスにアクセスします。
+[Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) を使用してエンドポイントを取得します。 エンドポイントは、環境の *StorageEndpointSuffix* プロパティです。 この処理方法を、次のコード スニペットで示します。 これらすべてのコマンドは、"core.cloudapp.net" や "core.cloudapi.de" などを返します。これをストレージ サービスに追加して、このサービスにアクセスします。 たとえば、"queue.core.cloudapi.de" は、German Cloud 内のキュー サービスにアクセスします。
 
 次のコード スニペットは、すべての環境とそれぞれのエンドポイント サフィックスを取得します。
 

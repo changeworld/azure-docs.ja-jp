@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548937"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318580"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -53,14 +53,14 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | 米国中南部 | X | X |
 | 米国西部 | X | X |
 | 米国西部 2 |  | X |
+| ブラジル南部 | X | X |
 | カナダ中部 | X | X |
 | カナダ東部 | X | X |
-| ブラジル南部 | X | X |
 | 北ヨーロッパ | X | X |
 | 西ヨーロッパ |  | X |
 | フランス中部 |  | X |
-| 英国西部 |  | X |
 | 英国南部 |  | X |
+| 英国西部 |  | X |
 | 東アジア | X | X |
 | 東南アジア | X | X |
 | オーストラリア東部 |  | X |
@@ -68,17 +68,22 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | オーストラリア中部 2 |  | X |
 | オーストラリア南東部 |  | X |
 | インド中部 | X | X |
-| インド西部 | X | X |
 | インド南部 |  | X |
+| インド西部 | X | X |
 | 東日本 | X | X |
 | 西日本 | X | X |
 | 韓国中部 |  | X |
 | 韓国南部 |  | X |
+| 中国東部 1 | X |  |
+| 中国東部 2 |  | X |
+| 中国北部 1 | X |  |
+| 中国北部 2 |  | X |
 | ドイツ中部 |  | X |
 | US DoD Central  | X |  |
 | US DoD East  | X |  |
 | 米国政府アリゾナ |  | X |
 | 米国政府テキサス |  | X |
+| 米国政府バージニア州 |  | X |
 
 ## <a name="storage"></a>Storage
 

@@ -1,9 +1,10 @@
 ---
-title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する | Microsoft Docs
+title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する
 description: この記事では、特定のサブネットからのトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 624bbb9fa8841b0c43800f318e83c54d6d408a09
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e3a3a9fdc2ab7f03db2d3a646eaeec7a02f88692
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987442"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231548"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -55,7 +56,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |リソース グループ| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
     |||
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
@@ -73,7 +74,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |Setting|値|
     |---|---|
     |リソース グループ | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
-    |Location|西ヨーロッパ|
+    |場所|西ヨーロッパ|
     |VM 名 | myIISVMWEurope|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
     |||

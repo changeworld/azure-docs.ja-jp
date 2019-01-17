@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/20/2018
-ms.author: vitaly.gorbenko
+ms.author: vitalyg
 ms.component: metrics
-ms.openlocfilehash: 8932f8aa1dd950693378e9fc58c79838fad6166b
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 457c7e8904797955854c4c3e16a631cf6537e2b8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741761"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330077"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994336"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214399"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 プレビューの概要
 
@@ -51,7 +51,7 @@ Azure Storage では、Data Lake Storage Gen2 または Blob ストレージ イ
 
 ### <a name="cost-effectiveness"></a>コスト効率
 
-Azure Blob ストレージの上位に Data Lake Storage Gen2 をビルドする多くのメリットの 1 つが、低コストのストレージ容量とトランザクションです。 他のクラウド ストレージ サービスとは違って、Data Lake Storage Gen2 に格納されているデータは、分析を実行する前に移行または変換を行う必要がありません。 価格の詳細については、[Azure Storage の価格]((https://azure.microsoft.com/pricing/details/storage))に関するページを参照してください。
+Azure Blob ストレージの上位に Data Lake Storage Gen2 をビルドする多くのメリットの 1 つが、低コストのストレージ容量とトランザクションです。 他のクラウド ストレージ サービスとは違って、Data Lake Storage Gen2 に格納されているデータは、分析を実行する前に移行または変換を行う必要がありません。 価格の詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage)に関するページを参照してください。
 
 さらに、[階層構造の名前空間](data-lake-storage-namespace.md)などの機能は、多数の分析ジョブのパフォーマンス全体を大幅に向上させます。 このパフォーマンスの向上は、同じデータ量を処理するうえで必要とするコンピューティング能力をより低減できることを意味し、結果として、エンド ツー エンドの分析ジョブの総保有コスト (TCO) を削減できます。
 
