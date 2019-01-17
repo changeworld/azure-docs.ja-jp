@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846472"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077557"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -97,15 +97,15 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 [デベロッパー センター](https://developer.microsoft.com/store/register)の登録を完了したら、お使いの Cloud Partner Profile を[デベロッパー センター](https://developer.microsoft.com/store/register) アカウントにリンクしてください (詳細な手順については、こちらを参照してください)。 この手順は、トランザクション オファーを公開する前に完了する必要があります。 
 
 >[!Note]
->99 ドルのデベロッパー センター登録料を支払い不要にするには、[マーケットプレース登録フォーム](https://azuremarketplace.microsoft.com/en-us/sell/signup)に記入して、プロモーション コードが記載された電子メールを受信します。 
+>99 ドルのデベロッパー センター登録料を支払い不要にするには、[マーケットプレース登録フォーム](https://azuremarketplace.microsoft.com/sell/signup)に記入して、プロモーション コードが記載された電子メールを受信します。 
 
 >[!Important]
 >アカウントの重複を回避するために、Microsoft デベロッパー センター アカウントを作成する前に、所属する組織がデベロッパー センター アカウントをまだ所有していないことを確認してください。 詳細については、「[デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/register-dev-center)」セクションを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
-* マーケットプレースのネットショップについて確認する:[AppSource と Azure Marketplace の比較](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* マーケットプレースのネットショップについて確認する:[AppSource と Azure Marketplace の比較](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
 ---  

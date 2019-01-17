@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 799348c14bba80909d6e443f09d232e5a4783f25
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857380"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015153"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
@@ -67,7 +66,7 @@ If Condition アクティビティは、プログラミング言語における 
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | if-condition アクティビティの名前。 | String | [はい]
+name | if-condition アクティビティの名前。 | String | はい
 type | **IfCondition** に設定する必要があります。 | String | [はい]
 expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | [はい]
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]

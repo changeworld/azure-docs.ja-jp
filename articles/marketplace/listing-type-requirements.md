@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074004"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264684"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
@@ -155,7 +155,7 @@ ms.locfileid: "54074004"
 | 要件 | 詳細 |  
 |:--- |:--- |  
 | 請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "*補正発注*" オプションは、現時点でサポートされていません。 |  
-| 解約 | オファーは、いつでも顧客が解約できます。 |  
+| キャンセル | オファーは、いつでも顧客が解約できます。 |  
 | トランザクションのランディング ページ | Azure ブランド提携トランザクションのランディング ページをホストします。 顧客はそのランディング ページから、SaaS サービス アカウントを作成したり管理したりすることができます。 |  
 | SaaS サブスクリプション API | SaaS サブスクリプションと対話することによってユーザー アカウントとサービス プランを作成、更新、削除するサービスを提供します。 重要な API の変更には、すべて 24 時間以内に対応する必要があります。 重要でない API の変更は定期的に更新されます。 |  
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 923ba21574cce201c7b073b3078145239dd8c0ec
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617419"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121602"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 * **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の 2 つの重要な機能を提供します。
   
   * 名前解決: クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
-  * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置する必要があるエラーが発生した後に、メソッドの呼び出しを再試行し、アクターの場所を再解決することができます。
+  * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置することが必要な障害の後、メソッドの呼び出しを再試行し、アクターの場所を再解決できます。
 
 アクター インターフェイスに関する次の規則に注意する必要があります。
 
@@ -179,7 +179,7 @@ public static void main(String[] args) throws Exception {
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception occured", e);
+            logger.log(Level.SEVERE, "Exception occurred", e);
             throw e;
         }
     }

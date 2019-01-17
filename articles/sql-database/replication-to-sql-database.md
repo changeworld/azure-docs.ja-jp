@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: a4b1b4a7e106ad9dcd1746030daac562d7f123bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041528"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330162"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL Database の単一およびプールされたデータベースへのレプリケーション
 
@@ -111,6 +111,7 @@ Azure SQL Database の[論理サーバー](sql-database-logical-servers.md)で�
 
 ## <a name="see-also"></a>関連項目  
 
+- [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)
 - [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

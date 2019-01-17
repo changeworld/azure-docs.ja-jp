@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53007936"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54122838"
 ---
 GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。 
 
 * **NC、NCv2、NCv3、ND、および NDv2** の各サイズは、コンピューティング処理やネットワーク処理の負荷が高いアプリケーションおよびアルゴリズム向けに最適化されています。 例としては、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどが挙げられます。 NCv3 シリーズは、NVIDIA の Tesla V100 GPU を搭載したハイ パフォーマンス コンピューティング ワークロードにフォーカスしています。  ND シリーズは、ディープ ラーニング用のトレーニングと推論のシナリオにフォーカスしています。 これは、NVIDIA Tesla P40 GPU を使用しています。
+
+* **NC シリーズ**には、Intel Xeon® E5-2690 v3 2.60 GHz プロセッサが搭載されています。
+
+* **NCSv3**、**NCSv2**、および **ND** サイズには、Intel Xeon® E5-2690 v4 2.60 GHz プロセッサが搭載されています。
+                      
 * **NV と NVv2** のサイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化および設計されています。  これらの VM は、NVIDIA Tesla M60 GPU によってバックアップされされます。
 
 

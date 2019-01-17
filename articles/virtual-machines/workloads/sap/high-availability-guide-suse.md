@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 02a12cc9fc614a642a5dad37e21bd8343c669aad
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 472041aaef0817aae278fed6ef632aadda3466a3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631142"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119035"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -724,7 +724,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. HAGetFailoverConfig、HACheckConfig、および HACheckFailoverConfig をテストする
 
-   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 コマンドが FAIL で失敗した場合: メモリ不足。ホスト名にダッシュが含まれていることで発生することがあります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
+   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -800,7 +800,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    nw1-cl-0:~ # crm resource unmigrate rsc_sap_NW1_ASCS00
    # INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    
-   # Remove failed actions for the ERS that occured as part of the migration
+   # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
 
@@ -841,7 +841,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
    # run as root
-   # Remove failed actions for the ERS that occured as part of the migration
+   # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
 

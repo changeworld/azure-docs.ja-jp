@@ -10,16 +10,15 @@ ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1441e16e141bd33acfdfe4087f74afbc7b47bc77
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235192"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118287"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -51,14 +50,14 @@ ms.locfileid: "51235192"
 
 **手順 3** - Contoso 管理者と証明書を所有する Contoso 従業員 (Key Vault ユーザー) は、CA に応じて、証明書を管理者から取得するか、CA のアカウントから直接取得できます。  
 
--   [証明書の発行者](/rest/api/keyvault/setcertificateissuer)リソースを設定することで、キー コンテナーへの資格情報の追加操作を開始します。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
+-   [証明書の発行者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)リソースを設定することで、キー コンテナーへの資格情報の追加操作を開始します。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
     -   例: MyDigiCertIssuer  
         -   プロバイダー  
         -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
 
      CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](https://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
 
-**手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
+**手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
 
 注 - 手順 3.1 までのこのプロセスは、1 回のみの操作です。  
 
@@ -83,7 +82,7 @@ ms.locfileid: "51235192"
       -   更新情報 - > 例: 有効期限まで 90 日  
 
   - 証明書の作成プロセスは、通常は非同期プロセスで、キー コンテナーへの証明書の作成操作の状態のポーリングが含まれます。  
-[証明書の取得操作](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
+[証明書の取得操作](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
       -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
 

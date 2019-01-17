@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 88880fbfe0f6020a0a982c42b6df0e9eb71b2fc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550450"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215288"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -154,7 +154,7 @@ BLOB は常にコンテナーにアップロードされるため、最初の手
 
    ![Create blob containers context menu](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. **[BLOB コンテナー]** フォルダーの下にテキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](/articles/storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions)」を参照してください。
+4. **[BLOB コンテナー]** フォルダーの下にテキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](../storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions)」を参照してください。
 5. 作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
    ![作成された BLOB コンテナー](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)

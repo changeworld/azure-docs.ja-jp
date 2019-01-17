@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557293"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304909"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -50,13 +50,13 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 * ユーザー体験で RESTful サービスを使用する。
 * 入力要求を送信し、コード内でそれらを読み取る。
 * ユーザーの名を検証する。
-* ロイヤルティ番号を返送する。 
+* ロイヤルティ番号を返送する。
 * JSON Web トークン (JWT) にロイヤルティ番号を追加する。
 
 ## <a name="prerequisites"></a>前提条件
 [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関する記事の手順を完了します。
 
-## <a name="step-1-create-an-aspnet-web-api"></a>ステップ 1:ASP.NET Web API を作成する
+## <a name="step-1-create-an-aspnet-web-api"></a>手順 1:ASP.NET Web API を作成する
 
 1. Visual Studio で、**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択して、プロジェクトを作成します。
 
@@ -77,11 +77,11 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>手順 2:REST API エンドポイントを準備する
 
 ### <a name="step-21-add-data-models"></a>手順 2.1:データ モデルを追加する
-モデルは、RESTful サービスの入力要求と出力要求のデータを表します。 入力要求モデルを JSON 文字列から C# オブジェクト (使用しているモデル) に逆シリアル化することで、ご利用のコードによって入力データが読み取られます。 ASP.NET Web API では、出力要求モデルが JSON に自動的に逆シリアル化された後、シリアル化されたデータが、HTTP 応答メッセージの本文に書き込まれます。 
+モデルは、RESTful サービスの入力要求と出力要求のデータを表します。 入力要求モデルを JSON 文字列から C# オブジェクト (使用しているモデル) に逆シリアル化することで、ご利用のコードによって入力データが読み取られます。 ASP.NET Web API では、出力要求モデルが JSON に自動的に逆シリアル化された後、シリアル化されたデータが、HTTP 応答メッセージの本文に書き込まれます。
 
 次の手順を実行して、入力要求を表すモデルを作成します。
 
-1. ソリューション エクスプローラーが開いていない場合は、**[表示]** > **[ソリューション エクスプローラー]** を選択します。 
+1. ソリューション エクスプローラーが開いていない場合は、**[表示]** > **[ソリューション エクスプローラー]** を選択します。
 2. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。
 
     ![Add model](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -241,20 +241,20 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>手順 5:クレーム プロバイダーを追加する 
-クレーム プロバイダーには必ず、1 つ以上の技術プロファイルが必要で、そのプロファイルによって、クレーム プロバイダーとの通信に必要なエンドポイントとプロトコルが決まります。 
+## <a name="step-5-add-a-claims-provider"></a>手順 5:クレーム プロバイダーを追加する
+クレーム プロバイダーには必ず、1 つ以上の技術プロファイルが必要で、そのプロファイルによって、クレーム プロバイダーとの通信に必要なエンドポイントとプロトコルが決まります。
 
-クレーム プロバイダーが、複数の技術プロファイルを持つことができる理由はさまざまです。 たとえば、クレーム プロバイダーが複数のプロトコルをサポートしていたり、エンドポイントがさまざまな機能を持てたり、リリースにさまざまな保証レベルの要求を含めることができる、などの理由で、技術プロファイルが複数定義される可能性があります。 あるユーザー体験で機密性の高い要求をリリースできても、別のユーザー体験ではリリースできないこともあります。 
+クレーム プロバイダーが、複数の技術プロファイルを持つことができる理由はさまざまです。 たとえば、クレーム プロバイダーが複数のプロトコルをサポートしていたり、エンドポイントがさまざまな機能を持てたり、リリースにさまざまな保証レベルの要求を含めることができる、などの理由で、技術プロファイルが複数定義される可能性があります。 あるユーザー体験で機密性の高い要求をリリースできても、別のユーザー体験ではリリースできないこともあります。
 
 XML スニペットには、次の 2 つの技術プロファイルを持つクレーム プロバイダー ノードが含まれています。
 
-* **TechnicalProfile Id="REST-API-SignUp"**:RESTful サービスを定義します。 
-   * `Proprietary` は、RESTful ベースのプロバイダーのプロトコルとして記述されています。 
-   * `InputClaims` は、Azure AD B2C から REST サービスに送信される要求を定義します。 
+* **TechnicalProfile Id="REST-API-SignUp"**:RESTful サービスを定義します。
+   * `Proprietary` は、RESTful ベースのプロバイダーのプロトコルとして記述されています。
+   * `InputClaims` は、Azure AD B2C から REST サービスに送信される要求を定義します。
 
    この例では、要求 `givenName` のコンテンツは `firstName` として REST サービスに送信され、要求 `surname` のコンテンツは `lastName` として REST サービスに送信され、`email` はそのまま送信されます。 `OutputClaims` 要素は、RESTful サービスから Azure AD B2C に戻る間に取得する要求を定義します。
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**:検証技術プロファイルを、(基本ポリシーで定義されている) 既存の技術プロファイルに追加します。 サインアップ中、検証技術プロファイルは、上記の技術プロファイルを呼び出します。 RESTful サービスで HTTP エラー 409 (競合エラー) が返された場合、そのエラー メッセージがユーザーに表示されます。 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**:検証技術プロファイルを、(基本ポリシーで定義されている) 既存の技術プロファイルに追加します。 サインアップ中、検証技術プロファイルは、上記の技術プロファイルを呼び出します。 RESTful サービスで HTTP エラー 409 (競合エラー) が返された場合、そのエラー メッセージがユーザーに表示されます。
 
 `<ClaimsProviders>` ノードを見つけて、次の XML スニペットを `<ClaimsProviders>` ノードの下に追加します。
 
@@ -329,7 +329,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 2. **[Identity Experience Framework]** を選択します。
 
-3. **[All Policies]\(すべてのポリシー\)** を開きます。 
+3. **[All Policies]\(すべてのポリシー\)** を開きます。
 
 4. **[ポリシーのアップロード]** を選択します。
 
@@ -354,7 +354,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
     ![ポリシーのテスト](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  **[名]** ボックスに ("Test" 以外の) 名前を入力します。  
+4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。  
     Azure AD B2C でユーザーがサインアップされ、アプリケーションに loyaltyNumber が送信されます。 この JWT の番号に注意してください。
 
 ```
@@ -381,7 +381,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
 * 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
-    
+
 ## <a name="next-steps"></a>次のステップ
 * [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

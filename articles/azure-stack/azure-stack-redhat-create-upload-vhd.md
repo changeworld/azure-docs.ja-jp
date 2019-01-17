@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 932b4c80912fa516a08c18cd581f96b5ea91e1dc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232309"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104014"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -347,7 +347,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware からの Red Hat ベースの仮想マシンの準備
 
-このセクションでは、VMware に RHEL の仮想マシンが既にインストールされていると仮定します。 VMware にオペレーティング システムをインストールする方法の詳細については、[VMware のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
+このセクションでは、VMware に RHEL の仮想マシンが既にインストールされていると仮定します。 VMware にオペレーティング システムをインストールする方法の詳細については、[VMware のゲスト オペレーティング システムのインストール ガイド](https://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
 
 * Linux オペレーティング システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 一時的なリソース ディスク上にスワップ ファイルを作成するよう Linux エージェントを構成できます。 この詳細については、次の手順を参照してください。

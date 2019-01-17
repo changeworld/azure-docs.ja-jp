@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 12/4/2018
+ms.date: 1/8/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876151"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102994"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -119,7 +119,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
     | Setting | 説明  |
     |---------|--------------|
-    | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`https://network.westus.cloudapp.com:8540` のように指定します。 |
+    | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
     | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 |
 

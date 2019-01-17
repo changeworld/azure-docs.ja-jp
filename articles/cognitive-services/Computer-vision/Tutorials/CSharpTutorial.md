@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584447"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232755"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>チュートリアル:画像処理アプリをビルドする - C&#35;
 
@@ -97,9 +97,6 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    |Recognize Text (OCR) (テキストを認識する (OCR)) | [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 操作を使用して、画像から印刷されたテキストを認識して抽出します。 使用する言語を選択するか、Computer Vision に言語を自動検出させることができます。 |
    |Recognize Text V2 (English) (テキストを認識する V2 (英語)) | [Recognize Text (テキストの認識)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) 操作と [Get Recognize Text Operation Result (テキストの認識操作の結果の取得)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) 操作を使用して、画像から印刷テキストまたは手書きテキストを非同期的に認識して抽出します。 |
    |Get Thumbnail (サムネイルを取得する) | [Get Thumbnail (サムネイルの取得)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) 操作を使用して、ローカルまたはリモートの画像のサムネイルを生成します。 |
-
-   > [!IMPORTANT]
-   > Microsoft は、ユーザーがアップロードしたイメージを受け取り、Computer Vision API および関連サービスを改善するためにそれらを使用することがあります。 イメージを送信することにより、[開発者の倫理規定](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)に従っていることを確認します。
 
    次のスクリーンショットは、Analyze Image (画像を分析する) シナリオでサンプル画像を分析した後に表示されるページです。
    ![[画像分析] ページのスクリーン ショット](../Images/Analyze_Image_Example.PNG)

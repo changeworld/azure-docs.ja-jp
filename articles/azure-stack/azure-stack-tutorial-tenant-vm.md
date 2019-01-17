@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jeffgilb
-ms.reviewer: ''
+ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c4f8fd3d7a4885893a126c63776a5e241dc0f91
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721519"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246536"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>チュートリアル: Azure Stack ユーザーが仮想マシンを使用できるようにする
 
@@ -137,7 +137,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
       - **名前**を入力する
       - **ユーザー名**を入力する
       - **パスワード**を入力する
-      - **[サブスクリプション]**
+      -  **[サブスクリプション]**
       - **リソース グループ**を作成する (または既存のものを選択する) 
       - **[OK]** を選択してこのパターンを保存する
 

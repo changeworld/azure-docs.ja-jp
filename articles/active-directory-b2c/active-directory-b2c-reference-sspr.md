@@ -10,18 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c9d6a66a9d54c75fbb20775f0ae4de4d22a7d599
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3d2019101abf1086a58d0224ab31f2aa27afe8de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840870"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54350593"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>顧客向けにセルフサービス パスワードのリセットをセットアップする
+
 セルフサービスのパスワード リセット機能を使用すると、ローカル アカウントにサインアップした顧客はパスワードを自分でリセットできます。 これによりサポート スタッフの負担を大幅に軽減でき、アプリケーションを定期的に使用する顧客が何百万人もいるような場合に特に効果的です。 現在、回復の手段としては、検証済みの電子メール アドレスの使用のみがサポートされています。
 
 > [!NOTE]
-> この記事は、ID プロバイダーとして**ローカル アカウント サインイン**を使用する、V1 **サインイン** ユーザー フローのコンテキスト内で使用されるセルフ サービスのパスワード リセットに適用されます。 ご利用のアプリから呼び出される完全にカスタマイズ可能なパスワードのリセット ユーザー フローが必要な場合は、[こちらの記事](active-directory-b2c-reference-policies.md#create-a-password-reset-user-flow)を参照してください。
+> この記事は、ID プロバイダーとして**ローカル アカウント サインイン**を使用する、V1 **サインイン** ユーザー フローのコンテキスト内で使用されるセルフ サービスのパスワード リセットに適用されます。 ご利用のアプリから呼び出される完全にカスタマイズ可能なパスワードのリセット ユーザー フローが必要な場合は、[こちらの記事](active-directory-b2c-reference-policies.md)を参照してください。
 > 
 > 
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 727c1ce79fbd20252f7455f95ad00a6c44d67c65
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f22a4c4d0159efa2ac42d15ff6afdadc2d6755d0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090518"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215050"
 ---
 # <a name="implement-cicd-for-stream-analytics-using-apis"></a>API を使用して Stream Analytics 向けの CI/CD を実装する
 
@@ -253,7 +253,7 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 } 
 ```
 
-配置マニフェストを構成した後は、デプロイに関する「[Azure CLI を使用して Azure IoT Edge モジュールをデプロイする](/iot-edge/how-to-deploy-modules-cli.md)」をご覧ください。
+配置マニフェストを構成した後は、デプロイに関する「[Azure CLI を使用して Azure IoT Edge モジュールをデプロイする](../iot-edge/how-to-deploy-modules-cli.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: cb39426e68b87a314336724a2e40cf78f888010d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191583"
+ms.locfileid: "54200974"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 
@@ -240,7 +240,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 * シャードを追加または削除するには、shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)) クラスの **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) と **DeleteShard** ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) を使用します。
   
     これらの操作を実行するには、サーバーとターゲット シャードを表すデータベースが既に存在している必要があります。 これらのメソッドは、データベース自体には作用せず、シャード マップ内のメタデータのみに作用します。
-* シャードにマップされるポイントまたは範囲を作成または削除するには、**CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._rangeshardmap.createrangemapping)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100)))、RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) クラスの **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1))、ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) クラスの **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を使用します。
+* シャードにマップされるポイントまたは範囲を作成または削除するには、**CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100)))、RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) クラスの **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1))、ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) クラスの **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を使用します。
   
     多くの異なるポイントまたは範囲を同じシャードにマップできます。 これらのメソッドは、メタデータにのみ作用し、シャードに既に存在するデータには作用しません。 **DeleteMapping** 操作に合わせてデータをデータベースから削除する必要がある場合は、これらのメソッドを組み合わせてこれらの操作を別個に実行する必要があります。  
 * 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには、**SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping)、[.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx)) と **MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings)、[.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx)) を使用します。  

@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: ''
+ms.openlocfilehash: 34804dae53fcf06d1a18bf503cdabea61f272585
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244051"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065394"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 アプリケーションを開発するときは、Azure および Azure Stack 間のテンプレートの移植性を確保する必要があります。 この記事では、Azure Resource Manager [テンプレート](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)を開発するための考慮事項を説明して、アプリケーションのプロトタイプ作成とデプロイのテストを、Azure Stack 環境にアクセスせずに Azure で実行できるようにします。
 
 ## <a name="resource-provider-availability"></a>リソース プロバイダーの可用性
 
-デプロイする予定のテンプレートは、既に利用できるか、Azure Stack でプレビュー中の Microsoft Azure サービスのみを使用する必要があります。
+デプロイする予定のテンプレートは、Azure Stack で既に使用できるか、またはプレビューの段階にある Microsoft Azure サービスのみを使用する必要があります。
 
 ## <a name="public-namespaces"></a>パブリック名前空間
 
-Azure Stack はデータセンターでホストされるため、そのサービス エンドポイントの名前空間は、Azure パブリック クラウドとは異なります。 その結果、Azure Resource Manager テンプレートにハードコーディングされたパブリック エンドポイントでは、Azure Stack へのデプロイは失敗します。 代わりに、*参照*関数と*連結*関数を使用して、デプロイ時にリソース プロバイダーから値を取得するためのサービス エンドポイントを動的にビルドできます。 たとえば、テンプレートで *blob.core.windows.net* をハードコーディングする代わりに、[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) を取得して *osDisk.URI* エンドポイントを動的に設定します。
+Azure Stack はデータセンターでホストされるため、そのサービス エンドポイントの名前空間は、Azure パブリック クラウドとは異なります。 その結果、Azure Resource Manager テンプレートでハードコーディングされたパブリック エンドポイントは、Azure Stack にデプロイしようとすると失敗します。 デプロイ中にリソース プロバイダーから値を取得するために、`reference` および `concatenate` 関数を使用してサービス エンドポイントを動的に構築できます。 たとえば、テンプレートで *blob.core.windows.net* をハードコーディングする代わりに、[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) を取得して *osDisk.URI* エンドポイントを動的に設定します。
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -48,7 +48,7 @@ Azure のサービス バージョンが Azure と Azure Stack で異なる場�
 
 | リソース プロバイダー | apiVersion |
 | --- | --- |
-| コンピューティング |`'2015-06-15'` |
+| Compute |`'2015-06-15'` |
 | ネットワーク |`'2015-06-15'`、`'2015-05-01-preview'` |
 | Storage |`'2016-01-01'`、`'2015-06-15'`、`'2015-05-01-preview'` |
 | KeyVault | `'2015-06-01'` |
@@ -56,7 +56,7 @@ Azure のサービス バージョンが Azure と Azure Stack で異なる場�
 
 ## <a name="template-functions"></a>テンプレート関数
 
-Azure Resource Manager の[関数](../../azure-resource-manager/resource-group-template-functions.md)は、動的テンプレートを作成するために必要な機能を提供します。 たとえば、次のようなタスクのために関数を使用できます。
+Azure Resource Manager の[関数](../../azure-resource-manager/resource-group-template-functions.md)は、動的テンプレートを構築するために必要な機能を提供します。 たとえば、次のようなタスクのために関数を使用できます。
 
 * 文字列の連結やトリミング。
 * その他のリソースからの値の参照。

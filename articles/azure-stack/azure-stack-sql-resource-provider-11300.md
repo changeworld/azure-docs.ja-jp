@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 1/09/2019
 ms.author: jeffgilb
 ms.reviewer: georgel
-ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5cbbc3c1c2371264e3e29028d4b9d68533cc59ff
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164730"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154948"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL リソース プロバイダー 1.1.30.0 のリリース ノート
 
@@ -81,7 +81,10 @@ SQL リソース プロバイダー バイナリをダウンロードした後�
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
+- **SQL リソース プロバイダーが SQL Server Always On リスナーの追加に失敗します**。 SQL リソース プロバイダー VM は、SQL Server Always On リスナーのリスナー IP アドレスを使用するとき、リスナーのホスト名を解決できません。
 
+    **対処法**: リスナーのホスト名に対するリスナー IP を解決するには、DNS が正しく動作していることを確認します。
+    
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Azure Stack を運用するクラウド管理者に関する既知の問題
 [Azure Stack リリース ノート](azure-stack-servicing-policy.md)内のドキュメントをご覧ください。
 

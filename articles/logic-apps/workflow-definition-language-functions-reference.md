@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 43ca62191f0dc5a306ea5891f31a316242694a02
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890944"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107873"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語の関数リファレンス
 
@@ -102,6 +102,7 @@ ms.locfileid: "52890944"
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | コレクションが空かどうかを調べます。 | 
 | [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | コレクションから最初の項目を返します。 | 
 | [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | 指定したコレクションすべてに共通する項目 "*のみ*" を含むコレクションを返します。 | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 配列に対する繰り返しアクションの内部で使うと、アクションの現在の繰り返しの間に配列の現在の項目を返します。 | 
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | 配列の "*すべて*" の項目を含み、指定された区切り記号で各項目が区切られた、文字列を返します。 | 
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | コレクションから最後の項目を返します。 | 
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 文字列または配列内の項目の数を返します。 | 
@@ -3179,7 +3180,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>文字列
 
 値の文字列バージョンを返します。
 
@@ -4014,7 +4015,7 @@ xml('<value>')
 
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*value*> | [はい] | String | 変換する JSON オブジェクトを含む文字列 <p>JSON オブジェクトはルート プロパティを 1 つだけ持っている必要があります。 <br>二重引用符 (") のエスケープ文字としてはバックスラッシュ文字 (\\) を使います。 | 
+| <*value*> | [はい] | String | 変換する JSON オブジェクトを含む文字列 <p>JSON オブジェクトのルート プロパティは 1 つに限る必要があり、配列にはできません。 <br>二重引用符 (") のエスケープ文字としてはバックスラッシュ文字 (\\) を使います。 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 

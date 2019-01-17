@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: 1b6f3a3d4f130792ee606050338a2c30f7fc7847
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a0614b5a1eadafe78537a4793d2dc0a866337487
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514980"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118882"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>ジョブのスケジュールとブロードキャスト (Node)
 
@@ -30,8 +30,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 これらの各機能について詳しくは、次の記事をご覧ください。
 
-* デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル][lnk-twin-props]
-* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドに関するチュートリアル][lnk-c2d-methods]
+* デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]および[チュートリアル: デバイス ツインのプロパティの使用方法][lnk-twin-props]
+* ダイレクト メソッド: [IoT Hub 開発者ガイド - ダイレクト メソッド][lnk-dev-methods]および[チュートリアル: ダイレクト メソッド][lnk-c2d-methods]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -97,7 +97,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (!err) {
-                console.error('An error occured when sending a method response:\n' + err.toString());
+                console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
@@ -262,7 +262,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 ファームウェアのリモートでのワイヤレス更新などの IoT Hub による他のデバイス管理パターンを確認するには、次の記事を参照してください。
 
-[チュートリアル: ファームウェアを更新する方法][lnk-fwupdate]
+[チュートリアル:ファームウェア更新の実行方法][lnk-fwupdate]
 
 引き続き IoT Hub の使用方法を確認するには、[Azure IoT Edge の使用][lnk-iot-edge]に関する記事を参照してください。
 

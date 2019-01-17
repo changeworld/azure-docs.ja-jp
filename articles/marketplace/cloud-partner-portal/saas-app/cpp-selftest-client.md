@@ -244,7 +244,7 @@ https://isvapp.azurewebsites.net/selftest
    - **名前** - テナント名またはディレクトリ名
    - **ディレクトリ ID** - テナント ID またはディレクトリ ID。またはスクロール バーを使用して [プロパティ] を見つけます。
 
-   ![Azure Active Directory のプロパティ ページ](./media/stclient-aad-properties.png)
+   ![Azure Active Directory の [プロパティ] ページ](./media/stclient-aad-properties.png)
 
 ## <a name="register-the-client-app"></a>クライアント アプリを登録する
 

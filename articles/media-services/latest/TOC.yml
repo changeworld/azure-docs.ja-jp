@@ -124,6 +124,8 @@ items:
       href: protect-with-aes128.md
     - name: DRM 動的暗号化 - .NET
       href: protect-with-drm.md
+    - name: コンテンツ キー ポリシーの取得 - .NET
+      href: get-content-key-policy-dotnet-howto.md
     - name: iOS 用のオフラインの FairPlay
       href: offline-fairplay-for-ios.md
     - name: Android 用のオフラインの Widevine
@@ -158,6 +160,8 @@ items:
       href: https://aka.ms/ams-v3-nodejs-ref
     - name: Go
       href: https://aka.ms/ams-v3-go-ref
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.media/allversions
   - name: Event Grid スキーマ
     href: media-services-event-schemas.md
   - name: DRM ライセンス
@@ -200,9 +204,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: cf378c4575bdb295330d9ab4696c0277cb597dd5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 72c57397a4c79aceec62b279d0f19cd20295eca9
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305793"
+ms.locfileid: "54321349"

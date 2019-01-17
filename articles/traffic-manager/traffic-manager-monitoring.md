@@ -2,7 +2,6 @@
 title: Azure Traffic Manager エンドポイントの監視 | Microsoft Docs
 description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890349"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199632"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 

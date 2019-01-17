@@ -219,7 +219,7 @@ Recovery Services コンテナーは、バックアップ コピー、復旧ポ�
 Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Backup コンテナーを作成することはできなくなり、既存のすべての Backup コンテナーが Recovery Services コンテナーにアップグレードされました。 Azure Portal を使用して、Recovery Services コンテナーにアップグレードされたコンテナーを管理することができます。
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure Backup と Azure Site Recovery はどのように違いますか
-Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 これらのサービスは、業務にビジネス継続性とディザスター リカバリーの機能を提供するために、異なる目的で使用されます。 より細かいレベルでデータの保護と復元を行うには、Azure Backup を使用します。 たとえば、ノート PC のプレゼンテーションが破損した場合は、Azure Backup を使用して、プレゼンテーションを復元します。 VM 上の構成とデータを別のデータセンターにレプリケートする場合は、Azure Site Recovery を使用します。
+Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるという点で関連していますが、 これらのサービスは、業務にビジネス継続性とディザスター リカバリーの機能を提供するために、異なる目的で使用されます。 より細かいレベルでデータの保護と復元を行うには、Azure Backup を使用します。 たとえば、ノート PC のプレゼンテーションが破損した場合は、Azure Backup を使用して、プレゼンテーションを復元します。 VM 上の構成とデータを別のデータセンターにレプリケートする場合は、Azure Site Recovery を使用します。
 
 Azure Backup は、オンプレミスのデータとクラウドのデータを保護します。 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。 ディザスター リカバリー ソリューションでは、データの安全性と復元可能性を維持し (Backup)、" *さらに* "、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
 

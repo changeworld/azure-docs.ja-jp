@@ -12,15 +12,15 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 53536604ed2f371d1ae7e63b286b17501b260c8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 286c46f760dda4991fd89651bc3a01424d8a5502
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100720"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054794"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Azure Active Directory を使用するように組織をサインアップする
-次のいずれかを使用して、Azure Active Directory (Azure AD) の新しい Microsoft Azure サブスクリプションにサインアップします。
+次のいずれかを使用して、Azure Active Directory (Azure AD) または新しい Microsoft Azure サブスクリプションにサインアップします。
 
 - **Microsoft アカウント。** ご自身の個人の Microsoft アカウントを使用して、Azure と、すべてのコンシューマー向け Microsoft 製品およびクラウド サービス (Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE、Office 365 など) にアクセスします。 Outlook.com のメールボックスにサインアップすると、Microsoft アカウントが自動的に作成されます。 詳細については、[Azure アカウントの概要](https://account.microsoft.com/account)に関するページをご覧ください。
 

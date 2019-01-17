@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634424"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213231"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>キューを作成する
 
-次の例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) コマンドレットを呼び出して、"queuename" という名前のキューを作成します。
+次の例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのアクセス キーが含まれます。 次に、[New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) コマンドレットを呼び出して、"queuename" という名前のキューを作成します。
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ Azure Queue サービスでの名前付け規則の詳細については、「 [
 
 ## <a name="retrieve-a-queue"></a>キューを取得する
 
-あるストレージ アカウント内の特定のキューまたはすべてのキューの一覧を照会して取得できます。 次の例では、ストレージ アカウントの全部のキューと特定のキューを取得する方法を示しています。いずれのコマンドでも [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) コマンドレットが使用されます。
+あるストレージ アカウント内の特定のキューまたはすべてのキューの一覧を照会して取得できます。 次の例では、ストレージ アカウントの全部のキューと特定のキューを取得する方法を示しています。いずれのコマンドでも [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) コマンドレットが使用されます。
 
 ```powershell
 # Retrieve a specific queue

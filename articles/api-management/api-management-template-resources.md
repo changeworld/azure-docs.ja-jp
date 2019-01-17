@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970333"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158212"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -108,7 +108,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (アプリケーションを削除しますか?)|  
 |WebDevelopersAppNotPublished|Not published (未発行)|  
-|WebDevelopersAppNotSubminted|Not submitted (未申請)|  
+|WebDevelopersAppNotSubmitted|Not submitted (未申請)|  
 |WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|状態|  
@@ -287,7 +287,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2SendingMethod_QueryParam|Query parameter (クエリ パラメーター)|  
 |OAuth2AuthorizationServerGeneralException|An error has occurred while authorizing access via {0} ({0} を介したアクセスの承認中にエラーが発生しました)|  
 |OAuth2AuthorizationServerCommunicationException|An HTTP connection to authorization server could not be established or it has been unexpectedly closed. (承認サーバーへの HTTP 接続は確立できなかったか、予期せず切断されました。)|  
-|WebDocumentationOAuth2GeneralErrorMessage|Unexpected error occured. (予期しないエラーが発生しました。)|  
+|WebDocumentationOAuth2GeneralErrorMessage|Unexpected error occurred. (予期しないエラーが発生しました。)|  
 |AuthorizationServerCommunicationException|Authorization server communication exception has happened. (承認サーバーの通信の例外が発生しました。) Please contact administrator. (管理者に問い合わせてください。)|  
 |TextblockSubscriptionKeyHeaderDescription|Subscription key which provides access to this API. (この API へのアクセスを提供するサブスクリプション キー。) Found in your <a href='/developer'\>Profile</a\>. (<a href='/developer'\>Profile</a\> にあります。)|  
 |TextblockOAuthHeaderDescription|OAuth 2.0 access token obtained from <i\>{0}</i\>. (OAuth 2.0 アクセス トークンを <i>{0}</i> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i>{0}</i>。)|  
@@ -361,7 +361,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebProductsUsageLimitsHeader|Usage limits (使用状況の制限)|  
 |WebProductsYouAreNotSubscribed|You are subscribed to this product. (この製品をサブスクライブしています。)|  
 |WebProductsYouRequestedSubscription|You requested subscription to this product. (この製品に対するサブスクリプションを要求しました。)|  
-|ErrorYouNeedtoAgreeWithLegalTerms|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
+|ErrorYouNeedToAgreeWithLegalTerms|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
 |ButtonLabelAddSubscription|[サブスクリプションの追加]|  
 |LinkLabelChangeSubscriptionName|change (変更)|  
 |ButtonLabelConfirm|確認|  
@@ -377,7 +377,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 |Name|Text|  
 |----------|----------|  
-|PageTitleProducts|[成果物]|  
+|PageTitleProducts|成果物|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
@@ -492,7 +492,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationNotAMember|Not a member yet? (まだメンバーではない場合) `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|Remember me on this computer (このコンピューターにユーザー名を記憶する)|  
 |WebAuthenticationSigininWithPassword|Sign in with your username and password (ユーザー名とパスワードを使用してサインインする)|  
-|WebAuthenticationSigninTitle|[サインイン]|  
+|WebAuthenticationSigninTitle|サインイン|  
 |WebAuthenticationSignUpNow|今すぐサインアップ|  
   
 ###  <a name="SignupStrings"></a> SignupStrings  
@@ -511,13 +511,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |----------|----------|  
 |SubscriptionCancelConfirmation|Are you sure that you want to cancel this subscription? (このサブスクリプションを取り消しますか?)|  
 |SubscriptionRenewConfirmation|Are you sure that you want to renew this subscription? (このサブスクリプションを更新しますか?)|  
-|WebDevelopersManageSubscriptions|[サブスクリプションの管理]|  
+|WebDevelopersManageSubscriptions|サブスクリプションの管理|  
 |WebDevelopersPrimaryKey|Primary key (プライマリ キー)|  
 |WebDevelopersRegenerateLink|再生成|  
 |WebDevelopersSecondaryKey|セカンダリ キー|  
 |ButtonLabelShowKey|表示|  
 |ButtonLabelRenewSubscription|更新|  
-|WebDevelopersSubscriptionReqested|Requested on {0} (要求日時: {0})|  
+|WebDevelopersSubscriptionRequested|Requested on {0} (要求日時: {0})|  
 |WebDevelopersSubscriptionRequestedState|Requested (要求済み)|  
 |WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|状態|  

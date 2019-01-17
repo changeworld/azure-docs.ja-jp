@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 50d5fd4efaf9accf48a76d6cde2fdb37cac9c5a0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0680140d9f4f4e77b5029c30c37f4c531652c6f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193843"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119120"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -77,7 +77,7 @@ $mma.ReloadConfiguration()
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    次の例のような状態が返される必要があります。
+    次の例のような状態が返されるはずです。
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
@@ -87,12 +87,15 @@ $mma.ReloadConfiguration()
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -X`
 
-3. 別のワークスペースに登録するには、`/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` コマンドを実行します
+3. 別のワークスペースに登録するには、次のコマンドを実行します。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
+    
 4. 変更が有効になったことを確認するには、次のコマンドを実行します。
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    次の例のような状態が返される必要があります。
+    次の例のような状態が返されるはずです。
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
@@ -166,7 +169,7 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックし、**[はい]** をクリックします。
 
 >[!NOTE]
->**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure ポータルでワークスペースからダウンロードできます。
+>**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure portal でワークスペースからダウンロードできます。
 
 #### <a name="uninstall-from-the-command-line"></a>コマンドラインからアンインストールする
 ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。 パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくアンインストールするためには、それらを抽出する必要があります。
@@ -203,8 +206,8 @@ System Center Operations Manager 管理グループに報告するように Linu
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. `/etc/opt/omi/conf/omiserver.conf`
-2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します (例: `httpsport=1270`)。
+1.  `/etc/opt/omi/conf/omiserver.conf`
+2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
 ## <a name="next-steps"></a>次の手順

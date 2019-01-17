@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/08/2018
 ms.author: tulasim
-ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec26e7ab535084fa5d8f52c11c671212eeab0f13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035234"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119835"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用
 
-QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)で提供されています。 
+QnA Maker では、複数のユーザーがサポート技術情報を共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)で提供されています。 
 
 次の手順を実行して、QnA Maker のサービスを他者と共有します。
 
@@ -35,7 +35,7 @@ QnA Maker では、複数のユーザーがナレッジ ベースを共同利用
 
     ![QnA Maker IAM の [追加]](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. **[所有者]** または **[共同作成者]** のロールを選択します。ロール ベースのアクセス制御で「閲覧のみ可能」なアクセスを許可することはできません。 **[所有者]** と **[共同作成者]** のロールは、Qna Maker サービスへの閲覧と編集の権限を持ちます。
+4. **[所有者]** または **[共同作成者]** のロールを選択します。 ロールベースのアクセス制御で、読み取り専用アクセスを付与することはできません。 所有者と共同作成者のロールには、QnA Maker API の読み取り/書き込みアクセス権があります。
 
     ![QnA Maker IAM のロールの追加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 

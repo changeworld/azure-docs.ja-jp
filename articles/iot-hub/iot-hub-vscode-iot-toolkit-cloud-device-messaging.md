@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用して Azure IoT Hub クラウド デバイス メッセージングを管理する | Microsoft Docs
-description: Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用して、Azure IoT Hub でデバイスからクラウドへのメッセージを監視し、クラウドからデバイスへのメッセージを送信する方法について説明します。
+title: Visual Studio Code 用 Azure IoT Tools を使用して Azure IoT Hub クラウド デバイス メッセージングを管理する | Microsoft Docs
+description: Visual Studio Code 用 Azure IoT Tools を使用して、Azure IoT Hub でデバイスからクラウドへのメッセージを監視し、クラウドからデバイスへのメッセージを送信する方法について説明します。
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 7/20/2018
 ms.author: junhan
-ms.openlocfilehash: afb0a2ce4dfdd5d3a98a6dad03ee78eeaafbd308
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f3c4a1c03757d78bd907baa3aef5c2e06d6a8dd
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338381"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053961"
 ---
-# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用してデバイスと IoT Hub の間のメッセージを送受信する
+# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit) は、IoT Hub の管理を容易にする便利な Visual Studio Code 拡張機能です。 この記事では、Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用してデバイスと IoT Hub の間のメッセージを送受信する方法を説明します。
+[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) は、IoT Hub の管理と IoT アプリケーションの開発を容易にする便利な Visual Studio Code 拡張機能です。 この記事では、Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する方法を説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>学習内容
 
-Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用して、デバイスからクラウドへのメッセージを監視し、クラウドからデバイスへのメッセージを送信する方法について説明します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。このコマンドによって、そのデバイスに接続されている LED が点滅します。
+Visual Studio Code 用 Azure IoT Tools を使用して、デバイスからクラウドへのメッセージを監視し、クラウドからデバイスへのメッセージを送信する方法について説明します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。このコマンドによって、そのデバイスに接続されている LED が点滅します。
 
 ## <a name="what-you-will-do"></a>学習内容
 
-- Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用して、デバイスからクラウドへのメッセージを監視します。
-- Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用して、クラウドからデバイスへのメッセージを送信します。
+- Visual Studio Code 用 Azure IoT Tools を使用して、デバイスからクラウドへのメッセージを監視します。
+- Visual Studio Code 用 Azure IoT Tools を使用して、クラウドからデバイスへのメッセージを送信します。
 
 ## <a name="what-you-need"></a>必要なもの
 
 - 有効な Azure サブスクリプション
 - サブスクリプションの Azure IoT Hub。
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+- [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 

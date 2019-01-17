@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: c5437833bdf4e670c298c1be0a575bd52df49cd2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994893"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157022"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLI を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \

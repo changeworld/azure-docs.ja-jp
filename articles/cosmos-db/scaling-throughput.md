@@ -1,29 +1,28 @@
 ---
 title: Azure Cosmos DB でのスループットのスケーリング
 description: この記事では、Azure Cosmos DB がスループットを弾力的にスケーリングする方法について説明します
-services: cosmos-db
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c5e4720a6b830158581d17bbdcb9aba49e13183b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282378"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064493"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB でのスループットのスケーリング
 
 Azure Cosmos DB では、プロビジョニングされたスループットは、要求ユニット/秒 (RU/秒、複数形: RUs) として表現されます。 次の図に示すように、RU は Cosmos コンテナーに対する読み書き両方の操作のコストを測定します。
 
-![要求ユニット](./media/scale-throughput/figure1.png)
+![要求ユニット](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 RU は Cosmos コンテナーまたは Cosmos データベースにプロビジョニングできます。 コンテナーにプロビジョニングされた RU は、そのコンテナーに対して実行される操作についてのみ使用できます。 データベースにプロビジョニングされた RU は、そのデータベース内のすべてのコンテナー間で共有されます (排他的に割り当てられた RU を持つコンテナーを除く)。
 
-スループットを弾力的にスケーリングするために、プロビジョニングされた RU/秒をいつでも増減できます。 詳細については、[スループットのプロビジョニングに関する方法](set-throughput.md)、および Cosmos コンテナーとデータベースを弾力的にスケーリングする方法に関するページを参照してください。 スループットをグローバルにスケーリングするために、Cosmos アカウントにリージョンをいつでも追加または削除できます。 詳細については、[Cosmos アカウントにリージョンを追加または削除する方法](how-to-manage-database-account.md#addremove-regions-from-your-database-account)に関するページを参照してください。 Cosmos アカウントに複数のリージョンを関連付けることは、短い待機時間と[高い可用性](high-availability.md)を世界中で実現するために多くのシナリオで重要です。
+スループットを弾力的にスケーリングするために、プロビジョニングされた RU/秒をいつでも増減できます。 詳細については、[スループットのプロビジョニングに関する方法](set-throughput.md)、および Cosmos コンテナーとデータベースを弾力的にスケーリングする方法に関するページを参照してください。 スループットをグローバルにスケーリングするために、Cosmos アカウントにリージョンをいつでも追加または削除できます。 詳細については、「[データベース アカウントのリージョンの追加/削除](how-to-manage-database-account.md#addremove-regions-from-your-database-account)」を参照してください。 Cosmos アカウントに複数のリージョンを関連付けることは、短い待機時間と[高い可用性](high-availability.md)を世界中で実現するために多くのシナリオで重要です。
 
 ## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>プロビジョニングされたスループットのリージョン間での分散方法
 

@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 12/14/2018
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d1110669bd0ca8c0ba0caf34ef41861c500bdd33
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4d25e4cd94fec35f31594544b619aa054a35d58d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790030"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302342"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 
@@ -52,7 +52,7 @@ Media Services では、RTMP を使用した、次のいずれかのライブ �
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>フラグメント化 MP4 を出力するライブ エンコーダー
 
-Media Services では、マルチビットレートのスムーズ ストリーミング (フラグメント化 MP4) を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `rtmp://` または `rtmps://` です。
+Media Services では、マルチビットレートのスムーズ ストリーミング (フラグメント化 MP4) を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `http://` または `https://` です。
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200

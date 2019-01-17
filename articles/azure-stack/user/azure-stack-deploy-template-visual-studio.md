@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 9cbe39c018d5ba91599d8ec429430fceaaa567c5
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.reviewer: unknown
+ms.openlocfilehash: b0460faca3b9ac6d208a9edf474f6ebb7189cba8
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064629"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244037"
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Visual Studio を使用した Azure Stack でのテンプレートのデプロイ
 

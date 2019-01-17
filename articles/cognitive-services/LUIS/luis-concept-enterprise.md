@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 60e1e8d49fcbae7d7049c97e9ee756dc938ca5ff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7c12118d0be939f63a2a11fa4dcdd45b87bcd3aa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105939"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263171"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。

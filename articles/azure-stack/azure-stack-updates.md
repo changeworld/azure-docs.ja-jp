@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 67f363d14489340755251369b422475032d1e671
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ca09427de2f18612146ff03e4eef705006823ca8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222498"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302614"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 Azure Stack 統合システム用の Microsoft 更新プログラム パッケージは、通常、毎月第 4 火曜日にリリースされます。 更新通知が確実に組織に届くようにする具体的な通知プロセスについては、ご利用の OEM に問い合わせてください。 また、サポートが有効なリリースの情報については、このドキュメント ライブラリの「**概要**」 > 「**リリース ノート**」を参照してください。 
 

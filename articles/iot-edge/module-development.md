@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 878ff5901df80398afff7f429c41f102da3edba4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793599"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200634"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -60,7 +60,7 @@ IoT Edge ハブでは、[配置マニフェスト](module-composition.md)に関�
 1. アプリケーションで ModuleClient インスタンスを作成します。
 2. そのデバイスの IoT Edge ハブによって提示された証明書がアプリケーションによって受け入れられることを確認します。
 
-ModuleClient インスタンスを作成し、デバイスで実行されている IoT Edge ハブにモジュールを接続します。これは、DeviceClient インスタンスで IoT デバイスを IoT Hub に接続する方法と似ています。 ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
+ModuleClient インスタンスを作成し、デバイスで実行されている IoT Edge ハブにモジュールを接続します。これは、DeviceClient インスタンスで IoT デバイスを IoT Hub に接続する方法と似ています。 ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: f4ca513e3c2e2345dc0005b95ddb7927c0164ffe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383019"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121619"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>チュートリアル: Azure Data Box Edge (プレビュー) を接続、設定、およびアクティブ化する 
 
@@ -85,7 +85,10 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
     - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
     - DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
     - 使用するネットワーク インターフェイスは、IPv4 として構成できます。
-   
+
+    >[!NOTE] 
+    > デバイスに接続する別の IP アドレスがない限り、ネットワーク インターフェイスのローカル IP アドレスを静的から DCHP に切り替えないことをお勧めします。 あるネットワーク インターフェイスを使用していて、DHCP に切り替えた場合、DHCP アドレスを判別する方法がありません。 DHCP アドレスに変更する場合は、デバイスがサービスに登録されるまで待機してから変更してください。 その後、サービスについて Azure portal の **[デバイスのプロパティ]** にすべてのアダプターの IP が表示されます。
+
 1. (省略可能) 左側のウィンドウで **[Web proxy settings] (Web プロキシ設定)** を選択し、Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、このページでのみ構成できます。
    
    ![[Web proxy settings] (Web プロキシ設定) ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255764"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065632"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -23,27 +23,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
-Azure Storage では、次の 3 種類のストレージ アカウントを提供しています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
-
-* **[汎用 v2 アカウント](#general-purpose-v2-accounts)** (ほとんどのシナリオで推奨)
-* **[汎用 v1 アカウント](#general-purpose-v1-accounts)**
-* **[BLOB ストレージ アカウント](#blob-storage-accounts)** 
-
-次の表は、ストレージ アカウントの種類とその機能について説明しています。
-
-| ストレージ アカウントの種類 | サポートされているサービス                       | サポートされているパフォーマンス レベル | サポートされているアクセス層               | レプリケーション オプション                                                | デプロイ モデル<sup>1</sup>  | 暗号化<sup>2</sup> |
-|----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| 汎用 v2   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium           | ホット、クール、アーカイブ<sup>3</sup> | LRS、ZRS<sup>4</sup>、GRS、RA-GRS | リソース マネージャー | 暗号化  |
-| 汎用 v1   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium           | 該当なし                                  | LRS、GRS、RA-GRS                                                   | Resource Manager、クラシック  | 暗号化  |
-| BLOB ストレージ         | BLOB (ブロック BLOB と追加 BLOB のみ) | 標準                    | ホット、クール、アーカイブ<sup>3</sup>                            | LRS、GRS、RA-GRS                                                   | リソース マネージャー  | 暗号化  |
-
-<sup>1</sup> Azure Resource Manager デプロイ モデルが推奨されます。 一部の場所では、クラシック デプロイ モデルを使用するストレージ アカウントを引き続き作成でき、既存のクラシック アカウントもサポートされます。 詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
-
-<sup>2</sup> すべてのストレージ アカウントは、保存データ用の Storage Service Encryption (SSE) を使用して暗号化されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](storage-service-encryption.md)」をご覧ください。
-
-<sup>3</sup> アーカイブ 層は、個々の BLOB のレベルでのみ利用でき、ストレージ アカウント レベルでは利用できません。 ブロック BLOB と追加 BLOB のみをアーカイブできます。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
-
-<sup>4</sup> ゾーン冗長ストレージ (ZRS) は、標準的な汎用 v2 ストレージ アカウントでのみ使用できます。 ZRS の詳細については、「[ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」を参照してください。 レプリケーション オプションの詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」を参照してください。
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ### <a name="general-purpose-v2-accounts"></a>汎用 v2 アカウント
 
@@ -98,7 +78,7 @@ BLOB ストレージ アカウントには、使用パターンに基づいて�
 汎用ストレージ アカウントは、次のパフォーマンス レベルのいずれか向けに構成できます。
 
 * BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。
-* Azure 仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。 Premium Storage の詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md) 」をご覧ください。
+* Azure 仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。 Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md) をご覧ください。
 
 ## <a name="access-tiers-for-block-blob-data"></a>ブロック BLOB 用のデータ アクセス層
 

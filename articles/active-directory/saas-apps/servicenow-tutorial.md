@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7201f2a5d2e1b3967bd84ddb78797debdf14aeb
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 29d99a6114f1a8dafa2e3a837fe807a1bbee1343
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065700"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル:Azure Active Directory と ServiceNow の統合
 

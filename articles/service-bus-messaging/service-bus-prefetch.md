@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c88ea7433232b62c006c908cd2768d318d36d43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 292f8ae1821cdcc4fd6274808b53454ec51eaea0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854050"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157401"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
@@ -50,7 +50,7 @@ ms.locfileid: "48854050"
 
 高い信頼性でメッセージを処理する必要がある場合は、処理に工数と時間がかかるため、プリフェッチ機能をまったく使用しないか、慎重に使用することをお勧めします。
 
-高スループットが必要で、一般的にメッセージ処理にコストがかからない場合は、プリフェッチを使ってスループットを改善でき大きなメリットがあります。
+高いスループットを必要としており、メッセージ処理が一般に安価である場合は、プリフェッチによって大きなスループットの利点がもたらされます。
 
 最大プリフェッチ数とキューまたはサブスクリプションに構成されているロック期間は、ロックのタイムアウトが、プリフェッチ バッファーの最大サイズに 1 メッセージ分を足した累計予想メッセージ処理時間以上になるようにバランスを調整する必要があります。 同時に、ロック タイムアウトは、メッセージが誤って破棄された場合に、再配信される前にロックの有効期限が切れないよう、その最大 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) を超えない長さである必要があります。
 

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346702"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159028"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -85,10 +85,10 @@ ms.locfileid: "51346702"
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
-| トリガーのコンカレンシー | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)または[インスタンスの順次トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)に関する記事をご覧ください。 | 
-| 待機中の実行の最大数 | 100 | 既定の制限は 10 です。 この制限は、ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 0 ～ 100 の値に変更するには、[待機中の実行の制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)に関する記事をご覧ください。 | 
-| Foreach 項目数 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](../connectors/connectors-native-query.md)を使用できます。 | 
-| Foreach イテレーション数 | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できる "for each" ループ イテレーションの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" コンカレンシーの変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)または ["for each" ループの順次実行](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)に関する記事をご覧ください。 | 
+| トリガーのコンカレンシー | コンカレンシーを制限する場合は 50 | トリガーに対するコンカレンシー制御を有効にした場合、既定の制限は 25 です。 この制限は、同時に (並行して) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 | 
+| 待機中の実行の最大数 | コンカレンシーを制限する場合は 100 | トリガーに対するコンカレンシー制御を有効にした場合、既定の制限は 10 です。 この制限は、ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 0 ～ 100 の値に変更するには、[待機中の実行の制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)に関する記事をご覧ください。 | 
+| Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](../connectors/connectors-native-query.md)を使用できます。 | 
+| Foreach のコンカレンシー | コンカレンシーを制限する場合は 50 | このループに対するコンカレンシー制御を有効にした場合、既定の制限は 20 です。 この制限は、同時に (並行して) 実行できる "for each" ループ イテレーションの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" のコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)に関するページまたは「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 | 
 | SplitOn 項目数 | 100,000 | | 
 | Until 反復数 | 5,000 | | 
 |||| 
@@ -101,11 +101,11 @@ ms.locfileid: "51346702"
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
-| アクション: 5 分間の実行数 | 300,000 | 既定の制限は 100,000 です。 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 | 
-| アクション: 同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
+| アクション:5 分あたりの実行数 | 300,000 | 既定の制限は 100,000 です。 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 | 
+| アクション:同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
 | ランタイム エンドポイント: 同時受信呼び出し数 | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
-| ランタイム エンドポイント: 5 分間の読み取り呼び出し数  | 60,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 | 
-| ランタイム エンドポイント: 5 分間の起動呼び出し数 | 45,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 | 
+| ランタイム エンドポイント: 5 分あたりの読み取り呼び出し数  | 60,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 | 
+| ランタイム エンドポイント: 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 | 
 | 5 分あたりのコンテンツのスループット | 600 MB | 必要に応じて、複数のアプリにワークロードを分散できます。 | 
 |||| 
 
@@ -119,9 +119,9 @@ ms.locfileid: "51346702"
 
 | Name | 制限 | メモ |
 |------|-------|-------|
-| FTP | 50 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
-| SFTP | 50 MB | この制限を回避するには、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用するか、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページをご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
-| SFTP-SSH | 1 GB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| FTP | 50 MB | この制限を超えるには、[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP | 50 MB | この制限を超えるには、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用するか、または[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP-SSH | 1 GB | この制限を超えるには、[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
 |||| 
 
 <a name="request-limits"></a>
@@ -238,9 +238,9 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 | ---- | ----- | ----- | 
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) を使用します。 | 
 | マップ (XSLT ファイル) | 2 MB | | 
-| ランタイム エンドポイント: 5 分間の読み取り呼び出し数 | 60,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
-| ランタイム エンドポイント: 5 分間の起動呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
-| ランタイム エンドポイント: 5 分間の追跡呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| ランタイム エンドポイント: 5 分あたりの読み取り呼び出し数 | 60,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| ランタイム エンドポイント: 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| ランタイム エンドポイント: 5 分あたりの追跡呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
 | ランタイム エンドポイント: ブロックされた同時呼び出し数 | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
 ||||  
 
@@ -259,7 +259,7 @@ B2B プロトコルに適用される制限を次に示します。
 
 <a name="configuration"></a>
 
-## <a name="configuration-ip-addresses"></a>構成: IP アドレス
+## <a name="configuration-ip-addresses"></a>Configuration:IP アドレス
 
 ### <a name="azure-logic-apps-service"></a>Azure Logic Apps サービス
 
@@ -323,9 +323,10 @@ B2B プロトコルに適用される制限を次に示します。
 
 ### <a name="managed-connectors"></a>マネージド コネクタ
 
-[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、送信 IP アドレスが含まれるようにファイアウォールの構成を設定します。
+[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに対して指定されているすべての送信 IP アドレスが含まれるように、ファイアウォールの構成を設定します。 [Azure Government](/azure-government/documentation-government-welcome) と [Azure China 21Vianet](/azure/china/china-welcome) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
 
 > [!IMPORTANT]
+> 
 > 既存の構成がある場合は、**2018 年 9 月 1日より前にできるだけ早く**更新を行って、この一覧に示されているロジック アプリが存在するリージョン用の IP アドレスと一致するようにしてください。 
 > 
 > Logic Apps は、ファイアウォール経由の Azure ストレージ アカウントへの直接接続をサポートしていません。 これらのストレージ アカウントにアクセスするには、ここに示されているいずれかのオプションを使用します。 

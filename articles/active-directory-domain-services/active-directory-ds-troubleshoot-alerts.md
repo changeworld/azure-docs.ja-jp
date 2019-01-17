@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: アラートのトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:アラートのトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services のアラートのトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c30e18c42f310172b07995e0ad88a505a01c4218
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036140"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159606"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、マネージド ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
@@ -56,7 +56,7 @@ ms.locfileid: "51036140"
 
 
 
-## <a name="aadds100-missing-directory"></a>AADDS100: 不足しているディレクトリ
+## <a name="aadds100-missing-directory"></a>AADDS100:不足しているディレクトリ
 **アラート メッセージ:**
 
 "*マネージド ドメインに関連付けられている Azure AD ディレクトリが削除されている可能性があります。マネージド ドメインはもうサポートされる構成に含まれていません。Microsoft は、マネージド ドメインに対する監視、管理、修正プログラムの適用、および同期を実行できません。*"
@@ -67,7 +67,7 @@ ms.locfileid: "51036140"
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、新しいディレクトリ内に再作成する必要があります。 削除で問題が発生した場合は、Azure Active Directory Domain Services 製品チームに[お問い合わせ](active-directory-ds-contact-us.md)ください。
 
-## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: このディレクトリで Azure AD B2C が実行されている
+## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101:このディレクトリで Azure AD B2C が実行されている
 **アラート メッセージ:**
 
 "*Azure AD B2C ディレクトリで Azure AD Domain Services を有効にできません。*"
@@ -83,7 +83,7 @@ ms.locfileid: "51036140"
 2. Azure AD B2C 以外の新しいディレクトリを作成します。
 3. [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
 
-## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103: アドレスがパブリック IP 範囲内である
+## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103:アドレスがパブリック IP 範囲内である
 
 **アラート メッセージ:**
 
@@ -114,7 +114,7 @@ ms.locfileid: "51036140"
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](active-directory-ds-admin-guide-join-windows-vm-portal.md)に従います。
 8. アラートが解決されたことを確認するために、ドメインの正常性を 2 時間以内に確認します。
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Azure サブスクリプションが見つからない
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106:Azure サブスクリプションが見つからない
 
 **アラート メッセージ:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 2. 既存の Azure AD ディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)します。
 3. [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Azure サブスクリプションが無効
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107:Azure サブスクリプションが無効
 
 **アラート メッセージ:**
 
@@ -140,7 +140,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 1. [Azure サブスクリプションを更新してください](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 2. サブスクリプションを更新すると、Azure から Azure AD Domain Services にマネージド ドメインを再度有効にするための通知が送信されます。
 
-## <a name="aadds108-subscription-moved-directories"></a>AADDS108: サブスクリプションのディレクトリが移動した
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108:サブスクリプションのディレクトリが移動した
 
 **アラート メッセージ:**
 
@@ -150,7 +150,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 
 Azure AD Domain Services に関連付けられているサブスクリプションを以前のディレクトリに移動するか、または既存のディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、選択したディレクトリに再作成する必要があります (新しいサブスクリプションを使用するか、Azure AD Domain Services のインスタンスが置かれているディレクトリを変更します)。
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: マネージド ドメインのリソースが見つからない
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109:マネージド ドメインのリソースが見つからない
 
 **アラート メッセージ:**
 
@@ -169,7 +169,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 3.  アラートが 4 時間以上前のものである場合は、マネージド ドメインは回復不可能な状態にあります。 Azure AD Domain Services を削除して再作成する必要があります。
 
 
-## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: マネージド ドメインに関連付けられているサブネットが満杯
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110:マネージド ドメインに関連付けられているサブネットが満杯
 
 **アラート メッセージ:**
 
@@ -179,7 +179,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: サービス プリンシパルが承認されていない
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111:サービス プリンシパルが承認されていない
 
 **アラート メッセージ:**
 
@@ -193,7 +193,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 2. ID ```abba844e-bc0e-44b0-947a-dc74e5d09022``` のサービス プリンシパルのアクセス権をレビューし、以前の日付で拒否されたアクセス権を付与します。
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: マネージド ドメインに十分な数の IP アドレスがない
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112:マネージド ドメインに十分な数の IP アドレスがない
 
 **アラート メッセージ:**
 
@@ -214,7 +214,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal)に従います。
 5. 手順を正しく完了したことを確認するには、2 時間後にドメインの正常性をチェックします。
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: リソースが復旧できない
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113:リソースが復旧できない
 
 **アラート メッセージ:**
 
@@ -224,7 +224,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aadds114-subnet-invalid"></a>AADDS114: サブネットが無効
+## <a name="aadds114-subnet-invalid"></a>AADDS114:サブネットが無効
 
 **アラート メッセージ:**
 
@@ -234,7 +234,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](active-directory-ds-disable-aadds.md)し、[マネージド ドメインを再作成する](active-directory-ds-getting-started.md)必要があります。
 
-## <a name="aadds115-resources-are-locked"></a>AADDS115: リソースがロックされている
+## <a name="aadds115-resources-are-locked"></a>AADDS115:リソースがロックされている
 
 **アラート メッセージ:**
 
@@ -245,7 +245,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 1.  ネットワーク リソースに対する Resource Manager の操作ログ (これはどのロックが変更を妨げているかに関する情報を提供します) を確認します。
 2.  Azure AD Domain Services のサービス プリンシパルがリソースを操作できるように、リソースのロックを削除します。
 
-## <a name="aadds116-resources-are-unusable"></a>AADDS116: リソースが使用できない
+## <a name="aadds116-resources-are-unusable"></a>AADDS116:リソースが使用できない
 
 **アラート メッセージ:**
 
@@ -258,7 +258,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 
 
-## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: 同期がしばらく行われていない
+## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500:同期がしばらく行われていない
 
 **アラート メッセージ:**
 
@@ -272,7 +272,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 - 管理対象ドメインでネットワーク接続がブロックされる。 ネットワークに問題がないか確認することの詳細については、[ネットワーク セキュリティ グループをトラブルシューティングする方法](active-directory-ds-troubleshoot-nsg.md)および[Azure AD Domain Services に対するネットワーク要件](active-directory-ds-networking.md)を参照してください。
 -  パスワード同期が設定されないか、完了しない。 パスワード同期を設定するには、[この記事](active-directory-ds-getting-started-password-sync.md)を読んでください。
 
-## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: バックアップがしばらく行われていない
+## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501:バックアップがしばらく行われていない
 
 **アラート メッセージ:**
 
@@ -283,7 +283,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 [ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインのバックアップを行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、バックアップが完了したかどうかを再度確認してください。
 
 
-## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: 無効にしたサブスクリプションが原因の中断
+## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503:無効にしたサブスクリプションが原因の中断
 
 **アラート メッセージ:**
 
@@ -296,7 +296,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 サービスを復元するには、ご利用のマネージド ドメインに関連付けられた [Azure サブスクリプションを更新](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)します。
 
-## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504: 無効な構成が原因の中断
+## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504:無効な構成が原因の中断
 
 **アラート メッセージ:**
 

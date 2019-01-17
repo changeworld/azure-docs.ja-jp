@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 01/08/2019
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978180"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119052"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -48,7 +48,7 @@ Azure Container Instances でサポートされていないイメージを指定
 
 このエラーは、半期チャネル (SAC) リリースに基づく Windows イメージを展開するときに最も多く発生します。 たとえば、Windows バージョン 1709 および 1803 は SAC リリースであり、展開時にこのエラーを生成します。
 
-Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンのみに基づいて Windows イメージをサポートしています。 Windows コンテナーをデプロイするときにこの問題を軽減するには、必ず LTSC ベースのイメージを展開します。
+Azure Container Instances は現在、**Windows Server 2016 の長期的なサービス チャネル (LTSC)** リリースにのみ基づいた Windows イメージをサポートしています。 Windows コンテナーのデプロイ時にこの問題を軽減するには、常に Windows Server 2016 (LTSC) ベースのイメージをデプロイしてください。 Windows Server 2019 (LTSC) に基づいたイメージはサポートされていません。
 
 Windows の LTSC および SAC バージョンについて詳しくは、「[Windows Server の半期チャネルの概要][windows-sac-overview]」をご覧ください。
 
@@ -205,6 +205,9 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
 
 Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないために IP にアクセスできない
+現在、Azure Container Instances は、通常の docker 構成のようなポート マッピングをサポートしていませんが、この修正はロードマップにあります。 IP にアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているものと同じポートをリッスンするようにコンテナー イメージを構成してください。
 
 ## <a name="next-steps"></a>次の手順
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学びました。

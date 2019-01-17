@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 94ff3aca84eb27df5171df2a7a3b2b0f708a1d24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624230"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043789"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 CA で署名された証明書で、他の用途にも使用する予定がある場合は、Key Vault 専用のリソース グループを用意することをお勧めします。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 **Key Vault を持つリソース グループは、それを使用するクラスターと*同じリージョンにある必要があります*。**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>モジュールに付属する既定の 5 ノードと 1 ノード タイプのテンプレートを使用する
-ここで使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)および [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)で入手できます。
 
 PowerShell を使用してクラスターを展開します。
 
@@ -288,6 +288,8 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ## <a name="next-steps"></a>次の手順
 この時点では、セキュリティで保護されたクラスターが Azure で実行されています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
+
+テンプレートを使用するための JSON の構文とプロパティについては、[Microsoft.ServiceFabric/clusters のテンプレート リファレンス](/azure/templates/microsoft.servicefabric/clusters)に関するページを参照してください。
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps

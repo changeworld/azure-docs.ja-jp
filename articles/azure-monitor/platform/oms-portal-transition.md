@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/08/2018
 ms.author: bwren
-ms.openlocfilehash: 08f26742d5c0af7f873d8f55204fd9ceeb141f1e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340081"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119217"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -26,7 +26,7 @@ ms.locfileid: "53340081"
 
 Azure portal は、すべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、すべての OMS ポータルの機能が Azure portal に組み込まれました。 実際に、Traffic Manager などの一部の新機能は、Azure Portal でのみ使用可能となっています。 OMS ポータルで実行していた作業をすべて Azure portal で実行できるだけでなく、新機能も使用できます。 まだ Azure portal を使用していない場合は、すぐに使い始めることをお勧めします。
 
-**OMS ポータルは、2019 年 1 月 15 日に正式に廃止される予定です。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback@microsoft.com** までお問い合わせください。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
+**OMS ポータルは、2019 年 1 月 15 日に正式に廃止される予定です。** Azure 商用クラウドと Azure US Government クラウドについては、OMS ポータルは **2019 年 3 月 30 日に正式に廃止される予定です。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback@microsoft.com** までお問い合わせください。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
 
 ## <a name="what-is-changing"></a>何が変わるのですか? 
 OMS ポータルが非推奨となるのに伴い、次の変更が発表されています。 これらの各変更については、以降のセクションで詳しく説明します。
@@ -77,23 +77,24 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 ### <a name="alert-extension"></a>アラートの拡張機能  
 
 > [!NOTE]
-> パブリック クラウドについては、アラートは Azure Portal に完全に拡張されました。 既存のアラート ルールを OMS ポータルに表示できますが、管理は Azure Portal でのみ実行できます。 ガバメント クラウドについては、Azure Portal へのアラートの拡張は 2018 年 10 月に開始されます。
+> パブリック クラウドについては、アラートは Azure Portal に完全に拡張されました。 既存のアラート ルールを OMS ポータルに表示できますが、管理は Azure Portal でのみ実行できます。 ガバメント クラウドについては、Azure portal へのアラートの拡張は 2019 年 2 月に開始されます。
 
 アラートは [Azure portal に拡張されました](../../azure-monitor/platform/alerts-extend.md)。 これが完了したら、アラートに対する管理アクションは Azure portal でのみ使用可能になります。 既存のアラートは引き続き OMS ポータルに表示されます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
 ### <a name="alert-management-solution"></a>アラート管理ソリューション
-[Alert Management ソリューション](../../azure-monitor/platform/alert-management-solution.md)の代わりに、[Azure Monitor の統合アラート インターフェイス](../../azure-monitor/platform/alerts-overview.md)を使用して、アラートの視覚化と管理を行うことができます。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートが集約されます。 アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 これらの機能はすべて、2018 年 6 月 4 日からプレビューで使用できます。 Alert Management ソリューションは、Azure portal では使用できなくなります。 
+以前のお知らせからの変更点として、[アラート管理ソリューション](../../azure-monitor/platform/alert-management-solution.md)は Azure portal で引き続き使用でき、完全にサポートされます。 Azure Marketplace からソリューションを引き続きインストールできます。
 
-Alert Management ソリューションで収集されたデータ (アラートの種類を含むレコード) は、このソリューションがワークスペースにインストールされているかぎり、引き続き Log Analytics に保存されます。 2018 年 8 月から、統合アラートからワークスペースへのアラートのストリーミングが有効になり、この機能の代わりに使用されます。 一部のスキーマの変更が予定されており、今後発表される予定です。
+アラート管理ソリューションは引き続き使用できますが、Azure でのすべてのアラートを視覚化して管理するには [Azure Monitor の統合アラート インターフェイス](../../azure-monitor/platform/alerts-overview.md)を使用することをお勧めします。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートがネイティブに集約されます。 Azure Monitor の統合アラート インターフェイスを使用する場合、アラート管理ソリューションは、System Center Operation Manager から Azure へのアラートの統合を有効にする場合のみ必要になります。 Azure Monitor の統合アラート インターフェイスでは、アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 アラート管理に関する今後の高度な機能は、主にこの新しいエクスペリエンスから利用できます。 
+
+アラート管理ソリューションで収集されたデータ (アラートの種類を含むレコード) は、このソリューションがワークスペースにインストールされているかぎり、引き続き Log Analytics に保存されます。 
 
 ## <a name="oms-mobile-app"></a>OMS モバイル アプリ
 OMS モバイル アプリは、OMS ポータルと共に非推奨となります。 OMS モバイル アプリの代わりに、モバイル デバイスのブラウザーから直接 Azure portal にアクセスすることで、IT インフラストラクチャ、ダッシュ ボード、保存されたクエリに関する情報にアクセスできます。 アラートを取得するには、[Azure のアクション グループ](../../azure-monitor/platform/action-groups.md)を構成して、SMS または音声通話の形式で通知が届くようにする必要があります。
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector と Application Insights ソリューション
-[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに移動させることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。
+[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights がデータ保有期間のサポートを 2019 年 3 月まで延長し、[リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する機能が利用できることから、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
 
-[クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、データの重複は不要になります。 そのため、既存の Application Insights ソリューションは非推奨となります。 10 月以降は、新しい Application Insights リソースを Log Analytics ワークスペースにリンクさせることができなくなります。 既存のリンクとダッシュボードは引き続き 2019 年 1 月 15 日まで使用可能です。
-
+そのため、Application Insights Connector は 2019 年 3 月 30 日の OMS ポータルの廃止と一緒に非推奨となり Azure Marketplace から除去されますが、既存の接続は 2019 年 6 月 30 日まで引き続き動作します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure ネットワーク セキュリティ グループ分析
 [Azure Network Security Group Analytics ソリューション](../../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics)は、最近発表された [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) に置き換えられます。Traffic Analytics では、クラウド ネットワークにおけるユーザーとアプリケーションのアクティビティを視覚化できます。 Traffic Analytics は、組織のネットワーク アクティビティの監査、アプリケーションとデータのセキュリティ保護、ワークロードのパフォーマンスの最適化、コンプライアンスの維持に役立ちます。 

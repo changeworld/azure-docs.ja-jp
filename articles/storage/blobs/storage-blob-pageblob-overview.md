@@ -1,21 +1,21 @@
 ---
-title: Azure ページ BLOB の固有の機能 |Microsoft Docs
-description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とそのメリットの概要。
+title: Azure ページ BLOB の概要 |Microsoft Docs
+description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とその利点の概要。
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022690"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063934"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Azure ページ BLOB の固有の機能
+# <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
 Azure Storage が提供する BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB の 3 種類があります。 ブロック BLOB はブロックで構成され、テキストまたはバイナリ ファイルの格納と大きいファイルの効率的なアップロードに最適です。 追加 BLOB もブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオに最適です。 ページ BLOB は 512 バイトのページ (合計で最大 8 TB) で構成され、頻繁なランダムの読み取り/書き込み操作のために設計されています。 ページ BLOB は、Azure IaaS ディスクの基盤です。 この記事では、ページ BLOB の機能とメリットに重点を置いて説明します。
 
@@ -30,7 +30,7 @@ Azure のページ BLOB の重要な機能は、その REST インターフェ�
 Azure Site Recovery、Azure Backup のようなファースト パーティの Microsoft サービスと、多くのサード パーティの開発者は、ページ BLOB の REST インターフェイスを使用して、業界をリードするイノベーションを実装しています。 Azure に実装されている固有のシナリオの一部を、次に示します。 
 * アプリケーションをターゲットにした増分スナップショットの管理: アプリケーションは、ページ BLOB のスナップショットと REST API を利用して、コストがかかるデータの重複を発生させずに、アプリケーションのチェックポイントを保存できます。 Azure Storage では、ページ BLOB のローカル スナップショットがサポートされています。このスナップショットは、BLOB 全体のコピーを必要としません。 これらのパブリック スナップショット API では、スナップショット間でのデルタへのアクセスとコピーも可能です。
 * オンプレミスからクラウドへのアプリケーションとデータのライブ マイグレーション: オンプレミスの VM の実行を続けながら、オンプレミス データをコピーし、REST API を使用して Azure のページ BLOB に直接書き込みます。 ターゲットが書き込まれたら、そのデータを使用して Azure VM にすばやくフェールオーバーできます。 このようにして、最小限のダウンタイムで VM と仮想ディスクをオンプレミスからクラウドに移行できます。これは、VM の使用を続けている間にバックグラウンドでデータの移行が行われて、フェールオーバーに必要なダウンタイムが短縮されるためです (数分)。
-* [SAS ベース](../common/storage-dotnet-shared-access-signature-part-1.md)の共有アクセス。同時実行制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
+* [SAS ベース](../common/storage-dotnet-shared-access-signature-part-1.md)の共有アクセス。コンカレンシー制御のサポートによる複数のリーダーと単一のライターのようなシナリオを実現できます。
 
 ## <a name="page-blob-features"></a>ページ BLOB の機能
 

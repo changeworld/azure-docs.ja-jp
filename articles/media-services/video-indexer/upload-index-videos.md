@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: juliako
-ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2af3e75e3810284d9740a3d87d681d9ee31f14d3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253206"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052838"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
-Video Indexer API でビデオをアップロードするときは、3 つのアップロード オプションがあります。 
+Video Indexer API でビデオをアップロードする場合、次のアップロード オプションがあります。 
 
 * URL からビデオをアップロードする方法 (推奨) と、
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。

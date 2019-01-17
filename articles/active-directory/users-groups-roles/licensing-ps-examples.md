@@ -13,12 +13,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9e0e1a70926127389101c79121ffab03e411f56a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210433"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265146"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 
@@ -32,7 +32,7 @@ ms.locfileid: "50210433"
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) コマンドレットでは、グループ オブジェクトを取得し、*ライセンス* プロパティを確認できます (グループに現在割り当てられているすべての製品ライセンスが一覧表示されます)。
-```
+```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
 ```
@@ -78,11 +78,11 @@ HTTP/1.1 200 OK
 ## <a name="get-all-groups-with-licenses"></a>ライセンスを持つすべてのグループを取得する
 
 次のコマンドを実行して、割り当てられているすべてのライセンスを持つグループをすべて検索できます。
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
 割り当てられている製品に関する詳細情報を表示することもできます。
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
@@ -102,7 +102,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ## <a name="get-statistics-for-groups-with-licenses"></a>ライセンスを持つグループの統計を取得する
 ライセンスを持つグループの基本的な統計情報を報告できます。 次のスクリプト例は、合計ユーザー数、グループに既に割り当てられているライセンスを持つユーザーの数、およびグループにライセンスを割り当てることができなかったユーザーの数を一覧表示します。
 
-```
+```powershell
 #get all groups with licenses
 Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $groupId = $_.ObjectId;
@@ -160,7 +160,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 
 ## <a name="get-all-groups-with-license-errors"></a>ライセンス エラーがあるすべてのグループを取得する
 ライセンスを割り当てることができなかったユーザーを含むグループを見つけるには、次の操作を実行します。
-```
+```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
 出力:
@@ -201,7 +201,7 @@ HTTP/1.1 200 OK
 
 ライセンス関連のエラーがあるグループについて、これらのエラーの影響を受けるすべてのユーザーを表示できるようになりました。 ユーザーが他のグループからのエラーを持つ場合もあります。 ただし、この例では、対象のグループに関連するエラーのみに結果を制限しています。このためには、ユーザーの各 **IndirectLicenseError** エントリの **ReferencedObjectId** プロパティを確認します。
 
-```
+```powershell
 #a sample group with errors
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
@@ -209,7 +209,7 @@ $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
-    #filter out users without license errors and users with licenense errors from other groups
+    #filter out users without license errors and users with license errors from other groups
     Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId} |
     #display id, name and error detail. Note: we are filtering out license errors from other groups
     Select ObjectId, `
@@ -252,7 +252,7 @@ HTTP/1.1 200 OK
 > [!NOTE]
 > このスクリプトではテナントのすべてのユーザーが列挙されるため、大きなテナントでは最適でない場合があります。
 
-```
+```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
@@ -278,7 +278,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 
 以下は、ライセンス エラーを含むグループのみを検索するスクリプトの別バージョンの例です。 これは、問題のあるグループが少数であることが予測されるシナリオにより適しています。
 
-```
+```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
@@ -296,7 +296,7 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
 特定のユーザー オブジェクトについて、特定の製品ライセンスがグループから割り当てられているか、または直接割り当てられているかを確認することができます。
 
 以下の 2 つの関数の例を使用すると、各ユーザーの割り当ての種類を分析できます。
-```
+```powershell
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
 {
@@ -358,7 +358,7 @@ function UserHasLicenseAssignedFromGroup
 ```
 
 このスクリプトは、SKU ID を入力値として利用し、テナントの各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。テナントでこれは *contoso:EMS* という ID で表されます。
-```
+```powershell
 #the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
 
@@ -436,7 +436,7 @@ HTTP/1.1 200 OK
 > [!NOTE]
 > まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 このスクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行うことで、サービスに対するユーザーのアクセス権が予期せず失われないようにしています。
 
-```
+```powershell
 #BEGIN: Helper functions used by the script
 
 #Returns TRUE if the user has the license assigned directly

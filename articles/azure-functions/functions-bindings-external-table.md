@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997824"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156869"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
 
-この記事では、Azure Functions で Sharepoint や Dynamics など SaaS プロバイダーの表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
+この記事では、Azure Functions で SaaS プロバイダー (SharePoint や Dynamics など) 上で表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
 
 > [!IMPORTANT]
 > 外部テーブル バインディングは試験段階であり、一般公開 (GA) されない可能性があります。 外部テーブル バインディングは Azure Functions 1.x にのみ含まれており、Azure Functions 2.x に追加される予定はありません。 SaaS プロバイダーのデータにアクセスする必要があるシナリオでは、[関数を呼び出すロジック アプリケーション](functions-twitter-email.md)の使用を検討してください。

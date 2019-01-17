@@ -1,28 +1,31 @@
 ---
-title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
+title: Azure Portal を使用してアラートと通知を設定する | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634611"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156904"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
 ## <a name="overview"></a>概要
-この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+
+> [!IMPORTANT]
+> この機能は、Managed Instance ではまだ使用できません。 別の方法として、SQL エージェントを使用して、[動的管理ビュー](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)に基づいてあるメトリックに関する電子メール アラートを送信できます。
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 

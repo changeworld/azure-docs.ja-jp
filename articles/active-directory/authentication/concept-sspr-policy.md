@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3a16977f2d3bc7321de2d2a1538276f182e7fa10
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d7f364ac5863c70cd0034d9c458e94cfb164cba
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190994"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116961"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
-この記事では、Azure Active Directory (Azure AD) テナントに格納されているユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
+この記事では、Azure Active Directory (Azure AD) テナント内のユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
 
 ## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
 
@@ -79,7 +79,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 | プロパティ | 必要条件 |
 | --- | --- |
 | 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| 使用できない文字 |<ul><li>Unicode 文字。</li><li>スペース。</li><li> 強力なパスワードのみ</li></ul> |
+| 使用できない文字 |<ul><li>Unicode 文字。</li><li>スペース。</li><li> 強力なパスワードのみ:"\@\" 記号" の直前にピリオド文字 (".") を含めることはできません。</li></ul> |
 | パスワードの制限 |<ul><li>8 文字以上 16 文字以下。</li><li>強力なパスワードのみ:次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
 | パスワードの有効期間 |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |

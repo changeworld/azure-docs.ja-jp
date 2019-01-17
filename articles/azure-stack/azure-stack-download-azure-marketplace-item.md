@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 70bbade2877b62c3d211600f69e1825677f12040
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: unknown
+ms.openlocfilehash: 0fcdb2324868528e62e69fa0ce24ab2334052ced
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721871"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245415"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 クラウド オペレーターとして、Azure Marketplace から項目をダウンロードし、Azure Stack で使用できるようにします。 選択できる項目は、Azure Marketplace の精選された一覧にある項目です。これらの項目は、Azure Stack で動作するように、事前にテストされ、サポートされています。 一覧には新しいアイテムが頻繁に追加されるので、定期的に新しいコンテンツを確認してください。 
 
@@ -215,7 +215,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
    
    **拡張機能について:** 仮想マシン イメージの拡張機能を扱うときは、次のパラメーターを使用してください。
    - *発行元*
-   - *種類*
+   - *Type*
    - *バージョン*  
 
    拡張機能に *Offer* は使用しません。   

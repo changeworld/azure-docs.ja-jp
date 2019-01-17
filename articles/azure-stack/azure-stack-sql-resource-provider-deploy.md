@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/09/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: e1a52dffe0b87b140ee8f0da9379a33f8b071f39
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: 035284e23d3b600cbf1cbd5500a9821c2c628b05
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960670"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156206"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>SQL Server リソース プロバイダーを Azure Stack にデプロイする
 
@@ -39,6 +39,7 @@ Azure Stack SQL リソース プロバイダーをデプロイする前に、い
 
   |最小の Azure Stack バージョン|SQL RP バージョン|
   |-----|-----|
+  |バージョン 1808 (1.1808.0.97)|[SQL RP バージョン 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
   |バージョン 1808 (1.1808.0.97)|[SQL RP バージョン 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
   |バージョン 1804 (1.0.180513.1)|[SQL RP バージョン 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
   |     |     |

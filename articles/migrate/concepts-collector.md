@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/08/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255977"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104212"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -63,7 +63,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
     - 商用の Azure クラウドに移行する予定であれば、Azure Global を選択します。
     - ここで指定されるクラウドに基づき、検出されたメタデータがアプライアンスから個々のエンド ポイントに送信されます。
 - **インターネット接続の確認**: Collector がインターネットに直接、またはプロキシ経由で接続できることを確認します。
-    - 前提条件の確認によって、[必須および省略可能な URL](#connect-to-urls) への接続が検証されます。
+    - 前提条件の確認によって、[必須および省略可能な URL](#urls-for-connectivity) への接続が検証されます。
     - インターネットへの直接接続があれば、Collector が必須の URL にアクセスできることを確認する以外は、特別のアクションは不要です。
     - プロキシ経由で接続する場合には、[以下の要件](#connect-via-a-proxy)に注意してください。
 - **時刻の同期の確認**: サービスに対する要求が認証されるには、Collector の時刻がインターネット時刻サーバーに同期している必要があります。
@@ -105,7 +105,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 
 
 
-### <a name="connect-to-urls"></a>URL への接続
+### <a name="urls-for-connectivity"></a>接続の URL
 
 接続チェックは、URL のリストに接続することによって検証されます。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 46f1d49e210a483b8e7645d7eba84ad21ed477da
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355528"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190522"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -36,7 +36,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 パスワードベースの SSO には、次のブラウザーを使用できます。
 
-- **Edge**: Windows 10 Anniversary Edition 以降。 
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 
@@ -59,10 +59,10 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 7.  アクセス パネルにサインインし、パスワードベースの SSO アプリケーションを起動できるかどうかを確認します。
 
-次のサイトから Chrome と Edge 対応の拡張機能を直接ダウンロードすることもできます。
+次のサイトから Chrome と Microsoft Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Microsoft Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能の使用
 * `https://myapps.microsoft.com` 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成します。

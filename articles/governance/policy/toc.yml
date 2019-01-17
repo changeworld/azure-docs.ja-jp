@@ -298,8 +298,8 @@ items:
     href: https://github.com/Azure/azure-policy
   - name: 動画 - Build 2018
     href: https://channel9.msdn.com/events/Build/2018/THR2030
-  - name: 動画 - Ignite 2017
-    href: https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2238
+  - name: ガバナンスに関する YouTube チャンネル
+    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
   - name: ゲスト構成のビデオ
     items:
     - name: Getting Started (概要)
@@ -316,9 +316,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: e23ca5bd5826feda30c632bbf888c19d1227498e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: d063061e190f22a1ba79d559c267ed728b8aaed1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105901"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319241"

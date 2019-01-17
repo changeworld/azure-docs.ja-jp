@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: b702d375f7a66843918a960ca3783c078eac541e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579314"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118440"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -23,6 +23,7 @@ Azure SQL Data Warehouse は、超並列処理 (MPP) を利用して、ペタバ
 
 最新バージョンの Azure SQL Data Warehouse で利用できる新しい機能と機能強化について詳しくは、以下のリンクをクリックしてください。 示されているメンテナンス スケジュールの間に、これらのサービスの更新プログラムを受け取ることができます。
 
+- [2018 年 12 月](./release-notes-december-2018.md)
 - [2018 年 10 月](./release-notes-october-2018.md)
 - [2018 年 9 月](./release-notes-september-2018.md)
 - [2018 年 8 月](./release-notes-august-2018.md)
@@ -38,7 +39,7 @@ Azure SQL Data Warehouse は、超並列処理 (MPP) を利用して、ペタバ
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-出力例: ![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
+出力例:![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
 
 示された日付を使用して、お使いの Azure SQL Data Warehouse に適用されているリリースを確認してください。 
 

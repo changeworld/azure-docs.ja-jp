@@ -1,22 +1,22 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault ストレージ アカウント キー
+title: Azure Key Vault の管理対象ストレージ アカウント - CLI
 description: ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー ベースのアクセス間をシームレスに統合します。
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
+author: prashanthyv
+ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e62c599d82f488bf1fc30ce503c271084c5ae59d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 3ee0d19c174490d558a8ff06d3f5e038ffff211f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300225"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064442"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
+# <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault の管理対象ストレージ アカウント - CLI
 
 > [!NOTE]
 > [Azure Storage で AAD 認証がサポートされました](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)。 Storage に対する認証と承認に Azure Active Directory を使用することをお勧めします。そうすれば、ユーザーはストレージ アカウント キーのローテーションについて心配する必要がありません。
@@ -32,7 +32,7 @@ ms.locfileid: "51300225"
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI をインストールする   
 2. [ストレージ アカウントを作成する](https://azure.microsoft.com/services/storage/)
     - この[ドキュメント](https://docs.microsoft.com/azure/storage/)に載っている手順に従って、ストレージ アカウントを作成してください。  
-    - **名前付けのガイダンス:** ストレージ アカウント名の長さは 3 文字から 24 文字で、数字と小文字のみを使用できます。        
+    - **名前付けのガイダンス:** ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。        
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Key Vault を使用してストレージ アカウント キーを管理する手順
 --------------------------------------------------------------------------------

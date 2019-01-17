@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971105"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321570"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -36,7 +36,7 @@ ms.locfileid: "53971105"
 ## <a name="scenario-introduction-hello-toll"></a>シナリオの概要:"Hello, Toll!"
 有料道路の料金所は一般的な事象です。 世界中の多くの高速道路、橋、トンネルでそれらを目にします。 各料金所には複数の料金所ブースがあります。 手動式の料金所ブースでは、車を停めて通行料金を支払います。 自動式の料金所ブースでは、通過する車両のフロントガラスに貼り付けられた RFID カードを、各ブースの上方に設置されているセンサーがスキャンします。 車両が料金所を通過した事実は、イベント ストリームとして簡単に可視化でき、そのストリームを介して必要な処理を実行することができます。
 
-![Picture of cars at toll booths](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth .jpg)
+![Picture of cars at toll booths](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>受信データ
 このソリューションでは、2 つのデータ ストリームを扱います。 1 つ目のストリームは、料金所の入口と出口に設置されたセンサーによって生成されます。 2 つ目のストリームは、車両登録データを格納した静的なルックアップ データセットです。

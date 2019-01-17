@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6898b007287e4f4c87010649c6f0b66c03f7cf8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8c2c50d8d717ec501b6ef847b41e2633487c8877
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086268"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266724"
 ---
 # <a name="create-a-qna-maker-service"></a>QnA Maker サービスを作成する
 

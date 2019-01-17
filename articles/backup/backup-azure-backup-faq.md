@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 647ed64d405424431419da1e693abea2bdf07ace
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: dd8e0950de6aae71dd123d21b59c6de591bd7f29
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262267"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107718"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -21,10 +21,10 @@ ms.locfileid: "53262267"
 ## <a name="recovery-services-vault"></a>Recovery Services コンテナー
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>各 Azure サブスクリプションで作成できるコンテナーの数に制限はありますか。
-はい。 各サブスクリプションでサポートされている Azure Backup のリージョンあたり最大 500 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
+はい。 サブスクリプションあたり、Azure Backup のサポートされているリージョンごとに最大 500 の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。
-コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
+コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 Microsoft Azure Backup エージェントを使用している場合は、コンテナーあたり最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
 
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際にコンテナー内の他のサーバーのデータを分離するには、どうすればよいですか。

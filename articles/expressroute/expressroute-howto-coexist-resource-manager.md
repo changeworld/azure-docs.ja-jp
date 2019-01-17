@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104035"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103317"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -43,6 +43,7 @@ ms.locfileid: "53104035"
 * **Basic SKU ゲートウェイはサポートされていません。** [ExpressRoute ゲートウェイ](expressroute-about-virtual-network-gateways.md)と [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらについても、Basic SKU 以外のゲートウェイを使用する必要があります。
 * **サポートされているのはルート ベースの VPN ゲートウェイのみです。** [ルート ベースの VPN ゲートウェイを使用する必要があります](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 * **VPN ゲートウェイでは静的ルートを構成する必要があります。** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、パブリック インターネットへのサイト間 VPN 接続をルーティングする必要があります。
+* **指定されていない場合、VPN Gateway の既定値は ASN 65515 です。** Azure VPN Gateway は、BGP ルーティング プロトコルをサポートします。 -Asn スイッチを追加することによって、仮想ネットワークの ASN (AS 番号) を指定できます。 このパラメーターを指定しない場合、既定の AS 番号は 65515 です。 構成には任意の ASN を使用できますが、65515 以外を選択した場合は、その設定を有効にするためにゲートウェイをリセットする必要があります。
 
 ## <a name="configuration-designs"></a>構成の設計
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する

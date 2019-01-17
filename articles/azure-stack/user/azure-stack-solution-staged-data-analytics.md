@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: 88c72994ec0c6cfc6222ccb31cabae7e354412eb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969534"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245533"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル:Azure と Azure Stack を使用してステージング データ分析ソリューションを作成する 
 
@@ -87,19 +87,19 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
     c.  アカウントの種類: **Storage (汎用 V1)**
 
-    d.  場所: **米国西部**
+    d.  場所: **[米国西部]**
 
     e.  レプリケーション: **ローカル冗長ストレージ (LRS)**
 
     f.  パフォーマンス: **Standard**
 
-    g.  安全な転送が必須: **無効**
+    g.  安全な転送が必須: **Disabled**
 
     h.  サブスクリプション:いずれかを選択します。
 
     i.  リソース グループ: 新しいリソース グループを指定するか、既定のリソース グループを選択します。
 
-    j.  仮想ネットワークの構成: **無効**
+    j.  仮想ネットワークの構成: **Disabled**
 
 4.  **[作成]** をクリックしてストレージ アカウントを作成します。
 
@@ -182,10 +182,10 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 3.  次の表で指定されている設定を使用してください。
 
-    | 設定 | 推奨値 | 説明 |
+    | Setting | 推奨値 | 説明 |
     | ------- | ------- | ------- |
-    | 名前 | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
-    | パス | \<上記のストレージの場所からのパス> | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、name パラメーターとしてバインディングで渡されます。 |
+    | Name | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+    | Path | \<上記のストレージの場所からのパス> | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、name パラメーターとしてバインディングで渡されます。 |
     | ストレージ アカウント接続 | Function App 接続 | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。 |
 
     **例:**
@@ -242,10 +242,10 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
 2.  次の表で指定されている設定を使用してください。
 
-    | 設定 | 推奨値 | 説明 |
+    | Setting | 推奨値 | 説明 |
     | ------- | ------- | ------- |
-    | 名前 | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
-    | パス | \<上記のストレージの場所からのパス> | 監視されているストレージ内の位置。 キューのファイル名が name パラメーターとしてバインディングで渡されます。 |
+    | Name | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+    | Path | \<上記のストレージの場所からのパス> | 監視されているストレージ内の位置。 キューのファイル名が name パラメーターとしてバインディングで渡されます。 |
     | ストレージ アカウント接続 | Function App 接続 | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。 |
 
 3.  **[作成]** を選択すると、関数が作成されます。

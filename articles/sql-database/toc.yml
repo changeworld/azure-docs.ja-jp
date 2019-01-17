@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: データベース アドバイザーのパフォーマンスに関する推奨事項
         href: sql-database-advisor.md
+  - name: データの読み込みと移動
+    items:
+    - name: SQL データ同期
+      href: sql-database-sync-data.md
+    - name: トランザクション レプリケーション
+      href: sql-database-managed-instance-transactional-replication.md
   - name: データベース機能
     items:
     - name: データベース機能
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: 移行後の SQL Database の管理
       href: sql-database-manage-after-migration.md
-    - name: トランザクション レプリケーションの構成
+    - name: レプリケーションの構成
       href: replication-to-sql-database.md
     - name: 脅威検出の構成
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: データ同期
       items:
-      - name: SQL データ同期
-        href: sql-database-sync-data.md
       - name: データ同期エージェント
         href: sql-database-data-sync-agent.md
       - name: スキーマ変更のレプリケート
@@ -682,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230904"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331403"

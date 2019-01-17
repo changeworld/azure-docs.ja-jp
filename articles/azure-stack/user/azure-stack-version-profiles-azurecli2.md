@@ -107,7 +107,7 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを取得する
 
-CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では次の URI `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json` が使用されます。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、エンドポイント URI を `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターに渡す必要があります。 
+CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では次の URI `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json` が使用されます。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、`endpoint-vm-image-alias-doc` パラメーターのエンドポイント URI を `az cloud register` コマンドに渡す必要があります。 
   
 ## <a name="connect-to-azure-stack"></a>Azure Stack への接続
 

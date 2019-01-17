@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126930"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119155"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -32,7 +32,7 @@ ms.locfileid: "23126930"
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 * 2 つのクラウド サービス: "FrontEnd001" と "BackEnd001"
-* 2 つのサブネット ("FrontEnd" と "BackEnd") を含む仮想ネットワーク "CorpNetwork"
+* 次の 2 つのサブネットを含む Virtual Network "CorpNetwork": "FrontEnd" と "BackEnd"
 * 両方のサブネットに適用される単一のネットワーク セキュリティ グループ
 * フロントエンド サブネットに接続されたネットワーク仮想アプライアンス (この例では Barracuda NextGen Firewall)
 * アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
@@ -52,11 +52,11 @@ ms.locfileid: "23126930"
 2. スクリプトを実行する環境に合わせてスクリプト内のユーザー変数を更新します (サブスクリプション、サービス名など)。
 3. PowerShell でスクリプトを実行します。
 
-**注**: PowerShell スクリプトで示されたリージョンは、ネットワーク構成用 xml ファイルで示されたリージョンと一致する必要があります。
+**メモ**:PowerShell スクリプトで示されたリージョンは、ネットワーク構成用 xml ファイルで示されたリージョンと一致する必要があります。
 
 スクリプトが正常に実行された後、必要に応じて次の手順を別途実行します。
 
-1. ファイアウォール ルールを設定します。この点については、以降の「ファイアウォール ルール」というセクションで取り上げます。
+1. ファイアウォール ルールを設定します。これは、下の「ファイアウォール ルール」というタイトルのセクションで説明されています。
 2. この DMZ 構成を使ったテストを実行するために、必要に応じて「参照」セクションにある 2 つのスクリプトを実行します。簡単な Web アプリケーションを含む Web サーバーとアプリケーション サーバーがこれらのスクリプトによってセットアップされます。
 
 次のセクションでは、ネットワーク セキュリティ グループに関連してスクリプトに含まれる大部分のステートメントを説明しています。
@@ -87,7 +87,7 @@ ms.locfileid: "23126930"
 ## <a name="firewall-rules"></a>ファイアウォール ルール
 ファイアウォールを管理したり、必要な構成を作成したりするには、管理クライアントを PC にインストールする必要があります。 デバイスの管理方法については、ご利用のファイアウォール (または他の NVA) ベンダーのドキュメントを参照してください。 以降、このセクションでは、ファイアウォールそのものの構成について説明しています。ファイアウォールの構成は、(Azure ポータルや PowerShell ではなく) ベンダーの管理クライアントを使って行います。
 
-この例で使用するクライアントをダウンロードして Barracuda に接続する手順については、 [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+クライアントのダウンロードと、この例で使用される Barracuda への接続の手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
 
 ファイアウォールには、転送ルールを作成する必要があります。 この例でルーティングするのは、インターネットからファイアウォールを介して Web サーバーに到達する受信トラフィックだけであるため、必要な転送 NAT ルールは 1 つだけです。 この例に使用されている Barracuda NextGen ファイアウォールでそれに該当するのが、そのトラフィックを許可する Destination NAT ルール ("Dst NAT") です。
 
@@ -95,7 +95,7 @@ ms.locfileid: "23126930"
 
 新しいルールを作成して名前を付けます ("WebTraffic" など)。 
 
-Destination NAT ルールのアイコンは次のように表示されます: ![Destination NAT アイコン][2]
+Destination NAT ルールのアイコンは ![送信先 NAT アイコン][2]
 
 ルール自体は次のように表示されます。
 
@@ -138,9 +138,9 @@ Destination NAT ルールのアイコンは次のように表示されます: ![
 8. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
 9. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
    1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。次のルールに進みます。
    3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。次のルールに進みます。
-   4. NSG ルール 4 (IIS01 から AppVM01) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
+   4. NSG ルール 4 (IIS01 と AppVM01 の間) は適用されません。トラフィックは許可されます。ルールの処理を停止します。
 10. AppVM01 は SQL クエリを受信し、応答します。
 11. バックエンド サブネットに送信ルールは存在しないので、応答は許可されます。
 12. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
@@ -183,9 +183,9 @@ Destination NAT ルールのアイコンは次のように表示されます: ![
 2. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
 3. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
    1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。次のルールに進みます。
    3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。次のルールに進みます。
-   4. NSG ルール 4 (IIS01 から AppVM01) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
+   4. NSG ルール 4 (IIS01 と AppVM01 の間) は適用されません。トラフィックは許可されます。ルールの処理を停止します。
 4. AppVM01 が要求を受信し、ファイルを返します (アクセスが許可されている場合)。
 5. バックエンド サブネットに送信ルールは存在しないので、応答は許可されます。
 6. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
@@ -211,7 +211,7 @@ Web サーバー (IIS01) とファイアウォールは同じクラウド サー
 2. SQL 用に開放されているエンドポイントがないので、このアクセスはクラウド サービスを通過できず、ファイアウォールに到達しません。
 3. 何らかの理由でエンドポイントが開放されていた場合、フロントエンド サブネットは、受信ルールの処理を開始します。
    1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。次のルールに進みます。
    3. NSG ルール 2 (インターネットからファイアウォール) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
 4. トラフィックがファイアウォールの内部 IP アドレス (10.0.1.4) に到達します。
 5. ファイアウォールは SQL 用の転送ルールを持たず、トラフィックを破棄します。
@@ -427,7 +427,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -568,7 +568,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+このためのサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]のリンクに用意されています。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "NSG での受信 DMZ"

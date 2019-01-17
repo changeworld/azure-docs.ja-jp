@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: bd5c3a6fc4a2d6f6a8b4f07154c02d7d29211ec9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1300ac9b6ba0eee8698e268fb9cc613955deb74e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078594"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321921"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -119,7 +119,7 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 * **Azure VM、VMware および物理サーバー:** レプリケーションの頻度はここでは関係ありません。 レプリケーションは継続的です。
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-replication-the-first-time-i-replicate-to-azure"></a>Azure に初めてレプリケートする際に、オフライン レプリケーションを行うことができますか。
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。

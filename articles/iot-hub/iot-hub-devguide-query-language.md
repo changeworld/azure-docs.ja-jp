@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747917"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157209"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -168,15 +168,15 @@ SELECT * FROM devices.modules
 デバイスと devices.modules コレクション間の結合は許可されません。 デバイスを超えてモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning'
+SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
 このクエリでは、スキャン中状態のすべてのモジュール ツインが返されますが、指定したデバイスのサブセット上のみです。
 
 ```sql
-Select * from devices.modules 
-  where properties.reported.status = 'scanning' 
-  and deviceId IN ['device1', 'device2']
+SELECT * FROM devices.modules 
+  WHERE properties.reported.status = 'scanning' 
+  AND deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C# の例
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 句
 
-**FROM <from_specification>** 句には、デバイス ツインのクエリを実行するための **FROM devices** とデバイスの詳細ごとにジョブのクエリを実行するための **FROM devices.jobs** の 2 つの値のみを使用できます。
+**FROM <from_specification>** 句では、デバイス ツインにクエリを実行するための **FROM devices**、またはジョブのデバイスごとの詳細にクエリを実行するための **FROM devices.jobs** の 2 つの値のみを想定できます。
 
 
 ## <a name="where-clause"></a>WHERE 句

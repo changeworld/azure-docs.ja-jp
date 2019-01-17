@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: ed3203cde8bad8c506bacf3607faecfbcde2cd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6be0603c8332a6d1bd6c965a167b14f5a22362e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606862"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064221"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
@@ -33,7 +33,7 @@ Azure SQL Database では、[長期的なバックアップ保有期間](sql-dat
 
 ご利用のサービス レベルのリテンション期間より長く[自動バックアップを保持](sql-database-long-term-retention.md)するように SQL Database を構成できます。 
 
-1. Azure Portal で SQL Server を選択し、**[バックアップの管理]** をクリックします。 **[ポリシーの構成]** タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースのチェックボックスをオンにします。
+1. Azure Portal で SQL Server を選択し、**[バックアップの管理]** をクリックします。 **[ポリシーの構成]** タブで、*長期的なバックアップ保有期間ポリシーを設定または変更するデータベースのチェックボックスをオンにします*。 データベースの横にあるチェックボックスがオンになっていない場合、そのデータベースにはポリシーの変更が適用されません。  
 
    ![バックアップの管理リンク](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 

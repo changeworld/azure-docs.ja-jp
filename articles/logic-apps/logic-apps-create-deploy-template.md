@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000565"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065734"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -34,7 +34,7 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
 * **接続**:接続文字列やアクセス トークンなど、コネクタ接続関連のメタデータを安全に保存するための個別のリソースです。
 ロジック アプリ リソースでは、`parameters` セクションでこれらのリソースが参照されます。
 
-以上のコンポーネントを既存のロジック アプリで参照する場合、[Azure リソース エクスプローラー](http://resources.azure.com)などのツールを利用できます。
+以上のコンポーネントを既存のロジック アプリで参照する場合、[Azure リソース エクスプローラー](http://resources.azure.com)などのツールを利用できます。 JSON の構文とプロパティについては、[Microsoft.Logic のリソースの種類](/azure/templates/microsoft.logic/allversions)に関するページを参照してください。
 
 リソース グループ デプロイで使用するロジック アプリのテンプレートを作成するには、リソースを定義し、必要に応じてパラメーター化する必要があります。
 たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を SQL データベースに使用すると効果的です。

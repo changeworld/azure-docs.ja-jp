@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729698"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322029"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 
@@ -53,7 +53,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 再デプロイなしでの複数インスタンスへのスケールアウト |X |X |X |X |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。マシン間で要求をルーティングするようにロード バランサーを構成し、[可用性セット](../virtual-machines/windows/manage-availability.md) 内に複数の VM インスタンスがあるようにする必要があります。 |
 | SSL のサポート |X |X |X |X |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
 | Visual Studio 統合 |X |X |X |X | |
-| リモート デバッグ |X |X |X | | |
+| リモート デバッグ |X |X |X |X | |
 | TFS によるコードのデプロイ |X |X |X |X | |
 |  [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
 |  [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |

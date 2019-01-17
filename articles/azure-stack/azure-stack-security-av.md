@@ -6,15 +6,15 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: d4eb0cbf6c55f3d8da460370ec9209638e3e1d62
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d47e11be88c4a8ca453475c35e9e0f02d9b531ff
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118219"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305130"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack"></a>Azure Stack 上で Windows Defender ウイルス対策を更新する
 

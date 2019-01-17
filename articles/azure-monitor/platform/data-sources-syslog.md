@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor の Syslog メッセージの収集と分析 | Microsoft Docs
-description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Azure Monitor の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
+title: Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs
+description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 263f9dcd038bd9ec20036983e273f56191e9a300
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6af1dcd6ffac1722ed39f8fe69f3d78aa4ed8313
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436723"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104422"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
-Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
+# <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
+Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Log Analytics にメッセージを送信し、そこで対応するレコードが作成されます。  
 
 > [!NOTE]
-> Azure Monitor では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
+> Log Analytics では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
 >
 >
 
