@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 14035fe9061af98b10b822c3b7b9213cdda3fbbd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098301"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076809"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加することで、*alain@contoso.com* など、ユーザーになじみのあるユーザー名を作成する助けとなります。
@@ -63,7 +63,7 @@ ms.locfileid: "53098301"
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>ドメイン レジストラーに DNS 情報を追加する
 Azure AD にカスタム ドメイン名を追加したら、ドメイン レジストラーに戻り、コピーした TXT ファイルから Azure AD の DNS 情報を追加する必要があります。 ドメインのこの TXT レコードを作成することで、ドメイン名の所有権を "検証" します。
 
--  ドメイン レジストラーに戻り、コピーした DNS 情報に基づいてドメインの新しい TXT レコードを作成します。**TTL** (Time to Live) を 60 分に設定してから、情報を保存します。
+-  ドメイン レジストラーに戻り、コピーした DNS 情報に基づいてドメインの新しい TXT レコードを作成します。**TTL** (Time to Live) を 3600 秒 (60 分) に設定してから、情報を保存します。
 
     >[!Important]
     >必要な数のドメイン名を登録できます。 ただし、各ドメインは Azure AD から独自の TXT レコードを取得します。 ドメイン レジストラーで TXT ファイルの情報を入力するときには注意してください。 誤っていたり、重複していたりする情報を誤って入力すると、TTL のタイムアウト (60 分) まで待機してから再試行する必要があります。
@@ -98,10 +98,10 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 ## <a name="next-steps"></a>次の手順
 
-- ディレクトリに別の全体管理者を追加します。 詳細については、[ロールと管理者を割り当てる方法](active-directory-users-assign-role-azure-portal.md)に関するページを参照してください
+- ディレクトリに別の全体管理者を追加します。 詳細については、[ロールと管理者を割り当てる方法](active-directory-users-assign-role-azure-portal.md)に関するページを参照してください。
 
-- ドメインにユーザーを追加します。[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください
+- ドメインにユーザーを追加します。[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください。
 
-- Azure AD でドメイン名の情報を管理します。 詳細については、 [カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください
+- Azure AD でドメイン名の情報を管理します。 詳細については、[カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください。
 
 - Azure Active Directory と共に使用するつもりのオンプレミス バージョンの Windows Server がある場合は、「[オンプレミスのディレクトリと Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。

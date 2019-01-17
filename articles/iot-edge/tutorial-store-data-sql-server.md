@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: af33842b2006ceb94bd464d9e4148c9aa9206d7b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054998"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260177"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -265,7 +265,7 @@ Azure IoT Edge デバイス:
         "image": "microsoft/mssql-server-windows-developer",
         "createOptions": {
           "HostConfig": {
-            "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
+            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
             "PortBindings": {
               "1433/tcp": [{"HostPort": "1401"}]
             }

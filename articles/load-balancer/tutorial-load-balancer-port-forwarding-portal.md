@@ -5,6 +5,7 @@ description: このチュートリアルでは、Azure Load Balancer を使用�
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/18
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e3431ff7ee6991e5af3ecab0e734cc587009dcde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273529"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232194"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>チュートリアル: ポータルを使用して Azure Load Balancer のポート フォワーディングを構成する
 
@@ -47,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
    
-   - **[名前]**: 「*MyLoadBalancer*」と入力します。
+   - **[名前]**:「*MyLoadBalancer*」と入力します。
    - **[種類]**: **[パブリック]** を選択します。 
    - **[SKU]**: **[Standard]** を選択します。
    - **[パブリック IP アドレス]**: **[新規作成]** を選択して、フィールドに「*MyPublicIP*」と入力します。
@@ -72,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[仮想ネットワークの作成]** ウィンドウで、以下の値を入力または選択します。
    
-   - **[名前]**: 「*MyVNet*」と入力します。
+   - **[名前]**:「*MyVNet*」と入力します。
    - **ResourceGroup**:**[既存の選択]** ドロップ ダウンから **[MyResourceGroupLB]** を選択します。 
    - **[サブネット]** > **[名前]**: 「*MyBackendSubnet*」と入力します。
    
@@ -95,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。 
    
    以下が選択されていることを確認します。
-   - **[仮想ネットワーク]**: **MyVNet**
+   - **[仮想ネットワーク]**:**MyVNet**
    - **[サブネット]**: **MyBackendSubnet**
    
 1. **[パブリック IP]** で **[新規作成]** を選択し、**[パブリック IP アドレスの作成]** ページで **[Standard]** を選択して、**[OK]** を選択します。 
@@ -189,7 +190,7 @@ VM に対してインバウンド インターネット (HTTP) 接続を許可�
    - **[名前]**: 「*MyHealthProbe*」と入力します。
    - **[プロトコル]**: ドロップダウンから **[HTTP]** を選択します。 
    - **[ポート]**: 「*80*」と入力します。 
-   - **[パス]**: 既定の URI の */* を受け入れます。 この値は任意の別の URI に置き換えることができます。 
+   - **[パス]**: 既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
    - **[間隔]**: 「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
    - **[異常のしきい値]**: 「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
    
@@ -212,7 +213,7 @@ VM に対してインバウンド インターネット (HTTP) 接続を許可�
    - **[名前]**: 「*MyLoadBalancerRule*」と入力します。
    - **[プロトコル]**: **[TCP]** を選択します。
    - **[ポート]**: 「*80*」と入力します。
-   - **[バックエンド ポート]**: 「*80*」と入力します。
+   - **[バックエンド ポート]**:「*80*」と入力します。
    - **[バックエンド プール]**: **[MyBackendPool]** を選択します。
    - **[正常性プローブ]**: **[MyHealthProbe]** を選択します。 
    

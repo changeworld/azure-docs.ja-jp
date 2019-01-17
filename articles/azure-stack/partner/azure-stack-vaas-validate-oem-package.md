@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ba290f442f4c27b510538d7c1f7b5e27467efc5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105545"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246655"
 ---
 # <a name="validate-oem-packages"></a>OEM パッケージの検証
 

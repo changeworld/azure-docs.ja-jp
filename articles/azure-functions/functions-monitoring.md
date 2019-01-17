@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: da676b5d1cb3c25adc72d04882915ee0440c2d98
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002333"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121228"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
-[Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../application-insights/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、システムによって生成されたログ ファイルを Functions が Application Insights に送信するように構成する方法を示します。
+[Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、システムによって生成されたログ ファイルを Functions が Application Insights に送信するように構成する方法を示します。
 
 ![Application Insights メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
@@ -329,7 +329,7 @@ v2.x ランタイムでは、[.NET Core のログ記録フィルター階層](ht
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../application-insights/app-insights-sampling.md)機能が備わっています。 Application Insights では、受信テレメトリの割合が特定のしきい値を超えると、受信した項目の一部がランダムに無視され始めます。 1 秒あたりの項目の最大数に対する既定の設定は 5 です。 [host.json](functions-host-json.md) でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能が備わっています。 Application Insights では、受信テレメトリの割合が特定のしきい値を超えると、受信した項目の一部がランダムに無視され始めます。 1 秒あたりの項目の最大数に対する既定の設定は 5 です。 [host.json](functions-host-json.md) でサンプリングを構成できます。  次に例を示します。
 
 ### <a name="version-2x"></a>バージョン 2.x 
 
@@ -360,7 +360,7 @@ Application Insights には、負荷がピークのときにテレメトリ デ�
 ```
 
 > [!NOTE]
-> [サンプリング](../application-insights/app-insights-sampling.md)は、既定で有効になっています。 データがないと思われる場合は、特定の監視シナリオに合わせてサンプリング設定を調整するだけで済みます。
+> [サンプリング](../azure-monitor/app/sampling.md)は、既定で有効になっています。 データがないと思われる場合は、特定の監視シナリオに合わせてサンプリング設定を調整するだけで済みます。
 
 ## <a name="write-logs-in-c-functions"></a>C# 関数でログを書き込む
 
@@ -414,7 +414,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 C# スクリプト関数では、`ILogger` 上の `LogMetric` 拡張メソッドを使用して、Application Insights でのカスタム メトリックを作成できます。 メソッド呼び出しの例を次に示します。
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 [.NET 用 Application Insights API ](#custom-telemetry-in-c-functions) を使用して `TrackMetric` を呼び出す代わりに、このコードを使用できます。
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>カスタム メトリックのログ記録  
 
-Node.js 関数では、`context.log.metric` メソッドを使用して、Application Insights でカスタム メトリックを作成できます。 メソッド呼び出しの例を次に示します。
+Functions Runtime の[バージョン 1.x](functions-versions.md#creating-1x-apps) で Node.js 関数を実行すると、`context.log.metric` メソッドを使用して、Application Insights でカスタム メトリックを作成できます。 このメソッドは、バージョン 2.x では現在サポートされていません。 メソッド呼び出しの例を次に示します。
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 [Application Insights 用 Node.js SDK ](#custom-telemetry-in-javascript-functions) を使用して `trackMetric` を呼び出す代わりに、このコードを使用できます。

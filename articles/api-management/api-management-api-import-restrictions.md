@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: c55a80749506b0a03af2f8c5f0179b67c8a78d15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016744"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106826"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて
@@ -47,6 +47,7 @@ WSDL ファイルは、SOAP パススルー API の作成に使用されるか�
 * **WCF wsHttpBinding** - Windows Communication Foundation を使用して作成した SOAP サービスでは、basicHttpBinding を使用する必要があります。wsHttpBinding はサポートされていません。
 * **MTOM** - MTOM を使用するサービスは、動作する "<em>可能性があります</em>"。 現時点では、正式なサポートは提供されていません。
 * **再帰** - APIM では、再帰的に定義される型 (自身の配列を参照する型など) はサポートされていません。
+* **複数の名前空間** - 1 つのスキーマで複数の名前空間を使用できますが、メッセージ部分を定義するために使用できるのはターゲット名前空間だけです。 ターゲット以外の、他の入力または出力要素の定義に使用される名前空間は保持されません。 そのような WSDL ドキュメントをインポートできますが、エクスポート時に、すべてのメッセージ部分は WSDL のターゲット名前空間になります。
 
 ## <a name="wadl"> </a>WADL
 現時点では、WADL のインポートに関する既知の問題はありません。

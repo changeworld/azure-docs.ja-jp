@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/13/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 35b3e6d59cdb1edc59aa211954b8a69a3ce51bc5
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.reviewer: unknown
+ms.openlocfilehash: 4c7c149a9541af0417e7548c78ab3dc9a8084ec6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632207"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247352"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>チュートリアル: サブスクリプションの作成とテスト
 

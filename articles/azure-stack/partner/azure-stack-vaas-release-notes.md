@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8b0c7bf97592309d68313ef7cc2a919f7aa1c324
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644966"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106275"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 
@@ -49,7 +49,7 @@ ms.locfileid: "49644966"
 
 - VaaS の前提条件と VHD の更新
 
-    パッケージ検証時の問題に対処するために、`Install-VaaSPrerequisites` に、クラウド管理者の資格情報が必要になりました。 「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」のドキュメントが次のように更新されました。
+    ソリューション検証時の問題に対処するために、`Install-VaaSPrerequisites` に、クラウド管理者の資格情報が必要になりました。 「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」のドキュメントが次のように更新されました。
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +76,7 @@ ms.locfileid: "49644966"
 
   - パッケージの署名の通知
 
-    パッケージ検証ワークフローの一環として OEM カスタマイズ パッケージが提出されると、パッケージ形式が検証され、公開されている仕様に従っているかどうかが確認されます。 パッケージが準拠していない場合、実行は失敗します。 テナントの登録済みの Azure Active Directory 連絡先の電子メール アドレスに電子メール通知が送信されます。
+    ソリューション検証ワークフローの一環として OEM カスタマイズ パッケージが提出されると、パッケージ形式が検証され、公開されている仕様に従っているかどうかが確認されます。 パッケージが準拠していない場合、実行は失敗します。 テナントの登録済みの Azure Active Directory 連絡先の電子メール アドレスに電子メール通知が送信されます。
 
   - 対話型テスト カテゴリ
 

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: ee336fb5a60998aaac1518a85b8b92f63d9d4b64
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.reviewer: unknown
+ms.openlocfilehash: 61afc8a736025763f950307fdbb78bb21577b22f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318131"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244207"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 [Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 Azure Stack オペレーターは、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
 

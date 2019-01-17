@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013238"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101719"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor のパフォーマンスに関する推奨事項
 
@@ -39,11 +39,6 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 
 SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)」を参照してください。
 
-## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Azure Cache for Redis のパフォーマンスと信頼性の向上
-
-Advisor は、メモリの高使用率、サーバーの負荷、ネットワークの帯域幅、または大量のクライアント接続がパフォーマンスに悪影響を与える可能性がある Azure Cache for Redis インスタンスを識別します。 Advisor は、潜在的な問題を回避するためのベスト プラクティスの推奨事項も提示します。 Azure Cache for Redis の推奨事項の詳細については、[Azure Cache for Redis Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor) に関するページをご覧ください。
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>App Service のパフォーマンスと信頼性の向上
 
 Azure Advisor は、App Services のエクスペリエンスを向上させ、関連するプラットフォームの機能を検出するためのベスト プラクティスの推奨事項を統合します。 App Services に関する推奨事項の例を次に示します。
@@ -52,6 +47,16 @@ Azure Advisor は、App Services のエクスペリエンスを向上させ、�
 
 App Services に関する推奨事項の詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)を参照してください。
 
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Managed Disks を使用してディスク I/O スロットリングを防ぐ
+
+Advisor では、スケーラビリティ ターゲットに達しているストレージ アカウントに属している仮想マシンが識別されます。 これにより、I/O スロットリングを受けやすくなります。 Advisor では、これらの仮想マシンで Managed Disks を使用してパフォーマンスの低下を防ぐことが推奨されます。
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Premium Storage を使用して仮想マシンのディスクのパフォーマンスと信頼性を向上させる
+
+Advisor では、ストレージ アカウントでトランザクション量の多い Standard ディスクがある仮想マシンが識別されて、Premium ディスクへのアップグレードが推奨されます。 
+
+Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage アカウントを使用する仮想マシンのディスクでは、ソリッド ステート ドライブ (SSD) にデータを格納します。 アプリケーションで最適なパフォーマンスを実現するには、高い IOPS を必要とする仮想マシン ディスクは Premium Storage に移行することをお勧めします。
+
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>SQL データ ウェアハウス テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
 
 データ スキューは、ワークロードの実行時に不要なデータの移動やリソースのボトルネックを引き起こす可能性があります。 Advisor は 15% を超える分散データスキューを検出し、データの再分散とテーブルの分散キーの再選択を行うことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
@@ -59,6 +64,14 @@ App Services に関する推奨事項の詳細については、「[Azure App Se
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>SQL データ ウェアハウス テーブルの古いテーブル統計情報を作成するか更新してクエリのパフォーマンスを向上させる
 
 Advisor は、最新の[テーブル統計](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)状態がないテーブルを識別し、テーブル統計を作成または更新することをお勧めします。 SQL データウェアハウスのクエリ オプティマイザーは、最新の統計を使用してクエリ結果のカーディナリティまたは行数を推定して、最速のパフォーマンスをもたらす高品質のクエリ プランを作成できるようにします。
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>スケールアップして SQL Data Warehouse テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
+
+Azure Advisor では、SQL Data Warehouse でキャッシュ使用率が高い場合と、ヒット率が低い場合が検出されます。 これは、SQL Data Warehouse のパフォーマンスに影響を与える可能性がある高いキャッシュ削除を示します。 Advisor では、SQL Data Warehouse をスケールアップし、ワークロードに十分なキャッシュ容量が割り当てられるようにすることが推奨されます。
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
+
+Advisor では、レプリケートされたテーブルではないが、変換によってメリットがあるテーブルが識別されて、これらのテーブルを変換することが推奨されます。 推奨は、レプリケートされるテーブルのサイズ、列の数、テーブルの分散の種類、および SQL Data Warehouse のテーブルのパーティションの数の基づいています。 コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法について詳しくは、「[SQL Data Warehouse のレコメンデーション](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)」をご覧ください。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>ストレージ アカウントを Azure Resource Manager に移行して最新の Azure 機能のすべてを手に入れる
 

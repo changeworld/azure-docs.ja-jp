@@ -5,6 +5,7 @@ description: このクイックスタートでは、Azure CLI を使用してパ
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
-ms.openlocfilehash: 60cdf251d9a862f8bae80f4f782c6ad94c0b85ce
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18c5b8f31b2a912eade360ebc2c5845782667250
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260771"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230222"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するロード バランサーを作成する
 

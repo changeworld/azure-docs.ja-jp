@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 18ca854f1e04127a900c1b753245ed6e2a331d68
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b98b42be170c37710435d1aad61707a4ed01851f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628170"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214422"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 
@@ -49,8 +49,8 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 | コマンド | メモ |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | リソース グループまたはサブスクリプション内の指定された Storage アカウントまたはすべての Storage アカウントを取得します。 |
-| [Get-AzStorageContainer](/powershell/module/azure.storage/get-AzStoragecontainer) | ストレージ アカウントに関連付けられているストレージ コンテナーを一覧表示します。 |
-| [Remove-AzStorageContainer](/powershell/module/azure.storage/remove-AzStoragecontainer) | 指定されたストレージ コンテナーを削除します。 |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | ストレージ アカウントに関連付けられているストレージ コンテナーを一覧表示します。 |
+| [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | 指定されたストレージ コンテナーを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 

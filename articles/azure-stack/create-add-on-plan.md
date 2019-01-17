@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.custom: mvc
 ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 0a7cf008dd2d2656153d7f1d70f71b9832be5d81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: unknown
+ms.openlocfilehash: c6b86a2cebccfde27841dca64cf24ca4f1be0f7b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157804"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247588"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack のアドオン プラン
 

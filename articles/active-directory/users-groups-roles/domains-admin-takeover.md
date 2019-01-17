@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837173"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121194"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
-この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)」をご覧ください。
+この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」をご覧ください
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>非管理対象ディレクトリを引き継ぐ方法を決定する
 管理者の引き継ぎのプロセスでは、「[カスタム ドメイン名を Azure Active Directory に追加する](../fundamentals/add-custom-domain.md)」で説明されているように、所有権を証明できます。 次のセクションでは管理者エクスペリエンスを詳細に説明しますが、概要を以下に示します。
@@ -41,7 +41,7 @@ Office 365 など SharePoint と OneDrive が搭載されている一部の製�
 
 3. Power BI からの確認の電子メールで、**[Yes, that's me]\(はい、私です\)** を選びます。
 
-4. Power BI ユーザー アカウントで、[Office 365 管理センター](https://portal.office.com/adminportal/Home)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
+4. Power BI ユーザー アカウントで、[Office 365 管理センター](https://portal.office.com/admintakeover)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
   
   ![[管理者になる] の最初のスクリーン ショット](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ DNS TXT レコードがドメイン名のレジストラーで確認済みの場
 
 上記の手順を完了すると、Office 365 の Fourth Coffee テナントのグローバル管理者になります。 お使いの他の Azure サービスとドメイン名を統合するには、ドメイン名を Office 365 から削除して、Azure の別の管理対象テナントに追加できます。
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD の管理対象テナントにドメイン名を追加する 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD の管理対象テナントにドメイン名を追加する
 
-1. [Office 365 管理センター](https://portal.office.com/adminportal/Home)を開きます。
+1. [Office 365 管理センター](https://portal.office.com/admintakeover)を開きます。
 2. **[ユーザー]** タブを選択し、カスタム ドメイン名を使用していない *user@fourthcoffeexyz.onmicrosoft.com* のような名前で、新しいユーザー アカウントを作成します。 
 3. 新しいユーザー アカウントに Azure AD テナントのグローバル管理者特権が付与されていることを確認します。
 4. Office 365 管理センターで **[ドメイン]** タブを開き、ドメイン名を選択して **[削除]** を選びます。 

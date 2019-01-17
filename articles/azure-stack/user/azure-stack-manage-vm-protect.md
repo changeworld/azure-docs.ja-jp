@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: hector.linares
-ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: hectorl
+ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191531"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243641"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure Stack にデプロイされた仮想マシンの保護
 

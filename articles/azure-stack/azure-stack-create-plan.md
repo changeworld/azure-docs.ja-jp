@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 6399e1838b00fc533ab42a76e4f1f1667e3a434a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: unknown
+ms.openlocfilehash: 7a3a87c70402374bea6357d1b89a19938ca08868
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159521"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243527"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
 

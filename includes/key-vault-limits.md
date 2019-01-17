@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: efa367157a8fd896cdc9680bf2ab6ba6a9e3dbb0
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429995"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084006"
 ---
 キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
 
@@ -23,6 +23,9 @@ ms.locfileid: "53429995"
 |ECC P-521|5|1,000|10|2000|
 |ECC SECP256K1|5|1,000|10|2000|
 |
+
+> [!NOTE]
+> 上記のしきい値は重み付けされ、合計に対して適用されます。 125 個の RSA-HSM-4k 操作と 0 個の RSA-HSM-2k、または 124 個の RSA-HSM-4k と 16 個の RSA-HSM-2k を行うことができます。 その後は、同じ 10 秒間隔で、他の操作による AKV クライアント例外が発生します。
 
 > [!NOTE]
 > 以下の表を見るとわかるように、ソフトウェア ベースのキーでは 10 秒あたり 2000 トランザクションが、HSM ベースのキーでは 10 秒あたり 1000 トランザクションが許容されます。 ソフトウェア ベースの 3072 キーと 2048 キーのトランザクションの比率は 500 対 2000 (0.4) です。 つまり、ユーザーが 3072 キーのトランザクションを 10 秒間に 500 回実行した場合、上限に達してそれ以上のキーの操作は行えません。 

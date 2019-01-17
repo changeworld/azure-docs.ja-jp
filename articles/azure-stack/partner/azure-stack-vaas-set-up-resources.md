@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 58c69840e7b8ebdc2bd367859184ab54460c9426
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: aa4e8cf0745f3af3d16369e31129f0603e6402e6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103479"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244751"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル:サービスとしての検証のためのリソースを設定する
 

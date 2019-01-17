@@ -5,6 +5,7 @@ description: このチュートリアルでは、Azure portal を使用して、
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262352"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232619"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -54,17 +55,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ポータルの左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順に選択します。 
    
 1. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
-   - **[サブスクリプション]** > **[リソース グループ]**:ドロップダウンから **[MyResourceGroupLB]** を選択します。
-   - **[インスタンスの詳細]** > **[仮想マシン名]**:「*MyVM1*」と入力します。
+   - **[サブスクリプション]** > **[リソース グループ]**: ドロップダウンから **[MyResourceGroupLB]** を選択します。
+   - **[インスタンスの詳細]** > **[仮想マシン名]**: 「*MyVM1*」と入力します。
    - **[インスタンスの詳細]** > **[可用性オプション]**: 
      1. ドロップダウン メニューから **[可用性セット]** を選択します。 
      2. **[新規作成]** を選択し、「*MyAvailabilitySet*」と入力して **[OK]** を選択します。
    
-1. **[ネットワーク]** タブまたは **[次へ:ディスク]** を選択してから **[次へ:ネットワーク]** を選択します。 
+1. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。 
    
    以下が選択されていることを確認します。
    - **[仮想ネットワーク]**:**MyVNet**
-   - **[サブネット]**:**MyBackendSubnet**
+   - **[サブネット]**: **MyBackendSubnet**
    
    **[ネットワーク セキュリティ グループ]**:
    1. **[Advanced] \(詳細設定)** を選択します。 
@@ -119,7 +120,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    - **[名前]**:「*MyBackendPool*」と入力します。
    - **[関連付け先]**:ドロップダウン メニューから **[可用性セット]** を選択します。
-   - **[可用性セット]**:**[MyAvailabilitySet]** を選択します。
+   - **[可用性セット]**: **[MyAvailabilitySet]** を選択します。
    
 1. **[ターゲット ネットワーク IP 構成の追加]** を選択します。 
    1. **[MyVM1]** と **[MyVM2]** をバックエンド プールに追加します。
@@ -147,11 +148,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[正常性プローブの追加]** ページで、以下の値を入力または選択します。
    
    - **[名前]**:「*MyHealthProbe*」と入力します。
-   - **[プロトコル]**:ドロップダウン メニューから **[HTTP]** を選択します。 
-   - **[ポート]**:「*80*」と入力します。 
-   - **[パス]**:既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
-   - **[間隔]**:「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
-   - **[異常のしきい値]**:「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
+   - **[プロトコル]**: ドロップダウンから **[HTTP]** を選択します。 
+   - **[ポート]**: 「*80*」と入力します。 
+   - **[パス]**: 既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
+   - **[間隔]**: 「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
+   - **[異常のしきい値]**: 「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
    
 1. **[OK]** を選択します。
    
@@ -174,10 +175,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[名前]**:「*MyLoadBalancerRule*」と入力します。
    - **[フロントエンド IP アドレス]**:指定されていない場合は「*LoadBalancerFrontEnd*」と入力します。
    - **[プロトコル]**:**[TCP]** を選択します。
-   - **[ポート]**:「*80*」と入力します。
+   - **[ポート]**: 「*80*」と入力します。
    - **[バックエンド ポート]**:「*80*」と入力します。
-   - **[バックエンド プール]**:**[MyBackendPool]** を選択します。
-   - **[正常性プローブ]**:**[MyHealthProbe]** を選択します。 
+   - **[バックエンド プール]**: **[MyBackendPool]** を選択します。
+   - **[正常性プローブ]**: **[MyHealthProbe]** を選択します。 
    
 1. **[OK]** を選択します。
    
