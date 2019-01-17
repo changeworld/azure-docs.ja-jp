@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247298"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189390"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
@@ -31,7 +31,7 @@ ms.locfileid: "51247298"
 
 * *テーマ*: デスクトップ テーマやタスク バーの設定などの機能が含まれています。
 * *Internet Explorer の設定*: 最近開いたタブ、お気に入りなどが含まれています。
-* *Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
+* *Microsoft Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
 * *パスワード*: インターネット パスワード、Wi-Fi プロファイルなどが含まれています。
 * *言語設定*: キーボード レイアウト、システム言語、日付と時刻などの設定が含まれています。
 * *簡単操作機能*: ハイ コントラスト テーマ、ナレーター、拡大鏡などがあります。

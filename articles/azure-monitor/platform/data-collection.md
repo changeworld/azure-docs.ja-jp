@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b96a00fb5dbf96a7b57adbaaacf24af319d86950
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718964"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215390"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor によって収集される監視データ
 [Azure Monitor](../overview.md) は、アプリケーションと、それらが依存するリソースを監視するのに役立つサービスです。 この機能の中心にあるのは、監視対象のリソースからのテレメトリとその他のデータのストレージです。 この記事では、このデータが Azure Monitor によってどのように格納され、使用されるかを詳細に説明します。
@@ -156,7 +156,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 Azure Monitor のすべてのログ データは、[データ エクスプローラーのクエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/portals.md) を使用して、Azure portal でクエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。 [Azure monitoring REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用してログを取得することもできます。
 
 > [!IMPORTANT]
-> Application Insights からのデータは、Azure Monitor の他のログ データとは別のパーティションに格納されます。 これは他のログ データと同じ機能をサポートしていますが、このデータにアクセスするには、[Application Insights コンソール](/azure-monitor/app/analytics.md)または [Application Insights API](https://dev.applicationinsights.io/) を使用する必要があります。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、その他のログ データと一緒にアプリケーション データを分析することができます。
+> Application Insights からのデータは、Azure Monitor の他のログ データとは別のパーティションに格納されます。 これは他のログ データと同じ機能をサポートしていますが、このデータにアクセスするには、[Application Insights コンソール](../app/analytics.md)または [Application Insights API](https://dev.applicationinsights.io/) を使用する必要があります。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、その他のログ データと一緒にアプリケーション データを分析することができます。
 
 ![ログ](media/data-collection/logs.png)
 

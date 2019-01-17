@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321276"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190838"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -74,15 +74,19 @@ ms.locfileid: "49321276"
 ![スケールアウト スライダー](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+
 **sync** 操作を使用します。
 
 #### <a name="synchronize-a-model"></a>モデルを同期する   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>同期状態を取得する  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 PowerShell を使用する前に、[最新の AzureRM モジュールをインストールまたは更新します](https://github.com/Azure/azure-powershell/releases)。 
 
 クエリ レプリカの数を設定するには、[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)を使用します。 省略可能な `-ReadonlyReplicaCount` パラメーターを指定します。
@@ -103,7 +107,7 @@ SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字
 
 **問題:** ユーザーに "**Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'**" (接続モード 'ReadOnly' でサーバー '<サーバーの名前>' インスタンスが見つかりません) というエラーが表示されます。
 
-**解決方法:** **[処理中のサーバーと照会中のプールを分けてください]** オプションが選択されているとき、既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 同期が完了していないため、クエリ プールのレプリカがオンラインになっていない場合、リダイレクトのクライアント接続は失敗することがあります。 接続の失敗を防ぐには、スケールアウト/同期操作が完了するまで、処理中のサーバーと照会中のプールを分けないことを選択してください。 メモリと QPU のメトリックを使用し、同期の状態を監視できます。
+**解決策:****[処理中のサーバーと照会中のプールを分けてください]** オプションが選択されているとき、既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 同期が完了していないため、クエリ プールのレプリカがオンラインになっていない場合、リダイレクトのクライアント接続は失敗することがあります。 接続の失敗を防ぐには、スケールアウト/同期操作が完了するまで、処理中のサーバーと照会中のプールを分けないことを選択してください。 メモリと QPU のメトリックを使用し、同期の状態を監視できます。
 
 ## <a name="related-information"></a>関連情報
 

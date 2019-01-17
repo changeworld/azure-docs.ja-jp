@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 308623b4643724d95777d7e21d1138f808e9c1c9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055902"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190427"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -36,7 +36,7 @@ ms.locfileid: "47055902"
 - Active Directory でユーザーが属しているグループ数が多すぎる場合、ユーザーの Kerberos チケットが大きすぎて処理できなくなり、シームレス SSO が失敗する可能性があります。 Azure AD HTTPS 要求のヘッダーは最大サイズが 50 KB です。Cookie など、他の Azure AD アーティファクト (通常、2 から 5 KB) に対応するには、Kerberos チケットのサイズを、制限より小さくする必要があります。 ユーザーのグループ メンバーシップを減らし、再試行することをお勧めします。
 - 30 以上の Active Directory フォレストを同期している場合は、Azure AD Connect によるシームレス SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-the-feature)にします。
 - Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com)) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
-- シームレス SSO では、Kerberos のために **RC4_HMAC_MD5** の暗号化の種類を使用します。 Active Directory の設定で **RC4_HMAC_MD5** の暗号化の種類の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** の順に選択して、**[RC4_HMAC_MD5]** のポリシーの値が **[有効]** になっていることを確認してください。 さらに、シームレス SSO では他の暗号化の種類を使用できないため、それらが **[無効]** になっていることを確認してください。
+- シームレス SSO では、Kerberos のために **RC4_HMAC_MD5** の暗号化の種類を使用します。 Active Directory の設定で **RC4_HMAC_MD5** の暗号化の種類の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ:** **Kerberos で許可する暗号化の種類を構成する]** の順に選択して、[RC4_HMAC_MD5] のポリシーの値が **[有効]** になっていることを確認してください。 さらに、シームレス SSO では他の暗号化の種類を使用できないため、それらが **[無効]** になっていることを確認してください。
 
 ## <a name="check-status-of-feature"></a>機能の状態の確認
 
@@ -46,7 +46,7 @@ ms.locfileid: "47055902"
 
 クリックすると、シームレス SSO が有効になっているすべての AD フォレストが表示されます。
 
-![Azure Active Directory 管理センター: シームレス SSO ウィンドウ](./media/tshoot-connect-sso/sso13.png)
+![Azure Active Directory 管理センター: シームレス SSO のウィンドウ](./media/tshoot-connect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Azure Active Directory 管理センターでのサインイン失敗の理由 (Premium ライセンスが必要)
 
@@ -104,18 +104,18 @@ ms.locfileid: "47055902"
 
 トラブルシューティングを行っても改善しなかった場合は、テナントでシームレス SSO 機能を手動でリセットできます。 Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>手順 1: Seamless SSO PowerShell モジュールをインポートする
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>手順 1:Seamless SSO PowerShell モジュールのインポート
 
 1. 最初に [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
 2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーを参照します。
 3. `Import-Module .\AzureADSSO.psd1` コマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>手順 2: シームレス SSO が有効になっている Active Directory フォレストのリストを取得する
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>手順 2:シームレス SSO が有効になっている Active Directory フォレストのリストを取得する
 
 1. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 2. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている Active Directory フォレストの一覧 ("ドメイン" リストを参照) が表示されます。
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>手順 3: 機能を設定した各 Active Directory フォレストのシームレス SSO を無効にする
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>手順 3:機能を設定した各 Active Directory フォレストのシームレス SSO を無効にする
 
 1. `$creds = Get-Credential` を呼び出します。 求められたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
 
@@ -125,7 +125,7 @@ ms.locfileid: "47055902"
 2. `Disable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから `AZUREADSSOACCT` コンピューター アカウントを削除します。
 3. 機能を設定した Active Directory フォレストごとに、前の手順を繰り返します。
 
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>手順 4: 各 Active Directory フォレストのシームレス SSO を有効にする
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>手順 4:各 Active Directory フォレストのシームレス SSO を有効にする
 
 1. `Enable-AzureADSSOForest` を呼び出します。 求められたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
 

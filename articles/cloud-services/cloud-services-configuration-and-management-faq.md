@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386997"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191430"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -208,7 +208,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 この処理を完了すると、次のいずれかの方法を使用して、HTTP/2 が有効かどうかを確認できるようになります。
 
 - IIS ログでプロトコルのバージョンを有効にして、IIS ログを確認します。 ログには HTTP/2 が表示されます。 
-- Internet Explorer/Edge で F12 Developer Tool を有効にして、[ネットワーク] タブに切り替えてプロトコルを確認します。 
+- Internet Explorer/Microsoft Edge で F12 Developer Tool を有効にして、[ネットワーク] タブに切り替えてプロトコルを確認します。 
 
 詳細については、「[HTTP/2 on IIS](https://blogs.iis.net/davidso/http2)」(IIS 上の HTTP/2) を参照してください。
 

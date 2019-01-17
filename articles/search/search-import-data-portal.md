@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ceca9b8e89a963cd9a9226be143d24ed5429747b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8eb319538b409287538dd1e9d2856d9080d671b8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316475"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188795"
 ---
 # <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Azure portal を使用して Azure Search インデックスにデータをインポートする方法
 

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.reviewer: John.Haskin
-ms.openlocfilehash: 245826e816f77db3394d1fc3858246ec5d1d605a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.reviewer: johnhas
+ROBOTS: NOINDEX
+ms.openlocfilehash: a90ec05fa3224033436830e7666c7eb81ff881f6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102008"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246995"
 ---
 # <a name="create-an-oem-package"></a>OEM パッケージの作成
 

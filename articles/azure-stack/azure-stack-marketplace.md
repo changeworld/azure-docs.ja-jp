@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 6c8a2cd746f1090e802f90a49f9a1f7469e98f5f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: unknown
+ms.openlocfilehash: df1d263b321361c00ceb37c84858dd2c62033228
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121522"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245351"
 ---
 # <a name="azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 

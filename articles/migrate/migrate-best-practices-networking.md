@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994965"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215271"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのネットワークの設定に関するベスト プラクティス
 
@@ -185,7 +185,7 @@ VNet をデプロイすると、Azure によって既定で DNS サーバーが�
 **詳細情報:**
 
 - 互換性のあるオンプレミス VPN デバイスを[確認する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。
-- VPN ゲートウェイの[概要を理解する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway)。
+- VPN ゲートウェイの[概要を理解する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 - 高可用性 VPN 接続[について学習する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)。
 - VPN ゲートウェイの計画と設計[について学習する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)。
 - VPN ゲートウェイの設定を[確認する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)。

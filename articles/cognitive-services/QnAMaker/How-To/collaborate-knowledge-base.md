@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: ec26e7ab535084fa5d8f52c11c671212eeab0f13
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: de9ba7e9a30c38bf096b7fc0a25a3925d938f604
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119835"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265313"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用
 

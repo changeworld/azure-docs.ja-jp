@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e2feb1f5b0cad9a05f796d160a0a641622d6b59
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717961"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189221"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -161,6 +161,8 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 ## <a name="next-steps"></a>次の手順
 
 **ヘルプ**、**キャンセル**、および**あいさつ**の意図を処理するための、LUIS の意図とボット サービスのダイアログを追加します。 Web アプリ ボットのトレーニング、公開、および[ビルド](#build-the-bot)を必ず行ってください。 LUIS とボットの意図は同じである必要があります。
+
+会話型ボットのある他の[サンプル](https://github.com/Microsoft/AI)を確認してください。 
 
 > [!div class="nextstepaction"]
 > [意図の追加](./luis-how-to-add-intents.md)

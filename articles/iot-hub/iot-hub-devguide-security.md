@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6d15715379b06f55e1e190ebf5410995e3703d70
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053332"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201059"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -418,7 +418,7 @@ IoT Hub の [ID レジストリ](iot-hub-devguide-identity-registry.md)を使用
 4. デバイス/モジュールは、IoT Hub で直接トークンを使用します。
 
 > [!NOTE]
-> .NET クラス [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) または Java クラス [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token) を使用して、トークン サービスでトークンを作成できます。
+> .NET クラス [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) または Java クラス [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) を使用して、トークン サービスでトークンを作成できます。
 
 トークン サービスは、必要に応じて、トークンの有効期限を設定できます。 トークンの期限が切れた時点で、IoT Hub はデバイス/モジュールの接続を切断します。 その後、デバイス/モジュールは新しいトークンをトークン サービスに要求する必要があります。 有効期限までの期間が短いと、デバイス/モジュールとトークン サービスの両方で負荷が増加します。
 

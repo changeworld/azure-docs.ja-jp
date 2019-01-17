@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb1ac992f174327d08a606549da7b2b094a7a88e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 62be7412c93b846980ffab00b9964585e3644140
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157991"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319202"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
@@ -326,11 +326,11 @@ pipeline_run.wait_for_completion()
 
 3. 呼び出されるときにパラメーターを受け取るこのパイプラインを発行します。
 
-```python
-published_pipeline1 = pipeline1.publish(
-    name="My_Published_Pipeline", 
-    description="My Published Pipeline Description")
-```
+   ```python
+   published_pipeline1 = pipeline1.publish(
+       name="My_Published_Pipeline", 
+       description="My Published Pipeline Description")
+   ```
 
 ## <a name="run-a-published-pipeline"></a>発行されたパイプラインを実行する
 

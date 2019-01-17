@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024911"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332644"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -73,7 +73,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
     **[XCopy Installation]\(XCopy のインストール\)** を選択した場合は、readme.htm ファイルに記載されている手順を実行します。 (XCopy のインストーラーではなく) UI があるインストーラーを選択することをお勧めします。
 
-    プロバイダーのインストール後、サービス アプレットまたは Data Management Gateway 構成マネージャーを使用して、コンピューターで Data Management Gateway ホスト サービスを再開します。  
+    プロバイダーのインストール後、サービス アプレットまたは Data Management Gateway 構成マネージャーを使用して、コンピューターで Data Management Gateway ホスト サービスを再開します。
 
 コピー ウィザードを使用してコピー パイプラインを作成する場合は、ドライバーのタイプも自動的に決定されます。 ゲートウェイのバージョンが 2.7 より前か、シンクとして Oracle を選択していない限り、既定で Microsoft ドライバーが使用されます。
 
@@ -87,12 +87,12 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
+1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
 2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Oralce データベースから Azure BLOB ストレージにデータをコピーする場合、リンクされたサービスを 2 つ作成して、Oralce データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 Oralce に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」を参照してください。
 3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
-4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。 
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。
 
-ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、[JSON の例](#json-examples-for-copying-data-to-and-from-oracle-database)を参照してください。
+ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、[JSON の例](#json-examples-for-copying-data-to-and-from-oracle-database)を参照してください。
 
 次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -136,8 +136,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
-User Id=<user name>;Password=<password>;",
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>))); User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
@@ -146,7 +145,7 @@ User Id=<user name>;Password=<password>;",
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。
 
 構造、可用性、ポリシーなどのデータセット JSON ファイルのセクションは、どのデータセットの種類 (Oracle、Azure BLOB ストレージ、Azure Table ストレージなど) でも同様です。
 
@@ -158,7 +157,7 @@ User Id=<user name>;Password=<password>;",
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。
 
 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
@@ -188,7 +187,7 @@ User Id=<user name>;Password=<password>;",
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。   
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。
 
 **例:Oracle から Azure Blob Storage にデータをコピーする**
 
@@ -254,12 +253,12 @@ User Id=<user name>;Password=<password>;",
             "anchorDateTime": "2014-02-27T12:00:00",
             "frequency": "Hour"
         },
-        "policy": {     
-            "externalData": {        
-                "retryInterval": "00:01:00",    
-                "retryTimeout": "00:10:00",       
-                "maximumRetry": 3       
-            }     
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
+            }
         }
     }
 }
@@ -327,16 +326,16 @@ User Id=<user name>;Password=<password>;",
 
 **コピー アクティビティのあるパイプライン**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。  **oracleReaderQuery** プロパティを使用して指定されている SQL クエリでは、過去のデータが選択され、コピーされます。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。 **oracleReaderQuery** プロパティを使用して指定されている SQL クエリでは、過去のデータが選択され、コピーされます。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for a copy activity",
-        "activities":[  
+        "activities":[
             {
                 "name": "OracletoBlob",
                 "description": "copy activity",
@@ -378,7 +377,7 @@ User Id=<user name>;Password=<password>;",
 
 **例:Azure Blob Storage から Oracle にデータをコピーする**
 
-このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを*直接*コピーできます。  
+このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを*直接*コピーできます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -503,16 +502,16 @@ User Id=<user name>;Password=<password>;",
 
 **コピー アクティビティのあるパイプライン**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **BlobSource** に設定され、**sink** の型が **OracleSink** に設定されています。  
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **BlobSource** に設定され、**sink** の型が **OracleSink** に設定されています。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-05T19:00:00",
         "description":"pipeline with a copy activity",
-        "activities":[  
+        "activities":[
             {
                 "name": "AzureBlobtoOracle",
                 "description": "Copy Activity",
@@ -558,7 +557,7 @@ User Id=<user name>;Password=<password>;",
 
 **エラー メッセージ**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.  
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
 
 **考えられる原因**
 
@@ -584,7 +583,7 @@ User Id=<user name>;Password=<password>;",
 
 Oracle データベースでの日付の構成方法に基づいて、コピー アクティビティ内のクエリ文字列を調整する必要があります。 次に例を示します (**to_date** 関数を使用します)。
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle の型マッピング

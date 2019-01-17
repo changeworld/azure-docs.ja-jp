@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191328"
+ms.locfileid: "54201110"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>データ依存ルーティングを使用して、クエリを適切なデータベースにルーティングする
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **key** パラメーターは、要求に対する適切なデータベースを特定するためのシャード マップへのルックアップ キーとして使用されます。
 * **connectionString** は、必要な接続を行うためのユーザーの資格情報のみを渡すために使用されます。 この *connectionString* には、データベース名またはサーバー名は含まれません。メソッドがデータベースとサーバーを特定するために **ShardMap** を使用するためです。
-* 分割やマージの操作の結果、シャード マップが変更されている可能性や、行が他のデータベースに移動している可能性のある環境では、**connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) を **ConnectionOptions.Validate** に設定する必要があります。 この検証では、接続要求がアプリケーションに配信される前に、ターゲット データベースにあるローカルのシャード マップ (グローバル シャード マップではない) に対する簡単なクエリが実行されます。
+* 分割やマージの操作の結果、シャード マップが変更されている可能性や、行が他のデータベースに移動している可能性のある環境では、**connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) を **ConnectionOptions.Validate** に設定する必要があります。 この検証では、接続要求がアプリケーションに配信される前に、ターゲット データベースにあるローカルのシャード マップ (グローバル シャード マップではない) に対する簡単なクエリが実行されます。
 
 ローカルのシャード マップの検証が失敗した (キャッシュが正しくないことが示された) 場合は、シャード マップ マネージャーがグローバル シャード マップに対してクエリを実行し、ルックアップの正しい値を新しく取得します。その後、キャッシュを更新してから適切なデータベース接続を取得して戻します。
 

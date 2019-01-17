@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c94c88aa088745a2ed421bff43c8d87382564a43
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c19b43f652b490ceb86606633f543f4e455b6116
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141477"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189305"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計
 
@@ -60,7 +60,7 @@ Microsoft は、他の主要企業と共に DASH および CENC を積極的に�
 | **クライアント プラットフォーム** | **ネイティブ DRM のサポート** | **ブラウザー/アプリ** | **ストリーミング形式** |
 | --- | --- | --- | --- |
 | **スマート TV、オペレーター STB、OTT STB** |PlayReady (プライマリ)、Widevine、その他 |Linux、Opera、WebKit、その他 |各種形式 |
-| **Windows 10 デバイス (Windows PC、Windows タブレット、Windows Phone、Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>ユニバーサル Windows プラットフォーム |DASH (HLS の場合 PlayReady は非対応)<br/><br/>DASH、Smooth Streaming (HLS の場合 PlayReady は非対応) |
+| **Windows 10 デバイス (Windows PC、Windows タブレット、Windows Phone、Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>ユニバーサル Windows プラットフォーム |DASH (HLS の場合 PlayReady は非対応)<br/><br/>DASH、Smooth Streaming (HLS の場合 PlayReady は非対応) |
 | **Android デバイス (電話、タブレット、TV)** |Widevine |Chrome/EME |DASH、HLS |
 | **iOS (iPhone、iPad)、OS X クライアント、Apple TV** |FairPlay |Safari 8+/EME |HLS |
 

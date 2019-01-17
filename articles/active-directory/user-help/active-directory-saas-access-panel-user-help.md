@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306412"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191039"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>MyApps ポータルのアクセスと使用に関する問題のトラブルシューティング
 
@@ -49,7 +49,7 @@ MyApps ポータルには、JavaScript をサポートする CSS 対応のブラ
 
 次のブラウザーの要件を満たしていることを確認します。
 
-- **Edge**: Windows 10 Anniversary Edition 以降。
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。
 - **Chrome**: Windows 7 以降、Mac OS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 - **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
@@ -57,7 +57,7 @@ MyApps ポータルには、JavaScript をサポートする CSS 対応のブラ
 拡張は次のサイトから直接ダウンロードすることもできます。
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 拡張機能をインストールしても、引き続き問題が発生する場合は、次をお試しください。
@@ -90,7 +90,7 @@ MyApps ポータルには、JavaScript をサポートする CSS 対応のブラ
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
 
 > [!NOTE]
-> こうしたオプションは、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
+> これらのオプションは、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
 
 ## <a name="how-do-i-add-a-new-app"></a>新しいアプリの追加方法
 

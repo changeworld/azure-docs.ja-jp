@@ -1,5 +1,5 @@
 ---
-title: VM 用 Azure Monitor からログを照会する方法 (プレビュー) |Microsoft Docs
+title: Azure Monitor for VMs (プレビュー) からログを照会する方法 | Microsoft Docs
 description: Azure Monitor for VMs ソリューションは、メトリックとログ データを Log Analytics に転送します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 services: azure-monitor
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 676baa6947eaf8b3842b0100657f42a1e6438061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184884"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188433"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>VM 用 Azure Monitor からログを照会する方法 (プレビュー)
+# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics データ ストアにこれらを転送します。  このデータは、Log Analytics で[検索](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 ## <a name="map-records"></a>Map レコード
@@ -48,7 +48,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 |SourceIp |送信元の IP アドレス |
 |DestinationIp |送信先の IP アドレス |
 |DestinationPort |送信先のポート番号 |
-|プロトコル |接続に使用されるプロトコル。  値は *tcp* です。 |
+|Protocol |接続に使用されるプロトコル。  値は *tcp* です。 |
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 

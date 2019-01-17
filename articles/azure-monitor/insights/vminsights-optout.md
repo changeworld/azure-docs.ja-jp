@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor for VMs を使用した監視を無効にする方法 (プレビュー) | Microsoft Docs
+title: Azure Monitor for VMs (プレビュー) を使用した監視を無効にする方法 | Microsoft Docs
 description: この記事では、Azure Monitor for VMs を使用した仮想マシンの監視を中断する方法について説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b65df1489112bf6e9fe44fe4d4a11db76ff6f5b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183711"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191073"
 ---
-# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用した仮想マシンの監視を無効にする方法 (プレビュー)
+# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用した仮想マシンの監視を無効にする方法
 
 仮想マシンの監視を有効にした後で Azure Monitor for VMs を使用した監視が必要でないと決めた場合は、監視を無効にできます。 この記事では、これを 1 つまたは複数の VM で実現する方法を説明します。  
 

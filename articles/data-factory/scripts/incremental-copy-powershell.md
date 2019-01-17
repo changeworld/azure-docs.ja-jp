@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell スクリプト: Azure Data Factory を使用したデータの増分読み込み | Microsoft Docs'
+title: 'PowerShell スクリプト: Azure Data Factory を使用してデータを増分読み込みする | Microsoft Docs'
 description: この PowerShell スクリプトでは、Azure Data Factory を使用して Azure SQL Database から Azure Blob Storage にデータを増分コピーする方法を示します。
 services: data-factory
 author: linda33wj
@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 62f0deeccdd05f4ea9098aab42145be58bf3b328
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a9866061396d3cd7548f7caa2ef0c7b32c1a1980
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124900"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015731"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用したデータの増分読み込み
 このサンプルの PowerShell スクリプトは、最初にソース データ ストアからシンク データ ストアにデータをすべてコピーした後で、新しいレコードまたは更新されたレコードだけをソースからシンクに読み込みます。  

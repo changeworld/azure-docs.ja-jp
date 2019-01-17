@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257378"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188898"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -27,7 +27,7 @@ Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure A
 |課金|容量ベース<br> Enterprise Agreement (EA) のみ|容量ベースまたは従量課金制<br>EA または Cloud Solution Provider (CSP)|
 |ID|AD FS|Azure AD または AD FS|
 |マーケットプレース |サポートされています<br>ライセンス持ち込み (BYOL)|サポートされています<br>ライセンス持ち込み (BYOL)|
-|登録|推奨、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|自動|
+|登録|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|自動|
 |パッチと更新プログラム|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|更新プログラム パッケージはインターネットから<br> Azure Stack に直接ダウンロード可能。|
 
 > [!IMPORTANT]
@@ -118,7 +118,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、対象の Active Directory と通信します。
 
-|type|ポート|プロトコル|
+|type|ポート|Protocol|
 |---------|---------|---------|
 |LDAP|389|TCP と UDP|
 |LDAP SSL|636|TCP|
@@ -278,7 +278,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    > [!IMPORTANT]  
    > Windows Server 2012 または 2012 R2 AD FS を使用している場合は、AD FS MMC スナップインを使用して発行承認規則を構成する必要があります。
 
-4. Internet Explorer または Edge ブラウザーを使用して Azure Stack にアクセスするには、トークンのバインドを無視する必要があります。 無視しないと、サインインの試行が失敗します。 AD FS インスタンスまたはファーム メンバーで、次のコマンドを実行します。
+4. Internet Explorer または Microsoft Edge ブラウザーを使用して Azure Stack にアクセスするには、トークンのバインドを無視する必要があります。 無視しないと、サインインの試行が失敗します。 AD FS インスタンスまたはファーム メンバーで、次のコマンドを実行します。
 
    > [!note]  
    > Windows Server 2012 または 2012 R2 AD FS を使用するとき、この手順は該当しません。 このコマンドをスキップして統合を続けても問題ありません。

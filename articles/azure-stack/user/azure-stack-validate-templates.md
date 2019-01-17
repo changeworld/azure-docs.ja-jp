@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: f6ef1dfdef68136ae129faced7443302e738d5b9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: unknown
+ms.openlocfilehash: 4ec617fe49a3b55ba0608b77a8d1226fae025e6c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810375"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246451"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>テンプレート検証ツールを使用して Azure Stack のテンプレートをチェックする
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 テンプレート検証ツールを使用して、Azure Stack に Azure Resource Manager [テンプレート](azure-stack-arm-templates.md) をデプロイする準備ができているかどうかをチェックできます。 テンプレート検証ツールは Azure Stack ツールの一部として使用できます。 Azure Stack ツールをダウンロードするには、[GitHub からのツールのダウンロード](azure-stack-powershell-download.md)に関する記事に記載されている手順を使用します。
 

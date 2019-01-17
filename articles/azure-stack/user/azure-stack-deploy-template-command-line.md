@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: fec5378b9165ca7e240f52c629c47cdda799ef51
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: unknown
+ms.openlocfilehash: 5d785549ff1cc73c7ff8a5013601276facf372ab
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155186"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247692"
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>コマンド ラインを使った Azure Stack でのテンプレートのデプロイ
 

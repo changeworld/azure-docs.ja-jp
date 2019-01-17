@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2017
 ms.author: jingwang
-ms.openlocfilehash: 3428fb5034435d9f3444347329171d803136177c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944670"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016650"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
@@ -47,7 +46,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureKeyVault** に設定する必要があります。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | [はい] |
 | baseUrl | Azure Key Vault の URL を指定します。 | [はい] |
 
 **オーサリング UI の使用:**
@@ -80,7 +79,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | フィールドの type プロパティは **AzureKeyVaultSecret** に設定する必要があります。 | [はい] |
+| type | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | [はい] |
 | secretName | Azure Key Vault のシークレットの名前。 | [はい] |
 | secretVersion | Azure Key Vault のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ  |
 | store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | [はい] |

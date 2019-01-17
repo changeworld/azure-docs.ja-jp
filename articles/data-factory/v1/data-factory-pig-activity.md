@@ -9,17 +9,16 @@ ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5abd0b07037559b14158a3c314b6ca6ce30ab655
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 48cbd33d4cbaff5d362731d67bbd3d4041e26f89
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045118"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025648"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -41,7 +40,7 @@ ms.locfileid: "37045118"
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Pig アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで Pig クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
+> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、[初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)に関するチュートリアルを完了してください。 
 
 ## <a name="syntax"></a>構文
 
@@ -85,13 +84,13 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |アクティビティの名前 |[はい] |
-| description  |アクティビティの用途を説明するテキストです。 |いいえ  |
+| description |アクティビティの用途を説明するテキストです。 |いいえ  |
 | type |HDInsightPig |[はい] |
 | inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
 | outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |[はい] |
 | linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
-| script (スクリプト) |Pig スクリプトをインラインに指定します |いいえ  |
-| スクリプトのパス |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
+| script |Pig スクリプトをインラインに指定します |いいえ  |
+| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
 
 ## <a name="example"></a>例

@@ -12,19 +12,19 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2afbea68c017805e9bd7db43b03face0705608b7
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6bb3215e63e2fc672cde5746e6a9867df899ee88
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42358749"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016700"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Visual Studio を使用して Azure Resource Manager [テンプレート](azure-stack-arm-templates.md)を作成し、Azure Stack にデプロイできます。 この記事では、Visual Studio を [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) にインストールする手順、または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) を介して Azure Stack を使用する予定の場合に外部コンピューターにインストールする手順について説明します。
 
@@ -68,7 +68,7 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
   Azure Stack Development Kit の URL は `https://management.local.azurestack/external` です。  
   Azure Stack 統合システムの URL は `https://management.[Region}.[External FQDN]` です。
 
-    ![○](./media/azure-stack-install-visual-studio/image5.png)
+    ![X](./media/azure-stack-install-visual-studio/image5.png)
 
 5. **[追加]** を選択します。  
 
@@ -77,17 +77,18 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
     ![ログインして Azure Stack に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image6.png)
 
 6. **[表示]** メニューの **[Cloud Explorer]** を選択します。
-7. **[アカウントの追加]** を選択し、AD FS の資格情報でサインインします。  
 
-    ![○](./media/azure-stack-install-visual-studio/image7.png)
+1. **[アカウントの追加]** を選択し、AD FS の資格情報でサインインします。  
+
+    ![Cloud Explorer](./media/azure-stack-install-visual-studio/image7.png)
 
     Cloud Explorer は使用できるサブスクリプションのクエリを実行します。 使用できるサブスクリプションを 1 つ選択して管理できます。
 
-    ![○](./media/azure-stack-install-visual-studio/image8.png)
+    ![Cloud Explorer](./media/azure-stack-install-visual-studio/image8.png)
 
 8. 既存のリソース、リソース グループ、またはデプロイ テンプレートを参照します。
 
 ## <a name="next-steps"></a>次の手順
 
- - 他の Visual Studio バージョンとの[共存](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事も参照してください。
- - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
+ - 他の Visual Studio バージョンとの[サイド バイ サイド構成](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事を参照してください。
+ - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)。

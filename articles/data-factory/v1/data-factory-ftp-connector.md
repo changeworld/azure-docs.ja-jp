@@ -9,22 +9,21 @@ ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bbbbaab6090941141abd7a2bbd2eac6dbf9fd354
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 52c89804c87348843bb7a4006ab38e4d417740ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051544"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025438"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-ftp-connector.md)
-> * [Version 2 (現在のバージョン)](../connector-ftp.md)
+> * [バージョン 2 (最新バージョン)](../connector-ftp.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の FTP コネクタ](../connector-ftp.md)に関するページを参照してください。
@@ -44,9 +43,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="get-started"></a>作業開始
 さまざまなツールまたは API を使用して、FTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 [コピー ウィザードを使用してパイプラインを作成するチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関する記事で、簡単なチュートリアルをご覧いただけます。
+パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -54,7 +53,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 FTP データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: FTP サーバーから Azure BLOB へのデータのコピー](#json-example-copy-data-from-ftp-server-to-azure-blob)」を参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 FTP データ ストアからデータをコピーするために使用される Data Factory エンティティ用の JSON 定義のサンプルについては、この記事の「[JSON の使用例: FTP サーバーから Azure BLOB にデータをコピーする](#json-example-copy-data-from-ftp-server-to-azure-blob)」セクションを参照してください。
 
 > [!NOTE]
 > サポートされているファイルと使用する圧縮形式に関する詳細は、[Azure Data Factory のファイルおよび圧縮形式](data-factory-supported-file-and-compression-formats.md)を参照してください。
@@ -73,7 +72,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | password |ユーザー (username) のパスワードを指定します。 |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ  |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ  |&nbsp; |
-| ポート |FTP サーバーがリッスンしているポートを指定します。 |いいえ  |21 |
+| port |FTP サーバーがリッスンしているポートを指定します。 |いいえ  |21 |
 | enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ  |true |
 | enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ  |true |
 
@@ -160,9 +159,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
 | fileFilter |すべてのファイルではなく、**folderPath** 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** は FileShare 入力データセットに適用されます。 このプロパティは、Hadoop 分散ファイル システム (HDFS) ではサポートされていません。 |いいえ  |
 | partitionedBy |時系列データに動的な **folderPath** と **fileName** を指定するために使用します。 たとえば、毎時間のデータとしてパラメーター化されている **folderPath** を指定できます。 |いいえ  |
-| format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> コピーしたいファイルがファイルベース ストア間である場合 (バイナリ コピー) は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> コピーしたいファイルがファイルベース ストア間である場合 (バイナリ コピー) は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
-| useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 値は、バイナリ モードの場合は true (既定値)、ASCII の場合は false です。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ  |
+| useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 値は、バイナリ モードの場合は true (既定値)、ASCII の場合は false です。 このプロパティを使用できるのは、関連するリンクされたサービスの種類がFtpServer の場合のみです。 |いいえ  |
 
 > [!NOTE]
 > **fileName** と **fileFilter** は、同時に使用することができません。
@@ -209,7 +208,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | --- | --- | --- | --- |
 | recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON の使用例: FTP サーバーから Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON の使用例:FTP サーバーから Azure BLOB にデータをコピーする
 このサンプルは、FTP サーバーから Azure Blob ストレージにデータをコピーする方法を示します。 ただし、Data Factory のコピー アクティビティを使用して、[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)で説明されているシンクのいずれかにデータを直接コピーすることができます。  
 
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
@@ -287,7 +286,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```JSON
 {

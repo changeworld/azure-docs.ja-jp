@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044775"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190827"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類に関するリファレンス
 
@@ -55,7 +55,7 @@ ms.locfileid: "48044775"
 | <*trigger-type*> | String | トリガーの種類 ("Http" や "ApiConnection" など) | 
 | <*trigger-inputs*> | JSON オブジェクト | トリガーのビヘイビアーを定義する入力 | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
@@ -136,7 +136,7 @@ ms.locfileid: "48044775"
 | <*method-type*> | String | マネージド API と通信するための HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" | 
 | <*api-operation*> | String | 呼び出す対象の API 操作 | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
@@ -307,7 +307,7 @@ ms.locfileid: "48044775"
 | <*method-type*> | String | 指定されたエンドポイントのポーリングに使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" | 
 | <*endpoint-URL*> | String | ポーリング対象エンドポイントの HTTP または HTTPS の URL <p>文字列の最大サイズ: 2 KB | 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
@@ -496,14 +496,14 @@ ms.locfileid: "48044775"
 | 値 | type | 説明 | 
 |-------|------|-------------| 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
+| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
 |||| 
 
 *省略可能*
 
 | 値 | type | 説明 | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
 | <*time-zone*> | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
 | <*one-or-more-hour-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
 | <*one-or-more-minute-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻の分として 0 ～ 59 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
@@ -612,7 +612,7 @@ ms.locfileid: "48044775"
 
 | 値 | type | 説明 | 
 |-------|------|-------------| 
-| <*method-type*> | String | 受信要求でのトリガーの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
+| <*method-type*> | String | 受信要求でのロジック アプリの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | 使用しているエンドポイントの URL で受け入れ可能なパラメーターの相対パス | 
 | <*required-properties*> | Array | 値が必要な 1 つ以上のプロパティ | 
 | <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
@@ -892,7 +892,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 |-------|------|-------------| 
 | <*action-name*> | String | コネクタによって指定されるアクションの名前 | 
 | <*api-name*> | String | 接続に使用される Microsoft マネージド API の名前 | 
-| <*method-type*> | String | API を呼び出すための HTTP メソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
+| <*method-type*> | String | API を呼び出すための HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*api-operation*> | String | 呼び出す対象の API 操作 | 
 |||| 
 
@@ -1072,7 +1072,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 | 値 | type | 説明 | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | String | 呼び出す対象である Azure 関数を表すリソース ID。 この値の形式は次のとおりです。<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
-| <*method-type*> | String | 関数を呼び出すために使用する HTTP メソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" <p>指定しない場合、既定のメソッドは "POST" です。 | 
+| <*method-type*> | String | 関数を呼び出すために使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" <p>指定しない場合、既定のメソッドは "POST" です。 | 
 ||||
 
 *省略可能*
@@ -1340,7 +1340,7 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 | 値 | type | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式を指定する場合は、その式を二重引用符で囲みます。 |
-| <*condition-or-filter*> | String | ソース配列内の項目をフィルター処理するために使用される条件 <p>**注意**: 条件を満たす値がない場合は、アクションによって空の配列が作成されます。 |
+| <*condition-or-filter*> | String | ソース配列内の項目をフィルター処理するために使用される条件 <p>**メモ**:条件を満たす値がない場合は、アクションによって空の配列が作成されます。 |
 |||| 
 
 *例*
@@ -1455,7 +1455,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 | 値 | type | 説明 | 
 |-------|------|-------------| 
-| <*array*> | Array | ソース項目を渡す配列または式。 式は必ず二重引用符で囲みます。 <p>**注**: ソース配列が空の場合、アクションによって空の配列が作成されます。 | 
+| <*array*> | Array | ソース項目を渡す配列または式。 式は必ず二重引用符で囲みます。 <p>**メモ**:ソース配列が空の場合、アクションによって空の配列が作成されます。 | 
 | <*key-name*> | String | <*expression*>  の結果に割り当てられたプロパティ名<p>出力配列内のすべてのオブジェクトに新しいプロパティを追加するには、そのプロパティの <*key-name*> と、プロパティ値を表す <*expression*> を指定します。 <p>あるプロパティを配列内のすべてのオブジェクトから削除するには、そのプロパティの <*key-name*> を省略します。 | 
 | <*expression*> | String | ソース配列の項目を変換し、結果を <*key-name*> に代入する式 | 
 |||| 
@@ -1554,7 +1554,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 | 値 | type | 説明 | 
 |-------|------|-------------| 
 | <CSV *or* HTML>| String | 作成するテーブルの形式 | 
-| <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**注**: ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
+| <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**メモ**:ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
 |||| 
 
 *省略可能*
@@ -2350,9 +2350,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
 
-3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 
+3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,9 +2387,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. **For each** アクションの右上隅で省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
 
-3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 
+3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
 <a name="change-waiting-runs"></a>
 
@@ -2465,7 +2465,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2516,7 +2516,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. **For each** アクションの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[既定値のオーバーライド]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2644,7 +2644,7 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 | **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*secret-for-authentication*> | クライアントが承認を要求するために使用する base64 でエンコードされたシークレット |
 ||||| 
 
-たとえば、トリガーまたはアクションの定義で資格情報の種類 "Secret" を使用する場合の `authentication` オブジェクトの形式は次のとおりです。パラメーターのセキュリティ保護の詳細については、「[機密情報のセキュリティ保護](#secure-info)」を参照してください。 
+たとえば、トリガーまたはアクションの定義で資格情報の種類 "Secret" を使用する場合の `authentication` オブジェクトの形式は次のとおりです。パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
 
 ```javascript
 "authentication": {
@@ -2706,7 +2706,7 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 },
 ```
 
-Azure Resource Manager デプロイ テンプレートを作成または使用している場合は、テンプレート定義の外側の `parameters` セクションも含める必要があります。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリに対するアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow)に関するセクションを参照してください。 
+Azure Resource Manager デプロイ テンプレートを作成または使用している場合は、テンプレート定義の外側の `parameters` セクションも含める必要があります。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリに対するアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するセクションを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

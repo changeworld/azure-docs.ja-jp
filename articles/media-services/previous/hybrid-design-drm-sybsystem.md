@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245309"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190257"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計
 
@@ -69,7 +69,7 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 ### <a name="drm-license-delivery"></a>DRM ライセンス配信
 
 * AMS: DRM ライセンスは AMS ライセンス配信サービスによって配信されます。
-* サード パーティ: DRM ライセンスは AMS の外部のサード パーティ製の DRM ライセンス サーバーによって配信されます。
+* サードパーティ: DRM ライセンスは AMS の外部のサード パーティ製 DRM ライセンス サーバーによって配信されます。
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>ハイブリッド シナリオに応じた構成
 
