@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 46d992fc44a0c3b2d355861d5753aa6f8c22215e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 46e19476999af8c481e093513ec81bec7aa2cc6a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581377"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332491"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル:Computer Vision API JavaScript
 
@@ -419,7 +419,7 @@ function thumbnailButtonClick() {
  * @param {boolean} smartCropping Set to true to use the smart cropping feature which crops to the
  *                                more interesting area of an image; false to crop for the center
  *                                of the image.
- * @param {<img> element} imageElement The img element in the DOM which will display the thumnail image.
+ * @param {<img> element} imageElement The img element in the DOM which will display the thumbnail image.
  * @param {<textarea> element} responseTextArea - The text area to display the Response Headers returned
  *                             from the REST API call, or to display the error message if there was 
  *                             an error.
@@ -635,7 +635,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
         "handwriting": "true",
     };
 
-    // This operation requrires two REST API calls. One to submit the image for processing,
+    // This operation requires two REST API calls. One to submit the image for processing,
     // the other to retrieve the text found in the image. 
     //
     // Perform the first REST API call to submit the image for processing.
