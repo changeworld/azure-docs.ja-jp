@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する | Microsoft Docs
 description: この記事では、VMware の Azure へのディザスター リカバリーのために、Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する方法について説明します。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 46ec116b357df8cc5de889f64d4620544c062979
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848342"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321491"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する
 
@@ -110,9 +110,9 @@ VM を手動で追加するには、次の手順に従います。
 
 4.  [Re-calculate cost]\(コストを再計算\) をクリックしてコストを更新します。
 
-**[VM 名]**: VM の名前です。
+**[VM 名]**: VM の名前。
 
-**[Number of VMs]\(VM の数\)**: 該当する構成と一致する VM の数です。 同様の構成の VM がプロファイリングされていなくても、今後保護する予定がある場合は、既存の VM の数を更新できます。
+**[Number of VMs]\(VM の数\)**:該当する構成と一致する VM の数です。 同様の構成の VM がプロファイリングされていなくても、今後保護する予定がある場合は、既存の VM の数を更新できます。
 
 **[IaaS size (Recommendation)]\(IaaS サイズ (推奨)\)**: ツールによって推奨された、適合 VM の VM ロール サイズです。 
 
@@ -120,7 +120,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[ストレージの種類]**: VM によって使用されるストレージの種類です。 Standard と Premium のどちらかのストレージになります。
 
-**[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)**: VM のストレージの合計です。
+**[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)**: VM の合計ストレージ。
 
 **[Number of DR Drills in a year]\(年間 DR ドリル数\)**: 1 年間に実行する DR ドリルの回数です。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。  
 
