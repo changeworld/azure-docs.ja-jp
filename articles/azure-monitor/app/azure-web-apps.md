@@ -1,6 +1,6 @@
 ---
-title: Azure App Service のパフォーマンスの監視 | Microsoft Docs
-description: Azure Web アプリのアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
+title: Azure App Services のパフォーマンスを監視する | Microsoft Docs
+description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: a5aea15c2563a81f4e915baa1b332beda64a1a70
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 17d8eff39eabb2f7b4968bf74d2482b980fe8060
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970969"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116621"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
-[Azure Portal](https://portal.azure.com) では、[Azure App Service](../../app-service/overview.md) の Web アプリ、モバイル バック エンド、および API アプリのアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](../../application-insights/app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
+[Azure Portal](https://portal.azure.com) では、[Azure App Service](../../app-service/overview.md) の Web アプリ、モバイル バック エンド、および API アプリのアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
 
 ## <a name="run-time-or-build-time"></a>実行時またはビルド時
 監視は、アプリを次の 2 つの方法のどちらかでインストルメント化することによって構成できます。
 
-* **実行時** - Web アプリが既に実行されているときにパフォーマンス監視拡張機能を選択できます。 アプリを再構築または再インストールする必要はありません。 応答時間、成功率、例外、依存関係などを監視するパッケージの標準セットを利用できます。 
+* **実行時** - アプリ サービスが既に実行されているときにパフォーマンス監視拡張機能を選択できます。 アプリを再構築または再インストールする必要はありません。 応答時間、成功率、例外、依存関係などを監視するパッケージの標準セットを利用できます。 
 * **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。 これは、汎用性が高い方法です。 同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。 アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Application Insights での実行時のインストルメント化
-Azure で Web アプリを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Log Analytics クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
+Azure でアプリ サービスを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Log Analytics クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
 
-1. Web アプリの Azure コントロール パネルで **[Application Insights] を選択**します。
+1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 
     ![[設定] の [Application Insights] を選択する](./media/azure-web-apps/settings-app-insights.png)
 
    * このアプリケーションの Application Insights リソースを既に設定している場合を除き、新しいリソースの作成を選択します。 
 
     > [!NOTE]
-    > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する**ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースが Web アプリにリンクされ、**Web アプリの再起動がトリガー**されます。 
+    > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する**ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースがアプリ サービスにリンクされ、**アプリ サービスの再起動がトリガー**されます。 
 
     ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource.png)
 
@@ -46,7 +46,7 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options.png)
 
-3. Application Insights をインストールしたら、**Web アプリをインストルメント化**します。
+3. Application Insights をインストールしたら、**アプリ サービスをインストルメント化**します。
 
    ページ ビューとユーザー テレメトリに対する**クライアント側の監視を有効にします**。
 
@@ -96,8 +96,19 @@ Application Insights では、アプリへの SDK のインストールによっ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED により、NET CORE Web アプリケーションで HTML の不完全な応答が発生します。
+
+App Services で JavaScript を有効にすると、HTML の応答が切り捨てられる可能性があります。
+
+- 回避策 1: APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定を false に設定するか、完全に削除して、再起動します
+- 回避策 2: コードで SDK を追加して、拡張機能を削除します (プロファイラーとスナップショット デバッガーは、この構成ではありません)
+
+[こちら](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)でこの問題を追跡しています
+
 ## <a name="next-steps"></a>次の手順
-* [実行中のアプリに対してプロファイラーを実行](../../application-insights/app-insights-profiler.md)します。
+* [実行中のアプリに対してプロファイラーを実行](../../azure-monitor/app/profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
 * [Azure 診断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
 * [サービスの正常性メトリックを監視](../../azure-monitor/platform/data-collection.md)して、サービスの可用性と応答性を確認します。

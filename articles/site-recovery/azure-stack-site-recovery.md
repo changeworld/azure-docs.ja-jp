@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976581"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039471"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -142,7 +142,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>手順 2:コンテナーを作成し、レプリケーションの目標を選択する
 
-1. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]\(Backup と Site Recovery\)** の順に選択します。
+1. Azure portal で、**[リソースの作成]** > **[管理ツール]** > **[Backup and Site Recovery (OMS)]** の順に選択します。
 2. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 
 3. **[リソース グループ]** で、リソース グループを作成するか選択します。 ここでは、**contosoRG** を使用しています。
 4. **[場所]** に、Azure リージョンを入力します。 **[西ヨーロッパ]** を使います。

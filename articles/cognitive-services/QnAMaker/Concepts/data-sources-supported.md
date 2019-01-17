@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a26c4b6d16ac16596f8b1b0606aca029be335d71
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994132"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038502"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -149,6 +149,23 @@ Answer2
 ## <a name="formatting-considerations"></a>書式設定の考慮事項
 
 ファイルまたは URL をインポートした後は Markdown に変換され、その形式で保存されます。 変換プロセスでファイルと URL のリンクが正しく変換されない場合は、**[編集]** ページで質問と回答を編集する必要があります。 
+
+|形式|目的|
+|--|--|
+|`\n\n`| 改行|
+|`\n*`|順序付きリストの行頭文字|
+
+## <a name="editing-your-knowledge-base-locally"></a>ナレッジ ベースのローカルな編集
+
+ナレッジ ベースを作成した後は、ローカル ファイルにエクスポートして再インポートするのではなく、[QnA Maker ポータル](https://qnamaker.ai)でナレッジ ベースのテキストを編集することをお勧めします。 ただし、ローカル環境でナレッジ ベースを編集することが必要になる場合があります。 
+
+**[設定]** ページからナレッジ ベースをエクスポートした後、Microsoft Excel でナレッジ ベースを編集します。 エクスポートした TSV ファイルを別のアプリケーションで編集した場合、アプリケーションが TSV に完全に準拠していないため、構文エラーが発生する可能性があります。 Microsoft Excel の TSV ファイルでは一般に、書式エラーが発生することはありません。 
+
+編集が終わったら、**[設定]** ページから TSV ファイルを再インポートします。 これにより、現在のナレッジ ベースが、インポートしたナレッジ ベースに完全に置き換えられます。 
+
+## <a name="testing-your-markdown"></a>Markdown のテスト
+
+Markdown の検証については、**[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(試してみる\)** 機能があります。 
 
 ## <a name="next-steps"></a>次の手順
 

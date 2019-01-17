@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd6384dcd132ffb53e3531707c600465e8d0b649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608955"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190019"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -27,15 +27,18 @@ ms.locfileid: "53608955"
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
-## <a name="version-161"></a>バージョン 1.6.1
-2018/12/18
+## <a name="version-162"></a>バージョン 1.6.2
+1/9/2019
 
-### <a name="download-azure-storage-explorer-161"></a>Azure Storage Explorer 1.6.1 のダウンロード
-- [Windows 用 Azure Storage Explorer 1.6.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 1.6.1](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 1.6.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-162"></a>Azure Storage Explorer 1.6.2 をダウンロードする
+- [Windows 用 Azure Storage Explorer 1.6.2](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.6.2](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.6.2](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>修正プログラム
+* 1.6.1 では、ObjectId によって ADLS Gen2 ACL に追加される、ユーザーではないエンティティは、常にグループとして追加されました。 現在は、グループのみがグループとして追加され、エンタープライズ アプリケーションやサービス プリンシパルなどのエンティティはユーザーとして追加されます。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* コンテナーを持たない ADLS Gen2 Storage アカウントが名前とキーでアタッチされた場合、Storage Explorer ではそのストレージ アカウントが ADLS Gen2 であることが検出されませんでした。 この問題は修正されています。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* 1.6.0 では、コピーおよび貼り付けでの競合に対して、解決を求めるメッセージが表示されませんでした。 代わりに、競合するコピーは単に失敗しました。 現在は、最初の競合では、ユーザーに解決するかどうかを確認するメッセージが表示されます。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * API の制限により、[アクセスの管理] ダイアログの ObjectId のすべての検証が無効になりました。 検証はユーザー UPN に対してのみ実行されるようになりました。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * ADLS Gen2 の [アクセスの管理] ダイアログでは、グループのアクセス許可を変更できませんでした。 この問題は修正されています。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * ADLS Gen2 エディターにドラッグ アンド ドロップによるアップロードのサポートが追加されました。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
@@ -103,6 +106,7 @@ ms.locfileid: "53608955"
 
 ## <a name="previous-releases"></a>以前のリリース
 
+* [バージョン 1.6.1](#version-161)
 * [バージョン 1.6.0](#version-160)
 * [バージョン 1.5.0](#version-150)
 * [バージョン 1.4.4](#version-144)
@@ -135,6 +139,75 @@ ms.locfileid: "53608955"
 * [バージョン 0.7.20160129.1](#version-07201601291)
 * [バージョン 0.7.20160105.0](#version-07201601050)
 * [バージョン 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-161"></a>バージョン 1.6.1
+2018/12/18
+
+### <a name="hotfixes"></a>修正プログラム
+* API の制限により、[アクセスの管理] ダイアログの ObjectId のすべての検証が無効になりました。 検証はユーザー UPN に対してのみ実行されるようになりました。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* ADLS Gen2 の [アクセスの管理] ダイアログでは、グループのアクセス許可を変更できませんでした。 この問題は修正されています。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* ADLS Gen2 エディターにドラッグ アンド ドロップによるアップロードのサポートが追加されました。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* ADLS Gen2 ファイルおよびフォルダーのプロパティ ダイアログに表示される URL プロパティに "/" が不足している場合がありました。 この問題は修正されています。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* ADLS Gen2 コンテナー、ファイル、またはフォルダーの現在のアクセス許可を取得できなかった場合、アクティビティ ログにエラーが適切に表示されるようになりました。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Windows の MAX_PATH よりも長いパスが作成される可能性を減らすために、ファイルを開くために作成される一時パスが短くなりました。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* サインインしているユーザーがおらず、リソースがアタッチされていない場合に [接続] ダイアログが正常に表示されるようになりました。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* 1.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 読み取りアクセス許可がない SAS を使用した場合、HNS 以外の BLOB コンテナーにフォルダーをアップロードできませんでした。 この問題は修正されています。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* AzCopy の転送のキャンセルが機能しませんでした。 この問題は修正されています。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 名前にスペースが含まれているフォルダーを ADLS Gen2 の BLOB コンテナーからダウンロードしようとすると、AzCopy が失敗しました。 この問題は修正されています。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* 1.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>新規
+
+* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
+    * コンテナーの作成と削除
+    * コンテナーのプロパティとアクセス許可の管理 (左側)
+    * コンテナー内のデータの表示および移動
+    * 新しいフォルダーの作成
+    * ファイルおよびフォルダーのアップロード、ダウンロード、名前変更、削除
+    * ファイルおよびフォルダーのプロパティとアクセス許可の管理 (右側)
+    
+    論理的な削除やスナップショットなど、その他の一般的な BLOB 機能は現在使用できません。 アクセス許可の管理は、サインインしている場合にのみ使用できます。 さらに、ADLS Gen2 ストレージ アカウントで作業している場合、Storage Explorer では、すべてのアップロードおよびダウンロードに AzCopy が使用されます。また、既定ですべての操作に名前とキー資格情報が使用されます (使用可能な場合)。
+* 多数のユーザー フィードバックを受け、リースの解約をもう一度使用して、一度に複数の BLOB でリースを解約できるようになっています。
+
+### <a name="known-issues"></a>既知の問題
+
+* ADLS Gen2 ストレージ アカウントからダウンロードしているときに、転送中のファイルの 1 つが既に存在していると、AzCopy がクラッシュすることがあります。 今後の修正プログラムで修正される予定です。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-160"></a>バージョン 1.6.0
 2018/12/5
@@ -1048,8 +1121,8 @@ ms.locfileid: "53608955"
 
 * 修正:ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
 * 修正:PIN/スマートカードでサインインできるようになりました
-* 修正:[ポータルで開く] が、Azure China 21Vianet、Azure Germany、Azure US Government、Azure Stack で機能するようになりました
-* 修正:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
+* 修正済み:[ポータルで開く] が、Azure China 21Vianet、Azure Germany、Azure US Government、Azure Stack で機能するようになりました
+* 修正済み:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
 * 修正:スナップショットを管理しているときに、[すべて選択] が無効になっていました
 * 修正:ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
 

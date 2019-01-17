@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975646"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120956"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -79,7 +79,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 ![Swagger の試用][5]
 
-そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 必要に応じて値を入力し、**[実行]** を選択します。
+そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 適切な値を入力し、**[Execute]\(実行\)** を選択します。
 
 ![Swagger の試用後][6]
 
@@ -102,9 +102,9 @@ OAuth 2.0 によって保護された要求の対話的なテストに関する�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins のオブジェクト モデルおよび空間インテリジェンス グラフについて詳しくは、[Azure Digital Twins オブジェクト モデル](./concepts-objectmodel-spatialgraph.md)に関する記事をご覧ください。
+- Azure Digital Twins のオブジェクト モデルおよび空間インテリジェンス グラフについて詳しくは、[Azure Digital Twins オブジェクト モデル](./concepts-objectmodel-spatialgraph.md)に関する記事をご覧ください。
 
-Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関する記事をご覧ください。
+- Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関する記事をご覧ください。
 
 <!-- Images -->
 [1]: media/how-to-use-swagger/swagger_management_top.PNG

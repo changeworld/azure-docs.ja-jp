@@ -3,19 +3,19 @@ title: Bing Visual Search API に検索クエリを送信する
 titlesuffix: Azure Cognitive Services
 description: Bing Visual Search API で使用される REST API のパラメーターについて説明します。
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: aahill
-ms.openlocfilehash: 073570b428ffed395d90ee1cd6a734f66a1b0908
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.author: aahi
+ms.openlocfilehash: 4f1f52c7954b4985d0da24f51eb199e2cbeac3a6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745432"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063592"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
 
@@ -417,4 +417,4 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ## <a name="see-also"></a>関連項目
 
 * [Bing Visual Search API とは](../overview.md)
-* [チュートリアル: シングルページ Web アプリを構築する - Bing Visual Search](../tutorial-bing-visual-search-single-page-app.md)
+* [チュートリアル:シングルページ Web アプリを構築する - Bing Visual Search](../tutorial-bing-visual-search-single-page-app.md)

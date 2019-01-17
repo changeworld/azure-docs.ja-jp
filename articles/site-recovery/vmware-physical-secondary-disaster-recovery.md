@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: c37676a32dd1fb58c1ac03640ff0bbfbdc3f7d8f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972893"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105187"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -64,18 +64,6 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
 - レプリケートするマシンが[レプリケート マシンのサポート](vmware-physical-secondary-support-matrix.md#replicated-vm-support)に準拠していることを確認する。
 
 
-## <a name="create-a-vault"></a>コンテナーの作成
-
-[!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
-
-## <a name="choose-a-protection-goal"></a>保護の目標を選択する
-
-レプリケート対象とレプリケート場所を選択します。
-
-1. **[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
-2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]** をクリックします
-3. **[Scout のセットアップ]** で、InMage Scout 8.0.1 GA ソフトウェアと登録キーをダウンロードします。 すべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
-
 ## <a name="download-and-install-component-updates"></a>コンポーネント更新プログラムのダウンロードとインストール
 
  最新の[更新プログラム](#updates)をレビューしてインストールします。 更新プログラムは、次の順序でサーバーにインストールする必要があります。
@@ -86,6 +74,108 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
 4. マスター ターゲット サーバー
 5. vContinuum サーバー
 6. ソース サーバー (Windows および Linux サーバーの両方)
+
+次のように、更新プログラムをインストールします。
+
+> [!NOTE]
+>すべての Scout コンポーネントのファイル更新バージョンが、更新プログラムの .zip ファイル内で同じとは限りません。 以前のバージョンは、前回の更新プログラムから今回の更新プログラムまでに、コンポーネントに変更がないことを示しています。
+
+[更新プログラム](https://aka.ms/asr-scout-update7)の .zip ファイルおよび [MySQL と PHP のアップグレード](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)の構成ファイルをダウンロードします。 更新プログラムの .zip ファイルには、次のコンポーネントのすべての基本バイナリと累積的なアップグレード バイナリが含まれます。 
+  - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
+  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
+  - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+  - InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+1. .zip ファイルを抽出します。
+2. **RX サーバー**:**RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** を RX サーバーにコピーし、展開します。 抽出先のフォルダーで、 **/Install**を実行します。
+3. **構成サーバーとプロセス サーバー**:**CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** を構成サーバーとプロセス サーバーにコピーします。 ファイルをダブルクリックして実行します。<br>
+4. **Windows のマスター ターゲット サーバー**:統合エージェントを更新するには、**InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** をサーバーにコピーします。 ファイルをダブルクリックして実行します。 同じファイルを、新規インストールにも使用できます。 同じ統合エージェントの更新プログラムはソース サーバーにも適用できます。
+  これは最新の変更をすべて備えた新しい GA インストーラーなので、**InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** で準備されたマスター ターゲット上で更新プログラムを適用する必要はありません。
+5. **vContinuum サーバー**:**InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** をサーバーにコピーします。  vContinuum ウィザードを閉じたことを確認してください。 ファイルをダブルクリックして実行します。
+6. **Linux マスター ターゲット サーバー**:統合エージェントを更新するには、**InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** を Linux マスター ターゲット サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
+7. **Windows ソース サーバー**:統合エージェントを更新するには、**InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** をソース サーバーにコピーします。 ファイルをダブルクリックして実行します。 
+8. **Linux ソース サーバー**:統合エージェントを更新するには、統合エージェント ファイルの対応するバージョンを Linux サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。  例:RHEL 6.7 64 ビット サーバーの場合は、**InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** をサーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
+9. 上記のインストーラーで構成サーバー、プロセス サーバー、RX サーバーをアップグレードした後、[クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)のセクション 7.4 で説明されている手順を使用して、PHP と MySQL のライブラリを手動でアップグレードする必要があります。
+
+## <a name="enable-replication"></a>レプリケーションを有効にする
+
+1. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
+2. インストール、保護、復旧について詳しくは、次のドキュメントをご覧ください。
+
+   * [リリース ノート](https://aka.ms/asr-scout-release-notes)
+   * [互換性対応表](https://aka.ms/asr-scout-cm)
+   * [ユーザー ガイド](https://aka.ms/asr-scout-user-guide)
+   * [RX ユーザー ガイド](https://aka.ms/asr-scout-rx-user-guide)
+   * [クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)
+   * [MYSQL と PHP のライブラリをアップグレードする](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
+
+## <a name="updates"></a>更新プログラム
+
+### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 更新プログラム 7 
+更新日:2018 年 12 月 31 日 [Scout 更新プログラム 7](https://aka.ms/asr-scout-update7) をダウンロードします。
+Scout 更新プログラム 7 は完全なインストーラーであり、新規インストールにも、以前の更新プログラム (更新プログラム 1 から更新プログラム 6) に含まれる既存のエージェント/MT のアップグレードにも使用できます。 更新プログラム 1 から更新プログラム 6 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。
+ 
+#### <a name="new-features"></a>新機能
+* PCI コンプライアンス
+* TLS v1.2 のサポート
+
+#### <a name="bug-and-security-fixes"></a>バグとセキュリティの修正
+* 修正済み:Windows クラスター/スタンドアロン マシンには、復旧/DR ドリルに正しくない IP 構成があります。
+* 修正済み:V2V クラスターのディスク追加操作が失敗することがあります。
+* 修正済み: マスター ターゲットが Windows Server 2016 の場合、復旧フェーズの間に、vContinuum ウィザードがスタックします
+* 修正済み:MySQL をバージョン 5.7.23 にアップグレードすることで、MySQL のセキュリティの問題が軽減されます
+
+#### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>CS、PS、RX での PHP と MySQL の手動アップグレード
+構成サーバー、プロセス サーバー、RX サーバーで、PHP スクリプト プラットフォームをバージョン 7.2.10 にアップグレードする必要があります。
+構成サーバー、プロセス サーバー、RX サーバーで、MySQL データベース管理システムをバージョン 5.7.23 にアップグレードする必要があります。
+[クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)で説明されている手動手順に従って、PHP と MySQL のバージョンをアップグレードしてください。
+
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
+更新日:2017 年 10 月 12 日
+
+[Scout 更新プログラム 6](https://aka.ms/asr-scout-update6) をダウンロードします。
+
+Scout 更新プログラム 6 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 5 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。 
+
+#### <a name="new-platform-support"></a>新しいプラットフォームのサポート
+* ソースの Windows Server 2016 のサポートが追加されました。
+* 以下の Linux オペレーティング システムのサポートが追加されました。
+    - Red Hat Enterprise Linux (RHEL) 6.9
+    - CentOS 6.9
+    - Oracle Linux 5.11
+    - Oracle Linux 6.8
+* VMware Center 6.5 のサポートが追加されました。
 
 次のように、更新プログラムをインストールします。
 
@@ -111,34 +201,6 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
     既に更新プログラム 4 に更新済みの場合や、最新の基本インストーラー **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** を使ってソース エージェントがインストールされている場合は、更新プログラム 5 のエージェントをソース サーバー上にインストールする必要はありません。
 8. **Linux ソース サーバー**:統合エージェントを更新するには、統合エージェント ファイルの対応するバージョンを Linux サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。  例:RHEL 6.7 64 ビット サーバーの場合は、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をサーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
 
-## <a name="enable-replication"></a>レプリケーションを有効にする
-
-1. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
-2. インストール、保護、復旧について詳しくは、次のドキュメントをご覧ください。
-
-   * [リリース ノート](https://aka.ms/asr-scout-release-notes)
-   * [互換性対応表](https://aka.ms/asr-scout-cm)
-   * [ユーザー ガイド](https://aka.ms/asr-scout-user-guide)
-   * [RX ユーザー ガイド](https://aka.ms/asr-scout-rx-user-guide)
-   * [クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)
-
-## <a name="updates"></a>更新プログラム
-
-### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
-更新日:2017 年 10 月 12 日
-
-[Scout 更新プログラム 6](https://aka.ms/asr-scout-update6) をダウンロードします。
-
-Scout 更新プログラム 6 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 5 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。 
-
-#### <a name="new-platform-support"></a>新しいプラットフォームのサポート
-* ソースの Windows Server 2016 のサポートが追加されました。
-* 以下の Linux オペレーティング システムのサポートが追加されました。
-    - Red Hat Enterprise Linux (RHEL) 6.9
-    - CentOS 6.9
-    - Oracle Linux 5.11
-    - Oracle Linux 6.8
-* VMware Center 6.5 のサポートが追加されました。
 
 > [!NOTE]
 > * Windows 用の基本の Unified Agent (UA) インストーラーは、Windows Server 2016 をサポートするように更新されました。 新しいインストーラー **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** は、基本の Scout GA パッケージ (**InMage_Scout_Standard_8.0.1 GA Oct17.zip**) に同梱されています。 サポートされているすべての Windows バージョンで同じインストーラーが使用されます。 

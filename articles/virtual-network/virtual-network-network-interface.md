@@ -1,13 +1,10 @@
 ---
-title: Azure ネットワーク インターフェイスの作成、変更、削除 | Microsoft Docs
+title: Azure ネットワーク インターフェイスを作成、変更、削除する
+titlesuffix: Azure Virtual Network
 description: ネットワーク インターフェイスとは何かを説明し、その作成、設定変更、および削除を行う方法を示します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: ffbd36beda179afc4bee6fb2d102215ac8f5f5c2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539417"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023755"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 

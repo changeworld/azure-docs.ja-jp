@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001279"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035425"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -42,7 +42,7 @@ SQL Database は、ポイントインタイム リストア (PITR) の目的で�
 
 ## <a name="how-long-are-backups-kept"></a>バックアップの保持期間
 
-各 SQL Database には、7 日～ 35 日まで ([購入モデルとサービス レベル](#pitr-retention-period)によって異なります) の既定のバックアップの保持期間があります。 Azure Logical Server 上のデータベースについてバックアップのリテンション期間を更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-the-pitr-backup-retention-period)に関するセクションを参照してください。
+各 SQL Database には、7 日～ 35 日まで (購入モデルとサービス レベルによって異なります) の既定のバックアップの保持期間があります。 Azure Logical Server 上のデータベースに対するバックアップ保持期間は更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-the-pitr-backup-retention-period)に関するセクションを参照してください。
 
 データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間のリテンション期間のある基本的なデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
 
@@ -109,7 +109,7 @@ Azure portal、PowerShell、または REST API を使用して、既定の PITR 
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Azure portal を使用して PITR のバックアップの保有期間を変更する
 
-Azure portal を使用して PITR バックアップ保持期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。 
+Azure portal を使用して PITR バックアップ保持期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
 #### <a name="change-pitr-for-a-logical-server"></a>論理サーバーの PITR の変更
 

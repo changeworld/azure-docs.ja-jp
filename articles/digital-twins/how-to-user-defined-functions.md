@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins 内でユーザー定義関数を作成する方法 | Microsoft Docs
-description: Azure Digital Twins を使用してユーザー定義関数、マッチャー、役割の割り当てを作成する方法のガイドラインです。
+description: Azure Digital Twins でユーザー定義関数、マッチャー、役割の割り当てを作成する方法。
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993407"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076248"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
@@ -73,21 +73,17 @@ JSON 本文は次のようになります。
 
 ## <a name="create-a-user-defined-function"></a>ユーザー定義関数を作成する
 
-マッチャーが作成された後、次の認証済み HTTP **POST** 要求で関数スニペットをアップロードします。
+ユーザー定義関数を作成するには、Azure Digital Twins Management API にマルチパート HTTP 要求を行う必要があります。
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+マッチャーが作成された後、次の認証済みマルチパート HTTP POST 要求で関数スニペットをアップロードします。
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-> [!IMPORTANT]
-> - ヘッダーに `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"` が含まれていることを確認します。
-> - 指定された本文はマルチパートです。
->   - 最初の部分には、必須の UDF メタデータが含まれています。
->   - 2 番目の部分には、JavaScript の計算ロジックが含まれています。
-> - **USER_DEFINED_BOUNDARY** セクションで、**spaceId** (`YOUR_SPACE_IDENTIFIER`) および **matchers**(`YOUR_MATCHER_IDENTIFIER`) の値を置き換えます。
-> - `Content-Type: text/javascript` として指定されている JavaScript UDF にご注意ください。
-
-以下の JSON 本文を使用します。
+以下の本文を使用します。
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -116,6 +112,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | マルチパート コンテンツ境界名 |
 | YOUR_SPACE_IDENTIFIER | 空間識別子  |
 | YOUR_MATCHER_IDENTIFIER | 使用するマッチャーの ID |
+
+1. ヘッダーに `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"` が含まれていることを確認します。
+1. 本文がマルチパートであることを確認します。
+
+   - 最初の部分には、必須のユーザー定義関数メタデータが含まれています。
+   - 2 番目の部分には、JavaScript の計算ロジックが含まれています。
+
+1. **USER_DEFINED_BOUNDARY** セクションで、**spaceId** (`YOUR_SPACE_IDENTIFIER`) および **matchers** (`YOUR_MATCHER_IDENTIFIER`) の値を置き換えます。
+1. JavaScript ユーザー定義関数が `Content-Type: text/javascript` として提供されていることを確認します。
 
 ### <a name="example-functions"></a>関数の例
 
@@ -190,16 +195,16 @@ function process(telemetry, executionContext) {
 
 ## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
-ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数に対してロールの割り当てが存在しない場合、管理 API と対話するための適切なアクセス許可や、グラフ オブジェクトに対して操作を実行するためのアクセス権はありません。ユーザー定義関数によって実行できるアクションは、Azure Digital Twins 管理 API 内のロールベースのアクセス制御を使用して指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
+ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
 
-1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#all)して、UDF に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
+1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#all)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) は先ほど作成した UDF ID になります。
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) は先ほど作成したユーザー定義関数 ID になります。
 1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
 1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
 
@@ -211,7 +216,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_SPACE_NAME | 使用する空間の名前 |
 
-1. 返された `spacePaths` 値を **path** に貼り付けて、認証済み HTTP POST 要求を以下に対して実行することで UDF のロールの割り当てを作成します。
+1. 返された `spacePaths` 値を **path** に貼り付けて、認証済み HTTP POST 要求を以下に対して実行することでユーザー定義関数のロールの割り当てを作成します。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -230,12 +235,12 @@ function process(telemetry, executionContext) {
     | 値 | 置換後の文字列 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 目的の役割の識別子 |
-    | YOUR_USER_DEFINED_FUNCTION_ID | 使用する UDF の ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | UDF タイプを指定する ID |
+    | YOUR_USER_DEFINED_FUNCTION_ID | 使用するユーザー定義関数の ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数の種類を指定する ID |
     | YOUR_ACCESS_CONTROL_PATH | アクセス制御パス |
 
 >[!TIP]
-> UDF 関連の管理 API の操作とエンドポインについて詳しくは、[ロールの割り当てを作成および管理する方法](./security-create-manage-role-assignments.md)に関する記事をご覧ください。
+> ユーザー定義関数の Management API の操作とエンドポインについて詳しくは、[ロールの割り当てを作成および管理する方法](./security-create-manage-role-assignments.md)に関する記事をご覧ください。
 
 ## <a name="send-telemetry-to-be-processed"></a>処理するテレメトリを送信する
 

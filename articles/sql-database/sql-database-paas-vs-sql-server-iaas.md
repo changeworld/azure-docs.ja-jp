@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994999"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033453"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Azure 上で適切な SQL Server オプションを選択する - PaaS または IaaS
 
@@ -87,10 +87,11 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Azure SQL Database と Azure VM 上の SQL Server のいずれかを選択するときのビジネスの要因
 
 SQL データベースをホストするために PaaS と IaaS のどちらを選択するかの決定に影響する可能性のある要素がいくつかあります。
+
 - [コスト](#cost) - PaaS と IaaS の両方のオプションに、基になるインフラストラクチャとライセンスの基本価格が含まれます。 ただし、IaaS オプションではデータベースを管理するために追加の時間とリソースを投資する必要がありますが、PaaS ではこれらの管理機能が価格に含まれています。 IaaS オプションでは、使用していないときにリソースをシャットダウンしてコストを削減できますが、PaaS バージョンでは、リソースを削除して必要なときに再作成しない限り常に実行されます。
 - [管理](#administration) - PaaS オプションでは、データベースの管理に投入する必要がある時間量が減少します。 ただし、ワークロードのパフォーマンスを向上させることができるいくつかのカスタム管理タスクも実行できなくなります。
 - [サービス レベル アグリーメント](#service-level-agreement-sla) - IaaS と PaaS の両方で、高度な業界標準の SLA が提供されます。 PaaS オプションでは 99.99% の SLA が保証されますが、IaaS ではインフラストラクチャについて 99.95% の SLA が保証されます。これは、データベースの可用性を確保するために追加のメカニズムを実装する必要があることを意味します。 極端なケースでは、一致する PaaS である高可用性ソリューションを実装する場合、VM に追加の SQL サーバーを作成し、AlwaysOn Availability グループを構成する必要があり、それによってデータベースのコストが倍増する可能性があります。
-- [クラウドへの移行にかかる時間](#time-to-move-to-cloud) - Azure VM 内の SQL Server は環境と完全に一致するので、オンプレミスから Azure SQL VM への移行は、オンプレミス サーバー間でのデータベースの移行とは異なります。 Managed Instance ではとても簡単に移行できますが、Managed Instance に移行する前に適用する必要がある変更がいくつかあります。
+- [Azure への移行にかかる時間](#market) - Azure VM 内の SQL Server はお客様の環境と完全に一致するので、オンプレミスから Azure SQL VM への移行は、オンプレミス サーバー間でのデータベースの移行と同じです。 Managed Instance ではとても簡単に移行できますが、Managed Instance に移行する前に適用する必要がある変更がいくつかあります。
 
 これらの要因については、次のセクションで詳しく説明します。
 
@@ -102,10 +103,8 @@ SQL データベースをホストするために PaaS と IaaS のどちらを�
 
 現在、**SQL Database** は、サービスとして販売され、リソースの料金が異なる複数のサービス レベルで利用できます。いずれの場合も、選択したサービス レベルとコンピューティング サイズに基づく固定レートで時間単位で課金されます。
 SQL Single Database では、5 ドル/月の Basic レベルから開始するさまざまな価格範囲からニーズに合ったサービス レベルを選択できます。
-SQL Database Managed Instance では、ライセンスの持ち込みも可能です。 現在所有しているライセンスの移行の詳細について「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」をご覧になるか、[Azure ハイブリッド特典計算ツール](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database)を使用して**最大 40% 節約する**方法をご確認ください。
+SQL Database Managed Instance では、ライセンスの持ち込みも可能です。 現在所有しているライセンスの移行の詳細について「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」をご覧になるか、[Azure ハイブリッド特典計算ツール](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database)を使用して**最大 40% 節約する**方法をご確認ください。
 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 サービス レベルとコンピューティング サイズを動的に調整して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在のサポートされているサービス レベルの最新情報については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有し、コストを削減して、ピーク時の使用に対応することもできます。
-
-
 
 **SQL Database**では、データベース ソフトウェアの自動的な構成、修正プログラムの適用、およびアップグレードがマイクロソフトによって行われるため、管理コストが軽減されます。 また、 [組み込みのバックアップ](sql-database-automated-backups.md) 機能は、特に、多数のデータベースがある場合の大幅なコスト削減に役立ちます。
 
