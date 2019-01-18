@@ -2,18 +2,18 @@
 title: Azure Digital Twins API の移動 | Microsoft Docs
 description: Azure Digital Twins 管理 API にクエリを実行する一般的なパターンについて説明します。
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109397"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200957"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 
@@ -25,11 +25,11 @@ Azure Digital Twins 管理 API は、IoT アプリのための強力な機能を
 
 * [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces):これらの API は、セットアップでの物理的な場所と対話します。 これらは物理的な場所のデジタル マッピングを[空間グラフ](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)の形式で作成、削除、および管理するのに役立ちます。
 
-* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources):これらの API は、IoT Hub などのリソースを Digital Twins インスタンス用にセットアップするのに役立ちます。
-
 * [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices):これらの API は、セットアップのデバイスと対話します。 これらのデバイスは、1 つまたは複数のセンサーを管理できます。 たとえば、電話機や Raspberry Pi センサー ポッド、あるいは LoRa ゲートウェイなどがデバイスに該当します。
 
 * [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors):これらの API は、デバイスおよび物理的な場所に関連付けられたセンサーと通信するのに役立ちます。 センサーは周辺環境の値を記録して送信し、この値は空間環境を操作するために後で使用できます。  
+
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources):これらの API は、IoT Hub などのリソースを Digital Twins インスタンス用にセットアップするのに役立ちます。
 
 * [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types):これらの API を使用すると、Digital Twins オブジェクトに拡張型を関連付けて、それらのオブジェクトに特定の特性を追加することができます。 これらの型によって、UI 内のオブジェクトや、テレメトリ データを処理するカスタム関数のフィルター処理やグループ化を簡単に行うことができます。 拡張型の例として、*DeviceType*、*SensorType*、*SensorDataType*、*SpaceType*、*SpaceSubType*、*SpaceBlobType*、*SpaceResourceType* などがあります。
 

@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087628"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065496"
 ---
-# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso での移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
+# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso の移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
 この記事では、Contoso が、Azure への移行対象として、オンプレミスの SmartHotel360 アプリを評価します。
 
@@ -23,20 +23,20 @@ ms.locfileid: "50087628"
 
 記事 | 詳細 | Status
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズのすべての記事で同じインフラストラクチャを使用します。 | 使用可能
+[記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
+[記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズのすべての記事で同じインフラストラクチャを使用します。 | 使用可能
 記事 3: Azure への移行の対象となるオンプレミスのリソースの評価 | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | この記事の内容は次のとおりです。
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 アプリのフロントエンドは、Azure Site Recovery サービスを使用して移行します。 Azure Database Migration Service を使用してアプリ データベースを Azure SQL Database Managed Instance に移行します。 | 使用可能
-[記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
-[記事 6: Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用して、アプリ データベースを AlwaysOn 可用性グループによって保護されている SQL Server クラスターに移行します。 | 使用可能
-[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
-[記事 8: Azure VM および Azure Database for MySQL での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行します。 アプリ データベースを Azure Database for MySQL に移行するために MySQL Workbench を使用します。 | 使用可能
-[記事 9: Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
-[記事 10: Azure Web アプリと Azure Database for MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能
-[記事 11: Azure DevOps サービスでの Team Foundation Server をリファクタリングします](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
-[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
+[記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
+[記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用して、アプリ データベースを AlwaysOn 可用性グループによって保護されている SQL Server クラスターに移行します。 | 使用可能
+[記事 7:Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
+[記事 8:Azure VM および Azure Database for MySQL での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行します。 アプリ データベースを Azure Database for MySQL に移行するために MySQL Workbench を使用します。 | 使用可能
+[記事 9:Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
+[記事 10:Azure Web アプリと Azure Database for MySQL 内で Linux アプリをリファクタリングする](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能
+[記事 11:Azure DevOps サービスでの Team Foundation Server をリファクタリングします](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+[記事 12:Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
+[記事 13:Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
+[記事 14:Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
 
 ## <a name="overview"></a>概要
@@ -68,10 +68,10 @@ osTicket<br/><br/> (Contoso のサービス デスク アプリ) | MySQL PHP (LA
 
 Contoso の IT リーダーシップ チームは、自社のビジネス パートナーと密接に連絡を取り合い、ビジネス部門がこの移行で何を達成しようとしているのかを理解しました。
 
-- **ビジネスの成長への対応**: Contoso は成長を続けています。 その結果、会社のオンプレミスのシステムとインフラストラクチャにかかる圧力が増加しています。
+- **ビジネスの成長への対応**: Contoso は成長しています。 その結果、会社のオンプレミスのシステムとインフラストラクチャにかかる圧力が増加しています。
 - **効率化**: Contoso は不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。 顧客の要求にすばやく対応できるように、ビジネス部門は IT 部門に対して、時間やコストを無駄にせず、迅速に作業を行うことを求めています。
-- **敏捷性の強化**: Contoso IT は、ビジネス部門の要求に対して、対応力を向上させる必要があります。 会社がグローバル経済で成功を収めるために、市場で起きる変化に遅れることなく迅速に対応する必要があります。 Contoso の IT 部門がビジネスの妨げになったり、ビジネスの妨げになったりするようなことがあってはなりません。
-- **拡張性**: 会社のビジネスが順調に成長している中で、Contoso IT 部門は、同じペースで拡張できるシステムを提供する必要があります。
+- **迅速性の向上**: Contoso IT は、ビジネス部門の要求に対して、対応力を向上させる必要があります。 会社がグローバル経済で成功を収めるために、市場で起きる変化に遅れることなく迅速に対応する必要があります。 Contoso の IT 部門がビジネスの妨げになったり、ビジネスの妨げになったりするようなことがあってはなりません。
+- **スケール**:会社のビジネスが順調に成長している中で、Contoso IT 部門は、同じペースで拡張できるシステムを提供する必要があります。
 
 ## <a name="assessment-goals"></a>評価の目標
 
@@ -125,8 +125,8 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
-        - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
-        VM がインターネットに接続できない場合、VM に Azure [Log Analytics Gateway](../log-analytics/log-analytics-oms-gateway.md) をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
+    - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
+    - VM がインターネットに接続できない場合、VM に Azure [Log Analytics Gateway](../azure-monitor/platform/gateway.md) をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
 - SQL Server インスタンスを実行している VM の FQDN (データベース評価用)。
 - SQL Server VM 上で実行されている Windows ファイアウォールでは、TCP ポート 1433 (既定値) で外部接続が許可されている必要があります。 このセットアップにより、Data Migration Assistant の接続が可能になります。
 
@@ -135,14 +135,14 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 Contoso が評価を行う方法は次のとおりです。
 
 > [!div class="checklist"]
-> * **手順 1: Data Migration Assistant をダウンロードしてインストールする**: Contoso はオンプレミスの SQL Server データベースを評価するために Data Migration Assistant を準備します。
-> * **手順 2: Data Migration Assistant を使用してデータベースを評価する**: Contoso はデータベース評価を実行して分析します。
-> * **手順 3: Azure Migrate を使用した VM 評価の準備をする**: Contoso はオンプレミスのアカウントをセットアップし、VMware 設定を微調整します。
-> * **手順 4: Azure Migrate を使用してオンプレミスの VM を検出する**: Contoso は Azure Migrate コレクター VM を作成します。 次に、コレクターを実行して、評価する対象の VM を検出します。
-> * **手順 5: Azure Migrate による依存関係の分析の準備をする**: VM 間の依存関係マッピングを確認できるように、Contoso は Azure Migrate エージェントを VM にインストールします。
-> * **手順 6: Azure Migrate を使用して VM を評価する**: Contoso は依存関係を確認して VM をグループ化し、評価を実行します。 評価ができたら、Contoso は移行に向けて評価を分析します。
+> * **手順 1:Data Migration Assistant をダウンロードしてインストールする**:Contoso はオンプレミスの SQL Server データベースを評価するために Data Migration Assistant を準備します。
+> * **手順 2:Data Migration Assistant を使用してデータベースを評価する**:Contoso はデータベース評価を実行して分析します。
+> * **手順 3:Azure Migrate を使用した VM 評価の準備をする**:Contoso はオンプレミスのアカウントをセットアップし、VMware 設定を微調整します。
+> * **手順 4:Azure Migrate を使用してオンプレミスの VM を検出する**:Contoso は Azure Migrate コレクター VM を作成します。 次に、コレクターを実行して、評価する対象の VM を検出します。
+> * **手順 5:Azure Migrate による依存関係の分析の準備をする**:VM 間の依存関係マッピングを確認できるように、Contoso は Azure Migrate エージェントを VM にインストールします。
+> * **手順 6:Azure Migrate を使用して VM を評価する**:Contoso は依存関係を確認して VM をグループ化し、評価を実行します。 評価ができたら、Contoso は移行に向けて評価を分析します。
 
-## <a name="step-1-download-and-install-data-migration-assistant"></a>手順 1: Data Migration Assistant をダウンロードしてインストールする
+## <a name="step-1-download-and-install-data-migration-assistant"></a>手順 1:Data Migration Assistant をダウンロードしてインストールする
 
 1. Contoso は [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=53595)から Data Migration Assistant をダウンロードします。
     - Data Migration Assistant は、SQL Server インスタンスに接続可能な任意のマシンにインストールできます。 Contoso では、これを SQL Server マシンで実行する必要はありません。
@@ -150,7 +150,7 @@ Contoso が評価を行う方法は次のとおりです。
 2. Contoso はダウンロードしたセットアップ ファイル (DownloadMigrationAssistant.msi) を実行して、インストールを開始します。
 3. **[完了]** ページで、ウィザードを終了する前に **[Microsoft Data Migration Assistant の起動]** を選択します。
 
-## <a name="step-2-run-and-analyze-the-database-assessment-for-smarthotel360"></a>手順 2: SmartHotel360 のデータベース評価を実行して分析する
+## <a name="step-2-run-and-analyze-the-database-assessment-for-smarthotel360"></a>手順 2:SmartHotel360 のデータベース評価を実行して分析する
 
 次に、Contoso は評価を実行して、SmartHotel360 アプリ用のオンプレミス SQL Server データベースを分析できます。
 
@@ -186,11 +186,11 @@ Contoso が評価を行う方法は次のとおりです。
 
 1. **[互換性の問題]** レポートで、互換性のレベルごとに問題の有無をチェックします。 互換性レベルでは SQL Server バージョンが次のようにマップされます。
 
-    - 100: SQL Server 2008/Azure SQL Database
-    - 110: SQL Server 2012/Azure SQL Database
-    - 120: SQL Server 2014/Azure SQL Database
-    - 130: SQL Server 2016/Azure SQL Database
-    - 140: SQL Server 2017/Azure SQL Database
+    - 100:SQL Server 2008/Azure SQL Database
+    - 110:SQL Server 2012/Azure SQL Database
+    - 120:SQL Server 2014/Azure SQL Database
+    - 130:SQL Server 2016/Azure SQL Database
+    - 140:SQL Server 2017/Azure SQL Database
 
     ![Data Migration Assistant - 互換性の問題レポート](./media/contoso-migration-assessment/dma-assessment-5.png)
 
@@ -209,7 +209,7 @@ Contoso が評価を行う方法は次のとおりです。
 > - 評価を [SQL Server データベース](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database)に統合します。
 > - 評価を [Power BI レポート](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017)に統合します。
 
-## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>手順 3: Azure Migrate を使用した VM 評価の準備をする
+## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>手順 3:Azure Migrate を使用した VM 評価の準備をする
 
 Contoso は、Azure Migrate で評価対象の VM を自動的に検出するために使用できる VMware アカウントを作成する必要があります。次に、VM を作成するための権限を確認します。さらに、開く必要があるポートを書き留め、統計情報設定レベルを設定します。
 
@@ -217,9 +217,9 @@ Contoso は、Azure Migrate で評価対象の VM を自動的に検出するた
 
 VM の検出には、次のプロパティを持つ、vCenter Server の読み取り専用アカウントが必要です。
 
-- **ユーザーの種類**: 読み取り専用ユーザー以上。
-- **アクセス許可**: データセンター オブジェクトの場合は、**[Propagate to Child Objects]\(子オブジェクトに伝達\)** チェック ボックスをオンにします。 **[ロール]** では、**[読み取り専用]** を選択します。
-- **詳細**: ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトにアクセスできます。
+- **ユーザーの種類**:少なくとも読み取り専用ユーザーが必要です。
+- **アクセス許可**:データセンター オブジェクトの場合は、**子オブジェクトに伝達** チェック ボックスをオンにします。 **[ロール]** では、**[読み取り専用]** を選択します。
+- **[詳細]**:ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトにアクセスできます。
 - アクセスを制限するには、**子オブジェクトへの伝達**特権を持つ**アクセスなし**ロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
 
 ### <a name="verify-permissions-to-create-a-vm"></a>VM を作成するためのアクセス許可を確認する
@@ -251,7 +251,7 @@ Contoso は、デプロイを開始する前に vCenter Server の統計情報�
 
     ![vCenter Server の統計情報レベル](./media/contoso-migration-assessment/vcenter-statistics-level.png)
 
-## <a name="step-4-discover-vms"></a>手順 4: VM を検出する
+## <a name="step-4-discover-vms"></a>手順 4:Discover VMs
 
 Contoso が VM を探索するには、Azure Migrate プロジェクトを作成します。 Contoso はコレクター VM をダウンロードし、セットアップします。 次に、コレクターを実行してオンプレミスの VM を検出します。
 
@@ -351,7 +351,7 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
 
     ![Azure Migrate - エージェントのインストールが必要](./media/contoso-migration-assessment/machines-no-agent.png)
 
-## <a name="step-5-prepare-for-dependency-analysis"></a>手順 5: 依存関係の分析の準備をする
+## <a name="step-5-prepare-for-dependency-analysis"></a>手順 5:依存関係の分析の準備をする
 
 評価する VM 間の依存関係を表示するために、Contoso はエージェントをダウンロードしてアプリ VM にインストールします。 Windows と Linux の両方について、アプリのすべての VM にエージェントをインストールします。
 
@@ -430,7 +430,7 @@ MMA をインストールした後、Contoso は Linux VM に Dependency Agent �
     wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin && sudo sh InstallDependencyAgent-Linux64.bin -s
     ```
 
-## <a name="step-6-run-and-analyze-the-vm-assessment"></a>手順 6: VM 評価を実行して分析する
+## <a name="step-6-run-and-analyze-the-vm-assessment"></a>手順 6:VM 評価を実行して分析する
 
 これで、Contoso はマシンの依存関係を確認し、グループを作成することができます。 その後、グループの評価を実行します。
 
