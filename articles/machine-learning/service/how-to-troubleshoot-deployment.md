@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning サービスのデプロイ トラブルシューティング ガイド
-description: Azure Machine Learning サービスの Docker デプロイで発生する共通エラーを回避し、解決する方法について説明します。
+title: デプロイ トラブルシューティング ガイド
+titleSuffix: Azure Machine Learning service
+description: Azure Machine Learning service を使用する AKS と ACI に関する一般的な Docker のデプロイ エラーの回避、解決、トラブルシューティング方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,18 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321684"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100516"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Azure Machine Learning サービス デプロイのトラブルシューティング
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure Machine Learning service の AKS および ACI デプロイのトラブルシューティング
 
-この記事では、Azure Machine Learning サービスの Docker デプロイで発生する共通エラーを回避または解決する方法について説明します。
+この記事では、Azure Machine Learning service を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) に関する一般的な Docker のデプロイ エラーの回避または解決する方法について説明します。
 
 Azure Machine Learning サービスでモデルをデプロイするとき、さまざまなタスクが実行されます。 これはイベントの複雑な一連のイベントであり、問題が発生することがあります。 デプロイ タスクの内容:
 
@@ -117,7 +119,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Docker イメージをローカルでデバッグする
-Docker ログでは問題に関する情報が十分に提供されないことがあります。 さらに一歩進め、ビルドされた Docker イメージを取得し、ローカル コンテナーを起動し、ライブ コンテナー内で直接、対話的にデバッグできます。 ローカル コンテナーを起動するには、Docker エンジンをローカルで実行しておく必要があります。[azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest) もインストールしておくと非常に簡単になります。
+Docker ログでは問題に関する情報が十分に提供されないことがあります。 さらに一歩進め、ビルドされた Docker イメージを取得し、ローカル コンテナーを起動し、ライブ コンテナー内で直接、対話的にデバッグできます。 ローカル コンテナーを起動するには、Docker エンジンをローカルで実行しておく必要があります。[azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) もインストールしておくと非常に簡単になります。
 
 まず、イメージの場所を見つける必要があります。
 
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**注**: `run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境でこれを行うことはお勧めできません。
+**メモ**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境でこれを行うことはお勧めできません。
 
 
 ## <a name="next-steps"></a>次の手順
 
 デプロイの詳細については、以下を参照してください。 
-* [ACI にデプロイする方法](how-to-deploy-to-aci.md)
+* [デプロイする方法とその場所](how-to-deploy-and-where.md)
 
-* [AKS にデプロイする方法](how-to-deploy-to-aks.md)
-
-* [チュートリアル パート 1: モデルのトレーニング](tutorial-train-models-with-aml.md)
-
-* [チュートリアル パート 2: モデルのデプロイ](tutorial-deploy-models-with-aml.md)
+* [チュートリアル:モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)

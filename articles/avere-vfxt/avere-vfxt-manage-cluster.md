@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958918"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189611"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
@@ -63,11 +63,11 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 > [!NOTE] 
 > アクティブ ノード数が変更されたときに IP アドレスがクラスター ノード間で移動することがあります。
 
-詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) をお読みください。
+詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) をお読みください。
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Avere コントロール パネルでクラスターを停止または再起動する
 
-**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
+**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
 
 クラスターがシャットダウンするとき、最初に状態メッセージを **[ダッシュ ボード]** タブに表示します。 しばらくすると、Avere コントロール パネル セッションは応答を停止し、これはクラスターがシャットダウンしたことを意味します。
 
@@ -81,9 +81,9 @@ vfxt.py スクリプトは、以下のクラスター管理タスクに使用で
 
 Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 これにより、Avere portal よりもより安全なオプションとなります。
 
-vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
+vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています
+vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています。
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>vfxt.py によるクラスター ノードの追加
 
@@ -168,7 +168,7 @@ vFXT クラスターから 1 つのノードを削除し、クラスターの残
 > vFXT クラスターからノードを削除せずにノードを削除すると、データが失われる可能性があります。
 
 vFXT ノードとして使用されている 1 つまたは複数のインスタンスを完全に破棄するには、Azure portal を使用します。
-左側のメニューで **[Virtual machines](仮想マシン)** を選択し、一覧から VM 名をクリックしてその概要ページを開きます。
+左側のメニューで **[Virtual machines]\(仮想マシン)** を選択し、一覧から VM 名をクリックしてその概要ページを開きます。
 
 概要ページの上部にある **[削除]** ボタンをクリックして、VM を完全に破棄します。
 

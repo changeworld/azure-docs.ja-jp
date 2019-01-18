@@ -1,13 +1,9 @@
 ---
-title: チュートリアル - Web サイトの応答を向上させるために Azure Traffic Manager を使用してトラフィックをルーティングする | Microsoft Docs
+title: チュートリアル - Web サイトの応答を向上させるために Azure Traffic Manager を使用してトラフィックをルーティングする
 description: このチュートリアル記事では、応答性の高い Web サイトを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
-manager: jeconnoc
-editor: ''
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -15,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 087dcda5826d96ad064c472fc897be7e61133387
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1b12e17bb8dd666bd48e937b7fed40e40f22ecf0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392516"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200770"
 ---
-# <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル: Traffic Manager を使用して Web サイトの応答性を向上させる 
+# <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる 
 
 このチュートリアルでは、Traffic Manager を使用して、待機時間が最も短い Web サイトにユーザー トラフィックを転送することによって、応答性の高い Web サイトを作成する方法について説明します。 通常、待機時間が最も短いデータセンターは、地理的に最も近いデータセンターです。
 
@@ -56,7 +52,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 このセクションでは、2 台の VM (*myIISVMEastUS* と *myIISVMWEurope*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -65,7 +61,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |リソース グループ| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
     |||
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
@@ -83,7 +79,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |Setting|値|
     |---|---|
     |リソース グループ | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
-    |Location|西ヨーロッパ|
+    |場所|西ヨーロッパ|
     |VM 名 | myIISVMWEurope|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
     |||
@@ -130,7 +126,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 このセクションでは、VM (*mVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -174,7 +170,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | ルーティング方法          | **パフォーマンス**によるルーティング方法を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | リソース グループ          | **[新規作成]** を選択し、「*myResourceGroupTM1*」と入力します。 |
-    | Location                | **[米国東部]** を選択します。  これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
+    | 場所                | **[米国東部]** を選択します。  これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
     |
   
     ![Traffic Manager プロファイルの作成](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)

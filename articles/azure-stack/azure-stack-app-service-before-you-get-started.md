@@ -12,18 +12,18 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615876"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275671"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure App Service on Azure Stack をデプロイする前に、この記事にある前提条件ステップを完了する必要があります。
 
@@ -152,6 +152,12 @@ ID 用の証明書には、次の形式に一致するサブジェクトが含�
 | 形式 | 例 |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>証明書を検証する
+App Services リソースプロバイダーをデプロイする前に、[PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker) の Azure Stack 適合性チェッカー ツールを使用して、[使用する証明書を検証](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation)する必要があります。 Azure Stack 適合性チェッカー ツールは、生成された PKI 証明書が App Services の展開に適しているかを検証します。 
+
+ベスト プラクティスとして、必要ないずれかの [Azure Stack PKI 証明書](azure-stack-pki-certs.md)を使用する場合には、証明書をテストして必要な場合には再発行するための十分な時間が残るように計画することです。 
 
 ## <a name="virtual-network"></a>仮想ネットワーク
 
@@ -347,7 +353,7 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
 | AzureStackAdminCredential | 必須 | Null | Azure AD サービス管理者の資格情報。 |
 | CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへの**完全なパス**。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード。 |
-| 環境 | 省略可能 | AzureCloud | 対象の Azure Active Directory Graph サービスが利用可能な、サポートされているクラウド環境の名前。  指定できる値: 'AzureCloud'、'AzureChinaCloud'、'AzureUSGovernment'、'AzureGermanCloud'。|
+| 環境 | 省略可能 | AzureCloud | 対象の Azure Active Directory Graph サービスが利用可能な、サポートされているクラウド環境の名前。  使用できる値は以下の通りです。'AzureCloud'、'AzureChinaCloud'、'AzureUSGovernment'、'AzureGermanCloud'。|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory フェデレーション サービス アプリケーションを作成する
 

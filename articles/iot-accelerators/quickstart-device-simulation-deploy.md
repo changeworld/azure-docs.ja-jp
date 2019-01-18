@@ -1,5 +1,5 @@
 ---
-title: Azure 上でデバイス シミュレーション ソリューションを試して実行する | Microsoft Docs
+title: デバイス シミュレーション ソリューションを試して実行する - Azure | Microsoft Docs
 description: このクイック スタートでは、Azure IoT Device Simulation をデプロイし、シミュレーションを実行します
 author: troyhopwood
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/28/2018
 ms.author: troyhop
-ms.openlocfilehash: a109f3536ea8709313de3d1d6d17ce69c5652289
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753935"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601595"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>クイック スタート: Azure で IoT デバイス シミュレーションをデプロイして実行する
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>クイック スタート:Azure で IoT デバイス シミュレーションをデプロイして実行する
 
 このクイック スタートでは、IoT ソリューションをテストするために Azure IoT デバイス シミュレーションをデプロイする方法について説明します。 ソリューション アクセラレータをデプロイした後、サンプル シミュレーションを実行して、作業を開始します。
 

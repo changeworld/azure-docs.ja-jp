@@ -24,8 +24,8 @@
     }
   ],
   "notification_subscribers": [
-    "dengyun@microsoft.com",
-    "MORDPS@microsoft.com"
+    "issahn@microsoft.com",
+    "CnE_UE_Acom_doc_all@moravia.com"
   ],
   "branches_to_filter": [
     "master",
@@ -319,6 +319,12 @@
       "url": "https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration",
       "branch": "master",
       "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cogserv-containers",
+      "url": "https://github.com/Azure-Samples/cognitive-services-containers-samples",
+      "branch": "master",
+      "branch_mapping": {}
     }
   ],
   "branch_target_mapping": {
@@ -349,4 +355,3 @@
     }
   }
 }
-  

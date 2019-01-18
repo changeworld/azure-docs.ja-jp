@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs メッセージングの例外 | Microsoft Docs
-description: Azure Event Hubs メッセージングの例外と推奨アクションの一覧。
+title: メッセージングの例外 - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/03/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4576aad82b8c581cbe1630b56a07fc469207ef5f
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 013386d86d29b75591a938b2805bde25ecf176d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038412"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104474"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
 
@@ -45,7 +46,7 @@ Event Hubs API で生成される例外をカテゴリ別に分類し、修復�
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 操作に関連付けられているエンティティが存在しないか、削除されました。 | エンティティが存在することを確認します。 | 再試行によって解決することはありません。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | クライアントから Event Hub への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 | 断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
 | [Microsoft.ServiceBus.Messaging ServerBusyException ](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | この時点では、このサービスで要求を処理できません。 | クライアントは、しばらく待機してから操作をやり直すことができます。 <br /> 「[ServerBusyException](#serverbusyexception)」を参照してください。 | クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | 次の場合にスローされる可能性がある一般メッセージング例外です。異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) を作成しようとした場合。 256 KB を超えるメッセージを送信しようとした場合。 サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 この例外は通常、一時的な例外です。 | コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) プロパティを確認します。 それが **true**である場合は、操作を再試行できます。 | 再試行動作は未定義であり、解決にならない場合もあります。 |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | 次の場合にスローされる可能性がある一般なメッセージング例外です。異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) を作成しようとした場合。 256 KB を超えるメッセージを送信しようとした場合。 サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 この例外は通常、一時的な例外です。 | コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) プロパティを確認します。 それが **true**である場合は、操作を再試行できます。 | 再試行動作は未定義であり、解決にならない場合もあります。 |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | そのサービスの名前空間で別のエンティティによって既に使用されている名前を持つエンティティを作成しようとしました。 | 既存のエンティティを削除するか、作成するエンティティに別の名前を選択します。 | 再試行によって解決することはありません。 |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | メッセージング エンティティが最大許容サイズに達しています。 この例外は、受信者の最大数 (5) がコンシューマー グループ レベルで既に開かれている場合に発生する可能性があります。 | エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 <br /> 「[QuotaExceededException](#quotaexceededexception)」を参照してください | メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | 無効になっているエンティティに対してランタイム操作を要求しました。 |エンティティをアクティブ化します。 | エンティティがそれまでにアクティブ化されている場合は、再試行によって解決することがあります。 |
@@ -80,11 +81,11 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 1. イベント ハブ上のパーティション間で負荷が均等に分散されていません。パーティションの 1 つがローカルのスループット単位制限に達しています。
     
-    解決策: パーティション分散戦略を変更するか、[EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) を実行すると、問題の解決に役立つ場合があります。
+    解決策:パーティション分散戦略を変更するか、[EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) を実行すると、問題の解決に役立つ場合があります。
 
 2. Event Hubs 名前空間に十分なスループット単位がありません ([Azure Portal](https://portal.azure.com) の Event Hubs 名前空間ウィンドウで **[メトリック]** 画面を確認します)。 ポータルに集計 (1 分) 情報が表示されていますが、スループットはリアルタイムで測定しているため、これは単なる推定値であることに注意してください。
 
-    解決策: 名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 この操作は、ポータルの Event Hubs 名前空間画面の **[スケール]** ウィンドウで実行できます。 または、[自動インフレ](event-hubs-auto-inflate.md)を使用することができます。
+    解決策:名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 この操作は、ポータルの Event Hubs 名前空間画面の **[スケール]** ウィンドウで実行できます。 または、[自動インフレ](event-hubs-auto-inflate.md)を使用することができます。
 
 ### <a name="error-code-50001"></a>エラー コード 50001
 

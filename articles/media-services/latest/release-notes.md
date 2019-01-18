@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 リリース ノート | Microsoft Docs
+title: 新機能 リリース ノート - Azure Media Services v3 | Microsoft Docs
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Media Services v3 の最新の更新情報を提供します。
 services: media-services
 documentationcenter: ''
@@ -7,18 +7,18 @@ author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
-ms.workload: ''
+ms.workload: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/21/2018
 ms.author: juliako
-ms.openlocfilehash: 70a3de35f6fd942bca5355db3a7c6b57aec6adbc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4db84deb344921d329e81e0f0c9c3a97923430f3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613938"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156495"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート 
+# <a name="whats-new-in-azure-media-services-v3"></a>Azure Media Services v3 の新機能
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -26,7 +26,13 @@ ms.locfileid: "51613938"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
-* 変更の計画
+
+## <a name="known-issues"></a>既知の問題
+
+> [!NOTE]
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
+
+詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
 
 ## <a name="november-2018"></a>2018 年 11 月
 

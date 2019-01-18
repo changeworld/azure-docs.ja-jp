@@ -1,22 +1,21 @@
 ---
 title: Node.js MongoDB アプリを Azure Cosmos DB に接続する
 description: このクイック スタートは、Node.js で記述された既存の MongoDB アプリを Azure Cosmos DB に接続する方法を示します。
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: d9754cf66b05059c986c7ffbff94290e207f706a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1f8b20d70f6fb0a219ec484f730d9c085a3519a2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141382"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040457"
 ---
-# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB は:既存の Node.js MongoDB Web アプリの移行 
+# <a name="migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -27,11 +26,11 @@ ms.locfileid: "53141382"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
-このクイック スタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、[MongoDB API](mongodb-introduction.md) を使用して MongoDB のクライアント接続をサポートします。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
+このクイック スタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、MongoDB クライアントをサポートする Cosmos データベースにこのアプリを接続する方法を説明します。 言い換えると、Cosmos データベースへのデータの格納は、アプリケーションでは意識されません。
 
-操作を完了すると、MEAN アプリケーション (MongoDB、Express、Angular、および Node.js) が [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
+操作を完了すると、MEAN アプリケーション (MongoDB、Express、Angular、および Node.js) が [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
@@ -109,9 +108,9 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-[az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
+[az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) コマンドを使用して、Cosmos アカウントを作成します。
 
-次のコマンドの `<cosmosdb-name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
+次のコマンドの `<cosmosdb-name>` プレースホルダーを独自の一意の Cosmos アカウント名に置き換えます。 この一意の名前は、Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure 内のすべての Cosmos アカウントで一意である必要があります。 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -158,14 +157,14 @@ DB/databaseAccounts/<cosmosdb-name>",
 
 ## <a name="connect-your-nodejs-application-to-the-database"></a>データベースに Node.js アプリケーションを接続する
 
-この手順では、MongoDB 接続文字列を使用して、MEAN.js サンプル アプリケーションを、先ほど作成した Azure Cosmos DB データベースに接続します。 
+この手順では、MEAN.js サンプル アプリケーションを、先ほど作成した Cosmos データベースに接続します。 
 
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
 MEAN.js リポジトリにある `config/env/local-development.js` を開きます。
 
-このファイルの内容を次のコードに置き換えます。 さらに、2 つの `<cosmosdb-name>` プレースホルダーを実際の Azure Cosmos DB のアカウント名に置き換えます。
+このファイルの内容を次のコードに置き換えます。 さらに、2 つの `<cosmosdb-name>` プレースホルダーを実際の Cosmos アカウント名に置き換えます。
 
 ```javascript
 'use strict';
@@ -179,7 +178,7 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>キーを取得する
 
-Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) コマンドを使用して、プライマリ キーを取得します。
+Cosmos データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) コマンドを使用して、プライマリ キーを取得します。
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
@@ -213,18 +212,18 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ## <a name="view-data-in-data-explorer"></a>データ エクスプローラーにデータを表示する
 
-Azure Cosmos DB によって格納されたデータは、Azure Portal で表示、クエリ、およびビジネス ロジックを実行するために使用できます。
+Cosmos データベースの格納データは、Azure portal で表示したり、クエリしたりできます。
 
 前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure Portal](https://portal.azure.com) にログインします。
 
-上部の検索ボックスに、「Azure Cosmos DB」と入力します。 [Cosmos DB アカウント] ブレードが開いたら、自分の Cosmos DB アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
+上部の検索ボックスに、「Azure Cosmos DB」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
 ![Azure Portal でのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする
 
-この手順では、MongoDB に接続される Node.js アプリケーションを Azure Cosmos DB にデプロイします。
+この手順では、Node.js アプリケーションを Cosmos DB にデプロイします。
 
 先ほど変更した構成ファイルは開発環境用であることにお気付きかもしれません (`/config/env/local-development.js`)。 アプリケーションを App Service にデプロイすると、既定では運用環境で実行されます。 したがって、ここで、同じ変更を該当する構成ファイルに対して行う必要があります。
 
@@ -237,7 +236,7 @@ MEAN.js リポジトリにある `config/env/production.js` を開きます。
 ```
 
 > [!NOTE] 
-> [Azure Cosmos DBでは SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
+> [Cosmos DB では SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
 >
 >
 
@@ -253,7 +252,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用して MongoDB コレクションを作成する方法を学習しました。 これで、MongoDB データを Azure Cosmos DB に移行できます。  
+このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

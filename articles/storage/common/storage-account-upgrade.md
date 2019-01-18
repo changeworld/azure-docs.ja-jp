@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637603"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631438"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -34,12 +34,14 @@ ms.locfileid: "49637603"
 
 ## <a name="upgrade-with-powershell"></a>PowerShell を使用したアップグレード
 
-PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、**AzureRm.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)」を参照してください。 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、**Az.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)」を参照してください。 
 
 次に、次のコマンドを呼び出してアカウントをアップグレードします。その際、目的のリソース グループおよびストレージの名前に置き換えます。
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
 
 ## <a name="upgrade-with-azure-cli"></a>Azure CLI を使用したアップグレード
@@ -56,7 +58,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 汎用 v2 アカウントは、すべての Azure ストレージ サービスとデータ オブジェクトをサポートしていますが、アクセス層は BLOB ストレージのブロック BLOB に対してのみ使用できます。 汎用 v2 ストレージ アカウントにアップグレードするときに、BLOB データのアクセス層を指定できます。 
 
-アクセス層を使用すると、想定される使用パターンに基づいて最も費用対効果の高いストレージを選択できます。 ブロック BLOB は、ホット層、クール層、またはアーカイブ層に格納できます。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、およびアーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
+アクセス層を使用すると、想定される使用パターンに基づいて最も費用対効果の高いストレージを選択できます。 ブロック BLOB は、ホット層、クール層、またはアーカイブ層に格納できます。 アクセス層の詳細については、「[Azure Blob Storage:ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」をご覧ください。
 
 既定では、新しいストレージ アカウントはホット アクセス層に作成され、汎用 v1 ストレージ アカウントはホット アクセス層にアップグレードされます。 アップグレード後にデータに使用するアクセス層を検討している場合は、実際のシナリオを考慮してください。 汎用 v2 アカウントに移行する一般的なユーザー シナリオには、次の 2 つがあります。
 
@@ -69,17 +71,17 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 ## <a name="pricing-and-billing"></a>価格と課金
 すべてのストレージ アカウントでは、各 BLOB の層に基づいた Blob Storage の価格モデルを採用しています。 ストレージ アカウントを使用するときには、課金に関して次の点を考慮してください。
 
-* **ストレージ コスト**: データの格納のコストは、格納されているデータの量だけでなく、ストレージ層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
+* **ストレージ コスト**:データの格納のコストは、格納されているデータの量だけでなく、ストレージ層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
 
-* **データ アクセス コスト**: データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
+* **データ アクセス コスト**:データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
 
-* **トランザクション コスト**: すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
+* **トランザクション コスト**:すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
 
-* **geo レプリケーション データ転送コスト**: GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
+* **geo レプリケーション データ転送コスト**:GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
 
-* **送信データ転送コスト**: 送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金がギガバイトあたりで発生します。これは、汎用ストレージ アカウントと同じです。
+* **送信データ転送コスト**:送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金が 1 ギガバイトごとに発生します。これは、汎用ストレージ アカウントと同じです。
 
-* **ストレージ層の変更**: アカウント ストレージ層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント ストレージ層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
+* **ストレージ層の変更**:アカウント ストレージ層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント ストレージ層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
 
 > [!NOTE]
 > ストレージ アカウントの価格モデルの詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。

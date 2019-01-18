@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435278"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078526"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -70,6 +70,14 @@ ms.locfileid: "53435278"
 > ロックアウト後、はじめてのサインインにも失敗した場合は、アカウントは再度ロックアウトされます。 アカウントが繰り返しロックされた場合は、ロックアウト時間が長くなります。
 
 ![Azure Portal で Azure AD スマート ロックアウト ポリシーをカスタマイズする](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Smartlockout 機能が動作しているかどうかを確認する方法
+
+Smartlockout のしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
+
+**承認されていない使用を防ぐためにアカウントが一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は、管理者にお問い合わせください。**
+
+
 ## <a name="next-steps"></a>次の手順
 
 [Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)

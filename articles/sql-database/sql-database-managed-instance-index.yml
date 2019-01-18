@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 11832a3b7fb68dce6fb24f44ceec5ffb9a57eb69
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7251ec6e20dcbc9169c2dab2247386ff500760e7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437556"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033878"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 12/14/2018
+  ms.date: 01/03/2019
   ms.author: jovanpop
 abstract:
   description: Azure SQL Database Managed Instance は、Azure クラウド上でホストされるフル マネージド SQL Server データベース エンジン インスタンスです。 これは、SQL Server データベースをクラウドに移行するための最善の PaaS オプションです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、マネージド インスタンスを作成して使用する方法を確認してください。
@@ -78,7 +78,7 @@ sections:
     - html: ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-tde-byok">暗号化キーの持ち込み</a>を行いながら、Transparent Data Encryption (TDE) が既に有効になっているオンプレミス データベースを移行します。
-    - html: Managed Instance が<a href="sql-database-managed-instance-endpoint-verify-built-in-firewall">組み込みのファイアウォール</a>で保護されます。
+    - html: Managed Instance が<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">組み込みのファイアウォール</a>で保護されます。
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -132,7 +132,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">ハードウェアの特性と制限</a>および <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 言語の違い</a>について学習します。
     - html: マネージド インスタンスがデプロイされる Azure VNet を<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">構成します</a>。
-    - html: マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">検証します</a>。
+    - html: マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances">検証します</a>。
     - html: <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。
     - html: <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してデータベースを移行できることを確認します。
     - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブ復元</a>または<a href="/azure/dms/tutorial-sql-server-managed-instance-online">データ移行サービス</a>を使用して、データベースを Managed Instance に移行します。

@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f0ba365096808954c24beb073f3570499fd23523
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 06866b1a0b986190ab6770e5484fb7d950d10b26
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408278"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753916"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスとは
 
 セキュリティは、クラウドを使用する組織の最大の懸念事項です。 クラウド セキュリティの重要な側面は、クラウド リソースを管理する際の ID とアクセスです。 モバイルを重視したクラウド中心の世界では、ユーザーはさまざまなデバイスやアプリを使用してどこからでも組織のリソースにアクセスできます。 このため、だれがリソースにアクセスできるかに重点を置くだけでは十分ではなくなっています。 セキュリティと生産性のバランスをうまく取るためには、リソースへのアクセス方法も考慮してアクセスの制御を決定する必要があります。 Azure Active Directory (Azure AD) の条件付きアクセスを使用すると、この要件に対処することができます。 条件付きアクセスは、Azure Active Directory の機能です。 条件付きアクセスを使用すると、クラウド アプリへのアクセスを許可するかどうかの判断を各種の条件に基づいて自動的に行うアクセスの制御を実装できます。 
 
-条件付きアクセス ポリシーは、第 1 段階認証が完了したときに適用されます。 つまり、条件付きアクセスは、たとえばサービス拒否攻撃 (DoS) の対抗するためのメカニズムではありません。  
+条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 つまり、条件付きアクセスは、サービス拒否 (DoS) 攻撃などのシナリオの防御の最前線を意図したものではありませんが、これらのイベントのシグナル (サインインのリスク レベル、要求の場所など) を利用してアクセスを判別できます。  
 
 ![コントロール](./media/overview/81.png)
 

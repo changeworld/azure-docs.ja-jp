@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0e8138f66c9284531b9610c9bc2996974e2075ad
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 831c233672e162462439056e56a244e6fb8a2f31
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339511"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264210"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
@@ -68,7 +68,7 @@ Azure Stack をデプロイする前に、物理ホスト コンピューター�
 開発キット ホストに Azure Stack をデプロイする前に、CloudBuilder.vhdx で起動し、管理者特権の PowerShell ウィンドウで次のスクリプトを実行します。
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

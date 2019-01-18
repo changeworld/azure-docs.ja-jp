@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: Azure Data Lake Storage Gen1 をアドオン ストレージとして使用する Azure HDInsight クラスター | Microsoft Docs'
+title: PowerShell:Azure Data Lake Storage Gen1 をアドオン ストレージとして使用する Azure HDInsight クラスター | Microsoft Docs
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0fa4a4c1586957dabf1c849fdb897a479c4f8db3
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3de675adf7364e8281a03a46c5eeeaa1b74249b5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957414"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969286"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 
@@ -194,7 +194,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
 
         # Create an Azure storage account
         $location = "East US 2"
-        $storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
+        $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
         New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 
@@ -268,7 +268,7 @@ Data Lake Storage Gen1 を使用するように HDInsight クラスターを構�
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [ポータル: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [ポータル:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

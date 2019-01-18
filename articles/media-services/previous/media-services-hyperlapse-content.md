@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242587"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632876"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル
+
+> [!NOTE]
+> Azure Media Services のこのプレビュー機能は間もなく廃止されます。 2018 年 12 月 19 日以降、Media Services では、Media Hyperlapse に対する変更や機能強化は行われません。 2019 年 3 月 29 日には廃止され、使用できなくなります。
+
 Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成するメディア プロセッサ (MP) です。  [Microsoft Research のデスクトップ版 Hyperlapse Pro および電話ベースの Hyperlapse Mobile](https://aka.ms/hyperlapse)とはクラウド ベースの兄弟である、Azure Media Services 向けの Microsoft Hyperlapse では大規模な Azure Media Services メディア処理プラットフォームを利用して、Hyperlapse の一括処理を水平方向にスケーリングし、並列化します。
 
 > [!IMPORTANT]

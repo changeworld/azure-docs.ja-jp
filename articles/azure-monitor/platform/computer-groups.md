@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 3f7cfbea414561a50152f88ac9061d7f62c89e2a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192413"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728408"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -31,7 +31,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 |:--- |:--- |
 | ログ検索 |コンピューターの一覧を返すログ検索を作成します。 |
 | Log Search API |ログ検索の結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
-| Active Directory |Active Directory ドメインに属しているエージェント コンピューターのグループ メンバーシップを自動的にスキャンし、セキュリティ グループごとのグループを Log Analytics に作成します。 |
+| Active Directory |Active Directory ドメインに属しているエージェント コンピューターのグループ メンバーシップを自動的にスキャンし、セキュリティ グループごとのグループを Log Analytics に作成します。 (Windows マシンのみ)|
 | 構成マネージャー | System Center Configuration Manager からコレクションをインポートし、各々の Log Analytics でグループを作成します。 |
 | Windows Server Update Services |WSUS のサーバーまたはクライアントを自動的にスキャンして WSUS の対象グループを取得し、それぞれのグループを Log Analytics に作成します。 |
 
@@ -60,7 +60,10 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 
 ### <a name="active-directory"></a>Active Directory
-Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、Log Analytics エージェントがインストールされている、ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれのコンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
+Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、Log Analytics エージェントがインストールされている、Windows ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれの Windows コンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
+
+> [!NOTE]
+> インポートされた Active Directory グループのみが Windows コンピューターを含みます。
 
 Azure Portal の Log Analytics の **[詳細設定]** から Active Directory のセキュリティ グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[Active Directory]** の順に選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 

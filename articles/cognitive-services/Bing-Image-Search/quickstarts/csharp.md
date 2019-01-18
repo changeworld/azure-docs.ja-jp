@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 53dc9b90fd06cf4b6feb1e394f5fbfc5f257be4d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249517"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215254"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>クイック スタート:Bing Image Search REST API と C# を使用してイメージを検索する
 
@@ -101,12 +101,12 @@ namespace BingSearchApisQuickstart
 
 `BingImageSearch` メソッドで次の手順を実行します。
 
-1. 検索要求の URI を構築します。 文字列に追加する前に、検索用語 `toSearch` の書式を設定する必要がある点に注意してください。
+1. 検索要求の URI を構築します。 文字列に追加する前に、検索用語 `SearchTerm` の書式を設定する必要がある点に注意してください。
 
     ```csharp
-    static SearchResult BingImageSearch(string toSearch){
+    static SearchResult BingImageSearch(string SearchTerm){
 
-        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
+        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(SearchTerm);
     //...
     ```
 
@@ -156,7 +156,6 @@ namespace BingSearchApisQuickstart
     Console.WriteLine("URL for the first image result: " + firstJsonObj["webSearchUrl"]+"\n");
     ```  
 
-3. 必ずアプリケーション コードからサブスクリプション キーを削除してください。
 
 ## <a name="json-response"></a>JSON 応答
 

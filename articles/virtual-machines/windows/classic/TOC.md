@@ -1,5 +1,6 @@
 # 概要
-## [仮想マシンについて](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [VM 拡張機能](agents-and-extensions-classic.md)
+## [可用性](configure-availability-classic.md)
 ## [FAQ](faq-classic.md)
 
 # 作業開始
@@ -28,21 +29,18 @@
 ### [クラシック デプロイ モデルで作成された Windows VM のサイズ変更](resize-vm-classic.md)
 ### [メンテナンス](planned-maintenance-schedule-classic.md)
 
-## [管理]
-### [クラシックから Resource Manager への移行](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+## 管理
+### [クラシックから Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-deep-dive)
 ### [Azure PowerShell を使用した仮想マシンの管理](manage-psh-classic.md)
 ### [VM エージェントおよび拡張機能について](agents-and-extensions-classic.md)
 ### [VM 拡張機能を管理する](manage-extensions-classic.md)
 
 ## ワークロードの管理
-### [ハイパフォーマンス コンピューティング (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
+### ハイパフォーマンス コンピューティング (HPC)
 #### [リソースの自動スケール](hpcpack-cluster-node-autogrowshrink.md)
 #### [コンピューティング ノードの管理](hpcpack-cluster-node-manage.md)
 #### [クラスターの作成](hpcpack-cluster-powershell-script.md)
 #### [MPI アプリケーション実行のためのクラスターの設定](hpcpack-rdma-cluster.md)
-#### [Excel と SOA のワークロードの実行](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Marketplace イメージを使用したヘッド ノードの作成](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [オンプレミスから Azure へのジョブ送信](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
 
@@ -57,7 +55,6 @@
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Resource Manager テンプレートの作成](../../../resource-group-authoring-templates.md)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
 ## [コンピューティング REST](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [ネットワーク REST](https://msdn.microsoft.com/library/jj157182.aspx)

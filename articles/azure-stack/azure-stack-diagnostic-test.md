@@ -1,5 +1,5 @@
 ---
-title: Azure Stack で検証テストを実行する | Microsoft Docs
+title: Azure Stack 検証ツールの使用 |Microsoft Docs
 description: Azure Stack の診断のログ ファイルを収集する方法。
 services: azure-stack
 author: jeffgilb
@@ -10,193 +10,188 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: af601005c7c8bd8fa7fe335879991caa34187927
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 63a198b082c7486de2392153291a11be5bcb2f9e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236977"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103225"
 ---
-# <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
+# <a name="validate-azure-stack-system-state"></a>Azure Stack システムの状態を検証する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
- 
-Azure Stack の状態を検証できます。 問題が発生している場合は、Microsoft カスタマー サービス サポートに連絡してください。 サポートは、ユーザーに管理ノードから **Test-AzureStack** を実行するよう依頼します。 この検証テストによって障害が分離されます。 それによりサポートは詳細なログを分析し、エラーが発生した領域に焦点を絞って、問題の解決でユーザーと協力することができます。
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
-## <a name="run-test-azurestack"></a>Test-AzureStack を実行する
+Azure Stack オペレーターは、システムの正常性と状態をオンデマンドで把握できることが不可欠です。 Azure Stack の検証ツール (**Test-azurestack**) は PowerShell コマンドレットであり、システム上で一連のテストを実行して、障害があればそれを特定できます。 通常このツールは、Microsoft カスタマー サービス サポート (CSS) にアクセスして問題について問い合わせるときに、[特権エンドポイント (PEP)](azure-stack-privileged-endpoint.md) から実行することが求められます。 手元にシステム全体の正常性および状態情報があれば、CSS は詳細ログを収集して分析し、エラーが発生した領域に焦点を当て、お客様と連携して問題を解決できます。
 
-問題が発生している場合は、Microsoft カスタマー サービス サポートに連絡してから、**Run Test-AzureStack** を実行します。
+## <a name="running-the-validation-tool-and-accessing-results"></a>検証ツールを実行して結果にアクセスする
 
-1. 問題が発生しています。
-2. Microsoft カスタマー サービス サポートに連絡してください。
-3. 特権エンドポイントから **Test-AzureStack** を実行します。
-    1. 特権エンドポイントにアクセスします。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。 
-    2. ASDK で、**AzureStack\CloudAdmin** として管理ホストにサインインします。  
-    統合システムでは、OEM ハードウェア ベンダーから提供された管理の特権エンド ポイントの IP アドレスを使用する必要があります。
-    3. PowerShell を管理者として開きます。
-    4. 次のコマンドを実行します: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
-    5. 次のコマンドを実行します: `Test-AzureStack`
-4. どのテストでも **FAIL** が報告される場合は、`Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` を実行します。このコマンドレットは、Test-AzureStack からログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。 テストで **WARN** が報告される場合、ログの収集や、Microsoft カスタマー サービス サポート (CSS) への連絡はしないでください。
-5. **SeedRing** ログを Microsoft カスタマー サービス サポートに送信します。 Microsoft カスタマー サービス サポートは、ユーザーと協力して問題を解決します。
+前述のとおり、検証ツールは PEP 経由で実行されます。 各テストは、PowerShell ウィンドウで**合格/不合格**のいずれかの状態を返します。 さらに、詳細な HTML レポートが作成され、後で[ログの収集](azure-stack-diagnostics.md)時にアクセスできます。 以下に示すのは、エンド ツー エンド検証テスト プロセスの概要です。 
 
-## <a name="reference-for-test-azurestack"></a>Test-AzureStack のリファレンス
+1. 特権エンドポイント (PEP) にアクセスします。 PEP セッションを確立するために、次のコマンドを実行します。
 
-このセクションには、Test-AzureStack コマンドレットの概要と検証レポートの要約が含まれています。
+   ```powershell
+   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+   ```
 
-### <a name="test-azurestack"></a>Test-AzureStack
+   > [!TIP]
+   > ASDK ホスト コンピューターで PEP にアクセスするには、-ComputerName に対して azs-ercs01 を使用します。
 
-Azure Stack の状態を検証します。 このコマンドレットは、Azure Stack ハードウェアおよびソフトウェアの状態を報告します。 サポート スタッフは、このレポートを使用して、Azure Stack サポート ケースを解決するための時間を短縮できます。
+2. PEP から、次のコマンドを実行します。 
 
-> [!Note]  
-> **Test-AzureStack** は、クラウドの停止を発生させない障害 (1 台の故障したディスクや 1 つの物理ホスト ノードの障害など) を検出する可能性があります。
+   ```powershell
+   Test-AzureStack
+   ```
 
-#### <a name="syntax"></a>構文
+   詳細については、「[パラメーターに関する考慮事項](azure-stack-diagnostic-test.md#parameter-considerations)」と「[ユース ケースの例](azure-stack-diagnostic-test.md#use-case-examples)」を参照してください。
 
-````PowerShell
-  Test-AzureStack
-````
+3. いずれかのテストで **FAIL** が報告された場合は、次を実行します。
 
-#### <a name="parameters"></a>parameters
+   ```powershell
+   Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath "<path>" -OutputShareCredential $cred
+   ```
 
-| パラメーター               | 値           | 必須 | 既定値 |
-| ---                     | ---             | ---      | ---     |
-| ServiceAdminCredentials | String    | いいえ        | FALSE   |
-| DoNotDeployTenantVm     | SwitchParameter | いいえ        | FALSE   |
-| AdminCredential         | PSCredential    | いいえ        | 該当なし      |
-| List                    | SwitchParameter | いいえ        | FALSE   |
-| Ignore                  | String          | いいえ        | 該当なし      |
-| Include (含める)                 | String          | いいえ        | 該当なし      |
-| BackupSharePath         | String          | いいえ        | 該当なし      |
-| BackupShareCredential   | PSCredential    | いいえ        | 該当なし      |
+   このコマンドレットは、Test-azurestack によって生成されたログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。 テストで **WARN** が報告される場合は、ログを収集したり CSS に問い合わせたりしないでください。
 
+4. CSS により検証ツールを実行するように指示された場合、CSS の担当者は、問題のトラブルシューティングを続行するために、収集したログの提出を要求します。
 
-Test-AzureStack コマンドレットは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable の一般的なパラメーターをサポートしています。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](https://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。 
+## <a name="tests-available"></a>利用可能なテスト
 
-### <a name="examples-of-test-azurestack"></a>Test-AzureStack の例
+検証ツールでは、現在の状態への洞察を提供してシステム内の問題を確認できる、一連のシステム レベルのテストや基本的なクラウド シナリオを実行できます。
 
-次の例では、**CloudAdmin** としてサインインし、特権エンドポイント (PEP) にアクセスしていることを前提にしています。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。 
+### <a name="cloud-infrastructure-tests"></a>クラウド インフラストラクチャのテスト
 
-#### <a name="run-test-azurestack-interactively-without-cloud-scenarios"></a>クラウド シナリオなしで Test-AzureStack を対話的に実行する
+これらの影響度が低いテストは、インフラストラクチャ レベルで動作し、さまざまなシステム コンポーネントや機能に関する情報を提供します。 現時点では、テストは、次のカテゴリにグループ化されます。
 
-PEP セッションで、次を実行します。
+| テスト カテゴリ                                        | -Include および -Ignore の引数 |
+| :--------------------------------------------------- | :-------------------------------- |
+| Azure Stack のアラートの概要                            | AzsAlertSummary                   |
+| Azure Stack バックアップ共有のアクセシビリティの概要       | AzsBackupShareAccessibility       |
+| Azure Stack のコントロール プレーンの概要                    | AzsControlPlane                   |
+| Azure Stack Defender の概要                         | AzsDefenderSummary                |
+| Azure Stack のホスティング インフラストラクチャ ファームウェアの概要  | AzsHostingInfraFWSummary          |
+| Azure Stack クラウド ホスティング インフラストラクチャの概要     | AzsHostingInfraSummary            |
+| Azure Stack クラウド ホスティング インフラストラクチャの利用 | AzsHostingInfraUtilization        |
+| Azure Stack インフラストラクチャの容量                  | AzsInfraCapacity                  |
+| Azure Stack インフラストラクチャのパフォーマンス               | AzsInfraPerformance               |
+| Azure Stack インフラストラクチャ ロールの概要              | AzsInfraRoleSummary               |
+| Azure Stack 更新プログラムの概要                           | AzsInfraUpdateSummary             |
+| Azure Stack ポータルおよび API の概要                   | AzsPortalAPISummary               |
+| Azure Stack スケール ユニットの VM イベント                     | AzsScaleUnitEvents                |
+| Azure Stack スケール ユニットの VM リソース                  | AzsScaleUnitResources             |
+| Azure Stack SDN 検証の概要                   | AzsSDNValidation                  |
+| Azure Stack サービス ファブリック ロールの概要              | AzsSFRoleSummary                  |
+| Azure Stack の BMC の概要                              | AzsStampBMCSummary                |
+| Azure Stack ストレージ サービスの概要                 | AzsStorageSvcsSummary             |
+| Azure Stack SQL ストアの概要                        | AzsStoreSummary                   |
+| Azure Stack の VM 配置の概要                     | AzsVmPlacement                    |
 
-````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-    Test-AzureStack
-````
+### <a name="cloud-scenario-tests"></a>クラウド シナリオのテスト
 
-#### <a name="run-test-azurestack-with-cloud-scenarios"></a>クラウド シナリオを使用して Test-AzureStack を実行する
+上記のインフラストラクチャ テストだけでなく、インフラストラクチャ コンポーネント全体で機能をチェックするための、クラウド シナリオのテストを実行する機能もあります。 リソースのデプロイが関係するため、これらのテストを実行するは、クラウド管理者の資格情報が必要です。 
+    > [!NOTE]
+    >
+    > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
-**Test-AzureStack** を使用して、Azure Stack に対してクラウド シナリオを実行できます。 これらのシナリオは、次のとおりです。
+検証ツールでは、次のクラウドのシナリオがテストされます。
+- リソース グループの作成   
+- プランの作成              
+- オファーの作成            
+- ストレージ アカウントの作成   
+- 仮想マシンの作成 
+- Blob ストレージの操作   
+- キュー ストレージの操作  
+- テーブル ストレージの操作  
 
- - リソース グループの作成
- - プランの作成
- - オファーの作成
- - ストレージ アカウントの作成
- - 仮想マシンの作成
- - テスト シナリオで作成されたストレージ アカウントを使用して BLOB 操作を実行する
- - テスト シナリオで作成されたストレージ アカウントを使用してキュー操作を実行する
- - テスト シナリオで作成されたストレージ アカウントを使用してテーブル操作を実行する
+## <a name="parameter-considerations"></a>パラメーターに関する考慮事項
 
-クラウド シナリオには、クラウド管理者の資格情報が必要です。 
-> [!Note]  
-> Active Directory フェデレーション サービス (AD FS) の資格情報を使用してクラウド シナリオを実行することはできません。 **Test-AzureStack** コマンドレットは、PEP 経由でのみアクセス可能です。 ただし、PEP は AD FS の資格情報をサポートしていません。
+- パラメーター **List** は、利用可能なすべてのテスト カテゴリを表示するために使用できます。
 
-クラウド管理者のユーザー名を UPN 形式 serviceadmin@contoso.onmicrosoft.com (Azure AD) で入力します。 入力を求められたら、クラウド管理者のアカウントのパスワードを入力します。
+- パラメーター **Include** と **Ignore** は、テスト カテゴリを含めたり除外したりするために使用できます。 これらの引数で使用する短縮形の詳細については、「[利用可能なテスト](azure-stack-diagnostic-test.md#tests-available)」セクションを参照してください。
 
-PEP セッションで、次を実行します。
-
-````PowerShell
-  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-  Test-AzureStack -ServiceAdminCredentials <Cloud administrator user name>
-````
-
-#### <a name="run-test-azurestack-without-cloud-scenarios"></a>クラウド シナリオなしで Test-AzureStack を実行する
-
-PEP セッションで、次を実行します。
-
-````PowerShell
-  $session = New-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-  Invoke-Command -Session $session -ScriptBlock {Test-AzureStack}
-````
-
-#### <a name="list-available-test-scenarios"></a>使用可能なテスト シナリオを一覧表示する
-
-PEP セッションで、次を実行します。
-
-````PowerShell
-  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-  Test-AzureStack -List
-````
-
-#### <a name="run-a-specified-test"></a>指定されたテストを実行する
-
-PEP セッションで、次を実行します。
-
-````PowerShell
-  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
+  ```powershell
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
-````
+  ```
 
-特定のテストを除外するには:
+  ```powershell
+  Test-AzureStack -Ignore AzsInfraPerformance
+  ```
 
-````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-    Test-AzureStack -Ignore AzsInfraPerformance
-````
+- テナント VM はクラウド シナリオ テストの一部としてデプロイされます。 これを向こうにするには **DoNotDeployTenantVm** を使用できます。 
 
-### <a name="run-test-azurestack-to-test-infrastructure-backup-settings"></a>インフラストラクチャのバックアップ設定をテストするには、Test-AzureStack を実行します。
+- クラウド シナリオ テストを実行するには、**ServiceAdminCredential** パラメーターを指定する必要があります。これについては「[ユース ケースの例](azure-stack-diagnostic-test.md#use-case-examples)」のセクションで説明しています。
 
-インフラストラクチャのバックアップを構成する前に、**AzsBackupShareAccessibility** テストを使用して、バックアップ共有パスと資格情報をテストできます。
+- **BackupSharePath** と **BackupShareCredential** は、インフラストラクチャ バックアップ設定をテストするときに使用されます。これについては「[ユース ケースの例](azure-stack-diagnostic-test.md#use-case-examples)」セクションで説明しています。
 
-PEP セッションで、次を実行します。
+- 検証ツールは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable などの一般的な PowerShell パラメーターもサポートします。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](https://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。  
 
-````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-    Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential <PSCredentials-for-backup-share>
-````
-バックアップを構成した後、PEP セッションの実行から AzsBackupShareAccessibility を実行して、ERCS から共有にアクセスできることを検証できます。
+## <a name="use-case-examples"></a>ユース ケースの例
 
-````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-    Test-AzureStack -Include AzsBackupShareAccessibility
-````
+### <a name="run-validation-without-cloud-scenarios"></a>クラウド シナリオがない検証の実行
 
-構成済みのバックアップ共有で新しい資格情報をテストするには、PEP セッションから以下を実行します。
+クラウド シナリオ テストの実行をスキップするには、**ServiceAdminCredential** パラメーターを指定せずに検証ツールを実行します。 
 
-````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
-    Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential <PSCredential for backup share>
-````
+```powershell
+New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred
+Test-AzureStack
+```
 
-### <a name="validation-test"></a>検証テスト
+### <a name="run-validation-with-cloud-scenarios"></a>クラウド シナリオがある検証の実行
 
-次の表は、**Test-AzureStack** によって実行される検証テストをまとめたものです。
+検証ツールに **ServiceAdminCredentials** パラメーターを指定すると、既定でクラウド シナリオ テストが実行されます。 
 
-| Name                                                                                                                              |
-|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Azure Stack クラウド ホスティング インフラストラクチャの概要                                                                                  |
-| Azure Stack ストレージ サービスの概要                                                                                              |
-| Azure Stack インフラストラクチャ ロール インスタンスの概要                                                                                  |
-| Azure Stack クラウド ホスティング インフラストラクチャの利用                                                                              |
-| Azure Stack インフラストラクチャの容量                                                                                               |
-| Azure Stack ポータルおよび API の概要                                                                                                |
-| Azure Stack Azure Resource Manager 証明書の概要                                                                                               |
-| インフラストラクチャ管理コントローラー、ネットワーク コントローラー、ストレージ サービス、および特権エンドポイントのインフラストラクチャ ロール          |
-| インフラストラクチャ管理コントローラー、ネットワーク コントローラー、ストレージ サービス、および特権エンドポイントのインフラストラクチャ ロール インスタンス |
-| Azure Stack インフラストラクチャ ロールの概要                                                                                           |
-| Azure Stack クラウド サービス ファブリック サービス                                                                                         |
-| Azure Stack インフラストラクチャ ロール インスタンスのパフォーマンス                                                                              |
-| Azure Stack クラウド ホストのパフォーマンスの概要                                                                                        |
-| Azure Stack サービス リソース消費の概要                                                                                  |
-| Azure Stack スケール ユニットの重大なイベント (過去 8 時間)                                                                             |
-| Azure Stack ストレージ サービス物理ディスクの概要                                                                               |
-|Azure Stack バックアップ共有のアクセシビリティの概要                                                                                     |
+```powershell
+Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" 
+```
+
+残りのテストを実行せずにクラウド シナリオのみを実行したい場合は、**Include** パラメーターを使用してそのようにすることができます。 
+
+```powershell
+Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Include AzsScenarios   
+```
+
+クラウド管理者のユーザー名は UPN 形式serviceadmin@contoso.onmicrosoft.com (Azure AD) で入力する必要があります。 入力を求められたら、クラウド管理者のアカウントのパスワードを入力します。
+
+### <a name="run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix"></a>更新プログラムまたは修正プログラムをインストールする前に、検証ツールを実行してシステムの対応状態をテストします。
+
+更新または修正プログラムのインストールを開始する前に、検証ツールを実行して Azure Stack の状態を確認する必要があります。
+
+```powershell
+New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+```
+
+### <a name="run-validation-tool-to-test-infrastructure-backup-settings"></a>インフラストラクチャのバックアップ設定をテストするには、検証ツールを実行します。
+
+インフラストラクチャのバックアップを構成する*前に*、**AzsBackupShareAccessibility** テストを使用して、バックアップ共有パスと資格情報をテストできます。 
+
+  ```powershell
+  New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+  Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential <PSCredentials-for-backup-share>
+  ```
+
+バックアップを構成した*後*、PEP セッションの実行から **AzsBackupShareAccessibility** を実行して、ERCS から共有にアクセスできることを検証できます。
+
+  ```powershell
+  Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+  Test-AzureStack -Include AzsBackupShareAccessibility
+  ```
+
+構成済みのバックアップ共有で新しい資格情報をテストするには、以下を実行します。 
+
+  ```powershell
+  Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+  Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential "<PSCredential for backup share>"
+  ```
+
+
 
 ## <a name="next-steps"></a>次の手順
 
- - Azure Stack 診断ツールと問題のログ記録の詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。
- - トラブルシューティングの詳細については、「[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)」を参照してください。
+Azure Stack 診断ツールと問題のログ記録の詳細については、「[Azure Stack の診断ツール](azure-stack-diagnostics.md)」を参照してください。
+
+トラブルシューティングの詳細については、「[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)」を参照してください。

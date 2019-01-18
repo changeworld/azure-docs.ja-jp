@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248473"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156869"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
 
-この記事では、Azure Functions で Sharepoint や Dynamics など SaaS プロバイダーの表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
+この記事では、Azure Functions で SaaS プロバイダー (SharePoint や Dynamics など) 上で表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
 
 > [!IMPORTANT]
 > 外部テーブル バインディングは試験段階であり、一般公開 (GA) されない可能性があります。 外部テーブル バインディングは Azure Functions 1.x にのみ含まれており、Azure Functions 2.x に追加される予定はありません。 SaaS プロバイダーのデータにアクセスする必要があるシナリオでは、[関数を呼び出すロジック アプリケーション](functions-twitter-email.md)の使用を検討してください。
@@ -49,7 +49,7 @@ ms.locfileid: "50248473"
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||○|○
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||○|○
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||○|○
-|[Teradata](http://www.teradata.com/products-and-services/azure/products/)||○|○
+|[Teradata](https://www.teradata.com/products-and-services/azure/products/)||○|○
 |UserVoice||○|○
 |Zendesk||○|○
 
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Google スプレッドシート データ ソース
 
-Google ドキュメントでこの例で使用する表を作成するには、`Contact` というワークシートを含むスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入しましょう。
+Google ドキュメントでこの例で使用する表を作成するには、`Contact` というワークシートを含むスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例:`docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入します。
 
 ### <a name="salesforce"></a>Salesforce
 

@@ -1,21 +1,22 @@
 ---
-title: コンテナーのインストールおよび実行方法
-titlesuffix: Face - Cognitive Services - Azure
+title: コンテナーのインストールと実行
+titlesuffix: Face - Azure Cognitive Services
 description: このチュートリアルでの Face のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 27a4bccfbac73c7c8c902a59fdd4cafe0c420c31
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634932"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536544"
 ---
 # <a name="install-and-run-containers"></a>コンテナーのインストールと実行
 
@@ -29,15 +30,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Face コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-**Docker エンジン**: Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](/azure/aks/)、[Azure Container Instances](/azure/container-instances/)、または [Azure Stack](/azure/azure-stack/) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイすることもできます。 Kubernetes を Azure Stack にデプロイする方法の詳細については、「[Kubernetes を Azure Stack にデプロイする](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」を参照してください。
+**Docker エンジン**: Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](../../aks/index.yml)、[Azure Container Instances](../../container-instances/index.yml)、または [Azure Stack](../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイすることもできます。 Kubernetes を Azure Stack にデプロイする方法の詳細については、「[Kubernetes を Azure Stack にデプロイする](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」を参照してください。
 
 コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。
 
 **Microsoft Container Registry と Docker に関する知識**: レジストリ、リポジトリ、コンテナー、コンテナー イメージなどの Microsoft Container Registry と Docker の両方の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。  
 
-Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」 (Docker の概要) を参照してください。
+Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
 
-### <a name="server-requirements-and-recommendations"></a>サーバーの要件と推奨事項
+### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
 Face コンテナーには最低 1 つの CPU コア、2.6 ギガヘルツ (GHz) 以上、および 4 ギガバイト (GB) の割り当て済みメモリが必要ですが、2 つ以上の CPU コアと 6 GB 以上の割り当て済みメモリをお勧めします。
 
@@ -59,9 +60,6 @@ Face コンテナーを使用する場合、Azure で Face リソースを作成
 1. Azure portal で、Face リソースを作成します。  
    Face コンテナーを使用する場合、まず Azure portal で対応する Face リソースを作成する必要があります。 詳細については、「[クイック スタート: Azure portal で Cognitive Services アカウントを作成する](../cognitive-services-apis-create-account.md)」を参照してください。
 
-   > [!IMPORTANT]
-   > Face リソースでは、F0 価格レベルを使用する必要があります。
-
 1. Azure リソースのエンドポイント URL とサブスクリプション キーを取得します。  
    Azure リソースを作成したら、そのリソースのエンドポイント URL とサブスクリプション キーを使用して、対応する Face コンテナーをインスタンス化する必要があります。 Azure portal で Face リソースのクイック スタートとキーのそれぞれのページから、エンドポイント URL とサブスクリプション キーをコピーできます。
 
@@ -69,13 +67,13 @@ Face コンテナーを使用する場合、Azure で Face リソースを作成
 
 Cognitive Services コンテナーのプライベート コンテナー レジストリを認証する方法はいくつかありますが、コマンドラインからの推奨される方法は、[Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) を使用することです。
 
-次の例に示すように、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、Cognitive Services コンテナーのプライベート コンテナー レジストリ `containerpreview.azurecr.io` にログインします。 *\<username\>* と *\<password\>* を Azure Cognitive Services チームから受け取った資格情報に指定されているユーザー名とパスワードにそれぞれ置き換えます。
+次の例のように [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用し、Cognitive Services コンテナーのプライベート コンテナー レジストリである `containerpreview.azurecr.io` にログインします。 *\<username\>* と *\<password\>* を Azure Cognitive Services チームから受け取った資格情報に指定されているユーザー名とパスワードにそれぞれ置き換えます。
 
 ```docker
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-テキスト ファイルで資格情報をセキュリティ保護した場合は、次の例に示すように、`cat` コマンドを使用して、そのテキスト ファイルの内容を `docker login` コマンドに連結することができます。  *\<passwordFile\>* をパスワードを含むテキスト ファイルのパスと名前に置き換え、*\<username\>* を資格情報に指定されているユーザー名に置き換えます。
+テキスト ファイルで資格情報をセキュリティ保護した場合は、次の例に示すように、`cat` コマンドを使用して、そのテキスト ファイルの内容を `docker login` コマンドに連結することができます。 *\<passwordFile\>* を、パスワードを含むテキスト ファイルのパスと名前に置き換え、*\<username\>* を資格情報に指定されているユーザー名に置き換えます。
 
 ```docker
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
@@ -94,7 +92,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 Face コンテナーで使用可能なタグの詳細については、Docker Hub の[テキスト認識](https://go.microsoft.com/fwlink/?linkid=2018655)に関するページを参照してください。
 
 > [!TIP]
-> [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、および、タグが表として書式設定されて表示されます。
+> [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
 >
 >  ```Docker
 >  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
@@ -154,7 +152,7 @@ Face コンテナーは、Azure アカウントの対応する Face リソース
 |--------|-------------|
 | `ApiKey` | 課金情報を追跡するために使用される Face リソースの API キー。<br/>このオプションの値には、`Billing` に指定されたプロビジョニング済みの Face Azure リソースの API キーが設定されている必要があります。 |
 | `Billing` | 課金情報を追跡するために使用される Face リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの Face Azure リソースのエンドポイント URI が設定されている必要があります。|
-| `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値には、`accept` が設定されている必要があります。 |
+| `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
 
 > [!IMPORTANT]
 > 3 つすべてのオプションに有効な値が指定されている必要があります。そうでないと、コンテナーが起動しません。
@@ -170,7 +168,9 @@ Face コンテナーは、Azure アカウントの対応する Face リソース
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Face コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
-* * * Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。  
+
+> [!IMPORTANT]
+> Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
 
 ## <a name="next-steps"></a>次の手順
 

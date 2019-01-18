@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314161"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631899"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Azure portal で Azure Search サービスを監視する
 
@@ -70,7 +70,7 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
 
 ### <a name="enabling-monitoring"></a>監視を有効にする
-[Azure Portal](http://portal.azure.com) の [監視を有効にする] オプションで Azure Search サービスを開きます。
+[Azure Portal](https://portal.azure.com) の [監視を有効にする] オプションで Azure Search サービスを開きます。
 
 エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Log Analytics にエクスポートできます。
 
@@ -93,7 +93,7 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| 名前 | 型 | 例 | メモ |
+| Name | type | 例 | メモ |
 | --- | --- | --- | --- |
 | time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
@@ -107,7 +107,7 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 
 **プロパティのスキーマ**
 
-| 名前 | 型 | 例 | メモ |
+| Name | type | 例 | メモ |
 | --- | --- | --- | --- |
 | 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
 | クエリ |string |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
@@ -116,7 +116,7 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 
 #### <a name="metrics-schema"></a>メトリックのスキーマ
 
-| 名前 | 型 | 例 | メモ |
+| Name | type | 例 | メモ |
 | --- | --- | --- | --- |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
 | metricName |string |"Latency" |メトリックの名前 |

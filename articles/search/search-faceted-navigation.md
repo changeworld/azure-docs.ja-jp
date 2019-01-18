@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313940"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632435"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -34,7 +34,7 @@ ms.locfileid: "53313940"
 ## <a name="sample-code-and-demo"></a>サンプル コードとデモ
 この記事では、例としてジョブ検索ポータルを使用します。 この例は、ASP.NET MVC アプリケーションとして実装されます。
 
--   「[Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -335,10 +335,10 @@ if (businessTitleFacet != "")
 
 Azure Search では、範囲を計算する 2 つの方法が提供されており、簡単に範囲を作成できます。 どちらの方法でも、ユーザーが提供する入力に基づいて Azure Search が適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
 
-**方法 1: 間隔パラメーターを使用する**  
+**方法 1:間隔パラメーターを使用する**  
 $10 刻みの価格ファセットを設定するには、`&facet=price,interval:10` と指定します
 
-**方法 2: 値のリストを使用する**  
+**方法 2:値のリストを使用する**  
  数値データの場合、値のリストを使用できます。  次のように表示される `listPrice` フィールドのファセット範囲について考えます。
 
   ![サンプルの値のリスト][5]
@@ -371,7 +371,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 ## <a name="try-the-demo"></a>デモの試用
 この記事で参照されている例は、Azure Search Job Portal Demo に含まれています。
 
--   「[Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -396,12 +396,12 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>詳細情報
-「[Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」を参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
+「[Azure Search Deep Dive (Azure Search の詳細)](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」を参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
 
 ファセット ナビゲーションの設計の原則の詳細については、次のリンクをお勧めします。
 
 * [ファセット検索のための設計に関する記事](http://www.uie.com/articles/faceted_search/)
-* [ファセット ナビゲーションの設計パターンに関する記事](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [設計パターン:ファセット ナビゲーション](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

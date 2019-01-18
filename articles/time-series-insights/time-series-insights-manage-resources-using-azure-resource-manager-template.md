@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights テンプレート管理 - Azure Resource Manager テンプレートを使用して Azure Time Series Insights 環境を管理する方法 | Microsoft Docs
+title: Azure Resource Manager テンプレートを使用して Azure Time Series Insights 環境を管理する方法 | Microsoft Docs
 description: この記事では、Azure Resource Manager を使用して Azure Time Series Insights 環境をプログラムによって管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270622"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062657"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
@@ -34,6 +34,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 - [Azure Resource Manager の概要 - テンプレートのデプロイ](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
+- [Microsoft.TimeSeriesInsights のリソースの種類](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 クイックスタート テンプレート [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) が GitHub で公開されています。 このテンプレートを使用して、Time Series Insights 環境、イベント ハブからイベントを読み取るよう構成された子イベント ソース、環境のデータへのアクセス権を付与するアクセス ポリシーを作成できます。 既存のイベント ハブが指定されていない場合は、デプロイ時に 1 つ作成されます。
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: スコープ付き同期 | Microsoft Docs'
+title: Azure Active Directory Domain Services:範囲指定された同期 | Microsoft Docs
 description: Azure AD からマネージド ドメインまで範囲指定された同期を構成する
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7726a28e0254f4316759c3d8c74f57db6a9e399e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ae51151bd20d2c715d868e916f7bc633040efa40
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242196"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121532"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Azure AD からマネージド ドメインまで範囲指定された同期を構成する
 この記事では、Azure AD ディレクトリから Azure AD Domain Services のマネージド ドメインに同期される特定のユーザー アカウントのみを構成する方法を示します。
@@ -47,18 +47,23 @@ ms.locfileid: "50242196"
 >
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization"></a>新しいマネージド ドメインを作成し、グループ ベースのスコープを持つ同期を有効にする
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Azure portal を使用して新しいマネージド ドメインを作成し、グループ ベースのスコープ付き同期を有効にする
+
+1. [ファースト ステップ ガイド](active-directory-ds-getting-started.md)に従って、マネージド ドメインを作成します。
+2. Azure AD Domain Services 作成ウィザードで同期スタイルを選択するときに **[スコープ付き]** を選択します。
+
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>PowerShell を使用して新しいマネージド ドメインを作成し、グループ ベースのスコープ付き同期を有効にする
 この一連の手順を完了するには、PowerShell を使用します。 [PowerShell を使用した Azure Active Directory Domain Services の有効化](active-directory-ds-enable-using-powershell.md)の手順を参照してください。 この記事の手順のいくつかは、スコープ付きの同期を構成するために若干変更されます。
 
 グループ ベースのスコープ付きの同期をマネージド ドメインに対して構成するには、次の手順を完了します。
 
 1. 次のタスクを実行してください。
-  * [タスク 1 : 必要な PowerShell モジュールをインストールする](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
-  * [タスク 2 : Azure AD ディレクトリに必要なサービス プリンシパルを作成する](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
-  * [タスク 3 : "AAD DC 管理者" グループを作成して構成する](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
-  * [タスク 4 : Azure AD Domain Services のリソース プロバイダーを登録する](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
-  * [タスク 5 : リソース グループを作成する](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
-  * [タスク 6 : 仮想ネットワークを作成して構成する](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
+  * [タスク 1 :必要な PowerShell モジュールをインストールする](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
+  * [タスク 2 :Azure AD ディレクトリに必要なサービス プリンシパルを作成する](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
+  * [タスク 3 :"AAD DC 管理者" グループを作成して構成する](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
+  * [タスク 4 :Azure AD Domain Services のリソース プロバイダーを登録する](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
+  * [タスク 5 :リソース グループを作成する](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
+  * [タスク 6 :仮想ネットワークを作成して構成する](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
 
 2. 同期するグループを選択し、マネージド ドメインに同期するグループの表示名を指定します。
 
@@ -168,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 

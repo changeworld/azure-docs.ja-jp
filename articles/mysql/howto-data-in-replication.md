@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL にデータをレプリケートするデータイン レプリケーションを構成する
 description: この記事では、Azure Database for MySQL のデータイン レプリケーションをセットアップする方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497928"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539621"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -156,7 +153,7 @@ ms.locfileid: "46497928"
    - master_password: マスター サーバーのパスワード
    - master_log_file: `show master status` を実行することによって得たバイナリ ログ ファイルの名前
    - master_log_pos: `show master status` を実行することによって得たバイナリ ログの位置
-   - master_ssl_ca: CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
+   - master_ssl_ca:CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
        - このパラメーターは変数で渡すことをお勧めします。 詳細については、以降の例を参照してください。
 
 > [!NOTE]

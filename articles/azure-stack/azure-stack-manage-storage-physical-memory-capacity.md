@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 0516ee7a8319b85765280b4c84f5febec8343ada
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: thoroet
+ms.openlocfilehash: 928e4c7b6f7711dcad8190b6c368bd7f1df2b66c
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965617"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305895"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Azure Stack の物理メモリ容量を管理する
 

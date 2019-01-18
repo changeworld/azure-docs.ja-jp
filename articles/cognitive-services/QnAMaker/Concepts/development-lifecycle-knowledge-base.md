@@ -8,16 +8,17 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 3fa6709292c0e099285014f11872008756f2c5f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857173"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263256"
 ---
-# <a name="knowledge-base-lifecycle"></a>ナレッジ ベースのライフサイクル
+# <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
 
 ![作成サイクル](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)

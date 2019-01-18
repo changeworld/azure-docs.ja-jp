@@ -1,7 +1,7 @@
 ---
-title: 注目の画像を Web で検索する | Bing Image Search API
+title: Bing Image Search API で注目の画像を取得する
 titleSuffix: Azure Cognitive Services
-description: Bing Images Search API を使用して Web で注目の画像を検索する方法について説明します。
+description: Bing Image Search API で Web から今日の注目の画像を検索します。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296313"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258970"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>Bing Image Search API から注目の画像を取得する
+# <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する
 
 今日の注目の画像を取得するには、次の GET 要求を送信します。  
 

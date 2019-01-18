@@ -1,5 +1,5 @@
 ---
-title: Azure ソリューションから IoT デバイスを監視するチュートリアル | Microsoft Docs
+title: Azure ソリューションから IoT デバイスを監視するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して IoT デバイスを監視する方法を学習します。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d8afe474f88f0881de5b0e7b132009c6e03ac2af
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7dd7612817f83fe713759965fc28f6f86a0d624a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824746"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602530"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
+# <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル:IoT デバイスの監視
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを監視します。 ソリューション ダッシュボードを使用して、テレメトリ、デバイス情報、アラート、および KPI を表示します。
 

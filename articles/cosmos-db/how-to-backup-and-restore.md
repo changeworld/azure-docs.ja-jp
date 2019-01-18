@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 780247b5cfc70a333bac640f2e478e72f820b1f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e21a3ae23ca6a856c9524e52e80f33362f53cae1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266426"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040848"
 ---
 # <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>バックアップから Azure Cosmos DB データを復元する方法
 

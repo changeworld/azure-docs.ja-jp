@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5175d768f4aa62365e4151b4c8fed372038f1d95
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277445"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548801"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -27,9 +27,9 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../monitoring/monitoring-data-collection.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-collection.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成します。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)で構成します。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -60,11 +60,11 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| 受信要求 (プレビュー) | 指定された期間にわたって Service Bus サービスに対して実行された要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|成功した要求 (プレビュー)|指定された期間にわたって Service Bus サービスに対して実行された成功した要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|サーバー エラー (プレビュー)|指定された期間にわたって Service Bus サービスでエラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ユーザー エラー (プレビュー - 次のサブセクションを参照)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|調整された要求 (プレビュー)|使用量を超えたため調整された要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+| 受信要求 (プレビュー) | 指定された期間にわたって Service Bus サービスに対して実行された要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|成功した要求 (プレビュー)|指定された期間にわたって Service Bus サービスに対して実行された成功した要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|サーバー エラー (プレビュー)|指定された期間にわたって Service Bus サービスでエラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ユーザー エラー (プレビュー - 次のサブセクションを参照)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|調整された要求 (プレビュー)|使用量を超えたため調整された要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ### <a name="user-errors"></a>ユーザー エラー
 
@@ -78,18 +78,18 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|受信メッセージ (プレビュー)|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|送信メッセージ (プレビュー)|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-| メッセージ (プレビュー) | キュー/トピック内のメッセージの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> ディメンション: EntityName |
-| ActiveMessages (プレビュー) | キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> ディメンション: EntityName |
+|受信メッセージ (プレビュー)|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|送信メッセージ (プレビュー)|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+| メッセージ (プレビュー) | キュー/トピック内のメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> ディメンション:EntityName |
+| ActiveMessages (プレビュー) | キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> ディメンション:EntityName |
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|ActiveConnections (プレビュー)|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|開かれた接続 (プレビュー)|開かれている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|閉じられた接続 (プレビュー)|閉じられている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
+|ActiveConnections (プレビュー)|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|開かれた接続 (プレビュー)|開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|閉じられた接続 (プレビュー)|閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
 
 ## <a name="resource-usage-metrics"></a>リソース使用状況のメトリック
 
@@ -98,8 +98,8 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|名前空間あたりの CPU 使用率 (プレビュー)|名前空間の CPU 使用率 (%)。<br/><br/> 単位: パーセント <br/> 集計の種類: 最大 <br/> ディメンション: EntityName|
-|名前空間あたりのメモリ サイズ使用率 (プレビュー)|名前空間のメモリ使用率 (%)。<br/><br/> 単位: パーセント <br/> 集計の種類: 最大 <br/> ディメンション: EntityName|
+|名前空間あたりの CPU 使用率 (プレビュー)|名前空間の CPU 使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:EntityName|
+|名前空間あたりのメモリ サイズ使用率 (プレビュー)|名前空間のメモリ使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
@@ -123,7 +123,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
         ![名前空間の選択](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **[条件の追加]** を選択し、**[シグナル ロジックの構成]** ページで次のアクションを実行します。
     1. **[シグナルの種類]** で **[メトリック]** を選択します。 
-    2. シグナルを選択します。 例: **サーバー エラー (プレビュー)**。 
+    2. シグナルを選択します。 例: **サービス エラー (プレビュー)**。 
 
         ![サーバー エラーの選択](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. **[条件]** で **[より大きい]** を選択します。

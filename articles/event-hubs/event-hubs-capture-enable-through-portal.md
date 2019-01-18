@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19b485add894dbe99a524d16f891d001991c1ec7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075116"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558381"
 ---
-# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
+# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
 Azure [Event Hubs Capture][capture-overview] を使用すると、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) アカウントを選んで、Event Hubs のストリーミング データを自動的に配布することができます。
 

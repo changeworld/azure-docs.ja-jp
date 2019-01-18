@@ -10,32 +10,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087493"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722090"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack でサポートされている仮想マシンのサイズ
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事では、Azure Stack で使用可能な仮想マシン (VM) のサイズの一覧を示します。
 
 ## <a name="general-purpose"></a>汎用
 
-汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 これらはテストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに使用されます。
+汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 これらはテストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに使用されます。 各データ ディスクは、Basic A シリーズを除き、Premium VM サイズは 2300 IOPS です。 Basic A の場合、データ ディスクのサイズは 500 IOPS です。
 
 ### <a name="basic-a"></a>Basic A
 
 > [!NOTE]
 > *Basic A* の仮想マシン サイズは、ポータルを介して[仮想マシン スケール セット (VMSS) を作成する](../azure-stack-compute-add-scalesets.md)ものとしては廃止されました。 このサイズの VMSS を作成するには、PowerShell またはテンプレートをご使用ください。
 
-|サイズ - サイズ\名前 |vCPU     |メモリ | 一時ディスクの最大サイズ | OS ディスクの最大スループット: (IOPS) | 一時ストレージの最大スループット (IOPS) | データ ディスクの最大スループット (IOPS) | 最大 NIC 数 |    
+|サイズ - サイズ\名前 |vCPU     |メモリ | 一時ディスクの最大サイズ | OS ディスクの最大スループット:(IOPS) | 一時ストレージの最大スループット (IOPS) | データ ディスクの最大スループット (IOPS) | 最大 NIC 数 |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |
 |**A1\Basic_A1**  |1    |1.75 GB  | 40 GB   |300  | 300  |2 / 2x300  |1   |

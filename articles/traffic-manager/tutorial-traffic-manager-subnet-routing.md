@@ -1,10 +1,9 @@
 ---
-title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する | Microsoft Docs
+title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する
 description: この記事では、ユーザーのサブネットから特定のエンドポイントにトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956236"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053076"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -68,7 +67,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |リソース グループ| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
     |||
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
@@ -86,7 +85,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |Setting|値|
     |---|---|
     |リソース グループ | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
-    |Location|西ヨーロッパ|
+    |場所|西ヨーロッパ|
     |VM 名 | ProdWebsite|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
     |||
@@ -191,7 +190,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite* と *ProdWebsite* を追加します。
+ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite*  &  と *ProdWebsite* を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索し、表示された結果からそのプロファイルを選択します。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、**[追加]** をクリックします。

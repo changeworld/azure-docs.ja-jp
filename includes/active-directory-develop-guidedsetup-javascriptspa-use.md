@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 047ff48620b572c90f793e0f886b5ecbcf338ee2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 4502799f3125ea5207dde70704e00105c763e8ce
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53638810"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193420"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -104,7 +104,7 @@ var isIE = msie > 0 || msie11 > 0;
 var isEdge = msedge > 0;
 
 //If you support IE, our recommendation is that you sign-in using Redirect APIs
-//If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
+//If you as a developer are testing using Microsoft Edge InPrivate mode, please add "isEdge" to the if check
 if (!isIE) {
     if (myMSALObj.getUser()) {// avoid duplicate code execution on page load in case of iframe and popup window.
         showWelcomeMessage();

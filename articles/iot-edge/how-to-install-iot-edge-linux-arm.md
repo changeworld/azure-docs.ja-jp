@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/10/2018
 ms.author: kgremban
-ms.openlocfilehash: ccd38dd7570dc451a1a5b87163bfdd7aea51dad5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dbe9f18f5a38284e2b263d636656c88b1743d7ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567436"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555644"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)
 
@@ -175,6 +175,39 @@ sudo iotedge list
 
 ネットワークにプロキシ サーバーがある場合は、「[Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md)」(プロキシ サーバー経由で通信するように IoT Edge デバイスを構成する) の手順に従ってください。
 
+## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
+
+IoT Edge のインストールを Linux デバイスから削除する場合は、コマンド ラインから次のコマンドを使用します。 
+
+IoT Edge ランタイムを削除します。 
+
+```bash
+sudo apt-get remove --purge iotedge
+```
+
+IoT Edge ランタイムが削除されると、それが作成したコンテナーは停止されますが、デバイス上には残っています。 すべてのコンテナーを表示して、どのコンテナーが残っているかを確認します。 
+
+```bash
+sudo docker ps -a
+```
+
+2 つのランタイム コンテナーを含め、デバイスからコンテナーを削除します。 
+
+```bash
+sudo docker rm -f <container name>
+```
+
+最後に、デバイスからコンテナー ランタイムを削除します。 
+
+```bash 
+sudo apt-get remove --purge moby-cli
+sudo apt-get remove --purge moby-engine
+```
+
 ## <a name="next-steps"></a>次の手順
 
+ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
+
 Edge ランタイムを正常にインストールできない場合は、[トラブルシューティング](troubleshoot.md#stability-issues-on-resource-constrained-devices)のページを参照してください。
+
+IoT Edge の既存のインストールを最新バージョンに更新するには、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。

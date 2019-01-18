@@ -7,19 +7,16 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036719"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752726"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト (パブリック プレビュー)
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト
 
 Azure Application Gateway Web アプリケーション ファイアウォール (WAF) は、Web アプリケーションを保護します。 この記事では、WAF 要求サイズ制限と除外リストの構成について説明します。
-
-> [!IMPORTANT]
-> WAF 要求サイズ制限と除外リストの構成は、現在、パブリック プレビューの段階にあります。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ## <a name="waf-request-size-limits"></a>WAF 要求サイズの制限
 
@@ -52,10 +49,10 @@ WAF の除外リストを使用すると、ユーザーは WAF の評価から�
 
 次に、サポートされている一致条件演算子を示します。
 
-- **Equals**: この演算子は完全一致の場合に使用されます。 たとえば、**bearerToken** という名前のヘッダーを選択した場合は、**bearerToken** として設定されるセレクターで equals 演算子を使用します。
-- **Starts with**: この演算子は指定したセレクター値で始まるすべてのフィールドと一致します。
-- **Ends with**: この演算子は指定したセレクター値で終わるすべての要求フィールドと一致します。
-- **Contains**: この演算子は指定したセレクター値を含むすべての要求フィールドと一致します。
+- **Equals**:この演算子は完全一致の場合に使用されます。 たとえば、**bearerToken** という名前のヘッダーを選択した場合は、**bearerToken** として設定されるセレクターで equals 演算子を使用します。
+- **Starts with**:この演算子は指定したセレクター値で始まるすべてのフィールドと一致します。
+- **Ends with**:この演算子は指定したセレクター値で終わるすべての要求フィールドと一致します。
+- **Contains**:この演算子は指定したセレクター値を含むすべての要求フィールドと一致します。
 
 すべての場合に、照合で大文字と小文字は区別されず、正規表現はセレクターとして使用できません。
 

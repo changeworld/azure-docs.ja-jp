@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB でのパーティション分割
 description: Azure Cosmos DB でのパーティション分割の概要
-author: aliuy
+ms.author: mjbrown
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: andrl
-ms.openlocfilehash: cc4b165b4fa04e22c9c57547df1657a0c6fc4537
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263377"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042276"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 
@@ -47,7 +47,6 @@ Cosmos DB は、ハッシュベースのパーティション分割を使用し�
 
 ## <a name="next-steps"></a>次の手順
 
-* [パーティション キーの選択](partitioning-overview.md#choose-partitionkey)について確認します
 * [パーティション](partition-data.md)について確認します
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します
 * [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。

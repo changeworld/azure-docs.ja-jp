@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight での Apache Hive による JSON ドキュメントの分析および処理
+title: Apache Hive による JSON ドキュメントの分析および処理 - Azure HDInsight
 description: JSON ドキュメントの使用方法および Azure HDInsight での Apache Hive による分析方法について説明します。
 services: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0322b95c6fecc120fd6a50b05dbf502f28afa114
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006568"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652697"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -57,9 +57,9 @@ Azure HDInsight で Apache Hive を使用して JavaScript Object Notation (JSON
 }
 ```
 
-ファイルは、**wasb://processjson@hditutorialdata.blob.core.windows.net/** で参照できます。 HDInsight での Azure BLOB Storage の使用方法については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
+ファイルは、**wasb://processjson@hditutorialdata.blob.core.windows.net/** で参照できます。 HDInsight での Azure BLOB ストレージの使用方法については、[HDInsight の Apache Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
-このチュートリアルでは、Hive コンソールを使用します。 Hive コンソールを開く方法については、「[リモート デスクトップによる HDInsight での Hive と Hadoop の使用](apache-hadoop-use-hive-remote-desktop.md)」をご覧ください。
+このチュートリアルでは、Apache Hive コンソールを使用します。 Hive コンソールを開く方法については、[リモート デスクトップによる HDInsight での Apache Hive と Apache Hadoop の使用](apache-hadoop-use-hive-remote-desktop.md)に関するページを参照してください。
 
 ## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
 次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが 1 行で構成されている必要があります。 このため、JSON ドキュメントを文字列にフラット化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。 JSON ドキュメントをフラット化するには、次のスクリプトを実行します。
@@ -101,7 +101,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * get_json_object user-defined 関数 (UDF) を使用します。
 * json_tuple UDF を使用します。
 * カスタムのシリアライザー/デシリアライザー (SerDe) を使用します。
-* Python またはその他の言語を使用して独自の UDF を作成します。 Hive で独自の Python コードを実行する方法の詳細については、「[HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用][hdinsight-python]」を参照してください。
+* Python またはその他の言語を使用して独自の UDF を作成します。 Hive で独自の Python コードを実行する方法の詳細については、[Apache Hive および Apache Pig での Python UDF の使用][hdinsight-python]に関するページを参照してください。
 
 ### <a name="use-the-getjsonobject-udf"></a>get_json_object UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドでは 2 つの引数 (テーブル名とメソッド名) を取り、解析が必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
@@ -152,9 +152,9 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 関連記事については、次を参照してください。
 
-* [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
-* [HDInsight での Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data.md)
-* [HDInsight での Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
+* [HDInsight で Apache Hive Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
+* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data.md)
+* [HDInsight での Apache Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

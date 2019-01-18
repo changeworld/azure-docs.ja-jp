@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB のコンテナーのスループットをプロビジョニングする
 description: Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: eb34385087118614f8d7057c2229bc3c9e8d1ae4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097667"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039488"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Azure Cosmos DB コンテナーのスループットをプロビジョニングする
 
@@ -47,7 +46,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-MongoDB API アカウントのスループットをプロビジョニングする場合は、パーティション キーのパスに "/myShardKey" を、Cassandra API アカウントのスループットをプロビジョニングするときは、パーティション キーのパスに "/myPrimaryKey" を使用します。
+Azure Cosmos DB の MongoDB 用 API を使用して構成した Cosmos アカウントのスループットをプロビジョニングする場合は、パーティション キーのパスに "/myShardKey" を使用します。Cassandra API のために構成した Cosmos アカウントのスループットをプロビジョニングするときは、パーティション キーのパスに "/myPrimaryKey" を使用します。
 
 ## <a name="provision-throughput-using-net-sdk"></a>.NET SDK を使用してスループットをプロビジョニング
 

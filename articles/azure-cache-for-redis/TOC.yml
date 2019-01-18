@@ -114,11 +114,13 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.redis._redis_cache
   - name: Redis クライアント
-    href: http://redis.io/clients
+    href: https://redis.io/clients
   - name: Redis コマンド
-    href: http://redis.io/commands#
+    href: https://redis.io/commands#
   - name: REST
     href: https://docs.microsoft.com/rest/api/redis/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.cache/allversions
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -133,9 +135,9 @@ items:
     href: https://www.youtube.com/results?search_query=azure+redis+cache
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc
-ms.openlocfilehash: c684a8a7845076769a587de899a5c1e2fa19cfed
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fe23f0058eb6921fd1a6321c5e28bd7b5e1d3c45
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020349"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245890"

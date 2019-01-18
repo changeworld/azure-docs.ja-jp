@@ -104,6 +104,10 @@ items:
       href: concepts-connectivity.md
     - name: Azure Kubernetes Service (AKS) を使用した開発
       href: concepts-aks.md
+  - name: レプリケーション
+    items:
+    - name: 読み取りレプリカ
+      href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
   - name: ユーザーの作成
@@ -172,12 +176,18 @@ items:
     items:
     - name: Azure ポータル
       href: howto-restart-server-portal.md
+  - name: レプリケーション
+    items:
+    - name: Azure portal を使用した読み取りレプリカの管理
+      href: howto-read-replicas-portal.md
 - name: リファレンス
   items:
   - name: Azure CLI
     href: /cli/azure/postgres
   - name: REST API
     href: /rest/api/postgresql
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.dbforpostgresql/allversions
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -220,9 +230,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5106878f2ea330ec3fb664c044605574f22ddafd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 61b78ac5b542e130fd7182b0c30810ff9c98ee78
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334841"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383044"

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: da5643f707a2f891fcf6663ec88f5a5dff40ac86
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 505acdde07c23654ddd3875fa600046a67e04aea
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846642"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970816"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -67,8 +67,8 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 
 VM にインストールするアクセス許可を持つドメイン アカウントまたはローカル アカウントを準備します。
 
-- **Windows VM**: ドメイン アカウントを使っていない場合に Windows VM にインストールするには、ローカル マシンでリモート ユーザー アクセス コントロールを無効にします。 これを行うには、レジストリ **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
-- **Linux VM**: Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
+- **Windows VM**:ドメイン アカウントを使用していない場合に Windows VM にインストールするには、ローカル マシンでリモート ユーザー アクセスの制御を無効にします。 これを行うには、レジストリ **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
+- **Linux VM**:Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
 
 
 ## <a name="check-vmware-requirements"></a>VMware の要件を確認する
@@ -80,6 +80,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 3. オンプレミスの[ネットワーク](vmware-physical-azure-support-matrix.md#network)と[ストレージ](vmware-physical-azure-support-matrix.md#storage)のサポートをチェックします。 
 4. [Azure のネットワーク](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](vmware-physical-azure-support-matrix.md#azure-compute)に関して、フェールオーバー後のサポートをチェックします。
 5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
+6. Linux 仮想マシンでは、デバイス名またはマウント ポイント名が一意である必要があります。 大文字と小文字の区別なしで同じ名前を持つデバイス/マウント ポイントが複数存在しないことを確認します。 たとえば、同じ仮想マシンの 2 つのデバイスに *device1* および *Device1* という名前を付けることは許可されません。
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする

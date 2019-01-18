@@ -45,6 +45,8 @@ items:
         href: iot-accelerators-remote-monitoring-deploy-cli.md
       - name: Visual Studio を使用したローカルでのデプロイ
         href: iot-accelerators-remote-monitoring-deploy-local.md
+      - name: VS Code を使用したローカルでのデプロイ
+        href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
       - name: Docker を使用したローカルでのデプロイ
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
     - name: 物理デバイスの接続
@@ -255,9 +257,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: リモート監視 V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 6d3683c125959281f4580de3a5180394a8482cd9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0b95b2efed51db0d43b618e76fbe24a13d35b6ed
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603584"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390852"

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961349"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992200"
 ---
 # <a name="administer-your-iot-central-application"></a>IoT Central アプリケーションを管理する
 
@@ -35,7 +35,7 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 ### <a name="change-application-name-and-url"></a>アプリケーションの名前と URL を変更する
 **[アプリケーション設定]** ページで、アプリケーションの名前と URL を変更し、**[保存]** を選択できます。
 
-![[Application Settings] (アプリケーション設定) ページ](media\howto-administer\image0-a.png)
+![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/image0-a.png)
 
 > [!Note]
 > URL を変更した場合は、Azure IoT Central の別の顧客が古い URL を取得できます。 その場合、その URL は使用できなくなります。 URL を変更すると、古い URL は機能しなくなるため、使用する新しい URL をユーザーに通知する必要があります。
@@ -48,18 +48,21 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 **[コピー]** ボタンをクリックします。 ダイアログ ボックスに、新しい従量課金制アプリケーションの詳細を入力します。 次に、**[コピー]** ボタンをクリックして、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイック スタートを参照してください。
 
-![[Application Settings] (アプリケーション設定) ページ](media\howto-administer\appCopy2.png)
+![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/appCopy2.png)
 
 アプリのコピー操作が成功したら、表示されるリンクを使用してアプリケーションをコピーすることで作成された新しいアプリケーションに移動できます。
 
-![[Application Settings] (アプリケーション設定) ページ](media\howto-administer\appCopy3.png)
+![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/appCopy3.png)
 
 > [!Note]
 > アプリケーションをコピーすると、ルールやアクションの定義もコピーされます。 しかし、コピー元のアプリへのアクセス権を持つユーザーがコピー先のアプリにコピーされることはないため、ユーザーが前提条件となる電子メールなどのアクションには手動でユーザーを追加する必要があります。 一般には、ルールとアクションを調べ、それらが新しいアプリで最新の状態になっていることを確認することをお勧めします。
 
 ### <a name="delete-an-application"></a>アプリケーションの削除
 
-**[削除]** ボタンを使用して、IoT Central アプリケーションを完全に削除します。 この操作を行うと、そのアプリケーションに関連付けられているすべてのデータが完全に削除されます。 また、アプリケーションを削除するには、アプリケーションを作成したときに選択した Azure サブスクリプションのリソースを削除する許可も必要です。 詳細は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)」を参照してください。
+> [!Note]
+> また、アプリケーションを削除するには、アプリケーションを作成したときに選択した Azure サブスクリプションのリソースを削除する許可も必要です。 詳細は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)」を参照してください。
+
+**[削除]** ボタンを使用して、IoT Central アプリケーションを完全に削除します。 この操作を行うと、そのアプリケーションに関連付けられているすべてのデータが完全に削除されます。
 
 ## <a name="manage-users"></a>ユーザーの管理
 
@@ -71,13 +74,13 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 1. IoT Central アプリケーションにユーザーを追加するには、**[管理]** セクションの **[ユーザー]** ページに移動します。
 
-    ![ユーザーの一覧](media\howto-administer\image1.png)
+    ![ユーザーの一覧](media/howto-administer/image1.png)
 
 1. **[Users] (ユーザー)** ページで、**[+ Add user] (+ ユーザーの追加)** を選択してユーザーを追加します。
 
 1. **ロール**ドロップダウン メニューからユーザーに対するロールを選択します。 ロールの詳細については、この記事の「[ロールの管理](#manage-roles)」セクションを参照してください。
 
-    ![ロールの選択](media\howto-administer\image3.png)
+    ![ロールの選択](media/howto-administer/image3.png)
 
     > [!NOTE]
     >  ユーザーを一括で追加するには、追加するすべてのユーザーのユーザー ID をセミコロンで区切って入力します。 **[Role] (ロール)** ドロップダウンからロールを選択します｡ 次に、**[保存]** を選択します。
@@ -117,10 +120,10 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 試用版アプリケーションを従量課金制アプリケーションに変換することができます。 これらの種類のアプリケーション間の違いを以下に示します。
 
-- **試用版**アプリケーションは、有効期限が切れるまでの 7 日間は無料となります。 有効期限が切れるまではいつでもこれらを従量課金制に変換することができます。
-- **従量課金制**アプリケーションはデバイスごとに課金され、最初の 5 個のデバイスは無料です。
+- **試用版**アプリケーションは、有効期限が切れるまでの 7 日間は無料となります。 有効期限内で、いつでも従量課金制に変更することができます。
+- **従量課金制**アプリケーションは、デバイスごとに課金され、最初の 5 個のデバイスは無料です。
 
-価格の詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)をご覧ください。
+価格の詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
     
 このセルフ サービスのプロセスを完了するには、次の手順に従います。
 
@@ -156,7 +159,7 @@ Azure Resource Manager SDK を使用する方法例については､[ https://g
 
 詳細は、GitHub で以下のパッケージを参照してください。
 
-| Language | リポジトリ | Package |
+| 言語 | リポジトリ | Package |
 | ---------| ---------- | ------- |
 | ノード | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

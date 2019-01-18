@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: ドメイン モデルの使用 - REST、Python - Computer Vision'
+title: クイック スタート:ドメイン固有の画像コンテンツ - REST、Python
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ドメイン モデルを利用し、Python と Computer Vision API を使って画像内の著名人やランドマークを識別します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 4594d84c411994b4157b2fa51ed5d6d24088380d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 9a511cb26f5bc4ba44e4d999cb7b3c3ba98bca4c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852335"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582237"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Python を使ったドメイン モデルを利用する
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使ったドメイン モデルを利用する
 
 このクイック スタートでは、ドメイン モデルを利用し、Computer Vision の REST API を使って、リモートで保存された画像内のランドマークや (場合によっては) 著名人を識別します。 [ドメイン固有のコンテンツの認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)メソッドを使用すると、ドメイン固有のモデルを適用して、画像内のコンテンツを認識できます。
 

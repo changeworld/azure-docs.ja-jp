@@ -1,13 +1,10 @@
 ---
-title: Azure ネットワーク インターフェイスの作成、変更、削除 | Microsoft Docs
+title: Azure ネットワーク インターフェイスを作成、変更、削除する
+titlesuffix: Azure Virtual Network
 description: ネットワーク インターフェイスとは何かを説明し、その作成、設定変更、および削除を行う方法を示します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 110b97cdb4de6e866ac8ce17a1f05d0231ff5071
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221601"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023755"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -58,7 +55,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     |[プライベート IP アドレス (IPv6)]|いいえ | このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の [IPv6](#IPv6) についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
     |[IPv6 名] \(**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合にのみ表示されます) |はい (**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合)。| この名前は、ネットワーク インターフェイスのセカンダリ IP 構成に割り当てられます。 IP 構成の詳細については、「[ネットワーク インターフェイス設定の表示](#view-network-interface-settings)」を参照してください。|
     |リソース グループ|はい|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 ネットワーク インターフェイスは、アタッチ先の仮想マシンや接続先の仮想ネットワークと同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
-    |Location|はい|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
+    |場所|はい|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
 
 ポータルには、ネットワーク インターフェイスを作成するときに、そこにパブリック IP アドレスを割り当てるオプションは用意されていません。しかし、ポータルを使用して仮想マシンを作成するときには、確かにポータルによってパブリック IP アドレスが作成され、それがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスの作成後にパブリック IP アドレスを追加する方法については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 パブリック IP アドレスを指定してネットワーク インターフェイスを作成する場合は、CLI または PowerShell を使用してネットワーク インターフェイスを作成する必要があります。
 
@@ -81,14 +78,14 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 1. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それを選択します。
 2. 設定を表示または変更するネットワーク インターフェイスを一覧から選択します。
 3. 選択したネットワーク インターフェイスに対して、次の項目が表示されます。
-    - **概要:** ネットワーク インターフェイスに割り当てられている IP アドレス、ネットワーク インターフェイスの割り当て先仮想ネットワーク/サブネット、ネットワーク インターフェイスのアタッチ先仮想マシン (1 つの仮想マシンにアタッチされている場合) など、ネットワーク インターフェイスに関する情報を提供します。 次の図は、**mywebserver256** という名前のネットワーク インターフェイスの概要設定を示しています。![ネットワーク インターフェイスの概要](./media/virtual-network-network-interface/nic-overview.png)ネットワーク インターフェイスを別のリソース グループまたはサブスクリプションに移動するには、**[リソース グループ]** または **[サブスクリプション名]** の横にある **[(変更)]** を選択します。 ネットワーク インターフェイスを移動する場合は、そのネットワーク インターフェイスに関連するすべてのリソースを、インターフェイスと共に移動する必要があります。 たとえば、ネットワーク インターフェイスが仮想マシンにアタッチされている場合は、仮想マシンと、その他の仮想マシン関連リソースも移動する必要があります。 ネットワーク インターフェイスを移動するには、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal)に関する記事をご覧ください。 この記事には、リソースを移動するための前提条件や、Azure Portal、PowerShell、および Azure CLI を使用して移動する方法が記載されています。
+    - **概要:** ネットワーク インターフェイスに割り当てられている IP アドレス、ネットワーク インターフェイスの割り当て先仮想ネットワーク/サブネット、ネットワーク インターフェイスのアタッチ先仮想マシン (1 つの仮想マシンにアタッチされている場合) など、ネットワーク インターフェイスに関する情報を提供します。 次の図は、**mywebserver256** という名前のネットワーク インターフェイスの概要設定を示しています。![ネットワーク インターフェイスの概要](./media/virtual-network-network-interface/nic-overview.png) **[リソース グループ]** または **[サブスクリプション名]** の横にある **[(変更)]** を選択することにより、ネットワーク インターフェイスを別のリソース グループまたはサブスクリプションに移動できます。 ネットワーク インターフェイスを移動する場合は、そのネットワーク インターフェイスに関連するすべてのリソースを、インターフェイスと共に移動する必要があります。 たとえば、ネットワーク インターフェイスが仮想マシンにアタッチされている場合は、仮想マシンと、その他の仮想マシン関連リソースも移動する必要があります。 ネットワーク インターフェイスを移動するには、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal)に関する記事をご覧ください。 この記事には、リソースを移動するための前提条件や、Azure Portal、PowerShell、および Azure CLI を使用して移動する方法が記載されています。
     - **IP 構成:** IP 構成に割り当てられている、パブリックおよびプライベートの IPv4 および IPv6 アドレスは、ここに一覧で示されています。 IP 構成に IPv6 アドレスが割り当てられている場合、アドレスは表示されません。 IP 構成と、IP アドレスの追加と削除の方法については、[Azure ネットワーク インターフェイスの IP アドレスの構成](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 IP 転送とサブネットの割り当ても、このセクションで構成します。 これらの設定の詳細については、「[IP 転送の有効化と無効化](#enable-or-disable-ip-forwarding)」と「[サブネットの割り当ての変更](#change-subnet-assignment)」を参照してください。
     - **DNS サーバー:** Azure DHCP サーバーがネットワーク インターフェイスに割り当てる DNS サーバーを指定できます。 ネットワーク インターフェイスは、ネットワーク インターフェイスの割り当て先の仮想ネットワークから設定を継承できます。または、割り当て先の仮想ネットワークの設定をオーバーライドするカスタム設定を持つことができます。 表示される内容の変更については、「[DNS サーバーの変更](#change-dns-servers)」を参照してください。
     - **ネットワーク セキュリティ グループ (NSG):** ネットワーク インターフェイスに関連付けられている NSG (ある場合) が表示されます。 NSG には、ネットワーク インターフェイスのネットワーク トラフィックをフィルター処理するための送受信の規則が含まれています。 NSG がネットワーク インターフェイスに関連付けられている場合は、関連付けられている NSG の名前が表示されます。 表示内容を変更するには、「[ネットワーク セキュリティ グループを関連付けるか関連付けを解除する](#associate-or-dissociate-a-network-security-group)」を参照してください。
     - **プロパティ:** ネットワーク インターフェイスの MAC アドレスやネットワーク インターフェイスが存在するサブスクリプションなど、ネットワーク インターフェイスに関する重要な設定が表示されます (ネットワーク インターフェイスが仮想マシン接続されていない場合は空白です)。
     - **有効なセキュリティ規則:** セキュリティ規則が一覧表示されるのは、ネットワーク インターフェイスが実行中の仮想マシンにアタッチされ、NSG がネットワーク インターフェイスまたはその接続先サブネット (あるいは両方) に関連付けられている場合です。 表示内容の詳細については、「[有効なセキュリティ規則を表示する](#view-effective-security-rules)」を参照してください。 NSG の詳細については、[ネットワーク セキュリティ グループ](security-overview.md)に関するページをご覧ください。
     - **有効なルート:** 実行中の仮想マシンにネットワーク インターフェイスがアタッチされている場合には、ルートが一覧表示されます。 ルートは、Azure の既定のルート、ユーザー定義ルート、およびネットワーク インターフェイスの割り当て先サブネットのために存在する場合がある BGP ルートの組み合わせです。 表示される内容の詳細については、「[有効なルートを表示する](#view-effective-routes)」を参照してください。 Azure の既定のルートとユーザー定義ルートの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関する記事をご覧ください。
-    - **Azure Resource Manager の一般的な設定:** Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Access Control (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group) に関する各記事をご覧ください。
+    - **Azure Resource Manager の一般的な設定:** Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)、[Access Control (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)に関する各記事を参照してください。
 
 <a name="view-settings-commands"></a>**コマンド**
 
@@ -108,7 +105,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 3. **[設定]** で、**[DNS サーバー]** を選択します。
 4. 次のいずれかを選択します。
     - **[仮想ネットワークから継承する]**: このオプションを選択すると、ネットワーク インターフェイスの割り当て先の仮想ネットワークで定義されている DNS サーバー設定を継承します。 仮想ネットワーク レベルでは、カスタム DNS サーバーまたは Azure 提供の DNS サーバーのいずれかが定義されます。 Azure 提供の DNS サーバーは、同じ仮想ネットワークに割り当てられているリソースのホスト名を解決できます。 異なる仮想ネットワークに割り当てられているリソースの名前解決には、FQDN を使用する必要があります。
-    - **[カスタム]**: 複数の仮想ネットワークにわたって名前を解決する独自の DNS サーバーを構成できます。 DNS サーバーとして使用するサーバーの IP アドレスを入力します。 指定した DNS サーバー アドレスは、このネットワーク インターフェイスにのみ割り当てられて、ネットワーク インターフェイス割り当て先の仮想ネットワークの DNS 設定をすべてオーバーライドします。
+    - **カスタム**:複数の仮想ネットワークにわたって名前を解決する独自の DNS サーバーを構成できます。 DNS サーバーとして使用するサーバーの IP アドレスを入力します。 指定した DNS サーバー アドレスは、このネットワーク インターフェイスにのみ割り当てられて、ネットワーク インターフェイス割り当て先の仮想ネットワークの DNS 設定をすべてオーバーライドします。
 5. **[保存]** を選択します。
 
 **コマンド**
@@ -185,7 +182,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 **コマンド**
 
 - Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
-- PowerShell: [Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)
+- PowerShell:[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>ネットワーク インターフェイスの削除
 
@@ -224,7 +221,7 @@ Azure Network Watcher の IP フロー検証機能も、セキュリティ規則
 **コマンド**
 
 - Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
+- PowerShell:[Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
 
 ### <a name="view-effective-routes"></a>有効なルートの表示
 
@@ -241,13 +238,13 @@ Azure Network Watcher の次ホップ機能も、ルートが仮想マシンと�
 **コマンド**
 
 - Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
-- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
+- PowerShell:[Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
 
 ## <a name="permissions"></a>アクセス許可
 
 ネットワーク インターフェイスに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクセス許可が割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-|  アクションを表示します。                                                                     | Name                                                      |
+| Action                                                                     | Name                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | ネットワーク インターフェイスを取得する                                     |
 | Microsoft.Network/networkInterfaces/write                                  | ネットワーク インターフェイスを作成または更新する                        |

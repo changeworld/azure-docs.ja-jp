@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 785223f7da1f59288f4fca6e7a3955a6b3af41c0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383818"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974999"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
@@ -31,9 +31,7 @@ HDInsight では、Apache Hadoop クラスター向けの Starburst Presto ア�
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 > 
-> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
-> 
-> 
+> Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 
 ## <a name="install-presto-using-script-action"></a>スクリプト アクションを使用して Presto をインストールする
@@ -44,7 +42,7 @@ HDInsight では、Apache Hadoop クラスター向けの Starburst Presto ア�
 
     * HDInsight version 3.6 を使用する Hadoop クラスターである必要があります。
 
-    * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターで Presto を使用するという選択肢はまだありません。
+    * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Storage を使用するクラスターで Presto を使用するという選択肢はまだありません。
 
     ![カスタム オプションを使用した HDInsight クラスターの作成](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
@@ -123,17 +121,23 @@ HDInsight クラスターで Presto を使用するには、次の手順を実�
 
 5. **[購入]** をクリックします。
 
-6. 変更がクラスター構成に適用されると、次の手順を使用して Airpal Web インターフェイスにアクセスできます。
+6. 変更がクラスター構成に適用されると、[Azure portal](https://portal.azure.com) から次の手順を使用して Airpal Web インターフェイスにアクセスできます。
 
-    1. クラスター ダイアログで、**[アプリケーション]** をクリックします。
+    1. 左側のメニューから、**[すべてのサービス]** を選択します。
+
+    1. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
+
+    1. 一覧からクラスターを選択します。これにより、既定のビューが開きます。
+
+    1. 既定のビューの **[設定]** で、**[アプリケーション]** を選択します。
 
         ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    2. **[インストール済みアプリ]** 領域で、airpal に対して **[ポータル]** をクリックします。
+    1. **[インストール済みアプリ]** ページで **airpal** のテーブル エントリに移動し、**[ポータル]** を選択します。
 
         ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    3. 入力を求められたら、HDInsight Hadoop クラスターの作成中に指定した管理者資格情報を入力します。
+    1. 入力を求められたら、HDInsight Hadoop クラスターの作成中に指定した管理者資格情報を入力します。
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>HDInsight クラスター上の Presto インストールのカスタマイズ
 

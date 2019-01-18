@@ -1,20 +1,21 @@
 ---
-title: Go を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
-description: Go を使用して Event Hubs からイベントの受信を開始する
+title: Go を使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs からイベントを受信する Go アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: db952b82172928e42e951563d98bb32b275e8af7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239493"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084993"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Go を使用して Event Hubs からイベントを受信する
 
@@ -80,7 +81,7 @@ import (
 
 ## <a name="create-service-principal"></a>サービス プリンシパルの作成
 
-「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前で指定された資格情報を環境に保存します。両方の Azure SDK for Go と Event Hubs パッケージは両方ともこれらの変数名を検索するように事前構成されます。
+「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前を使用して指定された資格情報を環境内に保存します。Azure SDK for Go と Event Hubs パッケージは、どちらもこれらの変数名を検索するために事前に構成されています。
 
 ```bash
 export AZURE_CLIENT_ID=

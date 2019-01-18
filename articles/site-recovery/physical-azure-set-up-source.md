@@ -2,17 +2,18 @@
 title: Azure Site Recovery を使用した物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する | Microsoft Docs
 description: この記事では、オンプレミスの物理サーバーを Azure にディザスター リカバリーするために、オンプレミスの構成サーバーを設定する方法について説明します。
 services: site-recovery
-author: rayne-wiselman
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: raynew
-ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209549"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976802"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -35,7 +36,7 @@ ms.locfileid: "50209549"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
-2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1:インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/choose-goals.png)
 3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択し、**[OK]** をクリックします。

@@ -1,20 +1,19 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API、SDK、およびリソース'
+title: Azure Cosmos DB は:SQL .NET API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、SQL .NET API と SDK に関するあらゆる詳細を提供します。
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337939"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051953"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -54,6 +53,14 @@ ms.locfileid: "53337939"
 * 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
 * ストリームをサポートします。 
 * 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* StoredProcedure 実行呼び出しに対するフェールオーバー中の再試行ロジックの改善。
+
+* Made DocumentClientEventSource シングルトンを作成しました。 
+
+* ConnectionPolicy RequestTimeout を守っていない GatewayAddressCache タイムアウトを修正しました。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -350,6 +357,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |

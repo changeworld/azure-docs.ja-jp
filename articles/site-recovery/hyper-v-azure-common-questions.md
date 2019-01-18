@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212490"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319219"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -55,7 +55,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Hyper-V から Azure へのレプリケーションによって何ができますか?
 
-- **ディザスター リカバリー**: 完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。
+- **ディザスター リカバリー** : 完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。
     - VM を Azure にレプリケートできます。 オンプレミスのインフラストラクチャが使用できなくなった場合は、Azure にフェールオーバーします。
     - フェールオーバーの際は、レプリケートされたデータを使って Azure VM が作成されます。 Azure VM 上のアプリやワークロードにアクセスできます。
     - オンプレミスのデータセンターが再び使用可能になったら、Azure からオンプレミスのサイトにフェールバックできます。
@@ -124,7 +124,7 @@ Site Recovery は、パブリック エンドポイントまたは ExpressRoute 
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
 
-はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使ってアクセスできます。
+はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
@@ -140,7 +140,7 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
 
 ###<a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
@@ -197,7 +197,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 1. いくつかの異なるオプションを使用して、Azure からオンプレミス サイトへの計画的フェールオーバーを開始します。
 
-    - ダウンタイムの最小化: このオプションを使用すると、Site Recovery はフェールオーバー前にデータを同期します。 変更されたデータ ブロックをチェックし、オンプレミス サイトにそれらのデータ ブロックをダウンロードします。また、Azure VM は稼働し続け、ダウンタイムを最小限に抑えます。 フェールオーバーが完了しなければならないことを手動で指定した場合は、Azure VM がシャット ダウンされ、最後の差分変更がすべてコピーされ、フェールオーバーが開始されます。
+    - ダウンタイムを最小化: このオプションを使用すると、フェールオーバーの前に Site Recovery によってデータが同期化されます。 変更されたデータ ブロックをチェックし、オンプレミス サイトにそれらのデータ ブロックをダウンロードします。また、Azure VM は稼働し続け、ダウンタイムを最小限に抑えます。 フェールオーバーが完了しなければならないことを手動で指定した場合は、Azure VM がシャット ダウンされ、最後の差分変更がすべてコピーされ、フェールオーバーが開始されます。
     - 完全ダウンロード: このオプションを使用すると、フェールオーバー中にデータが同期されます。 このオプションは、ディスク全体をダウンロードします。 チェックサムは計算されないため高速ですが、ダウンタイムが長くなります。 レプリカ Azure VM をしばらくの間稼働させていた場合や、オンプレミス VM が削除された場合は、このオプションを使用します。
 
 2. 同じ VM または別の VM にフェールバックすることを選択できます。 VM が存在しない場合は Site Recovery が VM を作成するように指定できます。

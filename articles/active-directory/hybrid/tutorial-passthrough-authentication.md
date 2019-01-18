@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 140161e88ee572d728a7f9c923c9528ea6755cc1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422306"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165457"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一の AD フォレストを統合する
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 
 ![Create](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -226,7 +226,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
 2. [ディレクトリの接続] 画面で、**[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
-3.  **[次へ]** をクリックします。
+3. **[次へ]** をクリックします。
 4. [Azure AD サインインの構成] 画面で、**[一部の UPN サフィックスが確認済みドメインに一致していなくても続行する]** を選択し、**[次へ]** をクリックします。
 5. [ドメインと OU のフィルタリング] 画面で、**[次へ]** をクリックします。
 6. [一意のユーザー識別] 画面で、**[次へ]** をクリックします。

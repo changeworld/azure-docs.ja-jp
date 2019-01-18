@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1443508985c7c7fef313a7eea3f622e7759a71ef
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251863"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540098"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -129,13 +129,13 @@ Version | API 状態 | Door | 固有
 
 API | `1.0-preview` | `1.0`
 --- | --- | ---
-[全員にブロードキャストする](#broadcast) | :heavy_check_mark: | :heavy_check_mark:
-[グループにブロードキャストする](#broadcast-group) | :heavy_check_mark: | :heavy_check_mark:
-一部のグループにブロードキャストする | :heavy_check_mark:(非推奨) | `N / A`
-[特定のユーザーに送信する](#send-user) | :heavy_check_mark: | :heavy_check_mark:
-一部のユーザーに送信する | :heavy_check_mark:(非推奨) | `N / A`
-[ユーザーをグループに追加する](#add-user-to-group) | `N / A` | :heavy_check_mark:
-[ユーザーをグループから削除する](#remove-user-from-group) | `N / A` | :heavy_check_mark:
+[全員にブロードキャストする](#broadcast) | **&#x2713;** | **&#x2713;**
+[グループにブロードキャストする](#broadcast-group) | **&#x2713;** | **&#x2713;**
+一部のグループにブロードキャストする | **&#x2713;** (非推奨) | `N / A`
+[特定のユーザーに送信する](#send-user) | **&#x2713;** | **&#x2713;**
+一部のユーザーに送信する | **&#x2713;** (非推奨) | `N / A`
+[ユーザーをグループに追加する](#add-user-to-group) | `N / A` | **&#x2713;**
+[ユーザーをグループから削除する](#remove-user-from-group) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>全員にブロードキャストする

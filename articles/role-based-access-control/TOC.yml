@@ -84,13 +84,19 @@ items:
     href: /cli/azure/role?view=azure-cli-latest
   - name: REST API
     href: /rest/api/authorization/
+  - name: Resource Manager テンプレート
+    items:
+    - name: ロールの割り当て
+      href: /azure/templates/microsoft.authorization/roleassignments
+    - name: ロールの定義
+      href: /azure/templates/microsoft.authorization/roledefinitions
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 6f967caa9aa90f06833bee1f830b60ea0f13c14f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ca83964ae4ff91fd72fcb0a156a029f4fc41721c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632944"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232908"

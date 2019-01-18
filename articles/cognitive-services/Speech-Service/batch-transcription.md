@@ -1,32 +1,36 @@
 ---
-title: Azure Batch 文字起こし API を使用する
+title: バッチ文字起こしの使用方法 - Speech Services
 titlesuffix: Azure Cognitive Services
-description: 大量のオーディオ コンテンツの文字起こしに関するサンプルです。
+description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b4e7c11a6077104e874d67b75f5d00e8f481f739
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495590"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086931"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
-Batch 文字起こしはストレージ内に大量のオーディオがある場合に最適です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
+バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
+
+>[!NOTE]
+> バッチ文字起こしを使用するには、Speech Services の Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
 ## <a name="the-batch-transcription-api"></a>Batch 文字起こし API
 
 Batch 文字起こし API では、音声からテキストへの非同期文字起こしと他の機能が提供されます。 次のためのメソッドを公開する REST API です。
 
 1. バッチ処理要求の作成
-1. クエリの状態 
+1. クエリの状態
 1. 文字起こしのダウンロード
 
 > [!NOTE]
@@ -75,7 +79,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 ## <a name="authorization-token"></a>承認トークン
 
-Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはキーを作成することだけです。 
+Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはキーを作成することだけです。
 
 カスタム モデルをカスタマイズして使用する場合は、次の手順に従って、Custom Speech ポータルにサブスクリプション キーを追加します。
 
@@ -106,19 +110,19 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-         
+
             return new CrisClient(client);
         }
 ```
 
-トークンを取得した後、文字起こしが必要なオーディオ ファイルを指す SAS URI を指定します。 コードの残りの部分では、状態を反復処理し、結果を表示します。 最初に、使用するキー、リージョン、モデルを設定し、次のコード スニペットに示すように SA を指定します。 次に、クライアントと POST 要求をインスタンス化します。 
+トークンを取得した後、文字起こしが必要なオーディオ ファイルを指す SAS URI を指定します。 コードの残りの部分では、状態を反復処理し、結果を表示します。 最初に、使用するキー、リージョン、モデルを設定し、次のコード スニペットに示すように SA を指定します。 次に、クライアントと POST 要求をインスタンス化します。
 
 ```cs
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
-    
-            // SAS URI 
+
+            // SAS URI
             private const string RecordingsBlobUri = "SAS URI pointing to the file in Azure Blob Storage";
 
             // adapted model Ids
@@ -127,14 +131,14 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
             // Creating a Batch Transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
-            
+
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
 ```
 
 これで要求が完了したため、次のコード スニペットに示すように、文字起こし結果に対してクエリを実行してダウンロードすることができます。
 
 ```cs
-  
+
             // get all transcriptions for the user
             transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
 
@@ -152,9 +156,9 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
                             // not created from here, continue
                             continue;
                         }
-                            
+
                         completed++;
-                            
+
                         // if the transcription was successful, check the results
                         if (transcription.Status == "Succeeded")
                         {
@@ -166,7 +170,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
                             Console.WriteLine("Transcription succeeded. Results: ");
                             Console.WriteLine(results);
                         }
-                    
+
                     break;
                     case "Running":
                     running++;
@@ -174,7 +178,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
                     case "NotStarted":
                     notStarted++;
                     break;
-                    
+
                     }
                 }
             }
@@ -188,7 +192,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 オーディオを渡して文字起こしの状態を受け取る非同期セットアップに注意してください。 作成されるクライアントは .NET HTTP クライアントです。 `PostTranscriptions` メソッドはオーディオ ファイルの詳細を送信し、`GetTranscriptions` メソッドは結果を受け取ります。 `PostTranscriptions` はハンドルを返し、`GetTranscriptions` はそのハンドルを使用して文字起こしの状態を取得するためのハンドルを作成します。
 
-現在のサンプル コードでは、カスタム モデルは指定されていません。 サービスは、ベースライン モデルをファイルの文字起こしに使用します。 モデルを指定するために、音響モデルと言語モデルのモデル ID と同じメソッドに渡すことができます。 
+現在のサンプル コードでは、カスタム モデルは指定されていません。 サービスは、ベースライン モデルをファイルの文字起こしに使用します。 モデルを指定するために、音響モデルと言語モデルのモデル ID と同じメソッドに渡すことができます。
 
 ベースラインを使用しない場合は、音響モデルと言語モデルの両方のモデル ID を渡す必要があります。
 

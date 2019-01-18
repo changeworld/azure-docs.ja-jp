@@ -3,21 +3,21 @@ title: Transact-SQL (T-SQL) を使用して Azure SQL Elastic Database ジョブ
 description: Transact-SQL (T-SQL) を使用する Elastic Database ジョブ エージェントでは多くのデータベース間でスクリプトを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056789"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606811"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -210,9 +210,9 @@ EXEC jobs.sp_add_jobstep
 @credential_name='myjobcred',
 @target_group_name='PoolGroup',
 @output_type='SqlDatabase',
-@output_credential_name=’myjobcred’,
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’<resultsdb>',
+@output_credential_name='myjobcred',
+@output_server_name='server1.database.windows.net',
+@output_database_name='<resultsdb>',
 @output_table_name='<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
@@ -257,8 +257,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @target_group_name='MasterGroup',
 @output_type='SqlDatabase',
 @output_credential_name='myjobcred',
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’resultsdb',
+@output_server_name='server1.database.windows.net',
+@output_database_name='resultsdb',
 @output_table_name='resutlstable'
 ```
 
@@ -330,7 +330,7 @@ EXEC jobs.sp_update_job
 ```sql
 --Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named ‘ResultsPoolJob’
+--View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC
@@ -339,7 +339,7 @@ ORDER BY start_time DESC
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC
 
---View all execution statuses for job named ‘ResultsPoolsJob’
+--View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' 
 ORDER BY start_time DESC
@@ -644,10 +644,10 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 [ **@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -774,10 +774,10 @@ sp_add_jobstep が成功した場合、ジョブの現在のバージョン番�
 [ **@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -1011,14 +1011,14 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 ```sql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
-         [ @membership_type = ] ‘membership_type’ ]   
-        [ , [ @target_type = ] ‘target_type’ ]   
-        [ , [ @refresh_credential_name = ] ‘refresh_credential_name’ ]   
-        [ , [ @server_name = ] ‘server_name’ ]   
-        [ , [ @database_name = ] ‘database_name’ ]   
-        [ , [ @elastic_pool_name = ] ‘elastic_pool_name’ ]   
-        [ , [ @shard_map_name = ] ‘shard_map_name’ ]   
-        [ , [ @target_id = ] ‘target_id’ OUTPUT ]
+         [ @membership_type = ] 'membership_type' ]   
+        [ , [ @target_type = ] 'target_type' ]   
+        [ , [ @refresh_credential_name = ] 'refresh_credential_name' ]   
+        [ , [ @server_name = ] 'server_name' ]   
+        [ , [ @database_name = ] 'database_name' ]   
+        [ , [ @elastic_pool_name = ] 'elastic_pool_name' ]   
+        [ , [ @shard_map_name = ] 'shard_map_name' ]   
+        [ , [ @target_id = ] 'target_id' OUTPUT ]
 ```
 
 #### <a name="arguments"></a>引数
@@ -1040,10 +1040,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 [ **@database_name =** ] 'database_name'  
 指定したターゲット グループに追加する必要があるデータベースの名前。 target_type が 'SqlDatabase' の場合は、database_name を指定する必要があります。 database_name は nvarchar(128) であり、既定値はありません。
 
-[ **@elastic_pool_name =** ] ‘elastic_pool_name'  
+[ **@elastic_pool_name =** ] 'elastic_pool_name'  
 指定したターゲット グループに追加する必要のあるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合は、elastic_pool_name を指定する必要があります。 elastic_pool_name は nvarchar(128) であり、既定値はありません。
 
-[ **@shard_map_name =** ] ‘shard_map_name'  
+[ **@shard_map_name =** ] 'shard_map_name'  
 指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が 'SqlSqlShardMap' の場合は、shard_map_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
 
 [ **@target_id =** ] target_group_id OUTPUT  
@@ -1101,7 +1101,7 @@ GO
 
 ```sql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
-        [ , [ @target_id = ] ‘target_id’]
+        [ , [ @target_id = ] 'target_id']
 ```
 
 

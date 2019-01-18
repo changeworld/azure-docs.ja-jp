@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 3bef0e0545b0c6d287a6cfeaed06f95d5ba5dae9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bd0bb1c967885aa5e74728156a073e9ccc0ca48f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018940"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105884"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>クイック スタート: Java で Azure Cache for Redis を使用する方法
 
@@ -38,7 +38,7 @@ Azure Cache for Redis を使用すると、Microsoft によって管理されて
 
 ## <a name="prerequisites"></a>前提条件
 
-[Apache Maven](http://maven.apache.org/)
+[Apache Maven](https://maven.apache.org/)
 
 
 
@@ -118,7 +118,7 @@ public class App
         System.out.println( "\nCache Command  : SET Message" );
         System.out.println( "Cache Response : " + jedis.set("Message", "Hello! The cache is working from Java!"));
 
-        // Demostrate "SET Message" executed as expected...
+        // Demonstrate "SET Message" executed as expected...
         System.out.println( "\nCache Command  : GET Message" );
         System.out.println( "Cache Response : " + jedis.get("Message"));
 

@@ -1,28 +1,24 @@
 ---
-title: Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化 | Microsoft Docs
-description: SQL パーティション テーブルを使用した並列の一括データ インポート
+title: SQL パーティション テーブルにデータを並列一括インポートする - Team Data Science Process
+description: データを SQL Server データベースに高速で並列一括インポートするためにパーティション分割されたテーブルを作成します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: deguhath
-ms.openlocfilehash: c318411fe17fb60c1c0bf991a07b46a515252952
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 25c79f15c11dcf84ab6b3e5946f17361a98737fa
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683221"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140253"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
 この記事では、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
 

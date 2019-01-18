@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417771"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722144"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの parameters セクション
 テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 特定の環境 (開発、テスト、運用など) に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 テンプレートでは必ずしもパラメーターを使用する必要はありませんが、パラメーターを使わなかった場合、常に同じリソースが同じ名前、同じ場所、同じプロパティでデプロイされます。
@@ -91,8 +91,8 @@ ms.locfileid: "50417771"
 | allowedValues |いいえ  |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ  |int 型パラメーターの最小値。 |
 | maxValue |いいえ  |int 型パラメーターの最大値。 |
-| minLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最小値。 |
-| maxLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最大値。 |
+| minLength |いいえ  |string 型、securestring 型、array 型パラメーターの長さの最小値 (この値を含む)。 |
+| maxLength |いいえ  |string 型、securestring 型、array 型パラメーターの長さの最大値 (この値を含む)。 |
 | description |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
 
 ## <a name="template-functions-with-parameters"></a>テンプレート関数とパラメーター
@@ -188,74 +188,6 @@ parameters セクションで `reference` 関数を使用することはでき�
 ]
 ```
 
-## <a name="recommendations"></a>Recommendations
-パラメーターを使用する場合は、次の情報を活用してください。
-
-* パラメーターの使用を最小限に抑えます。 可能であれば、変数またはリテラル値を使用します。 パラメーターは、次のようなシナリオに対してのみ使用します。
-   
-   * 環境 (SKU、サイズ、処理能力) に応じてさまざまな設定を使用する場合
-   * 特定しやすいリソース名を付ける場合
-   * 他のタスクを実行するために頻繁に使用する値 (管理者ユーザー名など) がある場合
-   * シークレット情報 (パスワードなど)
-   * リソースの種類のインスタンスを複数作成するときに多数の値または値の配列を使用する場合。
-* パラメーター名にキャメル ケースを使用します。
-* メタデータですべてのパラメーターを説明します。
-
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* パラメーターの既定値を定義してください (パスワードおよび SSH キーは除く)。 既定値を指定すると、パラメーターはデプロイ時に省略可能になります。 既定値として空の文字列を指定できます。 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
-        }
-   }
-   ```
-
-* すべてのパスワードおよびシークレット情報には **securestring** を使用してください。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 securestring 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
-
-* パラメーターを使って場所を指定し、同じ場所に配置される可能性があるリソースでできる限りそのパラメーターを共有します。 この方法により、ユーザーが場所情報の入力を求められる回数を最小限に抑えることができます。 リソースの種類がサポートされる場所に限りがある場合は、有効な場所をテンプレートで直接指定するか、または別の location パラメーターを追加することが必要になる場合があります。 組織でユーザーに許可されるリージョンが制限されている場合、**resourceGroup().location** 式が原因でユーザーがテンプレートをデプロイできなくなる可能性があります。 たとえば、あるユーザーがリージョンにリソース グループを作成します。 別のユーザーはそのリソース グループにデプロイする必要がありますが、リージョンにアクセスできません。 
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
-         "location": "[parameters('location')]",
-         ...
-     }
-   ]
-   ```
-    
-* リソースの種類の API バージョンにはパラメーターや変数を使用しないでください。 リソースのプロパティおよび値は、バージョン番号ごとに異なる可能性があります。 パラメーターまたは変数に API バージョンが設定されると、コード エディターの IntelliSense が適切なスキーマを決定できなくなります。 代わりに、テンプレートの API バージョンをハードコーディングしてください。
-* テンプレートでは、デプロイ コマンドのパラメーターと一致するパラメーター名は指定しないでください。 Resource Manager では、接尾辞 **FromTemplate** をテンプレート パラメーターに追加することで、このような名前の競合を防ぎます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
-
 ## <a name="example-templates"></a>サンプル テンプレート
 
 次のサンプル テンプレートでは、パラメーターを使用するいくつかのシナリオを例示します。 さまざまなシナリオでパラメーターがどのように処理されるかを、このサンプルをデプロイして試してください。
@@ -269,5 +201,5 @@ parameters セクションで `reference` 関数を使用することはでき�
 
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * デプロイ時にパラメーター値を入力する方法については、 [Azure Resource Manager テンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)に関するページをご覧ください。 
-* テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
+* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」をご覧ください。
 * パラメーター オブジェクトの使用方法について詳しくは、「[Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)」をご覧ください。

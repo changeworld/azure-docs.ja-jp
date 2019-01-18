@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 845fb826d18949c30663c829e65537156bd2f865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 030739b9c0c026d208790dce3a32a5fbc920de72
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986066"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232653"
 documentType: LandingData
 title: Microsoft ID プラットフォーム (開発者向け Azure Active Directory)
 metadata:
@@ -173,7 +173,7 @@ sections:
       - href: quickstart-v2-windows-desktop.md
       - href: 
   - type: paragraph
-    text: <b>サービス間</b>
+    text: <b>サービス間アプリとデーモン アプリ</b>
   - type: table
     style: dataMatrix
     columns:
@@ -186,7 +186,7 @@ sections:
       - href: sample-v1-code.md#server-or-daemon-application-to-web-api
     - title: v2.0
       values:
-      - href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
+      - href: quickstart-v2-netcore-daemon.md
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph

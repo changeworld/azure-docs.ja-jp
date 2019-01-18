@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753491"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191243"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 
@@ -51,7 +51,7 @@ Over-the-Top (OTT) 用またはオンライン ストリーミング ソリュ�
 | **クライアント プラットフォーム** | **ネイティブ DRM** | **EME** |
 | --- | --- | --- | --- |
 | **スマート TV、STB** | PlayReady、Widevine など | PlayReady や Widevine に対応した埋め込みブラウザー/EME|
-| **Windows 10** | PlayReady | PlayReady に対応した MS Edge/IE11|
+| **Windows 10** | PlayReady | PlayReady に対応した Microsoft Edge/IE11|
 | **Android デバイス (電話、タブレット、TV)** |Widevine |Widevine に対応した Chrome |
 | **iOS** | FairPlay | FairPlay に対応した Safari (iOS 11.2 以降) |
 | **macOS** | FairPlay | FairPlay に対応した Safari (Mac OS X 10.11+ El Capitan 上の Safari 9+ 以降)|

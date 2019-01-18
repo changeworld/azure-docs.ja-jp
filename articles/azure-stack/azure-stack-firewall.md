@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343655"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960653"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack ファイアウォールの統合
 Azure Stack は、ファイアウォール デバイスを使って保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃や侵入検出、コンテンツ検査などに効果がありますが、BLOB、テーブル、キューなどの Azure Storage サービスのスループットのボトルネックにもなります。
@@ -34,7 +34,7 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 ### <a name="network-address-translation"></a>ネットワーク アドレス変換
 外部のリソースやインターネットに対し、デプロイ時に DVM (Deployment Virtual Machine) からアクセスしたり、登録やトラブルシューティング時に ERCS (Emergency Recovery Console) VM や PEP (Privileged End Point) からアクセスしたりできるようにするための方法としては、ネットワーク アドレス変換 (NAT) が推奨されます。
 
-また、外部ネットワークやパブリック VIP におけるパブリック IP アドレスに代わる働きとして NAT を利用することもできます。 ただしこれは、テナントのユーザー エクスペリエンスが制限され、複雑さも増すため推奨されません。 2 つの選択肢が考えられます。1 つは 1 対 1 の NAT です。プールのユーザー IP ごとにパブリック IP が 1 つ必要となります。もう 1 つは多対 1 の NAT で、その場合、ユーザーが使う可能性のあるすべてのポートへの関連付けをカバーする NAT 規則がユーザー VIP ごとに必要となります。
+また、外部ネットワークやパブリック VIP におけるパブリック IP アドレスに代わる働きとして NAT を利用することもできます。 ただしこれは、テナントのユーザー エクスペリエンスが制限され、複雑さも増すため推奨されません。 2 つのオプションの 1 つは 1 対 1 の NAT で、これはプールでのユーザー IP ごとの 1 つのパブリック IP を必要とします。もう 1 つは多対 1 のNAT で、これはユーザーが使用する可能性があるすべてのポートへの関連付けを含むユーザー VIP ごとに 1 つの NAT 規則を必要とします。
 
 パブリック VIP に NAT を使うことには、いくつか不利な点もあります。
 - ソフトウェア定義ネットワーク (SDN) スタックでは、ユーザーが独自のエンドポイントと独自の公開規則を管理するため、ファイアウォール ルールを管理する場合に NAT はオーバーヘッドを増加させます。 ユーザーは Azure Stack オペレーターと連絡をとって、自分の VIP を公開させ、ポート リストを更新する必要があります。
@@ -49,7 +49,7 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 
 通常、パブリックにルーティング可能な IP アドレスは、デプロイ時に、外部ネットワークからパブリック VIP プールに対して指定されます。 エッジのシナリオでは、セキュリティ上、他のどのネットワークに対しても、パブリックにルーティング可能な IP を使用することは推奨されません。 このシナリオでは、Azure などのパブリック クラウドでのエクスペリエンスのような、完全に自己管理型のクラウドを体験できます。  
 
-![Azure Stack のエッジ ファイアウォールの例](.\media\azure-stack-firewall\firewallScenarios.png)
+![Azure Stack のエッジ ファイアウォールの例](./media/azure-stack-firewall/firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>企業イントラネットまたは境界ネットワークのファイアウォール シナリオ
 企業イントラネットまたは境界デプロイでは、Azure Stack のデプロイ先が、マルチゾーン ファイアウォールか、またはエッジ ファイアウォールと内部の企業ネットワーク ファイアウォールとの間になります。 そのトラフィックは、セキュア ゾーン、境界ネットワーク ゾーン (DMZ)、セキュリティ保護なしゾーンに分散されます。
@@ -58,7 +58,7 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 - **境界ゾーン**. 通常、境界ネットワークには、Web サーバーなど、外部の (インターネットに公開される) アプリケーションがデプロイされます。 通常、DDoS や侵入 (ハッキング) などの攻撃を防ぐためにファイアウォールによって監視され、インターネットからは指定した受信トラフィックだけが許可されます。 Azure Stack の中で、DMZ ゾーンに存在してよいのは、外部ネットワークのパブリック VIP プールだけです。
 - **セキュリティ保護なしゾーン** これは外部ネットワーク、つまりインターネットです。 セキュリティ保護なしゾーンに Azure Stack をデプロイすることは**推奨されません**。
 
-![Azure Stack の境界ネットワークの例](.\media\azure-stack-firewall\perimeter-network-scenario.png)
+![Azure Stack の境界ネットワークの例](./media/azure-stack-firewall/perimeter-network-scenario.png)
 
 ## <a name="learn-more"></a>詳細情報
 [Azure Stack のエンドポイントで使用されるポートとプロトコル](azure-stack-integrate-endpoints.md)について理解を深めましょう。

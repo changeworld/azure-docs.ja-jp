@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f32ed74086b26f91f3ab24cd619bb117d497012
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8dc062a1c9490a03aa5369dc103db750d7531140
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251268"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635274"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に初めての ASP.NET Web アプリをデプロイする方法を示します。 作業が完了すると、デプロイされた Web アプリケーションを使って、App Service プランと Azure Web アプリで構成されるリソース グループを入手できます。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure App Service に初めての ASP.NET Web アプリをデプロイする方法を示します。 完了すると、デプロイされた Web アプリケーションを含む App Service アプリと App Service プランで構成されるリソース グループが完成します。
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -144,13 +144,13 @@ Azure に再デプロイするには、**ソリューション エクスプロ�
 
 ![Azure で更新された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
-## <a name="manage-the-azure-web-app"></a>Azure Web アプリを管理する
+## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、Web アプリを管理します。
 
-左側のメニューで、**[App Services]** を選択し、Azure Web アプリの名前をクリックします。
+左側のメニューで、**[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
 Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
 

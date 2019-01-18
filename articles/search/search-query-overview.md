@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 03ec588b1627b82a01021a9b71958e9d66aab0ce
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315589"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214829"
 ---
 # <a name="query-types-and-composition-in-azure-search"></a>Azure Search でのクエリの種類と構成
 
@@ -94,7 +94,7 @@ queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$
 完全な Lucene パーサーを使用する同じクエリでは、"ranch" に対するフィールド内ブーストと解釈され、その特定の語句を含む結果の検索順位が引き上げられます。
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
 <a name="types-of-queries"></a>

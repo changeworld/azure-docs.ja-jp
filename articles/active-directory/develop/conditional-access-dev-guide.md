@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337922"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157076"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -92,11 +92,11 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 
 ## <a name="scenario-app-accessing-microsoft-graph"></a>シナリオ:Microsoft Graph にアクセスするアプリ
 
-このシナリオでは、Web アプリが Microsoft Graph へのアクセスを要求する方法について説明します。 この場合、条件付きアクセス ポリシーは、SharePoint、Exchange、または Microsoft Graph を通じてワークロードとしてアクセスされるその他のサービスに割り当てられます。 この例では、Sharepoint Online に条件付きアクセス ポリシーがあると仮定します。
+このシナリオでは、Web アプリが Microsoft Graph へのアクセスを要求する方法について説明します。 この場合、条件付きアクセス ポリシーは、SharePoint、Exchange、または Microsoft Graph を通じてワークロードとしてアクセスされるその他のサービスに割り当てられます。 この例では、SharePoint Online に条件付きアクセス ポリシーがあると仮定します。
 
 ![Microsoft Graph にアクセスするアプリのフロー ダイアグラム](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 
-アプリは、まず条件付きアクセスを使用せず、ダウンストリーム ワークロードにアクセスする必要がある Microsoft Graph に承認を要求します。 ポリシーが呼び出されることなく要求は成功し、アプリは Microsoft Graph のトークンを受信します。 この時点では、アプリは、要求されたエンドポイントに対して、ベアラー要求でアクセス トークンを使用できます。 ここで、アプリは、たとえば Microsoft Graph の Sharepoint Online のエンドポイントにアクセスする必要があります。`https://graph.microsoft.com/v1.0/me/mySite`
+アプリは、まず条件付きアクセスを使用せず、ダウンストリーム ワークロードにアクセスする必要がある Microsoft Graph に承認を要求します。 ポリシーが呼び出されることなく要求は成功し、アプリは Microsoft Graph のトークンを受信します。 この時点では、アプリは、要求されたエンドポイントに対して、ベアラー要求でアクセス トークンを使用できます。 ここで、アプリは、たとえば Microsoft Graph の SharePoint Online のエンドポイントにアクセスする必要があります。`https://graph.microsoft.com/v1.0/me/mySite`
 
 アプリは Microsoft Graph に有効なトークンを既に取得しているため、新しいトークンが発行されなくても新しい要求を実行できます。 この要求は失敗し、```WWW-Authenticate``` チャレンジ HTTP 403 アクセス禁止の形式で 要求チャレンジが Microsoft Graph から発行されます。
 
@@ -108,7 +108,7 @@ error=insufficient_claims
 www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
 ```
 
-要求チャレンジは ```WWW-Authenticate``` ヘッダーに含まれ、次の要求の要求パラメーターを抽出するために解析できます。 要求チャレンジを新しい要求に追加すると、Azure AD でユーザーがサインインしたときに条件付きアクセス ポリシーが評価され、アプリは条件付きアクセス ポリシーに準拠します。 Sharepoint Online のエンドポイントに同じ要求を繰り返しても成功します。
+要求チャレンジは ```WWW-Authenticate``` ヘッダーに含まれ、次の要求の要求パラメーターを抽出するために解析できます。 要求チャレンジを新しい要求に追加すると、Azure AD でユーザーがサインインしたときに条件付きアクセス ポリシーが評価され、アプリは条件付きアクセス ポリシーに準拠します。 SharePoint Online のエンドポイントに同じ要求を繰り返しても成功します。
 
 ```WWW-Authenticate``` ヘッダーは一意の構造体を持つため、解析して、値を抽出するのは簡単ではありません。 次の方法は簡単で役に立ちます。
 

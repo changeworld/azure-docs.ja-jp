@@ -1,11 +1,11 @@
 ---
-title: Machine Learning モデルの再トレーニング | Microsoft Docs
+title: Machine Learning Studio モデルの再トレーニング - Azure | Microsoft Docs
 description: Azure Machine Learning でモデルの再トレーニングをして Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 46aa2c209f782706357f9a928ddbaa6321abdd77
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115529"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257592"
 ---
-# <a name="retrain-a-machine-learning-model"></a>Machine Learning モデルの再トレーニング
+# <a name="retrain-an-azure-machine-learning-studio-model"></a>Azure Machine Learning Studio モデルの再トレーニング
 Azure Machine Learning における Machine Learning のモデル運用プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。 
 
 Machine Learning を使って作成するモデルは、通常、静的ではありません。 新しいデータが使用可能になるか、API のコンシューマーに独自のデータがある場合は、モデルを再トレーニングする必要があります。 
@@ -42,7 +42,7 @@ Machine Learning のトレーニング プロセスの一環として、モデ�
 > 
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
-このプロセスには、Web サービスとして発行されたトレーニング実験と予測実験が必要です。 トレーニング済みのモデルを再トレーニングできるようにするには、トレーニング済みのモデルの出力で、トレーニング実験を Web サービスとして発行する必要があります。 これにより、モデルへの API アクセスが有効になり再トレーニングを行うことができます。 
+このプロセスには、次のコンポーネントが含まれます: Web サービスとして発行されるトレーニング実験および予測実験。 トレーニング済みのモデルを再トレーニングできるようにするには、トレーニング済みのモデルの出力で、トレーニング実験を Web サービスとして発行する必要があります。 これにより、モデルへの API アクセスが有効になり再トレーニングを行うことができます。 
 
 次の手順は、新規および従来の Web サービスに適用されます。
 

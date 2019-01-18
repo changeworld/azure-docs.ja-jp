@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 914dcf6d19ca0791c5914e7d605e48f15a610d62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d093dbe50cb76faedc463603edc459b22dda4fba
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099513"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628240"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -116,21 +116,11 @@ Azure Portal を使用してリソース グループを削除するには:
 
 ### <a name="upgrade-your-powershell-module"></a>PowerShell モジュールのアップグレード
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 PowerShell を使用して Data Lake Storage Gen2 を操作するには、モジュールの Az.Storage バージョン **0.7** 以降をインストールする必要があります。
 
 最初に、引き上げられたアクセス許可を使って PowerShell セッションを開きます。
-
-次に、AzureRM.Storage モジュールがインストールされているかどうかを判定します。
-
-```powershell
-Get-Module -ListAvailable AzureRM.Storage
-```
-
-モジュールが表示されている場合は、アンインストールします。
-
-```powershell
-Uninstall-Module AzureRM.Storage -Force
-```
 
 Az.Storage モジュールのインストール
 
@@ -138,28 +128,20 @@ Az.Storage モジュールのインストール
 Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
 ```
 
-AzureRM の互換モードを有効にします。
-
-```powershell
-Enable-AzureRMAlias
-```
-
-互換モードとは、AzureRM.Storage モジュールをアンインストールした後も AzureRM.Storage モジュールを使用するスクリプトが引き続き動作することを意味します。
-
 > [!NOTE]
-> Azure Powershell Az モジュールは、Powershell の Azure サービスを操作する場合に推奨されるモジュールです。 詳細については、「[新しい Azure PowerShell Az モジュールの概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0)」を参照してください。
+> Azure Powershell Az モジュールは、Powershell の Azure サービスを操作する場合に推奨されるモジュールです。 詳細については、「[新しい Azure PowerShell Az モジュールの概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)」を参照してください。
 
 ### <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションへのログイン
 
-`Login-AzureRmAccount` コマンドを使用して、画面上の指示に従って認証を行います。
+`Login-AzAccount` コマンドを使用して、画面上の指示に従って認証を行います。
 
 ```powershell
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-PowerShell で新しいリソース グループを作成するには、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使用します。 
+PowerShell で新しいリソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用します。 
 
 > [!NOTE]
 > 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。 現在ソブリン クラウドでは利用できません。
@@ -169,17 +151,17 @@ PowerShell で新しいリソース グループを作成するには、[New-Azu
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
 $location = "westus2"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントを作成する
 
-ローカル冗長ストレージ (LRS) を使用して汎用 v2 ストレージ アカウントを PowerShell から作成するには、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) コマンドを使用します。
+ローカル冗長ストレージ (LRS) を使用して汎用 v2 ストレージ アカウントを PowerShell から作成するには、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) コマンドを使用します。
 
 ```powershell
 $location = "westus2"
 
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -189,10 +171,10 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用します。 
+リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用します。 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="create-an-account-using-azure-cli"></a>Azure CLI を使用してアカウントを作成する

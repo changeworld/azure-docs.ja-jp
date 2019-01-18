@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679598"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050593"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
 
@@ -51,7 +51,7 @@ Azure IoT Hub は、リモート監視ソリューションのクラウド ゲ�
 
 IoT デバイスの接続性のために、以下を使用できます。
 
-- デバイスのネイティブ クライアント アプリケーションを実装するための [IoT Hub デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks)。 この SDK は、IoT Hub REST API のラッパーを提供し、再試行などのシナリオを処理します。
+- デバイスのネイティブ クライアント アプリケーションを実装するための [IoT Hub デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)。 この SDK は、IoT Hub REST API のラッパーを提供し、再試行などのシナリオを処理します。
 - Azure IoT Edge と統合することで、デバイス上のコンテナーで実行されるカスタム モジュールをデプロイおよび管理します。
 - 接続されたデバイスを一括管理するための、IoT Hub での自動デバイス管理との統合。
 

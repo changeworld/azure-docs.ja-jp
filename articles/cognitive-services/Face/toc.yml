@@ -62,34 +62,36 @@ items:
     items:
     - name: コンテナーのインストールと実行
       href: face-how-to-install-containers.md
-    - name: コンテナーの構成
+    - name: コンテナーを構成する
       href: face-resource-container-config.md
   - name: Face API Connected Service を使用する
     href: vs-face-connected-service.md
+- name: サンプル
+  items:
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
 - name: リファレンス
   items:
   - name: Face API
     href: APIReference.md
-  - name: 用語集
-    href: Glossary.md
   - name: SDK
     items:
-    - name: " Windows"
-      href: https://github.com/Microsoft/Cognitive-Face-Windows
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet
     - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
+      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest
     - name: Python
-      href: https://github.com/Microsoft/Cognitive-Face-Python
+      href: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python
     - name: Go
-      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
-    - name: Android
-      href: https://github.com/Microsoft/Cognitive-Face-Android
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
+    - name: Android (Java)
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
     - name: iOS
       href: https://github.com/Microsoft/Cognitive-Face-iOS
 - name: リソース
   items:
-  - name: サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
+  - name: 用語集
+    href: Glossary.md
   - name: FAQ
     href: FAQ.md
   - name: 料金と制限
@@ -104,9 +106,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
   - name: リリース ノート
     href: ReleaseNotes.md
-ms.openlocfilehash: 24b12b969e95e3e48a2e448e97789fbb2ba3ca9a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e243a711fd08cbefcb397c5571a824a90fc1292f
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274536"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742543"

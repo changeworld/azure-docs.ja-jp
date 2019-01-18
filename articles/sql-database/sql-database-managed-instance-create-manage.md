@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7fb6917e129c015536143a707fd2a89fc5423a99
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 01/11/2019
+ms.openlocfilehash: 43ee1cb33d5d747671cde7463c8f2fcb6e020662
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323082"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246519"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Database Managed Instance のマネージド API リファレンス
 
@@ -37,9 +37,13 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 | コマンドレット | 説明 |
 | --- | --- |
 |[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Azure SQL Database Managed Instance を作成します |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlInstance)|Azure SQL Managed Instance に関する情報を返します|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlInstance)|Azure SQL Database Managed Instance のプロパティを設定します|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlInstance)|Azure SQL Database Managed Instance を削除します|
+|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Azure SQL Managed Instance に関する情報を返します|
+|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Azure SQL Database Managed Instance のプロパティを設定します|
+|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Azure SQL Database Managed Instance を削除します|
+|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Azure SQL Database Managed Instance データベースを作成します|
+|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Azure SQL Managed Instance データベースに関する情報を返します|
+|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Azure SQL Managed Database Instance データベースを削除します|
+|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Azure SQL Managed Database Instance データベースを復元します|
 
 ## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI:論理サーバーとデータベースを管理する
 
@@ -47,15 +51,18 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 
 > [!TIP]
 > Azure CLI のクイックスタートについては、「[Working with SQL Managed Instance using Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)」 (Azure CLI を使用した SQL Managed Instance の操作) を参照してください。
->
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[az sql mi create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-create) |マネージド インスタンスを作成します|
-|[az sql mi list](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-list)|使用可能なマネージド インスタンスを一覧表示します|
-|[az sql mi show](/cli/azure/sql/db#az-sql-mi-show)|マネージド インスタンスの詳細を取得します|
-|[az sql mi update](/cli/azure/sql/db#az-sql-mi-update)|マネージド インスタンスを更新します|
-|[az sql mi delete](/cli/azure/sql/db#az-sql-mi-delete)|マネージド インスタンスを削除します|
+|[az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |マネージド インスタンスを作成します|
+|[az sql mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|使用可能なマネージド インスタンスを一覧表示します|
+|[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|マネージド インスタンスの詳細を取得します|
+|[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|マネージド インスタンスを更新します|
+|[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|マネージド インスタンスを削除します|
+|[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |マネージド データベースを作成します|
+|[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|使用可能なマネージド データベースを一覧表示します|
+|[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|マネージド データベースを復元します|
+|[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|マネージド データベースを削除します|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL:論理サーバーとデータベースを管理する
 

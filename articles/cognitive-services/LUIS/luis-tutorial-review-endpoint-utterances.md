@@ -1,7 +1,7 @@
 ---
 title: エンドポイントの発話の確認
 titleSuffix: Azure Cognitive Services
-description: LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。
+description: LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: bc641732d74dac4f566420ada6338362932df4d7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6cbeb44e5dfca84bc85a6be4c4b44cb59bad783a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080454"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755123"
 ---
-# <a name="tutorial-1-fix-unsure-predictions"></a>チュートリアル 1:不明な予測を修正する
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。 
 
 このレビュー プロセスも、LUIS がユーザーのアプリ ドメインを学習する方法の 1 つとなります。 LUIS は、レビュー リストにある発話を選択しました。 このリストには、次の特徴があります。
@@ -33,7 +33,7 @@ ms.locfileid: "53080454"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
+> * サンプル アプリをインポートする
 > * エンドポイントの発言の確認
 > * フレーズ リストの更新
 > * アプリのトレーニング
@@ -42,19 +42,19 @@ ms.locfileid: "53080454"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
 3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `review` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
-    新たにインポートしたアプリとしてこのチュートリアルを使用する場合は、発話をトレーニングして公開したうえで、エンドポイントに追加する必要があります。エンドポイントへの追加は、[スクリプト](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使って行うか、またはエンドポイントからブラウザーで行います。 追加する発話は次のとおりです。
+    新たにインポートしたアプリとしてこのチュートリアルを使用する場合は、発話をトレーニングして公開したうえで、エンドポイントに追加する必要があります。エンドポイントへの追加は、[スクリプト](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使って行うか、またはエンドポイントからブラウザーで行います。 追加する発話は次のとおりです。
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 

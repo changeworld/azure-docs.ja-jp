@@ -1,183 +1,192 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API で mongoimport と mongorestore を使用する | Microsoft Docs
-description: mongoimport と mongorestore を使用して、MongoDB 用 API アカウントにデータをインポートする方法について説明します
-keywords: mongoimport, mongorestore
-services: cosmos-db
-author: SnehaGunda
+title: mongoimport と mongorestore を使用して MongoDB のデータを Azure Cosmos DB に移行する
+description: mongoimport と mongorestore を使用して Cosmos DB にデータをインポートする方法について説明します。
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 05/07/2018
-ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 50bb34d86780dec003c63b5ff0a3884049dd47c1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+Customer intent: As a developer, I want to migrate the data from my existing MongoDB to Cosmos DB.
+ms.openlocfilehash: 9226a49af67659ebd7bebd9beca397830ee808bb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871015"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039052"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>チュートリアル: Azure Cosmos DB MongoDB API アカウントにデータを移行する
+# <a name="migrate-your-mongodb-data-to-azure-cosmos-db"></a>MongoDB のデータを Azure Cosmos DB に移行する
 
-このチュートリアルでは、MongoDB に格納されているデータを Azure Cosmos DB MongoDB API アカウントに移行する方法を説明します。 MongoDB からデータをインポートしており、Azure Cosmos DB SQL API でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
+ このチュートリアルでは、MongoDB に格納されているデータを、Cosmos DB の MongoDB 用 API を使用するように構成された Azure Cosmos DB に移行する方法を説明します。 MongoDB からデータをインポートし、Azure Cosmos DB SQL API でそれを使用する場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
 
-このチュートリアルに含まれるタスクは次のとおりです。
+このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * 移行の計画
-> * 移行の前提条件
-> * mongoimport を使用してデータを移行する
-> * mongorestore を使用してデータを移行する
+> * 移行プランを作成する。
+> * mongoimport を使用してデータを移行する。
+> * mongorestore を使用してデータを移行する。
 
-データを MongoDB API アカウントに移行する前に、サンプルの MongoDB データがあることを確認してください。 サンプルの MongoDB データベースがない場合は、[MongoDB コミュニティ サーバー](https://www.mongodb.com/download-center)をダウンロードしてインストールし、サンプル データベースを作成して、mongoimport.exe または mongorestore.exe を使用してサンプル データをアップロードできます。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="plan-for-migration"></a>移行の計画
+## <a name="prerequisites"></a>前提条件
 
-1. コレクションを事前に作成し、拡大縮小します。
-        
-   * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport または mongorestore を使用して移行を開始する前に、[Azure portal](https://portal.azure.com) または MongoDB ドライバーとツールから、すべてのコレクションを事前に作成します。 データのサイズが 10 GB を超える場合は、適切なシャード キーを使用して[パーティション分割コレクション](partition-data.md)を作成します。 MongoDB は、エンティティ データをコレクションに格納することを推奨しています。 同等のサイズのエンティティは同じ場所に配置して、Azure Cosmos データベース レベルでスループットをプロビジョニングすることができます。
+以降を始める前に、次の前提条件を確認して満たしておいてください。
 
-   * [Azure portal](https://portal.azure.com) で、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行の期間のみシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行直後にスループットを低くすることでコストを削減できます。
+### <a name="plan-for-the-migration"></a>移行を計画する
 
-   * コレクション レベルでの RU/秒 のプロビジョニングに加えて、親データベース レベルの一連のコレクションの RU/秒 のプロビジョニングも行う場合があります。 これを行うには、データベースとコレクションの事前作成と、各コレクションのシャード キーの定義が必要です。
+このセクションでは、データの移行を計画する方法について説明します。 RU の料金を見積もり、お使いのコンピューターからクラウド サービスまでの待ち時間を特定して、挿入ワーカーのバッチ サイズと数を計算します。
 
-   * お気に入りのツールやドライバー、SDK を使用してシャード コレクションを作成できます。 この例では、Mongo シェルを使用してシャード コレクションを作成します。
 
-        ```bash
-        db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
-        ```
+#### <a name="pre-create-and-scale-your-collections"></a>コレクションを事前に作成してスケーリングする
+
+mongoimport または mongorestore を使用して移行を行う前に、[Azure portal](https://portal.azure.com) または MongoDB のドライバーとツールから、すべてのコレクションを事前に作成します。 
+
+[Azure portal](https://portal.azure.com) で、移行に合わせてコレクションのスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行直後にスループットを低くすることでコストを削減できます。
+
+コレクション レベルでのスループットのプロビジョニングだけでなく、コレクションのセットに対してデータベース レベルでスループットをプロビジョニングし、プロビジョニング済みのスループットを共有することもできます。 データベースとコレクションを事前に作成し、共有スループット データベースの各コレクションに対してシャード キーを定義する必要があります。
+
+好みのツール、ドライバー、SDK を使用して、シャード化されたコレクションを作成できます。 この例では、Mongo シェルを使用してシャード コレクションを作成します。
+
+```bash
+db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+```
     
-        結果:
+そのコマンドでは、次の結果が返されます。
 
-        ```JSON
-        {
-            "_t" : "ShardCollectionResponse",
-            "ok" : 1,
-            "collectionsharded" : "admin.people"
-        }
-        ```
+```JSON
+{
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "admin.people"
+}
+```
 
-1. 1 回のドキュメントの書き込みに対するおおよその RU 請求金額を計算します。
+#### <a name="calculate-the-approximate-ru-charge-for-a-single-document-write"></a>1 回のドキュメント書き込みに対するおおよその RU 料金を計算する
 
-   a. MongoDB シェルを使用して Azure Cosmos DB MongoDB API アカウントに接続します。 手順については、「[Connect a MongoDB application to Azure Cosmos DB (Azure Cosmos DB への MongoDB アプリケーションの接続)](connect-mongodb-account.md)」を参照してください。
-    
-   b. MongoDB シェルからサンプル ドキュメントの 1 つを使用して、サンプルの挿入コマンドを実行します。
+MongoDB シェルから、Cosmos DB の MongoDB 用 API を使用するように構成された Cosmos アカウントに接続します。 手順については、「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」をご覧ください。
+
+次に、サンプル ドキュメントの 1 つを使用して、サンプルの挿入コマンドを実行します。
    
-      ```bash
-      db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })
-      ```
+```bash
+db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })
+```
         
-   c. ```db.runCommand({getLastRequestStatistics: 1})``` を実行すると、次のような応答が返されます。
+コマンド `db.runCommand({getLastRequestStatistics: 1})`を実行します。
+
+次の出力のような応答を受け取ります。
      
-      ```bash
-        globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
-        {
-            "_t": "GetRequestStatisticsResponse",
-            "ok": 1,
-            "CommandName": "insert",
-            "RequestCharge": 10,
-            "RequestDurationInMilliSeconds": NumberLong(50)
-        }
-      ```
+```bash
+globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "insert",
+    "RequestCharge": 10,
+    "RequestDurationInMilliSeconds": NumberLong(50)
+}
+```
         
-    d. 要求の使用量を書き留めます。
+要求の使用量を書き留めます。
     
-1. マシンから Azure Cosmos DB クラウド サービスまでの待ち時間を決定します。
+#### <a name="determine-the-latency-from-your-machine-to-cosmos-db"></a>自分のマシンから Cosmos DB までの待ち時間を決定する
     
-    a. MongoDB シェルで ```setVerboseShell(true)``` コマンドを使用して、詳細ログ記録を有効にします。
+MongoDB シェルで `setVerboseShell(true)` コマンドを使用して、詳細ログ記録を有効にします。
     
-    b. ```db.coll.find().limit(1)``` を使用して、データベースに対して単純なクエリを実行します。 次のような応答が返されます。
+`db.coll.find().limit(1)` コマンドを使用して、データベースに対して基本的なクエリを実行します。
 
-       ```bash
-       Fetched 1 record(s) in 100(ms)
-       ```
+次の出力のような応答を受け取ります。
+
+```bash
+Fetched 1 record(s) in 100(ms)
+```
         
-1. 移行前に挿入したドキュメントを削除して、重複するドキュメントがないことを確認します。 ドキュメントを削除するには、```db.coll.remove({})``` コマンドを使用します。
+移行を行う前に、挿入したドキュメントを削除して、ドキュメントが重複しないようにします。 `db.coll.remove({})` コマンドでドキュメントを削除できます。
 
-1. *batchSize* と *numInsertionWorkers* の概算値を計算します。
+#### <a name="calculate-the-approximate-values-for-the-batchsize-and-numinsertionworkers-properties"></a>batchSize プロパティと numInsertionWorkers プロパティの概算値を計算する
 
-    * *batchSize* については、プロビジョニングされた RU の総数を、手順 3. の 1 回のドキュメント書き込みで消費された RU 数で除算します。
+**batchSize** プロパティについては、プロビジョニング済み合計スループット (RU/秒) を、1 回のドキュメント書き込みで消費される RU で割ります (「自分のマシンから Cosmos DB までの待ち時間を決定する」セクションを参照)。 計算された値が 24 以下の場合は、その値をプロパティの値として使用します。 計算された値が 24 を超える場合は、プロパティの値を 24 に設定します。
     
-    * 計算された *batchSize* 値が 24 以下の場合は、その数値を *batchSize* 値として使用します。
-    
-    * 計算された *batchSize* 値が 24 を超える場合は、*batchSize* 値を 24 に設定します。
-    
-    * *numInsertionWorkers* の場合は、*numInsertionWorkers = (プロビジョニングされたスループット * 秒単位の待機時間) / (バッチ サイズ * 1 回の書き込みのために消費された RU 数)* という数式を使用します。
-        
-    |プロパティ|値|
-    |--------|-----|
-    |batchSize| 24 |
-    |プロビジョニングされた RU 数 | 10000 |
-    |Latency | 0.100 秒 |
-    |1 回のドキュメント書き込みで消費された RU | 10 RU |
-    |numInsertionWorkers | ? |
-    
-    *numInsertionWorkers = (10,000 RU x 0.1) / (24 x 10 RU) = 4.1666*
+**numInsertionWorkers** プロパティの値については、次の計算式を使用します。
 
-1. 移行コマンドを実行します。 データを移行するオプションについては、以降のセクションで説明します。
+`numInsertionWorkers = (Provisioned RUs throughput * Latency in seconds) / (batchSize * Consumed RUs for a single write)`
 
-   ```bash
-   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
-   ```
-   または mongorestore で実行します (すべてのコレクションで、スループットが前の計算で使用された RU の数値以上に設定されていることを確認します):
+**numInsertionWorkers** プロパティの値の計算には、次の値を使用できます。
+
+| プロパティ | 値 |
+|--------|-----|
+| **batchSize** | 24 |
+| プロビジョニング済み RU 数 | 10,000 |
+| Latency | 0.100 秒 |
+| 消費された RU 数 | 10 RU |
+| **numInsertionWorkers** | (10,000 RU x 0.100 秒) / (24 x 10 RU) = **4.1666** |
+
+**monogoimport** 移行コマンドを実行します。 コマンドのパラメーターについては、この記事の後の方で説明します。
+
+```bash
+mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+```
+
+**monogorestore** コマンドを使用することもできます。 すべてのコレクションのスループットが、前の計算で使用された RU の数値以上に設定されていることを確認します。
    
-   ```bash
-   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
-   ```
+```bash
+mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
+```
 
-## <a name="prerequisites-for-migration"></a>移行の前提条件
+### <a name="complete-the-prerequisites"></a>前提条件を満たす
 
-* **スループットを上げる**: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、[Azure Cosmos DB のパフォーマンス レベルと価格レベル](performance-levels.md)に関するページを参照してください。
+移行を計画した後、次の手順を実行します。 
 
-* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 この記事で説明する手順の中に、mongoimport と mongorestore で SSL を有効にする方法が含まれています。
+* **サンプル データを取得する**:移行を始める前に、サンプル データがあることを確認します。 
 
-* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コレクションの作成時に必ずパーティション キーを提供するようにしてください。
+* **スループットを高くする**:データの移行にかかる時間は、個別のコレクションまたはデータベースに対してプロビジョニングしたスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 
 
-## <a name="get-your-connection-string"></a>接続文字列を取得する 
+* **SSL を有効にする**:Cosmos DB には、厳密なセキュリティ要件と基準があります。 Cosmos アカウントを操作するときは、SSL が有効になっていることを確認してください。 この記事の手順には、mongoimport および mongorestore コマンドで SSL を有効にする方法が含まれています。
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Cosmos DB]** エントリをクリックします。
-1. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
-1. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
+* **Cosmos DB リソースを作成する**:移行を始める前に、Azure portal ですべてのコレクションを事前に作成します。 データベース レベルでスループットがプロビジョニングされた Cosmos アカウントに移行する場合は、コレクションを作成するときにパーティション キーを指定します。
 
-   右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
+* **接続文字列を取得する**:[Azure portal](https://portal.azure.com) で、左側の **[Azure Cosmos DB]** エントリを選択します。 **[サブスクリプション]** で、自分のアカウント名を選択します。 **[接続文字列]** で **[接続文字列]** を選択します。 ポータルの右側に、アカウントに接続するために必要な情報が表示されます。
 
-   ![[接続文字列] ブレード](./media/mongodb-migrate/ConnectionStringBlade.png)
+    ![接続文字列情報](./media/mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="migrate-data-by-using-mongoimport"></a>mongoimport を使用してデータを移行する
+## <a name="use-mongoimport"></a>mongoimport を使用する
 
-Azure Cosmos DB アカウントにデータをインポートするには、次のテンプレートを使用します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。  
-
-テンプレート:
+Cosmos アカウントにデータをインポートするには、次のテンプレートを使用します。
 
 ```bash
 mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
 ```
 
-例:  
+\<your_hostname>、\<your_username>、\<your_password> の各パラメーターを、自分のアカウントに固有の値に置き換えます。 次の例では、\<your_database> の値として **sampleDB** を使用し、\<your_collection> の値として **sampleColl** を使用します。
 
 ```bash
 mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
 ```
 
-## <a name="migrate-data-by-using-mongorestore"></a>mongorestore を使用してデータを移行する
+## <a name="use-mongorestore"></a>mongorestore を使用する
 
-MongoDB 用 API アカウントにデータを復元するには、次のテンプレートを使用してインポートを実行します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。
-
-テンプレート:
+Cosmos DB の MongoDB 用 API で構成されている Cosmos アカウントにデータを復元するには、次のテンプレートを使用してインポートを実行します。
 
 ```bash
 mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
 ```
 
-例:
+\<your_hostname>、\<your_username>、\<your_password> の各パラメーターを、自分のアカウントに固有の値に置き換えます。 次の例では、\<path_to_backup> の値として **./dumps/dump-2016-12-07** を使用します。
 
 ```bash
-mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
+mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --db mydatabase --collection mycollection --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソースが必要なくなったら、リソース グループ、Cosmos アカウント、およびすべての関連リソースを削除できます。 リソース グループを削除するには次のようにします。
+
+1. Cosmos アカウントを作成したリソース グループに移動します。
+1. **[リソース グループの削除]** を選択します。
+1. 削除するリソース グループの名前を確認し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-次のチュートリアルに進み、Azure Cosmos DB を使用して MongoDB データにクエリを実行する方法を学習することができます。 
+引き続き次のチュートリアルで、Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する方法を学習してください。 
 
 > [!div class="nextstepaction"]
->[MongoDB データにクエリを実行する方法](../cosmos-db/tutorial-query-mongodb.md)
+> [MongoDB データにクエリを実行する方法](../cosmos-db/tutorial-query-mongodb.md)

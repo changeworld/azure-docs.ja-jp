@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834963"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791882"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする
 
@@ -61,8 +61,8 @@ Azure でプロセス サーバーをデプロイするには:
 
 マスター ターゲット サーバーは、フェールバック データを受信します。 既定で、マスター ターゲット サーバーは、オンプレミスの構成サーバー上で実行されます。 ただし、フェールバック トラフィックの量によっては、フェールバック用に別のマスター ターゲット サーバーを作成する必要があります。 作成手順は次のとおりです。
 
-* Linux VM のフェールバック用に [Linux マスター ターゲット サーバーを作成](vmware-azure-install-linux-master-target.md)します。 これは必須です。
-* 必要に応じて、Windows VM のフェールバック用に別のマスター ターゲット サーバーを作成します。 この場合、Unified Setup を再度実行し、マスター ターゲット サーバーの作成を選択します。 [詳細情報](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。
+* Linux VM のフェールバック用に [Linux マスター ターゲット サーバーを作成](vmware-azure-install-linux-master-target.md)します。 これは必須です。 LVM 上のマスター ターゲット サーバーはサポートされないことに注意してください。
+* 必要に応じて、Windows VM のフェールバック用に別のマスター ターゲット サーバーを作成します。 この場合、Unified Setup を再度実行し、マスター ターゲット サーバーの作成を選択します。 [詳細情報](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)。 
 
 マスター ターゲット サーバーを作成したら、次のタスクを実行します。
 

@@ -3,17 +3,17 @@ title: Ansible を使用して Azure Web アプリを作成する
 description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムを使った Web アプリを作成する方法について学習します。
 ms.service: ansible
 keywords: ansible、azure、devops、bash、プレイブック、Azure App Service、Web アプリ、Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 106fe11355d629e57f71b12d1125d188b98c2236
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726733"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051347"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Ansible を使用して Azure App Service Web アプリを作成する
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。

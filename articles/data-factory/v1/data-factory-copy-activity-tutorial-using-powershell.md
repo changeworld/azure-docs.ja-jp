@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: データを移動するパイプラインを Azure PowerShell で作成する | Microsoft Docs'
+title: チュートリアル:データを移動するパイプラインを Azure PowerShell で作成する | Microsoft Docs
 description: このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfe1d022364455f6c3e22872358b6e18b0806e6a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ce2c3bffecd691acd5eb26b999c63fd2bb5dd510
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109338"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015341"
 ---
-# <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル: データを移動する Data Factory パイプラインを Azure PowerShell で作成する
+# <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -45,7 +44,7 @@ ms.locfileid: "43109338"
 > [!NOTE]
 > この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 これらのコマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレット リファレンス](/powershell/module/azurerm.datafactories)を参照してください。
 > 
-> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 - [チュートリアルの前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事に記載されている前提条件を満たしてください。
@@ -55,7 +54,7 @@ ms.locfileid: "43109338"
 このチュートリアルの一部として実行する手順を次に示します。
 
 1. Azure **データ ファクトリ**を作成します。 この手順では、ADFTutorialDataFactoryPSH という名前のデータ ファクトリを作成します。 
-1. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、Azure Storage と Azure SQL Database の 2 種類のリンクされたサービスを作成します。 
+1. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、2 つのリンクされたサービスを作成します (タイプ: Azure Storage、Azure SQL Database)。 
     
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。   
 
@@ -118,7 +117,7 @@ ms.locfileid: "43109338"
     ```
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラーが表示される可能性があります。 次のいずれかを実行し、もう一度発行してみてください。
+* 次のエラーが表示される場合があります。"**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" 次のいずれかを実行し、もう一度発行してみてください。
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
@@ -136,7 +135,7 @@ ms.locfileid: "43109338"
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure HDInsight、Azure Data Lake Analytics などのコンピューティング サービスを使用しません。 ここでは、Azure Storage (ソース) と Azure SQL Database (ターゲット) の 2 種類のデータ ストアを使用します。 
 
-したがって、タイプが AzureStorage と AzureSqlDatabase の、AzureStorageLinkedService と AzureSqlLinkedService という名前の 2 つのリンクされたサービスを作成します。  
+したがって、AzureStorageLinkedService と AzureSqlLinkedService という名前の 2 つのリンクされたサービスを作成します (タイプ: AzureStorage、AzureSqlDatabase)。  
 
 AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このストレージ アカウントは、[前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部としてコンテナーを作成し、データをアップロードしたストレージ アカウントです。   
 
@@ -145,7 +144,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用にリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。
 
-1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します (ADFGetStartedPSH フォルダーがない場合は作成します)。
+1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。(ADFGetStartedPSH フォルダーがない場合は作成します)。
 
     > [!IMPORTANT]
     > ファイルを保存する前に、&lt;accountname&gt; と &lt;accountkey&gt; を Azure ストレージ アカウントの名前とキーに置き換えます。 
@@ -162,7 +161,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
      }
     ``` 
 1. **Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
-1. **New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、New-AzureRmDataFactory コマンドレットから返された DataFactory オブジェクトを渡すことができます。 
+1. **New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービスを作成します。**AzureStorageLinkedService** を作成します。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、New-AzureRmDataFactory コマンドレットから返された DataFactory オブジェクトを渡すことができます。 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
@@ -220,7 +219,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 
    SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
 
-    1. [Azure ポータル](https://portal.azure.com)
+    1.  [Azure ポータル](https://portal.azure.com)
     1. 左側にある **[その他のサービス]** をクリックし、**[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
     1. SQL サーバーの一覧で、目的のサーバーを選択します。
     1. SQL サーバーのブレードで、**[ファイアウォール設定の表示]** リンクをクリックします。
@@ -427,7 +426,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
      
     **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
      
-    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
+    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2016-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
      
     **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
      

@@ -1,18 +1,19 @@
 ---
-title: Azure Disk Encryption のトラブルシューティング | Microsoft Docs
+title: トラブルシューティング - IaaS VM の Azure Disk Encryption | Microsoft Docs
 description: この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption のトラブルシューティングのヒントについて説明します。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 3d52e031d6c3266ba9d15a2283adcdbce7a6b929
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 01/08/2018
+ms.custom: seodec18
+ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347683"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103167"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -71,6 +72,9 @@ VM を再起動するように求められた後と VM の再開後、再起動�
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault
 VM は、キー コンテナーにアクセスできる必要があります。 [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) チームが管理しているファイアウォール内からのキー コンテナーへのアクセスに関するガイダンスを参照してください。 
+
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
+VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../virtual-machines/windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。
 
 ### <a name="linux-package-management-behind-a-firewall"></a>ファイアウォール内の Linux パッケージの管理
 

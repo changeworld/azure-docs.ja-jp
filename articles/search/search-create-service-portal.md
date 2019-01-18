@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315987"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002639"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 
+Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロン リソースです。 Azure Search は他の多くの Azure サービスと簡単に統合されますが、単独で、またはネットワーク サーバーにホストされているアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。 
+
+この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Search リソースを作成する方法を説明します。 
+
+![ポータル上の Azure Search リソース](media/search-create-service-portal/azure-search-resource-label.png)
 
 PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、背景について「[PowerShell を使用して Azure Search サービスを管理する](search-manage-powershell.md)」を参照してください。
 
@@ -31,13 +35,15 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 ## <a name="find-azure-search"></a>Azure Search を探す
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
-3. **[Web]** > **[Azure Search]** を選択します。
+3. 検索バーを使用して "Azure Search" を検索するか、**[Web]** > **[Azure Search]** を使用してリソースに移動します。
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>サービスと URL エンドポイントに名前を付ける
 
-サービス名は、API 呼び出しを発行する対象となる URL エンドポイントの一部です。`https://your-service-name.search.windows.net` **[URL]** フィールドにサービス名を入力します。 
+サービス名は、API 呼び出しを発行する対象となる URL エンドポイントの一部です。`https://your-service-name.search.windows.net` **[URL]** フィールドにサービス名を入力します。
+
+たとえば、エンドポイントを `https://my-app-name-01.search.windows.net` とする場合は、「`my-app-name-01`」と入力します。
 
 サービス名の要件:
    * search.windows.net 名前空間内で一意である
@@ -51,6 +57,8 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="select-a-resource-group"></a>リソース グループの選択
 リソース グループとは、一緒に使用される Azure サービスとリソースのコレクションです。 たとえば、Azure Search を使用して SQL Database のインデックスを作成する場合、これら両方のサービスを同じリソース グループに含める必要があります。
+
+リソースを単一グループに結合していない場合、または関連のないソリューションで使用されるリソースが既存のリソース グループに格納されている場合は、Azure Search リソース用の新しいリソース グループを作成します。
 
 > [!TIP]
 > リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。 
@@ -109,7 +117,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 高可用性のために 2 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも 1 つのレプリカが動作しています。アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [インデックスを定義する](search-what-is-an-index.md)ことができます。 
+Azure Search サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]
-> [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)
+> [チュートリアル: ポータル内でのデータのインポート、インデックス作成、クエリの実行](search-get-started-portal.md)

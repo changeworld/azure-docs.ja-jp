@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679173"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714752"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -106,10 +106,18 @@ Application Gateway は、WebSocket および HTTP/2 プロトコルをネイテ
 
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
+## <a name="rewrite-http-headers-public-preview"></a>HTTP ヘッダーを書き換える (パブリック プレビュー)
+
+クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーを書き換えることにより、HSTS/ X-XSS-Protection などのセキュリティ関連のヘッダー フィールドを追加したり、バックエンド サーバー名などの機密情報を暴露する可能性がある応答ヘッダー フィールドを削除するなど、いくつかの重要なシナリオを達成できます。 
+
+Application Gateway では、受信 HTTP 要求と送信 HTTP 応答のヘッダーを書き換える機能をサポートするようになりました。 要求/応答パケットがクライアントおよびバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) に規定されている) 標準ヘッダー フィールドと非標準のヘッダー フィールドの両方を書き換えることができます。  
+
+このパブリック プレビュー機能の詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 要件と環境に応じて、Azure Portal、Azure PowerShell、または Azure CLI のいずれかを使用してテスト Application Gateway を作成できます。
 
-- [クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure Portal](quick-create-portal.md)。
-- [クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
-- [クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)。
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)

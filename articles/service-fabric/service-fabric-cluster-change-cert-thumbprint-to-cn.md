@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 378f4609efcc9e9f0652b9ec68f5374b1fe3626a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959650"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972806"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
+
+>[!NOTE]
+> テンプレートで 2 つの拇印が宣言されている場合は、デプロイを 2 回実行する必要があります。  1 回目のデプロイは、この記事の手順を行う前に実行します。  1 回目のデプロイでは、テンプレートの **thumbprint** プロパティが使用される証明書に設定されて、**thumbprintSecondary** プロパティが削除されます。  2 回目のデプロイで、この記事の手順が行われます。
  
 ## <a name="get-a-certificate"></a>証明書を取得する
 最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書共通名は、クラスターのホスト名にする必要があります。  たとえば、"myclustername.southcentralus.cloudapp.azure.com" とします。  

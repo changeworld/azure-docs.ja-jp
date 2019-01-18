@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 73a0766baee8da782f0192fbc17fb2898a8360ac
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.reviewer: unknown
+ms.openlocfilehash: 4ec617fe49a3b55ba0608b77a8d1226fae025e6c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41954859"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246451"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>テンプレート検証ツールを使用して Azure Stack のテンプレートをチェックする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 テンプレート検証ツールを使用して、Azure Stack に Azure Resource Manager [テンプレート](azure-stack-arm-templates.md) をデプロイする準備ができているかどうかをチェックできます。 テンプレート検証ツールは Azure Stack ツールの一部として使用できます。 Azure Stack ツールをダウンロードするには、[GitHub からのツールのダウンロード](azure-stack-powershell-download.md)に関する記事に記載されている手順を使用します。
 
@@ -32,25 +32,25 @@ ms.locfileid: "41954859"
 
 テンプレートを検証するには、最初にクラウド機能ファイルをビルドしてから検証ツールを実行します。 Azure Stack ツールから、次の PowerShell モジュールを使用します。
 
-- **CloudCapabilities** フォルダー内:<br>         AzureRM.CloudCapabilities.psm1 は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
+- **CloudCapabilities** フォルダー内:<br>         `AzureRM.CloudCapabilities.psm1` は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
 - **TemplateValidator** フォルダー内:<br>
-AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使用して、Azure Stack へのデプロイ用テンプレートをテストします。
+`AzureRM.TemplateValidator.psm1` は、クラウド機能 JSON ファイルを使用して、Azure Stack へのデプロイ用テンプレートをテストします。
 
 ## <a name="build-the-cloud-capabilities-file"></a>クラウド機能ファイルをビルドする
 
-テンプレート検証ツールを使用する前に、AzureRM.CloudCapabilities PowerShell モジュールを実行して JSON ファイルを構築します。
+テンプレート検証ツールを使用する前に、**AzureRM.CloudCapabilities** PowerShell モジュールを実行して JSON ファイルを構築します。
 
 >[!NOTE]
 >統合システムを更新する場合や、新しいサービスまたは仮想拡張機能を追加する場合は、このモジュールの再実行が必要になります。
 
 1. Azure Stack への接続があることを確認してください。 これらの手順は Azure Stack Development Kit ホストから実行するか、または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) を使用して、ワークステーションから接続できます。
-2. AzureRM.CloudCapabilities PowerShell モジュールをインポートします。
+2. **AzureRM.CloudCapabilities** PowerShell モジュールをインポートします。
 
     ```PowerShell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Get-CloudCapabilities コマンドレットを使用して、サービスのバージョンを取得し、クラウド機能 JSON ファイルを作成します。 **-OutputPath** を指定しない場合は、ファイル AzureCloudCapabilities.Json は現在のディレクトリに作成されます。 実際の場所を使用してください。
+3. `Get-CloudCapabilities` コマンドレットを使用して、サービスのバージョンを取得し、クラウド機能 JSON ファイルを作成します。 **-OutputPath** を指定しない場合は、ファイル AzureCloudCapabilities.Json は現在のディレクトリに作成されます。 実際の場所を使用してください。
 
     ```PowerShell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -58,9 +58,9 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 
 ## <a name="validate-templates"></a>テンプレートの検証
 
-次の手順を使用して、AzureRM.TemplateValidator PowerShell モジュールを使用してテンプレートを検証します。 独自のテンプレートを使用するか、または [Azure Stack クイックスタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)を検証することができます。
+次の手順を使用して、**AzureRM.TemplateValidator** PowerShell モジュールを使用してテンプレートを検証します。 独自のテンプレートを使用するか、または [Azure Stack クイックスタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)を検証することができます。
 
-1. AzureRM.TemplateValidator.psm1 PowerShell モジュールをインポートします。
+1. **AzureRM.TemplateValidator.psm1** PowerShell モジュールをインポートします。
 
     ```PowerShell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
@@ -100,8 +100,8 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
--TemplatePattern MyStandardTemplateName.json`
--IncludeComputeCapabilities`
+-TemplatePattern MyStandardTemplateName.json `
+-IncludeComputeCapabilities `
 -Report TemplateReport.html
 ```
 

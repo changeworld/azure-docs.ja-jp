@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: a9849b5c96b38fbfe6fa8ef4a69a1a2d4d6e6f2f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7ebb9d683803a6c5a5a0fa25308b348eeea586c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958076"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097898"
 ---
 # <a name="supported-metrics-with-azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor でサポートされるメトリック
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システム*
 
 グローバル Azure と同様に、Azure Stack 上の Azure Monitor からメトリックを取得できます。 ポータルでメジャーを作成したり、REST API からそれらを取得したり、PowerShell または CLI を使用してそれらを照会したりできます。
 
-次の表には、Azure Stack 上の Azure Monitor のメトリック パイプラインで利用できるメトリックの一覧を示しています。 これらのメトリックに対してクエリを実行してアクセスするには、**2018-01-01** api-version バージョンの API プロファイルが必要になります。 API プロファイルと Azure Stack の詳細については、「[Azure Stack での API バージョンのプロファイルの管理](azure-stack-version-profiles.md)」を参照してください。
+次の表には、Azure Stack 上の Azure Monitor のメトリック パイプラインで利用できるメトリックの一覧を示しています。 これらのメトリックに対してクエリを実行してアクセスするには、**2018-01-01** api-version バージョンの API プロファイルを使用することが必要になります。 API プロファイルと Azure Stack の詳細については、「[Azure Stack での API バージョンのプロファイルの管理](azure-stack-version-profiles.md)」を参照してください。
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 

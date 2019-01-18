@@ -8,16 +8,17 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: tulasim
-ms.openlocfilehash: cb171a666a4a54660a3bf54b8f26aed23f60d249
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: d51cbc7bd88fd9f4baf066210e7b7da8cd175cd6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036305"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603125"
 ---
-# <a name="best-practices"></a>ベスト プラクティス
+# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
 
 ## <a name="extraction"></a>抽出
@@ -66,8 +67,11 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 |駐車場は空いていますか?|駐車場はありますか?|文の構造|
  |やあ|よう<br>おい!|言葉遣いまたはスラング|
 
-### <a name="use-metadata-filters"></a>メタデータ フィルターを使用する
-[メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、フィルターに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
+<a name="#use-metadata-filters"></a>
+
+### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>メタデータ タグを使用して質問と回答をフィルター処理する
+
+[メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、メタデータ タグに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
 英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。

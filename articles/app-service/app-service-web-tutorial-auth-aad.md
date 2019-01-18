@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408856"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716414"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
-[Azure App Service](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、[ユーザーの認証と承認](app-service-authentication-overview.md)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、[ユーザーの認証と承認](overview-authentication-authorization.md)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
 チュートリアルでは、サンプル アプリを使用して、自己完結型アプリをセキュリティで保護する方法を示します (「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」を参照)。
 
@@ -105,7 +105,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-"_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure Portal へのログインに使用する資格情報ではなく、[デプロイ資格情報](app-service-deployment-credentials.md)を入力してください。
+"_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure Portal へのログインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -119,7 +119,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Azure Web アプリに移動する
+### <a name="browse-to-the-apps"></a>アプリの参照
 
 ブラウザーで次の URL に移動し、2 つのアプリが動作していることを確認します。
 
@@ -210,7 +210,7 @@ git push frontend master
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/remote-api-call-run.png)
 
-## <a name="configure-auth"></a>auth を構成する
+## <a name="configure-auth"></a>認証を構成する
 
 この手順では、2 つのアプリの認証と承認を有効にします。 また、フロントエンド アプリも構成して、バックエンド アプリへの認証済みの呼び出しを行うために使用できるアクセス トークンが生成されるようにします。
 
@@ -446,4 +446,4 @@ az group delete --name myAuthResourceGroup
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)

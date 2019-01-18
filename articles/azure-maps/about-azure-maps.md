@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165966"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104269"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -62,7 +62,7 @@ Search Service ではさらに、ルートに沿った検索、より広い範�
 
 ### <a name="time-zone-service"></a>Time Zone Service
 
-Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](http://www.iana.org/) を使って、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 また、Time Zone Service では、Microsoft Windows タイム ゾーン ID を IANA タイム ゾーンに変換したり、UTC に対するタイム ゾーン オフセットを取得したり、それぞれのタイム ゾーンで現在の時刻を取得したりすることもできます。 Time Zone Service に対するクエリの一般的な JSON 応答は、次の例のようになります。
+Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](https://www.iana.org/) を使って、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 また、Time Zone Service では、Microsoft Windows タイム ゾーン ID を IANA タイム ゾーンに変換したり、UTC に対するタイム ゾーン オフセットを取得したり、それぞれのタイム ゾーンで現在の時刻を取得したりすることもできます。 Time Zone Service に対するクエリの一般的な JSON 応答は、次の例のようになります。
 
 ```JSON
 {
@@ -109,7 +109,7 @@ IP to Location サービスの REST API については、[Azure Maps Geolocatio
 
 ## <a name="usage"></a>使用法
 
-[Azure portal](http://portal.azure.com) に移動して Azure Maps アカウントを作成すると、Maps サービスにアクセスできます。
+[Azure portal](https://portal.azure.com) に移動して Azure Maps アカウントを作成すると、Maps サービスにアクセスできます。
 
 Azure Maps では、キーベースの認証スキームが使用されます。 アカウントでは 2 つのキーがあらかじめ自動的に生成されます。 アプリケーションへのこれらの場所機能の統合を始めるには、どちらかのキーを使用して Azure Maps サービスへの要求を行います。
 

@@ -1,27 +1,26 @@
 ---
 title: Azure を対象とした MongoDB、React、Node.js のチュートリアル
 description: このチュートリアル シリーズでは、React と Node.js で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成する方法について、動画を交えながら説明しています。
-services: cosmos-db
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.reviewer: sngun
+ms.openlocfilehash: 2033c309a63c7135ba845aebbfc4e353380429f6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867037"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043279"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
-このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[MongoDB API](mongodb-introduction.md) で Azure Cosmos DB に接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 また、Azure Portal からポイントアンドクリック方式で Azure Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
+このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) で構成された Cosmos データベースに接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 このチュートリアルでは、Azure portal からポイントアンドクリック方式で Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、MongoDB クライアント接続をサポートしています。そのため MongoDB を Azure Cosmos DB に置き換えても、MongoDB アプリに使われるコードはそのまま利用できるうえ、クラウドへの簡単なデプロイ、スケーリング、超高速の読み取りと書き込みなど、さまざまな利点がもたらされます。  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は MongoDB とのワイヤ プロトコル互換性をサポートしているので、クライアントは MongoDB の代わりに Azure Cosmos DB を使用できます。  
 
 このマルチパート チュートリアルに含まれるタスクは次のとおりです。
 

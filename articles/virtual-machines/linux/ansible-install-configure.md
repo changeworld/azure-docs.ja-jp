@@ -3,17 +3,17 @@ title: Azure 仮想マシンへの Ansible のインストール
 description: Ubuntu、CentOS、SLES で Azure リソースを管理するため、Ansible をインストールし構成する方法を説明します
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: b714470cd12bb7a0cd2d2a00b4f09467726f505d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 227f3baf67bd65a8c6eeb170ce219a3ddf79606a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987052"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078050"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Azure 仮想マシンへの Ansible のインストール
 
@@ -25,7 +25,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 - **Linux または Linux 仮想マシンへのアクセス** - Linux マシンを所有していない場合は、[Linux 仮想マシン](https://docs.microsoft.com/azure/virtual-network/quick-create-cli)を作成してください。
 
-- **Azure サービス プリンシパル**: 「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 **appId**、**displayName**、**password**、および **tenant** の値を書き留めます。
+- **Azure サービス プリンシパル**:「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 **appId**、**displayName**、**password**、および **tenant** の値を書き留めます。
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Azure の Linux 仮想マシンへの Ansible のインストール
 

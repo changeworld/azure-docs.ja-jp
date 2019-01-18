@@ -1,23 +1,21 @@
 ---
-title: Azure Cosmos DB は:.NET と MongoDB API による Web アプリの構築
-description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる .NET コード サンプルについて説明します。
-services: cosmos-db
-author: slyons
+title: Azure Cosmos DB の MongoDB 用 API と .NET SDK を使用して Web アプリを構築する
+description: 記載されている .NET のコード サンプルを使用すると、Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができます。
+author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/22/2018
-ms.author: sclyon
-ms.openlocfilehash: 170f3132084da07ccf98a0dfed651bbfd7220615
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: c68d95f7eddfa98713f1af0786f82c1d633fbfff
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081032"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044486"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB は:.NET と Azure portal による MongoDB API Web アプリの構築
+# <a name="build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-net-sdk"></a>Azure Cosmos DB の MongoDB 用 API と .NET SDK を使用して Web アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,9 +26,9 @@ ms.locfileid: "53081032"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
-このクイックスタートでは、Azure Portal を使用して、Azure Cosmos DB [MongoDB API](mongodb-introduction.md) アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)に基づいたタスク リスト Web アプリを構築し、デプロイします。
+このクイック スタートでは、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用して Cosmos アカウントを作成する方法を示します。 次に、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用してタスク リスト Web アプリを構築し、デプロイします。
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>サンプル アプリを実行するための前提条件
 
@@ -49,7 +47,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
-まず、サンプル MongoDB API アプリを GitHub からダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使ったタスク リストが実装されています。
+最初に、GitHub からサンプル アプリをダウンロードします。 
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -77,7 +75,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 次のスニペットはすべて DAL ディレクトリ内の Dal.cs ファイルからのものです。
 
-* Mongo クライアントを初期化します。
+* クライアントを初期化します。
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();
@@ -110,7 +108,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     collection.Find(new BsonDocument()).ToList();
     ```
 
-* タスクを作成して、MongoDB コレクションに挿入します。
+タスクを作成して、コレクションに挿入します。
 
    ```csharp
     public void CreateTask(MyTask task)
@@ -132,7 +130,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを使用して、左側のナビゲーションにある **[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. **DAL** ディレクトリ内の **Dal.cs** ファイルを開きます。 
 
@@ -142,7 +140,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 5. 最後に、ポータルの **password** 値をコピーし、**Dal.cs** ファイル内の **password** の値に設定します。 
 
-これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+これで、Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
@@ -166,8 +164,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB の API を使用して Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB API 用に Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
-
+> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

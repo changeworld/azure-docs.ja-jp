@@ -8,16 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: d741677252ba6787701b9ee9da84ebd38528d70e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06909c06087219cdfa6edccbfed70ea1694e5a03
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432156"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633729"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
 
 リモート監視ソリューション アクセラレータを使用すると、独自のシミュレーションされたデバイスを定義できます。 この記事では、新しいシミュレートされた lightbulb デバイスを定義し、それをローカルでテストする方法を説明します。 ソリューション アクセラレータには、chiller や truck などのシミュレートされたデバイスがあります。 ただし、実際のデバイスを展開する前に、独自のシミュレートされたデバイスを定義して IoT ソリューションをテストすることができます。
+
+> [!NOTE]
+> この記事では、デバイス シミュレーション サービスでホストされているシミュレートされたデバイスを使用する方法について説明します。 物理デバイスを作成する場合は、「[デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices.md)」を参照してください。
 
 このハウツー ガイドでは、デバイス シミュレーション マイクロサービスをカスタマイズする方法について説明します。 このマイクロサービスは、リモート監視ソリューション アクセラレータの一部です。 デバイス シミュレーション機能を説明するために、このハウツー ガイドでは、Contoso IoT アプリケーションの 2 つのシナリオを使用しています。
 

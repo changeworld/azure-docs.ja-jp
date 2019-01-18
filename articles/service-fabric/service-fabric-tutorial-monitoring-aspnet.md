@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444786"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720733"
 ---
-# <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル: Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
+# <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
 このチュートリアルは、シリーズの第 5 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。
 
@@ -191,11 +191,11 @@ Azure Portal で、Application Insights リソースのページに移動しま�
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリ マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../application-insights/app-insights-app-map.md)」をご覧ください。
+アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリケーション マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../azure-monitor/app/app-map.md)」をご覧ください。
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>カスタム インストルメンテーションをアプリケーションに追加する
 
-Application Insights では多くのテレメトリをすぐに利用できますが、さらにカスタム インストルメンテーションを追加することもできます。 これは、ビジネス ニーズに基づいて行うことも、またはアプリケーションでの問題発生時に診断を改善するために行うこともできます。 Application Insights にはカスタム イベントとメトリックを取り込める API があります。詳細については[こちら](../application-insights/app-insights-api-custom-events-metrics.md)をご覧ください。
+Application Insights では多くのテレメトリをすぐに利用できますが、さらにカスタム インストルメンテーションを追加することもできます。 これは、ビジネス ニーズに基づいて行うことも、またはアプリケーションでの問題発生時に診断を改善するために行うこともできます。 Application Insights にはカスタム イベントとメトリックを取り込める API があります。詳細については[こちら](../azure-monitor/app/api-custom-events-metrics.md)をご覧ください。
 
 *VoteDataController.cs* (*VotingData*  >  *Controllers* の下) にカスタム イベントを追加して、基礎となる *votesDictionary* に対していつ投票が追加され、削除されるかを追跡します。
 

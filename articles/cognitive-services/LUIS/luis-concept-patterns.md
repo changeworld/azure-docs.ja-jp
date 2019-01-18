@@ -1,21 +1,22 @@
 ---
-title: パターンがどのように予測精度を改善するかを学習する
-titleSuffix: Azure Cognitive Services
-description: パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。 パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
+title: パターンは予測に役立つ
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 46c9eb99d808874e0f49dee5fa4865a4867873f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300372"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271523"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
@@ -43,6 +44,8 @@ ms.locfileid: "51300372"
 ## <a name="patterns-do-not-improve-entity-detection"></a>パターンはエンティティの検出を改善しない
 パターンにはエンティティが必要ですが、パターンはエンティティの検出を支援しません。 パターンは意図とロールの予測を支援するためだけに用意されています。  
 
+複数の発話を 1 つのパターンにまとめた場合は、エンティティ予測の向上を期待しないでください。 単純エンティティを動作させるには、発話を追加するか、リスト エンティティを使用する必要があります。そうでないと、パターンは動作しません。
+
 ## <a name="patterns-use-entity-roles"></a>パターンはエンティティのロールを使用する
 パターン内の 2 つ以上のエンティティがコンテキスト上関連性がある場合、パターンはエンティティの[ロール](luis-concept-roles.md)を使用して、エンティティに関するコンテキスト情報を抽出します。 これは階層におけるエンティティの子要素と同等ですが、パターンで**のみ**有効です。 
 
@@ -50,7 +53,7 @@ ms.locfileid: "51300372"
 発話例が十分に指定されている場合、LUIS はパターンなしで予測の信頼度を改善できます。 パターンがあれば、それほど多くの発話を指定しなくても信頼度スコアを改善できます。  
 
 ## <a name="pattern-matching"></a>パターン マッチング
-パターンは、まずパターン内のエンティティの検出に基づいて、次に残りのワードとパターンの語順を検証することでマッチングを行います。 パターンが一致するには、パターン内にエンティティが必要です。 
+パターンは、まずパターン内のエンティティの検出に基づいて、次に残りのワードとパターンの語順を検証することでマッチングを行います。 パターンが一致するには、パターン内にエンティティが必要です。 パターンは、文字レベルではなく、トークン レベルで適用されます。 
 
 ## <a name="pattern-syntax"></a>パターンの構文
 パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや句読点が含まれている必要があります。 正規表現では**ありません**。 

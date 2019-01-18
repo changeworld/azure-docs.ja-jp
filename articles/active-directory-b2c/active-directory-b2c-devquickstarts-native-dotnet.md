@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441901"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606184"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windows デスクトップ アプリを作成する
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C:Windows デスクトップ アプリを構築する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
-次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。  次を行ってください。
+次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
 * アプリケーションに **ネイティブ クライアント** を含めます。
 * **[リダイレクト URI]** `urn:ietf:wg:oauth:2.0:oob` をコピーします。 これはこのサンプル コードで使用する既定の URL です。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * ID プロバイダーのブレードで、**[User ID sign-up (ユーザー ID サインアップ)]** または **[Email sign-up (電子メール サインアップ)]** を選択します。
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** 要求と **[オブジェクト ID]** 要求を選択します。 その他のクレームも選択できます。
-* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  これらのポリシー名は後で必要になります。
+* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。 これらのポリシー名は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -51,7 +51,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
-サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。 `TaskClient` プロジェクトは、ユーザーと対話する WPF デスクトップ アプリケーションです。 このチュートリアルでは、Azure でホストされ、各ユーザーの To-Do List を格納しているバックエンド タスク Web API を、TaskClient プロジェクトで呼び出します。  この Web API については既に実行中のものを用意しているため、作成する必要はありません。
+サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。 `TaskClient` プロジェクトは、ユーザーと対話する WPF デスクトップ アプリケーションです。 このチュートリアルでは、Azure でホストされ、各ユーザーの To-Do List を格納しているバックエンド タスク Web API を、TaskClient プロジェクトで呼び出します。 この Web API については既に実行中のものを用意しているため、作成する必要はありません。
 
 Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、 [Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
 
@@ -96,7 +96,7 @@ protected async override void OnInitialized(EventArgs e)
 
     pca = new PublicClientApplication(Globals.clientId)
     {
-        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
+        // MSAL implements an in-memory cache by default. Since we want tokens to persist when the user closes the app,
         // we've extended the MSAL TokenCache and created a simple FileCache in this app.
         UserTokenCache = new FileCache(),
     };
@@ -115,7 +115,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
     {
         // Use the app's clientId here as the scope parameter, indicating that
         // you want a token to the your app's backend web API (represented by
-        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
+        // the cloud hosted task API). Use the UiOptions.ForceLogin flag to
         // indicate to MSAL that it should show a sign-up UI no matter what.
         result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                 string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
@@ -187,7 +187,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 いずれの場合も、MSAL は `AuthenticationResult` でトークンを返すか、または例外をスローします。 MSAL からトークンを取得するたびに、 `AuthenticationResult.User` オブジェクトを使用して、アプリ内のユーザー データ (UI など) を更新できます。 ADAL は、アプリケーションの他の部分で使用するために、トークンのキャッシュも行います。
 
 ### <a name="check-for-tokens-on-app-start"></a>アプリの起動時にトークンを確認する
-MSAL は、ユーザーのサインイン状態の追跡にも使用することができます。  このアプリでは、ユーザーがアプリを閉じて再度開いたときにも、ユーザーのサインイン状態をそのまま維持する必要があります。  `OnInitialized` オーバーライド内に戻り、キャッシュされたトークンを確認するために MSAL の `AcquireTokenSilent` メソッドを使用します。
+MSAL は、ユーザーのサインイン状態の追跡にも使用することができます。 このアプリでは、ユーザーがアプリを閉じて再度開いたときにも、ユーザーのサインイン状態をそのまま維持する必要があります。 `OnInitialized` オーバーライド内に戻り、キャッシュされたトークンを確認するために MSAL の `AcquireTokenSilent` メソッドを使用します。
 
 ```csharp
 AuthenticationResult result = null;
@@ -209,7 +209,7 @@ catch (MsalException ex)
 {
     if (ex.ErrorCode == "failed_to_acquire_token_silently")
     {
-        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+        // There are no tokens in the cache. Proceed without calling the To Do list service.
     }
     else
     {
@@ -226,7 +226,7 @@ catch (MsalException ex)
 ```
 
 ## <a name="call-the-task-api"></a>タスク API を呼び出す
-ここまでは、ポリシーを実行してトークンを取得するために MSAL を使用しました。  取得したトークンのいずれかを使用してタスク API を呼び出す場合は、ここでも MSAL の `AcquireTokenSilent` メソッドを使用して、キャッシュされたトークンを確認します。
+ここまでは、ポリシーを実行してトークンを取得するために MSAL を使用しました。 取得したトークンのいずれかを使用してタスク API を呼び出す場合は、ここでも MSAL の `AcquireTokenSilent` メソッドを使用して、キャッシュされたトークンを確認します。
 
 ```csharp
 private async void GetTodoList()
@@ -306,7 +306,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
-最後に、サンプルをビルドして実行します。  電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。 サインアウトし、同じユーザーとしてもう一度サインインします。 そのユーザーのプロファイルを編集します。 サインアウトし、別のユーザーとしてサインアップします。
+最後に、サンプルをビルドして実行します。 電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。 サインアウトし、同じユーザーとしてもう一度サインインします。 そのユーザーのプロファイルを編集します。 サインアウトし、別のユーザーとしてサインアップします。
 
 ## <a name="add-social-idps"></a>ソーシャル IDP を追加する
 現時点では、このアプリは **ローカル アカウント**を使用したユーザーのサインアップとサインインのみをサポートしています。 これらは、ユーザー名とパスワードを使用する B2C ディレクトリに格納されているアカウントです。 Azure AD B2C を使用すると、コードを変更せずに、その他の ID プロバイダー (IDP) のサポートを追加することができます。

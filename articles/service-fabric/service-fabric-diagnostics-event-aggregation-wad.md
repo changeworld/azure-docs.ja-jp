@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232496"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002401"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Azure Storage にイベントを集計するため、Log Analytics ポータル�
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Azure Resource Manager を使用して診断拡張機能をデプロイする
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>診断拡張機能付きのクラスターを作成する
-Resource Manager を使用してクラスターを作成するには、クラスターを作成する前に、診断構成 JSON を完全なクラスターの Resource Manager テンプレートに追加する必要があります。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
+Resource Manager を使用してクラスターを作成するには、診断構成 JSON を完全なクラスターの Resource Manager テンプレートに追加する必要があります。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーにあります。[診断 Resource Manager テンプレートを使用した 5 ノード クラスターのサンプル](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)を参照してください。
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 

@@ -1,5 +1,5 @@
 ---
-title: Linux 上の Postgres を使用して Ruby Web アプリを構築する - Azure App Service | Microsoft Docs
+title: Linux 上の Postgres を使用して Ruby アプリを構築する - Azure App Service | Microsoft Docs
 description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。
 services: app-service\web
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e42d9592d74e845410441097fa6082cfb3f4ac5e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271030"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713881"
 ---
-# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres の Web アプリを構築する
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby Web アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
 
 ![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -162,7 +162,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 ```
 
 > [!TIP] 
-> [アプリで使用する送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
+> [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
 ### <a name="connect-to-production-postgres-server-locally"></a>運用 Postgres サーバーにローカル接続する
@@ -282,7 +282,7 @@ git commit -m "database.yml updates"
 
 アプリをデプロイする準備ができました。
 
-## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 このステップでは、Postgres に接続された Rails アプリケーションを Azure App Service にデプロイします。
 
@@ -357,7 +357,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
 
 `http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -470,21 +470,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-`git push` が完了したら、Azure Web アプリに移動し、新機能を試します。
+`git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
 ![Azure に発行されたモデルとデータベースの変更](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
-## <a name="manage-the-azure-web-app"></a>Azure Web アプリを管理する
+## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-[Azure Portal](https://portal.azure.com) に移動し、作成した Web アプリを管理します。
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
 左側のメニューは、アプリを構成するためのページを示しています。
 
@@ -506,7 +506,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)

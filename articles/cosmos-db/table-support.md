@@ -1,21 +1,19 @@
 ---
-title: Azure Cosmos DB における Azure Table Storage サポート | Microsoft Docs
+title: Azure Cosmos DB における Azure Table Storage サポート
 description: Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します。
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.devlang: na
+ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 114286b45df5f47e81bd2b990c8b50c8b7b7a482
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: b105cf6c220534927a16be83ca5db8801c88f6c0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185368"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035595"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 
@@ -31,7 +29,7 @@ Azure Cosmos DB Table API と Azure Table Storage は同じテーブル デー�
 - [Java SDK](table-sdk-java.md)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 - [Node.js SDK](table-sdk-nodejs.md)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 
-Table API の使用に関するその他の情報は、[FAQ: Table API を使用した開発](faq.md#table)の記事で入手できます。
+Table API の使用に関するその他の情報は、[Table API を使用した開発に関する FAQ](faq.md#table) の記事で入手できます。
 
 ## <a name="developing-with-azure-table-storage"></a>Azure Table Storage を使用した開発
 

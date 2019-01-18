@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を取得する (Node.js) - Translator Text API'
+title: クイック スタート:2 か国語辞書で単語を検索する、Node.js - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035630"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160014"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>クイック スタート: Translator Text API と Node.js を使用して翻訳の代替候補を取得する
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>クイック スタート:Node.js を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、Node.js と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 要求モジュールに用意されている `request()` メソッドには、HTTP メソッド、URL、要求パラメーター、ヘッダー、JSON 本文を `options` オブジェクトとして渡すことができます。 このコード スニペットで、実際の要求を構成してみましょう。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: 辞書検索](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」をご覧ください。
 
 ```javascript
 let options = {

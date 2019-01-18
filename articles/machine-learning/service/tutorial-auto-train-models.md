@@ -1,7 +1,7 @@
 ---
-title: '回帰モデルのチュートリアル: モデルを自動的にトレーニングする'
+title: '回帰モデルのチュートリアル: 自動化された ML'
 titleSuffix: Azure Machine Learning service
-description: 自動化された機械学習を使用して ML モデルを生成する方法を学習します。  Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、最終的なモデルを Azure Machine Learning サービスで配置できます。
+description: 自動化された機械学習を使用して機械学習モデルを生成する方法について説明します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、最終的なモデルが Azure Machine Learning service によってデプロイされます。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,44 +11,44 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6bbc2d44ab128aec032ead29bf247cd834f932b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315205"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580520"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル: 自動化された機械学習を使用して回帰モデルを構築する
+# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前回のチュートリアルでは、[回帰モデル用の NYC タクシー データを準備](tutorial-data-prep.md)しました。
 
-Azure Machine Learning サービスを使ってモデルの構築を開始する準備は整っています。 今回のチュートリアルでは、準備したデータを使って、タクシー運賃の価格を予測する回帰モデルを自動生成します。 サービスの自動 ML 機能を使って、機械学習の目標と制約を定義し、自動化された機械学習プロセスを起動して、アルゴリズムの選択とハイパーパラメーターの調整が行えるようにします。 自動 ML テクニックでは、アルゴリズムとハイパーパラメーターの多数の組み合わせをイテレーションして、条件上最適なモデルを探します。
+Azure Machine Learning service を使用してお客様のモデルの構築を開始する準備は整っています。 チュートリアルのこのパートでは、準備したデータを使用して、タクシー運賃の価格を予測する回帰モデルを自動的に生成します。 本サービスの自動化された機械学習機能を使用して、お客様の機械学習の目的と制約を定義します。 自動化された機械学習プロセスを開始します。 次に、アルゴリズムの選択とハイパーパラメーターの調整がお客様のために行われるようにします。 自動化された機械学習の手法では、アルゴリズムとハイパーパラメーターの組み合わせを多数イテレーションして、お客様の条件に基づき最高のモデルを見つけます。
 
 ![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、以下のタスクについて学習します。
 
 > [!div class="checklist"]
-> * Python 環境を設定して SDK パッケージをインポートする
-> * Azure Machine Learning サービス ワークスペースを構成する
-> * 回帰モデルを自動トレーニングする
-> * カスタム パラメーターを使ってローカルでモデルを実行する
-> * 結果を検索する
-> * 最高のモデルを登録する
+> * Python 環境を設定して SDK パッケージをインポートする。
+> * Azure Machine Learning service ワークスペースを構成する。
+> * 回帰モデルを自動トレーニングする。
+> * カスタム パラメーターを使用してモデルをローカルで実行する。
+> * 結果を調べる。
+> * 最高のモデルを登録する。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.0 を使用してテストされました
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.0 を使用してテストされました。
 
 ## <a name="prerequisites"></a>前提条件
 
 > * [データ準備のチュートリアルを実行する](tutorial-data-prep.md)。
-> * Azure Notebooks、ローカルの Python 環境、または Data Science Virtual Machine など、自動化された機械学習が構成されている環境。 自動化された機械学習を[設定する](samples-notebooks.md)。
+> * 自動化された機械学習が構成されている環境。 たとえば、Azure Notebooks やローカルの Python 環境、データ サイエンス仮想マシンです。 [自動化された機械学習を設定します](samples-notebooks.md)。
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb)として提供されています。 `regression-part2-automated-ml.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb)として提供されています。 Azure Notebooks 内または自分の Jupyter Notebook サーバー内で、`regression-part2-automated-ml.ipynb` ノートブックを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -68,9 +68,11 @@ import os
 
 ## <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、Azure サブスクリプションとリソース情報を受け取るクラスであり、モデル実行を監視して追跡するためのクラウド リソースを作成するクラスです。 `Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 
 
-ワークスペース オブジェクトを作成したら、実験用に名前を指定し、ワークスペースを使用してローカル ディレクトリを作成および登録します。 すべての実行履歴が、指定された実験と [Azure portal](https://portal.azure.com) に記録されます。
+`Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
+
+ワークスペース オブジェクトを用意したら、実験の名前を指定します。 ワークスペースが含まれるローカル ディレクトリを作成して登録します。 すべての実行履歴が、指定された実験と [Azure portal](https://portal.azure.com) に記録されます。
 
 
 ```python
@@ -93,7 +95,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>データを調査する
 
-前のチュートリアルで作成したデータ フロー オブジェクトを使用します。 データ フローを開いて実行し、結果を確認します。
+前のチュートリアルで作成されたデータ フロー オブジェクトを使用します。 データ フローを開いて実行し、結果を確認します。
 
 
 ```python
@@ -117,17 +119,17 @@ dflow_prepared.get_profile()
       <th>Missing Count</th>
       <th>Not Missing Count</th>
       <th>Percent missing</th>
-      <th>Error Count</th>
+      <th>Error count</th>
       <th>Empty count</th>
-      <th>0.1% Quantile</th>
-      <th>1% Quantile</th>
-      <th>5% Quantile</th>
-      <th>25% Quantile</th>
-      <th>50% Quantile</th>
-      <th>75% Quantile</th>
-      <th>95% Quantile</th>
-      <th>99% Quantile</th>
-      <th>99.9% Quantile</th>
+      <th>0.1% quantile</th>
+      <th>1% quantile</th>
+      <th>5% quantile</th>
+      <th>25% quantile</th>
+      <th>50% quantile</th>
+      <th>75% quantile</th>
+      <th>95% quantile</th>
+      <th>99% quantile</th>
+      <th>99.9% quantile</th>
       <th>平均</th>
       <th>標準偏差</th>
       <th>variance</th>
@@ -581,16 +583,16 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-モデル作成の機能となるように `dflow_x` に列を追加して、実験用のデータを準備します。 予測値 cost になるように、`dflow_y` を定義します。
+モデル作成の機能となるように `dflow_x` に列を追加して、実験用のデータを準備します。 予測値 **cost** になるように、`dflow_y` を定義します。
 
 ```python
 dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
-### <a name="split-data-into-train-and-test-sets"></a>データをトレーニング セットとテスト セットに分割する
+### <a name="split-the-data-into-train-and-test-sets"></a>データをトレーニング セットとテスト セットに分割する
 
-次に、`sklearn` ライブラリの `train_test_split` 関数を使用して、トレーニング セットとテスト セットにデータを分割します。 この関数は、モデル トレーニング用の x (機能) データ セットとテスト用の y (予測する値) データ セットに、データを分割します。 `test_size` パラメーターでは、テストに割り当てるデータの割合を決定します。 `random_state` パラメーターでは、トレーニングとテストの分割が常に決定論的になるように、ランダム ジェネレーターにシードを設定します。
+次に、`sklearn` ライブラリの `train_test_split` 関数を使用して、トレーニング セットとテスト セットにデータを分割します。 この関数は、モデル トレーニング用の x (**機能**) データ セットとテスト用の y (**予測する値**) データ セットに、データを分割します。 `test_size` パラメーターでは、テストに割り当てるデータの割合を決定します。 `random_state` パラメーターでは、お客様のトレーニングとテストの分割が常に決定論的になるように、ランダム ジェネレーターにシードを設定します。
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -603,13 +605,13 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-これでご自分のモデルを自動的にトレーニングするのに必要なパッケージとデータが揃いました。
+これで、お客様のモデルを自動的にトレーニングするために必要なパッケージとデータが揃いました。
 
 ## <a name="automatically-train-a-model"></a>自動的にモデルをトレーニングする
 
-自動的にモデルをトレーニングするには、次の手順を実行します。
-1. 実験の実行用の設定を定義する
-1. モデル調整用の実験を送信する
+モデルを自動的にトレーニングするには、次の手順を実行します。
+1. 実験の実行用の設定を定義する。
+1. モデル調整用の実験を送信する。
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>自動生成と調整用の設定を定義する
 
@@ -618,12 +620,12 @@ y_train.values.flatten()
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
-|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限|
-|**iterations**|30|イテレーションの回数。 各イテレーションでは、特定のパイプラインを使用してモデルがデータをトレーニングします。|
+|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限。|
+|**iterations**|30|イテレーションの回数。 各イテレーションでは、特定のパイプラインを使用してモデルによってデータがトレーニングされます。|
 |**primary_metric**| spearman_correlation | 最適化したいメトリック。|
-|**preprocess**| True | True を指定すると、実験は入力に対して前処理を実行できます。|
+|**preprocess**| True | **True** を使用して、実験で入力を前処理できます。|
 |**verbosity**| logging.INFO | ログ記録のレベルを制御します。|
-|**n_cross_validationss**|5|クロス検証の分割の数
+|**n_cross_validationss**|5|クロス検証の分割の数。|
 
 
 
@@ -653,7 +655,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ### <a name="train-the-automatic-regression-model"></a>自動回帰モデルをトレーニングする
 
-ローカルで実験の実行を開始します。 定義済みの `automated_ml_config` オブジェクトを実験に渡し、出力を `True` に設定して実験中の進行状況を表示します。
+ローカルで実験の実行を開始します。 定義済みの `automated_ml_config` オブジェクトを実験に渡します。 出力を `True` に設定して実験中の進行状況を表示します。
 
 
 ```python
@@ -709,7 +711,7 @@ Jupyter ウィジェットを使用するか、実験の履歴を検証して、
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>方法 1: Jupyter ウィジェットを追加して結果を表示する
 
-Jupyter Notebook を使用している場合、この Jupyter Notebook ウィジェットを使ってすべての結果のグラフおよびテーブルを参照します。
+Jupyter Notebook を使用する場合は、この Jupyter Notebook ウィジェットを使ってすべての結果のグラフおよびテーブルを参照します。
 
 
 ```python
@@ -720,9 +722,9 @@ RunDetails(local_run).show()
 ![Jupyter ウィジェット実行の詳細](./media/tutorial-auto-train-models/automl-dash-output.png)
 ![Jupyter ウィジェットのプロット](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>方法 2: Python ですべての実行イテレーションを取得して調査する
+### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>オプション 2:Python ですべての実行イテレーションを取得して調査する
 
-別の方法として、各実験の履歴を取得して、各イテレーション実行の個々のメトリックを探索できます。
+各実験の履歴を取得して、各イテレーション実行の個々のメトリックを調べることもできます。
 
 ```python
 children = list(local_run.get_children())
@@ -1071,7 +1073,7 @@ rundata
 
 ## <a name="retrieve-the-best-model"></a>最高のモデルを取得する
 
-イテレーションから最適なパイプラインを選択します。 `automl_classifier` 上の `get_output` メソッドは、最適な実行と、最後の fit の呼び出しで適合したモデルを返します。 `get_output` 上にはオーバーロードがあり、これによって、ログ記録された任意のメトリックや特定のイテレーションに対する最適な実行と適合モデルを取得できます。
+イテレーションから最適なパイプラインを選択します。 `automl_classifier` 上の `get_output` メソッドは、最適な実行と、最後の fit の呼び出しで適合したモデルを返します。 `get_output` 上のオーバーロードを使用して、ログ記録された任意のメトリックや特定のイテレーションに対する最適な実行と適合モデルを取得できます。
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1081,7 +1083,7 @@ print(fitted_model)
 
 ## <a name="register-the-model"></a>モデルを登録する
 
-お使いの Azure Machine Learning サービス ワークスペースにモデルを登録します。
+お客様の Azure Machine Learning service ワークスペースにモデルを登録します。
 
 
 ```python
@@ -1093,14 +1095,14 @@ local_run.model_id # Use this id to deploy the model as a web service in Azure
 
 ## <a name="test-the-best-model-accuracy"></a>最高のモデルの正確性をテストする
 
-最高のモデルを使用して、テスト データ セット上で予測を実行します。 関数 `predict` は最高のモデルを使用して、`x_test` データ セットから y (交通費) の値を予測します。 `y_predict` から最初の 10 個の予測コスト値をプリントします。
+最高のモデルを使用して、テスト データ セット上で予測を実行します。 関数 `predict` によって最高のモデルが使用され、`x_test` データセットから y (**交通費**) の値が予測されます。 `y_predict` から最初の 10 個の予測コスト値を出力します。
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-散布図を作成して、実績コスト値と比較した予測コスト値を視覚化します。 以下のコードは、特徴 (`distance`) を X 軸に、交通費 (`cost`) を Y 軸として使用しています。 個々の乗車距離値における予測コストの差異を比較するために、最初の 100 個の予測コスト値と実績コスト値を別個の系列として作成します。 このプロットを観察すると、距離とコストの関係がほぼ線形であり、同じ乗車距離であれば、ほとんどの場合、予測コスト値が実績コスト値にきわめて近いことがわかります。
+散布図を作成して、実績コスト値と比較した予測コスト値を視覚化します。 次のコードでは、特徴 (`distance`) が X 軸、交通費 (`cost`) が Y 軸として使用されています。 個々の乗車距離値における予測コストの差異を比較するために、最初の 100 個の予測コスト値と実績コスト値は別個の系列として作成されます。 プロットを観察すると、距離とコストの関係がほぼ線形であることがわかります。 同じ乗車距離であれば、ほとんどの場合、予測コスト値が実績コスト値に非常に近くなります。
 
 ```python
 import matplotlib.pyplot as plt
@@ -1125,7 +1127,7 @@ plt.show()
 
 ![予測散布図](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-結果の `root mean squared error` を計算します。 `y_test` データフレームを使用して、予測値と比較するためにリストに変換します。 関数 `mean_squared_error` は 2 つの配列の値を取得して、その 2 つの値間の平均二乗誤差を計算します。 結果の平方根を取ることで、y 変数 (コスト) と同じ単位で誤差が得られ、予測と実績値との間にどの程度の開きがあるかを大まかに把握できます。
+結果の `root mean squared error` を計算します。 `y_test` データフレームを使用します。 予測値と比較するために、これをリストに変換します。 関数 `mean_squared_error` によって 2 つの配列の値が受け取られ、それらの間の平均二乗誤差が計算されます。 結果の平方根を取ると、y 変数 (**コスト**) と同じ単位で誤差が得られます。 これは、お客様の予測が実績値とどの程度離れているかを大まかに示します。
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1137,7 +1139,7 @@ rmse
 
     3.2204936862688798
 
-次のコードを実行し、完全な `y_actual` と `y_predict` データ セットを使用して MAPE (平均絶対誤差率) を計算します。 このメトリックは、予測される各値と実際の値の間の絶対誤差を計算し、すべての差分を合計して、その合計を実際の値の合計に対する割合として表します。
+次のコードを実行し、完全な `y_actual` と `y_predict` データセットを使用して平均絶対誤差率 (MAPE) を計算します。 このメトリックでは、予測される各値と実際の値の間の絶対誤差が計算され、すべての差分が合計されます。 そしてその合計が、実際の値の合計に対する割合として表されます。
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1170,12 +1172,12 @@ print(1 - mean_abs_percent_error)
 
 ## <a name="next-steps"></a>次の手順
 
-自動化された機械学習に関するこのチュートリアルでは、次のことを学習しました。
+自動化された機械学習に関するこのチュートリアルでは、以下のタスクを学習しました。
 
 > [!div class="checklist"]
-> * 実験用のワークスペースと準備されたデータを構成しました
-> * カスタム パラメーターを使って、自動化された回帰モデルをローカルで使用してトレーニングしました
-> * トレーニング結果を探索して確認しました
-> * 最高のモデルを登録しました
+> * 実験用のワークスペースと準備されたデータを構成しました。
+> * カスタム パラメーターを使って、自動化された回帰モデルをローカルで使用してトレーニングしました。
+> * トレーニング結果を調べて確認しました。
+> * 最高のモデルを登録しました。
 
 Azure Machine Learning を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。

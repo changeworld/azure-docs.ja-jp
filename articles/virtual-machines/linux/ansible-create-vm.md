@@ -3,17 +3,17 @@ title: Ansible を使用して Azure に Linux 仮想マシンを作成する
 description: Ansible を使用して Azure に Linux 仮想マシンを作成する方法について説明します。
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, 仮想マシン
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: 99822fc1d99d914327a64cfb9fe8e18189f30a4f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f7f4809e064de15bb0a18c404f0df81307b1b9a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251240"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073987"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure に Linux 仮想マシンを作成する
 Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事の各セクションでは、Linux 仮想マシンのさまざまな要素を作成、構成する Ansible プレイブックの各セクションに注目します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。

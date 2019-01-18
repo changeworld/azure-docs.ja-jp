@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: c11bd2cc5f660ec72aa35ea21a378e6afb7d604a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0f08101c7948d7f3e211f8764458c2eaeacb0859
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439769"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330621"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を使用できるように、認証を実行する方法について説明します。         
@@ -389,7 +389,7 @@ $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-x
 Invoke-RestMethod -Uri $request `
                   -Headers $authHeader `
                   -Method Get `
-                  -OutFile ".\contostweets-metricdef-results.json" `
+                  -OutFile ".\contosotweets-metricdef-results.json" `
                   -Verbose
 ```
 > [!NOTE]
@@ -459,7 +459,7 @@ $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-x
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
-    -OutFile ".\contostweets-metrics-results.json" `
+    -OutFile ".\contosotweets-metrics-results.json" `
     -Verbose
 ```
 
@@ -507,7 +507,7 @@ $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-x
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
-    -OutFile ".\contostweets-metrics-multiple-results.json" `
+    -OutFile ".\contosotweets-metrics-multiple-results.json" `
     -Verbose
 ```
 結果として得られる JSON 応答本文は次の例のようになります。

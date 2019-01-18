@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 478b1352d0bf2eec9af62e519b50e61dea6cc8fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584878"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158433"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -103,7 +103,7 @@ ms.locfileid: "52584878"
 ```
 
 #### <a name="example"></a>例
- 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
+ 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|
-|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|はい|該当なし|
+|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|[はい]|該当なし|
 |timeout="整数"|URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ |60|
 |ignore-error|true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値を格納します。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。|いいえ |false|
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|

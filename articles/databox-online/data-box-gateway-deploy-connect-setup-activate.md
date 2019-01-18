@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5e83eb46a4d62c6aaf0862d4bb1aa046c5d64dde
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166748"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120515"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway (プレビュー) を接続、設定、アクティブ化する 
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway (プレビュー) を接続、設定、アクティブ化する 
 
 ## <a name="introduction"></a>はじめに
 
@@ -55,7 +55,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
    
     ![](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
-2. ご利用の仮想デバイスの Web UI にサインインします。 既定のパスワードは *Password1*です。 
+2. ご利用の仮想デバイスの Web UI にサインインします。 既定のパスワードは *Password1* です。 
    
     ![](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
@@ -84,7 +84,10 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
     - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 そのため、IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
     - DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
     - 使用するネットワーク インターフェイスは、IPv4 として構成できます。
-   
+
+    >[!NOTE] 
+    > デバイスに接続する別の IP アドレスがない限り、ネットワーク インターフェイスのローカル IP アドレスを静的から DCHP に切り替えないことをお勧めします。 あるネットワーク インターフェイスを使用していて、DHCP に切り替えた場合、DHCP アドレスを判別する方法がありません。 DHCP アドレスに変更する場合は、デバイスがサービスに登録されるまで待機してから変更してください。 その後、サービスについて Azure portal の **[デバイスのプロパティ]** にすべてのアダプターの IP が表示されます。
+
 4. (省略可能) Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。
    
    ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)

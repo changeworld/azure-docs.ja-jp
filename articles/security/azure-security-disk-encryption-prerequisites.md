@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/13/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 116f1f0a93c09ed751f0720ae74a2c24df7541eb
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342512"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156512"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件
 
@@ -21,8 +21,9 @@ ms.locfileid: "53342512"
 
 [Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)に関する記事で説明されているサポート対象シナリオの Azure IaaS VM で Azure Disk Encryption を有効にする前に、以下の前提条件を満たしていることを確認してください。 
 
-> [!NOTE]
-> 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
+> [!WARNING]
+> - これまで [Azure AD アプリで Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の AAD アプリケーションからの切り替えはまだサポートされていないことを意味します。
+> - 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
 
 
 ## <a name="bkmk_OSs"></a> サポートされているオペレーティング システム
@@ -66,12 +67,10 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell をインストールしてローカル コンピューターで使用する (省略可能): 
 1. お使いのオペレーティング システムのリンク先に記載されている指示を実行してから、以下の残りの手順を続行します。      
-    - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/install-azurerm-ps)。 
+    - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)。 
         - PowerShellGet、Azure PowerShell をインストールし、AzureRM モジュールを読み込みます。 
-    - [macOS および Linux に Azure PowerShell をインストールし、構成します](/powershell/azure/install-azurermps-maclinux)。
-        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、Az モジュールを読み込みます。
 
-2. AzureRM モジュールのインストールされているバージョンを確認します。 必要な場合は、[Azure PowerShell モジュールを更新](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module)します。
+2. AzureRM モジュールのインストールされているバージョンを確認します。 必要な場合は、[Azure PowerShell モジュールを更新](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module)します。
     -  AzureRM モジュールのバージョン 6.0.0 以降が必要です。
     - 最新バージョンの AzureRM モジュールを使用することをお勧めします。
 

@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978672"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729341"
 ---
 ## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
 
@@ -39,6 +39,7 @@ ms.locfileid: "52978672"
     |------|-----|
     |[テンプレート リファレンスの利用](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|テンプレートを開発するためにテンプレート リファレンス ドキュメントを利用します。 このチュートリアルでは、ストレージ アカウントのスキーマを確認し、その情報を使用して、暗号化されたストレージ アカウントを作成します。|
     |[複数のインスタンスの作成](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Azure リソースの複数のインスタンスを作成します。 このチュートリアルでは、ストレージ アカウントの複数のインスタンスを作成します。|
+    |[リソースの移動](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|リソースを 1 つのリソース グループから別のリソース グループに移動します。 このチュートリアルでは、既存のテンプレートを実行して 2 つのリソース グループと 1 つのストレージ アカウントを作成した後、Azure PowerShell コマンドレットを実行してそのストレージ アカウントを他のリソース グループに移動します。|
     |[リソースのデプロイ順序の設定](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|リソースの依存関係を定義します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存する Azure リソースを作成します。 依存関係を定義する方法を説明しています。|
     |[使用条件](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|いくつかのパラメーター値に基づいてリソースをデプロイします。 このチュートリアルでは、新しいストレージ アカウントを作成するか、パラメーターの値に基づいて既存のストレージ アカウントを使用するためのテンプレートを定義します。|
     |[キー コンテナーの統合](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|Azure Key Vault からシークレット/パスワードを取得します。 このチュートリアルでは、仮想マシンを作成します。  仮想マシンの管理者のパスワードは、キー コンテナーから取得されます。|

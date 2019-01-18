@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 5bdd0efc61554fe29ef97c8be24ecb2f9bcf88b5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3cee083096584d30fb979aaf58bfdc2edf2e6c4f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997579"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971650"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -81,13 +81,19 @@ public class OutgoingEmail
 {
     "bindings": [
         {
-            "name": "message",
-            "type": "sendGrid",
-            "direction": "out",
-            "apiKey" : "MySendGridKey",
-            "to": "{ToEmail}",
-            "from": "{FromEmail}",
-            "subject": "SendGrid output bindings"
+          "type": "queueTrigger",
+          "name": "mymsg",
+          "queueName": "myqueue",
+          "connection": "AzureWebJobsStorage",
+          "direction": "in"
+        },
+        {
+          "type": "sendGrid",
+          "name": "$return",
+          "direction": "out",
+          "apiKey": "SendGridAPIKeyAsAppSetting",
+          "from": "{FromEmail}",
+          "to": "{ToEmail}"
         }
     ]
 }
@@ -99,27 +105,28 @@ C# スクリプト コードを次に示します。
 
 ```csharp
 #r "SendGrid"
+
 using System;
 using SendGrid.Helpers.Mail;
-using Microsoft.Extensions.Logging;
+using Microsoft.Azure.WebJobs.Host;
 
-public static void Run(ILogger log, string input, out Mail message)
+public static SendGridMessage Run(Message mymsg, ILogger log)
 {
-     message = new Mail
-    {        
-        Subject = "Azure news"          
-    };
-
-    var personalization = new Personalization();
-    personalization.AddTo(new Email("recipient@contoso.com"));   
-
-    Content content = new Content
+    SendGridMessage message = new SendGridMessage()
     {
-        Type = "text/plain",
-        Value = input
+        Subject = $"{mymsg.Subject}"
     };
-    message.AddContent(content);
-    message.AddPersonalization(personalization);
+    
+    message.AddContent("text/plain", $"{mymsg.Content}");
+
+    return message;
+}
+public class Message
+{
+    public string ToEmail { get; set; }
+    public string FromEmail { get; set; }
+    public string Subject { get; set; }
+    public string Content { get; set; }
 }
 ```
 

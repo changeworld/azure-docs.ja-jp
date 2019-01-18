@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 03652ce20d82565d5714cdc43a01a9e7c3074f6a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e904075908fe7108c0566856b25fe03be0b7fd86
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903977"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023809"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory の変数追加アクティビティ
 

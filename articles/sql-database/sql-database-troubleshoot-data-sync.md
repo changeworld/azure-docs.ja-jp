@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685822"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723894"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
 この記事では、Azure SQL データ同期 (プレビュー) に関する既知の問題のトラブルシューティングを行う方法について説明します。問題の解決方法がある場合は、ここにその方法を示します。
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="sync-issues"></a>同期に関する問題
 
@@ -102,7 +105,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
 
 - **解決策**。 最善の解決策は予防です。 同期グループに循環参照がないことを確認します。 1 つの同期グループによって同期される行を、別の同期グループによって同期することはできません。
 
-### <a name="sync-nulls"></a> "列 <column> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
+### <a name="sync-nulls"></a>"列 <column> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
 このエラー メッセージは、次の 2 つの問題のいずれかを示しています。
 -  テーブルに主キーが設定されていません。 この問題を解決するには、同期しているすべてのテーブルに主キーを追加します。
 -  CREATE INDEX ステートメントに WHERE 句があります。 データ同期では、この状態は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 
@@ -241,7 +244,7 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)

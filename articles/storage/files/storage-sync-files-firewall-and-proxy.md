@@ -5,15 +5,15 @@ services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 11/26/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 25bec4bdbae5b206d23fa300f139f55f86b8167e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3a1cc0a28ef5a4861d86373ce39258936639baab
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434383"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333352"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -46,7 +46,7 @@ Azure File Sync は、Azure に到達さえできれば、その接続手段を�
 ## <a name="proxy"></a>プロキシ
 Azure File Sync では、アプリ固有のプロキシ設定とマシン全体のプロキシ設定がサポートされています。
 
-**アプリ固有のプロキシ設定**を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 3.0.12.0 以降でサポートされ、エージェントのインストール中に構成するか、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
+**アプリ固有のプロキシ設定**を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に構成するか、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
 
 アプリ固有のプロキシ設定を構成する PowerShell コマンドを次に示します。
 ```PowerShell
@@ -93,7 +93,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 次の表で、通信に必要なドメインについて説明します。
 
-| サービス | ドメイン | 使用法 |
+| Service | ドメイン | 使用法 |
 |---------|----------------|------------------------------|
 | **Azure Resource Manager** | https://management.azure.com | 初回サーバー登録呼び出しを含め、すべてのユーザー呼び出し (PowerShell など) は、この URL に向かうか、この URL を経由します。 |
 | **Azure Active Directory** | https://login.windows.net | Azure Resource Manager の呼び出しは、認証済みのユーザーが行う必要があります。 成功するためには、この URL を使用してユーザー認証を行う必要があります。 |

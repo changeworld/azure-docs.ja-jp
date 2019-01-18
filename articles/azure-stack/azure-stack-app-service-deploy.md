@@ -1,5 +1,5 @@
 ---
-title: 'App Services のデプロイ: Azure Stack | Microsoft Docs'
+title: 'App Services をデプロイする: Azure Stack | Microsoft Docs'
 description: Azure Stack への App Service のデプロイに関する詳しいガイダンスです
 services: azure-stack
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614057"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104762"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事のガイダンスを使用して、Azure Stack に App Service をデプロイします。
 
@@ -202,17 +202,17 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service の管理](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >既存の仮想ネットワークにデプロイし、内部 IP アドレスを使用してファイル サーバーに接続する場合は、送信セキュリティ規則を追加する必要があります。 この規則により、worker サブネットとファイル サーバー間の SMB トラフィックが有効になります。  これを行うには、管理者ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。<br>
-    >  - 送信元: 任意
-    >  - 送信元ポート範囲: *
-    >  - 送信先: IP アドレス
-    >  - 送信先 IP アドレス: ファイルサーバーの IP の範囲
-    >  - 送信先ポート範囲: 445
-    >  - プロトコル: TCP
-    >  - アクション: 許可
-    >  - 優先順位: 700
-    >  - 名前: Outbound_Allow_SMB445
+    既存の仮想ネットワークにデプロイし、内部 IP アドレスを使用してファイル サーバーに接続する場合は、送信セキュリティ規則を追加する必要があります。 この規則により、worker サブネットとファイル サーバー間の SMB トラフィックが有効になります。  これを行うには、管理者ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。
+
+    - ソース:任意
+    - 送信元ポート範囲: *
+    - 変換先:IP アドレス
+    - 宛先 IP アドレス範囲:ファイルサーバーの IP の範囲
+    - 送信先ポート範囲:445
+    - プロトコル:TCP
+    - アクション:ALLOW
+    - 優先順位:700
+    - 名前:Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる
 
@@ -260,9 +260,9 @@ App Service リソースプロバイダーをデプロイして登録したら�
  - [MySQL リソースプロバイダー](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy/app-service-installer.png

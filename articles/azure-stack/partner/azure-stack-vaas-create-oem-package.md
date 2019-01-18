@@ -10,25 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
-ms.reviewer: John.Haskin
-ms.openlocfilehash: 8fd551156d424adbe4d6ce7eb38a6a6a00aa8f83
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: johnhas
+ROBOTS: NOINDEX
+ms.openlocfilehash: a90ec05fa3224033436830e7666c7eb81ff881f6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650957"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246995"
 ---
 # <a name="create-an-oem-package"></a>OEM パッケージの作成
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Azure Stack OEM 拡張機能パッケージは、Azure Stack インフラストラクチャに OEM 固有のコンテンツを追加するメカニズムであり、デプロイと運用プロセス (更新、拡張、フィールドの置換など) で使用します。
 
 ## <a name="creating-the-package"></a>パッケージの作成
 
-OEM 拡張機能パッケージを作成して検証したら、VaaS で使用できます。  続行する前に、[OEM パッケージの作成](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)の手順を完了していることを確認してください。 その後、パッケージは VaaS のテスト結果と共に Microsoft に提出され、パッケージ検証ワークフローで署名されます。 次の手順は、生成されたファイルを、VaaS で使用できる単一の ZIP ファイルにバンドルする方法の詳細を示しています。
+OEM 拡張機能パッケージを作成して検証したら、VaaS で使用できます。  続行する前に、[OEM パッケージの作成](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)の手順を完了していることを確認してください。 その後、パッケージは VaaS のテスト結果と共に Microsoft に提出され、ソリューション検証ワークフローで署名されます。 次の手順は、生成されたファイルを、VaaS で使用できる単一の ZIP ファイルにバンドルする方法の詳細を示しています。
 
 1. パッケージの次のコンテンツを確認します。
     - `<Publisher>-<Model>-<Version>.exe` という名前の実行可能ファイル。
@@ -49,7 +50,7 @@ ZIP ファイルの構造を検証するために、ZIP ファイルを検査し
 
 ![適切に圧縮されたパッケージ コンテンツ](media/vaas-create-oem-package-3.png)
 
-これで、ZIP ファイルを VaaS にアップロードし、パッケージ検証ワークフローで Microsoft が署名できるようになりました。
+これで、ZIP ファイルを VaaS にアップロードし、ソリューション検証ワークフローで Microsoft が署名できるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 

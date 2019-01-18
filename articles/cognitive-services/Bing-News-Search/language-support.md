@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a8f7ccdb199f934011b6d64d813eb36cc9dff952
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1d8a46287d2b84735ffb6d5159346cb9b8243472
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804550"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264002"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
 
@@ -31,7 +31,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|Language|市場コード|  
+|国/リージョン|言語|市場コード|  
 |---------------------|--------------|-----------------|
 |デンマーク|デンマーク語|da-DK|
 |オーストリア|ドイツ語|de-AT|
@@ -80,7 +80,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|Language|市場コード|  
+|国/リージョン|言語|市場コード|  
 |---------------------|--------------|-----------------|
 |デンマーク|デンマーク語|da-DK|
 |ドイツ|ドイツ語|de-DE|
@@ -103,7 +103,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|Language|市場コード|  
+|国/リージョン|言語|市場コード|  
 |---------------------|--------------|-----------------|
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|

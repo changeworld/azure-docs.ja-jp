@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge セキュリティ マネージャー | Microsoft Docs
+title: セキュリティ マネージャーでデバイスとソフトウェアが保護される方法 - Azure IoT Edge | Microsoft Docs
 description: IoT Edge デバイスのセキュリティ方針とセキュリティ サービスの整合性を管理します。
 services: iot-edge
 keywords: セキュリティ, セキュリティで保護された要素, エンクレーブ, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567691"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091926"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -33,7 +34,7 @@ IoT Edge セキュリティ マネージャーには次のような役割があ�
 * 公証人サービスによる信頼のデバイス ハードウェア ルートに対するゲートキーパー。
 * 実行時の IoT Edge の動作の整合性の監視。
 
-IoT Edge セキュリティ マネージャーは、次の 3 つの主要なコンポーネントで構成されています。
+IoT Edge セキュリティ マネージャーには、次の 3 つのコンポーネントが含まれます。
 
 * IoT Edge セキュリティ デーモン。
 * ハードウェア セキュリティ モジュール プラットフォーム抽象化レイヤー (HSM PAL)。

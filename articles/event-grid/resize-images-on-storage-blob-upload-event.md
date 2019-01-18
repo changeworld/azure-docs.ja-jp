@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753950"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188472"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -170,8 +170,8 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **サブスクライバーの種類** |  自動生成 |  Web hook として事前定義されています。 |
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
     | **名前** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
-
-4. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
+4. *省略可能:* 将来他の目的で同じ BLOB ストレージ内に追加のコンテナーを作成する必要がある場合は、**[フィルター]** タブの**サブジェクト フィルタリング**機能を使用して BLOB イベントをよりきめ細かくターゲット設定することで、特に BLOB が **images** コンテナーに追加されたときにのみ関数アプリが呼び出されるようにすることができます。 
+5. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
 
 バックエンド サービスの構成が済んだので、サンプル Web アプリでイメージ サイズ変更の機能をテストします。 
 

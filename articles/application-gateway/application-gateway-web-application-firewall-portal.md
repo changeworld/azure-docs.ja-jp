@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 12ef6447e53ba0da3fbd3d56749d7798c49a2cfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993964"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157141"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -119,7 +119,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ### <a name="add-backend-servers"></a>バックエンド サーバーの追加
 
 1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGateayBackendPool]** をクリックします。
+2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
 3. **[ターゲットの追加]** をクリックして、作成した各仮想マシンをバックエンド プールに追加します。
 
     ![バックエンド サーバーの追加](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)

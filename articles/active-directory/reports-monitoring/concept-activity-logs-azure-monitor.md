@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 298d4a7a003963e3466b595243c294679f581346
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625438"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582193"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor の Azure AD アクティビティ ログ (プレビュー)
 
@@ -38,8 +38,8 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 この機能を使用して、Azure AD 監査ログとサインイン ログを Azure ストレージ アカウント、イベント ハブ、Log Analytics、またはカスタム ソリューションにルーティングすることができます。 
 
-* **監査ログ**: テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
-* **サインイン ログ**: 監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
+* **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
 > 現時点では、B2C 関連の監査およびサインインのアクティビティ ログはサポートされません。
@@ -101,39 +101,39 @@ Log Analytics ワークスペースの管理に関連するコストをレビュ
 
 このセクションでは、Azure Monitor の Azure AD のログに関するよく寄せられる質問に回答し、既知の問題について説明します。
 
-**Q: どのようなログが含まれますか。**
+**Q:どのようなログが含まれますか。**
 
-**A:** この機能を使用してサインイン アクティビティ ログと監査のログの両方をルーティングすることができます。ただし、現時点では B2C に関連する監査イベントは含まれません。 現在サポートされているログの種類や機能ベースのログについて調べるには、[監査ログ スキーマ](reference-azure-monitor-audit-log-schema.md)と[サインイン ログ スキーマ](reference-azure-monitor-sign-ins-log-schema.md)に関するページを参照してください。 
-
----
-
-**Q: アクション後、対応するログがイベント ハブに表示されるまでどれくらいの時間がかかりますか。**
-
-**A:** ログは、アクション実行後、2 分から 5 分後にイベント ハブに表示されます。 Event Hubs の詳細については、「[Azure Event Hubs とは](../../event-hubs/event-hubs-about.md)」を参照してください。
+**A**:この機能を使用してサインイン アクティビティ ログと監査のログの両方をルーティングすることができます。ただし、現時点では B2C に関連する監査イベントは含まれません。 現在サポートされているログの種類や機能ベースのログについて調べるには、[監査ログ スキーマ](reference-azure-monitor-audit-log-schema.md)と[サインイン ログ スキーマ](reference-azure-monitor-sign-ins-log-schema.md)に関するページを参照してください。 
 
 ---
 
-**Q: アクション後、対応するログがストレージ アカウントに表示されるまでどれくらいの時間がかかりますか。**
+**Q:アクション後、対応するログがイベント ハブに表示されるまでどれくらいの時間がかかりますか。**
 
-**A:** Azure ストレージ アカウントの場合、待ち時間はアクション実行後 5 分から 15 分です。
-
----
-
-**Q: データを格納する料金はどれくらいかかりますか。**
-
-**A:** ストレージの料金は、ログのサイズと選択した保持期間によって変わります。 生成されたログの量に依存する、テナントの推定コストの一覧については、[アクティビティ ログのストレージ サイズ](#storage-size-for-activity-logs)に関するセクションを参照してください。
+**A**:ログは、アクションの実行後、2 分から 5 分後にイベント ハブに表示されます。 Event Hubs の詳細については、「[Azure Event Hubs とは](../../event-hubs/event-hubs-about.md)」を参照してください。
 
 ---
 
-**Q: データをイベント ハブにストリーミングする料金はどれくらいかかりますか。**
+**Q:アクション後、対応するログがストレージ アカウントに表示されるまでどれくらいの時間がかかりますか。**
 
-**A:** ストリーミングの料金は、1 分あたりに受信するメッセージの数によって異なります。 この記事では、コストの計算方法を示し、メッセージ数に基づくコスト見積もりの一覧を示します。 
+**A**:Azure ストレージ アカウントの場合、待ち時間はアクションの実行後 5 分から 15 分です。
 
 ---
 
-**Q: Azure AD アクティビティ ログを SIEM システムと統合する方法を教えてください。**
+**Q:データを格納する料金はどれくらいかかりますか。**
 
-**A**: これは、次の 2 つの方法で行えます。
+**A**:ストレージの料金は、ログのサイズと選択した保持期間によって変わります。 生成されたログの量に依存する、テナントの推定コストの一覧については、[アクティビティ ログのストレージ サイズ](#storage-size-for-activity-logs)に関するセクションを参照してください。
+
+---
+
+**Q:データをイベント ハブにストリーミングする料金はどれくらいかかりますか。**
+
+**A**:ストリーミングの料金は、1 分あたりに受信するメッセージの数によって異なります。 この記事では、コストの計算方法を示し、メッセージ数に基づくコスト見積もりの一覧を示します。 
+
+---
+
+**Q:Azure AD アクティビティ ログを SIEM システムと統合する方法を教えてください。**
+
+**A**:次の 2 つの方法で行います。
 
 - Azure Monitor と Event Hubs を使用して、ログを SIEM システムにストリーム配信する。 最初に[ログをイベント ハブにストリーム配信](tutorial-azure-monitor-stream-logs-to-event-hub.md)してから、構成されたイベント ハブで [SIEM ツールを設定](tutorial-azure-monitor-stream-logs-to-event-hub.md#access-data-from-your-event-hub)します。 
 
@@ -141,27 +141,27 @@ Log Analytics ワークスペースの管理に関連するコストをレビュ
 
 ---
 
-**Q: 現時点ではどの SIEM ツールがサポートされてますか。** 
+**Q:現時点ではどの SIEM ツールがサポートされてますか。** 
 
-**A:** 現在、Azure Monitor は [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)」を参照してください。
-
----
-
-**Q: Azure AD アクティビティ ログを Splunk インスタンスと統合する方法を教えてください。**
-
-**A**: 最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](quickstart-azure-monitor-stream-logs-to-event-hub.md)してから、[アクティビティ ログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)手順に従ってください。
+**A**:現在、Azure Monitor は [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 ---
 
-**Q: Azure AD アクティビティ ログを Sumo Logic と統合する方法を教えてください。** 
+**Q:Azure AD アクティビティ ログを Splunk インスタンスと統合する方法を教えてください。**
 
-**A**: 最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)してから、[Azure AD アプリケーションをインストールして Sumo Logic のダッシュボードで表示する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)手順に従ってください。
+**A**:最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](quickstart-azure-monitor-stream-logs-to-event-hub.md)してから、[アクティビティ ログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)手順に従ってください。
 
 ---
 
-**Q: 外部の SIEM ツールを使用せずにイベント ハブからデータにアクセスできますか。** 
+**Q:Azure AD アクティビティ ログを Sumo Logic と統合する方法を教えてください。** 
 
-**A:** はい。 カスタム アプリケーションからログにアクセスするには、[Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) を使用します。 
+**A**:最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)してから、[Azure AD アプリケーションをインストールして SumoLogic のダッシュボードで表示する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)手順に従ってください。
+
+---
+
+**Q:外部の SIEM ツールを使用せずにイベント ハブからデータにアクセスできますか。** 
+
+**A**:はい。 カスタム アプリケーションからログにアクセスするには、[Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) を使用します。 
 
 ---
 

@@ -1,20 +1,17 @@
 ---
 title: Azure Portal での Azure Database for MySQL のメトリック アラートの構成
 description: この記事では、Azure Portal から Azure Database for MySQL のメトリック アラートを構成およびアクセスする方法について説明します。
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6db451ab7de50039c38b59612dd2ab1c61c35e7b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 999b1d03ad8cb0b27de10ff6457c0e6cc9112ee7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271252"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548733"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -56,7 +53,7 @@ ms.locfileid: "53271252"
    | リソース | このフィールドには Azure Database for MySQL の名前が入力されています。 |
    | メトリック | アラートを発行する対象のメトリックを選択します  (例: **ストレージの割合**)。 |
    | 条件 | 比較するメトリックの条件を選択します  (例: **より大きい**)。 |
-   | しきい値 | メトリックのしきい値 (例: 85 (パーセント))。 |
+   | Threshold | メトリックのしきい値 (例: 85 (パーセント))。 |
    | 期間 | アラートがトリガーされるまでにメトリック ルールが満たす必要がある期間  (例: **直近 30 分**)。 |
 
    この例では、アラートは直近 30 分で 85% を超えるストレージを対象とします。 ストレージが 30 分間で平均 85% を上回ると、アラートがトリガーされます。 最初のトリガーが発生した後、ストレージが 30 分間で平均 85% を下回ったときに、再度アラートがトリガーされます。

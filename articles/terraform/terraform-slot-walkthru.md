@@ -4,29 +4,29 @@ description: Terraform と Azure プロバイダーのデプロイ スロット�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 仮想マシン, Azure, デプロイ スロット
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667238"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074820"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 
-[Azure デプロイ スロット](/azure/app-service/web-sites-staged-publishing)を使用し、アプリの異なるバージョン間をスワップできます。 この機能によって、デプロイ分断の影響が最小限に抑えられます。 
+[Azure デプロイ スロット](/azure/app-service/deploy-staging-slots)を使用し、アプリの異なるバージョン間をスワップできます。 この機能によって、デプロイ分断の影響が最小限に抑えられます。 
 
 この記事では、GitHub と Azure を使用して 2 つのアプリをデプロイする方法を説明しながら、デプロイ スロットの使用例を紹介します。 1 つのアプリが運用スロットでホストされています。 2 番目のアプリはステージング スロットでホストされています。 ("production" と "staging" という名前は任意であり、シナリオを表す任意の名前を付けることができます)。デプロイ スロットを構成すると、必要に応じて Terraform を使用して 2 つのスロット間をスワップできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **GitHub アカウント**: テスト GitHub リポジトリをフォークして使用するには、[GitHub](http://www.github.com) アカウントが必要です。
+- **GitHub アカウント**:テスト GitHub リポジトリをフォークして使用するには、[GitHub](http://www.github.com) アカウントが必要です。
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform プランの作成と適用
 

@@ -3,17 +3,17 @@ title: Ansible を使用した Azure Database for MySQL サーバーの作成と
 description: Ansible を使用して Azure Database for MySQL サーバーを作成して構成する方法を学習します。
 ms.service: ansible
 keywords: ansible、azure、devops、bash、プレイブック、mysql、データベース
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 6fd08e21fe0573d48ae7752eb410845062932b5e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 85f3957af599c80c46871a126681d29dfa513431
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255943"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051018"
 ---
 # <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Ansible を使用した Azure Database for MySQL サーバーの作成と構成
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 

@@ -355,6 +355,8 @@ items:
         href: cloudfoundry-get-started.md
       - name: 初めてのアプリのデプロイ
         href: cloudfoundry-deploy-your-first-app.md
+    - name: Cassandra
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: OpenShift
       items:
       - name: OpenShift の概要
@@ -392,12 +394,7 @@ items:
       - name: Linux 上の MS SQL
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: ハイ パフォーマンス コンピューティング (HPC)
-      href: hpcpack-cluster-options.md
-      items:
-      - name: NAMD の実行
-        href: classic/hpcpack-cluster-namd.md
-      - name: NVIDIA GPU ドライバーのインストール
-        href: n-series-driver-setup.md
+      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
     - name: IBM Db2 pureScale
       items:
       - name: アーキテクチャ
@@ -526,6 +523,8 @@ items:
     href: https://azure.microsoft.com/develop/python/
   - name: REST
     href: /rest/api/compute
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.compute/allversions
 - name: リソース
   items:
   - name: テンプレートの作成
@@ -548,9 +547,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: fbf98c5c016d6a64c68c4459b4d27ce5c2f46da6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c230e40c62b3f7f1c485eb4051bed3a0314aa08d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652654"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360141"

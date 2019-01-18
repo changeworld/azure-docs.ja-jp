@@ -9,20 +9,26 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438644"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578854"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
 
-Update Management でコンピューターに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure Portal の Azure コンピューター、および[オフラインのシナリオ](#troubleshoot-offline)での Azure 以外のコンピューターに対してトラブルシューティング ツールを実行する方法について説明します。
+Update Management でコンピューターに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+
+次の一覧は、マシンが取り得る 3 つの準備状態です。
+
+* **Ready (準備完了)** - 更新プログラム エージェントが展開され、最後に表示してから 1 時間以内である。
+* **Disconnected (切断)** -  更新プログラム エージェントが展開され、最後に表示してから 1 時間以上になった。
+* **Not configured (未構成)** - 更新プログラム エージェントが見つからないか、オンボードを終了していない。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure コンピューターの場合は、ポータルの **[Update エージェントの準備]** 列の下にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のコンピューターの場合は、そのリンクによってこの記事が表示されます。 Azure 以外のコンピューターをトラブルシューティングするには、[オフラインの手順](#offline)を参照してください。
+Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のコンピューターをトラブルシューティングするには、[オフラインの手順](#offline)を参照してください。
 
 ![VM リスト ページ](../media/update-agent-issues-linux/vm-list.png)
 
@@ -45,7 +51,7 @@ OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレ�
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための 'yum' が必須です。         |
+|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。         |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |

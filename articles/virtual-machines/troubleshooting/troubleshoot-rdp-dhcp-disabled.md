@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138162"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213452"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない
 
@@ -62,8 +62,8 @@ DHCP クライアント サービスが VM で実行されていません。
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
-1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
+1. [シリアル コンソールに接続し、CMD インスタンスを開きます](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。
+バージョンを参照)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
 2. ネットワーク インターフェイスで DHCP が無効になっているかどうかを確認します。
 
         sc query DHCP
@@ -95,7 +95,7 @@ DHCP クライアント サービスが VM で実行されていません。
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>アクセス拒否エラーのために DHCP クライアント サービスが停止される
 
-1. [シリアル コンソール](serial-console-windows.md#)に接続し、PowerShell インスタンスを開きます。
+1. [シリアル コンソール](serial-console-windows.md)に接続し、PowerShell インスタンスを開きます。
 2. 次のスクリプトを実行して、プロセス モニター ツールをダウンロードします。
 
    ```

@@ -85,8 +85,6 @@ items:
       href: gallery-collections.md
     - name: カスタム モジュール
       href: gallery-custom-modules.md
-    - name: アカウント データの表示と削除
-      href: ai-gallery-control-personal-data-dsr.md
 - name: 概念
   items:
   - name: モデル管理
@@ -214,35 +212,41 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: Batch プールを使用する
       href: dedicated-capacity-for-bes-jobs.md
+  - name: アカウント データの表示と削除
+    href: ai-gallery-control-personal-data-dsr.md
 - name: リファレンス
   items:
+  - name: アルゴリズムとモジュールのリファレンス
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
   - name: Azure PowerShell モジュール (新規)
     href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
   - name: Azure PowerShell モジュール (クラシック)
     href: powershell-module.md
-  - name: アルゴリズムとモジュールのリファレンス
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: REST 管理 API
-    href: /rest/api/machinelearning
   - name: Web サービスのエラー コード
     href: web-service-error-codes.md
+  - name: REST 管理 API
+    href: /rest/api/machinelearning
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.machinelearning/allversions
 - name: リソース
   items:
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-  - name: Net# ニューラル ネットワーク仕様言語
-    href: azure-ml-netsharp-reference-guide.md
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: R 開発者ガイド
     href: ../r-developers-guide.md
-ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+  - name: Net# によるカスタム ニューラル ネットワーク
+    href: azure-ml-netsharp-reference-guide.md
+  - name: Microsoft の ML 製品の比較
+    href: ../service/overview-more-machine-learning.md
+ms.openlocfilehash: 821a6ffb787aef0d75dbc0f9e1ab331ad35dafa0
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974117"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389914"

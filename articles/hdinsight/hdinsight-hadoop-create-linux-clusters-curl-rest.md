@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872852"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789213"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -24,10 +24,10 @@ Azure Resource Manager テンプレートと Azure REST API を使用して HDIn
 
 Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > このドキュメントの手順では、[curl (https://curl.haxx.se/)](https://curl.haxx.se/) ユーティリティを使用して Azure REST API と通信します。
 
 ## <a name="create-a-template"></a>テンプレートの作成
@@ -211,7 +211,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 このサンプルをこのドキュメントの手順で使用します。 **Parameters** セクションのサンプルの "*値*" は、ご自身のクラスターの値に置き換えてください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > テンプレートでは、HDInsight クラスターに既定数 (4) の worker ノードを使用します。 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
@@ -222,7 +222,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-> [!NOTE]
+> [!NOTE]  
 > 以下の手順は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)」ドキュメントの「*パスワードを使用したサービス プリンシパルの作成*」セクションを要約したものです。 この手順を実行すると、Azure REST API への認証に使用されるサービス プリンシパルが作成されます。
 
 1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
@@ -241,7 +241,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
     `--display-name`、`--homepage`、および `--identifier-uris` の値を自分の値に置き換えます。 新しい Active Directory エントリのパスワードを指定します。
 
-   > [!NOTE]
+   > [!NOTE]  
    > `--home-page` と `--identifier-uris` の値は、インターネット上にホストされている実際の Web ページを参照する必要はありませんが、 一意の URI である必要があります。
 
    このコマンドから返される値は、新しいアプリケーションの __アプリ ID__ です。 この値を保存します。
@@ -252,7 +252,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     このコマンドから返される値は、__オブジェクト ID__です。 この値を保存します。
+     このコマンドから返される値は、__オブジェクト ID__ です。 この値を保存します。
 
 4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
 
@@ -323,14 +323,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -d "{set your body string to the template and parameters}"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > テンプレートをファイルに保存した場合は、`-d "{ template and parameters}"` の代わりに次のコマンドを使用できます。
 >
 > `--data-binary "@/path/to/file.json"`
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにデプロイ操作に関する情報が含まれています。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > デプロイは送信済みですが、まだ完了していません。 デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
 
 ## <a name="check-the-status-of-a-deployment"></a>デプロイの状態の確認
@@ -347,7 +347,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -357,7 +357,7 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 

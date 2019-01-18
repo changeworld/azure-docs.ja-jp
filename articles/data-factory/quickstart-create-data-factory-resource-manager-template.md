@@ -9,18 +9,17 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 5a883d922944552b53b152546cc891a0a2f4a31f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620491"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042735"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [現在のバージョン](quickstart-create-data-factory-resource-manager-template.md) 
@@ -39,6 +38,8 @@ ms.locfileid: "52620491"
 Azure Resource Manager テンプレート全般に関する情報については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)に関するページを参照してください。 
 
 次のセクションでは、このチュートリアルを速やかに実行し、テンプレートをテストできるように、Data Factory エンティティを定義するための完全な Resource Manager テンプレートを提供します。 各 Data Factory エンティティを定義する方法については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」をご覧ください。
+
+テンプレート内の Data Factory リソースの JSON 構文とプロパティについては、「[Microsoft.DataFactory resource types (Microsoft.DataFactory のリソースの種類)](/azure/templates/microsoft.datafactory/allversions)」を参照してください。
 
 ## <a name="data-factory-json"></a>Data Factory JSON 
 以下の内容を記述した **ADFTutorialARM.json** という名前の JSON ファイルを **C:\ADFTutorial** フォルダーに作成します。
@@ -268,7 +269,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
 
 > [!IMPORTANT]
 > - このパラメーター ファイルの **storageAccountName** パラメーターと **storageAccountKey** パラメーターに、Azure Storage アカウントの名前とキーを指定します。 adftutorial コンテナーを作成し、この Azure Blob Storage の入力フォルダーにサンプル ファイル (emp.txt) をアップロードしました。 
-> - **dataFactoryName** パラメーターには、データ ファクトリのグローバルに一意の名前を指定します。 たとえば ARMTutorialFactoryJohnDoe11282017 とします。 
+> - **dataFactoryName** パラメーターには、データ ファクトリのグローバルに一意の名前を指定します。 例: ARMTutorialFactoryJohnDoe11282017。 
 > - **triggerStartTime** には、現在の日付を `2017-11-28T00:00:00` 形式で指定します。
 > - **triggerEndTime** には、翌日の日付を `2017-11-29T00:00:00` 形式で指定します。 また、現在の UTC 時刻を調べて、その 1 ～ 2 時間後を終了時刻として指定することもできます。 たとえば、現在の UTC 時刻が午前 1 時 32 分である場合、終了時刻として `2017-11-29:03:00:00` を指定します。 この場合、トリガーによってパイプラインが 2 回実行されます (午前 2 時と午前 3 時)。
 
@@ -444,7 +445,7 @@ DeploymentDebugLogLevel :
 5. **[アクション]** 列のリンクをクリックします。 
 
     ![パイプライン アクション リンク](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
-6. パイプラインの実行に関連付けられたアクティビティの実行が表示されます。 このクイックスタートでは、パイプラインに、コピーという種類のアクティビティが 1 つのみ含まれます。 そのため、そのアクティビティの実行が表示されます。 
+6. パイプラインの実行に関連付けられたアクティビティの実行が表示されます。 このクイック スタートでは、パイプラインに、コピーという種類のアクティビティが 1 つのみ含まれます。 そのため、そのアクティビティの実行が表示されます。 
 
     ![アクティビティの実行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 1. **[出力]** 列のリンクをクリックします。 **[出力]** ウィンドウに、コピー操作による出力が表示されます。 最大化ボタンをクリックすると、出力全体が表示されます。 最大化した出力ウィンドウを閉じるか、単に閉じてください。 

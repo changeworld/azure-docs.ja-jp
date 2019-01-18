@@ -1,56 +1,38 @@
 ---
-title: Azure Digital Twins 内のオブジェクトに BLOB を追加する | Microsoft Docs
-description: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法を説明します
+title: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法 | Microsoft Docs
+description: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法について説明します。
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725626"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116740"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
 BLOB は、一般的なファイルの種類 (画像やログなど) の非構造化表現です。 BLOB では、MIME の種類 (例:"image/jpeg") とメタデータ (名前、説明、型など) を使用して表現するデータの種類が追跡されます。
 
-Azure Digital Twins では、デバイス、スペース、ユーザーへの BLOB のアタッチがサポートされます。 BLOB では、ユーザーのプロファイル画像、デバイスの写真、ビデオ、マップ、またはログを表すことができます。
+Azure Digital Twins では、デバイス、スペース、ユーザーへの BLOB のアタッチがサポートされます。 BLOB では、ユーザーのプロファイル画像、デバイスの写真、ビデオ、マップ、ファームウェア zip、JSON データ、ログなどを表すことができます。
 
-> [!NOTE]
-> この記事では、以下のことを前提としています。
-> * Management API 要求を受信するようにインスタンスが正しく構成されていること。
-> * 任意の REST クライアントを使用して正しく認証されていること。
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>BLOB のアップロード: 概要
 
 マルチパート要求を使用して、特定のエンドポイントとそれぞれの機能に BLOB をアップロードできます。
 
-> [!IMPORTANT]
-> マルチパート要求には、次の 3 つの情報が必要です。
-> * **Content-Type** ヘッダー:
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **Content-Disposition**: `form-data; name="metadata"`
-> * アップロードするファイルの内容
->
-> **Content-Type** と **Content-Disposition** の情報は、使用シナリオによって異なる場合があります。
-
-Azure Digital Twins Management API に対して行われるマルチパート要求には、2 つ の部分があります。
-
-* **Content-Type** および **Content-Disposition** の情報で示される、関連付けられている MIME の種類などの BLOB メタデータ
-
-* Blob の内容 (ファイルの構造化されていない内容)  
-
-2 つの部分のどちらも **PATCH** 要求には不要です。 どちらも **POST** または作成操作に必要です。
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>BLOB のメタデータ
 
-**Content-Type** と **Content-Disposition** に加えて、マルチパート要求では、正しい JSON 本文も指定する必要があります。 送信する JSON 本文は、実行される HTTP 要求操作の種類によって決まります。
+**Content-Type** と **Content-Disposition** に加えて、Azure Digital Twins BLOB のマルチパート要求では、正しい JSON 本文も指定する必要があります。 送信する JSON 本文は、実行される HTTP 要求操作の種類によって決まります。
 
 4 つの主な JSON スキーマは次のとおりです。
 
@@ -66,12 +48,15 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-テキスト ファイルを BLOB としてアップロードし、それをスペースに関連付ける **POST** 要求を行うには:
+BLOB をテキスト ファイルとしてアップロードし、それをスペースに関連付けるには、以下に対して認証済みの HTTP POST 要求を実行します。
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+さらに以下の本体を追加します。
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -93,9 +78,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| パラメーター値 | 置換後の文字列 |
+| 値 | 置換後の文字列 |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | マルチパート コンテンツ境界名 |
+| USER_DEFINED_BOUNDARY | マルチパート コンテンツ境界名 |
 
 次に示すコードは、[MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent) クラスを使用した同じ BLOB アップロードの .NET での実装です。
 
@@ -114,9 +99,19 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+いずれの例でも、次のことを確認してください。
+
+1. ヘッダーに `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"` が含まれていることを確認します。
+1. 本文がマルチパートであることを確認します。
+
+   - 最初の部分には、必須の BLOB メタデータが含まれています。
+   - 2 番目の部分には、テキスト ファイルが含まれています。
+
+1. テキスト ファイルが `Content-Type: text/plain` としてを提供されていることを確認します。
+
 ## <a name="api-endpoints"></a>API エンドポイント
 
-次のセクションでは、コア エンドポイントとその機能について説明します。
+次のセクションでは、コアとなる BLOB 関連の API エンドポイントとその機能について説明します。
 
 ### <a name="devices"></a>デバイス
 
@@ -124,7 +119,7 @@ BLOB をデバイスにアタッチできます。 次の図では、Management 
 
 ![デバイスの BLOB][2]
 
-たとえば、BLOB を更新または作成して、BLOB をデバイスにアタッチするために、以下に対して **PATCH** 要求を行います。
+たとえば、BLOB を更新または作成して、BLOB をデバイスにアタッチするために、以下に対して認証済みの HTTP PATCH 要求を行います。
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -150,7 +145,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 ![スペース BLOB][3]
 
-たとえば、スペースにアタッチされている BLOB を返すには、以下に対して **GET** 要求を行います。
+たとえば、スペースにアタッチされている BLOB を返すには、以下に対して認証済みの HTTP GET 要求を行います。
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -160,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-同じエンドポイントに **PATCH** 要求を行うと、メタデータの説明を更新し、BLOB の新しいバージョンを作成できます。 HTTP 要求は、必要なメタデータおよびマルチパート フォーム データと共に **PATCH** メソッドを使って実行されます。
+同じエンドポイントに対して PATCH 要求を実行すると、メタデータの説明が更新され、新しいバージョンの BLOB が作成されます。 HTTP 要求は、必要なメタデータ、およびマルチパート フォーム データと共に PATCH メソッドを使って実行されます。
 
 操作が成功すると、次のスキーマに準拠している **SpaceBlob** オブジェクトが返されます。 それを使用して、返されたデータを使用できます。
 
@@ -175,7 +170,7 @@ BLOB を (たとえば、プロファイル画像を関連付けるために) �
 
 ![ユーザー BLOB][4]
 
-たとえば、ユーザーにアタッチされている BLOB をフェッチするには、必要なフォーム データを使用して **GET** 要求を行います。
+たとえば、ユーザーにアタッチされている BLOB をフェッチするには、必要なフォーム データを使用して認証済みの HTTP GET 要求を行います。
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -207,7 +202,7 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins に関する Swagger の参照ドキュメントについて詳しくは、[Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)に関する記事をご覧ください。
+- Azure Digital Twins に関する Swagger の参照ドキュメントについて詳しくは、[Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)に関する記事をご覧ください。
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG

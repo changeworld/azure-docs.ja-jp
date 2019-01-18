@@ -37,6 +37,8 @@ items:
   items:
   - name: メッセージのルーティング
     href: tutorial-routing.md
+  - name: メトリックと診断ログの使用
+    href: tutorial-use-metrics-and-diags.md
   - name: 手動フェールオーバーの実行
     href: tutorial-manual-failover.md
   - name: デバイスの構成
@@ -230,7 +232,7 @@ items:
       items:
       - name: Azure Portal の使用
         href: iot-hub-create-through-portal.md
-      - name: VS Code 用 Azure IoT Hub Toolkit の使用
+      - name: VS Code 用の Azure IoT Tools の使用
         href: iot-hub-create-use-iot-toolkit.md
       - name: Azure PowerShell の使用
         href: iot-hub-create-using-powershell.md
@@ -300,16 +302,20 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: IoT の拡張シナリオ
       items:
-      - name: VS Code 用 Azure IoT Hub Toolkit を使用したクラウド デバイス メッセージングの管理
+      - name: VS Code 用の Azure IoT Tools を使用したクラウド デバイス メッセージングの管理
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+      - name: Cloud Explorer for Visual Studio を使用したクラウド デバイス メッセージングの管理
+        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Power BI でのデータ視覚化
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: Web Apps でのデータ視覚化
         href: iot-hub-live-data-visualization-in-web-apps.md
       - name: Azure Machine Learning を使用した天気予報
         href: iot-hub-weather-forecast-machine-learning.md
-      - name: VS Code 用 Azure IoT Hub Toolkit を使用したデバイス管理
+      - name: VS Code 用の Azure IoT Tools を使用したデバイス管理
         href: iot-hub-device-management-iot-toolkit.md
+      - name: Cloud Explorer for Visual Studio を使用したデバイス管理
+        href: iot-hub-device-management-visual-studio.md
       - name: Azure CLI の IoT 拡張機能を使用したデバイス管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Logic Apps を使用したリモートの監視と通知
@@ -346,6 +352,8 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/iothubresource
   - name: REST (証明書)
     href: https://docs.microsoft.com/rest/api/iothub/certificates
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.devices/iothub-allversions
 - name: 関連項目
   items:
   - name: 解決方法
@@ -392,8 +400,8 @@ items:
     href: iot-hub-customer-data-requests.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Azure IoT Hub Toolkit
-    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
+  - name: Azure IoT Tools
+    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - name: DeviceExplorer ツール
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics ツール
@@ -412,9 +420,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 651ac892bdfd81d0d106d831caeec4f2f43e1649
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337718"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247335"

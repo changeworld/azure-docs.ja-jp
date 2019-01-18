@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72b0aba4d2bf9cb666d1cb7ae30d0cbdefe3045b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 32a0263c4c8c1e85145f5d11fd44823216efdcbc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438413"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107057"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -55,8 +55,8 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
-| apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
+| resourceName または resourceIdentifier |はい |文字列 |リソースの一意識別子です。 |
+| apiVersion |はい |文字列 |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
 | functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 | 
 
 ### <a name="return-value"></a>戻り値
@@ -192,8 +192,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |はい |string |プロバイダーの名前空間 |
-| resourceType |いいえ  |string |指定した名前空間内にあるリソースの種類。 |
+| providerNamespace |はい |文字列 |プロバイダーの名前空間 |
+| resourceType |いいえ  |文字列 |指定した名前空間内にあるリソースの種類。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -280,9 +280,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
-| apiVersion |いいえ  |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
-| 'Full' |いいえ  |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
+| resourceName または resourceIdentifier |はい |文字列 |名前またはリソースの一意の識別子。 |
+| apiVersion |いいえ  |文字列 |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| 'Full' |いいえ  |文字列 |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -345,7 +345,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": { 
@@ -580,10 +580,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceGroupName |いいえ  |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
-| resourceName1 |はい |string |リソースの名前。 |
-| resourceName2 |いいえ  |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceGroupName |いいえ  |文字列 |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceType |はい |文字列 |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |文字列 |リソースの名前。 |
+| resourceName2 |いいえ  |文字列 |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -631,7 +631,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {

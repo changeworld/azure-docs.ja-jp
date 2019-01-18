@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
+ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278680"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608445"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -36,6 +36,17 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="12700"></a>1.2.70.0
+
+### <a name="release-status"></a>リリースの状態
+
+2018/12/18:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+
+このビルドでは、Azure AD Connect に付属の非標準コネクタ (Generic LDAP コネクタや Generic SQL コネクタなど) を更新します。 適用可能なコネクタの詳細については、「[コネクタ バージョンのリリース履歴](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history)」でバージョン 1.1.911.0 を参照してください。
+
 
 ## <a name="12690"></a>1.2.69.0
 
@@ -665,7 +676,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertVersion|CertSignatureAlgorithmOid|選択|
     |CertKeyAlgorithmParams|CertHashString|Where|
     |||With|
 

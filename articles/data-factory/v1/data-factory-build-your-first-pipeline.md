@@ -10,19 +10,18 @@ ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734254"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015952"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル:Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,11 +32,11 @@ ms.locfileid: "45734254"
 
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 このチュートリアルでは、データ パイプラインを備えた最初の Azure Data Factory を作成します。 パイプラインによって、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して出力データを生成することで、入力データを変換します。  
 
-この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Azure Portal、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの 1 つ、または最後にあるリンクの 1 つを選択してチュートリアルを実行します。    
+この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Azure portal、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの 1 つ、または最後にあるリンクの 1 つを選択してチュートリアルを実行します。    
 
 ## <a name="tutorial-overview"></a>チュートリアルの概要
 このチュートリアルでは、以下の手順を実行します。
@@ -50,7 +49,7 @@ ms.locfileid: "45734254"
     このチュートリアルでは、パイプラインで Hive アクティビティを使用して、Azure HDInsight Hadoop クラスターで Hive クエリを実行することでデータを変換します。 
 3. **リンクされたサービス**を作成します。 データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。 Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。 HDInsight Hadoop クラスターなどのコンピューティング サービスがデータを処理または変換します。
 
-    このチュートリアルでは、リンクされたサービスを 2 つ作成します。**Azure Storage** と **Azure HDInsight** です。 Azure Storage のリンクされたサービスでは、入出力データを保持する Azure ストレージ アカウントをデータ ファクトリにリンクします。 Azure HDInsight のリンクされたサービスでは、データの変換に使用する Azure HDInsight クラスターをデータ ファクトリにリンクします。 
+    このチュートリアルでは、2 つのリンクされたサービスを作成します (**Azure Storage**、**Azure HDInsight**)。 Azure Storage のリンクされたサービスでは、入出力データを保持する Azure ストレージ アカウントをデータ ファクトリにリンクします。 Azure HDInsight のリンクされたサービスでは、データの変換に使用する Azure HDInsight クラスターをデータ ファクトリにリンクします。 
 3. 入力 **データセット**と出力データセットを作成する。 入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
 
     このチュートリアルでは、入力データセットと出力データセットで Azure Blob Storage の入力データと出力データの場所を指定します。 Azure Storage のリンクされたサービスで、どの Azure ストレージ アカウントを使用するかを指定します。 入力データセットで、入力ファイルを配置する場所を指定し、出力データセットで、出力ファイルを配置する場所を指定します。 
@@ -103,7 +102,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 Azure Portal と Visual Studio では、GUI を使用してデータ ファクトリを構築します。 一方、PowerShell、Resource Manager テンプレート、および REST API のオプションでは、スクリプトやプログラミングを使用してデータ ファクトリを構築します。
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 > 
 > 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
 

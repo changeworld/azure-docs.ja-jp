@@ -1,5 +1,5 @@
 ---
-title: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs
+title: Azure Active Directory (Azure AD) で Hybrid Azure Active Directory 参加の実装を計画する方法 | Microsoft Docs
 description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274566"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102280"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
-ユーザーと同じく、デバイスは、保護したいと同時に、いつでもどこでもリソースを保護するために使用したいもう 1 つの ID になりつつあります。 この目標は、次のいずれかの方法を使用してデバイスの ID を Azure AD に設定することで達成できます。
+ユーザーと同じく、デバイスは、保護の対象であると同時に、時と場所を選ばずにリソースを保護するために使用したいもう 1 つの ID になりつつあります。 この目標は、次のいずれかの方法を使用してデバイスの ID を Azure AD に設定することで達成できます。
 
 - Azure AD 参加
 - ハイブリッド Azure AD 参加
@@ -54,7 +54,6 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 
  
-
 
 ## <a name="review-supported-devices"></a>サポート対象デバイスを確認する 
 
@@ -112,6 +111,11 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 このような場合は、「[デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)」を参照してください。
 
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討する必要があります。 デバイスが Hybrid Azure AD 参加と Azure AD 登録済みの両方の状態になることは、サポートされていません。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。 
+ - デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。 
+ - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます
+
+
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法を確認する
 
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 たとえば、すべてが期待どおりに機能することを確認するための最初のロールアウト中にこのような状況が発生します。
@@ -144,15 +148,15 @@ Windows デスクトップ オペレーティング システムを実行する�
  Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](../device-management-hybrid-azuread-joined-devices-setup.md)に関するページを参照してください。 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加における代替ログイン ID のサポート
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Hybrid Azure AD 参加における代替ログイン ID のサポート
 
-Windows 10 のハイブリッド Azure AD 参加は、代替ログイン ID、[認証方法](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートを提供します。 環境内に存在できる代替ログイン ID は 2 種類あります。
+Windows 10 の Hybrid Azure AD 参加では、代替ログイン ID、[認証方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートが提供されます。 環境内に存在できる代替ログイン ID は 2 種類あります。
 
- - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID は、ドメイン レジストラーに登録されている有効な確認済みドメインを持ちます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
+ - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
  
- - ルーティング不可能な代替ログイン ID:ルーティング不可能な代替ログイン ID は、確認済みドメインを持ちません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.local はインターネットで確認済みのドメインではありませんが、Contoso 社のネットワーク内で使用されます。
+ - ルーティング不可能な代替ログイン ID:ルーティング不可能な代替ログイン ID には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.local はインターネットで確認済みのドメインではありませんが、Contoso 社のネットワーク内で使用されます。
  
-次の表は、Windows 10 のハイブリッド Azure AD 参加における、これらの代替ログイン ID のいずれかのサポートに関する詳細を示しています
+次の表は、Windows 10 の Hybrid Azure AD 参加における、これらの代替ログイン ID のいずれかのサポートに関する詳細を示しています
 
 |代替ログイン ID の種類|ドメインの種類|Windows 10 のバージョン|説明|
 |-----|-----|-----|-----|

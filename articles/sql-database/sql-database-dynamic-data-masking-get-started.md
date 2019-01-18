@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 872e700842ce69ca955035120d4e09ec9facf7ec
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/16/2018
+ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165553"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536374"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL Database の動的データ マスク
 
@@ -31,7 +31,7 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 SQL Database の構成ブレードまたは設定ブレードで動的データ マスク操作を選ぶことにより、Azure Portal で動的データ マスク ポリシーを設定します。
 
 ### <a name="dynamic-data-masking-permissions"></a>動的データ マスクのアクセス許可
-動的データ マスクを構成できるのは、Azure Database 管理者、サーバー管理者、またはセキュリティ責任者の各ロールです。
+動的データ マスクを構成できるのは、Azure Database 管理者、サーバー管理者、または [SQL セキュリティ管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)の各ロールです。
 
 ### <a name="dynamic-data-masking-policy"></a>動的データ マスク ポリシー
 * **マスクから除外する SQL ユーザー** - SQL クエリの結果でデータがマスクされない SQL ユーザーまたは AAD の ID のセット。 管理者特権を持つユーザーは常にマスクから除外され、マスクのない元のデータを見ることができます。

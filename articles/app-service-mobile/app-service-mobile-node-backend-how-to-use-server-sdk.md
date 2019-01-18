@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409260"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725033"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
@@ -153,14 +153,14 @@ Mobile Apps バックエンドは、[Azure Portal] ですぐに作成できま�
 次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
 1. Git をまだインストールしていない場合はインストールします。 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。 オペレーティング システム固有の配布とインストールのガイダンスについては、[Git のインストール](https://git-scm.com/book/en/Getting-Started-Installing-Git)に関するページを参照してください。
-1. バックエンド サイトの Git リポジトリを有効にする方法については、「[リポジトリを準備する](../app-service/app-service-deploy-local-git.md#prepare-your-repository)」を参照してください。 デプロイ用のユーザー名とパスワードをメモしておきます。
-1. Mobile Apps バックエンドのウィンドウで、**[Git クローン URL]** の設定をメモしておきます。
-1. Git クローン URL を使用して `git clone` コマンドを実行します。 次の例のように、必要に応じてパスワードを入力します。
+2. バックエンド サイトの Git リポジトリを有効にする方法については、「[リポジトリを準備する](../app-service/deploy-local-git.md#prepare-your-repository)」を参照してください。 デプロイ用のユーザー名とパスワードをメモしておきます。
+3. Mobile Apps バックエンドのウィンドウで、**[Git クローン URL]** の設定をメモしておきます。
+4. Git クローン URL を使用して `git clone` コマンドを実行します。 次の例のように、必要に応じてパスワードを入力します。
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. ローカル ディレクトリ (前の例では `/todolist`) を参照し、プロジェクト ファイルがダウンロードされていることを確認します。 `/tables` ディレクトリ内にある todoitem.json ファイルを見つけます。 このファイルでは、テーブルに対するアクセス許可を定義します。 同じディレクトリ内にある todoitem.js ファイルも見つけます。 このファイルには、テーブルの CRUD 操作スクリプトが定義されています。
-1. プロジェクト ファイルを変更した後、次のコマンドを実行して変更を追加してコミットし、サイトにアップロードします。
+5. ローカル ディレクトリ (前の例では `/todolist`) を参照し、プロジェクト ファイルがダウンロードされていることを確認します。 `/tables` ディレクトリ内にある todoitem.json ファイルを見つけます。 このファイルでは、テーブルに対するアクセス許可を定義します。 同じディレクトリ内にある todoitem.js ファイルも見つけます。 このファイルには、テーブルの CRUD 操作スクリプトが定義されています。
+6. プロジェクト ファイルを変更した後、次のコマンドを実行して変更を追加してコミットし、サイトにアップロードします。
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -968,10 +968,10 @@ Azure Portal では、ローカル コンピューターにプロジェクトを
 [Google 認証を構成する]: ../app-service/configure-authentication-provider-google.md
 [Microsoft 認証を構成する]: ../app-service/configure-authentication-provider-microsoft.md
 [Twitter 認証を構成する]: ../app-service/configure-authentication-provider-twitter.md
-[Azure App Service のデプロイ ガイド]: ../app-service/app-service-deploy-local-git.md
+[Azure App Service のデプロイ ガイド]: ../app-service/deploy-local-git.md
 [Azure App Service の監視]: ../app-service/web-sites-monitor.md
-[Azure App Service での診断ログの有効化]: ../app-service/web-sites-enable-diagnostic-log.md
-[Visual Studio での Azure App Service のトラブルシューティング]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Azure App Service での診断ログの有効化]: ../app-service/troubleshoot-diagnostic-logs.md
+[Visual Studio での Azure App Service のトラブルシューティング]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Node のバージョンを指定する]: ../nodejs-specify-node-version-azure-apps.md
 [Node モジュールを使用する]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/

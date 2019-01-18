@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/13/2018
+ms.date: 12/17/2018
 ms.author: b-juche
-ms.openlocfilehash: 8fc76c33055f7131444a073d2f8560e136c0701d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 937ff9cf4c099f229df28070be07ba76339704e0
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413253"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584005"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Azure NetApp Files のボリュームを作成する
 
@@ -62,7 +62,7 @@ ms.locfileid: "53413253"
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         
-        サブネットを委任していない場合は、[Create a Volume](ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、**[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。    
+        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、**[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
  
         ![新しいボリューム](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

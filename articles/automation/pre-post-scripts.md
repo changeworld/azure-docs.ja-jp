@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 245cbd86ae43560e4e41f4b97350f9a5857e1b25
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956624"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121313"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
@@ -101,9 +101,6 @@ Runbook が事前または事後スクリプトとして使用されるように
 ```
 
 すべてのプロパティの完全な例は、[ソフトウェア更新構成 (名前で取得)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples) に関するページにあります。
-
-> [!NOTE]
-> [動的グループ (プレビュー)](automation-update-management.md#using-dynamic-groups) を使用して展開に追加されたコンピューターは現在、**SoftwareUpdateConfigurationRunContext** パラメーターに含まれていません。
 
 ## <a name="samples"></a>サンプル
 
@@ -220,8 +217,6 @@ if ($summary.Type -eq "Error")
 ## <a name="known-issues"></a>既知の問題
 
 * 事前および事後スクリプトを使用している場合は、パラメーターにオブジェクトまたは配列を渡すことができません。 その Runbook が失敗します。
-* 事前または事後スクリプトを選択するとき、発行されていない Runbook が選択可能として表示されます。 発行されていない Runbook は起動できず、失敗するため、発行されている Runbook のみを選択する必要があります。
-* [動的グループ (プレビュー)](automation-update-management.md#using-dynamic-groups) を使用して展開に追加されたコンピューターは現在、事前および事後スクリプトに渡される **SoftwareUpdateConfigurationRunContext** パラメーターに含まれていません。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc94e309db3fd0e97e06b5be5884a0b6e7337cea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 236a4e4f79e6da89154e1e52bb9f45daf3a54d59
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158977"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632045"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート: Azure CLI を使用した Azure ファイル共有の作成および管理
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure ファイル共有の作成および管理
 このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -87,7 +87,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>ファイル REST プロトコルで Azure ファイル共有を使用する 
-ファイル REST プロトコルは直接使用する (つまり手動で REST HTTP 呼び出しを作成する) こともできますが、ファイル REST プロトコルを使用する最も一般的な方法は、Azure CLI、[AzureRM PowerShell モジュール](storage-how-to-use-files-powershell.md)、または Azure Storage SDK を使用することです。いずれの方法でも、任意のスクリプト/プログラミング言語でファイル REST プロトコルの便利なラッパーが提供されます。  
+ファイル REST プロトコルは直接使用する (つまり手動で REST HTTP 呼び出しを作成する) こともできますが、ファイル REST プロトコルを使用する最も一般的な方法は、Azure CLI、[Azure PowerShell モジュール](storage-how-to-use-files-powershell.md)、または Azure Storage SDK を使用することです。いずれの方法でも、任意のスクリプト言語またはプログラミング言語でファイル REST プロトコルの便利なラッパーが提供されます。  
 
 Azure Files のほとんどのユーザーは、SMB プロトコルを介して Azure ファイル共有を操作したいと考えていると予想されます。その方が、使用できることを期待している既存のアプリケーションやツールを使用できるためです。しかし、SMB よりもファイル REST API を使用する方が有益な理由がいくつかあります。その理由を次に示します。
 
@@ -95,7 +95,7 @@ Azure Files のほとんどのユーザーは、SMB プロトコルを介して 
 - ポート 445 がブロックされていないオンプレミスのクライアントなど、SMB 共有をマウントできないクライアントからスクリプトまたはアプリケーションを実行する必要がある。
 - [Azure Functions](../../azure-functions/functions-overview.md) のようなサーバーレス リソースを利用している。 
 
-次の例は、AzureRM PowerShell モジュールを使用してファイル REST プロトコルで Azure ファイル共有を操作する方法を示しています。 
+次の例は、Azure CLI を使用してファイル REST プロトコルでお客様の Azure ファイル共有を操作する方法を示しています。 
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 Azure ファイル共有のルートに *myDirectory* という名前の新しいディレクトリを作成するには、[`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) コマンドを使用します。

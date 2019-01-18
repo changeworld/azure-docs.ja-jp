@@ -1,23 +1,24 @@
 ---
-title: C# を使用した LUIS ボット - Web アプリ ボット - Bot Framework SDK 3.0
-titleSuffix: Azure Cognitive Services
+title: Bot - C# - v3
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032276"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267370"
 ---
-# <a name="luis-bot-in-c"></a>C# の LUIS ボット
+# <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
 C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。 ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
 
@@ -36,11 +37,11 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 1. [Azure portal](https://portal.azure.com) の左上のメニューで、**[新しいリソースの作成]** を選択します。
 
-    ![新しいリソースの作成](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
+    ![Azure portal でリソースを作成する](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
 2. 検索ボックスで、**Web アプリ ボット**を検索します。 
 
-    ![新しいリソースの作成](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
+    ![リソースの種類として Web アプリ ボットを選択する](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
 3. [Web App Bot ]\(Web アプリ ボット\) ウィンドウで、**[作成]** をクリックします。
 
@@ -161,19 +162,10 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 
 **ヘルプ**、**キャンセル**、および**あいさつ**の意図を処理するための、LUIS の意図とボット サービスのダイアログを追加します。 Web アプリ ボットのトレーニング、公開、および[ビルド](#build-the-bot)を必ず行ってください。 LUIS とボットの意図は同じである必要があります。
 
+会話型ボットのある他の[サンプル](https://github.com/Microsoft/AI)を確認してください。 
+
 > [!div class="nextstepaction"]
 > [意図の追加](./luis-how-to-add-intents.md)
 > [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
-
-
-<!-- Links -->
-[Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-cs-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/csharp
-[Github-LUIS-Samples-cs-hotel-bot-readme]: https://github.com/Microsoft/LUIS-Samples/blob/master/bot-integration-samples/hotel-finder/csharp/README.md
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
-[VisualStudio]: https://www.visualstudio.com/
 
 <!-- tested on Win10 -->

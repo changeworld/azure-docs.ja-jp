@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 07d3f5d365fa5c552ccb61c97532a9931b7e282e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341669"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583682"
 ---
-# <a name="extracting-text-with-ocr"></a>OCR によるテキストの抽出
+# <a name="extracting-text-with-optical-character-recognition"></a>光学式文字認識でのテキストの抽出
 
 Computer Vision の光学式文字認識 (OCR) テクノロジでは、イメージのテキスト コンテンツが検出され、識別されたテキストはコンピューターが読み取り可能な文字ストリームに抽出されます。 結果は、検索の際に、また、医療記録、セキュリティ、銀行取引などの他の多くの目的に使用できます。 言語は自動的に検出されます。 OCR を利用すれば、ユーザーはテキストを書き写すのではなく、撮影できるため、使い勝手がよく、時間を短縮できます。
 
-OCR では 25 言語がサポートされています。 これらの言語は、アラビア語、簡体字中国語、繁体字中国語、チェコ語、デンマーク語、オランダ語、英語、フィンランド語、フランス語、ドイツ語、ギリシャ語、ハンガリー語、イタリア語、日本語、韓国語、ノルウェー語、ポーランド語、ポルトガル語、ルーマニア語、ロシア語、セルビア語 (キリルおよびラテン)、スロバキア語、スペイン語、スウェーデン語、トルコ語です。
+OCR では 25 言語がサポートされています。 これらの言語は次のとおりです。アラビア語、簡体字中国語、繁体字中国語、チェコ語、デンマーク語、オランダ語、英語、フィンランド語、フランス語、ドイツ語、ギリシャ語、ハンガリー語、イタリア語、日本語、韓国語、ノルウェー語、ポーランド語、ポルトガル語、ルーマニア語、ロシア語、セルビア語 (キリルおよびラテン)、スロバキア語、スペイン語、スウェーデン語、トルコ語。
 
 必要に応じて、OCR では、認識されたテキストの回転が、イメージの水平軸を中心として度単位で修正されます。 OCR では、以下の図に示すように、各単語のフレーム座標が提供されます。
 
-![OCR の概要](./Images/vision-overview-ocr.png)
+![回転している画像と読み取られて描かれたテキストを表す図](./Images/vision-overview-ocr.png)
 
 ## <a name="ocr-requirements"></a>OCR の要件
 

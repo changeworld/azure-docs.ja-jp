@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141851"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187979"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -60,7 +60,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
     AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
 
-    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 さまざまな DRM (Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay) をテストするには、適切なブラウザーを選択する必要があります。
+    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 さまざまな DRM をテストするには、適切なブラウザーを選択する必要があります (Widevine の場合は Chrome/Opera/Firefox、PlayReady の場合は Microsoft Edge/IE11、FairPlay の場合は Safari for macOS)。
 
 3. バックエンド リソース アクセス用のアクセス トークンとして JSON Web トークン (JWT) を発行するセキュア トークン サービス (STS)。 バックエンド リソースとして AMS ライセンス配信サービスを使用することができます。 STS は以下を定義する必要があります。
 
@@ -78,7 +78,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 現時点では、暗号化できる形式は、HTTP ライブ ストリーミング (HLS)、MPEG DASH、および Smooth Streaming です。 各プロトコルは、次の暗号化方式をサポートしています。
 
-|プロトコル|コンテナー形式|暗号化スキーム|
+|Protocol|コンテナー形式|暗号化スキーム|
 |---|---|---|---|
 |MPEG-DASH|All|AES|
 ||CSF (fmp4) |CENC (Widevine + PlayReady) |

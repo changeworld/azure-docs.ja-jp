@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1e1001d2171bc8d9fc0d3038755220b71218ac2e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9204e12abbbdfdf9ac303497b828ebc39a629f37
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020322"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198328"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>Azure Cache for Redis のドキュメント
 
@@ -219,9 +219,9 @@ ms.locfileid: "53020322"
                     <div class="cardText">
                         <h3>Languages</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
-                        <p><a href="http://redis.io/clients">Redis クライアント</a></p>
-                        <p><a href="http://redis.io/commands#">Redis コマンド</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.redis.rediscache">Java</a></p>
+                        <p><a href="https://redis.io/clients">Redis クライアント</a></p>
+                        <p><a href="https://redis.io/commands#">Redis コマンド</a></p>
                    </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@ ms.locfileid: "53020322"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST</h3>
+                        <h3>REST ()</h3>
                         <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API リファレンス</a></p>
                     </div>
                 </div>

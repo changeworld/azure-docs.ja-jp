@@ -3,20 +3,20 @@ title: Visual Studio でロジック アプリを管理する - Azure Logic Apps
 description: Visual Studio Cloud Explorer でロジック アプリとその他の Azure 資産を管理する
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445645"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158147"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -62,10 +62,10 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 2. **[リソース グループ]** または **[リソースの種類]** のどちらで検索するかに応じて、次のいずれかの手順に従います。
 
-   * **リソース グループ**: Cloud Explorer では、Azure サブスクリプションの下に、そのサブスクリプションと関連付けられているすべてのリソース グループが表示されます。 
+   * **リソース グループ**:Cloud Explorer では、Azure サブスクリプションの下に、そのサブスクリプションと関連付けられているすべてのリソース グループが表示されます。 
    目的のロジック アプリを含むリソース グループを展開して、ロジック アプリを選びます。
 
-   * **リソースの種類**: Azure サブスクリプションの **[Logic Apps]** を展開します。 サブスクリプションに関連付けられているすべてのロジック アプリが表示されるので、目的のロジック アプリを選びます。
+   * **リソースの種類**:Azure サブスクリプションの **[Logic Apps]** を展開します。 サブスクリプションに関連付けられているすべてのロジック アプリが表示されるので、目的のロジック アプリを選びます。
 
 <a name="open-designer"></a>
 
@@ -172,6 +172,13 @@ Azure Portal からロジック アプリを削除するには、Cloud Explorer 
 
 > [!NOTE]
 > ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。 
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Logic Apps デザイナーでロジック アプリ プロジェクトを開いたときに、Azure サブスクリプションを選択するオプションが表示されないことがあります。 代わりに、ロジック アプリには、使用するもの以外の Azure サブスクリプションが開かれます。 ロジック アプリの .json ファイルを開いた後、Visual Studio は今後使用できるように、最初に選択したサブスクリプションをキャッシュするため、この動作が行われます。 この問題を解決するには、次の手順のいずれかを試してください。
+
+* ロジック アプリの .json ファイルの名前を変更します。 サブスクリプションのキャッシュは、ファイル名に依存します。 
+* ソリューション内の*すべて*のロジック アプリについて以前に選択したサブスクリプションを削除するには、ソリューションのディレクトリ内の*非表示*の .vs フォルダーを削除します。 この場所には、サブスクリプションの情報が格納されます。 
 
 ## <a name="next-steps"></a>次の手順
 

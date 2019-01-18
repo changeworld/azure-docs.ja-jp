@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 39cb9f606e6829fe8265a40216de5312c3e7e60b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855308"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075194"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -50,10 +50,10 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
     - **[名前]:** ピアリングの名前は、仮想ネットワーク内で一意である必要があります。
     - **[仮想ネットワークのデプロイ モデル]:** ピアリングする仮想ネットワークのデプロイに使用されたデプロイ モデルを選択します。
     - **[リソース ID を知っている]:** ピアリングする仮想ネットワークへの読み取りアクセス権がある場合は、このチェック ボックスをオフのままにしておきます。 ピアリングする仮想ネットワークまたはサブスクリプションへの読み取りアクセス権がない場合は、このボックスをオンにします。 チェック ボックスをオンにしたときに表示される **[リソース ID]** ボックスに、ピアリングする仮想ネットワークの完全なリソース ID を入力します。 この仮想ネットワークと同じ Azure [リージョン](https://azure.microsoft.com/regions)、または[サポートされている異なる](#requirements-and-constraints) Azure リージョンに存在する、仮想ネットワークのリソース ID を入力する必要があります。 完全なリソース ID は、/subscriptions/<Id>/resourceGroups/<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/<仮想ネットワーク名> のようになります。 仮想ネットワークのリソース ID を取得するには、仮想ネットワークのプロパティを表示します。 仮想ネットワークのプロパティを表示する方法については、「[仮想ネットワークと設定の表示](manage-virtual-network.md#view-virtual-networks-and-settings)」を参照してください。 サブスクリプションが、ピアリングを作成している仮想ネットワークを含むサブスクリプションと異なる Azure Active Directory テナントに関連付けられている場合、まず各テナントのユーザーを[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として他方のテナントに追加します。
-    - **[サブスクリプション]:** ピアリングする仮想ネットワークの[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 アカウントに読み取りアクセス権があるサブスクリプションの数に応じて、1 つ以上のサブスクリプションが表示されます。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
-    - **[仮想ネットワーク]:** ピアリングする仮想ネットワークを選択します。 いずれかの Azure デプロイ モデルで作成された仮想ネットワークを選択できます。 異なるリージョンの仮想ネットワークを選ぶ場合は、[サポートされているリージョン](#cross-region)の仮想ネットワークを選ぶ必要があります。 仮想ネットワークを一覧に表示するには、その仮想ネットワークへの読み取りアクセス権が必要です。 仮想ネットワークが一覧に表示されていても、淡色表示されている場合、仮想ネットワークのアドレス空間がこの仮想ネットワークのアドレス空間と重複している可能性があります。 仮想ネットワークのアドレス空間が重複している場合、それらの仮想ネットワークをピアリングをすることはできません。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
-    - **[仮想ネットワーク アクセスを許可する]:** 2 つの仮想ネットワーク間の通信を有効にする場合は、**[有効]** (既定値) を選択します。 仮想ネットワーク間の通信を有効にすると、各仮想ネットワークに接続されているリソースは、同じ仮想ネットワークに接続されている場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 2 つの仮想ネットワーク内のリソース間のすべての通信は、Azure プライベート ネットワーク経由で行われます。 ネットワーク セキュリティ グループの **VirtualNetwork** サービス タグには、仮想ネットワークとピアリングされた仮想ネットワークが含まれます。 ネットワーク セキュリティ グループのサービス タグについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md#service-tags)に関する記事をご覧ください。 ピアリングされた仮想ネットワークにトラフィックが流れないようにする場合は、**[無効]** を選択します。 仮想ネットワークを別の仮想ネットワークとピアリングしていても、2 つの仮想ネットワーク間のトラフィック フローを無効にする必要がある場合は、**[無効]** を選択できます。 ピアリングを削除し、再作成するよりも、有効化/無効化する方が便利な場合があります。 この設定を無効にすると、ピアリングされた仮想ネットワーク間でトラフィックが流れなくなります。
-    - **[転送されたトラフィックを許可する]:** このボックスをオンにすると、仮想ネットワーク内のネットワーク仮想アプライアンスによって*転送*されたトラフィック (仮想ネットワークから発生したものではないもの) を、ピアリングを通じてこの仮想ネットワークに流すことができます。 たとえば、Spoke1、Spoke2、およびハブという 3 つの仮想ネットワークがあるとします。 各スポーク仮想ネットワークとハブ仮想ネットワークの間にはピアリングが存在しますが、スポーク仮想ネットワーク間にはピアリングが存在しません。 ハブ仮想ネットワークにはネットワーク仮想アプライアンスがデプロイされており、ユーザー定義ルートは、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングする、各スポーク仮想ネットワークに適用されます。 各スポーク仮想ネットワークとハブ仮想ネットワーク間のピアリングに対してこのチェック ボックスをオフにした場合、仮想ネットワーク間のトラフィックをハブが転送するため、スポーク仮想ネットワーク間ではトラフィックは流れません。 この機能を有効にすると、ピアリングを介して転送されたトラフィックが許可されますが、ユーザー定義ルートやネットワーク仮想アプライアンスが作成されるわけではありません。 ユーザー定義ルートとネットワーク仮想アプライアンスは個別に作成されます。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md#user-defined)をご覧ください。 Azure VPN Gateway を通じて仮想ネットワーク間でトラフィックが転送される場合は、この設定をオンにする必要はありません。
+    - **サブスクリプション:** ピアリングする仮想ネットワークの[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 アカウントに読み取りアクセス権があるサブスクリプションの数に応じて、1 つ以上のサブスクリプションが表示されます。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
+    - **仮想ネットワーク:** ピアリングする仮想ネットワークを選択します。 いずれかの Azure デプロイ モデルで作成された仮想ネットワークを選択できます。 異なるリージョンの仮想ネットワークを選ぶ場合は、[サポートされているリージョン](#cross-region)の仮想ネットワークを選ぶ必要があります。 仮想ネットワークを一覧に表示するには、その仮想ネットワークへの読み取りアクセス権が必要です。 仮想ネットワークが一覧に表示されていても、淡色表示されている場合、仮想ネットワークのアドレス空間がこの仮想ネットワークのアドレス空間と重複している可能性があります。 仮想ネットワークのアドレス空間が重複している場合、それらの仮想ネットワークをピアリングをすることはできません。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
+    - **[仮想ネットワーク アクセスを許可する]**: 2 つの仮想ネットワーク間の通信を有効にする場合は、**[有効]** (既定値) を選択します。 仮想ネットワーク間の通信を有効にすると、各仮想ネットワークに接続されているリソースは、同じ仮想ネットワークに接続されている場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 2 つの仮想ネットワーク内のリソース間のすべての通信は、Azure プライベート ネットワーク経由で行われます。 ネットワーク セキュリティ グループの **VirtualNetwork** サービス タグには、仮想ネットワークとピアリングされた仮想ネットワークが含まれます。 ネットワーク セキュリティ グループのサービス タグについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md#service-tags)に関する記事をご覧ください。 ピアリングされた仮想ネットワークにトラフィックが流れないようにする場合は、**[無効]** を選択します。 仮想ネットワークを別の仮想ネットワークとピアリングしていても、2 つの仮想ネットワーク間のトラフィック フローを無効にする必要がある場合は、**[無効]** を選択できます。 ピアリングを削除し、再作成するよりも、有効化/無効化する方が便利な場合があります。 この設定を無効にすると、ピアリングされた仮想ネットワーク間でトラフィックが流れなくなります。
+    - **[転送されたトラフィックを許可する]:** このボックスをオンにすると、仮想ネットワーク内のネットワーク仮想アプライアンスによって "*転送*" されたトラフィック (仮想ネットワークから発生したものではないもの) を、ピアリングを通じてこの仮想ネットワークに流すことができます。 たとえば、Spoke1、Spoke2、およびハブという 3 つの仮想ネットワークがあるとします。 各スポーク仮想ネットワークとハブ仮想ネットワークの間にはピアリングが存在しますが、スポーク仮想ネットワーク間にはピアリングが存在しません。 ハブ仮想ネットワークにはネットワーク仮想アプライアンスがデプロイされており、ユーザー定義ルートは、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングする、各スポーク仮想ネットワークに適用されます。 各スポーク仮想ネットワークとハブ仮想ネットワーク間のピアリングに対してこのチェック ボックスをオフにした場合、仮想ネットワーク間のトラフィックをハブが転送するため、スポーク仮想ネットワーク間ではトラフィックは流れません。 この機能を有効にすると、ピアリングを介して転送されたトラフィックが許可されますが、ユーザー定義ルートやネットワーク仮想アプライアンスが作成されるわけではありません。 ユーザー定義ルートとネットワーク仮想アプライアンスは個別に作成されます。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md#user-defined)をご覧ください。 Azure VPN Gateway を通じて仮想ネットワーク間でトラフィックが転送される場合は、この設定をオンにする必要はありません。
     - **[ゲートウェイ転送を許可する]:** この仮想ネットワークに仮想ネットワーク ゲートウェイが接続されており、ピアリングされた仮想ネットワークからのトラフィックがゲートウェイ経由で流れることを許可する場合は、このボックスをオンにします。 たとえば、仮想ネットワーク ゲートウェイを介して、この仮想ネットワークをオンプレミス ネットワークに接続できます。 ゲートウェイは、ExpressRoute または VPN ゲートウェイを指定できます。 このボックスをオンにすると、ピアリングされた仮想ネットワークからのトラフィックを、この仮想ネットワークに接続されたゲートウェイ経由でオンプレミス ネットワークに流すことができます。 このボックスをオンにしても、ピアリングされた仮想ネットワークでゲートウェイを構成することはできません。 もう一方の仮想ネットワークからこの仮想ネットワークへのピアリングを設定するときに、ピアリングされた仮想ネットワークで **[リモート ゲートウェイを使用する]** チェック ボックスをオンにしておく必要があります。 このボックスをオフ (既定値) のままにしても、ピアリングされた仮想ネットワークからのトラフィックはこの仮想ネットワークに流れますが、この仮想ネットワークに接続された仮想ネットワーク ゲートウェイ経由で流れることはできません。 ピアリングが仮想ネットワーク (Resource Manager) と仮想ネットワーク (クラシック) の間で行われる場合、ゲートウェイは仮想ネットワーク (Resource Manager) 内にある必要があります。 異なるリージョンの仮想ネットワークをピアリングしている場合は、このオプションを有効にできません。
     
         VPN ゲートウェイでは、トラフィックをオンプレミス ネットワークに転送するだけでなく、自身が置かれている仮想ネットワークとピアリングされた仮想ネットワーク間のネットワーク トラフィックを、それらの仮想ネットワークを相互にピアリングすることなく転送できます。 VPN ゲートウェイを使用したトラフィックの転送は、ハブ内の VPN ゲートウェイを使用して、相互にピアリングされていないスポーク仮想ネットワーク間のトラフィックをルーティングする場合に便利です (**[転送されたトラフィックを許可する]** について説明したハブとスポークの例をご覧ください)。 転送へのゲートウェイの使用許可について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 このシナリオを実行するには、次ホップの種類として仮想ネットワーク ゲートウェイを指定したユーザー定義ルートを実装する必要があります。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md#user-defined)をご覧ください。 ユーザー定義ルートで次ホップの種類として指定できるのは、VPN ゲートウェイだけです。ユーザー定義ルートで、次ホップの種類として ExpressRoute ゲートウェイを指定することはできません。 異なるリージョンの仮想ネットワークをピアリングしている場合は、このオプションを有効にできません。
@@ -71,7 +71,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 ### <a name="commands"></a>コマンド
 
 - **Azure CLI**: [az network vnet peering create](/cli/azure/network/vnet/peering#create)
-- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **PowerShell**:[Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>ピアリング設定の表示または変更
 
@@ -88,7 +88,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 **コマンド**
 
 - **Azure CLI**: [az network vnet peering list](/cli/azure/network/vnet/peering#az_network_vnet_peering_list) (仮想ネットワークのピアリングを一覧表示する)、[az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) (特定のピアリングの設定を表示する)、[az network vnet peering update](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) (ピアリング設定を変更する)|
-- **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) (ピアリング設定を取得する)、[Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) (設定を変更する)
+- **PowerShell**:[Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) (ピアリング設定を取得する)、[Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) (設定を変更する)
 
 ## <a name="delete-a-peering"></a>ピアリングの削除
 
@@ -108,7 +108,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 **コマンド**
 
 - **Azure CLI**: [az network vnet peering delete](/cli/azure/network/vnet/peering#az_network_vnet_peering_delete)
-- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **PowerShell**:[Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
 
 ## <a name="requirements-and-constraints"></a>要件と制約 
 
@@ -132,14 +132,15 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 - 既定の Azure 名前解決を使用して、ピアリングされた仮想ネットワークで名前を解決することはできません。 他の仮想ネットワークで名前を解決するには、[プライベート ドメインの Azure DNS](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) またはカスタム DNS サーバーを使う必要があります。 独自の DNS サーバーを設定する方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
 - 同じリージョン内のピアリングされた仮想ネットワークのリソースは、同じ仮想ネットワークに存在する場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 ただし、仮想マシンのサイズごとに独自の最大ネットワーク帯域幅が設定されています。 さまざまなサイズの仮想マシンの最大ネットワーク帯域幅の詳細については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM サイズに関する記事を参照してください。
 - 仮想ネットワークは、別の仮想ネットワークとピアリングすることができ、Azure 仮想ネットワーク ゲートウェイを使用して別の仮想ネットワークに接続することもできます。 ピアリングとゲートウェイの両方を使用して仮想ネットワークが接続されている場合、仮想ネットワーク間のトラフィックは、ゲートウェイではなく、ピアリング構成を介して流れます。
+- 新しいルートをクライアントに確実にダウンロードするには、仮想ネットワーク ピアリングが正常に構成された後で、もう一度ポイント対サイト VPN クライアントをダウンロードする必要があります。
 - 仮想ネットワーク ピアリングを利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
 仮想ネットワークのピアリングを扱うために使用するアカウントは、次のロールに割り当てる必要があります。
 
-- [ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor): Resource Manager を通じてデプロイされる仮想ネットワークの場合。
-- [従来のネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor): 従来のデプロイ モデルを通じてデプロイされる仮想ネットワークの場合。
+- [ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor):Resource Manager を通じてデプロイされる仮想ネットワークの場合。
+- [従来のネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor):従来のデプロイ モデルを通じてデプロイされる仮想ネットワークの場合。
 
 上記のどのロールにもアカウントが割り当てられていない場合、次の表から必要なアクションが割り当てられる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる必要があります。
 

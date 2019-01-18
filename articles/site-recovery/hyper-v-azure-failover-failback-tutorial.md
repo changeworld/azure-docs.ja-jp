@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ea372b4363ce506b926a37686b85cb36e51546eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 03b8dd9bd0a7acc63fdae66330904142384429a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833460"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794211"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 
@@ -39,9 +39,9 @@ VM にスナップショットがないことと、フェールバック中に�
 
 フェールオーバーとフェールバックには 3 つの段階があります。
 
-1. **Azure にフェールオーバーする**: オンプレミス サイトの Hyper-V を Azure にフェールオーバーします。
-2. **オンプレミスにフェールオーバーする**: オンプレミス サイトが使用可能な場合に、Azure VM をオンプレミス サイトにフェールオーバーします。 Azure からオンプレミスへのデータの同期が開始され、完了すると、オンプレミスの VM が起動します。  
-3. **オンプレミス VM のレプリケートを反転する**: オンプレミスにフェールオーバーされたら、オンプレミスの VM のレプリケートを反転して、Azure へのレプリケートを開始します。
+1. **Azure にフェールオーバーする**:オンプレミス サイトの Hyper-V VM を Azure にフェールオーバーします。
+2. **オンプレミスにフェールバックする**:オンプレミスのサイトが使用可能になったら、Azure VM をオンプレミス サイトにフェールオーバーします。 Azure からオンプレミスへのデータの同期が開始され、完了すると、オンプレミスの VM が起動します。  
+3. **オンプレミス VM のレプリケーションを反転する**:オンプレミスにフェールバックした後、オンプレミスの VM のレプリケーションを反転させて、Azure へのレプリケートを開始します。
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
@@ -65,7 +65,7 @@ VM にスナップショットがないことと、フェールバック中に�
 4. フェールオーバーを確認したら、**[コミット]** をクリックします。 これにより、利用可能なすべての復旧ポイントが削除されます。
 
 > [!WARNING]
-> **進行中のフェールオーバーをキャンセルしないでください**。進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。
+> **進行中のフェールオーバーを取り消さないでください**: 進行中にキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Azure VM をオンプレミスにフェールバックし、オンプレミス の VM のレプリケートを反転する
 

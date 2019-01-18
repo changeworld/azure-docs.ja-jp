@@ -1,5 +1,5 @@
 ---
-title: Azure でクラウドベースの IoT リモート監視ソリューションを試す | Microsoft Docs
+title: クラウドベースの IoT リモート監視ソリューションを試す - Azure | Microsoft Docs
 description: このクイック スタートでは、リモート監視 Azure IoT ソリューション アクセラレータをデプロイし、サインインしてソリューション ダッシュボードを使用します。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824780"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608359"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート: クラウドベースのリモート監視ソリューションを試す
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート:クラウドベースのリモート監視ソリューションを試す
 
 このクイック スタートでは、Azure IoT リモート監視ソリューション アクセラレータをデプロイする方法を紹介しています。 クラウドベースのこのソリューションでは、**[ダッシュボード]** ページを使用して、シミュレートされたデバイスをマップ上に視覚化します。また、**[メンテナンス]** ページを使用して、シミュレートされた冷却装置デバイスからの圧力アラートに応答します。 このソリューション アクセラレータは、独自に実装を行う際の出発点として、または学習用ツールとしてご利用ください。
 

@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/16/2018
+ms.openlocfilehash: 40f6b6effa509fd2cfa40ecfc758ac37e0a66778
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997602"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538618"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 
@@ -30,7 +30,7 @@ SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱�
 - [脆弱性評価](sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティの状態を表示することができ、セキュリティの問題を解決して、データベースのセキュリティを強化するために実行可能な手順が含まれます。
 - [脅威検出](sql-database-threat-detection-overview.md)では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかるとすぐにセキュリティ通知を提供します。 脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。
 
-SQL ATP を一度有効にすれば、含まれるすべての機能が有効になります。 1 回のクリックでデータベース サーバー全体に対して ATP を有効にし、サーバー上のすべてのデータベースに適用できます。 
+SQL ATP を一度有効にすれば、含まれるすべての機能が有効になります。 1 回のクリックでデータベース サーバー全体に対して ATP を有効にし、サーバー上のすべてのデータベースに適用できます。 ATP の設定を有効にしたり、管理したりするには、[SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) ロール、SQL データベース管理者ロール、または SQL サーバー管理者ロールに属している必要があります。 
 
 ATP の価格は Azure Security Center Standard レベルと同じです。ここで保護対象の各 SQL Database サーバーは 1 つのノードとしてカウントされます。 新しく保護されたリソースは、Security Center Standard レベルの無料試用版として使用できます。 詳しくは、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
 

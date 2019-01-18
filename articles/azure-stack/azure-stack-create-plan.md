@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.reviewer: unknown
+ms.openlocfilehash: 7a3a87c70402374bea6357d1b89a19938ca08868
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077564"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243527"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 [プラン](azure-stack-key-features.md)は、1 つ以上のサービスをグループ化したものです。 プロバイダーは、ユーザーに提供するプランを作成できます。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 この例では、コンピューティング、ネットワーク、およびストレージの各リソース プロバイダーを含むプランを作成する方法を示します。 このプランのサブスクライバーは仮想マシンをプロビジョニングすることができます。
 
-1. Azure Stack 管理者ポータル (https://adminportal.local.azurestack.external) にサインインします。
+1. [Azure Stack 管理者ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[+ リソースの作成]** > **[オファー + プラン]** > **[プラン]** の順に選択します。
+2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[+ リソースの作成]**、**[オファー + プラン]**、**[プラン]** の順に選択します。
   
    ![プランを選択する](media/azure-stack-create-plan/select-plan.png)
 
@@ -72,4 +72,4 @@ ms.locfileid: "49077564"
 
 ## <a name="next-steps"></a>次の手順
 
-[オファーの作成](azure-stack-create-offer.md)
+* [オファーの作成](azure-stack-create-offer.md)

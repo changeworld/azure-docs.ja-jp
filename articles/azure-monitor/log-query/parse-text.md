@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185785"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214132"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>Log Analytics でのテキストデータの解析
 Log Analytics によって収集された一部のデータには、1 つのプロパティで複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>正規表現
-データを正規表現で識別できる場合、個々の値を抽出するために、[正規表現を使用する関数](/azure/kusto/query/re2)を使用できます。 次の例では、[extract](/kusto/query/extractfunction) を使用して、_AzureActivity_ レコードから _UPN_ フィールドを呼び出し、個別のユーザーを返します。
+データを正規表現で識別できる場合、個々の値を抽出するために、[正規表現を使用する関数](/azure/kusto/query/re2)を使用できます。 次の例では、[extract](/azure/kusto/query/extractfunction) を使用して、_AzureActivity_ レコードから _UPN_ フィールドを呼び出し、個別のユーザーを返します。
 
 ```Kusto
 AzureActivity

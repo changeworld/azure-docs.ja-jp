@@ -3,17 +3,17 @@ title: Jenkins とブルー/グリーン デプロイ パターンを使用し�
 description: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイについて説明します。
 ms.service: jenkins
 keywords: Jenkins, Azure, 開発, Kubernetes, k8s, AKS, ブルー/グリーン デプロイ, 継続的デリバリー, CD
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387387"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073885"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
@@ -31,11 +31,11 @@ Azure Kubernetes Service (AKS) を使用すると、ホストされている Kub
 > * Jenkins ジョブの作成と実行
 
 ## <a name="prerequisites"></a>前提条件
-- [GitHub アカウント](https://github.com): サンプル リポジトリを複製するために GitHub アカウントが必要です。
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
-- [Chocolatey](https://chocolatey.org): kubectl をインストールするために使用するパッケージ マネージャーです。
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Kubernetes クラスターに対してコマンドを実行するために使用する、コマンド ライン インターフェイスです。
-- [jq](https://stedolan.github.io/jq/download/): 簡便なコマンドライン JSON プロセッサです。
+- [GitHub アカウント](https://github.com):サンプル リポジトリを複製するために GitHub アカウントが必要です。
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest):Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
+- [Chocolatey](https://chocolatey.org):kubectl をインストールするために使用するパッケージ マネージャーです。
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/):Kubernetes クラスターに対してコマンドを実行するために使用するコマンド ライン インターフェイスです。
+- [jq](https://stedolan.github.io/jq/download/):簡便なコマンド ライン JSON プロセッサです。
 
 ## <a name="clone-the-sample-app-from-github"></a>GitHub からのサンプル アプリの複製
 
@@ -259,7 +259,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 ## <a name="run-the-job"></a>ジョブを実行する
 
-1. ローカル環境でプロジェクトを正常に実行できることを確認します。 以降の手順に、[ローカル コンピューターでプロジェクトを実行する](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)方法を示します。
+1. ローカル環境でプロジェクトを正常に実行できることを確認します。 その方法は次のとおりです。[ローカル コンピューターでプロジェクトを実行します](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. Jenkins ジョブを実行します。 ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境であるブルーの環境に To Do アプリがデプロイされます。 
 

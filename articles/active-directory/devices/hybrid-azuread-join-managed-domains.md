@@ -1,6 +1,6 @@
 ---
-title: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs
-description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
+title: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成 | Microsoft Docs
+description: マネージド ドメイン用のハイブリッド Azure Active Directory 参加を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b87bc4387b7e979aaf3b79a42b81baecc530a8aa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435431"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105136"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
 ユーザーと同じく、デバイスは、保護の対象であると同時に、時と場所を選ばずにリソースを保護するために使用したいもう 1 つの ID になりつつあります。 この目標は、次のいずれかの方法を使用してデバイスの ID を Azure AD に設定することで達成できます。
 

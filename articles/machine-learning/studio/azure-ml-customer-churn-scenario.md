@@ -1,11 +1,11 @@
 ---
-title: Machine Learning を使用した顧客離れの分析 | Microsoft Azure
-description: 顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ
+title: 顧客離れの分析 - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning Studio を使用した顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 1beba951a6785aa90eef22a63a8064e9da1bb27f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835119"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272169"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れの分析
+# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用した顧客離れの分析
 ## <a name="overview"></a>概要
 この記事では、Azure Machine Learning を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
 
@@ -34,7 +34,7 @@ ms.locfileid: "34835119"
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>顧客離れの問題
 コンシューマー市場とあらゆるエンタープライズ セクターの企業は、顧客離れの問題に対処する必要があります。 この問題がきわめて重くのしかかり、ポリシーの決定に影響を及ぼすこともあります。 従来は、これを防ぐために、離反の可能性が高い顧客を予測し、コンセルジュ サービスやマーケティング キャンペーン、優待によってそのニーズを満たすという方法がとられてきました。 こうしたアプローチは、業界によって異なることがあります。 さらには、(電気通信など) 同じ業界内のコンシューマー クラスターによっても異なることがあります。
@@ -65,7 +65,7 @@ ms.locfileid: "34835119"
 
 ![][2]
 
-*図 4: 統合されたマルチモデルのアーキタイプ*  
+*図 4:統合されたマルチモデルのアーキタイプ*  
 
 顧客維持のための包括的なアプローチを提供するなら、モデル間の相互作用が鍵となります。 各モデルの効果は時間の経過と共に必然的に低下するため、アーキテクチャは暗黙的なループになります (CRISP-DM データ マイニング標準によるアーキタイプと同様 [***3***])。  
 
@@ -84,7 +84,7 @@ ms.locfileid: "34835119"
 
 ![][3]
 
-*図 5: 離反モデリング アプローチのプロトタイプ*  
+*図 5:離反モデリング アプローチのプロトタイプ*  
 
 次のセクションでは、Cloud ML Studio を使用して実装したプロトタイプのスコア付けモデルについて詳しく説明します。  
 
@@ -103,11 +103,11 @@ ms.locfileid: "34835119"
 
 ![][4]
 
-*図 6: データ ソースの一部 (難読化済み)*  
+*図 6:データ ソースの一部 (難読化済み)*  
 
 ![][5]
 
-*図 7: データ ソースから抽出された特徴*
+*図 7:データ ソースから抽出された特徴*
  
 
 > これはプライベート データであるため、モデルとデータを共有することはできません。
@@ -129,7 +129,7 @@ ms.locfileid: "34835119"
 
 ![][6]  
 
-*図 8: Machine Learning Studio でモデルを作成する*  
+*図 8:Machine Learning Studio でモデルを作成する*  
 
 ### <a name="scoring-methods"></a>スコア付けの手法
 ラベル付けされたトレーニング データセットを使用して、4 つのモデルのスコアを計算しました。  
@@ -142,16 +142,16 @@ SAS Enterprise Miner 12 のデスクトップのエディションを使用し�
 ### <a name="accuracy-and-precision-of-scoring"></a>スコア付けの正確度と精度
 一般に、Azure Machine Learning での実装は、正確度の点で SAS よりも約 10 ～ 15% 劣っていました (AUC)。  
 
-ただし、離反で最も重要なメトリックは、誤分類率です。つまり、分類子によって予測された上位の離反者のうち、実際には**離反しておらず**、特別な扱いを受けている人々です。 次の図では、すべてのモデルでこの誤分類を比較しています。  
+ただし、離反で最も重要なメトリックは、誤分類率です。つまり、分類器によって予測された上位の離反者のうち、実際には**離反しておらず**、特別な扱いを受けている人々です。 次の図では、すべてのモデルでこの誤分類を比較しています。  
 
 ![][7]
 
-*図 9: Passau プロトタイプの曲線下面積*
+*図 9:Passau プロトタイプの曲線下面積*
 
 ### <a name="using-auc-to-compare-results"></a>AUC を使用した結果の比較
 曲線下面積 (AUC) は、正と負の母集団のスコア分布の *可分性* の大域尺度を表すメトリックです。 従来の Receiver Operator Characteristic (ROC) グラフと似ているものの、AUC メトリックではしきい値を選択する必要がないという重要な違いがあります。 AUC では、可能性のある **すべての** 選択肢を対象にした結果がまとめられます。 それとは対照的に、従来の ROC グラフでは縦軸に陽性率、横軸に偽陽性率が示され、分類のしきい値は変動します。   
 
-AUC は一般に、異なるアルゴリズム (または異なるシステム) の価値の尺度として使用されます。AUC 値を使ってモデルを比較できるためです。 これは、気象学や生物科学、その他多数の産業でよく使われる手法です。 このため、AUC は分類子のパフォーマンスを評価するための一般的なツールとなっています。  
+AUC は一般に、異なるアルゴリズム (または異なるシステム) の価値の尺度として使用されます。AUC 値を使ってモデルを比較できるためです。 これは、気象学や生物科学、その他多数の産業でよく使われる手法です。 このため、AUC は分類器のパフォーマンスを評価するための一般的なツールとなっています。  
 
 ### <a name="comparing-misclassification-rates"></a>誤分類率の比較
 およそ 8,000 件のサブスクリプションが含まれる CRM データを使用して、問題のデータセットの誤分類率を比較しました。  
@@ -167,14 +167,14 @@ Wikipedia から引用した次の図には、わかりやすいグラフィッ�
 
 ![][8]
 
-*図 10: 正確度と精度のトレードオフ*
+*図 10:正確度と精度のトレードオフ*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>ブースト ツリー モデルの正確度と精度の結果
 次の図には、Machine Learning プロトタイプを使用した、ブースト デシジョン ツリー モデルのスコア付けの結果がそのまま示されています。4 つのモデルの中で、このモデルの正確度が最も高くなっています。  
 
 ![][9]
 
-*図 11: ブースト デシジョン ツリー モデルの特性*
+*図 11:ブースト デシジョン ツリー モデルの特性*
 
 ## <a name="performance-comparison"></a>パフォーマンスの比較
 Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクトップ エディションを使用して作成した同等のモデルを使用して、データのスコア付けの速度を比較しました。  
@@ -216,13 +216,13 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
  
 
 ## <a name="references"></a>参照
-[1] 予測分析: 予想を超える、W. McKnight、Information Management、2011 年 7 月/8 月、p18 ～ 20。  
+[1] 予測分析:予想を超える、W. McKnight、Information Management、2011 年 7 月/8 月、p18 から 20。  
 
-[2] Wikipedia の記事: [正確性と精度](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia の記事:[正確性と精度](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0:ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [ビッグ データ マーケティング:お客様に効率の向上と価値の促進を保証する](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [Azure AI ギャラリー](http://gallery.cortanaintelligence.com/)の「[Telco の顧客離れ](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」 
  
@@ -230,7 +230,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 ## <a name="appendix"></a>付録
 ![][10]
 
-*図 12: 離反プロトタイプに関するプレゼンテーションのスナップショット*
+*図 12:離反プロトタイプに関するプレゼンテーションのスナップショット*
 
 [1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
 [2]: ./media/azure-ml-customer-churn-scenario/churn-2.png

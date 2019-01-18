@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 71be338aeb6d0234d22d412d6838e36a26797b20
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a74097521cc7dceea2c47f78c1dbb2f17e292aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002124"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726682"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service への既存の Node.js Azure Mobile Service のアップグレード
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
@@ -98,7 +98,7 @@ scripts ディレクトリが格納されているディレクトリから次の
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
 3. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
-    別の App Service プランを選択するか、または新しいプランを作成することもできます。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「 [Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
+    別の App Service プランを選択するか、または新しいプランを作成することもできます。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「 [Azure App Service プランの詳細な概要](../app-service/overview-hosting-plans.md)」を参照してください。
 4. **[App Service プラン]** には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/app-service-plan-manage.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
 
     プランを決定したら、 **[作成]** をクリックします。 モバイル アプリ バックエンドが作成されます。
@@ -162,7 +162,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[認証の概念]: ../app-service/app-service-authentication-overview.md
+[認証の概念]: ../app-service/overview-authentication-authorization.md
 [認証のクイック スタート]: app-service-mobile-auth.md
 
 [Azure Portal]: https://portal.azure.com/

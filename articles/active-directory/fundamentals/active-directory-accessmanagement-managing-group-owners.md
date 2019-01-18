@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory グループ所有者を追加または削除する方法 | Microsoft Docs
-description: Azure Active Directory を使用してグループ所有者を追加または削除する方法を説明します。
+title: グループ所有者を追加または削除する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory を使用してグループ所有者を追加または削除する方法について説明します。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
-ms.custom: it-pro
-ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 8c70378993e0155cbe730a5a351848ca1a1daa0a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139722"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087152"
 ---
-# <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>方法: Azure Active Directory でグループ所有者を追加または削除する
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、グループとそのメンバーの管理をリソース所有者 (管理者) によって割り当てられます。 グループ所有者は、グループのメンバーである必要はありません。 割り当てられたグループ所有者を追加または削除できるのは、リソース所有者だけです。
 
 場合によっては、管理者はグループ所有者を割り当てないこともできます。 その場合、管理者がグループ所有者になります。 また、グループ設定で制限されない限り、所有者は他の所有者を自身のグループに割り当てることができます。

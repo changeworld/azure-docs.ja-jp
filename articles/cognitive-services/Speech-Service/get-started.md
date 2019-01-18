@@ -1,7 +1,7 @@
 ---
-title: Speech Service を無料で試す
+title: Speech Services を無料で試す
 titleSuffix: Azure Cognitive Services
-description: Speech Service を無料で試す方法について説明します。
+description: Speech Service は、低コストで簡単に使い始めることができます。 30 日間の無料試用版でサービスの機能を確認し、アプリケーションのニーズに適しているかどうかを判断できます。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e29f2e77ad2b4e993fbe6a39b90325a0738f538
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 69e2c094e1fca57d0dddc662cc1dae6453897c38
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471392"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079111"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service を無料で試す
 
@@ -36,7 +37,7 @@ Speech Service は、低コストで簡単に使い始めることができま�
 1. **[Speech API]** タブを選択します。
 
    ![[Speech Services] タブ](media/index/try-speech-api-free-trial1.png)
-   
+
 1. **[Speech Services]** で、**[API キーの取得]** ボタンをクリックします。
 
    ![API キー](media/index/try-speech-api-free-trial2.png)

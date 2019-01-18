@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441462"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194200"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。
@@ -29,7 +29,7 @@ ms.locfileid: "39441462"
 SAP CAL を開始するには、[SAP Cloud Appliance Library](https://cal.sap.com/) の Web サイトにアクセスします。 SAP には新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) に関するブログも用意されています。 
 
 > [!NOTE]
-2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイ モデルに加えて Azure Resource Manager デプロイ モデルを使用できるようになりました。 クラシック デプロイ モデルの代わりに新しい Resource Manager デプロイ モデルを使用することをお勧めします。
+> 2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイ モデルに加えて Azure Resource Manager デプロイ モデルを使用できるようになりました。 クラシック デプロイ モデルの代わりに新しい Resource Manager デプロイ モデルを使用することをお勧めします。
 
 クラシック モデルを使用する SAP CAL アカウントを既に作成している場合は、"*別の SAP CAL アカウントを作成する必要があります*"。 このアカウントは、Resource Manager モデルを使用して Azure に排他的にデプロイする必要があります。
 
@@ -104,7 +104,7 @@ Windows や SQL Server に基づく SAP IDES ソリューションをデプロ�
 
     c.  ソリューションのマスター **パスワード**を、次のように入力します。
 
-    ![SAP CAL の基本モード: インスタンスの作成](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL の [Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. **Create** をクリックしてください。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。 
 

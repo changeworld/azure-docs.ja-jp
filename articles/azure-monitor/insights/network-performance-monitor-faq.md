@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166610"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543990"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -70,6 +70,9 @@ TCP プロトコルを使用してノードが監視をサポートするには�
 
 ### <a name="how-many-agents-should-i-use"></a>いくつのエージェントを使用する必要がありますか。
 監視する各サブネットに対して少なくとも 1 つのエージェントを使用してください。
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>使用できるエージェントの最大数はいくつですか。または、構成の上限に達したことを示すエラーが表示されます。
+NPM では、ワークスペースあたりの IP アドレス数が 5,000 個に制限されます。 ノードに IPv4 と IPv6 の両方のアドレスがある場合、そのノードに 2 つの IP アドレスがあるものとしてカウントされます。 したがって、5,000 個の IP アドレスというこの制限によって、エージェント数の上限が決まります。 [NPM] > [構成] の [ノード] タブを使用して、非アクティブなエージェントを削除できます。 NPM には、エージェントをホストしている VM にこれまで割り当てられていたすべての IP ドレスの履歴も保持されます。これらも、5,000 個の IP アドレスの上限に関係する個別の IP アドレスとしてカウントされます。 ワークスペース用に IP アドレスを解放するために、使用されていない IP アドレスを [ノード] ページで削除できます。
 
 ## <a name="monitoring"></a>監視
 

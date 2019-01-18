@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298533"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554590"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -139,7 +139,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Event Grid ドメインにイベントを発行する
 
-ドメインにイベントを発行することは、[カスタム トピックに発行する](./post-to-custom-topic.md)ことと同じです。 唯一の違いは、各イベントの送信先となるトピックを指定する必要があることです。 次のイベントの配列では、`"id": "1111"` のイベントが `foo` に送信され、`"id": "2222"` のイベントはトピック `bar` に送信されます。
+ドメインにイベントを発行することは、[カスタム トピックに発行する](./post-to-custom-topic.md)ことと同じです。 ただし、カスタム トピックに発行するのではなく、すべてのイベントをドメイン エンドポイントに発行します。 JSON イベント データでは、イベントの送信先のトピックを指定します。 次のイベントの配列では、`"id": "1111"` のイベントが `demotopic1` に送信され、`"id": "2222"` のイベントはトピック `demotopic2` に送信されます。
 
 ```json
 [{
@@ -168,7 +168,15 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
-Azure CLI でドメインのキーを取得するには、以下を使用します。
+Azure CLI を使用してドメイン エンドポイントを取得するには、以下を使用します。
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+ドメインのキーを取得するには、以下を使用します。
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-PowerShell では、次を使用します。
+PowerShell を使用してドメイン エンドポイントを取得するには、以下を使用します。
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+ドメインのキーを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

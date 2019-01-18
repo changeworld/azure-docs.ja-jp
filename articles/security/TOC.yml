@@ -332,6 +332,13 @@ items:
       href: azure-security-threat-modeling-tool-feature-overview.md
     - name: 脅威
       href: azure-security-threat-modeling-tool-threats.md
+    - name: リリース
+      href: azure-security-threat-modeling-tool-releases.md
+      items:
+      - name: Threat Modeling Tool GA リリース 7.1.5091.2 - 9/12/2018
+        href: azure-security-threat-modeling-tool-releases-71509112.md
+      - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 11/1/2018
+        href: azure-security-threat-modeling-tool-releases-71510231.md
     - name: 軽減策
       href: azure-security-threat-modeling-tool-mitigations.md
       items:
@@ -355,9 +362,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 998b787657be90f3b7026a7e338d49e7c1903499
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5b3729f616c04a7c969706d51edbfbf74e34f32e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710836"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360158"

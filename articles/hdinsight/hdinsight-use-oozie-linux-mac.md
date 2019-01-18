@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 14b849a46701ab19c76ee175717c3715cc89f411
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408903"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994387"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -58,7 +58,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 2. Sqoop アクションは、新しい Hive テーブルの内容を Azure SQL Database で作成されたテーブルにエクスポートします。 Sqoop の詳細については、[HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 ## <a name="create-the-working-directory"></a>作業ディレクトリの作成
@@ -301,7 +301,7 @@ SQL データベースを作成するには、[SQL データベースの作成](
     ```
 
     > [!NOTE]  
-    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasb://`で始まります。 Azure Data Lake Store を使用する場合は、`adl://` で始まります。
+    > HDInsight クラスターで既定のストレージとして Azure Storage を使用する場合、`<value>` 要素の内容は `wasb://`で始まります。 Azure Data Lake Storage を使用する場合は、`adl://` で始まります。
 
     以下の手順で使うため、`<value>` 要素の内容を保存します。
 
@@ -540,11 +540,11 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 6. **[Job Info]\(ジョブの情報\)** タブでは、基本的なジョブ情報とジョブの個々のアクションを確認できます。 上部にあるタブを使って、**[Job Definition]\(ジョブの定義\)** の表示、**[Job Configuration]\(ジョブの構成\)** の表示、**[Job Log]\(ジョブのログ\)** へのアクセス、**[Job DAG]\(ジョブの DAG\)** でジョブの有向非巡回グラフ (DAG) の表示を行うことができます。
 
-   * **[ジョブのログ]**:ジョブのすべてのログを取得するには、**[Get Logs](ログの取得)** ボタンを選びます。ログをフィルター処理するには、**[Enter Search Filter](検索フィルターの入力)** フィールドを使います。
+   * **[ジョブのログ]**:ジョブのすべてのログを取得するには、**[Get Logs]\(ログの取得)** ボタンを選びます。ログをフィルター処理するには、**[Enter Search Filter]\(検索フィルターの入力)** フィールドを使います。
 
        ![ジョブのログ](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **[Job DAG](ジョブの DAG)**:DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
+   * **[Job DAG]\(ジョブの DAG)**:DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
        ![ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
@@ -576,7 +576,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
     </coordinator-app>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > `${...}` 変数は、実行時にジョブ定義の値に置き換えられます。 変数は次のとおりです。
     >
     > * `${coordFrequency}`:ジョブのインスタンスが実行される間隔。
@@ -732,12 +732,12 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 * [HDInsight での時間ベースの Apache Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
 * [HDInsight での Apache Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
-* [HDInsight の Apache Hadoop での Apache Sqoop の使用][hdinsight-use-sqoop]
-* [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する][hdinsight-use-pig]
+* [HDInsight で Apache Sqoop と Apache Hadoop を使用する][hdinsight-use-sqoop]
+* [HDInsight で Apache Hive と Apache Hadoop を使用する][hdinsight-use-hive]
+* [HDInsight で Apache Pig と Apache Hadoop を使用する][hdinsight-use-pig]
 * [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
-[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
@@ -757,12 +757,12 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
-[apache-hadoop]: http://hadoop.apache.org/
-[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+[apache-hadoop]: https://hadoop.apache.org/
+[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
 
 [powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
@@ -773,4 +773,4 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 [img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

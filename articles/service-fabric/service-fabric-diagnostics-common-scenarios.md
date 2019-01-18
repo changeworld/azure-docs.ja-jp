@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633097"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054947"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
-この記事では、Service Fabric での監視と診断の領域でユーザーが遭遇した一般的なシナリオについて説明します。 紹介するシナリオは、Service Fabric の 3 つのレイヤー (アプリケーション、クラスター、インフラストラクチャ) すべてに対応しています。 各ソリューションでは、それぞれのシナリオを完了するために Application Insights、Log Analytics、Azure 監視ツールが使用されます。 各ソリューションの手順では、Service Fabric のコンテキストで Application Insights と Log Analytics を使用する方法の概要をユーザーに説明します。
+この記事では、Service Fabric での監視と診断の領域でユーザーが遭遇した一般的なシナリオについて説明します。 示されているシナリオには、Service Fabric の 3 つのレイヤーであるアプリケーション、クラスター、およびインフラストラクチャがすべて含まれています。 各ソリューションでは、それぞれのシナリオを完了するために Application Insights、Log Analytics、Azure 監視ツールが使用されます。 各ソリューションの手順では、Service Fabric のコンテキストで Application Insights と Log Analytics を使用する方法の概要をユーザーに説明します。
 
 ## <a name="prerequisites-and-recommendations"></a>前提条件と推奨事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "52633097"
 
     ![AI のアプリ マップ ブレード](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI のアプリ マップ](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    アプリケーション マップの詳細については、[アプリケーション マップのドキュメント](../application-insights/app-insights-app-map.md)をご覧ください。
+    アプリケーション マップの詳細については、[アプリケーション マップのドキュメント](../azure-monitor/app/app-map.md)をご覧ください。
 
 ## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>ノードがダウンした場合に通知されるアラートを作成する方法を教えてください
 
@@ -139,8 +139,8 @@ ms.locfileid: "52633097"
 
 ## <a name="next-steps"></a>次の手順
 
-* [AI のアラートを設定して](../application-insights/app-insights-alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
-* [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
+* [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
 * 検出と診断に役立つ Log Analytics [アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
 * オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../azure-monitor/platform/gateway.md)」を参照してください
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる

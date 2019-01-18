@@ -23,8 +23,8 @@ CORS ルールは、[Set Blob Service Properties](https://msdn.microsoft.com/lib
 
 > [!NOTE]
 > CORS は認証メカニズムではないことに注意してください。 CORS が有効な場合、ストレージ リソースに対する要求はすべて認証署名が適切であるか、パブリック リソースに対して行う必要があります。
->
->
+> 
+> 
 
 ## <a name="understanding-cors-requests"></a>CORS 要求について
 元のドメインからの CORS 要求は、次の 2 つの異なる要求で構成されている場合があります。
@@ -54,7 +54,7 @@ CORS ルールは、サービス レベルで設定します。そのため、�
 サービス プロパティ設定操作で指定した 1 つの CORS ルールのサンプルを次に示します。
 
 ```xml
-<Cors>
+<Cors>    
     <CorsRule>
         <AllowedOrigins>http://www.contoso.com, http://www.fabrikam.com</AllowedOrigins>
         <AllowedMethods>PUT,GET</AllowedMethods>
@@ -142,8 +142,8 @@ CORS ルールは、次のように評価されます。
 
 > [!NOTE]
 > この例では制限の緩いルールが制限の厳しいルールよりも前に指定されていますが、通常は、最も制限の厳しいルールを一覧の先頭に指定することをお勧めします。
->
->
+> 
+> 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>Vary ヘッダーの設定方法について
 *Vary* ヘッダーは、要求を処理するためにサーバーによって選択された条件についてブラウザーまたはユーザー エージェントにアドバイスする一連の要求ヘッダー フィールドで構成された標準 HTTP/1.1 ヘッダーです。 *Vary* ヘッダーは、主にプロキシ、ブラウザー、CDN がキャッシュする際に応答のキャッシュ方法を決定するために使用します。 詳細については、 [Vary ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)の仕様をご覧ください。
@@ -185,3 +185,4 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)
 
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
+

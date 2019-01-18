@@ -1,5 +1,6 @@
 ---
-title: 内部ロード バランサーの作成 - Azure テンプレート | Microsoft Docs
+title: 内部ロード バランサーの作成 - Azure テンプレート
+titlesuffix: Azure Load Balancer
 description: リソース マネージャーでテンプレートを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a65c43ac70bd4e423c28149a122d346519e73c9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d029de11c7101e961506f1fa46f5a71c6efb103e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412535"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044010"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>テンプレートを使用した内部ロード バランサーの作成
 
@@ -78,3 +80,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
+テンプレート内のロード バランサーの JSON の構文とプロパティについては、「[Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)」を参照してください。

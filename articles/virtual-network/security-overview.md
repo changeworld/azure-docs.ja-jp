@@ -1,22 +1,23 @@
 ---
-title: Azure のセキュリティ グループの概要 | Microsoft Docs
+title: Azure セキュリティ グループの概要
+titlesuffix: Azure Virtual Network
 description: ネットワークとアプリケーションのセキュリティ グループについて説明します。 セキュリティ グループは、フィルターを使って Azure リソース間のネットワーク トラフィックを絞り込む際に役立つものです。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: ad5205bcf063cd3375e68ef609c71ced2f551b61
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311764"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159062"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -70,15 +71,18 @@ ms.locfileid: "53311764"
 * **MicrosoftContainerRegistry** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
 * **AzureContainerRegistry** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
 * **AppService** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 
-* **AppServiceManagement** (Resource Manager のみ):このタグは、Azure AppService Management サービスのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppServiceManagement へのアクセスのみを許可する場合は、AppServiceManagement.[リージョン名] の形式でリージョンを指定できます。 
-* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ApiManagement へのアクセスのみを許可する場合は、ApiManagement.[リージョン名] の形式でリージョンを指定できます。 
+* **AppServiceManagement** (Resource Manager のみ):このタグは、Azure AppService Management サービスのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 
+* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。  
 * **AzureConnectors** (Resource Manager のみ):このタグは、Azure Connectors サービスのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 
-* **GatewayManager** (Resource Manager のみ):このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の GatewayManager へのアクセスのみを許可する場合は、GatewayManager.[リージョン名] の形式でリージョンを指定できます。 
+* **GatewayManager** (Resource Manager のみ):このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  
 * **AzureDataLake** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 
 * **AzureActiveDirectory** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。  
+* **AzureMonitor** (Resource Manager のみ): このタグは、AzureMonitor サービスのアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 
+* **ServiceFabric** (Resource Manager のみ): このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 
+* **AzureMachineLearning** (Resource Manager のみ): このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 
 
 > [!NOTE]
-> Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 リージョン サービス タグは国内クラウドではサポートされておらず、グローバル形式でのみサポートされます。 たとえば、*Storage*、*Sql* などです。
+> Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 
 
 > [!NOTE]
 > Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure ではサービスの仮想ネットワーク サブネットに[ルート](virtual-networks-udr-overview.md#optional-default-routes)が追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。

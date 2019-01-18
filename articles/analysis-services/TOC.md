@@ -78,6 +78,7 @@
 
 ## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
+## [Resource Manager テンプレート](/azure/templates/microsoft.analysisservices/servers)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
@@ -94,7 +95,7 @@
 ## [フィードバック](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [料金](https://azure.microsoft.com/pricing/details/analysis-services/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [StackOverflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 
 

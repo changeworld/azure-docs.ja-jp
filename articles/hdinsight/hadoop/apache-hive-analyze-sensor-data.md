@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b9c8f1af612c220534e45c5c66651f0ad8600826
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634415"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628188"
 ---
 # <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Hive クエリ コンソールを使用してセンサー データを分析する
 
 Apache Hive クエリ コンソールと HDInsight (Apache Hadoop) を使用してセンサー データを分析し、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 
@@ -35,10 +35,10 @@ Apache Hive クエリ コンソールと HDInsight (Apache Hadoop) を使用し�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、「[HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+* HDInsight (Hadoop) クラスター:クラスターの作成の詳細については、[HDInsight 内での Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。
 * Microsoft Excel 2013
 
-  > [!NOTE]
+  > [!NOTE]  
   > Microsoft Excel は、 [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US)を使用したデータ視覚化のために使用します。
 
 * [Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886)

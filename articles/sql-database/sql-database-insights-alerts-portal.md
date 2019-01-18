@@ -1,28 +1,31 @@
 ---
-title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
+title: Azure Portal を使用してアラートと通知を設定する | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273349"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156904"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
 ## <a name="overview"></a>概要
-この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+この記事では、Azure Portal を使用して SQL Database と Data Warehouse のアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。    
+
+> [!IMPORTANT]
+> この機能は、Managed Instance ではまだ使用できません。 別の方法として、SQL エージェントを使用して、[動的管理ビュー](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)に基づいてあるメトリックに関する電子メール アラートを送信できます。
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
@@ -46,13 +49,13 @@ ms.locfileid: "53273349"
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 2. [監視] セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
-     ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![監視](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **SQL DW のみ**:**[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
 
 3. **[メトリック アラートの追加 (クラシック)]** ボタンを選択して、フィールドに入力します。
    
-    ![[アラートの追加]](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![[アラートの追加]](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間で**平均** 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間で平均 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。 各アラートが使用するサポートされる間隔と集計タイプを、以下の表で確認してください。ただし、すべてのアラートで平均値が使用されるわけではありません。   
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。
@@ -117,5 +120,5 @@ ms.locfileid: "53273349"
 ## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
+* [診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

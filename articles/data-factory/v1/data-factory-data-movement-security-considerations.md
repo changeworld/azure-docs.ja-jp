@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046903"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015748"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -126,11 +125,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
-| ソース | 変換先 | ネットワーク構成 | ゲートウェイの設定 |
+| ソース | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
 | ------ | ----------- | --------------------- | ------------- | 
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 
-| オンプレミスの | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング) | ゲートウェイはオンプレミスにインストールする必要があります | 
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 
+| オンプレミス | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング) | ゲートウェイはオンプレミスにインストールする必要があります | 
 
 次の図は、オンプレミス データベースと Azure サービス間でのデータの移動に ExpressRoute および IPSec VPN (Virtual Network を使用) を使用した場合の Data Management Gateway の使用方法を示しています。
 
@@ -166,7 +165,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | ------------- | ----------- | 
 | 8050 (TCP) | 資格情報マネージャー アプリケーションがゲートウェイでオンプレミス データ ストアの資格情報を安全に設定するために必要です。 | 
 
-![ゲートウェイのポートの要件](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
+![ゲートウェイのポートの要件](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
 #### <a name="ip-configurations-whitelisting-in-data-store"></a>データ ストアの IP 構成/ホワイトリスト登録
 クラウドの一部のデータ ストアでは、アクセス元のコンピューターの IP アドレスをホワイトリストに登録する必要もあります。 ゲートウェイ コンピューターの IP アドレスがファイアウォールで適切にホワイトリストに登録/構成されていることを確認します。

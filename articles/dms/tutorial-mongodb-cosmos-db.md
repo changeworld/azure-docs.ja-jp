@@ -5,18 +5,18 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: 46e8ca97411e9dce77c0c82c4e0f5dd164bce01b
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320733"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713099"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB Mongo API にオフラインで移行する
 Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB Mongo API に、データベースのオフライン (1 回限り) の移行を実行できます。
@@ -28,11 +28,11 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 > * 移行を実行する。
 > * 移行を監視する。
 
-このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内の **Wingtips** データセットを、Cosmos DB の MongoDB API に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
+このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内の **Wingtips** データセットを、MongoDB API の Azure Cosmos DB に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
-- [Azure Cosmos DB MongoDB API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+- [Azure Cosmos DB for MongoDB API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
 - Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
 - Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、次の通信ポートがブロックされていないことを確認します。443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
 - Azure Database Migration Service がソース MongoDB サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 27017 が使用されています。
@@ -163,7 +163,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 ## <a name="verify-data-in-cosmos-db"></a>Cosmos DB でデータを確認する
 
-- 移行が完了した後、Cosmos DB MongoDB API アカウントを調べて、すべてのコレクションが正常に移行されたことを確認できます。
+- 移行が完了した後、Azure Cosmos DB for MongoDB API アカウントを調べて、すべてのコレクションが正常に移行されたことを確認できます。
 
     ![アクティビティの状態 - 完了](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

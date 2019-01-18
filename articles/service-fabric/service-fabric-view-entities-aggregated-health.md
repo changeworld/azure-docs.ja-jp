@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308990"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555253"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -464,7 +464,7 @@ API を使用してサービスの正常性を取得するには、 `FabricClien
 
 次の例は、指定のサービス名 (URI) のサービスの正常性を取得します。
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1030,27 +1030,27 @@ ApplicationHealthStateChunks :
 
 エンティティの **HealthState** が含まれるクエリは次のとおりです。
 
-* ノード一覧: クラスター内のノードの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * PowerShell: Get-ServiceFabricNode
-* アプリケーション一覧: クラスター内のアプリケーションの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * PowerShell: Get-ServiceFabricApplication
-* サービス一覧: アプリケーション内のサービスの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * PowerShell: Get-ServiceFabricService
-* パーティション一覧: サービス内のパーティションの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * PowerShell: Get-ServiceFabricPartition
-* レプリカ一覧: パーティション内のレプリカの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * PowerShell: Get-ServiceFabricReplica
-* デプロイ済みアプリケーション一覧: ノード上にデプロイされたアプリケーションの一覧を返します。
-  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
-* デプロイ済みサービス パッケージ一覧: デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
-  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
+* ノード一覧:クラスター内のノードの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * PowerShell:Get-ServiceFabricNode
+* アプリケーション一覧:クラスター内のアプリケーションの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * PowerShell:Get-ServiceFabricApplication
+* サービス一覧:アプリケーション内のサービスの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * PowerShell:Get-ServiceFabricService
+* パーティション一覧:サービス内のパーティションの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * PowerShell:Get-ServiceFabricPartition
+* レプリカ一覧:パーティション内のレプリカの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * PowerShell:Get-ServiceFabricReplica
+* デプロイ済みアプリケーション一覧:ノード上にデプロイされたアプリケーションの一覧を返します。
+  * API:[FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * PowerShell:Get-ServiceFabricDeployedApplication
+* デプロイ済みサービス パッケージ一覧:デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
+  * API:[FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * PowerShell:Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。

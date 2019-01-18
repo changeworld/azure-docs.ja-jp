@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140114"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158926"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -52,7 +52,7 @@ ms.locfileid: "42140114"
 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[ShakeShake]** を選択します。 プロジェクト フォルダーを表示する、新しい VS Code ウィンドウが開きます。 MXCHIP AZ3166 セクションが表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P`) をクリックしてコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P`) をクリックしてコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples](Arduino: 例)** を見つけて選択します。
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -88,7 +88,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 次に、デバイス コードをビルドしてアップロードします。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 
 1. `Ctrl+P` キーを使用して `task device-upload` を実行します。
 
@@ -157,7 +157,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 Arduino スケッチは、Azure IoT Hub にイベントを送信します。 このイベントは、Azure Functions アプリをトリガーします。 Azure Functions アプリには、Twitter の API に接続して、ツイートを取得するためのロジックが含まれています。 そしてツイート テキストを C2D (cloud-to-device) メッセージにラップし、デバイスに返送します。
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>省略可能: 自分の Twitter ベアラー トークンを使用する
+## <a name="optional-use-your-own-twitter-bearer-token"></a>省略可能:自分の Twitter ベアラー トークンを使用する
 
 テスト目的のため、このサンプル プロジェクトでは、事前に構成されている Twitter ベアラー トークンを使用しています。 しかし、すべての Twitter アカウントには[レート制限](https://dev.twitter.com/rest/reference/get/search/tweets)があります。 独自のトークンの使用を検討する場合は、次の手順に従います。
 
@@ -167,7 +167,7 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 3. [何らかのユーティリティ](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)を使用して、これら 2 つのキーから Twitter ベアラー トークンを生成します。
 
-4. [Azure Portal](https://portal.azure.com/){:target="_blank"} で、**[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
+4. [Microsoft Azure portal](https://portal.azure.com/){:target="_blank"} で、**[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -202,7 +202,7 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 その他の問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用して Microsoft までお問い合わせください。
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 

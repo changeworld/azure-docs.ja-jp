@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048147"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024367"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,12 +53,12 @@ Amazon Redshift のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AmazonRedshift**に設定する必要があります。 | [はい] |
-| [サーバー] |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
-| ポート |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439 です) |
-| [データベース] |Amazon Redshift データベースの名前。 |[はい] |
-| username |データベースへのアクセスを持つユーザーの名前。 |[はい] |
-| password |ユーザー アカウントのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**AmazonRedshift** | [はい] |
+| server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
+| port |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439 です) |
+| database |Amazon Redshift データベースの名前。 |はい |
+| username |データベースへのアクセスを持つユーザーの名前。 |はい |
+| password |ユーザー アカウントのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -96,7 +95,7 @@ Amazon Redshift からデータをコピーするには、データセットの 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | [はい] |
 | tableName | Amazon Redshift 内のテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -126,13 +125,13 @@ Amazon Redshift からデータをコピーするには、コピー アクティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AmazonRedshiftSource** に設定する必要があります。 | [はい] |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (データセットの "tableName" が指定されている場合) |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AmazonRedshiftSource** | [はい] |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (データセットの "tableName" が指定されている場合) |
 | redshiftUnloadSettings | Amazon Redshift の UNLOAD を使用する場合のプロパティ グループ。 | いいえ  |
 | s3LinkedServiceName | リンクされた AmazonS3 型のサービス名を指定することで、中間ストアとして使用される Amazon S3 を参照します。 | アンロードを使用する場合は [はい] |
 | bucketName | 中間データを格納する S3 バケットを指定します。 指定しない場合、Data Factory サービスが自動的に生成します。  | アンロードを使用する場合は [はい] |
 
-**アンロードを使用したコピー アクティビティでの Amazon Redshift ソースの例:**
+**例:UNLOAD を使用したコピー アクティビティでの Amazon Redshift ソース**
 
 ```json
 "source": {
@@ -158,7 +157,7 @@ Amazon Redshift からデータをコピーするには、コピー アクティ
 
 このサンプルのユース ケースでは、コピー アクティビティは "redshiftUnloadSettings" での構成に従って Amazon Redshift から Amazon S3 へデータをアンロードした後、Amazon S3 から "stagingSettings" に指定された Azure Blob へデータをコピーし、最後に、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。 すべての中間形式が、コピー アクティビティによって正しく処理されます。
 
-![Redshift から SQL DW へのコピーのワークフロー](media\copy-data-from-amazon-redshift\redshift-to-sql-dw-copy-workflow.png)
+![Redshift から SQL DW へのコピーのワークフロー](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[

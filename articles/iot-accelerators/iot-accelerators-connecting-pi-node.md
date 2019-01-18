@@ -8,18 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 696bd6ec80f39e8a9f3418426a754ffc038171e2
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fe0a84d9d88f5287ca3a114225bde619f9312e69
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325084"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628359"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータに物理デバイスを接続する方法について説明します。 このチュートリアルでは、リソースの制約が少ない環境に適したオプションである Node.js を使用します。
+このチュートリアルでは、実デバイスをリモート監視ソリューション アクセラレータに接続する方法を示します。 このチュートリアルでは、リソースの制約が少ない環境に適したオプションである Node.js を使用します。
+
+デバイスをシミュレートする場合は、「[新しいシミュレートされたデバイスの作成とテスト](iot-accelerators-remote-monitoring-create-simulated-device.md)」を参照してください。
 
 ### <a name="required-hardware"></a>必要なハードウェア
 
@@ -36,7 +38,7 @@ Raspberry Pi でコマンド ラインにリモート接続するためのデス
 
 Raspberry Pi でコマンド ラインにリモートでアクセスするための SSH クライアントがデスクトップ コンピューターに必要です。
 
-- Windows には SSH クライアントは含まれていません。 [PuTTY](http://www.putty.org/) を使用することをお勧めします。
+- Windows には SSH クライアントは含まれていません。 [PuTTY](https://www.putty.org/) を使用することをお勧めします。
 - ほとんどの Linux ディストリビューションと Mac OS には、コマンド ライン SSH ユーティリティが含まれています。 詳細については、「[SSH Using Linux or Mac OS (Linux または Mac OS を使用した SSH 接続)](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)」を参照してください。
 
 ### <a name="required-raspberry-pi-software"></a>必要な Raspberry Pi ソフトウェア
@@ -126,7 +128,6 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     var temperatureSchema = 'chiller-temperature;v1';
     var humiditySchema = 'chiller-humidity;v1';
     var pressureSchema = 'chiller-pressure;v1';
-    var interval = "00:00:05";
     var deviceType = "Chiller";
     var deviceFirmware = "1.0.0";
     var deviceFirmwareUpdateStatus = "";
@@ -144,8 +145,6 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
         "TemperatureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"temperature\":${temperature},\"temperature_unit\":\"${temperature_unit}\"}",
           "MessageSchema": {
             "Name": temperatureSchema,
             "Format": "JSON",
@@ -156,8 +155,6 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
           }
         },
         "HumiditySchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"humidity\":${humidity},\"humidity_unit\":\"${humidity_unit}\"}",
           "MessageSchema": {
             "Name": humiditySchema,
             "Format": "JSON",
@@ -168,8 +165,6 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
           }
         },
         "PressureSchema": {
-          "Interval": interval,
-          "MessageTemplate": "{\"pressure\":${pressure},\"pressure_unit\":\"${pressure_unit}\"}",
           "MessageSchema": {
             "Name": pressureSchema,
             "Format": "JSON",

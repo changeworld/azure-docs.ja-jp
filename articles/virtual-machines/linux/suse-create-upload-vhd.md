@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5aa998ef7af157f84a3985fdb458c2800f2575f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ecc29e9422c1d427dd76059f1a427f3d49da38f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249372"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262373"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -49,7 +49,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
         # sudo zypper update
 5. SLES リポジトリから Azure Linux エージェントをインストールします。
    
-        # sudo zypper install WALinuxAgent
+        # sudo zypper install python-azure-agent
 6. chkconfig で waagent が "on" に設定されていることを確認し、設定されていない場合は自動起動するために有効にします。
    
         # sudo chkconfig waagent on
@@ -140,7 +140,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
 7. "/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **重要:** "/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
+8. **重要:**"/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
    
      Defaults targetpw   # ask for the password of the target user i.e. root ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
 9. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。

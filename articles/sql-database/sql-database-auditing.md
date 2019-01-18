@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971523"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034031"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -182,6 +182,8 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
     >[!IMPORTANT]
     >データベースレベルの監査では、セカンダリ データベースのストレージ設定はプライマリ データベースと同じになるため、リージョンをまたいだトラフィックが発生します。 サーバー レベルの監査のみを有効にし、すべてのデータベースでデータベース レベルの監査を無効なままにしておくことをお勧めします。
+    > [!WARNING]
+    > geo レプリケーションのセカンダリ データベースでは、現在のところ、サーバー レベルで監査ログの対象としてイベント ハブまたはログ分析を使用することができません。
 
 ### <a id="subheading-6">ストレージ キーの再生成</a>
 
@@ -220,12 +222,12 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 ## <a id="subheading-7"></a>Azure PowerShell を使用して SQL Database の監査を管理する
 
-**PowerShell コマンドレット**:
+**PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)**:
 
-- [データベース BLOB 監査ポリシーを作成または更新する (Set-AzureRMSqlDatabaseAuditing)][105]
-- [サーバー BLOB 監査ポリシーを作成または更新する (Set-AzureRMSqlServerAuditing)][106]
-- [データベース監査ポリシーを取得する (Get-AzureRMSqlDatabaseAuditing)][101]
-- [サーバー BLOB 監査ポリシーを取得する (Get-AzureRMSqlServerAuditing)][102]
+- [データベース BLOB 監査ポリシーを作成または更新する (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [サーバー BLOB 監査ポリシーを作成または更新する (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [サーバー BLOB 監査ポリシーを取得する (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 
@@ -245,6 +247,14 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 - [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
+## <a id="subheading-10"></a>ARM テンプレートを使用して SQL Database の監査を管理する
+
+以下の例で確認できるように、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートを使用して Azure SQL データベース監査を管理できます。
+
+- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1
 [Set up auditing for your database]: #subheading-2
@@ -254,6 +264,7 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 [Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
 [Manage SQL database auditing using REST API]: #subheading-9
+[Manage SQL database auditing using ARM templates]: #subheading-10
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
@@ -266,10 +277,3 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
-
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - .NET で Azure Web アプリを使用して Azure Key Vault を使用する | Microsoft Docs
+title: チュートリアル - .NET で Azure Web アプリを使用して Azure Key Vault を使用する - Azure Key Vault | Microsoft Docs
 description: チュートリアル - キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: b6dbae0f721983920c2073927fff74100528678e
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322143"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998797"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
 Azure Key Vault は、API キーやデータベース接続文字列などのシークレットを保護するのに役立ちます。 アプリケーション、サービス、IT リソースへのアクセス手段が得られます。
 
-このチュートリアルでは、Azure キー コンテナーから情報を読み取ることができる Azure Web アプリケーションを作成する方法について説明します。 このプロセスでは、Azure リソースのマネージド ID を使用します。 Azure Web アプリケーションの詳細については、[Azure Web Apps](../app-service/app-service-web-overview.md) に関するページを参照してください。
+このチュートリアルでは、Azure キー コンテナーから情報を読み取ることができる Azure Web アプリケーションを作成する方法について説明します。 このプロセスでは、Azure リソースのマネージド ID を使用します。 Azure Web アプリケーションについて詳しくは、[Azure App Service](../app-service/overview.md) に関する記事をご覧ください。
 
 この記事では、次の方法について説明します。
 
@@ -256,4 +256,4 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 ## <a name="next-steps"></a>次の手順
 
 >[!div class="nextstepaction"]
->[Azure Key Vault 開発者ガイド](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-developers-guide)
+>[Azure Key Vault 開発者ガイド](https://docs.microsoft.com/azure/key-vault/key-vault-developers-guide)

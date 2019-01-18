@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c4cf59e6aa7e6edc73db2e22b9fa8ce40301b07c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212966"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790335"
 ---
 <a name="saas-sell-through-azure---apis"></a>Azure を通じた SaaS の販売 - API
 ==============================
@@ -31,7 +31,7 @@ ms.locfileid: "50212966"
 -   SaaS サービスと Azure Marketplace とのサービス間認証
 -   API メソッドとエンドポイント
 
-SaaS サービスと Azure の統合を支援するために、以下の API が用意されています。
+SaaS サービスと Azure の統合を支援するために、以下の API シリーズが用意されています。
 
 -   解決
 -   購入
@@ -45,7 +45,7 @@ SaaS サービスと Azure の統合を支援するために、以下の API が
 <a name="service-to-service-authentication-between-saas-service-and-azure-marketplace"></a>SaaS サービスと Azure Marketplace とのサービス間認証
 ----------------------------------------------------------------------------
 
-Azure では、SaaS サービスがそのエンド ユーザーに公開する認証に対して、制約がありません。 ただし、Azure Marketplace API と通信する SaaS サービスについては、Azure Active Directory (Azure AD) アプリケーションのコンテキストで認証が行われます。
+Azure では、SaaS サービスがそのエンド ユーザーに公開する認証に対して、制約がありません。 ただし、Azure Marketplace API シリーズと通信する SaaS サービスについては、Azure Active Directory (Azure AD) アプリケーションのコンテキストで認証が行われます。
 
 次のセクションでは、Azure AD アプリケーションを作成する方法について説明します。
 
@@ -62,15 +62,15 @@ Azure portal を使用して新しいアプリケーションを登録するに�
     ![SaaS AD のアプリ登録](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration.png)
 
 4.  [作成] ページで、アプリケーションの登録情報を入力します。
-    -   **名前**: わかりやすいアプリケーション名を入力します
+    -   **[名前]**:わかりやすいアプリケーション名を入力します
     -   **アプリケーションの種類**: 
         - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
-        - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth の confidential [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、public [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
+        - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
         同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
-    -   **サインオン URL**: [Web アプリ/API] を選択したアプリケーションについて、アプリのベース URL を入力します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http://localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-    -   **リダイレクト URI**: [ネイティブ] を選択したアプリケーションについて、トークン応答を返すために Azure AD で使用される URI を入力します。 **http://MyFirstAADApp** など、アプリケーションに固有の値を入力してください。
+    -   **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http://localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
+    -   **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http://MyFirstAADApp** など、ご自分のアプリケーションに固有の値を入力してください。
 
-        ![SaaS AD アプリの登録](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started)の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
+        ![SaaS AD アプリの登録](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
 
 5.  完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
 
@@ -136,7 +136,7 @@ HTTP メソッド
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "b3cca048-ed2e-406c-aff2-40cf19fe7bf5",
+      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
@@ -172,7 +172,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 これによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | Content-type       | [はい]          | `application/json`                                        |
 | authorization      | [はい]          | JSON Web トークン (JWT) ベアラー トークン。                    |
-| x-ms-marketplace-token| [はい]| ユーザーが Azure から SaaS ISV の Web サイトにリダイレクトされるときの、URL のトークン クエリ パラメーター。 **注:** ブラウザーからのトークン値は、使用前に URL によってデコードされます。|
+| x-ms-marketplace-token| [はい]| ユーザーが Azure から SaaS ISV の Web サイトにリダイレクトされるときの、URL のトークン クエリ パラメーター。 **注:** このトークンは 1 時間のみ有効です。 また、ブラウザーからのトークン値は、使用前に URL によってデコードされます。|
 |  |  |  |
   
 
@@ -201,7 +201,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | **HTTP 状態コード** | **エラー コード**     | **説明**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | トークンが正常に解決されました。                                                            |
-| 400                  | `BadRequest`         | 必須のヘッダーがないか、無効な api-version が指定されています。 トークンが正しくない形式であるか期限切れになっているため、トークンの解決に失敗しました。 |
+| 400                  | `BadRequest`         | 必須のヘッダーがないか、無効な api-version が指定されています。 トークンが正しくない形式であるか期限切れになっているため、トークンの解決に失敗しました (トークンは生成後 1 時間のみ有効です)。 |
 | 403                  | `Forbidden`          | 呼び出し元には、この操作の実行権限がありません。                                 |
 | 429                  | `RequestThrottleId`  | サービスが要求の処理でビジー状態になっています。後で再試行してください。                                |
 | 503                  | `ServiceUnavailable` | サービスが一時的にダウンしています。後で再試行してください。                                        |
@@ -513,7 +513,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。         |
 | planId                 | String        | ユーザーがサブスクライブするプラン ID。          |
 | saasSubscriptionName   | String        | SaaS サブスクリプションの名前。                |
-| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`: サブスクリプションがアクティブです。  <br/> - `Pending`: ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`: ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`: ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`: Azure サブスクリプションが中断されました。  |
+| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`:サブスクリプションがアクティブです。  <br/> - `Pending`:ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`:ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`:ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`:Azure サブスクリプションが中断されました。  |
 | created                | Datetime      | サブスクリプション作成のタイムスタンプ値 (UTC)。 |
 | lastModified           | Datetime      | サブスクリプション変更のタイムスタンプ値 (UTC)。 |
 |  |  |  |
@@ -587,7 +587,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。         |
 | planId                 | String        | ユーザーがサブスクライブするプラン ID。          |
 | saasSubscriptionName   | String        | SaaS サブスクリプションの名前。                |
-| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`: サブスクリプションがアクティブです。  <br/> - `Pending`: ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`: ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`: ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`: Azure サブスクリプションが中断されました。  |
+| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`:サブスクリプションがアクティブです。  <br/> - `Pending`:ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`:ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`:ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`:Azure サブスクリプションが中断されました。  |
 | created                | Datetime      | サブスクリプション作成のタイムスタンプ値 (UTC)。 |
 | lastModified           | Datetime      | サブスクリプション変更のタイムスタンプ値 (UTC)。 |
 |  |  |  |
@@ -612,4 +612,36 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-correlationid | [はい]          | クライアントから渡される場合は、関連付け ID。そうでない場合は、これはサーバー関連付け ID。                   |
 | x-ms-activityid    | [はい]          | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。 |
 | Retry-After        | いいえ            | クライアントが状態を確認できる間隔。                                                       |
+|  |  |  |
+
+### <a name="saas-webhook"></a>SaaS Webhook
+
+SaaS の webhook は、SaaS サービスに事前に変更を通知するために使用されます。 この POST API は未認証であることが期待され、Microsoft サービスによって呼び出されます。 SaaS サービスは、webhook 通知のアクションを実行する前に、検証および承認するために API を呼び出すことが期待されます。 
+
+
+*本文*
+
+``` json
+  { 
+    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
+    "offerId": "sampleSaaSOffer", // Provided with "Update" action
+    "publisherId": "contoso", 
+    "planId": "silver",     // Provided with "Update" action
+    "action": "Activate", // Activate/Delete/Suspend/Reinstate/Update
+    "timeStamp": "2018-12-01T00:00:00"
+  }
+```
+
+| **パラメーター名**     | **データの種類** | **説明**                               |
+|------------------------|---------------|-----------------------------------------------|
+| id  | String       | トリガーされた操作の一意の ID。                |
+| activityId   | String        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |
+| subscriptionId                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |
+| offerId                | String        | ユーザーがサブスクライブするオファー ID。 「更新」アクションでのみ指定されます。        |
+| publisherId                | String        | SaaS オファーのパブリッシャー ID         |
+| planId                 | String        | ユーザーがサブスクライブするプラン ID。 「更新」アクションでのみ指定されます。          |
+| action                 | String        | この通知をトリガーするアクション。 指定できる値 - Activate (アクティブ化)、Delete (削除)、Suspend (中断)、Reinstate (再開)、Update (更新)          |
+| timeStamp                 | String        | この通知がトリガーされたときのタイムスタンプ値 (UTC)。          |
 |  |  |  |

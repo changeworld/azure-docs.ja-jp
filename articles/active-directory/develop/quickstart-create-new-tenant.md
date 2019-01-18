@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 731b68e3f7dbb46f2fa51a18cb5b3da6b4626fa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57c207af3a48eb03b9d526197aed85d7755ad370
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963936"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975952"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート: 開発環境の設定
+# <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
 
-Microsoft ID プラットフォームでは、開発者がさまざまなカスタムの Microsoft 365 環境と ID を対象とするアプリをビルドできます。 Microsoft ID プラットフォームの使用を開始するには、アプリの登録と管理、Microsoft 365 のデータへのアクセス、およびカスタムの条件付きアクセスとテナント制限のデプロイが可能な環境 (Azure AD テナントとも言う) にアクセスします。 
+Microsoft ID プラットフォームでは、開発者がさまざまなカスタムの Microsoft 365 環境と ID を対象とするアプリをビルドできます。 Microsoft ID プラットフォームの使用を開始するには、アプリの登録と管理、Microsoft 365 のデータへのアクセス、およびカスタムの条件付きアクセスとテナント制限のデプロイが可能な環境 (Azure AD テナントとも言う) にアクセスする必要があります。
 
-テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。 
+テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。
 
-Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分離されていて、職場や学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、およびアプリの登録の独自の表現があります。 テナント内部のアプリの登録では、自分のテナント内のみ、またはすべてのテナント内のアカウントからの認証を許可できます。 
+Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分離されていて、職場や学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、およびアプリの登録の独自の表現があります。 テナント内部のアプリの登録では、自分のテナント内のみ、またはすべてのテナント内のアカウントからの認証を許可できます。
 
 ## <a name="determining-environment-type"></a>環境の種類の決定
 
@@ -69,7 +69,7 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ## <a name="social-and-local-accounts"></a>ソーシャル アカウントとローカル アカウント
 
-ソーシャル アカウントとローカル アカウントにサインインするアプリをビルドするには、Azure AD B2C テナントを作成する必要があります。 最初に、[Azure AD B2C テナントの作成](../../active-directory-b2c/tutorial-create-tenant.md)に従ってください。 
+ソーシャル アカウントとローカル アカウントにサインインするアプリをビルドするには、Azure AD B2C テナントを作成する必要があります。 最初に、[Azure AD B2C テナントの作成](../../active-directory-b2c/tutorial-create-tenant.md)に従ってください。
 
 ## <a name="next-steps"></a>次の手順
 

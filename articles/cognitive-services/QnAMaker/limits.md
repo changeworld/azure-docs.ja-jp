@@ -1,7 +1,7 @@
 ---
 title: 制限と境界 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker における制限の包括的な一覧です。
+description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137295"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084790"
 ---
-# <a name="qna-maker-limits"></a>QnA Maker の制限
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 QnA Maker における制限の包括的な一覧です。
 
 ## <a name="knowledge-bases"></a>ナレッジ ベース
@@ -49,7 +50,7 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 100
-* 質問と回答のペアの最大数: 選択した [Azure Search 層](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
+* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。

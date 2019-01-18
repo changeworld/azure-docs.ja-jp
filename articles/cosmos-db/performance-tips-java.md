@@ -1,21 +1,18 @@
 ---
-title: Java での Azure Cosmos DB のパフォーマンスに関するヒント | Microsoft Docs
+title: Java 用の Azure Cosmos DB のパフォーマンスに関するヒント
 description: Azure Cosmos DB データベースのパフォーマンスを向上させるクライアント構成オプションについて説明します
-keywords: データベースのパフォーマンスを向上させる方法
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: c6c63b7b66114a8c35986b443bda78442b8edd7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 62b561d35d4cacd27555163ce666e98c12d792d8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237742"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044129"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB と Java のパフォーマンスに関するヒント
 
@@ -81,7 +78,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 
-    Azure Cosmos DB SQL Java SDK バージョン 1.9.0 以降では、並列クエリがサポートされています。この機能を使うと、パーティション分割コレクションにクエリを並列的に実行できます (詳しくは、「[SDK の操作](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)をご覧ください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。
+    Azure Cosmos DB SQL Java SDK バージョン 1.9.0 以降は、パーティション分割コレクションに対して並列にクエリを実行するために使用できる並列クエリをサポートします。 詳細については、SDK の操作に関連した[コード サンプル](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。
 
     (a) ***setMaxDegreeOfParallelism の調整\:*** 並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、[setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setmaxdegreeofparallelism) を使ってパーティションの数を設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、setMaxDegreeOfParallelism を使って大きな数を設定すると、システムが並列処理の最大限度として最小値 (パーティションの数、ユーザー指定の入力) を選びます。 
 
@@ -130,7 +127,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関するページをご覧ください。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>スループット
 <a id="measure-rus"></a>
 
 1. **測定と調整によって 1 秒あたりの要求ユニットの使用量を削減する**

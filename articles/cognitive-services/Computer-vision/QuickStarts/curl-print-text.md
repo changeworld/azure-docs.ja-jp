@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 印刷されたテキストの抽出 (OCR) - REST、cURL - Computer Vision'
+title: クイック スタート:印刷されたテキストの抽出 - REST、cURL
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、cURL と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 6917e6f4ba0c2f8045d3f7da9a2e23acd949cf48
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0eb276aa3af3cefb19a0659ec3188062deeddd0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341244"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583631"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と cURL を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と cURL を使用して印刷されたテキストを抽出する (OCR)
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 

@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: f6644d8a2e01242937943f8139059abbd65d1913
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: fe64011991732c7493d8efd06516efc664b674a4
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017401"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752777"
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 クラウドで動作させるには、Azure Stack と互換のある PowerShell モジュールをインストールする必要があります。 互換性は、*API プロファイル*と呼ばれる機能によって有効になります。
 
-API のプロファイルは、Azure と Azure Stack の間のバージョンの違いを管理するための方法を提供します。 API バージョンのプロファイルは、特定の API バージョンを持つ一連の Azure Resource Manager PowerShell モジュールです。 各クラウド プラットフォームでは、一連の API バージョンのプロファイルがサポートされています。 たとえば、Azure Stack では **2018-03-01-hybrid** などの特定の日付のプロファイル バージョンがサポートされ、Azure では**最新の** API バージョンのプロファイルがサポートされています。 プロファイルをインストールすると、指定されたプロファイルに対応する Azure Resource Manager PowerShell モジュールがインストールされます。
+API のプロファイルは、Azure と Azure Stack の間のバージョンの違いを管理するための方法を提供します。 API バージョンのプロファイルは、特定の API バージョンを持つ一連の Azure Resource Manager PowerShell モジュールです。 各クラウド プラットフォームでは、一連の API バージョンのプロファイルがサポートされています。 たとえば、Azure Stack では **2018-03-01-hybrid** などの特定の日付のプロファイル バージョンがサポートされます。 プロファイルをインストールすると、指定されたプロファイルに対応する Azure Resource Manager PowerShell モジュールがインストールされます。
 
 Azure Stack と互換のある PowerShell モジュールのインストールは、インターネットに接続されたシナリオ、部分的に接続されたシナリオ、接続が切断されたシナリオのいずれでも可能です。 この記事では、各シナリオで PowerShell for Azure Stack をインストールするための詳しい手順を説明します。
 
@@ -40,7 +40,8 @@ Azure Stack と PowerShell を開始する前に、次の前提条件が必要�
   > [!Note]
   > PowerShell 5.0 には、Windows コンピューターが必要です。
 
-- **管理者特権でのコマンド プロンプトで Powershell を実行** 管理者特権で PowerShell を実行する必要があります。
+- **PowerShell の実行 (管理者特権でのコマンド プロンプト)**。
+  PowerShell を管理特権で実行する必要があります。
 
 - **PowerShell ギャラリーへのアクセス** [PowerShell ギャラリー](https://www.powershellgallery.com)にアクセスする必要があります。 ギャラリーとは、PowerShell コンテンツのための中央のリポジトリです。 **PowerShellGet** モジュールには、PowerShell ギャラリーやその他のプライベート リポジトリから PowerShell アーティファクト (モジュール、DSC リソース、ロール機能、スクリプトなど) を検出、インストール、更新、発行するためのコマンドレットが含まれています。 切断されたシナリオで PowerShell を使用している場合は、インターネットに接続しているマシンからリソースを取得し、切断されたマシンがアクセスできる場所に格納する必要があります。
 
@@ -54,11 +55,11 @@ PSGallery がリポジトリとして登録されているかどうかを検証�
 
 管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-````PowerShell
+```PowerShell
 Import-Module -Name PowerShellGet -ErrorAction Stop
 Import-Module -Name PackageManagement -ErrorAction Stop
 Get-PSRepository -Name "PSGallery"
-````
+```
 
 PSGallery リポジトリが登録されていない場合は、管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
@@ -73,14 +74,13 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 1. 既存の AzureRM PowerShell モジュールをアンインストールするには、アクティブな PowerShell セッションをすべて終了し、次のコマンドレットを実行します。
 
-  ````PowerShell
-    Uninstall-Module -Name AzureRM.AzureStackAdmin -Force
-    Uninstall-Module -Name AzureRM.AzureStackStorage -Force
-    Uninstall-Module -Name AzureStack -Force
-    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force
-  ````
+    ```PowerShell
+    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
+    Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
+    ```
+    「モジュールが既に使用されています」などのエラーが発生した場合には、そのモジュールを使用している PowerShell セッションを終了してから、上のスクリプトをもう一度実行してください。
 
-2. `C:\Program Files\WindowsPowerShell\Modules` フォルダーおよび `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` フォルダーから、「`Azure`」で始まるすべてのフォルダーを削除します。 これらのフォルダーを削除すると、既存の PowerShell モジュールがすべて削除されます。
+2. `C:\Program Files\WindowsPowerShell\Modules` フォルダーおよび `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` フォルダーから、`Azure` または `Azs.` で始まるすべてのフォルダーを削除します。 これらのフォルダーを削除すると、既存の PowerShell モジュールがすべて削除されます。
 
 ## <a name="4-connected-install-powershell-for-azure-stack-with-internet-connectivity"></a>4.接続済みの場合: インターネット接続を使用して PowerShell for Azure Stack をインストールする
 
@@ -88,7 +88,40 @@ Azure Stack では、Azure Stack バージョン 1808 の **2018-03-01-hybrid** 
 
 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
-  - Azure Stack 1808 以降。
+- Azure Stack 1811 以降: 
+
+    ```PowerShell
+    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRm.BootStrapper
+
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+
+    Install-Module -Name AzureStack -RequiredVersion 1.6.0
+    ```
+
+    「接続済みの場合」のセクションで触れた追加のストレージ機能を利用する場合は、次のパッケージもダウンロードしてインストールしてください。
+
+    ```PowerShell
+    # Install the Azure.Storage module version 4.5.0
+    Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
+
+    # Install the AzureRm.Storage module version 5.0.4
+    Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
+
+    # Remove incompatible storage module installed by AzureRM.Storage
+    Uninstall-Module Azure.Storage -RequiredVersion 4.6.1 -Force
+
+    # Load the modules explicitly specifying the versions
+    Import-Module -Name Azure.Storage -RequiredVersion 4.5.0
+    Import-Module -Name AzureRM.Storage -RequiredVersion 5.0.4
+    ```
+
+> [!Note]
+> Azure PowerShell を **2017-03-09-profile** から **2018-03-01-hybrid** にアップグレードするには、「[移行ガイド](https://github.com/azure/azure-powershell/blob/AzureRM/documentation/migration-guides/Stack/migration-guide.2.3.0.md)」を参照してください。
+
+
+- Azure Stack 1808 以降。
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -100,24 +133,13 @@ Azure Stack では、Azure Stack バージョン 1808 の **2018-03-01-hybrid** 
     Install-Module -Name AzureStack -RequiredVersion 1.5.0
     ```
 
-> [!Note]
-> Azure PowerShell を **2017-03-09-profile** から **2018-03-01-hybrid** にアップグレードするには、「[移行ガイド](https://github.com/bganapa/azure-powershell/blob/migration-guide/documentation/migration-guides/Stack/migration-guide.2.3.0.md)」を参照してください。
+- Azure Stack 1807 以前。
 
-  - Azure Stack 1807 以前。
-
-    ```PowerShell
-    Install-Module -Name AzureRm.BootStrapper
-    Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.4.0
-    ```
-
-  - Azure Stack 1804 以前。
-
-    ```PowerShell
-    Install-Module -Name AzureRm.BootStrapper
-    Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.2.11
-    ```
+  ```PowerShell
+  Install-Module -Name AzureRm.BootStrapper
+  Use-AzureRmProfile -Profile 2017-03-09-profile -Force
+  Install-Module -Name AzureStack -RequiredVersion 1.4.0
+  ```
 
 次のコマンドを実行してインストールを確認します。
 
@@ -134,41 +156,49 @@ Get-Module -Name "Azs*" -ListAvailable
 
 インターネット接続が確立されたコンピューターにサインインし、Azure Stack のバージョンに応じて次のスクリプトを使用して、Azure Resource Manager および AzureStack パッケージをダウンロードします。
 
-  - Azure Stack 1808 以降。
+  - Azure Stack 1811 以降: 
 
-    ````PowerShell
+    ```PowerShell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
-      $Path = "<Path that is used to save the packages>"
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-      Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
-    ````
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+    ```
+
+    「接続済みの場合」のセクションで触れた追加のストレージ機能を利用する場合は、次のパッケージもダウンロードしてインストールしてください。
+
+    ```PowerShell
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRm.Storage -Path $Path -Force -RequiredVersion 5.0.4
+    ```
+
+  - Azure Stack 1808 以降。
+
+    ```PowerShell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    ```
 
   - Azure Stack 1807 以前。
 
     > [!Note]
     1.2.11 バージョンからアップグレードするには、[移行ガイド](https://aka.ms/azspowershellmigration)を参照してください。
 
-    ````PowerShell
+    ```PowerShell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.4.0
-    ````
-
-  - Azure Stack 1804 以前。
-
-    ````PowerShell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
-
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.2.11
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.3.0
-    ````
+    ```
 
 2. ダウンロードしたパッケージを USB デバイスにコピーします。
 

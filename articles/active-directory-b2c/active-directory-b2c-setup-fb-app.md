@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182112"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968987"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 13. **[Products] (製品)** を選択し、**[Facebook Login] (Facebook ログイン)** で **[セットアップ]** を選択します。
 14. **[Facebook Login] (Facebook ログイン)** の **[設定]** を選択します。
 15. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
-16. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、**[アプリのレビュー]** を選択し、**[アプリケーションを公開する]** を **[はい]** に設定し、 **[確認]** をクリックします。
+16. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある状態セレクターをクリックし、**[オン]** に設定してアプリケーションを公開し、**[確認]** をクリックします。  この時点で、状態は**開発**から**ライブ**に変更されます。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
 

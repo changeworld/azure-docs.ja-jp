@@ -1,21 +1,23 @@
 ---
-title: Azure IoT Edge プラットフォームのサポート | Microsoft Docs
-description: Azure IoT Edge によってサポートされるプラットフォーム
+title: サポートされているオペレーティング システム、コンテナー エンジン - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge デーモンとランタイムを実行できるオペレーティング システム、運用デバイス用にサポートされるコンテナー エンジンについて説明します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45c5c7245a2af3b0d0e328bfcc43112eaee406ee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6443260de0a8bd8531edb303fa581d281034fef3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565005"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555610"
 ---
-# <a name="azure-iot-edge-support"></a>Azure IoT Edge のサポート
+# <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
+
 Azure IoT Edge 製品のサポートを受ける方法は複数あります。
 
 **バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
@@ -42,9 +44,11 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 パブリック プレビュー
 | オペレーティング システム | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core (2018 年 4 月の更新プログラム) | [はい] | いいえ  |
-| Windows 10 IoT Enterprise (2018 年 4 月の更新プログラム) | [はい] | いいえ  |
-| Windows 10 Server 1803 | [はい] | いいえ  |
+| Windows 10 IoT Core ビルド 17763 | [はい] | いいえ  |
+| Windows コンテナー用 Windows 10 ビルド 17763<br><br>Linux コンテナー用 Windows 10 ビルド 14393 以降\* | [はい] | いいえ  |
+| Windows コンテナー用 Windows Server 2019<br><br>Linux コンテナー用 Windows Server 2016 以降\* | [はい] | いいえ  |
+
+\* Microsoft は、開発およびテスト目的でのみ、Windows デバイス上の Linux コンテナー用インストール パッケージを提供しています。 これは、運用環境ではサポートされない構成です。 
 
 ### <a name="tier-2"></a>レベル 2
 レベル 2 のシステムは Azure IoT Edge と互換性があり、比較的簡単に使用できると見なされます。 これは、次のことを意味します。

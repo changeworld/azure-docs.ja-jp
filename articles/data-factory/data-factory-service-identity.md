@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 67fc3d733062867086cb4c208f2997d3490452bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681927"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017686"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 

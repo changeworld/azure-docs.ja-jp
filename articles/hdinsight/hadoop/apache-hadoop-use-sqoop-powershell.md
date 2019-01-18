@@ -9,30 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c3b7695b7a67a33df93b0216cfd02f762e412158
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631446"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635716"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 Azure PowerShell を使用して、HDInsight クラスターと Azure SQL データベースまたは SQL Server データベース間でインポートとエクスポートを実行する Apache Sqoop ジョブを Azure HDInsight で実行する方法について説明します。
 
-> [!NOTE]
+> [!NOTE]  
 > この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他の方法を選択するには、この記事の上部にあるタブ セレクターを使用してください。 
-> 
-> 
 
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件 
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
 * Azure PowerShell を実行できるワークステーション。
-* HDInsight の Hadoop クラスター。 詳細については、[クラスターと SQL Database の作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
+* HDInsight 上の Apache Spark クラスター。 詳細については、[クラスターと SQL Database の作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
 
-## <a name="run-sqoop-by-using-powershell"></a>PowerShell を使用した Sqoop の実行
+## <a name="run-apache-sqoop-by-using-powershell"></a>PowerShell を使用した Apache Sqoop の実行
 次の PowerShell スクリプトでは、ソース ファイルを前処理した後、Azure SQL Database にエクスポートします。
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -160,15 +158,15 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
 ## <a name="limitations"></a>制限事項
 Linux ベースの HDInsight には次の制限事項があります。
 
-* 一括エクスポート: Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+* 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 
-* バッチ処理: 挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。 
+* バッチ処理:挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。 
 
 ## <a name="next-steps"></a>次の手順
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Oozie の使用](../hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
-* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md): HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md):Apache Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
+* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

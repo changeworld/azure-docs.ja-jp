@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021687"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105848"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
@@ -130,7 +130,7 @@ RDB 永続化の場合も AOF 永続化の場合も、以下のように処理�
 
 * 大きいサイズにスケーリングした場合、影響はありません。
 * 小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。 詳細については、「[スケーリング中に影響を受けるカスタム データベース](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)」を参照してください
-* 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
+* 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>キャッシュの作成後に RDB バックアップ頻度を変更できますか
 はい、**[Redis データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「 [Redis の永続化を構成する](#configure-redis-persistence)」をご覧ください。

@@ -1,5 +1,5 @@
 ---
-title: Linux 上の MySQL を使用して PHP Web アプリを構築する - Azure App Service | Microsoft Docs
+title: Linux 上の MySQL を使用して PHP アプリを構築する - Azure App Service | Microsoft Docs
 description: Azure での MySQL データベースへの接続を使用して、PHP アプリを Azure App Service on Linux で動作させる方法について説明します。
 services: app-service\web
 author: cephalin
@@ -11,20 +11,20 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5d9843eecfed56f09c3a6d659976ca1ce5f42d80
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e3259cb2fce9b5ec1725b200bcd53d9a8b33e908
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342361"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050253"
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL Web アプリを構築する
+# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL アプリを構築する
 
 > [!NOTE]
-> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で PHP と MySQL Web アプリを構築する](../app-service-web-tutorial-php-mysql.md)」を参照してください。
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で PHP と MySQL アプリを構築する](../app-service-web-tutorial-php-mysql.md)」を参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、PHP Web アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
 ![Azure App Service で実行される PHP アプリ](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -161,7 +161,7 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
 
-次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
+次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択について詳しくは、「[Azure Database for MySQL サーバーの作成](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)」をご覧ください。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
@@ -191,10 +191,10 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 ```
 
 > [!TIP] 
-> [アプリで使用する送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
+> [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](http://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
@@ -317,7 +317,7 @@ git commit -m "database.php updates"
 
 アプリをデプロイする準備ができました。
 
-## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 この手順では、MySQL に接続される PHP アプリケーションを Azure App Service にデプロイします。
 
@@ -373,13 +373,13 @@ Laravel には App Service のアプリケーション キーが必要です。 
 php artisan key:generate --show
 ```
 
-[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` は、デプロイした Web アプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
+`APP_DEBUG="true"` は、デプロイしたアプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
@@ -422,7 +422,7 @@ remote: Running deployment command...
 > この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
 
 `http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -566,21 +566,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-`git push` が完了したら、Azure Web アプリに移動し、新機能を試します。
+`git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
 ![Azure に発行されたモデルとデータベースの変更](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
-## <a name="manage-the-azure-web-app"></a>Azure Web アプリを管理する
+## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-[Azure Portal](https://portal.azure.com) に移動し、作成した Web アプリを管理します。
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
 左側のメニューは、アプリを構成するためのページを示しています。
 
@@ -602,7 +602,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a8744afe3ec3e83e4a543942441118356730347c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141573"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957243"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
 この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
@@ -46,7 +46,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
   * Linux ノードをデプロイした後は、SSH 接続を使用してその他の管理タスクを実行します。 Azure Portal で、各 Linux VM の SSH 接続の詳細を探します。  
 * **Intel MPI** - Azure の SLES 12 HPC 計算ノード上で OpenFOAM を実行するには、[Intel.com サイト](https://software.intel.com/en-us/intel-mpi-library/)から Intel MPI Library 5 ランタイムをインストールする必要があります。 (CentOS ベースの HPC イメージには、Intel MPI 5 がプレインストールされています)。その後、必要に応じて Linux 計算ノードに Intel MPI をインストールします。 この手順の準備をするには、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックします。 次に、適切なバージョンの Intel MPI の .tgz ファイルのダウンロード リンクをコピーします。 この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 * **OpenFOAM Source Pack** - [OpenFOAM Foundation のサイト](http://openfoam.org/download/2-3-1-source/)から Linux 用の OpenFOAM Source Pack ソフトウェアをダウンロードします。 この記事は、OpenFOAM-2.3.1.tgz としてダウンロードできる Source Pack Version 2.3.1 に基づいて説明しています。 Linux 計算ノードに対する OpenFOAM のアンパックとコンパイルについては、この記事で後述する手順に従ってください。
-* **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、可視化分析プログラムである [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) をダウンロードしてインストールします。 ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
+* **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、可視化分析プログラムである [EnSight](https://www.ansys.com/products/platform/ansys-ensight/data-interfaces) をダウンロードしてインストールします。 ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>コンピューティング ノードの相互の信頼関係をセットアップする
 複数の Linux ノード上でクロス ノード ジョブを実行するには、すべてのノードが互いに信頼関係を持っている必要があります ( **rsh** または **ssh** によって)。 Microsoft HPC Pack IaaS デプロイ スクリプトを使用して HPC Pack クラスターを作成する場合は、指定した管理者アカウントに対して永続的な相互の信頼関係がスクリプトによって自動的にセットアップされます。 管理者以外のユーザーをクラスター ドメインに作成した場合は、それらのユーザーにジョブを割り当てるときに、ノード間に一時的な相互の信頼関係をセットアップする必要があります。ジョブ終了後、この関係は破棄します。 ユーザーごとに信頼を確立するには、HPC Pack で信頼関係に使用するクラスターに RSA キー ペアを指定します。
@@ -226,7 +226,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 4. このサンプルの既定のパラメーターを使用すると、実行に数十分かかる場合があります。そのため、実行時間を短縮するために、一部のパラメーターを変更することができます。 簡単な方法としては、system/controlDict ファイルで時間ステップ変数 deltaT と writeInterval を変更します。 このファイルには、時間の制御やソリューションデータの読み取りと書き込みに関連した入力データがすべて格納されています。 たとえば deltaT の値を 0.05 から 0.5 に、writeInterval の値を 0.05 から 0.5 に変更します。
    
    ![Modify step variables][step_variables]
-5. system/decomposeParDict ファイル内の変数に適切な値を指定します。 この例では、それぞれ 8 個のコアを持つ Linux ノードを 2 つ使用しているため、numberOfSubdomains を 16 に、hierarchicalCoeffs の n を (1 1 16) に設定します。つまり、16 のプロセスで OpenFOAM を並列実行することになります。 詳細については、「[OpenFOAM User Guide: 3.4 Running applications in parallel (OpenFOAM ユーザー ガイド: 3.4 アプリケーションの並列実行)](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)」をご覧ください。
+5. system/decomposeParDict ファイル内の変数に適切な値を指定します。 この例では、それぞれ 8 個のコアを持つ Linux ノードを 2 つ使用しているため、numberOfSubdomains を 16 に、hierarchicalCoeffs の n を (1 1 16) に設定します。つまり、16 のプロセスで OpenFOAM を並列実行することになります。 詳細については、「[OpenFOAM User Guide:3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)」 (OpenFOAM ユーザー ガイド: 3.4 アプリケーションの並列実行) を参照してください。
    
    ![Decompose processes][decompose]
 6. sloshingTank3D ディレクトリから次のコマンドを実行して、サンプル データを準備します。
@@ -362,7 +362,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 10. ジョブが終了したら、C:\OpenFoam\sloshingTank3D 下のフォルダーにあるジョブの結果と、C:\OpenFoam にあるログ ファイルを探します。
 
 ## <a name="view-results-in-ensight"></a>EnSight で結果を表示する
-OpenFOAM ジョブの結果は、 [EnSight](http://www.ensight.com/) を使用して必要に応じて可視化したり分析したりすることができます。 EnSight での可視化とアニメーションの詳細については、こちらの [ビデオ ガイド](http://www.ensight.com/ensight.com/envideo/)を参照してください。
+OpenFOAM ジョブの結果は、 [EnSight](http://www.ensight.com/) を使用して必要に応じて可視化したり分析したりすることができます。 
 
 1. ヘッド ノードに EnSight をインストールし、起動します。
 2. C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case を開きます。

@@ -25,7 +25,7 @@ ms.locfileid: "51258988"
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイス Update 1.2 リリース ノート
 
 ## <a name="overview"></a>概要
-次のリリース ノートでは、StorSimple 8000 シリーズの Update 1.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムの一覧も含まれています。
+次のリリース ノートでは、StorSimple 8000 シリーズの Update 1.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムの一覧も含まれています。 
 
 Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 ソフトウェアを搭載するすべての StorSimple デバイスに適用できます。 Update 1 または Update 1.1 を搭載するデバイスには Update 1.2 を使用できません。 デバイスが Release (GA) を搭載している場合のこの更新プログラムのインストールについては、 [Microsoft のサポートに問い合わせ](storsimple-contact-microsoft-support.md) てください。
 
@@ -37,24 +37,24 @@ Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 �
 | Update 1.1 |6.3.9600.17521 |
 | Update 1.0 |6.3.9600.17491 |
 
-StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。 詳細については、「 [StorSimple デバイスへの Update 1.2 のインストール](storsimple-install-update-1.md)」をご覧ください。
+StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。 詳細については、「 [StorSimple デバイスへの Update 1.2 のインストール](storsimple-install-update-1.md)」をご覧ください。 
 
 > [!IMPORTANT]
-> * この更新プログラムをインストールするには、(Windows の更新プログラムを含めて) 約 5 ～ 10 時間がかかります。
+> * この更新プログラムをインストールするには、(Windows の更新プログラムを含めて) 約 5 ～ 10 時間がかかります。 
 > * Update 1.2 には、ソフトウェア、LSI ドライバー、ディスク ファームウェアの更新が含まれます。 インストール方法については、「 [StorSimple デバイスへの Update 1.2 のインストール](storsimple-install-update-1.md)」をご覧ください。
 > * 新しいリリースについては、更新プログラムの公開を段階的に行うため、更新プログラムが即座に表示されない場合があります。 これらの更新プログラムは間もなく利用可能になるため、数日後にもう一度更新プログラムの有無を確認してください。
->
->
+> 
+> 
 
 ## <a name="whats-new-in-update-12"></a>Update 1.2 の新機能
 これらの機能は、限定されたユーザーだけが使用できる Update 1 で最初にリリースされました。 Update 1.2 リリースでは、StorSimple のほとんどのユーザーが次の新機能と機能強化を利用できます。
 
-* **5000/7000 シリーズから 8000 シリーズ デバイスへの移行** – 今回のリリースでは、StorSimple 5000/7000 シリーズ アプライアンスのユーザーが、データを StorSimple 8000 シリーズの物理アプライアンスまたは仮想アプライアンスに移行できる、新しい移行機能が導入されています。 この移行機能では、次の 2 つの重要な価値提案が行われています。
+* **5000/7000 シリーズから 8000 シリーズ デバイスへの移行** – 今回のリリースでは、StorSimple 5000/7000 シリーズ アプライアンスのユーザーが、データを StorSimple 8000 シリーズの物理アプライアンスまたは仮想アプライアンスに移行できる、新しい移行機能が導入されています。 この移行機能では、次の 2 つの重要な価値提案が行われています。                                                                  
   
   * **ビジネス継続性**。5000/7000 シリーズ アプライアンスから 8000 シリーズ アプライアンスへの既存データの移行を可能にすることで実現します。
   * **8000 シリーズ アプライアンスの機能強化**。StorSimple Manager サービスを通じた複数のアプライアンスの効率的な一元管理、高性能のハードウェアと最新のファームウェア、仮想アプライアンス、データ モビリティ、将来的なロードマップの機能などがあります。
     
-    StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) を参照してください。
+    StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) を参照してください。 
 * **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。 [Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページをご覧ください。
 * **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
 * **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に記載のとおり、これらの API は 2016 年 8 月 1 日で非推奨となります。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
@@ -62,7 +62,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 * **初回デプロイと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。 セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。 デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。 トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、 [デプロイのトラブルシューティングに関する記事](storsimple-troubleshoot-deployment.md) を参照してください。
 
 ## <a name="issues-fixed-in-update-12"></a>Update 1.2 で修正された問題
-次の表は、Update 1.2、1.1、1 で修正された問題の概要を示しています。
+次の表は、Update 1.2、1.1、1 で修正された問題の概要を示しています。    
 
 | いいえ。 | 機能 | 問題 | 問題が修正された Update | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- | --- |
@@ -105,11 +105,12 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 ## <a name="controller-and-firmware-updates-in-update-12"></a>Update 1.2 のコントローラーとファームウェアの更新プログラム
 このリリースでは、ドライバーとデバイス上のディスク ファームウェアが更新されます。
 
-* SAS コントローラーの更新プログラムの詳細については、 [Microsoft Azure StorSimple アプライアンスの LSI SAS コントローラーの Update 1](https://support.microsoft.com/kb/3043005)に関するページを参照してください。
+* SAS コントローラーの更新プログラムの詳細については、 [Microsoft Azure StorSimple アプライアンスの LSI SAS コントローラーの Update 1](https://support.microsoft.com/kb/3043005)に関するページを参照してください。 
 * ディスクのファームウェア更新プログラムの詳細については、 [Microsoft Azure StorSimple アプライアンスのディスクのファームウェア Update 1](https://support.microsoft.com/kb/3063416)に関するページを参照してください。
 
 ## <a name="virtual-device-updates-in-update-12"></a>Update 1.2 での仮想デバイスの更新
-この更新プログラムは、仮想デバイスには適用できません。 新しい仮想デバイスを作成する必要があります。
+この更新プログラムは、仮想デバイスには適用できません。 新しい仮想デバイスを作成する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 * [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
+

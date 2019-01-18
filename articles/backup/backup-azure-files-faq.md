@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874567"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793514"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -39,31 +39,34 @@ ms.locfileid: "52874567"
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>どの geo に Azure ファイル共有をバックアップできますか <br/>
 Azure ファイル共有のバックアップは現在プレビュー段階であり、次の geo でのみ利用できます。 
--   オーストラリア東部 (AE) 
+- オーストラリア東部 (AE) 
 - オーストラリア南東部 (ASE) 
 - ブラジル南部 (BRS)
 - カナダ中部 (CNC)
--   カナダ東部 (CE)
--   米国中部 (CUS)
--   東アジア (EA)
--   米国東部 (EUS)
--   米国東部 2 (EUS2)
+- カナダ東部 (CE)
+- 米国中部 (CUS)
+- 東アジア (EA)
+- 米国東部 (EUS)
+- 米国東部 2 (EUS2)
 - 東日本 (JPE)
 - 西日本 (JPW)
--   インド中部 (INC) 
+- インド中部 (INC) 
 - インド南部 (INS)
 - 韓国中部 (KRC)
 - 韓国南部 (KRS)
--   米国中北部 (NCUS) 
--   北ヨーロッパ (NE) 
--   米国中南部 (SCUS) 
--   東南アジア (SEA)
--   英国南部 (UKS) 
--   英国西部 (UKW) 
--   西ヨーロッパ (WE) 
--   米国西部 (WUS)
--   米国中西部 (WCUS)
--   米国西部 2 (WUS 2)
+- 米国中北部 (NCUS) 
+- 北ヨーロッパ (NE) 
+- 米国中南部 (SCUS) 
+- 東南アジア (SEA)
+- 英国南部 (UKS) 
+- 英国西部 (UKW) 
+- 西ヨーロッパ (WE) 
+- 米国西部 (WUS)
+- 米国中西部 (WCUS)
+- 米国西部 2 (WUS 2)
+- US Gov アリゾナ (UGA)
+- US Gov テキサス (UGT)
+- US Gov バージニア (UGV)
 
 上記以外の特定の geo で使用する必要がある場合は、[AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 宛てにメールをお送りください。
 

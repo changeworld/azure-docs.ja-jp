@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: b8e41b77bfb47a08d443fb05e9d59f3f0f958358
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 874aa2610ae1785e9f40841ed3c3279aac42d660
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967914"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321825"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>SQL Server の接続ライブラリとフレームワーク
 
@@ -29,7 +29,7 @@ C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [SQL Server 用 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](https://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](https://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](https://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
@@ -40,11 +40,11 @@ C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽
 | 言語 | プラットフォーム | ORM |
 | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
-| Java | Windows、Linux、macOS |[Hibernate ORM](http://hibernate.org/orm)|
+| Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
-| Node.js | Windows、Linux、macOS | [Sequelize ORM](http://docs.sequelizejs.com) |
+| Node.js | Windows、Linux、macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
 | Python | Windows、Linux、macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Windows、Linux、macOS | [Ruby on Rails](http://rubyonrails.org/) |
+| Ruby | Windows、Linux、macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
 ## <a name="related-links"></a>関連リンク

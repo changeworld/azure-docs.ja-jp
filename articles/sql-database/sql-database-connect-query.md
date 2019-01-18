@@ -3,7 +3,7 @@ title: Azure SQL Database の接続とクエリに関するクイック スタ�
 description: Azure SQL Database の各種クイック スタートでは、Azure SQL データベースに接続してクエリを実行する方法を紹介しています。
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 11/01/2018
-ms.openlocfilehash: ab1f96b2348c24a746aaa7bdd670f396884ee3f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 613b4cf2b08269259a4608a6960b815777cd0ae9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870199"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608036"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート: Azure SQL Database の接続とクエリ
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート:Azure SQL Database の接続とクエリ
 
 次のドキュメントは、Azure SQL データベースに接続してクエリを実行する例を紹介した Azure ページへのリンク集です。 トランスポート レベルのセキュリティについての推奨事項も提供されています。
 

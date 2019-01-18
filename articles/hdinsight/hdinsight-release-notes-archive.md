@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408810"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743172"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート (アーカイブ)
 
@@ -52,10 +52,9 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
   
 
 
-
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>2017 年 4 月 6 日 - HDInsight 3.6 の一般提供
 
-* このリリースでは、Azure HDInsight に、HDP 2.6 に基づくバージョン 3.6 が追加されます。 HDP 2.6 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。 HDInsight 3.6 は、次のワークロードに使用できます。
+* このリリースでは、Azure HDInsight に、HDP 2.6 に基づくバージョン 3.6 が追加されます。 HDP 2.6 リリース ノートについては、[こちら](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。 HDInsight 3.6 は、次のワークロードに使用できます。
 
     * Hadoop v2.7.3
     * HBase v1.1.2
@@ -63,7 +62,7 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
     * Spark v2.1.0
     * Interactive Hive v2.1.0
 
-* **Hive View 2.0 のサポート**。 これによって、Interactive Hive のユーザー エクスペリエンスが向上します。 詳細については、[Hortonworks のドキュメント](http://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html)を参照してください。
+* **Hive View 2.0 のサポート**。 これによって、Interactive Hive のユーザー エクスペリエンスが向上します。 詳細については、[Hortonworks のドキュメント](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html)を参照してください。
 
 * **Hive LLAP のパフォーマンス強化**。 詳細については、[Hortonworks のドキュメント](https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/)を参照してください。
 
@@ -87,11 +86,11 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 
 
 ## <a name="02282017---release-of-spark-21-on-hdinsight-36-preview"></a>2017 年 2 月 28 日 - HDInsight 3.6 プレビューでの Spark 2.1 のリリース ノート
-* [Spark 2.1](http://spark.apache.org/releases/spark-release-2-1-0.html) では、以前のバージョンにあった安定性と使いやすさに関するさまざまな問題が改善されます。 Spark Core、SQL、ML、ストリーミングなど、すべての Spark ワークロードに及ぶ新機能も導入します。
+* [Spark 2.1](https://spark.apache.org/releases/spark-release-2-1-0.html) では、以前のバージョンにあった安定性と使いやすさに関するさまざまな問題が改善されます。 Spark Core、SQL、ML、ストリーミングなど、すべての Spark ワークロードに及ぶ新機能も導入します。
 * 構造化ストリーミングでは、イベント時刻の透かしと Kafka 0.10 コネクタのサポートによってスケーラビリティが向上しています。
-* Spark SQL のパーティション分割は、新しいスケーラブルなパーティション処理メカニズムを使用して処理されるようになりました。 アップグレードする方法の詳細については、[ここ](http://spark.apache.org/releases/spark-release-2-1-0.html)を参照してください。
+* Spark SQL のパーティション分割は、新しいスケーラブルなパーティション処理メカニズムを使用して処理されるようになりました。 アップグレードする方法の詳細については、[ここ](https://spark.apache.org/releases/spark-release-2-1-0.html)を参照してください。
 * Azure HDInsight 3.6 プレビュー上の Spark 2.1 は、現在 ODBC ドライバーを使用した BI ツールの接続をサポートしていません。
-* このプレビューでは、Spark 2.1 クラスターから Azure Data Lake Store へのアクセスはサポートされていません。
+* このプレビューでは、Spark 2.1 クラスターから Azure Data Lake Storage へのアクセスはサポートされていません。
 
 
 ## <a name="11182016---release-of-spark-201-on-hdinsight-35"></a>2016 年 11 月 18 日 - HDInsight 3.5 での Spark 2.0.1 の リリース
@@ -110,9 +109,4 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 * HDInsight クラスターでの R Server のプロビジョニングの効率が向上しています。
 * HDInsight の R Server が、標準の HDInsight "R Server" クラスター タイプとして使用可能になりました。今後は別の HDInsight アプリケーションとしてインストールする必要はありません。 エッジ ノードと R Server バイナリは、R Server クラスター デプロイメントの一部としてプロビジョニングされるようになりました。 これにより、プロビジョニングの速度と信頼性が向上します。 これに伴い、R Server の価格モデルも更新されます。
 * R Server クラスター タイプの価格は、Standard Tier の価格に R Server の追加料金を加えたものになります。 この変更は、実際の R Server の価格には影響しません。請求書の記載方法が変わるだけです。 既存のすべての R Server クラスターは引き続き実行でき、Resource Manager テンプレートは非推奨に関する通知が行われるまで使用できます。 **ただし、スクリプト化したデプロイメントが新しい Resource Manager テンプレートを使用するように更新することをお勧めします。**
-
-
-
-
-
 

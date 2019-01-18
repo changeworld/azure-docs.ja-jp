@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 10/04/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385845"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188557"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Data Box をデプロイする
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box をデプロイする
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、ケーブル接続、構成、および Azure にアップロードするためにデータを Data Box にコピーする方法が含まれます。 クイック スタートは、Azure portal およびデバイスのローカル Web UI で行われます。
 
-デプロイと追跡の手順をステップ バイ ステップで詳しく紹介した記事については、[Azure Data Box の注文に関するチュートリアル](data-box-deploy-ordered.md)を参照してください
+デプロイと追跡に関する詳しい手順については、「[チュートリアル:Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,6 @@ ms.locfileid: "49385845"
 - Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
-    - 使用量 - 従量課金制。 Azure の従量課金制サブスクリプションについての詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0003p/)です。
     - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
 - Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。

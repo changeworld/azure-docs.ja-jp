@@ -1,21 +1,18 @@
 ---
 title: Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 description: この記事では、Azure CLI コマンド ラインを使って Azure Database for MariaDB ファイアウォール規則を作成し、管理する方法について説明します。
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 1dba4b99dc50d1908b7b3d0488ba6ebf2f85c2a4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a2f0d775f061ab221092c9354d9d04b9241c9430
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516552"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543888"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MariaDB ファイアウォールの概要については、「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -28,11 +25,11 @@ ms.locfileid: "51516552"
 Azure CLI の **az mariadb server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create**: Azure MariaDB サーバーのファイアウォール規則を作成します。
-- **delete**: Azure MariaDB サーバーのファイアウォール規則を削除します。
-- **list**: Azure MariaDB サーバーのファイアウォール規則を一覧表示します。
-- **show**: Azure MariaDB サーバーのファイアウォール規則の詳細を表示します。
-- **update**: Azure MariaDB サーバーのファイアウォール規則を更新します。
+- **create**:Azure MariaDB サーバーのファイアウォール規則を作成します。
+- **delete**:Azure MariaDB サーバーのファイアウォール規則を削除します。
+- **list**:Azure MariaDB サーバーのファイアウォール規則を一覧表示します。
+- **show**:Azure MariaDB サーバーのファイアウォール規則の詳細を表示します。
+- **update**:Azure MariaDB サーバーのファイアウォール規則を更新します。
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Azure にログインして Azure Database for MariaDB サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。

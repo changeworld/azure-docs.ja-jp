@@ -21,6 +21,10 @@ items:
     href: azure-netapp-files-create-volumes.md
   - name: ボリュームのエクスポート ポリシーを構成する (省略可能)
     href: azure-netapp-files-configure-export-policy.md
+- name: 概念
+  items:
+  - name: Azure NetApp Files のリソース制限
+    href: azure-netapp-files-resource-limits.md
 - name: ハウツー ガイド
   items:
   - name: ボリュームを管理する
@@ -31,9 +35,15 @@ items:
     href: azure-netapp-files-manage-snapshots.md
   - name: 容量プールまたはボリュームをサイズ変更する
     href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-ms.openlocfilehash: 9e500904c2249fe1f419e4e8e3657bb083f0143b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+- name: リファレンス
+  items:
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/netapp/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.netapp/allversions
+ms.openlocfilehash: 613c0b38cca5608b30a3450a13343f0b86179777
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414220"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197503"

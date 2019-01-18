@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316972"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629903"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "53316972"
 * [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>データについて
-このサンプル アプリケーションでは、 [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
+このサンプル アプリケーションでは、 [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
 このアプリケーションでは、 **SearchServlet.java** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する定義済みの資格情報と接続情報は、プログラム コードで提供されます。 データ アクセスに関しては、これ以上の構成は必要ありません。
 
@@ -87,7 +87,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 ## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と API キーの構成
 1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
 2. この記事で前述の手順を参照し、[Azure Portal](https://portal.azure.com) でサービスの URL と API キーを探して、**config.properties**に入力する値を取得します。
-3. **config.properties**で、「API キー」をサービスの API キーに置き換えます。 次に、サービス名 (URL http://servicename.search.windows.net) の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
+3. **config.properties**で、「API キー」をサービスの API キーに置き換えます。 次に、サービス名 (URL https://servicename.search.windows.net) の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
    
     ![][5]
 

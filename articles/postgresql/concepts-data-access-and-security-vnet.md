@@ -1,20 +1,17 @@
 ---
-title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要 | Microsoft Docs
-description: Azure Database for PostgreSQL サーバーで vnet サービス エンドポイントがどのように機能するかについて説明します。
-services: postgresql
+title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要
+description: Azure Database for PostgreSQL サーバーで VNET サービス エンドポイントがどのように機能するかについて説明します。
 author: mbolz
 ms.author: mbolz
-manager: jhubbard
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 5a0181a1430e9de690fe4b4a48aa298db4c024e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2f26c4ae352ea5385886abcaecba5f50d30c530a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433667"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537224"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 
@@ -31,7 +28,7 @@ ms.locfileid: "53433667"
 
 ## <a name="terminology-and-description"></a>用語と説明
 
-**仮想ネットワーク:** ユーザーは、Azure サブスクリプションに仮想ネットワークを関連付けることができます。
+**仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 

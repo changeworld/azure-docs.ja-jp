@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261570"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629570"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
-[Azure App Service](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、RESTful API 用の[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) の組み込みサポートがあります。 このチュートリアルでは、CORS サポートを使用して ASP.NET Core API アプリを App Service にデプロイする方法について説明します。 コマンドライン ツールを使用してアプリを構成し、Git を使用してアプリをデプロイします。 
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、RESTful API 用の[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) の組み込みサポートがあります。 このチュートリアルでは、CORS サポートを使用して ASP.NET Core API アプリを App Service にデプロイする方法について説明します。 コマンドライン ツールを使用してアプリを構成し、Git を使用してアプリをデプロイします。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -132,7 +132,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
 
 ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
 

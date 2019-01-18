@@ -9,18 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 48f33dcf66c282ee75fe665531e1c9a4eb0d5382
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345761"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305946"
 ---
-#  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
+# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
 > * [バージョン 1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [現在のバージョン](connector-azure-sql-data-warehouse.md)
@@ -60,7 +59,7 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは **AzureSqlDW** に設定する必要があります。 | [はい] |
-| connectionString | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| connectionString | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
@@ -69,8 +68,8 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
 - [SQL 認証](#sql-authentication)
-- Azure AD アプリケーション トークン認証: [サービス プリンシパル](#service-principal-authentication)
-- Azure AD アプリケーション トークン認証: [Azure リソースのマネージド ID](#managed-identity)
+- Azure AD アプリケーション トークン認証:[サービス プリンシパル](#service-principal-authentication)
+- Azure AD アプリケーション トークン認証:[Azure リソースのマネージド ID](#managed-identity)
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -337,9 +336,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -359,7 +358,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 | rejectSampleValue | 拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。<br/><br/>使用可能な値は、1、2 などです。 | はい (**rejectType** が **percentage** の場合)。 |
 | useTypeDefault | PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ  |
 | writeBatchSize | バッファー サイズが **writeBatchSize** に達したら、SQL テーブルにデータを挿入します。 PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **integer** (行数) です。 | いいえ。 既定値は 10000 です。 |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例: "00:30:00" (30 分)。 | いいえ  |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ  |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ  | (#repeatability-during-copy)。 | クエリ ステートメント。 | いいえ  |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例
@@ -404,26 +403,26 @@ SQL Data Warehouse の PolyBase は、Azure BLOB と Azure Data Lake Store を�
 
    1. `fileName` にワイルドカード フィルターが含まれない。
    2. `rowDelimiter` が **\n** である。
-   3. `nullValue` が**空の文字列** ("") に設定されているか、既定のままになっていて、`treatEmptyAsNull` が false に設定されていない。
+   3. `nullValue` が**空の文字列** ("") に設定されているか、既定のままになっていて、`treatEmptyAsNull` が既定のままであるか、true に設定されている。
    4. `encodingName` が **utf-8** に設定されている。これは既定値です。
    5. `escapeChar`、`quoteChar`、および `skipLineCount` が指定されていない。 PolyBase では、ヘッダー行のスキップがサポートされます。これは、ADF で `firstRowAsHeader` として構成できます。
    6. `compression` が **圧縮なし**、**GZip**、または **Deflate**である。
 
     ```json
     "typeProperties": {
-       "folderPath": "<blobpath>",
-       "format": {
-           "type": "TextFormat",
-           "columnDelimiter": "<any delimiter>",
-           "rowDelimiter": "\n",
-           "nullValue": "",
-           "encodingName": "utf-8",
-           "firstRowAsHeader": <any>
-       },
-       "compression": {
-           "type": "GZip",
-           "level": "Optimal"
-       }
+        "folderPath": "<blobpath>",
+        "format": {
+            "type": "TextFormat",
+            "columnDelimiter": "<any delimiter>",
+            "rowDelimiter": "\n",
+            "nullValue": "",
+            "encodingName": "utf-8",
+            "firstRowAsHeader": <any>
+        },
+        "compression": {
+            "type": "GZip",
+            "level": "Optimal"
+        }
     },
     ```
 

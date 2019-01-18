@@ -1,24 +1,21 @@
 ---
 title: Go を使用して Azure Database for MySQL に接続する
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Go コード サンプルをいくつか紹介します。
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 8f11453cd7ccdd878e20d80469f12263e72166b7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b61aefcee36584b6ecfd1d701cb548c06f731d05
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264859"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536646"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使用した接続とデータの照会
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使った接続とデータの照会
 このクイックスタートでは、Windows、Ubuntu Linux、Apple macOS の各プラットフォームから、[Go](https://golang.org/) 言語で記述されたコードを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Go を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +26,7 @@ ms.locfileid: "35264859"
 ## <a name="install-go-and-mysql-connector"></a>Go と MySQL コネクタのインストール
 ご使用のコンピューターに [Go](https://golang.org/doc/install) および [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) をインストールします。 プラットフォームに応じて、該当するセクションの手順に従ってください。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 1. Go for Microsoft Windows を[ダウンロード](https://golang.org/dl/)し、[インストール手順](https://golang.org/doc/install)に従ってインストールします。
 2. スタート メニューからコマンド プロンプトを起動します。
 3. プロジェクトのフォルダーを作成します。 `mkdir  %USERPROFILE%\go\src\mysqlgo`

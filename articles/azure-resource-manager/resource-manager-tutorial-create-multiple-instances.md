@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b50609449d6144d2bb013d82e2eb29e94b5b01be
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616149"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754120"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
 
 Azure Resource Manager テンプレートで反復処理して、Azure リソースの複数のインスタンスを作成する方法について説明します。 このチュートリアルでは、3 つのストレージ アカウント インスタンスが作成されるようテンプレートを変更します。
+
+このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * クイック スタート テンプレートを開く
@@ -120,14 +122,14 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -149,7 +151,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。 これまでに、1 つのストレージアカウントまたは複数のストレージ アカウント インスタンスを作成しました。 次のチュートリアルでは、複数のリソースと複数のリソース タイプを含むテンプレートを作成します。 一部のリソースには依存リソースがあります。
+このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。 次のチュートリアルでは、あるリソース グループから別のリソース グループにリソースを移行する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [依存リソースの作成](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [リソースの移動](./resource-manager-tutorial-move-resources.md)

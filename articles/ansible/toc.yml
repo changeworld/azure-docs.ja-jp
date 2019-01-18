@@ -16,31 +16,45 @@ items:
   - name: Linux VM の管理
     href: /azure/virtual-machines/linux/ansible-manage-linux-vm
     maintainContext: true
+  - name: Cloud Shell でのプレイブックの実行
+    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
 - name: チュートリアル
   items:
-  - name: Cloud Shell でのプレイブックの実行
-    href: ./ansible-run-playbook-in-cloudshell.md
-    maintainContext: true
-  - name: 動的なインベントリの管理
-    href: ./ansible-manage-azure-dynamic-inventories.md
-    maintainContext: true
-  - name: VMSS の作成と構成
-    href: ./ansible-create-configure-vmss.md
-  - name: VMSS へのアプリのデプロイ
-    href: ./ansible-deploy-app-vmss.md
-  - name: VMSS の自動スケーリング
-    href: ./ansible-auto-scale-vmss.md
-  - name: AKS クラスターの作成と構成
-    href: ./ansible-create-configure-aks.md
-  - name: Azure Application Gateway の作成と構成
-    href: ./ansible-create-configure-application-gateway.md
-  - name: Azure DB for MySQL の作成と構成
-    href: ./ansible-create-configure-mysql.md
-  - name: Azure Web Apps の作成と構成
-    href: ./ansible-create-configure-azure-web-apps.md
-  - name: Azure Web Apps のスケール
-    href: ./ansible-scale-azure-web-apps.md
+  - name: AKS
+    items:
+    - name: AKS クラスターの作成と構成
+      href: ./ansible-create-configure-aks.md
+  - name: App Service
+    items:
+    - name: Azure Web Apps の作成と構成
+      href: ./ansible-create-configure-azure-web-apps.md
+    - name: Azure Web Apps のスケール
+      href: ./ansible-scale-azure-web-apps.md
+  - name: Application Gateway
+    items:
+    - name: Azure Application Gateway の作成と構成
+      href: ./ansible-create-configure-application-gateway.md
+  - name: データベース
+    items:
+    - name: Azure DB for MySQL の作成と構成
+      href: ./ansible-create-configure-mysql.md
+  - name: 動的インベントリ
+    items:
+    - name: 動的なインベントリの管理
+      href: ./ansible-manage-azure-dynamic-inventories.md
+  - name: 仮想ネットワーク
+    items:
+    - name: ルート テーブルの作成と構成
+      href: ./ansible-create-configure-route-table.md
+  - name: VMSS
+    items:
+    - name: VMSS の作成と構成
+      href: ./ansible-create-configure-vmss.md
+    - name: VMSS へのアプリのデプロイ
+      href: ./ansible-deploy-app-vmss.md
+    - name: VMSS の自動スケーリング
+      href: ./ansible-auto-scale-vmss.md
 - name: リファレンス
   items:
   - name: プレイブックの役割
@@ -65,9 +79,9 @@ items:
   items:
   - name: Ansible 用 Visual Studio Code 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: f426841f2a02b085e34e9e2a768c43a052bf62f7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 914987ee58a2ba09295d425c2107ba7eb192c131
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409141"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359240"

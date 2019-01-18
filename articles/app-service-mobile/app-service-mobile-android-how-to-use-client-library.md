@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409328"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158164"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -1188,7 +1188,7 @@ mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
 mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
     @Override
     public OkHttpClient createOkHttpClient() {
-        OkHttpClient client = new OkHttpClinet();
+        OkHttpClient client = new OkHttpClient();
         client.setReadTimeout(60, TimeUnit.SECONDS);
         client.setWriteTimeout(60, TimeUnit.SECONDS);
         return client;
@@ -1281,7 +1281,7 @@ FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
 client.setGsonBuilder(
     MobileServiceClient
         .createMobileServiceGsonBuilder()
-        .setFieldNamingStrategy(namingStategy)
+        .setFieldNamingStrategy(namingStrategy)
 );
 ```
 

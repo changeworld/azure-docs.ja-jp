@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: aa33db56910871891003866ef62431cfd7095d2a
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9d22bb288bafb5e9984c357d0bf9139973f5d262
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954128"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263002"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>PowerShell を使用した Azure Stack の検証の自動化
 
@@ -71,7 +72,7 @@ ms.locfileid: "49954128"
 
     | パラメーター | 説明 |
     | --- | --- |
-    | VaaSUserld | VaaS ユーザー ID。 |
+    | VaaSUserId | VaaS ユーザー ID。 |
     | VaaSUserPassword | VaaS パスワード。 |
     | VaaSAccountTenantId | VaaS テナントの GUID。 |
     | VaaSSolutionName | テスト成功を実行する VaaS ソリューションの名前。 |

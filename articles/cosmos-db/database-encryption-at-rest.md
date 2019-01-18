@@ -1,20 +1,18 @@
 ---
-title: '保存時のデータベースの暗号化: Azure Cosmos DB | Microsoft Docs'
-description: Azure Cosmos DB ですべてのデータが既定で暗号化されるしくみについて説明します。
-services: cosmos-db
+title: Azure Cosmos DB での保存時の暗号化
+description: Azure Cosmos DB で保存時のデータの暗号化が提供される方法と、その実装方法について説明します。
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: rafats
-ms.openlocfilehash: 2b54f8c7d9f6427f3104d3c64c65cc555f68738a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: 8ad5b167977059f0749da4221effd427427920e9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038420"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040219"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 
@@ -38,26 +36,26 @@ PaaS サービスである Cosmos DB は、非常に簡単に使用できます�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Q: Storage Service Encryption を有効にすると、Azure Storage の料金はどれくらい増えますか。
-A: 追加コストはかかりません。
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Q:Storage Service Encryption を有効にすると、Azure Storage の料金はどれくらい増えますか?
+A:追加コストはかかりません。
 
-### <a name="q-who-manages-the-encryption-keys"></a>Q: だれが暗号化キーを管理するのですか。
-A: キーは Microsoft によって管理されます。
+### <a name="q-who-manages-the-encryption-keys"></a>Q:だれが暗号化キーを管理するのですか?
+A:キーは Microsoft によって管理されます。
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>Q: 暗号化キーが交換される頻度はどの程度ですか。
-A: マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
+### <a name="q-how-often-are-encryption-keys-rotated"></a>Q:暗号化キーが交換される頻度はどの程度ですか?
+A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>Q: 独自の暗号化キーを使用できますか。
-A: Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。 この質問は、PCI-DSS などのコンプライアンス要件のクリアに関する代替質問として頻繁に寄せられることがわかりました。 この機能を構築する際に、コンプライアンス監査者の協力を得て、Cosmos DB を使用する顧客が自身でキーを管理しなくても要件を満たすことができるようにしました。
+### <a name="q-can-i-use-my-own-encryption-keys"></a>Q:独自の暗号化キーを使用できますか?
+A:Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。 この質問は、PCI-DSS などのコンプライアンス要件のクリアに関する代替質問として頻繁に寄せられることがわかりました。 この機能を構築する際に、コンプライアンス監査者の協力を得て、Cosmos DB を使用する顧客が自身でキーを管理しなくても要件を満たすことができるようにしました。
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>Q: どのリージョンで暗号化が有効になっていますか。
-A: すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
+### <a name="q-what-regions-have-encryption-turned-on"></a>Q:どのリージョンで暗号化が有効になっていますか?
+A:すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Q: 暗号化はパフォーマンス (待機時間およびスループット) の SLA に影響しますか。
-A: パフォーマンスの SLA への影響や変化はないため、既存および新規のすべてのアカウントで保存時の暗号化が有効になります。 最新の保証の詳細については、「[Cosmos DB の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)」 ページを参照してください。
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Q:暗号化はパフォーマンス (待機時間およびスループット) の SLA に影響しますか?
+A:パフォーマンスの SLA への影響や変化はないため、既存および新規のすべてのアカウントで保存時の暗号化が有効になります。 最新の保証の詳細については、「[Cosmos DB の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)」 ページを参照してください。
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Q: ローカル エミュレーターは、保存時の暗号化に対応していますか。
-A: エミュレーターは、スタンドアロンの開発/テスト ツールであり、管理された Cosmos DB サービスで使用するキー管理サービスを使用していません。 機密性の高いエミュレーター テスト データを格納するドライブで BitLocker を有効にすることをお勧めします。 [エミュレーターは既定のデータ ディレクトリの変更](local-emulator.md)と、よく知られた場所の使用をサポートしています。
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Q:ローカル エミュレーターは、保存時の暗号化に対応していますか?
+A:エミュレーターは、スタンドアロンの開発/テスト ツールであり、管理された Cosmos DB サービスで使用するキー管理サービスを使用していません。 機密性の高いエミュレーター テスト データを格納するドライブで BitLocker を有効にすることをお勧めします。 [エミュレーターは既定のデータ ディレクトリの変更](local-emulator.md)と、よく知られた場所の使用をサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 

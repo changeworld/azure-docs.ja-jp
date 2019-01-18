@@ -1,24 +1,21 @@
 ---
-title: 'チュートリアル: Azure CLI を使用して Azure Database for MySQL を設計する'
+title: チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 60cfb5e1c5fa44952ca6a5e6fc411f4a6ab0e8be
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966981"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545792"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for MySQL を設計する
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
 Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Community Edition のデータベース エンジンをベースとしたリレーショナル データベース サービスです。 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
 
@@ -178,16 +175,16 @@ SELECT * FROM inventory;
 - 復元ポイント: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
-- 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+- 場所:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | 説明  |
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |

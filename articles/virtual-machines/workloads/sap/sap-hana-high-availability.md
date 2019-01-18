@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034639"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789502"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -36,6 +36,7 @@ ms.locfileid: "47034639"
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -67,6 +68,7 @@ Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケ�
 * SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
 * SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
+* SAP Note [401162]: HANA システム レプリケーションの設定時に、"アドレスは既に使用中です" と表示された場合の回避方法に関する情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
 * [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関するガイド。
@@ -84,10 +86,10 @@ Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケ�
 
 SAP HANA システム要件の設定では、専用の仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 ロード バランサーの構成を次に示します。
 
-* フロントエンド構成: IP アドレス 10.0.0.13 for hn1-db
-* バックエンド構成: HANA システム レプリケーションに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
-* プローブ ポート: ポート 62503
-* 負荷分散規則: 30313 TCP、30315 TCP、30317 TCP
+* フロントエンド構成:IP アドレス 10.0.0.13 (hn1-db)
+* バックエンド構成:HANA システム レプリケーションに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
+* プローブ ポート:ポート 62503
+* 負荷分散規則:30313 TCP、30315 TCP、30317 TCP
 
 ## <a name="deploy-for-linux"></a>Linux 用デプロイ
 
@@ -103,15 +105,15 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。 統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、[集約型テンプレート][template-converged]を使用します。
 
 1. 次のパラメーターを入力します。
-    - **[Sap System Id]\(SAP システム ID\)**: インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
-    - **[Stack Type]\(スタックの種類\)**: (このパラメーターは、統合テンプレートを使用する場合にのみ適用されます)。SAP NetWeaver のスタックの種類を選択します。
-    - **[Os Type]\(OS の種類\)**: Linux ディストリビューションのいずれかを選択します。 この例では、**SLES 12** を選択します。
-    - **[Db Type]\(DB の種類\)**: **[HANA]** を選択します。
-    - **[Sap System Size]\(SAP システムのサイズ\)**: 新しいシステムが提供する SAPS の数を入力します。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-    - **[System Availability]\(システムの可用性\)**: **[HA]\(高可用性\)** を選びます。
-    - **[Admin Username and Admin Password]\(管理者の名前とパスワード\)**: マシンへのログオンに使用できる新しいユーザーが作成されます。
-    - **[New Or Existing Subnet]\(新規または既存のサブネット\)**: 新しい仮想ネットワークまたはサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[Existing]\(既存\)** を選択します。
-    - **[Subnet ID]\(サブネット ID\)**: VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
+    - **[Sap System Id]\(SAP システム ID\)**:インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
+    - **[スタックの種類]**:(このパラメーターは、集約型テンプレートを使用する場合にのみ適用されます)。SAP NetWeaver のスタックの種類を選択します。
+    - **[OS Type]\(OS の種類\)**:いずれかの Linux ディストリビューションを選択します。 この例では、**SLES 12** を選択します。
+    - **[Db Type]\(データベースの種類\)**:**[HANA]** を選択します。
+    - **[Sap System Size]\(SAP システムのサイズ\)**:新しいシステムが提供する SAPS の数を入力します。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+    - **[System Availability]\(システムの可用性\)**:**[HA]** を選択します。
+    - **[管理ユーザー名] と [管理パスワード]**:コンピューターへのログオンで使用できる新しいユーザーが作成されます。
+    - **[New Or Existing Subnet]\(新規または既存のサブネット\)**:新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[Existing]\(既存\)** を選択します。
+    - **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
 
 ### <a name="manual-deployment"></a>手動デプロイ
 
@@ -199,11 +201,11 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 ## <a name="install-sap-hana"></a>SAP HANA のインストール
 
 このセクションの手順では、次のプレフィックスを使用します。
-- **[A]**: この手順はすべてのノードに適用されます。
-- **[1]**: この手順はノード 1 にのみ適用されます。
-- **[2]**: この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+- **[A]**:この手順はすべてのノードに適用されます。
+- **[1]**:この手順はノード 1 にのみ適用されます。
+- **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
-1. **[A]** ディスク レイアウトの設定: **Logical Volume Manager (LVM)**。
+1. **[A]** ディスク レイアウトの設定:**論理ボリューム マネージャー (LVM)**。
 
    データおよびログ ファイルを格納するボリュームには、LVM を使用することをお勧めします。 次の例は、仮想マシンに 4 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成するということを前提としています。
 
@@ -269,7 +271,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** ディスク レイアウトの設定: **プレーン ディスク**。
+1. **[A]** ディスク レイアウトの設定:**プレーン ディスク**。
 
    デモ システムの場合、ご自身の HANA のデータとログ ファイルを 1 つのディスクに配置することができます。 /dev/disk/azure/scsi1/lun0 にパーティションを作成し、xfs でフォーマットします。
 
@@ -314,31 +316,31 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 SAP HANA システム レプリケーションをインストールするには、[SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ) ガイド](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/)の 4 章に従います。
 
 1. **[A]** HANA DVD から **hdblcm** プログラムを実行します。 プロンプトで次の値を入力します。
-   * Choose installation (インストールの選択): 「**1**」を入力します。
-   * Select additional components for installation (追加でインストールするコンポーネントの選択): 「**1**」を入力します。
-   * Enter Installation Path (インストール パスの入力) [/hana/shared]: Enter キーを押します。
-   * Enter Local Host Name (ローカル ホスト名の入力) [..]: Enter キーを押します。
-   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]: Enter キーを押します。
-   * Enter SAP HANA System ID (SAP HANA システム ID の入力): HANA の SID を入力します (例: **HN1**)。
-   * Enter Instance Number (インスタンス番号の入力) [00]: HANA インスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
-   * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]: Enter キーを押します。
-   * Select System Usage / Enter Index (システム使用率の選択/インデックスの入力) [4]: システム使用率の値を選択します。
-   * Enter Location of Data Volumes (データ ボリュームの場所の入力) [/hana/data/HN1]: Enter キーを押します。
-   * Enter Location of Log Volumes (ログ ボリュームの場所の入力) [/hana/log/HN1]: Enter キーを押します。
-   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]: Enter キーを押します。
-   * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名の入力) [...]: Enter キーを押します。
-   * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェント ユーザー (sapadm) のパスワードの入力): ホスト エージェントのユーザー パスワードを入力します。
-   * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェント ユーザー (sapadm) のパスワードの確認入力): 確認のためにホスト エージェントのユーザー パスワードをもう一度入力します。
-   * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードの入力): システム管理者のパスワードを入力します。
-   * Confirm System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードの確認入力): 確認のためにシステム管理者のパスワードをもう一度入力します。
-   * Enter System Administrator Home Directory (システム管理者のホーム ディレクトリの入力) [/usr/sap/HN1/home]: Enter キーを押します。
-   * Enter System Administrator Login Shell (システム管理者のログイン シェルの入力) [/bin/sh]: Enter キーを押します。
-   * Enter System Administrator User ID (システム管理者のユーザー ID の入力) [1001]: Enter キーを押します。
-   * Enter ID of User Group (sapsys) (ユーザー グループ (sapsys) の ID を入力) [79]: Enter キーを押します。
-   * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードの入力): データベース ユーザーのパスワードを入力します。
-   * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードの入力): 確認のためにデータベース ユーザーのパスワードをもう一度入力します。
-   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]: Enter キーを押します。
-   * Do you want to continue? (続行してもよろしいですか?)  (y/n): 概要を確認します。 「**y**」と入力して続行します。
+   * Choose installation (インストールの選択):**1** を入力します。
+   * Select additional components for installation (追加でインストールするコンポーネントの選択):**1** を入力します。
+   * Enter Installation Path (インストール パスの入力) [/hana/shared]:Enter キーを押します。
+   * Enter Local Host Name (ローカル ホスト名の入力) [..]:Enter キーを押します。
+   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]:Enter キーを押します。
+   * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例:**HN1**。
+   * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
+   * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]:Enter キーを押します。
+   * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):システムの使用率の値を選択します。
+   * Enter Location of Data Volumes (データ ボリュームの場所の入力) [/hana/data/HN1]:Enter キーを押します。
+   * Enter Location of Log Volumes (ログ ボリュームの場所の入力) [/hana/log/HN1]:Enter キーを押します。
+   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]:Enter キーを押します。
+   * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力):Enter キーを押します。
+   * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):ホスト エージェントのユーザー パスワードを入力します。
+   * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):確認用にホスト エージェントのユーザー パスワードを再入力します。
+   * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):システム管理者のパスワードを入力します。
+   * Confirm System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを確認):確認用にシステム管理者のパスワードを再入力します。
+   * Enter System Administrator Home Directory (システム管理者のホーム ディレクトリの入力) [/usr/sap/HN1/home]:Enter キーを押します。
+   * Enter System Administrator Login Shell (システム管理者のログイン シェルの入力) [/bin/sh]:Enter キーを押します。
+   * Enter System Administrator User ID (システム管理者のユーザー ID の入力) [1001]:Enter キーを押します。
+   * Enter ID of User Group (sapsys) (ユーザー グループ (sapsys) の ID を入力) [79]:Enter キーを押します。
+   * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):データベース ユーザーのパスワードを入力します。
+   * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):確認用にデータベース ユーザーのパスワードを再入力します。
+   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]:Enter キーを押します。
+   * Do you want to continue? (続行してもよろしいですか?)  (y/n):概要を確認します。 「**y**」と入力して続行します。
 
 1. **[A]** SAP Host Agent をアップグレードします。
 
@@ -351,9 +353,9 @@ SAP HANA システム レプリケーションをインストールするには�
 
 このセクションの手順では、次のプレフィックスを使用します。
 
-* **[A]**: この手順はすべてのノードに適用されます。
-* **[1]**: この手順はノード 1 にのみ適用されます。
-* **[2]**: この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+* **[A]**:この手順はすべてのノードに適用されます。
+* **[1]**:この手順はノード 1 にのみ適用されます。
+* **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
 1. **[1]** テナント データベースを作成します。
 
@@ -396,9 +398,9 @@ SAP HANA システム レプリケーションをインストールするには�
 
 このセクションの手順では、次のプレフィックスを使用します。
 
-* **[A]**: この手順はすべてのノードに適用されます。
-* **[1]**: この手順はノード 1 にのみ適用されます。
-* **[2]**: この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+* **[A]**:この手順はすべてのノードに適用されます。
+* **[1]**:この手順はノード 1 にのみ適用されます。
+* **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
 1. **[1]** 必要なユーザーを作成します。
 
@@ -688,9 +690,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 次のテストは、「SAP HANA SR Performance Optimized Scenario SUSE Linux Enterprise Server for SAP Applications 12 SP1」(SAP HANA SR パフォーマンス最適化シナリオ SUSE Linux Enterprise Server for SAP Applications 12 SP1) ガイドのテストに関する説明のコピーです。 最新バージョンについては、常にガイドも参照してください。 テストを開始する前に常に HANA が同期していることを確認し、Pacemaker の設定が正しいことを確認してください。
 
 次のテストの説明では、PREFER_SITE_TAKEOVER="true" および AUTOMATED_REGISTER="false" と想定しています。
-注: 次のテストは、順番に実行されるように設計されており、前のテストの終了状態によって異なります。
+注:次のテストは、順番に実行されるように設計されており、前のテストの終了状態によって異なります。
 
-1. テスト 1: ノード 1 上のプライマリ データベースを停止する
+1. テスト 1:ノード 1 上のプライマリ データベースを停止する
 
    テスト開始前のリソースの状態:
 
@@ -731,7 +733,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. テスト 2: ノード 2 上のプライマリ データベースを停止する
+1. テスト 2:ノード 2 上のプライマリ データベースを停止する
 
    テスト開始前のリソースの状態:
 
@@ -772,7 +774,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. テスト 3: ノード上のプライマリ データベースをクラッシュさせる
+1. テスト 3:ノードのプライマリ データベースをクラッシュさせる
 
    テスト開始前のリソースの状態:
 
@@ -813,7 +815,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. テスト 4: ノード 2 上のプライマリ データベースをクラッシュさせる
+1. テスト 4:ノード 2 上のプライマリ データベースをクラッシュさせる
 
    テスト開始前のリソースの状態:
 
@@ -854,7 +856,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. テスト 5: プライマリ サイト ノード (ノード 1) をクラッシュさせる
+1. テスト 5:プライマリ サイト ノード (ノード 1) をクラッシュさせる
 
    テスト開始前のリソースの状態:
 
@@ -905,7 +907,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. テスト 6: セカンダリ サイト ノード (ノード 2) をクラッシュさせる
+1. テスト 6:セカンダリ サイト ノード (ノード 2) をクラッシュさせる
 
    テスト開始前のリソースの状態:
 
@@ -956,7 +958,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. テスト 7: ノード 2 上のセカンダリ データベースを停止する
+1. テスト 7:ノード 2 上のセカンダリ データベースを停止する
 
    テスト開始前のリソースの状態:
 
@@ -993,7 +995,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. テスト 8: ノード 2 上のセカンダリ データベースをクラッシュさせる
+1. テスト 8:ノード 2 上のセカンダリ データベースをクラッシュさせる
 
    テスト開始前のリソースの状態:
 
@@ -1030,7 +1032,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. テスト 9: セカンダリ HANA データベースを実行しているセカンダリ サイト ノード (ノード 2) をクラッシュさせる
+1. テスト 9:セカンダリ HANA データベースを実行しているセカンダリ サイト ノード (ノード 2) をクラッシュさせる
 
    テスト開始前のリソースの状態:
 

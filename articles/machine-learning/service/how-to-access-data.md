@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning のデータストアを使用してデータにアクセスする
-description: トレーニング中にデータストアを使用してデータ ストレージにアクセスする方法
+title: トレーニングのためにデータストア内のデータにアクセスする
+titleSuffix: Azure Machine Learning service
+description: Azure Machine Learning service でトレーニング中にデータストアを使用してデータ ストレージにアクセスする方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +10,15 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 79e26d4d2cf5743abae6dc0f1fb58585e1b9b9db
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.custom: seodec18
+ms.openlocfilehash: 235ad729be434c8329a74e71abfe713480756316
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977908"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187145"
 ---
-# <a name="how-to-access-data-during-training"></a>トレーニング中にデータにアクセスする方法
+# <a name="access-data-during-training-from-your-datastores"></a>トレーニング中にデータストアのデータにアクセスする
 Azure Machine Learning ワークフローでは、データストアにアクセスしてデータを操作します。
 
 Azure Machine Learning サービスでは、データストアは [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) に対する抽象化です。 データストアでは、基になるストレージとして [Azure BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) コンテナーまたは [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)を参照できます。 
@@ -76,7 +78,7 @@ ds = Datastore.get(ws, datastore_name='your datastore name')
 ```Python
 datastores = ws.datastores()
 for name, ds in datastores.items(),
-    print(name, ds.datastore_type)"
+    print(name, ds.datastore_type)
 ```
 
 便宜的に、登録済みのデータストアの 1 つをワークスペースの既定のデータストアとして設定します。

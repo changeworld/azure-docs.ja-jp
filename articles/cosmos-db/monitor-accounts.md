@@ -1,22 +1,21 @@
 ---
-title: Azure Cosmos DB の要求およびストレージの監視 | Microsoft Docs
+title: Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 description: パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 1f4bf4ba660e83be9879c56d04b27c932d563e17
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 9c307bbbef7b9eecc980dc6013c317f1ee231a0c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354069"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034303"
 ---
-# <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
+# <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
+
 Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) から監視できます。 Azure Cosmos DB アカウントごとに、メトリックの完全なスイートが提供されており、スループット、ストレージ、可用性、待機時間、一貫性を監視できます。
 
 メトリックは、[アカウント] ページ、新しい [メトリック] ページ、または Azure Monitor で確認できます。

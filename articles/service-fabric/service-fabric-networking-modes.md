@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866068"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024792"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -35,7 +35,7 @@ ms.locfileid: "52866068"
 
 ## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
 
-1. Azure Resource Manager テンプレートを設定します。 **fabricSettings** セクションで、DNS サービスと IP プロバイダーを有効にします。 
+1. Azure Resource Manager テンプレートを設定します。 クラスター リソースの **fabricSettings** セクションで、DNS サービスと IP プロバイダーを有効にします。 
 
     ```json
     "fabricSettings": [
@@ -77,8 +77,10 @@ ms.locfileid: "52866068"
                 }
             ],
     ```
+    
+2. 仮想マシン スケール セット リソースのネットワーク プロファイルのセクションを設定します。 これにより、複数の IP アドレスをクラスターの各ノード上に構成できます。 次の例は、Windows/Linux Service Fabric クラスター用にノードごとに 5 つの IP アドレスを設定します。 各ノードのポートで 5 つのサービス インスタンスがリッスンできます。 Azure Load Balancer から 5 つの IP にアクセスできるようにするには、次に示すように、Azure Load Balancer バックエンド アドレス プールに 5 つの IP を登録します。  また、変数セクション内のテンプレート上部に変数を追加する必要があります。
 
-2. 複数の IP アドレスをクラスターの各ノードに構成できるように、ネットワーク プロファイル セクションを設定します。 次の例は、Windows/Linux Service Fabric クラスター用にノードごとに 5 つの IP アドレスを設定します。 各ノードのポートで 5 つのサービス インスタンスがリッスンできます。 Azure Load Balancer から 5 つの IP にアクセスできるようにするには、次に示すように、Azure Load Balancer バックエンド アドレス プールに 5 つの IP を登録します。
+    次のコード セクションを変数に追加します。
 
     ```json
     "variables": {
@@ -97,6 +99,11 @@ ms.locfileid: "52866068"
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    次のコード セクションを仮想マシン スケール セット リソースに追加します。
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {

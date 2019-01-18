@@ -1,5 +1,5 @@
 ---
-title: Windows ホスト用の IPsec トランスポート モードを構成する - Azure ExpressRoute プライベート ピアリング | Microsoft Docs
+title: Windows ホスト用の IPsec トランスポート モードを構成する - プライベート ピアリング:ExpressRoute:Azure | Microsoft Docs
 description: GPO と OU を使用して、ExpressRoute プライベート ピアリング経由で Azure Windows VM とオンプレミス Windows ホストの間の IPsec トランスポート モードを有効にする方法。
 services: expressroute
 author: fabferri
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
-ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 39bbe8a0ec11b90d506ce0d1c0bad37ddba46a5d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394331"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139122"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング用の IPsec トランスポート モードを構成する
 
@@ -42,7 +43,7 @@ OU に関連付けられているセキュリティ ポリシーは、GPO を介
 ### <a name="working-with-ipsec-policy"></a>IPsec ポリシーの使用
 
 Windows では、暗号化は IPsec ポリシーに関連付けられています。 IPsec ポリシーによって、セキュリティで保護される IP トラフィックと、IP パケットに適用されるセキュリティ メカニズムが決定されます。
-**IPSec ポリシー**は、**フィルター一覧**、**フィルター操作**、および**セキュリティ規則**という項目で構成されています。
+**IPSec ポリシー**を構成する項目は、**フィルター一覧**、**フィルター操作**、および**セキュリティ規則**です。
 
 IPsec ポリシーを構成する場合、次の IPsec ポリシーの用語を理解することが重要です。
 
@@ -143,7 +144,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 7. **[IP Traffic and Security]\(IP トラフィック セキュリティ\)** ページで、**[カスタム]** を選択してから **[設定]** をクリックします。
 
   [![21]][21]
-8. **[カスタム セキュリティ メソッドの設定]** ページで、**[データの整合性と暗号化 (ESP)] をオンにして、[SHA1] と [3DES]** を選択します。 次に、 **[OK]** をクリックします
+8. **[カスタム セキュリティ メソッドの設定]** ページで、**[データの整合性と暗号化 (ESP)] からSHA1、3DES** を選択します。 次に、 **[OK]** をクリックします
 
   [![22]][22]
 9. **[フィルター操作の管理]** ページで、**myEncryption** フィルターが正常に追加されたことを確認できます。 **[閉じる]** をクリックします。
@@ -169,7 +170,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 5. IP トラフィックの発信元アドレスの **[IP Address or Subnet]\(IP アドレスまたはサブネット\)** を指定してから、**[次へ]** をクリックします。
 
   [![28]][28]
-6. **[宛先アドレス]** の IP アドレスまたはサブネットを指定します。 次に、 **[次へ]** をクリックします。
+6. **[送信先アドレス]** としてIP アドレスまたはサブネットを指定します。 次に、 **[次へ]** をクリックします。
 
   [![29]][29]
 7. **[IP プロトコルの種類]** ページで、**[TCP]** を選択します。 次に、 **[次へ]** をクリックします。
@@ -251,7 +252,7 @@ IPsec ポリシーに、先ほど構成した **IP フィルター一覧**と**�
 6. 先ほど作成した、既存のフィルター操作 **myEncryption** を選択します。
 
   [![46]][46]
-7. Windows では、Kerberos、証明書、NTLMv2、および事前共有キーという 4 つの異なる種類の認証がサポートされます。 ここではドメインに参加しているホストを使用しているため、**[Active Directory 既定値 (Kerberos V5 プロトコル)]** を選択して、**[次へ]** をクリックします。
+7. Windows では 4 種類の認証がサポートされています。Kerberos、証明書、NTLMv2、および事前共有キーです。 ここではドメインに参加しているホストを使用しているため、**[Active Directory 既定値 (Kerberos V5 プロトコル)]** を選択して、**[次へ]** をクリックします。
 
   [![47]][47]
 8. 新しいポリシーでは **azure-onpremises-HTTP8080** というセキュリティ規則が作成されます。 Click **OK**.

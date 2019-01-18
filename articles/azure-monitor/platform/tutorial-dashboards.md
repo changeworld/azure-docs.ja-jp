@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 417f542bcf1711b2ac8e986663353e29a3705fb3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e31c957e9ef24079d6917109ec9c5f85928bfbd7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388455"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260977"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
-[Azure Monitor 診断ログ](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)は、Azure サービスから出力されるログで、サービスやリソースの操作が記述されています。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
+[Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)は、Azure サービスから出力されるログで、サービスやリソースの操作が記述されています。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、診断ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
 
@@ -205,7 +205,7 @@ ms.locfileid: "53388455"
 
 ## <a name="next-steps"></a>次の手順
 
-* [診断ログの詳細の確認](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [リソース診断ログを **Event Hubs** にストリーミングする](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [診断ログの詳細の確認](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [リソース診断ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)

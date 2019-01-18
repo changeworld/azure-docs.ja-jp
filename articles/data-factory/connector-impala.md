@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ed29fb99025dbc69b9dae6a996f444954a7d88d1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 5d0c887587028fe877cb7b5afd65968bde038d03
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123421"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014371"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Impala からデータをコピーする (プレビュー)
 
@@ -87,7 +86,12 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Impala データセットでサポートされるプロパティの一覧を示します。
 
-Impala からデータをコピーするには、データセットの type プロパティを **ImpalaObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Impala からデータをコピーするには、データセットの type プロパティを **ImpalaObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ImpalaObject** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -99,7 +103,8 @@ Impala からデータをコピーするには、データセットの type プ�
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -115,7 +120,7 @@ Impala からデータをコピーするには、コピー アクティビティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **ImpalaSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

@@ -1,26 +1,29 @@
 ---
-title: 発話の例を 1000 個使用したバッチ テスト
-titleSuffix: Azure Cognitive Services
+title: バッチ テスト
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) バッチ テスト セットを使用して、不適切な意図とエンティティを含む発話を見つけます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 340805e668190fedc7df047b66bec710d7e726c7
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032123"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53992976"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
- バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 
+
+ バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 バッチ テストに使用されるデータ セットには、予測ランタイム エンドポイントから受信した意図または発話内の発話の例が含まれていない必要があります。 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>バッチ テスト用のデータセット ファイルのインポート
 
 1. 上部のバーで **[テスト]** を選択し、**[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
@@ -36,6 +39,7 @@ ms.locfileid: "47032123"
 4. **[完了]** を選択します。 データセット ファイルが追加されます。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>データセットの実行、名前変更、エクスポート、または削除
+
 データセットの実行、名前の変更、エクスポート、または削除を行うには、データセット行の末尾にある省略記号 (***...***) ボタンを使用します。
 
 ![データセットのアクション](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,15 +59,15 @@ ms.locfileid: "47032123"
 |![テスト準備が完了していることを示すアイコン](./media/luis-how-to-batch-test/batch-test-result-blue.png)|いつでもテストを実行できます。|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>バッチ テストの結果の表示 
+
 バッチ テストの結果を確認するには、**[See results]\(結果の表示\)** を選択します。
 
 ![バッチ テストの結果](./media/luis-how-to-batch-test/run-test-results.png)
 
-<!-- Select the **See results** link that appears after you run the test. A scatter graph known as an error matrix displays. The data points represent the utterances in the dataset. Green points indicate correct prediction, and red ones indicate incorrect prediction. The filtering panel on the right side of the screen displays a list of all intents and entities in the app, with a green point for intents/entities that were predicted correctly in all dataset utterances, and a red point for those items with errors. Also, for each intent/entity, you can see the number of correct predictions out of the total utterances.-->
-
-
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>グラフの結果のフィルター処理
 
 特定の意図またはエンティティでグラフをフィルター処理するには、右側のフィルター処理パネルで意図またはエンティティを選択します。 グラフのデータ ポイントとその分布が、選択した内容に応じて更新されます。 
@@ -71,6 +75,7 @@ ms.locfileid: "47032123"
 ![視覚化されたバッチ テストの結果](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>単一ポイントの発話データの表示
+
 グラフで、データ ポイントの上にポインターを置くと、その予測の確実性を示すスコアが表示されます。 データ ポイントを選択すると、ページ下部にある発話一覧で、そのデータ ポイントに対応する発話を確認できます。 
 
 ![選択した発話](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +83,9 @@ ms.locfileid: "47032123"
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>セクション データの表示
+
 4 つのセクションで構成されるグラフで、セクション名を選択します。たとえば、グラフの右上のセクションの **[False Positive]\(誤検知\)** を選択します。 そのセクションのすべての発話が、グラフの下に一覧表示されます。 
 
 ![セクションで選択した発話](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

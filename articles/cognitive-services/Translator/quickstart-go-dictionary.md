@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を探す (Go) - Translator Text API'
+title: クイック スタート:2 か国語辞書で単語を検索する、Go - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Go を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000585"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158569"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>クイック スタート: Translator Text API と Go を使用して翻訳の代替候補を取得する
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>クイック スタート:Go を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、Go と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 

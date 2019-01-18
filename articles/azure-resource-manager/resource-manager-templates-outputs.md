@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: e3c5a581b02f1dd7b7415ebd93de0e425ac2f8ae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358367"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725813"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの出力セクション
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
@@ -48,7 +48,9 @@ Azure CLI では、次を使用します。
 az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
 ```
 
-[reference](resource-group-template-functions-resource.md#reference) 関数を使用して、リンクされているテンプレートから出力値を取得できます。 リンクされたテンプレートから出力値を取得するには、`"[reference('<name-of-deployment>').outputs.<property-name>.value]"` のような構文でプロパティ値を取得します。
+[reference](resource-group-template-functions-resource.md#reference) 関数を使用して、リンクされているテンプレートから出力値を取得できます。 リンクされたテンプレートから出力値を取得するには、`"[reference('deploymentName').outputs.propertyName.value]"` のような構文でプロパティ値を取得します。
+
+リンクされたテンプレートから出力プロパティを取得する場合、プロパティ名にダッシュを含めることはできません。
 
 たとえば、リンクされているテンプレートから値を取得することによってロード バランサーの IP アドレスを設定できます。
 
@@ -58,7 +60,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-[入れ子になったテンプレート](resource-group-linked-templates.md#link-or-nest-a-template)の出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
+[入れ子になったテンプレート](resource-group-linked-templates.md#link-or-nest-a-template) の出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
 
 ## <a name="available-properties"></a>利用可能なプロパティ
 
@@ -73,33 +75,16 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | outputName |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| 型 |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
+| type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
 | value |はい |評価され、出力値として返されるテンプレート言語式。 |
 
-## <a name="recommendations"></a>Recommendations
-
-テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す outputs セクションを組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="example-templates"></a>サンプル テンプレート
 
-
-|テンプレート  |[説明]  |
+|テンプレート  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |
@@ -109,5 +94,4 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ## <a name="next-steps"></a>次の手順
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
-* デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
-* 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions-resource.md#resourceid)に関するセクションをご覧ください。
+* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」を参照してください。

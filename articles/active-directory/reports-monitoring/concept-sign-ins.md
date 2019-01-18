@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623788"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653358"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * さらに、任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
-* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。
+* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
 
 ## <a name="sign-ins-report"></a>サインイン レポート
 
@@ -57,6 +57,9 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 [Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/61.png "サインイン アクティビティ")
+
+> [!IMPORTANT]
+> サインイン レポートには、**対話型**のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -129,7 +132,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、**[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。
 
-- [ブラウザー] ボタンを      
+- ブラウザー      
 - Exchange ActiveSync (supported) (Exchange ActiveSync (サポート対象))               
 - Exchange ActiveSync (unsupported) (Exchange ActiveSync (サポート外))
 - その他のクライアント               
@@ -195,7 +198,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 - アプリケーション ID
 - アプリケーション
 - クライアント
-- Location
+- 場所
 - IP アドレス
 - 日付
 - MFA が必要

@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 60b80843ce343c667413be55b59d02ac14b349f3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4be346163fd54c0c5f962d15bc2433c7fab49e0b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037517"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650945"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>発行済みアプリケーションのインストール - H2O Sparkling Water
 
-この記事では、[H2O Sparkling Water](http://www.h2o.ai/) の発行済み Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[H2O Sparkling Water](https://www.h2o.ai/) の発行済み [Apache Hadoop](https://hadoop.apache.org/) アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-h2o-sparkling-water"></a>H2O Sparkling Water について
 
-H2O Sparkling Water は、オープン ソースの完全分散型インメモリ機械学習プラットフォームであり、直線的なスケーラビリティを備えています。 H2O Sparkling Water では、H2O の高速かつスケーラブルな機械学習アルゴリズムと Spark の各種機能を組み合わせることが可能です。 Sparkling Water により、ユーザーは H2O Flow UI を使用して Scala、R、Python からの計算を強化できます。
+H2O Sparkling Water は、オープン ソースの完全分散型インメモリ機械学習プラットフォームであり、直線的なスケーラビリティを備えています。 H2O Sparkling Water では、H2O の高速かつスケーラブルな機械学習アルゴリズムと [Apache Spark](https://spark.apache.org/) の各種機能を組み合わせることができます。 Sparkling Water により、ユーザーは H2O Flow UI を使用して [Scala](https://www.scala-lang.org/)、R、Python の計算を処理できます。
 
 H2O Sparkling Water の提供内容:
 
@@ -34,7 +34,7 @@ H2O Sparkling Water の提供内容:
 ### <a name="resource-links"></a>リソース リンク
 
 * [H2O.ai エンジニアリング ロードマップ](http://jira.h2o.ai/)
-* [H2O.ai ホーム](http://www.h2o.ai/)
+* [H2O.ai ホーム](https://www.h2o.ai/)
 * [H2O.ai ドキュメント](http://docs.h2o.ai/)
 * [H2O.ai サポート](https://support.h2o.ai/)
 * [H2O.ai オープン ソース コードベース](https://github.com/h2oai/)
@@ -43,19 +43,19 @@ H2O Sparkling Water の提供内容:
 
 新しい HDInsight クラスター (または既存のクラスター) にこのアプリをインストールするには、次の構成が必要です。
 
-* クラスター レベル: Standard または Premium
-* クラスターの種類: Spark
-* クラスターのバージョン: 3.5 または 3.6
+* クラスター レベル:Standard または Premium
+* クラスターの種類:Spark
+* クラスターのバージョン:3.5 または 3.6
 
 ## <a name="install-the-h2o-sparkling-water-published-application"></a>H2O Sparkling Water によって発行されたアプリケーションのインストール
 
-このアプリケーションと利用可能な他の ISV アプリケーションをインストールする詳細な手順については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
+このアプリケーションやその他の使用可能な ISV アプリケーションをインストールするための詳細な手順については、[サードパーティ Apache Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
 
 ## <a name="launch-h2o-sparkling-water"></a>H2O Sparkling Water の起動
 
-1. インストール後、Jupyter Notebook (`https://<ClusterName>.azurehdinsight.net/jupyter`) を開いて、Azure Portal のクラスターから H2O Sparkling Water (h2o-sparklingwater) の使用を開始できます。 また、ポータルのクラスター ウィンドウから **[クラスター ダッシュボード]** を選択して **[Jupyter Notebook]** を選択し、Jupyter を取得することもできます。 資格情報を入力するよう求められます。 クラスター作成時に指定されたクラスターの Hadoop 資格情報を入力します。
+1. インストール後、[Jupyter Notebook](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`) を開いて、Azure portal のクラスターから H2O Sparkling Water (h2o-sparklingwater) の使用を開始できます。 また、ポータルのクラスター ウィンドウから **[クラスター ダッシュボード]** を選択して **[Jupyter Notebook]** を選択し、Jupyter を取得することもできます。 資格情報を入力するよう求められます。 クラスター作成時に指定されたクラスターの Hadoop 資格情報を入力します。
 
-2. Jupyter で、H2O-PySparkling-Examples、PySpark Examples、Scala Examples という 3 つのフォルダーを確認します。 **H2O-PySparkling-Examples** フォルダーを選択します。
+2. Jupyter では、次の 3 つのフォルダーが表示されます:H2O-PySparkling-Examples、PySpark Examples、Scala Examples。 **H2O-PySparkling-Examples** フォルダーを選択します。
 
     ![Jupyter Notebook ホーム](./media/hdinsight-apps-install-h2o/jupyter-home.png)
 
@@ -69,7 +69,7 @@ H2O Sparkling Water の提供内容:
 
 5. H2O クラスターが立ち上がったら、**`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** に移動して H2O Flow を開きます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > H2O Flow を開くことができない場合、ブラウザーのキャッシュを削除してみてください。 それでもアクセスできない場合はおそらくクラスターのリソースが足りていません。 クラスター ウィンドウの **[クラスターのスケール設定]** オプションで、ワーカー ノードの数を増やしてください。
 
     ![H2O Flow ダッシュボード](./media/hdinsight-apps-install-h2o/h2o-flow.png)
@@ -90,13 +90,13 @@ H2O Sparkling Water の提供内容:
 
     ![出力](./media/hdinsight-apps-install-h2o/output.png)
 
-これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機械学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
+これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機会学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
 
 ## <a name="next-steps"></a>次の手順
 
 * [H2O ドキュメント](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html)
-* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
-* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
-* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターへのアクセスのほか、HDInsight アプリケーションのテストとホストに空のエッジ ノードを使用する方法を確認します。
+* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md):発行されていない HDInsight アプリケーションを HDInsight にデプロイする方法を確認します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md):カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を確認します。
+* [MSDN:HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx):HDInsight アプリケーションを定義する方法を確認します。
+* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md):スクリプト アクションを使用して追加のアプリケーションをインストールする方法を確認します。
+* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md):HDInsight クラスターにアクセスしたり、HDInsight アプリケーションをテストおよびホストしたりするために空のエッジ ノードを使用する方法を確認します。

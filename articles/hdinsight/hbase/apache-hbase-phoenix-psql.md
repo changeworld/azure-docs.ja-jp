@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 4f4caec33414a9bf644e1b1860686247697b3fb4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042286"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652763"
 ---
-# <a name="bulk-load-data-into-phoenix-using-psql"></a>psql を使用して Phoenix にデータを一括で読み込む
+# <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
-[Apache Phoenix](http://phoenix.apache.org/) は、[HBase](../hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベースです。 Phoenix は、HBase に対して SQL に似たクエリを提供します。 Phoenix では、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更できるように、さらに行を個別にまたは一括でアップサートできるように JDBC ドライバーを使用しています。 Phoenix では、HBase 上で待機時間の短いアプリケーションを作成する場合、MapReduce を使用してクエリをコンパイルするのではなく、noSQL ネイティブ コンパイルを使用します。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 これにより、クライアント/サーバーのデータ転送が最小限に抑えられます。  HDInsight で Phoenix を使用してデータを操作するには、まずテーブルを作成し、そこにデータを読み込みます。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](../hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベースです。 Phoenix は、HBase に対して SQL に似たクエリを提供します。 Phoenix では、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更できるように、さらに行を個別にまたは一括でアップサートできるように JDBC ドライバーを使用しています。 Phoenix では、HBase 上で待機時間の短いアプリケーションを作成する場合、MapReduce を使用してクエリをコンパイルするのではなく、noSQL ネイティブ コンパイルを使用します。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 これにより、クライアント/サーバーのデータ転送が最小限に抑えられます。  HDInsight で Phoenix を使用してデータを操作するには、まずテーブルを作成し、そこにデータを読み込みます。
 
-## <a name="bulk-loading-with-phoenix"></a>Phoenix での一括読み込み
+## <a name="bulk-loading-with-apache-phoenix"></a>Apache Phoenix を使用した一括読み込み
 
 データを HBase で使用できるようにする方法には複数あります。たとえば、クライアント API の使用、TableOutputFormat による MapReduce ジョブの使用、HBase シェルを使用したデータの動的な入力などがあります。 Phoenix では Phoenix テーブルに CSV データを読み込む方法として 2 つがあります。1 つは `psql` という名前のクライアント読み込みツールであり、もう 1 つは MapReduce ベースの一括読み込みツールです。
 
@@ -28,7 +28,7 @@ ms.locfileid: "43042286"
 
 MapReduce では複数のスレッドが使用されるので、MapReduce による一括読み込みは、大量のデータ ボリューム (通常は実稼働のシナリオ) に対して使用されます。
 
-データの読み込みを開始する場合は、Phoenix が有効になっていて、クエリのタイムアウト設定が正しいことを事前に確認します。  HDInsight クラスターの Ambari ダッシュ ボードにアクセスし、[HBase] を選択し、[構成] タブを選択します。下にスクロールし、次のように Apache Phoenix が `enabled` に設定されていることを確認します。
+データの読み込みを開始する場合は、Phoenix が有効になっていて、クエリのタイムアウト設定が正しいことを事前に確認します。  HDInsight クラスターの [Apache Ambari](https://ambari.apache.org/) ダッシュ ボードにアクセスし、[HBase] を選択し、[構成] タブを選択します。下にスクロールし、次のように Apache Phoenix が `enabled` に設定されていることを確認します。
 
 ![Apache Phoenix HDInsight クラスターの設定](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
 
@@ -73,8 +73,8 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
     python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE] 
-    > `ZookeeperQuorum` 名を特定するには、プロパティ名 `hbase.zookeeper.quorum` が含まれているファイル `/etc/hbase/conf/hbase-site.xml` 内で文字列 zookeeper quorum を検索します。
+    > [!NOTE]   
+    > `ZookeeperQuorum` 名を特定するには、プロパティ名 `hbase.zookeeper.quorum` が含まれているファイル `/etc/hbase/conf/hbase-site.xml` 内で文字列 [Apache ZooKeeper](https://zookeeper.apache.org/) quorum を検索します。
 
 5. `psql` 操作が完了したら、コマンド ウィンドウにメッセージが表示されるはずです。
 
@@ -141,7 +141,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Apache Phoenix を使用した一括データの読み込み](http://phoenix.apache.org/bulk_dataload.html)
+* [Apache Phoenix を使用した一括データの読み込み](https://phoenix.apache.org/bulk_dataload.html)
 * [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [ソルティングされたテーブル](https://phoenix.apache.org/salted.html)
-* [Phoenix 文法](http://phoenix.apache.org/language/index.html)
+* [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html)

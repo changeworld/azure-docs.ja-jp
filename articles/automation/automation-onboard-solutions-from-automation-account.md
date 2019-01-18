@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7d79e7aca0e8aa506abba174668c60fcd2fd4bc2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625066"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065445"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -31,6 +31,24 @@ Automation アカウントに移動し、**[構成管理]** で、**[インベ�
 Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効にする]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![Inventory ソリューションの配布準備](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+
+ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+
+サポートするマッピングを次の表に示します。
+
+|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|西ヨーロッパ|西ヨーロッパ|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
@@ -81,7 +99,7 @@ Automation アカウントの **[構成管理]** で **[インベントリ]** �
 
 Azure に存在しないマシンは手動で追加する必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、**[更新の管理]** で **[更新プログラムの管理]** を選択します。
 
-**[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンがソリューションへのレポートを開始できるように、[Microsoft Monitoring Agent をマシンにインストールして構成する方法](../log-analytics/log-analytics-agent-overview.md)が示されます。 System Center Operations Manager によって現在管理されているマシンの配布準備を行う場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
+**[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンがソリューションへのレポートを開始できるように、[Microsoft Monitoring Agent をマシンにインストールして構成する方法](../azure-monitor/platform/log-analytics-agent.md)が示されます。 System Center Operations Manager によって現在管理されているマシンの配布準備を行う場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="onboard-machines-in-the-workspace"></a>ワークスペースでのマシンの配布準備
 
@@ -122,7 +140,7 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 2. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)。
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)にも掲載されています。
 
    続行するかどうかを確認するプロンプトが表示されます。
 

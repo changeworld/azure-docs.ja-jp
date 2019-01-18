@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5361c8940c8c7dba5338a3f5a0ed18910f7e45a0
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c7d236769d5e9adca0402affc2d0eccdf78a6837
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410331"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107754"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>Azure AD でフェデレーションからパススルー認証に移行する
 次のドキュメントでは、AD FS からパススルー認証への移行についてのガイダンスを提供します。
@@ -121,9 +121,9 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、"Micros
 |-|-|
 | それらの他のアプリケーションのために AD FS を保持しようとしている。| AD FS と Azure AD の両方を使用することになるため、エンドユーザー エクスペリエンスを検討する必要があります。 ユーザーは、いくつかのシナリオで認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これによって、以降の Office 365 などの他のアプリケーションに対する SSO を取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS が大幅にカスタマイズされていて、Azure AD に複製できない onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザーがユーザー名を UPN ではなく SamAccountName 形式でのみ入力するようにサインイン エクスペリエンスを変更したり、大幅にブランド化されたログイン エクスペリエンスにしたりしている)| 続行する前に、Azure AD が現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズのセクションを参照してください。|
-| AD FS を介してレガシ認証クライアントをブロックしている。| レガシ認証クライアントをブロックするために現在 AD FS にある制御を、[レガシ認証用の条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)の組み合わせに置き換えることを検討します。 |
+| AD FS を介してレガシ認証クライアントをブロックしている。| レガシ認証クライアントをブロックするために現在 AD FS にある制御を、[レガシ認証用の条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)の組み合わせに置き換えることを検討します。 |
 | ユーザーに、AD FS への認証時にオンプレミスの MFA サーバー ソリューションに対する MFA を行うことを要求している。| オンプレミス MFA ソリューションを介してマネージド ドメインの認証フローに MFA チャレンジを挿入することはできませんが、Azure MFA サービスを使用して、ドメインの変換以降はそのようにすることができます。 現在、ユーザーが Azure MFA を使用していない場合は、1 回限りのエンドユーザー登録手順が必要になります。これには、お客様による準備とエンド ユーザーへの連絡が必要です。 |
-| 現在、Office 365 へのアクセスを制御するために AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| これらを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)に置き換えることを検討します。|
+| 現在、Office 365 へのアクセスを制御するために AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| これらを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)に置き換えることを検討します。|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>一般的な AD FS のカスタマイズに関する考慮事項
 
@@ -333,7 +333,7 @@ Azure AD スマート ロックアウトを使用すると、ブルートフォ�
 
 お客様のテナントでフェデレーションが使用されていたとき、ユーザーは Azure AD サインイン ページから AD FS 環境にリダイレクトされていました。 フェデレーションではなくパススルー認証を使用するようにテナントが構成されたので、ユーザーは AD FS にリダイレクトされず、代わりに Azure AD サインイン ページから直接サインインします。
 
-シームレス SSO によって自動的にサインインされないように、InPrivate モードで Internet Explorer を開き、Office 365 のログイン ページ ([http://portal.office.com](http://portal.office.com/)) に移動します。 お客様のユーザーの **UPN** を入力し、**[次へ]** をクリックします。 必ず、お客様のオンプレミスの Active Directory と同期された、以前はフェデレーションだったハイブリッド ユーザーの UPN を入力してください。 ユーザーには、ユーザー名とパスワードを入力する画面が表示されます。
+シームレス SSO によって自動的にサインインされないように、InPrivate モードで Internet Explorer を開き、Office 365 のログイン ページ ([https://portal.office.com](https://portal.office.com/)) に移動します。 お客様のユーザーの **UPN** を入力し、**[次へ]** をクリックします。 必ず、お客様のオンプレミスの Active Directory と同期された、以前はフェデレーションだったハイブリッド ユーザーの UPN を入力してください。 ユーザーには、ユーザー名とパスワードを入力する画面が表示されます。
 
 ![画像 18](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 

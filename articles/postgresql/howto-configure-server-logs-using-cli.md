@@ -1,21 +1,18 @@
 ---
 title: Azure CLI を使用して PostgreSQL のサーバー ログを構成してアクセスする
 description: この記事では、Azure CLI コマンド ラインを使用して Azure Database for PostgreSQL のサーバー ログを構成してアクセスする方法について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: af5a0843acced4611b219088b7662f9ea4b32beb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969584"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545024"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
 コマンド ライン インターフェイス (Azure CLI) を使用して PostgreSQL サーバーのエラー ログをダウンロードできます。 ただし、トランザクション ログへのアクセスはサポートされていません。 
@@ -28,7 +25,7 @@ ms.locfileid: "46969584"
 ## <a name="configure-logging-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のログ記録の構成
 クエリ ログとエラー ログにアクセスするサーバーを構成できます。 エラー ログには、自動バキューム、接続、およびチェックポイント情報を含めることができます。
 1. ログ記録を有効にします。
-2. クエリのログ記録を有効にするには、**log\_statement** と **log\_min\_duration\_statement** を更新します。
+2. クエリのログ記録を有効にするには、**log\_statement**  と  **log\_min\_duration\_statement** を更新します。
 3. 保有期間を更新します。
 
 詳細については、[サーバー構成パラメーターのカスタマイズ](howto-configure-server-parameters-using-cli.md)に関するページを参照してください。

@@ -9,17 +9,16 @@ ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125672"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022480"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +34,7 @@ ms.locfileid: "39125672"
 現在のところ、Azure Data Factory は、Salesforce から、[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) へのデータの移動のみに対応しており、他のデータ ストアから Salesforce にデータを移動することはできません。
 
 ## <a name="supported-versions"></a>サポートされているバージョン
-このコネクタは、Salesforce の Developer Edition、Professional Edition、Enterprise Edition、Unlimited Edition の各エディションをサポートしています。 また、Salesforce 運用、サンドボックス、およびカスタム ドメインからのコピーをサポートしています。
+このコネクタでサポートされている Salesforce のエディションは、Developer Edition、Professional Edition、Enterprise Edition、または Unlimited Edition です。 また、Salesforce 運用、サンドボックス、およびカスタム ドメインからのコピーをサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 * API アクセス許可を有効にする必要があります。 「 [How do I enable API access in Salesforce by permission set? (権限セットで Salesforce の API アクセスを有効にする方法)](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
@@ -52,9 +51,9 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Salesforce からデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -62,7 +61,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Salesforce からデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: Salesforce から Azure BLOB へのデータのコピー](#json-example-copy-data-from-salesforce-to-azure-blob)」をご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Salesforce からデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: Salesforce から Azure BLOB にデータをコピーする](#json-example-copy-data-from-salesforce-to-azure-blob)」のセクションを参照してください。 
 
 次のセクションでは、Salesforce に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
 
@@ -71,10 +70,10 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **Salesforce**に設定する必要があります。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Salesforce**。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
-| username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
-| password |ユーザー アカウントのパスワードを指定します。 |[はい] |
+| username |ユーザー アカウントのユーザー名を指定します。 |はい |
+| password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -125,13 +124,13 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 * 削除されたレコードのみを検索するには、"select * from MyTable__c **where IsDeleted= 1**" と指定します。
 * 既存および削除済みを含むすべてのレコードを検索するには、"select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**" と指定します。
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON の使用例: Salesforce から Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON の使用例:Salesforce から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Salesforce から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
 
 このシナリオの実現にあたって作成する必要のある Data Factory のアーティファクトは次のとおりです。 これらの手順については、箇条書きの後に続く各セクションで詳しく説明します。
 
-* [Salesforce](#linked-service-properties)
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+*  [Salesforce](#linked-service-properties)
+*  [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * [RelationalTable](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)
 * [RelationalSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
@@ -293,7 +292,7 @@ RelationalSource でサポートされるプロパティの一覧については
 | 日付 |Datetime |
 | 日付/時刻 |Datetime |
 | 電子メール |String |
-| ID |String |
+| Id |String |
 | 参照リレーションシップ |String |
 | 複数選択の候補リスト |String |
 | Number |Decimal |

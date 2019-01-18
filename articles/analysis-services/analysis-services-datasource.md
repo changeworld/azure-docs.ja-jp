@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7d8bde6beeb4bd0c6234d7c5aa63be9e150953f5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427248"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188404"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -23,19 +23,19 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   はい      |    はい      |
-|Azure SQL Data Warehouse     |   はい      |   はい       |
-|Azure Blob Storage*     |   はい       |    いいえ       |
-|Azure Table Storage*    |   はい       |    いいえ       |
-|Azure Cosmos DB*     |  はい        |  いいえ         |
-|Azure Data Lake Store*     |   はい       |    いいえ       |
-|Azure HDInsight HDFS*     |     はい     |   いいえ        |
-|Azure HDInsight Spark*     |   はい       |   いいえ        |
+|Azure SQL Database     |   [はい]      |    [はい]      |
+|Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
+|Azure Blob Storage*     |   [はい]       |    いいえ       |
+|Azure Table Storage*    |   [はい]       |    いいえ       |
+|Azure Cosmos DB*     |  [はい]        |  いいえ         |
+|Azure Data Lake Store*     |   [はい]       |    いいえ       |
+|Azure HDInsight HDFS*     |     [はい]     |   いいえ        |
+|Azure HDInsight Spark*     |   [はい]       |   いいえ        |
 ||||
 
 \* 表形式 1400 モデルのみ。
 
-**プロバイダー**  
+**プロバイダー**   
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
 
 ## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
@@ -54,38 +54,38 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 
 ### <a name="in-memory-only"></a>メモリ内のみ
 
-|データソース  |
+|データソース  |  
 |---------|---------|
-|Access データベース     |
-|Active Directory*     |
-|Analysis Services     |
-|Analytics Platform System     |
-|Dynamics CRM*     |
-|Excel ブック     |
-|Exchange*     |
+|Access データベース     |  
+|Active Directory*     |  
+|Analysis Services     |  
+|Analytics Platform System     |  
+|Dynamics CRM*     |  
+|Excel ブック     |  
+|Exchange*     |  
 |フォルダー*     |
 |IBM Informix* (ベータ) |
-|JSON ドキュメント*     |
-|バイナリからの行*     |
-|MySQL Database     |
-|OData フィード*     |
-|ODBC クエリ     |
-|OLE DB     |
-|Postgre SQL データベース*    |
-|Salesforce オブジェクト* |
+|JSON ドキュメント*     |  
+|バイナリからの行*     | 
+|MySQL Database     | 
+|OData フィード*     |  
+|ODBC クエリ     | 
+|OLE DB     |   
+|Postgre SQL データベース*    | 
+|Salesforce オブジェクト* |  
 |Salesforce レポート* |
-|SAP HANA*    |
-|SAP Business Warehouse*    |
-|SharePoint*     |
-|Sybase データベース     |
-|XML テーブル*    |
+|SAP HANA*    |  
+|SAP Business Warehouse*    |  
+|SharePoint*     |   
+|Sybase データベース     |  
+|XML テーブル*    |  
 |||
-
+ 
 \* 表形式 1400 モデルのみ。
 
 ## <a name="specifying-a-different-provider"></a>別のプロバイダーを指定する
 
-Azure Analysis Services のデータ モデルでは、特定のデータ ソースに接続するときに異なるデータ プロバイダーが必要になる場合があります。 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。 SQLOLEDB 以外のネイティブ プロバイダーを使っている場合、"**プロバイダー 'SQLNCLI11.1' が登録されていません**" というエラー メッセージが表示されることがあります。 または、オンプレミスのデータ ソースに接続する直接クエリ モデルがあり、ネイティブ プロバイダーを使っている場合は、"**Error creating OLE DB row set.Incorrect syntax near 'LIMIT'**" (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります。) というエラー メッセージが表示される場合があります。
+Azure Analysis Services のデータ モデルでは、特定のデータ ソースに接続するときに異なるデータ プロバイダーが必要になる場合があります。 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。 SQLOLEDB 以外のネイティブ プロバイダーを使っている場合は、"**プロバイダー 'SQLNCLI11.1' が登録されていません**" というエラー メッセージが表示されることがあります。 または、オンプレミスのデータ ソースに接続する DirectQuery モデルがあり、ネイティブ プロバイダーを使っている場合は、"**Error creating OLE DB row set.Incorrect syntax near 'LIMIT'**" (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります。) というエラー メッセージが表示される場合があります。
 
 オンプレミスの SQL Server Analysis Services 表形式モデルを Azure Analysis Services に移行する場合は、プロバイダーの変更が必要になることがあります。
 
@@ -108,5 +108,6 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
 ## <a name="next-steps"></a>次の手順
-[オンプレミス ゲートウェイ](analysis-services-gateway.md)  
-[サーバーの管理](analysis-services-manage.md)  
+[オンプレミス ゲートウェイ](analysis-services-gateway.md)   
+[サーバーの管理](analysis-services-manage.md)   
+

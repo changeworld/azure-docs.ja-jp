@@ -1,6 +1,6 @@
 ---
-title: 30 日間、90 日間、およびそれ以上の期間の Azure AD デプロイ チェックリスト
-description: Azure Active Directory Premium P2 機能のデプロイ チェックリスト
+title: Premium P2 ライセンス機能のチェックリスト - Azure Active Directory | Microsoft Docs
+description: 30 日目まで、90 日目まで、およびそれ以降の Azure Active Directory Premium P2 機能のデプロイのためのデプロイ チェックリスト。
 services: active-directory
 ms.service: active-directory
 ms.component: ''
@@ -9,31 +9,31 @@ ms.date: 09/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: ''
-ms.openlocfilehash: 7931cd8a6f8b3de826e8dd563a837f80fc15d88a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310411"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064714"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 ライセンス機能のチェックリスト
 
-組織の Azure Active Directory (Azure AD) をデプロイして、継続的にセキュリティで保護するのは、大変に感じる場合があります。 この記事では、お客様が 30 日間、90 日間、またはそれ以上のコースを完了してセキュリティ対策を強化するために役立つ、いくつかの一般的なタスクを示します。 Azure AD を既にデプロイした組織でも、投資による最大のメリットが確実に得られるように、このチェックリストを活用できます。
+組織の Azure Active Directory (Azure AD) をデプロイして、継続的にセキュリティで保護することは困難と感じる場合があります。 この記事では、参考になる一般的なタスクをいくつか示します。 セキュリティ体制を強化するには、通常、30 日、90 日、またはそれを超える期間にわたってこのようなタスクを実行します。 Azure AD を既にデプロイした組織でも、投資による最大のメリットが確実に得られるように、このチェックリストを活用できます。
 
 綿密に計画され、実行された ID インフラストラクチャは、認証済みのユーザーおよびデバイスのみから生産性ワークロードとデータへより安全にアクセスするための基礎になります。
 
 ## <a name="prerequisites"></a>前提条件
 
-このガイドは、Azure AD Premium P2 ライセンス、Enterprise Mobility + Security E5、Microsoft 365 E5、または同等のライセンス バンドルがあることを前提としています。
+このガイドは、Azure AD Premium P2 ライセンス、Enterprise Mobility + Security E5、Microsoft 365 E5、または同様のライセンス バンドルがあることを前提としています。
 
 [Azure AD のライセンス](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Microsoft 365 Enterprise](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise.aspx)
+[Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 
-[Enterprise Mobility + Security](https://www.microsoft.com/licensing/product-licensing/enterprise-mobility-security.aspx)
+[Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
-## <a name="plan-and-deploy-day-1-30"></a>計画とデプロイ: 1 ～ 30 日間
+## <a name="plan-and-deploy-day-1-30"></a>計画とデプロイ: 1 ～ 30 日
 
 - 複数のグローバル管理者を指定する (非常用アカウント)
    - [Azure AD で緊急アクセス用管理者アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
@@ -64,7 +64,7 @@ ms.locfileid: "46310411"
    - [Azure AD Connect Health の実装](../connect-health/active-directory-aadconnect-health.md)
 - [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md)
 
-## <a name="plan-and-deploy-day-31-90"></a>計画とデプロイ: 31 ～ 90 日間
+## <a name="plan-and-deploy-day-31-90"></a>計画とデプロイ: 31 ～ 90 日
 
 - [ゲスト ユーザー アクセスを計画する](../b2b/what-is-b2b.md)
    - [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../b2b/add-users-administrator.md)
@@ -75,7 +75,7 @@ ms.locfileid: "46310411"
    - [Azure AD 参加の使用シナリオとデプロイに関する考慮事項](../devices/azureadjoin-plan.md)
 - [組織の Windows Hello for Business を管理する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
 
-## <a name="plan-and-deploy-day-90-and-beyond"></a>計画とデプロイ: 90 日間以上
+## <a name="plan-and-deploy-day-90-and-beyond"></a>計画とデプロイ: 90 日目以降
 
 - [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)
    - [PIM で Azure AD ディレクトリ ロールの設定を構成する](../privileged-identity-management/pim-how-to-change-default-settings.md)
@@ -84,7 +84,7 @@ ms.locfileid: "46310411"
 - ユーザーのライフサイクルを総合的に管理する
    - Azure AD が ID ライフサイクルを管理する方法を備えている
    - 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順を削除する
-      - 適切なソース (人事システム) からの ID を Azure AD に同期する。 サポートされている人事システムにリンクする
+      - 適切なソース (人事システム) からの ID を Azure AD に同期する。
       - [動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいてグループにユーザーを自動的に割り当てる](../users-groups-roles/groups-dynamic-membership.md)
       - [グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションにユーザーを自動的にプロビジョニングする](../manage-apps/what-is-access-management.md)
 

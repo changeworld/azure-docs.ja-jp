@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2018
+ms.date: 01/03/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277275"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018385"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -26,7 +26,7 @@ ms.locfileid: "51277275"
 
 ## <a name="install-cli"></a>CLI のインストール
 
-開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack には、Azure CLI のバージョン 2.0 以降が必要です。 このバージョンは、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」で説明されている手順を使用してインストールできます。 インストールが正常に完了したことを確認するには、ターミナルまたはコマンド プロンプト ウィンドウを開いて次のコマンドを実行します。
+開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack には、Azure CLI のバージョン 2.0 以降が必要です。 このバージョンは、記事「[Azure CLI のインストール](/cli/azure/install-azure-cli)」で説明されている手順を使用してインストールできます。 インストールが正常に完了したことを確認するには、ターミナルまたはコマンド プロンプト ウィンドウを開いて次のコマンドを実行します。
 
 ```azurecli
 az --version
@@ -36,15 +36,15 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書を信頼する
 
-1. Azure Stack の CA ルート証明書を [Azure Stack オペレーター](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)から取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。
+1. Azure Stack の CA ルート証明書を [Azure Stack オペレーター](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)から取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。
 
 1. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 [pip](https://pip.pypa.io) と [certifi](https://pypi.org/project/certifi/) モジュールをインストールしておく必要があります。 Bash プロンプトから次の Python コマンドを使用できます。
 
-  ```bash  
+    ```bash  
     python -c "import certifi; print(certifi.where())"
-  ```
+    ```
 
-  証明書の場所を書き留めておきます。 たとえば、「 `~/lib/python3.5/site-packages/certifi/cacert.pem` 」のように入力します。 特定のパスは、お使いの OS やインストールした Python のバージョンによって異なります。
+    証明書の場所を書き留めておきます (例: `~/lib/python3.5/site-packages/certifi/cacert.pem`)。 このパスは、オペレーティング システムと、インストールされている Python のバージョンによって異なります。
 
 ### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>クラウド内の開発用マシンのパスを設定する
 
@@ -56,15 +56,13 @@ sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 
 ### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>クラウドの外部の開発用マシンのパスを設定する
 
-Azure Stack 環境の**外部**のマシンから CLI を実行する場合:  
+Azure Stack 環境の外部のマシンから CLI を実行する場合:  
 
-1. [Azure Stack への VPN 接続](azure-stack-connect-azure-stack.md)を設定する必要があります。
-
+1. [Azure Stack への VPN 接続](azure-stack-connect-azure-stack.md)を設定します。
 1. Azure Stack オペレーターから取得した PEM 証明書をコピーし、ファイルの場所 (PATH_TO_PEM_FILE) を書き留めておきます。
+1. 開発用ワークステーション上のオペレーティング システムに応じて、次のセクションのコマンドを実行します。
 
-1. 開発ワークステーションの OS に応じて、次のコマンドを実行します。
-
-#### <a name="linux"></a>Linux
+#### <a name="linux"></a> Linux
 
 ```bash
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
@@ -76,7 +74,7 @@ sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a> Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -84,7 +82,7 @@ $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Down
 $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 $root.Import($pemFile)
 
-Write-Host "Extracting needed information from the cert file"
+Write-Host "Extracting required information from the cert file"
 $md5Hash    = (Get-FileHash -Path $pemFile -Algorithm MD5).Hash.ToLower()
 $sha1Hash   = (Get-FileHash -Path $pemFile -Algorithm SHA1).Hash.ToLower()
 $sha256Hash = (Get-FileHash -Path $pemFile -Algorithm SHA256).Hash.ToLower()
@@ -104,21 +102,20 @@ $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n"
 Write-Host "Adding the certificate content to Python Cert store"
 Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
+Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
 ```
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを取得する
 
-ユーザーが CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では次の URI https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json が使用されます。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、ユーザーは、エンドポイント URI を `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターに渡す必要があります。 
-   
-
+CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では次の URI `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json` が使用されます。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、`endpoint-vm-image-alias-doc` パラメーターのエンドポイント URI を `az cloud register` コマンドに渡す必要があります。 
+  
 ## <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
 次の手順を使用して Azure Stack に接続します。
 
 1. `az cloud register` コマンドを実行して、Azure Stack 環境を登録します。
    
-   a. *クラウド管理*環境を登録するには、次のコマンドを使用します。
+    a. *クラウド管理*環境を登録するには、次のコマンドを使用します。
 
       ```azurecli
       az cloud register \ 
@@ -128,8 +125,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-
-   b. *ユーザー*環境を登録するには、次のコマンドを使用します。
+    b. *ユーザー*環境を登録するには、次のコマンドを使用します。
 
       ```azurecli
       az cloud register \ 
@@ -151,17 +147,30 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
+    d. AD FS 環境にユーザーを登録するには、次のコマンドを使用します。
 
+      ```azurecli
+      az cloud register \
+        -n AzureStack  \
+        --endpoint-resource-manager "https://management.local.azurestack.external" \
+        --suffix-storage-endpoint "local.azurestack.external" \
+        --suffix-keyvault-dns ".vault.local.azurestack.external"\
+        --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" \
+        --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/"\
+        --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/"\
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --profile "2018-03-01-hybrid"
+      ```
 1. 次のコマンドを使用して、アクティブな環境を設定します。
-
-   a. *クラウド管理*環境の場合は、次のコマンドを使用します。
+   
+    a. *クラウド管理*環境の場合は、次のコマンドを使用します。
 
       ```azurecli
       az cloud set \
         -n AzureStackAdmin
       ```
 
-   b. *ユーザー*環境の場合は、次のコマンドを使用します。
+    b. *ユーザー*環境の場合は、次のコマンドを使用します。
 
       ```azurecli
       az cloud set \
@@ -170,18 +179,18 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 1. Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新します。 構成を更新するには、次のコマンドを実行します。
 
-   ```azurecli
-   az cloud update \
-     --profile 2018-03-01-hybrid
+    ```azurecli
+    az cloud update \
+      --profile 2018-03-01-hybrid
    ```
 
     >[!NOTE]  
     >1808 ビルドより前のバージョンの Azure Stack を実行している場合は、**2018-03-01-hybrid** の API バージョンのプロファイルではなく、**2017-03-09-profile** の API バージョンのプロファイルを使用する必要があります。
 
-1. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
+1. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)としてサインインできます。 
 
-    * AAD 環境
-      * "*ユーザー*" としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
+    * Azure AD 環境
+      * *ユーザー*としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
 
       ```azurecli
       az login \
@@ -190,11 +199,11 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
       ```
 
       > [!NOTE]
-      > お使いのユーザー アカウントで多要素認証が有効になっている場合は、`-u` パラメーターを入力せずに、`az login command` コマンドを使用できます。 コマンドを実行すると、認証で使用する必要がある URL とコードを取得できます。
+      > お使いのユーザー アカウントで多要素認証が有効になっている場合は、`-u` パラメーターを入力せずに、`az login command` コマンドを使用できます。 このコマンドを実行すると、認証で使用する必要がある URL とコードを取得できます。
    
-      * "*サービス プリンシパル*" としてサインインする場合: サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
+      * *サービス プリンシパル*を使ってサインインする｡サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
 
-      ```azurecli
+      ```azurecli  
       az login \
         --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
         --service-principal \
@@ -203,24 +212,37 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
       ```
     * AD FS 環境
 
-        * *サービス プリンシパル*を使ってサインインする｡ 
-          1.    サービス プリンシパルのログインに使用する .pem ファイルを用意します。
-                * プリンシパルが作成されたクライアント マシンでサービス プリンシパル証明書 (cert:\CurrentUser\My にあり､cert 名はプリンシパル名と同じ) を秘密キーを含む pfx としてエクスポートします｡
+        * Web ブラウザーを使用してユーザーとしてサインインします。  
+              ```azurecli  
+              az login
+              ```
+        * Web ブラウザーとデバイス コードを使用してユーザーとしてサインインします。  
+              ```azurecli  
+              az login --use-device-code
+              ```
+        > [!Note]  
+        >コマンドを実行すると、認証で使用する必要がある URL とコードを取得できます。
 
-                *   pfx を pem に変換します (OpenSSL ユーティリティ を使用)。
+        * サービス プリンシパルとしてサインインします。
+        
+          1. サービス プリンシパルのログインに使用する .pem ファイルを用意します。
 
-          1.    CLI にログインします。 :
-                ```azurecli
-                az login --service-principal \
-                 -u <Client ID from the Service Principal details> \
-                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
-                 --tenant <Tenant ID> \
-                 --debug 
-                ```
+            * プリンシパルが作成されたクライアント マシン上でサービス プリンシパル証明書 (`cert:\CurrentUser\My` にあり､cert 名はプリンシパル名と同じ) を秘密キーを含む pfx としてエクスポートします。
+        
+            * pfx を pem に変換します (OpenSSL ユーティリティ を使用)。
+
+          2.  CLI にサインインします。
+            ```azurecli  
+            az login --service-principal \
+              -u <Client ID from the Service Principal details> \
+              -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+              --tenant <Tenant ID> \
+              --debug 
+            ```
 
 ## <a name="test-the-connectivity"></a>接続のテスト
 
-必要な設定がすべて整ったら、CLI を使って Azure Stack にリソースを作成してみましょう。 たとえば、アプリケーションのリソース グループを作成して仮想マシンを追加できます。 次のコマンドを使用して、"MyResourceGroup" という名前のリソース グループを作成します。
+すべての設定が完了したら、Azure Stack 内で CLI を使ってリソースを作成してみましょう。 たとえば、アプリケーションのリソース グループを作成して仮想マシンを追加できます。 次のコマンドを使用して、"MyResourceGroup" という名前のリソース グループを作成します。
 
 ```azurecli
 az group create \
@@ -232,16 +254,15 @@ az group create \
 ![リソース グループ作成の出力](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="known-issues"></a>既知の問題
-Azure Stack で CLI を使うときに注意する必要がある既知の問題がいくつかあります。
 
- - CLI 対話モード ( `az interactive`コマンド) はまだ Azure Stack でサポートされていません。
- - Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm image list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。
+Azure Stack 内で CLI を使用する場合、次のような既知の問題があります。
+
+ - CLI 対話モード。たとえば、Azure Stack では、`az interactive` コマンドはまだサポートされていません。
+ - Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm image list --all` コマンドを使用します。 `--all` オプションを指定すると、Azure Stack 環境内で使用できるイメージのみが応答として返されます。
  - Azure で使用できる仮想マシン イメージの別名は、Azure Stack に適用できない場合があります。 仮想マシン イメージを使用する場合は、イメージの別名の代わりに、URN パラメーター全体 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) を使用する必要がありますします。 この URN は、`az vm images list` コマンドから派生したイメージ仕様と一致している必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
-
-[Azure Stack ユーザー (オペレーター) に対する Azure CLI の有効化](..\azure-stack-cli-admin.md)
-
-[ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
+- [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
+- [Azure Stack ユーザー (オペレーター) に対する Azure CLI の有効化](../azure-stack-cli-admin.md)
+- [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md) 

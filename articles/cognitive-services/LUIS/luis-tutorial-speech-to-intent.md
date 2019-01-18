@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162633"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714582"
 ---
-# <a name="integrate-speech-service"></a>音声サービスを統合する
+# <a name="integrate-speech-service-with-your-language-understanding-app"></a>音声サービスを Language Understanding アプリと統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) パッケージを使用します。 
 
 この記事では、アプリケーションをインポートするための、無料の [LUIS ][LUIS] Website アカウントが必要です。
@@ -27,7 +27,7 @@ ms.locfileid: "53162633"
 Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 
 
 ## <a name="import-human-resources-luis-app"></a>人事管理 LUIS アプリをインポートする
-この記事の意図と発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) GitHub リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
+この記事の意図と発話は、[Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub リポジトリにある人事管理 LUIS アプリからのものです。 [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
 
 このアプリには、人事分野に関連するインテント、エンティティ、および発話があります。 発話の例を次に示します。
 
@@ -62,7 +62,7 @@ Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-
 この記事では、お使いのコンピューターのオーディオ デバイスを使用します。 これには、マイク付きのヘッドセットや、コンピューターに内蔵されているオーディオ デバイスが含まれます。 オーディオ デバイスに音声を認識させるために、通常よりも大きな音量で話す必要があるかどうか、オーディオの入力レベルを確認してください。 
 
 ## <a name="download-the-luis-sample-project"></a>LUIS サンプル プロジェクトをダウンロードする
- [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) リポジトリを複製またはダウンロードします。 Visual Studio で [Speech to intent project](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) を開き、NuGet パッケージを復元します。 VS ソリューション ファイルは .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln です。
+ [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) リポジトリを複製またはダウンロードします。 Visual Studio で [Speech to intent project](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-speech-intent-recognition) を開き、NuGet パッケージを復元します。 VS ソリューション ファイルは documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln です。
 
 Speech SDK が既に参照として含まれています。 
 
@@ -93,7 +93,7 @@ Speech SDK は、LUIS の応答全体を返します。
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 不要になったら、LUIS HumanResources アプリを削除します。 これを行うには、アプリを選択し、一覧の上のコンテキスト ツール バーの **[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
-サンプル コードの使用が終わったら、LUIS Samples ディレクトリを削除します。
+サンプル コードの使用が終わったら、このディレクトリを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 08cd16cb9edc5606a18fc5d425910185f7747179
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844959"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187554"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
@@ -36,7 +36,7 @@ Azure AD B2C によって、顧客のブラウザーでコードが実行され�
 - Azure AD B2C によって HTML コンテンツがページに統合されます。 Azure AD B2C によって提供される既定のコンテンツをコピーしたり、変更したりしないでください。 HTML コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
 - セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。
 - サポートされているブラウザーのバージョン: 
-    - Internet Explorer 11、10、Edge
+    - Internet Explorer 11、10、Microsoft Edge
     - Internet Explorer 8 と 9 (サポートに制限あり)
     - Google Chrome 42.0 以降
     - Mozilla Firefox 38.0 以降

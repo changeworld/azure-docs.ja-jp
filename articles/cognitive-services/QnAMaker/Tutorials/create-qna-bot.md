@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル: Azure Bot Service による QnA ボット - QnA Maker'
+title: QnA ボット - Azure Bot Service - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure portal で Azure Bot Service v3 を使用して QnA ボットを構築する手順について説明します。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker`
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212743"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094833"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
 
@@ -60,11 +61,11 @@ ms.locfileid: "50212743"
 
 5. ボット テンプレートのフィールドで **[Question and Answer]\(質問と回答\)** テンプレートを選択し、**[選択]** を選択してテンプレート設定を保存します。
 
-    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+    ![ボットのサービス テンプレートの選択を保存する](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
 
 6. 設定を確認して **[作成]** を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。
 
-    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+    ![ボットを作成する](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
 
 7. ボット サービスがデプロイされたことを確認します。
 

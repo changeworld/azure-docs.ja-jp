@@ -13,14 +13,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2bba11cd8b0e90f7835872e496c790aa56fcddc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 47a89da808e2f53cf8dfc901c64eba3d78842d13
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276959"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652032"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法:Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
 Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign-ins.md)では、次のように組織内のアプリケーションへのアクセスの管理に関する質問への回答を見つけることができます。
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
 必要なもの:
 
-* Premium (P1/P2) ライセンスがある Azure AD テナント。 
+* Premium (P1/P2) ライセンスがある Azure AD テナント。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
 * テナントの**グローバル管理者**、**セキュリティ管理者** **セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>サインイン レポートを使用したサインイン エラーのトラブルシューティング

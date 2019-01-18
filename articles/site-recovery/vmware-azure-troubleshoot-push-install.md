@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314399"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789909"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -135,9 +135,8 @@ WMI のトラブルシューティングに関するその他の記事を次に�
 
 ## <a name="unsupported-operating-systems"></a>サポート対象外のオペレーティング システム
 
-問題が発生するもう 1 つの最も一般的な理由は、サポート対象外のオペレーティング システムです。 モビリティ サービスのインストールを成功させるには、サポート対象のオペレーティング システム/カーネルのバージョンを使用してください。
-
-Azure Site Recovery でサポートされているオペレーティング システムについては、[サポート マトリックス ドキュメント](vmware-physical-azure-support-matrix.md#replicated-machines)を参照してください。
+問題が発生するもう 1 つの最も一般的な理由は、サポート対象外のオペレーティング システムです。 モビリティ サービスのインストールを成功させるには、サポート対象のオペレーティング システム/カーネルのバージョンを使用してください。 プライベート修正プログラムは使用しないでください。
+Azure Site Recovery でサポートされているオペレーティング システムとカーネルのバージョンのリストを表示する場合は、[サポート マトリックス ドキュメント](vmware-physical-azure-support-matrix.md#replicated-machines)を参照してください。
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>ブートおよびシステムのパーティション/ボリュームが同じディスクではありません (ErrorID: 95309)
 
@@ -146,6 +145,10 @@ Azure Site Recovery でサポートされているオペレーティング シ�
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>複数のディスク上のシステム パーティション (ErrorID: 95313)
 
 9.20 より前のバージョンでは、複数のディスク上に存在するルート パーティションまたはボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
+
+## <a name="grub-uuid-failure-errorid-95320"></a>GRUB UUID エラー (ErrorID: 95320)
+
+ソース マシンの GRUB で、UUID ではなくデバイス名が使用されている場合は、モビリティ エージェントのインストールが失敗します。 GRUB ファイルを変更するようにシステム管理者に連絡してください。
 
 ## <a name="lvm-support-from-920-version"></a>9.20 以降のバージョンでの LVM のサポート
 

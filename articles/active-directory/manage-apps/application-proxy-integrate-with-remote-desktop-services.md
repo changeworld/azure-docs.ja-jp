@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230795"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135493"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -49,7 +49,7 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 
 - RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
 
-- [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-enable.md)必要があります。
+- [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)必要があります。
 
 - このシナリオでは、エンド ユーザーが、RD Web ページを通じて接続する Windows 7 または Windows 10 上の Internet Explorer にアクセスすることを前提としています。 その他のオペレーティング システムに対応する必要がある場合は、「[その他のクライアント構成のサポート](#support-for-other-client-configurations)」をご覧ください。
 
@@ -63,11 +63,11 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
-1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
+1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-add-on-premises-application.md)します。
    - [内部 URL]: `https://\<rdhost\>.com/`。 `\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
-   - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
-   - [事前認証方法]: Azure Active Directory
-   - [ヘッダーの URL を変換する]: いいえ
+   - 外部 URL:このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
+   - [事前認証方法]:Azure Active Directory
+   - [ヘッダーの URL を変換する]:いいえ 
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
 3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。
 4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。

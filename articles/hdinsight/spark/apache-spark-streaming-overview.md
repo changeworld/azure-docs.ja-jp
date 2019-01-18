@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041524"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652083"
 ---
-# <a name="overview-of-spark-streaming"></a>Spark ストリーミングの概要
+# <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 
-Spark ストリーミングでは、ノード障害が発生した場合でも、すべての入力イベントが厳密に 1 回確実に処理されるように HDInsight Spark クラスター上でデータ ストリーム処理を実行できます。 Spark Stream とは、Azure Event Hubs、Azure IoT Hub、Kafka、Flume、Twitter、ZeroMQ、生 TCP ソケットを含むさまざまなソースからの、または HDFS ファイルシステムの監視からの入力データを受け取る実行時間の長いジョブです。 1 つのイベント ドリブン プロセスとは異なり、Spark Stream は入力データを 2 秒スライスなどの時間枠にバッチ処理し、マップ、リデュース、結合、抽出操作を使用してデータの各バッチを変換します。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
+[Apache Spark](https://spark.apache.org/) ストリーミングは、ノード障害が発生した場合でも、すべての入力イベントが正確に 1 回処理されることが保証された HDInsight Spark クラスター上でのデータ ストリーム処理を提供します。 Spark Stream は、Azure Event Hubs、Azure IoT Hub、[Apache Kafka](https://kafka.apache.org/)、[Apache Flume](https://flume.apache.org/)、Twitter、[ZeroMQ](http://zeromq.org/)、生の TCP ソケットを含むさまざまなソース、または [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ファイル システムの監視から入力データを受信する実行時間の長いジョブです。 1 つのイベント ドリブン プロセスとは異なり、Spark Stream は入力データを 2 秒スライスなどの時間枠にバッチ処理し、マップ、リデュース、結合、抽出操作を使用してデータの各バッチを変換します。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
 
 ![HDInsight および Spark ストリーミングを使用したストリーム処理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
@@ -86,7 +86,7 @@ StreamingContext インスタンスを使用して、入力ソース用の入力
     ssc.start()            
     ssc.awaitTermination()
 
-Spark Stream API とサポートされるイベント ソース、変換、出力操作について詳しくは、「[Spark ストリーミングのプログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)」をご覧ください。
+Spark Stream API と、それがサポートするイベント ソース、変換、および出力操作の詳細については、[Apache Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)を参照してください。
 
 次のサンプル アプリケーションは自己完結型なので、[Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md) で実行できます。 この例では、カウンターの値と 5 秒おきに現在の時刻 (ミリ秒) を出力するクラス DummySource にモック データ ソースを作成します。 新しい StreamingContext オブジェクトのバッチ間隔は 30 秒です。 これは、バッチが作成されるたびに、ストリーミング アプリケーションが、生成された RDD を調べて Spark DataFrame に変換し、DataFrame から一時テーブルを作成します。
 
@@ -203,7 +203,7 @@ Spark Streaming API で使用できるスライディング ウィンドウ関�
 
 ## <a name="checkpointing"></a>チェックポイント機能
 
-回復性とフォールト トレランスを実現するために、Spark ストリーミングはチェックポイント機能に依存して、ノード障害が発生した場合でも中断なくストリーム処理を続行できるようにします。 HDInsight では、Spark は持続性のあるストレージ (Azure Storage or Data Lake Store) にチェックポイントを作成します。 これらのチェックポイントには、ストリーミング アプリケーションに関するメタデータ (構成、アプリケーションが定義した操作、キューに登録済みだが未処理のバッチなど) が格納されます。 In some cases, the checkpoints will also include saving the data in the RDDs to sh場合によっては、チェックポイントには RDD 内のデータも保存されます。これは、Spark が管理する RDD 内に存在するものからデータの状態を迅速にリビルドするためです。
+回復性とフォールト トレランスを実現するために、Spark ストリーミングはチェックポイント機能に依存して、ノード障害が発生した場合でも中断なくストリーム処理を続行できるようにします。 HDInsight では、Spark は持続性のあるストレージ (Azure Storage または Data Lake Storage) にチェックポイントを作成します。 これらのチェックポイントには、ストリーミング アプリケーションに関するメタデータ (構成、アプリケーションが定義した操作、キューに登録済みだが未処理のバッチなど) が格納されます。 In some cases, the checkpoints will also include saving the data in the RDDs to sh場合によっては、チェックポイントには RDD 内のデータも保存されます。これは、Spark が管理する RDD 内に存在するものからデータの状態を迅速にリビルドするためです。
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark ストリーミング アプリケーションのデプロイ
 
@@ -211,10 +211,10 @@ Spark Streaming API で使用できるスライディング ウィンドウ関�
 
 ![Spark ストリーミング アプリケーションのデプロイ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API について詳しくは、「[Livy を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)」を参照してください。
+GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight での Apache Spark クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [LIVY を使用した Spark ジョブのリモート起動](apache-spark-livy-rest-interface.md)
+* [Apache Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Apache LIVY を使用してリモートで Apache Spark ジョブを起動する](apache-spark-livy-rest-interface.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: d4701143a24fdf89b1c61744a9661fffdbb61ed3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d6096967c33866f9498f413a4a73fc1d7eae9ede
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278051"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231361"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -135,12 +135,12 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | セクション | 説明 | 使用法 |
 |:--- |:--- |:--- |
 | Threshold |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| Severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| Suppress |アラートからの通知を停止するオプション。 | Azure に拡張される前と後の両方の、すべてのアラートで省略可能です。 |
+| severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| 抑制 |アラートからの通知を停止するオプション。 | Azure に拡張される前と後の両方の、すべてのアラートで省略可能です。 |
 | アクション グループ |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
 | アクションのカスタマイズ|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
 | EmailNotification |複数の受信者にメールを送信します。 | アラートが Azure に拡張された後は不要|
-| 修復 |識別された問題を解決するための Runbook を Azure Automation で開始します。 |アラートが Azure に拡張された後は不要|
+| Remediation |識別された問題を解決するための Runbook を Azure Automation で開始します。 |アラートが Azure に拡張された後は不要|
 | Webhook アクション | アラートから JSON として必要なサービスにデータをプッシュします |アラートが Azure に拡張された後は不要|
 
 > [!NOTE]
@@ -154,7 +154,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | プロパティ | 説明 |
 |:--- |:--- |
 | operator |しきい値の比較演算子。 <br> gt = より大きい <br>  lt = より小さい |
-| Value |しきい値の値。 |
+| 値 |しきい値の値。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定し、しきい値を 10 より大きく設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、30 分間にわたって作成された 10 個のイベントが返されたときに、アラートがトリガーされます。
 
@@ -181,7 +181,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>重大度
+#### <a name="severity"></a>severity
 Log Analytics を使用するとアラートをカテゴリに分類し、簡単に管理およびトリアージできます。 定義されているアラートの重大度は、情報、警告、重大です。 これらは次のように Azure Alerts の正規化された重大度スケールにマッピングされています。
 
 |Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |
@@ -255,7 +255,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12
@@ -289,7 +289,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12
@@ -323,7 +323,7 @@ Webhook の詳細のカスタマイズは、ActionGroup の詳細とともに送
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12

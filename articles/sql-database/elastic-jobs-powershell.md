@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
-ms.reviwer: ''
+ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9b38e1b6ba55fab46965fdc7a73ab608e1e6b754
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877804"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021324"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -39,26 +39,29 @@ ms.locfileid: "52877804"
 
 Azure サブスクリプションをまだお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-**AzureRM.Sql** 4.8.1-preview モジュールをインストールして、エラスティック ジョブの最新のコマンドレットを入手してください。 管理アクセス権で次の PowerShell コマンドを実行します。
+- **AzureRM.Sql** 4.8.1-preview モジュールをインストールして、エラスティック ジョブの最新のコマンドレットを入手してください。 管理アクセス権で次の PowerShell コマンドを実行します。
 
-```powershell
-# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
-Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  ```powershell
+  # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+  Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
+  
+  # Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+  Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+  
+  # Restart your powershell session with administrative access
+  
+  # Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
+  Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+  
+  # Import the AzureRM.Sql 4.8.1 module
+  Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+  
+  # Confirm if module successfully imported - if the imported version is 4.8.1, then continue
+  Get-Module AzureRM.Sql
+  ```
 
-# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
-Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+- このチュートリアルには、**AzureRM.Sql** 4.8.1-preview モジュールに加えて、*sqlserver* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)」を参照してください。
 
-# Restart your powershell session with administrative access
-
-# Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
-
-# Import the AzureRM.Sql 4.8.1 module
-Import-Module AzureRM.Sql -RequiredVersion 4.8.1
-
-# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-Get-Module AzureRM.Sql
-```
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
@@ -209,7 +212,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 [ターゲット グループ](elastic-jobs-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。 
 
-次のスニペットを実行すると、*ServerGroup* と *ServerGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *ServerGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*ServerGroupExcludingDb2* では、*TargetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
+次のスニペットでは、*ServerGroup* と *ServerGroupExcludingDb2* の 2 つのターゲット グループを作成しています。 *ServerGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*ServerGroupExcludingDb2* では、*TargetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
 
 ```powershell
 Write-Output "Creating test target groups..."

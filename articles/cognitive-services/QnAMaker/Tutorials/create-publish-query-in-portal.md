@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164434"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608649"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>チュートリアル: QnA Maker ポータルでナレッジ ベースを作成して質問に回答する
 
@@ -83,9 +83,9 @@ ms.locfileid: "53164434"
 
 1. 表の下部で、質問と回答の最後のページを選択します。 このページには、おしゃべりの性格からの質問と回答が表示されます。 
 
-1. 質問と回答の一覧の上にあるツール バーで、歯車を選択します。 これにより、質問と回答ごとにフィルターが表示されます。 おしゃべりの質問には、**editorial: chit-chat** フィルターが既に設定されています。 このフィルターは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターを使用して、追加の処理やユーザーとの対話を判断することができます。
+1. 質問と回答の一覧の上にあるツール バーで、メタデータ アイコンを選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
 
-    ![フィルターの表示](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![メタデータ タグの表示](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. 上部のメニュー バーにある **[Save and train]\(保存してトレーニング\)** を選択します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "53164434"
 
 上部のメニューで **[Publish]\(発行\)** ボタンを選択します。 発行ページが表示されたら、**[キャンセル]** ボタンの横にある **[Publish]\(発行\)** を選択します。
 
-![[発行]](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
+![発行](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 
 KB が発行されると、エンドポイントが表示されます。
 
@@ -171,7 +171,7 @@ KB が発行されると、エンドポイントが表示されます。
    
     ```
 
-    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのフィルター情報を含むメタデータも返されました。  
+    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータも返されました。  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>curl を使用して既定の回答を照会する
 

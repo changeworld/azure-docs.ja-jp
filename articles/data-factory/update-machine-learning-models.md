@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: de3407b45fb82aa38bec7b84fef34c1654676122
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957465"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016217"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -93,7 +92,7 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 Web サービスが、Azure Resource Manager エンドポイントを公開する新しい種類の Web サービスである場合は、2 番目の**既定以外**のエンドポイントを追加する必要はありません。 リンクされたサービスの **updateResourceEndpoint** の形式は次のとおりです。 
 
 ```
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
 [Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 
@@ -118,7 +117,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
             "type": "SecureString",
             "value": "APIKeyOfEndpoint1"
             },
-            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. ",
+            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview",
             "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
             "servicePrincipalKey": {
             "type": "SecureString",
@@ -133,7 +132,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 次のシナリオで詳細を説明します。 このシナリオでは、Azure Data Factory パイプラインから Azure ML モデルの再トレーニングと更新を行う例を示します。
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル: Azure Machine Learning モデルの再トレーニングと更新
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル:Azure Machine Learning モデルの再トレーニングと更新
 
 このセクションでは、 **Azure ML バッチ実行アクティビティ** を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、 **Azure ML 更新リソース アクティビティ** を使用したスコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 

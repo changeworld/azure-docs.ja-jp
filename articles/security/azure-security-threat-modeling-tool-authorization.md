@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307658"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994758"
 ---
-# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
+# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **コンピューターの信頼の境界** | <ul><li>[デバイス上のデータへの未承認アクセスを制限する適切な ACL が構成されていることを確認する](#acl-restricted-access)</li><li>[ユーザー固有の機密アプリケーション コンテンツがユーザー プロファイル ディレクトリに保存されていることを確認する](#sensitive-directory)</li><li>[デプロイされたアプリケーションが最小権限で実行されていることを確認する](#deployed-privileges)</li></ul> |
@@ -349,7 +349,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>このサービスでは、承認コントロールが使用されません。 クライアントが特定の WCF サービスを呼び出すと、WCF は、呼び出し元に、サーバーでサービス メソッドを実行する権限が付与されていることを確認するさまざまな承認スキームを提供します。 承認コントロールが WCF サービスに対して有効でない場合は、認証されたユーザーが、権限の昇格を実行できます。</p>|
 
 ### <a name="example"></a>例

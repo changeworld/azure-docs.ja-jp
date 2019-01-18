@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 音声認識 (Javascript (ブラウザー)) - 音声サービス'
+title: クイック スタート:音声を認識する (JavaScript (ブラウザー)) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する方法について説明します
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6add6ac94e45789033cfe9913ec64e69f394f45
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087917"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715139"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、音声をテキストに文字起こしする Web サイトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.1.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
+このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "53087917"
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)としてダウンロードし、新しく作成したフォルダーに解凍します。 これにより、`microsoft.cognitiveservices.speech.sdk.bundle.js` と `microsoft.cognitiveservices.speech.sdk.bundle.js.map` の 2 つのファイルが解凍されます。
-後者のファイルはオプションであり、必要に応じて SDK コードのデバッグを支援するために使用します。
+後者のファイルはオプションであり、SDK コードのデバッグに有用です。
 
 ## <a name="create-an-indexhtml-page"></a>index.html ページを作成する
 
@@ -103,10 +103,7 @@ Web サーバーで Web ページをホストする場合は、デモ アプリ�
 
 アプリを起動するには、適当な Web ブラウザーを開き、フォルダーをホストしているパブリック URL にアクセスして、[リージョン](regions.md)を入力し、マイクを使用して認識を開始します。 構成した場合、トークン ソースからトークンが取得されます。
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルは、`quickstart/js-browser` フォルダーで探してください。
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [サンプルを入手する](speech-sdk.md#get-the-samples)
+> [GitHub の JavaScript のサンプルを参照する](https://aka.ms/csspeech/samples)

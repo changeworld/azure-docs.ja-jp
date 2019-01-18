@@ -4,17 +4,17 @@ description: Terratest を使用して Terraform モジュールをテストす�
 services: terraform
 ms.service: terraform
 keywords: Terraform, DevOps, ストレージ アカウント, Azure, Terratest, 単体テスト, 統合テスト
-author: JunyiYi
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: cff7d0dea27dd21ac4f7bb133e297e4f5928d2c2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 94d878f8a17b0c0d62afbabe8125068bbf3a2e85
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680601"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075806"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terratest を使用して Azure で Terraform モジュールをテストする
 
@@ -37,7 +37,7 @@ Terraform モジュールを作成するときは、品質保証を実装する�
 
 - **Go プログラミング言語**: Terraform テスト ケースは [Go](https://golang.org/dl/) で記述します。
 - **dep**: [dep](https://github.com/golang/dep#installation) は、Go 向けの依存関係管理ツールです。
-- **Azure CLI**: [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するために使用できるコマンドライン ツールです。 (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます。)
+- **Azure CLI**:[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するために使用できるコマンドライン ツールです。 (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます。)
 - **mage**: Terratest ケースの実行を簡単にする方法を示すため、[mage 実行可能ファイル](https://github.com/magefile/mage/releases)を使用します。 
 
 ## <a name="create-a-static-webpage-module"></a>静的 Web ページ モジュールを作成する
@@ -298,7 +298,7 @@ Terraform モジュールのベスト プラクティスには、`examples` フ�
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample webpage to demostrate Terratest.</p>
+    <p>This is a sample webpage to demonstrate Terratest.</p>
 </body>
 </html>
 ```
@@ -365,7 +365,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
     http_helper.HttpGetWithCustomValidation(t, homepage, func(status int, content string) bool {
         return status == 200 &&
             strings.Contains(content, "Hi, Terraform Module") &&
-            strings.Contains(content, "This is a sample web page to demostrate Terratest.")
+            strings.Contains(content, "This is a sample web page to demonstrate Terratest.")
     })
 }
 ```
@@ -417,11 +417,11 @@ mage で必要になるのは、プロジェクトのルート ディレクト�
 ```
 
 以下に `./magefile.go` の例を示します。 Go で記述されたこのビルド スクリプトには、5 つのビルド ステップが実装されています。
-- `Clean`: このステップでは、テストの実行中に生成されるすべての一時ファイルを削除します。
-- `Format`: このステップでは、`terraform fmt` と `go fmt` を実行してコード ベースを書式設定します。
-- `Unit`: このステップでは、`./test/` フォルダーにあるすべての単体テストを (関数の名前規則 `TestUT_*` を使用して) 実行します。
-- `Integration`: このステップは `Unit` と似ていますが、単体テストではなく統合テスト (`TestIT_*`) を実行します。
-- `Full` このステップでは、`Clean`、`Format`、`Unit`、`Integration` を順番に実行します。
+- `Clean`:このステップでは、テストの実行中に生成されるすべての一時ファイルを削除します。
+- `Format`:このステップでは、`terraform fmt` と `go fmt` を実行してコード ベースを書式設定します。
+- `Unit`:このステップでは、`./test/` フォルダーにあるすべての単体テストを (関数の名前規則 `TestUT_*` を使用して) 実行します。
+- `Integration`:このステップは `Unit` と似ていますが、単体テストではなく統合テスト (`TestIT_*`) を実行します。
+- `Full`:このステップでは、`Clean`、`Format`、`Unit`、`Integration` を順番に実行します。
 
 ```go
 // +build mage
@@ -504,7 +504,7 @@ func Clean() error {
 $ cd [Your GoPath]/src/staticwebpage
 GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only requied when you change the magefile
+GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
 GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage$ mage
 ```
@@ -513,7 +513,7 @@ GoPath/src/staticwebpage$ mage
 
 mage では、Go パッケージ システムを使用して、ステップを共有することもできます。 その場合、共通の実装を参照して依存関係 (`mg.Deps()`) を宣言するだけで、すべてのモジュールで magefile を簡略化できます。
 
-**オプション: 受け入れテストを実行するようにサービス プリンシパル環境変数を設定する**
+**省略可能: 受け入れテストを実行するようにサービス プリンシパル環境変数を設定する**
  
 テストの前に `az login` を実行する代わりに、サービス プリンシパル環境変数を設定して Azure 認証を完了できます。 Terraform から、[環境変数名の一覧](https://www.terraform.io/docs/providers/azurerm/index.html#testing)が公開されています。 (必要になるのは、これらの環境変数のうち最初の 4 つのみです)。[これらの環境変数の値を取得する](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)方法が説明された詳しい手順も Terraform から公開されています。
 

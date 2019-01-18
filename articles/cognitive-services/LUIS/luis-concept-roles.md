@@ -1,21 +1,22 @@
 ---
-title: パターン ベースのエンティティでのロールの使用方法について
+title: エンティティのロール
 titleSuffix: Azure Cognitive Services
-description: ロールは、パターンでのみ使用されるエンティティの名前付きコンテキスト サブタイプです。 たとえば、発話「ニューヨーク発ロンドン着の切符を買う」では、ロンドンとニューヨークは両方とも都市ですが、文章内での意味はそれぞれ異なります。 ニューヨークは出発地、ロンドンは目的地です。
+description: ロールは、パターンでのみ使用されるエンティティの名前付きコンテキスト サブタイプです。 たとえば、発話 `buy a ticket from New York to London` では、ロンドンとニューヨークは両方とも都市ですが、文章内での意味はそれぞれ異なります。 ニューヨークは出発地、ロンドンは目的地です。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 8a92852a2721bd391ddf7c3cf3489b820c4a1400
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277617"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547747"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -24,10 +25,10 @@ ms.locfileid: "51277617"
 
 ロールでは、こうした違いに対して名前が付けられます。
 
-|エンティティ|Role|目的|
+|エンティティ|ロール|目的|
 |--|--|--|
-|Location|origin|飛行機が離陸する場所|
-|Location|destination|飛行機が着陸する場所|
+|場所|origin|飛行機が離陸する場所|
+|場所|destination|飛行機が着陸する場所|
 |事前構築済みの datetimeV2|to|終了日|
 |事前構築済みの datetimeV2|from|開始日|
 
@@ -43,7 +44,17 @@ ms.locfileid: "51277617"
 エンティティとロールは、かっこ `{}` で囲まれています。 エンティティとロールは、コロンで区切られています。 
 
 
-[!INCLUDE[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+[!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>エンティティのロールの例
+
+ロールは、発話内のエンティティのコンテキストから学習した配置にすぎません。 これが最も有用なのは、発話内に同じ種類のエンティティが複数含まれている場合です。 エンティティの種類の例として最もわかりやすいのは、出発地と到着地の区別です。 場所は、多数のさまざまなエンティティの種類で表すことができます。 
+
+ユース ケースの例は、従業員をある部署から別の部署に異動させることです。ここでは、各部署が一覧の項目です。 例:  
+
+`Move [PersonName] from [Department:from] to [Department:to]` 
+
+返される予測では、両方の部署エンティティが JSON 応答内に返され、それぞれにロール名が含まれます。 
 
 ## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
 

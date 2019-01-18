@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384233"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715111"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -26,7 +26,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 ## <a id="whatis"></a>Apache Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターの管理と監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](https://ambari.apache.org) では、Hadoop クラスターの管理と監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
@@ -232,7 +232,7 @@ foreach($item in $respObj.items) {
 
 ## <a name="example-get-the-default-storage"></a>例:既定のストレージを取得する
 
-HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Store を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
+HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Storage を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
 
 以下の例では、クラスターの既定のストレージ構成を取得します。
 
@@ -255,9 +255,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - この値は、クラスターが既定のストレージとして Azure Storage アカウントを使用していることを示します。 `ACCOUNTNAME` 値は、ストレージ アカウントの名前です。 `CONTAINER` 部分は、ストレージ アカウント内の BLOB コンテナーの名前です。 コンテナーは、クラスターの HDFS 互換ストレージのルートです。
 
-* `adl://home` - この値は、クラスターが既定のストレージとして Azure Data Lake Store を使用していることを示します。
+* `adl://home` - この値は、クラスターが既定のストレージとして Azure Data Lake Storage を使用していることを示します。
 
-    Data Lake Store のアカウント名を検索するには、以下の例を使用します。
+    Data Lake Storage のアカウント名を検索するには、以下の例を使用します。
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -271,9 +271,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    戻り値は、`ACCOUNTNAME.azuredatalakestore.net` のようになります。ここで、`ACCOUNTNAME` は Data Lake Store アカウントの名前です。
+    戻り値は、`ACCOUNTNAME.azuredatalakestore.net` のようになります。ここで、`ACCOUNTNAME` は Data Lake Storage アカウントの名前です。
 
-    クラスターのストレージが含まれている Data Lake Store 内のディレクトリを検索するには、以下の例を使用します。
+    クラスターのストレージが含まれている Data Lake Storage 内のディレクトリを検索するには、以下の例を使用します。
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -287,7 +287,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Store アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。 
+    戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Storage アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。 
 
 > [!NOTE]  
 > [Azure PowerShell](/powershell/azure/overview) に用意されている `Get-AzureRmHDInsightCluster` コマンドレットも、クラスターのストレージ情報を返します。

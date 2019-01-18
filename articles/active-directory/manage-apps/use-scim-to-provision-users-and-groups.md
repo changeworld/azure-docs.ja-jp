@@ -16,17 +16,20 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 87f5153ef71f74a0fa1a6be3c527fba03b65bf83
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 04287d286aed872a2b951c47e0f67a93bd19c7b3
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095569"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583478"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
 ## <a name="overview"></a>概要
 Azure Active Directory (Azure AD) では、[Cross-Domain Identity Management (SCIM) 2.0 プロトコル仕様](https://tools.ietf.org/html/draft-ietf-scim-api-19)のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます。 Azure Active Directory は、割り当てられたユーザーとグループを Web サービスに対して作成、変更、または削除するための要求を送信できます。 Web サービスは、これらの要求を、ターゲット ID ストアに対する操作に変換できます。 
+
+>[!IMPORTANT]
+>Azure AD SCIM の実装の動作は、2018 年 12 月 18 日に最終更新が行われました。 変更点については、[Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンス](application-provisioning-config-problem-scim-compatibility.md)に関する記事をご覧ください。
 
 ![][0]
 *図 1:Azure Active Directory から Web サービスを介して ID ストアにプロビジョニングする*
@@ -73,6 +76,10 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 6. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/v2/
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
+
+    >[!NOTE]
+    >**テスト接続**では、Azure AD 構成で照合プロパティとして選択されたランダムな GUID を使用して、存在しないユーザー用の SCIM エンドポイントのクエリが実行されます。 想定される適切な応答は、HTTP 200 OK と空の SCIM ListResponse メッセージです。 
+
 9. アプリケーションへの接続の試みが成功した場合は、**[保存]** をクリックして管理者資格情報を保存します。
 10. **[マッピング]** セクションには、選択可能な 2 つの属性マッピングのセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
@@ -149,6 +156,10 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、 http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
+
+    >[!NOTE]
+    >**テスト接続**では、Azure AD 構成で照合プロパティとして選択されたランダムな GUID を使用して、存在しないユーザー用の SCIM エンドポイントのクエリが実行されます。 想定される適切な応答は、HTTP 200 OK と空の SCIM ListResponse メッセージです。
+
 9. アプリケーションへの接続の試みが成功した場合は、**[保存]** をクリックして管理者資格情報を保存します。
 10. **[マッピング]** セクションには、選択可能な 2 つの属性マッピングのセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 [保存] ボタンをクリックして変更をコミットします。
 11. **[設定]** の **[スコープ]** フィールドは、同期するユーザーまたはグループを定義します。 [Sync only assigned users and groups]\(割り当てたユーザーとグループのみ同期する\) (推奨) を選択すると、**[ユーザーとグループ]** タブに割り当てられたユーザーとグループのみが同期されます。

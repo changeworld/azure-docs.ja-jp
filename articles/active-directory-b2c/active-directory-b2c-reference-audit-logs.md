@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320239"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117403"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -68,7 +68,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 ### <a name="prerequisites"></a>前提条件
 Azure AD Reporting API に対する認証を行うには、まずアプリケーションを登録する必要があります。 必ず、[Azure AD Reporting API にアクセスするための前提条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)の手順に従ってください。
 
-### <a name="accesing-the-api"></a>API へのアクセス
+### <a name="accessing-the-api"></a>API へのアクセス
 API で Azure AD B2C 監査ログをダウンロードする場合は、ログをフィルター処理して **B2C** カテゴリに出力することをお勧めします。 カテゴリでフィルター処理するには、Azure AD Reporting API のエンドポイントを呼び出すときに、次に示すようにクエリ文字列パラメーターを使用します。
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`

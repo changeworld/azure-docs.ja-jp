@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 73b8b8c0224382d0959203a1060868ad91cb4239
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 542bd4f23c32d4d59b11875ef96f8e1f261605ba
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546166"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302275"
 documentType: LandingData
 title: Azure Machine Learning Studio のドキュメント
 metadata:
-  title: Azure Machine Learning Studio のドキュメント
-  description: Azure Machine Learning Studio の使用方法を学習します。
+  title: ドキュメント - Azure Machine Learning Studio のチュートリアルとリファレンス | Microsoft Docs
+  description: Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
   services: machine-learning
-  author: j-martens
   ms.service: machine-learning
   ms.component: studio
+  ms.topic: landing-page
+  author: j-martens
+  ms.author: jmartens
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: landing-page
   ms.date: 09/24/2018
-  ms.author: jmartens
 abstract:
   description: Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
 sections:

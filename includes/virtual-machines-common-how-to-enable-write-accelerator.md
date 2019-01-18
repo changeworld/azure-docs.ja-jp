@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400253"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594279"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -41,7 +41,7 @@ SAP 関連の VM 構成では、OS ディスクで書き込みアクセラレー
 Azure ディスク/VHD で書き込みアクセラレータを使うときは、次の制限が適用されます。
 
 - Premium ディスクのキャッシュを 'None' または 'Read Only' に設定する必要があります。 他のすべてのキャッシュ モードはサポートされていません。
-- 書き込みアクセラレータを有効にしたディスクでのスナップショットは、まだサポートされていません。 この制限により、仮想マシンのすべてのディスクのアプリケーション整合スナップショットを実行する Azure Backup サービスの機能はブロックされます。
+- 現在、書き込みアクセラレータ対応のディスクでは、スナップショットはサポートされていません。 バックアップ中、VM に接続されている書き込みアクセラレータ対応ディスクは Azure Backup サービスによって自動的に除外されます。
 - 高速化パスは、I/O サイズが小さい場合 (32KiB 以下) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
 
 書き込みアクセラレータでサポートできる VM ごとの Azure Premium Storage VHD には制限があります。 現在の制限は次のとおりです。

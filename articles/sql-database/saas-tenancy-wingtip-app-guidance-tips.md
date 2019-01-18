@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054406"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606029"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 
@@ -57,7 +57,7 @@ ms.locfileid: "47054406"
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>F5 キーを押してスクリプトを実行する
 
-複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。*$PSScriptRoot* が評価されるのは、**F5** キーを押してスクリプトが実行される場合のみです。  選択項目を強調表示して実行する (**F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
+複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。*$PSScriptRoot* が評価されるのは、**F5** キーを押してスクリプトが実行される場合のみです。  選択項目を強調表示して実行する (**F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>スクリプトをステップスルーして実装を確認する
 
@@ -94,7 +94,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
    ![カタログ サーバー](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. デモの資格情報は、ログイン = *developer*、パスワード = *P@ssword1* です。
+3. デモの資格情報は次のとおりです。ログイン = *developer*、パスワード = *P@ssword1*
 
     次の図では、"*テナントごとのデータベース*" パターンのログインを示します。 
     ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

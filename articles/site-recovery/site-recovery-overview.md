@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5942f27313cf8bb6a9ed8bf0a5cc4fb556693065
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cd9e89c92b2bed75c52654d779f4f7d8c17596e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832226"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975323"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -23,8 +23,8 @@ Azure Site Recovery サービスへようこそ。 この記事では、サー�
 
 Azure Recovery Services は、組織の BCDR 戦略に活かすことができます。
 
-- **Site Recovery サービス**: Site Recovery により、機能停止中でもビジネス アプリとワークロードの実行状態を維持することで、ビジネス継続性を確保できます。 Site Recovery は、物理マシンと仮想マシン (VM) で実行中のワークロードを、プライマリ サイトからセカンダリ ロケーションにレプリケートします。 プライマリ サイトで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーし、そこからアプリにアクセスします。 プライマリの場所が再度実行中になったら、そこにフェールバックできます。  
-- **Backup サービス**: [Azure Backup](https://docs.microsoft.com/azure/backup/) サービスによってデータが Azure にバックアップされることで、データの安全性と回復可能性が確保されます。
+- **Site Recovery サービス**:Site Recovery により、機能停止中でもビジネス アプリとワークロードの実行状態を維持することで、ビジネス継続性を確保できます。 Site Recovery は、物理マシンと仮想マシン (VM) で実行中のワークロードを、プライマリ サイトからセカンダリ ロケーションにレプリケートします。 プライマリ サイトで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーし、そこからアプリにアクセスします。 プライマリの場所が再度実行中になったら、そこにフェールバックできます。  
+- **Backup サービス**:[Azure Backup](https://docs.microsoft.com/azure/backup/) サービスによってデータが Azure にバックアップされることで、データの安全性と回復可能性が確保されます。
 
 Site Recovery で対応できるレプリケーションは次のとおりです。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault の HSM保護キーを生成し、転送する方法 | Microsoft Docs
+title: Azure Key Vault の HSM保護キーを生成し、転送する方法 - Azure Key Vault | Microsoft Docs
 description: この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。 これは、BYOK (Bring Your Own Key) とも呼ばれます。
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 2294e65a552b0bf0a428e5272610abc1f63229e6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308292"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079206"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -58,22 +57,22 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 
 | 要件 | 詳細情報 |
 | --- | --- |
-| Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](https://azure.microsoft.com/pricing/free-trial/) |
+| Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM で保護されたキーをサポートする Azure Key Vault Premium サービス レベル |Azure Key Vault のサービス層と機能に関する詳細については、 [Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。 |
 | Thales HSM、スマート カード、サポート ソフトウェア |Thales ハードウェア セキュリティ モジュールにアクセスできることと Thales HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、「 [Thales ハードウェア セキュリティ モジュール](https://www.thales-esecurity.com/msrms/buy) 」を参照してください。 |
-| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の Thales nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **1.1.0 以降**の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを「未接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、このワークステーションを「インターネット接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/> |
+| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の Thales nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **1.1.0 以降**の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>キーを生成し、Azure Key Vault HSM に転送する
 
 次の 5 つの手順でキーを生成し、Azure Key Vault HSM に転送します。
 
-* [手順 1: インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)
-* [手順 2: 未接続ワークステーションを準備する](#step-2-prepare-your-disconnected-workstation)
-* [手順 3: キーを生成する](#step-3-generate-your-key)
-* [手順 4: キーの転送準備をする](#step-4-prepare-your-key-for-transfer)
-* [手順 5: キーを Azure Key Vault に転送する](#step-5-transfer-your-key-to-azure-key-vault)
+* [手順 1:インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)
+* [手順 2:未接続ワークステーションを準備する](#step-2-prepare-your-disconnected-workstation)
+* [手順 3:キーを生成する](#step-3-generate-your-key)
+* [手順 4:キーの転送準備をする](#step-4-prepare-your-key-for-transfer)
+* [手順 5:キーを Azure Key Vault に転送する](#step-5-transfer-your-key-to-azure-key-vault)
 
-## <a name="step-1-prepare-your-internet-connected-workstation"></a>手順 1: インターネット接続ワークステーションを準備する
+## <a name="step-1-prepare-your-internet-connected-workstation"></a>手順 1:インターネット接続ワークステーションを準備する
 
 この最初の手順では、インターネットに接続されているワークステーションで次の手順を実行します。
 
@@ -209,7 +208,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
    Get-FileHash KeyVault-BYOK-Tools-*.zip
    ```
 
-ツールセットには次が含まれます。
+ツールセットの内容は次のとおりです。
 
 * Key Exchange Key (KEK) パッケージ。この名前は「**BYOK-KEK-pkg-**」から始まります。
 * セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-**」から始まります。
@@ -219,11 +218,11 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 USB ドライブまたはその他のポータブル ストレージにパッケージをコピーします。
 
-## <a name="step-2-prepare-your-disconnected-workstation"></a>手順 2: 未接続ワークステーションを準備する
+## <a name="step-2-prepare-your-disconnected-workstation"></a>手順 2:未接続ワークステーションを準備する
 
 この 2 つ目の手順では、ネットワーク (インターネットまたは内部ネットワーク) に接続されていないワークステーションで次の手順を実行します。
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>手順 2.1: Thales HSM で未接続ワークステーションを準備する
+### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>手順 2.1:Thales HSM で未接続ワークステーションを準備する
 
 Windows コンピューターに nCipher (Thales) サポート コンピューターをインストールし、そのコンピューターに Thales HSM をアタッチします。
 
@@ -235,7 +234,7 @@ Thales ツールがパスにあることを確認します (**%nfast_home%\bin**
 
 詳細については、Thales HSM に付属のユーザー ガイドを参照してください。
 
-### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>手順 2.2: 未接続ワークステーションに BYOK ツールセットをインストールします。
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>手順 2.2:未接続ワークステーションに BYOK ツールセットをインストールする
 
 USB ドライブまたはその他のポータブル ストレージから BYOK ツールセット パッケージをコピーし、次の操作します。
 
@@ -243,14 +242,14 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 2. そのフォルダーから vcredist_x64.exe を実行します。
 3. 指示に従い、Visual Studio 2013 用の Visual C++ ランタイム コンポーネントをインストールします。
 
-## <a name="step-3-generate-your-key"></a>手順 3: キーを生成する
+## <a name="step-3-generate-your-key"></a>手順 3:キーを生成する
 
 この 3 つ目の手順では、未接続ワークステーションで次の手順を実行します。 この手順を実行するには、HSM は初期化モードである必要があります。 
 
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>手順 3.1: HSM モードを "I" に変更する
 
-Thales nShield Edge を使用している場合、モードを変更するには、次に手順を実行します。1.  モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
+Thales nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
 
 ### <a name="step-32-create-a-security-world"></a>手順 3.2: セキュリティ ワールドを作成する
 
@@ -268,7 +267,7 @@ Thales nShield Edge を使用している場合、モードを変更するには
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>手順 3.3: HSM モードを "O" に変更する
 
-Thales nShield Edge を使用している場合、モードを変更するには、次に手順を実行します。1.  モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
+Thales nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
 
 ### <a name="step-34-validate-the-downloaded-package"></a>手順 3.4: ダウンロードしたパッケージを検証する
 
@@ -363,11 +362,11 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 これで Azure Key Vault にキーを転送する準備ができました。
 
-## <a name="step-4-prepare-your-key-for-transfer"></a>手順 4: キーの転送準備をする
+## <a name="step-4-prepare-your-key-for-transfer"></a>手順 4:キーの転送準備をする
 
 この 4 つ目の手順では、未接続ワークステーションで次の手順を実行します。
 
-### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>手順 4.1: アクセス権が制限されたキーのコピーを作成します。
+### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>手順 4.1: アクセス権が制限されたキーのコピーを作成する
 
 新しいコマンド プロンプトを開き、現在のディレクトリを、BYOK zip ファイルを解凍した場所に変更します。 キーのアクセス権を制限するには、地域リージョンまたは Azure のインスタンスによって、コマンド プロンプトから次のいずれかを実行します。
 
@@ -414,7 +413,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-このコマンドを実行するとき、*contosokey* を、「**キーを生成する**」の「[手順 3.5: 新しいキーを作成する](#step-3-generate-your-key)」で指定した値に置き換えます。
+このコマンドを実行するとき、*contosokey* を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) で指定した値に置き換えます。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
@@ -428,7 +427,7 @@ Thales ユーティリティを使用すると、次のコマンドで ACL を�
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  このコマンドを実行するとき、contosokey を、「[キーを生成する](#step-3-generate-your-key)」の「**手順 3.5: 新しいキーを作成する**」で指定した値に置き換えます。
+  これらのコマンドを実行するとき、contosokey を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) で指定した値に置き換えます。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>手順 4.2: Microsoft の Key Exchange Key を使用してキーを暗号化する
 
@@ -479,17 +478,17 @@ Thales ユーティリティを使用すると、次のコマンドで ACL を�
 
 このコマンドを実行するとき、次の指示に従います。
 
-* *contosokey* を、「**キーを生成する**」の「[手順 3.5: 新しいキーを作成する](#step-3-generate-your-key)」でキーの生成に使用した ID で置き換えます。
-* *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。 この値は先に、 **インターネット接続ワークステーションの準備** 手順の「 [手順 1.2: Azure サブスクリプション ID を取得する](#step-1-prepare-your-internet-connected-workstation) 」で取得しました。
+* *contosokey* を、「**手順 3.5: 新しいキーを作成する**」(「[キーを生成する](#step-3-generate-your-key)」) でキーの生成に使用した ID で置き換えます。
+* *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。 この値は先に、「**手順 1.2: Azure サブスクリプション ID を取得する**」(「[インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)」の手順) で取得しました。
 * *ContosoFirstHSMKey* を出力ファイル名に使用するラベルで置換します。
 
-完了すると、**Result: SUCCESS** と表示され、"KeyTransferPackage-*ContosoFirstHSMkey*.byok" という名前の新しいファイルが現在のフォルダーに表示されます
+完了すると、**Result: SUCCESS** と表示され、KeyTransferPackage-*ContosoFirstHSMkey*.byok という名前の新しいファイルが現在のフォルダーに表示されます。
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>手順 4.3: キー転送パッケージをインターネット接続ワークステーションにコピーする
 
 USB ドライブまたはその他のポータブル ストレージを使用し、前の手順の出力ファイル (KeyTransferPackage-ContosoFirstHSMkey.byok) をインターネット接続ワークステーションにコピーします。
 
-## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>手順 5: キーを Azure Key Vault に転送する
+## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>手順 5:キーを Azure Key Vault に転送する
 
 この最後の手順では、インターネット接続ワークステーションで、[Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) コマンドレットを使用し、未接続ワークステーションからコピーしたキー転送パッケージを Azure Key Vault HSM にアップロードします。
 

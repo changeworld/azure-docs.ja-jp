@@ -1,7 +1,7 @@
 ---
-title: イメージへの分類 - Computer Vision
+title: 画像の分類 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したイメージへの分類に関連する概念。
+description: Computer Vision API の画像分類機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 602ea8028cf89b23df692d5c2fb9b781f64bcad4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341686"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579500"
 ---
-# <a name="categorizing-images"></a>イメージの分類
+# <a name="image-categorization-with-computer-vision"></a>Computer Vision での画像の分類
 
 タグ付けや説明に加え、Computer Vision では、前のバージョンで定義した分類ベースのカテゴリが返されます。 これらのカテゴリは親/子の遺伝階層を持つ分類として整理されます。 すべてのカテゴリは英語です。 単独で、または新しいタグ付けモデルと共に使用できます。
 
@@ -25,13 +26,13 @@ ms.locfileid: "49341686"
 
 以下の図に示されている 86 の概念のリストに基づき、イメージを細かく分けることができます。 テキスト形式の完全な分類については、[カテゴリの分類](category-taxonomy.md)に関するページを参照してください。
 
-![カテゴリの分析](./Images/analyze_categories.png)
+![カテゴリの分類に含まれるすべてのカテゴリのグループ化されたリスト](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>イメージの分類の例
 
 次の JSON 応答は、視覚的特徴に基づいてサンプル イメージを分類する際に、Computer Vision から返される内容を示します。
 
-![屋上にいる女性](./Images/woman_roof.png)
+![共同住宅の屋上にいる女性](./Images/woman_roof.png)
 
 ```json
 {
@@ -52,12 +53,12 @@ ms.locfileid: "49341686"
 
 次の表は、各イメージについて Computer Vision から返される一般的なイメージ セットとカテゴリを示しています。
 
-| イメージ | Category |
+| 画像 | カテゴリ |
 |-------|----------|
-| ![家族写真](./Images/family_photo.png) | people_group |
-| ![かわいい犬](./Images/cute_dog.png) | animal_dog |
-| ![屋外の山](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Vision Analyze パン](./Images/bread.png) | food_bread |
+| ![家族としてポーズをとっている 4 人の人物](./Images/family_photo.png) | people_group |
+| ![草原の座っている子犬](./Images/cute_dog.png) | animal_dog |
+| ![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | outdoor_mountain |
+| ![テーブル上の丸パンの山](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>次の手順
 

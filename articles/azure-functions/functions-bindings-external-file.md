@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: cshoe
-ms.openlocfilehash: 39036f17b8ceafebbe3660f2074e2a6c84c4df03
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 765eab8dfc1163c4d9e0337a1af840278ae1a82c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248695"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546268"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions の外部ファイル バインディング (試験段階)
 この記事では、Azure Functions でさまざまな SaaS プロバイダー (Dropbox、Google ドライブなど) のファイルを操作する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。 これらのバインディングでは、SaaS プロバイダーへの API 接続を作成するか、または Function App のリソース グループにある既存の API 接続を使用します。
@@ -31,7 +31,7 @@ ms.locfileid: "50248695"
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|○|○|○
 |[Dropbox](https://www.dropbox.com)|○|○|○
-|[FTP](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)|○|○|○
+|[FTP](https://docs.microsoft.com/azure/app-service/deploy-ftp)|○|○|○
 |[OneDrive](https://onedrive.live.com)|○|○|○
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|○|○|○
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|○|○|○

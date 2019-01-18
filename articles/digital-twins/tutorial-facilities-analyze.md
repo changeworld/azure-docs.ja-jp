@@ -1,20 +1,21 @@
 ---
-title: Azure Digital Twins 設定からのイベントを分析する | Microsoft Docs
+title: チュートリアル:Azure Digital Twins 設定からのイベントを分析する | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Time Series Insights を使って Azure Digital Twins 空間からのイベントを視覚化および分析する方法を学習します。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: b7c44184d0a0d8d5a8f1fbd80b053230f2c1ae84
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f233efc93fa07cc7fc7c904336f01348f4da3f82
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582022"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554522"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル: Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
+# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
 
 Azure Digital Twins インスタンスをデプロイし、空間をプロビジョニングして、特定の条件を監視するカスタム関数を実装した後は、傾向や異常を見つけるために空間から受け取ったイベントやデータを視覚化することができます。 
 

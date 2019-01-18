@@ -1,24 +1,21 @@
 ---
 title: Ruby を使用して Azure Database for PostgreSQL に接続する
 description: このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Ruby コード サンプルを紹介します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 2d132ba1b901c45df79507a974ee8d4786c6311d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6748f168624a20e17491a2f84b63b966ce5ad4c6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985031"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539296"
 ---
-# <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Ruby を使用した接続とデータの照会
+# <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Ruby を使った接続とデータの照会
 このクイックスタートでは、[Ruby](https://www.ruby-lang.org) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Ruby を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +26,7 @@ ms.locfileid: "49985031"
 ## <a name="install-ruby"></a>Ruby のインストール
 Ruby を自分のマシンにインストールします。 
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 - 最新バージョンの [Ruby](https://rubyinstaller.org/downloads/) をダウンロードしてインストールします。
 - MSI インストーラーの完了画面で、[Run 'ridk install' to install MSYS2 and development toolchain]\('ridk install' を実行して MSYS2 と開発ツールチェーンをインストールする\) チェック ボックスをオンにします。 **[完了]** をクリックして、次のインストーラーを起動します。
 - Windows インストーラー用 RubyInstaller2 が起動します。 「2」と入力して、MSYS2 リポジトリ更新をインストールします。 完了してインストール プロンプトに戻ったら、コマンド ウィンドウを閉じます。

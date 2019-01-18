@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a28ae46a449d4aacf046636793585a84adc5ba83
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089635"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106122"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
 
@@ -123,7 +123,9 @@ EPH インスタンス (またはコンシューマー) のパーティション
 
 ## <a name="receive-messages"></a>メッセージを受信する
 
-[ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しごとに、イベントのコレクションが配信されます。 これらのイベントを処理するのは開発者の責任です。 物事は迅速に済ませることをお勧めします。つまり、できる限り最小限の処理に留めます。 代わりに、コンシューマー グループを使用します。 ストレージへの書き込みとルーティングを行う必要がある場合、一般的には、2 つのコンシューマー グループを使用し、2 つの [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装を別個に実行する方が良いやり方です。
+[ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しごとに、イベントのコレクションが配信されます。 これらのイベントを処理するのは開発者の責任です。 プロセッサ ホストによってすべてのメッセージが 1 回以上処理されることを確認する場合は、独自の再試行保持コードを作成する必要があります。 ただし、有害メッセージについて注意してください。
+
+物事は迅速に済ませることをお勧めします。つまり、できる限り最小限の処理に留めます。 代わりに、コンシューマー グループを使用します。 ストレージへの書き込みとルーティングを行う必要がある場合、一般的には、2 つのコンシューマー グループを使用し、2 つの [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装を別個に実行する方が良いやり方です。
 
 処理中のある時点で、読み取ったものと完了したものを追跡することをお勧めします。 読み取りを再開する必要がある場合は、ストリームの先頭に戻らずに済むように追跡することが重要です。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) は、"*チェックポイント*" を使用してこの追跡を簡素化します。 チェックポイントは、問題なくメッセージが処理されている、特定のコンシューマー グループ内の特定のパーティションの場所またはオフセットです。 **EventProcessorHost** でチェックポイントをマークするには、[PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) オブジェクトの [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) メソッドを呼び出します。 この操作は [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) メソッド内で実行しますが、[CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 内でも実行できます。
 

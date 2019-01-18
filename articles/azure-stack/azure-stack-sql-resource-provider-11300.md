@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 1/09/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: d2dda25c63a6e4a73205b9e4a830a211d025b3ed
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: jiahan
+ms.openlocfilehash: c8186ed6bb8b3af906ed871eea8e0b33a281aece
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688283"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247522"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL リソース プロバイダー 1.1.30.0 のリリース ノート
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 これらのリリース ノートでは、SQL リソース プロバイダー バージョン 1.1.30.0 の機能強化と既知の問題について説明します。
 
@@ -68,6 +68,23 @@ SQL リソース プロバイダー バイナリをダウンロードした後�
 
     **対処法**: 同じサブスクリプション下の異なるデータベースには常に異なるログインを使用します。
 
+- **TLS 1.2 サポート要件**。 TLS 1.2 が有効になっていないコンピューターから SQL リソース プロバイダーをデプロイまたは更新しようとすると、操作が失敗する可能性があります。 リソース プロバイダーのデプロイまたは更新に使用するコンピューターで、次の PowerShell コマンドを実行して、TLS 1.2 がサポート対象であるかどうかを確認します。
+
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  **Tls12** がコマンドの出力に含まれていない場合、TLS 1.2 はそのコンピューターでは使用できません。
+
+    **対処法**: 次の PowerShell コマンドを実行して TLS 1.2 を有効にし、同じ PowerShell セッションからリソース プロバイダーのデプロイを開始するかまたはスクリプトを更新します。
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
+- **SQL リソース プロバイダーが SQL Server Always On リスナーの追加に失敗します**。 SQL リソース プロバイダー VM は、SQL Server Always On リスナーのリスナー IP アドレスを使用するとき、リスナーのホスト名を解決できません。
+
+    **対処法**: リスナーのホスト名に対するリスナー IP を解決するには、DNS が正しく動作していることを確認します。
+    
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Azure Stack を運用するクラウド管理者に関する既知の問題
 [Azure Stack リリース ノート](azure-stack-servicing-policy.md)内のドキュメントをご覧ください。
 

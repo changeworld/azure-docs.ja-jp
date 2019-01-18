@@ -9,23 +9,23 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 05af52ab492fcfe509b547efdd182a366642b9ed
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075524"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754409"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>チュートリアル 3:一般的な発話の形式を追加する
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加する
 
 このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、式の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。 
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
 > [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する 
+> * サンプル アプリをインポートする 
 > * 意図を作成する
 > * トレーニング
 > * 発行
@@ -37,13 +37,13 @@ ms.locfileid: "53075524"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 

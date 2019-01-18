@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 手書きテキストの抽出 - REST、Python - Computer Vision'
+title: クイック スタート:手書きのテキストを抽出する - REST、Python
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 83c8bb76d6bc646de6811c68076ed7a9dfb85669
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 38e0b243b79975fa0cf6b5bb9a8a64c144289b15
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853474"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582883"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision の REST API および Python を使用して手書きテキストを抽出する
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使用して手書きテキストを抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
 

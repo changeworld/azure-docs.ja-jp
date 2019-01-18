@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: snehaa
-ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257796"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975476"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -48,12 +48,13 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされている Azure の地域を教えてください。
 
-Azure Migrate では現在、プロジェクトの地域として米国と Azure Government がサポートされています。 移行プロジェクトの作成先はこれらの地域に限られていますが、評価するマシンは、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)に存在していてもかまいません。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+Azure Migrate では現在、プロジェクトの地域としてヨーロッパ、米国、Azure Government がサポートされています。 移行プロジェクトの作成先はこれらの地域に限られていますが、評価するマシンは、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)に存在していてもかまいません。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
-米国 | 米国中西部または米国東部
 Azure Government | 米国政府バージニア州
+ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+米国 | 米国東部または米国中西部
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>オンプレミス サイトはどのようにして Azure Migrate に接続しますか。
 

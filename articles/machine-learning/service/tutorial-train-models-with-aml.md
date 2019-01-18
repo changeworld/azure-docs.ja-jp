@@ -11,34 +11,34 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310115"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075942"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
-このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービスに関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
+このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning service に関するトレーニングとデプロイのワークフローを使用します。 それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
-このチュートリアルでは、Azure Machine Learning サービスで [MNIST](https://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](https://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
+このチュートリアルでは、Azure Machine Learning service で [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](https://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。 MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28 x 28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
 
-以下の項目について説明します。
+次の操作の実行方法を確認してください。
 
 > [!div class="checklist"]
-> * 開発環境を設定する
-> * データにアクセスして検査する
-> * 人気のある scikit-learn 機械学習ライブラリを使って、単純なロジスティック回帰モデルをローカルでトレーニングする 
-> * リモート クラスター上で複数のモデルをトレーニングする
-> * トレーニングの結果をレビューし、最適なモデルを登録する
+> * 開発環境を設定する。
+> * データにアクセスして検査する。
+> * 人気のある scikit-learn 機械学習ライブラリを使って、単純なロジスティック回帰モデルをローカルでトレーニングする。 
+> * リモート クラスター上で複数のモデルをトレーニングする。
+> * トレーニングの結果をレビューし、最適なモデルを登録する。
 
-その後[このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) で、モデルを選択してデプロイする方法を学習します。 
+[このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) では、モデルを選択してデプロイする方法を学習します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました。
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
@@ -49,14 +49,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
-Python Notebook で、開発作業に関するすべての設定を行うことができます。  設定には次のものが含まれます。
+Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
 
-* Python パッケージをインポートする
-* ワークスペースに接続し、ローカル コンピューターとリモート リソースの間で通信できるようにする
-* 実験を作成して、すべての実行を追跡する
-* リモート コンピューティング ターゲットを作成して、トレーニングに使用する
+* Python パッケージをインポートする。
+* ローカル コンピューターがリモート リソースと通信できるように、ワークスペースに接続する。
+* 実験を作成して、すべての実行を追跡する。
+* リモート コンピューティング ターゲットを作成して、トレーニングに使用する。
 
-### <a name="import-packages"></a>パッケージのインポート
+### <a name="import-packages"></a>パッケージをインポートする
 
 このセッションで必要な Python パッケージをインポートします。 さらに、Azure Machine Learning の SDK のバージョンを表示します。
 
@@ -73,9 +73,9 @@ from azureml.core import Workspace, Run
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="connect-to-workspace"></a>ワークスペースへの接続
+### <a name="connect-to-a-workspace"></a>ワークスペースに接続する
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` は、**config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクト内に読み込みます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、詳細情報が `ws` という名前のオブジェクトに読み込まれます。
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -83,9 +83,9 @@ ws = Workspace.from_config()
 print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
 ```
 
-### <a name="create-experiment"></a>実験の作成
+### <a name="create-an-experiment"></a>実験の作成
 
-実験を作成して、ワークスペース内の実行を追跡します。 ワークスペースには、複数の実験を持つことができます。 
+実験を作成して、ワークスペース内の実行を追跡します。 1 つのワークスペースで複数の実験を保持できます。 
 
 ```python
 experiment_name = 'sklearn-mnist'
@@ -94,19 +94,14 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-existing-amlcompute"></a>AMlCompute の作成または既存のアタッチ
+### <a name="create-or-attach-an-existing-amlcompute"></a>AMlCompute を作成するか、既存のものをアタッチする
 
-Azure Machine Learning Managed Compute(AmlCompute) は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストが機械学習モデルをトレーニングすることを可能にする管理されたサービスです。  このチュートリアルでは、トレーニング環境として AmlCompute を作成します。 このコードは、まだワークスペース内にない場合に、コンピューティング クラスターを作成します。
+マネージド サービスである Azure Machine Learning コンピューティング (AmlCompute) を使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として AmlCompute を作成します。 このコードでは、まだワークスペース内にない場合に、コンピューティング クラスターが作成されます。
 
- **コンピューティングの作成には約 5 分かかります。** ワークスペース内にコンピューティングが既にある場合は、このコードではそれを使用して、作成プロセスをスキップします。
+ **コンピューティングの作成には約 5 分かかります。** ワークスペース内にコンピューティングが既にある場合は、このコードではそれが使用されて、作成プロセスはスキップされます。
 
 
 ```python
-from azureml.core.compute import AmlCompute
-from azureml.core.compute import ComputeTarget
-import os
-
-# choose a name for your cluster
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 import os
@@ -145,15 +140,15 @@ else:
 
 ## <a name="explore-data"></a>データを調査する
 
-モデルのトレーニングの前に、トレーニングに使用するデータを解釈する必要があります。  また、クラウドのトレーニング環境で利用できるように、このデータをクラウド内にコピーする必要もあります。  このセクションでは、次の方法について説明します。
+モデルをトレーニングする前に、トレーニングに使用するデータを解釈する必要があります。 また、クラウドにデータをコピーする必要があります。 その後は、クラウドのトレーニング環境でアクセスできます。 このセクションでは、次の操作の実行方法を説明します。
 
-* MNIST データセットのダウンロード
-* 複数のサンプル イメージの表示
-* クラウドへのデータのアップロード
+* MNIST データセットをダウンロードする。
+* いくつかのサンプル イメージを表示する。
+* クラウドにデータをアップロードする。
 
 ### <a name="download-the-mnist-dataset"></a>MNIST データセットのダウンロード
 
-MNIST データセットをダウンロードし、ファイルを `data` ディレクトリ内にローカルに保存します。  トレーニング用とテスト用にイメージとラベルがダウンロードされます。
+MNIST データセットをダウンロードし、ファイルを `data` ディレクトリ内にローカルに保存します。 トレーニング用とテスト用両方のイメージとラベルがダウンロードされます。
 
 
 ```python
@@ -170,7 +165,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>複数のサンプル イメージの表示
 
-圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認してください。 `load_data` 関数は、圧縮ファイルを numpy 配列に解析するだけのものです。
+圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認します。 `load_data` 関数では、圧縮ファイルの numpy 配列への解析だけが行われます。
 
 
 
@@ -185,7 +180,7 @@ y_train = load_data('./data/train-labels.gz', True).reshape(-1)
 X_test = load_data('./data/test-images.gz', False) / 255.0
 y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 
-# now let's show some randomly chosen images from the traininng set.
+# now let's show some randomly chosen images from the training set.
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
@@ -207,7 +202,7 @@ plt.show()
 
 ### <a name="upload-data-to-the-cloud"></a>クラウドへのデータのアップロード
 
-次に、ローカル コンピューターから Azure にデータをアップロードして、データをリモートから利用できるようにします。これにより、リモート トレーニングでデータを利用できるようになります。 データストアは、データをアップロード/ダウンロードしたり、リモート コンピューティング ターゲットから対話したりするために、ワークスペースに関連付けられる便利なコンストラクトです。 これは Azure Blob Storage アカウントによってサポートされます。
+次に、ローカル コンピューターから Azure にデータをアップロードして、データをリモートから利用できるようにします。 これにより、リモート トレーニング用にアクセスできるようになります。 データストアは、データをアップロードまたはダウンロードするためにワークスペースに関連付けられている便利なコンストラクトです。 リモート コンピューティング先から対話することもできます。 それは Azure Blob Storage アカウントによってサポートされます。
 
 MNIST ファイルは、データストアのルートにある `mnist` という名前のディレクトリ内にアップロードされます。
 
@@ -250,11 +245,11 @@ print(np.average(y_hat == y_test))
 
 次に、別の正則化率を使用してモデルを構築し、この単純なモデルを展開できます。 今回は、リモート リソース上でモデルをトレーニングします。  
 
-このタスクでは、以前に設定したリモート トレーニング クラスターにジョブを送信します。  ジョブを送信するには、次のようにします。
-* ディレクトリを作成する
-* トレーニング スクリプトを作成する
-* エスティメータ オブジェクトを作成する
-* ジョブを送信する 
+このタスクでは、以前に設定したリモート トレーニング クラスターにジョブを送信します。 ジョブを送信するには、次の手順を実行します。
+* ディレクトリを作成します。
+* トレーニング スクリプトを作成します。
+* 推定オブジェクトを作成します。
+* ジョブを送信します。
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 
@@ -268,7 +263,7 @@ os.makedirs(script_folder, exist_ok=True)
 
 ### <a name="create-a-training-script"></a>トレーニング スクリプトを作成する
 
-ジョブをクラスターに送信するには、まずトレーニング スクリプトを作成します。 次のコードを実行して、作成したばかりのディレクトリ内に `train.py` と呼ばれるトレーニング スクリプトを作成します。 このトレーニングでは正則化率をトレーニング アルゴリズムに追加するので、ローカル バージョンとは多少異なるモデルになります。
+ジョブをクラスターに送信するには、まずトレーニング スクリプトを作成します。 次のコードを実行して、作成したディレクトリ内に `train.py` と呼ばれるトレーニング スクリプトを作成します。 このトレーニングでは、正則化率がトレーニング アルゴリズムに追加されます。 そのため、ローカル バージョンとは多少異なるモデルになります。
 
 ```python
 %%writefile $script_folder/train.py
@@ -303,7 +298,7 @@ print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 # get hold of the current run
 run = Run.get_context()
 
-print('Train a logistic regression model with regularizaion rate of', args.reg)
+print('Train a logistic regression model with regularization rate of', args.reg)
 clf = LogisticRegression(C=1.0/args.reg, random_state=42)
 clf.fit(X_train, y_train)
 
@@ -324,12 +319,12 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 以下の、スクリプトがデータを取得してモデルを保存する方法に注目してください。
 
-+ トレーニング スクリプトが引数を読み取り、データが含まれるディレクトリを検出します。  後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
++ トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
 
-+ トレーニング スクリプトが、outputs という名前のディレクトリ内にモデルを保存します。 <br/>
++ トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。
-データセットを正しく読み込むために、`utils.py` ファイルがトレーニング スクリプトから参照されます。  このスクリプトをスクリプト フォルダーにコピーして、リモート リソース上でトレーニング スクリプトと共にアクセスできるようにします。
+データセットを正しく読み込むために、`utils.py` ファイルがトレーニング スクリプトから参照されます。 このスクリプトをスクリプト フォルダーにコピーして、リモート リソース上でトレーニング スクリプトと共にアクセスできるようにします。
 
 
 ```python
@@ -340,16 +335,16 @@ shutil.copy('utils.py', script_folder)
 
 ### <a name="create-an-estimator"></a>推定を作成する
 
-実行の送信には、推定オブジェクトが使用されます。  推定を作成するには、以下のコードを実行し、次のものを定義します。
+実行の送信には、推定オブジェクトが使用されます。 後で示すコードを実行し、次のものを定義することにより、推定を作成します。
 
-* 推定オブジェクトの名前 `est`
+* 推定オブジェクトの名前 `est`。
 * スクリプトが含まれるディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 
-* コンピューティング ターゲット。  ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
-* トレーニング スクリプト名 train.py
-* トレーニング スクリプトからの必須パラメーター 
-* トレーニングに必要な Python パッケージ
+* コンピューティング ターゲット。 ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
+* トレーニング スクリプトの名前 **train.py**。
+* トレーニング スクリプトからの必須パラメーター。 
+* トレーニングに必要な Python パッケージ。
 
-このチュートリアルでは、このターゲットは AmlCompute です。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア (`ds.as_mount()`) を使用するために data_folder が設定されます。
+このチュートリアルでは、このターゲットは AmlCompute です。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア `ds.as_mount()` を使用するために **data_folder** が設定されます。
 
 ```python
 from azureml.train.estimator import Estimator
@@ -380,26 +375,26 @@ run
 
 ## <a name="monitor-a-remote-run"></a>リモート実行を監視する
 
-初回の実行は合計で**約 10 分**かかります。 しかし、その後の実行の場合、スクリプトの依存関係が変わらなければ、同じイメージが再利用されるので、コンテナーの起動時間が大幅に短縮されます。
+初回の実行は合計で**約 10 分**かかります。 しかし、その後の実行では、スクリプトの依存関係が変わらなければ、同じイメージが再利用されます。 したがって、コンテナーの起動時間が大幅に短縮されます。
 
 待っている間に次のことが行われます。
 
-- **イメージの作成**:推定で指定した Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。 
+- **イメージの作成**:推定で指定されている Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。 
 
-  その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。  イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
+  その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。 イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
 
 - **拡大縮小**:リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には**約 5 分**かかります。
 
-- **実行**:この段階では、必要なスクリプトとファイルがコンピューティング ターゲットに送信され、データ ストアがマウント/コピーされてから、entry_script が実行されます。 ジョブの実行中に、stdout と ./logs ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
+- **Running**: この段階では、必要なスクリプトとファイルがコンピューティング先に送信されます。 その後、データストアがマウントまたはコピーされます。 そして、**entry_script** が実行されます。 ジョブの実行中に、**stdout** と **./logs** ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
 
-- **後処理**:この実行の ./outputs ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
+- **後処理**:この実行の **./outputs** ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
 
 
-複数の方法で、実行中のジョブの進行状況を確認できます。 このチュートリアルでは、`wait_for_completion` メソッドに加えて Jupyter ウィジェットを使用します。 
+複数の方法で、実行中のジョブの進行状況を確認できます。 このチュートリアルでは、Jupyter ウィジェットと `wait_for_completion` メソッドを使用します。 
 
 ### <a name="jupyter-widget"></a>Jupyter ウィジェット
 
-Jupyter ウィジェットを使用して、実行の進行状況を監視します。  実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+Jupyter ウィジェットを使用して、実行の進行状況を監視します。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで、10 秒から 15 秒ごとにライブ更新が提供されます。
 
 
 ```python
@@ -409,7 +404,7 @@ RunDetails(run).show()
 
 トレーニングの終わりに表示される、このウィジェットの静止画スナップショットを次に示します。
 
-![ノートブックのウィジェット](./media/tutorial-train-models-with-aml/widget.png)
+![Notebook のウィジェット](./media/tutorial-train-models-with-aml/widget.png)
 
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 
@@ -422,7 +417,7 @@ run.wait_for_completion(show_output=False) # specify True for a verbose log
 
 ### <a name="display-run-results"></a>実行結果を表示する
 
-これで、リモート クラスター上のモデルのトレーニングが完了しました。  次のようにして、モデルの精度を取得します。
+これで、リモート クラスター上のモデルのトレーニングが完了しました。 次のようにして、モデルの精度を取得します。
 
 ```python
 print(run.get_metrics())
@@ -435,7 +430,7 @@ print(run.get_metrics())
 
 ## <a name="register-model"></a>モデルの登録
 
-トレーニング クリプトの最後のステップで、`outputs/sklearn_mnist_model.pkl` ファイルを、ジョブの実行場所のクラスターの VM 内の `outputs` という名前のディレクトリ内に書き込みました。 `outputs` は特別なディレクトリで、このディレクトリ内のすべてのコンテンツがワークスペースに自動的にアップロードされます。  このコンテンツは、ワークスペースの実験内の実行レコード内に表示されます。 したがって、モデル ファイルはワークスペースでも使用できるようになっています。
+トレーニング クリプトの最後のステップでは、`outputs/sklearn_mnist_model.pkl` ファイルが、ジョブの実行場所のクラスターの VM 内の `outputs` という名前のディレクトリ内に書き込まれました。 `outputs` は特別なディレクトリで、このディレクトリ内のすべてのコンテンツがワークスペースに自動的にアップロードされます。 このコンテンツは、ワークスペースの実験内の実行レコード内に表示されます。 したがって、モデル ファイルはワークスペースでも使用できるようになっています。
 
 この実行に関連付けられているファイルを表示できます。
 
@@ -455,24 +450,24 @@ print(model.name, model.id, model.version, sep = '\t')
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-Azure の管理対象コンピューティング クラスターだけを削除することもできます。 しかし、自動スケーリングがオンになっており、クラスターの最小値が 0 なので、この特定のリソースが使用中でないときの追加のコンピューティングの料金はかかりません。
+Azure Machine Learning コンピューティング クラスターだけを削除することもできます。 ただし、自動スケーリングが有効になっており、クラスターの最小値は 0 です。 そのため、この特定のリソースが使用中でないときの追加のコンピューティング料金はかかりません。
 
 
 ```python
-# optionally, delete the Azure Managed Compute cluster
+# optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-この Azure Machine Learning サービスのチュートリアルでは、Python を使用して次の作業を行いました。
+この Azure Machine Learning service のチュートリアルでは、Python を使用して次の作業を行いました。
 
 > [!div class="checklist"]
-> * 開発環境を設定する
-> * データにアクセスして検査する
-> * 人気のある scikit-learn 機械学習ライブラリを使って、単純なロジスティック回帰モデルをローカルでトレーニングする
-> * リモート クラスター上で複数のモデルをトレーニングする
-> * トレーニングの詳細情報をレビューし、最適なモデルを登録する
+> * 開発環境を設定する。
+> * データにアクセスして検査する。
+> * 人気のある scikit-learn 機械学習ライブラリを使って、単純なロジスティック回帰モデルをローカルでトレーニングする。
+> * リモート クラスター上で複数のモデルをトレーニングする。
+> * トレーニングの詳細情報をレビューし、最適なモデルを登録する。
 
 チュートリアル シリーズの次のパートの説明に従って、この登録済みのモデルをデプロイする準備ができました。
 

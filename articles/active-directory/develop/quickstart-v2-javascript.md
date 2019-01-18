@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986290"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043891"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート: ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート:ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -31,14 +31,25 @@ ms.locfileid: "49986290"
 ![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>アプリケーションの登録とクイック スタート アプリのダウンロード
+> ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
+> クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
+> * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手動] [選択肢 2: アプリケーションを登録し、コード サンプルを手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
+>
+> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) に移動します。
+> 1. アプリケーションの名前を入力して **[登録]** をクリックします。
+> 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 >
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 >
 > 1. アプリケーションを登録するために、[Azure portal](https://portal.azure.com/) にサインインします。
 > 1. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的のテナントに設定します。
 > 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)] > [新規登録]** を選択します。
-> 1. **[アプリケーションを登録する]** ページが表示されたら、アプリケーションの名前を入力します。
+> 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、**[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を `http://localhost:30662/` に設定します。
 > 1. 終了したら、**[登録]** を選択します。  アプリの **[概要]** ページで、**[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
@@ -55,7 +66,7 @@ ms.locfileid: "49986290"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-javascript/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-the-project"></a>手順 2: プロジェクトのダウンロード
+#### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
 次のオプションのうち、ご自身の開発環境に適したものを選択します。
 * [コア プロジェクト ファイルのダウンロード - Node.js などの Web サーバー向け](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
@@ -63,10 +74,10 @@ ms.locfileid: "49986290"
 
 ローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを解凍します。
 
-#### <a name="step-3-configure-your-javascript-app"></a>手順 3: ご自身の JavaScript アプリの構成
+#### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 
 > [!div renderon="docs"]
-> `index.html` を編集し、`applicationConfig` の下の `Enter_the_Application_Id_here` を、先ほど登録したアプリのアプリケーション ID に置き換えます。
+> `applicationConfig`の下にある、`index.html`を編集し、`clientID`と`authority`の値を設定します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > `index.html` を編集し、`applicationConfig` を次に置き換えます。
@@ -74,16 +85,28 @@ ms.locfileid: "49986290"
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> 各値の説明:
+> - `Enter_the_Application_Id_here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
+> - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプションに設定します。
+>   - アプリケーションで**この組織のディレクトリ内のアカウント**をサポートする場合は、この値を**テナント ID** または**テナント名**に置き換えます (たとえば、contoso.microsoft.com)
+>   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
+>   - アプリケーションで**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます
+>
+> > [!TIP]
+> > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
+
 > [!NOTE]
->[Node.js](https://nodejs.org/en/download/) を使用する場合、*server.js* ファイルは、サーバーがポート 30662 でリッスンを開始するように構成されます。
-> [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) を使用する場合、サンプル コードの *.csproj* ファイルは、サーバーがポート 30662 でリッスンを開始するように構成されます。
+> [Node.js](https://nodejs.org/en/download/)プロジェクト内の*server.js*ファイルや、[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)プロジェクト内の *.csproj*ファイルで、30662 ポートでリッスンするため、サーバーが構成されます。
 >
 
-#### <a name="step-4-run-the-project"></a>手順 4: プロジェクトの実行
+#### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
 
 * Node.js を使用している場合:
 
@@ -121,7 +144,7 @@ npm install msal
 クイック スタートのコードには、ライブラリを初期化する方法も示されています。
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |Where  |  |

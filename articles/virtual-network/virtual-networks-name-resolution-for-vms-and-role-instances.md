@@ -1,12 +1,10 @@
 ---
-title: Azure 仮想ネットワーク内のリソースの名前解決 | Microsoft Docs
+title: Azure 仮想ネットワーク内のリソースの名前解決
+titlesuffix: Azure Virtual Network
 description: Azure IaaS、ハイブリッド ソリューション、異なるクラウド サービス間、Active Directory、および独自の DNS サーバーの使用に関係する名前解決シナリオです。
 services: virtual-network
 documentationcenter: na
 author: subsarma
-manager: vitinnan
-editor: ''
-ms.assetid: 5d73edde-979a-470a-b28c-e103fcf07e3e
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038492"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025098"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -125,7 +123,7 @@ options timeout:1 attempts:5
 resolv.conf ファイルは通常は自動生成され、編集すべきではありません。 *options* 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
 * **Ubuntu** (resolvconf を使用):
-  1. *options* 行を **/etc/resolveconf/resolv.conf.d/head** に追加します。
+  1. *options* 行を **/etc/resolvconf/resolv.conf.d/tail** に追加します。
   2. `resolvconf -u` を実行して更新します。
 * **SUSE** (netconf を使用):
   1. *timeout:1 attempts:5* を **/etc/sysconfig/network/config** の **NETCONFIG_DNS_RESOLVER_OPTIONS=""** パラメーターに追加します。 

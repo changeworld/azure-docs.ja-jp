@@ -1,20 +1,21 @@
 ---
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Azure への VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
-author: rayne-wiselman
-manager: carmonm
+description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
+services: site-recovery
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233159"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794356"
 ---
-# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのための構成サーバーのデプロイ
+# <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。 この記事では、VMware VM を Azure にレプリケートするときの構成サーバーの展開に必要な手順について説明します。 物理サーバーのレプリケーション用に構成サーバーを設定する必要がある場合は、[こちらの記事に従ってください](physical-azure-set-up-source.md)。
 
@@ -96,7 +97,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ### <a name="configure-settings"></a>設定を構成する
 
-1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。
+1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられている IP は、DHCP IP ではなく確実に静的 IP にします。
 2. **[Recovery Services コンテナーを選択する]** で、Microsoft Azure にサインインし、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
 
     > [!NOTE]
@@ -147,6 +148,13 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 7. コンテナー登録キーはどこでダウンロードできますか?
 
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+8. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
+
+    **いいえ**。複製された Configuration Server コンポーネントは使用できません。
+
+9. 構成サーバーの IP を変更することはできますか?
+
+    **いいえ**、構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられているすべての IP は、DHCP IP ではなく確実に静的 IP にします。
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

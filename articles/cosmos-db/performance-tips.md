@@ -1,19 +1,17 @@
 ---
 title: .NET 用の Azure Cosmos DB のパフォーマンスに関するヒント
 description: Azure Cosmos DB データベースのパフォーマンスを向上させるクライアント構成オプションについて説明します
-keywords: データベースのパフォーマンスを向上させる方法
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d4d730fe6c72b55a01f7c5f1f95cbd94ff145fba
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873752"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042497"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -45,7 +43,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     * TCP
     * HTTPS
 
-    ゲートウェイ モードを使用している場合、Azure Cosmos DB はポート 443 を使用し、MongoDB API は 10250、10255、および 10256 ポートを使用します。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
+    ゲートウェイ モードを使用している場合、Cosmos DB はポート 443 を使用し、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 を使用します。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
 
     |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
     |---------|---------|---------|---------|

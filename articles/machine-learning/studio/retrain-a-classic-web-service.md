@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a012798f71b0e3c14ab9982fd41bce6f0fa098e5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5aa52805afcd50ebf7a9ac0ddcae95f21dd329f1
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257609"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554760"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>従来の Azure Machine Learning Studio の Web サービスの再トレーニング
-デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。 
+デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
-「[プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」に示されているようにトレーニング実験と予測実験が設定されているものとします。 
+「[プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」に示されているようにトレーニング実験と予測実験が設定されているものとします。
 
 > [!IMPORTANT]
-> 予測実験は、従来の Machine Learning Web サービスとしてデプロイする必要があります。 
-> 
-> 
+> 予測実験は、従来の Machine Learning Web サービスとしてデプロイする必要があります。
+>
+>
 
 Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」を参照してください。
 
 ## <a name="add-a-new-endpoint"></a>新しいエンドポイントを追加する
-デプロイした予測 Web サービスには、元のトレーニングとスコア付け実験のトレーニング済みモデルとの同期が維持された、既定のスコア付けエンドポイントが含まれます。 新しいトレーニング済みモデルで Web サービスを更新するには、新しいスコア付けエンドポイントを作成する必要があります。 
+デプロイした予測 Web サービスには、元のトレーニングとスコア付け実験のトレーニング済みモデルとの同期が維持された、既定のスコア付けエンドポイントが含まれます。 新しいトレーニング済みモデルで Web サービスを更新するには、新しいスコア付けエンドポイントを作成する必要があります。
 
 新しいスコア付けエンドポイントを作成するには、トレーニング済みモデルで更新できる予測 Web サービスで次の操作を行います。
 
 > [!NOTE]
 > エンドポイントは、必ず予測 Web サービスに追加します。トレーニング Web サービスではありません。 トレーニング Web サービスと予測 Web サービスの両方を正しくデプロイすると、2 つの Web サービスが個別に表示されます。 予測 Web サービスの末尾は "[predictive exp.]" です。
-> 
-> 
+>
+>
 
 新しいエンドポイントを Web サービスに追加する方法は 2 つあります。
 

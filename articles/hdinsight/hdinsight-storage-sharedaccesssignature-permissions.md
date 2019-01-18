@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409923"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743359"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -180,10 +180,10 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
    > [!IMPORTANT]  
    > HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
    >
-   > * 10 文字以上にする
-   > * 数字を 1 つ以上含める
-   > * 英数字以外を 1 文字以上含める
-   > * 大文字または小文字を 1 文字以上含める
+   > * 10 文字以上にする。
+   > * 数字を 1 つ以上含める。
+   > * 英数字以外を 1 文字以上含める。
+   > * 大文字または小文字を 1 文字以上含める。
 
 このスクリプトが完了するにはしばらく時間がかかります。通常、約 15 分です。 エラーが発生することなく、このスクリプトが完了すると、クラスターが作成されています。
 
@@ -290,10 +290,10 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 **解決策**: 次の条件を満たすパスワードを使用します。
 
-* 10 文字以上にする
-* 数字を 1 つ以上含める
-* 英数字以外を 1 文字以上含める
-* 大文字または小文字を 1 文字以上含める
+* 10 文字以上にする。
+* 数字を 1 つ以上含める。
+* 英数字以外を 1 文字以上含める。
+* 大文字または小文字を 1 文字以上含める。
 
 ## <a name="next-steps"></a>次の手順
 

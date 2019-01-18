@@ -1,11 +1,12 @@
 ---
 title: データ サイエンス仮想マシン用データ プラットフォーム - Azure | Microsoft Docs
-description: データ サイエンス仮想マシン用データ プラットフォーム。
+description: Data Science Virtual Machine でサポートされているデータ プラットフォームおよびツールについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,14 +16,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b3f340006801287383c2afb2924706affbd77a51
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f73f90b76900a3a5213297f8a28ff13204852039
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411031"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105549"
 ---
-# <a name="data-platforms"></a>データ プラットフォーム
+# <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
 データ サイエンス仮想マシン (DSVM) では、さまざまなデータ プラットフォームに対して分析を構築することができます。 リモート データ プラットフォームへのインターフェイスに加えて、DSVM は、迅速な開発およびプロトタイプ作成のためのローカル インスタンスを提供します。 
 
@@ -33,7 +34,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 | | |
 | ------------- | ------------- |
 | 紹介   | ローカルのリレーショナル データベース インスタンス      |
-| サポートされている DSVM エディション      | Windows      |
+| サポートされている DSVM エディション      |  Windows      |
 | 一般的な用途      | 比較的小さなデータセットを使用したローカルでの迅速開発 <br/> In-Database R の実行   |
 | サンプルへのリンク      |    New York City Dataset の小さなサンプルが、SQL データベース `nyctaxi` に読み込まれます。 <br/> Microsoft R および In-Database の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上の関連ツール       | SQL Server Management Studio <br/> ODBC/JDBC ドライバー<br/> pyodbc、RODBC<br />Apache Drill      |
@@ -68,7 +69,7 @@ SQL Server は、標準の方法でインストールされます。 その場�
 | | |
 | ------------- | ------------- |
 | 紹介   | 広く普及した Apache Spark プラットフォームのスタンドアロン (シングル ノード インプロセス) インスタンス、高速で大規模なデータ処理および機械学習のためのシステム     |
-| サポートされている DSVM エディション      | Linux <br /> Windows (試験段階)      |
+| サポートされている DSVM エディション      |  Linux <br /> Windows (試験段階)      |
 | 一般的な用途      | * 小さなデータセットを使用してローカルで Spark/PySpark アプリケーションを迅速開発した後、Azure HDInsight などの大規模 Spark クラスターにそのアプリケーションをデプロイする<br/> * Microsoft R Server Spark コンテキストをテストする <br />* SparkML またはマイクロソフトのオープン ソース [MMLSpark](https://github.com/Azure/mmlspark) ライブラリを使用して ML アプリケーションを構築する  |
 | サンプルへのリンク      |    Jupyter サンプル: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft R Server (Spark コンテキスト): /dsvm/samples/MRS/MRSSparkContextSample.R |
 | DSVM 上の関連ツール       | PySpark、Scala<br/>Jupyter (Spark/PySpark カーネル)<br/>Microsoft R Server、SparkR、Sparklyr <br />Apache Drill      |
@@ -100,8 +101,8 @@ Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namen
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>DSVM での構成/インストール方法 
 |プラットフォーム|インストール場所 ($SPARK_HOME)|
 |:--------|:--------|
-|Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
-|Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
+| Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
+| Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
 Azure BLOB または Azure Data Lake Storage (ADLS) から、またマイクロソフトの MMLSpark 機械学習ライブラリを使用してデータにアクセスするためのライブラリは、$SPARK_HOME/jars にプレインストールされています。 これらの JAR は Spark の起動時に自動的に読み込まれます。 既定では、Spark はローカル ディスク上のデータを使用します。 DSVM 上の Spark インスタンスから Azure BLOB または ADLS に格納されたデータにアクセスするためには、$SPARK_HOME/conf/core-site.xml.template (BLOB および ADLS 構成のためのプレースホルダーがある場所) にあるテンプレートをベースに `core-site.xml` ファイルを作成/構成し、Azure Blob および Azure Data Lake Storage への適切な資格情報を使用する必要があります。 ADLS サービス資格情報の作成手順の詳細については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application)を参照してください。 Azure BLOB または ADLS の資格情報が core-site.xml ファイルに入力されたら、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照することができます。 

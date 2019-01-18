@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 4aa74aebfd9e0ef6c71913c76181a07045aa3ad7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231221"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722398"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。
@@ -101,7 +101,7 @@ Kubernetes は、次の目的で使用できます。
 
 1. オペレーターによって作成された、Kubernetes クラスターを使用するためのサブスクリプションを選択します。
 
-1. **[アクセス制御 (IAM)]** > **[+ 追加]** の順に選択します。
+1. **[アクセス制御 (IAM)]** を選択し、**[ロール割り当ての追加]** を選択します。
 
 1. **[共同作成者]** ロールを選択します。
 
@@ -179,6 +179,6 @@ Kubernetes は、次の目的で使用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-[Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

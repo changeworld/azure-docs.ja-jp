@@ -1,21 +1,22 @@
 ---
-title: 'Azure ExpressRoute の Microsoft ピアリングにルート フィルターを構成する: PowerShell | Microsoft Docs'
+title: Microsoft ピアリングにルート フィルターを構成する - ExpressRoute:PowerShell:Azure | Microsoft Docs
 description: この記事では、PowerShell を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: d4ef500185675ab84485c5dd6a9af4034c57b060
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419267"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096298"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する: PowerShell
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する:PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -98,7 +99,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>手順 1 :一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
 
@@ -111,7 +112,7 @@ Get-AzureRmBgpServiceCommunity
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
-## <a name="filter"></a>手順 2 :ルート フィルターとフィルター ルールを作成する
+## <a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
@@ -141,7 +142,7 @@ $routefilter.Rules.Add($rule)
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>手順 3: ルート フィルターを ExpressRoute 回線にアタッチする
+## <a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
 
 Microsoft ピアリングのみの場合は、次のコマンドを実行して、ルート フィルターを ExpressRoute 回線にアタッチします。
 

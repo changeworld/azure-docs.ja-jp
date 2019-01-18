@@ -1,28 +1,21 @@
 ---
-title: 'クラシックから Resource Manager への ExpressRoute 回線の移行: PowerShell: Azure | Microsoft Docs'
+title: クラシックから Resource Manager への回線の移動 - ExpressRoute:PowerShell:Azure | Microsoft Docs
 description: このページでは、PowerShell を使用して、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/28/2018
+ms.topic: conceptual
+ms.date: 01/07/2019
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.custom: seodec18
+ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100455"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106768"
 ---
-# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
 ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で使用するには、その回線を Resource Manager デプロイ モデルに移行する必要があります。 次のセクションでは、PowerShell を使用して回線を移動する方法について説明します。
 
@@ -46,7 +39,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
   Add-AzureAccount
   ```
 
-2. 適切な Azure サブスクリプションを選択します。
+2.  適切な Azure サブスクリプションを選択します。
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
@@ -55,8 +48,8 @@ Azure クラシック環境にサインインし、サービス キーを収集�
 3. Azure および ExpressRoute 用の PowerShell モジュールをインポートします。
 
   ```powershell
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
   ```
 
 4. 次のコマンドレットを使用して、すべての ExpressRoute 回線のサービス キーを取得します。 キーの取得後、Resource Manager デプロイ モデルに移行する回線の**サービス キー**をコピーします。
@@ -75,7 +68,7 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
   Connect-AzureRmAccount
   ```
 
-2. 適切な Azure サブスクリプションを選択します。
+2.  適切な Azure サブスクリプションを選択します。
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
@@ -87,7 +80,7 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
   New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3: Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3:Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
 クラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する準備はできています。 先に進む前に、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-move.md)」に記載されている情報を確認してください。
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 74a5d687535915fab7d518faaf916b98ab262c4b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 731df55a11f4671670a65dac8a83927d81da454c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053900"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015799"
 ---
 # <a name="wait-activity-in-azure-data-factory"></a>Azure Data Factory の Wait アクティビティ
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
@@ -40,7 +39,7 @@ ms.locfileid: "37053900"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Wait` アクティビティの名前。 | String | [はい]
+name | `Wait` アクティビティの名前。 | String | はい
 type | **Wait** に設定する必要があります。 | String | [はい]
 waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時間 (秒数)。 | 整数 | [はい]
 
@@ -50,7 +49,7 @@ waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時
 > このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-wait-activity"></a>Wait アクティビティを含むパイプライン
-この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Wait アクティビティは、1 秒間待つように構成されています。 パイプラインは、実行の間の待ち時間が 1 秒に設定されたループ内で Web アクティビティを実行します。 
+この例では、パイプラインに 2 つのアクティビティ **Until** および **Wait** が含まれています。 Wait アクティビティは、1 秒間待つように構成されています。 パイプラインは、実行の間の待ち時間が 1 秒に設定されたループ内で Web アクティビティを実行します。 
 
 ```json
 {

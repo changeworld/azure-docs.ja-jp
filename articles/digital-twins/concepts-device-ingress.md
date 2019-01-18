@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 374a27b10b3928838b10e4fba24e1f36721c162a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6d95d44dbfe2d66189be5103552d841ccbdf690
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433681"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117420"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
@@ -80,4 +80,4 @@ DeviceClient の [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsof
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins のデータ処理およびユーザー定義関数の機能については、[Azure Digital Twins でのデータ処理とユーザー定義関数](concepts-user-defined-functions.md)に関するページをご覧ください。
+- Azure Digital Twins のデータ処理およびユーザー定義関数の機能については、[Azure Digital Twins でのデータ処理とユーザー定義関数](concepts-user-defined-functions.md)に関するページをご覧ください。

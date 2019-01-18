@@ -9,24 +9,29 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 12/202018
 ms.author: jingwang
-ms.openlocfilehash: 1f3e9be3a0048c4bf2e87ac23cbdc76b1aaa649f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: b092509c1029bbff028da6bf94b9f7dbd1068b16
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166408"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020032"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-http-connector.md)
 > * [現在のバージョン](connector-http.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、HTTP エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+
+この HTTP コネクタ、[REST コネクタ](connector-rest.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
+
+- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。
+- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -35,10 +40,8 @@ HTTP ソースから、サポートされている任意のシンク データ �
 この HTTP コネクタは、以下のために使用できます。
 
 - HTTP の **GET** または **POST** メソッドを使用して、HTTP/S エンドポイントからデータを取得する。
-- **Anonymous**、**Basic**、**Digest**、**Windows**、または **ClientCertificate** 認証を使用して、データを取得する。
+- 次の認証のいずれかを使用してデータを取得する: **Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。
 - HTTP 応答をそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用して解析する。
-
-このコネクタと [Web テーブル コネクタ](connector-web-table.md)の違いは、Web テーブル コネクタが HTML Web ページからテーブルの内容を抽出するために使用される点です。
 
 > [!TIP]
 > Data Factory で HTTP コネクタを構成する前に、データ取得のために HTTP 要求をテストするには、ヘッダーおよび本文の要件に関する API 仕様を確認してください。 Postman や Web ブラウザーのようなツールを使用して検証することができます。
@@ -111,7 +114,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 3. 個人用ストアの証明書を右クリックし、**[すべてのタスク]** > **[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して Integration Runtime Host Service (DIAHostService) を実行しているユーザー アカウントを追加します。
 
-**例 1: certThumbprint を使用する**
+**例 1:certThumbprint の使用**
 
 ```json
 {
@@ -131,7 +134,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 }
 ```
 
-**例 2: embeddedCertData を使用する**
+**例 2:embeddedCertData の使用**
 
 ```json
 {
@@ -157,9 +160,9 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-このセクションでは、HTTP データセットでサポートされているプロパティの一覧を示します。 
+このセクションでは、HTTP データセットでサポートされているプロパティの一覧を示します。
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。
 
 HTTP からデータをコピーするには、データセットの **type** プロパティを **HttpFile** に設定します。 次のプロパティがサポートされています。
 
@@ -170,13 +173,13 @@ HTTP からデータをコピーするには、データセットの **type** �
 | requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ  |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
 | requestBody | HTTP 要求の本文。 | いいえ  |
-| format | データを解析せずにデータを HTTP エンドポイントからそのまま取得し、ファイル ベースのストアにデータをコピーする場合は、入力と出力の両方のデータセット定義で **format** セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合、サポートされているファイル形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format)の各セクションを参照してください。 |いいえ  |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/><br/>サポートされる種類: **GZip**、**Deflate**、**BZip2**、**ZipDeflate**。<br/>サポートされるレベル: **Optimal** と **Fastest**。 |いいえ  |
+| format | データを解析せずにデータを HTTP エンドポイントからそのまま取得し、ファイル ベースのストアにデータをコピーする場合は、入力と出力の両方のデータセット定義で **format** セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合に、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format)の各セクションを参照してください。 |いいえ  |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/><br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 > [!NOTE]
 > サポートされる HTTP 要求のペイロード サイズは約 500 KB です。 Web エンドポイントに渡すペイロード サイズが 500 KB を超える場合は、より小さなチャンクにペイロードをまとめることを検討してください。
 
-**例 1: Get メソッド (既定値) を使用する**
+**例 1:Get メソッド (既定値) を使用する**
 
 ```json
 {
@@ -195,7 +198,7 @@ HTTP からデータをコピーするには、データセットの **type** �
 }
 ```
 
-**例 2: POST メソッドを使用する**
+**例 2:Post メソッドを使用する**
 
 ```json
 {
@@ -219,7 +222,7 @@ HTTP からデータをコピーするには、データセットの **type** �
 
 このセクションでは、HTTP ソースでサポートされているプロパティの一覧を示します。
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。
 
 ### <a name="http-as-source"></a>ソースとしての HTTP
 

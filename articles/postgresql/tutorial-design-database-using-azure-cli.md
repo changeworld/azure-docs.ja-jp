@@ -1,24 +1,21 @@
 ---
-title: 'チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する'
+title: チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL を設計する
 description: このチュートリアルでは、Azure CLI を使用して最初の Azure Database for PostgreSQL サーバーを作成、構成、照会する方法を説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 03c9d647c98122b63b81baa453e0cccdf951901a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982343"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547322"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する 
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL を設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
 > [!div class="checklist"]
 > * Azure Database for PostgreSQL サーバーの作成
@@ -195,9 +192,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | 説明  |
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -218,4 +215,4 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 > * データの更新
 > * データの復元
 
-次は、Azure Portal を使用して同様のタスクを行う方法を学習しましょう。チュートリアル「[Design your first Azure Database for PostgreSQL using the Azure portal (Azure ポータルを使用して最初の Azure Database for PostgreSQL を設計する)](tutorial-design-database-using-azure-portal.md)」に進んでください。
+次は、Azure portal を使って同様のタスクを行う方法について見てみましょう。[Azure portal を使用して最初の Azure Database for PostgreSQL を設計する方法](tutorial-design-database-using-azure-portal.md)に関するチュートリアルを参照してください。

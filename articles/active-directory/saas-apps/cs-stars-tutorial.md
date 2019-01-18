@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 74ecfe50170f35420d3cf5dc5531b0fe1046889d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14b5f13070554328a47cd80185efb487d887a6d5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433852"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>チュートリアル: Azure Active Directory と CS Stars の統合
 
@@ -88,7 +88,7 @@ CS Stars で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 CS Stars で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[CS Stars テスト ユーザーの作成](#creating-a-cs-stars-test-user)** - CS Stars で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -117,7 +117,7 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
     b. **[識別子]** ボックスに、`https://<subdomain>.csstars.com/enterprise/` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[CS Stars クライアント サポート チーム](http://www.marshclearsight.com/support/)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[CS Stars クライアント サポート チーム](https://www.marshclearsight.com/support/)に問い合わせてください。 
  
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -127,11 +127,11 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
     ![シングル サインオンを構成する](./media/cs-stars-tutorial/tutorial_general_400.png) 
 <CS>
-1. **CS Stars** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [CS Stars サポート チーム](http://www.marshclearsight.com/support/)に送信する必要があります。 
+1. **CS Stars** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [CS Stars サポート チーム](https://www.marshclearsight.com/support/)に送信する必要があります。 
 <CE>
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -169,7 +169,7 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 このセクションの目的は、CS Stars で Britta Simon というユーザーを作成することです。
 
-CS Stars で作成したユーザーを取得するには、[CS Stars サポート チーム](http://www.marshclearsight.com/support/)に問い合わせる必要があります。
+CS Stars で作成したユーザーを取得するには、[CS Stars サポート チーム](https://www.marshclearsight.com/support/)に問い合わせる必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

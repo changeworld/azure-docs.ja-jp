@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 12/10/2018
+ms.date: 01/09/2018
 ms.author: diberry
-ms.openlocfilehash: ca92a6a2eb92e3b7fed9452d135c0a6bce55a57c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f587791dd1b864d0088408c377001c23546654c5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273240"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191277"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -115,6 +115,10 @@ LUIS で使用されるその他の Cognitive Services:
 * [Speech サービス](../Speech-Service/overview.md)は、話し言葉による要求をテキストに変換します。 
 * [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
 * [Project Personality Chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview): ボットの短い会話を扱います。
+
+LUIS を使用したサンプル:
+* [会話型 AI](https://github.com/Microsoft/AI) GitHub リポジトリ。
+* [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure サンプル
 
 ## <a name="next-steps"></a>次の手順
 

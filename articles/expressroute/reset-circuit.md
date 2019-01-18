@@ -1,26 +1,19 @@
 ---
-title: '障害が発生した Azure ExpressRoute 回線のリセット: PowerShell | Microsoft Docs'
+title: '障害が発生した回線をリセットする - ExpressRoute: PowerShell:Azure | Microsoft Docs'
 description: この記事は、障害状態になっている ExpressRoute 回線をリセットする際に役立ちます。
-documentationcenter: na
 services: expressroute
 author: anzaman
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2017
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 423bc1d6409e5b7fe02339a05d0775f4ff42de49
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 11/28/2018
+ms.author: anzaman
+ms.custom: seodec18
+ms.openlocfilehash: 7b88ba6e00cbec05263fe5bc8e795cda95beee04
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31590685"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093677"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>障害が発生した ExpressRoute 回線のリセット
 
@@ -32,22 +25,22 @@ ExpressRoute 回線での操作が正常に完了しないと、回線が "障�
 
 2. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-  ```powershell
+  ```azurepowershell-interactive
   Connect-AzureRmAccount
   ```
 3. 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmSubscription
   ```
 4. 使用するサブスクリプションを指定します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
   ```
 5. 次のコマンドを実行して、障害状態の回線をリセットします。
 
-  ```powershell
+  ```azurepowershell-interactive
   $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139522"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017108"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -47,13 +47,13 @@ ms.locfileid: "53139522"
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[request override]\(要求のオーバーライド\)* セクションを展開して変更することができます。 
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[response override]\(応答のオーバーライド\)* セクションを展開して変更することができます。 
 
 ## <a name="using-variables"></a>変数を使用する
 
@@ -161,7 +161,7 @@ ms.locfileid: "53139522"
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
@@ -176,12 +176,13 @@ ms.locfileid: "53139522"
 
 ### <a name="reservedChars"></a> 予約文字 (文字列形式)
 
-プロキシでは、中かっことスラッシュを除くすべての文字列が解釈なしに読み取られます
+プロキシで JSON ファイルのすべての文字列が読み取られるときは、エスケープ記号として \ が使用されます。 プロキシでは、中括弧も解釈されます。 以下の例の完全なセットを参照してください。
 
 |Character|エスケープ文字|例|
 |-|-|-|
 |{ または }|{{ または }}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 88cd6bac85a8f255c33c1834485b8f90a04b8ee4
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550968"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305385"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -83,7 +83,7 @@ ms.locfileid: "53550968"
 
 リソースの作成後に Azure Portal でリソース診断ログの収集を有効にするには、特定のリソースに移動するか、Azure Monitor に移動します。 Azure Monitor でこれを有効にする手順は次のとおりです。
 
-1. [Azure Portal](http://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
 
     ![Azure Monitor の [監視] セクション](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 
@@ -234,5 +234,5 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 ## <a name="next-steps"></a>次の手順
 
 * [リソース診断ログを **Event Hubs** にストリーミングする](diagnostic-logs-stream-event-hubs.md)
-* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)

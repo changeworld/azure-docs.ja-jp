@@ -14,17 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8ca04fef8a17c43c9d1f761e36d8da7f1e07d4d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 08d1589b8b215471983dc76a836dd89f83fd8204
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053400"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。
-Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関するページを参照してください。
+Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
 
+## <a name="november-2018"></a>2018 年 11 月
+**新しい GA 機能:** 
+* Azure AD Connect Health for Sync - ポータルから重複する属性の同期エラーを診断して修復します。
+
+**エージェントの更新:** 
+*  AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.24.0) 
+1. トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
+2. グローバル カタログのアラート ノイズの削減
+3. 正常性エージェント登録のバグの修正
+
+*   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.24.0)
+1. トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
+2. ローカライズされたオペレーティング システムに対する Test-ADFSRequestToken のサポート
+3. 診断エージェント EventHandler のロックの問題の解決
+4. 正常性エージェント登録のバグの修正
 
 ## <a name="august-2018"></a>2018 年 8 月 
 *  Azure AD Connect バージョン 1.1.880.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.1.7.0)。    
@@ -154,7 +169,7 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 ## <a name="november-2015"></a>2015 年 11 月
 **新機能:**
 
-* [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+*  [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新しいプレビュー機能:**
 

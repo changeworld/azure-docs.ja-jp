@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2018
 ms.author: sharadag
-ms.openlocfilehash: c4032f7c33cec7b7a7864ccff07a05b87c945949
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 68da9a0255cde6cbad5c675901c80193888bf255
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988603"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214880"
 ---
 # <a name="how-to-set-up-a-geo-filtering-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング ポリシーを設定する方法
 このチュートリアルでは、Azure PowerShell を使用して、サンプル geo フィルタリング ポリシーを作成し、それを既存の Front Door フロントエンド ホストに関連付ける方法を説明します。 このサンプル geo フィルタリング ポリシーでは、他のすべての国 (米国を除く) からの要求がブロックされます。
@@ -47,7 +47,7 @@ Install-Module -Name AzureRM.FrontDoor -AllowPrerelease
 ```
 
 ## <a name="2-define-geo-filtering-match-conditions"></a>2.geo フィルタリングの一致条件を定義する
-まず、"米国" からではない要求を選択するサンプル一致条件を作成します。 一致条件を作成する際のパラメーターについては、PowerShell [ガイド](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject)を参照してください。 2 文字の国別コードと国とのマッピングについては、[こちら](/Protection/GeoFiltering)を参照してください。
+まず、"米国" からではない要求を選択するサンプル一致条件を作成します。 一致条件を作成する際のパラメーターについては、PowerShell [ガイド](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject)を参照してください。 2 文字の国別コードと国とのマッピングについては、[こちら](front-door-geo-filtering.md)を参照してください。
 
 ```
 $nonUSGeoMatchCondition = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RemoteAddr -OperatorProperty GeoMatch -NegateCondition $true -MatchValue "US"

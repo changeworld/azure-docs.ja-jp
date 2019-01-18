@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 02c80f3b3883af4b32b5bc0fb837680dad1e0ecf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 48df416002a2c89e0172e82278f6154c6a6da836
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261553"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630021"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "53261553"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
 >
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に PHP アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタート チュートリアルでは、Azure App Service に PHP アプリをデプロイする方法を説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -181,13 +181,13 @@ git push azure master
 
 ![Azure で実行される更新済みのサンプル アプリ](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
 Web アプリの [概要] ページが表示されます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 

@@ -1,18 +1,19 @@
 ---
 title: サービス プリンシパルを使用して Azure Analysis Services タスクを自動化する | Microsoft Docs
+description: Azure Analysis Services タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9a91b478ea9012a1d041fc102765890954c2fbb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 47800ce467beb43c514e5e5474247d8c2029feff
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956189"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188234"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -83,5 +84,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>次の手順
-[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)   

@@ -4,16 +4,16 @@ description: Azure Automation 共有リソースのエラーをトラブルシ�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/05/2018
+ms.date: 12/3/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 385d2969e65647ab0b5c5e21c07b127104587e7e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce78c86cdae9a06100fd17d00e0229805e42983b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263417"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848461"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -21,15 +21,15 @@ ms.locfileid: "51263417"
 
 ## <a name="modules"></a>モジュール
 
-### <a name="module-stuck-importing"></a>シナリオ: モジュールでインポートが停止する
+### <a name="module-stuck-importing"></a>シナリオ:モジュールでインポートが停止する
 
 #### <a name="issue"></a>問題
 
 Azure Automation でモジュールのインポートまたは更新を行うと、モジュールが**インポート**状態で停止します。
 
-#### <a name="error"></a>Error
+#### <a name="cause"></a>原因
 
-PowerShell モジュールのインポートは、複雑な複数手順のプロセスです。 このプロセスでは、モジュールが正しくインポートされない可能性があります。 このような場合は、インポートしているモジュールが一時的な状態で停止することがあります。 このプロセスの詳細については、[PowerShell モジュールのインポート]( /powershell/developer/module/importing-a-powershell-module#the-importing-process)に関する記事を参照してください。
+PowerShell モジュールのインポートは、複雑な複数手順のプロセスです。 このプロセスでは、モジュールが正しくインポートされない可能性があります。 この問題が発生すると、インポートしているモジュールが一時的な状態で停止することがあります。 このプロセスの詳細については、[PowerShell モジュールのインポート]( /powershell/developer/module/importing-a-powershell-module#the-importing-process)に関する記事を参照してください。
 
 #### <a name="resolution"></a>解決策
 
@@ -38,6 +38,28 @@ PowerShell モジュールのインポートは、複雑な複数手順のプロ
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+## <a name="run-as-accounts"></a>実行アカウント
+
+### <a name="unable-create-update"></a>シナリオ:実行アカウントを作成または更新できない
+
+#### <a name="issue"></a>問題
+
+実行アカウントを作成または更新しようとすると、次のエラー メッセージのようなエラーが表示されます。
+
+```error
+You do not have permissions to create…
+```
+
+#### <a name="cause"></a>原因
+
+実行アカウントを作成または更新するために必要なアクセス許可がないか、リソースがリソース グループ レベルでロックされています。
+
+#### <a name="resolution"></a>解決策
+
+実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切なアクセス許可が必要です。 実行アカウントの作成または更新に必要なアクセス許可については、[実行アカウントのアクセス許可](../manage-runas-account.md#permissions)に関する記事を参照してください。
+
+問題の原因がロックの場合は、ロックを解除しても問題ないことを確認し、ロックされているリソースに移動し、ロックを右クリックして **[削除]** を選択してロックを解除します。
 
 ## <a name="next-steps"></a>次の手順
 

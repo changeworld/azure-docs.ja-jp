@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7a93ae00a33ceba920630eed14fb0a3e308739e6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55e61158b2c0f21809be7d172f208fa5fea44713
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836051"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792562"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
 
@@ -41,9 +41,9 @@ ms.locfileid: "52836051"
 
 2. **[テスト フェールオーバー]** で、フェールオーバーに使用する復旧ポイントを選択します。
 
-   - **[Latest processed]\(最新の処理\)**: Site Recovery サービスで処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、低い RTO (Recovery Time Objective: 回復時刻の目標) を提示します。
-   - **[Latest app-consistent]\(最新のアプリ整合性\)** : このオプションは、すべての VM を最新のアプリ整合性の復旧ポイントにフェールオーバーします。 タイム スタンプが表示されます。
-   - **[カスタム]** : 任意の復旧ポイントを選択します。
+   - **最後に処理があった時点**:Site Recovery サービスによって処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、低い RTO (Recovery Time Objective: 回復時刻の目標) を提示します。
+   - **最新のアプリ整合性**:このオプションでは、すべての VM が最新のアプリ整合性の復旧ポイントにフェールオーバーされます。 タイム スタンプが表示されます。
+   - **カスタム**:任意の復旧ポイントを選択します。
 
 3. フェールオーバー後に、セカンダリ リージョンのAzure VM の接続先となるターゲットの Azure 仮想ネットワークを選択します。
 

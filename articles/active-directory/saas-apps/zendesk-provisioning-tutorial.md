@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7df4cb5e988b4037675d5bf1c45ee103d5939568
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322774"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999324"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -168,6 +168,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 * Zendesk は、エージェントの役割のみを持つユーザーのグループの使用をサポートしています。 詳しくは、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)をご覧ください。
+* カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを**エージェント**に割り当てます。 **エージェント**のみにカスタム ロールを割り当てることができます。 詳細については、この [Zendesk API ドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。  
 
 ## <a name="additional-resources"></a>その他のリソース
 

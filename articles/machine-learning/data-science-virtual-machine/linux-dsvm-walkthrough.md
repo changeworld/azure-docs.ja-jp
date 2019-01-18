@@ -1,11 +1,13 @@
 ---
-title: Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス | Microsoft Docs
+title: Linux Data Science Virtual Machine の使用方法について説明します。
+titleSuffix: Azure
 description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037585"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157175"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -99,7 +101,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
     data$spam <- as.factor(data$spam)
 
-探索式の分析を行うには、 [ggplot2](http://ggplot2.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
+探索式の分析を行うには、 [ggplot2](https://ggplot2.tidyverse.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
@@ -316,19 +318,19 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 > [!NOTE]
 > 現在のカーネルの Jupyter Notebook から (`pip` コマンドを通して) Python Package Manager を使用するには、コード セルで、次のコマンドを次の例のように使用できます。
-```python
+  ```python
    import sys
    ! {sys.executable} -m pip install numpy -y
-```
+  ```
 >
 >
 
 > [!NOTE]
 > 現在のカーネルの Jupyter Notebook から (`conda` コマンドを通して) Conda インストーラーを使用するには、コード セルで、次のコマンドを次の例のように使用できます。
-```python
+  ```python
    import sys
    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
+  ```
 >
 >
 
@@ -344,7 +346,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。 直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。  「 [Rattle: A Data Mining GUI for R (Rattle: R 向けのデータ マイニング GUI)](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 」では、その機能を示すチュートリアルを提供しています。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。 直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。  記事「[Rattle: A Data Mining GUI for R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」 (Rattle: R 向けのデータ マイニング GUI) で、その機能を示すチュートリアルが提供されています。
 
 次のコマンドで Rattle をインストールして起動します。
 
@@ -357,7 +359,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 >
 >
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、「 [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、「 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 

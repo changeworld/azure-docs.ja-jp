@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6af6eb0dd6473b9fe947f7cc4939da4e0cbc77cb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259071"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718510"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
-[App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド ID](app-service-managed-service-identity.md) もアプリ向けに提供しています。 App Service のマネージド ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
+[App Service](overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド ID](overview-managed-identity.md) もアプリ向けに提供しています。 App Service のマネージド ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
 
 > [!NOTE]
 > このシナリオは、現在、.NET Framework 4.6 以降でサポートされています。[.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) はこのシナリオをサポートしていますが、まだ App Service の既定のイメージには含まれていません。 
@@ -123,7 +123,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-このコンストラクターは、App Service からの Azure SQL Database のアクセス トークンを使用するためのカスタム SqlConnection オブジェクトを構成します。 このアクセス トークンにより、App Service アプリは、マネージド ID を使用して Azure SQL Database で認証されます。 詳細については、「[Azure リソースのトークンの取得](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources)」を参照してください。 `if` ステートメントにより、続いて LocalDB を使用してアプリをローカルでテストできます。
+このコンストラクターは、App Service からの Azure SQL Database のアクセス トークンを使用するためのカスタム SqlConnection オブジェクトを構成します。 このアクセス トークンにより、App Service アプリは、マネージド ID を使用して Azure SQL Database で認証されます。 詳細については、「[Azure リソースのトークンの取得](overview-managed-identity.md#obtaining-tokens-for-azure-resources)」を参照してください。 `if` ステートメントにより、続いて LocalDB を使用してアプリをローカルでテストできます。
 
 > [!NOTE]
 > `SqlConnection.AccessToken` は、現在、.NET Framework 4.6 以降と [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) だけでサポートされており、[.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。
@@ -147,7 +147,7 @@ private MyDatabaseContext db = new MyDatabaseContext(new System.Data.SqlClient.S
 
 発行ページで **[発行]** をクリックします。 新しい Web ページに To-Do リストを表示するとき、アプリはマネージド ID を使用してデータベースに接続しています。
 
-![Code First Migration の手順後の Azure Web アプリ](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+![Code First Migration の手順後の Azure アプリ](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 以前と同様に To-Do リストを編集できるようになりました。
 
@@ -211,4 +211,4 @@ GO
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987698"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023840"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -372,7 +372,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 ],
 ```
 
-## <a name="extensions"></a>拡張機能
+## <a name="extensions"></a>Extensions
 
 [拡張機能](extensions-features.md)は個別のリソースですが、VM に密接に関係しています。 拡張機能は、VM の子リソース、または個別のリソースとして追加できます。 次の例は、VM に追加される[診断の拡張機能](extensions-diagnostics-template.md)を示しています。
 
@@ -436,7 +436,7 @@ VM にインストールできる拡張機能は多数ありますが、最も�
 }
 ```
 
-start.ps1 スクリプトは、多くの構成タスクを実行できます。 たとえば、この例で VM に追加されるデータ ディスクは、初期化されていないため、カスタム スクリプトを使用して初期化することができます。 実行するスタートアップ タスクが複数ある場合は、start.ps1 ファイルを使用して、Azure Storage 内の他の PowerShell スクリプトを呼び出すことができます。 この例では PowerShell を使用しますが、使用しているオペレーティング システムで利用可能なスクリプト方法であれば使用できます。
+start.ps1 スクリプトは、多くの構成タスクを実行できます。 たとえば、この例で VM に追加されるデータ ディスクは、初期化されていないため、カスタム スクリプトを使用して初期化することができます。 実行するスタートアップ タスクが複数ある場合は、start.ps1 ファイルを使用して、Azure Storage 内の他の PowerShell スクリプトを呼び出すことができます。 例では PowerShell を使用していますが、お使いのオペレーティング システム上で利用可能な任意のスクリプト手法を使用してかまいません。
 
 インストールした拡張機能の状態は、ポータルの [拡張機能] の設定で確認できます。
 
@@ -448,7 +448,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 テンプレートをデプロイすると、Azure では、グループとしてデプロイしたリソースが追跡され、このデプロイされたグループに自動的に名前が割り当てられます。 デプロイの名前は、テンプレートの名前と同じです。
 
-デプロイ内のリソースの状態が気になる場合は、次のように、Azure Portal の [リソース グループ] ブレードを使用できます。
+デプロイ内のリソースの状態が気になる場合は、Azure portal でリソース グループを表示します。
 
 ![デプロイ情報の取得](./media/template-description/virtual-machines-deployment-info.png)
     
@@ -459,3 +459,4 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+- テンプレート内のリソースの種類の JSON 構文とプロパティについては、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

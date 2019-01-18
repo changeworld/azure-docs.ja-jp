@@ -1,4 +1,4 @@
-# [概要](../overview.md)
+# 概要
 ## [VM 拡張機能](agents-and-extensions-classic.md)
 ## [可用性](configure-availability-classic.md)
 ## [FAQ](faq-classic.md)
@@ -7,7 +7,7 @@
 ## [Linux VM の作成](createportal-classic.md)
 
 # 方法
-## コンピューティング
+## Compute
 ### [カスタム VM の作成](create-custom-classic.md)
 ### [VM のキャプチャ](capture-image-classic.md)
 ### [Linux VM でリモート デスクトップを使用する](remote-desktop-classic.md)
@@ -49,7 +49,6 @@
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
-## [Resource Manager テンプレートの作成](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
 ## [コンピューティング REST](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [ネットワーク REST](https://msdn.microsoft.com/library/jj157182.aspx)

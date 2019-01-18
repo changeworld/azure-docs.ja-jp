@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/12/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 9f229caa76059db403ced5b74c7a35ec2f0b8e9d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721893"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809805"
 ---
-# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
+# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項:Azure Stack でのサービスの使用またはアプリの作成
 
 Azure Stack のサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure の違いを理解しておく必要があります。 この記事では、Azure Stack をハイブリッド クラウド開発環境として使用する際の重要な考慮事項について説明します。
 
@@ -38,10 +38,11 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 * 適切な Azure Stack 固有のエンドポイント (ポータル アドレスや Azure Resource Manager エンドポイントの URL など) を使用する必要があります。
 * Azure Stack でサポートされている PowerShell および API のバージョンを使用する必要があります。 サポートされているバージョンを使用すると、確実に Azure Stack と Azure の両方でアプリが動作するようになります。
 
-## <a name="cheat-sheet-high-level-differences"></a>チート シート: 違いの概要
+## <a name="cheat-sheet-high-level-differences"></a>チート シート:違いの概要
 
 次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
@@ -52,17 +53,17 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 | ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供された URL にアクセスします。<br><br>開発キットの場合は、 https://portal.local.azurestack.external を使用します。
 | リージョン | デプロイ先のリージョンを選択することができます。 | Azure Stack 統合システムの場合は、システムで利用可能なリージョンを使用します。<br><br>開発キットの場合、リージョンは常に**ローカル**になります。
 | リソース グループ | リソース グループは複数のリージョンにまたがることができます。 | 統合システムと開発キットのいずれも、リージョンは 1 つのみです。
-|サポートされている名前空間、リソースの種類、および API のバージョン | 最新 (またはまだ非推奨ではない以前のバージョン)。 | Azure Stack では特定のバージョンがサポートされます。 この記事の「バージョンの要件」セクションを参照してください。
+|サポートされている名前空間、リソースの種類、および API のバージョン | 最新 (またはまだ非推奨ではない以前のバージョン)。 | Azure Stack では特定のバージョンがサポートされます。 この記事の「[バージョンの要件](#version-requirements)」セクションを参照してください。
 | | |
 
 *Azure Stack オペレーターの場合、詳細については、[管理者ポータルの使用](../azure-stack-manage-portals.md)に関する記事および[管理の基本](../azure-stack-manage-basics.md)に関する記事をご覧ください。
 
 ## <a name="helpful-tools-and-best-practices"></a>便利なツールとベスト プラクティス
  
- Microsoft は、Azure Stack 向けの開発に役立ついくつかのツールとガイダンスを提供しています。
+ Microsoft では、Azure Stack 向けの開発に役立つツールとガイダンスが提供されています。
 
-| 推奨 | 参照 | 
-| -------- | ------------- | 
+| 推奨 | 参照 |
+| -------- | ------------- |
 | 開発者用ワークステーションに適切なツールをインストールします。 | - [PowerShell のインストール](azure-stack-powershell-install.md)<br>- [ツールのダウンロード](azure-stack-powershell-download.md)<br>- [PowerShell の構成](azure-stack-powershell-configure-user.md)<br>- [Visual Studio のインストール](azure-stack-install-visual-studio.md) 
 | 次の項目に関する情報を確認します。<br>- Azure Resource Manager テンプレートに関する考慮事項<br>- クイックスタート テンプレートを見つける方法<br>- Azure Stack 向けの開発で Azure を使用する場合に役立つポリシー モジュールの使用 | [Azure Stack 向けの開発](azure-stack-developer.md) | 
 | テンプレートのベスト プラクティスを確認して、それに従います。 | [Resource Manager のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
@@ -75,16 +76,16 @@ Azure Stack では、特定のバージョンの Azure PowerShell と Azure サ�
 正しいバージョンの Azure PowerShell を使用していることを確認するには、[API バージョン プロファイル](azure-stack-version-profiles.md)を使用します。 使用可能な最新の API バージョン プロファイルを確認するには、使用している Azure Stack のビルドを調べます。 この情報は、Azure Stack 管理者から取得できます。
 
 >[!NOTE]
- Azure Stack Development Kit を使用しており、管理アクセス権がある場合は、[更新の管理](../azure-stack-updates.md#determine-the-current-version)に関するページの "現在のバージョンの確認" セクションを参照して、Azure Stack のビルドを確認してください。
+ Azure Stack Development Kit を使用されていて、管理アクセス権がある場合は、「[現在のバージョンの判断](../azure-stack-updates.md#determine-the-current-version)」セクションを参照して、Azure Stack のビルドを確認してください。
 
-その他の API の場合は、次の PowerShell コマンドを実行し、名前空間、リソースの種類、および Azure Stack サブスクリプションでサポートされている API のバージョンを出力します。 プロパティ レベルでも違いがある可能性があることに注意してください  (このコマンドを機能させるには、Azure Stack 環境用に PowerShell が既に[インストール](azure-stack-powershell-install.md)され、[構成](azure-stack-powershell-configure-user.md)されている必要があります。 Azure Stack オファーのサブスクリプションも必要です)。
+その他の API の場合は、次の PowerShell コマンドを実行し、名前空間、リソースの種類、および Azure Stack サブスクリプションでサポートされている API のバージョンを出力します。 プロパティ レベルでも違いがある可能性があることに注意してください  このコマンドを機能させるには、Azure Stack 環境用に PowerShell が既に[インストール](azure-stack-powershell-install.md)され、[構成](azure-stack-powershell-configure-user.md)されている必要があります。 Azure Stack オファーのサブスクリプションも必要です。
 
 ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-出力例 (一部): ![Get-AzureRmResourceProvider コマンドの出力例](media/azure-stack-considerations/image1.png)
+出力例 (抜粋):![Get-AzureRmResourceProvider コマンドの出力例](media/azure-stack-considerations/image1.png)
  
 ## <a name="next-steps"></a>次の手順
 

@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 9b721ab614bf1797604fe342de117c78ba703f96
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 01/10/2019
+ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557599"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232126"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -26,10 +26,6 @@ ms.locfileid: "53557599"
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 
 Machine Learning (ML) 関数を使用して Stream Analytics のジョブをスケーリングできます。 Stream Analytics ジョブで ML 関数を使用する方法について詳しくは、「[Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング](stream-analytics-scale-with-machine-learning-functions.md)」をご覧ください。 現実のシナリオについては、「[Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」を確認してください。
-
-### <a name="session-windows"></a>セッション ウィンドウ
-
-Stream Analytics には、ウィンドウ関数に対するネイティブ サポートがあるため、開発者は複雑なストリーム処理ジョブを最小限の作業で作成できます。 [セッション ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics)は、類似した時刻に到着するイベントをグループ化することにより、データが存在しない期間をフィルターで除外します。 ウィンドウ関数について詳しくは、「[Stream Analytics ウィンドウ関数の概要](stream-analytics-window-functions.md)」をご覧ください。
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>カスタム日時による BLOB 出力のパーティション分割
 

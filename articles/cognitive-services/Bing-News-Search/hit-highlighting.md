@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 07/06/2017
+ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2a57484450d9b5c3d1b806eeda88faad2f522f34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 33a99a7007e522d0a39459c790d802d9feef0026
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802969"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263834"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
 

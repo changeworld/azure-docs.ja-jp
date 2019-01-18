@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963251"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065547"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -22,7 +22,7 @@ Azure Storage は、最新のデータ ストレージ シナリオ用の Micros
 - **持続性と高可用性。** 冗長性により、一時的なハードウェア障害が発生した場合でも、データが安全に保たれます。 地域的な災害または自然災害から保護するために、データセンターまたは地理的リージョンにまたがってデータをレプリケートすることもできます。 この方法でレプリケートされたデータは、予期しない停止が発生した場合でも高可用性を維持します。 
 - **セキュリティ保護。** Azure Storage に書き込まれたすべてのデータは、サービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
 - **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。 
-- **マネージド。** メンテナンスや重大な問題は、Microsoft Azure がお客様に代わって処理します。
+- **マネージド。** Microsoft Azure では、ユーザーに代わって、ハードウェアのメンテナンス、更新、および重大な問題が処理されます。
 - **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用の SDK と、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。  
 
 ## <a name="azure-storage-services"></a>Azure Storage サービス
@@ -89,30 +89,9 @@ Azure Storage には、仮想マシンで使用されるマネージド ディ�
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
-次の表は各種のストレージ アカウントと、それぞれのストレージ アカウントで使用できるオブジェクトとを示したものです。
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
-|-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Queue サービス、Table service | Blob service | Blob service|
-|**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
-
-### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
-
-汎用ストレージ アカウントは 2 種類存在します。
-
-#### <a name="standard-storage"></a>Standard Storage
-
-最も一般的に使用されているストレージ アカウントが Standard ストレージ アカウントであり、あらゆるタイプのデータに使用できます。 Standard ストレージ アカウントでは、磁気媒体を使ってデータが保存されます。
-
-#### <a name="premium-storage"></a>Premium Storage
-
-Premium Storage はページ BLOB 向けのハイパフォーマンスのストレージであり、主に VHD ファイルに使用されます。 Premium ストレージ アカウントでは、SSD を使ってデータが保存されます。 Microsoft では、あらゆる VM に Premium Storage の使用を推奨しています。
-
-### <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
-
-BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化したストレージ アカウントです。 これらのアカウントにページ BLOB を格納することはできません。したがって VHD ファイルを格納することはできません。 これらのアカウントでは、アクセス レベルを "ホット" または "クール" に設定することができ、レベルはいつでも変更できます。
-
-ホット アクセス レベルは、アクセス頻度の高いファイルに使用します。対価としてのストレージ コストは高くなりますが、BLOB へのアクセス コストは大幅に削減されます。 クール アクセス レベルに BLOB を保存した場合、BLOB へのアクセス コストは大きくなりますが、ストレージ コストは大幅に削減されます。
+ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>BLOB、ファイル、キューへのアクセス
 
@@ -161,16 +140,7 @@ Azure Storage は、データの持続性を確保するために、データの
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Azure Storage との間のデータ転送
 
-AzCopy コマンド ライン ユーティリティを使用して、BLOB やファイルのデータを同じストレージ アカウント内で、または別のストレージ アカウントとの間でコピーすることができます。 詳しくは、次のいずれかの記事を参照してください。
-
-* [AzCopy for Windows を使ったデータの転送](storage-use-azcopy.md)
-* [AzCopy for Linux を使ったデータの転送](storage-use-azcopy-linux.md)
-
-AzCopy は [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) を基盤として構築されています。このライブラリは現時点ではプレビューとして公開されています。
-
-Azure Import/Export サービスを利用すると、ストレージ アカウントとの間で大量の BLOB データをインポートまたはエクスポートできます。 複数のハード ドライブを用意して Azure データ センターに発送すると、そのデータ センターで、ハード ドライブにデータを転送 (またはハード ドライブからデータを転送) して返送してくれます。 Import/Export サービスの詳細については、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage-import-export-service.md)」を参照してください。
-
-大量の BLOB データを短時間で、経済的に、かつ信頼性の高い方法でストレージ アカウントにインポートする手段としては、Azure Data Box Disk を使用することもできます。 Microsoft から地域の運送業者を通じて、容量 40 TB の暗号化された SSD (Solid State Disk) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスクを速やかに構成し、USB 接続でデータをディスクにコピーしてから、Azure にディスクを返送することになります。 そのデータは、Azure のデータセンターにてドライブからクラウドへと自動的にアップロードされます。 このソリューションの詳細については、[Azure Data Box Disk の概要](https://docs.microsoft.com/azure/databox/data-box-disk-overview)に関するページを参照してください。
+Azure Storage へのデータの移動または Azure Storage からのデータの移動には、いくつかのオプションがあります。 どのオプションを選択するかは、データセットとネットワーク帯域幅のサイズによって異なります。 詳細については、「[データ転送用の Azure ソリューションを選択する](storage-choose-data-transfer-solution.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
 

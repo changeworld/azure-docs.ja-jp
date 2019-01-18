@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 60897e1fac607ebd5bfe7e7c35a43c249f7c71e2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075189"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722127"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows 上で C++ と Speech SDK を使用して音声を認識する
 
@@ -29,44 +29,7 @@ ms.locfileid: "53075189"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. Visual Studio 2017 を起動します。
-
-1. **[Desktop development with C++]\(C++ によるデスクトップ開発)** ワークロードを使用できることを確認します。 Visual Studio のメニュー バーから **[ツール]** > **[Get Tools and Features]\(ツールと機能の入手)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、次のステップまでスキップします。
-
-    ![Visual Studio の [ワークロード] タブのスクリーンショット](media/sdk/vs-enable-cpp-workload.png)
-
-    それ以外の場合、**[Desktop development with C++]\(C++ によるデスクトップ開発)** の横にあるチェック ボックスをオンにします。
-
-1. **[NuGet パッケージ マネージャー]** コンポーネントを使用できることを確認します。 まだ有効になっていない場合は、Visual Studio インストーラーのダイアログ ボックスの **[個別のコンポーネント]** タブに切り替えて、**[NuGet パッケージ マネージャー]** をクリックします。
-
-      ![Visual Studio の [個別のコンポーネント] タブのスクリーンショット](media/sdk/vs-enable-nuget-package-manager.png)
-
-1. C++ ワークロードまたは NuGet のいずれかを有効にする必要がある場合は (ダイアログ ボックスの右下隅で) **[変更]** を選択します。 新しい機能のインストールにはしばらく時間がかかります。 両方の機能が既に有効になっている場合は、そうせずにダイアログ ボックスを閉じます。
-
-1. 新しい Visual C++ Windows デスクトップ Windows コンソール アプリケーションを作成します。 最初に、メニューから **[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。 **[新しいプロジェクト]** ダイアログ ボックスの左側のウィンドウで、**[インストール済み]** > **[Visual C++]** > **[Windows デスクトップ]** を展開します。 次に、**[Windows Console Application]\(Windows コンソール アプリケーション)** を選択します。 プロジェクト名として「*helloworld*」と入力します。
-
-    ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](media/sdk/qs-cpp-windows-01-new-console-app.png)
-
-1. all64 ビットの Windows を実行している場合は、Visual Studio ツールバーのドロップダウン メニューを使用して、ビルド プラットフォームを `x64` に切り替えてもかまいません (64 ビット バージョンの Windows では 32 ビット アプリケーションを実行できるため、これは要件ではありません)。
-
-    ![x64 オプションが強調表示されている Visual Studio ツールバーのスクリーン ショット](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
-
-1. ソリューション エクスプローラーで、ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。
-
-    ![[ソリューションの NuGet パッケージの管理] オプションが強調表示されたソリューション エクスプローラーのスクリーン ショット](media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
-
-1. 右上隅の **[パッケージ ソース]** フィールドで、**[nuget.org]** を選択します。`Microsoft.CognitiveServices.Speech` パッケージを検索して、**helloworld** プロジェクトにインストールします。
-
-    ![ソリューションのパッケージの管理ダイアログ ボックスのスクリーン ショット](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
-
-    > [!NOTE]
-    > Cognitive Services Speech SDK の現在のバージョンは `1.1.0` です。
-
-1. 表示されるライセンスに同意し、NuGet パッケージのインストールを開始します。
-
-    ![[ライセンスへの同意] ダイアログ ボックスのスクリーン ショット](media/sdk/qs-cpp-windows-05-nuget-license.png)
-
-パッケージがインストールされると、パッケージ マネージャー コンソールに確認メッセージが表示されます。
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -94,16 +57,14 @@ ms.locfileid: "53075189"
 
    ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルは、`quickstart/cpp-windows` フォルダーで探してください。
-
 ## <a name="next-steps"></a>次の手順
 
+オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
+
 > [!div class="nextstepaction"]
-> [C++ 用の Speech SDK を使用して音声の意図を認識する](how-to-recognize-intents-from-speech-cpp.md)
+> [GitHub で C++ のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 
-- [音声を変換する](how-to-translate-speech-csharp.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

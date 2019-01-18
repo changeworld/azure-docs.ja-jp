@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231629"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063218"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Azure Logic Apps で変数を作成して値を保存、管理する
 
@@ -28,7 +28,10 @@ ms.locfileid: "50231629"
 * 異なる値を変数に代入する。
 * 文字列または配列の末尾に変数の値を挿入 ("*追加*") する。
 
-変数は、それを作成したロジック アプリ インスタンスの範囲内でのみ、グローバルに存在します。 また、同じロジック アプリ インスタンス内であれば、ループの反復処理の境界を越えて存続します。 アクションの出力を参照するときはアクションの名前を使用するのが普通ですが、変数を参照するときは、変数の名前をトークンとして使用します。
+変数は、それを作成したロジック アプリ インスタンスの範囲内でのみ、グローバルに存在します。 また、同じロジック アプリ インスタンス内であれば、ループの反復処理の境界を越えて存続します。 アクションの出力を参照するときはアクションの名前を使用するのが普通ですが、変数を参照するときは、変数の名前をトークンとして使用します。 
+
+> [!IMPORTANT]
+> 既定では、"Foreach" ループのサイクルは並列に実行されます。 ループ内で変数を使用すると、[順番に](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)ループが実行されるので、変数から予測可能な結果が返されます。 
 
 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
@@ -38,7 +41,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 * 変数の作成先となるロジック アプリ 
 
-  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 * ロジック アプリの最初のステップになる[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
@@ -232,7 +235,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 },
 ```
 
-## <a name="example-create-loop-counter"></a>例: ループ カウンターを作成する
+## <a name="example-create-loop-counter"></a>例:ループ カウンターを作成する
 
 変数は、ループの実行回数をカウントする目的でよく使用されます。 ここでは、そのタスクの例として、メールの添付ファイルをカウントするループを作成することにより、実際に変数を作成して使用する方法を紹介しています。
 
@@ -328,7 +331,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 | プロパティ | 必須 | 値 |  説明 |
 |----------|----------|-------|--------------|
 | Name | [はい] | <*variable-name*> | 値を減らす変数の名前 | 
-| 値 | いいえ  | <*increment-value*> | 変数の値を減らすのに使用する値。 既定値は 1 です。 <p><p>**ヒント**: 省略することもできますが、変数の具体的な減分値を常に把握するため、この値を設定することをお勧めします。 | 
+| 値 | いいえ  | <*increment-value*> | 変数の値を減らすのに使用する値。 既定値は 1 です。 <p><p>**ヒント**: 省略することもできますが、変数の値を減らす場合の具体的な値を常に把握するため、この値を設定することをお勧めします。 | 
 ||||| 
 
 デザイナーからコード ビュー エディターに切り替えると、JSON 形式で記述されたロジック アプリの定義内には、**[変数の値を減らす]** アクションが次のように表示されます。

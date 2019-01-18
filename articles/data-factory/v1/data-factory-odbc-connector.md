@@ -9,17 +9,16 @@ ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 20a769736efb1232e9605e322bfda6136687cec4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628547"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023585"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +46,9 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールや API を使用して、ODBC データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -57,7 +56,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  ODBC データ ストアからのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の使用例: ODBC データ ストアから Azure BLOB へのデータのコピー](#json-example-copy-data-from-odbc-data-store-to-azure-blob)」セクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの ODBC データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odbc-data-store-to-azure-blob)」のセクションを参照してください。 
 
 以下のセクションでは、ODBC データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティの詳細を説明します。
 
@@ -66,10 +65,10 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesOdbc** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |[はい] |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |[はい] |
-| 資格情報 |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ  |
-| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 Anonymous と Basic のいずれかの値になります。 |[はい] |
+| credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ  |
+| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |[はい] |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |[はい] |
@@ -153,7 +152,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON の使用例: ODBC データ ストアから Azure BLOB へのデータのコピー
+## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON の使用例:ODBC データ ストアから Azure BLOB にデータをコピーする
 この例では、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる JSON 定義を説明します。 また、ODBC ソースから Azure Blob Storage にデータをコピーする方法を説明します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
@@ -188,7 +187,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 }
 ```
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage のリンクされたサービス**
 
 ```json
 {
@@ -355,33 +354,6 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 ## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
-
-## <a name="ge-historian-store"></a>GE Historian ストア
-次の例に示すように、 [GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties":
-    {
-        "type": "OnPremisesOdbc",
-        "typeProperties":
-        {
-            "connectionString": "DSN=<name of the GE Historian store>;",
-            "gatewayName": "<gateway name>",
-            "authenticationType": "Basic",
-            "userName": "<user name>",
-            "password": "<password>"
-        }
-    }
-}
-```
-
-オンプレミス コンピューターに Data Management Gateway をインストールし、ゲートウェイをポータルに登録します。 オンプレミス コンピューターにインストールされているゲートウェイは、GE Historian データ ストアに接続するために GE Historian 用の ODBC ドライバーを使用します。 そのため、ゲートウェイ コンピューターにまだドライバーがインストールされていない場合は、インストールしてください。 詳細については、「 [接続を有効にする](#enabling-connectivity) 」をご覧ください。
-
-Data Factory ソリューションで GE Historian ストアを使用する前に、ゲートウェイが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
-
-コピー操作で ODBC データ ストアをソース データ ストアとして使用する方法の詳細については、記事を最初からお読みください。  
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
 接続の問題をトラブルシューティングするには、**Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。

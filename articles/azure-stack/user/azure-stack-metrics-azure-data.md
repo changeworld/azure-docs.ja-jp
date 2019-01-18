@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: b0cf2d7856a78bbe2aa531c6e872168e8e33b06a
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021813"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106292"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システム*
 
 この記事では、Azure Stack 上の Azure Monitor サービスの概要を説明します。 Azure Monitor の動作について説明し、Azure Stack での Azure Monitor の使用方法に関するその他の情報を紹介します。 
 
@@ -126,7 +126,7 @@ Azure Monitor REST API、クロスプラットフォーム コマンドライン
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
- - [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+ - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>次の手順
 

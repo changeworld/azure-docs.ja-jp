@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d89a80ac6d6e81fd9cc68e1dc04d4461691994fd
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086779"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157974"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -47,20 +47,17 @@ Azure portal で、または Microsoft Graph を使用してプログラムで�
 > [!NOTE]
 > **[説明]** の後に **[値の例]** 列が表示されない場合は、ご利用のブラウザー ウィンドウを最大化し、**[値の例]** 列が表示されるまでスクロール/スワイプします。
 
->[!div class="mx-tdBreakAll"]
->[!div class="mx-tdCol2BreakAll"]
-
 | キー  | 値の型 | 説明  | 値の例 |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Null 許容の Int32 | 現在の API リソース用の承認済みアクセス トークンのバージョンを指定します。 指定できる値は 1、2、null です。 既定では null に設定され、2 として扱われます。 | `2` |
+| `accessTokenAcceptedVersion` | Null 許容の Int32 | リソースで想定されているアクセス トークンのバージョンを指定します。 これにより、アクセス トークンを要求するために使用されたエンドポイントまたはクライアントとは関係なく、生成される JWT のバージョンと形式が変更されます。<br/><br/>使用されるエンドポイント (v1.0 または v2.0) はクライアントによって選択され、id_token のバージョンにのみ影響します。 リソースでは、サポートされるアクセス トークンの形式を明示的に示すように、`accesstokenAcceptedVersion` を構成する必要があります。<br/><br/>`accesstokenAcceptedVersion` に指定できる値は、1、2、または null です。 値が null の場合の既定値は 1 で、v1.0 のエンドポイントに対応します。 | `2` |
 | `allowPublicClient` | ブール値 | フォールバック アプリケーションの種類を指定します。 Azure AD では、既定で replyUrlsWithType からアプリケーションの種類が推測されます。 Azure AD でクライアント アプリの種類を判別できない特定のシナリオがあります (URL リダイレクトなしで HTTP 要求が行われる [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) フローなど)。 そのような場合、Azure AD では、このプロパティの値に基づいて、アプリケーションの種類が解釈されます。 この値が true に設定されている場合、フォールバック アプリケーションの種類は、モバイル デバイス上で実行されているインストール済みのアプリなど、パブリック クライアントとして設定されます。 既定値は false です。これは、フォールバック アプリケーションの種類が、Web アプリなどの機密クライアントであることを意味します。 | `false` |
 | `appId` | 識別子の文字列 | Azure AD によってアプリに割り当てられた一意識別子を指定します。 | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | 配列の型 | アプリが宣言する可能性のあるロールのコレクションを指定します。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。 その他の例および詳細については、「[アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)」を参照してください。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `groupMembershipClaims` | 文字列 | アプリが期待する、ユーザーまたは OAuth 2.0 アクセス トークンで発行される `groups` 要求を構成するビットマスク。 ビットマスクの値は次のとおりです。<br>0: なし<br>1: セキュリティ グループと Azure AD ロール<br>2: 予約済み<br>4: 予約済み<br>ビットマスクを 7 に設定すると、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます。 | `1` |
+| `groupMembershipClaims` | 文字列 | アプリが期待する、ユーザーまたは OAuth 2.0 アクセス トークンで発行される `groups` 要求を構成します。 この属性を設定するには、次のいずれかの有効な文字列値を使用します。<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (セキュリティ グループおよび Azure AD ロールの場合)<br/>- `"All"` (これは、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます)。 | `"SecurityGroup"` |
 | `optionalClaims` | 文字列 | この特定のアプリのセキュリティ トークン サービスによってトークンで返される省略可能な要求。<br>現時点では、個人アカウントと Azure AD (アプリ登録ポータルを使用して登録済み) の両方をサポートするアプリは、省略可能な要求を使用できません。 ただし、v2.0 エンドポイントを使用して Azure AD のみに登録されたアプリは、マニフェストで要求した省略可能な要求を取得することができます。 詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。 | `null` |
 | `id` | 識別子の文字列 | ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。 | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris` | 文字列配列 | その Azure AD テナント内で、またはアプリがマルチテナントである場合は検証されたカスタム ドメイン内で Web アプリを一意に識別するユーザー定義 URI。 | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
-| `informationalUrls` | 文字列 | アプリのサービス利用規約とプライバシーに関する声明へのリンクを指定します。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 詳細については、[登録済み Azure AD アプリのサービス利用規約とプライバシーに関する声明を追加する方法](howto-add-terms-of-service-privacy-statement.md)のページを参照してください。 | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
+| `identifierUris` | 文字列配列 | その Azure AD テナント内で、またはアプリがマルチテナントである場合は検証されたカスタム ドメイン内で Web アプリを一意に識別するユーザー定義 URI。 | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
+| `informationalUrls` | 文字列 | アプリのサービス利用規約とプライバシーに関する声明へのリンクを指定します。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 詳しくは、[登録済み Azure AD アプリのサービス利用規約とプライバシーに関する声明を追加する方法](howto-add-terms-of-service-privacy-statement.md)に関するページをご覧ください。 | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
 | `keyCredentials` | 配列の型 | アプリで割り当てられた資格情報、文字列ベースの共有シークレット、および X.509 証明書への参照を保持します。 これらの資格情報は、アクセス トークンを要求するときに使用されます (そのアプリがリソースとしてではなく、クライアントとして機能している場合)。 | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
 | `knownClientApplications` | 配列の型 | クライアント アプリとカスタム Web API アプリの 2 つの部分を含むソリューションがある場合に、同意をバンドルするために使用されます。 この値にクライアント アプリの appID を入力すると、ユーザーは、クライアント アプリに 1 回同意するだけで済みます。 Azure AD は、クライアントへの同意が Web API への暗黙的な同意を示し、クライアントと Web API の両方のサービス プリンシパルを同時に自動的にプロビジョニングすることを認識します。 クライアントと Web API アプリの両方が同じテナントに登録されている必要があります。 | `[GUID]` |
 | `logoUrl` | 文字列 | ポータルでアップロードされたロゴへの CDN URL を指す値のみを読み取ります。 | `https://MyRegisteredAppLogo` |

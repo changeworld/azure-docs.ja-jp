@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877186"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720718"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。 SQL DB の Elastic Database トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
@@ -92,7 +92,7 @@ SQL DB のエラスティック データベース トランザクションで�
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Azure Cloud Services の .NET インストール
-Azure には、.NET アプリケーションをホストするためのいくつかのサービスが用意されています。 さまざまなサービスを比較するには、「 [Azure App Service、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」をご覧ください。 サービスのゲスト OS がエラスティック トランザクションに必要な .NET 4.6.1 より小さい場合は、ゲスト OS を 4.6.1 にアップグレードする必要があります。 
+Azure には、.NET アプリケーションをホストするためのいくつかのサービスが用意されています。 さまざまなサービスを比較するには、「 [Azure App Service、Cloud Services、および Virtual Machines の比較](../app-service/overview-compare.md)」をご覧ください。 サービスのゲスト OS がエラスティック トランザクションに必要な .NET 4.6.1 より小さい場合は、ゲスト OS を 4.6.1 にアップグレードする必要があります。 
 
 Azure App Services では、ゲスト OS のアップグレードは現在サポートされていません。 Azure Virtual Machines では、単に VM にログインし、最新の .NET Framework のインストーラーを実行します。 Azure Cloud Services では、新しいバージョンの .NET のインストールをデプロイのスタートアップ タスクに含める必要があります。 その概念と手順については、「 [クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。  
 

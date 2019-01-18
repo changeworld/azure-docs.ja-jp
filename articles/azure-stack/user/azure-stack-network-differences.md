@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944581"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160065"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack ネットワークは、Azure ネットワークで提供される機能の多くを備えています。 ただし、Azure Stack ネットワークをデプロイする前に理解しておくべき大きな違いがいくつか存在します。
 
 この記事では、Azure Stack ネットワークとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
 
-## <a name="cheat-sheet-networking-differences"></a>チート シート: ネットワークの違い
+## <a name="cheat-sheet-networking-differences"></a>チート シート:ネットワークの違い
 
 | Service | 機能 | Azure (グローバル) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,22 +54,19 @@ Azure Stack ネットワークは、Azure ネットワークで提供される�
 |  | 既定のゲートウェイ サイト | Azure では、強制トンネリングの既定のサイトの構成がサポートされています。 | まだサポートされていません。 |
 |  | ゲートウェイのサイズ変更 | Azure では、デプロイ後のゲートウェイのサイズ変更がサポートされています。 | サイズ変更はサポートされていません。 |
 |  | アクティブ/アクティブ構成 | サポートされています | まだサポートされていません。 |
-|  | IKE/IPSec ポリシー | Azure では、カスタム IPSec ポリシー構成がサポートされています。 | まだサポートされていません。 |
 |  | UsePolicyBasedTrafficSelectors | Azure では、ルート ベースのゲートウェイ接続によるポリシー ベースのトラフィック セレクターの使用がサポートされています。 | まだサポートされていません。 |
 | Load Balancer | SKU | Basic Load Balancer と Standard Load Balancer がサポートされています | Basic Load Balancer のみがサポートされています。  SKU のプロパティはサポートされていません。 |
 |  | ゾーン | Availability Zones がサポートされています。 | まだサポートされていません |
 |  | サービス エンドポイントの受信 NAT ルール サポート | Azure では、受信 NAT 規則のサービス エンドポイントの指定がサポートされています。 | Azure Stack でサービス エンドポイントはまだサポートされていないため、指定できません。 |
-|  | プロトコル | Azure では、GRE または ESP の指定がサポートされています。 | Azure Stack では、プロトコル クラスはサポートされていません。 |
+|  | Protocol | Azure では、GRE または ESP の指定がサポートされています。 | Azure Stack では、プロトコル クラスはサポートされていません。 |
 | パブリック IP アドレス | パブリック IP アドレスのバージョン | Azure では、IPv6 と IPv4 の両方がサポートされています | IPv4 のみがサポートされています。 |
 | ネットワーク インターフェイス | 有効なルート テーブルの取得 | サポートされています | まだサポートされていません。 |
 |  | 有効な ACL の取得 | サポートされています | まだサポートされていません。 |
 |  | Accelerated Networking の有効化 | サポートされています | まだサポートされていません。 |
 |  | IP 転送 | 既定で無効になっています。  有効化できます。 | この設定の切り替えはサポートされていません。  既定でオンになっています。 |
-|  | インターフェイスごとの複数の IP 構成 | サポートされています | まだサポートされていません。 |
 |  | アプリケーション セキュリティ グループ | サポートされています | まだサポートされていません。 |
 |  | 内部 DNS 名ラベル | サポートされています | まだサポートされていません。 |
 |  | プライベート IP アドレス バージョン | IPv6 と IPv4 の両方がサポートされています。 | IPv4 のみがサポートされています。 |
-|  | プライマリ IP 構成 | サポートされています。 インターフェイスのプライマリ IP 構成を識別します。 | まだサポートされていません。 |
 | Network Watcher | Network Watcher テナント ネットワーク監視機能 | サポートされています | まだサポートされていません。 |
 | CDN | Content Delivery Network のプロファイル | サポートされています | まだサポートされていません。 |
 | Application gateway | レイヤー 7 の負荷分散 | サポートされています | まだサポートされていません。 |

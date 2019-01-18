@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624592"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753134"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
@@ -32,7 +32,7 @@ ms.locfileid: "51624592"
 | Azure AD のエディション | コレクションの開始 |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | サブスクリプションにサインアップしたとき |
-| Azure AD Free | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
+| Azure AD Free <br /> Azure AD Basic | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
 
 ---
 
@@ -53,17 +53,19 @@ ms.locfileid: "51624592"
 
 **アクティビティ レポート**    
 
-| レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| ディレクトリ監査        | 7 日        | 30 日             | 30 日             |
-| サインイン アクティビティ       | 該当なし           | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
+| レポート                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| ディレクトリ監査        | 7 日        |  7 日        | 30 日             | 30 日             |
+| サインイン アクティビティ       | 該当なし           |  該当なし           | 30 日             | 30 日             |
+| Azure MFA の使用状況        | 30 日       |  30 日       | 30 日             | 30 日             |
+
+監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。
 
 **セキュリティ シグナル**
 
-| レポート         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--                 | :--                 |
-| リスクのあるユーザー  | 7 日        | 30 日             | 90 日間             |
-| リスクの高いサインイン | 7 日        | 30 日             | 90 日間             |
+| レポート         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| リスクのあるユーザー  | 7 日        | 7 日         | 30 日             | 90 日間             |
+| リスクの高いサインイン | 7 日        | 7 日         |  30 日            | 90 日間             |
 
 ---

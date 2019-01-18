@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Traffic Manager を使用して重み付けされたエンドポイントにトラフィックをルーティングする | Microsoft Docs
+title: チュートリアル - 重み付けされたエンドポイントにトラフィックをルーティングする - Azure Traffic Manager
 description: このチュートリアルの記事では、Traffic Manager を使用して重み付けされたエンドポイントにトラフィックをルーティングする方法について説明します。
 services: traffic-manager
 author: KumudD
@@ -8,23 +8,23 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: 0f5b1f3525ab75f8c14f7921e23b30a1c58e8c73
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158824"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055015"
 ---
-# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル: Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する 
+# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する 
 
 このチュートリアルでは、Azure Traffic Manager を使用して重み付けルーティング方法を使用してエンドポイント間のユーザー トラフィックのルーティングを制御する方法について説明します。 このルーティング方法では、Traffic Manager プロファイル構成で各エンドポイントに重みを割り当てます。 その後、各エンドポイントに割り当てられている重みに基づいてユーザー トラフィックがルーティングされます。 重みは 1 から 1,000 までの整数です。 エンドポイントに割り当てられた重み値が大きいほど優先度が高くなります。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * IIS で基本的な Web サイトを実行する 2 台の VM を作成する。
-> * 動作中の Traffic Manager を表示するための 2 台のテスト VM を作成する。
-> * IIS を実行する VM の DNS 名を構成する。
+> * 簡単な Web サイトを IIS 上で運営する VM を 2 台作成する。
+> * Traffic Manager の動作を表示するため、テスト VM を 2 台作成する。
+> * IIS を稼働する VM の DNS 名を構成する。
 > * Traffic Manager プロファイルを作成する。
 > * Traffic Manager プロファイルに VM エンドポイントを追加する。
 > * Traffic Manager の動作を確認します。
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、Traffic Manager の動作を確認するために以下をデプロイします。
-- 異なる Azure リージョン (米国東部と西ヨーロッパ) で実行される基本的な Web サイトの 2 つのインスタンス。
+- 異なる Azure リージョン (米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
 - Traffic Manager をテストするための 2 台の VM (1 台は米国東部内、もう 1 台は西ヨーロッパ内)。 テスト VM は、エンドポイントにより大きい重みが割り当てられた Web サイトに Traffic Manager がユーザー トラフィックをルーティングすることを示すために使用されます。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-websites"></a>Web サイトを作成する
 
 このセクションでは、2 つの Azure リージョン内に Traffic Manager プロファイル用の 2 つのサービス エンドポイントを提供する 2 つの Web サイト インスタンスを作成します。 2 つの Web サイトを作成するには、次の手順に従います。
-1. 基本的な Web サイトを実行する 2 台の VM を作成します (1 台は米国東部内、もう 1 台は西ヨーロッパ内)。
+1. 簡単な Web サイトを運営する VM を 2 台作成します (1 台は米国東部内、もう 1 台は西ヨーロッパ内)。
 2. 各 VM に IIS サーバーをインストールします。 ユーザーが この Web サイトにアクセスした場合に接続される VM の名前を記述した既定の Web ページを更新します。
 
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
@@ -165,7 +165,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-ユーザー トラフィックのルーティング先となる、IIS サーバーを実行する 2 台の VM (myIISVMEastUS と myIISVMWEurope) を追加します。
+ユーザー トラフィックのルーティング先となる、IIS サーバーを稼働する VM を 2 台 (myIISVMEastUS と myIISVMWEurope) を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索します。 表示された結果で、プロファイルを選択します。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** > **[追加]** の順に選択します。
@@ -184,7 +184,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 5.  両方のエンドポイントの追加が完了すると、どちらも Traffic Manager プロファイルに、監視ステータスが **[オンライン]** の状態で表示されます。
 
 ## <a name="test-the-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト
-動作中の Traffic Manager を表示するには、次の手順を完了します。
+Traffic Manager の動作を表示するには、次の手順を完了します。
 1. Traffic Manager プロファイルの DNS 名を判別します。
 2. Traffic Manager の動作を確認します。
 

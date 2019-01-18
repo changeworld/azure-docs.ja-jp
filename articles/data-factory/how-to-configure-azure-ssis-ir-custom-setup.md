@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: ec1c24e4a9714506a4107fd5bfd53d1a562c8781
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037041"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022361"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
@@ -51,7 +50,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 -   [Azure Storage アカウント](https://azure.microsoft.com/services/storage/)。 カスタム セットアップの場合は、カスタム セットアップ スクリプトとその関連ファイルをアップロードして BLOB コンテナーに格納します。 また、カスタム セットアップ処理では、同じ BLOB コンテナーに実行ログもアップロードします。
 
-## <a name="instructions"></a>このサンプルについての指示
+## <a name="instructions"></a>Instructions
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) (バージョン 5.4 以降) をダウンロードしてインストールします。
 
@@ -131,7 +130,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
     c. 接続されたパブリック プレビュー コンテナーを選択して、`CustomSetupScript` フォルダーをダブルクリックします。 このフォルダーには、次のアイテムが含まれています。
 
-       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 フォルダーには、`gacutil.exe` を含む `gacutil` フォルダーも含まれます。 加えて、`main.cmd` には、ファイル共有のアクセス資格情報を永続化するためのコメントが含まれています。
+       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 フォルダーには、`gacutil` フォルダーも含まれています。このフォルダーのコンテンツ全体 (`gacutil.exe`、`gacutil.exe.config`、`1033\gacutlrc.dll`) をそのままご利用のコンテナーにコピーすることができます。 加えて、`main.cmd` には、ファイル共有のアクセス資格情報を永続化するためのコメントが含まれています。
 
        1. `UserScenarios` フォルダー。実際のユーザー シナリオに対応する複数のカスタム セットアップが格納されています。
 
@@ -146,8 +145,6 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
        1. `BCP` フォルダー。Azure SSIS IR の各ノード上に、一括コピー プログラム (`bcp`) を含む SQL Server コマンドライン ユーティリティ (`MsSqlCmdLnUtils.msi`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
        1. `EXCEL` フォルダー。Azure SSIS IR の各ノード上にオープンソース アセンブリ (`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll`、および `ExcelDataReader.dll`) をインストールするための 1 個のカスタム セットアップが格納されています。
-
-       1. `MSDTC` フォルダー。Azure SSIS IR の各ノード上の Microsoft 分散トランザクション コーディネーター (MSDTC) サービスのネットワークおよびセキュリティの構成を変更するためのカスタム セットアップが格納されています。 MSDTC が確実に開始されるようにするため、パッケージ内の制御フローの開始時に、`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` というコマンドを実行するプロセス実行タスクを追加してください。 
 
        1. `ORACLE ENTERPRISE` フォルダー。Azure SSIS IR Enterprise Edition の各ノードに Oracle コネクタおよび OCI ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) とサイレント インストール構成ファイル (`client.rsp`) が格納されています。 このセットアップによって、Oracle 接続マネージャー、接続元、および接続先を使用できるようになります。 まず、Oracle 用 Microsoft Connectors v5.0 (`AttunitySSISOraAdaptersSetup.msi` と `AttunitySSISOraAdaptersSetup64.msi`) を[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55179)から、および最新の Oracle クライアント (`winx64_12102_client.zip` など) を [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) からダウンロードし、次に `main.cmd` と `client.rsp` と共にそれらをすべてまとめてコンテナーにアップロードします。 TNS を使用して Oracle に接続する場合、`tnsnames.ora` をダウンロードし、編集し、コンテナーにアップロードする必要があります。そのため、セットアップ時にこのファイルを Oracle インストール フォルダーにコピーできます。
 

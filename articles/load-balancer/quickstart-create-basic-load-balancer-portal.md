@@ -5,6 +5,7 @@ description: このクイックスタートでは、Azure Portal を使用して
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e7055e016abd06d20206d25cb1d7b9eac35142f0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260227"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231973"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート: Azure portal を使用してパブリック Basic Load Balancer を作成する
 
@@ -37,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
    
-   - **[名前]**: 「*MyLoadBalancer*」と入力します。
+   - **[名前]**:「*MyLoadBalancer*」と入力します。
    - **[種類]**: **[パブリック]** を選択します。 
    - **[SKU]**: **[Basic]** を選択します。
    - **[パブリック IP アドレス]**: **[新規作成]** を選択します。 
@@ -168,10 +169,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[正常性プローブの追加]** ページで、以下の値を入力または選択します。
    
-   - **[名前]**: 「*MyHealthProbe*」と入力します。
+   - **[名前]**:「*MyHealthProbe*」と入力します。
    - **[プロトコル]**: ドロップダウンから **[HTTP]** を選択します。 
    - **[ポート]**: 「*80*」と入力します。 
-   - **[パス]**: 既定の URI の */* を受け入れます。 この値は任意の別の URI に置き換えることができます。 
+   - **[パス]**: 既定の URI の */* をそのまま使用します。 この値は任意の別の URI に置き換えることができます。 
    - **[間隔]**: 「*15*」と入力します。 [間隔] は、プローブの試行の間隔を示す秒数です。
    - **[異常のしきい値]**: 「*2*」と入力します。 この値は、プローブの連続する失敗回数です (この回数を超えると、VM は異常と見なされます)。
    
@@ -198,7 +199,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[フロントエンド IP アドレス]**: 「*LoadBalancerFrontEnd*」と入力します。
    - **[プロトコル]**: **[TCP]** を選択します。
    - **[ポート]**: 「*80*」と入力します。
-   - **[バックエンド ポート]**: 「*80*」と入力します。
+   - **[バックエンド ポート]**:「*80*」と入力します。
    - **[バックエンド プール]**: **[MyBackendPool]** を選択します。
    - **[正常性プローブ]**: **[MyHealthProbe]** を選択します。 
    

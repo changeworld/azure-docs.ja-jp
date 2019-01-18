@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB を使用するアプリケーションのための適切な整合性レベルを選択する
 description: Azure Cosmos DB でアプリケーションのための適切な整合性レベルを選択します。
-keywords: 整合性, パフォーマンス, azure cosmos db, azure, Microsoft azure
-services: cosmos-db
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
-ms.author: mjbrown
-ms.openlocfilehash: a1c7d750bcd0c3f37d2269aee299e0ccd8c4ef4a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: c4523b5028aae5de565e517fea61c62e29a4e7a3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849294"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044078"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>アプリケーションのための適切な整合性レベルを選択する
 

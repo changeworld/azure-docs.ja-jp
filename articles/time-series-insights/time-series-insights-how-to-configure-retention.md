@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights 構成 - Azure Time Series Insights 環境のリテンション期間の構成方法 | Microsoft Docs
+title: Azure Time Series Insights 環境のリテンション期間の構成方法 | Microsoft Docs
 description: この記事では、Azure Time Series Insights 環境のリテンション期間の構成方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2822f99b950a2adca5e097cfa937b7fd68e04a3e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7c45b0581a03e280c7dbd6d998059f1e4bff5345
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277915"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556052"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
 この記事では、Azure Time Series Insights の**データ リテンション期間**と**ストレージ制限を超過したときの動作**の構成方法について説明します。

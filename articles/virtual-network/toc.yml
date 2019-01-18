@@ -337,6 +337,8 @@ items:
     href: https://azure.microsoft.com/develop/python/
   - name: REST
     href: /rest/api/virtual-network
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.network/allversions
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=virtual-network
 - name: リソース
@@ -357,9 +359,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: FAQ
     href: virtual-networks-faq.md
-ms.openlocfilehash: 03c2f4e3df1ce47405d1b09f93396218e3f57059
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0e992cd928597e93d57ec89cae440e7081520c54
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283506"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321431"

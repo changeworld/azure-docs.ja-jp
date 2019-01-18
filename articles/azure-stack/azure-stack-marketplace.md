@@ -12,45 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 12310c088777d65bef211747806f942433857e40
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: unknown
+ms.openlocfilehash: df1d263b321361c00ceb37c84858dd2c62033228
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632350"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245351"
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
+# <a name="azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Marketplace は Azure Stack 向けにカスタマイズされたサービス、アプリケーション、リソースのコレクションです。 リソースには、ネットワーク、仮想マシン、ストレージなどが含まれます。 ユーザーはここで、新しいリソースを作成して、新しいアプリケーションをデプロイします。 ユーザーが使用する商品を参照し、選択できるショッピング カタログと考えてください。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるサービスにサブスクライブする必要があります。
+Azure Stack Marketplace は、Azure Stack 向けにカスタマイズされたサービス、アプリケーション、およびリソースのコレクションです。 リソースには、ネットワーク、仮想マシン、ストレージなどが含まれます。 Marketplace を使用して、新しいリソースを作成したり、新しいアプリケーションをデプロイしたり、使用するアイテムを参照して選択したりします。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるサービスにサブスクライブする必要があります。
 
-Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 公開すると、アイテムはすべてのユーザーに表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
+Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などのアイテムを公開できます。 公開すると、アイテムはすべてのユーザーに表示されます。 作成したカスタム アイテムを公開することも、増え続けている [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
 
-> [!Caution]  
-> Azure Stack Marketplace で利用できるようにした後、イメージや JSON ファイルと呼ばれるすべてのギャラリー アイテムのアーティファクトに、認証することなくアクセスできます。 Marketplace アイテムを発行するときの考慮事項については、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」を参照してください。
+> [!CAUTION]  
+> ギャラリー アイテム アーティファクト (イメージや JSON ファイルを含む) はすべて、Azure Stack Marketplace で使用可能にした後、認証なしでアクセスできます。 Marketplace アイテムを発行するときの考慮事項については、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」を参照してください。
 
-Marketplace を開くには、管理者コンソールで **[+ リソースの作成]** を選択します。
+Marketplace を開くには、管理者ポータルで **[+ リソースの作成]** を選択します。
 
-![](media/azure-stack-publish-custom-marketplace-item/image1.png)
+![マーケットプレース](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
 ## <a name="marketplace-items"></a>Marketplace アイテム
-Azure Stack Marketplace の項目は、ユーザーがダウンロードおよび使用できるサービス、アプリケーション、またはリソースです。 すべての Azure Stack Marketplace アイテムは、プランやオファーなどの管理アイテムを含め、すべてのユーザーに表示されます。 これらのアイテムを表示するためにサブスクリプションは必要ありませんが、ユーザーに対しては機能しません。
+
+Azure Stack Marketplace の項目は、ユーザーがダウンロードおよび使用できるサービス、アプリケーション、またはリソースです。 プランやオファーなどの管理アイテムを含むすべての Azure Stack Marketplace アイテムがすべてのユーザーに表示されます。 これらのアイテムは、表示するためのサブスクリプションは必要ありませんが、ユーザーは使用できません。
 
 各 Marketplace アイテムには以下のものが含まれます。
 
-* リソース プロビジョニングの Azure リソース マネージャー テンプレート
-* 文字列、アイコン、その他のマーケティング資料などのメタデータ
-* ポータルでアイテムを表示するための書式設定情報
+* リソース プロビジョニングのための Azure Resource Manager テンプレート。
+* 文字列、アイコン、その他のマーケティング資料などのメタデータ。
+* ポータルでアイテムを表示するための書式設定情報。
 
-Marketplace に公開されるすべてのアイテムは、Azure ギャラリー パッケージ (azpkg) 形式を使用します。 デプロイまたは実行時リソース (コード、ソフトウェアの zip ファイル、または仮想マシン イメージなど) を Marketplace アイテムの一部ではなく、Azure Stack に個別に追加します。 
+Marketplace に公開されるすべてのアイテムは、Azure ギャラリー パッケージ (azpkg) 形式を使用します。 デプロイまたはランタイム リソース (コード、ソフトウェアの zip ファイル、または仮想マシン イメージ) を Marketplace アイテムの一部としてではなく、Azure Stack に個別に追加します。
 
-Azure Stack バージョン 1803 以降では、Azure からダウンロードするときや、カスタム画像をアップロードするときに画像はスパース ファイルに変換されます。 このプロセスは画像を追加するときに時間がかかりますが、領域を節約し、画像の展開時間を短縮することができます。 変換は新しい画像にのみ適用されます。  既存の画像は変更されません。 
+Azure Stack バージョン 1803 以降では、Azure からダウンロードするときや、カスタム画像をアップロードするときに画像はスパース ファイルに変換されます。 このプロセスは画像を追加するときに時間がかかりますが、領域を節約し、画像の展開時間を短縮することができます。 変換は新しい画像にのみ適用されます。 既存の画像は変更されません。
 
 ## <a name="next-steps"></a>次の手順
-[Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
-[Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)
 
+* [Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
+* [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)

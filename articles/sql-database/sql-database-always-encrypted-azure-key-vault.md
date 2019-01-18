@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 5499193ba96d5a32ac6d3b310eee531c68fd52fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/03/2019
+ms.openlocfilehash: e988a3c86302b875f8393264279e4a65c45ba1eb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255925"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041239"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault で機密データを保護し、暗号化キーを格納する
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
 
 この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)でデータ暗号化を使用して SQL Database の機密データを保護する方法について説明します。 さらに、Azure Key Vault に各暗号化キーを格納する方法を示す手順についても説明します。
 
@@ -60,6 +60,7 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
+    # Use the same resource group name when creating your SQL Database below
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
 
@@ -132,7 +133,7 @@ SSMS に用意されているウィザードを使用すると、列マスター
    
     ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Always Encrypted ウィザードには、**[列の選択]**、**[マスター キーの構成]**、**[検証]**、および **[概要]** セクションがあります。
+Always Encrypted ウィザードには、**[列の選択]**、**[マスター キー構成]**、**[検証]**、および **[まとめ]** のセクションがあります。
 
 ### <a name="column-selection"></a>列の選択
 **[説明]** ページの **[次へ]** をクリックして、**[列の選択]** ページを開きます。 このページで、暗号化する列、 [暗号化の種類、使用する列暗号化キー (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) を選択します。

@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続
+title: Data Lake Tools for Visual Studio を使用した Apache Hadoop への接続 - Azure HDInsight
 description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight 上の ApacheHadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
 services: hdinsight
@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive, hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634670"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629681"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -23,7 +23,7 @@ Data Lake Tools for Visual Studio (Azure Data Lake and Stream Analytics Tools fo
 
 HDInsight の使用に関する詳細については、[HDInsight の概要](../hdinsight-hadoop-introduction.md)と [HDInsight の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。 
 
-Storm クラスターへの接続に関する詳細については、[Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発](../storm/apache-storm-develop-csharp-visual-studio-topology.md)に関するページを参照してください。
+Apache Storm クラスターへの接続に関する詳細については、[Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発](../storm/apache-storm-develop-csharp-visual-studio-topology.md)に関するページを参照してください。
 
 Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics と HDInsight にアクセスできます。 Data Lake Tools の詳細については、「[Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 
@@ -31,13 +31,12 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
 このチュートリアルを完了して、Data Lake Tools for Visual Studio を使用するには、次のものが必要です。
 
-* Azure HDInsight クラスター。 HDInsight クラスターを作成するには、「[Hadoop チュートリアル: HDInsight で Hadoop を使用する](apache-hadoop-linux-tutorial-get-started.md)」をご覧ください。 対話型 Hive クエリを実行するには、[HDInsight 対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスターが必要です。
+* Azure HDInsight クラスター。 HDInsight クラスターを作成するには、[Azure HDInsight での Apache Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。 対話型 Apache Hive クエリを実行するには、[HDInsight 対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスターが必要です。
 * Visual Studio 2017、2015、または 2013 がインストールされているコンピューター。
     
     > [!NOTE]
     > 現時点では、Data Lake Tools for Visual Studio の英語版のみを使用できます。
-    > 
-    > 
+
 
 ## <a name="install-or-update-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio をインストールまたは更新する
 
@@ -66,8 +65,7 @@ Data Lake Tools for Visual Studio を使用して、HDInsight クラスターへ
 
 > [!NOTE]
 > 汎用の Hadoop クラスターに接続する方法の詳細については、「[Write and submit Hive queries by using Visual Studio](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」(Visual Studio を使用した Hive クエリの書き込みと送信) をご覧ください。
-> 
-> 
+
 
 Azure サブスクリプションに接続するには:
 
@@ -77,8 +75,7 @@ Azure サブスクリプションに接続するには:
    
    > [!NOTE]
    > **[HDInsight タスク一覧]** ウィンドウが開きます。 ウィンドウが表示されない場合は、**[表示]** メニューの **[その他のウィンドウ]** を選択し、**[HDInsight タスク一覧ウィンドウ]** を選択します。  
-   > 
-   > 
+
 4. Azure サブスクリプションの資格情報を入力し、**[サインイン]** を選択します。 認証は、このコンピューターで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
 5. サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。 クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
    
@@ -106,13 +103,12 @@ Visual Studio から質問をしたりフィードバックを提供したりす
 
 ![サーバー エクスプローラーでの Data Lake Tools for Visual Studio の BLOB 操作のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "サーバー エクスプローラーでの BLOB のアップロード、削除、およびダウンロード")
 
-## <a name="run-interactive-hive-queries"></a>対話型 Hive クエリの実行
-[Apache Hive](http://hive.apache.org) は、Hadoop に組み込まれているデータ ウェアハウス インフラストラクチャです。 Hive は、データの概要、クエリ、および分析に使用されます。 Data Lake Tools for Visual Studio を使用して、Visual Studio から Hive クエリを実行できます。 Hive の詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
+## <a name="run-interactive-apache-hive-queries"></a>対話型 Apache Hive クエリを実行する
+[Apache Hive](https://hive.apache.org) は、Hadoop に組み込まれているデータ ウェアハウス インフラストラクチャです。 Hive は、データの概要、クエリ、および分析に使用されます。 Data Lake Tools for Visual Studio を使用して、Visual Studio から Hive クエリを実行できます。 Hive の詳細については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
 
-[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md)では、Apache Hive 2.1 の [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) を使用します。 対話型クエリでは、格納されている大規模なデータセットに対する複雑なデータ ウェアハウス スタイルのクエリを対話形式で実行できます。 対話型クエリは、従来の Hive バッチ ジョブと比べ、Hive クエリの実行速度が格段に速くなっています。 詳細については、「[Hive バッチ ジョブの実行](#run-hive-batch-jobs)」を参照してください。
+[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md)では、Apache Hive 2.1 の [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) を使用します。 対話型クエリでは、格納されている大規模なデータセットに対する複雑なデータ ウェアハウス スタイルのクエリを対話形式で実行できます。 対話型クエリは、従来の Hive バッチ ジョブと比べ、Hive クエリの実行速度が格段に速くなっています。 詳細については、[Apache Hive バッチ ジョブの実行](#run-hive-batch-jobs)に関するページを参照してください。
 
-> [!NOTE]
->
+> [!NOTE]  
 > 対話型 Hive クエリは、[HDInsight 対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスターに接続している場合のみ実行できます。
 
 Data Lake Tools for Visual Studio を使用して、Hive ジョブの内容を表示することもできます。 Data Lake Tools for Visual Studio は、特定の Hive ジョブを収集し、Yarn ログを表示できます。
@@ -132,7 +128,7 @@ Hive テーブルと Hive テーブル スキーマを表示するには:
    ![HDInsight Hive Visual Studio スキーマ クエリのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Hive クエリの結果")
 
 ### <a name="create-hive-tables"></a>Hive テーブルの作成
-Hive テーブルを作成するには、GUI または Hive クエリを使用できます。 Hive クエリの使用については、 [Hive クエリの実行](#run.queries)をご覧ください。
+Hive テーブルを作成するには、GUI または Hive クエリを使用できます。 Hive クエリの使用については、[Apache Hive クエリの実行](#run.queries)に関するページを参照してください。
 
 Hive テーブルを作成するには:
 
@@ -163,7 +159,7 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
    
    > [!NOTE]
    > IntelliSense は、HDInsight のツール バーで選択されているクラスターのメタデータのみを推奨します。
-   > 
+
    
 4. (省略可能) スクリプトの構文エラーをチェックするには、**[スクリプトの検証]** を選択します。
    
@@ -205,7 +201,8 @@ Hive ジョブを表示するには:
     ![HDInsight Visual Studio Tools の [Hive ジョブの表示] ウィンドウのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "Hive ジョブの表示")
 
 ### <a name="faster-path-hive-execution-via-hiveserver2"></a>HiveServer2 を使用した Hive 実行の高速パス
-> [!NOTE]
+
+> [!NOTE]  
 > この機能は、HDInsight バージョン 3.2 以降のクラスターでのみ動作します。
  
 Data Lake Tools for Visual Studio は、以前は [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (Templeton とも呼ばれます) を介して Hive ジョブを送信していました。 この方法での Hive ジョブの送信では、ジョブの詳細とエラー情報を返すのに長い時間がかかっていました。
@@ -236,11 +233,11 @@ HiveServer2 を使用してクエリを実行した場合、パフォーマン�
 | ウィンドウを閉じる |HiveServer2 を使用した実行は "*同期*" しています。 ウィンドウが閉じた場合、クエリの実行は取り消されます。 |WebHCat を使用した送信は、"*非同期*" で行われます。 WebHCat を使用してクエリを送信した後、Visual Studio を閉じることができます。 結果は、いつでも戻って確認できます。 |
 
 ### <a name="tez-hive-job-performance-graph"></a>Tez Hive ジョブのパフォーマンス グラフ
-Data Lake Tools for Visual Studio では、Tez 実行エンジンが実行している Hive ジョブのパフォーマンス グラフを表示できます。 Tez の有効化の情報については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。 
+Data Lake Tools for Visual Studio では、Tez 実行エンジンが実行している Hive ジョブのパフォーマンス グラフを表示できます。 Tez の有効化の情報については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。 
 
 Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。 最新のジョブの状態を表示するには、**[更新]** ボタンを選択する必要があります。
 
-> [!NOTE]
+> [!NOTE]  
 > この機能は、HDInsight バージョン 3.2.4.593 以降のクラスターでのみ使用できます。 この機能は、完了したジョブに対してのみ機能します。 この機能を使用するには、WebHCat を使用してジョブを送信する必要があります。 HiveServer2 を使用してクエリを実行した場合は、次の図が表示されます。 
 > 
 > ![Hadoop Hive Tez パフォーマンス グラフのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png "ジョブの状態")
@@ -259,7 +256,7 @@ Data Lake Tools for Visual Studio では、特定の Hive ジョブの Yarn ロ�
 
 Hive バッチ ジョブの実行方法の詳細については、「[対話型 Hive クエリの実行](#run-interactive-hive-queries)」を参照してください。 そのセクションの情報は、実行に時間がかかる Hive バッチ ジョブに適用されます。
 
-## <a name="run-pig-scripts"></a>Pig のスクリプトを実行する
+## <a name="run-apache-pig-scripts"></a>Apache Pig スクリプトの実行
 Data Lake Tools for Visual Studio を使用して、Pig スクリプトの作成と HDInsight クラスターへの送信を行うことができます。 最初に、テンプレートから Pig プロジェクトを作成します。 次に、スクリプトを HDInsight クラスターに送信します。
 
 ## <a name="feedback-and-known-issues"></a>フィードバックと既知の問題
@@ -271,7 +268,7 @@ Data Lake Tools for Visual Studio を使用して、Pig スクリプトの作成
 この記事では、Data Lake Tools for Visual Studio パッケージを使用して、Visual Studio から HDInsight クラスターに接続する方法を説明しました。 Hive クエリを実行する方法についても説明しました。 詳細と例については、次の記事をご覧ください。
 
 * [HDInsight での Hadoop Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight での Hadoop ジョブの送信](submit-apache-hadoop-jobs-programmatically.md)
-* [HDInsight での Hadoop を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
+* [HDInsight で Apache Hadoop を使用する](apache-hadoop-linux-tutorial-get-started.md)
+* [HDInsight で Apache Hadoop ジョブを送信する](submit-apache-hadoop-jobs-programmatically.md)
+* [HDInsight で Apache Hadoop を使用して Twitter データを分析する](../hdinsight-analyze-twitter-data.md)
 

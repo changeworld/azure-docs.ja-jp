@@ -1,23 +1,24 @@
 ---
-title: ネットワーク プロキシ対応の Azure IoT Edge デバイスを構成する | Microsoft Docs
+title: ネットワーク プロキシ対応のデバイスを構成する - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge ランタイムおよびインターネット対応の任意の IoT Edge モジュールを構成して、プロキシ サーバー経由で通信する方法。
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: ad9ecd9c5b50657caba7522fe500a748a10cd02d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913225"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634305"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
-IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信します。 お使いのデバイスがプロキシ サーバーを使用するネットワークに接続されている場合、IoT Edge ランタイムを構成してサーバー経由で通信する必要があります。 また、プロキシ サーバーは、Edge Hub 経由でルーティングされない HTTP または HTTPS 要求を行った場合、個々 の IoT Edge モジュールに影響を及ぼす可能性があります。 
+IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信します。 お使いのデバイスがプロキシ サーバーを使用するネットワークに接続されている場合、IoT Edge ランタイムを構成してサーバー経由で通信する必要があります。 また、プロキシ サーバーは、IoT Edge ハブ経由でルーティングされない HTTP または HTTPS 要求を行った場合、個々 の IoT Edge モジュールに影響を及ぼす可能性があります。 
 
 プロキシ サーバーを利用するように IoT Edge デバイスを構成するには、次の基本の手順に従います。 
 
@@ -32,7 +33,7 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 プロキシ URL の形式は、**protocol**://**proxy_host**:**proxy_port** です。 
 
-* **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルでも構成できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTPS を使用する必要があります。
+* **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルでも使用できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTPS を使用する必要があります。
 
 * **proxy_host** は、プロキシ サーバーのアドレスです。 プロキシ サーバーで認証が必要な場合は、proxy_host の一部として、**user**:**password**@**proxy_host** の形式で資格情報を提供できます 
 
@@ -42,14 +43,22 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり 「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。 
 
-Windows デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスする必要があります。 Windows 設定でプロキシ情報を構成するか、またはインストール スクリプトにプロキシ情報を直接含めることができます。 次の Powershell スクリプトは、`-proxy` 引数を使用した Windows インストールの例です。
+IoT Edge ランタイムを Windows デバイスにインストールしている場合は、いったんプロキシ サーバーを経由してインストーラーのスクリプト ファイルをダウンロードしたうえで、インストール中に再度、必要なコンポーネントをダウンロードする必要があります。 Windows 設定でプロキシ情報を構成するか、またはインストール スクリプトにプロキシ情報を直接含めることができます。 次の Powershell スクリプトは、`-proxy` 引数を使用した Windows インストールの例です。
 
 ```powershell
 . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows
+Install-SecurityDaemon -Manual -ContainerOs Windows -proxy <proxy URL>
 ```
 
-詳しい情報とインストール オプションについては、「[Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する](how-to-install-iot-edge-windows-with-windows.md)」または「[Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する](how-to-install-iot-edge-windows-with-linux.md)」を参照してください。
+プロキシ サーバーの資格情報が複雑で URL に含めることができない場合は、`-InvokeWebRequestParameters` 内で `-ProxyCredential` パラメーターを使用してください。 たとえば、次のように入力します。
+
+```powershell
+$proxyCredential = (Get-Credential).GetNetworkCredential()
+. {Invoke-WebRequest -proxy <proxy URL> -ProxyCredential $proxyCredential -useb aka.ms/iotedge-win} | Invoke-Expression; `
+Install-SecurityDaemon -Manual -ContainerOs Windows -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
+```
+
+プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 インストール オプションの詳細については、[Windows への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
 
 IoT Edge ランタイムがインストールされたら、次のセクションに進み、プロキシ情報を使ってランタイムを構成します。 
 
@@ -64,13 +73,13 @@ IoT Edge ランタイムがインストールされたら、次のセクショ�
 お使いの Docker バージョンに該当する記事を選択します。 
 
 * [Docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [Docker for Windows](https://docs.docker.com/docker-for-windows/#proxies)
+* [Docker for Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
 
 ### <a name="iot-edge-daemon"></a>IoT Edge デーモン
 
 IoT Edge デーモンは、Docker デーモンとほぼ同じ方法で構成されています。 IoT Edge が IoT Hub へ送信するすべての要求で、HTTPS が使用されます。 お使いのオペレーティング システムに基づいて、次の手順に従って、サービス用に環境変数を設定します。 
 
-#### <a name="linux"></a>Linux
+#### <a name="linux"></a> Linux
 
 IoT Edge デーモンを構成するために、ターミナルでエディターを開きます。 
 
@@ -85,7 +94,7 @@ sudo systemctl edit iotedge
 Environment="https_proxy=<proxy URL>"
 ```
 
-サービス マネージャーを更新して、iotedge 用の新しい構成を選択します。
+サービス マネージャーを更新して、IoT Edge 用の新しい構成を選択します。
 
 ```bash
 sudo systemctl daemon-reload
@@ -103,7 +112,7 @@ sudo systemctl restart iotedge
 systemctl show --property=Environment iotedge
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a> Windows
 
 管理者として PowerShell ウィンドウを開き、次のコマンドを実行して、新しい環境変数でレジストリを編集します。 **\<proxy url>** をお使いのプロキシ サーバーのアドレスとポートに置き換えます。 
 
@@ -117,13 +126,13 @@ IoT Edge を再起動して、変更を有効にします。
 Restart-Service iotedge
 ```
 
-## <a name="configure-the-edge-agent"></a>Edge エージェントを構成する
+## <a name="configure-the-iot-edge-agent"></a>IoT Edge エージェントを構成する
 
-Edge エージェントは、任意の IoT Edge デバイス上で開始される最初のモジュールです。 最初は、IoT Edge config.yaml ファイルの情報に基づいて起動されます。 その後、Edge エージェントは IoT Hub に接続して、デバイスへの配置が必要な他のモジュールを宣言する配置マニフェストを取得します。
+IoT Edge エージェントは、すべての IoT Edge デバイス上で最初に起動するモジュールです。 最初は、IoT Edge config.yaml ファイルの情報に基づいて起動されます。 その後、IoT Edge エージェントは IoT Hub に接続して、デバイスへの配置が必要な他のモジュールを宣言する配置マニフェストを取得します。
 
 お使いの IoT Edge デバイス上で、config.yaml ファイルを開きます。 Linux システムの場合、このファイルは **/etc/iotedge/config.yaml** に配置されています。 Windows システムの場合、このファイルは **C:\ProgramData\iotedge\config.yaml** に配置されています。 構成ファイルは保護されているため、アクセスするには管理者権限が必要です。 Linux システムの場合、推奨されるテキスト エディターでファイルを開く前に `sudo` コマンドを使用します。 Windows の場合、Notepad などのテキスト エディターを開いて管理者として実行してから、ファイルを開きます。 
 
-config.yaml ファイルで、**Edge Agent module spec** セクションを探します。 Edge エージェント定義には、環境変数を追加できる **env** パラメーターが組み込まれています。 
+config.yaml ファイルで、**Edge Agent module spec** セクションを探します。 IoT Edge エージェント定義には、環境変数を追加できる **env** パラメーターが組み込まれています。 
 
 <!--
 ![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
@@ -159,7 +168,7 @@ config.yaml への変更を保存して、エディターを閉じます。 IoT 
 
 ## <a name="configure-deployment-manifests"></a>配置マニフェストを構成する  
 
-プロキシ サーバーを利用するように IoT Edge デバイスが構成されたら、以降のすべての配置マニフェストでは環境変数も宣言する必要があります。 2 つのランタイム モジュール edgeAgent および edgeHub では常に、IoT Hub との通信を維持するようにプロキシ サーバーを構成する必要があります。 プロキシ サーバー経由で通信するように任意の IoT Edge モジュールを構成できますが、edgeHub 経由でメッセージをルーティングするモジュールやデバイス上の他のモジュールと通信するモジュールの場合は、その必要はありません。 
+プロキシ サーバーを利用するように IoT Edge デバイスが構成されたら、以降の配置マニフェストでも引き続き、環境変数を宣言する必要があります。 edgeAgent と edgeHub の 2 つのランタイム モジュールは、IoT Hub との接続を維持できるよう、必ずプロキシ サーバー経由で通信するように構成してください。 インターネットに接続する他の IoT Edge モジュールは、そのプロキシ サーバーに対して構成する必要があります。 ただし、edgeHub 経由でメッセージをルーティングするモジュールや、デバイス上の他のモジュールとのみ通信するモジュールには、プロキシ サーバーの詳細は不要です。 
 
 Azure portal を使用して、または手動で JSON ファイルを編集して、配置マニフェストを作成できます。 
 
@@ -167,13 +176,13 @@ Azure portal を使用して、または手動で JSON ファイルを編集し�
 
 **モジュールの設定**ウィザードを使用して IoT Edge デバイスの配置を作成する場合、どのモジュールにも、プロキシ サーバー接続の構成に使用できる **[環境変数]** セクションがあります。 
 
-Edge エージェントおよび Edge Hub モジュールを構成するには、ウィザードの最初の手順で **[Edge ランタイムの詳細設定を構成する]** を選択します。 
+IoT Edge エージェントおよび IoT Edge ハブ モジュールを構成するには、ウィザードの最初の手順で **[Edge ランタイムの詳細設定を構成する]** を選択します。 
 
 ![Edge ランタイムの詳細設定を構成する](./media/how-to-configure-proxy-support/configure-runtime.png)
 
-Edge エージェントおよび Edge Hub モジュールの両方の定義に、**https_proxy** 環境変数を追加します。 お使いの IoT Edge デバイス上の config.yaml ファイルに **UpstreamProtocol** 環境変数を含めた場合は、Edge エージェント モジュールの定義にもこの環境変数を追加します。 
+IoT Edge エージェントおよび IoT Edge ハブ モジュールの両方の定義に、**https_proxy** 環境変数を追加します。 お使いの IoT Edge デバイス上の config.yaml ファイルに **UpstreamProtocol** 環境変数を含めた場合は、IoT Edge エージェント モジュールの定義にもこの環境変数を追加します。 
 
-![環境変数の設定](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![https_proxy environment 変数を設定する](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 配置マニフェストに追加する他のモジュールはすべて、同じパターンに従います。 モジュール名およびイメージを設定するページには、環境変数のセクションがあります。
 
@@ -210,7 +219,7 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
 }
 ```
 
-お使いの IoT Edge デバイス上の config.yaml ファイルに **UpstreamProtocol** 環境変数を含めた場合は、Edge エージェント モジュールの定義にもこの環境変数を追加します。 
+お使いの IoT Edge デバイス上の config.yaml ファイルに **UpstreamProtocol** 環境変数を含めた場合は、IoT Edge エージェント モジュールの定義にもこの環境変数を追加します。 
 
 ```json
 "env": {

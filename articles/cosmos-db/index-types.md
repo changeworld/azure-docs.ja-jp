@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: f3c5d7bc1907e94ff2e590fe77cc531ac4b01f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628558"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034089"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックスの種類
 
@@ -31,7 +31,7 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 
 - **範囲インデックス**では、効率的な等値クエリ、範囲クエリ (>、<、>=、<=、!= を使用)、および ORDER BY クエリをサポートします。 既定では ORDER BY クエリには、インデックスの最大有効桁数 (-1) も必要です。 データ型には、String または Number を指定できます。
 
-- **空間インデックス** では、効率的な空間クエリ (within と distance) をサポートします。 データ型には、Point、Polygon、または LineString を指定できます。 Azure Cosmos DB では、Point、Polygon、または LineString データ型に対して指定できる、すべてのパスに対する空間インデックスの種類もサポートしています。 指定されたパスの値は、{"type": "Point", "coordinates": [0.0, 10.0]} のような有効な GeoJSON フラグメントである必要があります。 Azure Cosmos DB は、Point、Polygon、LineString データ型の自動インデックス作成をサポートしています。
+- **空間インデックス** では、効率的な空間クエリ (within と distance) をサポートします。 データ型には、Point、Polygon、または LineString を指定できます。 Azure Cosmos DB では、Point、Polygon、または LineString データ型に対して指定できる、すべてのパスに対する空間インデックスの種類もサポートしています。 指定されたパスの値は、{"type":"Point", "coordinates": [0.0, 10.0]} のような有効な GeoJSON フラグメントである必要があります。 Azure Cosmos DB は、Point、Polygon、LineString データ型の自動インデックス作成をサポートしています。
 
 ハッシュ、範囲、および空間の各インデックスを使用して処理できるクエリの例を次に示します。
 
@@ -39,7 +39,7 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 | ---------- | ---------------- |
 | Hash  | Hash を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash を /props/[]/?  (または / または /props/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
 | Range  | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop   |
-| Spatial     | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) -- ポイントに対するインデックス作成が有効になっている場合<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) -- ポリゴンに対するインデックス作成が有効になっている場合     |
+| Spatial     | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Polygon"、...}) --ポイントに対するインデックスが有効になっている場合<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Point",...}、c.prop)--ポリゴンに対するインデックスが有効になっている場合     |
 
 ## <a name="default-behavior-of-index-kinds"></a>各インデックスの種類の既定の動作
 

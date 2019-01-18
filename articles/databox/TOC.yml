@@ -51,6 +51,8 @@ items:
         href: data-box-portal-admin.md
       - name: ローカル Web UI で管理する
         href: data-box-local-web-ui-admin.md
+      - name: データを BLOB 層に移動する
+        href: data-box-how-to-set-data-tier.md
       - name: デバイスをケーブル接続する
         href: data-box-cable-options.md
       - name: サポートに問い合わせる
@@ -108,9 +110,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 4ca0a1e04f558396cb72b0617c9bee6349a0fe54
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 06605ce958b32acafdc33f23d41fd0abc635d1ea
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540522"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214948"

@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 9098e8e6af76ed14ad42d5fe5917fcd36097c222
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103287"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063869"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,6 +29,9 @@ ms.locfileid: "53103287"
 Amazon S3 から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
+
+>[!TIP]
+>この Amazon S3 コネクタを使用し、[Google Cloud Storage](connector-google-cloud-storage.md) など、**あらゆる S3 対応プロバイダー**からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -54,7 +57,11 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | type | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
 | accessKeyId | シークレット アクセス キーの ID。 |[はい] |
 | secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| serviceUrl | 公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーからデータをコピーする場合、カスタム S3 エンドポイントを指定します。 たとえば、[Google Cloud Storage からデータをコピーする](#copy-from-google-cloud-storage)には、`https://storage.googleapis.com` と指定します。 | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+>[!TIP]
+>公式の Amazon S3 サービス以外の S3 対応ストレージからデータをコピーする場合、カスタム S3 サービス URL を指定します。
 
 >[!NOTE]
 >IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
@@ -70,8 +77,8 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
         "typeProperties": {
             "accessKeyId": "<access key id>",
             "secretAccessKey": {
-                    "type": "SecureString",
-                    "value": "<secret access key>"
+                "type": "SecureString",
+                "value": "<secret access key>"
             }
         },
         "connectVia": {
@@ -206,5 +213,6 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
     }
 ]
 ```
+
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

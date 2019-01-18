@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282141"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791074"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 
@@ -112,14 +112,11 @@ Conversation Learner を使用するようになり、Conversation Learner の�
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
-  npm run demo-vrapp
   ```
 
 4. まだ行っていない場合は、 http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
-5. [Import tutorials] をクリックします (行う必要があるのは一度だけです)。  これには約 1 分かかり、すべてのチュートリアルの Conversation Learner モデルが Conversation Learner アカウントにコピーされます。
-
-6. Conversation Learner UI で、開始したデモに対応するデモ モデルをクリックします。
+5. [Import tutorials]\(チュートリアルのインポート\) をクリックし、開始したデモに対応するデモ モデルを Conversation Learner UI で選択します。
 
 デモのソース ファイルは `cl-bot-01/src/demos` にあります。
 
@@ -181,4 +178,4 @@ cp .env.example .env
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Hello world](./tutorials/1-hello-world.md)
+> [Hello world](./tutorials/01-hello-world.md)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 830fc1d96825e28aad41aac9afee499b9bc1f7ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356165"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189832"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>アクセス パネルからアプリケーションへのサインインに関する問題
 
@@ -68,7 +68,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Internet Explorer 8、9、10、11 - Windows 7 以降
 
--   Edge - Windows 10 Anniversary Edition 以降
+-   Microsoft Edge - Windows 10 Anniversary Edition 以降
 
 -   Chrome - Windows 7 以降、MacOS X 以降
 
@@ -92,11 +92,11 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 7.  アクセス パネルにサインインし、パスワード SSO アプリケーションを**起動**できるかどうかを確認します。
 
-以下のダイレクト リンクから、Chrome および Edge 対応の拡張機能をダウンロードすることもできます。
+以下のダイレクト リンクから、Chrome および Microsoft Edge 対応の拡張機能をダウンロードすることもできます。
 
 -   [Chrome アクセス パネル拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Edge アクセス パネル拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+-   [Microsoft Edge アクセス パネル拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
 ## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する方法
 

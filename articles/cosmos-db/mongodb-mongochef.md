@@ -1,34 +1,32 @@
 ---
-title: Azure Cosmos DB での Studio 3T (MongoChef) の使用 | Microsoft Docs
-description: Azure Cosmos DB MongoDB API アカウントで Studio 3T を使用する方法について説明します。
-keywords: MongoChef、Studio 3T
-services: cosmos-db
-author: slyons
-manager: kfile
+title: Studio 3T を使用して Azure Cosmos DB の MongoDB 用 API に接続する
+titleSuffix: Azure Cosmos DB
+description: Studio 3T と Azure Cosmos DB の MongoDB 用 API を使用して Cosmos DB に接続する方法について学習します。
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.devlang: na
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.author: sclyon
-ms.openlocfilehash: af66f413055c01d9a4c3e94c7d3b9c5f1d5917b0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+ms.custom: seodec18
+ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038372"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038415"
 ---
-# <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Azure Cosmos DB: MongoDB API アカウントでの Studio 3T の使用
+# <a name="connect-to-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Cosmos アカウントに接続する
 
-Azure Cosmos DB MongoDB API アカウントに接続するには、以下を実行する必要があります。
+Azure Cosmos DB の MongoDB 用 API を使用して Cosmos アカウントに接続するには、以下を実行する必要があります。
 
-* [Studio 3T](https://studio3t.com/) (以前の名称は MongoChef) をダウンロードしてインストールする
-* MongoDB アカウントの Azure Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
+* [Studio 3T](https://studio3t.com/) をダウンロードしてインストールする
+* Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
 
 ## <a name="create-the-connection-in-studio-3t"></a>Studio 3T で接続を作成する
-Studio 3T 接続マネージャーに Azure Cosmos DB アカウントを追加するには、次の手順を実行します。
+Studio 3T 接続マネージャーに Cosmos アカウントを追加するには、次の手順を行います。
 
-1. 「[Connect a MongoDB application to Azure Cosmos DB (MongoDB アプリケーションを Azure Cosmos DB に接続する)](connect-mongodb-account.md)」の記事にある手順を使用して、MongoDB API アカウントの Azure Cosmos DB 接続情報を取得します。
+1. 「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」の記事にある手順を使用して、Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントの接続情報を取得します。
 
     ![接続文字列ページのスクリーンショット](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
@@ -112,4 +110,6 @@ Studio 3T を使用してデータベース、コレクション、およびド�
     ![Screen shot of Mongo Chef query results](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>次の手順
-* Azure Cosmos DB MongoDB API の[サンプル](mongodb-samples.md)を確認します。
+
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学びます。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。

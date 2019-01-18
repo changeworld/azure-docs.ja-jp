@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53f729e23ced00bd0acb5674308f8c610bff8868
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 322c7164c0ecda550bf1bfe6a55075759bf95735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005378"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630518"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
 
-Storm ダッシュボードでは、Web ブラウザーを使用して Apache Storm トポロジを HDInsight クラスターに簡単にデプロイして実行できます。 また、ダッシュボードを使用して実行中のトポロジを監視、管理できます。 Visual Studio を使用する場合、HDInsight Tools for Visual Studio でも Visual Studio と同様の機能が提供されます。
+[Apache Storm](https://storm.apache.org/) ダッシュボードでは、Web ブラウザーを使用して Apache Storm トポロジを HDInsight クラスターに容易にデプロイして実行できます。 また、ダッシュボードを使用して実行中のトポロジを監視、管理できます。 Visual Studio を使用する場合、HDInsight Tools for Visual Studio でも Visual Studio と同様の機能が提供されます。
 
 Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Storm REST API に依存し、これを使用して独自の監視と管理ソリューションを作成できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスター上の Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > Linux を使用する HDInsight クラスターを使用して Storm トポロジをデプロイおよび管理する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](apache-storm-deploy-monitor-topology-linux.md)」を参照してください。
@@ -31,7 +31,7 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
 * **HDInsight 上の Apache Storm** - クラスターを作成する手順については、「[HDInsight での Apache Storm の使用](apache-storm-tutorial-get-started-linux.md)」をご覧ください。
 
-* **Storm ダッシュボード**用: HTML5 をサポートする最新の Web ブラウザー。
+* **Storm ダッシュボード**の場合:HTML5 をサポートする最新の Web ブラウザー
 
 * **Visual Studio** 用: Azure SDK 2.5.1 以降と HDInsight Tools for Visual Studio。 HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio の使用開始](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
@@ -59,66 +59,66 @@ Storm ダッシュボードで、 **[Storm UI]** リンクを選択します。 
 
 ![Storm UI][storm-dashboard-ui]
 
-> [!NOTE]
+> [!NOTE]  
 > いくつかのバージョンの Internet Explorer では、Storm UI に初めてアクセスした後、Storm UI が更新されない場合があります。 たとえば、送信した新しいトポロジが表示されない場合や、以前に非アクティブ化したトポロジがアクティブと表示される場合があります。 Microsoft はこの問題を確認しており、解決に取り組んでいます。
 
 #### <a name="main-page"></a>メイン ページ
 
 Storm UI のメイン ページには、次の情報が表示されます。
 
-* **クラスターの概要**: Storm クラスターの基本情報
+* **クラスターの概要**:Storm クラスターの基本情報
 
-* **トポロジの概要**: 実行中のトポロジの一覧 このセクションのリンクを使用して、各トポロジの詳細情報を表示します。
+* **トポロジの概要**:実行中のトポロジの一覧。 このセクションのリンクを使用して、各トポロジの詳細情報を表示します。
 
-* **スーパーバイザの概要**: Storm のスーパーバイザに関する情報
+* **スーパーバイザの概要**:Storm のスーパーバイザに関する情報。
 
-* **Nimbus 構成**: クラスターの Nimbus 構成
+* **Nimbus 構成**:クラスターの Nimbus 構成
 
 #### <a name="topology-summary"></a>トポロジの概要
 
 **[トポロジの概要]** セクションのリンクを選択すると、トポロジに関する次の情報が表示されます。
 
-* **トポロジの概要**: トポロジの基本情報
+* **トポロジの概要**:トポロジの基本情報
 
-* **トポロジのアクション**: トポロジで実行できる管理アクション
+* **トポロジのアクション**:トポロジで実行できる管理アクション
 
-  * **アクティブ化**: アクティブ化が解除されたトポロジの処理を再開します
+  * **アクティブ化**:アクティブ化が解除されたトポロジの処理を再開します。
 
-  * **アクティブ化の解除**: 実行中のトポロジを一時停止します
+  * **非アクティブ化**:実行中のトポロジを一時停止します。
 
-  * **再調整**: トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
+  * **再調整**:トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
 
-      詳細については、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
+      詳細については、[Apache Storm トポロジの並列処理の理解](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)に関するページを参照してください。
 
-  * **強制終了**: 指定したタイムアウト後に Storm トポロジを停止します。
+  * **強制終了**:指定したタイムアウト後に Storm トポロジを停止します。
 
-* **トポロジの統計**: トポロジに関する統計。 **[Window]** 列にあるリンクを使用して、ページで残りのエントリの時間枠を設定します。
+* **トポロジの統計**:トポロジに関する統計。 **[Window]** 列にあるリンクを使用して、ページで残りのエントリの時間枠を設定します。
 
-* **スパウト**: トポロジで使用するスパウト。 このセクションにあるリンクを使用して、各スパウトの詳細情報を表示します。
+* **スパウト**:トポロジで使用するスパウト。 このセクションにあるリンクを使用して、各スパウトの詳細情報を表示します。
 
-* **ボルト**: トポロジで使用するボルト。 このセクションにあるリンクを使用して、各ボルトの詳細情報を表示します。
+* **ボルト**:トポロジで使用するボルト。 このセクションにあるリンクを使用して、各ボルトの詳細情報を表示します。
 
-* **トポロジの構成**: 選択したトポロジの構成
+* **トポロジの構成**:選択したトポロジの構成
 
 #### <a name="spout-and-bolt-summary"></a>スパウトとボルトの概要
 
 **[スパウト]** または **[ボルト]** セクションでアイテムを選択すると、そのアイテムに関する次の情報が表示されます。
 
-* **コンポーネントの概要**: スパウトやボルトの基本情報
+* **コンポーネントの概要**:スパウトやボルトの基本情報
 
-* **スパウト/ボルトの統計**: スパウトやボルトの統計。 **[Window]** 列にあるリンクを使用して、ページで残りのエントリの時間枠を設定します。
+* **スパウト/ボルトの統計**:スパウトやボルトの統計。 **[Window]** 列にあるリンクを使用して、ページで残りのエントリの時間枠を設定します。
 
-* **入力の状態** (ボルトのみ): ボルトが消費する入力ストリームに関する情報
+* **入力の統計** (ボルトのみ):ボルトが消費する入力ストリームに関する情報
 
-* **出力の状態**: このスパウトやボルトから出力されるストリームに関する情報
+* **出力の統計**:このスパウトやボルトから出力されるストリームに関する情報
 
-* **エグゼキュータ**: スパウトやボルトのインスタンスに関する情報 特定のエグゼキュータの **[ポート]** エントリを選択して、このインスタンスで生成された診断情報のログを閲覧します
+* **エグゼキュータ**:スパウトやボルトのインスタンスに関する情報 特定のエグゼキュータの **[ポート]** エントリを選択して、このインスタンスで生成された診断情報のログを閲覧します
 
-* **エラー**: このスパウトやボルトのエラー情報。
+* **エラー**:このスパウトやボルトのエラー情報。
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>HDInsight Tools for Visual Studio
 
-HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。 次の例では、サンプル アプリケーションを使用します。 HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
+[HDInsight Tools](https://azure.microsoft.com/resources/videos/hdinsight-tools-for-visual-studio/) を使用すると、C# またはハイブリッド トポロジを Storm クラスターに送信できます。 次の例では、サンプル アプリケーションを使用します。 HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 次の手順を使用して、サンプルをお使いの HDInsight クラスターにデプロイし、トポロジを表示、管理します。
 
@@ -132,7 +132,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 4. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
-   > [!NOTE]
+   > [!NOTE]  
    > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。 2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
 5. **[Storm クラスター]** ドロップダウン リストから HDInsight クラスターの Storm を選択して、**[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ウィンドウを使用して確認できます。
@@ -141,17 +141,17 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
     ![Visual Studio モニター](./media/apache-storm-deploy-monitor-topology/vsmonitor.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > また、**Storm トポロジ**は、**[サーバー エクスプローラー]** で **[Azure]** > **[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
 
     情報を表示するスパウトまたはボルト コンポーネントの形状を選択します。 各アイテムを選択すると新しいウィンドウが開きます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > トポロジの名前は、トポロジのクラス名 (この場合は `HelloWord`) にタイムスタンプを追加したものです。
 
 7. **[トポロジの概要]** ビューで、**[強制終了]** を選択してトポロジを停止します。
 
-   > [!NOTE]
+   > [!NOTE]  
    > Storm トポロジは停止されるまで、またはクラスターが削除されるまで実行し続けます。
 
 
@@ -159,7 +159,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。 REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「 [Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)」を参照してください。 以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「[Apache Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)」を参照してください。 以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 ### <a name="base-uri"></a>ベース URI
 
@@ -169,12 +169,12 @@ HDInsight クラスターの REST API のベース URI は、**https://&lt;clust
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、 **基本認証**を使用する必要があります。
 
-> [!NOTE]
+> [!NOTE]  
 > 基本認証はクリア テキストを使用して送信されるため、 **常に** HTTPS を使用してクラスターとの通信を保護する必要があります。
 
 ### <a name="return-values"></a>戻り値
 
-REST API から返される情報は、クラスターと同じ Azure Virtual Network 上にあるクラスターや仮想マシン上でのみ使用できます。 たとえば、Zookeeper サービスに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
+REST API から返される情報は、クラスターと同じ Azure Virtual Network 上にあるクラスターや仮想マシン上でのみ使用できます。 たとえば、[Apache ZooKeeper](https://zookeeper.apache.org/) サーバーに対して返された完全修飾ドメイン名 (FQDN) はインターネットからアクセスできません。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -182,9 +182,9 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 * [Visual Studio の HDInsight ツールを使用して C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)
 
-* [Maven を使用した Java ベースのトポロジを開発する](apache-storm-develop-java-topology.md)
+* [Apache Maven を使用して Java ベースのトポロジを開発する](apache-storm-develop-java-topology.md)
 
-その他の Storm トポロジ例は、「 [HDInsight 上の Storm に関するトポロジ例](apache-storm-example-topology.md)」をご覧ください。
+その他のトポロジの例の一覧については、「[HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)」を参照してください。
 
 [hdinsight-dashboard]: ./media/apache-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/apache-storm-deploy-monitor-topology/submit.png

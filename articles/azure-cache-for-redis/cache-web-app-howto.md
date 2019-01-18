@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 11e674771e9f4a8afbe820aa91dfee1c8b8ab6db
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018804"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556189"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -118,7 +118,7 @@ ms.locfileid: "53018804"
 * 変更前: `<appSettings>`
 * 変更後: ` <appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-`<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、*CacheSecrests.config* ファイルはデプロイされません。
+`<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、*CacheSecrets.config* ファイルはデプロイされません。
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成するには
 
@@ -173,7 +173,7 @@ ms.locfileid: "53018804"
             ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
             ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             ViewBag.command4 = "GET Message";
             ViewBag.command4Result = cache.StringGet("Message").ToString();
 
@@ -266,7 +266,7 @@ ms.locfileid: "53018804"
 
 1. Visual Studio で、ソリューション エクスプローラーのプロジェクト ノードを右クリックします。 **[発行]** を選択します。
 
-    ![[発行]](./media/cache-web-app-howto/cache-publish-app.png)
+    ![発行](./media/cache-web-app-howto/cache-publish-app.png)
 
 2. **[Microsoft Azure App Service]**、**[新規作成]**、**[発行]** の順に選択します。
 

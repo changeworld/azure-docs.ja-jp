@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038470"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021120"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -49,7 +48,7 @@ ms.locfileid: "51038470"
 
 セルフホステッド IR でコピーする手順の概要についてのデータ フローを以下に示します。
 
-![概要](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. データ開発者は、PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
 2. データ開発者は、データ ストアへの接続に使用する必要があるセルフホステッド統合ランタイムのインスタンスを指定することによって、オンプレミスのデータ ストアへのリンクされたサービスを作成します。 リンクされたサービスの設定の一部として、データ開発者は資格情報マネージャー アプリケーション (現時点ではサポートされていません) を使用して、認証の種類と資格情報を設定します。 資格情報マネージャー アプリケーションはデータ ストアと通信して接続をテストし、セルフホステッド統合ランタイムと通信して資格情報を保存します。
@@ -131,7 +130,7 @@ ms.locfileid: "51038470"
 
 使用可能なメモリと CPU が効果的に活用されていないのに、同時ジョブの実行が上限に達する場合は、ノードで実行できる同時実行ジョブの数を増やすことで、スケールアップを行う必要があります。 また、セルフホステッド IR が過負荷になっているために、アクティビティがタイムアウトになる場合も、スケールアップが必要になることがあります。 次の画像に示すように、ノードの最大容量を増やすことができます。  
 
-![ノードで実行できる同時実行ジョブを増やす](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![ノードで実行できる同時実行ジョブを増やす](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 証明書の要件
 
@@ -155,40 +154,40 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 ### <a name="terminology"></a>用語集
 
-- **共有された IR**: 物理インフラストラクチャで実行されている元のセルフホステッド IR。  
-- **リンクされた IR**: 別の共有された IR を参照する IR。 これは論理 IR であり、別のセルフホステッド IR (共有された IR) のインフラストラクチャを使用します。
+- **共有された IR**:物理インフラストラクチャで実行されている元のセルフホステッド IR。  
+- **リンクされた IR**:別の共有された IR を参照する IR。 これは論理 IR であり、別のセルフホステッド IR (共有された IR) のインフラストラクチャを使用します。
 
 ### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>リンクされたセルフホステッド IR を作成する手順の概要
 
 1. 共有されるセルフホステッド IR で、リンクされた IR を作成するデータ ファクトリへのアクセス許可を付与します。 
 
-   ![[共有] タブのアクセス許可を付与するためのボタン](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![アクセス許可を割り当てるための選択](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![アクセス許可を割り当てるための選択](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. 共有されるセルフホステッド IR のリソース ID をメモしておきます。
 
-   ![リソース ID の場所](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![リソース ID の場所](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. アクセス許可が付与されたデータ ファクトリで、新しいセルフホステッド IR (共有) を作成して、リソース ID を入力します。
 
-   ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![名前とリソース ID のボックス](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>監視 
 
 - **共有 IR**
 
-  ![共有された統合ランタイムを検索するための選択](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![共有された統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![監視するためのタブ](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![監視するためのタブ](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **リンクされた IR**
 
-  ![リンクされた統合ランタイムを検索するための選択](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![リンクされた統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![監視するためのタブ](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![監視するためのタブ](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
 
@@ -198,7 +197,9 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 * この機能をサポートする Azure PowerShell のバージョンは、6.6.0 以降 (AzureRM.DataFactoryV2、0.5.7 以降) です。
 
-* アクセス許可を付与するには、ユーザーには、共有 IR が存在するデータ ファクトリ内に所有者ロールまたは継承された所有者ロールが必要です。 
+* アクセス許可を付与するには、ユーザーには、共有 IR が存在するデータ ファクトリ内に所有者ロールまたは継承された所有者ロールが必要です。
+
+* 共有機能は、同じ Azure Active Directory テナント内のデータ ファクトリに対してのみ機能します。
 
 * Active Directory の[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 しかし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能なしで IR を共有できます。その場合、IR を共有する必要があるデータ ファクトリの MSI を **[アクセス許可の割り当て]** テキスト ボックスに直接入力し、Azure Data Factory UI で **[追加]** を選択します。 
 
@@ -209,12 +210,12 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 通知領域のアイコンまたはメッセージの上にカーソルを移動すると、セルフホステッド統合ランタイムの状態の詳細が表示されます。
 
-![通知領域内の通知](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![通知領域内の通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>ポートとファイアウォール
 考慮する必要がある 2 つのファイアウォールがあります。それは組織の中央ルーターで実行している*企業ファイアウォール*と、セルフホステッド統合ランタイムがインストールされているローカル コンピューター上のデーモンとして構成されている *Windows ファイアウォール*です。
 
-![ファイアウォール](media\create-self-hosted-integration-runtime\firewall.png)
+![ファイアウォール](media/create-self-hosted-integration-runtime/firewall.png)
 
 *企業ファイアウォール* レベルでは、次のドメインと送信ポートを構成する必要があります。
 
@@ -247,17 +248,17 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 ## <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
 企業ネットワーク環境でプロキシ サーバーを使用してインターネットにアクセスする場合は、適切なプロキシ設定を使用するようにセルフホステッド統合ランタイムを構成します。 プロキシは、初期登録フェーズ中に設定できます。
 
-![プロキシの指定](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![プロキシの指定](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 セルフホステッド統合ランタイムでは、プロキシ サーバーを使用してクラウド サービスに接続します。 初期セットアップ時に **[変更] リンク**を選択します。 プロキシ設定ダイアログ ボックスが表示されます。
 
-![プロキシの設定](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![プロキシの設定](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 3 つの構成オプションがあります。
 
-- **プロキシを使用しない**: セルフホステッド統合ランタイムでは、クラウド サービスに接続するためにプロキシを明示的に使用しません。
-- **システム プロキシを使用する**: セルフホステッド統合ランタイムでは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが構成されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。
-- **カスタム プロキシを使用する**: diahost.exe.config と diawp.exe.config の構成は使用せず、セルフホステッド統合ランタイムで使用するように HTTP プロキシ設定を構成します。**アドレス**と**ポート**は必須です。 **ユーザー名**と**パスワード**は、プロキシの認証設定によっては省略できます。 すべての設定は Windows DPAPI を使用して、自己ホスト型統合ランタイム上で暗号化され、コンピューターにローカルに格納されます。
+- **プロキシを使用しない**:自己ホスト型統合ランタイムは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
+- **システム プロキシを使用する**:セルフホステッド統合ランタイムでは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが構成されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。
+- **カスタム プロキシを使用する**:diahost.exe.config と diawp.exe.config の構成は使用せず、セルフホステッド統合ランタイムで使用するように HTTP プロキシ設定を構成します。**アドレス**と**ポート**は必須です。 **ユーザー名**と**パスワード**は、プロキシの認証設定によっては省略できます。 すべての設定は Windows DPAPI を使用して、自己ホスト型統合ランタイム上で暗号化され、コンピューターにローカルに格納されます。
 
 統合ランタイムのホスト サービスは、更新済みのプロキシ設定を保存した後に自動的に再起動されます。
 
@@ -270,7 +271,7 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 
 構成マネージャー ツールを使用して、HTTP プロキシを表示して更新することができます。
 
-![プロキシの表示](media\create-self-hosted-integration-runtime\view-proxy.png)
+![プロキシの表示](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > NTLM 認証でプロキシ サーバーを設定する場合は、ドメイン アカウントで統合ランタイムのホスト サービスが実行されます。 ドメイン アカウントのパスワードを後で変更する場合は、忘れずにサービスの構成設定を更新し、適宜、再起動してください。 この要件のため、専用のドメイン アカウントを使用して、パスワードを頻繁に更新する必要がないプロキシ サーバーにアクセスすることをお勧めします。
@@ -316,7 +317,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>ファイアウォールとプロキシ サーバー関連の問題で発生する可能性がある症状
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因である可能性があります。構成が不適切だと、セルフホステッド統合ランタイムが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが確実に正しく構成されるようにするには、前のセクションを参照してください。
 
-* 自己ホスト型統合ランタイムを登録するときに、次のエラーを受け取ります。:「この統合ランタイム ノードの登録に失敗しました。」 認証キーが有効であることと、このコンピューター上で統合サービスのホストサービスが実行されていることを確認してください。"
+* セルフホステッド統合ランタイムを登録すると、次のエラーが表示されます。"この Integration Runtime ノードの登録に失敗しました。 認証キーが有効であることと、このコンピューター上で統合サービスのホストサービスが実行されていることを確認してください。"
 * Integration Runtime 構成マネージャーを開くと、**[切断]** または **[接続中]** という状態が表示されます。 **[イベント ビューアー]** > **[アプリケーションとサービス ログ]** > **[Microsoft Integration Runtime]** の順に選択して Windows イベント ログを表示すると、次のようなエラー メッセージが表示されます。
 
     ```
@@ -343,4 +344,4 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 
 ## <a name="next-steps"></a>次の手順
-詳細な手順については、[チュートリアル: オンプレミスのデータをクラウドにコピー](tutorial-hybrid-copy-powershell.md)に関するページに示されているチュートリアルを参照してください。
+具体的な手順については、次のチュートリアルを参照してください。[チュートリアル:オンプレミスのデータをクラウドにコピーする](tutorial-hybrid-copy-powershell.md)

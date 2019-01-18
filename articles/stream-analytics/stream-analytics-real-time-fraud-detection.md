@@ -4,19 +4,19 @@ description: Stream Analytics を使用してリアルタイムの不正行為�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986034"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558177"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
 このチュートリアルでは、Azure Stream Analytics の使い方について詳しく説明します。 学習内容は次のとおりです。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "49986034"
 
 このチュートリアルでは、電話データに基づくリアルタイムでの不正検出の例を使います。 ここで説明する技法は、クレジット カード詐欺やなりすましなど、他の種類の不正行為検出にも適しています。 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ:通信および SIM におけるリアルタイムでの不正行為の検出
 
 ある通信会社は、膨大な量の着信データを扱っています。 この会社は、不正な呼び出しをリアルタイムに検出し、顧客に通知したり、特定の番号に対してサービスを停止したりすることを考えています。 SIM 不正行為の種類の 1 つとして、地理的に異なる場所からほぼ同時に同じ ID から行われる複数の呼び出しがあります。 この種の不正を検出するには、着信レコードを調べて特定のパターンを見つける必要があります。この場合は、ほぼ同時に異なる複数の国で行われた発信です。 このカテゴリに分類される通話レコードは、後で分析できるようにストレージに書き込まれます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "49986034"
     >[!NOTE]
     >ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。 ファイルを解凍できない場合は、ファイルを右クリックし、**[プロパティ]** を選びます。 "このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、**[ブロック解除]** オプションをオンにして、**[適用]** をクリックします。
 
-Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage エクスプローラー](http://storageexplorer.com/)や [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) などのスタンドアロン ツールをインストールすることもできます。 
+Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage Explorer](https://storageexplorer.com/) や [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) などのスタンドアロン ツールをインストールすることもできます。 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>イベントを取り込むための Azure Event Hubs を作成する
 
@@ -62,7 +62,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
     
 3. サブスクリプションを選択し、リソース グループを作成または選択して、**[作成]** をクリックします。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
 4. イベント ハブの名前空間のデプロイが完了したら、Azure リソースの一覧でその名前空間を見つけます。 
 
@@ -72,7 +72,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
  
 6. 新しいイベント ハブに `asa-eh-frauddetection-demo` という名前を付けます。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 イベント ハブの他のオプションをここで設定する必要はありません。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="drawing" width="400px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
 7. **Create** をクリックしてください。
@@ -90,7 +90,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 3.  `sa-policy-manage-demo` という名前のポリシーを追加し、**[要求]** の **[管理]** を選択します。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
 4.  **Create** をクリックしてください。
 
@@ -98,7 +98,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 6.  **[接続文字列 - 主キー]** というボックスを見つけ、接続文字列の横のコピー ボタンをクリックします。 
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
  
 7.  接続文字列をテキスト エディターに貼り付けます。 この接続文字列は、少し編集を加えた後に、次のセクションで必要になります。
 
@@ -125,7 +125,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
     `<appSettings>` セクションは、次の例のようになります  (わかりやすくするため、行を折り返し、承認トークンから一部の文字を削除してあります)。
 
-   ![TelcoGenerator アプリ構成ファイルのイベント ハブ名と接続文字列](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
+   ![TelcoGenerator 構成ファイルに示されるイベント ハブ名と接続文字列](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
 4.  ファイルを保存します。 
 
@@ -133,12 +133,14 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 1.  コマンド ウィンドウを開き、TelcoGenerator アプリを解凍したフォルダーに移動します。
 2.  次のコマンドを入力します。
 
+        ```cmd
         telcodatagen.exe 1000 0.2 2
+        ```
 
     パラメーターは、次のとおりです。 
 
     * 1 時間あたりの CDR の数。 
-    * SIM カード不正の確率: アプリが不正な呼び出しをシミュレートする頻度 (すべての呼び出しに対するパーセンテージ)。 値 0.2 は、呼び出しレコードの約 20% が不正に見えることを意味します。
+    * SIM カード不正の確率:アプリが不正な呼び出しをシミュレートする頻度 (すべての呼び出しに対するパーセンテージ)。 値 0.2 は、呼び出しレコードの約 20% が不正に見えることを意味します。
     * 継続時間。 アプリを実行する時間数。 コマンドラインで Ctrl + C キーを押して、いつでもアプリを停止できます。
 
     数秒後に、アプリはイベント ハブに送信する呼び出しレコードを画面に表示し始めます。
@@ -167,7 +169,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
     最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
 3. **Create** をクリックしてください。
 
@@ -190,7 +192,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
    |イベント ハブ名  | asa-eh-frauddetection-demo | イベント ハブの名前を選択します。   |
    |イベント ハブ ポリシー名  | asa-policy-manage-demo | 以前に作成したアクセス ポリシーを選択します。   |
     </br>
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
 4. **Create** をクリックしてください。
@@ -219,7 +221,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 5. **[分]** を 3 に設定し、**[OK]** をクリックします。 
     
-   !["3 分" が選択された入力ストリームのサンプリング オプション。](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
+   ![3 分が選択された入力ストリームのサンプリング オプション。](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
 
     入力ストリームから 3 分間分のデータがサンプリングされ、サンプル データの準備ができると通知されます  (少し時間がかかります)。 
 
@@ -232,11 +234,13 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 すべてのイベントをアーカイブする場合は、パススルー クエリを使って、イベントのペイロード内のすべてのフィールドを読み取ることができます。
 
 1. クエリ ウィンドウに次のクエリを入力します。
-
-        SELECT 
-            *
-        FROM 
-            CallStream
+        
+   ```SQL
+   SELECT 
+       *
+   FROM 
+       CallStream
+   ```
 
     >[!NOTE]
     >SQL と同じように、キーワードに大文字と小文字の区別はなく、空白は重要ではありません。
@@ -257,15 +261,17 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。
 
-        SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
-        FROM 
-            CallStream
+   ```SQL
+   SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
+   FROM 
+       CallStream
+   ```
 
 2. もう一度 **[Test]** をクリックします。 
 
-   ![25 レコードが生成されたことを示すプロジェクションの Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
+   ![25 レコードを示すプロジェクションの Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
  
-### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>リージョン別に着信通話の数をカウントする: 集計を含むタンブリング ウィンドウ
+### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>リージョン別に着信通話の数をカウントする:集計を含むタンブリング ウィンドウ
 
 リージョンごとに受信通話の数をカウントしたいものとします。 ストリーミング データでは、カウントのような集計関数を実行する場合、ストリームを時間単位に分割する必要があります (データ ストリーム自体は実質的にエンドレスであるため)。 これを行うには、Streaming Analytics の[ウィンドウ関数](stream-analytics-window-functions.md)を使います。 その後、そのウィンドウ内のデータを単位として処理できます。
 
@@ -273,11 +279,13 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。
 
+        ```SQL
         SELECT 
             System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
         FROM
             CallStream TIMESTAMP BY CallRecTime 
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
+        ```
 
     このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
 
@@ -287,7 +295,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 2. もう一度 **[Test]** をクリックします。 結果では、**WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
 
-   ![13 レコードが生成されたことを示す集計の Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
+   ![13 レコードを示す集計の Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>自己結合を使って SIM 不正を検出する
 
@@ -299,6 +307,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。 
 
+        ```SQL
         SELECT  System.Timestamp as Time, 
             CS1.CallingIMSI, 
             CS1.CallingNum as CallingNum1, 
@@ -310,6 +319,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
             ON CS1.CallingIMSI = CS2.CallingIMSI 
             AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
         WHERE CS1.SwitchNum != CS2.SwitchNum
+        ```
 
     このクエリは、`DATEDIFF` 関数が結合に含まれることを除けば、他の SQL 結合と似ています。 `DATEDIFF` のこのバージョンは Streaming Analytics に固有であり、`ON...BETWEEN` 句で使う必要があります。 パラメーターは、時間単位 (この例では秒) と、結合の 2 つのソースの別名です  これは、SQL の標準的な `DATEDIFF` 関数と異なります。
 
@@ -321,7 +331,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 3. **[保存]** をクリックして、自己結合クエリを Stream Analytics ジョブの一部として保存します  (サンプル データは保存されません)。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
 
 ## <a name="create-an-output-sink-to-store-transformed-data"></a>変換されたデータを格納する出力シンクを作成する
 
@@ -335,7 +345,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. Azure Portal の左上隅で、**[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。 ストレージ アカウント ジョブのページで、**[名前]** を「asaehstorage」に、**[場所]** を「米国東部」に、**[リソース グループ]** を「asa-eh-ns-rg」に設定するよう入力します (パフォーマンスを高めるために、ストリーミング ジョブと同じリソース グループ内のストレージ アカウントをホストします)。 その他の設定は既定値のままにします。  
 
-   ![[ストレージ アカウントの作成]](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
+   ![Azure portal でストレージ アカウントを作成する](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
 2. Azure Portal で、[Streaming Analytics ジョブ] ウィンドウに戻ります  (ウィンドウを閉じた場合は、**[すべてのリソース]** ウィンドウで `asa_frauddetection_job_demo` を検索します)。
 
@@ -350,7 +360,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
    |ストレージ アカウント  |  asaehstorage |  作成したストレージ アカウントの名前を入力します。 |
    |コンテナー  | asa-fraudulentcalls-demo | [新規作成] を選択し、コンテナー名を入力します。 |
     <br/>
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="drawing" width="300px"/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
 5. **[Save]** をクリックします。 
 
@@ -371,7 +381,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 Streaming Analytics ジョブが完成しました。 このジョブは、通話メタデータのストリームを調べて、不正な呼び出しをリアルタイムに検出し、不正な通話に関する情報をストレージに書き込みます。 
 
-このチュートリアルの最後に、Streaming Analytics ジョブによってキャプチャされているデータを確認しておく必要があります。 データは、Azure BLOB ストレージにチャンク (ファイル) として書き込まれます。 Azure Blob Storage を読み込む任意のツールを使うことができます。 前提条件セクションで触れたように、Visual Studio の Azure 拡張機能、または [Azure Storage エクスプローラー](http://storageexplorer.com/)や [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) などのツールを使うことができます。 
+このチュートリアルの最後に、Streaming Analytics ジョブによってキャプチャされているデータを確認しておく必要があります。 データは、Azure BLOB ストレージにチャンク (ファイル) として書き込まれます。 Azure Blob Storage を読み込む任意のツールを使うことができます。 前提条件セクションで触れたように、Visual Studio の Azure 拡張機能、または [Azure Storage Explorer](https://storageexplorer.com/) や [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) などのツールを使うことができます。 
 
 BLOB ストレージ内のファイルの内容を調べると、次のようなデータが表示されます。
 
@@ -399,7 +409,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 このチュートリアルに続けて、次の記事を読むことができます。
 
-* 「[Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)」。 この記事では、Stream Analytics ジョブの TelCo 出力を、リアルタイムの視覚化と分析のために Power BI に送信する方法を説明します。
+* [Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)。 この記事では、Stream Analytics ジョブの TelCo 出力を、リアルタイムの視覚化と分析のために Power BI に送信する方法を説明します。
 
 Stream Analytics の一般的な情報について詳しくは、以下の記事をご覧ください。
 

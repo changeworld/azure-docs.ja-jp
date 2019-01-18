@@ -1,6 +1,6 @@
----
-title: JavaScript を使用して Azure で最初の永続関数を作成する
-description: Visual Studio Code を使用して Azure 永続関数を作成して発行します。
+﻿---
+title: JavaScript を使用して Azure で最初の Durable Functions を作成する
+description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
 services: functions
 documentationcenter: na
 author: ColbyTresness
@@ -11,20 +11,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340899"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034320"
 ---
-# <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の永続関数を作成する
+# <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
-この記事では、Visual Studio Code Azure Functions 拡張機能を使用して、"hello world" 永続関数をローカルで作成してテストする方法について説明します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。
+この記事では、Visual Studio Code Azure Functions 拡張機能を使用して、"hello world" Durable Functions をローカルで作成してテストする方法について説明します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。
 
-![Azure で永続関数を実行する](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Azure で Durable Functions を実行する](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "53340899"
 
 ## <a name="create-a-starter-function"></a>starter 関数を作成する
 
-まず、永続関数のオーケストレーションを開始する HTTP トリガー関数を作成します。
+まず、Durable Functions のオーケストレーションを開始する HTTP トリガー関数を作成します。
 
 1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "53340899"
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
-これで永続関数へのエントリ ポイントが作成されます。 オーケストレーターを追加してみましょう。
+これで Durable Functions へのエントリ ポイントが作成されます。 オーケストレーターを追加してみましょう。
 
 ## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 
@@ -108,7 +108,7 @@ ms.locfileid: "53340899"
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
 1. Windows コンピューターでは、Azure Storage Emulator を起動し、local.settings.json の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。 Mac または Linux コンピューターでは、既存の Azure ストレージ アカウントの接続文字列に **AzureWebJobsStorage** プロパティを設定する必要があります。 ストレージ アカウントの作成については、この記事で後述します。
 
@@ -141,7 +141,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="next-steps"></a>次の手順
 
-Visual Studio Code を使用して、JavaScript の永続関数アプリを作成して発行しました。
+Visual Studio Code を使用して、JavaScript の Durable Functions アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [永続関数の一般的なパターンについて学習する](durable-functions-overview.md)
+> [Durable Functions の一般的なパターンについて学習する](durable-functions-concepts.md)

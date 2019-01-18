@@ -9,30 +9,30 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387099"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044571"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
 Azure SQL Database、エラスティック プール、Managed Instance、および Managed Instance のデータベースは、パフォーマンス監視を容易にするためのメトリックと診断ログをストリーミングできます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに送信するようにデータベースを構成することができます。
 
-* **Azure SQL Analytics**: パフォーマンス レポート、アラート、軽減策の推奨事項を含む Azure データベースのインテリジェントな監視を取得します。
-* **Azure Event Hubs**: SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
-* **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
+- **Azure SQL Analytics**: パフォーマンス レポート、アラート、軽減策の推奨事項を含む Azure データベースのインテリジェントな監視を取得します。
+- **Azure Event Hubs**: SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
+- **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
 各種の Azure サービスでサポートされているメトリックとログ カテゴリの詳細については、次の資料を参照してください。
 
-* [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+- [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 この記事では、データベース、エラスティック プール、および Managed Instance の診断テレメトリを有効にするためのガイダンスを提供します。 また、データベース診断テレメトリを表示するための監視ツールとして Azure SQL Analytics を構成する方法の理解にも役立ちます。
 
@@ -92,8 +92,8 @@ Azure SQL Database の診断テレメトリのストリーミングを有効に�
 
    ![SQL Database の診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
-1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、**[Deadlocks]** のチェックボックスをオンにします。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
+1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、および **[Deadlocks]** のチェックボックスをオンにします。
 1. 1 分ベースの高度な監視エクスペリエンスを得るには、**[AllMetrics]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
 
@@ -101,7 +101,6 @@ Azure SQL Database の診断テレメトリのストリーミングを有効に�
 
 > [!NOTE]
 > セキュリティ監査ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と「[SQL Audit logs in Azure Log Analytics and Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)」 (Azure Log Analytics と Azure Event Hubs の SQL 監査) を参照してください。
-
 > [!TIP]
 > 監視する Azure SQL Database ごとにこれらの手順を繰り返します。
 
@@ -112,17 +111,17 @@ Azure SQL Database の診断テレメトリのストリーミングを有効に�
 Managed Instance のデータベースの診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
 1. Managed Instance のデータベースに移動します。
-1. **[診断設定]** を選択します。
-1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
+2. **[診断設定]** を選択します。
+3. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
    - 複数のリソースへの診断データの並列ストリーミングを構成するには、**[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 
    ![Managed Instance データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
-1. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
-1. **[保存]** を選択します。
+4. 独自の参照の設定名を入力します。
+5. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
+6. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
+7. **[保存]** を選択します。
 
    ![Managed Instance データベースに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -152,7 +151,7 @@ Managed Instance のデータベースの診断テレメトリのストリーミ
    ![エラスティック プールに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+Create New Workspace] (+ 新しいワークスペースの作成)** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
 1. エラスティック プールの診断テレメトリ **[AllMetrics]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
@@ -170,7 +169,7 @@ Managed Instance のデータベースの診断テレメトリのストリーミ
 
 | リソース | 監視テレメトリ |
 | :------------------- | ------------------- |
-| **Managed Instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
+| **Managed Instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
 
 Managed Instance リソースの診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
@@ -181,9 +180,9 @@ Managed Instance リソースの診断テレメトリのストリーミングを
    ![Managed Instance に対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+Create New Workspace] (+ 新しいワークスペースの作成)** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
-1. Managed Instance の診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
+1. インスタンスの診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
 
    ![Managed Instance に対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
@@ -338,11 +337,11 @@ Azure SQL Database のメトリックと診断ログは、Microsoft Azure portal
 
 Azure Event Hubs でストリーミングされたメトリックは、次の目的に使用できます。
 
-* **サービスの正常性を表示するには、Power BI にホット パス データをストリーミングします**。 Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
+- **サービスの正常性を表示するには、Power BI にホット パス データをストリーミングします**。 Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
 
-* **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリームします**。 Event Hubs ストリーミングを使用することで、さまざまなサードパーティのモニタリングおよびログ解析ソリューションにマトリクスと診断ログを送信できます。
+- **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリームします**。 Event Hubs ストリーミングを使用することで、さまざまなサードパーティのモニタリングおよびログ解析ソリューションにマトリクスと診断ログを送信できます。
 
-* **カスタム テレメトリおよびロギング プラットフォームの構築**。 既にカスタマイズされたテレメトリ プラットフォームがありますか、それとも構築を検討していますか? 高い拡張性の公開サブスクライブを特長とする Event Hubs を使用することで診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
+- **カスタム テレメトリおよびロギング プラットフォームの構築**。 既にカスタマイズされたテレメトリ プラットフォームがありますか、それとも構築を検討していますか? 高い拡張性の公開サブスクライブを特長とする Event Hubs を使用することで診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
 
 ## <a name="stream-into-storage"></a>ストレージへのストリーム
 
@@ -386,7 +385,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-収集された監視テレメトリは、[SQL Analytics 言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)による独自の_カスタム分析_と_アプリケーション開発_に利用できます。 
+収集された監視テレメトリは、[SQL Analytics 言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)による独自の_カスタム分析_と_アプリケーション開発_に利用できます。
 
 ## <a name="all-metrics"></a>すべてのメトリック
 
@@ -690,12 +689,12 @@ Azure SQL および Managed Instance データベースのログの詳細につ�
 
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
-* [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+- [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 
-* [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Azure Storage の詳細については[メトリックと診断ログをストレージからダウンロードする](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application)を参照してください。

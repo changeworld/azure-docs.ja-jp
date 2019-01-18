@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 6a070d9ebd46d117041276436107abcc958d58d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 670aafeb8eb107fc5970b70bfa85d7469c343483
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583739"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722855"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -54,7 +54,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 2. **[すべてのサービス]** > **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
 3. どの予約のアクセス権を他のユーザーに委任するかを選択します。
 4. **[アクセス制御 (IAM)]** を選択します。
-5. **[追加]** > **[ロール]** > **[所有者]** の順に選択します。 また、制限付きアクセス権を付与する場合は、別のロールを選択します。
+5. **[ロールの割り当ての追加]** > **[ロール]** > **[所有者]** を選択します。 また、制限付きアクセス権を付与する場合は、別のロールを選択します。
 6. 所有者として追加するユーザーの電子メール アドレスを入力します。
 7. ユーザーを選択し、**[保存]** を選択します。
 

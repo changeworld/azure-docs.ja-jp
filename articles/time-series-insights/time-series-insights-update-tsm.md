@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights - タイム シリーズ モデル | Microsoft Docs
+title: Azure Time Series Insights プレビューでのタイム シリーズ モデル | Microsoft Docs
 description: Azure Time Series Insights のタイム シリーズ モデルについて。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278187"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716584"
 ---
 # <a name="time-series-model"></a>タイム シリーズ モデル
 
@@ -136,7 +136,7 @@ Time Series Insights の種類には変数があります。これは、イベ�
  H1 = [“building”, “floor”, “room”]
 ```
 
-階層の属性と値は、"*インスタンス フィールド*" に応じて、次の表のように表示されます。 
+階層の属性と値は、"*インスタンス フィールド*" に応じて、次の表のように表示されます。
 
 | タイム シリーズ ID | インスタンス フィールド |
 | --- | --- |
@@ -144,9 +144,9 @@ Time Series Insights の種類には変数があります。これは、イベ�
 | ID2 | "building" = "1000", "room" = "55" |
 | ID3 | "floor" = "10" |
 | ID4 | "building" = "1000", "floor" = "10"  |
-| ID5 | |
+| ID5 | "building"、"floor"、"room" のどれも設定されていない |
 
-上記の例の場合、ID1 は UI/UX で階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
+上記の例の場合、ID1 と ID4 は Azure Time Series Insights エクスプローラーで階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 

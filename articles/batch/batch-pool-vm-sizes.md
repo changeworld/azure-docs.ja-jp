@@ -1,9 +1,9 @@
 ---
-title: Azure Batch プールの VM サイズを選択する | Microsoft Docs
+title: プールの VM サイズを選択する - Azure Batch | Microsoft Docs
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
-ms.author: danlep
-ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/07/2019
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281280"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191719"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -41,6 +42,16 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | 基本の A シリーズ | Basic_A0 (A0) |
 | A シリーズ | Standard_A0 |
 | B シリーズ | All |
+| DC シリーズ | All | 
+| 最大メモリ最適化 | All |
+| Hb シリーズ<sup>1</sup> | All | 
+| Hc シリーズ<sup>1</sup> | All |
+| Lsv2 シリーズ | All |
+| NDv2 シリーズ<sup>1</sup> | All |
+| NVv2 シリーズ<sup>1</sup> | All |
+| SAP HANA | All |
+
+<sup>1</sup> 現在はサポートされていませんが、将来はサポートされる予定です。
 
 次の VM サイズは優先順位の低いノードでのみサポートされます。
 

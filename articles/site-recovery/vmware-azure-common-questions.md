@@ -4,15 +4,16 @@ description: この記事では、Azure Site Recovery を使用してオンプ�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 12/11/2018
+services: site-recovery
+ms.date: 12/31/2018
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: raynew
+ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256514"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320992"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -74,7 +75,7 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 Site Recovery は、パブリック エンドポイントまたは ExpressRoute のパブリック ピアリングを使って、オンプレミスから Azure ストレージにデータをレプリケートします。 サイト間 VPN ネットワーク経由のレプリケーションはサポートされていません。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
-はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
+はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery は、パブリック エンドポイント経由で Azure Storage アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしていることを確認してください。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
@@ -90,7 +91,7 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 VMware VM を Azure にレプリケートするときは、レプリケーションは継続的に行われます。
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
@@ -107,6 +108,12 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>レプリケートされる VM を、ディスクの追加またはサイズ変更によって変更することはできますか?
 
 Azure への VMware のレプリケーションでは、ディスクのサイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい Vcenter に移行することはできますか?
+いいえ、Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい Vcenter を使用して ASR を設定し、マシンのレプリケーションを有効にする必要があります。
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>(Azure Storage ファイアウォールを使用して) Vnet が構成されているキャッシュ/ターゲット ストレージ アカウントにレプリケートすることはできますか?
+いいえ、Azure Site Recovery では、Vnet 上のストレージへのレプリケーションはサポートされていません。
 
 ## <a name="configuration-server"></a>構成サーバー
 
@@ -224,9 +231,10 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>フェールバックに VPN または ExpressRoute が必要なのはなぜですか?
-
 Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>フェールオーバー後に Azure VM をサイズ変更することはできますか?
+いいえ、フェールオーバー後にターゲット VM のサイズを変更することはできません。
 
 
 ## <a name="automation-and-scripting"></a>自動化とスクリプト

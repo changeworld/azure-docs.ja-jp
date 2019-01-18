@@ -1,6 +1,6 @@
 ---
-title: SQL と Python を使用して SQL Server のデータの特徴を作成する | Microsoft Docs
-description: SQL Azure からのデータを処理する
+title: SQL と Python を使用して SQL Server で特徴を作成する - Team Data Science Process
+description: SQL と Python を使用して、Azure 上の SQL Server VM に格納されているデータの特徴を生成します。Team Data Science Process の一部です。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf6f27b7720cf4a30aa08ca02f9150aebe564244
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445448"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135942"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。 このタスクを実行するには、SQL または Python のようなプログラミング言語を使用できます。 ここでは、両方の方法を説明しています。

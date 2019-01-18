@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/03/2018
+ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: a76f0205a34b106cf04b61938b1b576db9325c40
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1a8a31b34981b0e2b68caf3f5c4952d0ee59ac8e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858045"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53784464"
 ---
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -21,7 +21,7 @@ ms.locfileid: "48858045"
 
 スクリプトを実行する前に、`ACR_NAME` 変数をコンテナー レジストリの名前で更新します。 `SERVICE_PRINCIPAL_NAME` 値は、Azure Active Directory テナント内で一意である必要があります。 "`'http://acr-service-principal' already exists.`" エラーが発生した場合は、別のサービス プリンシパルの名前を指定します。
 
-別のアクセス権を付与する場合は、必要に応じて [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドの `--role` の値を変更することができます。
+別のアクセス権を付与する場合は、必要に応じて [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドの `--role` の値を変更することができます。 ロールの一覧については、[ACR のロールとアクセス許可](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md)に関するページを参照してください。
 
 スクリプトを実行した後、サービス プリンシパルの **ID** と**パスワード**を書き留めます。 その資格情報を作成したら、サービス プリンシパルとして、コンテナー レジストリに対する認証を受けるアプリケーションやサービスを構成できます。
 
@@ -29,9 +29,10 @@ ms.locfileid: "48858045"
 
 ## <a name="use-an-existing-service-principal"></a>既存のサービス プリンシパルの使用
 
-既存のサービス プリンシパルにレジストリへのアクセスを与えるには、サービス プリンシパルに新しいロールを割り当てる必要があります。 新しいサービス プリンシパルの作成と同様に、プル、プッシュとプル、および所有者のアクセスを付与できます。
+既存のサービス プリンシパルにレジストリへのアクセスを与えるには、サービス プリンシパルに新しいロールを割り当てる必要があります。 新しいサービス プリンシパルの作成と同様に、特に、プル、プッシュとプル、所有者のアクセスを付与できます。
 
 次のスクリプトでは、[az role assignment create][az-role-assignment-create] コマンドを使って、`SERVICE_PRINCIPAL_ID` 変数で指定したサービス プリンシパルに*プル* アクセス許可を付与します。 異なるレベルのアクセスを付与する場合は、`--role` の値を調整します。
+
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 

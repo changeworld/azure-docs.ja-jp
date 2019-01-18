@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706723"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025081"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
@@ -50,7 +49,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SqlServer** に設定する必要があります | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SqlServer** | [はい] |
 | connectionString |SQL 認証または Windows 認証を使用して、Managed Instance に接続するために必要な connectionString 情報を指定します。 以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
@@ -59,7 +58,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
 
-**例 1: SQL 認証の使用**
+**例 1:SQL 認証を使用する**
 
 ```json
 {
@@ -80,7 +79,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 }
 ```
 
-**例 2: Windows 認証の使用**
+**例 2:Windows 認証を使用する**
 
 ```json
 {
@@ -114,7 +113,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**SqlServerTable** | [はい] |
 | tableName |リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例**
@@ -146,7 +145,7 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SqlSource** | [はい] |
 | SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
 | sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
@@ -156,7 +155,7 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 - SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Managed Instance ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 - "sqlReaderQuery" や "sqlReaderStoredProcedureName" プロパティを指定しない場合は、Managed Instance に対して実行するクエリ (`select column1, column2 from mytable`) を作成するために、データセット JSON の "構造" セクションで定義された列が使用されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
 
-**例: SQL クエリの使用**
+**例:SQL クエリの使用**
 
 ```json
 "activities":[
@@ -188,7 +187,7 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 ]
 ```
 
-**例: ストアド プロシージャの使用**
+**例:ストアド プロシージャの使用**
 
 ```json
 "activities":[
@@ -249,9 +248,9 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | [はい] |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値: 10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。  例: "00:30:00" (30 分)。 |いいえ  |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **SqlSink** | [はい] |
+| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値:10000) |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ  |
 | preCopyScript |コピー アクティビティでデータを Managed Instance に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
 | sqlWriterStoredProcedureName |ソース データをターゲット テーブルに適用する方法、たとえば、独自のビジネス ロジックを使用してアップサートまたは変換を実行する方法を定義するストアド プロシージャの名前です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出される**ことに注意してください。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行する場合は、`preCopyScript` プロパティを使用します。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
@@ -260,7 +259,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 > [!TIP]
 > Azure SQL Database Managed Instance にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 UPSERT または追加のビジネス ロジックを実行するには、SqlSink でストアド プロシージャを使用します。 詳細については、「[SQL シンクのストアド プロシージャの呼び出し](#invoking-stored-procedure-for-sql-sink)」を参照してください。
 
-**例 1: データの付加**
+**例 1:データの付加**
 
 ```json
 "activities":[
@@ -292,7 +291,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 ]
 ```
 
-**例 2: upsert でコピー中にストアド プロシージャを呼び出す**
+**例 2:upsert でコピー中にストアド プロシージャを呼び出す**
 
 詳細については、「[SQL シンクのストアド プロシージャの呼び出し](#invoking-stored-procedure-for-sql-sink)」を参照してください。
 

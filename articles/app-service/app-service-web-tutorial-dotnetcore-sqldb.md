@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 775d7595e80c02bcfbc1c3d6abc687d5e335d7da
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0b4549323b64b0f6210a228ea6cb5ca301839ec8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261009"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721854"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>チュートリアル:Azure App Service での .NET Core および SQL Database の Web アプリの作成
+# <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service で .NET Core および SQL Database のアプリを作成する
 
 > [!NOTE]
-> この記事では、Windows 上の App Service にアプリをデプロイします。 App Service on _Linux_ にデプロイするには、「[Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成](./containers/tutorial-dotnetcore-sqldb-app.md)」を参照してください。
+> この記事では、Windows 上の App Service にアプリをデプロイします。 App Service on _Linux_ にデプロイするには、[Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](./containers/tutorial-dotnetcore-sqldb-app.md)に関する記事をご覧ください。
 >
 
-[App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、.NET Core Web アプリを作成し、SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service で実行されます。
+[App Service](overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service で実行されます。
 
 ![App Service で実行されるアプリ](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
@@ -135,7 +135,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 ```
 
 > [!TIP] 
-> [アプリで使用する送信 IP アドレスのみを使用する](app-service-ip-addresses.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
+> [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
 ### <a name="create-a-database"></a>データベースを作成する
@@ -182,7 +182,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。
 
-次の例では、Azure Web アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 "*\<appname>*" プレースホルダーを置換します。
+次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 "*\<appname>*" プレースホルダーを置換します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -257,9 +257,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
-Web ブラウザーを使用して、デプロイされた Web アプリを参照します。
+Web ブラウザーを使用して、デプロイされたアプリを参照します。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -361,21 +361,21 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` が完了したら、Azure Web アプリに移動し、新機能を試します。
+`git push` が完了したら、App Service アプリに移動し、新機能を試します。
 
-![Code First Migration の手順後の Azure Web アプリ](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
+![Code First Migration の手順後の Azure アプリ](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
 既存のすべての To Do 項目がまだ表示されています。 .NET Core アプリを再発行しても、SQL Database の既存のデータは消失しません。 また、Entity Framework Core Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
-## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
+## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
-[Azure Portal](https://portal.azure.com) に移動し、作成した Web アプリを表示します。
+[Azure portal](https://portal.azure.com) に移動して、作成したアプリを表示します。
 
-左側のメニューで **[App Services (App Services)]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックした後、Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-既定では、ポータルは Web アプリの **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 
@@ -394,7 +394,7 @@ git push azure master
 > * Azure からターミナルにログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)

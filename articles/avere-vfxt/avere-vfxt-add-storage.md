@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163173"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190852"
 ---
 # <a name="configure-storage"></a>ストレージの構成
 
@@ -19,6 +19,12 @@ ms.locfileid: "52163173"
 
 > [!TIP]
 > `create-cloudbacked-cluster` プロトタイプ スクリプトを使用して、Avere vFXT クラスターと共に新しい BLOB コンテナーを作成した場合、そのコンテナーは既に使用できるように設定されているので、ストレージを追加する必要はありません。
+>
+> ただし、使用する新しい BLOB コンテナーが既定の暗号化キーを使って暗号化されている場合は、データを格納する前に、クラスターからキー回復ファイルをダウンロードするか、新しいキーで既定のキーを置き換える必要があります。 既定のキーはクラスターにしか保存されていないため、クラスターが失われたり使用できなくなったりした場合は取得することができません。
+>
+> Avere Control Panel に接続後、**[Settings]\(設定\)** タブをクリックし、**[Core Filer]\(コア ファイラー\)** > **[Cloud Encryption Settings]\(クラウド暗号化の設定\)** を選択します。 **[Local Key Store]\(ローカル キー ストア\)** セクションで、次のオプションのいずれかを選択します。 
+> * 既存のキーの回復ファイルを入手するには、**[Redownload Recovery File]\(回復ファイルの再ダウンロード\)** ボタンを使用します。 回復ファイルは、クラスター管理者のパスワードを使用して暗号化されます。 そのファイルを信頼できる場所に保存してください。 
+> * そのページの **[Generate a New Master Key]\(新しいマスター キーの生成\)** セクションにある手順に従って、自分でコントロールする新しい暗号化キーを作成します。 このオプションを使用すると、一意のパスフレーズを指定できます。その場合、パスフレーズとファイルのペアを検証するために、回復ファイルをアップロードして再ダウンロードする必要があります。
 
 `create-minimal-cluster` プロトタイプ スクリプトを使用してクラスターを作成した場合や、ハードウェアまたはクラウド ベースのストレージ システムを新しく追加する場合は、以下の手順に従ってください。
 
@@ -32,7 +38,7 @@ ms.locfileid: "52163173"
 
 ## <a name="create-a-core-filer"></a>コア ファイラーを作成する
 
-"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers)をご覧ください。
+"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)をご覧ください。
 
 コア ファイラーを追加するには、コア ファイラーの 2 つの主な種類のいずれかを選択します。
 
@@ -64,7 +70,7 @@ NAS コア ファイラーを追加する手順を次に示します。
   
    * **[Next]\(次へ\)** をクリックして、キャッシュ ポリシーを選択します。 
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
-   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
+   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
 
 次に、「[ジャンクションを作成する](#create-a-junction)」に進みます。  
 
@@ -145,12 +151,12 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
    * **[Bucket contents]\(バケットの内容\)** を **[空]** に設定します
    * **[Certificate verification]\(証明書の検証\)** を **[無効]** に変更します
    * **[Compression mode]\(圧縮モード\)** を **[None]\(なし\)** に変更します  
-   *  **[次へ]** をクリックします。
+   * **[次へ]** をクリックします。
    * 4 ページ目では、コンテナーの名前を **[Bucket name]\(バケット名\)** に「<*ストレージ アカウント名*>/<*コンテナー名*>」の形式で入力します。
    * 必要に応じて、**[Encryption type]\(暗号化の種類\)** を **[None]\(なし\)** に設定します。  Azure Storage は既定で暗号化されます。
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
 
-  詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
+  詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
 
 ページが更新されるか、または手動でページを更新することもでき、新しいコア ファイラーが表示されます。
 
@@ -162,7 +168,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 
 たとえば、`/avere/files` を作成して、NetApp コア ファイラーの `/vol0/data` エクスポートと `/project/resources` サブディレクトリにマップできます。
 
-ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html)をご覧ください。
+ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)をご覧ください。
 
 Avere Control Panel 設定インターフェイスで次の手順のようにします。
 
@@ -170,7 +176,7 @@ Avere Control Panel 設定インターフェイスで次の手順のようにし
 * / (スラッシュ) で始まる名前空間パスを指定します (例: ``/avere/data``)。
 * コア ファイラーを選択します。
 * コア ファイラーのエクスポートを選択します。
-*  **[次へ]** をクリックします。
+* **[次へ]** をクリックします。
 
   ![ジャンクション、コア ファイラー、エクスポートのフィールドが設定された "新規ジャンクション追加" ページのスクリーンショット](media/avere-vfxt-add-junction.png)
 

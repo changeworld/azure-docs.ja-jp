@@ -2,25 +2,18 @@
 title: Azure への SQL Server データベースのバックアップ | Microsoft Docs
 description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/02/2018
-ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.topic: tutorial
+ms.date: 12/21/2018
+ms.author: raynew
+ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410365"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790176"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -44,9 +37,9 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - SQL 仮想マシン (VM) では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。 詳細については、「[ネットワーク接続を確立する](backup-azure-sql-database.md#establish-network-connectivity)」を参照してください。
 - 最大 2,000 個の SQL データベースを 1 つの Recovery Services コンテナーで保護します。 追加の SQL データベースは、別個の Recovery Services コンテナーに格納される必要があります。
 - [分散型の可用性グループのバックアップ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)には、制限があります。
-- SQL Server Always On フェールオーバー クラスター インスタンス (FCI) はサポートされていません。
+- バックアップ用の SQL Server Always On Failover Cluster Instance (FCI) はサポートされていません。
 - Azure Portal を使用して Azure Backup を構成し、SQL Server データベースを保護します。 Azure PowerShell、Azure CLI、および REST API は現在サポートされていません。
-- ミラー データベース、データベース スナップショット、および FCI 下のデータベースのバックアップ/復元操作はサポートされていません。
+- FCI ミラー データベース、データベース スナップショット、およびデータベースのバックアップ/復元操作はサポートされていません。
 - 多数のファイルがあるデータベースは保護できません。 サポートされる最大のファイル数は、ファイル数だけでなくファイルのパスの長さによっても変動するため、明確な数値はありません。 ただし、そのようなケースはあまり見られません。 この件に対処するためのソリューションは構築中です。
 
 サポート/サポート対象外のシナリオの詳細については、[「FAQ」セクション](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)を参照してください。
@@ -136,7 +129,7 @@ SQL Server データベースをバックアップする前に、次の条件を
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Marketplace 以外の SQL VM に権限を設定する
 
-仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Microsoft Azure Marketplace の仮想マシンを使用する場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Microsoft Azure Marketplace から作成されない場合は、以下の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースを検出するために、Azure Backup は **NT Service\AzureWLBackupPluginSvc** というアカウントを作成します。 このアカウントはバックアップと復元に使用され、SQL sysadmin のアクセス許可を持っている必要があります。 さらに、Azure Backup は **NT AUTHORITY\SYSTEM** アカウントを DB 検出/照会に利用するため、このアカウントが SQL でパブリック ログインである必要があります。
+仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Microsoft Azure Marketplace の仮想マシンを使用する場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Microsoft Azure Marketplace から作成されない場合は、以下の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースを検出するために、Azure Backup では **NT SERVICE\AzureWLBackupPluginSvc** というアカウントが作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin のアクセス許可を持っている必要があります。 さらに、Azure Backup は **NT AUTHORITY\SYSTEM** アカウントを DB 検出/照会に利用するため、このアカウントが SQL でパブリック ログインである必要があります。
 
 権限を構成するには、次の手順に従います。
 
@@ -182,7 +175,7 @@ Recovery Services コンテナーとデータベースを関連付けたら、�
 
     ![[ログイン - 新規作成] ダイアログ ボックスで [検索] を選択する](./media/backup-azure-sql-database/new-login-search.png)
 
-3. Windows 仮想サービス アカウント **NT Service\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力してください]** ボックスにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。
+3. Windows 仮想サービス アカウント **NT SERVICE\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力してください]** ボックスにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。
 
     ![[名前の確認] を選択して不明なサービス名を解決する](./media/backup-azure-sql-database/check-name.png)
 
@@ -451,7 +444,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)にも掲載されています。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 
@@ -728,7 +721,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)にも掲載されています。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 

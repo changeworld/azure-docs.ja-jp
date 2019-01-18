@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971718"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243680"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "53971718"
 
 - [Azure Notebooks スターター セット](https://notebooks.azure.com/#sample-redirect)には、データ アクセス、Azure Machine Learning Services、いくつかのデータ サイエンス エクスペリエンスを示すノートブックと共に、Python、R、および F# の紹介が含まれています。
 - [Jupyter Notebooks の概要](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [データ サイエンスの概要](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) (Jake Vanderplas 氏)
+- [データ サイエンスの概要](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) (Jake Vanderplas 氏)
 - [便利なノートブックのギャラリー](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (GitHub 上の Jupyter プロジェクト)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - [インペリアル カレッジ ロンドンの物理学部](https://notebooks.azure.com/cvanbreu/libraries)による物理の手引き

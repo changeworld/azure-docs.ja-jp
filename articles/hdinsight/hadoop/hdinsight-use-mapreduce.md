@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632661"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634628"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
@@ -28,7 +28,7 @@ HDInsight クラスターで MapReduce ジョブを実行する方法を説明�
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
->
+
 
 ## <a id="whatis"></a>MapReduce とは
 
@@ -57,7 +57,7 @@ Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と
 
     [key]/t[value]
 
-詳細については、「 [Hadoop ストリーミング](http://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
+詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
 
 HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
 
@@ -163,7 +163,7 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [Curl](apache-hadoop-use-mapreduce-curl.md) | **REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
@@ -174,9 +174,9 @@ HDInsight でのデータ操作の詳細については、次のドキュメン�
 
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](apache-hadoop-streaming-python.md)
 
-* [HDInsight での Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
 
-* [HDInsight での Pig の使用][hdinsight-use-pig]
+* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

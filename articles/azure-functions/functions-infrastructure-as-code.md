@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 484cf0976ce10e80ca7eaf9b215329b81ed4bb13
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 488b3797c7e18855a60b84a77a05e4e0a5654475
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994656"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023667"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -36,6 +36,12 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 * [Azure Storage](../storage/index.yml) アカウント
 * ホスティング プラン (従量課金プランまたは App Service プラン)
 * 関数アプリ 
+
+これらのリソースの JSON 構文とプロパティについては、次を参照してください。
+
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
 
 ### <a name="storage-account"></a>ストレージ アカウント
 
@@ -167,7 +173,7 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ## <a name="deploy-a-function-app-on-the-app-service-plan"></a>App Service プランで関数アプリをデプロイする
 
-App Service プランでは、関数アプリは、Web アプリと同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
+App Service プランでは、関数アプリは、Web アプリと同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/overview-hosting-plans.md)」を参照してください。 
 
 Azure Resource Manager テンプレートのサンプルについては、[Azure App Service プランの関数アプリ]に関するページをご覧ください。
 

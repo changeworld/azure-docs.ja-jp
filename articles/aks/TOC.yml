@@ -162,17 +162,23 @@ items:
     items:
     - name: サービス プリンシパルの作成
       href: kubernetes-service-principal.md
+    - name: クラスター構成ファイルへのアクセスの制限
+      href: control-kubeconfig-access.md
     - name: ACR での認証
-      href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
+      href: ../container-registry/container-registry-auth-aks.md
+      maintainContext: true
   - name: 監視およびログ記録
     items:
     - name: コンテナーに対する Azure Monitor
-      href: ../monitoring/monitoring-container-health.md
+      href: ../azure-monitor/insights/container-insights-overview.md
       maintainContext: true
     - name: マスター コンポーネント ログの表示
       href: view-master-logs.md
     - name: kubelet ログの表示
       href: kubelet-logs.md
+    - name: リアルタイムのコンテナー ログの表示 (プレビュー)
+      href: ../azure-monitor/insights/container-insights-live-logs.md
+      maintainContext: true
   - name: アプリケーションの開発と実行
     items:
     - name: Dev Spaces を使用した開発
@@ -290,9 +296,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 7c4742945a5017dd2b20142114456567e9407ed0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f59d5f982885c21449949ab79b51db32585ea80f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260737"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159861"

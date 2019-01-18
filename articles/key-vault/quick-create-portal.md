@@ -9,19 +9,18 @@ ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 864c80fe0ab8b061439b5a80a111edbd1b2004b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027029"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078390"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
 Azure Key Vault は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイック スタートでは、キー コンテナーを作成し、それを使用してシークレットを格納します。 Key Vault の詳細については、[概要](key-vault-overview.md)に関する記事をご覧ください。
 
@@ -40,8 +39,8 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 3. 結果の一覧の **[Key Vault]** を選択します。
 4. Key Vault のセクションで、**[作成]** を選択します。
 5. **[キー コンテナーの作成]** セクションで、次の情報を入力します。
-    - **[名前]**: 一意の名前が必要です。 このクイック スタートでは、**Contoso-vault2** を使用します。 
-    - **[サブスクリプション]**: サブスクリプションを選択します。
+    - **[名前]**:一意の名前が必要です。 このクイック スタートでは、**Contoso-vault2** を使用します。 
+    - **サブスクリプション**:サブスクリプションを選択します。
     - **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループ名を入力します。
     - **[場所]** プルダウン メニューで場所を選択します。
     - **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
@@ -50,8 +49,8 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 
 次の 2 つのプロパティをメモしておきます。
 
-* **コンテナーの名前**: この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
-* **Vault URI (コンテナー URI)**: この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
+* **Vault URI (コンテナー URI)**:この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
 
@@ -64,9 +63,9 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 1. Key Vault のプロパティ ページで、**[シークレット]** を選択します。
 2. **[Generate/Import]\(生成/インポート\)** をクリックします。
 3. **[シークレットの作成]** 画面で、次の値を選択します。
-    - **[アップロード オプション]**: [手動]。
-    - **[名前]**: ExamplePassword。
-    - **[値]**: Pa$$w0rd。
+    - **[アップロード オプション]**:手動。
+    - **[名前]**:ExamplePassword。
+    - **値**: Pa$$w0rd。
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 
 シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。

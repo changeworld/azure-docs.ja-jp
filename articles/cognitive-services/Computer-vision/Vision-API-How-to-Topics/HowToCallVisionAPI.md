@@ -1,5 +1,5 @@
 ---
-title: '例: Computer Vision API を呼び出す'
+title: 例:画像分析 API を呼び出す - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で REST を使用して Computer Vision API を呼び出す方法について説明します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981747"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581710"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>例: Computer Vision API を呼び出す方法
+# <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 
 このガイドでは、REST を使用して Computer Vision API を呼び出す方法を示します。 サンプルは、Computer Vision API クライアント ライブラリを使用する C# と HTTP POST/GET 呼び出しの両方で記述されています。 以下に焦点を当てます。
 
@@ -26,10 +27,10 @@ ms.locfileid: "45981747"
 
 ### <a name="Prerequisites">前提条件</a> 
 ローカルに保存された画像への画像 URL またはパス。
-  * サポートされている入力方法: アプリケーション/オクテット ストリームまたは画像 URL の形式の未加工画像バイナリ
-  * サポートされている画像形式: JPEG、PNG、GIF、BMP
-  * 画像ファイル サイズ: 4 MB 未満
-  * 画像の寸法: 50 x 50 ピクセルより大きい
+  * サポートされる入力方法:アプリケーション/オクテット ストリーム形式の未加工画像バイナリまたは画像 URL
+  * サポートされる画像形式: JPEG、PNG、GIF、BMP
+  * 画像ファイルのサイズ:4 MB 未満
+  * 画像サイズ: 50 x 50 ピクセルよりも大きい
   
 以下の例では、次の機能が示されています。
 
@@ -41,7 +42,7 @@ ms.locfileid: "45981747"
   * **オプション 1:** スコープされた分析 - 特定のモデルのみを分析する
   * **オプション 2:** 高度な分析 - 追加情報を提供するために、[86 カテゴリ分類](../Category-Taxonomy.md)を使用して分析する
   
-### <a name="Step1">手順 1: API 呼び出しを承認する</a> 
+### <a name="Step1">手順 1:API 呼び出しを承認する</a> 
 Computer Vision API への呼び出しでは、毎回サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターによって渡すか、要求ヘッダー内で指定する必要があります。 
 
 サブスクリプション キーを取得するには、「[How to Obtain Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md
@@ -59,12 +60,12 @@ Computer Vision API への呼び出しでは、毎回サブスクリプション
 
 ```var visionClient = new VisionServiceClient(“Your subscriptionKey”);```
 
-### <a name="Step2">手順 2: 画像を Computer Vision API にアップロードし、タグ、説明、および有名人を取得する</a>
+### <a name="Step2">手順 2:画像を Computer Vision API サービスにアップロードし、タグ、説明、有名人を取得する</a>
 Computer Vision API の呼び出しを実行する基本的な方法は、画像を直接アップロードすることです。 これを行うには、コンテンツの種類を application/octet-stream と指定し、同時にデータの読み取りは画像ファイルからであることを指定して、"POST" 要求を送信します。 "タグ" と "説明" については、すべての Computer Vision API 呼び出しでこのアップロード方法と同じです。 唯一の違いは、ユーザーが指定するクエリ パラメーターです。 
 
 特定の画像の "タグ" と "説明" を取得する方法を次に示します。
 
-**オプション 1:** "タグ"の一覧と 1 つの "説明" を取得する
+**オプション 1:** "タグ" の一覧と 1 つの "説明" を取得する
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
@@ -119,7 +120,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 ここでは、v1 のすべてのクエリ パラメーターは同じように動作します。  visualFeatures=categories が指定されない場合は、暗黙的に有効になります。
 
-### <a name="Step3">手順 3: analyze&visualFeatures=Tags, Description に対する JSON 出力を取得して解釈する </a>
+### <a name="Step3">手順 3:analyze&visualFeatures=Tags, Description に対する JSON 出力を取得して解釈する</a>
 
 次に例を示します。
 ```
@@ -149,17 +150,17 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
     }
   }
 ```
-フィールド   | 型  | 内容
+フィールド   | type  | コンテンツ
 ------|------|------|
-tags    | オブジェクト    | tags 配列の最上位オブジェクト
-tags[].Name | 文字列    | タグ分類子からのキーワード
-tags[].Score    | 数値    | 信頼度スコア (0 と 1 の間)。
+タグ    | オブジェクト    | tags 配列の最上位オブジェクト
+tags[].Name | string    | タグ分類子からのキーワード
+tags[].Score    | number    | 信頼度スコア (0 と 1 の間)。
 description  | オブジェクト   | description の最上位オブジェクト。
-description.tags[] |    文字列  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
-description.captions[].text | 文字列    | 画像を説明する語句。
-description.captions[].confidence   | 数値    | 語句の信頼度。
+description.tags[] |    string  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
+description.captions[].text | string    | 画像を説明する語句。
+description.captions[].confidence   | number    | 語句の信頼度。
 
-### <a name="Step4">手順 4: ドメイン固有モデルの JSON 出力を取得して解釈する</a>
+### <a name="Step4">手順 4:ドメイン固有モデルの JSON 出力を取得して解釈する</a>
 
 **オプション 1:** スコープされた分析 - 特定のモデルのみを分析する
 
@@ -209,11 +210,11 @@ description.captions[].confidence   | 数値    | 語句の信頼度。
 
 categories フィールドは、元の分類内の[86 カテゴリ](../Category-Taxonomy.md)の 1 つまたは複数の一覧です。 アンダー スコアで終わるカテゴリは、そのカテゴリとその子 (たとえば、有名人モデルでは people_ だけでなく people_group も) 一致することにも注意してください。
 
-フィールド   | 型  | 内容
+フィールド   | type  | コンテンツ
 ------|------|------|
 categories | オブジェクト | 最上位レベルのオブジェクト
-categories[].name    | 文字列   | 86カテゴリ分類の名前
-categories[].score  | 数値    | 信頼度スコア (0 と 1 の間)。
+categories[].name    | string   | 86カテゴリ分類の名前
+categories[].score  | number    | 信頼度スコア (0 と 1 の間)。
 categories[].detail  | オブジェクト?      | 省略可能な詳細オブジェクト
 
 複数のカテゴリと一致する場合 (たとえば、model=celebrities のときに 86 カテゴリ分類子がpeople_ と people_young を返す場合)、詳細は、最も汎用性が高いレベルの一致 (この例では people_) に添付されます。

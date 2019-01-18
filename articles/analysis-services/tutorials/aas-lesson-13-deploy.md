@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 13: デプロイする | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 13: デプロイする | Microsoft Docs'
 description: Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427114"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188387"
 ---
 # <a name="deploy"></a>デプロイ
 
@@ -22,7 +22,7 @@ ms.locfileid: "49427114"
 このレッスンの推定所要時間: **5 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-この記事は、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 参照してくださいこのレッスンの作業を実行する前に、前のレッスン「[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)」を終えている必要があります。  
+この記事は、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)」を完了している必要があります。  
 
 > [!IMPORTANT]  
 > デプロイするには､リモート Analysis Services サーバーでの[管理者権限](../analysis-services-server-admins.md)が必要です。  

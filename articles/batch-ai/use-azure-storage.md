@@ -12,12 +12,12 @@ ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c1ebcae04b51fbf18da22872e3e4160a37a7e2fe
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408002"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201161"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Azure Storage を使用して Batch AI ジョブの入力と出力を格納する
 
@@ -79,7 +79,7 @@ Azure Storage ボリュームを Azure CLI で作成されたジョブにマウ�
 - <FILE_SHARE_NAME> - ファイル共有の名前
 - <BLOB_CONTAINER_NAME> - BLOB コンテナーの名前
 
-Azure Batch AI SDK を使用して Azure Storage ボリュームをマウントするには、`JobCreateParameters` で `mount_volumes` (Python) または `MountVolumes` (C#、Java) プロパティを設定します。 Azure Batch AI SDK を使用してボリュームをマウントするときに、ストレージ アカウントの資格情報を指定する必要があります。 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet)、および [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai._mount_volumes?view=azure-java-stable) でボリュームをマウントするためのスキーマを表示します。
+Azure Batch AI SDK を使用して Azure Storage ボリュームをマウントするには、`JobCreateParameters` で `mount_volumes` (Python) または `MountVolumes` (C#、Java) プロパティを設定します。 Azure Batch AI SDK を使用してボリュームをマウントするときに、ストレージ アカウントの資格情報を指定する必要があります。 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet)、および [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai.mountvolumes?view=azure-java-stable) でボリュームをマウントするためのスキーマを表示します。
 
 ### <a name="mount-volumes-to-a-cluster"></a>ボリュームをクラスターにマウントする
 

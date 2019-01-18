@@ -12,18 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 49d49553a9375baa92160d9d9a89936acc7dd461
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277938"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102620"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
+
 この記事では、Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持する必要があることについて説明します。 
+
+## <a name="download-update-packages-for-integrated-systems"></a>統合システムの更新プログラム パッケージをダウンロードする
+
+Microsoft では、特定の問題に対処する修正プログラム パッケージだけでなく、完全な月例更新プログラム パッケージをリリースしていきます。 
+
+月例更新プログラム パッケージは、セキュリティで保護された Azure エンドポイントでホストされます。 これらは、[Azure Stack 更新プログラム ダウンローダー ツール](https://aka.ms/azurestackupdatedownload)を使用して手動でダウンロードすることができます。 スケール ユニットが接続されている場合、更新プログラムは、"**更新プログラムが利用可能です**" と自動的に管理者ポータルに表示されます。 月例更新プログラム パッケージは、各リリースで詳細にドキュメント化されます。 各リリースの詳細については、この記事の「[更新プログラム パッケージのリリース周期](#update-package-release-cadence)」セクションの任意のリリースをクリックしてください。
+
+修正プログラム パッケージは、セキュリティで保護された同じ Azure エンドポイントでホストされます。 各修正プログラム KB 記事の埋め込みリンク (たとえば、[Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)) を使用して、それらを手動でダウンロードできます。 完全な月例更新プログラム パッケージと同様に、Azure Stack オペレーターは、「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」の手順を使用して、.xml、.bin、および .exe ファイルをダウンロードしてインポートできます。 スケール ユニットが接続されている Azure Stack オペレーターに対しては、修正プログラムが "**更新プログラムが利用可能です**" というメッセージと共に自動的に管理者ポータルに表示されます。
+
+スケール ユニットが接続されておらず、各修正プログラムのリリースについて通知を受け取る場合は、各リリースに記載されている [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) または [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) フィードを購読します。  
 
 ## <a name="update-package-types"></a>更新プログラム パッケージの種類
 
@@ -51,14 +62,14 @@ Microsoft は、随時、Azure Stack に関する予防可能な、または緊�
 
 
 ## <a name="keep-your-system-under-support"></a>システムがサポートされる状態を維持する
-引き続きサポートを受けるには、Azure Stack のデプロイを最新の状態に保つ必要があります。 更新プログラムの実行延期のポリシーに従って Azure Stack デプロイメントのサポート サービスを継続するには、リリースされた最新バージョンの更新プログラム、またはそれより 2 つ前のバージョンのうち 1 つのバージョンを実行する必要があります。 修正プログラムはメジャー バージョンの更新プログラムとは見なされません。 お使いのスタックの Azure Stack クラウドに *3 バージョン以上前の更新プログラム*しか適用されていない場合、ポリシーに準拠していないとみなされます。サポート サービスを利用するには、サポート対象となる最低バージョンまで更新する必要があります。 
+引き続きサポートを受けるには、Azure Stack のデプロイを最新の状態に保つ必要があります。 更新プログラムの実行延期ポリシーは次のとおりです。Azure Stack デプロイのサポート サービスを継続するには、リリースされた最新バージョンの更新プログラム、またはそれより 2 つ前のバージョンのうち 1 つのバージョンを実行する必要があります。 修正プログラムはメジャー バージョンの更新プログラムとは見なされません。 お使いのスタックの Azure Stack クラウドに *3 バージョン以上前の更新プログラム*しか適用されていない場合、ポリシーに準拠していないとみなされます。サポート サービスを利用するには、サポート対象となる最低バージョンまで更新する必要があります。 
 
 たとえば、最新バージョンの更新プログラムが 1805 の場合、その前の 2 つの更新プログラム パッケージは 1804 と 1803 であるため、1804 と 1803 は両方ともサポートされます。 ただし、1802 はサポート外です。 今後 1、2 か月のうちにリリースがないときはこのポリシーが適用されます。 たとえば、最新のリリースが 1805 で 1804 のリリースがなかった場合、その前の 2 つの更新プログラム パッケージである 1803 と 1802 がサポート対象となります。
 
 Microsoft ソフトウェア更新プログラム パッケージは累積的ではないため、前提として前のバージョンの更新パッケージか修正プログラムが必要です。 1 つ以上の更新プログラムを先送りにする場合は、最新のバージョンを取得する際に全体のランタイムを考慮してください。 
 
 ## <a name="get-support"></a>サポートを受ける
-Azure Stack では、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート要求を作成する方法](/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド サービス プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。  詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。 
+Azure Stack では、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート リクエストを作成する方法](/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド サービス プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。  詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

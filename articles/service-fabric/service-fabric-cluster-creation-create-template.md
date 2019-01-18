@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 9482b1a33caaf73838101431dfc1faac7020ee42
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: cd4871e3e4613973a50c8ee0994fe0440150eddf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234784"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044027"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 
@@ -143,7 +143,7 @@ ms.locfileid: "40234784"
 Azure AD 構成は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Resource Manager テンプレート パラメーター ファイル (*azuredeploy.parameters.json*) にこれらの Azure AD パラメーターと値を追加します。 
 
 > [!NOTE]
-> Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳細については、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」\(クライアントを認証するための Azure AD のセットアップ\)をお読みください。
+> Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
 
 ```json
 {
@@ -258,6 +258,14 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templa
 ## <a name="next-steps"></a>次の手順
 クラスター用のテンプレートが完成したので、[クラスターを Azure にデプロイ](service-fabric-cluster-creation-via-arm.md)する方法を学びます。  「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」をまだお読みでない場合は、 運用環境クラスターをデプロイする前にお読みください。
 
+この記事でデプロイしたリソースの JSON 構文およびプロパティについては、次をご覧ください。
+
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

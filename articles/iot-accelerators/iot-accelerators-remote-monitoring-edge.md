@@ -1,5 +1,5 @@
 ---
-title: Azure ソリューションのエッジで異常を検出するチュートリアル | Microsoft Docs
+title: ソリューションのエッジで異常を検出するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して IoT Edge デバイスを監視する方法を学習します。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843310"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606250"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル: リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル:リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
 
 このチュートリアルでは、IoT Edge デバイスによって検出された異常に対応するようリモート監視ソリューションを構成します。 IoT Edge デバイスを使用すると、テレメトリをエッジで処理することによって、ソリューションに送信されるテレメトリの量を減らし、デバイスのイベントへの対応を迅速化することができます。 エッジ処理の利点の詳細については、「[Azure IoT Edge とは](../iot-edge/about-iot-edge.md)」を参照してください。
 

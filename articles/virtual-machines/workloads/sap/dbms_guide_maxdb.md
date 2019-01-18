@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d43f07179f9f18c05f22fdd4ea36a3a90cb49
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075619"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157311"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ
 
@@ -331,7 +331,7 @@ Microsoft Windows オペレーティング システムの最新バージョン�
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための SAP MaxDB 構成ガイドライン
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>ストレージの構成
-SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、「[RDBMS デプロイの構造][dbms-guide-2]」の章に記載されている一般的な推奨事項に従ってください。
+SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、「[RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)」の章に記載されている一般的な推奨事項に従ってください。
 
 > [!IMPORTANT]
 > 他のデータベースと同様に、SAP MaxDB にはデータとログ ファイルもあります。 ただし、SAP MaxDB 用語では正しい用語は "ボリューム" です ("ファイル" ではありません)。 たとえば、SAP MaxDB のデータ ボリュームとログ ボリュームがあります。 OS ディスクのボリュームとこれらを混同しないでください。 
@@ -458,7 +458,7 @@ SAP キャッシュ サーバーは、(キャッシュされた) ドキュメン
 
 1. **クライアントがバックエンド SAP システム** バックエンド SAP システムが SAP コンテンツ サーバーにアクセスするように構成されている場合、その SAP システムがクライアントです。 SAP システムと SAP コンテンツ サーバーの両方が、同じ Azure リージョン (同じ Azure データ センター) にデプロイされます。2 つは互いに物理的に近くに設置されます。 そのため、専用の SAP キャッシュ サーバーを用意する必要はありません。 SAP UI クライアント (SAP の GUI または Web ブラウザー) が SAP システムに直接アクセスし、SAP システムは SAP コンテンツ サーバーからドキュメントを取得します。
 2. **クライアントがオンプレミス Web ブラウザー** SAP コンテンツ サーバーは、Web ブラウザーから直接アクセスするように構成できます。 この場合は、オンプレミスで実行されている Web ブラウザーが SAP コンテンツ サーバーのクライアントです。 オンプレミス データ センターと Azure データ センターは、物理的に別の場所 (理想的には、相互に近接) に配置されます。 オンプレミス データ センターは、Azure のサイト間 VPN または ExpressRoute を使用して Azure に接続されます。 どちらのオプションでも、Azure へのセキュリティで保護された VPN ネットワーク接続を提供しますが、サイト間のネットワーク接続はオンプレミス データ センターと Azure データ センター間のネットワーク帯域幅と待機時間の SLA を提供しません。 ドキュメントへのアクセスを高速化するために、次のいずれかの操作を行うことができます。
-   1. オンプレミス Web ブラウザーに近いオンプレミスに SAP キャッシュ サーバーを設置する ([この図][dbms-guide-900-sap-cache-server-on-premises]のオプション)
+   1. オンプレミス Web ブラウザーに近いオンプレミスに SAP キャッシュ サーバーを設置する (下の図のオプション)
    2. オンプレミス データ センターと Azure データ センター間の高速で低待機時間の専用のネットワーク接続を提供する Azure ExpressRoute を構成します。
 
 ![オンプレミス SAP キャッシュ サーバーをインストールするオプション](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)

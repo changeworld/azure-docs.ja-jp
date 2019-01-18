@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 8bf0eac5391ea2d9bbb9ba42887b0a53e075589d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847237"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078016"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
@@ -93,14 +93,14 @@ ms.locfileid: "52847237"
 | 7 | プライバシー ポリシーと利用規約の提供  |  ポリシーや条件は不要  | | 
 | 8 | サービスの種類 | サービスの種類がタイトルと一致するようにする | |
 | 9 | コンピテンシー |<br>• 以下のうち少なくとも 1 つである必要がある:<br>• アプリケーション開発 <br>• アプリケーションの統合 <br>• アプリケーション ライフサイクル管理 <br>• クラウド プラットフォーム <br>• Data Analytics <br>• データ センター <br>• データ プラットフォーム <br>• DevOps |
-| 10 | [成果物] | Azure になっている必要がある | |
+| 10 | 成果物 | Azure になっている必要がある | |
 | 11 | 国/リージョン | 国とリージョンが選択した通貨と一致するようにする | |
 | 12 | 詳細情報  | <br>• 下部 (左側のマーケットプレース リンクではなく、説明の下) にあるリンクが、ソリューションに関する詳細情報に移動できるようになっていて、一般にアクセス可能で、正常に表示される。 <br>•  リンクには "表示名" が付いていて、どのダウンロードでもファイル名としては表示されない | |
 
 
 ## <a name="next-steps"></a>次の手順
-* マーケットプレースでのさまざまなオファーの種類について学びます <br>[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[コンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)
-*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* マーケットプレースでのさまざまなオファーの種類について学びます。 <br>[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[コンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)
+*   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
 ---  

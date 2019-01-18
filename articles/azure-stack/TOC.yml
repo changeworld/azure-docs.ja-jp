@@ -19,8 +19,8 @@ items:
       href: azure-stack-update-1807.md
 - name: クイック スタート
   items:
-  - name: Azure Stack の評価
-    href: azure-stack-deploy-overview.md
+  - name: 管理ポータルの使用
+    href: azure-stack-manage-portals.md
   expanded: true
 - name: チュートリアル
   items:
@@ -75,6 +75,8 @@ items:
       items:
       - name: ID プロバイダーの選択
         href: azure-stack-integrate-identity.md
+      - name: 登録ロールの作成
+        href: azure-stack-registration-role.md
       - name: Azure ID の検証
         href: azure-stack-validate-identity.md
       - name: ADFS 統合の検証
@@ -127,8 +129,6 @@ items:
       href: azure-stack-registration.md
     - name: リージョンの管理
       href: azure-stack-region-management.md
-    - name: 管理者ポータルの使用
-      href: azure-stack-manage-portals.md
     - name: Azure への接続
       items:
       - name: VPN を使用した接続
@@ -225,8 +225,6 @@ items:
       href: azure-stack-marketplace-azure-items.md
     - name: Marketplace アイテムの作成と発行
       href: azure-stack-create-and-publish-marketplace-item.md
-    - name: Marketplace 発行ツールの使用
-      href: azure-stack-marketplace-publisher.md
     - name: Azure Stack でサポートされているゲスト オペレーティング システム
       href: azure-stack-supported-os.md
     - name: カスタム仮想マシン イメージを追加する
@@ -262,6 +260,8 @@ items:
       items:
       - name: SQL リソース プロバイダー 1.1.30.0 のリリース ノート
         href: azure-stack-sql-resource-provider-11300.md
+      - name: SQL リソース プロバイダー 1.1.33.0 のリリース ノート
+        href: azure-stack-sql-resource-provider-11330.md
   - name: MySQL を PaaS として提供する
     href: azure-stack-mysql-resource-provider.md
     items:
@@ -281,6 +281,8 @@ items:
       items:
       - name: MySQL リソース プロバイダー 1.1.30.0 のリリース ノート
         href: azure-stack-mysql-resource-provider-11300.md
+      - name: MySQL リソース プロバイダー 1.1.33.0 のリリース ノート
+        href: azure-stack-mysql-resource-provider-11330.md
   - name: App Service を PaaS として提供する
     href: azure-stack-app-service-overview.md
     items:
@@ -398,12 +400,12 @@ items:
   - name: 料金情報
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-stack
+    href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 3d24dc847d6ca1e842cd86ff9192d43f9006d53d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 03f8d00216ee555e0e7fddd946382577bb0c1904
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723265"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382160"

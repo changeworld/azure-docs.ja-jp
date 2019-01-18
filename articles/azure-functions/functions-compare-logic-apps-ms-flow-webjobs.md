@@ -1,6 +1,6 @@
 ---
 title: Flow、Logic Apps、Functions、WebJobs の比較 - Azure
-description: 統合タスクに最適化された Microsoft クラウド サービス (Flow、Logic Apps、Functions、WebJobs) を比較します。
+description: 統合タスクに最適化された Microsoft クラウド サービス (Flow、Logic Apps、Functions、および WebJobs) を比較します。
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4227db0f2767f559bb51afab6cb75f3ac34707c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634933"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117590"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 
@@ -26,7 +26,7 @@ ms.locfileid: "52634933"
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure App Service WebJobs](../app-service/web-sites-create-web-jobs.md)
+* [Azure App Service WebJobs](../app-service/webjobs-create.md)
 
 いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスはスケジュールまたはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。この記事では、これらの違いについて説明します。
 
@@ -47,13 +47,13 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
 | 管理者向けエクスペリエンス |フロー環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡 ([https://admin.flow.microsoft.com](https://admin.flow.microsoft.com)) |リソース グループの管理、接続、アクセス管理、ログ ([https://portal.azure.com](https://portal.azure.com)) |
-| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証:[Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など。 |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps の比較
 
 Functions と Logic Apps は、サーバーレス ワークロードを可能にする Azure サービスです。 Azure Functions がサーバーレスのコンピューティング サービスであるのに対し、Azure Logic Apps はサーバーレスのワークフローを提供します。 どちらでも複雑な "*オーケストレーション*" を作成することができます。 オーケストレーションは、Logic Apps において複雑なタスクを遂行するために実行される、"*アクション*" と呼ばれる関数またはステップの集まりです。 たとえば命令のバッチを処理するのであれば、関数のインスタンスを多数並列に実行し、すべてのインスタンスの完了を待った後、その集計に対して結果を計算する関数を実行することになるでしょう。
 
-Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-overview.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
+Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-concepts.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
 
 オーケストレーションを構築するときは、ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりしながら、さまざまなサービスを組み合わせることができます。 どのように個々のオーケストレーションを構築するかは、サービスの機能や個人の好みに基づいて選択します。 これらのサービスの主な違いをいくつか次の表に示します。
  
@@ -62,7 +62,7 @@ Azure Functions では、コードを記述したり [Durable Functions 拡張�
 | 開発 | コード第一 (命令型) | デザイナー第一 (宣言型) |
 | 接続 | [ビルトインのバインド (約 10 種類)](functions-triggers-bindings.md#supported-bindings) およびカスタム バインド (コードを記述) | [コネクタの豊富なコレクション](../connectors/apis-list.md)、[Enterprise Integration Pack (B2B のシナリオ向け)](../logic-apps/logic-apps-enterprise-integration-overview.md)、[カスタム コネクタの構築](../logic-apps/custom-connector-overview.md) |
 | Actions | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| 監視 | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| 監視 | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | 管理 | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | 実行コンテキスト | [ローカル](functions-runtime-overview.md)またはクラウドで実行できます。 | クラウドでのみ動作します。|
 
@@ -70,7 +70,7 @@ Azure Functions では、コードを記述したり [Durable Functions 拡張�
 
 ## <a name="compare-functions-and-webjobs"></a>Functions と WebJobs の比較
 
-Azure Functions と同様、Azure App Service WebJobs と WebJobs SDK は開発者向けに設計された "*コード第一*" の統合サービスです。 どちらも [Azure App Service](../app-service/app-service-web-overview.md) の上に構築されたものであり、[ソース管理の統合](../app-service/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[Application Insights との統合による監視](functions-monitoring.md)などの機能をサポートします。
+Azure Functions と同様、Azure App Service WebJobs と WebJobs SDK は開発者向けに設計された "*コード第一*" の統合サービスです。 どちらも [Azure App Service](../app-service/overview.md) の上に構築されたものであり、[ソース管理の統合](../app-service/deploy-continuous-deployment.md)、[認証](../app-service/overview-authentication-authorization.md)、[Application Insights との統合による監視](functions-monitoring.md)などの機能をサポートします。
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs と WebJobs SDK
 

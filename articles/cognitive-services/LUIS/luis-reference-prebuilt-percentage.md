@@ -1,23 +1,24 @@
 ---
-title: LUIS 作成済みエンティティ percentage リファレンス - Azure | Microsoft Docs
+title: percentage 作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での percentage 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6929fc3cc41db4e4bd4a1f8bda62c953a3722eff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b9faaae78cd1e3590291aef68db47f57f050f3d
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041170"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165692"
 ---
-# <a name="percentage-entity"></a>percentage エンティティ
+# <a name="percentage-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの percentage 作成済みエンティティ
 パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
 
 ## <a name="types-of-percentage"></a>percentage のタイプ
@@ -26,7 +27,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>作成済み percentage エンティティの解決
 次の例では、**builtin.percentage** エンティティの解決を示します。
 
-```JSON
+```json
 {
   "query": "set a trigger when my stock goes up 2%",
   "topScoringIntent": {

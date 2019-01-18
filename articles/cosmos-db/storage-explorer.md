@@ -1,28 +1,27 @@
 ---
 title: Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
 description: Azure Cosmos DB に接続し、Azure Storage Explorer を使用してそのリソースを管理する方法について説明します。
-author: Jejiang
-tags: Azure Cosmos DB
+author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: jejiang
+ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138128"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044622"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
 
-Azure Cosmos DB を Azure Storage Explorer で使用することで、ストレージ BLOB やキューなどの他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。 Azure Storage Explorer では現在、SQL、MongoDB、Graph、Table のアカウントがサポートされます。
+Azure Cosmos DB を Azure Storage Explorer で使用することで、ストレージ BLOB やキューなどの他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。 Azure Storage Explorer では現在、SQL、MongoDB、Graph、Table API に構成された Cosmos アカウントがサポートされます。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-SQL API 用の Azure Cosmos DB アカウント<!--or MongoDB API-->。 アカウントを持っていない場合は、Azure Portal で作成できます。「[Azure Cosmos DB:.NET と Azure Portal による SQL API Web アプリのビルド](create-sql-api-dotnet.md)」を参照してください。
+SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント。 アカウントを持っていない場合は、Azure Portal で作成できます。「[Azure Cosmos DB:.NET と Azure Portal による SQL API Web アプリのビルド](create-sql-api-dotnet.md)」を参照してください。
 
 ## <a name="installation"></a>インストール
 
@@ -40,7 +39,7 @@ SQL API 用の Azure Cosmos DB アカウント<!--or MongoDB API-->。 アカウ
 
 2. **[Azure サインイン]** ダイアログ ボックスで、**[サインイン]** を選択し、Azure 資格情報を入力します。
 
-    ![[サインイン]](./media/storage-explorer/sign-in.png)
+    ![サインイン](./media/storage-explorer/sign-in.png)
 
 3. 一覧からサブスクリプションを選択し、**[適用]** をクリックします。
 

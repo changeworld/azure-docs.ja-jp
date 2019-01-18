@@ -40,7 +40,7 @@ items:
       href: tutorial-design-database-using-portal.md
     - name: Azure CLI
       href: tutorial-design-database-using-cli.md
-    - name: Azure Resource Manager のテンプレート
+    - name: Azure Resource Manager テンプレート
       href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
   - name: 2 - Web アプリの作成
     items:
@@ -196,6 +196,8 @@ items:
     href: /cli/azure/mysql
   - name: REST API
     href: /rest/api/mysql
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.dbformysql/allversions
   - name: データイン レプリケーションのストアド プロシージャ
     href: reference-data-in-stored-procedures.md
 - name: リソース
@@ -236,9 +238,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 79f8e21c9f81d2d10f7afdc5e2c31a8d0936846f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c825a777affaabf6db04307de9c0f96efafc3d27
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002452"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191736"

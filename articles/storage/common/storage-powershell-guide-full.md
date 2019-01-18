@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 35813573be9b069cc920f5ede813503ab1b99b4a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0db6cc02be385ab82d41ecef214c5b158892c415
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227216"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628136"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -34,7 +34,9 @@ Azure PowerShell は、PowerShell コマンド ラインやスクリプトで Az
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-この演習には、Azure PowerShell モジュール バージョン 4.4 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+この演習には、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 
 
 この演習では、通常の PowerShell ウィンドウにコマンドを入力するか、または [Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) を使用してエディターにコマンドを入力してから、それぞれの例で 1 つ以上のコマンドを同時にテストできます。 実行する行を強調表示して [選択項目の実行] をクリックし、それらのコマンドだけを実行できます。
 
@@ -42,18 +44,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>サブスクリプションのストレージ アカウントの列挙
 
-[Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) コマンドレットを実行して、現在のサブスクリプションのストレージ アカウントのリストを取得します。 
+[Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) コマンドレットを実行して、現在のサブスクリプションのストレージ アカウントのリストを取得します。 
 
 ```powershell
-Get-AzureRMStorageAccount | Select StorageAccountName, Location
+Get-AzStorageAccount | Select StorageAccountName, Location
 ```
 
 ## <a name="get-a-reference-to-a-storage-account"></a>ストレージ アカウントへの参照の取得
@@ -62,13 +64,13 @@ Get-AzureRMStorageAccount | Select StorageAccountName, Location
 
 ### <a name="use-an-existing-storage-account"></a>既存のストレージ アカウントの使用 
 
-既存のストレージ アカウントを取得するには、リソース グループの名前とストレージ アカウントの名前が必要です。 これらの 2 つのフィールドに変数を設定して、[Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) コマンドレットを使用します。 
+既存のストレージ アカウントを取得するには、リソース グループの名前とストレージ アカウントの名前が必要です。 これらの 2 つのフィールドに変数を設定して、[Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) コマンドレットを使用します。 
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
 
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
 ```
 
@@ -76,23 +78,23 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
-次のスクリプトは、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使用して汎用のストレージ アカウントを作成する方法を示しています。 アカウントを作成したら、そのコンテキストを取得して、後続のコマンドで使用できます。各呼び出しで認証を指定する必要はありません。
+次のスクリプトは、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) を使用して汎用のストレージ アカウントを作成する方法を示しています。 アカウントを作成したら、そのコンテキストを取得して、後続のコマンドで使用できます。各呼び出しで認証を指定する必要はありません。
 
 ```powershell
 # Get list of locations and select one.
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "eastus"
 
 # Create a new resource group.
 $resourceGroup = "teststoragerg"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
 $skuName = "Standard_LRS"
     
 # Create the storage account.
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName $skuName
@@ -103,11 +105,11 @@ $ctx = $storageAccount.Context
 
 このスクリプトでは、次の PowerShell コマンドレットを使用します。 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) -- 有効な場所のリストを取得します。 この例では、`eastus` を場所として使用します。
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) -- 有効な場所のリストを取得します。 この例では、`eastus` を場所として使用します。
 
-*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) -- 新しいリソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、`teststoragerg` を使用します。 
+*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) -- 新しいリソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、`teststoragerg` を使用します。 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) -- ストレージ アカウントを作成します。 この例では、`testpshstorage` を使用します。
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) -- ストレージ アカウントを作成します。 この例では、`testpshstorage` を使用します。
 
 SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーションの種類を示します。 レプリケーションの詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」を参照してください。
 
@@ -123,7 +125,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 ### <a name="storage-account-properties"></a>ストレージ アカウント プロパティ
 
-ストレージ アカウントの設定を変更するには、[Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) を使用します。 ストレージ アカウントの場所や格納されているリソース グループを変更することはできませんが、その他の多くのプロパティを変更できます。 PowerShell を使用して変更できるいくつかのプロパティを次に示します。
+ストレージ アカウントの設定を変更するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を使用します。 ストレージ アカウントの場所や格納されているリソース グループを変更することはできませんが、その他の多くのプロパティを変更できます。 PowerShell を使用して変更できるいくつかのプロパティを次に示します。
 
 * ストレージ アカウントに割り当てられている**カスタム ドメイン**。
 
@@ -137,19 +139,19 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 ### <a name="manage-the-access-keys"></a>アクセス キーの管理
 
-Azure Storage アカウントには 2 つのアカウント キーがあります。 キーを取得するには、[Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey) を使用します。 この例では、最初のキーを取得します。 もう 1 つのキーを取得するには、`Value[0]` の代わりに `Value[1]` を使用します。
+Azure Storage アカウントには 2 つのアカウント キーがあります。 キーを取得するには、[Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) を使用します。 この例では、最初のキーを取得します。 もう 1 つのキーを取得するには、`Value[0]` の代わりに `Value[1]` を使用します。
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzureRmStorageAccountKey `
+    (Get-AzStorageAccountKey `
     -ResourceGroupName $resourceGroup `
     -Name $storageAccountName).Value[0]
 ```
 
-キーを再生成するには、[New-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccountKey) を使用します。 
+キーを再生成するには、[New-AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey) を使用します。 
 
 ```powershell
-New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
+New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -KeyName key1 
 ```
@@ -164,10 +166,10 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 
 ### <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する 
 
-ストレージ アカウントを削除するには、[Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount) を使用します。
+ストレージ アカウントを削除するには、[Remove-AzStorageAccount](/powershell/module/az.storage/Remove-azStorageAccount) を使用します。
 
 ```powershell
-Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
+Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
@@ -179,9 +181,9 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 既定では、インターネットにアクセス可能なネットワークからすべてのストレージ アカウントにアクセスできます。 ただし、ストレージ アカウントへのアクセスを特定の仮想ネットワークのアプリケーションにのみ許可するようにネットワーク ルールを構成できます。 詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)](storage-network-security.md)」を参照してください。 
 
 この記事では、次の PowerShell コマンドレットを使用してこれらの設定を管理する方法を示しています。
-* [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
-* [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
-* [Remove-AzureRmStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.storage/remove-azurermstorageaccountnetworkrule?view=azurermps-6.8.1)
+* [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
+* [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>Storage Analytics の使用  
 
@@ -231,7 +233,7 @@ PowerShell でこれらのクラウドとそのストレージにアクセスす
 この演習用に新しいリソース グループとストレージ アカウントを作成した場合は、リソース グループを削除すると作成されたアセットをすべて削除できます。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>次の手順
 
@@ -248,6 +250,6 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 この記事では、データ オブジェクトの管理方法、Storage Analytics の有効化の方法、China Cloud、German Cloud、Government クラウドといった Azure の独立したクラウドにアクセスする方法など、他のいくつかの記事へのリンクも提供しました。 参照用のその他の関連記事とリソースを次に示します。
 
-* [Azure Storage のコントロール プレーンの PowerShell コマンドレット](/powershell/module/AzureRM.Storage/)
+* [Azure Storage のコントロール プレーンの PowerShell コマンドレット](/powershell/module/az.storage/)
 * [Azure Storage のデータ プレーンの PowerShell コマンドレット](/powershell/module/azure.storage/)
 * [Windows PowerShell リファレンス](https://msdn.microsoft.com/library/ms714469.aspx)

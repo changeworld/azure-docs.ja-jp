@@ -1,19 +1,20 @@
 ---
-title: ポリシーをプログラムで作成して Azure Policy でコンプライアンス データを表示する
+title: ポリシーをプログラムで作成してコンプライアンス データを表示する
 description: この記事では、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3c8fd185feff9a580e2d23926dcf60cb33121122
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242638"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312478"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -29,7 +30,7 @@ ms.locfileid: "50242638"
 
 1. AzureRM PowerShell モジュールを最新バージョンに更新します。 最新バージョンについて詳しくは、[Azure PowerShell](https://github.com/Azure/azure-powershell/releases) をご覧ください。
 
-1. サブスクリプションがリソース プロバイダーで確実に動作するように、Azure PowerShell を使用して Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
+1. Azure PowerShell を使用して Policy Insights リソース プロバイダーを登録し、サブスクリプションがリソース プロバイダーで確実に動作することを検証します。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
 
    ```azurepowershell-interactive
    Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'

@@ -1,23 +1,22 @@
 ---
 title: Azure Cosmos DB での MongoDB のドキュメントごとの TTL 機能
-description: MongoDB API を使用して作成された Azure Cosmos DB ドキュメントの Time to Live 値を設定して、一定期間経過後にシステムからドキュメントを自動的に消去する方法について説明します。
-services: cosmos-db
-author: orestis-ms
-ms.author: orkostak
+description: Azure Cosmos DB の MongoDB 用 API を使用してドキュメントの TTL (Time to Live) 値を設定し、一定期間経過後にシステムからドキュメントを自動的に消去する方法について説明します。
+author: sivethe
+ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 08/10/2018
-ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.openlocfilehash: 1bfe79c502361e6cf9616c3ba61e781fb7ce92ac
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868763"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54032858"
 ---
-# <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API でデータを期限切れにする
+# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
 
-Time to Live (TTL) 機能により、データベースはデータを自動的に期限切れにすることができます。 MongoDB API では、Azure Cosmos DB の TTL 機能を利用します。 コレクション全体に既定の TTL 値を設定するモードと、ドキュメントごとに個別の TTL 値を設定するモードの 2 つのモードがサポートされています。 MongoDB API における TTL インデックスとドキュメントごとの TTL 値を管理するロジックは、[Azure Cosmos DB](../cosmos-db/mongodb-indexing.md) におけるロジックと同じです。
+Time to Live (TTL) 機能により、データベースはデータを自動的に期限切れにすることができます。 Azure Cosmos DB の MongoDB 用 API では、Cosmos DB の中核的な TTL 機能が利用されます。 コレクション全体に既定の TTL 値を設定するモードと、ドキュメントごとに個別の TTL 値を設定するモードの 2 つのモードがサポートされています。 Cosmos DB の MongoDB 用 API における TTL インデックスとドキュメントごとの TTL 値を管理するロジックは、[Cosmos DB におけるロジックと同じです](../cosmos-db/mongodb-indexing.md)。
 
 ## <a name="ttl-indexes"></a>TTL インデックス
 コレクション全体に対して TTL を有効にするには、["TTL インデックス" (Time to Live インデックス)](../cosmos-db/mongodb-indexing.md) を作成する必要があります。 TTL インデックスは、"expireAfterSeconds" 値を含む _ts フィールドのインデックスです。
@@ -72,10 +71,11 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 ``` 
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>ドキュメントごとの TTL 機能をアクティブにする方法
-ドキュメントごとの TTL 機能は、Azure portal の MongoDB API アカウントの [プレビュー機能] タブでアクティブにすることができます。
+
+ドキュメントごとの TTL 機能は、Azure Cosmos DB の MongoDB 用 API でアクティブにできます。
 
 ![ポータルでのドキュメントごとの TTL 機能のアクティブ化を示すスクリーンショット](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>次の手順
-* [TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)
-* [Azure Cosmos DB MongoDB API でのインデックス作成](../cosmos-db/mongodb-indexing.md)
+* [TTL を使用して Azure Cosmos DB 内のデータを自動的に期限切れにします。](../cosmos-db/time-to-live.md)
+* [Azure Cosmos DB の MongoDB 用 API を使用して構成された Cosmos データベースのインデックスを作成します。](../cosmos-db/mongodb-indexing.md)

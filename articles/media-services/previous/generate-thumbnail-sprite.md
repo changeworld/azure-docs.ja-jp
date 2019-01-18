@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: juliako
-ms.openlocfilehash: f9ad7fcf414e90acc40ee5cd42e322a3b9e47f17
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380907"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190731"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する 
 
@@ -70,7 +70,7 @@ Media Encoder Standard を使用してサムネイル スプライトを生成�
 
 1.  1 行の画像のスプライト画像を生成することはできません (SpriteColumn = 1 の結果は 1 列の画像)。
 2.  スプライト画像を妥当なサイズの JPEG 画像にチャンクすることは、まだサポートされていません。 そのため、結果の合成サムネイル スプライトが約 8 M ピクセル以下になるように、サムネイルの数とサイズを制限するよう注意する必要があります。
-3.  Azure Media Player は、Edge、Chrome、および Firefox ブラウザーでスプライトをサポートしています。 VTT 解析は IE11 ではサポートされていません。
+3.  Azure Media Player は、Microsoft Edge、Chrome、および Firefox ブラウザーでスプライトをサポートしています。 VTT 解析は IE11 ではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

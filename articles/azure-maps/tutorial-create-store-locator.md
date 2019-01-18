@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6a9b8e25b8c64d39606ee5c2582098839e349630
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317910"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189764"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -109,7 +109,7 @@ ms.locfileid: "52317910"
 
 ユーザー インターフェイスを作成するには、次のコードを *index.html* に追加します。
 
-1. *index.html* の `head` に次の `meta` タグを追加します。 これらのタグで文字セット (UTF-8) を定義し、Internet Explorer と Edge に最新のブラウザー バージョンを使用するよう伝え、レスポンシブ レイアウトに適したビューポートを指定しています。
+1. *index.html* の `head` に次の `meta` タグを追加します。 これらのタグで文字セット (UTF-8) を定義し、Internet Explorer と Microsoft Edge に最新のブラウザー バージョンを使用するよう伝え、レスポンシブ レイアウトに適したビューポートを指定しています。
 
     ```HTML
     <meta charset="utf-8" /> 

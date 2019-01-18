@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964119"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720817"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
@@ -71,13 +71,13 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
    ![Azure AD のプロパティ - スクリーンショット](./media/security-center-management-groups/aad-properties.png)
 
-3. **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** のスイッチを **[はい]** に設定します。
+3. **Azure リソースのアクセス管理**の下でスイッチを **[はい]** に設定します。
 
    ![[全体管理者は、Azure サブスクリプションと管理グループを管理できます] - スクリーンショット](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - スイッチを **[はい]** に設定すると、全体管理者アカウント (現在ログインしているユーザー) は、ルート スコープ (`/`) にある Azure RBAC のユーザー アクセス管理者ロールに追加されます。これで、Azure AD テナントに関連付けられているすべての Azure サブスクリプションについて表示およびレポートできるアクセス権が付与されます。
+   - スイッチを [はい] に設定すると、Azure RBAC のルート範囲 (/) でユーザー アクセス管理者ロールが割り当てられます。 この割り当てにより、この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てるアクセス許可が付与されます。 このスイッチは、Azure AD で全体管理者ロールが割り当てられたユーザーのみ利用できます。
 
-   - **[いいえ]** にスイッチを設定すると、全体管理者アカウント (現在ログインしているユーザー) は Azure RBAC のユーザー アクセス管理者ロールから削除されます。 Azure AD テナントに関連付けられているすべての Azure サブスクリプションは表示できません。アクセス権が付与されている Azure サブスクリプションのみを表示および管理できます。
+  - スイッチを [いいえ] に設定すると、Azure RBAC のユーザー アクセス管理者ロールがユーザー アカウントから削除されます。 この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てることができなくなります。 自分にアクセス権が割り当てられている Azure サブスクリプションと管理グループのみを表示し、管理できます。
 
 4. **[保存]** をクリックして設定を保存します。
 

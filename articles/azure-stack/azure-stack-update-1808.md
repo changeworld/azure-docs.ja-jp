@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568235"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754545"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -43,7 +43,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 - **すべての Azure Stack 環境は、協定世界時 (UTC) のタイム ゾーン形式を使用するようになりました。**  すべてのログ データと関連情報は、UTC 形式で表示されます。 UTC を使用するようにインストールされていない以前のバージョンから更新する場合は、UTC を使用するように環境が更新されます。 
 
 <!-- 2437250  | IS  ASDK --> 
-- **Managed Disks がサポートされます。** Azure Stack 仮想マシンと仮想マシン スケール セットで Managed Disks を使用できるようになりました。 詳しくは、「[Azure Stack Managed Disks: 違いと考慮事項](/azure/azure-stack/user/azure-stack-managed-disk-considerations)」を参照してください。
+- **Managed Disks がサポートされます。** Azure Stack 仮想マシンと仮想マシン スケール セットで Managed Disks を使用できるようになりました。 詳細については、「[Azure Managed Disks: 違いと考慮事項](/azure/azure-stack/user/azure-stack-managed-disk-considerations)」をご覧ください。
 
 <!-- 2563799  | IS  ASDK --> 
 - **Azure Monitor**。 Azure 上の Azure Monitor と同様、Azure Monitor 上の Azure Stack では、ほとんどのサービスに対して標準となるインフラストラクチャのメトリックおよびログを提供します。 詳細については、「[Azure Stack 上の Azure Monitor](/azure/azure-stack/user/azure-stack-metrics-azure-data)」を参照してください。
@@ -163,7 +163,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 > Azure Stack デプロイを、拡張機能ホスト用に準備します。 次のガイダンスを使用して、システムを準備します: 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」。
 
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
-- [KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.7.113](https://support.microsoft.com/help/4471992/)
+- [KB 4481066 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
@@ -220,7 +220,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
    
   [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試みることができます。
 
-  この問題は最新の [1808 修正プログラム リリース](https://support.microsoft.com/help/4471992/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。
+  この問題は最新の [1808 修正プログラム リリース](https://support.microsoft.com/help/4481066/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。
 
 <!-- 1264761 - IS ASDK --> 
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
@@ -244,7 +244,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 - 以下の詳細情報を含む **Storage** コンポーネントのアラートが表示される場合があります。
 
    - 名前: Storage サービスの内部通信エラー  
-   - 重大度: 緊急  
+   - 重大度: 重大  
    - コンポーネント: Storage  
    - 説明: 次のノードに要求を送信するときに Storage サービスの内部通信エラーが発生しました。  
 
@@ -253,8 +253,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 <!-- 2368581 - IS. ASDK --> 
 - Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが**ファブリック VM の作成エラー**でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。
 
-
-### <a name="compute"></a>コンピューティング
+### <a name="compute"></a>Compute
 
 <!-- 3164607 – IS, ASDK -->
 - デタッチしたディスクを同じ名前と LUN で同じ仮想マシン (VM) に再アタッチすると、**"データ ディスク 'datadisk' は、VM 'vm1' にアタッチできません"** というようなエラーで失敗します。 このエラーは、現在ディスクがデタッチされているか、直前のデタッチ操作が失敗したために発生します。 ディスクが完全にデタッチされるまで待ってから再試行するか、ディスクをもう一度明示的に削除/デタッチしてください。 回避策は、別の名前で再アタッチするか、別の LUN に再アタッチすることです。 
@@ -269,18 +268,24 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
       2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4471992/)を適用します。
+      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4481066/)を適用します。
       2. [この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
       
 <!-- 3179561 - IS --> 
 - [Azure Stack の使用状況に関する FAQ](azure-stack-usage-related-faq.md#managed-disks) のページで説明しているように、Managed Disks の使用状況は、時間単位で報告されます。 ただし、9 月 27 日以前の Managed Disks の使用状況に対しては、不正確に課金される可能性があるため、Azure Stack の課金では、代わりに月額料を使用しています。 課金の問題が解決するまで、9 月 27 日以降の Managed Disks の課金を一時的に中断しています。 Managed Disks の使用状況に対して不正確な課金があった場合、Microsoft 課金サポートまでお問合せください。
 Azure Stack の課金 API から生成された使用状況レポートでは正しい数量が表示され、利用可能になっています。
 
+<!-- 3507629 - IS, ASDK --> 
+- マネージド ディスクは 2 つの新しい[コンピューティング クォータの種類](azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。
+
+   - 更新プログラム 1808 より前に作成されたクォータでは、マネージド ディスクのクォータは 2048 GiB が割り当てられているものの、管理者ポータルでは値 0 が表示されます。 値は実際のニーズに基づいて増減でき、新しく設定したクォータ値が 2048 GiB の既定値をオーバーライドします。
+   - クォータ値を 0 に更新することは、2048 GiB の既定値と同じことになります。 この問題を回避するには、クォータ値を 1 に設定します。
+
 <!-- 2869209 – IS, ASDK --> 
 - [**Add-AzsPlatformImage** コマンドレット](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)を使用する場合は、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用する必要があります。 ディスクのローカル パスを使用した場合、次のエラーが出てコマンドレットが失敗します: *長時間実行処理が状態 '失敗' で失敗しました*。 
 
 <!--  2966665 – IS, ASDK --> 
-- SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン(DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーが出て失敗します: "*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません*"
+- SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗します:*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。*
 
    この問題を回避するには、*Premium_LRS ディスク*の代わりに *Standard_LRS* データ ディスクをご使用ください。 *Standard_LRS* データ ディスクを使用しても、IOPS または課金コストは変わりません。 
 
@@ -309,7 +314,7 @@ Azure Stack の課金 API から生成された使用状況レポートでは正
 
    VM の CPU 使用率グラフを表示するには、**メトリック** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
-
+- SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワード ベースの認証を使用してください。
 
 ### <a name="networking"></a>ネットワーク  
 
@@ -355,8 +360,10 @@ Azure Stack の課金 API から生成された使用状況レポートでは正
 
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
-Azure Stack 1808 更新プログラム パッケージは、[ここから](https://aka.ms/azurestackupdatedownload)ダウンロードできます。
-  
+
+Azure Stack 1808 更新プログラム パッケージは、[ここから](https://aka.ms/azurestackupdatedownload)ダウンロードできます。 
+
+Azure Stack デプロイでは、接続されたシナリオに限り、セキュリティで保護されたエンドポイントが定期的にチェックされ、お客様のクラウド用の更新プログラムが入手可能かどうかが自動的に通知されます。 詳細については、[Azure Stack の更新プログラムの管理](azure-stack-updates.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持するために必要な作業について確認するには、「[Azure Stack サービス ポリシー](azure-stack-servicing-policy.md)」を参照してください。  

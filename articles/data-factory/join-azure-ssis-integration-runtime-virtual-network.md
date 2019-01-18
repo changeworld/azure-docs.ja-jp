@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/08/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8693c5e255020e30c2e8ed52a3199712089e4503
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094597"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119086"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
@@ -74,6 +73,10 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 
 -   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。 
 
+Azure-SSIS IR に必要な接続を示す図を次に示します。
+
+![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
+
 ### <a name="perms"></a> 必要なアクセス許可
 
 Azure-SSIS 統合ランタイムを作成するユーザーは、次のアクセス許可を持っている必要があります。
@@ -107,7 +110,7 @@ Azure-SSIS 統合ランタイムによって参加した仮想ネットワーク
 ### <a name="nsg"></a> ネットワーク セキュリティ グループ
 Azure-SSIS 統合ランタイムが使用するサブネットにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。 
 
-| 方向 | トランスポート プロトコル | ソース | 送信元ポート範囲 | 変換先 | 送信先ポート範囲 | 説明 |
+| 方向 | トランスポート プロトコル | ソース | 送信元ポート範囲 | 宛先 | 送信先ポート範囲 | 説明 |
 |---|---|---|---|---|---|---|
 | 受信 | TCP | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
 | 送信 | TCP | VirtualNetwork | * | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | 443 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
@@ -198,19 +201,21 @@ Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネッ
 
 1. **MicrosoftAzureBatch** を仮想ネットワークの**従来の仮想マシン共同作成者**ロールに参加させます。 
 
-    a. 左側メニューの **[アクセス制御 (IAM)]** を選び、ツール バーの **[追加]** を選びます。 
+    a. 左側のメニューの **[アクセス制御 (IAM)]** を選択し、**[ロール割り当て]** タブを選択します。 
 
     ![[アクセス制御] ボタンと [追加] ボタン](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. **[アクセス許可の追加]** ページで、**[ロール]** の **[従来の仮想マシン共同作成者]** を選びます。 **[選択]** ボックスに **ddbf3205-c6bd-46ae-8127-60eb93363864** を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選びます。 
+    b. **[ロールの割り当ての追加]** を選択します。
 
-    ![[アクセス許可の追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+    c. **[ロールの割り当ての追加]** ページで、**[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに **ddbf3205-c6bd-46ae-8127-60eb93363864** を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選びます。 
 
-    c. **[保存]** を選んで設定を保存し、ページを閉じます。 
+    ![[ロールの割り当ての追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    d. **[保存]** を選んで設定を保存し、ページを閉じます。 
 
     ![アクセス設定の保存](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    d. 共同作成者の一覧に **Microsoft Azure Batch** があることを確認します。 
+    e. 共同作成者の一覧に **Microsoft Azure Batch** があることを確認します。 
 
     ![Azure Batch アクセスの確認](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 

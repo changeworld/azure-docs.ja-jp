@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c172519984cce765217a713b276db5ccc8f67183
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297470"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558602"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Azure Logic Apps と Azure Functions を使用して初めてのサーバーレス アプリを構築する - Visual Studio
 
@@ -36,23 +36,21 @@ Visual Studio でサーバーレス アプリを構築するには、次のも�
 
 * [Azure Logic Apps Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551) または [Visual Studio 2015 バージョン](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio)
 
-  Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
-  インストールが完了したら、必ず Visual Studio を再起動してください。 
+  Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 インストールが完了したら、必ず Visual Studio を再起動してください。
 
 * ローカルで関数をデバッグするための [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)
 
 * Visual Studio に組み込まれたロジック アプリ デザイナーを使用するときの Web へのアクセス
 
-  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 
-  たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
+  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
 
 ## <a name="create-resource-group-project"></a>リソース グループ プロジェクトを作成する
 
 最初に、サーバーレス アプリ用の [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を作成します。 Azure では、リソース グループ内にリソースを作成します。リソース グループは、アプリ全体に対するリソースを 1 つの資産として整理、管理、展開するために使用する論理コレクションです。 Azure のサーバーレス アプリの場合、リソース グループには Azure Logic Apps と Azure Functions の両方に対するリソースが含まれています。 Azure リソース グループとリソースについて詳しくは、[こちら](../azure-resource-manager/resource-group-overview.md)を参照してください。
 
-1. Visual Studio を起動し、Azure アカウントでサインインします。 
+1. Visual Studio を起動し、Azure アカウントでサインインします。
 
-1. **[ファイル]** メニューで、**[新規作成]** > **[プロジェクト]** の順に選択します  
+1. **[ファイル]** メニューで、**[新規作成]** > **[プロジェクト]** の順に選択します 
 
    ![Visual Studio で新しいプロジェクトを作成する](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
@@ -60,26 +58,23 @@ Visual Studio でサーバーレス アプリを構築するには、次のも�
 
    **[クラウド]** カテゴリまたは **[Azure リソース グループ]** プロジェクトが存在しない場合は、Azure SDK for Visual Studio をインストールしたことを確認してください。
 
-1. プロジェクトの名前と場所を指定して、**[OK]** を選択します。 
+1. プロジェクトの名前と場所を指定して、**[OK]** を選択します。
 
-   テンプレートを選択するように求められます。 
-   空白、ロジック アプリ、または他のテンプレートで始めることもできますが、この例では、ロジック アプリと Azure 関数の呼び出しを含むサーバーレス アプリを構築するための Azure クイックスタート テンプレートを使用します。
+   テンプレートを選択するように求められます。 空白、ロジック アプリ、または他のテンプレートで始めることもできますが、この例では、ロジック アプリと Azure 関数の呼び出しを含むサーバーレス アプリを構築するための Azure クイックスタート テンプレートを使用します。
 
    Visual Studio でロジック アプリのみを作成するには、**ロジック アプリ** テンプレートを選択します。 このテンプレートでは、ソリューションを Azure リソース グループに事前に展開する必要なしにロジック アプリ デザイナーで開かれる空のロジック アプリが作成されます。
 
-1. **[この場所からテンプレートを参照します]** で、**[Azure クイックスタート (github/Azure/azure-quickstart-templates)]** を選択します。 
+1. **[この場所からテンプレートを参照します]** で、**[Azure クイック スタート (GitHub/Azure/azure-quickstart-templates)]** を選択します。
 
-1. 検索ボックスにフィルターとして「logic-app」と入力し、**101-logic-app-and-function-app** サーバーレス クイックスタート テンプレートを選択して、**[OK]** を選択します。
+1. 検索ボックスにフィルターとして「logic-app」と入力し、次のサーバーレス クイック スタート テンプレートを選択して、**[OK]** を選択します。**101-logic-app-and-function-app**
 
    ![Azure クイックスタート テンプレートを選択する](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
-   Visual Studio で、リソース グループ プロジェクト用のソリューションが作成されて開かれます。 
-   選択したクイック スタート テンプレートにより、リソース グループ プロジェクト内に `azuredeploy.json` という名前の配置テンプレートが作成されます。 
-   この配置テンプレートには、HTTP 要求でトリガーし、Azure 関数を呼び出し、HTTP 応答として結果を返す、簡単なロジック アプリの定義が含まれています。 
+   Visual Studio で、リソース グループ プロジェクト用のソリューションが作成されて開かれます。 選択したクイック スタート テンプレートにより、リソース グループ プロジェクト内に `azuredeploy.json` という名前の配置テンプレートが作成されます。 この配置テンプレートには、HTTP 要求でトリガーし、Azure 関数を呼び出し、HTTP 応答として結果を返す、簡単なロジック アプリの定義が含まれています。
    
    ![新しいサーバーレス ソリューション](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
-1. 次に、配置テンプレートを開いてサーバーレス アプリのリソースを確認するには、先にソリューションを Azure に展開する必要があります。 
+1. 次に、配置テンプレートを開いてサーバーレス アプリのリソースを確認するには、先にソリューションを Azure に展開する必要があります。
 
 ## <a name="deploy-your-solution"></a>ソリューションのデプロイ
 
@@ -97,8 +92,7 @@ Visual Studio でロジック アプリ デザイナーを使用してロジッ�
 
    ![ロジック アプリと関数アプリの名前を指定する](./media/logic-apps-serverless-get-started-vs/logic-function-app-name-parameters.png)
 
-   Visual Studio で指定したリソース グループへの展開が始まると、Visual Studio の **[出力]** ウィンドウにソリューションの展開の状態が表示されます。 
-   展開が終了すると、ロジック アプリが Azure portal に存在するようになります。
+   Visual Studio で指定したリソース グループへの展開が始まると、Visual Studio の **[出力]** ウィンドウにソリューションの展開の状態が表示されます。 展開が終了すると、ロジック アプリが Azure portal に存在するようになります。
 
 ## <a name="edit-logic-app-in-visual-studio"></a>Visual Studio でロジック アプリを編集する
 
@@ -122,17 +116,17 @@ JavaScript、Python、F#、PowerShell、Batch、または Bash を使用して F
 
 ## <a name="deploy-functions-from-visual-studio"></a>Visual Studio から関数を展開する
 
-ここで使用している配置テンプレートでは、`azuredeploy.json` ファイルの変数で指定されている Git リポジトリから、ソリューション内に作成した Azure 関数が展開されます。 ソリューションで Functions プロジェクトを作成した場合、GitHub や Azure DevOps などの Git ソース管理にそのプロジェクトをチェックインしてから、テンプレートがその Azure 関数を展開するように `repo` 変数を更新します。
+ここで使用している配置テンプレートでは、`azuredeploy.json` ファイルの変数で指定されている Git リポジトリから、ソリューション内に作成した Azure 関数が展開されます。ソリューションで Functions プロジェクトを作成した場合、GitHub や Azure DevOps などの Git ソース管理にそのプロジェクトをチェックインしてから、テンプレートがその Azure 関数を展開するように `repo` 変数を更新します。
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>ロジック アプリを管理して実行履歴を表示する
 
-Azure に既に展開されているロジック アプリについても、Visual Studio から編集、管理、実行履歴の表示、無効化を行うことができます。 
+Azure に既に展開されているロジック アプリについても、Visual Studio から編集、管理、実行履歴の表示、無効化を行うことができます。
 
-1. Visual Studio の **[表示]** メニューで、**[Cloud Explorer]** を選択します。 
+1. Visual Studio の **[表示]** メニューで、**[Cloud Explorer]** を選択します。
 
 1. **[すべてのサブスクリプション]** で、管理するロジック アプリに関連付けられている Azure サブスクリプションを選択して、**[適用]** を選択します。
 
-1. **[Logic Apps]** でロジック アプリを選択します。 アプリのショートカット メニューで、**[Logic App Editor で開く]** を選択します。 
+1. **[Logic Apps]** でロジック アプリを選択します。 アプリのショートカット メニューで、**[Logic App Editor で開く]** を選択します。
 
 既に発行されているロジック アプリをリソース グループ プロジェクトにダウンロードできます。 したがって、Azure portal でロジック アプリの使用を始めた場合でも、Visual Studio でそのアプリをインポートして管理できます。 詳しくは、「[Visual Studio でロジック アプリを管理する](../logic-apps/manage-logic-apps-with-visual-studio.md)」をご覧ください。
 

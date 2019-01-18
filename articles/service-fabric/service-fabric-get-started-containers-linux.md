@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 1/4/2019
 ms.author: twhitney
-ms.openlocfilehash: 07c227c198166254eb130604685a4ba5884b783a
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e02acb0d283257658d4466295e3be323072210b5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299879"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062368"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -193,6 +193,11 @@ Service Fabric コンテナー アプリケーションを作成するには、�
    </ServiceManifestImport>
 ``` 
 
+リポジトリのパスワードを暗号化することをお勧めします。 手順については、「[Service Fabric アプリケーションでシークレットを管理する](service-fabric-application-secret-management.md)」を参照してください。
+
+### <a name="configure-cluster-wide-credentials"></a>クラスター全体の資格情報を構成する
+[こちらのドキュメント](
+service-fabric-get-started-containers.md#configure-cluster-wide-credentials)を参照してください
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
 6.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
@@ -210,7 +215,7 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 次のリソースのリソースの制限を設定できます。Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み)。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>

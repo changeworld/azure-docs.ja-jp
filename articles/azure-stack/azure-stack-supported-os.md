@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.reviewer: unknown
+ms.openlocfilehash: cd44aa1dcc0ac5f97d39dee91fb547a333cb6ccf
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405599"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247709"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-## <a name="windows"></a>Windows
+## <a name="windows"></a> Windows
 
 Azure Stack は、次の表に示す Windows ゲスト オペレーティング システムをサポートしています。
 
@@ -47,7 +47,7 @@ Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセン�
 
 Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
 
-## <a name="linux"></a>Linux
+## <a name="linux"></a> Linux
 
 Marketplace で入手可能として示されている Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。 Azure Stack に独自のイメージを持ち込む場合は、「[Azure Stack への Linux イメージの追加](azure-stack-linux.md)」のガイドラインに従ってください。
 
@@ -69,7 +69,7 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 | SLES 12SP3 | 64 ビット | SUSE | はい |
 | Ubuntu 14.04-LTS | 64 ビット | Canonical | はい |
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | はい |
-| Ubuntu 18.04-LTS | 64 ビット | Canonical | はい |
+| Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
 
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
 
@@ -77,5 +77,5 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 Azure Stack Marketplace の詳細については、次の記事をご覧ください。
 
-[Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
-[Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)
+- [Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
+- [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)

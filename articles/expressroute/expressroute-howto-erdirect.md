@@ -1,18 +1,19 @@
 ---
-title: Azure ExpressRoute Direct を構成する方法 | Microsoft Docs
-description: このページは、ExpressRoute Direct (プレビュー) を構成するときに役立ちます。
+title: ExpressRoute Direct の構成 - Azure | Microsoft Docs
+description: このページは、ExpressRoute Direct (プレビュー) の構成に役立ちます。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
-ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: be20f01511990ef8de6ce6e0e13ddfa99b004dcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959675"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076219"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>ExpressRoute Direct (プレビュー) を構成する方法
 
@@ -68,7 +69,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 3. 上記で表示された場所に使用可能な帯域幅があるかどうか確認します。
 
   ```powershell
-  Get-AzureRMExpressRoutePortsLocations -Name "Equinix-San-Jose-SV1"
+  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **出力例**
@@ -228,7 +229,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 これはサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニング済み帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。使用済み帯域幅は、基になる物理インターフェイスの物理的な使用量です。
 
-ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 40 Gbps と 100 Gbps です。
+ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 次のとおりです。40 Gbps と 100 Gbps です。
 
 Standard 回線または Premium 回線を作成できます。 Standard 回線は料金に含まれていますが、Premium 回線には選択した帯域幅に基づいた費用がかかります。 回線は従量制のみで作成でき、無制限は ExpressRoute Direct ではサポートされません。
 
@@ -238,7 +239,7 @@ ExpressRoute Direct リソース上に回線を作成します。
   New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  他の帯域幅には、5.0、10.0、および 40.0 が含まれます
+  他の帯域幅には、5.0、10.0、および 40.0 が含まれます。
 
   **出力例:**
 

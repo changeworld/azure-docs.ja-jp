@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.openlocfilehash: 613001c8495ba6c6a259063b8d8d3bce21b66960
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 46d113d06ee9d59cd3c3143b87c9166c9bd09fdc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336426"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101805"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 
@@ -31,7 +31,7 @@ ms.locfileid: "53336426"
 
 OMS ポータルで作成するカスタム ダッシュボードはすべて、OMS Mobile App でも利用できます。 アプリの詳細については、以下のページを参照してください。
 
-* [Microsoft ストアの OMS モバイル アプリ](http://www.windowsphone.com/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)
+* [Microsoft ストアの OMS モバイル アプリ](https://www.windowsphone.com/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)
 * [Apple iTunes の OMS モバイル アプリ](https://itunes.apple.com/app/microsoft-operations-management/id1042424859?mt=8)
 
 ![モバイル ダッシュボード](./media/dashboards/oms-search-mobile.png)
@@ -72,7 +72,7 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 | ![メトリック](./media/dashboards/oms-dashboards-metric.png) |ログ検索結果の合計ヒット数を数値としてタイルに表示します。 メトリックのタイルでは、しきい値に達したときに、タイルを強調表示するしきい値を設定することができます。 |
 | ![line](./media/dashboards/oms-dashboards-line.png) |保存されたログ検索結果のヒット数のタイムラインを折れ線グラフとして表示します。 |
 
-### <a name="threshold"></a>しきい値
+### <a name="threshold"></a>Threshold
 メトリックの視覚エフェクトを使用して、タイルのしきい値を作成できます。 タイルにしきい値の値を作成するを選択します。 値が選択したしきい値未満、または以上の場合に強調表示するかどうかを選択し、しきい値を設定します。
 
 ## <a name="organizing-the-dashboard"></a>ダッシュ ボードの整理

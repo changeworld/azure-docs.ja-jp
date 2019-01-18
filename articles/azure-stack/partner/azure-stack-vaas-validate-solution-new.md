@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 777609b89bc08cd61489d2c3a3669ec07ccbc372
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c8a723137761c12ab335af79dfffb9e124348eac
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647014"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246604"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>新しい Azure Stack ソリューションの検証
 
@@ -35,32 +36,53 @@ Azure Stack ソリューションは、Windows Server ロゴ認定要件に合�
 ## <a name="create-a-solution-validation-workflow"></a>ソリューションの検証ワークフローの作成
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
-2. **[Solution Validations]\(ソリューションの検証\)** タイルの **[開始]** を選択します。
+
+3. **[Solution Validations]\(ソリューションの検証\)** タイルの **[開始]** を選択します。
 
     ![ソリューションの検証ワークフローのタイル](media/tile_validation-solution.png)
 
-3. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
-4. **ソリューション構成**を選択します。
+4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+
+5. **ソリューション構成**を選択します。
     - **[最小]**: ソリューションは、サポートされる最小ノード数で構成されます。
     - **[最大]**: ソリューションは、サポートされる最大ノード数で構成されます。
-5. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![ソリューションの検証の情報](media/workflow_validation-solution_info.png)
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > 環境パラメーターは、ワークフローを作成した後は変更できません。
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
-8. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     テストの概要ページにリダイレクトされます。
 
-## <a name="execute-solution-validation-tests"></a>ソリューションの検証テストの実行
+## <a name="run-solution-validation-tests"></a>ソリューションの検証テストの実行
 
 **ソリューションの検証テストの概要**ページには、検証を完了するために必要なテストの一覧が表示されます。
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+検証ワークフローでは、テストを**スケジュール設定**するときに、ワークフローの作成時に指定したワークフロー レベルの一般的なパラメーターを使用します (「[Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター](azure-stack-vaas-parameters.md)」を参照してください)。 テスト パラメーター値のいずれかが無効になった場合は、[ワークフロー パラメーターの変更](azure-stack-vaas-monitor-test.md#change-workflow-parameters)に関するセクションの手順に従ってパラメーター値を再度指定する必要があります。
+
+> [!NOTE]
+> 既存のインスタンスに対して検証テストをスケジュール設定すると、ポータルの古いインスタンスに代わる新しいインスタンスが作成されます。 古いインスタンスのログは保持されますが、ポータルからアクセスできません。  
+テストが正常に完了すると、**[スケジュール]** アクションが無効になります。
+
+1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
+2. 以下のテストを選択します。
+    - Cloud Simulation Engine (クラウド シミュレーション エンジン)
+    - Compute SDK Operational Suite (コンピューティング SDK 操作スイート)
+    - Disk Identification Test (ディスク識別テスト)
+    - KeyVault Extension SDK Operational Suite (KeyVault 拡張機能 SDK 操作スイート)
+    - KeyVault SDK Operational Suite (KeyVault SDK 操作スイート)
+    - Network SDK Operational Suite (Network SDK 操作スイート)
+    - Storage Account SDK Operational Suite (ストレージ アカウント SDK 操作スイート)
+
+3. テスト インスタンスをスケジュール設定するためのプロンプトを開くには、コンテキスト メニューの **[スケジュール]** を選択します。
+
+4. テスト パラメーターを確認し、**[送信]** を選択してテストの実行をスケジュール設定します。
 
 ![ソリューションの検証テストをスケジュール設定する](media/workflow_validation-solution_schedule-test.png)
 

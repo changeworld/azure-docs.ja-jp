@@ -3,17 +3,17 @@ title: Ansible を使用して Azure 内の Linux 仮想マシンを管理する
 description: Ansible を使用して Azure 内の Linux 仮想マシンを管理する方法について説明します。
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ef19043465cb67401786cddec4972f67231995bb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251323"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077812"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure 内の Linux 仮想マシンを管理する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Azure 仮想マシンも、他のリソースと同様、Ansible を使って管理することができます。 この記事では、Ansible プレイブックを使って Linux 仮想マシンを起動したり停止させたりする方法について説明します。 
@@ -141,4 +141,4 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
-> [Ansible を使用した Azure の動的インベントリの管理](/articles/ansible/ansible-manage-azure-dynamic-inventories)
+> [Ansible を使用した Azure の動的インベントリの管理](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

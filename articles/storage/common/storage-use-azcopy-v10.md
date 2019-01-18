@@ -1,6 +1,6 @@
 ---
 title: AzCopy v10 (プレビュー) を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs
-description: AzCopy v10 (プレビュー) ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
+description: AzCopy v10 (プレビュー) ユーティリティを使用して、BLOB、データ レイク、ファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168234"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212500"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>AzCopy v10 (プレビュー) を使用してデータを転送する
 
@@ -54,18 +54,24 @@ AzCopy v10 では、インストールは必要ありません。 任意のコ�
 ## <a name="authentication-options"></a>認証オプション
 
 AzCopy v10 では、Azure Storage での認証時に、次のオプションを使用することができます。
-- Azure Active Directory。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。
-- BLOB のパスに追加する必要がある SAS トークン。 Azure Portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestorageblobsastoken?view=azurermps-6.9.0)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+- **Azure Active Directory [BLOB と ADLS Gen2 でサポート]**。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。
+- **SAS トークン [BLOB およびファイル サービスでサポート]**。 SAS トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure Portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
 
-AzCopy v10 は、単純な自己文書化された構文を備えています。 一般的な構文は次のとおりです。
+AzCopy v10 は、単純な自己文書化された構文を備えています。 Azure Active Directory にログインした場合、一般的な構文は次のようになります。
 
 ```azcopy
 .\azcopy <command> <arguments> --<flag-name>=<flag-value>
-# Example:
+# Examples if you have logged into the Azure Active Directory:
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/containersastoken" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
+
+# Examples if you are using SAS tokens to authenticate:
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
 ```
 
 使用可能なコマンドの一覧を取得する方法を次に示します。
@@ -84,6 +90,28 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 .\azcopy cp -h
 ```
 
+## <a name="create-a-blob-container-or-file-share"></a>BLOB コンテナーまたはファイル共有を作成する 
+
+**BLOB コンテナーを作成する**
+
+```azcopy
+.\azcopy make "https://account.blob.core.windows.net/container-name"
+```
+
+**ファイル共有を作成する**
+
+```azcopy
+.\azcopy make "https://account.file.core.windows.net/share-name"
+```
+
+**ADLS Gen2 を使用して BLOB コンテナーを作成する**
+
+BLOB ストレージ アカウントで階層型名前空間を有効にしている場合、次のコマンドを使用し、新しいファイル システム (BLOB コンテナー) を作成して、それにファイルをアップロードすることができます。
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name"
+```
+
 ## <a name="copy-data-to-azure-storage"></a>Azure Storage にデータをコピーする
 
 コピー元からコピー先にデータを転送するには、copy コマンドを使用します。 コピー元/コピー先には以下を使用できます。
@@ -92,22 +120,19 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 - Azure File/ディレクトリ/ファイル共有 URI
 - Azure Data Lake Storage Gen2 ファイル システム/ディレクトリ/ファイル URI
 
-> [!NOTE]
-> 現時点では、AzCopy v10 は 2 つのストレージ アカウント間のブロック BLOB のみのコピーをサポートしています。
-
 ```azcopy
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
 # Using alias instead
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-次のコマンドは、C:\local\path フォルダーの下にあるすべてのファイルを再帰的にコンテナー "mycontainer1" にアップロードします。
+次のコマンドでは、`C:\local\path` フォルダーの下にあるすべてのファイルを、そこで `path` ディレクトリを作成する `mycontainer1` コンテナーに再帰的にアップロードします。
 
 ```azcopy
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
-次のコマンドは、C:\local\path フォルダーにあるすべてのファイルを (サブディレクトリに再帰しないで) コンテナー "mycontainer1" にアップロードします。
+次のコマンドでは、`C:\local\path` フォルダーにあるすべてのファイルを、(サブディレクトリに再帰せずに) `mycontainer1` コンテナーにアップロードします。
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
@@ -121,7 +146,7 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 
 ## <a name="copy-data-between-two-storage-accounts"></a>2 つのストレージ アカウント間でデータをコピーする
 
-2 つのストレージ アカウント間でデータをコピーするには、[Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API を使用し、クライアント マシンのネットワーク帯域幅は使用しません。 データは 2 つの Azure Storage サーバー間で直接コピーされ、コピー操作は AzCopy によって調整されます。 
+2 つのストレージ アカウント間でデータをコピーするには、[Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API を使用し、クライアント マシンのネットワーク帯域幅は使用しません。 データは 2 つの Azure Storage サーバー間で直接コピーされ、コピー操作は AzCopy によって調整されます。 このオプションは現在、Blob ストレージでのみ使用可能です。
 
 2 つのストレージ アカウント間でデータをコピーするには、次のコマンドを使用します。
 ```azcopy
@@ -133,9 +158,9 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>VHD イメージをストレージ アカウントにコピーする
 
-既定では、AzCopy v10 はデータをブロック BLOB にアップロードします。 ただし、コピー元ファイルの拡張子が vhd の場合は、AzCopy v10 は既定でページ BLOB にアップロードします。 この動作は構成できません。
+既定では、AzCopy v10 はデータをブロック BLOB にアップロードします。 ただし、コピー元ファイルの拡張子が vhd の場合は、AzCopy v10 は既定でページ BLOB にアップロードします。 現在、この動作は構成できません。
 
-## <a name="sync-incremental-copy-and-delete"></a>同期: 増分コピーと削除
+## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>同期: 増分コピーと削除 (Blob ストレージのみ)
 
 > [!NOTE]
 > sync コマンドでは同期元から同期先にコンテンツが同期され、これには同期元に存在しないファイルの同期先での削除が含まれます。 目的の同期先であることを確認してください。
@@ -153,7 +178,7 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-このコマンドでは、最終変更タイムスタンプに基づいて、同期元を同期先に増分的に同期できます。 同期元でファイルを追加または削除すると、AzCopy v10 は同期先で同じことを行います。
+このコマンドでは、最終変更タイムスタンプに基づいて、同期元を同期先に増分的に同期できます。 同期元でファイルを追加または削除すると、AzCopy v10 は同期先で同じことを行います。 削除する前に、AzCopy でファイルの削除の確認が求められます。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
@@ -220,6 +245,10 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
+
+### <a name="change-the-default-log-level"></a>既定のログ レベルを変更する
+
+既定では、AzCopy ログ レベルは INFO に設定されます。 ディスク領域を節約するためにログ詳細度を下げたい場合は、``--log-level`` オプションを使用して設定を上書きます。 使用可能なログ レベルは、DEBUG、INFO、WARNING、ERROR、PANIC、FATAL です
 
 ## <a name="next-steps"></a>次の手順
 

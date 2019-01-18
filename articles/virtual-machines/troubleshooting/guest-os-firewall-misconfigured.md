@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137839"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262287"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM のゲスト OS のファイアウォールが正しく構成されていない
 
@@ -68,7 +68,7 @@ ms.locfileid: "53137839"
 *   アプリケーションで使用されているローカル ポートを使用して照会します。
 
     ```cmd
-    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICAITON PORT>)" -context 9,4 | more
+    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
 *   アプリケーションで使用されているローカル IP アドレスを使用して照会します。

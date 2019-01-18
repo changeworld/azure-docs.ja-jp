@@ -14,16 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223074"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753967"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 
 この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
+
+>[!Note]
+>Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
 
 このガイドでは、次のトピックについて説明します。 
 *   Marketplace の概要とそのしくみ 
@@ -60,7 +63,7 @@ Marketplace から提供される分析情報および分析を通じて、リ�
 
 Marketplace に新しく参加することで、パートナーは、Marketplace でビジネスを成長させるための多様な特典を無料で手に入れることができます。 これらの特典は次のカテゴリに分類されます。 
 
-*   技術面: アプリケーションの立ち上げ準備に必要なものすべて。 技術サポート、アプリケーション設計、アーキテクチャ設計から、開発およびテスト用の Azure クレジットまで。 
+*   技術: アプリケーションの立ち上げ準備に必要なものすべて。 技術サポート、アプリケーション設計、アーキテクチャ設計から、開発およびテスト用の Azure クレジットまで。 
 
 *   共同マーケティング: プランの立ち上げに必要なものすべて。 ソリューションの立ち上げとプロモーションを支援する、無料の Microsoft Go-To-Market Launch Fundamentals へのアクセス。 その他の Microsoft マーケティング キャンペーンへの参加資格や、Marketplace でのフィーチャー機会も含まれる場合があります。
 

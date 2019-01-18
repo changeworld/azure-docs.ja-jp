@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/29/2018
-ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/18/2018
+ms.openlocfilehash: 2be5c8ddf6928d5529c2eb08a6d64bd64b8445de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864946"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631976"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -31,9 +31,9 @@ ms.locfileid: "52864946"
 > チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 このチュートリアルは、**Azure SQL Database Managed Instance** には適用されません。
 
 ## <a name="unrestricted-administrative-accounts"></a>制限なしの管理者アカウント
-管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 SQL サーバー用にこれらの管理者アカウントを特定するには、Azure Portal を開き、SQL サーバーのプロパティに移動します。
+管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 お使いの SQL サーバーに対するこれらの管理者アカウントを確認するには、Azure portal を開き、お使いの SQL サーバーまたは SQL データベースの [プロパティ] タブに移動します。
 
-![SQL サーバーの管理者](./media/sql-database-manage-logins/sql-admins.png)
+![SQL サーバーの管理者](media/sql-database-manage-logins/sql-admins.png)
 
 - **サーバー管理者**   
 Azure SQL サーバーを作成する際に、**サーバー管理者ログイン**を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。   

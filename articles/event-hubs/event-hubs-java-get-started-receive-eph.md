@@ -1,20 +1,21 @@
 ---
-title: Java を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
-description: Java を使用して Event Hubs からの受信を開始する
+title: Java を使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs からイベントを受信する Java アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/26/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240634"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081963"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
@@ -44,11 +45,11 @@ EventProcessorHost を使用するには、[Azure ストレージ アカウン�
 1. [Azure Portal][Azure portal] にログインし、画面左側の **[+ リソースの作成]** をクリックします。
 2. **[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、**[作成]** をクリックします。
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![[ストレージ アカウントの作成]](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キー]** をクリックします。
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![アクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
     key1 の値を一時的な場所にコピーします。 このチュートリアルの後の方で、それを使用します。
 
@@ -277,7 +278,7 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 チェックポイント マネージャー (com.microsoft.azure.eventprocessorhost.ICheckpointManager) のカスタム実装を使用します。
 
-既定のチェックポイントのメカニズムをカスタム実装内でオーバーライドし、独自のデータ ストア (SQL Server、CosmosDB、Redis Cache など) を基盤として独自のチェックポイントを実装します。 チェックポイント マネージャーの実装の基盤として使用するストアには、コンシューマー グループのイベントを処理するすべての EPH インスタンスからアクセスできるストアを使用することをお勧めします。
+既定のチェックポイントのメカニズムを実装内でオーバーライドし、独自のデータ ストア (SQL Server、CosmosDB、Azure Redis Cache など) に基づいて独自のチェックポイントを実装できます。 チェックポイント マネージャーの実装の基盤として使用するストアには、コンシューマー グループのイベントを処理するすべての EPH インスタンスからアクセスできるストアを使用することをお勧めします。
 
 環境内で利用できるどのデータストアでも使用できます。
 

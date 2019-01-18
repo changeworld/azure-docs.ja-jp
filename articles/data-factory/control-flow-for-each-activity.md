@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42145801"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020780"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
@@ -73,11 +72,11 @@ ForEach アクティビティは、パイプライン内の繰り返し制御フ
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | ForEach アクティビティの名前。 | String | はい
-type | **ForEach** に設定する必要があります | String | はい
+type | **ForEach** に設定する必要があります | String | [はい]
 isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | Boolean | いいえ。 既定値は False です。
 batchCount | 並列実行の数を制御するために使用するバッチの数 (IsSequential が false に設定されている場合)。 | Integer (最大 50) | いいえ。 既定値は 20 です。
-項目 | 反復処理される JSON 配列を返す式。 | 式 (これは JSON 配列を返します) | はい
-アクティビティ | 実行されるアクティビティ。 | アクティビティの一覧 | はい
+項目 | 反復処理される JSON 配列を返す式。 | 式 (これは JSON 配列を返します) | [はい]
+アクティビティ | 実行されるアクティビティ。 | アクティビティの一覧 | [はい]
 
 ## <a name="parallel-execution"></a>並列実行
 **isSequential** が False に設定されている場合、このアクティビティは最大 20 の同時実行反復処理と並行して反復処理します。 この設定は、慎重に使用する必要があります。 同時実行反復処理が同じフォルダーではあっても、異なるファイルへの書き込みである場合、このアプローチは適切です。 同時実行反復処理がまったく同じファイルへの同時書き込みである場合、このアプローチはエラーの原因になる可能性があります。 
@@ -572,6 +571,17 @@ ForEach のすべての反復処理の出力を収集するための式は `@act
 ]
 
 ```
+
+## <a name="limitations-and-workarounds"></a>制限事項と回避策
+
+ForEach アクティビティと提案される回避策のいくつかの制限を次に示します。
+
+| 制限事項 | 対処法 |
+|---|---|
+| 別の ForEach ループ (または Until ループ) 内に ForEach ループを入れ子にすることはできません。 | 入れ子にされたループが含まれる内側パイプライン上で外側の ForEach ループが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
+| ForEach アクティビティには並列処理のために最大 50 の `batchCount` と、最大 100,000 の項目が含まれています。 | 内側パイプライン上で ForEach アクティビティが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
+| | |
+
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 

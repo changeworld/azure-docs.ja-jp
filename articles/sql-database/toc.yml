@@ -25,9 +25,9 @@ items:
       href: sql-database-managed-instance-configure-p2s.md
   - name: データを読み込む
     items:
-    - name: 単一データベースへの BACPAC のインポート
+    - name: BACPAC を新しいデータベースにインポートする
       href: sql-database-import.md
-    - name: マネージド インスタンスへのデータベース バックアップの復元
+    - name: データベース バックアップをマネージド インスタンスに復元する
       href: sql-database-managed-instance-get-started-restore.md
   - name: クエリ
     href: sql-database-connect-query.md
@@ -153,7 +153,7 @@ items:
     items:
     - name: 複数のマネージド インスタンスの概要
       href: sql-database-managed-instance-index.yml
-    - name: マネージド インスタンスの概要
+    - name: マネージド インスタンスの機能
       href: sql-database-managed-instance.md
     - name: Management API リファレンス
       href: sql-database-managed-instance-create-manage.md
@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: データベース アドバイザーのパフォーマンスに関する推奨事項
         href: sql-database-advisor.md
+  - name: データの読み込みと移動
+    items:
+    - name: SQL データ同期
+      href: sql-database-sync-data.md
+    - name: トランザクション レプリケーション
+      href: sql-database-managed-instance-transactional-replication.md
   - name: データベース機能
     items:
     - name: データベース機能
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: 移行後の SQL Database の管理
       href: sql-database-manage-after-migration.md
-    - name: トランザクション レプリケーションの構成
+    - name: レプリケーションの構成
       href: replication-to-sql-database.md
     - name: 脅威検出の構成
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: データ同期
       items:
-      - name: SQL データ同期
-        href: sql-database-sync-data.md
       - name: データ同期エージェント
         href: sql-database-data-sync-agent.md
       - name: スキーマ変更のレプリケート
@@ -617,6 +621,8 @@ items:
     href: /sql/t-sql/language-reference
   - name: REST
     href: /rest/api/sql/
+  - name: SQL 用 Resource Manager テンプレート
+    href: /azure/templates/microsoft.sql/allversions
   - name: SQL Server のツール
     href: /sql/tools/overview-sql-tools
   - name: SQL Server Management Studio (SSMS)
@@ -680,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: a33b66928e4c84f020856af1897b1bc40e351dc7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654123"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331403"

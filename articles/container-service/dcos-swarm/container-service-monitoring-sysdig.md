@@ -1,5 +1,5 @@
 ---
-title: Sysdig による Azure コンテナー サービス クラスターの監視
+title: (非推奨) Sysdig を使って Azure Container Service クラスターを監視します
 description: Sysdig を使って Azure コンテナー サービス クラスターを監視します。
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3b6781a6b87f9f11b341cf3cf2bcf6668b640c2b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162138"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992192"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Sysdig による Azure コンテナー サービス クラスターの監視
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>(非推奨) Sysdig を使って Azure Container Service クラスターを監視します
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Sysdig エージェントをデプロイします。 この構成を行うためには、Sysdig のアカウントが必要です。 
 

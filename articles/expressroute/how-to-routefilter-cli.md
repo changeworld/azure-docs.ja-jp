@@ -1,26 +1,18 @@
 ---
-title: 'Azure ExpressRoute の Microsoft ピアリングにルート フィルターを構成する: CLI | Microsoft Docs'
+title: 'Microsoft ピアリングにルート フィルターを構成する - ExpressRoute: Azure CLI | Microsoft Docs'
 description: この記事では、Azure CLI を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します
-documentationcenter: na
 services: expressroute
 author: anzaman
-manager: ganesr
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: 29cbe1686888a87fca6ddde957a1cbd35ba3df26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 94bdd4819d750f4c26c93a88cc6982a60583171c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968695"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079298"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft ピアリングにルート フィルターを構成する: Azure CLI
 
@@ -80,7 +72,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 
-構成を始めるには、Azure アカウントにサインインします。 接続については、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 "試してみる" を使用している場合は、自動的にサインインされ、ログイン手順をスキップできます。 接続については、次の例を参照してください。
 
 ```azurecli
 az login
@@ -88,30 +80,30 @@ az login
 
 アカウントのサブスクリプションを確認します。
 
-```azurecli
+```azurecli-interactive
 az account list
 ```
 
 ExpressRoute 回線を作成するサブスクリプションを選択します。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>手順 1 :一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="prefixes"></a>手順 1: 一連のプレフィックスと BGP コミュニティ値を取得する
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
 
 Microsoft ピアリング経由でアクセス可能なサービスに関連付けられている一連の BGP コミュニティ値とそれに対応する一連のプレフィックスを取得します。次のコマンドレットを使用してください。
 
-```azurecli
+```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
-## <a name="filter"></a>手順 2 :ルート フィルターとフィルター ルールを作成する
+## <a name="filter"></a>手順 2: ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
@@ -119,7 +111,7 @@ az network route-filter rule list-service-communities
 
 まず、ルート フィルターを作成します。 "az network route-filter create" コマンドで作成されるのはルート フィルター リソースだけです。 このリソースを作成した後、自分でルールを作成し、ルート フィルター オブジェクトにアタッチする必要があります。 ルート フィルター リソースを作成するには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
@@ -127,7 +119,7 @@ az network route-filter create -n MyRouteFilter -g MyResourceGroup
 
 次のコマンドを実行して、新しいルールを作成してください。
  
-```azurecli
+```azurecli-interactive
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
@@ -135,7 +127,7 @@ az network route-filter rule create --filter-name MyRouteFilter -n CRM --communi
 
 次のコマンドを実行して、ルート フィルターを ExpressRoute 回線にアタッチします。
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --route-filter MyRouteFilter
 ```
 
@@ -145,7 +137,7 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 
 ルート フィルターのプロパティを取得するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilter 
 ```
 
@@ -153,7 +145,7 @@ az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilt
 
 既にルート フィルターが回線にアタッチされている場合、一連の BGP コミュニティ値が更新されると、必要なプレフィックス アドバタイズの変更が、確立されている BGP セッションを通じて自動的に伝達されます。 ルート フィルターに対する一連の BGP コミュニティ値は、次のコマンドで更新できます。
 
-```azurecli
+```azurecli-interactive
 az network route-filter rule update --filter-name MyRouteFilter -n CRM -g ExpressRouteResourceGroupName --add communities '12076:5040' --add communities '12076:5010'
 ```
 
@@ -161,7 +153,7 @@ az network route-filter rule update --filter-name MyRouteFilter -n CRM -g Expres
 
 ExpressRoute 回線からルート フィルターをデタッチした後は、いずれのプレフィックスも BGP セッションを通じてアドバタイズされません。 ExpressRoute 回線からルート フィルターをデタッチするには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
@@ -169,7 +161,7 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 
 削除できるのは、いずれの回線にもアタッチされていないルート フィルターだけです。 削除する前に、ルート フィルターが回線にアタッチされていないことを確認してください。 ルート フィルターを削除するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az network route-filter delete -n MyRouteFilter -g MyResourceGroup
 ```
 

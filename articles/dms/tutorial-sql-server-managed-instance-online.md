@@ -5,24 +5,21 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: f23b297acdd8de0c26bf5fc02bc2d5415845b828
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956705"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718182"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル: DMS を使用して、SQL Server を Azure SQL Database Managed Instance にオンラインで移行する
 Azure Database Migration Service を使用すれば、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) に、最小限のダウンタイムでデータベースを移行できます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
-
->[!IMPORTANT]
->SQL Server から Azure SQL Database Managed Instance へのオンライン移行プロジェクトはプレビュー段階であり、[Microsoft Azure プレビューの補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の対象です。
 
 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server のオンプレミスのインスタンスから Azure SQL Database Managed Instance に、最小限のダウンタイムで **Adventureworks2012** データベースを移行します。
 
@@ -34,7 +31,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 > * 準備が整ったら、移行をカットオーバーする。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium (プレビュー) 価格レベルに基づいてインスタンスを作成する必要があります。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
@@ -95,10 +92,10 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
     その他の詳細については、記事「[Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ](https://aka.ms/dmsnetworkformi)」を参照してください。
 
-6. "Business Critical (プレビュー)" の価格レベルから SKU を選択します。
+6. Premium 価格レベルの SKU を選択します。
 
     > [!NOTE]
-    > オンライン移行は、"Business Critical (プレビュー)" のレベルを使用している場合にのみサポートされます。 
+    > オンライン移行は、Premium レベルを使用している場合にのみサポートされます。 
    
     コストと価格レベルの詳細については、[価格に関するページ](https://aka.ms/dms-pricing)を参照してください。
    
@@ -118,7 +115,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[SQL Server]** を選択し、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database Managed Instance]** を選択したら、**[アクティビティの種類の選択]** で **[オンライン データの移行 (プレビュー)]** を選択します。
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、**[対象サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、**[アクティビティの種類を選択します]** で **[オンライン データの移行]** を選択します。
 
    ![DMS のプロジェクトを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 

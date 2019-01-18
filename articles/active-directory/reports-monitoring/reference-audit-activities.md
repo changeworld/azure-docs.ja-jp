@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622876"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971377"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
 
@@ -227,9 +227,9 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |Authorization|ポリシーの更新|
 |Authorization|ユーザー属性の更新|
 |Authorization|CPIM 暗号化キーのアップロード|
-|Authorization|ユーザーの承認: テナント機能セットに対して API が無効化された|
-|Authorization|ユーザーの承認: 'テナント管理者' としてのアクセスを付与されているユーザー|
-|Authorization|ユーザーの承認: ユーザーが '認証されたユーザー' アクセス権を付与された|
+|Authorization|ユーザーの承認:テナント機能セットに対して API が無効化された|
+|Authorization|ユーザーの承認:'テナント管理者' としてのアクセスを付与されているユーザー|
+|Authorization|ユーザーの承認:ユーザーが '認証されたユーザー' アクセス権を付与された|
 |Authorization|B2C 機能が有効になっているかどうかの確認|
 |Authorization|機能が有効になっているかどうかの確認|
 |Authorization|プログラムの作成|
@@ -515,10 +515,10 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |グループ管理|要求の承認要求のレビュー|
 |グループ管理|アクセス レビューの更新|
 |グループ管理|アクセス レビューのメール通知設定を更新|
-|グループ管理|アクセス レビューの再実行設定の更新|
-|グループ管理|アクセス レビューの再実行日数設定の更新|
-|[ユーザー管理]|アクセス レビューの再実行の終了タイプの更新|
-|[ユーザー管理]|アクセス レビューの再実行タイプ設定の更新|
+|グループ管理|アクセス レビューの繰り返し回数の設定の更新|
+|グループ管理|アクセス レビュー繰り返し期間 (日数) の設定の更新|
+|[ユーザー管理]|アクセス レビュー繰り返し終了の種類の設定の更新|
+|[ユーザー管理]|アクセス レビュー繰り返しの種類の設定の更新|
 
 
 

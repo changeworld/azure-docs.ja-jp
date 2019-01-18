@@ -191,6 +191,8 @@ items:
       href: /rest/api/storagerp
     - name: Import/Export
       href: /rest/api/storageimportexport
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.storage/allversions
   - name: サンプル
     href: https://azure.microsoft.com/documentation/samples/?service=storage&term=file
 - name: リソース
@@ -245,9 +247,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: 4a11d044c40f5addfda736775bf64146a0df9776
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: edce958499e84afa7ced23eecb3c0bfbbe9f7352
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313362"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351924"

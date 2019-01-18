@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/05/2018
 ms.author: genli
-ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238324"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994175"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
 この記事では、発生する可能性があるポイント対サイト接続のよくある問題について説明します。 また、これらの問題の考えられる原因と解決策についても説明します。
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN クライアント エラー: 証明書が見つかりませんでした
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN クライアント エラー:証明書が見つかりませんでした
 
 ### <a name="symptom"></a>症状
 
@@ -41,11 +41,11 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 この問題を解決するには、次の手順に従ってください。
 
-1. 証明書マネージャーを開く: **[開始]** をクリックし、「**コンピューター証明書の管理**」と入力して、検索結果の **[コンピューター証明書の管理]** をクリックします。
+1. 証明書マネージャーを開く:**[開始]** をクリックし、「**コンピューター証明書の管理**」と入力して、検索結果の **[コンピューター証明書の管理]** をクリックします。
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | 証明書 | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -58,7 +58,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 > [!NOTE]
 > クライアント証明書をインポートする際は、**[秘密キーの保護を強力にする]** オプションを選択しないでください。
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN クライアント エラー: 予期されない、または形式が間違ったメッセージを受信しました
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN クライアント エラー:予期していない、または形式が間違ったメッセージを受信しました
 
 ### <a name="symptom"></a>症状
 
@@ -81,7 +81,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 1. ゲートウェイ サブネット上の UDR を削除します。 UDR ですべてのトラフィックが正常に転送されるようにします。
 2. Azure Portal でルート証明書の状態をチェックして、失効しているかどうかを確認します。 失効していない場合は、ルート証明書を削除して再アップロードしてみます。 詳細については、「[証明書の作成](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)」を参照してください。
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN クライアント エラー: 証明書チェーンは処理されましたが、停止されました 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN クライアント エラー:証明書チェーンは処理されましたが、停止されました 
 
 ### <a name="symptom"></a>症状 
 
@@ -93,7 +93,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | 証明書 | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -101,7 +101,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 証明書が既にその場所にある場合は、証明書を削除してから再インストールしてみます。 **azuregateway-*GUID*.cloudapp.net** 証明書は、Azure Portal からダウンロードした VPN クライアント構成パッケージに含まれています。 ファイル アーカイブ処理を使用して、パッケージからファイルを抽出できます。
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>ファイル ダウンロード エラー: ターゲット URI が指定されていません
+## <a name="file-download-error-target-uri-is-not-specified"></a>ファイル ダウンロード エラー:ターゲット URI が指定されていません
 
 ### <a name="symptom"></a>症状
 
@@ -117,7 +117,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 VPN ゲートウェイの種類は **VPN** で、VPN の種類は **RouteBased** でなければなりません。
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN クライアント エラー: Azure VPN カスタム スクリプトの実行に失敗しました 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN クライアント エラー:Azure VPN カスタム スクリプトの実行に失敗しました 
 
 ### <a name="symptom"></a>症状
 
@@ -150,7 +150,7 @@ VPN クライアント構成パッケージを抽出し、.cer ファイルを�
 5. コンピューターを再起動します。 
 6. VPN クライアントをインストールしてみます。
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure Portal エラー: VPN ゲートウェイを保存できませんでした。データが無効です
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal エラー:VPN ゲートウェイを保存できませんでした。データが無効です
 
 ### <a name="symptom"></a>症状
 
@@ -185,7 +185,7 @@ Azure Portal で VPN ゲートウェイの変更を保存しようとすると�
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure Portal エラー: VPN ゲートウェイを保存できませんでした。リソース名は無効です
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal エラー:VPN ゲートウェイを保存できませんでした。リソース名は無効です
 
 ### <a name="symptom"></a>症状
 
@@ -197,7 +197,7 @@ Azure Portal で VPN ゲートウェイの変更を保存しようとすると�
 
 この問題は、証明書の名前にスペースなどの無効な文字が含まれていることが原因で発生します。 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure Portal エラー: VPN パッケージ ファイルのダウンロード エラー 503
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure portal エラー:VPN パッケージ ファイルのダウンロード エラー 503
 
 ### <a name="symptom"></a>症状
 
@@ -209,7 +209,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 このエラーは、一時的なネットワークの問題が原因で発生します。 数分経ってからもう一度 VPN パッケージをダウンロードしてみてください。
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway のアップグレード: すべてのポイント対サイト クライアントが接続できません
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway のアップグレード:すべてのポイント対サイト クライアントが接続できません
 
 ### <a name="cause"></a>原因
 
@@ -300,9 +300,9 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、[Azure VPN ゲートウェイをリセット](vpn-gateway-resetgw-classic.md)します。
+この問題を解決するには、[Azure VPN ゲートウェイをリセット](vpn-gateway-resetgw-classic.md)します。 新しいルートが使用されていることを確認するには、仮想ネットワーク ピアリングが正常に構成された後で、もう一度ポイント対サイト VPN クライアントをダウンロードする必要があります。
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー: "失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー:"失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
 
 ### <a name="causes"></a>原因
 このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできない場合に発生します。  失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
@@ -311,7 +311,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできることを確認します。
 
-## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー: RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー:RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
 
 ### <a name="cause"></a>原因
 
@@ -327,7 +327,7 @@ RADIUS サーバーが正しく構成されていることを確認します。 
 
 ルート証明書がインストールされていません。 ルート証明書は、クライアントの**信頼された証明書**ストアにインストールされます。
 
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN クライアント エラー: VPN トンネルの試行に失敗したため、リモート接続を確立できませんでした。 (エラー 800) 
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN クライアント エラー:VPN トンネルの試行に失敗したため、リモート接続を確立できませんでした。 (エラー 800) 
 
 ### <a name="cause"></a>原因
 
@@ -343,7 +343,7 @@ NIC ドライバーを更新します。
 4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
 5. コンピューターを再起動して、もう一度接続を試してみてください。
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>エラー: "ファイル ダウンロード エラー: ターゲット URI が指定されていません"
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>エラー:'ファイル ダウンロード エラー: ターゲット URI が指定されていません'
 
 ### <a name="cause"></a>原因
 

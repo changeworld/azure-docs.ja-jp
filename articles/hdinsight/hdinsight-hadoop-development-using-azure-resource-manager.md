@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f4a1ba29e569d4605c3aa6f2fb6c238c8ba22434
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 33bb3186493b2ea2a0d676f250282574b27f7988
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006279"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718523"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
 HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツールを推奨していません。 HDInsight クラスターの操作に Azure PowerShell、Azure クラシック CLI、または HDInsight .NET SDK を使用している場合、今後は、Azure Resource Manager バージョンの PowerShell、CLI、.NET SDK を使用することをお勧めします。 この記事では、新しい Resource Manager ベースのアプローチに移行する方法を紹介します。 また、HDInsight に対する ASM と Resource Manager のアプローチの違いについても適宜説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > ASM ベースの PowerShell、CLI、.NET SDK のサポートは、 **2017 年 1 月 1 日**に中止される予定です。
-> 
-> 
 
 ## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Azure クラシック CLI を Azure Resource Manager に移行する
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Azure CLI では、HDInsight クラスターを操作するためのサポートは提供されていません。 Azure クラシック CLI は非推奨となりますが、引き続き Azure クラシック CLI を使用して HDInsight を操作することはできます。
 
 Azure クラシック CLI を使用して HDInsight を操作するための基本的なコマンドを次に示します。
@@ -52,10 +50,10 @@ Azure Resource Manager では、次の新しいコマンドを使用できます
 `azure hdinsight job` コマンドを使用してジョブを HDInsight クラスターに送信する場合、これらのコマンドは Resource Manager コマンドからは使用できません。 プログラムでスクリプトから HDInsight にジョブを送信する必要がある場合は、代わりに HDInsight に用意されている REST API を使用してください。 REST API を使用したジョブの送信については、次のドキュメントを参照してください。
 
 * [Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [Curl を使用した HDInsight の Hadoop での Hive クエリの実行](hadoop/apache-hadoop-use-hive-curl.md)
-* [Curl を使用して HDInsight の Hadoop で Pig ジョブを実行](hadoop/apache-hadoop-use-pig-curl.md)
+* [HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-curl.md)
+* [HDInsight 上の Apache Hadoop で cURL を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-curl.md)
 
-MapReduce、Hive、Pig を対話的に実行する他の方法については、「[HDInsight での MapReduce と Hadoop の使用](hadoop/hdinsight-use-mapreduce.md)」、「[HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hadoop/hdinsight-use-hive.md)」、「[HDInsight での Pig と Hadoop の使用](hadoop/hdinsight-use-pig.md)」を参照してください。
+Apache Hadoop MapReduce、Apache Hive、および Apache Pig を対話形式で実行する他の方法については、[HDInsight 上の Hadoop で MapReduce を使用する](hadoop/hdinsight-use-mapreduce.md)方法のページ、[HDInsight 上の Apache Hadoop での Apache Hive の使用を使用する](hadoop/hdinsight-use-hive.md)方法のページ、および「[HDInsight 上の Apache Pig で Apache Pig を使用する](hadoop/hdinsight-use-pig.md)」を参照してください。
 
 ### <a name="examples"></a>例
 **クラスターを作成する**
@@ -73,10 +71,8 @@ MapReduce、Hive、Pig を対話的に実行する他の方法については、
 * 以前のコマンド (ASM) - `azure hdinsight cluster list`
 * 新しいコマンド - `azure hdinsight cluster list`
 
-> [!NOTE]
+> [!NOTE]  
 > list コマンドの場合、`-g` を使用してリソース グループを指定すると、指定したリソース グループのクラスターのみが返されます。
-> 
-> 
 
 **クラスター情報を表示する**
 
@@ -135,17 +131,17 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 **スクリプト操作に関連するコマンドレット:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
-* **Get-AzureRmHDInsightScriptActionHistory**: クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
-* **Remove-AzureRmHDInsightPersistedScriptAction**: 保存されたスクリプト操作を HDInsight クラスターから削除します。
-* **Set-AzureRmHDInsightPersistedScriptAction**: 以前に実行されたスクリプト操作を、保存されたスクリプト操作に設定します。
-* **Submit-AzureRmHDInsightScriptAction**: 新しいスクリプト操作を Azure HDInsight クラスターに送信します。 
+* **Get-AzureRmHDInsightPersistedScriptAction**:クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
+* **Get-AzureRmHDInsightScriptActionHistory**:クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
+* **Remove-AzureRmHDInsightPersistedScriptAction**:保存されたスクリプト操作を HDInsight クラスターから削除します。
+* **Set-AzureRmHDInsightPersistedScriptAction**:以前に実行されたスクリプト操作を、保存されたスクリプト操作に設定します。
+* **Submit-AzureRmHDInsightScriptAction**:新しいスクリプト操作を Azure HDInsight クラスターに送信します。 
 
 その他の使用方法について詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 **クラスター ID に関連するコマンドレット:**
 
-* **Add-AzureRmHDInsightClusterIdentity**: クラスター ID をクラスター構成オブジェクトに追加して、HDInsight クラスターが Azure Data Lake Store にアクセスできるようにします。 「[Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)」を参照してください。
+* **Add-AzureRmHDInsightClusterIdentity**:クラスター ID をクラスター構成オブジェクトに追加して、HDInsight クラスターが Azure Data Lake Storage にアクセスできるようにします。 [Azure PowerShell を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)方法に関するページを参照してください。
 
 ### <a name="examples"></a>例
 **クラスターの作成**
@@ -215,9 +211,9 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 #### <a name="other-samples"></a>その他のサンプル
 * [HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [Hive ジョブの送信](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Pig ジョブの送信](hadoop/apache-hadoop-use-pig-powershell.md)
-* [Sqoop ジョブの送信](hadoop/apache-hadoop-use-sqoop-powershell.md)
+* [Apache Hive ジョブを送信する](hadoop/apache-hadoop-use-hive-powershell.md)
+* [Apache Pig ジョブを送信する](hadoop/apache-hadoop-use-pig-powershell.md)
+* [Apache Sqoop ジョブを送信する](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>新しい HDInsight .NET SDK に移行する
 Azure Service Management ベース [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) は非推奨になりました。 Azure Resource Management ベースの [ HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用することが推奨されます。 次の ASM ベースの HDInsight パッケージは非推奨となっています。
@@ -231,11 +227,11 @@ Azure Service Management ベース [(ASM) HDInsight .NET SDK](https://msdn.micro
 | --- | --- |
 | .NET SDK を使用して HDInsight クラスターを作成する |「[.NET SDK を使用して HDInsight クラスターを作成する](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
 | .NET SDK でスクリプト操作を使用してクラスターをカスタマイズする |「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Azure Active Directory と .NET SDK を使用して対話型アプリケーションを認証する |「[.NET SDK を使用した Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)」を参照してください。 この記事のコード スニペットでは、対話型の認証アプローチを使用しています。 |
+| Azure Active Directory と .NET SDK を使用して対話型アプリケーションを認証する |[.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。 この記事のコード スニペットでは、対話型の認証アプローチを使用しています。 |
 | Azure Active Directory と .NET SDK を使用して非対話型アプリケーションを認証する |「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| .NET SDK を使用して Hive ジョブを送信する |「[Hive ジョブの送信](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| .NET SDK を使用して Pig ジョブを送信する |「[Pig ジョブの送信](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
-| .NET SDK を使用して Sqoop ジョブを送信する |「[Sqoop ジョブの送信](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
+| .NET SDK を使用して Apache Hive ジョブを送信する |[Apache Hive ジョブの送信](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事を参照してください |
+| .NET SDK を使用して Apache Pig ジョブを送信する |[Apache Pig ジョブの送信](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関する記事を参照してください |
+| .NET SDK を使用して Apache Sqoop ジョブを送信する |[Apache Sqoop ジョブの送信](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)に関する記事を参照してください |
 | .NET SDK を使用して HDInsight クラスターを一覧表示する |「[List HDInsight clusters (HDInsight クラスターを一覧表示する)](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | .NET SDK を使用して HDInsight クラスターをスケールする |「[Scale HDInsight clusters (HDInsight クラスターをスケールする)](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
 | .NET SDK を使用して HDInsight クラスターへのアクセス権を付与する、または取り消す |「[Grant/revoke access to HDInsight clusters (HDInsight クラスターへのアクセス権の付与/取り消し)](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |

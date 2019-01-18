@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 99a4dd25539db754a893ddda7480c64e5a13a5bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353341"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631517"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成
+# <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
 
-Application Gateway では、Azure Web アプリまたはその他のマルチテナント サービスをバックエンド プール メンバーとして使用できます。 この記事では、Application Gateway を使用して Azure Web アプリを構成する方法を説明します。 最初の例では、既存のアプリケーション ゲートウェイを構成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。 2 番目の例では、新しいアプリケーション ゲートウェイを作成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。
+Application Gateway では、App Service アプリまたはその他のマルチテナント サービスをバックエンド プール メンバーとして使用できます。 この記事では、Application Gateway を使用して App Service アプリを構成する方法について説明します。 最初の例では、既存のアプリケーション ゲートウェイを構成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。 2 番目の例では、新しいアプリケーション ゲートウェイを作成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。
 
 ## <a name="configure-a-web-app-behind-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイの背後にある Web アプリの構成
 
@@ -163,4 +163,4 @@ Web アプリへのアクセスを制限できる 1 つの方法は、[Azure App
 
 ## <a name="next-steps"></a>次の手順
 
-リダイレクトを構成する方法について学習するために、「[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)」を参照してください。
+次のページにアクセスして、リダイレクトの構成方法について確認します。[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)。

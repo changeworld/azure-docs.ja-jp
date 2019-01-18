@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 671c0ea11c832d635eb92eda64669c3aab12b1e9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409985"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062640"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
@@ -130,6 +130,8 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
         }]
     }]
 ```
+
+JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces)、[topics](/azure/templates/microsoft.servicebus/namespaces/topics)、[subscriptions](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions) のページを参照してください。
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: シームレス シングル サインオン | Microsoft Docs'
+title: Azure AD Connect:シームレス シングル サインオン | Microsoft Docs
 description: このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913933"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187571"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -60,14 +60,14 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。
 
-| OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ |はい|はい\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
-|Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
+|Windows 10|はい\*|いいえ |[はい]|[はい]\*\*\*|該当なし
+|Windows 8.1|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows 8|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows 7|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows Server 2012 R2 以降|はい\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Mac OS X|該当なし|該当なし|[はい]\*\*\*|[はい]\*\*\*|[はい]\*\*\*
 
 
 \*Internet Explorer バージョン 10 以降が必要
@@ -87,3 +87,4 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+

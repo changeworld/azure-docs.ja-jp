@@ -3,18 +3,18 @@ title: Azure Maps を使った道順の表示 | Microsoft Docs
 description: 2 つの場所の間の道順を Javascript マップ上に表示する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/07/2018
+ms.date: 11/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: ed522779f5a86e38ee12a246cea9ac85d0379f9e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8c337ba1770b9b618567e7a3ee5fdbadba63181b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729062"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231854"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 
@@ -24,22 +24,26 @@ ms.locfileid: "45729062"
 
 ## <a name="query-the-route-via-service-module"></a>サービス モジュールを使用してルートをクエリする
 
-<iframe height='500' scrolling='no' title='A から B までのルートをマップに表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RBZbep/'>A から B までのルートをマップに表示する (サービス モジュール)</a>」を表示します。
+<iframe height='500' scrolling='no' title='A から B までのルートをマップに表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RBZbep/'>A から B までのルートをマップに表示する (サービス モジュール)</a>」を表示します。
 </iframe>
 
-コードの最初のブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
+上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-2 つ目のコード ブロックの行で、サービス クライアントがインスタンス化されます。
+2 つ目のコード ブロックの行では、クライアント サービスがインスタンス化されます。
 
-3 番目のコード ブロックで、マップ上の[ライン ストリング レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings)が初期化されます。
+3 つ目で、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) オブジェクトが作成され、マップに追加されます。
 
-4 番目のコード ブロックでは、ルートの起点と終点を表すピンを作成し、マップ上に追加しています。 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) の使用方法については、[マップにピンを追加する](map-add-pin.md)に関する記事を参照してください。
+ 線は、LineString の [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされた線オブジェクトがマップ上に線としてレンダリングされます。 4 つ目のコード ブロックでは、線レイヤーが作成され、マップに追加されます。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.deprecated.linestringlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
 
-次のコード ブロックでは、マップ クラスの [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) 関数を使い、ルートの起点と終点に基づいて、マップの境界ボックスを設定しています。
+[シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 5 つ目のコード ブロックでは、シンボル レイヤーが作成され、マップに追加されます。
 
-6 番目のコード ブロックでは、ルート クエリを構築しています。
+6 つ目のコード ブロックでは、開始と終了の [points](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) オブジェクトが作成され、それらが dataSource オブジェクトに追加されます。
 
-最後のコード ブロックでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドを使って Azure Maps ルーティング サービスを照会し、起点と終点との間のルートを取得しています。 その後、応答は、[getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) メソッドを使って GeoJSON 形式に解析されます。 それらすべての線をマップ上に追加して、ルートがレンダリングされます。 詳しくは、[マップに線を追加する方法](./map-add-shape.md#addALine)に関するページをご覧ください。
+7 つ目のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
+
+最後のコード ブロックでは、[サービス モジュール](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1)の一部である Azure Maps ルーティング サービスのクエリが実行されます。 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドは、開始点と終了点の間のルートを取得するために使用されます。 その後、応答は、[getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) メソッドを使って GeoJSON 形式に解析されます。 次に、応答はマップ上にルートとしてレンダリングされます。 マップに線を追加する方法については、[マップへの線の追加](./map-add-shape.md#addALine)に関するページを参照してください。
+
+マップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内でルート クエリ、データ ソース、シンボル、および線レイヤーとカメラ境界が作成および設定されます。
 
 ## <a name="query-the-route-via-xmlhttprequest"></a>XMLHttpRequest を使用してルートをクエリする
 
@@ -48,13 +52,19 @@ ms.locfileid: "45729062"
 
 コードの最初のブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-コードの 2 番目のブロックでは、ルートの起点と終点を表すピンを作成し、マップ上に追加しています。 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) の使用方法については、[マップにピンを追加する](map-add-pin.md)に関する記事を参照してください。
+2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) オブジェクトが作成され、マップに追加されます。
 
-コードの 3 番目のブロックでは、マップ クラスの [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) 関数を使い、ルートの起点と終点に基づいて、マップの境界ボックスを設定しています。
+3 つ目のコード ブロックでは、ルートの開始点と終了点が作成され、データ ソースに追加されます。 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins) の使用方法については、[マップにピンを追加する](map-add-pin.md)に関する記事を参照してください。
 
-コードの 4 番目のブロックでは、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に [XMLHttpRequest](https://xhr.spec.whatwg.org/) を送信しています。
+ [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされた線オブジェクトがマップ上に線としてレンダリングされます。 4 つ目のコード ブロックでは、線レイヤーが作成され、マップに追加されます。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) に関するページを参照してください。
 
-コードの最後のブロックでは、受信した応答を解析しています。 応答が正常に返された場合は、各通過地点の緯度と経度の情報が収集されます。 各通過地点をその後続の通過地点に接続することで、線の配列が作成されます。 それらすべての線をマップ上に追加して、ルートがレンダリングされます。 手順については、「[線を追加する](./map-add-shape.md#addALine)」をご覧ください。
+[シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 5 つ目のコード ブロックでは、シンボル レイヤーが作成され、マップに追加されます。 シンボル レイヤーのプロパティについては、[SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
+
+次のコード ブロックでは、開始点と終了点から `SouthWest` と `NorthEast` のポイントが作成され、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
+
+4 つ目のコード ブロックでは、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に [XMLHttpRequest](https://xhr.spec.whatwg.org/) が送信されます。 次に、受信応答が解析されます。 成功応答の場合は、各ルート ポイントの緯度と経度の情報が収集され、それらのポイントを結んで一連の線が作成されます。 次に、すべての線が dataSource に追加され、マップにルートがレンダリングされます。 手順については、「[線を追加する](./map-add-shape.md#addALine)」をご覧ください。
+
+マップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内でルート クエリ、データ ソース、シンボル、および線レイヤーとカメラ境界が作成および設定されます。
 
 ## <a name="next-steps"></a>次の手順
 

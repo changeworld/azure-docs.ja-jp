@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625268"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652151"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -31,7 +31,9 @@ ms.locfileid: "51625268"
  - **Azure AD レポート** - リスク イベントは、Azure AD のセキュリティ レポートに含まれています。 詳細については、[危険な状態のユーザー セキュリティ レポート](concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](concept-risky-sign-ins.md)に関する記事をご覧ください。
 
  - **Azure AD Identity Protection** - リスク イベントは、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) のレポート機能の一部でもあります。
-    
+
+また、[Identity Protection リスク イベント API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/graph-get-started.md)」を参照してください。 
+
 現在、Azure Active Directory では、6 種類のリスク イベントが検出されます。
 
 - [資格情報が漏洩したユーザー](#leaked-credentials) 

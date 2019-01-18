@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 1dca3621b31d74d2ae40156672009b15ba30e3f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: adc006e4c247713aa7d5cbca6a25023fd5a1b50c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339537"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352667"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする (プレビュー)
 
@@ -59,8 +58,8 @@ Dynamics AX のリンクされたサービスでは、次のプロパティが�
 |:--- |:--- |:--- |
 | type | **type** プロパティを **DynamicsAX** に設定する必要があります。 |[はい] |
 | url | Dynamics AX (または Dynamics 365 Finance および Operations) インスタンスの OData エンドポイント。 |[はい] |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | [はい] |
 | aadResourceId | 認可を要求する AAD リソースを指定します。 たとえば、Dynamics の URL が `https://sampledynamics.sandbox.operations.dynamics.com/data/` である場合、対応する AAD リソースは通常 `https://sampledynamics.sandbox.operations.dynamics.com` となります。 | [はい] |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを選択できます (データ ストアがプライベート ネットワークに配置されている場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
@@ -111,7 +110,7 @@ Dynamics AX からデータをコピーするには、データセットの **ty
     "name": "DynamicsAXResourceDataset",
     "properties": {
         "type": "DynamicsAXResource",
-        "typePoperties": {     
+        "typeProperties": {     
             "path": "<entity path e.g. dd04tentitySet>"
         },
         "linkedServiceName": {

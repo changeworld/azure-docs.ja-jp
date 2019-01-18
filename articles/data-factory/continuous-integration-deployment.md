@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623793"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191787"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
@@ -184,7 +183,7 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 同様の手順と同様のコード (`Start-AzureRmDataFactoryV2Trigger` 関数) を使用して、デプロイ後にトリガーを再起動できます。
 
 > [!IMPORTANT]
-> 継続的インテグレーションと継続的デプロイ シナリオでは、Integration Runtime の種類は異なる環境間で同じである必要があります。 たとえば、開発環境に "*セルフホステッド*" Integration Runtime (IR) がある場合、テストや運用などの他の環境環境でも、IR の種類は "*セルフホステッド*" である必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用のすべての環境で、IR を "*リンクされたセルフホステッド*" として構成する必要があります。
+> 継続的インテグレーションと継続的デプロイ シナリオでは、Integration Runtime の種類は異なる環境間で同じである必要があります。 たとえば、開発環境に "*セルフホステッド*" Integration Runtime (IR) がある場合、テストや運用などの他の環境環境でも、IR の種類は "*セルフホステッド*" である必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用のすべての環境で、統合ランタイムを "*リンクされたセルフホステッド*" として構成する必要があります。
 
 ## <a name="sample-deployment-template"></a>デプロイ テンプレートの例
 
@@ -733,12 +732,12 @@ Azure Pipelines にインポートできるサンプル デプロイ テンプ�
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -762,7 +761,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +787,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +818,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -958,3 +974,37 @@ Resource Manager テンプレートにカスタム パラメーターを定義�
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>リンクされた Resource Manager テンプレート
+
+お使いのデータ ファクトリに対して継続的インテグレーションと継続的デプロイ (CI/CD) を設定している場合、ファクトリが大きくなったときに、Resource Manager テンプレート内のリソースの最大数や最大ペイロードなどの Resource Manager テンプレートの限界に達したことに気付くことがあります。 このようなシナリオ向けに、Data Factory では、ファクトリ用の完全な Resource Manager テンプレートの生成と共に、リンクされた Resource Manager テンプレートも生成されるようになりました。 その結果、ファクトリのペイロード全体を複数のファイルに分解して、前述の制限に達しないようにすることができます。
+
+Git が構成されている場合は、リンクされたテンプレートが生成され、完全な Resource Manager テンプレートと共に、`adf_publish` ブランチの `linkedTemplates` という名前の新しいフォルダーに保存されます。
+
+![リンクされた Azure Resource Manager テンプレートのフォルダー](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+通常、リンクされた Resource Manager テンプレートには、マスター テンプレートと、マスターにリンクされた一連の子テンプレートがあります。 親テンプレートは `ArmTemplate_master.json` と呼ばれ、子テンプレートには、`ArmTemplate_0.json``ArmTemplate_1.json`… というパターンで名前が付けられます。 完全な Resource Manager テンプレートからリンクされたテンプレートの使用に移行するには、`ArmTemplateForFactory.json` (つまり、完全な Resource Manager テンプレート) ではなく、`ArmTemplate_master.json` をポイントするように CI/CD タスクを更新します。 Resource Manager では、リンクされたテンプレートをストレージ アカウントにアップロードして、デプロイ時に Azure によってアクセスできるようにする必要もあります。 詳細については、「[Deploying Linked ARM Templates with VSTS (リンクされた ARM テンプレートの VSTS を使用したデプロイ)](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)」を参照してください。
+
+Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロイ タスクの前後に追加してください。
+
+Git が構成されていない場合は、**[ARM テンプレートのエクスポート]** によって、リンクされたテンプレートにアクセスできます。
+
+## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
+
+データ ファクトリとの Git 統合を使用していて、変更を開発環境からテスト環境を経て運用環境に移動する CI/CD パイプラインがある場合は、次のベスト プラクティスお勧めします。
+
+-   **Git 統合**。 Git 統合で構成する必要があるのは開発環境のデータ ファクトリのみです。 テスト環境と運用環境への変更は CI/CD を介してデプロイされるので、Git 統合を使用する必要はありません。
+
+-   **データ ファクトリの CI/CD スクリプト**。 CI/CD での Resource Manager デプロイ ステップの前に、トリガーの停止や、その他の種類のファクトリ クリーンアップなどの処理を行う必要があります。 これらのことをすべて行う[こちらのスクリプト](#sample-script-to-stop-and-restart-triggers-and-clean-up)を使用することをお勧めします。 デプロイの前と後に 1 回ずつ、適切なフラグを使用してスクリプトを実行します。
+
+-   **統合ランタイムと共有**。 統合ランタイムは、データ ファクトリのインフラストラクチャ コンポーネントの 1 つであり、あまり変更されず、CI/CD のすべてのステージで似ています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが期待されています。 すべてのステージで統合ランタイムを共有しようと考えている場合 (たとえば、セルフホステッド統合ランタイム)、共有方法の 1 つは、共有する統合ランタイムを格納するためだけに、三項ファクトリでセルフホステッド IR をホストすることです。 そうすれば、リンクされた IR の種類として開発/テスト/運用でそれを使用できます。
+
+-   **Key Vault**。 推奨される Azure Key Vault ベースのリンクされたサービス使用する場合は、開発/テスト/運用に個別のキー コンテナーを使用することで、さらに有効に活用できます。個別にアクセス許可レベルを構成することもできます。 運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 また、すべてのステージでシークレット名を同じにすることもお勧めします。 同じ名前にすると、CI/CD を通して Resource Manager テンプレートを変更する必要がなくなります。なぜなら、変更する必要がある項目はキー コンテナーの名前だけであり、これは Resource Manager テンプレートのパラメーターの 1 つです。
+
+## <a name="unsupported-features"></a>サポートされていない機能
+
+-   データ ファクトリのエンティティは相互に依存しているため、リソースを個別に発行することはできません。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存します。変化する依存関係を追跡するのは困難です。 発行するリソースを手動で選択できたとしても、変更のセット全体のサブセットしか選択していない可能性があり、発行後に予期しない動作が発生します。
+
+-   非公開のブランチから発行することはできません。
+
+-   Bitbucket でプロジェクトをホストすることはできません。

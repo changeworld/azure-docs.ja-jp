@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242127"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974048"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
 
@@ -209,14 +209,14 @@ __[管理者]__ タブに現在の管理者が表示され、反対投票を行�
 パラメーター名|説明|使用できる値|既定値
 ---|---|---|---
 Create a new network or join existing network? (ネットワークの新規作成または既存のネットワークに参加)|新しいネットワークを作成するか、既存のコンソーシアム ネットワークに参加します|[新規作成] または [Join Existing]\(既存に参加\)|Create New
-電子メール アドレス (省略可能)|デプロイの完了時に、デプロイに関する情報を含んだ電子メール通知が送信されます。|有効な電子メール アドレス|該当なし
-VM ユーザー名|デプロイされた各 VM の管理者ユーザー名 (英数字のみ)|1 - 64 文字|該当なし
+電子メール アドレス (省略可能)|デプロイの完了時に、デプロイに関する情報を含んだ電子メール通知が送信されます。|有効な電子メール アドレス|NA
+VM ユーザー名|デプロイされた各 VM の管理者ユーザー名 (英数字のみ)|1 - 64 文字|NA
 認証の種類|仮想マシンに対して認証する方法。|[パスワード] または [SSH 公開キー]|パスワード
-パスワード ([認証の種類] = [パスワード])|デプロイされた各仮想マシンの管理者アカウントのパスワード。  パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。 VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|該当なし
-SSH キー ([認証の種類] = [公開キー])|リモート ログインに使用される Secure Shell キー。||該当なし
-サブスクリプション|コンソーシアム ネットワークをデプロイするサブスクリプション||該当なし
-リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||該当なし
-Location|リソース グループの Azure リージョン。||該当なし
+パスワード ([認証の種類] = [パスワード])|デプロイされた各仮想マシンの管理者アカウントのパスワード。  パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。 VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|NA
+SSH キー ([認証の種類] = [公開キー])|リモート ログインに使用される Secure Shell キー。||NA
+サブスクリプション|コンソーシアム ネットワークをデプロイするサブスクリプション||NA
+リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||NA
+場所|リソース グループの Azure リージョン。||NA
 
 デプロイの例を次に示します: ![基本 ブレード](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -229,11 +229,11 @@ Location|リソース グループの Azure リージョン。||該当なし
   パラメーター名|説明|使用できる値|既定値
   ---|---|---|---
   Number of region(s) (リージョン数)|コンソーシアム ネットワークをデプロイするリージョンの数|1、2、3、4、5|1
-  First region (リージョン 1)|コンソーシアム ネットワークをデプロイする 1 つ目のリージョン|許可されているすべての Azure リージョン|該当なし
-  Second region (リージョン 2)|コンソーシアム ネットワークをデプロイする 2 つ目のリージョン (リージョン数を 2 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Third region (リージョン 3)|コンソーシアム ネットワークをデプロイする 3 つ目のリージョン (リージョン数を 3 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Fourth region (リージョン 4)|コンソーシアム ネットワークをデプロイする 4 つ目のリージョン (リージョン数を 4 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Fifth region (リージョン 5)|コンソーシアム ネットワークをデプロイする 5 つ目のリージョン (リージョン数を 5 に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
+  First region (リージョン 1)|コンソーシアム ネットワークをデプロイする 1 つ目のリージョン|許可されているすべての Azure リージョン|NA
+  Second region (リージョン 2)|コンソーシアム ネットワークをデプロイする 2 つ目のリージョン (リージョン数を 2 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Third region (リージョン 3)|コンソーシアム ネットワークをデプロイする 3 つ目のリージョン (リージョン数を 3 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Fourth region (リージョン 4)|コンソーシアム ネットワークをデプロイする 4 つ目のリージョン (リージョン数を 4 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Fifth region (リージョン 5)|コンソーシアム ネットワークをデプロイする 5 つ目のリージョン (リージョン数を 5 に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
 
 デプロイの例を次に示します: ![[deployment regions]\(デプロイ リージョン\)](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -256,7 +256,7 @@ Location|リソース グループの Azure リージョン。||該当なし
 
 仮想マシンとストレージ層はネットワークのパフォーマンスに影響します。  必要なコスト効率に基づいて次の SKU をお勧めします。
 
-  仮想マシン SKU|ストレージ層|料金|Throughput|Latency
+  仮想マシン SKU|ストレージ層|料金|スループット|Latency
   ---|---|---|---|---
   F1|Standard SSD|低|低|高
   D2_v3|Standard SSD|中|中|中
@@ -272,14 +272,14 @@ Location|リソース グループの Azure リージョン。||該当なし
 
   パラメーター名|説明|使用できる値|既定値
   ---|---|---|---
-Consortium Member ID (コンソーシアム メンバー ID)|コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。競合を回避するように IP アドレス 空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織全体で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように、他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。|0 - 255|該当なし
+Consortium Member ID (コンソーシアム メンバー ID)|コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。競合を回避するように IP アドレス 空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織全体で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように、他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。|0 - 255|NA
 ネットワーク ID|デプロイされているコンソーシアム Ethereum ネットワークのネットワーク ID。  各 Ethereum ネットワークには独自のネットワーク ID があり、1 はパブリック ネットワークの ID を示します。|5 から 999,999,999|10101010
-Admin Ethereum Address (管理者 Ethereum アドレス)|PoA ガバナンスに参加するために使用される Ethereum アカウントのアドレス。  Ethereum アドレスの生成には MetaMask を使用することをお勧めします。|0x で始まる 42 文字の英数字|該当なし
+Admin Ethereum Address (管理者 Ethereum アドレス)|PoA ガバナンスに参加するために使用される Ethereum アカウントのアドレス。  Ethereum アドレスの生成には MetaMask を使用することをお勧めします。|0x で始まる 42 文字の英数字|NA
 詳細オプション|Ethereum 設定の詳細オプション|[Enable]\(有効\) または [Disable]\(無効\)|Disable
 [パブリック IP] ([詳細オプション] = [Enable]\(有効\))|VNet ゲートウェイの背後でネットワークをデプロイし、ピアリング アクセスを排除します。 このオプションを選択した場合、接続に互換性を持たせるためにすべてのメンバーが VNet ゲートウェイを使用する必要があります。|パブリック IP またはプライベート VNet|パブリック IP
 [Block Gas Limit] (ブロック ガスの制限) ([詳細オプション] = [Enable]\(有効\))|ネットワークの開始ブロック ガスの制限|任意の数値|50,000,00
 ブロック再シール期間 (秒)|ネットワーク上のトランザクションがない場合に空のブロックが作成される頻度。 頻度が高いとパフォーマンスが向上しますが、ストレージ コストが増加します。|任意の数値|15
-[Transaction Permission Contract]\(トランザクションのアクセス許可コントラクト\) ([詳細オプション] = [Enable]\(有効\))|トランザクションのアクセス許可コントラクトのバイトコード。 スマート コントラクトのデプロイと実行を、許可された Ethereum アカウントのリストのみに制限します。|コントラクトのバイトコード|該当なし
+[Transaction Permission Contract]\(トランザクションのアクセス許可コントラクト\) ([詳細オプション] = [Enable]\(有効\))|トランザクションのアクセス許可コントラクトのバイトコード。 スマート コントラクトのデプロイと実行を、許可された Ethereum アカウントのリストのみに制限します。|コントラクトのバイトコード|NA
 
 デプロイの例を次に示します: ![[Ethereum settings]\(Ethereum の設定\)](./media/ethereum-poa-deployment/ethereum-settings.png)
 
@@ -291,9 +291,9 @@ Admin Ethereum Address (管理者 Ethereum アドレス)|PoA ガバナンスに�
   ---|---|---|---
 監視|監視を有効にするオプション|[Enable]\(有効\) または [Disable]\(無効\)|有効化
 Connect to existing Log Analytics (既存の Log Analytics に接続する)|新しい Log Analytics インスタンスを作成するか、既存のインスタンスに参加します|[新規作成] または [Join existing]\(既存に参加\)|新規作成
-Monitor Location (既存の Log Analytics= Create new に接続する)|新しい Log Analytics インスタンスがデプロイされる領域|Log Analytics のすべての領域|該当なし
-Existing Log Analytics Workspace Id (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスのワークスペース ID||該当なし
-Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスへの接続に使用される主キー||該当なし
+Monitor Location (既存の Log Analytics= Create new に接続する)|新しい Log Analytics インスタンスがデプロイされる領域|Log Analytics のすべての領域|NA
+Existing Log Analytics Workspace Id (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスのワークスペース ID||NA
+Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスへの接続に使用される主キー||NA
 
 
 デプロイの例を次に示します: ![[Azure Monitor]](./media/ethereum-poa-deployment/azure-monitor.png)
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Truffle でスマート コントラクトをデバッグします
 
-Truffle には、スマート コントラクトのデバッグに使用できるローカルな開発ネットワークがあります。 詳細なチュートリアルについては、[こちら](http://truffleframework.com/tutorials/debugging-a-smart-contract)を参照してください。
+Truffle には、スマート コントラクトのデバッグに使用できるローカルな開発ネットワークがあります。 詳細なチュートリアルについては、[こちら](https://truffleframework.com/tutorials/debugging-a-smart-contract)を参照してください。
 
 ### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) のサポート
 

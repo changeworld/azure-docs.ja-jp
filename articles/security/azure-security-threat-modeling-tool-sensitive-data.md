@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262371"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002043"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -130,7 +130,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a id="autocomplete-input"></a>機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする
@@ -193,7 +193,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | SQL バージョン - すべて |
-| **参照**              | [SQL Server での機微なデータの暗号化](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[方法: SQL Server でデータの列を暗号化する](https://msdn.microsoft.com/library/ms179331)、[証明書による暗号化](https://msdn.microsoft.com/library/ms188061) |
+| **参照**              | [SQL Server での機微なデータの暗号化](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[方法: SQL Server でのデータの列の暗号化](https://msdn.microsoft.com/library/ms179331)、[証明書による暗号化](https://msdn.microsoft.com/library/ms188061) |
 | **手順** | クレジット カード番号などの機密データは、データベースで暗号化する必要があります。 データは、列レベルの暗号化を使って、または暗号化関数を使ってアプリケーション機能により、暗号化できます。 |
 
 ## <a id="tde-enabled"></a>データベース レベルの暗号化 (TDE) を有効にする
@@ -338,7 +338,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と暗号化の解除](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **手順** | <p>.NET Nuget パッケージ用 Azure Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 ここでは、クライアント側暗号化のしくみを簡単に説明します。</p><ul><li>Azure ストレージ クライアント SDK は、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します</li><li>ユーザー データは、この CEK を使用して暗号化されます</li><li>CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 Storage クライアント自体が KEK にアクセスすることはありません。 クライアントは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。 ユーザーは、必要に応じてキー ラップ/ラップ解除にカスタム プロバイダーを使うことができます</li><li>暗号化されたデータは、Azure Storage サービスにアップロードされます。 細かなレベルの実装の詳細については、「参照」セクションのリンクを参照してください。</li></ul>|
 
 ## <a id="pii-phones"></a>携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する
@@ -429,7 +429,7 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
 | **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例

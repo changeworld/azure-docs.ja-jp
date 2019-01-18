@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085401"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713609"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks の概要
 
@@ -66,7 +66,7 @@ Azure Notebooks は無料のサービスですが、乱用を防ぐために各�
 - Python 2.7 + Anaconda2-5.3.0
 - Python 3.6 + Anaconda3-5.3.0
 - Python 3.5 + Anaconda3-4.2.0 (非推奨になる予定)
-- R 3.3 + Microsoft R Open 3.3.0
+- R 3.4.1 + Microsoft R Open 3.4.1
 - F# 4.1.9
 
 Azure Notebooks には、基本ディストリビューションの他に、追加のパッケージも含まれています。 たとえば、Python カーネルには、numpy、pandas、scikit-learn、matplotlib、および bokeh ライブラリが含まれています。

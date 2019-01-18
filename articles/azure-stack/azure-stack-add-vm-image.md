@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3bd86fe8708d2cbb8cbddac4ca35d5afdc68d2e3
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036599"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306082"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Azure Stack で仮想マシン イメージを使用できるようにする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack でユーザーが仮想マシン イメージを使用できるように指定できます。 それらのイメージを Azure Resource Manager テンプレートで参照したり、Marketplace 項目として Azure Marketplace UI に追加したりすることができます。 グローバル Azure Marketplace のイメージを使用するか、独自のカスタム イメージを追加できます。 ポータルまたは Windows PowerShell を使用して VM を追加することもできます。
 
@@ -144,7 +144,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
   # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAuidence endpoint for your environment>"
+  $GraphAudience = "<GraphAudience endpoint for your environment>"
 
   # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
   Add-AzureRMEnvironment `
@@ -154,7 +154,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 3. Azure Stack にオペレーターとしてサインインします。 手順については、[オペレーターとしての Azure Stack へのサインイン](azure-stack-powershell-configure-admin.md)に関するページをご覧ください。
 
-4. グローバル Azure または Azure Stack で、ご自身のカスタム VM イメージを格納するためのストレージ アカウントを作成します。 手順については、「[クイック スタート: Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)」を参照してください。
+4. グローバル Azure または Azure Stack で、ご自身のカスタム VM イメージを格納するためのストレージ アカウントを作成します。 手順については、「[クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)」を参照してください。
 
 5. Windows または Linux オペレーティング システムのイメージを VHD 形式 (VHDX ではない) で準備して、そのイメージをご自身のストレージ アカウントにアップロードし、PowerShell で VM イメージを取得するときに使用する URI を取得します。  
 

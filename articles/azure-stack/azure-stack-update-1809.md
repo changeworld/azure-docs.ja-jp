@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567912"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077965"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -49,6 +49,8 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 - 再登録しなくても、リソース グループ間で Azure 上の[登録リソースを移動](azure-stack-registration.md#move-a-registration-resource)できるようになりました。 また、クラウド ソリューション プロバイダー (CSP) でも、新しいサブスクリプションと古いサブスクリプションが両方とも同じ CSP パートナー ID にマッピングされている限り、サブスクリプション間で登録リソースを移動することができます。 これは、既存の顧客テナントのマッピングには影響しません。 
 
+- ネットワーク インターフェイスごとに複数の IP アドレスを割り当てられるようになりました。  詳しくは、「[PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)」をご覧ください。
+
 ### <a name="fixed-issues"></a>修正された問題
 
 <!-- TBD - IS ASDK -->
@@ -57,13 +59,13 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 <!-- TBD - IS ASDK --> 
 - Azure Stack ユーザー ポータルで仮想マシンを作成して、ポータルで、DS シリーズ VM にアタッチできるデータ ディスクの数が誤って表示されていた問題が修正されました。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
 
-- 次のマネージド ディスクの問題は 1809 で修正され、1808 [Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/help/4468920/) でも修正されています。 
+- 次のマネージド ディスクの問題は 1809 で修正され、1808 [Azure Stack 修正プログラム 1.1808.9.117](https://support.microsoft.com/help/4481066/) でも修正されています。 
 
    <!--  2966665 – IS, ASDK --> 
-   - SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗していた問題が修正されました。"*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません。*" 
+   - SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチするときに次のエラーで失敗するという問題を修正しました。*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。* 
    
-   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed' (長時間実行処理は状態 '失敗' で失敗しました)Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
-   エラーコード: InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
+   - **createOption** を使用してマネージド ディスク VM を作成しています: **アタッチ**は次のエラーで失敗します: *長時間実行操作が状態 '失敗' で失敗しました。Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
+   ErrorCode:InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
    
    この問題は修正されました。
 
@@ -71,20 +73,13 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 - <!-- 3078022 - IS, ASDK --> VM が 1808 の前に停止‐割り当て解除された場合、これは 1808 の更新後に再割り当てできませんでした。  この問題は 1809 で修正されています。 ここの状態にあり開始できなかったインスタンスは、この修正によって 1809 で開始できます。 また、修正プログラムにより、この問題は再発しないようになります。
 
-<!-- 3090289 – IS, ASDK --> 
-- 更新プログラム 1808 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があった問題を修正しました。
-
-   1. 1808 更新の前に作成したサブスクリプションの場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
-      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
-   2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4471992)を適用します。
-      2. [この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
-
-
 ### <a name="changes"></a>変更点
 
-なし。
+<!-- 2635202 - IS, ASDK -->
+- インフラストラクチャ バックアップ サービスは、[パブリック インフラストラクチャ ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network)から[パブリック VIP ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)に移動します。 お客様は、サービスがパブリック VIP ネットワークからバックアップ ストレージの場所にアクセスできることを確認する必要があります。  
+
+> [!IMPORTANT]  
+> パブリック VIP ネットワークからファイル サーバーへの接続を許可しないファイアウォールがある場合、この変更は、インフラストラクチャのバックアップが "エラー 53 ネットワーク パスが見つかりませんでした" で失敗する原因となります。 これは、妥当な回避策がない破壊的変更です。 お客様からのフィードバックに基づき、マイクロソフトでは、修正プログラム内でこの変更を元に戻します。 1809 に使用できる修正プログラムについて詳しくは、[「更新後の手順」セクション](#post-update-steps)をご覧ください。 修正プログラムが利用可能になったら、パブリック VIP ネットワークによるインフラストラクチャ リソースへのアクセスがネットワーク ポリシーによって許可されない場合にのみ、1809 への更新後に修正プログラムを適用してください。 1811 では、この変更はすべてのシステムに適用されます。 1809 に修正プログラムを適用した場合、他に必要な操作はありません。  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>共通脆弱性識別子
 
@@ -139,7 +134,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 ### <a name="prerequisites"></a>前提条件
 
-- 1809 を適用する前に、1808 の最新の Azure Stack 修正プログラムをインストールしてください。 詳細については、[KB 4471992 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.7.113](https://support.microsoft.com/help/4471992/) を参照してください。
+- 1809 を適用する前に、1808 の最新の Azure Stack 修正プログラムをインストールしてください。 詳細については、[KB 4481066 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.9.117](https://support.microsoft.com/help/4481066/) を参照してください。
 
   > [!TIP]  
   > 以下の *RRS* または *Atom* フィードに登録して、Azure Stack の修正プログラムの最新情報を入手してください:
@@ -169,7 +164,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 > Azure Stack デプロイを、次の更新プログラム パッケージによって有効化さる拡張機能ホストに合わせて準備してください。 次のガイダンスを使用して、システムを準備します: 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」。
 
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
-- [KB 4471993 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4481548 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
@@ -222,7 +217,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
    
   [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試みることができます。
 
-  この問題は最新の [1809 修正プログラム リリース](https://support.microsoft.com/help/4471993/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。 
+  この問題は最新の [1809 修正プログラム リリース](https://support.microsoft.com/help/4481548/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。 
 
 <!-- 1264761 - IS ASDK -->  
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
@@ -246,7 +241,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 - 以下の詳細情報を含む **Storage** コンポーネントのアラートが表示される場合があります。
 
    - 名前: Storage サービスの内部通信エラー  
-   - 重大度: 緊急  
+   - 重大度: 重大  
    - コンポーネント: Storage  
    - 説明: 次のノードに要求を送信するときに Storage サービスの内部通信エラーが発生しました。  
 
@@ -255,7 +250,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 <!-- 2368581 - IS, ASDK --> 
 - Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが**ファブリック VM の作成エラー**でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。
 
-### <a name="compute"></a>コンピューティング
+### <a name="compute"></a>Compute
 
 <!-- 3235634 – IS, ASDK -->
 - **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイするには、サフィックスを **Standard_A2_v2** (小文字の v) と指定してください。 **Standard_A2_V2** (大文字の V) は使用しないでください。 これは、グローバル Azure で動作し、Azure Stack では不整合になります。
@@ -288,7 +283,21 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
    VM の CPU 使用率グラフなどのメトリック データを表示するには、[メトリック] ウィンドウに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
+<!-- 3507629 - IS, ASDK --> 
+- マネージド ディスクは 2 つの新しい[コンピューティング クォータの種類](azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2,048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。
 
+   - 更新プログラム 1808 より前に作成されたクォータでは、Managed Disks のクォータは 2,048 GiB が割り当てられているものの、管理者ポータルでは値 0 が表示されます。 値は実際のニーズに基づいて増減することができ、新しく設定したクォータ値が 2,048 GiB の既定値をオーバーライドします。
+   - クォータ値を 0 に更新することは、2,048 GiB の既定値と同じことになります。 回避策として、クォータ値を 1 に設定します。
+
+<!-- TBD - IS ASDK --> 
+- 更新プログラム 1809 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があります。
+
+   - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
+      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+   2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
+
+- SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワード ベースの認証を使用してください。
 
 ### <a name="networking"></a>ネットワーク  
 

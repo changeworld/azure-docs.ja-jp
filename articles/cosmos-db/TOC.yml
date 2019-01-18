@@ -296,7 +296,9 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST リソース プロバイダー
         href: /rest/api/cosmos-db-resource-provider/
-  - name: MongoDB API
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.documentdb/databaseaccounts
+  - name: Azure Cosmos DB の MongoDB 用 API
     items:
     - name: はじめに
       href: mongodb-introduction.md
@@ -457,8 +459,6 @@ items:
   items:
   - name: データベース アカウントの管理
     href: how-to-manage-database-account.md
-  - name: Time to Live の構成
-    href: how-to-time-to-live.md
   - name: グローバル配信
     items:
     - name: 一貫性の管理
@@ -477,10 +477,12 @@ items:
       href: how-to-create-container.md
     - name: コンテナーの照会
       href: how-to-query-container.md
-  - name: インデックス作成
-    items:
-    - name: インデックス作成の構成
-      href: how-to-manage-indexing-policy.md
+    - name: Time to Live の構成
+      href: how-to-time-to-live.md
+    - name: インデックス作成
+      items:
+      - name: インデックス作成の構成
+        href: how-to-manage-indexing-policy.md
   - name: セキュリティ
     items:
     - name: IP ファイアウォールの構成
@@ -615,9 +617,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 0afac84a08028219e5aa0acdc94ec9775d16c368
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728025"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359801"

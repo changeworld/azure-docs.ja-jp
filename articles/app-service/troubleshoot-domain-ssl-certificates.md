@@ -1,6 +1,6 @@
 ---
 title: ドメインと SSL 証明書に関する問題のトラブルシューティング - Azure App Service | Microsoft Docs
-description: Azure Web アプリでのドメインと SSL 証明書に関する問題のトラブルシューティング
+description: Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388572"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653664"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Azure Web アプリでのドメインと SSL 証明書に関する問題のトラブルシューティング
+# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
-この記事では、Azure Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
+この記事では、Azure App Service の Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックしてください。
 
 ## <a name="certificate-problems"></a>証明書に関する問題
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>Web アプリに対する SSL 証明書のバインディングを作成できない 
+### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>アプリに対する SSL 証明書のバインディングを作成できない 
 
 #### <a name="symptom"></a>症状
 
@@ -40,13 +40,13 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="cause"></a>原因
 
-この問題は、複数の Web アプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、Web アプリ A に、古い証明書を持つ IP ベースの SSL があり、 Web アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書を持つ Web アプリの SSL バインディングを更新すると、別のアプリに対して同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
+この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書を持つアプリの SSL バインディングを更新すると、別のアプリに対して同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
 
 #### <a name="solution"></a>解決策 
 
 この問題を解決するには、次のいずれかの方法を使用します。
 
-- Web アプリで、古い証明書を使用している IP ベースの SSL バインディングを削除します。 
+- アプリで、古い証明書を使用している IP ベースの SSL バインディングを削除します。 
 - 新しい証明書を使用する、新しい IP ベースの SSL バインディングを作成します。
 
 ### <a name="you-cant-delete-a-certificate"></a>証明書を削除できない 
@@ -59,11 +59,11 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="cause"></a>原因
 
-この問題は、別の Web アプリがその証明書を使用している場合に発生する可能性があります。
+この問題は、別のアプリがその証明書を使用している場合に発生する可能性があります。
 
 #### <a name="solution"></a>解決策
 
-Web アプリからその証明書の SSL バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
+アプリからその証明書の SSL バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>App Service 証明書を購入できない 
 
@@ -75,7 +75,7 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 
 - App Service プランが Free または Shared である。 これらの価格レベルでは SSL がサポートされていません。 
 
-    **解決策**:Web アプリの App Service プランを Standard にアップグレードします。
+    **解決策**:アプリの App Service プランを Standard にアップグレードします。
 
 - サブスクリプションに有効なクレジット カードが登録されていない。
 
@@ -110,14 +110,14 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 
 誤ったドメインを使用している現在の証明書が “Issued” 状態にある場合は、課金の対象もその証明書になります。 App Service 証明書は払い戻しできませんが、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に連絡し、他のオプションがあるかどうかを確認できます。 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>App Service 証明書は更新されたが、Web アプリに古い証明書が表示される 
+### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>App Service 証明書は更新されたが、アプリに古い証明書が表示される 
 
 #### <a name="symptom"></a>症状
 
-App Service 証明書が更新されましたが、その App Service 証明書を使用する Web アプリが、まだ古い証明書を使用しています。 また、HTTPS プロトコルが必要であるという警告が表示されます。
+App Service 証明書が更新されましたが、その App Service 証明書を使用するアプリが、まだ古い証明書を使用しています。 また、HTTPS プロトコルが必要であるという警告が表示されます。
 
 #### <a name="cause"></a>原因 
-Azure App Service の Web Apps 機能は 8 時間ごとにバックグラウンド ジョブを実行し、変更があった場合は証明書リソースを同期します。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 
+Azure App Service は 8 時間ごとにバックグラウンド ジョブを実行し、変更があった場合は証明書リソースを同期します。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 
  
 #### <a name="solution"></a>解決策
 
@@ -156,7 +156,7 @@ DNS 伝達が実行されるのを数分待ってから、**[最新の情報に�
 ### <a name="you-cant-purchase-a-domain"></a>ドメインを購入できない
 
 #### <a name="symptom"></a>症状
-Azure Portal 内の Web Apps または App Service ドメインからドメインを購入できません。
+Microsoft Azure portal 内の App Service からドメインを購入できません。
 
 #### <a name="cause-and-solution"></a>原因と解決策
 
@@ -176,7 +176,7 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
 
     **解決策**:Azure サブスクリプションを、従量課金制サブスクリプションなどの別のサブスクリプションの種類にアップグレードします。
 
-### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Web アプリにホスト名を追加できない 
+### <a name="you-cant-add-a-host-name-to-an-app"></a>アプリにホスト名を追加できない 
 
 #### <a name="symptom"></a>症状
 
@@ -191,11 +191,11 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
     **解決策**:サブスクリプションの管理者に、ホスト名を追加する権限を与えるよう依頼します。
 - ドメインの所有権を確認できませんでした。
 
-    **解決策**:CNAME レコードまたは A レコードが正しく構成されていることを確認します。 Web アプリにカスタム ドメインをマップするには、CNAME レコードまたは A レコードのいずれかを作成します。 ルート ドメインを使用する場合は、A レコードおよび TXT レコードを使用する必要があります。
+    **解決策**:CNAME レコードまたは A レコードが正しく構成されていることを確認します。 アプリにカスタム ドメインをマップするには、CNAME レコードまたは A レコードのいずれかを作成します。 ルート ドメインを使用する場合は、A レコードおよび TXT レコードを使用する必要があります。
 
     |レコード タイプ|Host|参照先|
     |------|------|-----|
-    |A|@|Web アプリの IP アドレス|
+    |A|@|アプリの IP アドレス|
     |TXT|@|<app-name>.azurewebsites.net|
     |CNAME|www|<app-name>.azurewebsites.net|
 
@@ -216,7 +216,7 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
 #### <a name="solution"></a>解決策
 - この問題が自動的に解決されるのを 48 時間待ちます。
 - DNS 構成で TTL 設定を変更できる場合は、値を 5 分に変更し、この問題が解決されるかどうかを確認します。
-- [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインが Web アプリの IP アドレスを指し示していることを確認します。 そうでない場合は、A レコードを、Web アプリの正しい IP アドレスに向けて構成します。
+- [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 そうでない場合は、A レコードを、アプリの正しい IP アドレスに向けて構成します。
 
 ### <a name="you-need-to-restore-a-deleted-domain"></a>削除したドメインを復元する必要がある 
 
@@ -247,7 +247,7 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
 **原因 1 の解決策**
 
 - A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#create-the-a-record)」を参照してください。
-- Web アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
+- アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
 - 同じドメインのために CNAME レコードと A レコードの両方を使用しないでください。 これによって競合が発生し、ドメインが解決されない可能性があります。 
 
 **原因 2** 
@@ -256,18 +256,18 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
 
 **原因 2 の解決策**
 
-ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインが Web アプリの IP アドレスを指し示していることを確認します。 
+ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 
 
 ### <a name="you-cant-add-a-subdomain"></a>サブドメインを追加できない 
 
 #### <a name="symptom"></a>症状
 
-Web アプリに新しいホスト名を追加し、サブドメインを割り当てることができません。
+アプリに新しいホスト名を追加し、サブドメインを割り当てることができません。
 
 #### <a name="solution"></a>解決策
 
-- サブスクリプションの管理者に問い合わせて、Web アプリにホスト名を追加する権限があることを確認します。
-- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure DNS に変更することをお勧めします。 Azure DNS を使用すると、Web アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)に関するページを参照してください。
+- サブスクリプションの管理者に問い合わせて、アプリにホスト名を追加する権限があることを確認します。
+- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure DNS に変更することをお勧めします。 Azure DNS を使用すると、アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)に関するページを参照してください。
 
 
 

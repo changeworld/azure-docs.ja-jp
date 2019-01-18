@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/09/2018
+ms.date: 11/27/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: fcd5137792e573c3077a4b9d5e815b9bf20774f6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514368"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155071"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack の拡張機能ホストを準備する
 
@@ -121,8 +121,6 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
     }
     ```
 
-
-
 ### <a name="update-dns-configuration"></a>DNS 構成の更新
 
 > [!Note]  
@@ -131,8 +129,8 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 
 | IP | ホスト名 | type |
 |----|------------------------------|------|
-| \<IP> | Adminhosting.<Region>.<FQDN> | A |
-| \<IP> | Hosting.<Region>.<FQDN> | A |
+| \<IP> | *.Adminhosting.\<リージョン>.\<FQDN> | A |
+| \<IP> | *.Hosting.\<リージョン>.\<FQDN> | A |
 
 割り当てられた IP は、**Get-AzureStackStampInformation** コマンドレットを実行することで、特権エンドポイントを使用して取得できます。
 
@@ -142,12 +140,51 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 
 ### <a name="publish-new-endpoints"></a>新しいエンドポイントの公開
 
-ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、**Get-AzureStackStampInformation** コマンドレットを使用して取得できます。
+ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要のある次のコードを使用して取得できます。
+
+```PowerShell
+# Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+$PEPCreds = Get-Credential
+$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+# Obtain DNS Servers and Extension Host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
+$StampInformation = Invoke-Command $PEPSession {Get-AzureStackStampInformation} | Select-Object -Property ExternalDNSIPAddress01, ExternalDNSIPAddress02, @{n="TenantHosting";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://*.","testdnsentry"-replace "/"}},  @{n="AdminHosting";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://*.","testdnsentry"-replace "/"}},@{n="TenantHostingDNS";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://",""-replace "/"}},  @{n="AdminHostingDNS";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://",""-replace "/"}}
+If (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting -ErrorAction SilentlyContinue) {
+    Write-Host "Can access AZS DNS" -ForegroundColor Green
+    $AdminIP = (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress02 -Name $StampInformation.AdminHosting).IPAddress
+    Write-Host "The IP for the Admin Extension Host is: $($StampInformation.AdminHostingDNS) - is: $($AdminIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.AdminHostingDNS), Value: $($AdminIP)" -ForegroundColor Green
+    $TenantIP = (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting).IPAddress
+    Write-Host "The IP address for the Tenant Extension Host is $($StampInformation.TenantHostingDNS) - is: $($TenantIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.TenantHostingDNS), Value: $($TenantIP)" -ForegroundColor Green
+}
+Else {
+    Write-Host "Cannot access AZS DNS" -ForegroundColor Yellow
+    $AdminIP = (Resolve-DnsName -Name $StampInformation.AdminHosting).IPAddress
+    Write-Host "The IP for the Admin Extension Host is: $($StampInformation.AdminHostingDNS) - is: $($AdminIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.AdminHostingDNS), Value: $($AdminIP)" -ForegroundColor Green
+    $TenantIP = (Resolve-DnsName -Name $StampInformation.TenantHosting).IPAddress
+    Write-Host "The IP address for the Tenant Extension Host is $($StampInformation.TenantHostingDNS) - is: $($TenantIP)" -ForegroundColor Yellow
+    Write-Host "The Record to be added in the DNS zone: Type A, Name: $($StampInformation.TenantHostingDNS), Value: $($TenantIP)" -ForegroundColor Green
+}
+Remove-PSSession -Session $PEPSession
+```
+
+#### <a name="sample-output"></a>サンプル出力
+
+```PowerShell
+Can access AZS DNS
+The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
+The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
+The IP address for the Tenant Extension Host is *.hosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
+The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
+```
 
 > [!Note]  
 > 拡張機能ホストを有効にする前に、この変更を行います。 これで、Azure Stack ポータルに継続的にアクセスできるようになります。
 
-| エンドポイント (VIP) | プロトコル | ポート |
+| エンドポイント (VIP) | Protocol | ポート |
 |----------------|----------|-------|
 | AdminHosting | HTTPS | 443 |
 | ホスティング | HTTPS | 443 |
@@ -162,7 +199,7 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 > [!Note]  
 > これらのポートは、検証が成功した後に閉じることをお勧めします。
 
-| エンドポイント (VIP) | プロトコル | ポート |
+| エンドポイント (VIP) | Protocol | ポート |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | ポータル (管理者) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
 | ポータル (ユーザー) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |

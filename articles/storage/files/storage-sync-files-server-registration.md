@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918878"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002554"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 この記事では、サーバーをトレージ同期サービスに登録して管理する方法について説明します。 Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録/登録解除する
 サーバーを Azure File Sync に登録すると、Windows Server と Azure の間に信頼関係が確立されます。 この関係を使用して、サーバーに "*サーバー エンドポイント*" を作成できます。サーバー エンドポイントは、Azure ファイル共有 ("*クラウド エンドポイント*" とも呼ばれます) と同期する必要がある特定のフォルダーを表します。 
@@ -33,10 +35,10 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     
     ![[IE セキュリティ強化の構成] が強調表示された サーバー マネージャーの UI](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* AzureRM PowerShell モジュールがサーバーにインストールされていること。 サーバーがフェールオーバー クラスターのメンバーである場合、そのクラスター内のすべてのノードには AzureRM モジュールが必要になります。 AzureRM モジュールをインストールする方法の詳細については、「[Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)」(Azure PowerShell のインストールと構成) を参照してください。
+* Azure PowerShell モジュールがサーバーにインストールされていること。 サーバーがフェールオーバー クラスターのメンバーである場合、そのクラスター内のすべてのノードには Az モジュールが必要になります。 Az モジュールをインストールする方法の詳細については、[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
 
     > [!Note]  
-    > サーバーの登録と登録解除には、最新バージョンの AzureRM PowerShell モジュールを使用することをお勧めします。 AzureRM パッケージがこのサーバーにインストールされていたことがあり、そのサーバー上の PowerShell バージョンが 5.* 以降の場合、`Update-Module` コマンドレットを使用してそのパッケージを更新することができます。 
+    > サーバーの登録と登録解除には、最新バージョンの Az PowerShell モジュールを使用することをお勧めします。 Az パッケージがこのサーバーにインストールされていたことがあり、そのサーバー上の PowerShell バージョンが 5.* 以降の場合、`Update-Module` コマンドレットを使用してそのパッケージを更新することができます。 
 * お使いの環境でネットワーク プロキシ サーバーを使用する場合、同期エージェントが使用するサーバー上のプロキシ設定を構成します。
     1. プロキシ IP アドレスとポート番号を決定します。
     2. 以下の 2 つのファイルを編集します。
@@ -135,8 +137,8 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Connect-AzureRmAccount
-Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$accountInfo = Connect-AzAccount
+Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
 

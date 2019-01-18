@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979235"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157770"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
@@ -38,7 +38,7 @@ ms.locfileid: "50979235"
 
 ## <a name="sample-tokens"></a>サンプル トークン
 
-v1.0 トークンと v2.0 トークンはよく似ており、同じクレームが多く含まれています。 各トークンの例を次に示します。
+v1.0 トークンと v2.0 トークンは似ており、同じクレームが多く含まれています。 各トークンの例を次に示します。
 
 ### <a name="v10"></a>v1.0
 
@@ -79,7 +79,7 @@ JWT は次の 3 つの部分に分かれています。
 | `nonce` | String | トークン リプレイ攻撃から保護するために使用される一意識別子。 リソースでこの値を記録することで、再生を防ぐことができます。 |
 | `alg` | String | トークンの署名に使用されたアルゴリズム ("RS256" など) を示します。 |
 | `kid` | String | このトークンの署名に使用されている公開キーの拇印が記述されています。 v1.0 と v2.0 のどちらのアクセス トークンでも生成されます。 |
-| `x5t` | String | `kid` と同様に機能します (使用方法も値も同じ)。 これは、互換性を目的として v1.0 アクセス トークンでのみ生成されるレガシ クレームです。 |
+| `x5t` | String | `kid` と同様に機能します (使用方法も値も同じ)。 `x5t` は、互換性を目的として v1.0 アクセス トークンでのみ生成されるレガシ クレームです。 |
 
 ### <a name="payload-claims"></a>ペイロードのクレーム
 
@@ -121,7 +121,7 @@ JWT は次の 3 つの部分に分かれています。
 | 要求 | 形式 | 説明 |
 |-----|--------|-------------|
 | `ipaddr`| String | ユーザーが認証された IP アドレス。 |
-| `onprem_sid`| 文字列 ([SID 形式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components)) | ユーザーがオンプレミス認証を行った場合、この要求によって SID が提供されます。 これは、レガシ アプリケーションでの承認に使用できます。 |
+| `onprem_sid`| 文字列 ([SID 形式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components)) | ユーザーがオンプレミス認証を行った場合、この要求によって SID が提供されます。 レガシ アプリケーションでの承認に `onprem_sid` を使用できます。 |
 | `pwd_exp`| int、UNIX タイムスタンプ | ユーザーのパスワードの有効期限を示します。 |
 | `pwd_url`| String | パスワードをリセットするためにユーザーを送信できる URL。 |
 | `in_corp`|ブール値 | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。 |
@@ -217,8 +217,8 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 ### <a name="token-timeouts"></a>トークンのタイムアウト
 
-* MaxInactiveTime: 更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
-* MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定されている場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。 
+* MaxInactiveTime:更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
+* MaxSessionAge:MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定されている場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。 
 * 次に例を示します。
   * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。 ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。
   * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。 ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。

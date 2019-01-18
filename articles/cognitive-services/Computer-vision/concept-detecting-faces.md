@@ -1,7 +1,7 @@
 ---
 title: 顔の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用した顔の検出に関連する概念。
+description: Computer Vision API の顔検出機能に関連する概念。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342315"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580539"
 ---
-# <a name="detecting-faces"></a>顔の検出
+# <a name="face-detection-with-computer-vision"></a>Computer Vision での顔の検出
 
 Computer Vision は、写真の中から人間の顔を検出し、検出された各顔の年齢、性別、四角形を生成します。 Computer Vision は、[[Face]](/azure/cognitive-services/face/) で見つけられる機能のサブセットを提供しており、顔の識別やポーズの検出など、より詳細な分析に Face サービスを使用できます。  
 

@@ -1,5 +1,5 @@
 ---
-title: 'パイプライン: ML の速度、移植性、および再利用を最適化する'
+title: 'パイプライン: 機会学習ワークフローの最適化'
 titleSuffix: Azure Machine Learning service
 description: この記事では、Azure Machine Learning SDK for Python を使用して構築できる機械学習パイプラインと、パイプラインを使用する利点について説明します。 機械学習 (ML) パイプラインは、データ サイエンティストが機械学習ワークフローを構築、最適化、管理するために使用します。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e2874c4a40a2347fd47e93c99fdec7ff5e81aec1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e8532e9821501c7b10fbb47c531228e439a8b289
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308211"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556885"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Azure Machine Learning サービスを使用して機械学習パイプラインを構築する
 

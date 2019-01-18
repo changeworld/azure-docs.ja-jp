@@ -1,19 +1,19 @@
 ---
-title: Batch レンダリングの機能
+title: レンダリング機能 - Azure Batch
 description: Azure Batch 固有のレンダリング機能
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a1408720a5387d044416ded377189e4539f782a7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392787"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543038"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
+# <a name="azure-batch-rendering-capabilities"></a>Azure Batch のレンダリング機能
 
 Azure Batch の標準の機能は、レンダリングのワークロードとアプリケーションの実行に使用されます。 また、Batch にはレンダリングのワークロードをサポートする特定の機能が含まれています。
 

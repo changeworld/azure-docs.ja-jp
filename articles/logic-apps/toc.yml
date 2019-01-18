@@ -332,6 +332,8 @@ items:
     href: /powershell/module/azurerm.logicapp
   - name: REST API
     href: /rest/api/logic/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.logic/allversions
   - name: ワークフロー定義言語スキーマ
     href: logic-apps-workflow-definition-language.md
     items:
@@ -371,9 +373,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 8db010dd61b010e9590af12c193aef1ee8fd36af
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9501c94448651c8d67dd65a1edc3ae97fe54c6a4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140831"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156835"

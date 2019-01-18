@@ -1,5 +1,5 @@
 ---
-title: Azure IoT EdgeAgent および EdgeHub リファレンス | Microsoft Docs
+title: EdgeAgent および EdgeHub の推奨されるプロパティのリファレンス - Azure IoT Edge | Microsoft Docs
 description: edgeAgent および edgeHub モジュール ツインの特定のプロパティとその値を確認します。
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a0834e5886a1a088486109f967baf357e375ad05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568922"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100284"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge エージェントと Edge ハブのモジュール ツインのプロパティ
 
@@ -70,7 +71,7 @@ Edge エージェントの報告されるプロパティには、次の 3 つの
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | これは、Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
+| lastDesiredStatus.code | これは、Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
 | deviceHealth | `healthy` すべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
 | configurationHealth.{deploymentId}.health | `healthy` デプロイ {deploymentId} によって設定されたすべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
@@ -108,7 +109,7 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
+| lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
 | clients.{device or moduleId}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
 | clients.{device or moduleId}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間 |

@@ -203,6 +203,8 @@ items:
     href: /powershell
   - name: REST API
     href: /rest/api/appservice/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.web/allversions
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -257,9 +259,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL アドレス
       href: ip-address-change-ssl.md
-ms.openlocfilehash: e18c991d1ca722b16af2d5df9f2eb3a3d08127d3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0f9689e8e6da8bc58bf3cc40306a92bf4c518d5b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716210"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232840"

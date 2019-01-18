@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233737"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321419"
 ---
 # <a name="application-architecture-on-azure"></a>Azure のアプリケーション アーキテクチャ
 Microsoft Azure 上のクラウド ベースのソリューションをセキュリティ保護するには、アーキテクチャの強力な基盤が不可欠です。 アーキテクト、デザイナー、および実装者は、アプリケーションとサービスのアーキテクチャに関する強力な知識を利用します。 この基礎知識は、クラウド ベースのソリューションのすべてのコンポーネントを理解するのに役立ち、設計および実装のすべての側面にセキュリティを統合しやすくします。
 
 アーキテクチャの調査および設計に役立つ以下の機能を以下に示します。
 
-* アーキテクチャのインフォグラフィック
 * アーキテクチャのブループリント
 * クラウドおよびエンタープライズ用シンボル セット
 * 3D ブループリント Visio テンプレート
-
-## <a name="architectural-infographics"></a>アーキテクチャのインフォグラフィック
-Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。 以下が含まれます。
-
-* [実際のクラウド アプリケーションの作成](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [クラウド サービスによるスケーリング](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>アーキテクチャのブループリント
 Microsoft は、Microsoft 製品を使用する特定の種類のシステム構築方法を示す、大まかな [アーキテクチャのブループリント](https://aka.ms/azblueprints) を公開しています。
@@ -54,5 +47,5 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 テンプレートは、このコース以外でも利用もできます。
 
 * [トレーニング ビデオを視聴](https://aka.ms/3dBlueprintTemplateVideo) する
-* [Microsoft 3D ブループリント Visio テンプレート](https://aka.ms/3DBlueprintTemplate)
+*  [Microsoft 3D ブループリント Visio テンプレート](https://aka.ms/3DBlueprintTemplate)
 * 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) をダウンロードする

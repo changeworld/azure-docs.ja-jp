@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c448d9fdf8580d20a002d768915b557fbcb942ed
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000242"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332039"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -205,7 +205,7 @@ namespace WorkerRoleWithSBQueue1
         {
             // ... Other startup code here ...
 
-            // Define the cateogry and counter names.
+            // Define the category and counter names.
             string perfCounterCatName = "MyService";
             string perfCounterName = "Times Used";
 

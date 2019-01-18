@@ -1,11 +1,11 @@
 ---
-title: Cortana Intelligence コンペティションの FAQ | Microsoft Docs
+title: Cortana Intelligence コンペティションの FAQ - Azure Machine Learning Studio | Microsoft Docs
 description: Microsoft Cortana Intelligence コンペティションについてよく寄せられる質問。
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.author: haining
-manager: mwinkle
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256452"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268905"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
@@ -69,7 +69,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 コンペティションには、無料で参加できます。 ただし、参加するには、Azure Machine Learning ワークスペースへのアクセスが必要です。 クレジット カードなしで、単に有効な Microsoft アカウントまたは Office 365 アカウントでログインするだけで、Free ワークスペースを作成することができます。 既に Azure または Cortana Intelligence Suite ユーザーである場合は、同じ Azure サブスクリプションで Standard ワークスペースを作成して使用できます。 Azure サブスクリプションを購入する場合は、「[Azure の価格](https://azure.microsoft.com/pricing)」ページに移動します。 実験を構築するために Standard ワークスペースを使用する場合は、標準料金が適用されることに注意してください。 詳しくは、[Azure Machine Learning の価格情報](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページをご覧ください。 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **パブリック スコアとプライベート スコアとは何ですか。**
 

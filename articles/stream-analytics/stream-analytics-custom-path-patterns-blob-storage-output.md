@@ -1,19 +1,20 @@
 ---
-title: Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)
-description: ''
+title: Azure Stream Analytics の BLOB 出力用の DateTime パス パターン (プレビュー)
+description: この記事では、Azure Stream Analytics ジョブからの BLOB ストレージ出力に対するカスタム DateTime パス パターン機能について説明します。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452566"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090790"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)
 
@@ -61,7 +62,7 @@ BLOB ストレージ用のカスタム パス パターンを Hive Streaming 規
 
 カスタム出力は、Azure Stream Analytics と Hive 間でデータを移植するためのテーブルの変更と手動でのパーティションの追加という煩わしい操作を排除します。 代わりに、次を使用して、多数のフォルダーを自動的に追加できます。
 
-```
+```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 ```
 
@@ -75,9 +76,9 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 完全なパス パターンは次のようになります。
 
-```
-year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}
-```
+
+`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
+
 
 ジョブを開始すると、パス パターンに基づくフォルダー構造が BLOB コンテナー内に作成されます。 日レベルまでドリルダウンできます。
 

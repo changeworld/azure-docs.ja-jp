@@ -1,21 +1,17 @@
 ---
-title: データベースのセキュリティ - Azure Cosmos DB | Microsoft Docs
+title: データベースのセキュリティ - Azure Cosmos DB
 description: Azure Cosmos DB がデータベースの保護とデータのセキュリティを提供する方法について説明します。
-keywords: NoSQL データベースのセキュリティ, 情報のセキュリティ, データのセキュリティ, データベースの暗号化, データベースの保護, セキュリティ ポリシー, セキュリティ テスト
-services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 6e14ce19d691cc60cb65353bdb025dfa741e1eca
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 5fcf04c57f957b670d813de8ffe2d945f70cb3c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636528"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038774"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -49,7 +45,7 @@ ms.locfileid: "51636528"
 - 保護されたデータセンター内でのサーバーの物理的な保護
 - 認定
 
-さらに、最近発生した[大規模なデータベース侵害](http://thehackernews.com/2017/01/mongodb-database-security.html)は、次の単純ではあるが重要な要件を思い出させてくれます。
+さらに、最近発生した[大規模なデータベース侵害](https://thehackernews.com/2017/01/mongodb-database-security.html)は、次の単純ではあるが重要な要件を思い出させてくれます。
 - 修正プログラムの適用によって常に最新の状態が維持されるサーバー
 - 既定/SSL 暗号化による HTTPS
 - 強力なパスワードを持つ管理者アカウント
@@ -77,12 +73,12 @@ ms.locfileid: "51636528"
 |ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
 |HTTPS/SSL/TLS の暗号化|クライアントからサービスへの Azure Cosmos DB のすべての通信は、SSL/TLS 1.2 に対応しています。 また、データセンター内とデータセンター間のすべてのレプリケーションには、SSL/TLS 1.2 が適用されます。|
-|保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](.\database-encryption-at-rest.md)に関するページを参照してください。|
+|保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](./database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> SSL と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
-|セキュリティとデータ保護の認証|最新の認定一覧については、全般的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)と、最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)で、すべての認証を確認してください (Cosmos を検索)。 より的を絞った情報については、2018 年 4 月 25 日の投稿 [Azure #CosmosDB: Secure, private, compliant](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) を参照してください。この投稿には、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPPAA、FedRAMP High などが記載されています。
+|セキュリティとデータ保護の認証|最新の認定一覧については、全般的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)と、最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)で、すべての認証を確認してください (Cosmos を検索)。 より重点的に書かれた記事については、2018 年 4 月 25 日の投稿「[Azure #CosmosDB:Secure, private, compliant](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/)」(Azure #CosmosDB: セキュリティ保護、プライベート、準拠) をご覧ください。この投稿には、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPAA、FedRAMP High などが記載されています。
 
-次のスクリーン ショットは、Azure Portal のアクセス制御 (IAM) を使用した Active Directory の統合 (RBAC) を示しています。![Azure Portal のアクセス制御 (IAM) - データベース セキュリティを示す](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
+次のスクリーン ショットは、Azure portal のアクセス制御 (IAM) を使用した Active Directory の統合 (RBAC) を示しています。![Azure portal のアクセス制御 (IAM) - データベース セキュリティを示す](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 
 次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。![Azure Cosmos DB のアクティビティ ログ](./media/database-security/nosql-database-security-application-logging.png)
 

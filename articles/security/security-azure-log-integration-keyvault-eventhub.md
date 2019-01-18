@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440048"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063915"
 ---
-# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
+# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure Log Integration のチュートリアル:Event Hubs を使用して Azure Key Vault のイベントを処理する
 
 >[!IMPORTANT]
 > Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
 
-Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネクタを使用して、こちらの[手順](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)に従うことをお勧めします。 ただし、SIEM ベンダーが Azure Monitor へのコネクタを提供していない場合は、そのようなコネクタが入手可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
 
  
 このチュートリアルを使用して、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
@@ -80,7 +80,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
 ## <a name="create-supporting-infrastructure-elements"></a>サポート インフラストラクチャ要素を作成する
 
 1. 管理者特権の PowerShell ウィンドウを開き、**C:\Program Files\Microsoft Azure Log Integration** に移動します。
-1. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 `.\LoadAzLogModule.ps1` コマンドを入力します。 (このコマンドの ".\" に注意してください)。次のような結果が表示されます。</br>
+1. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 `.\LoadAzLogModule.ps1` コマンドを入力します。 (このコマンドの ".\" に注意してください。)次のような結果が表示されます。</br>
 
    ![読み込まれたモジュール一覧](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
 
    ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
-    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
     - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (この名前は何でも構いませんが、英小文字と数字のみにする必要があります。)
@@ -129,7 +129,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
-    Azure ログ プロファイルについて詳しくは、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
+    Azure ログ プロファイルについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)」をご覧ください。
 
 > [!NOTE]
 > ログ プロファイルを作成しようとすると、エラー メッセージが表示される場合があります。 その後、Get-AzureRmLogProfile および Remove-AzureRmLogProfile のドキュメントを確認できます。 Get-AzureRmLogProfile を実行すると、ログ プロファイルに関する情報が表示されます。 ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` コマンドを入力すると、既存のログ プロファイルを削除できます。

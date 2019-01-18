@@ -1,27 +1,26 @@
 ---
-title: MongoB API を使用する Node.Js、Angular アプリ (パート 6)
+title: Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
 titleSuffix: Azure Cosmos DB
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 6 です。
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ec6fc4237fd2be11d1e937ec6aed12898689e73f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.reviewer: sngun
+ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139981"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040559"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 6:アプリに CRUD 関数を追加する
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
 
-複数のパートから成るこのチュートリアルでは、Node.js で Express と Angular を使って記述された新しい [MongoDB API](mongodb-introduction.md) アプリを作成し、Azure Cosmos DB データベースに接続する方法を紹介します。
-
-このチュートリアルのパート 6 では、[パート 5](tutorial-develop-mongodb-nodejs-part5.md) の内容をベースとして、次のタスクについて取り上げます。
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。 このチュートリアルのパート 6 では、[パート 5](tutorial-develop-mongodb-nodejs-part5.md) の内容をベースとして、次のタスクについて取り上げます。
 
 > [!div class="checklist"]
 > * ヒーロー サービスに Post、Put、Delete の各関数を作成する

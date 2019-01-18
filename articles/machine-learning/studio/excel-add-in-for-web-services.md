@@ -1,10 +1,11 @@
 ---
-title: Machine Learning Web サービスの Excel アドイン | Microsoft Docs
+title: Web サービス用の Excel アドイン - Azure Machine Learning Studio | Microsoft Docs
 description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
 services: machine-learning
 documentationcenter: ''
-author: marthalc
-ms.author: marthalc
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
 ms.component: studio
@@ -12,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 2/1/2018
-ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 02/01/2018
+ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281835"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269500"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
@@ -40,7 +41,7 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
    
     ![[予測] セクション][02]
 
-Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイについて詳しくは、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
+Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
 
 Web サービスの API キーを取得します。 取得元は、クラシック Machine Learning Web サービスを発行したか、新しい Machine Learning Web サービスを発行したかによって異なります。
 
@@ -68,7 +69,7 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 ## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
 
-1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイについて詳しくは、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
+1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
 2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 4. Excel で、**[Web サービス]** セクションに移動します (**[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。

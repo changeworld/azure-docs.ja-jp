@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 94a3282451a0efcc9209c4aac3d316e40560495f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 13003f671e479217d73d1c611be36987b3bda7bc
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972132"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793584"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -34,7 +34,7 @@ Azure ファイル共有をバックアップする前に、[サポートされ�
 Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
 - [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。*
 - 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
-- Azure Backup を使用して Azure Files を保護することを目的とした PowerShell と CLI は提供されていません。
+- Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。
 - オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。

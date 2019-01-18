@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 1d2be579dda9f90f06897f11d62ccd08076f892e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fbfb6a030d4979f9bd6a27f4c5b6908e62ffd9ab
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413572"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001755"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル: CLI とトピック/サブスクリプションを使用して在庫を更新する
+# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル:CLI とトピック/サブスクリプションを使用して在庫を更新する
 
 Microsoft Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。 このチュートリアルでは、公開/サブスクライブ チャネルで Azure CLI と Java を使用して、小売在庫シナリオで Service Bus トピックとサブスクリプションを使用する方法について説明します。
 
@@ -126,7 +126,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="create-filter-rules-on-subscriptions"></a>サブスクリプションに対してフィルター ルールを作成する
 
-名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/)でコードを調べることができます。
+名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 

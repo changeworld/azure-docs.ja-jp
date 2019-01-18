@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336529"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037278"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions の関数の種類と機能の概要 (Azure Functions)
 
-Durable Functions は、関数実行のステートフル オーケストレーションを提供します。 Durable Functions はさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、Durable Functions オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。  今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
+Durable Functions では、関数実行のステートフル オーケストレーションを提供します。 永続関数 (durable function) とはさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、永続関数オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。  今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
 
 ![Durable Functions の種類][1]  
 
@@ -37,7 +37,7 @@ Durable Functions は、関数実行のステートフル オーケストレー�
 
 ### <a name="orchestrator-functions"></a>オーケストレーター関数
 
-オーケストレーター関数は、Durable Functions の中核です。  オーケストレーター関数は、アクションが実行される方法と順序を表現します。  オーケストレーター関数は、「[Durable Functions の概要](durable-functions-overview.md)」にあるように、コード (C# または JavaScript) でオーケストレーションを表現します。  1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。  
+オーケストレーター関数は、永続関数の中核です。  オーケストレーター関数は、アクションが実行される方法と順序を表現します。  オーケストレーター関数は、「[Durable Functions patterns and technical concepts](durable-functions-concepts.md)」(Durable Functions のパターンと技術的概念) にあるように、コード (C# または JavaScript) でオーケストレーションを表現します。  1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。  
 
 オーケストレーター関数は[オーケストレーション トリガー](durable-functions-bindings.md#orchestration-triggers)によって始動させる必要があります。
 

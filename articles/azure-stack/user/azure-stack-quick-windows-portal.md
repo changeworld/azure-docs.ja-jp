@@ -6,20 +6,20 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: e4e3fdbdd3bc9eb982f993a9be60ba0812c68a9d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 37cd6eaec5b3d4bd6dfbbb7e7b6657d139ccea07
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713743"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303024"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Windows Server 仮想マシンを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack ポータルを使用して Windows Server 2016 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。
 
@@ -46,7 +46,7 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
     ![仮想マシンのサイズを選択する](media/azure-stack-quick-windows-portal/image03.png)
 
 4. **[設定]** ページで、必要に応じて既定値を変更します。
-   - Azure Stack バージョン 1808 以降、**ストレージ**を構成できます。ここで "*マネージド ディスク*" の使用を選択できます。 バージョン 1808 より前は、アンマネージド ディスクのみを使用できます。  
+   - Azure Stack バージョン 1808 以降では、**ストレージ**を構成できます。ここで "*マネージド ディスク*" の使用を選択できます。 バージョン 1808 より前は、アンマネージド ディスクのみを使用できます。  
    ![仮想マシンの設定を構成する](media/azure-stack-quick-windows-portal/image04.png)  
    お使いの構成の準備が整ったら、**[OK]** を選択して続行します。
 

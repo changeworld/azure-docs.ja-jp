@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259156"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189498"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -136,7 +136,7 @@ PowerCLI は、Azure Migrate Collector によってダウンロードされ、�
 2. C:\ProgramFiles\ProfilerService\VMWare\Scripts\ ディレクトリに移動します
 3. InstallPowerCLI.ps1 スクリプトを実行します
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
 
 VMware PowerCLI のインストールに関する問題が原因で発生する可能性があります。 この問題を解決するには、以下の手順に従ってください。
 
@@ -245,14 +245,14 @@ Windows イベント トレーシング を収集するには、次の操作を�
 2. F12 キーを押して開発者ツールを起動します。 必要な場合は、**[ナビゲーション時にエントリをクリア]** の設定をクリアします。
 3. **[ネットワーク]** タブをクリックし、ネットワーク トラフィックのキャプチャを開始します。
  - Chrome では、**[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 表示されない場合は、黒い円をクリックして開始します。
- - Edge/IE では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンをクリックします。
+ - Microsoft Edge または IE では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンをクリックします。
 4. エラーを再現してみます。
 5. 記録中にエラーが発生したら、記録を停止し、記録されたアクティビティのコピーを保存します。
  - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** をクリックします。 これにより、ログが .har ファイルとして圧縮されエクスポートされます。
- - Edge/IE では、**[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されエクスポートされます。
+ - Microsoft Edge または IE では、**[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されエクスポートされます。
 6. **[コンソール]** タブに移動して、いずれかの警告またはエラーを確認します。 コンソール ログを保存するには次の操作を行います。
  - Chrome では、コンソール ログのどこかを右クリックします。 **[Save as]\(名前を付けて保存\)** を選択して、ログをエクスポートおよび圧縮します。
- - Edge/IE では、エラーを右クリックして **[すべてコピー]** を選択します。
+ - Microsoft Edge または IE では、エラーを右クリックして **[すべてコピー]** を選択します。
 7. 開発者ツールを閉じます。
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>コレクターのエラー コードと推奨されるアクション

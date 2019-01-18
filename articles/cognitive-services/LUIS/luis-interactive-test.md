@@ -1,23 +1,24 @@
 ---
-title: LUIS ポータル内での LUIS アプリのテスト
-titleSuffix: Azure Cognitive Services
+title: LUIS ポータルでアプリをテストする
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6bb03975e36e93c2496eb4c6013be21ebc891ed1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039703"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601969"
 ---
-# <a name="test-your-luis-app"></a>LUIS アプリのテスト
+# <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
 [テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
@@ -50,11 +51,11 @@ ms.locfileid: "47039703"
  
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。 
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect.png)
+    ![テスト結果の詳細を確認するには、[検査] ボタンを選択します。](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>上位スコアの意図の修正
 

@@ -9,16 +9,15 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249589"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024095"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -50,7 +49,7 @@ Data Factory はデータ統合に必要な任意のフロー スタイルをモ
 - 差分フロー:
     - 差分コピー用にパラメーターを使用したり最大値を定義したりして、オンプレミスやクラウドのリレーショナル ストアからディメンションまたは参照テーブルを移動し、データをレイクに読み込みます。 
 
-詳細については、[制御フローのチュートリアル](tutorial-control-flow.md)に関するページを参照してください。
+詳細については、[チュートリアル: 制御フロー](tutorial-control-flow.md)に関するページを参照してください。
 
 ### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>コード不要のパイプラインで大規模なデータを変換する
 この新しいブラウザーベースのツール エクスペリエンスは、最新のインタラクティブな Web ベースのエクスペリエンスにより、コード不要のパイプラインのオーサリングとデプロイを提供します。
@@ -92,9 +91,9 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 ## <a name="what-is-integration-runtime"></a>統合ランタイムの概要
 統合ランタイムは、さまざまなネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
 
-- **データ移動**: データ移動については、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、ビルトイン コネクタ、形式変換、列マッピング、高性能でスケーラブルなデータ転送をサポートします。
-- **ディスパッチ アクティビティ**: 変換については、統合ランタイムは SSIS パッケージをネイティブに実行する機能を提供します。
-- **SSIS パッケージの実行**: 管理されている Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 Integration Runtime では、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティのディスパッチや監視もサポートされています。
+- **データ移動**:データ移動では、統合ランタイムは移動元と移動先のデータ ストア間でデータを移動しながら、組み込みのコネクタ、形式変換、列マッピング、および高性能でスケーラブルなデータ転送のサポートを提供します。
+- **アクティビティの送信**: 変換では、統合ランタイムは、SSIS パッケージをネイティブに実行する機能を提供します。
+- **SSIS パッケージの実行**: 管理された Azure コンピューティング環境で SSIS パッケージをネイティブに実行します。 Integration Runtime では、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティのディスパッチや監視もサポートされています。
 
 データの移動と変換に必要な 1 つ以上の統合ランタイム インスタンスをデプロイできます。 統合ランタイムは、Azure パブリック ネットワークまたはプライベート ネットワーク (オンプレミス、Azure Virtual Network、またはアマゾン ウェブ サービス Virtual Private Cloud (VPC)) で実行できます。 
 
@@ -179,5 +178,5 @@ Azure Data Factory の最新情報を入手するには、次のサイトを参�
 ## <a name="next-steps"></a>次の手順
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。
 
-- [クイックスタート: データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
-- [チュートリアル: クラウドのデータをコピーする](tutorial-copy-data-dot-net.md)
+- [クイック スタート:データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [チュートリアル:クラウド内のデータをコピーする](tutorial-copy-data-dot-net.md)

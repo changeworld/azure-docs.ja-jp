@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 419160ea8a91672d9c948c57b9c3ffd70180ab66
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9502c0b5c3ea4b25b7a49448b75fdd43ff28762a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187723"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186990"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー)
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、VM 用 Azure Monitor では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの視点からオペレーティング システムに重点を置いています。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  

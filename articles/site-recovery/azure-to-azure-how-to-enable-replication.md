@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 797cef2d3a0e2cfeb28411c30a7da8a5b6f2d953
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 79ad4b3598c227ad2c2e3b76562cf95a30e82ad3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834521"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101549"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -65,7 +65,7 @@ ms.locfileid: "52834521"
     - **レプリケーション ポリシー**:復旧ポイントのリテンション履歴と、アプリ整合性スナップショットの頻度の設定を定義します。 既定では、Azure Site Recovery によって、既定の設定 (復旧ポイントのリテンション期間が "24 時間"、アプリ整合性スナップショットの頻度が "60 分") で新しいレプリケーション ポリシーが作成されます。
 
     ![レプリケーションを有効にする](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
-
+  
 ## <a name="customize-target-resources"></a>ターゲット リソースのカスタマイズ
 
 Site Recovery によって使用される既定のターゲット設定を変更することができます。
@@ -79,7 +79,13 @@ Site Recovery によって使用される既定のターゲット設定を変更
     - **ターゲット ストレージ アカウント**で、使用するアカウントを選択します。
 
         ![レプリケーションを有効にする](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
-
+1. **[カスタマイズ]** をクリックして、アプリケーションの設定を変更します。
+   - **[マルチ VM 整合性]** では、一緒にレプリケートする VM を選択します 
+   - レプリケーション グループのすべてのマシンが、フェールオーバー時に共有のクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを持ちます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響を及ぼす可能性があるので (CPU を集中的に使用するため)、複数のマシンが同じワークロードを実行しており、複数のマシン間の整合性が必要な場合にのみ使用します。 たとえば、アプリケーションに 2 つの SQL 仮想マシンと 2 つの Web サーバーがある場合は、レプリケーション グループの一部として SQL 仮想マシンのみを追加する必要があります。
+   - レプリケーション グループ内に、最大で 16 台の仮想マシンを含めることができます。
+   - マルチ VM 整合性を有効にすると、レプリケーション グループ内のマシンは、ポート 20004 を介して相互に通信します。 ポート 20004 経由での VM 間の内部通信をブロックするファイアウォール アプライアンスがないことを確認します。 Linux VM をレプリケーション グループに含めるには、ポート 20004 の送信トラフィックが、特定の Linux バージョンのガイダンスに従って手動で開かれていることを確認します。
+![Enable replication](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+    
 2. **[Create target resource]\(ターゲット リソースを作成する\)** > **[レプリケーションを有効にする]** の順にクリックします。
 3. VM のレプリケーションが有効になったら、**[レプリケートされたアイテム]** で VM の正常性の状態を確認できます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185615"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120837"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -68,7 +68,7 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
 * **ポート フォワーディング**
 
-    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 フロントエンド IP アドレスを使って、追加のジャンプ ボックスがなくても、インターネット経由で VM をリモート管理できます。
+    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても、インターネット経由で VM をリモート管理できます。
 
 * **アプリケーションに対する独立性と透過性**
 

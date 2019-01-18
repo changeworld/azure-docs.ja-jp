@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339265"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053910"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -75,11 +75,11 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 * [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
 
-* [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit) と呼ばれるクロス プラットフォームの Visual Studio Code 拡張機能。
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) と呼ばれるクロスプラットフォームの Visual Studio Code 拡張機能。
 
 * [Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)と呼ばれるクロスプラットフォーム Python CLI。
 
-このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 VS Code で開発を行う場合は、*VS Code 用 Azure IoT Hub Toolkit 拡張機能*を使用できます。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
+このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 VS Code で開発する場合は、*VS Code 用の Azure IoT Tools* を使用できます。 CLI ツールを使いたい場合は、"*Azure CLI 2.0 向けの IoT 拡張機能*" ツールを使うこともできます。
 
 デバイス エクスプローラー ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラー ツールを使用してデバイスを追加すると、デバイス用の接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
@@ -410,7 +410,7 @@ END_NAMESPACE(WeatherStation);
 
 **BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。 これらのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
 
-この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 さらに、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、**SetAirResistance** の 3 つのアクション (メッセージ) を定義します。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
+この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 また、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、および **SetAirResistance** の 3 つのアクション (メッセージ) も定義されます。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
 
 モデルで定義されたデータとアクションは、IoT Hub へのメッセージの送信とデバイスに送信されたメッセージへの応答に使用できる API へのアクセスを定義します。 このモデルの使用については、例を通じて理解するのが一番です。
 

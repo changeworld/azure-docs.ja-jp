@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4bcb71829b2fb5f35398f36dee36d4e98c5a609b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238628"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106735"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -29,12 +29,12 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、開発キット
 ## <a name="hardware"></a>ハードウェア
 | コンポーネント | 最小値 | 推奨 |
 | --- | --- | --- |
-| ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
-| ディスク ドライブ: 開発キット データ全般<sup>*</sup>  |4 つのディスク。 各ディスクに最低 140 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 250 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
-| コンピューティング: CPU |デュアル ソケット: 12 個の物理コア (合計) |デュアル ソケット: 16 個の物理コア (合計) |
-| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です。)|
+| ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある、1 つのオペレーティング システム ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
+| ディスク ドライブ: 開発キット データ全般<sup>*</sup>  |4 つのディスク。 各ディスクに最低 240 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 400 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
+| コンピューティング: CPU |デュアル ソケット: 16 個の物理コア (合計) |デュアル ソケット: 20 個の物理コア (合計) |
+| コンピューティング: メモリ |192 GB RAM |256 GB RAM |
 | コンピューティング: BIOS |Hyper-V 有効 (SLAT サポートあり) |Hyper-V 有効 (SLAT サポートあり) |
-| ネットワーク: NIC |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |
+| ネットワーク: NIC |Windows Server 2012 R2 認定。 特別な機能は必要ありません |Windows Server 2012 R2 認定。 特別な機能は必要ありません |
 | ハードウェア ロゴ認定 |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2016 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Azure から[マーケットプレース項目](asdk-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
@@ -82,7 +82,7 @@ AD FS のオプションを使ってデプロイする場合は、Azure Stack �
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory アカウント
 Azure AD アカウントを使って Azure Stack をデプロイするには、デプロイ用の PowerShell スクリプトを実行する前に、Azure AD アカウントを準備する必要があります。 このアカウントは、Azure AD テナントの全体管理者になります。 このアカウントは、Azure Active Directory および Graph API と対話するすべての Azure Stack サービス用のアプリケーションおよびサービス プリンシパルのプロビジョニングと委任に使われます。 また、既定のプロバイダー サブスクリプションの所有者としても使われます (これは後で変更できます)。 このアカウントを使って、Azure Stack システムの管理ポータルにログインできます。
 
-1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 それ以外の場合は、[https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/) で無料で作成できます (中国では、代わりに <http://go.microsoft.com/fwlink/?LinkID=717821> にアクセスしてください)。 後で [Azure Stack を Azure に登録する](asdk-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
+1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 それ以外の場合は、[https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/) で無料で作成できます (中国では、代わりに <https://go.microsoft.com/fwlink/?LinkID=717821> にアクセスしてください)。 後で [Azure Stack を Azure に登録する](asdk-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
    
     サービス管理者として使うためにこれらの資格情報を保存します。 このアカウントは、リソース クラウド、ユーザー アカウント、テナント プラン、クォータ、価格を構成、管理することができます。 ポータルで、Web サイト クラウド、仮想マシン プライベート クラウドを作成したり、プランの作成やユーザーのサブスクリプションの管理を行えます。
 1. テナントとして開発キットにサインインできるように、Azure AD で少なくとも 1 つのテスト ユーザー アカウントを作成します。
@@ -98,7 +98,7 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
 
 ## <a name="network"></a>ネットワーク
 ### <a name="switch"></a>Switch
-スイッチの 1 つのポートを開発キット マシン用に使用できること。
+スイッチの 1 つのポートを開発キット マシン用に使用できること。  
 
 開発キット マシンでは、スイッチのアクセス ポートまたはトランク ポートへの接続がサポートされています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。
 
@@ -121,7 +121,8 @@ IPv4 のみがサポートされています。 IPv6 ネットワークを作成
 NIC を接続するネットワークで使用できる DHCP サーバーがあることを確認します。 DHCP が使用できない場合は、ホストが使用するためのものに加え、追加の静的 IPv4 ネットワークを準備する必要があります。 デプロイ パラメーターとしてその IP アドレスとゲートウェイも指定する必要があります。
 
 ### <a name="internet-access"></a>インターネットへのアクセス
-Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) MAS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
+Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) AzS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
+
 
 ## <a name="next-steps"></a>次の手順
 [ASDK 展開パッケージをダウンロードする](asdk-download.md)

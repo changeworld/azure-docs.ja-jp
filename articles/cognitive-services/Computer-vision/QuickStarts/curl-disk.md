@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: ローカル画像の分析 - REST、cURL - Computer Vision'
+title: クイック スタート:ローカル画像の分析 - REST、cURL
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、cURL で Computer Vision API を使用してローカル画像を分析します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: c5e3de438593a6fb960edaffd14fa18ebe03f548
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339918"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579390"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と cURL を使用してローカル画像を分析する
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と cURL を使用してローカル画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 

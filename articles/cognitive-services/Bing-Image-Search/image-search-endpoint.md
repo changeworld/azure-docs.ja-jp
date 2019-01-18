@@ -1,5 +1,5 @@
 ---
-title: 画像検索エンドポイント - Bing Image Search API
+title: Bing Image Search API のエンドポイント
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API で利用できるエンドポイントの一覧。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: ca38943908bf3eee04c40cf4decf81fd20b08a1f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6213bbb27fc1a7086ccecafa7ae7b12040ac0a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295922"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250622"
 ---
-# <a name="image-search-endpoints"></a>Image Search エンドポイント
+# <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
 
 **Image Search API** には 3 つのエンドポイントが含まれています。  エンドポイント 1 は、クエリに基づいて Web からの画像を返します。 エンドポイント 2 は [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) を返します。  エンドポイント 3 は注目の画像を返します。
 ## <a name="endpoints"></a>エンドポイント
-Bing API を使用して画像の結果を取得するには、次のエンドポイントのいずれかに要求を送信します。 ヘッダーと URL パラメーターは、さらに仕様を定義するために使用します。
+Bing API を使用して画像の結果を取得するには、次のエンドポイントのいずれかに要求を送信します。 ヘッダーと URL パラメーターを使用して、さらに詳細を定義します。
 
 **エンドポイント 1:** `?q=""` によって定義されたユーザーの検索クエリに関連する画像を返します。
 ```
@@ -49,7 +49,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 画像検索要求に対する応答には、結果が JSON オブジェクトとして含まれます。 結果の解析例については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)と[ソース コード](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
+**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
 Image Search API を使用した基本的な要求の例については、[Image Search クイック スタート](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)のページをご覧ください。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 9df2e8762d546e6115dc1205548e927cfee7bb60
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341882"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052038"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -81,9 +81,9 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
   SAS トークンの生成方法の詳細については、[IoT Hub のセキュリティ トークンの使用][lnk-sas-tokens]に関するページのデバイス セクションを参照してください。
 
-  テストするときは、複数のプラットフォームに対応する [Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit 拡張機能) か、[Device Explorer][lnk-device-explorer] ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+  テストするときは、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) か、[Device Explorer][lnk-device-explorer] ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
 
-Azure IoT Hub Toolkit の場合:
+Azure IoT Tools の場合:
 
   1. Visual Studio Code の左下隅にある **[Azure IoT ハブ デバイス]** タブを展開します。
   2. デバイスを右クリックし、**[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。
@@ -279,11 +279,12 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_repor
 ```json
 {
     "telemetrySendFrequency": "5m",
-    "route": null
+    "route": null,
+    "$version": 8
 }
 ```
 
-プロパティの更新の場合、値 `null` は、JSON オブジェクト メンバーが削除されることを意味します。
+プロパティの更新の場合、値 `null` は、JSON オブジェクト メンバーが削除されることを意味します。 また、`$version` がツインの望ましいプロパティ セクションの新しいバージョンを示していることに注意してください。
 
 > [!IMPORTANT]
 > IoT Hub は、デバイスが接続されている場合にのみ変更通知を生成します。 IoT Hub とデバイス アプリの間で必要なプロパティを同期させるには、[デバイス再接続フロー][lnk-devguide-twin-reconnection]を必ず実装してください。

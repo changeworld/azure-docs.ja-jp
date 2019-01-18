@@ -1,5 +1,5 @@
 ---
-title: Azure Batch のメトリック、アラート、および診断ログ | Microsoft Docs
+title: メトリック、アラート、および診断ログ - Azure Batch | Microsoft Docs
 description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
 services: batch
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.custom: seodec18
+ms.openlocfilehash: cd3e671a00f7f8b0a13ed95bfd43795a24244a66
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438440"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537105"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
  
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-collection.md#metrics)と[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-collection.md#metrics)と[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
 
 ## <a name="batch-metrics"></a>Batch メトリック
 
@@ -109,7 +109,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
     ![Batch 診断](media/batch-diagnostics/diagnostics-portal.png)
 
-ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-logs-stream-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)」を参照してください。
+ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-logs-stream-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs)」を参照してください。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする

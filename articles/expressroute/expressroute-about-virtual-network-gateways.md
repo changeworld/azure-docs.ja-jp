@@ -1,21 +1,22 @@
 ---
-title: Azure ExpressRoute 用の仮想ネットワーク ゲートウェイについて | Microsoft Docs
-description: ExpressRoute 用の仮想ネットワーク ゲートウェイについて説明します。
+title: ExpressRoute 用の仮想ネットワーク ゲートウェイについて - Azure | Microsoft Docs
+description: ExpressRoute 用の仮想ネットワーク ゲートウェイについて説明します。 この記事には、ゲートウェイの SKU と種類に関する情報が含まれます。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: df0d9c91d1d4f120f934c7375d0c517e3869834e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684768"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076595"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>ExpressRoute 用の仮想ネットワーク ゲートウェイについて
-仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 仮想ネットワーク ゲートウェイは、ExpressRoute トラフィックまたは VPN トラフィックに使用できます。 この記事では、ExpressRoute の仮想ネットワーク ゲートウェイについて説明します。
+仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 仮想ネットワーク ゲートウェイは、ExpressRoute トラフィックまたは VPN トラフィックに使用できます。 この記事では、ExpressRoute 用の仮想ネットワーク ゲートウェイに注目し、SKU、SKU の推定パフォーマンス、およびゲートウェイの種類に関する情報が含まれています。
 
 ## <a name="gateway-types"></a>ゲートウェイの種類
 

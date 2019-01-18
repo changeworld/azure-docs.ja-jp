@@ -46,6 +46,8 @@ items:
     href: expressroute-erdirect-about.md
   - name: ExpressRoute Global Reach について
     href: expressroute-global-reach.md
+  - name: ExpressRoute Global Reach のアプリケーション シナリオ
+    href: expressroute-global-reach-app-scenario.md
   - name: バックエンド接続の相互運用性
     items:
     - name: 前書きとテスト セットアップ
@@ -219,15 +221,15 @@ items:
       href: https://go.microsoft.com/fwlink/p/?LinkId=615124
     - name: 回線のプライベート ピアリングを設定する方法
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/
-    - name: 'ハイブリッド パートナーシップ: オンプレミスのシナリオの有効化'
+    - name: ハイブリッド パートナーシップ:オンプレミスのシナリオの有効化
       href: https://go.microsoft.com/fwlink/p/?LinkId=615125
     - name: 回線の Microsoft ピアリングの設定
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: 回線のパブリック ピアリングの設定
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: 9980b405670b3fee0d1aa47c746e8f33001ba335
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54100c59be82666914ea35684fbae5130a763ada
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083990"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329118"

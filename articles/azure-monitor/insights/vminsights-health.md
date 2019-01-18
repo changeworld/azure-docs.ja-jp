@@ -1,5 +1,5 @@
 ---
-title: VM の Azure Monitor を使用して仮想マシンの正常性を監視する (プレビュー) | Microsoft Docs
+title: Azure Monitor for VMs (プレビュー) を使用して仮想マシンの正常性を監視する | Microsoft Docs
 description: この記事では、VM の Azure Monitor を使用して仮想マシンと基になるオペレーティング システムの正常性を理解する方法について説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: a2f654043146536ecf543ae2a0aa49537c2223e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 737e05f3d936481e06acfc0604ff739b9f01d5db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344042"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191651"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>VM の Azure Monitor を使用して Azure 仮想マシンの正常性を把握する (プレビュー)
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用して Azure 仮想マシンの正常性を把握する
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Log Analytics または Azure Monitor を使用してさまざまな条件を監視することはできますが、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
 
 Azure VM と基になるオペレーティング システムの全体的な正常性状態は、VM の Azure Monitorm の正常性では、仮想マシンからの直接的な観点と、Azure Monitor からのリソース グループ内の全 VM に対する観点という 2 つの観点で観察できます。
@@ -170,7 +170,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 正常性の診断では、正常性の情報が次のカテゴリにまとめられています。 
 
 * 可用性
-* [パフォーマンス]
+* パフォーマンス
  
 選択したターゲットに対して定義されているすべての正常性基準が、適切なカテゴリに表示されます。 
 

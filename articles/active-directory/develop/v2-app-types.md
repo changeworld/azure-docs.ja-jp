@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 24a9b014028bf99673881904e17ec0911d0b5063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 94a072d3c8bde9e4fb16342db1e0705bfc22cf77
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952054"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539587"
 ---
 # <a name="application-types-for-v20"></a>v2.0 用のアプリケーションの種類
 
@@ -121,7 +121,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 
-長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。
+長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳細については、「[Authenticating to Azure AD in daemon apps with certificates (証明書を使用したデーモン アプリでの Azure AD への認証)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)」を参照してください。
 
 このフローでは、アプリは `/token` エンドポイントと直接対話してトークンを取得します。
 

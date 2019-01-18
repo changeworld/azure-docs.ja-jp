@@ -12,33 +12,32 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685703"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077744"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
-Azure のソフトウェア パートナーとして、貴社のソリューションは、Azure のコンポーネントを必要とするか、Azure インフラストラクチャ上に直接デプロイされることが必要です。 パートナーのソリューションをデプロイし、独自の Azure リソースをプロビジョニングする顧客にとって、デプロイの状態を把握することは困難であり、Azure の拡大への効果を知ることも容易ではありません。 こうした状況への可視性を高めることが、Microsoft の営業チームと連携し、Microsoft パートナー プログラムでの信頼を獲得することにつながります。   
+Azure のソフトウェア パートナーとして、貴社のソリューションは、Azure のコンポーネントを必要とするか、Azure インフラストラクチャ上に直接デプロイされることが必要です。 パートナーのソリューションをデプロイし、独自の Azure リソースをプロビジョニングする顧客にとって、デプロイの状態を把握することは困難であり、Azure の拡大への効果を知ることも容易ではありません。 こうした状況への可視性を高めることが、Microsoft の営業チームと連携し、Microsoft パートナー プログラムでの信頼を獲得することにつながります。 
 
 Microsoft では現在、顧客が Azure にデプロイするパートナー ソフトウェアについて、Azure の使用状況をより的確に追跡するための方法を提供しています。 この新しい方法では、Azure サービスのデプロイを調整するために、Azure Resource Manager が使用されます。
 
 Microsoft パートナーは、顧客に代わって、プロビジョニングする Azure リソースに Azure の使用状況を関連付けることができます。 この関連付けは、Azure Marketplace、クイック スタート リポジトリ、プライベート GitHub リポジトリのほか、1 対 1 の顧客エンゲージメントを通じて形成することができます。 追跡を有効にするには、次の 2 とおりの方法があります。
 
-- Azure Resource Manager テンプレート: パートナーのソフトウェアを実行する Azure サービスをデプロイするための Resource Manager テンプレートまたはソリューション テンプレート。 パートナーは、Azure ソリューションのインフラストラクチャと構成を定義する Resource Manager テンプレートを作成できます。 Resource Manager テンプレートにより、貴社とその顧客は、貴社のソリューションをそのライフサイクルを通じていつでもデプロイすることができます。 リソースが一貫した状態でデプロイされることへの確信を得ることが可能です。 
+- Azure Resource Manager テンプレート:パートナーのソフトウェアを実行する Azure サービスをデプロイするための Resource Manager テンプレートまたはソリューション テンプレート。 パートナーは、Azure ソリューションのインフラストラクチャと構成を定義する Resource Manager テンプレートを作成できます。 Resource Manager テンプレートにより、貴社とその顧客は、貴社のソリューションをそのライフサイクルを通じていつでもデプロイすることができます。 リソースが一貫した状態でデプロイされることへの確信を得ることが可能です。 
+- Azure Resource Manager API:パートナーは Resource Manager API を直接呼び出して、Resource Manager テンプレートをデプロイするか、API 呼び出しを生成して Azure サービスを直接プロビジョニングすることができます。 
 
-- Azure Resource Manager API: パートナーは Resource Manager API を直接呼び出して、Resource Manager テンプレートをデプロイするか、API 呼び出しを生成して Azure サービスを直接プロビジョニングすることができます。 
+Azure Marketplace に発行されるすべての[ソリューション テンプレート](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)には、顧客の利用状況属性が必要です。 
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 現在 Azure Resource Manager テンプレートを使用していない場合は、Resource Manager テンプレートについての理解を深め、作成方法を知るために役立つリンクがいくつかあります。 
+多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 詳しくは、「[初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)」をご覧ください。
 
-*   [初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Azure Marketplace 向けソリューション テンプレートの作成](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>テンプレートに GUID を追加する
 
@@ -95,7 +94,7 @@ Resource Manager テンプレートを使用している場合は、上記の手
 > [!Note]
 > 文字列の形式は重要です。 プレフィックス **pid-** が含まれていないとデータを照会できません。 追跡方法は SDK ごとに異なります。 この方法を実装するには、使用する Azure SDK に合ったサポートと追跡の方法を確認してください。 
 
-#### <a name="example-the-python-sdk"></a>例: Python SDK
+#### <a name="example-the-python-sdk"></a>例:Python SDK
 
 Python では、**config** 属性を使用します。 この属性は UserAgent に対してのみ追加できます。 次に例を示します。
 

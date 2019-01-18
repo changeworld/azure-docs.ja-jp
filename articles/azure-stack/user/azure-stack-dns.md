@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: df4f6066a4bf03f6b09777f3556c52a237501592
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497656"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052344"
 ---
 # <a name="using-dns-in-azure-stack"></a>Azure Stack での DNS の使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack はドメイン ネーム システム (DNS) 機能に対応しています。
 
@@ -33,7 +33,7 @@ Azure Stack はドメイン ネーム システム (DNS) 機能に対応して�
 
 パブリック IP リソースの DNS ドメイン名ラベルを指定できます。 Azure Stack では、ラベル名に **domainnamelabel.location**.cloudapp.azurestack.external を使用し、Azure Stack によって管理される DNS サーバーでそれをパブリック IP アドレスにマップします。
 
-たとえば、ドメイン名ラベルとして **contoso** を使用したパブリック IP リソースをローカルの Azure Stack の場所に作成した場合、[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) である **contoso.local.cloudapp.azurestack.external** は、このリソースのパブリック IP アドレスに解決されます。 この FQDN を使用して、Azure Stack 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
+たとえば、ドメイン名ラベルとして **contoso** を使用したパブリック IP リソースをローカルの Azure Stack の場所に作成した場合、[完全修飾ドメイン名 (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) である **contoso.local.cloudapp.azurestack.external** は、このリソースのパブリック IP アドレスに解決されます。 この FQDN を使用して、Azure Stack 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
 
 名前解決の詳細については、[DNS 解決](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
@@ -54,27 +54,23 @@ Azure Stack 内に DNS ゾーンとレコードを作成して管理すること
 
 Azure Stack は、Azure の DNS API と同じ API を使用して、Azure と同じような DNS サービスを提供します。  Azure Stack DNS でドメインをホストすることで、同じ資格情報、API、ツールを使用して DNS レコードを管理できます。 他の Azure サービスと同じ請求とサポートも使用できます。
 
-Azure Stack DNS のインフラストラクチャは Azure のインフラストラクチャよりもコンパクトです。 Azure Stack デプロイのサイズと場所は、DNS のスコープ、規模、パフォーマンスに影響を与えます。 また、パフォーマンス、可用性、グローバル配布、高可用性 (HA) などは、デプロイに応じて変わってきます。
+Azure Stack DNS のインフラストラクチャは Azure のインフラストラクチャよりもコンパクトです。 Azure Stack デプロイのサイズと場所は、DNS のスコープ、規模、パフォーマンスに影響を与えます。 また、パフォーマンス、可用性、グローバル配布、高可用性などは、デプロイに応じて変わってきます。
 
 ## <a name="comparison-with-azure-dns"></a>Azure DNS との比較
 
-Azure Stack の DNS は Azure の DNS に似ていますが、大きな例外があります。
+Azure Stack の DNS は Azure の DNS に似ていますが、重要な例外がいくつかあります。
 
-* **AAAA レコードのサポートがない**
+* **AAAA レコードのサポートがない**:Azure Stack では IPv6 アドレスがサポートされないので、AAAA レコードもサポートされません。 これは、Azure と Azure Stack の DNS の大きな違いのひとつです。
 
-    Azure Stack では IPv6 アドレスがサポートされないので、AAAA レコードもサポートされません。 これは、Azure と Azure Stack の DNS の大きな違いのひとつです。
-* **マルチテナントではない**
+* **マルチテナントではない**:Azure Stack の DNS サービスはマルチテナントではありません。 各テナントで同じ DNS ゾーンを作成することはできません。 ゾーンの作成を試みた最初のサブスクリプションだけが成功し、その後の要求は失敗します。 これは、Azure と Azure Stack DNS の大きな違いの 1 つです。
 
-    Azure Stack の DNS サービスはマルチテナントではありません。 各テナントで同じ DNS ゾーンを作成することはできません。 ゾーンの作成を試みた最初のサブスクリプションだけが成功し、その後の要求は失敗します。 これは、Azure と Azure Stack DNS の大きな違いの 1 つです。
-* **タグ、メタデータ、Etag**
-
-    Azure Stack でのタグ、メタデータ、Etag、制限の処理方法にも多少の違いがあります。
+* **タグ、メタデータ、Etag**:Azure Stack でのタグ、メタデータ、Etag、制限の処理方法にも多少の違いがあります。
 
 Azure DNS の詳細については、[DNS のゾーンとレコード](../../dns/dns-zones-records.md)に関するページを参照してください。
 
 ### <a name="tags"></a>タグ
 
-Azure Stack DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。 DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、次に説明する "メタデータ" がサポートされます。
+Azure Stack DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。 DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、次のセクションで説明する**メタデータ**がサポートされます。
 
 ### <a name="metadata"></a>Metadata
 
@@ -86,7 +82,7 @@ Azure Stack DNS では、DNS ゾーン リソースに対して Azure Resource M
 
 Azure Stack DNS は、*Etag* を使用して同じリソースへの同時変更を安全に処理します。 Etag と Azure Resource Manager の*タグ*は異なります。 各 DNS リソース (ゾーンまたはレコード セット) には、関連付けられている Etag があります。 リソースが取得されるときは、常に Etag も取得されます。 リソースを更新する場合は、Azure Stack DNS がサーバー上の Etag の一致を確認できるように Etag を返すこともできます。 リソースを更新するたびに Etag が再生成されるため、Etag の不一致は同時変更が発生していることを示します。 Etag は、既存のリソースがないことを確認するために、新しいリソースの作成時にも使用されます。
 
-Azure Stack DNS PowerShell コマンドレットは、既定で、ゾーンとレコード セットへの同時変更のブロックに Etag を使用します。 オプションの **-Overwrite** スイッチを使用すると、Etag チェックを実行しないように設定できます。この場合、発生したすべての同時変更が上書きされます。
+Azure Stack DNS PowerShell コマンドレットは、既定で、ゾーンとレコード セットへの同時変更のブロックに Etag を使用します。 省略可能な `-Overwrite` スイッチを使用すると、Etag チェックを実行しないように設定できます。この場合、発生したすべての同時変更は上書きされます。
 
 Azure Stack DNS REST API のレベルでは、HTTP ヘッダーを使用して Etag を指定します。 次の表に各ヘッダーの動作を示します。
 
@@ -109,4 +105,4 @@ Azure Stack DNS を使用する際は、次の制限が既定で適用されま�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Stack の iDNS の概要](azure-stack-understanding-dns.md)
+- [Azure Stack の iDNS の概要](azure-stack-understanding-dns.md)

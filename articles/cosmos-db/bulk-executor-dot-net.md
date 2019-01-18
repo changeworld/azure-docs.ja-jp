@@ -1,20 +1,20 @@
 ---
-title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する | Microsoft Docs
+title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する
 description: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
-services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: sngun
+ms.openlocfilehash: d6fed65dad0e8f12495177b274cef181e9e91879
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363400"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044316"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 

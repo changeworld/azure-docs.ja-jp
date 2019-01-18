@@ -9,8 +9,12 @@ items:
   items:
   - name: サービスの作成
     href: search-create-service-portal.md
-  - name: コグニティブ検索を使ってみる
-    href: cognitive-search-quickstart-blob.md
+  - name: ポータル
+    items:
+    - name: ツールを使用してインポート、インデックス付け、クエリを実行する
+      href: search-get-started-portal.md
+    - name: コグニティブ検索を使ってみる
+      href: cognitive-search-quickstart-blob.md
   - name: .NET
     items:
     - name: インデックスを作成する
@@ -32,8 +36,6 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Azure portal のツールを使用する
-    href: search-get-started-portal.md
   - name: Cognitive Search API の説明
     href: cognitive-search-tutorial-blob.md
   - name: Azure BLOB のインデックスを作成する
@@ -58,12 +60,12 @@ items:
   items:
   - name: コグニティブ検索 (プレビュー)
     items:
+    - name: Cognitive Services リソースをアタッチする
+      href: cognitive-search-attach-cognitive-services.md
     - name: スキルセットを定義する
       href: cognitive-search-defining-skillset.md
     - name: 注釈を参照する
       href: cognitive-search-concept-annotations-syntax.md
-    - name: Cognitive Services をスキルセットと関連付ける
-      href: cognitive-search-attach-cognitive-services.md
     - name: インデックスのフィールドにマップする
       href: cognitive-search-output-field-mapping.md
     - name: 画像の情報を処理し、抽出する
@@ -144,13 +146,13 @@ items:
       href: https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index
     - name: シノニム
       href: search-synonyms.md
-  - name: データのインデックス付け
+  - name: データの読み込みと更新
     items:
-    - name: データを読み込む
+    - name: データ インポートの概要
       href: search-what-is-data-import.md
     - name: インデックスを再構築する
       href: search-howto-reindex.md
-    - name: インポート ウィザード (ポータル)
+    - name: データのインポート (ポータル)
       href: search-import-data-portal.md
     - name: 大規模なデータ セットにインデックスを付ける
       href: search-howto-large-index.md
@@ -236,6 +238,8 @@ items:
     href: /rest/api/searchmanagement
   - name: REST (プレビュー)
     href: search-api-preview.md
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.search/searchservices
   - name: 定義済みのスキル (プレビュー)
     href: cognitive-search-predefined-skills.md
     items:
@@ -285,9 +289,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 901db48ea082a7de7179632f3a53043ef1e5cf23
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 04dddfa9cdf5688ca3b821cbfd8350fcb496933b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717706"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390625"

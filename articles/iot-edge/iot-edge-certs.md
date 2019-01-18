@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge の証明書について | Microsoft Docs
-description: Azure IoT Edge 証明書と、その使用方法について説明します。
+title: デバイスのセキュリティのための証明書 - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge では、証明書を使用して、デバイス、モジュール、リーフ デバイスの検証が行われ、それらの間にセキュリティで保護された接続が確立されます。
 author: stevebus
 manager: philmea
 ms.author: stevebus
@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1cf1411e227363e7dc9d54f04d0c630341f55a6e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568592"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099895"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 証明書の使用方法の詳細
 
@@ -51,7 +51,7 @@ IoT Edge での証明書の使用に関する混乱を解消するために、�
 
 ### <a name="device-ca-certificate"></a>デバイス CA 証明書
 
-デバイス CA 証明書は、プロセスの最後の中間 CA 証明書から生成され、この証明書で署名されます。 この証明書は、Edge デバイス自体 (可能であれば、ハードウェア セキュリティ モジュール (HSM) などの安全なストレージ) にインストールされます。 さらに、デバイス CA 証明書は IoT Edge デバイスを一意に識別します。 IoT Edge の場合、デバイス CA 証明書が他の証明書を発行する機能を備えます。 たとえば、デバイス CA 証明書は、[Azure IoT デバイス プロビジョニング サービス](..\iot-dps\about-iot-dps.md)への認証デバイスに使用されるリーフ デバイス証明書を発行します。
+デバイス CA 証明書は、プロセスの最後の中間 CA 証明書から生成され、この証明書で署名されます。 この証明書は、Edge デバイス自体 (可能であれば、ハードウェア セキュリティ モジュール (HSM) などの安全なストレージ) にインストールされます。 さらに、デバイス CA 証明書は IoT Edge デバイスを一意に識別します。 IoT Edge の場合、デバイス CA 証明書が他の証明書を発行する機能を備えます。 たとえば、デバイス CA 証明書は、[Azure IoT デバイス プロビジョニング サービス](../iot-dps/about-iot-dps.md)への認証デバイスに使用されるリーフ デバイス証明書を発行します。
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge ワークロード CA
 
@@ -124,4 +124,4 @@ New-CACertsEdgeDevice "<gateway device name>"
 
 [Azure IoT Edge モジュールについて](iot-edge-modules.md)
 
-[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)
+[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成](how-to-create-transparent-gateway.md)します。

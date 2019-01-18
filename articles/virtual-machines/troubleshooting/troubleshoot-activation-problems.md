@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235277"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976366"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "51235277"
 Azure では、KMS ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイント使用します。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
 
 * Azure パブリック クラウド リージョン: kms.core.windows.net:1688
-* Azure China 国内クラウド リージョン: kms.core.chinacloudapi.cn:1688
+* Azure China 21Vianet 国内クラウド リージョン: kms.core.chinacloudapi.cn:1688
 * Azure Germany 国内クラウド リージョン: kms.core.cloudapi.de:1688
 * Azure US Gov 国内クラウド リージョン: kms.core.usgovcloudapi.net:1688
 
@@ -37,10 +37,10 @@ Azure では、KMS ライセンス認証に対して、VM が存在するクラ�
 
 Azure Windows VM をライセンス認証しようとすると、次の例のようなエラー メッセージが表示されます。
 
-**エラー: 0xC004F074 ソフトウェア ライセンス サービスにより、コンピューターのライセンス認証ができなかったことが報告されました。キー管理サービス (KMS) に接続できませんでした。詳細については、アプリケーション イベント ログを参照してください。**
+**エラー:0xC004F074 ソフトウェア ライセンス サービスにより、コンピューターのライセンス認証ができなかったことが報告されました。キー管理サービス (KMS) に接続できませんでした。詳細については、アプリケーション イベント ログを参照してください。**
 
 ## <a name="cause"></a>原因
-一般に、Azure VM のライセンス認証の問題は、Windows VM が適切な KMS クライアント セットアップ キーを使用して構成されていないか、Windows VM に Azure KMS サービス (kms.core.windows.net、ポート 1668) に対する接続の問題がある場合に発生します。 
+一般に、Azure VM のライセンス認証の問題は、Windows VM が適切な KMS クライアント セットアップ キーを使用して構成されていないか、Windows VM に Azure KMS サービス (kms.core.windows.net、ポート 1688) に対する接続の問題がある場合に発生します。 
 
 ## <a name="solution"></a>解決策
 
@@ -84,10 +84,9 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 3. 正しい Azure KMS サーバーを使用するように VM が構成されていることを確認します。 そのためには、次のコマンドを実行します。
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    コマンドにより "キー管理サービスのマシン名は kms.core.windows.net:1688 に正常に設定されました。" というメッセージが返されるはずです。
+    コマンドにより次のメッセージが返されるはずです:"キー管理サービスのマシン名は kms.core.windows.net:1688 に正常に設定されました"。
 
 4. Psping を使用して、KMS サーバーへの接続があることを確認します。 ダウンロードした Pstools.zip を展開したフォルダーに移動し、次のコマンドを実行します。
   
@@ -95,7 +94,7 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
     \psping.exe kms.core.windows.net:1688
     ```
   
-  出力の最後から 2 番目の行が、"Sent = 4, Received = 4, Lost = 0 (0% loss)" になっていることを確認します。
+  出力の最後から 2 番目の行が次のようになっていることを確認します:Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
   Lost が 0 (ゼロ) より大きい場合、VM には KMS サーバーへの接続がありません。 この状況で、VM が仮想ネットワーク内にあり、その VM にカスタム DNS サーバーが指定されている場合は、その DNS サーバーが kms.core.windows.net を解決できることを確認する必要があります。 または、DNS サーバーを、kms.core.windows.net を解決できるサーバーに変更します。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105157"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973725"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -27,13 +27,13 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 属性マッピングの式の構文は、Visual Basic のApplications (VBA) 関数に似ています。
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
-  *FunctionName(<<引数 1>>,<<argument N>>)*
-* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne (FunctionTwo(<<argument1>>))*
+  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
   2. 文字列定数。二重引用符で囲む必要があります。 例: "米国"
-  3. 他の関数 例: FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
+  3. 他の関数 例: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "会社名:\"Contoso\""
 
 ## <a name="list-of-functions"></a>関数の一覧
@@ -67,7 +67,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 - - -
-### <a name="join"></a>Join
+### <a name="join"></a>結合
 **関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
@@ -109,7 +109,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="not"></a>Not
-**関数:**<br> Not(source)
+**関数:**<br>  Not(source)
 
 **説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
 
@@ -124,7 +124,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 **関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
-文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
+ 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
 
 * **oldValue** と **replacementValue** が指定された場合:
   
@@ -184,7 +184,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
-**関数:**<br> StripSpaces(source)
+**関数:**<br>  StripSpaces(source)
 
 **説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
 

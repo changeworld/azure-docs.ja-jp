@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448174"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -173,7 +173,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -209,7 +209,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Perception United States (非 UltiPro) のテスト ユーザーの作成
 
-このセクションでは、Perception United States (非 UltiPro) で Britta Simon というユーザーを作成します。 [Perception United States (非 UltiPro) サポート チーム](http://www.ultimatesoftware.com/Contact/ContactUs)と連携し、Perception United States (非 UltiPro) プラットフォームにユーザーを追加してください。
+このセクションでは、Perception United States (非 UltiPro) で Britta Simon というユーザーを作成します。 [Perception United States (非 UltiPro) サポート チーム](https://www.ultimatesoftware.com/Contact/ContactUs)と連携し、Perception United States (非 UltiPro) プラットフォームにユーザーを追加してください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -246,7 +246,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Perception United States (非 UltiPro) のタイルをクリックすると、自動的に Perception United States (非 UltiPro) アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

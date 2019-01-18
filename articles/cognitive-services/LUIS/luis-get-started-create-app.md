@@ -9,14 +9,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 71f3084be697dd84f3f262d2a79cd04a0ba76d8e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86a09d3d11f9b713bb6228498c072d80e7c45d6b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086812"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261079"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート: 事前構築済みの Home Automation アプリを使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "53086812"
 
 3. ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付けます。
 
-    [![[新しいアプリの作成] ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-new-app/create-new-app-dialog.png "[新しいアプリの作成] ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-new-app/create-new-app-dialog.png)
+    [![新しいアプリの作成 ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-new-app/create-new-app-dialog.png "新しいアプリの作成 ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
 4. アプリケーションのカルチャを選択します。 この Home Automation アプリでは、英語を選択します。 **[完了]** を選択します。 LUIS により Home Automation アプリが作成されます。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "53086812"
 
 ドメインが正常に追加されると、事前構築済みドメインのボックスに、**[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
-[![[削除] ボタンがある Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/remove-domain.png "[削除] ボタンがある Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/remove-domain.png)
+[![削除 ボタンがある Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/remove-domain.png "削除 ボタンがある Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/remove-domain.png)
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
@@ -80,7 +80,7 @@ Turn off the lights
 
 この例では、"HomeAutomation.TurnOff" に対する最もスコアの高い意図として "Turn off the lights" が正しく識別されています。
 
-[![発話が強調表示されている [テスト] ウィンドウのスクリーンショット](media/luis-quickstart-new-app/test.png "発話が強調表示されている [テスト] ウィンドウのスクリーンショット")](media/luis-quickstart-new-app/test.png)
+[![発話が強調表示されている テスト ウィンドウのスクリーンショット](media/luis-quickstart-new-app/test.png "発話が強調表示されている テスト ウィンドウのスクリーンショット")](media/luis-quickstart-new-app/test.png)
 
 
 もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。 

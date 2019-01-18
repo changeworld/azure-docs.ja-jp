@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a54c47c0f67052f2ce486a97e009293a118919d4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407096"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994115"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -171,12 +171,10 @@ or
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-ファイルに使用するその他の Hadoop コマンドの一覧は、[http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
+ファイルに使用するその他の Hadoop コマンドの一覧は、[https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
 
 > [!WARNING]  
 > Apache HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳細については、この記事の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
->
->
 
 ### <a name="graphical-clients"></a>グラフィカル クライアント
 Azure Storage を操作するためのグラフィカル インターフェイスを提供するアプリケーションもいくつかあります。 これらのアプリケーションの一部を次の一覧表に示します。
@@ -184,17 +182,17 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | クライアント |  Linux | OS X |  Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
-| [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
+| [Azure Storage Explorer](https://storageexplorer.com/) |✔ |✔ |✔ |
+| [Cloud Storage Studio 2](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Azure 用エクスプローラー](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Azure 用エクスプローラー](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
 詳細については、「 [リンクしているリソースへの移動](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources)」を参照してください。
 
 #### <a id="storageexplorer"></a>Azure Storage Explorer
-*Azure Storage エクスプローラー* は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。 無料のオープン ソース ツールであり、[http://storageexplorer.com/](http://storageexplorer.com/) からダウンロードできます。 このリンクからソース コードも入手できます。
+*Azure Storage エクスプローラー* は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。 無料のオープン ソース ツールであり、[https://storageexplorer.com/](https://storageexplorer.com/) からダウンロードできます。 このリンクからソース コードも入手できます。
 
 Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法: ストレージ アクセス キーを表示、コピー、再生成する」セクションをご覧ください。
 
@@ -315,7 +313,7 @@ Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用し
 
 [sqldatabase-create-configure]: ../sql-database-create-configure.md
 
-[apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+[apache-sqoop-guide]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 

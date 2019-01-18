@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fe5c44e834826f9dc62acd30e853c3736b432ee
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 951b47c7193b2b405def9831e94c5e29faff3119
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412437"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791118"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
@@ -45,13 +45,13 @@ contoso.com の AD FS が fabrikam.com 内のユーザーを認証するため�
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>手順 2:contoso.com のフェデレーション設定を編集する 
  
-AD FS との間で認証連携された単一ドメインに使用される既定の発行者設定は "http://ADFSServiceFQDN/adfs/services/trust" です (例: `http://fs.contoso.com/adfs/services/trust`)。 Azure Active Directory では、認証連携させるドメインごとに固有の発行者が必要となります。 同じ AD FS で 2 つのドメインのフェデレーションを行うことになるので、発行者の値は、Azure Active Directory との間で認証連携させるドメインごとに固有となるように編集する必要があります。 
+AD FS との間で認証連携された単一ドメインに使用される既定の発行者設定は "http\://ADFSServiceFQDN/adfs/services/trust" です (例: `http://fs.contoso.com/adfs/services/trust`)。 Azure Active Directory では、認証連携させるドメインごとに固有の発行者が必要となります。 同じ AD FS で 2 つのドメインのフェデレーションを行うことになるので、発行者の値は、Azure Active Directory との間で認証連携させるドメインごとに固有となるように編集する必要があります。 
  
 AD FS サーバーで Azure AD PowerShell (MSOnline モジュールがインストールされていることを確認) を開いて、次の手順を実行します。
  
 ドメイン contoso.com を含んだ Azure Active Directory に接続 (Connect-MsolService) し、contoso.com のフェデレーション設定を更新します (Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain)。
  
-ドメイン フェデレーションの発行者設定が "http://contoso.com/adfs/services/trust" に変更され、Azure AD の証明書利用者信頼によって UPN サフィックスに基づく正しい issuerId 値が発行されるよう、発行要求規則が追加されます。
+ドメイン フェデレーションの発行者設定が "http\://contoso.com/adfs/services/trust" に変更され、Azure AD の証明書利用者信頼によって UPN サフィックスに基づく正しい issuerId 値が発行されるよう、発行要求規則が追加されます。
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>手順 3:fabrikam.com と AD FS とを認証連携させる
  

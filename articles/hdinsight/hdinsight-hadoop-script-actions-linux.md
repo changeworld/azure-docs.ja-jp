@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384201"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718930"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -134,7 +134,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Store のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
+クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Storage のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
 
 ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
 
@@ -142,7 +142,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Store には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
+この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Storage には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
 
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
@@ -163,7 +163,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
+これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -274,21 +274,21 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている__追加のストレージ アカウント__。
+* クラスターに関連付けられている __追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* HDInsight クラスターに関連付けられている __Azure Data Lake Storage アカウント__。 HDInsight での Azure Data Lake Storage の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     > [!NOTE]  
-    > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
+    > HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
 スクリプトによって使用されるリソースも公開されている必要があります。
 
-Azure Storage account または Azure Data Lake Store にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
+Azure Storage account または Azure Data Lake Storage にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
 
 > [!NOTE]  
-> スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Store の場合は、`adl://` を使用します。
+> スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Storage の場合は、`adl://` を使用します。
 
 ### <a name="checking-the-operating-system-version"></a>オペレーティング システム バージョンの確認
 
@@ -370,6 +370,6 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 ## <a name="seeAlso"></a>次のステップ
 
-*  [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
+* [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

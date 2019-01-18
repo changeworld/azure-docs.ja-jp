@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a3fcff530077a08414b343a775e7ae694b29bc75
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127586"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021001"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Magento からデータをコピーする (プレビュー)
 
@@ -45,7 +44,7 @@ Magento のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Magento** に設定する必要があります。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Magento** | [はい] |
 | host | Magento インスタンスの URL。 (つまり、192.168.222.110/magento3)  | [はい] |
 | accessToken | Magento のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -77,7 +76,12 @@ Magento のリンクされたサービスでは、次のプロパティがサポ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Magento データセットでサポートされるプロパティの一覧を示します。
 
-Magento からデータをコピーするには、データセットの type プロパティを **MagentoObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Magento からデータをコピーするには、データセットの type プロパティを **MagentoObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**MagentoObject** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -89,7 +93,8 @@ Magento からデータをコピーするには、データセットの type プ
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +103,14 @@ Magento からデータをコピーするには、データセットの type プ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Magento ソース でサポートされるプロパティの一覧を示します。
 
-### <a name="magentosource-as-source"></a>ソースとしての MagentoSource
+### <a name="magento-as-source"></a>ソースとしての Magento
 
 Magento からデータをコピーするには、コピー アクティビティのソースの種類を **MagentoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **MagentoSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Customers"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MagentoSource** | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Customers"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

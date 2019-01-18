@@ -9,15 +9,18 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227928"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634322"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
+
+> [!NOTE]
+> Azure Automation では、新しい [Azure PowerShell Az module](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) がサポートされていません。 これらのコマンドレットで PowerShell ギャラリーからダウンロードされたスクリプトは、Azure Automation では動作しません。
 
 Runbook は [Runbook](#runbooks-in-runbook-gallery) ギャラリーから、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。  開発したシナリオを共有することにより、コミュニティに貢献することもできます。「[Runbook ギャラリーへの Runbook の追加](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)」を参照してください。
 
@@ -63,12 +66,12 @@ Runbook ギャラリーから直接インポートできるのは、Azure ポー
   * 監視
   * Patching
   * プロビジョニング
-  * 修復
+  * Remediation
   * VM Lifecycle Management
 * Automation はギャラリーを 1 時間に 1 回更新するので、投稿物がすぐに表示されないことがあります。
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell ギャラリーのモジュール
-PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。  このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。  
+PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。  このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Azure ポータルで Automation モジュール ギャラリーからモジュールをインポートするには
 1. Azure ポータルで、Automation アカウントを開きます。

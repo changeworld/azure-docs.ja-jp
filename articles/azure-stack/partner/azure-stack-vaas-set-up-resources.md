@@ -10,19 +10,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: d9406032a55c0bbd73bf16ae2f0fa272dddd7698
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ROBOTS: NOINDEX
+ms.openlocfilehash: aa4e8cf0745f3af3d16369e31129f0603e6402e6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650875"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244751"
 ---
-# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル: サービスとしての検証のためのリソースを設定する
+# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル:サービスとしての検証のためのリソースを設定する
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 お客様はソリューションを作成する必要があります。 サービスとしての検証 (VaaS) ソリューションは、特定のハードウェア部品表を含む Azure Stack ソリューションを表します。 このソリューションを使用して、お客様のハードウェアで Azure Stack の実行をサポートできるかどうかを確認します。 このチュートリアルに従って、ソリューションでサービスを使用する準備を行います。
 
@@ -59,7 +60,7 @@ VaaS 専用のテナントを作成し、わかりやすい名前 (たとえば�
     1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. **[すべてのサービス]** > **[ID]** セクションの下の **[Azure Active Directory]** を選択します。
     3. **[エンタープライズ アプリケーション]** > **[Azure Stack Validation Service]** アプリケーションを選択します。
-    4. **[ユーザーとグループ]** を選択します。 **[Azure Stack Validation Service - Users and group]\(Azure Stack Validation Service - ユーザーとグループ\)** ブレードに、アプリケーションを使用するためのアクセス許可と共にユーザーが一覧表示されます。
+    4. **[ユーザーとグループ]** を選択します。 **[Azure Stack Validation Service - Users and group]\(Azure Stack Validation Service - ユーザーとグループ\)** ブレードに、アプリケーションの使用を許可されたユーザーが一覧表示されます。
     5. **+ [ユーザーの追加]** を選択し、テナントからユーザーを追加してロールを割り当てます。
    
     組織内の異なるグループ間で VaaS リソースとアクションを分離したい場合は、複数の Azure AD テナント ディレクトリを作成できます。
@@ -90,7 +91,7 @@ Azure AD 管理者として、テナントのために必要なアクセス許�
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
-テストの実行中、VaaS によって、Azure ストレージ アカウントに診断ログが出力されます。 テスト ログに加えて、ストレージ アカウントは、パッケージ検証ワークフローの OEM 拡張機能パッケージをアップロードするために使用することもできます。
+テストの実行中、VaaS によって、Azure ストレージ アカウントに診断ログが出力されます。 テスト ログに加えて、ストレージ アカウントは、ソリューション検証ワークフローの OEM 拡張機能パッケージをアップロードするために使用することもできます。
 
 Azure ストレージ アカウントは、お客様の Azure Stack 環境ではなく Azure パブリック クラウドでホストされます。
 

@@ -1,23 +1,24 @@
 ---
-title: 予測スコア - 意図、エンティティ - LUIS
-titleSuffix: Azure Cognitive Services
+title: 予測スコア
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 予測スコアは、予測結果についての LUIS の信頼度を示します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d082f8ee4d516e3c9571ec63653f39723cad8c77
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637966"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141987"
 ---
-# <a name="prediction-score"></a>予測スコア
+# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 
 
 予測スコアは、0 と 1 の間です。 十分に信頼できる LUIS スコアの例は 0.99 です。 信頼度の低いのスコアの例は 0.01 です。 
@@ -62,7 +63,7 @@ ms.locfileid: "49637966"
 意図の信頼性を示すためにチャットボットで特定の LUIS スコアを必要とする場合、上位 2 つの意図のスコアの差異を代わりに使用する必要があります。 これによって、トレーニングのバリエーションが柔軟になります。 
 
 ## <a name="punctuation"></a>句読点
-句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話とそれを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または [patterns}(luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
+句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話とそれを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

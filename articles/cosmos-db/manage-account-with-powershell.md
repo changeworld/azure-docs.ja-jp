@@ -1,24 +1,20 @@
 ---
-title: Azure Cosmos DB 自動化 - PowerShell での管理 | Microsoft Docs
+title: PowerShell を使用した Azure Cosmos DB リソースの作成と管理
 description: Azure PowerShell を使用して Azure Cosmos DB アカウントを管理します。
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
-tags: azure-resource-manager
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/21/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.custom: seodec18
+ms.openlocfilehash: 7f58e851ab7783e43cd6235b2169847cbf0ac5a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741353"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036632"
 ---
-# <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
+# <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>PowerShell を使用した Azure Cosmos DB リソースの作成と管理
 
 次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][distribute-data-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-sql-api-dotnet.md#create-account) のいずれも使用可能です。
 

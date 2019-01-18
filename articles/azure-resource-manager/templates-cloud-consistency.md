@@ -1,6 +1,6 @@
 ---
-title: クラウドの一貫性のための Azure Resource Manager テンプレート | Microsoft Docs
-description: クラウドの一貫性のための Azure Resource Manager テンプレートを開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
+title: 複数のクラウドでテンプレートを再利用する - Azure Resource Manager
+description: 異なるクラウド環境で一貫して動作する Azure Resource Manager テンプレートを開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
 services: azure-resource-manager
 documentationcenter: na
 author: marcvaneijk
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/09/2018
 ms.author: mavane
-ms.openlocfilehash: f1ff151c0b8d89910949d961b732c10901f19293
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.custom: seodec18
+ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723374"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135629"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
 
@@ -434,7 +435,7 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 次の 2 つの例は、リソースを作成するときに明示的に指定する必要がある共通のエンドポイント名前空間です。
 
 * ストレージ アカウント (BLOB、キュー、テーブル、ファイル)
-* データベースおよび Redis Cache の接続文字列
+* データベースおよび Azure Cache for Redis の接続文字列
 
 エンドポイントの名前空間は、展開完了時にユーザーへの情報としてテンプレートの出力で使うこともできます。 一般的な例を次に示します。
 

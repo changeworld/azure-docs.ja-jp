@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7bb2a68209e657b1e3ff8c3a61730d42f04a3b8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341390"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727379"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -172,6 +172,9 @@ Content-Type: application/json; charset=utf-8
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
+
+> [!NOTE]
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

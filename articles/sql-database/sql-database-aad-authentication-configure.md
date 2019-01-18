@@ -11,20 +11,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: 87c3633bb3ed3537d1e258b9d8d50fd6d6356d81
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234733"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960032"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
-この記事では、Azure AD を作成して設定した後、Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](sql-database-aad-authentication.md)」を参照してください。
+この記事では、Azure AD を作成して設定した後、Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](sql-database-aad-authentication.md)」を参照してください。
 
 > [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 > [!IMPORTANT]  
 > Azure Active Directory アカウントを使用している場合、Azure VM 上で実行されている SQL Server への接続はサポートされていません。 代わりにドメインの Active Directory アカウントを使用してください。
 
@@ -39,7 +39,7 @@ Azure AD を作成し、ユーザーとグループを設定します。 Azure A
 1. Azure サブスクリプションを Azure Active Directory に関連付けるには、ディレクトリを、データベースをホストする Azure サブスクリプションの信頼できるディレクトリにします。 詳しくは、[Azure サブスクリプションを Azure AD に関連付ける方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページをご覧ください。
 2. Azure Portal のディレクトリ スイッチャーを使用して、ドメインに関連付けられたサブスクリプションに切り替えます。
 
-   **追加情報:** すべての Azure サブスクリプションには、Azure AD インスタンスとの信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](../active-directory/active-directory-b2b-admin-add-users.md)に関するページを参照してください。 この信頼関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+   **追加情報:** すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。 リソースの詳細については、[Azure でのリソース アクセスの説明](../active-directory/active-directory-b2b-admin-add-users.md)に関するページを参照してください。 この信頼関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Azure SQL Server の Azure AD 管理者を作成する
 
@@ -65,13 +65,63 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4. Active Directory 管理ページの上部にあるヘッダーを選択します。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure Portal または PowerShell を使用してこれを行うことができます。
+4. Active Directory 管理者ページの上部でバナーを選択し、現在のユーザーにアクセス許可を付与します。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure portal からこれを行うことができます。PowerShell スクリプトと下のスクリプトを使用する方法もあります。
 
     ![アクセス許可の付与 (ポータル)](./media/sql-database-aad-authentication/grant-permissions.png)
 
-    ![アクセス許可の付与 (PowerShell)](./media/sql-database-aad-authentication/grant-permissions-powershell.png)
+    ```PowerShell
+    # Gives Azure Active Directory read permission to a Service Principal representing the Managed Instance.
+    # Can be executed only by a "Company Administrator" or "Global Administrator" type of user.
 
-    Azure AD のグローバル/会社の管理者としてログインしていれば、Azure Portal または PowerShell スクリプトを使用してこれを行うことができます。
+    $aadTenant = "<YourTenantId>" # Enter your tenant ID
+    $managedInstanceName = "MyManagedInstance"
+
+    # Get Azure AD role "Directory Users" and create if it doesn't exist
+    $roleName = "Directory Readers"
+    $role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq $roleName}
+    if ($role -eq $null) {
+        # Instantiate an instance of the role template
+        $roleTemplate = Get-AzureADDirectoryRoleTemplate | Where-Object {$_.displayName -eq $roleName}
+        Enable-AzureADDirectoryRole -RoleTemplateId $roleTemplate.ObjectId
+        $role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq $roleName}
+    }
+
+    # Get service principal for managed instance
+    $roleMember = Get-AzureADServicePrincipal -SearchString $managedInstanceName
+    $roleMember.Count
+    if ($roleMember -eq $null)
+    {
+        Write-Output "Error: No Service Principals with name '$    ($managedInstanceName)', make sure that managedInstanceName parameter was     entered correctly."
+        exit
+    }
+    if (-not ($roleMember.Count -eq 1))
+    {
+        Write-Output "Error: More than one service principal with name pattern '$    ($managedInstanceName)'"
+        Write-Output "Dumping selected service principals...."
+        $roleMember
+        exit
+    }
+
+    # Check if service principal is already member of readers role
+    $allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
+    $selDirReader = $allDirReaders | where{$_.ObjectId -match     $roleMember.ObjectId}
+
+    if ($selDirReader -eq $null)
+    {
+        # Add principal to readers role
+        Write-Output "Adding service principal '$($managedInstanceName)' to     'Directory Readers' role'..."
+        Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId     $roleMember.ObjectId
+        Write-Output "'$($managedInstanceName)' service principal added to     'Directory Readers' role'..."
+
+        #Write-Output "Dumping service principal '$($managedInstanceName)':"
+        #$allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
+        #$allDirReaders | where{$_.ObjectId -match $roleMember.ObjectId}
+    }
+    else
+    {
+        Write-Output "Service principal '$($managedInstanceName)' is already     member of 'Directory Readers' role'."
+    }
+    ```
 
 5. 操作が正常に完了すると、右上隅に次の通知が表示されます。
 
@@ -81,9 +131,9 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     ![管理者の設定](./media/sql-database-aad-authentication/set-admin.png)
 
-7. [管理者の追加] ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。
+7. [AAD 管理者] ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。
 
-   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません サポートされている管理者の一覧については、「[Azure AD の機能と制限事項](sql-database-aad-authentication.md#azure-ad-features-and-limitations)」をご覧ください。 ロール ベースのアクセス制御 (RBAC) は Azure Portal にのみ適用され、SQL Server には反映されません。
+   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません サポートされている管理者の一覧については、「[Azure AD の機能と制限事項](sql-database-aad-authentication.md#azure-ad-features-and-limitations)」をご覧ください。 ロール ベースのアクセス制御 (RBAC) は Azure portal にのみ適用され、SQL Server には反映されません。
 
     ![管理者の追加](./media/sql-database-aad-authentication/add-admin.png)
 
@@ -93,8 +143,8 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-> [!IMPORTANT]
-> Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに既に存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗し、その作成がロールバックされて、そのような管理者 (名前) が既に存在していることが示されます。 そのような SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してサーバーに接続しようとしても失敗します。
+Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD ログイン (**パブリック プレビュー**) の作成を開始できます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
+
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、**[保存]** を選択します。
 
@@ -213,11 +263,15 @@ Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Ware
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 
+>[!IMPORTANT]
+>Managed Instance で Azure AD ログイン (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD ログインでは、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずに Managed Instance で認証を受ける機能が提供されます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD ログインの作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+
 Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。 Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
 > [!NOTE]
 > Azure Portal を使用して、データベース ユーザー (管理者を除く) を作成することはできません。 RBAC ロールは、SQL Server、SQL Database、または SQL Data Warehouse には反映されません。 Azure RBAC ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。 たとえば、 **SQL Server 共同作成者** ロールでは、SQL Database または SQL Data Warehouse に接続するためのアクセス権は付与されません。 Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
->
+> [!WARNING]
+> T-SQL CREATE LOGIN および CREATE USER ステートメントにユーザー名として含まれているコロン `:` やアンパサンド `&` などの特殊文字はサポートされていません。
 
 Azure AD ベースの包含データベース ユーザー (データベースを所有するサーバー管理者以外) を作成するには、少なくとも **ALTER ANY USER** アクセス許可を持つユーザーとして、Azure AD の ID でデータベースに接続します。 その後、次の Transact-SQL 構文を使用します。
 
@@ -269,11 +323,14 @@ Azure AD 管理者が正しく設定されていることを確認するには�
 Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
 
 > [!IMPORTANT]
-> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
+> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。 現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
 
-## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する  
+## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する
 
 次の手順は、SQL Server Management Studio または SQL Server Database Tools で Azure AD の ID を使用して SQL Database に接続する方法を示しています。
+
+>[!IMPORTANT]
+>現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 統合認証
 
@@ -290,11 +347,10 @@ Azure AD ベースの包含データベース ユーザー (データベース�
 
 Azure AD のマネージド ドメインを使用して Azure AD のプリンシパル名で接続する場合は、この方法を使用します。 また、リモートで作業する場合など、ドメインにアクセスできないフェデレーション アカウントにもこの方法を使用できます。
 
-Azure AD のネイティブ ユーザーまたはフェデレーション ユーザーのために、SQL DB/DW を Azure AD で認証するには、この方法を使用します。
-ネイティブ ユーザーとは、Azure AD に明示的に作成され、ユーザー名とパスワードを使用して認証されるユーザーです。これに対し、フェデレーション ユーザーとは、所属ドメインが Azure AD との間でフェデレーションされている Windows ユーザーをいいます。 後者の (ユーザーとパスワードを使用した) 方法は、ユーザーが自分の Windows 資格情報の使用を希望しているものの、そのローカル コンピューターがドメインに参加していない (つまりリモート アクセスを使用している) 場合に使用できます。 このケースでは、Windows ユーザーが自分のドメイン アカウントとパスワードを指定し、フェデレーションされた資格情報を使用して SQL DB/DW に対する認証を行うことができます。
+Azure AD のネイティブ ユーザーまたはフェデレーション ユーザーのために、SQL DB/DW を Azure AD で認証するには、この方法を使用します。 ネイティブ ユーザーとは、Azure AD に明示的に作成され、ユーザー名とパスワードを使用して認証されるユーザーです。これに対し、フェデレーション ユーザーとは、所属ドメインが Azure AD との間でフェデレーションされている Windows ユーザーをいいます。 後者の (ユーザーとパスワードを使用した) 方法は、ユーザーが自分の Windows 資格情報の使用を希望しているものの、そのローカル コンピューターがドメインに参加していない (つまりリモート アクセスを使用している) 場合に使用できます。 このケースでは、Windows ユーザーが自分のドメイン アカウントとパスワードを指定し、フェデレーションされた資格情報を使用して SQL DB/DW に対する認証を行うことができます。
 
 1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - パスワード]** を選択します。
-2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。 これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。 ユーザー名は、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 
     ![AD パスワード認証を選択する][12]
@@ -346,7 +402,7 @@ conn.Open();
 ```c#
 string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
 SqlConnection conn = new SqlConnection(ConnectionString);
-connection.AccessToken = "Your JWT token"
+conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 

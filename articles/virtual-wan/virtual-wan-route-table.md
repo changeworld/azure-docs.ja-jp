@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321445"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190172"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>トラフィックをネットワーク仮想アプライアンスに誘導するための Virtual WAN ハブ ルート テーブルを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "53321445"
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-route-table/vwanroute.png)
 
-この記事では、以下を行う方法について説明します。
+この記事では、次の方法について説明します。
 
 * WAN を作成する
 * ハブを作成する
@@ -41,9 +41,9 @@ ms.locfileid: "53321445"
 5. 2 つの VNet が既に作成されていることを確認します。 それらは、スポーク VNet として使用されます。 この記事では、VNet スポークのアドレス空間は 10.0.2.0/24 と 10.0.3.0/24 です。 VNet の作成方法に関する情報が必要な場合は、「[PowerShell を使用して仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md)」を参照してください。
 6. どの VNet 内にも仮想ネットワーク ゲートウェイがないことを確認します。
 
-## <a name="signin"></a>1.[サインイン]
+## <a name="signin"></a>1.サインイン
 
-Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この点は重要です。以前のバージョンのコマンドレットには、この演習に必要な最新の値が含まれていません。
+Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/overview)に関するページを参照してください。 この点は重要です。以前のバージョンのコマンドレットには、この演習に必要な最新の値が含まれていません。 次の 3 つの例に含まれるモジュールは Azure RM です。 この記事は将来、Azure Az に更新される予定です。
 
 1. 昇格された特権で PowerShell コンソールを開き、Azure アカウントにサインインします。 このコマンドレットでは、サインイン資格情報の入力を求められます。 サインイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。
 

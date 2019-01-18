@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: da105be19f7d546e530298f87974fe7f3f78989f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7326cf6a1153d5dc1f7e5f910a376a21b05db606
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012217"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725442"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight 上の Apache Hadoop YARN アプリケーション ログにアクセスする
 このドキュメントでは、Azure HDInsight の Windows ベースの Apache Hadoop クラスターで完了した [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) アプリケーションのログにアクセスする方法について説明します
 
-> [!IMPORTANT]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスについて詳しくは、「[Access Apache Hadoop YARN application logs on Linux-based Apache Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)」(Linux ベースの Apache HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする) をご覧ください
->
+> [!IMPORTANT]  
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスについては、[Linux ベースの Apache HDInsight での Apache Hadoop YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)に関するページを参照してください。
 
 
 ### <a name="prerequisites"></a>前提条件
 * Windows ベースの HDInsight クラスター。  「[Create Windows-based Apache Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)」(HDInsight での Windows ベースの Apache Hadoop クラスターの作成) を参照してください。
 
 ## <a name="yarn-timeline-server"></a>YARN タイムライン サーバー
-<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN タイムライン サーバー</a>は完了したアプリケーションに関する汎用的な情報のほか、2 つの異なるインターフェイスを通じてフレームワーク固有のアプリケーション情報を提供します。 具体的には次の処理が行われます。
+<a href="https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN タイムライン サーバー</a>は完了したアプリケーションに関する汎用的な情報のほか、2 つの異なるインターフェイスを通じてフレームワーク固有のアプリケーション情報を提供します。 具体的には次の処理が行われます。
 
 * HDInsight クラスター上での汎用アプリケーション情報の格納と取得はバージョン 3.1.1.374 以降で有効になります。
 * タイムライン サーバーのフレームワーク固有のアプリケーション情報コンポーネントは、現在 HDInsight クラスターで使用できません。
@@ -75,7 +74,7 @@ YARN ResourceManager UI は、クラスターのヘッドノード上で実行�
 3. 上部のメニューで **[ダッシュボード]** をクリックします。 **[HDInsight クエリ コンソール]** という新しいブラウザー タブにページが開きます。
 4. **[HDInsight クエリ コンソール]** で、**[Yarn UI]** をクリックします。
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

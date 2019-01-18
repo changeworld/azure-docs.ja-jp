@@ -109,7 +109,7 @@
 ##### [ストレージ アカウントを管理する](storsimple-8000-manage-storage-accounts.md)
 ##### [ボリューム コンテナーを管理する](storsimple-8000-manage-volume-containers.md)
 ##### [ボリュームを管理する - 最新](storsimple-8000-manage-volumes-u2.md)
-###### [FAQ - ローカル固定ボリューム](storsimple-8000-local-volume-faq.md)
+###### [よくあるご質問: ローカル固定ボリューム](storsimple-8000-local-volume-faq.md)
 ##### [ロールベースのアクセス制御](storsimple-8000-role-based-access-control.md)
 ##### [ACR を管理する](storsimple-8000-manage-acrs.md)
 ##### [帯域幅テンプレートを管理する](storsimple-8000-manage-bandwidth-templates.md)
@@ -209,7 +209,7 @@
 ## リファレンス
 ### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [StorSimple 用 Windows PowerShell のコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [Resource Manager テンプレート](/azure/templates/microsoft.storsimple/allversions)
 
 # StorSimple Data Manager
 

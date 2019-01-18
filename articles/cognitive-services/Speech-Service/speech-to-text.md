@@ -1,7 +1,7 @@
 ---
-title: Speech to Text について
+title: 音声テキスト変換について - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Speech to Text API の機能の概要。
+description: Speech to Text API は、オーディオ ストリームを、アプリで表示できるテキストまたは入力として操作できるテキストに書き起こします。 このサービスは、SDK および RESTful エンドポイントを介して利用できます。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 050d395614fa4a08e6d0d0967200029e8fc36010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471341"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094714"
 ---
 # <a name="about-the-speech-to-text-api"></a>Speech to Text API について
 

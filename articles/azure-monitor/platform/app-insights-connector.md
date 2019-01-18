@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726230"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121415"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "53726230"
 >[!NOTE]
 > [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、Application Insight コネクタ管理ソリューションはもはや必要でなくなり、非推奨になります。 7 月以降は、新しい Application Insights リソースを Log Analytics ワークスペースにリンクさせることができなくなります。 既存のリンクとダッシュボードは引き続き 2018 年 11 月まで使用可能です。 詳細については、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」を参照してください。
 
-Application Insights Connector ソリューションを使用すると、[Application Insights](../../application-insights/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
+Application Insights Connector ソリューションを使用すると、[Application Insights](../../azure-monitor/app/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
 このソリューションを使用して、次の操作を実行できます。
 
@@ -142,7 +142,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="sample-corrected-data"></a>サンプリング補正データ
 
-Application Insights では、"*[サンプリング補正](../../application-insights/app-insights-sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
+Application Insights では、"*[サンプリング補正](../../azure-monitor/app/sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
 ログ検索クエリでのサンプリング補正の例を次に示します。
 

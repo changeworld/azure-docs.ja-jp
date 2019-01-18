@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845197"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061025"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
@@ -33,7 +33,7 @@ ISE を作成すると、プライベートの分離された Logic Apps のイ�
 
 ## <a name="isolated-versus-global"></a>分離とグローバル
 
-Azure で統合サービス環境 (ISE) を作成するときは、"*挿入*" 環境である Azure 仮想ネットワークを選択します。 Azure では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてこの環境を選択し、ロジック アプリで仮想ネットワークのリソースに直接アクセスできるようになります。 
+Azure で統合サービス環境 (ISE) を作成するときは、ISE を "*挿入*" する Azure 仮想ネットワークを選択します。 Azure では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてこの環境を選択し、ロジック アプリで仮想ネットワークのリソースに直接アクセスできるようになります。 
 
 ISE のロジック アプリはグローバルな Logic Apps サービスとユーザー操作が同じで、同様の機能を提供しています。 グローバルな Logic Apps サービスで同じ組み込みアクションとコネクタを使用できるだけでなく、ISE 固有のコネクタも使用できます。 たとえば、次のような標準コネクタは ISE で実行されるバージョンを提供しています。
  

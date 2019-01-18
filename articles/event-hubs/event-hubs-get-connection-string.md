@@ -1,20 +1,21 @@
 ---
-title: Azure Event Hubs の接続文字列の取得 | Microsoft Docs
-description: Azure Event Hubs の接続文字列を取得します
+title: 接続文字列を取得する - Azure Event Hubs | Microsoft Docs
+description: この記事では、クライアントが Azure Event Hubs への接続に使用できる接続文字列を取得する方法について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 10/15/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfc82f2dc280c3528f38c9cb466473a76328e552
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285384"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535276"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
@@ -50,7 +51,7 @@ Event Hubs 名前空間を作成したら、下に示すように、ポータル
 ![Event Hubs の接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Azure PowerShell を使用した接続文字列の取得
-下に示すように、Get-AzureRmEventHubNamespaceKey を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
+以下に示すように、Get-AzureRmEventHubNamespaceKey を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
 Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey

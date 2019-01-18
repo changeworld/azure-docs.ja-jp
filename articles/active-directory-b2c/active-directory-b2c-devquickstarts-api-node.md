@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442425"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117913"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用した Web API のセキュリティ保護
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トークンを使用して Web API をセキュリティ保護できます。 これらのトークンにより、Azure AD B2C を使用するクライアント アプリは API の認証を行うことができます。 この記事では、ユーザーによるタスクの追加と一覧表示を可能にする "To-Do List" API を作成する方法について説明します。 この Web API は Azure AD B2C を使用してセキュリティで保護されるため、認証済みのユーザーのみが To-Do List を管理できます。
@@ -47,7 +47,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 このデータは後で必要になります。
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。  その他のクレームも選択できます。
@@ -71,12 +71,12 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 ## <a name="download-nodejs-for-your-platform"></a>プラットフォーム用の Node.js のダウンロード
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
-Node.js を [nodejs.org](http://nodejs.org)からインストールします。
+Node.js を [nodejs.org](https://nodejs.org)からインストールします。
 
 ## <a name="install-mongodb-for-your-platform"></a>プラットフォーム用の MongoDB のインストール
 このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。 MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
 
-MongoDB を [mongodb.org](http://www.mongodb.org)からインストールします。
+MongoDB を [mongodb.org](https://www.mongodb.org)からインストールします。
 
 > [!NOTE]
 > このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では `mongodb://localhost`) が使用されることを想定しています。
@@ -263,11 +263,11 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="required-values"></a>必要な値
-`clientID`: Web API アプリケーションのクライアント ID です。
+`clientID`: ご利用の Web API アプリケーションのクライアント ID です。
 
-`IdentityMetadata`: これは、`passport-azure-ad` が ID プロバイダーの構成データを探す場所です。 JSON Web トークンを検証するためのキーも探されます。
+`IdentityMetadata`: これは、`passport-azure-ad` によって ID プロバイダー用の構成データが探される場所です。 JSON Web トークンを検証するためのキーも探されます。
 
-`audience`: 呼び出し元アプリケーションを識別する、ポータルの Uniform Resource Identifier (URI) です。
+`audience`: 呼び出し元アプリケーションを識別する、ポータルからの Uniform Resource Identifier (URI) です。
 
 `tenantName`: テナントの名前 (例: **contoso.onmicrosoft.com**) です。
 
@@ -337,13 +337,13 @@ var log = bunyan.createLogger({
 ### <a name="expand-the-model"></a>モデルの展開
 このスキーマ モデルは単純です。 必要に応じて拡張することができます。
 
-`owner`: だれがタスクに割り当てられているか。 このオブジェクトは、 **string**です。  
+`owner`: だれがタスクに割り当てられているかを示します。 このオブジェクトは、 **string**です。  
 
-`Text`: タスク自体。 このオブジェクトは、 **string**です。
+`Text`: タスク自体です。 このオブジェクトは、 **string**です。
 
-`date`: タスクの期限日。 このオブジェクトは、 **datetime**です。
+`date`:タスクの期限日。 このオブジェクトは、 **datetime**です。
 
-`completed`: タスクが完了しているかどうか。 このオブジェクトは、 **Boolean**です。
+`completed`: タスクが完了しているかどうかを示します。 このオブジェクトは、 **Boolean**です。
 
 ### <a name="create-the-schema-in-the-code"></a>コードでのスキーマの作成
 コマンド ラインで、ディレクトリを `azuread`に変更します (まだ変更していなかった場合)。
@@ -549,7 +549,7 @@ Restify と Express では REST API サーバーの詳細なカスタマイズ�
 
 
 var server = restify.createServer({
-    name: "Microsoft Azure Active Directroy TODO Server",
+    name: "Microsoft Azure Active Directory TODO Server",
     version: "2.0.1"
 });
 

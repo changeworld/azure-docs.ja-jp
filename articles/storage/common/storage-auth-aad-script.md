@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 345e7c6985f03081048019912d636bba8e9a2361
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426483"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214047"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)
 
@@ -56,10 +56,7 @@ az storage blob download --account-name storagesamples --container sample-contai
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Azure AD ID で PowerShell コマンドを呼び出す
 
-Azure PowerShell は、次のプレビュー モジュールのいずれかについてのみ、Azure AD ID でのサインインをサポートしています。 
-
-- 4.4.0-preview 
-- 4.4.1-preview 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure PowerShell を使用し、Azure AD ID でサインインするには:
 
@@ -78,23 +75,23 @@ Azure PowerShell を使用し、Azure AD ID でサインインするには:
 1. 最新バージョンの Azure PowerShell をインストールします。
 
     ```powershell
-    Install-Module AzureRM –Repository PSGallery –AllowClobber
+    Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Azure AD をサポートする Azure Storage プレビュー モジュールのいずれかをインストールします。
-
-    ```powershell
-    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
-    ```
+1. Azure AD をサポートする Azure Storage プレビュー モジュールをインストールします。
+   
+   ```powershell
+   Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+   ```
 1. PowerShell ウィンドウを閉じて再び開きます。
-1. [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) コマンドレットを呼び出してコンテキストを作成し、`-UseConnectedAccount` パラメーターを含めます。 
+1. [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) コマンドレットを呼び出してコンテキストを作成し、`-UseConnectedAccount` パラメーターを含めます。 
 1. Azure AD ID でコマンドレットを呼び出すには、新しく作成したコンテキストをコマンドレットに渡します。
 
 次の例では、Azure AD ID を使用し、Azure PowerShell からコンテナーの BLOB を一覧表示する方法を示しています。 プレースホルダーのアカウント名とコンテナー名は、必ず実際の値に置き換えてください。 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
-Get-AzureStorageBlob -Container sample-container -Context $ctx 
+$ctx = New-AzStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>次の手順

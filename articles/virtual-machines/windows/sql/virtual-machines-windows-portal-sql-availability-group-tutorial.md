@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51238077"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
@@ -45,7 +45,7 @@ ms.locfileid: "51238077"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server サービス アカウント | ドメイン アカウント |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server エージェント サービス アカウント | ドメイン アカウント |  
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ: **59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ: **58888** または使用可能な任意のポート |
+|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|フェールオーバー クラスタリング機能を追加する | 両方の SQL Server にこの機能が必要です |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|インストール ドメイン アカウント | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 

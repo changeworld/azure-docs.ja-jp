@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: c2dd9d7c7567a7c57def093c4d611ab09c870d84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310682"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634543"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
@@ -48,7 +48,7 @@ Azure Search .NET SDK の最新バージョンが一般公開されました。 
 ## <a name="requirements-for-the-sdk"></a>SDK の要件
 1. Visual Studio 2017。
 2. 自分が所有する Azure Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでの Azure Search サービスの作成](search-create-service-portal.md) 」は、これらの手順の参考になります。
-3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
+3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
 
 Azure Search .NET SDK は、.NET Framework 4.5.2 以上と .NET Core を対象とするアプリケーションをサポートしています。
 
@@ -243,7 +243,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 >
 > 
 
-フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます (簡潔さを優先し、サンプルではこれらは省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index)および [Azure Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
+フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます (簡潔さを優先し、サンプルではこれらは省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
 
 ### <a name="populating-the-index"></a>インデックスの設定
 `Main` の次の手順では、新しく作成したインデックスを設定します。 この処理は次のメソッドで行います。
@@ -324,7 +324,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 サービスの負荷が高いときにドキュメントのインデックスを作成すると、これが発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 > [!NOTE]
-> `FindFailedActionsToRetry` メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドについては、[こちら](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_)をご覧ください。また、このメソッドの適切な使用方法については、[StackOverflow](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
+> [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドの適切な使用方法については、[StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
 >
 >
 
@@ -390,20 +390,20 @@ public partial class Hotel
 最初に注目すべき点は、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっている ("キャメル ケース") のに対し、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("パスカル ケース")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
 > [!NOTE]
-> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET 使用したシリアル化のカスタマイズ](#JsonDotNet)」をご覧ください。
+> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET 使用したシリアル化のカスタマイズ](#JsonDotNet)」をご覧ください。
 > 
 > 
 
 次に注目すべき点は、各パブリック プロパティを装飾する `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性です。 これらの属性は、[Azure Search インデックスの対応する属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスでは、これらの属性を使用してインデックスのフィールド定義を作成します。
 
-`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
+`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
 
 ドキュメントとして独自のクラスを使用するこの機能は、両方向で動作します。また、次のセクションで見るように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
 
 > [!NOTE]
-> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 `Document` クラスは `Dictionary<string, object>` から継承します。 その他の詳細については、[こちら](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document)をご覧ください。
+> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 [`Document` クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)は `Dictionary<string, object>` から継承します。
 > 
-> 
+>
 
 **null 許容のデータ型を使用する理由**
 
@@ -418,7 +418,7 @@ Azure Search インデックスにマップする独自のモデル クラスを
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>JSON.NET 使用したシリアル化のカスタマイズ
-SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義して、必要に応じてシリアル化と逆シリアル化をカスタマイズできます (詳細については、「[JSON.NET のドキュメント](http://www.newtonsoft.com/json/help/html/Introduction.htm)」をご覧ください)。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
+SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義して、必要に応じてシリアル化と逆シリアル化をカスタマイズできます (詳細については、「[JSON.NET のドキュメント](https://www.newtonsoft.com/json/help/html/Introduction.htm)」をご覧ください)。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
 
 * ドキュメント フィールドとして格納されるものに、モデル クラスの特定のプロパティを含める、または除外する。
 * コードのプロパティ名とインデックスのフィールド名をマップする。

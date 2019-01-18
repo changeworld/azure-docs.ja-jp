@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d1e44eae7e87a450ac5f36e621d559fca92ca74
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309180"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016156"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -180,6 +180,9 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 - [Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
  
+**Q:ハイブリッド Azure AD 参加済みの Windows 10 デバイスが、Azure AD デバイスの一覧に Azure AD 登録済みデバイスとして重複して表示されるのはなぜですか?**
+
+**A:** ユーザーがドメイン参加済みデバイス上のアプリに各自のアカウントを追加すると、[Add account to Windows?]\(アカウントを Windows に追加しますか?\) というプロンプトが表示されます。 このプロンプトで [はい] をクリックすると、デバイスが Azure AD に登録され、信頼の種類が Azure AD 登録済みとしてマークされます。 ご自身の組織でハイブリッド Azure AD 参加を有効にすると、デバイスは、ハイブリッド Azure AD 参加済みになります。 その結果、同じデバイスに対して、2 つのデバイスの状態が表示されます。 ただし、ハイブリッド Azure AD 参加は、Azure AD 登録済み状態に優先します。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加とみなされます。 そのため、Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 ハイブリッド Azure AD 参加の記事の[こちらのセクション](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)を見直して、Windows 10 コンピューター上でこの二重状態を回避またはクリーンアップする方法を理解してください。 
 
 ---
 

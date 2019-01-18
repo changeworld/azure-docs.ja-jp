@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410535"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728450"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -1867,12 +1867,12 @@ ms.locfileid: "53410535"
 > | Action | Microsoft.Devices/provisioningServices/certificates/verify/Action | 証明書リソースを確認します。 |
 > | Action | Microsoft.Devices/provisioningServices/certificates/Write | 証明書を作成または更新します。 |
 > | Action | Microsoft.Devices/provisioningServices/Delete | IotDps リソースを削除します。 |
-> | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/read | リソースの診断設定を取得します。 |
+> | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/read | リソースの診断設定を取得します。 メモ: `Microsoft.Insights/diagnosticSettings/read` も必要な場合があります。  |
 > | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
 > | Action | Microsoft.Devices/provisioningServices/keys/listkeys/Action | キー名の IotDps キーを取得します。 |
 > | Action | Microsoft.Devices/provisioningServices/listkeys/Action | すべての IotDps キーを取得します。 |
-> | Action | Microsoft.Devices/provisioningServices/logDefinitions/read | プロビジョニング サービスで使用可能なログ定義を取得します。 |
-> | Action | Microsoft.Devices/provisioningServices/metricDefinitions/read | プロビジョニング サービスで使用可能なメトリックを取得します。 |
+> | Action | Microsoft.Devices/provisioningServices/logDefinitions/read | プロビジョニング サービスで使用可能なログ定義を取得します。 メモ: `Microsoft.Insights/logDefinitions/read` も必要な場合があります。 |
+> | Action | Microsoft.Devices/provisioningServices/metricDefinitions/read | プロビジョニング サービスで使用可能なメトリックを取得します。 メモ: `Microsoft.Insights/metricDefinitions/read` も必要な場合があります。 |
 > | Action | Microsoft.Devices/provisioningServices/operationresults/Read | DPS 操作の結果を取得します。 |
 > | Action | Microsoft.Devices/provisioningServices/Read | IotDps リソースを取得します。 |
 > | Action | Microsoft.Devices/provisioningServices/skus/Read | 有効な IotDps SKU を取得します。 |

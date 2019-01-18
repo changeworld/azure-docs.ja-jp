@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a6781c3a94789b26beb85a9a3df3166ec47622bb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166644"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041579"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL データベースのドキュメント データのモデル化
 
@@ -259,7 +259,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
     ...
     {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
 発行元あたりの書籍数が少なく、増加率が限定的な場合は、書籍の参照を発行元ドキュメント内に格納することが有効な場合もあります。 ただし、発行元あたりの書籍数に制限がない場合は、このデータ モデルは上の発行元ドキュメントに示すような、拡大し続ける可変配列になります。 
 
@@ -278,7 +278,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
     ...
     {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
 上の例では、発行元ドキュメントで無制限のコレクションを使用していません。 代わりに、各書籍ドキュメントに発行元への参照が含まれているだけです。
 
@@ -298,7 +298,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
     {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -319,7 +319,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
     {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
+    {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
 ここで、作者がわかっていれば、その著作はすぐにわかり、逆に書籍ドキュメントを読み込んでいれば、作者の ID がわかります。 これにより、結合テーブルに対する中間クエリは省略され、アプリケーションで行う必要があるサーバー ラウンド トリップの数が減少します。 
 
@@ -381,7 +381,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
 
 この例には**事前に計算された集計**の値があり、読み取り操作の処理時間を削減しています。 この例の作者ドキュメントに埋め込まれたデータの一部は、実行時に計算されるデータです。 新しい書籍が発行されるたびに、書籍ドキュメントが作成され、 **さらに** その作者に対応する書籍ドキュメントの数に基づいて計算された値が countOfBooks フィールドに設定されます。 この最適化は、読み取りの負荷が高く、読み取りを最適化するために書き込み時に計算を実行する余裕のあるシステムに適しています。
 
-モデルに事前計算フィールドを含める機能は、Azure Cosmos DB が**マルチドキュメント トランザクション**をサポートしていることにより実現されています。 多くの NoSQL ストアでは、ドキュメント間のトランザクションを実行できないため、この制限によって "常にすべてを埋め込む" などの設計における決定が提唱されています。 Azure Cosmos DB では、ACID トランザクション内で書籍の挿入や作者の更新をすべて実行する、サーバー側トリガー、またはストアド プロシージャを使用できます。 これで、データの整合性を維持するためだけに、1 つのドキュメントにすべてを埋め込む必要は **なくなります** 。
+モデルに事前計算フィールドを含める機能は、Azure Cosmos DB が**マルチドキュメント トランザクション**をサポートしていることにより実現されています。 多くの NoSQL ストアでは、ドキュメント間のトランザクションを実行できないため、この制限によって "常にすべてを埋め込む" などの設計における決定が提唱されています。 Azure Cosmos DB では、ACID トランザクション内で書籍の挿入や作者の更新をすべて実行する、サーバー側トリガー、またはストアド プロシージャを使用できます。 これで、データの整合性を維持するためだけに、1 つのドキュメントにすべてを埋め込む必要は**なくなります**。
 
 ## <a name="NextSteps"></a>次のステップ
 この記事における最大の収穫は、スキーマのない状況でのデータのモデル化は依然として重要であると理解できたことです。 

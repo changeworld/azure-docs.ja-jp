@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470661"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269619"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Azure SQL Database 論理サーバーとその管理
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Azure SQL 論理サーバーとは何か
 
-論理サーバーは、複数の単一データベース、または[プールされた](sql-database-elastic-pool.md)データベース、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-geo-replication-overview.md)などの中央管理ポイントとして機能します。 論理サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL データベースを作成するには、先に論理サーバーが存在している必要があります。 サーバー上のすべてのデータベースは、論理サーバーと同じリージョン内で作成されます。
+論理サーバーは、複数の単一データベース、または[プールされた](sql-database-elastic-pool.md)データベース、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-auto-failover-group.md)などの中央管理ポイントとして機能します。論理サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL データベースを作成するには、先に論理サーバーが存在している必要があります。 サーバー上のすべてのデータベースは、論理サーバーと同じリージョン内で作成されます。
 
 論理サーバーとは、オンプレミスでなじみのある SQL Server インスタンスとは別の論理コンストラクトです。 具体的には、SQL Database サービスは論理サーバーに関連したデータベースの場所について保証しません。また、インスタンス レベルのアクセスまたは機能を公開しません。 対照的に、Azure SQL Database マネージド インスタンスにおけるサーバーとは、オンプレミス環境で一般的な SQL Server インスタンスに類似しています。
 
@@ -162,7 +162,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database または SQL Data Warehouse からデータベースレベルのファイアウォール設定を削除します。 |
 
 > [!TIP]
-> Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、「[Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う](sql-database-connect-query-ssms.md)」を参照してください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、「[Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う](sql-database-connect-query-vscode.md)」を参照してください。
+> Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、[Azure SQL Database でSQL Server Management Studio を使ってデータに接続してクエリを行う方法](sql-database-connect-query-ssms.md)に関する記事をご覧ください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、[Azure SQL Database でVisual Studio Code を使ってデータに接続してクエリを行う方法](sql-database-connect-query-vscode.md)に関する記事をご覧ください。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>REST API を利用して Azure SQL のサーバー、データベース、ファイアウォールを管理する
 

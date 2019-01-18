@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB でリージョン間の競合を管理する方法について
 description: Azure Cosmos DB で競合を管理する方法について
-services: cosmos-db
 author: christopheranderson
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 52bcedace5d8a039be4a72dcfcc3cdeb653b3e0c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633794"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354367"
 ---
 # <a name="manage-conflicts-between-regions"></a>リージョン間の競合の管理
 
@@ -248,9 +247,9 @@ for (Conflict conflict : response.getResults()) {
 ### <a id="read-from-conflict-feed-java-sync"></a>Java Sync SDK
 
 ```java
-Iterator<Conflict> conflictsIterartor = client.readConflicts(this.collectionLink, null).getQueryIterator();
-while (conflictsIterartor.hasNext()) {
-    Conflict conflict = conflictsIterartor.next();
+Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
+while (conflictsIterator.hasNext()) {
+    Conflict conflict = conflictsIterator.next();
     /* Do something with conflict */
 }
 ```
@@ -268,8 +267,8 @@ const { result: conflicts } = await container.conflicts.readAll().toArray();
 ### <a id="read-from-conflict-feed-python"></a>Python
 
 ```python
-conflicts_iterartor = iter(client.ReadConflicts(self.manual_collection_link))
-conflict = next(conflicts_iterartor, None)
+conflicts_iterator = iter(client.ReadConflicts(self.manual_collection_link))
+conflict = next(conflicts_iterator, None)
 while conflict:
     # Do something with conflict
     conflict = next(conflicts_iterator, None)

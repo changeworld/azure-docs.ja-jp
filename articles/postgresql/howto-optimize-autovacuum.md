@@ -3,16 +3,15 @@ title: Azure Database for PostgreSQL サーバーでの自動バキュームを�
 description: この記事では、Azure Database for PostgreSQL サーバーで自動バキュームを最適化する方法について説明します。
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685992"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539791"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでの自動バキュームの最適化 
 この記事では、Azure Database for PostgreSQL で自動バキュームを効率的に最適化する方法について説明します。
@@ -34,7 +33,7 @@ PostgreSQL は、MVCC を使用して、データベースの同時実行の強�
 - I/O の増加。
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>自動バキューム クエリによる肥大化の監視
-次のサンプル クエリは、"XYZ"という名前のテーブルで、使用不能タプルとライブ タプルの数を識別するために設計されています: 'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+次のサンプル クエリは、"XYZ"という名前のテーブルで、使用不能タプルとライブ タプルの数を識別するために設計されています。'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
 ## <a name="autovacuum-configurations"></a>自動バキュームの構成
 自動バキュームを制御する構成パラメーターは、2 つの重要な問いに焦点を合わせて検討します。

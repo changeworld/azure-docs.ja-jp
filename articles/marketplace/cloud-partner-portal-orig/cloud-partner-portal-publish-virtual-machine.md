@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247077"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078118"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Azure Marketplace への仮想マシンの発行
 
@@ -31,35 +31,23 @@ ms.locfileid: "51247077"
 
 ### <a name="technical"></a>技術
 
--   [Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [Linux VHD の作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [イメージからの Linux VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Windows VHD の作成とアップロード ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [イメージからの Windows VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [VHD 作成中に発生する一般的な問題をトラブルシューティングする方法](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [VHD 作成中に発生する一般的な問題をトラブルシューティングする方法](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [Azure Marketplace イメージのセキュリティに関する推奨事項](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>技術面以外 (ビジネス要件)
 
  -   貴社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国に所在していること。
-
 -   Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
-
 -   商取引上合理的な方法で、顧客に技術サポートを提供していただきます。 無償、有償、コミュニティ サポートの活用など、方法は問いません。
-
 -   貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。
-
--   Azure Marketplace および Azure 管理ポータルでプランが一覧表示されるための条件に適合するコンテンツを提供すること。
-
+-   Azure Marketplace および Azure portal でプランが一覧表示されるための条件に適合するコンテンツを提供すること。
 -   Azure Marketplace 参加ポリシーと発行者契約の条項に同意すること。
-
 -   [使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](https://www.microsoft.com/privacystatement/default.aspx)、および [Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に従うことに同意すること。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -140,7 +128,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 
 ### <a name="hide-this-sku"></a>この SKU を非表示
 
-SKU の可視性を管理するには、この設定を使用します。 [この SKU を非表示] をオフにすると、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で顧客に SKU が 表示されます。 SKU をソリューション テンプレートだけで利用可能にし、購入だけでは利用不可にしたい場合は、SKU を非表示にします。
+SKU の可視性を管理するには、この設定を使用します。 [この SKU を非表示] をオフにすると、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure portal](https://portal.azure.com/) で顧客に SKU が表示されます。 SKU をソリューション テンプレートだけで利用可能にし、購入だけでは利用不可にしたい場合は、SKU を非表示にします。
 
 ### <a name="cloud-availability"></a>クラウドの可用性
 
@@ -177,7 +165,7 @@ VM で実行されているソフトウェアのライセンスはお客様が�
 
 #### <a name="usage-based-monthly-billed-sku"></a>使用量ベースで月ごとに課金される SKU
 
-お客様への請求は、パブリッシャーによって VM サイズに設定された料金に基づいて時間単位で行われます。 SKU の **時間単位の課金** モデルの場合、合計額は、ソフトウェア コスト (パブリッシャーが請求) とインフラストラクチャ コスト (Microsoft が請求) を足した金額です。 この合計コストは、購入を検討しているお客様に、時間単位と月単位の料金として表示されます。 この場合は月単位で請求が行われます。
+お客様への請求は、パブリッシャーによって VM サイズに設定された料金に基づいて時間単位で行われます。 **時間単位の課金** モデルが使用される場合、合計額は、ソフトウェア コスト (パブリッシャーが請求) とインフラストラクチャ コスト (Microsoft が請求) を足した金額です。 この合計コストは、購入を検討しているお客様に、時間単位と月単位の料金として表示されます。 この場合は月単位で請求が行われます。
 
 使用量ベースのモデルでは、お客様による追加設定が必要になります。
 
@@ -188,7 +176,7 @@ VM をデプロイしてから最初の 30/90 日間 (選択によります) は
 
 **コアあたりの価格**
 
-SKU のコアあたりの価格を設定できます。 この場合は、1 つのコアに基本価格を入力するだけで、残りのコアの価格が自動的に計算されます。 ポータルで米ドルの価格を入力すると、他のリージョンの価格が自動的に計算されます。 他のリージョンの価格は、**[価格データのエクスポート]** を使用して確認できます。
+SKU のコアあたりの価格を設定できます。 このオプションの場合、1 つのコアに基本価格を入力するだけで、残りのコアの価格が自動的に計算されます。 ポータルで米ドルの価格を入力すると、他のリージョンの価格が自動的に計算されます。 他のリージョンの価格は、**[価格データのエクスポート]** を使用して確認できます。
 
 ![コアあたりの価格](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
@@ -201,8 +189,8 @@ SKU のコアあたりの価格を設定できます。 この場合は、1 つ�
 
 **価格をエクスポート/インポート**
 
-ポータルを使用して構成した価格をエクスポートして、Excel のインターフェイスを使用して変更を加えられる柔軟性があります。 これにより、リージョンごとの価格と現地通貨での価格を確認することもできます。
-**[エクスポート-価格]** をクリックすると、価格の詳細が事前に入力された Excel ファイルがダウンロードされます。 このファイルを Excel で編集して、**[インポート-価格]** を使用すると、変更内容をインポートできます。
+ポータルを使用して構成した価格をエクスポートして、Excel のインターフェイスを使用して変更を加えられる柔軟性があります。 このオプションにより、リージョンごとの価格と現地通貨での価格を確認することもできます。
+**[エクスポート-価格]** をクリックすると、価格の詳細が事前に入力された Excel ファイルがダウンロードされます。 これらの詳細をスプレッドシート内で編集して、**[インポート-価格]** を使用すると、変更内容をインポートできます。
 インポートした価格は、ポータルにも反映されます。
 
 この価格 Excel 内では、さまざまなリージョンの価格は現地通貨で表示されます。 ここで使用する換算レートは毎日更新されます。
@@ -219,24 +207,18 @@ SKU のコアあたりの価格を設定できます。 この場合は、1 つ�
 
 次のセクションでは、VM イメージを扱います。 このセクションに進む前に、発行する VHD の準備を済ませる必要があります。 VHD を作成するのに役立ついくつかのリンクを示します。
 
--   [Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [Linux VHD の作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [イメージからの Linux VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Windows VHD の作成とアップロード ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [イメージからの Windows VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [VHD 作成中に発生する一般的な問題をトラブルシューティングする方法](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [VHD 作成中に発生する一般的な問題をトラブルシューティングする方法](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-VHD の準備ができたら、このセクションの入力を開始できます。
-いくつかのフィールドの詳細を次に示します。
+VHD の準備ができたら、このセクションの入力を開始できます。  いくつかのフィールドの詳細を次に示します。
 
 ### <a name="recommended-vm-sizes"></a>推奨される VM サイズ
 
-最大 6 個の推奨される仮想マシン サイズを選択します。 これらは、顧客がイメージの購入およびデプロイを決定したとき Azure Marketplace と Azure Portal の [価格レベル] ブレードで顧客に表示されるものです。 **これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**  次の画面は、顧客の Azure Portal に表示される、推奨される VM サイズを示しています。
+最大 6 個の推奨される仮想マシン サイズを選択します。 これらの推奨事項は、顧客がイメージの購入およびデプロイを決定したとき Azure Marketplace と Azure portal の [価格レベル] ブレードで顧客に表示されるものです。 *これらのサイズは推奨に過ぎません。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。*  次の画面は、顧客の Azure portal に表示される、推奨される VM サイズを示しています。
 
 
 ![推奨される VM サイズ](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -250,7 +232,7 @@ VHD の準備ができたら、このセクションの入力を開始できま�
 
 次の手順では、VM イメージを SKU に追加します。 SKU あたり最大 8 個のディスク バージョンを追加できます。 特定の SKU について最も大きな番号のディスク バージョンだけが Azure Marketplace で表示されます。 他のディスク バージョンは API を使用して表示されます。
 
-**[ディスク バージョン]** で、**[+ 新しいバージョン]** を選択します。 これにより、入力する必要がある次のフィールドが表示されます。
+**[ディスク バージョン]** で、**[+ 新しいバージョン]** を選択します。 このオプションにより、入力する必要がある次のフィールドが表示されます。
 
 #### <a name="vm-image-version"></a>VM イメージ バージョン
 
@@ -258,13 +240,13 @@ VM イメージ バージョンは、[セマンティック バージョン](htt
 
 #### <a name="os-vhd-url"></a>OS VHD の URL
 
-オペレーティング システム VHD に対して作成した [Shared Access Signature URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) を入力します。
+オペレーティング システム VHD に対して作成した [Shared Access Signature URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) を入力します。
 
 この SKU に関連付けられているデータ ディスクがある場合は、**[+ 新しいデータ ディスク]** リンクをクリックすることで、これらのディスクを追加することを選択できます。 この操作によって、入力するための追加のフィールドが表示されます。
 
 #### <a name="lun-vhd-url"></a>LUN VHD URL
 
-[Shared Access Signature URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) をデータ ディスクで入力します。
+[Shared Access Signature URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) をデータ ディスクで入力します。
 
 #### <a name="lun-number"></a>LUN 番号
 
@@ -277,16 +259,16 @@ VM イメージ バージョンは、[セマンティック バージョン](htt
 
 | 問題                                                                 | Message                                                                           | 解決策                                                           |  ドキュメントへのリンク                                                                                |
 |---------------------------------------------------------------------  |-------------------------------------------------------------------------------    |-----------------------------------------------------------    |---------------------------------------------------------------------------------------------------    |
-| イメージのコピーに失敗する - SAS URL で "?" が見つからない                | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)       | 推奨ツールを使用して SAS URL を更新します                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| イメージのコピーに失敗する - SAS URL の "st" および "se" パラメーターがない   | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)        | 開始日と終了日を指定して SAS URL を更新します             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| イメージのコピーに失敗する - SAS URL の "sp=rl" がない                    | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)         | 「読み取り」と「一覧」として設定したアクセス許可を指定して SAS URL を更新します     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| イメージのコピーに失敗する - SAS URL の VHD 名に空白が含まれる     | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)        | 空白のない状態で SAS URL を更新します                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| イメージのコピーに失敗する - SAS URL の承認エラー               | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob due to authorization error (承認エラーのため BLOB をダウンロードできません)     | SAS URL を再生成します                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| イメージのコピーに失敗する - SAS URL で "?" が見つからない                | 失敗: Copying Images. (イメージをコピーしています。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)       | 推奨ツールを使用して SAS URL を更新します                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| イメージのコピーに失敗する - SAS URL の "st" および "se" パラメーターがない   | 失敗: Copying Images. (イメージをコピーしています。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)        | 開始日と終了日を指定して SAS URL を更新します             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| イメージのコピーに失敗する - SAS URL の "sp=rl" がない                    | 失敗: Copying Images. (イメージをコピーしています。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)         | 「読み取り」と「一覧」として設定したアクセス許可を指定して SAS URL を更新します     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| イメージのコピーに失敗する - SAS URL の VHD 名に空白が含まれる     | 失敗: Copying Images. (イメージをコピーしています。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)        | 空白のない状態で SAS URL を更新します                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| イメージのコピーに失敗する - SAS URL の承認エラー               | 失敗: Copying Images. (イメージをコピーしています。) Not able to download blob due to authorization error (承認エラーのため BLOB をダウンロードできません)     | SAS URL を再生成します                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
 
 
 ## <a name="to-configure-the-marketplace"></a>Marketplace を構成するには
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
+[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
 
 ### <a name="preview-subscription-ids"></a>サブスクリプション ID をプレビュー
 
@@ -294,9 +276,9 @@ VM イメージ バージョンは、[セマンティック バージョン](htt
 
 ### <a name="suggested-categories"></a>推奨されるカテゴリ
 
-提供されたリストから、プランとの最適な関連付けができるカテゴリを 5 つまで選択します。 選択したカテゴリは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で利用可能な製品カテゴリにプランをマッピングするために使用されます。
+入力されたリストから、プランとの最適な関連付けができるカテゴリを 5 つまで選択します。 選択したカテゴリは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure portal](https://portal.azure.com/) で利用可能な製品カテゴリにプランをマッピングするために使用されます。
 
-Azure Marketplace と Azure Portal に表示されるマーケットプレース情報の例を次に示します。
+Azure Marketplace と Azure portal に表示されるマーケットプレース情報の例を次に示します。
 
 **Azure Marketplace**
 
@@ -316,7 +298,6 @@ Azure Marketplace と Azure Portal に表示されるマーケットプレース
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -333,7 +314,7 @@ Cloud パートナー ポータルにアップロードされるロゴについ�
 
 -   ロゴではグラデーションの背景を使用しないでください。
 
--   ロゴにテキストを配置しないでください。 これは会社名やブランド名であっても同様です。 ロゴのルック アンド フィールは "*フラット*" にする必要があり、グラデーションは避ける必要があります。
+-   ロゴには、会社やブランド名を含むテキストを使用しないでください。  ロゴのルック アンド フィールは "フラット" にする必要があり、グラデーションは避ける必要があります。
 
 -   ロゴは拡大しないでください。
 

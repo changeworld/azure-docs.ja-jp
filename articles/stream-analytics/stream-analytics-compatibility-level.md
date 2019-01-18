@@ -2,18 +2,18 @@
 title: Azure Stream Analytics ジョブの互換性レベルを理解する
 description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: 83bbb777f5af6d29736db3b53ca39c449402c78e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b0e0f26abbf8eb5cbf1cf9ba2014204d773ae15d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977715"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187315"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
  
@@ -27,7 +27,7 @@ ms.locfileid: "50977715"
 
 互換性レベルを更新する前に、ジョブを停止してください。 ジョブが実行状態の場合は、互換性レベルを更新できません。 
 
-![ポータルでの互換性レベル](media\stream-analytics-compatibility-level/image1.png)
+![Azure portal の Stream Analytics の互換性レベル](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
  
 互換性レベルを更新すると、T-SQL コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。 
@@ -40,11 +40,11 @@ ms.locfileid: "50977715"
 
   * **以前のバージョン:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例: 
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
+    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
 
   * **現在のバージョン:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 例: 
   
-   { "SensorId":"1", "Temperature":64} 
+    { "SensorId":"1", "Temperature":64} 
  
 * **フィールド名の大文字と小文字の区別の保持**  
 
@@ -52,8 +52,8 @@ ms.locfileid: "50977715"
 
   * **現在のバージョン:** Azure Stream Analytics エンジンによる処理で、フィールド名の大文字と小文字の区別が保持されます。 
 
-  > [!NOTE] 
-  > 大文字と小文字の区別の保持は、Edge 環境を使用してホストされている Stream Analytic ジョブではまだ利用できません。 その結果、ジョブが Edge にホストされている場合は、すべてのフィールド名が小文字に変換されます。 
+    > [!NOTE] 
+    > 大文字と小文字の区別の保持は、Edge 環境を使用してホストされている Stream Analytic ジョブではまだ利用できません。 その結果、ジョブが Edge にホストされている場合は、すべてのフィールド名が小文字に変換されます。 
 
 * **FloatNaNDeserializationDisabled**  
 

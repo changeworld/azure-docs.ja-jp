@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: d0b6fc1ebd08b29b9acc28cfb0107b815c7d7bad
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9c35dff9b9587334e7001f3653ea7e2e8a4919eb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068244"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191617"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 
@@ -47,13 +47,13 @@ helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 最後に、Helm チャートを使用してサービス カタログをインストールします。 ご利用のクラスターが RBAC に対応している場合は、このコマンドを使用します。
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set controllerManager.healthcheck.enabled=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 ご利用のクラスターが RBAC に対応していない場合は、このコマンドを使用します。
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set controllerManager.healthcheck.enabled=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Helm チャートを実行した後、次のコマンドの出力に `servicecatalog` が表示されることを確認します。
@@ -171,7 +171,7 @@ chmod +x ./svcat
 このステップでは、Helm を使って WordPress の更新された Helm チャートをインストールします。 このチャートは、WordPress が使うことのできる外部 Azure Database for MySQL インスタンスをプロビジョニングします。 このプロセスには数分かかることがあります。
 
 ```azurecli-interactive
-helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0
+helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 インストールで適切なリソースがプロビジョニングされたことを確認するには、インストールされているサービス インスタンスとバインディングの一覧を表示します。

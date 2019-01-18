@@ -1,19 +1,20 @@
 ---
 title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する
 description: Bulk Executor Java ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: e91984281350e9ea0a5f3411c39d29dfd6420529
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.reviewer: sngun
+ms.openlocfilehash: 8031c8810d9916c3f6e02e1f2474c1ca9cdd528d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080913"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038757"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 

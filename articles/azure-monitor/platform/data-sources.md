@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 1612c2d47f88b6d065e5307be5ff3c99d8f6d405
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433442"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020134"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
 この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-collection.md)に関する記事をご覧ください。
@@ -41,12 +41,12 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 ![Azure サブスクリプションの収集](media/data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure Service Health
-[Azure Service Health](../../monitoring-and-diagnostics/monitoring-service-notifications.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。 アプリケーションに影響を及ぼす可能性のある現在の問題および予測される重大な問題について通知するアラートを作成できます。 Service Health レコードは、アクティビティ ログ エクスプローラーで表示したり、Azure Monitor ログにコピーしたりできるように、[Azure アクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)に格納されます。
+[Azure Service Health](../../azure-monitor/platform/service-notifications.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。 アプリケーションに影響を及ぼす可能性のある現在の問題および予測される重大な問題について通知するアラートを作成できます。 Service Health レコードは、アクティビティ ログ エクスプローラーで表示したり、Azure Monitor ログにコピーしたりできるように、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に格納されます。
 
 ### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
-[Azure アクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)には、サービスの正常性レコードと Azure リソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの_外部_ビューを表します。 アクティビティ ログにおける各種のレコードについては、「[Azure アクティビティ ログのイベント スキーマ](../../azure-monitor/platform/activity-log-schema.md)」をご覧ください。
+[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)には、サービスの正常性レコードと Azure リソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの_外部_ビューを表します。 アクティビティ ログにおける各種のレコードについては、「[Azure アクティビティ ログのイベント スキーマ](../../azure-monitor/platform/activity-log-schema.md)」をご覧ください。
 
-特定のリソースのアクティビティ ログは Azure Portal のそのリソースのページで確認できます。また、[アクティビティ ログ エクスプローラー](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)では、複数のリソースのログを表示できます。 これは、ログ エントリを Azure Monitor にコピーして他の監視データと結合するために特に役立ちます。 [Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) を使用して、ログ エントリを他の場所に送信することもできます。
+特定のリソースのアクティビティ ログは Azure Portal のそのリソースのページで確認できます。また、[アクティビティ ログ エクスプローラー](../../azure-monitor/platform/activity-logs-overview.md)では、複数のリソースのログを表示できます。 これは、ログ エントリを Azure Monitor にコピーして他の監視データと結合するために特に役立ちます。 [Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) を使用して、ログ エントリを他の場所に送信することもできます。
 
 
 
@@ -61,9 +61,9 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 
 
 ### <a name="resource-diagnostic-logs"></a>リソース診断ログ
-アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](../../azure-monitor/platform/tutorial-dashboards.md)。
+アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](../../azure-monitor/platform/tutorial-dashboards.md)。
 
-診断ログを Azure Portal で直接表示することはできませんが、[診断ログを Azure Storage に送信してアーカイブ](../../azure-monitor/platform/archive-diagnostic-logs.md)したり、[イベント ハブ](../../event-hubs/event-hubs-about.md)にエクスポートして他のサービスにリダイレクトしたり、[Log Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) にコピーして解析に使用したりできます。 Log Analytics に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) にインポートするリソースがあります。
+診断ログを Azure Portal で直接表示することはできませんが、[診断ログを Azure Storage に送信してアーカイブ](../../azure-monitor/platform/archive-diagnostic-logs.md)したり、[イベント ハブ](../../event-hubs/event-hubs-about.md)にエクスポートして他のサービスにリダイレクトしたり、[Log Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) にコピーして解析に使用したりできます。 Log Analytics に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) にインポートするリソースがあります。
 
 ### <a name="monitoring-solutions"></a>監視ソリューション
  [監視ソリューション](../insights/solutions.md)は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 これらは、データを Azure Monitor ログに収集します。そこで、そのデータを[クエリ言語](../log-query/log-query-overview.md)や、通常はソリューションに含まれている[ビュー](view-designer.md)を使用して分析できます。
@@ -93,13 +93,13 @@ Windows または Linux の仮想マシンまたは物理コンピューター�
 ### <a name="application-data"></a>アプリケーション データ
 インストルメンテーション パッケージをインストールすることでアプリケーションに対して有効にした Application Insights は、アプリケーションのパフォーマンスおよび操作に関連するメトリックとログを収集します。 これには、ページ ビュー、アプリケーションの要求、および例外に関する詳細情報が含まれます。 Application Insights は、収集したデータを Azure Monitor に格納します。 ここには、このデータを分析するためのさまざまなツールが含まれていますが、メトリック分析やログ分析などのツールを使用して、他のソースからのデータと共に分析することもできます。
 
-Application Insights を使用して[カスタム メトリックを作成する](../../application-insights/app-insights-api-custom-events-metrics.md)こともできます。  これにより、数値を算出して他のメトリックと共に格納するための独自のロジックを定義できます。この数値とメトリックにはメトリックス エクスプローラーからアクセスできます。また、[自動スケール](../../azure-monitor/platform/autoscale-custom-metric.md)やメトリック アラートに数値とメトリックを使用できます。
+Application Insights を使用して[カスタム メトリックを作成する](../../azure-monitor/app/api-custom-events-metrics.md)こともできます。  これにより、数値を算出して他のメトリックと共に格納するための独自のロジックを定義できます。この数値とメトリックにはメトリックス エクスプローラーからアクセスできます。また、[自動スケール](../../azure-monitor/platform/autoscale-custom-metric.md)やメトリック アラートに数値とメトリックを使用できます。
 
 ### <a name="dependencies"></a>依存関係
-アプリケーションのさまざまな論理操作を監視するには、[複数のコンポーネントにわたってテレメトリを収集する](../../application-insights/app-insights-transaction-diagnostics.md)必要があります。 Application Insights では、[分散したテレメトリの関連付け](../../application-insights/application-insights-correlation.md)をサポートします。これにより、コンポーネント間の依存関係を識別し、それらをまとめて分析できます。
+アプリケーションのさまざまな論理操作を監視するには、[複数のコンポーネントにわたってテレメトリを収集する](../../azure-monitor/app/transaction-diagnostics.md)必要があります。 Application Insights では、[分散したテレメトリの関連付け](../../azure-monitor/app/correlation.md)をサポートします。これにより、コンポーネント間の依存関係を識別し、それらをまとめて分析できます。
 
 ### <a name="availability-tests"></a>可用性テスト
-Application Insights の[可用性テスト](../../application-insights/app-insights-monitor-web-app-availability.md)では、パブリック インターネット上のさまざまな場所からアプリケーションの可用性と応答性をテストできます。 シンプルな ping テストを実行してアプリケーションが動作していることを確認したり、Visual Studio を使用してユーザー シナリオをシミュレートする Web テストを作成したりできます。  可用性テストには、アプリケーションでのインストルメンテーションは必要ありません。
+Application Insights の[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)では、パブリック インターネット上のさまざまな場所からアプリケーションの可用性と応答性をテストできます。 シンプルな ping テストを実行してアプリケーションが動作していることを確認したり、Visual Studio を使用してユーザー シナリオをシミュレートする Web テストを作成したりできます。  可用性テストには、アプリケーションでのインストルメンテーションは必要ありません。
 
 ## <a name="custom-sources"></a>カスタム ソース
 アプリケーションの標準的な階層に加え、他のデータ ソースで収集できないテレメトリがある他のリソースを監視することが必要な場合があります。 これらのリソースについては、Azure Monitor API を使用してこのデータを書き込む必要があります。

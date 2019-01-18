@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
 ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53286055"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53636005"
 ---
 Azure File Sync エージェントは、新機能の追加や問題の解決を目的として定期的に更新されます。 Azure File Sync エージェントの更新プログラムを公開されしだい入手できるように Microsoft Update を構成しておくことをお勧めします。
 

@@ -3,21 +3,21 @@ title: バックアップから Azure SQL Database を復元する | Microsoft D
 description: Azure SQL Database を特定の時点 (最長 35 日間) にロール バックすることができる、ポイントインタイム リストアについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: ba6493f77b622a814c970b07fc2a23e7ce1d3624
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 8785ef50cd7bd27e866b1fa546317021eed5da01
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987564"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599112"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 
@@ -64,10 +64,10 @@ Standard または Premium サービス レベルを使用している場合、�
 |エラスティック プール (プールごと)|4|200|
 ||||
 
-一括復元を実行する機能は組み込まれていません。 このタスクを達成する 1 つの方法として、たとえば、 [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
+一括復元を実行する機能は組み込まれていません。 このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database:Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
 > [!IMPORTANT]
-> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。 復旧には、Azure ポータル、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
+> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure ポータル、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
@@ -129,7 +129,7 @@ geo リストアは、データベースがホストされているリージョ�
 geo セカンダリでのポイントインタイム リストアは、現在はサポートされていません。 ポイントインタイム リストアは、プライマリ データベースでのみ実行できます。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> バックアップからの復旧は、目標復旧時点 (RPO) と推定復旧時間 (ERT) が最も長い、SQL Database で使用できるディザスター リカバリー ソリューションで最も基本的な方法です。 小さなサイズのデータベース (例: Basic サービス レベルのデータベース、またはエラスティック プールの小さなサイズのテナント データベース) を使用しているソリューションでは、多くの場合、ERT が最長 12 時間 (通常ははるかに短い時間で完了) である geo リストアが妥当な DR ソリューションです。 大きなデータベースを使用しているソリューションで、短時間で復旧する必要がある場合は、[フェールオーバー グループおよびアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)の使用を検討します。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
+> バックアップからの復旧は、目標復旧時点 (RPO) と推定復旧時間 (ERT) が最も長い、SQL Database で使用できるディザスター リカバリー ソリューションで最も基本的な方法です。 小さなサイズのデータベース (例: Basic サービス レベルのデータベース、またはエラスティック プールの小さなサイズのテナント データベース) を使用しているソリューションでは、多くの場合、ERT が最長 12 時間 (通常ははるかに短い時間で完了) である geo リストアが妥当な DR ソリューションです。 大規模なデータベースを使用しているソリューションを短時間で復旧する必要がある場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)の使用を検討する必要があります。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 自動フェールオーバー グループでは、データベースのグループを自動的にフェールオーバーできます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Azure portal を使用した geo リストア
 
@@ -177,4 +177,4 @@ Azure CLI を使用して単一のデータベースまたはプールされた�
 - ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 - 長期のリテンション期間については、[長期のリテンション期間](sql-database-long-term-retention.md)に関する記事をご覧ください。
-- より迅速な復旧オプションについては、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関する記事を参照してください。

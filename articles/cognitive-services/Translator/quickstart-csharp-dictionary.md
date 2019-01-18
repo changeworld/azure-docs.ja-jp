@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を探す (C#) - Translator Text API'
+title: クイック スタート:2 か国語辞書で単語を検索する、C# - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: d0921d67867e412ed1862c597297e27c2c56ae3b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3460c1c62f26e2bb0a4a14238e110cdd363a7a87
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334535"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159572"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用して翻訳の代替候補を探す (C#)
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>クイック スタート:C# を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、.NET Core と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334535"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 

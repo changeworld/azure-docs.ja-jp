@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612790"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104728"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ
 
 Azure portal を使用してテンプレートを生成して最初の Azure Resource Manager テンプレートを作成する方法と、Azure portal でテンプレートを編集およびデプロイするプロセスを説明します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 このチュートリアルの手順では、Azure ストレージ アカウントを作成します。 同じプロセスを使用して、他の Azure リソースを作成できます。
 
@@ -97,7 +97,7 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -145,9 +145,9 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
     - **リソース グループ**: リソース グループに一意の名前を付けます。
     - **場所**: リソース グループの場所を選択します。
     - **[場所]**: ストレージ アカウントの場所を選択します。  リソース グループと同じ場所を使用できます。
-    - **アカウントの種類**: このクイック スタートでは、「**Standard_LRS**」と入力します。
-    - **種類**: このクイック スタートでは、「**StorageV2**」と入力します。
-    - **アクセス レベル**: このクイック スタートでは、「**Hot**」と入力します。
+    - **アカウントの種類**:このクイック スタートでは、「**Standard_LRS**」と入力します。
+    - **種類**:このクイック スタートでは、「**StorageV2**」と入力します。
+    - **アクセス層**:このクイック スタートでは、「**ホット**」と入力します。
     - **[Https Traffic Only Enabled]\(HTTPS トラフィックのみ有効\)**:   このクイック スタートでは、**[true]** を選択します。
     - **[上記の使用条件に同意する]**: (オン)
 
@@ -164,7 +164,7 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 
     ![Azure Resource Manager テンプレートのデプロイ リソース グループ](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    デプロイの状態が成功であったことのほか、リソース グループ内のストレージ アカウントが 1 つのみであることを確認できます。 ストレージ アカウント名は、テンプレートによって生成された一意の文字列です。 Azure ストレージ アカウントの使用の詳細については、「[クイック スタート: Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
+    デプロイの状態が成功であったことのほか、リソース グループ内のストレージ アカウントが 1 つのみであることを確認できます。 ストレージ アカウント名は、テンプレートによって生成された一意の文字列です。 Azure ストレージ アカウントの使用の詳細については、「[クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

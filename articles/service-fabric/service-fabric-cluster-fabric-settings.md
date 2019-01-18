@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728312"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002758"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -237,7 +237,6 @@ ms.locfileid: "52728312"
 ## <a name="federation"></a>フェデレーション
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|GlobalTicketLeaseDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|静的|timespan を秒単位で指定します。 クラスター内のノードは、有権者とのグローバル リースを維持する必要があります。 有権者は、この期間にグローバル リースを送信してクラスター全体に伝達します。 期限切れになると、リースは失われます。 リースのクォーラムが失われると、ノードはクラスターを破棄します。この期間にノードのクォーラムとの通信を受信できないためです。  この値は、クラスターのサイズに基づいて調整する必要があります。 |
 |LeaseDuration |秒単位。既定値は 30 |動的|ノードとその近隣ノードの間のリース期間。 |
 |LeaseDurationAcrossFaultDomain |秒単位。既定値は 30 |動的|障害ドメイン全体におけるノードとその近隣ノードの間のリース期間。 |
 
@@ -275,6 +274,8 @@ ms.locfileid: "52728312"
 |SecondaryAccountType | string、既定値は ""|静的| FileStoreService 共有の ACL の、プリンシパルのセカンダリ AccountType。 |
 |SecondaryAccountUserName | string、既定値は ""| 静的|FileStoreService 共有の ACL の、プリンシパルのセカンダリ アカウントの Username。 |
 |SecondaryAccountUserPassword | SecureString、既定値は空 |静的|FileStoreService 共有の ACL の、プリンシパルのセカンダリ アカウントのパスワード。 |
+|SecondaryFileCopyRetryDelayMilliseconds|uint、既定値は 500|動的|ファイル コピー再試行の遅延 (ミリ秒単位)。|
+|UseChunkContentInTransportMessage|ブール値、既定値は TRUE|動的|v6.4 で導入されたアップロード プロトコルの新しいバージョンを使用するためのフラグ。 このプロトコル バージョンでは、ファイルをイメージ ストアにアップロードするために、Service Fabric トランスポートが使用されます。これは、以前のバージョンで使用されていた SMB プロトコルよりも高いパフォーマンスを提供します。 |
 
 ## <a name="healthmanager"></a>HealthManager
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -305,15 +306,18 @@ ms.locfileid: "52728312"
 |ApplicationUpgradeTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(360)|動的| timespan を秒単位で指定します。 アプリケーション アップグレードのタイムアウト。 タイムアウトが "ActivationTimeout" を下回る場合、デプロイ機能は失敗します。 |
 |ContainerServiceArguments|string、既定値は "-H localhost:2375 -H npipe://"|静的|Service Fabric (SF) が Docker デーモンを管理します (Win10 のような Windows クライアント コンピューターを除く)。 この構成により、ユーザーは Docker デーモンの起動時に渡す必要があるカスタム引数を指定できます。 カスタム引数が指定された場合、Service Fabric は、他の引数を一切 Docker エンジンに渡しませんが、'--pidfile' 引数は例外です。 そのため、ユーザーはカスタム引数の一部として '--pidfile' 引数を指定することはできません。 また、Service Fabric が Docker デーモンと通信できるようにするために、Docker デーモンに既定の名前付きパイプ (Windows の場合) または UNIX ドメイン ソケット (Linux の場合) でリッスンさせるようにカスタム引数で指定する必要があります。|
 |ContainerServiceLogFileMaxSizeInKb|int、既定値は 32768|静的|Docker コンテナーで生成されるログ ファイルの最大ファイル サイズ。  Windows のみ。|
+|ContainerImageDownloadTimeout|int、秒数、既定値は 1,200 (20 分)|動的|イメージのダウンロードがタイムアウトするまでの秒数。|
 |ContainerImagesToSkip|string、イメージ名を縦線で区切ります。既定値は ""|静的|削除していはいけない 1 つまたは複数のコンテナー イメージの名前。  PruneContainerImages パラメーターと共に使用します。|
 |ContainerServiceLogFileNamePrefix|string、既定値は "sfcontainerlogs"|静的|Docker コンテナーで生成されるログ ファイルのファイル名プレフィックス。  Windows のみ。|
 |ContainerServiceLogFileRetentionCount|int、既定値は 10|静的|ログ ファイルを上書きする前に Docker コンテナーによって生成されたログ ファイルの数。  Windows のみ。|
 |CreateFabricRuntimeTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的| timespan を秒単位で指定します。 同期 FabricCreateRuntime 呼び出しのタイムアウト値 |
 |DefaultContainerRepositoryAccountName|string、既定値は ""|静的|ApplicationManifest.xml に指定されている資格情報の代わりに使用される既定の資格情報 |
 |DefaultContainerRepositoryPassword|string、既定値は ""|静的|ApplicationManifest.xml に指定されている資格情報の代わりに使用される既定のパスワード資格情報|
+|DefaultContainerRepositoryPasswordType|string、既定値は ""|静的|空の文字列でない場合、値は "Encrypted" または "SecretsStoreRef" です。|
 |DeploymentMaxFailureCount|int、既定値は 20| 動的|ノードへのアプリケーションのデプロイは、DeploymentMaxFailureCount 回、再試行された後に失敗します。| 
 |DeploymentMaxRetryInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600)|動的| timespan を秒単位で指定します。 デプロイの最大再試行間隔。 連続して失敗するたびに、再試行間隔が Min(DeploymentMaxRetryInterval; Continuous Failure Count * DeploymentRetryBackoffInterval) として計算されます |
 |DeploymentRetryBackoffInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(10)|動的|timespan を秒単位で指定します。 デプロイ エラーのバックオフ間隔。 継続的なデプロイ エラーのたびに、システムによってデプロイが最大 MaxDeploymentFailureCount 回、再試行されます。 再試行間隔は、継続的なデプロイ エラーとデプロイ バックオフ間隔の積です。 |
+|DisableContainers|ブール値、既定値は FALSE|静的|コンテナーを無効にするための構成 - 使用されなくなった構成である DisableContainerServiceStartOnContainerActivatorOpen の代わりに使用します |
 |DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
 |EnableActivateNoWindow| ブール値、既定値は FALSE|動的| アクティブ化されたプロセスは、コンソールを使用せずに、バックグラウンドで作成されます。 |
 |EnableContainerServiceDebugMode|ブール値、既定値は TRUE|静的|Docker コンテナーのログを有効または無効にします。  Windows のみ。|
@@ -323,6 +327,7 @@ ms.locfileid: "52728312"
 |FabricContainerAppsEnabled| ブール値、既定値は FALSE|静的| |
 |FirewallPolicyEnabled|ブール値、既定値は FALSE|静的| ServiceManifest で明示的に指定されているポートを使用して、エンドポイント リソースのファイアウォール ポートを開くことができるようにします |
 |GetCodePackageActivationContextTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的|timespan を秒単位で指定します。 CodePackageActivationContext 呼び出しのタイムアウト値。 これはアドホック サービスには適用されません。 |
+|GovernOnlyMainMemoryForProcesses|ブール値、既定値は FALSE|静的|リソース管理の既定の動作では、プロセスが使用する合計メモリ量 (RAM + スワップ) に対して、MemoryInMB で指定された制限を設定します。 制限を超えた場合、プロセスは OutOfMemory 例外を受け取ります。 このパラメーターが true に設定されている場合、制限は、プロセスが使用する RAM メモリの量にのみ適用されます。 この制限を超え、この設定が true である場合は、OS によってメイン メモリがディスクにスワップされます。 |
 |IPProviderEnabled|ブール値、既定値は FALSE|静的|IP アドレスの管理を有効にします。 |
 |IsDefaultContainerRepositoryPasswordEncrypted|ブール値、既定値は FALSE|静的|DefaultContainerRepositoryPassword を暗号化するかどうか。|
 |LinuxExternalExecutablePath|string、既定値は "/usr/bin/" |静的|ノード上の外部の実行可能なコマンドのプライマリ ディレクトリ。|
@@ -345,17 +350,9 @@ ms.locfileid: "52728312"
 | --- | --- | --- | --- |
 |ActiveListeners |uint、既定値は 50 |静的| HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
 |HttpGatewayHealthReportSendInterval |秒単位。既定値は 30 |静的|timespan を秒単位で指定します。 HTTP ゲートウェイが、累積した正常性レポートを Health Manager に送信する間隔。 |
+|HttpStrictTransportSecurityHeader|string、既定値は ""|動的| HttpGateway によって送信されるすべての応答に含められる HTTP Strict Transport Security ヘッダーの値を指定します。 空の文字列に設定した場合、このヘッダーはゲートウェイ応答に含められません。|
 |IsEnabled|ブール値、既定値は false |静的| HttpGateway を有効または無効にします。 HttpGateway は、既定では無効になっています。 |
 |MaxEntityBodySize |uint、既定値は 4194304 |動的|HTTP 要求の予想される本文の最大サイズを指定します。 既定値は 4 MB です。 本文のサイズがこの値を超えている場合、HttpGateway は要求を失敗させます。 最小読み取りチャンク サイズは 4096 バイトです。 そのため、この値は 4096 以上にする必要があります。 |
-
-## <a name="imagestoreclient"></a>ImageStoreClient
-| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
-| --- | --- | --- | --- |
-|ClientCopyTimeout | 時間 (秒単位)、既定値は 1800 |動的| timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのコピー要求のタイムアウト値。 |
-|ClientDefaultTimeout | 時間 (秒単位)、既定値は 180 |動的| timespan を秒単位で指定します。 イメージ ストア サービスに対するアップロード/ダウンロード要求以外のすべての要求 (存在確認、削除など) のタイムアウト値。 |
-|ClientDownloadTimeout | 時間 (秒単位)、既定値は 1800 |動的| timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのダウンロード要求のタイムアウト値。 |
-|ClientListTimeout | 時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのリスト要求のタイムアウト値。 |
-|ClientUploadTimeout |時間 (秒単位)、既定値は 1800 |動的|timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのアップロード要求のタイムアウト値。 |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -503,6 +500,7 @@ ms.locfileid: "52728312"
 |PlacementSearchTimeout | 時間 (秒単位)、既定値は 0.5 |動的| timespan を秒単位で指定します。 サービスを配置するときに、結果を返すまでに最長でこの時間の間、検索します。 |
 |PLBRefreshGap | 時間 (秒単位)、既定値は 1 |動的| timespan を秒単位で指定します。 PLB が状態を再度更新するまでに必要な最小経過時間を定義します。 |
 |PreferredLocationConstraintPriority | int、既定値は 2| 動的|優先される場所の制約の優先順位を指定します:0:ハード、1:ソフト、2:最適化、負の値:Ignore |
+|PreferUpgradedUDs|ブール値、既定値は TRUE|動的|既にアップグレードされている UD への移動を優先するロジックをオンまたはオフにします。|
 |PreventTransientOvercommit | ブール値、既定値は false | 動的|開始された移動によって解放されるリソースを PLB が即座に利用するかどうかを指定します。 既定では、PLB は同じノード上で移動を開始できるので、一時的なオーバーコミットが発生する可能性があります。 このパラメーターを true に設定すると、このようなオーバーコミットを防ぐことができ、オンデマンドのデフラグ (placementWithMove) が無効になります。 |
 |ScaleoutCountConstraintPriority | int、既定値は 0 |動的| スケールアウト数の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |SwapPrimaryThrottlingAssociatedMetric | string、既定値は ""|静的| この調整に関連付けられたメトリックの名前。 |
@@ -590,6 +588,7 @@ ms.locfileid: "52728312"
 |AADTokenEndpointFormat|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us/{0}" のような既定以外の環境用に指定される AAD トークン エンドポイント。既定値は Azure Commercial。 |
 |AdminClientClaims|string、既定値は ""|動的|管理クライアントから期待される、考えられるすべての要求。ClientClaims と同じ形式です。この一覧は ClientClaims に内部的に追加されるため、同じエントリを ClientClaims に追加する必要はありません。 |
 |AdminClientIdentities|string、既定値は ""|動的|管理者ロールのファブリック クライアントの Windows ID。特権ファブリック操作の承認に使用されます。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です。 便宜上、fabric.exe を実行するアカウントは自動的に管理者ロールを割り当てられます。グループ ServiceFabricAdministrators も同様です。 |
+|AppRunAsAccountGroupX509Folder|string、既定値は /home/sfuser/sfusercerts |静的|AppRunAsAccountGroup X509 証明書と秘密キーがあるフォルダー |
 |CertificateExpirySafetyMargin|TimeSpan、既定値は Common::TimeSpan::FromMinutes(43200)|静的|timespan を秒単位で指定します。 証明書の有効期限の安全マージン。有効期限がこれより近くなると、証明書の正常性レポートの状態が OK から警告に変わります。 既定値は 30 日です。 |
 |CertificateHealthReportingInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600 * 8)|静的|timespan を秒単位で指定します。 証明書の正常性レポートの間隔を指定します。既定値は 8 時間です。0 に設定すると、証明書の正常性レポートが無効になります |
 |ClientCertThumbprints|string、既定値は ""|動的|クラスターと対話するために、クライアントによって使用される証明書のサムプリント。クラスターはこれを使用して、受診接続を承認します。 コンマ区切りの名前リストです。 |
@@ -629,7 +628,9 @@ ms.locfileid: "52728312"
 |CodePackageControl |string、既定値は "Admin" |動的| コード パッケージを再開するためのセキュリティ構成。 |
 |CreateApplication |string、既定値は "Admin" | 動的|アプリケーションを作成するためのセキュリティ構成。 |
 |CreateComposeDeployment|string、既定値は "Admin"| 動的|compose ファイルで記述されている compose デプロイを作成します |
+|CreateGatewayResource|string、既定値は "Admin"| 動的|ゲートウェイ リソースを作成する |
 |CreateName |string、既定値は "Admin" |動的|名前付け URI を作成するためのセキュリティ構成。 |
+|CreateNetwork|string、既定値は "Admin" |動的|コンテナー ネットワークを作成します |
 |CreateService |string、既定値は "Admin" |動的| サービスを作成するためのセキュリティ構成。 |
 |CreateServiceFromTemplate |string、既定値は "Admin" |動的|テンプレートからサービスを作成するためのセキュリティ構成。 |
 |CreateVolume|string、既定値は "Admin"|動的|ボリュームを作成します |
@@ -638,7 +639,9 @@ ms.locfileid: "52728312"
 |削除 |string、既定値は "Admin" |動的| イメージ ストア クライアントの削除操作のセキュリティ構成。 |
 |DeleteApplication |string、既定値は "Admin" |動的| アプリケーションを削除するためのセキュリティ構成。 |
 |DeleteComposeDeployment|string、既定値は "Admin"| 動的|compose デプロイを削除します |
+|DeleteGatewayResource|string、既定値は "Admin"| 動的|ゲートウェイ リソースを削除します |
 |DeleteName |string、既定値は "Admin" |動的|名前付け URI を削除するためのセキュリティ構成。 |
+|DeleteNetwork|string、既定値は "Admin" |動的|コンテナー ネットワークを削除します |
 |DeleteService |string、既定値は "Admin" |動的|サービスを削除するためのセキュリティ構成。 |
 |DeleteVolume|string、既定値は "Admin"|動的|ボリュームを削除します。| 
 |EnumerateProperties |string、既定値は "Admin\|\|User" | 動的|名前付けプロパティを列挙するためのセキュリティ構成。 |
@@ -655,6 +658,7 @@ ms.locfileid: "52728312"
 |GetPartitionDataLossProgress | string、既定値は "Admin\|\|User" | 動的|データ損失を発生させる API 呼び出しの進行状況を取得します。 |
 |GetPartitionQuorumLossProgress | string、既定値は "Admin\|\|User" |動的| クォーラム損失を発生させる API 呼び出しの進行状況を取得します。 |
 |GetPartitionRestartProgress | string、既定値は "Admin\|\|User" |動的| パーティションを再起動する API 呼び出しの進行状況を取得します。 |
+|GetSecrets|string、既定値は "Admin"|動的|シークレット値を取得します |
 |GetServiceDescription |string、既定値は "Admin\|\|User" |動的| 長いポーリングのサービス通知と読み取りサービスの説明のセキュリティ構成。 |
 |GetStagingLocation |string、既定値は "Admin" |動的| イメージ ストア クライアントのステージングの場所を取得するためのセキュリティ構成。 |
 |GetStoreLocation |string、既定値は "Admin" |動的| イメージ ストア クライアントのストアの場所を取得するためのセキュリティ構成。 |
@@ -794,7 +798,9 @@ ms.locfileid: "52728312"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | ブール値、既定値は true |静的| 目標状態ファイルに基づく自動ポーリングとアップグレード アクション。 |
-|MinReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の MinReplicaSetSize。
+|AutoupgradeInstallEnabled|ブール値、既定値は FALSE|静的|目標状態ファイルに基づくコード アップグレード アクションの自動ポーリング、プロビジョニング、およびインストール。|
+|GoalStateExpirationReminderInDays|int、既定値は 30|静的|目標状態のアラームを表示し始める残り日数を設定します。|
+|MinReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の MinReplicaSetSize。|
 |PlacementConstraints | string、既定値は "" |静的| UpgradeOrchestrationService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の QuorumLossWaitDuration。 |
 |ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60 分|静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の ReplicaRestartWaitDuration。 |
@@ -811,6 +817,7 @@ ms.locfileid: "52728312"
 |MinReplicaSetSize | int、既定値は 2 |禁止| UpgradeService の MinReplicaSetSize。 |
 |OnlyBaseUpgrade | ブール値、既定値は false |動的|UpgradeService の OnlyBaseUpgrade。 |
 |PlacementConstraints |string、既定値は "" |禁止|アップグレード サービスの PlacementConstraints。 |
+|PollIntervalInSeconds|Timespan、既定値は Common::TimeSpan::FromSeconds(60) |動的|timespan を秒単位で指定します。 ARM 管理操作のための UpgradeService ポーリングの間隔。 |
 |TargetReplicaSetSize | int、既定値は 3 |禁止| UpgradeService の TargetReplicaSetSize。 |
 |TestCabFolder | string、既定値は "" |静的| UpgradeService の TestCabFolder。 |
 |X509FindType | string、既定値は ""|動的| UpgradeService の X509FindType。 |

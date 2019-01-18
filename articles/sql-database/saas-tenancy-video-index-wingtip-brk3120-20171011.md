@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163975"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608904"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
 この記事は、SaaS テナント モデルまたはパターンに関する 81 分間のビデオの時間位置への注釈付きインデックスです。 この記事から、ビデオの後方や前方の興味のある位置にスキップできます。 ビデオでは、Azure SQL Database でのマルチテナント データベース アプリケーションに関する主要な設計オプションが説明されています。 ビデオには、デモ、管理コードのチュートリアル、および場合によってはドキュメントより詳細な経験に基づく情報が含まれます。
 
 ビデオでは、以下のドキュメントの情報が詳しく説明されています。 
-- *概念:*[マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
+- *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
 - *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 
 ビデオと記事では、クラウドの Azure SQL Database を利用してマルチテナント アプリケーションを作成するときのさまざまなフェーズについて説明されています。 Azure SQL Database の特殊な機能により、管理が容易で信頼できるパフォーマンスのマルチテナント アプリを、簡単に開発して実装できます。
@@ -294,7 +294,7 @@ ms.locfileid: "53163975"
 
 - [ブログ記事、2017 年 5 月 22 日][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *概念:*[マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
+- *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
 
 - *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 

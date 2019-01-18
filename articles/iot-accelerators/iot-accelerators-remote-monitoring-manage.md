@@ -1,5 +1,5 @@
 ---
-title: Azure ベースのリモート監視ソリューションでデバイスを構成するチュートリアル | Microsoft Docs
+title: リモート監視ソリューションでデバイスを構成するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータに接続されているデバイスを構成する方法を示します。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679156"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599503"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスを構成する
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスを構成する
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを構成および管理します。 ソリューション アクセラレータに新しいデバイスを追加し、デバイスを構成します。
 

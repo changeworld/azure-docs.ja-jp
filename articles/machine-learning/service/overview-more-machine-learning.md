@@ -1,5 +1,6 @@
 ---
-title: Microsoft の機械学習製品オプションの比較
+title: 機械学習製品オプションの比較
+titleSuffix: Microsoft
 description: 機械学習モデルを構築、デプロイ、および管理するための Microsoft のさまざまな製品を比較します。 ソリューションとしてどの製品を選択するかを決定します。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274123"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557888"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft の機械学習製品とは
 
@@ -37,7 +38,7 @@ Microsoft は、機械学習モデルを構築、デプロイ、および管理�
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning サービス
 
-[Azure Machine Learning サービス](overview-what-is-azure-ml.md) は、ML モデルを大規模にトレーニング、デプロイ、および管理するために使用されるフル マネージド クラウド サービスです。 オープンソース テクノロジを完全にサポートしているため、TensorFlow、PyTorch、scikit-learn などの数万のオープンソース Python パッケージを使用できます。 データの探索と変換、モデルのトレーニングとデプロイを容易にするために、[Azure Notebooks](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org)、[Azure Machine Learning for Visual Studio Code](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) などの豊富なツールも利用できます。 Azure Machine Learning サービスには、モデルの生成とチューニングを簡単に、効率よく、かつ正確に自動化する機能が含まれています。
+[Azure Machine Learning サービス](overview-what-is-azure-ml.md) は、ML モデルを大規模にトレーニング、デプロイ、および管理するために使用されるフル マネージド クラウド サービスです。 オープンソース テクノロジを完全にサポートしているため、TensorFlow、PyTorch、scikit-learn などの数万のオープンソース Python パッケージを使用できます。 データの探索と変換、モデルのトレーニングとデプロイを容易にするために、[Azure Notebooks](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org)、[Azure Machine Learning for Visual Studio Code](https://aka.ms/vscodetoolsforai) などの豊富なツールも利用できます。 Azure Machine Learning サービスには、モデルの生成とチューニングを簡単に、効率よく、かつ正確に自動化する機能が含まれています。
 
 Azure Machine Learning サービスは、Python と CLI を使用して ML モデルをクラウド規模でトレーニング、デプロイ、および管理する場合に使用します。
 

@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6a7d1f886bd3a8457b6cad2e9fea11820805e7c9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ROBOTS: NOINDEX
+ms.openlocfilehash: f0ffb4a4c4ea12292639b5a94b7f2990db6e45bd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651946"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247811"
 ---
 # <a name="deploy-the-local-agent"></a>ローカル エージェントをデプロイする
 
@@ -138,4 +139,4 @@ Azure Stack がテスト対象のシステムです。 対象のマシンは、A
 
 - [サービスとしての検証のトラブルシューティング](azure-stack-vaas-troubleshoot.md)
 - [サービスとしての検証の主要概念](azure-stack-vaas-key-concepts.md)
-- [クイック スタート: サービスとしての検証ポータルを使用して初めてのテストをスケジュール設定する](azure-stack-vaas-schedule-test-pass.md)
+- [クイック スタート:サービスとしての検証ポータルを使用して初めてのテストをスケジュールする](azure-stack-vaas-schedule-test-pass.md)

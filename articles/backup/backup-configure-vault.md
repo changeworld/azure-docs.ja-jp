@@ -4,17 +4,16 @@ description: Microsoft Azure Backup エージェントを使用して、Windows 
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874007"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788397"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルで Windows Server または Windows クライアントを Azure にバックアップする
 この記事では、Resource Manager デプロイ モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
@@ -183,6 +182,8 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 バックアップ ポリシーとは、回復ポイントを取得するスケジュールと、回復ポイントが保持される期間の長さです。 Microsoft Azure Backup エージェントを使用して、ファイルとフォルダーのバックアップ ポリシーを作成します。
 
 ### <a name="to-create-a-backup-schedule"></a>バックアップ スケジュールを作成するには
+
+バックアップするマシンでバックアップのスケジュールを設定します。 Azure Backup では夏時間 (DST) が考慮されないため、バックアップ用に設定された時間は、ローカル コンピューターの時間と異なる可能性があることに注意してください。 
 1. Microsoft Azure Backup エージェントを開きます  エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
 
     ![Launch the Azure Backup agent](./media/backup-configure-vault/snap-in-search.png)

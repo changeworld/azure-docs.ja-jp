@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254124"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103793"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル:Azure SignalR Service の認証
 
@@ -378,7 +378,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
-このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい [Azure Web アプリ](https://docs.microsoft.com/azure/app-service/)を作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
+このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい wev アプリを [Azure App Service](https://docs.microsoft.com/azure/app-service/) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
 
 このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI の *signalr* 拡張機能をインストールします。
 
@@ -547,7 +547,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 最後に、GitHub OAuth アプリの**ホームページ URL** と**認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
 
-1. ブラウザーで [http://github.com](http://github.com) を開き、アカウントの **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** > **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
+1. ブラウザーで [https://github.com](https://github.com) を開き、アカウントの **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** > **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
 
 2. 認証アプリをクリックし、**[Homepage URL]\(ホームページ URL\)** と **[Authorization callback URL]\(認証コールバックの URL\)** を次のように更新します。
 

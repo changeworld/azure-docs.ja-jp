@@ -33,10 +33,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
 
-**[Container name] (コンテナー名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**[OK]** をクリックします。
+**[Container name] (コンテナー 名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
-* [Container name] (コンテナー名): `mycontainer`
-* [Container image] (コンテナー イメージ): `microsoft/aci-helloworld`
+* [Container name](コンテナー 名): `mycontainer`
+* [Container image](コンテナー イメージ): `microsoft/aci-helloworld`
 * リソース グループ:**新規作成** > `myResourceGroup`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/7/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a28a4f8dd5087377d559c50ef3432251510810b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 088fc2b7aeb318481a81387770f1dcef2883241d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195020"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Zscaler Internet Access Administrator と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Zscaler Internet Access Administrator でのシングル サインオンが有効なサブスクリプション
+* Zscaler Internet Access Administrator サブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -105,6 +105,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
     ![Zscaler Internet Access Administrator のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、要件に従って URL を入力します。
+    
     | |
     |--|
     | `https://admin.zscaler.net` |
@@ -115,6 +116,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
     | `https://admin.zscalerbeta.net` |
 
     b. **[応答 URL]** テキスト ボックスに、要件に従って URL を入力します。
+    
     | |
     |--|
     | `https://admin.zscaler.net/adminsso.do` |
@@ -165,37 +167,19 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
 ### <a name="configure-zscaler-internet-access-administrator-single-sign-on"></a>Zscaler Internet Access Administrator シングル サインオンの構成
 
-9. 別の Web ブラウザー ウィンドウで、Zscaler Internet Access Administrator 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Zscaler Internet Access の管理 UI にログインします。
 
-10. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
+2. **[Administration]\(管理\) > [Administrator Management]\(管理者の管理\)** に移動し、次の手順を実行して、[Save]\(保存\) をクリックします。
    
-    ![Administration](./media/zscaler-internet-access-administrator-tutorial/ic800206.png "Administration")
+    ![Administration](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
 
-    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
+    a. **[Enable SAML Authentication]\(SAML 認証を有効にする\)** をオンにします。
 
-    b. **[Configure SAML]** をクリックします。
-
-11. **[Edit SAML]\(SAML の編集\)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
-            
-    ![ユーザーと認証の管理](./media/zscaler-internet-access-administrator-tutorial/ic800208.png "Manage Users & Authentication")
+    b. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
     
-    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+    c. セキュリティを強化するために、必要に応じて **[Issuer]\(発行者\)** の詳細を追加して、SAML 応答の発行者を確認します。
 
-    b. **[Login Name Attribute]\(ログイン名属性\)** テキスト ボックスに **NameID** の値を入力します。
-
-    c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
-
-    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
-
-    e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
-
-    f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
-
-    g. department 属性に SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
-
-    i. **[Save]** をクリックします。
-
-12. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
+3. 管理 UI で次の手順を実行します。
 
     ![管理](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
@@ -256,15 +240,16 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>Zscaler Internet Access Administrator のテスト ユーザーの作成
 
-このセクションの目的は、Zscaler Internet Access Administrator で Britta Simon というユーザーを作成することです。 Zscaler Internet Access Administrator では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Zscaler Internet Access Administrator にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
->[!Note]
->ユーザーを手動で作成する必要がある場合は、 [Zscaler Internet Access Administrator のサポート チーム](Phone: +1-408-701-0534 URL: help.zscaler.com)にお問い合わせください。
+このセクションの目的は、Zscaler Internet Access Administrator で Britta Simon というユーザーを作成することです。 Zscaler Internet Access では、Administrator SSO の Just-In-Time プロビジョニングはサポートされません。 管理者アカウントは、手動で作成する必要があります。
+管理者アカウントを作成する手順については、Zscaler のドキュメントを参照してください。
+
+https://help.zscaler.com/zia/adding-admins
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Zscaler Internet Access Administrator のタイルをクリックすると、SSO をセットアップする Zscaler Internet Access Administrator に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで Zscaler Internet Access Administrator のタイルをクリックすると、SSO をセットアップした Zscaler Internet Access の管理 UI に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
