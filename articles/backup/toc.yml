@@ -4,7 +4,7 @@ items:
 - name: 概要
   items:
   - name: Azure Backup とは
-    href: backup-introduction-to-azure-backup.md
+    href: backup-overview.md
 - name: クイック スタート
   items:
   - name: VM のバックアップ - ポータル
@@ -34,6 +34,10 @@ items:
     href: backup-rm-template-samples.md
 - name: 概念
   items:
+  - name: Backup のアーキテクチャ
+    href: backup-architecture.md
+  - name: Backup のサポート マトリックス
+    href: backup-support-matrix.md
   - name: FAQ
     items:
     - name: Recovery Services コンテナーに関する FAQ
@@ -256,9 +260,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 4f5d8a19fe45aa493183fd5de027a1ecd159622e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 23a52de757f7b12633f77708b7475ccb92a582e6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267489"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359682"

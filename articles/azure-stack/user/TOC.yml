@@ -131,10 +131,13 @@ items:
         href: azure-stack-ethereum.md
       - name: Service Fabric クラスターのデプロイ
         href: azure-stack-solution-template-service-fabric-cluster.md
-      - name: Kubernetes クラスターの追加
+      - name: Kubernetes クラスターのデプロイ
+        href: azure-stack-solution-template-kubernetes-deploy.md
         items:
-        - name: Kubernetes クラスターのデプロイ
-          href: azure-stack-solution-template-kubernetes-deploy.md
+        - name: Azure AD を使用した Kubernetes のデプロイ
+          href: azure-stack-solution-template-kubernetes-azuread.md
+        - name: AD FS を使用した Kubernetes のデプロイ
+          href: azure-stack-solution-template-kubernetes-adfs.md
         - name: Kubernetes クラスターのトラブルシューティング
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Cognitive Services のデプロイ
@@ -220,9 +223,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 16ad9c79aedad01cf6bd1c83740938f23b592b6a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 256560806e1065ec1ca9cfa9ba1d9f4521755ee8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189900"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351762"

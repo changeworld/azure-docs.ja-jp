@@ -107,9 +107,7 @@ items:
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: ONNX モデル
-    items:
-    - name: Create and deploy
-      href: how-to-build-deploy-onnx.md
+    href: how-to-build-deploy-onnx.md
   - name: モデルをデプロイする
     items:
     - name: デプロイする場所と方法
@@ -131,6 +129,7 @@ items:
   - name: Web サービスを監視する
     items:
     - name: モデルのデータを収集して評価する
+      displayName: track production
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
@@ -143,7 +142,7 @@ items:
     displayName: vnet
     href: how-to-enable-virtual-network.md
   - name: Machine Learning CLI の使用
-    displayName: cli command line command-line az ci/cd automate automated
+    displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: データをエクスポートおよび削除する
     displayName: gdpr
@@ -176,9 +175,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: a6975a6aaefb3a750ee73b1e9738f534be24f2ba
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 471928ec98a4fe037078e121a38286f30919d186
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319726"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359206"

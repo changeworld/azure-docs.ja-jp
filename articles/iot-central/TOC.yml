@@ -97,6 +97,8 @@ items:
       href: howto-prepare-images.md
     - name: Azure 管理ポータルから IoT Central を管理する
       href: howto-manage-iot-central-from-portal.md
+    - name: Azure PowerShell で IoT Central を管理する
+      href: howto-manage-iot-central-from-powershell.md
     - name: CSP としてのアプリケーションの作成と管理
       href: howto-create-and-manage-applications-as-CSP.md
     - name: ホーム ページを構成する
@@ -137,9 +139,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 045599c517c9ba4c85b0e2bb7d7bec6c531b0439
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f25b255f441901d873e246bc7e31460b614b7c88
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407764"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354435"
