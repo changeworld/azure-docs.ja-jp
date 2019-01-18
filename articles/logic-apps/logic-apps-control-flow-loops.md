@@ -44,8 +44,7 @@ ms.locfileid: "54159487"
 
 * 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
 
-* Actions in a "Foreach" loop use the <bpt id="p1">[</bpt><ph id="ph1">`@item()`</ph><ept id="p1">](../logic-apps/workflow-definition-language-functions-reference.md#item)</ept> 
-"Foreach" ループのアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) の式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
+* "Foreach" ループのアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) の式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
 
 このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
 
