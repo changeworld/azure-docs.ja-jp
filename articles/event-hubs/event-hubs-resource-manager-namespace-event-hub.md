@@ -163,7 +163,7 @@ az account set --subscription <Name of your Azure subscription>
 Azure CLI を使用してリソースをデプロイするには、C:\EventHubsQuickStart\ARM\ フォルダーに移動し、次のコマンドを実行します。
 
 > [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します。
+> az group create コマンドで Azure リソース グループの名前を指定します 。
 
 ```azurecli
 # Create an Azure resource group
