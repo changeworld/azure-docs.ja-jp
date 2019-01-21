@@ -344,7 +344,7 @@ http://<app_name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>データ モデルを更新する
 
-_modules/articles/server/models/article.server.model.js_を開きます。
+_modules/articles/server/models/article.server.model.js_ を開きます。
 
 `ArticleSchema` に `comment` という `String` 型を追加します。 完了すると、スキーマ コードは次のようになります。
 
