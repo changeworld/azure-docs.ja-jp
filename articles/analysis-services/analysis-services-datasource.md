@@ -23,14 +23,14 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   [はい]      |    [はい]      |
-|Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
-|Azure Blob Storage*     |   [はい]       |    いいえ       |
-|Azure Table Storage*    |   [はい]       |    いいえ       |
-|Azure Cosmos DB*     |  [はい]        |  いいえ         |
-|Azure Data Lake Store*     |   [はい]       |    いいえ       |
-|Azure HDInsight HDFS*     |     [はい]     |   いいえ        |
-|Azure HDInsight Spark*     |   [はい]       |   いいえ        |
+|Azure SQL Database     |   はい      |    はい      |
+|Azure SQL Data Warehouse     |   はい      |   はい       |
+|Azure Blob Storage*     |   はい       |    いいえ       |
+|Azure Table Storage*    |   はい       |    いいえ       |
+|Azure Cosmos DB*     |  はい        |  いいえ         |
+|Azure Data Lake Store*     |   はい       |    いいえ       |
+|Azure HDInsight HDFS*     |     はい     |   いいえ        |
+|Azure HDInsight Spark*     |   はい       |   いいえ        |
 ||||
 
 \* 表形式 1400 モデルのみ。
