@@ -42,7 +42,7 @@ Microsoft Graph の拡張機能には、次のバインドが用意されてい�
 
 ## <a name="setting-up-the-extensions"></a>拡張機能の設定
 
-Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
+Microsoft Graph のバインドは、_バインド拡張機能_ から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
