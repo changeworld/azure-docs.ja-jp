@@ -44,7 +44,7 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 [Azure Service Health](../../azure-monitor/platform/service-notifications.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。 アプリケーションに影響を及ぼす可能性のある現在の問題および予測される重大な問題について通知するアラートを作成できます。 Service Health レコードは、アクティビティ ログ エクスプローラーで表示したり、Azure Monitor ログにコピーしたりできるように、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に格納されます。
 
 ### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
-[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)には、サービスの正常性レコードと Azure リソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの_外部_ビューを表します。 アクティビティ ログにおける各種のレコードについては、「[Azure アクティビティ ログのイベント スキーマ](../../azure-monitor/platform/activity-log-schema.md)」をご覧ください。
+[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)には、サービスの正常性レコードと Azure リソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの _外部_ ビューを表します。 アクティビティ ログにおける各種のレコードについては、「[Azure アクティビティ ログのイベント スキーマ](../../azure-monitor/platform/activity-log-schema.md)」をご覧ください。
 
 特定のリソースのアクティビティ ログは Azure Portal のそのリソースのページで確認できます。また、[アクティビティ ログ エクスプローラー](../../azure-monitor/platform/activity-logs-overview.md)では、複数のリソースのログを表示できます。 これは、ログ エントリを Azure Monitor にコピーして他の監視データと結合するために特に役立ちます。 [Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) を使用して、ログ エントリを他の場所に送信することもできます。
 
