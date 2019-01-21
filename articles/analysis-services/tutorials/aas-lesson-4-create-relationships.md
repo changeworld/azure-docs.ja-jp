@@ -54,11 +54,11 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
   
     |アクティブ|テーブル|関連するルックアップ テーブル|  
     |----------|---------|------------------------|  
-    |[はい]|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
-    |[はい]|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
-    |[はい]|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
-    |[はい]|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
-    |[はい]|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
+    |はい|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
+    |はい|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
+    |はい|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
+    |はい|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
+    |はい|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
     リレーションシップのいずれかが存在しない場合は、モデルに DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory、FactInternetSales の各表が含まれていることを確認します。 同じデータソース接続のテーブルが別々の時期にインポートされた場合、これらのテーブル間のリレーションシップは作成されないので手動で作成する必要があります。 リレーションシップがまったく表示されない場合、そのデータソースにはリレーションシップが存在しません。 それらをデータ モデルに手動で作成することができます。
 
