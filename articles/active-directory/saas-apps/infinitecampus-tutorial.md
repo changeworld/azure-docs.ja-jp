@@ -180,7 +180,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure portal で Britta Simon という_単一の_テスト ユーザーを作成することです。
+このセクションの目的は、Azure portal で Britta Simon という _単一の_ テスト ユーザーを作成することです。
 
 1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
