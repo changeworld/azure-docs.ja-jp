@@ -57,34 +57,13 @@ items:
     href: r-quickstart.md
 - name: サンプル
   items:
+  - name: サンプル実験
+    displayName: gallery
+    href: sample-experiments.md
   - name: サンプル データセット
     href: use-sample-datasets.md
-  - name: 顧客離れの例
-    href: azure-ml-customer-churn-scenario.md
   - name: Azure AI ギャラリー
-    items:
-    - name: 概要
-      href: gallery-how-to-use-contribute-publish.md
-    - name: サンプル実験
-      href: sample-experiments.md
-    - name: 業界
-      href: gallery-industries.md
-    - name: 解決方法
-      href: gallery-solutions.md
-    - name: 実験
-      href: gallery-experiments.md
-    - name: Jupyter Notebooks
-      href: gallery-jupyter-notebooks.md
-    - name: コンペティション
-      href: gallery-competitions.md
-    - name: コンペティションに関する FAQ
-      href: competition-faq.md
-    - name: チュートリアル
-      href: gallery-tutorials.md
-    - name: コレクション
-      href: gallery-collections.md
-    - name: カスタム モジュール
-      href: gallery-custom-modules.md
+    href: gallery-how-to-use-contribute-publish.md
 - name: 概念
   items:
   - name: モデル管理
@@ -102,9 +81,6 @@ items:
       href: troubleshooting-creating-ml-workspace.md
     - name: ARM を使用してデプロイする
       href: deploy-with-resource-manager-template.md
-    - name: Studio アカウント データの表示と削除
-      displayName: export
-      href: export-delete-personal-data-dsr.md
   - name: トレーニング データをインポートする
     items:
     - name: 概要
@@ -128,15 +104,9 @@ items:
       displayName: endpoint, endpoints
       href: create-models-and-endpoints-with-powershell.md
     - name: アルゴリズムを選択する
-      items:
-      - name: アルゴリズムを選択する
-        href: algorithm-choice.md
-      - name: アルゴリズム チート シート
-        href: algorithm-cheat-sheet.md
-      - name: 線形回帰を使用する
-        href: linear-regression-in-azure.md
-      - name: テキスト分析を使用する
-        href: text-analytics-module-tutorial.md
+      href: algorithm-choice.md
+    - name: アルゴリズム チート シート
+      href: algorithm-cheat-sheet.md
     - name: 結果を評価し解釈する
       items:
       - name: パフォーマンスの評価
@@ -212,7 +182,19 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: Batch プールを使用する
       href: dedicated-capacity-for-bes-jobs.md
-  - name: アカウント データの表示と削除
+  - name: 例
+    items:
+    - name: 顧客離れ
+      href: azure-ml-customer-churn-scenario.md
+    - name: センチメント分析
+      href: text-analytics-module-tutorial.md
+    - name: Excel から Studio への分析の移行
+      href: linear-regression-in-azure.md
+  - name: Studio データの表示と削除
+    displayName: export
+    href: export-delete-personal-data-dsr.md
+  - name: Gallery データの表示と削除
+    displayName: export
     href: ai-gallery-control-personal-data-dsr.md
 - name: リファレンス
   items:
@@ -244,9 +226,9 @@ items:
     href: azure-ml-netsharp-reference-guide.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 821a6ffb787aef0d75dbc0f9e1ab331ad35dafa0
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: a79ff2e7b2fba67e5c341468b462eacd07e2693c
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389914"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401947"

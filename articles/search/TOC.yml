@@ -3,8 +3,10 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Search について
+  - name: Azure Search とは
     href: search-what-is-azure-search.md
+  - name: コグニティブ検索とは
+    href: cognitive-search-concept-intro.md
 - name: クイック スタート
   items:
   - name: サービスの作成
@@ -52,8 +54,6 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=search
 - name: 概念
   items:
-  - name: コグニティブ検索 (プレビュー)
-    href: cognitive-search-concept-intro.md
   - name: フルテキスト検索
     href: search-lucene-query-architecture.md
 - name: ハウツー ガイド
@@ -289,9 +289,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 04dddfa9cdf5688ca3b821cbfd8350fcb496933b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: fe70b70005de7f70d00c505adbce4665e41981dd
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390625"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412150"
