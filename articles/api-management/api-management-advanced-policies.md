@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|
-|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|[はい]|該当なし|
+|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|はい|該当なし|
 |timeout="整数"|URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ |60|
 |ignore-error|true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値を格納します。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。|いいえ |false|
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|
