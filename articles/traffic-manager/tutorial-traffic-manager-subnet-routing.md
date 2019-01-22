@@ -24,7 +24,6 @@ ms.locfileid: "54053076"
 
 このチュートリアルでは、サブネットのルーティングを使用し、ユーザーのクエリの IP アドレスに応じて、トラフィックを内部 Web サイトまたは運用 Web サイトにルーティングします。
 
-
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
@@ -34,7 +33,6 @@ ms.locfileid: "54053076"
 > * ユーザーのサブネットに基づいてトラフィックをルーティングするための Traffic Manager プロファイルを作成する
 > * Traffic Manager プロファイルに VM エンドポイントを追加する
 > * Traffic Manager の動作確認
-
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -58,7 +56,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 このセクションでは、2 台の VM (*InternalWebsite* と *ProdWebsite*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** > を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -93,7 +91,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS をインストールして既定の Web ページをカスタマイズする
 
-このセクションでは、2 台の VM (*myIISVMEastUS*  & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
+このセクションでは、2 台の VM (*myIISVMEastUS* & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* をクリックします。
 2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
@@ -104,26 +102,26 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 7. VM *InternalWebsite* で Windows PowerShell を起動し、次のコマンドを使用して IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my " + $env:computername)
     ```
 8. *InternalWebsite* VM との RDP 接続を閉じます。
 9. *myResourceGroupTM2* リソース グループ内の VM *ProdWebsite* への RDP 接続を作成し、ステップ 1 から 6 を繰り返して、IIS のインストールと既定の Web ページのカスタマイズを実行します。
 10. *ProdWebsite* VM で Windows PowerShell を起動し、次のコマンドを使用して IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my " + $env:computername)
     ```
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>IIS を実行する VM の DNS 名を構成する
@@ -139,7 +137,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 このセクションでは、VM (*UserVMUS* と *UserVMEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure portal の左上隅にある **[リソースの作成]** >  を選択し、**[Compute]** > **[Windows Server 2016 Datacenter]** を選択します。
+1. Azure portal の左上隅にある **[リソースの作成]** > を選択し、**[Compute]** > **[Windows Server 2016 Datacenter]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -190,7 +188,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite*  &  と *ProdWebsite* を追加します。
+ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite* & と *ProdWebsite* を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索し、表示された結果からそのプロファイルを選択します。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、**[追加]** をクリックします。
@@ -205,7 +203,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     |  サブネット ルーティングの設定    |   *UserVMUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*InternalWebSiteEndpoint* に転送されます。    |
 
 4. ステップ 2 と 3 を繰り返して、*ProdWebsite* という名前の IIS サーバー VM に関連付けられた パブリック IP アドレス *ProdWebsite-ip* に対する *ProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *UserVMEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
-5.  両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
+5. 両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
  
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト
@@ -220,7 +218,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 次のように、Traffic Manager プロファイルの DNS 名を判別できます。
 
-1.  ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。
+1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。
 1. **[Overview]** をクリックします。
 2. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 運用環境のデプロイでは、DNS CNAME レコードを使用して、Traffic Manager のドメイン名をポイントするバニティ ドメイン名を構成します。
 
@@ -234,8 +232,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。 
 1. VM *UserVMUS* の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 VM *UserVMUS* の IP アドレスはエンドポイント *myInternalWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *InternalWebsite* が起動されます。
 
-2. 次に、ステップ 1 から 5 を使用して**西ヨーロッパ**にある VM *UserVMEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *UserVMEurope* の IP アドレスはエンドポイント *myProductionWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *ProdWebsite* が起動されます。 
-  
+2. 次に、ステップ 1 から 5 を使用して**西ヨーロッパ**にある VM *UserVMEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *UserVMEurope* の IP アドレスはエンドポイント *myProductionWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *ProdWebsite* が起動されます。
+
 ## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除
 不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、**[削除]** を選択します。
 
@@ -244,5 +242,3 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
 - [優先順位によるルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。
 - [地理的なルーティング方法](traffic-manager-configure-geographic-routing-method.md)について学習します。
-
-
