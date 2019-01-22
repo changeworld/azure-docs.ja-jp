@@ -24,15 +24,15 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | [はい] | [はい] |
-| Windows 10<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 2016    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 8.1            | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012 R2 | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 7              | SMB 2.1     | [はい]                   | いいえ                    |
-| Windows Server 2008 R2 | SMB 2.1     | [はい]                   | いいえ                    |
+| Windows Server 2019    | SMB 3.0 | はい | はい |
+| Windows 10<sup>1</sup> | SMB 3.0 | はい | はい |
+| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | はい | はい |
+| Windows Server 2016    | SMB 3.0     | はい                   | はい                  |
+| Windows 8.1            | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
+| Windows 7              | SMB 2.1     | はい                   | いいえ                    |
+| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                    |
 
 <sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
 <sup>2</sup>Windows Server バージョン 1709 および 1803。
