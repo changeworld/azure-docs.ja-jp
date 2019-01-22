@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ee26db80e3219c170c77a2bd90f7d1416676333e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724776"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352752"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "52724776"
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>VM のシステム割り当てマネージド ID にストレージ アカウント アクセス キーを使用するためのアクセス権を付与する
 
-Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、Azure リソースのマネージド ID を使用して Resource Manager からストレージ アカウント アクセス キーを取得し、そのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーへのアクセス権を VM のシステム割り当てマネージド ID に付与します。   
+この手順では、ストレージ アカウントのキーへのアクセス権を VM のシステム割り当てマネージド ID に付与します。   
 
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  

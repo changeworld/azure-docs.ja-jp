@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/22/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f7fef00cfff9295036d7545470f86e27314e6451
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209592"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258700"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
@@ -58,6 +58,9 @@ Content Moderator サービスには、ほかにも Web ベースの[目視レ�
 
 レビュー用 API を使うと、指定したフィルターに応じたテキスト、画像、ビデオのコンテンツに対するチーム レビューを設定できます。 その後、モデレーション担当者がモデレートに関する最終的な意思決定を行えます。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。
 
+## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
+Cognitive Services 全般に言えることですが、Content Moderator サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
-Content Moderator の使用を開始するための[クイック スタート](quick-start.md)に従ってください。
+「[Content Moderator の概要](quick-start.md)」の手順に従って Content Moderator サービスを使ってみましょう。

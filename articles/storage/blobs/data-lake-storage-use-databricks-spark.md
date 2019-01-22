@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548988"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321808"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 プレビューのデータにアクセスする
 
@@ -36,12 +36,31 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 2. **[ダウンロード]** を選択して、ご使用のマシンに結果を保存します。
 3. ダウンロードしたファイルの名前とパスは必ずメモしておいてください。この情報は後の手順で必要になります。
 
-このチュートリアルを完了するには、分析機能を含んだストレージ アカウントが必要です。 その作成方法に関する[クイック スタート](data-lake-storage-quickstart-create-account.md)を済ませておくことをお勧めします。 作成したら、そのストレージ アカウントに移動して構成設定を取得してください。
+このチュートリアルを完了するには、分析機能を含んだストレージ アカウントが必要です。 その作成方法に関する[クイック スタート](data-lake-storage-quickstart-create-account.md)を済ませておくことをお勧めします。 
 
-1. **[設定]** で **[アクセス キー]** を選択します。
-2. **[key1]** の隣にある **[コピー]** を選択してキーの値をコピーします。
+## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
 
-このチュートリアルの後の手順で、アカウント名とキーの両方が必要になります。 テキスト エディターを開き、後で参照できるようにアカウント名とキーをメモしておきます。
+お客様のストレージ アカウントの名前とファイル システムのエンドポイント URI が必要です。
+
+Azure portal でお客様のストレージ アカウントの名前を取得するには、**[すべてのサービス]** を選択し、「*ストレージ*」という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
+
+ファイル システムのエンドポイント URI を取得するには、**[プロパティ]** を選択し、プロパティ ウィンドウで **[プライマリ ADLS ファイル システムのエンドポイント]** フィールドの値を見つけます。
+
+これらの両方の値をテキスト ファイルに貼り付けます。 これらはすぐに必要になります。
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+
+こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+
+:heavy_check_mark:記事の「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)」セクションの手順を実行するとき、**[作成]** ダイアログ ボックスの **[サインオン URL]** フィールドを、先ほど収集したエンドポイント URI に必ず設定してください。
+
+:heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
+
+:heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ## <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
 
@@ -63,22 +82,24 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 14. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
 15. その他のフィールドはすべて既定値のままでかまいません。
 16. **作成**を選択します。
-17. 次のコードを **Cmd 1** セルに貼り付けます。 サンプル内のブラケットで囲まれているプレースホルダーは、実際の値に置き換えてください。
+17. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. **Shift + Enter** キーを押して、コード セルを実行します。
+18. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウント構成を確保する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。 `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+
+19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
 ## <a name="ingest-data"></a>データの取り込み
 

@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240717"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302716"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -148,7 +148,7 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-詳細については、[Azure Stack PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)を参照してください。
+詳細については、[Azure Stack PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/azure-stack/overview)を参照してください。
  
 
 ## <a name="next-steps"></a>次の手順

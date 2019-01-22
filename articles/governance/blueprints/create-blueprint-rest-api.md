@@ -4,17 +4,17 @@ description: Azure Blueprint を使用して、成果物を作成、定義、デ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b66a1c2c12a97ea8754377a138b51a4ca1739c21
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311424"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320686"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>REST API で Azure Blueprint を定義して割り当てる
 
@@ -68,8 +68,8 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
-- `{YourMG}` - 実際の管理グループの名前に置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます。
+- `{YourMG}` - 実際の管理グループの ID に置き換えます
+- `{subscriptionId}` - サブスクリプション ID で置き換えます
 
 1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文**には、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
 
@@ -130,7 +130,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでロールの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはロール定義の識別子と整合しており、プリンシパルの ID は値の配列として渡されます。 次の例では、指定されたロールを付与されたプリンシパル ID が、ブループリントの割り当て中に設定されるパラメーターに対して構成されます。
+1. サブスクリプションでロールの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはロール定義の識別子と整合しており、プリンシパルの ID は値の配列として渡されます。 次の例では、指定されたロールを付与されたプリンシパル ID が、ブループリントの割り当て中に設定されるパラメーターに対して構成されます。 この例では、GUID が `b24988ac-6180-42a0-ab88-20f7382dd24c` の "_共同作成者_" 組み込みロールを使用しています。
 
    - REST API URI
 
@@ -150,7 +150,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでポリシーの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはポリシーまたはイニシアティブの定義と整合しており、ブループリントの割り当て中に構成される定義済みのブループリント パラメーターを使用するようにポリシー割り当てを構成します。
+1. サブスクリプションでポリシーの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはポリシーまたはイニシアティブの定義と整合しており、ブループリントの割り当て中に構成される定義済みのブループリント パラメーターを使用するようにポリシー割り当てを構成します。 この例では、GUID が `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` の "_タグとその既定値のリソース グループへの適用_" 組み込みポリシーを使用しています。
 
    - REST API URI
 
@@ -178,7 +178,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでストレージ タグ (_storageAccountType_ パラメーターを再利用) に対してもう 1 つのポリシー割り当てを追加します。 この追加のポリシー割り当て成果物は、ブループリントで定義されたパラメーターを複数の成果物で使用できることを示します。 この例の **storageAccountType** は、リソース グループにタグを設定する目的で使用されます。 この値は、次のステップで作成するストレージ アカウントに関する情報を提供します。
+1. サブスクリプションでストレージ タグ (_storageAccountType_ パラメーターを再利用) に対してもう 1 つのポリシー割り当てを追加します。 この追加のポリシー割り当て成果物は、ブループリントで定義されたパラメーターを複数の成果物で使用できることを示します。 この例の **storageAccountType** は、リソース グループにタグを設定する目的で使用されます。 この値は、次のステップで作成するストレージ アカウントに関する情報を提供します。 この例では、GUID が `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` の "_タグとその既定値のリソース グループへの適用_" 組み込みポリシーを使用しています。
 
    - REST API URI
 
@@ -292,7 +292,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者**ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。
+1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者**ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
 
    - REST API URI
 

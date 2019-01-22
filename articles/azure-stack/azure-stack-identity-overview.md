@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902843"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306541"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack の ID の概要
 
 Azure Stack には、Azure Active Directory (Azure AD)、または ID プロバイダーとして Active Directory を使用する Active Directory フェデレーション サービス (AD FS) が必要です。 プロバイダーの選択は、Azure Stack を初めてデプロイするときに、一度だけ行います。 この記事での概念と承認についての詳細情報は、ID プロバイダーの選択に役立ちます。
 
-Azure AD にするか AD FS にするかの選択は、Azure Stack をデプロイするモードによって決まることがあります。
+Azure AD にするか AD FS にするかの選択は、Azure Stack をデプロイするモードによって決まります。
 
 - 接続モードでデプロイする場合は、Azure AD と AD FS のどちらも使用できます。
 - インターネットに接続せずに切断モードでデプロイする場合は、AD FS のみがサポートされます。
 
 Azure Stack 環境に依存するオプションの詳細については、以下の記事を参照してください。
 
-- Azure Stack デプロイ キット: 「[ID に関する考慮事項](azure-stack-datacenter-integration.md#identity-considerations)」
-- Azure Stack 統合システム: [Azure Stack 統合システムに対するデプロイ計画の決定](azure-stack-deployment-decisions.md)に関するページ
+- Azure Stack デプロイ キット: [ID に関する考慮事項](azure-stack-datacenter-integration.md#identity-considerations)。
+- Azure Stack 統合システム: [Azure Stack 統合システムのデプロイ計画の決定](azure-stack-deployment-decisions.md)。
 
 ## <a name="common-concepts-for-identity"></a>ID に関する一般的な概念
 
@@ -80,7 +80,7 @@ Azure AD または AD FS にアプリケーションを登録し、そのアプ�
 
 アプリケーションとして、次のものがあります。
 
-- **Web アプリケーション**: たとえば、Azure Portal、Azure Resource Manager などです。 これらでは、Web API 呼び出しがサポートされています。
+- **Web アプリケーション**: たとえば、Azure portal、Azure Resource Manager などです。 これらでは、Web API 呼び出しがサポートされています。
 - **ネイティブ クライアント**: たとえば、Azure PowerShell、Visual Studio、Azure CLI などです。
 
 アプリケーションでは、次の 2 種類のテナントをサポートすることができます。
@@ -157,7 +157,7 @@ ID プロバイダーで認証して JSON Web トークンを受け取るには�
 
 1. **ID システム (機関) の URL**: ID プロバイダーに到達できる URL。 たとえば、*https://login.windows.net* です。
 2. **Azure Resource Manager のアプリ ID URI**: ID プロバイダーに登録された、Azure Resource Manager の一意の識別子。 各 Azure Stack インストールに対しても固有です。
-3. **資格情報**: ID プロバイダーでの認証に使用する資格情報。
+3. **資格情報**:ID プロバイダーでの認証に使用する資格情報。
 4. **Azure Resource Manager の URL**: Azure Resource Manager サービスの場所を示す URL。 たとえば、*https://management.azure.com*、*https://management.local.azurestack.external* などです。
 
 プリンシパル (クライアント、アプリケーション、またはユーザー) がリソースにアクセスするために認証要求を行う場合、その要求には以下のものが含まれている必要があります。
@@ -179,7 +179,7 @@ ID プロバイダーで認証して JSON Web トークンを受け取るには�
 ![トークン交換プロトコルの図](media/azure-stack-identity-overview/token-exchange.png)
 
 > [!NOTE]
-> デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要です。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用します。
+> デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
 
 ### <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
 

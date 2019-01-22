@@ -1,6 +1,6 @@
 ---
-title: クイック スタート - Azure Service Bus との間でメッセージを送受信する | Microsoft Docs
-description: このクイック スタートでは、PowerShell と .NET Standard クライアントを使用して Service Bus メッセージを送受信する方法について説明します。
+title: クイック スタート - Azure PowerShell を使用して Service Bus キューを作成する | Microsoft Docs
+description: このクイック スタートでは、Azure PowerShell を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル アプリケーションを使用してキューとの間でメッセージを送受信します。
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2669b3ad9abc2370b4ecb66596d6edde17c82ddd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9fe9952c3885e0e6145141bac7db13694dcdbd11
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242434"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259667"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>クイック スタート: Azure PowerShell と .NET を使用してメッセージを送受信する
-
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>クイック スタート:Azure PowerShell を使用して Service Bus キューを作成する
 Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと絶対的な信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、2 つ以上のアプリケーション、サービスまたはプロセスを相互に分離し、状態またはデータの変更を転送する処理が含まれます。 このようなシナリオでは、別のアプリケーションまたはサービスで複数のバッチ ジョブをスケジュールする処理や、注文の実行をトリガーする処理が含まれる場合があります。 たとえば、小売企業では、補充および在庫の更新のためにバック オフィスまたは地域の流通センターに POS データを送信することがあります。 このシナリオでは、クライアント アプリは Service Bus キューとの間でメッセージを送受信します。
 
 ![キュー](./media/service-bus-quickstart-powershell/quick-start-queue.png)

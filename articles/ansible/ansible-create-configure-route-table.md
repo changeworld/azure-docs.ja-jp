@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 5d7a16ebda088d0ed42021e9def20a398e914ad9
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158128"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332270"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Ansible を使用して Azure ルート テーブルを作成、変更、削除する
 Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、[ルート テーブル](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)を作成して変更します。

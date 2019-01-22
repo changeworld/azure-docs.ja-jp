@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9097a62ca4bfa67fb5eb35e06f7834df6691e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622807"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213096"
 ---
-# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>チュートリアル: サインイン ログにアクセスするためにスクリプトをダウンロードして使用する方法
+# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>チュートリアル:サインイン ログにアクセスするためにスクリプトをダウンロードして使用する方法
 
 サインイン アクティビティ データを Azure portal の外部で操作する場合は、ダウンロードすることができます。 Azure portal の **[ダウンロード]** オプションでは、最新の 5,000 レコードの CSV ファイルが作成されます。 より柔軟性が必要な場合 (たとえば、一度に 5,000 件を超えるレコードをダウンロードする場合や、スケジュールされた間隔でログをダウンロードする場合など) は、**[スクリプト]** ボタンを使用して、データをダウンロードする PowerShell スクリプトを生成できます。
 
@@ -33,8 +33,8 @@ ms.locfileid: "51622807"
 
 以下のものが必要です。
 
-* プレミアム (P1/P2) ライセンスがある Azure Active Directory テナント。 
-* テナントの**グローバル管理者**、**セキュリティ管理者****セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
+* プレミアム (P1/P2) ライセンスがある Azure Active Directory テナント。 アップグレード前の時点でアクティビティ データがまったく存在しなかった場合、Premium ライセンスへのアップグレード後、データがレポートに表示されるまでに数日かかります。 
+* テナントの**グローバル管理者**、**セキュリティ管理者** **セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
 * ダウンロードしたスクリプトを Windows 10 マシンで実行するには、[AzureRM モジュールを設定し、実行ポリシーを設定](concept-sign-ins.md#running-the-script-on-a-windows-10-machine)します。
 
 ## <a name="tutorial"></a>チュートリアル

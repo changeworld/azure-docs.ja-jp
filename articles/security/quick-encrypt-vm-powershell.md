@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/14/2019
 ms.author: mstewart
 ms.custom: seodec18
-ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f94ec1a64108cde6ff69a572559960a988a1b7c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087866"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261283"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する
 
@@ -30,9 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - Windows PowerShell ISE
-- [最新バージョンの Azure PowerShell](/powershell/azure/install-azurerm-ps) をインストールするか、最新バージョンに更新します。
+- [最新バージョンの AzureRM PowerShell モジュール](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)をインストールするか、最新バージョンに更新します。
     - AzureRM モジュールのバージョン 6.0.0 以降が必要です。 `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
-- [Azure Disk Encryption の前提条件スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)のコピー。
+- [Azure Disk Encryption の前提条件スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)のコピー。
     - このスクリプトが既にある場合、最近変更されているので新しいコピーをダウンロードします。 
     - **Ctrl + A** キーを使用してすべてのテキストを選択し、**Ctrl + C** キーを使用してすべてのテキストをメモ帳にコピーします。
     - ファイルうを **ADEPrereqScript.ps1** という名前で保存します。

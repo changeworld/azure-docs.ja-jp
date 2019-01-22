@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d4a40b07ef70d8dd43eb410ba396057551cd483
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249899"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304400"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事の情報は、Azure Stack クラウド オペレーターが、Azure Stack 展開のストレージ容量を監視して管理するために役立ちます。 Azure Stack ストレージ インフラストラクチャは、Azure Stack 展開の合計ストレージ容量のサブセットを、**ストレージ サービス**で使用されるストレージ容量として割り当てます。 ストレージ サービスは、展開のノードに対応するボリューム上の共有にテナント データを格納します。
 
@@ -79,7 +79,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 
 ### <a name="use-powershell"></a>PowerShell の使用
 クラウド オペレーターは、PowerShell の **Get AzsStorageShare** コマンドレットを使用して、共有のストレージ容量を監視できます。 Get AzsStorageShare コマンドレットは、各共有の合計領域、割り当て済み領域、および空き領域をバイト単位で返します。   
-![例: 共有の空き領域を返す](media/azure-stack-manage-storage-shares/free-space.png)
+![例:共有の空き領域を返す](media/azure-stack-manage-storage-shares/free-space.png)
 
 - **合計容量**は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
 - **使用済み容量**は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
@@ -90,7 +90,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 2. **[すべてのサービス]** > **[ストレージ]** を選択してファイル共有の一覧を開きます。そこで使用状況情報を確認できます。 
 
-  ![例: ストレージのファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+  ![例:ストレージ ファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
   - **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
@@ -101,10 +101,10 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 > [!IMPORTANT]
 > クラウド オペレーターは、共有が完全に使用されないようにする必要があります。 共有が 100% 使用されると、その共有に対するストレージ サービスは機能しなくなります。 使用率が 100% である共有で空き領域を復旧して操作を復元するには、Microsoft サポートに問い合わせる必要があります。
 
-**警告**: ファイル共有の使用率が 80% を超えると、管理者ポータルで "*警告*" アラートを受信します。![例: 警告アラート](media/azure-stack-manage-storage-shares/alert-warning.png)
+**警告**:ファイル共有の使用率が 80% を超えると、管理者ポータルで "*警告*" アラートを受信します。![例: 警告アラート](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**重大**: ファイル共有の使用率が 90% を超えると、管理者ポータルで "*重大*" アラートを受信します。![例: 重大アラート](media/azure-stack-manage-storage-shares/alert-critical.png)
+**[高]**:ファイル共有の使用率が 90% を超えると、管理者ポータルで "*重大*" アラートを受信します。![例: 重大アラート](media/azure-stack-manage-storage-shares/alert-critical.png)
 
 **詳細の表示**: 管理者ポータルでアラートの詳細を開いて、軽減策を確認できます。![例: アラートの詳細の表示](media/azure-stack-manage-storage-shares/alert-details.png)
 
@@ -188,7 +188,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
   ````
 
-  ![例: 移行の状態](media/azure-stack-manage-storage-shares/migration-status1.png)
+  ![例:移行の状態](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  実行中の移行ジョブを取り消すことができます。 取り消された移行ジョブは、非同期的に処理されます。 $Jobid を使用して、取り消しを追跡できます。
 
@@ -196,11 +196,11 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ````
 
-  ![例: ロールバック状態](media/azure-stack-manage-storage-shares/rollback.png)
+  ![例:ロールバック状態](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 移行ジョブの状態が **Canceled**になるまで、手順 6 のコマンドをもう一度実行できます。  
 
-    ![例: 取り消し済みの状態](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![例:取り消し済みの状態](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>VM ディスクを移動する
 "*このオプションは、マルチノード展開のみに適用されます。*"

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.reviewer: unknown
+ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984198"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267336"
 ---
 # <a name="validate-azure-identity"></a>Azure ID の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure Active Directory (Azure AD) を Azure Stack で使用する準備が整っていることを検証します。 Azure Stack のデプロイを開始する前に、Azure ID ソリューションを検証します。  
@@ -48,7 +48,7 @@ Azure Stack のユーザー、アプリケーション、グループ、およ�
 **Azure Active Directory の環境:**
  - Azure Stack に使用する Azure AD アカウントを特定し、それが Azure Active Directory グローバル管理者であることを確認します。
  - Azure AD テナントの名前を特定します。 テナント名は、Azure Active Directory の "*プライマリ*" ドメイン名である必要があります  (例: *contoso.onmicrosoft.com*)。 
- - 使用する AzureEnvironment を特定します: *AzureCloud*、*AzureGermanCloud*、または *AzureChinaCloud*。
+ - 使用する AzureEnvironment を特定します。 環境名のパラメーターとしてサポートされる値は、AzureCloud、AzureChinaCloud または AzureUSGovernment です。使用している Azure サブスクリプションに応じて異なります。
 
 ## <a name="validate-azure-identity"></a>Azure ID の検証 
 1. 前提条件を満たしているコンピューターで、管理 PowerShell プロンプトを開き、次のコマンドを実行して、AzsReadinessChecker をインストールします。  
@@ -59,10 +59,10 @@ Azure Stack のユーザー、アプリケーション、グループ、およ�
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. PowerShell プロンプトから次を実行して、Azure AD の検証を開始します。 
-   - AzureEnvironment の値を *AzureCloud*、*AzureGermanCloud*、または *AzureChinaCloud* として指定します。  
+   - AzureEnvironment の環境名の値を指定します。 環境名のパラメーターとしてサポートされる値は、AzureCloud、AzureChinaCloud または AzureUSGovernment です。使用している Azure サブスクリプションに応じて異なります。  
    - Azure Active Directory テナント名を指定して、*contoso.onmicrosoft.com* で置き換えます。 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. ツールの実行後、出力を確認します。 インストールの要件について、状態が **OK** であることを確認します。 次の図のように、検証が成功したことが表示されます。 
  
 ````PowerShell
@@ -137,7 +137,7 @@ Invoke-AzsAzureIdentityValidation Completed
 ````
 **原因** - 指定した Azure Active Directory (AADDirectoryTenantName) にアカウントがログオンできません。 この例では、*AzureChinaCloud* が *AzureEnvironment* として指定されています。
 
-**解決策** - 指定した Azure 環境に対してアカウントが有効であることを確認します。 PowerShell では、次を実行して、特定の環境に対してアカウントが有効であることを確認します: Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
+**解決策** - 指定した Azure 環境に対してアカウントが有効であることを確認します。 PowerShell で次を実行して、特定の環境に対してアカウントが有効であることを確認します。 Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>アカウントが管理者ではない 
  
 ````PowerShell

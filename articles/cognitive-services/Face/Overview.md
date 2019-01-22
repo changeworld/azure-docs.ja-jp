@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1916aa94dcf7528ce898ef37eac29c1017f03f15
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633463"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231888"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
@@ -75,7 +75,11 @@ Identify API を使用すると、人のデータベースと照らして、検�
 - [Microsoft Face API: Windows クライアント ライブラリとサンプル](https://github.com/Microsoft/Cognitive-Face-Windows) - 顔の検出、分析、識別についていくつかのシナリオを実証する WPF アプリ。
 - [FamilyNotes UWP アプリ](https://github.com/Microsoft/Windows-appsample-familynotes) - 家族でノートを共有するシナリオにおいて、音声、Cortana、インク、カメラと共に顔の識別が使用されるユニバーサル Windows プラットフォーム (UWP) アプリです。
 
+## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
+
+Cognitive Services 全般に言えることですが、Face サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices)を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 クイック スタートに従って、簡単な顔検出のシナリオをコードで実装します。
-- [クイック スタート: .NET SDK と C# を使って画像の中にある顔を検出する](quickstarts/csharp.md) (その他の言語版もあり)
+- [クイック スタート:.NET SDK と C# を使って画像の中にある顔を検出する](quickstarts/csharp.md) (その他の言語版もあり)

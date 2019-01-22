@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b123caebfdba94b8b5e1c7bcf1c8a998d5199fda
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954914"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259752"
 ---
-# <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル: 高可用性 SQL データベースの提供
+# <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル:高可用性 SQL データベースの提供
 
 Azure Stack オペレーターとして、SQL Server データベースをホストするようにサーバー VM を構成できます。 SQL ホスティング サーバーが正常に作成され、Azure Stack によって管理されていると、SQL サービスにサブスクライブしているユーザーは SQL データベースを簡単に作成できます。
 
@@ -141,7 +141,7 @@ SQL Server AlwayOn 可用性グループが作成され、適切に構成され�
 > [!NOTE]
 > この手順は、Azure Stack Operator が Azure Stack 管理ポータルから実行する必要があります。
 
-Azure Stack Operator は、SQL AlwaysOn 可用性グループのロード バランサー リスナーのパブリック IP と SQL 認証ログイン情報を使用し、[SQL AlwaysOn 可用性グループを使用して SQL ホスティング サーバーを作成](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups)することができます。 
+Azure Stack Operator は、SQL AlwaysOn 可用性グループのロード バランサー リスナーのパブリック IP と SQL 認証ログイン情報を使用し、[SQL AlwaysOn 可用性グループを使用して SQL ホスティング サーバーを作成](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups)できるようになりました。 
 
 また、SQL AlwaysOn データベースをユーザーが作成できるようにするプランとオファーが作成してあることも確認してください。 Operator は **Microsoft.SqlAdapter** サービスをプランに追加し、高可用性データベース専用の新しいクォータを作成する必要があります。 プランの作成の詳細については、「[プラン、オファー、クォータ、サブスクリプションの概要](azure-stack-plan-offer-quota-overview.md)」を参照してください。
 

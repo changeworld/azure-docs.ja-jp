@@ -1,22 +1,22 @@
 ---
-title: クイック スタート - Azure CLI と Java を使用して Azure Service Bus との間でメッセージを送受信する | Microsoft Docs
-description: このクイック スタートでは、Azure CLI とサンプルの Java アプリケーションを使用して、Azure Service Bus メッセージを送受信する方法を説明します
+title: クイック スタート - Azure CLI を使用して Service Bus キューを作成する | Microsoft Docs
+description: このクイック スタートでは、Azure CLI を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル Java アプリケーションを使用してキューとの間でメッセージを送受信します。
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 781bca5c3083df9db326e4dc71438c71a7c02bc3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998678"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258326"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート:Azure CLI と Java を使用してメッセージを送受信する
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
 
 Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、複数のアプリケーション、サービス、プロセスの相互分離 (アプリケーションが同時にオンラインになる必要はありません)、状態またはデータの変更の転送、アプリケーション間でのメッセージの送信が含まれます。 
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure portal の右上隅にあるメニューで [Cloud Shell] ボタンをクリックして、**[環境の選択]** ドロップダウンから **[Bash]** を選びます。 
 
-## <a name="use-cli-to-create-resources"></a>CLI を使用してリソースを作成する
+## <a name="use-the-azure-cli-to-create-resources"></a>Azure CLI を使用してリソースを作成する
 
 Cloud Shell の Bash プロンプトから次のコマンドを発行して、Service Bus のリソースをプロビジョニングします。 すべてのプレースホルダーを適切な値に置き換えてください。
 
@@ -266,7 +266,7 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの記述についてさらに詳しく学習するには、Service Bus に関する以下のチュートリアルを続けてください。
 
 > [!div class="nextstepaction"]
-> [CLI と Java を使用してインベントリを更新する](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Azure CLI と Java を使用してインベントリを更新する](./service-bus-tutorial-topics-subscriptions-cli.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

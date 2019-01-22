@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 9efb3c9bae790efed3d09274b1a77d7b8161d479
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9e425662a698f077c3a1b9b3ff1270384fd61374
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165241"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261249"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Azure DevOps Projects の概要
 
@@ -57,7 +57,7 @@ DevOps Projects を使用して、次のようなことができます。
 
 DevOps Projects を使用した後は、Azure portal 上の DevOps Projects ダッシュボードから一元的に、すべてのリソースを削除することもできます。
 
-## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projects と Azure DevOps の統合
+## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projects と Azure DevOps 統合
 
 DevOps Projects では、Azure DevOps の機能が利用されています。 DevOps Projects によって、Azure Pipelines で CI/CD パイプラインをセットアップするために必要なすべての作業が自動化されます。 新規または既存の Azure DevOps 組織に Git リポジトリが作成され、サンプル アプリケーションまたは既存のコードが新しい Git リポジトリにコミットされます。  
 

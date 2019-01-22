@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の動的グループ メンバーシップでユーザーを自動的に追加/削除するチュートリアル
+title: 動的グループ メンバーシップによるユーザーの追加と削除 - チュートリアル - Azure Active Directory
 description: このチュートリアルでは、ユーザー メンバーシップの規則を含んだグループを使って、ユーザーを自動的に追加したり削除したりします。
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209173"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321265"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル: グループ メンバーを自動的に追加/削除する
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 
 Azure Active Directory (Azure AD) では、セキュリティ グループまたは Office 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD はテナント内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * 特定のパートナー企業のゲスト ユーザーが自動的に追加されるグループを作成します。
 > * パートナー固有の機能にゲスト ユーザーがアクセスするためのライセンスをグループに割り当てます。
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * ゲスト ユーザーのグループを作成する
 > * 新しいグループにライセンスを割り当てる

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: C# での Translator Speech API'
+title: クイック スタート:Translator Speech API (C#)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: b873dbd3132e549c529280400d5a9644174232f9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913531"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259024"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート: C# での Translator Speech API 
+# <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート:Translator Speech API (C#) 
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "50913531"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code] (https://code.visualstudio.com/Download) を使用することもできます。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code](https://code.visualstudio.com/Download) を使用することもできます。
 
 下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。
 

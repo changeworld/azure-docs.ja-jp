@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036057"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358560"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル: Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -28,7 +28,7 @@ ms.locfileid: "51036057"
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、[Azure Data Box にデータをコピーして確認する方法](data-box-deploy-copy-data.md)に関するチュートリアルが完了していることを確認してください。
+開始する前に、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
 
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
@@ -37,9 +37,7 @@ ms.locfileid: "51036057"
 
     デバイスをヨーロッパで配送する場合、電子インク ディスプレイは配送先住所ラベルを表示しません。 代わりに、先積み配送先住所ラベルの下のクリアポーチ内に返送用配送先住所ラベルがあります。 古い配送先住所ラベルを取り除き、配送先住所ラベルがはっきり見えることを確認してください。
     
-3. 米国内でデバイスを返送する場合は、UPS での集荷をスケジュールします。 ヨーロッパで DHL を使ってデバイスを返送する場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定して、DHL に集荷を依頼します。 該当する国の DHL Express の Web サイトにアクセスし、**[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** を選択します。 
-
-    貨物運送状番号を指定し、**[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。
+3. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷をスケジュールするには、地域の UPS (国固有のフリー ダイヤル番号) に電話するか、最寄りのドロップオフ拠点に Data Box を持ち込みます。
 
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867900"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303323"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
@@ -78,7 +78,7 @@ Azure には、オブジェクト内のデータへのアクセスを許可で�
 
 ### <a name="scope"></a>Scope (スコープ)
 
-"*スコープ*" は、アクセスが適用される境界です。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
+"*スコープ*" は、アクセスが適用されるリソースのセットです。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
 Azure では、複数のレベル ([管理グループ](../azure-resource-manager/management-groups-overview.md)、サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。
 
@@ -99,6 +99,12 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 ![アクセスを制御するためのロールの割り当て](./media/overview/rbac-overview.png)
 
 ロールの割り当ては、Azure portal、Azure CLI、Azure PowerShell、Azure SDK、または REST API を使用して作成できます。 各サブスクリプションには、最大 2,000 個のロールの割り当てを保持できます。 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス許可が必要です。 このアクセス許可は、[所有者](built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロールを通じて許可されます。
+
+## <a name="multiple-role-assignments"></a>複数のロールの割り当て
+
+複数のロールの割り当てが重複しているとどうなるでしょうか。 RBAC は加算方式のモデルであるため、ロール割り当てを足し算した結果が有効なアクセス許可になります。 ここで、ユーザーにサブスクリプション スコープの共同作成者ロールとリソース グループの閲覧者ロールが付与されている例を考えてみましょう。 共同作成者アクセス許可と閲覧者アクセス許可を足すと、事実上、リソース グループに対する共同作成者ロールになります。 そのため、この場合、閲覧者ロールの割り当ては効果がありません。
+
+![複数のロールの割り当て](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>拒否割り当て
 
@@ -126,7 +132,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイック スタート: RBAC と Azure portal を使用してユーザーにアクセス権を付与する](quickstart-assign-role-user-portal.md)
+- [クイック スタート:RBAC と Azure portal を使用してユーザーにアクセス権を付与する](quickstart-assign-role-user-portal.md)
 - [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
 - [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

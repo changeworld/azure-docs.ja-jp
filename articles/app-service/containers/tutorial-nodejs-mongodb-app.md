@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44f5ea606efafbb310e4740d75cbf86b7069e7ca
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722517"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359563"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB のアプリを構築する
 
@@ -28,14 +28,14 @@ ms.locfileid: "53722517"
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure での Node.js と MongoDB のアプリの構築](../app-service-web-tutorial-nodejs-mongodb-app.md)に関するページを参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Node.js アプリを作成して MongoDB データベースにローカルで接続し、Azure Cosmos DB for MongoDB API データベースとしてデプロイする方法を示します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が App Service on Linux で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](https://meanjs.org/)を使用します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Node.js アプリを作成して MongoDB データベースにローカルで接続し、Azure Cosmos DB の MongoDB 用 API でデータベースにデプロイする方法を示します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が App Service on Linux で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](https://meanjs.org/)を使用します。
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Cosmos DB for MongoDB API を使用してアカウントを作成する
+> * Azure Cosmos DB の MongoDB 用 API を使用してデータベースを作成する
 > * Node.js アプリを MongoDB に接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
@@ -121,7 +121,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ## <a name="create-production-mongodb"></a>運用 MongoDB を作成する
 
-この手順では、MongoDB API を使用して構成された Cosmos データベースを Azure に作成します。 アプリを Azure にデプロイすると、このクラウド データベースがアプリで使用されます。
+この手順では、Azure Cosmos DB の MongoDB 用 API を使用してデータベース アカウントを作成します。 アプリを Azure にデプロイすると、このクラウド データベースがアプリで使用されます。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -157,7 +157,7 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
 }
 ```
 
-## <a name="connect-app-to-production-cosmos-db-configured-with-mongodb-api"></a>MongoDB API を使用して構成された運用 Cosmos DB にアプリを接続する
+## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して構成されたアプリを運用データベースに接続する
 
 この手順では、MongoDB 接続文字列を使用して、MEAN.js サンプル アプリケーションを、先ほど作成した Cosmos DB データベースに接続します。
 
@@ -317,7 +317,7 @@ http://<app_name>.azurewebsites.net
 
 上部のメニューの **[サインアップ]** をクリックし、ダミー ユーザーを作成します。
 
-操作が成功し、作成されたユーザーにアプリが自動的にサインインすれば、Azure の MEAN.js アプリは Azure Cosmos DB for MongoDB API に接続されています。
+操作が成功し、作成されたユーザーにアプリが自動的にサインインすれば、Azure の MEAN.js アプリは Azure Cosmos DB の MongoDB 用 API に接続されています。
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -459,7 +459,7 @@ git push azure master
 
 ![Azure アプリへのポータル ナビゲーション](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
-既定では、ポータルはアプリの **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 
@@ -472,14 +472,14 @@ git push azure master
 ここで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Cosmos DB for MongoDB API を使用してアカウントを作成する
+> * Azure Cosmos DB の MongoDB 用 API を使用してデータベースを作成する
 > * Node.js アプリをデータベースに接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)

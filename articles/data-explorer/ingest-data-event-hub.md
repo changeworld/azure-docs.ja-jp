@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064697"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352937"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -189,7 +189,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
+    > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

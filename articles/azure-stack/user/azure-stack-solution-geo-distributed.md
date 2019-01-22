@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: anajod
+ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714850"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305317"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用して地理的に分散されたアプリ ソリューションを作成する
 
@@ -93,7 +93,7 @@ Azure サブスクリプションと Azure Stack のインストールが必要�
 
 ### <a name="obtain-a-custom-domain-and-configure-dns"></a>カスタム ドメインを取得し DNS を構成する
 
-Web アプリ作成用の DNS ゾーン ファイルを更新し、ドメインを発行します。 Azure AD は続いて、カスタム ドメイン名の所有権を確認できます。 Azure 内の Azure/Office 365/外部 DNS レコードに [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) を使用するか、または[別の DNS レジストラー](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)で DNS エントリを追加します。
+ドメインの DNS ゾーン ファイルを更新します。 Azure AD は続いて、カスタム ドメイン名の所有権を確認できます。 Azure 内の Azure/Office 365/外部 DNS レコードに [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) を使用するか、または[別の DNS レジストラー](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)で DNS エントリを追加します。
 
 1. パブリック レジストラーでカスタム ドメインを登録します。
 
@@ -106,7 +106,7 @@ Web アプリ作成用の DNS ゾーン ファイルを更新し、ドメイン�
 ハイブリッド CI/CD を設定して、Web アプリを Azure および Azure Stack にデプロイし、両方のクラウドに変更を自動プッシュします。
 
 > [!Note]  
-> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](/articles/azure-stack/azure-stack-app-service-before-you-get-started)」の Azure Stack オペレーター用セクションを参照してください。
+> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 Azure Stack オペレーター向けの App Service ドキュメントの「[App Service on Azure Stack を開始する前に](../azure-stack-app-service-before-you-get-started.md)」セクションを参照してください。
 
 #### <a name="add-code-to-azure-repos"></a>Azure Repos にコードを追加する
 
@@ -122,7 +122,7 @@ Web アプリ作成用の DNS ゾーン ファイルを更新し、ドメイン�
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>両方のクラウドで Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集します。Runtimeidentifier を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
+1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -273,7 +273,7 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 
 -   Azure AD から提供された DNS エントリを追加して、ドメインの DNS ゾーン ファイルを更新します。
 
-たとえば、DNS エントリ fornorthwindcloud.comand www.northwindcloud.com を追加するには、thenorthwindcloud.com ルート ドメインの DNS 設定を構成します。
+たとえば、northwindcloud.com と www.northwindcloud.com の DNS エントリを追加するには、northwindcloud.com ルート ドメインの DNS 設定を構成します。
 
 > [!Note]  
 >  ドメイン名は [Microsoft Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain) を使用して購入できます。  
@@ -302,7 +302,7 @@ DNS レコード ページは、**[My domains] (マイ ドメイン)** で表示
 
 2.  CNAME レコードを追加して、サブドメインをアプリの既定のホスト名にマップします。
 
-  www.northwindcloud.comdomain の例では、namewwwto<app\_name>.azurewebsites.net をマップする CNAME レコードを追加します。
+  www.northwindcloud.com ドメインの例では、名前を <app\_name>.azurewebsites.net にマップする CNAME レコードを追加します。
 
 CNAME を追加した後の DNS レコード ページは次の例のようになります。
 

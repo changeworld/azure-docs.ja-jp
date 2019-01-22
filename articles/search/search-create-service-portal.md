@@ -9,22 +9,22 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002639"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230528"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロン リソースです。 Azure Search は他の多くの Azure サービスと簡単に統合されますが、単独で、またはネットワーク サーバーにホストされているアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。 
+Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Search は他の Azure サービスと簡単に統合できますが、単独で、またはネットワーク サーバー上のアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。 
 
 この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Search リソースを作成する方法を説明します。 
 
 ![ポータル上の Azure Search リソース](media/search-create-service-portal/azure-search-resource-label.png)
 
-PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、背景について「[PowerShell を使用して Azure Search サービスを管理する](search-manage-powershell.md)」を参照してください。
+PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、[PowerShell を使用して Azure Search サービスを管理する方法](search-manage-powershell.md)に関するページを参照してください。
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -120,4 +120,4 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 Azure Search サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: ポータル内でのデータのインポート、インデックス作成、クエリの実行](search-get-started-portal.md)
+> [チュートリアル:ポータル内でのデータのインポート、インデックス作成、クエリの実行](search-get-started-portal.md)

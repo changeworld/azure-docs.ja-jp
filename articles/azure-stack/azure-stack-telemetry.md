@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 6b73cf04d768381bcc0e27cc76b6c2a25d4d9a2c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341057"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265619"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack のテレメトリは、接続ユーザー エクスペリエンスを介してシステム データを自動的に Microsoft にアップロードします。 Microsoft のチームは、Azure Stack のテレメトリが収集したそのデータを使用して、カスタマー エクスペリエンスの向上を図ります。 また、このデータはセキュリティ、正常性、品質、パフォーマンスの解析にも使用されます。
 
@@ -112,7 +112,7 @@ Azure Stack をデプロイする前に、Windows レジストリ エディタ�
 開発キットのホストに Azure Stack をデプロイする前に、CloudBuilder.vhdx で起動し、管理者特権の PowerShell ウィンドウで次のスクリプトを実行します。
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

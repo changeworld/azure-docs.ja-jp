@@ -6,14 +6,14 @@ author: jamesbak
 ms.service: storage
 ms.author: jamesbak
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 6b2812e31174c4e5d61ae9941563e39357de9522
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e4e75c65178c4bbedcf781c2fbf2149a94a702cd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107091"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321196"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -43,6 +43,30 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 * [U-SQL の例と問題追跡](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)のリポジトリから **small_radio_json.json** をダウンロードし、ファイルを保存したパスをメモしておきます。
 * [Azure Portal](https://portal.azure.com/) にサインインします。
 
+## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
+
+お客様のストレージ アカウントの名前とファイル システムのエンドポイント URI が必要です。
+
+Azure portal でお客様のストレージ アカウントの名前を取得するには、**[すべてのサービス]** を選択し、「*ストレージ*」という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
+
+ファイル システムのエンドポイント URI を取得するには、**[プロパティ]** を選択し、プロパティ ウィンドウで **[プライマリ ADLS ファイル システムのエンドポイント]** フィールドの値を見つけます。
+
+これらの両方の値をテキスト ファイルに貼り付けます。 これらはすぐに必要になります。
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+
+こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+
+:heavy_check_mark:記事の「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)」セクションの手順を実行するとき、**[作成]** ダイアログ ボックスの **[サインオン URL]** フィールドを、先ほど収集したエンドポイント URI に必ず設定してください。
+
+:heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
+
+:heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+
 ## <a name="create-the-workspace"></a>ワークスペースを作成する
 
 このセクションでは、Azure portal を使用して Azure Databricks ワークスペースを作成します。
@@ -53,11 +77,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
-    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
+    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国西部 2]** を選択します。        |
     |**価格レベル**     |  **[Standard]** を選択します。     |
 
@@ -101,35 +125,36 @@ Data Lake Storage Gen2 ストレージ アカウントにデータを格納す�
 
 1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks ワークスペースに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
-1. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、**[作成]** > **[ノートブック]** の順に選択します。
+2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、**[作成]** > **[ノートブック]** の順に選択します。
 
     ![Databricks でノートブックを作成する](./media/data-lake-storage-handle-data-using-databricks/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
-1. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Scala]** を選んで、前に作成した Spark クラスターを選びます。
+3. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Scala]** を選んで、前に作成した Spark クラスターを選びます。
 
     ![Databricks でノートブックの詳細情報を入力する](./media/data-lake-storage-handle-data-using-databricks/databricks-notebook-details.png "Databricks でノートブックの詳細情報を入力する")
 
     **作成**を選択します。
 
-1. 次のコードをノートブックの最初のセルに入力し、そのコードを実行します。 サンプル内のブラケットで囲まれているプレースホルダーは、実際の値に置き換えてください。
+4. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
     ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
+    val configs = Map(
+    "fs.azure.account.auth.type" -> "OAuth",
+    "fs.azure.account.oauth.provider.type" -> "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+    "fs.azure.account.oauth2.client.id" -> "<application-id>",
+    "fs.azure.account.oauth2.client.secret" -> "<authentication-key>"),
+    "fs.azure.account.oauth2.client.endpoint" -> "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+    "fs.azure.createRemoteFileSystemDuringInitialization"->"true")
 
     dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<directory-name>",
+    mountPoint = "/mnt/<mount-name>",
+    extraConfigs = configs)
     ```
 
-1. Shift + Enter キーを押してコードを実行します。
+5. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウント構成を確保する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。 `file-system-name`、`directory-name`、および `mount-name` のプレースホルダーの値を、ファイル システム、ディレクトリ、およびマウント ポイントに付ける任意の名前に設定します。
 
-これで、ストレージ アカウントのファイル システムが作成されます。
+6. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
 ## <a name="upload-the-sample-data"></a>サンプル データのアップロード
 

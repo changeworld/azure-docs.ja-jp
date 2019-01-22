@@ -3,19 +3,19 @@ title: Azure Application Insights でカスタム ダッシュボードを作成
 description: Azure Application Insights を使ってカスタム KPI ダッシュボードを作成するチュートリアルです。
 keywords: ''
 services: application-insights
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 09/20/2017
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 01/11/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: e008a53ce71a55b344dfc3a76bdb4ae39b954c46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104881"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318425"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -42,90 +42,68 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
 単一のダッシュボードには、複数のアプリケーション、リソース グループ、サブスクリプションからのリソースを含めることができます。  お使いのアプリケーションの新しいダッシュボードを作成して、チュートリアルを開始します。  
 
-2.  ポータルのメイン画面で、**新しいダッシュボード**を選びます。
+2.  ダッシュボード ウィンドウで、**[新しいダッシュボード]** を選択します。
 
-    ![新しいダッシュボード](media/tutorial-app-dashboards/new-dashboard.png)
+    ![新しいダッシュボード](media/tutorial-app-dashboards/1newdashboard.png)
 
 3. ダッシュボードの名前を入力します。
 4. ダッシュボードに追加できるさまざまなタイルを**タイル ギャラリー**で確認します。  ギャラリーからタイルを追加するだけでなく、グラフおよびその他のビューを、Application Insights からダッシュボードに直接ピン留めできます。
 5. **マークダウン** タイルを見つけて、ダッシュボードにドラッグします。  このタイルには、お使いのダッシュボードへのわかりやすいテキストの追加に最適な、マークダウン記法のテキストを追加できます。
 6. タイルのプロパティにテキストを追加し、ダッシュボード キャンバス上でサイズを変更します。
     
-    ![マークダウン タイルを編集する](media/tutorial-app-dashboards/edit-markdown.png)
+    ![マークダウン タイルを編集する](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. 画面上部にある **[カスタマイズ完了]** をクリックしてタイルのカスタマイズ モードを終了し、その後 **[変更の発行]** をクリックして変更を保存します。
-
-    ![マークダウン タイルを配置したダッシュボード](media/tutorial-app-dashboards/dashboard-01.png)
-
+6. 画面上部にある **[カスタマイズ完了]** をクリックして、タイルのカスタマイズ モードを終了します。
 
 ## <a name="add-health-overview"></a>正常性の概要を追加する
 静的テキストだけのダッシュボードでは味気ないため、ここで Application Insights からタイルを追加して、お使いのアプリケーションの情報を表示させましょう。  Application Insights タイルはタイル ギャラリーから追加するか、Application Insights 画面から直接ピン留めできます。  これにより、既に使い慣れているグラフやビューを、ご自分のダッシュボードにピン留めする前に構成できます。  まず、お使いのアプリケーションの標準的な正常性の概要を追加します。  これには構成が不要で、ダッシュボードのカスタマイズを最小限に抑えられます。
 
 
-1. Azure メニューで **[Application Insights]** を選び、その後お使いのアプリケーションを選びます。
-2. **概要タイムライン**でコンテキスト メニューを選び、**[ダッシュボードにピン留めする]** をクリックします。  これで、表示されていた最後のダッシュボードにタイルを追加します。  
+1. ホーム画面で対象の **Application Insights** リソースを選択します。
+2. **[概要]** ウィンドウで、押しピン アイコンをクリックして、最後に表示していたダッシュボードにタイルを追加します。  
 
-    ![概要タイムラインをピン留めする](media/tutorial-app-dashboards/pin-overview-timeline.png)
+    ![概要タイムラインをピン留めする](media/tutorial-app-dashboards/3overview.png)
  
-3. 画面のトップで **[ダッシュボードの表示]** をクリックしてダッシュボードに戻ります。
-4. これで概要タイムラインがダッシュボードに追加されました。  これをクリックして適切な位置にドラッグし、その後 **[カスタマイズ完了]** と **[変更の発行]** をクリックします。  これで、有用な情報が表示されたタイルをダッシュボードで確認できるようになりました。
+3. タイルがダッシュボードにピン留めされたことを示す通知が右上に表示されます。 通知内の **[ダッシュボードにピン留めしました]** をクリックしてダッシュボードに戻るか、ダッシュボード ウィンドウを使用します。
+4. これで、タイルがダッシュボードに追加されます。 タイルの位置を変更するには、**[編集]** を選択します。 タイルをクリックして目的の位置にドラッグした後、**[カスタマイズ完了]** をクリックします。 これで、有用な情報が表示されたタイルをダッシュボードで確認できるようになりました。
 
-    ![概要タイムラインが表示されたダッシュボード](media/tutorial-app-dashboards/dashboard-02.png)
+    ![概要タイムラインが表示されたダッシュボード](media/tutorial-app-dashboards/4dashboard-edit.png)
 
 
 
 ## <a name="add-custom-metric-chart"></a>カスタム メトリック グラフを追加する
 **[メトリック]** パネルでは、オプションのフィルターおよびグループ化によって、時間の経過と共に Application Insights によって収集されるメトリックをグラフ化できます。  Application Insights のその他すべてのものと同じように、ダッシュボードにこのグラフを追加できます。  これにはまず、少しのカスタマイズが必要です。
 
-1. Azure メニューで **[Application Insights]** を選び、その後お使いのアプリケーションを選びます。
+1. ホーム画面で対象の **Application Insights** リソースを選択します。
 1. **[メトリック]** を選びます。  
 2. 空のグラフが既に作成されており、メトリックを追加するように求められます。  グラフにメトリックを追加し、必要に応じてフィルターやグループ化を追加します。  次の例には、成功したかどうかでグループ化したサーバー要求の数が表示されています。  成功または失敗した要求を、実行中のビューで確認できます。
 
-    ![メトリックを追加する](media/tutorial-app-dashboards/metrics-chart.png)
+    ![メトリックを追加する](media/tutorial-app-dashboards/5sumserverrequests.png)
 
-4. グラフのコンテキスト メニューを選び、**[ダッシュボードにピン留めする]** を選びます。  表示していた最後のダッシュボードにビューが追加されます。
+4. 右側の **[ダッシュボードにピン留めする]** を選択します。 表示していた最後のダッシュボードにビューが追加されます。
 
-    ![メトリック グラフをピン留めする](media/tutorial-app-dashboards/pin-metrics-chart.png)
+    ![メトリック グラフをピン留めする](media/tutorial-app-dashboards/6sumserverrequests-pin.png)
 
-3. 画面のトップで **[ダッシュボードの表示]** をクリックしてダッシュボードに戻ります。
+3.  タイルがダッシュボードにピン留めされたことを示す通知が右上に表示されます。 通知内の **[ダッシュボードにピン留めしました]** をクリックしてダッシュボードに戻るか、ダッシュボード ブレードを使用します。
 
-4. これで、タイムライン メトリック グラフがダッシュボードに追加されました。 これをクリックして適切な位置にドラッグし、**[カスタマイズ完了]**、**[変更の発行]** の順にクリックします。 
+4. これで、タイルがダッシュボードに追加されます。 タイルの位置を変更するには、**[編集]** を選択します。 タイルをクリックして目的の位置にドラッグした後、**[カスタマイズ完了]** をクリックします。
 
-    ![メトリックが表示されたダッシュボード](media/tutorial-app-dashboards/dashboard-03.png)
-
-
-## <a name="metrics-explorer"></a>メトリックス エクスプローラー
-**メトリックス エクスプローラー**はメトリックに似ていますが、ダッシュボードに追加すると非常に多くのカスタマイズが可能になります。  メトリックをグラフ化するのにどれを使うかは、特定の基本設定や要件によって異なります。
-
-1. Azure メニューで **[Application Insights]** を選び、その後お使いのアプリケーションを選びます。
-1. **[メトリックス エクスプローラー]** を選びます。 
-2. クリックしてグラフを編集し、1 つ以上のメトリックと、必要に応じて詳細な構成を選びます。  次の例は、平均応答時間を追跡した折れ線グラフを示しています。
-3. 上部右にあるピン アイコンをクリックしてダッシュボードにグラフを追加し、適切な位置にドラッグします。
-
-    ![メトリックス エクスプローラー](media/tutorial-app-dashboards/metrics-explorer.png)
-
-4. メトリックス エクスプローラーのタイルを 1 度ダッシュボードに追加すれば、より多くのカスタマイズができます。  タイルを右クリックして **[タイﾄルの編集]** を選び、カスタム タイトルを追加します。  必要に応じて、さらにその他のカスタマイズを行います。
-
-    ![メトリックス エクスプローラーつきのダッシュボード](media/tutorial-app-dashboards/dashboard-04a.png)
-
-5. これでメトリックス エクスプローラー のグラフがダッシュボードに追加されました。
-
-    ![メトリックス エクスプローラーつきのダッシュボード](media/tutorial-app-dashboards/dashboard-04.png)
+    ![メトリックが表示されたダッシュボード](media/tutorial-app-dashboards/7dashboard-edit2.png)
 
 ## <a name="add-analytics-query"></a>Analytics クエリの追加
 Azure Application Insights の Analytics は、Application Insights によって収集されたすべてのデータを分析できる、高度なクエリ言語を備えています。  グラフやその他のビューと同じように、ダッシュボードに Analytics クエリの出力を追加できます。   
 
-Azure Application Insights の Analytics は独立したサービスであるため、 ダッシュボードを共有して Analytics クエリを含める必要があります。  Azure のダッシュボードを共有する場合は、他のユーザーやリソースが利用できる Azure リソースとして発行します。  
+Azure Application Insights の Analytics は独立したサービスであるため、 ダッシュボードを共有して Analytics クエリを含める必要があります。 Azure のダッシュボードを共有する場合は、他のユーザーやリソースが利用できる Azure リソースとして発行します。  
 
 1. ダッシュボード画面のトップで、**[共有]** をクリックします。
 
-    ![ダッシュボードの発行](media/tutorial-app-dashboards/publish-dashboard.png)
+    ![ダッシュボードの発行](media/tutorial-app-dashboards/8dashboard-share.png)
 
 2. **ダッシュボード名**を同じ名前にして、**サブスクリプション名**を選び、ダッシュボードを共有します。  **[発行]** をクリックします。  これで、ほかのサービスとサブスクリプションでダッシュボードを利用できるようになりました。  必要に応じて、ダッシュボードにアクセス権を持つ特定のユーザーを定義できます。
-1. Azure メニューで **[Application Insights]** を選び、その後お使いのアプリケーションを選びます。
+1. ホーム画面で対象の **Application Insights** リソースを選択します。
 2. 画面トップにある **[分析]** をクリックして Analytics ポータルを開きます。
 
-    ![Analytics を開始する](media/tutorial-app-dashboards/start-analytics.png)
+    ![Analytics を開始する](media/tutorial-app-dashboards/9analytics.png)
 
 3. 次のクエリを入力すると、最も多く要求された上位 10 ページと要求の数を返します。
 
@@ -136,10 +114,10 @@ Azure Application Insights の Analytics は独立したサービスであるた
     | take 10 
     ```
 
-4. **[移動]** をクリックしてして、クエリの結果を検証します。
-5. ピン アイコンをクリックして、ダッシュボードの名前を選択します。  最後のダッシュボードが使用された以前の手順とは異なり、このオプションでダッシュボードを選ぶ理由は、Analytics コンソールが独立したサービスであり、使用可能なすべての共有ダッシュボードから選ぶ必要があるためです。
+4. クエリの結果を検証するために、**[実行]** をクリックします。
+5. ピン アイコンをクリックして、ダッシュボードの名前を選択します。 最後のダッシュボードが使用された以前の手順とは異なり、このオプションでダッシュボードを選ぶ理由は、Analytics コンソールが独立したサービスであり、使用可能なすべての共有ダッシュボードから選ぶ必要があるためです。
 
-    ![Analytics クエリをピン留めする](media/tutorial-app-dashboards/analytics-pin.png)
+    ![Analytics クエリをピン留めする](media/tutorial-app-dashboards/10query.png)
 
 5. ダッシュボードに戻る前に別のクエリを追加しますが、今回はグラフとしてレンダリングして、ダッシュボードで Analytics クエリを視覚化するさまざまな方法が表示されるようにします。  次のクエリで開始します。このクエリでは、上位 10 個の操作をまとめて、ほとんどは除外しています。
 
@@ -152,15 +130,15 @@ Azure Application Insights の Analytics は独立したサービスであるた
 
 6. **[グラフ]** を選び、その後 **[ドーナツ]** に変更して出力を視覚化します。
 
-    ![Analytics グラフ](media/tutorial-app-dashboards/analytics-chart.png)
+    ![Analytics グラフ](media/tutorial-app-dashboards/11querychart.png)
 
 6. ピン アイコンをクリックしてグラフをダッシュボードにピン留めし、今回はリンクを選んでダッシュボードに戻ります。
-4. 選択されたフォーマットで、クエリの結果がダッシュボードに追加されました。  クリックしてそれぞれを適切な位置にドラッグし、**[編集完了]** をクリックします。
-5. 各タイルを右クリックして **[タイトルの編集]** を選び、わかりやすいタイトルをつけます。
+4. 選択されたフォーマットで、クエリの結果がダッシュボードに追加されました。  それぞれをクリックして適切な位置にドラッグし、**[カスタマイズ完了]** をクリックします。
+5. それぞれの結果にわかりやすいタイトルを付けるには、各タイトルの上にある鉛筆アイコンを選択します。
 
-    ![Analytics が表示されたダッシュボード](media/tutorial-app-dashboards/dashboard-05.png)
+    ![Analytics が表示されたダッシュボード](media/tutorial-app-dashboards/12edit-title.png)
 
-5. **[変更の発行]** をクリックして、Application Insights のさまざまなグラフや視覚エフェクトを含んだダッシュボードに変更をコミットします。
+5. **[共有]** を選択して、変更をダッシュボードに再発行します。これで、ダッシュボードに Application Insights のさまざまなグラフや視覚エフェクトが含まれます。
 
 
 ## <a name="next-steps"></a>次の手順

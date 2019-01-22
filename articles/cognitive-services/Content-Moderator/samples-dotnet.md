@@ -1,22 +1,22 @@
 ---
 title: コード サンプル - Content Moderator (.NET)
-description: アプリケーションで Content Moderator を使用する
+description: .NET アプリケーションから SDK を通じて Content Moderator を使用します。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: sample
-ms.date: 01/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c5465a2de0924037eb93b9de652e93e85f166737
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6911b9b718edfc84a7c219be448dee06f4a0f835
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223153"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259192"
 ---
-# <a name="net-sdk-samples"></a>.NET SDK のサンプル
+# <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK サンプル
 
 次のリストは、Azure Content Moderator for .NET を使用してビルドされたコード サンプルへのリンクです。
 
@@ -35,7 +35,7 @@ ms.locfileid: "47223153"
 - **カスタム用語**: [カスタム用語のリストを使用してモデレートします](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs)。 [クイック スタート](term-lists-quickstart-dotnet.md)のページを参照してください。
 
 > [!NOTE]
-> 上限は**用語のリストが 5 つ**で、各リストでは**用語が 10,000 個を超えてはいけません**。
+> 上限は**用語の一覧が 5 つ**で、各一覧では**用語が 10,000 個を超えてはいけません**。
 >
 
 - **ビデオのモデレート**: [成人向けのきわどいコンテンツのビデオをスキャンし、結果を取得します](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoModeration/Program.cs)。 [クイック スタート](video-moderation-api.md)のページを参照してください。

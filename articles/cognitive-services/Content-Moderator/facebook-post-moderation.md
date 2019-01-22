@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Facebook コンテンツのモデレーション - Azure Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Content Moderator を使用して Facebook ページをモデレートします。
+description: このチュートリアルでは、機械学習ベースの Content Moderator を使用して Facebook の投稿とコメントをモデレートする方法について説明します。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 09/18/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 085ddaf757f2a11b4db4aadb22ad16009d29231e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255433"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260447"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>チュートリアル:Content Moderator による Facebook コンテンツのモデレーション
 
@@ -35,7 +35,7 @@ ms.locfileid: "53255433"
 
 ## <a name="create-a-content-moderator-team"></a>Content Moderator チームを作成する
 
-Content Moderator にサインアップしてチームを作成する方法については、[クイック スタート](quick-start.md)のページを参照してください。
+Content Moderator にサインアップしてチームを作成する方法については、「[Content Moderator の概要](quick-start.md)」のクイック スタートを参照してください。
 
 ## <a name="configure-image-moderation-workflow-threshold"></a>画像モデレーション ワークフロー (しきい値) を構成する
 
@@ -152,10 +152,6 @@ Content Moderator にサインアップしてチームを作成する方法に�
 ## <a name="license"></a>ライセンス
 
 すべての Microsoft Cognitive Services SDK およびサンプルには、MIT ライセンスがあります。 詳細については、[ライセンス](https://microsoft.mit-license.org/)に関するページを参照してください。
-
-## <a name="developer-code-of-conduct"></a>開発者の倫理規定
-
-このクライアント ライブラリとサンプルを含め、Cognitive Services を使用する開発者は、「Developer Code of Conduct for Microsoft Cognitive Services」(Microsoft Cognitive Services の開発者の倫理規定) (http://go.microsoft.com/fwlink/?LinkId=698895) に従うものとします。
 
 ## <a name="next-steps"></a>次の手順
 

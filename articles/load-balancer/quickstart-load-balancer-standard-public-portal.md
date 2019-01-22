@@ -1,10 +1,11 @@
 ---
-title: 'クイック スタート: Standard Load Balancer を作成する - Azure Portal | Microsoft Docs'
+title: 'クイック スタート: Standard Load Balancer を作成する - Azure Portal'
+titlesuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure Portal を使用して Standard Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
@@ -17,14 +18,14 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615229"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232670"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
 負荷分散では、着信要求を複数の仮想マシンに分散させることで、より高いレベルの可用性とスケールを実現します。 Azure Portal を使用して、仮想マシン (VM) の負荷分散を行うロード バランサーを作成できます。 このクイック スタートでは、Standard Load Balancer を使用して VM に負荷分散する方法を示します。
 
@@ -49,7 +50,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
     | パブリック IP アドレス | **[新規作成]** を選択して、テキスト ボックスに「*myPublicIP*」と入力します。 既定では、パブリック IP アドレスの Standard SKU が選択されます。 **[可用性ゾーン]** で、**[ゾーン冗長]** を選択します。 |
     | サブスクリプション               | サブスクリプションを選択します。    |
     |リソース グループ | **[新規作成]** を選択して、「*myResourceGroupSLB*」と入力します。    |
-    | Location           | **[西ヨーロッパ]** を選択します。                          |
+    | 場所           | **[西ヨーロッパ]** を選択します。                          |
     
 
 ![ロード バランサーの作成](./media/load-balancer-standard-public-portal/create-load-balancer.png)

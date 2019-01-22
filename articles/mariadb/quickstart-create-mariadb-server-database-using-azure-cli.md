@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190340"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359325"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -59,10 +59,10 @@ version | **10.2** | MariaDB メジャー エンジンのバージョン。
 admin-user | **myadmin** | 管理者ログインのユーザー名。 **admin-user** パラメーターに **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
 admin-password | *<お使いのパスワード>* | 管理者ユーザーのパスワード。 パスワードは 8 から 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 
-**sku-name** パラメーターの値は、次の例のように、*<価格レベル>*\_*<コンピューティング世代>*\_*<仮想コア数>* という規則に従います。
-+ `--sku-name B_Gen5_4` は、Basic 価格レベル、Gen 5 コンピューティング世代、4 仮想コアに対応します。
-+ `--sku-name GP_Gen5_32` は、汎用価格レベル、Gen 5 コンピューティング世代、32 仮想コアに対応します。
-+ `--sku-name MO_Gen5_2` は、メモリ最適化価格レベル、Gen 5 コンピューティング世代、2 仮想コアに対応します。
+sku-name パラメーターの値は、次の例のように、{価格レベル}\_{コンピューティング世代}\_{仮想コア数} という規約に従います。
++ `--sku-name B_Gen5_1` は、"Basic、Gen 5、および 1 個の仮想コア" にマップされます。 このオプションは、利用できる最小の SKU です。
++ `--sku-name GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
++ `--sku-name MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
 
 リージョンおよびレベルごとの有効な値については、[価格レベル](./concepts-pricing-tiers.md)に関するページを参照してください。
 

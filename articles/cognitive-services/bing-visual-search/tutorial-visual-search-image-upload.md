@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 23e6d044a1c08fb585e01d61a97deaf87e24cbb9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: aa221569cec6df298db4a90560ac7ea0992dd120
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743104"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318730"
 ---
 # <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
 
@@ -628,7 +628,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="products-insights"></a>Products 分析情報
 
-`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返されるショッピング結果のリンクが作成されます。
+`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返される製品の結果のリンクが作成されます。
 
 ```javascript
 
@@ -773,4 +773,4 @@ function addDivContent(div, tag, json) {
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル: ImageInsightsToken を使って以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)。
+* [チュートリアル:ImageInsightsToken を使って以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)。

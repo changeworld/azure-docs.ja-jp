@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 860294ebc7fbadd3eeefc4298ec740ca7f704587
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2b114a4aed812a91a9f6c4ed43f57411e47ea677
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714396"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260030"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>クイック スタート: Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>クイック スタート:Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
 このクイック スタートでは、Web アプリを使って Key Vault にシークレットを格納する方法とシークレットを取得する方法について説明します。 シークレット値を確認するには、Azure でこれを実行する必要があります。 クイック スタートでは、Node.js と Azure リソースのマネージド ID を使用します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "44714396"
 先に進む前に、[基本的な概念](key-vault-whatis.md#basic-concepts)を理解しておいてください。
 
 >[!NOTE]
-下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される[ Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) アプリケーションでは、Azure によって自動で管理される ID が付与されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
+下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) アプリケーションでは、Azure によって自動で管理される ID が付与されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
 
 ## <a name="prerequisites"></a>前提条件
 

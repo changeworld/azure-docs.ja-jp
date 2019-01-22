@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 5e8e675b32bfd4c741b82b1ab341a80adbb0529d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741642"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242949"
 ---
 # <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
 
@@ -27,7 +27,7 @@ Custom Vision サービスでは、画像の分類に機械学習アルゴリズ
 
 ### <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
 
-Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、各画像に分類の分布を割り当てます。 **オブジェクトの検出**では、同様のことを行いますが、適用されたタグを見つけることができる画像内の座標も返されます。
+Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、各画像に分類の分布を割り当てます。 多クラス (画像ごとのタグ数が 1 つ) とマルチラベル (画像ごとのタグ数が任意) の両方の分類モデルがサポートされます。 **オブジェクトの検出**では、マルチラベル分類と同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
 
 ### <a name="optimization"></a>最適化
 
@@ -39,6 +39,10 @@ Custom Vision の機能は、2 つに分割できます。 **画像の分類**�
 Custom Vision Service は、[Custom Vision ホーム ページ](https://customvision.ai/)の Web ベースのインターフェイスを通じて利用するだけでなく、ネイティブ SDK のセットとしても利用できます。 いずれかのインターフェイス、または両方のインターフェイスを使用して、モデルの作成、テスト、およびトレーニングを行うことができます。
 
 ![Chrome ブラウザー ウィンドウでの Custom Vision ホーム ページ](media/browser-home.png)
+
+## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
+
+Cognitive Services 全般に言えることですが、Custom Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

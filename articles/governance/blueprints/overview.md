@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967693"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246247"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -48,7 +48,7 @@ Resource Manager テンプレートとブループリントのどちらかを選
 
 ブループリントにポリシーを含めると、ブループリントの割り当て時に適切なパターンやデザインを作成できます。 このポリシー追加により、承認済みまたは予想されている変更しか環境に対して行えないことが保証され、ブループリントの意図に対する継続的なコンプライアンスが確保されます。
 
-ポリシーは、数多くの _アーティファクト_ の 1 つとしてブループリント定義に含めることができます。 また、ブループリントでは、ポリシーおよびイニシアティブでパラメーターを使用することもできます。
+ポリシーは、数多くの "_アーティファクト_" の 1 つとしてブループリント定義に含めることができます。 また、ブループリントでは、ポリシーおよびイニシアティブでパラメーターを使用することもできます。
 
 ## <a name="blueprint-definition"></a>ブループリント定義
 

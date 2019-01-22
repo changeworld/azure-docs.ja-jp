@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: e148165afd91d76917e06577198950ee7552995f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a0a07a78d36e4c0d11132d0c7d5ff947f7073029
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107708"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353568"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>チュートリアル:Spring と Azure Cosmos DB を使用して Java Web アプリを構築する
 
@@ -331,20 +331,16 @@ az appservice plan update --number-of-workers 2 \
   
 ```bash
 az group delete --name your-azure-group-name
-``` 
+```
 
 <a name="next"></a>
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
-[Azure for Java Developers](/java/azure/)
-[Spring Boot](https://spring.io/projects/spring-boot), 
-[Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), 
-[Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction)
-and
-[App Service Linux](/azure/app-service/containers/app-service-linux-intro).
+[Java 開発者向けの Azure](/java/azure/)
+[Spring Boot](https://spring.io/projects/spring-boot)、[Cosmos DB 用の Spring データ](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)、[Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction)、および [App Service Linux](/azure/app-service/containers/app-service-linux-intro)。
 
-Learn more about running Java apps on App Service on Linux in the developer guide.
+App Service on Linux での Java アプリの実行の詳細について開発者ガイドで確認してください。
 
 > [!div class="nextstepaction"] 
-> [Java in App Service Linux dev guide](/azure/app-service/containers/app-service-linux-java)
+> [App Service Linux の Java 開発ガイド](/azure/app-service/containers/app-service-linux-java)

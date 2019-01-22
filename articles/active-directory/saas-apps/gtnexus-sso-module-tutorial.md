@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Flex Global View の統合 | Microsoft Docs
-description: Azure Active Directory と Flex Global View の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と GTNexus SSO System の統合 | Microsoft Docs
+description: Azure Active Directory と GTNexus SSO System の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ae466dc4bce6ab7068622272651c22d70fc84fff
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 646c9b1c3a1f10cae678e6788379eb6bbd144e78
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54067499"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263494"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flex-global-view"></a>チュートリアル:Azure Active Directory と Flex Global View の統合
+# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>チュートリアル:Azure Active Directory と GTNexus SSO System の統合
 
-このチュートリアルでは、Flex Global View と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Flex Global View と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、GTNexus SSO System と Azure Active Directory (Azure AD) を統合する方法について説明します。
+GTNexus SSO System と Azure AD を統合すると、次の利点が得られます。
 
-* Flex Global View にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Flex Global View に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* GTNexus SSO System にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで GTNexus SSO System に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -35,22 +35,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Flex Global View の統合を構成するには、次のものが必要です。
+GTNexus SSO System と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Flex Global View でのシングル サインオンが有効なサブスクリプション
+* GTNexus SSO System でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Flex Global View では、**IDP** によって開始される SSO がサポートされます
+* GTNexus SSO System では、**IDP** によって開始される SSO がサポートされます
 
-## <a name="adding-flex-global-view-from-the-gallery"></a>ギャラリーからの Flex Global View の追加
+## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>ギャラリーからの GTNexus SSO System の追加
 
-Azure AD への Flex Global View の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Flex Global View を追加する必要があります。
+Azure AD への GTNexus SSO System の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから GTNexus SSO System を追加する必要があります。
 
-**ギャラリーから Flex Global View を追加するには、次の手順に従います。**
+**ギャラリーから GTNexus SSO System を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -64,31 +64,31 @@ Azure AD への Flex Global View の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Flex Global View**」と入力し、結果パネルで **[Flex Global View]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**GTNexus SSO System**」と入力し、結果パネルから **[GTNexus SSO System]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-     ![結果一覧の Flex Global View](common/search-new-app.png)
+     ![結果リスト内の GTNexus SSO System](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Flex Global View で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Flex Global View 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、GTNexus SSO System で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと GTNexus SSO System 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-Flex Global View で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+GTNexus SSO System で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Flex Global View シングル サインオンの構成](#configure-flex-global-view-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[GTNexus SSO System のシングル サインオンの構成](#configure-gtnexus-sso-system-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Flex Global View テスト ユーザーの作成](#create-flex-global-view-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Flex Global View で作成します。
+5. **[GTNexus SSO System のテスト ユーザーの作成](#create-gtnexus-sso-system-test-user)** - GTNexus SSO System で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Flex Global View との Azure AD シングル サインオンを構成するには、次の手順を実行します。
+GTNexus SSO System で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Flex Global View** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **GTNexus SSO System** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Flex Global View との Azure AD シングル サインオンを構成するに�
 
     ![image](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Flex Global View セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
 
     ![image](common/idp-intiated.png)
 
@@ -121,9 +121,9 @@ Flex Global View との Azure AD シングル サインオンを構成するに�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-### <a name="configure-flex-global-view-single-sign-on"></a>Flex Global View でのシングル サインオンの構成
+### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO System のシングル サインオンの構成
 
-**Flex Global View** 側でシングル サインオンを構成するには、**フェデレーション メタデータ XML** を [ サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**GTNexus SSO System** 側でシングル サインオンを構成するには、**フェデレーション メタデータ XML** を [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -152,15 +152,15 @@ Flex Global View との Azure AD シングル サインオンを構成するに�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Flex Global View へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に GTNexus SSO System へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Flex Global View]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[GTNexus SSO System]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Flex Global View]** を選択します。
+2. アプリケーションの一覧で **[GTNexus SSO System]** を選択します。
 
-    ![アプリケーションの一覧の [Flex Global View] リンク](common/all-applications.png)
+    ![アプリケーションの一覧の GTNexus SSO System リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -176,15 +176,15 @@ Flex Global View との Azure AD シングル サインオンを構成するに�
 
 7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="create-flex-global-view-test-user"></a>Flex Global View テスト ユーザーの作成
+### <a name="create-gtnexus-sso-system-test-user"></a>GTNexus SSO System のテスト ユーザーの作成
 
-このセクションでは、Flex Global View で Britta Simon というユーザーを作成します。  [Flex Global View サポート チーム](mailto:support@gtnexus.com) と連携し、Flex Global View プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、GTNexus SSO System で Britta Simon というユーザーを作成します。  [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com) と連携して、GTNexus SSO System プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Flex Global View] タイルをクリックすると、SSO を設定した Flex Global View に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [GTNexus SSO System] タイルをクリックすると、SSO を設定した GTNexus SSO System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

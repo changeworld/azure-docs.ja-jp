@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd4eca669936a206241069f1f8a8d9440f45be33
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584022"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229780"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -69,6 +69,10 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 - イメージのファイル サイズが 4 メガバイト (MB) 未満である
 - イメージのディメンションが 50 x 50 ピクセルよりも大きい値である  
   OCR 用に、画像の寸法が 50 x 50 から 4,200 x 4,200 ピクセルの間である
+
+## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
+
+Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

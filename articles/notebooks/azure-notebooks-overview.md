@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713609"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246213"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks の概要
 
@@ -57,7 +57,7 @@ Azure Notebooks はコードを作成、実行、および共有するための�
 
 Azure Notebooks は無料のサービスですが、乱用を防ぐために各プロジェクトのメモリは 4 GB、データは 1 GB に制限されています。 これらの制限を超える正当なユーザーは、CAPTCHA チャレンジをクリアしてノートブックの実行を継続してください。
 
-すべての制限を解除するには、お使いのアカウントを Azure サブスクリプションに関連付けます。これにより、Premium コンピューティング レベルを選択できるようになります。
+すべての制限を解除するには、Azure Active Directory を使用したアカウント (会社のアカウントなど) で Azure Notebooks にサインインします。 そのアカウントが Azure サブスクリプションに関連付けられている場合、Azure Data Science Virtual Machine のコンピューティング レベルを使用できます。
 
 ## <a name="available-kernels-and-environments"></a>利用可能なカーネルと環境
 
