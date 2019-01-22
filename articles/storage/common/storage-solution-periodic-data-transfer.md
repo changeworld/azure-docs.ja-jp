@@ -58,9 +58,9 @@ ms.locfileid: "54158450"
 | ハードウェア                                      | ハイパーバイザー            | Microsoft により提供    | NA                                                            |
 | 初期セットアップ作業                          | 短時間 (< 30 分)            | 中程度 (から数時間) | 長時間 (から数日間)                                                 |
 | データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| データの前処理                           | いいえ                          | はい、Edge コンピューティング経由    | [はい]                                                           |
-| ローカル キャッシュ<br>(オンプレミス データを格納)    | [はい]                        | はい                      | いいえ                                                             |
-| その他のクラウドからの転送                    | いいえ                          | いいえ                        | [はい]                                                           |
+| データの前処理                           | いいえ                          | はい、Edge コンピューティング経由    | はい                                                           |
+| ローカル キャッシュ<br>(オンプレミス データを格納)    | はい                        | はい                      | いいえ                                                             |
+| その他のクラウドからの転送                    | いいえ                          | いいえ                        | はい                                                           |
 | 価格                                       | [料金](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>次の手順
