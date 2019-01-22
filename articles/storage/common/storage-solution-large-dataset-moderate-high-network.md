@@ -68,8 +68,8 @@ ms.locfileid: "54214319"
 |    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
 |    フォーム ファクター                      |    注文ごとに 5 つの SSD             |    1 X 50 lbs。 1 回の注文ごとにデスクトップ サイズのデバイス    |    1 X 最大 500-lbs。 1 回の注文ごとに大容量のデバイス    |    1 回の注文ごとに最大 10 台の HDD/SSD        |
 |    初期セットアップ時間               |    低 <br>(15 分)            |    低から中 <br> (30 分未満)               |    中<br>(1 ～ 2 時間)               |    中から難<br>(可変) |
-|    データを Azure に送信する               |    [はい]                          |    はい                                           |    はい                                   |    [はい]                                 |
-|    Azure からデータをエクスポートする           |    いいえ                            |    いいえ                                             |    いいえ                                     |    [はい]                                 |
+|    データを Azure に送信する               |    はい                          |    はい                                           |    はい                                   |    はい                                 |
+|    Azure からデータをエクスポートする           |    いいえ                            |    いいえ                                             |    いいえ                                     |    はい                                 |
 |    暗号化                       |    AES 128 ビット                  |    AES 256 ビット                                   |    AES 256 ビット                           |    AES 128 ビット                         |
 |    ハードウェア                         |     Microsoft による提供          |    Microsoft による提供                            |    Microsoft による提供                    |    お客様による提供                   |
 |    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
@@ -88,8 +88,8 @@ ms.locfileid: "54214319"
 |    データ型                  |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files                           |   データ ストアと形式について、70 個を超えるデータ コネクタがサポートされます    |
 |    フォーム ファクター                |    コマンドライン ツール                        |    プログラマティック インターフェイス                    |    Microsoft では仮想 <br>または物理デバイスが提供されます     |    Azure ポータルのサービス                                            |
 |    最初の 1 回限りのセットアップ     |    簡単               |    中                       |    簡単 (30 分未満) から中 (1 から 2 時間)            |    広範                                                          |
-|    データの前処理              |    いいえ                                         |    いいえ                                         |    はい (Edge コンピューティングを使用)                               |    [はい]                                                                |
-|    その他のクラウドからの転送       |    いいえ                                         |    いいえ                                         |    いいえ                                                     |    [はい]                                                                |
+|    データの前処理              |    いいえ                                         |    いいえ                                         |    はい (Edge コンピューティングを使用)                               |    はい                                                                |
+|    その他のクラウドからの転送       |    いいえ                                         |    いいえ                                         |    いいえ                                                     |    はい                                                                |
 |    ユーザー タイプ                        |    IT プロフェッショナルまたは開発者                                       |    Dev                                       |    IT プロフェッショナル                                                |    IT プロフェッショナル                                                             |
 |    価格                          |    無料、データ エグレス料金を適用         |    無料、データ エグレス料金を適用         |    [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
