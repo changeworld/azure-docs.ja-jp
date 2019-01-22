@@ -97,16 +97,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. VM1 で Windows PowerShell を開きます。 次のコマンドを使用して、IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default .htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom .htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. **myIISVMEastUS** との RDP 接続を閉じます。
 9. 手順 1 から 8 を繰り返します。 **myResourceGroupTM2** リソース グループ内の VM (**myIISVMWEurope**) への RDP 接続を作成し、IIS のインストールと既定の Web ページのカスタマイズを行います。
@@ -181,7 +181,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     |        |           |
 
 4. 手順 2 と 3 を繰り返して、パブリック IP アドレス **myIISVMWEurope-ip** 用に **myWestEuropeEndpoint** という名前の別のエンドポイントを追加します。 このアドレスは、myIISVMWEurope という名前の IIS サーバー VM に関連付けられています。 **[重み]** に「**25**」を入力します。 
-5.  両方のエンドポイントの追加が完了すると、どちらも Traffic Manager プロファイルに、監視ステータスが **[オンライン]** の状態で表示されます。
+5. 両方のエンドポイントの追加が完了すると、どちらも Traffic Manager プロファイルに、監視ステータスが **[オンライン]** の状態で表示されます。
 
 ## <a name="test-the-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト
 Traffic Manager の動作を表示するには、次の手順を完了します。
@@ -193,7 +193,7 @@ Traffic Manager の動作を表示するには、次の手順を完了します�
 
 次のように、Traffic Manager プロファイルの DNS 名を判別できます。
 
-1.  ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索します。 表示された結果で、Traffic Manager プロファイルを選択します。
+1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索します。 表示された結果で、Traffic Manager プロファイルを選択します。
 1. **[概要]** を選択します。
 2. Traffic Manager プロファイルに DNS 名が表示されます。 運用環境のデプロイでは、DNS CNAME レコードを使用して、Traffic Manager のドメイン名をポイントするバニティ ドメイン名を構成します。
 
@@ -218,5 +218,3 @@ Traffic Manager の動作を表示するには、次の手順を完了します�
 
 > [!div class="nextstepaction"]
 > [ユーザーの地理的位置に基づいて特定のエンドポイントにトラフィックをルーティングする](traffic-manager-configure-geographic-routing-method.md)
-
-
