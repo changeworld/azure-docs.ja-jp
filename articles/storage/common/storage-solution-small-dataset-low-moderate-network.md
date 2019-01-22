@@ -52,7 +52,7 @@ ms.locfileid: "53263657"
 | 機能                                                            | Azure ストレージ エクスプローラー                    | Azure ポータル  | AzCopy<br>Azure PowerShell<br>Azure CLI            | Azure Storage REST API または SDK |
 |----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
 | 可用性                                                       | ダウンロードとインストール <br>スタンドアロン ツール | Azure portal の Web ベースの探索ツール           | コマンド ライン ツール |.NET、Java、Python、JavaScript、C++、Go、Ruby、および PHP でのプログラミング可能なインターフェイス                                                         |
-| グラフィカル インターフェイス                                              | [はい]                                       | [はい]                                                     | いいえ                 | いいえ                                                       |
+| グラフィカル インターフェイス                                              | はい                                       | はい                                                     | いいえ                 | いいえ                                                       |
 | サポートされているプラットフォーム                                              | Windows、Mac、Linux                       | Web ベース     |Windows、Mac、Linux     |すべてのプラットフォーム                                                         |
 | 使用できる Blob Storage 操作<br>(対 BLOB およびフォルダー)            | アップロード<br>ダウンロード<br>管理    | アップロード<br>ダウンロード<br>管理  |アップロード<br>ダウンロード<br>管理             | はい、カスタマイズ可能                                                        |
 | 使用できる Data Lake Gen1 ストレージ<br>操作 (対ファイルおよびフォルダー)  | アップロード<br>ダウンロード<br>管理                | いいえ  |アップロード<br>ダウンロード<br>管理                   |      いいえ                                                    |
@@ -60,9 +60,7 @@ ms.locfileid: "53263657"
 | 使用できる Table Storage 操作<br>(対テーブル)                      |管理                            | いいえ             |AzCopy v7 でのテーブル サポート |はい、カスタマイズ可能|
 | 使用できる Queue Storage 操作                                              | 管理                                    | いいえ   |いいえ  | はい、カスタマイズ可能|
 
-
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Storage Explorer を使用してデータを転送する](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)方法を学習します。
 - [AzCopy を使用してデータを転送する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-
