@@ -15,6 +15,6 @@ ms.locfileid: "53977367"
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|[はい]| `Eula` | String | ライセンスへの同意<br><br>例:<br>`Eula=accept` |
+|はい| `Eula` | String | ライセンスへの同意<br><br>例:<br>`Eula=accept` |
 
 Cognitive Services のコンテナーは、Azure の使用について定める[契約](https://go.microsoft.com/fwlink/?linkid=2018657)の下でライセンスされます。 Azure の使用について定める契約をまだ結んでいない場合、Azure の使用について定める契約が[マイクロソフト オンライン サブスクリプション契約](https://go.microsoft.com/fwlink/?linkid=2018755) ([オンライン サービス規約](https://go.microsoft.com/fwlink/?linkid=2018760)を含む) であることに同意するものとします。 また、プレビューに関しては、「[Microsoft Azure プレビューの追加使用条件](https://go.microsoft.com/fwlink/?linkid=2018815)」にも同意するものとします。 コンテナーの使用をもって、お客様はこれらの規約に同意したものとします。
