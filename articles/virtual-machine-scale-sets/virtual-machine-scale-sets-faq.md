@@ -237,8 +237,8 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 linuxConfiguration の要素名 | 必須 | type | 説明
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
-path | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
+path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 
