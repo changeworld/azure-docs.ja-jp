@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 680bf282c2ab269bad19654c6602e4543a6e92ca
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b4de9efbe85d5ab497bccd1742df23ddc1b3af43
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53748468"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354661"
 ---
 ストレージ最適化済み VM サイズは高いディスク スループットと IO を実現し、ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適です。  例としては、Cassandra、MongoDB、Cloudera、および Redis があります。 この記事では、最適化された各サイズのローカル ストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
-Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大ブーストが可能な [AMD EPYC<sup>TM</sup> 7551 プロセッサ](https://www.amd.com/en/products/epyc-7000-series)上で実行され、高スループット、低待ち時間、直接マッピングされたローカル NVMe ストレージを特長としています。 Lsv2 シリーズの VM には、同時マルチスレッド構成で 8 から 80 vCPU のサイズが用意されています。  vCPU あたり 8 GiB のメモリ、8 vCPU あたり 1 つの 1.92 TB NVMe SSD M.2 デバイスが用意され、L80s v2 では最大 19.2 TB (10 x 1.92 TB) を使用できます。
+Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大ブーストが可能な [AMD EPYC&trade; 7551 プロセッサ](https://www.amd.com/en/products/epyc-7000-series)上で実行され、高スループット、低待ち時間、直接マッピングされたローカル NVMe ストレージを特長としています。 Lsv2 シリーズの VM には、同時マルチスレッド構成で 8 から 80 vCPU のサイズが用意されています。  vCPU あたり 8 GiB のメモリ、8 vCPU あたり 1 つの 1.92 TB NVMe SSD M.2 デバイスが用意され、L80s v2 では最大 19.2 TB (10 x 1.92 TB) を使用できます。
 
 Ls シリーズでは、[Intel® Xeon® プロセッサ E5 v3 ファミリ](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)を使用し、最大 32 個の vCPU を提供します。 Ls シリーズは、G/GS シリーズと同じ CPU パフォーマンスであり、vCPU あたり 8 GiB のメモリを搭載しています。
 
@@ -29,7 +29,7 @@ ACU: 150 から 175
 
 Premium Storage: サポートされています
 
-Premium Storage Caching:サポートされていません
+Premium Storage Caching: サポートされていません
 
 | サイズ          | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク | NVMe ディスク スループット<sup>2</sup> (読み取り IOPS / MBps) | ホスト キャッシュ サイズ<sup>3</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 

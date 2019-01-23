@@ -1,26 +1,8 @@
 ---
-title: Machine Learning Studio モデルが Web サービスになるまでの過程 - Azure | Microsoft Docs
-description: Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253869"
+title:Machine Learning Studio モデルが Web サービスになるまでの過程 titleSuffix: Azure Machine Learning Studio description:Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:03/20/2017
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning Studio モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。

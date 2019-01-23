@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91979d46a341f0892d4e5774246bac5a7897f698
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815615"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320958"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 と OpenID Connect プロトコル
 
@@ -31,7 +31,7 @@ OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコ
 > [!NOTE]
 > Azure Active Directory (Azure AD) のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 v2.0 エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](quickstart-v2-register-an-app.md)」を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 v2.0 エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](quickstart-v2-register-an-app.md)」を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
 
 ## <a name="protocol-diagram-sign-in"></a>プロトコルのダイアグラム: サインイン
 
@@ -86,7 +86,7 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 * 要求には `nonce` パラメーターが含まれる必要があります。
 
 > [!IMPORTANT]
-> ID トークンを正しく要求するには、[登録ポータル](https://apps.dev.microsoft.com)のアプリ登録で、Web クライアントの**[暗黙的許可](v2-oauth2-implicit-grant-flow.md)** を有効にする必要があります。 有効になっていない場合、`unsupported_response` エラー "The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
+> ID トークンを正しく要求するには、[登録ポータル](https://apps.dev.microsoft.com)のアプリ登録で、Web クライアントの**[暗黙的許可](v2-oauth2-implicit-grant-flow.md)** を有効にする必要があります。 有効でない場合、`unsupported_response` エラー"The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
 
 例: 
 
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | scope |必須 |スコープのスペース区切りリスト。 OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token 値に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
 | response_mode |推奨 |結果として得られた承認コードをアプリに返す際に使用するメソッドを指定します。 `form_post` または `fragment` を指定できます。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 |
-| state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。 `prompt=login` 要求は、その要求においてユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` 要求は、その逆です。 この要求は、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントはエラーを返します。 `prompt=consent` 要求は、ユーザーがサインインした後に OAuth 同意ダイアログをトリガーします。 ダイアログでは、ユーザーにアプリへのアクセス許可を付与するよう要求します。 |
 | login_hint |省略可能 |このパラメーターを使用すると、ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名および電子メール アドレス フィールドに入力することができます。 多くの場合、アプリは `preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
 | domain_hint |省略可能 |この値は、`consumers` または `organizations` です。 これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 多くの場合、アプリは ID トークンから `tid` 要求を抽出して、再認証時にこのパラメーターを使用します。 要求値 `tid` が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合 (Microsoft Account コンシューマー テナント)、`domain_hint=consumers` を使用してください。 それ以外の場合は、 `domain_hint=organizations`を指定します。 |
@@ -175,7 +175,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
 
-単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
+単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
 クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-an-idtoken)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 <!--TODO: Improve the information on this-->

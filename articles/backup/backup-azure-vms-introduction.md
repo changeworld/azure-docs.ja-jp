@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107431"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265415"
 ---
 # <a name="about-azure-vm-backup"></a>Azure VM バックアップについて
 
@@ -55,6 +55,10 @@ Azure Backup では、データはバックアップ プロセスの一部とし
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
+        - 上記のレジストリ キーを設定するには、管理者特権のコマンド プロンプト (管理者として実行) で、次のコマンドを実行します。
+          ```
+          REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f
+          ```
 - **Linux VM**:Azure Backup がスナップショットを作成する場合に Linux VM にアプリケーション整合性を持たせるには、Linux 事前/事後スクリプト フレームワークを使用します。 VM スナップショットを取るときの整合性を確保できるよう自分のカスタム スクリプトを記述することができます。
     -  Azure Backup は、ユーザーが書き込んだ事前スクリプトと事後スクリプトだけを呼び出します。
     - 事前スクリプトと事後スクリプトが正常に実行されると、Azure Backup は復旧ポイントをアプリケーション整合性としてマークします。 ただし、カスタム スクリプトを使用したときのアプリケーション整合性の最終的な責任はユーザーが担います。
@@ -132,11 +136,10 @@ Azure Backup にはサブスクリプションとコンテナーについてさ�
 
 VM バックアップを構成するときには、次のプラクティスに従うことをお勧めします。
 
-- コンテナーをインスタント RP にアップグレードします。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。  
 - リソースの使用を最適化するためにデータのスナップショットが取得される場合は、既定で指定されたポリシー時刻を変更することを検討してください (たとえば、 既定のポリシー時刻が午前 12 時 00 分である場合は、それを数分先に進めることを検討してください)。
 - インスタント RP 機能を使用しない場合、Premium VM のバックアップには、ストレージ アカウントの総容量の約 50% を割り当ててください。 バックアップ サービスでは、スナップショットを同じストレージ アカウントにコピーし、それをコンテナーに転送するために、この容量が必要になります。
 - 1 つのコンテナーから複数の VM を復元する場合は、ターゲットのストレージ アカウントがスロットルされないようにするために、それぞれ異なる  [v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) を使用することを強くお勧めします。 たとえば、各 VM にはそれぞれ異なるストレージ アカウントを使用する必要があります (10 個の VM を復元する場合は、異なる 10 個のストレージ アカウントを使用することを検討してください)。
-- Tier-1 ストレージ レイヤー (スナップショット) からの復元は (ストレージ アカウントが同じなので) 数分で完了しますが、Tier-2 ストレージ レイヤー (コンテナー) の場合は数時間かかる可能性があります。 利用可能なデータが Tier-1 にある場合は、復元を高速化するために、[インスタント RP](backup-upgrade-to-vm-backup-stack-v2.md) 機能を使用することをお勧めします (データをコンテナーから復元しなければならない場合は、処理時間が長くなります)。
+- Tier-1 ストレージ レイヤー (スナップショット) からの復元は (ストレージ アカウントが同じなので) 数分で完了しますが、Tier-2 ストレージ レイヤー (コンテナー) の場合は数時間かかる可能性があります。 利用可能なデータが Tier-1 にある場合は、復元を高速化するために、[インスタント リストア](backup-instant-restore-capability.md)機能を使用することをお勧めします (データをコンテナーから復元しなければならない場合は、処理時間が長くなります)。
 - ストレージ アカウントあたりのディスク数の制限は、IaaS VM で実行されているアプリケーションがディスクにどれくらいアクセスするかによって決まります。 1 つのストレージ アカウントで複数のディスクがホストされているかどうかを確認してください。 通常、1 つのストレージ アカウント上に 5 ～ 10 個以上のディスクが存在する場合は、一部のディスクを別のストレージ アカウントに移動して負荷を分散します。
 
 ## <a name="backup-costs"></a>バックアップのコスト

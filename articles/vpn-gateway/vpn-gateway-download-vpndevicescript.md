@@ -2,25 +2,18 @@
 title: 'S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする: Azure Resource Manager | Microsoft Docs'
 description: この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317774"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200527"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 

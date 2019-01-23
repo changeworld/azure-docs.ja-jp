@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d35ac7cac5c14a7bd57913046e8f4c09a22f177a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260382"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267438"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
@@ -107,7 +107,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 5. **[OK]** ボタンをクリックして、記憶域の詳細構成を保存します。
 6. **[イベントごとのログ記録]** で、**[成功]** および **[失敗]** を、すべてのイベントについて、または個別のイベント カテゴリについて記録します。
-7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、 [接続文字列でのサーバーの FDQN の変更](sql-data-warehouse-auditing-downlevel-clients.md) に関するトピックを参照してください。
+7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、[接続文字列でのサーバーの FQDN の変更](sql-data-warehouse-auditing-downlevel-clients.md)に関するトピックを参照してください。
 8. Click **OK**.
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する

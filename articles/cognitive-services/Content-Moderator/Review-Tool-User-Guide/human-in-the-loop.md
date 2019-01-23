@@ -1,26 +1,27 @@
 ---
-title: Content Moderator でのマシンによるコンテンツ モデレーションと目視レビュー | Microsoft Docs
+title: コンテンツ モデレーションに目視レビューを組み込む - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: マシンと人間が連携してコンテンツ モデレーションの最良の結果を提供する方法
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 03/16/2018
+ms.date: 01/10/2019
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212201"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264735"
 ---
-# <a name="human-in-the-loop"></a>Human-in-the-Loop (人間参加)
+# <a name="learn-about-the-review-tool"></a>レビュー ツールについて学習する
 
 コンテンツ モデレーションでは、人間とマシンが連携した場合に最良の結果が得られます。 マシンは、現実世界のコンテキスト内で予測の信頼性を支援または抑制する必要のある目視レビューを効果的に補強します。 結果は、人間またはマシンが単独で動作している場合よりも高いパフォーマンスを実現するハイブリッド コンテンツ モデレーション プロセスです。
 
-## <a name="how-the-review-tool-helps"></a>レビュー ツールによる支援 ##
+## <a name="what-it-does"></a>実行内容
 
 マシンによるモデレーション API と組み合わせて使用する場合、目視レビュー ツールでは、コンテンツ モデレーションのライフ サイクルに関連してこれらの重要なタスクを実行できます。
 

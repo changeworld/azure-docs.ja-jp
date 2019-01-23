@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943583"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329771"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>VHD から新しい ARM Managed Disk VM にクラシック VM を手動で移行する 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>クラシック VM を移行して Managed Disks を使用する 
 
 
 このセクションでは、Resource Manager デプロイ モデルで、既存の Azure VM をクラシック デプロイ モデルから [Managed Disks](managed-disks-overview.md) に移行する方法を説明します。
@@ -35,33 +35,33 @@ ms.locfileid: "33943583"
 
 ### <a name="location"></a>場所
 
-Azure Managed Disks を使用できる場所を選びます。 Premium Managed Disks に移行する場合は、移行先に予定しているリージョンで Premium Storage が使用可能であることも確認します。 使用できる場所に関する最新情報については、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
+Managed Disks を使用できる場所を選びます。 Premium Storage でバックアップしている Managed Disks に移行する場合は、そのリージョンで Premium Storage が使用可能であることも確認します。 使用できる場所に関する最新情報については、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
 
 ### <a name="vm-sizes"></a>VM サイズ
 
-Premium Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](sizes.md)」に記載されています。
+Premium Storage を使用している Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](sizes.md)」に記載されています。
 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 ### <a name="disk-sizes"></a>ディスク サイズ
 
-**Premium Managed Disks**
+**Premium**
 
-VM で使える Premium 管理ディスクには 7 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM の Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
+VM で使える Premium Storage マネージド ディスクには 7 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM の Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
+| ディスク サイズ           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
 
-**Standard Managed Disks**
+**Standard**
 
-VM で使用できる Standard Managed Disks は 7 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
+VM で使用できる Standard ディスクは 7 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard マネージド ディスクの種類を選択してください。
 
-| Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
 
 
@@ -73,7 +73,7 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 
 ### <a name="pricing"></a>価格
 
-[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard 管理ディスクの価格は、Standard 非管理ディスクとは異なります。
+[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)をご確認ください。 管理対象の Premium ディスクの価格は、非管理対象の Premium ディスクと同じです。 一方、管理対象の Standard ディスクの価格は、非管理対象の Standard ディスクと異なります。
 
 
 ## <a name="checklist"></a>チェック リスト
@@ -96,77 +96,104 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 ここでは、Azure PowerShell モジュール バージョン 6.0.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。
 
 
-1.  最初に、共通のパラメーターを設定します。
+一般的なパラメーターのための変数を作成します。
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
-    
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
 
-2.  VHD を使用してクラシック VM から管理 OS ディスクを作成します。
+$location = 'your location' 
 
-    $osVhdUri パラメーターには、OS VHD の完全な URI を指定してください。 また、移行先のディスクの種類 (Premium または Standard) に合わせて、**-AccountType** で「**Premium_LRS**」または「**Standard_LRS**」と入力します。
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
 
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
+$virtualMachineName = 'yourVMName'
 
-3.  新しい VM に OS ディスクを接続します。
+$virtualMachineSize = 'Standard_DS3'
 
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
+$adminUserName = "youradminusername"
 
-4.  データ VHD ファイルから管理データ ディスクを作成し、新しい VM に追加します。
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
 
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+VHD を使用してクラシック VM から管理 OS ディスクを作成します。 $osVhdUri パラメーターには、OS VHD の完全な URI を指定してください。 また、移行先のディスクの種類 (Premium または Standard) に合わせて、**-AccountType** で「**Premium_LRS**」または「**Standard_LRS**」と入力します。
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+新しい VM に OS ディスクを接続します。
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+データ VHD ファイルからマネージド データ ディスクを作成し、新しい VM に追加します。
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-5.  パブリック IP、仮想ネットワーク、NIC を設定して新しい VM を作成します。
+パブリック IP、仮想ネットワーク、NIC を設定して新しい VM を作成します。
 
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
 >このガイドで説明されていないアプリケーションをサポートするには、追加の手順が必要になる場合があります。

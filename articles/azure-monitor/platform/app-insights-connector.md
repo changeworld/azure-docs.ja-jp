@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121415"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199652"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
 ![Application Insights シンボル](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、Application Insight コネクタ管理ソリューションはもはや必要でなくなり、非推奨になります。 7 月以降は、新しい Application Insights リソースを Log Analytics ワークスペースにリンクさせることができなくなります。 既存のリンクとダッシュボードは引き続き 2018 年 11 月まで使用可能です。 詳細については、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」を参照してください。
+> [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)と [Azure Monitor Application Insights の複数のリソースの表示](../log-query/unify-app-resource-data.md)のサポートにより、Application Insight コネクタ管理ソリューションが必要でなくなります。 Application Insights Connector は非推奨となり、Azure 商用クラウドおよび Azure 米国政府向けクラウドに対して 2019 年 1 月 15 日に正式に廃止される OMS ポータルの廃止に伴って Azure Makertplace から削除され、2019 年 3 月 30 日に正式に廃止される予定です。 既存の接続は 2019 年 6 月 30日まで引き続き機能します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 詳細については、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」を参照してください。
 
 Application Insights Connector ソリューションを使用すると、[Application Insights](../../azure-monitor/app/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 

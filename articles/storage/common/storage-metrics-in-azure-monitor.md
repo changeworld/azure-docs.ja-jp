@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994438"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354603"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -341,6 +341,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位:Bytes <br/> 集計の種類:平均 <br/> 値の例:1024 <br/> ディメンション:BlobType ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> 値の例:1024 <br/> ディメンション:BlobType ([定義](#metrics-dimensions)) |
 | ContainerCount    | ストレージ アカウントのコンテナーの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> 値の例:1024 |
+| IndexCapacity     | ADLS Gen2 階層構造のインデックスで使用される記憶域の量 <br/><br/> 単位:Bytes <br/> 集計の種類:平均 <br/> 値の例:1024 |
 
 ### <a name="table-storage"></a>テーブル ストレージ
 
@@ -368,7 +369,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック
 
-トランザクション メトリックは、Azure Storage から Azure Monitor に 1 分ごとに送信されます。 すべてのトランザクション メトリックを、アカウント レベルとサービス レベルの両方 (Blob Storage、Table Storage、Azure Files、および Queue ストレージ) で使用することができます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
+トランザクション メトリックは、ストレージ アカウントへの要求ごとに、Azure Storage から Azure Monitor に出力されます。 ストレージ アカウントにアクティビティがない場合、その間はトランザクション メトリックのデータは存在しません。 すべてのトランザクション メトリックを、アカウント レベルとサービス レベルの両方 (Blob Storage、Table Storage、Azure Files、および Queue ストレージ) で使用することができます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
 
 Azure Storage は、Azure Monitor で次のトランザクション メトリックを提供します。
 

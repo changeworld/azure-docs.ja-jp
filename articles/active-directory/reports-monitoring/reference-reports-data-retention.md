@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753134"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214472"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
@@ -40,6 +40,18 @@ ms.locfileid: "53753134"
 
 - **すぐに** - Azure Portal で既にレポートを操作している場合。
 - **2 時間以内** - Azure Portal でレポートを有効にしていない場合。
+
+---
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium ライセンスの取得後、アクティビティ データが表示されるまでにかかる時間
+
+無料ライセンスでのアクティビティ データが既にある場合、アップグレード時にはすぐにそのデータを表示できます。 データが何もない場合は、Premium ライセンスへのアップグレード後、レポートにデータが表示されるまで 1 日から 2 日かかります。
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Azure AD Premium ライセンスの取得後、前月のデータを確認可能か
+
+最近 Premium バージョン (試用版を含む) に切り替えた場合、初めは最大 7 日分のデータを確認できます。 データが蓄積されると、過去 30 日間のデータを確認できます。
 
 ---
 

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 4/12/2018
+ms.date: 1/16/2019
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 64b92a758d3d5f713b58a5e310a897ac1f11024d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d5e57442a163c8a93adc39517285bd88affab2fe
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714833"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353058"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./tutorial-dashboards.md)へのマッピングについては、この記事の最後で紹介します。
@@ -128,7 +128,7 @@ ms.locfileid: "53714833"
 | operationName |操作の名前。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | status |操作の状態を説明する文字列。 いくつかの一般的な値は次のとおりです: Started、In Progress、Succeeded、Failed、Active、Resolved。 |
-| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列 (次のような一般的な値) が含まれる場合もあります。OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504)。 |
+| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列 (次のような一般的な値) が含まれる場合もあります。OK (HTTP 状態コード: 200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504)。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
@@ -648,6 +648,123 @@ ms.locfileid: "53714833"
 | properties.recommendationCategory | 推奨のカテゴリ。 指定できる値は "High Availability"、"Performance"、"Security"、"Cost" です。 |
 | properties.recommendationImpact| 推奨の影響。 指定できる値は "High"、"Medium"、"Low" です。 |
 | properties.recommendationRisk| 推奨のリスク。 指定できる値は "Error"、"Warning"、"None" です。 |
+
+## <a name="policy"></a>ポリシー
+
+このカテゴリには、[Azure Policy](../../governance/policy/overview.md) によって実行されるすべての効果アクション操作のレコードが含まれます。 このカテゴリで表示されるイベントの種類の例として、_Audit_ と _Deny_ があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。
+
+### <a name="sample-policy-event"></a>サンプルの Policy イベント
+
+```json
+{
+    "authorization": {
+        "action": "Microsoft.Resources/checkPolicyCompliance/read",
+        "scope": "/subscriptions/<subscriptionID>"
+    },
+    "caller": "33a68b9d-63ce-484c-a97e-94aef4c89648",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.azure.com/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "appid": "1d78a85d-813d-46f0-b496-dd72f50a3ec0",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/identity/claims/identityprovider": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "1114444b-7467-4144-a616-e3a5d63e147b",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "b5768deb-836b-41cc-803e-3f4de2f9e40b",
+    "description": "",
+    "eventDataId": "d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Policy",
+        "localizedValue": "Policy"
+    },
+    "eventTimestamp": "2019-01-15T13:19:56.1227642Z",
+    "id": "/subscriptions/<subscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/contososqlpolicy/events/13bbf75f-36d5-4e66-b693-725267ff21ce/ticks/636831551961227642",
+    "level": "Warning",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Authorization/policies/audit/action",
+        "localizedValue": "Microsoft.Authorization/policies/audit/action"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Sql",
+        "localizedValue": "Microsoft SQL"
+    },
+    "resourceType": {
+        "value": "Microsoft.Resources/checkPolicyCompliance",
+        "localizedValue": "Microsoft.Resources/checkPolicyCompliance"
+    },
+    "resourceId": "/subscriptions/<subscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/contososqlpolicy",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-01-15T13:20:17.1077672Z",
+    "subscriptionId": "<subscriptionID>",
+    "properties": {
+        "isComplianceCheck": "True",
+        "resourceLocation": "westus2",
+        "ancestors": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+        "policies": "[{\"policyDefinitionId\":\"/subscriptions/<subscriptionID>/providers/Microsoft.
+            Authorization/policyDefinitions/5775cdd5-d3d3-47bf-bc55-bb8b61746506/\",\"policyDefiniti
+            onName\":\"5775cdd5-d3d3-47bf-bc55-bb8b61746506\",\"policyDefinitionEffect\":\"Deny\",\"
+            policyAssignmentId\":\"/subscriptions/<subscriptionID>/providers/Microsoft.Authorization
+            /policyAssignments/991a69402a6c484cb0f9b673/\",\"policyAssignmentName\":\"991a69402a6c48
+            4cb0f9b673\",\"policyAssignmentScope\":\"/subscriptions/<subscriptionID>\",\"policyAssig
+            nmentParameters\":{}}]"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="policy-event-property-descriptions"></a>Policy イベントのプロパティの説明
+
+| 要素名 | 説明 |
+| --- | --- |
+| authorization | イベントの RBAC プロパティの配列。 新しいリソースの場合、これは、評価をトリガーした要求のアクションとスコープです。 既存のリソースの場合、アクションは "Microsoft.Resources/checkPolicyCompliance/read" です。 |
+| caller | 新しいリソースの場合は、デプロイを開始した ID。 既存のリソースの場合は、Microsoft Azure Policy Insights RP の GUID。 |
+| channels | Policy イベントは "Operation" チャネルのみを使用します。 |
+| claims | Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
+| correlationId | 通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
+| description | このフィールドは、Policy イベントの場合は空白です。 |
+| eventDataId | イベントの一意の識別子。 |
+| eventName | "BeginRequest" または "EndRequest" のいずれか。 "BeginRequest" は、auditIfNotExists と deployIfNotExists の評価が遅延した場合と、deployIfNotExists 効果がテンプレートのデプロイを開始するときに使用されます。 他のすべての操作は "EndRequest" を返します。 |
+| category | アクティビティ ログ イベントを "Policy" に属するものとして宣言します。 |
+| eventTimestamp | イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
+| id | 特定のリソースのイベントの一意識別子。 |
+| level | イベントのレベル。 Audit は "Warning" を使用し、Deny は "Error" を使用します。 auditIfNotExists または deployIfNotExists エラーは、重大度に応じて "Warning" または"Error" を生成する可能性があります。 他のすべての Policy イベントは "Informational" を使用します。 |
+| operationId | 単一の操作に対応する複数のイベント間で共有される GUID。 |
+| operationName | 操作の名前。Policy 効果に直接関連します。 |
+| resourceGroupName | 評価されるリソースのリソース グループの名前。 |
+| resourceProviderName | 評価されるリソースのリソース プロバイダーの名前。 |
+| resourceType | 新しいリソースの場合は、評価される種類です。 既存のリソースの場合は、"Microsoft.Resources/checkPolicyCompliance" を返します。 |
+| resourceId | 評価されるリソースのリソース ID。 |
+| status | Policy の評価結果の状態を説明する文字列。 ほとんどの Policy の評価は "Succeeded" を返しますが、Deny 効果は "Failed" を返します。 auditIfNotExists または deployIfNotExists でのエラーも "Failed" を返します。 |
+| subStatus | このフィールドは、Policy イベントの場合は空白です。 |
+| submissionTimestamp | イベントがクエリで使用できるようになったときのタイムスタンプ。 |
+| subscriptionId | Azure サブスクリプション ID。 |
+| properties.isComplianceCheck | 新しいリソースをデプロイされたり、既存のリソースのリソース マネージャーのプロパティが更新されたりしたときに、"False" を返します。 他のすべての[評価トリガー](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)では "True" になります。 |
+| properties.resourceLocation | 評価されているリソースの Azure リージョン。 |
+| properties.ancestors | 親管理グループのコンマ区切りの一覧は、直接の親から最も遠い先祖の順に並べ替えられます。 |
+| properties.policies | この Policy の評価が結果となるポリシー定義、割り当て、効果、およびパラメーターに関する詳細が含まれます。 |
+| relatedEvents | このフィールドは、Policy イベントの場合は空白です。 |
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>診断ログのスキーマへのマッピング
 

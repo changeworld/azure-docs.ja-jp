@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101719"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266747"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor のパフォーマンスに関する推奨事項
 
@@ -32,7 +32,7 @@ Azure Advisor は、長い TTL が構成された Traffic Manager プロファ�
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>SQL DB Advisor によるデータベースのパフォーマンス向上
 
-Advisor は、すべての Azure リソースに関する推奨事項を、一貫性がある統合された形で提示します。 SQL Database Advisor と統合して、SQL Azure Database のパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、SQL Azure Database の使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項を提示します。 
+Advisor は、すべての Azure リソースに関する推奨事項を、一貫性がある統合された形で提示します。 SQL Database Advisor と統合して、SQL Azure Database のパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、SQL Azure Database の使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項を提示します。
 
 > [!NOTE]
 > 推奨事項を取得するには、データベースを約 1 週間使用し、その週の間に、何らかの一貫性のあるアクティビティが行われている必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
@@ -43,7 +43,7 @@ SQL Database Advisor の詳細については「[SQL Database Advisor](https://a
 
 Azure Advisor は、App Services のエクスペリエンスを向上させ、関連するプラットフォームの機能を検出するためのベスト プラクティスの推奨事項を統合します。 App Services に関する推奨事項の例を次に示します。
 * アプリの実行時にメモリや CPU のリソースが使い尽くされるインスタンスの検出と軽減オプションの提供。
-* Web アプリやデータベースなどのリソースの配置によってパフォーマンスの向上とコストの削減を実現できるインスタンスの検出。 
+* Web アプリやデータベースなどのリソースの配置によってパフォーマンスの向上とコストの削減を実現できるインスタンスの検出。
 
 App Services に関する推奨事項の詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)を参照してください。
 
@@ -75,7 +75,10 @@ Advisor では、レプリケートされたテーブルではないが、変換
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>ストレージ アカウントを Azure Resource Manager に移行して最新の Azure 機能のすべてを手に入れる
 
-ストレージ アカウント デプロイ モデルを Azure Resource Manager (ARM) に移行して、テンプレート デプロイや、追加のセキュリティ オプションをご利用ください。また、GPv2 アカウントにアップグレードして Azure Storage の最新機能を利用することもできます。 Advisor は、クラシック デプロイ モデルを使用しているスタンドアロンのストレージ アカウントをすべて特定し、ARM デプロイ モデルに移行するようレコメンデーションを行います。 
+ストレージ アカウント デプロイ モデルを Azure Resource Manager (ARM) に移行して、テンプレート デプロイや、追加のセキュリティ オプションをご利用ください。また、GPv2 アカウントにアップグレードして Azure Storage の最新機能を利用することもできます。 Advisor は、クラシック デプロイ モデルを使用しているスタンドアロンのストレージ アカウントをすべて特定し、ARM デプロイ モデルに移行するようレコメンデーションを行います。
+
+> [!NOTE]
+> Azure Monitor のクラシック アラートが 2019 年 6 月に廃止されることをお伝えいたします。クラシック ストレージ アカウントを ARM にアップグレードし、新しいプラットフォームでアラート機能を保持することをお勧めします。 詳しくは、[クラシック アラートの廃止](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)に関するページをご覧ください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
@@ -92,4 +95,3 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-

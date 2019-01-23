@@ -1,18 +1,18 @@
 ---
-title: 'Azure VPN Gateway で OpenVPN を構成する方法: PowerShell | Microsoft Docs'
+title: Azure VPN Gateway で OpenVPN を構成する方法:PowerShell | Microsoft Docs
 description: Azure VPN Gateway 用に OpenVPN を構成する手順
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 958f4f46ec6ba407df7c739b7c62aa1489458485
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1dad960b0877cddf3be9afc01e3e687ebe4702c0
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408278"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357829"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する (プレビュー)
 
@@ -47,7 +47,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="vnet"></a>1.ポイント対サイト VPN を作成する
 
-機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ネイティブの Azure 証明機関を使用してポイント対サイト VPN ゲートウェイを作成および構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。
+機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ネイティブの Azure 証明機関を使用してポイント対サイト VPN ゲートウェイを作成および構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。 Basic SKU は IKEv2 ポイント対サイトに対してはサポートされていないことに注意してください。
 
 ## <a name="cmdlets"></a>2.PowerShell コマンドレットのインストール
 

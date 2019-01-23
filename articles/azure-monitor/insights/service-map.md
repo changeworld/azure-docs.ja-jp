@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186499"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232925"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -269,7 +269,7 @@ Service Map と Security and Audit との統合は、両方のソリューショ
 ![[Machine Security]\(マシンのセキュリティ\) ウィンドウ](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>更新の統合
-Service Map と Update Management との統合は、両方のソリューションが有効であり、Log Anlaytics ワークスペースに構成されているときは自動的に行われます。
+Service Map と Update Management との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。
 
 **[Machine Updates]\(マシンの更新\)** ウィンドウには、選択したサーバーの Update Management ソリューションからのデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーに不足している更新プログラムの概要が一覧表示されます。
 
@@ -305,7 +305,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 |SourceIp |送信元の IP アドレス |
 |DestinationIp |送信先の IP アドレス |
 |DestinationPort |送信先のポート番号 |
-|プロトコル |接続に使用されるプロトコル。  値は *tcp* です。 |
+|Protocol |接続に使用されるプロトコル。  値は *tcp* です。 |
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 

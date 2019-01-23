@@ -1,26 +1,8 @@
 ---
-title: '手順 4: 予測分析モデルをトレーニングする - Azure Machine Learning Studio | Microsoft Docs'
-description: '予測ソリューションの開発チュートリアルの手順 4: Azure Machine Learning Studio で複数のモデルをトレーニングし、スコアを付け、評価します。'
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 2464ef0ba89f138834bedfdc9f29347092e5fe99
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254515"
+title:'手順 4: 予測分析モデルをトレーニングする' titleSuffix: Azure Machine Learning Studio description:'予測ソリューションの開発チュートリアルの手順 4:Azure Machine Learning Studio で複数のモデルをトレーニングし、スコアを付け、評価する。'
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/23/2017
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>チュートリアル手順 4: Machine Learning Studio 内で予測分析モデルをトレーニングし、評価する
 このトピックに含まれるのは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」の 4 番目の手順です。

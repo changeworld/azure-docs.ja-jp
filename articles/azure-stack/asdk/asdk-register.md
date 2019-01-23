@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d8c4d28d6f5fdcc66e512375448f4b1d5fc9b8ed
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807212"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359172"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
-Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
+Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようにするには、登録が必要です。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
 
 自分の ASDK を登録しない場合、Azure Stack Development Kit を登録するように勧める警告アラート "**アクティブ化が必要**" が表示されます。 これは正しい動作です。
 
@@ -37,6 +37,8 @@ $ExecutionContext.SessionState.LanguageMode
 
 出力で **FullLanguageMode** が返されていることを確認します。 その他の言語モードが返されている場合は、別のコンピューター上で再登録を実行するか、言語モードを **FullLanguageMode** に設定してから作業を続行する必要があります。
 
+登録に使用される Azure AD アカウントは Azure サブスクリプションにアクセスできる必要があり、そのサブスクリプションに関連付けられているディレクトリで ID アプリケーションとサービス プリンシパルを作成するアクセス許可を持っている必要があります。 グローバル管理者の資格情報を使用するのではなく、[登録に使用するサービス アカウントを作成する](..\azure-stack-registration-role.md)ことで、最低限の特権による管理を使用し、Azure Stack を Azure に登録することをお勧めします。
+
 ## <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 次の手順に従って、ASDK を Azure に登録します。
 
@@ -45,7 +47,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 1. 管理者として PowerShell コンソールを開きます。  
 
-2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure サブスクリプションとローカル ASDK インストールの両方にサインインする必要があります。 Azure サブスクリプションをまだお持ちでない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。<br><br>同じ Azure Subscription ID を利用し、複数の Azure Stack インスタンスで登録スクリプトを実行している場合、**Set-AzsRegistration** コマンドレットを実行するとき、登録に一意の名前を設定します。 **RegistrationName** パラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。
+2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure サブスクリプションとローカル ASDK インストールの両方にサインインする必要があります。 Azure サブスクリプションをまだお持ちでない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。<br><br>**Set-AzsRegistration** コマンドレットを実行するときに、登録用の一意の名前を設定します。 **RegistrationName** パラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。
 
     ```PowerShell  
     # Add the Azure cloud subscription environment name. 

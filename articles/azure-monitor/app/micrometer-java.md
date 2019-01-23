@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 95a76cd46a86f70213ca381df4d52463666ace8d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109587"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259604"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。
@@ -89,7 +89,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 *    Tomcat、JVM、Logback メトリック、Log4J メトリック、アップタイム メトリック、プロセッサ メトリック、FileDescriptorMetrics 用に自動構成されるメトリック。
 *    たとえば、netflix hystrix がクラス パス上に存在する場合は、それらのメトリックも取得されます。 
 *    それぞれの Bean を追加することで、次のメトリックを使用できます。 
-        - CacheMetrics (CaffineCache、EhCache2、GuavaCache、HazelcaseCache、Jcache)     
+        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcaseCache、Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 

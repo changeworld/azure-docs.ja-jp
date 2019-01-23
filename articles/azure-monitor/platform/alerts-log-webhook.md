@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 26c98a87b736132eb50cddffd06c1173d205c34d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720307"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265432"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -198,7 +198,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Alerts のログ アラート](alerts-unified-log.md)について確認します。
-- [Azure のログ アラートの管理](alerts-log.md)について理解します。
+- [Azure のログ アラートの管理](alerts-log.md)について理解します
 - [Azure でのアクション グループ](action-groups.md)の作成および管理
 - [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
 - [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。 

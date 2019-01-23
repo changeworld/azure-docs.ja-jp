@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231534"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306490"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 ## <a name="executive-summary"></a>概要
@@ -122,7 +122,7 @@ LTLF の利用シナリオはほとんどが計画であるため、予測量が
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>サンプルのユース ケース 1: eSmart Systems – 過負荷の最適化
 [スマート グリッド](https://en.wikipedia.org/wiki/Smart_grid) の重要な役割は、変動する消費パターンを動的および継続的に最適化し、調整することです。 電力消費量は、主に気温の上下によって引き起こされる短期的な変動の影響を受けることがあります (*たとえば*、エアコンや暖房に使用される電力が増加します)。 同時に、長期的な変動の影響も受けます。 そうした変動には、季節性の影響、祝日、長期的な消費量の増加、さらには消費者指数、原油価格、GDP などの経済的な要因があります。
 
-このユース ケースでは、 [eSmart](http://www.esmartsystems.com/) は、電力網内のすべての変電所の過負荷状態の傾向を予測できるクラウド ベースのソリューションのデプロイを希望していました。 具体的には、1 時間以内に過負荷状態になる可能性のある変電所を特定し、早急な対応により、その状態を回避または解消できるようにしたいと考えていました。
+このユース ケースでは、 [eSmart](https://www.esmartsystems.com/) は、電力網内のすべての変電所の過負荷状態の傾向を予測できるクラウド ベースのソリューションのデプロイを希望していました。 具体的には、1 時間以内に過負荷状態になる可能性のある変電所を特定し、早急な対応により、その状態を回避または解消できるようにしたいと考えていました。
 
 正確な予測を迅速に実行するには、次の 3 つの予測モデルを実装する必要があります。
 
@@ -269,7 +269,7 @@ Cortana Intelligence Suite では、CSV、TSV、JSON "*など*"、よく使用�
 ### <a name="data-ingestion"></a>データの取り込み
 エネルギー需要予測は継続的かつ頻繁に実行されるため、堅牢で信頼性の高いデータ取り込みプロセスを使用して生データが流れていることを確認する必要があります。 取り込みプロセスでは、生データが必要なときに予測プロセスで確実に使用できるようにする必要があります。 具体的には、データ取り込み頻度を予測頻度よりも高くする必要があります。
 
-たとえば、需要予測ソリューションで毎日午前 8 時に新しい予測を生成する場合、過去 24 時間に収集されたその時点までのすべてのデータが完全に取り込まれ、1 時間前のデータも含まれていることを確認する必要があります。
+例: 需要予測ソリューションで毎日午前 8 時に新しい予測を生成する場合、過去 24 時間に収集されたその時点までのすべてのデータが完全に取り込まれ、1 時間前のデータも含まれていることを確認する必要があります。
 
 これを実現するために、Cortana Intelligence Suite には、信頼性の高いデータ取り込みプロセスをサポートするさまざまな方法が用意されています。 これについては、このドキュメントの「 **デプロイ** 」セクションで詳しく説明します。
 
@@ -320,21 +320,21 @@ Cortana Intelligence Suite では、CSV、TSV、JSON "*など*"、よく使用�
 近年では、時系列予測に対応した高度なアルゴリズムが開発され、予測精度が向上しています。 ここでは、その一部について簡単に説明します。
 
 > [!NOTE]
-> このセクションは、機械学習や予測の概要ではなく、需要予測でよく使用されるモデリング手法を簡単に紹介することを目的としています。 時系列予測の詳細と教材については、オンライン ブックの『 [Forecasting: principles and practice (予測: 原則と実践)](https://www.otexts.org/book/fpp)』を参照することを強くお勧めします。
+> このセクションは、機械学習や予測の概要ではなく、需要予測でよく使用されるモデリング手法を簡単に紹介することを目的としています。 時系列予測の詳細と教材については、オンライン ブックの『 [Forecasting: principles and practice (予測: 原則と実践)](https://www.otexts.org/)』を参照することを強くお勧めします。
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (移動平均)**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-average"></a>**MA (移動平均)**
 移動平均は、時系列予測に使用された最初の分析手法の 1 つで、現在でもよく使用されている手法の 1 つです。 より高度な予測手法の基盤でもあります。 移動平均では、K 番目に新しいポイントを平均することで、次のデータ ポイントを予測します (K は、移動平均の順序を示します)。
 
 移動平均手法には、予測を平滑化する効果があります。そのため、データの大きなボラティリティをうまく処理できない場合があります。
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (指数平滑法)**](https://www.otexts.org/fpp/7/5)
-指数平滑法 (ETS) は、次のデータ ポイントを予測するために、最新のデータ ポイントの加重平均を使用するさまざまな手法のグループです。 考え方としては、値が新しいほど大きい重みを割り当て、以前に測定した値に対してこの重みを徐々に減らしていきます。 このグループにはさまざまな手法があり、中には、 [季節調整指数平滑化法](https://www.otexts.org/fpp/7/5)など、データの季節性を処理するものもあります。
+#### <a name="ets-exponential-smoothing"></a>**ETS (指数平滑法)**
+指数平滑法 (ETS) は、次のデータ ポイントを予測するために、最新のデータ ポイントの加重平均を使用するさまざまな手法のグループです。 考え方としては、値が新しいほど大きい重みを割り当て、以前に測定した値に対してこの重みを徐々に減らしていきます。 このグループにはさまざまな手法があり、中には、季節調整指数平滑化法など、データの季節性を処理するものもあります。
 
 これらの手法では、データの季節性も考慮します。
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (自己回帰和分移動平均)**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-average"></a>**ARIMA (自己回帰和分移動平均)**
 自己回帰和分移動平均 (ARIMA) は、時系列予測によく使用される手法のもう 1 つのグループです。 実質的には、移動平均に自己回帰法を組み合わせた手法です。 自己回帰法では、前の時系列値を取得して、次のデータ ポイントを計算する回帰モデルを使用します。 ARIMA 法では、データ ポイント間の差を計算して、元の測定値の代わりに使用する差分手法も適用します。 最後に、ARIMA では、前に説明した移動平均法も使用します。 ARIMA 法のグループは、これらすべての手法をさまざまな形で組み合わせたもので構成されています。
 
 ETS と ARIMA は現在、エネルギー需要予測などの各種予測問題に広く使用されています。 多くの場合、非常に正確な結果を得るために、これらを組み合わせます。
@@ -365,7 +365,7 @@ MAPE は、Mean Absolute Percentage Error (平均絶対誤差率) の略です�
 エネルギー需要予測の場合の目標は、継続的かつ定期的に予測を呼び出す一方で、モデルが最新のデータを使用できようにし、予測データが消費クライアントに送信されるようにすることです。
 
 ### <a name="web-services-deployment"></a>Web サービスのデプロイ
-Azure ML でデプロイできる主な構成要素は、Web サービスです。 これは、予測モデルをクラウドで利用できるようにする最も効果的な方法です。 Web サービスは、モデルをカプセル化し、 [RESTful](http://www.restapitutorial.com/) API (アプリケーション プログラミング インターフェイス) でラップします。 この API は、次の図に示すようにクライアント コードの一部として使用できます。
+Azure ML でデプロイできる主な構成要素は、Web サービスです。 これは、予測モデルをクラウドで利用できるようにする最も効果的な方法です。 Web サービスは、モデルをカプセル化し、 [RESTful](https://www.restapitutorial.com/) API (アプリケーション プログラミング インターフェイス) でラップします。 この API は、次の図に示すようにクライアント コードの一部として使用できます。
 
 ![We Service Deployment and Consumption](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

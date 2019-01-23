@@ -16,12 +16,12 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037381"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263513"
 ---
 # <a name="redeploy-the-asdk"></a>ASDK の再デプロイ
 この記事では、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
@@ -32,7 +32,7 @@ ms.locfileid: "51037381"
 ## <a name="remove-azure-registration"></a>Azure の登録の削除 
 以前に ASDK インストールを Azure に登録したことがある場合は、ASDK を再デプロイする前に、登録リソースを削除する必要があります。 ASDK を再デプロイした場合は、マーケットプレースにある項目を入手できるようにするために ASDK を再登録します。 以前に ASDK を Azure サブスクリプションに登録していない場合は、このセクションをスキップできます。
 
-登録リソースを削除するには、**Remove-AzsRegistration** コマンドレットを使用して Azure Stack の登録を解除します。 次に、**Remove-AzureRMRsourceGroup** コマンドレットを使用して、Azure サブスクリプションから Azure Stack リソース グループを削除します。
+登録リソースを削除するには、**Remove-AzsRegistration** コマンドレットを使用して Azure Stack の登録を解除します。 次に、**Remove-AzureRMResourceGroup** コマンドレットを使用して、Azure サブスクリプションから Azure Stack リソース グループを削除します。
 
 1. 特権エンドポイントにアクセスできるコンピューターで、管理者として PowerShell コンソールを開きます。 ASDK の場合は、開発キットのホスト コンピューターです。
 

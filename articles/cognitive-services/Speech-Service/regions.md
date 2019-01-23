@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091647"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329509"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -46,11 +46,24 @@ Speech SDK は、**音声認識**と**翻訳**のために以下のリージョ�
 
 ### <a name="intent-recognition"></a>意図認識
 
-Speech SDK の**意図認識**は、リージョンのサポートを LUIS と共有します。 使用できるリージョンの詳細な一覧については、[公開リージョンとエンドポイント - LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) に関するページを参照してください。
+Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
 
-Speech SDK 経由で**意図認識**に使用可能なリージョンは、[Language Understanding サービスのリージョンのページ](/azure/cognitive-services/luis/luis-reference-regions)に一覧表示されています。
+ グローバル リージョン | リージョン | Speech SDK パラメーター
+ ------|-------|--------
+ アジア | 東アジア | `eastasia`
+ アジア | 東南アジア | `southeastasia`
+ オーストラリア | オーストラリア東部 | `australiaeast`
+ ヨーロッパ | 北ヨーロッパ | `northeurope`
+ ヨーロッパ | 西ヨーロッパ | `westeurope`
+ 北米 | 米国東部 | `eastus`
+ 北米 | 米国東部 2 | `eastus2`
+ 北米 | 米国中南部 | `southcentralus`
+ 北米 | 米国中西部 | `westcentralus`
+ 北米 | 米国西部 | `westus`
+ 北米 | 米国西部 2 | `westus2`
+ 南アメリカ | ブラジル南部 | `brazilsouth`
 
-一覧の各公開リージョンについては、提供されている **API リージョン名**を使用します。 たとえば、米国西部の場合は `westus` を使用します。
+これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
 
 ## <a name="rest-apis"></a>REST API
 

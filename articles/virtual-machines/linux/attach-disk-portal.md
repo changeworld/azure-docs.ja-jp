@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 519fd063e52d1e202ea76db0fd4be15ebd117cd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001618"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214931"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -28,7 +28,7 @@ ms.locfileid: "39001618"
 VM にディスクを接続する前に、次のヒントを確認してください。
 
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、[Premium Storage Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ (Premium Storage)](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 * 仮想マシンに接続されているディスクは、実際には Azure に保存されている .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 * ディスクをアタッチした後、[Linux VM に接続して新しいディスクをマウントする](#connect-to-the-linux-vm-to-mount-the-new-disk)必要があります。
 
@@ -53,8 +53,7 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
    
    ![ディスク設定を確認する](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. 
-  **[保存]** をクリックしてマネージド ディスクを作成し、VM の構成を更新します。
+4. **[保存]** をクリックしてマネージド ディスクを作成し、VM の構成を更新します。
 
    ![新しい Azure Managed Disk の保存](./media/attach-disk-portal/confirm-create-new-md.png)
 
@@ -64,13 +63,11 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 ## <a name="attach-an-existing-disk"></a>既存のディスクの接続
 1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
-2. 
-  **[名前]** のドロップダウン メニューをクリックして、Azure サブスクリプションにアクセスできる既存のマネージド ディスク一覧を確認します。 接続するマネージド ディスクを選択します。
+2. **[名前]** のドロップダウン メニューをクリックして、Azure サブスクリプションにアクセスできる既存のマネージド ディスク一覧を確認します。 接続するマネージド ディスクを選択します。
 
    ![既存の Azure Managed Disk の接続](./media/attach-disk-portal/select-existing-md.png)
 
-3. 
-  **[保存]** をクリックして既存のマネージド ディスクを接続し、VM の構成を更新します。
+3. **[保存]** をクリックして既存のマネージド ディスクを接続し、VM の構成を更新します。
    
    ![Azure Managed Disk の更新の保存](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
@@ -99,7 +96,12 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-ここでは、*sdc* が対象のディスクです。 `fdisk` でディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
+ここでは、*sdc* が対象のディスクです。 
+
+### <a name="partion-a-new-disk"></a>新しいディスクのパーティション分割
+データを含む既存のディスクを使用する場合、ディスクのマウントをスキップします。 新規ディスクをアタッチする場合、ディスクをパーティション分割する必要があります。
+
+`fdisk` を使用してディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
 ```bash
 sudo fdisk /dev/sdc
@@ -179,8 +181,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
+### <a name="mount-the-disk"></a>ディスクのマウント
+`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive

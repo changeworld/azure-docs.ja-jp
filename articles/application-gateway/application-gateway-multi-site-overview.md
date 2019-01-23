@@ -1,38 +1,30 @@
 ---
-title: Azure Application Gateway の複数のサイトのホスト | Microsoft Docs
-description: このページでは、Application Gateway による複数サイトのサポートの概要を示します。
-documentationcenter: na
+title: Azure Application Gateway での複数のサイトのホスト
+description: このページでは、Azure Application Gateway による複数サイトのサポートの概要を示します。
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: ''
-ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 1/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04aca43e7220b0d5f644ca4f03db3a7442972728
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704763"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358470"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 20 の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの contoso.com および fabrikam.com のトラフィックを処理します。
+複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの contoso.com および fabrikam.com のトラフィックを処理します。
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
 
-http://contoso.com に対する要求は ContosoServerPool にルーティングされ、http://fabrikam.com に対する要求は FabrikamServerPool にルーティングされます。
+http://contoso.com の要求は ContosoServerPool にルーティングされ、 http://fabrikam.com は FabrikamServerPool にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、http://blog.contoso.com と http://app.contoso.com が 1 つのアプリケーション ゲートウェイ デプロイでホストされるという局面が考えられます。
+同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる http://blog.contoso.com 、 http://app.contoso.com などがあります。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 
@@ -127,7 +119,6 @@ http://contoso.com に対する要求は ContosoServerPool にルーティング
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 複数サイトのホストについて学習した後に、 [複数サイトのホストを使用するアプリケーション ゲートウェイの作成](application-gateway-create-multisite-azureresourcemanager-powershell.md) に関するページにアクセスして、複数の Web アプリケーションをサポートする機能を備えたアプリケーション ゲートウェイを作成してください。
-

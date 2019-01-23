@@ -1,23 +1,21 @@
 ---
-title: Azure Machine Learning Studio のアルゴリズムを選択する方法 | Microsoft Docs
+title: アルゴリズムの選択方法
+titleSuffix: Azure Machine Learning Studio
 description: クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning Studio のアルゴリズムを選択する方法。
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-tags: ''
-ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20debfe2a1f3cf92e1a90867ca2b3a01852f7f9c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256929"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267353"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のアルゴリズムの選択方法
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 24df1cb5b7a9cc1209940bbaaa1217a80ea74918
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044622"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259650"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
 
@@ -266,7 +266,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
   - .extaccounts
 - SAS にアタッチされたストレージ リソースを削除する場合、次を削除します。
   - %AppData%/StorageExplorer フォルダー (Windows の場合)
-  - /Users/<your_name>/Library/Applicaiton SUpport/StorageExplorer (Mac の場合)
+  - /Users/<your_name>/Library/Application SUpport/StorageExplorer (Mac の場合)
   - ~/.config/StorageExplorer (Linux の場合)
   - これらのファイルを削除すると、**すべての資格情報を再入力する必要があります**
 

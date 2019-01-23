@@ -7,14 +7,14 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726292"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305453"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -58,6 +58,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+次のビデオでは、Cognitive Services キーを使用するデモンストレーションを行っています。 
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>マルチサービスのサブスクリプション キーによる認証
 
 >[!WARNING]
@@ -66,6 +68,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 この方法も、サブスクリプション キーを使用して要求を認証します。 主な違いは、サブスクリプション キーが特定のサービスに関連付けられておらず、単一のキーを使用して複数の Cognitive Services に対する要求を認証できることです。 リージョン別の提供状況、サポートされている機能、および価格については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
 
 サブスクリプション キーは、各要求内で `Ocp-Apim-Subscription-Key` ヘッダーとして指定されます。
+
+[![Cognitive Services のマルチサービスのサブスクリプション キーのデモ](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 

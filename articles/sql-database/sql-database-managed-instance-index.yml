@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7251ec6e20dcbc9169c2dab2247386ff500760e7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033878"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329707"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -132,7 +132,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">ハードウェアの特性と制限</a>および <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 言語の違い</a>について学習します。
     - html: マネージド インスタンスがデプロイされる Azure VNet を<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">構成します</a>。
-    - html: マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances">検証します</a>。
+    - html: マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">検証します</a>。
     - html: <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。
     - html: <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してデータベースを移行できることを確認します。
     - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブ復元</a>または<a href="/azure/dms/tutorial-sql-server-managed-instance-online">データ移行サービス</a>を使用して、データベースを Managed Instance に移行します。

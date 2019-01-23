@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794245"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322097"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -45,7 +45,7 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
 
 * **バックアップ スケジュール**: 定期バックアップを実行する時刻または頻度。 指定した間隔または固定された時刻 (毎日/毎週) にバックアップを繰り返すようにスケジュールできます。
 
-    1. **頻度ベースのバックアップ スケジュール**: 一定の間隔でデータ バックアップを実行しなければならない場合は、このスケジュールの種類を使用する必要があります。 2 つの連続するバックアップの間の目的の時間間隔を、ISO8601 形式を使用して定義します。 頻度ベースのバックアップ スケジュールでは、分単位の間隔がサポートされます。
+    1. **頻度ベースのバックアップ スケジュール**: 一定の間隔でデータ バックアップを実行しなければならない場合は、このスケジュールの種類を使用する必要があります。 2 つの連続するバックアップの間の目的の時間間隔を、ISO8601 形式を使用して定義します。 頻度ベースのバックアップ スケジュールでは、分単位までの間隔がサポートされます。
         ```json
         {
             "ScheduleKind": "FrequencyBased",

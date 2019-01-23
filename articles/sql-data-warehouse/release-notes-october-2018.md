@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966825"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213691"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 10 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 10 月に導入された新しい機能と変更点について説明します。
@@ -41,7 +41,7 @@ Azure SQL Data Warehouse (SQL DW) では、機密データをセキュリティ�
 Azure SQL Data Warehouse の高速データベース復旧 (ADR) がパブリック プレビューになりました。 ADR は、現在の復旧プロセスを一から再設計することで、特に実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL Server エンジンです。 ADR の主な利点は、高速かつ一貫性のあるデータベースの復旧と、瞬時のトランザクション ロールバックです。
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Azure Monitor 診断ログ
-Azure Monitor 診断ログと直接統合されることにより、SQL Data Warehouse (SQL DW) では、分析ワークロードに対する拡張された分析情報を利用できるようになりました。 この新しい機能により、開発者は長期間にわたってワークロード ビヘイビアーを分析し、クエリの最適化や容量の管理に関して十分に情報を得たうえで決定を下すことができます。 データ ウェアハウスのワークロードに対する追加の分析情報を提供する [Azure Monitor 診断ログ](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs)により、外部ログ プロセスを導入しました。 ボタンを 1 回クリックすることで、[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) を使用して履歴クエリのパフォーマンスをトラブルシューティングするための診断ログを構成できます。 Azure Monitor 診断ログでは、監査目的でログをストレージ アカウントに保存することによって、カスタマイズ可能な保有期間をサポートしています。また、ほぼリアルタイムでのテレメトリの分析情報を入手するためにログをイベント ハブにストリームしたり、[ログ クエリ]()で Log Analytics を使用することによってログを分析したりすることが可能です。 診断ログは、データ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される SQL Data Warehouse でのパフォーマンス トラブルシューティングの DMV に相当します。 この最初のリリースでは、以下のシステム動的管理ビューが有効になっています。
+Azure Monitor 診断ログと直接統合されることにより、SQL Data Warehouse (SQL DW) では、分析ワークロードに対する拡張された分析情報を利用できるようになりました。 この新しい機能により、開発者は長期間にわたってワークロード ビヘイビアーを分析し、クエリの最適化や容量の管理に関して十分に情報を得たうえで決定を下すことができます。 データ ウェアハウスのワークロードに対する追加の分析情報を提供する [Azure Monitor 診断ログ](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs)により、外部ログ プロセスを導入しました。 ボタンを 1 回クリックすることで、[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) を使用して履歴クエリのパフォーマンスをトラブルシューティングするための診断ログを構成できます。 Azure Monitor 診断ログでは、監査目的でログをストレージ アカウントに保存することによって、カスタマイズ可能な保有期間をサポートしています。また、ほぼリアルタイムでのテレメトリの分析情報を入手するためにログをイベント ハブにストリームしたり、ログ クエリで Log Analytics を使用することによってログを分析したりすることが可能です。 診断ログは、データ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される SQL Data Warehouse でのパフォーマンス トラブルシューティングの DMV に相当します。 この最初のリリースでは、以下のシステム動的管理ビューが有効になっています。
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)

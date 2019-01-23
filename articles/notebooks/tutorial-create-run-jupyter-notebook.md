@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106678"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244586"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
@@ -28,9 +28,9 @@ ms.locfileid: "53106678"
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、[クイック スタートの Azure Notebooks へのサインイン](quickstart-sign-in-azure-notebooks.md)に関する記事をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
-1. パブリック プロファイル ページで、ページの上部にある **[マイ プロジェクト]** を選択します。
+1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
@@ -411,17 +411,13 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Visual Studio Code を使用してノートブックをデバッグする
 
-ノートブックのコード セルが期待どおりに動作しない場合は、コードのバグまたはその他の欠陥が存在する可能性があります。 ただし、`print` ステートメントを使用して変数の値を表示する以外に、Jupyter Notebook ではデバッグ機能は提供されていません。
+ノートブックのコード セルが期待どおりに動作しない場合は、コードのバグまたはその他の欠陥が存在する可能性があります。 ただし、`print` ステートメントを使用して変数の値を表示する以外に、一般的な Jupyter 環境ではデバッグ機能は提供されていません。
 
-さいわい、Visual Studio Code 用の Python 拡張機能では、Jupyter ノートブックを Markdown セルがコメントになった単一のコード ファイルとして直接インポートできます。 その後、Visual Studio Code のデバッガーを使用して、コードのステップ実行、ブレークポイントの設定、状態の確認などを行うことができます。 
+幸いにも、ノートブックの *.ipynb* ファイルをダウンロードし、Python 拡張機能を使用して Visual Studio Code で開くことができます。 この拡張機能は、コメント内に Markdown セルを保持する 1 つのコード ファイルとして、ノートブックを直接インポートします。 ノートブックをインポートした後、Visual Studio Code のデバッガーを使用して、コードのステップ実行、ブレークポイントの設定、状態の確認などを行うことができます。 次のコードを修正したら、Visual Studio Code から *.ipynb* ファイルをエクスポートして、Azure Notebooks に再度アップロードします。
 
-コードを修正した後は、*.ipynb* ファイルを保存し、それを Azure Notebooks にアップロードします。
+詳しくは、Visual Studio Code のドキュメントの [Jupyter ノートブックのデバッグ](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)に関するページをご覧ください。
 
-詳しくは、Visual Studio Code の以下のドキュメントをご覧ください。
-
-- [VS Code での Jupyter Notebook の概要](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Python チュートリアル - デバッガーを構成して実行する](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [編集 - Jupyter のコード セル](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+また、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページで、Jupyter ノートブック用の Visual Studio Code の追加機能についてもご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

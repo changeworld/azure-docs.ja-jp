@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: bf84ec16d5d13439796b386a8ab4f40840ca4eaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 682d1d123d3381a52c9d356cd1bf226d2a847df4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438423"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352871"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -22,7 +22,7 @@ ms.locfileid: "53438423"
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* SSL/TLS ベースの VPN プロトコルである OpenVPN。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 OpenVPN は、Android、iOS、Linux、および Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである OpenVPN。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
 
 * Secure Socket トンネリング プロトコル (SSTP)。これは、SSL ベースの独自の VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
 

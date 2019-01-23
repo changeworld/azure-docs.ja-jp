@@ -1,22 +1,21 @@
 ---
-title: 会社のインターネット ドメインで Azure Traffic Manager ドメイン名が参照されるようにする | Microsoft Docs
+title: 会社のインターネット ドメインで Azure Traffic Manager ドメイン名が参照されるようにする
 description: この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 2b9b718a61d13790de38ea82f9b479e372e9de63
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c11d8ddcd9a1c1f051ab779a66710ab3d968acab
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052685"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200583"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 

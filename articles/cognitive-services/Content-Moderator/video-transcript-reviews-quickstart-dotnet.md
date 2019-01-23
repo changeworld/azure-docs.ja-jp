@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 672d801b9a6c45a8ab3eb9964b6e061eeee11f59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220943"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266826"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -33,8 +33,7 @@ ms.locfileid: "47220943"
 
 ## <a name="sign-up-for-content-moderator"></a>Content Moderator へのサインアップ
 
-REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
-キーを入手する方法については、[クイック スタート](quick-start.md)を参照してください。
+REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator をサブスクライブし、キーを取得します。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>前の手順で完了していない場合は、レビュー ツール アカウントにサインアップする
 
@@ -215,7 +214,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
 1. トランスクリプトを含む**ストリーム** オブジェクト。
 
-トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
+トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
 
 > [!NOTE]
 > プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](https://docs.microsoft.com/azure/media-services/media-services-index-content)します。
@@ -252,7 +251,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 - **Term**。 用語を含む文字列です。
 - **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
 
-トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
+トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
 
 名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、**ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList<TranscriptModerationBodyItem> に結果を変換し、**AddVideoTranscriptModerationResult** に送信します。
 

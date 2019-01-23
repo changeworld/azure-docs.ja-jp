@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0d9d10214f8bc61a914de3f72ddae13679f2811e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239673"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358509"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>他のサービスを SQL Data Warehouse と統合する
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを統合できます。 次のようなサービスがあります。
@@ -30,31 +30,31 @@ SQL Data Warehouse と統合できる Azure のサービスおよび[統合パ�
 ## <a name="power-bi"></a>Power BI
 Power BI との統合によって、SQL Data Warehouse のコンピューティング パワーを、Power BI の動的なレポート作成や視覚化と組み合わせることができます。 現在、Power BI との統合には次のものが含まれています。
 
-* **Direct Connect**: SQL Data Warehouse に対する論理的プッシュダウンを備えた、さらに高度な接続です。 プッシュダウンにより、分析の速度と規模を高めることができます。
-* **Power BI で開く**: [Power BI で開く] ボタンは、簡単に接続できるように Power BI にインスタンス情報を渡します。
+* **Direct Connect**:SQL Data Warehouse に対する論理的プッシュダウンを備えた、さらに高度な接続です。 プッシュダウンにより、分析の速度と規模を高めることができます。
+* **Power BI で開く**:[Power BI で開く] ボタンは、簡単に接続できるように Power BI にインスタンス情報を渡します。
 
 詳しくは、[Power BI との統合](sql-data-warehouse-get-started-visualize-with-power-bi.md)に関する記事、または[Power BI のドキュメント](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)をご覧ください。
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory は、抽出と読み込みの複雑なパイプラインを作成するための管理されたプラットフォームを提供します。 SQL Data Warehouse と Azure Data Factory の統合には、次が含まれます。
 
-* **ストアド プロシージャ**: SQL Data Warehouse でのストアド プロシージャの実行を調整します。
-* **コピー**: ADF を使用して、SQL Data Warehouse にデータを移動します。 この操作では、内部で ADF の標準的なデータ移行メカニズムまたは PolyBase を使用できます。 
+* **ストアド プロシージャ**:SQL Data Warehouse でのストアド プロシージャの実行を調整します。
+* **コピー**:ADF を使用して、SQL Data Warehouse にデータを移動します。 この操作では、内部で ADF の標準的なデータ移行メカニズムまたは PolyBase を使用できます。 
 
-詳しくは、[Azure Data Factory との統合](sql-data-warehouse-get-started-visualize-with-power-bi.md)に関する記事をご覧ください。
+詳しくは、[Azure Data Factory との統合](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)に関する記事をご覧ください。
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning は、フル マネージドの分析サービスで、大規模な予測ツール セットを使用する複雑なモデルを作成できます。 SQL Data Warehouse は、次の機能により、これらのモデルのソースと変換先の両方としてサポートされています。
 
-* **データの読み取り** : T-SQL を使用して、SQL Data Warehouse に対して大規模にモデルを駆動します。
-* **データの書き込み** : 任意のモデルから SQL Data Warehouse に変更を戻します。
+* **データの読み取り**:T-SQL を使用して、SQL Data Warehouse に対して大規模にモデルを駆動します。
+* **データの書き込み**:任意のモデルから SQL Data Warehouse に変更を戻します。
 
 詳しくは、[Azure Machine Learning との統合](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)に関する記事をご覧ください。
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Azure Stream Analytics は、Azure Event Hub で生成されたイベント データの処理と使用のための、複雑でフル マネージドのインフラストラクチャです。  SQL Data Warehouse との統合により、ストリーミング データを効率的に処理でき、さらに、関連するデータと並行して格納できることにより、より深く高度な分析が可能になります。  
 
-* **ジョブの出力** : Stream Analytics ジョブから SQL Data Warehouse に直接出力を送信します。
+* **ジョブの出力**:Stream Analytics ジョブから SQL Data Warehouse に直接出力を送信します。
 
 詳しくは、[Azure Stream Analytics との統合](sql-data-warehouse-integrate-azure-stream-analytics.md)に関する記事をご覧ください。
 

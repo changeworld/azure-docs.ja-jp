@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744090"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332321"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Log Analytics の使用量とコストを管理する
 
@@ -67,7 +66,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 1. ワークスペースの左ウィンドウから **[使用量と推定コスト]** を選びます。
 2. 選んだワークスペースの **[使用量と推定コスト]** ページの上部にある **[データ ボリュームの管理]** をクリックします。 
-5. 日次上限は既定では **[オフ]** になっています。有効にするには、**[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。<br><br> ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. 日次上限は既定では **[オフ]** になっています。有効にするには、**[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。<br><br> ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>日次上限に到達した際のアラート
 データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳しくは、[アラートを作成、表示、管理する方法](alerts-metric.md)に関するページをご覧ください。      
@@ -98,6 +97,25 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
 マイクロソフト エンタープライズ契約の署名が 2018 年 7 月 1 日より前のお客様、またはサブスクリプションに Log Analytics ワークスペースを既に作成済みのお客様は、まだ *Free* レベルにアクセスすることができます。 サブスクリプションが既存の EA 加入契約に関連付けられていない場合、2018 年 4 月 2 日より後に新しいサブスクリプションでワークスペースを作成するときに、*Free* レベルは利用できません。  *Free* レベルを使っている場合は、データのリテンション期間は 7 日間に制限されます。  レガシの*スタンドアロン*または*ノードあたり*、および 2018 年現在の価格レベルについては、過去 31 日間の収集データを利用できます。 *Free* レベルには 1 日当たり 500 MB のインジェスト制限があり、許可されているボリュームを常に超えることが確実な場合は、ワークスペースを別のプランに変更し、この制限を超えてデータを収集できます。 
+
+> [!NOTE]
+> OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の*ノード単位*の価格レベルを選択します。
+
+## <a name="changing-pricing-tier"></a>価格レベルの変更
+
+Log Analytics ワークスペースが従来の価格レベルにアクセスできる場合、従来の価格レベル間で変更するには、以下の手順を実行します。
+
+1. Azure portal の Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択します。
+
+2. ワークスペース ウィンドウで、**[全般]** の **[価格レベル]** を選択します。  
+
+3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
+    ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
+
+> [!NOTE]
+> ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics がデータを収集しなくなった場合のトラブルシューティング
@@ -136,22 +154,55 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 ### <a name="nodes-sending-data"></a>データを送信するノード
 
-過去 1 か月間のノード数のレポート データを把握するには、次のように使用します
+過去 1 か月間のコンピューター (ノード) 数の毎日のレポート データを把握するには、次のように使用します
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-コンピューターごとに取り込まれたイベントの数を表示するには、次のように使用します
+**課金対象のデータ型** (一部のデータ型は無料です) を送信するコンピューターの一覧を取得するには、[_IsBillable](log-standard-properties.md#isbillable) プロパティを活用します。
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。 
+
+これを拡張して、課金対象のデータ型を送信している 1 時間あたりのコンピューターの数を返すことができます。
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+コンピューターごとに、取り込まれた課金可能イベントの**サイズ**を表示するには `_BilledSize` プロパティを使用します。サイズはバイト単位で示されます。
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+このクエリは、Usage データ型でこれをクエリする従来の方法を置き換えるものです。 
+
+コンピューターごとに、取り込まれたイベントの**数**を表示するには、次のように使用します
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-このクエリの実行にはコストがかかるため、慎重に使用してください。 特定のコンピューターにデータを送信するデータ型を表示する場合は、次のコマンドを使用します。
+コンピューターごとに取り込まれた請求対象のイベントの数を表示するには、次のように使用します 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+特定のコンピューターにデータを送信する、課金対象のデータ型のデータ数を表示する場合は、次のコマンドを使用します。
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。

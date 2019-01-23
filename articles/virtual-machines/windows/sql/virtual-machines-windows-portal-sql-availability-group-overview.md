@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239442"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358053"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
@@ -33,6 +33,8 @@ Azure Virtual Machines での Always On 可用性グループは、オンプレ�
 ![可用性グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 Azure Virtual Machines での可用性グループの重要な違いは、Azure Virtual Machines には[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要なことです。 ロード バランサーは、可用性グループ リスナーの IP アドレスを保持しています。 複数の可用性グループがある場合は、グループごとにリスナーが必要です。 1 つのロード バランサーで複数のリスナーをサポートできます。
+
+さらに、Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを使用することをお勧めします。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。 
 
 Azure Virtual Machines に SQL Server 可用性グループを作成する準備ができたら、次のチュートリアルをご覧ください。
 

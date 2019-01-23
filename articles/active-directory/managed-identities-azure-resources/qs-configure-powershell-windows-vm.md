@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: a29980da64775ca39f103b7430239f38c98a43fc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 4d4775169c40190e4cffb7b93c04abd58babc928
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578458"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320929"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する
 
@@ -88,6 +88,34 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
     > [!NOTE]
     > Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。
+
+### <a name="add-vm-system-assigned-identity-to-a-group"></a>VM のシステム割り当て ID をグループに追加する
+
+VM でシステム割り当て ID を有効にした後は、その ID をグループに追加できます。  以降の手順では、VM のシステム割り当て ID をグループに追加します。
+
+1. `Login-AzureRmAccount` を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。
+
+   ```powershell
+   Login-AzureRmAccount
+   ```
+
+2. VM のサービス プリンシパルの `ObjectID` (返された値の `Id` フィールドで指定されています) を取得し、メモします。
+
+   ```powerhshell
+   Get-AzureRmADServicePrincipal -displayname "myVM"
+   ```
+
+3. グループの `ObjectID` (返された値の `Id` フィールドで指定されています) を取得し、メモします。
+
+   ```powershell
+   Get-AzureRmADGroup -searchstring "myGroup"
+   ```
+
+4. VM のサービス プリンシパルをグループに追加します。
+
+   ```powershell
+   Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
+   ```
 
 ## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Azure VM でシステム割り当てマネージド ID を無効にする
 

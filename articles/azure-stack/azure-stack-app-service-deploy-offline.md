@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: db4c0f2d1197a190b33bd297bb597fd19057d875
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104660"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230341"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
@@ -27,14 +27,15 @@ ms.locfileid: "54104660"
 
 > [!IMPORTANT]
 > Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
->
->
 
 この記事の手順に従うと、次のような Azure Stack 環境に [App Service リソースプロバイダー](azure-stack-app-service-overview.md)をインストールできます。
 
 - インターネットに接続されていない
 - Active Directory フェデレーション サービス (AD FS) によって保護されている
 
+ > [!IMPORTANT]
+ > リソース プロバイダーをデプロイする前に、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
+ 
 App Service リソースプロバイダーをオフライン Azure Stack の展開に追加するには、次の最上位のタスクをすべて実行する必要があります。
 
 1. [前提となる手順](azure-stack-app-service-before-you-get-started.md)をすべて実行します (証明書の購入など。受け取るまでに数日かかる場合があります)。

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/15/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055168"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267319"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -40,9 +40,9 @@ Azure Stack 1811 更新プログラムのビルド番号は **1.1811.0.101** で
 Azure Stack では、修正プログラムが定期的にリリースされます。 Azure Stack を 1811 に更新する前に、必ず 1809 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes)をインストールしてください。
 
 > [!TIP]  
-> 以下の *RRS* または *Atom* フィードに登録して、Azure Stack 修正プログラムの最新情報を入手してください。
-> - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
-> - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+> 以下の *RSS* または *Atom* フィードに登録して、Azure Stack 修正プログラムの最新情報を入手してください。
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack 修正プログラム
 
@@ -82,7 +82,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    拡張機能ホストの必須の証明書を適切にインポートしたら、管理者ポータルから 1811 の更新を再開することができます。 Microsoft では、Azure Stack のオペレーターに対し、更新プロセス中はスケール ユニットをメンテナンス モードにするよう推奨していますが、拡張機能ホストの証明書が存在しないことに起因するエラーが、既存のワークロードやサービスに影響することはないと考えられます。  
+    拡張機能ホストの必須の証明書を適切にインポートしたら、管理者ポータルから 1811 の更新を再開することができます。 Microsoft では、Azure Stack のオペレーターに対し、更新プロセス中にメンテナンス期間をスケジュールするよう推奨していますが、拡張機能ホストの証明書が存在しないことに起因するエラーが、既存のワークロードやサービスに影響することはないと考えられます。  
 
     この更新プログラムのインストール中、拡張機能ホストが構成されている間、Azure Stack ユーザー ポータルは利用できません。 拡張機能ホストの構成には最大で 5 時間かかる場合があります。 その間、[Azure Stack 管理者 PowerShell または特権エンドポイント](azure-stack-monitor-update.md)を使用して、更新プログラムの状態を確認したり、失敗した更新プログラムのインストールを再開したりできます。
 
@@ -254,6 +254,22 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 ### <a name="compute"></a>Compute
 
 - 新しい Windows 仮想マシン (VM) を作成するとき、作業を続行するために **[設定]** ブレードでパブリック受信ポートを選択するよう要求されます。 1811 では、この設定が必須ですが、作用はありません。 この機能は Azure Firewall に依存していますが、Azure Stack には Azure Firewall が実装されていないためです。 **[パブリック受信ポートなし]** または他の任意のオプションを選択して、VM の作成を続行できます。 この設定には一切作用がありません。
+
+- 新しい Windows 仮想マシン (VM) を作成するときに、次のエラーが表示されることがあります。
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   このエラーは、VM でブート診断を有効にしても、ブート診断ストレージ アカウントを削除した場合に発生します。 この問題を回避するには、以前使用したものと同じ名前のストレージ アカウントを再作成します。
+
+- [Dv2 シリーズ VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) を作成するときは、D11 14v2 VM ではそれぞれ 4、8、16、32 のデータ ディスクを作成することができます。 ただし、VM の作成ウィンドウには、8、16、32、および 64 のデータ ディスクが表示されます。
+
+- Azure Stack の使用状況記録には、予期しない大文字が含まれている場合があります。たとえば、次のとおりです。
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   この例では、リソース グループの名前は **AndrewRG** である必要があります。 この不一致は無視してかまいません。
 
 <!-- 3235634 – IS, ASDK -->
 - **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイするには、サフィックスを **Standard_A2_v2** (小文字の v) と指定してください。 **Standard_A2_V2** (大文字の V) は使用しないでください。 これは、グローバル Azure で動作し、Azure Stack では不整合になります。

@@ -12,23 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: 740a3ce36dde953cb92c52a10cbebf12544adae0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 21c43bdd9f872841c3adaf5293177efe23fc3021
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968154"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358968"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack のオフライン更新
 
 *適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
->
->
+> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 以降の更新プログラムを適用するか、最新の Azure Stack 開発キットをデプロイします。 リソース プロバイダーを更新する前に、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
 
 この記事の手順に従うことによって、次のような Azure Stack 環境にデプロイされた [App Service リソース プロバイダー](azure-stack-app-service-overview.md)をアップグレードできます。
 

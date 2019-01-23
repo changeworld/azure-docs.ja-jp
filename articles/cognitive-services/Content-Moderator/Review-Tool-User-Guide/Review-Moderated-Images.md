@@ -1,22 +1,23 @@
 ---
-title: Azure Content Moderator での画像のレビュー | Microsoft Docs
-description: このレビュー ツールでは、モデレート担当者が画像をレビューできます。
+title: タグ付きの画像をレビューする - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: レビュー ツールで、モデレート担当者が Web ポータル内の画像をレビューできる方法を説明します。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 08/06/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 97879747bbfde2247e41847d8d68bf7f19530ecb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 14bcac5a16baa5566525952d29111566583c7b84
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372781"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259225"
 ---
-# <a name="review-moderated-images"></a>モデレートされた画像のレビュー
+# <a name="let-human-reviewers-review-images"></a>人間のレビュー担当者に画像をレビューさせます
 
 Content Moderation にサインアップし、サブスクリプション キーを入手したら、画像のレビュー機能を試すことができます。
 
@@ -24,21 +25,21 @@ Content Moderation にサインアップし、サブスクリプション キー
 2.  [Try]\(試す\) タブをクリックし、レビューするいくつかの画像をアップロードします。
 3.  [確認] タブをクリックし、画像を選択します。
 
-  ![画像のレビュー オプション](images/review-images-1.png)
+  ![Review Image オプションが強調表示されたレビュー ツールを示す Chrome ブラウザー](images/review-images-1.png)
 
   レビュー ツールによって割り当てられているラベルと共に画像が表示されます。 レビュー中の画像は、チームの他のレビュー担当者が使用できません。
 
 4.  "表示するレビュー" のスライダー (1) を動かして、画面に表示される画像の数を調整します。 タグ付きまたはタグなしのボタン (2) をクリックして、画像をそれに応じて並べ替えます。 タグ (3) をクリックして、オンとオフを切り替えます。
 
-  ![画像のレビューの参照](images/review-images-2.png)
+  ![レビュー用のタグが付いた画像とレビュー ツールが表示された Chrome ブラウザー](images/review-images-2.png)
  
 5.  画像の詳細を表示するには、サムネイル上の省略記号をクリックし、続いて **[詳細の表示]** オプションをクリックします。 画像をサブチームに割り当てるには、**[Move to]\(移動先\)** オプションを選択します。
  
-  ![[詳細の表示] および [Move to]\(移動先\) オプション](images/review-images-3.png)
+  ![[詳細の表示] オプションが強調表示された画像](images/review-images-3.png)
 
 6. 詳細ページで画像モデレーション情報を参照します。
 
-  ![画像の詳細を表示](images/review-images-4.png)
+  ![別のウィンドウにモデレーションの詳細が一覧表示された画像](images/review-images-4.png)
  
 7.  タグの割り当てをレビューし、必要に応じて更新したら、**[次へ]** をクリックしてレビューを送信します。
 

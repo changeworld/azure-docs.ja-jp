@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 86c8e8c10811b1478ae2c853f1efef5b6b5caa83
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406330"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353143"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
@@ -153,7 +153,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 * Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからの特定と選択が簡単になりました。
 * Azure Data Catalog ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。 英語に加え、Azure Data Catalog 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
+* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、次の資料にある対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。
 * Azure Data Catalog によって使用される Azure サブスクリプションの変更のサポート。 Azure Data Catalog の管理者は、Azure Data Catalog ポータルの [設定] ページを使用して、課金用に別の Azure サブスクリプションを選択できます。
 
 ## <a name="whats-new-for-january-2016"></a>2016 年 1 月の新機能

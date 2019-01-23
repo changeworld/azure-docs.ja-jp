@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 7ba1c4e0f358a2168c06ab9172229525cd4c136c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016139"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214506"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,9 +25,9 @@ ms.locfileid: "54016139"
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight MapReduce アクティビティは、[独自](compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで MapReduce プログラムを起動します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
 
-Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換に関するチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
+Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換に関するチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。
 
-HDInsight Pig と Hive アクティビティを使用してパイプラインから HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、[Pig](transform-data-using-hadoop-pig.md) と [Hive](transform-data-using-hadoop-hive.md) に関する記事をご覧ください。 
+HDInsight Pig と Hive アクティビティを使用してパイプラインから HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、[Pig](transform-data-using-hadoop-pig.md) と [Hive](transform-data-using-hadoop-hive.md) に関する記事をご覧ください。
 
 ## <a name="syntax"></a>構文
 
@@ -49,10 +49,10 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
         "getDebugInfo": "Failure",
         "arguments": [
-          "-SampleHadoopJobArgument1"
+            "-SampleHadoopJobArgument1"
         ],
         "defines": {
-          "param1": "param1Value"
+            "param1": "param1Value"
         }
     }
 }
@@ -62,13 +62,13 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | アクティビティの名前                     | はい      |
+| name              | アクティビティの名前                     | [はい]      |
 | description       | アクティビティの用途を説明するテキストです。 | いいえ        |
-| type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | はい      |
-| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
-| className         | 実行するクラスの名前         | はい      |
+| type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | [はい]      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| className         | 実行するクラスの名前         | [はい]      |
 | jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |
-| jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | はい      |
+| jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | [はい]      |
 | jarlibs           | jarLinkedServiceで定義される Azure Storage に格納されているジョブで参照される Jar ライブラリ ファイルへのパスの文字列配列。 ファイル名は大文字と小文字が区別されます。 | いいえ        |
 | getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または jarLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ        |
 | arguments         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ        |
@@ -79,7 +79,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 ## <a name="example"></a>例
 HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 
-```json   
+```json
 {
     "name": "MapReduce Activity for Mahout",
     "description": "Custom MapReduce to generate Mahout result",
@@ -113,7 +113,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 **arguments** セクションで MapReduce プログラムに任意の引数を指定できます。 実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。 MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
 
 ## <a name="next-steps"></a>次の手順
-別の手段でデータを変換する方法を説明している次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)

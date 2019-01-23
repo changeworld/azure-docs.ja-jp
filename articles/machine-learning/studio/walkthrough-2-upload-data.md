@@ -1,26 +1,8 @@
 ---
-title: 手順 2:Machine Learning Studio の実験にデータをアップロードする - Azure | Microsoft Docs
-description: 予測ソリューションの開発チュートリアルの手順 2:格納されているパブリックデータを Azure Machine Learning Studio にアップロードします。
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
-ms.service: machine-learning
-ms.component: studio
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 90a73de4177cec74187da852709137d77d60b4d4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261452"
+title:'手順 2: Machine Learning Studio の実験にデータをアップロードする' titleSuffix: Azure Machine Learning Studio description:'予測ソリューションの開発チュートリアルの手順 2:格納されているパブリックデータを Azure Machine Learning Studio にアップロードする。'
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/23/2017
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>チュートリアル手順 2:Azure Machine Learning Studio の実験に既存のデータをアップロードする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040542"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359590"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -42,7 +42,7 @@ ms.locfileid: "54040542"
 * **受信ファイアウォール規則は不要**: パスワード ライトバックは、基盤の通信チャネルとして Azure Service Bus リレーを使います。 すべての通信はポート 443 経由で送信されます。
 
 > [!Note]
-> オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントをパスワード ライトバックに使用することはできません。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
+> オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントをパスワード ライトバックに使用することはできません。 オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
@@ -58,6 +58,7 @@ ms.locfileid: "54040542"
 * Microsoft 365 E3 または A3
 * Microsoft 365 E5 または A5
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。

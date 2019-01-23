@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979099"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320788"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -27,7 +27,7 @@ ms.locfileid: "50979099"
 * ファイルの内容とメタデータを取得します。
 * アーカイブをフォルダーに抽出します。
 
-[SFTP コネクタ](../connectors/connectors-create-api-sftp.md)と比べて、SFTP-SSH コネクタでは、最大サイズ *1 GB* のファイルを読み書きできます。 1 GB より大きいファイルの場合は、SFTP-SSH コネクタに加えて、[大きなメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 その他の違いについては、この記事の後述にある「[SFTP-SSH と SFTP を比較する](#comparison)」で確認してください。
+[SFTP コネクタ](../connectors/connectors-create-api-sftp.md)と比べて、SFTP-SSH コネクタでは、最大サイズ *1 GB* のファイルを読み書きできます。 その他の違いについては、この記事の後述にある「[SFTP-SSH と SFTP を比較する](#comparison)」で確認してください。
 
 SFTP サーバー上のイベントを監視し、出力を他のアクションで使用できるようにするトリガーを使用できます。 SFTP サーバーで各種のタスクを実行するアクションを使用できます。 ロジック アプリ内の他のアクションでも、SFTP アクションからの出力を使用するようにできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルやその内容に関するメールのアラートを送信できます。
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
@@ -44,11 +44,11 @@ SFTP サーバー上のイベントを監視し、出力を他のアクション
   >
   > SFTP-SSH コネクタは、以下に示す秘密キー、形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
   > 
-  > * **秘密キー形式**: OpenSSH 形式および ssh.com 形式両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
   > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
   > * **フィンガープリント**: MD5
 
-* SFTP コネクタと比べて、最大サイズ *1 GB* のファイルを読み書きします。 1 GB より大きいファイルの場合は、[大きいメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。 
+* SFTP コネクタと比べて、最大サイズ *1 GB* のファイルを読み書きします。しかし、データは 1 GB 単位ではなく 50 MB 単位で処理します。
 
 * SFTP サーバーの指定されたパスにフォルダーを作成する**フォルダーの作成**アクションを提供します。
 
@@ -66,7 +66,7 @@ SFTP サーバー上のイベントを監視し、出力を他のアクション
   >
   > SFTP-SSH コネクタは、以下に示す秘密キー形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
   > 
-  > * **秘密キー形式**: OpenSSH 形式および ssh.com 形式両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
   > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
   > * **フィンガープリント**: MD5
   >
@@ -137,13 +137,13 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 
 ## <a name="examples"></a>例
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH トリガー: ファイルが追加または変更されたとき
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH トリガー: When a file is added or modified (ファイルの追加または変更時)
 
 このトリガーは、SFTP サーバーでファイルが追加または変更されたときにロジック アプリ ワークフローを開始します。 たとえば、ファイルの内容をチェックし、内容が指定された条件を満たすかどうかに基づいてその内容を取得する条件を追加できます。 その後、ファイルの内容を取得し、その内容を SFTP サーバーのフォルダーに格納するアクションを追加できます。 
 
 **企業での使用例**: このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理するために注文の内容を取得し、その注文を注文データベース内に格納できるように、**ファイルの内容を取得する**などの SFTP アクションを使用できます。
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH アクション: 内容を取得する
+### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH アクション: コンテンツを取得する
 
 このアクションは、SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。 
 

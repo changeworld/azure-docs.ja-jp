@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: b39cc799218a4c6f865acac8b98f5fb977c83bdc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.openlocfilehash: 00a7644663b4628d20dbe598def158bc120a7aee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117794"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245465"
 ---
 # <a name="update-the-sql-resource-provider"></a>SQL リソース プロバイダーの更新
 
 *適用対象: Azure Stack 統合システム*
 
-Azure Stack が新しいビルドに更新される際に、新しい SQL リソース プロバイダーがリリースされることがあります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。
+Azure Stack が新しいビルドに更新される際に、新しい SQL リソース プロバイダーがリリースされることがあります。 既存のリソース プロバイダーが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 
 
-> [!IMPORTANT]
-> 更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
-
-## <a name="overview"></a>概要
+SQL リソース プロバイダー バージョン 1.1.33.0 リリース以降の更新プログラムは累積的であり、バージョン 1.1.24.0 以降から開始する限り、リリースされた順序でインストールする必要はありません。 たとえば、バージョン 1.1.24.0 の SQL リソース プロバイダーを実行している場合、バージョン 1.1.33.0 以降にアップグレードできます。最初にバージョン 1.1.30.0 をインストールする必要はありません。 使用可能なリソース プロバイダーのバージョンと、それらがサポートされる Azure Stack のバージョンを確認するには、[リソース プロバイダーの展開の前提条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)に関するページで、バージョンの一覧を参照してください。
 
 リソース プロバイダーの更新には *UpdateSQLProvider.ps1* スクリプトを使用します。 このスクリプトは、新しい SQL リソース プロバイダーのダウンロードに含まれています。 更新プロセスは、[リソース プロバイダーを展開する](./azure-stack-sql-resource-provider-deploy.md)ために使用されるプロセスに似ています。 更新スクリプトは DeploySqlProvider.ps1 スクリプトと同じ引数を使用し、証明書情報を提供する必要があります。
 
-### <a name="update-script-processes"></a>更新スクリプトのプロセス
+ > [!IMPORTANT]
+ > リソース プロバイダーをアップグレードする前に、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題に関する詳細についてリリース ノートを確認してください。
+
+## <a name="update-script-processes"></a>更新スクリプトのプロセス
 
 *UpdateSQLProvider.ps1* スクリプトは、最新のリソース プロバイダーのコードで新しい仮想マシン (VM) を作成します。
 
@@ -47,11 +47,26 @@ Azure Stack が新しいビルドに更新される際に、新しい SQL リソ
 * ホスティング サーバー情報
 * 必要な DNS レコード
 
-### <a name="update-script-powershell-example"></a>PowerShell 更新スクリプトの例
+## <a name="update-script-parameters"></a>更新スクリプトのパラメーター
 
-管理者特権の PowerShell ISE セッションで次のスクリプトを編集して実行できます。 
+**UpdateSQLProvider.ps1** PowerShell スクリプトを実行するときに、コマンド ラインから以下のパラメーターを指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-必要に応じて、環境に適したアカウント情報とパスワードに変更することを忘れないでください。
+| パラメーター名 | 説明 | コメントまたは既定値 |
+| --- | --- | --- |
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
+| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
+| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
+| **DependencyFilesLocalPath** | このディレクトリには、証明書 .pfx ファイルも配置する必要があります。 | "_1 つのノードの場合は省略可能。複数のノードの場合は必須_" |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
+| **MaxRetryCount** | エラーが 発生した場合に各操作を再試行する回数。| 2 |
+| **RetryDuration** |再試行間のタイムアウト間隔 (秒単位)。 | 120 |
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します。 | いいえ  |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  |
+
+## <a name="update-script-powershell-example"></a>PowerShell 更新スクリプトの例
+次に、管理者特権の PowerShell コンソールから実行できる *UpdateSQLProvider.ps1* スクリプトの使用例を示します。 必要に応じて変数情報とパスワードを変更してください。  
 
 > [!NOTE]
 > この更新プロセスは、Azure Stack 統合システムにのみ適用されます。
@@ -101,24 +116,6 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -DependencyFilesLocalPath $tempDir\cert `
 
  ```
-
-## <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 パラメーター
-
-スクリプトを実行するときに、コマンド ラインから次のパラメーターを指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
-
-| パラメーター名 | 説明 | コメントまたは既定値 |
-| --- | --- | --- |
-| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
-| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
-| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
-| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
-| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
-| **DependencyFilesLocalPath** | このディレクトリには、証明書 .pfx ファイルも配置する必要があります。 | "_1 つのノードの場合は省略可能。複数のノードの場合は必須_" |
-| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
-| **MaxRetryCount** | エラーが 発生した場合に各操作を再試行する回数。| 2 |
-| **RetryDuration** |再試行間のタイムアウト間隔 (秒単位)。 | 120 |
-| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します。 | いいえ  |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,23 +1,23 @@
 ---
 title: モデレーション ジョブと human-in-the-loop (人間参加) レビュー - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: 最適な結果を得るには、マシン支援型モデレーションに人による監視を適用します。
+description: ビジネスに最適な結果を得るには、Azure Content Moderator Review API を使用してマシン支援型モデレーションと human-in-the-loop (人間参加) 機能を組み合わせます。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223257"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265347"
 ---
-# <a name="moderation-jobs-and-reviews"></a>モデレーション ジョブとレビュー
+# <a name="content-moderation-jobs-and-reviews"></a>コンテンツ モデレーション ジョブとレビュー
 
 ビジネスに最適な結果を得るには、Azure Content Moderator [Review API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) を使用してマシン支援型モデレーションと human-in-the-loop (人間参加) 機能を組み合わせます。
 
@@ -55,7 +55,7 @@ Review API には、コンテンツ モデレーション プロセスに人に�
 
 入力には次の情報が含まれています。
 
-- レビュー チーム ID: 前回の操作で返されたジョブ識別子
+- レビュー チーム ID: 前の操作で返されたジョブ識別子
 
 応答には次の情報が含まれています。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082953"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263409"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevOps 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Azure DevOps にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 
@@ -85,7 +85,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 
 1. ソース管理システムでスクリプトをチェックします。 **GetLabVMParams.ps1** といった名前を付けます。
 
-   このスクリプトをリリース パイプラインの一部としてエージェントで実行するときに、*Azure File Copy* や *PowerShell on Target Machines* などのタスクの手順を使用すると、スクリプトによって、アプリを VM に展開するために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM に展開します。 タスクは、VM リソース グループ名、IP アドレス、完全修飾ドメイン名 (FDQN) などの値を必要とします。
+   このスクリプトをリリース パイプラインの一部としてエージェントで実行するときに、*Azure File Copy* や *PowerShell on Target Machines* などのタスクの手順を使用すると、スクリプトによって、アプリを VM に展開するために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM に展開します。 タスクは、VM リソース グループ名、IP アドレス、完全修飾ドメイン名 (FQDN) などの値を必要とします。
 
 ## <a name="create-a-release-pipeline-in-release-management"></a>Release Management 内にリリース パイプラインを作成する
 リリース パイプラインを作成するには、次の手順を行います。

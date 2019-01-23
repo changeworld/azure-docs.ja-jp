@@ -1,21 +1,21 @@
 ---
-title: API コンソールでカスタム リストを使用してイメージをモデレートする - Content Moderator
+title: カスタム リストと API コンソールを使用してイメージをモデレートする - Content Moderator
 titlesuffix: Azure Content Moderator
-description: Content Moderator API コンソールでカスタム イメージ リストを使ってみましょう。
+description: カスタム イメージ リストを作成するには、Azure Content Moderator の List Management API を使用します。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e573262879b6a16e3cd530757900b86228ae299
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c42fdb037e1803db8255518f5c7ae7b2abd90c60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219959"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259361"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API コンソールでカスタム イメージ リストを使用してモデレートする
 

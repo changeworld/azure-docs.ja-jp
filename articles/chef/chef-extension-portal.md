@@ -8,26 +8,27 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051330"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358152"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする
-Azure portal から Linux または Windows の仮想マシンを作成または変更するときに、Chef 拡張機能を仮想マシンに追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
+Azure portal から Linux または Windows マシンに直接、Chef クライアント拡張機能を追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Chef**:有効な Chef アカウントを持っていない場合は、[Hosted Chef の無料試用版](https://manage.chef.io/signup)にサインアップします。 この記事の指示に従って進めるには、Chef アカウントから次の値が必要になります。 
-    - organization_validation キー
-    - rb
-    - run_list
+- **Chef**:有効な Chef アカウントを持っていない場合は、[Hosted Chef の無料試用版](https://manage.chef.io/signup)にサインアップします。 この記事の指示に従って進めるには、Chef アカウントから次の値が必要になります。
+  - organization_validation キー
+  - rb
+  - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>新しい Linux 仮想マシンに Chef 拡張機能をインストールする
-このセクションでは、Azure portal を使用して、Linux コンピューターを作成します。 この処理中に、新しい仮想マシンに Chef 拡張機能をインストールする方法も示されます。
+このセクションでは、Azure portal を使用して、Linux コンピューターを作成します。 処理中に、新しい仮想マシンに Chef 拡張機能をインストールする方法も表示されます。
 
 1. [Azure ポータル](http://portal.azure.com)にアクセスします。
 
@@ -81,13 +82,13 @@ Azure portal から Linux または Windows の仮想マシンを作成または
 
 1. **[拡張機能のインストール]** タブで次の値を指定し、**[OK]** を選択します。
 
-    - **Chef サーバーの URL**: たとえば*https://api.chef.io/organization/hessco*のように、組織名を含む Chef サーバーの URL を入力します。
+    - **Chef サーバーの URL**: たとえば*https://api.chef.io/organization/mycompany*のように、組織名を含む Chef サーバーの URL を入力します。
     - **Chef ノード名**: Chef ノード名を入力します。 任意の値が可能です。
     - **実行の一覧**: コンピューターに追加する Chef の実行の一覧を入力します。 ここは空白のままにします。
     - **Validation Client Name (検証クライアント名)**: Chef の検証クライアント名を入力します。 たとえば、 *tarcher-validator* など。
-    - **検証キー**: コンピューターをブートストラップするときに使用する検証キーが含まれているファイルを選択します。 
+    - **検証キー**: コンピューターをブートストラップするときに使用する検証キーが含まれているファイルを選択します。
     - **Client Configuration File (クライアント構成ファイル)**: chef クライアントの構成ファイルを選択します。 ここは空白のままにします。
-    - **Chef Client version (Chef クライアントのバージョン)**: インストールする chef クライアントのバージョンを入力します。 ここは空白のままにします。 値が空白の場合、最新バージョンがインストールされます。 
+    - **Chef Client version (Chef クライアントのバージョン)**: インストールする chef クライアントのバージョンを入力します。 ここは空白のままにします。 値が空白の場合は、最新バージョンがインストールされます。
     - **SSL Verification Mode (SSL 確認モード)**: **[なし]** または **[ピア]** のいずれかを選択します。 デモ用に *None* を選択しました。
     - **Chef Environment (Chef 環境)**: このノードが属する必要がある Chef 環境を入力します。 ここは空白のままにします。
     - **Encrypted Databag Secret (Encrypted Databag のシークレット)**: このコンピューターがアクセスする必要がある Encrypted Databag のシークレットが含まれているファイルを選択します。 ここは空白のままにします。
@@ -106,4 +107,5 @@ Chef 拡張機能を使用した仮想マシンの作成とデプロイのプロ
 ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/resource-created.png)
 
 ## <a name="next-steps"></a>次の手順
-* [Chef を使用して Windows 仮想マシンを Azure 上に作成する](/azure/virtual-machines/windows/chef-automation)
+
+- [Chef を使用して Windows 仮想マシンを Azure 上に作成する](/azure/virtual-machines/windows/chef-automation)

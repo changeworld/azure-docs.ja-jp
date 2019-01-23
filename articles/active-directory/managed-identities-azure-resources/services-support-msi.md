@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 3fdbac019849bc97e8d336b75f26a8fe0a05c449
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ca7ce29adb0b83215b64065ef83ff476025b8e81
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713116"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199716"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -27,28 +27,125 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 次の Azure サービスが、Azure リソースのマネージド ID をサポートしています。
 
-| Service | システム割り当ての状態 | ユーザー割り当ての状態| 構成 | トークンを取得する |
-| ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | 使用可能 | プレビュー | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Virtual Machine Scale Sets | 使用可能 | プレビュー | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure App Service | Windows:使用可能 <br> Linux:プレビュー | プレビュー | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell)  |
-| Azure Functions | 使用可能 | プレビュー | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell) |
-| Azure Logic Apps | 使用可能 | 使用できません。 | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#deployment-template) |  |
-| Azure Data Factory V2 | 使用可能 | 使用できません。 | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | 使用可能 | 使用できません。 | [Azure Resource Manager テンプレート](/azure/api-management/api-management-howto-use-managed-service-identity) |
-| Azure Container Instances | Linux:プレビュー<br>Windows:使用できません。 | Linux:プレビュー<br>Windows:使用できません。 | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Azure Resource Manager テンプレート](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
+### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+
+|マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー | プレビュー
+
+Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セット
+
+|マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー
+
+Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-app-service"></a>Azure App Service
+
+|マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
+| ユーザー割り当て済み | プレビュー | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure App Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-functions"></a>Azure Functions
+
+マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
+| ユーザー割り当て済み | プレビュー | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure Functions のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-logic-apps"></a>Azure Logic Apps
+
+マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
+| ユーザー割り当て済み | 使用できません。 | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure Logic Apps のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#deployment-template)
+
+### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
+
+マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用できません。 | 使用できません。 | 使用できません。 |
+| ユーザー割り当て済み | 使用できません。 | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)
+- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk)
+
+### <a name="azure-api-management"></a>Azure API Management
+
+マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用可能 | 使用できません。 | 使用できません。 |
+| ユーザー割り当て済み | 使用できません。 | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure API Management のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure Resource Manager テンプレート](/azure/api-management/api-management-howto-use-managed-service-identity)
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+マネージド ID の種類 |  すべて一般公開<br>グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | Linux:プレビュー<br>Windows:使用できません。 | 使用できません。 | 使用できません。 | 使用できません。 |
+| ユーザー割り当て済み | Linux:プレビュー<br>Windows:使用できません。 | 使用できません。 | 使用できません。 | 使用できません。
+
+Azure Container Instances のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
+- [Azure Resource Manager テンプレート](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 
 次のサービスは、Azure AD 認証をサポートしており、Azure リソースのマネージド ID を使用するクライアント サービスでテストされています。
 
-| Service | Resource ID | Status | 日付 | アクセス権を割り当てる |
+| Service | Resource ID | Status | アクセス権を割り当てる |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | `https://management.azure.com/` | 使用可能 | 2017 年 9 月 | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure Resource Manager テンプレート](../../role-based-access-control/role-assignments-template.md) |
-| Azure Key Vault | `https://vault.azure.net` | 使用可能 | 2017 年 9 月 | |
-| Azure Data Lake | `https://datalake.azure.net/` | 使用可能 | 2017 年 9 月 | |
-| Azure SQL | `https://database.windows.net/` | 使用可能 | 2017 年 10 月 | |
-| Azure Event Hubs | `https://eventhubs.azure.net` | プレビュー | 2017 年 12 月 | |
-| Azure Service Bus | `https://servicebus.azure.net` | プレビュー | 2017 年 12 月 | |
-| Azure Storage | `https://storage.azure.com/` | プレビュー | 2018 年 5 月 | |
+| Azure Resource Manager | `https://management.azure.com/` | 使用可能 | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure Resource Manager テンプレート](../../role-based-access-control/role-assignments-template.md) |
+| Azure Key Vault | `https://vault.azure.net` | 使用可能 |  
+| Azure Data Lake | `https://datalake.azure.net/` | 使用可能 |
+| Azure SQL | `https://database.windows.net/` | 使用可能 |
+| Azure Event Hubs | `https://eventhubs.azure.net` | プレビュー |
+| Azure Service Bus | `https://servicebus.azure.net` | プレビュー |
+| Azure Storage | `https://storage.azure.com/` | プレビュー |

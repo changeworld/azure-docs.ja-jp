@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880150"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352927"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -195,7 +195,7 @@ Azure DNS に IDN を構成するには、ゾーン名またはレコード セ�
 
 プライベート ドメインのサポートは、Private Zones 機能を使用して実装されます。 現在、この機能はパブリック プレビューでご利用いただけます。 プライベート ゾーンは、インターネットに接続する Azure DNS ゾーンと同じツールを使用して管理されます。 これらは、指定した仮想ネットワーク内からのみ解決可能です。 詳細については、[概要](private-dns-overview.md)に関するページを参照してください。
 
-現時点では、プライベート ゾーンは Azure portal ではサポートされていません。 
+現在、プライベート ゾーンは Azure portal ではサポートされていません。
 
 Azure での他の内部 DNS オプションの詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
 
@@ -257,7 +257,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 * 登録仮想ネットワークが指定された場合、プライベート ゾーンに登録されたその仮想ネットワークの VM の DNS レコードは、PowerShell、CLI、または API で表示することも取得することもできません。 VM レコードの登録と解決は正常に実行されます。
 * 逆引き DNS は登録仮想ネットワーク内のプライベート IP 空間に対してのみ機能します。
 * プライベート ゾーンに登録されていないプライベート IP の逆引き DNS では、DNS サフィックスとして "internal.cloudapp.net" が返ります。 このサフィックスは解決できません。 例として、プライベート ゾーンに解決仮想ネットワークとしてリンクされている仮想ネットワーク内の仮想マシンのプライベート IP があります。
-* 仮想ネットワークを登録または解決仮想ネットワークとしてプライベートゾーンに初めてリンクする場合、その仮想ネットワーク内に NIC がアタッチされた仮想マシンを含めることはできません。 つまり、仮想ネットワークを空にする必要があります。 その後、他のプライベート ゾーンに登録または解決仮想ネットワークとしてリンクするときは、仮想ネットワークは空でなくてもかまいません。 
+* 登録または解決仮想ネットワークとしてプライベート ゾーンに初めてリンクする場合は、仮想ネットワークは完全に空である必要があります。 その後、他のプライベート ゾーンに登録または解決仮想ネットワークとしてリンクするときは、仮想ネットワークは空でなくてもかまいません。
 * 条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていません。 他のメカニズムを使用してこのシナリオを実現できます。 [VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>プライベート ゾーンのゾーンやレコードにクォータや制限はありますか。

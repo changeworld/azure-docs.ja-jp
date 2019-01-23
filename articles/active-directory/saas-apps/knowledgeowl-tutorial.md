@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と KnowledgeOwl の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と KnowledgeOwl の統合 | Microsoft Docs
 description: Azure Active Directory と KnowledgeOwl の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80d8d1664100cdfbbf6d537b41823c2db0204040
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446143"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318919"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>チュートリアル: Azure Active Directory と KnowledgeOwl の統合
+# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory と KnowledgeOwl の統合
 
 このチュートリアルでは、KnowledgeOwl を Azure Active Directory (Azure AD) と統合する方法について説明します。
 
@@ -186,7 +186,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure1.png)
 
-1. 下へスクロールして **[SAML SSO Integration]\(SAML SSO 統合\)** に移動し、次の手順に従います。
+1. **[SAML SSO Integration]\(SAML SSO 統合\)** までスクロールして、次の手順に従います。
     
     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -254,7 +254,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
 このセクションの目的は、KnowledgeOwl で Britta Simon というユーザーを作成することです。 KnowledgeOwl では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、KnowledgeOwl にアクセスしようとすると、新しいユーザーが作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[KnowledgeOwl サポート チーム](mailto:support@knowledgeowl.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [KnowledgeOwl のサポート チーム](mailto:support@knowledgeowl.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -291,7 +291,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [KnowledgeOwl] タイルをクリックすると、自動的に KnowledgeOwl アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

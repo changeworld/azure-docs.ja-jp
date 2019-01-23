@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104065"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199920"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -120,7 +120,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Cache for Redis のパフォーマンス
-次の表に、Azure Cache for Redis のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
+次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
 
 >[!NOTE] 
 >これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。 アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。

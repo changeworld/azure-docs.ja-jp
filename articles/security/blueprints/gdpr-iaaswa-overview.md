@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5f04fdaa12c716b21bafcc0abccc719428fe791
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08e078841a6fb7f43db6d052ecefca3aabec8687
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242077"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263375"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-gdpr"></a>Azure のセキュリティとコンプライアンスのブループリント: GDPR のための IaaS Web アプリケーション
 
@@ -22,11 +22,11 @@ ms.locfileid: "51242077"
 
 Microsoft では、業界をリードするセキュリティ対策とプライバシー ポリシーを用いてクラウド内のデータを保護するように Azure を設計しています。この中に、GDPR によって識別される個人データのカテゴリも含まれています。 Microsoft の[契約条項](https://aka.ms/Online-Services-Terms)は、Microsoft がデータ処理者の要件に準拠していることを明言しています。
 
-このAzure のセキュリティとコンプライアンスのブループリントでは、インターネットに接続する単純な Web アプリケーションに適している サービスとしてのインフラストラクチャ (IaaS) 環境をデプロイするためのガイダンスを提供します。 このソリューションは、GDPR の特定のセキュリティとコンプライアンスの要件を満たすことができる方法を例示し、Azure で独自の IaaS Web アプリケーション ソリューションをビルドして構成するための基礎として機能します。 この参照アーキテクチャを活用し、Microsoft の [4 段階のプロセス](https://aka.ms/gdprebook)に従うことで、GDPR への準拠を実現できます。
-1. 検出: どのような個人データがどこに存在するかを識別します。
-2. 管理: 個人データがどのように使用され、アクセスされるかを制御します。
-3. 保護: 脆弱性とデータ侵害の防止、検知、および対応を行うためのセキュリティ コントロールを確立します。
-4. 報告: 必要なドキュメントを保持し、データ要求と侵害通知を管理します。
+このAzure のセキュリティとコンプライアンスのブループリントでは、インターネットに接続する単純な Web アプリケーションに適している サービスとしてのインフラストラクチャ (IaaS) 環境をデプロイするためのガイダンスを提供します。 このソリューションは、GDPR の特定のセキュリティとコンプライアンスの要件を満たすことができる方法を例示し、Azure で独自の IaaS Web アプリケーション ソリューションをビルドして構成するための基礎として機能します。 GDPR コンプライアンスの実現に向けて、お客様はこの参照アーキテクチャを活用し、Microsoft の [4 段階のプロセス](https://aka.ms/gdprebook)を取り入れることができます。
+1. 検出:どのような個人データがどこに存在するかを識別します。
+2. 管理:個人データがどのように使用され、アクセスされるかを制御します。
+3. 保護:脆弱性とデータ侵害の防止、検知、および対応を行うためのセキュリティ コントロールを確立します。
+4. 報告:必要なドキュメントを保持し、データ要求と侵害通知を管理します。
 
 この参照アーキテクチャ、関連する実装ガイド、および脅威モデルは、お客様固有の要件に適合させるための基礎として使用されることを目的としており、運用環境でそのまま使用することはできません。 以下の点に注意してください。
 - このアーキテクチャは、GDPR に準拠した方法でお客様が Azure にワークロードをデプロイするためのベースラインを提供します。
@@ -56,7 +56,7 @@ Microsoft では、業界をリードするセキュリティ対策とプライ�
 - Azure Application Gateway
     - (1) WAF Application Gateway が有効
         - ファイアウォール モード: 防止
-        - ルール セット: OWASP 3.0
+        - ルール セット:OWASP 3.0
         - リスナー: ポート 443
 - Azure Storage
     - (7) Geo 冗長ストレージ アカウント
@@ -71,7 +71,7 @@ Microsoft では、業界をリードするセキュリティ対策とプライ�
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**要塞ホスト**: 要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループ (NSG) に定義されている必要があります。
+**要塞ホスト**:要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループ (NSG) に定義されている必要があります。
 
 このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
@@ -84,7 +84,7 @@ Microsoft では、業界をリードするセキュリティ対策とプライ�
 ### <a name="virtual-network"></a>仮想ネットワーク
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
-**ネットワーク セキュリティ グループ**: このソリューションは、分離された Web サブネット、データベース サブネット、Active Directory サブネット、管理サブネットを持つアーキテクチャの仮想ネットワーク内にリソースをデプロイします。 サブネット間のトラフィックをシステムと管理機能に必要なものだけに制限するために、個々のサブネットに適用されるネットワーク セキュリティ グループの規則に従って、サブネットが論理的に分離されます。
+**ネットワーク セキュリティ グループ**:このソリューションは、分離された Web サブネット、データベース サブネット、Active Directory サブネット、管理サブネットを持つアーキテクチャの仮想ネットワーク内にリソースをデプロイします。 サブネット間のトラフィックをシステムと管理機能に必要なものだけに制限するために、個々のサブネットに適用されるネットワーク セキュリティ グループの規則に従って、サブネットが論理的に分離されます。
 
 ソリューションでデプロイされる[ネットワーク セキュリティ グループ](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json)の構成を参照してください。 組織は、[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)をガイドとして使用して上のファイルを編集することで、ネットワーク セキュリティ グループを構成できます。
 
@@ -101,11 +101,11 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 ### <a name="data-at-rest"></a>保存データ
 このアーキテクチャでは、暗号化やデータベース監査などの複数の手段によって保存データを保護します。
 
-**Azure Storage**: 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) が使用されます。 これは、GDPR によって定義されている組織のセキュリティ コミットメントとコンプライアンス要件のサポートにおいて個人データを保護するために役立ちます。
+**Azure Storage**:暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) が使用されます。 これは、GDPR によって定義されている組織のセキュリティ コミットメントとコンプライアンス要件のサポートにおいて個人データを保護するために役立ちます。
 
-**Azure Disk Encryption**: 暗号化された Windows IaaS 仮想マシン ディスクに対して Azure Disk Encryption が使用されます。 [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows の BitLocker 機能を活用して、OS とデータ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
+**Azure Disk Encryption**:暗号化された Windows IaaS 仮想マシン ディスクに対して Azure Disk Encryption が使用されます。 [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows の BitLocker 機能を活用して、OS とデータ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
 
-**SQL Server**: SQL Server インスタンスは、次のデータベース セキュリティ対策を使用します。
+**SQL Server**:SQL Server インスタンスは、次のデータベース セキュリティ対策を使用します。
 -   [AD 認証と承認](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用して、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
 -   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 -   SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。TDE は、データベース、関連付けられたバックアップ、およびトランザクション ログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されている個人データが未承認のアクセスの対象になっていないことを保証します。
@@ -114,7 +114,7 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 -   [常に暗号化された列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)は、データベース システム内の機微な個人データがプレーンテキストとして表示されることがないことを保証します。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
 - [拡張プロパティ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql)機能を使用して、データ サブジェクトの処理を中止できます。この機能により、カスタム プロパティをデータベース オブジェクトに追加し、データを "中止" とタグ付けして、関連付けられた個人データの処理を防ぐアプリケーション ロジックをサポートできます。
 - [行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)によって、データへのアクセスを制限するポリシーを定義して、処理を中止できます。
-- [SQL Database 動的データ マスク (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) は、特権のないユーザーまたはアプリケーションに対してデータをマスクすることで機微な個人データの露出を制限します。 DDM は、潜在的に機微なデータを自動的に検出し、適用する適切なマスクを提案できます。 これは、GDPR 保護の対象となる個人データを識別し、不正アクセスによるデータベースの終了が発生しないようにアクセスを削減するために役立ちます。 **注: お客様は、お使いのデータベース スキーマに準拠するように DDM 設定を調整する必要があります。**
+- [SQL Database 動的データ マスク (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) は、特権のないユーザーまたはアプリケーションに対してデータをマスクすることで機微な個人データの露出を制限します。 DDM は、潜在的に機微なデータを自動的に検出し、適用する適切なマスクを提案できます。 これは、GDPR 保護の対象となる個人データを識別し、不正アクセスによるデータベースの終了が発生しないようにアクセスを削減するために役立ちます。 **注:お客様は、お使いのデータベース スキーマに準拠するように DDM 設定を調整する必要があります。**
 
 ### <a name="identity-management"></a>ID 管理
 次のテクノロジによって、Azure 環境での個人データへのアクセスを管理する機能が提供されます。
@@ -126,7 +126,7 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 - デプロイされた IaaS Active Directory インスタンスは、デプロイされた IaaS 仮想マシンの ID を OS レベルで管理します。
 
 ### <a name="security"></a>セキュリティ
-**シークレットの管理**: ソリューションでは、キーとシークレットの管理に [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用します。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 次の Azure Key Vault 機能は、お客様が個人データとそのようなデータへのアクセスを保護するために役立ちます。
+**シークレットの管理**:ソリューションでは、キーとシークレットの管理に [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) が使用されます。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 次の Azure Key Vault 機能は、お客様が個人データとそのようなデータへのアクセスを保護するために役立ちます。
 - 必要に応じて、高度なアクセス ポリシーが構成されます。
 - Key Vault のアクセス ポリシーは、キーとシークレットに対する最低限必要なアクセス許可で定義されます。
 - Key Vault のすべてのキーとシークレットに有効期限があります。
@@ -136,13 +136,13 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 - キーに対して許可される暗号化操作は必要なものに制限されます。
 - このソリューションは、IaaS 仮想マシンのディスク暗号化キーとシークレットを管理できるように、Azure Key Vault と統合されています。
 
-**パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
+**更新プログラムの管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、既定で Windows Update サービスから自動的に更新プログラムを受け取るように構成されます。 また、このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
 
 **マルウェア対策**: 仮想マシン向けの [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能を提供し、既知のマルウェアや不要なソフトウェアが保護されている仮想マシンへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。
 
-**セキュリティ アラート**: [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) により、トラフィックの監視、ログの収集、および脅威のデータ ソース分析を実行できます。 さらに、Azure Security Center は、Azure サービスの既存の構成にアクセスして、セキュリティ状況の改善と個人データの保護に役立つ、構成とサービスに関する推奨事項を提供します。 Azure Security Center には、インシデント対応チームによる脅威の調査と修復を支援するために、検出された脅威に関する情報を含む[脅威インテリジェンス レポート](https://docs.microsoft.com/azure/security-center/security-center-threat-report)が用意されています。
+**セキュリティ アラート**:[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) により、お客様はトラフィックの監視、ログの収集、および脅威のデータ ソース分析を実行できます。 さらに、Azure Security Center は、Azure サービスの既存の構成にアクセスして、セキュリティ状況の改善と個人データの保護に役立つ、構成とサービスに関する推奨事項を提供します。 Azure Security Center には、インシデント対応チームによる脅威の調査と修復を支援するために、検出された脅威に関する情報を含む[脅威インテリジェンス レポート](https://docs.microsoft.com/azure/security-center/security-center-threat-report)が用意されています。
 
-**Application Gateway**: このアーキテクチャでは、OWASP ルールセットを有効にした、Web アプリケーション ファイアウォール (WAF) がある Application Gateway を使用してセキュリティの脆弱性のリスクを軽減します。 その他の機能には次のものがあります。
+**Application Gateway**:このアーキテクチャでは、OWASP ルールセットを有効にした、Web アプリケーション ファイアウォール (WAF) がある Application Gateway を使用してセキュリティの脆弱性のリスクを軽減します。 その他の機能には次のものがあります。
 
 - [エンド ツー エンド SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [SSL オフロード](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)の有効化
@@ -157,31 +157,31 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 
 **高可用性**: このソリューションは、すべての仮想マシンを[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)にデプロイします。 可用性セットは、可用性を向上させるために仮想マシンが複数の分離されたハードウェア クラスターに分散されることを保証します。 Azure SLA を 99.95% 満たすように、計画または計画外メンテナンス イベントの間に、少なくとも 1 つの仮想マシンが利用可能です。
 
-**Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
+**Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure 仮想マシンのすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
 **クラウド監視**: [クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)は、Windows Server 2016 内のフェールオーバー クラスター クォーラム監視の一種であり、Azure をアービトレーション ポイントとして活用します。 他のクォーラム監視と同様、クラウド監視は、投票権を取得し、クォーラムの計算に参加することができますが、パブリックで使用可能な標準の Azure Blob Storage を使用します。 これにより、パブリック クラウドでホストされている VM のメンテナンスの余分なオーバーヘッドを排除できます。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
 Log Analytics は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
-- **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
-- **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
-- **ログのアーカイブ**: すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
+- **アクティビティ ログ**:[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
+- **診断ログ**:[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
+- **ログのアーカイブ**:すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
 さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
--   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
--   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
--   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
--   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムの状態や必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムを管理できるようにします。
--   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
--   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
--   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Change Tracking ソリューションは、お客様が環境の変更を簡単に識別できるようにします。
+-   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment):この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+-   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware):このマルウェア対策ソリューションでは、マルウェア、脅威、および保護の状態に関する報告を行います。
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker):Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
+-   [Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started):Security and Audit ダッシュボードでは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
+-   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment):この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
+-   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management):Update Management ソリューションでは、利用可能な更新プログラムのステータスや必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムをお客様が管理できるようにします。
+-   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth):Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
+-   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity):Activity Log Analytics ソリューションは、顧客向けのすべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
+-   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity):Change Tracking ソリューションでは、お客様が環境の変更を簡単に識別できるようにします。
 
 ## <a name="threat-model"></a>脅威モデル
 
-この参照アーキテクチャのデータ フロー ダイアグラム (DFD) を[ダウンロード](https://aka.ms/gdprIaaSdfd)できます。または下記を参照してください。 このモデルは、修正を行う際に、システム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
+この参照アーキテクチャのデータ フロー ダイアグラム (DFD) を[ダウンロード](https://aka.ms/gdprIaaSdfd)できます。または下記を参照してください。 このモデルは、修正を行う際に、お客様がシステム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
 
 ![GDPR 脅威モデルのための IaaS Web アプリケーション](images/gdpr-iaaswa-threat-model.png?raw=true "GDPR 脅威モデルのための IaaS Web アプリケーション")
 

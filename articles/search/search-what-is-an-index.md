@@ -9,25 +9,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.custom: seodec2018
-ms.openlocfilehash: 40291b105eb39b44da0b0697f5808d819291e457
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5a39021367c2f51125876081e9174eb372d7b9c9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630215"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353160"
 ---
-# <a name="indexes-in-azure-search"></a>Azure Search のインデックス
-> [!div class="op_single_selector"]
-> * [概要](search-what-is-an-index.md)
-> * [ポータル](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
+# <a name="indexes-and-indexing-overview-in-azure-search"></a>Azure Search のインデックスとインデックスを作成する方法
 
-Azure Search における "*インデックス*" とは、Azure Search サービスで使用される "*ドキュメント*" などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、eコマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
+Azure Search における*インデックス*とは、Azure Search サービスでのフィルターされたおよびフル テキストの検索に使用される*ドキュメント*などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、eコマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
 
-ドキュメントを追加/アップロードして検索クエリを Azure Search に送信する場合、検索サービス内の特定のインデックスへの要求を送信していることになります。
+ドキュメントを追加またはアップロードして検索クエリを Azure Search に送信する場合、検索サービス内の特定のインデックスへの要求を送信していることになります。 インデックスにドキュメントを追加するプロセスを*インデックス作成*と呼びます。
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Azure Search インデックスのフィールドの種類と属性
 スキーマを定義する際に、インデックスの各フィールドの名前、型、属性を指定する必要があります。 フィールドの型によって、そのフィールドに格納されているデータが分類されます。 属性は個々のフィールドに設定されてフィールドの使用方法を指定します。 次の表に、指定できる型と属性をまとめます。

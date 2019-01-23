@@ -1,27 +1,7 @@
 ---
-title: Machine Learning Studio での線形回帰の使用 - Azure | Microsoft Docs
-description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較
-metakeywords: ''
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276681"
+title:Machine Learning Studio での線形回帰の使用 titleSuffix: Azure Machine Learning Studio description:Excel と Azure Machine Learning Studio での線形回帰モデルの比較 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 
@@ -63,7 +43,7 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 
 |  | Excel | スタジオ |
 | --- |:---:|:---:|
-| [パフォーマンス] | | |
+| パフォーマンス | | |
 | <ul style="list-style-type: none;"><li>自由度調整済み決定係数</li></ul> |0.96 |該当なし |
 | <ul style="list-style-type: none;"><li>決定 <br />係数</li></ul> |該当なし |0.78<br />(低精度) |
 | 平均絶対誤差 |$9.5M |$ 19.4M |

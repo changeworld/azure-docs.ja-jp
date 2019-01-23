@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a034e41f5b12ffb8f043f14d90284617316f18d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e3022296dd1a3e1221bb44c94df787660df2a70
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723044"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359886"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -69,7 +69,7 @@ Azure Storage では、データの種類と、必要なアクセス方法に応
 Azure Cosmos DB では、JSON ドキュメント用に完全にインデックス付けされた NoSQL ストアが提供されています。 次の記事では、Python から Cosmos DB を使用するさまざまな方法が示されています。
 
 - [Python で SQL API アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Azure Cosmos DB for MongoDB API による Flask アプリの構築](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Azure Cosmos DB の MongoDB 用 API による Flask アプリの構築](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Python と Gremlin API を使用してグラフ データベースを作成する](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [Python と Azure Cosmos DB で Cassandra アプリを構築する](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [Python と Azure Cosmos DB で Table API アプリを構築する](https://docs.microsoft.com/azure/cosmos-db/create-table-python)

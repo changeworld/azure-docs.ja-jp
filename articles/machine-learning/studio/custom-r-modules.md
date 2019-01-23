@@ -1,26 +1,7 @@
 ---
-title: カスタム R モジュールを定義する - Azure Machine Learning Studio | Microsoft Docs
-description: このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 11/29/2017
-ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277932"
+title:カスタム R モジュールの定義 titleSuffix: Azure Machine Learning Studio description:このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:11/29/2017
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
@@ -293,7 +274,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Categorical
     * String
     * Label
-    * Feature
+    * 機能
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
@@ -318,7 +299,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * AllLabel
     * AllFeature
     * AllScore
-    * All
+    * すべて
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 

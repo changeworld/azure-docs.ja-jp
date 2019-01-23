@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2e419da4ed84f3d202113f9616050c3e7c29f240
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958807"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322046"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -69,7 +69,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
   >
   > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。 この名前は、選択後に変更することはできません。 "*Automation アカウント名は、リージョンおよびリソース グループごとに一意です。*"
+1. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。 この名前は、選択後に変更することはできません。 *Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。*
 1. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ボックスで、新しいアカウントで使用するサブスクリプションを指定します。
 1. **[リソース グループ]** に、新しいリソース グループを入力するか既存のリソース グループを選択します。
 1. **[場所]** で、Azure データセンターの場所を選択します。

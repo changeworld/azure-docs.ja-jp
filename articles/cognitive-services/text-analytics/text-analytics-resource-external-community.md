@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: heidist
-ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 139699fac1a84273174f2c3bd30da2a911de46b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605251"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302259"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service の外部/コミュニティ コンテンツ
 
@@ -25,7 +25,7 @@ ms.locfileid: "45605251"
 
 + [Text Analytics API original announcement (Text Analytics API の最初の告知) (Azure ブログ)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (PowerShell から Text Analytics Key Phrase Cognitive Services API を使用する) (MSDN ブログ)](https://blogs.msdn.microsoft.com/riteshmodi/2017/03/24/text-analytics-key-phrase-cognitive-services-powershell/)
++ [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (PowerShell から Text Analytics Key Phrase Cognitive Services API を使用する) (AutomationNext ブログ)](https://automationnext.wordpress.com/tag/text-analytics/)
 
 + [R Quick tip: Microsoft Cognitive Services’ Text Analytics API (R クイック ヒント: Microsoft Cognitive Services の Text Analytics API) (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
@@ -33,7 +33,7 @@ ms.locfileid: "45605251"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (Dynamics 365 CRM Online による感情分析) (MSDN ブログ)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power Bi ブログ: PowerBI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 ## <a name="videos"></a>ビデオ
 
@@ -49,5 +49,5 @@ ms.locfileid: "45605251"
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow: Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Azure Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow:Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow:Azure Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

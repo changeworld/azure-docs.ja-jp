@@ -1,26 +1,8 @@
 ---
-title: 手順 3:新しい Machine Learning Studio の実験を作成する - Azure | Microsoft Docs
-description: 予測ソリューションの開発チュートリアルの手順 3:Azure Machine Learning Studio での新しいトレーニング実験を作成します。
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260788"
+title:'手順 3: 新しい Machine Learning Studio の実験を作成する' titleSuffix: Azure Machine Learning Studio description:'予測ソリューションの開発チュートリアルの手順 3: Azure Machine Learning Studio での新しいトレーニング実験を作成する。'
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/23/2017
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>チュートリアル手順 3:新しい Azure Machine Learning Studio の実験を作成する
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)

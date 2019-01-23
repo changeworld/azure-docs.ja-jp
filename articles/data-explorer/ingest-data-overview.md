@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6c7d4d8d4a16e0679722f9de007870a7ec7554b0
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 1/14/2019
+ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636001"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354622"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -27,13 +27,13 @@ ms.locfileid: "51636001"
 
 1. **バッチ処理**: 同じデータベースおよびテーブルに送られるデータをバッチ化して、インジェストのスループットを最適化します。
 
-1. **検証**: 必要に応じて、事前検証と形式変換を行います。
+1. **検証**:必要に応じて、事前検証と形式変換を行います。
 
 1. **データ操作**: スキーマの照合と、データの整理、インデックス付け、エンコード、圧縮を行います。
 
 1. **インジェスト フローでの永続性ポイント**: エンジンでのインジェストの負荷を管理し、一時的な障害時の再試行を処理します。
 
-1. **データ取り込みのコミット**: データをクエリに使用できるようにします。
+1. **データ取り込みのコミット**: データをクエリで使用できるようにします。
 
 ## <a name="ingestion-methods"></a>インジェストの方法
 
@@ -41,10 +41,13 @@ Azure データ エクスプローラーでは複数のインジェスト方法�
 
 ### <a name="ingestion-using-pipelines"></a>パイプラインを使用したインジェスト
 
-現在、Azure Data Explorer ではイベント ハブ パイプラインがサポートされており、Azure portal 内の管理ウィザードを使用して管理できます。 詳しくは、「[クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む](ingest-data-event-hub.md)」をご覧ください。
+現在、Azure Data Explorer ではイベント ハブ パイプラインがサポートされており、Azure portal 内の管理ウィザードを使用して管理できます。 詳細については、「[クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)」を参照してください。
 
 ### <a name="ingestion-using-connectors-and-plugins"></a>コネクタとプラグインを使用したインジェスト
-現在、Azure Data Explorer では Logstash プラグインがサポートされています。 詳しくは、「[Logstash Output Plugin for Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md)」(Azure Data Explorer 向けの Logstash 出力プラグイン) をご覧ください。
+
+* Azure Data Explorer では Logstash プラグインがサポートされています。 詳しくは、「[Logstash Output Plugin for Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md)」(Azure Data Explorer 向けの Logstash 出力プラグイン) をご覧ください。
+
+* Azure Data Explorer では Kafka コネクタがサポートされています。 詳細については、「[クイック スタート: Kafka から Azure Data Explorer にデータを取り込む](ingest-data-kafka.md)」を参照してください
 
 ### <a name="programmatic-ingestion"></a>プログラムによるインジェスト
 
@@ -68,7 +71,7 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 
 * Azure Data Explorer のデータ管理サービスを介したデータの取り込み (高スループットで信頼性の高いインジェスト):
 
-  * [**バッチ インジェスト**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK によって提供): クライアントは Azure Blob Storage にデータをアップロードし (Azure データ エクスプローラーのデータ管理サービスで指定)、通知を Azure キューに投稿します。 これは、大量で信頼性が高く低コストのデータ インジェストに推奨される手法です。
+    [**バッチ インジェスト**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK によって提供): クライアントは Azure Blob Storage にデータをアップロードし (Azure データ エクスプローラーのデータ管理サービスで指定)、通知を Azure キューに投稿します。 バッチ インジェストは、大量で信頼性が高く低コストのデータ インジェストに推奨される手法です。
 
 * Azure データ エクスプローラー エンジンへのデータの直接取り込み (探索とプロトタイプ作成に最適)。
 
@@ -88,7 +91,7 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 | **キューによるインジェスト** | バッチ処理時間 + 処理時間 |
 | |
 
-処理時間はデータ サイズに依存し、通常は数秒未満です。 バッチ処理時間の既定値は 5 分です。
+処理時間はデータ サイズに依存し、数秒未満です。 バッチ処理時間の既定値は 5 分です。
 
 ## <a name="choosing-the-most-appropriate-ingestion-method"></a>最も適切なインジェスト方法の選択
 
@@ -109,7 +112,7 @@ Event Hub などのメッセージング サービスに基づく既存のイン
 
 ## <a name="supported-data-formats"></a>サポートされるデータ形式
 
-クエリからの取り込み以外のすべてのインジェスト方法では、Azure データ エクスプローラーが解析できるように、サポートされているデータ形式のいずれかでデータを書式設定する必要があります。
+クエリからの取り込み以外のすべてのインジェスト方法では、Azure Data Explorer が解析できるようにデータを書式設定します。 以下のデータ形式がサポートされます。
 
 * CSV、TSV、PSV、SCSV、SOH
 * JSON (行区切り、複数行)、Avro
@@ -119,21 +122,30 @@ Event Hub などのメッセージング サービスに基づく既存のイン
 > データが取り込まれるときに、対象のテーブル列に基づいてデータ型が推論されます。 レコードが不完全な場合、またはフィールドを必要なデータ型として解析できない場合は、対応するテーブル列に null 値が設定されます。
 
 ## <a name="ingestion-recommendations-and-limitations"></a>インジェストの推奨事項と制限事項
+
 * 取り込まれたデータの効果的なアイテム保持ポリシーは、データベースのアイテム保持ポリシーから派生します。 詳しくは、「[Retention policy](/azure/kusto/concepts/retentionpolicy)」(アイテム保持ポリシー) をご覧ください。 データを取り込むには、**テーブル取り込み者**または**データベース取り込み者**のアクセス許可が必要です。
 * インジェストでは、5 GB の最大ファイル サイズがサポートされます。 100 MB から 1 GB の間のファイルを取り込むことをお勧めします。
 
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
-スキーマ マッピングは、ソースのデータ フィールドをターゲットのテーブル列に確定的にバインドするのに役立ちます。
+スキーマ マッピングは、ソースのデータ フィールドをターゲットのテーブル列にバインドするのに役立ちます。
 
-* [CSV マッピング](/azure/kusto/management/mappings?branch=master#csv-mapping) (省略可能) はすべての序数ベースの形式で動作し、取り込みコマンドのパラメーターとして渡すこと、または[テーブルで事前に作成](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
-* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターとして渡すこと、または[テーブルで事前に作成](/azure/kusto/management/tables#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
+* [CSV マッピング](/azure/kusto/management/mappings?branch=master#csv-mapping) (省略可能) は、すべての序数ベースの形式で動作します。 取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
+* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/tables#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+> [!div class="nextstepaction"]
+> [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
-[クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
+> [!div class="nextstepaction"]
+> [クイック スタート:Kafka から Azure Data Explorer にデータを取り込む](ingest-data-kafka.md)
 
-[クイック スタート: Azure Data Explorer の Node ライブラリを使用してデータを取り込む](node-ingest-data.md)
+> [!div class="nextstepaction"]
+> [クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
 
+> [!div class="nextstepaction"]
+> [クイック スタート:Azure Data Explorer の Node ライブラリを使用してデータを取り込む](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)

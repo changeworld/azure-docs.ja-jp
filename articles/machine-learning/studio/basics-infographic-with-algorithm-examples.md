@@ -1,27 +1,8 @@
 ---
-title: アルゴリズムの使用例 - Azure Machine Learning Studio | Microsoft Docs
-description: アルゴリズムの使用例を交えながら機械学習の基礎をわかりやすく概説します。 ダウンロード可能なインフォグラフィックで、機械学習に関するさまざまな疑問点に答えます。
-keywords: 機械学習の基礎,アルゴリズム使用例,初級者向けの機械学習,機械学習の疑問,広く使われているアルゴリズム,アルゴリズムのインフォグラフィック
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodc18
-ms.author: garye
-editor: cgronlun
-ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275739"
+title:アルゴリズムの使用例 titleSuffix: Azure Machine Learning Studio description:アルゴリズムの使用例を交えながら機械学習の基礎をわかりやすく概説します。 ダウンロード可能なインフォグラフィックで、機械学習に関するさまざまな疑問点に答えます。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodc18 ms.date:12/18/2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>ダウンロード可能なインフォグラフィック:機械学習の基礎とアルゴリズムの使用例
 機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。 機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。

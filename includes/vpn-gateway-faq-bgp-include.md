@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 01/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "36338324"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306881"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -68,7 +68,7 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 はい、同じ Azure VPN ゲートウェイに対して BGP 接続と非 BGP 接続の両方を混在させることができます。
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN ゲートウェイでは、BGP トランジット ルーティングをサポートしていますか。
-はい。BGP トランジット ルーティングはサポートされています。ただし、Azure VPN Gateway は既定のルートを他の BGP ピアにアドバタイズ**しません**。 複数の Azure VPN ゲートウェイでトランジット ルーティングを有効にするには、中間にあるすべての VNet 接続で BGP を有効にする必要があります。
+はい。BGP トランジット ルーティングはサポートされています。ただし、Azure VPN Gateway は既定のルートを他の BGP ピアにアドバタイズ**しません**。 複数の Azure VPN ゲートウェイでトランジット ルーティングを有効にするには、中間にあるすべての VNet 接続で BGP を有効にする必要があります。 詳細については、[BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md) に関する記事を参照してください。
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Azure VPN ゲートウェイとオンプレミス ネットワークの間で複数のトンネルを確立することはできますか。
 はい、Azure VPN ゲートウェイとオンプレミス ネットワークの間に複数の S2S VPN トンネルを確立することができます。 これらのトンネルはすべて Azure VPN ゲートウェイのトンネルの合計数にカウントされる点に注意してください。さらに、両方のトンネルの BGP を有効にする必要があります。

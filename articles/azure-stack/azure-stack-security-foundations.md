@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/9/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: fiseraci
+ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727091"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306456"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
-*適用先:Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオに適しています。 この記事では、Azure Stack 用のセキュリティ コントロールについて説明します。
 

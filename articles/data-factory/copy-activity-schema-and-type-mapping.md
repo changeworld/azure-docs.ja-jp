@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025455"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358713"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 この記事では、Azure Data Factory のコピー アクティビティが、データ コピーの実行時にソース データからシンク データへのスキーマ マッピングとデータ型のマッピングをどのように行うかについて説明します。
@@ -142,7 +142,7 @@ ms.locfileid: "54025455"
 
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
-スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB MongoDB API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
+スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB の MongoDB 用 API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

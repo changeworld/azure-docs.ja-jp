@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ad1234b6a0296a2fa46fe56786bbca4aca9ed470
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376954"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305963"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Azure Stack の物理ディスクを交換する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事では、Azure Stack で物理ディスクを交換する一般的な手順について説明します。 物理ディスクが正常に機能しなくなった場合、早急に交換する必要があります。
 
 この手順は、統合システムと、ホット スワップ可能なディスクを含む開発キットのデプロイに使用できます。
 
-実際のディスク交換手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 お使いのシステムに特化した詳しい手順については、ベンダーの現場交換可能ユニット (FRU) ドキュメントをご覧ください。 
+実際のディスク交換手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 お使いのシステムに特化した詳しい手順については、ベンダーの現場交換可能ユニット (FRU) ドキュメントをご覧ください。 
 
 ## <a name="review-disk-alert-information"></a>ディスクのアラート情報の確認
-ディスクが正常に機能しなくなると、物理ディスクへの接続が切断されたことを通知するアラートが表示されます。 
+ディスクが正常に機能しなくなると、物理ディスクへの接続が切断されたことを通知するアラートが表示されます。 
 
  ![物理ディスクへの接続が切断されたことを示すアラート](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "44376954"
 
 統合システムでサポートされていないディスクの使用を回避するために、ベンダーでサポートされていないディスクはシステムでブロックされます。 サポートされていないディスクを使用しようとすると、サポートされていないモデルまたはファームウェアであるためディスクが検疫された、というアラートが新たに表示されます。
 
-ディスクを交換すると、Azure Stack が自動的に新しいディスクを検出し、仮想ディスクの修復プロセスを開始します。  
+ディスクを交換すると、Azure Stack が自動的に新しいディスクを検出し、仮想ディスクの修復プロセスを開始します。  
  
  ## <a name="check-the-status-of-virtual-disk-repair"></a>仮想ディスクの修復状態の確認
  

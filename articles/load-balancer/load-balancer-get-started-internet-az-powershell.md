@@ -1,10 +1,11 @@
 ---
-title: Azure PowerShell でゾーン冗長フロントエンドを使用して Standard Load Balancer を作成する
+title: ゾーン冗長フロントエンドを使用して Load Balancer を作成する - Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: PowerShell でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する方法について説明します。
+description: PowerShell でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: kumud
-ms.openlocfilehash: b6730b624cc0416354fecfdbe747f643540f9e89
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1a976344fd634e78fc5009ede4954ea578aa8db7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138747"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244596"
 ---
-#  <a name="create-a-standard-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Azure PowerShell でゾーン冗長フロントエンドを使用して Standard Balancer を作成する
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Azure PowerShell でゾーン冗長フロントエンドを使用して Standard Load Balancer を作成する
 
-この記事では、パブリック IP Standard アドレスでゾーン冗長フロントエンドを使用してパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。
+この記事では、パブリック IP Standard アドレスでゾーン冗長フロントエンドを使用してパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -86,7 +87,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
 ```
 
 ## <a name="create-a-load-balancer"></a>ロード バランサーの作成
-Load Balancer Standard を作成するには、次のコマンドを使用します。
+Standard Load Balancer を作成するには、次のコマンドを使用します。
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `

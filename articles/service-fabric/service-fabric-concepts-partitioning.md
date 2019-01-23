@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388111"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261572"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -234,7 +234,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
             return String.Format(
                 "User {0} {1}",
                 user,
-                addResult ? "sucessfully added" : "already exists");
+                addResult ? "successfully added" : "already exists");
         }
     }
     ```

@@ -8,17 +8,33 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 0e37aee06ed7066dab2ab25915edcc471993b996
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: be1e7ab953c55581645a9702fc4759cb603e7ecc
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050270"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357863"
 ---
 # <a name="using-chef-with-azure"></a>Azure で Chef を使用する
 [Chef](http://www.chef.io) は、Azure 上の仮想マシン インフラストラクチャをコードに変換する強力な自動化プラットフォームです。 Chef は、インフラストラクチャがそのサイズに関係なく、ネットワーク経由で構成、デプロイ、および管理される方法を自動化します。
 
 この記事では、Chef を使用して Azure インフラストラクチャを管理する利点について説明します。
+
+## <a name="chef-extension-on-azure"></a>Azure での Chef 拡張機能
+Azure Portal 上の [Chef 拡張機能](https://docs.microsoft.com/en-us/azure/chef/chef-extension-portal)でバックグラウンド サービスとして実行されている Chef Client を使用して仮想マシンをプロビジョニングします。 プロビジョニングが済むと、これらの仮想マシンは Chef サーバーで管理できるようになります。
+
+## <a name="chef-cloud-shell"></a>Chef Cloud Shell
+Azure Cloud Shell で Chef ワークステーションを直接使用します。 すべての Chef ユーティリティと InSpec を Cloud Shell から実行します。 以下から Chef コマンドを使用できます。
+
+* [chef](https://docs.chef.io/ctl_chef.html)
+* [kitchen](https://docs.chef.io/ctl_kitchen.html)
+* [inspec](https://www.inspec.io/docs/reference/cli/)
+* [knife](https://docs.chef.io/knife.html)
+* [cookstyle](https://docs.chef.io/cookstyle.html)
+* [foodcritic](https://docs.chef.io/foodcritic.html)
+* [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
+
+弊社のコマンド ユーティリティと、Cloud Shell で使用できる `git`、`az-cli`、`terraform` などの他のツールを組み合わせて、ブラウザーからインフラストラクチャとコンプライアンスの自動化を記述します。
 
 ## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>インフラストラクチャ、アプリ、および 1 つのプラットフォームへの準拠を自動化する
 企業がデジタル マーケットプレースで競争するには、スピード、ベロシティ、および安全性が必要です。 Chef と Microsoft は連携して、個人、チーム、および企業がこれらすべてを達成できるように支援します。 Chef Automate という 1 つのプラットフォームを使用することで、インフラストラクチャ、アプリケーション、およびお持ちの Microsoft 資産全体のコンプライアンスを自動化し、継続的に提供することができるようになりました。
@@ -27,4 +43,5 @@ ms.locfileid: "54050270"
 Chef でサポートされている [Chef Automate Azure Marketplace ソリューション](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate)を使用すると、共同作業でインフラストラクチャおよびアプリケーションのビルド、デプロイ、管理ができます。 クリック 1 回で、Chef Automate 付属のすべての商用機能へ迅速にアクセスしたり、資産全体をエンドツーエンドで可視化したり、継続的なコンプライアンスを実現したり、統合ワークフローによりすべての変更を管理することが可能です。
 
 ## <a name="next-steps"></a>次の手順
+
 * [Chef を使用して Windows 仮想マシンを Azure 上に作成する](/azure/virtual-machines/windows/chef-automation)

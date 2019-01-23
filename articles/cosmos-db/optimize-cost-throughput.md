@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 476e39d0ced465d75e44098b9508472b87b0e7b8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038332"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230171"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でスループット コストを最適化する
 
