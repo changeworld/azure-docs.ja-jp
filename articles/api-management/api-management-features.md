@@ -26,20 +26,20 @@ ms.locfileid: "54156699"
 
 | 機能                                                                                      | 従量課金<sup>プレビュー</sup> | 開発者      | Basic          | 標準       | Premium        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- | -------------- | -------------- | -------------- | -------------- |
-| Azure AD 統合<sup>1</sup>                                                             | いいえ                             | はい            | いいえ              | 可能             | [はい]            |
-| Virtual Network (VNet) のサポート                                                               | いいえ                             | はい            | いいえ              | いいえ              | [はい]            |
-| 複数リージョンのデプロイ                                                                      | いいえ                             | いいえ              | いいえ              | いいえ              | [はい]            |
-| 複数のカスタム ドメイン名                                                                 | いいえ                             | いいえ              | いいえ              | いいえ              | [はい]            |
-| 開発者ポータル<sup>2</sup>                                                                 | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| ビルトイン キャッシュ                                                                               | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| ビルトイン分析                                                                           | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| [SSL 設定](api-management-howto-manage-protocols-ciphers.md)                             | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| [外部キャッシュ](https://aka.ms/apimbyoc)                                                    | [はい]                           | いいえ<sup>3</sup> | いいえ<sup>3</sup> | いいえ<sup>3</sup> | いいえ<sup>3</sup> |
-| [クライアント証明書認証](api-management-howto-mutual-certificates-for-clients.md) | いいえ<sup>4</sup>                | [はい]            | はい            | はい            | [はい]            |
-| [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| [Git による管理](api-management-configuration-repository-git.md)                        | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| ダイレクト管理 API                                                                        | いいえ                             | 可能             | はい            | はい            | [はい]            |
-| Azure Monitor のログとメトリック                                                               | いいえ<sup>5</sup>                | [はい]            | はい            | はい            | [はい]            |
+| Azure AD 統合<sup>1</sup>                                                             | いいえ                             | はい            | いいえ              | 可能             | はい            |
+| Virtual Network (VNet) のサポート                                                               | いいえ                             | はい            | いいえ              | いいえ              | はい            |
+| 複数リージョンのデプロイ                                                                      | いいえ                             | いいえ              | いいえ              | いいえ              | はい            |
+| 複数のカスタム ドメイン名                                                                 | いいえ                             | いいえ              | いいえ              | いいえ              | はい            |
+| 開発者ポータル<sup>2</sup>                                                                 | いいえ                             | 可能             | はい            | はい            | はい            |
+| ビルトイン キャッシュ                                                                               | いいえ                             | 可能             | はい            | はい            | はい            |
+| ビルトイン分析                                                                           | いいえ                             | 可能             | はい            | はい            | はい            |
+| [SSL 設定](api-management-howto-manage-protocols-ciphers.md)                             | いいえ                             | 可能             | はい            | はい            | はい            |
+| [外部キャッシュ](https://aka.ms/apimbyoc)                                                    | はい                           | いいえ<sup>3</sup> | いいえ<sup>3</sup> | いいえ<sup>3</sup> | いいえ<sup>3</sup> |
+| [クライアント証明書認証](api-management-howto-mutual-certificates-for-clients.md) | いいえ<sup>4</sup>                | はい            | はい            | はい            | はい            |
+| [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ                             | 可能             | はい            | はい            | はい            |
+| [Git による管理](api-management-configuration-repository-git.md)                        | いいえ                             | 可能             | はい            | はい            | はい            |
+| ダイレクト管理 API                                                                        | いいえ                             | 可能             | はい            | はい            | はい            |
+| Azure Monitor のログとメトリック                                                               | いいえ<sup>5</sup>                | はい            | はい            | はい            | はい            |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>
 <sup>2</sup> 関連機能 (例: ユーザー、グループ、問題、アプリケーション、電子メール テンプレートと通知) を含みます。<br/>
