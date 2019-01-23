@@ -63,7 +63,7 @@ ms.locfileid: "54261079"
 
 **[HomeAutomation.TurnOff]** 意図を選択します。 意図には、エンティティでラベル付けされている発話の一覧が含まれていることがわかります。
 
-[![意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnon.png "HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnon.png "Screenshot of HomeAutomation.TurnOff intent")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 

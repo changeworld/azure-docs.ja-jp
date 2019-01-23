@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1bf0ae8b0e9e0665f9b51935763d9f724b4bca4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011642"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261895"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Azure Security Center により監視される Azure セキュリティ ポリシー
-この記事では、Security Center 内で監視できる Azure ポリシーの定義の一覧を示します。
+この記事では、Security Center 内で監視できる Azure ポリシーの定義の一覧を示します。 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
 ## <a name="available-security-policies"></a>利用可能なセキュリティ ポリシー
 
