@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193792"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229848"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -270,7 +270,7 @@ Azure Portal を介してアラートを作成する NPM ユーザーの場合:
 4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
 アラートを作成するたびに NPM によって Azure Monitor 上でクエリ ベースのログ アラート ルールが作成されます。 このクエリは、既定では 5 分ごとにトリガーされます。 Azure Monitor では、最初に作成された 250 件のログ アラート ルールには課金されず、250 件のログ アラート ルール制限を超えるアラート ルールは [Azure Monitor の価格ページのアラートの価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って課金されます。
-通知は、[Azure Monitor の価格ページの通知の価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
+通知は、[「Azure Monitor の価格」ページに記載されている通知の料金](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
 
 
 ## <a name="pricing"></a>価格

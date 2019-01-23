@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714204"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246553"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -84,6 +84,14 @@ Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-se
 アプリのダッシュボードの合計エンドポイント ヒット数は定期的に更新されますが、Azure Portal で LUIS エンドポイント キーに関連付けられているメトリックの方がより頻繁に更新されます。
 
 更新されたエンドポイント ヒット数がダッシュボードに表示されない場合は、Azure Portal にログインし、LUIS エンドポイント キーに関連付けられているリソースを検索し、**[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 エンドポイント キーが複数の LUIS アプリに使用されている場合、Azure Portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>エンドポイントのクォータに対する PowerShell コマンドはありますか?
+
+PowerShell コマンドを使用して、エンドポイントのクォータを確認できます。
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
 [こちらの FAQ の説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
@@ -194,6 +202,12 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Bot Framework の音声認識の準備がサポートされているのはどの LUIS リージョンですか?
 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)は、米国中部インスタンスの LUIS アプリに対してのみサポートされます。
+
+## <a name="api-programming-strategies"></a>API プログラミング戦略
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>リソースの LUIS リージョンをプログラムで取得するには、どうすればよいですか? 
+
+LUIS のサンプルを使用して、プログラムで[リージョンを検索](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)するには、C# または Node.Js を使用します。 
 
 ## <a name="luis-service"></a>LUIS サービス
 

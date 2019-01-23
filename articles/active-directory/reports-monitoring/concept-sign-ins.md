@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653358"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245091"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * さらに、任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
-* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
+* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前の時点でアクティビティ データがまったく存在しなかった場合、Premium ライセンスへのアップグレード後、データがレポートに表示されるまでに数日かかります。
 
 ## <a name="sign-ins-report"></a>サインイン レポート
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
-[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。
+[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。 サインイン レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあることに注意してください。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/61.png "サインイン アクティビティ")
 
@@ -233,6 +233,12 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/11.png "サインイン アクティビティ")
+
+## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+
+Office 365 のアクティビティ ログは、[Office 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から表示できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは、多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログを完全に表示できるのは、Office 365 管理センターのみです。 
+
+[Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

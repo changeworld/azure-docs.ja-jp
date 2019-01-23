@@ -13,15 +13,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2018
 ms.author: borisb
-ms.openlocfilehash: f178ac06b4ebfeef534233c2782423a7358f0c10
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719631"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229576"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
-この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します
+この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
+
+すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 ## <a name="images-available-in-the-ui"></a>UI で利用可能なイメージ
 Marketplace で "Red Hat" を検索するときや、Azure portal の UI でリソースを作成するときに、利用可能な RHEL イメージと関連する Red Hat 製品のサブセットが表示されます。 Azure CLI/PowerShell/API を使用して、利用可能な VM イメージの完全なセットをいつでも取得することができます。
@@ -32,7 +34,7 @@ Azure で利用可能な Red Hat イメージの完全なセットを表示す�
 az vm image list --publisher RedHat --all
 ```
 
-## <a name="naming-convention"></a>名前付け規則
+## <a name="naming-convention"></a>命名規則
 Azure の VM イメージは、発行元、プラン、SKU、バージョンごとに整理されます。 発行元:プラン:SKU:バージョンの組み合わせはイメージ URN であり、使用されるイメージを一意に識別します。
 
 たとえば、`RedHat:RHEL:7-RAW:7.6.2018103108` は、2018 年 10 月 31 日に構築された RHEL 7.6 の未加工のパーティション イメージを表します。
@@ -108,3 +110,4 @@ Microsoft および Red Hat では、新しいマイナー バージョンのリ
 
 ## <a name="next-steps"></a>次の手順
 * Azure Red Hat Update Infrastructure の詳細については、[こちら](https://aka.ms/rhui-update)を参照してください。
+* すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。

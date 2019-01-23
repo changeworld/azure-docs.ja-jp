@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040746"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230596"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -36,6 +36,19 @@ Log Analytics の有効化と管理は、Azure Portal で行います。 AKS ク
     * ワークスペースを作成する必要がある場合は、名前、リソース グループ、および場所を指定します。
 1. 使用可能なログの一覧から、有効にするログを選択します。 既定で、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* ログが有効になっています。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics が有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
+
+> [!NOTE]
+> AKS では、機能フラグがサブスクリプション上で有効された後に作成またはアップグレードされたクラスターの監査ログのみがキャプチャされます。 *AKSAuditLog* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> status (状態) に *Registered (登録済み)* が表示されるまで待ちます。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、AKS リソース プロバイダーの登録を更新します。
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、Log Analytics ワークスペースを作成するオプションの例です。
 
@@ -133,3 +146,6 @@ AzureDiagnostics
 [analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623861"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244717"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 
@@ -85,12 +85,11 @@ Azure AD の Free および Basic エディションでは、管理対象ユー�
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Azure AD Premium エディションにおける危険なサインイン レポート
 
 Azure AD Premium エディションのリスクの高いサインイン レポートでは、次の情報を提供しています。
 
-- 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報
+- 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報。 **Azure AD Premium P1 エディション**では、ライセンスに含まれない検出は、**追加のリスクが検出されたサインイン**というリスク イベントとして表示されます。 **Azure AD Premium P2 エディション**では、基になるすべての検出に関する最も詳細な情報を取得できます。
 
 - レポートをダウンロードするオプション
 

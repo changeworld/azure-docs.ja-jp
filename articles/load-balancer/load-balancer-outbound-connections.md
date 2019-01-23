@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190970"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201382"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -91,9 +91,9 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 ### <a name="multife"></a>送信フローの複数のフロントエンド
 
-#### <a name="load-balancer-standard"></a>Load Balancer Standard
+#### <a name="standard-load-balancer"></a>Standard Load Balancer
 
-[複数の (パブリック) IP フロントエンド](load-balancer-multivip-overview.md)が存在する場合、Load Balancer Standard は発信フローのすべての候補を同時に使用します。 発信接続に対して負荷分散ルールが有効になっている場合、各フロントエンドは使用できる事前割当 SNAT ポートの数を増やします。
+[複数の (パブリック) IP フロントエンド](load-balancer-multivip-overview.md)が存在する場合、Standard Load Balancer では、発信フローのすべての候補が同時に使用されます。 発信接続に対して負荷分散ルールが有効になっている場合、各フロントエンドは使用できる事前割当 SNAT ポートの数を増やします。
 
 新しい負荷分散ルール オプションを使用して、発信接続にフロントエンド IP アドレスが使用されないようにすることができます。
 

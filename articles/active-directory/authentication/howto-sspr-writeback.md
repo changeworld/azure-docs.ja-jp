@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f64331c2b75df84f44486f192e17a744b43fcf9b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040661"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244904"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
 
@@ -52,6 +52,7 @@ ms.locfileid: "54040661"
 * Microsoft 365 E3 または A3
 * Microsoft 365 E5 または A5
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。

@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975476"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230766"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -53,6 +53,7 @@ Azure Migrate では現在、プロジェクトの地域としてヨーロッパ
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
 Azure Government | 米国政府バージニア州
+アジア | 東南アジア
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
 米国 | 米国東部または米国中西部
 
@@ -63,6 +64,17 @@ Azure Government | 米国政府バージニア州
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>OVA テンプレートを使用して VM セットアップを強化できますか。
 
 Azure Migrate アプライアンスの動作に必要な通信およびファイアウォール規則が変わらない限り、(ウイルス対策などの) 追加コンポーネントを OVA テンプレートに追加することができます。   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Azure Migrate アプライアンスを強化するためにウイルス対策 (AV) で除外することが推奨されるものは何ですか。
+
+ウイルス対策スキャンでは、アプライアンス内の次のフォルダーを除外する必要があります。
+
+- Azure Migrate サービスのバイナリを含むフォルダー。 サブフォルダーはすべて除外します。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web アプリケーション。 サブフォルダーはすべて除外します。
+  %SystemDrive%\inetpub\wwwroot
+- データベースのローカル キャッシュとログ ファイル。 Azure Migrate サービスでは、このフォルダーへの読み取り/書き込みアクセスが必要です。
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>探索
 
@@ -136,6 +148,7 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 1 つの移行プロジェクトで 1500 台の仮想マシンを検出できます。 オンプレミス環境に複数のマシンがある場合は、Azure Migrate で大規模な環境を検索する方法の[詳細](how-to-scale-assessment.md)を確認してください。
 
+
 ## <a name="assessment"></a>評価
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate は Enterprise Agreement (EA) に基づくコスト見積もりをサポートしていますか。
@@ -144,6 +157,13 @@ Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microso
 
   ![Discount](./media/resources-faq/discount.png)
 
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>オンプレミスに合わせたサイズ設定とパフォーマンス ベースのサイズ設定の違いは何ですか。
+
+サイズ設定の基準を、オンプレミスに合わせたサイズ設定にするよう指定した場合、Azure Migrate は VM のパフォーマンス データを考慮に入れず、オンプレミスの構成に基づいて VM のサイズを設定します。 サイズ設定の基準がパフォーマンス ベースの場合、サイズ設定は、使用率データに基づいて行われます。 たとえば、4 つのコアと 8 GB のメモリを備えたオンプレミスの VM があり、CPU 使用率が 50%、メモリ使用率が 50% であるとします。 サイズ設定の基準がオンプレミスに合わせたサイズ設定の場合は、4 つのコアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。ただし、サイズ設定の基準がパフォーマンス ベースの場合は、サイズの推奨時に使用率が考慮されるため、2 つのコアと 4 GB のメモリを備えた VM SKU が推奨されます。 同様に、ディスクの場合、ディスクのサイズ設定は、サイズ設定の基準とストレージ タイプという 2 つの評価プロパティによって決まります。 サイズ設定の基準がパフォーマンス ベースで、ストレージ タイプが自動の場合、ディスクの IOPS とスループットの値は、ターゲット ディスク タイプ (Standard または Premium) を識別するものと見なされます。 サイズ設定の基準がパフォーマンス ベースで、ストレージ タイプが Premium の場合は、Premium ディスクが推奨され、Azure 内の Premium ディスク SKU が、オンプレミス ディスクのサイズに基づいて選択されます。 サイズ設定の基準がオンプレミスに合わせたサイズ設定で、ストレージ タイプが Standard または Premium のときは、同じロジックを使用してディスク サイズが設定されます。
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>パフォーマンス履歴と百分位の使用率は、サイズの推奨にどのような影響を与えますか。
+
+これらのプロパティは、パフォーマンス ベースのサイズ設定の場合のみ適用されます。 Azure Migrate は、オンプレミス マシンのパフォーマンス履歴を収集し、それを使用して Azure 内の VM のサイズとディスクの種類を推奨します。 コレクター アプライアンスは、20 秒ごとにリアルタイムの使用状況データを収集するために、オンプレミス環境をプロファイルします。 アプライアンスは、20 秒のサンプルをロールアップし、15 分ごとに 1 つのデータ ポイントを作成します。 1 つのデータ ポイントを作成するために、アプライアンスは 20 秒のすべてのサンプルからピーク値を選択し、それを Azure に送信します。 パフォーマンスの期間とパフォーマンス履歴の百分位値に基づいて Azure 内で評価を作成する場合、Azure Migrate では、有効な使用率値が計算され、その値がサイズ設定に使用されます。 たとえば、パフォーマンスの期間を 1 日に設定し、百分位値を 95 に設定した場合、Azure Migrate は、過去 1 日間にコレクターで送信された 15 分のサンプル点を使い、それらを昇順でソートして、95 番目の百分位値を有効な使用率として選択します。 この 95 番目の百分位値により、99 番目の百分位を選択した場合、発生するすべての外れ値が確実に無視されます。 この期間のピーク使用率を選択し、外れ値を見逃さないようにする場合は、99 番目の百分位を選択する必要があります。
 
 ## <a name="dependency-visualization"></a>依存関係の視覚化
 
