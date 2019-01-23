@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 050eb5e51ec4f589d160ac20322ffc02f77efc61
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358611"
----
 # 概要
 ## [Windows SQL Server VM について](virtual-machines-windows-sql-server-iaas-overview.md) 
 ## [リリース ノート](virtual-machines-windows-sql-server-iaas-release-notes.md) 
