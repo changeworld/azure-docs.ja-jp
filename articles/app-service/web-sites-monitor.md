@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994948"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247263"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[Azure portal](https://portal.azure.com) 上で Web アプリ、モバイル バック エンド、API アプリに対する組み込みの監視機能が提供されます。
@@ -72,7 +72,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 | メトリック | 説明 |
 | --- | --- |
 | **平均応答時間** | アプリが要求に応答するのに要した平均時間 (ミリ秒)。 |
-| **平均メモリ ワーキング セット** | アプリで使用された平均メモリ量 (メビバイト (MiB))。 |
+| **平均メモリ ワーキング セット** | アプリで使用された平均メモリ量 (メガバイト (MiB))。 |
 | **CPU 時間** | アプリで消費された CPU の量 (秒)。 このメトリックについて詳しくは、「[CPU 時間と CPU の割合](#cpu-time-vs-cpu-percentage)」をご覧ください。 |
 | **受信データ** | アプリで消費された受信帯域幅の量 (MiB)。 |
 | **送信データ** | アプリで消費された送信帯域幅の量 (MiB)。 |
@@ -141,14 +141,12 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケーリング
 アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページをご覧ください。
 
-Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、自動スケーリングがサポートされています。 自動スケーリングでは、App Service プランのメトリックを監視するルールを構成することができます。 ルールによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリがオーバー プロビジョニングされたときのコスト削減にも役立ちます。 
+Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、自動スケーリングがサポートされています。 自動スケーリングでは、App Service プランのメトリックを監視するルールを構成することができます。 ルールによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリがオーバー プロビジョニングされたときのコスト削減にも役立ちます。
 
 自動スケーリングについて詳しくは、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関する記事をご覧ください。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579432"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265636"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
@@ -29,7 +29,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 * **API キーを取得または生成** - エンタープライズ ポータルにログインし、[レポート] > [使用状況のダウンロード] > [API アクセス キー] に移動して API キーを生成または取得します。
 * **API でのキーのパス**-呼び出しごとに API キーを渡して認証と承認を受ける必要があります。 次のプロパティは、HTTP ヘッダーに置かれている必要があります。
 
-|Request Header Key | 値|
+|要求ヘッダー キー | 値|
 |-|-|
 |Authorization| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09| 
 
@@ -52,7 +52,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 
 
 ## <a name="api-response-codes"></a>API 応答コード   
-|応答の状態コード|Message|説明|
+|応答の状態コード|メッセージ|説明|
 |-|-|-|
 |200| OK|エラーなし|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|

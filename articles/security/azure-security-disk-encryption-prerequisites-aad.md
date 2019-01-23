@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/09/2019
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 071f07e9d485a5fab5f2ce3d23a383e974001143
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f992b4539711d66c51e423eae94c40a325842241
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158023"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267166"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk Encryption の前提条件 (以前のリリース)
 
@@ -37,7 +37,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 - Azure Disk Encryption は、Azure ギャラリー ベースの Linux サーバーのディストリビューションおよびバージョンでのみサポートされます。 現在サポートされているバージョンの一覧については、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」を参照してください。
 - Azure Disk Encryption では、Key Vault と VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。 リソースをそれぞれ別のリージョンで構成すると、Azure Disk Encryption 機能を有効にする場合にエラーが発生します。
 
-## <a name="bkmk_LinuxPrereq"></a> Linux Iaas VM のその他の前提条件 
+## <a name="bkmk_LinuxPrereq"></a> Linux IaaS VM のその他の前提条件 
 
 - Linux 用の Azure Disk Encryption を使用する場合、[サポートされているイメージ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)で OS ディスクの暗号化を有効にするために、VM に 7 GB の RAM が必要です。 OS ディスクの暗号化プロセスが完了すると、より少ないメモリで VM を実行するように構成できます。
 - 暗号化を有効にする前に、暗号化するデータ ディスクを /etc/fstab に正しく登録する必要があります。 "/dev/sdX" 形式のデバイス名は、再起動後 (特に暗号化が適用された後) に同じディスクに関連付けられるとは限らないため、このエントリに永続的なブロック デバイス名を使用してください。 この動作の詳細については、次を参照してください:[Linux VM デバイス名の変更トラブルシューティング](../virtual-machines/linux/troubleshoot-device-names-problems.md)
@@ -147,7 +147,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Key Vault と Azure AD アプリの前提条件ワークフロー
 
-Azure Disk Encryption に関する Key Vault と Azure AD の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用することができます。 前提条件のスクリプトの使用の詳細については、[VM の暗号化のクイック スタート](quick-encrypt-vm-powershell.md)および [Azure Disk Encryption の付録](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)を参照してください。 
+Azure Disk Encryption に関する Key Vault と Azure AD の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用することができます。 前提条件のスクリプトの使用の詳細については、[VM の暗号化のクイック スタート](quick-encrypt-vm-powershell.md)および [Azure Disk Encryption の付録](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)を参照してください。 
 
 1. Key Vault を作成します。 
 2. Azure AD アプリケーションとサービス プリンシパルを設定します。

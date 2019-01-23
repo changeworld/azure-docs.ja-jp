@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/6/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994860"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247505"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -25,7 +25,7 @@ Azure Application Gateway は、アプリケーション配信コントローラ
 
 ### <a name="what-features-does-application-gateway-support"></a>Application Gateway はどのような機能をサポートしますか?
 
-Application Gateway は、自動スケーリング、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、複数サイトのホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway は、自動スケーリング、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パスベースのルーティング、マルチサイト ホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Application Gateway と Azure Load Balancer の違いは何ですか?
 
@@ -53,7 +53,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-regions-is-the-service-available-in"></a>このサービスは、どのリージョンで利用できますか?
 
-Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) で利用することもできます。
+Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China 21Vianet](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) で利用することもできます。
 
 ### <a name="is-this-a-dedicated-deployment-for-my-subscription-or-is-it-shared-across-customers"></a>Application Gateway はサブスクリプション専用のデプロイメントですか? または、複数の顧客と共有されますか?
 
@@ -126,7 +126,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 ネットワーク セキュリティ グループ (NSG) はアプリケーション ゲートウェイ サブネットでサポートされますが、次の制約があります。
 
-* Application Gateway v1 SKU ではポート 65503 から 65534 の、v2 SKU ではポート 65200 から 65535 の受信トラフィックを例外にする必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
+* Application Gateway v1 SKU ではポート 65503 から 65534 の、v2 SKU ではポート 65200 から 65535 の受信トラフィックを例外にする必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始できません。
 
 * 送信インターネット接続はブロックできません。
 
@@ -137,6 +137,8 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 ユーザー定義ルート (UDR) は、エンドツーエンドの要求/応答の通信を変えないかぎり、Application Gateway サブネットでサポートされます。
 
 たとえば、パケットの検査のためにファイアウォール アプリケーションを指す Application Gateway サブネットに UDR をセットアップできますが、パケットが意図した宛先の後検査にリーチできることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの ExpressRoute や VPN Gateway によってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
+
+アプリケーション ゲートウェイ サブネット上の UDR は v2 SKU ではサポート**されていません**。 詳細については、「[自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations)」を参照してください。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway にはどのような制限がありますか? これらの制限値を引き上げることはできますか?
 
@@ -164,7 +166,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 ### <a name="how-are-rules-processed"></a>ルールはどのように処理されますか?
 
-ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前にポートに基づいて基本ルールがトラフィックと一致することでトラフィックが不適切なバックエンドにルーティングされる可能性を下げるため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
+ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前に基本ルールがポートに基づくトラフィックと一致したときにトラフィックが不適切なバックエンドにルーティングされる可能性を低くするため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しますか?
 
@@ -206,7 +208,7 @@ v2 SKU では、新しいインスタンスが障害ドメインと更新ドメ�
 
 ### <a name="does-manual-scale-updown-cause-downtime"></a>手動でのスケールアップまたはスケールダウンによってダウンタイムが発生しますか?
 
-ダウンタイムは発生しません。アップグレード ドメインと障害ドメインにインスタンスが分散されます。
+ダウンタイムは発生しません。 インスタンスはアップグレード ドメインと障害ドメインに分散されます。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Application Gateway は接続のドレインに対応していますか?
 
@@ -292,7 +294,7 @@ Application Gateway でサポートされている最新の暗号スイートは
 
 ### <a name="how-many-ssl-certificates-are-supported"></a>いくつの SSL 証明書がサポートされていますか?
 
-サポートされている SSL 証明書は最大 20 個です。
+サポートされている SSL 証明書は最大 100 個です。
 
 ### <a name="how-many-authentication-certificates-for-backend-re-encryption-are-supported"></a>バックエンドの再暗号化用として、いくつの認証証明書がサポートされていますか?
 
@@ -374,7 +376,7 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway のトラフィック統計情報を分析するにはどうすればよいですか?
 
-Azure Log Analytics、Excel、Power BI などのさまざまなメカニズムを使用して、アクセス ログを表示および分析することができます。
+Azure Log Analytics、Excel、Power BI などのいくつかのメカニズムを使用して、アクセス ログを表示および分析することができます。
 
 Microsoft は、一般的な [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートも発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
 

@@ -1,24 +1,10 @@
 ---
-title: ワークスペースの作成 - Azure Machine Learning Studio | Microsoft Docs
-description: Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
-services: machine-learning
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.topic: article
-ms.date: 12/07/2017
-ms.openlocfilehash: e6835afd66d054a79c422a35839d64ae89031de5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268259"
+title:ワークスペースを作成する titleSuffix: Azure Machine Learning Studio description:Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:12/07/2017
 ---
+
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの作成と共有
 
 Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
@@ -26,7 +12,7 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
 
 
 ### <a name="to-create-a-workspace"></a>ワークスペースを作成するには
-1.  [Azure ポータル](https://portal.azure.com/)
+1. [Azure ポータル](https://portal.azure.com/)
 
     > [!NOTE]
     > サインインしてワークスペースを作成するには、Azure サブスクリプションの管理者である必要があります。 

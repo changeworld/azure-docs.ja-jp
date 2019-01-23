@@ -1,26 +1,8 @@
 ---
-title: Machine Learning Studio に関してよく寄せられる質問 (FAQ) - Azure | Microsoft Docs
-description: Azure Machine Learning Studio:効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。
-keywords: 機械の概要、予測モデリング、機械学習とは
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2017
-ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091293"
+title:Machine Learning Studio に関してよく寄せられる質問 (FAQ) titleSuffix: Azure Machine Learning Studio description:'Azure Machine Learning Studio:効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。'
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:06/02/2017
 ---
 # <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio FAQ:課金、機能、制限事項、およびサポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -152,7 +134,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
 
- [アルゴリズムの選択方法](algorithm-choice.md)」に関するページをご覧ください。
+[アルゴリズムの選択方法](algorithm-choice.md)」に関するページをご覧ください。
 
 **提供されているアルゴリズムは、R または Python で記述されていますか。**
 

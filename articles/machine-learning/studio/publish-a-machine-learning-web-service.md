@@ -1,26 +1,8 @@
 ---
-title: Machine Learning Studio Web サービスをデプロイする - Azure | Microsoft Docs
-description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269925"
+title:Machine Learning Studio Web サービスをデプロイする titleSuffix: Azure Machine Learning Studio description:トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:01/06/2017
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
@@ -29,7 +11,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 
 * **[トレーニング実験を作成する]** - Azure Machine Learning Studio は、供給するトレーニング データを活用した予測分析モデルの学習とテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
-* **[Web サービスとしてデプロイする]** - 予測実験を[New]または[従来]の Azure Web サービスとしてデプロイできます。 ユーザーはご利用のモデルにデータを送信し、モデルの予測を受信できます。
+* **[Web サービスとしてデプロイする]** - 予測実験を[新規]または[従来]の Azure Web サービスとしてデプロイできます。 ユーザーはご利用のモデルにデータを送信し、モデルの予測を受信できます。
 
 
 
@@ -63,7 +45,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 ### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>新しい Web サービスとして予測実験をデプロイする
 予測実験の準備ができたので、新しい Azure Web サービスとしてデプロイできます。 Web サービスを使用してユーザーはデータをモデルに送信でき、モデルは予測を返します。
 
-予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択します。  Machine Learning Web サービス ポータルの [デプロイ] ページが開きます。
+予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、**Web サービスのデプロイ [新規]** を選択します。  Machine Learning Web サービス ポータルの [デプロイ] ページが開きます。
 
 > [!NOTE] 
 > 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
@@ -187,7 +169,7 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 [トレーニング実験を作成する]: #create-a-training-experiment
 [予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
 [Web サービスとしてデプロイする]: #deploy-it-as-a-web-service
-[New]: #deploy-the-predictive-experiment-as-a-new-web-service
+[新規]: #deploy-the-predictive-experiment-as-a-new-web-service
 [従来]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

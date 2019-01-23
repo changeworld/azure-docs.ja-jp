@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623181"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212262"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -40,10 +40,14 @@ ms.locfileid: "51623181"
 > **待機時間 (95 パーセンタイル)** は、ログの 95% が報告されるまでにかかる時間を示し、**待機時間 (99 パーセンタイル)** は、ログの 99% が報告されるまでにかかる時間を示します。 
 >
 
-| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|
-| :-- | --- | --- | 
-| 監査ログ | 2 分  | 5 分  |
-| サインイン | 2 分  | 5 分 |
+| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|ログがレポートされる時間の範囲|
+| :-- | --- | --- | --- |
+| 監査ログ | 2 分  | 5 分  | 2 分から 60 分 |
+| サインイン | 2 分  | 5 分 | 2 分から 120 分 |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium ライセンスの取得後、アクティビティ データが表示されるまでにかかる時間
+
+無料ライセンスでのアクティビティ データが既にある場合、アップグレード時にはすぐにそのデータを表示できます。 データが何もない場合は、Premium ライセンスへのアップグレード後、レポートにデータが表示されるまで 1 日から 2 日かかります。
 
 ## <a name="security-reports"></a>セキュリティ レポート
 

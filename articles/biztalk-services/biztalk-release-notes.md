@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253433"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260336"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -35,8 +35,8 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 ## <a name="update-history"></a>更新履歴
 ### <a name="october-update"></a>10 月の更新
 * 組織アカウントが次のようにサポートされます。  
-  * **シナリオ**: BizTalk Services のデプロイを Microsoft アカウント (user@live.com など) を使用して登録した。 このシナリオでは、Microsoft アカウントのユーザーのみが BizTalk Services ポータルを使用して BizTalk Services を管理できます。 組織アカウントは使用できません。  
-  * **シナリオ**: BizTalk Services のデプロイを Azure Active Directory の組織アカウント (user@fabrikam.com や user@contoso.com など) を使用して BizTalk Services のデプロイを登録した。 このシナリオでは、同じ組織内の Azure Active Directory ユーザーのみが、BizTalk Services ポータルを使用して、BizTalk Services を管理できます。 Microsoft アカウントは使用できません。  
+  * **シナリオ**: BizTalk サービスのデプロイを Microsoft アカウント (user@live.com など) を使用して登録した。 このシナリオでは、Microsoft アカウントのユーザーのみが BizTalk Services ポータルを使用して BizTalk Services を管理できます。 組織アカウントは使用できません。  
+  * **シナリオ**: Azure Active Directory の組織アカウント (user@fabrikam.com や user@contoso.com など) を使用して BizTalk サービスのデプロイを登録した。 このシナリオでは、同じ組織内の Azure Active Directory ユーザーのみが、BizTalk Services ポータルを使用して、BizTalk Services を管理できます。 Microsoft アカウントは使用できません。  
 * BizTalk サービスを作成すると、ユーザーは BizTalk Services ポータルに自動的に登録されます。
   * **シナリオ**: Azure にサインインして、BizTalk サービスを作成した後、初めて **[管理]** を選択した。 BizTalk Services ポータルが開くと、BizTalk サービスが自動的に登録され、デプロイできる状態になります。  
     「 [BizTalk Services ポータルでの BizTalk サービス配置の登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx)」を参照してください。  
@@ -97,7 +97,7 @@ ID の修飾子を変更する場合は、契約を削除し、パートナー �
 ### <a name="as2-attachments"></a>AS2 添付ファイル
 AS2 メッセージの添付ファイルは送信と受信のどちらでもサポートされていません。 具体的には、添付ファイルは確認なしで無視され、メッセージ本文は通常の AS2 メッセージとして処理されます。  
 
-### <a name="resources-remembering-path"></a>リソース: パスの記憶
+### <a name="resources-remembering-path"></a>リソース:パスの記憶
 **リソース**を追加する際、リソースを追加するために前に使用したパスがダイアログ ウィンドウに記憶されていない場合があります。 前に使用したパスを記憶するには、Internet Explorer の **[信頼済みサイト]** に BizTalk Services ポータル Web サイトを追加してみてください。  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>ブリッジのエンティティ名を変更し、変更を保存しないでプロジェクトを閉じると、再度エンティティを開いたときにエラーが発生する
@@ -175,12 +175,12 @@ LOB コンポーネントのアドレスとエンティティ名には特殊文�
 ### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>アーティファクト ストアで証明書を更新した後も、更新された証明書がブリッジで使用されない
 次のシナリオで考えてみましょう。  
 
-**シナリオ 1: ブリッジからサービス エンドポイントへのメッセージ転送を保護するために、サムプリント ベースの証明書を使用している**  
+**シナリオ 1:ブリッジからサービス エンドポイントへのメッセージ転送を保護するために、サムプリント ベースの証明書を使用している**  
 BizTalk サービス プロジェクトでサムプリント ベースの証明書を使用しているシナリオで、 BizTalk Services ポータルの証明書を名前は変えずに異なるサムプリントを使用して更新したのに、BizTalk サービス プロジェクトはそれに応じた更新をしていない場合が該当します。 このようなシナリオでは、以前の証明書データがチャネル キャッシュ内にまだ存在しているために、ブリッジがメッセージの処理を続行することがあります。 その場合、メッセージの処理が失敗します。  
 
 **対処法**: BizTalk サービス プロジェクトで証明書を更新し、プロジェクトを再デプロイします。  
 
-**シナリオ 2: ブリッジからサービス エンドポイントへのメッセージ転送を保護するために、名前ベースの動作を使用して証明書を識別している**
+**シナリオ 2:ブリッジからサービス エンドポイントへのメッセージ転送を保護するために、名前ベースの動作を使用して証明書を識別している**
 
 BizTalk サービス プロジェクトで名前ベースの動作を使用して証明書を確認しているシナリオで、 BizTalk Services ポータルの証明書を更新したのに、BizTalk サービス プロジェクトはそれに応じた更新をしていない場合が該当します。 このようなシナリオでは、以前の証明書データがチャネル キャッシュ内にまだ存在しているために、ブリッジがメッセージの処理を続行することがあります。 その場合、メッセージの処理が失敗します。  
 
@@ -196,27 +196,27 @@ SQL Database がオフラインのときにブリッジがメッセージを処�
 ### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>WCF を使用したブリッジへのメッセージ送信が拡張しない
 WCF を使用してブリッジに送信されたメッセージが拡張しない場合、 スケーラブルなクライアントが必要であれば、代わりに HttpWebRequest を使用してください。
 
-### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>アップグレード: BizTalk Services プレビューから一般公開 (GA) にアップグレードした後にトークン プロバイダーのエラーが発生する
+### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>アップグレード:BizTalk Services プレビューから一般公開 (GA) にアップグレードした後にトークン プロバイダーのエラーが発生する
 アクティブなバッチが含まれた EDI 契約または AS2 契約がある場合、 BizTalk Servicesをプレビューから GA にアップグレードすると、次のエラーが発生することがあります。
 
-* エラー: トークン プロバイダーは、セキュリティ トークンを提供できませんでした。 トークン プロバイダーから返されるメッセージ: リモート名を解決できませんでした。
+* エラー:トークン プロバイダーがセキュリティ トークンを提供できませんでした。 トークン プロバイダーによって返されたメッセージ:リモート名を解決できませんでした。
 * バッチ タスクがキャンセルされます。
 
-**対処法**: BizTalk Services を GA にアップグレードした後に、契約を再度デプロイします。  
+**対処法**: BizTalk Services を GA に更新した後に、契約を再度デプロイします。  
 
-### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>アップグレード: BizTalk Services SDK をアップグレードした後に、ツールボックスに古いブリッジ アイコンが表示される
+### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>アップグレード:BizTalk Services SDK をアップグレードした後に、ツールボックスに古いブリッジ アイコンが表示される
 ブリッジを表す古いアイコンがある旧バージョンの BizTalk Services SDK をアップグレードした後も、ツールボックスには引き続きブリッジの古いアイコンが表示されます。 ただし、ブリッジを BizTalk サービス プロジェクトのデザイン画面に追加すると、画面に新しいアイコンが表示されます。  
 
 **対処法**」を参照してください。 <system drive>:\Users\<\AppData\Local\Microsoft\VisualStudio\11.0 にある .tbd ファイルを削除することで、この問題を回避できます。  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>アップグレード: BizTalk ポータルをプレビューから GA に更新すると、EDI 機能を使用できないというエラーが表示されることがある
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>アップグレード:BizTalk ポータルをプレビューから GA に更新すると、EDI 機能を使用できないというエラーが表示されることがある
 BizTalk Services ポータルにログインしているときに BizTalk Services をプレビューから GA にアップグレードすると、ポータルに次のエラーが発生することがあります。  
 
 この機能は、このエディションの Microsoft Azure BizTalk Services には含まれていません。 この機能を使用するには、対応するエディションに切り替えてください。  
 
-**解決策**: ポータルからログアウトし、ブラウザーを閉じて再び開き、再度ポータルにログインします。  
+**解決方法**:ポータルからログアウトし、ブラウザーを閉じて再び開き、再度ポータルにログインします。  
 
-### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>アップグレード: BizTalk Services を GA にアップグレードした後に新しい追跡データが表示されない
+### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>アップグレード:BizTalk Services を GA にアップグレードした後に新しい追跡データが表示されない
 BizTalk Services プレビュー サブスクリプションに XML ブリッジがデプロイされているシナリオを想定します。 ブリッジにメッセージを送信すると、対応する追跡データが BizTalk Services ポータルに表示されます。 現時点では、BizTalk Services ポータルと BizTalk Services ランタイム ビットを GA にアップグレードし、以前にデプロイしたのと同じブリッジ エンドポイントにメッセージを送信すると、アップグレード後に送信したメッセージの追跡データは表示されません。  
 
 ### <a name="pipelines-versus-bridges"></a>パイプラインとブリッジ

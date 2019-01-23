@@ -1,26 +1,8 @@
 ---
-title: サンプル データセットを使用する - Azure Machine Learning Studio | Microsoft Docs
-description: Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270486"
+title:サンプル データセットを使用する titleSuffix: Azure Machine Learning Studio description:Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/19/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -180,7 +162,7 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <li>米国本土の混雑度が上位 70 位までの空港を含めるように、データセットをフィルター処理します。</li>
   <li>キャンセルされたフライトは 15 分超の遅延として分類します。</li>
   <li>迂回したフライトをフィルターで外します。</li>
-  <li>Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Cancelled の各列が選択されています。</li>
+  <li>次の列が選択されています。Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Cancelled</li>
 </ul>
 </td>
 </tr>
@@ -221,7 +203,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
 <tr>
   <td>IMDB 映画のタイトル</td>
   <td>
-Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
+このデータセットには、Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
   </td>
 </tr>
 
@@ -323,7 +305,7 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <p></p>
 <b>使用法:</b>放射の画像が信号とバックグラウンド ノイズのどちらを表しているかを予測します。
 <p></p>
-<b>注:</b>バックグラウンド イベントを信号に分類することは、シグナル イベントをバックグラウンドに分類することよりも大きな悪影響を及ぼすため、シンプルな分類の正確度は、このデータでは意味を持ちません。 異なる分類子の比較には ROC グラフを使用する必要があります。 バックグラウンド イベントを信号として受信する可能性は、次のしきい値のいずれかを下回る必要があります: 0.01、0.02、0.05、0.1、0.2。
+<b>注:</b>バックグラウンド イベントを信号に分類することは、シグナル イベントをバックグラウンドに分類することよりも大きな悪影響を及ぼすため、シンプルな分類の正確度は、このデータでは意味を持ちません。 異なる分類子の比較には ROC グラフを使用する必要があります。 バックグラウンド イベントを信号として受信する可能性は、次のしきい値のいずれかを下回る必要があります。0.01、0.02、0.05、0.1、または 0.2。
 <p></p>
 また、バックグラウンド イベントの数 (ハドロン放射の場合 h) は過小評価されます。 実際の測定では、h またはノイズ クラスがイベントの大部分を占めています。 
 <p></p>
@@ -340,7 +322,7 @@ NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://az754797.vo.mse
   <li>気象観測所 ID を対応する空港 ID にマッピングします。</li>
   <li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li>
   <li>Date 列を Year、Month、Day の列に分割します。</li>
-  <li>AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter の各列が選択されています。</li>
+  <li>次の列が選択されています。AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter</li>
 </ul>
   </td>
 </tr>

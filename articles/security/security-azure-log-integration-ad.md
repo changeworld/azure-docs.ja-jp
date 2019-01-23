@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313243"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304926"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure A
 
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログを統合する手順
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure A
 ## <a name="next-steps"></a>次の手順
 Azure ログ統合の詳細については、次をご覧ください。
 
-* [Azure ログ用の Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324): このダウンロード センターのページでは、Azure ログ統合の詳細情報、システム要件、インストール手順などを説明します。
-* [Azure ログ統合の概要](security-azure-log-integration-overview.md): この記事では、Azure ログ統合と、その主な機能およびしくみについて紹介します。
-* [Azure ログ統合の FAQ](security-azure-log-integration-faq.md): この記事は、Azure ログ統合について寄せられる質問とその回答です。
-* [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るのに役立つその他の機能を紹介します。
+* [Azure ログ用の Microsoft Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324): このダウンロード センター ページでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
+* [Azure Log Integration の概要](security-azure-log-integration-overview.md): この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。
+* [Azure Log Integration の FAQ](security-azure-log-integration-faq.md):この記事は、Azure ログ統合について寄せられる質問とその回答です。
+* [Azure 診断と Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るために役立つその他の機能を紹介します。

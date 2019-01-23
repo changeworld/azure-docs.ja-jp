@@ -2,22 +2,17 @@
 title: Azure Application Gateway でのエンド ツー エンド SSL の構成
 description: この記事では、PowerShell を使用して Azure Application Gateway でエンド ツー エンド SSL を構成する方法を説明します。
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945333"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214064"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
 
@@ -45,9 +40,9 @@ Application Gateway は、カスタム SSL オプションの定義をサポー�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL 経由でゲートウェイに送信されるトラフィックの暗号化と暗号化解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
+アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL プロトコルの仕様に従って対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
 
-エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドをホワイトリスト登録する必要があります。 それには、バックエンドの公開証明書をアプリケーション ゲートウェイにアップロードする必要があります。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
+エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドをホワイトリスト登録する必要があります。 バックエンド サーバーの公開証明書をアプリケーション ゲートウェイにアップロードしてください。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
 
 この構成プロセスについては以降のセクションで説明します。
 
@@ -258,7 +253,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -
 
    ```
 
-   3. 最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかるため、注意してください。 終了すると、エンド ツー エンド SSL がアプリケーション ゲートウェイに構成されます。
+   3. 最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかります。 終了すると、エンド ツー エンド SSL がアプリケーション ゲートウェイに構成されます。
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0497cba4cae66e63f710c9678f6d87c2f9fb8fb1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 4344f0c69554db8c17e62f586d2598f6555aad14
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515084"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54196725"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Azure portal を使用してデバイスを管理する方法
 

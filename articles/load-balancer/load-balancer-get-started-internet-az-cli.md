@@ -1,10 +1,11 @@
 ---
-title: Azure CLI でゾーン冗長フロントエンド IP を使用して Standard Load Balancer を作成する
+title: ゾーン冗長フロントエンドを使用して Load Balancer を作成する - Azure CLI
 titlesuffix: Azure Load Balancer
-description: Azure CLI でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する方法について説明します。
+description: Azure CLI を使用してゾーン冗長パブリック IP アドレス フロントエンドでパブリック Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 8c396e72a8c8471be4214bf1b461210e2e61a805
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0d7c61ea7469b68c3cd6859745cd0892a565b95
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138929"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247471"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Azure CLI でゾーン冗長フロントエンドを使用して Standard Load Balancer を作成する
 

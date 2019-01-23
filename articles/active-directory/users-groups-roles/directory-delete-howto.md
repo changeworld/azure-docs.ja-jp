@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139688"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243884"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
+
 テナントを削除すると、そのテナントに含まれるリソースもすべて削除されます。 テナントを削除する前の準備として、その関連リソースを最小限にする必要があります。 ポータルから Azure AD テナントを削除できるのは、Azure Active Directory (Azure AD) グローバル管理者だけです。
 
 ## <a name="prepare-the-tenant-for-deletion"></a>削除のためにテナントを準備する
@@ -59,17 +60,17 @@ Azure Active Directory テナントを構成したときに、Azure Active Direc
 アクティブ (試用版の 30 日間)  | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Office 365 管理センターとリソースへの通常のアクセス権を持ちます 
 有効期限切れ (30 日間)   | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Office 365 管理センターとリソースへの通常のアクセス権を持ちます
 無効 (30 日間) | 管理者だけがアクセスできるデータ  | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Office 365 管理センターにアクセスできますが、ライセンスを割り当てたり、ユーザーを更新したりすることはできません
-プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Office 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます 
+プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Office 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます
 
 ビジネス向け Microsoft Store の管理センターを使用して、サブスクリプションを**プロビジョニング解除**状態にして、3 日で削除されるようにすることができます。 この機能は、Office 365 管理センターでまもなく公開されます。
 
 1. テナントのグローバル管理者のアカウントを使用して、[ビジネス向け Microsoft Store の管理センター](https://businessstore.microsoft.com/manage/)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" テナントを削除する場合は、admin@contoso.onmicrosoft.com などの UPN 使用してサインオンします。
 
-2. **[管理]** タブに移動して、**[製品およびサービス]** を選択し、キャンセルするサブスクリプションを選択します。 **[キャンセル]** クリックすると、ページが更新されます。
+2. **[管理]** タブに移動して、**[製品およびサービス]** を選択し、キャンセルするサブスクリプションを選択して **[削除]** を選択します。
   
   ![サブスクリプションを削除するための [削除] リンク](./media/directory-delete-howto/delete-command.png)
   
-3. **[削除]** を選択してサブスクリプションを削除し、使用条件に同意します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、3 日の間にサブスクリプションを再アクティブ化することができます。
+3. **サブスクリプションの削除** を選択して条件に同意し、サブスクリプションを削除します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、次の 3 日の間にサブスクリプションを再アクティブ化することができます。
   
   ![使用条件](./media/directory-delete-howto/delete-terms.png)
 

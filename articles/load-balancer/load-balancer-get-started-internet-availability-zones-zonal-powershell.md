@@ -1,10 +1,11 @@
 ---
-title: ゾーン フロントエンド IP を使用してパブリック Standard Load Balancer Standard を作成する - Azure PowerShell
+title: ゾーンのフロントエンドを使用してロード バランサーを作成する - Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Azure PowerShell を使用してゾーン パブリック IP アドレス フロントエンドでパブリック Load Balancer Standard を作成する方法について説明します
+description: Azure PowerShell を使用してゾーン フロントエンドで Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: da30bce34425d3537f9610c6e1f64ded4a836fd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 861759eec266f0ab66d30a466c06e7d2ee14bf06
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100686"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247159"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-powershell"></a>Azure PowerShell を使用してゾーン フロントエンドでパブリック Load Balancer Standard を作成する
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Azure PowerShell を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 
-この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 可用性ゾーンと Standard Load Balancer がどのように機能するかを理解するには、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。 
+この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 可用性ゾーンと Standard Load Balancer がどのように機能するかを理解するには、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -86,7 +87,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
 ```
 
 ## <a name="create-a-load-balancer"></a>ロード バランサーの作成
-Load Balancer Standard を作成するには、次のコマンドを使用します。
+Standard Load Balancer を作成するには、次のコマンドを使用します。
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `

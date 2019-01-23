@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault とは - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。
+description: Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 ユーザーは、ハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して、認証キーやストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードを暗号化することができます。
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3c198ab8a17df019f1735a9b62e27f1051f64c5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 889f12b935eaad72eb7637524ab578f28fbc412f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076333"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198492"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -76,7 +76,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 この管理者は、開発者にアプリケーションから呼び出す URI を提供し、セキュリティ管理者にキーの使用状況のログ情報を提供します。 
 
-![Azure Key Vault の概要][1]
+![Azure Key Vault の動作の概要][1]
 
 開発者は、API を使用してキーを直接管理することもできます。 詳細については、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 

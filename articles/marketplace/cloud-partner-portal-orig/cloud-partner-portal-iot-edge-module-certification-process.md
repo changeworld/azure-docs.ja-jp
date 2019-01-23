@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c37ed908b61ca54957affed3f81526353bc3f53b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c8056bd4912605a4cd3ee333b1be87d4f3a6d5ba
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389566"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198050"
 ---
 # <a name="the-iot-edge-module-certification-process"></a>IoT Edge モジュール認定プロセス
 
@@ -42,7 +42,7 @@ ms.locfileid: "49389566"
 
 -   **モジュール ツイン**。IoT Hub に格納されている JSON ドキュメントで、メタデータ、構成、条件などのモジュール インスタンスの状態情報が含まれています。
 
--   **SDK**。複数の言語 (C\#、C、Python、Java、Node.JS など) でカスタム モジュールを作成するために使用されます。
+-   **SDK**。複数の言語でカスタム モジュールを作成するために使用されます (C\#、C、Python、Java、Node.JS など)。
 
 ## <a name="the-onboarding-process-for-an-iot-edge-module"></a>IoT Edge モジュールのオンボード プロセス
 
@@ -106,7 +106,7 @@ ms.locfileid: "49389566"
 
 **バージョン管理**
 
--   Marketplace から取得したモジュールを自動的に更新するか、自分でテスト済みのバージョンを使用するかどうかを顧客が選択できるようにする必要があります。 Marketplace のモジュールは、IoT Edge ランタイムと同じバージョン管理パターンに従う必要があります。 次に例を示します。
+-   Marketplace から取得したモジュールを自動的に更新するか、自分でテスト済みのバージョンを使用するかどうかを顧客が選択できるようにする必要があります。 Marketplace のモジュールは、IoT Edge ランタイムと同じバージョン管理パターンに従う必要があります。 例: 
 
     -   "1.0" などのローリング タグは更新できます。
 
@@ -118,7 +118,7 @@ ms.locfileid: "49389566"
     - [C\#](https://hub.docker.com/_/mysql/)
     - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
     - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._product_info?view=azure-java-stable)
+    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 -   IoT Module SDK を使用していないモジュールでは、Cloud パートナー ポータルを通して入手できる分析情報の精度が低くなります。 たとえば、ダウンロードの数です。
 
@@ -128,7 +128,7 @@ ms.locfileid: "49389566"
 
 -   パートナーは、提供するサポートの一環として、各自のモジュールをセキュリティで保護する必要があります。
 
-**更新**
+**更新プログラム**
 
 -   パートナーは、モジュールが最新の状態で機能できるようにする必要があります。 IoT Edge ランタイムに対する重大な変更計画がある場合は、事前に通知されます。
 

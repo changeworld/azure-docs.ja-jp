@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager を使用して複数値のトラフィックのルーティング方法を構成する | Microsoft Docs
+title: Azure Traffic Manager を使用して複数値のトラフィックのルーティング方法を構成する
 description: この記事では、トラフィックを A/AAAA エンドポイントにルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d4a51551fb0f9067929df1fdf074e7286938004b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187707"
+ms.locfileid: "54197170"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager での複数値ルーティング方法の構成
 

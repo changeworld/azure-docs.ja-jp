@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982999"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232874"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack のスケール ユニット ノードを追加する
 
@@ -105,6 +105,7 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 
 ### <a name="status-for-the-add-node-operation"></a>ノードの追加操作の状態 
 **スケール ユニットの場合:**
+
 |Status               |説明  |
 |---------------------|---------|
 |実行中              |すべてのノードは、アクティブにスケール ユニットに参加しています。|
@@ -115,6 +116,7 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 
 
 **スケール ユニット ノードの場合:**
+
 |Status                |説明  |
 |----------------------|---------|
 |実行中               |ノードは、アクティブにスケール ユニットに参加しています。|
@@ -128,7 +130,7 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 ## <a name="troubleshooting"></a>トラブルシューティング
 ノードを追加するときに多く見られる問題は次のとおりです。 
 
-**シナリオ 1:**  スケール ユニット ノードの追加操作は失敗するが、停止状態で表示されるノードが少なくとも 1 つ存在する。  
+**シナリオ 1:** スケール ユニット ノードの追加操作は失敗するが、一覧に停止状態として表示されるノードが少なくとも 1 つ存在する。  
 - 修復: 修復操作を使用してノードを修復してください。 一度に実行できる修復操作は 1 つだけです。
 
 **シナリオ 2:** 1 つまたは複数のスケール ユニット ノードが追加されましたが、ストレージの拡張に失敗した。 このシナリオでは、スケール ユニット ノード オブジェクトから "実行中" という状態が報告されますが、"記憶域を構成しています" タスクが開始されません。  

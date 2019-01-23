@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: raynew
-ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 31052276f06c5afdf78bf094637b7f60be4acbec
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877169"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262729"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -36,7 +36,7 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 | Windows Server Semi Annual Channel - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2016 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
-| Windows Server 2012 - Datacenter/Entprise/Standard | ボリューム、ファイル、フォルダー |
+| Windows Server 2012 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | SQL Server 2016 | Database |
 | SQL Server 2014 | Database |

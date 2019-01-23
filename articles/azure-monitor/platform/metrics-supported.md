@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549634"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232891"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
@@ -692,23 +692,23 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|ディメンション|
 |---|---|---|---|---|---|
-|SuccessfulRequests|成功した要求 (プレビュー)|Count|合計|Microsoft.EventHub の成功した要求数。  (プレビュー)|EntityName|
-|ServerErrors|サーバー エラー。  (プレビュー)|Count|合計|Microsoft.EventHub のサーバー エラー数。  (プレビュー)|EntityName|
-|UserErrors|ユーザー エラー数。  (プレビュー)|Count|合計|Microsoft.EventHub のユーザー エラー数。  (プレビュー)|EntityName|
-|QuotaExceededErrors|クォータ超過エラー数。  (プレビュー)|Count|合計|Microsoft.EventHub のクォータ超過エラー数。  (プレビュー)|EntityName|
-|ThrottledRequests|スロットルされた要求数。  (プレビュー)|Count|合計|Microsoft.EventHub のスロットルされた要求数。  (プレビュー)|EntityName|
-|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.EventHub の受信要求数。  (プレビュー)|EntityName|
-|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の受信メッセージ数。  (プレビュー)|EntityName|
-|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の送信メッセージ数。  (プレビュー)|EntityName|
-|IncomingBytes|着信バイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub の受信バイト数。  (プレビュー)|EntityName|
-|OutgoingBytes|発信バイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub の発信バイト数。  (プレビュー)|EntityName|
-|ActiveConnections|ActiveConnections (プレビュー)|Count|平均|Microsoft.EventHub のアクティブな接続の合計数。  (プレビュー)|ディメンションなし|
-|ConnectionsOpened|開かれている接続数。  (プレビュー)|Count|平均|Microsoft.EventHub の開かれている接続数。  (プレビュー)|EntityName|
-|ConnectionsClosed|切断された接続数。  (プレビュー)|Count|平均|Microsoft.EventHub の切断された接続数。  (プレビュー)|EntityName|
-|CaptureBacklog|バックログのキャプチャ。  (プレビュー)|Count|合計|Microsoft.EventHub のバックログをキャプチャします。  (プレビュー)|EntityName|
-|CapturedMessages|キャプチャされたメッセージ数。  (プレビュー)|Count|合計|Microsoft.EventHub のキャプチャされたメッセージ数。  (プレビュー)|EntityName|
-|CapturedBytes|キャプチャされたバイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub のキャプチャされたバイト数。  (プレビュー)|EntityName|
-|サイズ|サイズ (プレビュー)|Bytes|平均|EventHub のサイズ (バイト単位)。  (プレビュー)|EntityName|
+|SuccessfulRequests|成功した要求 (プレビュー)|Count|合計|Microsoft.EventHub の成功した要求数。 (プレビュー)|EntityName|
+|ServerErrors|サーバー エラー。 (プレビュー)|Count|合計|Microsoft.EventHub のサーバー エラー数。 (プレビュー)|EntityName|
+|UserErrors|ユーザー エラー数。 (プレビュー)|Count|合計|Microsoft.EventHub のユーザー エラー数。 (プレビュー)|EntityName|
+|QuotaExceededErrors|クォータ超過エラー数。 (プレビュー)|Count|合計|Microsoft.EventHub のクォータ超過エラー数。 (プレビュー)|EntityName|
+|ThrottledRequests|スロットルされた要求数。 (プレビュー)|Count|合計|Microsoft.EventHub のスロットルされた要求数。 (プレビュー)|EntityName|
+|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.EventHub の受信要求数。 (プレビュー)|EntityName|
+|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の受信メッセージ数。 (プレビュー)|EntityName|
+|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の送信メッセージ数。 (プレビュー)|EntityName|
+|IncomingBytes|着信バイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub の受信バイト数。 (プレビュー)|EntityName|
+|OutgoingBytes|発信バイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub の発信バイト数。 (プレビュー)|EntityName|
+|ActiveConnections|ActiveConnections (プレビュー)|Count|平均|Microsoft.EventHub のアクティブな接続の合計数。 (プレビュー)|ディメンションなし|
+|ConnectionsOpened|開かれている接続数。 (プレビュー)|Count|平均|Microsoft.EventHub の開かれている接続数。 (プレビュー)|EntityName|
+|ConnectionsClosed|切断された接続数。 (プレビュー)|Count|平均|Microsoft.EventHub の切断された接続数。 (プレビュー)|EntityName|
+|CaptureBacklog|バックログのキャプチャ。 (プレビュー)|Count|合計|Microsoft.EventHub のバックログをキャプチャします。 (プレビュー)|EntityName|
+|CapturedMessages|キャプチャされたメッセージ数。 (プレビュー)|Count|合計|Microsoft.EventHub のキャプチャされたメッセージ数。 (プレビュー)|EntityName|
+|CapturedBytes|キャプチャされたバイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub のキャプチャされたバイト数。 (プレビュー)|EntityName|
+|サイズ|サイズ (プレビュー)|Bytes|平均|EventHub のサイズ (バイト単位)。 (プレビュー)|EntityName|
 |INREQS|受信要求|Count|合計|名前空間に対して受信した送信要求の合計数|ディメンションなし|
 |SUCCREQ|成功した要求|Count|合計|名前空間の成功した要求の総数|ディメンションなし|
 |FAILREQ|失敗した要求|Count|合計|名前空間の失敗した要求の総数|ディメンションなし|
@@ -731,22 +731,22 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|ディメンション|
 |---|---|---|---|---|---|
-|SuccessfulRequests|成功した要求 (プレビュー)|Count|合計|Microsoft.EventHub の成功した要求数。  (プレビュー)|ディメンションなし|
-|ServerErrors|サーバー エラー。  (プレビュー)|Count|合計|Microsoft.EventHub のサーバー エラー数。  (プレビュー)|ディメンションなし|
-|UserErrors|ユーザー エラー数。  (プレビュー)|Count|合計|Microsoft.EventHub のユーザー エラー数。  (プレビュー)|ディメンションなし|
-|QuotaExceededErrors|クォータ超過エラー数。  (プレビュー)|Count|合計|Microsoft.EventHub のクォータ超過エラー数。  (プレビュー)|ディメンションなし|
-|ThrottledRequests|スロットルされた要求数。  (プレビュー)|Count|合計|Microsoft.EventHub のスロットルされた要求数。  (プレビュー)|ディメンションなし|
-|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.EventHub の受信要求数。  (プレビュー)|ディメンションなし|
-|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の受信メッセージ数。  (プレビュー)|ディメンションなし|
-|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の送信メッセージ数。  (プレビュー)|ディメンションなし|
-|IncomingBytes|着信バイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub の受信バイト数。  (プレビュー)|ディメンションなし|
-|OutgoingBytes|発信バイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub の発信バイト数。  (プレビュー)|ディメンションなし|
-|ActiveConnections|ActiveConnections (プレビュー)|Count|平均|Microsoft.EventHub のアクティブな接続の合計数。  (プレビュー)|ディメンションなし|
-|ConnectionsOpened|開かれている接続数。  (プレビュー)|Count|平均|Microsoft.EventHub の開かれている接続数。  (プレビュー)|ディメンションなし|
-|ConnectionsClosed|切断された接続数。  (プレビュー)|Count|平均|Microsoft.EventHub の切断された接続数。  (プレビュー)|ディメンションなし|
-|CaptureBacklog|バックログのキャプチャ。  (プレビュー)|Count|合計|Microsoft.EventHub のバックログをキャプチャします。  (プレビュー)|ディメンションなし|
-|CapturedMessages|キャプチャされたメッセージ数。  (プレビュー)|Count|合計|Microsoft.EventHub のキャプチャされたメッセージ数。  (プレビュー)|ディメンションなし|
-|CapturedBytes|キャプチャされたバイト数。  (プレビュー)|Bytes|合計|Microsoft.EventHub のキャプチャされたバイト数。  (プレビュー)|ディメンションなし|
+|SuccessfulRequests|成功した要求 (プレビュー)|Count|合計|Microsoft.EventHub の成功した要求数。 (プレビュー)|ディメンションなし|
+|ServerErrors|サーバー エラー。 (プレビュー)|Count|合計|Microsoft.EventHub のサーバー エラー数。 (プレビュー)|ディメンションなし|
+|UserErrors|ユーザー エラー数。 (プレビュー)|Count|合計|Microsoft.EventHub のユーザー エラー数。 (プレビュー)|ディメンションなし|
+|QuotaExceededErrors|クォータ超過エラー数。 (プレビュー)|Count|合計|Microsoft.EventHub のクォータ超過エラー数。 (プレビュー)|ディメンションなし|
+|ThrottledRequests|スロットルされた要求数。 (プレビュー)|Count|合計|Microsoft.EventHub のスロットルされた要求数。 (プレビュー)|ディメンションなし|
+|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.EventHub の受信要求数。 (プレビュー)|ディメンションなし|
+|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の受信メッセージ数。 (プレビュー)|ディメンションなし|
+|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.EventHub の送信メッセージ数。 (プレビュー)|ディメンションなし|
+|IncomingBytes|着信バイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub の受信バイト数。 (プレビュー)|ディメンションなし|
+|OutgoingBytes|発信バイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub の発信バイト数。 (プレビュー)|ディメンションなし|
+|ActiveConnections|ActiveConnections (プレビュー)|Count|平均|Microsoft.EventHub のアクティブな接続の合計数。 (プレビュー)|ディメンションなし|
+|ConnectionsOpened|開かれている接続数。 (プレビュー)|Count|平均|Microsoft.EventHub の開かれている接続数。 (プレビュー)|ディメンションなし|
+|ConnectionsClosed|切断された接続数。 (プレビュー)|Count|平均|Microsoft.EventHub の切断された接続数。 (プレビュー)|ディメンションなし|
+|CaptureBacklog|バックログのキャプチャ。 (プレビュー)|Count|合計|Microsoft.EventHub のバックログをキャプチャします。 (プレビュー)|ディメンションなし|
+|CapturedMessages|キャプチャされたメッセージ数。 (プレビュー)|Count|合計|Microsoft.EventHub のキャプチャされたメッセージ数。 (プレビュー)|ディメンションなし|
+|CapturedBytes|キャプチャされたバイト数。 (プレビュー)|Bytes|合計|Microsoft.EventHub のキャプチャされたバイト数。 (プレビュー)|ディメンションなし|
 |CPU|CPU (プレビュー)|Percent|最大値|イベント ハブ クラスターの CPU 使用率 (%)|Role|
 |AvailableMemory|使用可能なメモリ (プレビュー)|Count|最大値|イベント ハブ クラスターの使用可能なメモリ (バイト単位)|Role|
 
@@ -1121,8 +1121,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Average_Disk Read Bytes/sec|Disk Read Bytes/sec |Count|平均|Average_Disk Read Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Reads/sec|Disk Reads/sec |Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Transfers/sec|Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Write Bytes/sec| Disk Write Bytes/sec|Count|平均|Average_Disk Write Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Writes/sec| Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Write Bytes/sec|Disk Write Bytes/sec|Count|平均|Average_Disk Write Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Writes/sec|Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Free Megabytes|Free Megabytes|Count|平均|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Logical Disk Bytes/sec|Logical Disk Bytes/sec|Count|平均|Average_Logical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_% Available Memory|% Available Memory|Count|平均|Average_% Available Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
@@ -1172,7 +1172,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Average_Current Disk Queue Length|現在のディスク キューの長さ|Count|平均|Average_Current Disk Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Reads/sec|Disk Reads/sec |Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Transfers/sec|Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Writes/sec| Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Writes/sec|Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Free Megabytes|Free Megabytes|Count|平均|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_% Free Space|% Free Space|Count|平均|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Available MBytes|Available MBytes|Count|平均|Average_Available MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
@@ -1228,16 +1228,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|説明|ディメンション|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功した要求 (プレビュー)|Count|合計|名前空間の成功した要求の総数 (プレビュー)|EntityName|
-|ServerErrors|サーバー エラー。  (プレビュー)|Count|合計|Microsoft.ServiceBus のサーバー エラー数。  (プレビュー)|EntityName|
-|UserErrors|ユーザー エラー数。  (プレビュー)|Count|合計|Microsoft.ServiceBus のユーザー エラー数。  (プレビュー)|EntityName|
-|ThrottledRequests|スロットルされた要求数。  (プレビュー)|Count|合計|Microsoft.ServiceBus のスロットルされた要求数。  (プレビュー)|EntityName|
-|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.ServiceBus の受信要求数。  (プレビュー)|EntityName|
-|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.ServiceBus の受信メッセージ数。  (プレビュー)|EntityName|
-|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.ServiceBus の送信メッセージ数。  (プレビュー)|EntityName|
-|ActiveConnections|ActiveConnections (プレビュー)|Count|合計|Microsoft.ServiceBus のアクティブな接続の合計数。  (プレビュー)|ディメンションなし|
-|サイズ|サイズ (プレビュー)|Bytes|平均|キュー/トピックのサイズ (バイト単位)。  (プレビュー)|EntityName|
-|メッセージ|キュー/トピック内のメッセージの数。  (プレビュー)|Count|平均|キュー/トピック内のメッセージの数。  (プレビュー)|EntityName|
-|ActiveMessages|キュー/トピック内のアクティブなメッセージの数。  (プレビュー)|Count|平均|キュー/トピック内のアクティブなメッセージの数。  (プレビュー)|EntityName|
+|ServerErrors|サーバー エラー。 (プレビュー)|Count|合計|Microsoft.ServiceBus のサーバー エラー数。 (プレビュー)|EntityName|
+|UserErrors|ユーザー エラー数。 (プレビュー)|Count|合計|Microsoft.ServiceBus のユーザー エラー数。 (プレビュー)|EntityName|
+|ThrottledRequests|スロットルされた要求数。 (プレビュー)|Count|合計|Microsoft.ServiceBus のスロットルされた要求数。 (プレビュー)|EntityName|
+|IncomingRequests|受信要求 (プレビュー)|Count|合計|Microsoft.ServiceBus の受信要求数。 (プレビュー)|EntityName|
+|IncomingMessages|受信メッセージ (プレビュー)|Count|合計|Microsoft.ServiceBus の受信メッセージ数。 (プレビュー)|EntityName|
+|OutgoingMessages|送信メッセージ (プレビュー)|Count|合計|Microsoft.ServiceBus の送信メッセージ数。 (プレビュー)|EntityName|
+|ActiveConnections|ActiveConnections (プレビュー)|Count|合計|Microsoft.ServiceBus のアクティブな接続の合計数。 (プレビュー)|ディメンションなし|
+|サイズ|サイズ (プレビュー)|Bytes|平均|キュー/トピックのサイズ (バイト単位)。 (プレビュー)|EntityName|
+|メッセージ|キュー/トピック内のメッセージの数。 (プレビュー)|Count|平均|キュー/トピック内のメッセージの数。 (プレビュー)|EntityName|
+|ActiveMessages|キュー/トピック内のアクティブなメッセージの数。 (プレビュー)|Count|平均|キュー/トピック内のアクティブなメッセージの数。 (プレビュー)|EntityName|
 |CPUXNS|名前空間あたりの CPU 使用率|Percent|最大値|Service Bus Premium 名前空間の CPU 使用率メトリック|ディメンションなし|
 |WSXNS|名前空間あたりのメモリ サイズの使用量|Percent|最大値|Service Bus Premium 名前空間のメモリ使用量メトリック|ディメンションなし|
 

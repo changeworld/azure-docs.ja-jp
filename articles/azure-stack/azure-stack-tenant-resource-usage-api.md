@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5a9859fda2c6cac6acf08c8dcca3a0ce205d2e15
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379714"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302733"
 ---
 # <a name="tenant-resource-usage-api"></a>テナント リソース使用量 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "44379714"
 Windows PowerShell コマンドレット **Get-UsageAggregates** を使用して、Azure と同様に使用状況データを取得できます。
 
 ## <a name="api-call"></a>API 呼び出し
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 要求は、要求されたサブスクリプションと要求された期間の使用の詳細を取得します。 要求の本文はありません。
 
 | **メソッド** | **要求 URI** |
@@ -46,7 +46,7 @@ Windows PowerShell コマンドレット **Get-UsageAggregates** を使用して
 | *api-version* |この要求を行うために使用するプロトコルのバージョン。 2015-06-01-preview を使用する必要があります。 |
 | *continuationToken* |使用状況 API プロバイダーへの最後の呼び出しから取得されたトークン。 このトークンは、応答が 1,000 行より大きい場合に必要であり、進行状況のブックマークとして機能します。 これが存在しない場合、渡された単位に基づいて、日または時間の開始から、データが取得されます。 |
 
-### <a name="response"></a>Response
+### <a name="response"></a>応答
 GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
 
 ```json
@@ -82,7 +82,7 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *subscriptionId* |Azure ユーザーのサブスクリプション識別子 |
 | *usageStartTime* |この使用状況集計が属する使用状況バケットの UTC 開始時間 |
 | *usageEndTime* |この使用状況集計が属する使用状況バケットの UTC 終了時間 |
-| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br>  *resourceUri*: 完全修飾リソース ID。リソース グループとインスタンス名が含まれます <br>  *location*: このサービスが実行されたリージョン <br>  *tags*: ユーザーが指定するリソース タグ <br>  *additionalInfo*: OS のバージョンやイメージの種類など、使用されたリソースの詳細 |
+| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br>  *resourceUri*:完全修飾リソース ID。リソース グループとインスタンス名が含まれます <br>  *location*:このサービスが実行されたリージョン <br>  *tags*:ユーザーが指定するリソース タグ <br>  *additionalInfo*:OS のバージョンやイメージの種類など、使用されたリソースの詳細 |
 | *quantity* |この期間に発生したリソース使用量 |
 | *meterId* |使用されたリソースの一意の ID (*ResourceID* とも呼ばれる) |
 

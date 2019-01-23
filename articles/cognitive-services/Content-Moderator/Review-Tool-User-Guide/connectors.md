@@ -1,5 +1,6 @@
 ---
-title: Azure Content Moderator のコネクタを使用して他の API に接続する | Microsoft Docs
+title: コンテンツのモデレート中に他のサービスに接続する - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Content Moderator ワークフローが他の API にアクセスできるようにコネクタを使用する方法を説明します。
 services: cognitive-services
 author: sanjeev3
@@ -7,16 +8,16 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d8114457e7079ca8772cab830bd011dcddf372f5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 99d8b3603278a9c6c432ca32a1d85e9abe34e1da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373032"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265585"
 ---
-# <a name="connectors"></a>コネクタ
+# <a name="connect-to-other-cognitive-services"></a>他のコグニティブ サービスに接続する
 
 Azure Content Moderator ワークフローは、Content Moderator API に加えて他のワークフローも使用できます。 Content Moderator でコネクタを使用することで他の API にアクセスします。 コネクタがその他の API へのリンクを提供します。
 

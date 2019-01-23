@@ -1,6 +1,6 @@
 ---
 title: Azure Portal でのすべての請求先アカウントの表示 | Microsoft Docs
-description: Azure Portal で自分個人および Enterprise Agreement 両方の請求先アカウントを表示する方法を説明します｡
+description: Azure portal で自分個人および Enterprise Agreement 両方の請求先アカウントを表示する方法を説明します｡
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 769d810eb20b70a955560e6bf2a5b533ea6e55f0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 61eade9aa4edd3f0d6d32dc5a71d6cb97b1e4651
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395527"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261878"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>Azure Portal でのすべての請求先アカウントの表示  
 
@@ -41,7 +41,6 @@ Azure の請求関係は､請求先アカウントで定義されます｡ 複�
 
     ![請求先アカウント一覧のスクリーンショット](./media/billing-view-all-accounts/billing-list-of-accounts.png)
 
- 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

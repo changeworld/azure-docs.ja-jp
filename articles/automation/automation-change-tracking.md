@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408920"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213214"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -51,19 +51,18 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Debian GNU/Linux 8 および 9
 * Ubuntu Linux 14.04 LTS および 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
+## <a name="onboard"></a>Change Tracking とインベントリの有効化
 
-変更の追跡を開始するには、Automation アカウントの Change Tracking および Inventory ソリューションを有効にする必要があります。
+変更の追跡を開始するには、Change Tracking および Inventory ソリューションを有効にする必要があります。 Change Tracking と Inventory にマシンをオンボーディングする方法は多数あります。 以下に、推奨およびサポートされている、ソリューションにオンボードする方法を示します。
 
-1. Azure Portal で、Automation アカウントに移動します
-2. **[構成]** の **[Change Tracking]\(変更の追跡\)** を選択します。
-3. 既存の Log Analytics ワークスペースまたは **[新しいワークスペースの作成]** を選択し、**[有効化]** をクリックします。
-
-これにより Automation アカウントに対してソリューションが有効になります。 ソリューションを有効にするには最大 15 分かかります。 青のバナーは、ソリューションが有効になっていることを示します。 **[Change Tracking]\(変更の追跡\)** ページに戻って、ソリューションを管理します。
+* [仮想マシンから](automation-onboard-solutions-from-vm.md)
+* [複数のマシンを参照することから](automation-onboard-solutions-from-browse.md)
+* [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
+* [Azure Automation Runbook によって](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Change Tracking と Inventory の構成
 
-コンピューターをソリューションに追加する方法については、[Automation ソリューションの配布準備](automation-onboard-solutions-from-automation-account.md)に関するページをご覧ください。 Change Tracking と Inventory ソリューションでのマシンのオンボードが完了したら、追跡する項目を構成できます。新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking と Inventory の両方に対して有効になります。
+ソリューションにコンピューターをオンボードする方法については、[Automation ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)に関するページを参照してください。 Change Tracking と Inventory ソリューションでのマシンのオンボードが完了したら、追跡する項目を構成できます。新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking と Inventory の両方に対して有効になります。
 
 Windows と Linux の両方でファイルの変更を追跡する場合、ファイルの MD5 ハッシュが使用されます。 これらのハッシュは、前回のインベントリから変更が加えられたかどうかを検出するために使用されます。
 
@@ -85,7 +84,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
 |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクに従います。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクに従います。また、返却された内容の変更を許可します。     |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
 
 > [!NOTE]
 > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
@@ -105,7 +104,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>ワイルドカード、再帰、環境設定
 

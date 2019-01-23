@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2434c04260c223fdcc03bc7f91a6fd147e1d8503
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616199"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264107"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -21,7 +21,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux で Azure Storage
 
 このガイドでは、Storage Explorer で確認されている一般的な問題の解決方法を紹介しています。
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー: 証明書チェーンの自己署名証明書 (および同様のエラー)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
 証明書のエラーは、次の 2 つの状況のいずれかで発生します。
 
@@ -100,7 +100,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 接続されているアカウントまたはストレージ リソースを UI を使用して削除できない場合は、次のフォルダーを削除して、接続されているすべてのリソースを手動で削除できます。
 
 * Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Applicaiton Support/StorageExplorer`
+* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]

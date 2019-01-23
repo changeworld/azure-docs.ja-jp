@@ -12,21 +12,41 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2afdd3f78a99d9aae5e84bc2fdf1b21cbdc150d2
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721837"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306388"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期する
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
 > [!IMPORTANT]
 > Azure SQL データ同期では現時点で Azure SQL Database Managed Instance はサポート**されていません**。
 
-## <a name="architecture-of-sql-data-sync"></a>SQL データ同期のアーキテクチャ
+## <a name="when-to-use-data-sync"></a>データ同期を使用する場合
+
+データ同期は、いくつかの Azure SQL データベースや SQL Server データベースにわたるデータを最新の状態に保つ必要がある場合に便利です。 以下に、データ同期の主なユース ケースを示します。
+
+-   **ハイブリッド データ同期:** データ同期を使用すると、オンプレミス データベースと Azure SQL データベースの間でデータの同期を維持し、ハイブリッド アプリケーションを実現できます。 この機能は、クラウドへの移行を検討していて、一部のアプリケーションを Azure に配置しようとしているお客様にとって利点となる場合があります。
+
+-   **分散アプリケーション:** 多くの場合、ワークロードが異なるのであればデータベースも分離しておくと便利です。 たとえば、大規模な運用データベースがあり、このデータに対するレポートまたは分析ワークロードを実行する必要がある場合は、この追加のワークロードのために 2 つ目のデータベースを用意すると便利です。 そうすることで、運用ワークロードのパフォーマンスへの影響を最低限にすることができます。 データ同期を使えば、この 2 つのデータベースの同期を維持することができます。
+
+-   **グローバル分散アプリケーション:** 多くの企業は、複数のリージョン、さらには複数の国にわたって展開しています。 ネットワーク待ち時間を最小限にするには、データは最寄りのリージョンに配置するのが一番です。 データ同期では、世界中のリージョンのデータベースを簡単に同期させることができます。
+
+データ同期は、次のシナリオに適したソリューションではありません。
+
+| シナリオ | 推奨されるソリューション例 |
+|----------|----------------------------|
+| ディザスター リカバリー | [Azure 地理冗長のバックアップ](sql-database-automated-backups.md) |
+| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](sql-database-read-scale-out.md) |
+| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| オンプレミス SQL Server から Azure SQL Database への移行 | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
+
+## <a name="overview-of-sql-data-sync"></a>SQL データ同期の概要
 
 データ同期は、同期グループの概念に基づいています。 同期グループは、同期するデータベースのグループです。
 
@@ -50,26 +70,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   **競合解決ポリシー**は、グループ レベルのポリシーであり、*[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
 
-## <a name="when-to-use-data-sync"></a>データ同期を使用する場合
-
-データ同期は、いくつかの Azure SQL データベースや SQL Server データベースにわたるデータを最新の状態に保つ必要がある場合に便利です。 以下に、データ同期の主なユース ケースを示します。
-
--   **ハイブリッド データ同期:** データ同期を使用すると、オンプレミス データベースと Azure SQL データベースの間でデータの同期を維持し、ハイブリッド アプリケーションを実現できます。 この機能は、クラウドへの移行を検討していて、一部のアプリケーションを Azure に配置しようとしているお客様にとって利点となる場合があります。
-
--   **分散アプリケーション:** 多くの場合、ワークロードが異なるのであればデータベースも分離しておくと便利です。 たとえば、大規模な運用データベースがあり、このデータに対するレポートまたは分析ワークロードを実行する必要がある場合は、この追加のワークロードのために 2 つ目のデータベースを用意すると便利です。 そうすることで、運用ワークロードのパフォーマンスへの影響を最低限にすることができます。 データ同期を使えば、この 2 つのデータベースの同期を維持することができます。
-
--   **グローバル分散アプリケーション:** 多くの企業は、複数のリージョン、さらには複数の国にわたって展開しています。 ネットワーク待ち時間を最小限にするには、データは最寄りのリージョンに配置するのが一番です。 データ同期では、世界中のリージョンのデータベースを簡単に同期させることができます。
-
-データ同期は、次のシナリオに適したソリューションではありません。
-
-| シナリオ | 推奨されるソリューション例 |
-|----------|----------------------------|
-| ディザスター リカバリー | [Azure 地理冗長のバックアップ](sql-database-automated-backups.md) |
-| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](sql-database-read-scale-out.md) |
-| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
-| オンプレミス SQL Server から Azure SQL Database への移行 | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
-|||
-
 ## <a name="how-does-data-sync-work"></a>データ同期のしくみ 
 
 -   **データ変更の追跡:** データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 変更はユーザー データベースのサイド テーブルに記録されます。 既定では BULK INSERT はトリガーを起動しないことに注意してください。 FIRE_TRIGGERS が指定されていない場合は、INSERT トリガーは実行しません。 データ同期がこれらの INSERT を追跡できるように、FIRE_TRIGGERS オプションを追加します。 
@@ -79,6 +79,14 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **競合の解決:** データ同期には、競合を解決するために、*[ハブ側に合わせる]* と *[Member wins] (メンバー側に合わせる)* という 2 つのオプションが用意されています。
     -   *[ハブ側に合わせる]* を選択すると、ハブでの変更が常にメンバーでの変更を上書きします。
     -   *[Member wins]\(メンバー側に合わせる\)* を選択すると、メンバーでの変更がハブでの変更を上書きします。 複数のメンバーがある場合、最終的な値は、どのメンバーが最初に同期されるかによって異なります。
+
+## <a name="compare-data-sync-with-transactional-replication"></a>データ同期とトランザクション レプリケーションの比較
+
+| | データ同期 | トランザクション レプリケーション |
+|---|---|---|
+| 長所 | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 |
+| 短所 | - 5 分以上の待機時間<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database の単一データベースから発行できない<br/>- 高いメンテナンス コスト |
+| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL データ同期の概要
 

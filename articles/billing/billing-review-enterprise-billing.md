@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: f4b5fccefb08597a13fcc91eda11bbf3eb122914
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 994f321a0bfcb6b8e9b7abc6f4b1f61abed618e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394848"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262015"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 
 Azure レポート API は Azure コストの確認や管理に役立ちます。
 
-この記事では、Azure REST API を使用して、請求先アカウント、部門、またはエンタープライズ契約 (EA) 登録アカウントに関連付けられた課金情報を取得する方法について説明します。 
+この記事では、Azure REST API シリーズを使用して、請求先アカウント、部門、またはマイクロソフト エンタープライズ契約 (EA) 登録アカウントに関連付けられた課金情報を取得する方法について説明します。 
 
 ## <a name="individual-account-billing"></a>個別のアカウント課金
 

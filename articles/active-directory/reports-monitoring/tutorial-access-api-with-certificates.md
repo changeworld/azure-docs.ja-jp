@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5714ed552c81d28a253aa57ad6e2ba1d67e543a1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961962"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214268"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -30,24 +30,28 @@ ms.locfileid: "52961962"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. 最初に、[Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たします。 
+1. サインイン データにアクセスするには、プレミアム (P1/P2) ライセンスを持つ Azure Active Directory テナントがあることを確認してください。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前のアクティビティ データがない場合は、プレミアム ライセンスにアップグレードしてからレポートにデータが表示されるようになるまでに数日かかることに注意してください。 
 
-2. [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) をダウンロードしてインストールします。
+2. テナントの**グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー アカウントに切り替えるか、そのようなアカウントを新たに作成します。 
 
-3. [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
+3. [Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たします。 
+
+4. [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) をダウンロードしてインストールします。
+
+5. [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
     - 認証に必要な ADAL ライブラリ
     - ADAL を使用してユーザー キー、アプリケーション キー、証明書からアクセス トークンを取得
     - Graph API でページ単位の結果を処理
 
-4. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-5. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
+7. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-6. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
+8. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"

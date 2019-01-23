@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03206baf0e70e7be247e9848bfd5a80a1a1e1b35
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624660"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247760"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -45,7 +45,7 @@ ms.locfileid: "51624660"
 
 ## <a name="audit-logs"></a>監査ログ
 
-Azure AD の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。 監査レポートにアクセスするには、**Azure Active Directory** の **[アクティビティ]** セクションで **[監査ログ]** を選択します。 
+Azure AD の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。 監査レポートにアクセスするには、**Azure Active Directory** の **[アクティビティ]** セクションで **[監査ログ]** を選択します。 監査ログでは最大 1 時間の待ち時間が生じる可能性があることに注意してください。そのため、タスクが完了した後、監査アクティビティ データがポータルに表示されるまでにそれだけ長い時間がかかる場合があります。
 
 ![監査ログ](./media/concept-audit-logs/61.png "監査ログ")
 
@@ -178,6 +178,11 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 
 ![監査ログ](./media/concept-audit-logs/25.png "監査ログ")
 
+## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+
+Office 365 のアクティビティ ログは、[Office 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Office 365 管理センターのみです。 
+
+[Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

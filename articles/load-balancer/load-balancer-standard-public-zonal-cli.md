@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 titlesuffix: Azure Load Balancer
-description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する方法について説明します。
+description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: f1a6777a99c2237fc4d201fa5c87eaea88117866
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 813f11dae31261b4211480570a4801de19e74437
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185632"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199207"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドでパブリック Load Balancer Standard を作成する
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 
-この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
+この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
 
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
 
@@ -61,7 +61,7 @@ az network public-ip create \
 --zone 1
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Azure Load Balancer Standard を作成する
+## <a name="create-azure-standard-load-balancer"></a>Azure Standard Load Balancer を作成する
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
 - ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
 - フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。

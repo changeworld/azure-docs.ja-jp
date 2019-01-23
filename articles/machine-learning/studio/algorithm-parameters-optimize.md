@@ -1,26 +1,21 @@
 ---
-title: アルゴリズムの最適化 - Azure Machine Learning Studio | Microsoft Docs
+title: アルゴリズムを最適化する
+titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 757819338433dc1ea8eedd34d8356166b68dd3fc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269415"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265559"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選ぶ
 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725254"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302682"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -55,7 +55,7 @@ ms.locfileid: "53725254"
 
 ### <a name="node-operational-states"></a>ノードの動作状態
 
-| Status | 説明 |
+| 状態 | 説明 |
 |----------------------|-------------------------------------------------------------------|
 | 実行中 | ノードは、アクティブにスケール ユニットに参加しています。 |
 | 停止済み | ノードは利用不可です。 |
@@ -76,7 +76,7 @@ ms.locfileid: "53725254"
 
 Azure Stack PowerShell モジュールをインストールする必要があります。 これらのコマンドレットは **Azs.Fabric.Admin** モジュールに存在します。 PowerShell for Azure Stack のインストールまたはインストールの確認については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」を参照してください。
 
-## <a name="stop"></a>Stop
+## <a name="stop"></a>停止
 
 **停止**アクションは、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャット ダウンの信号を送ることはしません。 計画されている停止操作の場合は、最初に必ずシャットダウン操作を行ってください。 
 
@@ -92,7 +92,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 詳細については、「[Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
 
-## <a name="start"></a>start
+## <a name="start"></a>開始
 
 **開始**操作は、ノードをオンにします。 これは、電源ボタンを押した場合と同じです。 
  
@@ -123,7 +123,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 詳細については、「[Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
 
-## <a name="resume"></a>Resume
+## <a name="resume"></a>再開
 
 **再開**アクションは、無効化されたノードを再開し、ワークロードのアクティブな配置対象としてマークします。 ノードで実行されていた以前のワークロードはフェールバックしません。 (ノードのドレイン操作を使用する場合は、必ず電源をオフにしてください。 ノードは、電源をオンに戻しても、ワークロードのアクティブな配置対象としてマークされません。 準備ができたら、再開操作を使用しノードをアクティブとしてマークする必要があります。)
 

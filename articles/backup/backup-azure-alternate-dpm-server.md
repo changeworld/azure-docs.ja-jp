@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: adigan
-ms.openlocfilehash: aa2796ab8e4cd9b8ab5e7fc3b4804f5535ac3518
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 66d78be296d0786626325df36aa133d277131b3b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254453"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267098"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。
 
 > [!NOTE]
-> この記事は、[最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 と UR7 以降] (https://support.microsoft.com/en-us/kb/3065246)) に該当します。
+> この記事は、[最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 UR7 以降](https://support.microsoft.com/en-us/kb/3065246)に適用されます。
 >
 >
 

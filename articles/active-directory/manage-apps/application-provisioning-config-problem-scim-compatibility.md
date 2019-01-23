@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: aa7169e29ec46abc1c7de2858a118745e7363411
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6aa4be204070423f91a2a4494b89a0bb8c8f5926
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587361"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258717"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -36,10 +36,10 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 | **SCIM 2.0 へのコンプライアンスに関する問題** |  **修正済みである** | **修正日付**  |  
 |---|---|---|
-| Azure AD で、"/scim" がアプリケーションの SCIM エンドポイント URL のルート内にある必要がある  | はい|  2018 年 12 月 18 日 | 
-| 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  はい| 2018 年 12 月 18 日  | 
-|  複数値属性のパッチ要求に無効なパス フィルター構文が含まれている | はい|  2018 年 12 月 18 日  | 
-|  グループの作成要求に無効なスキーマ URI が含まれている | はい|  2018 年 12 月 18 日  |  
+| Azure AD で、"/scim" がアプリケーションの SCIM エンドポイント URL のルート内にある必要がある  | [はい]  |  2018 年 12 月 18 日 | 
+| 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  [はい]  | 2018 年 12 月 18 日  | 
+|  複数値属性のパッチ要求に無効なパス フィルター構文が含まれている | [はい]  |  2018 年 12 月 18 日  | 
+|  グループの作成要求に無効なスキーマ URI が含まれている | [はい]  |  2018 年 12 月 18 日  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>説明されているサービス修正プログラムは、既存の SCIM アプリに自動的に適用されていますか。
 

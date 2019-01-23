@@ -1,5 +1,5 @@
 ---
-title: 'SaaS アプリ: ディザスター リカバリーのための Azure SQL Database の geo 冗長バックアップ | Microsoft Docs'
+title: SaaS アプリ:ディザスター リカバリーのための Azure SQL Database の geo 冗長バックアップ | Microsoft Docs
 description: 停止が発生した場合に Azure SQL Database の geo 冗長バックアップを使用して、マルチテナント SaaS アプリを復旧する方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352942"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264752"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 
@@ -114,7 +114,7 @@ geo リストアは、Azure SQL Database 向けの最もコストが低いディ
 
 3. 次のように設定します。
 
-    $DemoScenario = 1: テナント サーバーとプールの構成情報をカタログに同期するバックグラウンド ジョブを開始します。
+    $DemoScenario = 1:テナント サーバーとプールの構成情報をカタログに同期するバックグラウンド ジョブを開始します。
 
 4. F5 キーを選択して、同期スクリプトを実行します。 
 
@@ -174,7 +174,7 @@ geo リストア復旧プロセスでは、アプリケーションを展開し�
 
 1. PowerShell ISE で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 スクリプトに次の値を設定します。
 
-    $DemoScenario = 2: geo 冗長バックアップから復元することで、アプリを復旧リージョンに復旧します。
+    $DemoScenario = 2:geo 冗長バックアップから復元することで、アプリを復旧リージョンに復旧します。
 
 2. F5 キーを選択して、スクリプトを実行します。  
 
@@ -209,7 +209,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 1. PowerShell ISE で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 スクリプトを開き、次のプロパティを設定します。
 
-    $DemoScenario = 3: 復旧リージョンで新しいテナントをプロビジョニングします。
+    $DemoScenario = 3:復旧リージョン内に新しいテナントをプロビジョニングします。
 
 2. F5 キーを選択して、スクリプトを実行します。
 
@@ -262,7 +262,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 2. PowerShell ISE で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 スクリプトに次の値を設定します。
 
-    $DemoScenario = 4: 復旧リージョン内のテナントからイベントを削除します。
+    $DemoScenario = 4:復旧リージョン内のテナントからイベントを削除します。
 
 3. F5 キーを選択して、スクリプトを実行します。
 
@@ -320,13 +320,13 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
   
 1. PowerShell ISE で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 で、この PowerShell インスタンスでカタログ同期プロセスがまだ実行されていることを確認します。 必要な場合は、次のように設定して再起動します。
 
-    $DemoScenario = 1: テナント サーバー、プール、およびデータベースの構成情報のカタログへの同期を開始します。
+    $DemoScenario = 1:テナント サーバー、プール、およびデータベースの構成情報のカタログへの同期を開始します。
 
     F5 キーを選択して、スクリプトを実行します。
 
 2.  復帰プロセスを開始するには、次のように設定します。
 
-    $DemoScenario = 5: アプリを元のリージョンに復帰します。
+    $DemoScenario = 5:アプリを元のリージョンに復帰します。
 
     F5 キーを選択して、新しい PowerShell ウィンドウで復旧スクリプトを実行します。 復帰には数分かかり、PowerShell ウィンドウで監視できます。
 
@@ -352,7 +352,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 1. PowerShell ISE で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 スクリプトに、次のように設定します。
     
-    $DemoScenario = 6: 復旧リージョンから、古いリソースを削除します。
+    $DemoScenario = 6:復旧リージョンから、古いリソースを削除します。
 
 2. F5 キーを選択して、スクリプトを実行します。
 

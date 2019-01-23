@@ -1,6 +1,6 @@
 ---
 title: Azure Stack での VM の更新と管理 | Microsoft Docs
-description: Azure Automation の Update Management、Change Tracking、および Inventory ソリューションを使用して、Azure Stack にデプロイされている Windows VM を管理する方法について説明します。
+description: Azure Automation の Update Management、Change Tracking、および Inventory ソリューションを使用して、Azure Stack にデプロイされている Windows および Linux の VM を管理する方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b86a9a0cff397148b0632b3108f58a1977b518e9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959174"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332508"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack の VM の更新と管理
-以下の Azure Automation ソリューション機能を使用すると、Azure Stack を使用してデプロイされている Windows VM を管理することができます。
+以下の Azure Automation ソリューション機能を使用すると、Azure Stack を使用してデプロイされている Windows および Linux の VM を管理できます。
 
-- **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**. Update Management ソリューションでは、すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、Windows VM に必要な更新プログラムをインストールするプロセスを管理できます。
+- **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**. Update Management ソリューションでは、すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、Windows および Linux の VM に必要な更新プログラムをインストールするプロセスを管理できます。
 
-- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. 監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows レジストリ、ファイルの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
-- **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Azure Stack の Windows 仮想マシンを追跡する Inventory では、インベントリ コレクションを設定して構成するためのブラウザー ベースのユーザー インターフェイスが提供されます。 
+- **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Azure Stack の仮想マシンを追跡する Inventory では、インベントリ コレクションを設定して構成するためのブラウザー ベースのユーザー インターフェイスが提供されます。 
 
 > [!IMPORTANT]
-> これらのソリューションは、Azure VM の管理に使用されるものと同じです。 Azure と Azure Stack の Windows VM はどちらも、同じインターフェイスから同じツールを使用して同じ方法で管理されます。 また、Azure Stack で Update Management、Change Tracking、Inventory ソリューションを使用すると、Azure Stack VM の課金も Azure VM と同じです。
+> これらのソリューションは、Azure VM の管理に使用されるものと同じです。 Azure と Azure Stack の VM はどちらも、同じインターフェイスから同じツールを使用して同じ方法で管理されます。 また、Azure Stack で Update Management、Change Tracking、Inventory ソリューションを使用すると、Azure Stack VM の課金も Azure VM と同じです。
 
 ## <a name="prerequisites"></a>前提条件
-これらの機能を使用して Azure Stack の Windows VM を更新および管理するには、事前にいくつかの前提条件を満たす必要があります。 これらには、Azure portal および Azure Stack 管理ポータルで実行する必要のある手順が含まれます。
+これらの機能を使用して Azure Stack の VM を更新および管理するには、事前にいくつかの前提条件を満たす必要があります。 これらには、Azure portal および Azure Stack 管理ポータルで実行する必要のある手順が含まれます。
 
 ### <a name="in-the-azure-portal"></a>Azure ポータルで次の操作を行います。
-Azure Stack の Windows VM に対して Inventory、Change Tracking、Update Management の Azure Automation 機能を使用するには、まず、Azure でこれらのソリューションを有効にする必要があります。
+Azure Stack の VM に対して Inventory、Change Tracking、Update Management の Azure Automation 機能を使用するには、まず、Azure でこれらのソリューションを有効にする必要があります。
 
 > [!TIP]
 > Azure VM に対してこれらの機能を既に有効にしてある場合は、Log Analytics ワークスペースの既存の資格情報を使用できます。 使用する Log Analytics のワークスペース ID とプライマリ キーが既にある場合は、[次のセクション](./vm-update-management.md#in-the-azure-stack-administration-portal)に進んでください。 それ以外の場合は、引き続きこのセクションで新しい Log Analytics ワークスペースと Automation アカウントを作成します。
@@ -60,18 +60,18 @@ Azure Stack の Windows VM に対して Inventory、Change Tracking、Update Man
    [![](media/vm-update-management/1-sm.PNG "Automation アカウントの機能を有効にする")](media/vm-update-management/1-lg.PNG#lightbox)
 
 ### <a name="in-the-azure-stack-administration-portal"></a>Azure Stack 管理者ポータルで
-Azure portal で Azure Automation のソリューションを有効にしたら、次に、クラウド管理者として Azure Stack 管理ポータルにサインインし、**[Azure Update and Configuration Management]\(Azure 更新および構成管理\)** 拡張機能 Azure Stack マーケットプレース項目をダウンロードします。 
+Azure portal で Azure Automation のソリューションを有効にしたら、次に、クラウド管理者として Azure Stack 管理ポータルにサインインし、**Azure 更新および構成管理** および **Linux 用 Azure 更新および構成管理** という拡張機能の Azure Stack マーケットプレース項目をダウンロードします。 
 
    ![[Azure Update and Configuration Management]\(Azure 更新および構成管理\) 拡張機能マーケットプレース項目](media/vm-update-management/2.PNG) 
 
 ## <a name="enable-update-management-for-azure-stack-virtual-machines"></a>Update Management を Azure Stack 仮想マシンに対して有効にする
-以下の手順のようにして、Azure Stack Windows VM の更新管理を有効にします。
+以下の手順のようにして、Azure Stack VM の更新管理を有効にします。
 
 1. Azure Stack ユーザー ポータルにログインします。
 
-2. Azure Stack ユーザー ポータルで、ソリューションを有効にする Windows 仮想マシンの [拡張機能] ブレードに移動して、**[+ 追加]** をクリックし、**[Azure Update and Configuration Management]\(Azure 更新および構成管理\)** 拡張機能を選択して、**[作成]** をクリックします。
+2. Azure Stack ユーザー ポータルで、ソリューションを有効にする仮想マシンの [拡張機能] ブレードに移動して、**[+ 追加]** をクリックし、**[Azure Update and Configuration Management]\(Azure 更新および構成管理\)** 拡張機能を選択して、**[作成]** をクリックします。
 
-   [![](media/vm-update-management/3-sm.PNG "Windows VM 拡張機能ブレード")](media/vm-update-management/3-lg.PNG#lightbox)
+   [![](media/vm-update-management/3-sm.PNG "VM 拡張機能ブレード")](media/vm-update-management/3-lg.PNG#lightbox)
 
 3. 前に作成したワークスペース ID とプライマリ キーを入力して、エージェントと Log Analytics ワークスペースをリンクし、**[OK]** をクリックして拡張機能をデプロイします。
 
@@ -82,9 +82,9 @@ Azure portal で Azure Automation のソリューションを有効にしたら�
    [![](media/vm-update-management/5-sm.PNG "ワークスペース ID とキーの指定")](media/vm-update-management/5-lg.PNG#lightbox) 
 
    > [!TIP]
-   > この手順を繰り返して、ワークスペースに報告する Azure Stack の Windows VM で各ソリューションを有効にします。 
+   > この手順を繰り返して、ワークスペースに報告する Azure Stack の VM で各ソリューションを有効にします。 
   
-Azure Update and Configuration Management (Azure 更新および構成管理) 拡張機能が有効になると、管理対象の各 Windows VM で 1 日に 2 回スキャンが実行されます。 15 分ごとに Windows API が呼び出され、最後の更新時間を照会することで、状態が変化したかどうかが確認されます。 状態が変更された場合、コンプライアンス スキャンが開始されます。
+Azure Update and Configuration Management (Azure 更新および構成管理) 拡張機能が有効になると、管理対象の各 VM で 1 日に 2 回スキャンが実行されます。 15 分ごとに API が呼び出され、最後の更新時間を照会することで、状態が変化したかどうかが確認されます。 状態が変更された場合、コンプライアンス スキャンが開始されます。
 
 スキャンされた VM は、Azure Automation アカウントの Update Management ソリューションに表示されます。 
 
@@ -93,10 +93,10 @@ Azure Update and Configuration Management (Azure 更新および構成管理) �
 > [!IMPORTANT]
 > 管理対象のコンピューターの更新されたデータがダッシュボードに表示されるまでに、30 分～ 6 時間かかる場合があります。
 
-Azure Stack の Windows VM は、Azure VM と共に、スケジュールされた更新プログラムのデプロイに含めることができるようになります。
+Azure Stack の VM は、Azure VM と共に、スケジュールされた更新プログラムのデプロイに含めることができるようになります。
 
 ## <a name="enable-update-management-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Update Management を有効にする
-Azure Stack の Windows VM の数が多い場合は、[この Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)を使用して、さらに簡単に Windows VM にソリューションをデプロイできます。 このテンプレートは、Microsoft Monitoring Agent 拡張機能を既存の Windows VM にデプロイし、既存の Azure LogAnalytics ワークスペースにそれを追加します。
+Azure Stack の VM の数が多い場合は、[この Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)を使用して、さらに簡単に VM にソリューションをデプロイできます。 このテンプレートは、Microsoft Monitoring Agent 拡張機能を既存の VM にデプロイし、既存の Azure LogAnalytics ワークスペースにそれを追加します。
  
 ## <a name="next-steps"></a>次の手順
 [SQL Server のパフォーマンスを最適化する](azure-stack-sql-server-vm-considerations.md)

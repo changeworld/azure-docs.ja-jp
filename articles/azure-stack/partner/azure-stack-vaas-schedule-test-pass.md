@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: How to
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 1fbda6c0351287b9bc7574d100c0862b172a0aed
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0e9ad89e504ce1cb86daad48bec9ffe9423e2cf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650975"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319547"
 ---
-# <a name="schedule-your-first-test"></a>最初のテストのスケジュール設定
+# <a name="scheduling-a-test"></a>テストのスケジュール設定
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 サービスとしての検証 (VaaS) ポータルで、Azure Stack ソリューションのテストをスケジュールします。 VaaS ソリューションは、特定のハードウェア部品表 (BoM) を含む Azure Stack ソリューションを表します。 ハードウェアが Azure Stack を実行できることを確認するためのテストをスケジュールできます。
 
@@ -35,8 +35,8 @@ ms.locfileid: "49650975"
 このクイック スタートを実行する前に、次の項目を完了してください。
 
 - [サービスとしての検証のリソースを設定する](azure-stack-vaas-set-up-resources.md)
-- [ローカル エージェントをデプロイする](azure-stack-vaas-local-agent.md) (推奨)
-- [サービスとしての検証の主要概念](azure-stack-vaas-key-concepts.md) (推奨)
+- [ローカル エージェントをデプロイする](azure-stack-vaas-local-agent.md) (必須)
+- [サービスとしての検証の主要概念](azure-stack-vaas-key-concepts.md) (必須)
 
 ## <a name="start-a-workflow"></a>ワークフローの開始
 

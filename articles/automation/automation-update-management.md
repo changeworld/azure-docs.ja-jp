@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631857"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214999"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -86,11 +86,11 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ### <a name="client-requirements"></a>クライアントの要件
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 Windows エージェントは、WSUS サーバーと通信するように構成するか、Microsoft Update にアクセスできる必要があります。 System Center Configuration Manager と Update Management を統合して使用できます。 統合シナリオの詳細については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md#configuration)」を参照してください。 [Windows エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 Azure 仮想マシンのオンボードを実行すると、このエージェントは自動的にインストールされます。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 Linux コンピューターには、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 このソリューションでは、Linux 用 Log Analytics エージェントが複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
@@ -125,18 +125,27 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 > [!NOTE]
 > Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。
 
+## <a name="onboard"></a>Update Management の有効化
+
+システムへの修正プログラムの適用を開始するには、Update Management ソリューションを有効にする必要があります。 Update Management にマシンをオンボードする方法は多数あります。 以下に、推奨およびサポートされている、ソリューションにオンボードする方法を示します。
+
+* [仮想マシンから](automation-onboard-solutions-from-vm.md)
+* [複数のマシンを参照することから](automation-onboard-solutions-from-browse.md)
+* [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
+* [Azure Automation Runbook によって](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
 
 直接接続されたマシンが Log Analytics と通信していることを確認するには、数分経ってから、次のログ検索を実行します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 ```
 Heartbeat
 | where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 ```
 Heartbeat
@@ -251,7 +260,7 @@ REST API から更新プログラムのデプロイを表示する方法につ�
 
 次の表は、Update Management の更新プログラムの分類と、各分類の定義を示します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 |分類  |説明  |
 |---------|---------|
@@ -264,7 +273,7 @@ REST API から更新プログラムのデプロイを表示する方法につ�
 |ツール     | 1 つまたは複数のタスクを完了するのに役立つユーティリティまたは機能です。        |
 |更新プログラム     | 現在インストールされているアプリケーションまたはファイルに対する更新プログラムです。        |
 
-### <a name="linux"></a> Linux
+### <a name="linux"></a>Linux
 
 |分類  |説明  |
 |---------|---------|

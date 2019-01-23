@@ -1,26 +1,8 @@
 ---
-title: Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング - Azure | Microsoft Docs
-description: Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
-ms.openlocfilehash: 97116c4ad6efbaad28aec6451b02fc0dee1ac79f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054862"
+title:Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング titleSuffix: Azure Machine Learning Studio description:Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:11/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
 ## <a name="retraining-overview"></a>再トレーニングの概要

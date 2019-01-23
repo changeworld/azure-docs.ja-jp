@@ -1,10 +1,11 @@
 ---
-title: Azure portal を使用してゾーン冗長フロントエンドで Standard ロード バランサーを作成する
+title: ゾーン冗長フロントエンドを使用して Load Balancer を作成する - Azure portal
 titlesuffix: Azure Load Balancer
 description: Azure portal でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Standard ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2b898a9228e251003a049b2d82c0b1039eb54114
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135690"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247437"
 ---
-#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Azure portal を使用してゾーン冗長フロントエンドでパブリック Standard ロード バランサーを作成する
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Azure portal を使用してゾーン冗長フロントエンドで Standard ロード バランサーを作成する
 
-この記事では、パブリック IP Standard アドレスでゾーン冗長フロントエンドを使用してパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 Standard Load Balancer 上の単一のフロントエンド IP アドレスは、既定でゾーン冗長になります。
+この記事では、パブリック IP Standard アドレスでゾーン冗長フロントエンドを使用してパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 Standard Load Balancer 上の単一のフロントエンド IP アドレスは、既定でゾーン冗長になります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885720"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213129"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics のデータ インジェスト時間
 Azure Log Analytics は、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する、Azure Monitor 内の高スケールのデータ サービスです。 データが収集されてから、Log Analytics でそのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -46,7 +46,7 @@ Azure Log Analytics は、毎月増加するテラバイト単位のデータを
 Log Analytics エージェントを軽量にするため、エージェントはログをバッファーし、それらを定期的に Log Analytics にアップロードします。 アップロードの頻度は、データの型に応じて 30 秒から 2 分間の範囲で異なります。 ほとんどのデータは、1 分未満でアップロードされます。 ネットワークの状態は、このデータが Log Analytics のインジェスト ポイントに達するまでの待機時間に悪影響を及ぼす可能性があります。
 
 ### <a name="azure-logs-and-metrics"></a>Azure ログとメトリック 
-アクティビティ ログ データが Log Analytics で利用可能になるまで、約 5 分かかります。 診断ログとメトリックのデータは、Azure サービスに応じて、利用可能になるまでに 1 - 5 分かかります。 さらに、ログに 30 - 60 秒、Log Analytics のインジェスト ポイントに送信されるデータのメトリックに 3 分が追加でかかります。
+アクティビティ ログ データが Log Analytics で利用可能になるまで、約 5 分かかります。 診断ログとメトリックのデータは、Azure サービスに応じて、処理可能になるまでに 1 分から 15 分かかります。 処理可能になると、さらに、ログに 30 秒から 60 秒、Log Analytics のインジェスト ポイントに送信されるデータのメトリックに 3 分が追加でかかります。
 
 ### <a name="management-solutions-collection"></a>管理ソリューションのコレクション
 一部のソリューションでは、エージェントからデータを収集せず、さらに待機時間がかかるコレクション メソッドを使用する場合があります。 一部のソリューションでは、ほぼリアルタイムでの収集を試みることなく、一定の間隔でデータを収集します。 具体的な例を次に示します。
@@ -73,22 +73,60 @@ Log Analytics の最優先事項は、顧客データが失われることがな
 
 
 ## <a name="checking-ingestion-time"></a>インジェスト時間のチェック
-**Heartbeat** テーブルを使用して、エージェントからのデータの待機時間の推定値を取得することができます。 ハートビートは 1 分間に 1 回送信されるため、現在の時刻と最後のハートビート レコードとの差は、できるだけ 1 分に近づけるのが理想的です。
+インジェスト時間は、さまざまな状況とリソースの種類によって変わる場合があります。 ログ クエリを使用すると、ご利用の環境の具体的な動作を把握することができます。
 
-次のクエリを使用して、待機時間の最も長いコンピューターを一覧表示します。
+### <a name="ingestion-latency-delays"></a>インジェストの待ち時間
+特定のレコードの待ち時間は、[ingestion_time()](/azure/kusto/query/ingestiontimefunction) 関数の結果を _[TimeGenerated]_ フィールドと比較することによって測定することができます。 このデータを、さまざまな集計と組み合わせて使用すれば、取り込みの待ち時間の動作を突き止めることができます。 インジェスト時間のパーセンタイルを観察すれば、大量のデータの分析情報が得られます。 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+たとえば、次のクエリを実行すると、その日インジェスト時間が最小であったコンピューターを表示できます。 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-大規模な環境では、次のクエリを使用して、コンピューターの合計数の異なる割合の待機時間を集計します。
+一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンしたい場合は、次のクエリを使用します。ここではさらに、データをグラフで視覚化しています。 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+コンピューターのインジェスト時間を、それが置かれている (対応する IP アドレスに基づく) 国ごとに表示するには、次のクエリを使用します。 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+エージェントから送信されるデータの種類が異なれば、インジェストの待ち時間も異なる可能性があるので、前出のクエリを他の種類のデータにも使用してみましょう。 各種 Azure サービスのインジェスト時間を観察するには、次のクエリを使用します。 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>応答していないリソース 
+ときには、リソースからのデータ送信が停止することもあります。 リソースからデータが送信されているかどうかを把握するには、標準の _TimeGenerated_ フィールドで識別できる最新のレコードに着目します。  
+
+エージェントからは、1 分間に 1 回ハートビートが送信されます。そこで、_Heartbeat_ テーブルを使用して VM の状態をチェックします。 アクティブなコンピューターのうち、ハートビートを最近レポートしていないコンピューターを一覧表示するには、次のクエリを使用します。 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>次の手順
 * Log Analytics の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) をお読みください。

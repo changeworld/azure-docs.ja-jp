@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106568"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267132"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -58,16 +58,17 @@ Azure Cosmos DB はワークロードに基づいてパーティションを自�
 複数の固定コンテナーへの書き込みは非推奨です。また、Stream Analytics ジョブのスケールアウトに推奨される方法ではありません。 この詳細については、[Cosmos DB でのパーティション分割とスケーリング](../cosmos-db/sql-api-partition-data.md)に関する記事を参照してください。
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON 出力の Cosmos DB 設定
-Stream Analytics で Cosmos DB を出力として作成すると、情報の入力を求めるプロンプトが以下のように表示されます。 このセクションでは、各プロパティの定義について説明します。
 
+Stream Analytics で Cosmos DB を出力として作成すると、情報の入力を求めるプロンプトが以下のように表示されます。 このセクションでは、各プロパティの定義について説明します。
 
 ![documentdb stream analytics 出力画面](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-フィールド           | 説明 
--------------   | -------------
-出力のエイリアス    | ASA クエリ内でこの出力を意味するエイリアス。   
-アカウント名    | Azure Cosmos DB アカウントの名前またはエンドポイント URI 
-アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー
-Database        | Azure Cosmos DB データベース名
-コレクション名 | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  
-ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。
+|フィールド           | 説明|
+|-------------   | -------------|
+|出力エイリアス    | ASA クエリ内でこの出力を意味する別名。|
+|サブスクリプション    | 対象の Azure サブスクリプションを選択します。|
+|Account ID      | Azure Cosmos DB アカウントの名前またはエンドポイント URI。|
+|アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー。|
+|Database        | Azure Cosmos DB データベース名。|
+|コレクション名のパターン | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  |
+|ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。|

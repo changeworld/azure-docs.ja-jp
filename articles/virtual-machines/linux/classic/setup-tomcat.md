@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420083"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266945"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートを使用するには、[こちらの記事](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Azure Resource Manager とクラシックです](../../../resource-manager-deployment-model.md)。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートを使用するには、[こちらの記事](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 この記事では、Linux イメージ上に Tomcat7 をインストールして、Azure にデプロイします。  
@@ -41,10 +41,10 @@ Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache S
 
 この記事は、Tomcat と Linux の基本的な実務知識を持つ読者を想定しています。  
 
-## <a name="phase-1-create-an-image"></a>フェーズ 1: イメージを作成する
+## <a name="phase-1-create-an-image"></a>フェーズ 1:イメージを作成する
 このフェーズでは、Azure の Linux イメージを使用して仮想マシンを作成します。  
 
-### <a name="step-1-generate-an-ssh-authentication-key"></a>手順 1. SSH 認証キーを生成する
+### <a name="step-1-generate-an-ssh-authentication-key"></a>手順 1:SSH 認証キーを生成する
 SSH はシステム管理者にとって重要なツールです。 ただし、人間が指定したパスワードに基づいたアクセス セキュリティを構成することはお勧めしません。 悪意のあるユーザーは、ユーザー名と脆弱なパスワードに基づいたシステムに侵入することができます。
 
 リモート アクセスを開いたままにして、パスワードについて心配しなくてすむ方法があります。 この方法は、非対称暗号化方式による認証で構成されています。 ユーザーの秘密キーが認証を付与するキーとなります。 ユーザーのアカウントをロックして、パスワード認証を無効にすることもできます。
@@ -64,7 +64,7 @@ SSH はシステム管理者にとって重要なツールです。 ただし、
 5. 公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。 保存された公開キーの形式は使用する公開キーの形式と異なるため、 **[公開キーの保存]** をクリックしないでください。
 6. **[Save private key (秘密キーの保存)]** をクリックし、privateKey.ppk という名前のファイルに保存します。
 
-### <a name="step-2-create-the-image-in-the-azure-portal"></a>手順 2. Azure Portal でイメージを作成する
+### <a name="step-2-create-the-image-in-the-azure-portal"></a>手順 2:Azure portal でイメージを作成する
 1. [ポータル](https://portal.azure.com/)で、タスク バーの **[リソースの作成]** をクリックしてイメージを作成します。 ニーズに基づいた Linux イメージを選択します。 次の例では、Ubuntu 14.04 イメージを使用します。
 ![[新規] ボタンが表示されているポータルのスクリーンショット][3]
 
@@ -75,10 +75,10 @@ SSH はシステム管理者にとって重要なツールです。 ただし、
 
 4. 必要に応じて他の設定を構成し、**[作成]** をクリックします。  
 
-## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>フェーズ 2: Tomcat7 の仮想マシンを準備する
+## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>フェーズ 2:Tomcat7 の仮想マシンを準備する
 このフェーズでは、Tomcat トラフィックのエンドポイントを構成し、新しい仮想マシンに接続します。
 
-### <a name="step-1-open-the-http-port-to-allow-web-access"></a>手順 1. Web アクセスを許可する HTTP ポートを開く
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>手順 1:Web アクセスを許可する HTTP ポートを開く
 Azure のエンドポイントは、TCP または UDP プロトコルのほか、パブリック ポートとプライベート ポートで構成されます。 プライベート ポートとは、サービスが仮想マシンをリッスンするポートです。 パブリック ポートとは、Azure クラウド サービスがインターネットベースの受信トラフィックを外部でリッスンするポートです。  
 
 TCP ポート 8080 は、Tomcat がリッスンに使用する既定のポート番号です。 このポートを Azure エンドポイントで開くと、ユーザーやその他のインターネット クライアントは Tomcat のページにアクセスできます。  
@@ -98,7 +98,7 @@ TCP ポート 8080 は、Tomcat がリッスンに使用する既定のポート
       ![[追加] コマンド、[パブリック ポート]、[プライベート ポート] が表示されている UI のスクリーンショット][7]
 4. **[OK]** をクリックして、仮想マシンにエンドポイントを追加します。
 
-### <a name="step-2-connect-to-the-image-you-created"></a>手順 2. 作成したイメージに接続する
+### <a name="step-2-connect-to-the-image-you-created"></a>手順 2:作成したイメージに接続する
 SSH ツールを選択すると、仮想マシンに接続できます。 この例では、PuTTY を使用します。  
 
 1. ポータルから、仮想マシンの DNS 名を取得します。
@@ -135,7 +135,7 @@ Tomcat は Java で記述します。 完全にサポートされる Java ラン
 
 #### <a name="install-azure-supported-jdk"></a>Azure でサポートされている JDK をインストールする
 
-[Azure 用の Azul Zulu Enteprise](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) の Web サイトに記載されている `apt-get` のインストール手順に従います。
+[Azure 用の Azul Zulu Enterprise](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) の Web サイトに記載されている `apt-get` のインストール手順に従います。
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Java のインストールが成功したことを確認する
 次のようなコマンドを使用して Java ランタイム環境が正しくインストールされているかどうかをテストすることができます。  
@@ -207,7 +207,7 @@ Tomcat のユーザー構成ファイルを編集して、管理者の資格情�
 ## <a name="common-issues"></a>一般的な問題
 ### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Tomcat や Moodle を使用してインターネットから仮想マシンにアクセスできない。
 #### <a name="symptom"></a>症状  
-  Tomcat は実行されているが、ブラウザーに Tomcat の既定のページが表示されない。
+   Tomcat は実行されているが、ブラウザーに Tomcat の既定のページが表示されない。
 #### <a name="possible-root-cause"></a>考えられる根本原因   
 
   * Tomcat のリッスン ポートが、仮想マシンの Tomcat トラフィック用エンドポイントのプライベート ポートと異なっている。  

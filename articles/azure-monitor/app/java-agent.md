@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997930"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262134"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
 
@@ -89,6 +89,32 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
 レポートの例外や、個々のメソッドのメソッド タイミングを有効にする必要があります。
 
 既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
+
+### <a name="spring-boot-agent-additional-config"></a>Spring Boot エージェントの追加構成
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+> [!NOTE]
+> AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。 
+
+#### <a name="enable-w3c-distributed-tracing"></a>W3C 分散トレースを有効にする
+
+AI-Agent.xml に次のコードを追加します。
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> 既定では、下位互換性モードが有効になっています。また、enableW3CBackCompat パラメーターは、省略可能で、このモードをオフにするときにのみ使用する必要があります。 
+
+すべてのサービスが W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときにこれが該当することが理想です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
+
+**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#w3c-distributed-tracing)正確に同じであることを確認してください。
 
 ## <a name="view-the-data"></a>データの表示
 Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][metrics]に表示されます。

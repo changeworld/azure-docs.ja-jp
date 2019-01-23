@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 5a97a4e35f4d2a5f8ec2884c93329e180172f9e1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185224"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261266"
 ---
 # <a name="create-custom-fields-in-log-analytics"></a>Log Analytics でカスタム フィールドを作成する
 
 > [!NOTE]
-> この記事では、Log Analytics でテキスト データの収集時に解析する方法について説明します。 「[Parse text data in Log Analytics](../log-query/parse-text.md)」(Log Analytics でテキスト データを解析する) で説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
+> この記事では、Log Analytics でテキスト データの収集時に解析する方法について説明します。 「[Log Analytics でのテキスト データの解析](../log-query/parse-text.md)」で説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
 
 Log Analytics の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、Log Analytics の既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 

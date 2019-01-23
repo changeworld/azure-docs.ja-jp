@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302315"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212551"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -103,7 +103,7 @@ SQL Data Warehouse の基本的な機能は、60 の[ディストリビューシ
 ## <a name="columnstore-indexes"></a>列ストア インデックス
 既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。
 
-列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-whats-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
+列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
 
 ## <a name="statistics"></a>統計
 クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列の統計を作成することが重要です。クエリの結合で使用される列では特に重要です。 統計の作成と更新は自動的には行われません。 テーブルの作成後に[統計を作成](/sql/t-sql/statements/create-statistics-transact-sql)します。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
@@ -133,7 +133,7 @@ SQL Data Warehouse では他のデータベースで提供されるテーブル�
 - [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views)
 - [シーケンス](/sql/t-sql/statements/create-sequence-transact-sql)
 - [スパース列](/sql/relational-databases/tables/use-sparse-columns)
-- [代理キー]()。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
+- 代理キー。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
 - [シノニム](/sql/t-sql/statements/create-synonym-transact-sql)
 - [トリガー](/sql/t-sql/statements/create-trigger-transact-sql)
 - [一意のインデックス](/sql/t-sql/statements/create-index-transact-sql)

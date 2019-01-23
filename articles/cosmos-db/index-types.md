@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034089"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199070"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックスの種類
 
@@ -29,6 +29,9 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 
 - **ハッシュ インデックス**では、効率的な等値クエリと JOIN クエリをサポートします。 ほとんどのユース ケースでは、ハッシュ インデックスに既定値 3 バイトより高い有効桁数は不要です。 データ型には、String または Number を指定できます。
 
+  > [!NOTE]
+  > Azure Cosmos コンテナーでサポートされる新しいインデックス レイアウトには、インデックスの種類としてハッシュ インデックスが使用されません。 インデックス作成ポリシーにインデックスの種類としてハッシュ インデックスを指定しても、コンテナーに対する CRUD 要求では、その種類のインデックスが警告なく無視され、コンテナーからの応答に含まれるインデックスの種類は範囲インデックスのみとなります。 新しい Cosmos コンテナーではすべて、新しいインデックス レイアウトが既定で使用されます。 
+  
 - **範囲インデックス**では、効率的な等値クエリ、範囲クエリ (>、<、>=、<=、!= を使用)、および ORDER BY クエリをサポートします。 既定では ORDER BY クエリには、インデックスの最大有効桁数 (-1) も必要です。 データ型には、String または Number を指定できます。
 
 - **空間インデックス** では、効率的な空間クエリ (within と distance) をサポートします。 データ型には、Point、Polygon、または LineString を指定できます。 Azure Cosmos DB では、Point、Polygon、または LineString データ型に対して指定できる、すべてのパスに対する空間インデックスの種類もサポートしています。 指定されたパスの値は、{"type":"Point", "coordinates": [0.0, 10.0]} のような有効な GeoJSON フラグメントである必要があります。 Azure Cosmos DB は、Point、Polygon、LineString データ型の自動インデックス作成をサポートしています。
@@ -58,6 +61,9 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 - 空間インデックスでは、常にすべての型 (Point、LineString、Polygon) 用の既定のインデックスの有効桁数を使用します。 空間インデックスの場合、既定のインデックスの有効桁数はオーバーライドはできません。
 
 クエリが ORDER BY を使用しているのに、最大有効桁数でのクエリ パスに対して範囲インデックスが存在しない場合、Azure Cosmos DB はエラーを返します。
+
+> [!NOTE]
+> Azure Cosmos コンテナーでサポートされる新しいインデックス レイアウトでは、最大有効桁数値 (-1) 以外、インデックスの有効桁数を独自に指定する必要はありません。 この方法では、パスが常に最大有効桁数でインデックス化されます。 インデックス作成ポリシーで有効桁数の値を指定しても、コンテナーに対する CRUD 要求では有効桁数の値が警告なく無視され、コンテナーからの応答に含まれるのは最大有効桁数の値 (-1) のみとなります。  新しい Cosmos コンテナーではすべて、新しいインデックス レイアウトが既定で使用されます。
 
 ## <a name="next-steps"></a>次の手順
 
