@@ -161,8 +161,8 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 | 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
-| Windows エージェント | [はい] | [Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
-| Linux エージェント | [はい] | [Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| Windows エージェント | はい | [Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| Linux エージェント | はい | [Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
 | System Center Operations Manager 管理グループ | いいえ  | |
 
 Dependency Agent は、次の場所からダウンロードできます。
