@@ -37,7 +37,7 @@ ms.locfileid: "54000293"
 ## <a name="aks"></a>AKS
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| managedClusters | [はい] | 
+| managedClusters | はい | 
 
 ## <a name="analysis-services"></a>Analysis Services
 | リソースの種類 | タグのサポート |
@@ -62,17 +62,17 @@ ms.locfileid: "54000293"
 ## <a name="automation"></a>Automation
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| automationAccounts | [はい] | 
-| automationAccounts/configurations | [はい] | 
+| automationAccounts | はい | 
+| automationAccounts/configurations | はい | 
 | automationAccounts/jobs | いいえ  | 
-| automationAccounts/runbooks | [はい] | 
+| automationAccounts/runbooks | はい | 
 | automationAccounts/softwareUpdateConfigurations | いいえ  | 
 | automationAccounts/webhooks | いいえ  | 
 
 ## <a name="azure-database-for-mariadb"></a>Azure Database for MariaDB
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | [はい] | 
+| サーバー | はい | 
 | servers/configurations | いいえ  |
 | サーバ/データベース | いいえ  |
 | servers/firewallRules | いいえ  |
@@ -83,7 +83,7 @@ ms.locfileid: "54000293"
 ## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | [はい] | 
+| サーバー | はい | 
 | servers/configurations | いいえ  |
 | サーバ/データベース | いいえ  |
 | servers/firewallRules | いいえ  |
@@ -94,7 +94,7 @@ ms.locfileid: "54000293"
 ## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | [はい] | 
+| サーバー | はい | 
 | servers/advisors | いいえ  | 
 | servers/configurations | いいえ  |
 | サーバ/データベース | いいえ  |
@@ -131,7 +131,7 @@ ms.locfileid: "54000293"
 | ------------- | ----------- |
 | edgenodes | いいえ  | 
 | profiles | はい | 
-| profiles/endpoints | [はい] | 
+| profiles/endpoints | はい | 
 | profiles/endpoints/customdomains | いいえ  | 
 | profiles/endpoints/origins | いいえ  | 
 | validateProbe | いいえ  | 
@@ -168,17 +168,17 @@ ms.locfileid: "54000293"
 ## <a name="compute"></a>Compute
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| availabilitySets | [はい] | 
-| ディスク | [はい] | 
-| images | [はい] | 
+| availabilitySets | はい | 
+| ディスク | はい | 
+| images | はい | 
 | restorePointCollections | はい | 
 | restorePointCollections/restorePoints | いいえ  | 
 | sharedVMImages | はい | 
-| sharedVMImages/versions | [はい] | 
-| スナップショット | [はい] | 
-| virtualMachines | [はい] | 
+| sharedVMImages/versions | はい | 
+| スナップショット | はい | 
+| virtualMachines | はい | 
 | virtualMachines/diagnosticSettings | いいえ  | 
-| virtualMachines/extensions | [はい] | 
+| virtualMachines/extensions | はい | 
 | virtualMachines/metricDefinitions | いいえ  | 
 | virtualMachineScaleSets | はい | 
 | virtualMachineScaleSets/extensions | いいえ  | 
@@ -201,10 +201,10 @@ ms.locfileid: "54000293"
 ## <a name="container-registry"></a>Container Registry
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| レジストリ | [はい] | 
-| registries/replications | [はい] |
-| registries/tasks | [はい] |
-| registries/webhooks | [はい] |
+| レジストリ | はい | 
+| registries/replications | はい |
+| registries/tasks | はい |
+| registries/webhooks | はい |
 
 ## <a name="container-service"></a>Container Service
 | リソースの種類 | タグのサポート |
@@ -225,12 +225,12 @@ ms.locfileid: "54000293"
 ## <a name="cost-management"></a>Cost Management
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| コネクタ | [はい] | 
+| コネクタ | はい | 
 
 ## <a name="data-box"></a>Data Box
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| ジョブ | [はい] | 
+| ジョブ | はい | 
 
 ## <a name="data-box-edge"></a>Data Box Edge
 | リソースの種類 | タグのサポート |
@@ -250,7 +250,7 @@ ms.locfileid: "54000293"
 ## <a name="data-factory"></a>Data Factory
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| dataFactories | [はい] | 
+| dataFactories | はい | 
 | dataFactories/diagnosticSettings | いいえ  | 
 | dataFactories/metricDefinitions | いいえ  | 
 | dataFactorySchema | いいえ  | 
@@ -272,25 +272,25 @@ ms.locfileid: "54000293"
 ## <a name="devtest-lab"></a>Devtest ラボ
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| labs | [はい] | 
-| labs/artifactsources | [はい] |
-| labs/costs | [はい] |
-| labs/customimages | [はい] |
-| labs/formulas | [はい] |
-| labs/notificationchannels | [はい] |
-| labs/policysets/policies | [はい] |
-| labs/schedules | [はい] |
-| labs/serviceRunners | [はい] | 
-| labs/users | [はい] |
-| labs/users/disks | [はい] |
-| labs/users/environments | [はい] |
-| labs/users/secrets | [はい] |
-| labs/users/servicefabrics | [はい] |
-| labs/users/servicefabrics/schedules | [はい] |
-| labs/virtualMachines | [はい] | 
-| labs/virtualmachines/schedules | [はい] |
-| labs/virtualnetworks | [はい] |
-| schedules | [はい] | 
+| labs | はい | 
+| labs/artifactsources | はい |
+| labs/costs | はい |
+| labs/customimages | はい |
+| labs/formulas | はい |
+| labs/notificationchannels | はい |
+| labs/policysets/policies | はい |
+| labs/schedules | はい |
+| labs/serviceRunners | はい | 
+| labs/users | はい |
+| labs/users/disks | はい |
+| labs/users/environments | はい |
+| labs/users/secrets | はい |
+| labs/users/servicefabrics | はい |
+| labs/users/servicefabrics/schedules | はい |
+| labs/virtualMachines | はい | 
+| labs/virtualmachines/schedules | はい |
+| labs/virtualnetworks | はい |
+| schedules | はい | 
 
 ## <a name="dynamics-lcs"></a>Dynamics LCS
 | リソースの種類 | タグのサポート |
@@ -306,14 +306,14 @@ ms.locfileid: "54000293"
 | domains/topics | いいえ  | 
 | eventSubscriptions | いいえ  | 
 | extensionTopics | いいえ  | 
-| topics | [はい] | 
+| topics | はい | 
 | topicTypes | いいえ  | 
 
 ## <a name="event-hub"></a>イベント ハブ
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| クラスター | [はい] | 
-| namespaces | [はい] | 
+| クラスター | はい | 
+| namespaces | はい | 
 | namespaces/AuthorizationRules | いいえ  |
 | namespaces/disasterRecoveryConfigs | いいえ  |
 | namespaces/eventhubs | いいえ  |
@@ -339,30 +339,30 @@ ms.locfileid: "54000293"
 ## <a name="insights"></a>洞察
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| actionGroups | [はい] |
-| activityLogAlerts | [はい] |
-| alertrules | [はい] |
+| actionGroups | はい |
+| activityLogAlerts | はい |
+| alertrules | はい |
 | automatedExportSettings | いいえ  | 
-| components | [はい] | 
+| components | はい | 
 | components/events | いいえ  | 
 | components/metrics | いいえ  | 
 | components/pricingPlans | いいえ  | 
 | components/query | いいえ  | 
 | ログ | いいえ  | 
-| metricAlerts | [はい] |
+| metricAlerts | はい |
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
 | クエリ | いいえ  | 
 | rollbackToLegacyPricingModel | いいえ  | 
-| scheduledqueryrules | [はい] | 
-| webtests | [はい] | 
-| Workbooks | [はい] | 
+| scheduledqueryrules | はい | 
+| webtests | はい | 
+| Workbooks | はい | 
 
 ## <a name="key-vault"></a>Key Vault
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | deletedVaults | いいえ  | 
-| vaults | [はい] | 
+| vaults | はい | 
 | vaults/accessPolicies | いいえ  | 
 | vaults/secrets | いいえ  | 
 
@@ -374,8 +374,8 @@ ms.locfileid: "54000293"
 ## <a name="logic"></a>ロジック
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| integrationAccounts | [はい] | 
-| workflows | [はい] | 
+| integrationAccounts | はい | 
+| workflows | はい | 
 
 ## <a name="machine-learning-services"></a>Machine Learning サービス
 | リソースの種類 | タグのサポート |
@@ -387,7 +387,7 @@ ms.locfileid: "54000293"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | Identities | いいえ  | 
-| userAssignedIdentities | [はい] | 
+| userAssignedIdentities | はい | 
 
 ## <a name="marketplace-apps"></a>Marketplace アプリ
 | リソースの種類 | タグのサポート |
@@ -403,7 +403,7 @@ ms.locfileid: "54000293"
 ## <a name="media"></a>メディア
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| mediaservices | [はい] | 
+| mediaservices | はい | 
 | mediaservices/accountFilters | いいえ  | 
 | mediaservices/assets | いいえ  | 
 | mediaservices/assets/assetFilters | いいえ  | 
@@ -413,7 +413,7 @@ ms.locfileid: "54000293"
 | mediaservices/liveEvents | はい | 
 | mediaservices/liveEvents/liveOutputs | いいえ  | 
 | mediaservices/liveOutputOperations | いいえ  | 
-| mediaservices/streamingEndpoints | [はい] | 
+| mediaservices/streamingEndpoints | はい | 
 | mediaservices/streamingEndpointOperations | いいえ  | 
 | mediaservices/streamingLocators | いいえ  | 
 | mediaservices/streamingPolicies | いいえ  | 
@@ -423,54 +423,54 @@ ms.locfileid: "54000293"
 ## <a name="network"></a>ネットワーク
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| applicationGateways | [はい] | 
-| applicationSecurityGroups | [はい] | 
-| azureFirewalls | [はい] | 
-| connections | [はい] | 
-| ddosProtectionPlans | [はい] | 
-| expressRouteCircuits | [はい] | 
+| applicationGateways | はい | 
+| applicationSecurityGroups | はい | 
+| azureFirewalls | はい | 
+| connections | はい | 
+| ddosProtectionPlans | はい | 
+| expressRouteCircuits | はい | 
 | frontdoors | はい | 
-| frontdoorWebApplicationFirewallPolicies | [はい] | 
+| frontdoorWebApplicationFirewallPolicies | はい | 
 | interfaceEndpoints | はい | 
-| loadBalancers | [はい] | 
-| localNetworkGateways | [はい] | 
-| networkIntentPolicies | [はい] | 
-| networkInterfaces | [はい] | 
-| networkProfiles | [はい] | 
-| networkSecurityGroups | [はい] | 
+| loadBalancers | はい | 
+| localNetworkGateways | はい | 
+| networkIntentPolicies | はい | 
+| networkInterfaces | はい | 
+| networkProfiles | はい | 
+| networkSecurityGroups | はい | 
 | networkWatchers | はい | 
 | networkWatchers/connectionMonitors | はい | 
 | networkWatchers/lenses | はい | 
-| networkWatchers/pingMeshes | [はい] | 
-| privateLinkServices | [はい] | 
-| publicIPAddresses | [はい] | 
-| publicIPPrefixes | [はい] | 
-| routeFilters | [はい] | 
-| routeTables | [はい] | 
-| serviceEndpointPolicies | [はい] | 
-| virtualHubs | [はい] | 
-| virtualNetworks | [はい] | 
-| virtualNetworkGateways | [はい] | 
-| virtualNetworkTaps | [はい] | 
-| virtualWans | [はい] | 
-| vpnGateways | [はい] | 
-| vpnSites | [はい] | 
+| networkWatchers/pingMeshes | はい | 
+| privateLinkServices | はい | 
+| publicIPAddresses | はい | 
+| publicIPPrefixes | はい | 
+| routeFilters | はい | 
+| routeTables | はい | 
+| serviceEndpointPolicies | はい | 
+| virtualHubs | はい | 
+| virtualNetworks | はい | 
+| virtualNetworkGateways | はい | 
+| virtualNetworkTaps | はい | 
+| virtualWans | はい | 
+| vpnGateways | はい | 
+| vpnSites | はい | 
 | webApplicationFirewallPolicies | はい | 
 
 ## <a name="notification-hubs"></a>Notification Hubs
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | namespaces | はい | 
-| namespaces/notificationHubs | [はい] | 
+| namespaces/notificationHubs | はい | 
 
 ## <a name="operational-insights"></a>Operational Insights
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| workspaces | [はい] |
-| workspaces/dataSources | [はい] |
-| workspaces/linkedServices | [はい] |
+| workspaces | はい |
+| workspaces/dataSources | はい |
+| workspaces/linkedServices | はい |
 | workspaces/savedSearches | いいえ  |
-| workspaces/storageInsightConfigs | [はい] |
+| workspaces/storageInsightConfigs | はい |
 
 ## <a name="operations-management"></a>Operations Management
 | リソースの種類 | タグのサポート |
@@ -485,7 +485,7 @@ ms.locfileid: "54000293"
 ## <a name="portal-sdk"></a>ポータル SDK
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| rootResources | [はい] | 
+| rootResources | はい | 
 
 ## <a name="power-bi"></a>Power BI
 | リソースの種類 | タグのサポート |
@@ -496,7 +496,7 @@ ms.locfileid: "54000293"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | backupProtectedItems | いいえ  | 
-| vaults | [はい] | 
+| vaults | はい | 
 
 ## <a name="relay"></a>リレー
 | リソースの種類 | タグのサポート |
@@ -519,7 +519,7 @@ ms.locfileid: "54000293"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | resourceHealthMetadata | いいえ  | 
-| searchServices | [はい] | 
+| searchServices | はい | 
 
 ## <a name="security"></a>セキュリティ
 | リソースの種類 | タグのサポート |
@@ -560,14 +560,14 @@ ms.locfileid: "54000293"
 | ------------- | ----------- |
 | applications | はい | 
 | applicationDefinitions | はい | 
-| jitRequests | [はい] | 
+| jitRequests | はい | 
 
 ## <a name="sql"></a>SQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | locations/instanceFailoverGroups | いいえ  |
-| managedInstances | [はい] |
-| managedInstances/databases | [はい] |
+| managedInstances | はい |
+| managedInstances/databases | はい |
 | managedInstances/databases/backupShortTermRetentionPolicies | いいえ  |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | いいえ  |
 | managedInstances/databases/vulnerabilityAssessments | いいえ  |
@@ -576,14 +576,14 @@ ms.locfileid: "54000293"
 | managedInstances/keys | いいえ  |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | いいえ  |
 | managedInstances/vulnerabilityAssessments | いいえ  |
-| サーバー | [はい] |
+| サーバー | はい |
 | servers/administrators | いいえ  |
 | servers/advisors | いいえ  |
 | servers/auditingSettings | いいえ  |
 | servers/backupLongTermRetentionVaults | いいえ  |
 | servers/communicationLinks | いいえ  |
 | servers/connectionPolicies | いいえ  |
-| サーバ/データベース | [はい] |
+| サーバ/データベース | はい |
 | servers/databases/advisors | いいえ  |
 | servers/databases/auditingSettings | いいえ  |
 | servers/databases/backupLongTermRetentionPolicies | いいえ  |
@@ -603,12 +603,12 @@ ms.locfileid: "54000293"
 | servers/databases/vulnerabilityAssessments/rules/baselines | いいえ  |
 | servers/disasterRecoveryConfiguration | いいえ  |
 | servers/dnsAliases | いいえ  |
-| servers/elasticPools | [はい] |
+| servers/elasticPools | はい |
 | servers/encryptionProtector | いいえ  |
 | servers/extendedAuditingSettings | いいえ  |
-| servers/failoverGroups | [はい] |
+| servers/failoverGroups | はい |
 | servers/firewallRules | いいえ  |
-| servers/jobAgents | [はい] |
+| servers/jobAgents | はい |
 | servers/jobAgents/credentials | いいえ  |
 | servers/jobAgents/jobs | いいえ  |
 | servers/jobAgents/jobs/executions | いいえ  |
@@ -639,7 +639,7 @@ ms.locfileid: "54000293"
 ## <a name="storage-sync"></a>ストレージ同期
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| storageSyncServices | [はい] | 
+| storageSyncServices | はい | 
 | storageSyncServices/registeredServers | いいえ  | 
 | storageSyncServices/syncGroups | いいえ  | 
 | storageSyncServices/syncGroups/cloudEndpoints | いいえ  | 
@@ -672,9 +672,9 @@ ms.locfileid: "54000293"
 ## <a name="visual-studio"></a>Visual Studio
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| アカウント | [はい] | 
-| アカウント/拡張 | [はい] | 
-| アカウント/プロジェクト | [はい] | 
+| アカウント | はい | 
+| アカウント/拡張 | はい | 
+| アカウント/プロジェクト | はい | 
 
 ## <a name="web"></a>Web
 | リソースの種類 | タグのサポート |
@@ -690,26 +690,26 @@ ms.locfileid: "54000293"
 | apiManagementAccounts/connectionAcls | いいえ  | 
 | apiManagementAccounts/connections | いいえ  | 
 | billingMeters | いいえ  | 
-| 証明書 | [はい] | 
-| connectionGateways | [はい] | 
+| 証明書 | はい | 
+| connectionGateways | はい | 
 | connections | はい | 
-| customApis | [はい] | 
+| customApis | はい | 
 | deletedSites | いいえ  | 
 | functions | いいえ  | 
-| hostingEnvironments | [はい] | 
+| hostingEnvironments | はい | 
 | hostingEnvironments/metrics | いいえ  | 
 | hostingEnvironments/multiRolePools | いいえ  | 
 | hostingEnvironments/workerPools | いいえ  | 
 | publishingUsers | いいえ  | 
 | serverFarms | はい | 
 | serverFarms/workers | いいえ  | 
-| sites | [はい] | 
+| sites | はい | 
 | sites/domainOwnershipIdentifiers | いいえ  | 
 | sites/hostNameBindings | いいえ  | 
 | sites/instances | いいえ  | 
 | sites/instances/extensions | いいえ  | 
 | sites/metrics | いいえ  | 
-| サイト/premieraddons | [はい] | 
+| サイト/premieraddons | はい | 
 | サイト/スロット | はい | 
 | sites/slots/hostNameBindings | いいえ  | 
 | sites/slots/instances | いいえ  | 
