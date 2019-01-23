@@ -69,7 +69,7 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 | SLES 12SP3 | 64 ビット | SUSE | はい |
 | Ubuntu 14.04-LTS | 64 ビット | Canonical | はい |
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | はい |
-| Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
+| Ubuntu 18.04-LTS | 64 ビット | Canonical | はい |
 
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
 
