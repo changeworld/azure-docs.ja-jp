@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure SQL Database の仮想コアベースのリソース制限 - エラスティック プール | Microsoft Docs
 description: このページでは、Azure SQL Database のエラスティック プールに対するいくつかの一般的な仮想コアベースのリソース制限について説明します。
 services: sql-database
