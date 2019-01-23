@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189152"
+ms.locfileid: "54201331"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -83,7 +83,7 @@ ms.locfileid: "54189152"
 パイロットは、事前に、またはプロジェクトの計画および準備と並行して、実行できます。 また、計画および準備フェーズにおいて作成されたアプローチと設計をテストするために、このフェーズを使用することもできます。 パイロット フェーズは、実際の概念実証まで拡大できます。 パイロット デプロイの間に、完全な HA/DR ソリューションおよびセキュリティ設計を設定して検証することが推奨されます。 お客様によっては、スケーラビリティ テストもこのフェーズで実施できます。 他のお客様は、SAP サンドボックス システムのデプロイをパイロット フェーズとして使用します。 そのため、パイロットを実行するために Azure に移行するシステムが識別されているものと想定します。
 
 1.  Azure へのデータ転送を最適化します。 お客様のケースに大きく依存しますが、Express 回線に十分な帯域幅がある場合、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) によるオンプレミスへの転送が最も高速でした。 他のお客様では、インターネットを使用すると高速であるのがわかりました
-2.  データベース データのエクスポートとインポートが含まれる SAP 異種プラットフォームの移行の場合は、エクスポートおよびインポート フェーズをテストして最適化します。 移行先プラットフォームとして SQL Server が含まれる大規模な移行に対する推奨事項については、[こちら](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)をご覧ください。 たとえば「[Database Migration Option (DMO) of SUM 2.0 SP04 (SUM 2.0 SP04 のデータベース移行オプション (DMO))](https://launchpad.support.sap.com/#/notes/2644872)」で説明されているように、移行と SAP リリースのアップグレードを組み合わせて、ソースとターゲットの DBMS プラットフォームで特定の組み合わせを実現するときに、組み合わされたリリース アップグレードまたは [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスが必要ない場合は、Migration Monitor/SWPM のアプローチを採用できます。 
+2.  データベース データのエクスポートとインポートが含まれる SAP 異種プラットフォームの移行の場合は、エクスポートおよびインポート フェーズをテストして最適化します。 移行先プラットフォームとして SQL Server が含まれる大規模な移行に対する推奨事項については、[こちら](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)をご覧ください。 たとえば「[Database Migration Option (DMO) of SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152)」 (SUM 2.0 SP03 のデータベース移行オプション (DMO)) で説明されているように、移行と SAP リリースのアップグレードを組み合わせて、ソースとターゲットの DBMS プラットフォームで特定の組み合わせを実現するときに、組み合わされたリリース アップグレードまたは [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスが必要ない場合は、Migration Monitor/SWPM のアプローチを採用できます。 
     1.  ソースへのエクスポート、Azure へのエクスポート ファイルのアップロード、インポートのパフォーマンス。  エクスポートとインポートの間のオーバーラップを最大化します
     2.  インフラストラクチャのサイズ設定に反映するには、ターゲットと移行先プラットフォームの間でデータベースのボリュームを評価します    
     3.  タイミングを検証して最適化します 

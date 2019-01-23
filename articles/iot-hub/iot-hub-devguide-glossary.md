@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055083"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320092"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -114,9 +114,6 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 ## <a name="device-identity"></a>デバイス ID
 デバイス ID は、[ID レジストリ](#identity-registry)に登録されているすべてのデバイスに割り当てられた、一意の識別子です。
 
-## <a name="module-identity"></a>モジュール ID
-モジュール ID は、デバイスに属しているすべてのモジュールに割り当てられる一意識別子です。 モジュール ID は、[ID レジストリ](#identity-registry)でも登録されます。
-
 ## <a name="device-management"></a>デバイス管理
 デバイス管理には、計画、プロビジョニング、構成、監視、インベントリからの削除などを含む IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
 
@@ -131,15 +128,6 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 
 ## <a name="device-twin"></a>デバイス ツイン
 [デバイス ツイン](iot-hub-devguide-device-twins.md)は、デバイスの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 [IoT Hub](#iot-hub) は、IoT Hub でプロビジョニングする各デバイスにデバイス ツインを保持します。 デバイス ツインを使用すると、デバイスとソリューションのバック エンド間で[デバイスの状態](#device-condition)と構成を同期できます。 デバイス ツインにクエリを実行して、特定のデバイスを見つけ、長時間実行されている操作の状態にクエリを実行できます。
-
-## <a name="module-twin"></a>モジュール ツイン
-デバイス ツインと同様に、モジュール ツインは、モジュールの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、お使いの IoT ハブ内のデバイス ID でプロビジョニングされたモジュール ID ごとにモジュール ツインを永続化します。 モジュール ツインを使用すると、モジュールとソリューションのバックエンド間でモジュールの状態と構成を同期できます。 モジュール ツインにクエリを実行して、特定のモジュールを見つけ、長時間実行されている操作の状態にクエリを実行できます。
-
-## <a name="twin-queries"></a>ツイン クエリ
-[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
-
-## <a name="twin-synchronization"></a>ツインの同期
-ツインの同期では、デバイス ツインまたはモジュール ツインの[必要なプロパティ](#desired-properties)を使用してデバイスまたはモジュールを構成し、それらから[報告されたプロパティ](#reported-properties)を取得して、ツインに格納します。
 
 ## <a name="direct-method"></a>ダイレクト メソッド
 [ダイレクト メソッド](iot-hub-devguide-direct-methods.md)は、IoT Hub 上で API を呼び出すことによって、デバイス上で実行するメソッドをトリガーするための方法です。
@@ -190,6 +178,17 @@ Azure IoT ソリューション アクセラレータは、複数の Azure サ�
 
 ## <a name="job"></a>ジョブ
 ソリューションのバックエンドは、[ジョブ](iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
+
+## <a name="modules"></a>モジュール
+デバイス側では、IoT Hub デバイス SDK を使用して、それぞれが IoT Hub への独立した接続を確立する[モジュール](iot-hub-devguide-module-twins.md)を作成できます。 この機能により、デバイスのさまざまなコンポーネントごとに個別の名前空間を使用することができます。
+
+モジュール ID とモジュール ツインは、[デバイス ID](#device-identity) と[デバイス ツイン](#device-twin)と同様の機能を、より細かい粒度で提供します。 このより細かい粒度により、オペレーティング システム ベースのデバイスやファームウェア デバイスなどの複数のコンポーネントで構成され、この機能をサポートするデバイスの各コンポーネントの構成と状態を特定できます。
+
+## <a name="module-identity"></a>モジュール ID
+モジュール ID は、デバイスに属しているすべてのモジュールに割り当てられる一意識別子です。 モジュール ID は、[ID レジストリ](#identity-registry)でも登録されます。
+
+## <a name="module-twin"></a>モジュール ツイン
+デバイス ツインと同様に、モジュール ツインは、モジュールの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、お使いの IoT ハブ内のデバイス ID でプロビジョニングされたモジュール ID ごとにモジュール ツインを永続化します。 モジュール ツインを使用すると、モジュールとソリューションのバックエンド間でモジュールの状態と構成を同期できます。 モジュール ツインにクエリを実行して、特定のモジュールを見つけ、長時間実行されている操作の状態にクエリを実行できます。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
@@ -256,6 +255,12 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 
 ## <a name="token-service"></a>トークン サービス
 トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
+
+## <a name="twin-queries"></a>ツイン クエリ
+[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
+
+## <a name="twin-synchronization"></a>ツインの同期
+ツインの同期では、デバイス ツインまたはモジュール ツインの[必要なプロパティ](#desired-properties)を使用してデバイスまたはモジュールを構成し、それらから[報告されたプロパティ](#reported-properties)を取得して、ツインに格納します。
 
 ## <a name="x509-client-certificate"></a>X.509 クライアント証明書
 デバイスは X.509 証明書を使用して [IoT Hub](#iot-hub) で認証を受けることができます。 [SAS トークン](#shared-access-signature)の代わりに X.509 証明書を使用できます。

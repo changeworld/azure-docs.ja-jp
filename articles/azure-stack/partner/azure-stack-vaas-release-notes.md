@@ -13,18 +13,35 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106275"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319650"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 この記事には、Azure Stack のサービスとしての検証のリリース ノートが含まれています。
+
+## <a name="version-402"></a>バージョン 4.0.2
+
+2019 年 1 月 7 日
+
+Azure Stack 月間更新検証ワークフローを実行しているとき、ご利用の OEM 更新プログラム パッケージのバージョンが 1810 以降でない場合、OEM 更新手順に進んだときにエラーが表示されます。 これはバグです。 修正プログラムを開発中です。軽減策の手順は次のとおりです。
+
+1.  OEM の更新プログラムを通常どおり実行します。
+2.  パッケージが正常に適用されたら Test-AzureStack を実行し、出力を保存します。
+3.  テストを取り消します。
+4.  保存した出力を VaaSHelp@microsoft.com に送信し、実行の合格結果を受け取ります。
+
+## <a name="version-402"></a>バージョン 4.0.2
+
+2018 年 11 月 30 日
+
+- 内部のバグ修正
 
 ## <a name="version-401"></a>バージョン 4.0.1
 

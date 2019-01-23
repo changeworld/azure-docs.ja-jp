@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 9cc08920c5b8814a3e4b649f4518dce78c7cb38e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160527"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244241"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -25,10 +25,9 @@ ms.locfileid: "54160527"
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 監視 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>メトリックのアラート ルールを作成する
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MariaDB サーバーを選択します。
@@ -49,7 +48,7 @@ ms.locfileid: "54160527"
    
    ![メトリックを選択する](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、**[頻度]** があります。
+7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、**[完了]** を選択します。
 

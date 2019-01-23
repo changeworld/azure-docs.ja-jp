@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f13cb2626394d16a127b172bb69c4ab88121cdb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017703"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352531"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -76,7 +76,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 2. **sampletable** にデータを挿入する、次の**ストアド プロシージャ**を作成します。
 
     ```SQL
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
     AS
 
     BEGIN
@@ -108,7 +108,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![Data Factory ホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
-データ ファクトリの作成後、sampletable テーブルと sp_sample ストアド プロシージャが格納された Azure SQL Database をデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
+データ ファクトリの作成後、sampletable テーブルと usp_sample ストアド プロシージャが格納された Azure SQL Database をデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
 
 1. **SProcDF** の **[Data Factory]** ブレードで、**[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
@@ -160,7 +160,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 次のプロパティに注意してください。 
 
 - **type** プロパティを **SqlServerStoredProcedure** に設定します。 
-- type プロパティの **storedProcedureName** を **sp_sample** (ストアド プロシージャの名前) に設定します。
+- type プロパティの **storedProcedureName** を **usp_sample** (ストアド プロシージャの名前) に設定します。
 - **storedProcedureParameters** セクションには、**DateTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
  
 1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
@@ -174,7 +174,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
                 {
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-                        "storedProcedureName": "sp_sample",
+                        "storedProcedureName": "usp_sample",
                         "storedProcedureParameters": {
                             "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                         }
@@ -310,12 +310,12 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name | アクティビティの名前 |はい |
+| name | アクティビティの名前 |[はい] |
 | description |アクティビティの用途を説明するテキストです。 |いいえ  |
-| type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
+| type | 次のように設定する必要があります。**SqlServerStoredProcedure** | [はい] |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ  |
-| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |はい |
-| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |はい |
+| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |[はい] |
+| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |[はい] |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ  |
 
 ## <a name="passing-a-static-value"></a>静的な値を渡す
@@ -340,7 +340,7 @@ CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 **ストアド プロシージャ:**
 
 ```SQL
-CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
 
 AS
 
@@ -355,7 +355,7 @@ END
 ```JSON
 "typeProperties":
 {
-    "storedProcedureName": "sp_sample",
+    "storedProcedureName": "usp_sample",
     "storedProcedureParameters":
     {
         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
@@ -394,7 +394,7 @@ END
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureName": "usp_sample2",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
                         "Scenario": "Document sample"

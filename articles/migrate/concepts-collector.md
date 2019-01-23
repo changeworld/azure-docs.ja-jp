@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104212"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262610"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -126,12 +126,9 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 
 Collector は、vCenter Server に接続し、仮想マシンのメタデータとパフォーマンス カウンターのクエリを実行します。 この接続で必要なものを次に示します。
 
-- vCenter Server のバージョン 5.5、6.0、および 6.5 のみがサポートされています。
+- vCenter Server のバージョン 5.5、6.0、6.5、6.7 のみがサポートされています。
 - 検出用に、以下に要約されているアクセス許可を持つ読み取り専用のアカウントが必要です。 検出のためにアクセスできるのは、アカウントでアクセス可能なデータ センターのみです。
 - 既定では、FQDN または IP アドレスで vCenter Server に接続します。 vCenter Server が別のポートでリッスンしている場合は、フォーム *IPAddress:Port_Number* または *FQDN:Port_Number* を使用してそれに接続します。
-- ストレージやネットワークのパフォーマンス データを収集するには、vCenter Server の統計設定を 3 つのレベルに設定する必要があります。
-- レベルが 3 つよりも少ない場合、検出は機能しますがパフォーマンス データは収集されません。 一部のカウンターは収集される可能性がありますが、その他は 0 に設定されます。
-- ストレージとネットワークのパフォーマンス データが収集されない場合、推奨評価サイズは、CPU およびメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づいて計算されます。
 - コレクターには、vCenter サーバーにつながるネットワーク接続が必要です。
 
 #### <a name="account-permissions"></a>アカウントのアクセス許可

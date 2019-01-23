@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342240"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330774"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -59,6 +59,9 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 |説明     | 詳細情報を入力するテキスト フィールド        |
 
 ![ソース管理の概要](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> ソース管理を構成する際は、確実に正しいアカウントでログインします。 正しいかどうかが不明な場合、ブラウザーで新しいタブを開き、visualstudio.com または github.com からログアウトし、ソース管理にもう一度接続してみてください。
 
 ## <a name="syncing"></a>同期中
 

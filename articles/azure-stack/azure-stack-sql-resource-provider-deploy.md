@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 035284e23d3b600cbf1cbd5500a9821c2c628b05
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: ea8669189b5fc8d797fc03f579ea52e7c11a7078
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156206"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246961"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>SQL Server リソース プロバイダーを Azure Stack にデプロイする
 
@@ -59,8 +60,11 @@ _統合システムのインストールのみを対象_。 [Azure Stack のデ�
 
 ## <a name="deploy-the-sql-resource-provider"></a>SQL リソース プロバイダーをデプロイする
 
-前提条件がすべてインストールされたら、**DeploySqlProvider.ps1** スクリプトを実行して SQL リソース プロバイダーをデプロイします。 DeploySqlProvider.ps1 スクリプトは、Azure Stack のバージョンに応じてダウンロードした SQL リソース プロバイダーのバイナリの一部として抽出されます。
+前提条件がすべてインストールされたら、**DeploySqlProvider.ps1** スクリプトを実行して SQL リソース プロバイダーをデプロイできます。 DeploySqlProvider.ps1 スクリプトは、Azure Stack のバージョンに応じてダウンロードした SQL リソース プロバイダーのバイナリの一部として抽出されます。
 
+ > [!IMPORTANT]
+ > リソース プロバイダーをデプロイする前に、新しい機能、修正、デプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
+ 
 SQL リソース プロバイダーをデプロイするには、管理者特権で**新しい** PowerShell ウィンドウ (PowerShell ISE ではない) を開き、SQL リソース プロバイダーのバイナリ ファイルを抽出したディレクトリに変更します。 既に読み込まれている PowerShell モジュールによって発生する可能性のある問題を回避するには、新しい PowerShell ウィンドウを使用することをお勧めします。
 
 DeploySqlProvider.ps1 スクリプトを実行すると、次のタスクが完了します。
@@ -133,6 +137,10 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
 . $tempDir\DeploySQLProvider.ps1 `

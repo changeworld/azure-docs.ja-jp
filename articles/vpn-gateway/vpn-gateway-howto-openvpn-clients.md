@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971268"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352327"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する (プレビュー)
 
@@ -72,6 +72,10 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 7. プロファイル ファイルをダブルクリックして tunnelblik にプロファイルを作成します。
 8. アプリケーション フォルダーから Tunnelblik を起動します。
 9. システム トレイの Tunnelblik アイコンをクリックし、[接続] を選択します。
+
+> [!IMPORTANT]
+>OpenVPN プロトコルでは、iOS 11.0 以降と MacOS 10.13 以降のみがサポートされます。
+>
 
 ## <a name="linux"></a>Linux クライアント
 

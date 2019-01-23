@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7a27fbb4530f8aca1c45888cdff0fae7dea667e0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a22b35ff9455f0849dd407df163ac3f8895dd874
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095030"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304637"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>RBAC と Azure PowerShell を使用してアクセスを管理する
 
@@ -175,7 +175,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
 
 ```azurepowershell
-Get-AzureRmRoleAssignment -SignInName <user email>
+Get-AzureRmRoleAssignment -SignInName <email, userprincipalname>
 ```
 
 ```Example
@@ -189,7 +189,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 特定のユーザーに割り当てられたすべてのロールと、そのユーザーが所属するグループに割り当てられたロールを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
 
 ```azurepowershell
-Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
+Get-AzureRmRoleAssignment -SignInName <email, userprincipalname> -ExpandPrincipalGroups
 ```
 
 ```Example
@@ -253,7 +253,7 @@ CanDelegate        : False
 リソース グループのスコープでユーザーにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用します。
 
 ```azurepowershell
-New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
+New-AzureRmRoleAssignment -SignInName <email, userprincipalname> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
 ```
 
 ```Example
@@ -317,6 +317,6 @@ PS C:\> Remove-AzureRmRoleAssignment -SignInName alain@example.com -RoleDefiniti
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル: RBAC と Azure PowerShell を使用してグループにアクセス権を付与する](tutorial-role-assignments-group-powershell.md)
-- [チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [チュートリアル:RBAC と Azure PowerShell を使用してグループにアクセス権を付与する](tutorial-role-assignments-group-powershell.md)
+- [チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure PowerShell でリソースを管理する](../azure-resource-manager/powershell-azure-resource-manager.md)

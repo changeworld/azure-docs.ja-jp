@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: c7b002a0730e94e9507aed273b9be4fe35de5bf0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: 5609cb3cfeab7cbaae493403aac68b0ce56d299a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159402"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244615"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 
@@ -65,7 +66,10 @@ _統合システムのインストールのみを対象_。 [Azure Stack のデ�
 
 ## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 
-前提条件がすべてインストールされたら、**DeployMySqlProvider.ps1** スクリプトを実行して MYSQL リソース プロバイダーをデプロイします。 DeployMySqlProvider.ps1 スクリプトは、Azure Stack のバージョンに応じてダウンロードした MySQL リソース プロバイダーのバイナリの一部として展開されます。
+前提条件がすべてインストールされたら、**DeployMySqlProvider.ps1** スクリプトを実行して MySQL リソース プロバイダーをデプロイできます。 DeployMySqlProvider.ps1 スクリプトは、Azure Stack のバージョンに応じてダウンロードした MySQL リソース プロバイダー インストール ファイルの一部として展開されます。
+
+ > [!IMPORTANT]
+ > リソース プロバイダーをデプロイする前に、新しい機能、修正、デプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
 
 MySQL リソース プロバイダーをデプロイするには、管理者特権で新しい PowerShell ウィンドウ (PowerShell ISE ではない) を開き、MySQL リソース プロバイダーのバイナリ ファイルを抽出したディレクトリに変更します。 既に読み込まれている PowerShell モジュールによって発生する可能性のある問題を回避するには、新しい PowerShell ウィンドウを使用することをお勧めします。
 
@@ -134,6 +138,10 @@ $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysq
 # And the cloudadmin credential required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force

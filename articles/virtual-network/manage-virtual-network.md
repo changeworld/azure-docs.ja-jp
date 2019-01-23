@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016030"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247828"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -99,7 +99,13 @@ ms.locfileid: "54016030"
 
 ## <a name="add-or-remove-an-address-range"></a>アドレス範囲の追加または削除
 
-仮想ネットワークのアドレス範囲を追加および削除することができます。 アドレス範囲は CIDR 表記で指定する必要があり、同じ仮想ネットワーク内で他のアドレス範囲と重複することはできません。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 次のアドレス範囲は追加できません。
+仮想ネットワークのアドレス範囲を追加および削除することができます。 アドレス範囲は CIDR 表記で指定する必要があり、同じ仮想ネットワーク内で他のアドレス範囲と重複することはできません。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 
+
+サブネットが関連付けられていない場合、仮想ネットワークのアドレス範囲を縮小できます。 関連付けられている場合、/16 を /8 に変更するなど、アドレス範囲の拡張のみが可能になります。 小規模のアドレス範囲から始め、後で拡大したり、追加したりすることができます。
+
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+
+次のアドレス範囲は追加できません。
 
 - 224.0.0.0/4 (マルチキャスト)
 - 255.255.255.255/32 (ブロードキャスト)

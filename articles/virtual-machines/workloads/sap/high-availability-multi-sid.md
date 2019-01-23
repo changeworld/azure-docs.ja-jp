@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad37a9e6cc13ef8bd805fe025806d37d17a857c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0440d1b0c3045feb6d670dae2645590febfa5bc6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656331"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320159"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -471,7 +471,7 @@ ms.locfileid: "34656331"
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[Azure Resource Manager のネットワークの制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」を参照してください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -607,7 +607,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 スクリプトが実行された後は、次のスクリーンショットのように、Azure Portal で結果を確認できます。
@@ -668,6 +668,6 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 
 ## <a name="next-steps"></a>次の手順
 
-- [ネットワークの制限: Azure Resource Manager][networking-limits-azure-resource-manager]
+- [ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]
 - [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]

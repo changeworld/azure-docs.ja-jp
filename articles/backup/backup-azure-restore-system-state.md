@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: システム状態を Windows Server に復元する'
+title: 'Azure Backup: Windows Server へのシステム状態の復元'
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
 services: backup
 author: saurabhsensharma
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 31784c44d7561c690278aa4764e98992fbca73ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230786"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266486"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -84,7 +84,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 1. **ターゲット コンピューター**で *Microsoft Azure Backup* スナップインを開きます。
 2. "*ターゲット コンピューター*" および "*ソース コンピューター*" が同じ Recovery Services コンテナーに登録されていることを確認します。
 3. **[データの回復]** をクリックして、ワークフローを開始します。
-4. **[別のサーバー]**
+4.  **[別のサーバー]**
 
     ![[別のサーバー]](./media/backup-azure-restore-system-state/anotherserver.png)
 

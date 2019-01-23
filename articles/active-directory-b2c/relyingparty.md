@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a6e25bdbcec2a99e323ac7f426307dd49e50d76c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835099"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352429"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ ms.locfileid: "52835099"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください |
+| ReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください。 |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -169,7 +169,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- | 
-| ID | はい | 値は `PolicyProfile` である必要があります。 |
+| Id | はい | 値は `PolicyProfile` である必要があります。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
@@ -177,7 +177,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | ユーザーに表示される技術プロファイルの名前を含む文字列。 |
 | 説明 | 0:1 | ユーザーに表示される技術プロファイルの説明を含む文字列。 |
-| プロトコル | 1:1 | フェデレーションに使用されるプロトコル。 |
+| Protocol | 1:1 | フェデレーションに使用されるプロトコル。 |
 | Metadata | 0:1 | プロトコルによって使用されるキーと値のペアの*項目*のコレクション。これによってトランザクション中に証明書利用者と他のコミュニティ参加者との間の対話を構成するようにエンドポイントとやりとりされます。 |
 | OutputClaims | 0:1 | 技術プロファイルの出力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
 | SubjectNamingInfo | 0:1 | トークンで使用されているサブジェクト名。 |

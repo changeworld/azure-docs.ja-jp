@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4a4f1691162ab9c9fbd5bc8802ecf7ebc4894d74
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e143c0c8ef09af49aed656d479bcad4dd35e2211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193673"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351800"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
  
@@ -44,12 +44,8 @@ FPGA クォータを要求して承認されるまでは、FPGA にモデルを�
 ## <a name="databricks"></a>Databricks
 
 Databricks と Azure Machine Learning の問題。
-
-1. Databricks クラスターの推奨事項:
-   
-   Python 3 を使用し、Azure Databricks クラスターを v4.x として作成します。 同時実行性の高いクラスターをお勧めします。
  
-2. インストールするパッケージを増やすと、Databricks で AML SDK インストールのエラーが発生します。
+1. インストールするパッケージを増やすと、Databricks で AML SDK インストールのエラーが発生します。
 
    `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、lib バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連しており、Azure ML SDK には関係ありません。他のライブラリでも発生する可能性があります。 例:
    ```python
@@ -57,9 +53,10 @@ Databricks と Azure Machine Learning の問題。
    ```
    または、Python ライブラリでのインストールの問題が発生し続けている場合は、初期化スクリプトを使用できます。 このアプローチは、公式にサポートされているアプローチではありません。 [こちらのドキュメント](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)をご覧ください。
 
-3. Databricks で自動化された機械学習を使用していて、`Import error: numpy.core.multiarray failed to import` が表示される場合
+2. Automated Machine Learning を Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始する場合は、Azure Databricks クラスターを再起動してください。
 
-   回避策: ライブラリの作成を使用して Databricks クラスターに Python ライブラリ `numpy==1.14.5` をインポートし、[インストールしてアタッチ](https://docs.databricks.com/user-guide/libraries.html#create-a-library)します。
+3. Automated Machine Learning の設定で、10 を超えるイテレーションがある場合は、実行を送信するときに、show_output を False に設定してください。
+
 
 ## <a name="azure-portal"></a>Azure ポータル
 SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の概要ページを表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合の回避策としては、[Azure portal](https://portal.azure.com) に直接移動し、ワークスペース名を検索してください。

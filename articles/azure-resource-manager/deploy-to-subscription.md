@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 01/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5b8247533a8bf51017767aac3a04e47ce6348a60
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 542993d803282bbf62e2e401cab1968a656a8971
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435295"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352276"
 ---
 # <a name="create-resource-groups-and-resources-for-an-azure-subscription"></a>Azure サブスクリプションのリソース グループとリソースを作成する
 
@@ -289,7 +289,7 @@ New-AzureRmDeployment `
 }
 ```
 
-Azure サブスクリプションに組み込みのポリシーを適用するには、次の Azure CLI コマンドを使用します。 この例では、ポリシーにパラメーターがありません。
+Azure サブスクリプションに組み込みのポリシーを適用するには、次の Azure CLI コマンドを使用します。
 
 ```azurecli-interactive
 # Built-in policy that does not accept parameters
@@ -315,7 +315,7 @@ New-AzureRmDeployment `
   -policyName auditRGLocation
 ```
 
-Azure サブスクリプションに組み込みのポリシーを適用するには、次の Azure CLI コマンドを使用します。 この例では、ポリシーにパラメーターがあります。
+Azure サブスクリプションに組み込みのポリシーを適用するには、次の Azure CLI コマンドを使用します。
 
 ```azurecli-interactive
 # Built-in policy that accepts parameters
@@ -408,9 +408,9 @@ New-AzureRmDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="assign-role"></a>ロールを割り当てる
+## <a name="assign-role-at-subscription"></a>サブスクリプションでロールを割り当てる
 
-次の例では、ユーザーまたはグループにロールを割り当てます。
+次の例では、サブスクリプションのユーザーまたはグループにロールを割り当てます。 この例では、サブスクリプションにスコープが自動的に設定されるため、割り当てにスコープを指定しないでください。
 
 ```json
 {
@@ -468,6 +468,94 @@ New-AzureRmDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
   -roleDefinitionId $role.Id `
   -principalId $adgroup.Id
+```
+
+## <a name="assign-role-at-scope"></a>スコープでロールを割り当てる
+
+次のサブスクリプション レベルのテンプレートでは、サブスクリプション内のリソース グループにスコープ指定されているユーザーまたはグループにロールを割り当てます。 スコープは、デプロイのレベル以下にする必要があります。 サブスクリプションにデプロイし、そのサブスクリプション内のリソース グループにスコープ指定されたロールの割り当てを指定できます。 ただし、リソース グループにデプロイして、ロールの割り当てスコープをサブスクリプションに指定することはできません。
+
+スコープでロールに割り当てるには、入れ子になったデプロイを使用します。 リソース グループ名が、デプロイ リソースのプロパティとロールの割り当てのスコープ プロパティの両方で指定されていることに注目してください。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "principalId": {
+            "type": "string"
+        },
+        "roleDefinitionId": {
+            "type": "string"
+        },
+        "rgName": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "assignRole",
+            "resourceGroup": "[parameters('rgName')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "name": "[guid(parameters('principalId'), deployment().name)]",
+                            "apiVersion": "2017-09-01",
+                            "properties": {
+                                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
+                                "principalId": "[parameters('principalId')]",
+                                "scope": "[concat(subscription().id, '/resourceGroups/', parameters('rgName'))]"
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Active Directory グループをサブスクリプションのロールに割り当てるには、次の Azure CLI コマンドを使用します。
+
+```azurecli-interactive
+# Get ID of the role you want to assign
+role=$(az role definition list --name Contributor --query [].name --output tsv)
+
+# Get ID of the AD group to assign the role to
+principalid=$(az ad group show --group demogroup --query objectId --output tsv)
+
+az deployment create \
+  -n demoRole \
+  -l southcentralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json \
+  --parameters principalId=$principalid roleDefinitionId=$role rgName demoRg
+```
+
+PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
+
+```azurepowershell-interactive
+$role = Get-AzureRmRoleDefinition -Name Contributor
+
+$adgroup = Get-AzureRmADGroup -DisplayName demogroup
+
+New-AzureRmDeployment `
+  -Name demoRole `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `
+  -roleDefinitionId $role.Id `
+  -principalId $adgroup.Id `
+  -rgName demoRg
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286634"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320363"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 8 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 8 月に導入された新しい機能と変更点について説明します。
@@ -23,9 +23,9 @@ Azure SQL Data Warehouse では、継続的に機能強化を図っています�
 ## <a name="automatic-intelligent-insights"></a>自動 Intelligent Insights
 Microsoft は、データ ウェアハウスの自動化のクラウド環境を提供する[自動 Intelligent Insights](https://azure.microsoft.com/blog/automatic-intelligent-insights-to-optimize-performance-with-sql-data-warehouse/) を導入しました。 データ スキューや最適化されていないテーブルの統計情報を把握するためにデータ ウェアハウスを監視する必要がなくなります。 SQL Data Warehouse では、追加費用なしですべての Gen2 インスタンスに対して Intelligent Insights を利用できます。 [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) と統合することで、アクティブなワークロードのパフォーマンスを向上させるためのベスト プラクティスの推奨事項を自動的に受信できます。 SQL Data Warehouse はワークロードを分析し、使用状況に基づいて推奨事項を適用します。 この分析は毎日行われ、使用状況レポートとワークロードの改善に関する推奨事項を監視できます。
 
-Azure Advisor ポータルで推奨事項を表示できます。![Azure Advisor ポータルの Azure SQL Data Warehouse の推奨事項](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
+Azure Advisor ポータルで推奨事項を確認できます。![Azure Advisor ポータルの Azure SQL Data Warehouse 推奨事項](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
-各カテゴリの詳細を表示して、特定のアラートの推奨事項を確認することができます。![Azure Advisor ポータルの Azure SQL Data Warehouse の推奨事項の詳細](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+各カテゴリに進み、特定のアラートに対する推奨事項を確認できます。![Azure Advisor ポータルの Azure SQL Data Warehouse 推奨事項詳細](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
 ## <a name="bug-fixes"></a>バグの修正
@@ -33,7 +33,7 @@ Azure Advisor ポータルで推奨事項を表示できます。![Azure Advisor
 | タイトル | 説明 |
 |:---|:---|
 | **Potential Query failures when the split count exceeds max limit** (分割数が上限を超えたときのクエリ エラーの可能性があります) |100 万個のファイル分割上限を超えると、未処理の例外によって SQL エンジンがダンプされ、すべてのクエリは失敗します。 この修正では、例外を正しく処理し、クエリが失敗することなくエラーを返すようにすることで問題を解決します。 |
-| **Increased ExternalMoveReadersPerNode default value to improve load perfomance** (読み込みのパフォーマンスを改善するために ExternalMoveReadersPerNode の既定値を増やしました) |この問題は、ExternalMoveReadersPerNode プロパティの設定がサービス ファブリック設定と同期していないために発生しました。 この回帰によって Gen2 の負荷パフォーマンスが低下しました。 この修正により、Gen2 の負荷パフォーマンスは最適化された設計パラメーター内に戻ります。|
+| **Increased ExternalMoveReadersPerNode default value to improve load performance** (読み込みのパフォーマンスを改善するために ExternalMoveReadersPerNode の既定値を増やしました) |この問題は、ExternalMoveReadersPerNode プロパティの設定がサービス ファブリック設定と同期していないために発生しました。 この回帰によって Gen2 の負荷パフォーマンスが低下しました。 この修正により、Gen2 の負荷パフォーマンスは最適化された設計パラメーター内に戻ります。|
 
 
 ## <a name="next-steps"></a>次の手順

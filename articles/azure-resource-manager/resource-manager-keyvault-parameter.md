@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078072"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351511"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
@@ -84,14 +84,14 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-Resource Manager テンプレートを使用する場合は、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault)」を参照してください。
+Resource Manager テンプレートを使用する手順については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault)」を参照してください。
 
 > [!NOTE]
-> 各Azure サービスには、特定のパスワード要件があります。 たとえば、Azure 仮想マシンの要件については、「[VM を作成する際のパスワードの要件は何ですか](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)」で確認できます。
+> 各 Azure サービスには、特定のパスワード要件があります。 たとえば、Azure 仮想マシンの要件については、「[VM を作成する際のパスワードの要件は何ですか](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)」で確認できます。
 
 ## <a name="enable-access-to-the-secret"></a>シークレットへのアクセスの有効化
 
-`enabledForTemplateDeployment` を `true` に設定する以外に、テンプレートをデプロイするユーザーは、リソース グループとキー コンテナーなど、キー コンテナーを含むスコープに対して `Microsoft.KeyVault/vaults/deploy/action` アクセス許可を持っている必要があります。 このアクセスは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーを作成すると所有者になるので、そのアクセス許可持つことになります。 キー コンテナーが別のサブスクリプション以下にある場合、キー コンテナーの所有者がアクセス権を付与する必要があります。
+`enabledForTemplateDeployment` を `true` に設定する以外に、テンプレートをデプロイするユーザーは、リソース グループとキー コンテナーなど、キー コンテナーを含むスコープに対して `Microsoft.KeyVault/vaults/deploy/action` アクセス許可を持っている必要があります。 このアクセスは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーを作成すると所有者になるので、そのアクセス許可持つことになります。 キー コンテナーが別のサブスクリプションにある場合、キー コンテナーの所有者がアクセス権を付与する必要があります。
 
 次の手順は、最小限のアクセス許可を持つロールを作成する方法と、ユーザーを割り当てる方法を示します
 1. カスタム ロール定義の JSON ファイルを作成します。

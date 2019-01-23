@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189498"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261232"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -28,6 +28,18 @@ ms.locfileid: "54189498"
    ![検出の停止](./media/troubleshooting-general/stop-discovery.png)
 
 - VM の削除:アプライアンスの設計方法のため、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Azure Migrate プロジェクトと関連 Log Analytics ワークスペースの削除
+
+Azure Migrate プロジェクトを削除すると、移行プロジェクトと共にグループと評価がすべて削除されます。 ただし、Log Analytics ワークスペースをプロジェクトに関連付けている場合は、Log Analytics ワークスペースが自動的に削除されることはありません。 これは、同じ Log Analytics ワークスペースが複数のユース ケースで使用される可能性があるためです。 Log Analytics ワークスペースも削除する場合、それは手動で行う必要があります。
+
+1. プロジェクトに関連付けられている Log Analytics ワークスペースを参照します。
+   a. 移行プロジェクトをまだ削除していない場合、[Essentials] セクションのプロジェクト概要ページにワークスペースのリンクがあります。
+
+   ![LA ワークスペース](./media/troubleshooting-general/LA-workspace.png)
+
+   b. 移行プロジェクトを既に削除している場合、Azure portal の左側ウィンドウにある **[リソース グループ]** をクリックし、ワークスペースが作成されたリソース グループに移動し、それを参照します。
+2. [こちらの記事](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)にある指示に従い、ワークスペースを削除します。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
@@ -80,13 +92,13 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
    ![プロジェクトの場所](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>コレクターのエラー
+## <a name="collector-issues"></a>コレクターの問題
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate Collector のデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
 
 1. ハッシュ値をチェックして、Azure Migrate Collector の OVA ファイルが正常にダウンロードされているかどうかを確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
-3. vSphere Web クライアントを使用しており、vCenter Server 6.5 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
+3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
   - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
   - [ホーム] > [インベントリ] に移動する
   - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
@@ -156,6 +168,17 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 2. 手順 1. が失敗した場合は、IP アドレスで vCenter サーバーへの接続を再試行してください。
 3. 正しいポート番号を識別して vCenter に接続します。
 4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
+
+### <a name="antivirus-exclusions"></a>ウイルス対策の除外
+
+Azure Migrate アプライアンスを強化するには、アプライアンスの次のフォルダーをウイルス対策スキャンから除外する必要があります。
+
+- Azure Migrate サービスのバイナリを含むフォルダー。 サブフォルダーはすべて除外します。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web アプリケーション。 サブフォルダーはすべて除外します。
+  %SystemDrive%\inetpub\wwwroot
+- データベースのローカル キャッシュとログ ファイル。 Azure Migrate サービスでは、このフォルダーへの読み取り/書き込みアクセスが必要です。
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>依存関係の視覚化の問題
 

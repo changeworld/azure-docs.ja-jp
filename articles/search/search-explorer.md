@@ -1,5 +1,5 @@
 ---
-title: インデックスのクエリを実行するための Azure portal の Search エクスプローラー - Azure Search
+title: Azure portal でデータを問い合わせるための Search エクスプローラー ツール - Azure Search
 description: Azure Search で Search エクスプローラーなどの Azure portal ツールを使用して、インデックスのクエリを実行します。 検索用語や、高度な構文を含む完全修飾の検索文字列を入力します。
 manager: cgronlun
 author: HeidiSteen
@@ -9,48 +9,25 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2aa372d1f917608de753007cc75ab0d608cafbba
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85e574a56380384b10d0916385a8816fd26c2eeb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188727"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244802"
 ---
-# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Azure Search で Search エクスプ ローラーを使用してインデックスのクエリを実行する方法 
+# <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search でデータを問い合わせるための Search エクスプローラー 
 
-この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信できます。
-
-## <a name="start-search-explorer"></a>Search エクスプローラーの起動
-
-1. [Azure portal](https://portal.azure.com) でダッシュボードから検索サービス ページを開くか、サービスの一覧で[ご自分のサービスを見つけ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
-
-2. サービスの概要ページで、**[Search エクスプローラー]** をクリックします。
+この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信できます。 
 
    ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
 
-3. クエリを実行するインデックスを選択します。
 
-   ![クエリを実行するインデックスの選択](./media/search-explorer/search-explorer-changeindex-se2.png "インデックスの選択")
-
-4. 必要に応じて、API バージョンを設定します。 既定では現在一般提供されている API バージョンが選択されますが、使用したい構文がバージョン固有である場合はプレビューまたは以前の API を選択できます。
-
-5. インデックスと API バージョンを選択したら、検索語句または完全修飾クエリ式を検索バーに入力し、**[検索]** をクリックして実行します。
-
-   ![検索語句の入力と [検索] のクリック](./media/search-explorer/search-explorer-query-string-example.png "検索語句の入力と [検索] のクリック")
-
-**Search エクスプローラー**での検索のヒント:
-
-+ 結果は詳細な JSON ドキュメントとして返されます。そのため、ドキュメントの構成と内容を完全に確認できます。 例で示されているように、クエリ式を使用して、返されるフィールドを制限できます。
-
-+ ドキュメントは、インデックスで**取得可能**としてマークされているすべてのフィールドで構成されます。 ポータルでインデックスの属性を確認するには、検索の概要ページの **[インデックス]** 一覧で *realestate-us-sample* をクリックします。
-
-+ 商用 Web ブラウザーで入力することがあるような自由形式のクエリは、エンドユーザーのエクスペリエンスをテストするのに便利です。 たとえば、組み込みの不動産サンプル インデックスがあるとしたら、「Seattle apartments lake washington」と入力できます。そして、CTRL + F キーを使用して検索結果内で語句を見つけることができます。 
-
-+ クエリ式とフィルター式は、Azure Search でサポートされている構文で明記される必要があります。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
+作業を開始する際にガイドが必要な場合は、「[Search エクスプローラーの起動方法](#start-search-explorer)」を参照してください。
 
 ## <a name="basic-search-strings"></a>基本的な検索文字列
 
-以下の例では、組み込みの不動産サンプル インデックスを前提としています。 このインデックスの作成の詳細については、[Azure portal でのインポート、インデックス付け、クエリに関するクイック スタート](search-get-started-portal.md)を参照してください。
+以下の例では、組み込みの不動産サンプル インデックスを前提としています。 このインデックスの作成については、「[クイック スタート: Azure portal でのインポート、インデックス付け、クエリに関するクイック スタート](search-get-started-portal.md)を参照してください。
 
 ### <a name="example-1---empty-search"></a>例 1 - 空の検索
 
@@ -128,6 +105,37 @@ Azure Search は、検索順位に基づいて上位 50 の一致を返します
    ![orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順序の変更")
 
 **$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
+
+<a name="start-search-explorer"></a>
+
+## <a name="how-to-start-search-explorer"></a>Search エクスプローラーの起動方法
+
+1. [Azure portal](https://portal.azure.com) でダッシュボードから検索サービス ページを開くか、サービスの一覧で[ご自分のサービスを見つけ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
+
+2. サービスの概要ページで、**[Search エクスプローラー]** をクリックします。
+
+   ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
+
+3. クエリを実行するインデックスを選択します。
+
+   ![クエリを実行するインデックスの選択](./media/search-explorer/search-explorer-changeindex-se2.png "インデックスの選択")
+
+4. 必要に応じて、API バージョンを設定します。 既定では現在一般提供されている API バージョンが選択されますが、使用したい構文がバージョン固有である場合はプレビューまたは以前の API を選択できます。
+
+5. インデックスと API バージョンを選択したら、検索語句または完全修飾クエリ式を検索バーに入力し、**[検索]** をクリックして実行します。
+
+   ![検索語句の入力と [検索] のクリック](./media/search-explorer/search-explorer-query-string-example.png "検索語句の入力と [検索] のクリック")
+
+**Search エクスプローラー**での検索のヒント:
+
++ 結果は詳細な JSON ドキュメントとして返されます。そのため、ドキュメントの構成と内容を完全に確認できます。 例で示されているように、クエリ式を使用して、返されるフィールドを制限できます。
+
++ ドキュメントは、インデックスで**取得可能**としてマークされているすべてのフィールドで構成されます。 ポータルでインデックスの属性を確認するには、検索の概要ページの **[インデックス]** 一覧で *realestate-us-sample* をクリックします。
+
++ 商用 Web ブラウザーで入力することがあるような自由形式のクエリは、エンドユーザーのエクスペリエンスをテストするのに便利です。 たとえば、組み込みの不動産サンプル インデックスがあるとしたら、「Seattle apartments lake washington」と入力できます。そして、CTRL + F キーを使用して検索結果内で語句を見つけることができます。 
+
++ クエリ式とフィルター式は、Azure Search でサポートされている構文で明記される必要があります。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
+
 
 ## <a name="next-steps"></a>次の手順
 

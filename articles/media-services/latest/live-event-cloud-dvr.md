@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407968"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352361"
 ---
 # <a name="using-a-cloud-dvr"></a>クラウド DVR の使用
 
@@ -35,7 +35,10 @@ ms.locfileid: "53407968"
 **LiveEvent** は、**LiveOutput** の同時実行を最大 3 つまでサポートしているため、1 つのライブ ストリームから最大 3 つの記録/アーカイブを作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、24 時間 365 日のライブ リニア フィードを配信し、顧客が見逃したコンテンツをオンデマンド視聴できるよう、終日プログラムの "記録" を作成するとします。 このシナリオではまず、プライマリ LiveOutput を、1 時間以下の短いアーカイブ ウィンドウで作成します。これは、視聴者が受信するプライマリ ライブ ストリームです。 この **LiveOutput** の **StreamingLocator** を作成し、アプリケーションまたは Web サイトに "ライブ" フィードとして発行することになります。 **LiveEvent** の実行中、同時実行される 2 つ目の **LiveOutput** を、プログラムの開始 (または後でトリミングしやすいよう 5 分前) の時点でプログラムから作成できます。 この 2 つ目の **LiveOutput** は、プログラムが終了して 5 分後に削除できます。 この 2 つ目の **Asset** を使用すると、新しい **StreamingLocator** を作成して、アプリケーションのカタログでオンデマンド資産としてこのプログラムを公開することができます。 オンデマンド ビデオとして共有したい他のプログラム範囲やハイライトについても、このプロセスを繰り返します。このプロセスはすべて、1 つ目の **LiveOutput** の "ライブ" フィードがリニア フィードを配信し続ける最中に行うことができます。 
 
 > [!NOTE]
-> **LiveOutput** は作成すると開始され、削除されると停止します。 **LiveOutput** を削除しても、基になる**資産**と資産のコンテンツは削除されません。  
+> **LiveOutput** は作成すると開始され、削除されると停止します。 **LiveOutput** を削除しても、基になる**資産**と資産のコンテンツは削除されません。 
+>
+> **LiveOutput** の資産で**ストリーミング ロケーター**を発行した場合、イベント (DVR ウィンドウの長さまで) は、**ストリーミング ロケーター**の終了時刻まで、またはロケーターを削除するまで、どちらか早い方のタイミングまで引き続き表示することができます。   
+  
 
 ## <a name="next-steps"></a>次の手順
 

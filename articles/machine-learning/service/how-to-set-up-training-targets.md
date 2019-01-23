@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44788e1e1f53c4a939326b4fb3d6b672a9ef514e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157532"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246332"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
@@ -384,3 +384,4 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 * [チュートリアル:モデルのトレーニング](tutorial-train-models-with-aml.md)に関する記事では、マネージド コンピューティング先を使用してモデルをトレーニングします。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
 * [RunConfiguration クラス](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)の SDK リファレンスを確認します。
+* [Azure Machine Learning サービスと Azure Virtual Networks を使用する](how-to-enable-virtual-network.md)

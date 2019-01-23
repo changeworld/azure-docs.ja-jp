@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102994"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266589"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -240,7 +240,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
     > [!IMPORTANT]
     > 値 **Administrator** は、Blockchain Workbench の管理者を識別するために必要です。
 
-4. マニフェスト内でも **Oauth2AllowImplictFlow** 値を **true** に変更します。
+4. マニフェスト内でも **Oauth2AllowImplicitFlow** 値を **true** に変更します。
 
     ``` json
     "oauth2AllowImplicitFlow": true,

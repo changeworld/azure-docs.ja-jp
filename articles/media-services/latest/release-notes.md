@@ -1,5 +1,5 @@
 ---
-title: 新機能 リリース ノート - Azure Media Services v3 | Microsoft Docs
+title: Azure Media Services v3 リリース ノート | Microsoft Docs
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Media Services v3 の最新の更新情報を提供します。
 services: media-services
 documentationcenter: ''
@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: 4db84deb344921d329e81e0f0c9c3a97923430f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156495"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229958"
 ---
-# <a name="whats-new-in-azure-media-services-v3"></a>Azure Media Services v3 の新機能
+# <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -33,6 +33,15 @@ ms.locfileid: "54156495"
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
+
+## <a name="december-2018"></a>2018 年 12 月
+
+V3 API の GA リリースの更新プログラム:
+       
+* **AssetFilters** と **AccountFilters** に関しては、**PresentationTimeRange** のプロパティは "必須" でなくなりました。 
+* **Jobs** と **Transforms** のクエリ オプション、$top と $skip が削除され、$orderby が追加されました。 新しい順序付け機能を追加する手順の一部で、実装されていない $top オプションと $skip オプションが、以前は偶発的に公開されていたことが判明しました。
+* 列挙型の拡張性が再有効化されました。 この機能はプレビュー版の SDK で有効になりましたが、GA 版で偶発的に無効になりました。
+* 定義済みの 2 つのストリーミング ポリシーの名前が変更されました。 **SecureStreaming** が **MultiDrmCencStreaming** になりました。 **SecureStreamingWithFairPlay** が **Predefined_MultiDrmStreaming** になりました。
 
 ## <a name="november-2018"></a>2018 年 11 月
 

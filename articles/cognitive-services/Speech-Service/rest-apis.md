@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338892"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330676"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -272,7 +272,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Speech Service のサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
-| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codec=audio/pcm; samplerate=16000` と `audio/ogg; codec=audio/pcm; samplerate=16000` です。 | 必須 |
+| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 Speech Service は最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
 | `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。 指定しない場合、一部の Web 要求フレームワークでは互換性のない既定値が提供されるため、常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
@@ -296,7 +296,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -330,7 +330,7 @@ Expect: 100-continue
     request.Method = "POST";
     request.ProtocolVersion = HttpVersion.Version11;
     request.Host = host;
-    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
     request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
     request.AllowWriteStreamBuffering = false;
 
@@ -469,7 +469,10 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 
 ### <a name="request-body"></a>要求本文
 
-テキストは、HTTP `POST` 要求の本文として送信されます。 プレーン テキスト (ASCII または UTF-8) または[音声合成マークアップ言語](speech-synthesis-markup.md) (SSML) 形式 (UTF-8) を使用できます。 プレーン テキストの要求は、Speech Service の既定の音声と言語を使用します。 SSML では、音声と言語を指定することができます。
+各 `POST` 要求の本文は[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として送信されます。 SSML では、テキスト読み上げサービスによって返される合成音声の声と言語を選択できます。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
+
+> [!NOTE]
+> カスタムの音声を使用する場合は、プレーン テキスト (ASCII または UTF-8) として要求の本文を送信できます。
 
 ### <a name="sample-request"></a>要求のサンプル
 

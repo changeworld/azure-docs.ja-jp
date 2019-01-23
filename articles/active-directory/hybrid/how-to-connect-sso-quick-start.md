@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/10/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2a842646d2696c0d7d26ad7218d298d2df0be1a1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 2aab7929539fb4a4b9001da89770730d8afbe286
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187640"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244671"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -192,7 +192,7 @@ macOS を実行しているコンピューターが AD に参加しているこ�
 
 お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を必ず追加してください。
 
-#### <a name="google-chrome-macos-only"></a>Google Chrome (macOS のみ)
+#### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS と Windows 以外のその他のプラットフォーム)
 
 Mac OS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
 
@@ -219,12 +219,12 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 ## <a name="step-5-roll-over-keys"></a>手順 5:キーをロール オーバーする
 
-手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細](how-to-connect-sso-how-it-works.md)」をご覧ください。
+手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細情報](how-to-connect-sso-how-it-works.md)」をご覧ください。
 
 >[!IMPORTANT]
 >コンピューター アカウントの Kerberos 解読キーが流出した場合、それを利用し、その AD フォレストのあらゆるユーザーに対して Kerberos チケットが生成されます。 悪意のあるアクターは、Azure AD サインインを偽装し、ユーザーを危険にさらすことがあります。 定期的に (少なくとも 30 日ごとに) Kerberos の解読キーをロールオーバーすることを強くお勧めします。
 
-キーのロールオーバー方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
+キーをロールオーバーする方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
 
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日に 1 回は、Kerberos 暗号化の解除キーをロールオーバーしてください。
@@ -234,4 +234,4 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 - [技術的な詳細](how-to-connect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
 - [よく寄せられる質問](how-to-connect-sso-faq.md): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
 - [トラブルシューティング](tshoot-connect-sso.md): シームレス シングル サインオン機能に関する一般的な問題の解決方法を説明します。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要望を出します。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。

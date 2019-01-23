@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: dc1de1bb43295d2ff9f260613ae568cdd2fbe6ae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103503"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198781"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
 Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
@@ -164,6 +164,18 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 カスタム フィールドを利用し、*EventTime*、*Code*、*Status*、*Message* フィールドを定義します。クエリにより返されるレコードの違いがわかります。
 
 ![カスタム フィールドのあるログ クエリ](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>カスタム ログの代替手段
+上記の条件をデータが満たす場合はカスタム ログが便利ですが、次のような状況で別の方法が必要になることがあります。
+
+- タイムスタンプの形式が異なるなど、求められる構造にデータが適していない。
+- ファイル エンコードや非対応のフォルダー構造などの要件をログ ファイルが満たさない。
+- データの収集前に事前処理やフィルター処理が必要である。 
+
+カスタム ログではデータを収集できない場合、次の代替手段を検討してください。
+
+- カスタム スクリプトまたはその他の手法を使用し、Log Analytics によって収集される [Windows Events](data-sources-windows-events.md) または [Syslog](data-sources-syslog.md) にデータを書き込む。 
+- [HTTP データ コレクター API](data-collector-api.md) を使用し、Log Analytics に直接データを送信する。 Azure Automation で Runbook を使用する例が「[Azure Automation の Runbook を使用して Log Analytics でデータを収集する](runbook-datacollect.md)」に掲載されています。
 
 ## <a name="next-steps"></a>次の手順
 * インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Log Analytics でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
