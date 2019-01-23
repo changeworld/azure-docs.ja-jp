@@ -1,59 +1,33 @@
 ---
-title: Azure SQL Database Managed Instance を使用したレプリケーション | Microsoft Docs
-description: Azure SQL Database Managed Instance で SQL Server レプリケーションを使用する方法について説明します。
+title: Azure SQL Database Managed Instance にレプリケーションを構成する | Microsoft Docs
+description: Azure SQL Database Managed Instance にトランザクション レプリケーションを構成する方法を説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547596"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360090"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>SQL Database Managed Instance を使用したレプリケーション
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にレプリケーションを構成する
 
-[Azure SQL Database Managed Instance](sql-database-managed-instance.md) のパブリック プレビューでレプリケーションを使用できます。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。
-
-## <a name="common-configurations"></a>一般的な構成
-
-一般に、パブリッシャーとディストリビューターは、どちらもクラウドに存在するか、オンプレミスに存在する必要があります。 次の構成がサポートされています。
-
-- **マネージド インスタンス上のパブリッシャーとローカル ディストリビューター**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   1 つのマネージド インスタンス上にパブリッシャー データベースとディストリビューター データベースが構成されています。
-
-- **マネージド インスタンス上のパブリッシャーとリモート ディストリビューター**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   2 つのマネージド インスタンス上にパブリッシャーとディストリビューターが構成されています。 この構成では次のようになります。
-
-  - 2 つのマネージド インスタンスが同じ vNet 内にあります。
-
-  - 2 つのマネージド インスタンスが同じ場所にあります。
-
-- **オンプレミスのパブリッシャーおよびディストリビューターとマネージド インスタンス上のサブスクライバー**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   この構成では、Azure SQL Database がサブスクライバーです。 この構成では、オンプレミスから Azure への移行がサポートされます。 サブスクライバーの役割では、SQL Database にマネージド インスタンスは不要ですが、オンプレミスから Azure への移行の一段階として SQL Database Managed Instance を使用できます。 Azure SQL Database サブスクライバーの詳細については、[SQL Database へのレプリケーション](replication-to-sql-database.md)に関する記事をご覧ください。
+トランザクション レプリケーションを使用すると、SQL Server または Azure SQL Database の Managed Instance データベースからマネージド インスタンスにデータをレプリケートし、Managed Instance のデータベースに対しておこなった変更を他の SQL Server、Azure Single Database、または他の Managed Instance にプッシュできます。 レプリケーションは、[Azure SQL Database Managed Instance](sql-database-managed-instance.md) のパブリック プレビューにあります。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 使用可能な構成については、[トランザクション レプリケーションの構成](sql-database-managed-instance-transactional-replication.md#common-configurations)に関する記事をご覧ください。
 
 ## <a name="requirements"></a>必要条件
 
 Azure SQL Database 上のパブリッシャーとディストリビューターには、以下が必要です。
 
-- Azure SQL Database Managed Instance。
+- Geo-DR 構成ではない Azure SQL Database Managed Instance。
 
    >[!NOTE]
    >マネージド インスタンスで構成されていない Azure SQL Database は、サブスクライバーとしてのみ使用できます。
@@ -76,6 +50,12 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
 - 一方向または双方向のレプリケーション。
 
+次の機能はサポートされていません。
+
+- 更新可能なサブスクリプション。
+
+- アクティブ geo レプリケーション。
+
 ## <a name="configure-publishing-and-distribution-example"></a>パブリッシングとディストリビューションの構成例
 
 1. ポータルで [Azure SQL Database Managed Instance を作成](sql-database-managed-instance-create-tutorial-portal.md)します。
@@ -87,7 +67,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
    下記のサンプル スクリプトでは、`<Publishing_DB>` をこのデータベースの名前に置き換えます。
 
-4. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 「[データベース ユーザーの作成](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)」をご覧ください。 セキュリティで保護されたパスワードを使用します。
+4. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 セキュリティで保護されたパスワードを使用します。
 
    下記のサンプル スクリプトでは、`<SQL_USER>` と `<PASSWORD>` にこの SQL Server アカウントのデータベース ユーザーとパスワードを使用します。
 
@@ -188,15 +168,8 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>制限事項
-
-次の機能はサポートされていません。
-
-- 更新可能なサブスクリプション
-
-- アクティブ geo レプリケーション
-
+   
 ## <a name="see-also"></a>関連項目
 
+- [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)
 - [マネージド インスタンスとは](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

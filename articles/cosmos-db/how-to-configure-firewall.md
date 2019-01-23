@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033164"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359427"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントに IP ファイアウォールを構成する
 
@@ -145,10 +145,10 @@ az cosmosdb update \
 ご利用の Azure Cosmos DB アカウントの IP アクセス制御ポリシーを有効にすることにより、IP アドレス範囲の許可リストに入っていないマシンからご利用のアカウントへの要求はすべてブロックされます。 コンテナーの参照やドキュメントのクエリなどのポータルのデータ プレーン操作を有効にするには、ポータルの **[ファイアウォール]** ウィンドウを使用して Azure portal へのアクセスを明示的に許可する必要があります。
 
 ### <a name="sdks"></a>SDK 
-許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、**"404 - 見つかりません"** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。 
+許可リストに入っていないマシンから SDK を使用して Azure Cosmos DB リソースにアクセスすると、**許可されていません 403** という一般的な応答が返され、詳しい情報は示されません。 ご利用の Azure Cosmos DB アカウントに対する IP 許可リストを確認し、そのアカウントに正しいポリシー構成が確実に適用されるようにします。 
 
 ### <a name="source-ips-in-blocked-requests"></a>ブロックされた要求内のソース IP
-Azure Cosmos DB アカウントで診断ログを有効にします。 これらのログには個々の要求と応答が表示されます。 ファイアウォールに関連するメッセージは、403 リターン コードを使用して内部的にログに記録されます。 これらのメッセージをフィルター処理することにより、ブロックされた要求のソース IP を確認できます。 「[Azure Cosmos DB 診断ログ](logging.md)」を参照してください。
+Azure Cosmos DB アカウントで診断ログを有効にします。 これらのログには個々の要求と応答が表示されます。 ファイアウォールに関連するメッセージは、403 リターン コードを使用してログに記録されます。 これらのメッセージをフィルター処理することにより、ブロックされた要求のソース IP を確認できます。 「[Azure Cosmos DB 診断ログ](logging.md)」を参照してください。
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB 用のサービス エンドポイントが有効にされているサブネットからの要求
 Azure Cosmos DB 用のサービス エンドポイントが有効にされている仮想ネットワーク内のサブネットからの要求では、仮想ネットワークおよびサブネットの ID が Azure Cosmos DB アカウントに送信されます。 これらの要求にはソースのパブリック IP がないため、IP フィルターでは拒否されます。 仮想ネットワーク内の特定のサブネットからのアクセスを許可するには、[ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネット ベースのアクセスを構成する方法](how-to-configure-vnet-service-endpoint.md)に関するページに概説されているアクセス制御リストを追加します。 ファイアウォール規則が適用されるまで、最大で 15 分かかる場合があります。

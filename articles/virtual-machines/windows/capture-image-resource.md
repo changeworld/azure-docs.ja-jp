@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: ac5ad9d0067205411c56562264aed81f8a5751bc
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 9dc57876467deb24a763a3c3772209e3e2e0ca0d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267455"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360039"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
-ストレージ アカウントにマネージド ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 
+ストレージ アカウントにマネージド ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 マネージド イメージの請求額については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
@@ -119,7 +119,7 @@ VM イメージを作成するには、次の手順を実行します。
     $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
     ```
 
-5. イメージの構成を作成します。
+5. イメージの設定を作成します。
 
     ```azurepowershell-interactive
     $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
@@ -157,7 +157,7 @@ OS ディスクのみのイメージを作成する場合は、OS ディスク�
     $diskID = $vm.StorageProfile.OsDisk.ManagedDisk.Id
     ```
    
-3. イメージの構成を作成します。
+3. イメージの設定を作成します。
 
     ```azurepowershell-interactive
     $imageConfig = New-AzureRmImageConfig -Location $location

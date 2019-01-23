@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 493ca6018a7eb94181deff946c6542463507761a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437982"
+---
 # [Database Migration Service のドキュメント](index.yml)
 
 # 概要
@@ -25,16 +33,27 @@
 ## [データベース移行シナリオ状態](resource-scenario-status.md)
 ## [前提条件の概要](pre-reqs.md)
 ## [Azure SQL DB Managed Instance への移行のネットワーク トポロジ](resource-network-topologies.md)
-## [既知の問題 - Azure SQL DB へのオンラインでの移行](known-issues-azure-sql-online.md)
-## [既知の問題 - Azure DB for MySQL へのオンラインでの移行](known-issues-azure-mysql-online.md)
-## [既知の問題 - Azure DB for PostgreSQL へのオンラインでの移行](known-issues-azure-postgresql-online.md)
-## [データ移行シナリオに利用できるサービスとツール](dms-tools-matrix.md)
+## 既知の問題
+### [既知の問題 - Azure SQL DB へのオンラインでの移行](known-issues-azure-sql-online.md)
+### [既知の問題 - Azure DB for MySQL へのオンラインでの移行](known-issues-azure-mysql-online.md)
+### [既知の問題 - Azure DB for PostgreSQL へのオンラインでの移行](known-issues-azure-postgresql-online.md)
+## ビデオ
+### [データベース移行ガイドを使用する](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
+### [移行プロセスおよび推奨されるツールまたはサービス](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
+### [前提条件に対応して DMS インスタンスを作成する](https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/)
+### [SQL Server 2008 を Azure SQL Database Managed Instance に移行する](https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/)
+### [PostgreSQL を Azure Database for PostgreSQL に移行する](https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/)
+### [オンライン移行を監視してカットオーバーを実行する](https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/)
+### [Oracle を Azure SQL Database に移行する](https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/)
+### [MongoDB を Azure Cosmos DB に移行する](https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/)
+## ツールとガイダンス
+### [データ移行シナリオに利用できるサービスとツール](dms-tools-matrix.md)
+### [データベース移行ガイド](https://aka.ms/datamigration)
+### [Data Migration Assistant](https://aka.ms/dma)
+### [SQL Server Migration Assistant](https://aka.ms/ssma)
+### [Database Experimentation Assistant](https://aka.ms/dea-docs)
 ## [よく寄せられる質問](faq.md)
 ## [ユーザーの声によるフィードバック](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [料金](https://aka.ms/dms-pricing)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=database-migration)
-## [データベース移行ガイド](https://aka.ms/datamigration)
-## [Data Migration Assistant](https://aka.ms/dma)
-## [SQL Server Migration Assistant](https://aka.ms/ssma)
-## [Database Experimentation Assistant](https://aka.ms/dea-docs)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

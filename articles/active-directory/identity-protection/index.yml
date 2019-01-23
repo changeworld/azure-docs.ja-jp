@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 04de34624a7902849d42ad62ed4e6a813157ddd9
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b063f970b8c435c948ea9cfedf98c8693c695424
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606679"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468848"
 documentType: LandingData
 title: Azure AD Identity Protection
 metadata:
@@ -14,7 +14,7 @@ metadata:
   services: active-directory
   ms.component: identity-protection
   author: MarkusVi
-  manager: mtillman
+  manager: daveba
   ms.service: active-directory
   ms.tgt_pltfrm: na
   ms.devlang: na

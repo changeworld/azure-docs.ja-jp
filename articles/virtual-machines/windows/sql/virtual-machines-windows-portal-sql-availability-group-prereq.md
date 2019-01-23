@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253076"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359835"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -108,7 +108,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
     **SQL-HA-RG** が表示されない場合は、**[リソース グループ]** をクリックし、リソース グループ名でフィルター処理を行ってください。
 2. リソースの一覧で **[autoHAVNET]** をクリックします。 
-3. **autoHAVNET** 仮想ネットワークの **[設定]** で、**[サブネット]** をクリックします。
+3. **autoHAVNET** 仮想ネットワークの **[設定]** で、**[サブネット]** を選択します。
 
     既に作成してあるサブネットに注目してください。
 
@@ -135,7 +135,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
 ## <a name="create-availability-sets"></a>可用性セットを作成する
 
-仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳しくは、[仮想マシンの可用性の管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳細については、[仮想マシンの可用性の管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 可用性セットは 2 つ必要です。 1 つ目はドメイン コントローラー用です。 2 つ目は SQL Server VM 用です。
 
@@ -189,7 +189,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 | **サブネット** |admin |
 | **パブリック IP アドレス** |*VM と同じ名前* |
 | **ネットワーク セキュリティ グループ** |*VM と同じ名前* |
-| **可用性セット** |adavailabilityset </br>**障害ドメイン**: 2</br>**更新ドメイン**: 2|
+| **可用性セット** |adavailabilityset </br>**障害ドメイン**: 2 </br>**更新ドメイン**: 2|
 | **診断** |有効 |
 | **診断ストレージ アカウント** |*自動的に作成* |
 
@@ -370,7 +370,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 | 適切なギャラリー アイテムの選択 |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
 | [Virtual machine configuration (仮想マシンの構成)] の **[基本]** |**[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
 | [Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |**[サイズ]** = DS1\_V2 (1 vCPU、3.5 GB) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB)</br>SSD ストレージをサポートするサイズが必要 (Premium ディスクのサポート )) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB) |
-| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: マネージド ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
+| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
 | [Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]** |適用不可 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |
 
 <br/>
@@ -462,6 +462,10 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 6. **[インストール]** をクリックして機能を追加します。
 
 もう一方の SQL Server VM についても同じ手順を繰り返します。
+
+  >[!NOTE]
+  > 実際に SQL Server VM をフェールオーバー クラスターに参加させる手順と共に、この手順は、Azure クイックスタート テンプレートを使用して自動化できるようになりました。 詳しくは、「[WSFC、リスナーを作成し、Azure クイックスタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する](virtual-machines-windows-sql-availability-group-quickstart-template.md)」をご覧ください。
+
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> 各 SQL Server VM でのファイアウォールの構成
 

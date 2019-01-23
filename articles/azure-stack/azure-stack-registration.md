@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7413ebac82adce9f034d5ceec16ec76b9ad53f82
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002486"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359546"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -52,9 +52,9 @@ Azure を使用して Azure Stack を登録する前に、以下のものが必�
 
 - サブスクリプションの所有者であるアカウントのユーザー名とパスワード。
 
-- ユーザー アカウントは Azure サブスクリプションにアクセスできなければならず、そのサブスクリプションに関連付けられているディレクトリで ID アプリケーションとサービス プリンシパルを作成するアクセス許可を持つ必要があります。
+- ユーザー アカウントは Azure サブスクリプションにアクセスできなければならず、そのサブスクリプションに関連付けられているディレクトリで ID アプリケーションとサービス プリンシパルを作成するアクセス許可を持つ必要があります。 グローバル管理者の資格情報を使用するのではなく、[登録に使用するサービス アカウントを作成する](azure-stack-registration-role.md)ことで、最低限の特権による管理を使用し、Azure Stack を Azure に登録することをお勧めします。
 
-- Azure Stack リソース プロバイダーを登録しました (詳細については、下の「Azure Stack リソース プロバイダーを登録する」セクションを参照してください)。
+- Azure Stack リソース プロバイダーを登録しました (詳細については、「Azure Stack リソース プロバイダーを登録する」セクションを参照してください)。
 
 登録の後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要です。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である別の全体管理者アカウントを使用します。
 
@@ -72,7 +72,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 ### <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする
 
-Azure に登録するには、最新の PowerShell for Azure Stack を使用する必要があります。
+Azure に登録するために、最新の PowerShell for Azure Stack を使用します。
 
 最新バージョンがまだインストールされていない場合は、「[PowerShell for Azure Stack をインストールする](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)」を参照してください。
 
@@ -147,7 +147,7 @@ Run: get-azurestackstampinformation
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. 次に、同じ PowerShell セッションで、正しい Azure PowerShell コンテキストにログインしていることを確認します。 これは、上記の Azure Stack リソース プロバイダーの登録に使用された Azure アカウントです。 実行する PowerShell:
+6. 次に、同じ PowerShell セッションで、正しい Azure PowerShell コンテキストにログインしていることを確認します。 これは、前に Azure Stack リソース プロバイダーの登録に使用された Azure アカウントです。 実行する PowerShell:
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -170,7 +170,7 @@ Run: get-azurestackstampinformation
    ```
    Set-AzsRegistration コマンドレットの詳細については、「[登録に関するリファレンス](#registration-reference)」を参照してください。
 
-  このプロセスには 10 - 15 分かかります。 コマンドが完了すると、**「Your environment is now registered and activated using the provided parameters. (提供されたパラメーターを使用して環境が登録され、アクティブ化されました。)」** というメッセージが表示されます。
+  このプロセスには 10 - 15 分かかります。 コマンドが完了すると、「**Your environment is now registered and activated using the provided parameters. (提供されたパラメーターを使用して環境が登録され、アクティブ化されました。)**」というメッセージが表示されます。
 
 ## <a name="register-connected-with-capacity-billing"></a>容量課金モデルを使用して接続された Azure Stack を登録する
 
@@ -306,9 +306,21 @@ Azure Stack の登録に成功したことは、**[Region management]\(リージ
 
 2. ダッシュボードで、**[Region management]\(リージョン管理\)** を選択します。
 
+3. **[プロパティ]** を選択します。 このブレードには、環境の状態と詳細が表示されます。 **[登録済み]** 状態と **[未登録]** 状態とがあります。
+
     [ ![[Region management]\(リージョン管理\) タイル](media/azure-stack-registration/admin1sm.png "[Region management]\(リージョン管理\) タイル") ](media/azure-stack-registration/admin1.png#lightbox)
 
-3. **[プロパティ]** を選択します。 このブレードには、環境の状態と詳細が表示されます。 **[登録済み]** 状態と **[未登録]** 状態とがあります。 登録済みである場合は、Azure Stack の登録に使用した Azure サブスクリプション ID が、登録のリソース グループおよび名前と共に表示されます。
+    登録した場合、プロパティには以下が含まれます。
+    
+    - **登録サブスクリプション ID**:登録され、Azure Stack に関連付けられた Azure サブスクリプション ID
+    - **登録リソース グループ**:Azure Stack リソースを含む関連付けられているサブスクリプション内の Azure リソース グループ。
+
+4. Azure portal を使用して、Azure Stack のアプリの登録を表示します。 Azure Stack の登録に使用したサブスクリプションに関連付けられているアカウントを使用して、Azure portal にサインインします。 Azure Stack に関連付けられているテナントに切り替えます。
+5. **[Azure Active Directory] > [アプリの登録] > [アプリケーションをすべて表示]** に移動します。
+
+    ![アプリの登録](media/azure-stack-registration/app-registrations.png)
+
+    Azure Stack のアプリの登録には、プレフィックス **Azure Stack** が付加されます。
 
 また、登録が成功したかどうかは、Marketplace の管理機能を使用して確認することもできます。 [Marketplace Management]\(Marketplace の管理\) ブレードに Marketplace アイテムの一覧が表示された場合、登録は成功しています。 一方、非接続環境では、[Marketplace management]\(Marketplace の管理\) に Marketplace アイテムを表示することができません。 ただしオフライン ツールを使用すれば、登録状態を確認できます。
 

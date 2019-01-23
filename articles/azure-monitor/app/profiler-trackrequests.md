@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights を使用して要求を追跡するコードを記述する | Microsoft Docs
-description: 要求のプロファイルを取得できるように、Application Insights を使用して要求を追跡するコードを記述する
+description: 要求のプロファイルを取得できるように、Application Insights を使用して要求を追跡するコードを記述します。
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 20f408d9dd32c3fd7a0e319e4051483e3aa54dd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 978f9a341eec2f16b9f6fe3d164e97805d7a8e93
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082029"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359642"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights を使用して要求を追跡するコードを記述する
 
-[パフォーマンス] ページでアプリケーションのプロファイルを確認するには、Application Insights がアプリケーションの要求を追跡している必要があります。 Application Insights では、既にインストルメント化されているフレームワーク (ASP.net や ASP.Net Core など) 上に構築されているアプリケーションの要求を、自動的に追跡することができます。 ただし、Azure Cloud Service の worker ロールや Service Fabric ステートレス API のようなその他のアプリケーションでは、Application Insights に要求の開始位置と終了位置を伝えるコードを記述する必要があります。 このコードを記述すると、要求テレメトリが Application Insights に送信され、[パフォーマンス] ページにテレメトリが表示され、それらの要求のプロファイルが収集されます。 
+[パフォーマンス] ページでアプリケーションのプロファイルを表示するには、Azure Application Insights によってアプリケーションの要求が追跡されている必要があります。 Application Insights では、既にインストルメント化されているフレームワーク上に構築されているアプリケーションの要求を自動的に追跡することができます。 2 つの例として、ASP.NET と ASP.NET Core があります。 
 
-要求を手動で追跡するために必要な手順を次に示します。
+Azure Cloud Service の worker ロールや Service Fabric ステートレス API など、その他のアプリケーションでは、Application Insights に要求の開始位置と終了位置を伝えるコードを記述する必要があります。 このコードを記述すると、要求テレメトリが Application Insights に送信されます。 [パフォーマンス] ページにテレメトリが表示され、それらの要求のプロファイルが収集されます。 
 
+要求を手動で追跡するには、次の操作を行います。
 
   1. アプリケーションの有効期間の初期段階に次のコードを追加します。  
 
@@ -36,7 +37,7 @@ ms.locfileid: "54082029"
         ```
       このグローバル インストルメンテーション キーの構成については、「[Using Service Fabric with Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)」(Service Fabric と Application Insights を使用する) を参照してください。  
 
-  1. 次の例のように、インストルメント化するすべてのコードの周辺に `StartOperation<RequestTelemetry>` **USING** ステートメントを追加します。
+  1. インストルメント化するすべてのコードについて、次の例のように、その近くに `StartOperation<RequestTelemetry>` **using** ステートメントを追加します。
 
         ```csharp
         using Microsoft.ApplicationInsights;

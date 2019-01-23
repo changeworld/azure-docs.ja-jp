@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724864"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359495"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
@@ -38,7 +38,7 @@ ms.locfileid: "53724864"
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>サポートされる API の種類
 
-Azure Cosmos DB ではさまざまなデータ モデルと API がサポートされていますが、Azure Search インデクサーの運用サポートは SQL API のみに拡張されます。 現在、MongoDB 用 Azure Cosmos DB API のサポートはパブリック プレビュー段階にあります。  
+Azure Cosmos DB ではさまざまなデータ モデルと API がサポートされていますが、Azure Search インデクサーの運用サポートは SQL API のみに拡張されます。 現在、Azure Cosmos DB の MongoDB 用 API のサポートはパブリック プレビュー段階にあります。  
 
 他の API のサポートは近日公開予定です。 どれを最初にサポートするかは、ユーザーの声 Web サイトでの投票によって決まります。是非ご協力ください。
 

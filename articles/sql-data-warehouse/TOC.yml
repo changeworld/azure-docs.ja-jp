@@ -20,22 +20,26 @@ items:
 - name: リリース ノート
   href: release-notes.md
   items:
-  - name: 2018 年 12 月
-    href: release-notes-december-2018.md
-  - name: 2018 年 10 月
-    href: release-notes-october-2018.md
-  - name: 2018 年 9 月
-    href: release-notes-september-2018.md
-  - name: 2018 年 8 月
-    href: release-notes-august-2018.md
-  - name: 2018 年 7 月
-    href: release-notes-july-2018.md
-  - name: 2018 年 6 月
-    href: release-notes-june-2018.md
-  - name: 2018 年 5 月
-    href: release-notes-may-2018.md
-  - name: 2018 年 4 月
-    href: release-notes-april-2018.md
+  - name: バージョン 10.0.10106.0
+    href: release-notes-10-0-10106-0.md
+  - name: アーカイブされたリリース ノート
+    items:
+    - name: 2018 年 12 月
+      href: release-notes-december-2018.md
+    - name: 2018 年 10 月
+      href: release-notes-october-2018.md
+    - name: 2018 年 9 月
+      href: release-notes-september-2018.md
+    - name: 2018 年 8 月
+      href: release-notes-august-2018.md
+    - name: 2018 年 7 月
+      href: release-notes-july-2018.md
+    - name: 2018 年 6 月
+      href: release-notes-june-2018.md
+    - name: 2018 年 5 月
+      href: release-notes-may-2018.md
+    - name: 2018 年 4 月
+      href: release-notes-april-2018.md
 - name: クイック スタート
   items:
   - name: 作成と接続
@@ -307,9 +311,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: c619d60db23b710ce5696504ca1a6bf3ce1bd4c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 33d40d3884c61a95b791afff2c11f65dd2e20878
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435669"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423580"

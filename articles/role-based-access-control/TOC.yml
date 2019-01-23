@@ -64,7 +64,7 @@ items:
       href: custom-roles-rest.md
   - name: アクティビティ ログを表示する
     href: change-history-report.md
-  - name: 全体管理者のアクセス権の昇格
+  - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
     href: elevate-access-global-admin.md
   - name: 外部ユーザーのアクセス権の管理
     href: role-assignments-external-users.md
@@ -94,9 +94,9 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: ca83964ae4ff91fd72fcb0a156a029f4fc41721c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fb2b7baea56a3dfc1b4fbc07c72262e09326c07a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232908"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422016"

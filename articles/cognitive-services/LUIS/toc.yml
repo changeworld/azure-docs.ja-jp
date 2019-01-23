@@ -220,12 +220,9 @@ items:
     - name: ダッシュボードの利用
       displayName: analytics, usage
       href: luis-how-to-use-dashboard.md
-    - name: エンドポイント キーの作成
-      displayName: azure portal
+    - name: LUIS アプリでのサブスクリプション キーの使用
+      displayName: azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription
       href: luis-how-to-azure-subscription.md
-    - name: アプリへのエンドポイント キーの追加
-      displayName: assign key, assign
-      href: luis-how-to-manage-keys.md
     - name: バージョンの管理
       href: luis-how-to-manage-versions.md
     - name: 作成者とコラボレーターの管理
@@ -389,9 +386,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 175d21f23f204f564608613fb490af989eeab42d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5c4f7435f08632a7e4d01708a1fff3a64239faab
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261436"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428717"

@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725059"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359444"
 ---
 # <a name="configure-containers"></a>コンテナーの構成
 
@@ -116,7 +116,7 @@ Face コンテナーには、格納される内容に応じて、BLOB、キャ�
   Face コンテナーでは Azure Storage と Azure Cosmos DB を使用して、これら 4 つの種類のデータを永続的ストレージに分散します。 BLOB およびキュー データは、Azure Storage で処理されます。 メタデータとキャッシュ データは、Azure Cosmos DB によって処理されます。 Face コンテナーが停止または削除された場合、そのコンテナーのストレージ内のデータはすべて Azure Storage と Azure Cosmos DB に格納されたままとなります。  
   Azure ストレージ シナリオで使用されるリソースには、次の追加の要件があります
   * Azure Storage リソースでは、StorageV2 という種類のアカウントを使用する必要があります
-  * Azure Cosmos DB リソースでは、Azure Cosmos DB for MongoDB API を使用する必要があります
+  * Azure Cosmos DB リソースでは、Azure Cosmos DB の MongoDB 用 API を使用する必要があります
 
 ストレージ シナリオと関連する構成設定は、`CloudAI` 構成セクションの下の、`Storage` オブジェクトで管理されます。 `Storage` オブジェクトでは、次の構成設定を使用できます。
 

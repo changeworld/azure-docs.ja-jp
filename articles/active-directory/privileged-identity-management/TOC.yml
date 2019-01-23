@@ -7,9 +7,9 @@ items:
     href: pim-configure.md
 - name: 概念
   items:
-  - name: サブスクリプションの要件
+  - name: ライセンスの要件
     href: subscription-requirements.md
-  - name: 管理できるディレクトリ ロール
+  - name: 管理できないロール
     href: pim-roles.md
   - name: 特権アクセスのセキュリティ保護
     href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -19,8 +19,6 @@ items:
     href: pim-resource-roles-overview-dashboards.md
   - name: 電子メール通知
     href: pim-email-notifications.md
-  - name: 割り当ての種類
-    href: pim-resource-roles-eligible-visibility.md
   - name: Microsoft Graph API
     href: pim-apis.md
 - name: ハウツー ガイド
@@ -41,8 +39,8 @@ items:
       href: pim-resource-roles-discover-resources.md
     - name: PIM を管理する他のユーザーにアクセス権を付与する
       href: pim-how-to-give-access-to-pim.md
-    - name: サブスクリプションの管理を有効化する
-      href: pim-resource-roles-enable-subscription-management.md
+    - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
+      href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
   - name: ディレクトリ ロールを管理する
     items:
     - name: ロールを割り当てる
@@ -94,9 +92,9 @@ items:
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 235d0444428072aa10558989904b92222e6fdbd1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2f68fbbf3ad2a8e2aa39d74a69c2bda12c5ec97a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723365"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433205"

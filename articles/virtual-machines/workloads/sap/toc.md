@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a9e46bdb97899957f09a847f0fef03a6fec5dc6a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452906"
+---
 # 概要
 ## [作業開始](get-started.md)
 ## [認定](sap-certifications.md)
@@ -68,7 +76,6 @@
 ### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
 ## [Azure Virtual Machines 上の SAP Business One](business-one-azure.md)
 ## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
-## [Azure Linux VM 上の SAP NetWeaver](suse-quickstart.md)
 ## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
 ## Windows と Linux での高可用性 (HA)
 ### [概要](sap-high-availability-guide-start.md)

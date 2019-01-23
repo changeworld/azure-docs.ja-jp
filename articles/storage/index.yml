@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 38f20f74f8c553c134a6ef91151aa49b99ad45b5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8d7df9093a10d4646c64186fe37f40c98219384b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213503"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465697"
 documentType: LandingData
 title: Azure Storage のドキュメント
 metadata:
@@ -69,7 +69,7 @@ sections:
       values:
       - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-the-azure-portal
       - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-azure-cli
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
       - href: 
       - href: 
       - href: 

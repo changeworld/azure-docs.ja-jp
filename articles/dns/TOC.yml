@@ -82,6 +82,8 @@ items:
       href: dns-reverse-dns-for-azure-services.md
   - name: DNS ゾーン ファイルのインポートとエクスポート
     href: dns-import-export.md
+  - name: サブドメインの委任
+    href: delegate-subdomain.md
   - name: 他の Azure サービスとの統合
     href: dns-for-azure-services.md
   - name: DNS ゾーンとレコードを保護する
@@ -146,9 +148,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=dns
-ms.openlocfilehash: ca6910655425711fda12d5f511538d52f380b239
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d33aefd15104bc3cd35d1c904ffdbb7c7a9f0ec8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319530"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428547"

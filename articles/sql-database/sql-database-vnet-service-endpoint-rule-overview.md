@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728127"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359852"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Azure SQL の Virtual Network サービス エンドポイントとルールを使用する
 
@@ -118,8 +118,9 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL のインスタンスへの接続の試行は失敗します。
-  - 根本的な理由は、MySQL と PostgreSQL が現在は ACL 処理をサポートしていないためです。
+- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL インスタンスへの接続の試行は失敗します。
+  - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク ルールが構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク ルールを構成する必要があります。
+
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
   - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
   - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス

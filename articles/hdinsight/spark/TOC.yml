@@ -99,6 +99,8 @@ items:
       href: apache-spark-connect-to-sql-database.md
     - name: Apache Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
       href: ../../cosmos-db/lambda-architecture.md
+    - name: AutoML を使用して Azure ML ワークロードを実行する
+      href: apache-spark-run-machine-learning-automl.md
       maintainContext: true
   - name: Apache Spark ストリーミング
     items:
@@ -458,9 +460,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1e847037a0a5360679e846d1a5cc409af463772e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 9f6cad17d2263d250ff1bfad53a0756b5007209d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318867"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427459"
