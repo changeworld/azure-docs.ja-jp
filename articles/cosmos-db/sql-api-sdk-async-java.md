@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 1/15/2019
 ms.author: moderakh
-ms.openlocfilehash: fbb1757cfb1118380e2f7d79566f6dc9832fce23
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 760a54a09dd612cef93de0de1e8ac2fd59b04b26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041495"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329380"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 
 <tr><td>**SDK のダウンロード**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._asyncdocumentclient?view=azure-java-stable)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable)</td></tr>
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
 
@@ -50,6 +50,11 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* 非常に大規模なクエリ応答の処理を修正しました。
+* クライアントをインスタンス化するときのリソース トークン処理を修正しました ([github #78](https://github.com/Azure/azure-cosmosdb-java/issues/78))。
+* 脆弱性のある依存関係 jackson-databind をアップグレードしました ([github #77](https://github.com/Azure/azure-cosmosdb-java/pull/77))。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * リソース リークのバグを修正しました。
@@ -125,6 +130,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |2019 年 1 月 15 日|--- |
 | [2.3.0](#2.3.0) |2018 年 11 月 29 日|--- |
 | [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
 | [2.2.1](#2.2.1) |2018 年 11 月 2 日|--- |

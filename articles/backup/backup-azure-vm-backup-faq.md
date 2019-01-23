@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041290"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332253"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>よく寄せられる質問 - Azure Backup
 
@@ -57,14 +57,13 @@ Azure Backup に Key Vault へのアクセス許可を付与する必要があ�
 いいえ。 ローカル コンピューターの日時は、現在の夏時間が適用されたローカル時刻です。 スケジュールされているバックアップの時間は、DST のためにローカル タイムと異なる場合があります。
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Azure Backup によってバックアップされた VM には何台のデータ ディスクを接続できますか。
-Azure Backup では最大 16 台のディスクを搭載した VM をバックアップできます。 16 台のディスクのサポートは、[最新バージョン](backup-upgrade-to-vm-backup-stack-v2.md)の Azure VM バックアップ スタック V2 で提供されます。
+Azure Backup では最大 16 台のディスクを搭載した VM をバックアップできます。 16 ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
-Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。 SSD マネージド ディスクは、Azure VM に対して新しい種類の永続ストレージを提供します。 SSD マネージド ディスクのサポートは、[最新バージョン](backup-upgrade-to-vm-backup-stack-v2.md)の Azure VM バックアップ スタック V2 で提供されます。
+Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。 SSD マネージド ディスクは、Azure VM に対して新しい種類の永続ストレージを提供します。 SSD マネージド ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
-WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。 WA 対応ディスクでの VM ディスク除外は、Azure VM バックアップ スタック V2 にアップグレードされたサブスクリプションでのみサポートされます。 Azure VM バックアップ スタック V2 にアップグレードするには、こちらの[記事](backup-upgrade-to-vm-backup-stack-v2.md)をご覧ください。 この機能は、現在、東日本、北ヨーロッパ、東南アジア、米国東部、米国西部 2、西ヨーロッパ、および米国東部 2 でご利用いただけます。
-
+WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。 WA 対応ディスクでの VM ディスク除外は、インスタント リストアにアップグレードされたサブスクリプションでのみサポートされます。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。
 Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
@@ -77,7 +76,7 @@ RPO が 15 分の SAP HANA バックアップに対するプライベート プ�
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>ディスクのみを復元するか、VM 全体を復元するかは、どのように判断すればよいでしょうか。
 VM の復元は、Azure VM 用の簡易的な作成オプションと考えてください。 このオプションでは、ディスク名、そのディスクが使用するコンテナー、パブリック IP アドレス、およびネットワーク インターフェイス名が変更されます。 この変更では、VM 作成時の一意のリソースが維持されます。 VM は可用性セットには追加されません。
 
-ディスクの復元オプションは、次のような場合に使用します。
+ディスクの復元オプションは、次のような場合に使用できます。
   * 作成された VM をカスタマイズする。 たとえば、サイズを変更します。
   * バックアップ時に存在しなかった構成設定を追加する
   * 作成されたリソースの名前付け規則を制御する。
@@ -104,7 +103,7 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット**と呼ばれる入力パラメーターがあります。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
-復元のパフォーマンスを高めるには、VM バックアップ スタック V2 に移行して、[インスタント RP 機能](backup-upgrade-to-vm-backup-stack-v2.md)を使用することをお勧めします。
+復元のパフォーマンスを高めるために、[インスタント リストア](backup-instant-restore-capability.md)機能に移行しています。
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b712b576e1dd47698de66889d4edf9dda026a16c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 65d6685947c5796a65985aff0b789223736df0b8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017992"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354282"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Google AdWords からデータをコピーする (プレビュー)
 
@@ -46,11 +46,11 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**GoogleAdWords** | [はい] |
 | clientCustomerID | レポート データをフェッチする対象の、AdWords アカウントのクライアント顧客 ID。  | [はい] |
-| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | [はい] |
+| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | [はい] |
 | authenticationType | 認証に使用される OAuth 2.0 認証メカニズム。 ServiceAuthentication はセルフホステッド IR のみで使用できます。 <br/>使用できる値は、以下のとおりです。**ServiceAuthentication**、**UserAuthentication** | [はい] |
-| refreshToken | UserAuthentication で AdWords へのアクセスを承認するために Google から取得した更新トークン。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | いいえ  |
-| clientId | 更新トークンを取得するために使用される google アプリケーションのクライアント ID。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | いいえ  |
-| clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | いいえ  |
+| refreshToken | UserAuthentication で AdWords へのアクセスを承認するために Google から取得した更新トークン。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
+| clientId | 更新トークンを取得するために使用される google アプリケーションのクライアント ID。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
+| clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
 | email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。これはセルフホステッド IR のみで使用できます。  | いいえ  |
 | keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。これはセルフホステッド IR のみで使用できます。  | いいえ  |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |

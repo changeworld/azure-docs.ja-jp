@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015541"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332627"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-azure-datalake-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-data-lake-store.md)
 
@@ -427,20 +427,19 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
-          "folderPath": "datalake/output/"
+            "folderPath": "datalake/output/"
         },
         "availability": {
-          "frequency": "Hour",
-          "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **BLOB ソースおよび Data Lake Store シンクを使用するパイプラインでのコピー アクティビティ**
 

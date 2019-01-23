@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2f358a024ef7a7215077bc8bbbdaa30167d77917
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3036bbc74b4ed8ee92e10f952252889c4c12f845
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166066"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353942"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715772"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354318"
 ---
 # <a name="understand-role-definitions"></a>ロール定義について
 
@@ -172,6 +172,14 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 | [Azure for Java](/java/azure/) | 1.9.0 以降 |
 | [Azure for Python](/python/azure) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
+
+REST API でデータ操作を確認して使用するには、次のバージョン以降に **api-version** パラメーターを設定する必要があります。
+
+- 2018-01-01-preview
+
+Azure portal では、ユーザーが Azure AD のプレビュー エクスペリエンスを介して、キューおよび BLOB コンテナーの内容を参照および管理することもできます。 キューまたは BLOB コンテナーの内容を表示および管理するには、ストレージ アカウントの [概要] にある **[Azure AD プレビューを使用してデータを探索します]** をクリックします。
+
+![Azure AD プレビューを使用してキューおよび BLOB コンテナーを探索する](./media/role-definitions/rbac-dataactions-browsing.png)
 
 ## <a name="actions"></a>Actions
 

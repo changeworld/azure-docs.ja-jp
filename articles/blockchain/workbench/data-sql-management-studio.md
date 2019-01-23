@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259785"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332457"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
 
@@ -34,7 +34,7 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
 
 3. **[サーバーに接続]** ダイアログで、サーバー名とお使いのデータベース資格情報を入力します。
 
-    Azure Blockchain Workbench の展開プロセスによって作成された資格情報を使用している場合、ユーザー名は **dbadmin** となり、パスワードは展開時に指定したパスワードです。
+    Azure Blockchain Workbench のデプロイプロセスによって作成された資格情報を使用している場合、ユーザー名は **dbadmin** となり、パスワードはデプロイ時に指定したパスワードです。
 
     ![SQL 資格情報を入力します](./media/data-sql-management-studio/sql-creds.png)
 
@@ -43,7 +43,7 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
     ![データベースの一覧](./media/data-sql-management-studio/db-list.png)
 
 5. データベース ビューのいずれかに関連付けられているデータを表示するには、以下の手順を使用して、自動的に選択ステートメントを生成できます。
-6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリック。
+6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリックします。
 7. **[スクリプトビュー]** を選択します。
 8. **[SELECT]** を選択します。
 9. **新しいクエリ エディター ウィンドウ**を選択します。

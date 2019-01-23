@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 480edbb508b875d53d972e9ac93fd4d119c7e54a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119664"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359699"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](../../azure-monitor/app/app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -208,7 +208,7 @@ Web テストを編集、一時的に無効化、削除、またはダウンロ�
 ![エクスペリエンスを作成する](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
 > [!NOTE]
->  [新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)の場合、アラート ルールの重大度と通知の基本設定**をアクション グループ**と一緒に、アラート エクスペリエンスで構成する必要があります。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
+>  [新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)の場合、アラート ルールの重大度と通知の基本設定[をアクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)と一緒に、アラート エクスペリエンスで構成する**必要があります**。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
 
 1. 可用性テストを保存した後、詳細タブで、作成したテストの省略記号をクリックします。 [アラートの編集] をクリックします。
 ![保存後の編集](./media/monitor-web-app-availability/9editalert.png)
@@ -258,7 +258,7 @@ Web テストに使用できる SAML プラグインを使用します。
 2. 応答からベアラー トークンを抽出します。
 3. 承認ヘッダーにベアラー トークンを使用して API を呼び出します。
 
-Web テストが実際のクライアントであること、つまり、独自のアプリが AAD に登録されていることを確認し、clientId と appkey を使用します。 テスト対象のサービスの独自のアプリも AAD に登録されている場合: Web テストの "リソース" フィールドにはこのアプリの appID URI が反映されます。
+Web テストが実際のクライアントであること、つまり、独自のアプリが AAD に登録されていることを確認し、clientId と appkey を使用します。 テスト対象のサービスの独自のアプリも AAD に登録されている場合: Web テストのリソース フィールドにはこのアプリの appID URI が反映されます。
 
 ### <a name="open-authentication"></a>オープン認証
 オープン認証の例としては、Microsoft または Google アカウントを使用したサインインが挙げられます。 OAuth を使用する多くのアプリがクライアント シークレットに代わる機能を提供しているため、その可能性を調査することが最初の方法です。

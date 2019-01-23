@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792891"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353857"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>クイック スタート:HDInsight のクラスターを設定する
 
@@ -25,6 +25,10 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 >HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 詳細については、[クラスターの削除方法](../../hdinsight/hdinsight-delete-cluster.md)に関するページを参照してください。
 
 このクイック スタートでは、Data Lake Storage Gen2 機能を備えたストレージ アカウントがデータ レイヤーとして使用されています。 階層型名前空間サービスと [Hadoop ドライバー](data-lake-storage-abfs-driver.md)により、Data Lake Storage Gen2 は分散処理と分析用に最適化されています。 HDInsight クラスターを削除しても、Data Lake Storage Gen2 が有効なストレージ アカウントに保存されているデータは削除されません。
+
+## <a name="prerequisites"></a>前提条件
+
+- ユーザー割り当てマネージド ID を作成してから、その ID に **BLOB Storage 共同作成者ロール**を割り当てる必要があります。 「[Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)」を参照してください。
 
 ## <a name="cluster-setup-methods"></a>クラスターのセットアップ方法
 
@@ -104,8 +108,7 @@ HDInsight クラスターでは、クラスターの作成時に次の 2 つの�
 
 ![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> 必ず **Data Lake Store アクセスを無効にしてください**。 この設定は、以前の *Data Lake Store* 機能を参照しているので、*Data Lake Storage* 機能が正しく動作するためには無効にする必要があります。
+**[ユーザー割り当てマネージド ID]** で、この記事の前提条件として作成したユーザーが管理するユーザー割り当てマネージド ID を必ず選択します。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 

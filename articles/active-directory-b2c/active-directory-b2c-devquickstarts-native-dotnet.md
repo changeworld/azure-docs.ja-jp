@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606184"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354384"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C:Windows デスクトップ アプリを構築する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](tutorial-create-tenant.md) してください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
@@ -31,16 +31,14 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 ポリシーを作成するときは、次の操作を必ず実行してください。
 
 * ID プロバイダーのブレードで、**[User ID sign-up (ユーザー ID サインアップ)]** または **[Email sign-up (電子メール サインアップ)]** を選択します。
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** 要求と **[オブジェクト ID]** 要求を選択します。 その他のクレームも選択できます。
 * ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。 これらのポリシー名は後で必要になります。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
+ポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
 ## <a name="download-the-code"></a>コードのダウンロード
 このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet)で管理されています。 手順に従ってサンプルをビルドする場合は、 [スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip)できます。 スケルトンを複製することもできます。

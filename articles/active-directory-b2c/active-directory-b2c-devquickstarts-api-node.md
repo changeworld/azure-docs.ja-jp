@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117913"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354418"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用した Web API のセキュリティ保護
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Node.js を使用して Web API をセキュリティで保護する
 
 Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トークンを使用して Web API をセキュリティ保護できます。 これらのトークンにより、Azure AD B2C を使用するクライアント アプリは API の認証を行うことができます。 この記事では、ユーザーによるタスクの追加と一覧表示を可能にする "To-Do List" API を作成する方法について説明します。 この Web API は Azure AD B2C を使用してセキュリティで保護されるため、認証済みのユーザーのみが To-Do List を管理できます。
 
@@ -36,7 +35,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トーク�
 3. "to-do list" Web API を呼び出すように、クライアント アプリケーションを構成する。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。  まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してから先に進んでください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。  まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](tutorial-create-tenant.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 次に、B2C ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報を Azure AD に提供します。 ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
@@ -47,17 +46,13 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 このデータは後で必要になります。
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリケーションには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 種類ごとに 1 つのポリシーを作成する必要があります。  ポリシーを作成するときは、以下の操作を必ず実行してください。
 
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。  その他のクレームも選択できます。
 * ポリシーの作成後、各ポリシーの **名前** をメモしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  これらのポリシー名は後で必要になります。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-3 つのポリシーを作成したら、アプリをビルドできます。
-
-ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、 [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
+ポリシーを作成したら、アプリを構築できます。
 
 ## <a name="download-the-code"></a>コードのダウンロード
 このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS)で管理されています。 手順に従ってサンプルをビルドする場合は、 [スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip)できます。 スケルトンを複製することもできます。

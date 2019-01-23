@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: ee7a9c407a26f9334a854c98793db8fc01244e2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 65e4c6d66e410e8cd761128028b7a47e21db86eb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994676"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354503"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Azure VM をバックアップする準備をする
 
@@ -61,8 +61,6 @@ ms.locfileid: "53994676"
     - バックアップ データを格納するためのストレージ アカウントを指定する必要はありません。 コンテナーと Azure Backup サービスで自動的に処理されます。
 - バックアップを作成する Azure VM に VM エージェントがインストールされていることを確認します。
 
-
-
 ### <a name="install-the-vm-agent"></a>VM エージェントのインストール
 
 バックアップを有効にするため、Azure Backup によってバックアップ拡張機能 (VM スナップショットまたは VM スナップショット Linux) が Azure VM で実行される VM エージェントにインストールされます。
@@ -79,12 +77,14 @@ Azure VM のバックアップで問題が発生する場合は、次の表を�
 
 ### <a name="establish-network-connectivity"></a>ネットワーク接続を確立する
 
-VM で実行されているバックアップ拡張機能には、Azure パブリック IP アドレスへの発信アクセスが必要です。 次の方法でアクセスを許可できます。
+VM で実行されているバックアップ拡張機能には、Azure パブリック IP アドレスへの発信アクセスが必要です。
 
+> [!NOTE]
+> Azure VM が Azure Backup サービスと通信するために、明示的な送信ネットワーク アクセスは必要ありません。 ただし、以前のバージョンの仮想マシンによっては問題が発生し、エラー **ExtensionSnapshotFailedNoNetwork** で失敗する場合があります。このエラーを解決するには、次のいずれかのオプションを選択し、バックアップ拡張機能が Azure パブリック IP アドレスと通信してバックアップ トラフィックへの明確なパスを提供できるようにします。
 
-- **NSG ルール**:[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 すべてのアドレス範囲を個別に許可して、それらを経時的に管理するのではなく、[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して Azure Backup サービスへのアクセスを許可するルールを追加することができます。
+- **NSG ルール**:[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 すべてのアドレス範囲を個別に許可して、それらを経時的に管理するのではなく、[サービス タグ](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)を使用して Azure Backup サービスへのアクセスを許可するルールを追加することができます。 サービス タグの詳細については、こちらの[記事](../virtual-network/security-overview.md#service-tags)を参照してください。
 - **プロキシ**:トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。
-- **Azure Firewall**:Azure Backup サービスの FQDN タグを使用して、VM で Azure Firewall を経由したトラフィックを許可します。
+- **Azure Firewall**:Azure Backup サービスの FQDN タグを使用して、VM で Azure Firewall を経由したトラフィックを許可します
 
 オプションを決定する際は、トレードオフを検討します。
 
@@ -94,22 +94,17 @@ VM で実行されているバックアップ拡張機能には、Azure パブ�
 **HTTP プロキシ** | ストレージ URL に対する詳細な制御が可能。<br/><br/> VM に対するインターネット アクセスを単一の場所で実現。<br/><br/> プロキシの追加のコスト。
 **FQDN タグ** | VNet サブネットで Azure Firewall が設定されている場合は、簡単に使用できる | 独自の FQDN タグを作成したり、タグで FQDN を変更したりすることはできない。
 
-
-
 Azure Managed Disks を使用する場合、ファイアウォールで別途ポート (ポート 8443) が開放されている必要があります。
-
-
 
 ### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Azure への発信アクセスを許可する NSG ルールを設定する
 
 Azure VM に NSG によって管理されるアクセス権がある場合は、バックアップ ストレージの必要な範囲とポートへの送信アクセスを許可します。
 
-
-
 1. VM で **[ネットワーク]**、**[送信ポートの規則を追加する]** の順にクリックします。
-- アクセスを拒否するルールがある場合、新しい許可ルールを上位にする必要があります。 たとえば、優先順位 1000 で **Deny_All** (すべて拒否) ルール セットがある場合、新しいルールは、1000 未満に設定する必要があります。
+
+  - アクセスを拒否するルールがある場合、新しい許可ルールを上位にする必要があります。 たとえば、優先順位 1000 で **Deny_All** (すべて拒否) ルール セットがある場合、新しいルールは、1000 未満に設定する必要があります。
 2. **[送信セキュリティ規則の追加]** で、**[詳細]** をクリックします。
-3. [ソース] で **[VirtualNetwork]** を選びます。
+3. **[ソース]** で **[VirtualNetwork]** を選択します。
 4. **[ソース ポート範囲]** で、任意のポートからの発信アクセスを許可するアスタリスク (*) を入力します。
 5. **[宛先]** で **[サービス タグ]** を選択します。 一覧から、[ストレージ] を選択します。<region> リージョンは、コンテナーとバックアップする VM が配置されている領域です。
 6. **[宛先ポート範囲]** でポートを選択します。
@@ -117,9 +112,9 @@ Azure VM に NSG によって管理されるアクセス権がある場合は、
     - アンマネージド ディスクと暗号化されていないストレージ アカウントを持つ VM:80
     - アンマネージド ディスクと暗号化されたストレージ アカウントを持つ VM:443 (既定の設定)
     - マネージド VM:8443
-1. **[プロトコル]** で、**[TCP]** を選択します。
-2. **[優先度]** で、上位の拒否ルールより低い優先度値を指定します。
-3. ルールの名前と説明を指定して、**[OK]** をクリックします。
+7. **[プロトコル]** で、**[TCP]** を選択します。
+8. **[優先度]** で、上位の拒否ルールより低い優先度値を指定します。
+9. ルールの名前と説明を指定して、**[OK]** をクリックします。
 
 NSG ルールを複数の VM に適用して、Azure Backup の Azure への発信アクセスを許可することができます。
 
@@ -127,12 +122,12 @@ NSG ルールを複数の VM に適用して、Azure Backup の Azure への発�
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-
+> [!WARNING]
+> ストレージ サービスのタグはプレビュー版であり、 特定のリージョンでのみ利用できます。 リージョンの一覧については、[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)に関するページを参照してください。
 
 ### <a name="route-backup-traffic-through-a-proxy"></a>プロキシ経由のバックアップ トラフィックのルーティング
 
 プロキシ経由でバックアップ トラフィックをルーティングし、必要な Azure 範囲へのプロキシ アクセスを付与できます。
-
 次を許可するように、プロキシ VM を構成する必要があります。
 
 - Azure VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングする必要があります。
@@ -167,8 +162,9 @@ NSG ルールを複数の VM に適用して、Azure Backup の Azure への発�
 
 #### <a name="allow-incoming-connections-on-the-proxy"></a>プロキシで着信接続を許可する
 
-1. プロキシ設定で着信接続を許可します。
-2. たとえば、**セキュリティが強化された Windows ファイアウォール**を開きます。
+プロキシ設定で着信接続を許可します。
+
+- たとえば、**セキュリティが強化された Windows ファイアウォール**を開きます。
     - **[受信の規則]** を右クリックし、 > **[新しい規則]** をクリックします。
     - **[規則の種類]** で、**[カスタム]** > **[次へ]** を選択します。
     - **[プログラム]** で、**[すべてのプログラム]** > **[次へ]** を選択します。
@@ -186,13 +182,13 @@ NSG **NSF ロックダウン**で、10.0.0.5 の任意のポートから、ポ�
     Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
     Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
     ```
+
 ### <a name="allow-firewall-access-with-fqdn-tag"></a>FQDN タグを使用してファイアウォール アクセスを許可する
 
 Azure Backup へのネットワーク トラフィックの送信アクセスを許可するように Azure Firewall を設定することができます。
 
 - Azure Firewall のデプロイに関する[詳細情報を参照してください](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。
 - FQDN タグについて[お読みください](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
-
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
@@ -227,7 +223,7 @@ Azure Backup へのネットワーク トラフィックの送信アクセスを
 
 ## <a name="set-up-storage-replication"></a>ストレージ レプリケーションの設定
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) があります。 プライマリ バックアップには GRS をお勧めしますが、コストを抑えるオプションとして[ローカル冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)を使用することもできます。 
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) があります。 プライマリ バックアップには GRS をお勧めしますが、コストを抑えるオプションとして[ローカル冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)を使用することもできます。
 
 ストレージ レプリケーションを変更にするには、次の手順に従います。
 
@@ -285,5 +281,5 @@ Azure Backup へのネットワーク トラフィックの送信アクセスを
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure VM エージェント](/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)または[Azure VM バックアップ](backup-azure-vms-troubleshoot.md)で発生する問題のトラブルシューティング。
+- [Azure VM エージェント](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)または[Azure VM バックアップ](backup-azure-vms-troubleshoot.md)で発生する問題のトラブルシューティング。
 - [Azure VM のバックアップ](backup-azure-vms-first-look-arm.md)

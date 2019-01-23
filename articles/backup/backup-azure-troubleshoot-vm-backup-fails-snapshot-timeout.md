@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789859"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353964"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -52,7 +52,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 * この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント RP は 7 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップを推奨します。 <br>
 
 推奨される操作:<br>
-この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。 
+この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。
 > [!NOTE]
     > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>` 例:AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません <br>
 
-コンテナーが Azure VM バックアップ スタック V2 にアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 Azure VM バックアップ スタック V2 にアップグレードすると、最大 4 TB がサポートされます。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。  
+コンテナーがインスタント リストアにアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 インスタント リストアにアップグレードすると、最大 4 TB がサポートされます。こちらの[記事](backup-instant-restore-capability.md)を参照してください。  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 現在、Azure Backup では Standard SSD ディスクはサポートされていません
 
 **エラー コード**:UserErrorStandardSSDNotSupported <br>
 **エラー メッセージ**:現在、Azure Backup では Standard SSD ディスクはサポートされていません <br>
 
-現在、Azure Backup では、Azure VM バックアップ スタック V2 にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。
+現在、Azure Backup では、[インスタント リストア](backup-instant-restore-capability.md)にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。
 
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
@@ -122,33 +122,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 バックアップ拡張機能が正常に機能するには、Azure のパブリック IP アドレスへの接続が必要です。 この拡張機能が、VM のスナップショットを管理するコマンドを、Azure Storage エンドポイント (HTTP URL) に送信するためです。 拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
 
-VM トラフィックのルーティングに、プロキシ サーバーをデプロイすることもできます。
-##### <a name="create-a-path-for-https-traffic"></a>HTTP トラフィック用のパスを作成する
-
-1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
-2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加します (ネットワーク セキュリティ グループがある場合)。
-
-VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
-
-バックアップ VM またはトラフィックがルーティングされるプロキシ サーバーのいずれかに、Azure のパブリック IP アドレスへのアクセスが必要です。
-
 ####  <a name="solution"></a>解決策
-この問題を解決するには、次の方法のいずれかを試してください。
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>リージョンに対応する Azure Storage へのアクセスを許可する
-
-[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用し、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。
-
-![リージョンのストレージ タグが与えられたネットワーク セキュリティ グループ](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-サービス タグを構成する詳細な手順については、[こちらのビデオ](https://youtu.be/1EjLQtbKm1M)をご覧ください。
-
-> [!WARNING]
-> ストレージ サービスのタグはプレビュー版であり、 特定のリージョンでのみ利用できます。 リージョンの一覧については、[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)に関するページを参照してください。
-
-Azure Managed Disks を使用する場合、ファイアウォールで別途ポート (ポート 8443) が開放されている必要があります。
-
-さらに、ご利用のサブネットにインターネット送信トラフィックのルートが含まれない場合は、サービス タグ "Microsoft.Storage" を含むサービス エンドポイントをサブネットに追加する必要があります。
+ネットワークの問題を解決するには、「[ネットワーク接続を確立する](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>エージェントが VM にインストールされているが応答しない (Windows VM の場合)
 

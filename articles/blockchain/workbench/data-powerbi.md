@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b1020389ef28c18c03536d686cd47ef0c65b9204
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241445"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329856"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
@@ -27,7 +27,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 * [Power BI Desktop](https://aka.ms/pbidesktopstore) をダウンロードします。
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>Power BI を Azure Blockchain Workbench のデータに接続する
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI を Azure Blockchain Workbench のデータに接続する
 
 1.  Power BI Desktop を開きます。
 2.  **[データの取得]** を選択します。
@@ -49,7 +49,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
     ![ナビゲーター](./media/data-powerbi/navigator.png)
 
-7.  含めるビューを選択します。 ここではデモのため、コントラクト上で実行されたアクションのすべての詳細を提供する **vwContractAction** を含めます。
+7.  含めるビューを選択します。 ここではデモのため、コントラクト上で実行されたアクションの詳細を提供する **vwContractAction** を含めます。
 
     ![ビューの選択](./media/data-powerbi/select-views.png)
 

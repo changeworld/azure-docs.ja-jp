@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044384"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354469"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 言語リファレンス 
 
@@ -481,7 +481,7 @@ ORDER BY <sort_specification>
   
  **単項演算子**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -|数値を返します。<br /><br /> ビットごとの否定。 否定された数値を返します。|  
 |**ビット演算子**|~|1 の補数。 数値の補数を返します。|  
@@ -489,7 +489,7 @@ ORDER BY <sort_specification>
   
  **二項演算子:**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加算。<br /><br /> 減算。<br /><br /> 乗算。<br /><br /> 除算。<br /><br /> 比率。|  
 |**ビット演算子**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|ビット演算子 OR。<br /><br /> ビット演算子 AND。<br /><br /> ビット演算子 XOR。<br /><br /> 左シフト。<br /><br /> 右シフト。<br /><br /> 0 埋め右シフト。|  
@@ -504,7 +504,7 @@ ORDER BY <sort_specification>
   
  **比較の値の順序付け**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|比較できません。|  
 |**Null**|単一の値: **Null**|  
@@ -532,7 +532,7 @@ ORDER BY <sort_specification>
   
  **サポートされるスカラー データ型:**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|単一の値: **undefined**|  
 |**Null**|単一の値: **Null**|  
@@ -2331,7 +2331,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **構文**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **引数**  
@@ -2342,7 +2342,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     任意の有効な数値式です。  
+     開始および終了文字を示す任意の有効な数値式です。    
   
  **戻り値の型**  
   
@@ -2543,7 +2543,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 
+配列に指定された値が含まれているかどうかを示すブール値を返します。 コマンド内でブール式を使用して、オブジェクトの部分一致または完全一致を確認できます。 
 
  **構文**  
   
@@ -2563,7 +2563,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 -   `bool_expr`  
   
-     任意のブール式です。       
+     任意のブール式です。 'true' に設定されていて、指定された検索値がオブジェクトである場合、このコマンドで部分一致が確認されます (検索オブジェクトは、いずれかのオブジェクトのサブセットです)。 'false' に設定されている場合、このコマンドで配列内のすべてのオブジェクトの完全一致が確認されます。 指定しない場合の既定値は false です。 
   
  **戻り値の型**  
   
