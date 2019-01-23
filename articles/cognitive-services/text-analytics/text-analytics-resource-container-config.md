@@ -51,7 +51,7 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|[はい]| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
