@@ -57,7 +57,7 @@ ms.locfileid: "54332593"
 |-------|-------------|:--------:|-----------:|
 | Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | ワークフローのわかりやすい表示名。 | はい | 255 |
-| 説明 | ワークフローの説明。 | いいえ  | 255 |
+| Description | ワークフローの説明。 | いいえ  | 255 |
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
 | StartState | ワークフローの初期状態の名前。 | はい | |
 | Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
@@ -1002,4 +1002,3 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench REST API リファレンス](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
-
