@@ -33,8 +33,8 @@ Speech to Text REST API または Text to Speech REST API に対して要求を�
 
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | [はい] | いいえ  |
-| Authorization:ベアラ | [はい] | [はい] |
+| Ocp-Apim-Subscription-Key | はい | いいえ  |
+| Authorization:ベアラ | はい | はい |
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例: 
 
