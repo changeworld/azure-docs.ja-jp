@@ -1,8 +1,15 @@
 ---
-title:Web アプリ テンプレートで Studio Web サービスを使用する titleSuffix: Azure Machine Learning Studio description:Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/20/2017
+title: Web アプリ テンプレートで Studio Web サービスを使用する
+titleSuffix: Azure Machine Learning Studio
+description: Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/20/2017
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Web アプリ テンプレートによる Azure Machine Learning Studio Web サービスの使用
 
