@@ -276,10 +276,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | JSON プロパティ | type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | 文字列 | [はい] | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | オブジェクト | [はい] | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | 文字列 | はい | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | オブジェクト | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | いいえ  | 1 | 1 から 1,000 | `"interval":10` |
-| **endTime** | 文字列 | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | 文字列 | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
