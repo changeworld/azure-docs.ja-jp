@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 4d5a57f8c25479983bd380fc9787ca0f2f39ff13
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: disks
+ms.openlocfilehash: 8900467ef5dd8f8749961520b00596f4dfdb8910
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718871"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461758"
 ---
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

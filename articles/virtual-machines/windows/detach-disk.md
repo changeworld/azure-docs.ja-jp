@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7a8221ff624e774901b02672cd95230f40727639
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.component: disks
+ms.openlocfilehash: 69db6f4e89720d2c0313628045e4ae0eda99013f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144256"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465549"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 

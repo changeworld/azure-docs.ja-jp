@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190732"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434174"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -37,7 +37,7 @@ VM イメージの詳細については、次のブログを参照してくだ�
 
 Azure PowerShell と Azure CLI をまだインストールしていない場合は、次の指示に従ってインストールします。
 
-- [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
+- [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
 - [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 

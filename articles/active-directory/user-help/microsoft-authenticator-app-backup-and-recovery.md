@@ -3,7 +3,7 @@ title: Microsoft Authenticator アプリを使用したバックアップと復�
 description: Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する方法を説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.component: user-help
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 623e7276ccba85b6df74291ee857613019349b7a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993435"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821704"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 

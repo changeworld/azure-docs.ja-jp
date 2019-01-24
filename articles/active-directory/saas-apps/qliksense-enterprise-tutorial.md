@@ -4,7 +4,7 @@ description: Azure Active Directory と Qlik Sense Enterprise の間でシング
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ecb26a7ca0f164c2ba8d9a9de26bf19777653a0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 1bf11bc93065c4c590b5224a805b8e1dbeadbb61
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810635"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合
 

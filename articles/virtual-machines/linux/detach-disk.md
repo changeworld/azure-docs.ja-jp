@@ -15,12 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: 5a0c2f91c5290e679cc2a3ac03cbf226ceb902da
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968352"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477704"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
@@ -38,7 +39,7 @@ ms.locfileid: "46968352"
 
 CLI またはポータルを使用してディスクをデタッチするには、事前にディスクのマウントを解除し、fstab ファイルからディスクへの参照を削除する必要があります。
 
-VM に接続します。 この例では、VM のパブリック IP アドレスは *10.0.1.4*、ユーザー名は *azureuser* です。 
+VM に接続します この例では、VM のパブリック IP アドレスは *10.0.1.4*、ユーザー名は *azureuser* です。 
 
 ```bash
 ssh azureuser@10.0.1.4

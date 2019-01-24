@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2d212ae8f5a12c06f40e025a7a8d786a44194a92
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714582"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438733"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>音声サービスを Language Understanding アプリと統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) パッケージを使用します。 
@@ -24,7 +24,7 @@ ms.locfileid: "53714582"
 この記事では、アプリケーションをインポートするための、無料の [LUIS ][LUIS] Website アカウントが必要です。
 
 ## <a name="create-luis-endpoint-key"></a>LUIS エンドポイント キーを作成する
-Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 
+Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md)します。 
 
 ## <a name="import-human-resources-luis-app"></a>人事管理 LUIS アプリをインポートする
 この記事の意図と発話は、[Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub リポジトリにある人事管理 LUIS アプリからのものです。 [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 

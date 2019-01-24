@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 287c5a75d1c15a9ebc7a23d263ce7ff5516bcfab
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d4264a114afc04f162ae7c711b78fce506aa39d1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981866"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432336"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 

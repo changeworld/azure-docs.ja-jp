@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 8b56c338a62e88748be2a140e743c43b54da4b2d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: alerts
+ms.openlocfilehash: 1aeafa9fb2fc4d275e15d1a911adea7d3f3220dc
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259871"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467232"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
@@ -123,3 +123,4 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 * [Azure アラート](../../azure-monitor/platform/alerts-overview.md)について学習します。
 * [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
 * [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。    
+

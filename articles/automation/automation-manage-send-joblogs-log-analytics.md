@@ -3,18 +3,18 @@ title: Log Analytics に Azure Automation のジョブ データを転送する
 description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Azure Log Analytics に送信して、追加の分析情報や補助的な管理を提供する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269568"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432967"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
 
@@ -183,3 +183,4 @@ Log Analytics によって、Automation ジョブの状態をさらに詳しく�
 * Runbook から出力とエラー メッセージを作成および取得する方法については、[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページを参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
 * Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページをご覧ください。
+

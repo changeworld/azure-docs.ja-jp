@@ -4,7 +4,7 @@ description: Azure Active Directory と SkyDesk Email の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a9d0bbcb-ddb5-473f-a4aa-028ae88ced1a
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 4dc34a390303ffe5e4bafc6b71d77a19e554374c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 29e1fd9999c70ed4a599cbc65d43402088d876e2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052191"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル:Azure Active Directory と SkyDesk Email の統合
 

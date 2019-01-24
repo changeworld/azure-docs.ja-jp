@@ -3,18 +3,18 @@ title: Azure Maps での検索 | Microsoft Docs
 description: Azure Maps を使用して近くの目的地を検索する
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/14/2018
+ms.date: 01/17/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1396260ef703ce22f8e0309bd2c8df691d0af86e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 04ab94d8b0b8f012707bb88a52c44b91063cbe39
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120463"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402185"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -153,11 +153,6 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
       });
       map.layers.add(resultLayer);
 
-      //Create a popup but leave it closed so we can update it and display it later.
-      popup = new atlas.Popup();
-
-      //Add a mouse over event to the result layer and display a popup when this event fires.
-      map.events.add('mouseover', resultLayer, showPopup);
    });
    ```
 

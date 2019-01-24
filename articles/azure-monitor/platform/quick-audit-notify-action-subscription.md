@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.component: alerts
-ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 8d3fa6652ddc6e6a79ae1d25681d40242560c506
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582679"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472587"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Azure サブスクリプションの重要なアクションを監査して通知を受信する
 
@@ -99,3 +99,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [監視データをアーカイブする](./../../azure-monitor/learn/tutorial-archive-data.md)
+

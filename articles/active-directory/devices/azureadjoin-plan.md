@@ -4,7 +4,7 @@ description: 環境内に Azure AD 参加済みデバイスを実装するため
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: be7cded5b9cd2f7a3f33d1de11f36e82f079fc4b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189515"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448570"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 

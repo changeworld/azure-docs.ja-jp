@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051222"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430400"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>PowerShell を使用して Azure ファイル共有をバックアップおよび復元する
 
@@ -34,7 +34,7 @@ PowerShell を効果的に使用するには、オブジェクトの階層およ
 ## <a name="setup-and-registration"></a>セットアップと登録
 
 > [!NOTE]
-> 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)」に記載されているように、AzureRM モジュールの新機能のサポートは 2018 年 11 月に終了します。 一般公開になった新しい Az PowerShell モジュールでは、Azure ファイル共有のバックアップのサポートが提供されます。
+> 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)」に記載されているように、AzureRM モジュールの新機能のサポートは 2018 年 11 月に終了します。 一般公開になった新しい Az PowerShell モジュールでは、Azure ファイル共有のバックアップのサポートが提供されます。
 
 開始するには、次の手順に従います。
 

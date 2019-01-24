@@ -3,7 +3,7 @@ title: Azure Active Directory での MyApps ポータルのアクセスと使用
 description: アクセス パネルへのサインイン、およびアクセス パネルでの一般的なタスクの実行に関するヘルプです。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 4af0b9cf50d643fda2341e791753e3bdfc8166b1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191039"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812572"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>MyApps ポータルのアクセスと使用に関する問題のトラブルシューティング
 

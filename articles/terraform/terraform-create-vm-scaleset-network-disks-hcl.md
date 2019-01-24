@@ -8,12 +8,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: bceef544b51126d4d470f6f13f07b54437b08df5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a15f3e243d411bd7033fa1f86c89e7c95c95a3c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076894"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478027"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
@@ -190,7 +190,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
     name                         = "vmss-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
-    public_ip_address_allocation = "static"
+    allocation_method = "static"
     domain_name_label            = "${random_string.fqdn.result}"
     tags                         = "${var.tags}"
   }
@@ -463,7 +463,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
-    public_ip_address_allocation = "static"
+    allocation_method = "static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
     tags                         = "${var.tags}"
   }

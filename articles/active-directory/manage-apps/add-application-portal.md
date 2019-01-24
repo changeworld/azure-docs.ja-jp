@@ -3,19 +3,19 @@ title: Azure Active Directory テナントにアプリを追加する | Microsof
 description: このクイック スタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントにギャラリー アプリケーションを追加します。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/24/2018
 ms.author: barbkess
-ms.openlocfilehash: 5cdadd93273b6010200b7211b75ca86dfa126b9d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0f2f912504ecf32ff5ba337951e24da0f816d463
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604824"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461928"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>クイック スタート:Azure Active Directory テナントにアプリケーションを追加する
 

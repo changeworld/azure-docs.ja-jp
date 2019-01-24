@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0fa9503e4536090e56e2f2709ceca5338bb593de
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 507aa1485cb039db2c26d0e513af58d67bb9fa58
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018060"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381267"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
@@ -47,7 +47,7 @@ $PricingTier = "S0",
 # Parameters needed to create the Elastic Job agent
 $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elastic Job agent"),
 
-# Parameters needed to create the job credential in the Job Databse to connect to SSISDB
+# Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
 $SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
@@ -127,7 +127,7 @@ $TargetDatabase | % {
 }
 
 # Create a target group which includes SSISDB database needed to cleanup
-Write-Output "Creating the target group including only SSISDB databse needed to cleanup ..."
+Write-Output "Creating the target group including only SSISDB database needed to cleanup ..."
 $SSISDBTargetGroup = $JobAgent | New-AzureRmSqlElasticJobTargetGroup -Name "SSISDBTargetGroup"
 $SSISDBTargetGroup | Add-AzureRmSqlElasticJobTarget -ServerName $SSISDBServerEndpoint -Database $SSISDBName 
 

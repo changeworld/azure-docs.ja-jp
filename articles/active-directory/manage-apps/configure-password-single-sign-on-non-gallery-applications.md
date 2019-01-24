@@ -3,19 +3,19 @@ title: ギャラリー以外のアプリケーションのパスワード シン
 description: Azure AD アプリケーション ギャラリーに表示されていない場合に、セキュリティで保護されたパスワード ベースのシングル サインオン用にカスタムのギャラリー以外のアプリケーションを構成する方法
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 86c8b0d7438eed1cae50e84f0196be0583370d5a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578401"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477321"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する方法
 

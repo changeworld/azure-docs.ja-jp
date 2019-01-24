@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 773ae5aefab59e79822c0320773753b47cfefdeb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b22917d27498787984d27d4bcba443b08d99ba9b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983871"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424513"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure Active Directory B2B コラボレーション
 

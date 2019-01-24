@@ -4,7 +4,7 @@ description: Azure Active Directory と InstaVR Viewer の間でシングル サ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b0548ec2bb580c2898f610f00fd5ba911b314114
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194926"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>チュートリアル:Azure Active Directory と InstaVR Viewer の統合
 
@@ -79,8 +79,8 @@ InstaVR Viewer で Azure AD のシングル サインオンを構成してテス
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[InstaVR Viewer シングル サインオンの構成](#configure-instavr-viewer-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[InstaVR Viewer のテスト ユーザーの作成](#create-instavr-viewer-test-user)** - InstaVR Viewer で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[InstaVR Viewer のテスト ユーザーの作成](#create-instavr-viewer-test-user)** - InstaVR Viewer で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -105,13 +105,13 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
     ![[InstaVR Viewer のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>` のパターンを使用して URL を入力します。
-    
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+
     > [!NOTE]
     > サインオン URL に固定のパターンはありません。 これは InstaVR Viewer の顧客が Web パッケージを行うときに生成されます。 これはすべての顧客とパッケージに対して一意になります。 正確なサインオン URL を取得するには、InstaVR Viewer インスタンスにログインして Web パッケージを実行する必要があります。
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>` 
-    
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+
     > [!NOTE]
     > この識別子の値は実際のものではありません。 この値は、実際の識別子の値に置き換えてください。これについては後で説明します。
 

@@ -4,7 +4,7 @@ description: Azure Active Directory と UltiPro の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: afc0f2b9-2eac-47ec-af04-65ed0fb0ca5a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ad89a8d5a0e9329e9951b7a8f7145a24910277e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1cefc69ee3fa997a5f8a924a6ed443a8d300ba0b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970561"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>チュートリアル:Azure Active Directory と UltiPro の統合
 

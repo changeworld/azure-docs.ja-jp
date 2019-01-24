@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: ef3d26112c631ee0ed3c754394339092020add53
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332542"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469751"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -265,7 +265,7 @@ B2B プロトコルに適用される制限を次に示します。
 
 [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
 
-[Azure Government](/azure-government/documentation-government-welcome) と [Azure China 21Vianet](/azure/china/china-welcome) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
+[Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](/azure/china/china-welcome) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
 
 > [!IMPORTANT]
 > 

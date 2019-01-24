@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da9aa33bd5273a172614fa8e0d1d0623bae168a0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: disks
+ms.openlocfilehash: 09221abb7f452bb3e3a69e6397bb5ed739ec8b17
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531446"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468777"
 ---
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

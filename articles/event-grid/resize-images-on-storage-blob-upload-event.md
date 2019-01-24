@@ -2,22 +2,22 @@
 title: Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する | Microsoft Docs
 description: Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 services: event-grid, functions
-author: ggailey777
+author: spelluru
 manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/29/2018
-ms.author: glenga
+ms.date: 01/19/2019
+ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 4a7e6189914728fac24e51f3b2dee66cc0bd8a05
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188472"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463713"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -164,12 +164,12 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | ------------ |  ------- | -------------------------------------------------- |
     | **トピックの種類** |  ストレージ アカウント | ストレージ アカウント イベント プロバイダーを選びます。 | 
     | **サブスクリプション** | お使いの Azure サブスクリプション | 既定では、現在の Azure サブスクリプションが選択されています。   |
-    | **[リソース グループ]** | myResourceGroup | **[既存のものを使用]** を選び、このチュートリアルで使っているリソース グループを選びます。  |
+    | **リソース グループ** | myResourceGroup | **[既存のものを使用]** を選び、このチュートリアルで使っているリソース グループを選びます。  |
     | **リソース** |  お使いの BLOB ストレージ アカウント |  作成した Blob Storage アカウントを選びます。 |
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。| 
     | **サブスクライバーの種類** |  自動生成 |  Web hook として事前定義されています。 |
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
-    | **名前** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
+    | **Name** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
 4. *省略可能:* 将来他の目的で同じ BLOB ストレージ内に追加のコンテナーを作成する必要がある場合は、**[フィルター]** タブの**サブジェクト フィルタリング**機能を使用して BLOB イベントをよりきめ細かくターゲット設定することで、特に BLOB が **images** コンテナーに追加されたときにのみ関数アプリが呼び出されるようにすることができます。 
 5. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
 

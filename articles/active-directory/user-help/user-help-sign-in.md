@@ -3,7 +3,7 @@ title: 2 段階認証またはセキュリティ情報を使ったサインイ�
 description: セキュリティ情報での各種本人確認方法を使ったサインイン方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9f7f06df2ab54e7ccb947362b6824097158166ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347834"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810416"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 
@@ -59,8 +59,8 @@ ms.locfileid: "39347834"
 
 - 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」でセキュリティ情報について学習する。
 
-- 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」で 2 段階認証について学習する。 
+- 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」の記事で 2 段階認証について学習する。 
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)でパスワードをリセットする (パスワードをなくしたか忘れた場合)
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

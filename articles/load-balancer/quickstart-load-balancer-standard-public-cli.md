@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: cf37472c415f8fc758903b3735984205d77db10a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3c13388ea7a4e3a3016f7560a523c93c1fcb6c0c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232585"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468320"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -34,7 +34,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myResourceGroupSLB* という名前のリソース グループを *eastus* に作成します。
 
@@ -46,7 +46,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-public-standard-ip-address"></a>パブリック Standard IP アドレスを作成する
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 *myResourceGroupSLB* に *myPublicIP* という Standard パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用します。
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 *myResourceGroupSLB* に *myPublicIP* という Standard パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
@@ -62,7 +62,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
 
 ```azurecli-interactive
   az network lb create \
@@ -76,7 +76,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-health-probe"></a>正常性プローブを作成する
 
-正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
+正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -89,7 +89,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
 
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) を使用してロード バランサー規則 *myLoadBalancerRuleWeb* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
+ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myLoadBalancerRuleWeb* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -110,7 +110,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) を使用して、*myVnet* という名前の仮想ネットワークを作成します。*myResourceGroup* に、*mySubnet* という名前のサブネットを含めます。
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、*myVnet* という名前の仮想ネットワークを作成します。*myResourceGroup* に、*mySubnet* という名前のサブネットを含めます。
 
 ```azurecli-interactive
   az network vnet create \

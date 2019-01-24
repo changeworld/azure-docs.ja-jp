@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
-ms.component: ''
-ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: ''
+ms.openlocfilehash: c326c255636bac7e698a64044e9ab65c8c05d01c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001619"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460721"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
 
@@ -112,7 +112,7 @@ Microsoft Operations Management Suite E1 および E2 を購入されたお客�
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>新しい価格モデルへの移行を自動化する
 
-以下のスクリプトを実行するには、Azure PowerShell モジュールが必要です。 最新バージョンがあるかどうかを確認するには、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0)に関するページをご覧ください。
+以下のスクリプトを実行するには、Azure PowerShell モジュールが必要です。 最新バージョンがあるかどうかを確認するには、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.1.0)に関するページをご覧ください。
 
 最新バージョンの Azure PowerShell がある場合は、まず ``Connect-AzureRmAccount`` を実行する必要があります。
 

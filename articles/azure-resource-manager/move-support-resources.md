@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 253cfd7ddeb04a12a3609ab5e14a37365015a568
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790879"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464716"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -370,7 +370,12 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| vaults | はい | はい |
+| vaults | はい | [はい] |
+
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| リソースの種類 | リソース グループ | サブスクリプション |
+| ------------- | -------------- | ------------ |
+| クラスター | はい | はい |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | リソースの種類 | リソース グループ | サブスクリプション |

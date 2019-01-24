@@ -4,7 +4,7 @@ description: パスワード ハッシュの同期を使用してハイブリッ
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ed8b2ec0c31adebac72e105ecfc4c5ec28e7b74b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164708"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471873"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -81,7 +81,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、**[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、**[次へ]** をクリックします。
-8. **[カスタム:Windows のみをインストールする (詳細設定)]** を選択します。
+8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 

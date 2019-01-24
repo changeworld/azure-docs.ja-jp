@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: seodec18
-ms.openlocfilehash: 308aef1ea8c76a1c3202fdb5131eba8b51bf41f9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.component: disks
+ms.openlocfilehash: 4bb5033be4008b9de483682f6bd3e506c923e46e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188114"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475052"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

@@ -4,7 +4,7 @@ description: Azure AD Connect は、オンプレミスのディレクトリと A
 keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 11/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1e85ab5eb0d8c96fb4c90332a2fbc41d216369f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7aff7b336789205703738cfa0bf02f2e9bd54d72
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098969"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465073"
 ---
 # <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは 
 

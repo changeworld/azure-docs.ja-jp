@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 682d1d123d3381a52c9d356cd1bf226d2a847df4
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 8fc952af011231a9cc12f96e3db9ebb088c237a2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352871"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413330"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 

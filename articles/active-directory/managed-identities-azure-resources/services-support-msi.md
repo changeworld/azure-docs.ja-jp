@@ -8,13 +8,13 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
-manager: mtillman
-ms.openlocfilehash: ca7ce29adb0b83215b64065ef83ff476025b8e81
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+manager: daveba
+ms.openlocfilehash: 7591860d36a3d6472411321c60c608411ab4eb8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199716"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437676"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 

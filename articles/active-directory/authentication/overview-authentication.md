@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 92c493a59cc14d61b09e59bdf0fa23be72b7137a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3437aed01efe137a5e67dfc09427c1048fa3e4e2
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232551"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423140"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>認証には、どのような方式がありますか。
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 30c5a3cf623a16395ad8c09c813d631c10e2dedf
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297573"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433482"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -438,7 +438,7 @@ Azure Multi-Factor Authentication ログの関連するイベントを次に示�
 
 高度なトラブルシューティングを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 ログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 ログ ファイルの詳細については、「[Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx)」(NPS データベース形式のログ ファイルの解釈) を参照してください。 
 
-これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈が困難です。 ログ ファイルを解釈する場合に役立つ Internet Authentication Service (IAS) 解析ツールは、オンラインで多数見つかります。 このようなダウンロード可能な[シェアウェア アプリケーション](http://www.deepsoftware.com/iasviewer)の出力を次に示します。 
+これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈が困難です。 ログ ファイルを解釈する場合に役立つ Internet Authentication Service (IAS) 解析ツールは、オンラインで多数見つかります。 このようなダウンロード可能な[シェアウェア アプリケーション](https://www.deepsoftware.com/iasviewer)の出力を次に示します。 
 
 ![シェアウェア アプリケーション](./media/howto-mfa-nps-extension-vpn/image49.png)
 

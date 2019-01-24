@@ -4,7 +4,7 @@ description: Azure AD Connect の Synchronization Service Manager の [メタバ
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: abaa9eb2-f105-42d1-b00a-2a63129a8ffb
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a6a063d412d51c5faf513255770d0cf290f162e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 44d4d2d1dc19d739a4782d54431a8c13c530fe13
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473267"
 ---
 # <a name="sync-service-manager-metaverse-designer"></a>Sync Service Manager のメタバース デザイナー
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 072702b323a41e4c4c51edc7054ad41591dde4d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6d202ab9e2f6a8e96eb494d3d93caf66624f8364
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303533"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465201"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 
@@ -36,6 +36,7 @@ ms.locfileid: "54303533"
 **[テナント リソース]** の下にある **[パブリック IP アドレス]** メニュー項目は、"*テナントによって明示的に作成されている*" パブリック IP アドレスのみを表示します。 メニュー項目は、**[リソース プロバイダー]** の **[ネットワーク]** ウィンドウで簡単に見つかります。 **[Public IP pools usage]\(パブリック IP プールの使用量\)** タイルの **[使用済み]** パブリック IP アドレスの数は、**[テナント リソース]** の **[パブリック IP アドレス]** タイルの数と一致することはなく、常にその数よりも大きくなります。
 
 ## <a name="view-the-public-ip-address-usage-information"></a>パブリック IP アドレスの使用量情報を表示する
+
 リージョンで使用されているパブリック IP アドレスの合計数を表示するには:
 
 1. Azure Stack 管理者ポータルで、**[すべてのサービス]** を選択します。 次に、**[管理]** カテゴリで **[ネットワーク]** を選択します。
@@ -46,6 +47,7 @@ ms.locfileid: "54303533"
 **[使用済み]** の数は、パブリック IP アドレス プールにおける割り当て済みのパブリック IP アドレスの数を表しています。 **[フリー]** の数は、パブリック IP アドレス プール内の、割り当て済みでないまだ使用可能なパブリック IP アドレスの数を表します。 **[% 使用]** の数は、使用済みまたは割り当て済みの数を、その場所にあるパブリック IP アドレス プール内のパブリック IP アドレスの合計数に対する割合として表わしています。
 
 ## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>テナントのサブスクリプションによって作成されたパブリック IP アドレスを表示する
+
 **[テナント リソース]** の下にある **[パブリック IP アドレス]** を選択します。 特定のリージョンでテナントのサブスクリプションによって明示的に作成されたパブリック IP アドレスの一覧を確認します。
 
 ![テナントのパブリック IP アドレス](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
@@ -55,6 +57,7 @@ ms.locfileid: "54303533"
 ネットワーク コントローラーは、リソースがインターフェイス、ネットワーク インターフェイス カード (NIC)、ロード バランサー、または仮想ネットワーク ゲートウェイにバインドされるまで、アドレスの割り当てを行いません。 パブリック IP アドレスがインターフェイスにバインドされると、ネットワーク コントローラーは IP アドレスの割り当てを行います。 アドレスは **[アドレス]** フィールドに表示されます。
 
 ## <a name="view-the-public-ip-address-information-summary-table"></a>パブリック IP アドレス情報の表示に関するまとめ
+
 パブリック IP アドレスの割り当てはさまざまな状況で実行され、その状況に応じてどの一覧に表示されるかが決まります。
 
 | **プライベート IP アドレスの割り当て状況** | **使用状況の概要に表示** | **テナントのパブリック IP アドレスの一覧に表示** |
@@ -66,4 +69,5 @@ ms.locfileid: "54303533"
 | IaaS VM インスタンス用に暗黙的に作成され、仮想ネットワークのアウトバウンド NAT で使用されるパブリック IP アドレス。 これらは、テナントが VM インスタンスを作成するたびにバック グラウンドで作成され、VM が情報をインターネットに送信できるようにします。 |はい |いいえ  |
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure Stack でストレージ アカウントを管理する](azure-stack-manage-storage-accounts.md)

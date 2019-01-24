@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c8e5f34bb6b38a3f187d86a1ebc0c7019c7f1046
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437020"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428122"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ロールを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "37437020"
 カスタム ロールを作成するには、次のものが必要です。
 
 - [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
-- ローカルにインストールされた [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+- ローカルにインストールされた [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure のカスタム ロール](custom-roles.md)
 - [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

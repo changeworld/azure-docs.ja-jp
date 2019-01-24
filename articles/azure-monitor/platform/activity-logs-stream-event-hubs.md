@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: b58b7c7ebc3547153f805f762c4caf3511a5a709
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717503"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429771"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。
@@ -102,4 +102,5 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](../../azure-monitor/platform/archive-activity-log.md)
 * [Azure アクティビティ ログの概要を確認する](../../azure-monitor/platform/activity-logs-overview.md)
 * [アクティビティ ログ イベントに基づいてアラートを設定する](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

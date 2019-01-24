@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/6/2018
 ms.author: patricka
 ms.reviewer: bryanr
-ms.openlocfilehash: 28bd314e2dd179d83d2880e3acbf39805b54d333
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2861b0d1b7ac24a8e881ff052b865ca0384a55d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263968"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464809"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナント
 
@@ -158,3 +158,5 @@ Azure Stack 内に複数のテナントを持つ必要がなくなった場合�
 
 - [委任されたプロバイダーの管理](azure-stack-delegated-provider.md)
 - [Azure Stack の主要概念](azure-stack-key-features.md)
+- [クラウド サービス プロバイダーとして Azure Stack の使用状況と課金を管理する](azure-stack-add-manage-billing-as-a-csp.md)
+- [Azure Stack に使用量と課金のためのテナントを追加する](azure-stack-csp-howto-register-tenants.md)

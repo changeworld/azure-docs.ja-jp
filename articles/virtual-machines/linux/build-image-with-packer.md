@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e283f21b65706860e198e2deca933f1986073cab
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932396"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413228"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -76,7 +76,7 @@ az account show --query "{ subscription_id: id }"
 | *tenant_id*                         | `az ad sp` 作成コマンドの出力の 3 つ目の行 - *tenant* |
 | *subscription_id*                   | `az account show` コマンドからの出力 |
 | *managed_image_resource_group_name* | 最初の手順で作成したリソース グループの名前 |
-| *managed_image_name*                | 作成される管理ディスク イメージの名前 |
+| *managed_image_name*                | 作成されるマネージド ディスク イメージの名前 |
 
 
 ```json
@@ -201,7 +201,7 @@ Packer が VM をビルド、プロビジョナーを実行、およびデプロ
 
 
 ## <a name="create-vm-from-azure-image"></a>Azure イメージから VM を作成する
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
+[az vm create](/cli/azure/vm) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
 
 ```azurecli
 az vm create \

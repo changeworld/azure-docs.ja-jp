@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 84e01c319ab058c9abb05cd9882f4c25bea5cffb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465661"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462036"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI コマンドの一部について説明します。
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
-スケール セット内の VM インスタンスの一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を使用します。 次の例では、*myResourceGroup* リソース グループの *myScaleSet* という名前のスケール セットのすべての VM インスタンスを一覧表示します。 これらの名前には独自の値を指定します。
+スケール セット内の VM インスタンスの一覧を表示するには、[az vmss list-instances](/cli/azure/vmss) を使用します。 次の例では、*myResourceGroup* リソース グループの *myScaleSet* という名前のスケール セットのすべての VM インスタンスを一覧表示します。 これらの名前には独自の値を指定します。
 
 ```azurecli
 az vmss list-instances \
@@ -46,7 +46,7 @@ az vmss list-instances \
     --output table
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss#get-instance-view) に追加し、表示するインスタンスを指定します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示できます。 独自の名前を次のように入力します。
+特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss) に追加し、表示するインスタンスを指定します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示できます。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss get-instance-view \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>スケール セット内の VM を起動する
-スケール セット内の 1 つ以上の VM を起動するには、[az vmss start](/cli/azure/vmss#az_vmss_start) を使用します。 `--instance-ids` パラメーターには、起動する VM を 1 つ以上指定することができます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM が起動されます。 複数の VM を起動するには、それぞれのインスタンス ID をスペースで区切ります。
+スケール セット内の 1 つ以上の VM を起動するには、[az vmss start](/cli/azure/vmss) を使用します。 `--instance-ids` パラメーターには、起動する VM を 1 つ以上指定することができます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM が起動されます。 複数の VM を起動するには、それぞれのインスタンス ID をスペースで区切ります。
 
 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* を起動します。 独自の値を次のように指定します。
 

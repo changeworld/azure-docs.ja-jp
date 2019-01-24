@@ -4,7 +4,7 @@ description: Azure Monitor (プレビュー) を使用して Azure Active Direct
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 12/03/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 218c4344cdd42023c3697406aa61f1db95892741
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 13a5f0fa46b801535e28868b20eea8642f351277
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885820"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810620"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure Active Directory のログを ArcSight と統合する
 

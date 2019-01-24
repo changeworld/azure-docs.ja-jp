@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2a2d5f9c85a881dad8f53f81a39c84d4a34b632e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360192"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54440465"
 ---
 さまざまな組織が、大規模なコンピューティングに対するニーズを抱えています。 大規模なコンピューティングを必要とするワークロードとしては、エンジニアリング設計と分析、金融分野のリスク計算、画像レンダリング、複雑なモデリング、モンテカルロ シミュレーションなどが挙げられます。 
 
@@ -95,7 +95,7 @@ N シリーズ VM は、人工知能 (AI) の学習や視覚化などにより�
 
 * [Resource Manager テンプレートで CycleCloud をインストールおよびセットアップする](https://docs.microsoft.com/azure/cyclecloud/quickstart-install-cyclecloud)
 
-* [CycleCloud を手動でセットアップする](https://docs.microsoft.com/azure/cyclecloud/quickstart-installation)
+* [CycleCloud を手動でセットアップする](https://docs.microsoft.com/azure/cyclecloud/installation)
 
 ## <a name="azure-batch"></a>Azure Batch
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 7f454cb0979fb2379490d4b275b14afee8706f0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715377"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439070"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -142,11 +142,11 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| Name |はい |ログ プロファイルの名前。 |
+| Name |[はい] |ログ プロファイルの名前。 |
 | StorageAccountId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
 | Category |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
@@ -185,3 +185,4 @@ az monitor log-profiles delete --name <profile name>
 ## <a name="next-steps"></a>次の手順
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

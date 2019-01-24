@@ -3,19 +3,19 @@ title: Azure AD Connect および Connect Health とは | Microsoft Docs
 description: オンプレミス環境を Azure AD と同期させ、監視するために使用されるツールについて説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 11/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fbd6edb02dfc4080d7692e43324a5b3981091f9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1c18200bb36b75a07d7b26e3ea0016ec35efdd87
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460509"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 5f76b117b01090864e1bf33e986e8ec96f0bf376
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 23c53982919ad29c639a6441f206abb35ddb7a1b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599936"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430793"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "31599936"
 
 可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
 
-最新の Azure PowerShell モジュールがインストールされていることを確認してください。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+最新の Azure PowerShell モジュールがインストールされていることを確認してください。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -67,7 +67,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 ```
 
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus2* リージョンに作成されます。 
 
@@ -142,15 +142,15 @@ $vmConfig = New-AzureRmVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 ```
 
-## <a name="confirm-zone-for-managed-disk"></a>管理ディスクのゾーンの確認
+## <a name="confirm-zone-for-managed-disk"></a>マネージド ディスクのゾーンの確認
 
-VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM の管理ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) で確認できます。
+VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM のマネージド ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) で確認できます。
 
 ```powershell
 Get-AzureRmDisk -ResourceGroupName myResourceGroup
 ```
 
-この出力は、管理ディスクが VM と同じ可用性ゾーン内にあることを示しています。
+この出力は、マネージド ディスクが VM と同じ可用性ゾーン内にあることを示しています。
 
 ```powershell
 ResourceGroupName  : myResourceGroup

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: e3e333594b32cff018f02cd1d3b32eaf44c11a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904047"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413075"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
 同意を許可する実際のユーザー エクスペリエンスは、ユーザーのテナント、ユーザーの機関でのスコープ (ロール)、クライアント アプリケーションによって要求されている[アクセス許可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions)の種類に設定されたポリシーによって異なります。 つまり、そのアプリケーション開発者とテナント管理者は、同意エクスペリエンスの一部を制御できます。 管理者は、テナントで同意エクスペリエンスを制御するために、テナント上でポリシーまたはアプリを柔軟に設定および無効化することができます。 アプリケーション開発者は、要求されているアクセス許可の種類、およびユーザーの同意フローまたは管理者の同意フローにユーザーをガイドする必要があるかどうかを指示します。
 
 - **ユーザーの同意フロー**は、現在のユーザーのみに対する同意を記録する目的で、アプリケーション開発者がユーザーを承認エンドポイントに直接アクセスさせます。
-- **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローが適切に動作するようにするため、アプリケーション開発者はアプリケーション マニフェストで `RequiredResourceAccess` プロパティのアクセス許可をすべて一覧する必要があります。 詳細については、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するページを参照してください。
+- **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローの適切な動作を確保するため、アプリケーション開発者は、アプリケーション マニフェストで `RequiredResourceAccess` プロパティ内のアクセス許可をすべて一覧にする必要があります。 詳細については、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するページを参照してください。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>同意プロンプトの構成要素
 
@@ -84,4 +84,4 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
 
 ## <a name="next-steps"></a>次の手順
 - [Azure AD の同意フレームワークの実装方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework)の詳細な手順を入手します。
-- 詳細については、[マルチテナント アプリケーションが同意フレームワークを使用して](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)多層アプリケーションのパターンのサポートが強化されている、"user" と "admin" の同意を実装する方法について学習します。
+- 詳細については、[マルチテナント アプリケーションが同意フレームワークを使用して](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)多層アプリケーションのパターンのサポートが強化されている、"user" と "admin" の同意を実装する方法について学習します。

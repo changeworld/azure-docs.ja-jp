@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 076e2aec249407406d42357df0dc8e74e9362992
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134337"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446665"
 ---
 # <a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
@@ -76,7 +76,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/) には、Python �
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
+    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
 これで、Pandas データ フレームでサンプリングされたデータを操作できるようになりました。 
 

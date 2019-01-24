@@ -4,7 +4,7 @@ description: アプリケーションのセルフ サービス アクセスに�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 3a8e0ca54766f36ba3343f420d751f2e40a8033b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1c3d4c12af6321643c6ed916c9ae6541f902fd24
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355890"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468768"
 ---
 # <a name="problem-using-self-service-application-access"></a>アプリケーションのセルフ サービス アクセス使用に関する問題点
 
@@ -64,7 +64,7 @@ ms.locfileid: "44355890"
 
 10. **省略可能:** ユーザーのアクセスが許可される前にビジネス承認が必要な場合は、**[このアプリケーションへのアクセスを許可する前に承認が必要ですか?]** トグルを **[はい]** に設定します。
 
-11. **省略可能: パスワード シングル サインオンのみを使用するアプリケーションで、** これらのビジネス承認者による承認されたユーザーへのアプリケーションに送信されるパスワードの指定を許可する場合、**[このアプリケーションに対するユーザーのパスワードを設定することを承認者に許可しますか?]** トグルを **[はい]** に設定します。
+11. **省略可能: パスワード シングル サインオンのみを使用するアプリケーションで**、これらのビジネス承認者による承認されたユーザーへのアプリケーションに送信されるパスワードの指定を許可する場合、**[このアプリケーションに対するユーザーのパスワードを設定することを承認者に許可しますか?]** トグルを **[はい]** に設定します。
 
 12. **省略可能:** このアプリケーションへのアクセスの承認を許可するビジネス承認者を指定するには、**[このアプリケーションへのアクセスの承認が許可されているユーザー]** ラベルの横にあるセレクターをクリックして、最大 10 人のビジネス承認者を選択します。
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 88cd6bac85a8f255c33c1834485b8f90a04b8ee4
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.subservice: logs
+ms.openlocfilehash: 44950a467e99fb7968d838345d80c8e28aee62b9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467470"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -236,3 +236,4 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 * [リソース診断ログを **Event Hubs** にストリーミングする](diagnostic-logs-stream-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+

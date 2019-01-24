@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 68823ffb7b274b8afc31de9d85bded3da853fcac
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359590"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438067"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 

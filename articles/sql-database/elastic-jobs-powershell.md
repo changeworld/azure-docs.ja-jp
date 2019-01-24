@@ -12,16 +12,16 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021324"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452753"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
-[エラスティック ジョブ](elastic-jobs-overview.md)を使用すると、複数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
+[エラスティック ジョブ](sql-database-job-automation-overview.md#elastic-database-jobs)を使用すると、複数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
 
 このチュートリアルでは、複数のデータベースにわたってクエリを実行するために必要な手順を学習します。
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをまだお持ちでない場合は、開始�
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
-エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](elastic-jobs-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。 
+エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](sql-database-job-automation-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。 
 
 "*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。*"
 
@@ -210,7 +210,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>ジョブを実行するターゲット データベースを定義する
 
-[ターゲット グループ](elastic-jobs-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。 
+[ターゲット グループ](sql-database-job-automation-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。 
 
 次のスニペットでは、*ServerGroup* と *ServerGroupExcludingDb2* の 2 つのターゲット グループを作成しています。 *ServerGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*ServerGroupExcludingDb2* では、*TargetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
 

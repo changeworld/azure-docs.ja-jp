@@ -8,15 +8,15 @@ ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ffa14e3fb3fd41d6a30e1cf30713b26d7ecd255a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834334"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436015"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 

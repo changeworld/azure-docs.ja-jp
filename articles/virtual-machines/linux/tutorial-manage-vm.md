@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613428"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466858"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用して Linux VM の作成と管理を行う
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux VM の作成と管理
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンの展開に関する基本事項について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * VM を作成して VM に接続する
+> * VM を作成し接続する
 > * VM イメージを選択して使用する
 > * 特定の VM サイズを確認して使用する
 > * VM のサイズを変更する
@@ -211,7 +211,7 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>VM のサイズを変更する
 
-デプロイ後に VM のサイズを変更して、リソースの割り当てを増減できます。 VM の現在のサイズを表示するには、[az vm show](/cli/azure/vm#az_vm_show) を使用します。
+デプロイ後に VM のサイズを変更して、リソースの割り当てを増減できます。 VM の現在のサイズを表示するには、[az vm show](/cli/azure/vm) を使用します。
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
@@ -228,7 +228,7 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的な IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
+目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的な IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -248,11 +248,11 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ## <a name="vm-power-states"></a>VM の電源の状態
 
-Azure VM は、さまざまな電源状態のいずれかになります。 この状態は、ハイパーバイザーから見た VM の現在の状態を表しています。 
+Azure VM は、次のいずれかの電源状態になります。 この状態は、ハイパーバイザーから見た VM の現在の電源状態を表しています。 
 
-### <a name="power-states"></a>電源の状態
+### <a name="power-states"></a>電源状態
 
-| 電源の状態 | 説明
+| 電源状態 | 説明
 |----|----|
 | 開始中 | 仮想マシンが起動中であることを示します。 |
 | 実行中 | 仮想マシンが実行中であることを示します。 |
@@ -318,7 +318,7 @@ az group delete --name myResourceGroupVM --no-wait --yes
 このチュートリアルでは、次のような基本的な VM の作成と管理を実行する方法について説明しました。
 
 > [!div class="checklist"]
-> * VM を作成して VM に接続する
+> * VM を作成し接続する
 > * VM イメージを選択して使用する
 > * 特定の VM サイズを確認して使用する
 > * VM のサイズを変更する

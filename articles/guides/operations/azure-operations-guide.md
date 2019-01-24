@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 508614d2126d95323ce3550954b4b8a7d4d9d7d8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014737"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438813"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -169,7 +169,7 @@ Azure Portal を利用したリソースの作成、管理、削除に加え、P
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)」を参照してください。
+Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/install-azurerm-ps)」を参照してください。
 
 #### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
 

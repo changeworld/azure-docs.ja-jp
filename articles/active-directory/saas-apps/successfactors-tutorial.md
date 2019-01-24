@@ -4,7 +4,7 @@ description: Azure Active Directory と SuccessFactors の間でシングル サ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ac9837389d681aadabd280bd6f74884a5a15ba3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 465bdf3aaa8ab6fecddef6784bf1adead7f0c585
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065109"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル:Azure Active Directory と SuccessFactors の統合
 

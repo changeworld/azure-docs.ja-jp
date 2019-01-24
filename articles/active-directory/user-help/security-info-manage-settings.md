@@ -3,7 +3,7 @@ title: セキュリティ情報の管理 - Azure Active Directory | Microsoft Do
 description: 2 段階認証の使用方法など、セキュリティ情報の管理方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.component: user-help
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 34023e74fb30f202760b35120da78a18ca653d69
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016148"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815363"
 ---
 # <a name="manage-your-security-info-preview"></a>セキュリティ情報の管理 (プレビュー)
 

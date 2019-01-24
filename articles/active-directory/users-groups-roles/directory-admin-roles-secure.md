@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387082"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438152"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
-現代の組織内のほとんどまたはすべてのビジネス資産のセキュリティは、IT システムを管理する特権アカウントの整合性に依存します。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用攻撃を使用して機密データやシステムにすばやくアクセスしようとします。 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 エンドポイントとクラウドに対する最新の脅威について詳しくは、[Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/sir/default.aspx)のページをご覧ください。 この記事は、現在のプランとここで説明しているガイダンス間のギャップを埋めるためのロードマップの作成に役立ちます。
+現代の組織内のほとんどまたはすべてのビジネス資産のセキュリティは、IT システムを管理する特権アカウントの整合性に依存します。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用攻撃を使用して機密データやシステムにすばやくアクセスしようとします。 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 エンドポイントとクラウドに対する最新の脅威について詳しくは、[Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/operations/security-intelligence-report)のページをご覧ください。 この記事は、現在のプランとここで説明しているガイダンス間のギャップを埋めるためのロードマップの作成に役立ちます。
 
 > [!NOTE] 
 > Microsoft は、最高レベルの信頼、透過性、標準への準拠、規制コンプライアンスに努めています。 Microsoft のグローバルのインシデント対応チームがクラウド サービスへの攻撃の影響をどのように軽減するか、また Microsoft のビジネス製品とクラウド サービスにセキュリティがどのように組み込まれているかについて詳しくは、「[Microsoft Trust Center - セキュリティ](https://www.microsoft.com/trustcenter/security)」をご覧ください。Microsoft コンプライアンス ターゲットについては、「[Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance)」をご覧ください。

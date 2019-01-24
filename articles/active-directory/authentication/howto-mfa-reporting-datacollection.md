@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dd12acb1212e52eb413dfbf35945cd17902d8db7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223764"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433885"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -88,7 +88,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 国番号
 - 電話番号
 - 書式化された電話番号
-- 内線番号
+- 拡張機能
 - クリーンな内線番号
 - Blocked
 - ブロックした理由
@@ -97,7 +97,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - アカウントのロックアウト
 - 不正アクセスのアラート
 - ブロックされなかった不正アクセス アラート
-- Language
+- 言語
 
 バイパス (レポートに使用):
 
@@ -108,7 +108,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 国番号
 - 電話番号
 - 書式化された電話番号
-- 内線番号
+- 拡張機能
 - クリーンな内線番号
 - バイパスの理由
 - 完了のタイムスタンプ

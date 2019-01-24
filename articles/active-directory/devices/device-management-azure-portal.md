@@ -4,7 +4,7 @@ description: Azure Portal を使用してデバイスを管理する方法を説
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4344f0c69554db8c17e62f586d2598f6555aad14
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0ab732d49790a348fffb18d56940a7aae1a9c3e7
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54196725"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451971"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Azure portal を使用してデバイスを管理する方法
 

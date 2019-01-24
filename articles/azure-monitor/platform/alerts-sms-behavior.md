@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 481340dbab6a2ae7247a53cb78b17f3353edcd00
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 85480a098dc5ef70938a5ec4cd7a31105496df6f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345500"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461402"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -45,3 +45,4 @@ ms.locfileid: "53345500"
 [アクティビティ ログのアラートの概要](alerts-overview.md)を把握し、アラートを生成する方法について学習します  
 [SMS レートの制限](alerts-rate-limiting.md)について学習します  
 [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細について学習します
+

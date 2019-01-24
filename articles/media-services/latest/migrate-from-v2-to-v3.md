@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716618"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808733"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -43,15 +43,16 @@ ms.locfileid: "53716618"
 
 ### <a name="new-features"></a>新機能
 
-* ファイル ベースのジョブ処理では、入力として HTTP (S) URL を使用できます。
-    Azure にコンテンツをあらかじめ格納しておく必要がなく、資産を作成する必要もありません。
+* ファイル ベースのジョブ処理では、入力として HTTP (S) URL を使用できます。<br/>Azure にコンテンツをあらかじめ格納しておく必要がなく、資産を作成する必要もありません。
 * ファイル ベースのジョブ処理のための[変換](transforms-jobs-concept.md)の概念が導入されました。 変換を使用して、再利用可能な構成を構築し、Azure Resource Manager テンプレートを作成し、複数の顧客またはテナント間の処理の設定を分離することができます。
 * 1 つの資産で、ダイナミック パッケージと動的暗号化の設定が異なる[複数の StreamingLocator](streaming-locators-concept.md) を持つことができます。
 * [コンテンツ保護](content-key-policy-concept.md)はマルチキー機能をサポートしています。
 * Media Services を使用してシングル ビットレートのコントリビューション フィードをマルチ ビットレートの出力ストリームにコード変換すると、最大 24 時間のライブ イベントをストリーミングできます。
-* LiveEvent に対する新しい低待機時間ライブ ストリーミング サポート。
+* LiveEvent に対する新しい低待機時間ライブ ストリーミング サポート。 詳しくは、「[待機時間](live-event-latency.md)」をご覧ください。
 * LiveEvent Preview は、ダイナミック パッケージと動的暗号化をサポートしています。 そのため、プレビューだけでなく、DASH および HLS パッケージに対するコンテンツ保護が可能です。
 * LiveOuput は、v2 API の Program エンティティよりも使用方法が簡単です。 
+* RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
+* RTMPS のセキュアな取り込み。<br/>LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
 * エンティティに対するロールベースのアクセス制御 (RBAC) があります。 
 
 ## <a name="changes-from-v2"></a>v2 からの変更点

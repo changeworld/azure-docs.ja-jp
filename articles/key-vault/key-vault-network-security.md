@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 09a19b92a496650f94be208d4f463f1fb3fa4256
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d95ede3b6e99d6791a2642c6059281dedca3fcf2
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001857"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423162"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -79,7 +79,7 @@ Azure CLI 2.0 を使用して Key Vault ファイアウォールと仮想ネッ�
 
 PowerShell を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
 
-1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をインストールして[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
+1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) をインストールして[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
 
 2. 使用可能な仮想ネットワーク ルールの一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
    ```PowerShell

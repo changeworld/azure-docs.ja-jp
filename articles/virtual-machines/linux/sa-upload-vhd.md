@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966505"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468184"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "46966505"
 az group create --name myResourceGroup --location westus
 ```
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、仮想ディスクを保持するストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
+[az storage account create](/cli/azure/storage/account) を使用して、仮想ディスクを保持するストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 カスタム ディスクから作成する、非管理対象ディスクを備えた VM はすべて、そのイメージと同じストレージ アカウント内に存在する必要があります。 
+[az storage account create](/cli/azure/storage/account) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 カスタム ディスクから作成する、非管理対象ディスクを備えた VM はすべて、そのイメージと同じストレージ アカウント内に存在する必要があります。 
 
 次の例では、`mystorageaccount` という名前のストレージ アカウントを以前に作成したリソース グループに作成します。
 
@@ -186,9 +186,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>VM の作成
-非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm#az_vm_create) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
-カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm#az_vm_create) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
+カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
 
 次の例では、`myVM` という名前の VM をカスタム ディスクから作成します。
 

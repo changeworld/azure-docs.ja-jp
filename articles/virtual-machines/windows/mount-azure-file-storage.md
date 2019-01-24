@@ -13,12 +13,13 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d537bdc882487784baef9f693e4677c76d3bd8d
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.component: files
+ms.openlocfilehash: a2ddaa28f7fbcc6b363ce2c636521fe54ea752f7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27577553"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478180"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Windows VM で Azure のファイル共有を使用する 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023755"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474521"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -31,14 +31,14 @@ ms.locfileid: "54023755"
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.28 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
 ## <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
 
-Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](manage-virtual-network.md#create-a-virtual-network)が作成されている必要があります。
+Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](manage-virtual-network.md)が作成されている必要があります。
 
 1. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それを選択します。
 2. **[ネットワーク インターフェイス]** で **[+ 追加]** を選択します。
@@ -69,7 +69,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>ネットワーク インターフェイス設定の表示
 
@@ -112,7 +112,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>IP 転送の有効化と無効化
@@ -133,7 +133,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>サブネットの割り当ての変更
@@ -158,7 +158,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>アプリケーション セキュリティ グループに対して追加または削除を実行する
 
-ポータルを使用して、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除できるのは、ネットワーク インターフェイスが仮想マシンに接続されている場合のみです。 PowerShell や Azure CLI を使用すれば、ネットワーク インターフェイスが仮想マシンに接続されているかどうかに関係なく、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除することができます。 [アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)と[アプリケーション セキュリティ グループの作成](manage-network-security-group.md#create-an-application-security-group)方法の詳細を参照してください。
+ポータルを使用して、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除できるのは、ネットワーク インターフェイスが仮想マシンに接続されている場合のみです。 PowerShell や Azure CLI を使用すれば、ネットワーク インターフェイスが仮想マシンに接続されているかどうかに関係なく、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除することができます。 [アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)と[アプリケーション セキュリティ グループの作成](manage-network-security-group.md)方法の詳細を参照してください。
 
 1. ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、まず、アプリケーション セキュリティ グループに対して追加または削除するネットワーク インターフェイスを持つ仮想マシンの名前を入力します。 検索結果にご利用の VM の名前が表示されたら、それを選択します。
 2. **[設定]** で、**[ネットワーク]** を選択します。  **[Configure the application security groups]\(アプリケーション セキュリティ グループの構成\)** を選択し、ネットワーク インターフェイスを追加するアプリケーション ネットワーク グループを選びます。または、ネットワーク インターフェイスを削除するアプリケーション セキュリティ グループの選択を解除します。次に、**[保存]** を選択します。 同じアプリケーション セキュリティ グループに追加できるのは、同じ仮想ネットワークに存在するネットワーク インターフェイスのみです。 アプリケーション セキュリティ グループは、ネットワーク インターフェイスと同じ場所に存在している必要があります。
@@ -167,7 +167,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>ネットワーク セキュリティ グループを関連付けるか関連付けを解除する
@@ -199,7 +199,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>接続に関する問題を解決する

@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ef0fc9037548a58d9b0a4f46c212a43796d529b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231599"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475069"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 
@@ -46,7 +46,7 @@ ms.locfileid: "54231599"
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-subscription-service-limits#subscription-limits-1)の Azure 全体のクォータの記事を確認してください。
+クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-subscription-service-limits)の Azure 全体のクォータの記事を確認してください。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
 Azure Machine Learning コンピューティングでは、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 このクォータは上記の VM コア クォータとは別で、コアの制限は 2 つのリソースの種類間で現在共有されていません。

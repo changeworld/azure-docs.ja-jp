@@ -3,7 +3,7 @@ title: Azure 仮想マシンの変更に関する問題を解決する | Microso
 description: 変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190018"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433681"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -228,3 +228,4 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 > [!div class="nextstepaction"]
 > [変更管理とインベントリ ソリューション](automation-change-tracking.md)
+

@@ -26,7 +26,7 @@ ms.locfileid: "54247709"
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
 Azure Stack は、次の表に示す Windows ゲスト オペレーティング システムをサポートしています。
 
@@ -47,7 +47,7 @@ Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセン�
 
 Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
 
-## <a name="linux"></a> Linux
+## <a name="linux"></a>Linux
 
 Marketplace で入手可能として示されている Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。 Azure Stack に独自のイメージを持ち込む場合は、「[Azure Stack への Linux イメージの追加](azure-stack-linux.md)」のガイドラインに従ってください。
 

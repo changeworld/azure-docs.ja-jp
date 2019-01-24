@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 513f9501d46c9a391ad5db759fe943390b5a654c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 29f660ebc4bea7fbea7c8c0549cc21edd6066d22
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332423"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382052"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 
@@ -279,7 +279,7 @@ contract HelloBlockchain {
 
 ```
     // constructor function
-    function HelloBlockchain(string message) public
+    constructor(string message) public
     {
         Requestor = msg.sender;
         RequestMessage = message;

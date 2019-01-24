@@ -3,18 +3,18 @@ title: Azure Automation State Configuration による管理のためのマシン
 description: Azure Automation State Configuration による管理のためのマシンの設定方法
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244527"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436401"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -42,7 +42,7 @@ Azure Automation State Configuration では、Azure Portal または PowerShell 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-[Azure Portal](http://portal.azure.com/) で、**[参照]**  ->  **[仮想マシン (クラシック)]** の順にクリックします。 オンボードする Windows VM を選択します。 仮想マシンのダッシュボード ブレードで、**[すべての設定]**  ->  **[拡張機能]**  ->  **[追加]**  ->  **[Azure Automation DSC]**  ->  **[作成]** の順にクリックします。
+[Azure Portal](https://portal.azure.com/) で、**[参照]**  ->  **[仮想マシン (クラシック)]** の順にクリックします。 オンボードする Windows VM を選択します。 仮想マシンのダッシュボード ブレードで、**[すべての設定]**  ->  **[拡張機能]**  ->  **[追加]**  ->  **[Azure Automation DSC]**  ->  **[作成]** の順にクリックします。
 ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、Automation アカウントの登録キーと登録 URL、また必要に応じて、VM に割り当てるノード構成を入力します。
 
 ![DSC への Azure VM 拡張機能](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Azure VM Desired State Configuration 拡張機能は非同期に実行される�
 
 **[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![オンボード](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3ea57ac39d48f51c7bbee1d149597c459fc5d547
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 7dbb127c14b8a4d809d82cf14eb0cf76c1c4698b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478350"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 ### <a name="at-risk-user"></a>危険 (ユーザー)
@@ -93,7 +93,7 @@ Azure Active Directory に 1 つ以上のリソースへの永続的または一
 ### <a name="remediated-risk-event"></a>修復済み (リスク イベント)
 Identity Protection から自動的に設定されるリスク イベントの状態です。この種類のリスク イベントに対する標準的な修復アクションを使用して、リスク イベントが修復されたことを示します。 たとえば、ユーザーのパスワードがリセットされると、以前のパスワードが侵害されたことを示す多くのリスク イベントは自動的に修復されます。
 
-### <a name="remediation"></a>修復
+### <a name="remediation"></a>Remediation
 以前に侵害の疑いがある、または侵害を検知した ID またはデバイスをセキュリティで保護するアクションです。 修復アクションでは、ID またはデバイスを安全な状態に復元し、ID またはデバイスに関連付けられた以前のリスク イベントを解決します。
 
 ### <a name="resolved-risk-event"></a>解決 (リスク イベント)

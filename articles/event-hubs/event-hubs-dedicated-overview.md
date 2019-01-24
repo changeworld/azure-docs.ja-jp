@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091028"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402338"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "53091028"
 | --- |:---:|:---:|:---:|
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | スループット単位 (1 MB/秒イングレス、2 MB/秒エグレス) | 1 時間ごとの課金 | あり |
-| メッセージ サイズ | 256 KB | 1 MB |
+| メッセージ サイズ | 1 MB | 1 MB |
 | パブリッシャー ポリシー | [はい] | [はい] |   
 | コンシューマー グループ | 20 | 20 |
 | メッセージ リプレイ | [はい] | [はい] |
@@ -47,7 +47,6 @@ ms.locfileid: "53091028"
 Event Hubs Dedicated を使用することで実現する利点を次に示します。
 
 * 他のテナントからのノイズがないシングル テナント ホスティング。
-* メッセージ サイズを 1 MB に拡大 (Standard では 256 KB)。
 * パフォーマンスを常に再現可能。
 * ニーズの急増に対応するための容量を保証。
 * マイクロバッチおよび長期リテンション期間と統合できるように、Event Hubs の[キャプチャ](event-hubs-capture-overview.md)機能が含まれます。

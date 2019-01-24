@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ed4becee5eeab258585eb7d9b406dd66d79c9ff
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.component: disks
+ms.openlocfilehash: 62c9d01a4322daaa8cf7210f60c5ee42f55b093c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077880"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476361"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 

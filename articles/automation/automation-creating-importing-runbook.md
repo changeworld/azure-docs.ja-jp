@@ -3,18 +3,18 @@ title: Azure Automation での Runbook の作成またはインポート
 description: この記事では、Azure Automation で新しい Runbook を作成する方法、またはファイルから Runbook をインポートする方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 08/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ccf9036d3701c710c6d3258f81390ed355c246c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fdc064ab2b74424ce1e4e163c8843bfebc28bcf4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578033"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435568"
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の作成またはインポート
 

@@ -4,7 +4,7 @@ description: Azure Active Directory と UNIFI の間でシングル サインオ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c5b237c87817af8ff84cefe6bab79956c426b28d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 5de5c649282c4612bbe24563abab5889f0678f84
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063713"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル:Azure Active Directory と UNIFI の統合
 

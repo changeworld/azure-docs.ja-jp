@@ -3,18 +3,18 @@ title: Azure Automation での Runbook の開始
 description: Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 41ea6e6a8c09217c0bb34e07bb911329121f8b7b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252345"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424967"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
@@ -43,13 +43,13 @@ ms.locfileid: "51252345"
 ## <a name="starting-a-runbook-with-windows-powershell"></a>Windows PowerShell での Runbook の開始
 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、Test-Runbook という Runbook を開始します。
 
-```
+```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
 Start-AzureRmAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。 このジョブ オブジェクトは、[Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) で使用するとジョブの状態を確認でき、[Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) で使用すると出力を取得できます。 次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
 
-```
+```azurepowershell-interactive
 $runbookName = "Test-Runbook"
 $ResourceGroup = "ResourceGroup01"
 $AutomationAcct = "MyAutomationAccount"
@@ -68,7 +68,7 @@ Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job
 
 Runbook でパラメーターが必要な場合には、それらを [Hashtable](https://technet.microsoft.com/library/hh847780.aspx) として指定する必要があります。その Hashtable のキーがパラメーター名、値がパラメーター値になります。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
 
-```
+```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
 Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
@@ -83,7 +83,7 @@ Azure Automation Web サービスは、次のセクションで説明されて�
 
 user というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -101,13 +101,13 @@ Workflow Test-Parameters
 
 user パラメーターに対して、次のテキストを使用できます。
 
-```
+```json
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
 ```
 
 次の出力が生成されます。
 
-```
+```output
 Joe
 Smith
 Joe
@@ -119,7 +119,7 @@ Smith
 
 *user*というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -136,13 +136,13 @@ Workflow Test-Parameters
 
 user パラメーターに対して、次のテキストを使用できます。
 
-```
+```input
 ["Joe","Smith",2,true]
 ```
 
 次の出力が生成されます。
 
-```
+```output
 Joe
 Smith
 Joe
@@ -154,7 +154,7 @@ Smith
 
 credential というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -166,17 +166,18 @@ Workflow Test-Parameters
 
 *My Credential*という資格情報資産がある場合、user パラメーターで次のテキストを使用できます。
 
-```
+```input
 My Credential
 ```
 
 資格情報のユーザー名が *jsmith*であると仮定すると、次の出力が生成されます。
 
-```
+```output
 jsmith
 ```
 
 ## <a name="next-steps"></a>次の手順
 * この記事の Runbook アーキテクチャは、Hybrid Runbook Worker で Azure とオンプレミスのリソースを管理する Runbook の概要を示しています。 自社のデータセンターで Automation Runbook を実行する方法については、 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)に関する記事をご覧ください。
 * 他の Runbook で特定の関数または一般的な関数に使用されるモジュールの Runbook の作成方法については、 [子 Runbook](automation-child-runbooks.md)に関する記事をご覧ください。
+
 

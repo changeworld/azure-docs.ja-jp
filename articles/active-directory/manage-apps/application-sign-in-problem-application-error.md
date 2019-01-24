@@ -4,7 +4,7 @@ description: アプリケーション自体がエラーを出力するときに 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5146b471ffd72e606d0915bbc897bc104e0282b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475392"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>サインイン後、アプリケーションのページでエラーが発生する
 

@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 889f12b935eaad72eb7637524ab578f28fbc412f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f8826f0c0cb63068313a570b050531511126dbc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198492"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422925"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 

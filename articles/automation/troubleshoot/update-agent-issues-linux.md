@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578854"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437495"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
 
@@ -22,9 +22,9 @@ Update Management でコンピューターに**準備完了**が表示されな�
 
 次の一覧は、マシンが取り得る 3 つの準備状態です。
 
-* **Ready (準備完了)** - 更新プログラム エージェントが展開され、最後に表示してから 1 時間以内である。
-* **Disconnected (切断)** -  更新プログラム エージェントが展開され、最後に表示してから 1 時間以上になった。
-* **Not configured (未構成)** - 更新プログラム エージェントが見つからないか、オンボードを終了していない。
+* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
+* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
+* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
@@ -177,3 +177,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 ## <a name="next-steps"></a>次の手順
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください
+

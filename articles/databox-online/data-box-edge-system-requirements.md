@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 05f6208788060459e67a787507a56adeed980e2d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 60c4b22fb34a66a0ff68db26030be0e0ea3c0066
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318996"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470250"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge のシステム要件 (プレビュー)
 
@@ -97,7 +97,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | URL パターン                      | コンポーネントまたは機能                     |   |
 |----------------------------------|---------------------------------------------|---|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |   |
+| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |   |
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) |   |
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             |   |
 

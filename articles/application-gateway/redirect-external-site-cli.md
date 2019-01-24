@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bdbaa9154f12c8b66a4c1d801671e7b21756e0f7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157022"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412735"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLI を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>リスナーとルーティング規則の追加
 
-リスナーは、アプリケーションがトラフィックを適切にルーティングするために必要です。 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create) によって作成されたフロントエンド ポートと [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) を使用して、リスナーを作成します。 規則は、リスナーが受信トラフィックの送信先を判断するために必要です。 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) を使用して、*redirectRule* という名前の基本の規則を作成します。
+リスナーは、アプリケーションがトラフィックを適切にルーティングするために必要です。 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) によって作成されたフロントエンド ポートと [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) を使用して、リスナーを作成します。 規則は、リスナーが受信トラフィックの送信先を判断するために必要です。 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) を使用して、*redirectRule* という名前の基本の規則を作成します。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

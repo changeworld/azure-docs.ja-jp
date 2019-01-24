@@ -4,7 +4,7 @@ description: Azure Active Directory と Skilljar の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c572f556-98a3-48e6-8e4c-e634b7a2ba70
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a997de5530bf8ed475031147369b591b2d44d227
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 76490f5c4470da95f85bddbde1a2abb70f15d126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850332"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>チュートリアル: Azure Active Directory と Skilljar の統合
 

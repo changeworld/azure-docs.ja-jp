@@ -3,7 +3,7 @@ title: シングル サインオンの構成 - Azure Active Directory | Microsof
 description: このチュートリアルでは、Azure portal を使って、Azure Active Directory (Azure AD) による SAML ベースのシングル サインオンをアプリケーションに構成します。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 73e97a38913b3098ba2e14294ecf621add310428
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011979"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465720"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する
 

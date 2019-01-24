@@ -1,14 +1,8 @@
----
+--- 
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: c8ba57b9173fbbfa4e00472972921073f32cb2f7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017789"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -3318,7 +3312,7 @@ ms.locfileid: "53017789"
                                                     <a href="/powershell/azure/get-started-azureps">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">PowerShell のダウンロード</a>
+                                                    <a href="/powershell/azure/azurerm/install-azurerm-ps">PowerShell のダウンロード</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">リファレンス</a>

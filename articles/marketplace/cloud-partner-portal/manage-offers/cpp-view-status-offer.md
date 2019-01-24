@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d7c2909e59643378e765fa51e2d261cbdc106822
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355223"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430383"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Azure Marketplace オファーと AppSource オファーの発行状態を表示する
 
@@ -46,7 +46,7 @@ ms.locfileid: "54355223"
 
 ![エラーが表示されているコンサルティング サービスの [状態] タブ](./media/consulting-service-error.png)
 
-Azure アプリケーションの状態の最後の例は、Microsoft の重大なレビューの問題を示しています。  このレビューの問題に関する詳細情報を含む VSTS 項目へのホット リンクが含まれています。  詳細については、[Azure アプリケーション オファーの発行]()に関するページを参照してください。
+Azure アプリケーションの状態の最後の例は、Microsoft の重大なレビューの問題を示しています。  このレビューの問題に関する詳細情報を含む VSTS 項目へのホット リンクが含まれています。  詳細については、[Azure アプリケーション オファーの発行](cpp-publish-offer.md)に関するページを参照してください。
 
 ![レビューの問題が表示されている Azure アプリの [状態] タブ](../azure-applications/media/status-tab-ms-review.png)
 

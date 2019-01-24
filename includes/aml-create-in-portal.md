@@ -9,32 +9,30 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 8bbdd2d49171ee8f4e7eb3cc0def1c7a6e59806b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193418"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54489579"
 ---
-使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
-
-ポータルのワークスペース ダッシュボードは、Microsoft Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
+1. 使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
 
    ![Azure ポータル](./media/aml-create-in-portal/portal-dashboard.png)
 
-ポータルの左上隅にある **[+ リソースの作成]** を選択します。
+1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
 
    ![Azure Portal でのリソースの作成](./media/aml-create-in-portal/portal-create-a-resource.png)
 
-検索バーに「**Machine Learning**」と入力します。 **[Machine Learning service workspace]** という検索結果を選択します。
+1. 検索バーに「**Machine Learning**」と入力します。 **[Machine Learning service workspace]** という検索結果を選択します。
 
    ![ワークスペースを検索する](./media/aml-create-in-portal/allservices-search.PNG)
 
-**[ML サービス ワークスペース]** ウィンドウを一番下までスクロールし、**[作成]** を選択して開始します。
+1. **[ML サービス ワークスペース]** ウィンドウを一番下までスクロールし、**[作成]** を選択して開始します。
 
    ![Create](./media/aml-create-in-portal/portal-create-button.png)
 
-**[ML service Workspace]\(ML サービス ワークスペース\)** ウィンドウで、ワークスペースを構成します。
+1. **[ML service Workspace]\(ML サービス ワークスペース\)** ウィンドウで、ワークスペースを構成します。
 
    フィールド|説明
    ---|---
@@ -45,10 +43,10 @@ ms.locfileid: "54193418"
 
    ![ワークスペースの作成](./media/aml-create-in-portal/workspace-create.png)
 
-作成プロセスを開始するには、**[作成]** を選択します。 ワークスペースの作成には、しばらく時間がかかる場合があります。
+1. 作成プロセスを開始するには、**[作成]** を選択します。 ワークスペースの作成には、しばらく時間がかかる場合があります。
 
-デプロイの状態を確認するには、ツール バーの [通知] アイコン (**ベル**) を選択します。
+1. デプロイの状態を確認するには、ツール バーの [通知] アイコン (**ベル**) を選択します。
+
+1. プロセスが完了すると、デプロイ成功メッセージが表示されます。 このメッセージは、通知セクションにも表示されます。 新しいワークスペースを表示するには、**[Go to resource]\(リソースに移動\)** を選択します。
 
    ![ワークスペースの作成の状態](./media/aml-create-in-portal/notifications.png)
-
-プロセスが完了すると、デプロイ成功メッセージが表示されます。 このメッセージは、通知セクションにも表示されます。 新しいワークスペースを表示するには、**[Go to resource]\(リソースに移動\)** を選択します。

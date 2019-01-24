@@ -4,7 +4,7 @@ description: Azure Active Directory と SAP NetWeaver の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1b9e59e3-e7ae-4e74-b16c-8c1a7ccfdef3
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bbe34cca1d5f3630f95c2748c852be24e5781d6
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2a5817c428fb9ff87c2125427978c9c7ac3ff6bf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266164"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル:Azure Active Directory と SAP NetWeaver の統合
 
@@ -262,7 +262,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 14. **[user ID Source]\(ユーザー ID ソース\)** と **[user id mapping mode]\(ユーザー ID マッピング モード\)** の値によって、SAP ユーザーと Azure AD 要求の間のリンクが決まることに注意してください。  
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>シナリオ:SAP ユーザーから Azure AD ユーザーへのマッピング。
+    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>シナリオ: SAP ユーザーから Azure AD ユーザーへのマッピング。
 
     a. SAP の NameID 詳細スクリーンショット。
 
@@ -272,7 +272,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/claimsaad1.png)
 
-    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>シナリオ:SU01 で構成済みのメール アドレスに基づいて SAP ユーザー ID を選択する。 このケースでは、SSO を必要とする各ユーザーの su01 でメール ID を構成する必要があります。
+    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>シナリオ: SU01 で構成済みのメール アドレスに基づいて SAP ユーザー ID を選択する。 このケースでは、SSO を必要とする各ユーザーの su01 でメール ID を構成する必要があります。
 
     a.  SAP の NameID 詳細スクリーンショット。
 

@@ -3,7 +3,7 @@ title: Microsoft Authenticator で携帯電話からサインインする - Azur
 description: パスワードを入力する代わりに、携帯電話を使って Microsoft アカウントにサインインします。 この記事では、この機能についてのよく寄せられる質問に回答します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: user-help
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 39ad9beeb6e562a4487588967910efaf0cbe4d84
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962219"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822537"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 Microsoft Authenticator アプリを使用して、パスワードを入力した後で 2 段階認証を実行してアカウントの安全性を維持できるだけでなく、Microsoft アカウントのパスワードをまったく使用せずサインインすることもできるようになりました。

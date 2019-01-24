@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050117"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413755"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -55,7 +55,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 このため、`GetAccessTokenAsync` メソッドを呼び出す前に有効期限を確認する必要がなくなります。 トークンが必要になった時点で、いつでもメソッドを呼び出すことができます。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview)」を参照してください。
 
 
 <a name="samples"></a>

@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b1077eefbe57b6440caa0171fb7429485eeeb78e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267472"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469187"
 ---
-# <a name="how-to-close-active-risk-events"></a>方法: アクティブなリスク イベントをクローズする
+# <a name="how-to-close-active-risk-events"></a>方法:アクティブなリスク イベントを閉じる
 
 Azure Active Directory は、[リスク イベント](../reports-monitoring/concept-risk-events.md)を使用して、侵害された可能性のあるユーザー アカウントのインジケーターを検出します。 管理者は、すべてのリスク イベントをクローズして、影響を受けるユーザーが危険な状態ではなくなるようにします。
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037108"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382542"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -382,7 +382,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 8. **EcommerceWebApp.sln** 内の **[チェックアウト フォルダー]** に移動して開きます。 その後、そのフォルダー内の **Web.config** ファイルを開きます。  
 
-9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します。 (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
+9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
 
 10. ページ上部の **[開始]** を押してプログラムを実行します。  
 

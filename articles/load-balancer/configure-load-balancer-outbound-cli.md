@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a1fbe541d9cb2f9b5a839d90fcfa9c7b017efce9
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: bd40278015bf4580759c1b7b9522400b3dae31d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198510"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475664"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
 
@@ -32,7 +32,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myresourcegroupoutbound* という名前のリソース グループを *eastus2* に作成します。
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Create virtual network
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) を使用して、*myresourcegroupoutbound* に *mysubnetoutbound* という名前のサブネットがある *myvnetoutbound* という名前の仮想ネットワークを作成します。
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、*myresourcegroupoutbound* に *mysubnetoutbound* という名前のサブネットがある *myvnetoutbound* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive
   az network vnet create \
@@ -55,7 +55,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-inbound-public-ip-address"></a>受信パブリック IP アドレスの作成 
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、*myresourcegroupoutbound* に *mypublicipinbound* という名前の Standard パブリック IP アドレスを作成します。
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、*myresourcegroupoutbound* に *mypublicipinbound* という名前の Standard パブリック IP アドレスを作成します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
@@ -63,7 +63,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-outbound-public-ip-address"></a>送信パブリック IP アドレスの作成 
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、Load Balancer のフロントエンド送信構成の Standard IP アドレスを作成します。
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、Load Balancer のフロントエンド送信構成の Standard IP アドレスを作成します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +81,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-load-balancer"></a>Load Balancer の作成
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられているバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられているバックエンド プールを含めます。
 
 ```azurecli-interactive
   az network lb create \
@@ -95,7 +95,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
   ```
 
 ### <a name="create-outbound-frontend-ip"></a>送信フロントエンド IP の作成
-[az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、Load Balancer の送信フロントエンド IP 構成を作成します。これには、パブリック IP アドレス *mypublicipoutbound* に関連付けられている *myfrontendoutbound* という名前の送信フロントエンド IP 構成を含めます。
+[az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、Load Balancer の送信フロントエンド IP 構成を作成します。これには、パブリック IP アドレス *mypublicipoutbound* に関連付けられている *myfrontendoutbound* という名前の送信フロントエンド IP 構成を含めます。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -107,7 +107,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-health-probe"></a>正常性プローブの作成
 
-正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
+正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -121,7 +121,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-load-balancing-rule"></a>負荷分散規則の作成
 
-ロード バランサー規則では、必要な発信元ポートおよび宛先ポートと共に、受信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド プールを定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) を使用してロード バランサー規則 *myinboundlbrule* を作成します。この規則では、フロントエンド プール *myfrontendinbound* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *bepool* に送信します。 
+ロード バランサー規則では、必要な発信元ポートおよび宛先ポートと共に、受信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド プールを定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myinboundlbrule* を作成します。この規則では、フロントエンド プール *myfrontendinbound* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *bepool* に送信します。 
 
 >[!NOTE]
 >この負荷分散規則では、--disable-outbound-snat パラメーターを指定するため、自動送信 (S)NAT が無効になります。 送信 NAT はアウトバウンド規則によってのみ提供されます。

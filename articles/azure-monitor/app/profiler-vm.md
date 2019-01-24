@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f720cdf369e7377f16bb2ea9cba7e898097cc29
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 4dfe4140fbc4238af014d838d31aae167cdd1c16
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359784"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438764"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -29,7 +29,7 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>仮想マシンまたは仮想マシン スケール セットに Profiler をデプロイする
 この記事では、Azure 仮想マシン (VM) または Azure 仮想マシン スケール セットで Application Insights Profiler を実行する方法を説明します。 Profiler は、VM 用の Azure 診断拡張機能と共にインストールされます。 Profiler を実行するように拡張機能を構成し、Application Insights SDK をお使いのアプリケーションにビルドします。
 
-1. Application Insights SDK を、お使いの [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)または正規の [.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/windows-services?toc=/azure/azure-monitor/toc.json)に追加します。  
+1. Application Insights SDK を、お使いの [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)または正規の [.NET アプリケーション](windows-services.md?toc=/azure/azure-monitor/toc.json)に追加します。  
   要求のプロファイルを表示するには、要求テレメトリを Application Insights に送信する必要があります。
 
 1. Azure 診断拡張機能を VM にインストールします。 Resource Manager テンプレートの完全な例については、次を参照してください。  
@@ -88,6 +88,6 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 
 ## <a name="next-steps"></a>次の手順
 
-- アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](https://docs.microsoft.com/azure/application-insights/monitor-web-app-availability)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
-- Azure ポータルで [Profiler トレース](https://docs.microsoft.com/azure/application-insights/profiler-overview?toc=/azure/azure-monitor/toc.json)を表示します。
+- アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
+- Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。
 - Profiler の問題のトラブルシューティングについては、[Profiler のトラブルシューティング](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)に関する記事をご覧ください。

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5be96fc93a5a6636ccac6faf456458b3bcb8423a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267370"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413721"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -153,7 +153,7 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 > お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)に関するページをご覧ください。 
 
 ## <a name="download-the-bot-to-debug"></a>デバッグするボットのダウンロード
-ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot)を続行します。 
+ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot)を続行します。 
 
 ## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細
 [Bot Framework](https://dev.botframework.com/)、[3.x](https://github.com/Microsoft/BotBuilder) SDK、[4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK の詳細を確認します。

@@ -16,12 +16,13 @@ ms.workload: infrastructure
 ms.date: 11/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 334fd01568b05cd16ff6f85725a799234fefda48
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.component: disks
+ms.openlocfilehash: d8ae255242979978ac0f16a1b483a99796772192
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871831"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464410"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 

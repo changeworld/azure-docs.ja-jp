@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606811"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449403"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
 この記事では、T-SQL を使用してエラスティック ジョブを使い始めるためのシナリオの例を多数提供します。
 
-これらの例では、"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" で利用できる[ストアド プロシージャ](#job-stored-procedures)と[ビュー](#job-views)を使います。
+これらの例では、"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" で利用できる[ストアド プロシージャ](#job-stored-procedures)と[ビュー](#job-views)を使います。
 
 ジョブの作成、構成、実行、管理には、Transact-SQL (T-SQL) を使います。 エラスティック ジョブ エージェントの作成は T-SQL ではサポートされていないので、最初に、ポータルまたは [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) を使って "*エラスティック ジョブ エージェント*" を作成する必要があります。
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>ターゲット グループ (サーバー) を作成する
 
 次の例では、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>1 つのデータベースを除外する
 
 次の例では、*MappingDB* という名前のデータベースを除く、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>ターゲット グループ (プール) を作成する
 
 次の例では、1 つまたは複数のエラスティック プール内のすべてのデータベースをターゲットにする方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>多数のデータベースに新しいスキーマをデプロイする
 
 次の例では、すべてのデータベースに新しいスキーマをデプロイする方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 
 ```sql
@@ -195,7 +195,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 2. データ型が uniqueidentifier である internal_execution_id 用の追加の列。
 3. internal_execution_id 列の、"IX_<TableName>_Internal_Execution_ID" という名前の非クラスター化インデックス。
 
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>ジョブの定義を表示する
 
 次の例では、現在のジョブの定義を表示する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>ジョブのアドホックな実行を開始する
 
 次の例では、ジョブをすぐに開始する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>ジョブの実行をスケジュールする
 
 次の例では、後で実行するようにジョブのスケジュールを設定する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>ジョブの実行状態を監視する
 
 次の例では、すべてのジョブの実行状態の詳細を表示する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>ジョブを取り消す
 
 次の例では、ジョブを取り消す方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>古いジョブの履歴を削除する
 
 次の例では、特定の日付より前のジョブ履歴を削除する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>ジョブとそのすべてのジョブ履歴を削除する
 
 次の例では、特定のジョブとそれに関連するすべてのジョブ履歴を削除する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,7 +402,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>ジョブのストアド プロシージャ
 
-次のストアド プロシージャは、[ジョブ データベース](elastic-jobs-overview.md#job-database)内にあります。
+次のストアド プロシージャは、[ジョブ データベース](sql-database-job-automation-overview.md#job-database)内にあります。
 
 
 
@@ -1190,7 +1190,7 @@ GO
 
 ## <a name="job-views"></a>ジョブ ビュー
 
-[ジョブ データベース](elastic-jobs-overview.md#job-database)では次のビューを使用できます。
+[ジョブ データベース](sql-database-job-automation-overview.md#job-database)では次のビューを使用できます。
 
 
 |表示  |説明  |

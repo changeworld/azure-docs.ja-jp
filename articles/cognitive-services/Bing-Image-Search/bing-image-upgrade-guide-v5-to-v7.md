@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c62ed151e1b09482c227f59ee5264de01d425255
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256555"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477817"
 ---
 # <a name="bing-image-search-api-upgrade-guide"></a>Bing Image Search API のアップグレード ガイド
 
@@ -74,9 +74,9 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) に変更されました。  
+- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) に変更されました。  
 
-- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) クエリ パラメーターについての説明を参照してください。  
+- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) クエリ パラメーターについての説明を参照してください。  
 
 - ShoppingSources フィルター値をサポートしている市場の一覧が、en-US のみに変更されました。 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) に関する説明を参照してください。  
 
@@ -98,7 +98,7 @@ Blocked|InvalidRequest.Blocked
 - 次のクエリ文字列パラメーターは、`/images/details` エンドポイントでのみ有効となりました。  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
+    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
     -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
     -   [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  

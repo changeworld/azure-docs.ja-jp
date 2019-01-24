@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bd1bb1dc6222e5abdc03bb9dc5da93751c54da77
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 5459ba31d30a86efbe40239f9531298c10cf9d98
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932308"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413602"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>VM オペレーティング システム ディスクのトラブルシューティング
 
@@ -43,8 +43,8 @@ ms.locfileid: "37932308"
 |---|---|
 | [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | 仮想マシンの一覧を返します。 このサンプルでは、仮想マシンのオペレーティング システム ディスクを返すクエリ オプションを使用しています。 返された値は、変数名 "uri" に追加されます。 |
 | [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | 仮想マシンを削除します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 仮想マシンを作成します。  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) | ディスクを仮想マシンに接続します。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成します。  |
+| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | ディスクを仮想マシンに接続します。 |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | 仮想マシンの IP アドレスを返します。 |
 
 ## <a name="next-steps"></a>次の手順

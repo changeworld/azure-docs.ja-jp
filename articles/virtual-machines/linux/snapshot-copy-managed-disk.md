@@ -13,12 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 9fbbbb4f73b5295b648008878c8145fe926fbaad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: dab28543354bf2234e42a8580d49bfb805786b4c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974393"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471194"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
 
