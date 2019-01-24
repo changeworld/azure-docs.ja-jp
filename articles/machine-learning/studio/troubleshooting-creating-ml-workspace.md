@@ -1,8 +1,15 @@
 ---
-title:'トラブルシューティング: Machine Learning Studio ワークスペースの作成と接続' titleSuffix: Azure Machine Learning Studio description:このガイドでは、Azure Machine Learning Studio ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
+title: 'トラブルシューティング: Machine Learning Studio ワークスペースの作成と接続'
+titleSuffix: Azure Machine Learning Studio
+description: このガイドでは、Azure Machine Learning Studio ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>トラブルシューティング ガイド:Azure Machine Learning Studio ワークスペースの作成と接続
 このガイドでは、Azure Machine Learning Studio ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。

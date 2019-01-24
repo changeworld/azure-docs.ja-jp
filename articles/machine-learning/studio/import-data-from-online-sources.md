@@ -1,8 +1,15 @@
 ---
-title:オンライン データ ソースから Machine Learning Studio にデータをインポートする titleSuffix: Azure Machine Learning Studio description:この記事では、オンライン データのインポートがサポートされる各種ソースと、これらのソースから Azure Machine Learning Studio の実験にデータを移動するために必要な情報について説明します。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:11/29/2017
+title: オンライン データ ソースから Machine Learning Studio にデータをインポートする
+titleSuffix: Azure Machine Learning Studio
+description: この記事では、オンライン データのインポートがサポートされる各種ソースと、これらのソースから Azure Machine Learning Studio の実験にデータを移動するために必要な情報について説明します。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 11/29/2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>オンライン データ ソースから Azure Machine Learning Studio にデータをインポートする 
 この記事では、オンライン データのインポートがサポートされる各種ソースと、これらのソースから Azure Machine Learning Studio の実験にデータを移動するために必要な情報について説明します。

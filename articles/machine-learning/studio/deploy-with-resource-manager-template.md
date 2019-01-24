@@ -1,7 +1,15 @@
 ---
-title:Azure Resource Manager を使用して Studio ワークスペースをデプロイする titleSuffix: Azure Machine Learning Studio description:Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio 用のワークスペースをデプロイする services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/05/2018
+title: Azure Resource Manager を使用して Studio ワークスペースをデプロイする
+titleSuffix: Azure Machine Learning Studio
+description: Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio 用のワークスペースをデプロイする
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 02/05/2018
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio ワークスペースをデプロイする
 

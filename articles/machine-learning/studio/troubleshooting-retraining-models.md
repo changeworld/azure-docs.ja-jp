@@ -1,8 +1,15 @@
 ---
-title:Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング titleSuffix: Azure Machine Learning Studio description:Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:11/01/2017
+title: Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 11/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
 ## <a name="retraining-overview"></a>再トレーニングの概要

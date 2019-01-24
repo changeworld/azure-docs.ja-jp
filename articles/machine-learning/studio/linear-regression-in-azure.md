@@ -1,7 +1,14 @@
 ---
-title:Machine Learning Studio での線形回帰の使用 titleSuffix: Azure Machine Learning Studio description:Excel と Azure Machine Learning Studio での線形回帰モデルの比較 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
+title: Machine Learning Studio での線形回帰の使用
+titleSuffix: Azure Machine Learning Studio
+description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較 services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 

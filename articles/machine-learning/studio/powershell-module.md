@@ -1,8 +1,15 @@
 ---
-title:Machine Learning Studio titleSuffix 用 PowerShell モジュール: Azure Machine Learning Studio の説明:Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。 ワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date:03/15/2017
+title: Machine Learning Studio 用 PowerShell モジュール
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。 ワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.date: 03/15/2017
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用 PowerShell モジュール
 Azure Machine Learning 用 PowerShell モジュールは、ワークスペースや実験、データセット、従来の Web サービスなどを Windows PowerShell で管理することができる強力なツールです。
