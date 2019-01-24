@@ -1,8 +1,15 @@
 ---
-title:ワークスペースを作成する titleSuffix: Azure Machine Learning Studio description:Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:12/07/2017
+title: ワークスペースを作成する
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 12/07/2017
 ---
 
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの作成と共有
