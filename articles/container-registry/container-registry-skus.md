@@ -20,9 +20,9 @@ Azure Container Registry (ACR) は、SKU と呼ばれる複数のサービス階
 
 | SKU | 管理者常駐型 | 説明 |
 | --- | :-------: | ----------- |
-| **Basic** | [はい] | Azure Container Registry について学習する開発者向けのコスト最適化エントリ ポイント。 Basic レジストリには Standard および Premium と同じプログラム機能があります (Azure Active Directory 認証の統合、イメージ削除、および Web フック)。 ただし、含まれているストレージとイメージのスループットは、使用率が低いシナリオに最も適しています。 |
-| **Standard** | [はい] | Standard レジストリは、Basic と同じ機能を提供しますが、含まれているストレージとイメージ スループットが拡大されています。 Standard レジストリは、ほとんどの運用シナリオのニーズを満たすはずです。 |
-| **Premium** | [はい] | Premium レジストリは、含まれているストレージが最も大きく、同時実行操作数も最大であり、大容量シナリオに対応できます。 イメージのスループットの増加に加え、Premium では、複数のリージョン間で 1 つのレジストリが管理するための [geo レプリケーション][container-registry-geo-replication]や、イメージ タグに署名するための[コンテンツの信頼 (プレビュー)](container-registry-content-trust.md) などの機能が追加されています。 |
+| **Basic** | はい | Azure Container Registry について学習する開発者向けのコスト最適化エントリ ポイント。 Basic レジストリには Standard および Premium と同じプログラム機能があります (Azure Active Directory 認証の統合、イメージ削除、および Web フック)。 ただし、含まれているストレージとイメージのスループットは、使用率が低いシナリオに最も適しています。 |
+| **Standard** | はい | Standard レジストリは、Basic と同じ機能を提供しますが、含まれているストレージとイメージ スループットが拡大されています。 Standard レジストリは、ほとんどの運用シナリオのニーズを満たすはずです。 |
+| **Premium** | はい | Premium レジストリは、含まれているストレージが最も大きく、同時実行操作数も最大であり、大容量シナリオに対応できます。 イメージのスループットの増加に加え、Premium では、複数のリージョン間で 1 つのレジストリが管理するための [geo レプリケーション][container-registry-geo-replication]や、イメージ タグに署名するための[コンテンツの信頼 (プレビュー)](container-registry-content-trust.md) などの機能が追加されています。 |
 | Classic<sup>1</sup> | いいえ  | この SKU により、Azure での Azure Container Registry サービスの最初のリリースが可能になりました。 クラシック レジストリは、Azure がサブスクリプションに作成するストレージ アカウントによってサポートされ、スループットの向上や geo レプリケーションなどの高いレベルの機能を提供する ACR の機能を制限します。 |
 
 <sup>1</sup> Classic SKU は **2019 年 3 月**に**非推奨**になります。 すべての新しいコンテナー レジストリでは Basic、Standard、または Premium を使用してください。
