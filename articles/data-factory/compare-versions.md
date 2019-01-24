@@ -130,12 +130,12 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure ポータル | [はい](quickstart-create-data-factory-portal.md) | [はい](data-factory-build-your-first-pipeline-using-editor.md) |
-| Azure PowerShell | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ  |
-| Resource Manager テンプレート | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
+| Azure ポータル | はい(quickstart-create-data-factory-portal.md) | はい(data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure PowerShell | はい(quickstart-create-data-factory-powershell.md) | はい(data-factory-build-your-first-pipeline-using-powershell.md) |
+| .NET SDK | はい(quickstart-create-data-factory-dot-net.md) | はい(data-factory-build-your-first-pipeline-using-vs.md) |
+| REST API | はい(quickstart-create-data-factory-rest-api.md) | はい(data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Python SDK | はい(quickstart-create-data-factory-python.md) | いいえ  |
+| Resource Manager テンプレート | はい(quickstart-create-data-factory-resource-manager-template.md) | はい(data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 
