@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bc044c8b59c939163336ecab01546fc26a7a2643
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6e5bcd6d9923b4051d44d51ff1a2534bc5e02f41
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808026"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445662"
 ---
 <a name="publish-an-azure-managed-application-to-azure-marketplace"></a>Azure マネージド アプリケーションを Azure Marketplace に発行する 
 ========================================================
@@ -68,7 +68,7 @@ Azure Marketplace で一覧表示するための前提条件
 
 **プラン**
 
-Azure アプリケーション オファーは、発行元から提供される製品のクラスに相当します。 Azure Marketplace に発行する新しいソリューション/アプリケーションがある場合、新しいオファーがその方法です。 プランとは、SKU のコレクションです。 各プランは、Azure Marketplace で独自のエンティティとして表示されます。
+Azure アプリケーション プランは、発行元から提供される製品のクラスに相当します。 Azure Marketplace に発行する新しいソリューション/アプリケーションがある場合、新しいオファーがその方法です。 プランとは、SKU のコレクションです。 各プランは、Azure Marketplace で独自のエンティティとして表示されます。
 
 **SKU**
 
@@ -88,7 +88,7 @@ SKU は Azure Marketplace では親オファーの下に表示されますが、
 
 3.  これで新しいオファーの \"エディター\" ビューが開いて、作成を開始できるようになります。
 
-4.  入力が必要な \"フォーム\" は、\"エディター\" ビューの左側に表示されます。 各 \"フォーム\" は、入力する一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
+4.  入力が必要な \"フォーム\" は、\"エディター\" ビューの左側に表示されます。 各\"フォーム\"は、入力する一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
 
     > マネージド アプリケーションを作成するための主なフォームは 4 つあります
 
@@ -106,20 +106,20 @@ SKU は Azure Marketplace では親オファーの下に表示されますが、
 プラン設定フォームは、プランの設定を指定する基本的なフォームです。
 さまざまなフィールドを以下で説明します。
 
-**Offer ID (オファー ID)**
+**[プラン ID]**
 
 発行元プロファイル内のオファーを表す一意識別子です。
 製品 URL、Resource Manager テンプレート、課金レポートに表示されます。 小文字の英数字またはダッシュ (-) のみ使用できます。 ダッシュで終えることはできず、最大 50 文字です。 このフィールドは、プランの運用が開始されるとロックされます。
 
-**Publisher ID (パブリッシャー ID)**
+**[発行元 ID]**
 
 このドロップダウンでは、このプランを発行するためのパブリッシャー プロファイルを選択することができます。 このフィールドは、プランの運用が開始されるとロックされます。
 
-**名前**
+**Name**
 
 オファーの表示名です。 この名前が Azure Marketplace と Azure portal に表示されます。 最大で 50 文字の長さにできます。 製品の覚えやすいブランド名を含めることをお勧めします。 販売方法である場合を除き、会社名はここに含めないでください。 このプランを貴社の Web サイトでマーケティングしている場合は、この名前が貴社の Web サイトで表示される名前とまったく同じであることを確認してください。
 
-\"[保存]\" をクリックして進捗状況を保存します。 次の手順では、プランに SKU を追加します。
+\"[保存]\" をクリックしてここまでの作業を保存します。 次の手順では、プランに SKU を追加します。
 
 <a name="how-to-create-skus"></a>SKU の作成方法 
 ------------------
@@ -188,7 +188,7 @@ RBAC について詳しくは、<https://docs.microsoft.com/azure/active-directo
 
 Azure アプリケーション オファー内の Marketplace フォームは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で表示されるフィールドについて確認します。 いくつかのフィールドの詳細を次に示します。
 
-#### <a name="preview-subscription-ids"></a>サブスクリプション ID をプレビュー
+#### <a name="preview-subscription-ids"></a>Preview Subscription IDs (プレビュー サブスクリプション ID)
 
 ここに、発行後にオファーにアクセスできるようにする Azure サブスクリプション ID の一覧を入力します。 これらのホワイトリストに追加されたサブスクリプションにより、プレビューされたオファーを、運用開始する前にテストできます。 パートナー ポータルでは、最大 100 サブスクリプションをホワイトリストに追加できます。
 

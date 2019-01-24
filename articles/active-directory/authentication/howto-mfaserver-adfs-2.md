@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: ff8afabb425f16b62b86bf6b23fd24a744d40186
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cbb64069ab8fa3da6309ff56afc0ab36582908c0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158416"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430366"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "39158416"
 
 4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://sso.contoso.com/adfs/ls)) を入力し、**[OK]** をクリックします。
 5. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
-6. ページ変数を自動で検出できなかった場合には、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定...]** ボタンをクリックします。
+6. ページ変数を自動で検出できなかった場合には、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定...]**  ボタンをクリックします。
 7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、AD FS ログイン ページの URL (例: https://sso.contoso.com/adfs/ls)) を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 8. [要求の形式] を **[POST または GET]** に設定します。
 9. ユーザー名変数 (ctl00 $contentplaceholder1 $usernametextbox) とパスワード変数 (ctl00 $contentplaceholder1 $passwordtextbox) を入力します。 フォーム ベースのログイン ページにドメイン テキスト ボックスが表示される場合、[ドメイン変数] も入力します。 ログイン ページ内の入力ボックスの名前を検索するには、Web ブラウザーでログイン ページに移動し、ページを右クリックし、**[ソースの表示]** を選択します。
@@ -108,7 +108,7 @@ Azure Multi-Factor Authentication は、AD FS をセキュリティ保護する�
 
 ### <a name="to-configure-trusted-ips"></a>信頼される IP を構成するには
 1. [IIS 認証] セクションで、**[信頼できる IP]** タブをクリックします。
-2. **[追加]** ボタンを選択します。
+2.  **[追加]**  ボタンを選択します。
 3. [Add Trusted IPs (信頼できる IP の追加)] ダイアログ ボックスが表示されたら、**[単一 IP を追加する]**、**[IP 範囲を指定して追加する]**、または **[サブネット]** ラジオ ボタンのいずれかを選択します。
 4. ホワイト リストに登録する IP アドレス、IP アドレスの範囲、またはサブネットを入力します。 サブネットを入力する場合は、適切なネットマスクを選択し、**[OK]** ボタンをクリックします。 信頼される IP が追加されました。
 

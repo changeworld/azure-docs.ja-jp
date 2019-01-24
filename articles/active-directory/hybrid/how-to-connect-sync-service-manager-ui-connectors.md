@@ -4,7 +4,7 @@ description: Azure AD Connect の Synchronization Service Manager の [コネク
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 592fcd80b80ecbd101dd559aa8baf78a60aaa517
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5c3931fd75ea8e0780b8a7b4f613c865267074c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306851"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466815"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "46306851"
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
 ## <a name="connector-actions"></a>コネクタのアクション
-| アクションを表示します。 | Comment (コメント) |
+| Action | Comment (コメント) |
 | --- | --- |
 | Create |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
 | Properties |ドメインと OU フィルター処理に使用されます。 |
@@ -66,7 +66,7 @@ ms.locfileid: "46306851"
 
 まず、 **[scope]**(範囲) を選択します。 データ (RDN、DN、アンカー、サブツリー) またはオブジェクトの状態 (その他すべてのオプション) に基づいて検索できます。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
+ たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 このグリッドからオブジェクトを選択し、**[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](tshoot-connect-object-not-syncing.md)できます。
 

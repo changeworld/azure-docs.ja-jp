@@ -4,19 +4,14 @@ title: 認証、アプリ、デバイスの管理に関するユーザー ヘル
 description: ユーザー ヘルプは、セキュリティ情報、2 段階認証、セルフサービスによるパスワードのリセット、デバイスの管理、Microsoft Authenticator アプリ、マイ アプリ ポータルの設定と使用でサポートを必要としているユーザーを対象としています。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927316"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
 このコンテンツは、セキュリティ情報の設定と使用、2 段階認証、自分のパスワードのリセット方法の習得、Azure Active Directory デバイスの設定と参加、Microsoft Authenticator アプリとマイ アプリ ポータルの設定と使用を支援するために作成されました。
@@ -86,7 +81,7 @@ ms.locfileid: "41927316"
                     <div class="cardText">
                         <h3>Microsoft Authenticator アプリのヘルプ</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">はじめに</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">作業開始</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">アカウント資格情報のバックアップと復旧</a>
                         </p>
                     </div>

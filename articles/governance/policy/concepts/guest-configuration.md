@@ -4,17 +4,17 @@ description: Azure Policy でゲスト構成を使用して、Azure の仮想マ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1ea87dc01048a2747a668db7a5b1f22b37ed9213
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310064"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856402"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -48,8 +48,8 @@ Azure portal からゲストの構成用のリソース プロバイダを登録
 PowerShell を使ってゲスト構成用にリソース プロバイダーを登録するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
-Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
+# Login first with Connect-AzAccount if not using Cloud Shell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
 ### <a name="validation-tools"></a>検証ツール
@@ -115,5 +115,5 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 - [ポリシーの効果について](effects.md)確認する
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解する
 - [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)ための方法を学びます。
-- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習する
+- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を確認する
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/index.md)」で、管理グループとは何かを確認します。

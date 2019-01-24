@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1714a29e4b27f6363d748ceb180f56ba98c713bb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634186"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809532"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -42,7 +42,7 @@ ms.locfileid: "53634186"
 | 構成の解析に失敗したため、スナップショット操作に失敗しました。 |このエラーは、次の **MachineKeys** ディレクトリでアクセス許可が変更されたために発生します。**%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。 <br> 次のコマンドを実行し、**MachineKeys** ディレクトリのアクセス許可が既定のものであることを確認してください。<br>**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。 <br><br>既定のアクセス許可は、次のとおりです。 <ul><li>Everyone:(R,W) <li>BUILTIN\Administrators:(F)</ul> **MachineKeys** ディレクトリで既定以外のアクセス許可が表示される場合は、以下の手順に従って、アクセス許可の修正、証明書の削除、バックアップのトリガーを行ってください。 <ol><li>**MachineKeys** ディレクトリのアクセス許可を修正します。 ディレクトリで Explorer のセキュリティ プロパティやセキュリティの詳細設定を使用して、アクセス許可を既定値にリセットします。 ディレクトリから (既定値以外の) ユーザー オブジェクトをすべて削除し、**Everyone** アクセス許可に次のような特殊なアクセス許可があることを確認します。 <ul><li>フォルダーの一覧/データの読み取り <li>属性の読み取り <li>拡張属性の読み取り <li>ファイルの作成/データの書き込み <li>フォルダーの作成/データの追加<li>属性の書き込み<li>拡張属性の書き込み<li>読み取りアクセス許可 </ul><li>**発行先**がクラシック デプロイ モデルまたは **Windows Azure CRP Certificate Generator** であるすべての証明書を削除します。<ol><li>[ローカル コンピューターのコンソールで証明書を開きます](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。<li>**[個人]** > **[証明書]** で、**発行先**がクラシック デプロイ モデルまたは **Windows Azure CRP Certificate Generator** であるすべての証明書を削除します。</ol> <li>VM バックアップ ジョブをトリガーします。 </ol>|
 | Azure Backup サービスには、暗号化された仮想マシンのバックアップ用の Azure Key Vault に対する十分な権限がありません。 |「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md)」の手順を使用して、PowerShell のこれらの権限を Backup サービスに付与してください。 |
 |**COM+ が Microsoft 分散トランザクション コーディネーターと通信できませんでした**というエラーでスナップショット拡張機能のインストールが失敗しました。 | 管理者特権でのコマンド プロンプトで、Windows サービス **COM+ システム アプリケーション**を開始します。 たとえば、**net start COMSysApp** です。 サービスの開始が失敗する場合は、次の手順を実行します。<ol><li> サービスのサインイン アカウントが **[分散トランザクション コーディネーター]** または **[ネットワーク サービス]** であることを確認します。 そうでない場合は、サインイン アカウントを **[ネットワーク サービス]** に変更してサービスを再度開始します。 その後、**COM+ システム アプリケーション**を開始してみます。<li>**COM+ システム アプリケーション**が開始しない場合は、次の手順で**分散トランザクション コーディネーター** サービスをアンインストールしてからインストールします。 <ol><li>MSDTC サービスを停止します。 <li>コマンド プロンプト、**cmd** を開きます。 <li>コマンド ```msdtc -uninstall```を実行します。 <li>コマンド ```msdtc -install```を実行します。 <li>MSDTC サービスを起動します。 </ol> <li>Windows サービス **COM+ システム アプリケーション**を開始します。 **COM+ システム アプリケーション**が開始したら、Azure portal からバックアップ ジョブをトリガーします。</ol> |
-|  COM+ エラーが発生したため、スナップショット操作に失敗しました。 | Windows サービス **COM+ システム アプリケーション**は、管理者特権でのコマンド プロンプトから **net start COMSysApp** を実行して再起動することをお勧めします。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)してバックアップを手動でトリガーしてみてください。 |
+|  COM+ エラーが発生したため、スナップショット操作に失敗しました。 | Windows サービス **COM+ システム アプリケーション**は、管理者特権でのコマンド プロンプトから **net start COMSysApp** を実行して再起動することをお勧めします。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)してバックアップを手動でトリガーしてみてください。 |
 | Backup でファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした。 | 次の手順を実行します。 <ul><li>**'tune2fs'** コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。 たとえば、**tune2fs -l /dev/sdb1 \** です。| grep **Filesystem state**。 <li>ファイル システムの状態がクリーンではないデバイスを、**'umount'** コマンドを使用してマウント解除します。 <li> これらのデバイスで、**'fsck'** コマンドを使用してファイルシステム整合性チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
 | セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
 | Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2012_x64 をインストールします。 このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、レジストリ キー **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の値は **4** ではなく **3** に設定されています。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
@@ -57,6 +57,7 @@ ms.locfileid: "53634186"
 | Backup でジョブを取り消すことができませんでした: <br>ジョブが完了するまでお待ちください。 |なし |
 
 ## <a name="restore"></a>復元
+
 | エラーの詳細 | 対処法 |
 | --- | --- |
 | クラウドの内部エラーで復元に失敗しました。 |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次のように入力して確認できます。 <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>**[アドレス]** が構成済みの場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが **ReservedIP** で構成されていて、クラウド サービスの既存の VM が停止状態になっています。 次の PowerShell コマンドレットを使用して、クラウド サービスに IP が予約されていることを確認できます。**$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName**。 <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <ul><li>ロード バランサー構成 (内部および外部の) での仮想マシン。<li>複数の予約済み IP を持つ仮想マシン。 <li>複数の NIC を持つ仮想マシン。 </ul><li>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)を参照してください。</ol> |
@@ -100,7 +101,7 @@ ms.locfileid: "53634186"
 * Linux VM エージェントを更新するには、[Linux VM エージェントの更新](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の手順に従います。
 
     > [!NOTE]
-    > 常にディストリビューション リポジトリを使用してエージェントを更新する必要があります。 
+    > 常にディストリビューション リポジトリを使用してエージェントを更新する必要があります。
 
     エージェントのコードを GitHub からダウンロードしないでください。 お使いのディストリビューションで最新のエージェントを使用できない場合は、最新のエージェントを入手する方法についてディストリビューション サポートに問い合わせてください。 GitHub リポジトリで [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)の最新情報を確認することもできます。
 

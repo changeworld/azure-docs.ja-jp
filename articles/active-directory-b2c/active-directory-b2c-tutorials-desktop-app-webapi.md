@@ -3,19 +3,19 @@ title: チュートリアル - Azure Active Directory B2C を使用してデス�
 description: Active Directory B2C を使用して Node.js Web API を保護し、.NET デスクトップ アプリからそれを呼び出す方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 3/01/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 1ce74afd8ee2266439a591730686b4f5277e1b03
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8e99e8501a19bac977d5d9488077b809b2c6dde7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322007"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856980"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
@@ -55,7 +55,7 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名前** | My sample Node.js web API | 開発者が Web API を把握できる**名前**を入力します。 |
+    | **Name** | My sample Node.js web API | 開発者が Web API を把握できる**名前**を入力します。 |
     | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
     | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**はい** を選択します。 |
     | **応答 URL** | `http://localhost:5000` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 5000 でリッスンします。 |
