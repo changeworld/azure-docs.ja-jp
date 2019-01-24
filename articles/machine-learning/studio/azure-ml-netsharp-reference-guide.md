@@ -1,8 +1,15 @@
 ---
-title:Net# ニューラル ネットワーク titleSuffix: Azure Machine Learning Studio description: Net# ニューラル ネットワーク仕様言語の構文と、Azure Machine Learning Studio で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: reference
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/01/2018
+title: Net# ニューラル ネットワーク
+titleSuffix: Azure Machine Learning Studio
+description: Net# ニューラル ネットワーク仕様言語の構文と、Azure Machine Learning Studio で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: reference
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
