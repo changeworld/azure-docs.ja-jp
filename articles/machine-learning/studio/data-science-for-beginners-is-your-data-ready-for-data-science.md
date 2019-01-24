@@ -1,8 +1,15 @@
 ---
-title:データの評価 titleSuffix:  Azure Machine Learning Studio description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:01/03/2018
+title: データの評価
+titleSuffix: Azure Machine Learning Studio
+description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/03/2018
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
