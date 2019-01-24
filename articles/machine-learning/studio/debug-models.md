@@ -1,8 +1,15 @@
 ---
-title:モデルのデバッグ titleSuffix: Azure Machine Learning Studio description:モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio でデバッグする方法。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/14/2017
+title: モデルのデバッグ
+titleSuffix: Azure Machine Learning Studio
+description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio でデバッグする方法。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/14/2017
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルをデバッグする
 

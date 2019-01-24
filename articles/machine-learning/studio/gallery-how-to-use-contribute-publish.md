@@ -1,8 +1,15 @@
 ---
-title:Azure AI ギャラリー titleSuffix: Azure Machine Learning Studio description:Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/31/2017
+title: Azure AI ギャラリー
+titleSuffix: Azure Machine Learning Studio
+description: Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/31/2017
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
