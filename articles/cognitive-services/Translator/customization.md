@@ -50,10 +50,10 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 |:-----|:----:|:----:|
 |カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2 のみ   | V3 のみ |
-| SMT のカスタマイズ | [はい]   | いいえ  |
-| NMT のカスタマイズ | いいえ     | [はい] |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | [はい] |
-| [トレースなし](https://www.aka.ms/notrace) | [はい]  | [はい] |
+| SMT のカスタマイズ | はい   | いいえ  |
+| NMT のカスタマイズ | いいえ     | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| [トレースなし](https://www.aka.ms/notrace) | はい  | はい |
 
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 
