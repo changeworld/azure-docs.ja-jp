@@ -1,8 +1,15 @@
 ---
-title:他のユーザーのデータ サイエンスの例をコピーする titleSuffix: Azure Machine Learning Studio description:'データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。'
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:01/05/2018
+title: 他のユーザーのデータ サイエンスの例をコピーする
+titleSuffix: Azure Machine Learning Studio
+description: 'データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。'
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/05/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5:初心者向けデータ サイエンス シリーズ
