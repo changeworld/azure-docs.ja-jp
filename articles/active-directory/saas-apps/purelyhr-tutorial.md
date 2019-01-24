@@ -4,7 +4,7 @@ description: Azure Active Directory と PurelyHR の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 86a9c454-596d-4902-829a-fe126708f739
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 88388be1a0687c3e56fd39dde2f70e40cf578f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0e389f43586bd88f1d03a6cb8d714908d299977f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841049"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>チュートリアル: Azure Active Directory と PurelyHR の統合
 

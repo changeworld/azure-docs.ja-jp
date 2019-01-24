@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用して Am
 description: カスタム ポリシーを使用して Azure Active Directory B2C で Amazon アカウントでのサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fc762a4cf500713a09ba325e8b4e41c4cc2b8f15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0ab08dd33625ff97a4a3dc6e897c341d54d1ee77
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848945"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850095"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Amazon アカウントでのサインインを設定する
 

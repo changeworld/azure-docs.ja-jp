@@ -3,19 +3,19 @@ title: REST API 要求交換を Azure Active Directory B2C ユーザー体験に
 description: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 9e5f8171dde2f6da153441dafd9a87fc5c946e71
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304909"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853053"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 

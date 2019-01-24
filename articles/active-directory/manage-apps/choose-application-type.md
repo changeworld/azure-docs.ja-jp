@@ -4,7 +4,7 @@ description: Azure AD と統合可能なサポートされている種類のア�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 99405f9ae3e86324aba7a6fdc583225c1f71f83a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ab68c8f73d4b53f441b8f46f466371cd1d03ad41
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845112"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846814"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションを追加するときにアプリケーションの種類を選択する
 Azure Active Directory (Azure AD) に追加できる 4 種類のアプリケーションについて説明します。 Azure Active Directory でアプリケーションを追加すると、4 種類のアプリケーションのいずれかを選択するように求められます。 
@@ -68,11 +68,11 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 -   **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とシングル サインオンで統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
 
--   **リンクされたサインオン** – 既存のシングル サインオン ソリューションに既に接続されているアプリケーションがある場合、または[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)や [Office 365 アプリケーション起動プログラム](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)でユーザーの単純なリンクを公開するだけの場合は、[[リンクされたサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **シングル サインオン モード**を選びます
+-   **リンクされたサインオン** – 既存のシングル サインオン ソリューションに既に接続されているアプリケーションがある場合、または[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)や [Office 365 アプリケーション起動プログラム](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)でユーザーの単純なリンクを公開するだけの場合は、[[リンクされたサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **シングル サインオン モード**を選びます
 
--   **パスワード ベースのサインオン** – アプリケーションで HTML のユーザー名とパスワードのフィールドを表示し、後でアプリケーションを再生するためそのユーザー名とパスワードを安全に格納する必要がある場合は、[[パスワード ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **シングル サインオン モード**を選びます
+-   **パスワード ベースのサインオン** – アプリケーションで HTML のユーザー名とパスワードのフィールドを表示し、後でアプリケーションを再生するためそのユーザー名とパスワードを安全に格納する必要がある場合は、[[パスワード ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **シングル サインオン モード**を選びます
 
--   **SAML ベースのサインオン** – アプリケーションで SAML または OpenID Connect プロトコルをサポートするか、SAML 要求で定義するルールに基づいて特定のアプリケーション ロールにユーザーをマップできるようにする場合は、[[SAML ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) シングル サインオン モードを選びます。*
+-   **SAML ベースのサインオン** – アプリケーションで SAML または OpenID Connect プロトコルをサポートするか、SAML 要求で定義するルールに基づいて特定のアプリケーション ロールにユーザーをマップできるようにする場合は、[[SAML ベースのサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) シングル サインオン モードを選びます。*
 
    >[!NOTE]
    >このオプションは、アプリケーションに対してアプリケーション プロキシが構成されている場合は使用できません。

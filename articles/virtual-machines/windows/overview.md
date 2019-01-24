@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720256"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852050"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -49,7 +49,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="naming"></a>名前を付ける
-仮想マシンには[名前](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
+仮想マシンには[名前](/azure/architecture/best-practices/naming-conventions)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
@@ -63,7 +63,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations)操作を使用します。 |
-| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations) 操作を使用します。 |
+| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
 
 ### <a name="vm-size"></a>VM サイズ
 使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 9e93dc14a4729011f74c5eafe94528608b89116f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 85ee6505adafab9587f3583cd4c7182efcc43c11
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29848289"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853733"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 
@@ -48,10 +48,10 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 特定のリソース グループに Azure Storage アカウントを作成します。 |
 | [az storage container create](/cli/azure/storage/container#az_storage_container_create) | Azure Blob ストレージにコンテナーを作成します。 |
-| [az storage container list](/cli/azure/storage/container#az_storage_container_list) | Azure Storage アカウントのコンテナーを一覧表示します。 |
+| [az storage container list](/cli/azure/storage/container) | Azure Storage アカウントのコンテナーを一覧表示します。 |
 | [az storage container delete](/cli/azure/storage/container#az_storage_container_delete) | Azure Storage アカウントのコンテナーを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

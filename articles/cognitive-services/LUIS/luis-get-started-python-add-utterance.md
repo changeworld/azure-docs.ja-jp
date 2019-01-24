@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 1541f22b79b3dd043ba953cdd1bd918c97b27e78
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2a400603f37755069367f1cc16fcd75e3b009bf2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716652"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847137"
 ---
 # <a name="quickstart-change-model-using-python"></a>クイック スタート: Python を使ってモデルを変更する
 

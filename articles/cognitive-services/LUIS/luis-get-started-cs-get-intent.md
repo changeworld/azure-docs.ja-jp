@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5bb4bbb1c080fcbf1f374c68ede8f28c1e4e3c5f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141766"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853920"
 ---
 # <a name="quickstart-get-intent-using-c"></a>クイック スタート: C# による意図の取得
 

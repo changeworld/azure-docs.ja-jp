@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9b7e66e6789c1f24bbd784c9c3533ee2e2d678dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981425"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849211"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
-Azure は、既定では、トラフィックを仮想ネットワーク内のすべてのサブネット間で自動的にルーティングします。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します:
+Azure は、既定では、トラフィックを仮想ネットワーク内のすべてのサブネット間で自動的にルーティングします。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します。
 
 * ルート テーブルの作成
 * ルートの作成
@@ -89,7 +89,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) で 2 つの追加のサブネットを作成します。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet) で 2 つの追加のサブネットを作成します。
 
 ```azurecli-interactive
 # Create a private subnet.

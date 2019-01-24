@@ -3,29 +3,29 @@ title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: セッションで Azure Service Bus メッセージのシーケンスを処理します。
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2018
-ms.author: spelluru
-ms.openlocfilehash: 523394010058ace7f61da2196a110fd3e6db610c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: b45b59775abd2db7cea9d0fa9b0cc23f7ce31277
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739860"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848837"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 Service Bus の FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を既定するモデルは特に定義されていません。
 
 > [!NOTE]
-> Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 詳細については、「[Service Bus の価格](/pricing/details/service-bus/)」をご覧ください。
+> Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 詳細については、「[Service Bus の価格](service-bus-pricing-billing.md)」をご覧ください。
 
 送信プロセスは、トピックまたはキューにメッセージを送信するときに、アプリケーションで定義されたセッションに固有の ID に、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) プロパティを設定することで、セッションを作成できます AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術
 description: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff9d51a96335af110aa0377c7db57ae665c44893
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0efe78fa994353e7fd64d9954d07a0731685fa60
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970527"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856531"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 

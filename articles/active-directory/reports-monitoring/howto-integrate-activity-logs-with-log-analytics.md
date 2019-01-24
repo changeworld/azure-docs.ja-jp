@@ -4,7 +4,7 @@ description: Azure Monitor (プレビュー) を使用して Azure Active Direct
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7509081bbf43aeaf39570f84afef81b6dd5a39fe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8b9189ef3fff75023316d5272bd93c136106cf94
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621668"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824679"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを Log Analytics と統合する
 
@@ -41,8 +41,8 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 監査アクティビティ ログとサインイン アクティビティ ログを Log Analytics にルーティングして、さらに詳しく分析できます。 
 
-* **監査ログ**: テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
-* **サインイン ログ**: 監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
+* **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
 > 現時点では、B2C 関連の監査およびサインインのアクティビティ ログはサポートされません。

@@ -3,9 +3,9 @@ title: PowerShell で Azure Service Bus リソースを管理する | Microsoft 
 description: PowerShell モジュールで Service Bus リソースを作成し、管理する
 services: service-bus-messaging
 documentationcenter: .NET
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: 61869787304d8acaff00e13b52e557b878a795a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: aschhab
+ms.openlocfilehash: 7095a10d38912a21707f52e170c2465d1f8713bc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250375"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857048"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 

@@ -3,9 +3,9 @@ title: Java で Azure Service Bus トピックを使用する方法 | Microsoft 
 description: Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: aschhab
+ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241320"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849959"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -67,7 +67,7 @@ Service Bus のメッセージング名前空間は一意のスコープ コン�
 1. **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
 2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
 3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
-4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
+4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
 
     ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
 5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。

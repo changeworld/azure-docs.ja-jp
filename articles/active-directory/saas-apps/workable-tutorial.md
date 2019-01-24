@@ -4,7 +4,7 @@ description: Azure Active Directory と Workable の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c025cdeb-786c-4aab-abd1-132907007f7e
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 75cf02d48f7175f47d6fb69e09d527024491e7c3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 29420b22623d5295c45aa602620d1cd5eef9bd33
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981305"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
 

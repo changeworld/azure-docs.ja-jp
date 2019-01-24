@@ -3,19 +3,20 @@ title: Azure Service Bus を使用する .NET 多層アプリケーション | M
 description: Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つ .NET チュートリアルです。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: b905feef4d3a5445ba27b92637448443c3bbb4a3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: aaec8fd245c507e83967aa76f3e2f9d72b052cb1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855614"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849738"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 

@@ -3,7 +3,7 @@ title: Microsoft Authenticator アプリの概要 - Azure Active Directory | Mic
 description: Microsoft Authenticatior の最新バージョンにアップグレードする方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43c09bc01e0ed5bd9093242db9183883e402a6f1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245445"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825580"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 

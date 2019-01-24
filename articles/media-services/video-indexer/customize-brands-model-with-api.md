@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: 5591c36a13291432f2d790b4c83e98270b4bc035
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283018"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827586"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 
@@ -38,11 +38,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -100,12 +100,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
 |id|integer|[はい]|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -129,12 +129,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
 |id|integer|[はい]|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -179,12 +179,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
 |id|integer|[はい]|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -215,7 +215,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
   "referenceUrl": null,
   "id": 97974,
   "name": "Example",
-  "accountId": "SampeAccountId",
+  "accountId": "SampleAccountId",
   "lastModifierUserName": "SampleUserName",
   "Created": "2018-04-25T14:59:52.7433333",
   "lastModified": "2018-04-25T15:37:50.67",
@@ -242,11 +242,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -302,11 +302,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -339,11 +339,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
-|**名前**|**種類**|**必須**|**説明**|
+|**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|string|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|[はい]|アカウントのグローバル一意識別子|
-|accessToken|string|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|location|文字列|[はい]|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|文字列|[はい]|アカウントのグローバル一意識別子|
+|accessToken|文字列|[はい]|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 

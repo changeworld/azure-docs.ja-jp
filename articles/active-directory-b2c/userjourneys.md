@@ -3,19 +3,19 @@ title: UserJourneys | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの UserJourneys 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c6933a3d50807f38c0704f41dff7c9bcb3351949
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567062"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850641"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -90,7 +90,7 @@ ms.locfileid: "51567062"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | Description |
 | --------- | -------- | ----------- |
 | type | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
 | ExecuteActionsIf | はい | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 | 

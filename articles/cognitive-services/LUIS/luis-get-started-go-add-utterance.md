@@ -8,14 +8,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: e3fb6b2532f2dc99a48cc3c2eac9029367c52185
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f843f58b535def77f4dec260c321752658d25b87
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100295"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854498"
 ---
 # <a name="quickstart-change-model-using-go"></a>クイック スタート: Go を使ってモデルを変更する
 

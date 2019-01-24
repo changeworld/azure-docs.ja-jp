@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076229"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852543"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -85,7 +85,7 @@ SSH を使用して仮想マシンに接続したら、仮想マシン上の Azu
 
 `. ~/tfEnv.sh`
 
-上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) メカニズムを使用し、仮想マシンのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
+上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) メカニズムを使用し、仮想マシンのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
 
  VM は、Terraform のリモート状態バックエンドを備えています。 Terraform デプロイメントでこれを有効にするには、remoteState.tf ファイルを tfTemplate ディレクトリから Terraform スクリプトのルートにコピーします。  
 

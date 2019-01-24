@@ -3,19 +3,19 @@ title: チュートリアル - Azure Active Directory B2C でアプリケーシ�
 description: Azure portal を使用し、Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: B2C
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5d97a313c347aefbdda14b70e78aa09188da59ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842681"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855790"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする
 

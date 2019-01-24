@@ -3,23 +3,23 @@ title: Azure Service Bus のトピックとサブスクリプションの概要 
 description: Service Bus メッセージングのトピックとサブスクリプションを使った C# .NET Core コンソール アプリケーションを作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/03/2018
-ms.author: spelluru
-ms.openlocfilehash: d48d658883324637e1026ac00312ade86ccc1400
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230582"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846678"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 

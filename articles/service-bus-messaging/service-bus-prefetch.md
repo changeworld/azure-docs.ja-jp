@@ -3,22 +3,22 @@ title: Azure Service Bus プリフェッチ メッセージ | Microsoft Docs
 description: Azure Service Bus メッセージをプリフェッチすることでパフォーマンスを向上します。
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
-ms.author: spelluru
-ms.openlocfilehash: 292f8ae1821cdcc4fd6274808b53454ec51eaea0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.author: aschhab
+ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157401"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850112"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 

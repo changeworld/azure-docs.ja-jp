@@ -3,7 +3,7 @@ title: Service Bus トピックの使用方法 (Ruby) | Microsoft Docs
 description: Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。
 services: service-bus-messaging
 documentationcenter: ruby
-author: spelluru
+author: axisc
 manager: timlt
 editor: ''
 ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 08/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 0310b532fae69aa2509a427b73c40ba732a740de
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 4f8b978abbcc4ed0f40655730e672fba064701f3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102315"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854923"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Ruby で Service Bus のトピックとサブスクリプションを使用する方法
  

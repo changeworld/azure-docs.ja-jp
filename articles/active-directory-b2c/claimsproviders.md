@@ -3,19 +3,19 @@ title: ClaimsProviders  - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsProvider 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b226aeac86084c56a49d00c2a2f8deddaf7b0f68
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 543b6818709e88ef575516de663d97af9e2a724a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068776"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855875"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders 
 
@@ -52,7 +52,7 @@ ms.locfileid: "49068776"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ---------- | ----------- |
-| ドメイン | 0:1 | クレーム プロバイダーのドメイン名を含む文字列。 たとえば、クレーム プロバイダーが Facebook 技術プロファイルを含めている場合、ドメイン名は Facebook.com です。 このドメイン名は、技術プロファイルによってオーバーライドされない限り、クレーム プロバイダーで定義されているすべての技術プロファイルに使用されます。 ドメイン名も **domain_hint** で参照されます。 詳細については、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md)」の「**サインインをソーシャル プロバイダーにリダイレクトする**」セクションを参照してください。 |
+| Domain | 0:1 | クレーム プロバイダーのドメイン名を含む文字列。 たとえば、クレーム プロバイダーが Facebook 技術プロファイルを含めている場合、ドメイン名は Facebook.com です。 このドメイン名は、技術プロファイルによってオーバーライドされない限り、クレーム プロバイダーで定義されているすべての技術プロファイルに使用されます。 ドメイン名も **domain_hint** で参照されます。 詳細については、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md)」の「**サインインをソーシャル プロバイダーにリダイレクトする**」セクションを参照してください。 |
 | DisplayName | 0:1 | ユーザーに表示できるクレーム プロバイダーの名前を含む文字列。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | クレーム プロバイダーによってサポートされている技術プロファイルのセット |
 

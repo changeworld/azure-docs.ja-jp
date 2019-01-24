@@ -3,23 +3,23 @@ title: Azure Service Bus キューの使用 | Microsoft Docs
 description: Service Bus メッセージング キューを使った C# コンソール アプリケーションを作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/07/2018
-ms.author: spelluru
-ms.openlocfilehash: 1dd47dea86478c76ed5bf6f8b393964f97231908
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 81bc37a4bbd63beda122d7254409e2b16f0e3cb1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226959"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852163"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 

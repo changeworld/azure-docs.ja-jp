@@ -3,19 +3,19 @@ title: Azure Active Directory B2C を使用した直接サインインの設定 
 description: サインイン名を事前入力するか、ソーシャル ID プロバイダーに直接リダイレクトする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 62ded87067bf597a2f40ec8e8405142297d4fb78
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eda0f8410ecf568e4d2ccca1840eca3f5bc1d3b9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440538"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847885"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用した直接サインインの設定
 

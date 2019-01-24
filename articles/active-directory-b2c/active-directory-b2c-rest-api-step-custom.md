@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのオーケストレーション手順と�
 description: API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5102f2b43819c279d0087754b29a616812e5a5f2
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7d62e0044d91af72ac8fea0271d7fc131e9c0a03
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556562"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852526"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
 
@@ -47,7 +47,7 @@ IEF では、要求を介してデータが送受信されます。 REST API 要
 - 対話する REST API エンドポイント。 このチュートリアルでは、単純な Azure 関数アプリの Webhook を例として使用します。
 - *推奨*:[検証手順として REST API 要求交換のチュートリアル](active-directory-b2c-rest-api-validation-custom.md)を完了します。
 
-## <a name="step-1-prepare-the-rest-api-function"></a>ステップ 1:REST API 関数を準備する
+## <a name="step-1-prepare-the-rest-api-function"></a>手順 1:REST API 関数を準備する
 
 > [!NOTE]
 > REST API 関数の設定は、この記事の範囲外です。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) に、クラウドで RESTful サービスを作成するための優れたツールキットが用意されています。

@@ -4,7 +4,7 @@ description: Azure Portal の正常性ページを使用して、マネージド
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fe5776dad4c4b9ae96484ac266a23e87658cf578
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969006"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852833"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインの正常性を確認する
 

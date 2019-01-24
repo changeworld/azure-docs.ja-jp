@@ -3,23 +3,23 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 88f586fac4392e880efc3ef611a7c03177582bff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542511"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856708"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -134,7 +134,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 メッセージに対するロックは、その転送が *accepted*、*rejected*、*released* のいずれかの状態に解決されると解除されます。 終端の状態が *accepted* であるとき、メッセージは Service Bus から削除されます。 転送の状態がそれ以外になった場合、メッセージは Service Bus に残り、次の受信者に配信されます。 たび重なる reject または release でエンティティに割り当てられた最大配信カウントに達すると、メッセージは、Service Bus によって自動的にそのエンティティの配信不能キューに移動されます。
 
-現時点の Service Bus API にそのようなオプションは直接公開されていませんが、それよりも低レベルの AMQP プロトコル クライアントでは、リンク クレジット モデルを使用すれば、receive 要求ごとに 1 単位のクレジットを発行する "プル式" の対話を "プッシュ式" のモデルに変えることができます。つまり、リンク クレジットを大量に発行しておき、メッセージが利用可能になったときに、それ以上の対話操作を行わなくてもそれらのメッセージを受信できるようなモデルを実現できます。 プッシュは、[MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PrefetchCount) プロパティまたは [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) プロパティの設定を通じてサポートされます。 これらの設定が 0 以外であるとき、AMQP クライアントでリンク クレジットとして使用されます。
+現時点の Service Bus API にそのようなオプションは直接公開されていませんが、それよりも低レベルの AMQP プロトコル クライアントでは、リンク クレジット モデルを使用すれば、receive 要求ごとに 1 単位のクレジットを発行する "プル式" の対話を "プッシュ式" のモデルに変えることができます。つまり、リンク クレジットを大量に発行しておき、メッセージが利用可能になったときに、それ以上の対話操作を行わなくてもそれらのメッセージを受信できるようなモデルを実現できます。 プッシュは、[MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) プロパティまたは [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) プロパティの設定を通じてサポートされます。 これらの設定が 0 以外であるとき、AMQP クライアントでリンク クレジットとして使用されます。
 
 このとき、エンティティ内のメッセージに対するロックの有効期限は、メッセージが通信回線上に送り出されたときではなく、エンティティからメッセージを取得したときを起点として計時されることに注意してください。 メッセージを受信する用意ができていることをクライアントがリンク クレジットを発行することによって表明したときは常に、当然そのネットワークを介して能動的にメッセージをプルしようとしていること、またそれらを処理する準備が整っているものと解釈されます。 それ以外の場合、メッセージが配信される前に、メッセージに対するロックの有効期限が切れます。 リンク クレジットによるフロー制御は、送り出された有効なメッセージを受信側がすぐに処理できることを前提としています。
 
@@ -208,7 +208,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 アプリケーションで定義する必要があるプロパティはすべて、AMQP の `application-properties` マップにマッピングされる必要があります。
 
-#### <a name="header"></a>ヘッダー
+#### <a name="header"></a>header
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -227,14 +227,14 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | to |アプリケーション定義の送信先 ID。Service Bus では解釈されません。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | subject |アプリケーション定義のメッセージ用途 ID。Service Bus では解釈されません。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | reply-to |アプリケーション定義の応答パス ID。Service Bus では解釈されません。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| correlation-id |アプリケーション定義の相関関係 ID。Service Bus では解釈されません。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
-| content-type |アプリケーション定義の本文コンテンツ タイプ ID。Service Bus では解釈されません。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
+| correlation-id |アプリケーション定義の相関関係 ID。Service Bus では解釈されません。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |アプリケーション定義の本文コンテンツ タイプ ID。Service Bus では解釈されません。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |アプリケーション定義の本文コンテンツ エンコーディング ID。Service Bus では解釈されません。 |Service Bus API を介してアクセスすることはできません。 |
 | absolute-expiry-time |メッセージの有効期限が切れる絶対時刻を宣言します。 入力時には無視され (ヘッダーの TTL が優先され)、出力時に強制力を持ちます。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | creation-time |メッセージが作成された時刻を宣言します。 Service Bus では使用されません。 |Service Bus API を介してアクセスすることはできません。 |
 | group-id |関連する一連のメッセージに対するアプリケーション定義の ID。 Service Bus のセッションに使用されます。 |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | group-sequence |セッション内のメッセージの相対シーケンス番号を識別するカウンター。 Service Bus では無視されます。 |Service Bus API を介してアクセスすることはできません。 |
-| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="message-annotations"></a>メッセージの注釈
 
@@ -283,7 +283,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| | にも掲載されています。 . にも掲載されています。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> にも掲載されています。 . にも掲載されています。 |
+| | 。 . 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 . 。 |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
 
@@ -361,9 +361,9 @@ CBS には、メッセージング インフラストラクチャによって提
 
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| operation |いいえ  |string |**put-token** |
-| type |いいえ  |string |格納されるトークンの種類。 |
-| name |いいえ  |string |発行先 (トークンの適用先)。 |
+| operation |いいえ  |文字列 |**put-token** |
+| type |いいえ  |文字列 |格納されるトークンの種類。 |
+| name |いいえ  |文字列 |発行先 (トークンの適用先)。 |
 | expiration |[はい] |timestamp |トークンの有効期限。 |
 
 トークンの関連付けの対象となるエンティティは、*name* プロパティによって識別されます。 Service Bus では、キュー (またはトピック/サブスクリプション) のパスになります。 トークンの種類は、*type* プロパティによって識別されます。
@@ -381,7 +381,7 @@ CBS には、メッセージング インフラストラクチャによって提
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
 | status-code |いいえ  |int |HTTP 応答コード **[RFC2616]**。 |
-| status-description |[はい] |string |ステータスの説明。 |
+| status-description |[はい] |文字列 |ステータスの説明。 |
 
 クライアントは、メッセージング インフラストラクチャ内の任意のエンティティに対し、*put-token* を繰り返し呼び出すことができます。 トークンの有効範囲は現在のクライアントに限定され、現在の接続に固定されます。つまり、保持されているトークンは、接続が失われた時点でサーバーによって破棄されます。
 

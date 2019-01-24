@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのユーザー インターフェイスの
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 08cd16cb9edc5606a18fc5d425910185f7747179
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 44d1e5996b1f9b8ae65df9ad16c4bb543fdab1a0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187554"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844774"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 

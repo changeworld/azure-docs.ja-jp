@@ -3,19 +3,19 @@ title: Azure Active Directory B2C で Azure Active Directory 組織用のサイ�
 description: Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c48e4696d572b87a4e1553f9d4a2dc9921361388
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 06630d93925875a2c9a492d018f5dd211f437430
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719914"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846494"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 

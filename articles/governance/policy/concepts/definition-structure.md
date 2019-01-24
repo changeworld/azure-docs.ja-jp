@@ -4,17 +4,17 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/12/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f1332e1622c34a33dd264a1115a0fd7f37ee8ba7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0fe15cc87e0d30f58dc26ae925efa6d65b243f5b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383971"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851659"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -26,9 +26,9 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
 - モード
-- パラメーター
+- parameters
 - 表示名
-- 説明
+- description
 - ポリシー規則
   - 論理評価
   - 効果
@@ -68,7 +68,9 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../samples/index.md)」にあります。
 
-## <a name="mode"></a>モード
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
+## <a name="mode"></a>Mode
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
@@ -79,7 +81,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
@@ -234,9 +236,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ポリシーでは、次の種類の効果がサポートされています。
 
-- **Deny**: アクティビティ ログでイベントを生成し、要求は失敗します。
+- **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
 - **Audit**: アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
-- **append**: 定義済みのフィールド セットを要求に追加します。
+- **append** は定義済みのフィールド セットを要求に追加します。
 - **AuditIfNotExists**: リソースが存在しない場合に監査を有効にします。
 - **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
@@ -276,7 +278,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
 - [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
 - [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [subscription](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- [サブスクリプション](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
 
 さらに、`field` 関数もポリシー規則で使用できます。 `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 
@@ -325,13 +327,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - Azure PowerShell
 
   ```azurepowershell-interactive
-  # Login first with Connect-AzureRmAccount if not using Cloud Shell
+  # Login first with Connect-AzAccount if not using Cloud Shell
 
-  # Use Get-AzureRmPolicyAlias to list available providers
-  Get-AzureRmPolicyAlias -ListAvailable
+  # Use Get-AzPolicyAlias to list available providers
+  Get-AzPolicyAlias -ListAvailable
 
-  # Use Get-AzureRmPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
-  Get-AzureRmPolicyAlias -NamespaceMatch 'automation'
+  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
+  Get-AzPolicyAlias -NamespaceMatch 'automation'
   ```
 
 - Azure CLI

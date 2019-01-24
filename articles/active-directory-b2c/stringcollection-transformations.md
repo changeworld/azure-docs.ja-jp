@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの StringCollection 要求変換の例
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 924da8c92bad1c5345d5d1833723a0c4e8ad7d29
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7bec6846a1bb22893beed8086b6d9e88babc1906
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432666"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847946"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -29,7 +29,7 @@ ms.locfileid: "47432666"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | 出力要求に追加される ClaimType。 |
+| InputClaim | item | 文字列 | 出力要求に追加される ClaimType。 |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
 
@@ -64,7 +64,7 @@ ms.locfileid: "47432666"
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
-| InputParameter | item | string | 出力要求に追加される値。 |
+| InputParameter | item | 文字列 | 出力要求に追加される値。 |
 | OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
 
 この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列値を追加します。 次の例では、定数の電子メール アドレス (admin@contoso.com) を **otherMails** 要求に追加します。 
@@ -99,7 +99,7 @@ ms.locfileid: "47432666"
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 項目を取得する要求変換で使用される ClaimTypes。 |
-| OutputClaim | extractedItem | string | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 コレクション内の最初の項目 |
+| OutputClaim | extractedItem | 文字列 | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 コレクション内の最初の項目 |
 
 次の例では、**otherMails** 要求が読み取られ、最初の項目が **email** 要求に返されます。 
 

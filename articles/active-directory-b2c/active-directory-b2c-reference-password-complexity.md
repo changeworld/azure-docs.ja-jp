@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のパスワードの複雑さ | Microsoft Doc
 description: Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e728fb037895908882bbe6dc7e8414457ccf273f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724436"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845556"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C:パスワードの複雑さの要件を構成する
 

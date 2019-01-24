@@ -3,9 +3,9 @@ title: Service Bus キューの使用方法 (Node.js) | Microsoft Docs
 description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 09/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 99cf1b8e95e2a07d6ade2e73c097c59fed0d4f56
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: b8036c373541d76ecaaec7664e3bfc3ad3e35703
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394328"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853096"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Node.js で Service Bus キューを使用する方法
 

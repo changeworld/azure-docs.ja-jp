@@ -2,18 +2,19 @@
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 11/05/2018
-ms.author: spelluru
-ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279883"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847817"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -86,7 +87,7 @@ Service Bus メッセージング サービス (キューおよびトピック/�
 Service Bus で可能性のある例外の一覧については、「[例外の概要][Exceptions overview]」をご覧ください。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Shared Access Signature とは何ですか。どの言語で署名の生成がサポートされますか。
-Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、および C\# で独自の署名を生成する方法については、「[Shared Access Signature][Shared Access Signatures]」を参照してください。
+Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Java、および C\# で独自の署名を生成する方法については、[Shared Access Signature][Shared Access Signatures] に関する記事を参照してください。
 
 ## <a name="subscription-and-namespace-management"></a>サブスクリプションと名前空間の管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>別の Azure サブスクリプションに名前空間を移行する方法を教えてください

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーを使って ADFS 
 description: Azure Active Directory B2C で SAML プロトコルとカスタム ポリシーを使用して ADFS 2016 を設定する
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6a371bbe34368e5373589575f367d4b352320ecd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685771"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856453"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -175,7 +175,7 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
     | E-Mail-Address | email |
     | Display-Name | name |
     
-12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、**[詳細]** タブを選択して、**[セキュア ハッシュ アルゴリズム]** を `SHA-1` または `SHA-256` に変更し、**[OK]** をクリックします。  
+12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、**[詳細]** タブを選択して、**[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、**[OK]** をクリックします。  
 13. [サーバー マネージャー] で、**[ツール]** を選択し、**[ADFS Management]\(ADFS 管理\)** を選択します。
 14. 作成した証明書利用者信頼を選択し、**[フェデレーション メタデータから更新]** を選択し、**[更新]** をクリックします。 
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C カスタム ポリシーでの要求リゾル
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求リゾルバーがどのように使用されるかについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dab6b87c2785d3331817d6c191be64d406683a51
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312015"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845015"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -33,10 +33,10 @@ Azure Active Directory (Azure AD) B2C [カスタム ポリシー](active-directo
 </ClaimType>
 ```
 
-技術プロファイルでは、要求リゾルバーが要求の種類にマップされます。 Azure AD B2C では、要求リゾルバー `{context:corelationId}` の値が要求 `correlationId` に設定されて、技術プロファイルに要求が送信されます。
+技術プロファイルでは、要求リゾルバーが要求の種類にマップされます。 Azure AD B2C では、要求リゾルバー `{Context:CorrelationId}` の値が要求 `correlationId` に設定されて、技術プロファイルに要求が送信されます。
 
 ```XML
-<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{context:corelationId}" />
+<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
 ## <a name="claim-resolver-types"></a>要求リゾルバーの種類

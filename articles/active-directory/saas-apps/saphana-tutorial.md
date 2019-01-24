@@ -4,7 +4,7 @@ description: Azure Active Directory と SAP HANA の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 1de479d5486bae224185407dadda4474a4ed8f0c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6c0f1c97247298564737932299d13a44a6f0d88a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808946"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル:Azure Active Directory と SAP HANA の統合
 

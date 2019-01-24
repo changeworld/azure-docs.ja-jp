@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9fed56746f5b26269f6a70aeedd06ba9b19548f
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2ff08b0f155be54ee57d2d9999c47aa56a366d09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018827"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852203"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける方法
 このトピックでは、Azure CLI を使用して Azure Marketplace で VM イメージを見つける方法を説明します。 これらの情報は、CLI、Resource Manager テンプレート、またはその他のツールを使用して、VM をプログラムによって作成する際、Marketplace イメージを指定するために使用できます。
@@ -128,7 +128,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>イメージの移動 
-任意の場所にあるイメージを検索する別の方法として、[az vm image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers)、[az vm image list-offers](/cli/azure/vm/image#az_vm_image_list_offers)、および[az vm image list-skus](/cli/azure/vm/image#az_vm_image_list_skus) コマンドを連続で実行します。 これらのコマンドを使用する際は、以下の値を決定します。
+任意の場所にあるイメージを検索する別の方法として、[az vm image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers)、[az vm image list-offers](/cli/azure/vm/image)、および[az vm image list-skus](/cli/azure/vm/image#az_vm_image_list_skus) コマンドを連続で実行します。 これらのコマンドを使用する際は、以下の値を決定します。
 
 1. イメージの発行元を一覧表示する。
 2. 指定された発行元について、そのプランを一覧表示する。

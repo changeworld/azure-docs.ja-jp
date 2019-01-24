@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のユーザー アカウントの概要 | Mic
 description: Azure Active Directory B2C のユーザー アカウントについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4bd3eba54d70ae065ce16845dd4fb9351c069f2d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725762"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853308"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 

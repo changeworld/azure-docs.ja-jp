@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201059"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826175"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -160,7 +160,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
-    // Construct autorization string
+    // Construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "&sig="
     + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
