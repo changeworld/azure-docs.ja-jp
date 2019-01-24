@@ -35,10 +35,10 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 | **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | [はい] | いいえ  | いいえ  | はい | いいえ  |
-|Java|NA|[はい]|いいえ |いいえ |はい|いいえ |
-|Python|NA|[はい]|いいえ |いいえ |はい|いいえ |
-|Node/JS|NA|[はい]|いいえ |いいえ |はい|いいえ |
+| .NET | NA | はい | いいえ  | いいえ  | はい | いいえ  |
+|Java|NA|はい|いいえ |いいえ |はい|いいえ |
+|Python|NA|はい|いいえ |いいえ |はい|いいえ |
+|Node/JS|NA|はい|いいえ |いいえ |はい|いいえ |
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 
