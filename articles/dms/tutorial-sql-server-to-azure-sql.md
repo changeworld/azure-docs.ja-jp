@@ -55,7 +55,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 ## <a name="assess-your-on-premises-database"></a>オンプレミス データベースを評価する
 オンプレミスの SQL Server インスタンスから Azure SQL Database にデータを移行する前に、SQL Server データベースを評価して、移行を妨げる問題がないかどうか確認する必要があります。 Data Migration Assistant v3.3 以降を使用し、[SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事の手順に従って、オンプレミス データベースの評価を完了してください。 必要な手順の概要は次のとおりです。
 1.  Data Migration Assistant で、新規 (+) アイコンを選択し、**[評価]** プロジェクト タイプを選択します。
-2.  プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、**[対象サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、**[作成]** を選択してプロジェクトを作成します。
+2.  プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、**[作成]** を選択してプロジェクトを作成します。
 
     Azure SQL Database に移行するソース SQL Server データベースを評価する際には、次の両方の評価レポート タイプを選択できます。
     - データベース互換性をチェックする
@@ -87,7 +87,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 **AdventureWorks2012** スキーマを Azure SQL Database に移行するには、次の手順を実行します。
 
 1.  Data Migration Assistant で、新規 (+) アイコンを選択し、**[プロジェクト タイプ]** で **[移行]** を選択します。
-2.  プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、**[対象サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
+2.  プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
 3.  **[移行スコープ]** で、**[Schema only]\(スキーマのみ\)** を選択します。
 
     上記の手順を実行すると、Data Migration Assistant のインターフェイスの表示が次の図のようになります。

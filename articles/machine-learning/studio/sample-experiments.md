@@ -1,27 +1,8 @@
 ---
-title: 例から Machine Learning Studio の実験を作成する - Azure | Microsoft Docs
-description: Azure AI Gallery と Azure Machine Learning Studio を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
-keywords: 機械学習の例, サンプル実験, 機械学習のサンプル, AI の例
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/05/2018
-ms.openlocfilehash: 6b2a07b105252ca1fb5eb37c2571601c3eb74179
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276436"
+title:例から Machine Learning Studio の実験を作成する titleSuffix: Azure Machine Learning Studio の説明:Azure AI Gallery と Azure Machine Learning Studio を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/05/2018
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio の実験を作成する
 
@@ -42,10 +23,10 @@ ms.locfileid: "53276436"
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>特定の要件を満たす実験を探す
 すべての実験を参照するには、次の手順を実行します。
 
-1. ページの上部にある **[Browse all (すべて参照)]** をクリックします。
+1. ページの上部にある **Browse all (すべて参照)** をクリックします。
 2. 左側の **[Categories]\(カテゴリ\)** セクションの **[Refine by]\(絞り込み条件\)** で **[Experiment]\(実験\)** を選ぶと、ギャラリー内のすべての実験が表示されます。
 3. 自分の要件を満たす実験は、いくつかの方法で探すことができます。
-   * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories](カテゴリ)** で **[Experiment](実験)** を選択します。 次に、**[Algorithms Used]\(使用されたアルゴリズム\)** の **[Show all]\(すべて表示\)** をクリックし、ダイアログ ボックスで **[PCA-Based Anomaly Detection]\(PCA ベースの異常検出\)** を選択します。 スクロールしないと見えない場合があります。<br></br>
+   * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories]\(カテゴリ)** で **[Experiment]\(実験)** を選択します。 次に、**[Algorithms Used]\(使用されたアルゴリズム\)** の **[Show all]\(すべて表示\)** をクリックし、ダイアログ ボックスで **[PCA-Based Anomaly Detection]\(PCA ベースの異常検出\)** を選択します。 スクロールしないと見えない場合があります。<br></br>
      ![フィルターの選択](./media/sample-experiments/choose-an-algorithm.png)
    * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、**[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** フィルターを選択します。<br></br>
      ![検索ボックスを使う](./media/sample-experiments/search-for-experiments.png)

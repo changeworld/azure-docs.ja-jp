@@ -95,7 +95,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 |シグナル名|ディメンション|説明|
 |---|---|---|
 |**Total Update Deployment Runs (更新プログラムの展開の合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)|このシグナルは、更新プログラムの展開の全体的な状態を通知するために使用されます。|
-|**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (対象のコンピューター)</br>- Update Deployment Run Id (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
+|**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (ターゲット コンピューター)</br>- Update Deployment Run Id (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
 
 ディメンションの値には、一覧から有効な値を選択します。 探している値が一覧に見つからない場合は、ディメンションの横にある **\+** 記号をクリックしてカスタム名を入力します。 その後、お客様が探したい値を選択できます。 ディメンションのすべての値を選択したい場合は、**[選択]\*** ボタンをクリックします。 ディメンションの値を選択しなかった場合、そのディメンションは評価中に無視されます。
 
@@ -145,8 +145,8 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
    |OS  |type  |
    |---------|---------|
-   | Windows     | 緊急更新プログラム</br>セキュリティ更新プログラム</br>更新プログラムのロールアップ</br>Feature Pack</br>Service Pack</br>定義の更新</br>ツール</br>更新プログラム        |
-   | Linux     | 緊急更新プログラムとセキュリティ更新プログラム</br>他の更新プログラム       |
+   |Windows     | 緊急更新プログラム</br>セキュリティ更新プログラム</br>更新プログラムのロールアップ</br>Feature Pack</br>Service Pack</br>定義の更新</br>ツール</br>更新プログラム        |
+   |Linux     | 緊急更新プログラムとセキュリティ更新プログラム</br>他の更新プログラム       |
 
    分類の種類の詳細については、「[Update classifications (更新プログラムの分類)](automation-update-management.md#update-classifications)」をご覧ください。
 

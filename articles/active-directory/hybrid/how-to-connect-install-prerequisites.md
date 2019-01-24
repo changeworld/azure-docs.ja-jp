@@ -148,9 +148,9 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 ### <a name="windows-remote-management"></a>Windows リモート管理
 Azure AD Connect を使用して Active Directory フェデレーション サービスまたは Web アプリケーション プロキシをデプロイする場合、以下の要件を確認します。
 
-* 対象サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
+* ターゲット サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
   * 管理者特権の PSH コマンド ウィンドウで、 `Enable-PSRemoting –force`
-* 対象サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
+* ターゲット サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
   * ターゲット コンピューター (WAP コンピューター) での要件
     * サービス スナップインから winrm (Windows Remote Management / WS-Management) サービスが実行されていることを確認します。
     * 管理者特権の PSH コマンド ウィンドウで、 `Enable-PSRemoting –force`
