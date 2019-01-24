@@ -40,17 +40,17 @@ ms.locfileid: "54267455"
 | addsservices | いいえ  | 
 | agents | いいえ  | 
 | anonymousapiusers | いいえ  | 
-| 構成 | いいえ  | 
-| ログ | いいえ  | 
+| configuration | いいえ  | 
+| logs | いいえ  | 
 | reports | いいえ  | 
 | services | いいえ  | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| 構成 | いいえ  | 
+| configurations | いいえ  | 
 | generateRecommendations | いいえ  | 
-| 推奨事項 | いいえ  | 
+| recommendations | いいえ  | 
 | suppressions | いいえ  | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
@@ -68,7 +68,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | はい | 
+| servers | はい | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | リソースの種類 | タグのサポート |
@@ -89,7 +89,7 @@ ms.locfileid: "54267455"
 | denyAssignments | いいえ  | 
 | elevateAccess | いいえ  | 
 | locks | いいえ  | 
-| アクセス許可 | いいえ  | 
+| permissions | いいえ  | 
 | policyAssignments | いいえ  | 
 | policyDefinitions | いいえ  | 
 | policySetDefinitions | いいえ  | 
@@ -110,7 +110,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| 環境 | いいえ  | 
+| environments | いいえ  | 
 | environments/accounts | いいえ  | 
 | environments/accounts/namespaces | いいえ  | 
 | environments/accounts/namespaces/configurations | いいえ  | 
@@ -123,7 +123,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| 登録 | はい | 
+| registrations | はい | 
 | registrations/customerSubscriptions | いいえ  | 
 | registrations/products | いいえ  | 
 
@@ -226,7 +226,7 @@ ms.locfileid: "54267455"
 | ------------- | ----------- |
 | appliedReservations | いいえ  | 
 | calculatePrice | いいえ  | 
-| カタログ | いいえ  | 
+| catalogs | いいえ  | 
 | commercialReservationOrders | いいえ  | 
 | reservationOrders | いいえ  | 
 | reservationOrders/calculateRefund | いいえ  | 
@@ -299,7 +299,7 @@ ms.locfileid: "54267455"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | capabilities | いいえ  | 
-| ディスク | いいえ  | 
+| disks | いいえ  | 
 | images | いいえ  | 
 | osImages | いいえ  | 
 | osPlatformImages | いいえ  | 
@@ -326,13 +326,13 @@ ms.locfileid: "54267455"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | availabilitySets | はい | 
-| ディスク | はい | 
+| disks | はい | 
 | images | はい | 
 | restorePointCollections | はい | 
 | restorePointCollections/restorePoints | いいえ  | 
 | sharedVMImages | はい | 
 | sharedVMImages/versions | はい | 
-| スナップショット | はい | 
+| snapshots | はい | 
 | virtualMachines | はい | 
 | virtualMachines/diagnosticSettings | いいえ  | 
 | virtualMachines/extensions | はい | 
@@ -362,7 +362,7 @@ ms.locfileid: "54267455"
 | ReservationRecommendations | いいえ  | 
 | ReservationSummaries | いいえ  | 
 | ReservationTransactions | いいえ  | 
-| タグ | いいえ  | 
+| Tags | いいえ  | 
 | Terms | いいえ  | 
 | UsageDetails | いいえ  | 
 
@@ -375,7 +375,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| レジストリ | はい | 
+| registries | はい | 
 | registries/builds | いいえ  | 
 | registries/builds/cancel | いいえ  | 
 | registries/builds/getLogLink | いいえ  | 
@@ -418,21 +418,21 @@ ms.locfileid: "54267455"
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| アラート | いいえ  | 
+| Alerts | いいえ  | 
 | BillingAccounts | いいえ  | 
-| コネクタ | はい | 
+| Connectors | はい | 
 | Departments | いいえ  | 
-| ディメンション | いいえ  | 
+| Dimensions | いいえ  | 
 | EnrollmentAccounts | いいえ  | 
-| クエリ | いいえ  | 
-| 登録 | いいえ  | 
+| Query | いいえ  | 
+| register | いいえ  | 
 | Reportconfigs | いいえ  | 
-| レポート | いいえ  | 
+| Reports | いいえ  | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| ハブ | はい | 
+| hubs | はい | 
 | hubs/authorizationPolicies | いいえ  | 
 | hubs/connectors | いいえ  | 
 | hubs/connectors/mappings | いいえ  | 
@@ -449,7 +449,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| ジョブ | はい | 
+| jobs | はい | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | リソースの種類 | タグのサポート |
@@ -465,7 +465,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| カタログ | はい | 
+| catalogs | はい | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | リソースの種類 | タグのサポート |
@@ -478,7 +478,7 @@ ms.locfileid: "54267455"
 | dataFactories | はい | 
 | dataFactories/diagnosticSettings | いいえ  | 
 | dataFactorySchema | いいえ  | 
-| ファクトリ | はい | 
+| factories | はい | 
 | factories/integrationRuntimes | いいえ  | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -500,26 +500,26 @@ ms.locfileid: "54267455"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | services | はい | 
-| サービス/プロジェクト | はい | 
+| services/projects | はい | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | はい | 
+| servers | はい | 
 | servers/recoverableServers | いいえ  | 
 | servers/virtualNetworkRules | いいえ  | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | はい | 
+| servers | はい | 
 | servers/recoverableServers | いいえ  | 
 | servers/virtualNetworkRules | いいえ  | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | はい | 
+| servers | はい | 
 | servers/advisors | いいえ  | 
 | servers/queryTexts | いいえ  | 
 | servers/recoverableServers | いいえ  | 
@@ -583,7 +583,7 @@ ms.locfileid: "54267455"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| クラスター | はい | 
+| clusters | はい | 
 | namespaces | はい | 
 | namespaces/authorizationrules | いいえ  | 
 | namespaces/disasterrecoveryconfigs | いいえ  | 
@@ -609,7 +609,7 @@ ms.locfileid: "54267455"
 | myareas/areas/areas/galleryitems | いいえ  | 
 | myareas/areas/galleryitems | いいえ  | 
 | myareas/galleryitems | いいえ  | 
-| 登録 | いいえ  | 
+| register | いいえ  | 
 | resources | いいえ  | 
 | retrieveresourcesbyid | いいえ  | 
 
@@ -627,13 +627,13 @@ ms.locfileid: "54267455"
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| クラスター | はい | 
+| clusters | はい | 
 | clusters/applications | いいえ  | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| ジョブ | はい | 
+| jobs | はい | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | リソースの種類 | タグのサポート |
@@ -665,10 +665,10 @@ ms.locfileid: "54267455"
 | extendedDiagnosticSettings | いいえ  | 
 | logDefinitions | いいえ  | 
 | logprofiles | いいえ  | 
-| ログ | いいえ  | 
+| logs | いいえ  | 
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
-| クエリ | いいえ  | 
+| queries | いいえ  | 
 | rollbackToLegacyPricingModel | いいえ  | 
 | scheduledqueryrules | はい | 
 | vmInsightsOnboardingStatuses | いいえ  | 
@@ -702,7 +702,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| クラスター | はい | 
+| clusters | はい | 
 | clusters/databases | いいえ  | 
 | clusters/databases/dataconnections | いいえ  | 
 | clusters/databases/eventhubconnections | いいえ  | 
@@ -726,7 +726,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| ログ | いいえ  | 
+| logs | いいえ  | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | リソースの種類 | タグのサポート |
@@ -739,14 +739,14 @@ ms.locfileid: "54267455"
 | ------------- | ----------- |
 | commitmentPlans | はい | 
 | webServices | はい | 
-| ワークスペース | はい | 
+| Workspaces | はい | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | accounts | はい | 
-| アカウント/ワークスペース | はい | 
-| アカウント/ワークスペース/プロジェクト | はい | 
+| accounts/workspaces | はい | 
+| accounts/workspaces/projects | はい | 
 | teamAccounts | はい | 
 | teamAccounts/workspaces | はい | 
 | teamAccounts/workspaces/projects | はい | 
@@ -832,7 +832,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| プロジェクト | はい | 
+| projects | はい | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | リソースの種類 | タグのサポート |
@@ -904,7 +904,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| デバイス | いいえ  | 
+| devices | いいえ  | 
 | linkTargets | いいえ  | 
 | storageInsightConfigs | いいえ  | 
 | workspaces | はい | 
@@ -918,7 +918,7 @@ ms.locfileid: "54267455"
 | managementassociations | いいえ  | 
 | managementconfigurations | はい | 
 | solutions | はい | 
-| ビュー | はい | 
+| views | はい | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | リソースの種類 | タグのサポート |
@@ -980,7 +980,7 @@ ms.locfileid: "54267455"
 | childResources | いいえ  | 
 | events | いいえ  | 
 | impactedResources | いいえ  | 
-| [通知] | いいえ  | 
+| notifications | いいえ  | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | リソースの種類 | タグのサポート |
@@ -1010,7 +1010,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| フロー | はい | 
+| flows | はい | 
 | jobcollections | はい | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1025,7 +1025,7 @@ ms.locfileid: "54267455"
 | advancedThreatProtectionSettings | いいえ  | 
 | alerts | いいえ  | 
 | allowedConnections | いいえ  | 
-| アプライアンス | いいえ  | 
+| appliances | いいえ  | 
 | applicationWhitelistings | いいえ  | 
 | AutoProvisioningSettings | いいえ  | 
 | Compliances | いいえ  | 
@@ -1038,7 +1038,7 @@ ms.locfileid: "54267455"
 | monitoring/antimalware | いいえ  | 
 | monitoring/baseline | いいえ  | 
 | monitoring/patch | いいえ  | 
-| ポリシー | いいえ  | 
+| policies | いいえ  | 
 | pricings | いいえ  | 
 | securityContacts | いいえ  | 
 | securitySolutions | いいえ  | 
@@ -1049,8 +1049,8 @@ ms.locfileid: "54267455"
 | securityStatus/virtualMachines | いいえ  | 
 | securityStatuses | いいえ  | 
 | securityStatusesSummaries | いいえ  | 
-| 設定 | いいえ  | 
-| タスク | いいえ  | 
+| settings | いいえ  | 
+| tasks | いいえ  | 
 | topologies | いいえ  | 
 | workspaceSettings | いいえ  | 
 
@@ -1078,7 +1078,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| クラスター | はい | 
+| clusters | はい | 
 | clusters/applications | いいえ  | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
@@ -1086,7 +1086,7 @@ ms.locfileid: "54267455"
 | ------------- | ----------- |
 | applications | はい | 
 | gateways | はい | 
-| ネットワーク | はい | 
+| networks | はい | 
 | secrets | はい | 
 | volumes | はい | 
 
@@ -1099,7 +1099,7 @@ ms.locfileid: "54267455"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | applianceDefinitions | はい | 
-| アプライアンス | はい | 
+| appliances | はい | 
 | applicationDefinitions | はい | 
 | applications | はい | 
 | jitRequests | はい | 
@@ -1107,10 +1107,10 @@ ms.locfileid: "54267455"
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| サーバー | はい | 
+| servers | はい | 
 | servers/administrators | いいえ  | 
 | servers/communicationLinks | いいえ  | 
-| サーバ/データベース | はい | 
+| servers/databases | はい | 
 | servers/encryptionProtector | いいえ  | 
 | servers/keys | いいえ  | 
 | servers/restorableDroppedDatabases | いいえ  | 
@@ -1148,7 +1148,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| マネージャー | はい | 
+| managers | はい | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | リソースの種類 | タグのサポート |
@@ -1177,17 +1177,17 @@ ms.locfileid: "54267455"
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| 環境 | はい | 
+| environments | はい | 
 | environments/accessPolicies | いいえ  | 
-| 環境/eventsource | はい | 
+| environments/eventsource | はい | 
 | environments/referenceDataSets | はい | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| アカウント | はい | 
-| アカウント/拡張 | はい | 
-| アカウント/プロジェクト | はい | 
+| account | はい | 
+| account/extension | はい | 
+| account/project | はい | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | リソースの種類 | タグのサポート |
@@ -1203,7 +1203,7 @@ ms.locfileid: "54267455"
 | apiManagementAccounts/connectionAcls | いいえ  | 
 | apiManagementAccounts/connections | いいえ  | 
 | billingMeters | いいえ  | 
-| 証明書 | はい | 
+| certificates | はい | 
 | connectionGateways | はい | 
 | connections | はい | 
 | customApis | はい | 
@@ -1215,7 +1215,7 @@ ms.locfileid: "54267455"
 | hostingEnvironments/workerPools | いいえ  | 
 | hostingEnvironments/workerPools/instances | いいえ  | 
 | publishingUsers | いいえ  | 
-| 推奨事項 | いいえ  | 
+| recommendations | いいえ  | 
 | resourceHealthMetadata | いいえ  | 
 | runtimes | いいえ  | 
 | serverFarms | はい | 
@@ -1225,10 +1225,10 @@ ms.locfileid: "54267455"
 | sites/hostNameBindings | いいえ  | 
 | sites/instances | いいえ  | 
 | sites/instances/extensions | いいえ  | 
-| サイト/premieraddons | はい | 
+| sites/premieraddons | はい | 
 | sites/recommendations | いいえ  | 
 | sites/resourceHealthMetadata | いいえ  | 
-| サイト/スロット | はい | 
+| sites/slots | はい | 
 | sites/slots/hostNameBindings | いいえ  | 
 | sites/slots/instances | いいえ  | 
 | sites/slots/instances/extensions | いいえ  | 
