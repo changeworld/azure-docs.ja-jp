@@ -30,13 +30,13 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 |必須|Setting|目的|
 |--|--|--|
-|[はい]|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
+|はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ |[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|[はい]|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
-|[はい]|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
+|はい|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ |[ログ](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
-|[はい]|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
+|はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。
@@ -67,7 +67,7 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|[はい]| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -95,7 +95,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 |必須| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|[はい]| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
+|はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ | `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="hierarchical-settings"></a>階層的な設定
