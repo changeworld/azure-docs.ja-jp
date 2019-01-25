@@ -132,7 +132,7 @@ ms.locfileid: "54850996"
 | setting.showContinueButton | いいえ  | [続行する] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
 | setting.showCancelButton | いいえ  | [キャンセル] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
 | setting.operatingMode | いいえ  | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。 |
-| ContentDefinitionReferenceId | [はい] | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
+| ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
 | EnforceEmailVerification | いいえ  | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 | 
 | setting.showSignupLink | いいえ  | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.retryLimit | いいえ  | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
@@ -141,16 +141,3 @@ ms.locfileid: "54850996"
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素は使用されません。
-
-
-
-
-
-
-
-
-
-
-
-
-
