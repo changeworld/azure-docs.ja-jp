@@ -19,8 +19,6 @@ items:
       href: azure-stack-update-1807.md
 - name: クイック スタート
   items:
-  - name: Azure Stack の評価
-    href: azure-stack-deploy-overview.md
   - name: 管理ポータルの使用
     href: azure-stack-manage-portals.md
   expanded: true
@@ -405,9 +403,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 4d16a02c09ae801e44b0f3e4d5540a445d41fae6
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 03f8d00216ee555e0e7fddd946382577bb0c1904
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319140"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382160"
