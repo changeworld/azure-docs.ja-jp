@@ -45,7 +45,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
 
-参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**Mbps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
+参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**MBps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
 
 ![パフォーマンス マトリックス](./media/copy-activity-performance/CopyPerfRef.png)
 
