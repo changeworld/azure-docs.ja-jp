@@ -98,9 +98,6 @@ items:
         href: tutorial-create-route-table-powershell.md
       - name: Azure CLI
         href: tutorial-create-route-table-cli.md
-      - name: Ansible
-        href: /azure/ansible/ansible-create-configure-route-table
-        maintainContext: true
     - name: サービス エンドポイント
       items:
       - name: Azure PowerShell
@@ -362,9 +359,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: FAQ
     href: virtual-networks-faq.md
-ms.openlocfilehash: 72fd6f6a16c78cef0e690882fd426e13a782b299
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 0e992cd928597e93d57ec89cae440e7081520c54
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883451"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321431"
