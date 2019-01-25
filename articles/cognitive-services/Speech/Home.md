@@ -28,7 +28,7 @@ ms.locfileid: "49340360"
 
 ## <a name="speech-to-text-speech-recognition"></a>Speech to Text (音声認識)
 
-Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "書き起こします"。 Speech は、REST API **または** Websocket ベースのクライアント ライブラリを使用してアプリに追加できます。
+Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "*書き起こします*"。 Speech は、REST API **または** Websocket ベースのクライアント ライブラリを使用してアプリに追加できます。
 
 - [REST API](GetStarted/GetStartedREST.md): アプリからサービスへの HTTP 呼び出しを使用して音声認識を行います。
 - [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md): 高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。 REST API とは異なり、クライアント ライブラリは、Websocket ベースのプロトコルを利用します。

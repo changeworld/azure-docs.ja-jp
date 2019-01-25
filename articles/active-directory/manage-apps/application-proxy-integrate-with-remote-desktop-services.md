@@ -4,7 +4,7 @@ description: Azure AD アプリケーション プロキシ コネクタの基�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b3a009ec3ed85bb1bacc089a0fa12f1aa9ecce
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135493"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474576"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
