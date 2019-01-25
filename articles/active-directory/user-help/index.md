@@ -10,8 +10,13 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
+ms.openlocfilehash: c6fe14c9f67d6ce2f432b57b2cbbd0d026cebe85
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901634"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
 このコンテンツは、セキュリティ情報の設定と使用、2 段階認証、自分のパスワードのリセット方法の習得、Azure Active Directory デバイスの設定と参加、Microsoft Authenticator アプリとマイ アプリ ポータルの設定と使用を支援するために作成されました。
@@ -81,7 +86,10 @@ ms.author: lizross
                     <div class="cardText">
                         <h3>Microsoft Authenticator アプリのヘルプ</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">作業開始</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">概要</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">アプリのダウンロードとインストール</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">アカウントの追加</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">アプリを使用したサインイン</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">アカウント資格情報のバックアップと復旧</a>
                         </p>
                     </div>

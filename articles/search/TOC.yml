@@ -216,7 +216,7 @@ items:
       href: search-manage.md
     - name: PowerShell (Azure Search)
       href: search-manage-powershell.md
-    - name: 使用状況と統計情報の監視
+    - name: Monitor アクティビティとログ記録
       href: search-monitor-usage.md
     - name: 検索トラフィックの分析
       href: search-traffic-analytics.md
@@ -289,9 +289,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: fe70b70005de7f70d00c505adbce4665e41981dd
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 73d7949b65333b95a9431797b2f82e8947bba8b2
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412150"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888075"

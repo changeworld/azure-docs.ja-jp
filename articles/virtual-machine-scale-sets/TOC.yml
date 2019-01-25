@@ -181,14 +181,6 @@ items:
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
   - name: デプロイ
     items:
-    - name: Ansible
-      items:
-      - name: スケール セットを作成および管理する
-        href: /azure/ansible/ansible-create-configure-vmss
-        maintainContext: true
-      - name: スケール セットへのアプリのデプロイ
-        href: /azure/ansible/ansible-deploy-app-vmss
-        maintainContext: true
     - name: Visual Studio で作成する
       href: virtual-machine-scale-sets-vs-create.md
     - name: Availability Zones を使用する
@@ -251,6 +243,17 @@ items:
       href: virtual-machine-scale-sets-convert-template-to-md.md
     - name: Azure の計画メンテナンス
       href: virtual-machine-scale-sets-maintenance-notifications.md
+  - name: Ansible の使用
+    items:
+    - name: スケール セットを作成および管理する
+      href: /azure/ansible/ansible-create-configure-vmss
+      maintainContext: true
+    - name: スケール セットへのアプリのデプロイ
+      href: /azure/ansible/ansible-deploy-app-vmss
+      maintainContext: true
+    - name: スケール セットの自動スケーリングを行う
+      href: /azure/ansible/ansible-auto-scale-vmss
+      maintainContext: true
   - name: トラブルシューティング
     items:
     - name: 自動スケール
@@ -283,9 +286,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: de2352105b178a91e47934db5b2c2d6b82a12b94
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e8239a2b9f4717e2483af2084b1ba07368361e88
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231582"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883332"

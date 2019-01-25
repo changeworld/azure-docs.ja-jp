@@ -47,12 +47,24 @@ items:
   items:
   - name: 概要
     href: user-help-auth-app-overview.md
-  - name: 作業開始
+  - name: アプリのダウンロードとインストール
     href: microsoft-authenticator-app-how-to.md
-  - name: バックアップと復旧
-    href: microsoft-authenticator-app-backup-and-recovery.md
-  - name: 携帯電話を使用したサインイン
+  - name: アカウントの追加の概要
+    href: microsoft-authenticator-app-add-accounts-overview.md
+    items:
+    - name: 職場または学校用のアカウントを追加する
+      href: microsoft-authenticator-app-add-work-account.md
+    - name: 個人用の Microsoft アカウントを追加する
+      href: microsoft-authenticator-app-add-personal-account.md
+    - name: 個人用の Microsoft 以外のアカウントを追加する
+      href: microsoft-authenticator-app-add-non-microsoft-account.md
+    - name: アカウントの手動での追加
+      href: microsoft-authenticator-app-add-account-manual.md
+    expanded: true
+  - name: Microsoft Authenticator アプリを使用してサインインする
     href: microsoft-authenticator-app-phone-signin-faq.md
+  - name: アカウントのバックアップと回復
+    href: microsoft-authenticator-app-backup-and-recovery.md
   - name: FAQ
     href: microsoft-authenticator-app-faq.md
 - name: マイ アプリ ポータルのヘルプ
@@ -73,9 +85,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: メッセージ "アクセスできません" のトラブルシューティング
     href: user-help-device-remediation.md
-ms.openlocfilehash: 27d0d3300a19d4c27bec48ebf411c7ac3ee6ad87
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9ccadb31ce331d3a9dc64aa26d5e8edab900cd1e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649587"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904099"

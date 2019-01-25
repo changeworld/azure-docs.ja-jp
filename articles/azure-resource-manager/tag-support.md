@@ -48,7 +48,7 @@ ms.locfileid: "54267455"
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| configurations | いいえ  | 
+| configuration | いいえ  | 
 | generateRecommendations | いいえ  | 
 | recommendations | いいえ  | 
 | suppressions | いいえ  | 
@@ -425,7 +425,7 @@ ms.locfileid: "54267455"
 | Dimensions | いいえ  | 
 | EnrollmentAccounts | いいえ  | 
 | Query | いいえ  | 
-| register | いいえ  | 
+| registrations | いいえ  | 
 | Reportconfigs | いいえ  | 
 | Reports | いいえ  | 
 
@@ -609,7 +609,7 @@ ms.locfileid: "54267455"
 | myareas/areas/areas/galleryitems | いいえ  | 
 | myareas/areas/galleryitems | いいえ  | 
 | myareas/galleryitems | いいえ  | 
-| register | いいえ  | 
+| registrations | いいえ  | 
 | resources | いいえ  | 
 | retrieveresourcesbyid | いいえ  | 
 
@@ -668,7 +668,7 @@ ms.locfileid: "54267455"
 | logs | いいえ  | 
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
-| queries | いいえ  | 
+| Query | いいえ  | 
 | rollbackToLegacyPricingModel | いいえ  | 
 | scheduledqueryrules | はい | 
 | vmInsightsOnboardingStatuses | いいえ  | 

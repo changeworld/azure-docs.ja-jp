@@ -5,17 +5,22 @@ title: Azure Active Directory のドキュメント - チュートリアル、AP
 description: Azure Active Directory (Azure AD) は、Microsoft のマルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスで、中核となるディレクトリ サービス、アプリケーションのアクセス管理機能、ID の保護機能が 1 つのソリューションに統合されています。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: landing-page
-ms.date: 01/16/2019
-ms.author: mtillman
+ms.date: 01/24/2019
+ms.author: barbkess
+ms.openlocfilehash: e8e422e6ba69669b24fc141b2688d6777ab85384
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900971"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure Active Directory のドキュメント</h1>
-        <p>Azure Active Directory (Azure AD) は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。</p><p></p>
+        <p>Azure Active Directory (Azure AD) は、マルチテナントに対応したクラウドベースの ID およびアクセスの管理サービスです。</p><p></p>
         <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
             <li>
                 <a href="fundamentals/active-directory-whatis.md">
