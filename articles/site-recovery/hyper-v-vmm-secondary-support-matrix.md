@@ -55,15 +55,15 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 
 **構成** | **サポートされています**  
 --- | --- 
-ホスト - NIC チーミング | [はい] 
-ホスト - VLAN | [はい] 
-ホスト - IPv4 | [はい] 
+ホスト - NIC チーミング | はい 
+ホスト - VLAN | はい 
+ホスト - IPv4 | はい 
 ホスト - IPv6 | いいえ  
 ゲスト VM - NIC チーミング | いいえ 
-ゲスト VM - IPv4 | [はい]
+ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
-ゲスト VM - マルチ NIC | [はい]
+Gues VM - Windows/Linux - 静的 IP アドレス | はい
+ゲスト VM - マルチ NIC | はい
 
 
 ## <a name="storage"></a>Storage
@@ -73,9 +73,9 @@ Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
 **ストレージ (ホスト)** | **サポートされています**
 --- | --- 
 NFS | 該当なし
-SMB 3.0 |  [はい]
-SAN (ISCSI) | [はい]
-マルチパス (MPIO) | [はい]
+SMB 3.0 |  はい
+SAN (ISCSI) | はい
+マルチパス (MPIO) | はい
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
@@ -83,19 +83,19 @@ SAN (ISCSI) | [はい]
 --- | --- | 
 VMDK |  該当なし
 VHD/VHDX | はい (最大 16 個のディスク)
-第 2 世代 VM | [はい]
+第 2 世代 VM | はい
 共有クラスター ディスク | いいえ 
 暗号化されたディスク | いいえ 
 UEFI| 該当なし
 NFS | いいえ 
 SMB 3.0 | いいえ 
 RDM | 該当なし
-1 TB より大きいディスク | [はい]
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | [はい]
-記憶域 | [はい]
+1 TB より大きいディスク | はい
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい
+記憶域 | はい
 ディスクのホット アド/削除 | いいえ 
-ディスクの除外 | [はい]
-マルチパス (MPIO) | [はい]
+ディスクの除外 | はい
+マルチパス (MPIO) | はい
 
 ## <a name="vaults"></a>資格情報コンテナー
 
