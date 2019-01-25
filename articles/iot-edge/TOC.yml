@@ -138,10 +138,12 @@ items:
       href: how-to-store-data-blob.md
   - name: DevOps ツールを使用した管理
     items:
-    - name: IoT Edge の Azure DevOps Projects
+    - name: Azure DevOps Projects
       href: how-to-devops-project.md
-    - name: Azure DevOps における CI/CD
+    - name: Azure DevOps
       href: how-to-ci-cd.md
+    - name: Jenkins 用の IoT Edge プラグイン
+      href: how-to-devops-plugins.md
   - name: トラブルシューティング
     href: troubleshoot.md
 - name: 関連項目
@@ -210,9 +212,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: a55b2a1ab6a814d97e750b8b17b20feb2a17e12f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 686acdb4114756ee311c752c412d0aa2e927f67e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790216"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827858"

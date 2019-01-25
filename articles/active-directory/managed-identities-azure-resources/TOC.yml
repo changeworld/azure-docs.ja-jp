@@ -130,7 +130,7 @@ items:
   - name: CLI
     href: /cli/azure/identity
   - name: PowerShell
-    href: /powershell/module/azurerm.managedserviceidentity#managed_service_identity
+    href: /powershell/module/az.managedserviceidentity#managed_service_identity
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet
   - name: Java
@@ -153,9 +153,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 開発者フォーラム
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: fd1da572bcd8dbf88fa2c3f54dd11f85bc489c93
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2e2db9c327083bb7e8053213be3dbe5cdfde9b3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718629"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902073"

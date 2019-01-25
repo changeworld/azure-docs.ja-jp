@@ -155,7 +155,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: クエリ ロジック
       href: stream-analytics-troubleshoot-query.md
-    - name: 診断ログ
+    - name: アクティビティ ログと診断ログ
       href: stream-analytics-job-diagnostic-logs.md
   - name: Machine Learning との統合
     items:
@@ -427,9 +427,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: a66aa2ae82ab9862de7a6a6be425268462c61755
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: afaa9f2a88a6ac3f93ffb58747381ae93ccd677a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352769"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886545"

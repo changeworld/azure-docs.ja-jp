@@ -18,7 +18,7 @@ items:
   - name: 新機能
     href: whats-new.md
   expanded: true
-- name: 作業の開始
+- name: チュートリアル
   items:
   - name: 初めての実験を作成する
     displayName: quickstart
@@ -41,6 +41,16 @@ items:
     - name: 6 - Web サービスにアクセスする
       displayName: consume
       href: walkthrough-6-access-web-service.md
+  - name: R の概要
+    href: r-quickstart.md
+- name: サンプル
+  items:
+  - name: 使用可能なデータセット
+    href: use-sample-datasets.md
+  - name: Azure AI ギャラリー
+    href: gallery-how-to-use-contribute-publish.md
+- name: 概念
+  items:
   - name: 初心者向けデータ サイエンス解説
     items:
     - name: 1 - 5 つの質問
@@ -53,19 +63,6 @@ items:
       href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
     - name: 5 - 他のユーザーの作業をコピーする
       href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
-  - name: R のクイック スタート
-    href: r-quickstart.md
-- name: サンプル
-  items:
-  - name: サンプル実験
-    displayName: gallery
-    href: sample-experiments.md
-  - name: サンプル データセット
-    href: use-sample-datasets.md
-  - name: Azure AI ギャラリー
-    href: gallery-how-to-use-contribute-publish.md
-- name: 概念
-  items:
   - name: モデル管理
     displayName: deploy, consume, web service
     href: deploy-consume-web-service-guide.md
@@ -103,6 +100,9 @@ items:
     - name: PowerShell でモデルを作成する
       displayName: endpoint, endpoints
       href: create-models-and-endpoints-with-powershell.md
+    - name: AI Gallery での実験の試行
+      displayName: gallery
+      href: sample-experiments.md
     - name: アルゴリズムを選択する
       href: algorithm-choice.md
     - name: アルゴリズム チート シート
@@ -208,8 +208,6 @@ items:
     href: web-service-error-codes.md
   - name: REST 管理 API
     href: /rest/api/machinelearning
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.machinelearning/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -224,9 +222,9 @@ items:
     href: support-aml-studio.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 859ee01c65eaa7e02b5afc2740b6a7e6e6ca29e6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424787"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810552"
