@@ -412,6 +412,8 @@ items:
       href: monitor-integration-runtime.md#azure-ssis-integration-runtime
     - name: Azure-SSIS 統合ランタイムの再構成
       href: manage-azure-ssis-integration-runtime.md
+    - name: データ ファクトリのコピーまたは複製
+      href: copy-clone-data-factory.md
   - name: 統合ランタイムの作成
     items:
     - name: Azure 統合ランタイム
@@ -462,6 +464,8 @@ items:
     href: /powershell/module/azurerm.datafactoryv2/
   - name: REST API
     href: /rest/api/datafactory
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.datafactory/allversions
   - name: Python
     href: /python/api/overview/azure/datafactory?view=azure-python
 - name: リソース
@@ -482,9 +486,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7946681a122c24ec279b89918dcb133da25f0cb4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7cb01a6b94eec79f007172d851b0bf3e9c3b8b5b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064544"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191498"

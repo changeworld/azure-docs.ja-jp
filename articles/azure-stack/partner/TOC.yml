@@ -17,16 +17,16 @@ items:
     href: azure-stack-vaas-automate-with-powershell.md
 - name: ハウツー ガイド
   items:
-  - name: 最初のテストのスケジュール設定
-    href: azure-stack-vaas-schedule-test-pass.md
   - name: ローカル エージェントをデプロイする
     href: azure-stack-vaas-local-agent.md
-  - name: 新しい Azure Stack ソリューションの検証
-    href: azure-stack-vaas-validate-solution-new.md
+  - name: テストのスケジュールを設定する
+    href: azure-stack-vaas-schedule-test-pass.md
   - name: OEM パッケージの作成
     href: azure-stack-vaas-create-oem-package.md
   - name: OEM パッケージの検証
     href: azure-stack-vaas-validate-oem-package.md
+  - name: 新しい Azure Stack ソリューションの検証
+    href: azure-stack-vaas-validate-solution-new.md
   - name: Microsoft のソフトウェア更新プログラムの検証
     href: azure-stack-vaas-validate-microsoft-updates.md
   - name: 対話型機能検証テスト
@@ -64,9 +64,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 6d8c56bea3baf56303ae6f2a5b6cb7776410b47c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 13c7734153f55f5822602b086a6dbc5e66624903
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103028"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332236"

@@ -12,11 +12,11 @@ items:
   items:
   - name: Service Bus キュー
     items:
-    - name: メッセージの送受信 - PowerShell
-      href: service-bus-quickstart-powershell.md
-    - name: メッセージの送受信 - ポータル
+    - name: Service Bus キューの作成 - ポータル
       href: service-bus-quickstart-portal.md
-    - name: メッセージの送受信 - CLI
+    - name: Service Bus キューの作成 - PowerShell
+      href: service-bus-quickstart-powershell.md
+    - name: Service Bus キューの作成 - CLI
       href: service-bus-quickstart-cli.md
     - name: メッセージの送受信 - .NET
       href: service-bus-dotnet-get-started-with-queues.md
@@ -230,9 +230,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 22607c611b9e733cd17b9ad13538e3e12d93e410
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 6fd3d46596380360332366f600b84c82e0c75937
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212780"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260320"

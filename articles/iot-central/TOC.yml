@@ -76,6 +76,8 @@ items:
       href: howto-create-webhooks.md
     - name: Microsoft Flow でワークフローを構築する
       href: howto-add-microsoft-flow.md
+    - name: Azure Logic Apps でワークフローを構築する
+      href: howto-build-azure-logic-apps.md
     - name: Azure Functions をトリガーする
       href: howto-trigger-azure-functions.md
     - name: データのエクスポート
@@ -139,9 +141,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: f25b255f441901d873e246bc7e31460b614b7c88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 2606d8867f5a4c85c648667301e8be21882e2179
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354435"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445832"

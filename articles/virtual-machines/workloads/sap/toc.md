@@ -63,9 +63,9 @@
 ### [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](dbms_guide_sapase.md)
 ### [Azure での SAP MaxDB、liveCache、Content Server のデプロイ](dbms_guide_maxdb.md)
 ### Azure Virtual Machines での SAP HANA の可用性
-### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
-### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
-### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
+#### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
+#### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
+#### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
 ## [Azure Virtual Machines 上の SAP Business One](business-one-azure.md)
 ## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Azure 用の SAP LaMa コネクタ](lama-installation.md)

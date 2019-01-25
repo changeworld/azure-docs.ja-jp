@@ -21,6 +21,8 @@ items:
       href: node-ingest-data.md
     - name: データのバッチ処理 - .NET Standard SDK
       href: net-standard-ingest-data.md
+    - name: データのバッチ処理 - Logstash
+      href: ingest-data-logstash.md
   - name: データのクエリを実行する
     items:
     - name: Web UI
@@ -116,9 +118,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: fd86d2d3ceb8e23567c8bfbfbbee87485d1def58
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4d17e1bd16cbf14d377e40b042a1d28d53c193ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021637"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467249"
