@@ -127,8 +127,6 @@ items:
       href: https://docs.microsoft.com/javascript/api/azure-maps-javascript/
     - name: サービス モジュール
       href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.maps/accounts
 - name: 関連項目
   items:
   - name: 解決方法
@@ -177,9 +175,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: ae2a50b68465bae422b27f1eaa6b5bf0fed10971
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 13adb9331d5ed8ac4a4746240ce7884634eb7f42
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199891"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102179"

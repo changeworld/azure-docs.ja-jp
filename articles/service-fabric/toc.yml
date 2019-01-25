@@ -782,8 +782,6 @@ items:
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
   - name: REST
     href: /rest/api/servicefabric
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.servicefabric/clusters
   - name: Service Fabric イベント
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: クラスターの設定と Fabric アップグレード ポリシーの構成
@@ -827,9 +825,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d26041aaaa9a83888d3eb5a3a35b1686b58ef95f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352480"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064296"

@@ -104,10 +104,6 @@ items:
       href: concepts-connectivity.md
     - name: Azure Kubernetes Service (AKS) を使用した開発
       href: concepts-aks.md
-  - name: レプリケーション
-    items:
-    - name: 読み取りレプリカ
-      href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
   - name: ユーザーの作成
@@ -176,10 +172,6 @@ items:
     items:
     - name: Azure ポータル
       href: howto-restart-server-portal.md
-  - name: レプリケーション
-    items:
-    - name: Azure portal を使用した読み取りレプリカの管理
-      href: howto-read-replicas-portal.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -230,9 +222,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 61b78ac5b542e130fd7182b0c30810ff9c98ee78
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 73cdb90edc790dc29a3896ecf75c18b03dd52a44
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383044"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200719"

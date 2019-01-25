@@ -18,13 +18,13 @@ items:
 - name: 概念
   items:
   - name: Azure AD Connect と Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     items:
     - name: Azure AD Connect と Connect Health とは
       href: whatis-azure-ad-connect.md
     - name: 適切な認証の選択
       href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
     - name: ID 同期と重複属性の回復性
-      href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
   - name: パスワード ハッシュの同期
     items:
     - name: パスワード ハッシュ同期とは
@@ -325,9 +325,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 4e34d1cda9e905656a6eddd1f3e5ed3e21592d49
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 45247405dd35835d95237bbb8773fa3bcf384812
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888585"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437200"

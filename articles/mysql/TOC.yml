@@ -196,8 +196,6 @@ items:
     href: /cli/azure/mysql
   - name: REST API
     href: /rest/api/mysql
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.dbformysql/allversions
   - name: データイン レプリケーションのストアド プロシージャ
     href: reference-data-in-stored-procedures.md
 - name: リソース
@@ -238,9 +236,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: c825a777affaabf6db04307de9c0f96efafc3d27
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8322ca7687a0a124c1f535cbac1c0c98f4ff6250
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191736"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074262"

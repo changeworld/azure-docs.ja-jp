@@ -19,6 +19,8 @@ items:
       href: azure-stack-update-1807.md
 - name: クイック スタート
   items:
+  - name: Azure Stack の評価
+    href: azure-stack-deploy-overview.md
   - name: 管理ポータルの使用
     href: azure-stack-manage-portals.md
   expanded: true
@@ -129,8 +131,16 @@ items:
       href: azure-stack-registration.md
     - name: リージョンの管理
       href: azure-stack-region-management.md
-    - name: ExpressRoute を使用した Azure への接続
-      href: azure-stack-connect-expressroute.md
+    - name: Azure への接続
+      items:
+      - name: VPN を使用した接続
+        href: azure-stack-connect-vpn.md
+      - name: VPN ゲートウェイについて
+        href: azure-stack-vpn-gateway-about-vpn-gateways.md
+      - name: VPN ゲートウェイの設定
+        href: azure-stack-vpn-gateway-settings.md
+      - name: ExpressRoute を使用した接続
+        href: azure-stack-connect-expressroute.md
     - name: ユーザーに対する CLI の有効化
       href: azure-stack-cli-admin.md
     - name: 管理環境の設定
@@ -395,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 91c476e8e65642e490c3a42de7d5a340964f3ae5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 4d16a02c09ae801e44b0f3e4d5540a445d41fae6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411715"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319140"
