@@ -50,7 +50,7 @@ Azure Firewall は、ルールとルール コレクションをサポートし�
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Firewall は受信トラフィック フィルター処理をサポートしていますか?
 
-Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は、非 HTTP/S プロトコル用です。 たとえば、RDP、SSH、および FTP プロトコルです。
+Azure Firewall は受信と送信のフィルター処理をサポートしています。受信保護は、非 HTTP/S プロトコル用です。たとえば、RDP、SSH、および FTP プロトコルです。
 
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
