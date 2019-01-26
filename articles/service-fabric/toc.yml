@@ -443,6 +443,11 @@ items:
         href: service-fabric-tutorial-deploy-api-management.md
       - name: アプリケーション シークレットの管理
         href: service-fabric-application-secret-management.md
+        items:
+        - name: Windows での暗号化証明書の設定とシークレットの暗号化
+          href: service-fabric-application-secret-management-windows.md
+        - name: Linux での暗号化証明書の設定とシークレットの暗号化
+          href: service-fabric-application-secret-management-linux.md
       - name: セキュリティで保護された通信用のリバース プロキシの構成
         href: service-fabric-reverseproxy-configure-secure-communication.md
       - name: サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
@@ -777,6 +782,8 @@ items:
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
   - name: REST
     href: /rest/api/servicefabric
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.servicefabric/clusters
   - name: Service Fabric イベント
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: クラスターの設定と Fabric アップグレード ポリシーの構成
@@ -820,9 +827,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 9058ac3b7d21b7cd490a14333d2362635809e39b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976374"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352480"

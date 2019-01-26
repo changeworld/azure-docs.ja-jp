@@ -416,6 +416,8 @@ items:
         href: /rest/api/storagerp
       - name: Import/Export
         href: /rest/api/storageimportexport
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.storage/allversions
   - name: リソース
     items:
     - name: Azure のロードマップ
@@ -600,9 +602,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: bba5e3bf1081d3141b3e754eb8c06e54f6528234
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0246e8af3b52efb5e5acb51bbcc4b237b4211f31
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261657"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354401"

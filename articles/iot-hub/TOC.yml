@@ -9,30 +9,50 @@ items:
     href: about-iot-hub.md
 - name: クイック スタート
   items:
-  - name: 利用統計情報の送信 (C)
-    href: quickstart-send-telemetry-c.md
-  - name: 利用統計情報の送信 (Node.js)
-    href: quickstart-send-telemetry-node.md
-  - name: 利用統計情報の送信 (.NET)
-    href: quickstart-send-telemetry-dotnet.md
-  - name: 利用統計情報の送信 (Java)
-    href: quickstart-send-telemetry-java.md
-  - name: 利用統計情報の送信 (Python)
-    href: quickstart-send-telemetry-python.md
-  - name: 利用統計情報の送信 (Android)
-    href: quickstart-send-telemetry-android.md
-  - name: 利用統計情報の送信 (iOS)
-    href: quickstart-send-telemetry-ios.md
-  - name: デバイスの制御 (Node.js)
-    href: quickstart-control-device-node.md
-  - name: デバイスの制御 (.NET)
-    href: quickstart-control-device-dotnet.md
-  - name: デバイスの制御 (Java)
-    href: quickstart-control-device-java.md
-  - name: デバイスの制御 (Python)
-    href: quickstart-control-device-python.md
-  - name: デバイスの制御 (Android)
-    href: quickstart-control-device-android.md
+  - name: テレメトリを送信する
+    items:
+    - name: C
+      href: quickstart-send-telemetry-c.md
+    - name: Node.js
+      href: quickstart-send-telemetry-node.md
+    - name: .NET
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Java
+      href: quickstart-send-telemetry-java.md
+    - name: Python
+      href: quickstart-send-telemetry-python.md
+    - name: Android
+      href: quickstart-send-telemetry-android.md
+    - name: iOS
+      href: quickstart-send-telemetry-ios.md
+  - name: デバイスの制御
+    items:
+    - name: Node.js
+      href: quickstart-control-device-node.md
+    - name: .NET
+      href: quickstart-control-device-dotnet.md
+    - name: Java
+      href: quickstart-control-device-java.md
+    - name: Python
+      href: quickstart-control-device-python.md
+    - name: Android
+      href: quickstart-control-device-android.md
+  - name: デバイス ストリームを使用した通信 (プレビュー)
+    items:
+    - name: C#
+      href: quickstart-device-streams-echo-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-echo-nodejs.md
+    - name: C
+      href: quickstart-device-streams-echo-c.md
+  - name: デバイス ストリームを使用した SSH/RDP (プレビュー)
+    items:
+    - name: C#
+      href: quickstart-device-streams-proxy-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-proxy-nodejs.md
+    - name: C
+      href: quickstart-device-streams-proxy-c.md
 - name: チュートリアル
   items:
   - name: メッセージのルーティング
@@ -65,6 +85,8 @@ items:
     href: iot-hub-configuration-best-practices.md
   - name: Azure IoT SDK プラットフォームのサポート
     href: iot-hub-device-sdk-platform-support.md
+  - name: IoT Hub デバイス ストリームの概要 (プレビュー)
+    href: iot-hub-device-streams-overview.md
   - name: 開発者ガイド
     href: iot-hub-devguide.md
     items:
@@ -420,9 +442,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 84eae62600f5cb62bfd8941d90140c6150a983f0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247335"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809124"
