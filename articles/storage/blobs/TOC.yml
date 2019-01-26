@@ -181,8 +181,6 @@ items:
           href: ../common/storage-solution-small-dataset-low-moderate-network.md
         - name: 定期的なデータの転送
           href: ../common/storage-solution-periodic-data-transfer.md
-      - name: Storage との間でのデータ移動
-        href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: データをインポート/エクスポートする
         href: ../common/storage-import-export-service.md
         items:
@@ -602,9 +600,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 0246e8af3b52efb5e5acb51bbcc4b237b4211f31
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5cf8e6056acc41e445ccaf726c6493fd8343dd0b
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354401"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913226"

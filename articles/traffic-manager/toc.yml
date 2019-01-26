@@ -78,6 +78,8 @@ items:
     href: traffic-manager-load-balancing-azure.md
   - name: Traffic Manager のパフォーマンスの測定
     href: traffic-manager-performance-considerations.md
+  - name: Azure App Service の Web アプリの診断ログの有効化
+    href: traffic-manager-diagnostic-logs.md
   - name: Azure PowerShell を使用して Traffic Manager を管理する
     href: traffic-manager-powershell-arm.md
   - name: インターネット ドメインが Traffic Manager を指すように指定する
@@ -134,9 +136,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: ab7f91c93ee513dcd8139e525e14cf5c84747772
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d444e2c8fec0d1adb0ac18756cbdecc751e9dc97
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354248"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079105"
