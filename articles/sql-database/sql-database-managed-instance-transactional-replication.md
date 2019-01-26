@@ -51,10 +51,10 @@ ms.locfileid: "54353245"
 
 | Role | 論理サーバー | マネージド インスタンス |
 | :----| :------------- | :--------------- |
-| **発行元** | いいえ  | [はい] | 
-| **ディストリビューター** | いいえ  | [はい]|
-| **プル サブスクライバー** | いいえ  | [はい]|
-| **プッシュ サブスクライバー**| [はい] | [はい]|
+| **発行元** | いいえ  | はい | 
+| **ディストリビューター** | いいえ  | はい|
+| **プル サブスクライバー** | いいえ  | はい|
+| **プッシュ サブスクライバー**| はい | はい|
 | &nbsp; | &nbsp; | &nbsp; |
 
 さまざまな[レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017)があります。
@@ -62,12 +62,12 @@ ms.locfileid: "54353245"
 
 | レプリケーション | 論理サーバー | マネージド インスタンス |
 | :----| :------------- | :--------------- |
-| [**トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | [はい] | 
-| [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | [はい]|
+| [**トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
+| [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
 | [**マージ レプリケーション**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | いいえ  | いいえ |
 | [**ピア ツー ピア**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | いいえ  | いいえ |
-| **一方向** | [はい] | [はい]|
-| [**双方向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ  | [はい]|
+| **一方向** | はい | はい|
+| [**双方向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ  | はい|
 | [**更新可能なサブスクリプション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | いいえ  | いいえ |
 | &nbsp; | &nbsp; | &nbsp; |
 
