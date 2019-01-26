@@ -40,13 +40,13 @@ items:
   - name: エンティティ
     href: entities-overview.md
     items:
-    - name: アカウント フィルターとアセット フィルター
+    - name: アカウントとアセットのフィルター
       href: filters-dynamic-manifest-overview.md
     - name: アセット
       href: assets-concept.md
     - name: コンテンツ キー ポリシー
       href: content-key-policy-concept.md
-    - name: ライブ イベントとライブ出力
+    - name: LiveEvent と LiveOutput
       href: live-events-outputs-concept.md
     - name: ストリーミング エンドポイント
       href: streaming-endpoint-concept.md
@@ -203,9 +203,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: c30302fa289ade85870db3e89fa70f5e79f61a99
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: dfafe49ba2f520bdc44c5a3e3cad0201d6e56da5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881377"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810858"

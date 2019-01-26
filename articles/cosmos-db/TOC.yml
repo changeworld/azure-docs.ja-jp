@@ -459,6 +459,8 @@ items:
   items:
   - name: データベース アカウントの管理
     href: how-to-manage-database-account.md
+  - name: Time to Live の構成
+    href: how-to-time-to-live.md
   - name: グローバル配信
     items:
     - name: 一貫性の管理
@@ -477,12 +479,10 @@ items:
       href: how-to-create-container.md
     - name: コンテナーの照会
       href: how-to-query-container.md
-    - name: Time to Live の構成
-      href: how-to-time-to-live.md
-    - name: インデックス作成
-      items:
-      - name: インデックス作成の構成
-        href: how-to-manage-indexing-policy.md
+  - name: インデックス作成
+    items:
+    - name: インデックス作成の構成
+      href: how-to-manage-indexing-policy.md
   - name: セキュリティ
     items:
     - name: IP ファイアウォールの構成
@@ -617,9 +617,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 55b388b24d5526160423fa61c46620fc09796b24
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359801"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189628"
