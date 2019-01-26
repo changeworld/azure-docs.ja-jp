@@ -37,16 +37,16 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 一般公開
 | オペレーティング システム | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Raspbian-stretch | いいえ  | [はい]|
-| Ubuntu Server 16.04 | [はい] | いいえ  |
-| Ubuntu Server 18.04 | [はい] | いいえ  |
+| Raspbian-stretch | いいえ  | はい|
+| Ubuntu Server 16.04 | はい | いいえ  |
+| Ubuntu Server 18.04 | はい | いいえ  |
 
 パブリック プレビュー
 | オペレーティング システム | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core ビルド 17763 | [はい] | いいえ  |
-| Windows コンテナー用 Windows 10 ビルド 17763<br><br>Linux コンテナー用 Windows 10 ビルド 14393 以降\* | [はい] | いいえ  |
-| Windows コンテナー用 Windows Server 2019<br><br>Linux コンテナー用 Windows Server 2016 以降\* | [はい] | いいえ  |
+| Windows 10 IoT Core ビルド 17763 | はい | いいえ  |
+| Windows コンテナー用 Windows 10 ビルド 17763<br><br>Linux コンテナー用 Windows 10 ビルド 14393 以降\* | はい | いいえ  |
+| Windows コンテナー用 Windows Server 2019<br><br>Linux コンテナー用 Windows Server 2016 以降\* | はい | いいえ  |
 
 \* Microsoft は、開発およびテスト目的でのみ、Windows デバイス上の Linux コンテナー用インストール パッケージを提供しています。 これは、運用環境ではサポートされない構成です。 
 
@@ -57,14 +57,14 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 
 | オペレーティング システム | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| CentOS 7.5 | [はい] | [はい] |
-| Debian 8 | [はい] | [はい] |
-| Debian 9 | [はい] | [はい] |
-| RHEL 7.5 | [はい] | [はい] |
-| Ubuntu 18.04 | [はい] | [はい] |
-| Ubuntu 16.04 | [はい] | [はい] |
-| Wind River 8 | [はい] | いいえ  |
-| Yocto | [はい] | いいえ  |
+| CentOS 7.5 | はい | はい |
+| Debian 8 | はい | はい |
+| Debian 9 | はい | はい |
+| RHEL 7.5 | はい | はい |
+| Ubuntu 18.04 | はい | はい |
+| Ubuntu 16.04 | はい | はい |
+| Wind River 8 | はい | いいえ  |
+| Yocto | はい | いいえ  |
 
 ## <a name="container-engines"></a>コンテナー エンジン
 Azure IoT Edge がモジュールを起動するには、それが実行されているオペレーティング システムに関係なく、コンテナー エンジンが必要です。 Microsoft には、この要件を満たすために、moby-engine というコンテナー エンジンが用意されています。 これは Moby オープン ソース プロジェクトをベースとします。 他にも有名なコンテナー エンジンとして、Docker CE や Docker EE が挙げられます。 これらも Moby オープン ソース プロジェクトをベースとし、Azure IoT Edge と互換性があります。 Microsoft はこれらのコンテナー エンジンを使用するシステムに対してベスト エフォート サポートを提供しています。ただし、Microsoft はそれらの問題について修正プログラムを発行することができません。 この理由から、Microsoft では運用システムで moby-engine を使用することを推奨しています。
