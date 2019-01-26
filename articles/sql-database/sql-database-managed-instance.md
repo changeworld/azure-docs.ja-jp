@@ -54,15 +54,15 @@ Azure SQL Database Managed Instance は、Azure SQL Database と SQL Server Data
 |機能 | 説明|
 |---|---|
 | SQL Server のバージョン/ビルド | SQL Server Database Engine (最新の安定版) |
-| 管理される自動バックアップ | [はい] |
-| インスタンスおよびデータベースに対する組み込みの監視とメトリック | [はい] |
-| 自動的に行われるソフトウェア修正プログラムの適用 | [はい] |
-| 最新のデータベース エンジンの機能 | [はい] |
+| 管理される自動バックアップ | はい |
+| インスタンスおよびデータベースに対する組み込みの監視とメトリック | はい |
+| 自動的に行われるソフトウェア修正プログラムの適用 | はい |
+| 最新のデータベース エンジンの機能 | はい |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 |
 | データベースごとのログ ファイル数 (LOG) | 1 |
-| VNet - Azure Resource Manager デプロイ | [はい] |
+| VNet - Azure Resource Manager デプロイ | はい |
 | VNet - クラシック デプロイ モデル | いいえ  |
-| ポータルのサポート | [はい]|
+| ポータルのサポート | はい|
 | 組み込み統合サービス (SSIS) | いいえ - SSIS は [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) に含まれます。 |
 | 組み込み Analysis Service (SSAS) | いいえ - SSAS は別の [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) です。 |
 | 組み込みレポート サービス (SSRS) | いいえ - Power BI または SSRS IaaS を使用してください。 |
