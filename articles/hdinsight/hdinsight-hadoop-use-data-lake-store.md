@@ -39,11 +39,11 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage を使用�
 
 | HDInsight クラスターの種類 | 既定のストレージとしての Data Lake Storage | 追加ストレージとしての Data Lake Storage| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight Version 3.6 | [はい] | [はい] | HBase は例外|
-| HDInsight Version 3.5 | [はい] | [はい] | HBase は例外|
-| HDInsight Version 3.4 | いいえ  | [はい] | |
+| HDInsight Version 3.6 | はい | はい | HBase は例外|
+| HDInsight Version 3.5 | はい | はい | HBase は例外|
+| HDInsight Version 3.4 | いいえ  | はい | |
 | HDInsight Version 3.3 | いいえ  | いいえ  | |
-| HDInsight Version 3.2 | いいえ  | [はい] | |
+| HDInsight Version 3.2 | いいえ  | はい | |
 | Storm | | |Data Lake Storage を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Storage を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
 > [!WARNING]  
