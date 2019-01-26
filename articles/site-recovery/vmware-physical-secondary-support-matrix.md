@@ -57,15 +57,15 @@ Windows Server | 64 ビット Windows Server 2016、Windows Server 2012 R2、Win
 
 **構成** | **サポートされています**  
 --- | --- 
-ホスト - NIC チーミング | [はい] 
-ホスト - VLAN | [はい] 
-ホスト - IPv4 | [はい] 
+ホスト - NIC チーミング | はい 
+ホスト - VLAN | はい 
+ホスト - IPv4 | はい 
 ホスト - IPv6 | いいえ  
 ゲスト VM - NIC チーミング | いいえ 
-ゲスト VM - IPv4 | [はい]
+ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
-ゲスト VM - マルチ NIC | [はい]
+Gues VM - Windows/Linux - 静的 IP アドレス | はい
+ゲスト VM - マルチ NIC | はい
 
 
 ## <a name="storage"></a>Storage
@@ -74,29 +74,29 @@ Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
 
 **ストレージ (ホスト)** | **サポートされています** 
 --- | --- 
-NFS | [はい] 
+NFS | はい 
 SMB 3.0 | 該当なし 
-SAN (ISCSI) | [はい] 
-マルチパス (MPIO) | [はい] 
+SAN (ISCSI) | はい 
+マルチパス (MPIO) | はい 
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
 **構成** | **サポートされています** 
 --- | --- 
-VMDK | [はい] 
+VMDK | はい 
 VHD/VHDX | 該当なし 
 第 2 世代 VM | 該当なし 
-共有クラスター ディスク | [はい] 
+共有クラスター ディスク | はい 
 暗号化されたディスク | いいえ  
-UEFI| [はい] 
+UEFI| はい 
 NFS | いいえ  
 SMB 3.0 | いいえ  
-RDM | [はい] 
-1 TB より大きいディスク | [はい] 
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | [はい] 
+RDM | はい 
+1 TB より大きいディスク | はい 
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい 
 記憶域 | いいえ  
-ディスクのホット アド/削除 | [はい] 
-ディスクの除外 | [はい] 
+ディスクのホット アド/削除 | はい 
+ディスクの除外 | はい 
 マルチパス (MPIO) | 該当なし 
 
 ## <a name="vaults"></a>資格情報コンテナー
