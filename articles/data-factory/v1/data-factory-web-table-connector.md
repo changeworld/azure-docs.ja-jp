@@ -73,9 +73,9 @@ ms.locfileid: "54022055"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**Web** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Web** |はい |
 | Url |Web ソースへの URL |はい |
-| authenticationType |Anonymous |[はい] |
+| authenticationType |Anonymous |はい |
 
 ### <a name="using-anonymous-authentication"></a>匿名認証を使用する
 
@@ -103,7 +103,7 @@ ms.locfileid: "54022055"
 |:--- |:--- |:--- |
 | type |データセットの型。  **データセット** |はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
+| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 **例:**
 
