@@ -60,8 +60,8 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 
 | ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | [はい] | 一時的なクラスター |
-| Azure Data Lake Storage | **adl:**//url/ | **より高速** | [はい] | 一時的なクラスター |
+| Azure Blob Storage | **wasb:**//url/ | **Standard** | はい | 一時的なクラスター |
+| Azure Data Lake Storage | **adl:**//url/ | **より高速** | はい | 一時的なクラスター |
 | ローカルの HDFS | **hdfs:**//url/ | **最も高速** | いいえ  | 24 時間 365 日の対話型クラスター |
 
 ## <a name="use-the-cache"></a>キャッシュの使用
