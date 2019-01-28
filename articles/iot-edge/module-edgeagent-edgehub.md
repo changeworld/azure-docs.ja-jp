@@ -28,28 +28,28 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | [はい] |
-| runtime.type | "docker" である必要がある | [はい] |
-| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | [はい] |
+| schemaVersion | "1.0" である必要がある | はい |
+| runtime.type | "docker" である必要がある | はい |
+| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | はい |
 | runtime.settings.loggingOptions | IoT Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション](https://docs.docker.com/engine/admin/logging/overview/) | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.username | コンテナー レジストリのユーザー名です。 Azure Container Registry では、ユーザー名は通常、レジストリ名です。<br><br> 公開されていないモジュール イメージでは、レジストリの資格情報が必要です。 | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.password | コンテナー レジストリのパスワード。 | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.address | コンテナー レジストリのアドレス。 Azure Container Registry の場合、アドレスは通常 *{registry name}.azurecr.io* です。 | いいえ  |  
-| systemModules.edgeAgent.type | "docker" である必要がある | [はい] |
-| systemModules.edgeAgent.settings.image | IoT Edge エージェントのイメージの URI。 現在、IoT Edge エージェントは自身を更新できません。 | [はい] |
+| systemModules.edgeAgent.type | "docker" である必要がある | はい |
+| systemModules.edgeAgent.settings.image | IoT Edge エージェントのイメージの URI。 現在、IoT Edge エージェントは自身を更新できません。 | はい |
 | systemModules.edgeAgent.settings<br>.createOptions | IoT Edge エージェント コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ  |
 | systemModules.edgeAgent.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
-| systemModules.edgeHub.type | "docker" である必要がある | [はい] |
-| systemModules.edgeHub.status | "running" である必要がある | [はい] |
-| systemModules.edgeHub.restartPolicy | "always" である必要がある | [はい] |
-| systemModules.edgeHub.settings.image | IoT Edge ハブのイメージの URI。 | [はい] |
+| systemModules.edgeHub.type | "docker" である必要がある | はい |
+| systemModules.edgeHub.status | "running" である必要がある | はい |
+| systemModules.edgeHub.restartPolicy | "always" である必要がある | はい |
+| systemModules.edgeHub.settings.image | IoT Edge ハブのイメージの URI。 | はい |
 | systemModules.edgeHub.settings<br>.createOptions | IoT Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ  |
 | systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
-| modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | [はい] |
-| modules.{moduleId}.type | "docker" である必要がある | [はい] |
-| modules.{moduleId}.status | {"running" \| "stopped"} | [はい] |
-| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | [はい] |
-| modules.{moduleId}.settings.image | モジュール イメージへの URI。 | [はい] |
+| modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | はい |
+| modules.{moduleId}.type | "docker" である必要がある | はい |
+| modules.{moduleId}.status | {"running" \| "stopped"} | はい |
+| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | はい |
+| modules.{moduleId}.settings.image | モジュール イメージへの URI。 | はい |
 | modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ  |
 | modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 
@@ -100,9 +100,9 @@ IoT Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバ�
 
 | プロパティ | 説明 | デプロイ マニフェストに必要 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | [はい] |
+| schemaVersion | "1.0" である必要がある | はい |
 | routes.{routeName} | IoT Edge ハブのルートを表す文字列。 | `routes` 要素は存在できますが、空です。 |
-| storeAndForwardConfiguration.timeToLiveSecs | 切断された (たとえば、IoT Hub またはローカル モジュールから切断された) ルーティング エンドポイントの場合、IoT Edge ハブがメッセージを保持する秒数 | [はい] |
+| storeAndForwardConfiguration.timeToLiveSecs | 切断された (たとえば、IoT Hub またはローカル モジュールから切断された) ルーティング エンドポイントの場合、IoT Edge ハブがメッセージを保持する秒数 | はい |
 
 ## <a name="edgehub-reported-properties"></a>edgeHub の報告されるプロパティ
 
