@@ -198,7 +198,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="is-database-compression-supported"></a>データベースの圧縮はサポートされるか
 
-[はい]
+はい
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>大きなテーブルのデータを複数のデータ ファイルに分散できるか
 
@@ -257,7 +257,7 @@ SQL Server 2005。 詳しくは、「[単一データベースまたはプール
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Azure SQL Database サービスによってデータベース バックアップが管理されるか
 
-[はい]
+はい
 
 ### <a name="how-often-are-the-database-backups-taken"></a>データベース バックアップの実行頻度
 
@@ -265,7 +265,7 @@ SQL Database ハイパースケール データベースでは、従来の完全
 
 ### <a name="does-sql-database-hyperscale-support-point-in-time-restore"></a>SQL Database ハイパースケールで特定の時点への復元はサポートされるか
 
-[はい]
+はい
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>SQL Database ハイパースケールにおいてバックアップ/復元の回復ポイントの目標 (RPO)/回復時刻の目標 (RTO) とは
 
