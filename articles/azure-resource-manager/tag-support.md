@@ -425,7 +425,7 @@ ms.locfileid: "54267455"
 | Dimensions | いいえ  | 
 | EnrollmentAccounts | いいえ  | 
 | Query | いいえ  | 
-| registrations | いいえ  | 
+| register | いいえ  | 
 | Reportconfigs | いいえ  | 
 | Reports | いいえ  | 
 
@@ -609,7 +609,7 @@ ms.locfileid: "54267455"
 | myareas/areas/areas/galleryitems | いいえ  | 
 | myareas/areas/galleryitems | いいえ  | 
 | myareas/galleryitems | いいえ  | 
-| registrations | いいえ  | 
+| register | いいえ  | 
 | resources | いいえ  | 
 | retrieveresourcesbyid | いいえ  | 
 
@@ -668,7 +668,7 @@ ms.locfileid: "54267455"
 | logs | いいえ  | 
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
-| Query | いいえ  | 
+| queries | いいえ  | 
 | rollbackToLegacyPricingModel | いいえ  | 
 | scheduledqueryrules | はい | 
 | vmInsightsOnboardingStatuses | いいえ  | 
