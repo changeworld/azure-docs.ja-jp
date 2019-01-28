@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
-ms.openlocfilehash: 2a835e7cd9d4c45c1c39c3c135705cb4dff0e6fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 190d81fc7811e4afdb32555407716f60f5b9a2d1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842188"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476140"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
@@ -50,13 +50,11 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 
 2. フィルター ボックスに「**更新**」と入力し、**updateadminaccount** ストレージ アカウントを選択します。
 
-    ![Updateadminaccount を検索する方法を示している画面](media/azure-stack-apply-updates/ApplyUpdates2.png)
-
 3. ストレージ アカウントの詳細で、**[サービス]** の **[BLOB]** を選択します。
  
     ![ストレージ アカウントの BLOB を選択する方法を示している画面](media/azure-stack-apply-updates/ApplyUpdates3.png) 
- 
-4. **[Blob service]** で、**[+ コンテナー]** を選択してコンテナーを作成します。 名前 (例: *Update-1709*) を入力し、**[OK]** を選択します。
+
+4. **[Blob service]** で、**[+ コンテナー]** を選択してコンテナーを作成します。 名前 (例: *Update-1811*) を入力し、**[OK]** を選択します。
  
      ![ストレージ アカウントにコンテナーを追加する方法を示している画面](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
@@ -66,12 +64,12 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 
 6. **[BLOB のアップロード]** で、フォルダー アイコンをクリックし、更新プログラム パッケージの .exe ファイルを参照し、ファイル エクスプローラー ウィンドウで **[開く]** をクリックします。
   
-7. **[BLOB のアップロード]** で、**[アップロード]** をクリックします。 
+7. **[BLOB のアップロード]** で、**[アップロード]** をクリックします。
   
     ![各パッケージ ファイルをアップロードする場所を示している画面](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. *PackageName*.bin ファイルと Metadata.xml ファイルに対して、手順 6 と 7 を繰り返します。 Supplemental Notice.txt ファイルが含まれている場合、そのファイルはインポートしないでください。
-9. 終了したら、通知を確認できます (ポータルの右上隅にあるベル アイコン)。 アップロードの完了が通知に示されている必要があります。 
+8. *PackageName*.bin ファイルと Metadata.xml ファイルに対して、手順 6 と 7 を繰り返します。 Supplemental Notice.txt ファイルが含まれている場合、そのファイルはインポートしないでください。
+9. 終了したら、通知を確認できます (ポータルの右上隅にあるベル アイコン)。 アップロードの完了が通知に示されている必要があります。
 10. ダッシュボードの [更新] タイルに戻ります。 更新プログラムが使用可能であることがタイルに示されている必要があります。 新しく追加された更新プログラム パッケージを確認するには、タイルをクリックします。
 11. 更新プログラムをインストールするには、**[準備完了]** とマークされているパッケージを選択し、パッケージを右クリックして **[今すぐ更新]** を選択するか、上部にある **[今すぐ更新]** アクションをクリックします。
 12. 更新プログラム パッケージのインストールをクリックしたら、**[Update run details]\(更新実行の詳細\)** 領域でその状態を確認できます。 ここから **[Download full logs]\(満杯になったログのダウンロード\)** をクリックして、ログ ファイルをダウンロードすることもできます。

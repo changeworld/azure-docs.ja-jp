@@ -1,11 +1,11 @@
 ---
-title: 'Azure AD Connect: パススルー認証のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:パススルー認証のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure Active Directory (Azure AD) のパススルー認証のトラブルシューティングを行う方法について説明します。
 services: active-directory
 keywords: Azure AD Connect パススルー認証のトラブルシューティング, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686196"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472774"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -66,7 +66,7 @@ ms.locfileid: "51686196"
 | 80002 | 認証エージェントのパスワード検証要求がタイムアウトしました。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80003 | 認証エージェントが無効な応答を受信しました。 | 複数のユーザーにわたって問題が一貫して再現される場合は、Active Directory の構成を確認します。
 | 80004 | サインイン要求で使用されたユーザー プリンシパル名 (UPN) が正しくありません。 | 正しいユーザー名でサインインするようユーザーに求めます。
-| 80005 | 認証エージェント: エラーが発生しました。 | 一時的なエラーです。 後でもう一度やり直してください。
+| 80005 | 認証エージェント:エラーが発生しました。 | 一時的なエラーです。 後でもう一度やり直してください。
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
@@ -95,7 +95,7 @@ Azure AD Connect またはスタンドアロンの認証エージェントのイ
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Azure AD Connect のアンインストール時に警告メッセージが表示される
 
-テナントでパススルー認証を有効にしている場合に、Azure AD Connect をアンインストールしようとすると、"Users will not be able to sign-in to Azure AD unless you have other pass-through authentication agents installed on other servers. (他のサーバーに他のパススルー認証エージェントがインストールされていない場合、ユーザーは Azure AD にサインインできなくなります。)" という警告メッセージが表示されます。
+お使いのテナントでパススルー認証を有効にしていて、Azure AD Connect をアンインストールしようとすると、次の警告メッセージが表示されます。Users will not be able to sign-in to Azure AD unless you have other Pass-through Authentication agents installed on other servers. (他のサーバーに他のパススルー認証エージェントがインストールされていない場合、ユーザーは Azure AD にサインインできなくなります。)"
 
 ユーザーのサインインを中断しないようにするため、Azure AD Connect をアンインストールする前に、セットアップの種類が[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)であることを確認します。
 
@@ -137,7 +137,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-コマンド プロンプトを開き、次のコマンドを実行することで、エラー (上記の例では "1328") の詳細を取得できます (注意: "1328" は、ログで見た実際のエラー番号に置き換えてください)。
+コマンド プロンプトを開き、次のコマンドを実行することで、エラー (前の例では "1328") の詳細を取得できます (注: "1328" は、ログに表示されている実際のエラー番号に置き換える必要があります)。
 
 `Net helpmsg 1328`
 
@@ -162,4 +162,4 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 ![パススルー認証のパフォーマンス モニター カウンター](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
 >[!IMPORTANT]
->パススルー認証では、負荷分散 _ではなく_、複数の認証エージェントを使用して高可用性を確保します。 お使いの構成によっては、必ずしもすべての認証エージェントがほぼ _同数_ の要求を受け取るとは _限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。
+>パススルー認証では、負荷分散 _ではなく_、複数の認証エージェントを使用して高可用性を確保します お使いの構成によっては、必ずしもすべての認証エージェントがほぼ _同数_ の要求を受け取るとは _限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。

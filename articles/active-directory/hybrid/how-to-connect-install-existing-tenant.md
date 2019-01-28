@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Azure AD が既にある場合 | Microsoft Docs'
+title: Azure AD Connect:Azure AD が既にある場合 | Microsoft Docs
 description: このトピックでは、既存の Azure AD テナントがある場合の Connect の使い方を説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6425c2cd77cc32e296c75504d3fd01a5b5e583e9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f0c16a86d4e3dbe582f1471d2b94e1ec85b70b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305791"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475921"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: 既存のテナントがある場合
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
 
 ## <a name="the-basics"></a>基本

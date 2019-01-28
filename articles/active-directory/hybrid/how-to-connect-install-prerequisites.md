@@ -4,7 +4,7 @@ description: このトピックでは、Azure AD Connect を使用するため�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: eb5ad49a26631ca363737406f54b4c794e01ebda
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384059"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472842"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -79,7 +79,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、 [Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md) に関するページで URL を確認してください。
 * Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
-* 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
+* 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの &lt;PROXYADDRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
 ```
     <system.net>
