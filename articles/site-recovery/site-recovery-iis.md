@@ -60,10 +60,10 @@ ARR、IIS サーバー、アプリケーション サーバー、および SQL S
 
 シナリオ | セカンダリ サイトへ | Azure へ
 --- | --- | ---
-Hyper-V | [はい] | [はい]
-VMware | [はい] | [はい]
-物理サーバー | いいえ  | [はい]
-Azure|NA|[はい]
+Hyper-V | はい | はい
+VMware | はい | はい
+物理サーバー | いいえ  | はい
+Azure|NA|はい
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 
