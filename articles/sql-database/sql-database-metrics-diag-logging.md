@@ -65,14 +65,14 @@ SQL Database と、Managed Instance のデータベースでメトリックお�
 
 | データベースの監視テレメトリ | Azure SQL Database のサポート | Managed Instance のデータベースのサポート |
 | :------------------- | ------------------- | ------------------- |
-| [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | [はい] | いいえ  |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | [はい] | [はい] |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | [はい] | [はい] |
-| [エラー](sql-database-metrics-diag-logging.md#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | [はい] | いいえ  |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | [はい] | いいえ  |
-| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | [はい] | いいえ  |
-| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | [はい] | いいえ  |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset):パフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | [はい] | [はい] |
+| [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ  |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | はい | はい |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | はい | はい |
+| [エラー](sql-database-metrics-diag-logging.md#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | はい | いいえ  |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ  |
+| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ  |
+| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ  |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset):パフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
 
 ### <a name="azure-portal"></a>Azure ポータル
 
