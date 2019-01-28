@@ -59,6 +59,8 @@ items:
         href: add-users-information-worker.md
       - name: Google のフェデレーション
         href: google-federation.md
+      - name: ワンタイム パスコード認証
+        href: one-time-passcode.md
       - name: B2B の共有ポリシー
         href: delegate-invitations.md
       - name: 招待を許可またはブロックする
@@ -116,9 +118,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/azure-active-directory
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 80321f9501d2a4f998a744121d98c08c864465e0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: cfd81ad86e90583e828762709e0f99e374cddf03
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423485"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55074958"

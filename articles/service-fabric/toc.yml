@@ -86,6 +86,22 @@ items:
       href: service-fabric-tutorial-standalone-install-an-application.md
     - name: 4- クラスターのクリーンアップとインフラストラクチャの削除
       href: service-fabric-tutorial-standalone-clean-up.md
+- name: ベスト プラクティス
+  items:
+  - name: Service Fabric のベスト プラクティスの概要
+    href: service-fabric-best-practices-overview.md
+  - name: セキュリティ
+    href: service-fabric-best-practices-security.md
+  - name: ネットワーク
+    href: service-fabric-best-practices-networking.md
+  - name: コンピューティングの計画とスケーリング
+    href: service-fabric-best-practices-capacity-scaling.md
+  - name: コードとしてのインフラストラクチャ
+    href: service-fabric-best-practices-infrastructure-as-code.md
+  - name: 監視と診断
+    href: service-fabric-best-practices-monitoring.md
+  - name: 運用環境の準備状況チェックリスト
+    href: service-fabric-production-readiness-checklist.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -702,10 +718,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: ローカル クラスターのトラブルシューティング
       href: service-fabric-troubleshoot-local-cluster-setup.md
-  - name: ベスト プラクティス
-    items:
-    - name: 運用環境の準備状況チェックリスト
-      href: service-fabric-production-readiness-checklist.md
 - name: リファレンス
   items:
   - name: Azure PowerShell
@@ -827,9 +839,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5b487a8212cabb6809a9152e10dde7a1c9c7158f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352480"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913531"

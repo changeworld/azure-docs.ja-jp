@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 61fddbdc2da255f1c0609d46f4672b57e372536a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4336121cf00c9df5e0fa53472fd741bea5f63bbd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697562"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472808"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric アプリケーションのライフサイクル
 通常は、その他のプラットフォームと同様に、Azure Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを通過します。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 この記事では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズでさまざまなロールがその API をどのように使用するかを示します。
@@ -33,10 +33,10 @@ ms.locfileid: "43697562"
 ## <a name="service-model-roles"></a>サービス モデルのロール
 サービス モデルのロールは、次のとおりです。
 
-* **サービス開発者**: 同じ種類や別の種類の複数のアプリケーションで再利用、使用できるモジュールと汎用サービスを開発します。 たとえば、チケット発行のアプリケーション (ヘルプ デスク) または電子商取引アプリケーション (ショッピング カート) を作成するために Queue サービスを使用できます。
-* **アプリケーション開発者**: 特定の要件またはシナリオを満たすために、サービスのコレクションを統合してアプリケーションを作成します。 たとえば、電子商取引 Web サイトには、"JSON ステートレス フロントエンド サービス"、"オークション ステートフル サービス"、"ステートフル キュー サービス" を統合して、オークション ソリューションが構築されることがあります。
-* **アプリケーション管理者**: アプリケーションの構成 (テンプレートの構成パラメーターを入力)、デプロイ (使用可能なリソースへのマッピング)、サービスの品質を決定します。 たとえば、アプリケーション管理者は、アプリケーションの言語ロケール (米国には英語、日本には日本語) を決定します。 別のデプロイされたアプリケーションには、さまざまな設定を含めることができます。
-* **オペレーター**: アプリケーションの構成に基づくアプリケーションと、アプリケーション管理者が指定する要件をデプロイします。 たとえば、オペレーターはアプリケーションをプロビジョニングしてデプロイし、Azure で実行されていることを確認します。 オペレーターは、アプリケーションの正常性とパフォーマンスの情報を監視し、必要に応じて、物理インフラストラクチャを管理します。
+* **サービス開発者**:同じ種類や別の種類の複数のアプリケーションで再利用、使用できるモジュールと汎用サービスを開発します。 たとえば、チケット発行のアプリケーション (ヘルプ デスク) または電子商取引アプリケーション (ショッピング カート) を作成するために Queue サービスを使用できます。
+* **アプリケーション開発者**:特定の要件またはシナリオを満たすために、サービスのコレクションを統合してアプリケーションを作成します。 たとえば、電子商取引 Web サイトには、"JSON ステートレス フロントエンド サービス"、"オークション ステートフル サービス"、"ステートフル キュー サービス" を統合して、オークション ソリューションが構築されることがあります。
+* **アプリケーション管理者**:アプリケーションの構成 (テンプレートの構成パラメーターを入力)、デプロイ (使用可能なリソースへのマッピング)、およびサービスの品質を決定します。 たとえば、アプリケーション管理者は、アプリケーションの言語ロケール (米国には英語、日本には日本語) を決定します。 別のデプロイされたアプリケーションには、さまざまな設定を含めることができます。
+* **オペレーター**:アプリケーションの構成に基づくアプリケーションと、アプリケーション管理者が指定する要件をデプロイします。 たとえば、オペレーターはアプリケーションをプロビジョニングしてデプロイし、Azure で実行されていることを確認します。 オペレーターは、アプリケーションの正常性とパフォーマンスの情報を監視し、必要に応じて、物理インフラストラクチャを管理します。
 
 ## <a name="develop"></a>開発
 1. "*サービス開発者*" は、[Reliable Actors](service-fabric-reliable-actors-introduction.md) または [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング モデルを使用してさまざまな種類のサービスを開発します。
@@ -70,7 +70,7 @@ ms.locfileid: "43697562"
 4. "*オペレーター*" は、[**CopyApplicationPackage** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_CopyApplicationPackage_System_String_System_String_System_String_)または [**Copy-ServiceFabricApplicationPackage** コマンドレット](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)を使用して、クラスター イメージ ストアに更新されたアプリケーション パッケージをアップロードします。 アプリケーション パッケージには、アプリケーション マニフェストとサービス パッケージのコレクションが含まれています。
 5. "*オペレーター*" は、[**ProvisionApplicationAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_ProvisionApplicationAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_)、[**Register-ServiceFabricApplicationType** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype)、[**Provision an Application** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application)を使用して、対象のクラスターで新しいバージョンのアプリケーションをプロビジョニングします。
 6. "*オペレーター*" は、[**UpgradeApplicationAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_UpgradeApplicationAsync_System_Fabric_Description_ApplicationUpgradeDescription_System_TimeSpan_System_Threading_CancellationToken_)、[**Start-ServiceFabricApplicationUpgrade** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade)、[**Upgrade an Application** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/upgrade-an-application)を使用して、対象のアプリケーションを新しいバージョンにアップグレードします。
-7. "*オペレーター*" は、[**GetApplicationUpgradeProgressAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_GetApplicationUpgradeProgressAsync_System_Uri_System_TimeSpan_System_Threading_CancellationToken_)、[**Get-ServiceFabricApplicationUpgrade** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricapplicationupgrade)、[**Get Application Upgrade Progress** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/get-the-progress-of-an-application-upgrade1)を使用して、アップグレードの進行状況を確認します。
+7. "*オペレーター*" は、[**GetApplicationUpgradeProgressAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[**Get-ServiceFabricApplicationUpgrade** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricapplicationupgrade)、[**Get Application Upgrade Progress** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/get-the-progress-of-an-application-upgrade1)を使用して、アップグレードの進行状況を確認します。
 8. 必要に応じて、"*オペレーター*" は、[**UpdateApplicationUpgradeAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_UpdateApplicationUpgradeAsync_System_Fabric_Description_ApplicationUpgradeUpdateDescription_System_TimeSpan_System_Threading_CancellationToken_)、[**Update-ServiceFabricApplicationUpgrade** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade)、[**Update Application Upgrade** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/update-an-application-upgrade)を使用して、現在のアプリケーション アップグレードのパラメーターを変更して再適用します。
 9. 必要に応じて、"*オペレーター*" は、[**RollbackApplicationUpgradeAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient#System_Fabric_FabricClient_ApplicationManagementClient_RollbackApplicationUpgradeAsync_System_Uri_System_TimeSpan_System_Threading_CancellationToken_)、[**Start-ServiceFabricApplicationRollback** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback)、[**Rollback Application Upgrade** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/rollback-an-application-upgrade)を使用して、現在のアプリケーション アップグレードをロールバックします。
 10. Service Fabric はその構成サービスのいずれかの可用性を失うことなく、クラスター内で実行されている対象アプリケーションをアップグレードします。

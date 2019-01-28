@@ -238,9 +238,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: c825a777affaabf6db04307de9c0f96efafc3d27
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 096d72d2580b7f71b434079b0f98797861e871bb
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191736"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913395"

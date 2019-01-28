@@ -20,7 +20,7 @@ items:
     href: tutorial-deploy-function.md
   - name: ASA を使用した平均値の検索
     href: tutorial-deploy-stream-analytics.md
-  - name: Azure ML を使用したデータへのスコア付け
+  - name: Azure Machine Learning service を使用したデータへのスコア付け
     href: tutorial-deploy-machine-learning.md
   - name: Custom Vision を使用したイメージの分類
     href: tutorial-deploy-custom-vision.md
@@ -212,9 +212,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 686acdb4114756ee311c752c412d0aa2e927f67e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 666e7b08b5def68847f30813a6bdc051ebbf50ea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827858"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078051"

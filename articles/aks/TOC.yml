@@ -223,6 +223,8 @@ items:
       href: kubernetes-draft.md
     - name: Open Service Broker for Azure の使用
       href: integrate-azure.md
+    - name: MongoDB と OSBA に対する Cosmos DB API の使用
+      href: use-cosmosdb-osba-mongo-app.md
     - name: OpenFaaS の使用
       href: openfaas.md
     - name: Spark ジョブの実行
@@ -296,9 +298,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: f59d5f982885c21449949ab79b51db32585ea80f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 81cb346a00d9916b769c43cd53aee04fe0e35883
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159861"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080517"
