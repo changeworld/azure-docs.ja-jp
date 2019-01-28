@@ -69,8 +69,8 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
 | プロパティ名 | 値 | 必須 | 説明 |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | [はい] | システムに対してメッセージを示す定数値。 |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | [はい] | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
+| **DigitalTwins-Telemetry** | 1.0 | はい | システムに対してメッセージを示す定数値。 |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | はい | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
 | **CreationTimeUtc** | `string` | いいえ  | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
 | **CorrelationId** | `string` | いいえ  | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
 
