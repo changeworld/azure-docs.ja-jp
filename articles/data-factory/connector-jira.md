@@ -65,8 +65,8 @@ Jira のリンクされたサービスでは、次のプロパティがサポー
             "port" : "<port>",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         }
     }
