@@ -44,10 +44,10 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**GoogleAdWords** | [はい] |
-| clientCustomerID | レポート データをフェッチする対象の、AdWords アカウントのクライアント顧客 ID。  | [はい] |
-| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | [はい] |
-| authenticationType | 認証に使用される OAuth 2.0 認証メカニズム。 ServiceAuthentication はセルフホステッド IR のみで使用できます。 <br/>使用できる値は、以下のとおりです。**ServiceAuthentication**、**UserAuthentication** | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**GoogleAdWords** | はい |
+| clientCustomerID | レポート データをフェッチする対象の、AdWords アカウントのクライアント顧客 ID。  | はい |
+| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | はい |
+| authenticationType | 認証に使用される OAuth 2.0 認証メカニズム。 ServiceAuthentication はセルフホステッド IR のみで使用できます。 <br/>使用できる値は、以下のとおりです。**ServiceAuthentication**、**UserAuthentication** | はい |
 | refreshToken | UserAuthentication で AdWords へのアクセスを承認するために Google から取得した更新トークン。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
 | clientId | 更新トークンを取得するために使用される google アプリケーションのクライアント ID。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
 | clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ  |
@@ -100,7 +100,7 @@ Google AdWords からデータをコピーするには、データセットの t
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**GoogleAdWordsObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**GoogleAdWordsObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -130,7 +130,7 @@ Google AdWords からデータをコピーするには、コピー アクティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**GoogleAdWordsSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**GoogleAdWordsSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
