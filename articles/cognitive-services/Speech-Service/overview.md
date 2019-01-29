@@ -55,8 +55,8 @@ Speech Service には、HTTP 要求を実行できるプログラミング言語
 
 |<br>方法|音声<br>テキスト変換|テキストから<br>音声|音声<br>翻訳|<br>説明|
 |-|-|-|-|-|
-|[Speech SDK](speech-sdk.md)|[はい]|いいえ |[はい]|C#、C++、および Java 用のネイティブ API による開発の簡略化。|
-|[REST API](rest-apis.md)|[はい]|[はい]|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
+|[Speech SDK](speech-sdk.md)|はい|いいえ |はい|C#、C++、および Java 用のネイティブ API による開発の簡略化。|
+|[REST API](rest-apis.md)|はい|はい|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
 
 ### <a name="websockets"></a>WebSocket
 
