@@ -3,21 +3,21 @@ title: チュートリアル - Azure Active Directory B2C を使用してシン�
 description: Active Directory B2C を使用して .NET Core Web API を保護し、シングルページ アプリからそれを呼び出す方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4a1787f0a6d222f91eefd6f96e265ba825ca9e82
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605761"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848099"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
+# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
 
 このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された ASP.NET Core Web API リソースをシングルページ アプリから呼び出す方法について説明します。
 
@@ -56,9 +56,9 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **名前** | Hello Core API | 開発者が Web API を把握できる**名前**を入力します。 |
+    | **Name** | Hello Core API | 開発者が Web API を把握できる**名前**を入力します。 |
     | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
-    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**はい** を選択します。 |
     | **応答 URL** | `http://localhost:5000` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 5000 (後でこのチュートリアルで使用するために、以前に構成した) でリッスンします。 |
     | **アプリケーション ID/URI** | HelloCoreAPI | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
