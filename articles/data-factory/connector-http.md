@@ -58,10 +58,10 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティを **HttpServer** に設定する必要があります。 | [はい] |
-| url | Web サーバーへのベース URL | [はい] |
+| type | **type** プロパティを **HttpServer** に設定する必要があります。 | はい |
+| url | Web サーバーへのベース URL | はい |
 | enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名証明書を使用している場合は、このプロパティを **false** に設定します。 | いいえ <br /> (既定値は **true** です)。 |
-| authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> このような認証の種類のその他のプロパティと JSON サンプルについては、この表の後のセクションを参照してください。 | [はい] |
+| authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> このような認証の種類のその他のプロパティと JSON サンプルについては、この表の後のセクションを参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>基本、ダイジェスト、または Windows 認証の使用
@@ -70,8 +70,8 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| userName | HTTP エンドポイントにアクセスするために使用するユーザー名。 | [はい] |
-| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | [はい] |
+| userName | HTTP エンドポイントにアクセスするために使用するユーザー名。 | はい |
+| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -168,7 +168,7 @@ HTTP からデータをコピーするには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティを **HttpFile** に設定する必要があります。 | [はい] |
+| type | データセットの **type** プロパティを **HttpFile** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
 | requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ  |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
@@ -230,7 +230,7 @@ HTTP からデータをコピーするは、コピー アクティビティの *
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを **HttpSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの **type** プロパティを **HttpSource** に設定する必要があります。 | はい |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ  |
 
 **例**
