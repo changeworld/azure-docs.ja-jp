@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 516bd4c5edaaec2545be35032c4c87cb394ec0b3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: fd097d6202894fc76cb5d80030f5b32f4b026c36
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912015"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180485"
 documentType: LandingData
 title: Bing Image Search API のドキュメント
 metadata:
@@ -15,7 +15,7 @@ metadata:
   author: nitinme
   manager: cgronlun
   ms.service: cognitive-services
-  ms.component: bing-image-search
+  ms.subservice: bing-image-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

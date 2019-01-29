@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7cb1acace3dd8605d7506013a6f1c0273dafa32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739825"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421438"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -30,7 +30,7 @@ ms.locfileid: "50739825"
 
 Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じています。 そのため、Azure AD Identity Protection チームは、よく使用され、侵害されたパスワードを継続的に探しています。 また、いわゆるグローバル禁止パスワード リストに含まれるあまりにも一般的と見なされるパスワードをブロックしています。 サイバー犯罪者も同様の戦略を攻撃に使用しているため、Microsoft はこのリストの内容を一般公開していません。 これらの脆弱なパスワードは、Microsoft ユーザーにとって現実的な脅威になる前にブロックされます。 セキュリティに関する最新の取り組みについて詳しくは、「[マイクロソフト セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/intelligence-report)」を参照してください。
 
-## <a name="preview-custom-banned-password-list"></a>プレビュー: カスタムの禁止パスワード リスト
+## <a name="preview-custom-banned-password-list"></a>プレビュー:カスタムの禁止パスワードの一覧
 
 組織によっては、グローバル禁止パスワード リストの上に、Microsoft がカスタムの禁止パスワード リストと呼ぶ独自のカスタマイズを追加することで、セキュリティをさらに向上することもできます。 Contoso のような企業ユーザーは、さらにブランド名、企業固有の用語などの項目の変異形をブロックすることもできます。
 
@@ -46,7 +46,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 禁止パスワード リストは、文字列を小文字に変換し、編集距離が 1 以内の既知の禁止パスワードとあいまい一致で比較することで、リスト内のパスワードと照合します。
 
-例: 組織で password という単語がブロックされている
+例:組織で password という単語がブロックされている
    - ユーザーはパスワードを "P@ssword" に設定しようとしています。これは "password" に変換され、password の変異形なので、ブロックされます。
    - 管理者は、ユーザー パスワードを "Password123!" に設定しようとします。 これは "password123!" に変換されます。 これは password の変異形なのでブロックされます。
 

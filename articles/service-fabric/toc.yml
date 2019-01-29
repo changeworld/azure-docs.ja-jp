@@ -357,8 +357,6 @@ items:
       href: service-fabric-capacity-planning.md
   - name: 初めての作成
     items:
-    - name: Visual Studio の C# アプリケーション
-      href: service-fabric-create-your-first-application-in-visual-studio.md
     - name: Windows コンテナー アプリケーション
       href: service-fabric-get-started-containers.md
     - name: Linux コンテナー アプリケーション
@@ -544,8 +542,6 @@ items:
       href: service-fabric-how-to-specify-environment-variables.md
     - name: アプリケーションをデプロイまたは削除する
       items:
-      - name: ローカル クラスターへのアプリケーションのデプロイ
-        href: service-fabric-get-started-with-a-local-cluster.md
       - name: ノード タイプを削除する
         href: service-fabric-how-to-remove-node-type.md
       - name: Azure Resource Manager
@@ -839,9 +835,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 5b487a8212cabb6809a9152e10dde7a1c9c7158f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a4337e82a5703b3ccfde9f77e4494ca042a79b64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913531"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163916"

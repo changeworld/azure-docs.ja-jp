@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6602a5669c93e7a24a5424dee7d164f46b1c5f54
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f1db6f04a7e7bf32f861fd2eaf193e3cd25d9e12
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54409811"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167854"
 documentType: LandingData
 title: Bing Entity Search のドキュメント
 metadata:
@@ -14,7 +14,7 @@ metadata:
   author: mikedodaro
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-entity-search
+  ms.subservice: bing-entity-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
