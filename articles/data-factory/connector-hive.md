@@ -41,12 +41,12 @@ Hive のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Hive** | [はい] |
-| host | Hive サーバーの IP アドレスまたはホスト名。複数のホストは ';' で区切ります (serviceDiscoveryMode が有効な場合のみ)。  | [はい] |
-| port | Hive サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Hive** | はい |
+| host | Hive サーバーの IP アドレスまたはホスト名。複数のホストは ';' で区切ります (serviceDiscoveryMode が有効な場合のみ)。  | はい |
+| port | Hive サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | はい |
 | serverType | Hive サーバーの種類。 <br/>使用できる値は、以下のとおりです。**HiveServer1**、**HiveServer2**、**HiveThriftServer**。 | いいえ  |
 | thriftTransportProtocol | Thrift レイヤーで使用するトランスポート プロトコル。 <br/>使用できる値は、以下のとおりです。**Binary**、**SASL**、**HTTP**。 | いいえ  |
-| authenticationType | Hive サーバーへのアクセスに使用する認証方法。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
+| authenticationType | Hive サーバーへのアクセスに使用する認証方法。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | はい |
 | serviceDiscoveryMode | ZooKeeper サービスの使用を指定する場合は true、そうでない場合は false。  | いいえ  |
 | zooKeeperNameSpace | Hive サーバーの 2 ノードが追加される ZooKeeper 上の名前空間。  | いいえ  |
 | useNativeQuery | ドライバーがネイティブの HiveQL クエリを使用するか、または HiveQL の同等の形式に変換するかを指定します。  | いいえ  |
@@ -89,7 +89,7 @@ Hive からデータをコピーするには、データセットの type プロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **HiveObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **HiveObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -118,7 +118,7 @@ Hive からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **HiveSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **HiveSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
