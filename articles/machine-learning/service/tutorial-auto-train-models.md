@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580520"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823017"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -44,11 +44,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 > * [データ準備のチュートリアルを実行する](tutorial-data-prep.md)。
-> * 自動化された機械学習が構成されている環境。 たとえば、Azure Notebooks やローカルの Python 環境、データ サイエンス仮想マシンです。 [自動化された機械学習を設定します](samples-notebooks.md)。
+> * 自動化された機械学習が構成されている環境。 たとえば、[Azure Notebooks](https://notebooks.azure.com/) やローカルの Python 環境、Data Science Virtual Machine です。 [自動化された機械学習を設定します](samples-notebooks.md)。
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb)として提供されています。 Azure Notebooks 内または自分の Jupyter Notebook サーバー内で、`regression-part2-automated-ml.ipynb` ノートブックを実行します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb)として提供されています。 [Azure Notebooks](https://notebooks.azure.com/) または自分の Jupyter Notebook サーバーで、`regression-part2-automated-ml.ipynb` ノートブックを実行してください。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -66,9 +66,15 @@ import logging
 import os
 ```
 
+独自の Python 環境でチュートリアルを実行している場合は、次を使用して必要なパッケージをインストールします。
+
+```shell
+pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
+```
+
 ## <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
 
 `Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
@@ -95,7 +101,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>データを調査する
 
-前のチュートリアルで作成されたデータ フロー オブジェクトを使用します。 データ フローを開いて実行し、結果を確認します。
+前のチュートリアルで作成されたデータ フロー オブジェクトを使用します。 要約すると、このチュートリアルのパート 1 では、NYC タクシー データを整理して、機械学習モデルで使用できるようにしました。 次に、データセットのさまざまな機能を使用して、自動化されたモデルで機能とタクシー乗車の料金との関係を構築できるようにします。 データ フローを開いて実行し、結果を確認します。
 
 
 ```python
@@ -605,27 +611,27 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-これで、お客様のモデルを自動的にトレーニングするために必要なパッケージとデータが揃いました。
+この手順の目的は、正しい精度を測定するために、モデルのトレーニングに使用されたことのないデータ ポイントで完成モデルをテストすることです。 つまり、適切にトレーニングされたモデルは、まだ見たことのないデータから正確な予測ができるはずです。 これで、お客様のモデルを自動的にトレーニングするために必要なパッケージとデータが揃いました。
 
 ## <a name="automatically-train-a-model"></a>自動的にモデルをトレーニングする
 
 モデルを自動的にトレーニングするには、次の手順を実行します。
-1. 実験の実行用の設定を定義する。
-1. モデル調整用の実験を送信する。
+1. 実験の実行用の設定を定義する。 トレーニング データを構成にアタッチし、トレーニング プロセスを制御する設定を変更します。
+1. モデル調整用の実験を送信する。 実験を送信した後、プロセスは定義された制約に従って、他の機械学習アルゴリズムとハイパー パラメーター設定を反復処理します。 精度メトリックを最適化することによって、最適なモデルが選択されます。
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>自動生成と調整用の設定を定義する
 
-自動生成と調整用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。
+自動生成と調整用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 10 分から 15 分かかりますが、実行時間を短くしたい場合は `iterations` または `iteration_timeout_minutes` を減らしてください。
 
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
-|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限。|
-|**iterations**|30|イテレーションの回数。 各イテレーションでは、特定のパイプラインを使用してモデルによってデータがトレーニングされます。|
-|**primary_metric**| spearman_correlation | 最適化したいメトリック。|
-|**preprocess**| True | **True** を使用して、実験で入力を前処理できます。|
+|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
+|**iterations**|30|イテレーションの回数。 各イテレーションでは、新しい機械学習モデルがデータでトレーニングされます。 これは、合計実行時間に影響を与える主要な値です。|
+|**primary_metric**| spearman_correlation | 最適化したいメトリック。 このメトリックに基づいて、最適なモデルが選択されます。|
+|**preprocess**| True | **True** を使用すると、実験の入力データを前処理できます (欠損データの処理、テキストから数値への変換など)。|
 |**verbosity**| logging.INFO | ログ記録のレベルを制御します。|
-|**n_cross_validationss**|5|クロス検証の分割の数。|
+|**n_cross_validations**|5|検証データが指定されていない場合に実行される、クロス検証の分割の数。|
 
 
 
@@ -640,6 +646,7 @@ automl_settings = {
 }
 ```
 
+定義済みのトレーニング設定を `AutoMLConfig` オブジェクトへのパラメーターとして使用します。 さらに、トレーニング データとモデルの種類を指定します。モデルの種類は、ここでは `regression` です。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -664,6 +671,8 @@ experiment=Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
+表示される出力は、実験の実行中に随時更新されます。 各イテレーションでは、モデルの種類、実行継続時間、およびトレーニングの精度が表示されます。 `BEST` フィールドでは、メトリックの種類に基づいて、最高の実行トレーニング スコアが追跡されます。
+
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
     ITERATION: The iteration being evaluated.
@@ -672,7 +681,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     *******************************************************************************************
-    
+
      ITERATION   PIPELINE                                       DURATION      METRIC      BEST
              0   MaxAbsScaler ExtremeRandomTrees                0:00:08       0.9447    0.9447
              1   StandardScalerWrapper GradientBoosting         0:00:09       0.9536    0.9536
@@ -724,7 +733,7 @@ RunDetails(local_run).show()
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>オプション 2:Python ですべての実行イテレーションを取得して調査する
 
-各実験の履歴を取得して、各イテレーション実行の個々のメトリックを調べることもできます。
+各実験の履歴を取得して、各イテレーション実行の個々のメトリックを調べることもできます。 個々のモデル実行ごとに RMSE (root_mean_squared_error) を調べると、ほとんどのイテレーションで、妥当なマージン (3 から 4 ドル) 以内でタクシーの公正なコストが予測されていることがわかります。
 
 ```python
 children = list(local_run.get_children())
@@ -1081,28 +1090,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="register-the-model"></a>モデルを登録する
-
-お客様の Azure Machine Learning service ワークスペースにモデルを登録します。
-
-
-```python
-description = 'Automated Machine Learning Model'
-tags = None
-local_run.register_model(description=description, tags=tags)
-local_run.model_id # Use this id to deploy the model as a web service in Azure
-```
-
 ## <a name="test-the-best-model-accuracy"></a>最高のモデルの正確性をテストする
 
-最高のモデルを使用して、テスト データ セット上で予測を実行します。 関数 `predict` によって最高のモデルが使用され、`x_test` データセットから y (**交通費**) の値が予測されます。 `y_predict` から最初の 10 個の予測コスト値を出力します。
+最高のモデルを使用して、テスト データ セット上で予測を実行し、タクシー料金を予測します。 関数 `predict` によって最高のモデルが使用され、`x_test` データセットから y (**交通費**) の値が予測されます。 `y_predict` から最初の 10 個の予測コスト値を出力します。
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-散布図を作成して、実績コスト値と比較した予測コスト値を視覚化します。 次のコードでは、特徴 (`distance`) が X 軸、交通費 (`cost`) が Y 軸として使用されています。 個々の乗車距離値における予測コストの差異を比較するために、最初の 100 個の予測コスト値と実績コスト値は別個の系列として作成されます。 プロットを観察すると、距離とコストの関係がほぼ線形であることがわかります。 同じ乗車距離であれば、ほとんどの場合、予測コスト値が実績コスト値に非常に近くなります。
+散布図を作成して、実績コスト値と比較した予測コスト値を視覚化します。 次のコードでは、特徴 (`distance`) が X 軸、交通費 (`cost`) が Y 軸として使用されています。 個々の乗車距離値における予測コストの差異を比較するために、最初の 100 個の予測コスト値と実績コスト値は別個の系列として作成されます。 このプロットを観察すると、距離とコストの関係がほぼ線形であり、同じ乗車距離であれば、ほとんどの場合、予測コスト値が実績コスト値にきわめて近いことがわかります。
 
 ```python
 import matplotlib.pyplot as plt
@@ -1127,7 +1124,7 @@ plt.show()
 
 ![予測散布図](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-結果の `root mean squared error` を計算します。 `y_test` データフレームを使用します。 予測値と比較するために、これをリストに変換します。 関数 `mean_squared_error` によって 2 つの配列の値が受け取られ、それらの間の平均二乗誤差が計算されます。 結果の平方根を取ると、y 変数 (**コスト**) と同じ単位で誤差が得られます。 これは、お客様の予測が実績値とどの程度離れているかを大まかに示します。
+結果の `root mean squared error` を計算します。 `y_test` データフレームを使用します。 予測値と比較するために、これをリストに変換します。 関数 `mean_squared_error` によって 2 つの配列の値が受け取られ、それらの間の平均二乗誤差が計算されます。 結果の平方根を取ると、y 変数 (**コスト**) と同じ単位で誤差が得られます。 これは、タクシー料金の予測が実際の料金からどの程度離れているかを大まかに示します。
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1165,6 +1162,8 @@ print(1 - mean_abs_percent_error)
 
     Model Accuracy:
     0.8945484613043041
+
+最終的な予測精度メトリックから、モデルでのデータ セットの機能によるタクシー料金の予測はかなり良好で、誤差は 3 ドル以内であることがわかります。 従来の機械学習モデルの開発プロセスでは、リソースが大量に消費され、数十個のモデルを実行して結果を比較するために、その領域に関する膨大な知識と時間の投資が必要とされます。 自動化された機械学習の使用は、シナリオに合わせてさまざまなモデルを迅速にテストするための優れた方法です。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

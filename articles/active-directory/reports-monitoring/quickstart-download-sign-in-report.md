@@ -4,7 +4,7 @@ description: Azure portal を使用してサインイン レポートをダウ�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce242066df427163048a2ef51e79ffd98eadbc7d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7b16fb718e689eec8ea016b513d866390b2328e0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214914"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815560"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してサインイン レポートをダウンロードする
 
-このクイック スタートでは、過去 24 時間のテナントに関するサインイン データをダウンロードする方法について説明します。
+このクイック スタートでは、過去 24 時間のテナントに関するサインイン データをダウンロードする方法について説明します。 レコードは Azure portal から 5000 個までダウンロードできます。 レコードは最新の順に並べ替えられており、既定では最新の 5,000 個のレコードが取得されます。 
 
 ## <a name="prerequisites"></a>前提条件
 

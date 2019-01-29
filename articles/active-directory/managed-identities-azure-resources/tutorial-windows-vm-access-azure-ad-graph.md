@@ -4,7 +4,7 @@ description: Windows VM のシステム割り当てマネージド ID を使用�
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: daveba
 ms.service: active-directory
 ms.component: msi
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4396ab093b20e4a7fb89ddbfe821be117bb8ebfb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625336"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438679"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Microsoft Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  このチュートリアルでは、Azure AD グループ内での VM ID のメンバーシップをクエリします。 たとえば、グループの情報は承認の判断によく使用されます。 実際には、VM のマネージド ID は Azure AD 内の**サービス プリンシパル**によって表されます。 グループ クエリを実行する前に、VM の ID を表すサービス プリンシパルを Azure AD 内のグループに追加します。 これは Azure PowerShell、Azure AD PowerShell、または Azure CLI を使用して実行できます。
 
@@ -66,7 +66,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 Azure AD Graph:
 - サービス プリンシパル appId (アプリのアクセス許可の付与時に使用): 00000002-0000-0000-c000-000000000000
 - リソース ID (Azure リソースのマネージド ID からアクセス トークンを要求するときに使用): https://graph.windows.net
-- アクセス許可のスコープ参照: [Azure AD Graph アクセス許可の参照](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- アクセス許可のスコープに関するリファレンス: [Azure AD Graph のアクセス許可に関するリファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してアプリケーションのアクセス許可を付与する
 

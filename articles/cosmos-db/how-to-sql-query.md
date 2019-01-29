@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042140"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452957"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Azure Cosmos DB からのデータのクエリを実行するための SQL クエリの例
 
@@ -506,7 +506,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
 
 他のクエリ演算子と同様に、すべての項目で条件式の参照先のプロパティが見つからない場合、または比較対象となる型が異なる場合、これらの項目はクエリの結果で除外されます。
 
-合体 (??) 演算子を使用すると、ドキュメントにプロパティが存在するかどうか (つまり 定義されているかどうか) を効率的に確認できます。 この演算子は、半構造化されたデータや混合型のデータに対してクエリを実行するときに役立ちます。 たとえば、次のクエリは、存在する場合に "lastName" を返し、存在しない場合に "surname" を返します。
+合体 (??) 演算子を使用すると、特定の項目にプロパティが存在するかどうかを効率的に確認できます。 この演算子は、半構造化されたデータや混合型のデータに対してクエリを実行するときに役立ちます。 たとえば、次のクエリは、存在する場合に "lastName" を返し、存在しない場合に "surname" を返します。
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

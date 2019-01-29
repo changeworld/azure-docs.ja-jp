@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4025dcc5824991baa9a52dbb912a5c07f4273d58
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943472"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383290"
 ---
 1. ブラウザーで、[Jenkins 用の Azure Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)を開きます。
 
@@ -53,6 +53,7 @@ ms.locfileid: "36943472"
     - **パブリック IP アドレス**: IP アドレス名の既定値は、前のページで指定した Jenkins 名にサフィックス-IP が付いたものになります。 この既定値を変更するオプションを選択できます。
     - **ドメイン名ラベル**: Jenkins 仮想マシンの完全修飾 URL の値を指定します。
     - **Jenkins リリースの種類** - オプションから必要なリリースの種類を選択します (`LTS`、`Weekly build`、または`Azure Verified`)。 `LTS` オプションと `Weekly build` オプションについては、「[Jenkins LTS Release Line](https://jenkins.io/download/lts/)」(Jenkins LTS リリース ライン) に説明があります。 `Azure Verified` オプションは、Azure での実行が検証されている [Jenkins LTS バージョン](https://jenkins.io/download/lts/) を参照します。 
+    - **JDK の種類** - インストールする JDK。 既定値は、OpenJDK のテスト済み、認定済みのビルドである Zulu です。
 
     ![[設定] タブで、Jenkins の仮想マシン設定を入力する。](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 

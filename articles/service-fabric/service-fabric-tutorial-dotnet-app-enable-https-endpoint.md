@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 541d1473b21056e24c6b04b86414936a02b7d9d5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077252"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382573"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
+さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  
+
+前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -347,7 +349,7 @@ if ($cert -eq $null)
 
 ## <a name="install-certificate-on-cluster-nodes"></a>クラスター ノードに証明書をインストールする
 
-アプリケーションを Azure にデプロイする前に、リモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
+アプリケーションを Azure にデプロイする前に、すべてのリモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  サービスは、クラスターの別のノードに移動することができます。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
 
 最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
 

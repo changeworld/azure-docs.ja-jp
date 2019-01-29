@@ -1,23 +1,23 @@
 ---
-title: クイック スタート:Speech Service SDK を使用して Python で音声を認識する
+title: クイック スタート:音声を認識する、Python - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Speech Service SDK を使用して Python で音声を認識する方法について説明します
+description: このガイドでは、Python 用 Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: chlandsi
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 40869457ce933368e17a2054dfca50fc4505fa22
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723911"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381570"
 ---
-# <a name="quickstart-using-the-speech-service-from-python"></a>クイック スタート:Python から Speech Service を使用する
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "53723911"
 
 * Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2017 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) も必要になります。
 
-## <a name="get-the-speech-sdk-python-package"></a>Speech SDK Python パッケージを取得する
+## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -61,7 +61,7 @@ Speech SDK Python パッケージの更新プログラムは、PyPI を通じて
 
 ## <a name="create-a-python-application-using-the-speech-sdk"></a>Speech SDK を使用して Python アプリケーションを作成する
 
-### <a name="running-the-sample-in-a-terminal"></a>ターミナルでサンプルを実行する
+### <a name="run-the-sample"></a>サンプルを実行する
 
 このクイック スタートからソース ファイル `quickstart.py` に[コード](#quickstart-code)をコピーしてお使いの IDE またはコンソールで実行することができます。
 
@@ -71,11 +71,11 @@ python quickstart.py
 
 また、このクイック スタート チュートリアルを [Cognitive Services Speech のサンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)から [Jupyter](https://jupyter.org) ノートブックとしてダウンロードして、ノートブックとして実行することもできます。
 
-### <a name="quickstart-code"></a>クイック スタート コード
+### <a name="sample-code"></a>サンプル コード
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>Speech SDK Python パッケージをインストールして、Visual Studio Code でサンプルを実行する
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Speech SDK と Visual Studio Code をインストールして使用する
 
 1. Python の 64 ビット バージョン (3.5 以降) をお使いのコンピューターに[ダウンロード](https://www.python.org/downloads/)して、インストールします。
 1. Visual Studio Code を[ダウンロード](https://code.visualstudio.com/Download)して、インストールします。

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336578"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432219"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用して S2S VPN 接続を作成および管理する
 
@@ -39,11 +39,11 @@ Azure S2S VPN 接続は、顧客構内と Azure との間の安全なクロス�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="requirements"></a>必要条件
 
-[Azure PowerShell を使用した VPN ゲートウェイの作成](vpn-gateway-tutorial-create-gateway-powershell.md)に関する最初のチュートリアルを実行して、次のリソースを作成します。
+最初のチュートリアル ([Azure PowerShell を使用した VPN ゲートウェイの作成](vpn-gateway-tutorial-create-gateway-powershell.md)に関するページ) を実行して、次のリソースを作成します。
 
 1. リソース グループ (TestRG1)、仮想ネットワーク (VNet1)、および GatewaySubnet
 2. VPN ゲートウェイ (VNet1GW)
@@ -167,8 +167,8 @@ BGP を無効にするには、"-EnableBGP" プロパティの値を **$False** 
 
 オプションの IPsec/IKE ポリシーを適用して、[既定のプロポーザル](vpn-gateway-about-vpn-devices.md#ipsec)を使用する代わりに、接続における IPsec/IKE 暗号アルゴリズムとキー強度の正確な組み合わせを指定できます。 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して別の IPsec/IKE ポリシーを作成します。
 
-* IKEv2: AES256、SHA256、DHGroup14
-* IPsec: AES128、SHA1、PFS14、SA の有効期間 14,400 秒、および 102,400,000 KB
+* IKEv2:AES256、SHA256、DHGroup14
+* IPsec:AES128、SHA1、PFS14、SA の有効期間 14,400 秒、および 102,400,000 KB
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 `

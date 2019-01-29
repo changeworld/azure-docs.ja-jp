@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/28/2018
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969337"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811215"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>チュートリアル:API を使用した Media Services v3 によるライブ ストリーミング
 
@@ -89,7 +89,7 @@ Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/m
 
 ### <a name="create-a-live-event"></a>ライブ イベントを作成する
 
-このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) LiveEvent を作成する方法を示します。 ライブ エンコードが有効になっている LiveEvent を作成する場合は、LiveEventEncodingType を Standard に設定します。 
+このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) LiveEvent を作成する方法を示します。 ライブ エンコードが有効になっている LiveEvent を作成する場合は、LiveEventEncodingType を **Standard** に設定します。 
 
 ライブ イベントの作成時には、次を指定することをお勧めします。
 
@@ -100,8 +100,12 @@ Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/m
 * 取り込みやプレビューの IP 制限。 この LiveEvent へのビデオの取り込みが許可される IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。
     
     IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。
+    
+    IP アドレスの形式は、4 つの数字を含む IpV4 アドレスまたは CIDR アドレス範囲のどちらかである必要があります。
 
-イベントの作成中に、そのイベントを自動開始するように設定できます。 
+* イベントの作成中に、そのイベントを自動開始するように設定できます。 
+
+    自動開始が true に設定されている場合、ライブ イベントは作成された後に開始されます。 つまり、ライブ イベントが実行されるとすぐに課金が開始されます。 それ以上の課金を停止するには、LiveEvent リソースの Stop を明示的に呼び出す必要があります。 詳細については、「[LiveEvent の状態と課金](live-event-states-billing.md)」をご覧ください。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

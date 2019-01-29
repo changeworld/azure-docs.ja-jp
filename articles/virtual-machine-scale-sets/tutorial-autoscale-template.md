@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 81c33818733b2896f98e1f3a3648b4fe9b823211
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466561"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413857"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル:Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -164,7 +164,7 @@ az group deployment create \
 ## <a name="generate-cpu-load-on-scale-set"></a>スケール セットに対する CPU 負荷の生成
 自動スケール ルールをテストするには、スケール セットの VM インスタンスに対する CPU 負荷を生成します。 このシミュレートされた CPU 負荷を適用すると、自動スケール ルールによってスケールアウトされ、VM インスタンスの数が増えます。 次に、シミュレートされた CPU 負荷を小さくすると、自動スケール ルールによってスケールインされ、VM インスタンスの数が減ります。
 
-最初に、[az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用して、スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示します。
+最初に、[az vmss list-instance-connection-info](/cli/azure/vmss) を使用して、スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示します。
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -209,7 +209,7 @@ Ctrl-c
 exit
 ```
 
-前の [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) によって一覧表示されたポート番号を使用して、2 番目の VM インスタンスに接続します。
+前の [az vmss list-instance-connection-info](/cli/azure/vmss) によって一覧表示されたポート番号を使用して、2 番目の VM インスタンスに接続します。
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003

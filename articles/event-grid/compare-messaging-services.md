@@ -2,19 +2,19 @@
 title: Azure メッセージングの比較 - Event Grid、Event Hubs、Service Bus
 description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
 ms.date: 12/07/2018
-ms.author: tomfitz
+ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 80a2f9aa07f67c4d149a1ef8245f5e3269a751b3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166525"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469850"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
@@ -77,7 +77,7 @@ Azure Event Hubs は、ビッグ データのパイプラインです。 テレ�
 
 ### <a name="service-bus"></a>Service Bus
 
-Service Bus は、従来のエンタープライズ アプリケーションを対象としています。 これらのエンタープライズ アプリケーションは、トランザクション、順序付け、重複の検出、瞬間的な整合性を必要とします。 Service Bus を使用すると、クラウドネイティブ アプリケーションでビジネス プロセスに対する信頼性の高い状態遷移管理を実現できます。 損失や重複が許されない高価値のメッセージを処理する場合は、Azure Service Bus を使用してください。 Service Bus は、ハイブリッド クラウド ソリューション全体で安全性の高い通信を容易にします。そして、既存のオンプレミス システムをクラウド ソリューションに接続できます。
+Service Bus は、従来のエンタープライズ アプリケーションを対象としています。 これらのエンタープライズ アプリケーションは、トランザクション、順序付け、重複の検出、瞬間的な整合性を必要とします。 Service Bus を使用すると、[クラウドネイティブ](https://azure.microsoft.com/overview/cloudnative/) アプリケーションでビジネス プロセスに対する信頼性の高い状態遷移管理を実現できます。 損失や重複が許されない高価値のメッセージを処理する場合は、Azure Service Bus を使用してください。 Service Bus は、ハイブリッド クラウド ソリューション全体で安全性の高い通信を容易にします。そして、既存のオンプレミス システムをクラウド ソリューションに接続できます。
 
 Service Bus はブローカー メッセージング システムです。 使用側がメッセージを受信する準備ができるまで、メッセージを "ブローカー" (キューなど) に格納します。
 

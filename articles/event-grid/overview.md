@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321018"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809974"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -65,7 +65,7 @@ Azure Event Grid には、作業開始にあたり理解する必要がある、
 * **イベント** - 発生内容
 * **イベント ソース** - イベントの発生元
 * **トピック** - 発行元がイベントを送信するエンドポイント
-* **イベント サブスクリプション** - イベントを (時には複数のハンドラーに) ルーティングするエンドポイントまたは組み込みメカニズム。 サブスクリプションは、受信イベントをインテリジェントにフィルター処理するために、ハンドラーによっても使用されます。
+* **イベント サブスクリプション** - イベントを (ときには複数のハンドラーに) ルーティングするエンドポイントまたは組み込みメカニズム。 サブスクリプションは、受信イベントをインテリジェントにフィルター処理するために、ハンドラーによっても使用されます。
 * **イベント ハンドラー** - イベントに反応するアプリまたはサービス
 
 これらの概念の詳細については、「[Azure Event Grid の概念](concepts.md)」を参照してください。

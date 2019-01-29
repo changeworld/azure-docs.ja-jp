@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure AD B2B ゲスト ユーザーに多要素認証を適用する'
+title: チュートリアル:Azure AD B2B ゲスト ユーザーに多要素認証を適用する
 description: Azure AD B2B を使用して外部ユーザーやパートナー組織とコラボレーションするときに、多要素認証 (MFA) を要求する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 34ca5667b5bf47bec8c48a7e5836b7d51ad08724
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 88225ee7aeefd9030e754f2b1abc66e4c05e5c6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986819"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431180"
 ---
-# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する
+# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル:多要素認証を B2B ゲスト ユーザーに適用する
 
 外部の B2B ゲスト ユーザーとコラボレーションするときは、多要素認証 (MFA) ポリシーを使用して貴社のアプリを保護することをお勧めします。 そうすると、外部ユーザーがリソースにアクセスするために必要なものがユーザー名とパスワードだけではなくなります。 Azure Active Directory (Azure AD) では、アクセスで MFA を要求する条件付きアクセス ポリシーを使用してこの目標を達成できます。 MFA ポリシーは、組織のメンバーに対して有効にするのと同じ方法で、テナント レベル、アプリ レベル、または個々のゲスト ユーザー レベルで適用できます。
 
@@ -52,7 +52,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** にある **[Users]** を選択します。
+3.  **[管理]** にある **[ユーザー]** を選択します。
 4.  **[新しいゲスト ユーザー]** を選択します。
 
     ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-user-3.png)
@@ -133,7 +133,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 不要になったら、テスト ユーザーとテスト用の条件付きアクセス ポリシーを削除します。
 1.  [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2.  左ウィンドウで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** にある **[Users]** を選択します。
+3.  **[管理]** にある **[ユーザー]** を選択します。
 4.  テスト ユーザーを選択し、**[ユーザーの削除]** を選択します。
 5.  左ウィンドウで、**[Azure Active Directory]** を選択します。
 6.  **[セキュリティ]** で、**[条件付きアクセス]** を選択します。

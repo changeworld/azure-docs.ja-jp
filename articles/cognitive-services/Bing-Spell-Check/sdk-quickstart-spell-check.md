@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Bing Spell Check SDK (C#)'
+title: クイック スタート:Bing Spell Check SDK、C#
 titlesuffix: Azure Cognitive Services
 description: Spell Check SDK コンソール アプリケーションのセットアップ
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ae21e66c178ceb9c6aab814c6528da032ce0b30
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311604"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382123"
 ---
-# <a name="quickstart-bing-spell-check-sdk-with-c"></a>クイック スタート: Bing Spell Check SDK (C# を使用)
+# <a name="quickstart-bing-spell-check-sdk-with-c"></a>クイック スタート:Bing Spell Check SDK (C#)
 
 Bing Spell Check SDK には、スペル チェックに関する REST API の機能が含まれています。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 Bing Spell Check SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで `Manage NuGet Packages` オプションを参照します。 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` パッケージを追加します。
 
@@ -46,10 +46,10 @@ using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 
-このクライアントを使用してスペル チェックを実行します。
+このクライアントを使用してテキストのスペル チェックを実行します。 `acceptLanguage` パラメーターは省略可能です。
 
 ```cs
-var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market: "en-US").Result;
 Console.WriteLine("Correction for Query# \"bill gatas\"");
 ```
 
@@ -95,7 +95,7 @@ if (result?.Body.FlaggedTokens?.Count > 0)
 ```cs
 using System;
 using System.Linq;
-using Microsoft.Azure.CognitiveServices.SpellCheck;
+using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 
 namespace SpellCheckSDK
 {
@@ -107,7 +107,7 @@ namespace SpellCheckSDK
 
             try
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market:"en-US").Result;
                 Console.WriteLine("Correction for Query# \"bill gatas\"");
 
                 // SpellCheck Results

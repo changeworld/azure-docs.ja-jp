@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841630"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382792"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -106,7 +106,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 
 次の表では、Compute、Network、Storage のリソース プロバイダーの相互作用の変化について説明します。
 
-| 項目 | クラシック | リソース マネージャー |
+| Item | クラシック | リソース マネージャー |
 | --- | --- | --- |
 | 仮想マシン用クラウド サービス |クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 |新しいモデルを使用して仮想マシンを作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
 | 仮想ネットワーク |仮想ネットワークは仮想マシンでは省略可能です。 使用すると、仮想ネットワークは Resource Manager でデプロイできなくなります。 |仮想マシンには、Resource Manager でデプロイされた仮想ネットワークが必要です。 |
@@ -153,6 +153,7 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 [Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
 
 ## <a name="next-steps"></a>次の手順
+
 * 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
 * テンプレートをデプロイするためのコマンドについては、「 [AAzure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
 

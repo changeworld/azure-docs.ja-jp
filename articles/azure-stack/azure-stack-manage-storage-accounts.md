@@ -11,36 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302716"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470275"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
+
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
 
-## <a name="find"></a>ストレージ アカウントの検索
+## <a name="find-a-storage-account"></a>ストレージ アカウントの検索
 リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
+2. **[すべてのサービス]** > **[ストレージ アカウント]** の順に選択します。
 
-3. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
-   
-   ![ストレージ リソース プロバイダー](media/azure-stack-manage-storage-accounts/image1.png)
-
-5. **[ストレージ]** で、**[ストレージ アカウント]** を選択します。
-   
-   ![](media/azure-stack-manage-storage-accounts/image2.png)
-   
-   ブレードに、そのリージョンのストレージ アカウントのリストが表示されます。
-   
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
 既定では、最初の 10 個のアカウントが表示されます。 リストの下部にある **[さらに読み込む]** リンクをクリックすると、さらに多くのアカウントをフェッチすることができます。
@@ -84,7 +75,7 @@ Azure Stack では、これを行う簡単な方法があります。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. その結果が正常であったことを受けて、この回復は *[process…wait]\(処理中…お待ちください\)* と表示されます。
-   ポータルの上部にある "ベル" アイコンを選択して、進行状況インジケーターを表示できます。
+   ポータルの上部にある "ベル" アイコンを選択して、進行状況インジケーターを表示することもできます。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -99,7 +90,7 @@ Azure Stack では、これを行う簡単な方法があります。
   削除されたアカウントが既にガベージ コレクトされている場合、アカウント リストに表示されません。 この場合、回復はできません。 この記事の「[容量の回収](#reclaim)」を参照してください。
 
 ## <a name="set-the-retention-period"></a>保有期間の設定
-保有期間の設定では、クラウド オペレーターは削除されたアカウントが回復できる可能性がある期間を日数で指定できます (0 から 9999 日の間)。 既定の保有期間は 0 日に設定されています。 値を “0” に設定すると、削除されたすべてのアカウントがすぐに保有期間外になり、定期的なガベージ コレクションの対象としてマークされます。
+保有期間の設定では、クラウド オペレーターは削除されたアカウントが回復できる可能性がある期間を日数で指定できます (0 から 9999 日の間)。 既定の保有期間は 0 日に設定されています。 値を "0" に設定すると、削除されたすべてのアカウントがすぐに保有期間外になり、定期的なガベージ コレクションの対象としてマークされます。
 
 **保有期間を変更するには:**
 

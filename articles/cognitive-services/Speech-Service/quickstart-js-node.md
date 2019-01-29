@@ -1,23 +1,23 @@
 ---
-title: クイック スタート:Speech Service SDK を使用して Node.js の JavaScript で音声を認識する
+title: クイック スタート:音声を認識する、Node.js - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Speech Service SDK を使用して Node.js の JavaScript で音声を認識する方法を学習する
+description: このガイドでは、Node.js 用 Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e0ae916687ca32835dd8daf6e5059b8f6eea0ff6
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724435"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382164"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>クイック スタート:Speech Service SDK を使用して Node.js の JavaScript で音声を認識する
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>クイック スタート:Node.js 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -29,9 +29,9 @@ ms.locfileid: "53724435"
 * Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * 最新バージョンの [Node.js](https://nodejs.org)。
 
-## <a name="create-a-new-project-folder"></a>新しいプロジェクト フォルダーを作成する
+## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-新しい空のフォルダーを作成し、新しい JavaScript と Node.js プロジェクトとして初期化します。
+新しいフォルダーを作成してプロジェクトを初期化します。
 
 ```sh
 npm init -f
@@ -39,13 +39,17 @@ npm init -f
 
 これにより、package.json ファイルが既定値で初期化されます。 後でこのファイルを編集する場合があります。
 
-## <a name="install-the-speech-sdk-for-javascript-into-that-folder"></a>JavaScript 用 Speech SDK をフォルダーにインストールする
+## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-`npm install microsoft-cognitiveservices-speech-sdk` を介して Node.js プロジェクトに Speech SDK を追加します。
+Node.js プロジェクトに Speech SDK を追加します。
+
+```
+npm install microsoft-cognitiveservices-speech-sdk
+```
 
 これにより、npmjs から Speech SDK の最新バージョンと必要な前提条件がダウンロードされ、インストールされます。 SDK は、プロジェクト フォルダー内の `node_modules` ディレクトリにインストールされます。
 
-## <a name="using-the-speech-sdk"></a>Speech SDK を使用する
+## <a name="use-the-speech-sdk"></a>Speech SDK を使用する
 
 フォルダーに `index.js` という名前の新しいファイルを作成し、テキスト エディターでこのファイルを開きます。
 
@@ -58,7 +62,7 @@ npm init -f
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
-## <a name="running-the-sample-from-command-line"></a>コマンド ラインでサンプルを実行する
+## <a name="run-the-sample"></a>サンプルを実行する
 
 アプリを起動するには、`YourSubscriptionKey`、`YourServiceRegion`、および `YourAudioFile.wav` を構成に合わせて調整します。 その後、次のコマンドを呼び出すと、アプリを実行できます。
 
@@ -88,7 +92,7 @@ SpeechRecognitionResult {
 }
 ```
 
-## <a name="running-the-sample-from-visual-studio-code"></a>Visual Studio Code からサンプルを実行する
+## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Speech SDK と Visual Studio Code をインストールして使用する
 
 Visual Studio Code からもサンプルを実行できます。 クイック スタートをインストールし、開き、実行するには、以下の手順に従います。
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C とは | Microsoft Docs
 description: Azure Active Directory B2C を使用してアプリケーションのサインイン エクスペリエンスの作成と管理を行う方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b667934fefe0b9afb5aeca786839f5e105be2c4d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724028"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844995"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -102,17 +102,17 @@ Azure AD B2C では、テナントは組織を表しており、ユーザーの�
 
 すべての機能を有効にして使用料を支払うには、Azure AD B2C テナントを Azure サブスクリプションにリンクします。 顧客がアプリケーションにサインインできるようにするには、Azure AD B2C テナントにアプリケーションを登録します。
 
-Azure AD B2C を使用するようアプリケーションを構成する前に、まず Azure AD B2C テナントを作成し、アプリケーションを登録する必要があります。 アプリケーションを登録するには、「[チュートリアル: アプリケーションを登録して Azure AD B2C を使用したサインアップとサインインを有効にする](tutorial-register-applications.md)」の手順を完了します。
+Azure AD B2C を使用するようアプリケーションを構成する前に、まず Azure AD B2C テナントを作成し、アプリケーションを登録する必要があります。 アプリケーションを登録するには、[アプリケーションを登録して Azure AD B2C を使用したサインアップとサインインを有効にするチュートリアル](tutorial-register-applications.md)の手順を完了します。
   
-ASP.NET Web アプリケーション開発者である場合は、「[チュートリアル: Web アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-web-app.md)」の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+ASP.NET Web アプリケーション開発者である場合は、[Web アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-web-app.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
 
-デスクトップ アプリケーション開発者である場合は、「[チュートリアル: デスクトップ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-desktop-app.md)の手順を使用して」アカウントを認証するようにアプリケーションを設定します。
+デスクトップ アプリケーション開発者である場合は、[デスクトップ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-desktop-app.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
 
-Node.js を使用するシングルページ アプリケーションの開発者である場合は、「[チュートリアル: シングルページ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-spa.md)」の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+Node.js を使用するシングルページ アプリケーションの開発者である場合は、[シングルページ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-spa.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
 
 ## <a name="next-steps"></a>次の手順
 
 次のチュートリアルを続けて、サインアップおよびサインイン エクスペリエンスのためのアプリケーションの構成を開始します。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+> [チュートリアル:Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955339"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411409"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -59,10 +59,11 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | 23 kg (50 lbs) 未満                |
-| ディメンション                                              | デバイス - 幅: 309.0 mm 高さ: 430.4 mm 奥行き: 502.0 mm |            
+| ディメンション                                              | デバイス - 幅: 309.0 mm、高さ: 430.4 mm、奥行: 502.0 mm |            
 | ラック スペース                                              | 寝かせてラックに配置した場合 7 U (ラック マウント不可)|
 | 必要なケーブル                                         | 電源ケーブル x 1 (同梱) <br> RJ45 ケーブル x 2 <br> SFP+ Twinax 銅線ケーブル x 2|
 | ストレージの容量                                        | 100 TB のデバイス (RAID 5 保護後の使用可能容量 80 TB)|
+| 電力定格                                            | 電源ユニットの定格は 700 W です。 <br> 通常は 375 W の電力が消費されます。|
 | ネットワーク インターフェイス                                      | 1 GbE インターフェイス x 2 - MGMT、DATA 3 <br> MGMT - 管理用、ユーザー構成不可、初期セットアップに使用 <br> DATA3 - データ用、ユーザー構成可能、既定で動的 <br> MGMT および DATA 3 は 10 GbE としても動作可能 <br> 10 GbE インターフェイス x 2 - DATA 1、DATA 2 <br> 両方ともデータ用、動的 (既定) または静的として構成可能 |
 | データ転送メディア                                     | RJ45、SFP+ 銅線 10 GbE イーサネット  |
 | セキュリティ                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263205"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808359"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -57,7 +57,7 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 
 **プロパティ** | **詳細**
 --- | ---
-**ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>現在、Azure Migrate は 33 個のリージョンを移行先としてサポートしています。 [リージョンを確認](https://azure.microsoft.com/global-infrastructure/services/)してください。 既定では、ターゲット リージョンが "米国西部 2" に設定されます。
+**ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>現在、Azure Migrate は 33 個のリージョンを移行先としてサポートしています。 [リージョンを確認](https://azure.microsoft.com/global-infrastructure/services/)してください。 既定では、ターゲット リージョンが "米国東部" に設定されます。
 **ストレージの種類** | 評価の一部であるすべての VM に割り当てるマネージド ディスクの種類。 サイズ設定基準が*オンプレミスのサイズ設定*の場合、ターゲット ディスクの種類を Premium ディスク (既定)、Studio SSD ディスク、または Studio HDD ディスクとして指定できます。 *パフォーマンスベースのサイズ設定*の場合は、上記のオプションと共に [自動] を選択するオプションもあり、VM のパフォーマンス データに基づいてディスクのサイズ設定の推奨が自動的に行われます。 たとえば、[単一インスタンスの VM で 99.9% の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) を達成したい場合は、ストレージの種類を、評価対象のすべてのディスクが Premium マネージド ディスクとして推奨されることが保証される Premium マネージド ディスクとして指定してください。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 **予約インスタンス** |  Azure に[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)があるかどうか。 Azure Migrate はそれに応じてコストを見積もります。
 **サイズ変更の設定基準** | サイズ設定は、オンプレミス VM (既定) の**パフォーマンス履歴**か、パフォーマンス履歴を考慮せずに**オンプレミス**に基づいて変更することができます。

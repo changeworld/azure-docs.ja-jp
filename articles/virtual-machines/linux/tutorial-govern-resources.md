@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: e83d6e2f14f8665f8eb0c58a4dc41c7c2ecc792d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309861"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464257"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル: Azure CLI を使用した Azure 仮想マシンの管理方法の説明
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル:Azure CLI を使用した Azure 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -177,7 +177,7 @@ Azure リソースに[タグ](../../azure-resource-manager/resource-group-using-
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-仮想マシンにタグを適用するには、[az resource tag](/cli/azure/resource#az_resource_tag) コマンドを使います。 リソースの既存のタグは保持されません。
+仮想マシンにタグを適用するには、[az resource tag](/cli/azure/resource) コマンドを使います。 リソースの既存のタグは保持されません。
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -188,7 +188,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>タグでリソースを見つける
 
-タグの名前と値でリソースを検索するには、[az resource list](/cli/azure/resource#az_resource_list) コマンドを使います。
+タグの名前と値でリソースを検索するには、[az resource list](/cli/azure/resource) コマンドを使います。
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name

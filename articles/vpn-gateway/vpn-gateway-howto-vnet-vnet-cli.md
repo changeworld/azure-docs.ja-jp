@@ -1,5 +1,5 @@
 ---
-title: 'VNet 間接続を使用して仮想ネットワークを別の VNet に接続する: Azure CLI | Microsoft Docs'
+title: 'VNet 対 VNet 接続を使用して仮想ネットワークを別の VNet に接続する: Azure CLI | Microsoft Docs'
 description: VNet 間接続と Azure CLI を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2fc25235325db8a403c2b258dd5e4b3effc46ace
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dda4f68046b81d96cfe92d5e8b09eab23df0003b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971962"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846313"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -74,11 +74,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 この演習では、構成を組み合わせるか、希望する方のみを選んでもかまいません。 どの構成でも、接続の種類として VNet 間を使用します。 ネットワーク トラフィックは、互いに直接接続されている VNet 間を行き来します。 この演習では、TestVNet4 からのトラフィックが TestVNet5 にルーティングされることはありません。
 
-* [同じサブスクリプション内に存在する VNet:](#samesub) この構成の手順では、TestVNet1 と TestVNet4 を使用します。
+* [同じサブスクリプション内にある VNet:](#samesub) この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [別のサブスクリプション内に存在する VNet:](#difsub) この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+* [異なるサブスクリプション内にある VNet:](#difsub) この構成の手順では、TestVNet1 と TestVNet5 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -87,7 +87,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ### <a name="before-you-begin"></a>開始する前に
 
-開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
 ### <a name="Plan"></a>IP アドレス範囲の計画
 
@@ -97,32 +97,32 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 **TestVNet1 の値:**
 
-* VNet の名前: TestVNet1
-* リソース グループ: TestRG1
-* 場所: 米国東部
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
-* FrontEnd: 10.11.0.0/24
+* VNet 名: TestVNet1
+* リソース グループ:TestRG1
+* 場所:米国東部
+* TestVNet1: 10.11.0.0/16 と 10.12.0.0/16
+* FrontEnd:10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
-* ゲートウェイの名前: VNet1GW
+* GatewayName: VNet1GW
 * パブリック IP: VNet1GWIP
-* VPN の種類: RouteBased
-* 接続 (1 ～ 4): VNet1toVNet4
-* 接続 (1 ～ 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
+* VPNType: RouteBased
+* 接続 (1 から 4): VNet1toVNet4
+* 接続 (1 から 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
 
 **TestVNet4 の値:**
 
-* VNet の名前: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* FrontEnd: 10.41.0.0/24
+* VNet 名: TestVNet4
+* TestVNet2: 10.41.0.0/16 と 10.42.0.0/16
+* FrontEnd:10.41.0.0/24
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
-* リソース グループ: TestRG4
-* 場所: 米国西部
-* ゲートウェイの名前: VNet4GW
+* リソース グループ:TestRG4
+* 場所:米国西部
+* GatewayName: VNet4GW
 * パブリック IP: VNet4GWIP
-* VPN の種類: RouteBased
-* 接続: VNet4toVNet1
+* VPNType: RouteBased
+* 接続:VNet4toVNet1
 
 ### <a name="Connect"></a>手順 1 - サブスクリプションに接続する
 
@@ -133,7 +133,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 1. リソース グループを作成します。
 
   ```azurecli
-  az group create -n TestRG1  -l eastus
+  az group create -n TestRG1  -l eastus
   ```
 2. TestVNet1 と TestVNet1 のサブネットを作成します。 次の例では、TestVNet1 という名前の仮想ネットワークと FrontEnd という名前のサブネットを作成します。
 
@@ -148,11 +148,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 4. バックエンド サブネットを作成します。
   
   ```azurecli
-  az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
+  az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
   ```
 5. ゲートウェイ サブネットを作成します。 ゲートウェイ サブネットの名前が "GatewaySubnet" であることに注意してください。 この名前は必須です。 この例では、ゲートウェイ サブネットに /27 が使用されています。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、少なくとも /28 または /27 以上を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 これにより、十分な数のアドレスが、将来的に必要になる可能性のある追加の構成に対応できるようになります。
 
-  ```azurecli 
+  ```azurecli 
   az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
   ```
 6. VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 AllocationMethod が Dynamic であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。
@@ -171,7 +171,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 1. リソース グループを作成します。
 
   ```azurecli
-  az group create -n TestRG4  -l westus
+  az group create -n TestRG4  -l westus
   ```
 2. TestVNet4 を作成します。
 
@@ -182,13 +182,13 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 3. TestVNet4 用に追加のサブネットを作成します。
 
   ```azurecli
-  az network vnet update -n TestVNet4 --address-prefixes 10.41.0.0/16 10.42.0.0/16 -g TestRG4 
-  az network vnet subnet create --vnet-name TestVNet4 -n BackEnd -g TestRG4 --address-prefix 10.42.0.0/24 
+  az network vnet update -n TestVNet4 --address-prefixes 10.41.0.0/16 10.42.0.0/16 -g TestRG4 
+  az network vnet subnet create --vnet-name TestVNet4 -n BackEnd -g TestRG4 --address-prefix 10.42.0.0/24 
   ```
 4. ゲートウェイ サブネットを作成します。
 
   ```azurecli
-   az network vnet subnet create --vnet-name TestVNet4 -n GatewaySubnet -g TestRG4 --address-prefix 10.42.255.0/27
+   az network vnet subnet create --vnet-name TestVNet4 -n GatewaySubnet -g TestRG4 --address-prefix 10.42.255.0/27
   ```
 5. パブリック IP アドレスを要求します。
 
@@ -218,18 +218,18 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
   出力例:
 
   ```
-  "activeActive": false, 
-  "bgpSettings": { 
-    "asn": 65515, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-   }, 
-  "enableBgp": false, 
-  "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
-  "gatewayDefaultSite": null, 
-  "gatewayType": "Vpn", 
-  "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW", 
-  "ipConfigurations":
+  "activeActive": false, 
+  "bgpSettings": { 
+    "asn": 65515, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+   }, 
+  "enableBgp": false, 
+  "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
+  "gatewayDefaultSite": null, 
+  "gatewayType": "Vpn", 
+  "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW", 
+  "ipConfigurations":
   ```
 
   **"id":** の後にある引用符で囲まれた値をコピーします。
@@ -247,7 +247,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 3. TestVNet1 から TestVNet4 への接続を作成します。 この手順では、TestVNet1 から TestVNet4 への接続を作成します。 この例では、参照される共有キーがあります。 共有キーには独自の値を使用することができます。 両方の接続の共有キーが一致することが重要です。 接続の作成が完了するまでしばらくかかります。
 
   ```azurecli
-  az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
+  az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
   ```
 4. TestVNet4 から TestVNet1 への接続を作成します。 この手順は上記の手順と同じですが、TestVNet4 から TestVNet1 への接続になります。 共有キーが一致することを確認してください。 接続が確立されるまで数分かかります。
 
@@ -284,18 +284,18 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 **TestVNet5 の値:**
 
-* VNet の名前: TestVNet5
-* リソース グループ: TestRG5
-* 場所: 東日本
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
-* FrontEnd: 10.51.0.0/24
+* VNet 名: TestVNet5
+* リソース グループ:TestRG5
+* 場所:東日本
+* TestVNet5: 10.51.0.0/16 と 10.52.0.0/16
+* FrontEnd:10.51.0.0/24
 * BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
 * GatewayName: VNet5GW
 * パブリック IP: VNet5GWIP
-* VPN の種類: RouteBased
-* 接続: VNet5toVNet1
-* 接続の種類: VNet2VNet
+* VPNType: RouteBased
+* 接続:VNet5toVNet1
+* ConnectionType: VNet2VNet
 
 ### <a name="TestVNet5"></a>手順 7 - TestVNet5 を作成し、構成する
 
@@ -304,7 +304,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 1. サブスクリプション 5 に接続していることを確認し、リソース グループを作成します。
 
   ```azurecli
-  az group create -n TestRG5  -l japaneast
+  az group create -n TestRG5  -l japaneast
   ```
 2. TestVNet5 を作成します。
 
@@ -362,7 +362,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
   出力の "id:" をコピーします。 メールやその他の方法で、VNet ゲートウェイ (VNet5GW) の ID と名前をサブスクリプション 1 の管理者に送信します。
 
-3. **[サブスクリプション 1]** この手順では、TestVNet1 から TestVNet5 への接続を作成します。 共有キーには独自の値を使用することができますが、両方の接続の共有キーが一致する必要があります。 接続の作成完了までしばらくかかります。 サブスクリプション 1 に接続します。
+3. **[サブスクリプション 1]** この手順では、TestVNet1 から TestVNet5 への接続を作成します。 共有キーには独自の値を使用することができますが、両方の接続の共有キーが一致する必要があります。 接続の作成完了までしばらくかかります。 サブスクリプション 1 に接続します。
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW

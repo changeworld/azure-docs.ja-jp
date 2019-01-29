@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6cbc4fa071a45e670dae3cc6be66272bc67767f7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295123"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437183"
 ---
-# <a name="tutorial-enabling-password-writeback"></a>チュートリアル: パスワード ライトバックを有効にする
+# <a name="tutorial-enabling-password-writeback"></a>チュートリアル:パスワード ライトバックを有効にする
 
 このチュートリアルでは、ハイブリッド環境でパスワード ライトバックを有効にします。 パスワード ライトバックは、Azure Active Directory (Azure AD) のパスワードの変更を、オンプレミスの Active Directory Domain Services (AD DS) 環境に同期するために使用されます。 パスワード ライトバックは Azure AD Connect の一部として有効になり、パスワード変更を Azure AD から既存のオンプレミス ディレクトリに送信するための安全なメカニズムを提供します。 パスワード ライトバックの内部動作の詳細については、[パスワード ライトバックの概要](concept-sspr-writeback.md)に関する記事を参照してください。
 

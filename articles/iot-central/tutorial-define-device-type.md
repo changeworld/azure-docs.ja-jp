@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199971"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412905"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
@@ -75,7 +75,7 @@ ms.locfileid: "54199971"
 
 ## <a name="create-a-new-custom-device-template"></a>新しいカスタム デバイス テンプレートの作成
 
-作成者は、アプリケーションでデバイス テンプレートを作成および編集できます。 デバイス テンプレートを作成すると、Azure IoT Central により、テンプレートからシミュレートされたデバイスが生成されます。 シミュレートされたデバイスは、物理デバイスを接続する前にアプリケーションの動作をテストできるように、テレメトリを生成します。
+作成者は、アプリケーションでデバイス テンプレートを作成および編集できます。 デバイス テンプレートを作成すると、Azure IoT Central により、テンプレートからシミュレートされたデバイスが生成されます。 シミュレートされたデバイスは、実デバイスを接続する前にアプリケーションの動作をテストできるように、テレメトリを生成します。
 
 新しいデバイス テンプレートをアプリケーションに追加するには、**[Application Builder]\(アプリケーション ビルダー\)** ページに移動する必要があります。 そのためには、左側のナビゲーション メニューで **[Application Builder]\(アプリケーション ビルダー\)** を選択します。
 
@@ -155,7 +155,7 @@ ms.locfileid: "54199971"
 
 ## <a name="define-event-measurement"></a>イベントの測定の定義
 
-[イベント] を使用して、エラーやコンポーネントの障害など、重要なイベントを表すためにデバイスが送信する特定の時点のデータを定義できます。 テレメトリの測定と同様に、Azure IoT Central では、物理デバイスを接続する前に、デバイスのイベントをシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類のイベント測定を定義します。
+[イベント] を使用して、エラーやコンポーネントの障害など、重要なイベントを表すためにデバイスが送信する特定の時点のデータを定義できます。 テレメトリの測定と同様に、Azure IoT Central では、実デバイスを接続する前に、デバイスのイベントをシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類のイベント測定を定義します。
 
 1. **Fan Motor Error** イベント測定を追加するには、**[New Measurement]\(新しい測定\)** を選択します。 次に、測定の種類として **[イベント]** を選択します。
 
@@ -191,7 +191,7 @@ ms.locfileid: "54199971"
 
 ## <a name="define-state-measurement"></a>状態の測定の定義
 
-[状態] を使用して、一定期間にわたるデバイスまたはそのコンポーネントの状態を定義および視覚化します。 テレメトリの測定と同様に、Azure IoT Central では、物理デバイスを接続する前に、デバイスの状態をシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類の状態測定を定義します。
+[状態] を使用して、一定期間にわたるデバイスまたはそのコンポーネントの状態を定義および視覚化します。 テレメトリの測定と同様に、Azure IoT Central では、実デバイスを接続する前に、デバイスの状態をシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類の状態測定を定義します。
 
 1. **Fan Mode** 測定を追加するために、**[New Measurement]\(新しい測定\)** を選択します。 次に、測定の種類として **[状態]** を選択します。
 

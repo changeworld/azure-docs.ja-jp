@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321876"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817505"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
@@ -37,7 +37,7 @@ ms.locfileid: "54321876"
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb)として提供されています。 Azure Notebooks または自分の Jupyter Notebook サーバー内で、**regression-part1-data-prep.ipynb** ノートブックを実行してください。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb)として提供されています。 [Azure Notebooks](https://notebooks.azure.com/) または自分の Jupyter Notebook サーバーで、**regression-part1-data-prep.ipynb** ノートブックを実行してください。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -1066,7 +1066,7 @@ package.save(file_path)
 
 チュートリアルの第 2 部に進むには、現在のディレクトリにある **dflows.dprep** ファイルが必要です。
 
-第 2 部に進む予定がない場合は、現在のディレクトリにある **dflows.dprep** ファイルを削除します。 実行場所がローカルの場合でも Azure Notebooks 内の場合でも、このファイルは削除してください。
+第 2 部に進む予定がない場合は、現在のディレクトリにある **dflows.dprep** ファイルを削除します。 実行場所がローカルの場合でも [Azure Notebooks](https://notebooks.azure.com/) の場合でも、このファイルは削除してください。
 
 ## <a name="next-steps"></a>次の手順
 

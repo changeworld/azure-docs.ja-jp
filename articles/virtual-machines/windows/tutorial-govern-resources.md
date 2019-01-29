@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6b36cdecb178a7189773abbfe963411e19764401
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311390"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438662"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 PowerShell をローカルで実行していて、バージョン 6.0 以降を持っていない場合は、[バージョンを更新](/powershell/azure/install-azurerm-ps)します。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
+この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 PowerShell をローカルで実行していて、バージョン 6.0 以降を持っていない場合は、[バージョンを更新](/powershell/azure/azurerm/install-azurerm-ps)します。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
 
 ## <a name="understand-scope"></a>スコープを理解する
 

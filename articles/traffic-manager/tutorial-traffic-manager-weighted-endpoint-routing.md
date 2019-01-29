@@ -8,14 +8,14 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055015"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467334"
 ---
-# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する 
+# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する
 
 このチュートリアルでは、Azure Traffic Manager を使用して重み付けルーティング方法を使用してエンドポイント間のユーザー トラフィックのルーティングを制御する方法について説明します。 このルーティング方法では、Traffic Manager プロファイル構成で各エンドポイントに重みを割り当てます。 その後、各エンドポイントに割り当てられている重みに基づいてユーザー トラフィックがルーティングされます。 重みは 1 から 1,000 までの整数です。 エンドポイントに割り当てられた重み値が大きいほど優先度が高くなります。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - 異なる Azure リージョン (米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
 - Traffic Manager をテストするための 2 台の VM (1 台は米国東部内、もう 1 台は西ヨーロッパ内)。 テスト VM は、エンドポイントにより大きい重みが割り当てられた Web サイトに Traffic Manager がユーザー トラフィックをルーティングすることを示すために使用されます。
 
-### <a name="sign-in-to-azure"></a>Azure へのサインイン 
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -89,24 +89,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このセクションでは、2 台の VM (&mdash;myIISVMEastUS と myIISVMWEurope&mdash;) に IIS サーバーをインストールした後、既定の Web ページを更新します。 カスタマイズした Web ページには、Web ブラウザーからその Web サイトにアクセスしたときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで、**[すべてのリソース]** を選択します。 リソースの一覧から、**myResourceGroupTM1** リソース グループの **myIISVMEastUS** を選択します。
-2. **[概要]** ページで **[接続]** を選択します。 **[仮想マシンへの接続]** で、**[RDP ファイルのダウンロード]** を選択します。 
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[接続]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]** > **[別のアカウントを使用する]** の順に選択して、VM の作成時に入力した資格情報を指定する必要があります。 
+2. **[概要]** ページで **[接続]** を選択します。 **[仮想マシンへの接続]** で、**[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[接続]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]** > **[別のアカウントを使用する]** の順に選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告が表示されたら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 6. サーバーのデスクトップで、**[Windows 管理ツール]** > **[サーバー マネージャー]** の順に移動します。
 7. VM1 で Windows PowerShell を開きます。 次のコマンドを使用して、IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default .htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom .htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. **myIISVMEastUS** との RDP 接続を閉じます。
 9. 手順 1 から 8 を繰り返します。 **myResourceGroupTM2** リソース グループ内の VM (**myIISVMWEurope**) への RDP 接続を作成し、IIS のインストールと既定の Web ページのカスタマイズを行います。
@@ -180,8 +180,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     |  Weight      | 「**100**」と入力します。        |
     |        |           |
 
-4. 手順 2 と 3 を繰り返して、パブリック IP アドレス **myIISVMWEurope-ip** 用に **myWestEuropeEndpoint** という名前の別のエンドポイントを追加します。 このアドレスは、myIISVMWEurope という名前の IIS サーバー VM に関連付けられています。 **[重み]** に「**25**」を入力します。 
-5.  両方のエンドポイントの追加が完了すると、どちらも Traffic Manager プロファイルに、監視ステータスが **[オンライン]** の状態で表示されます。
+4. 手順 2 と 3 を繰り返して、パブリック IP アドレス **myIISVMWEurope-ip** 用に **myWestEuropeEndpoint** という名前の別のエンドポイントを追加します。 このアドレスは、myIISVMWEurope という名前の IIS サーバー VM に関連付けられています。 **[重み]** に「**25**」を入力します。
+5. 両方のエンドポイントの追加が完了すると、どちらも Traffic Manager プロファイルに、監視ステータスが **[オンライン]** の状態で表示されます。
 
 ## <a name="test-the-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト
 Traffic Manager の動作を表示するには、次の手順を完了します。
@@ -189,28 +189,28 @@ Traffic Manager の動作を表示するには、次の手順を完了します�
 2. Traffic Manager の動作を確認します。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Traffic Manager プロファイルの DNS 名を判別する
-このチュートリアルでは、わかりやすくするために、Traffic Manager プロファイルの DNS 名を使用して Web サイトにアクセスします。 
+このチュートリアルでは、わかりやすくするために、Traffic Manager プロファイルの DNS 名を使用して Web サイトにアクセスします。
 
 次のように、Traffic Manager プロファイルの DNS 名を判別できます。
 
-1.  ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索します。 表示された結果で、Traffic Manager プロファイルを選択します。
+1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索します。 表示された結果で、Traffic Manager プロファイルを選択します。
 1. **[概要]** を選択します。
 2. Traffic Manager プロファイルに DNS 名が表示されます。 運用環境のデプロイでは、DNS CNAME レコードを使用して、Traffic Manager のドメイン名をポイントするバニティ ドメイン名を構成します。
 
    ![Traffic Manager の DNS 名](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager の動作確認
-このセクションでは、Traffic Manager が動作していることを確認します。 
+このセクションでは、Traffic Manager が動作していることを確認します。
 
 1. 左側のメニューで、**[すべてのリソース]** を選択します。 リソースの一覧から、**myResourceGroupTM1** リソース グループの **myVMEastUS** を選択します。
-2. **[概要]** ページで **[接続]** を選択します。 **[仮想マシンへの接続]** で、**[RDP ファイルのダウンロード]** を選択します。 
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[接続]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]** > **[別のアカウントを使用する]** の順に選択して、VM の作成時に入力した資格情報を指定する必要があります。 
+2. **[概要]** ページで **[接続]** を選択します。 **[仮想マシンへの接続]** で、**[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[接続]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]** > **[別のアカウントを使用する]** の順に選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
-5. サインイン処理中に証明書の警告が表示される場合があります。 警告が表示されたら、**[はい]** または **[続行]** を選択して接続処理を続行します。 
+5. サインイン処理中に証明書の警告が表示される場合があります。 警告が表示されたら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 6. VM myVMEastUS の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 IIS サーバー myIISVMEastUS にホストされている Web サイトにルーティングされます。これは、その Web サイトの方が高い重み (**100**) を割り当てられていることによるものです。 IIS サーバー myIISVMWEurope には、エンドポイントの重み値としてこれよりも低い **25** が割り当てられています。
 
    ![Traffic Manager プロファイルのテスト](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
-   
+
 ## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除
 このチュートリアルで作成したリソース グループは、不要になったら削除してかまいません。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、**[削除]** を選択します。
 
@@ -218,5 +218,3 @@ Traffic Manager の動作を表示するには、次の手順を完了します�
 
 > [!div class="nextstepaction"]
 > [ユーザーの地理的位置に基づいて特定のエンドポイントにトラフィックをルーティングする](traffic-manager-configure-geographic-routing-method.md)
-
-

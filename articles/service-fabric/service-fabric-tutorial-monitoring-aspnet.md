@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2017
+ms.date: 01/17/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 27a114378cf72e766e894dc0dd6886197f56a841
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720733"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390265"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -59,7 +59,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="set-up-an-application-insights-resource"></a>Application Insights リソースを設定する
 
-Application Insights は、Azure のアプリケーション パフォーマンス管理プラットフォームであり、アプリケーションを監視および診断するための Service Fabric の推奨プラットフォームです。 Application Insights リソースを作成するには、[Azure Portal](https://portal.azure.com) に移動します。 左側のナビゲーション メニューで **[リソースの作成]** をクリックして Azure Marketplace を開きます。 **[監視 + 管理]**、**[Application Insights]** の順にクリックします。
+Application Insights は、Azure のアプリケーション パフォーマンス管理プラットフォームであり、アプリケーションを監視および診断するための Service Fabric の推奨プラットフォームです。 Application Insights リソースを作成するには、[Azure Portal](https://portal.azure.com) に移動します。 左側のナビゲーション メニューで **[リソースの作成]** をクリックして Azure Marketplace を開きます。 **[Application Insights]** をクリックします。
 
 ![新しい AI リソースの作成](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -76,13 +76,8 @@ Application Insights は、Azure のアプリケーション パフォーマン�
 
 次の手順に従って、VotingWeb と VotingData の両方のサービス用に Application Insights を構成します。
 
-1. サービス名を右クリックして、**[Application Insights の構成...]** をクリックします。
-
-    ![AI の構成](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
->[!NOTE]
->プロジェクト タイプによっては、サービスの名前を右クリックするときに、[追加]、[Application Insights Telemetry] の順にクリックする必要があります。
-
-2. **[開始 (無料)]**.をクリックします。
+1. サービス名を右クリックして、**[追加]、[Application Insights Telemetry]** の順に選択します。    
+2. **[開始]** をクリックします。
 3. (Azure サブスクリプションの設定にも使用した) アカウントにサインインし、Application Insights リソースを作成したサブスクリプションを選択します。 [リソース] ボックスの *[Application Insights の既存のリソース]* でリソースを探します。 **[登録]** をクリックして Application Insights をサービスに追加します。
 
     ![AI の登録](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -101,8 +96,8 @@ Application Insights では、シナリオによって使い分けられる Serv
 2. [NuGet - ソリューション] ウィンドウ上部のナビゲーション メニューにある **[参照]** をクリックし、検索バーの横にある **[プレリリースを含める]** チェックボックスをオンにします。
 3. `Microsoft.ApplicationInsights.ServiceFabric.Native` を検索し、適切な NuGet パッケージをクリックします。
 
->[!NOTE]
->Microsoft.ServiceFabric.Diagnostics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
+    >[!NOTE]
+    >Microsoft.ServiceFabric.Diagnostics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
 
 4. 右側で、アプリケーションの 2 つのサービス (**[VotingWeb]** と **[VotingData]**) の横にある 2 つのチェックボックスをオンにして、**[インストール]** をクリックします。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)

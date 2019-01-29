@@ -9,32 +9,54 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 12/04/2018
-ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 1/17/2019
+ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557888"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389142"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft の機械学習製品とは
 
 Microsoft は、機械学習モデルを構築、デプロイ、および管理するためのさまざまな製品オプションを提供しています。 これらの製品を比較し、機械学習ソリューションを最も効率的に開発するために必要なものを選択します。
 
-| 機械学習製品 | 説明 | この製品でできること |
+
+**クラウドベースのオプション**
+
+Azure クラウドでの機械学習には、次の選択肢があります。
+
+| クラウド&nbsp;の選択肢 | 説明 | この製品でできること |
 |-|-|-|
-| "***クラウド内***" | | |
 | [Azure Machine Learning サービス](#azure-machine-learning-services) | ML 用のマネージド クラウド サービス  | Python と CLI を使用して Azure でモデルをトレーニング、デプロイ、および管理する |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | &ndash;ML 用のドラッグ アンド ドロップ式のビジュアル インターフェイス&ndash; | 事前に構成されたアルゴリズムを使用してモデルを構築、実験、およびデプロイする |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio) | &ndash;ML 用のドラッグ アンド ドロップ式のビジュアル インターフェイス&ndash; | 事前に構成されたアルゴリズムを使用してモデルを構築、実験、およびデプロイする (Python および R)|
 | [Azure Databricks](#azure-databricks) | Spark ベースの分析プラットフォーム | モデルとデータ ワークフローを構築およびデプロイする |
 | [Azure Cognitive Services](#azure-cognitive-services) | AI および ML モデルが事前に構築された Azure サービス | インテリジェントな機能をアプリに簡単に追加する |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | データ サイエンス ツールがプレインストールされた仮想マシン | 事前に構成された環境で ML ソリューションを開発する |
-| ***オンプレミスの***<br>"*(クラウド上の仮想マシンでオンプレミスのサーバーを実行することも可能)*" | | |
+
+**オンプレミスの選択肢**
+
+オンプレミスでの機械学習には、次の選択肢があります。 クラウド上の仮想マシンでオンプレミスのサーバーを実行することもできます。
+
+| オンプレミス&nbsp;の選択肢 | 説明 | この製品でできること |
+|-|-|-|
 | [SQL Server Machine Learning サービス](#sql-server-machine-learning-services) | SQL に組み込まれた分析エンジン | SQL Server の内部にモデルを構築およびデプロイする |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | 予測分析のためのスタンドアロンのエンタープライズ サーバー | R と Python でモデルを構築およびデプロイする |
-| ***開発者ツール*** | | |
+
+**開発ツール**
+
+機械学習には、次の開発ツールが利用できます。
+
+| 開発&nbsp;ツール | 説明 | この製品でできること |
+|-|-|-|
 | [ML.NET](#mlnet) | オープンソースのクロスプラットフォーム ML SDK | .NET アプリケーション用の ML ソリューションを開発する |
 | [Windows ML](#windows-ml) | Windows 10 ML プラットフォーム | Windows 10 デバイス上のトレーニング済みのモデルを評価する |
+
+
+
+
+
+
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning サービス
 

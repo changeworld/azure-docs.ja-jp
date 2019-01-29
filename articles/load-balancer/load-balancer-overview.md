@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9ca8e6876b67167429dbc0b5e6c3f5b454878c2a
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246570"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382681"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 

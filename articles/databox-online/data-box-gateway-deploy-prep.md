@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166986"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452974"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway のデプロイを準備する (プレビュー)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する (プレビュー)
 
 
 これは、Azure Data Box Gateway を完全にデプロイするために必要な一連のチュートリアルのうち最初のものです。 このチュートリアルでは、Data Box Gateway リソースをデプロイするために Azure portal を準備する方法を説明します。 
@@ -100,7 +100,7 @@ Azure portal で次の手順を実行して Data Box リソースを作成しま
     |リソース名   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |サブスクリプション    |サブスクリプションは、課金アカウントにリンクされます。 |
     |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
-    |Location     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    |場所     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Data Box Gateway リソースの作成](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

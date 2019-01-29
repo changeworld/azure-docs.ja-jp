@@ -9,14 +9,14 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 41f3e3fffba0dde5277a39f62ef13d4dfc21c67e
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291572"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823285"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>チュートリアル: サインアップして最初のビデオをアップロードする方法
+# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>チュートリアル:サインアップして最初のビデオをアップロードする方法
 
 この入門チュートリアルでは、Video Indexer Web サイトにサインインする方法と、最初のビデオをアップロードする方法を示します。
 
@@ -41,7 +41,7 @@ Video Indexer での開発を始めるには、[Video Indexer](https://www.video
 
 ## <a name="next-steps"></a>次の手順
 
-これで、[Video Indexer](video-indexer-view-edit.md) Web サイトまたは [Video Indexer 開発者ポータル](video-indexer-use-apis.md) を使用してビデオの分析情報を表示できます。 
+これで、[Video Indexer](video-indexer-view-edit.md) Web サイトまたは [Video Indexer 開発者ポータル](video-indexer-use-apis.md)を使用してビデオの分析情報を表示できます。 
 
 ## <a name="see-also"></a>関連項目
 

@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977247"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447464"
 ---
-# <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でアプリケーションを更新する
+# <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート:Azure Active Directory のアプリケーションを更新する
 
 Azure Active Directory (Azure AD) にアプリケーションを登録したエンタープライズ開発者および SaaS (サービスとしてのソフトウェア) プロバイダーは、Web API などの他のリソースにアクセスするようにアプリケーションを構成して、他の組織などでアプリケーションを利用できるようにすることが必要な場合があります。
 
@@ -44,7 +44,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 同意フレームワークでは、リソース アプリケーションによって公開されている Web API (Microsoft Graph API など) にクライアントがアクセスできるようになる前に、要求されたアクセス許可に基づいてクライアントに必要なアクセス許可が付与されていることを確認します。 既定では、すべてのアプリケーションが **Azure Active Directory** (Graph API) および Azure クラシック デプロイ モデルのアクセス許可を選択できます。 また、[Graph API の [サインインとユーザー プロファイルの読み取り] アクセス許可](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)が既定で選択されています。 Office 365 のサブスクリプションを保有しているアカウントが存在するテナントにクライアントを登録しようとしている場合には、SharePoint と Exchange Online 用の Web API とアクセス許可を選択できます。 目的の Web API ごとに 2 種類のアクセス許可から選択できます。
 
-- アプリケーションのアクセス許可: クライアント アプリケーションは、(ユーザー コンテキストなしで) アプリケーションとして Web API に直接アクセスする必要があります。 この種類のアクセス許可には管理者の同意が必要であるほか、ネイティブ クライアント アプリケーションでは使用できません。
+- アプリケーションのアクセス許可: クライアント アプリケーションは、アプリケーション自体として (ユーザー コンテキストなしで) Web API に直接アクセスする必要があります。 この種類のアクセス許可には管理者の同意が必要であるほか、ネイティブ クライアント アプリケーションでは使用できません。
 - 委任されたアクセス許可: クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要があります。アクセスにあたっては、選択されているアクセス許可に応じて制限が適用されます。 この種類のアクセス許可は、管理者の同意が必要でない限り、ユーザーが付与できます。
 
   > [!NOTE]
@@ -190,11 +190,11 @@ Web アプリケーションではほかにも、次のものが提供される�
 
 - [マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)
 - [マルチテナント コード サンプル](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)の一覧。
-- [クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する](../fundamentals/customize-branding.md)
+- [クイック スタート:Azure AD のサインイン ページに会社のブランドを追加する](../fundamentals/customize-branding.md)
 
-## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングルページ アプリケーションでの OAuth 2.0 Implicit Grant の有効化
+## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングル ページ アプリケーションでの OAuth 2.0 暗黙的な許可の有効化
 
-シングルページ アプリケーション (SPA) の場合、ブラウザーで実行される JavaScript ヘビーなフロント エンドを備え、このフロントエンドからアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行するというのが典型的な構造です。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。
+シングル ページ アプリケーション (SPA) は、ブラウザー上で実行される JavaScript ヘビーなフロント エンドを使用して通常構成されています。これがアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行します。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。
 
 この認証プロトコルはほかにも、ユーザーが同意した後、クライアントとアプリケーション用に構成されている他の Web API リソースとの間に発生する呼び出しを保護するトークンを取得するときにも利用できます。 暗黙的な認可付与の詳細と、それが自身のアプリケーションのシナリオに適しているかどうかの判断に役立つ情報は、「[Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて](v1-oauth2-implicit-grant-flow.md)」を参照してください。
 

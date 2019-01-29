@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: d0d02f491f14cc6e0664d79bcfd2cda44d433b5b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706009"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389961"
 ---
-# <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル: クラスルーム ラボを設定する 
+# <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
 
 このチュートリアルでは、次のアクションを実行します。
@@ -93,7 +93,7 @@ ms.locfileid: "51706009"
 1. ラボの**ダッシュボード**が表示されます。 
     
     ![クラスルーム ラボのダッシュボード](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+4. 左側のメニューで [仮想マシン] を選択するか、[仮想マシン] タイルを選択して、**[仮想マシン]** ページに切り替えます。 **[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -112,19 +112,12 @@ ms.locfileid: "51706009"
 ## <a name="send-registration-link-to-students"></a>登録リンクを学生に送信する
 
 1. このページ上で、まだ **[ユーザー]** ビューが表示されていない場合は、[ユーザー] ビューに切り替えます。 
-2. **[Get registration link]\(登録リンクの取得\)** タイルを選択します。
+2. ツール バーの **[Get registration link]\(登録リンクの取得\)** を選択します。
+1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。
 
-    ![学生登録リンク](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。 
-
-    ![学生登録リンク](../media/tutorial-setup-classroom-lab/registration-link.png)
-2. **[User registration]\(ユーザー登録\)** ダイアログ ボックスの **[閉じる]** を選択します。 
-4. 学生がクラスに登録できるように、登録リンクを学生と共有します。 **制限オプション**設定が有効になっていて、なおかつ一連のユーザーがリストに存在する場合は、次の操作を行います。
-    1. ユーザーの**メール アドレス**をリストで選択します。 
-    2. 既定のメール プログラムのウィンドウが、**宛先**アドレスが入力された状態で表示されます。 
-    3. 先ほどコピーした**登録 URL** を貼り付けます。 
-    4. **メール**を送信します。
-
+    ![登録リンク](../media/tutorial-setup-classroom-lab/registration-link.png)
+1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスの **[閉じる]** を選択します。 
+2. 学生がクラスに登録できるように、登録リンクを学生と共有します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラスルーム ラボを作成し、ラボを構成しました。 学生が登録リンクを使ってラボの VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。
