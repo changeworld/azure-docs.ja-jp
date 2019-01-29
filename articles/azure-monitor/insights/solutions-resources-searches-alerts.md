@@ -1,6 +1,6 @@
 ---
 title: 管理ソリューションでの保存された検索条件とアラート | Microsoft Docs
-description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。  この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。
+description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。 この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -23,27 +23,26 @@ ms.locfileid: "54231327"
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
 > [!NOTE]
-> 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
+> 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
 
-
-通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。  この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
+通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。 この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
 
 > [!NOTE]
-> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](solutions-creating.md)」で説明しています。  
+> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](solutions-creating.md)」で説明しています。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、[管理ソリューションの作成方法](solutions-creating.md)および [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Log Analytics のすべてのリソースは、[ワークスペース](../../azure-monitor/platform/manage-access.md)に含まれています。  「[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Log Analytics のすべてのリソースは、[ワークスペース](../../azure-monitor/platform/manage-access.md)に含まれています。 「[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。 このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
-ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。  これは、次の SavedSearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
+ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。 これは、次の SavedSearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Log Analytics API バージョン
-Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。   
+Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。
 
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
@@ -51,9 +50,8 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
-
 ## <a name="saved-searches"></a>保存された検索条件
-ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)をソリューションに含めます。  保存された検索条件は、Azure portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。   
+ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)をソリューションに含めます。  保存された検索条件は、Azure portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。
 
 [Log Analytics の保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)リソースは、`Microsoft.OperationalInsights/workspaces/savedSearches` 型であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
@@ -72,41 +70,37 @@ Resource Manager テンプレートで定義された Log Analytics リソース
         }
     }
 
-
-
 次の表は、保存された検索条件の各プロパティについて説明しています。 
 
 | プロパティ | Description |
 |:--- |:--- |
-| category | 保存された検索条件のカテゴリです。  同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
+| category | 保存された検索条件のカテゴリです。 同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
 | displayName | ポータルでの保存された検索条件の表示名です。 |
 | query | 実行するクエリ。 |
 
 > [!NOTE]
-> JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。  たとえば、**AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
+> JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。 たとえば、**AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
 
 ## <a name="alerts"></a>アラート
-[Azure Log のアラート](../../azure-monitor/platform/alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。  クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../../azure-monitor/platform/action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。  
+[Azure Log のアラート](../../azure-monitor/platform/alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../../azure-monitor/platform/action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。
 
 > [!NOTE]
 > 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
 
 管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
 
-- **保存された検索条件**。  実行されるログ検索を定義します。  複数のアラート ルールで、1 つの保存された検索条件を共有できます。
-- **スケジュール**。  ログ検索の実行頻度を定義します。  各アラート ルールには、スケジュールが 1 つだけあります。
-- **アラート アクション**。  各アラート ルールには **Alert** 型のアクション グループ リソースまたはアクション リソース (レガシ) が 1 つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。 [アクション グループ](../../azure-monitor/platform/action-groups.md) リソースには、音声通話、SMS、メール、webhook、ITSM ツール、Automation Runbook、ロジック アプリなど、アラート発生時に実行する構成済みアクションのリストを設定できます。
+- **保存された検索条件**。 実行されるログ検索を定義します。 複数のアラート ルールで、1 つの保存された検索条件を共有できます。
+- **スケジュール**。 ログ検索の実行頻度を定義します。 各アラート ルールには、スケジュールが 1 つだけあります。
+- **アラート アクション**。 各アラート ルールには **Alert** 型のアクション グループ リソースまたはアクション リソース (レガシ) が 1 つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。 [アクション グループ](../../azure-monitor/platform/action-groups.md) リソースには、音声通話、SMS、メール、webhook、ITSM ツール、Automation Runbook、ロジック アプリなど、アラート発生時に実行する構成済みアクションのリストを設定できます。
  
 アクション リソース (レガシ) では、必要に応じて、メールと Runbook の応答が定義されます。
-- **webhook アクション (レガシ)**  アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加のアクション リソースが必要です。    
+- **webhook アクション (レガシ)** アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加のアクション リソースが必要です。
 
-保存された検索条件リソースについては、上で説明してあります。  他のリソースについては以下で説明します。
-
+保存された検索条件リソースについては、上で説明してあります。 他のリソースについては以下で説明します。
 
 ### <a name="schedule-resource"></a>スケジュール リソース
 
 保存された検索条件は 1 つ以上のスケジュールを持つことができ、各スケジュールは異なるアラート ルールを表します。 スケジュールでは、検索を実行する頻度と、データを取得する期間が定義されています。  スケジュール リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 型であり、次のような構造をしています。 ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
-
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name)]",
@@ -123,8 +117,6 @@ Resource Manager テンプレートで定義された Log Analytics リソース
         }
     }
 
-
-
 次の表では、スケジュール リソースのプロパティについて説明します。
 
 | 要素名 | 必須 | Description |
@@ -138,20 +130,17 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > スケジュール名は、特定のワークスペース内では一意である必要があります。2 つのスケジュールが同じ ID を持つことはできません。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。 また、Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
 
-
 ### <a name="actions"></a>Actions
-スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。  一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
+スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。 一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 
 アクションは、アクション グループ リソースまたはアクション リソースを使って定義できます。
 
 > [!NOTE]
 > 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
 
+**Type** プロパティによって指定される 2 種類のアクション リソースがあります。 スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。 アクション リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 型です。
 
-**Type** プロパティによって指定される 2 種類のアクション リソースがあります。  スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。 アクション リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 型です。  
-
-アラート アクションの構造は次のとおりです。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
-
+アラート アクションの構造は次のとおりです。 ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
 ```json
     {
@@ -174,13 +163,13 @@ Resource Manager テンプレートで定義された Log Analytics リソース
                     "triggerCondition": "[variables('Alert').Threshold.Trigger.Condition]",
                     "operator": "[variables('Alert').Trigger.Operator]",
                     "value": "[variables('Alert').Trigger.Value]"
-                  },
-              },
-      "AzNsNotification": {
-        "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
-        "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]",
-        "CustomWebhookPayload": "[variables('MyAlert').AzNsNotification.CustomWebhookPayload]"
-        }
+                },
+            },
+            "AzNsNotification": {
+                "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+                "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]",
+                "CustomWebhookPayload": "[variables('MyAlert').AzNsNotification.CustomWebhookPayload]"
+            }
         }
     }
 ```
@@ -196,7 +185,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 
 #### <a name="threshold"></a>Threshold
-このセクションは必須です。  アラートのしきい値のプロパティを定義します。
+このセクションは必須です。 アラートのしきい値のプロパティを定義します。
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
@@ -204,7 +193,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 | Value | はい | 結果を比較する値です。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
-このセクションは省略可能です。  メトリック測定アラートの場合に指定します。
+このセクションは省略可能です。 メトリック測定アラートの場合に指定します。
 
 > [!NOTE]
 > メトリック測定アラートは現在パブリック プレビュー中です。 
@@ -217,7 +206,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 
 #### <a name="throttling"></a>Throttling
-このセクションは省略可能です。  同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
+このセクションは省略可能です。 同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
@@ -238,7 +227,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 #### <a name="actions-for-oms-legacy"></a>OMS のアクション (レガシ)
 
-どのスケジュールも 1 つの**アラート** アクションを保持しています。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
+どのスケジュールも 1 つの**アラート** アクションを保持しています。 アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。 通知は、1 つ以上のアドレスにメールを送信します。 修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
 
 > [!NOTE]
 > 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
@@ -250,8 +239,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 |:--|:--|:--|
 | Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | Subject | はい | メールの件名です。 |
-| Attachment | いいえ  | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
-
+| Attachment | いいえ  | 添付ファイルは現在はサポートされていません。 この要素を指定する場合は、**None** にする必要があります。 |
 
 ##### <a name="remediation"></a>Remediation
 このセクションは省略可能です。アラートに対して Runbook を開始する場合に指定します。 |
@@ -266,14 +254,14 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。 これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。 また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
 
-アラートが webhook を呼び出す場合は、**アラート** アクション リソースに加えて **Webhook** 型のアクション リソースが必要です。  
+アラートが webhook を呼び出す場合は、**アラート** アクション リソースに加えて **Webhook** 型のアクション リソースが必要です。
 
     {
       "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions/",
       "apiVersion": "[variables('LogAnalyticsApiVersion')]",
       "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
+        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
       ],
       "properties": {
         "etag": "*",
@@ -290,9 +278,8 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 |:--|:--|:--|
 | type | はい | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
 | name | はい | アクションの表示名です。  コンソールには表示されません。 |
-| webhookUri | [はい] | webhook の URI です。 |
+| webhookUri | はい | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
-
 
 ## <a name="sample"></a>サンプル
 
@@ -306,158 +293,157 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 ```json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0",
-        "parameters": {
-          "workspaceName": {
-            "type": "string",
-            "metadata": {
-              "Description": "Name of Log Analytics workspace"
-            }
-          },
-          "workspaceregionId": {
-            "type": "string",
-            "metadata": {
-              "Description": "Region of Log Analytics workspace"
-            }
-          },
-          "actiongroup": {
-            "type": "string",
-            "metadata": {
-              "Description": "List of action groups for alert actions separated by semicolon"
-            }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0",
+      "parameters": {
+        "workspaceName": {
+          "type": "string",
+          "metadata": {
+            "Description": "Name of Log Analytics workspace"
           }
         },
-        "variables": {
-          "SolutionName": "MySolution",
-          "SolutionVersion": "1.0",
-          "SolutionPublisher": "Contoso",
-          "ProductName": "SampleSolution",
-    
-          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
-              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+        "workspaceregionId": {
+          "type": "string",
+          "metadata": {
+            "Description": "Region of Log Analytics workspace"
+          }
+        },
+        "actiongroup": {
+          "type": "string",
+          "metadata": {
+            "Description": "List of action groups for alert actions separated by semicolon"
+          }
+        }
+      },
+      "variables": {
+        "SolutionName": "MySolution",
+        "SolutionVersion": "1.0",
+        "SolutionPublisher": "Contoso",
+        "ProductName": "SampleSolution",
+        "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+        "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
 
-          "MySearch": {
-            "displayName": "Error records by hour",
-            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
-            "category": "Samples",
-            "name": "Samples-Count of data"
-          },
-          "MyAlert": {
-            "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
-            "DisplayName": "My alert rule",
-            "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "critical",
-            "ThresholdOperator": "gt",
-            "ThresholdValue": 3,
-            "Schedule": {
-              "Name": "[toLower(concat('myschedule-',uniqueString(resourceGroup().id, deployment().name)))]",
-              "Interval": 15,
-              "TimeSpan": 60
-            },
-            "MetricsTrigger": {
-              "TriggerCondition": "Consecutive",
-              "Operator": "gt",
-              "Value": 3
-            },
-            "ThrottleMinutes": 60,
-            "AzNsNotification": {
-              "GroupIds": [
-                "[parameters('actiongroup')]"
-              ],
-              "CustomEmailSubject": "Sample alert"
-            }
-          }
+        "MySearch": {
+          "displayName": "Error records by hour",
+          "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
+          "category": "Samples",
+          "name": "Samples-Count of data"
         },
-        "resources": [
-          {
-            "name": "[concat(variables('SolutionName'), '[' ,parameters('workspacename'), ']')]",
-            "location": "[parameters('workspaceRegionId')]",
-            "tags": { },
-            "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
-            "dependsOn": [
+        "MyAlert": {
+          "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
+          "DisplayName": "My alert rule",
+          "Description": "Sample alert. Fires when 3 error records found over hour interval.",
+          "Severity": "critical",
+          "ThresholdOperator": "gt",
+          "ThresholdValue": 3,
+          "Schedule": {
+            "Name": "[toLower(concat('myschedule-',uniqueString(resourceGroup().id, deployment().name)))]",
+            "Interval": 15,
+            "TimeSpan": 60
+          },
+          "MetricsTrigger": {
+            "TriggerCondition": "Consecutive",
+            "Operator": "gt",
+            "Value": 3
+          },
+          "ThrottleMinutes": 60,
+          "AzNsNotification": {
+            "GroupIds": [
+              "[parameters('actiongroup')]"
+            ],
+            "CustomEmailSubject": "Sample alert"
+          }
+        }
+      },
+      "resources": [
+        {
+          "name": "[concat(variables('SolutionName'), '[' ,parameters('workspacename'), ']')]",
+          "location": "[parameters('workspaceRegionId')]",
+          "tags": { },
+          "type": "Microsoft.OperationsManagement/solutions",
+          "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
+            "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
+            "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
+          ],
+          "properties": {
+            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",
+            "referencedResources": [
+            ],
+            "containedResources": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
-            ],
-            "properties": {
-              "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",
-              "referencedResources": [
-              ],
-              "containedResources": [
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
-              ]
+            ]
+          },
+          "plan": {
+            "name": "[concat(variables('SolutionName'), '[' ,parameters('workspaceName'), ']')]",
+            "Version": "[variables('SolutionVersion')]",
+            "product": "[variables('ProductName')]",
+            "publisher": "[variables('SolutionPublisher')]",
+            "promotionCode": ""
+          }
+        },
+        {
+          "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
+          "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+          "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
+          "dependsOn": [ ],
+          "tags": { },
+          "properties": {
+            "etag": "*",
+            "query": "[variables('MySearch').query]",
+            "displayName": "[variables('MySearch').displayName]",
+            "category": "[variables('MySearch').category]"
+          }
+        },
+        {
+          "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
+          "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
+          "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
+          "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
+          ],
+          "properties": {
+            "etag": "*",
+            "interval": "[variables('MyAlert').Schedule.Interval]",
+            "queryTimeSpan": "[variables('MyAlert').Schedule.TimeSpan]",
+            "enabled": true
+          }
+        },
+        {
+          "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
+          "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
+          "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
+          "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
+          ],
+          "properties": {
+            "etag": "*",
+            "Type": "Alert",
+            "Name": "[variables('MyAlert').DisplayName]",
+            "Description": "[variables('MyAlert').Description]",
+            "Severity": "[variables('MyAlert').Severity]",
+            "Threshold": {
+              "Operator": "[variables('MyAlert').ThresholdOperator]",
+              "Value": "[variables('MyAlert').ThresholdValue]",
+              "MetricsTrigger": {
+                "TriggerCondition": "[variables('MyAlert').MetricsTrigger.TriggerCondition]",
+                "Operator": "[variables('MyAlert').MetricsTrigger.Operator]",
+                "Value": "[variables('MyAlert').MetricsTrigger.Value]"
+              }
             },
-            "plan": {
-              "name": "[concat(variables('SolutionName'), '[' ,parameters('workspaceName'), ']')]",
-              "Version": "[variables('SolutionVersion')]",
-              "product": "[variables('ProductName')]",
-              "publisher": "[variables('SolutionPublisher')]",
-              "promotionCode": ""
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
-            "dependsOn": [ ],
-            "tags": { },
-            "properties": {
-              "etag": "*",
-              "query": "[variables('MySearch').query]",
-              "displayName": "[variables('MySearch').displayName]",
-              "category": "[variables('MySearch').category]"
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
-            "dependsOn": [
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
-            ],
-            "properties": {
-              "etag": "*",
-              "interval": "[variables('MyAlert').Schedule.Interval]",
-              "queryTimeSpan": "[variables('MyAlert').Schedule.TimeSpan]",
-              "enabled": true
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
-            "dependsOn": [
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
-            ],
-            "properties": {
-              "etag": "*",
-              "Type": "Alert",
-              "Name": "[variables('MyAlert').DisplayName]",
-              "Description": "[variables('MyAlert').Description]",
-              "Severity": "[variables('MyAlert').Severity]",
-              "Threshold": {
-                "Operator": "[variables('MyAlert').ThresholdOperator]",
-                "Value": "[variables('MyAlert').ThresholdValue]",
-                "MetricsTrigger": {
-                  "TriggerCondition": "[variables('MyAlert').MetricsTrigger.TriggerCondition]",
-                  "Operator": "[variables('MyAlert').MetricsTrigger.Operator]",
-                  "Value": "[variables('MyAlert').MetricsTrigger.Value]"
-                }
-              },
-              "Throttling": {
-                "DurationInMinutes": "[variables('MyAlert').ThrottleMinutes]"
-              },
+            "Throttling": {
+              "DurationInMinutes": "[variables('MyAlert').ThrottleMinutes]"
+            },
             "AzNsNotification": {
               "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
               "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]"
-            }             
             }
           }
-        ]
+        }
+      ]
     }
 ```
 
@@ -492,4 +478,3 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 ## <a name="next-steps"></a>次の手順
 * 管理ソリューションに[ビューを追加する](solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](solutions-resources-automation.md)。
-
