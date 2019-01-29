@@ -41,7 +41,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**AzurePostgreSql** | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**AzurePostgreSql** | はい |
 | connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -61,8 +61,8 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
         "type": "AzurePostgreSql",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+                "type": "SecureString",
+                "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         }
     }
@@ -77,7 +77,7 @@ Azure Database for PostgreSQL からデータをコピーするには、デー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**AzurePostgreSqlTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**AzurePostgreSqlTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -106,7 +106,7 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AzurePostgreSqlSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AzurePostgreSqlSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
