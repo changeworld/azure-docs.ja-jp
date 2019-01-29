@@ -49,11 +49,11 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SqlServer** | [はい] |
-| connectionString |SQL 認証または Windows 認証を使用して、Managed Instance に接続するために必要な connectionString 情報を指定します。 以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**SqlServer** | はい |
+| connectionString |SQL 認証または Windows 認証を使用して、Managed Instance に接続するために必要な connectionString 情報を指定します。 以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Managed Instance と同じ VNET にセルフホステッド統合ランタイムをプロビジョニングします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Managed Instance と同じ VNET にセルフホステッド統合ランタイムをプロビジョニングします。 |はい |
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -113,7 +113,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**SqlServerTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**SqlServerTable** | はい |
 | tableName |リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例**
@@ -145,7 +145,7 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SqlSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SqlSource** | はい |
 | SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
 | sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
@@ -248,7 +248,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **SqlSink** | [はい] |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **SqlSink** | はい |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値:10000) |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ  |
 | preCopyScript |コピー アクティビティでデータを Managed Instance に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
