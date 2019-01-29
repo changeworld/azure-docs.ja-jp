@@ -76,7 +76,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 | V3 メソッド   | 課金対象となる文字数 |
 |:----------- |:-------------|
 | Languages     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
-| 翻訳     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
+| Translate     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
 | Transliterate     | 音訳のために送信された文字数が数えられます。         |
 | Dictionary の lookup と example     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
 | BreakSentence     | 課金はありません。       |
@@ -114,7 +114,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
 |Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  [はい]|    いいえ | [はい]|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。
