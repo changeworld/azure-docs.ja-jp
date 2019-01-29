@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 337c48d96a2ee679eda24500d9cb1a8d2581b2c7
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ee944d6e8943e3264ecf51c88f999effe9d5e161
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912903"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196091"
 documentType: LandingData
 title: Bing Visual Search API のドキュメント
 metadata:
@@ -15,7 +15,7 @@ metadata:
   author: swhite-msft
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-visual-search
+  ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

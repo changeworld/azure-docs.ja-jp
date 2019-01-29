@@ -122,9 +122,10 @@ items:
   - name: Web サービスを使用する
     items:
     - name: リアルタイムで使用する
-      displayName: create client consume
+      displayName: create client consume request response synchronous
       href: how-to-consume-web-service.md
     - name: バッチ予測を実行する
+      displayName: score scoring asynchronous consume pipeline
       href: how-to-run-batch-predictions.md
   - name: Web サービスを監視する
     items:
@@ -175,9 +176,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 794879b4c80522de1a8cf3874268a1efb0cab6b4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d83028246e884cff2a91dc3839893f7584caf9a1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844723"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099058"

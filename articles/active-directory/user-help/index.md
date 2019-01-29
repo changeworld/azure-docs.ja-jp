@@ -6,16 +6,16 @@ services: active-directory
 author: eross-msft
 manager: daveba
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6fe14c9f67d6ce2f432b57b2cbbd0d026cebe85
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 510ecfc217c5e3b3e1ac6cd285fcaf7001199aa4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901634"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149716"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 

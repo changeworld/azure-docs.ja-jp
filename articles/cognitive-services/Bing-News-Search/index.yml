@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 17fac6455ca225363726b347c428d176e78a1ff9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 0f3b67b926a717374c6531e0c926a4138909c095
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912801"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170472"
 documentType: LandingData
 title: Bing News Search API ドキュメント
 titleSuffix: Azure Cognitive Services
@@ -15,7 +15,7 @@ metadata:
   author: mikedodaro
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-video-search
+  ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

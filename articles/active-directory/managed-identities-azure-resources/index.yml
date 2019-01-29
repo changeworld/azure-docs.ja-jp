@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c4613654e5f1da6ef55c1f648fff1687b21fe87d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: fd9c4513c2cda3fb6283e748f2458043b02ab482
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901940"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203574"
 documentType: LandingData
 title: Azure リソースの Azure AD マネージド ID のドキュメント
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: Azure リソースの Azure AD マネージド ID のドキュメント
   description: Azure リソースのマネージド ID を使用して、ソース コードに資格情報を含めることなく Azure クラウド サービスの認証を安全に行う方法について説明します。
   services: active-directory
-  ms.component: msi
+  ms.subservice: msi
   author: priyamohanram
   manager: daveba
   ms.service: active-directory

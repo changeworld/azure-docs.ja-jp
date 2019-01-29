@@ -11,20 +11,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223298"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411239"
 ---
 # <a name="troubleshoot-rbac-in-azure"></a>Azure での RBAC のトラブルシューティング
 
 この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、ロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
+
+## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
+
+- **[ロールの割り当ての追加]** オプションが無効になっているか、アクセス許可エラーが発生したために、ロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/*` アクセス許可を持つロールを使用していることを確認します。 このアクセス許可がない場合は、サブスクリプション管理者にお問い合わせください。
+- リソースを作成しようとしたときにアクセス許可エラーが発生した場合は、選択したスコープでリソースを作成するためのアクセス許可を持つロールを使用していることを確認します。 たとえば、共同作成者である必要があります。 このアクセス許可がない場合は、サブスクリプション管理者にお問い合わせください。
+- サポート チケットを作成または更新しようとしたときに、アクセス許可エラーが発生した場合は、`Microsoft.Support/*` アクセス許可を持つロール ([サポート リクエスト共同作成者](built-in-roles.md#support-request-contributor)など) を使用していることを確認します。
+- ロールを割り当てようとしたときに、ロールの割り当て数を超えたことを示すエラーが発生した場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。
+
+## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
+
+- 既存のカスタム ロールを更新できない場合は、`Microsoft.Authorization/roleDefinition/write` アクセス許可を持っているかどうかを確認します。
+- 既存のカスタム ロールを更新できない場合は、テナントで 1 つまたは複数の割り当て可能なスコープが削除されているかどうかを確認します。 カスタム ロールの `AssignableScopes` プロパティによって、[カスタム ロールを作成、削除、更新、または表示できるユーザー](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role)が制御されます。
+- 新しいロールを作成しようとしたときにロール定義制限の超過エラーが発生する場合は、使用していないカスタム ロールを削除します。 既存のカスタム ロールの統合や再利用を試すこともできます。 Azure では、テナントあたり最大 **2,000** 個のカスタム ロールをサポートします。
+- カスタム ロールを削除できない場合は、まだそのカスタム ロールを使用している 1 つまたは複数のロールの割り当てがないかどうかを確認します。
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
+
+- サブスクリプションを別のテナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」をご覧ください。
+- 別のテナントにサブスクリプションを譲渡すると、すべてのロールの割り当てがソース テナントから完全に削除され、ターゲット テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。
+- グローバル管理者であり、サブスクリプションにアクセスできなくなった場合は、**Azure リソースのアクセス管理**の切り替えを使用して一時的に[アクセス権を昇格](elevate-access-global-admin.md)し、サブスクリプションへのアクセスを再取得します。
+
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
+
+Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを作成または削除した場合、その変更が有効となるまでに最大 30 分かかる場合があります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
 
 ## <a name="web-app-features-that-require-write-access"></a>書き込みアクセス権限を必要とする Web アプリ機能
 
@@ -76,7 +100,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 * エンドポイント  
 * IP アドレス  
 * ディスク  
-* 拡張機能  
+* Extensions  
 
 以下には、**仮想マシン**と、その仮想マシンが含まれる**リソース グループ** (とドメイン名) の両方に対する**書き込み**アクセス権が必要です。  
 
@@ -93,10 +117,6 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 ![Function App のアクセスなし](./media/troubleshooting/functionapps-noaccess.png)
 
 閲覧者は、**[プラットフォーム機能]** タブをクリックし、**[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
-
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
-
-Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを作成または削除した場合、その変更が有効となるまでに最大 30 分かかる場合があります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
 
 ## <a name="next-steps"></a>次の手順
 * [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)

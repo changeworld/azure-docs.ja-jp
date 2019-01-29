@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0dbbf1e5b3f80f1dce188e38f3e0ff2d12cce07b
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ac7c9584cc60f7898446b50fb6f36ea7ebe8a94d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912256"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192300"
 documentType: LandingData
 title: Bing Web Search API のドキュメント
 metadata:
@@ -15,7 +15,7 @@ metadata:
   author: nitinme
   manager: cgronlun
   ms.service: cognitive-services
-  ms.component: bing-web-search
+  ms.subservice: bing-web-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

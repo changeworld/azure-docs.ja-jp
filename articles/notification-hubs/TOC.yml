@@ -21,7 +21,7 @@ items:
       href: notification-hubs-ios-apple-push-notification-apns-get-started.md
     - name: Kindle
       href: notification-hubs-kindle-amazon-adm-push-notification.md
-    - name: " Windows"
+    - name: Windows
       href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
     - name: Windows Phone
       href: notification-hubs-windows-mobile-push-notifications-mpns.md
@@ -35,7 +35,7 @@ items:
       href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
     - name: iOS
       href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-    - name: " Windows"
+    - name: Windows
       href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
     - name: Windows Phone
       href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
@@ -43,7 +43,7 @@ items:
     items:
     - name: iOS
       href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: " Windows"
+    - name: Windows
       href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
   - name: 4 - 特定のユーザーにプッシュ通知を送信する
     items:
@@ -51,11 +51,11 @@ items:
       href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: iOS
       href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-    - name: " Windows"
+    - name: Windows
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
   - name: 5 - 場所に基づいた通知をプッシュする
     items:
-    - name: " Windows"
+    - name: Windows
       href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: サンプル
   items:
@@ -78,6 +78,8 @@ items:
     href: notification-hubs-push-notification-security.md
 - name: ハウツー ガイド
   items:
+  - name: 価格レベルの変更
+    href: change-pricing-tier.md
   - name: クロスプラットフォーム通知を送信する
     href: notification-hubs-aspnet-cross-platform-notification.md
   - name: リッチ コンテンツをデバイスにプッシュする
@@ -134,9 +136,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: f8a26954be5154e9d37970a3659fd28a22b615a5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ce941c63797a14d8fb629c958ad3fb741f34fc0c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196788"

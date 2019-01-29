@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 23a160b708200025236bfabac98f845473b4ca1c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6dadff6de21052194709d4078c419c0ede084869
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961622"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179890"
 documentType: LandingData
 title: Bing Local Business Search API のドキュメント
 titleSuffix: Azure Cognitive Services
@@ -14,7 +14,7 @@ metadata:
   services: cognitive-services
   author: mikedodaro
   manager: rosh
-  ms.component: bing-local-business
+  ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

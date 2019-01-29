@@ -357,10 +357,8 @@ items:
     - name: マネージド ディスクに移行する
       href: migrate-to-managed-disks.md
       items:
-      - name: 非管理対象ディスクから管理ディスク
+      - name: 非管理対象ディスクからマネージド ディスク
         href: convert-unmanaged-to-managed-disks.md
-      - name: 単一の クラシック VM から Resource Manager
-        href: migrate-single-classic-to-resource-manager.md
   - name: ネットワークの管理
     href: ps-common-network-ref.md
     items:
@@ -466,9 +464,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: a5659317da5077b0dc1716b11a0d221e973ceb46
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b930dcd0e1c396425d5656787fd5f3b9203de8ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822027"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181675"
