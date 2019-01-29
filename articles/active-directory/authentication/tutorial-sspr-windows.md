@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437148"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430674"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
@@ -32,6 +32,7 @@ ms.locfileid: "53437148"
    * [Azure AD 参加済みマシン](../device-management-azure-portal.md)または
    * [Hybrid Azure AD 参加済みマシン](../device-management-hybrid-azuread-joined-devices-setup.md)と、ドメイン コントローラーへのネットワーク接続。
 * Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
+* お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、`passwordreset.microsoftonline.com` および `ajax.aspnetcdn.com` への HTTPS トラフィック (443) を許可する必要があります。
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
 
@@ -126,8 +127,6 @@ Hyper-V を使用してこの機能をテストすると、"パスワードの�
    * Explorer.exe をカスタム シェルで置き換える
 
 この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
-
-お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com および ajax.aspnetcdn.com への HTTPS トラフィック (443) を許可する必要があります。
 
 ハイブリッド ドメイン参加済みのシナリオでは、SSPR ワークフローが完了する場所にシナリオが存在し、Active Directory のドメイン コントローラーが必要ありません。 ドメイン コントローラーとの接続は、新しいパスワードを初めて使用するときに必要です。
 

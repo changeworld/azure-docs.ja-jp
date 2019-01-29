@@ -3,21 +3,21 @@ title: チュートリアル - Azure Active Directory B2C を使用してアカ�
 description: シングルページ アプリケーション (JavaScript) で Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: cce76a0e97e039ec6e6c3a976d1fc7caca7fde73
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 08372700e9740ca69ba73dfba49f9d120dfabc6d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834436"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850333"
 ---
-# <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してアカウントによるシングルページ アプリの認証を有効にする
+# <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してアカウントによるシングルページ アプリの認証を有効にする
 
 このチュートリアルでは、シングルページ アプリケーション (SPA) で Azure Active Directory (Azure AD) B2C を使用してユーザーをサインインおよびサインアップする方法を紹介します。 Azure AD B2C を使用すると、アプリは、オープンな標準プロトコルを使用してソーシャル アカウント、エンタープライズ アカウント、Azure Active Directory アカウントに対して認証することができます。
 
@@ -56,8 +56,8 @@ Azure AD B2C ディレクトリの全体管理者として、[Azure portal](http
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | My sample single page app | 使用者がアプリの機能を把握できる**名前**を入力します。 | 
-    | **Web アプリ/Web API を含める** | はい | シングルページ アプリの場合は **はい** を選択します。 |
-    | **暗黙的フローを許可する** | はい | アプリでは [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | [はい] | シングルページ アプリの場合は **[はい]** を選択します。 |
+    | **暗黙的フローを許可する** | [はい] | アプリでは [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
     | **応答 URL** | `http://localhost:6420` | 応答 URL は、アプリが要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプルはローカル (localhost) で実行され、ポート 6420 でリッスンします。 |
     | **ネイティブ クライアントを含める** | いいえ  | これはネイティブ クライアントではなくシングルページ アプリであるため、[いいえ] を選択します。 |
     
