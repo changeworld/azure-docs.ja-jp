@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.component: alerts
-ms.openlocfilehash: 9cd745cedd6d870262e412709e4e104c1406558e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: alerts
+ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234067"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429788"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor でのログ アラートのクエリ
 [Azure Monitor ログに基づくアラート ルール](alerts-unified-log.md)は一定間隔で実行されるため、必ずオーバーヘッドと待機時間を最小限に抑えるように記述する必要があります。 この記事では、ログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。 
@@ -27,7 +27,7 @@ ms.locfileid: "54234067"
 SecurityEvent | where EventID == 4624 
 ```
 
-`search` または `union` で始まる始まるクエリでは、1 つのテーブル内の複数の列間や、複数のテーブル間でも検索を行うことができます。 次の例は、_Memory_ という用語を検索するための複数の方法を示しています。
+`search` または `union` で始まるクエリでは、1 つのテーブル内の列間や、複数のテーブル間でも検索を行うことができます。 次の例は、_Memory_ という用語を検索するための複数の方法を示しています。
 
 ```Kusto
 search "Memory"
@@ -222,3 +222,4 @@ on Hour
 ## <a name="next-steps"></a>次の手順
 - Azure Monitor での[ログ アラート](alerts-log.md)について学習します。
 - [ログ クエリ](../log-query/log-query-overview.md)について学習します。
+

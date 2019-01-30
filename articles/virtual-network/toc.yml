@@ -250,6 +250,8 @@ items:
       href: virtual-network-troubleshoot-nva.md
     - name: 送信 SMTP 接続のトラブルシューティング
       href: troubleshoot-outbound-smtp-connectivity.md
+    - name: IP アドレス 168.63.129.16 について
+      href: what-is-ip-address-168-63-129-16.md
   - name: クラシック
     items:
     - name: 仮想ネットワークの作成と管理
@@ -362,9 +364,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: FAQ
     href: virtual-networks-faq.md
-ms.openlocfilehash: 72fd6f6a16c78cef0e690882fd426e13a782b299
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 42aca03869443ea240fb86279509b7345cd9549a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883451"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228714"

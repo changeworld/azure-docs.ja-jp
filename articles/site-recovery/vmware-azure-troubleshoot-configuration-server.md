@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050797"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435976"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -58,6 +58,16 @@ ms.locfileid: "54050797"
 
 このエラーは、モビリティ エージェントをインストールして構成サーバーに登録するときにサービスがトランスポート接続からデータを読み取れない場合に発生します。 この問題を解決するには、お客様のソース マシン上で TLS 1.0 を有効にします。
 
+## <a name="vcenter-discovery-failures"></a>vCenter の検出エラー
+
+VCenter の検出のエラーを解決するには、その vCenter サーバーがバイパス リストのプロキシ設定に追加されていることを確認します。このアクティビティを実行するには、
+
+- システム ユーザーのコンテンツにアクセスするために、[こちら](https://aka.ms/PsExec)から PsExec ツールをダウンロードします。
+- コマンド ライン psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" を実行して、インターネット エクスプローラーでシステム ユーザーのコンテンツを開きます。
+- IE にプロキシ設定を追加し、tmanssvc サービスを再開します。
+- DRA プロキシ設定を構成するために、cd C:\Program Files\Microsoft Azure Site Recovery Provider を実行します。
+- 次に、DRCONFIGURATOR.EXE /configure /AddBypassUrls を実行します (「[構成サーバーをデプロイする](vmware-azure-deploy-configuration-server.md#configure-settings)」の **vCenter Server/vSphere ESXi Server を構成する**手順の間に提供された vCenter Server の IP アドレス/FQDN を追加します)。
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>構成サーバーの IP アドレスの変更
 
 構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられているすべての IP アドレスが静的 IP アドレスであるようにしてください。 DHCP IP アドレスは使用しないでください。
@@ -70,7 +80,7 @@ ms.locfileid: "54050797"
 
 Site Recovery の認証に必要な証明書を作成できません。 ローカル管理者として設定を実行していることを確認してから、設定を再実行します。
 
-## <a name="register-the-source-machine-with-the-configuration-server"></a>ソース マシンを構成サーバーに登録する
+## <a name="register-source-machine-with-configuration-server"></a>ソース マシンを構成サーバーに登録する
 
 ### <a name="if-the-source-machine-runs-windows"></a>ソース マシン上で Windows が実行されている場合
 
@@ -81,7 +91,7 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
   UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /PassphraseFilePath <passphrase file path>
   ```
 
-Setting | 詳細
+設定 | 詳細
 --- | ---
 使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address\> /PassphraseFilePath <passphrase file path\>
 エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下にあります。
@@ -96,7 +106,7 @@ Setting | 詳細
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <configuration server IP address> -P /var/passphrase.txt
   ```
 
-Setting | 詳細
+設定 | 詳細
 --- | ---
 使用法 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <configuration server IP address\> -P <passphrase file path\>
 -i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。

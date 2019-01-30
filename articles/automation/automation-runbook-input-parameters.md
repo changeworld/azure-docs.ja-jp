@@ -3,18 +3,18 @@ title: Runbook の入力パラメーター
 description: Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 941a7242e1f6fddd1ff91721141be4e1f9816b31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d22a2de29e170979d9ab5d61c7f21a47d6aee99c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344865"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433443"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -151,7 +151,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)を使用して、リソース グループに作成された Automation Runbook を起動できます。
+* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、リソース グループ内に作成された Automation Runbook を起動できます。
   
   **例:**
   
@@ -160,7 +160,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
+* **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループ内に作成された Automation Runbook を起動できます。
   
   **例:**
   
@@ -177,7 +177,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>SDK で Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
+* **Azure Resource Manager メソッド:**:プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
   
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -196,7 +196,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
       return response.Job;
       }
   ```
-* **Azure クラシック デプロイ モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
+* **Azure クラシック デプロイ モデル メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -230,13 +230,12 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   ```
 
 #### <a name="start-a-runbook-by-using-the-rest-api-and-assign-parameters"></a>REST API で Runbook を起動し、パラメーターを割り当てる
-**PUT** メソッドと次の要求 URI を利用することで、Azure Automation REST API で Runbook ジョブを作成し、起動できます。
+**PUT** メソッドと次の要求 URI を利用することで、Azure Automation REST API で Runbook ジョブを作成し、起動できます。 https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
-    https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
 要求 URI で、次のパラメーターを置き換えます。
 
-* **subscription-id:** Azure のサブスクリプション ID。  
+* **subscription-id:** お使いの Azure サブスクリプション ID。  
 * **cloud-service-name:** 要求の送信先とするクラウド サービスの名前。  
 * **automation-account-name:** 指定したクラウド サービス内でホストされている Automation アカウントの名前。  
 * **job-id:** ジョブの GUID。 PowerShell の GUID は **[GUID]::NewGuid().ToString()** コマンドで作成できます。
@@ -244,7 +243,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 Runbook ジョブにパラメーターを渡すには、要求本文を使用します。 JSON 形式で指定される、次の 2 つのプロパティを受け取ります。
 
 * **Runbook 名:** 必須。 開始するジョブの Runbook の名前。  
-* **Runbook パラメーター:** 任意。 (名前、値) 形式のパラメーターリストのディクショナリ。名前は文字列型にする必要があります。値には有効なあらゆる JSON 値を指定できます。
+* **Runbook のパラメーター:** 省略可能。 (名前、値) 形式のパラメーターリストのディクショナリ。名前は文字列型にする必要があります。値には有効なあらゆる JSON 値を指定できます。
 
 **VMName** と **resourceGroupName** をパラメーターとして、先に作成した **Get-AzureVMTextual** Runbook を起動するには、要求本文に次の JSON 形式を使用します。
 
@@ -286,4 +285,5 @@ Webhook を利用して Runbook を実行すると、定義した入力パラメ
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 * テキスト Runbook を編集する方法については、「 [テキスト Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
 * グラフィカル Runbook を編集する方法については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+
 

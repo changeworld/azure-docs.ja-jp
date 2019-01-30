@@ -7,6 +7,8 @@ items:
     href: ./ansible-overview.md
 - name: クイック スタート
   items:
+  - name: Ansible ソリューション テンプレートのデプロイ
+    href: ./ansible-deploy-solution-template.md
   - name: Linux VM での Ansible のインストール
     href: /azure/virtual-machines/linux/ansible-install-configure
     maintainContext: true
@@ -79,9 +81,9 @@ items:
   items:
   - name: Ansible 用 Visual Studio Code 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: b14bcd85be13a29d179606206ff7cfd8a69a5179
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413500"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226640"

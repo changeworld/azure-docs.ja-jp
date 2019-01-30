@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 6d2ed7632223b5ded5c0306533d807e9b57f9d76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078526"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426184"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -75,7 +75,7 @@ ms.locfileid: "54078526"
 
 Smartlockout のしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
-**承認されていない使用を防ぐためにアカウントが一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は、管理者にお問い合わせください。**
+**ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
 
 
 ## <a name="next-steps"></a>次の手順

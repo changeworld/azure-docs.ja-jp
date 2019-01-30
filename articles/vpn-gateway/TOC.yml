@@ -73,7 +73,7 @@ items:
           href: vpn-gateway-certificates-point-to-site.md
         - name: Makecert
           href: vpn-gateway-certificates-point-to-site-makecert.md
-        - name: " Linux"
+        - name: Linux
           href: vpn-gateway-certificates-point-to-site-linux.md
     - name: クライアント証明書のインストール
       href: point-to-site-how-to-vpn-client-install-azure-cert.md
@@ -175,11 +175,11 @@ items:
       href: vpn-gateway-delete-vnet-gateway-powershell.md
   - name: ゲートウェイの SKU (旧)
     href: vpn-gateway-about-skus-legacy.md
-  - name: サードパーティ VPN デバイスの構成
+  - name: VPN デバイスの構成
     items:
     - name: 概要と Azure の構成
       href: vpn-gateway-3rdparty-device-config-overview.md
-    - name: 'サンプル: Cisco ASA デバイス (IKEv2/BGP なし)'
+    - name: サンプル:Cisco ASA デバイス (IKEv2/BGP なし)
       href: vpn-gateway-3rdparty-device-config-cisco-asa.md
   - name: トラブルシューティング
     href: vpn-gateway-troubleshoot.md
@@ -252,9 +252,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: aa9cb293365a6a2ec20e2d9ce0423310b59c5314
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0917b0d30244cc6b00df71a3ed17ead22db35c99
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242077"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159542"

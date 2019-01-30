@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f30a0d80b40626530ecebdb129daff4a0c5215fc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296246"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426201"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -75,7 +75,7 @@ PowerShell を使用して、次のフィールドを設定することができ
 
 * **連絡用メール アドレス**
 * **携帯電話**
-* **会社電話** - オンプレミス ディレクトリと同期していない場合にのみ設定できます
+* **会社電話**:オンプレミス ディレクトリと同期していない場合にのみ設定できます
 
 ### <a name="use-powershell-version-1"></a>PowerShell バージョン 1 を使う
 

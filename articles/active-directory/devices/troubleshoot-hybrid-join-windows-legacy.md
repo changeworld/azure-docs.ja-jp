@@ -4,7 +4,7 @@ description: ハイブリッド Azure Active Directory 参加済みダウンレ�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800861"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445288"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -58,7 +58,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 - Windows 7 SP1 または Windows Server 2008 R2 SP1 の場合、[KB4284842](https://support.microsoft.com/help/4284842) がインストールされていることを確認してください。 この更新によって、今後、パスワードの変更後、保護されているキーにお客様がアクセスできなくなったことによる認証エラーを防止できます。
 
-## <a name="step-1-retrieve-the-registration-status"></a>手順 1: 登録状態を取得する 
+## <a name="step-1-retrieve-the-registration-status"></a>手順 1:登録状態を取得する 
 
 **登録状態を確認するには:**  
 
@@ -73,7 +73,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>手順 2: ハイブリッド Azure AD 参加状態を評価する 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>手順 2:ハイブリッド Azure AD 参加状態を評価する 
 
 デバイスがハイブリッド Azure AD 参加済みではなかった場合は、"参加" ボタンをクリックすることでハイブリッド Azure AD 参加を試みることができます。 ハイブリッド Azure AD 参加の試みに失敗した場合は、エラーの詳細が表示されます。
 
@@ -116,7 +116,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
     ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-状態に関する情報は、**Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
+状態情報は、**Applications and Services Log\Microsoft-Workplace Join** の下にあるイベント ログでも確認できます。
   
 **ハイブリッド Azure AD 参加に失敗する最も一般的な原因:** 
 

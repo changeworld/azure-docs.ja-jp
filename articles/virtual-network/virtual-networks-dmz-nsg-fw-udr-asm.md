@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119443"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448468"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -32,7 +32,7 @@ ms.locfileid: "54119443"
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 * 3 つのクラウド サービス:"SecSvc001"、"FrontEnd001"、"BackEnd001"
-* 3 つのサブネット ("SecNet"、"FrontEnd"、"BackEnd") を含む仮想ネットワーク "CorpNetwork"
+* 次の 3 つのサブネットを含む Virtual Network "CorpNetwork": “SecNet”、“FrontEnd”、および “BackEnd”
 * SecNet サブネットに接続されたネットワーク仮想アプライアンス (この例ではファイアウォール)
 * アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
 * アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
@@ -50,10 +50,10 @@ ms.locfileid: "54119443"
 
 スクリプトが正常に実行された後、必要に応じて次の手順を別途実行します。
 
-1. ファイアウォール ルールを設定します。この点については、ファイアウォール ルールの説明で取り上げます。
+1. ファイアウォール ルールを設定します。これは、下の「ファイアウォール ルール」というタイトルのセクションで説明されています。
 2. この DMZ 構成を使ったテストを実行するために、必要に応じて「参照」セクションにある 2 つのスクリプトを実行します。簡単な Web アプリケーションを含む Web サーバーとアプリケーション サーバーがこれらのスクリプトによってセットアップされます。
 
-スクリプトが正常に実行されたら、ファイアウォール ルールを完成させる必要があります。この点については、「ファイアウォール ルール」セクションで取り上げます。
+スクリプトが正常に実行されたら、ファイアウォール ルールを完成させる必要があります。これは、「ファイアウォール ルール」というタイトルのセクションで説明されています。
 
 ## <a name="user-defined-routing-udr"></a>ユーザー定義ルーティング (UDR)
 既定では、次のシステム ルートが定義されています。
@@ -241,7 +241,7 @@ IP 転送の設定は、VM の作成時に単一のコマンドで実行でき�
 
 ファイアウォールを管理したり、必要な構成を作成したりするには、管理クライアントを PC にインストールする必要があります。 デバイスの管理方法については、ご利用のファイアウォール (または他の NVA) ベンダーのドキュメントを参照してください。 このセクションの残りの部分および次のセクション (「ファイアウォール ルールの作成」) では、ファイアウォールそのものの構成について説明しています。ファイアウォールの構成は、(Azure ポータルや PowerShell ではなく) ベンダーの管理クライアントを使って行います。
 
-この例で使用するクライアントをダウンロードして Barracuda に接続する手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
+クライアントのダウンロードと、この例で使用される Barracuda への接続の手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
 
 ファイアウォールへのログオン後、ファイアウォール ルールを作成する前に、Network と Service という 2 つのオブジェクト クラスがあらかじめ必要となります。これらのオブジェクトを使用した方が簡単にルールを作成できます。
 
@@ -419,7 +419,7 @@ Pass ルール: ![Pass アイコン][9]
 5. ファイアウォール ルールの処理が開始されます。
    1. FW ルール 1 (FW 管理) は該当しません。次のルールに進みます。
    2. FW ルール 2 ～ 5 (RDP ルール) は該当しません。次のルールに進みます。
-   3. FW ルール 6 (Web へのアプリ) が該当し、トラフィックが許可され、ファイアウォールの NAT で 10.0.1.4 (IIS01) に変換されます。
+   3. FW ルール 6 (アプリ:Web) が該当し、トラフィックが許可され、ファイアウォールの NAT で 10.0.1.4 (IIS01) に変換されます。
 6. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
    1. NSG ルール 1 (インターネットをブロック) は該当しません (このトラフィックはファイアウォールによって NAT 変換されます。その時点で発信元アドレスはファイアウォールになっています。ファイアウォールは、セキュリティ サブネット上にあり、フロントエンド サブネットの NSG からは "ローカル" トラフィックに見えるため、このトラフィックは許可されます)。次のルールに進みます。
    2. 既定の NSG ルールではサブネット間トラフィックが許可されます。トラフィックは許可され、NSG ルールの処理はここで終了します。
@@ -430,8 +430,8 @@ Pass ルール: ![Pass アイコン][9]
 11. ファイアウォール ルールの処理が開始されます。
     1. FW ルール 1 (FW 管理) は該当しません。次のルールに進みます。
     2. FW ルール 2 ～ 5 (RDP ルール) は該当しません。次のルールに進みます。
-    3. FW ルール 6 (Web へのアプリ) は該当しません。次のルールに進みます。
-    4. FW ルール 7 (バックエンドへのアプリ) が該当し、トラフィックが許可され、ファイアウォールから 10.0.2.5 (AppVM01) に転送されます。
+    3. FW ルール 6 (アプリ: Web) は該当しません。次のルールに進みます。
+    4. FW ルール 7 (アプリ: バックエンド) が該当し、トラフィックが許可され、ファイアウォールから 10.0.2.5 (AppVM01) に転送されます。
 12. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
     1. NSG ルール 1 (インターネットをブロック) は該当しません。次のルールに進みます。
     2. 既定の NSG ルールではサブネット間トラフィックが許可されます。トラフィックは許可され、NSG ルールの処理はここで終了します。
@@ -777,7 +777,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
@@ -959,7 +959,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+このためのサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]のリンクに用意されています。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "双方向 DMZ + NVA、NSG、および UDR"
