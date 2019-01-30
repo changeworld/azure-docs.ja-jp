@@ -61,8 +61,8 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
         "type": "Netezza",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {
