@@ -278,7 +278,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 |:--|:--|:--|
 | type | はい | アクションの種類。 これは、webhook アクションの **Webhook** です。 |
 | name | はい | アクションの表示名です。 コンソールには表示されません。 |
-| webhookUri | [はい] | webhook の URI です。 |
+| webhookUri | はい | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
 
 ## <a name="sample"></a>サンプル
