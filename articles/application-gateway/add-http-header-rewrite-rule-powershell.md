@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 8429618a945ec70c52b925887790aa469e23ef89
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cb3af5dc8368dc7e598bd0b05653b8ae921a5097
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730391"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452311"
 ---
 # <a name="rewrite-http-headers-in-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで HTTP ヘッダーを書き換える
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -63,7 +63,7 @@ $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -
 ## <a name="retrieve-configuration-of-your-existing-application-gateway"></a>既存のアプリケーション ゲートウェイの構成を取得する
 
 ```azurepowershell
-$appgw1 = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
+$appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
 ## <a name="retrieve-configuration-of-your-existing-request-routing-rule"></a>既存の要求ルーティング規則の構成を取得する
@@ -75,9 +75,19 @@ $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name Rule1 -Applic
 ## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>http ヘッダーの書き換えのためにこの構成でアプリケーション ゲートウェイを更新する
 
 ```azurepowershell
-$appgw1 = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name rewriteRuleSet1 -RewriteRule $rewriteRuleSet.RewriteRules
-$appgw2 = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
-$appgw3 =  Set-AzApplicationGateway -ApplicationGateway $appgw2
+Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name rewriteRuleSet1 -RewriteRule $rewriteRuleSet.RewriteRules
+Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
+Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+## <a name="delete-a-rewrite-rule"></a>書き換えルールを削除する
+
+```azurepowershell
+$appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
+Remove-AzApplicationGatewayRewriteRuleSet -Name "rewriteRuleSet1" -ApplicationGateway $appgw 
+$requestroutingrule= Get-AzApplicationGatewayRequestRoutingRule -Name "rule1" -ApplicationGateway $appgw
+$requestroutingrule.RewriteRuleSet= $null
+set-AzApplicationGateway -ApplicationGateway $appgw 
 ```
 
 ## <a name="next-steps"></a>次の手順

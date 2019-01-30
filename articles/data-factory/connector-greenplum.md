@@ -54,8 +54,8 @@ Greenplum のリンクされたサービスでは、次のプロパティがサ�
         "type": "Greenplum",
         "typeProperties": {
             "connectionString": {
-                "type": "SecureString",
-                "value": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;PWD=<password>"
+                 "type": "SecureString",
+                 "value": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {

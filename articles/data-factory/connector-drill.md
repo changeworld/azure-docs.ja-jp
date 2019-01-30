@@ -57,8 +57,8 @@ Drill のリンクされたサービスでは、次のプロパティがサポ�
         "type": "Drill",
         "typeProperties": {
             "connectionString": {
-                "type": "SecureString",
-                "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
+                 "type": "SecureString",
+                 "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {

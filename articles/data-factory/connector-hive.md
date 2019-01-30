@@ -73,8 +73,8 @@ Hive のリンクされたサービスでは、次のプロパティがサポー
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",
             "password": {
-                "type": "SecureString",
-                "value": "<password>"
+                 "type": "SecureString",
+                 "value": "<password>"
             }
         }
     }

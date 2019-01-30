@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 5477b1b3dc14a94713074a72751b732262880258
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3c67a6fc7345cb533ad0c7088ac09fb02d3da1f2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650972"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213977"
 ---
 <h1>Azure Cognitive Services のドキュメント</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。</p>
@@ -131,7 +131,7 @@ ms.locfileid: "53650972"
                     <div class="cardText">
                         <h3>Computer Vision を使用した画像の分析</h3>
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">C# の使用</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/java-analyze">Java の使用</a></p>
+                        <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">Java の使用</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">Node.js の使用</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/python-analyze">Python の使用</a></p>
                     </div>

@@ -70,8 +70,8 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
             "authenticationType" : "UsernameAndPassword",
             "username" : "<username>",
             "password": {
-                "type": "SecureString",
-                "value": "<password>"
+                 "type": "SecureString",
+                 "value": "<password>"
             }
         },
         "connectVia": {

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310286"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451750"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -58,7 +58,7 @@ Microsoft によってプロビジョニングされると、Gemalto から HSM 
 
 Microsoft は、専用 HSM サービス経由で Gemalto SafeNet Luna Network HSM のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
 
-### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>Q: Azure 専用 HSM は PIN/ETF 機能をサポートするか、あるいは PCI HSM v1 または v2 認定の要件を満たしていますか。
+### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>Q:Azure 専用 HSM は PIN/ETF 機能をサポートするか、あるいは PCI HSM v1 または v2 認定の要件を満たしていますか。
 
 Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure 専用 HSM サービスでの支払い HSM の将来のサポートを希望する場合は、下のフィードバックを提供してください。
 

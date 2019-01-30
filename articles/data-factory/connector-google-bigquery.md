@@ -78,8 +78,8 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
                 "value":"<secret of the application used to generate the refresh token>"
             },
             "refreshToken": {
-                "type": "SecureString",
-                "value": "<refresh token>"
+                 "type": "SecureString",
+                 "value": "<refresh token>"
             }
         }
     }

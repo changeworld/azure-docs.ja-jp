@@ -66,8 +66,8 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
             "clientId" : "<clientId>",
             "username" : "<username>",
             "password": {
-                "type": "SecureString",
-                "value": "<password>"
+                 "type": "SecureString",
+                 "value": "<password>"
             }
         }
     }

@@ -66,21 +66,21 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
         "typeProperties": {
             "clientCustomerID" : "<clientCustomerID>",
             "developerToken": {
-                "type": "SecureString",
-                "value": "<developerToken>"
+                 "type": "SecureString",
+                 "value": "<developerToken>"
             },
             "authenticationType" : "ServiceAuthentication",
             "refreshToken": {
-                "type": "SecureString",
-                "value": "<refreshToken>"
+                 "type": "SecureString",
+                 "value": "<refreshToken>"
             },
             "clientId": {
-                "type": "SecureString",
-                "value": "<clientId>"
+                 "type": "SecureString",
+                 "value": "<clientId>"
             },
             "clientSecret": {
-                "type": "SecureString",
-                "value": "<clientSecret>"
+                 "type": "SecureString",
+                 "value": "<clientSecret>"
             },
             "email" : "<email>",
             "keyFilePath" : "<keyFilePath>",

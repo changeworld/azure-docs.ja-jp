@@ -61,8 +61,8 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
         "type": "AzurePostgreSql",
         "typeProperties": {
             "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+                 "type": "SecureString",
+                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         }
     }

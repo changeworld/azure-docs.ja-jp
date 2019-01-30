@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c6e88eb2e3f3e1b6e6ce2b7f8984799397af582
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141817"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451615"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス:エンド ツー エンド チュートリアル
 このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)のエンド ツー エンドの手順について説明します。
@@ -300,7 +300,7 @@ pickup_longitude に関して無効なレコードを検索します。
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
     USING Outputters.Csv(); 
 
-0、5、10、および 20 ドルというカットオフ値でチップ金額の分布を検索します。
+カットオフ値でチップ金額の分布を検索します (0、5、10、および 20 ドル)。
 
     //tip class/range distribution
     @tip_class =
@@ -374,7 +374,7 @@ pickup_longitude に関して無効なレコードを検索します。
 
 各レベルの乗客数について、レコード数、平均チップ金額、チップ金額の分散、チップが支払われた乗車の割合を計算します。
 
-    // contigency table
+    // contingency table
     @trip_summary8 =
         SELECT passenger_count,
                COUNT(*) AS cnt,

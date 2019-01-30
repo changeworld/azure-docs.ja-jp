@@ -51,7 +51,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| servers | はい | はい |
+| サーバー | はい | はい |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -78,7 +78,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| registrations | はい | はい |
+| 登録 | はい | はい |
 
 ## <a name="microsoftbackup"></a>Microsoft.Backup
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -153,15 +153,15 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | availabilitysets | はい | はい |
-| disks | はい | はい |
-| galleries | いいえ  | いいえ  |
-| galleries/images | いいえ  | いいえ  |
-| galleries/images/versions | いいえ  | いいえ  |
+| ディスク | はい | はい |
+| ギャラリー | いいえ  | いいえ  |
+| ギャラリー/イメージ | いいえ  | いいえ  |
+| ギャラリー/イメージ/バージョン | いいえ  | いいえ  |
 | images | はい | はい |
 | restorepointcollections | いいえ  | いいえ  |
 | sharedvmimages | いいえ  | いいえ  |
 | sharedvmimages/versions | いいえ  | いいえ  |
-| snapshots | はい | はい |
+| スナップショット | はい | はい |
 | virtualmachines | はい | はい |
 | virtualmachines/extensions | はい | はい |
 | virtualmachinescalesets | はい | はい |
@@ -179,7 +179,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| registries | はい | はい |
+| レジストリ | はい | はい |
 | registries/buildtasks | はい | はい |
 | registries/replications | いいえ  | いいえ  |
 | registries/tasks | はい | はい |
@@ -200,17 +200,17 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| connectors | はい | はい |
+| コネクタ | はい | はい |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| hubs | はい | はい |
+| ハブ | はい | はい |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| jobs | いいえ  | いいえ  |
+| ジョブ | いいえ  | いいえ  |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -225,13 +225,13 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| catalogs | はい | はい |
+| カタログ | はい | はい |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | datafactories | はい | はい |
-| factories | はい | はい |
+| ファクトリ | はい | はい |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -252,30 +252,30 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | services | いいえ  | いいえ  |
-| services/projects | いいえ  | いいえ  |
+| サービス/プロジェクト | いいえ  | いいえ  |
 | slots | いいえ  | いいえ  |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| servers | いいえ  | いいえ  |
+| サーバー | いいえ  | いいえ  |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| servers | はい | はい |
+| サーバー | はい | はい |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | servergroups | いいえ  | いいえ  |
-| servers | はい | はい |
+| サーバー | はい | はい |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | artifactsources | いいえ  | いいえ  |
-| rollouts | いいえ  | いいえ  |
+| ロールアウト | いいえ  | いいえ  |
 | servicetopologies | いいえ  | いいえ  |
 | servicetopologies/services | いいえ  | いいえ  |
 | servicetopologies/services/serviceunits | いいえ  | いいえ  |
@@ -326,7 +326,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| clusters | はい | はい |
+| クラスター | はい | はい |
 | namespaces | はい | はい |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
@@ -342,7 +342,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| clusters | はい | はい |
+| クラスター | はい | はい |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -375,7 +375,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| clusters | はい | はい |
+| クラスター | はい | はい |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -414,11 +414,11 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | accounts | はい | はい |
-| accounts/workspaces | はい | はい |
-| accounts/workspaces/プロジェクト | はい | はい |
+| アカウント/ワークスペース | はい | はい |
+| アカウント/ワークスペース/プロジェクト | はい | はい |
 | teamaccounts | はい | はい |
-| teamaccounts/workspaces | はい | はい |
-| teamaccounts/workspaces/projects | はい | はい |
+| teamaccounts/ワークスペース | はい | はい |
+| teamaccounts/ワークスペース/プロジェクト | はい | はい |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -455,7 +455,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| projects | いいえ  | いいえ  |
+| プロジェクト | いいえ  | いいえ  |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -481,7 +481,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | networksecuritygroups | はい | はい |
 | networkwatchers | はい | はい |
 | networkwatchers/connectionmonitors | はい | はい |
-| networkwatchers/lenses | はい | はい |
+| networkwatchers/レンズ | はい | はい |
 | networkwatchers/pingmeshes | はい | はい |
 | publicipaddresses | はい | はい |
 | publicipprefixes | はい | はい |
@@ -514,7 +514,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | ------------- | -------------- | ------------ |
 | managementconfigurations | はい | はい |
 | solutions | はい | はい |
-| views | はい | はい |
+| ビュー | はい | はい |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -549,7 +549,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| flows | はい | はい |
+| フロー | はい | はい |
 | jobcollections | はい | はい |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -565,13 +565,13 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| clusters | はい | はい |
+| クラスター | はい | はい |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | applications | はい | はい |
-| networks | はい | はい |
+| ネットワーク | はい | はい |
 | volumes | はい | はい |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -588,7 +588,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | appliancedefinitions | いいえ  | いいえ  |
-| appliances | いいえ  | いいえ  |
+| アプライアンス | いいえ  | いいえ  |
 | applicationdefinitions | いいえ  | いいえ  |
 | applications | いいえ  | いいえ  |
 
@@ -597,8 +597,8 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | ------------- | -------------- | ------------ |
 | managedinstances | はい | はい |
 | managedinstances/データベース | はい | はい |
-| servers | はい | はい |
-| servers/databases	 | はい | はい |
+| サーバー | はい | はい |
+| サーバ/データベース | はい | はい |
 | servers/elasticpools | はい | はい |
 | virtualclusters | はい | はい |
 
@@ -615,7 +615,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| managers | いいえ  | いいえ  |
+| マネージャー | いいえ  | いいえ  |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -625,7 +625,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| environments | はい | はい |
+| 環境 | はい | はい |
 | environments/eventsource | はい | はい |
 | environments/referencedatasets | はい | はい |
 

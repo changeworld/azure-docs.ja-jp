@@ -63,16 +63,16 @@ HubSpot のリンクされたサービスでは、次のプロパティがサポ
         "typeProperties": {
             "clientId" : "<clientId>",
             "clientSecret": {
-                "type": "SecureString",
-                "value": "<clientSecret>"
+                 "type": "SecureString",
+                 "value": "<clientSecret>"
             },
             "accessToken": {
-                "type": "SecureString",
-                "value": "<accessToken>"
+                 "type": "SecureString",
+                 "value": "<accessToken>"
             },
             "refreshToken": {
-                "type": "SecureString",
-                "value": "<refreshToken>"
+                 "type": "SecureString",
+                 "value": "<refreshToken>"
             }
         }
     }

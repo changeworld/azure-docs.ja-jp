@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4e6fef457022afb33bb67d52d0c0ad7f2909e727
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: eff5094b6b53187b85a8fd77f5930033e77ab6b2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117318"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452328"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>DevOps 向け Team Data Science Process
 

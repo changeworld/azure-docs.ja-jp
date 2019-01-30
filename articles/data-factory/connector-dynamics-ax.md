@@ -110,7 +110,7 @@ Dynamics AX からデータをコピーするには、データセットの **ty
     "name": "DynamicsAXResourceDataset",
     "properties": {
         "type": "DynamicsAXResource",
-        "typeProperties": {
+        "typeProperties": {     
             "path": "<entity path e.g. dd04tentitySet>"
         },
         "linkedServiceName": {
