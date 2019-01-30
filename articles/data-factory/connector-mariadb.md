@@ -56,8 +56,8 @@ MariaDB のリンクされたサービスでは、次のプロパティがサポ
         "type": "MariaDB",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {
