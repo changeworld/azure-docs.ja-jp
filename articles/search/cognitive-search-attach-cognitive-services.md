@@ -7,28 +7,28 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 01/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351460"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413245"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
-非構造化データを処理するための[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)を生成する AI アルゴリズムは、[**Cognitive Services リソース**](https://azure.microsoft.com/services/cognitive-services/)が基になっています。 一例として、[**Computer Vision**](https://azure.microsoft.com/services/cognitive-services/computer-vision/) などのリソースでは画像ファイルからテキストと構造を抽出するための画像分析と光学式文字認識 (OCR) が提供されるのに対し、[**Text Analytics**](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ではエンティティ認識やキー フレーズ抽出などの自然言語処理が提供されます。
+AI アルゴリズムは、Azure Search のインデックス作成操作での非構造化データの処理に使用される[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)を制御します。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) やエンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの [Cognitive Services リソース](https://azure.microsoft.com/services/cognitive-services/)に基づきます。
 
 限られた数のドキュメントであれば無料で強化できます。また、有料の Cognitive Services リソースをアタッチすれば、さらに大きくて複雑なワークロードに対応できます。 この記事では、Cognitive Services リソースをコグニティブ スキルセットと関連付けることによって、[Azure Search のインデックス作成](search-what-is-an-index.md)の間にデータを充実させる方法について説明します。
 
-お使いのパイプラインが[カスタム スキル](cognitive-search-create-custom-skill-example.md)だけで構成されている場合は、Cognitive Services リソースをアタッチする必要はありません。
+パイプラインが、Cognitive Services APIs と無関係なスキルで構成されている場合は、Cognitive Services リソースをアタッチする必要があります。 そうすることで、1 日あたりのエンリッチメントを少量に制限する **Free** リソースがオーバーライドされます。 Cognitive Services APIs にバインドされていないスキルの料金はかかりません。 これらのスキルには、[カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) などがあります。
 
 > [!NOTE]
 > 2018 年 12 月 21 日より、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができます。 それにより、スキルセットの実行に対して課金できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
 >
-> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search 課金対象イベントであり、現在、プレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
+> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search の課金対象であり、現在はプレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
 
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
@@ -52,7 +52,9 @@ ms.locfileid: "54351460"
 
 ## <a name="use-billable-resources"></a>課金対象のリソースを使用する
 
-1 日のドキュメントが 20 を超えるワークロードでは、課金対象の Cognitive Services リソースが必要です。
+1 日のエンリッチメントが 20 を超えるワークロードでは、課金対象の Cognitive Services リソースをアタッチする必要があります。 
+
+Cognitive Services APIs を呼び出すスキルに対してのみ課金されます。 [カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) スキルなどの API ベースでないスキルは課金されません。
 
 1. **データのインポート** ウィザードの **[Cognitive Services をアタッチする]** で、既存のリソースを選択するか、**[新しい Cognitive Services リソースを作成します]** をクリックします。
 
