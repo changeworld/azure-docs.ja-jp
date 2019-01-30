@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846668"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424156"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -59,7 +59,7 @@ VMware 仮想マシンをレプリケートする場合:
 8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
 
     ![レプリケーション ターゲットの設定を有効にする](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします
+9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします 特定の仮想マシンを表示または選択できない場合は、[こちら](https://aka.ms/doc-plugin-VM-not-showing)をクリックして問題を解決してください。
 
     ![[レプリケーションを有効にする] で仮想マシンを選択する](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. **[プロパティ]** > **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。  

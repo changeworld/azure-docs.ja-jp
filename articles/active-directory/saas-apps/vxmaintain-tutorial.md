@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と vxMaintain の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と vxMaintain の統合 | Microsoft Docs
 description: Azure Active Directory と vxMaintain の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433996"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819902"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル: Azure Active Directory と vxMaintain の統合
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル:Azure Active Directory と vxMaintain の統合
 
 このチュートリアルでは、vxMaintain と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -161,7 +161,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
  
 ### <a name="create-a-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 
-このセクションでは、vxMaintain で Britta Simon というテスト ユーザーを作成します。 vxMaintain プラットフォームにユーザーを追加するには、[vxMaintain サポート チーム](https://www.hubspot.com/company/contact)と連携してください。 SSO を使用する前に、ユーザーを作成してアクティブ化します。
+このセクションでは、vxMaintain で Britta Simon というテスト ユーザーを作成します。 vxMaintain プラットフォームにユーザーを追加するには、 [vxMaintain サポート チーム](https://www.hubspot.com/company/contact)と連携してください。 SSO を使用する前に、ユーザーを作成してアクティブ化します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

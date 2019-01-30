@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267421"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817233"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso の移行: Azure コンテナーと Azure SQL Database でオンプレミス アプリを再構築する
 
@@ -282,7 +282,7 @@ Contoso は、クラスターへの Azure DevOps Services アクセスを許可�
 
 8. Azure DevOps Services デプロイの場合、証明書の Base64 値を決定する必要があります。 これは、PowerShell を使用してローカルの開発者用ワークステーションで行います。 後で使用するために、出力をテキスト ファイルに貼り付けます。
 
-    ```
+    ```powershell
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
     ```
 
@@ -530,7 +530,7 @@ SmartHotel360 アプリとデータベースが Azure で実行された後、Co
 5. ポータルで新しいデータベースを開き、**[コレクション]** > **[ドキュメント]** の順に選択し、**[新しいドキュメント]** をクリックします。
 6. 次の JSON コードをドキュメント ウィンドウに貼り付けます。 これは単一のツイート形式のサンプル データです。
 
-    ```
+    ```json
     {
             "id": "2ed5e734-8034-bf3a-ac85-705b7713d911",
             "tweetId": 927750234331580911,
@@ -565,11 +565,11 @@ Cosmos DB がプロビジョニングされたら、Contoso 管理者はそれ�
 
 2. 次の 2 つのパラメーターを入力します。
 
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBEndpoint" Value="[URI]" />
    ```
    
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBAuthKey" Value="[Key]" />
    ```
 

@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 6816fa3705348d07eced92c64e0c7020a08d01d5
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ff7f25a9c1ac73c53587bb320ef3889a5bfa9dc5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132383"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439121"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS のオーサリング キーとクエリ予測エンドポイント キー
-LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)して LUIS アプリに[割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 
+LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md)して LUIS アプリに[割り当て](luis-how-to-azure-subscription.md)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 
 
 |キー|目的|
 |--|--|
@@ -33,7 +33,7 @@ LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](
 
 オーサリング キーは、スターター キーとも呼ばれ、LUIS アカウントの作成時に自動的に作成され、無料です。 作成する[リージョン](luis-reference-regions.md)ごとに、すべての LUIS アプリにわたって 1 つのオーサリング キーを使用します。 オーサリング キーは、LUIS アプリを作成したり、エンドポイント クエリをテストしたりするために提供されます。 
 
-オーサリング キーを見つけるには、[LUIS](luis-reference-regions.md#luis-website) にログインし、右上のナビゲーション バーにあるアカウント名をクリックして **[アカウント設定]** を開きます。
+オーサリング キーを見つけるには、[LUIS](luis-reference-regions.md#luis-website) にサインインし、右上のナビゲーション バーにあるアカウント名をクリックして **[アカウント設定]** を開きます。
 
 ![オーサリング キー](./media/luis-concept-keys/programatic-key.png)
 
@@ -43,15 +43,17 @@ LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](
 > [クォータ](luis-boundaries.md#key-limits)内で提供されるエンドポイント呼び出しは少数であるため、便宜上、多くのサンプルでこのオーサリング キーを使用します。  
 
 ## <a name="endpoint-key"></a>エンドポイント キー
- **運用エンドポイント クエリ**が必要な場合は、Azure portal で [LUIS キー](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を作成します。 キーの作成に使用した名前を覚えておいてください。アプリにこのキーを追加するときに必要になります。
+**運用エンドポイント クエリ**が必要な場合は、Azure リソースを作成して LUIS アプリに割り当てます。 
 
-LUIS サブスクリプション プロセスが完了したら、アプリに[キーを割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)ます。 
+[!INCLUDE [Azure resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
 
-エンドポイント キーによって、キーの作成時に指定した使用計画に基づいて、エンドポイントのクォータに到達できます。 価格情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)」を参照してください。
+Azure リソースの作成プロセスが完了したら、アプリに[キーを割り当て](luis-how-to-azure-subscription.md)ます。 
 
-エンドポイント キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
+    * エンドポイント キーによって、キーの作成時に指定した使用計画に基づいて、エンドポイントのクォータに到達できます。 価格情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)」を参照してください。
 
-LUIS アプリの作成には、エンドポイント キーを使用しないでください。 
+    * エンドポイント キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
+
+    * LUIS アプリの作成には、エンドポイント キーを使用しないでください。 
 
 ## <a name="use-endpoint-key-in-query"></a>クエリでエンドポイント キーを使用する
 LUIS エンドポイントでは、2 つのスタイルでクエリを使用します。その両方でエンドポイント キーを使用しますが、場所が異なります。
@@ -74,12 +76,13 @@ LUIS API では、ヘッダー `Ocp-Apim-Subscription-Key` を使用します。
 公開リージョンは、オーサリング リージョンとは異なります。 アプリの作成は必ず、必要な公開リージョンに対応するオーサリング リージョンで行ってください。
 
 ## <a name="key-limit-errors"></a>キーの制限に関するエラー
-秒あたりのクォータを超えた場合、HTTP 429 エラーが発生します。 月あたりのクォータを超えた場合、HTTP 403 エラーが発生します。 LUIS [エンドポイント](#endpoint-key) キーを取得し、そのキーを [LUIS](luis-reference-regions.md#luis-website) Web サイトの **[発行]** ページでアプリに[割り当てる](luis-how-to-manage-keys.md#assign-endpoint-key)ことによって、これらのエラーを修正します。
+秒あたりのクォータを超えた場合、HTTP 429 エラーが発生します。 月あたりのクォータを超えた場合、HTTP 403 エラーが発生します。 LUIS [エンドポイント](#endpoint-key) キーを取得し、そのキーを [LUIS](luis-reference-regions.md#luis-website) Web サイトの **[発行]** ページでアプリに[割り当てる](luis-how-to-azure-subscription.md)ことによって、これらのエラーを修正します。
 
-## <a name="automating-assignment-of-the-endpoint-key"></a>エンドポイント キーの割り当ての自動化
+## <a name="assignment-of-the-endpoint-key"></a>エンドポイント キーの割り当て
 
-エンドポイント キーを LUIS アプリに割り当てるためには、[リージョン](luis-reference-regions.md)の正確な作成および発行のために LUIS Web サイトを使用する必要があります。 Azure リソース マネージャー スクリプト、Azure CLI、プログラムの SDK、API などのメカニズムにかかわらず、これを行う自動化された方法は**ありません**。
+エンドポイント キーは、[LUIS ポータル](https://www.luis.ai)または対応する API を介して[割り当てる](luis-how-to-azure-subscription.md)ことができます。 
+
 
 ## <a name="next-steps"></a>次の手順
 
-* オーサリング キーとエンドポイント キーの[概念](luis-how-to-manage-keys.md#assign-endpoint-key)について学習します。
+* オーサリング キーとエンドポイント キーの[概念](luis-how-to-azure-subscription.md)について学習します。

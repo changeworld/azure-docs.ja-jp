@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353964"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816757"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -113,6 +113,26 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー メッセージ**:現在、Azure Backup では Standard SSD ディスクはサポートされていません <br>
 
 現在、Azure Backup では、[インスタント リストア](backup-instant-restore-capability.md)にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません。
+
+**エラー コード**:UserErrorBackupOperationInProgress <br>
+**エラー メッセージ**:別のバックアップ操作が進行中であるためバックアップを開始できません<br>
+
+進行中のバックアップ ジョブがあるため、最新のバックアップ ジョブが失敗しました。 新しいバックアップ ジョブは、現在のジョブが完了するまで開始できません。 他のバックアップ操作をトリガーまたはスケジュールする前に、進行中のバックアップ操作が完了していることを確認します。 バックアップ ジョブの状態を確認するには、以下の手順を実行します。
+
+1. Azure portal にサインインし、**[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、**[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
+2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
+3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
+
+    * バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
+        * バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0) を使用します。
+    * 別のコンテナーでバックアップを再構成した場合は、その後、古いコンテナーで実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
+        * バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0) を使用します
+4. バックアップ操作を再試行してください。
+
+スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、[復元に関する考慮事項](backup-azure-vms-introduction.md#restore-considerations)について確認してください。
+
 
 
 ## <a name="causes-and-solutions"></a>原因とソリューション

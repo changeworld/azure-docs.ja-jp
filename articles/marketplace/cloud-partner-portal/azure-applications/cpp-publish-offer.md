@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329992"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828096"
 ---
 # <a name="publish-azure-application-offer"></a>Azure アプリケーション オファーを公開する
 
@@ -36,7 +36,7 @@ ms.locfileid: "54329992"
 |  **発行ステップ**           | **Time**    | **説明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 前提条件の検証         | 15 分未満    | プラン情報とプラン設定が有効化されます。                        |
-| 影響を受ける収益設定の検証 | 15 分未満  |      |
+| 影響を受ける収益設定の検証 | 15 分未満  | プランの Azure リソース使用状況属性がチェックされます。             |
 | 認定                  | 1 日未満     | オファーが Azure 認定チームによって分析されます。 ウイルス、マルウェア、安全性のコンプライアンス、およびセキュリティの問題についてオファーがスキャンされます。 適格性の条件がすべて満たされていることを確認するため、オファーがチェックされます。 詳細については、「[前提条件](./cpp-prerequisites.md)」を参照してください。 問題が見つかった場合、フィードバックが提供されます。 |
 | 体験版の検証          | 2 時間未満   | (省略可能) 体験版が存在する場合、Microsoft では、デプロイおよび複製できることが検証されます。  |
 | パッケージ化とリード生成の登録 | 1 時間未満  | オファーの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成されデプロイされます。 |

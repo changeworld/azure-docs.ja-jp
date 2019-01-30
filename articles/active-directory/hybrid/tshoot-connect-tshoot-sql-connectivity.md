@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: SQL 接続に関する問題のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:SQL 接続に関する問題のトラブルシューティング | Microsoft Docs
 description: Azure AD Connect で起きる SQL 接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e56f429cd866ed8d0500e427d1927bbef0beb34
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d8f8c9a6034461c9dae9a00c6ff112740733e793
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310311"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474440"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での SQL 接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と SQL Server の間の接続に関する問題のトラブルシューティング方法について説明します。 

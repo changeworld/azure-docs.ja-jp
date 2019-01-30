@@ -13,29 +13,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402762"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382998"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
+# <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
 この記事では、Azure Network Watcher のトラフィック分析についてよく寄せられる質問の多くをまとめました。
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>トラフィック分析を使用する前提条件は何ですか?
 
-トラフィック分析の前提条件は次のとおりです。
+Traffic Analytics では、次の前提条件が必要です。
 
 - Network Watcher 対応のサブスクリプション。
 - 監視対象のネットワーク セキュリティ グループ (NSG) に対して有効になっている NSG フロー ログ。
-- 未処理フロー ログを格納するための Azure Storage アカウント。
+- 生のフロー ログを格納するための Azure Storage アカウント。
 - 読み取りと書き込みのアクセス権がある Log Analytics ワークスペース
 
 トラフィック分析を有効にするには、アカウントが次のいずれかを満たしている必要があります。
 
-- アカウントには、サブスクリプション レベルで、アカウント管理者、サービス管理者、または共同管理者のいずれかのロールが割り当てられている必要があります。
 - アカウントには、サブスクリプション スコープで、所有者、共同作成者、閲覧者、またはネットワーク共同作成者のいずれかのロールベースのアクセス制御 (RBAC) ロールが割り当てられている必要があります。
 - アカウントに上記のどのロールも割り当てられていない場合、サブスクリプション レベルで次のアクションが割り当てられるカスタム ロールを割り当てる必要があります。
             
@@ -61,9 +60,40 @@ ms.locfileid: "49402762"
 出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)に関するページを参照してください。
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>トラフィック分析はどの Azure リージョンで使用できますか?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Traffic Analytics はどの Azure リージョンで使用できますか?
 
-米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部、および東南アジアのサポートされているいずれかのリージョンの NSG でトラフィック分析をご利用いただけます。 Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、英国南部、オーストラリア南東部、または東南アジア リージョンに存在する必要があります。
+NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
+- カナダ中部
+- 米国中西部
+- 米国東部
+- 米国東部 2
+- 米国中北部
+- 米国中南部
+- 米国中央部
+- 米国西部
+- 米国西部 2
+- 西ヨーロッパ
+- 北ヨーロッパ
+- ブラジル南部
+- 英国西部
+- 英国南部
+- オーストラリア東部
+- オーストラリア南東部 
+- 東南アジア
+- インド中部
+- インド南部
+- 東日本
+
+Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
+- カナダ中部
+- 米国中西部
+- 米国東部
+- 西ヨーロッパ
+- 英国南部
+- オーストラリア南東部
+- 東南アジア 
+- インド中部
+- 東日本
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?
 
@@ -91,18 +121,18 @@ ms.locfileid: "49402762"
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>NSG フロー ログ ページの下に "読み込みに失敗しました" という状態が表示される場合はどうすればよいですか?
 
-フロー ログが正常に機能するためには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかが不明な場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換えて PowerShell で実行してください。
+フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>ソリューションを構成しました。 ダッシュボードに何も表示されないのはなぜですか?
 
 ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "選択した時間内のデータがこのワークスペースで見つかりませんでした。 時間間隔を変更してみるか、別のワークスペースを選択してください"。
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval.  時間間隔を変更してみるか、別のワークスペースを選択してください"。
 
 次の方法を試してください。
 - 上部のバーで期間を変更します。
@@ -111,15 +141,15 @@ ms.locfileid: "49402762"
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "NSG フロー ログを初めて分析している可能性があります。 This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information (上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください)"。
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Analyzing your NSG flow logs for the first time.  This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information (上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください)"。
 
 このメッセージは、次の理由で表示される場合があります。
-- トラフィック分析が最近有効化され、意味のある分析情報を導出できる十分なデータをまだ集計していない可能性があります。
+- Traffic Analytics は最近有効化されたため、意味のある分析情報を導出するために十分なデータをまだ集計していない可能性があります。
 - 無料版の Log Analytics ワークスペースを使用しており、クォータ制限を超えています。 容量の大きいワークスペースを使用しなければならない可能性があります。
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "選択したワークスペースに関して存在するのはリソース データ (トポロジ) のみで、フローの情報はない可能性があります。 Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information.  Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
 
 ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 問題が解決せず、リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
@@ -192,11 +222,11 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 
 
-## <a name="how-is-traffic-analytics-priced"></a>トラフィック分析はどのように課金されますか?
+## <a name="how-is-traffic-analytics-priced"></a>Traffic Analytics はどのように課金されますか?
 
-トラフィック分析が測定されます。 測定は、サービスによるフロー ログ データの処理と、その結果として生成された拡張ログの Log Analytics ワークスペースへの格納に基づいています。 
+Traffic Analytics は従量制です。 測定は、サービスによるフロー ログ データの処理と、その結果として生成された拡張ログの Log Analytics ワークスペースへの格納に基づいています。 
 
-たとえば、[料金プラン](https://azure.microsoft.com/pricing/details/network-watcher/)に従い、米国中西部リージョンの場合を考えます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は 10 x 2.3$ + 1 x 2.76$ = 25.76$ になります。
+たとえば、[価格プラン](https://azure.microsoft.com/pricing/details/network-watcher/)に従い、米国中西部リージョンを考えてみます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は次のようになります: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
 
@@ -233,7 +263,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
 仮想ネットワーク トポロジ ページには、主に 2 つのセクションがあります。
     
 - **バナー**: 仮想ネットワーク トポロジの上部バナーには、トラフィック分布フィルター (たとえば、接続された仮想ネットワーク、切断された仮想ネットワーク、パブリック IP など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想ネットワークが強調表示されます。
-- **トポロジ**: バナーの下の [トポロジ] セクションには、仮想ネットワーク間全体のトラフィック分布が表示されます。
+- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想ネットワーク全体でのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     
@@ -255,7 +285,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
 仮想サブネットワーク トポロジ ページには、主に 2 つのセクションがあります。
     
 - **バナー**: 仮想サブネット ネットワーク トポロジの上部のバナーには、トラフィック分布フィルター (たとえば、アクティブ、中、ゲートウェイのサブネットなど) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがトポロジに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブな仮想サブネットワークが強調表示されます。
-- **トポロジ**: バナーの下の [トポロジ] セクションには、仮想サブネットワーク間全体のトラフィック分布が表示されます。
+- **トポロジ**:バナーの下の [トポロジ] セクションには、仮想サブネットワーク全体でのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     

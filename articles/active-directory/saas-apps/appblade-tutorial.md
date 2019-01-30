@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と AppBlade の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と AppBlade の統合 | Microsoft Docs
 description: Azure Active Directory と AppBlade の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 3360d7aa-6518-4f99-88bd-b7f7258183e8
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 66c893a89138d7daf7d8118d8e2b1d8389d40ea4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 119647c4aeabc8f4a6dd3a1933fcfafe6b6cf5c2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229300"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813323"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>チュートリアル: Azure Active Directory と AppBlade の統合
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>チュートリアル:Azure Active Directory と AppBlade の統合
 
 このチュートリアルでは、AppBlade と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ AppBlade で、Azure AD での **[ユーザー名]** の値を **[ユーザー�
 
 AppBlade で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[AppBlade テスト ユーザーの作成](#creating-an-appblade-test-user)** - Azure AD でのユーザーにリンクされた、AppBlade での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,15 +102,15 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **[AppBlade]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/appblade-tutorial/tutorial_appblade_samlbase.png)
+    ![Configure single sign-on](./media/appblade-tutorial/tutorial_appblade_samlbase.png)
 
 3. **[AppBlade Domain and URLs] \(AppBlade のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/appblade-tutorial/tutorial_appblade_url.png)
+    ![Configure single sign-on](./media/appblade-tutorial/tutorial_appblade_url.png)
 
     **[サインオン URL]** ボックスに、`https://<companyname>.appblade.com/saml/<tenantid>` のパターンを使用して URL を入力します。
 
@@ -119,17 +119,17 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/appblade-tutorial/tutorial_appblade_certificate.png) 
+    ![Configure single sign-on](./media/appblade-tutorial/tutorial_appblade_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/appblade-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/appblade-tutorial/tutorial_general_400.png)
 
 6. **AppBlade** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [AppBlade サポート チーム](mailto:support@appblade.com)に送信する必要があります。 また、**[SSO Issuer URL] \(SSO 発行者の URL)** を `https://appblade.com/saml` として構成することも依頼してください。 この設定は、シングル サインオンが動作するために必要です。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -187,7 +187,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[AppBlade]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/appblade-tutorial/tutorial_appblade_app.png) 
+    ![Configure single sign-on](./media/appblade-tutorial/tutorial_appblade_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

@@ -4,7 +4,7 @@ description: このトピックでは、userCertificate 属性が原因で発生
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306071"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478622"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect の同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 
 Azure AD では、**userCertificate** 属性に対して最大制限 **15** の証明書の値が提供されます。 Azure AD Connect が 15 を超える値を持つオブジェクトを Azure AD にエクスポートすると、Azure AD は次のメッセージで **LargeObject** エラーを返します。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352684"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388464"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
@@ -60,7 +60,7 @@ Kubernetes の Marketplace 項目のプラン、オファー、サブスクリ�
 
     e. **[オファー]** を選択します。 作成したオファーの名前を選択します。 サブスクリプション ID をメモします。
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>AD FS でサービス プリンシパルと資格情報を作成する
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>AD FS でサービス プリンシパルと資格情報を作成する
 
 ID 管理サービスのために Active Directory Federated Services (AD FS) を使用する場合は、Kubernetes クラスターをデプロイするユーザーのサービス プリンシパルを作成する必要があります。
 
@@ -104,7 +104,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. 証明書を使用してサービス プリンシパルを作成します。
+2. 証明書を使用したサービス プリンシパルの作成。
 
     - 次の情報が必要です。
 
@@ -117,7 +117,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
     - 管理者特権のプロンプトで PowerShell を開きます。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information

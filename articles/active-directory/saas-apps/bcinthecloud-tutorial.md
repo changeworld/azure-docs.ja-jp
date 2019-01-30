@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と BC in the Cloud の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と BC in the Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と BC in the Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d9d2bb0dc44eab0a419efce0c26a8f30135285e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 33670ce210b7ca7bca276f463d029354dc3282fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431659"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817488"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure Active Directory と BC in the Cloud の統合
+# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル:Azure Active Directory と BC in the Cloud の統合
 
 このチュートリアルでは、BC in the Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ BC in the Cloud で、Azure AD の **[ユーザー名]** の値を **[ユーザ�
 
 BC in the Cloud での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[BC in the Cloud のテスト ユーザーの作成](#creating-a-bc-in-the-cloud-test-user)** - BC in the Cloud で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -130,7 +130,7 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
 1. **BC in the Cloud** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [BC in the Cloud サポート チーム](https://www.bcinthecloud.com/supportcenter/)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -166,7 +166,7 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
  
 ### <a name="creating-a-bc-in-the-cloud-test-user"></a>BC in the Cloud のテスト ユーザーの作成
 
-このセクションでは、BC in the Cloud で Britta Simon というユーザーを作成します。 [BC in the Cloud クライアント サポート チーム](https://www.bcinthecloud.com/supportcenter/)と連携して、BC in the Cloud アプリケーションにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、BC in the Cloud で Britta Simon というユーザーを作成します。  [BC in the Cloud クライアント サポート チーム](https://www.bcinthecloud.com/supportcenter/) と連携して、BC in the Cloud アプリケーションにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -202,7 +202,7 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
- アクセス パネルで BC in the Cloud のタイルをクリックすると、自動的に BC in the Cloud アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+ アクセス パネルで BC in the Cloud のタイルをクリックすると、自動的に BC in the Cloud アプリケーションにサインオンします。 アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

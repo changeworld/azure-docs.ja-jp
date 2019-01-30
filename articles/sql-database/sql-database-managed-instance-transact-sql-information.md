@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843208"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463747"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -235,7 +235,7 @@ MSDTC も[エラスティック トランザクション](https://docs.microsoft
 XEvents の一部の Windows 固有のターゲットはサポートされていません。
 
 - `etw_classic_sync target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[etw_classic_sync ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target)」をご覧ください。
-- `event_file target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[event_file ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target)」をご覧ください。
+- `event_file target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[event_file ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)」をご覧ください。
 
 ### <a name="external-libraries"></a>外部ライブラリ
 
@@ -267,7 +267,7 @@ Managed Instance のリンク サーバーがサポートするターゲット�
 - サポートされているターゲット:SQL Server、SQL Database
 - サポートされていないターゲット: Analysis Services、他の RDBMS
 
-[操作]
+操作
 
 - クロス インスタンス書き込みトランザクションはサポートされていません。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
@@ -503,6 +503,12 @@ using (var scope = new TransactionScope())
 マネージド インスタンスに配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバー/分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 
 **対処法**: 可能であれば、CLR モジュールでコンテキスト接続を使用します。
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE で暗号化されたデータベースは、ユーザーが開始したバックアップをサポートしません
+
+Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 TDE は、内部の TDE キーでバックアップを強制的に暗号化します。キーはエクスポートできないため、バックアップは復元できなくなります。
+
+**対処法**: 自動バックアップとポイントインタイム リストアを使用するか、またはデータベースでの暗号化を無効にします。
 
 ## <a name="next-steps"></a>次の手順
 

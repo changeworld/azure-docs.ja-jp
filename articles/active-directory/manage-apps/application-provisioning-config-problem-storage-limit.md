@@ -4,7 +4,7 @@ description: 既に Azure AD アプリケーション ギャラリーに一覧�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: fe96ecc0ba6904819f0262a2f470e37203a7952e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4d8e5cb577eb7b3eecc800e7a74b1ddcbbc2c76c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355791"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813374"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題 
 
@@ -30,7 +30,7 @@ Azure Portal を使ってエンタープライズ アプリケーションの[�
 
 SAML ベースのシングル サインオンも同じアプリケーションに対して構成されている場合、エラーの最も可能性の高い原因は、証明書と資格情報に対して Azure AD 内部で設定されているアプリケーションごとストレージ上限を超えたことです。
 
-現在、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データの Azure AD での最大ストレージ容量は 1 キロバイトです (Azure AD のサービス プリンシパル レコードとも呼ばれるます)。
+現在、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データの Azure AD での最大ストレージ容量は 1024 バイトです (Azure AD のサービス プリンシパル レコードとも呼ばれるます)。
 
 SAML ベースのシングル サインオンが構成されている場合、SAML トークンの署名に使われる証明書がここに格納され、通常、領域の 50% 以上を消費します。
 

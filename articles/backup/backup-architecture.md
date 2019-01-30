@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360556"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812567"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup のアーキテクチャ
 
@@ -78,7 +78,7 @@ Azure Backup では、バックアップの種類に応じて、さまざまな�
 --- | --- | ---
 **完全** | バックアップにはデータ ソース全体が含まれます。<br/><br/> 完全バックアップでは、より多くのネットワーク帯域幅が使用されます。 | 初回バックアップで使用されます。
 **差分** |  初回の完全バックアップ以降に変更されたブロックを格納します。 より少ない量のネットワークとストレージが使用され、変更されていないデータの冗長コピーは保持されません。<br/><br/> 以降の各バックアップの間には変更されていないデータ ブロックが転送され、格納されるため、非効率です。 | Azure Backup では使用されません。
-**増分** | ストレージとネットワークの効率が高くなります。 前回のバックアップ以降に変更されたデータのブロックのみが格納されます。 <br/><br/> 増分バックアップを使用する場合、完全バックアップで補完する必要はありません。 | ディスク バックアップで DPM/MABS によって使用され、Azure へのすべてのバックアップで使用されます。
+**Incremental** | ストレージとネットワークの効率が高くなります。 前回のバックアップ以降に変更されたデータのブロックのみが格納されます。 <br/><br/> 増分バックアップを使用する場合、完全バックアップで補完する必要はありません。 | ディスク バックアップで DPM/MABS によって使用され、Azure へのすべてのバックアップで使用されます。
 
 ### <a name="comparison"></a>比較
 
@@ -163,7 +163,7 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 - Azure VM ではディスクを使用して、そのオペレーティング システム、アプリ、およびデータを格納します。
 - Azure VM には少なくとも 2 つのディスクがあります。 1 つはオペレーティング システム用の一時ディスクです。 アプリ データ用のデータ ディスクもあります。 ディスクは VHD として格納されます。
 - Azure では、Standard または Premium Storage アカウントにページ BLOB として VHD が格納されます。
-    - Standard Storage:待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポート。 Standard Storage では Standard SSD ディスクを使用できます。
+    - Standard Storage:待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポート。 Standard Storage では Standard SSD ディスクまたは Standard HDD ディスクを使用できます。
     - Premium Storage:高パフォーマンスのディスク サポート。 Premium SSD ディスクを使用します。
 - ディスクにはさまざまなパフォーマンス レベルがあります。
     - Standard HDD ディスク:HDD によってサポートされ、コスト効率の高いストレージに使用されます。

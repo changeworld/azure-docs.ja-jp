@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RealtimeBoard の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と RealtimeBoard の統合 | Microsoft Docs
 description: Azure Active Directory と RealtimeBoard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: a37fc1c0-4bae-4173-989b-00de53a0076f
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 00b0844deb8cc81f770f6c98f8b020f1402d2ff7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 613a31fdd82c45705b5a0baa3f07aa88d4eb4e0b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045354"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815431"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル: Azure Active Directory と RealtimeBoard の統合
+# <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル:Azure Active Directory と RealtimeBoard の統合
 
 このチュートリアルでは、RealtimeBoard と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -129,7 +129,7 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 7. **RealtimeBoard** 側でシングル サインオンを構成するには、[RealtimeBoard の手順](https://help.realtimeboard.com/support/solutions/articles/11000023465-saml-based-single-sign-on-)に関する記事に従って、ダウンロードした**メタデータ XML** のデータを使用します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -205,7 +205,7 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで RealtimeBoard のタイルをクリックすると、自動的に RealtimeBoard アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -4,7 +4,7 @@ description: グループ ポリシーを使用してマイ アプリ ポータ�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ccaf272a79268ecd781821593a6041d5653a39b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715042"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471890"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
 この記事は、次の問題をトラブルシューティングする際に役立ちます。
@@ -28,7 +28,7 @@ ms.locfileid: "44715042"
 * Internet Explorer を使用中にマイ アプリ ポータルからアプリにアクセスできない。
 * ソフトウェアをインストール済みでも "ソフトウェアをインストールしてください" というメッセージが表示される。
 
-管理者の方は、「 [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](deploy-access-panel-browser-extension.md)
+管理者の場合は、以下も参照してください。[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>診断ツールの実行
 アクセス パネルの診断ツールをダウンロードし実行することで、アクセス パネル拡張機能のインストールに関する問題を診断することができます。

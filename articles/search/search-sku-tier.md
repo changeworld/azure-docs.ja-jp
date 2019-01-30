@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354554"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471822"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
 Azure Search では、サービスはサービスの有効期間で固定された価格レベルまたは SKU で[リソースが作成](search-create-service-portal.md)されます。 レベルには、**Free**、**Basic**、**Standard** があります。このうち **Standard** は、複数の構成および容量で指定できます。 ほとんどのお客様は、まず評価のために **Free** レベルから始め、その後開発および運用環境のデプロイ用に **Standard** レベルに移行します。 **Free** レベルでは、リソースを集中的に使用するコグニティブ検索に関するものも含むすべてのクイック スタートとチュートリアルを実行できます。 
 
-レベルによって、機能ではなく容量が決まり、レベルは以下によって区別されます。
+レベルは (機能ではなく) サービスをホストしているハードウェアの特性を反映していて、以下によって差別化されています。
 
 + 作成可能なインデックスの数
 + パーティション (物理ストレージ) のサイズと速度
@@ -63,7 +63,7 @@ SU は、サービスによって使用される*レプリカ*と*パーティ�
 
 ### <a name="billing-for-image-extraction-in-cognitive-search"></a>コグニティブ検索での画像抽出の課金
 
-コグニティブ検索のインデックス作成パイプラインでファイルから画像を抽出する場合、Azure Search の請求書でその操作に対する料金が課金されます。 画像抽出をトリガーするパラメーターは、[インデクサー構成](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters)の **imageAction** です。 **imageAction** が none (既定値) に設定されている場合、画像の抽出は無料です。
+コグニティブ検索のインデックス作成パイプラインでファイルから画像を抽出する場合、Azure Search の請求書でその操作に対する料金が課金されます。 画像抽出をトリガーするパラメーターは、[インデクサー構成](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)の **imageAction** です。 **imageAction** が none (既定値) に設定されている場合、画像の抽出は無料です。
 
 価格は変更されることがありますが、Azure Search の [[価格の詳細]](https://azure.microsoft.com/pricing/details/search/) ページに常に記載されています。 
 

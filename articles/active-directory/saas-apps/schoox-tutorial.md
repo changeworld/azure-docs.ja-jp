@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Schoox の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Schoox の統合 | Microsoft Docs
 description: Azure Active Directory と Schoox の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: f8b4cdcc-cbf6-4229-9427-05632e33f942
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 3f26809d934708ecad2e3dda69a8cfc25e02d58a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9ea9bac0aac5fe491da14f077fa6615343013742
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807288"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-schoox"></a>チュートリアル: Azure Active Directory と Schoox の統合
+# <a name="tutorial-azure-active-directory-integration-with-schoox"></a>チュートリアル:Azure Active Directory と Schoox の統合
 
 このチュートリアルでは、Schoox と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -136,7 +136,7 @@ Schoox で Azure AD のシングル サインオンを構成してテストす�
 8. **Schoox** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Schoox サポート チーム](https://www.schoox.com/help/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -172,7 +172,7 @@ Schoox で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="create-a-schoox-test-user"></a>Schoox テスト ユーザーの作成
 
-このセクションでは、Schoox で Britta Simon というユーザーを作成します。 [Schoox サポート チーム](https://www.schoox.com/help/)と連携し、Schoox プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Schoox で Britta Simon というユーザーを作成します。  [Schoox サポート チーム](https://www.schoox.com/help/) と協力して、Schoox プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -209,7 +209,7 @@ Schoox で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Schoox] タイルをクリックすると、自動的に Schoox アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

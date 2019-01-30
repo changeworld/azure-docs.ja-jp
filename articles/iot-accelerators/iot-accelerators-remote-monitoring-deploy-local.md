@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604773"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382251"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio
 
@@ -48,16 +48,9 @@ ms.locfileid: "53604773"
 
 このセクションでは、リモート監視マイクロサービスを実行します。 Web UI をネイティブで実行し、Docker でデバイス シミュレーション サービスを実行し、Visual Studio でマイクロサービスを実行します。
 
-### <a name="run-the-web-ui"></a>Web UI を実行する
-
-この手順では、Web UI を開始します。 リポジトリのローカル コピーにある **webui** フォルダーに移動し、次のコマンドを実行します。
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>デバイス シミュレーション サービスを実行する
+
+新しいコマンド プロンプト ウィンドウを開いて、前のセクションで **start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。
 
 デバイス シミュレーション サービス用の Docker コンテナーを起動するには、次のコマンドを実行します。 このサービスは、リモート監視ソリューション用のデバイスをシミュレートします。
 
@@ -94,11 +87,22 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
 1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
 
+### <a name="run-the-web-ui"></a>Web UI を実行する
+
+この手順では、Web UI を開始します。 新しいコマンド プロンプト ウィンドウを開いて、**start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。 リポジトリのローカル コピーにある **webui** フォルダーに移動し、次のコマンドを実行します。
+
+```cmd
+npm install
+npm start
+```
+
+起動が完了すると、ブラウザーに **http://localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+
 ### <a name="configure-and-run-nginx"></a>NGINX を構成および実行する
 
 ローカル コンピューターで実行されているマイクロサービスと Web アプリケーションをリンクするリバース プロキシ サーバーを設定します。
 
-* **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
+* リポジトリのローカル コピーにある **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
 * **nginx** を実行します。
 
 **nginx** の実行の詳細については、[nginx for Windows](https://nginx.org/en/docs/windows.html) を参照してください。

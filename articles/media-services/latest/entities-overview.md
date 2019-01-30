@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1d309bb550282d5245a2fbf74f14a931cf5c2279
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 902014ff3c242a18b3872ba490845eb0923f39a4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745730"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451189"
 ---
 # <a name="azure-media-services-entities-overview"></a>Azure Media Services エンティティの概要
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sprinklr の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Sprinklr の統合 | Microsoft Docs
 description: Azure Active Directory と Sprinklr の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 062671313e42e6c936135dafb3d7d2a5c8adef82
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241805"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816638"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル: Azure Active Directory と Sprinklr の統合
+# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
 
 このチュートリアルでは、Sprinklr と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -147,7 +147,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
    
     ![Single Sign-Ons](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
 
-    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
+    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:*WAADSSOTest*)。
 
     b. **[Enabled]** を選択します。
 
@@ -170,7 +170,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
     ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。

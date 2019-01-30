@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Mercer BenefitsCentral (MBC) の統合 | Microsoft Docs
 description: Azure Active Directory と Mercer BenefitsCentral (MBC) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 3788b28c-49aa-4208-9acd-630362008e89
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 963aff019c849b2637819296185e138d531ddef2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0bb6b5ac2a52f559461077d6318eee8ed52aedc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422537"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809516"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
+# <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル:Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
 
 このチュートリアルでは、Mercer BenefitsCentral (MBC) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +132,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 1. **Mercer BenefitsCentral (MBC)** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Mercer BenefitsCentral (MBC) サポート チーム](https://www.mercer.com/contact-us.html)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -205,7 +205,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Mercer BenefitsCentral (MBC) タイルをクリックすると、Mercer BenefitsCentral (MBC) アプリケーションに自動的にサインインするはずです。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

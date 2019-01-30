@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fa2e834b142d5df4751b46f6dac2db9b3a10a463
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244989"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391305"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
-SQL リソース プロバイダーは、ロック ダウンされた仮想マシン上で実行されます。 保守操作を有効にするには、仮想マシンのセキュリティを更新する必要があります。 最小権限の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) エンドポイント *DBAdapterMaintenance* を使用できます。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
+SQL リソース プロバイダーは、ロック ダウンされた仮想マシン上で実行されます。 保守操作を有効にするには、仮想マシンのセキュリティを更新する必要があります。 最小限の特権の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) エンドポイント *DBAdapterMaintenance* を使用できます。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
 
 ## <a name="patching-and-updating"></a>修正プログラム適用と更新
 

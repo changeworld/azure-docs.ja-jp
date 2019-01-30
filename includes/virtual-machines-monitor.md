@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242350"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404684"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -60,13 +60,11 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 - 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
 - サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)する。
-- 診断ログを [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
+- これを [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-- [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/) は、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) または [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) に拡張機能をインストールできます。この拡張機能によって、OMS エージェントがインストールされ、VM が既存の OMS ワークスペースに登録されます。
-
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) は、OMS のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) または [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) に拡張機能をインストールできます。この拡張機能によって、Log Analytics エージェントがインストールされ、VM が既存の Log Analytics ワークスペースに登録されます。
 
     Windows VM および Linux VM の場合、ログとメトリックを収集するための推奨される方法は、Log Analytics エージェントをインストールすることです。 VM に Log Analytics エージェントをインストールする方法としては、[Log Analytics VM 拡張機能](../articles/log-analytics/log-analytics-azure-vm-extension.md)を使用するのが最も簡単です。 この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
 

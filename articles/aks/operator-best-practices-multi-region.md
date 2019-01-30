@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855000"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382448"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -38,7 +38,7 @@ AKS クラスターは、1 つのリージョンにデプロイされます。 �
 * [Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * 利用する地域に対して、相互にペアになった 2 つのリージョンを選択しましょう。 これらのリージョンでは、プラットフォームの更新が調整され、必要に応じて復旧作業の優先順位が付けられます。
 * サービスの可用性レベル (ホット/ホット、ホット/ウォーム、ホット/コールド)
-  * 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィック処理用に "*準備できた*" 状態にするのか、それとも一方のリージョンはトラフィック処理までに時間のかかる状態で待機させるのかを検討しましょう。
+  * 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィック処理を開始する "*準備ができた*" 状態にするのか、それとも一方のリージョンはトラフィック処理を準備する時間が必要な状態にするのかを検討しましょう。
 
 AKS リージョンの可用性とリージョンのペアは、複合的に考慮する必要があります。 AKS クラスターは、リージョンのディザスター リカバリーを連携的に管理するよう設計された、ペアのリージョンにデプロイするようにしましょう。 たとえば、AKS は "*米国東部*" と "*米国西部*" で利用できますが、 これらのリージョンもやはり、ペアになっています。 AKS の BC/DR 戦略を作成する際には、これら 2 つのリージョンを使用することをお薦めします。
 

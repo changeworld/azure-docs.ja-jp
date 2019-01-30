@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と 360 Online の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と 360 Online の統合 | Microsoft Docs
 description: Azure Active Directory と 360 Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: cda8eba6-843f-4a09-8c55-0aaf6e593d75
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: b45906c8ca22965865bc4bce5132677113bfb6db
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8f5a60566d65ea35934ff3847778d37990f4dc8c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227753"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807934"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-360-online"></a>チュートリアル: Azure Active Directory と 360 Online の統合
+# <a name="tutorial-azure-active-directory-integration-with-360-online"></a>チュートリアル:Azure Active Directory と 360 Online の統合
 
 このチュートリアルでは、360 Online と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 360 Online で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[360 Online のテスト ユーザーの作成](#creating-a-360-online-test-user)** - 360 Online で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,15 +102,15 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 1. Azure ポータルの **360 Online** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/360online-tutorial/tutorial_360online_samlbase.png)
+    ![Configure single sign-on](./media/360online-tutorial/tutorial_360online_samlbase.png)
 
 3. **[360 Online のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/360online-tutorial/tutorial_360online_url.png)
+    ![Configure single sign-on](./media/360online-tutorial/tutorial_360online_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company name>.public360online.com` のパターンを使用して URL を入力します。
 
@@ -119,16 +119,16 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/360online-tutorial/tutorial_360online_certificate.png) 
+    ![Configure single sign-on](./media/360online-tutorial/tutorial_360online_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/360online-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/360online-tutorial/tutorial_general_400.png)
 
 6. **360 Online**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [360 Online サポート チーム](mailto:360online@software-innovation.com)に送信する必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -180,7 +180,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 2. アプリケーションの一覧で **[360 Online]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/360online-tutorial/tutorial_360online_app.png) 
+    ![Configure single sign-on](./media/360online-tutorial/tutorial_360online_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

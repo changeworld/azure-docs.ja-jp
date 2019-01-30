@@ -4,7 +4,7 @@ description: この記事では、リスク イベントの詳細な概要を示
 services: active-directory
 keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652151"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808087"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -44,6 +44,9 @@ ms.locfileid: "53652151"
 - [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations) 
 
 ![リスク イベント](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> 場合によっては、[サインイン レポート](concept-sign-ins.md)に対応するサインイン エントリがないリスク イベントが見つかることがあります。 これは、Identity Protection が **対話型**と**非対話型**の両方のサインインのリスクを評価する一方、サインイン レポートには対話型サインインのみが表示されるためです。
 
 検出されたリスク イベントに対して取得する洞察は、Azure AD サブスクリプションに関連付けられています。 
 

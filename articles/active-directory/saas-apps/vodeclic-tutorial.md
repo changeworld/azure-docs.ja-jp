@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Vodeclic の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Vodeclic の統合 | Microsoft Docs
 description: Azure Active Directory と Vodeclic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8f53082a2f6a33e934c2e3138d08725ffdf4fa2b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444625"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815414"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル: Azure Active Directory と Vodeclic の統合
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル:Azure Active Directory と Vodeclic の統合
 
 このチュートリアルでは、Vodeclic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -170,7 +170,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
  
 ### <a name="create-a-vodeclic-test-user"></a>Vodeclic テスト ユーザーの作成
 
-このセクションでは、Vodeclic で Britta Simon というユーザーを作成します。 [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)と連携して、Vodeclic プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Vodeclic で Britta Simon というユーザーを作成します。 [Vodeclic サポート チーム](mailto:hotline@vodeclic.com) と協力して、Vodeclic プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 > [!NOTE]
 > アプリケーションの要件によっては、マシンを許可リストに登録しなければならない場合があります。 そのためには、パブリック IP アドレスを [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)と共有する必要があります。
@@ -211,7 +211,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
 アクセス パネルで Vodeclic のタイルを選択すると、自動的に Vodeclic アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

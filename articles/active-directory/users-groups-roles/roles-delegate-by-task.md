@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1e679a1d26ce219f7c0248e27d7f9cfffc5fdb4e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516589"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813850"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory における ID タスク別の管理者ロール
 
@@ -34,7 +34,7 @@ ms.locfileid: "51516589"
 アプリケーションの登録を作成する (すべてのユーザーについて権限が無効になっている場合) | アプリケーション開発者 | クラウド アプリケーション管理者、アプリケーション管理者
 コネクタ グループを作成する | アプリケーション管理者 | 
 コネクタ グループを削除する | アプリケーション管理者 | 
-アプリケーション プロキシを無効にする | アプリケーション管理者 | 
+アプリケーション プロキシの無効化 | アプリケーション管理者 | 
 コネクタ サービスをダウンロードする | アプリケーション管理者 | 
 すべての構成を読み取る | アプリケーション管理者 | 
 
@@ -147,7 +147,7 @@ Microsoft Graph または Azure AD Graph に対するアプリケーションの
 グループを作成する | ユーザー アカウント管理者 | 
 グループまたはアプリのアクセス レビューを作成、更新、削除する | ユーザー アカウント管理者 | 
 グループの有効期限を管理する | ユーザー アカウント管理者 | 
-グループ設定の管理 | ユーザー アカウント管理者 | 
+グループ設定の管理 | グローバル管理者 | 
 すべての構成を読み取る (非表示のメンバーシップを除く) | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 非表示のメンバーシップを読み取る | グループ メンバー | グループ所有者、パスワード管理者、Exchange 管理者、SharePoint 管理者、Teams 管理者、ユーザー アカウント管理者
 非表示のメンバーシップを含むグループのメンバーシップを読み取る | ヘルプデスク管理者 | ユーザー アカウント管理者、Teams 管理者

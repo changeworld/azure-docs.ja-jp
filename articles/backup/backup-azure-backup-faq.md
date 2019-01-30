@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 4e3a79c28fc0e67fbf22e4d0fde3de9528d3edf4
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319462"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382629"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -230,7 +230,7 @@ Azure Backup からの回復の数に制限はありません。
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Azure に送信されるデータは暗号化されますか。
 
-はい。 データはオンプレミス マシン上で AES256 を使用して暗号化されます。 データは、セキュリティで保護された HTTPS リンク上で送信されます。
+はい。 データはオンプレミスのマシン上で AES256 を使用して暗号化されます。 データは、セキュリティで保護された HTTPS リンク上で送信されます。 クラウド内で送信されたデータは、ストレージと復旧サービス間の HTTPS リンクのみで保護されています。 iSCSI プロトコルは、復旧サービスとユーザー マシン間で送信されるデータをセキュリティで保護します。 iSCSI チャネルの保護には、セキュリティで保護されたトンネリングが使用されます。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Azure 上のバックアップ データも暗号化されますか。
 

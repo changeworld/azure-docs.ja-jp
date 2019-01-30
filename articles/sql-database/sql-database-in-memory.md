@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: d2602b79db0950043cc84bbd1626f7c8ec6f402a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 399a0e6dd2b5c83a599aa50973417ba5a9be708d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714391"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813357"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -45,7 +45,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 - インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
     - DTU とは "*データベース トランザクション ユニット*" のことで、リソース使用量の測定値が含まれます。
 - サンプル ワークロードでリソースの消費量が大幅に向上したことが、[Azure SQL Database のインメモリ OLTP に関するビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)で示されています。
-    - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)を参照してください。
+    - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
 >  

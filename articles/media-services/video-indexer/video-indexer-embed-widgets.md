@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/25/2018
+ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791825"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807747"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -22,6 +22,8 @@ ms.locfileid: "53791825"
 
 > [!NOTE]
 > 2018 年 2 月 1 日以降、**コグニティブな分析情報**ウィジェットのバージョン 1 は非推奨になりました。 既定の埋め込み URL バージョンは `version=2` です。
+
+バージョン 2 以降、ウィジェットのベース URL に、アカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://wus2.videoindexer.ai/embed/insights/...` が生成されます。
 
 ## <a name="widget-types"></a>ウィジェットの種類
 
@@ -69,7 +71,7 @@ ms.locfileid: "53791825"
 
 **プライベート** ビデオを埋め込む場合は、**iframe** の **src** 属性でアクセス トークンを渡す必要があります。
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) API を使用してコグニティブな分析情報ウィジェットのコンテンツを取得します。または、[**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を使用して、それを上に示した URL にクエリ パラメーターとして追加します。 この URL を、**iframe** の **src** 値として指定します。
 
@@ -94,13 +96,13 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 このセクションでは、2 つの Video Indexer ウィジェット間の対話を実現して、ユーザーがアプリケーションで分析情報コントロールをクリックしたときにプレーヤーが関連する場面にジャンプするようにする方法を示します。
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> 
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
 
 1. **プレーヤー** ウィジェットの埋め込みコードをコピーします。
 2. **コグニティブな分析情報**ウィジェットの埋め込みコードをコピーします。
 3. 2 つのウィジェット間の通信を処理する[**メディエーター ファイル**](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js)を追加します。
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 これで、ユーザーがアプリケーションで分析情報コントロールをクリックすると、プレーヤーが関連する場面にジャンプします。
 
@@ -110,11 +112,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 このセクションでは、[AMP プラグイン](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)を使用して**コグニティブな分析情報**ウィジェットと Azure Media Player インスタンス間の対話を実現する方法を示します。
  
-1. AMP プレーヤー用の Video Indexer プラグインを追加します。
-
-        <script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>
-
-
+1. AMP プレーヤー用の Video Indexer プラグインを追加します。<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Video Indexer プラグインを含む Azure Media Player をインスタンス化します。
 
         // Init Source
@@ -209,7 +207,6 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
         
         </script>
 
-
 詳細については、[このデモ](https://codepen.io/videoindexer/pen/YEyPLd)を参照してください。
 
 ## <a name="adding-subtitles"></a>字幕の追加
@@ -219,30 +216,41 @@ Video Indexer の分析情報と独自の AMP プレーヤーを埋め込む場�
 ## <a name="customizing-embeddable-widgets"></a>埋め込み可能なウィジェットのカスタマイズ
 
 ### <a name="cognitive-insights-widget"></a>コグニティブな分析情報ウィジェット
-必要な分析情報の種類を、(API または Web アプリから) 取得した埋め込みコードに追加される次の URL パラメーターに値として指定することで選択できます。
 
-**&widgets=** \<必要なウィジェットのリスト>
+必要な分析情報の種類を、(API または Web アプリから) 取得した埋め込みコードに追加される次の URL パラメーターに値として指定することで選択できます。`&widgets=<list of wanted widgets>`
 
 使用可能な値は、people、keywords、sentiments、transcript、search です。
 
-たとえば、people および search 分析情報のみを含むウィジェットを埋め込みたい場合、iframe の埋め込み URL は次のようになります: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search
+たとえば、people および search 分析情報のみを含むウィジェットを埋め込みたい場合、iframe の埋め込み URL は次のようになります。
 
-iframe ウィンドウのタイトルも、iframe の URL に **&title=**<YourTitle> を指定することでカスタマイズできます  (これにより、html \<title> 値がカスタマイズされます)。
-たとえば、iframe ウィンドウに "MyInsights" というタイトルを付けたい場合、URL は https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights のようになります。 このオプションは、新しいウィンドウで分析情報を開く必要がある場合にのみ該当することに注意してください。
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+
+iframe ウィンドウのタイトルも、iframe の URL に `&title=<YourTitle>` を指定することでカスタマイズできます (これにより、html \<title> 値がカスタマイズされます)。
+    
+たとえば、iframe ウィンドウに "MyInsights" というタイトルを付けたい場合、URL は次のようになります。
+
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
+
+このオプションは、新しいウィンドウで分析情報を開く必要がある場合にのみ該当することに注意してください。
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
+
 Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを指定することで、プレーヤーのサイズを選択できます。
 
 例: 
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
+`<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
 既定では、ビデオのアップロード時に選択されたソース言語とともにビデオから抽出されたビデオ トランスクリプトに基づいて、Video Indexer プレーヤーでクローズド キャプションが自動生成されます。
 
-別の言語で埋め込みたい場合は、埋め込みプレーヤーの URL に **&captions=< Language | "all" | "false" >** を追加します。または、使用可能なすべての言語のキャプションを使用する場合は "all" を値として指定します。
-既定でキャプションが表示されるようにする場合は、**& showCaptions=true** を渡します
+別の言語で埋め込む場合は、埋め込みプレーヤーの URL に `&captions=< Language | ”all” | “false” >` を追加します。または、使用可能なすべての言語のキャプションを使用する場合は "all" を値として指定します。
+既定でキャプションが表示されるようにする場合は、`&showCaptions=true` を渡します。
 
-埋め込み URL は https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian のようになります。 キャプションを無効にする場合は、captions パラメーターの値として "false" を渡します。
+埋め込み URL は次のようになります。 
+
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
+
+キャプションを無効にする場合は、captions パラメーターの値として "false" を渡します。
 
 自動再生 – 既定では、プレーヤーでビデオの再生が開始されます。 上の埋め込み URL に &autoplay=false を渡すことにより、これをオフにできます。
 

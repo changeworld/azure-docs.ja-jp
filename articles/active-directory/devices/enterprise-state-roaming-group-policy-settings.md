@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise State Roaming 用のグループ ポリシーと MDM 設定とは, Enterprise State Roaming, Windows クラウド
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c6ec20b7467998d221858dfd852461ad33a64494
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5ce3597bb52a22cfba6103b1d6cc5d0ff6371579
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035215"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447661"
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
 ここで取り上げるグループ ポリシーとモバイル デバイス管理 (MDM) の設定は、会社所有のデバイスに使用を限定してください。これらのポリシーはユーザーのデバイス全体に適用されます。 MDM ポリシーを適用して設定の同期を無効にすると、ユーザー所有のパーソナル デバイスの使用に悪影響が生じます。 加えて、そのデバイスに存在する他のユーザー アカウントにもポリシーの影響が波及します。
@@ -44,7 +44,7 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 
 | Name | 説明 |
 | --- | --- |
-| アカウント: Microsoft アカウントをブロックします |このコンピューターにユーザーが新しい Microsoft アカウントを追加できないようにするポリシー設定です。 |
+| アカウント: Microsoft アカウントをブロックする |このコンピューターにユーザーが新しい Microsoft アカウントを追加できないようにするポリシー設定です。 |
 | 同期しない |ユーザーが Windows の設定データとアプリ データをローミングできないようにします。 |
 | パーソナル設定を同期しない |"テーマ" グループの同期を無効にします。 |
 | ブラウザーの設定を同期しない |"Internet Explorer" グループの同期を無効にします。 |

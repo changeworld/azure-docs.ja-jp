@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554658"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810705"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>v2 API によって生成される Video Indexer の出力を調べる
 
@@ -166,7 +166,7 @@ ms.locfileid: "53554658"
 |audioEffects|[audioEffects](#audioEffects) ディメンション|
 |sentiments|[センチメント](#sentiments) ディメンション|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) ディメンション|
-|textualConentModeration|[textualConentModeration](#textualconentmoderation) ディメンション|
+|textualContentModeration|[textualContentModeration](#textualcontentmoderation) ディメンション。|
 |emotions| [emotions](#emotions) ディメンション。|
 |topics|[topics](#topics) ディメンション。|
 
@@ -187,7 +187,7 @@ ms.locfileid: "53554658"
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
@@ -334,7 +334,7 @@ instances|このブロックの時間範囲の一覧|
 |name|顔の名前。 「Unknown #0」、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
-|thumbnalId|その顔のサムネイルの ID|
+|thumbnailId|その顔のサムネイルの ID|
 |knownPersonId|既知の人物の場合は、その内部 ID|
 |referenceId|Bing に登録されている著名人の場合は、その Bing ID|
 |referenceType|現時点では Bing のみ。|
@@ -662,7 +662,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
 |Name|説明|
 |---|---|

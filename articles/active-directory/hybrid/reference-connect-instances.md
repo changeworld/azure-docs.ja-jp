@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 同期サービス インスタンス | Microsoft Docs'
+title: Azure AD Connect:同期サービス インスタンス | Microsoft Docs
 description: このページでは、Azure AD のインスタンスに関する注意事項を説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: f340ea11-8ff5-4ae6-b09d-e939c76355a3
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a41b236182c18a83b6c83a38fd8420a013313d56
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: be20f50b68ab3715e2b7a98db208dcd81a995f1b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310371"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463883"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect:インスタンスに関する特別な考慮事項
 Azure AD Connect は、世界中の Azure AD と Office 365 のインスタンスで最もよく使われています。 ただし、それ以外のインスタンスも存在し、URL の要件が異なるだけでなく、その他の特別な考慮事項があります。
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
-[Microsoft Cloud Germany](http://www.microsoft.de/cloud-deutschland) は、ドイツのデータ トラスティによって運営されている主権のあるクラウドです。
+[Microsoft Cloud Germany](https://www.microsoft.de/cloud-deutschland) は、ドイツのデータ トラスティによって運営されている主権のあるクラウドです。
 
 | プロキシ サーバーで開く URL |
 | --- |

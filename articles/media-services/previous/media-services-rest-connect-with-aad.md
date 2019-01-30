@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945079"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818033"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -50,7 +50,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 - [Azure AD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、この記事に記載されている REST API を実行します。 
 
-    このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
+    このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Azure Portal から認証情報を取得する
 
@@ -79,7 +79,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
 5. 既存の **Azure AD アプリケーション**を選択するか、新しいアプリケーションを作成します (後述します)。
 
     > [!NOTE]
-    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) Unauthorized" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を参照してください。
+    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) 未承認" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を確認してください。
 
     新しい AD アプリケーションを作成する場合は、次の手順を実行します。
     
@@ -118,7 +118,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 ## <a name="get-the-access-token-using-postman"></a>Postman を使用してアクセス トークンを取得する
 
-このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
+このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
 
 1. **Postman** を開きます。
 2. **[POST]** を選択します。
@@ -188,5 +188,5 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln) (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用) のサンプル コードを試してください。
+* [Azure AD Authentication for Azure Media Services Access: Both via REST API (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用)](https://github.com/willzhan/WAMSRESTSoln) のサンプル コードを試してください。
 * [.NET を使用したファイルのアップロード](media-services-dotnet-upload-files.md)

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894131"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391226"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
 
-Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 
+Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
 
 それぞれのベスト プラクティスについて、次の点を説明します。
 
@@ -85,7 +85,7 @@ Azure Resource Manager テンプレートを使用する:
 -   デプロイの構成は綿密に確認する。
 -   リソースを直接変更する暗黙的なコマンドは使用しない。
 
-[Service Fabric アプリケーション ライフサイクル](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle) のさまざまな要素を自動化することができます。 [Service Fabric PowerShell モジュール](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications#upload-the-application-package)では、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、テストの一般的なタスクを自動化できます。 さらに、アプリケーション管理用のマネージ API と HTTP API も利用できます。
+[Service Fabric アプリケーション ライフサイクル](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle) のさまざまな要素を自動化することができます。 [Service Fabric PowerShell モジュール](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications#upload-the-application-package)では、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、テストの一般的なタスクを自動化できます。 さらに、アプリケーション管理用のマネージド API と HTTP API も利用できます。
 
 ## <a name="use-x509-certificates"></a>X.509 証明書を使用する
 クラスターは必ず、X.509 証明書または Windows セキュリティを使ってセキュリティを確保する必要があります。 セキュリティを構成できるのはクラスターの作成時に限られます。 クラスターの作成後にセキュリティをオンにすることはできません。
@@ -143,7 +143,7 @@ Service Fabric では、Reliable Actors アプリケーション フレームワ
 
     >[!NOTE]
     >CA から __cloudapp__**.net** ドメインの SSL 証明書を取得することはできません。
-    
+
 -   証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
 HTTP は安全なプロトコルではないため、傍受される可能性があります。 HTTP を使って転送されるデータは、Web ブラウザーから Web サーバーまでの間や、それ以外のエンドポイント相互間でプレーン テキストとしてやり取りされます。 このため、HTTP を使ってクレジット カード情報やアカウントのログイン情報などの機微なデータを送信すると、攻撃者に傍受および閲覧されるおそれがあります。 これに対して、ブラウザーから HTTPS を使ってデータを送信または投稿した場合には、SSL により機微な情報が暗号化されるため、傍受から守ることができます。
@@ -184,5 +184,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 Azure Service Fabric では、[Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)に接続されるクライアントのために、管理者用とユーザー用の 2 種類のアクセス制御がサポートされています。 クラスターの管理者はアクセス制御を使用して、さまざまなグループのユーザーに対して特定のクラスター操作へのアクセスを制限することができます。 このため、アクセス制御を使えばクラスターのセキュリティを高めることができます。
 
 ## <a name="next-steps"></a>次の手順
+
+- [Service Fabric セキュリティのチェックリスト](azure-service-fabric-security-checklist.md)
 - Service Fabric [開発環境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)を設定します。
 - [Service Fabric のサポート オプション](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)について学びます。

@@ -1,24 +1,17 @@
 ---
-title: Net# ニューラル ネットワーク
-titleSuffix: Azure Machine Learning Studio
-description: Net# ニューラル ネットワーク仕様言語の構文と、Azure Machine Learning Studio で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: reference
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 03/01/2018
+title:Net# によるカスタム ニューラル ネットワークの作成 titleSuffix:  Azure Machine Learning Studio description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: reference
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
-Net# は、Microsoft が開発した言語で、ニューラル ネットワーク アーキテクチャを定義するために使用されます。 ニューラル ネットワークの構造を定義するために Net# を使用することで、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑な構造を定義することが可能になり、これが画像、音声、映像などのデータを使用する学習に役立つことが知られています。
+Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 
 次のコンテキストで Net # アーキテクチャの仕様をご利用いただけます。
 
 + Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML のニューラル ネットワーク関数:R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft ML Server のニューラル ネットワーク関数: R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
 この記事では、Net# でのカスタム ニューラル ネットワーク開発に必要な基本概念と構文について説明します。 
@@ -33,17 +26,17 @@ Net# は、Microsoft が開発した言語で、ニューラル ネットワー�
 
 ニューラル ネットワーク構造は、いくつかのレイヤーに編成されたノードによって構成され、各ノード間には、重みが付けられた結合 (またはエッジ) があります。 結合にはそれぞれ方向があり、結合ごとにソース ノードと宛先ノードを持ちます。  
 
-それぞれのトレーニング可能レイヤー (非表示レイヤーまたは出力レイヤー) には 1 つ以上の**結合バンドル**があります。 結合バンドルは、ソース層と、そのソース層からの結合の仕様で構成されています。 指定のバンドルでは、すべての結合が同じソース レイヤーと同じ宛先レイヤーを共有します。 Net# では、結合バンドルはバンドルの宛先層に属すると見なされます。
+それぞれのトレーニング可能レイヤー (非表示レイヤーまたは出力レイヤー) には 1 つ以上の**結合バンドル**があります。 結合バンドルは、ソース層と、そのソース層からの結合の仕様で構成されています。 特定のバンドル内では、すべての結合がソース レイヤーと宛先レイヤーを共有します。 Net# では、結合バンドルはバンドルの宛先層に属すると見なされます。
 
-Net# は、隠れ層や出力への入力のマッピング方法をカスタマイズできる、さまざまな種類の結合バンドルをサポートします。
+Net# では、さまざまな種類の結合バンドルがサポートされていて、入力がどのように非表示レイヤーや出力にマップされるかをカスタマイズできます。
 
 既定つまり標準のバンドルは、**フル バンドル**です。このバンドルでは、ソース層の各ノードが宛先層のすべてのノードに結合します。
 
 これに加えて、Net# は以下の 4 種類の詳細な結合バンドルをサポートします。
 
-+ **フィルター バンドル**。 ユーザーは、ソース層ノードと宛先層ノードの場所を使用して述語を定義できます。 述語が True の場合は常にノードが結合されます。
++ **フィルター バンドル**。 ソース レイヤー ノードと宛先レイヤー ノードの場所を使用すると、述語を定義できます。 述語が True の場合は常にノードが結合されます。
 
-+ **畳み込みバンドル**。 ユーザーはソース層の少数の隣接ノードを定義できます。 宛先層の各ノードは、ソース層の隣接ノードの 1 つに結合します。
++ **畳み込みバンドル**。 ソース レイヤーには、少数の隣接ノードを定義できます。 宛先層の各ノードは、ソース層の隣接ノードの 1 つに結合します。
 
 + **プーリング バンドル**および**応答正規化バンドル**。 これは、ユーザーがソース層の少数の隣接ノードを定義するという点で畳み込みバンドルと似ています。 違いは、これらのバンドルのエッジの重みがトレーニング可能でないことです。 代わりに、定義済みの関数がソース ノード値に適用され、宛先ノードの値を判断します。
 
@@ -252,7 +245,7 @@ hidden P1 [5, 12, 12]
 
 ## <a name="response-normalization-bundles"></a>応答正規化バンドル
 
-**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。 
+**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。 
 
 応答正規化は、ニューラル ネットの一般化を支援するために使用します。 あるニューロンが高度な活性レベルで発火しているときに、ローカルな応答正規化層によって周囲のニューロンの活性レベルを抑えます。 これは、`α`、`β`、`k` の 3 つのパラメーターと、畳み込み構造体 (または隣接する形状) で行います。 宛先層 **y** のすべてのニューロンは、ソース層のニューロン **x** に対応しています。 **y** のアクティブ化レベルは、次の公式で得られます。次の畳み込み構造体で定義されているように、`f` はニューロンのアクティブ化レベルで、`Nx` はカーネル (**x** に隣接するニューロンを含むセット) です。  
 

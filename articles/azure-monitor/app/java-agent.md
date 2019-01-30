@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262134"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412405"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
 
@@ -97,6 +97,23 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
 > [!NOTE]
 > AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。 
 
+### <a name="spring-rest-template"></a>Spring Rest テンプレート
+
+Spring の Rest テンプレートで行われた HTTP 呼び出しを Application Insights で正しくインストルメント化するためには、Apache HTTP クライアントが必要です。 既定では、Spring の Rest テンプレートが Apache HTTP クライアントを使用する構成になっていません。 Spring Rest テンプレートのコンストラクターで [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) を指定することによって、Apache HTTP が使用されるようになります。
+
+これを Spring Beans で行う例を以下に示しました。 これは、ファクトリ クラスの既定の設定を使用するごく単純な例です。
+
+```java
+@bean
+public ClientHttpRequestFactory httpRequestFactory() {
+return new HttpComponentsClientHttpRequestFactory()
+}
+@Bean(name = 'myRestTemplate')
+public RestTemplate dcrAccessRestTemplate() {
+    return new RestTemplate(httpRequestFactory())
+}
+```
+
 #### <a name="enable-w3c-distributed-tracing"></a>W3C 分散トレースを有効にする
 
 AI-Agent.xml に次のコードを追加します。
@@ -112,7 +129,7 @@ AI-Agent.xml に次のコードを追加します。
 > [!NOTE]
 > 既定では、下位互換性モードが有効になっています。また、enableW3CBackCompat パラメーターは、省略可能で、このモードをオフにするときにのみ使用する必要があります。 
 
-すべてのサービスが W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときにこれが該当することが理想です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
+すべてのサービスが、W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときに、これを行うことが理想的です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
 
 **受信と送信 (エージェント) の構成が**[両方とも](correlation.md#w3c-distributed-tracing)正確に同じであることを確認してください。
 

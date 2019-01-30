@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HubSpot の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HubSpot の統合 | Microsoft Docs
 description: Azure Active Directory と HubSpot の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 76a19668453b35b39359bef442f7f34a06623cbe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2806288378e5fa080164155b97a47a7046ecbba1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433488"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814904"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル: Azure Active Directory と HubSpot の統合
+# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
 このチュートリアルでは、HubSpot と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -164,7 +164,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     d. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    e. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、**[X.509 Certificate] (X.509 証明書)** テキストボックスに貼り付けます。
+    e. ダウンロードした **証明書 (Base64)**  ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
     f. **[確認]** をクリックします。
 
@@ -186,7 +186,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。

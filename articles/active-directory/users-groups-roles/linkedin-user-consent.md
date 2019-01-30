@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory で共有される LinkedIn 統合データ | Microsoft Docs
-description: Azure Active Directory で Microsoft のアプリを介して LinkedIn アカウント接続がデータを共有する方法について説明します
+title: Azure Active Directory での LinkedIn 統合のデータ共有と同意 | Microsoft Docs
+description: Azure Active Directory で Microsoft のアプリを介して LinkedIn 統合がデータを共有する方法について説明します
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 25060f41528c59d252adbc854704c6060becd907
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 776c793fb797e9388f0852773315f27cd42dde25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319123"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471720"
 ---
-# <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>ユーザーの同意と LinkedIn アカウント接続のデータ共有
+# <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn 統合のデータ共有と同意
 
 Azure Active Directory (Azure AD) 管理者は、組織内のユーザーが、自分の Microsoft の職場または学校アカウントを LinkedIn アカウントに接続することに同意することを可能にできます。 ユーザーは、自分のアカウントを接続すると、LinkedIn からの情報や注意を、一部の Microsoft のアプリとサービスで見ることができます。 また、ユーザーは、LinkedIn での自分のネットワーク エクスペリエンスが、Microsoft からの情報で改善および拡充されることも期待できます。
 
@@ -31,13 +31,13 @@ Microsoft のアプリやサービスで LinkedIn の情報を表示するには
 
 Microsoft のアプリおよびサービス内で LinkedIn の情報にアクセスすると、ユーザーは、組織の内部および外部の同僚、顧客、パートナーとの間でいっそう簡単にプロフェッショナルな関係を結び、協力して、構築することができるようになります。 新しいユーザーは、同僚と関係を結び、同僚について知り、より多くの情報に簡単にアクセスできることで、より速く組織にとけ込むことができます。 Microsoft のアプリのプロファイル カードに LinkedIn の情報が表示される方法の例を次に示します。
 
-![LinkedIn アカウントの接続の有効化](./media/linkedin-user-consent/display-example.png)
+![LinkedIn の統合を有効にする](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-account-connections"></a>LinkedIn アカウントの接続を有効にして発表する
+## <a name="enable-and-announce-linkedin-integration"></a>LinkedIn の統合を有効にして発表する
 
 組織の設定を管理するには Azure Active Directory 管理者でなければなりません。 すべてのユーザーについて有効にすることも、特定のユーザー セットだけにすることもできます。
 
-1. アカウント接続の統合を有効または無効にするには、[LinkedIn アカウントの接続](linkedin-integration.md)に関するページに記載されている手順に従います。
+1. 統合を有効または無効にするには、[LinkedIn の統合](linkedin-integration.md)に関するページに記載されている手順に従います。
 2. LinkedIn の統合を組織で発表するときは、[Microsoft のアプリおよびサービスで LinkedIn の情報](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)に関する FAQ にユーザーの注意を促します。 この記事では、LinkedIn の情報が表示される場所、アカウントの接続方法、その他について説明します。
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Microsoft と LinkedIn でのデータ アクセスに対するユーザーの同意

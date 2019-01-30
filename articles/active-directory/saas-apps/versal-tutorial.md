@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Versal の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Versal の統合 | Microsoft Docs
 description: Azure Active Directory と Versal の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 5b2e53c0-61a3-4954-ae46-8c28c6368bfd
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: a6e1f73218efb11da475f3e67188863c3b99de97
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a2d7661a9e837bebc873e54865f9b7c4259faf24
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421340"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816519"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル: Azure Active Directory と Versal の統合
+# <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル:Azure Active Directory と Versal の統合
 
 このチュートリアルでは、Versal と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +132,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 1. **Versal** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML 署名証明書**を [Versal サポート チーム](https://support.versal.com/hc/)に送信する必要があります。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されるように Versal 組織をセットアップします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

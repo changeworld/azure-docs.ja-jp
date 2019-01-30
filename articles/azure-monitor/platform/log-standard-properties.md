@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321893"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381947"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Log Analytics レコードでの標準プロパティ
 [Log Analytics](../log-query/log-query-overview.md) のデータは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、レコードのセットとして格納されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
@@ -92,7 +92,7 @@ AzureActivity
 課金対象のデータ型を送信しているコンピューターの一覧を取得するには、次のクエリを使用します。
 
 > [!NOTE]
-> 複数の種類のデータにわたるスキャンは、実行コストが高いため、`union withsource = tt *` を使用するクエリは多用しないようにします。 
+> 複数の種類のデータにわたるスキャンは実行コストが高いため、`union withsource = tt *` を含むクエリの使用は控えめにしてください。 
 
 ```Kusto
 union withsource = tt * 

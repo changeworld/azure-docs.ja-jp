@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HackerOne の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HackerOne の統合 | Microsoft Docs
 description: Azure Active Directory と HackerOne の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e33ad66fe0ced9a426a608f4193ff52dec4f7ee
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fe070505970516efcd4e2ae46dedff2792f95b08
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441835"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817199"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル: Azure Active Directory と HackerOne の統合
+# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル:Azure Active Directory と HackerOne の統合
 
 このチュートリアルでは、HackerOne と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,7 +89,7 @@ HackerOne で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 HackerOne で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[HackerOne テスト ユーザーの作成](#creating-a-hackerone-test-user)** - HackerOne で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -148,9 +148,9 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
     a. 登録されているドメインを **[電子メール ドメイン]** ボックスに入力します。
 
-    b. **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**SAML シングル サインオン サービス URL** の値を貼り付けます。
+    b.   **[シングル サインオン URL]** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL**  の値を貼り付けます。
 
-    c. Azure Portal からダウンロードした **証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 証明書]** ボックスに貼り付けます。
+    c. Azure portal からダウンロードした **証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 証明書]**  ボックスに貼り付けます。
     
     d. **[Save]** をクリックします。
 
@@ -163,7 +163,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
     b. **[状態]** フィールドの値が **[Last test status: created]\(最後のテストの状態: 作成済み\)** と同じ場合は、[HackerOne サポート チーム](mailto:support@hackerone.com)にお使いの構成の確認をご依頼ください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

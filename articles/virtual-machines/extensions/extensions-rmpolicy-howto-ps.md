@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 15a6a7f4753d51118d23d2e3c021010218d2d2d7
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451835"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434991"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
 自分の Windows VM で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、PowerShell を使用して Azure ポリシーを作成すると、リソース グループ内で VM の拡張機能を制限できます。 
 
-このチュートリアルでは、Cloud Shell で Azure PowerShell を使用します。このバージョンは常に更新され最新になっています。 PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+このチュートリアルでは、Cloud Shell で Azure PowerShell を使用します。このバージョンは常に更新され最新になっています。 PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 
@@ -139,7 +139,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>ポリシーをテストする
 
-ポリシーをテストするために、VM Access 拡張機能を使用してみます。 "Set-AzureRmVMAccessExtension: リソース "myVMAccess" はポリシーによって許可されませんでした" というメッセージが表示され、失敗します。
+ポリシーをテストするために、VM Access 拡張機能を使用してみます。 "Set-AzureRmVMAccessExtension: リソース 'myVMAccess' はポリシーにより許可されませんでした" というメッセージが表示され、失敗します。
 
 ```azurepowershell-interactive
 Set-AzureRmVMAccessExtension `

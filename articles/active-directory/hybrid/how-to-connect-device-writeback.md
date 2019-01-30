@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Docs'
+title: Azure AD Connect:デバイス ライトバックの有効化 | Microsoft Docs
 description: Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361071"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412820"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
 > [!NOTE]
 > デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 > 
@@ -38,10 +38,10 @@ ms.locfileid: "49361071"
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
 > <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
+## <a name="part-1-install-azure-ad-connect"></a>パート 1:Azure AD Connect のインストール
 カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2: Azure AD Connect でのデバイス ライトバックを有効にする
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2:Azure AD Connect でのデバイス ライトバックの有効化
 1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[デバイス オプションの構成]** を選び、**[次へ]** をクリックします。 
 
     ![デバイス オプションの構成](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -60,7 +60,7 @@ ms.locfileid: "49361071"
     a. **エンタープライズ管理者の資格情報を提供する**: デバイスをライトバックする必要があるフォレストのエンタープライズ管理者の資格情報を提供すると、Azure AD Connect はデバイス ライトバックの構成の間にフォレストを自動的に準備します。
 
     b. **PowerShell スクリプトをダウンロードする**: Azure AD Connect は、デバイス ライトバック用に Active Directory を準備できる PowerShell スクリプトを自動生成します。 Azure AD Connect にエンタープライズ管理者の資格情報を提供できない場合、PowerShell スクリプトをダウンロードすることをお勧めします。 ダウンロードした PowerShell スクリプト **CreateDeviceContainer.psq** を、デバイスがライトバックされるフォレストのエンタープライズ管理者に提供します。
-    ![Active Directory フォレストの準備](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    ![Active Directory フォレストを準備する](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Active Directory フォレストを準備するため、次の操作が実行されます。
     * CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。

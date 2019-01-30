@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164435"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388416"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway の制限 (プレビュー)
 
@@ -57,9 +57,9 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 Azure にデータを移動する際には、次の注意事項がデータに適用されます。
 
 - 複数のデバイスが同じコンテナーに書き込まないようにすることをお勧めします。
-- コピー対象のオブジェクトと同じ名前の既存の Azure オブジェクト (BLOB やファイルなど) がクラウド内にある場合、デバイスはクラウド内のファイルを上書きします。 
+- コピー対象のオブジェクトと同じ名前の既存の Azure オブジェクト (BLOB やファイルなど) がクラウド内にある場合、デバイスはクラウド内のファイルを上書きします。
 - 共有フォルダーの下に作成される空のディレクトリ階層 (ファイルを含まない) は、BLOB コンテナーにアップロードされません。
-
+- デバイス サイズより大きいファイルをコピーする場合、*Robocopy* または *rsync* を使用して、エラーがないことを確認することをお勧めします。
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Azure ストレージ アカウント サイズとオブジェクト サイズの制限
 

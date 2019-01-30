@@ -1,5 +1,5 @@
 ---
-title: 顧客離れの分析
+title: 顧客離れを分析する
 titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio を使用した顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ。
 services: machine-learning
@@ -10,14 +10,14 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 153ddcc1ba0da6171963ec91511fafe84023ecf8
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260603"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401970"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用した顧客離れの分析
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して顧客離れを分析する
 ## <a name="overview"></a>概要
 この記事では、Azure Machine Learning を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
 

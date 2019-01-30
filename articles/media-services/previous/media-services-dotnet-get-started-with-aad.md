@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945571"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807322"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
@@ -80,7 +80,7 @@ Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authenticat
 
 これらのパラメーターの値は **AzureEnvironments.AzureCloudEnvironment** にあります。 **AzureEnvironments.AzureCloudEnvironment** 定数は、.NET SDK でパブリック Azure データ センターに対する正しい環境変数設定を取得するためのヘルパーです。 
 
-パブリック データ センターでのみ Media Services にアクセスするための定義済みの環境設定が含まれています。 ソブリンまたは政府のクラウド領域の場合は、**AzureChinaCloudEnvironment**、**AzureUsGovernmentEnvrionment**、または **AzureGermanCloudEnvironment** をそれぞれ使用できます。
+パブリック データ センターでのみ Media Services にアクセスするための定義済みの環境設定が含まれています。 ソブリンまたは政府のクラウド領域の場合は、**AzureChinaCloudEnvironment**、**AzureUsGovernmentEnvironment**、または **AzureGermanCloudEnvironment** をそれぞれ使用できます。
 
 次のコード例ではトークンを作成します。
     
@@ -122,7 +122,7 @@ Media Services に対するプログラミングを開始するには、サー�
     }
 
 >[!NOTE]
->"リモート サーバーが次のエラーを返しました: (401) 権限がありません" という内容の例外が発生した場合は、Azure AD Authentication による Azure Media Services API へのアクセスの概要の[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)に関するセクションを参照してください。
+>"リモート サーバーがエラーを返しました: (401) 未承認" という例外を受け取る場合は、Azure AD 認証による Azure Media Services API へのアクセスの概要の「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」セクションを確認してください。
 
 ## <a name="use-service-principal-authentication"></a>サービス プリンシパル認証を使用する
     

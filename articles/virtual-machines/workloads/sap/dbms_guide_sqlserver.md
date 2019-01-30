@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 78ad40796a31e0c803b892e0c1b50e66b32c2b0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430172"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425881"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -235,7 +235,7 @@ ms.locfileid: "49430172"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -423,7 +423,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 この方法の機能の詳細については、次の記事を参照してください。
 
 - SQL Server 2014: [SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- SQL Server 2016/2017: [Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2016 および 2017: [Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 ドキュメントを読むと、新しい SQL Server リリースでは機能が向上していることがわかります。 SQL Server の自動バックアップの詳細については、記事「[Microsoft Azure への SQL Server マネージド バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017)」を参照してください。 理論上のバックアップ サイズの制限は 12 TB です。  自動バックアップは、最大 12 TB のバックアップ サイズに適している方法です。 複数の BLOB が並行して書き込まれるため、100 MB/秒を超えるスループットが期待できます。 
  
@@ -450,7 +450,7 @@ Azure Marketplace の SQL Server イメージは SAP NetWeaver アプリケー�
 
 * 管理者として Windows コマンド ウィンドウを開きます。
 * ディレクトリを C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012 に変更します。
-* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name` /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
+* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> は、ギャラリーを使用して最初に VM をデプロイするときに Administrator アカウントとして定義されたアカウントです。
 
 処理にかかるのは、わずか数分間です。 この手順で正しい結果が得られるかどうかを確認するには、次の手順を実行します。

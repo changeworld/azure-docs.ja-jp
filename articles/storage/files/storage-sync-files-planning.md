@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630327"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809193"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -205,6 +205,9 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 
 > [!Note]  
 > ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
+
+> [!Note]  
+> VSS スナップショット ([以前のバージョン] タブを含む) は、クラウドの階層化が有効なボリュームでは現在サポートされていません。 クラウドの階層化が有効になっている場合、Azure ファイル共有のスナップショットを使用して、バックアップからファイルを復元します。
 
 ### <a name="encryption-solutions"></a>暗号化ソリューション
 暗号化ソリューションのサポートは、実装方法によって変わります。 Azure ファイル同期は次のソリューションと連携することが確認されています。

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975511"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468337"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の docker コンテナーの構成 
 
@@ -32,11 +32,12 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 |--|--|--|
 |はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ |[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|はい|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
+|いいえ |[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
 |いいえ |[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
-|はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
+|[はい]|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。
@@ -77,6 +78,10 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging の設定
  
@@ -189,3 +194,4 @@ ApiKey={APPLICATION_ID} \
 
 * [コンテナーのインストール方法と実行方法](luis-container-howto.md)を確認する。
 * [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
+* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

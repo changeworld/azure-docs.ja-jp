@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984230"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424644"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -44,7 +44,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
    前の図に示されている規則は、**myVMVMNic** という名前のネットワーク インターフェイスのものです。 2 つの異なるネットワーク セキュリティ グループからのネットワーク インターフェイスに対する**受信ポートの規則**があることがわかります。
    
-   - **mySubnetNSG**: ネットワーク インターフェイスが含まれるサブネットに関連付けられています。
+   - **mySubnetNSG**: ネットワーク インターフェイスが含まれているサブネットに関連付けられています。
    - **myVMNSG**: **myVMVMNic** という名前の VM 内のネットワーク インターフェイスに関連付けられています。
 
    **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の **[ソース]** には *0.0.0.0/0* と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md)」をご覧ください。
@@ -77,7 +77,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
 ## <a name="diagnose-using-powershell"></a>PowerShell を使用して診断する
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
 
 ネットワーク インターフェイスの有効なセキュリティ規則を取得するには、[Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) を使います。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
 
@@ -155,7 +155,7 @@ az vm show \
 [PowerShell](#diagnose-using-powershell) または [Azure CLI](#diagnose-using-azure-cli) のどちらを使って問題を診断しても、次の情報が含まれる出力が表示されます。
 
 - **NetworkSecurityGroup**: ネットワーク セキュリティ グループの ID です。
-- **Association**: ネットワーク セキュリティ グループが *NetworkInterface* または *Subnet* のどちらに関連付けられているかを示します。 NSG が両方に関連付けられている場合、出力は各 NSG の **NetworkSecurityGroup**、**Association**、および **EffectiveSecurityRules** で返されます。 このコマンドを実行して有効なセキュリティ規則を表示する直前に、NSG リソースを関連付けたり、関連付けを解除したりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。
+- **Association**: ネットワーク セキュリティ グループが *NetworkInterface* と *Subnet* のどちらに関連付けられているかを示します。 NSG が両方に関連付けられている場合、出力は各 NSG の **NetworkSecurityGroup**、**Association**、および **EffectiveSecurityRules** で返されます。 このコマンドを実行して有効なセキュリティ規則を表示する直前に、NSG リソースを関連付けたり、関連付けを解除したりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。
 - **EffectiveSecurityRules**: 各プロパティの説明について詳しくは、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 名前の前に *defaultSecurityRules/* が付いている規則は、すべての NSG に存在する既定のセキュリティ規則です。 名前の前に *securityRules/* が付いている規則は、ユーザーが作成した規則です。 **destinationAddressPrefix** または **sourceAddressPrefix** プロパティに対して **Internet**、**VirtualNetwork**、**AzureLoadBalancer** などの[サービス タグ](security-overview.md#service-tags)が指定されている規則は、**expandedDestinationAddressPrefix** プロパティにも値があります。 **expandedDestinationAddressPrefix** プロパティには、サービス タグによって表されるすべてのアドレス プレフィックスが一覧表示されます。
 
 出力に重複して規則が表示される場合は、NSG がネットワーク インターフェイスとサブネットの両方に関連付けられているためです。 既定の規則はどちらの NSG も同じであり、両方の NSG で同じ独自のルールが作成されている場合は、他にも重複する規則が存在することがあります。
@@ -173,7 +173,7 @@ az vm show \
 | 変換先             | VM の IP アドレス、IP アドレスの範囲、またはサブネット内のすべてのアドレス。 |
 | 宛先ポート範囲 | 80                                                                                 |
 | プロトコル                | TCP                                                                                |
-| アクションを表示します。                  | ALLOW                                                                              |
+| Action                  | ALLOW                                                                              |
 | 優先順位                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 

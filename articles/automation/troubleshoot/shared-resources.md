@@ -8,12 +8,12 @@ ms.date: 12/3/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ce78c86cdae9a06100fd17d00e0229805e42983b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848461"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475443"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -39,6 +39,65 @@ PowerShell モジュールのインポートは、複雑な複数手順のプロ
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
+### <a name="module-fails-to-import"></a>シナリオ:モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
+
+#### <a name="issue"></a>問題
+
+モジュールがインポートに失敗するか、成功してもコマンドレットが抽出されません。
+
+#### <a name="cause"></a>原因
+
+モジュールが正常に Azure Automation にインポートできない一般的な理由には次が考えられます。
+
+* 構造が Automation で必要とされる構造と一致しません。
+* Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
+* モジュールのフォルダーにその依存関係がありません。
+* モジュールのアップロードに `New-AzureRmAutomationModule` コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
+
+#### <a name="resolution"></a>解決策
+
+次の解決策のいずれでもこの問題は解決されます。
+
+* モジュールの形式が次のようになっていることを確認します。ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
+* .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。 依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
+* 参照される .dll がモジュール フォルダーにあることを確認します。
+
+### <a name="all-modules-suspended"></a>シナリオ:モジュールの更新中に Update-AzureModule.ps1 が中断する
+
+#### <a name="issue"></a>問題
+
+[Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook を使用して、Azure モジュールを更新しているときに、モジュール更新プロセスが中断します。
+
+#### <a name="cause"></a>原因
+
+`Update-AzureModule.ps1` スクリプトを使用している場合、同時に更新されるモジュール数を決定する既定値は 10 です。 更新プロセスは、同時に更新されるモジュールが多すぎると、エラーが発生しやすくなります。
+
+#### <a name="resolution"></a>解決策
+
+同じ Automation アカウントですべての AzureRM モジュールが必要になることは、あまりありません。 必要な AzureRM モジュールのみをインポートすることをお勧めします。
+
+> [!NOTE]
+> **AzureRM** モジュールをインポートしないようにします。 **AzureRM** モジュールをインポートすると、すべての **AzureRM\*** モジュールがインポートされることになり、これは推奨されません。
+
+更新プロセスが中断する場合、`Update-AzureModules.ps1` スクリプトに `SimultaneousModuleImportJobCount` パラメーターを追加し、既定値の 10 より小さい値を指定する必要があります。 このロジックを実装する場合、3 または 5 の値から始めることをお勧めします。 `SimultaneousModuleImportJobCount` は、Azure モジュールの更新に使用される `Update-AutomationAzureModulesForAccount` システム Runbook のパラメーターです。 この変更により、プロセスの実行時間が長くなりますが、完了する可能性が高くなります。 次の例に、パラメーターと Runbook のそれを配置する場所を示します。
+
+ ```powershell
+         $Body = @"
+            {
+               "properties":{
+               "runbook":{
+                   "name":"Update-AutomationAzureModulesForAccount"
+               },
+               "parameters":{
+                    ...
+                    "SimultaneousModuleImportJobCount":"3",
+                    ... 
+               }
+              }
+           }
+"@
+```
+
 ## <a name="run-as-accounts"></a>実行アカウント
 
 ### <a name="unable-create-update"></a>シナリオ:実行アカウントを作成または更新できない
@@ -59,7 +118,7 @@ You do not have permissions to create…
 
 実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切なアクセス許可が必要です。 実行アカウントの作成または更新に必要なアクセス許可については、[実行アカウントのアクセス許可](../manage-runas-account.md#permissions)に関する記事を参照してください。
 
-問題の原因がロックの場合は、ロックを解除しても問題ないことを確認し、ロックされているリソースに移動し、ロックを右クリックして **[削除]** を選択してロックを解除します。
+問題の原因がロックである場合、ロックを解除しても構わないか確認します。 次に、ロックされているリソースに移動し、ロックを右クリックして、**[削除]** を選択して、ロックを解除します。
 
 ## <a name="next-steps"></a>次の手順
 

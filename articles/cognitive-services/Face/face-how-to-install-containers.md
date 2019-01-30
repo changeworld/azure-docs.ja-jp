@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 310311c22be25960b15f20d573624f50b0f618b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536544"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474814"
 ---
 # <a name="install-and-run-containers"></a>コンテナーのインストールと実行
 
@@ -178,3 +178,4 @@ Face コンテナーは、Azure アカウントの対応する Face リソース
 * [Face の概要](Overview.md)を確認して、顔の検出と識別の詳細を参照する  
 * コンテナーでサポートされるメソッドの詳細について、[Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) を参照する。
 * [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Face 機能に関連する問題を解決する。
+* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

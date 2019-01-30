@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249032"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820242"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -216,9 +216,9 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 使用する各ストアで、既存の保存データの暗号化サポートを活用します。
 
-- Azure Storage: 「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。
+- Azure Storage:[保存データに対する Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)に関するページを参照してください
 
-- SQL Azure: 「[Transparent Data Encryption (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)」(透過的なデータ暗号化 (TDE)、SQL Always Encrypted) をご覧ください
+- SQL Azure: [透過的なデータ暗号化 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)に関するページを参照してください
 
 - VM とローカル ディスク ストレージ ([Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption))
 
@@ -248,7 +248,7 @@ Azure Key Vault と統合するには、解読に必要なときに AKV から�
 
 保存データの暗号化にはホスト、インフラストラクチャ、およびテナント データの暗号化が関与するため、システム エラーや悪意のある行動によってキーが失われると、暗号化データがすべて失われることがあります。 このため、保存データの暗号化ソリューションに、システム エラーや悪意のある行動に耐性がある、包括的なディザスター リカバリー ストーリーが必要です。
 
-保存データの暗号化が実装されているサービスは通常、暗号化キーやホスト ドライブ (ホスト OS のページ ファイルなど) で暗号化されずに残っているデータの影響を引き続き受けやすい状態にあります。そのため、サービスはホスト ボリュームが暗号化されていることを確認する必要があります。 これを容易にするために、Compute チームは [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP と DCM サービスとエージェントの拡張機能を使用してホスト ボリュームを暗号化する、ホスト暗号化のデプロイを有効にしています。
+保存データの暗号化が実装されているサービスは通常、暗号化キーやホスト ドライブ (ホスト OS のページ ファイルなど) で暗号化されずに残っているデータの影響を引き続き受けやすい状態にあります。そのため、サービスはホスト ボリュームが暗号化されていることを確認する必要があります。 これを容易にするために、Compute チームは、[BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP と DCM サービスとエージェントの拡張機能を使用してホスト ボリュームを暗号化する、ホスト暗号化のデプロイを有効にしました。
 
 ほとんどのサービスは標準の Azure VM に実装されています。 このようなサービスでは、Compute が有効にすると[ホスト暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)を自動的に入手します。 Compute 管理のクラスターで実行されているサービスでは、Windows Server 2016 がロールアウトされた段階でホスト暗号化が自動的に有効になっています。
 
@@ -370,7 +370,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>コンプライアンスを確保する: クラウド サービス向けデュー デリジェンス チェックリスト (保護)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>コンプライアンスを確保する: クラウド サービス向けデリジェンス チェックリスト (保護)
 
 マイクロソフトは、クラウドへの移行を検討している組織がデリジェンスを訓練するのに役立つ、[Cloud Services 向けデュー デリジェンス チェックリスト](https://aka.ms/cloudchecklist.download)を作成しました。 民間企業から行政機関、非営利組織などの公的機関まで、あらゆる規模および種類の組織の構造体を提供し、自社のパフォーマンス、サービス、データ管理、およびガバナンス目標や要件を特定できます。 これにより、異なるクラウド サービス プロバイダーのサービスを比較し、最終的なクラウド サービス契約の基礎を築くことができます。
 

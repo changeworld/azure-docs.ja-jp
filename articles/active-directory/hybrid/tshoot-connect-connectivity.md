@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 接続に関する問題のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:接続に関する問題のトラブルシューティング | Microsoft Docs
 description: Azure AD Connect での接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f34b0015a4a6d7b8c2c23f539cf21232adaec58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304671"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474882"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -46,7 +46,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
 | \*.verisign.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
-| \*.entrust.com |HTTP/80 |MFA の CRL リストのダウンロードに使用します。 |
+| \*.entrust.net |HTTP/80 |MFA の CRL リストのダウンロードに使用します。 |
 | \*.windows.net |HTTPS/443 |Azure AD へのサインインに使用します。 |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |MFA に使用します。 |
 | \*.microsoftonline.com |HTTPS/443 |Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。 |

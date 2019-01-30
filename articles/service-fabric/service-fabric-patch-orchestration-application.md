@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754035"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427935"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -141,23 +141,26 @@ Windows Update の自動更新を有効にすると、複数のクラスター �
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=869566)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v1.2.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+
+> [!IMPORTANT]
+> パッチ オーケストレーション アプリケーションの v1.3.0 (最新版) には、Windows Server 2012 での実行に関して既知の問題があります。 Windows Server 2012 を実行している場合は、[こちら](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip)からアプリケーションの v1.2.2 をダウンロードしてください。 SFPkg リンクは[こちら](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg)。
 
 ## <a name="configure-the-app"></a>Configure the app
 
 パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
-|**パラメーター**        |**種類**                          | **詳細**|
+|**パラメーター**        |**Type**                          | **詳細**|
 |:-|-|-|
 |MaxResultsToCache    |long                              | キャッシュする Windows Update の結果の最大件数。 <br>既定値は 3000 で、次の条件を想定しています。 <br> - ノード数が 20 個である <br> - ノード上で実行される更新の回数が 1 か月あたり 5 回である <br> - 1 回の処理で 10 件程度の結果が生成される <br> - 過去 3 か月の結果を保存する |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  Windows Update が 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  Windows Update が 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに Windows Update を適用できます)。<br> クラスターに最適なポリシーを決定する方法については、「[FAQ](#frequently-asked-questions)」セクションを参照してください。
 |LogsDiskQuotaInMB   |long  <br> (既定値:1024)               |パッチ オーケストレーション アプリケーションのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
-| WUQuery               | string<br>(既定値:"IsInstalled=0")                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
-| InstallWindowsOSOnlyUpdates | Boolean <br> (既定値:True)                 | このフラグによって、Windows オペレーティング システムの更新プログラムのインストールが許可されます。            |
+| WUQuery               | 文字列<br>(既定値:"IsInstalled=0")                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
+| InstallWindowsOSOnlyUpdates | Boolean <br> (既定値: true)                 | このフラグを使用して、どの更新プログラムをダウンロードしてインストールするかを制御します。 次の値が許可されています <br>true - Windows オペレーティング システムの更新プログラムのみをインストールします。<br>false - マシンで使用可能なすべての更新プログラムをインストールします。          |
 | WUOperationTimeOutInMinutes | int <br>(既定値:90)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値:5)                  | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする最大回数。          |
 | WURescheduleTimeInMinutes | int <br>(既定値:30) | 操作が繰り返し失敗する場合に、サービスが Windows Update を再スケジュールする間隔。 |
-| WUFrequency           | コンマ区切りの文字列 (既定値:"Weekly, Wednesday, 7:00:00")     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD,HH:MM:SS (例: Monthly, 5,12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、Windows Update が実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
+| WUFrequency           | コンマ区切りの文字列 (既定値:"Weekly, Wednesday, 7:00:00")     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD,HH:MM:SS (例: Monthly, 5,12:22:32)。<br>DD (日) フィールドに使用できる値は、1 から 28 の数字と "last" です。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、Windows Update が実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
 | AcceptWindowsUpdateEula | Boolean <br>(既定値: true) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]
@@ -397,8 +400,14 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 
 - クラスターのスケール ダウン ワークフローのバグ修正。 導入された POA 用のガベージ コレクション ロジックは、存在しないノードに属するタスクを修正します。
 
-### <a name="version-122-latest"></a>バージョン 1.2.2 (最新)
+### <a name="version-122"></a>バージョン 1.2.2
 
 - 各種のバグ修正。
 - バイナリが署名されるようになりました。
-- sfpkg のダウンロード リンクが特定のバージョンを指すようになりました。
+- アプリケーションの sfpkg リンクを追加しました。
+
+### <a name="version-130"></a>バージョン 1.3.0
+
+- InstallWindowsOSOnlyUpdates を false に設定すると、使用可能なすべての更新プログラムがインストールされるようになりました。
+- 自動更新を無効にするロジックを変更しました。 これにより、Server 2016 以降で自動更新が無効にならないバグが修正されます。
+- 高度なユースケースのために POA の両方のマイクロサービスのデプロイ制約をパラメーター化しました。

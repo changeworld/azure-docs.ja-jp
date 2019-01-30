@@ -4,7 +4,7 @@ description: このトピックでは、Azure AD Connect Sync の運用タスク
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11390f1ad777d20e31c263b4a694ae5cb31f3fd3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c4dc5ae107cc8babbd425edd6c5de428e130fc3a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305811"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467538"
 ---
-# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: 操作タスクおよび考慮事項
+# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect 同期: 操作タスクおよび考慮事項
 このトピックでは、Azure AD Connect Sync の操作タスクについて説明します。
 
 ## <a name="staging-mode"></a>ステージング モード
@@ -74,8 +74,8 @@ ms.locfileid: "46305811"
 
 #### <a name="verify"></a>確認
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
-2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
-3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` を実行します。%temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
+2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+3. 次のコマンドを実行します。`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
 4. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
 
 **export.csv ファイルについて**: このファイルのほとんどの部分は一目瞭然です。 内容の理解に役立つ省略形のいくつかを次に示します。
@@ -93,7 +93,7 @@ ms.locfileid: "46305811"
 2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。
    ![ReadyToConfigure](./media/how-to-connect-sync-operations/additionaltasks.png)
 
-## <a name="disaster-recovery"></a>ディザスター リカバリー
+## <a name="disaster-recovery"></a>障害復旧
 実装の設計には、同期サーバーを喪失する障害の発生時の対処方法を計画することが含まれます。 モデルにはさまざまなものがあり、どのモデルを使用するかは、次の要素を含むいくつかの要素に依存します。
 
 * ダウンタイム中に Azure AD のオブジェクトを変更できないことに関してどれだけ許容できますか?
@@ -152,9 +152,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency
@@ -271,5 +271,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>次の手順
 **概要トピック**  
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)  
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)  

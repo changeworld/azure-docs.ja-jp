@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ADP Globalview の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ADP Globalview の統合 | Microsoft Docs
 description: Azure Active Directory と ADP Globalview の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ffb6464f-714d-41a9-869a-2b7e5ae9f125
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 11a3df06cbd1c3f34bfd5b04c1f6dfc41cab8187
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8ac0856dcadb92b79090a6520ef29707fd7a3bae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223114"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813680"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>チュートリアル: Azure Active Directory と ADP Globalview の統合
+# <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>チュートリアル:Azure Active Directory と ADP Globalview の統合
 
 このチュートリアルでは、ADP Globalview と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ ADP Globalview の Azure AD への統合を構成するには、ADP Globalview �
 
 ADP Globalview で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[ADP Globalview テスト ユーザーの作成](#creating-an-adp-globalview-test-user)** - Azure AD でのユーザーにリンクされた、ADP Globalview での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,15 +102,15 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
 
 1. Azure Portal の **[ADP Globalview]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_samlbase.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_samlbase.png)
 
 3. **[ADP Globalview Domain and URLs] \(ADP Globalview のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_url.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
      **[識別子]** テキスト ボックスに、`https://<subdomain>.globalview.adp.com/federate` または `https://<subdomain>.globalview.adp.com/federate2` のパターンを使用して URL を入力します。
 
@@ -119,13 +119,13 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_certificate.png) 
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_certificate.png) 
 
 5. ADP GlobalView アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 
 
 6. 次のスクリーンショットは、その例を示しています。 要求の名前は常に **"PersonImmutableID"** であり、その値はユーザーの EmployeeID を含む ExtensionAttribute2 にマップされています。 ここで、Azure AD から ADP GlobalView へのユーザー マッピングは EmployeeID で完了しますが、それをアプリケーションの設定に基づいて別の値にもマップできます。 最初に ADP GlobalView チームと協力してユーザーの正しい ID を使用し、その値を **"PersonImmutableID"** 要求でマップすることができます。 また、電子メールおよびユーザー ID の要求を図に示すようにマップすることができます。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_attribute.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_attribute.png)
 
 7. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -137,9 +137,9 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -152,16 +152,16 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
 
 8. **[ADP Globalview Configuration] \(ADP Globalview 構成)** セクションで、**[Configure ADP Globalview] \(ADP Globalview の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_configure.png) 
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_configure.png) 
 
 9. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_general_400.png)
 
 10. **ADP Globalview** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [ADP Globalview サポート](https://www.adp.com/contact-us/overview.aspx)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -212,7 +212,7 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
 
 2. アプリケーションの一覧で、**[ADP Globalview]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/adglobalview-tutorial/tutorial_adpglobalview_app.png) 
+    ![Configure single sign-on](./media/adglobalview-tutorial/tutorial_adpglobalview_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

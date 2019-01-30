@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201331"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439155"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -36,6 +36,7 @@ ms.locfileid: "54201331"
 
 1. 概要設計ドキュメント – このドキュメントに必要な内容は次のとおりです。
     1. SAP コンポーネントとアプリケーションの現在のインベントリ、および Azure でのターゲット アプリケーション インベントリ
+    2. さまざまな関係者の責任と分担を定義する責任分担表 (RACI) を作成して、処理します。 計画と最初のデプロイを通して、大ざっぱなレベルで開始し、徐々に詳細なレベルに進みます
     2. 概要ソリューション アーキテクチャ
     3. デプロイする Azure リージョンについての決定。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」をご覧ください。 各 Azure リージョンで利用できるサービスについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」をご覧ください
     4. オンプレミスから Azure に接続するためのネットワーク アーキテクチャ。 [Azure の仮想データ センターのブループリント](https://docs.microsoft.com/azure/architecture/vdc/)に慣れ始めます
@@ -44,9 +45,9 @@ ms.locfileid: "54201331"
     1.  ソリューション ブロック図 
     2.  Azure でのコンピューティング、ストレージ、ネットワーク コンポーネントのサイズの決定。 Azure VM の SAP のサイズ設定については、SAP サポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533) をご覧ください 
     3.  ビジネス継続性とディザスター リカバリーのアーキテクチャ
-    4.  OS、DB、カーネル、SAP サポート パック バージョンの詳細。 SAP NetWeaver または S/4HANA でサポートされているすべての OS が Azure VM でもサポートされているとは限りません。 DBMS のリリースについても同じです。 整合していることを確認し、必要であれば SAP リリース、DBMS リリース、または OS リリースをアップグレードして SAP と Azure すのサポート対象期間内にするには、以下のソースをチェックする必要があります。 SAP と Microsoft による完全なサポートを受けるには、SAP と Azure のサポート対象リリースの組み合わせになっている必要があります。 必要に応じて、一部のソフトウェア コンポーネントのアップグレードを計画する必要があります。 サポートされている SAP、OS、DBMS ソフトウェアの詳細については、次の場所に記載されています:
+    4.  OS、DB、カーネル、SAP サポート パック バージョンの詳細。 SAP NetWeaver または S/4HANA でサポートされているすべての OS リリースが Azure VM でもサポートされているとは限りません。 DBMS のリリースについても同じです。 整合していることを確認し、必要であれば SAP リリース、DBMS リリース、または OS リリースをアップグレードして SAP と Azure すのサポート対象期間内にするには、以下のソースをチェックする必要があります。 SAP と Microsoft による完全なサポートを受けるには、SAP と Azure のサポート対象リリースの組み合わせになっている必要があります。 必要に応じて、一部のソフトウェア コンポーネントのアップグレードを計画する必要があります。 サポートされている SAP、OS、DBMS ソフトウェアの詳細については、次の場所に記載されています:
         1.  SAP サポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 このノートでは、Azure VM でサポートされる最小の OS リリースが定義されています。 また、ほとんどの非 HANA データベースに必要な最小のデータベース リリースも定義されています。 また、ノートでは、SAP でサポートされるさまざまな Azure VM の 種類に対する SAP のサイズ設定も示されています。
-        2.  SAP サポート ノート [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 ノートでは、Azure での Oracle サポートのマトリックスが定義されています。 Oracle では、Azure for SAP ワークロードでのゲスト OS として、Windows と Oracle Linux のみがサポートされていることに注意してください。 このサポートに関する声明は、SAP インスタンスを実行する SAP アプリケーション層にも適用されます。 ただし、Oracle では、SAP セントラル サービスの高可用性はサポートされていません。 そのため、SAP セントラル サービスのためだけに、Oracle DBMS に接続しない別の OS が必要になる場合があります
+        2.  SAP サポート ノート [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 ノートでは、Azure での Oracle サポートのマトリックスが定義されています。 Oracle では、Azure for SAP ワークロードでのゲスト OS として、Windows と Oracle Linux のみがサポートされていることに注意してください。 このサポートに関する声明は、SAP インスタンスを実行する SAP アプリケーション層にも適用されます。 ただし、Oracle では、Oracle Linux で SAP セントラル サービスの高可用性はサポートされていません。 Windows では、SAP がサポートする SAP セントラル サービスの Windows フェールオーバー クラスター ソリューションが、DBMS レイヤーとして Oracle と共にサポートされています。 
         3.  SAP サポート ノート [#2235581](https://launchpad.support.sap.com/#/notes/2235581) では、さまざまな OS リリースでの SAP HANA のサポート マトリックスを入手できます
         4.  SAP HANA でサポートされる Azure VM と [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) の一覧は、[こちら](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)をご覧ください
         5.  [SAP 製品の可用性マトリックス](https://support.sap.com/en/)
@@ -56,7 +57,11 @@ ms.locfileid: "54201331"
         2.  [Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     6.  高可用性とディザスター リカバリーのアーキテクチャ
         1.  RTO と RPO に基づいて、必要な高可用性とディザスター リカバリー アーキテクチャの概要を定義します
-        2.  同じゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS では同期ホット スタンバイの同期メソッドが提供されており、運用システムに推奨されます。
+        2.  同じゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS では同期ホット スタンバイの同期メソッドが提供されており、運用システムに推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)」と関連ドキュメントから始まるさまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
+            1.  たとえば[こちら](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows フェールオーバー クラスター サービスを使用することは、サポートされて**いません**。 代わりに次のようなソリューションがあります。
+                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                3.  [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  異なる Azure リージョン間のディザスター リカバリーの場合は、さまざまな DBMS ベンダーによって提供される可能性を確認します。 そのほとんどでは、非同期レプリケーションまたはログ配布がサポートされています
         4.  SAP アプリケーション層では、ビジネス回帰テスト システムを実行するかどうかを定義します。理想的には、同じ Azure リージョンまたはお使いの DR リージョン内の、運用デプロイのレプリカです。 後者の場合、そのビジネス回帰システムを運用環境の DR ターゲットとすることができます
         5.  DR サイトに非運用システムを置かない場合は、Azure DR リージョンに SAP アプリケーション層をレプリケートする実行可能な方法として、Azure Site Recovery を検討します。 「[多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)」もご覧ください 
@@ -78,7 +83,7 @@ ms.locfileid: "54201331"
 9.  お客様、システム インテグレーター、Microsoft、およびその他の関連するパーティの間での、定期的な設計およびデプロイ レビューの頻度を定義します
 
  
-## <a name="pilot-phase-optional"></a>パイロット フェーズ (オプション)
+## <a name="pilot-phase-strongly-recommended"></a>パイロット フェーズ (強く推奨)
  
 パイロットは、事前に、またはプロジェクトの計画および準備と並行して、実行できます。 また、計画および準備フェーズにおいて作成されたアプローチと設計をテストするために、このフェーズを使用することもできます。 パイロット フェーズは、実際の概念実証まで拡大できます。 パイロット デプロイの間に、完全な HA/DR ソリューションおよびセキュリティ設計を設定して検証することが推奨されます。 お客様によっては、スケーラビリティ テストもこのフェーズで実施できます。 他のお客様は、SAP サンドボックス システムのデプロイをパイロット フェーズとして使用します。 そのため、パイロットを実行するために Azure に移行するシステムが識別されているものと想定します。
 
@@ -100,6 +105,8 @@ ms.locfileid: "54201331"
         3.  M シリーズの DBMS ログ ドライブには、Azure 書き込みアクセラレータを使用します。 [書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)に関する記事に記載されている書き込みアクセラレータの制限と使用方法に注意してください
         4.  DBMS のさまざまな種類については、[一般的な SAP 関連の DBMS ドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)と、一般ドキュメントで参照されている DBMS ごとの個別ドキュメントを確認してください
         5.  SAP HANA についての詳細は、「[Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」をご覧ください
+        6.  デバイス ID を使用して Azure データ ディスクを Azure Linux VM にマウントしないでください。 代わりに、汎用一意識別子 (UUID) を使用します。 たとえば、グラフィカル ツールを使用して Azure データ ディスクをマウントする場合には注意してください。 /etc/fstab 内のエントリを再確認して、UUID を使用して、ディスクがマウントされていることを確認します
+            1.  詳細については、 [こちら](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
     3.  ネットワーク
         1.  VNet のインフラストラクチャ、および Azure 仮想ネットワーク内またはネットワーク間での SAP アプリケーションの分散をテストして評価します
             1.  以下に基づいて、ハブとスポークの仮想ネットワーク アーキテクチャ、または単一の Azure 仮想ネットワーク内でのマイクロセグメンテーションのアプローチを評価します
@@ -134,11 +141,11 @@ ms.locfileid: "54201331"
             1.   SameSubNetDelay = 2
             2.   SameSubNetThreshold = 15
 4.   高可用性とディザスター リカバリーの手順をテストします
-    1.   VM をシャットダウンするか、またはオペレーティング システムをパニック モードにすることによって、フェールオーバーの状況をシミュレートし、フェールオーバーの構成が設計どおりに動作するかどうかを確認します。 
+    1.   VM (Windows ゲスト OS) をシャットダウンするか、またはオペレーティング システムをパニック モードにする (Linux ゲスト OS) ことによって、フェールオーバーの状況をシミュレートし、フェールオーバーの構成が設計どおりに動作するかどうかを確認します。 
     2.   フェールオーバーの実行にかかる時間を測定します。 時間が長すぎる場合は、次のことを検討します。
         1.   SUSE Linux では、Azure フェンス エージェントの代わりに SBD デバイスを使用して、フェールオーバーを高速化します
         2.   SAP HANA では、データの再読み込みに時間がかかりすぎる場合は、プロビジョニングするストレージ帯域幅を増やすことを検討します
-    3.   バックアップと復元のシーケンスをテストし、必要であれば調整します
+    3.   バックアップ/復元のシーケンスとタイミングをテストし、必要であれば調整します。 バックアップ時間が十分であることを確認するだけでなく、 復元もテストし、復元アクティビティのタイミングを取得します。 RTO がデータベースまたは VM 復元プロセスに依存している場合、復元時間が RTO SLA 内であることを確認します
     4.   リージョンをまたぐ DR 機能とアーキテクチャをテストします
 5.  セキュリティのチェック
     1.  実装した Azure のロールベースのアクセス制御 (RBAC) アーキテクチャの有効性をテストします。 目標は、異なるチームのアクセスとアクセス許可を分離して制限することです。 例として、SAP Basis チームのメンバーは、VM をデプロイし、Azure ストレージから特定の Azure 仮想ネットワークにディスクを割り当てることができなければなりません。 ただし、SAP Basis チームは、独自の仮想ネットワークを作成したり、既存の仮想ネットワークの設定を変更したりすることができてはなりません。 一方、ネットワーク チームのメンバーは、SAP アプリケーションと DBMS の VM が実行されている仮想ネットワークに、VM をデプロイできてはなりません。 また、ネットワーク チームのメンバーは、VM の属性の変更または VM やディスクの削除もできてはなりません。  
@@ -160,7 +167,8 @@ ms.locfileid: "54201331"
 3.  Azure 内の VM 用に独自の OS イメージを作成する必要があるか、または Azure イメージ ギャラリーのイメージを使用するかどうかを、テストして定義します。 Azure ギャラリーのイメージを使用する場合は、OS ベンダーとのサポート契約を反映する正しいイメージを選択する必要があります。 一部の OS ベンダーは、Azure ギャラリーでライセンス持ち込みイメージを提供しています。 他の OS イメージについては、Azure によって見積もられる価格にサポートが含まれています。 独自の OS イメージを作成する場合は、次の記事でドキュメントを確認できます。
     1.  [このドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)を基にして、Azure にデプロイされる Windows VM の汎用化されたイメージを構築できます
     2.  [このドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)を基にして、Azure にデプロイされる Linux VM の汎用化されたイメージを構築できます
-3.  Microsoft サポート契約に関する SAP のサポート要件を満たすことを確認します。 詳しくは、SAP サポート ノート [#2015553](https://launchpad.support.sap.com/#/notes/2015553) をご覧ください。 HANA Large Instances については、ドキュメント「[オンボードの要件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)」をご覧ください
+3.  Azure VM ギャラリーの SUSE および Red Hat Linux イメージを使用する場合、Azure VM ギャラリーで、Linux ベンダーによって提供されている SAP 用のイメージを使用する必要があります
+4.  Microsoft サポート契約に関する SAP のサポート要件を満たすことを確認します。 詳しくは、SAP サポート ノート [#2015553](https://launchpad.support.sap.com/#/notes/2015553) をご覧ください。 HANA Large Instances については、ドキュメント「[オンボードの要件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)」をご覧ください
 4.  ダウンタイムを選択して時間内に VM を再起動できるよう、適切なユーザーが[計画メンテナンスの通知](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/)を受け取ることを確認します
 5.  [Channel9](https://channel9.msdn.com/) などのチャネルで Microsoft 提供の Azure ドキュメントを常にチェックし、デプロイに適用する可能性のある新しい機能を確認します
 6.  新しい VM SKU に関するサポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533) のようなものや、新しくサポートされるようになった OS や DBMS のリリースに関するものなど、Azure に関係のある SAP ノートをチェックします。 新しい VM の種類と古い VM の種類で価格を比較し、価格性能比が最適な VM をデプロイできるようにします
@@ -189,8 +197,7 @@ ms.locfileid: "54201331"
     3.  SAP SWPM ツールに実装されている SAP Migration モニターを使用して、異種の移行を実行します
     4.  SAP リリースのアップグレードと組み合わせる必要がある場合は、[SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスを使用します。 ソース DBMS とターゲット DBMS のすべての組み合わせがサポートされているわけではないことに留意してください。 詳細については、DMO の各種リリースに対する特定の SAP サポート ノートをご覧ください。 たとえば、[SUM 2.0 SP04 のデータベース移行オプション (DMO)](https://launchpad.support.sap.com/#/notes/2644872)などです
     5.  バックアップまたは SAP エクスポート ファイルを移動する必要がある場合は、インターネット経由と ExpressRoute 経由のどちらの方がデータ転送スループットが高いかをテストします。 インターネット経由でデータを移動する場合は、将来の運用システムで適用する必要がある NSG/ASG セキュリティ ルールの一部を変更することが必要になる場合があることに注意してください
-3.  古いプラットフォームから Azure にシステムを移行する前に、CPU 使用率、ストレージのスループット、IOPS データなどのリソース消費データを収集します。 DBMS レイヤーのユニットからは特に収集しますが、アプリケーション レイヤーのユニットからも行います。 また、ネットワークとストレージの待機時間を測定します
-4.  。
+3.  古いプラットフォームから Azure にシステムを移行する前に、CPU 使用率、ストレージのスループット、IOPS データなどのリソース消費データを収集します。 DBMS レイヤーのユニットからは特に収集しますが、アプリケーション レイヤーのユニットからも行います。 また、ネットワークとストレージの待機時間を測定します。
 4.  SAP サポート ノート、SAP HANA ハードウェア ディレクトリ、および再び SAP PAM のリソースを検証し、Azure でサポートされる VM、それらの VM でサポートされる OS のリリース、サポートされる SAP および DBMS のリリースに、変更がないことを確認します 
 4.  VM の種類と Azure の機能について決定した最新の変更に合わせてデプロイ スクリプトを調整します
 5.  インフラストラクチャとアプリケーションをデプロイした後、一連のチェックを実施して検証します。
@@ -202,6 +209,8 @@ ms.locfileid: "54201331"
     6.  待機時間の影響を受けやすいディスクに対し、または [99.9% の単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) が必要な場合に、Azure Premium Storage が使用された
     7.  Azure 書き込みアクセラレータが正しくデプロイされたことを確認する
         1.  VM、ストレージ スペース、またはストライプ セット内で、Azure 書き込みアクセラレータのサポートが必要なディスクが正しく構築されたことを確認する
+            1.  「[Linux でのソフトウェア RAID の構成](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)」を確認する
+            2.  「[Azure で Linux VM の LVM を構成する](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)」を確認する
     8.  [Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)だけが使用された
     9.  正しい可用性セットおよび Availability Zones に VM がデプロイされた
     10. SAP アプリケーション層および SAP DBMS 層で使用される VM 上で、[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が有効になっていることを確認する

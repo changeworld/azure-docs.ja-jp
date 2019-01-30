@@ -4,18 +4,18 @@ description: Azure HDInsight Tools for Visual Studio Code を使用して、ク�
 Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
 documentationcenter: ''
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/27/2017
-ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.date: 12/15/2018
+ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076792"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818525"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -50,11 +50,11 @@ Azure HDInsight Tools は、VSCode でサポートされている Windows、Linu
 
    ![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-## <a name="open-hdinsight-workspace"></a>HDInsight ワークスペースを開設する
+## <a name="open-hdinsight-work-folder"></a>HDInsight 作業フォルダーを開く
 
-Azure に接続するには、まず VS Code にワークスペースを作成します。
+Azure に接続するには、まず VS Code で作業フォルダーを作成します。
 
-### <a name="to-open-a-workspace"></a>ワークスペースを開設するには
+### <a name="to-open-a-work-folder"></a>作業フォルダーを開くには
 
 1. **[ファイル]** メニューの **[フォルダーを開く]** を選択します。 作業フォルダーとして既存のフォルダーを指定するか、新しいフォルダーを作成します。 フォルダーが左側のウィンドウに表示されます。
 
@@ -77,7 +77,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
     ![HDInsight Tools for Visual Studio Code のログイン](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 3. サインインするには、**[出力]** ウィンドウのサインインの指示に従います。
-    + グローバル環境では、HDInsight のサインインによって Azure のサインイン プロセスがトリガーされます。
+    + Azure グローバル環境では、**HDInsight: Login** コマンドによって、HDInsight エクスプ ローラーで **Azure へのサインイン** アクションがトリガーされます。その逆も同様です。
 
         ![Azure でのサインイン手順](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
@@ -140,7 +140,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
 接続をテストするために、HDInsight クラスターを一覧表示できます。
 
 ### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>Azure サブスクリプションの HDInsight クラスターを一覧表示するには
-1. ワークスペースを開き、Azure に接続します。 詳細については、「[HDInsight ワークスペースを開設する](#open-hdinsight-workspace)」および「[Azure への接続](#connect-to-hdinsight-cluster)」をご覧ください。
+1. 作業フォルダーを開き、Azure に接続します。 詳細については、[HDInsight 作業フォルダーを開く](#open-hdinsight-work-folder)ことに関するセクションと、[Azure への接続](#connect-to-hdinsight-cluster)に関するセクションをご覧ください。
 
 2. スクリプト エディターを右クリックして、**[HDInsight:List Cluster]** をコンテキスト メニューから選択します。 
 
@@ -149,7 +149,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
     ![既定のクラスター構成を設定する](./media/hdinsight-for-vscode/list-cluster-result.png)
 
 ## <a name="set-a-default-cluster"></a>既定のクラスターを設定する
-1. ワークスペースを開いて、Azure に接続します。 「[HDInsight ワークスペースを開設する](#open-hdinsight-workspace)」および「[Azure への接続](#connect-to-hdinsight-cluster)」をご覧ください。
+1. 作業フォルダーを開き、Azure に接続します。 [HDInsight 作業フォルダーを開く](#open-hdinsight-work-folder)ことに関するセクションと、[Azure への接続](#connect-to-hdinsight-cluster)に関するセクションをご覧ください。
 
 2. スクリプト エディターを右クリックして、**[HDInsight:Set Default Cluster]** を選択します。 
 
@@ -195,7 +195,12 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリ、Hive
 
 ### <a name="to-submit-interactive-pyspark-queries-to-hdinsight-spark-clusters"></a>HDInsight Spark クラスターに対話型 PySpark クエリを送信するには。
 
-1. 新しい作業フォルダーと .py 拡張子の新しいスクリプト ファイルを作成します (まだない場合)。
+1. 新しい作業フォルダーと新しい .py ファイルを作成します (まだない場合)。
+
+    > [!NOTE]
+    > VSCode では、.py ファイル用の Python 拡張機能をインストールすることをお勧めします。 拡張機能をインストールするか、ダイアログを閉じることができます。
+    > 
+    >![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
 
 2. Azure アカウントに接続します (まだ接続していない場合)。
 
@@ -213,36 +218,19 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリ、Hive
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. このスクリプトを強調表示します。 次に、スクリプト エディターを右クリックして、**[HDInsight:PySpark Interactive]** を選択するか、ショートカット **Ctrl + Alt + I** を使用します。
+4. まだそうしていない場合は Python 環境をインストールします。「[Visual Studio Code 用の PySpark 対話型環境を設定する](set-up-pyspark-interactive-environment.md)」を参照してください。
 
-5. VS Code に **Python** 拡張機能がまだインストールされていない場合は、次の図に示す **[インストール]** ボタンをクリックします。
+5. このスクリプトを強調表示します。 次に、スクリプト エディターを右クリックして、**[HDInsight:PySpark Interactive]** を選択するか、ショートカット **Ctrl + Alt + I** を使用します。
 
-    ![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
-6. システムに Python 環境をインストールします (まだインストールしていない場合)。 
-   - Windows の場合、[Python](https://www.python.org/downloads/) をダウンロードしてインストールします。 次に、システムの PATH に `Python` と `pip` が含まれていることを確認します。
-
-   - macOS および Linux での手順については、「[Visual Studio Code 用の PySpark 対話型環境を設定する](set-up-pyspark-interactive-environment.md)」をご覧ください。
-
-7. PySpark クエリの送信先のクラスターを選択します。 その後すぐに、クエリの結果が右側の新しいタブに表示されます。
+6. PySpark クエリの送信先のクラスターを選択します。 その後すぐに、クエリの結果が右側の新しいタブに表示されます。
 
    ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
-8. ツールでは **SQL 句**のクエリもサポートされています。
+7. ツールでは **SQL 句**のクエリもサポートされています。
 
    ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) 送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信しないでください。 
 
 >[!NOTE]  
 >クラスターはセッション情報を保持できます。 定義済みの変数、関数、対応する値がセッションで保持されるので、同じクラスターの複数のサービス呼び出しで参照できます。 
-
-### <a name="to-disable-environment-check"></a>環境チェックを無効にするには
-
-既定では、HDInsight ツールは対話型 PySpark クエリを送信するときに環境をチェックして依存パッケージをインストールします。 環境チェックを無効にするには、**[USER SETTINGS]\(ユーザー設定\)** で **hdinsight.disablePysparkEnvironmentValidation** を **yes** に設定します。
-
-   ![設定から環境チェックを設定する](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check.png)
-
-または、ダイアログが表示されたときに **[Disable Validation]\(検証の無効化\)** ボタンをクリックします。
-
-   ![ダイアログから環境チェックを設定する](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check-dialog.png)
 
 ### <a name="pyspark3-is-not-supported-with-spark2223"></a>Spark2.2/2.3 では PySpark3 はサポートされていません
 

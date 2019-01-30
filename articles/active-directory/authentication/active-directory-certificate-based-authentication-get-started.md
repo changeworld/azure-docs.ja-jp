@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 3172ba12fbbd0135d1a5a3684145787c83aad040
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7d8c0a837f5618580c5e76e5ca97e19844b95698
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242417"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427170"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -43,7 +43,7 @@ ms.locfileid: "50242417"
 - クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。
 - クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。
 
-## <a name="step-1-select-your-device-platform"></a>手順 1: デバイス プラットフォームを選択する
+## <a name="step-1-select-your-device-platform"></a>手順 1:デバイス プラットフォームを選択する
 
 まず、対象のデバイス プラットフォームについて、次の項目を確認する必要があります。
 
@@ -55,7 +55,7 @@ ms.locfileid: "50242417"
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>手順 2: 証明機関を構成する
+## <a name="step-2-configure-the-certificate-authorities"></a>手順 2:証明機関を構成する
 
 Azure Active Directory で証明機関を構成するには、証明機関ごとに次のものをアップロードします。
 
@@ -133,7 +133,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>手順 3: 失効を構成する
+## <a name="step-3-configure-revocation"></a>手順 3:失効を構成する
 
 クライアント証明書を失効させるために、Azure Active Directory は、証明機関の情報の一部としてアップロードされた URL から証明書失効リスト (CRL) をフェッチし、キャッシュします。 CRL の最後の発行タイムスタンプ (**発効日** プロパティ) を使用し、CRL がまだ有効であることを確認します。 CRL は定期的に参照されて、リストに含まれる証明書へのアクセスは無効になります。
 
@@ -161,7 +161,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 設定する日付は、現在より後の日付にする必要があります。 日付を現在より後の日付にしないと、 **StsRefreshTokensValidFrom** プロパティは設定されません。 日付を現在より後の日付にすると、 **StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-## <a name="step-4-test-your-configuration"></a>手順 4: 構成をテストする
+## <a name="step-4-test-your-configuration"></a>手順 4:構成をテストする
 
 ### <a name="testing-your-certificate"></a>証明書のテスト
 

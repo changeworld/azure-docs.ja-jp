@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632620"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413376"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Speech Service API の言語と地域のサポート
 
@@ -31,30 +31,30 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
  ar-EG | アラビア語 (エジプト)、現代標準 | いいえ  | はい | いいえ 
  ca-ES | カタルニア語 (スペイン) | いいえ  | いいえ  | いいえ 
  da-DK | デンマーク語 (デンマーク) | いいえ  | いいえ  | いいえ 
- de-DE | ドイツ語 (ドイツ) | はい | はい | いいえ 
- en-AU | 英語 (オーストラリア) | いいえ  | 可能  | はい
- en-CA | 英語 (カナダ) | いいえ  | 可能  | はい
- en-GB | 英語 (イギリス) | いいえ  | 可能  | はい
- en-IN | 英語 (インド) | はい | はい | はい
- en-NZ | 英語 (ニュージーランド) | いいえ  | 可能  | はい  
- en-US | 英語 (米国) | はい | はい | はい
- es-ES | スペイン語 (スペイン) | はい | はい | いいえ 
+ de-DE | ドイツ語 (ドイツ) | [はい] | はい | いいえ 
+ en-AU | 英語 (オーストラリア) | いいえ  | 可能  | [はい]
+ en-CA | 英語 (カナダ) | いいえ  | 可能  | [はい]
+ en-GB | 英語 (イギリス) | いいえ  | 可能  | [はい]
+ en-IN | 英語 (インド) | [はい] | はい | [はい]
+ en-NZ | 英語 (ニュージーランド) | いいえ  | 可能  | [はい]  
+ en-US | 英語 (米国) | [はい] | はい | [はい]
+ es-ES | スペイン語 (スペイン) | [はい] | はい | いいえ 
  es-MX | スペイン語 (メキシコ) | いいえ  | はい | いいえ 
  fi-FI | フィンランド語 (フィンランド) | いいえ  | いいえ  | いいえ 
  fr-CA | フランス語 (カナダ) | いいえ  | はい | いいえ 
- fr-FR | フランス語 (フランス) | はい | はい | いいえ 
+ fr-FR | フランス語 (フランス) | [はい] | はい | いいえ 
  hi-IN | ヒンディー語 (インド) | いいえ  | はい | いいえ 
- it-IT | イタリア語 (イタリア) | はい | はい | いいえ 
+ it-IT | イタリア語 (イタリア) | [はい] | はい | いいえ 
  ja-JP | 日本語 (日本) | いいえ  | はい | いいえ 
  ko-KR | 韓国語 (韓国) | いいえ  | はい | いいえ 
  nb-NO | ノルウェー語 (ブークモール) (ノルウェー) | いいえ  | いいえ  | いいえ 
  nl-NL | オランダ語 (オランダ) | いいえ  | はい | いいえ 
  pl-PL | ポーランド語 (ポーランド) | いいえ  | いいえ  | いいえ 
- pt-BR | ポルトガル語 (ブラジル) | はい | はい | いいえ 
+ pt-BR | ポルトガル語 (ブラジル) | [はい] | はい | いいえ 
  pt-PT | ポルトガル語 (ポルトガル) | いいえ  | はい | いいえ 
- ru-RU | ロシア語 (ロシア) | はい | はい | いいえ 
+ ru-RU | ロシア語 (ロシア) | [はい] | はい | いいえ 
  sv-SE | スウェーデン語 (スウェーデン) | いいえ  | いいえ  | いいえ 
- zh-CN | 中国語 (標準、簡体字) | はい | はい | いいえ 
+ zh-CN | 中国語 (標準、簡体字) | [はい] | はい | いいえ 
  zh-HK | 中国語 (標準、繁体字) | いいえ  | はい | いいえ 
  zh-TW | 中国語 (台湾標準中国語) | いいえ  | はい | いいえ 
  th-TH | タイ語 (タイ) | いいえ  | いいえ  | いいえ 
@@ -63,6 +63,9 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
 Text to Speech REST API ではこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
+
+> [!IMPORTANT]
+> 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
 
 ### <a name="neural-voices-preview"></a>ニューラル音声 (プレビュー)
 

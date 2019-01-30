@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249632"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392729"
 ---
 次の表は、Azure Storage の既定の制限について説明しています。 *受信*制限は、ストレージ アカウントに送信されるすべてのデータ (要求) を指します。 *送信*制限は、ストレージ アカウントから受信するすべてのデータ (応答) を指します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "54249632"
 | 汎用 v1 ストレージ アカウントの最大エグレス (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS の場合は 30 Gbps <sup>2</sup> |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS の場合は 15 Gbps <sup>2</sup> |
 
-<sup>1</sup> Azure ストレージ アカウントでは、要求によりさらに高いイングレスと IOPS の制限がサポートされます。 アカウント制限の引き上げを希望する場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)にお問い合わせください。
+<sup>1</sup> Azure Standard ストレージ アカウントでは、要求によりさらに高いイングレス制限がサポートされます。 イングレスのアカウント制限の引き上げを要求する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。
 
 <sup>2</sup> [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)には次のオプションがあります。
 * **RA-GRS**: 読み取りアクセス geo 冗長ストレージ。 RA-GRS が有効な場合、2 次拠点への送信ターゲットは、1 次拠点と同じになります。

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413792"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810382"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>概要
 
-Azure Disk Encryption は、Bitlocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。 
+Azure Disk Encryption は、BitLocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,7 +77,7 @@ Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッ�
 | publisher | Microsoft.Azure.Security | 文字列 |
 | type | AzureDiskEncryptionForWindows| 文字列 |
 | typeHandlerVersion | 1.0、2.2 (VMSS) | int |
-| (省略可能) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
+| (省略可能) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (省略可能) AADClientSecret | password | 文字列 |
 | (省略可能) AADClientCertificate | thumbprint | 文字列 |
 | EncryptionOperation | EnableEncryption | 文字列 | 

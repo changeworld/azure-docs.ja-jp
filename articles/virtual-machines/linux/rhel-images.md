@@ -11,19 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229576"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402151"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
 
-すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
+すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
+
+>[!Important]
+> Azure マーケットプレースで現在使用可能な RHEL イメージは、BYOS (Bring-Your-Own-Subscription)または従量課金制 (PAYG) ライセンス モデルをサポートしています。 [Azure ハイブリッド特典](../windows/hybrid-use-benefit-licensing.md)と、BYOS と PAYG の動的な切り替えはサポートされていません。 ライセンス モードの切り替えには、対応するイメージから VM を再デプロイする必要があります。
+
+>[!Note]
+> Azure マーケットプレース ギャラリーの RHEL イメージに関する問題については、Microsoft にサポート チケットを提出してください。
 
 ## <a name="images-available-in-the-ui"></a>UI で利用可能なイメージ
 Marketplace で "Red Hat" を検索するときや、Azure portal の UI でリソースを作成するときに、利用可能な RHEL イメージと関連する Red Hat 製品のサブセットが表示されます。 Azure CLI/PowerShell/API を使用して、利用可能な VM イメージの完全なセットをいつでも取得することができます。

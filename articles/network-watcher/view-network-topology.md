@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992204"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428171"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -46,7 +46,7 @@ ms.locfileid: "46992204"
 
 6. **[ダウンロード トポロジ]** を選択して、イメージを編集可能なファイル (svg 形式) としてダウンロードします。
 
-図に示すリソースは、仮想ネットワーク内のネットワーク コンポーネントのサブセットです。 たとえば、ネットワーク セキュリティ グループが表示されている間、その中のセキュリティ ルールは図に表示されません。 この図では区別されていませんが、各行は 2 つのリレーションシップ (*包含*または*関連*) のいずれかを示しています。 仮想ネットワーク内のリソースの完全な一覧とリソース間のリレーションシップの種類を表示するには、[PowerShell](#powershell) または [Azure CLI](#azure-cli) を使用してトポロジを生成します。
+図に示すリソースは、仮想ネットワーク内のネットワーク コンポーネントのサブセットです。 たとえば、ネットワーク セキュリティ グループが表示されている間、その中のセキュリティ ルールは図に表示されません。 この図では区別されていませんが、各行は 2 つのリレーションシップ ("*包含*" または "*関連*") のいずれかを示しています。 仮想ネットワーク内のリソースの完全な一覧とリソース間のリレーションシップの種類を表示するには、[PowerShell](#powershell) または [Azure CLI](#azure-cli) を使用してトポロジを生成します。
 
 ## <a name = "azure-cli"></a>トポロジを表示する - Azure CLI
 
@@ -85,7 +85,7 @@ ms.locfileid: "46992204"
 
 次の手順でコマンドを実行できます。
 - Azure Cloud Shell では、コマンドの右上にある **[テスト]** を選択します。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。
-- コンピューターから PowerShell を実行します。 コンピューターから PowerShell を実行する場合、この記事の手順では、バージョン 5.7.0 以降の AzureRm モジュールが必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- コンピューターから PowerShell を実行します。 コンピューターから PowerShell を実行する場合、この記事の手順では、バージョン 5.7.0 以降の AzureRm モジュールが必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 使用するアカウントは、必要な[アクセス許可](required-rbac-permissions.md)を持っている必要があります。
 
@@ -138,12 +138,12 @@ ms.locfileid: "46992204"
 
 トポロジで返されるすべてのリソースには次のプロパティがあります。
 
-- **Name**: リソースの名前。
-- **Id**: リソースの URI。
-- **Location**: リソースが存在する Azure リージョン。
+- **[名前]**:リソースの名前
+- **Id**:リソースの URI。
+- **[場所]**:リソースが存在する Azure リージョン。
 - **Associations**: 参照されたオブジェクトへの関連付けのリスト。 各関連付けには、次のプロパティがあります。
     - **AssociationType**: 子オブジェクトと親のリレーションシップを参照します。 有効な値は *Contains* または *Associated*。
-    - **Name**: 参照されたリソースの名前。
+    - **[名前]**:参照されたリソースの名前。
     - **ResourceId**: 関連付けで参照されているリソースの URI。
 
 ## <a name="next-steps"></a>次の手順

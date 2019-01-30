@@ -1,24 +1,17 @@
 ---
-title: Azure DNS の委任の概要 | Microsoft Docs
+title: Azure DNS の委任の概要
 description: ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170506"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461031"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 
@@ -58,13 +51,16 @@ PC やモバイル デバイスの DNS クライアントは、通常、クラ�
 ![Dns-nameserver](./media/dns-domain-delegation/image1.png)
 
 1. クライアントがローカル DNS サーバーに `www.partners.contoso.net` を要求します。
-1. レコードがないため、ローカル DNS サーバーはルート ネーム サーバーに要求を行います。
-1. ルート ネーム サーバーにはレコードがありません。しかし、`.net` ネーム サーバーのアドレスがあるため、ルート ネーム サーバーはそのアドレスを DNS サーバーに提供します。
-1. DNS サーバーは `.net` ネーム サーバーに要求を送信します。ネーム サーバーにはレコードはありませんが、contoso.net ネーム サーバーのアドレスがあります。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
-1. `contoso.net` ゾーンにはレコードはありませんが、`partners.contoso.net` のネーム サーバーがあるので、このネーム サーバーが返されます。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
-1. DNS サーバーは、`partners.contoso.net` ゾーンに対して `partners.contoso.net` の IP アドレスを要求します。 このゾーンには A レコードが格納されており、IP アドレスが返されます。
-1. DNS サーバーからクライアントに IP アドレスが提供されます。
-1. クライアントは Web サイト `www.partners.contoso.net` に接続します。
+2. レコードがないため、ローカル DNS サーバーはルート ネーム サーバーに要求を行います。
+3. ルート ネーム サーバーにはレコードがありません。しかし、`.net` ネーム サーバーのアドレスがあるため、ルート ネーム サーバーはそのアドレスを DNS サーバーに提供します。
+4. ローカル DNS サーバーは要求を`.net`ネーム サーバーに送信します。
+5. `.net` ネーム サーバーには、レコードはありませんが、`contoso.net` ネーム サーバーのアドレスがあります。 この場合、Azure DNS でホストされている DNS ゾーンのネーム サーバーのアドレスを含めて応答します。
+6. ローカル DNS サーバーは要求を、Azure DNS でホストされている `contoso.net` ゾーンのネーム サーバーに送信します。
+7. `contoso.net` ゾーンにレコードはありませんが、`partners.contoso.net` のネーム サーバーが既知であるため、そのアドレスを含めて応答します。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
+8. ローカル DNS サーバーは要求を、`partners.contoso.net` ゾーンのネーム サーバーに送信します。
+9. `partners.contoso.net` ゾーンには A レコードがあり、目的の IP アドレスを含めて応答が返されます。
+10. ローカル DNS サーバーからクライアントに、目的の IP アドレスが提供されます
+11. クライアントは Web サイト `www.partners.contoso.net` に接続します。
 
 実際に、各委任には、NS レコードの 2 つのコピーがあります。1 つは親ゾーン内で子ゾーンを指すレコード、もう 1 つは子ゾーン自体にあるレコードです。 "contoso.net" ゾーンには、("net" 内の NS レコードだけでなく) "contoso.net" の NS レコードも格納されています。 これらのレコードは、優先する NS レコードと呼ばれ、子ゾーンの頂点に配置されます。
 

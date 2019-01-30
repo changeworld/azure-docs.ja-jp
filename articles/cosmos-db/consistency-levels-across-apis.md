@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034337"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806999"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
@@ -24,15 +24,48 @@ Azure Cosmos DB によって提供される 5 つの整合性モデルは、Azur
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra と Azure Cosmos DB の間の整合性レベルのマッピング
 
-次の表では、Apache Cassandra 4.x クライアントと、Azure Cosmos DB の既定の整合性レベルの間での、"読み取り整合性" のマッピングを示します。 この表は、マルチリージョンのデプロイと単一リージョンのデプロイを示しています。
+次の表では、Apache Cassandra と、Azure Cosmos DB の整合性レベルの間での、"読み取り整合性" のマッピングを示します。 Cassandra の読み取りと書き込みの整合性レベルのそれぞれに対し、対応する Cosmos DB の整合性レベルはより強力な、つまりより厳密な保証を提供します。
 
-| **Apache Cassandra 4.x** | **Azure Cosmos DB (マルチリージョン)** | **Azure Cosmos DB (単一リージョン)** |
+次の表に、Azure Cosmos DB と Cassandra の**書き込み整合性のマッピング**を示します。
+
+| Cassandra | Azure Cosmos DB | 保証 |
 | - | - | - |
-| ONE、TWO、THREE | 一貫性のあるプレフィックス | 一貫性のあるプレフィックス |
-| LOCAL_ONE | 一貫性のあるプレフィックス | 一貫性のあるプレフィックス |
-| QUORUM、ALL、SERIAL | 既定値は有界整合性制約です。 Strong はプライベート プレビュー段階にあります。 | Strong |
-| LOCAL_QUORUM | Bounded staleness | Strong |
-| LOCAL_SERIAL | Bounded staleness | Strong |
+|ALL|Strong  | 線形化可能性 |
+| EACH_QUORUM   | Strong    | 線形化可能性 | 
+| QUORUM、SERIAL |  Strong |    線形化可能性 |
+| LOCAL_QUORUM、THREE、TWO、ONE、LOCAL_ONE、ANY | 一貫性のあるプレフィックス |グローバルな一貫性のあるプレフィックス |
+| EACH_QUORUM   | Strong    | 線形化可能性 |
+| QUORUM、SERIAL |  Strong |    線形化可能性 |
+| LOCAL_QUORUM、THREE、TWO、ONE、LOCAL_ONE、ANY | 一貫性のあるプレフィックス | グローバルな一貫性のあるプレフィックス |
+| QUORUM、SERIAL | Strong   | 線形化可能性 |
+| LOCAL_QUORUM、THREE、TWO、ONE、LOCAL_ONE、ANY | 一貫性のあるプレフィックス | グローバルな一貫性のあるプレフィックス |
+| LOCAL_QUORUM、LOCAL_SERIAL、TWO、THREE    | Bounded Staleness | <ul><li>有界整合性制約。</li><li>最大 K バージョンまたは t 時間の遅れ。</li><li>リージョンでコミットされた最新の値を読み取ります。</li></ul> |
+| ONE、LOCAL_ONE、ANY   | 一貫性のあるプレフィックス | リージョンごとに一貫性のあるプレフィックス |
+
+次の表に、Azure Cosmos DB と Cassandra の**読み取り整合性のマッピング**を示します。
+
+| Cassandra | Azure Cosmos DB | 保証 |
+| - | - | - |
+| ALL、QUORUM、SERIAL、LOCAL_QUORUM、LOCAL_SERIAL、THREE、TWO、ONE、LOCAL_ONE | Strong  | 線形化可能性|
+| ALL、QUORUM、SERIAL、LOCAL_QUORUM、LOCAL_SERIAL、THREE、TWO   |Strong |   線形化可能性 |
+|LOCAL_ONE、ONE | 一貫性のあるプレフィックス | グローバルな一貫性のあるプレフィックス |
+| ALL、QUORUM、SERIAL   | Strong    | 線形化可能性 |
+| LOCAL_ONE、ONE、LOCAL_QUORUM、LOCAL_SERIAL、TWO、THREE |  一貫性のあるプレフィックス   | グローバルな一貫性のあるプレフィックス |
+| LOCAL_ONE、ONE、TWO、THREE、LOCAL_QUORUM、QUORUM |    一貫性のあるプレフィックス   | グローバルな一貫性のあるプレフィックス |
+| ALL、QUORUM、SERIAL、LOCAL_QUORUM、LOCAL_SERIAL、THREE、TWO   |Strong |   線形化可能性 |
+| LOCAL_ONE、ONE    | 一貫性のあるプレフィックス | グローバルな一貫性のあるプレフィックス|
+| ALL、QUORUM、SERIAL   Strong  線形化可能性
+LOCAL_ONE、ONE、LOCAL_QUORUM、LOCAL_SERIAL、TWO、THREE  |一貫性のあるプレフィックス  | グローバルな一貫性のあるプレフィックス |
+|ALL    |Strong |線形化可能性 |
+| LOCAL_ONE、ONE、TWO、THREE、LOCAL_QUORUM、QUORUM  |一貫性のあるプレフィックス  |グローバルな一貫性のあるプレフィックス|
+|ALL、QUORUM、SERIAL    Strong  線形化可能性
+LOCAL_ONE、ONE、LOCAL_QUORUM、LOCAL_SERIAL、TWO、THREE  |一貫性のあるプレフィックス  |グローバルな一貫性のあるプレフィックス |
+|ALL    |Strong | 線形化可能性 |
+| LOCAL_ONE、ONE、TWO、THREE、LOCAL_QUORUM、QUORUM  | 一貫性のあるプレフィックス | グローバルな一貫性のあるプレフィックス |
+| QUORUM、LOCAL_QUORUM、LOCAL_SERIAL、TWO、THREE |  Bounded Staleness   | <ul><li>有界整合性制約。</li><li>最大 K バージョンまたは t 時間の遅れ。 </li><li>リージョンでコミットされた最新の値を読み取ります。</li></ul>
+| LOCAL_ONE、ONE |一貫性のあるプレフィックス | リージョンごとに一貫性のあるプレフィックス |
+| LOCAL_ONE、ONE、TWO、THREE、LOCAL_QUORUM、QUORUM  | 一貫性のあるプレフィックス | リージョンごとに一貫性のあるプレフィックス |
+
 
 ## <a id="mongo-mapping"></a>MongoDB 3.4 と Azure Cosmos DB の間の整合性レベルのマッピング
 

@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579789"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477636"
 ---
 # <a name="configure-recognize-text-containers"></a>テキスト認識コンテナーを構成する
 
@@ -32,7 +32,8 @@ Computer Vision コンテナーの構成設定は階層構造であり、すべ�
 * [課金](#billing-configuration-setting)
 * [Eula](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
-* [ログ](#logging-configuration-settings)
+* [Http プロキシ資格情報設定](#http-proxy-credentials-settings)
+* [Logging](#logging-configuration-settings)
 * [Mounts](#mounts-configuration-settings)
 
 Computer Vision コンテナーからコンテナーをインスタンス化する場合、[環境変数](#configuration-settings-as-environment-variables)または[コマンドライン引数](#configuration-settings-as-command-line-arguments)を使用して、構成設定を指定できます。
@@ -77,9 +78,9 @@ Computer Vision コンテナーからコンテナーをインスタンス化す�
 
 次の表に、`ApplicationInsights` セクションでサポートされている構成設定について説明します。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |------|-----------|-------------|
-| `InstrumentationKey` | 文字列 | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 |
+| `InstrumentationKey` | String | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 |
 
 ## <a name="authentication-configuration-settings"></a>Authentication 構成設定
 
@@ -107,14 +108,19 @@ Cognitive Services のコンテナーは、Azure の使用について定める[
 
 次の表に、`Fluentd` セクションでサポートされている構成設定について説明します。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |------|-----------|-------------|
-| `Host` | 文字列 | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
+| `Host` | String | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
 | `Port` | 整数 | Fluentd サーバーのポート。<br/> 既定値は 24224 です。 |
 | `HeartbeatMs` | 整数 | ハートビート間隔 (ミリ秒)。 この間隔が期限切れになるまでにイベント トラフィックが送信されなかった場合、ハートビートが Fluentd サーバーに送信されます。 既定値は、60000 ミリ秒 (1 分) です。 |
 | `SendBufferSize` | 整数 | 送信操作用に割り当てられたネットワーク バッファー領域 (バイト数)。 既定値は、32,768 バイト (32 キロバイト) です。 |
 | `TlsConnectionEstablishmentTimeoutMs` | 整数 | Fluentd サーバーとの SSL または TLS 接続を確立するためのタイムアウト (ミリ秒)。 既定値は、10000 ミリ秒 (10 秒) です。<br/> `UseTLS` が false に設定されている場合、この値は無視されます。 |
-| `UseTLS` | ブール | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
+| `UseTLS` | Boolean | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
+
+
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-configuration-settings"></a>Logging 構成設定
 
@@ -128,9 +134,9 @@ Cognitive Services のコンテナーは、Azure の使用について定める[
   JSON ログ プロバイダー。 このログ プロバイダーは、ログ データを出力マウントに書き込みます。  
   `Disk` ログ プロバイダーでは、次の構成設定がサポートされます。  
 
-  | 名前 | データ型 | 説明 |
+  | Name | データ型 | 説明 |
   |------|-----------|-------------|
-  | `Format` | 文字列 | ログ ファイルの出力形式。<br/> **注:** ログ プロバイダーを有効にするためにこの値を `json` に設定する必要があります。 コンテナーのインスタンス化中に、出力マウントを指定せずに、この値を指定した場合、エラーが発生します。 |
+  | `Format` | String | ログ ファイルの出力形式。<br/> **注:** ログ プロバイダーを有効にするためにこの値を `json` に設定する必要があります。 コンテナーのインスタンス化中に、出力マウントを指定せずに、この値を指定した場合、エラーが発生します。 |
   | `MaxFileSize` | 整数 | ログ ファイルの最大サイズ (メガバイト (MB))。 現在のログ ファイルのサイズがこの値を満たしているか、または超えている場合、ログ プロバイダーによって新しいログ ファイルが開始されます。 -1 が指定されている場合、ログ ファイルのサイズは、出力マウントの最大ファイル サイズ (存在する場合) によってのみ制限されます。 既定値は 1 です。 |
 
 ASP.NET Core ログ記録のサポートの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration)」を参照してください。
@@ -146,10 +152,10 @@ Computer Vision によって提供される Docker コンテナーは、ステ�
 
 次の表に、`Mounts` セクションでサポートされている構成設定について説明します。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |------|-----------|-------------|
-| `Input` | 文字列 | 入力マウントのターゲット。 既定値は `/input` です。 |
-| `Output` | 文字列 | 出力マウントのターゲット。 既定値は `/output` です。 |
+| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 |
+| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 |
 
 ### <a name="input-and-output-mounts"></a>入力マウントと出力マウント
 
@@ -164,3 +170,7 @@ Computer Vision によって提供される Docker コンテナーは、ステ�
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+
+## <a name="next-steps"></a>次の手順
+
+* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

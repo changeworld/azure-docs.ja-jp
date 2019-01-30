@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合 | Microsoft Docs
 description: Azure Active Directory と Cloud Management Portal for Microsoft Azure の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0cd14a308758701e207e0b1ee6d3591c4b0347bd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 896a40bf9358d446eb7d02666d8ec956f9623e91
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427637"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822010"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
+# <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル:Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 
 このチュートリアルでは、Cloud Management Portal for Microsoft Azure と Azure Active Directory (Azure AD) を統合する方法を説明します。
 
@@ -88,7 +88,7 @@ Cloud Management Portal for Microsoft Azure で、Azure AD の **[ユーザー�
 
 Cloud Management Portal for Microsoft Azure での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Cloud Management Portal for Microsoft Azure テスト ユーザーの作成](#creating-a-cloud-management-portal-for-microsoft-azure-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Cloud Management Portal for Microsoft Azure で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -152,7 +152,7 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 1. **Cloud Management Portal for Microsoft Azure** 側でシングル サインオンを構成するには、ダウンロードした**証明書**、**サインアウト URL**、**SAML シングル サインオン サービス URL**、**SAML エンティティ ID** を [Cloud Management Portal for Microsoft Azure サポート チーム](mailto:jczernuszka@newsignature.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。

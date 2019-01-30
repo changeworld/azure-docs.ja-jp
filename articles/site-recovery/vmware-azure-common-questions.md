@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320992"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478104"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -43,7 +43,23 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Azure アカウントには VM を作成するアクセス許可が必要ですか?
 サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
+## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery コンポーネントのアップグレード
 
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>モビリティ エージェント/構成サーバー/プロセス サーバーのバージョンが非常に古く、、アップグレードに失敗しました。 最新バージョンにアップグレードするにはどうすればよいですか?
+
+Azure Site Recovery は N-4 サポート モデルに従っています。 非常に古いバージョンからアップグレードする方法の詳細については、[サポートに関する声明](https://aka.ms/asr_support_statement)を参照してください。
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>Azure Site Recovery のリリース ノートと更新プログラムのロールアップはどこで入手できますか?
+
+リリース ノート情報については、この[ドキュメント](https://aka.ms/asr_update_rollups)を参照してください。 各更新プログラムのロールアップでは、それぞれのコンポーネントのインストールのリンクがあります。
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>オンプレミスの VMware または物理サイトの Site Recovery コンポーネントを Azure をアップグレードするには、どうすればよいですか?
+
+コンポーネントをアップグレードするには、[こちら](https://aka.ms/asr_vmware_upgrades)に記載されているガイダンスを参照してください。
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>ソース マシンの再起動は、アップグレードごとに必須ですか?
+
+アップグレードごとをお勧めしますが、必須ではありません。 明確なガイダンスについては、[こちら](https://aka.ms/asr_vmware_upgrades)を参照してください。
 
 ## <a name="on-premises"></a>オンプレミス
 
@@ -142,7 +158,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 可能ですが、構成サーバーを実行している Azure VM は、オンプレミスの VMware のインフラストラクチャや VM と通信する必要があります。 これで待機時間が長くなり、進行中のレプリケーションに影響する可能性があります。
 
 ### <a name="how-do-i-update-the-configuration-server"></a>構成サーバーはどのようにして更新できますか?
-構成サーバーの更新の[詳細](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をご覧ください。 最新の更新情報については、[Azure の更新情報のページ](https://azure.microsoft.com/updates/?product=site-recovery)をご覧ください。 構成サーバーの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
+構成サーバーの更新の[詳細](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をご覧ください。 最新の更新情報については、[Azure の更新情報のページ](https://azure.microsoft.com/updates/?product=site-recovery)をご覧ください。 構成サーバーの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。 お使いのバージョンが現在のバージョンより 5 以上古い場合は、[サポートに関する声明](https://aka.ms/asr_support_statement)でアップグレードのガイダンスについて参照してください。
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>デプロイした構成サーバーをバックアップする必要はありますか?
 構成サーバーの定期的なスケジュールされたバックアップを実行することをお勧めします。 フェールバックが成功するには、フェールバックされる仮想マシンが構成サーバー データベース内に存在し、構成サーバーが実行中で接続状態である必要があります。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。

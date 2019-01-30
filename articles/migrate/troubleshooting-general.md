@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c7d0980c928ecefebeabff555378230453c742f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261232"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827943"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -286,7 +286,7 @@ Windows イベント トレーシング を収集するには、次の操作を�
 | 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   |
 | 753       | InvalidLoginCredentials        | 次のエラーが原因で vCenter Server '%Name;' に接続できません: %ErrorMessage; | ログイン資格情報が無効であるため、vCenter Server への接続に失敗しました。                             | 指定されたログイン資格情報が正しいことを確認してください。                                                                                    |
-| 754       | NoPerfDataAvaialable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
+| 754       | NoPerfDataAvailable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
 | 756       | NullInstanceUUID               | InstanceUUID が null のマシンを検出しました                                  | vCenter Server に不適切なオブジェクトがある可能性があります。                                                      | 問題を解決してから、操作をやり直してください。                                                                                                           |
 | 757       | VMNotFound                     | 仮想マシンが見つかりません                                                  | 仮想マシンが削除されている可能性があります: %VMID;                                                                | 検出中に、vCenter のインベントリのスコーピングで選択した仮想マシンが存在することを確認してください                                      |
 | 758       | GetPerfDataTimeout             | VCenter の要求がタイムアウトしました。メッセージ %Message;                                  | vCenter Server の資格情報が正しくありません                                                              | VCenter Server の資格情報をチェックし、その vCenter Server が到達可能であることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。 |

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: d80794511f334cd6dc5af418e24fc774b7d8728f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d89fb86209af2074794d5a5abcdcebadec904799
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867512"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434276"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
@@ -31,7 +31,7 @@ B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に
 
 1:5 の外部ユーザー無料利用分を使用しているゲスト ユーザーが報告されていないという状況もあります。 ゲスト ユーザーがそのユーザー自身の組織で既に有料の Azure AD ライセンスを所有している場合、そのユーザーはお客様の B2B ゲスト ユーザー ライセンスのいずれかを使用しません。 さらに、ゲスト ユーザーは、追加のライセンス要件なしで Azure AD の無料の機能を使用できます。 ゲスト ユーザーは、お客様が Azure AD の有料ライセンスを所有していない場合でも、Azure AD の無料の機能にアクセスできます。 
 
-## <a name="examples-calculating-guest-user-licenses"></a>例: ゲスト ユーザー ライセンスの計算
+## <a name="examples-calculating-guest-user-licenses"></a>次に例を示します。ゲスト ユーザー ライセンスの計算
 Azure AD の有料サービスにアクセスする必要があるゲスト ユーザーの数を判断したら、必要な 1:5 の割合でゲスト ユーザーに対応するのに十分な Azure AD 有料ライセンスを所有していることを確認してください。 次に例をいくつか示します。
 
 - Azure AD のアプリやサービスに 100 人のゲスト ユーザーを招待したいと考えていて、すべてのゲスト ユーザーにアクセス管理とプロビジョニングを割り当てたいと考えています。 また、それらのゲスト ユーザーのうちの 50 人には、MFA と条件付きアクセスも必要にしたいと考えています。 この組み合わせに対応するには、10 個の Azure AD Basic ライセンスと 10 個の Azure AD Premium P1 ライセンスが必要になります。 お客様がゲスト ユーザーに対して Identity Protection の機能を使用する場合は、ゲスト ユーザーに対応するために同じ 1:5 の割合で Azure AD Premium P2 ライセンスが必要になります。

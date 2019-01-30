@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 5e09401c37d40c99d3f8bbb643d104c0105812f4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 413473b856d76f9ebeff9669eb1facc54d89b509
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730295"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382533"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -260,7 +260,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) とその他の必要な NuGet パッケージに対する参照をアプリケーションに追加します。 下の例では [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) も使用されています。
 
-2.  次のコードをアプリケーションに追加し、正しいリソースが対象となるように変更します。 この例では、Azure Key Vault と連携動作するための 2 つの方法が示されています。
+2. 次のコードをアプリケーションに追加し、正しいリソースが対象となるように変更します。 この例では、Azure Key Vault と連携動作するための 2 つの方法が示されています。
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -277,12 +277,12 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 ### <a name="using-the-rest-protocol"></a>REST プロトコルの使用
 
 マネージド ID を使用するアプリでは、2 つの環境変数を定義します。
+
 - MSI_ENDPOINT
 - MSI_SECRET
 
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
-> [!div class="mx-tdBreakAll"]
 > |パラメーター名|イン|説明|
 > |-----|-----|-----|
 > |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
@@ -290,10 +290,8 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 > |secret|ヘッダー|MSI_SECRET 環境変数の値。|
 > |clientid|クエリ|(省略可能) 使用するユーザー割り当て ID のID。 省略すると、システム割り当て ID が使用されます。|
 
-
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 
-> [!div class="mx-tdBreakAll"]
 > |プロパティ名|説明|
 > |-------------|----------|
 > |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
@@ -301,24 +299,27 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 > |resource|受信側の Web サービスのアプリケーション ID URI。|
 > |token_type|トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。|
 
-
 この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
 
-> [!NOTE] 
+> [!NOTE]
 > 環境変数はプロセスが初めて開始されるときに設定されます。そのため、アプリケーションのマネージド ID を有効にした後、場合によってはアプリケーションを再起動するか、アプリケーションのコードを再デプロイしないと `MSI_ENDPOINT` と `MSI_SECRET` をコードで利用できません。
 
 ### <a name="rest-protocol-examples"></a>REST プロトコルの例
+
 要求の例を次に示します。
+
 ```
 GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
 Host: localhost:4141
 Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
+
 応答の例は次のようになります。
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
- 
+
 {
     "access_token": "eyJ0eXAi…",
     "expires_on": "09/14/2017 00:00:00 PM +00:00",
@@ -328,7 +329,9 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>コード例
+
 <a name="token-csharp"></a>この要求を C# で行うには:
+
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -336,10 +339,12 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
     return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
 }
 ```
+
 > [!TIP]
 > .NET 言語では、この要求を自作する代わりに、[Microsoft.Azure.Services.AppAuthentication](#asal) を使うこともできます。
 
 <a name="token-js"></a>Node.JS の例:
+
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -355,6 +360,7 @@ const getToken = function(resource, apiver, cb) {
 ```
 
 <a name="token-powershell"></a>PowerShell の例:
+
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -370,13 +376,13 @@ $accessToken = $tokenResponse.access_token
 ```json
 "identity": {
     "type": "None"
-}    
+}
 ```
 
 この方法でシステム割り当て ID を削除すると、AAD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、AAD からも自動的に削除されます。
 
-> [!NOTE] 
-> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用は推奨しません。
+> [!NOTE]
+> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用はお勧めしません。
 
 ## <a name="next-steps"></a>次の手順
 

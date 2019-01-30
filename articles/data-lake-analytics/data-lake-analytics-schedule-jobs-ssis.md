@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579235"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448722"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -40,13 +40,13 @@ U-SQL スクリプトは、SSIS の組み込み関数とタスクを使用して
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>シナリオ 1: インライン スクリプト呼び出し tvf とストアド プロシージャを使用する
 
-Azure Data Lake Analytics タスク エディターで、**SourceType** を **DiretInput** として構成し、U-SQL ステートメントを **USQLStatemnt** に配置します。
+Azure Data Lake Analytics タスク エディターで、**SourceType** を **DirectInput** として構成し、U-SQL ステートメントを **USQLStatement** に配置します。
 
 容易なメンテナンスとコード管理のため、たとえば、短い U-SQL スクリプトのみをインライン スクリプトとして含めると、U-SQL データベース内で既存のテーブル値関数とストアド プロシージャを呼び出すことができます。 
 
 ![SSIS タスクのインライン U-SQL スクリプトを編集する](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-関連記事: [ストアド プロシージャにパラメーターを渡す方法](#scenario-6-pass-parameters-to-u-sql-script)
+関連記事:[ストアド プロシージャにパラメーターを渡す方法](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する
 

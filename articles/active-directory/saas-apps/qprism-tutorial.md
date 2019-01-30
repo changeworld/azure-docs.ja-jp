@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と QPrism の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と QPrism の統合 | Microsoft Docs
 description: Azure Active Directory と QPrism の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8278b26f023ada109a8e6fa3965476e3dc4526c7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420276"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828062"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル: Azure Active Directory と QPrism の統合
+# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル:Azure Active Directory と QPrism の統合
 
 このチュートリアルでは、QPrism と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -112,7 +112,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[QPrism クライアント サポート チーム](mailto:qsupport-ce@quatrro.com)にお問い合わせください。 
 
-1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
      ![証明書のダウンロードのリンク](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
@@ -156,7 +156,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
  
 ### <a name="create-a-qprism-test-user"></a>QPrism テスト ユーザーの作成
 
-このセクションでは、QPrism で Britta Simon というユーザーを作成します。 [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com)と連携して、QPrism プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、QPrism で Britta Simon というユーザーを作成します。 [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com) と連携して、QPrism プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -193,7 +193,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [QPrism] タイルをクリックすると、QPrism アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

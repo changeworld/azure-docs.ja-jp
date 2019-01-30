@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
+title: Azure AD Connect:アカウントとアクセス許可 | Microsoft Docs
 description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3bce69236586bcd0a250c47f1129ac0d94e8b26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231484"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478605"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect に使用されるアカウント
 
@@ -39,7 +39,10 @@ Azure AD Connect では、オンプレミス (Windows Server Active Directory) �
 
 Azure AD Connect を実行するためのこれら 3 つのアカウントに加え、Azure AD Connect をインストールするには、次のアカウントが別途必要となります。  次のとおりです。
 
-- **AD DS エンタープライズ管理者アカウント**:      Azure AD Connect のインストールに使用します。
+- **ローカル管理者アカウント**: Azure AD Connect をインストールし、コンピューターでのローカル管理者アクセス許可を持っている管理者。
+
+- **AD DS エンタープライズ管理者アカウント**: 必要に応じて、上記の "AD DS コネクタ アカウント" を作成するために使用します。
+
 - **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。
 
 - **SQL SA アカウント (任意)**:     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
@@ -117,7 +120,7 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 >[!IMPORTANT]
 >ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド **1.1.880.0** (2018 年 8 月にリリース) に導入されました。これには、Azure AD DS コネクタ アカウント用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。
 >
->詳しくは、「[Azure AD Connect: Configure AD DS Connector Account Permission](how-to-connect-configure-ad-ds-connector-account.md)」(Azure AD Connect: AD DS コネクタ アカウントのアクセス許可を構成する) をご覧ください
+>詳しくは、「[Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成](how-to-connect-configure-ad-ds-connector-account.md)」を参照してください。
 
 **[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
 

@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42146425"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819647"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスの Azure への接続: IoT Hub と Event Hubs
 
 Azure では、データとクラウドの機能をつなぐ助けとなるように、さまざまな種類の接続と通信のために特に開発されたサービスを提供しています。 Azure IoT Hub と Azure Event Hubs はどちらも、大量のデータを取り込み、ビジネス情報分析のためにそのデータを処理または保存できるクラウド サービスです。 2 つのサービスは、どちらも少ない待ち時間と高い信頼性でデータの取り込みをサポートするという点で類似していますが、異なる目的のために設計されています。 IoT Hub は、とりわけ、IoT デバイスを大規模に Azure クラウドに接続することに特有の要件に対処するために開発されたのに対して、Event Hubs は、ビッグ データのストリーミング用に設計されました。 IoT デバイスを Azure に接続するために、Azure IoT Hub を使用することをお勧めするのは、これが理由です
 
@@ -30,13 +30,14 @@ Azure IoT Hub は、IoT デバイスを接続し、ビジネスの分析情報�
 | IoT の機能 | IoT Hub Standard レベル | IoT Hub Basic レベル | Event Hubs |
 | --- | --- | --- | --- |
 | デバイスからクラウドへのメッセージ | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
-| プロトコル: HTTPS、AMQP、AMQP over webSockets | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
-| プロトコル: MQTT、MQTT over webSockets | ![○][checkmark] | ![○][checkmark] |  |
+| Protocols:HTTPS、AMQP、AMQP over webSockets | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
+| Protocols:MQTT、MQTT over webSockets | ![○][checkmark] | ![○][checkmark] |  |
 | デバイスごとの ID | ![○][checkmark] | ![○][checkmark] |  |
 | 複数デバイスからのファイルのアップロード | ![○][checkmark] | ![○][checkmark] |  |
 | Device Provisioning Service | ![○][checkmark] | ![○][checkmark] |  |
 | クラウドからデバイスへのメッセージ | ![○][checkmark] |  |  |
 | デバイス ツインとデバイス管理 | ![○][checkmark] |  |  |
+| デバイス ストリーム (プレビュー) | ![○][checkmark] |  |  |
 | IoT Edge | ![○][checkmark] |  |  |
 
 唯一のユース ケースがデバイスからクラウドへのデータ インジェストである場合でも、IoT Hub は IoT デバイス接続用に設計されたサービスを提供するので、IoT Hub を使うことを強くお勧めします。 

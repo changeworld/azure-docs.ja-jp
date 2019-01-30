@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309452"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412570"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -57,7 +57,7 @@ Windows IoT Core デバイスを設定するには、「[Windows IoT Core デバ
 
 ### <a name="what-youll-need"></a>必要なもの
 
-Windows 10 IoT Core 物理デバイスを設定するには、まず Windows 10 IoT Core を実行しているデバイスを用意する必要があります。 Windows 10 IoT Core デバイスを設定する方法は、[ここで](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)学習してください。
+Windows 10 IoT Core 実デバイスを設定するには、まず Windows 10 IoT Core を実行しているデバイスを用意する必要があります。 Windows 10 IoT Core デバイスを設定する方法は、[ここで](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)学習してください。
 
 Azure IoT Central と通信できるクライアント アプリケーションも必要になります。 Azure SDK を使用して独自のカスタム アプリケーションを構築し、Visual Studio を使用してそれをデバイスにデプロイするか、または[事前に構築されたサンプル](https://developer.microsoft.com/windows/iot/samples)をダウンロードし、それを単純にデバイスにデプロイして実行することができます。 
 

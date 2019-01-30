@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352582"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382559"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
@@ -213,8 +213,8 @@ Standard Load Balancer は、99.99% の SLA で利用できます。  詳しく�
 
 Standard Load Balancer の使用量は課金されます。
 
-- 構成済みの負荷分散規則と送信規則の数 (インバウンド NAT 規則は規則の合計数にはカウントされません)
-- 規則に関係なく受信と送信で処理されたデータの量 
+- 構成されている負荷分散規則とアウトバウンド規則の数 (インバウンド NAT 規則はルールの総数にカウントされません)
+- 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量 
 
 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
 

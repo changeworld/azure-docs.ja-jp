@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185020"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439104"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer のアウトバウンド規則
 
@@ -208,6 +208,7 @@ disableOutboundSnat パラメーターの既定値は false です。この場�
 - 構成可能なアウトバウンド アイドル タイムアウトの範囲は、4 から 66 分 (240 から 4000 秒) です。
 - Load Balancer では、アウトバウンド NAT の ICMP はサポートされていません。
 - ポータルを使用して、アウトバウンド規則を構成または表示することはできません。  代わりに、テンプレート、REST API、Az CLI 2.0、または PowerShell を使用します。
+- アウトバウンド規則は、プライマリ NIC とプライマリ IP 構成にのみ適用できます。
 
 ## <a name="next-steps"></a>次の手順
 

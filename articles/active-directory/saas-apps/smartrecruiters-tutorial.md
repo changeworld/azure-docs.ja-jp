@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SmartRecruiters の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SmartRecruiters の統合 | Microsoft Docs
 description: Azure Active Directory と SmartRecruiters の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: e96aeecd-e113-454e-89c3-58c9f44cfd4c
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: b248cd7d5d45e4f91bc97a5a29476f9bfa03089d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6624368e0438b8f41a0f90c5da3f7f00f4cbc86c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426987"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813561"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
+# <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル:Azure Active Directory と SmartRecruiters の統合
 
 このチュートリアルでは、SmartRecruiters と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -160,7 +160,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
 1. **[Save Web SSO configuration]\(Web SSO 構成の保存\)** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -196,7 +196,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
  
 ### <a name="create-a-smartrecruiters-test-user"></a>SmartRecruiters テスト ユーザーの作成
 
-このセクションでは、SmartRecruiters で Britta Simon というユーザーを作成します。 SmartRecruiters プラットフォームでユーザーを追加するには、[SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/)に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、SmartRecruiters で Britta Simon というユーザーを作成します。 SmartRecruiters プラットフォームでユーザーを追加するには、 [SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/) に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -233,7 +233,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで SmartRecruiters のタイルをクリックすると、自動的に SmartRecruiters アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

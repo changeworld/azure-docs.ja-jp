@@ -3,18 +3,18 @@ title: Azure の更新管理デプロイで事前および事後スクリプト�
 description: この記事では、更新プログラムの展開のための事前および事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121313"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428241"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
@@ -100,7 +100,7 @@ Runbook が事前または事後スクリプトとして使用されるように
    }
 ```
 
-すべてのプロパティの完全な例は、[ソフトウェア更新構成 (名前で取得)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples) に関するページにあります。
+すべてのプロパティの完全な例は、[ソフトウェア更新構成 (名前で取得)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples) に関するページにあります
 
 ## <a name="samples"></a>サンプル
 
@@ -224,3 +224,4 @@ if ($summary.Type -eq "Error")
 
 > [!div class="nextstepaction"]
 > [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
+

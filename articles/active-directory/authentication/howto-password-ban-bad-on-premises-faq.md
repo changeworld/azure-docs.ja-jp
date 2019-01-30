@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 59c89c81f618876de48de66a38e1063eb658fba4
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 9046090a45d52a283d28d1c4cc79b44503cb5a9d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742957"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427595"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>プレビュー: オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>更新:オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
 |     |
 | --- |
@@ -26,23 +26,23 @@ ms.locfileid: "50742957"
 
 ## <a name="general-questions"></a>一般的な質問
 
-**Q: Azure AD パスワード保護はいつ一般提供 (GA) されますか?**
+**Q:Azure AD パスワード保護はいつ一般提供 (GA) されますか?**
 
 一般提供の日付はまだ発表していません。
 
-**Q: オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
+**Q:オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
 
 いいえ。オンプレミスの Azure AD パスワード保護は、パブリック クラウドでのみサポートされます。
 
-**Q: どのようにして Azure AD パスワード保護の利点を自分のオンプレミスのユーザーのサブセットに適用できますか?**
+**Q:どのようにして Azure AD パスワード保護の利点を自分のオンプレミスのユーザーのサブセットに適用できますか?**
 
 サポートされていません。 デプロイして有効にされると、Azure AD パスワード保護では識別を行いません。すべてのユーザーがセキュリティの利点を等しく受け取ります。
 
-**Q: その他のパスワード フィルター ベースの製品と並べて Azure AD パスワード保護をインストールすることはサポートされていますか?**
+**Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 
 はい。 複数の登録されたパスワード フィルター DLL に対するサポートは、コア Windows 機能であり、Azure AD パスワード保護に固有のものではありません。 登録されたパスワード フィルター DLL はすべて、パスワードを受け入れる前に一致している必要があります。
 
-**Q: sysvol レプリケーションに DFSR が必要なのはなぜですか?**
+**Q:sysvol レプリケーションに DFSR が必要なのはなぜですか?**
 
 FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題があり、より新しいバージョンの Windows Server Active Directory ではまったくサポートされていません。 Azure AD パスワード保護のゼロ テストは、FRS で構成されたドメインで行われます。
 
@@ -50,13 +50,13 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 
 [sysvol レプリケーションを DFSR に移行するケース](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[DRS の終了が近づいています](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[FRS の終了が近づいています](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-**Q: DC エージェント ソフトウェアのインストールまたはアップグレードに再起動が必要なのはなぜですか?**
+**Q:DC エージェント ソフトウェアのインストールまたはアップグレードに再起動が必要なのはなぜですか?**
 
 これはコア Windows 動作によって必要になります。
 
-**Q: 特定のプロキシ サーバーを使用するように DC エージェントを構成する方法はありますか?**
+**Q:特定のプロキシ サーバーを使用するように DC エージェントを構成する方法はありますか?**
 
 いいえ。
 

@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a5a5b306341780ead737def90306fe6cb6a47db1
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808096"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401977"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -28,7 +28,7 @@ ms.locfileid: "53808096"
 
 1. **Python** で機械学習トレーニング スクリプトを開発します。
 1. **コンピューティング ターゲット** を作成して構成します。
-1. 構成したコンピューティング ターゲットに **スクリプトを送信** して、その環境で実行します。 トレーニングの間に、コンピューティング ターゲットは実行レコードを **データストア** に格納します。 レコードは **実験** に保存されます。
+1. 構成したコンピューティング ターゲットに **スクリプトを送信** して、その環境で実行します。 トレーニング中、このスクリプトは、**データストア**の読み取りと書き込みを行うことができます。 そして実行の記録は、**ワークスペース**に**実行**として保存され、**実験**の下でグループ化されます。
 1. 現在と過去の実行から **実験をクエリ** してログに記録されたメトリックを取得します。 メトリックで目的の結果が示されない場合は、手順 1 に戻ってスクリプトを繰り返します。
 1. 満足できる実行が見つかった場合は、永続化されたモデルを**モデル レジストリ**に登録します。
 1. スコアリング スクリプトを開発します。
@@ -228,5 +228,5 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
 * [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
-* [クイック スタート: Python でワークスペースを作成する](quickstart-get-started.md)
+* [クイック スタート:Python でワークスペースを作成する](quickstart-get-started.md)
 * [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

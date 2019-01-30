@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1b488e938cf314eef18117ffd33f582319260162
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427735"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438781"
 ---
-# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法: Windows 7、8、8.1 からパスワードのリセットを有効にする
+# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法:Windows 7、8、8.1 からパスワードのリセットを有効にする
 
 管理者がセルフ サービスによるパスワードのリセット (SSPR) を有効にしていても、ユーザーはブラウザー ウィンドウで [SSPR ポータル](https://aka.ms/sspr)にアクセスすることができないため、ヘルプデスクには引き続きパスワードをリセットするよう電話がかかってきます。 Windows 10 マシンでは、チュートリアル「[ログイン画面からの Azure AD パスワード リセット](tutorial-sspr-windows.md)」を使用して、ログオン画面で「パスワードのリセット」リンクを有効にすることができます。次のガイダンスは、Windows 7、8、および 8.1 のユーザーが Windows ログオン画面で SSPR を使用してパスワードをリセットできるようにするのに役立ちます。
 
@@ -74,7 +74,7 @@ Azure AD イベントには、パスワードのリセットが発生した IP �
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
 ```
 
-* 詳細ログ記録を有効にするには、REG_DWORD: "EnableLogging" を作成して 1 に設定します。
+* 詳細ログ記録を有効にするには、REG_DWORD:"EnableLogging" を作成して 1 に設定します。
 * 詳細ログ記録を無効にするには、REG_DWORD "EnableLogging" を 0 に変更します。
 
 お使いの Windows 7、8、および 8.1 コンピューターがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com への HTTPS トラフィック (443) を許可する必要があります。

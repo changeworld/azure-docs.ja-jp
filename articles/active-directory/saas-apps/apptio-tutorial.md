@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Apptio の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Apptio の統合 | Microsoft Docs
 description: Azure Active Directory と Apptio の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: b23eba91-7698-47e7-ae75-0ceafd739965
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: ad5c8a61a83211147f5e4929a4f4f6fab738ba32
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9db26db9d55ce567c41b12283ba94599074844b3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043756"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816485"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-apptio"></a>チュートリアル: Azure Active Directory と Apptio の統合
+# <a name="tutorial-azure-active-directory-integration-with-apptio"></a>チュートリアル:Azure Active Directory と Apptio の統合
 
 このチュートリアルでは、Apptio と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -150,7 +150,7 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
 9. **Apptio** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Apptio サポート チーム](https://www.apptio.com/about/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -186,7 +186,7 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="create-an-apptio-test-user"></a>Apptio テスト ユーザーの作成
 
-このセクションでは、Apptio で Britta Simon という名前のユーザーを作成します。 [Apptio サポート チーム](https://www.apptio.com/about/contact)と協力して、Apptio プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Apptio で Britta Simon という名前のユーザーを作成します。  [Apptio サポート チーム](https://www.apptio.com/about/contact) と協力して、Apptio プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -223,7 +223,7 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Apptio] タイルをクリックすると、Apptio アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

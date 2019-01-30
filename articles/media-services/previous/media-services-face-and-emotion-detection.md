@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 859e75819f96edd527fceb143faf8357738ce80e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5aab8a5d48b7a7d17aa44b74d65ee70cb9322944
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784461"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817556"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
 ## <a name="overview"></a>概要
@@ -75,7 +75,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ```
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | [説明] |
+| 属性名 | 説明 |
 | --- | --- |
 | Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
@@ -150,9 +150,9 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | [説明] |
+| 属性名 | 説明 |
 | --- | --- |
-| Mode |Faces: 顔検出のみ。<br/>PerFaceEmotion: 検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。 |
+| Mode |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
 | AggregateEmotionIntervalMs |AggregateEmotion モードが選択されている場合に使用します。 集計結果を生成する頻度を指定します。 |
 
@@ -418,7 +418,7 @@ namespace FaceDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Face Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);

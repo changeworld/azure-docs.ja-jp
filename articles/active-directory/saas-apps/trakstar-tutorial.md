@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Trakstar の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Trakstar の統合 | Microsoft Docs
 description: Azure Active Directory と Trakstar の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 411cb8c3-95c6-4138-acf2-ffc7f663e89a
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 24f67ffab016420ca2603c1ae313fc22421be9e4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5380c909602053b1fd20e85c81099d1bb2c6614b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420788"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823795"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル: Azure Active Directory と Trakstar の統合
+# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル:Azure Active Directory と Trakstar の統合
 
 このチュートリアルでは、Trakstar と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,7 +89,7 @@ Trakstar で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 Trakstar で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Trakstar のテスト ユーザーの作成](#creating-a-trakstar-test-user)** - Trakstar で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -136,7 +136,7 @@ Trakstar で Azure AD のシングル サインオンを構成およびテスト
 1. **Trakstar** 側にシングル サインオンを構成するには、管理者としてログインして**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を入力する必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

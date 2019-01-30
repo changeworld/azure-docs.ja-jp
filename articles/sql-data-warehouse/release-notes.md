@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118440"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421455"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
-Azure SQL Data Warehouse は、超並列処理 (MPP) を利用して、ペタバイト単位のデータに対して複雑なクエリを短時間で実行するクラウドベースのエンタープライズ データ ウェアハウス (EDW) です。 ビッグ データ ソリューションの主要コンポーネントとして SQL Data Warehouse を使用してください。 簡単な PolyBase T-SQL クエリで SQL Data Warehouse にビッグ データをインポートしてから、MPP の機能を利用して高パフォーマンスの分析を実行します。 統合と分析を進めると、企業が洞察時に信頼できる 1 つの真実がデータ ウェアハウスに構築されます。
+Azure SQL Data Warehouse (SQL DW) は、超並列処理 (MPP) を利用して、ペタバイト単位のデータに対して複雑なクエリを短時間で実行するクラウドベースのエンタープライズ データ ウェアハウスです。 ビッグ データ ソリューションの主要コンポーネントとして SQL Data Warehouse を使用してください。 簡単な PolyBase T-SQL クエリで SQL Data Warehouse にビッグ データをインポートしてから、MPP の機能を利用して高パフォーマンスの分析を実行します。 統合と分析を進めると、企業が洞察時に信頼できる 1 つの真実がデータ ウェアハウスに構築されます。
 
 最新バージョンの Azure SQL Data Warehouse で利用できる新しい機能と機能強化について詳しくは、以下のリンクをクリックしてください。 示されているメンテナンス スケジュールの間に、これらのサービスの更新プログラムを受け取ることができます。
 
+- [SQL DW Version 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [2018 年 12 月](./release-notes-december-2018.md)
 - [2018 年 10 月](./release-notes-october-2018.md)
 - [2018 年 9 月](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Azure SQL Data Warehouse は、超並列処理 (MPP) を利用して、ペタバ
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-出力例:![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
+出力例:![SQL Data Warehouse のバージョン](./media/release-notes/dw-version.png)
 
-示された日付を使用して、お使いの Azure SQL Data Warehouse に適用されているリリースを確認してください。 
+示されたバージョンを使用して、お使いの Azure SQL Data Warehouse に適用されているリリースを確認してください。 
 
 
 ## <a name="next-steps"></a>次の手順

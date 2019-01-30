@@ -9,17 +9,22 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: dbbff7644d0c9375a4d2a145769d09a786b01c25
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075823"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412327"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
+
+光学式文字認識 (OCR) スキルは、画像ファイルに印字された手書きテキストを認識します。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
+
++ textExtractionAlgorithm が "handwritten" に設定されている場合は、["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) 機能が使用されます。
++ textExtractionAlgorithm が "printed" に設定されている場合、英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) 機能が使用されます。 英語については、印刷されたテキスト用の新しい ["Recognize Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) 機能が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 
@@ -30,12 +35,9 @@ ms.locfileid: "54075823"
 + .GIF
 
 > [!NOTE]
-> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+> 2018 年 12 月 21 日より、Azure Search のスキルセットに [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)できます。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金されますが、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
->
->  OCR スキルは、次の Cognitive Services 機能にマップします。textExtractionAlgorithm が "handwritten" に設定されている場合は、["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) 機能が使用されます。
->  textExtractionAlgorithm が "printed" に設定されている場合、英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) 機能が使用されます。 英語については、印刷されたテキスト用の新しい ["Recognize Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) 機能が使用されます。
+> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search の課金対象であり、現在はプレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -58,7 +60,7 @@ ms.locfileid: "54075823"
 | 出力名     | 説明                   |
 |---------------|-------------------------------|
 | text          | イメージから抽出されたプレーン テキスト｡   |
-| layoutText    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型｡|
+| layoutText    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型。|
 
 
 ## <a name="sample-definition"></a>定義例
@@ -136,7 +138,7 @@ ms.locfileid: "54075823"
 
 Text Merger の一般的なユース ケースとしては､ドキュメントの content  フィールドへのイメージのテキスト表現 (OCR スキルからのテキストかイメージのキャプション) のマージがあります｡ 
 
-以下のスキルセット例では､*merged_text* フィールドを作成することで､ドキュメントのテキスト コンテンツとともい､そのドキュメントに埋め込まれている各イメージから OCR で読み込まれたテキストが含めるようにしています｡ 
+次に示すのは、*merged_text* フィールドを作成するスキルセットの例です。 このフィールドには、ドキュメントのテキスト コンテンツが格納されるほか、そのドキュメントに埋め込まれている各画像から OCR で読み込まれたテキストが格納されます。 
 
 #### <a name="request-body-syntax"></a>要求本文の構文
 ```json

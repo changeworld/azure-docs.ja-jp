@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Inkling の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Inkling の統合 | Microsoft Docs
 description: Azure Active Directory と Inkling の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 64c7ee45-ee8a-42f7-bf04-fd0e00833ea9
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 339c924fc03faddae6326b79cc376b59c567829e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 31e00c5810e33433d58820f4db300b935ad7baaf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116557"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811283"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-inkling"></a>チュートリアル: Azure Active Directory と Inkling の統合
+# <a name="tutorial-azure-active-directory-integration-with-inkling"></a>チュートリアル:Azure Active Directory と Inkling の統合
 
 このチュートリアルでは、Inkling と Azure Active Directory (Azure AD) を統合する方法について説明します。
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Communifire の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Communifire の統合 | Microsoft Docs
 description: Azure Active Directory と Communifire の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: de2a164d-2115-43e7-a9ed-e54f483f4aeb
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 590d8fe0e974587effc7d8a3c59546b5684b146c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cb5c847ea6c4186001f789de8c7ce04842af38
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446233"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811368"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-communifire"></a>チュートリアル: Azure Active Directory と Communifire の統合
+# <a name="tutorial-azure-active-directory-integration-with-communifire"></a>チュートリアル:Azure Active Directory と Communifire の統合
 
 このチュートリアルでは、Communifire と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -138,7 +138,7 @@ Communifire で Azure AD のシングル サインオンを構成してテスト
 1. **Communifire** 側のシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Communifire サポート チーム](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -177,7 +177,7 @@ Communifire で Azure AD のシングル サインオンを構成してテスト
 このセクションの目的は、Communifire で Britta Simon というユーザーを作成することです。 Communifire では、Just-In-Time プロビジョニングがサポートされており、この設定は、既定で有効になっています。 Communifire にまだアクセスしていない場合は、アクセスの試行中に、プロファイルの詳細を保存した後、新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Communifire サポート チーム](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Communifire のサポート チーム](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -214,7 +214,7 @@ Communifire で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Communifire] タイルをクリックすると、自動的に Communifire アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

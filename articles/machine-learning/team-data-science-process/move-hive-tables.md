@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134949"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390938"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -137,11 +137,11 @@ Hive テーブルを作成する Hive クエリを次に示します。
 
 接続する必要があるフィールドと他の構成の説明を次に示します。
 
-* **<database name>**: 作成するデータベースの名前。 既定のデータベースを使用する場合、 *create database...* クエリは省略してかまいません。
-* **<table name>**: 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *<table name>* で直接参照でき、<database name> は不要です。
-* **<field separator>**: Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
-* **<line separator>**: データ ファイル内の行を区切る区切り記号。
-* **<storage location>**: Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION <storage location>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、"*'wasb:///<ディレクトリ 1>/'*" や "*'wasb:///<ディレクトリ 1>/<ディレクトリ 2>/'*" などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
+* **\<データベース名\>**: 作成するデータベースの名前。 既定のデータベースを使用する場合、 *create database...* クエリは省略してかまいません。
+* **\<テーブル名\>**: 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<テーブル名\>* で直接参照でき、\<データベース名\> は不要です。
+* **\<フィールド区切り記号\>**: Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
+* **\<行区切り記号\>**: データ ファイル内の行を区切る区切り記号。
+* **\<ストレージの場所\>**: Hive テーブルのデータを保存する Azure Storage の場所。 *LOCATION \<ストレージの場所\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、"*'wasb:///<ディレクトリ 1>/'*" や "*'wasb:///<ディレクトリ 1>/<ディレクトリ 2>/'*" などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
 * **TBLPROPERTIES("skip.header.line.count"="1")**:データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data"></a>Hive テーブルへのデータの読み込み
@@ -149,7 +149,7 @@ Hive テーブルにデータを読み込む Hive クエリを次に示します
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**:Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*<path to blob data>* は *'wasb:///<directory in this container>/<blob file name>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*<path to blob data>* は、*'wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>'* の形式である必要があります。
+* **\<BLOB データのパス\>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*\<BLOB データのパス\>* は *"wasb:///<directory in this container>/<blob file name>"* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*\<BLOB データのパス\>* は、*"wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>"* の形式である必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。
@@ -216,7 +216,7 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> TEXTFILE テーブル *<database name>.<external textfile table name>*  にパーティションが含まれている場合、手順 3. で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 これを *<database name>.<ORC table name>* に挿入すると 失敗します。その理由は、*<database name>.<ORC table name>*  にはテーブル スキーマのフィールドとしてパーティション変数が含まれないためです。 この場合、ユーザーは *<database name><ORC table name>.* に挿入するフィールドを、以下のように具体的に選択する必要があります 。
+> TEXTFILE テーブル *\<データベース名\>.\<外部テキストファイル テーブル名\>* にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 *\<データベース名\>.\<ORC テーブル名\>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、*\<データベース名\>.\<ORC テーブル名\>* に挿入すると失敗します。 この場合、*\<データベース名\>.\<ORC テーブル名\>* に挿入するフィールドを次のように具体的に選択する必要があります。
 >
 >
 
@@ -225,7 +225,7 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-すべてのデータが *<database name>.<ORC table name>* に挿入された後に、次のクエリを使用して *<external textfile table name>* を削除するのが安全です。
+すべてのデータが *\<データベース名\>.\<ORC テーブル名\>* に挿入された後に、次のクエリを使用して *\<外部テキストファイル テーブル名\>* を削除するのが安全です。
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

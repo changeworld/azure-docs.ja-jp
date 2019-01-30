@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354180"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810960"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -34,23 +34,32 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ライブ ストリーミング ワークフローの手順は次のとおりです。
 
-1. **ライブ イベント**を作成します。
-2. 新しい**資産**オブジェクトを作成します。
-3. **ライブ出力**を作成し、作成した資産の名前を使用します。
-4. DRM でコンテンツを暗号化する場合は、**ストリーミング ポリシー**と**コンテンツ キー**を作成します。
-5. DRM を使用しない場合は、組み込みの**ストリーミング ポリシー** タイプで**ストリーミング ロケーター**を作成します。
-6. 使用する URL を返すためのパスを**ストリーミング ポリシー**に列挙します (これらは決定論的です)。
-7. ストリーミング元になる**ストリーミング エンドポイント**のホスト名を取得します (ストリーミング エンドポイントが実行中であることを確認してください)。 
-8. 手順 6.の URL と、手順 7 のホスト名を組み合わせて、完全な URL を取得します。
-9. 表示可能な**ライブ イベント**の作成を中止する場合は、**ストリーミング ロケーター**を削除し、イベントのストリーミングを停止する必要があります。
+1. **StreamingEndpoint** エージェントが実行していることを確認します。 
+2. **LiveEvent** を作成します。 
+  
+    イベントの作成時に、そのイベントを自動開始するように設定できます。 または、ストリーミングを開始する準備ができたら、イベントを開始できます。<br/> 自動開始が true に設定されている場合、ライブ イベントは作成の直後に開始されます。 つまり、ライブ イベントが実行されるとすぐに課金が開始されます。 それ以上の課金を停止するには、LiveEvent リソースの Stop を明示的に呼び出す必要があります。 詳細については、「[LiveEvent の状態と課金](live-event-states-billing.md)」をご覧ください。
+3. 取り込み URL を取得し、URL を使用して投稿フィードを送信するようにオンプレミス エンコーダーを構成します。<br/>「[おすすめのライブ エンコーダー](recommended-on-premises-live-encoders.md)」を参照してください。
+4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
+5. 新しい**資産**オブジェクトを作成します。
+6. **LiveOutput** を作成し、作成した資産の名前を使用します。
 
-詳細については、[ライブの .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) サンプルをベースとした[ライブ ストリーミング チュートリアル](stream-live-tutorial-with-api.md)を参照してください。
+     **LiveOutput**により、ストリームが**資産**にアーカイブされます。
+7. 組み込みの **StreamingPolicy** タイプで **StreamingLocator** を作成します。
+
+    コンテンツを暗号化する場合は、「[コンテンツ保護の概要](content-protection-overview.md)」を確認してください。
+8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します (これらは決定論的です)。
+9. ストリーミングする**ストリーミング エンドポイント**のホスト名を取得します。
+10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
+11. 表示可能な **LiveEvent** の作成を中止する場合は、イベントのストリーミングを停止し、**StreamingLocator** を削除する必要があります。
+
+詳細については、[ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)に関するページを参照してください。
 
 ## <a name="overview-of-main-components"></a>主要コンポーネントの概要
 
 Media Services でのオンデマンド ストリームまたはライブ ストリームを配信するためには、少なくとも 1 つの [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) が必要です。 Media Services アカウントの作成時に、**既定**の StreamingEndpoint が "**停止**" 状態でアカウントに追加されます。 視聴者にコンテンツをストリーミングする StreamingEndpoint を開始する必要があります。 既定の **StreamingEndpoint** を使用するか、必要な構成と CDN の設定を使用してカスタマイズした別の **StreamingEndpoint** を作成することができます。 複数の StreamingEndpoint を有効にしてそれぞれ別の CDN をターゲットとし、コンテンツ配信用の一意のホスト名を提供するように決定することができます。 
 
-Media Services では、[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ビデオ フィードの取り込みと処理を担当します。 LiveEvent を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [スムーズ ストリーミング](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) プロトコルのいずれかを使用して、投稿フィードをその入力エンドポイントに送信します。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。 RTMP 取り込みプロトコルでサポートされる URL スキームは `rtmp://` と `rtmps://` です。 詳細については、「[Recommended live streaming encoders (推奨されるライブ ストリーミング エンコーダー)](recommended-on-premises-live-encoders.md)」を参照してください。
+Media Services では、[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ビデオ フィードの取り込みと処理を担当します。 LiveEvent を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [スムーズ ストリーミング](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) プロトコルのいずれかを使用して、投稿フィードをその入力エンドポイントに送信します。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。 RTMP 取り込みプロトコルでサポートされる URL スキームは `rtmp://` と `rtmps://` です。 詳細については、「[Recommended live streaming encoders (推奨されるライブ ストリーミング エンコーダー)](recommended-on-premises-live-encoders.md)」を参照してください。<br/>
+**LiveEvent** を作成するときは、4 つの数字を含む IpV4 アドレス、CIDR アドレス範囲のいずれかの形式で、許可された IP アドレスを指定できます。
 
 **LiveEvent** が投稿フィードの受信を開始したら、ライブ ストリームを公開する前に、そのプレビュー エンドポイント (プレビュー URL) を使用して、ライブ ストリームが受信されていることをプレビューして検証できます。 プレビュー ストリームが良好であることを確認したら、その LiveEvent を使用して、1 つ以上の (事前に作成した) **StreamingEndpoints** を通した配信に使用できるライブ ストリームを作成できます。 これを実現するために、**LiveEvent** に新規 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を作成します。 
 
@@ -62,14 +71,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 必要であれば、動的フィルターを適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御することができます。 詳細については、「 [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)」を参照してください。
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>v3 のライブ ストリーミングの新機能
-
-Media Services の v3 API を使用すると、次の新機能によるメリットが得られます。
-
-- 新しい低待機時間モード。 詳しくは、「[待機時間](live-event-latency.md)」をご覧ください。
-- RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
-- RTMPS のセキュアな取り込み。<br/>LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
-- Media Services を使用してシングル ビットレートのコントリビューション フィードをマルチ ビットレートの出力ストリームにコード変換すると、最大 24 時間のライブ イベントをストリーミングできます。 
+v3 のライブ ストリーミングの新機能の詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md)」を参照してください。
 
 ## <a name="liveevent-types"></a>LiveEvent の種類
 
@@ -108,7 +110,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 > [!NOTE]
 > **LiveOutput** は作成すると開始され、削除されると停止します。 **LiveOutput** を削除しても、基になる**資産**と資産のコンテンツは削除されません。 
 >
-> **LiveOutput** 用の資産で**ストリーミング ロケーター**を発行した場合、イベント (DVR ウィンドウの長さまで) は、**ストリーミング ロケーター**の終了時刻まで、またはロケーターを削除するまで、どちらか早い方のタイミングまで引き続き表示できます。   
+> **StreamingLocator** を使用して **LiveOutput** 資産を発行した場合、**LiveEvent** (DVR ウィンドウの長さまで) は、**StreamingLocator** の有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 
 詳細については、「[クラウド DVR の使用](live-event-cloud-dvr.md)」を参照してください。
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Getabstract の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Getabstract の統合 | Microsoft Docs
 description: Azure Active Directory と Getabstract の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 1bb43f65bd77315be398a9c22e7fc1500de07754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 11515f74ae95cc317fe27de323da2de6c46c163c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424822"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825104"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル: Azure Active Directory と Getabstract の統合
+# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル:Azure Active Directory と Getabstract の統合
 
 このチュートリアルでは、Getabstract と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -146,7 +146,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 1. **Getabstract** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Getabstract サポート チーム](https://www.getabstract.com/en/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -184,7 +184,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 
 このセクションの目的は、Getabstract で Britta Simon というユーザーを作成することです。 Getabstract では、Just-In-Time プロビジョニングがサポートされており、これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合に、Getabstract にアクセスしようとすると、新しいユーザーが自動的に作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Getabstract サポート チーム](https://www.getabstract.com/en/contact)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Getabstract のサポート チーム](https://www.getabstract.com/en/contact)にお問い合わせください
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -222,7 +222,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Getabstract] タイルをクリックすると、自動的に Getabstract アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

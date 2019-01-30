@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 21baa89293c74ec49720bffc2506e20789fe9e55
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411381"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431743"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 12 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 12 月に導入された新しい機能と変更点について説明します。
@@ -53,6 +53,9 @@ Azure SQL Data Warehouse のクエリ ストアの詳細については、「[�
 Azure SQL Data Warehouse Gen2 で下位コンピューティング レベルがサポートされるようになりました。 お客様は、Azure SQL Data Warehouse の優れたパフォーマンス、柔軟性、およびセキュリティ機能を 100 cDWU ([Data Warehouse ユニット](https://docs.microsoft.com/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu)) から数分で 30,000 cDWU まで拡張できます。 2018 年 12 月半ばから、こちらの[リージョン](https://docs.microsoft.com/azure/sql-data-warehouse/gen2-lower-tier-regions)では、Gen2 のパフォーマンスと柔軟性を下位のコンピューティング レベルでご利用いただけます。その他のリージョンでは、2019 年中に利用できるようになります。
 
 Microsoft は次世代データ ウェアハウスのエントリ ポイントを下げ、セキュリティで保護された高パフォーマンスなデータ ウェアハウスの利点をすべて評価する必要のある価値重視型のお客様に門戸を開いています。お客様が最適な試用環境を推測する必要はありません。 現在の 500 cDWU のエントリ ポイントではなく、100 cDWU から始められます。 SQL Data Warehouse Gen2 では、一時停止操作と再開操作が引き続きサポートされます。また、単なるコンピューティングの柔軟性以外の利点もあります。 Gen2 は、無制限の列ストア ストレージ容量、1 クエリあたり 2.5 倍以上のメモリ、最大 128 件の同時クエリ、および[アダプティブ キャッシング](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)機能もサポートしています。 これらの機能は、同じ料金の Gen1 の同じ Data Warehouse ユニットと比較して、平均 5 倍以上のパフォーマンスを実現しています。 Gen2 では地理的冗長バックアップが標準であり、保証付きデータ保護が組み込まれています。 Azure SQL Data Warehouse Gen2 は必要に応じてスケーリングすることができます。
+
+## <a name="columnstore-background-merge"></a>列ストアのバックグラウンド マージ
+Azure SQL Data Warehouse (Azure SQL DW) では、既定で、[行グループ](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression)と呼ばれるマイクロパーティションを使用して、列形式でデータを格納します。 場合によっては、インデックスの作成時またはデータの読み込み時のメモリの制約により、行グループが最適サイズの 100 万行未満に圧縮されることがあります。 行グループは、削除によって断片化することもあります。 小さな行グループや断片化されている行グループでは、メモリの消費量が増え、クエリの実行が非効率になります。 Azure SQL DW のこのリリースでは、メモリの使用効率を高め、クエリの実行を高速化するために、列ストアのバックグラウンド メンテナンス タスクによって小さな圧縮済み行グループがマージされ、より大きな行グループが作成されます。
 
 ## <a name="next-steps"></a>次の手順
 SQL Data Warehouse の概要について学習したので、次は[SQL Data Warehouse を簡単に作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  

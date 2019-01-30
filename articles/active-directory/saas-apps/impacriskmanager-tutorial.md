@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と IMPAC Risk Manager の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と IMPAC Risk Manager の統合 | Microsoft Docs
 description: Azure Active Directory と IMPAC Risk Manager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c086d58a7de4897f93699d2c22b6598896eb50e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ca0ea482b1cfb2f7af962ae1b7537f79bb60a62b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434482"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823149"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>チュートリアル: Azure Active Directory と IMPAC Risk Manager の統合
+# <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>チュートリアル:Azure Active Directory と IMPAC Risk Manager の統合
 
 このチュートリアルでは、IMPAC Risk Manager と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -152,7 +152,7 @@ IMPAC Risk Manager で Azure AD のシングル サインオンを構成して�
 1. **IMPAC Risk Manager** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID**、および **SAML シングル サインオン サービス URL** を [IMPAC Risk Manager サポート チーム](mailto:rmsupport@Impac.co.nz)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -188,7 +188,7 @@ IMPAC Risk Manager で Azure AD のシングル サインオンを構成して�
  
 ### <a name="create-a-impac-risk-manager-test-user"></a>IMPAC Risk Manager のテスト ユーザーを作成する
 
-このセクションでは、IMPAC Risk Manager で Britta Simon というユーザーを作成します。 [IMPAC Risk Manager サポート チーム](mailto:rmsupport@Impac.co.nz)と連携し、IMPAC Risk Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、IMPAC Risk Manager で Britta Simon というユーザーを作成します。  [IMPAC Risk Manager サポート チーム](mailto:rmsupport@Impac.co.nz) と連携し、IMPAC Risk Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -225,7 +225,7 @@ IMPAC Risk Manager で Azure AD のシングル サインオンを構成して�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [IMPAC Risk Manager] タイルをクリックすると、自動的に IMPAC Risk Manager アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -3,7 +3,7 @@ title: Azure Security Center におけるアダプティブ アプリケーシ�
 description: このドキュメントは、Azure VM で実行されるアプリケーションのホワイトリストを作成するために、Azure Security Center でアダプティブ アプリケーション制御を使用する際に役に立ちます。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262899"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427136"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure Security Center におけるアダプティブ アプリケーション制御
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
@@ -88,7 +88,6 @@ ms.locfileid: "54262899"
 5. 選択を終了したら、**[作成]** を選択します。 <br>
 [作成] を選択すると、Azure Security Center によって自動的に、Windows サーバー (AppLocker) で使用可能な組み込みのアプリケーション ホワイトリスト登録ソリューションの上に適切な規則が作成されます。
 
-
 > [!NOTE]
 > - VM のグループごとにベースラインを作成し、固有の推奨事項を提示するために、Security Center では最低 2 週間分のデータが必要となります。 Security Center Standard レベルを初めてご利用になる場合、最初は一連の VM が *[推奨なし]* タブに表示されます。
 > - Security Center からのアダプティブ アプリケーション制御では、GPO またはローカル セキュリティ ポリシーによって既に AppLocker ポリシーが有効になっている VM はサポートされていません。
@@ -122,7 +121,7 @@ ms.locfileid: "54262899"
    > - 既に説明したように、既定では新しいアプリケーション制御ポリシーは常に "*監査*" モードで構成されます。 
    >
 
-4. **[ポリシーの拡張機能]** では、許可したい任意のアプリケーションのパスを追加することができます。 これらのパスを追加すると、Security Center によって、選択された VM のグループ内の VM に対するアプリケーションのホワイトリスト登録ポリシーが更新されます。また、既に設定されている規則に加えて、これらのアプリケーションのための適切な規則が作成されます。
+4. **[ポリシーの拡張機能]** で、許可したい任意のアプリケーションのパスを追加します。 これらのパスを追加すると、Security Center によって、選択された VM のグループ内の VM に対するアプリケーションのホワイトリスト登録ポリシーが更新されます。また、既に設定されている規則に加えて、これらのアプリケーションのための適切な規則が作成されます。
 
 5. **[最近のアラート]** セクションに一覧表示されている現在の違反を確認します。 各行をクリックすると、Azure Security Center 内の **[Alerts]\(アラート\)** ページにリダイレクトされ、関連付けられた VM で Azure Security Center によって検出されたすべてのアラートが表示されます。
   - **[Alerts]\(アラート\)**: ログに記録されたすべての違反。

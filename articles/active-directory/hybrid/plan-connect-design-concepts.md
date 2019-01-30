@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 設計概念 |Microsoft Docs'
+title: Azure AD Connect:設計概念 | Microsoft Docs
 description: このトピックでは、特定の実装設計の各領域について詳しく説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3d6141ac1fabe1a0391e6ad23276e5bc5ea1afb6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945996"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471788"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect:設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
 
 ## <a name="sourceanchor"></a>sourceAnchor

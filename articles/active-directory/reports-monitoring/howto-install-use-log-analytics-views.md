@@ -4,7 +4,7 @@ description: Azure Active Directory (プレビュー) の Log Analytics ビュ�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
@@ -16,19 +16,19 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fbe5515f05c66fb0763943c20ed8aaa4374e3d87
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624643"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825206"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用の Log Analytics ビューのインストールと使用
 
 Azure Active Directory の Log Analytics ビューを使用して、お使いの Azure AD テナントで Azure AD アクティビティ ログを分析して検索できます。 Azure AD アクティビティ ログには、次のログが含まれます。
 
-* [監査ログ](concept-audit-logs.md): テナント内で実行されたすべてのタスクの履歴は、監査ログ アクティビティ レポートで把握できます。
-* サインイン ログ: 監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
+* 監査ログ:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* サインイン ログ:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,8 +50,8 @@ Log Analytics ビューを使用するには、次の準備が必要です。
 
 2. ワークスペースに移動して、**[ワークスペースの概要]** を選択します。 次の 3 つのビューを確認する必要があります。
 
-    * **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)**: プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
-    * **[Sign-ins Events]\(サインイン イベント\)**: このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
+    * **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)**:プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
+    * **Sign-ins Events\(サインイン イベント\)**:このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
 
 3. これらのいずれかのビューを選択して、個々のレポートに進みます。 また、任意のレポート パラメーターにアラートを設定することも可能です。 たとえば、サインイン エラーが発生するたびに、アラートを設定するとします。 これを行うには、まず、**[Sign-ins Events]\(サインイン イベント\)** ビューを選択し、**[Sign-in errors over time]\(経時的なサインイン エラー\)** レポートを選択し、**[Analytics]** を選択して、レポートの背景となる実際のクエリを示した詳細ページを開きます。 
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Weekdone の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Weekdone の統合 | Microsoft Docs
 description: Azure Active Directory と Weekdone の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 34921f9a-5637-4420-ab4c-9beb34421909
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 7f7946ece91013696969dafda17b02c972f4b780
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 869deb1b68d30041b6780151a5712099982bd9b7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230405"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807951"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>チュートリアル: Azure Active Directory と Weekdone の統合
+# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>チュートリアル:Azure Active Directory と Weekdone の統合
 
 このチュートリアルでは、Weekdone と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -86,7 +86,7 @@ Azure AD への Weekdone の統合を構成するには、ギャラリーから�
 
 Weekdone で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Weekdone テスト ユーザーの作成](#creating-a-weekdone-test-user)** - Weekdone で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -100,15 +100,15 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Weekdone** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_samlbase.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_samlbase.png)
 
 3. **[Weekdone のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_url1.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_url1.png)
 
     a. **[識別子]** ボックスに、`https://weekdone.com/a/<tenant>/metadata` の形式で URL を入力します。
 
@@ -119,7 +119,7 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_url2.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_url2.png)
 
     **[サインオン URL]** ボックスに、`https://weekdone.com/a/<tenantname>` のパターンを使用して URL を入力します。
      
@@ -128,15 +128,15 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_certificate.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_general_400.png)
     
 7. **Weekdone Configuration (Weekdone 構成)** セクションで、**Configure Weekdone (Weekdone を構成する)** をクリックして、**サインオンの構成** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_configure.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_configure.png) 
 
 8. **Weekdone** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Weekdone サポート チーム](mailto:hello@weekdone.com)に送る必要があります。
 
@@ -194,7 +194,7 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[Weekdone]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/weekdone-tutorial/tutorial_weekdone_app.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

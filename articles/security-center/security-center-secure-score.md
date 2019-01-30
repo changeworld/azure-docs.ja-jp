@@ -3,7 +3,7 @@ title: Azure Security Center 上のセキュリティ スコア | Microsoft Docs
 description: " Azure Security Center 上のセキュリティ スコアを使用して、セキュリティに関する推奨事項に優先順位を付けます。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: monhaber
+ms.openlocfilehash: 4c7f272cbf98fefbf70e917634fb623c9e1b6a3b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261300"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425895"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Security Center 上のセキュリティ スコアの向上
 
@@ -45,7 +45,7 @@ Security Center では、**全体的なセキュリティ スコア**も提供�
 2. 上部で、セキュリティ スコアのハイライトを確認できます。
    - **[Overall secure score]\(総合セキュリティ スコア\)** は、選択されたサブスクリプションごとの各ポリシーのスコアを表します。
    - **[Secure score by category]\(カテゴリ別セキュリティ スコア\)** は、最も注意が必要なリソースはどれかを示します。
-   - **[Top recommendations by secure score impact]\(セキュリティ スコアの影響による上位の推奨事項\)** は、修復を行った場合にセキュリティ スコアが最も向上する推奨事項の一覧を示します。
+   - **[Top recommendations by secure score impact]\(セキュリティ スコアの影響による上位の推奨事項\)** は、実装した場合にセキュリティ スコアが最も向上する推奨事項の一覧を示します。
  
    ![セキュリティ スコア](./media/security-center-secure-score/secure-score-dashboard.png)
 

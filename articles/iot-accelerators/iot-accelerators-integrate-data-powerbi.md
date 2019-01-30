@@ -1,5 +1,5 @@
 ---
-title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
+title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
 description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズした視覚エフェクトに統合します。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
 author: asdonald
 manager: hegate
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9daf0f0d1c7ca94308bfb0d894366b457a045770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970403"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470649"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -28,7 +28,7 @@ ms.locfileid: "38970403"
 
 ## <a name="information-needed-from-azure-portal"></a>Azure portal からの必要な情報
 
-1. [Azure portal](https://portal.azure.com) に移動し、必要な場合はログインします
+1. [Azure portal](https://portal.azure.com) に移動し、必要な場合はサインインします
 
 2. 左側のパネルの [リソース グループ] をクリックします
 
@@ -84,11 +84,11 @@ ms.locfileid: "38970403"
 
 ## <a name="creating-a-dashboard"></a>ダッシュボードの作成
 
-ストリームを接続した後は、カスタマイズしたダッシュボードを作成できます。 次のダッシュボードは、シミュレートされたデバイスからの利用統計情報を取得し、次のような異なるピボットを表示する例です。 
+ストリームを接続した後は、カスタマイズしたダッシュボードを作成できます。 次のダッシュボードは、シミュレートされたデバイスによって出力される利用統計情報を取得し、次のような異なるピボットを表示する例です。 
 
 * マップ上のデバイスの場所 (右)
 * 状態と重大度を含むデバイス。 (左上)
-* 規則が適用されているデバイス、およびそれに対してオフになるアラームがあるかどうか (左下)
+* 規則が適用されているデバイス、およびそれに対してオフになるアラートがあるかどうか (左下)
 
 ![PowerBI の視覚エフェクト](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 

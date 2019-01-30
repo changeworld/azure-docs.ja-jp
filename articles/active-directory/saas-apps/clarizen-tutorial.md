@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Clarizen の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Clarizen の統合 | Microsoft Docs
 description: Azure Active Directory と Clarizen の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8c66d8eec6d3967026c17db9ce8d616b97d25931
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158673"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807730"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル: Azure Active Directory と Clarizen の統合
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
 
 このチュートリアルでは、Azure Active Directory (Azure AD) を Clarizen と統合する方法について説明します。 この統合には次のようなメリットがあります。
 
@@ -98,7 +98,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
     ![識別子と応答 URL のボックス](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a. **[識別子]** ボックスに、値として「**Clarizen**」と入力します。
+    a. **[識別子]** ボックスに、値として次のように入力します。**Clarizen**
 
     b. **[応答 URL]** ボックスに、**https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx** というパターンを使用して URL を入力します。
 
