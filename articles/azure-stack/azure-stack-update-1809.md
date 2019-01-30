@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f4a1bf9e2fee9278713315c98f25dbc820a553a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a5afcbb219d7792325faa03c5319b07a7c68732b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352412"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850504"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -252,7 +252,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 ### <a name="compute"></a>Compute
 
-- [Dv2 シリーズ VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) を作成するときは、D11 14v2 VM では、それぞれ 4、8、16、32 のデータ ディスクを作成できます。 ただし、VM の作成ウィンドウには、8、16、32、および 64 のデータ ディスクが表示されます。
+- [Dv2 シリーズ VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) を作成する場合、D11 14v2 VM では、それぞれ 4、8、16、32 個のデータ ディスクを作成できます。 ただし、VM の作成ウィンドウには、8、16、32、および 64 のデータ ディスクが表示されます。
 
 <!-- 3235634 – IS, ASDK -->
 - **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイするには、サフィックスを **Standard_A2_v2** (小文字の v) と指定してください。 **Standard_A2_V2** (大文字の V) は使用しないでください。 これは、グローバル Azure で動作し、Azure Stack では不整合になります。
@@ -296,7 +296,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
    - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワード ベースの認証を使用してください。

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188511"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856385"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 
@@ -35,7 +35,7 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 これらの機能は、次の 3 つの観点に分けて構成されています。
 
 * Health
-* [パフォーマンス]
+* パフォーマンス
 * マップ
 
 >[!NOTE]
@@ -50,7 +50,7 @@ Log Analytics との統合により、強力な集計とフィルター処理が
 
 ![Azure portal での仮想マシン分析情報のパースペクティブ](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 
-Azure DevOps を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 重要なオペレーティング システムのイベント、パフォーマンスのボトルネック、およびネットワークの問題が識別されます。 Azure DevOps はまた、問題が他の依存関係に関連しているかどうかの把握にも役立ちます。  
+Azure Monitor for VMs を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 重要なオペレーティング システムのイベント、パフォーマンスのボトルネック、およびネットワークの問題が識別されます。 Azure Monitor for VMs はまた、問題が他の依存関係に関連しているかどうかの把握にも役立ちます。  
 
 ## <a name="data-usage"></a>データ利用状況 
 

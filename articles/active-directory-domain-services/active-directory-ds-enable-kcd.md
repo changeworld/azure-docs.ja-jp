@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Kerberos の制約付き委任を有効にする | Microsoft Docs'
+title: Azure Active Directory Domain Services:Kerberos の制約付き委任を有効にする | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインで Kerberos の制約付き委任を有効にします
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: da7909853d47f680726464d6d646ca87028fd311
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fe0b5224bc266b7990e2f7b6a4b3fa6a1b19190d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158784"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854821"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>マネージド ドメインで Kerberos の制約付き委任 (KCD) を構成する
 多くのアプリケーションは、ユーザーのコンテキストでリソースにアクセスする必要があります。 Active Directory では、このユース ケースを可能にする、Kerberos の委任というメカニズムをサポートしています。 さらに、特定のリソースのみにユーザーのコンテキストでアクセスできるように、委任を制限できます。 Azure AD Domain Services のマネージド ドメインは、従来の Active Directory ドメインとは異なっており、より安全にロックダウンされています。

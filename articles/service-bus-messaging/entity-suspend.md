@@ -3,22 +3,22 @@ title: Azure Service Bus メッセージング エンティティの一時停止
 description: Azure Service Bus メッセージ エンティティを一時停止し再アクティブ化します。
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b7ea8c14bfc3f2ba3720ad919d6c36ec50c3823e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 8feee92e9105259bddf45114ac48a54347266cd7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854481"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846001"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
 
@@ -38,8 +38,8 @@ ms.locfileid: "48854481"
 
 キューに設定可能な状態は次のとおりです。
 
--   **Active**: キューはアクティブです。
--   **Disabled**: キューは一時停止状態です。
+-   **アクティブ**:キューはアクティブです。
+-   **無効**: キューは一時停止状態です。
 -   **SendDisabled**: キューは、受信は許可されていますが、部分的に一時停止状態です。
 -   **ReceiveDisabled**: キューは、送信は許可されていますが、部分的に一時停止状態です。
 

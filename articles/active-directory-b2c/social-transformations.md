@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマのソーシャル アカウント要求変換の例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d9b592e7f61b87860e4f6fa2aa4d46e253b6257e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9ef8f9c68a09e998c393584ceb6e3be53f91a9c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44383081"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848803"
 ---
 # <a name="social-accounts-claims-transformations"></a>ソーシャル アカウント要求変換
 
@@ -40,11 +40,11 @@ Azure Active Directory (Azure AD) B2C では、ソーシャル アカウント I
 
 Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId のスキーマ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType)」を参照してください。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | key | string | ソーシャル ID プロバイダーによって使われる一意のユーザー識別子を指定する ClaimType。 |
-| InputClaim | identityProvider | string | ソーシャル アカウント ID プロバイダー名(facebook.com など) を指定する ClaimType。 |
-| OutputClaim | alternativeSecurityId | string | ClaimsTransformation が呼び出された後に生成される ClaimType。 ソーシャル アカウント ユーザーの ID に関する情報が含まれています。 **issuer** は、`identityProvider` 要求の値です。 **issuerUserId** は、base64 形式の `key` 要求の値です。 |
+| InputClaim | key | 文字列 | ソーシャル ID プロバイダーによって使われる一意のユーザー識別子を指定する ClaimType。 |
+| InputClaim | identityProvider | 文字列 | ソーシャル アカウント ID プロバイダー名(facebook.com など) を指定する ClaimType。 |
+| OutputClaim | alternativeSecurityId | 文字列 | ClaimsTransformation が呼び出された後に生成される ClaimType。 ソーシャル アカウント ユーザーの ID に関する情報が含まれています。 **issuer** は、`identityProvider` 要求の値です。 **issuerUserId** は、base64 形式の `key` 要求の値です。 |
 
 この要求変換を使用して `alternativeSecurityId` ClaimType を生成します。 これは、すべてのソーシャル ID プロバイダー技術プロファイル (`Facebook-OAUTH` など) によって使用されます。 次の要求変換は、ユーザー ソーシャル アカウント ID と ID プロバイダー名を受け取ります。 この技術プロファイルの出力は、Azure AD ディレクトリ サービスで使用できる JSON 文字列形式です。  
 
@@ -63,18 +63,18 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **key**: 12334
-    - **identityProvider**: Facebook.com
+    - **key**:12334
+    - **identityProvider**:Facebook.com
 - 出力要求:
-    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
+    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
 `AlternativeSecurityId` を `alternativeSecurityIdCollection` 要求に追加します。 
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | 出力要求に追加される ClaimType。 |
+| InputClaim | item | 文字列 | 出力要求に追加される ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 要求変換で使用される ClaimTypes (ポリシーで使用可能な場合)。 指定されている場合は、要求変換によってコレクションの最後に `item` が追加されます。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 入力 `collection` と `item` の両方の項目を含む新しいコレクション。 |
 
@@ -100,16 +100,16 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **item**: { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" }
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **item**: { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" }
+    - **collection**: [ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
 - 出力要求:
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
 発行者の一覧を **alternativeSecurityIdCollection** 要求から新しい **stringCollection** 要求に返します。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | ID プロバイダー (発行者) の一覧を取得するために使用される ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 alternativeSecurityIdCollection 入力要求に関連付けられている ID プロバイダーの一覧。 |
@@ -128,7 +128,7 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 ```
 
 - 入力要求:
-    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
 - 出力要求:
     - **identityProvidersCollection**: [ "facebook.com", "google.com" ]
 
@@ -136,9 +136,9 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 
 **AlternativeSecurityId** を **alternativeSecurityIdCollection** 要求から削除します。 
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | string | コレクションから削除する ID プロバイダー名を含む ClaimType。 |
+| InputClaim | identityProvider | 文字列 | コレクションから削除する ID プロバイダー名を含む ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 要求変換で使用される ClaimTypes。 要求変換により、コレクションから identityProvider が削除されます。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 コレクションから identityProvider が削除された の後の、新しいコレクション。 |
 
@@ -165,6 +165,6 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 
 - 入力要求:
     - **identityProvider**: facebook.com
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
 - 出力要求:
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]

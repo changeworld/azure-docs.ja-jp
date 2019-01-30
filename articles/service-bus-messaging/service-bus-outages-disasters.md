@@ -2,18 +2,19 @@
 title: 障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs
 description: 発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: e9fb1795ecb26fc87fd8f3ff000d125d71e9d594
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393709"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846712"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -69,8 +70,8 @@ Service Bus のメッセージング エンティティ (キュー、トピッ�
 
 パッシブ レプリケーションを使用する場合、次のシナリオではメッセージを喪失したり 2 回受信したりする可能性があります。
 
-* **メッセージの遅延または喪失**: 送信側からメッセージ m1 がプライマリ キューに正常に送信されてから、受信側で m1 を受信する前にプライマリ キューが使用不可になったとします。 送信側が後続のメッセージ m2 をセカンダリ キューに送信します。 プライマリ キューが一時的に使用できない場合、受信側はキューが再び使用可能になった後で m1 を受信します。 災害の場合、受信側は m1 をまったく受信できない可能性があります。
-* **重複した受信**: 送信側がメッセージ m をプライマリ キューに送信するとします。 Service Bus により m が適切に処理されますが、応答の送信に失敗します。 送信操作がタイムアウトになった後で、送信側が m の同一のコピーをセカンダリ キューに送信します。 プライマリ キューが使用不可になる前に受信側が m の 1 つ目のコピーを受信できる場合、受信側は m の両方のコピーをほぼ同時に受信します。 プライマリ キューが使用不可になる前に受信側が m の 1 つ目のコピーを受信できない場合、受信側は m の 2 つ目のコピーのみを最初に受信しますが、プライマリ キューが使用可能になったときに m の 1 つ目のコピーを受信します。
+* **メッセージの遅延または喪失**:送信側からメッセージ m1 がプライマリ キューに正常に送信されてから、受信側で m1 を受信する前にプライマリ キューが使用不可になったとします。 送信側が後続のメッセージ m2 をセカンダリ キューに送信します。 プライマリ キューが一時的に使用できない場合、受信側はキューが再び使用可能になった後で m1 を受信します。 災害の場合、受信側は m1 をまったく受信できない可能性があります。
+* **重複した受信**:送信側がメッセージ m をプライマリ キューに送信するとします。 Service Bus により m が適切に処理されますが、応答の送信に失敗します。 送信操作がタイムアウトになった後で、送信側が m の同一のコピーをセカンダリ キューに送信します。 プライマリ キューが使用不可になる前に受信側が m の 1 つ目のコピーを受信できる場合、受信側は m の両方のコピーをほぼ同時に受信します。 プライマリ キューが使用不可になる前に受信側が m の 1 つ目のコピーを受信できない場合、受信側は m の 2 つ目のコピーのみを最初に受信しますが、プライマリ キューが使用可能になったときに m の 1 つ目のコピーを受信します。
 
 [Service Bus の仲介型メッセージを使用した geo レプリケーション][Geo-replication with Service Bus Brokered Messages] のサンプルでは、メッセージング エンティティのパッシブ レプリケーションについて説明しています。
 

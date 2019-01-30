@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f341c7e4a56aacb35ee16cbae00115196325b46a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495065"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855824"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -40,7 +40,7 @@ VM の作成に使用する Marketplace イメージは Oracle:Oracle-Database-E
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-[az login](/cli/azure/reference-index#az_login) コマンドを使って Azure サブスクリプションにサインインし、画面上の指示に従います。
+[az login](/cli/azure/reference-index) コマンドを使って Azure サブスクリプションにサインインし、画面上の指示に従います。
 
 ```azurecli
 az login
@@ -48,7 +48,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドを使ってリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使ってリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -688,6 +688,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-[チュートリアル: 可用性が高い仮想マシンを作成する](../../linux/create-cli-complete.md)
+[チュートリアル:可用性が高い仮想マシンの作成](../../linux/create-cli-complete.md)
 
 [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

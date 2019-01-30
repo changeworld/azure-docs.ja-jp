@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Huddle の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Huddle の統合 | Microsoft Docs
 description: Azure Active Directory と Huddle の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 050a5a210ab10a557b149513a0416b188f4618ba
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d9d145aa5da636574426f1ff4ad978eb857ab252
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885905"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827926"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル: Azure Active Directory と Huddle の統合
+# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル:Azure Active Directory と Huddle の統合
 
 このチュートリアルでは、Huddle と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -152,7 +152,7 @@ Huddle で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Huddle クライアント サポート チーム](https://huddle.zendesk.com)に問い合わせてください。
 
-6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
+6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定)** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
 
     ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png)
 
@@ -183,7 +183,7 @@ Huddle で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -240,7 +240,7 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 6. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
 

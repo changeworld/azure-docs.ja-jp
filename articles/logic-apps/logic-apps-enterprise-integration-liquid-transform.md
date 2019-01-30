@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 27686cf036f69a9a4597c499e9b8b7d66d77e1e9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019675"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854379"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
 
@@ -30,6 +30,8 @@ ms.locfileid: "54019675"
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
 * Basic [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+
+* [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識。
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>統合アカウント用の Liquid テンプレートまたはマップを作成する
 
@@ -65,9 +67,9 @@ Liquid テンプレート内で何らかのフィルターを使用する場合�
 
 4. **[追加]** を選択し、マップの詳細を入力します。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | 値 | [説明] | 
    |----------|-------|-------------|
-   | **名前** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
+   | **Name** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
    | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、**[liquid]** を選択する必要があります。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 |
    ||| 

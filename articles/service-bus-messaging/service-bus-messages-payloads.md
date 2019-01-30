@@ -3,22 +3,22 @@ title: Azure Service Bus のメッセージ、ペイロード、およびシリ�
 description: Service Bus メッセージのペイロードの概要
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 00c7605b09c32328a8324b13b8151a258a39dc22
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: 6b03b1eb773c40a81c9efd76ac26b40936dca2cc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857603"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849364"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 

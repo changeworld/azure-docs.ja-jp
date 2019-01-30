@@ -9,12 +9,12 @@ ms.component: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: d3c42c13e58156013167b8570a8845ce9de08b3b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aa513617f24201dfb341f9ab72ab9e3a221450d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885457"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819358"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL Data Warehouse Gen2 の下位コンピューティング レベルのサポート
 
@@ -29,7 +29,7 @@ Microsoft は次世代データ ウェアハウスのエントリ ポイント�
 次世代のデータ ウェアハウスの柔軟性とパフォーマンスを体験する場合、新しい Gen2 インスタンスをデプロイするか、既存の Gen1 データ ウェアハウス インスタンスをアップグレードするかを選択できます。 
 
 [Azure SQL Data Warehouse Compute Optimized Gen2 レベル](https://azure.microsoft.com/services/sql-data-warehouse/?v=17.44)をお試しください。
-[Azure SQL Warehouse Compute Optimized Gen1 を Gen2 にアップグレードするにはこちら](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation)を参照してください。動作している Azure SQL Data Warehouse Gen2 については、こちらの [Microsoft Mechanics ビデオ](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)をご覧ください。
+[Azure SQL Data Warehouse Compute Optimized Gen1 を Gen2 にアップグレードするにはこちら](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation)を参照してください。動作している Azure SQL Data Warehouse Gen2 については、こちらの [Microsoft Mechanics ビデオ](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)をご覧ください。
 
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>下位コンピューティング レベルのサポートされているリージョン
@@ -52,4 +52,4 @@ Microsoft は次世代データ ウェアハウスのエントリ ポイント�
 
 ## <a name="next-steps"></a>次の手順
 
-- [詳細情報](upgrade-to-latest-generation.md): SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する方法 
+- SQL Data Warehouse をアップグレードしてコンピューティング最適化パフォーマンスについての[詳細](upgrade-to-latest-generation.md)を確認します。 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と The Funding Portal の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と The Funding Portal の統合 | Microsoft Docs
 description: Azure Active Directory と The Funding Portal の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: d45712a94a6a2eb18088c99d7175b73b29e62ce3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ada7a35f36dbac74fa67111c8fa2571dce70069d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822129"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>チュートリアル: Azure Active Directory と The Funding Portal の統合
+# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>チュートリアル:Azure Active Directory と The Funding Portal の統合
 
 このチュートリアルでは、The Funding Portal と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ The Funding Portal で、Azure AD の **[ユーザー名]** の値を **[Usernam
 
 The Funding Portal で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[The Funding Portal テスト ユーザーの作成](#creating-the-funding-portal-test-user)** - The Funding Portal で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -152,7 +152,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
 1. **The Funding Portal** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [The Funding Portal サポート チーム](mailto:info@regenteducation.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

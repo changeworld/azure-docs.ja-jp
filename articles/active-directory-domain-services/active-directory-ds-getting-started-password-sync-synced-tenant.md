@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD ドメイン サービス: パスワード同期を有効にする | Microsoft Docs'
+title: Azure AD Domain Services:パスワード同期を有効にする | Microsoft Docs
 description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: ergreenl
-ms.openlocfilehash: 813d1d17f2d9b80c2e96f771fc346e553c59e95b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be947e2867f00c34e5a0b66893765647349c7eeb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234206"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854209"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
@@ -31,7 +31,8 @@ ms.locfileid: "51234206"
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- | --- |
 | **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) | 
-| **Azure AD に作成されたクラウド ユーザー アカウント** |**&amp;amp;#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
+| **Azure AD に作成されたクラウド ユーザー アカウント** |
+  **&#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
 <br>
 
 > [!TIP]
@@ -52,7 +53,7 @@ Azure AD Connect の最新の推奨リリースをドメイン参加コンピュ
 
 **[Azure AD Connect のダウンロード](https://www.microsoft.com/download/details.aspx?id=47594)**
 
-推奨バージョン: **1.1.614.0** - 2017 年 9 月 5 日公開
+推奨されるバージョン: **1.1.614.0** - 2017 年 9 月 5 日公開。
 
 > [!WARNING]
 > 従来のパスワードの資格情報 (NTLM/Kerberos 認証で必要) で Azure AD テナントとの同期を有効にするには、Azure AD Connect の最新の推奨リリースをインストールする必要があります。 この機能は、旧リリースの Azure AD Connect または従来の DirSync ツールでは使用できません。

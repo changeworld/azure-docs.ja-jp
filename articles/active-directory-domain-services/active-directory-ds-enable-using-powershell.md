@@ -4,7 +4,7 @@ description: PowerShell を使用した Azure Active Directory Domain Services �
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: ergreenl
-ms.openlocfilehash: b58df5ebf5332688424ac6ed2eeb9679487bcdc4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5ebb9f706d2e59b9c1227cec6fcc0e0619374069
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240258"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855008"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 この記事では、PowerShell を使用して Azure Active Directory (AD) Domain Services を有効にする方法について説明します。
 
-## <a name="task-1-install-the-required-powershell-modules"></a>タスク 1 : 必要な PowerShell モジュールをインストールする
+## <a name="task-1-install-the-required-powershell-modules"></a>タスク 1:必要な PowerShell モジュールをインストールする
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Azure AD PowerShell のインストールおよび構成
 記事の指示に従って、 [Azure AD PowerShell モジュールをインストールして Azure AD に接続します](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
 
 ### <a name="install-and-configure-azure-powershell"></a>Azure PowerShell のインストールおよび構成
-記事の指示に従って、 [Azure PowerShell モジュールをインストールして Azure サブスクリプションに接続します](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
+記事の指示に従って、 [Azure PowerShell モジュールをインストールして Azure サブスクリプションに接続します](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
 
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>タスク 2 : Azure AD ディレクトリに必要なサービス プリンシパルを作成する
+## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>タスク 2:Azure AD ディレクトリに必要なサービス プリンシパルを作成する
 次の PowerShell コマンドを入力して Azure AD Domain Services に必要なサービス プリンシパルを Azure AD ディレクトリに作成します。
 ```powershell
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>タスク 3 : "AAD DC 管理者" グループを作成して構成する
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>タスク 3:"AAD DC 管理者" グループを作成して構成する
 次のタスクでは、マネージド ドメインでの管理タスクを委任するために使用する管理者グループを作成します。
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
@@ -67,14 +67,14 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>タスク 4 : Azure AD Domain Services のリソース プロバイダーを登録する
+## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>タスク 4:Azure AD Domain Services のリソース プロバイダーを登録する
 次の PowerShell コマンドを入力して Azure AD Domain Services のリソース プロバイダーを登録します。
 ```powershell
 # Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>タスク 5 : リソース グループを作成する
+## <a name="task-5-create-a-resource-group"></a>タスク 5:リソース グループの作成
 次の PowerShell コマンドを入力して、リソース グループを作成します。
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
@@ -89,7 +89,7 @@ New-AzureRmResourceGroup `
 仮想ネットワークおよび Azure AD Domain Services のマネージド ドメインをこのリソース グループに作成できます。
 
 
-## <a name="task-6-create-and-configure-the-virtual-network"></a>タスク 6 : 仮想ネットワークを作成して構成する
+## <a name="task-6-create-and-configure-the-virtual-network"></a>タスク 6:仮想ネットワークを作成して構成する
 ここで、Azure AD Domain Services を有効にする仮想ネットワークを作成します。 Azure AD Domain Services の専用サブネットを作成していることを確認します。 この専用サブネットにはワークロード VM をデプロイしないでください。
 
 次の PowerShell コマンドを入力して、Azure AD Domain Services の専用サブネットを備えた仮想ネットワークを作成します。
@@ -117,7 +117,7 @@ $Vnet=New-AzureRmVirtualNetwork `
 ```
 
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>タスク 7 : Azure AD Domain Services のマネージド ドメインをプロビジョニングする
+## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>タスク 7:Azure AD Domain Services のマネージド ドメインをプロビジョニングする
 次の PowerShell コマンドを入力して、ディレクトリに対して Azure AD Domain Services を有効にします。
 
 ```powershell

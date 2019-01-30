@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 469faeee4706c33b09f89bfbed1bb229a6aea20e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043466"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848378"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -36,6 +36,9 @@ ms.locfileid: "54043466"
 >
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* バグの修正
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * マルチリージョンの書き込みがサポートされるようになりました。
@@ -72,6 +75,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2019 年 1 月 22 日|--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 26 日|--- |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
 | [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |

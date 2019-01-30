@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244586"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849662"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
@@ -128,7 +128,7 @@ ms.locfileid: "54244586"
 1. 環境設定に *requirements.txt* ファイルがあるので、"Waiting for your container to finish being prepared" (コンテナーの準備が完了するのを待っています) というメッセージが表示されます。 **[OK]** を選択してメッセージを閉じ、ノートブックでの作業を継続できます。ただし、環境が完全に設定されるまで、コード セルを実行することはできません。
 1. 既定で空のコード セルが 1 つ含まれるノートブックが、Jupyter のインターフェイスで開きます。
 
-    [![](media/tutorial/tutorial-new-notebook.png "Azure Notebooks での新しいノートブックの初期表示")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Azure Notebooks での新しいノートブックの初期表示](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Notebook のインターフェイスをツアーする
 
@@ -144,7 +144,7 @@ ms.locfileid: "54244586"
 (F) ノートブックが信頼されているかどうかを示すインジケーター (既定では**信頼されていません**)。
 (G) ノートブックが実行されているカーネルと、アクティビティ インジケーター。
 
-[![](media/tutorial/tutorial-notebook-ui.png "Jupyter インターフェイスの主な UI 領域")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Jupyter インターフェイスの主な UI 領域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter では、主な UI 要素の組み込みツアーが提供されています。 ツアーを始めるには、**[Help]\(ヘルプ\)** > **[User Interface Tour]\(ユーザー インターフェイス ツアー\)** コマンドを選択し、ポップアップをクリックします。
 

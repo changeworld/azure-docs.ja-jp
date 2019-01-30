@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Wingspan eTMF の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Wingspan eTMF の統合 | Microsoft Docs
 description: Azure Active Directory と Wingspan eTMF の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ace320d3-521c-449c-992f-feabe7538de7
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: d27d2c6a6c6bae2ebd13f78da308f32275993ec5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1573b7259134037a8e573c6a01588ad782505ea3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434066"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821160"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル: Azure Active Directory と Wingspan eTMF の統合
+# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル:Azure Active Directory と Wingspan eTMF の統合
 
 このチュートリアルでは、Wingspan eTMF と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Azure AD への Wingspan eTMF の統合を構成するには、ギャラリー�
 
 Wingspan eTMF で Azure AD シングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Wingspan eTMF テスト ユーザーの作成](#creating-a-wingspan-etmf-test-user)** - Azure AD のユーザー表現にリンクされた Wingspan eTMF での Britta Simon の対応するユーザーを作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -132,7 +132,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
 1. **[Wingspan eTMF]** 側でシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Wingspan eTMF サポート](http://www.wingspan.com/contact-us/)に送信する必要があります。 サポート チームはこれをセットアップして、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -168,7 +168,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
  
 ### <a name="creating-a-wingspan-etmf-test-user"></a>Wingspan eTMF テスト ユーザーの作成
 
-このセクションでは、Wingspan eTMF の Britta Simon という名前のユーザーを作成します。 Wingspan eTMF アプリケーションでユーザーを追加するには、[Wingspan eTMF サポート](http://www.wingspan.com/contact-us/)と協力します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Wingspan eTMF の Britta Simon という名前のユーザーを作成します。  [Wingspan eTMF サポート](http://www.wingspan.com/contact-us/)と協力して、Wingspan eTMF アプリケーションにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -204,7 +204,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルの [Wingspan eTMF] タイルをクリックすると、[Organization sign on] \(組織のサイン オン) ページにリダイレクトされます。 ログインが成功すると、Wingspan eTMF アプリケーションにサイン オンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの [Wingspan eTMF] タイルをクリックすると、[Organization sign on] \(組織のサイン オン) ページにリダイレクトされます。 ログインが成功すると、Wingspan eTMF アプリケーションにサイン オンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

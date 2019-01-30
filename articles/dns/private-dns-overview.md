@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826481"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 
@@ -64,9 +64,9 @@ Azure DNS には次の機能があります。
 Azure DNS には次の制限事項があります。
 
 * プライベート ゾーンにつき 1 つの登録仮想ネットワークのみが使用可能です。
-* プライベート ゾーンにつき最大で 10 の解決仮想ネットワークが使用可能です。
+* プライベート ゾーンにつき最大で 10 の解決仮想ネットワークが使用可能です。 この制限は、この機能の一般公開時に解除されます。
 * 特定の仮想ネットワークは、登録仮想ネットワークとして 1 つのプライベート ゾーンにのみリンク可能です。
-* 特定の仮想ネットワークは、解決仮想ネットワークとして最大で 10 のプライベート ゾーンにリンク可能です。
+* 特定の仮想ネットワークは、解決仮想ネットワークとして最大で 10 のプライベート ゾーンにリンク可能です。 この制限は、この機能の一般公開時に解除されます。
 * 登録仮想ネットワークを指定する場合、プライベート ゾーンに登録されているその仮想ネットワーク内の VM の DNS レコードは Azure PowerShell と Azure CLI API から表示することも取得することもできません。 VM レコードは登録され、問題なく解決されます。
 * 逆引き DNS は登録仮想ネットワーク内のプライベート IP 空間に対してのみ機能します。
 * プライベート ゾーンに登録されていないプライベート IP (例: プライベート ゾーンに解決仮想ネットワークとしてリンクされている仮想ネットワーク内の仮想マシンのプライベート IP) の逆引き DNS では、DNS サフィックスとして *internal.cloudapp.net* を返しますが、 このサフィックスは解決できません。

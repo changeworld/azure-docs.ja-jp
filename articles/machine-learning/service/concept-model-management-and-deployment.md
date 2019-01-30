@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302971"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852322"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
@@ -39,7 +39,7 @@ ms.locfileid: "54302971"
 
 モデルの登録によって、モデルを Azure クラウドに格納し、ワークスペースでバージョンを管理できます。 モデルのレジストリでは、トレーニングしたモデルの整理と追跡が容易に行えます。
  
-登録されたモデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。 Azure Machine Learning service は、Python 3 を使用して読み込むことができる任意のモデルを使用して格納されるモデルをサポートしています。 
+登録されたモデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。 Azure Machine Learning service は、Python 3 を使用して読み込むことができる任意のモデルをサポートしています。 
 
 イメージによって使用されているモデルを削除することはできません。
 
@@ -63,7 +63,7 @@ ONNX モデルの使用については、[ONNX と Azure Machine Learning](how-t
 Azure Machine Learning では、最もよく使用されているフレームワークがサポートされていますが、一般的には、pip でインストールできる任意のフレームワークが動作します。
 
 ワークスペースの作成時に、そのワークスペースで使用される他の Azure リソースもいくつか作成されています。
-イメージの作成に使用されるオブジェクトはすべて、お使いのワークスペースの Azure ストレージ アカウントに格納されています。 イメージは Azure Container Registry で作成され、格納されています。 イメージを作成するときに、追加のメタデータ タグを指定できます。このタグもイメージ レジストリによって格納されます。このタグにクエリを実行すると、ご自身のイメージを検索できます。
+イメージの作成に使用されるオブジェクトはすべて、お使いのワークスペースの Azure ストレージ アカウントに格納されています。 イメージを作成するときに、追加のメタデータ タグを指定できます。 さらにメタデータ タグは、イメージ レジストリによって格納され、イメージを検索するときにクエリできます。
 
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#configureimage)に関するページの、イメージの構成と登録のセクションを参照してください。
 

@@ -11,28 +11,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104086"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847545"
 ---
 # <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
 
 Azure Notebooks のプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 Azure Notebooks のプロジェクト ダッシュボードを使用すると、ファイルを管理できます。また、プロジェクトの特性を構成することもできます。
 
-- プロジェクト メタデータには、名前、説明、プロジェクトを共有するときに使用される識別子のほか、プロジェクトがパブリックかプライベートかも含まれています。
-- プロジェクトのノートブック、データ、およびその他のファイルは、他のファイル システムと同様の操作で管理します。
-- プロジェクトの環境を構成するには、スタートアップ スクリプトを使用するか、ターミナルから直接操作します。
-- ターミナル経由でログにアクセスできます。
+- プロジェクトで実行するコンピューティング レベル。Free レベルまたは Azure 仮想マシンを指定できます。
+- プロジェクト メタデータ。これには、名前、説明、プロジェクトを共有するときに使用される識別子のほか、プロジェクトがパブリックかプライベートかも含まれています。
+- プロジェクトのノートブック、データ、およびその他のファイル。他のファイル システムと同じように管理します。
+- プロジェクトの環境。スタートアップ スクリプトを使用するか、ターミナルから直接管理します。
+- ログ。ターミナルからアクセスします。
 
 > [!Note]
-> プロジェクト所有者からコラボレーターとして指定されていない限り、自分が所有していないプロジェクトを管理することはできません。 プロジェクトのコラボレーターとして指定されておらず、プロジェクトを所有してもいない場合、ここで説明する管理および構成機能は利用できません。
+> ここで説明されている管理および構成機能は、プロジェクトを最初に作成したプロジェクト所有者のみ使用できます。 ただし、独自のアカウントにプロジェクトを複製することができます。この場合、所有者になり、必要に応じて、プロジェクトを構成することができます。
 
 ノートブックまたはその他のファイルを実行するたびに、Azure Notebooks によって基になる仮想マシンが起動されます。 サーバーによって自動的にファイルが保存されます。サーバーは非アクティブな状態が 60 分間続くとシャットダウンしますが、 **シャットダウン** コマンド (キーボード ショートカット: h) でいつでも停止できます。
+
+## <a name="compute-tier"></a>コンピューティング レベル
+
+プロジェクト ダッシュ ボードの **[実行]** ドロップダウン リストでは、プロジェクトで実行するコンピューティング レベルを選択します。 既定で、プロジェクトは **Free コンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されます。
+
+![プロジェクト ダッシュ ボードのコンピューティング レベル ドロップダウン リスト](media/project-compute-tier-list.png)
+
+これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 その仮想マシンには、Jupyter もインストールする必要があります。 Data Science Virtual Machine イメージは、既定で Jupyter が含まれるため、適切な選択です。
+
+ドロップダウン リストの **[Direct Compute]\(直接コンピューティング\)** オプションを使用して、適切に構成されている任意の Azure 仮想マシンに接続できます。 このオプションを選択すると、名前 (一覧に表示される)、VM の IP アドレスとポート (通常は 8000、JupyterHub がリッスンする既定のポート)、および VM 資格情報の入力が求められます。
+
+![[Direct Compute]\(直接コンピューティング\) オプションのサーバー情報を収集するプロンプト](media/project-compute-tier-direct.png)
+
+次の条件が当てはまる場合、ドロップダウン リストには、[Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine) インスタンスも表示されます (これらのいずれかの条件を満たしていない場合でも、[Direct Compute]\(直接コンピューティング\) オプションを使用し、Azure portal から取得した値を入力して、DSVM に接続できます)。
+
+- 会社のアカウントなどの Azure Active Directory (AAD) を使用するアカウントで、Azure Notebooks にサインインしている。
+- アカウントが Azure サブスクリプションに接続されている。
+- そのサブスクリプションに、少なくとも閲覧者アクセス権を持ち、Data Science Virtual Machine for Linux (Ubuntu) イメージを使用する 1 つ以上の仮想マシンがある。
+
+![プロジェクト ダッシュボードのドロップダウン リストの Data Science Virtual Machine インスタンス](media/project-compute-tier-dsvm.png)
+
+DSVM インスタンスを選択すると、Azure Notebooks によって、VM を作成したときに使用した特定のマシン資格情報が求められることがあります。
+
+新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 Azure Notebooks には、Windows イメージまたは CentOS イメージを使用する DSVM が表示されないため、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用する*必要があります*。
 
 ## <a name="edit-project-metadata"></a>プロジェクト メタデータを編集する
 

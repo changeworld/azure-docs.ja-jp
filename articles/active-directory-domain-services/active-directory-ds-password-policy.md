@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: パスワード ポリシー | Microsoft Docs'
+title: Azure Active Directory Domain Services:パスワード ポリシー | Microsoft Docs
 description: マネージド ドメインに関するパスワード ポリシーについて説明します
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: b5574b529dc3d4646375638d6759d85a41c66946
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155610"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852696"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 この記事では、マネージド ドメインに関する既定のパスワード ポリシーについて説明します。 また、これらのポリシーの構成方法についても説明します。
@@ -118,5 +118,5 @@ FGPP を使用して、次のパスワード設定を構成できます。
 >
 
 ## <a name="next-steps"></a>次の手順
-* [Active Directory の細かい設定が可能なパスワード ポリシーについて学びます](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394)
+* [Active Directory の細かい設定が可能なパスワード ポリシーについて学びます](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [AD 管理センターを使用して細かい設定が可能なパスワード ポリシーを構成します](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)

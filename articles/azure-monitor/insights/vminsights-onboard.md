@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: cfbe1ce39d7f68dd6ea2510b5c6cbddf4eb71710
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e97ac849fa0e590dd2462d8e64b761da23576833
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331998"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845964"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) をデプロイする
 この記事では、Azure Monitor for VMs の設定方法について説明します。 お使いの Azure 仮想マシン (VM) と仮想マシン スケール セットおよび環境内の仮想マシンのオペレーティング システムの正常性を監視するサービスです。 この監視には、それらでホストされている可能性があるアプリケーションの依存関係の検出とマッピングが含まれます。 
@@ -303,113 +303,128 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 1. このファイルを *installsolutionsforvminsights.json* としてローカル フォルダーに保存します。
 
-1. *WorkspaceName*、*ResourceGroupName*、および *WorkspaceLocation* の値を編集します。 *WorkspaceName* の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。 *WorkspaceLocation* の値は、ワークスペースが定義されているリージョンです。
+1. *WorkspaceName*、*ResourceGroupName*、および *WorkspaceLocation* の値を取り込みます。 *WorkspaceName* の値は Log Analytics ワークスペースの名前です。 *WorkspaceLocation* の値は、ワークスペースが定義されているリージョンです。
 
-1. これで、次の PowerShell コマンドを使用して、このテンプレートをデプロイする準備ができました。
+1. これでこのテンプレートをデプロイする準備が整いました。
+ 
+    * テンプレートが含まれているフォルダーで、次の PowerShell コマンドを使用します。
 
-    ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
-    ```
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        ```
 
-    設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-    ```powershell
-    provisioningState       : Succeeded
-    ```
+        ```powershell
+        provisioningState       : Succeeded
+        ```
 
-### <a name="enable-by-using-azure-policy"></a>Azure Policy を使用して有効にする
-新しくプロビジョニングされる VM の一貫したコンプライアンスと自動的な有効化が保証される方法で大規模に Azure Monitor for VMs を有効にするには、[Azure Policy](../../azure-policy/azure-policy-introduction.md) をお勧めします。 該当するポリシーを以下に示します。
+    * Azure CLI を使用して次のコマンドを実行するには、次の手順を実行します。
+    
+        ```azurecli
+        az login
+        az account set --subscription "Subscription Name"
+        az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
 
-* Log Analytics エージェントと Dependency Agent をデプロイします。
-* コンプライアンスの結果を報告します。
-* 準拠していない VM を修復します。
+        The configuration change can take a few minutes to complete. When it's completed, a message is displayed that's similar to the following and includes the result:
 
-テナントで Azure Policy を使用して Azure Monitor for VMs を有効にするには:
+        ```azurecli
+        provisioningState       : Succeeded
 
-- スコープにイニシアティブを割り当てる: 管理グループ、サブスクリプション、またはリソース グループ
-- コンプライアンスの結果をレビューおよび修復する
+### Enable by using Azure Policy
+To enable Azure Monitor for VMs at scale in a way that helps ensure consistent compliance and the automatic enabling of the newly provisioned VMs, we recommend [Azure Policy](../../azure-policy/azure-policy-introduction.md). These policies:
 
-続ける前に、Azure Policy の割り当ての詳細について、[Azure Policy の概要](../../governance/policy/overview.md#policy-assignment)および[管理グループの概要](../../governance/management-groups/index.md)に関する記事をご覧ください。
+* Deploy the Log Analytics agent and the Dependency agent.
+* Report on compliance results.
+* Remediate for non-compliant VMs.
 
-次の表では、ポリシーの定義の一覧を示します。
+To enable Azure Monitor for VMs by using Azure Policy in your tenant:
 
-|Name |説明 |type |
+- Assign the initiative to a scope: management group, subscription, or resource group
+- Review and remediate compliance results
+
+For more information about assigning Azure Policy, see [Azure Policy overview](../../governance/policy/overview.md#policy-assignment) and review the [overview of management groups](../../governance/management-groups/index.md) before you continue.
+
+The policy definitions are listed in the following table:
+
+|Name |Description |Type |
 |-----|------------|-----|
-|[プレビュー]:Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) で、Azure Monitor for VMs を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 |イニシアティブ |
-|[プレビュー]:Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS) |一覧で VM イメージ (OS) が定義されておらず、エージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
-|[プレビュー]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS) |一覧で VM イメージ (OS) が定義されておらず、エージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
-|[プレビュー]:Linux VM への Dependency Agent のデプロイ |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、Linux VM に Dependency Agent をデプロイします。 |ポリシー |
-|[プレビュー]:Windows VM への Dependency Agent のデプロイ |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、Windows VM に Dependency Agent をデプロイします。 |ポリシー |
-|[プレビュー]:Linux VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、Linux VM に Log Analytics エージェントをデプロイします。 |ポリシー |
-|[プレビュー]:Windows VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、Windows VM に Log Analytics エージェントをデプロイします。 |ポリシー |
+|[Preview]: Enable Azure Monitor for VMs |Enable Azure Monitor for the Virtual Machines (VMs) in the specified scope (management group, subscription, or resource group). Takes Log Analytics workspace as a parameter. |Initiative |
+|[Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Linux VMs |Deploy Dependency Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Windows VMs |Deploy Dependency Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Linux VMs |Deploy Log Analytics Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Windows VMs |Deploy Log Analytics Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
 
-ここではスタンドアロン ポリシー (イニシアティブには含まれません) について説明します。
+Standalone policy (not included with the initiative) is described here:
 
-|Name |説明 |type |
+|Name |Description |Type |
 |-----|------------|-----|
-|[プレビュー]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告 |ポリシー/イニシアティブの割り当てで指定された Log Analytics ワークスペースにログインしていない場合、VM を非準拠として報告します。 |ポリシー |
+|[Preview]: Audit Log Analytics Workspace for VM - Report Mismatch |Report VMs as non-compliant if they aren't logging to the Log Analytics workspace specified in the policy/initiative assignment. |Policy |
 
-#### <a name="assign-the-azure-monitor-initiative"></a>Azure Monitor のイニシアティブを割り当てる
-この初期リリースでは、Azure portal においてのみポリシーの割り当てを作成できます。 これらの手順を完了する方法については、 [Azure portal でのポリシー割り当ての作成](../../governance/policy/assign-policy-portal.md)に関する記事を参照してください。
+#### Assign the Azure Monitor initiative
+With this initial release, you can create the policy assignment only in the Azure portal. To understand how to complete these steps, see [Create a policy assignment from the Azure portal](../../governance/policy/assign-policy-portal.md).
 
-1. Azure portal で Azure Policy サービスを起動するには、**[すべてのサービス]** を選択し、**[ポリシー]** を探して選択します。
+1. To launch the Azure Policy service in the Azure portal, select **All services**, and then search for and select **Policy**.
 
-1. Azure Policy ページの左側のウィンドウで、**[割り当て]** を選択します。  
-    割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
+1. In the left pane of the Azure Policy page, select **Assignments**.  
+    An assignment is a policy that has been assigned to take place within a specific scope.
     
-1. **[ポリシー - 割り当て]** ページの上部で、**[イニシアティブの割り当て]** を選択します。
+1. At the top of the **Policy - Assignments** page, select **Assign Initiative**.
 
-1. **[イニシアティブの割り当て]** ページで、省略記号 [...] をクリックして **[スコープ]** を選択し、管理グループまたはサブスクリプションを選択します。  
-    この例では、スコープにより、ポリシーの割り当てが仮想マシンのグループに制限されて実施されます。
+1. On the **Assign Initiative** page, select the **Scope** by clicking the ellipsis (...), and select a management group or subscription.  
+    In our example, a scope limits the policy assignment to a grouping of virtual machines for enforcement.
     
-1. **[スコープ]** ページの下部にある **[選択]** を選択して、変更を保存します。
+1. At the bottom of the **Scope** page, save your changes by selecting **Select**.
 
-1. (省略可能) スコープから 1 つまたは複数のリソースを削除するには、**[除外]** を選択します。
+1. (Optional) To remove one or more resources from the scope, select **Exclusions**.
 
-1. **[イニシアティブ定義]** の省略記号 [...] を選択して、使用可能な定義の一覧を開きます。次に、**[[プレビュー]: VM 用 Azure Monitor を有効にする]** を選択して、**[選択]** を選択します。  
-    **[割り当て名]** ボックスには選択したイニシアティブ名が自動的に入力されますが、この名前は変更できます。 必要に応じて、説明を追加することもできます。 **[割り当て担当者]** ボックスは、ログインしたユーザーに基づいて自動的に入力されます。この値は省略可能です。
+1. Select the **Initiative definition** ellipsis (...) to display the list of available definitions, select **[Preview] Enable Azure Monitor for VMs**, and then select **Select**.  
+    The **Assignment name** box is automatically populated with the initiative name you selected, but you can change it. You can also add an optional description. The **Assigned by** box is automatically populated based on who is logged in, and this value is optional.
     
-1. サポートされているリージョンの **[Log Analytics ワークスペース]** ドロップダウン リストで、ワークスペースを選択します。
+1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
     >[!NOTE]
-    >ワークスペースが割り当てのスコープの範囲外にある場合は、ポリシー割り当てのプリンシパル ID に "*Log Analytics 共同作成者*" アクセス許可を付与します。 そうしないと、次のようなデプロイ エラーが表示される可能性があります。`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` アクセス権の付与については、[マネージド ID を手動で構成する方法](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)に関する記事をご覧ください。
+    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
+    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
     >  
-    割り当てられるイニシアティブには *deployIfNotExists* 効果のあるポリシーが含まれているため、**[マネージド ID]** チェック ボックスがオンになります。
+    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
-1. **[マネージド ID の場所]** ドロップダウン リストで、適切なリージョンを選択します。
+1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
-1. **[割り当て]** を選択します。
+1. Select **Assign**.
 
-#### <a name="review-and-remediate-the-compliance-results"></a>コンプライアンスの結果をレビューおよび修復する
+#### Review and remediate the compliance results
 
-コンプライアンスの結果をレビューする方法については、[非準拠の結果の確認](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources)に関する記事を参照してください。 左側のウィンドウで、**[コンプライアンス]** を選択します。次に、作成した割り当てに従って準拠していない VM の **[[プレビュー]: VM 用 Azure Monitor を有効にする]** イニシアティブを探します。
+You can learn how to review compliance results by reading [identify non-compliance results](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). In the left pane, select **Compliance**, and then locate the **[Preview] Enable Azure Monitor for VMs** initiative for VMs that aren't compliant according to the assignment you created.
 
-![Azure VM のポリシーへの準拠](./media/vminsights-onboard/policy-view-compliance-01.png)
+![Policy compliance for Azure VMs](./media/vminsights-onboard/policy-view-compliance-01.png)
 
-以下のシナリオでは、イニシアティブに含まれるポリシーの結果に基づいて、VM が非準拠として報告されます。
+Based on the results of the policies included with the initiative, VMs are reported as non-compliant in the following scenarios:
 
-* Log Analytics も Dependency Agent もデプロイされていない。  
-    このシナリオは、既存の VM を含むスコープでよくみられます。 これを軽減するには、非準拠ポリシーで[修復タスクを作成する](../../governance/policy/how-to/remediate-resources.md)ことにより、必要なエージェントをデプロイします。  
-    - [プレビュー]: Deploy Dependency Agent for Linux VMs
-    - [プレビュー]: Deploy Dependency Agent for Windows VMs
-    - [プレビュー]: Deploy Log Analytics Agent for Linux VMs
-    - [プレビュー]: Deploy Log Analytics Agent for Windows VMs
+* Log Analytics or the Dependency agent isn't deployed.  
+    This scenario is typical for a scope with existing VMs. To mitigate it, deploy the required agents by [creating remediation tasks](../../governance/policy/how-to/remediate-resources.md) on a non-compliant policy.  
+    - [Preview]: Deploy Dependency Agent for Linux VMs
+    - [Preview]: Deploy Dependency Agent for Windows VMs
+    - [Preview]: Deploy Log Analytics Agent for Linux VMs
+    - [Preview]: Deploy Log Analytics Agent for Windows VMs
 
-* VM イメージ (OS) が、ポリシー定義で示されていない。  
-    デプロイ ポリシーの基準には、よく知られている Azure VM イメージからデプロイされた VM のみが含まれます。 VM の OS がサポートされているかどうか、ドキュメントで確認します。 サポートされていない場合は、デプロイ ポリシーを複製し、イメージが準拠するようにそれを更新または変更します。  
-    - [プレビュー]:Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS)
-    - [プレビュー]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
+* VM Image (OS) isn't identified in the policy definition.  
+    The criteria of the deployment policy include only VMs that are deployed from well-known Azure VM images. Check the documentation to see whether the VM OS is supported. If it isn't supported, duplicate the deployment policy and update or modify it to make the image compliant.  
+    - [Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted
+    - [Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted
 
-* VM が、指定された Log Analytics ワークスペースにログインしていない。  
-    イニシアティブ スコープ内の一部の VM が、ポリシー割り当てで指定されているもの以外の Log Analytics ワークスペースにログインしている可能性があります。 このポリシーは、非準拠のワークスペースに報告を行っている VM を識別するための手段となります。  
-    - [プレビュー]: Audit Log Analytics Workspace for VM - Report Mismatch
+* VMs aren't logging in to the specified Log Analytics workspace.  
+    It's possible that some VMs in the initiative scope are logging in to a Log Analytics workspace other than the one that's specified in the policy assignment. This policy is a tool to identify which VMs are reporting to a non-compliant workspace.  
+    - [Preview]: Audit Log Analytics Workspace for VM - Report Mismatch
 
-### <a name="enable-with-powershell"></a>PowerShell を使用した有効化
-複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、Azure PowerShell ギャラリーから入手できる PowerShell スクリプトの [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用できます。 このスクリプトでは、サブスクリプション内、または *ResourceGroup* で指定されたスコープ内のリソース グループ内のすべての仮想マシンと仮想マシン スケール セット、または *Name* で指定された単一の VM または仮想マシン スケール セットに対して反復処理が実行されます。 このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうかが確認されます。 VM 拡張機能がインストールされていない場合、スクリプトで再インストールが試みられます。 VM 拡張機能がインストールされている場合、スクリプトでは Log Analytics と Dependency Agent の VM 拡張機能がインストールされます。
+### Enable with PowerShell
+To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-このスクリプトには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
 
-スクリプトの引数の詳細と使用例の一覧を取得するには、`Get-Help` を実行します。
+To get a list of the script's argument details and example usage, run `Get-Help`.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -737,8 +752,8 @@ Azure Monitor for VMs では、ソリューションによって使用される�
 |LogicalDisk |Disk Read Bytes/sec  |
 |LogicalDisk |Disk Reads/sec  |
 |LogicalDisk |Disk Transfers/sec |
-|LogicalDisk | Disk Write Bytes/sec |
-|LogicalDisk | Disk Writes/sec |
+|LogicalDisk |Disk Write Bytes/sec |
+|LogicalDisk |Disk Writes/sec |
 |LogicalDisk |Free Megabytes |
 |メモリ |Available MBytes |
 |ネットワーク アダプター |Bytes Received/sec |
@@ -753,8 +768,8 @@ Azure Monitor for VMs では、ソリューションによって使用される�
 |論理ディスク |Disk Read Bytes/sec  |
 |論理ディスク |Disk Reads/sec  |
 |論理ディスク |Disk Transfers/sec |
-|論理ディスク | Disk Write Bytes/sec |
-|論理ディスク | Disk Writes/sec |
+|論理ディスク |Disk Write Bytes/sec |
+|論理ディスク |Disk Writes/sec |
 |論理ディスク |Free Megabytes |
 |論理ディスク |Logical Disk Bytes/sec |
 |メモリ |Available MBytes Memory |

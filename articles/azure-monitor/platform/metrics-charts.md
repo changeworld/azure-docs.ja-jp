@@ -5,15 +5,15 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/22/2019
 ms.author: vitalyg
-ms.component: metrics
-ms.openlocfilehash: 457c7e8904797955854c4c3e16a631cf6537e2b8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: metrics
+ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330077"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827450"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
@@ -139,6 +139,17 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 ![メトリックの画像](./media/metrics-charts/00013.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+*グラフにデータが表示されない。*
+
+* フィルターは、ウィンドウのすべてのグラフに適用されます。 あるグラフに注目するときに、別のグラフですべてのデータを除外するフィルターを設定していないことを確認します。
+
+* グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。 その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
+
+* メトリックで定義されていないプロパティでグラフをセグメント化すると、グラフに何も表示されなくなります。 セグメント化 (分割) を削除するか、別のプロパティを選択してください。
+
 ## <a name="next-steps"></a>次の手順
 
   [カスタム KPI ダッシュボードの作成](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。
+

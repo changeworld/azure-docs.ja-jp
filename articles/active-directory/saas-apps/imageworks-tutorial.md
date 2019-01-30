@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と IMAGE WORKS の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と IMAGE WORKS の統合 | Microsoft Docs
 description: Azure Active Directory と IMAGE WORKS の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 635d86a1-b512-442d-8851-3b18ec1a24a5
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d0ee49bf2a792e855ed020eba74db1d15278fad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4f1636d32782bcef31c1cea98eb9e91d6d7a5878
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442685"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826295"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-image-works"></a>チュートリアル: Azure Active Directory と IMAGE WORKS の統合
+# <a name="tutorial-azure-active-directory-integration-with-image-works"></a>チュートリアル:Azure Active Directory と IMAGE WORKS の統合
 
 このチュートリアルでは、IMAGE WORKS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +132,7 @@ IMAGE WORKS で Azure AD のシングル サインオンを構成してテスト
 1. **IMAGE WORKS** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [IMAGE WORKS サポート チーム](mailto:iw-sd-support@fujifilm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -169,7 +169,7 @@ IMAGE WORKS で Azure AD のシングル サインオンを構成してテスト
  
 ### <a name="create-a-image-works-test-user"></a>IMAGE WORKS テスト ユーザーの作成
 
-このセクションでは、IMAGE WORKS で Britta Simon というユーザーを作成します。 [IMAGE WORKS サポート チーム](mailto:iw-sd-support@fujifilm.com)と連携し、IMAGE WORKS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、IMAGE WORKS で Britta Simon というユーザーを作成します。  [IMAGE WORKS サポート チーム](mailto:iw-sd-support@fujifilm.com) と協力して、IMAGE WORKS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -206,7 +206,7 @@ IMAGE WORKS で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [IMAGE WORKS] タイルをクリックすると、自動的に IMAGE WORKS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

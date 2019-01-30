@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの日付要求変換の例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a49e940c988d25da1e6f6a3c6f372e15fd2136f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405822"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850061"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -29,8 +29,8 @@ ms.locfileid: "49405822"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
-| inputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
+| inputClaim | leftOperand | 文字列 | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
+| inputClaim | rightOperand | 文字列 | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
 | InputParameter | AssertIfEqualTo | ブール値 | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | ブール値 | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
@@ -83,7 +83,7 @@ ms.locfileid: "49405822"
 - 入力要求:
     - **leftOperand**: 2018-10-01T15:00:00.0000000Z
     - **rightOperand**: 2018-10-01T14:00:00.0000000Z
-- 結果: エラーがスローされます
+- 結果:エラーがスローされます
 
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
@@ -111,9 +111,9 @@ ms.locfileid: "49405822"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim**: 2019-06-01
+    - **inputClaim**:2019-06-01
 - 出力要求:
-    - **outputClaim**: 1559347200 (2019 年 6 月 1 日午前 12 時 00 分 00 秒)
+    - **outputClaim**:1559347200 (2019 年 6 月 1 日午前 12 時 00 分 00 秒)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -144,7 +144,7 @@ ms.locfileid: "49405822"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 2 番目の dateTime よりも前か後かを比較する最初の dateTime。 Null 値の場合は例外がスローされます。 |
 | InputClaim | secondDateTime | dateTime | 最初の dateTime よりも前か後かを比較する 2 番目の dateTime。 Null 値は、現在の datetTime として扱われます。 |
-| InputParameter | operator | string | 次のいずれかの値: 同じ、より後、より前。 |
+| InputParameter | operator | 文字列 | 次のいずれかの値: 同じ、より後、より前。 |
 | InputParameter | timeSpanInSeconds | int | 最初の datetime に timespan を追加します。 |
 | OutputClaim | result | ブール値 | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 

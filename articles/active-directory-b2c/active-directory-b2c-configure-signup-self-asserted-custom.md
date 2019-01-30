@@ -3,21 +3,21 @@ title: カスタム ポリシーのサインアップを変更してセルフ �
 description: サインアップに要求を追加し、ユーザー入力を構成するチュートリアル
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 326b0289ebb7aa503d41d556bea15017c28f7a1e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345002"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853718"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: 新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成する
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C:新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成します。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -266,7 +266,7 @@ ms.locfileid: "51345002"
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>オプション: サインアップ体験から電子メール確認を削除する
+## <a name="optional-remove-email-verification-from-signup-journey"></a>省略可能:サインアップ体験から電子メール確認を削除する
 
 電子メールによる確認を省略するために、ポリシー作成者は `PartnerClaimType="Verified.Email"` を削除することができます。 "Required" = true が削除されていない限り、メール アドレスは必須ですが、確認はされません。  自分のユース ケースでこのオプションが適切かどうかを慎重に検討してください。
 

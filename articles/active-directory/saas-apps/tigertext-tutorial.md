@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と TigerText Secure Messenger の統合 | Microsoft Docs
 description: Azure Active Directory と TigerText Secure Messenger の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: e74a1a17638a3d968f2216950f6310205fce86f5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9bb638f2ff4f94ebb6c75a05fd7de772f8f9cdec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422486"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817879"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
+# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerText Secure Messenger の統合
 
 このチュートリアルでは、TigerText Secure Messenger と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -126,7 +126,7 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 1. アプリケーション用に構成されたシングル サインオンを入手するには、[TigerText Secure Messenger サポート チーム](mailTo:prosupport@tigertext.com)に連絡して、**ダウンロードしたメタデータ**を提供してください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

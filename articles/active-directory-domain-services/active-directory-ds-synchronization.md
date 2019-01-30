@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: マネージド ドメインでの同期 | Microsoft Docs'
+title: Azure Active Directory Domain Services:マネージド ドメインでの同期 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインでの同期について
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 40b66b85f88cde28cc6a1c52cb456157d8acd68c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155560"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846951"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでの同期
 次の図は、Azure AD Domain Services のマネージド ドメインにおける同期のしくみを示しています。
@@ -52,7 +52,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 
 * **除外対象の属性:** Azure AD Connect を使用して、オンプレミス ドメインから Azure AD テナントへの同期から、特定の属性を除外することができます。 これらの除外対象の属性は、マネージド ドメインでは使用できません。
 * **グループ ポリシー:** オンプレミス ドメインで構成されたグループ ポリシーは、マネージド ドメインに同期されません。
-* **SYSVOL 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、マネージド ドメインに同期されません。
+* **Sysvol 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、マネージド ドメインに同期されません。
 * **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、マネージド ドメインに同期されません。 これらのコンピューターはマネージド ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 マネージド ドメイン内にあるコンピューター オブジェクトは、マネージド ドメインに明示的にドメイン参加させたコンピューターのものだけです。
 * **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、マネージド ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインからマネージド ドメインに同期されません。
 * **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、マネージド ドメインに同期されません。 マネージド ドメインには、2 つの組み込み OU があります。 既定では、マネージド ドメインはフラットな OU 構造をしています。 ただし、[マネージド ドメイン内にカスタムの OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。

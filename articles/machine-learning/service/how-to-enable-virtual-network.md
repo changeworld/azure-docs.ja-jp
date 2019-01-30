@@ -1,7 +1,7 @@
 ---
-title: 仮想ネットワーク内での実験と推論の実行
+title: 仮想ネットワークで実験と推論を実行する
 titleSuffix: Azure Machine Learning service
-description: Azure Virtual Network 内で機械学習の実験と推論を安全に実行する方法について説明します。 この記事では、Azure Virtual Network 内でモデルのトレーニングと推論の実行に使用するコンピューティング ターゲットを作成する方法について説明します。 また、必要な受信ポートや送信ポートなど、セキュリティで保護された仮想ネットワークの要件についても説明します。
+description: Azure Virtual Network 内を保護する機械学習の実験と推論を実行します。 モデルのトレーニング用のコンピューティング ターゲットを作成する方法と、Azure Virtual Network 内で推定する方法について説明します。 また、必要な受信ポートや送信ポートなど、セキュリティで保護された仮想ネットワークの要件についても説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 1890f830f9b2a4b108328de056636335fd3746e3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248604"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856283"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Azure Virtual Network 内での実験と推論の安全な実行
 

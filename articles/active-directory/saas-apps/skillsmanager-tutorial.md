@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Skills Manager の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Skills Manager の統合 | Microsoft Docs
 description: Azure Active Directory と Skills Manager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: dab8debd-3b7b-4656-9bf0-1963ad8fce05
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: ee112cef53eec92ec449c66e0c927a78a087a32c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bdb053d1f9f85c446e4ac48b836c4b24bb40f93f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448059"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821839"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>チュートリアル: Azure Active Directory と Skills Manager の統合
+# <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>チュートリアル:Azure Active Directory と Skills Manager の統合
 
 このチュートリアルでは、Skills Manager と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +132,7 @@ Skills Manager で Azure AD のシングル サインオンを構成してテス
 1. **Skills Manager** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Skills Manager サポート チーム](https://www.ibm.com/support/uk/?lnk=msu_uk)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,7 +168,7 @@ Skills Manager で Azure AD のシングル サインオンを構成してテス
   
 ### <a name="create-a-skills-manager-test-user"></a>Skills Manager のテスト ユーザーを作成する
 
-このセクションでは、Skills Manager で Britta Simon というユーザーを作成します。 [Skills Manager サポート チーム](https://www.ibm.com/support/uk/?lnk=msu_uk)と連携し、Skills Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Skills Manager で Britta Simon というユーザーを作成します。  [Skills Manager サポート チーム](https://www.ibm.com/support/uk/?lnk=msu_uk) と連携し、Skills Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -205,7 +205,7 @@ Skills Manager で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skills Manager] タイルをクリックすると、自動的に Skills Manager アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

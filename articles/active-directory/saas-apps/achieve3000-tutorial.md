@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Achieve3000 の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Achieve3000 の統合 | Microsoft Docs
 description: Azure Active Directory と Achieve3000 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 83a83d07-ff9c-46c4-b5ba-25fe2b2cd003
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 72e327f3cfa81b1ff27fcad743f5bb9a98737ed9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bdee3d64348b734488f7fb19bf6c57353908ae9b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053608"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822724"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>チュートリアル: Azure Active Directory と Achieve3000 の統合
+# <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>チュートリアル:Azure Active Directory と Achieve3000 の統合
 
 このチュートリアルでは、Achieve3000 と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -150,7 +150,7 @@ Achieve3000 で Azure AD のシングル サインオンを構成してテスト
 8. **Achieve3000** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -186,7 +186,7 @@ Achieve3000 で Azure AD のシングル サインオンを構成してテスト
  
 ### <a name="create-an-achieve3000-test-user"></a>Achieve3000 テスト ユーザーの作成
 
-このセクションでは、Achieve3000 で Britta Simon というユーザーを作成します。 [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)と連携し、Achieve3000 プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Achieve3000 で Britta Simon というユーザーを作成します。  [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/) と連携し、Achieve3000 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -223,7 +223,7 @@ Achieve3000 で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Achieve3000] タイルをクリックすると、自動的に Achieve3000 アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

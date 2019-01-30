@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Nomadic の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Nomadic の統合 | Microsoft Docs
 description: Azure Active Directory と Nomadic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 5200eb6e3b1116c12d83d5752b07161385197671
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 22245bc4aa10d1c4ec529fbb602df6e0ba6120ea
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430340"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822435"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>チュートリアル: Azure Active Directory と Nomadic の統合
+# <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>チュートリアル:Azure Active Directory と Nomadic の統合
 
 このチュートリアルでは、Nomadic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -130,7 +130,7 @@ Nomadic で Azure AD のシングル サインオンを構成してテストす�
 1.  アプリケーション用に構成された SSO を入手するには、[Nomadic サポート チーム](mailto:help@nomadic.fm)に連絡して、ダウンロードした**メタデータ**を提供してください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -204,7 +204,7 @@ Nomadic で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Nomadic] タイルをクリックすると、Nomadic アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

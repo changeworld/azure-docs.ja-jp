@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065496"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853818"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso の移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -25,7 +25,7 @@ ms.locfileid: "54065496"
 --- | --- | ---
 [記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
 [記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズのすべての記事で同じインフラストラクチャを使用します。 | 使用可能
-記事 3: Azure への移行の対象となるオンプレミスのリソースの評価 | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | この記事の内容は次のとおりです。
+記事 3:Azure への移行の対象となるオンプレミスのリソースの評価 | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | この記事の内容は次のとおりです。
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 アプリのフロントエンドは、Azure Site Recovery サービスを使用して移行します。 Azure Database Migration Service を使用してアプリ データベースを Azure SQL Database Managed Instance に移行します。 | 使用可能
 [記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 [記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用して、アプリ データベースを AlwaysOn 可用性グループによって保護されている SQL Server クラスターに移行します。 | 使用可能
@@ -206,7 +206,7 @@ Contoso が評価を行う方法は次のとおりです。
 > [!NOTE]
 > 大規模な評価を行う場合:
 > - 複数の評価を同時に実行し、**[すべての評価]** ページで評価の状態を表示します。
-> - 評価を [SQL Server データベース](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database)に統合します。
+> - 評価を [SQL Server データベース](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017)に統合します。
 > - 評価を [Power BI レポート](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017)に統合します。
 
 ## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>手順 3:Azure Migrate を使用した VM 評価の準備をする

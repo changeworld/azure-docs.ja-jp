@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのユーザー データの管理 | Micros
 description: Azure AD B2C 内のユーザー データを削除またはエクスポートする方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: fc49191fe6141470ddd5304bdd12cec1d40bd1ee
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144623"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854022"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
@@ -46,8 +46,8 @@ Azure AD B2C から顧客データをエクスポートするプロセスは、�
 
 Azure AD B2C のユーザー データは以下に限定されます。
 
-- **Azure Active Directory に格納されたデータ**: オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。 
-- **ユーザー固有の監査イベント レポート**: オブジェクト ID を使用して、データにインデックスを付けることができます。
+- **Azure Active Directory に格納されたデータ**:オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。 
+- **ユーザー固有の監査イベント レポート**:オブジェクト ID を使用して、データにインデックスを付けることができます。
 
 エクスポート データ フローの次の例において、アプリケーションによって実行されると説明されている手順は、ディレクトリの管理者ロールを持つユーザーまたはバックエンド プロセスが実行することもできます。
 

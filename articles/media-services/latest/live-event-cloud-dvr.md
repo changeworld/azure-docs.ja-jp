@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3646c6167f901fe43080d39df42fdb127b1c7fc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352361"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828147"
 ---
 # <a name="using-a-cloud-dvr"></a>クラウド DVR の使用
 
@@ -37,8 +37,7 @@ ms.locfileid: "54352361"
 > [!NOTE]
 > **LiveOutput** は作成すると開始され、削除されると停止します。 **LiveOutput** を削除しても、基になる**資産**と資産のコンテンツは削除されません。 
 >
-> **LiveOutput** の資産で**ストリーミング ロケーター**を発行した場合、イベント (DVR ウィンドウの長さまで) は、**ストリーミング ロケーター**の終了時刻まで、またはロケーターを削除するまで、どちらか早い方のタイミングまで引き続き表示することができます。   
-  
+> **StreamingLocator** を使用して **LiveOutput** 資産を発行した場合、**LiveEvent** (DVR ウィンドウの長さまで) は、**StreamingLocator** の有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 
 ## <a name="next-steps"></a>次の手順
 

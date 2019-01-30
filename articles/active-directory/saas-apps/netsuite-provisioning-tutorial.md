@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Netsuite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
-description: Azure Active Directory と Netsuite の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Netsuite OneWorld を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+description: Azure Active Directory と Netsuite OneWorld の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8a6d3994-ee33-4a6f-b0a2-9d0389467f16
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e14f74f3dd6d49b882dedcb2ae01029a50a459a3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ef0c2f12e36150b044047214c43e88090bd61f68
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346748"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826583"
 ---
-# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル: Netsuite を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル:Netsuite を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、Azure AD から Netsuite にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Netsuite と Azure AD で実行する必要がある手順について説明します。
+このチュートリアルでは、Azure AD から Netsuite OneWorld にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Netsuite と Azure AD で実行する必要がある手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 *   Azure Active Directory テナント。
-*   Netsuite でのシングル サインオンが有効なサブスクリプション。
-*   Team Admin アクセス許可がある Netsuite のユーザー アカウント。
+*   Netsuite OneWorld サブスクリプション。 現在、自動ユーザー プロビジョニングは NetSuite OneWorld でのみサポートされていることに注意してください。
+*   管理者アクセス許可を持つ Netsuite のユーザー アカウント。
 
-## <a name="assigning-users-to-netsuite"></a>Netsuite へのユーザーの割り当て
+## <a name="assigning-users-to-netsuite-oneworld"></a>Netsuite OneWorld へのユーザーの割り当て
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
 
@@ -41,7 +41,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>ユーザーを Netsuite に割り当てる際の重要なヒント
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>ユーザーを Netsuite OneWorld に割り当てる際の重要なヒント
 
 *   単一の Azure AD ユーザーを Netsuite に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 

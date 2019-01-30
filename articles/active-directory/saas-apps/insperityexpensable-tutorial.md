@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs
 description: Azure Active Directory と Insperity ExpensAble の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c579c453-580e-417d-8a5e-9b6b352795c0
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ba2d71a52b8b2367c6d292a9531cf5403f59242e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b078f459faf4da468a0b0e4ec7c6e880627e4a4d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427868"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821188"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル: Azure Active Directory と Insperity ExpensAble の統合
+# <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル:Azure Active Directory と Insperity ExpensAble の統合
 
 このチュートリアルでは、Insperity ExpensAble と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Insperity ExpensAble で、Azure AD の **[ユーザー名]** の値を **[Usern
 
 Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Insperity ExpensAble テスト ユーザーの作成](#creating-an-insperity-expensable-test-user)** - Insperity ExpensAble で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -132,7 +132,7 @@ Insperity ExpensAble で Azure AD のシングル サインオンを構成し、
 1. **Insperity ExpensAble** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML シングル サインオン サービス URL**、**SAML エンティティ ID** を、[Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

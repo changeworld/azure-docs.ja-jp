@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626928"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854787"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -46,7 +46,7 @@ ms.locfileid: "51626928"
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>データに文が既にアラインされている場合に、アラインと文の分割をスキップする方法を教えてください。
 
-Custom Translator では、TMX ファイルと拡張子が `.align` のテキスト ファイルの場合に、文のアラインと文の区切りがスキップされます。 `.align` ファイルは、完全にアラインされ、それ以上の処理が不要なファイルに対する Custom Translator の文分割およびアライン処理のオプションです。 完全にアラインされているファイルにのみ、`.align` の拡張子を使用することをお勧めします。
+Custom Translator では、TMX ファイルと拡張子が `.align` のテキスト ファイルの場合に、文のアラインと文の区切りがスキップされます。 `.align` ファイルは、完全にアラインされ、それ以上の処理が不要なファイルに対するカスタム トランスレーターの文分割およびアライン処理をスキップするためのオプションです。 完全にアラインされているファイルにのみ、`.align` の拡張子を使用することをお勧めします。
 
 抽出された文の数が同じベース名の 2 つのファイルと一致しない場合、Custom Translator では `.align` ファイルに対して文のアライン機能が実行されます。
 

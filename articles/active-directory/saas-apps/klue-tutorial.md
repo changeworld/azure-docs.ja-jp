@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Klue の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Klue の統合 | Microsoft Docs
 description: Azure Active Directory と Klue の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9312006af84e74aa039d762abdfc6edba79a47fb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123058"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824798"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル: Azure Active Directory と Klue の統合
+# <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル:Azure Active Directory と Klue の統合
 
 このチュートリアルでは、Klue と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -91,7 +91,7 @@ Klue で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザ�
 
 Klue で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Klue テスト ユーザーの作成](#creating-a-klue-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Klue で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -206,7 +206,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 このセクションの目的は、Klue で Britta Simon というユーザーを作成することです。 Klue では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Klue ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Klue サポート チーム](mailto:support@klue.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、 [Klue のサポート チーム](mailto:support@klue.com)にお問い合わせください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -243,7 +243,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Klue] タイルをクリックすると、自動的に Klue アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

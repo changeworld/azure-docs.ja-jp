@@ -4,21 +4,23 @@ description: このハウツーでは、Azure Policy のポリシーに準拠し
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 093b49bea167efb12b941f8f0baff6fbdae5be25
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 054ce3d3483c3515e89c36eafc5d9a771e8e608d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312648"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844145"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
 **deployIfNotExists**に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに対して割り当てポリシーの **deployIfNotExists** 効果を実行するよう Policy に指示することによって行うことができます｡ この記事では、Policy による修復を理解して実行するために必要な手順を示します。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
@@ -51,7 +53,7 @@ az role definition list --name 'Contributor'
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Contributor'
+Get-AzRoleDefinition -Name 'Contributor'
 ```
 
 ## <a name="manually-configure-the-managed-identity"></a>管理対象 ID を手動で設定します。
@@ -70,23 +72,23 @@ Get-AzureRmRoleDefinition -Name 'Contributor'
 ポリシーの割り当て時に管理対象 ID を作成するには､**場所** を定義して､**AssignIdentity** を使用する必要があります｡ 次の例では、組み込みポリシー **Deploy SQL DB transparent data encryption** の定義を取得して､ターゲット リソース グループを設定し、割り当てを作成しています。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-Azccount if not using Cloud Shell
 
 # Get the built-in "Deploy SQL DB transparent data encryption" policy definition
-$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+$policyDef = Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
 
 # Get the reference to the resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+$resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 
 # Create the assignment using the -Location and -AssignIdentity properties
-$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+$assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
 この結果､`$assignment` 変数には管理対象 ID のプリンシパル ID とともに､ポリシー割り当てを作成するときに返される標準値が含まれます｡ この変数には `$assignment.Identity.PrincipalId` を使ってアクセスできます｡
 
 ### <a name="grant-defined-roles-with-powershell"></a>定義したロールを PowerShell を使って付与する
 
-新しい管理対象 ID に必要なロールを付与するには､Azure Active Directory からレプリケーションを完了しておく必要があります。 次の例では、レプリケーションを完了した後､**roleDefinitionIds** に対して `$policyDef` でポリシー定義を反復処理し､[New-azurermroleassignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用して､新しい管理対象 ID にロールを付与します｡
+新しい管理対象 ID に必要なロールを付与するには､Azure Active Directory からレプリケーションを完了しておく必要があります。 次の例では、レプリケーションを完了した後､**roleDefinitionIds** に対して `$policyDef` でポリシー定義を反復処理し､[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して､新しい管理対象 ID にロールを付与します｡
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -96,7 +98,7 @@ if ($roleDefinitionIds.Count -gt 0)
 {
     $roleDefinitionIds | ForEach-Object {
         $roleDefId = $_.Split("/") | Select-Object -Last 1
-        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+        New-AzRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
     }
 }
 ```

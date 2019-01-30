@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と &frankly の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と &frankly の統合 | Microsoft Docs
 description: Azure Active Directory と &frankly の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1d702060-1b89-4e9d-9f01-ede4f1171c73
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 388203903f33d969a7796cf466078159e9b73ad0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 73acaeff6cbffc16aac1b30b9d63974c930c1537
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218108"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818066"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル: Azure Active Directory と &frankly の統合
+# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル:Azure Active Directory と &frankly の統合
 
 このチュートリアルでは、&frankly と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -55,7 +55,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-frankly-from-the-gallery"></a>ギャラリーからの &frankly の追加
-Azure AD への &frankly の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に &frankly を追加する必要があります。
+Azure AD への &frankly の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に &amp;amp;frankly を追加する必要があります。
 
 **ギャラリーから &frankly を追加するには、次の手順を実行します。**
 
@@ -88,7 +88,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 &frankly で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[&frankly テスト ユーザーの作成](#creating-a-frankly-test-user)** - Azure AD でのユーザーにリンクされた、&frankly での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,15 +102,15 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 1. Azure Portal の **[&frankly]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
 
 3. **[&frankly Domain and URLs]& (frankly のドメインと URL)** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
 
     a. **[識別子]** ボックスに、`https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
 
     **[サインオン URL]** ボックスに、`https://andfrankly.com/saml/okta/?saml_sso=<tenant id>` のパターンを使用して URL を入力します。
     > [!NOTE] 
@@ -126,16 +126,16 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_general_400.png)
 
 7. **&frankly** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [andfrankly サポート チーム](mailto:help@andfrankly.com)に送信する必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -186,7 +186,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 2. アプリケーションの一覧で **[&frankly]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
+    ![Configure single sign-on](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

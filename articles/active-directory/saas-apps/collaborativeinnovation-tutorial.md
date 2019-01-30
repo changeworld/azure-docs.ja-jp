@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Collaborative Innovation の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Collaborative Innovation の統合 | Microsoft Docs
 description: Azure Active Directory と Collaborative Innovation の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: bba95df3-75a4-4a93-8805-b3a8aa3d4861
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 14dc0befdfe92970c194de852f6ef2dc98080ae7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 402b8be8ea3a569679baa833ef52fef9769bac30
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442066"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819562"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>チュートリアル: Azure Active Directory と Collaborative Innovation の統合
+# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>チュートリアル:Azure Active Directory と Collaborative Innovation の統合
 
 このチュートリアルでは、Collaborative Innovation と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Collaborative Innovation で、Azure AD の **[ユーザー名]** の値を **[U
 
 Collaborative Innovation で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Collaborative Innovation テスト ユーザーの作成](#creating-a-collaborative-innovation-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Collaborative Innovation で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -151,7 +151,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 1. **Collaborative Innovation** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Collaborative Innovation サポート チーム](https://www.unilever.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

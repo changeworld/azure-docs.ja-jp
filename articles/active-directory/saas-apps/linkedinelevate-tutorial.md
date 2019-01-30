@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と LinkedIn Elevate の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と LinkedIn Elevate の統合 | Microsoft Docs
 description: Azure Active Directory と LinkedIn Elevate の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 209f87a77ff6e18fa08943385d9cf61bbf915089
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116178"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822639"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>チュートリアル: Azure Active Directory と LinkedIn Elevate の統合
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>チュートリアル:Azure Active Directory と LinkedIn Elevate の統合
 
 このチュートリアルでは、LinkedIn Elevate と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -240,7 +240,7 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [チュートリアル: LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる](linkedinelevate-provisioning-tutorial.md)
+* [チュートリアル:LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる](linkedinelevate-provisioning-tutorial.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [[ユーザー プロビジョニングの構成]](linkedinelevate-provisioning-tutorial.md)

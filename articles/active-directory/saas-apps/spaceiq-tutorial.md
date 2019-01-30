@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Slack の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Slack の統合 | Microsoft Docs
 description: Azure Active Directory と SpaceIQ の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 5b55ae29-491f-401f-9299-d3a6b64a1b99
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 515b89502a9794671c1086b9dc537cdac9779f79
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f9516cafc09b560b8c111d822aae8a26a04e4dc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447889"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826923"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル: Azure Active Directory と SpaceIQ の統合
+# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル:Azure Active Directory と SpaceIQ の統合
 
 このチュートリアルでは、SpaceIQ と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -154,7 +154,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -190,7 +190,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
   
 ### <a name="create-a-spaceiq-test-user"></a>SpaceIQ テスト ユーザーを作成する
 
-このセクションでは、SpaceIQ で Britta Simon というユーザーを作成します。 [SpaceIQ サポート チーム](mailto:eng@spaceiq.com) と協力して、SpaceIQ プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SpaceIQ で Britta Simon というユーザーを作成します。 [SpaceIQ サポート チーム](mailto:eng@spaceiq.com)  と協力して、SpaceIQ プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -227,7 +227,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SpaceIQ] タイルをクリックすると、自動的に SpaceIQ アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

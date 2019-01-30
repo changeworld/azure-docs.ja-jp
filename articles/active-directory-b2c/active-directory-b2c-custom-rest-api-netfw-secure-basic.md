@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の HTTP 基本認証を使用して RESTful �
 description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dcabcbbce78b83c0d4328e0f5b1088c172bcfedb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409305"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850685"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
@@ -30,7 +30,7 @@ ms.locfileid: "47409305"
 ## <a name="prerequisites"></a>前提条件
 [REST API 要求交換の Azure AD B2C ユーザー体験への統合](active-directory-b2c-custom-rest-api-netfw.md)に関する記事の手順を完了してください。
 
-## <a name="step-1-add-authentication-support"></a>手順 1: 認証サポートを追加する
+## <a name="step-1-add-authentication-support"></a>手順 1:認証サポートの追加
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>手順 1.1: アプリケーション設定をプロジェクトの web.config ファイルに追加する
 1. 作成済みの Visual Studio プロジェクトを開きます。 
@@ -216,10 +216,10 @@ Controllers\IdentityController.cs を開き、`[Authorize]` タグをコント�
 
 ![コントローラーに [承認] タグを追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>手順 2: Azure に発行する
+## <a name="step-2-publish-to-azure"></a>手順 2:Azure に発行する
 プロジェクトを発行するには、ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックし、**[発行]** を選択します。
 
-## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>手順 3: RESTful サービス アプリのアプリ ID とアプリ シークレットを Azure AD B2C に追加する
+## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>手順 3:RESTful サービス アプリのアプリ ID とアプリ シークレットを Azure AD B2C に追加する
 RESTful サービスがクライアント ID (ユーザー名) とシークレットで保護された後、Azure AD B2C テナントに資格情報を格納する必要があります。 RESTful サービスを呼び出すときに、カスタム ポリシーによって資格情報が提供されます。 
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>手順 3.1: RESTful サービスのクライアント ID を追加する
@@ -263,7 +263,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 9. `B2C_1A_B2cRestClientSecret` キーを作成したことを確認します。
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>手順 4: 拡張ポリシーで基本認証をサポートするように技術プロファイルを変更する
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>手順 4:拡張ポリシーで基本認証をサポートするように技術プロファイルを変更する
 1. 作業ディレクトリで、拡張ポリシー ファイル (TrustFrameworkExtensions.xml) を開きます。
 
 2. `Id="REST-API-SignUp"` を含む `<TechnicalProfile>` ノードを探します。
@@ -287,7 +287,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
     
     ![基本認証の XML 要素を追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>手順 5: ポリシーをテナントにアップロードする
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>手順 5:ポリシーをテナントにアップロードする
 
 1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を開きます。
 
@@ -301,7 +301,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 6. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格したことを確認します。
 
-## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>手順 6: [今すぐ実行] を使用してカスタム ポリシーをテストする
+## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>手順 6:[今すぐ実行] を使用してカスタム ポリシーをテストする
 1. **[Azure AD B2C の設定]** を開き、**[Identity Experience Framework]** を選択します。
 
     >[!NOTE]
@@ -340,7 +340,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)が提供されています。
-* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。
+* 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。
 
 ## <a name="next-steps"></a>次の手順
 * [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

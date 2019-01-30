@@ -3,18 +3,18 @@ title: Azure Automation での Runbook の実行
 description: Azure Automation で Runbook が処理される方法の詳細について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/30/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb6236203a1165361505c8699ba94bff54e41c2a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4e5c64dc43be10eead1da35ec2337aa1f83f2f91
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247352"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472128"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -31,6 +31,91 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 ![ジョブの状態 - PowerShell スクリプト](./media/automation-runbook-execution/job-statuses-script.png)
 
 ジョブは、Azure サブスクリプションに接続することにより Azure リソースにアクセスします。 データ センター内のリソースにパブリック クラウドからアクセスできる場合、ジョブはそれらのリソースにのみアクセスします。
+
+## <a name="where-to-run-your-runbooks"></a>Runbook を実行する場所
+
+Azure Automation の Runbook は、Azure のサンドボックスまたは [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) のいずれかで実行できます。 サンドボックスは、複数のジョブで使用できる Azure での共有環境です。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。 Hybrid Runbook Worker を使用すると、ロールをホストしているコンピューターで、環境内のリソースに対して Runbook を直接実行し、それらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の割り当て済みコンピューターに配信されます。 ほとんどの Runbook は、Azure のサンドボックスで容易に実行できます。 Runbook の実行のために、Azure サンドボックスよりも Hybrid Runbook を選択することが推奨される特定のシナリオがあります。 一部のシナリオの例を示した一覧については、次の表を参照してください。
+
+|タスク|最適な選択肢|メモ|
+|---|---|---|
+|Azure リソースと統合する|Azure サンドボックス|Azure でホストされ、認証がより簡単です。 Azure VM で Hybrid Runbook Worker を使用している場合は、[Azure リソース用のマネージド ID](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) を使用できます|
+|最適なパフォーマンスで Azure リソースを管理する|Azure サンドボックス|スクリプトは同じ環境内で実行されます。それが、待ち時間がより短いことにつながります|
+|運用コストを最小限に抑える|Azure サンドボックス|コンピューティングのオーバーヘッドがなく、VM の必要がありません|
+|実行時間の長いスクリプト|Hybrid Runbook Worker|Azure のサンド ボックスには[リソースの制限](../azure-subscription-service-limits.md#automation-limits)があります|
+|ローカル サービスと相互作用する|Hybrid Runbook Worker|ホスト マシンに直接アクセスできます|
+|サード パーティ製ソフトウェアと実行可能ファイルが必要|Hybrid Runbook Worker|OS を管理し、ソフトウェアをインストールできます|
+|Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](automation-watchers-tutorial.md)を使用します|
+|多量のリソースを消費するスクリプト|Hybrid Runbook Worker| Azure のサンド ボックスには[リソースの制限](../azure-subscription-service-limits.md#automation-limits)があります|
+|特定の要件でのモジュールの使用| Hybrid Runbook Worker|次に例をいくつか示します。</br> **WinSCP** - winscp.exe への依存関係 </br> **IISAdministration** - IIS を有効にする必要がある|
+|インストーラーが必要なモジュールをインストールする|Hybrid Runbook Worker|サンド ボックス用のモジュールは xcopy が可能な必要があります|
+|4.7.2 以外の .NET Framework が必要な Runbook またはモジュールの使用|Hybrid Runbook Worker|Automation のサンド ボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法がありません|
+
+## <a name="runbook-behavior"></a>Runbook の動作
+
+Runbook は、その内部で定義されているロジックに基づいて実行されます。 Runbook は、中断された場合、先頭から再開されます。 この動作のためには、一時的な問題があった場合の Runbook の再起動をサポートする方法で、Runbook が記述される必要があります。
+
+### <a name="creating-resources"></a>リソースの作成
+
+リソースを作成するスクリプトの場合、リソースの再作成を試みる前に、それが既に存在するかどうかを確認する必要があります。 次の例で、基本となる例を示します。
+
+```powershell
+$vmName = "WindowsVM1"
+$resourceGroupName = "myResourceGroup"
+$myCred = Get-AutomationPSCredential "MyCredential"
+$vmExists = Get-AzureRmResource -Name $vmName -ResourceGroupName $resourceGroupName
+
+if(!$vmExists)
+    {
+    Write-Output "VM $vmName does not exists, creating"
+    New-AzureRmVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
+    }
+else
+    {
+    Write-Output "VM $vmName already exists, skipping"
+    }
+```
+
+### <a name="time-dependant-scripts"></a>時間依存のスクリプト
+
+Runbook の作成時に慎重に検討してください。 前述のように、Runbook は堅牢で、Runbook の再起動または失敗を引き起こす可能性のある一時的なエラーを処理できる方法で作成する必要があります。 Runbook は、失敗した場合には再試行されます。 Runbook が、通常は時間の制約内で実行される場合、実行時間を調べるロジックを Runbook 内に実装し、起動、シャットダウン、スケールアウトなどの操作が特定時間中にのみ実行されるようにする必要があります。
+
+### <a name="tracking-progress"></a>進行状況の追跡
+
+本質的にモジュラー形式である Runbook を作成することをお勧めします。 これは、容易に再利用と再起動が可能なように Runbook のロジックを構築することを意味します。 Runbook の進行状況を追跡することは、問題がある場合に Runbook のロジックが正常に実行されることを保証する適切な方法です。 Runbook の進行状況を追跡する方法は、ストレージ アカウント、データベース、ファイル共有のような外部ソースを使用する方法など、いくつか考えられます。 外部から状態を追跡することで、Runbook が実行した最後のアクションの状態をまずチェックし、その結果に基づいて、Runbook 内の特定のタスクをスキップまたは続行するように、Runbook のロジックを作成できます。
+
+### <a name="prevent-concurrent-jobs"></a>同時実行ジョブの防止
+
+一部の Runbook は、複数のジョブにわたって同時に実行されると、おかしな動作をすることがあります。 この場合、Runbook に既に実行中のジョブがあるかどうかをチェックするロジックを実装することが重要です。 この動作を実行可能な方法の基本例を、次の例に示します。
+
+```powershell
+# Authenticate to Azure
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $connection.SubscriptionID
+
+# Check for already running or new runbooks
+$runbookName = "<RunbookName>"
+$rgName = "<ResourceGroupName>"
+$aaName = "<AutomationAccountName>"
+$jobs = Get-AzureRmAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzureRmContext $AzureContext
+
+# If then check to see if it is already running
+$runningCount = ($jobs | ? {$_.Status -eq "Running"}).count
+
+If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Status -eq "New")) {
+    # Exit code
+    Write-Output "Runbook is already running"
+    Exit 1
+} else {
+    # Insert Your code here
+}
+```
+
+### <a name="using-executables-or-calling-processes"></a>実行可能ファイルの使用またはプロセスの呼び出し
+
+Azure サンドボックスで実行される Runbook は、プロセス (.exe や subprocess.call など) の呼び出しをサポートしていません。 これは、Azure サンドボックスはコンテナーで実行される共有プロセスであり、基になっているすべての API にアクセスできるとは限らないためです。 サード パーティー製ソフトウェアやサブ プロセスの呼び出しが必要なシナリオの場合は、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行することをお勧めします。
 
 ## <a name="job-statuses"></a>ジョブの状態
 
@@ -53,17 +138,17 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Azure Portal を使用したジョブの状態の表示
 
-すべての Runbook ジョブの状態の概要を表示したり、Azure portal での特定の Runbook ジョブの詳細にドリルダウンしたりできます。 また、Log Analytics ワークスペースとの統合を構成して、Runbook ジョブの状態およびジョブ ストリームを転送することも可能です。 Log Analytics との統合の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+すべての Runbook ジョブの状態の概要を表示したり、Azure portal での特定の Runbook ジョブの詳細にドリルダウンしたりできます。 Log Analytics ワークスペースとの統合を構成し、Runbook のジョブの状態やジョブ ストリームを転送することも可能です。 Log Analytics との統合の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation Runbook ジョブの概要
 
-選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、すべての Runbook ジョブの概要を確認できます。
+選択した Automation アカウントの右にある **[ジョブの統計情報]** タイルでは、すべての Runbook ジョブの概要を確認できます。
 
 ![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。
 
-タイルをクリックすると、実行されているすべてのジョブを総括する一覧を示した **[ジョブ]** ページが表示されます。 このページには、状態、開始時刻、および完了時刻が表示されます。
+タイルをクリックすると、実行されたすべてのジョブの概要を示す一覧が含まれる **[ジョブ]** ページが表示されます。 このページには、状態、開始時刻、および完了時刻が表示されます。
 
 ![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
@@ -71,20 +156,20 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 
 ![[フィルター] の [ジョブの状態]](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ページからその Runbook を選択し、**[ジョブ]** タイルを選択します。 このアクションにより、**[ジョブ]** ページが表示され、そのページでジョブ レコードをクリックすると、そのジョブの詳細と出力が表示されます。
+また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ページからその Runbook を選択し、**[ジョブ]** タイルを選択します。 この操作で **[ジョブ]** ページが表示され、そのページでジョブ レコードをクリックすると、そのジョブの詳細と出力を表示できます。
 
 ![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
 ### <a name="job-summary"></a>ジョブの概要
 
-特定の Runbook 用に作成されたすべてのジョブと、それらのジョブの最新の状態を一覧にして表示できます。 この一覧は、ジョブの状態とジョブに最後に変更を加えた日付の範囲とによってフィルター処理することができます。 詳細な情報と出力を表示するには、ジョブの名前をクリックします。 ジョブの詳細表示には、そのジョブに指定された Runbook パラメーターの値が含まれます。
+特定の Runbook 用に作成されたすべてのジョブと、それらのジョブの最新の状態を、一覧で表示できます。 この一覧は、ジョブの状態とジョブに最後に変更を加えた日付の範囲とによってフィルター処理することができます。 詳細な情報と出力を表示するには、ジョブの名前をクリックします。 ジョブの詳細表示には、そのジョブに指定された Runbook パラメーターの値が含まれます。
 
 次の手順を使用して Runbook のジョブを表示します。
 
 1. Azure Portal で、**[Automation]** を選択し、次に Automation アカウントの名前を選択します。
 2. ハブから **[Runbook]** を選択し、**[Runbook]** ページで、一覧から 1 つの Runbook を選択します。
 3. 選択した Runbook のページで、**[ジョブ]** タイルをクリックします。
-4. 一覧にあるいずれかのジョブをクリックすると、Runbook の [ジョブの詳細] ページで詳細と出力を確認できます。
+4. 一覧のジョブのいずれかをクリックすると、Runbook のジョブの詳細ページに、そのジョブの詳細と出力を表示できます。
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Windows PowerShell を使用したジョブの状態の取得
 
@@ -135,12 +220,13 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>fair share
 
-クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は 3 時間以上実行されている任意のジョブを一時的にアンロードまたは停止します。 [PowerShell ベースの Runbook](automation-runbook-types.md#powershell-runbooks) および [Python の Runbook](automation-runbook-types.md#python-runbooks) に対するジョブは、停止されて再起動されずに、ジョブの状態には [停止済み] と表示されます。
+クラウド内のすべての Runbook 間でリソースを共有するため、3 時間以上実行されているジョブがあると、Azure Automation はそれらのジョブを一時的にアンロードまたは停止します。 [PowerShell ベースの Runbook](automation-runbook-types.md#powershell-runbooks) および [Python の Runbook](automation-runbook-types.md#python-runbooks) に対するジョブは、停止されて再起動されずに、ジョブの状態には [停止済み] と表示されます。
 
-実行時間が長いタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) を使うことをお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限はありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間の fair share 制限では制限されていないものの、このワーカー上で実行される Runbook は、予期しないローカル インフラストラクチャの問題からの再起動の動作をサポートするように、今後も開発していく必要があります。
+長時間実行されるタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、それでも Hybrid Runbook Worker で実行される Runbook は、予期しないローカル インフラストラクチャの問題からの再起動動作をサポートするように開発する必要があります。
 
-もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 Runbook によって多数のリソース上で同じ関数をループ処理する場合 (複数のデータベースでデータベース操作を行うなど)、その関数を[子 Runbook](automation-child-runbooks.md) に移動して、[Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットで呼び出すことができます。 これらの各子 Runbook は、別々のプロセスで並列に実行されるため、親 Runbook が完了するまでの合計時間が減ります。 お使いの Runbook で [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) コマンドレットを使用すると、子 Runbook の完了後に実行が必要な操作がある場合、各子のジョブの状態を確認できます。
+もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 Runbook で、複数のリソースに対して同じ関数をループ処理する場合 (複数のデータベースに対するデータベース操作など)、その関数を[子 Runbook](automation-child-runbooks.md) に移動して、[Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットで呼び出すことができます。 これらの各子 Runbook は、別々のプロセスで並列に実行されるため、親 Runbook が完了するまでの合計時間が減ります。 お使いの Runbook で [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) コマンドレットを使用すると、子 Runbook の完了後に実行が必要な操作がある場合、各子のジョブの状態を確認できます。
 
 ## <a name="next-steps"></a>次の手順
 
 * 「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」で、Runbook を開始するさまざまな方法を確認します
+

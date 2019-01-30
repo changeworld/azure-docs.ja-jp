@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Ubuntu VM のマネージド ドメインへの参加 | Microsoft Docs'
+title: Azure Active Directory Domain Services:Ubuntu VM をマネージド ドメインに参加させる | Microsoft Docs
 description: Ubuntu Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 709c227c955aba6b31ce415767470fa18ff3684f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 35b37a5c50346dc116b2f36394feecb82a0d88fd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155271"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845763"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンをマネージド ドメインに参加させる
 この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -124,7 +124,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     ```
 
    > [!NOTE]
-   > **トラブルシューティング** : *realm discover* でマネージド ドメインが見つからない場合:
+   > **トラブルシューティング:***realm discover* でマネージド ドメインが見つからない場合: 
      * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
      * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
      * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。

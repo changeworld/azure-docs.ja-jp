@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/23/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a74fb749e130b565c44c637bfc16ff09e3314a05
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957642"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857167"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack のトラブルシューティング
 
@@ -32,11 +32,31 @@ ms.locfileid: "52957642"
 このセクションで説明されている問題のトラブルシューティングの推奨事項は、複数のソースから取得しており、特定の問題を解決できない場合があります。 コード例はそのまま提供されており、期待される結果を保証できません。 このセクションは、製品の機能強化の実装に合わせて、頻繁に編集および更新されます。
 
 ## <a name="deployment"></a>Deployment
-### <a name="deployment-failure"></a>デプロイの失敗
+### <a name="general-deployment-failure"></a>一般的なデプロイの失敗
 インストール時に障害が発生した場合、デプロイ スクリプトの -rerun オプションを使用して、失敗した手順からデプロイを再開できます。  
 
 ### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK のデプロイの最後に、PowerShell セッションがまだ開いており、出力が表示されません。
 この動作は、PowerShell コマンド ウィンドウが選択されている場合の既定の動作の結果に過ぎない可能性があります。 開発キットのデプロイは成功しましたが、ウィンドウを選択したときに、スクリプトが一時停止しました。 設定が完了したことを確認するには、コマンド ウィンドウのタイトル バーで、"select" という単語を探します。  ESC キーを押してその選択を解除すると、その後に完了メッセージが表示されるはずです。
+
+### <a name="deployment-fails-due-to-lack-of-external-access"></a>外部アクセスがないことが原因でデプロイが失敗する
+外部アクセスが必要な段階でデプロイが失敗する場合は、次の例のような例外が返されます。
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+このエラーが発生する場合は、[デプロイ ネットワークのトラフィックに関するドキュメント](deployment-networking.md)を見直して、最小限のネットワーク要件がすべて満たされていることを確認してください。 パートナー ツールキットの一部として、ネットワーク チェッカー ツールも提供されています。
+
+上記の例外が表示されるデプロイ エラーは、一般に、インターネットのリソースへの接続の問題が原因です
+
+これが問題であることを確認するため、次の手順を実行できます。
+
+1. PowerShell を開きます
+2. WAS01 または ERC VM のいずれかに対する PSSession に入ります
+3. 次のコマンドレットを実行します: Test-NetConnection login.windows.net -port 443
+
+このコマンドが失敗する場合は、TOR スイッチおよびその他のネットワーク デバイスがすべて、[ネットワーク トラフィックを許可する](azure-stack-network.md)ように構成されていることを確認します。
 
 ## <a name="virtual-machines"></a>仮想マシン
 ### <a name="default-image-and-gallery-item"></a>既定のイメージとギャラリー アイテム

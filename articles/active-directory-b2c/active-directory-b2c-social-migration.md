@@ -3,21 +3,21 @@ title: Azure Active Directory B2C でソーシャル ID を持つユーザーを
 description: Graph API を使った、ソーシャル ID を持つユーザーの Azure AD B2C への移行に関する主要な概念について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445145"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846559"
 ---
-# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: ソーシャル ID を持つユーザーの移行
+# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ ms.locfileid: "37445145"
 * **userIdentities** - ソーシャル アカウントの種類を指定する 1 つ以上の UserIdentity レコードと、ソーシャル ID プロバイダーからの一意のユーザー識別子です。
 * [オプション] **otherMails** - ソーシャル アカウントのみの場合は、ユーザーの電子メール アドレスです 
 
-詳しくは、[Graph API のリファレンス](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)をご覧ください
+詳細については、次を参照してください。[Graph API リファレンス](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>ソーシャル アカウント (のみ) の移行
 ローカル アカウントの資格情報なしでソーシャル アカウントのみを作成するには、 Graph API に HTTPS POST 要求を送信します。 要求本文には、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。 

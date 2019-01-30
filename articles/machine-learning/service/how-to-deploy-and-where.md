@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7fc40945588c272ae0ae80ba17b7b3752cab4306
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4d62885743a4e50ece1c032c7b3405d8766d95cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353313"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850588"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -245,7 +245,7 @@ Azure Container Instances にデプロイするには、次の手順を使用し
     **推定所要時間**: 約 3 分です。
 
     > [!TIP]
-    > デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用して AKS サービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
+    > デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
 
 詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 
@@ -300,7 +300,7 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attatch the cluster to your workgroup
+# Attach the cluster to your workgroup
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
@@ -335,7 +335,7 @@ print(service.state)
 **推定所要時間**: 約 3 分です。
 
 > [!TIP]
-> デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用して AKS サービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
+> デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
 
 詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 

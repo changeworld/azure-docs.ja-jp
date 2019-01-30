@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Bambu by Sprout Social の統合 | Microsoft Docs
 description: Azure Active Directory と Bambu by Sprout Social との間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d2b9ddbc-cab7-40d6-aca1-5b171cab4199
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 317fb1dd1235793d31ab39f5cb2a99766ca33150
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 3cc4e4c6908823e6f76151f689a57f476c9d03ff
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116161"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
+# <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル:Azure Active Directory と Bambu by Sprout Social の統合
 
 このチュートリアルでは、Bambu by Sprout Social と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -127,7 +127,7 @@ Bambu by Sprout Social で Azure AD のシングル サインオンを構成し�
 1. **Bambu by Sprout Social** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Bambu by Sprout Social のサポート](mailto:support@getbambu.com)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 <!--### Next steps
@@ -212,7 +212,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Bambu by Sprout Social] タイルをクリックすると、自動的に Bambu by Sprout Social アプリケーションにサインオンします。 アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)を参照してください。 
+アクセス パネルで [Bambu by Sprout Social] タイルをクリックすると、自動的に Bambu by Sprout Social アプリケーションにサインオンします。 アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

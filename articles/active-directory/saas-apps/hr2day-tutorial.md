@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs
 description: Azure Active Directory と HR2day by Merces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 327e6d94cbabd679531935ba330d3096d73f8897
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441617"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821024"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル: Azure Active Directory と HR2day by Merces の統合
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 
 このチュートリアルでは、HR2day by Merces と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,11 +88,11 @@ HR2day by Merces で、Azure AD の **[ユーザー名]** を **[Username]\(ユ�
 
 HR2day by Merces で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on): ユーザーがこの機能を使用できるようにします。
-1. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user): Britta Simon で Azure AD のシングル サインオンをテストします。
-1. [HR2day by Merces のテスト ユーザーの作成](#creating-an-hr2day-by-merces-test-user): HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. [Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user): Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. [シングル サインオンのテスト](#testing-single-sign-on): 構成が機能するかどうかを確認します。
+1. [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on):ユーザーがこの機能を使用できるようにします。
+1. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user):Britta Simon を使用して Azure AD シングル サインオンをテストします。
+1. [HR2day by Merces のテスト ユーザーの作成](#creating-an-hr2day-by-merces-test-user):HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. [Azure AD のテスト ユーザーの割り当て](#assigning-the-azure-ad-test-user):Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. [シングル サインオンのテスト](#testing-single-sign-on):構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 

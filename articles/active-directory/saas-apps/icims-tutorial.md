@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ICIMS の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ICIMS の統合 | Microsoft Docs
 description: Azure Active Directory と ICIMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72dbd649-e4b1-4d72-ad76-636d84922596
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ca6920c99a31c2b4699e9fb8a57689485a099ef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd72b0b93693d26da9a26839e4bebf6435807b4c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431115"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-icims"></a>チュートリアル: Azure Active Directory と ICIMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-icims"></a>チュートリアル:Azure Active Directory と ICIMS の統合
 
 このチュートリアルでは、ICIMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -131,7 +131,7 @@ ICIMS で Azure AD のシングル サインオンを構成してテストする
 1. **ICIMS** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [ICIMS サポート チーム](https://www.icims.com/contact-us)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

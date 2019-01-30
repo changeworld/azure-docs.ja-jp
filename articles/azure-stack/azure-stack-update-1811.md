@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267319"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853240"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -191,6 +191,8 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 ## <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
+- 同じ特権エンドポイント (PEP) セッションで、**Test-AzureStack** の実行後に **Get-AzureStackLog** PowerShell コマンドレットを実行すると、**Get-AzureStackLog** が失敗します。 この問題を回避するには、**Test-AzureStack** を実行した PEP セッションを閉じてから、新しいセッションを開いて、**Get-AzureStackLog** を実行します。
+
 - 1811 更新プログラムのインストール中は、その間、管理者ポータルのすべてのインスタンスを必ず閉じておいてください。 ユーザー ポータルは開いたままでかまいませんが、管理ポータルは閉じる必要があります。
 
 - [Test-AzureStack](azure-stack-diagnostic-test.md) を実行しているときに、**AzsInfraRoleSummary** または **AzsPortalApiSummary** テストに失敗すると、**Test-AzureStack** を `-Repair` フラグで実行するように求められます。  このコマンドを実行すると、次のエラー メッセージが表示されて失敗します。`Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  この問題は今後のリリースで修正される予定です。
@@ -312,7 +314,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
    - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** を選択し、**[Microsoft.Compute]** を選択してから、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
    - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。

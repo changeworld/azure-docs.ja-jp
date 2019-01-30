@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect Sync: フィルター処理の構成 | Microsoft Docs'
+title: 'Azure AD Connect 同期: フィルター処理の構成 | Microsoft Docs'
 description: Azure AD Connect Sync でフィルター処理を構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 886ac908d2e294f4627f95b35d93ea49a9e1607a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306361"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472332"
 ---
-# <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
+# <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
 
 ただし、場合によっては、既定の構成に変更を加えなければならないこともあります。 次に例をいくつか示します。
@@ -185,6 +185,9 @@ Azure AD Connect インストール ウィザードでは、常にこの構成�
 
 ## <a name="attribute-based-filtering"></a>属性ベースのフィルター処理
 以下の手順は、November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) 以降のビルドを想定しています。
+
+> [!IMPORTANT]
+>**Azure AD Connect** によって作成された既定の規則は、変更しないことをお勧めします。 規則を変更する場合は、複製してから、元の規則を無効にします。 複製した規則を変更してください。 これによって (元の規則を無効にすることによって)、その規則によって有効にしたバグ修正や機能は見つからなくなります。
 
 属性ベースのフィルター処理は、オブジェクトをフィルター処理する手段として最も柔軟性の高い方法となります。 [宣言型のプロビジョニング](concept-azure-ad-connect-sync-declarative-provisioning.md)の強みを活かして、Azure AD に対してオブジェクトを同期させるタイミングをあらゆる角度から制御することができます。
 

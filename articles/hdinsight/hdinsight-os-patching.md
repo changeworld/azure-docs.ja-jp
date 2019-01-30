@@ -8,15 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741591"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848157"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
-管理された Apache Hadoop サービスとして、HDInsight では、HDInsight クラスターで使用される、基盤となる VM の OS の修正プログラムを適用処理します。 2016 年 8 月 1 日の時点で、Linux ベースの HDInsight クラスター (バージョン 3.4 以降) に対するゲスト OS 更新プログラムの適用ポリシーが変更されました。 新しいポリシーの目的は、修正プログラム適用のための再起動の回数を大幅に削減することです。 新しいポリシーでは、Linux クラスターの仮想マシン (VM) への修正プログラム適用が継続されます。修正プログラム適用は、指定されたクラスターのノード間で交互に、毎週月曜日または木曜日の午前 12 時 (UTC) に開始されます。 ただし、どの VM も、ゲスト OS の修正プログラム適用のための再起動は 30 日ごとに最大で 1 回のみです。 また、新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内には行われません。 修正プログラムは、VM が再起動されたら有効になります。
+
+> [!IMPORTANT]
+> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスターに修正プログラムは自動適用**されません**。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する方法
 HDInsight クラスターの仮想マシンは、重要なセキュリティ更新プログラムをインストールできるように、ときどき再起動する必要があります。 2016 年 8 月 1 日の時点で、新しい Linux ベースの HDInsight クラスター (バージョン 3.4 以降) は、次のスケジュールを使用して再起動します。
