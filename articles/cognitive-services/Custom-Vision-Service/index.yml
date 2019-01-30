@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9f6e1a00d97e178f70fec9be21b1bfd483477b49
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c179632094c6544423236dc3aaef6b5f96a2af14
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654382"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210456"
 documentType: LandingData
 title: Custom Vision API のドキュメント
 metadata:
@@ -14,7 +14,7 @@ metadata:
   author: nitinme
   manager: cgronlun
   ms.service: cognitive-services
-  ms.component: custom-vision
+  ms.subservice: custom-vision
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

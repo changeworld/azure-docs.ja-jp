@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8491acfd28524ee3bbbd06c788afb668c40c98b9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346769"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450581"
 ---
 # <a name="deploy-a-new-simulated-device"></a>新しいシミュレートされたデバイスをデプロイする
 
@@ -147,4 +147,4 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、カスタム デバイス モデルをリモート監視ソリューション アクセラレータに展開する方法について説明しました。 次は、[ 物理デバイスをご利用のリモート監視ソリューションに接続する ](iot-accelerators-connecting-devices-node.md) 方法について学習することをお勧めします。
+このガイドでは、カスタム デバイス モデルをリモート監視ソリューション アクセラレータに展開する方法について説明しました。 次は、[実際のデバイスをご利用のリモート監視ソリューションに接続する](iot-accelerators-connecting-devices-node.md)方法について学習することをお勧めします。

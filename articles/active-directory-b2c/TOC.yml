@@ -153,8 +153,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: ユーザー動作の追跡
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: Java Web アプリをセキュリティで保護する
-      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory
     - name: リファレンス
       items:
       - name: 要求リゾルバー
@@ -320,9 +318,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 505d4be048f287179c4601296d12294942535520
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091938"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240847"

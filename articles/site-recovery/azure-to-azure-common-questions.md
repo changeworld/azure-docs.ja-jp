@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260466"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449556"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>一般的な質問:Azure から Azure へのレプリケーション
 
@@ -101,8 +101,8 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 ### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
 使用できる最も古い復旧ポイントは 72 時間です。
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>24 時間のレプリケーション ポリシーがあり、問題により 24 時間より長く Site Recovery で復旧ポイントが生成されなかった場合はどうなりますか? 以前の復旧ポイントは取り除かれますか?
-いいえ、この場合、以前のすべての復旧ポイントが Site Recovery によって保持されます。 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>24 時間のレプリケーション ポリシーがあり、問題により 24 時間より長く Site Recovery で復旧ポイントが生成されなかった場合はどうなりますか? 以前の復旧ポイントはなくなりますか?
+いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントのリテンション期間 (この場合は 24 時間) によって異なりますが、Site Recovery が最も古いポイントを置き換えるのは新しいポイントが生成される場合のみです。 このケースでは、問題があるために新しい復旧ポイントは生成されないため、リテンション期間が終了しても古いポイントはすべて保持されます。
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM でレプリケーションを有効にした後で、レプリケーション ポリシーを変更するにはどうしたらよいですか? 
 **[Site Recovery コンテナー]** > **[Site Recovery インフラストラクチャ]** > **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更を保存します。 変更は既存のすべてのレプリケーションにも適用されます。 

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 9e17fda2bc05eb901d3a75d6b1d455232f48a9d7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bf2137803c7a6c70f9efe75524a4ed5cf51d6ca1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970428"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451444"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Python バックエンドおよび Python デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -85,7 +85,7 @@ except KeyboardInterrupt:
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する Python アプリをシミュレートされたデバイス上に作成します。
 
-1. **モジュールの接続文字列を取得する** -- [Azure Portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
+1. **モジュールの接続文字列を取得する** -- [Azure Portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が正常に作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
   ![Azure Portal モジュールの詳細][15]
 

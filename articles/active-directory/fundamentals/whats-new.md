@@ -3,7 +3,7 @@ title: 新機能 リリース ノート - Azure Active Directory | Microsoft Doc
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Active Directory の新着情報について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -15,12 +15,12 @@ ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
-ms.openlocfilehash: 9453ceb143201e2b66604c0833d6b35dd2d2ad49
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 23fff8fee9e6fd289944da4e946a2a28369ecdd2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995186"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449505"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -41,9 +41,12 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 ### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>同期範囲から削除されたユーザーがクラウド専用アカウントに切り替わらない
 
-**種類:** 修正済み  
-**サービス カテゴリ:**[ユーザー管理]  
+**種類:** 固定  
+**サービス カテゴリ:** [ユーザー管理]  
 **製品の機能:** Directory
+
+>[!Important]
+>この修正についてご意見をいただき、ご迷惑をおかけしていることをよく理解しております。 このため、お客様の組織に変更を簡単に導入できるようになるまで、この変更は元に戻しました。
 
 Active Directory Domain Services (AD DS) オブジェクトが同期範囲から除外され、後続の同期周期で Azure AD のごみ箱に移動されると、ユーザーの DirSyncEnabled フラグが間違って **False** に切り替わるバグを修正しました。 この修正の結果、ユーザーが同期範囲から除外され、その後、Azure AD のごみ箱から復元された場合、予想どおり、ユーザー アカウントはオンプレミス AD との同期を維持します。また、その権限ソース (SoA) がオンプレミス AD のままなので、クラウドで管理できません。
 
@@ -53,13 +56,13 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 
 結果的に、今回の修正によって、一部のシナリオでは過去に必須でしたが、AD と同期しているユーザーの ImmutableID 属性を直接更新することが回避されます。 仕様では、Azure AD のオブジェクトの ImmutableID はその名前が示すように不変であることを意図しています。 Azure AD Connect Health と Azure AD Connect Synchronization クライアントで導入された新機能で次のようなシナリオに対処できます。
 
-- **多数のユーザーを対象に大規模な ImmutableID 更新を一度に行う**
-
-  たとえば、Azure AD Connect の導入中、設定を間違え、SourceAnchor 属性を変更しなければなりません。 解決方法:テナント レベルで DirSync を無効にし、無効な ImmutableID 値をすべて消去します。 詳しくは、「[Office 365 のディレクトリ同期を無効にする](/office365/enterprise/turn-off-directory-synchronization)」をご覧ください。
-
 - **多数のユーザーを対象に大規模な ImmutableID 更新を段階的に行う**
   
   たとえば、時間のかかる AD DS フォレスト間移行を行う必要があります。 解決方法:Azure AD Connect を使用し、**ソース アンカーを構成**します。また、ユーザーが移行するとき、Azure AD からローカル AD DS ユーザーの新しいフォレストの ms-DS-Consistency-Guid 属性に既存の ImmutableID 値をコピーします。 詳細については、「[sourceAnchor としての ms-DS-ConsistencyGuid の使用](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
+
+- **多数のユーザーを対象に大規模な ImmutableID 更新を一度に行う**
+
+  たとえば、Azure AD Connect の導入中、設定を間違え、SourceAnchor 属性を変更しなければなりません。 解決方法:テナント レベルで DirSync を無効にし、無効な ImmutableID 値をすべて消去します。 詳しくは、「[Office 365 のディレクトリ同期を無効にする](/office365/enterprise/turn-off-directory-synchronization)」をご覧ください。
 
 - **オンプレミス ユーザーと Azure AD の既存ユーザーを再度組み合わせる** たとえば、AD DS でユーザーが再作成された場合、Azure AD の既存アカウントと再度組み合わされず、重複する Azure AD アカウントが生成されます (孤立オブジェクト)。 解決方法:Azure portal の Azure AD Connect Health を使用し、ソース アンカー/ImmutableID のマッピングをやり直します。 詳細については、「[孤立したオブジェクトのシナリオ](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)」を参照してください。
 
@@ -229,7 +232,7 @@ PIM と利用可能な電子メール通知の詳細については、「[PIM �
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 11 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018 年 11 月に、フェデレーションを使用した以下の 26 の新規アプリのサポートが、アプリ ギャラリーに追加されました:
@@ -255,7 +258,7 @@ Azure AD のログを Azure Log Analytics に転送できるようになりま�
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 10 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018 年 10 月に、フェデレーションを使用した以下の 14 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
@@ -298,7 +301,7 @@ ForceDelete ドメイン API を使用して、ユーザー、グループ、ア
  
 ### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>動的グループの管理者ロールのアクセス許可が更新された
 
-**種類:** 修正済み  
+**種類:** 固定  
 **サービス カテゴリ:** グループ管理  
 **製品の機能:** コラボレーション
 
@@ -319,7 +322,7 @@ ForceDelete ドメイン API を使用して、ユーザー、グループ、ア
 ### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>一部のサード パーティ製アプリケーションのシングル サインオン (SSO) 構成設定を簡素化
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
 
 各アプリケーション構成の固有の性質が原因で、サービスとしてのソフトウェア (SaaS) アプリケーションに向けたシングル サインオン (SSO) の設定が困難であることは、Microsoft でも認識しています。 以下のサードパーティ製 SaaS アプリケーションの SSO 構成設定を自動入力するため、簡素化した構成エクスペリエンスを構築しました。
@@ -385,7 +388,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
 
-**種類:** 変更の計画  
+**タイプ:** 変更の計画  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
@@ -430,7 +433,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 9 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018 年 9 月に、フェデレーションを使用した以下の 16 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
@@ -444,7 +447,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 ### <a name="support-for-additional-claims-transformations-methods"></a>要求変換メソッドの追加サポート
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
 
 新しい要求変換メソッドの ToLower() と ToUpper() を導入しました。これらは、SAML ベースの **[シングル サインオンの構成]** ページから SAML トークンに適用できます。
@@ -456,7 +459,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 ### <a name="updated-saml-based-app-configuration-ui-preview"></a>SAML ベースのアプリの構成 UI を更新 (プレビュー)
 
 **種類:** 変更された機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
 
 SAML ベースのアプリの構成 UI が更新された一部として、以下が提供されます。
@@ -566,7 +569,7 @@ PIM と Azure リソースについて詳しくは、「[Privileged Identity Man
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 8 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018年 8 月に、フェデレーションを使用した以下の 16 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
@@ -668,7 +671,7 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 7 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018年 7 月に、フェデレーションを使用した以下の 16 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
@@ -872,7 +875,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 6 月
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
 2018年 6 月に、フェデレーションを使用した以下の 15 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
@@ -940,7 +943,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 ### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>パブリック プレビューにある Azure AD の委任されたアプリ管理ロール
 
 **種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリ  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** Access Control
 
 管理者は、グローバル管理者ロールを割り当てずに、アプリ管理タスクを委任できるようになりました。 新しいロールと機能は次のとおりです。

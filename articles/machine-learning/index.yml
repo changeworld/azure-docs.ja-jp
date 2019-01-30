@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 865f7421172c3302333b1cbf465f66806b296759
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250684"
 abstract:
   description: 次の Azure Machine Learning 製品を使用して、インテリジェントなアルゴリズムをアプリや Web サイトに組み込む方法を学習します。  チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
 documentType: LandingData
@@ -12,7 +12,7 @@ metadata:
   author: j-martens
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
   ms.author: jmartens
-  ms.component: core
+  ms.subservice: core
   ms.date: 12/04/2018
   ms.devlang: na
   ms.service: machine-learning
@@ -26,7 +26,7 @@ sections:
     columns: 2
     items:
     - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>このサービスでは、データ サイエンティストが、Azure のさまざまなデータ サービスやコンピューティング サービスで Azure CLI および Python ツールとライブラリを使用して、<br/> AI ソリューションを開発し、管理できます。 詳細をご覧ください。</p>
+      html: <p>このサービスでは、データ サイエンティストが、Azure のさまざまなデータ サービスやコンピューティング サービスで CLI および Python ツールとライブラリを使用して、<br/> AI ソリューションを開発し、管理できます。 詳細をご覧ください。</p>
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
       title: Azure Machine Learning サービス

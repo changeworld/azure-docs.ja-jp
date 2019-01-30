@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c54ae8990de134ca9aee85646f2c1548a878a2a8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 2907abfe15c42582736b2bd5ef02ed7ef546178a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351987"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220707"
 documentType: LandingData
 title: Content Moderator のドキュメント
 metadata:
@@ -14,7 +14,7 @@ metadata:
   author: nitinme
   manager: cgronlun
   ms.service: cognitive-services
-  ms.component: content-moderator
+  ms.subservice: content-moderator
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -56,7 +56,7 @@ sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: 矢印リンクを選択して Content Moderator の使用を開始する方法について説明します <img src="images/index/link.jpg" height="15" width="15"></img>にも掲載されています。
+    text: 矢印リンクを選択して Content Moderator の使用を開始する方法について説明します <img src="images/index/link.jpg" height="15" width="15"></img>。
   - type: table
     style: dataMatrix
     columns:
