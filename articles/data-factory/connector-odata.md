@@ -274,9 +274,9 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 | OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
-| Edm.Boolean | ブール値 |
+| Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | Datetime |
+| Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
@@ -286,7 +286,7 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| Edm.Time | timespan |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
