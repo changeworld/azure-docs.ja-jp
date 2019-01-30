@@ -28,6 +28,7 @@
 ### [カスタム NuGet フィードを使用する](how-to/use-custom-nuget-feed.md)
 ### [Azure Dev Spaces で kubectl を使用する](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [Azure Dev Spaces ツールのアップグレード](how-to/upgrade-tools.md)
+### [Azure Dev Spaces の事業継続とディザスター リカバリー](how-to/dev-spaces-business-continuity.md)
 
 ## [トラブルシューティング](troubleshooting.md)
 

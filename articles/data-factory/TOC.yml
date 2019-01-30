@@ -133,7 +133,7 @@ items:
       href: continuous-integration-deployment.md
     - name: 反復開発とデバッグ
       href: iterative-development-debugging.md
-  - name: コネクタ
+  - name: Connectors
     items:
     - name: Amazon Marketplace Web Service
       href: connector-amazon-marketplace-web-service.md
@@ -264,7 +264,9 @@ items:
       href: connector-salesforce.md
     - name: Salesforce Marketing Cloud
       href: connector-salesforce-marketing-cloud.md
-    - name: SAP Business Warehouse
+    - name: SAP Business Warehouse Open Hub
+      href: connector-sap-business-warehouse-open-hub.md
+    - name: SAP Business Warehouse MDX
       href: connector-sap-business-warehouse.md
     - name: SAP Cloud for Customer
       href: connector-sap-cloud-for-customer.md
@@ -486,9 +488,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7cb01a6b94eec79f007172d851b0bf3e9c3b8b5b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bdee914a5ceaf1a0ac265c8827d95baf63f9f91e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191498"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188534"

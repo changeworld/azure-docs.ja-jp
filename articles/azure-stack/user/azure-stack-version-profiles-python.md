@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: cafae6d71401bc44813b2e366f8e72f7b806236b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062777"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389748"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
@@ -29,11 +29,12 @@ ms.locfileid: "54062777"
 
 Python SDK では、Azure Stack とグローバル Azure などの異なるクラウド プラットフォームをターゲットとする API バージョン プロファイルをサポートします。 ハイブリッド クラウド向けのソリューションの作成時に API プロファイルを使用できます。 Python SDK では、以下の API プロファイルをサポートします。
 
-1. **latest**  
-    プロファイルは、Azure Platform 内のすべてのサービス プロバイダーの最新の API バージョンをターゲットにします。
-2. **2017-03-09-profile**  
-   **2017-03-09-profile**  
-   このプロファイルは、Azure Stack がサポートするリソース プロバイダーの API バージョンをターゲットにします。
+- **latest**  
+    このプロファイルでは、Azure プラットフォーム内にある全サービス プロバイダー向けの最新の API バージョンをターゲットにします。
+- **2018-03-01-hybrid**     
+    このプロファイルでは、Azure Stack プラットフォーム内にある全リソース プロバイダー向けの最新の API バージョンをターゲットにします。
+- **2017-03-09-profile**  
+    このプロファイルでは、Azure Stack がサポートするリソース プロバイダーの最も互換性の高い API バージョンをターゲットにします。
 
    API プロファイルと Azure Stack の詳細については、「[Azure Stack での API バージョンのプロファイルの管理](azure-stack-version-profiles.md)」を参照してください。
 
@@ -56,10 +57,19 @@ Azure Stack で Python Azure SDK を使用するには、次の値を指定し�
 | サブスクリプション ID | AZURE_SUBSCRIPTION_ID | [サブスクリプション ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
 | クライアント シークレット | AZURE_CLIENT_SECRET | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット。 |
 | Resource Manager エンドポイント | ARM_ENDPOINT | 「[Azure Stack Resource Manager エンドポイント](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)」を参照してください。 |
+| リソースの場所 | AZURE_RESOURCE_LOCATION | Azure Stack 環境のリソースの場所。
 
 ## <a name="python-samples-for-azure-stack"></a>Azure Stack 向けの Python 例
 
-次のサンプルコードを利用することで､Azure Stack で仮想マシンに対する一般的な管理タスクを行うことができます｡ サンプルコードは以下を行う方法を示します｡
+Python SDK を使用した Azure Stack 向けの入手可能なコード サンプルの一部を次に示します。
+
+- [リソースとリソース グループを管理する](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)。
+- [ストレージ アカウントを管理する](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)。
+- [仮想マシンを管理する](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)。
+
+## <a name="python-manage-virtual-machine-sample"></a>Python による仮想マシン サンプルの管理
+
+次のコード サンプルを使用することで､Azure Stack 内で仮想マシンに対する一般的な管理タスクを行うことができます｡ コード サンプルでは、次の操作を示しています。
 
 - 仮想マシンを作成する
   - Linux 仮想マシンの作成
@@ -76,7 +86,7 @@ Azure Stack で Python Azure SDK を使用するには、次の値を指定し�
 - 仮想マシンの列挙
 - 仮想マシンの削除
 
-これらの操作を実行するコードを確認するには、GitHub リポジトリ [virtual-machines-python-manage](https://github.com/Azure-Samples/virtual-machines-python-manage) にある Python スクリプト **Hybrid/unmanaged-disks/example.py** の **run_example()** 関数を参照してください。
+これらの操作を実行するコードを確認するには、GitHub リポジトリの [Hybrid-Compute-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM) にある Python スクリプト **example.py** の **run_example()** 関数を参照してください。
 
 それぞれの操作には､それと分かるコメントと print 関数が付いています｡ これらの例は、この一覧の順序どおりではない場合があります。
 
@@ -99,13 +109,13 @@ Azure Stack で Python Azure SDK を使用するには、次の値を指定し�
 4. リポジトリを複製します。
 
     ```bash
-    git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
+    git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
 5. pip を使用して依存関係をインストールします｡
 
     ```bash
-    cd virtual-machines-python-manage\Hybrid
+    cd Hybrid-Compute-Python-Manage-VM
     pip install -r requirements.txt
     ```
 
@@ -119,6 +129,7 @@ Azure Stack で Python Azure SDK を使用するには、次の値を指定し�
     export AZURE_CLIENT_SECRET={your client secret}
     export AZURE_SUBSCRIPTION_ID={your subscription id}
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
+    export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
 8. このサンプルを実行するには､Azure Stack マーケットプレースに Ubuntu 16.04-LTS と WindowsServer 2012-R2-Datacenter のイメージが存在している必要があります｡ これらは [Azure からダウンロード](../azure-stack-download-azure-marketplace-item.md)するか､[Platform Image Repository](../azure-stack-add-vm-image.md) に追加することができます｡
@@ -126,17 +137,9 @@ Azure Stack で Python Azure SDK を使用するには、次の値を指定し�
 9. サンプルを実行します。
 
     ```python
-    python unmanaged-disks\example.py
+    python example.py
     ```
 
-## <a name="notes"></a>メモ
-
-`virtual_machine.storage_profile.os_disk` を使用して仮想マシンの OS ディスクを取得することができます｡ その場合､目的の処理が実行される可能性はありますが、**OSDisk** オブジェクトが提供されることに注意してください｡ OS ディスクのサイズを更新するには､`example.py` の場合と同様に、**OSDisk** オブジェクトではなく､**Disk** オブジェクトを使用します。 `example.py` では、次のプロパティを持つ **Disk** オブジェクトが取得されます。
-
-```python
-os_disk_name = virtual_machine.storage_profile.os_disk.name
-os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
-```
 
 ## <a name="next-steps"></a>次の手順
 

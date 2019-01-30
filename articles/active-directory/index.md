@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
-ms.openlocfilehash: e8e422e6ba69669b24fc141b2688d6777ab85384
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 5aa7ed5d67d61d3a99294440830e146dd799478a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900971"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098767"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -29,7 +29,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_overview.svg" alt="" />
+                                    <img src="media/index/i_overview.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -48,7 +48,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_get-started.svg" alt="" />
+                                    <img src="media/index/i_get-started.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -67,7 +67,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                    <img src="media/index/i_guidelines.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -86,7 +86,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                    <img src="media/index/i_guidelines.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -105,7 +105,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                    <img src="media/index/i_guidelines.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -124,7 +124,7 @@ ms.locfileid: "54900971"
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                    <img src="media/index/i_guidelines.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
@@ -310,6 +310,27 @@ ms.locfileid: "54900971"
                         </ul>
                     </li>
                 </ul>
+            </li>
+        </ul>
+        <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+            <li>
+                <a href=" https://docs.microsoft.com/microsoft-365/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="/office/media/icons/caret-right-blue.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Microsoft 365</h3>
+                                <p>Azure AD を含む完全なソリューション、Microsoft 365 に関する情報をご覧いただけます。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
             </li>
         </ul>
     </div>

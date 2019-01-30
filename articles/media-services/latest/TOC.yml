@@ -31,12 +31,6 @@ items:
   items:
   - name: v2 から v3 への移行
     href: migrate-from-v2-to-v3.md
-  - name: アカウント
-    items:
-    - name: クォータと制限
-      href: limits-quotas-constraints.md
-    - name: ストレージ アカウント
-      href: storage-account-concept.md
   - name: エンティティ
     href: entities-overview.md
     items:
@@ -63,13 +57,6 @@ items:
       href: media-encoder-standard-formats.md
     - name: Autogen アダプティブ ビットレート ラダー
       href: autogen-bitrate-ladder.md
-  - name: Event Grid イベントの処理
-    href: reacting-to-media-services-events.md
-  - name: コンテンツの保護
-    href: content-protection-overview.md
-    items:
-    - name: アクセス制御を使用したマルチ DRM システム
-      href: design-multi-drm-system-with-access-control.md
   - name: コンテンツの分析
     href: analyzing-video-audio-files-concept.md
   - name: ライブ イベントのストリーミング
@@ -85,8 +72,23 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
-  - name: Azure Media Player
+  - name: 監視
+    items:
+    - name: Event Grid
+      href: reacting-to-media-services-events.md
+  - name: コンテンツの保護
+    href: content-protection-overview.md
+    items:
+    - name: アクセス制御を使用したマルチ DRM システム
+      href: design-multi-drm-system-with-access-control.md
+  - name: 再生
     href: use-azure-media-player.md
+  - name: アカウント
+    items:
+    - name: クォータと制限
+      href: limits-quotas-constraints.md
+    - name: ストレージ アカウント
+      href: storage-account-concept.md
 - name: ハウツー ガイド
   items:
   - name: 作業開始
@@ -203,9 +205,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: c30302fa289ade85870db3e89fa70f5e79f61a99
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c5c099f346cffabc6f925609f27ff9cab7dd155e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881377"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095874"

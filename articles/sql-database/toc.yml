@@ -9,6 +9,8 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: クイック スタート
   items:
+  - name: Single Database のクイック スタート ガイド
+    href: sql-database-quickstart-guide.md
   - name: Managed Instance のクイック スタート ガイド
     href: sql-database-managed-instance-quickstart-guide.md
   - name: Create
@@ -121,7 +123,7 @@ items:
     items:
     - name: 単一データベースの概要
       href: sql-database-single-index.yml
-    - name: 作成と管理
+    - name: Management API リファレンス
       href: sql-database-single-databases-manage.md
     - name: 論理サーバー
       items:
@@ -131,8 +133,6 @@ items:
         href: sql-database-resource-limits-logical-server.md
       - name: 接続のアーキテクチャ
         href: sql-database-connectivity-architecture.md
-      - name: T-SQL の相違点
-        href: sql-database-transact-sql-information.md
     - name: エラスティック プール
       items:
       - name: エラスティック プール
@@ -151,6 +151,8 @@ items:
       href: sql-database-dtu-resource-limits-single-databases.md
     - name: リソースのスケール
       href: sql-database-single-database-scale.md
+    - name: T-SQL の相違点
+      href: sql-database-transact-sql-information.md
   - name: マネージド インスタンス
     items:
     - name: 複数のマネージド インスタンスの概要
@@ -690,9 +692,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: a991b2f6a7ac90d38c653b4daf12948b1b800638
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 7d7e85b3a7934b03395960d5dcbdc1141f0effd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078204"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101093"

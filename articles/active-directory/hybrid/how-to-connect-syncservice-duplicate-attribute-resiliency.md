@@ -4,7 +4,7 @@ description: Azure AD Connect によるディレクトリ同期中に UPN また
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3460520b8914a25807c77f631aa4c64f3b2efb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406196"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464869"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -133,7 +133,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
 
-記事「 [Office 365 ディレクトリ同期を妨げる重複または無効な属性を検出する方法](https://support.microsoft.com/kb/2647098)」では、さまざまなトラブルシューティングと解決方法の概要を説明しています。
+次の記事では、さまざまなトラブルシューティングと解決戦略の概要を示しています。[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ## <a name="known-issues"></a>既知の問題
 これらの既知の問題が、データの損失やサービスの低下を引き起こすことはありません。 いくつかは見た目の問題で、その他には、競合属性が検疫されずに、一般的な "*回復前*" 重複属性エラーがスローされる原因となる問題や、手動での修正を必要とするエラーを引き起こす問題があります。

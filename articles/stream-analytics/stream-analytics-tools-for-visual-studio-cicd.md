@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 2f3cc3b386dec0010b179455372fb49bcec55ffc
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 85cb23d865133f2ee769874aa5150ab13e04cd69
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558398"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410573"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Stream Analytics ツールで継続的に統合および開発する
 この記事では、Visual Studio の Azure Stream Analytics ツールを使って継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
@@ -54,6 +54,8 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio �
     },
 ```
 [Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
+
+出力シンクとしての Azure Data Lake Store Gen1 にマネージド ID を使用するには、Azure にデプロイする前に、PowerShell を使用してサービス プリンシパルへのアクセス許可を提供する必要があります。 詳細については、[Resource Manager テンプレートによってマネージド ID を使用した ADLS Gen1 のデプロイを行う](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)方法を確認してください。
 
 
 ## <a name="command-line-tool"></a>コマンドライン ツール

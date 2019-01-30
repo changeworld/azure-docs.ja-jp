@@ -95,6 +95,8 @@ items:
       href: How-To/language-knowledge-base.md
     - name: ナレッジ ベースのテスト
       href: How-To/test-knowledge-base.md
+    - name: アクティブ ラーニングを使用してナレッジ ベースを改善する
+      href: How-to/improve-knowledge-base.md
   - name: ナレッジ ベースの使用
     items:
     - name: メタデータと GenerateAnswer API の使用
@@ -182,9 +184,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: ブログ
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: 869cd7ba5987e0bb62f9a86e831c1529e1aa088b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c62ae1762a9e86a3fb57bda8347bda57df72484
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036598"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091973"

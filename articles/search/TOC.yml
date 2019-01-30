@@ -13,9 +13,9 @@ items:
     href: search-create-service-portal.md
   - name: ポータル
     items:
-    - name: ツールを使用してインポート、インデックス付け、クエリを実行する
+    - name: ポータルベースのインポート、インデックス作成、およびクエリの実行に関するチュートリアル
       href: search-get-started-portal.md
-    - name: コグニティブ検索を使ってみる
+    - name: AI によるエンリッチ (コグニティブ検索)
       href: cognitive-search-quickstart-blob.md
   - name: .NET
     items:
@@ -52,6 +52,10 @@ items:
   items:
   - name: Azure のコード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=search
+- name: トレーニング
+  items:
+  - name: ナレッジ マイニングに関する短期集中講座
+    href: https://azure.github.io/LearnAI-KnowledgeMiningBootcamp/
 - name: 概念
   items:
   - name: フルテキスト検索
@@ -146,6 +150,10 @@ items:
       href: https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index
     - name: シノニム
       href: search-synonyms.md
+    - name: リレーショナル データをモデル化する
+      href: search-example-adventureworks-modeling.md
+    - name: 多層構造ファセットをモデル化する
+      href: search-example-adventureworks-multilevel-faceting.md
   - name: データの読み込みと更新
     items:
     - name: データ インポートの概要
@@ -289,9 +297,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 73d7949b65333b95a9431797b2f82e8947bba8b2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e65adf41bc6555e8e2bcd74be07e6a1b2b96514d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203829"

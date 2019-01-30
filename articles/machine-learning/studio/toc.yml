@@ -200,9 +200,7 @@ items:
   items:
   - name: アルゴリズムとモジュールのリファレンス
     href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: Azure PowerShell モジュール (新規)
-    href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
-  - name: Azure PowerShell モジュール (クラシック)
+  - name: Azure PowerShell モジュール
     href: powershell-module.md
   - name: Web サービスのエラー コード
     href: web-service-error-codes.md
@@ -222,9 +220,9 @@ items:
     href: support-aml-studio.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 859ee01c65eaa7e02b5afc2740b6a7e6e6ca29e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 12fa71315c1cb43570505d2428804f4a5348a266
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810552"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156090"

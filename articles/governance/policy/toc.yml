@@ -47,7 +47,7 @@ items:
       - name: タグ一致パターンを要求する
         displayName: deny, all
         href: samples/enforce-tag-match-pattern.md
-    - name: タグ
+    - name: Tags
       items:
       - name: タグとその既定値の適用
         displayName: append, builtin, concat
@@ -111,6 +111,11 @@ items:
     - name: Data Lake Store での暗号化の適用
       displayName: deny
       href: samples/enforce-data-lake-store-encryption.md
+  - name: キー コンテナー
+    items:
+    - name: 仮想ネットワーク エンドポイントがないコンテナーの監査
+      displayName: audit, KeyVault, indexed
+      href: samples/keyvault-no-vnet-rules.md
   - name: 監視
     items:
     - name: 診断設定の監査
@@ -319,9 +324,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: aa053ca84c1c39ca1f4fd9c89b69030b2b8321b6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 75d384a6e8a7e5592b2b5d37948d7863a41d5f78
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854294"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102653"

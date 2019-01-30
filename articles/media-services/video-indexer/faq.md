@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306973"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402049"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -28,18 +28,17 @@ Video Indexer は、Microsoft Azure Media Services に含まれている人工�
 
 ### <a name="what-can-i-do-with-video-indexer"></a>Video Indexer を使って何ができますか?
 
-Video Indexer では、メディア ファイルに対して次の種類の操作を実行できます。
+Video Indexer がメディア ファイル上で実行できる操作の一部を次に示します。
 
-* 音声を識別して抽出し、話者を識別します。
-* ビデオの画面に表示されるテキストを識別して抽出します。
-* ビデオ ファイル内のオブジェクトを識別してラベル付けします。
-* オーディオ トラックおよびビデオの画面に表示されるテキストから Microsoft などのブランドを識別します。
+* 音声の識別と抽出、および話者の識別を行います。
+* ビデオの画面に表示されるテキストの識別と抽出を行います。
+* ビデオ ファイル内のオブジェクトを検出します。
+* オーディオ トラックおよびビデオの画面に表示されるテキストからブランド (Microsoft など) を識別します。
 * 有名人のデータベースおよびユーザー定義の顔のデータベースから顔を検出して認識します。
-* 音声テキストまたは視覚テキストに基づいて、ビデオおよびオーディオ コンテンツからキーワードを抽出します。
-* 議論されてはいるが必ずしも明示的に言及されていないトピックを、オーディオおよびビデオ コンテンツから音声テキストまたは視覚テキストに基づき抽出します。
+* オーディオおよびビデオのコンテキスト内で話題には登場するが、特に取り上げられているわけではないトピックを抽出します。
 * オーディオ トラックから字幕またはサブタイトルを作成します。
 
-詳細については、[概要](video-indexer-overview.md)に関するページを参照してください。
+Video Indexer 機能の詳細については、[概要](video-indexer-overview.md)に関するページを参照してください。
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか?
 

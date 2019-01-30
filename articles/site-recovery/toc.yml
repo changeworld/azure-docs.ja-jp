@@ -5,6 +5,8 @@ items:
   items:
   - name: Site Recovery について
     href: site-recovery-overview.md
+  - name: Site Recovery の最新情報
+    href: site-recovery-whats-new.md
 - name: クイック スタート
   items:
   - name: Azure VM を別のリージョンにレプリケートする
@@ -452,9 +454,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: c81028216a6af1fac6b6da261395d4fded3d8500
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 8cbe1fe9d7cbd22dfb16661b87b8758c41da5d70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382489"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191195"

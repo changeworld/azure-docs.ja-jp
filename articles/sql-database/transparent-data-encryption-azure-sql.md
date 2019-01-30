@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: f484eaf127c1dda0e3389e237ace75f51401a806
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/22/2019
+ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959879"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462472"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -60,6 +60,9 @@ Azure 内での操作のためにデータベースを暗号化解除する必�
 - アクティブ geo レプリケーション
 - データベース コピーの作成
 - Azure SQL Managed Instance にバックアップ ファイルを復元する
+
+> [!IMPORTANT]
+> サービス マネージド TDE によって暗号化されたデータベースのコピーのみの手動バックアップを取得することは、Azure SQL Managed Instance では許可されていません。暗号化に使用される証明書にアクセスできないためです。 ポイントインタイム リストア機能を使用して、この種類のデータベースを別のマネージド インスタンスに移動してください。
 
 Transparent Data Encryption で保護されたデータベースをエクスポートした場合、データベースのエクスポートされたコンテンツは暗号化されません。 このエクスポートされたコンテンツは、暗号化されていない BACPAC ファイルに保存されます。 BACPAC ファイルを適切に保護し、新しいデータベースのインポートが完了してから Transparent Data Encryption を有効にする必要があります。
 

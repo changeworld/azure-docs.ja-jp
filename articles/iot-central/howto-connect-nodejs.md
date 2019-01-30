@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198084"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410491"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
-この記事では、デバイス開発者として、物理デバイスを表す汎用の Node.js アプリケーションを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
+この記事では、デバイス開発者として、実際のデバイスを表す汎用の Node.js アプリケーションを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -97,7 +97,7 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
 
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
-次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際の物理デバイスを表しています。 
+次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際のデバイスを表しています。 
 
 1. マシンに `connected-air-conditioner-adv` という名前のフォルダーを作成します。 コマンドライン環境でそのフォルダーに移動します。
 

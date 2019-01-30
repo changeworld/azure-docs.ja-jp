@@ -35,7 +35,10 @@
 #### [Microsoft を利用したビジネスのプロモーション](./gtm-promote-your-business.md)
 #### [推奨されるソリューション](./preferred-solutions.md) 
 
-### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
+### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)
+#### [Marketplace に関する FAQ](./marketplace-faq-publisher-guide.md)
+#### [Marketplace の利用規約](./marketplace-terms.md)
+#### [Marketplace の参加ポリシー](./marketplace-participation-policy.md)
 
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
@@ -151,7 +154,6 @@
 #### [プランの発行](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [既存のプランの更新](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 #### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-#### [SaaS の自己テスト クライアント](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 ### [仮想マシンのオファー](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [前提条件](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -176,6 +178,7 @@
 ###### [VHD デプロイ テンプレート](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
 ###### [マーケットプレースから VM をデプロイする](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 ##### [VM イメージの認定](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+##### [VM の自己テスト クライアント](./cloud-partner-portal/virtual-machine/cpp-selftest-client.md)
 ##### [SAS URI の取得](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 ##### [SAS URL に関する一般的な問題](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
 #### [VM プランの公開](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)

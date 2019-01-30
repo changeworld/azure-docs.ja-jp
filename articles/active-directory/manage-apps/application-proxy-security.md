@@ -4,7 +4,7 @@ description: Azure AD アプリケーション プロキシを使用する場合
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 23ea1806c1670b73883384a0e4981f362bad90f0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618361"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472724"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -48,7 +48,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 [条件付きアクセス](../conditional-access/overview.md)を使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
-条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 
+条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
 
 ### <a name="traffic-termination"></a>トラフィックの終了
 
@@ -78,7 +78,7 @@ Azure AD アプリケーション プロキシはリバース プロキシであ
 
 パッチの適用されていないソフトウェアは、依然として多数の攻撃の的となっています。 Azure AD アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードを取得できます。
 
-Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、Web クローラー ロボットによるアプリケーションのインデックス作成およびアーカイブ操作はブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシは、`User-agent: * Disallow: /` が含まれる robots.txt ファイルで応答します。
+Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、Web クローラー ロボットによるアプリケーションのインデックス作成およびアーカイブ操作はブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシでは、`User-agent: * Disallow: /` が含まれる robots.txt ファイルによって応答します。
 
 ### <a name="ddos-prevention"></a>DDOS 防止
 
@@ -93,7 +93,7 @@ Microsoft は、個々のアプリケーションとサブスクリプション�
 Azure AD アプリケーション プロキシは、以下の 2 つで構成されています。
 
 * クラウドベースのサービス: このサービスは Azure 内で実行され、外部のクライアント/ユーザーの接続はこの場所で行われます。
-* [オンプレミスのコネクタ](application-proxy-connectors.md): オンプレミスのコンポーネント。コネクタは、Azure AD アプリケーション プロキシ サービスからの要求をリッスンし、内部アプリケーションへの接続を処理します。 
+* [オンプレミスのコネクタ](application-proxy-connectors.md): オンプレミスのコンポーネント。コネクタでは、Azure AD アプリケーション プロキシ サービスからの要求をリッスンし、内部アプリケーションへの接続を処理します。 
 
 コネクタとアプリケーション プロキシ サービスの間でフローが確立されるのは以下の場合です。
 
@@ -110,8 +110,8 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 
 コネクタの初回セットアップ時に、次のフロー イベントが発生します。
 
-1. サービスへのコネクタの登録は、コネクタのインストールの一環として発生します。 ユーザーは、Azure AD 管理者の資格情報の入力を求められます。 この認証から取得されたトークンが、Azure AD アプリケーション プロキシ サービスに提示されます。
-2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの会社管理者であるかどうかを確認します。 ユーザーが管理者でない場合、このプロセスは終了します。
+1. サービスへのコネクタの登録は、コネクタのインストールの一環として発生します。 ユーザーは、Azure AD 管理者の資格情報の入力を求められます。 この認証から取得されたトークンが、Azure AD アプリケーション プロキシ サービスに提示されます。
+2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの会社管理者であるかどうかを確認します。 ユーザーが管理者でない場合、このプロセスは終了します。
 3. コネクタは、クライアント証明書要求を生成し、トークンと共にアプリケーション プロキシ サービスに渡します。 次に、サービスがトークンを検証し、クライアント証明書要求に署名します。
 4. コネクタはアプリケーション プロキシ サービスとのその後の通信の際に、このクライアント証明書を使用します。
 5. コネクタはクライアント証明書を使用して、サービスからのシステム構成データの初回の収集を実行します。これで要求を受け入れる準備が完了します。
@@ -176,7 +176,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 
 コネクタは、応答を受け取ると、アプリケーション プロキシ サービスへの送信接続を確立して、ヘッダーの情報を返し、返されるデータのストリーミングを開始します。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5.サービスがユーザーにデータをストリーミングする 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5.サービスがユーザーにデータをストリーミングする 
 
 アプリケーションの何らかの処理がここで発生する場合があります。 アプリケーションのヘッダーまたは URL を変換するようにアプリケーション プロキシを構成した場合、その処理は、この手順の中で必要に応じて実行されます。
 

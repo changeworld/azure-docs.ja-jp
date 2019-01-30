@@ -146,6 +146,9 @@ items:
     href: event-hubs-streaming-azure-diags-data.md
   - name: さまざまなプロトコルを使用してアプリケーション間でイベントを交換する
     href: event-hubs-exchange-events-different-protocols.md
+  - name: Spring Cloud Stream Binder アプリケーションを作成する
+    href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
+    maintainContext: true
 - name: リファレンス
   items:
   - name: Java
@@ -190,9 +193,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 25931816ca54a3aede8c5bd09cf5547fb300d054
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 16f34ab31adc7cb45ac9adf8b22123786d6f8b73
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120532"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099245"

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 90910580fd7fc766376569de3ce43fc5ce297e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302682"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469204"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -55,7 +55,7 @@ ms.locfileid: "54302682"
 
 ### <a name="node-operational-states"></a>ノードの動作状態
 
-| 状態 | 説明 |
+| Status | 説明 |
 |----------------------|-------------------------------------------------------------------|
 | 実行中 | ノードは、アクティブにスケール ユニットに参加しています。 |
 | 停止済み | ノードは利用不可です。 |
@@ -76,7 +76,7 @@ ms.locfileid: "54302682"
 
 Azure Stack PowerShell モジュールをインストールする必要があります。 これらのコマンドレットは **Azs.Fabric.Admin** モジュールに存在します。 PowerShell for Azure Stack のインストールまたはインストールの確認については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」を参照してください。
 
-## <a name="stop"></a>停止
+## <a name="stop"></a>Stop
 
 **停止**アクションは、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャット ダウンの信号を送ることはしません。 計画されている停止操作の場合は、最初に必ずシャットダウン操作を行ってください。 
 
@@ -92,7 +92,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 詳細については、「[Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode)」を参照してください。
 
-## <a name="start"></a>開始
+## <a name="start"></a>start
 
 **開始**操作は、ノードをオンにします。 これは、電源ボタンを押した場合と同じです。 
  
@@ -123,7 +123,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 詳細については、「[Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode)」を参照してください。
 
-## <a name="resume"></a>再開
+## <a name="resume"></a>Resume
 
 **再開**アクションは、無効化されたノードを再開し、ワークロードのアクティブな配置対象としてマークします。 ノードで実行されていた以前のワークロードはフェールバックしません。 (ノードのドレイン操作を使用する場合は、必ず電源をオフにしてください。 ノードは、電源をオンに戻しても、ワークロードのアクティブな配置対象としてマークされません。 準備ができたら、再開操作を使用しノードをアクティブとしてマークする必要があります。)
 
@@ -148,10 +148,26 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 修復アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-  ````PowerShell
+  ```PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
-  ````
+  ```
+
+## <a name="shutdown"></a>Shutdown
+
+**シャットダウン**操作では最初に、すべてのアクティブなワークロードを、同じスケール ユニット内の残りのノードに移動します。 操作では次に、スケール ユニット ノードを適切にシャットダウンします。
+
+シャットダウンされたノードの開始後は、[再開](#resume)操作を実行する必要があります。 ノードで実行されていた以前のワークロードはフェールバックしません。
+
+シャットダウン操作に失敗する場合は、シャットダウン操作の前に[ドレイン](#drain)操作を試行します。
+
+シャットダウン操作を実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
+
+  ```PowerShell
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
+  ```
+
+
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0)」を参照してください。
+Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)」を参照してください。
