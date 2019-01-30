@@ -41,8 +41,8 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティを **Netezza** に設定する必要があります。 | [はい] |
-| connectionString | Netezza に接続するための ODBC 接続文字列。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | [はい] |
+| type | **type** プロパティを **Netezza** に設定する必要があります。 | はい |
+| connectionString | Netezza に接続するための ODBC 接続文字列。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure Integration Runtime (データ ストアがパブリックにアクセスできる場合) を選択できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` です。 次の表では、設定できる他のプロパティについて説明します。
@@ -61,8 +61,8 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
         "type": "Netezza",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -83,7 +83,7 @@ Netezza からデータをコピーするには、データセットの **type**
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **NetezzaTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **NetezzaTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -114,7 +114,7 @@ Netezza からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを **NetezzaSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの **type** プロパティを **NetezzaSource** に設定する必要があります。 | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"` | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
