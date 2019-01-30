@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788553"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451223"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS アプリケーションの [Technical Info]\(技術情報\) タブ
 
@@ -54,7 +54,7 @@ SaaS アプリは、次の両方のネットショップに対して提供でき
 |     Getting Started Instructions (使用開始時の説明)              |   SaaS アプリに接続するときに役立つ、顧客と共有する指示。 基本的な HTML タグを使用できます (例: &lt;p&gt;、&lt;h1&gt;、&lt;li&gt; など)。                |
 |    Landing Page URL (ランディング ページの URL)  |   Azure portal から取得した後の顧客に対して表示するサイトの URL。 この URL は、Microsoft との取引を容易にするための接続 API を受信するエンドポイントにもなります。                |
 |  Connection Webhook (接続 Webhook)    |  Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例:Azure サブスクリプションが無効になりました) のために、パートナーは Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、送信されたイベントをリッスンする HTTP エンドポイント ロジック アプリを作成し、イベントを適切に処理することです。 詳しくは、「<a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする</a>」をご覧ください                |
-|  Azure AD Tenant ID and App ID (Azure AD のテナント ID とアプリ ID)      |   Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、パートナーは Active Directory アプリを作成する必要があります。 これらのフィールドについては、AD アプリを作成し、対応するテナント ID とアプリ ID を貼り付ける必要があります。 アプリ ID は発行元の ID に関連付けられていることに注意してください。 そのため、すべてのオファーでアプリ ID が同じであることを確認してください。             |
+|  Azure AD Tenant ID and App ID (Azure AD のテナント ID とアプリ ID)      |   Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、パートナーは Active Directory アプリを作成する必要があります。 これらのフィールドについては、AD アプリを作成し、対応するテナント ID とアプリ ID を貼り付ける必要があります。 アプリ ID はお使いの publisherID に関連付けられていることに注意してください。 そのため、すべてのオファーでアプリ ID が同じであることを確認してください。             |
 
 
 最後に、**[Sell through Microsoft]\(Microsoft を通じて販売\)** を選択した場合、[新しいプラン] に **[プラン]** という名前の別のタブが表示されます。 

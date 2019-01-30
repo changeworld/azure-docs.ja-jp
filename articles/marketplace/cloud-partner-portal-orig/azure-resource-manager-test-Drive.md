@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139267"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451359"
 ---
 <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 =================================
@@ -79,10 +79,10 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 | メタデータの種類   | パラメーターのタイプ  | 説明     | 値の例    |
 |---|---|---|---|---|
-| **baseuri**     | string          | デプロイ パッケージのベース URI| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
-| **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
+| **baseuri**     | 文字列          | デプロイ パッケージのベース URI| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
+| **username**    | 文字列          | 新しいランダムなユーザー名。| admin68876      |
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
-| **session id**   | string          | 一意の体験版 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **session id**   | 文字列          | 一意の体験版 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>username
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dfe6184779d3c26273e8e7cabef4890360cf7e76
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567385"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446262"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
 
@@ -32,7 +32,7 @@ ms.locfileid: "51567385"
 | 紹介   | ビッグ データに対するオープン ソースの SQL クエリ エンジン    |
 | サポートされている DSVM バージョン      | Windows、Linux  |
 | DSVM での構成/インストール方法      |  埋め込みモードのみで `/dsvm/tools/drill*` にインストールされます   |
-| 一般的な用途      |  ETL を必要としない In-situ データ探索。 CSV、JSON、リレーショナル テーブル、Hadoop などのさまざまなデータ ソースおよびフォーマットをクエリします     |
+| 一般的な用途      |  ETL を必要としない In-situ データ探索。 CSV、JSON、リレーショナル テーブル、Hadoop などのさまざまなデータ ソースおよびフォーマットのクエリを実行します     |
 | 使用/実行方法      | デスクトップ ショートカット  <br/> [10 分で Drill を使ってみる](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 上の関連ツール      |   Rattle、Weka、SQL Server Management Studio      |
 
@@ -60,7 +60,7 @@ ms.locfileid: "51567385"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 対話型データ視覚化と BI ツール    |
-| サポートされている DSVM バージョン      |  Windows  |
+| サポートされている DSVM バージョン      | Windows  |
 | 一般的な用途      |  データ視覚化とダッシュボード構築   |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |

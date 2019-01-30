@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359444"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476922"
 ---
 # <a name="configure-containers"></a>コンテナーの構成
 
@@ -33,7 +33,8 @@ Face コンテナーの構成設定は階層構造であり、すべてのコン
 * [CloudAI](#cloudai-configuration-settings)
 * [Eula](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
-* [ログ](#logging-configuration-settings)
+* [Http プロキシ資格情報設定](#http-proxy-credentials-settings)
+* [Logging](#logging-configuration-settings)
 * [Mounts](#mounts-configuration-settings)
 
 Face コンテナーをインスタンス化する場合、[環境変数](#configuration-settings-as-environment-variables)または[コマンドライン引数](#configuration-settings-as-command-line-arguments)を使用して、構成設定を指定できます。
@@ -162,6 +163,11 @@ Cognitive Services のコンテナーは、Azure の使用について定める[
 | `TlsConnectionEstablishmentTimeoutMs` | 整数 | Fluentd サーバーとの SSL または TLS 接続を確立するためのタイムアウト (ミリ秒)。 既定値は、10000 ミリ秒 (10 秒) です。<br/> `UseTLS` が false に設定されている場合、この値は無視されます。 |
 | `UseTLS` | Boolean | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
 
+
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Logging 構成設定
 
 `Logging` 構成設定は、コンテナーの ASP.NET Core ログ サポートを管理します。 ASP.NET Core アプリケーションに対して使用できる同じ構成設定と値をコンテナーに使用できます。 Face コンテナーでは、次のログ プロバイダーがサポートされています。
@@ -212,3 +218,7 @@ Face コンテナーでは、入力マウントがサポートされず、必要
   ```
 
 Face コンテナーでは、トレーニングやデータベースのデータを格納するために、入力マウントや出力マウントは使用しません。 代わりに、Face コンテナーでは、トレーニングとデータベースのデータを管理するためのストレージ シナリオが提供されます。 ストレージ シナリオの使用の詳細については、「[ストレージ シナリオの設定](#storage-scenario-settings)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

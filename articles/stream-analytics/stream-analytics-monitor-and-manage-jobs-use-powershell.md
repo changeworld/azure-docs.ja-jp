@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 881de4fc47a399b2ab22edbc6748eb95bc032086
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6754b4b3bb9d85447cbeed571778fbaa13167be6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075769"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452668"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
 基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットと PowerShell スクリプトを使用して、Stream Analytics リソースを監視および管理する方法について説明します。
@@ -50,7 +50,7 @@ New-AzureRMResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> プログラムで作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure Portal で、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、監視を手動で有効にすることができます。また、「[Stream Analytics ジョブ モニターをプログラムで作成する](stream-analytics-monitor-jobs.md)」に記載されている手順に従って、プログラムで有効にすることもできます。
+> プログラムで作成された Stream Analytics ジョブは、既定では監視は有効になっていません。  Azure portal で、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、監視を手動で有効にすることができます。また、[Stream Analytics ジョブ モニターのプログラムによる作成](stream-analytics-monitor-jobs.md)に関するページに記載されている手順に従って、プログラムで有効にすることもできます。
 > 
 > 
 

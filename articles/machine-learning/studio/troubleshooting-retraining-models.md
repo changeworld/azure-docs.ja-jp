@@ -1,15 +1,8 @@
 ---
-title: Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.date: 11/01/2017
+title:Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング titleSuffix: Azure Machine Learning Studio description: Azure Machine Learning Studio Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:11/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
 ## <a name="retraining-overview"></a>再トレーニングの概要
@@ -38,7 +31,7 @@ Web サービスの再トレーニングを行う必要がある場合は、い�
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>PATCH URL が適切かどうかを確認する
 使用している PATCH URL は、スコア付け Web サービスに追加した新しいスコア付けエンドポイントに関連付けられているものである必要があります。 PATCH URL を取得する方法はいくつかあります。
 
-**オプション 1:プログラム**
+**オプション 1:プログラムを使用する**
 
 適切な PATCH URL を取得するには、次の手順に従います。
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ServiceChannel の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ServiceChannel の統合 | Microsoft Docs
 description: Azure Active Directory と ServiceChannel の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22e72d454626941b932cef2750cba008da20a214
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 974149fdad8e8f5a617c428c6513f30930ff596b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114962"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815958"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル: Azure Active Directory と ServiceChannel の統合
+# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル:Azure Active Directory と ServiceChannel の統合
 
 このチュートリアルでは、ServiceChannel と Azure Active Directory (Azure AD) を統合する方法について説明します。
 

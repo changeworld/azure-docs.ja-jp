@@ -1,6 +1,6 @@
 ---
 title: 発行ポータルでのアプリケーションのセットアップ | Microsoft Docs
-description: クラウド発行ポータルでアプリケーションをセットアップする方法について説明します。
+description: クラウド発行ポータルでお客様のアプリケーションを設定する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807326"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448485"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -51,7 +51,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 ### <a name="offer-id"></a>プラン ID
 
-これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれるようになります。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
+これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
 
 たとえば、**"contoso"** という発行元が **"sample-WebApp"** というオファー ID を使用してオファーを作成した場合、AppSource に "https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview" として表示されます。
 
@@ -82,21 +82,21 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 これらのフィールドの説明を次に示します。
 
-* [File name of your package]\(パッケージのファイル名\): 前の手順で、CRM AppSource パッケージの zip ファイルを作成するときに付けたファイル名です。 上記の例では、"Microsoft\_SamplePackage.zip" です。
-* [Url of your package location]\(パッケージの場所の URL\): これは、上記で指定したパッケージのファイル名を含む Azure Storage アカウントの URL です。 前のセクションの手順 9 で作成した URL です。
-* [Is there more than one crm package in your package file]\(パッケージ ファイルには、複数の crm パッケージがある\): 異なるパッケージで crm の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注: これは、**zip** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
+* File name of your package (パッケージのファイル名): 前の手順で、お客様の CRM AppSource パッケージである ZIP ファイルを作成するときに付けたファイル名です。 上記の例では、"Microsoft\_SamplePackage.zip" です。
+* Url of your package location (パッケージの場所の URL): これは、上記で指定したパッケージのファイル名が含まれている Azure ストレージ アカウントの URL です。 前のセクションの手順 9 で作成した URL です。
+* Is there more than one crm package in your package file (パッケージ ファイルには、複数の CRM パッケージがある): 異なるパッケージで CRM の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注:これは、**ZIP** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
 このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
 
-注: ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
+注:ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
 
 ## <a name="storefront-details"></a>ネットショップの詳細
 
 ### <a name="offer-summary"></a>オファーの概要
 
-オファーの価値提案の概要です。 オファーの検索ページに表示されます。 最大で 100 文字までにする必要があります。
+これは、オファーの価値提案の概要です。 オファーの検索ページに表示されます。 最大で 100 文字までにする必要があります。
 
 ### <a name="offer-description"></a>オファーの説明
 
@@ -184,7 +184,7 @@ AppSource の詳細ページに表示されるアプリのスクリーン ショ
 
 ### <a name="lead-destination"></a>リードの宛先
 
-リードの保存先となる CRM システムを選択します。 次のうちいずれかの CRM システムをお持ちの場合、[Azure テーブル] を選択してください。Salesforce、Marketo、Microsoft Dynamics CRM。 ここで選択する CRM システムに、AppSource 上でアプリを試したエンド ユーザー (リード) の詳細が書き込まれます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
+リードを保存する CRM システムを選択します。 次のいずれかの CRM システムをお持ちの場合、ここで [Azure テーブル] を選択してください (Salesforce、Marketo、Microsoft Dynamics CRM)。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
 
 * [Azure テーブル](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
@@ -193,4 +193,4 @@ AppSource の詳細ページに表示されるアプリのスクリーン ショ
 
 ## <a name="storefront-details"></a>ネットショップの詳細
 
-連絡先の詳細は、パートナーと Microsoft の間の内部コミュニケーションにのみに使用されます。 注: これらのフィールドでは、監視されている電子メール アドレスを使用することが重要です。 この電子メールは、AppSource への発行の進行状況の連絡に使用されます。 サポートの URL のみがエンド ユーザーに表示されます。
+連絡先の詳細は、パートナーと Microsoft の間の内部コミュニケーションにのみに使用されます。 注:これらのフィールドでは、監視されているメール アドレスを使用することが重要です。 この電子メールは、AppSource への発行の進行状況の連絡に使用されます。 サポートの URL のみがエンド ユーザーに表示されます。

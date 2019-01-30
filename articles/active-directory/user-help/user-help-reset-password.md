@@ -3,7 +3,7 @@ title: セキュリティ情報を使用したパスワードのリセット - A
 description: セキュリティ情報と 2 段階認証を使用して忘れてしまったパスワードをリセットする方法。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6bf8c548d81b3cade487f3188cdafae82b5776d9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347847"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815941"
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 
@@ -159,7 +159,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
 |パスワードを変更しようとするとエラーが表示されます。 |パスワードを簡単に推測できる単語、語句、またはパターンが含まれています。| より強力なパスワードを使用してもう一度お試しください。|
 |ユーザー ID を入力すると、「管理者にお問い合わせください」と書かれたページに移動します。|オンプレミスの環境で、お使いのユーザー アカウントのパスワードが管理者によって管理されていることをマイクロソフトが検出しました。 その結果、[アカウントにアクセスできません] リンクから、パスワードをリセットできません。 |サポートを受けるには、管理者にお問い合わせください。|
 |ユーザー ID を入力すると、「アカウントは、パスワード リセットが有効になっていません」というエラーが表示されます。|お使いのアカウントは管理者によって設定されていないため、自身でパスワードをリセットできます。|管理者が [アカウントにアクセスできません] リンクからパスワードのリセットをオンにしていない、またはその機能を使用するライセンスをユーザーに付与していません。<br><br> パスワードをリセットするには、"管理者に連絡するリンク" を選択して会社の管理者にメールを送信し、パスワードをリセットしたいことを伝える必要があります。|
-|ユーザー ID を入力すると、「We couldn't verify your account」\(アカウントを確認できません\) というエラーが表示されます。|サインイン プロセスでユーザーのアカウント情報を確認できませんでした。|このメッセージが表示される理由は次の 2 つです。<br><br>1.管理者が組織のパスワードのリセットをオンにしているものの、ユーザーがそのサービスを利用するように登録されていない。 パスワードのリセット に登録するには、使用する確認方法に基づいて、「[Set up security info to use an authenticator app (preview)](security-info-setup-auth-app.md)」(認証アプリを使用するようにセキュリティ情報を設定する (プレビュー))、「[Set up security info to use a phone call (preview)](security-info-setup-phone-number.md)」(電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー))、「[Set up security info to use text messaging (preview)](security-info-setup-text-msg.md)」(テキスト メッセージングを使用するようにセキュリティ情報を設定する (プレビュー))、「[Set up security info to use email (preview)](security-info-setup-email.md)」(電子メールを使用するようにセキュリティ情報を設定する (プレビュー))、[セキュリティの質問を使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-questions.md) に関する記事のいずれかをご覧ください。<br><br>2.管理者が組織のパスワードのリセットをオンにしていない。 この状況でパスワードをリセットするには、"管理者に連絡するリンク" を選択し、管理者にメールで依頼する必要があります。|
+|ユーザー ID を入力すると、「We couldn't verify your account」\(アカウントを確認できません\) というエラーが表示されます。|サインイン プロセスでユーザーのアカウント情報を確認できませんでした。|このメッセージが表示される理由は次の 2 つです。<br><br>1.管理者が組織のパスワードのリセットをオンにしているものの、ユーザーがそのサービスを利用するように登録されていない。 パスワードのリセットに登録するには、使用する確認方法に基づいて、「[認証アプリを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-auth-app.md)」、「[電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-phone-number.md)」、「[テキスト メッセージを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-text-msg.md)」、「[メールを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-email.md)」、「[あらかじめ定義されたセキュリティの質問を使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-questions.md)」のいずれかの記事をご覧ください。<br><br>2.管理者が組織のパスワードのリセットをオンにしていない。 この状況でパスワードをリセットするには、"管理者に連絡するリンク" を選択し、管理者にメールで依頼する必要があります。|
 
 ## <a name="next-steps"></a>次の手順
 

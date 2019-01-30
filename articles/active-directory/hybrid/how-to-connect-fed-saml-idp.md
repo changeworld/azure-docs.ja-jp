@@ -3,7 +3,7 @@ title: Azure AD Connect:シングル サインオンに SAML 2.0 ID プロバイ
 description: このドキュメントでは、シングル サインオンに SAML 2.0 準拠の IDP を使用する方法について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.custom: it-pro
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8f8503f560985e1170105199212734dd704d81c1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d7211cdec2e1de1aafd8d81289ab399f25b3c26a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743529"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463135"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -183,7 +183,7 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Azure AD ディレクトリのドメインを フェデレーションに構成する
 
 
-1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService。
+1. 次のテナント管理者として Azure AD ディレクトリに接続します。Connect-MsolService。
 2.  SAML 2.0 とのフェデレーションで使用する Office 365 ドメインを構成します。`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  IDP メタデータ ファイルから署名証明書の base64 でエンコードされた文字列を取得できます。 この場所の例は用意されていますが、実装に基づいて若干異なる場合があります。
@@ -207,7 +207,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 次の手順は、Azure AD に 1 人のユーザーを追加する方法を示しています。
 
 
-1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService。
+1. 次のテナント管理者として Azure AD ディレクトリに接続します。Connect-MsolService。
 2.  新しいユーザー プリンシパルを作成します。` New-MsolUser
         -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
@@ -260,7 +260,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 7. このウィンドウには、テストの失敗した結果を示しています。 [詳細結果をレビュー] クリックすると、実行された各テストの結果に関する情報が表示されます。 結果を共有するためにディスクに保存することもできます。
  
 >[!NOTE]
->接続アナライザーは、WS * ベースのプロトコルと ECP/PAOS プロトコルを使用するアクティブ フェデレーションもテストします。 これらを使用しない場合は、ID プロバイダーのアクティブ フェデレーション エンドポイントを使用したアクティブ サインイン フローのテストで発生したエラーは無視することができます。
+>接続アナライザーは、WS * ベースのプロトコルと ECP/PAOS プロトコルを使用するアクティブ フェデレーションもテストします。 これらを使用していない場合は、ID プロバイダーのアクティブ フェデレーション エンドポイントを使用したアクティブ サインイン フローのテストで発生したエラーは無視することができます。
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>シングル サインオンが正しく設定されていることを手動で検証する
 手動による検証では、多くのシナリオで SAML 2.0 ID プロバイダーが正しく動作することを確認するために実行できる追加の手順があります。
@@ -268,7 +268,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 
 
 1. ドメインに参加しているコンピューターで、会社の資格情報で使用するのと同じログオン名を使用して、クラウド サービスにサインインします。
-2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されている場合、パスワード ボックスが網掛けになり、"&lt;会社名&gt; にサインインする必要があります" というメッセージが表示されます。
+2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されていれば、パスワード ボックスは網掛けになり、次のメッセージが表示されます。"&lt;お客様の会社&gt;にサインインする必要があります。"
 3.  &lt;会社名&gt; リンクの [サインイン] をクリックします。 サインインすることができたら、シングル サインオンが設定されています。
 
 ## <a name="next-steps"></a>次の手順

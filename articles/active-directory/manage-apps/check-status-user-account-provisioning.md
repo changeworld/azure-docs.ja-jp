@@ -4,7 +4,7 @@ description: 自動ユーザー アカウント プロビジョニング ジョ�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: def3c6aea7b915e8665367d4da27c1314374000c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355930"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463068"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル: 自動ユーザー アカウント プロビジョニングについてのレポート
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
 
 Azure Active Directory には、エンド ツー エンドの ID ライフ サイクル管理のために、SaaS アプリとその他のシステムのユーザー アカウントのプロビジョニングとプロビジョニング解除の自動化を支援する、[ユーザー アカウント プロビジョニング サービス](user-provisioning.md)が含まれています。 Azure AD では、[Azure AD アプリケーション ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)の「おすすめ」セクションのすべてのアプリケーションとシステム用に、事前統合されたユーザー プロビジョニング コネクタがサポートされています。
@@ -40,9 +40,9 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 この記事では、以下に定義されている用語を使用します。
 
-* **ソース システム** - Azure AD プロビジョニング サービスの同期元である、ユーザーのリポジトリ。 Azure Active Directory は、事前統合されたほとんどのプロビジョニング コネクタのソース システムです。ただし、いくつかの例外があります (例: Workday Inbound Synchronization)。
+* **ソース システム** - Azure AD プロビジョニング サービスの同期元である、ユーザーのリポジトリ。 Azure Active Directory は、事前統合されたほとんどのプロビジョニング コネクタのソース システムです。ただし、いくつかの例外があります (例:Workday Inbound Synchronization)。
 
-* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例: Salesforce、ServiceNow、Google Apps、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例: Workday Inbound Synchronization から Active Directory へ)。
+* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例:Salesforce、ServiceNow、Google Apps、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例:Workday Inbound Synchronization から Active Directory へ)。
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Azure 管理ポータルからプロビジョニング レポートを取得する
@@ -68,7 +68,7 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 プロビジョニング概要レポートは、プロビジョニング ジョブの操作の正常性をチェックするために、管理者が最初に確認するものです。
 
- ![概要レポート](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![概要レポート](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>プロビジョニング監査ログ
 プロビジョニング サービスによって実行されたすべてのアクティビティは、Azure AD 監査ログに記録されます。このログは、**[アカウント プロビジョニング]** カテゴリの下の **[監査ログ]** タブで表示することができます。 記録されるアクティビティ イベントの種類には、次のようなものがあります。
@@ -83,13 +83,13 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 個々のユーザーのプロビジョニング イベントを見ると、通常は次の順序でイベントが発生します。
 
-1. インポート イベント: ユーザーがソース システムから取得されます。
+1. インポート イベント:ユーザーがソース システムから取得されます。
 
-2. インポート イベント: ターゲット システムが照会され、取得したユーザーの存在が確認されます。
+2. インポート イベント:ターゲット システムが照会され、取得したユーザーの存在が確認されます。
 
-3. 同期ルール イベント: ソース システムとターゲット システムから取得されたユーザー データが、構成済みの属性マッピング規則とスコープ フィルターに対して評価され、実行するアクションが判断されます。
+3. 同期ルール イベント:ソース システムとターゲット システムから取得されたユーザー データが、構成済みの属性マッピング規則とスコープ フィルターに対して評価され、実行するアクションが判断されます。
 
-4. イベントのエクスポート: 同期ルール イベントにより操作 (追加、更新、削除) を実行することが指示されている場合は、操作の結果がエクスポート イベントに記録されます。
+4. イベントのエクスポート:同期ルール イベントにより操作 (追加、更新、削除) を実行することが指示されている場合は、操作の結果がエクスポート イベントに記録されます。
 
 ![Azure AD のテスト ユーザーの作成](./media/check-status-user-account-provisioning/audit_logs.PNG)
 

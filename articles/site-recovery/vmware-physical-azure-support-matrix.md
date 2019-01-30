@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/18/2019
 ms.author: raynew
-ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7c01c8ec8c4957900688fed7ca09830f792a7886
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107500"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413415"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -112,7 +112,8 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.18][9.18 UR] | SP1 3.12.4
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
 デバイス/マウント ポイントの名前付け規則 | デバイス名またはマウント ポイント名は、一意である必要があります。 大文字と小文字の区別なしで同じ名前を持つデバイス/マウント ポイントが複数存在しないことを確認します。 </br> 例:同じ仮想マシンの 2 つのデバイスに *device1* および *Device1* という名前を付けることは許可されません。
-ディレクトリ | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1./ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じ OS ディスク上に存在する必要があります。</br>2. /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。<br/><br/> [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、上記の制限は適用されません。
+ディレクトリ | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1./ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じ OS ディスク上に存在する必要があります。</br>2. /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。<br/><br/> [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、上記の制限は適用されません。 複数のディスクにまたがる LVM ボリュームでの /boot はサポートされていません。
+ブート ディレクトリ | 仮想マシン上の複数のブート ディスクは、サポートされていません <br/><br/> ブート ディスクのないマシンは保護できません
 
 空き領域要件 | /root パーティションで 2 GB <br/><br/> インストール フォルダー XFSv5 で 250 MB | メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されます。
 
@@ -143,39 +144,40 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー 
 
 **コンポーネント** | **サポートされています**
 --- | ---
-Azure ExpressRoute | はい
-ILB | はい
-ELB | はい
-Azure の Traffic Manager | はい
-マルチ NIC | はい
-予約済み IP アドレス | はい
-IPv4 | はい
-送信元 IP アドレスを保持する | はい
-Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい
+Azure ExpressRoute | [はい]
+ILB | [はい]
+ELB | [はい]
+Azure の Traffic Manager | [はい]
+マルチ NIC | [はい]
+予約済み IP アドレス | [はい]
+IPv4 | [はい]
+送信元 IP アドレスを保持する | [はい]
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい]
 高速ネットワーク | いいえ 
 
 ## <a name="storage"></a>Storage
 **コンポーネント** | **サポートされています**
 --- | ---
+ダイナミック ディスク | オペレーティング システム ディスクは、ベーシック ディスクである必要があります。 <br/><br/>データ ディスクは、ダイナミック ディスクにすることができます
 ホスト NFS | VMware = はい<br/><br/> 物理サーバー = いいえ
-ホスト SAN (iSCSI/FC) | はい
+ホスト SAN (iSCSI/FC) | [はい]
 ホスト vSAN | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 ホストの仮想ボリューム (VVols) | VMware = はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー VMDK | はい
+ゲスト/サーバー VMDK | [はい]
 ゲスト/サーバー EFI/UEFI| 一部 (Windows Server 2012 以降の Azure への移行) <br/><br/> この表の下部の注意事項をご覧ください
 ゲスト/サーバー共有クラスター ディスク | いいえ 
 ゲスト/サーバー暗号化ディスク | いいえ 
 ゲスト/サーバー NFS | いいえ 
 ゲスト/サーバー SMB 3.0 | いいえ 
-ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー ディスク > 1 TB | はい<br/><br/>最大 4,095 GB<br/><br/> ディスクは 1024 MB 以上である必要があります。
-4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | はい
-4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | はい
-ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| はい
+ゲスト/サーバー RDM | [はい]<br/><br/> 物理サーバー = 該当なし
+ゲスト/サーバー ディスク > 1 TB | [はい]<br/><br/>最大 4,095 GB<br/><br/> ディスクは 1024 MB 以上である必要があります。
+4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | [はい]
+4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | [はい]
+ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| [はい]
 ゲスト/サーバー - 記憶域スペース | いいえ 
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
-ゲスト/サーバー - ディスクの除外 | はい
+ゲスト/サーバー - ディスクの除外 | [はい]
 ゲスト/サーバー マルチパス (MPIO) | いいえ 
 
 > [!NOTE]
@@ -189,14 +191,14 @@ Azure Virtual Network サービス エンドポイント<br/> (Azure Storage フ
 
 **コンポーネント** | **サポートされています**
 --- | ---
-ローカル冗長ストレージ | はい
-geo 冗長ストレージ | はい
-読み取りアクセス geo 冗長ストレージ | はい
+ローカル冗長ストレージ | [はい]
+geo 冗長ストレージ | [はい]
+読み取りアクセス geo 冗長ストレージ | [はい]
 クール ストレージ | いいえ 
 ホット ストレージ| いいえ 
 ブロック blob | いいえ 
-保存時の暗号化 (Storage サービスの暗号化)| はい
-Premium Storage | はい
+保存時の暗号化 (Storage サービスの暗号化)| [はい]
+Premium Storage | [はい]
 インポート/エクスポート サービス | いいえ 
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ 
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ 
@@ -205,9 +207,9 @@ Premium Storage | はい
 
 **機能** | **サポートされています**
 --- | ---
-可用性セット | はい
-ハブ | はい
-マネージド ディスク | はい
+可用性セット | [はい]
+ハブ | [はい]
+マネージド ディスク | [はい]
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 
@@ -238,7 +240,7 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
-**名前** | **説明** | **最新バージョンのダウンロード手順**
+**Name** | **説明** | **最新バージョンのダウンロード手順**
 --- | --- | --- | --- | ---
 構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/>  オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。

@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs'
+title: Azure AD Connect:宣言型プロビジョニングについて | Microsoft Docs
 description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 45b145d9a8922bc3da50cef7d9fa7aacf260417d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310291"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471780"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -48,7 +48,7 @@ ms.locfileid: "46310291"
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
 ![Scope (スコープ)](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
+ この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
 
 スコープ モジュールでは、次の演算がサポートされています。
 
@@ -65,16 +65,16 @@ ms.locfileid: "46310291"
 | ISBITSET、ISNOTBITSET |特定のビットが設定されているかどうかを評価します。 たとえば、userAccountControl 内のビットを評価して、ユーザーが有効であるか無効であるかを確認するために使用できます。 |
 | ISMEMBEROF、ISNOTMEMBEROF |この値には、コネクタ スペース内のグループに対する DN が含まれている必要があります。 オブジェクトが指定されたグループのメンバーである場合、規則はスコープに含まれます。 |
 
-## <a name="join"></a>Join
+## <a name="join"></a>結合
 同期パイプライン内の結合モジュールは、ソース内のオブジェクトとターゲット内のオブジェクトの関係を特定するためのものです。 受信規則では、この関係は、メタバース内のオブジェクトに対する関係を見つけるためのコネクタ スペース内のオブジェクトです。  
 ![Join between cs and mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
-その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
+ その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
 
 結合は、コネクタ スペース オブジェクトを同じメタバース オブジェクトに結合するために、主に受信規則で使用されます。
 
 結合は 1 つ以上のグループとして定義されます。 グループの中には句があります。 グループ内のすべての句の間で論理 AND が使用されます。 グループ間では 論理 OR が使用されます。 グループは上から下へ順番に処理されます。 1 つのグループに対してターゲット内に 1 つだけ一致するオブジェクトがあった場合、他の結合規則は評価されません。 オブジェクトが 1 つも見つからないか、複数のオブジェクトが見つかった場合は、次の規則のグループが処理されます。 そのため、規則を作成するときは、最もはっきりしたものを最初に作成し、最もあいまいなものを最後に作成してください。  
 ![Join definition](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
+ この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
 
 すべての結合規則が評価されても一致するものが 1 つでない場合は、**[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
 ![Provision or join](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
@@ -158,9 +158,9 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 **参照トピック**
 
-* [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同期:関数参照](reference-connect-sync-functions-reference.md)

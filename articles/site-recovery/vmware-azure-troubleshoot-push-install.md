@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789909"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411749"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -141,6 +141,14 @@ Azure Site Recovery でサポートされているオペレーティング シ�
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>ブートおよびシステムのパーティション/ボリュームが同じディスクではありません (ErrorID: 95309)
 
 9.20 より前のバージョンでは、異なるディスク上のブートおよびシステムのパーティション/ボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
+
+## <a name="boot-disk-not-found-errorid-95310"></a>ブート ディスクが見つかりません (ErrorID:95310)
+
+ブート ディスクのない仮想マシンは保護されません。 これは、フェールオーバーの操作中に、仮想マシンを確実にスムーズに復旧させるためです。 ブート ディスクがないと、フェールオーバー後、マシンの起動に失敗します。 確実に仮想マシンにブート ディスクを搭載させ、操作をもう一度お試しください。 また、同じマシンに複数のブート ディスクを搭載させることはできません。
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>複数のブート ディスクが見つかりました (ErrorID:95311)
+
+1 つの仮想マシンに複数のブート ディスクが存在する状態は[サポートされている構成](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)ではありません。
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>複数のディスク上のシステム パーティション (ErrorID: 95313)
 

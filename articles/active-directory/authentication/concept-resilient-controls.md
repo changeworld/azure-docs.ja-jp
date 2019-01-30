@@ -3,19 +3,19 @@ title: Azure Active Directory で回復性があるアクセス制御管理戦�
 description: このドキュメントでは、予期されていない中断の間のロックアウトのリスクを軽減する回復性を提供するために、組織で採用する必要がある戦略に関するガイダンスを示します
 services: active-directory
 author: martincoetzer
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101923"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452549"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -119,30 +119,48 @@ ms.locfileid: "54101923"
 * 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 例: 
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
   * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
+* 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
+  * ポリシーの*ラベル番号*。
+  * 表示するテキスト。このポリシーは緊急時のみを対象としています。 例: **ENABLE IN EMERGENCY**
+  * 適用される*中断*。 例: **During MFA Disruption**
+  * ポリシーをアクティブ化する順序を示す、*シーケンス番号*。
+  * 適用される*アプリ*。
+  * 適用される*コントロール*。
+  * 必要な*条件*。
+  
+コンティンジェンシー ポリシーの場合、この名前付け基準は次のようになります。 
 
-次の例をご覧ください。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー**は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を宇ｆくむグループ **CoreAdmins**、緊急アクセス用管アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+次の例をご覧ください。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー**は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を宇ｆくむグループ **CoreAdmins**、緊急アクセス用管アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
 
 **例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー:**
 
 * ポリシー 1:Exchange と SharePoint に対するドメイン参加済みデバイスが必要
+  * 名前:EM001 - ENABLE IN EMERGENCY:MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
   * ユーザーとグループ:ContingencyAccess を含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:任意
   * 許可の制御:ドメインへの参加が必要
   * 状態:Disabled
 * ポリシー 2:Windows 以外のプラットフォームをブロック
+  * 名前:EM002 - ENABLE IN EMERGENCY:MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:デバイス プラットフォームは、Windows 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
   * 状態:Disabled
 * ポリシー 3:CorpNetwork 以外のネットワークをブロック
+  * 名前:EM003 - ENABLE IN EMERGENCY:MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:場所は、CorpNetwork 以外のすべての場所を含む
   * 許可の制御:ブロック
   * 状態:Disabled
 * ポリシー 4:EAS を明示的にブロックする
+  * 名前:EM004 - ENABLE IN EMERGENCY:MFA Disruption[4/4] - Exchange - Block EAS for all users
   * ユーザーとグループ:すべてのユーザーを含める
   * クラウド アプリ:Exchange Online を含める
   * 条件:クライアント アプリ:Exchange Active Sync
@@ -163,12 +181,14 @@ ms.locfileid: "54101923"
 **例 B - コンティンジェンシー CA ポリシー:**
 
 * ポリシー 1:SalesContingency チームに含まれないすべてのユーザーをブロックする
+  * 名前:EM001 - ENABLE IN EMERGENCY:Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency
   * ユーザーとグループ:すべてのユーザーを含める。 SalesAdmins と SalesforceContingency を除外する
   * クラウド アプリ:Salesforce。
   * 条件:なし
   * 許可の制御:ブロック
   * 状態:Disabled
 * ポリシー 2:(攻撃対象領域を減らすため) モバイル以外の任意のプラットフォームからのセールス チームをブロックする
+  * 名前:EM002 - ENABLE IN EMERGENCY:Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
   * ユーザーとグループ:SalesforceContingency を含める。 SalesAdmins を除外する
   * クラウド アプリ:Salesforce
   * 条件:デバイス プラットフォームは、iOS と Android 以外のすべてのプラットフォームを含む
@@ -179,7 +199,7 @@ ms.locfileid: "54101923"
 
 1. Salesforce に対する既存のデバイス コンプライアンス ポリシーから SalesAdmins と SalesforceContingency を除外します。 SalesforceContingency グループに含まれるユーザーが Salesforce にアクセスできることを確認します。
 2. ポリシー 1 を有効にします:SalesContingency に含まれないユーザーが Salesforce にアクセスできないことを確認します。 SalesAdmins と SalesforceContingency に含まれるユーザーが Salesforce にアクセスできることを確認します。
-3. ポリシー 2 を有効にします:SalesContigency グループに含まれるユーザーが、Windows/Mac のラップトップからは Salesforce にアクセスできないが、自分のモバイル デバイスからはアクセスできることを確認します。 SalesAdmin が任意のデバイスから Salesforce にアクセスできることを確認します。
+3. ポリシー 2 を有効にします:SalesContingency グループに含まれるユーザーが、Windows/Mac のラップトップからは Salesforce にアクセスできないが、自分のモバイル デバイスからはアクセスできることを確認します。 SalesAdmin が任意のデバイスから Salesforce にアクセスできることを確認します。
 4. Salesforce に対する既存のデバイス コンプライアンス ポリシーを無効にします。
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>フェデレーションされている場合またはパススルー認証を使用している場合でも、パスワード ハッシュ同期を展開する
@@ -215,14 +235,14 @@ ms.locfileid: "54101923"
 
 ## <a name="after-a-disruption"></a>中断の後
 
-中断の原因となったサービスが復元された後、アクティブ化されたコンティンジェンシー計画の一部として行われた変更を元に戻す必要があります。 
+中断の原因となったサービスが復元された後、アクティブ化されたコンティンジェンシー計画の一部として行われた変更を元に戻します。 
 
 1. 通常のポリシーを有効にします
 2. コンティンジェンシー ポリシーを無効にします。 
 3. 中断中に行って文書化した他のすべての変更をロールバックします。
 4. 緊急アクセス用アカウントを使用した場合は、緊急アクセス用アカウントの手順の一部として、忘れずに資格情報を再生成し、新しい資格情報の詳細を物理的にセキュリティ保護します。
 5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク イベントをトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
-6. [PowerShell を使用して](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて特に重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
+6. [PowerShell を使用して](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
 
 ## <a name="emergency-options"></a>緊急時のオプション
 

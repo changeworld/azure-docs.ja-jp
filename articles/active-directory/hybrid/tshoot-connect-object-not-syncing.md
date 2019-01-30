@@ -4,7 +4,7 @@ description: オブジェクトが Azure AD と同期していない理由のト
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b66aeb0832058c56e63c56c0420c7793eb2a632a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306561"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478656"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
@@ -37,7 +37,7 @@ ms.locfileid: "46306561"
 
 これらの手順を開始する前に、[Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) を起動します。
 
-## <a name="operations"></a>[操作]
+## <a name="operations"></a>操作
 トラブルシューティングは、Synchronization Service Manager の [操作] タブで開始する必要があります。 [操作] タブには、最近の操作の結果が表示されます。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/operations.png)  
 
@@ -65,7 +65,7 @@ ms.locfileid: "46306561"
 
 * エラー元が **SyncRulesEngine**の場合、コール スタック情報の最初にオブジェクトの全属性の一覧が表示されます。 **InnerException =>** という見出しが表示されるまで下へスクロールします。  
   ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)  
-  その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
+   その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
 
 エラー自体から十分な情報が得られない場合、データ自体を見る必要があります。 オブジェクト識別子が付いたリンクをクリックし、[コネクタ スペースのインポート済みオブジェクト](#cs-import)のトラブルシューティングを続行できます。
 
@@ -86,16 +86,16 @@ ms.locfileid: "46306561"
 これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
 
 ### <a name="cs-import"></a>CS インポート
-cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
+ cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
 ![CS オブジェクト](./media/tshoot-connect-object-not-syncing/csobject.png)    
 **[古い値]** には Connect に現在保存されているデータが、**[新しい値]** にはソース システムから受け取り、まだ適用されていないデータが表示されます。 オブジェクトにエラーがある場合、変更は処理されません。
 
-**エラー**  
+**Error**  
 ![CS オブジェクト](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
 **[同期エラー]** タブは、オブジェクトに問題がある場合にのみ表示されます。 詳しくは、[同期エラーのトラブルシューティング](#troubleshoot-errors-in-operations-tab)に関するページをご覧ください。
 
 ### <a name="cs-lineage"></a>CS 系列
-[Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
+ [Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
 ![CS 系列](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 **[アクション]** 列に、アクションが **[プロビジョニング]** である **[受信]** 同期規則が 1 つ表示されています。 これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。 同期規則の一覧に **[送信]** と **[Provision (プロビジョニング)]** が表示されている場合は、メタバース オブジェクトが削除されたときに、このオブジェクトが削除されることを示しています。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
@@ -103,7 +103,7 @@ cs オブジェクトを開くと、いくつかのタブが上部に表示さ�
 
 [Lineage (系列)] タブで [[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]](#mv-attributes)をクリックすると、メタバースに移動できます。
 
-すべてのタブの一番下に **[Preview (プレビュー)]** ボタンと **[Log (ログ)]** ボタンがあります。
+すべてのタブの一番下に **[プレビュー]** ボタンと **[ログ]** ボタンがあります。
 
 ### <a name="preview"></a>プレビュー
 [プレビュー] ページは、1 つのオブジェクトの同期に使用されます。 カスタム同期ルールの問題を解決しているとき、1 つのオブジェクトに与える変更の影響を確認するのに便利です。 **完全同期**か**差分同期**を選択できます。**[Generate Preview (プレビューの生成)]** か **[Commit Preview (プレビューのコミット)]** かも選択できます。生成の場合、変更はメモリにのみ保存されます。コミットの場合、メタバースが更新され、すべての変更がターゲット コネクタ スペースにステージングされます。  
@@ -126,7 +126,7 @@ cs オブジェクトを開くと、いくつかのタブが上部に表示さ�
 オブジェクトが見つからなかった場合、それはまだメタバースに届いていません。 Active Directory [コネクタ スペース](#connector-space-object-properties)でオブジェクトの検索を続行します。 オブジェクトがメタバースに届くのを阻止している同期のエラーがあるか、フィルターが適用されている可能性があります。
 
 ### <a name="mv-attributes"></a>MV 属性
-[属性] タブには、値と、値を提供したコネクタが表示されます。  
+ [属性] タブには、値と、値を提供したコネクタが表示されます。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 オブジェクトが同期していない場合は、メタバースで次の属性を参照します。
@@ -134,7 +134,7 @@ cs オブジェクトを開くと、いくつかのタブが上部に表示さ�
 - 属性 **sourceAnchor** は存在しますか。 存在しない場合、アカウント リソース フォレスト トポロジはありますか。 オブジェクトがリンクされたメールボックスとして識別されている場合 (属性 **msExchRecipientTypeDetails** の値が 2)、sourceAnchor は有効になっている Active Directory アカウントを使用してフォレストによって提供されます。 マスター アカウントがインポートされ、正しく同期されていることを確認してください。 マスター アカウントがオブジェクトの[コネクタ](#mv-connectors)に一覧表示されている必要があります。
 
 ### <a name="mv-connectors"></a>MV コネクタ
-[コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
+ [コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 次のものに対するコネクタが必要です。
 

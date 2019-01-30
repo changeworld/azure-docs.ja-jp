@@ -4,7 +4,7 @@ description: この記事では、Azure AD Connect 同期の既定の構成に�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bd708d279649138fcb17362491da4eb7539c478b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6de48b0f4c7c69ab0c6acb4099234b853d2c1523
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308751"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478571"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
+# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
 
 この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](concept-azure-ad-connect-sync-declarative-provisioning.md)」をご覧ください。
@@ -51,7 +51,7 @@ ms.locfileid: "46308751"
   * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
 * Exchange Online で機能しないオブジェクトは同期しないでください。
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
-  このビットマスク (&amp;H21C07000) で次のオブジェクトが除外されます。
+   このビットマスク (&H21C07000) で次のオブジェクトが除外されます。
   * メールが有効なパブリック フォルダー (バージョン 1.1.524.0 時点でプレビュー)
   * システム アテンダント メールボックス
   * メールボックス データベース メールボックス (システム メールボックス)
@@ -94,7 +94,7 @@ ms.locfileid: "46308751"
 * メンバーは 50,000 以下にする必要があります。 この数は、オンプレミス グループのメンバー数です。
   * 最初に同期を開始する前にこの数を超えるメンバーが含まれている場合、グループは同期されません。
   * 最初に作成したときからメンバーの数が増え、50,000 に到達すると、再び 50,000 以下になるまで同期は停止します。
-  * 注記: 50,000 というメンバー数は Azure AD からも強制されます。 この規則を変更または削除した場合でも、メンバー数の多いグループを同期することはできません。
+  * 注:50,000 というメンバー数は Azure AD からも強制されます。 この規則を変更または削除した場合でも、メンバー数の多いグループを同期することはできません。
 * グループが **配布グループ**の場合、メール対応にする必要もあります。 このルールの強制については、「 [連絡先の既定のルール](#contact-out-of-box-rules) 」を参照してください。
 
 次のグループ オブジェクトは Azure AD に同期 **されません** 。
@@ -134,7 +134,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 ![同期規則、受信](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-このウィンドウには、構成に対して作成されたすべての同期規則が表示されます。 表内の各行は 1 つの同期規則です。 左側の [Rule Types (規則のタイプ)] の下に、[受信] と [送信] という 2 つの異なるタイプが表示されます。 [着信] および [送信] は、メタバースのビューに基づきます。 この概要では主に、受信に関する規則に注目します。 同期規則の一覧の実際の内容は、AD で検出されたスキーマに応じて異なります。 上の図のアカウント フォレスト (fabrikamonline.com) には、Exchange や Lync などのサービスがないため、これらのサービスの同期規則は作成されていません。 これに対して、リソース フォレスト (res.fabrikamonline.com) には、このようなサービスの同期規則があります。 規則の内容は、検出されたバージョンによって異なります。 たとえば、Exchange 2013 によるデプロイの場合、Exchange 2010 や Exchange 2007 よりも多くの属性フローが構成されています。
+このウィンドウには、構成に対して作成されたすべての同期規則が表示されます。 表内の各行は 1 つの同期規則です。 左側の [ルールの種類] の下に、[受信] と [送信] という 2 つの異なるタイプが表示されます。 [着信] および [送信] は、メタバースのビューに基づきます。 この概要では主に、受信に関する規則に注目します。 同期規則の一覧の実際の内容は、AD で検出されたスキーマに応じて異なります。 上の図のアカウント フォレスト (fabrikamonline.com) には、Exchange や Lync などのサービスがないため、これらのサービスの同期規則は作成されていません。 これに対して、リソース フォレスト (res.fabrikamonline.com) には、このようなサービスの同期規則があります。 規則の内容は、検出されたバージョンによって異なります。 たとえば、Exchange 2013 によるデプロイの場合、Exchange 2010 や Exchange 2007 よりも多くの属性フローが構成されています。
 
 ### <a name="synchronization-rule"></a>同期規則
 同期規則は、条件が満たされた場合に、フローする属性のセットを含む構成オブジェクトです。 また、これを使用して、**結合**または**一致**と呼ばれる、コネクタ スペース内のオブジェクトとメタバース内のオブジェクトとの関連付けを記述することもできます。 同期規則には、互いがどのように関連するのかを示す優先順位値があります。 数値が低い同期規則ほど、優先順位が高くなります。属性のフローの競合が発生した場合には、優先順位の高い同期規則が優先される形で競合が解決されます。
@@ -236,6 +236,6 @@ NULL
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 

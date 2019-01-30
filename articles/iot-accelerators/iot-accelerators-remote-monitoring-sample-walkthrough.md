@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605536"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468031"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 
@@ -47,11 +47,11 @@ ms.locfileid: "53605536"
 
 ソリューションには、論理アーキテクチャのデバイス接続部分に、次のコンポーネントが含まれています。
 
-### <a name="physical-devices"></a>物理デバイス
+### <a name="real-devices"></a>実際のデバイス
 
-ソリューションには、物理デバイスを接続できます。 Azure IoT device SDK を使用して、シミュレートされたデバイスの動作を実装できます。
+ソリューションには、実際のデバイスを接続できます。 Azure IoT device SDK を使用して、シミュレートされたデバイスの動作を実装できます。
 
-ソリューション ポータルのダッシュ ボードから物理デバイスをプロビジョニングできます。
+ソリューション ポータルのダッシュボードから実際のデバイスをプロビジョニングできます。
 
 ### <a name="device-simulation-microservice"></a>デバイス シミュレーション マイクロサービス
 
@@ -66,7 +66,7 @@ ms.locfileid: "53605536"
 
 ### <a name="iot-hub"></a>IoT Hub
 
-[IoT ハブ](../iot-hub/index.yml)は、物理デバイスおよびシミュレートされたデバイスの両方からクラウドに送信されたテレメトリを取り込みます。 IoT ハブは、そのテレメトリを IoT ソリューション バックエンドでサービスが処理のために使用できるようにします。
+[IoT ハブ](../iot-hub/index.yml)では、実際のデバイスとシミュレートされたデバイスの両方からクラウドに送信されたテレメトリが取り込まれます。 IoT ハブは、そのテレメトリを IoT ソリューション バックエンドでサービスが処理のために使用できるようにします。
 
 ソリューションの IoT ハブは、以下の操作も行います。
 
@@ -106,7 +106,7 @@ ms.locfileid: "53605536"
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-ソリューション アクセラレータのデプロイでは、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) を使用してルール、アラーム、構成設定、その他のすべてのコールド ストレージを格納します。
+ソリューション アクセラレータのデプロイでは、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) を使用して、ルール、アラート、構成設定、その他のすべてのコールド ストレージが格納されます。
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics マネージャー マイクロサービス
 

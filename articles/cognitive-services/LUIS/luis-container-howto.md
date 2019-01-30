@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055049"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463288"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -113,7 +113,8 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 |ステージング|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_STAGING.gz`|
 |Production|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**重要:** LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
+> [!IMPORTANT]
+> LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
 
 ### <a name="packaging-prerequisites"></a>パッケージの前提条件
 
@@ -383,3 +384,4 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 
 * 構成設定について、[コンテナーの構成](luis-container-configuration.md)を確認する
 * [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

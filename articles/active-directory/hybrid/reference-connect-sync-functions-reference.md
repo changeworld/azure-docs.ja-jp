@@ -4,7 +4,7 @@ description: Azure AD Connect Sync での宣言型のプロビジョニングの
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157481"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471184"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -600,7 +600,7 @@ dn が "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" の場合、
 * format: 変換する形式を表す文字列。
 
 **解説:**  
-形式に使用できる値については、「[Custom date and time formats for the FORMAT function](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数のカスタム日時書式) を参照してください。
+形式で有効な値については、「[Custom date and time formats for the FORMAT function](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数用のカスタム日付/時刻形式) を参照してください。
 
 **例:**  
 
@@ -1335,5 +1335,5 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect 同期: 同期オプションのカスタマイズ](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

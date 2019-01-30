@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405616"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412050"
 ---
 # <a name="custom-roles-in-azure"></a>Azure のカスタム ロール
 
@@ -84,7 +84,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
     カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
 
-カスタム ロールを作成する手順が記載されたチュートリアルについては、「[チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)」と「[チュートリアル: Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
+カスタム ロールの作成方法に関するステップ倍ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)」か「[チュートリアル: Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 
 ## <a name="custom-role-properties"></a>カスタム ロールのプロパティ
 
@@ -92,7 +92,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
 | プロパティ | 必須 | type | 説明 |
 | --- | --- | --- | --- |
-| `Name` | [はい] | String | カスタム ロールの表示名。 ロールの定義は、サブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
+| `Name` | はい | String | カスタム ロールの表示名。 ロールの定義は、サブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
 | `Id` | [はい] | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
 | `IsCustom` | [はい] | String | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` に設定します。 |
 | `Description` | [はい] | String | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
@@ -116,3 +116,4 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 - [Azure PowerShell を使用してカスタム ロールを作成する](custom-roles-powershell.md)
 - [Azure CLI を使用してカスタム ロールを作成する](custom-roles-cli.md)
 - [ロール定義について](role-definitions.md)
+- [Azure での RBAC のトラブルシューティング](troubleshooting.md)

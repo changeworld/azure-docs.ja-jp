@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: インストールの種類の選択 | Microsoft Docs'
+title: Azure AD Connect:インストールの種類の選択 | Microsoft Docs
 description: このトピックでは、Azure AD Connect で使用するインストールの種類を選択する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e4185b6b30bdd01492d9aae7ac38e18aaba7eef5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6082d583432e246ba3d45f3e97f4b104710e8727
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306021"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473692"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
-Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
+Azure AD Connect には、新規インストール用に簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
 
 ## <a name="express"></a>Express
 簡易は一般的なオプションで、新規インストールの約 90% で使用されます。 これは、最も一般的な顧客シナリオで使用できる構成を提供できるように設計されました。

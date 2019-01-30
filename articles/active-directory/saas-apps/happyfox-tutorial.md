@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HappyFox の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HappyFox の統合 | Microsoft Docs
 description: Azure Active Directory と HappyFox の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8204ee77-f64b-4fac-b64a-25ea534feac0
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 95def1ce278b0a816f19e3cd4e1b47bd3f68f1a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5fb71d4c5e8d9e094feb83a6c5f54cc37f5a5136
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440291"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825818"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル: Azure Active Directory と HappyFox の統合
+# <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル:Azure Active Directory と HappyFox の統合
 
 このチュートリアルでは、HappyFox と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ HappyFox で、Azure AD の **[ユーザー名]** の値を **[ユーザー名]*
 
 HappyFox で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[HappyFox テスト ユーザーの作成](#creating-a-happyfox-test-user)** - HappyFox で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -98,7 +98,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
 
 このセクションでは、Azure ポータルで Azure AD のシングル サインオンを有効にして、 HappyFox アプリケーションでシングル サインオンを構成します。
 
-**で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+ **で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. Azure Portal の **HappyFox** アプリケーションの統合ページで、**[シングル サインオン]** をクリックします。
 
@@ -152,7 +152,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
     ![Configure single sign-on](./media/happyfox-tutorial/savesettings.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

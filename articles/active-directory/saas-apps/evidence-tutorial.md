@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Evidence.com の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Evidence.com の統合 | Microsoft Docs
 description: Azure Active Directory と Evidence.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 52f582f0cac55aaff90cf21097e679617a50ef0b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c1eebca0677cf14d59cf24e1a7acb5cebc692648
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428463"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812779"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル: Azure Active Directory と Evidence.com の統合
+# <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル:Azure Active Directory と Evidence.com の統合
 
 このチュートリアルでは、Evidence.com と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -131,9 +131,9 @@ Evidence.com で Azure AD のシングル サインオンを構成してテス�
 
 1. 別の Web ブラウザー ウィンドウで、Evidence.com テナントに管理者としてログインし、 **[Admin] \(管理)** タブに移動します。
 
-1. **[Agency Single Sign On] \(代理店のシングル サインオン)**
+1.  **[Agency Single Sign On] \(代理店のシングル サインオン)**
 
-1. **[SAML Based Single Sign On] \(SAML ベースのシングル サインオン)**
+1.  **[SAML Based Single Sign On] \(SAML ベースのシングル サインオン)**
 
 1. Azure Portal に表示されている **SAML エンティティ ID**、**SAML シングル サインオン サービス URL**、**サインアウト URL** の値をコピーし、Evidence.com の対応するフィールドに貼り付けます。
 
@@ -142,7 +142,7 @@ Evidence.com で Azure AD のシングル サインオンを構成してテス�
 1. Evidence.com の構成を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -228,7 +228,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Evidence.com のタイルをクリックすると、自動的に Evidence.com アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

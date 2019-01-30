@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合 | Microsoft Docs
 description: Azure Active Directory と Zscaler Private Access (ZPA) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5858ab1846ccdc2e2b78f2be4173ea3cc17a3605
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5610316fdadb9a169c90e7e7761d9ddd2a74dcbe
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116574"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819120"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
 このチュートリアルでは、Zscaler Private Access (ZPA) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 

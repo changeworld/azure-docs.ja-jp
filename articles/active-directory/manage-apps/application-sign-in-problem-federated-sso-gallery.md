@@ -4,7 +4,7 @@ description: Azure AD での SAML ベースのフェデレーション シング
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8d910ffcf966e98def33a42a6452baea9f4b3998
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8a21f1ac0839a37455fe06537242edc6e43731a4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356192"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477302"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "44356192"
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
 
-*エラー AADSTS70001: 識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
+*エラー AADSTS70001:識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
 
 **考えられる原因**
 
@@ -66,7 +66,7 @@ Azure AD で識別子の値を更新し、それが SAML 要求でアプリケ�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。
 
-*Error AADSTS50011: 応答アドレス 'https://contoso.com' は、アプリケーションに対して構成されている応答アドレスと一致しません*。
+*エラー AADSTS50011:応答アドレス 'https://contoso.com' が、アプリケーション用に構成された応答アドレスと一致しません*
 
 **考えられる原因**
 
@@ -99,7 +99,7 @@ Azure AD で応答 URL の値を更新し、その URL 値が、アプリケー�
 
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない
 
-*エラー AADSTS50105: サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていません*。
+*エラー AADSTS50105:サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていません*。
 
 **考えられる原因**
 
@@ -145,7 +145,7 @@ Azure AD で応答 URL の値を更新し、その URL 値が、アプリケー�
 
 ## <a name="not-a-valid-saml-request"></a>有効な SAML 要求ではない
 
-*エラー AADSTS75005: この要求は有効な Saml2 プロトコル メッセージではありません。*
+*エラー AADSTS75005:この要求は有効な Saml2 プロトコル メッセージではありません*。
 
 **考えられる原因**
 
@@ -228,7 +228,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="certificate-or-key-not-configured"></a>証明書またはキーが構成されていない
 
-*エラー AADSTS50003: 署名キーが構成されていません。*
+*エラー AADSTS50003:署名キーが構成されていません。*
 
 **考えられる原因**
 
@@ -261,6 +261,19 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 10. **[新しい証明書をアクティブにする]** をオンにして、アクティブな証明書をオーバーライドします。 次に、ウィンドウの上部にある **[保存]** をクリックし、ロールオーバー証明書をアクティブにすることを受け入れます。
 
 11. **[SAML 署名証明書]** セクションで、**[削除]** をクリックして、**未使用**の証明書を削除します。
+
+## <a name="saml-request-not-present-in-the-request"></a>SAML 要求が要求にない
+
+*エラー AADSTS750054:SAML リダイレクト バインディング用の HTTP 要求に、SAMLRequest または SAMLResponse がクエリ文字列のパラメーターとしてある必要があります。*
+
+**考えられる原因**
+
+Azure AD によって、HTTP 要求の URL パラメーター内から SAML 要求が識別されませんでした。 これは、アプリケーションが Azure AD への SAML 要求の送信に、HTTP リダイレクト バインディングを使用していない場合に発生することがあります。
+
+**解決策**
+
+アプリケーションが、HTTP リダイレクト バインディングを使用して、エンコードされて location ヘッダーに含められた SAML 要求を送信する必要があります。 これの実装方法の詳細については、[SAML プロトコルの仕様書](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)の HTTP リダイレクト バインディングに関するセクションを参照してください。
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする際の問題
 

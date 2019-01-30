@@ -4,7 +4,7 @@ description: Azure Active Directory における SaaS アプリの属性マッ�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c54df9c4a01dbdb7713d03ff81108f28a60ec727
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ead99afaf0399c060424d310d8f4011b2a50aad2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356222"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473726"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure Portal では属性マッピングの形でその属性値を管理します。
@@ -64,8 +64,8 @@ Azure AD ポータルでこの機能にアクセスするには、**[エンタ�
 前のセクションでは、属性マッピングの種類プロパティについて紹介しました。
 属性マッピングは、このプロパティ以外にも次の属性もサポートしています。
 
-- **ソース属性** - ソース システムのユーザー属性 (例: Azure Active Directory)。
-- **対象の属性** - ターゲット システムのユーザー属性 (例: ServiceNow)。
+- **ソース属性** - ソース システムのユーザー属性 (例:Azure Active Directory)。
+- **対象の属性** - ターゲット システムのユーザー属性 (例:ServiceNow)。
 - **この属性を使用してオブジェクトを照合する** - このマッピングを使用して、ソースとターゲットのシステム間でユーザーを一意に識別するかどうかを示します。 通常、これは Azure AD の userPrincipalName または mail 属性で設定され、一般的にターゲット アプリケーションの username フィールドにマップされます。
 - **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 - **このマッピングを適用する**

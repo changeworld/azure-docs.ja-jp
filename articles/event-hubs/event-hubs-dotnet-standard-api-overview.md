@@ -9,18 +9,18 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: 9b952bd96828c4f2c140cb2d75cecb9379895a63
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746645"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450457"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 
 この記事は主要な Azure Event Hubs [.NET Standard クライアント API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) についてまとめてあります。 現在 Event Hubs 用の 2 つの .NET Standard クライアント ライブラリがあります。
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): 基本的なランタイム操作がすべて用意されています。
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): 基本的なすべてのランタイム操作を提供します。
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): 処理済みイベントを追跡するための機能を追加します。これにより、最も簡単に Event Hub から読み取ることができます。
 
 ## <a name="event-hubs-client"></a>Event Hubs クライアント

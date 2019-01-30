@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Menlo Security の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Menlo Security の統合 | Microsoft Docs
 description: Azure Active Directory と Menlo Security の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a1f7458d52ffdee4cb48e4be0f553e3d57413249
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 70b6693afe1a57e8acd62500d74f860dffc7c692
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428847"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808699"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>チュートリアル: Azure Active Directory と Menlo Security の統合
+# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>チュートリアル:Azure Active Directory と Menlo Security の統合
 
 このチュートリアルでは、Menlo Security と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Azure AD への Menlo Security の統合を構成するには、ギャラリー�
 
 Menlo Security で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[ テスト ユーザーの作成](#creating-a-menlo-security-test-user)** - Menlo Security で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -143,16 +143,16 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
 
     c. **[SAML Provider (SAML プロバイダー)]** で、**[Azure Active Directory]** を選択します。
 
-    d. **[SAML 2.0 Endpoint (SAML 2.0 エンドポイント)]**: Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    d. **[SAML 2.0 Endpoint (SAML 2.0 エンドポイント)]**:Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
-    e. **[Service Identifier (Issuer) (サービス識別子 (発行者))]**: Azure ポータルからコピーした **SAML エンティティ ID** を貼り付けます。
+    e. **[Service Identifier (Issuer) (サービス識別子 (発行者))]**:Azure portal からコピーした **SAML エンティティ ID** を貼り付けます。
 
-    f. **[X.509 Certificate (X.509 証明書)]**: Azure Portal からダウンロードした**証明書 (Bas64)** をメモ帳で開いてこのボックスにコピーします。
+    f. **[X.509 Certificate (X.509 証明書)]**:Azure Portal からダウンロードした**証明書 (Base64)** をメモ帳で開いてこのボックスにコピーします。
 
     g. **[保存]** をクリックして設定を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -188,7 +188,7 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
  
 ### <a name="creating-a-menlo-security-test-user"></a>Menlo Security テスト ユーザーの作成
  
-このセクションでは、Menlo Security で Britta Simon というユーザーを作成します。 [Menlo Security クライアント サポート チーム](https://www.menlosecurity.com/menlo-contact)と連携して、Menlo Security プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Menlo Security で Britta Simon というユーザーを作成します。  [Menlo Security クライアント サポート チーム](https://www.menlosecurity.com/menlo-contact)と連携して、Menlo Security プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

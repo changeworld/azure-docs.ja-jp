@@ -4,7 +4,7 @@ description: Azure Active Directory ポータルのサインイン アクティ�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245091"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808631"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -161,7 +161,7 @@ Azure portal の外部で操作する場合は、[サインイン データを�
 
 **Windows 10** マシン上でスクリプトを実行する場合は、最初にいくつかの手順を追加で実行する必要があります。 
 
-1. [AzureRM モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l)をインストールします。
+1. [AzureRM モジュール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l)をインストールします。
 2. PowerShell プロンプトを開き、コマンド **Import-Module AzureRM** を実行して、モジュールをインポートします。
 3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
 4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
@@ -203,7 +203,10 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 - 日付
 - MFA が必要
 - サインインの状態
- 
+
+> [!NOTE]
+> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。
+
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/08.png "サインイン アクティビティ")
@@ -236,9 +239,9 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 ## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Office 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から表示できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは、多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログを完全に表示できるのは、Office 365 管理センターのみです。 
+Office 365 のアクティビティ ログは、[Office 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Office 365 管理センターのみです。 
 
-[Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+[Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

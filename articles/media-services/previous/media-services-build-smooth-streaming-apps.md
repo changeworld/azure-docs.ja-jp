@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232687"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828317"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
@@ -142,7 +142,7 @@ Windows ストア アプリケーションの開発の詳細については、�
    MediaElement コントロールは、メディアの再生に使用します。 次のレッスンでは、sliderProgress という名前のスライダー コントロールを使用して、メディアの進行を制御します。
 3. **Ctrl + S** キーを押して、ファイルを保存します。
 
-MediaElement コントロールは、そのままではスムーズ ストリーミング コンテンツをサポートしていません。 スムーズ ストリーミング サポートを有効にするには、スムーズ ストリーミング バイトストリーム ハンドラーをファイル名拡張子と MIME タイプで登録する必要があります。  登録するには、Windows.Media 名前空間の MediaExtensionManager.RegisterByteStremHandler メソッドを使用します。
+MediaElement コントロールは、そのままではスムーズ ストリーミング コンテンツをサポートしていません。 スムーズ ストリーミング サポートを有効にするには、スムーズ ストリーミング バイトストリーム ハンドラーをファイル名拡張子と MIME タイプで登録する必要があります。  登録するには、Windows.Media 名前空間の MediaExtensionManager.RegisterByteStreamHandler メソッドを使用します。
 
 この XAML ファイル内で、いくつかのイベント ハンドラーがコントロールに関連付けられています。  これらのイベント ハンドラーを定義する必要があります。
 

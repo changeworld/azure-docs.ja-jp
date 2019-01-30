@@ -10,18 +10,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f4d63d4ad0841244cf2548b0842eea880e27a152
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158858"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463033"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
-この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。
+この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。 チュートリアルについては、「[チュートリアル:Azure リソースを別のリソース グループやサブスクリプションに移動する](./resource-manager-tutorial-move-resources.md)」を参照してください。
 
 移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味しますが、リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。
 
@@ -56,6 +56,7 @@ ms.locfileid: "54158858"
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure データ エクスプローラー
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps - Microsoft 以外の拡張機能を購入している Azure DevOps 組織は、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでなければ、アカウントを異なるサブスクリプションに移動できません。
@@ -98,7 +99,7 @@ ms.locfileid: "54158858"
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - [限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
+* Recovery Services コンテナー - [限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)のサブスクリプションを登録します。
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -166,6 +167,7 @@ ms.locfileid: "54158858"
 次のシナリオはまだサポートされていません。
 
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
+* 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
@@ -305,7 +307,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
-Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
+ Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)のサブスクリプションを登録します。
 
 現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 

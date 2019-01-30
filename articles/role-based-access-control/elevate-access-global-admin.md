@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory で全体管理者のアクセス権を昇格する | Microsoft Docs
-description: Azure portal または REST API を使用して、Azure Active Directory の全体管理者のアクセス権を昇格する方法について説明します。
+title: Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権を昇格させる | Microsoft Docs
+description: Azure portal または REST API を使用し、Azure Active Directory ですべてのサブスクリプションと管理グループを管理する目的で、全体管理者のアクセス権を昇格させる方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321667"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437472"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory の全体管理者のアクセス権を昇格する
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
-Azure Active Directory (Azure AD) の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)の場合は、以下の操作を行うことがあります。
-
-- ユーザーがアクセス権を失ったときに Azure サブスクリプションへのアクセス権を回復する
-- 別のユーザーまたは自分に Azure サブスクリプションへのアクセス権を付与する
-- 組織内のすべての Azure サブスクリプションを表示する
-- オートメーション アプリ (請求書作成アプリや監査アプリなど) がすべての Azure サブスクリプションにアクセスできるようにする
-
-この記事では、Azure AD でアクセス権を昇格させるさまざまな方法について説明します。
+Azure Active Directory (Azure AD) の全体管理者には、自分のディレクトリにおいて、すべてのサブスクリプションと管理グループにアクセスする権限が与えられていない場合があります。 この記事では、すべてのサブスクリプションと管理グループにアクセスできるよう、権限を昇格させる方法について説明します。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>概要
+## <a name="why-would-you-need-to-elevate-your-access"></a>アクセス権を昇格が必要な理由
 
-Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の全体管理者であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
+全体管理者であれば、次のような作業を行う場合が考えられます。
+
+- ユーザーが Azure のサブスクリプションか管理グループにアクセスできなくなったとき、アクセス権を回復する
+- 別のユーザーまたは自分に Azure のサブスクリプションまたは管理グループへのアクセス権を付与する
+- 組織内にある Azure のすべてのサブスクリプションと管理グループを表示する
+- オートメーション アプリ (請求書作成アプリや監査アプリなど) から Azure のすべてのサブスクリプションと管理グループへのアクセスを許可する
+
+## <a name="how-does-elevate-access-work"></a>アクセス権の昇格のしくみ
+
+Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
 
 アクセス権を昇格させると、Azure のルート範囲 (`/`) で[ユーザー アクセスの管理者](built-in-roles.md#user-access-administrator)ロールが割り当てられます。 これにより、すべてのリソースを表示したり、ディレクトリにあるあらゆるサブスクリプションまたは管理グループでアクセス権を割り当てたりできます。 ユーザー アクセス管理者ロールの割り当ては PowerShell を使用して削除できます。
 
@@ -55,19 +57,29 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
    ![Azure AD のプロパティ - スクリーンショット](./media/elevate-access-global-admin/aad-properties.png)
 
-1. **Azure リソースのアクセス管理**の下でスイッチを **[はい]** に設定します。
+1. **[Azure リソースのアクセス管理]** の下で **[はい]** に切り替えます。
 
    ![Azure リソースのアクセス管理 - スクリーンショット](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   スイッチを **[はい]** に設定すると、Azure RBAC のルート範囲 (/) でユーザー アクセス管理者ロールが割り当てられます。 この割り当てにより、この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てるアクセス許可が付与されます。 このスイッチは、Azure AD で全体管理者ロールが割り当てられたユーザーのみ利用できます。
+   **[はい]** に切り替えると、Azure RBAC のルート範囲 (/) でユーザー アクセス管理者ロールが割り当てられます。 この割り当てにより、この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てるアクセス許可が付与されます。 この切り替えは、Azure AD で全体管理者ロールが割り当てられたユーザーのみ利用できます。
 
-   スイッチを **[いいえ]** に設定すると、Azure RBAC のユーザー アクセス管理者ロールがユーザー アカウントから削除されます。 この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てることができなくなります。 自分にアクセス権が割り当てられている Azure サブスクリプションと管理グループのみを表示し、管理できます。
+   **[いいえ]** に切り替えると、Azure RBAC のユーザー アクセス管理者ロールがユーザー アカウントから削除されます。 この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てることができなくなります。 自分にアクセス権が割り当てられている Azure サブスクリプションと管理グループのみを表示し、管理できます。
 
 1. **[保存]** をクリックして設定を保存します。
 
-   この設定はグローバル プロパティではなく、現在ログインしているユーザーのみに適用されます。
+   この設定はグローバル プロパティではなく、現在サインインしているユーザーのみに適用されます。 全体管理者ロールのすべてのメンバーを対象にアクセスを昇格させることはできません。
 
-1. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
+1. サインアウトし、もう一度サインインするとアクセス権が更新されます。
+
+    これで自分のディレクトリにあるすべてのサブスクリプションと管理グループにアクセスできます。 ルート スコープでユーザー アクセス管理者ロールが割り当てられていることがわかります。
+
+   ![サブスクリプション ロール割り当てとルート スコープ - スクリーンショット](./media/elevate-access-global-admin/iam-root.png)
+
+1. 昇格させたアクセス権で必要な変更を加えます。
+
+    ロールの割り当て方法については、「[RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)」を参照してください。 Azure AD Privileged Identity Management (PIM) を使用している場合、「[PIM で管理する Azure リソースを検出する](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)」または「[PIM で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
+
+1. 完了したら、**[Azure リソースのアクセス管理]** を **[いいえ]** に戻します。 これはユーザー別の設定であるため、アクセスの昇格に使用したユーザーでサインインする必要があります。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>ルート スコープ (/) のロールの割り当てを削除する
 
-ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) コマンドを使用します。
+ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを削除するには、次の手順を行います。
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. 昇格させたアクセス権を削除できるユーザーでサインインします。 これはアクセス権を昇格させたときと同じユーザーかルート スコープでアクセス権が昇格されている別の全体管理者になります。
+
+
+1. ユーザー アクセス管理者ロールの割り当てを削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) コマンドを使用します。
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>REST API
 

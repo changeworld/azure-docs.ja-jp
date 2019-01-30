@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 02780a9e9702a41f677595d74b9861ea6a51b572
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260437"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450406"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway (プレビュー) を接続、設定、アクティブ化する 
 
@@ -94,7 +94,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
    
    **[Web プロキシ]** ページで、以下のことを実行します。
    
-   1. *http://&lt;host-IP アドレスまたは FQDN&gt;:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. "*http://&lt;host-IP アドレスまたは FQDN&gt;:ポート番号*" の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**ユーザー名**と**パスワード**も指定する必要があります。
    4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。

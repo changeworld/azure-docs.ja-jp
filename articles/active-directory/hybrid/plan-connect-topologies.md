@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: サポートされるトポロジ | Microsoft Docs'
+title: Azure AD Connect:サポートされるトポロジ | Microsoft Docs
 description: このトピックでは、Azure AD Connect のサポートされているトポロジとサポートされていないトポロジについて詳しく説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: be53e26d6277465836163b43fc5ab2529c67deef
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158858"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470190"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -84,7 +84,9 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 
 1 つの Azure AD テナントに接続する複数の Azure AD Connect 同期サーバーはサポートされていません。 例外として、 [ステージング サーバー](#staging-server)の使用があります。
 
-### <a name="multiple-forests-separate-topologies"></a>複数のフォレスト、分離トポロジ
+このトポロジは、1 つの Azure AD テナントに接続された**複数の同期サーバー**がサポートされていない点で、以下とは異なります。
+
+### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>複数のフォレスト、単一の同期サーバー、ユーザーは 1 つのディレクトリだけで表される
 ![ユーザーがすべてのディレクトリで 1 度だけ示されるオプション](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
 ![複数のフォレストと分離トポロジの説明図](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
