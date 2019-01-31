@@ -114,7 +114,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
 |Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  [はい]|    いいえ | [はい]|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。
