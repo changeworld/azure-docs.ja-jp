@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b11e7117143dea6db71b1c60d89054477e94227d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5c2a31e10d53c8088afd3c3910b1b2f9d2b2d247
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255994"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159233"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 

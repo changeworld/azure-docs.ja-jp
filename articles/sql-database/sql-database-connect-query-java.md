@@ -11,14 +11,14 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/20/2018
-ms.openlocfilehash: 5c12bd54c0ea96ac915fedab94f03cf044330dcf
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6b748ebdbdc443c5fa44c82323774cd12c82ba38
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723297"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197502"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート: Java を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL Database に照会する
 
 この記事では、[Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
@@ -27,8 +27,6 @@ ms.locfileid: "52723297"
 このサンプルを完了するには、次の前提条件を満たしている必要があります。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- ご使用のコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)
 
 - ご使用のオペレーティング システムに対応した、以下の Java 関連のソフトウェアをインストール済みであること。
 

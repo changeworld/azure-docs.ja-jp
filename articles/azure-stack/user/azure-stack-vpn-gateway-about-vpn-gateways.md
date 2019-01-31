@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2019
 ms.author: sethm
-ms.openlocfilehash: aa2754d2de8771468f59225273d88731b4f2f545
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54414691"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251369"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack の VPN ゲートウェイについて
 

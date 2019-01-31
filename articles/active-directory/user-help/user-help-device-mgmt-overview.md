@@ -6,24 +6,24 @@ author: eross-msft
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f321e027b29aa719dd0620aadd2a8e1558d069e9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f01209909812cbf86fe5cf6dee7cedc52d85480c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825801"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197400"
 ---
 # <a name="manage-my-devices-overview"></a>デバイスの管理の概要
 
+職場所有のデバイスと個人のデバイスの両方から、制限されている可能性がある組織の全リソースにアクセスできるようにします。
+
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
-
-職場所有のデバイスと個人のデバイスの両方から、制限されている可能性がある組織の全リソースにアクセスできるようにします。
 
 |記事 |説明 |
 |------|------------|

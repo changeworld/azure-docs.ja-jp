@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 01/03/2019
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 516ce9d9a6fcc73b543c7db584afebf71c2293ca
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: blobs
+ms.openlocfilehash: 761d5fe52222331a26f85cdb2787a50a89504021
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064998"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240949"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 

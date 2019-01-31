@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447464"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093310"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート:Azure Active Directory のアプリケーションを更新する
 

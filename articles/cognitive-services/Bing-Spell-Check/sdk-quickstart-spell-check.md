@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 9ae21e66c178ceb9c6aab814c6528da032ce0b30
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee46ad5b48bc84c24dc67afd6992ad7a01214b5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382123"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193524"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>クイック スタート:Bing Spell Check SDK (C#)
 

@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure CLI を使用したスケール セット�
 description: Azure CLI を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b30c3a2e9f06cf02f27636592634884a7c3fdfc8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471307"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170710"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
 
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -41,13 +41,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 
-次のように [az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。
+次のように [az group create](/cli/azure/group) を使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 次の例では、インスタンス数が *2* のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。
+ここでは、[az vmss create](/cli/azure/vmss) を使って仮想マシン スケール セットを作成します。 次の例では、インスタンス数が *2* のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。
 
 ```azurecli-interactive
 az vmss create \

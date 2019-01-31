@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 804224898f90aa9af587d6d5b4b80c6afcfa586d
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d8569bbc2d1befdd2b6fb9c8783dab206e19c7c9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754987"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211969"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>チュートリアル:一般的な意図とエンティティを識別する
 
@@ -168,7 +168,7 @@ LUIS アプリ の使用法の詳細については、以下をご覧くださ�
 
 * 「[How to train (トレーニング方法)](luis-how-to-train.md)」
 * [発行方法](luis-how-to-publish-app.md)
-* 「[How to test in LUIS portal (LUIS ポータルでのテスト方法)](luis-interactive-test.md)」
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>次の手順
 

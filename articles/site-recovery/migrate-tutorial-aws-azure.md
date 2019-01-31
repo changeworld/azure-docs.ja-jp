@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042055"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226385"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -169,7 +169,7 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 
 移行する各 VM のレプリケーションを有効にします。 レプリケーションを有効にすると、Site Recovery がモビリティ サービスを自動的にインストールします。
 
-1. [Azure ポータル](htts://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 1. コンテナーのページの **[作業の開始]** で **[Site Recovery]** を選択します。
 2. **[オンプレミスのマシンと Azure VM の場合]** で **[手順 1:アプリケーションのレプリケート]** を選択します。 ウィザードのページで次の情報を設定します。 各ページが終わったら **[OK]** を選択します。
     - 1:ソースの構成

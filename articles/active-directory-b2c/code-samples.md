@@ -9,13 +9,13 @@ ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: d78d3193cfc01fefec7e04f751432dc053b7f8ec
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 8f736c6f48251c4a6cf312b4945e48b73d807db1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846117"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160799"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 

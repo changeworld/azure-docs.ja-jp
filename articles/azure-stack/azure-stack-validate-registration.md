@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: cbce1e1aa9ba89d6d46cfaa60ef4de7e6392d924
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 0281186be4fae71c56b65327e0c67da3f252a33c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245805"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239521"
 ---
 # <a name="validate-azure-registration"></a>Azure の登録の検証
  

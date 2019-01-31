@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: d0bc4f5877a09380a2c7053134ae0505b31ae685
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 2c306a5447f2e5d9c7072bd2bed8dd8f1d4078d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330944"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225399"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>チュートリアル:Computer Vision API Java
 

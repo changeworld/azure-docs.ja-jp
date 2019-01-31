@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 1/14/2019
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 6d202ab9e2f6a8e96eb494d3d93caf66624f8364
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d97674940f0af91bf50af87cfe96fda9644d469b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465201"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242054"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 

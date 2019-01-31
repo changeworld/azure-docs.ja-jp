@@ -10,14 +10,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ac58992d81be8d3e275dc89a26ed4cb8b6a3242c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 278935ae7d29680e4fa741d59370e75ee0e1e93d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475970"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197706"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Azure AD とのフェデレーションとは
 

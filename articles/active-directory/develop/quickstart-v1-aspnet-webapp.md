@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970658"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095857"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -266,7 +266,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 1. **F5** を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、`http://localhost:{port}` に移動します。**[Microsoft アカウントでサインイン]** ボタンが表示されます。
 1. サインイン用ボタンを選択します。
 
-### <a name="sign-in"></a>[サインイン]
+### <a name="sign-in"></a>サインイン
 
 テストの準備ができたら、職場アカウント (Azure AD) を使用してサインインします。
 

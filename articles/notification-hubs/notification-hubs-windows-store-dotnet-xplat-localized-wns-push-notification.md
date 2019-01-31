@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9f5177b4474152cf54eb7ea9eb935a0ba81dc760
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3da3519895c30bdb40c679b832eb7fe11484d1d7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451325"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099885"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
 
@@ -109,7 +109,7 @@ ms.locfileid: "54451325"
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. `Notifications` クラスの `StoreCategoriesAndSubscribe` メソッドと `SubscribeToCateories` メソッドにロケール パラメーターを追加します。
+3. `Notifications` クラスの `StoreCategoriesAndSubscribe` メソッドと `SubscribeToCategories` メソッドにロケール パラメーターを追加します。
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)

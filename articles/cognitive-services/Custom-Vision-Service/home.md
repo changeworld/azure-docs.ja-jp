@@ -6,16 +6,16 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 887c2fa09a1108b6254f4dd13b1ca211c80f8f70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54242949"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219262"
 ---
 # <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
 

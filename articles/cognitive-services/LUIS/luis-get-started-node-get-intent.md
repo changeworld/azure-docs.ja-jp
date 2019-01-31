@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: a60528aba88b2bef10c5a4962507e72907f76509
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 83982fe98b19bdfd342ad45b00bcec06b4b3e443
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227184"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>クイック スタート: Node.js を使用した意図の取得
 

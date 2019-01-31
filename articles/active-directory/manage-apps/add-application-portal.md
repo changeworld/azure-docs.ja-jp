@@ -5,17 +5,17 @@ services: active-directory
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/24/2018
 ms.author: barbkess
-ms.openlocfilehash: 0f2f912504ecf32ff5ba337951e24da0f816d463
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c38af719e48165853899f7918ee1f9f1c1e1ddc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461928"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182100"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>クイック スタート:Azure Active Directory テナントにアプリケーションを追加する
 

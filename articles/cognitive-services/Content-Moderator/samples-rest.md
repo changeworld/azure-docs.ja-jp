@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 92e3f087d5ec4d1233243cee381b64c6fedb3be0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: ad26f4e4c7b4adf2228d620e98625250ea1f461a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217358"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>Content Moderator REST サンプル (C#)
 

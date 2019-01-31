@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: e8bf2c2e7f4f37325fa741d190d99b617e1bcc0c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aeb0242114169303a938b1b31ffe6009167e1e5a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847919"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213244"
 ---
 # <a name="quickstart-change-model-using-java"></a>クイック スタート: Java を使ってモデルを変更する 
 

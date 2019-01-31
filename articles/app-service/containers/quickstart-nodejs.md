@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b3c57a9a8912f44dbe7e9261549d034e99356547
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c06e60b5f7dce3038706e0b95ec598126526cc64
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190580"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099177"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js アプリの作成
 
@@ -62,7 +62,7 @@ remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
 Unpacking objects: 100% (40/40), done.
 Checking connectivity... done.
-````
+```
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 

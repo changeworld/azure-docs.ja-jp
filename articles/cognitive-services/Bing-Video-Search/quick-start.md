@@ -1,25 +1,25 @@
 ---
-title: 'クイック スタート: Bing Video Search API'
+title: クイック スタート:Bing Video Search API
 titlesuffix: Azure Cognitive Services
 description: Bing Video Search API の使用方法の概要について説明します。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5b1ac98ee9ad5625d8db9790a3be10d42236874b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4962415578dd07465a0c60554c7a94598d7e8f43
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307459"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179125"
 ---
-# <a name="quickstart-your-first-video-search-query"></a>クイック スタート: 初めてのビデオ検索クエリ
+# <a name="quickstart-your-first-video-search-query"></a>クイック スタート:初めてのビデオ検索クエリ
 
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ビデオ検索の結果を取得するには、次のエンドポイントに GET 要求を送信します。  
   

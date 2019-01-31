@@ -6,16 +6,16 @@ services: cognitive-services
 author: darrine
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 02675b8cdc8c509764b20893bde54b50bec74a50
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8575b51bfc3f9013e984ac6c81352a7559439ff2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242148"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154552"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 

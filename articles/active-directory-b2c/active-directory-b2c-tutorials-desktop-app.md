@@ -9,13 +9,13 @@ ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: 357b9f4d307624db838b22581097799d7d7fef4c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: a99e141a59be654d6d4285be73b0bea60b1e813b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856997"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166972"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してアカウントによるデスクトップ アプリの認証を有効にする
 

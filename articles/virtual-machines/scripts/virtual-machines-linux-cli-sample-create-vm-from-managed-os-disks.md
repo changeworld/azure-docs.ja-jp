@@ -1,9 +1,9 @@
 ---
-title: Azure CLI のサンプル スクリプト - 管理ディスクを OS ディスクとして接続することで VM を作成する | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - 管理ディスクを OS ディスクとして接続することで VM を作成します
+title: Azure CLI のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成する | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 5d86710fd9173cd0bc3416fedec226f97f12d9d2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 319803a8b6c07de6efafa80789248c60a9cdad06
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847677"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241443"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>CLI で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
-このスクリプトは、既存の管理ディスクを OS ディスクとして接続することで仮想マシンを作成します。 このスクリプトは、次のシナリオで使用します。
-* 別のサブスクリプションの管理ディスクからコピーされた既存の管理 OS ディスクから VM を作成する
-* 特化された VHD ファイルから作成された既存の管理ディスクから VM を作成する 
+このスクリプトは、既存のマネージド ディスクを OS ディスクとして接続することで仮想マシンを作成します。 このスクリプトは、次のシナリオで使用します。
+* 別のサブスクリプションのマネージド ディスクからコピーされた既存の管理 OS ディスクから VM を作成する
+* 特化された VHD ファイルから作成された既存のマネージド ディスクから VM を作成する 
 * スナップショットから作成された既存の管理 OS ディスクから VM を作成する 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -48,11 +48,11 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトは、次のコマンドを使用して、管理ディスクのプロパティを取得し、管理ディスクを新しい VM に接続して VM を作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
+このスクリプトは、次のコマンドを使用して、マネージド ディスクのプロパティを取得し、マネージド ディスクを新しい VM に接続して VM を作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | ディスク名とリソース グループ名を使用して、管理ディスクのプロパティを取得します。 Id プロパティは、管理ディスクを新しい VM に接続を使用するために使用されます。 |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | ディスク名とリソース グループ名を使用して、マネージド ディスクのプロパティを取得します。 Id プロパティは、マネージド ディスクを新しい VM に接続するために使用されます。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
 ## <a name="next-steps"></a>次の手順
 

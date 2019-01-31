@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: overview
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: c2b9a2691b6a9a56b3433c656bc6ecb661e5f26a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5d1ad01c775c270b83b49ee5f6ba5cb4706ff97c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448416"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094072"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Azure Active Directory の ID セキュリティ スコアとは (パブリック プレビュー)
 
