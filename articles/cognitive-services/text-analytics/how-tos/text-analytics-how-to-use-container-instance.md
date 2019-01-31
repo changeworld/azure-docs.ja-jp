@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248215"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464546"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
 
@@ -38,7 +38,7 @@ ms.locfileid: "54248215"
 
 この手順では、言語検出用の Cognitive Services コンテナーのサンプルを読み込んで実行します。 このサンプルには、クライアント アプリケーション用と Cognitive Services コンテナー用の 2 つのコンテナーがあります。 これらの両方のイメージを Azure Container Registry にプッシュする必要があります。 独自のレジストリに設定したら、これらのイメージにアクセスしてコンテナーを実行する Azure Kubernetes Service を作成します。 コンテナーの実行中に、**kubectl** CLI を使用してコンテナーのパフォーマンスを監視します。 HTTP 要求を使用してクライアント アプリケーションにアクセスし、結果を確認します。 
 
-
+![サンプルのコンテナーの実行に関する概念的な構想](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>サンプルのコンテナー
 
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>次の手順 
 
-> [!div class="nextstepaction"]
-> [Text Analytics 接続済みサービスを使用する](../vs-text-connected-service.md)
+* さらに [Cognitive Services コンテナー](../../cognitive-services-container-support.md)を使用する
+* [Text Analytics 接続済みサービス](../vs-text-connected-service.md)を使用する
 
 
 <!--

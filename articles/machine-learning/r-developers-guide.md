@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: bc00bd3b61398355c663d133c0c9a66c2a52aa8d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046948"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807458"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure での R 開発者向けガイド
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -40,7 +40,7 @@ Microsoft は、R プログラミング言語をデータ サイエンティス�
 |[Azure Databricks](#azure-databricks)                            |R とその他の言語をサポートするコラボレーションによる Spark の環境               |
 |[Azure Machine Learning Studio](#azure-machine-learning-studio)  |Azure の機械学習の実験でカスタム R スクリプトを実行する                      |
 |[Azure Batch](#azure-batch)                                      |クラスター内の多くのノード全体で R コードを経済的に実行するためのさまざまなオプションを提供する|
-|[Azure Notebooks](#azure-notebooks)                              |無料 (ただし制限あり) でクラウドベースのバージョンの Jupyter Notebook                  |
+|[Azure Notebooks](#azure-notebooks)                              |無料でクラウドベースのバージョンの Jupyter Notebook                  |
 |[Azure SQL Database](#azure-sql-database)                        |SQL Server データベース エンジンの内部で R スクリプトを実行する                            |
 
 ## <a name="data-science-virtual-machine"></a>データ サイエンス仮想マシン
@@ -73,7 +73,7 @@ DSVM の詳細については、「[Linux および Windows 用の Azure デー�
 ML Services クラスターを作成するためのチュートリアルは、「[Azure HDInsight の ML サービスの概要](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-get-started)」の記事を参照してください。
 
 ## <a name="azure-databricks"></a>Azure Databricks
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。  Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) は、Microsoft Azure クラウド サービス プラットフォーム用に最適化された Apache Spark ベースの分析プラットフォームです。  Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
 
 Databricks でのコラボレーションは、プラットフォームのノートブック システムによって有効になります。  ユーザーは、システムの他のユーザーのノートブックを作成、共有、編集できます。  このノートブックにより、Databricks 環境で管理されている Spark クラスターに対して実行されるコードを記述できるようになります。  このノートブックは、R を完全にサポートし、`SparkR` パッケージと `sparklyr` パッケージの両方からの Spark へのアクセス許可をユーザーに与えます。
 
@@ -104,16 +104,17 @@ ML Studio で R を使用する別の方法が、
 ## <a name="azure-batch"></a>Azure Batch
 大規模な R ジョブの場合は、[Azure Batch](https://azure.microsoft.com/services/batch/) を使用できます。  このサービスは、クラウド規模のジョブ スケジューリングとコンピューティング管理を提供するため、仮想マシンの数の増加に合わせて R ワークロードを拡張することができます。  これは汎用的なコンピューティング プラットフォームであるため、Azure Batch で R ジョブを実行するためのオプションがいくつかあります。
 
-1 つ目のオプションは、Microsoft の <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> パッケージを使用する方法です。  この R パッケージは `foreach` パッケージのための並列バックエンドです。  これにより、`foreach` ループの反復を Azure Batch クラスター内のノード上で並列に実行できるようになります。  パッケージの概要については、ブログの投稿「[doAzureParallel: Take advantage of Azure’s flexible compute directly from your R session](https://azure.microsoft.com/blog/doazureparallel/)」(doAzureParallel: R セッションから Azure の柔軟なコンピューティングを直接活用する) を参照してください。
+1 つ目のオプションは、Microsoft の <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> パッケージを使用する方法です。  この R パッケージは `foreach` パッケージのための並列バックエンドです。  これにより、`foreach` ループの反復を Azure Batch クラスター内のノード上で並列に実行できるようになります。  パッケージの概要については、「[doAzureParallel:Take advantage of Azure’s flexible compute directly from your R session」](https://azure.microsoft.com/blog/doazureparallel/) (R セッションから直接に Azure の柔軟なコンピューティングを利用する) ブログの投稿をご覧ください。
 
 Azure Batch で R スクリプトを実行する別のオプションが、Azure portal の Batch App として自分のコードを "RScript.exe" でバンドルする方法です。  詳細なチュートリアルについては、「[R Workloads on Azure Batch](https://azure.microsoft.com/blog/r-workloads-on-azure-batch/)」(Azure Batch 上での R のワークロード) を参照してください。
 
 3 つ目のオプションが、[Azure Distributed Data Engineering Toolkit](https://github.com/Azure/aztk) (AZTK) を使う方法です。Azure Batch で Docker コンテナーを使用してオンデマンドの Spark クラスターをプロビジョニングできます。  これにより、Azure で Spark のジョブを経済的に実行できます。  [SparklyR を AZTK と共に](https://github.com/Azure/aztk/wiki/SparklyR-on-Azure-with-AZTK) を使用して、R スクリプトをクラウド内で簡単に経済的にスケール アウトすることができます。
 
 ## <a name="azure-notebooks"></a>Azure Notebooks
+
 [Azure Notebooks](https://notebooks.azure.com) はノートブックを使用して Azure にコードを実装することを好む R 開発者向けの低コストで問題の少ない方法です。  これは、マークダウンの文、実行可能コード、グラフィックを 1 つのキャンバスに統合できるオープンソースのプロジェクトである [Jupyter](https://jupyter.org/) を使用して自分のブラウザーでコードを開発し、実行するすべてのユーザーのための無料サービスです。
 
-Azure Notebooks は小規模なプロジェクトで実行可能なオプションですが、大規模なデータ サイエンス プロジェクトでは適さないいくつかの制限があります。  現時点で、このサービスは各ノートブックのプロセスのメモリが 4 GB に制限されており、データ セットは 1 GB しか許容されていません。  しかし、小規模な分析を発行する場合には、これが簡単でコストがかからないオプションです。
+Azure Notebooks の無料サービス階層は、各ノートブックのプロセスを 4 GB のメモリと 1 GB のデータ セットに制限するため、小規模のプロジェクトに実行可能なオプションです。 これらの制限を超えるコンピューティングおよびデータ能力を必要とする場合は、Data Science Virtual Machine インスタンスでノートブックを実行できます。 詳細については、「[Manage and configure Azure Notebooks projects - Compute tier](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)」(Azure Notebooks プロジェクトの管理と構成 - コンピューティング階層) を参照してください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) はフル マネージドで完全にインテリジェントな Microsoft のリレーショナル クラウド データベース サービスです。  インフラストラクチャのセットアップの手間なく SQL Server のすべての機能を使用することができます。  これには、最近 SQL Service に追加された [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017) が含まれます。
