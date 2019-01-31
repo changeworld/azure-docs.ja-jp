@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 77cfddf8b7283487cc2417573379df53e8d26cdc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e2d47abcb7252375419296009d2dbc4a1d3d2812
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812524"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150821"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Azure Active Directory 監視とは (プレビュー)
 

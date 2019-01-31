@@ -9,13 +9,13 @@ ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: 4a1787f0a6d222f91eefd6f96e265ba825ca9e82
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 7c7d23f8b3792ceedc27a81e81be7787452c156e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181522"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec2cdd26db03698a3093336b500cb66e2125c50
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12a11e444372ad7004e566851532a98be63af8e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467810"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195360"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 0fcdb2324868528e62e69fa0ce24ab2334052ced
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: 465f9d51f724bf1c8713259cd1d0b6ebabc230fe
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245415"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239759"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -232,9 +233,9 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 Azure Stack PowerShell 1.3.0 のリリースにより、仮想マシン拡張機能を追加できるようになりました。 例: 
 
-````PowerShell
+```PowerShell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,19 +3,19 @@ title: Azure Multi-Factor Authentication パイロットの有効化
 description: このチュートリアルでは、パイロット グループのユーザーに対して Azure AD Multi-Factor Authentication を有効にします
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 5bd27ed71e93edc10fd86395121c524cb54c98e7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6a8ccc79267dcc01b0d11ba176a64d125a2caad4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427612"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080771"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>チュートリアル:Azure Multi-Factor Authentication のパイロット ロール アウトを完了する
 
@@ -29,7 +29,7 @@ ms.locfileid: "54427612"
 
 * 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
 * 全体管理者特権を持つアカウント。
-* 管理者がテスト目的で把握しているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、[Azure Active Directory に新しいユーザーを追加する方法に関するクイック スタート](../add-users-azure-active-directory.md)を参照してください。
+* 管理者がテスト目的で把握しているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、[Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のユーザーが所属している、テストするパイロット グループ。グループを作成する必要がある場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の有効化
