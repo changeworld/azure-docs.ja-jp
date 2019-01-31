@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: cb6213bbb27fc1a7086ccecafa7ae7b12040ac0a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7208f1b3f1658c23a6b38c661a37b050c92ca891
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250622"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204084"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
 

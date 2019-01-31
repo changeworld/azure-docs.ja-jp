@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316592"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454846"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
@@ -110,9 +110,9 @@ properties-status ::=
 |`Blob`|入れ子になった XML 要素|BLOB を表します。|  
 |`Blob/BlobPath`|String|BLOB の URI。|  
 |`Blob/FilePath`|String|ドライブ上のファイルの相対パス。|  
-|`Blob/Snapshot`|Datetime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
+|`Blob/Snapshot`|DateTime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
 |`Blob/Length`|整数|BLOB の長さの合計 (単位: バイト)。|  
-|`Blob/LastModified`|Datetime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
+|`Blob/LastModified`|DateTime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition`|String|BLOB のインポート処理 (インポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition/@Status`|属性、String|インポート処理の状態です。|  
 |`PageRangeList`|入れ子になった XML 要素|ページ BLOB のページ範囲の一覧を表します。|  

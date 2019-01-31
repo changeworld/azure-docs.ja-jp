@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 30f51b32-e55c-4c66-96e8-50a2f9c2194a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ec6fe07fb74ddd27c7d4237b8c93b6567e13427
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 551a5499f7be83eea49210675e46923f5a2ca8ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815975"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>チュートリアル:Azure Active Directory と JobScore の統合
 

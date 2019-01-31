@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dd7a78f1033a00935346216ae1f80e5400deea07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265347"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206359"
 ---
 # <a name="content-moderation-jobs-and-reviews"></a>コンテンツ モデレーション ジョブとレビュー
 

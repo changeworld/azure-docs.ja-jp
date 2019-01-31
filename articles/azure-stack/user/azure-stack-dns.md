@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 822fd40b2fc707efe34d4081c3c49e5f71621cdb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052344"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245543"
 ---
 # <a name="using-dns-in-azure-stack"></a>Azure Stack での DNS の使用
 
@@ -68,7 +69,7 @@ Azure Stack の DNS は Azure の DNS に似ていますが、重要な例外が
 
 Azure DNS の詳細については、[DNS のゾーンとレコード](../../dns/dns-zones-records.md)に関するページを参照してください。
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
 Azure Stack DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。 DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、次のセクションで説明する**メタデータ**がサポートされます。
 

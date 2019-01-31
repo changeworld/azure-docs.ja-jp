@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 450fc8df69eb5ffb99cb6548e80cd4d3628e7419
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b91a3e2a100c9c355dd3e47851f95c4d3884b51a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819443"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>チュートリアル:Azure Active Directory と 123ContactForm の統合
 

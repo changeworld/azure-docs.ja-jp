@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: ffb6464f-714d-41a9-869a-2b7e5ae9f125
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ac0856dcadb92b79090a6520ef29707fd7a3bae
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f5d11dd1ed8e23414eed5c9d7cf5c248b58aaa8a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813680"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>チュートリアル:Azure Active Directory と ADP Globalview の統合
 

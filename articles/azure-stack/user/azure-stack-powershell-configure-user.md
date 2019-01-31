@@ -3,7 +3,7 @@ title: ユーザーとして PowerShell を使用して Azure Stack に接続す
 description: ユーザーの Azure Stack インスタンスに接続する手順。
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2018
-ms.author: sethm
+ms.date: 01/24/2019
+ms.author: mabrigg
 ms.reviewer: bganapa
-ms.openlocfilehash: bc6d48e0b805d8efa2efe88242aff53f797a6a12
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 450628019d705584c28acb86be214a478eb146a4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243901"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244047"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack に接続する
 
@@ -67,16 +68,12 @@ ms.locfileid: "54243901"
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
-  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
-  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-
   # Sign in to your environment
 
   $cred = get-credential
 
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $tenantId `
     -Credential $cred
   ```
 

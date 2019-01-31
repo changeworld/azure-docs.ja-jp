@@ -6,17 +6,17 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b4e7c11a6077104e874d67b75f5d00e8f481f739
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086931"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228663"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 

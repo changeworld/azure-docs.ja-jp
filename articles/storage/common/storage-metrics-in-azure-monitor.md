@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.subservice: common
+ms.openlocfilehash: 248624cc31fab0138eb8a45b5479cc8d2da6ef53
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354603"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467647"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 

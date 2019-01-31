@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: e30c36cbde3bf112b012526e6268dfc4414f64a9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0336cc922e8f86792814196719e659d33a943bb8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555474"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193609"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>ホステッド UI エクスペリエンスを構成する
 
@@ -143,8 +143,8 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 
 | |  |
 |---------|---------|
-|[ページ タイトル]   | 検索結果ページのタイトル領域に表示されるテキストです (ポップオーバー レイアウトの場合は表示されません)。        |
-|[ツール バーのテーマ]    | 検索結果ページのタイトル領域の背景色を指定します。 |
+|Page title (ページ タイトル)   | 検索結果ページのタイトル領域に表示されるテキストです (ポップオーバー レイアウトの場合は表示されません)。        |
+|Toolbar theme (ツール バーのテーマ)    | 検索結果ページのタイトル領域の背景色を指定します。 |
 
 **[Show advanced configurations]\(構成の詳細を表示\)** をクリックすると、次の構成が表示されます。  
 
@@ -152,7 +152,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 |---------|---------|
 |[Search box text placeholder]\(検索ボックスのテキスト プレース ホルダー\)   | 入力されるまで検索ボックスに表示されるテキスト。        |
 |[Title link url]\(タイトル リンク URL\)    |タイトル リンクのターゲット。         |
-|[ロゴ の URL]     | タイトルの横に表示される画像。         |
+|Logo URL (ロゴ URL)     | タイトルの横に表示される画像。         |
 |[お気に入りアイコン]    | ブラウザーのタイトル バーに表示されるアイコン。          |
 
 次の構成は、HTML エンドポイントを通してホステッド UI を使用する場合にのみ適用されます (JavaScript のスニペットを使用する場合は適用されません)。

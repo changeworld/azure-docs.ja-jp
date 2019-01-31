@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84a51f65ef46c390f84308ab17cf83859a16c3b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960273"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55428518"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -24,7 +24,7 @@ ms.locfileid: "49960273"
 | イベント ハブあたりのパーティションの数 |エンティティ |- |32 |
 | イベント ハブあたりのコンシューマー グループの数 |エンティティ |- |20 |
 | 名前空間あたりの AMQP 接続の数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |5,000 |
-| Event Hubs イベントの最大サイズ|エンティティ |- |256 KB |
+| Event Hubs イベントの最大サイズ|エンティティ |- |1 MB |
 | イベント ハブ名の最大サイズ |エンティティ |- |50 文字 |
 | コンシューマー グループあたりの非エポック受信者の数 |エンティティ |- |5 |
 | イベント データの最大リテンション期間 |エンティティ |- |1 ～ 7 日間 |

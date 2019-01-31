@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
-ms.component: files
-ms.openlocfilehash: 17b44dcaf6731f3882ed417a94532c6d26c7454d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: files
+ms.openlocfilehash: 06c0256043ef27e6298cc4e30dc3f372e6bd3959
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818968"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456597"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

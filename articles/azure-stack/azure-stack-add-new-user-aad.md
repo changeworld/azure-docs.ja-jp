@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240122"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240321"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>新しい Azure Stack テナント アカウントをAzure Active Directory に追加する
 

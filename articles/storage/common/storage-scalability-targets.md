@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 93e09f3ab6780eb9ce7fa29b4554b53d796b6837
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: common
+ms.openlocfilehash: f8227495d7ca2e1d43b74066d359d0d59e456263
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564955"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451208"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Standard ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 

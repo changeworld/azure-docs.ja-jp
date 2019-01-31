@@ -7,7 +7,7 @@ author: barbkess
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8a21f1ac0839a37455fe06537242edc6e43731a4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8d19c2815eb6d7c6ad8cac002716913c329903de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477302"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177799"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "54477302"
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
 
-*エラー AADSTS70001:識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
+*エラー AADSTS70001:識別子 'https://contoso.com' を持つアプリケーションがディレクトリに見つかりませんでした*。
 
 **考えられる原因**
 
@@ -145,7 +145,7 @@ Azure AD で応答 URL の値を更新し、その URL 値が、アプリケー�
 
 ## <a name="not-a-valid-saml-request"></a>有効な SAML 要求ではない
 
-*エラー AADSTS75005:この要求は有効な Saml2 プロトコル メッセージではありません*。
+*エラー AADSTS75005:この要求は有効な Saml2 プロトコル メッセージではありません。*
 
 **考えられる原因**
 

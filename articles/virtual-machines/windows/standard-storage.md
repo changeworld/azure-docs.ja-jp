@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.component: disks
-ms.openlocfilehash: f94e7b2aa4f57d13005978c24a2f3b2b4add399e
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.subservice: disks
+ms.openlocfilehash: ed006578c458598d82fb348bf719aca5822e7b4e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716391"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467904"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

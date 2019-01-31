@@ -7,15 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.lastreviewed: 11/20/2018
+ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623980"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251862"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -70,13 +71,14 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、ユーザー指定の場所にログを格納するために使用されます。
-- **FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これらのパラメーターが指定されない場合、既定では過去 4 時間のログが収集されます。
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Azure Stack Development Kit (ASDK) システムで Get-AzureStackLog を実行するには
-1. ホストに **AzureStack\CloudAdmin** でサインインします。
-2. 管理者として PowerShell ウィンドウを開きます。
+ASDK ホスト コンピューター上で Get-AzureStackLog を実行する際に使用する手順は次のとおりです。
+
+1. ASDK ホスト コンピューター上で **AzureStack\CloudAdmin** としてサインインします。
+2. 管理者として、新しい PowerShell ウィンドウを開きます。
 3. **Get-AzureStackLog** PowerShell コマンドレットを実行します。
 
 **例:**
@@ -107,7 +109,10 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK および統合システムの両方に関するパラメーターの考慮事項
 
-- **FromDate** パラメーターと **ToDate** パラメーターが指定されない場合は、既定で過去 4 時間分のログが収集されます。
+- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、ユーザー指定の場所にログを格納するために使用されます。
+
+- **FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これらのパラメーターが指定されない場合、既定では過去 4 時間のログが収集されます。
+
 - コンピューター名でログをフィルター処理するには、**FilterByNode** パラメーターを使用します。 例: 
 
     ```powershell
@@ -125,12 +130,12 @@ if($s)
  |   |   |   |    |
  | - | - | - | -  |   
  |ACS                   |CacheService                   |IBC                            |OEM|
- |ACSDownloadService    |コンピューティング                        |InfraServiceController         |OnboardRP|
+ |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP|
  |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
  |ACSFabric           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
  |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
  |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
- |ACSMonitoringService  |ドメイン                         |KeyVaultInternalDataPlane      |SeedRingServices|
+ |ACSMonitoringService  |Domain                         |KeyVaultInternalDataPlane      |SeedRingServices|
  |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
  |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
  |ACSFabric        |EventRP                        |MetricsAdminRP                 |SRP   |

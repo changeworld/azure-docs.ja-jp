@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34806803c50308a288007bf3bad129075ca8bc6d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796655"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207379"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Conversation Learner モデルで否定可能エンティティを使用する方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "53796655"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-model"></a>モデルの作成
+### <a name="create-the-model"></a>モデルを作成する
 
 1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] フィールドに、"NegatableEntity" と入力し、Enter キーを押します。
@@ -59,20 +59,20 @@ ms.locfileid: "53796655"
 3. [Disqualifying Entitles]\(不適格エンティティ\) フィールドに「name」(名前) と入力します。
 4. [作成] ボタンをクリックします。
 
-### <a name="create-the-second-action"></a>アクションをもう 1 つ作成する
+### <a name="create-the-second-action"></a>2 つ目のアクションを作成する
 
 1. 左側のパネルで [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [Bot's response...]\(ボットの応答...\) フィールドに、「I know your name. It is $name」(あなたの名前は $name です) と入力します。
 3. [作成] ボタンをクリックします。
 
 > [!NOTE]
-> "name" (名前) エンティティは、応答内の参照によって "Required Entities" (必須エンティティ) として自動的に追加されています。
+> "name" エンティティは、応答内の参照によって "必須エンティティ" として自動的に追加されました。
 
 これでアクションが 2 つできました。
 
 ![](../media/tutorial5_actions.PNG)
 
-### <a name="train-the-model"></a>モデルのトレーニング
+### <a name="train-the-model"></a>モデルをトレーニングする
 
 1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
 2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「hello」(こんにちは) と入力します。

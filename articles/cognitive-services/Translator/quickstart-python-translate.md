@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999578"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458161"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python と Translator Text API を使用して文字列を翻訳する
 

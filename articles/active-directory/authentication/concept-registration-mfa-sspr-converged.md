@@ -3,19 +3,19 @@ title: Azure AD SSPR と MFA の集中型登録 (パブリック プレビュー
 description: Azure AD Multi-Factor Authenticaiton とセルフサービスのパスワード リセット登録 (パブリック プレビュー)
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 192b88623d2f85efd619e26d51f35b4797706761
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4080fe07f6624c96f6385492268042f6401f3694
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472679"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>セルフサービスのパスワード リセットと Azure Multi-Factor Authentication の集中型登録 (パブリック プレビュー)
 
@@ -74,8 +74,6 @@ MFA または SSPR の登録を適用し、ユーザーがまだ登録してい�
 この新しいエクスペリエンスの監査ログは、監査ログの [認証方法] カテゴリにあります。  
 
 ## <a name="known-issues"></a>既知の問題
-
-集中型登録が有効な B2B ゲスト ユーザーが MFA に登録できないという、集中型登録に関するバグが特定されています。 登録ページに移動されると、ページでエラーが発生します。Microsoft の開発者はこの問題を認識し、解決策を提供するために取り組んでいます。 現時点での推奨事項は、グループを作成し、そのグループからすべての B2B ユーザーを除外することです。
 
 **ユーザーがテキスト メッセージを使用して電話を登録すると、既定の MFA 方法が電話呼び出しに設定される**
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: d9d145aa5da636574426f1ff4ad978eb857ab252
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3ec78c7dc3ac3ce9747a09218e1e35068c60b894
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827926"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル:Azure Active Directory と Huddle の統合
 

@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d9b8b5a2ad8ccb447462ef7d34a8c25e5af6ef4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225025"
 ---
 # <a name="transcription-guidelines"></a>トランスクリプションのガイドライン
 
@@ -120,7 +120,7 @@ Custom Speech Service にアップロードするテキスト データでは、
 
 ### <a name="text-normalization-required-by-users"></a>ユーザーが実行する必要があるテキスト正規化
 
-データを最適に使用できるようにするために、データをインポートする _前_ に、次の正規化規則をデータに適用する必要があります。
+データを最適に使用できるようにするために、データをインポートする_前_に、次の正規化規則をデータに適用する必要があります。
 
 *   省略形は単語で書き出して読み上げ形式を反映させる
 *   このサービスはすべての数量に対応しているわけではありません。 数値文字列を読み上げ形式で書き出すと、信頼性が向上します。

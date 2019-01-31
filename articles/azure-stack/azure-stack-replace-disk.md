@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: d0b455261649fad95a92f7ad75f7af26d633cf5a
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/22/2019s
+ms.openlocfilehash: 091ede57dbbc069f20b5ece2fc5b39b6d49a9009
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476888"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247784"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Azure Stack の物理ディスクを交換する
 
@@ -54,27 +55,27 @@ ms.locfileid: "54476888"
  ディスクの交換後、特権エンドポイントを使用して、仮想ディスクの正常性状態と修復ジョブの進行を監視できます。 特権エンドポイントにネットワーク接続されている任意のコンピューターから、次の手順に従います。
 
 1. Windows PowerShell セッションを開き、特権エンドポイントに接続します。
-    ````PowerShell
+    ```PowerShell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-    ```` 
+    ``` 
   
 2. 仮想ディスクの正常性を表示するには、次のコマンドを実行します。
-    ````PowerShell
+    ```PowerShell
         Get-VirtualDisk -CimSession s-cluster
-    ````
+    ```
    ![Get-VirtualDisk コマンドの Powershell 出力](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
 3. 現在の記憶域ジョブの状態を表示するには、次のコマンドを実行します。
     ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
-    ````
+    ```
       ![Get-StorageJob コマンドの Powershell 出力](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
 ## <a name="troubleshoot-virtual-disk-repair"></a>仮想ディスク修復のトラブルシューティング
 
 仮想ディスクの修復ジョブが進行しないようであれば、次のコマンドを実行してジョブを最初からやり直してください。
-  ````PowerShell
+  ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
-  ```` 
+  ``` 

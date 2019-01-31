@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: f00d9e094f7ced7c8ac31e2e2dae1657db1e82f2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5d1aa3ebf089cd7024792be35f31d9febc19b0c5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815832"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル:Azure Active Directory と Bime の統合
 

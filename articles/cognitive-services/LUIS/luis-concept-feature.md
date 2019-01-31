@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2d86bb61a27b9360d55775b64d16119fec0601
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 35f05df39a37b64c9619ef31455944207de13246
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474015"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216083"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 

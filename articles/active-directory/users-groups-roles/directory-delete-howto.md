@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 30e5a147e1cde80c1ab80b1080aad4317a2de968
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243884"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197723"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
 

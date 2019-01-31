@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: f299665168e1dfca223c5cab7ba0e0f2767a50ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 75e24f2171dd7ad8d2a9de3765b3c9f9d246670f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021426"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212326"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -94,7 +94,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <br />
           The following sections show:
           <ul style="margin-top: 0px;">
-            <li> Local Server Time - Shows if this page is or isnt cached anywhere</li>
+            <li> Local Server Time - Shows if this page is or isn''t cached anywhere</li>
             <li> File Output - Shows that the web server is reaching AppVM01 on the backend subnet and successfully returning content</li>
             <li> Image from the Internet - Doesnt really show anything, but it made me happy to see this when the app worked</li>
           </ul>

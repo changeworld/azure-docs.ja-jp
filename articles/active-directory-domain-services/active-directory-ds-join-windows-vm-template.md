@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5b70a16d1da8f939a23bf7a96a03098463cfc529
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856640"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203336"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Windows Server 仮想マシンをマネージド ドメインに参加させます。
 この記事では、Resource Manager テンプレートを使用して Windows Server 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法を示します。
@@ -100,7 +100,7 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)
+* [Azure PowerShell の概要](/powershell/azure/overview)
 * [Azure クイック スタート テンプレート - 新しい VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 * [Azure クイック スタート テンプレート - 既存の VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)

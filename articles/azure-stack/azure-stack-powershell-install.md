@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 9c99de88ee1e3054a04512c72b9f9f41886663da
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/17/2018
+ms.openlocfilehash: 7909fd3c7eba4ada9dc74e2eada019327d054fee
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391070"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240508"
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする
 

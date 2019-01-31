@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: ea7bf0c19392ba61c9479302ae1a5fd72f0303bf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1950c9ea415c191c89527d288165c068bb533bdd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886894"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162754"
 ---
 # <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>Bing Autosuggest API の分析を取得する方法
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 207836baaaa30dca24edeab93e9bd1c4a1ac67e6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 9e0b71acc4faa97bf1aa82e56a3784c349663dc0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359087"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207107"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>クイック スタート: .NET Core を使用してテキストを音声に変換する
 

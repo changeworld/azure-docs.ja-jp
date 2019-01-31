@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e92c153158bc53a143bbc4c4c90c6007937fcc8f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: deaa6a9ff49fea2093c94a039aab0d7de0c95359
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848174"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177119"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理
 Azure Active Directory Domain Services には、"AADDC Users" コンテナーと "AADDC Computers" コンテナー用の組み込みのグループ ポリシー オブジェクト (GPO) が含まれています。 これらの組み込みの GPO を、マネージド ドメインのグループ ポリシーを構成するようにカスタマイズできます。 さらに、"AAD DC Administrators" グループのメンバーは、マネージド ドメイン内に、独自のカスタム OU を作成できます。 カスタム GPO を作成してカスタム OU にリンクすることもできます。 "AAD DC Administrators" グループに属するユーザーには、マネージド ドメインのグループ ポリシー管理者権限が付与されます。

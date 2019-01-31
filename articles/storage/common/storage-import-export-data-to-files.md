@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: common
+ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384770"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452696"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 

@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning Data Prep SDK を使用してデータを読み込む方法について説明します。 さまざまな種類の入力データを読み込むことができ、データ ファイルの種類やパラメーターを指定することも、SDK のスマート読み取り機能を使用してファイルの種類を自動検出することもできます。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: cforbe
 author: cforbe
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2478a5dd3f5d685253ef9145bec0a68ff324c6c3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 08dcb75fabc109a8869151402d3a448333beb556
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263817"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247529"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの読み込みと読み取り
 

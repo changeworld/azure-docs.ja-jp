@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: AzCopy を使用したオンプレミス データの Azure Storage への移行 | Microsoft Docs'
+title: チュートリアル:AzCopy を使用したオンプレミス データの Azure Storage への移行 | Microsoft Docs
 description: このチュートリアルでは、AzCopy を使用して、BLOB、テーブル、およびファイルのコンテンツ間でデータを移行したり、データをコピーしたりすることができます。 ローカル ストレージから Azure Storage にデータを簡単に移行できます。
 services: storage
 author: roygara
@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 347092fd7d5865379911265b19477ac16e3bcd69
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 25a0867d9a2060989ce7206279b4acabe39b4ff3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261385"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478272"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>チュートリアル: AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 
 AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Files、および Azure Table Storage との間でデータをコピーするためのコマンドライン ツールです。 コマンドは、最適なパフォーマンスが得られるように設計されています。 AzCopy を使用すると、ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。 AzCopy は、ローカル (オンプレミス) のデータをストレージ アカウントにコピーするために使用することができます。
 

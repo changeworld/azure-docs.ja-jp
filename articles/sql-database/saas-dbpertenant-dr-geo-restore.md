@@ -12,16 +12,16 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d430a9f1ddec785d236f2501178bd3c7d493f716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264752"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470598"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 
-このチュートリアルでは、テナント単位データベース モデルを使用して実装されているマルチテナント SaaS アプリケーションの、完全なディザスター リカバリー シナリオを見ていきます。 自動的に保守されている geo 冗長バックアップのカタログおよびテナント データベースを代替復旧リージョンに復元するには、[geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups)を使用します。 停止が解決したら、[geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)を使用して、変更されたデータベースを元のリージョンに復帰します。
+このチュートリアルでは、テナント単位データベース モデルを使用して実装されているマルチテナント SaaS アプリケーションの、完全なディザスター リカバリー シナリオを見ていきます。 自動的に保守されている geo 冗長バックアップのカタログおよびテナント データベースを代替復旧リージョンに復元するには、[geo リストア](sql-database-recovery-using-backups.md)を使用します。 停止が解決したら、[geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、変更されたデータベースを元のリージョンに復帰します。
 
 ![geo-restore-architecture](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ geo リストアは、Azure SQL Database 向けの最もコストが低いディ
 このチュートリアルでは、Azure SQL Database と Azure プラットフォームの以下の機能を使って、これらの課題に対応します。
 
 * [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。すべての必要な容量を可能な限り早く確保します。 復旧リージョン内に元のサーバーとエラスティック プールのミラー イメージをプロビジョニングするために、Azure Resource Manager テンプレートを使用します。 新しいテナントをプロビジョニングするために、別のサーバーとプールも作成されます。
-* [Elastic Database Client Library](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL)。テナント データベース カタログを作成および保守します。 拡張されたカタログには、定期的に更新されるプールとデータベース構成情報が含まれています。
-* EDCL の[シャード管理復旧機能](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager)。復旧と復帰の間に、カタログに含まれるデータベースの場所エントリを保守します。  
-* [geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery)。自動的に保守されている geo 冗長バックアップのカタログおよびテナント データベースを復旧します。 
+* [Elastic Database Client Library](sql-database-elastic-database-client-library.md) (EDCL)。テナント データベース カタログを作成および保守します。 拡張されたカタログには、定期的に更新されるプールとデータベース構成情報が含まれています。
+* EDCL の[シャード管理復旧機能](sql-database-elastic-database-recovery-manager.md)。復旧と復帰の間に、カタログに含まれるデータベースの場所エントリを保守します。  
+* [geo リストア](sql-database-disaster-recovery.md)。自動的に保守されている geo 冗長バックアップのカタログおよびテナント データベースを復旧します。 
 * テナントの優先順で送信される[非同期の復元操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。プールが過負荷にならないように、システムによってプールごとにキューへ格納され、バッチ処理されます。 これらの操作は、必要に応じて実行前または実行中に取り消すことができます。   
-* [geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)。停止の解決後に元のリージョンにデータベースを復帰します。 geo レプリケーションを使用すると、データ損失が発生せず、テナントに与える影響が最小限に抑えられます。
-* [SQL Server の DNS エイリアス](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)。カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにします。  
+* [geo レプリケーション](sql-database-geo-replication-overview.md)。停止の解決後に元のリージョンにデータベースを復帰します。 geo レプリケーションを使用すると、データ損失が発生せず、テナントに与える影響が最小限に抑えられます。
+* [SQL Server の DNS エイリアス](dns-alias-overview.md)。カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにします。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>ディザスター リカバリー スクリプトを取得する
 
@@ -378,4 +378,4 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 ## <a name="additional-resources"></a>その他のリソース
 
-[Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

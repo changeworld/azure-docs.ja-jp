@@ -6,17 +6,17 @@ services: cognitive-services
 author: DavidLiCIG
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3b88336866909f527aa17cf77514a5ca4a4830b5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213448"
 ---
 # <a name="sentence-separation-and-tokenization"></a>文の分割とトークン化
 

@@ -10,17 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b6ef0f46bae454a4656694496d411a5a4cff0da5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065343"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178394"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 

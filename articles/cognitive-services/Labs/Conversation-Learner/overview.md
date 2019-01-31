@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 63d13235ec7244978193ed97aac8d11b2ff65eeb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c46ffe2076d4b1491a3b27958dfbf5ed09115eaa
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198135"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221286"
 ---
 # <a name="what-is-conversation-learner"></a>Conversation Learner とは
 

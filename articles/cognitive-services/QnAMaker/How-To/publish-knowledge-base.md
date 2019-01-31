@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: deeebd99425bc1ec1ed2ae76ef4852119a9c10ea
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2db8a87f28905ab03fb45d56943ae40d01908527
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342444"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225382"
 ---
 # <a name="publish-a-knowledge-base-using-the-qna-maker-portal"></a>QnA Maker ポータルを使用してナレッジ ベースを公開する
 

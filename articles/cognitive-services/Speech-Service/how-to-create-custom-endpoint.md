@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: d06dbc399a3610982c99a548373482fc5ec21f4d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852871"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220248"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>カスタム Speech-to-Text エンドポイントの作成
 

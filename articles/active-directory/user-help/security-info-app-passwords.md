@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 211e282dc4334753b90d050dc82c8bf35ad145cd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 185c6e18a84369702de3bd0c398a9cc0c64b8217
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826209"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191382"
 ---
 # <a name="manage-app-passwords-using-security-info-preview"></a>セキュリティ情報を使用したアプリ パスワードの管理 (プレビュー)
 

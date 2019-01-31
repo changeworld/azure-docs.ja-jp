@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 36412d16328e757b4c28b0c77638e6d87f83b8e0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 358ee07b8fd32edded084d406e490cae9f557fdd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855739"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159520"
 ---
 # <a name="integer-claims-transformations"></a>整数要求変換
 

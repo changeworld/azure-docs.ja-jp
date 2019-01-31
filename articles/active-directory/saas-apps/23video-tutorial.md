@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 6dc05b5ac26dfc9ef7eebf770d9f5378e8a85657
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5534122c53f811e3913e72b67a706c1e2260a26f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823982"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル:Azure Active Directory と 23 Video の統合
 

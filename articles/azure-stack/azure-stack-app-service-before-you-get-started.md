@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: 558fc7280af398f0037c33121f662649ba9c3506
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413024"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251386"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -331,7 +332,7 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-AADIdentityApp.ps1** スクリプトを実行します。 メッセージが表示されたら、Azure Stack デプロイのために使用している Azure AD テナント ID を入力します。 たとえば、「**myazurestack.onmicrosoft.com**」と入力します。
 5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
-6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
+6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 7. このスクリプトは、テナント Azure AD インスタンス内に新しいアプリケーションを作成します。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 インストール時にこの情報が必要になります。
 8. 新しいブラウザー ウィンドウを開き、Azure Active Directory サービス管理者として [Azure Portal](https://portal.azure.com) にサインインします。
 9. Azure AD リソース プロバイダーを開きます。
@@ -375,7 +376,7 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-ADFSIdentityApp.ps1** スクリプトを実行します。
 5. **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
-6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
+6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1

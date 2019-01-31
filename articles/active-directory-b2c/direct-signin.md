@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: eda0f8410ecf568e4d2ccca1840eca3f5bc1d3b9
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: c66fc9ecb608d211c839bab720e8f3f37b96fd5d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847885"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169231"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用した直接サインインの設定
 

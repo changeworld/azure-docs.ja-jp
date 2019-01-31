@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467504"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885798"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
@@ -29,7 +29,7 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | Storage のメトリック | メトリック | Azure Storage | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 課金データ | メトリック | すべての Azure サービス | <ul><li>**REST API:** [Azure Resource Usage API と RateCard API](../../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | アクティビティ ログ | events | すべての Azure サービス | <ul><li>**REST API:** [Azure Monitor イベント API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**Storage BLOB またはイベント ハブ:** [ログ プロファイル](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor 診断ログ | events | [この一覧をご覧ください](tutorial-dashboards.md) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
+| Azure Monitor 診断ログ | events | [この一覧をご覧ください](diagnostic-logs-schema.md) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | ゲスト OS ログ ( IIS、ETW、Syslog など) のコンピューティング | events | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) と Linux の仮想マシン (v2)、[Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは BLOB:** [Windows または Linux の Azure 診断](diagnostics-extension-to-storage.md)</li><li>**イベント ハブ:** [Windows の Azure 診断](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | App Service ログ | events | App Services | <ul><li>**ファイル、テーブル、または Blob Storage:** [Web アプリ診断](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | ストレージ ログ | events | Azure Storage | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |

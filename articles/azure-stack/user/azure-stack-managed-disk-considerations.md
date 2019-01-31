@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: ecbd555809799619d61a7ff33911b7f28dcb3005
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 05efa7eaf6d95cbf63efd17b00d321d8c8509f28
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262712"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246781"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack Managed Disks: 相違点と考慮事項
 

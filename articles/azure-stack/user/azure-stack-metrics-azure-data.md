@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106292"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239113"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor
 

@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 04c4bba2647b9b17b1282c9a1608fd2e9325f661
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427918"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456036"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 
@@ -207,7 +207,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 - [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
 
-- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)」をご覧ください。
+- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](sql-database-auditing.md)」をご覧ください。
 
   > [!IMPORTANT]
   > 現在、マネージド インスタンスについては、Azure portal ([監査レコード] ウィンドウ) から監査レコードを表示することはできません。
@@ -242,7 +242,7 @@ Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次の
 
 ## <a name="next-steps"></a>次の手順
 
-- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)」をご覧ください。
+- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](sql-database-auditing.md)」をご覧ください。
 - 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
 
 <!--Image references-->

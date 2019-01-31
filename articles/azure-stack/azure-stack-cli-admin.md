@@ -13,12 +13,13 @@ ms.devlang: CLI
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: mabrigg
-ms.openlocfilehash: 1da23337b6a23f713eaadefbc4cee4aca07f56de
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.lastreviewed: 01/15/2019
+ms.openlocfilehash: 0d6a93b396e90f3bc27a1eb879556d774075c86f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351550"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243302"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する Azure CLI の有効化
 

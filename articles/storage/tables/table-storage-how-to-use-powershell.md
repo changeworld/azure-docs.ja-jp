@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
-ms.component: cosmosdb-table
-ms.openlocfilehash: af76f67ba97b820d8571fd4f6bd3409396fb27ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.subservice: cosmosdb-table
+ms.openlocfilehash: 8993aea208e4ccdcf92f676cc07f2912979da606
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433188"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476998"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure 上の FPGA を使用してモデルとディープ ニューラル ネットワークを高速化する方法を説明します。 この記事では、Field-programmable Gate Arrays (FPGA) の概要と、Azure の FPGA にモデルをデプロイしたときに Azure Machine Learning service によってリアルタイムの人工知能 (AI) が提供される方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: aaca3f346fafdc6ecde069676dbe0f089a26fca8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306123"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242996"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>FPGA および Project Brainwave とは?
 

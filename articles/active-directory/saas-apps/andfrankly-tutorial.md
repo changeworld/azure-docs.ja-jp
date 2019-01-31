@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 1d702060-1b89-4e9d-9f01-ede4f1171c73
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 73acaeff6cbffc16aac1b30b9d63974c930c1537
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8b95459e00296950924c7837890e2313bbcb183d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818066"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル:Azure Active Directory と &frankly の統合
 

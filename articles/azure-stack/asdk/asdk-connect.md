@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: knithinc
-ms.openlocfilehash: 1b5d5a2934205877f0e0c2ac891e62c90e960b3d
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085151"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238248"
 ---
 # <a name="connect-to-the-asdk"></a>ASDK に接続する
 

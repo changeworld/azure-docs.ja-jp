@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 92518e02-a62c-4b1b-a8e9-2803eb2b49ac
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: d7075894bde20f56c9323568ceffe8cad4118cbc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 20d469348838b0dd9ef6089f8a0b040e7cb0b6be
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>チュートリアル:Azure Active Directory と Intacct の統合
 

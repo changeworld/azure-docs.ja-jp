@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 のアクセス制御の概要 | Microsoft D
 description: Azure Data Lake Storage Gen2 のアクセス制御のしくみを理解する
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3005f19ffbc4771da442e36290a5803dddebfdbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976595"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240177"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -81,7 +81,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは、項目のアクセス許可は項目自体に格納されます。 つまり、子項目が既に作成された後にアクセス許可を設定すると、項目のアクセス許可を親項目から継承できません。 子項目が作成される前に、親項目で既定のアクセス許可が設定されている場合にのみ、アクセス許可が継承されます。
 
-## <a name="common-scenarios-related-to-permissions"></a>Common scenarios related to permissions
+## <a name="common-scenarios-related-to-permissions"></a>アクセス許可に関連する一般的なシナリオ
 
 Data Lake Storage Gen2 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次の表に示します。
 

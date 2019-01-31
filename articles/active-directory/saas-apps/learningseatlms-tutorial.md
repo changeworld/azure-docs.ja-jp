@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: bb056fcf-4135-478e-85b1-5015d1f07b85
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: b0190cd84674abc62ee68f9d0a160a6cb0cd45c0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b41f01254e081b6ac3a9b8265bd459cf00af1838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815516"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197995"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>チュートリアル:Azure Active Directory と Learning Seat LMS の統合
 

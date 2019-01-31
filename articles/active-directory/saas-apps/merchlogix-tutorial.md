@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: a1f49bb8-6b17-433d-8f25-9d26fb390e77
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 76aeed01e9ae579c928aa9e2ad11526222f8ebec
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6e333fdbeb275cddb237a16adf8e272eff98b4ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827564"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル:Azure Active Directory と Merchlogix の統合
 

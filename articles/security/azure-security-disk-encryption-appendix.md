@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260138"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208076"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 
@@ -325,7 +325,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 1. 以下のスクリプトのコンテンツを使用して、/usr/local/sbin/azure_crypt_key.sh の下にファイルを作成します。 KeyFileName に注意してください。これは、Azure によって使用されるパスフレーズ ファイル名です。
 
-    ```
+    ```bash
     #!/bin/sh
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -405,7 +405,7 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. ファイル /usr/lib/dracut/modules.d/90crypt/module-setup.sh の末尾付近にある以下の行をコメント アウトします。
- ```
+ ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -418,20 +418,20 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
  ```
 
 3. /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh ファイルの先頭に次の行を追加し、
- ```
+ ```bash
     DRACUT_SYSTEMD=0
  ```
 次の記述のすべての出現箇所を
- ```
+ ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
  ```
 を次のように変更します。
-```
+```bash
     if [ 1 ]; then
 ```
 4. /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh を編集し、それを "# Open LUKS device" に追加します。
 
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2
@@ -485,7 +485,7 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
     ```
 
 2. ファイル /usr/lib/dracut/modules.d/90crypt/module-setup.sh の末尾付近にある以下の行をコメント アウトします。
-```
+```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -498,19 +498,19 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
 ```
 
 3. /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh ファイルの先頭に次の行を追加し、
-```
+```bash
     DRACUT_SYSTEMD=0
 ```
 次の記述のすべての出現箇所を
-```
+```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
 ```
 to
-```
+```bash
     if [ 1 ]; then
 ```
 4. /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh を編集し、"# Open LUKS device" の後に以下を追加します。
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2
@@ -583,7 +583,7 @@ $SecretUrl=$secret.Id
 $SecretUrl
 ```
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 ```powershell
 
  # This is the passphrase that was provided for encryption during the distribution installation

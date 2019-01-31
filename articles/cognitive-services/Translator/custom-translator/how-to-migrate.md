@@ -5,16 +5,16 @@ description: Microsoft Translator Hub ワークスペースとプロジェクト
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: e243262a3eedb961bc86cfd167db540c0dece8c3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856759"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225620"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -139,8 +139,8 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 | Text API バージョン  | V2    | V3  |
 | SMT のカスタマイズ | はい   | いいえ  |
 | NMT のカスタマイズ | いいえ     | はい |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
-| トレースなし | はい | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ     | [はい] |
+| トレースなし | [はい] | はい |
 
 ## <a name="next-steps"></a>次の手順
 

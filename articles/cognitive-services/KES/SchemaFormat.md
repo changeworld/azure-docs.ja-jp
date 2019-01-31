@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129252"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227303"
 ---
 # <a name="schema-format"></a>スキーマ形式
 
@@ -41,7 +41,7 @@ ms.locfileid: "46129252"
 
 サポートされている属性のデータ型のリストを次に示します。
 
-| type | 説明 | [操作] | 例 |
+| type | 説明 | 操作 | 例 |
 |------|-------------|------------|---------|
 | String | 文字列 (1 から 1024 文字) | equals、starts_with | "hello world" |
 | Int32 | 符号付き 32 ビット整数 | equals、starts_with、is_between | 2016 |

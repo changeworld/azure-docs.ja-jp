@@ -6,22 +6,22 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 112c22815903841f3ffb8c78db4f8bffc60cb6b1
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 7caf6a9f6bce90c6ffbaa7fa4040484938d6eafd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829718"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177766"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API の言語と地域のサポート
 
 Bing Autosuggest API でサポートされている言語を次に示します。
 
-| Language    | 言語コード |
+| 言語    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |

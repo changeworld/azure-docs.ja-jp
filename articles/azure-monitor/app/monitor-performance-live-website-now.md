@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3daa1c7b3594de227c43d7e722ee9c6cae0902f8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819137"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301613"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Application Insights Status Monitor を使用した実行時の Web アプリのインストルメント化
 
@@ -114,9 +114,10 @@ handle.exe /p w3wp.exe
 
 ### <a name="unable-to-login"></a>ログインできない
 
-* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。 
+* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
+
 ```powershell
-Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 

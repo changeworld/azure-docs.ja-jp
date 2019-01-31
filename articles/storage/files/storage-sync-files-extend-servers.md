@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 661df6039948539d6b50b4c8caf8ca7bd9b58730
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.subservice: files
+ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321499"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474821"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -220,7 +220,7 @@ Azure File Sync をデプロイするには、最初に、お客様が選択し�
    | ----- | ----- |
    | **Name** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
    | **サブスクリプション** | お客様がこのチュートリアルに使用する Azure サブスクリプション。 |
-   | **[リソース グループ]** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
+   | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
    | **場所** | 米国東部 |
 
 1. 完了したら、**[作成]** を選択して、**ストレージ同期サービス**をデプロイします。

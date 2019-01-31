@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9acf0c26707dab9de443b06e7314de6d77913777
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: db43912e71e196bc01507e904e3a7d3a587a35ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258256"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192079"
 ---
 # <a name="how-to-page-through-news-search-results"></a>ニュース検索結果をページングする方法
 

@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 253934d450619ca67e429fbf396a5fed5b71a267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b5f2bee7ab0277b94da699be486594a602b94a29
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081865"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241702"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング
 
@@ -154,7 +154,7 @@ Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされていま�
 
 シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
 
-追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
+追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ```pip``` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
 
     sudo /anaconda/bin/pip install <package> #pip for Python 2.7
     sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
@@ -198,7 +198,7 @@ Microsoft R Server で Spark コンテキストで実行する前に、1 回限�
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
+Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse、IntelliJ が含まれます。 gEdit、Eclipse、IntelliJ、RStudio、および PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。

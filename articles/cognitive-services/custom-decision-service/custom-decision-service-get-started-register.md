@@ -6,17 +6,17 @@ services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: 598300597856d858095ff7c2e2cf9e9264190a9d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f642e0d4e21c180a92b4b76d05fb2c9bac9f2976
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365402"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219738"
 ---
 # <a name="register-your-application"></a>アプリケーションの登録
 
