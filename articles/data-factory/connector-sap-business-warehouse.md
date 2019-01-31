@@ -60,13 +60,13 @@ SAP Business Warehouse (BW) のリンクされたサービスでは、次のプ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapBw** | [はい] |
-| server | SAP BW インスタンスが存在するサーバーの名前。 | [はい] |
-| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | [はい] |
-| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | [はい] |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapBw** | はい |
+| server | SAP BW インスタンスが存在するサーバーの名前。 | はい |
+| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | はい |
+| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | はい |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
 | password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -125,8 +125,8 @@ SAP BW からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | [はい] |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | はい |
 
 **例:**
 
