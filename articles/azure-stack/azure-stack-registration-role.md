@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.openlocfilehash: 89fe0889e08da2365523b27262e912ff5403f7f1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/10/2019
+ms.openlocfilehash: 80caa470675a78a9c2e3d4c055333719f54fe64a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54233330"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247886"
 ---
 # <a name="create-a-registration-role-for-azure-stack"></a>Azure Stack の登録ロールを作成する
 

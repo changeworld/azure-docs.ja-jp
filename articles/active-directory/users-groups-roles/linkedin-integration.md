@@ -6,18 +6,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 44bd03a8f710cf4b61e063688c9532dc6cce6480
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cccbeefd49f5374aeffcae07ac8c888f7a28690f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465600"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160000"
 ---
 # <a name="linkedin-integration"></a>LinkedIn の統合
 

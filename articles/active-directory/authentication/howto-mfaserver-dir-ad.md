@@ -3,19 +3,19 @@ title: Azure Multi-Factor Authentication と Active Directory 間のディレク
 description: ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 045d95daf78775c483a9ec4e7abec0baff999838
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 27c9330e0e2f89cdb4bdc81cbd909126401f0441
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432678"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081009"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 

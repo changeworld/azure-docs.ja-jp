@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 9bc230846714264d514b7e15962a2c99c838c7de
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 059c90df16a46c2575635d7c729ec563ef1130c6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465107"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459725"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 

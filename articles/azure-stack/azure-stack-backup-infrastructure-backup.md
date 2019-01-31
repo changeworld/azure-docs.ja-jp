@@ -10,19 +10,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4cb8ffe218ef1cd64b93201eddbbd09bb16026db
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 607356bb59550626c9fe5f71d4609b9c3e2b2fe0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087391"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251301"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 インフラストラクチャ バックアップ サービスを使用して、構成およびサービス データをバックアップおよび復元できます。 Azure Stack の各インストールには、サービスのインスタンスが含まれています。 Azure Stack Cloud を再デプロイし、ID、セキュリティ、Azure Resource Manager データを復元するには、サービスによって作成されたバックアップを使用できます。
 

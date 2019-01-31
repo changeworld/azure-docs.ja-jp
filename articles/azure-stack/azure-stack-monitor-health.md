@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: mabrigg
-ms.openlocfilehash: 4e332023e4e3a6efcca8f8a9c7961e299ebf9247
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/18/2019
+ms.openlocfilehash: 3e37b8f45d7068586d20b9c4b3ccdabb017d0416
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473794"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242860"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 

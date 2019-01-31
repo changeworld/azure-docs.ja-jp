@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526948"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454676"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。
@@ -172,7 +172,7 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)
 * [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import-v1.md)
 * [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
-* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md) 
+* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md) 
 * [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)
 * [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)

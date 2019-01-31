@@ -5,18 +5,18 @@ services: active-directory
 author: eross-msft
 manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7dc067cd84ef43850034dec2f58da7e7dfa64cc4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ba538aed855667417e14bef12b708e80f34cd8c4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449607"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243928"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -29,6 +29,166 @@ ms.locfileid: "54449607"
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="june-2018"></a>2018 年 6 月
+
+### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>変更通知:Azure AD アクティビティ ログ API を使用するアプリの委任された承認ワークフローに対するセキュリティの修正
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+
+セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](https://aka.ms/aadreportsapi) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日**までに行われます。
+
+お使いのアプリに Azure AD アクティビティ ログ API を使っているものがある場合は、以下の手順に従って、変更後にアプリで問題が発生しないことを確認してください。
+
+**アプリのアクセス許可を更新するには**
+
+1. Azure Portal にサインインし、**[Azure Active Directory]** を選択してから **[アプリの登録]** を選択します。
+2. Azure AD アクティビティ ログ API を使用しているアプリを選択して **[設定]** を選択し、**[必要なアクセス許可]** を選んでから、**[Windows Azure Active Directory]** API を選択します。
+3. **[アクセスの有効化]** ブレードの **[委任されたアクセス許可]** 領域で、**[ディレクトリ データの読み取り]** チェック ボックスをオンにして、**[保存]** を選択します。
+4. **[アクセス許可の付与]** を選択し、**[はい]** を選択します。
+    
+    >[!Note]
+    >アプリへのアクセス許可の付与は、全体管理者が行う必要があります。
+
+詳細については、「Azure AD レポート API にアクセスするための前提条件」記事の「[アクセス許可を付与する](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal#grant-permissions)」セクションを参照してください。
+
+---
+
+### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>PCI DSS コンプライアンスのために TLS 設定を構成して Azure AD サービスに接続する
+
+**種類:** 新機能  
+**サービス カテゴリ:** 該当なし  
+**製品の機能:** プラットフォーム
+
+トランスポート層セキュリティ (TLS) は、通信する 2 つのアプリケーション間にプライバシーとデータ整合性を提供するプロトコルであり、今日、最も広く展開され、使用されているセキュリティ プロトコルです。
+
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、**2018 年 6 月 30 日**に開始されたコンプライアンスに沿って、新しいより安全なアプリ プロトコルを有効にして、初期バージョンの TLS および Secure Sockets Layer (SSL) を無効化する必要があることを決定しました。 この変更は、Azure AD サービスに接続し、PCI DSS コンプライアンスを必要とする場合には、TLS 1.0 を無効にしなければならないことを意味します。 複数のバージョンの TLS が使用可能ですが、TLS 1.2 は Azure Active Directory Services に利用できる最新バージョンです。 クライアント/サーバーおよびブラウザー/サーバーの両方の組み合わせにおいて、TLS 1.2 に直接移行することを強くお勧めします。
+
+古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、**[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
+
+**TLS 1.2 を有効にするために、ブラウザーで実行する手順**
+
+- **Microsoft Edge および Internet Explorer (いずれも、Internet Explorer を使用して設定される)**
+
+    1. Internet Explorer を開き、**[ツール]** > **[インターネット オプション]** > **[詳細]** の順に選択します。
+    2. **[セキュリティ]** 領域で、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択して、**[OK]** をクリックします。
+    3. すべてのブラウザー ウィンドウを閉じて、Internet Explorer を再起動します。 
+
+- **Google Chrome**
+
+    1. Google Chrome を開き、「*chrome://settings/*」とアドレス バーに入力して、**Enter** キーを押します。
+    2. **[詳細]** オプションを展開し、**[システム]** 領域へ移動して、**[プロキシ セットアップを開く]** を選択します。
+    3. **[インターネットのプロパティ]** ボックスで、**[詳細]** タブを選択し、**[セキュリティ]** 領域へ移動して、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、**[OK]** をクリックします。
+    4. すべてのブラウザー ウィンドウを閉じて、Google Chrome を再起動します。
+
+- **Mozilla Firefox**
+
+    1. Firefox を開き、アドレス バーに「*about:config*」と入力してから、**Enter** キーを押します。
+    2. *TLS* という語句を検索して、**security.tls.version.max** エントリを選択します。
+    3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、**[OK]** をクリックします。
+
+        >[!NOTE]
+        >Firefox バージョン 60.0 では TLS 1.3 をサポートしているため、security.tls.version.max の値を **4** に設定することもできます。
+
+    4. すべてのブラウザー ウィンドウを閉じて、Mozilla Firefox を再起動します。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 6 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+ 
+2018年 6 月に、フェデレーションを使用した以下の 15 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial)、[Settling music](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial)、[SAML 1.1 Token enabled LOB App](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial)、[Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial)、[Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)、[Endpoint Backup](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial)、[Skyhigh Networks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial)、Smartway2、[TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial)、[Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial)、[Zoho One](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial)、[SharePoint on-premises](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial)、[ForeSee CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial)、[Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial)、[ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。 
+
+---
+
+### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>パブリック プレビューで使用可能な Azure AD Password Protection
+
+**種類:** 新機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** ユーザー認証
+
+Azure AD Password Protection を使用して、簡単に推測できるパスワードをお使いの環境から排除できます。 これらのパスワードを排除すると、パスワード スプレー タイプの攻撃に侵害されるリスクが低下します。
+
+具体的には、Azure AD Password Protection は次のような機能を提供します。
+
+- Azure AD および Windows Server Active Directory (AD) の両方で組織のアカウントを保護する。 
+- 最も一般的に使用されている 500 を超えるパスワード一覧のパスワードと、それらのパスワードの 100 万を超える代替文字のバリエーションを、ユーザーが使用しないようにする。
+- Azure AD およびオンプレミスの Windows Server AD の両方に対して、Azure AD ポータルの単一の場所から Azure AD Password Protection を管理する。
+
+Azure AD Password Protection の詳細については、「[組織内の不適切なパスワードを排除する](https://aka.ms/aadpasswordprotectiondocs)」を参照してください。
+
+---
+
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU: Terms of Use) の作成時に作成された、新しい "すべてのゲスト" 条件付きアクセス ポリシー テンプレート
+
+**種類:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+
+使用条件 (ToU) の作成時に、"すべてのゲスト" および "すべてのアプリ" 用の新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
+
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
+
+---
+
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU) の作成時に作成された、新しい "カスタム" 条件付きアクセス ポリシー テンプレート
+
+**種類:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+
+使用条件 (ToU) の作成時に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
+
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
+
+---
+
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のデプロイに関する新しい包括的なガイダンス
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** ID のセキュリティと保護
+ 
+組織に Azure Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
+
+MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](https://aka.ms/DeploymentPlans) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
+
+---
+
+### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>パブリック プレビューにある Azure AD の委任されたアプリ管理ロール
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** Access Control
+
+管理者は、グローバル管理者ロールを割り当てずに、アプリ管理タスクを委任できるようになりました。 新しいロールと機能は次のとおりです。
+
+- **新しい標準 Azure AD 管理者ロール:**
+
+    - **アプリケーション管理者。** 登録、SSO 設定、アプリの割り当てとライセンス付与、アプリのプロキシ設定、および承認 (Azure AD リソースを除く) を含め、すべてのアプリの全側面を管理する権限が付与されます。
+
+    - **クラウド アプリケーション管理者。** アプリ プロキシではオンプレミス アクセスを提供していないため、アプリ プロキシを除くすべてのアプリケーション管理者の権限が付与されます。
+
+    - **アプリケーション開発者。** **[allow users to register apps]\(ユーザーによるアプリ登録を許可する\)** オプションが無効になっている場合でも、アプリ登録を作成する権限を付与します。
+
+- **所有権 (アプリ登録ごと、および企業アプリごとに設定し、グループ所有権のプロセスとほぼ同じ):**
+ 
+    - **アプリ登録の所有者。** アプリ マニフェストや別の所有者の追加など、所有するアプリ登録の全側面を管理する権限が付与されます。
+
+    - **エンタープライズ アプリ所有者。** SSO 設定、アプリの割り当て、および承認 (Azure AD リソースを除く) を含め、所有するエンタープライズ アプリの多くの側面を管理する権限が付与されます。
+
+パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!)  を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
 
 ---
 

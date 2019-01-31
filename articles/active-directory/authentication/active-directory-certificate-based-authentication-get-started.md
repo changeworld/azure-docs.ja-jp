@@ -3,19 +3,19 @@ title: Azure Active Directory 証明書ベースの認証の概要
 description: 各環境で証明書ベースの認証を構成する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 7d8c0a837f5618580c5e76e5ca97e19844b95698
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 37b0067b0879953ca4fbb16af146ba447f29e794
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427170"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081570"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 

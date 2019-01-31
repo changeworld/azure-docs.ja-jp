@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 11/05/2018
 keywords: ''
-ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8622619c56b618a1f5e4c91efcd047ab0ba9ce0a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036905"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247699"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack とデータセンターの統合 - 物理デバイスの監査
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e9509cfe94153eb7820023075495db75c6a3b9e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988225"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097029"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) では、ユーザーやアプリなどのオ�
 
 ## <a name="who-can-sign-in-to-your-app"></a>アプリケーションにサインインできるユーザー
 
-アプリを開発する場合、開発者は [Azure portal](http://portal.azure.com) でアプリを登録する際に、アプリをシングルテナントまたはマルチテナントとして構成できます。
+アプリを開発する場合、開発者は [Azure portal](https://portal.azure.com) でアプリを登録する際に、アプリをシングルテナントまたはマルチテナントとして構成できます。
 * シングルテナント アプリは、それらが登録されているテナント (ホーム テナントとも呼ばれます) でのみ使用できます。
 * マルチテナント アプリは、ホーム テナントと他のテナントの両方のユーザーが使用できます。
 

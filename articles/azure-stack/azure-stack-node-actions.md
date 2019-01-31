@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 90910580fd7fc766376569de3ce43fc5ce297e8b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/22/2019
+ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469204"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240457"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 

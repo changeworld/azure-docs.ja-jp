@@ -12,32 +12,32 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 40d07827cbd856fe3be3d797dde793b1a7f50207
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: f75ea7bd728b16c91122119c3e14da2a1e123d45
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653240"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452313"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する 
 
-このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から Azure SQL Database [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。 
+このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から Azure SQL Database [マネージド インスタンス](sql-database-managed-instance.md)にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> * Azure Database Migration Service (DMS) を使用した移行の詳細については、[DMS を使用した Managed Instance への移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。 
-> * 各種の移行方法の詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
+> - Azure Database Migration Service (DMS) を使用した移行の詳細については、[DMS を使用した Managed Instance への移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。 
+> - 各種の移行方法の詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタート:
+
 - [マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するクイック スタートのリソースを使用します。
 - コンピューターに最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) がインストールされている必要があります。
 - SSMS を使用してマネージド インスタンスに接続する必要があります。 接続方法については、次のクイック スタートを参照してください。
-  * [Connect to an Azure SQL Database Managed Instance from an Azure VM (Azure VM から Azure SQL Database Managed Instance に接続する)](sql-database-managed-instance-configure-vm.md)
-  * [オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
-
+  - [Connect to an Azure SQL Database Managed Instance from an Azure VM (Azure VM から Azure SQL Database Managed Instance に接続する)](sql-database-managed-instance-configure-vm.md)
+  - [オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
 
 > [!NOTE]
 > Azure Blob Storage と [Shared Access Signature (SAS) キー](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](sql-database-managed-instance-get-started-restore.md) に関するページを参照してください。
@@ -47,9 +47,7 @@ ms.locfileid: "53653240"
 SSMS で、次の手順に従って、Wide World Importers データベースをマネージド インスタンスに復元します。 データベース バックアップ ファイルは、事前構成済みの Azure Blob Storage アカウントに格納されています。
 
 1. SMSS を開き、マネージド インスタンスに接続します。
-
 2. 左側のメニューから、マネージド インスタンスを右クリックし、**[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
-
 3. 次の SQL スクリプトを実行します。このスクリプトでは、事前構成済みのストレージ アカウントと SAS キーを使用して、マネージド インスタンスに[資格情報を作成](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=sql-server-2017)します。
 
    ```sql
@@ -60,8 +58,7 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 
     ![資格情報を作成する](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-  
-3. 認証情報を確認するために、次のスクリプトを実行します。このスクリプトでは、[コンテナー](https://azure.microsoft.com/services/container-instances/)の URL を使用してバックアップ ファイルの一覧を取得します。
+4. 認証情報を確認するために、次のスクリプトを実行します。このスクリプトでは、[コンテナー](https://azure.microsoft.com/services/container-instances/)の URL を使用してバックアップ ファイルの一覧を取得します。
 
    ```sql
    RESTORE FILELISTONLY FROM URL = 
@@ -70,7 +67,7 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 
     ![ファイル一覧](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-4. 次のスクリプトを実行して、Wide World Importers データベースを復元します。
+5. 次のスクリプトを実行して、Wide World Importers データベースを復元します。
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -79,7 +76,7 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 
     ![復元](./media/sql-database-managed-instance-get-started-restore/restore.png)
 
-5. 次のスクリプトを実行して、復元の状態を追跡します。
+6. 次のスクリプトを実行して、復元の状態を追跡します。
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
@@ -89,7 +86,7 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-6. 復元が完了したら、オブジェクト エクスプローラーで確認します。 
+7. 復元が完了したら、オブジェクト エクスプローラーで確認します。 
 
 ## <a name="next-steps"></a>次の手順
 
