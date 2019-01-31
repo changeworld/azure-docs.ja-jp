@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: b1077eefbe57b6440caa0171fb7429485eeeb78e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 222f17541de902ee2180b66563857ccd2193ba54
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469187"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178309"
 ---
 # <a name="how-to-close-active-risk-events"></a>方法:アクティブなリスク イベントを閉じる
 

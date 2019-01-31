@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.component: common
-ms.openlocfilehash: 2434c04260c223fdcc03bc7f91a6fd147e1d8503
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: common
+ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264107"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469500"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 

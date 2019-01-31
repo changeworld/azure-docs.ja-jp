@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194166"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096791"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -67,7 +67,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ### <a name="property-values"></a>プロパティ値
 
-|   **名前**   |**値/例**|       **説明**      |
+|   **Name**   |**値/例**|       **説明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API のバージョン。
 |publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
@@ -123,7 +123,7 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用できます。 その場合、Azure Resource Manager テンプレートのデプロイ時に Azure パフォーマンス診断 VM 拡張機能が実行されます。 サンプル テンプレートを次に示します。
 
-````
+```
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -207,14 +207,14 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 `Set-AzureRmVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>キャプチャされるデータについて
 PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データを収集します。 詳細については、[PerfInsights のドキュメント](https://aka.ms/perfinsights)をご覧ください。

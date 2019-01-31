@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: c1eebca0677cf14d59cf24e1a7acb5cebc692648
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6aa3d0299cb909a4cb642012703ff361f66265e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812779"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル:Azure Active Directory と Evidence.com の統合
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791074"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251437"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 
@@ -78,26 +78,18 @@ Project Conversation Learner は、ボットに追加する SDK と、機械学�
 
     汎用の空のボットが `cl-bot-01/src/app.ts` で実行します。
 
-3. Conversation Learner UI を実行します。
-
-    ```bash
-    [open second command prompt window]
-    cd cl-bot-01
-    npm run ui
-    ```
-
-4. ブラウザーで http://localhost:5050 を開きます。 
+3. ブラウザーで http://localhost:3978 を開きます。
 
 Conversation Learner を使用するようになり、Conversation Learner のモデルを作成および教育できます。  
 
 > [!NOTE]
-> 起動時には、Project Conversation Learner は招待によって使用できます。  http://localhost:5050 で HTTP エラー `403` が表示される場合は、アカウントが招待されていないことを意味します。  [招待を要求](https://aka.ms/conversation-learner-request-invite)してください。
+> 起動時には、Project Conversation Learner は招待によって使用できます。  http://localhost:3978/ui で HTTP エラー `403` が表示される場合は、アカウントが招待されていないことを意味します。  [招待を要求](https://aka.ms/conversation-learner-request-invite)してください。
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>チュートリアル、デモ、およびボット間の切り替え
 
 上記の手順で、汎用的な空のボットが開始しました。  代わりにチュートリアルまたはデモ ボットを実行するには、次のようにします。
 
-1. Conversation Learner Web UI が開いている場合は、 http://localhost:5050/home のモデルの一覧に戻ます。
+1. Conversation Learner Web UI が開いている場合は、 http://localhost:3978/ui/home のモデルの一覧に戻ます。
     
 2. 別のボットが実行している場合は (`npm start` や `npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
@@ -114,7 +106,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
   npm run demo-storage
   ```
 
-4. まだ行っていない場合は、 http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
+4. まだ行っていない場合は、 http://localhost:3978/ui/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
 5. [Import tutorials]\(チュートリアルのインポート\) をクリックし、開始したデモに対応するデモ モデルを Conversation Learner UI で選択します。
 
@@ -122,7 +114,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>バックエンド コードを含むボットを作成する
 
-1. Conversation Learner Web UI が開いている場合は、 http://localhost:5050/home のモデルの一覧に戻ます。
+1. Conversation Learner Web UI が開いている場合は、 http://localhost:3978/ui/home のモデルの一覧に戻ます。
     
 2. ボットが実行している場合は (`npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
@@ -135,7 +127,7 @@ Conversation Learner を使用するようになり、Conversation Learner の�
     npm start
     ```
 
-5. まだ行っていない場合は、 http://localhost:5050/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
+5. まだ行っていない場合は、 http://localhost:3978/ui/home を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
 6. UI で新しい Conversation Learner モデルを作成し、学習を開始します。
 

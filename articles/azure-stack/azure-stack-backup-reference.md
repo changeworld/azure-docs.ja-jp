@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 80cca629ea49d8843580c23f74d1d2076aa623e3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713575"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246713"
 ---
 # <a name="infrastructure-backup-service-reference"></a>インフラストラクチャ バックアップ サービスのリファレンス
 
 ## <a name="azure-backup-infrastructure"></a>Azure バックアップ インフラストラクチャ
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack は、ポータル、Azure Resource Manager、インフラストラクチャ管理機能から成る多数のサービスで構成されています。 Azure Stack の管理機能はアプライアンスと同様で、ソリューションの運用者が経験する複雑さを緩和することに主眼を置いています。
 

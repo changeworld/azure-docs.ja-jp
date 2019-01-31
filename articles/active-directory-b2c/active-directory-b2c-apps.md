@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: acb99468000028abd3a8292844b2ac129a4c95ae
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844791"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172648"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2da704f4b0d7ed0d7038b5ef9b183d9b60f5e639
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139172"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223164"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 

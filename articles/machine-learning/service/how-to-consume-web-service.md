@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。 REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: b83542a11ce2351214ac8f15a6902d1a90f871ee
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753389"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242265"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -84,7 +84,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key) を使用します。
+> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) を使用します。
 
 ## <a name="request-data"></a>要求データ
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d4dba956ecd88683b124d4faf997a5fde6603727
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819902"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル:Azure Active Directory と vxMaintain の統合
 

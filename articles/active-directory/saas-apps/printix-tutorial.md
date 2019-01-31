@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 4aea7320-b2d5-49e0-9b63-aeaff0f6fe66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 696c24515de292e762b42f36d631c6309ab21be6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 03514f2896b8ed87f225bd0dd16c5ece5a6fda33
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812864"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル:Azure Active Directory と Printix の統合
 

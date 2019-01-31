@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999751"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222917"
 ---
 # <a name="project-url-preview-v7-reference"></a>Project URL Preview v7 のリファレンス
 
@@ -31,10 +31,10 @@ JSON 応答は、名前、リソースの説明、*familyFriendly*、代表的�
 URL Preview の結果を要求するには、次のエンドポイントに要求を送信します。 ヘッダーと URL パラメーターを使用して、さらに詳細を定義します。
 
 エンドポイントに対する GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 要求には HTTPS プロトコルが使用される必要があるほか、次のクエリ パラメーターが含まれている必要があります。
 

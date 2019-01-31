@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4fe78050-cb6d-4db9-96ec-58cc0779167f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: de6a9069d73f4cfe55372eae77d712a893cc348c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 87eff8eb96f2a6b090883e0b557a568eb0a20d54
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817063"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル:Azure Active Directory と Veracode の統合
 

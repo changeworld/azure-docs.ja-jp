@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 1bcc290d987e8294f9a73cf8490f6cdd0251b440
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7c7bbaa986a6efdb82a50048c7c218f96cd4014a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467278"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220333"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>REST API を使用して音声を認識する
 
@@ -29,7 +29,7 @@ REST API を使用すると、HTTP POST 要求を使用して短い発話を認�
 > REST API を使用する場合、発話は 15 秒以下に制限されます。
 > 長い発話の認識については、[Speech SDK](how-to-recognize-speech-csharp.md) に関するページをご覧ください。
 
-**Speech to Text** REST API の詳細については、[REST API](rest-apis.md#speech-to-text) に関する記事をご覧ください。 API の動作を確認するには、GitHub から [REST API のサンプル](https://github.com/Azure-Samples/SpeechToText-REST)をダウンロードします。
+**Speech to Text** REST API の詳細については、[REST API](rest-apis.md#speech-to-text-api) に関する記事をご覧ください。 API の動作を確認するには、GitHub から [REST API のサンプル](https://github.com/Azure-Samples/SpeechToText-REST)をダウンロードします。
 
 ## <a name="next-steps"></a>次の手順
 

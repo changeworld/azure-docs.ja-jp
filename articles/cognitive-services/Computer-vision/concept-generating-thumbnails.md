@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 371fa639b2edc300e44cc495393e89c9fce9c4bf
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 638a54a4cf902693dcdccecf4236e75569a677a9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580860"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157603"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 

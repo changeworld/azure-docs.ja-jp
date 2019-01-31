@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 5b2e53c0-61a3-4954-ae46-8c28c6368bfd
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: a2d7661a9e837bebc873e54865f9b7c4259faf24
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 91f069da5572394934da41039d7e9a5950089ea1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816519"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル:Azure Active Directory と Versal の統合
 

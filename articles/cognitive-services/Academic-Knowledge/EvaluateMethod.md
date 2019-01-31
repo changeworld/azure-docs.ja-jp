@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902333"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187302"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 
@@ -32,9 +32,9 @@ Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **expr**       | テキスト文字列 | はい | エンティティが返す必要のあるエンティティを指定するクエリ式。
 **model**      | テキスト文字列 | いいえ   | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
-**attributes** | テキスト文字列 | いいえ <br>既定値: Id | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
-**count**        | Number | いいえ <br>既定値: 10 | 返す結果の数。
-**offset**     | Number |   いいえ <br>既定: 0    | 返す最初の結果のインデックス。
+**attributes** | テキスト文字列 | いいえ <br>既定値:Id | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
+**count**        | Number | いいえ <br>既定値は10 | 返す結果の数。
+**offset**     | Number |   いいえ <br>既定値は0    | 返す最初の結果のインデックス。
 **orderby** |   テキスト文字列 | いいえ <br>既定値: 確率の降順 | エンティティの並べ替えに使用される属性の名前。 必要に応じて、昇順/降順を指定できます。 形式: *name:asc* または *name:desc*。
   
  <br>

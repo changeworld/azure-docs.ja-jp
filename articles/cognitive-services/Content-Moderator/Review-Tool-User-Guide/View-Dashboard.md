@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 430c088462f8d90e36aeeb44a4d897bdc8fb5154
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b9d57709bd671f839bea86c974b17e2a10e7adbf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262865"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228068"
 ---
 # <a name="view-dashboard"></a>ダッシュボードの表示
 

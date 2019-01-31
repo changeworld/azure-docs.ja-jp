@@ -3,19 +3,19 @@ title: Azure MFA Server と AD FS 2.0 の併用 | Microsoft Docs
 description: Azure MFA および AD FS 2.0 を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: cbb64069ab8fa3da6309ff56afc0ab36582908c0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28e85c61c6febed3c3153a39feeae07d86527338
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430366"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078187"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 

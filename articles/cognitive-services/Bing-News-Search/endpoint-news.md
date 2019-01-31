@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: cc38dff7cd3ae8d10d8a20cbf98749d724de1ee6
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a41886927fcc34d7549cbf160dd2e7aa2e9a21c4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262814"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203676"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API エンドポイント
 

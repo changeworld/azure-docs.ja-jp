@@ -7,16 +7,16 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: d362d3aa131ba2ddfec8c7873352c634e7ce099c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4a46b7bbc99971ba2c142a816f7c41175a113cba
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124203"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167701"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
 

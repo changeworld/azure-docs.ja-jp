@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c42fdb037e1803db8255518f5c7ae7b2abd90c60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 727c12d50ab9233fadc6f87d14da1eaa46e8ed35
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259361"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217763"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API コンソールでカスタム イメージ リストを使用してモデレートする
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8ad504051980356737dbc9af9263bc8370421cdb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259123"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228221"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>API コンソールでモデレーション ジョブを開始する
 

@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957540"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181896"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: dee8fbca-0b60-4a21-8917-1fb6919de5a0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: a2234db09ecd8d2b3f654a18017d50f43c8caca6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3a9b11b5d5e70e72a90683d4952b7d34f0303960
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822299"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>チュートリアル:Azure Active Directory と O.C. の統合 Azure AD で制御できます。
 

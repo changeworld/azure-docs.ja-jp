@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 71f7afcc-1033-4098-9b7e-4f9f2b26f734
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 12d14855c12234d1beeacbf1c9bce663ea3f961d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ecc17e6836c7da1193e164cf48a737de82b60039
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808954"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>チュートリアル:Azure Active Directory と Envoy の統合
 

@@ -3,19 +3,19 @@ title: オンプレミスの Azure AD パスワード保護に関する FAQ
 description: オンプレミスの Azure AD パスワード保護に関する FAQ
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9046090a45d52a283d28d1c4cc79b44503cb5a9d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427595"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078697"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>更新:オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 

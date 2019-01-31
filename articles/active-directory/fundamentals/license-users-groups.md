@@ -6,19 +6,19 @@ author: eross-msft
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: b7abcb4820dde221f17efa1fcded05df41fa7bed
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 78aef5d6627636ed0a28d81d902246fa318197a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449488"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099285"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用したライセンスの割り当てと削除
 多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。

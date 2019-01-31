@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 1eda2d1c-b5e2-4c53-ad46-bbeb91cd119a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a5daf7f036331e66b819d59d07d647f6c28d6df
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1bc018d98ddfacc1cc4d2f21cead4481b680fd09
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820191"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>チュートリアル:Azure Active Directory と Degreed の統合
 

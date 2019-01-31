@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning データ準備 SDK を利用したデータの変換と整理について説明します。 変換メソッドを使用して､列の追加や不要な行または列の除去､欠損値対処を行います｡
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: cforbe
 author: cforbe
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d32244cd49ebd42192b2388215f79a64cacb3caa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186142"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243285"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
 

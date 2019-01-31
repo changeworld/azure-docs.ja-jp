@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: dab8debd-3b7b-4656-9bf0-1963ad8fce05
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bdb053d1f9f85c446e4ac48b836c4b24bb40f93f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3ff4a9b1576a63e8684e191f5814384a94e729fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821839"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>チュートリアル:Azure Active Directory と Skills Manager の統合
 

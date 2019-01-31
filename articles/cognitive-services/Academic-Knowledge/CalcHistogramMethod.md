@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cb47b3933ecb6e38aa7945ac7f81f7602a0c8034
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321293"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192538"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram メソッド
 
@@ -35,9 +35,9 @@ Name  |値 | 必須  |説明
 **expr**    |テキスト文字列 | はい  |ヒストグラムの計算の対象となるエンティティを指定するクエリ式。
 **model** |テキスト文字列 | いいえ  |クエリを実行するモデルの名前を選択します。  現時点では、既定値は *latest* です。
 **attributes** | テキスト文字列 | いいえ <br>既定値: | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
-**count** |Number | いいえ <br>既定値: 10 |返す結果の数。
-**offset**  |Number | いいえ <br>既定: 0 |返す最初の結果のインデックス。
-**timeout**  |Number | いいえ <br>既定: 1000 |タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+**count** |Number | いいえ <br>既定値は10 |返す結果の数。
+**offset**  |Number | いいえ <br>既定値は0 |返す最初の結果のインデックス。
+**timeout**  |Number | いいえ <br>既定値は1,000 |タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
 
 ## <a name="response-json"></a>応答 (JSON)
 

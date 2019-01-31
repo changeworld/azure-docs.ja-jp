@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5de9c674ceeab6d45211b46e2f03d91b943751ac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005803"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246213"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse を復元する 
 この記事では、Azure portal と PowerShell で次のことを行う方法について説明します。
@@ -27,7 +27,7 @@ ms.locfileid: "51005803"
 - ユーザー定義の復元ポイントからデータ ウェアハウスのコピーを作成します
 
 ## <a name="before-you-begin"></a>開始する前に
-**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL データ ウェアハウスを復元する前に、データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。
+**DTU 容量を確認します。**  各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL データ ウェアハウスを復元する前に、データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。
 
 ## <a name="restore-through-powershell"></a>PowerShell を使用して復元する
 

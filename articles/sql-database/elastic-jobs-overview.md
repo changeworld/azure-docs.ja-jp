@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/22/2018
-ms.openlocfilehash: d8af5e3919b731677b40726c37462832adc06677
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ee9e9389962cd454f9861e561dd76c96d019a1f0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449097"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469339"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 
@@ -34,7 +34,7 @@ ms.locfileid: "54449097"
 
 1. [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) または [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
 2. [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) または [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
-3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets)を参照してください。
+3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-control-access.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets)を参照してください。
 4. [PowerShell](elastic-jobs-powershell.md#create-a-job) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。
 5. [PowerShell](elastic-jobs-powershell.md#create-a-job-step) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブ ステップを追加します。
 6. [PowerShell](elastic-jobs-powershell.md#run-the-job) または [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) を使用してジョブを実行します。

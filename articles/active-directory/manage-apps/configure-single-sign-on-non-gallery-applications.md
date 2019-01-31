@@ -5,18 +5,18 @@ services: active-directory
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.openlocfilehash: c1472a78b0d1fbc287b151d9760fa549ad9b087e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c364b3be0c2203c64e64df1bd0e4ab5ec2078a0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474083"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153881"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Azure Active Directory の非ギャラリー アプリケーションへのシングル サインオンを構成する
 

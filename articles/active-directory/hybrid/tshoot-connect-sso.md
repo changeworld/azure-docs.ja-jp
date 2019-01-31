@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/24/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 369b3d2e35b20aac7067c444a7057df6d8320b24
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d2e5f852678298a7916cf745ece6cd5711ee57ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472942"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198284"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 

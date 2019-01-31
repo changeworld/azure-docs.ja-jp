@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ed13014dd5ad559ed3793ff52ae410be9174ae2b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0a740a2e26e0f2dd6e4f6d8ea039b107dce65066
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461316"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158113"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
 この条項では、トラブルシューティングタスクを使用し、オブジェクト同期の問題のトラブルシューティングを行う手順を示します。 Azure Active Directory (Azure AD) Connect でどのようにトラブルシューティングが行われるか確認するには、[ このショートビデオ ](https://aka.ms/AADCTSVideo) をご覧ください。

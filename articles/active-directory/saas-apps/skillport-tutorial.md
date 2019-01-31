@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 2d0b7b8f5e5455471f27bcfe6eaa5f35740f2e01
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d6b80855fa301da5d2e5be37b1b316e5a0af81d1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827790"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル:Azure Active Directory と Skillport の統合
 

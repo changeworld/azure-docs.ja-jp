@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 82938920-33ba-47cb-b141-511b46d19e66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 1e3e4440b7d6adf9e5082217fe75b1c2d983a778
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 62a448c5a0994dc549d06808c6ece520eabefc3e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817097"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル:Azure Active Directory と SAP Business ByDesign の統合
 

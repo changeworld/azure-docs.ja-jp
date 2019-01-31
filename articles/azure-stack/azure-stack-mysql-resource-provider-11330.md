@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: d4be07eafd7e65a53a891c44a61479189c8365a2
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245720"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252015"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL リソース プロバイダー 1.1.33.0 のリリース ノート
 

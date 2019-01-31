@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470700"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167089"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -31,7 +31,7 @@ ms.locfileid: "54470700"
 **preferredDataLocation** 属性を設定することで、ユーザーの geo を定義できます。 ユーザーの Office 365 リソース (メールボックスや OneDrive など) をユーザーと同じ geo に配置しながら、組織全体で 1 つのテナントを維持できます。
 
 > [!IMPORTANT]
-> Multi-Geo は現在、5,000 以上の Office 365 サービス サブスクリプションを使用しているお客様が利用できます。 詳細については、Microsoft 担当者にお問い合わせください。
+> Multi-Geo は現在、2,500 以上の Office 365 サービス サブスクリプションを使用しているお客様が利用できます。 詳細については、Microsoft 担当者にお問い合わせください。
 >
 >
 
@@ -53,7 +53,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | 米国 | NAM |
 
 * この表に掲載されていない geo (南米など) は、Multi-Geo には使用できません。
-* インドの geo を利用できるのは、請求先住所とライセンス購入先がそれらの geo に該当するユーザーだけです。
+
 * すべての Office 365 ワークロードでユーザーの geo 設定が使用できるわけではありません。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect の同期のサポート

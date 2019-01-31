@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.custom: it-pro
-ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 9cef490d22a013b952d6692d0ac0e932a35c9ba3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320244"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297635"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」をご覧ください
@@ -131,42 +131,42 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ### <a name="powershell-example"></a>PowerShell の例
 
 1. セルフ サービス プランに対応するために使用された資格情報を使用して Azure AD に接続します。
-  ````
+  ```
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ````
+  ```
 2. ドメイン一覧を、次のコマンドレットで取得します。
   
-  ````
+  ```
     Get-MsolDomain
-  ````
+  ```
 3. 次のように Get-MsolDomainVerificationDns コマンドレットを実行してチャレンジを作成します。
-  ````
+  ```
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ````
+  ```
 
 4. このコマンドから返される値 (チャレンジ) をコピーします。 例: 
-  ````
+  ```
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ````
+  ```
 5. パブリック DNS 名前空間で、前の手順でコピーした値を含む DNS txt レコードを作成します。 このレコードの名前は親ドメインの名前です。このリソース レコードを Windows Server の DNS ロールを使用して作成する場合は、[レコード名] を空のままにして、テキスト ボックスに値を貼り付けます。
 6. 次のように Confirm-MsolDomain コマンドレットを実行してチャレンジを確認します。
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ````
+  ```
   
   例: 
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ````
+  ```
 
 チャレンジがクリアされると、エラーなしでプロンプトに戻ります。
 

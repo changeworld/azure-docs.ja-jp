@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f212e2555b6097912628791635a539bc488d4979
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: c5869133d94f73e1d463a176614617df2587bdfb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413168"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226108"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>JavaScript での Speech Recognition API の利用
 

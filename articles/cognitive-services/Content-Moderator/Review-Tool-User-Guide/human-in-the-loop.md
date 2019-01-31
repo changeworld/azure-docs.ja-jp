@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.date: 01/10/2019
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4a8f27a94c5e14c34c2a6500dc555c4281d0ecd7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264735"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224532"
 ---
 # <a name="learn-about-the-review-tool"></a>レビュー ツールについて学習する
 

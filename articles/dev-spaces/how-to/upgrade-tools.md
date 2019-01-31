@@ -3,20 +3,20 @@ title: Azure Dev Spaces ツールのアップグレード方法 | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
-author: iainfoulds
-ms.author: iainfou
+ms.subservice: azds-kubernetes
+author: zr-msft
+ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: article
 ms.technology: azds-kubernetes
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 61e59abde2c3a06b8cf650306b67ac5142729a8c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ad4c608d773dd6838fa95ab05c59e09c29906f8a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50976938"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476487"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure Dev Spaces ツールのアップグレード方法
 
