@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - Log Analytics | Micros
 description: Azure PowerShell のサンプル スクリプト - Log Analytics
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9798e07c9b19fbaf2c7bca161ea5d9d2b243a20a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8b9f41d1174ee9f3979e259a26280022107db97c
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467329"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884012"
 ---
 # <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Log Analytics によって監視される VM を PowerShell で作成する 
 

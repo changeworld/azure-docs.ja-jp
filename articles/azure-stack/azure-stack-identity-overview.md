@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 9fc53fd2539a39de4f01758704765392cc7e98a8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306541"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246968"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack の ID の概要
 

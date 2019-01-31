@@ -3,23 +3,23 @@ title: Azure リソースのマネージド ID
 description: Azure リソースのマネージド ID の概要。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
-ms.author: daveba
-ms.openlocfilehash: b3a86748d9b7a420b9a7f9ab60c6841cbf403f09
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439087"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183409"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 

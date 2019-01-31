@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 3930de4d8d1f50c0ba6908ea642fc152c29b7371
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 37fef6100d78b46d0fb52e486f1788eb78ea2578
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744804"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193762"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>クイック スタート:Python での最初の Bing Visual Search クエリ
 

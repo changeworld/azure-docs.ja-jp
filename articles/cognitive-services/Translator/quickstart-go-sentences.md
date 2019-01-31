@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: erhopf
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f4a4a4518eb973dc9d2c7cbcb34683fe0b3db08
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994098"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226844"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
@@ -119,7 +119,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>要求を作成する
 
-要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出します。
+要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出すことができます。
 
 ```go
 // Build the HTTP POST request

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 6be2b3016218f02e6c58f19feb7f0585032bffe3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 77c85e5f2734c07f4a9fb91450cacd14b3a0151c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213159"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
