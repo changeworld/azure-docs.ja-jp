@@ -65,9 +65,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| type |FtpServer に設定します。 |[はい] |&nbsp; |
-| host |FTP サーバーの名前または IP アドレスを指定します。 |[はい] |&nbsp; |
-| authenticationType |認証の種類を指定します。 |[はい] |Basic、Anonymous |
+| type |FtpServer に設定します。 |はい |&nbsp; |
+| host |FTP サーバーの名前または IP アドレスを指定します。 |はい |&nbsp; |
+| authenticationType |認証の種類を指定します。 |はい |Basic、Anonymous |
 | username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
 | password |ユーザー (username) のパスワードを指定します。 |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ  |&nbsp; |
@@ -155,7 +155,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| folderPath |フォルダーへのサブパス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始および終了日時に基づくフォルダー パスを使用できます。 |[はい] |
+| folderPath |フォルダーへのサブパス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始および終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
 | fileFilter |すべてのファイルではなく、**folderPath** 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** は FileShare 入力データセットに適用されます。 このプロパティは、Hadoop 分散ファイル システム (HDFS) ではサポートされていません。 |いいえ  |
 | partitionedBy |時系列データに動的な **folderPath** と **fileName** を指定するために使用します。 たとえば、毎時間のデータとしてパラメーター化されている **folderPath** を指定できます。 |いいえ  |
