@@ -44,10 +44,10 @@ Oracle Responsys のリンクされたサービスでは、次のプロパティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**Responsys** | [はい] |
-| endpoint | Respopnsys サーバーのエンドポイント  | [はい] |
-| clientId | Responsys アプリケーションに関連付けられているクライアント ID。  | [はい] |
-| clientSecret | Responsys アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Responsys** | はい |
+| endpoint | Respopnsys サーバーのエンドポイント  | はい |
+| clientId | Responsys アプリケーションに関連付けられているクライアント ID。  | はい |
+| clientSecret | Responsys アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -83,7 +83,7 @@ Oracle Responsys からデータをコピーするには、データセットの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ResponsysObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ResponsysObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -113,7 +113,7 @@ Oracle Responsys からデータをコピーするには、コピー アクテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ResponsysSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ResponsysSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
