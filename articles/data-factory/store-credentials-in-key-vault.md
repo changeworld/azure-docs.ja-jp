@@ -46,8 +46,8 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | [はい] |
-| baseUrl | Azure Key Vault の URL を指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | はい |
+| baseUrl | Azure Key Vault の URL を指定します。 | はい |
 
 **オーサリング UI の使用:**
 
@@ -79,10 +79,10 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | [はい] |
-| secretName | Azure Key Vault のシークレットの名前。 | [はい] |
+| type | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | はい |
+| secretName | Azure Key Vault のシークレットの名前。 | はい |
 | secretVersion | Azure Key Vault のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ  |
-| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | [はい] |
+| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | はい |
 
 **オーサリング UI の使用:**
 
