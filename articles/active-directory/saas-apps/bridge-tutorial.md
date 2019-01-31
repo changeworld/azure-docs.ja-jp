@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 3dbb6499-80c1-4d00-a0b4-e0ad5522cf0f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 481a115e8a0888fb9b9b66e8840d2158212a4f34
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 657c1fd024aa3afb85de8a60bdc6666f2d01c043
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823183"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>チュートリアル:Azure Active Directory と Bridge の統合
 

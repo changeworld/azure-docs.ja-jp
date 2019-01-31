@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853597"
+ms.locfileid: "54881598"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -157,7 +157,7 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
 
-このセクションは、スマート検出クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 クラシック アラート (../platform/alerts-classic.overview.md) と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 現在スマート検出アラートは、クラシック アラート エクスペリエンスのみをサポートしています。 この 1 つの例外は、[Azure クラウド サービスのスマート検出アラート](./proactive-cloud-services.md)です。 Azure クラウド サービスのスマート検出アラートのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
+このセクションは、スマート検出クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 現在スマート検出アラートは、クラシック アラート エクスペリエンスのみをサポートしています。 この 1 つの例外は、[Azure クラウド サービスのスマート検出アラート](./proactive-cloud-services.md)です。 Azure クラウド サービスのスマート検出アラートのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
 
 * スマート検出/クラシック アラート通知には、特定の受信者の使用をお勧めします。
 

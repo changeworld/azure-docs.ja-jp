@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135689"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466831"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 

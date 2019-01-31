@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 2aa3efcdec57a3e236d2b9739636656b35d16cd6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: be85456c94fbc156827157705bc29169bbae9cdd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723766"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096766"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチテナント アプリケーションを構成する方法
 
@@ -45,4 +45,4 @@ iOS については、[iOS でクロス アプリ SSO を有効にする方法](
 
 [Azure AD v2.0 集中型アプリの同意とアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

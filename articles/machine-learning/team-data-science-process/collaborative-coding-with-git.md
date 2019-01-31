@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 95285bf82fbf1582abcb5d95424b472d392a7a59
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134490"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458231"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -66,21 +66,21 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>Azure DevOps Services でのプル要求を作成します 
+## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>Azure DevOps Services での pull request を作成します 
 
-いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに**プル要求**を送信できます。 
+いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに **pull request** を送信できます。 
 
-プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[プル要求]** をクリックし、**[新しいプル要求]** をクリックして、ブランチでの作業がベース ブランチにマージされる前にプル要求レビューを作成します。
+プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[Pull Requests]** をクリックし、**[新しい pull request]** をクリックして、ブランチでの作業がベース ブランチにマージされる前に pull request レビューを作成します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-このプル要求に関するいくつかの説明を入力し、レビュー担当者を追加し、送信します。
+この pull request に関するいくつかの説明を入力し、レビュー担当者を追加し、送信します。
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
 ## 4.<a name='ReviewandMerge-4'></a>レビューとマージ 
 
-プル要求が作成されると、レビュー担当者は、プル要求のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能しているかどうかを検査し、可能であれば、要求元と共に変更をテストする必要があります。 アセスメントに基づいて、レビュー担当者はプル要求を承認または拒否できます。 
+pull request が作成されると、レビュー担当者は、pull request のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能しているかどうかを検査し、可能であれば、要求元と共に変更をテストする必要があります。 アセスメントに基づいて、レビュー担当者は pull request を承認または拒否できます。 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 

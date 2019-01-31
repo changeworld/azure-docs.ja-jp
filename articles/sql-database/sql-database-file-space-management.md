@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605978"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468633"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Azure SQL Database でファイル領域を管理する
 この記事では、Azure SQL Database のさまざまな種類の記憶域スペースと、データベースとエラスティック プールに割り当てられたファイル領域を明示的に管理する必要がある場合に実行できる手順について説明します。
@@ -27,6 +27,7 @@ ms.locfileid: "53605978"
 Azure SQL Database では、データベースの基礎となるデータ ファイルの割り当てが使用データ ページ数よりも大きくなるようなワークロード パターンがあります。 この状況は、使用領域が増えた後にデータが削除された場合に発生する可能性があります。 これは、データの削除時に割り当てられていたファイル領域が自動的に再利用されないためです。
 
 次のシナリオでは、ファイル領域の使用率の監視とデータ ファイルの圧縮が必要になる場合があります。
+
 - データベースに割り当てられたファイル領域がプールのサイズ上限に達した場合に、エラスティック プール内のデータの増大を許可する。
 - 単一データベースまたはエラスティック プールの最大サイズの縮小を許可する。
 - 単一データベースまたはエラスティック プールを、よりサイズ上限の低い異なるサービス レベルまたはパフォーマンス レベルに変更することを許可する。
@@ -118,6 +119,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 次のクエリを使用して、エラスティック プールの記憶域スペースの量を確認できます。  
 
 ### <a name="elastic-pool-data-space-used"></a>使用済みのエラスティック プールのデータ領域
+
 使用済みのエラスティック プールのデータ領域の量を返すように次のクエリを変更します。  クエリ結果の単位は MB です。
 
 ```sql
@@ -234,9 +236,9 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ## <a name="next-steps"></a>次の手順
 
 - データベースの最大サイズについては、以下を参照してください。
-  - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
-  - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
-  - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)
-  - [DTU ベースの購入モデルを使用したエラスティック プールに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools)
+  - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)
+  - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)
+  - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [DTU ベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)
 - `SHRINKDATABASE` コマンドの詳細については、[SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。 
 - インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。

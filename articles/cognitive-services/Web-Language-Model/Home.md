@@ -6,19 +6,19 @@ services: cognitive-services
 author: piyushbehre
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: web-language-model
+ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c7f9e4cc4cf023aa93bd80ad1165ba9595e9034
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a4dfe5bb9651e3c5ff9706de829389a1b9df1305
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807439"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464927"
 ---
-# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは  (プレビュー)
+# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
 
 > [!IMPORTANT]
 > Web Language Model プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。

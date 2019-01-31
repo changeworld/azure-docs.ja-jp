@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7b31cbbf639e5835a3a46063b4b15d67915fb3d4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c4eeb3da3a3ac8cc6464e29881843a5aefd452d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816672"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル:Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
 

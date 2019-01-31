@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 5f67a8ffde24d3c3e39065806b07bdd5cba2857a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 5e9ade0f6076a34a5662330bab64e9dd71275ba8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522045"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470537"
 ---
 # <a name="design-for-data-modification"></a>データの変更に対応した設計
 この記事では、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 [テーブルの設計パターン](#table-design-patterns) のセクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  

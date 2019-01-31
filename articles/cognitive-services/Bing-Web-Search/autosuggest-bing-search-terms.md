@@ -3,19 +3,19 @@ title: 検索語句の自動提案 - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search API を Bing Autosuggest API と組み合わせて、強化された検索エクスペリエンスをユーザーに提供します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: 475ddfc2bcd9acd1312348a6c85e3d4627e48a3d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 5640d8ca23f0efc3e54b6ef7c986314a9b209fcf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128946"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192130"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>アプリケーションで Bing 検索語句を自動提案する
 

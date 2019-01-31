@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 4069fe32-a452-463f-973e-7aa0baa4c2fa
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ee0e91cfc106cd065c233e3bba09ca2ceba04bb1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3ef7528d3eee3aa5d9d74df30c6eb143039ada8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815754"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>チュートリアル:Azure Active Directory と BenefitHub の統合
 

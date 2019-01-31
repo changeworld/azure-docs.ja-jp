@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238898"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469194"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -197,11 +197,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1: BLOB ストレージの使用</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
+<u>オプション 2:</u>同じパーティション内でインデックス エンティティを作成する  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -223,7 +223,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報(電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 

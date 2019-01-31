@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e4ff5b3fd7797296761ba025dc54d15c491dea06
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f8f62736c803ec58c473d563728f68cfc729b974
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827689"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル:Azure Active Directory と Land Gorilla Client の統合
 

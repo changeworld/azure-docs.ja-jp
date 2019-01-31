@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 05/18/2018
+ms.openlocfilehash: ec0c80925770c75ee1f23df29f1724444c1e7337
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714493"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249665"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service on Azure Stack update 2 のリリース ノート
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 これらのリリース ノートでは、Azure App Service on Azure Stack Update 2 における機能強化と修正点、および既知の問題について説明します。 既知の問題は、デプロイおよび更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
 

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 6a49e940c988d25da1e6f6a3c6f372e15fd2136f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 35c5731d260fb63dece3d2b8ae4f4a4522fb91b8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850061"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153406"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 

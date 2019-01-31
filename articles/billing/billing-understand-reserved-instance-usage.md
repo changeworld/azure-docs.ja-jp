@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: banders
+ms.openlocfilehash: d3da7e73569d7860c7e4328b11ecc3f20cf648fc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585222"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903623"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに適用される Azure の予約の使用状況について
 
@@ -105,8 +105,8 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
 

@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 22088f0da615525aff45191c2b1becb3693a8eac
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: cf26cd53340d00e057492b8625b1ff5d6dcde884
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342434"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195020"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 

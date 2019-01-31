@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: ca0ea482b1cfb2f7af962ae1b7537f79bb60a62b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc3430a3314ff32ec1b565f25e3301e0194bd014
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823149"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162483"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>チュートリアル:Azure Active Directory と IMPAC Risk Manager の統合
 

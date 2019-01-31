@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 87634539b9709e057c0e51297569c1005a7bea1f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852101"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187081"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 

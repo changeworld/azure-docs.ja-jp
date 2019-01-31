@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 3d183870938f44cd71f1dab4105eec390ba12d94
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266147"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207549"
 ---
 # <a name="manage-content-moderator-service-credentials"></a>Content Moderator サービスの資格情報を管理する
 

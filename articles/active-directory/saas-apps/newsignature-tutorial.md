@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 896a40bf9358d446eb7d02666d8ec956f9623e91
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6aa9bb8214496a5457947eab0b42a01bbe89244a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822010"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル:Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 

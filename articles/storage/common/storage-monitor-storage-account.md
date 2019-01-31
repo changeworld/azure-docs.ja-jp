@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.subservice: common
+ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275692"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452645"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 

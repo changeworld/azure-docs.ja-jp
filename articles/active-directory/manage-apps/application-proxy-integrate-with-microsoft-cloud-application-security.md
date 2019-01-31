@@ -4,18 +4,18 @@ description: オンプレミス アプリケーションを Microsoft Cloud App 
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e5e83d928893c2937df8be55d72bb22869891492
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fbe3ce83cebe556f4248b1d62bb87c000823a31d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472485"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182066"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する
 Microsoft Cloud App Security (MCAS) を使用してリアルタイムで監視を行うように、オンプレミス アプリケーションを Azure Active Directory (Azure AD) で構成します。 MCAS では、条件付きアクセス ポリシーに基づいたリアルタイムでのセッションの監視と制御に、アプリの条件付きアクセス制御が使用されます。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828096"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177034"
 ---
 # <a name="publish-azure-application-offer"></a>Azure アプリケーション オファーを公開する
 
@@ -28,6 +28,7 @@ ms.locfileid: "54828096"
 次の図は、"Go Live" へのプランの発行処理の主な手順を示しています。
 
 ![オファー発行の手順](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>発行手順の詳しい説明
 
@@ -44,12 +45,14 @@ ms.locfileid: "54828096"
 | Microsoft によるレビュー                | 7 - 14 日 | Microsoft はお客様の Azure アプリケーションを包括的にレビューし、問題が発見された場合はお客様にメールを送信します。  この手順の長さは、アプリケーションの複雑さ、検出された問題、その問題に対してお客様がどのくらい迅速に対応するかによって変わります。  |
 | ライブ                           | 1 日未満 | オファーがリリースされ、指定されたリージョンに複製され、一般公開されます。 |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 Cloud パートナー ポータルのオファーの **[状態]** タブで発行プロセスを監視できます。
 
 ![Azure アプリ オファーの [状態] タブ](./media/offer-status-tab.png)
 
 発行プロセスが完了した後、オファーが [Microsoft Azure Marketplace のアプリケーション カテゴリ](https://azuremarketplace.microsoft.com/marketplace/apps/)に一覧表示されます。
+
 
 
 ## <a name="errors-and-review-feedback"></a>エラーとフィードバックの確認

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 814ae29d4b50ecb44db45534c5d2a6bfb5b97a59
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 1133bdb3c5d708710a556f68e4ac5c57d2dc3dc9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846508"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153251"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C:ログの収集
 
@@ -91,7 +91,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 1. Application Insights で新しいタブを開きます。
 1. 次に示すのは、ログを確認するために使用できるクエリの一覧です
 
-| クエリ | 説明 |
+| Query | 説明 |
 |---------------------|--------------------|
 traces | Azure AD B2C によって生成されたすべてのログを確認します |
 traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します

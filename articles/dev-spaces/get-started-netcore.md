@@ -3,19 +3,19 @@ title: .NET Core と VS Code を使用してクラウドに Kubernetes 開発空
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: b5de5ccdf98d6d0a2952a694a253feaac9d6e07d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413627"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467137"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
 
@@ -31,7 +31,7 @@ ms.locfileid: "53413627"
 これで、Azure に Kubernetes ベースの開発空間を作成する準備ができます。
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
-Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 ローカル コンピューターで実行されているオペレーティング システムは、Windows、Mac、Linux のいずれでもかまいません。 Linux の場合、次のディストリビューションがサポートされています。Ubuntu (18.04、16.04、14.04)、Debian 8、Debian 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、SLES 12。
+Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 ローカル コンピューターで実行されているオペレーティング システムは、Windows、Mac、Linux のいずれでもかまいません。 Linux では、次のディストリビューションがサポートされています。Ubuntu (18.04、16.04、14.04)、Debian 8 および 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、および SLES 12。
 
 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
 

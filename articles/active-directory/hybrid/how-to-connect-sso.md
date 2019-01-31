@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6978419cf0471e697d1320482e0ad314d3916bc0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6f89fde9040a106546e55f77e4a34e1ac861e46c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463866"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195462"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -62,12 +62,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ |はい|はい\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
-|Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
+|Windows 10|はい\*|いいえ |[はい]|[はい]\*\*\*|該当なし
+|Windows 8.1|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows 8|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows 7|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows Server 2012 R2 以降|はい\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Mac OS X|該当なし|該当なし|[はい]\*\*\*|[はい]\*\*\*|[はい]\*\*\*
 
 
 \*Internet Explorer バージョン 10 以降が必要
@@ -87,3 +87,4 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+

@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: c8bcbe011dc4ff9841a06b914a90ae7f9a14ee74
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 81b963a56b35cc1206982680f8742c2fea9f2446
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598504"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219330"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
@@ -24,19 +24,7 @@ ms.locfileid: "53598504"
 
 インテントを管理するには、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。 
 
-## <a name="create-an-app"></a>アプリを作成する
-
-1. [LUIS](https://www.luis.ai) ポータルにサインインします。
-
-1. **[Create new app]\(新しいアプリの作成\)** を選択します。 
-
-1. 新しいアプリに `MyHumanResourcesApp` という名前を付けます。 **[英語]** カルチャを選択します。 説明は省略できます。 
-
-1. **[完了]** を選択します。 
-
 ## <a name="add-intent"></a>意図を追加する
-
-1. アプリが開き、**[Intents]\(意図\)** リストが表示されます。
 
 1. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。
 

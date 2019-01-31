@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 0007afaf1a961b578b68925fc554cd0195bd5621
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b9e12f159f62d08056e3dbd54d9ba8ccc3773533
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723701"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100871"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチ テナント アプリケーションを構成する方法
 
@@ -31,4 +31,4 @@ ms.locfileid: "44723701"
 - [マルチテナント アプリケーションがエンド ツー エンドでどのように構成されコードされているか](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)、つまり登録方法、 "一般的な " エンドポイントの使用、 "ユーザー " と "管理者 " の同意の実装、より詳しい多層シナリオの実装方法などについて詳しく学習する
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

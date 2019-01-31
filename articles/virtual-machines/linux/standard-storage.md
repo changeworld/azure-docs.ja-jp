@@ -9,12 +9,12 @@ ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.component: disks
-ms.openlocfilehash: b0c709645607a8265e2235aadf28b43392cc49b9
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.subservice: disks
+ms.openlocfilehash: 0516a936247b0935dffd0d4ae76179e979810bbd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715789"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452364"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

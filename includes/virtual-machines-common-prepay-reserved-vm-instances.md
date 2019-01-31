@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/30/2018
-ms.openlocfilehash: a35c3a9a6d914cf7e6620819b24e34d954f55c2d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1da2278eee6fcea5c013e9c2f5f4ad3e3013b590
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742448"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906325"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
 

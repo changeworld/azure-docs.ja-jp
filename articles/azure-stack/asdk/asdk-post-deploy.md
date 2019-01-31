@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5c379e0bc6789950b05f75731937ed9bc1b44565
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 10/10/2018
+ms.openlocfilehash: 7e052c8d1674cc95a376de5ba6e20ca63b4dd72c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391207"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245526"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 

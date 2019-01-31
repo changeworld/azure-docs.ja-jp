@@ -10,18 +10,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106772"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477558"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -220,7 +220,7 @@ py35 環境を再度アクティブ化するには:
 
 シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 
 
-```conda``` または ````pip```` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
+```conda``` または ```pip``` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
 
     source activate root
     pip install <package>
@@ -271,7 +271,7 @@ Microsoft R Server で Spark コンテキストで実行する前に、1 回限�
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
+Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、PyCharm、RStudio、IntelliJ が含まれます。 IntelliJ、RStudio、PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。

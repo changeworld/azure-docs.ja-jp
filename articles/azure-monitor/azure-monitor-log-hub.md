@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 01/15/2019
+ms.date: 01/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 5c3a61eb4509742f8f5a8732f5d4e81cab59ff78
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a48e252d1dce2d9142249642a6221e8913c1d92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54829888"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223426"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,8 +53,8 @@ ms.locfileid: "54829888"
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Azure Monitor とは</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">ブランドの変更</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/monitoring-data-sources">データ ソースの監視</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-service-providers">サービス プロバイダーの設計上の考慮事項</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">データ ソースの監視</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">サービス プロバイダーの設計上の考慮事項</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -75,8 +75,8 @@ ms.locfileid: "54829888"
                                                                 <div class="cardText" style="padding-left: 0px">
                                                                     <h3>セキュリティとプライバシーについて</h3> 
                                                                     <p>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-data-security">ログ データ</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-personal-data-mgmt">個人のログ データの処理</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-security">ログ データ</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">個人のログ データの処理</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/roles-permissions-security">ロールのアクセス許可とセキュリティ</a><br/>
                                                                     </p>
                                                                     <br>
@@ -103,7 +103,7 @@ ms.locfileid: "54829888"
                                                     <h3>監視</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">メトリックとログ</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/log-analytics-data-ingestion-time">ログ データ インジェスト時間</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">ログ データ インジェスト時間</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>データ ソース</h3>
@@ -147,7 +147,7 @@ ms.locfileid: "54829888"
                                                         <br>
                                                         <h3>インシデント対応</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified">アラートの概要</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-overview">アラートの概要</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Autoscale</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-unified-log">ログ アラート</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-activity-log">アクティビティ ログ アラート</a><br/>

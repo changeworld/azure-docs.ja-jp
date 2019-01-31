@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: b2debff99e9492c251c8ffba6c0707a6cb6e6743
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 637cdb338496764e64c18a887673808ef4e8415a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855688"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203455"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
 

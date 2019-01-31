@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: bc1859ae14dfe0328479e775ed058cdec12bfcc2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b6410067426f65627c22536cd598ed318ae0c81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822826"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>チュートリアル:Azure Active Directory と BeeLine の統合
 

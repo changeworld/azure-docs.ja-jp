@@ -9,18 +9,18 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: b929608d64e747d6e768da4ee6627f9e6b09a83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475535"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Azure Machine Learning Studio Web サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 

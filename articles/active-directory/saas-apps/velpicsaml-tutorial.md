@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: eb59c61f89b3b23ce8b0a393ee1e0e842826e90b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80b1495153d77599a91713aa492688ce9f29d0f0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811793"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory と Velpic SAML の統合
 

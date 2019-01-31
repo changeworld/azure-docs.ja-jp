@@ -9,18 +9,18 @@ ms.author: garye
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: e0628f6ed39652f3168917e26383b5d3c4a4fa4b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b84d3be06d1d560776a3fcc86668e20bf58d3b0b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260924"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467426"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>チュートリアル手順 6:Azure Machine Learning Studio Web サービスにアクセスする
 

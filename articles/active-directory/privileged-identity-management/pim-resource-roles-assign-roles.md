@@ -10,24 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: daf83baf5f5c3a2b7bbfe39e043e2b8411d6dd06
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 19c1e5bfdd7a510a52e23cc3f216a6b0c4448ce7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465777"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155223"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを割り当てる
 
 Azure AD PIM は、組み込みの Azure リソース ロールと、以下を含むカスタム ロール (ただしこれらに限定されません) を管理できます。
 
-- 所有者
-- ユーザー アクセス管理者
-- 共同作成者
+- Owner
+- User Access Administrator
+- Contributor
 - セキュリティ管理者
 - セキュリティ マネージャーなど
 

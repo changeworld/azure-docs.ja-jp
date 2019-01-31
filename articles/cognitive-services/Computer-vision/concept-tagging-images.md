@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: caf4d8a4ee3ccee181d233716e0a645150a201c3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6724f95575e1f918fa29033cd53caaef8c97c81c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582934"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149661"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 
@@ -28,7 +28,7 @@ Computer Vision では、数千個の認識可能なオブジェクト、生物�
 
 次の JSON 応答は、サンプル イメージで検出された視覚的特徴のタグを付けるときに、Computer Vision から返される内容を示します。
 
-![青い家と前庭](./Images/house_yard.png).
+![青い家と前庭](./Images/house_yard.png)。
 
 ```json
 {

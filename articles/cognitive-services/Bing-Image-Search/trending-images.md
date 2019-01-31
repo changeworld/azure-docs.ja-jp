@@ -7,17 +7,17 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258970"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188322"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する
 

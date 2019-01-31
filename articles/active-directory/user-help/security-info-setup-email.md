@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 33ac67e7ef7313fcf54e0507d8c3d83b1d42ca2d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 62b6f7306cb2492d4232b3b42021db721a0b374c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816145"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189291"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>メールを使用するようにセキュリティ情報を設定する (プレビュー)
 

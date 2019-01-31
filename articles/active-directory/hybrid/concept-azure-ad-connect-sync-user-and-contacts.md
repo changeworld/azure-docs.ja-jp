@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 351231fb50b60be1163c787913ef7ab944ba01b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473930"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172172"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同期: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。

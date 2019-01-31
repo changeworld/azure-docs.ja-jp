@@ -7,16 +7,16 @@ manager: cgronlun
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3c0d7d3aed08c6dbbcac5f25e91edd8e27e64440
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 704c3c6b4c998526936e7532fcd92c85ccce54e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222186"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 

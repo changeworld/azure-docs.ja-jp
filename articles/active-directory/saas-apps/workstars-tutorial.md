@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 51a4a4e4-ff60-4971-b3f8-a0367b70d220
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: d78289fcfc134f6bcba14de9f04637520e10180c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: af76ddf6cb4b44e605d6da485df8ec932239e993
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812938"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151381"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル:Azure Active Directory と Workstars の統合
 

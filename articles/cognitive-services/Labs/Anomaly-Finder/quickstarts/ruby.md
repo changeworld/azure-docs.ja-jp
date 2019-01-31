@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 97b02bfc2e388757306ae6180cf66f6870437218
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: a229011617239b829ce2622a0482fd9b4908aca6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457631"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224209"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>Anomaly Finder API と Ruby の使用
 

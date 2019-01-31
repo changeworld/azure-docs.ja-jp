@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 80ae8d6a1e27d13bc6750779f2e38649c49e2498
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ae6cc738baac5a9f828b8a0d4d3e0a6509b4f1b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814751"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>チュートリアル:Azure Active Directory と Onit の統合
 

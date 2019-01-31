@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 333394c1-b5a7-489c-8f7b-d1a5b4e782ea
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 334f5cfb2553deec6caab04b46deaa70f53b96d8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1da86d67356bf1c03f62b505d5bb339e4fe2cdfb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818083"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>チュートリアル:Azure Active Directory と Benefitsolver の統合
 

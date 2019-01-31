@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: aaf6c6ba17e41c4d32aafa98dbd2c1dc2532e197
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: fe15a1aa0d284913c77d62e254b8827d9d60c850
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808308"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル:Azure Active Directory と Flatter Files の統合
 

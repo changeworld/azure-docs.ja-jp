@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9d2daad06ad6cb97fe562db98cab57c4ed970a60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7e4c750e7470c6a76e56bd67d6a134b1b61535eb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260211"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218392"
 ---
 # <a name="create-reviews-from-the-api-console"></a>API コンソールでレビューを作成する
 
@@ -28,7 +28,7 @@ Review API の[レビュー操作](https://westus.dev.cognitive.microsoft.com/do
 
 - **teamName**:レビュー ツール アカウントの設定時に作成したチーム名。 
 - **ContentId**:この文字列が API に渡され、コールバックで返されます。 ContentId は、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。
-- **Metadata**: コールバック時に API エンドポイントに返される、カスタムのキーと値のペア。 キーがレビュー ツールで定義された短いコードの場合は、タグとして表示されます。
+- **メタデータ**: コールバック時に API エンドポイントに返される、カスタムのキーと値のペア。 キーがレビュー ツールで定義された短いコードの場合は、タグとして表示されます。
 - **Ocp-Apim-Subscription-Key**:**[設定]** タブにあります。詳細については、[概要](overview.md)に関するページを参照してください。
 
 テスト用コンソールにアクセスする最も簡単な方法は、**[資格情報]** ウィンドウを使用することです。

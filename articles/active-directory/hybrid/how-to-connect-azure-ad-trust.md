@@ -6,7 +6,7 @@ services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
 manager: daveba
-ms.component: hybrid
+ms.subservice: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: bfdc58b8af9fc5c7c5e56e78b17d97aa60681239
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 660ded4cd5cfd4da3c04e1044c890612e92ea9c4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462370"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161188"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 

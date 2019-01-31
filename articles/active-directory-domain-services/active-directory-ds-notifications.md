@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
-ms.component: domains
+ms.subservice: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: ebac78ff3912d2aafba97b020b37df16020bd7fb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d2cdff4b0b961083d8f8ac6e2eb8b1b46d30c06b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853665"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159216"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Azure AD Domain Services の通知設定
 

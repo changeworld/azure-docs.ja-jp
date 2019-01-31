@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232874"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247648"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack のスケール ユニット ノードを追加する
 

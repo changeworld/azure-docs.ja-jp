@@ -3,19 +3,19 @@ title: LDAP 認証と Azure MFA Server | Microsoft Docs
 description: LDAP 認証と Azure Multi-Factor Authentication Server のデプロイ。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 2b8843ef365873c153ca1e4ec2f4f5d3fe06e992
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7eac79f52df780c7e3e4ea4505cb119a79661da8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430315"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075097"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
 

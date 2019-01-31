@@ -3,19 +3,19 @@ title: Azure Multi-Factor Authentication のセキュリティ ガイダンス
 description: このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のガイダンスについて説明します。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 35e39ca4aa00838d7437ec675294b6c3cc62be6f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34b7607ffe8e23b09782fee8394c00f23909af6b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426225"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078153"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティ ガイダンス
 

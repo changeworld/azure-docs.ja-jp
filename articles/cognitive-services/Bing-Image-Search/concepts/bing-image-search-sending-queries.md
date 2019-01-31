@@ -7,16 +7,16 @@ author: aahill
 manager: cgronlun
 ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: 5d850b7b95c15137f70a0d343f97171ec2d2f753
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9e5995809630e160e38a5be700b058035fffc653
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256980"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188543"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>Bing Image Search API にクエリを送信する
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384719"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883400"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -111,7 +111,7 @@ OMS ポータルでは、ソリューション ギャラリーから管理ソリ
 Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../../azure-monitor/platform/alerts-metric.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../../azure-monitor/platform/alerts-extend-tool.md)に関するページを参照してください。
 
 ## <a name="how-do-i-access-my-dashboards"></a>ダッシュボードへのアクセス方法を教えてください
-Log Analytics の [[マイ ダッシュボード]](dashboards.md) 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
+Log Analytics の **[マイ ダッシュボード]** 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
 
 ## <a name="how-do-i-check-my-usage"></a>使用量をチェックするにはどうすればよいですか?
 Log Analytics の使用量とコストは、ワークスペースから **[使用量と推定コスト]** を選択して簡単に表示、管理できます。

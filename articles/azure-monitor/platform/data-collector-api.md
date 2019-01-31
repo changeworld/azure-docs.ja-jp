@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 674a26b9c8eb5fe8f44b416b5296b61c6678d2cd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186176"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211102"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -57,7 +57,7 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 | ヘッダー | 説明 |
 |:--- |:--- |
 | 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
-| Log-Type |送信中のデータのレコード型を指定します。 現在、ログの種類でサポートされているのは、アルファベットのみです。 数字や特殊文字はサポートされていません。 このパラメーターのサイズ制限は 100 文字です。 |
+| Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
 | time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 

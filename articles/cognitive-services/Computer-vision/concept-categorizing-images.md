@@ -1,22 +1,22 @@
 ---
-title: 画像の分類 - Computer Vision
+title: イメージへの分類 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像分類機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f182110d150583ee1c241c23a2e1924d9f3e3bd4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579500"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158045"
 ---
 # <a name="image-categorization-with-computer-vision"></a>Computer Vision での画像の分類
 
@@ -53,7 +53,7 @@ ms.locfileid: "53579500"
 
 次の表は、各イメージについて Computer Vision から返される一般的なイメージ セットとカテゴリを示しています。
 
-| 画像 | カテゴリ |
+| イメージ | Category |
 |-------|----------|
 | ![家族としてポーズをとっている 4 人の人物](./Images/family_photo.png) | people_group |
 | ![草原の座っている子犬](./Images/cute_dog.png) | animal_dog |

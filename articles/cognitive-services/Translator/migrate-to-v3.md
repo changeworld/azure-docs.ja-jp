@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682597"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227779"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
@@ -76,7 +76,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 | V3 メソッド   | 課金対象となる文字数 |
 |:----------- |:-------------|
 | Languages     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
-| Translate     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
+| 翻訳     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
 | Transliterate     | 音訳のために送信された文字数が数えられます。         |
 | Dictionary の lookup と example     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
 | BreakSentence     | 課金はありません。       |
@@ -91,7 +91,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 ## <a name="v3-api-text-translations-methods"></a>V3 API テキスト翻訳メソッド
 
-[Languages](reference/v3-0-languages.md)
+[言語](reference/v3-0-languages.md)
 
 [Translate](reference/v3-0-translate.md)
 
@@ -114,7 +114,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
 |Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  [はい]|    いいえ | [はい]|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。
@@ -132,6 +132,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 * 使用しているエンドポイントが api.microsofttranslator.com である場合、ご使用の Translator Text API のバージョンは 2 です。
 
 どのバージョンの Translator API でも、翻訳の記録は作成されません。 翻訳はだれとも共有されません。 詳細については、[Translator の「トレースなし」](http://www.aka.ms/NoTrace)という Web ページを参照してください。
+
 
 ## <a name="links"></a>リンク
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 887134f7d790e5ed7e878a94caa9ef2fb9356ae3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959973"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102157"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -41,7 +41,7 @@ Azure AD では、次の 2 種類のアクセス許可が定義されていま�
 
 有効なアクセス許可は、アプリが API に要求を行うときに付与されるアクセス許可です。 
 
-* 委任されたアクセス許可の場合、アプリの有効なアクセス許可は、(同意によって) アプリに付与されている委任されたアクセス許可と現在サインインしているユーザーの特権の共通部分の最小特権になります。 サインインしているユーザーよりも多くの特権をアプリに付与することはできません。 組織内では、サインインしているユーザーの特権は、ポリシーによって決定することも、1 つ以上の管理者ロールのメンバーシップによって決定することもできます。 管理者ロールの詳細については、[Azure AD での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関する記事をご覧ください。
+* 委任されたアクセス許可の場合、アプリの有効なアクセス許可は、(同意によって) アプリに付与されている委任されたアクセス許可と現在サインインしているユーザーの特権の共通部分の最小特権になります。 サインインしているユーザーよりも多くの特権をアプリに付与することはできません。 組織内では、サインインしているユーザーの特権は、ポリシーによって決定することも、1 つ以上の管理者ロールのメンバーシップによって決定することもできます。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
     たとえば、Microsoft Graph で委任されたアクセス許可として `User.ReadWrite.All` がアプリに付与されているとします。 通常、このアクセス許可は、組織内のすべてのユーザーのプロファイルを読み取り、更新する権限をアプリに付与します。 サインインしているユーザーが全体管理者の場合、アプリは組織内のすべてのユーザーのプロファイルを更新できます。 ただし、サインインしているユーザーが管理者ロールに属していない場合、アプリが更新できるのは、サインインしているユーザーのプロファイルだけになります。 アプリにはユーザーの代理で動作するためのアクセス許可が付与されていますが、そのユーザーに組織内の他のユーザーのプロファイルを更新する権限がないため、アプリがこれを実行することはできません。
 * アプリケーションのアクセス許可の場合、アプリの有効なアクセス許可は、そのアクセス許可が暗示する完全なレベルの権限になります。 たとえば、アプリケーションのアクセス許可として `User.ReadWrite.All` が付与されているアプリは、組織内のすべてのユーザーのプロファイルを更新できます。
 

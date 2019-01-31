@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f33982a584f831fbab190d94ce89a8d7c93d7913
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 494557ce3836fde295ac583821dbc7024207a8a4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825223"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171917"
 ---
 # <a name="set-up-security-info-to-use-phone-calls-preview"></a>電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)
 

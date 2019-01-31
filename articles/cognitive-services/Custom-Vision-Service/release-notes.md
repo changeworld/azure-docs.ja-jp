@@ -5,16 +5,16 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: bba65a495963142e8b3201a026dc13a8cfff8e70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408359"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207362"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
 

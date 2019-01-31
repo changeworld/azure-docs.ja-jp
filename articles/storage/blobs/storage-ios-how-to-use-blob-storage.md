@@ -8,13 +8,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961928"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244764"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 

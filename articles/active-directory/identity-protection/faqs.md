@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 70bab69fecbe3f8aab1858aaddfa9004278c0f03
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.reviewer: raluthra
+ms.openlocfilehash: 9c2f7b4ca15f81963561a66bfcc5a87bcf187396
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470683"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180842"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection の FAQ
 

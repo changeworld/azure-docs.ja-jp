@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 3e55da5a6ebb0db26b32f51d67f013cb65438104
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854804"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103634"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -132,8 +132,8 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
         "type": "Microsoft.ServiceBus/namespaces",
         "location": "[parameters('location')]",
         "sku": {
-          "name": "Standard",
-          "tier": "Standard"
+          "name": "Premium",
+          "tier": "Premium"
         },
         "properties": { }
       },

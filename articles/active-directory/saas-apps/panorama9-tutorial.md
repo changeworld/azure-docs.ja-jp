@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 5e28d7fa-03be-49f3-96c8-b567f1257d44
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: aa4bf1208e4f588e6fe74f2d0ec157da9176b670
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 94ba73f932cd0eaae463bd08712cfe617be04768
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823370"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル:Azure Active Directory と Panorama9 の統合
 

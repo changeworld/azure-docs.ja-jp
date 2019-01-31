@@ -3,19 +3,19 @@ title: Azure AD のスマート ロックアウトを使用してブルート �
 description: Azure Active Directory のスマート ロックアウトを使用すると、パスワードを推測するブルート フォース攻撃から組織を守れます
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 6d2ed7632223b5ded5c0306533d807e9b57f9d76
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426184"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077966"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 

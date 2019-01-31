@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 1068d364-11f3-43b5-bd6d-26f00ecd5baa
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: b53ddb800bfd2eaf1f85c3a00f55d9f03bdc7c9f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: eccb6efc95b274545a4d74bbd1ace7ab5629214f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816604"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>チュートリアル:Azure Active Directory と Lucidchart の統合
 

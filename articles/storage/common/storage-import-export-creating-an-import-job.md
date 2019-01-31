@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: efe7b6722a9cfa24ea86130a13a0599115e89821
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258012"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451667"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341822"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217290"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
@@ -508,7 +508,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
 | Name | `Connection` | 必須 |
-| ID | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
+| Id | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
 | start | クライアントが接続要求を送信した時刻 | 必須 |
 | End | 接続が正常に確立されたという通知をクライアントが受信した時刻 (エラーが発生した場合は、接続が拒否された時刻や失敗した時刻) | 必須 |
 | Error | 発生したエラーの説明 (発生した場合)。 接続に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |

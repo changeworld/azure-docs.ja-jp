@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 71229751-74eb-4c2c-abb4-07caa95754c7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ee91afecb9c98249c4545bee244e8f4d2e2fc21
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ca355eecc8185a9f5ae0a67a3d43516dbd7b25ec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822367"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kindling"></a>チュートリアル:Azure Active Directory と Kindling の統合
 

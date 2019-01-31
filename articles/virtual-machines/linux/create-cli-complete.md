@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467487"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180366"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -30,13 +30,13 @@ ms.locfileid: "54467487"
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループは、仮想マシンおよび関連する仮想ネットワーク リソースよりも前に作成する必要があります。 [az group create](/cli/azure/group#az_group_create) で、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループは、仮想マシンおよび関連する仮想ネットワーク リソースよりも前に作成する必要があります。 [az group create](/cli/azure/group) で、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-既定では、Azure CLI コマンドの出力形式は JSON (JavaScript Object Notation) です。 既定の出力をリストまたはテーブルなどに変更するには、[az configure --output](/cli/azure/reference-index#az_configure) を使用します。 出力形式で 1 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例に、`az group create` コマンドの JSON 形式の出力を示します。
+既定では、Azure CLI コマンドの出力形式は JSON (JavaScript Object Notation) です。 既定の出力をリストまたはテーブルなどに変更するには、[az configure --output](/cli/azure/reference-index) を使用します。 出力形式で 1 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例に、`az group create` コマンドの JSON 形式の出力を示します。
 
 ```json                       
 {
@@ -559,7 +559,7 @@ sudo apt-get install -y nginx
 ![VM 上の既定 NGINX サイト](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>テンプレートとしてのエクスポート
-同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#az_group_export) を使って、リソース グループを次のようにエクスポートします。
+同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group) を使って、リソース グループを次のようにエクスポートします。
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json

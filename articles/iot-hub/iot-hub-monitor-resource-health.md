@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: b22b2f5ce9e08b3ee345d6e614c82b7dc8330453
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438695"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888398"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -402,7 +402,7 @@ IoT Hub の正常性を確認するには、次の手順を実行します。
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
 [lnk-AM-metrics]: ../azure-monitor/platform/metrics-supported.md
-[lnk-AM-schemas]: ../azure-monitor/platform/tutorial-dashboards.md
+[lnk-AM-schemas]: ../azure-monitor/platform/diagnostic-logs-schema.md
 [lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
 [lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
 [lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

@@ -3,20 +3,20 @@ title: 要求の調整 - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: 要求の調整についてと、Bing Web Search API を使用する状況について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.assetid: ''
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: 41629f0259300bf0eb56f9a91552513654e5e924
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: ec22f66c84123893823242e87d9e1ee8e912b839
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185415"
 ---
 # <a name="throttling-requests-to-the-bing-web-search-api"></a>Bing Web Search API に対する要求の調整
 

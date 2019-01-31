@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f8c5e5f598ab8566eacb594ff66b63ce3793f57f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337140"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093196"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -65,7 +65,7 @@ Stack Overflow は開発に関連する質問があるときに優先して使�
 
 検索によって質問の回答が見つからなかった場合は、新しい質問を Stack Overflow に投稿します。質問の際には、コミュニティでの分類とタイムリーな回答のために、次のタグを使用してください。
 
-|コンポーネント/区分  |タグ  |
+|コンポーネント/区分  |Tags  |
 |---------|---------|
 |ADAL ライブラリ |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
 |MSAL ライブラリ     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|

@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: eb64bb4daece44d33775dca7417c51b216e04614
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 3d4411153f2c5c342b1640865f05b6bf4c4b0f61
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455438"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212615"
 ---
 # <a name="use-the-anomaly-finder-api-with-python"></a>Anomaly Finder API と Python の使用
 

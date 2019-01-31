@@ -9,15 +9,15 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 69bc2bb5fa06f4edc0283961063d2302c7905b4f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 905dc11e15e9a3bfbf20d9afdc67513337ca30ed
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439002"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168874"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールを割り当てる
 

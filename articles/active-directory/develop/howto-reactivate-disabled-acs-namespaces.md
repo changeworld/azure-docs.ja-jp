@@ -6,7 +6,7 @@ documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 01/21/2019
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 085923dd124a4f973a709f0e59a07ad4137c6901
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a8e1d1b73d360b55375e5164670ff16268941ede
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438499"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092241"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 

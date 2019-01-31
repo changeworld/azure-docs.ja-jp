@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: hux
-ms.component: blobs
-ms.openlocfilehash: f3a67c2eddba2b7bd734237466243da8f43a862a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: blobs
+ms.openlocfilehash: d8ed2c770d6d9a6208f3be10de9266702ef07ae0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848650"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250063"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 

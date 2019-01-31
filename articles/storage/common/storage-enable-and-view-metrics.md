@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 8fc85f82e5b6290a0f7401581e57b77473a495ae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632146"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454013"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Azure のストレージ メトリックの有効化とメトリック データの表示
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]

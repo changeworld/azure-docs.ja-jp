@@ -5,18 +5,18 @@ services: active-directory
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 4d02adac41285ec4589c39eb61e7be48e960f92c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6596a814841619d7b42599d381d79c98f672ec85
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477058"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196482"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 ユーザーまたはグループをエンタープライズ アプリに割り当てるには、適切なアクセス許可でエンタープライズ アプリを管理する必要があります。また、ディレクトリの全体管理者である必要があります。

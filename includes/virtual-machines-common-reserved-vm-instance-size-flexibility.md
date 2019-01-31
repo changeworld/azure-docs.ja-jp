@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83b29aa1f0c12661eb1724eb505ad46987ed1019
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742505"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906326"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
 

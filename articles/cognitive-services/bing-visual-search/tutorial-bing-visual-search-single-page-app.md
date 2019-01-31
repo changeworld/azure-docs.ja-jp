@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 8ff5e36e6189c522e00c7cdd126c26b1cef92912
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ca210130a1319ffc1f9dfd867d6c320ea0bd68b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192658"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する 
 

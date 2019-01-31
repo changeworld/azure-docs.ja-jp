@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 8eccb4c1618acc88f6a3bdfa6c67d73aad055988
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9feb54c239800346426d7196a1c303ed5930de16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476651"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192453"
 ---
 # <a name="how-to-unblock-users"></a>方法:ユーザーのブロックを解除する
 

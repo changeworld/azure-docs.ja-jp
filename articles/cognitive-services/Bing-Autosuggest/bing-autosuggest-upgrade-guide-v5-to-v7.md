@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8ada9ab6622ea12e48475230787168d90e95ec0d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 13e1a2d574abd080b1e947896ed5c2de568fc853
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829870"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178479"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API のアップグレード ガイド
 

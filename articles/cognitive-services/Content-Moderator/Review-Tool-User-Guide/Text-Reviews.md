@@ -5,16 +5,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 005e6ed853cbc6013d74e7ff479097dcbb0a1043
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 896956653ed924b7e30e63c1ae5cfa90dd0cc94d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259565"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219789"
 ---
 # <a name="let-human-reviewers-review-text"></a>人間のレビュー担当者にテキストをレビューさせます
 

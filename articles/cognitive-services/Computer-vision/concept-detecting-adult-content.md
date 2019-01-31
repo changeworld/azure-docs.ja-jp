@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e0cca054acb7d3d649105ecd45748a60a2aa9bbb
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 7f343f22eb881cf58a024f8464ffd0d615fe06e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582169"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158895"
 ---
 # <a name="detecting-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの検出
 

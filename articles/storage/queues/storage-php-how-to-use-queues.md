@@ -9,13 +9,13 @@ ms.devlang: php
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 70efdf1fb2c1b8411e922f16fdf401d1bf428d08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.subservice: queues
+ms.openlocfilehash: 3475791e3cc8fd0daea3bf330d9c15f685c13488
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140960"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463261"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: nolachar
-ms.openlocfilehash: f4ead76f78b1457e48c03e2fd0b0f871f90b0cf5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8eccfda4481fea4c305aeb59282fb5d24b845f9e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804006"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181403"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing Spell Check API でサポートされる言語と地域のサポート
 
@@ -23,7 +23,7 @@ Bing Spell Check API では次の言語がサポートされています (`spell
 
 `en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
 
-| Language    | 言語コード |
+| 言語    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |

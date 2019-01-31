@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471822"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467443"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -108,7 +108,7 @@ Azure Search では、容量は*レプリカ*と*パーティション*で構成
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| パーティション サイズ|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| パーティション サイズ|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | インデックスとインデクサーの制限| 50 | 200 | 200 |  |  |  |  |
 
 **S1** は専用のリソースと複数のパーティションが必要な場合に、一般的な選択肢です。 最大 12 の 25 GB のパーティションを使用して、レプリカに対しパーティションを最大化した場合、**S1** のサービス当たりの限界は合計 300 GB です (よりバランスの取れた構成については [ パーティションとレプリカの割り当て](search-capacity-planning.md#chart)を参照)。

@@ -9,18 +9,18 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
-ms.openlocfilehash: 90a9a81de488f2b3b256e3164c3bfde3019d0ad3
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8ad1558c5d124e0bbe828aa69633bc16e9532eee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253019"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464111"
 ---
 # <a name="whats-new-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio の新機能
 

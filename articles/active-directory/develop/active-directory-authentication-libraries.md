@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72abe674110a60a046e06800bdeb484c9d6c2a33
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 09e748f39cd5c31433e30cfa60527ce082fb07c6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682437"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080788"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 

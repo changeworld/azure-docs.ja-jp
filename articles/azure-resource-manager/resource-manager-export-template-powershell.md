@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: c69bab9d2956568473dd6def86ecbd9bbb6577cf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cca81bf3f5a46b32cc901a0ac6024eb7888685f7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359222"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081607"
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>PowerShell を使用した Azure Resource Manager テンプレートのエクスポート
 
@@ -36,18 +36,18 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 両方のテンプレート エクスポート方法を説明するために、まず、ソリューションをサブスクリプションにデプロイしましょう。 エクスポートするリソース グループがサブスクリプションに既にある場合は、このソリューションをデプロイする必要はありません。 ただし、この記事では、このソリューションのテンプレートを参照します。 サンプル スクリプトによってストレージ アカウントがデプロイされます。
 
 ```powershell
-New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
+New-AzResourceGroup -Name ExampleGroup -Location "South Central US"
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup `
   -DeploymentName NewStorage
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```  
 
 ## <a name="save-template-from-deployment-history"></a>デプロイ履歴からのテンプレートの保存
 
-デプロイ履歴からテンプレートを取得するには、[Save-AzureRmResourceGroupDeploymentTemplate](/powershell/module/azurerm.resources/save-azurermresourcegroupdeploymenttemplate) コマンドを使用します。 次の例では、前にデプロイしたテンプレートを保存します。
+デプロイ履歴からテンプレートを取得するには、[Save-AzureRmResourceGroupDeploymentTemplate](/powershell/module/az.resources/save-azresourcegroupdeploymenttemplate) コマンドを使用します。 次の例では、前にデプロイしたテンプレートを保存します。
 
 ```powershell
-Save-AzureRmResourceGroupDeploymentTemplate -ResourceGroupName ExampleGroup -DeploymentName NewStorage
+Save-AzResourceGroupDeploymentTemplate -ResourceGroupName ExampleGroup -DeploymentName NewStorage
 ```
 
 これによりテンプレートの場所が返されます。
@@ -62,10 +62,10 @@ C:\Users\exampleuser\NewStorage.json
 
 ## <a name="export-resource-group-as-template"></a>リソース グループをテンプレートとしてエクスポート
 
-デプロイ履歴からテンプレートを取得するのではなく、リソース グループの現在の状態を表すテンプレートを取得するには、[Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) コマンドを使用します。 このコマンドは、リソース グループを大幅に変更し、すべての変更が反映されたテンプレートがないときに使用します。 リソース グループのスナップショットとして意図されており、同じリソース グループへの再デプロイに使うことができます。 エクスポートされたテンプレートを他のソリューションに使うには、大幅な変更を行う必要があります。
+デプロイ履歴からテンプレートを取得するのではなく、リソース グループの現在の状態を表すテンプレートを取得するには、[Export-AzureRmResourceGroup](/powershell/module/az.resources/export-azresourcegroup) コマンドを使用します。 このコマンドは、リソース グループを大幅に変更し、すべての変更が反映されたテンプレートがないときに使用します。 リソース グループのスナップショットとして意図されており、同じリソース グループへの再デプロイに使うことができます。 エクスポートされたテンプレートを他のソリューションに使うには、大幅な変更を行う必要があります。
 
 ```powershell
-Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup
+Export-AzResourceGroup -ResourceGroupName ExampleGroup
 ```
 
 これによりテンプレートの場所が返されます。
@@ -111,7 +111,7 @@ C:\Users\exampleuser\ExampleGroup.json
 このテンプレートを再デプロイできますが、ストレージ アカウントの一意の名前を推測する必要があります。 パラメーターの名前は若干異なります。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup `
   -TemplateFile C:\Users\exampleuser\ExampleGroup.json `
   -storageAccounts_nf3mvst4nqb36standardsa_name tfnewstorage0501
 ```

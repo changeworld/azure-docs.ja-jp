@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d8c607b5f1d338ca3a2bd3844b26ef51d801c720
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086072"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473348"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 Azure データ サイエンス仮想マシンには、Python、R、Julia などの一般的な言語で使用できる、機械学習 (ML) のための豊富な一連のツールおよびライブラリがあります。 
@@ -98,7 +98,7 @@ Azure データ サイエンス仮想マシンには、Python、R、Julia など
 |    |           |
 | ------------- | ------------- |
 | 紹介   | H2O は、インメモリ、分散型、高速で、かつスケーラブルな ML をサポートするオープンソースの AI プラットフォームです。  |
-| サポートされているバージョン      |  Linux   |
+| サポートされているバージョン      | Linux   |
 | 標準的な使用      | 汎用で、分散型のスケーラブル ML   |
 | 構成またはインストール方法      | H2O は `/dsvm/tools/h2o` にインストールされます。      |
 | 使用または実行方法      | X2Go を使用して VM に接続します。 新しいターミナルを起動し、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。 次に、Web ブラウザーを起動して `http://localhost:54321` に接続します。      |

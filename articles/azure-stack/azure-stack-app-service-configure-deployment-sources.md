@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 3e8e1626987f7418fee9fc36515131650d865201
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 7cf52a0b8b2bb30a82b191d76595d24eafebe49f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213078"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240261"
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 

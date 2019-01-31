@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: a37fc1c0-4bae-4173-989b-00de53a0076f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 613a31fdd82c45705b5a0baa3f07aa88d4eb4e0b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 998868a656512486103e8c8e23ae39026c3f0cfe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815431"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル:Azure Active Directory と RealtimeBoard の統合
 

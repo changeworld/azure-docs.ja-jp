@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: f1043752ccead6276dbe6b18db7c0965cd90b43f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f3190cb7f837464dd211acb127c4ab6f86e7a9f4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817148"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル:Azure Active Directory と TOPdesk - Public の統合
 

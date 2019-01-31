@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
-ms.component: disks
-ms.openlocfilehash: cc6b26603991e577024c7f680eb45f4f6b354c85
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 9d455c42af4dd96f7b909a8b314260f2b05c5d94
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473087"
 ---
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

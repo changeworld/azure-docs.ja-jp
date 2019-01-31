@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: b62a150160daa1d6708dbf5edaa6772688e2ffa1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 0a20f1bf53a42487e3ce6b347cde8be9a343bc2e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606952"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166698"
 ---
 # <a name="manage-programs-and-their-controls"></a>プログラムとそのコントロールの管理 
 

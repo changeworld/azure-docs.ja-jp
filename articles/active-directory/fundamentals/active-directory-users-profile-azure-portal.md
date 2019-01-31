@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: df0f4fac471192c7e8745c07423857ea3c3d906b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d526a56f0d33ebaba664a455b9e541f0f2489a53
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450849"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104526"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。

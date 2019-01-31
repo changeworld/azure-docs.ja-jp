@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d9ef8f9c68a09e998c393584ceb6e3be53f91a9c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 9fab5394fadc029b9415370c6bc8c0a3a3642054
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848803"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156702"
 ---
 # <a name="social-accounts-claims-transformations"></a>ソーシャル アカウント要求変換
 

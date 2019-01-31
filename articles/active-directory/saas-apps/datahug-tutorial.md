@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 5c0dc1ea-7ff4-4554-b60b-0f2fa9f5abaa
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: a7a7a9cffa2dab3cc50a393f15d7419728502f8e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6f1ba5ed3da451200c944145376a0f8a3b550e71
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814225"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル:Azure Active Directory と Datahug の統合
 

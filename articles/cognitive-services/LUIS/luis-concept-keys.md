@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: ff7f25a9c1ac73c53587bb320ef3889a5bfa9dc5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 81744e2af75410da911ee17f2c4acd05d5a57051
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439121"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222595"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS のオーサリング キーとクエリ予測エンドポイント キー
 LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md)して LUIS アプリに[割り当て](luis-how-to-azure-subscription.md)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 

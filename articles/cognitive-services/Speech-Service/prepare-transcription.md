@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 44f2cb9e95a9a79c85c23b0eebd919851b94c1f8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467737"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228136"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 

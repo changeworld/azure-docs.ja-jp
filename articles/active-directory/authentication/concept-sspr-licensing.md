@@ -3,19 +3,19 @@ title: Azure Active Directory セルフ サービス パスワードのライセ
 description: Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: b558a494a87b9d176888f6e21d3153d921cd590f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f7e539b2f444109e902f4b85d0a879183217f262
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422135"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076249"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 

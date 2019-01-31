@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849092"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167072"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 

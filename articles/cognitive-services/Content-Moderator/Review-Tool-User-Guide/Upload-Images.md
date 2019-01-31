@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 090ede73beb4d41ba9fc32e44d60212e9511e357
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 780869c9406c48e44575d3450de3e25f45aede93
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263788"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212105"
 ---
 # <a name="upload-images"></a>画像のアップロード
 

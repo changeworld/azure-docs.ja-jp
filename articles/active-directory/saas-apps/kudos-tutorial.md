@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 39c47ce6-4944-47ba-8f53-3afa95398034
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e20a58542f4bc8220e9474a746d90dd89e5c5cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5cc6873ff1c823aad5165c89572c7a9f50e30e1c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824900"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル:Azure Active Directory と Kudos の統合
 

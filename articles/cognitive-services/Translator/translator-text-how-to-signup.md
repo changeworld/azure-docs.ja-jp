@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 011e1db141c36c44ef51edc62d0123fdf3c036c7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 74a0a15490164cfdbc97529bec63a74ef63dbfc9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091563"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458467"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Translator Text API にサインアップする方法
 

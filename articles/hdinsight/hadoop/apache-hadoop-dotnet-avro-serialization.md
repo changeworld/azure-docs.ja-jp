@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d729d840bb055452eb8bb87cc978f1e38dcea48e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259989"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227949"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Microsoft Avro ライブラリを使用して Apache Hadoop のデータをシリアル化する
 
@@ -1351,7 +1351,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 このサンプルでは、次のタスクを実行します。
 
 * 既存の HDInsight サービス クラスターに接続する。
-* いくつかの CSV ファイルをシリアル化し、結果を Azure BLOB ストレージにアップロードする。 CSV ファイルはサンプルと一緒に配布され、 [Infochimps](https://www.infochimps.com/) から配信される、1970 ～ 2010 年の間の AMEX Stock 履歴データから抽出されます。 サンプルから CSV ファイルのデータを読み取り、レコードを **Stock** クラスのインスタンスに変換してから、リフレクションを使用してそれらをシリアル化します。 Microsoft Avro ライブラリのコード生成ユーティリティを使用して、Stock 型の定義が JSON スキーマから作成されます。
+* いくつかの CSV ファイルをシリアル化し、結果を Azure BLOB ストレージにアップロードする。 CSV ファイルはサンプルと一緒に配布され、 [Infochimps](https://www.infochimps.org/) から配信される、1970 ～ 2010 年の間の AMEX Stock 履歴データから抽出されます。 サンプルから CSV ファイルのデータを読み取り、レコードを **Stock** クラスのインスタンスに変換してから、リフレクションを使用してそれらをシリアル化します。 Microsoft Avro ライブラリのコード生成ユーティリティを使用して、Stock 型の定義が JSON スキーマから作成されます。
 * **Stocks** という新しい外部テーブルが Hive に作成され、前の手順でアップロードしたデータとリンクされます。
 * Hive を使用して **Stocks** テーブルに関するクエリを実行します。
 

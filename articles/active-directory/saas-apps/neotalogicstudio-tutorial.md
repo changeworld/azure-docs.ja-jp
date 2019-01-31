@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 842605e6-a91d-42cc-a0bb-e23e67173ae2
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: b6f2c91a9b94aeff1c0fa7ad7df137a30055230b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4de968949e9c043d4a005f23b5bfa86dd87f5b70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827042"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル:Azure Active Directory と Neota Logic Studio の統合
 

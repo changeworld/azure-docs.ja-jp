@@ -7,13 +7,13 @@ ms.author: omidm
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2017
-ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.date: 01/24/2019
+ms.openlocfilehash: 402a4d59b57803b8a9c0094799ceee6a92df43f9
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848157"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911355"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
 

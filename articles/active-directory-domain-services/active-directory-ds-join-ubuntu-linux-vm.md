@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 35b37a5c50346dc116b2f36394feecb82a0d88fd
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f9c8273e82d46c34c36533605c08200c308815af
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845763"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154272"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンをマネージド ドメインに参加させる
 この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。

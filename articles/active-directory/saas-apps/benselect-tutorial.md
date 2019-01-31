@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 8fd01dc9757d358a33dae0d053e560af647652c9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 163541bb1473d73e840c604833b177721a8cdff8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809719"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>チュートリアル:Azure Active Directory と BenSelect の統合
 

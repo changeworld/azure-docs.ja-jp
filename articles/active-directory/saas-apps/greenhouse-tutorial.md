@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 78ec1766-4f79-4f16-9a66-d5584c4b6151
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 39bc573fea09654c5f87c218b1ea0fb3ece5d2bc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: da81fed0e3ce38c4a6fba27d550a74cca8edfa6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815210"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル:Azure Active Directory と Greenhouse の統合
 

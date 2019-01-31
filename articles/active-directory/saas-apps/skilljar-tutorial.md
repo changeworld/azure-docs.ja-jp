@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: c572f556-98a3-48e6-8e4c-e634b7a2ba70
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 76490f5c4470da95f85bddbde1a2abb70f15d126
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7270d55ce186b36c15ce90a888233f05111d2fec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817051"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>チュートリアル: Azure Active Directory と Skilljar の統合
 

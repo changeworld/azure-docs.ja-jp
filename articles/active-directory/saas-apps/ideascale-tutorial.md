@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ca5cac1888fe7e126d6bdc8bd4a2e9bc192f4d41
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 53538fe741a37312fa2cb2860582ae46ef430853
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810059"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル:Azure Active Directory と IdeaScale の統合
 

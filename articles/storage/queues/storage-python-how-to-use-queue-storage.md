@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 0edb90ca7324d47beaa5133d423928e615ff33a9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.subservice: queues
+ms.openlocfilehash: ea508c04660df4ba103a2a0da39b7cd914cd629c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742815"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471251"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Python から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

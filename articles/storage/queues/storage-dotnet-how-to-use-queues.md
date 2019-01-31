@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/13/2018
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 3c27f436b726290c6a3af0956b956e1c351a729a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: queues
+ms.openlocfilehash: 715c466c149a2d5a026e58ac0b908b41a51b9a90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956178"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455492"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

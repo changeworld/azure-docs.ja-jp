@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: d8614272e60327510c58cf87b70725fc256ed378
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 2e1ceda45e756220bf08bc32039da2123f782f4a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273005"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454194"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
 

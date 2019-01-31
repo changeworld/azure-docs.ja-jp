@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 250dbdf2-faf5-48dd-be7c-d54502ef7528
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: dd7df59d25b109929777df0ee586a46f27cb4605
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3787c3ae9ba3afa9ed15ddb167fda03f0f3472ac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821687"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>チュートリアル:Azure Active Directory と Bynder の統合
 

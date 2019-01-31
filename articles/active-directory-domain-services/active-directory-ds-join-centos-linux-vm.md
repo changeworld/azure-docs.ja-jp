@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3a321246c948c38abc5840fd4e2113a648151a21
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9ea236718b7fd9b808a5092dddec9574f6b93b48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850401"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167157"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンをマネージド ドメインに参加させる
 この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -87,7 +87,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     ```
 
     > [!NOTE]
-    > **トラブルシューティング:***realm discover* でマネージド ドメインが見つからない場合:  
+    > **トラブルシューティング:***realm discover* でマネージド ドメインが見つからない場合:   
       * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。  
       * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
       * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。  
