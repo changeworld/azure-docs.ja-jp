@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 184babea3b11f611850cb33fc9994e9ea79f69a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 06556372b89a3a3bf8969ed838934e25197fd216
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582152"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196686"
 ---
 # <a name="86-categories-taxonomy"></a>86 カテゴリの分類
 

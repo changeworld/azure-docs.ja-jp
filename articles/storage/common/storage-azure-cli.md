@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.subservice: common
+ms.openlocfilehash: 707ee508b0615ab873b60b45eb1d9f0294313367
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413636"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464570"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 

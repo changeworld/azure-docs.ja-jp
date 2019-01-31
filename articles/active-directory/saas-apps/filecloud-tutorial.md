@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2263e583-3eb2-4a06-982d-33f5f54858f4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 74fa3065e99b1844bb315d1dcfa3f0e7ad1f8fee
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d9e2ee219b1bfd2553d393c12670c530d1fb47a3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814615"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>チュートリアル:Azure Active Directory と FileCloud の統合
 

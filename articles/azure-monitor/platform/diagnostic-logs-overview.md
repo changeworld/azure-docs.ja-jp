@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 44950a467e99fb7968d838345d80c8e28aee62b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467470"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885849"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -31,7 +31,7 @@ ms.locfileid: "54467470"
 
 これらのログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソースレベルの診断ログの場合、エージェントは不要です。Azure プラットフォーム自体からリソース固有のデータをキャプチャします。一方、ゲスト OS レベルの診断ログの場合、仮想マシン上で実行されているオペレーティング システムとアプリケーションからデータをキャプチャします。
 
-ここで説明するサービスは、診断ログでサポートされていない場合があります。 [この記事には、診断ログ をサポートするサービスの一覧が記載されたセクションがあります](./../../azure-monitor/platform/tutorial-dashboards.md)。
+ここで説明するサービスは、診断ログでサポートされていない場合があります。 [この記事には、診断ログ をサポートするサービスの一覧が記載されたセクションがあります](./../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>診断ログで実行できること
 診断ログでは次のことを実行できます。
@@ -229,7 +229,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>診断ログでサポートされているサービス、カテゴリ、スキーマ
 
-サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](../../azure-monitor/platform/tutorial-dashboards.md)をご覧ください。
+サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](../../azure-monitor/platform/diagnostic-logs-schema.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

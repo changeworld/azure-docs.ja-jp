@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 8a6d3994-ee33-4a6f-b0a2-9d0389467f16
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ef0c2f12e36150b044047214c43e88090bd61f68
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: fefa90b638f194cc0554b4d4da2188f5748ca32f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826583"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180281"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル:Netsuite を構成し、自動ユーザー プロビジョニングに対応させる
 

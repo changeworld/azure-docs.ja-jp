@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec67cb6b4bc1dd29dbbac4056d3365a74b31a24c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013706"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911746"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
 
@@ -117,6 +117,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 - [Azure Data Lake Storage Gen2 プレビューの概要](../../storage/data-lake-storage/introduction.md)
 - [Azure BLOB ファイル システム ドライバー (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>オンプレミスの Hadoop クラスター構成内の Azure Storage キーをセキュリティ保護する
 

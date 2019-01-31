@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 445c5600-e340-4724-a9cb-3cfaf5770b70
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: c097372ea3107e84b348fd6ab526524e515865c4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 31b9f07d3699881bd98fff05582d5dce6dab925e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>チュートリアル:Azure Active Directory と Chromeriver の統合
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122758"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214315"
 ---
 # <a name="calchistogram-method"></a>calchistogram メソッド
 *calchistogram* メソッドは、構造化クエリ式と一致するオブジェクトを計算し、属性値の分布を計算します。

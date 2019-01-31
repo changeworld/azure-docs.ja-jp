@@ -3,19 +3,19 @@ title: Azure AD デプロイ チェックリスト
 description: Azure Active Directory 機能のデプロイ チェックリスト
 services: active-directory
 ms.service: active-directory
-ms.component: ''
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
-ms.openlocfilehash: 625d088b8df0ef7491d77c337b72d9f48ebe8af5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 2bbbd214801e4d92e1c4cfe34787c15cdc4cb3e3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447583"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104271"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 

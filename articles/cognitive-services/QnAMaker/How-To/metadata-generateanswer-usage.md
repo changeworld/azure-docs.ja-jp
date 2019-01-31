@@ -6,16 +6,16 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: 004f09eb77d1bc32e44e1940186e8a631c45846d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8712f9e79965e09e21df768b1c06561a896b8e01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214094"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>メタデータと GenerateAnswer API の使用
 

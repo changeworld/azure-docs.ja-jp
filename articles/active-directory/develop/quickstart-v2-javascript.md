@@ -7,7 +7,7 @@ author: navyasric
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf2cf106a47bb88acd9c0be0fe75b0328248aced
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043891"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100599"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート:ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
 

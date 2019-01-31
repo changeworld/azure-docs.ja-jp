@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: d4f3e82c-6807-4690-b298-4eabad2b7927
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 84484be80ec0932b45f520482938f74ecf54d1e8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4727c24c603e95aeee6214546e25a273aa652f4c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856657"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182831"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を有効にする
 

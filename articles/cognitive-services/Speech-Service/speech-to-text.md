@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 050d395614fa4a08e6d0d0967200029e8fc36010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4884756c50e181e5536ad93ae795543bf1edf8ba
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094714"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220234"
 ---
 # <a name="about-the-speech-to-text-api"></a>Speech to Text API について
 

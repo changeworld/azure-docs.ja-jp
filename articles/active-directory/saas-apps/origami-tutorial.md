@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: a28bb0ba-b564-46ba-accc-e587699295d4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: e8c7dbb2b50e6c6c00b857e419f4e238e318a537
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 042167b77679338ca7e982b1b1cd80c22997b766
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809226"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル:Azure Active Directory と Origami の統合
 

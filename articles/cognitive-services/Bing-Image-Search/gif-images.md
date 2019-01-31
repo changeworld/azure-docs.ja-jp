@@ -6,33 +6,33 @@ services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
 ms.custom: seodec2018
-ms.openlocfilehash: 7536452d3ed0030b34e4f30deba56d6d8ae1957c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 458acef9224349d5e4c223999243322474daac3d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249313"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154935"
 ---
 # <a name="search-for-gif-images"></a>GIF 画像を検索する 
 
 Bing Image Search API では、最も関連性の高い .gif 画像を探し、Web 全体を検索することもできます。  開発者は、さまざまな会話シナリオで、人を引きつける gif を統合できます。 
 
 次の URL は、アニメーション .gif 画像のクエリです。
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
-````
+```
 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
 
 結果の例を見るには、次の URL で bing.com を検索してください。
-````
+```
 https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
-````
+```
 ## <a name="query-parameters"></a>クエリ パラメーター
 
 クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
@@ -50,15 +50,15 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ## <a name="example-search-for-animated-gif-using-java"></a>Java を利用したアニメーション gif のサンプル検索
 
 次の URL では、アニメーション .gif 画像 `q=interesting` が検索されます。
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
-````
+```
 次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) ヘッダーを要求します。
 
 次の Java サンプルは要求をビルドし、送信します。
 
-````
+```
 package gifSearch;
 import java.net.*;
 import java.util.*;
@@ -167,7 +167,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="results"></a>結果
 このコードは、次の結果を JSON オブジェクトとして取得します。

@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 7cf427ed7be91db2b243c28bb66513b25045ffc0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a7dc8fc5e2a705612cecc3cf7d108d38f1e3b2bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468490"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169282"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>クイック スタート:Azure Active Directory Identity Protection を使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 

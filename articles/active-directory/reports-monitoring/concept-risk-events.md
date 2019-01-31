@@ -11,20 +11,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a1ca5125162460b95c0ffcadb1551173d06b5838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808087"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163587"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
-ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業はありません。 Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
+ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
 
 報告されたリスク イベントは、次の 2 つの場所で確認できます。
 

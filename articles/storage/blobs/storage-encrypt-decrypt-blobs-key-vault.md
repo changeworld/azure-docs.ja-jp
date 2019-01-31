@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 213190863702ec5a7f2ae764c8e2d892764740f9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: blobs
+ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332202"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239409"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに

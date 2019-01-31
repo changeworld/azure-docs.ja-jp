@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/05/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 613e1f733e8b4115149b3109b059d66b4f2ebbae
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1c564867f100a1aefb1753bbfc53f82e386acb72
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984380"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092699"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-android-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-android-setup.md)]

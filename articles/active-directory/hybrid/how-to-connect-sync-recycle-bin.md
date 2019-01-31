@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4836ffc8c6ab013ef5ad7a661db0df3254b6d4e1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: be6c5ccea6bf923b408319baf4bc1743978169c7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468776"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203812"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
 Azure AD に同期される、オンプレミスの Active Directory 向けの AD ごみ箱機能を有効にすることをお勧めします。 
@@ -39,9 +39,6 @@ Azure AD に同期される、オンプレミスの Active Directory 向けの A
 
 > [!NOTE]
 > 既定では、削除された Azure AD ユーザー オブジェクトは、論理削除済み状態で 30 日間保持された後、完全に削除されます。 ただし、管理者は、このようなオブジェクトの削除までの時間を短縮できます。 完全に削除されたオブジェクトは、オンプレミスの AD ごみ箱機能を有効にしていても、回復することはできません。
-
->[!NOTE]
->これまでは、オンプレミスの同期範囲からユーザーが削除され、クラウドでも削除された場合、アカウントの DirSyncEnabled 状態が誤って "False" に設定されていました。 その後、そのユーザーが Azure AD のごみ箱から手動で復元された場合は、"Cloud-Only" という正しくない状態のアカウントとして表示されていました。 現在はこれは修正され、ユーザーが同期範囲から削除され、論理的に削除された後、Azure AD のごみ箱から手動で復元された場合でも、DirSyncEnabled 状態は、常に "True" で維持されるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 **概要トピック**

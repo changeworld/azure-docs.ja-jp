@@ -3,19 +3,19 @@ title: 言語サポート - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Bing News Search API でサポートされる自然言語、国、および地域の一覧。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: erhopf
-ms.openlocfilehash: c15e1ddd35e625a713ff569f26e9312d9dcd0bc8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: dbe9fe5b8e9cd31ca20d88b7db89a9d35e1fe8de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435421"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161140"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Search API の言語と地域のサポート
 
@@ -68,7 +68,7 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|Language|市場コード|
+|国/リージョン|言語|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|

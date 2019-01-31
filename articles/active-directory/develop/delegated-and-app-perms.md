@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: c5a947301b0861ffa09a24da79e04b5e92b2c29e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 817e95dc8f00fd791079a6ae3521f312c4c1822b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723749"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094854"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法
 
@@ -30,4 +30,4 @@ ms.locfileid: "44723749"
 - さらに知識を深めるために、リソース アプリケーションで[スコープ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes)と[アプリケーション ロール](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) (Azure Portal ではそれぞれ委任されたアクセス許可とアプリケーション アクセス許可) をクライアント アプリケーションに公開する方法を確認してください。 
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

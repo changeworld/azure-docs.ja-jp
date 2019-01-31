@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854056"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175266"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -46,7 +46,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 >Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。 このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。 このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  
 手順については、この記事の「**次のステップ**」のセクションをご覧ください。
 
-
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
 
 1. ブラウズ セッションを開いて [Azure Portal](https://portal.azure.com) に移動します。 構成する B2C ディレクトリの管理者資格情報を使用してサインインします。
@@ -66,8 +65,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
     * **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`.
     * **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
-
-
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して **ApplicationObjectId** を追加する
 
 「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」の手順に従った場合は、**TrustFrameworkBase.xml**、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml**、**PasswordReset.xml** という名前の[サンプル ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)をダウンロードして変更しました。 この手順では、これらのファイルにさらに変更を加えます。
@@ -76,31 +73,31 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
     ```xml
     <ClaimsProviders>
-        <ClaimsProvider>
-          <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfile Id="AAD-Common">
           <DisplayName>Azure Active Directory</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-              
+
           <!-- Provide objectId and appId before using extension properties. -->
           <Metadata>
             <Item Key="ApplicationObjectId">insert objectId here</Item>
             <Item Key="ClientId">insert appId here</Item>
           </Metadata>
           <!-- End of changes -->
-              
+
           <CryptographicKeys>
             <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
           </CryptographicKeys>
           <IncludeInSso>false</IncludeInSso>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-        </ClaimsProvider>
+      </ClaimsProvider>
     </ClaimsProviders>
     ```
 
 > [!NOTE]
-> **TechnicalProfile** が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。 拡張機能プロパティは、初めて使われるときに作成されます。  
+> **TechnicalProfile** が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。 拡張機能プロパティは、初めて使われるときに作成されます。
 
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>ユーザー体験で新しい拡張機能プロパティまたはカスタム属性を使用する
 
@@ -130,13 +127,13 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
     ```xml
     <BuildingBlocks>
-      <ClaimsSchema> 
-        <ClaimType Id="extension_loyaltyId"> 
-          <DisplayName>Loyalty Identification Tag</DisplayName> 
-          <DataType>string</DataType> 
-          <UserHelpText>Your loyalty number from your membership card</UserHelpText> 
-          <UserInputType>TextBox</UserInputType> 
-        </ClaimType> 
+      <ClaimsSchema>
+        <ClaimType Id="extension_loyaltyId">
+          <DisplayName>Loyalty Identification Tag</DisplayName>
+          <DataType>string</DataType>
+          <UserHelpText>Your loyalty number from your membership card</UserHelpText>
+          <UserInputType>TextBox</UserInputType>
+        </ClaimType>
       </ClaimsSchema>
     </BuildingBlocks>
     ```
@@ -157,7 +154,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
         <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
         <InputClaim ClaimTypeReferenceId="userPrincipalName" />
         <InputClaim ClaimTypeReferenceId="givenName" />
-            <InputClaim ClaimTypeReferenceId="surname" />
+        <InputClaim ClaimTypeReferenceId="surname" />
 
         <!-- Add the loyalty identifier -->
         <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -167,7 +164,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
         <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
         <OutputClaim ClaimTypeReferenceId="givenName" />
         <OutputClaim ClaimTypeReferenceId="surname" />
-        
+
         <!-- Add the loyalty identifier -->
         <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
         <!-- End of changes -->
@@ -279,15 +276,15 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
-              <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
-                <DisplayName>Azure Active Directory</DisplayName>
-                <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                <!-- Provide objectId and appId before using extension properties. -->
-                <Metadata>
-                  <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
-                  <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
-                </Metadata>
+          <DisplayName>Azure Active Directory</DisplayName>
+          <TechnicalProfile Id="AAD-Common">
+            <DisplayName>Azure Active Directory</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <!-- Provide objectId and appId before using extension properties. -->
+            <Metadata>
+              <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
+              <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
+            </Metadata>
   ```
 
 3. ポータルのエクスペリエンスとの整合性を保ちます。 カスタム ポリシーで使用する前に、ポータルの UI を使用してこれらの属性を作成します。 ポータルで属性 **ActivationStatus** を作成するときに、次のようにこの属性を参照する必要があります。
@@ -296,7 +293,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
   extension_ActivationStatus in the custom policy.
   extension_<app-guid>_ActivationStatus via Graph API.
   ```
-
 
 ## <a name="reference"></a>リファレンス
 

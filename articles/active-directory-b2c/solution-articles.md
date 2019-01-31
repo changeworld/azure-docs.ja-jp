@@ -7,13 +7,13 @@ ms.author: davidmu
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.component: b2c
-ms.openlocfilehash: 886b2861a05d5d101bf9c399e3c39b31b2dc5ec8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: b2c
+ms.openlocfilehash: 5f771e51a0114c321d1dfcbaf305dd9923040032
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839753"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149037"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 向けのソリューションとトレーニング
 

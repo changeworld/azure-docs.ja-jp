@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 820e98b200071c95dc3d9506dd0cd0bbe86e2aae
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 558e9c3a3bfd43f6ceb958bc3be55d58e1eb7f91
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849687"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150242"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 

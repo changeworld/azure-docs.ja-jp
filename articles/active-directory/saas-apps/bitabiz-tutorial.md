@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: ed4bada75bad19522e74b9064601c6882331e66e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 894363a48f0ba1f45664451d5508473f78aceb07
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815890"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル:Azure Active Directory と BitaBIZ の統合
 

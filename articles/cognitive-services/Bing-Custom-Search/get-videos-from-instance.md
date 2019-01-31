@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 5394f86e8a5d167830cb4061800f4cbf9a521713
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5b73acb633512960d7aa6d6eea9b1d6e10dd3c22
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174297"
 ---
 # <a name="get-videos-from-your-custom-view"></a>カスタム ビューから動画を取得する
 

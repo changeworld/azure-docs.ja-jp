@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ad14e443f7176a0acb2da3529348fba452f76dee
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 44d33e687d64c7e226a20edf3fdcbbf7bcf859b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477959"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169265"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
 同期とは、ユーザーのオンプレミス ID に基づいてクラウドに ID を提供することです。 認証またはフェデレーション認証のために同期されたアカウントを使用するかどうかにかかわらず、ユーザーはクラウドに ID を持つ必要があります。  この ID は保守し、定期的に更新する必要があります。  更新プログラムには、タイトルの変更からパスワードの変更まで、さまざまな形式があります。  

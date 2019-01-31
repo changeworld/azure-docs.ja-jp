@@ -4,14 +4,14 @@ description: タグをサポートしている Azure リソースの種類を示
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/11/2019
+ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267455"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884947"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。
@@ -425,7 +425,7 @@ ms.locfileid: "54267455"
 | Dimensions | いいえ  | 
 | EnrollmentAccounts | いいえ  | 
 | Query | いいえ  | 
-| register | いいえ  | 
+| registrations | いいえ  | 
 | Reportconfigs | いいえ  | 
 | Reports | いいえ  | 
 
@@ -609,7 +609,7 @@ ms.locfileid: "54267455"
 | myareas/areas/areas/galleryitems | いいえ  | 
 | myareas/areas/galleryitems | いいえ  | 
 | myareas/galleryitems | いいえ  | 
-| register | いいえ  | 
+| registrations | いいえ  | 
 | resources | いいえ  | 
 | retrieveresourcesbyid | いいえ  | 
 
@@ -668,7 +668,7 @@ ms.locfileid: "54267455"
 | logs | いいえ  | 
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
-| queries | いいえ  | 
+| Query | いいえ  | 
 | rollbackToLegacyPricingModel | いいえ  | 
 | scheduledqueryrules | はい | 
 | vmInsightsOnboardingStatuses | いいえ  | 
@@ -746,7 +746,7 @@ ms.locfileid: "54267455"
 | ------------- | ----------- |
 | accounts | はい | 
 | accounts/workspaces | はい | 
-| accounts/workspaces/projects | はい | 
+| accounts/workspaces/プロジェクト | はい | 
 | teamAccounts | はい | 
 | teamAccounts/workspaces | はい | 
 | teamAccounts/workspaces/projects | はい | 
@@ -1107,6 +1107,16 @@ ms.locfileid: "54267455"
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
+| managedInstances | [はい] |
+| managedInstances/databases | [はい] |
+| managedInstances/databases/backupShortTermRetentionPolicies | いいえ  |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | いいえ  |
+| managedInstances/databases/vulnerabilityAssessments | いいえ  |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | いいえ  |
+| managedInstances/encryptionProtector | いいえ  |
+| managedInstances/keys | いいえ  |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | いいえ  |
+| managedInstances/vulnerabilityAssessments | いいえ  |
 | servers | はい | 
 | servers/administrators | いいえ  | 
 | servers/communicationLinks | いいえ  | 

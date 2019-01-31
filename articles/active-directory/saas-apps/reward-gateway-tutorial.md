@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 322d85ddfade82232075c11916c528efb3aa610e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d31423d71e20c298ddfb8837101b77da1b155954
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820174"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル:Azure Active Directory と Reward Gateway の統合
 

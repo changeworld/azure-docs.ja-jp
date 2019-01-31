@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 47cfd5820c80a0f53772f5424f674603acdaf18d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848939"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166919"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークンのリファレンス
 

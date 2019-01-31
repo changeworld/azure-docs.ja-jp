@@ -3,19 +3,19 @@ title: 言語サポート - Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API でサポートされている国/地域と言語を確認します。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: db9e1acec881a182b111cb1c913da607e4f8311a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435372"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157331"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing Image Search API の言語と地域のサポート
 
@@ -76,7 +76,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|Language|市場コード|
+|国/リージョン|言語|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|

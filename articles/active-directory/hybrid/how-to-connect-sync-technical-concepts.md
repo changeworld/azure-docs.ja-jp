@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2bf9876fc551b9ab0eb24c03a17f3d789c00530e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e56d5b7a38a5cc467ee0752e1af40255856f860b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463492"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198131"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同期: 技術的概念
 この記事は、 [アーキテクチャの理解](how-to-connect-sync-technical-concepts.md)に関するトピックの概要です。

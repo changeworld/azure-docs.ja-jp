@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: bd3711a88b14d7a24df7c20c72b49fca5953b568
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382408"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886469"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -105,8 +105,6 @@ Application Gateway は、要求が到達した元の Host ヘッダーを含む
 新しい Application Gateway v1 SKU のデプロイでは、プロビジョニングに最大 20 分かかります。 インスタンス サイズ/数の変更は中断を伴わず、ゲートウェイはこの時間にはアクティブなままです。
 
 V2 SKU のデプロイは、プロビジョニングに約 5 分から 6 分かかります。
-
-Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
 ## <a name="configuration"></a>構成
 

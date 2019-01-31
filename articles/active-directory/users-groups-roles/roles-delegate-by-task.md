@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1e679a1d26ce219f7c0248e27d7f9cfffc5fdb4e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3b6c5b08fa3f915c541837abe5f52c7ec3d9b87e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813850"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185213"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory における ID タスク別の管理者ロール
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001517"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910268"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
@@ -172,4 +172,4 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 * [HDInsight 上の ML サービス クラスターの概要](r-server-overview.md)
 * [Apache Hadoop での ML サービス クラスターの使用開始](r-server-get-started.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-
+* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

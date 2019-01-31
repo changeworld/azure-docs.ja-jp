@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ed4bed77267790b10b44486f0e9c8242fe952cd8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601969"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207413"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
@@ -26,6 +26,7 @@ ms.locfileid: "53601969"
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>発話のテスト
 
 1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
@@ -40,13 +41,8 @@ ms.locfileid: "53601969"
 
     ![対話型テストによる間違った意図の特定](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>テスト パネルのクリア
-入力したすべてのテスト用の発話とその結果をテスト コンソールからクリアするには、**[Test]\(テスト\)** パネルの左上隅の **[やり直す]** を選択します。 
-
-## <a name="close-test-panel"></a>テスト パネルを閉じる
-**[Test]\(テスト\)** パネルを閉じるには、**[Test]\(テスト\)** をもう一度選択します。
-
 ## <a name="inspect-score"></a>スコアの検査
+
 テスト結果の詳細は、**[検査]** パネルで調べることができます。 
  
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。 
@@ -72,9 +68,11 @@ ms.locfileid: "53601969"
 ![感情分析を含む [Test]\(テスト\) ウィンドウの画像](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>一致したパターンの意図の修正
+
 [パターン](luis-concept-patterns.md)の使用中、発話がパターンに一致したが、予測された意図が間違っている場合は、パターンによる **[編集]** リンクを選択し、正しい意図を選択します。
 
 ## <a name="compare-with-published-version"></a>公開されたバージョンとの比較
+
 公開された[エンドポイント](luis-glossary.md#endpoint) バージョンでアプリのアクティブなバージョンをテストできます。 **[検査]** パネルで、**[Compare with published]\(公開済みのものと比較\)** を選択します。 公開されたモデルに対するテストは、お使いの Azure サブスクリプションのクォータ残量から差し引かれます。 
 
 ![公開済みとの比較](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -88,12 +86,14 @@ ms.locfileid: "53601969"
 ## <a name="additional-settings-in-test-panel"></a>テスト パネルでの追加設定
 
 ### <a name="luis-endpoint"></a>LUIS エンドポイント
+
 LUIS エンドポイントが複数ある場合は、テストの [公開済み] ウィンドウで **[追加設定]** リンクを使用して、テスト用に使用されているエンドポイントを変更します。 使用するエンドポイントがわからない場合は、既定の **Starter_Key** を選択します。 
 
 ![[追加設定] リンクが強調表示されているテスト パネル](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>テスト パネルでの Bing Spell Check 修正の表示
+
 スペルの修正を表示するための要件: 
 
 * 公開済みアプリ
@@ -124,6 +124,7 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>バッチ テスト
 バッチ テストの[概念](luis-concept-batch-test.md)と、発話のバッチをテストする[方法](luis-how-to-batch-test.md)を参照してください。
 

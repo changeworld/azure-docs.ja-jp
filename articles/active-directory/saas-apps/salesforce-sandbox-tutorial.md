@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 33d39e617bd55b88d8f04785d937faf176463ee5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b04e4a83862cdec26e0432eb7d8b3419e36d5a7a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808818"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル:Azure Active Directory と Salesforce Sandbox の統合
 

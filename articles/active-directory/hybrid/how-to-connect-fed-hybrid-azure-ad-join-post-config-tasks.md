@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 31bf3c7ba2365f3fdfd6f2da1dbd1942ada1327e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 393a649d79037623f66a8c55ba896b6ac4c77b15
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475460"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164233"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 

@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b7d2b6d2aef4567197fe18607cb50d1e9a4206b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2fa0912d120760ddba3b3d21f718e214e9d7c26b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247262"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238926"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>サービスとしての検証のベスト プラクティス
 

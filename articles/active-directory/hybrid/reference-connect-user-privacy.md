@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2dedd85445a4c04ffee35260b33dedee277d3592
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5f407def9615987fee877d88ecf3444961d3fe35
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477355"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180077"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 

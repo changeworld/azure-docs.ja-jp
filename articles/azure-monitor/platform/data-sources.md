@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9029676df6a878a6d3d5796928cbad9c20cd685
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020134"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889061"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
 この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-collection.md)に関する記事をご覧ください。
@@ -61,7 +61,7 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 
 
 ### <a name="resource-diagnostic-logs"></a>リソース診断ログ
-アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](../../azure-monitor/platform/tutorial-dashboards.md)。
+アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 診断ログを Azure Portal で直接表示することはできませんが、[診断ログを Azure Storage に送信してアーカイブ](../../azure-monitor/platform/archive-diagnostic-logs.md)したり、[イベント ハブ](../../event-hubs/event-hubs-about.md)にエクスポートして他のサービスにリダイレクトしたり、[Log Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) にコピーして解析に使用したりできます。 Log Analytics に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) にインポートするリソースがあります。
 

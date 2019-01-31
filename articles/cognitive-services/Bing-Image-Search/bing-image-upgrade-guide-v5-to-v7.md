@@ -7,16 +7,16 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c62ed151e1b09482c227f59ee5264de01d425255
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec870ee8b40e732bf12c90689fb7ca79a7ff516c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477817"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204186"
 ---
 # <a name="bing-image-search-api-upgrade-guide"></a>Bing Image Search API のアップグレード ガイド
 

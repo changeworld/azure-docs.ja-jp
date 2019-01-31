@@ -7,7 +7,7 @@ author: negoe
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 12/20/2018
 ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
-ms.openlocfilehash: dfca40c14ad0da3a3e3a8a32757ec40ace9acf6a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2130cc4d51965a087ccdbaeb922eda5059ee1c82
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200566"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091582"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 

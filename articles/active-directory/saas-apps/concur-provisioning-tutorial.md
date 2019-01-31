@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e6e6d0d51174250954f886790dccc650064a6f45
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f3ee9b2ce11dea1e0490521cf72f509ef2e0db8d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821891"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151534"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 154f5200872dbc06550f396717cb215f3db4f7dd
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199580"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096961"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Azure Cache for Redis のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Cache for Redis の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -212,7 +212,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
             return lazyConnection.Value;
         }
     }
-    ````
+    ```
 
     詳細については、 [StackExchange.Redis を使用するキャッシュへの接続](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)に関するページを参照してください。
 

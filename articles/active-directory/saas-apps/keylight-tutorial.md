@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c4ad094cb6a0268d7e9b1f44be619dfb61804145
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 14ae26b05bc51a1e6488acf5ed6225697a7bcaed
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827025"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル:Azure Active Directory と LockPath Keylight の統合
 

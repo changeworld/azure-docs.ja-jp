@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f5060ab054d5b55b4b31ff01b00e30a34e6ebdce
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431743"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463431"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 12 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 12 月に導入された新しい機能と変更点について説明します。

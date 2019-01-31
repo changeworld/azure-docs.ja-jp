@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
+ms.lastreviewed: 12/06/2018
 keywords: ''
-ms.openlocfilehash: 314656fa276326d96684e49e2804ac393eeb606e
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 5946f62821d05bd9036b9fc0e6b0fc8daa74c5dc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303825"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241204"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 

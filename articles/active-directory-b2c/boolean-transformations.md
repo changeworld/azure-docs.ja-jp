@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 1afbf8e8473e12992b7f031ac9835a58e1089b0d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: fea0f8c2c2bcab94202916594e66514f2ec87396
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853274"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180128"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 

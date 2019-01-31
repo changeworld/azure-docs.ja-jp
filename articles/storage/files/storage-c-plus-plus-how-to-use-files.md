@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.component: files
-ms.openlocfilehash: a904e7ba269b1fbe03878b23ed35280b6d592f57
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.subservice: files
+ms.openlocfilehash: ee6f2c46bf8faa04cbb16f463d12991ee83d8603
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412990"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457709"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

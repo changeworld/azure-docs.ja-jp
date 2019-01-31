@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: b180e62804b875ca4547a9d09f19efff32ae0cd9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207225"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093395"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -81,7 +81,7 @@ DnsSettings              : {
 
 1. サブネットのパラメーターを既存のサブネットの名前に変更し、既存の仮想ネットワークを参照する 2 つの新しいパラメーターを追加します。
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -106,23 +106,28 @@ DnsSettings              : {
             },*/
     ```
 
+2. 既存のサブネットを使用し、手順 1 でこの変数を無効にしているため、`Microsoft.Compute/virtualMachineScaleSets` の `nicPrefixOverride` 属性をコメント アウトします。
 
-2. 既存の仮想ネットワークを指すように `vnetID` 変数を変更します。
-
+    ```json
+            /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
+
+3. 既存の仮想ネットワークを指すように `vnetID` 変数を変更します。
+
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-3. Azure で新しい仮想ネットワークが作成されないように、リソースから `Microsoft.Network/virtualNetworks` を削除します。
+4. Azure で新しい仮想ネットワークが作成されないように、リソースから `Microsoft.Network/virtualNetworks` を削除します。
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -144,9 +149,9 @@ DnsSettings              : {
     },*/
     ```
 
-4. 新しい仮想ネットワークの作成に依存しないように、`Microsoft.Compute/virtualMachineScaleSets` の `dependsOn` 属性から仮想ネットワークをコメント アウトします。
+5. 新しい仮想ネットワークの作成に依存しないように、`Microsoft.Compute/virtualMachineScaleSets` の `dependsOn` 属性から仮想ネットワークをコメント アウトします。
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -158,7 +163,7 @@ DnsSettings              : {
 
     ```
 
-5. テンプレートをデプロイします。
+6. テンプレートをデプロイします。
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
@@ -180,7 +185,7 @@ DnsSettings              : {
 
 1. 既存の静的 IP のリソース グループ名、名前、完全修飾ドメイン名 (FQDN) のパラメーターを追加します。
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -194,7 +199,7 @@ DnsSettings              : {
 
 2. `dnsName` パラメーターを削除します  (静的 IP アドレスには既にパラメーターがあります)。
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -204,13 +209,13 @@ DnsSettings              : {
 
 3. 既存の静的 IP アドレスを参照する変数を追加します。
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. Azure で新しい IP アドレスが作成されないように、リソースから `Microsoft.Network/publicIPAddresses` を削除します。
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -232,7 +237,7 @@ DnsSettings              : {
 
 5. 新しい IP アドレスの作成に依存しないように、`Microsoft.Network/loadBalancers` の `dependsOn` 属性から IP アドレスをコメント アウトします。
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -246,7 +251,7 @@ DnsSettings              : {
 
 6. `Microsoft.Network/loadBalancers` リソースで、`frontendIPConfigurations` の `publicIPAddress` 要素を変更して、新しく作成された IP アドレスではなく、既存の静的 IP アドレスを参照します。
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -262,7 +267,7 @@ DnsSettings              : {
 
 7. `Microsoft.ServiceFabric/clusters` リソースで、`managementEndpoint` を静的 IP アドレスの DNS FQDN に変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -289,7 +294,7 @@ DnsSettings              : {
 
 1. `dnsName` パラメーターを削除します  (不要です)。
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -299,7 +304,7 @@ DnsSettings              : {
 
 2. 静的な割り当て方法を使用している場合は、必要に応じて静的 IP アドレス パラメーターを追加できます。 動的な割り当て方法を使用している場合は、この手順を実行する必要はありません。
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -308,7 +313,7 @@ DnsSettings              : {
 
 3. Azure で新しい IP アドレスが作成されないように、リソースから `Microsoft.Network/publicIPAddresses` を削除します。
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -330,7 +335,7 @@ DnsSettings              : {
 
 4. 新しい IP アドレスの作成に依存しないように、`Microsoft.Network/loadBalancers` の、IP アドレスの `dependsOn` 属性を削除します。 現在、ロード バランサーは仮想ネットワークのサブネットに依存しているため、仮想ネットワークの `dependsOn` 属性を追加します。
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -343,7 +348,7 @@ DnsSettings              : {
 
 5. `publicIPAddress` を使用するのではなく、サブネットと `privateIPAddress` を使用するように、ロード バランサーの `frontendIPConfigurations` 設定を変更します。 `privateIPAddress` では、定義済みの静的内部 IP アドレスを使用します。 動的 IP アドレスを使用するには、`privateIPAddress` 要素を削除し、`privateIPAllocationMethod` を **Dynamic** に変更します。
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -364,7 +369,7 @@ DnsSettings              : {
 
 6. `Microsoft.ServiceFabric/clusters` リソースで、内部ロード バランサーのアドレスを指すように `managementEndpoint` を変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -389,7 +394,7 @@ DnsSettings              : {
 
 1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します  (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -400,7 +405,7 @@ DnsSettings              : {
 
 3. 既存のネットワーク変数の内部バージョンを追加するには、それらの変数をコピーして貼り付け、名前に "-Int" を追加します。
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -413,7 +418,7 @@ DnsSettings              : {
 
 4. アプリケーション ポート 80 を使用する、ポータルで生成されたテンプレートを使用すると、ポータルの既定のテンプレートによって外部ロード バランサーに AppPort1 (ポート 80) が追加されます。 この場合、外部ロード バランサーの `loadBalancingRules` とプローブから AppPort1 を削除して、これを内部ロード バランサーに追加できるようにします。
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -490,7 +495,7 @@ DnsSettings              : {
 
 5. 2 つ目の `Microsoft.Network/loadBalancers` リソースを追加します。 これは、「[内部ロード バランサー](#internallb)」で作成した内部ロード バランサーに似ていますが、"-Int" ロード バランサー変数を使用し、アプリケーション ポート 80 のみを実装します。 これにより、パブリック ロード バランサーの RDP エンドポイントを保持するために `inboundNatPools` も削除されます。 内部ロード バランサーで RDP が必要な場合は、`inboundNatPools` を外部ロード バランサーからこの内部ロード バランサーに移動します。
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -575,7 +580,7 @@ DnsSettings              : {
 
 6. `Microsoft.Compute/virtualMachineScaleSets` リソースの `networkProfile` で、内部バックエンド アドレス プールを追加します。
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

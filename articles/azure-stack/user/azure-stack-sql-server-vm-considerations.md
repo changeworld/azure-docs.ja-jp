@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 8e577a95fc3cda3aafe1273cbc6b4e3c4fbb0317
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304362"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246764"
 ---
 # <a name="optimize-sql-server-performance"></a>SQL Server のパフォーマンスを最適化する
 

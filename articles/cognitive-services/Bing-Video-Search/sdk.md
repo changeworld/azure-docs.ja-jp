@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 1/25/2018
 ms.author: rosh
-ms.openlocfilehash: 951ab55d737a4344c5523aad2991c42fa143316e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 554ccce5586284559a5adfb0ef77607e422987ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214496"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176983"
 ---
 # <a name="bing-search-sdk"></a>Bing Search SDK
 Bing Video Search API のサンプルには、次のようなシナリオが含まれています。

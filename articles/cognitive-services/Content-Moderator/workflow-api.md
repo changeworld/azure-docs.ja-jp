@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 3a3ff5ed325205c5ae17aaff053127f4e84504bf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4abe3a864b798552caa27d07a422a7d67b2e4018
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221387"
 ---
 # <a name="automate-moderation-reviews-with-workflows"></a>ワークフローを使用してモデレーション レビューを自動化する
 

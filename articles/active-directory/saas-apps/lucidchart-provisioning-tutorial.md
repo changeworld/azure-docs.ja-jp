@@ -8,19 +8,19 @@ writer: asmalser-msft
 manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d914f14d2b7a50e700e53b55cd43e699cf560a76
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f58c0906e97c28a0fc63eb50c7224063471a45f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810365"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192334"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:LucidChart を構成し、自動ユーザー プロビジョニングに対応させる
 

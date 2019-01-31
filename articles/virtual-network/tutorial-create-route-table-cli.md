@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849211"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157467"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 NVA は、ルーティング、ファイアウォール、WAN 最適化などのネットワーク機能を実行する VM です。
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、*DMZ* サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+[az vm create](/cli/azure/vm) を使用して、*DMZ* サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
 ```azure-cli-interactive
 az vm create \
@@ -161,7 +161,7 @@ az vm extension set \
 
 後の手順で、*パブリック* サブネットからのトラフィックが NVA 経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、*パブリック* サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
+[az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
