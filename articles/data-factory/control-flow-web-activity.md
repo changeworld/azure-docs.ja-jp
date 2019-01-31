@@ -65,7 +65,7 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 -------- | ----------- | -------------- | --------
 name | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | [はい]
+method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | POST/PUT メソッドには必須です。
