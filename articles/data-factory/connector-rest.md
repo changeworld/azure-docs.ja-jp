@@ -55,10 +55,10 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティを **HttpServer** に設定する必要があります。 | [はい] |
-| url | REST サービスのベース URL。 | [はい] |
+| type | **type** プロパティを **HttpServer** に設定する必要があります。 | はい |
+| url | REST サービスのベース URL。 | はい |
 | enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ <br /> (既定値は **true** です)。 |
-| authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | [はい] |
+| authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 ### <a name="use-basic-authentication"></a>基本認証を使用する
@@ -67,8 +67,8 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| userName | REST エンドポイントにアクセスするために使用するユーザー名。 | [はい] |
-| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | [はい] |
+| userName | REST エンドポイントにアクセスするために使用するユーザー名。 | はい |
+| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -100,10 +100,10 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | [はい] |
+| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | はい |
 | servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | [はい] |
-| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| [はい] |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
+| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| はい |
 
 **例**
 
@@ -137,7 +137,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| [はい] |
+| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| はい |
 
 **例**
 
@@ -169,7 +169,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | [はい] |
+| type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
 | requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ  |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
@@ -232,7 +232,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | [はい] |
+| type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ  |
 | requestInterval | 次のページに対する要求を送信する前に待機する時間。 既定値は **00:00:01** です。 |  いいえ  |
 

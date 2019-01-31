@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257386"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811973"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
 ## <a name="overview"></a>概要
@@ -692,8 +692,8 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 まず、トリミングする区間を決める必要があります。 高度な技術知識は必要ありません。ワークフロー図のルートに 2 つのプロパティを公開しましょう。 デザイナー画面を右クリックし、[プロパティの追加] を選択します。
 
-* 1 つ目のプロパティ: "ClippingTimeStart" (型: "TIMECODE")
-* 2 つ目のプロパティ: "ClippingTimeEnd" (型: "TIMECODE")
+* 1 つ目のプロパティ:"ClippingTimeStart" (型:"TIMECODE")
+* 2 つ目のプロパティ:"ClippingTimeEnd" (型:"TIMECODE")
 
 ![クリッピングの開始時間のプロパティを追加するダイアログ](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

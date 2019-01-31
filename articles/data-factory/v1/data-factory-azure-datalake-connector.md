@@ -72,8 +72,8 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **type** | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
-| **dataLakeStoreUri** | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
+| **type** | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | はい |
+| **dataLakeStoreUri** | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | はい |
 | **subscriptionId** | Data Lake Store アカウントが属している Azure サブスクリプション ID です。 | シンクでは必須 |
 | **resourceGroupName** | Data Lake Store アカウントが属している Azure リソース グループ名です。 | シンクでは必須 |
 
@@ -93,9 +93,9 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
-| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
+| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | はい |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。 | はい |
+| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
 **例:サービス プリンシパルの認証**
 ```json
@@ -120,8 +120,8 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
-| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
+| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
+| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | はい |
 
 > [!IMPORTANT]
 > Azure Data Lake Store でユーザーに適切なアクセス許可を付与してください。
@@ -239,7 +239,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |[はい] |
+| **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |はい |
 | **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data._Guid_.txt" という形式になります。 例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ  |
 | **partitionedBy** |**PartitionedBy** プロパティは省略可能です。 これを使用し、時系列データに動的なパスとファイル名を指定できます。 たとえば、1 時間ごとのデータに対して **folderPath** をパラメーター化できます。 詳細と例については、「[partitionedBy プロパティ](#using-partitionedby-property)」を参照してください。 |いいえ  |
 | **format** | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ  |

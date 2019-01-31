@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e27f4c937a97b955d4f0b879ad0199cc35dcadce
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 77c7eb2d57fcbe6676be82ee68effeae4b1ae615
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500212"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189308"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>PIM 向けの Microsoft Graph API (プレビュー)
 

@@ -1,10 +1,10 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Recognize の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Recognize の統合 | Microsoft Docs
 description: Azure Active Directory と Recognize の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: cfad939e-c8f4-45a0-bd25-c4eb9701acaa
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b2d5acfcb722845d7f346668597c073319f273f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 49d501a07f2efa6e9c6e20dfe2a026badf13f624
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448786"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824152"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル: Azure Active Directory と Recognize の統合
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル:Azure Active Directory と Recognize の統合
 
 このチュートリアルでは、Recognize と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -46,7 +46,7 @@ Azure AD と Recognize の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -88,7 +88,7 @@ Recognize で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 Recognize で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Recognize テスト ユーザーの作成](#creating-a-recognize-test-user)** - Recognize で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -117,7 +117,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
     b. **[識別子]** ボックスに、`https://recognizeapp.com/<your-domain>` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 サインオンの URL については、[Recognize クライアント サポート チーム](mailto:support@recognizeapp.com)に問い合わせてください。また、このチュートリアルで後述する [SSO Settings]\(SSO 設定\) セクションのサービス プロバイダー メタデータ URL を開いて識別子の値を取得できます。 . 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 サインオンの URL については、[Recognize クライアント サポート チーム](mailto:support@recognizeapp.com) に問い合わせてください。また、このチュートリアルで後述する [SSO Settings]\(SSO 設定\) セクションのサービス プロバイダー メタデータ URL を開いて識別子の値を取得できます。 。 
  
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -161,12 +161,12 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
    
     ![アプリ側でのシングル サインオンの構成](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-1. 空白のブラウザーで**メタデータ URL リンク**を開き、メタデータ ドキュメントをダウンロードします。 次に、ファイルから EntityDescriptor 値 (entityID) をコピーし、Azure Portal の **[Recognize のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
+1. 空白のブラウザーで**メタデータ URL リンク**を開き、メタデータ ドキュメントをダウンロードします。 次に、ファイルから EntityDescriptor 値 (entityID) をコピーし、Azure portal の **[Recognize のドメインと URL]** セクションの  **[識別子]**  ボックスに貼り付けます。
     
     ![アプリ側でのシングル サインオンの構成](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

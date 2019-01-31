@@ -68,11 +68,11 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ                  | 説明                              | 必須 |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | アクティビティの名前                     | [はい]      |
+| name                      | アクティビティの名前                     | はい      |
 | description               | アクティビティの用途を説明するテキストです。 | いいえ        |
-| type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | [はい]      |
-| linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
-| storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | [はい]      |
+| type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | はい      |
+| linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
+| storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | はい      |
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ        |
 
 ## <a name="error-info"></a>エラー情報

@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: scottwhi
-ms.openlocfilehash: c52e67bf3b6c4e1365d8bd0ab32af66ee4590fdf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a0164f29f062a29c72d28221612e6f6cd7f03af2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54268044"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153047"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing News Search API でニュースを検索する
 

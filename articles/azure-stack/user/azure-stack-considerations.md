@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809805"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238909"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項:Azure Stack でのサービスの使用またはアプリの作成
 
@@ -42,7 +43,7 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 
 次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|

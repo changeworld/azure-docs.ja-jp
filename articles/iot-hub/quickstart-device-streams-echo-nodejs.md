@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: a90357e0075856049616a026fee7a49606ea4d90
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 590faaf727345dcfe8ab61a1860ca46d78256b22
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830514"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219007"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
 
-複数のプラットフォームに対応する Node.js を [Node.js.org](https://Node.js.org) からダウンロードできます。
+複数のプラットフォームに対応する Node.js を [Node.js.org](https://nodejs.org) からダウンロードできます。
 
 開発コンピューターに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成

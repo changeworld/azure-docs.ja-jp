@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 11/07/2018
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.lastreviewed: 11/07/2018
+ms.openlocfilehash: b739db654a182433bbe1f47528d1ab99f1b10c08
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277819"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242163"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack の ID アーキテクチャ
 Azure Stack で使用する ID プロバイダーを選択する前に、Azure Active Directory (Azure AD) と Active Directory フェデレーション サービス (AD FS) のオプションの重要な違いを理解してください。 

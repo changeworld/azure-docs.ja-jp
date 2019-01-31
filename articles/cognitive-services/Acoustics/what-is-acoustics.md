@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 175203269f524f5c680345602e6382f5c26f1bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901026"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178904"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
 VR や従来型の画面を対象にしたプロジェクトは、Project Acoustics Unity プラグインによって閉塞、反響、立体化の効果を利用することができます。 物理学に基づく波形シミュレーションにデザイナーの意図を重ねるゲーム音響効果を設計する手段となります。
@@ -56,7 +56,7 @@ Project Acoustics の Unity プラグインに用意されているアプロー�
 * Windows UWP (x86、AMD64、ARM)
 * Android (x86 および ARM64)
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 音響効果プラグインの評価に関心がある方は、[こちら](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)からご登録のうえ、デザイナー プレビューにご参加ください。
 
 ## <a name="next-steps"></a>次の手順

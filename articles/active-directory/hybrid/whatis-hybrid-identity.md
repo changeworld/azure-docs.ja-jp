@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 11/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7aff7b336789205703738cfa0bf02f2e9bd54d72
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0b6bb3f950c4a442e898a6251a89246b31af78bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465073"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160425"
 ---
 # <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは 
 

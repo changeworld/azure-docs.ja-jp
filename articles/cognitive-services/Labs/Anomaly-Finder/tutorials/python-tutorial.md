@@ -6,16 +6,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: d1e9afc32625cdbf97f576ee091d7dc03271e2fc
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164808"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219398"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>チュートリアル: Python アプリケーションによる異常検出
 

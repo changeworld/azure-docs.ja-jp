@@ -88,7 +88,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 ```json
 {
-    "name": "MongoDbDataset",
+     "name":  "MongoDbDataset",
     "properties": {
         "type": "MongoDbV2Collection",
         "linkedServiceName": {

@@ -6,16 +6,16 @@ services: cognitive-services
 author: LuisCabrer
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: recommendations
+ms.subservice: recommendations
 ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 8bdcc7ef4bbe2a769899a6db3e540e8d493e6ced
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77ecea3a24f80f988bef79a3cd22d5b868dbfa4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250120"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223835"
 ---
 # <a name="recommendations-api-discontinued"></a>Recommendations API (サポート終了)
 

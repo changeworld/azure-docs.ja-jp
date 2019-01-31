@@ -5,16 +5,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 984a027a1fe2f9c894701058452490bdf12b66c4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e613652511a18f2234c82cce47f0beeb2d3bbdd6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338738"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211952"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>例:Text Analytics で言語を検出する方法
 

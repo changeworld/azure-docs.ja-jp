@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/11/2018
-ms.openlocfilehash: 04a0abd0fba7ec53aebeb481ac80d36653d118b6
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 93249b7d274ce9d7928dfa46eb339da68c92b785
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384940"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163298"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Visual Studio で .NET と C# を使用して Azure SQL データベースに接続してクエリを実行する
 
@@ -28,8 +28,6 @@ ms.locfileid: "53384940"
 このクイック スタートを完了するには、次のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-  
-- 使用しているコンピューターのパブリック IP アドレスを許可する[サーバーレベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
   
 - [Visual Studio 2017](https://www.visualstudio.com/downloads/) Community、Professional、または Enterprise エディション。
 

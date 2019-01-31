@@ -44,11 +44,11 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Square** | [はい] |
-| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | [はい] |
-| clientId | Square アプリケーションに関連付けられているクライアント ID。  | [はい] |
-| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Square** | はい |
+| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | はい |
+| clientId | Square アプリケーションに関連付けられているクライアント ID。  | はい |
+| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -81,7 +81,7 @@ Square からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **SquareObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **SquareObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -110,7 +110,7 @@ Square からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **SquareSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **SquareSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Business"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

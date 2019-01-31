@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8a5c11df1b6353a100dd5f1cf388308b9c048932
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 318d80049caf1328aac1cc4423b0de10df7a8c58
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258886"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211510"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>クイック スタート:.NET を使用してレビューを作成する
 

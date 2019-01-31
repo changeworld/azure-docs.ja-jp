@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f7fef00cfff9295036d7545470f86e27314e6451
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4e0b5070a9ee5b8c8554505dcf81c8226a9fddc0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258700"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227218"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 

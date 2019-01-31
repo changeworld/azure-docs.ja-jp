@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 03659278adf9bfe1af23a147633a72bd8f425601
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 30bc45e0c32fdb0cf06d8eb5b0cb7445e693d17d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578616"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209504"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるサムネイルの生成
 

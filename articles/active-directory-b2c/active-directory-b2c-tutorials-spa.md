@@ -9,13 +9,13 @@ ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.component: B2C
-ms.openlocfilehash: 08372700e9740ca69ba73dfba49f9d120dfabc6d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 0632d97c85e4baf837329a2b573f4abe5c15bf26
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850333"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195711"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してアカウントによるシングルページ アプリの認証を有効にする
 
@@ -56,8 +56,8 @@ Azure AD B2C ディレクトリの全体管理者として、[Azure portal](http
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | My sample single page app | 使用者がアプリの機能を把握できる**名前**を入力します。 | 
-    | **Web アプリ/Web API を含める** | [はい] | シングルページ アプリの場合は **[はい]** を選択します。 |
-    | **暗黙的フローを許可する** | [はい] | アプリでは [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | はい | シングルページ アプリの場合は **[はい]** を選択します。 |
+    | **暗黙的フローを許可する** | はい | アプリでは [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
     | **応答 URL** | `http://localhost:6420` | 応答 URL は、アプリが要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプルはローカル (localhost) で実行され、ポート 6420 でリッスンします。 |
     | **ネイティブ クライアントを含める** | いいえ  | これはネイティブ クライアントではなくシングルページ アプリであるため、[いいえ] を選択します。 |
     

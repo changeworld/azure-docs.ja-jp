@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 09/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 18658af90bd1ff71e84a5b2332db7e30bc23f69a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: e1e1ec2a9f5329f5d7331b7ce3ced4924d001a49
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829394"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174178"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 

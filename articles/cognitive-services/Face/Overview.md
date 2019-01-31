@@ -5,16 +5,16 @@ description: Face サービスを使用して、画像内の顔を検出し、�
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 1916aa94dcf7528ce898ef37eac29c1017f03f15
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 361d80bcca0b0a151e9fcdaab938de0c8ff5f8bc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231888"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220112"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 

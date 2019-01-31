@@ -66,8 +66,8 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
             "endpoint" : "123-ABC-321.mktorest.com",
             "clientId" : "<clientId>",
             "clientSecret": {
-                "type": "SecureString",
-                "value": "<clientSecret>"
+                 "type": "SecureString",
+                 "value": "<clientSecret>"
             }
         }
     }

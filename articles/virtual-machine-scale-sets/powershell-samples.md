@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル | Microsoft Docs
 description: Azure PowerShell のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ced4cf2270b0c818357cc0eaf1a4d4537031b07
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c907af8e91a7463c74e0bb14b0d8e0862c4e0fa3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469590"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887259"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル
 

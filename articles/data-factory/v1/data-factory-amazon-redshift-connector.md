@@ -62,12 +62,12 @@ ms.locfileid: "54022021"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
-| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
+| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |はい |
+| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | **port** |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439) |
-| **database** |Amazon Redshift データベースの名前。 |[はい] |
-| **username** |データベースへのアクセス権があるユーザーの名前。 |[はい] |
-| **password** |ユーザー アカウントのパスワードです。 |[はい] |
+| **database** |Amazon Redshift データベースの名前。 |はい |
+| **username** |データベースへのアクセス権があるユーザーの名前。 |はい |
+| **password** |ユーザー アカウントのパスワードです。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 

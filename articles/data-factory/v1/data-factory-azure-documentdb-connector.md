@@ -59,8 +59,8 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**DocumentDb** |[はい] |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**DocumentDb** |はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |はい |
 
 例:
 
@@ -83,7 +83,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |[はい] |
+| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |はい |
 
 例:
 

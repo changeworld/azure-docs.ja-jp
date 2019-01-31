@@ -6,17 +6,17 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: da605ec4013fb11606f99f3d9a2dcfcfcab00d3b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1609b210d47c30d3934b6e61dc9ec0bd7257f8db
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163329"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208220"
 ---
 # <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>チュートリアル: 画像から顔の表情を認識する
 

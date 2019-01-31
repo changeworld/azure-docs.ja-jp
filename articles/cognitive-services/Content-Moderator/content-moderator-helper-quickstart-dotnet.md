@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: aa3c2d5c408969aa3127562607ca8d4e89f44f2e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 08902df231fedd2c1c5653052540cb1cdabba9cf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262270"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224943"
 ---
 # <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>クイック スタート:Content Moderator クライアントを返すヘルパー コード
 

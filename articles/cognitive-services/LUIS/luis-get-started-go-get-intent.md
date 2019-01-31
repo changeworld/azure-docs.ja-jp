@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: e77bd2abcb5810810debc7782b717db47620baaa
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e106a9363b4fca768d0705f65a43397805a8b011
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847460"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222866"
 ---
 # <a name="quickstart-get-intent-using-go"></a>クイック スタート: Go による意図の取得
 

@@ -12,12 +12,12 @@ ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f86312ee1d11e5ac4c7626f5fd4c8223dac8b52
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e6b24e89297b875d0c4547ffe3200b1d5e2e58c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744702"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161532"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL Database に照会する
 
@@ -28,8 +28,6 @@ ms.locfileid: "53744702"
 このチュートリアルを完了するには、次のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- お使いのコンピューターのパブリック IP アドレスに対して構成された[サーバーレベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
 
 - インストールされているオペレーティング システムに応じた、以下の Golang と関連ソフトウェア。
 

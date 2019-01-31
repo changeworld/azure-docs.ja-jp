@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 471232fee5245426afce89993d9faebccc6a8ea8
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 873fc5f6dd4647f032a40ec2aa3c4527671cd92c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389394"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249808"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 

@@ -67,10 +67,10 @@ If Condition アクティビティは、プログラミング言語における 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | if-condition アクティビティの名前。 | String | はい
-type | **IfCondition** に設定する必要があります。 | String | [はい]
-expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | [はい]
-ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
-ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
+type | **IfCondition** に設定する必要があります。 | String | はい
+expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
+ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい
+ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | はい
 
 ## <a name="example"></a>例
 この例のパイプラインでは、入力フォルダーから出力フォルダーにデータをコピーします。 出力フォルダーは、パイプライン パラメーター routeSelection の値によって決まります。 routeSelection の値が true である場合、データは outputPath1 にコピーされます。 一方、routeSelection の値が falseである場合、データは outputPath2 にコピーされます。 

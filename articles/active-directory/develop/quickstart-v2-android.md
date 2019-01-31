@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6eb06a2a4e83c9c293474f1692c2d33d4d0dfb36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 808ee8bb34aa4bb81ce1bcdd50193efa05f5692d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995739"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103766"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート: Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -38,8 +38,8 @@ ms.locfileid: "46995739"
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>登録とダウンロード
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとコード サンプルの登録と構成
-> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとサンプル コードの登録と構成
+> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 > 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
 > 1. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
@@ -47,7 +47,7 @@ ms.locfileid: "46995739"
 > 1. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>手順 1: アプリケーションの構成
+> #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
 > このクイック スタートのコード サンプルを動作させるには、応答 URL として **msal{AppId}://auth** ({AppId} はアプリのアプリケーション ID) を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
@@ -55,11 +55,11 @@ ms.locfileid: "46995739"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-android/green-check.png) アプリケーションはこれらの属性で構成されています
 
-#### <a name="step-2-download-the-project"></a>手順 2: プロジェクトのダウンロード
+#### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
 * [Android Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>手順 3: プロジェクトの構成
+#### <a name="step-3-configure-your-project"></a>手順 3:プロジェクトを構成する
 
 1. プロジェクトを解凍し、Android Studio で開きます。
 1. **app** > **java** > **<i>{host}.{namespace}</i>** にある **MainActivity** を開きます。
@@ -123,7 +123,7 @@ ms.locfileid: "46995739"
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーにサインインし、Microsoft Azure Active Directory (Azure AD) によって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 Gradle を使用してこれをインストールするには、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加します。
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーにサインインし、Microsoft Azure Active Directory (Azure AD) によって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 Gradle を使用してこれをインストールするには、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加します。
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'

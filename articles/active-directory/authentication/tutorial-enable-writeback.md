@@ -3,19 +3,19 @@ title: Azure AD のパスワード ライトバックの有効化
 description: このチュートリアルでは、パスワード ライトバックを Azure AD Connect の一部として有効にして、クラウドで開始されたパスワード変更をオンプレミス AD に反映することができます。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 6cbc4fa071a45e670dae3cc6be66272bc67767f7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5143b59028b3894d3b9a10add594dd91743a4196
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437183"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078884"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>チュートリアル:パスワード ライトバックを有効にする
 

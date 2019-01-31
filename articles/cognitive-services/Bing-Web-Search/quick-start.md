@@ -7,20 +7,20 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: 27B4B51A-D017-44C8-8E4E-9684DC553886
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 6e4c5a47ea19a4308865de78f3a4c059a9f8ac79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d45936712d0085619c53afa1ae8ce919cf73497a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181216"
 ---
 # <a name="your-first-bing-search-query"></a>初めての Bing 検索クエリ
 
-最初の呼び出しを行う前に、Cognitive Services のサブスクリプション キーを入手する必要があります。 キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)」を参照してください。 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+最初の呼び出しを行う前に、Cognitive Services のサブスクリプション キーを入手する必要があります。 キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)」を参照してください。 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 Web 検索の結果を取得するには、次のエンドポイントに GET 要求を送信します。  
 

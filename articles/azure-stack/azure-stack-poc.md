@@ -16,12 +16,13 @@ ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 530bb7b164ec7d7b31e6d4a58bca97aa17dc62fa
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 9341eefdbe1eaa8e27394fd4b10f50b1a48bd4c6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357880"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247325"
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 

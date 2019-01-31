@@ -7,16 +7,16 @@ ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d26a8ba40d145515d35de929682125ba9d3e397f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752607"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205781"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>チュートリアル:Pattern.any エンティティを使用して自由形式データを抽出する
 

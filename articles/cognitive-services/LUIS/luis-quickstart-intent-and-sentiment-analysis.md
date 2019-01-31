@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: b9465e7965c5f1c62134cf309ef0efe914e14f8d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215828"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 
@@ -161,7 +161,7 @@ ms.locfileid: "53754290"
 * 感情分析は、Cognitive Service の [Text Analytics](../Text-Analytics/index.yml) によって提供されます。 この機能は、Text Analytics の[サポートされる言語](luis-language-support.md##languages-supported)に制限されています。
 * 「[How to train (トレーニング方法)](luis-how-to-train.md)」
 * [発行方法](luis-how-to-publish-app.md)
-* 「[How to test in LUIS portal (LUIS ポータルでのテスト方法)](luis-interactive-test.md)」
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 88c72994ec0c6cfc6222ccb31cabae7e354412eb
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: be7bf4596989cf8dfd154e0a366f93650546224b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245533"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247359"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル:Azure と Azure Stack を使用してステージング データ分析ソリューションを作成する 
 

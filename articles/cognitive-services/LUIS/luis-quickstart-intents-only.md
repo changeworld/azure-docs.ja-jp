@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 20cd3931488f3d3cf4728b3022316b685da3277a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 6d663dfe90bb8178b2c66b21a58d59618bac30a4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754262"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223954"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -163,7 +163,7 @@ LUIS ポータルに戻り、ユーザーの発話が、仕事への応募に関
     |ホリデー配送職の書類|
     |シアトルでの新しい経理職に私の履歴書を送信してください。|
     |エンジニアのポストにレジュメを送信して|
-    |タンパでの 求人 234123 への履歴書です。|
+    |職務経歴書です。 求人 234123 への履歴書です。|
 
     [![ApplyForJob の意図に新しい発話を入力しているスクリーンショット](media/luis-quickstart-intents-only/utterance-applyforjob.png "ApplyForJob の意図に新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 

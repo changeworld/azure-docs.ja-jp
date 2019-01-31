@@ -4,18 +4,18 @@ description: インクルード ファイル
 ms.custom: include file
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: ghogen
 ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 8580e19f1955becb2cfaee13742054af1a9edb7f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3762744d2d1f021531694b2d9a3f75ca1c3ed49
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410462"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55291037"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 

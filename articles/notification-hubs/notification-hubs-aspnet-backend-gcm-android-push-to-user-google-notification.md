@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 6e0b8e9977b2cb16dd0b123ab581d14f17b63ba3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446156"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091669"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する
 
@@ -183,11 +183,11 @@ ms.locfileid: "54446156"
         protected HttpClient httpClient;
         private String authorizationHeader;
 
-        public RegisterClient(Context context, String backendEnpoint) {
+        public RegisterClient(Context context, String backendEndpoint) {
             super();
             this.settings = context.getSharedPreferences(PREFS_NAME, 0);
             httpClient =  new DefaultHttpClient();
-            Backend_Endpoint = backendEnpoint + "/api/register";
+            Backend_Endpoint = backendEndpoint + "/api/register";
         }
 
         public String getAuthorizationHeader() {
