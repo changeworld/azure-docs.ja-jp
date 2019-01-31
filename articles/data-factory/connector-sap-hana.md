@@ -58,12 +58,12 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapHana** | [はい] |
-| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | [はい] |
-| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows** | [はい] |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
+| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
+| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows** | はい |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
 | password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -121,8 +121,8 @@ SAP HANA からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | [はい] |
-| query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |
 
 **例:**
 
