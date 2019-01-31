@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 820531cc2254d9cbc7aaf7e758dd0457b282d892
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c4c7ee1ab756f458c6e9fed4ff5ee54dfaba919e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580809"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222237"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>サブスクリプション キーを取得する方法
 

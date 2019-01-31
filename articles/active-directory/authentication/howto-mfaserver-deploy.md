@@ -3,19 +3,19 @@ title: Azure Multi-Factor Authentication Server の概要 | Microsoft Docs
 description: オンプレミスで Azure MFA Server を使い始めるための詳細な手順
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 4940c4893a4f31b18e1741740e6d1c2525acd3f1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8ce4b37f1471fe0adeac4665dcf73e15bb0f7a37
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424134"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077507"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 

@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ms.openlocfilehash: 97eee2b6440dbbf740ad5fa856bd518facabbfef
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 00c9a89bea9deafe4096566032cc9685df8c111c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342298"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228000"
 ---
 # <a name="what-is-custom-speech-service"></a>Custom Speech Service とは
 
@@ -31,7 +31,7 @@ Custom Speech Service を使用すると、アプリケーションやユーザ�
 ## <a name="how-do-speech-recognition-systems-work"></a>音声認識システムのしくみ
 音声認識システムは、連動する複数のコンポーネントから構成されています。 最も重要な 2 つのコンポーネントは、音響モデルと言語モデルです。
 
-音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類子です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
+音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類器です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
 
 言語モデルは、一連の単語における確率分布を表すものです。 言語モデルにより、一連の単語の中から、単語系列自体の確率に基づいて音が似ている単語を選択できます。 たとえば、“recognize speech” と “wreck a nice beach” の音は似ていますが、前者の仮定の発生確率の方がはるかに大きいため、言語モデルが付けるスコアは大きくなります。
 

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/16/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 98a1235532ec4cc225ac6a5117265e145b21034b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 11/16/2018
+ms.openlocfilehash: be537d9598eeda902254e56a9202415f4f498d93
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245173"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245135"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack への Linux イメージの追加
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: 21c43bdd9f872841c3adaf5293177efe23fc3021
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: ae06a828a9e1bd900ae0c9f91db5552a1467bfc9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358968"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251760"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack のオフライン更新
 

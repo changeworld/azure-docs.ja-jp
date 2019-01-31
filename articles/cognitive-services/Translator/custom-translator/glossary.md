@@ -5,16 +5,16 @@ description: Custom Translator 用語集
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 35d2ef734e1d1ce71ae6c8d7a607fe0dad1915fb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28f9ca2cdb622e54bf4938863e4dd826c28d92de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627018"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206427"
 ---
 # <a name="glossary"></a>用語集
 

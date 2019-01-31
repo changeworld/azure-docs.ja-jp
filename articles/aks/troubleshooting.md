@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654072"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468837"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -66,28 +66,3 @@ Kubernetes ダッシュボードが表示されない場合は、`kube-proxy` �
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、"メッセージ:プロパティ 'imageReference' は変更できませ" というエラーが発生します。  この問題を解決するにはどうすればよいですか。
 
 AKS クラスター内のエージェント ノードのタグを変更したことが原因で、このエラーが発生している可能性があります。 MC_* リソース グループのリソースのタグやその他のプロパティを変更または削除すると、予期しない結果につながる可能性があります。 AKS クラスターの MC_* グループでリソースを変更すると、サービス レベル目標 (SLO) が中断されます。
-
-## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>AKS クラスターでサービス プリンシパルのシークレットを更新するにはどうすればよいですか?
-
-既定では、有効期限が 1 年のサービス プリンシパルと共に AKS クラスターが作成されます。 期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。
-
-この手順を実行する例を次に示します。
-
-1. [az aks show](/cli/azure/aks#az-aks-show) コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。
-1. [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list) を使用して、サービス プリンシパルのクライアント シークレットを一覧表示します。
-1. [az ad sp credential-reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) コマンドを使用して、サービス プリンシパルの期限を 1 年間延長します。 AKS クラスターが正しく動作するためには、サービス プリンシパルのクライアント シークレットが同じままである必要があります。
-
-```azurecli
-# Get the service principal ID of your AKS cluster.
-sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
-    --query servicePrincipalProfile.clientId -o tsv)
-
-# Get the existing service principal client secret.
-key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
-
-# Reset the credentials for your AKS service principal and extend for one year.
-az ad sp credential reset \
-    --name $sp_id \
-    --password $key_secret \
-    --years 1
-```

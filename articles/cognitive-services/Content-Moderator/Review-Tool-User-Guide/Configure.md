@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8717eb58538889e99938164f97f10c010f87d6a5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 32563b429764a45efbef952310ab6615567d42f0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262950"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210932"
 ---
 # <a name="configure-review-tool-settings"></a>レビュー ツールの設定を構成する
 
@@ -29,13 +29,13 @@ ms.locfileid: "54262950"
 
 ![Content Moderator のチーム設定](images/settings-2-team.png)
 
-## <a name="tags"></a>タグ
+## <a name="tags"></a>Tags
 
 ここでは、タグの短いコード、名前、説明を入力することで[カスタム タグを定義](tags.md)できます。 作成した後、レビュー時に使用可能になります。 可視性のオンとオフを切り替えて、異なるレビューに異なるタグを使用できます。
 
 ![Content Moderator のタグ設定](images/settings-3-tags.png)
 
-## <a name="connectors"></a>コネクタ
+## <a name="connectors"></a>Connectors
 
 ワークフローでは、レビュー ツールとの通信にコネクタを使用して機能を追加します。 レビュー ツールは、コンテンツをモデレートするために既定のワークフローを使用して Content Moderator API を呼び出します。 レビュー ツールにサインアップすると、Moderator API 資格情報が自動プロビジョニングされます。 コネクタが使用可能である限り、他のコネクタ API の統合もサポートされます。 いくつかのコネクタをすぐに利用できるようにしました。
 

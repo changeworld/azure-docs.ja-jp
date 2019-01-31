@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a04b875befdd523527d286113fddb783984d4af
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408733"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458144"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>データ サイエンス チーム プロジェクトのグループ マネージャーのタスク
 

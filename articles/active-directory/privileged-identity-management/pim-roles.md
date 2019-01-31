@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: e4c60c6ecdc586ba97a01fa42cd80b8ed541fa61
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 80fbad64cda9267e468f9385d48dd5d40468eaca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434940"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203421"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>PIM で管理できないロール
 

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 46065a742afd08585707f4f4fdf6ad2e32cd89b2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dce0a34ea9d195748c47dd30cdd5f591ba597c2f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719457"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228153"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>C# からボットを使用して LUIS の結果を Application Insights に追加する
 

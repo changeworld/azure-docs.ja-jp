@@ -13,12 +13,13 @@ ms.topic: How to
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 0e9ad89e504ce1cb86daad48bec9ffe9423e2cf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: cb26aae743d267866a8a7d1de76a319a0a681a08
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319547"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252066"
 ---
 # <a name="scheduling-a-test"></a>テストのスケジュール設定
 

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f5768012a03629190a65dd86d004dc842d99912e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547747"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215948"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -25,7 +25,7 @@ ms.locfileid: "53547747"
 
 ロールでは、こうした違いに対して名前が付けられます。
 
-|エンティティ|ロール|目的|
+|エンティティ|Role|目的|
 |--|--|--|
 |場所|origin|飛行機が離陸する場所|
 |場所|destination|飛行機が着陸する場所|

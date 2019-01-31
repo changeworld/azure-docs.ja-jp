@@ -3,19 +3,19 @@ title: Microsoft Azure Multi-Factor Authentication におけるユーザーの�
 description: Azure Multi-Factor Authentication でユーザーの状態を確認してください。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 7a6f6909791fcf60f6c691a830cab85241ae803c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f85ce3424598044292de3b2b5cb073cc3c510225
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432491"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077167"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 

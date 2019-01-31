@@ -5,17 +5,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9af4f5223dfe269ace459c8a7de07fe6dd0c2427
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 41383b5bbad0eb5c32b98c57f3ea35e6018993e8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973963"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218123"
 ---
 # <a name="part-of-speech-tagging"></a>品詞のタグ付け
 
@@ -39,7 +39,7 @@ ms.locfileid: "53973963"
 | ) | 終了のかっこ | ) ] } |
 | , | コンマ | , |
 | -- | ダッシュ | -- |
-| にも掲載されています。 | 文の終端記号 | にも掲載されています。 ! ? |
+| 。 | 文の終端記号 | 。 ! ? |
 | : | コロンまたは省略記号 | : ; ... |
 | CC | 接続詞、等位接続詞 | and but or yet|
 | CD | 数値、基数 | nine 20 1980 '96 |

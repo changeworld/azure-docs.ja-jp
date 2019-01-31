@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 2289a41fad552082e93f4d0d51ff76c6f4c241da
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: bab79fcb9033d179973e10c6356664ee295961b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470531"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226352"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Speech SDK for C++ を使用して音声を認識する
 

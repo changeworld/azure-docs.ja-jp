@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8a546845adb32823e89b814377bcf3e469562445
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413670"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228799"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -115,7 +115,7 @@ Log Analytics の [セキュリティおよび監査] ダッシュボードは�
 
 Log Analytics とのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
 * [ログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)。収集されたデータを分析するためのクエリを構築します。
-* [ダッシュボード](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards)。最も重要な検索のグラフィカル表示でカスタマイズできます。
+* [ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)。最も重要な検索のグラフィカル表示でカスタマイズできます。
 * [ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)。追加の機能と分析ツールが提供されます。
 
 ![分析ツール](./media/azure-threat-detection/azure-threat-detection-fig6.png)

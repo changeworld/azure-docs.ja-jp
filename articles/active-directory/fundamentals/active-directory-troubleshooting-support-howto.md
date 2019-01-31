@@ -8,18 +8,18 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: feecc0b5b8c6bd7cb39a9aa8f40e84b07b242f39
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 2063f9fcd3e001f4f8f175bd6031c9d31313f9e6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447771"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092192"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 

@@ -4,17 +4,16 @@ description: Data Box または Data Box Disk の注文に関連する問題の�
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: disk
+ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.component: ''
-ms.openlocfilehash: 86d89f50a6d137d0c3ebf9148478ac6cec9951f6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092492"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470163"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
 

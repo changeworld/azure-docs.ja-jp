@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463747"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472783"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -228,7 +228,7 @@ SQL Server で有効になっている、ドキュメントに記載されてい
 
 ### <a name="distributed-transactions"></a>分散トランザクション
 
-MSDTC も[エラスティック トランザクション](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview)も現在、Managed Instance ではサポートされていません。
+MSDTC も[エラスティック トランザクション](sql-database-elastic-transactions-overview.md)も現在、Managed Instance ではサポートされていません。
 
 ### <a name="extended-events"></a>拡張イベント
 
@@ -279,8 +279,8 @@ Managed Instance のリンク サーバーがサポートするターゲット�
 - `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY`、`FROM SID` を使用して作成された SQL ログインはサポートされています。 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) に関する記事をご覧ください。
 - [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文で作成された Azure Active Directory (AAD) ログインがサポートされます (**パブリック プレビュー**)。
 - `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
-- インスタンスを作成した Azure Active Directory (Azure AD) ユーザーは、[制限のない管理特権](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts)を持ちます。
-- 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) に関するセクションをご覧ください。
+- インスタンスを作成した Azure Active Directory (Azure AD) ユーザーは、[制限のない管理特権](sql-database-manage-logins.md#unrestricted-administrative-accounts)を持ちます。
+- 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users) に関するセクションをご覧ください。
 
 ### <a name="polybase"></a>PolyBase
 

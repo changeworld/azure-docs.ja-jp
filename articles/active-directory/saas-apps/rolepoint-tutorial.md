@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 68d37f40-15da-45f5-a9e1-d53f78e786d1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: d16e2ebf6f2a170a65d9e471f0c4a19a3a31ded2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 29eafa3a536a71923eaaa9eae2ce9f75f430d158
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>チュートリアル:Azure Active Directory と RolePoint の統合
 

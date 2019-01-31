@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0620ee1d0969a57801fe524684d02e2ef9ef6ba6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266963"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223389"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API リファレンス
 

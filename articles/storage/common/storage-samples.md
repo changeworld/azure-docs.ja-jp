@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 0ef00e69a280748900ac521acd32e4ccf5fefa23
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: d1eac8f79ea53643659f8780ee03f8ced13c7dcd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525190"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452228"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 
@@ -59,7 +59,7 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 
 ## <a name="api-reference-and-source-code"></a>API リファレンスとソース コード
 
-| Language | API リファレンス | ソース コード |
+| 言語 | API リファレンス | ソース コード |
 |----------|---------------|-------------|
 | .NET | [.NET クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [.NET ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net) |
 | Java | [Java クライアント ライブラリ リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java ストレージ クライアント ライブラリのソース コード](https://github.com/azure/azure-storage-java) |

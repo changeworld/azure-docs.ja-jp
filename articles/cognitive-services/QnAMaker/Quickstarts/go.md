@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6777765e4ae57aefc5944d0dde597d2becfe0430
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 67654e11f3f5b883c587a4fdc0bb7a25f56cd48b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091443"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220027"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Go で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>

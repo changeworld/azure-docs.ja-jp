@@ -6,25 +6,25 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a203fdf6562dabb1b9d6e8ab5bb8f46ff6d5dc27
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f227cc03578adcfbf73fec3ae8941045e8352513
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902792"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183001"
 ---
 # <a name="entity-attributes"></a>エンティティの属性
 
 Academic Graph は、7 種類のエンティティで構成されます。 すべてのエンティティにエンティティ ID とエンティティ型があります。
 
 ## <a name="common-entity-attributes"></a>共通のエンティティ属性
-Name    |説明                |type       | [操作]
+Name    |説明                |type       | 操作
 ------- | ------------------------- | --------- | ----------------------------
-ID      |エンティティ ID                  |Int64      |等しい
+Id      |エンティティ ID                  |Int64      |等しい
 Ty      |エンティティの種類                |enum   |等しい
 
 ## <a name="entity-type-enum"></a>エンティティ型の列挙

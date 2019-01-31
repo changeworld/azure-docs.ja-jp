@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: abbfb5ac-7687-4153-b263-8090102dae37
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ab286a88f484a6711ce0702d56c40d2b33dcd8a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: fea93e51d688887c831ae4b3526d717442281be7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819086"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>チュートリアル:Azure Active Directory と Sciforma の統合
 

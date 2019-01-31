@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95c631c38b975c71d5e026d33391792ee811bbc6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 10bda16531ddf6dff050d0a4c9fdb549623dbc88
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171016"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect:デバイス オプション
 

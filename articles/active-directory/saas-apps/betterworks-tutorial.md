@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 5bb9505a-be02-46ae-9979-5308715d2b47
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ccd960d0cc849cc1544ed151c081a7fa023a385
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 797dc9685c1dc0059396d7f7dbf56f68faf98e3f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826770"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>チュートリアル:Azure Active Directory と BetterWorks の統合
 

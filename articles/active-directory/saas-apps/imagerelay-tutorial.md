@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 65bb5990-07ef-4244-9f41-cd28fc2cb5a2
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0671d2f5ad4be34926c8e3d2b22711c4af5fd435
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4bc522915b302c7875ca77213a39fce52f0736a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>チュートリアル:Azure Active Directory と Image Relay の統合
 

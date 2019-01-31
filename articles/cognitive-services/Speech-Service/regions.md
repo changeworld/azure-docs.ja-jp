@@ -6,17 +6,17 @@ services: cognitive-services
 author: mahilleb-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: e33bf7cd98cdd5862af6f4d68d3d73de1a07d229
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 32a8b4cbfd0d8b43d294155432a0feaf29036c4c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413160"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218140"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 

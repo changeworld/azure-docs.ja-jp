@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5b920e4ce8df131b81a9ef6ce2d66c7082d8f5e4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 933c4e4a6731a492a5aa461de7c782af422fb6fb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583410"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162703"
 ---
 # <a name="describe-images-with-human-readable-language"></a>人間が判読できる言語で画像を説明する
 

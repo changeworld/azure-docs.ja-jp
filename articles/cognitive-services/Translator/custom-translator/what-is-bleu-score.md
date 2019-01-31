@@ -5,16 +5,16 @@ description: BLEU は、同じ原文の自動翻訳と 1 つまたは複数の�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: v-rada
-ms.openlocfilehash: 887eaeac5d74aafd9839495939a2079b288738e4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b0fd9777b8c830a06195dbc22f0bb9081ff9753a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222016"
 ---
 # <a name="what-is-a-bleu-score"></a>BLEU スコアとは
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: c2b947dc-e1a8-4f5f-b40e-2c5180648e4f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 76e58ab9c7df77341e74c45cee438ac947ba507e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 600165c06fcc814fbb8df180d955235104153abd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822418"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル:Azure Active Directory と Kintone の統合
 

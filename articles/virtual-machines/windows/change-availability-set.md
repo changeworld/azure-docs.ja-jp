@@ -4,7 +4,7 @@ description: Azure PowerShell と Resource Manager デプロイ モデルを使�
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: zarhoads
-ms.openlocfilehash: df59b3ec7da0c12a17e10790d69e244f9a0d03f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: cynthn
+ms.openlocfilehash: 769f5052242acfbbdf29348c4a50daea750f3bba
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259532"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882298"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Windows VM の可用性セットの変更
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 

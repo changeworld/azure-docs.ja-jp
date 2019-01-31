@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 1140e9d0a9df717b8e249d8dad895baec955b754
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 42191b21faec7bb1929a12e6bc1a724d269acb1d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192976"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298876"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Log Analytics でクロス リソースのログ検索を実行する  
 
@@ -125,7 +125,6 @@ applicationsScoping
 | where success == 'False'
 | parse SourceApp with * '(' applicationName ')' * 
 | summarize count() by applicationName, bin(timestamp, 1h) 
-| sort by count_ desc 
 | render timechart
 ```
 ![時間グラフ](media/cross-workspace-query/chart.png)

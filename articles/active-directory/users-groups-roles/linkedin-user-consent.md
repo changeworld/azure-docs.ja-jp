@@ -6,18 +6,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: beengen
-ms.custom: it-pro
-ms.openlocfilehash: 776c793fb797e9388f0852773315f27cd42dde25
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: a91cd830620cd56ae54006c3e09dfa02d8706d3c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471720"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299930"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn 統合のデータ共有と同意
 

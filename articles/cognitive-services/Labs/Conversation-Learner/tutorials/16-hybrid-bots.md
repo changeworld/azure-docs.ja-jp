@@ -6,16 +6,16 @@ services: cognitive-services
 author: mattm
 manager: larsliden
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0e2a9918108012e0d0ef1defbff044d7ab9bd83d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796617"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219364"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Conversation Learner を他のボット構築技術と共に使用する方法
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: b75f5f00-ea8b-4850-ae2e-134e5d678d97
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 7dd02aee83d42421cdda57f4feb54dde790db68c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 334e1efd805e484f686cab9e88ab594cee8a6229
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル:Azure Active Directory と Soonr Workplace の統合
 

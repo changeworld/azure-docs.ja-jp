@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8f83733462e66bc36ecd31bb2767969e24b78d8c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890740"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244591"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -36,7 +36,7 @@ ms.locfileid: "52890740"
 | 手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が遅かったり、ハングしたり、エラーが発生したりします。 | ユーザーがマスター データベース内に作成されているかどうかを確認してください。 スクリプト作成オプションでも、エンジンのエディションが "Microsoft Azure SQL Data Warehouse Edition" と設定され、エンジンの種類が "Microsoft Azure SQL Database" であるかどうかを確認してください。 |
 | SSMS でスクリプト生成に失敗する                             | [Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションが [True] に設定されている場合、SQL データ ウェアハウスのスクリプト生成が失敗します。 回避策として、ユーザーは手動で [ツール]、[オプション]、[SQL Server オブジェクト エクスプローラー] の順に選択し、[Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションを [false] に設定する必要があります。 |
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 | 問題                                                        | 解決策                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | クエリ パフォーマンスのトラブルシューティング                            | 特定のクエリのトラブルシューティングを行う場合は、まず、[クエリを監視する方法][Learning how to monitor your queries]に関する記事をご覧ください。 |

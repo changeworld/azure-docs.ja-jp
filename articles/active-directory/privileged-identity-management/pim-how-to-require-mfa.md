@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: cfa092e8aebe92192ecca8aec2721282e603cc5b
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c26050eb8844368554726d0e642b7b7384649763
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669276"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195602"
 ---
 # <a name="multi-factor-authentication-mfa-and-pim"></a>多要素認証 (MFA) と PIM
 

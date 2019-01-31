@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: ONNX の詳細と、Azure Machine Learning を使用した ONNX モデルの作成とデプロイ方法について説明します
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 15aa80c5291854c937bdc128a597ed5bebd608a2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6deeabfe57f946a9c31548791c00ee70ecd9f2d6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437434"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251250"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX と Azure Machine Learning:相互運用可能な AI モデルの作成とデプロイ
 

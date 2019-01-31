@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b2c39e9bfc7203bea43477499daf7e36eaf35d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: eee58708d6aec717d0f79f5c79a0c879b52d56a5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822945"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176371"
 ---
 # <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.assetid: 08c0c52b-76d9-4250-936a-6bec0edb8816
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/26/2018
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 0cc501feea2e7c92ef448c8ca4820d75af0d1ce9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3f29e0c621d35ad5f226c5b0e111d45e7cb6b2e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827518"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198199"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 

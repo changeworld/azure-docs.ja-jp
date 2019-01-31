@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
-ms.author: cwatson
-ms.openlocfilehash: 01af1249039f8bfa1238cbbc12a77074e9347a39
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: banders
+ms.openlocfilehash: a71c456f017e80da85f27437738aa963ec967a3c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263567"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904162"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 

@@ -8,13 +8,13 @@ ms.date: 11/15/2017
 ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: windows
-ms.component: disks
-ms.openlocfilehash: 005d760f8056169f9897b0f9661859650f057a52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 726652a9faa2c22e3bee69e288c755a1e372120a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468541"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477258"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 

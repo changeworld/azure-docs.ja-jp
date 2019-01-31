@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902945"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155954"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Project Acoustics スタート ガイド
 このクイックスタート ガイドでは、Unity プロジェクトにプラグインを統合し、シーンをベイクし、音響を音源に適用する方法について説明します。 このクイックスタート用に、まず [Azure Batch アカウント](create-azure-account.md)を作成する必要があります。 このガイドでは、Unity に関して一定の知識があることを前提にしています。

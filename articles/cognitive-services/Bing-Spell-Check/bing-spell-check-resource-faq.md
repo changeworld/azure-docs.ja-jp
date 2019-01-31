@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: e6662ffcbab9ea274a67bc4437ca1600f1625ff1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90acc80b19058c2a7eb963f9e423883846519b2c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801507"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164930"
 ---
 # <a name="frequently-asked-questions-about-the-bing-spell-check-api"></a>Bing Spell Check API についてよく寄せられる質問
 
@@ -53,4 +53,4 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow:Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

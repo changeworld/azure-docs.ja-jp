@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b272dd1c5b12c9f171c7e8c7c346f4d6cd4b777
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c3de7b46449b8075d17a19733eda88d692b1d876
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413874"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243081"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
 Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。

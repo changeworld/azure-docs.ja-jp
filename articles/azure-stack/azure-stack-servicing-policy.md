@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: db33ef743e595fe90d91769bf271f762fccade6b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 1664e19f3a238b2986af4669c3853a54d7c7e328
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212483"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250825"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 

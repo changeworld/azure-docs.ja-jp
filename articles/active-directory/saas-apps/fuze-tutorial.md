@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 9780b4bf-1fd1-48c1-9ceb-f750225ae08a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 2fdad7df43310132684eae983eae2278629a9b63
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4d8cfcb2b42c21218d30e708217074d63e42bdcf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810195"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル:Azure Active Directory と Fuze の統合
 

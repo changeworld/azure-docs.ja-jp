@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/08/2019
+ms.date: 01/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 898fb12c4e38804cca71be6ef08b078f92633e32
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121177"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240155"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
@@ -99,7 +100,7 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 
 4. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。 例: 
 
-````PowerShell
+```PowerShell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
 Testing: ARM Public\ssl.pfx
 Thumbprint: 7F6B27****************************E9C35A
@@ -141,7 +142,7 @@ Thumbprint: 4DBEB2****************************C5E7E6
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsCertificateValidation Completed
-````
+```
 
 ### <a name="known-issues"></a>既知の問題
 

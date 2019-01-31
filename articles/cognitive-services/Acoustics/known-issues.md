@@ -6,16 +6,16 @@ services: cognitive-services
 author: kylestorck
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 02f56306110e904f41c1b94346c58b33ce0b575c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902154"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156192"
 ---
 # <a name="known-issues"></a>既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d1ff154c42709f0c672b30f7ec51a436fb44ce13
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/21/2018
+ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724744"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240346"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート 
  
@@ -115,10 +116,10 @@ ms.locfileid: "53724744"
    VM の CPU 使用率グラフなどのメトリック データを表示するには、[メトリック] ウィンドウに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
 <!-- 3507629 - IS, ASDK --> 
-- マネージド ディスクは 2 つの新しい[コンピューティング クォータの種類](../azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。
+- マネージド ディスクは 2 つの新しい[コンピューティング クォータの種類](../azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2,048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。
 
-   - 更新プログラム 1808 より前に作成されたクォータでは、マネージド ディスクのクォータは 2048 GiB が割り当てられているものの、管理者ポータルでは値 0 が表示されます。 値は実際のニーズに基づいて増減でき、新しく設定したクォータ値が 2048 GiB の既定値をオーバーライドします。
-   - クォータ値を 0 に更新することは、2048 GiB の既定値と同じことになります。 この問題を回避するには、クォータ値を 1 に設定します。
+   - 更新プログラム 1808 より前に作成されたクォータでは、Managed Disks のクォータは 2,048 GiB が割り当てられているものの、管理者ポータルでは値 0 が表示されます。 値は実際のニーズに基づいて増減することができ、新しく設定したクォータ値が 2,048 GiB の既定値をオーバーライドします。
+   - クォータ値を 0 に更新することは、2,048 GiB の既定値と同じことになります。 回避策として、クォータ値を 1 に設定します。
 
 <!-- TBD - IS ASDK --> 
 - 更新プログラム 1811 の適用後、Managed Disks を使用した VM をデプロイすると、次の問題が発生する可能性があります。

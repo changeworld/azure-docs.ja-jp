@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 152149f94bba9077909d5b5c6bf92f3706b31b8c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848446"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163162"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 

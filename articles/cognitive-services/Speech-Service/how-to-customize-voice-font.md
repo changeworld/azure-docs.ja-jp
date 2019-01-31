@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 01/28/2019
 ms.author: panosper
-ms.openlocfilehash: 181797cd8ba193d7200e5ece8b599ffa40f7185b
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 783679d3d989fe40c6a5ef0c8592ed10aae26643
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413704"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239895"
 ---
 # <a name="creating-custom-voice-fonts"></a>カスタム音声フォントの作成
 

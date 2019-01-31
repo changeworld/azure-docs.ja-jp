@@ -4,8 +4,8 @@ description: 無料サブスクリプションから従量課金制にアップ�
 keywords: 従量課金制へのアップグレード
 services: ''
 documentationcenter: ''
-author: jlian
-manager: jlian
+author: bandersmsft
+manager: alherz
 editor: ''
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
-ms.author: cwatson
+ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1cb6f2e35062649038ece7cd834c582ca9dccf7b
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391301"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900104"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 

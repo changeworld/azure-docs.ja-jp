@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: bd39976691aab0c2333afe9fafc9c5a8cc518b67
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb5a9e4a3a27a2a8c044749b8b4df0f198583bde
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339561"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223665"
 ---
 # <a name="custom-speech-service-meters-and-quotas"></a>Custom Speech Service のメーターとクォータ
 

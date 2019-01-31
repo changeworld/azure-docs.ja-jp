@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: a47f0f3e-2578-422a-a421-034f66de38f5
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 205e41727d9e6e360c34e7ac2a99b9ceec74361b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 122282d168246e34aaa4a6369f7433b167355887
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846168"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152996"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>セキュア LDAP (LDAPS) を使用して Azure AD Domain Services のマネージド ドメインにアクセスするよう DNS を構成する
 

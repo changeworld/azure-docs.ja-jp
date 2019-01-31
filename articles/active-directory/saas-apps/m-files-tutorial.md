@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: b5ab389feb1219d2282aa6bb3bb37077132a8779
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 41c31a987e766551682b2c90c00473ea44215dd5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825784"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>チュートリアル:Azure Active Directory と M-Files の統合
 

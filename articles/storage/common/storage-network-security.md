@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: e8e81ab81e33302b9a0da3e0230d1366cc90d208
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635512"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473631"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 

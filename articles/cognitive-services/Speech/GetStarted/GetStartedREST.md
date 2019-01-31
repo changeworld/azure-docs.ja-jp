@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753080"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224056"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート:Bing Speech 認識 REST API を使用する
 

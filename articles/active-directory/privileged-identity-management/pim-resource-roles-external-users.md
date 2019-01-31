@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 561fccd3e0baee481937954cc65601576a4fd60f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f3cfb792b9c9befcbc2ee869ef5b31903e5c10f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730554"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188611"
 ---
 # <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>PIM で外部ユーザーを招待して Azure リソース ロールを割り当てる
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 7f09e25a-a716-41e1-8ca3-fd00e3d1b8cc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 610ca350ade6bbb6b66706b56074c8b9553b22b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3424f5238e10385b53f7b76ef9a211cf02076ba9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827561"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167684"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>チュートリアル:Azure Active Directory と RightAnswers の統合
 

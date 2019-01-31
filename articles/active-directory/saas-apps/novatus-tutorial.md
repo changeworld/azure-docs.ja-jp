@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: d2f13779-bdb7-4408-9738-be67ed3de4e5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2017
 ms.author: jeedes
-ms.openlocfilehash: c00d35dc5894476a54b598a7c80e9d9161d48753
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 73b382d41a072eb5f59ad6e32323930f1336c316
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820667"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>チュートリアル:Azure Active Directory と Novatus の統合
 

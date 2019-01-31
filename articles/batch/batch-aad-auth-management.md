@@ -3,7 +3,7 @@ title: Azure Active Directory を使用して Batch 管理ソリューション�
 description: Azure Resource Manager でビルドしたアプリケーションと Batch リソース プロバイダーを使用して Azure AD で認証します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
-ms.author: danlep
-ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: lahugh
+ms.openlocfilehash: 67aced11d885be949e7e7dc14ba7aa59e903716a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870421"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467851"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 2d6926b9d6a9b5bc4f3744fbd6fe8864a925ff17
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: files
+ms.openlocfilehash: db11b457fda75c780a6b02715b4aced4c9f38ac1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452602"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 

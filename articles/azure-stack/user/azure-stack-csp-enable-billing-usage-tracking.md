@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 37da5d3f0443335a910929c097dff01450b24f4f
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 01/19/2019
+ms.openlocfilehash: 5d7398853e20702aef450e2532784f0dca7aac57
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411919"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246604"
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>クラウド サービス プロバイダーが Azure Stack サブスクリプションを管理できるようにする
 

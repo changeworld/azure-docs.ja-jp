@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 8c9dc6e6-5d85-4553-8a35-c7137064b928
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: d9f1cfb125c2fa5cd513ae7c2e20c41b8d98f01b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c911a53f16e07b67a1ec22a9e0592df06c192325
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808342"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>チュートリアル:Azure Active Directory と Lessonly.com の統合
 
