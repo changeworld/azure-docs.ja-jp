@@ -245,8 +245,6 @@ items:
       href: sql-data-warehouse-how-to-monitor-cache.md
     - name: データ ウェアハウスの復元
       href: sql-data-warehouse-restore.md
-    - name: パフォーマンス レベルの自動化
-      href: manage-compute-with-azure-functions.md
   - name: 統合
     items:
     - name: 機械学習の使用
@@ -311,9 +309,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 33d40d3884c61a95b791afff2c11f65dd2e20878
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fb943b243319517da70db85a43804084724501d1
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423580"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297057"

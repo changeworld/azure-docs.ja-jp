@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ee944d6e8943e3264ecf51c88f999effe9d5e161
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cae7f435b11b77c9491370aecd3b1df8ab5809bb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477524"
 documentType: LandingData
 title: Bing Visual Search API のドキュメント
 metadata:
@@ -49,17 +49,25 @@ sections:
   items:
   - type: paragraph
     text: Bing Visual Search API を使用して画像の分析情報を取得します。
-  - type: table
-    style: dataMatrix
-    columns:
+  - type: list
+    style: icon48
+    items:
     - image:
         src: media/index/logo_csharp.svg
+      href: visual-search-sdk-c-sharp
+      text: C&#35;
     - image:
         src: media/index/logo_java.svg
+      href: quickstarts/java
+      text: Java
     - image:
         src: media/index/logo_nodejs.svg
+      href: visual-search-sdk-node
+      text: Node.js
     - image:
         src: media/index/logo_python.svg
+      href: visual-search-sdk-python
+      text: Python
     rows:
     - title: ''
       values:

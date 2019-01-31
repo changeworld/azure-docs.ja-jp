@@ -43,7 +43,7 @@ items:
   - name: Azure CLI
     href: /cli/azure/network
   - name: Azure PowerShell
-    href: /powershell/azure/overview
+    href: /powershell/module/az.network/new-azfirewall
   - name: .NET
     href: /dotnet/api
   - name: Java
@@ -70,9 +70,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/azure-firewall/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: f6c971d36456c73451c403e8bcd84ad82df35b0f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d753f52994647805a1914bca2c39707cf701f294
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54257661"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468310"
