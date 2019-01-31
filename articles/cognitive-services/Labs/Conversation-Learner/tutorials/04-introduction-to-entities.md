@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4239cbfe369060516653145b04a2bcfa0882f20d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a42a2ec36d9ce4fb9c139dfddcde0fe0c188c888
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210354"
 ---
 # <a name="introduction-to-entities"></a>エンティティの概要
 
@@ -42,7 +42,7 @@ ms.locfileid: "53796641"
 
 ## <a name="steps"></a>手順
 
-### <a name="create-the-model"></a>モデルの作成
+### <a name="create-the-model"></a>モデルを作成する
 
 1. Web UI で、[新しいモデル] をクリックします。
 2. [名前] フィールドに、「IntroToEntities」と入力し、Enter キーを押します。
@@ -50,9 +50,9 @@ ms.locfileid: "53796641"
 
 ### <a name="entity-creation"></a>エンティティの作成
 
-1. 左側のウィンドウで、[エンティティ]、[新しいエンティティ] ボタンの順にクリックします。
-2. [エンティティ型] に対して [Custom Trained]\(カスタム トレーニング済み\) を選択します。
-3. [エンティティ名] に「city」と入力します。
+1. 左側のパネルで、[Entities]\(エンティティ\)、[New Entity]\(新しいエンティティ\) ボタンの順にクリックします。
+2. [Entity Type]\(エンティティの種類\) で [Custom Trained]\(カスタム トレーニング済み\) を選択します。
+3. [Entity Name]\(エンティティ名\) に「city」と入力します。
 4. [作成] ボタンをクリックします。
 
 > [!NOTE]

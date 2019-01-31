@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: dd6da71f91ab7b31dc8e0f384f539273ae71fbcf
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c0447efa971c8b1599b6357688b845fff1cf9cc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969150"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208281"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>主題の領域、意図、エンティティによって LUIS アプリを計画します
 

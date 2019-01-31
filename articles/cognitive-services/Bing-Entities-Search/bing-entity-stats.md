@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 7c9b4968aa3483bc5e233f8bd3220e61738128d3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e03da9b5f542209cdd5970116b1c672c4aa63499
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888197"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157110"
 ---
 # <a name="how-to-get-analytics-for-bing-entities-api"></a>Bing Entities API の分析を取得する方法
 

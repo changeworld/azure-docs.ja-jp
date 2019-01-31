@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.openlocfilehash: bf056c162684c021e3a8408edfdf82fe4590be48
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260636"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247036"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Azure Cognitive Services を Azure Stack にデプロイする
 

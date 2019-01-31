@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 4015b897985ebc4e962fcb876a17431bc7838a1f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 24b99beee0a1c327645c91fdb50cd496a9f8ef5b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198097"
 ---
 # <a name="resizing-and-cropping-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 

@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 12/19/2018
 ms.service: storage
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: b78a7d0635dd1ce23f690e5bb37a1d56b5f91c09
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 260506e06081a4e51ddddd2ecb9e35b6e8ca71b2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438934"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247011"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2-preview"></a>ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 プレビューにアップグレードする
 

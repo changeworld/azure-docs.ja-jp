@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: ace320d3-521c-449c-992f-feabe7538de7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 1573b7259134037a8e573c6a01588ad782505ea3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8003794f78c3a07129ebe2373ccd58472f5d933e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821160"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル:Azure Active Directory と Wingspan eTMF の統合
 

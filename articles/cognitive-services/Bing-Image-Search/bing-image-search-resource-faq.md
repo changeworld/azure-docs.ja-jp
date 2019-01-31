@@ -3,19 +3,19 @@ title: よく寄せられる質問 (FAQ) - Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: cdc8d8cad26ce4807c8f7bf8fe1d33f13d5799c1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.author: aahi
+ms.openlocfilehash: 986e1affeb9e3326644bc252e8f8f85ab5bdd89d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232938"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168675"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
 

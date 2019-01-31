@@ -6,17 +6,17 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 4846145f6a87ebf9255494fe18eaa11b1317653a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8d45b152885274b63aff660f29fb28e1539f5cb3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092266"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215928"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Cognitive Services Speech SDK for C# を使用して音声を翻訳する
 

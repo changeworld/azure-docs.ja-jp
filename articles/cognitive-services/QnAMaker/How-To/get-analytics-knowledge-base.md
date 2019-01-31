@@ -7,16 +7,16 @@ author: tulasim88
 manager: cgronlun
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim88
-ms.openlocfilehash: d3b110e1135d69c1693b3cc6804bb51ec0ec0bc6
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e6c7cb4ca4265166a516adfda0fb9f70f4548a2e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267013"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213052"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 

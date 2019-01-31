@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 4363d7a319eb31dbf020121bf2fa5c5630296c5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191713"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900291"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
 
 Log Analytics には、ネットワークを監視することを目的とした次のソリューションが用意されています。
 * ネットワーク パフォーマンス モニター (NPM)
- * ネットワークの正常性の監視
+    * ネットワークの正常性の監視
 * Azure Application Gateway 分析によるレビュー
- * Azure Application Gateway のログ
- * Azure Application Gateway のメトリック
+    * Azure Application Gateway のログ
+    * Azure Application Gateway のメトリック
 * クラウド ネットワークのネットワーク アクティビティを監視および監査するためのソリューション
-* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure ネットワーク セキュリティ グループ分析
+    * [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Azure ネットワーク セキュリティ グループ分析
 
 ## <a name="network-performance-monitor-npm"></a>ネットワーク パフォーマンス モニター (NPM)
 

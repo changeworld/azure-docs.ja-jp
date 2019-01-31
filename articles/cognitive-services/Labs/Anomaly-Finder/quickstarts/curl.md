@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 9f47a49b41156967e0d4ef1c729a6bbb1cca1770
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e055bff430c0d090b4d527a79a22922da2eb90d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456305"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207057"
 ---
 # <a name="use-the-anomaly-finder-api-with-curl"></a>Anomaly Finder API と cURL の使用
 

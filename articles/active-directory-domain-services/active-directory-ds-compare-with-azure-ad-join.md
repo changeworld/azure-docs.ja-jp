@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
-ms.openlocfilehash: 8db95f0bcc715967bf942827c140312572b03095
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853971"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178938"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Azure Active Directory の参加と Azure Active Directory Domain Services 間で選定する
 この記事では、Azure Active Directory (AD) の参加と Azure AD Domain Services の違いを説明し、お使いのユースケースに基づく選定を支援します。

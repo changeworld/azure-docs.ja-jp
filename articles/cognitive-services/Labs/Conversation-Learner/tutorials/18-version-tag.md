@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d596c4c614119caa4078df1ed569e685031e9c7c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796554"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206002"
 ---
 # <a name="how-to-use-version-tagging"></a>バージョンのタグ付けを使用する方法
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4eaa71d1d12ca10aae28fe39113ba5385f80c331
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078516"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223257"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Speech Devices SDK のライセンス契約
 

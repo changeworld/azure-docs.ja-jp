@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 26653d03b8d96cca0674685d2b20ac1d1a35ea85
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: fb3e749a341fcf6dcaac551374b8b9ad11bda815
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457869"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213720"
 ---
 # <a name="use-the-anomaly-finder-api-with-c"></a>Anomaly Finder API と C# の使用
 

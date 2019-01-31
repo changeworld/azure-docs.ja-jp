@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 89c88e23-93ce-4970-9baa-1104c4e8fe4a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 34764a0558aaf5a63c353eb1d1d7180c21ca49c8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 703b8a7c5a39ee38d5f365474f9338d490b7b980
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818865"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル:Azure Active Directory と Panopto の統合
 

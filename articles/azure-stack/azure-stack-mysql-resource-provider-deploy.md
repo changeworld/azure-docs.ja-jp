@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 5609cb3cfeab7cbaae493403aac68b0ce56d299a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 118eeadb3611f6f176bd866f98c52545e4e6d7e1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244615"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247631"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 

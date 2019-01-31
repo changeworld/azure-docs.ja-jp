@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 326b0289ebb7aa503d41d556bea15017c28f7a1e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 2989af12407bdddf6e55e8967a0a574fff690208
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853718"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179210"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C:新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成します。
 

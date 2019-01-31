@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a5afcbb219d7792325faa03c5319b07a7c68732b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 81501c79f00c2c0f8ef81532f3b8e7f61fc9eba0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850504"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250616"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 

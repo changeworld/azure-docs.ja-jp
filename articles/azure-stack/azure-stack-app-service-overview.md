@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: c2fe4f5377bfd73f327ef2d0ba8b5fdfff4fa8af
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607945"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243353"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、内部または外部の顧客はあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、フル マネージドの VM 上でユーザーのアプリを実行できます。
 

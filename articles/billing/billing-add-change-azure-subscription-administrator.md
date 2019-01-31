@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/23/2019
-ms.author: cwatson
-ms.openlocfilehash: 4490db0c479abdda19957be98335edeefc08bb59
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.author: banders
+ms.openlocfilehash: 0e6f7f60f0b8f2ede20d9004befad2e0e9b82328
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808750"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903674"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
