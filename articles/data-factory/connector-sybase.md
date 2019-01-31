@@ -54,13 +54,13 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Sybase** | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**Sybase** | はい |
 | server | Sybase サーバーの名前です。 |はい |
-| database | Sybase データベースの名前です。 |[はい] |
-| authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows**。 |[はい] |
-| username | Sybase データベースに接続するユーザー名を指定します。 |[はい] |
+| database | Sybase データベースの名前です。 |はい |
+| authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows**。 |はい |
+| username | Sybase データベースに接続するユーザー名を指定します。 |はい |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -95,7 +95,7 @@ Sybase からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | はい |
 | tableName | Sybase データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -124,7 +124,7 @@ Sybase からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
