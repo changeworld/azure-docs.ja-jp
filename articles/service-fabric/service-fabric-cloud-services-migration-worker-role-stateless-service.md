@@ -44,7 +44,7 @@ worker ロールと同様に、Web ロールもステートレス ワークロ�
 | ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
-| ASP.NET Core 1 |[はい] |該当なし |
+| ASP.NET Core 1 |はい |該当なし |
 
 ## <a name="entry-point-api-and-lifecycle"></a>エントリ ポイントの API とライフサイクル
 worker ロールと Service Fabric サービス API には、同様のエントリ ポイントが用意されています。 
