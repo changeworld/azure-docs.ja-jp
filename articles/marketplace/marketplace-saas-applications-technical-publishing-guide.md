@@ -39,9 +39,9 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | [はい] | いいえ  |  
-| **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
-| **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
+| **お問い合わせ** | はい | いいえ  |  
+| **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
+| **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
 ## <a name="saas-list"></a>SaaS のリスト
 
@@ -111,7 +111,8 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Marketplace に対する Azure AD 統合の認定  
 
-アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーショ シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定することができます。  
+アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーショ シングル サインオン (SSO) を初めて使
+用するか、既にサポートしているかに応じて、Azure AD の統合を認定することができます。  
 
 **マルチテナント アプリケーションの場合:**  
 
