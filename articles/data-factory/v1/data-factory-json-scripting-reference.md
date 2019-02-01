@@ -316,8 +316,8 @@ structure:
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |[はい] |NA |
-| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |[はい] |NA |
+| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
+| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
 | style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
 | anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency が Hour で interval が 1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
 | offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ  |NA |
@@ -590,7 +590,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
@@ -1398,7 +1398,7 @@ Azure Search インデックスにデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 **例:**
@@ -1420,7 +1420,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 |はい |
 
 **例:**
@@ -1707,7 +1707,7 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 | server |DB2 サーバーの名前です。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -2114,7 +2114,7 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 | server |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
-| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -2452,7 +2452,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |[はい] |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
@@ -2672,7 +2672,7 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 | server |Sybase サーバーの名前です。 |はい |
 | database |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
-| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -2790,7 +2790,7 @@ Teradata のリンクされたサービスを定義するには、リンクさ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |Teradata のサーバーの名前です。 |はい |
-| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -3726,7 +3726,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**Hdfs** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | Url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
@@ -3877,7 +3877,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4081,7 +4081,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4439,7 +4439,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 |はい |
 | credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |いいえ  |
-| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |[はい] |
+| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
@@ -4937,7 +4937,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureML**。 |[はい] |
+| type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4965,7 +4965,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |[はい] |
+| type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ  |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
@@ -5056,7 +5056,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |[はい] |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
@@ -5636,9 +5636,9 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | [はい] |
-| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | [はい] |
-| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| [はい] |
+| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | はい |
+| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | はい |
+| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| はい |
 | PackageFile | zip ファイルの名前。 この例では **customactivitycontainer/MyDotNetActivity.zip** が該当します。 | はい |
 | extendedProperties | 独自に定義して .NET コードに渡すことができる拡張プロパティ。 この例では、**SliceStart** 変数に、SliceStart というシステム変数に基づいた値が設定されます。 | いいえ  |
 
