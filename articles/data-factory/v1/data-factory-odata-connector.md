@@ -63,7 +63,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OData** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OData** |はい |
 | url |OData サービスの URL です。 |はい |
 | authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
