@@ -51,7 +51,7 @@ ms.locfileid: "32779262"
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合 |[はい]|
+| NoFault | エラーが検出されなかった場合 |はい|
 | GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
 | PlannedMaintenance |  ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
 | UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。 | いいえ  |
@@ -59,26 +59,26 @@ ms.locfileid: "32779262"
 | PlatformInActive | プラットフォームに問題があります。 | いいえ |
 | ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
 | NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 このエラーは、単なる警告です。| いいえ |
-| ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| [はい]|
-| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | [はい] |
+| ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| はい|
+| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
 ### <a name="connection"></a>接続
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合 |[はい]|
+| NoFault | エラーが検出されなかった場合 |はい|
 | GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
 | PlannedMaintenance | ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
 | UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。  | いいえ  |
 | VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
 | ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
-| ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | [はい] |
-| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| [はい]|
-| 認証 | 事前共有キーが一致しません。 | [はい]|
-| PeerReachability | ピア ゲートウェイに到達できません。 | [はい]|
-| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | [はい]|
-| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |[はい]|
+| ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
+| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
+| 認証 | 事前共有キーが一致しません。 | はい|
+| PeerReachability | ピア ゲートウェイに到達できません。 | はい|
+| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
+| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|
 
 ## <a name="supported-gateway-types"></a>サポートされるゲートウェイの種類
 
