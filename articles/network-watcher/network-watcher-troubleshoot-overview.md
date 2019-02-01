@@ -75,7 +75,7 @@ ms.locfileid: "32779262"
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
 | ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
 | ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
-| 認証 | 事前共有キーが一致しません。 | はい|
+| Authentication | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
 | WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|
