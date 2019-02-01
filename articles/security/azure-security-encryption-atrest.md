@@ -260,30 +260,30 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |                                  | **サービス管理キーを使用したサーバー側**     | **Key Vault でユーザー管理を使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
 | **ストレージとデータベース**        |                    |                    |                    |                    |
 | ディスク (IaaS)                      | -                  | はい、RSA 2048 ビット  | -                  |
-| SQL Server (IaaS)                | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure SQL (Database/Data Warehouse) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure SQL (Database Managed Instance) | [はい]                | プレビュー、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ブロック/ページ Blob) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ファイル)            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Storage (テーブル、キュー)   | [はい]                | -                  | [はい]                |
-| Cosmos DB (ドキュメント DB)          | [はい]                | -                  | -                  |
-| StorSimple                       | [はい]                | -                  | [はい]                |
-| バックアップ                           | -                  | -                  | [はい]                |
+| SQL Server (IaaS)                | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database/Data Warehouse) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database Managed Instance) | はい                | プレビュー、RSA 2048 ビット  | はい                |
+| Azure Storage (ブロック/ページ Blob) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Storage (ファイル)            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Storage (テーブル、キュー)   | はい                | -                  | はい                |
+| Cosmos DB (ドキュメント DB)          | はい                | -                  | -                  |
+| StorSimple                       | はい                | -                  | はい                |
+| バックアップ                           | -                  | -                  | はい                |
 | **インテリジェンスおよび分析**   |                    |                    |                    |
-| Azure Data Factory               | [はい]                | -                  | -                  |
+| Azure Data Factory               | はい                | -                  | -                  |
 | Azure Machine Learning           | -                  | プレビュー、RSA 2048 ビット | -                  |
-| Azure Stream Analytics           | [はい]                | -                  | -                  |
-| HDInsight (Azure Blob Storage)   | [はい]                | -                  | -                  |
-| HDInsights (Data Lake Storage)    | [はい]                | -                  | -                  |
-| Apache Kafka for HDInsight       | [はい]                | プレビュー、RSA の長さすべて | -                  |
-| Azure Data Lake Store            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Data Catalog               | [はい]                | -                  | -                  |
-| Power BI                         | [はい]                | -                  | -                  |
+| Azure Stream Analytics           | はい                | -                  | -                  |
+| HDInsight (Azure Blob Storage)   | はい                | -                  | -                  |
+| HDInsights (Data Lake Storage)    | はい                | -                  | -                  |
+| Apache Kafka for HDInsight       | はい                | プレビュー、RSA の長さすべて | -                  |
+| Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Data Catalog               | はい                | -                  | -                  |
+| Power BI                         | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | [はい]                |
-| Service Bus                      | [はい]                | -                  | [はい]                |
-| Event Hubs                       | [はい]                | -                  | -                  |
-| Event Grid                       | [はい]                | -                  | -                  |
+| IoT Hub                          | -                  | -                  | はい                |
+| Service Bus                      | はい                | -                  | はい                |
+| Event Hubs                       | はい                | -                  | -                  |
+| Event Grid                       | はい                | -                  | -                  |
 
 
 ## <a name="conclusion"></a>まとめ
