@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1c29ed47e499ee23fab9f3b34e3974f479e3dbb7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1b58ef5f8254ef81eceefa277e5f146531fa2947
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604273"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221795"
 ---
 # <a name="about-the-speech-service-sdk"></a>Speech Service SDK について
 
@@ -36,7 +36,7 @@ Windows の場合、次の言語がサポートされています。
 
 * Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0` を参照します。
 
-### <a name="linux"></a> Linux
+### <a name="linux"></a>Linux
 
 > [!NOTE]
 > 現在は、Ubuntu 16.04 および 18.04 のみが PC 上でサポートされています (C++ 開発向けには x86 または x64、.NET Core および Java 向けには x64)。

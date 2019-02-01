@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: ef33d8962848636ee53ac6fd3f084b9c2a59e29d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 45ba049717f2b9874bbac8d6493e13c2afc4b8f2
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820579"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910650"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -22,9 +22,9 @@ ms.locfileid: "54820579"
 
 **python/pip** コマンドを使用して、ホーム パスに仮想環境を構築します。 別のバージョンを使用する場合は、**python/pip** コマンドの既定のバージョンを手動で変更する必要があります。 詳細については、[update-alternatives](https://linux.die.net/man/8/update-alternatives) を参照してください。
 
-1. [Python](https://www.python.org/) と [pip](https://pip.pypa.io/en/stable/installing/) をインストールします。
+1. [Python](https://www.python.org/downloads/) と [pip](https://pip.pypa.io/en/stable/installing/) をインストールします。
    
-   + [https://pip.pypa.io/en/stable/installing](https://www.python.org/) から Python をインストールします。
+   + [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。
    + [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) から pip をインストールします。 (Python インストールからインストールされていない場合)
    + 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
  
@@ -52,7 +52,7 @@ ms.locfileid: "54820579"
    sudo apt-get install python-dev
    ```
 
-4. VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
+4. VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。
 
 ## <a name="next-steps"></a>次の手順
 

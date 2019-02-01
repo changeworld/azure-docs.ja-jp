@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d3b2edefd602a90ff28b8e0645d3c48932ba44dd
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1bf20faaf0626566b248a8c5cdba653b8b4e5a20
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410314"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081060"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 

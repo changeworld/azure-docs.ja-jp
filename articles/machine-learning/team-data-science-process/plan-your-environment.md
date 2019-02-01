@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5faa7a58a252a5d3b8cc044f9e81a6d7cb2df7d5
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0cf9ffddffe7f97008e69c9c4fb7945faeb779da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138043"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469602"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。 予測分析の大まかな手順は、「 [Team Data Science Process (TDSP) について](overview.md)」に記載されています。 それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。 シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
@@ -72,7 +72,7 @@ ms.locfileid: "53138043"
 Azure Machine Learning 環境を例とします。
 
 * Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「 [サポートされるデータ形式とデータ型](../studio/import-data.md#data-formats-and-data-types-supported) 」セクションを参照してください。
-* Azure Machine Learning Studio のデータ制限については、「 **Machine Learning 用データのインポートとエクスポート** 」の「 [モジュールのデータ セットの大きさはどの程度まで許容されますか](../studio/faq.md#machine-learning-studio-questions)
+
 
 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。
 

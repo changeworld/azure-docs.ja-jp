@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a9a316eccc0b5e237d5a48c833f53ea3d80aae1e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8a736d6dcdac5fe6d4eec4f2ef5e4387ebdcdc80
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082936"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219092"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 

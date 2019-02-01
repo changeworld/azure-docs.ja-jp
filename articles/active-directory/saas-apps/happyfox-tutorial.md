@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 8204ee77-f64b-4fac-b64a-25ea534feac0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 5fb71d4c5e8d9e094feb83a6c5f54cc37f5a5136
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 94bd0367b8626a83fd10fc51d8b606ab38f6182c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825818"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル:Azure Active Directory と HappyFox の統合
 

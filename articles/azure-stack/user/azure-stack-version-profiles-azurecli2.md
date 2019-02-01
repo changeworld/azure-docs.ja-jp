@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 15354cd7472e7cffb7a40ca431bc23eb65b9a9a9
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 6d494cbc53ce83cfe4aaef63653eab2da9b35937
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845896"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249945"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -62,7 +63,7 @@ Azure Stack 環境の外部のマシンから CLI を実行する場合:
 1. Azure Stack オペレーターから取得した PEM 証明書をコピーし、ファイルの場所 (PATH_TO_PEM_FILE) を書き留めておきます。
 1. 開発用ワークステーション上のオペレーティング システムに応じて、次のセクションのコマンドを実行します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 ```bash
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem

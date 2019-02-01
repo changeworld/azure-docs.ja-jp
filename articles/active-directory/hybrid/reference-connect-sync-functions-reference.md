@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 54378876ed3f8326a19aafa4d71347d17f1c4bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471184"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162550"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  

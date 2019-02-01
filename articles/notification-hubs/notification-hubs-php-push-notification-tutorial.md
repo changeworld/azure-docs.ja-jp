@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: dd153558e8cf3dbe64bc2693a72d16934dfb23cb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 7062404da6b999d42dc523ba72be486df1fc0057
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446699"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093612"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 
@@ -209,7 +209,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
         $info = curl_getinfo($ch);
 
         if ($info['http_code'] <> 201) {
-            throw new Exception('Error sending notificaiton: '. $info['http_code'] . ' msg: ' . $response);
+            throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
         }
     } 
     ```

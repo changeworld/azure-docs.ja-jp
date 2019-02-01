@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c3931fd75ea8e0780b8a7b4f613c865267074c1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 87b39c400d189c7be6ead9770fb833f7c5e3036b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466815"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191253"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 

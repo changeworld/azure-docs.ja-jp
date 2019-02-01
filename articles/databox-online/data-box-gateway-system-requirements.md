@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/17/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256674"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094191"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway のシステム要件 (プレビュー)
 
@@ -46,8 +46,8 @@ Data Box Gateway に接続されるクライアントまたはホストでサポ
 
 | **オペレーティング システム/プラットフォーム** | **バージョン** |
 | --- | --- |
-| Windows Server |2012 R2 <br> 2016 |
-| Windows |8、10 |
+| Windows Server |2012 R2 <br> 2016 <br> 2019 |
+|  Windows |8、10 |
 | SUSE Linux |Enterprise Server 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
 | CentOS | 7.0 |
@@ -64,7 +64,7 @@ Data Box Gateway に接続されるクライアントまたはホストでサポ
 | **オペレーティング システム/プラットフォーム**  |**バージョン**   |**メモ**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016  |         |
-|VMware ESXi     | 6.0 <br> 6.5        |VMware ツールはサポートされていません。         |
+|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |VMware ツールはサポートされていません。         |
 
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
