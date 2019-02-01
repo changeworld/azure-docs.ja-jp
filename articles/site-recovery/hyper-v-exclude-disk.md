@@ -21,7 +21,7 @@ ms.locfileid: "55216967"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **機能** | **VMware から Azure** | **Hyper-V から Azure** | **Azure から Azure**| **Hyper-V から Hyper-V** 
 --|--|--|--|--
-ディスクの除外 | [はい] | はい | いいえ  | いいえ 
+ディスクの除外 | はい | はい | いいえ  | いいえ 
 
 ## <a name="why-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する理由
 レプリケーションからディスクを除外する必要性は、多くの場合、次の理由から生じます。
