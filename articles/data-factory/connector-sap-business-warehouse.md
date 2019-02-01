@@ -189,5 +189,6 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | NUMC | String |
 | TIMS | String |
 
+
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
