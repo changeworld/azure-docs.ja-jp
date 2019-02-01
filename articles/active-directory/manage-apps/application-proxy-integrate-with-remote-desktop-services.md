@@ -6,7 +6,7 @@ documentationcenter: ''
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 72b3a009ec3ed85bb1bacc089a0fa12f1aa9ecce
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2bd87b69b332cf9acfdf7cbaa80900c9559c2c8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159780"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 

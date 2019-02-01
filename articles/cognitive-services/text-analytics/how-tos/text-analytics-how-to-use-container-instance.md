@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8af5d60ff3e9deabb82f91c04f668703ed489440
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464546"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222033"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
 
