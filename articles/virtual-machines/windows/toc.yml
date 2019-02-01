@@ -167,6 +167,8 @@ items:
       href: windows-desktop-multitenant-hosting-deployment.md
   - name: VM のセキュリティ保護
     items:
+    - name: ジャストインタイム アクセス
+      href: ../../security-center/security-center-just-in-time.md
     - name: 暗号化
       displayName: encryption
       href: encrypt-disks.md
@@ -464,9 +466,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: b930dcd0e1c396425d5656787fd5f3b9203de8ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 770b828330bc0ad10b0aa78277f0872368cf201c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181675"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299887"

@@ -13,6 +13,8 @@ items:
     items:
     - name: データのストリーミング - イベント ハブ
       href: ingest-data-event-hub.md
+    - name: データのストリーミング - Event Grid
+      href: ingest-data-event-grid.md
     - name: データのストリーム配信 - Kafka
       href: ingest-data-kafka.md
     - name: データのバッチ処理 - Python
@@ -118,9 +120,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 4d17e1bd16cbf14d377e40b042a1d28d53c193ed
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a3ebd0582761ed9f0ee69cb8eaed637e46049d4d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467249"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295459"

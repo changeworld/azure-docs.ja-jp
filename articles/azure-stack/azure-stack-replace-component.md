@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9657fd448f6fb98eec87a5999af100d4d08594e5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/06/2018
+ms.openlocfilehash: 7133c9de08a3a4f46bf8f2cc5f2de863f8efe57a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717723"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248488"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する
 
-*適用先:Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 この記事では、ホットスワップが可能でないハードウェア コンポーネントを交換するための一般的なプロセスについて説明します。 実際の交換手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 Azure Stack 統合システムに特化した詳しい手順については、ベンダーの現場交換可能ユニット (FRU) ドキュメントをご覧ください。
 

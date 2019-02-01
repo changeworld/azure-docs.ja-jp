@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0f5c60b25ad305b9e76eebcc72639a596b407801
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436808"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457549"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -15,10 +15,11 @@ metadata:
   author: CarlRabeler
   manager: craigg
   ms.service: sql-database
+  ms.subservice: service
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 07/07/2018
+  ms.date: 01/25/2019
   ms.author: carlrab
 abstract:
   description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
@@ -54,7 +55,7 @@ sections:
         src: media/index/i_scale.svg
       title: スケーラビリティ
     - href: /azure/sql-database/sql-database-single-index
-      html: <p>論理サーバーでホストされている単一データベースを、予測可能なパフォーマンスで単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
+      html: <p>SQL Database サーバーで管理されている単一データベースを、予測可能なパフォーマンスの単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
       image:
         src: media/index/i_db.svg
       title: 単一データベース
@@ -103,31 +104,31 @@ sections:
         src: media/index/logo_arm.svg
       title: Azure Resource Manager テンプレート
     rows:
-    - title: 1 つの SQL データベースの作成
+    - title: 単一データベースの作成
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: 
-    - title: SQL マネージド インスタンスの作成
+    - title: マネージド インスタンスの作成
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
       - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-    - title: SQL エラスティック プールの作成
+    - title: エラスティック プールの作成
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: 1 つの SQL データベースのスケーリング
+    - title: 単一データベースのスケーリング
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
       - href: 
-    - title: SQL エラスティック プールのスケーリング
+    - title: エラスティック プールのスケーリング
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
@@ -147,11 +148,11 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: SQL DB を使用してデータベースを作成、管理、移行する方法について説明します
+    text: SQL Database を使用してデータベースを作成、管理、移行する方法について説明します
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい SQL データベースのスキーマを作成および設計する
+    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい単一データベースのスキーマを作成および設計する
     - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">データベースの復元</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して、既存のデータベースを Azure に移行する
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
     - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散する

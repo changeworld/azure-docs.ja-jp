@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340190"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243234"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 

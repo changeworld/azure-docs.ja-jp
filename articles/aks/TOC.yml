@@ -119,7 +119,7 @@ items:
     - name: Virtual Kubelet の使用
       href: virtual-kubelet.md
     - name: クラスター オートスケーラーの使用
-      href: autoscaler.md
+      href: cluster-autoscaler.md
     - name: Terraform を使用した AKS のデプロイ
       href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
       maintainContext: true
@@ -164,6 +164,8 @@ items:
       href: kubernetes-service-principal.md
     - name: クラスター構成ファイルへのアクセスの制限
       href: control-kubeconfig-access.md
+    - name: クラスターのサービス プリンシパルの資格情報の更新
+      href: update-credentials.md
     - name: ACR での認証
       href: ../container-registry/container-registry-auth-aks.md
       maintainContext: true
@@ -298,9 +300,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 81cb346a00d9916b769c43cd53aee04fe0e35883
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d91ca488b148eabffd7b6c80bb402b1f875eb329
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080517"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453350"

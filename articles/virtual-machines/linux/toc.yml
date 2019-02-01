@@ -153,6 +153,8 @@ items:
       href: copy-vm.md
   - name: VM のセキュリティ保護
     items:
+    - name: ジャストインタイム アクセス
+      href: ../../security-center/security-center-just-in-time.md
     - name: 暗号化
       href: encrypt-disks.md
     - name: アクセス制御の使用
@@ -560,9 +562,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: be99b17042aa8f36b8fb9a1ad7dedf3a945dcf75
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5a154ba0022a73b8acf9ded071ccfb13e62b7509
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822673"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299148"

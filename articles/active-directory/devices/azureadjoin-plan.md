@@ -6,7 +6,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: daveba
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: be7cded5b9cd2f7a3f33d1de11f36e82f079fc4b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448570"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102738"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 

@@ -14,6 +14,8 @@ items:
     href: tutorial-passthrough-authentication.md
   - name: 単一の AD フォレスト環境をクラウドに統合する
     href: tutorial-federation.md
+  - name: Azure AD Connect 内で AD FS のバックアップとして PHS を設定する
+    href: tutorial-phs-backup.md
   expanded: true
 - name: 概念
   items:
@@ -325,9 +327,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 4e34d1cda9e905656a6eddd1f3e5ed3e21592d49
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: df7f0256af71ecfa751fd459e4e1e6c285a779ed
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888585"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301715"

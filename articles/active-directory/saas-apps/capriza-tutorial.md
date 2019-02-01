@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 48d92247-f00a-47b9-8d4e-137028d9e200
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: d19c1b9b8df70bb920b1386da7131f47ac403ea4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 811382fa5195c5ab38104d31ca903caabbfbc574
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818134"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>チュートリアル:Azure Active Directory と Capriza Platform の統合
 

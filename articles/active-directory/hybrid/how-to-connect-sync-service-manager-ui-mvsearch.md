@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 31a829cdba96e3948d5ed7d7d47d056781520771
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7e9ca74cfbe6ac3c606fdc109c882f2ada8800b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469357"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183549"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager のメタバース検索
 

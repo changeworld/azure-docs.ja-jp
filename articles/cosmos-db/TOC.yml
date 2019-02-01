@@ -76,17 +76,17 @@ items:
     items:
     - name: 概要
       href: distribute-data-globally.md
-    - name: 整合性レベル
+    - name: 一貫性レベル
       href: consistency-levels.md
     - name: 適切な整合性レベルの選択
       href: consistency-levels-choosing.md
-    - name: 整合性レベルと Cosmos DB API
+    - name: 整合性レベルと Azure Cosmos DB API
       href: consistency-levels-across-apis.md
     - name: 整合性、可用性、パフォーマンスのトレードオフ
       href: consistency-levels-tradeoffs.md
     - name: 高可用性
       href: high-availability.md
-    - name: プロビジョニング スループットのグローバルなスケーリング
+    - name: プロビジョニングされたスループットのグローバルなスケーリング
       href: scaling-throughput.md
     - name: 競合のタイプと解決ポリシー
       href: conflict-resolution-policies.md
@@ -98,7 +98,7 @@ items:
     items:
     - name: 概要
       href: partitioning-overview.md
-    - name: 論理パーティション
+    - name: パーティション分割と水平スケーリング
       href: partition-data.md
     - name: 合成パーティション キーの作成
       href: synthetic-partition-keys.md
@@ -112,7 +112,7 @@ items:
     href: account-overview.md
   - name: コンテナーとアイテム
     items:
-    - name: データベース、コンテナー、アイテムの使用
+    - name: データベース、コンテナー、アイテムの操作
       href: databases-containers-items.md
     - name: SQL 言語のリファレンス
       href: sql-api-query-reference.md
@@ -136,7 +136,7 @@ items:
         href: read-change-feed.md
       - name: 変更フィード プロセッサ
         href: change-feed-processor.md
-      - name: 変更フィードと Azure Functions
+      - name: Azure Functions をトリガーする
         href: change-feed-functions.md
     - name: Time to Live
       href: time-to-live.md
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: マルチリージョンのコストの最適化
       href: optimize-cost-regions.md
-    - name: 開発/テスト ワークロードの最適化
+    - name: 開発とテストのコストの最適化
       href: optimize-dev-test.md
-    - name: 予約容量による最適化
+    - name: 予約容量によるコストの最適化
       href: cosmos-db-reserved-capacity.md
   - name: セキュリティ
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: エンタープライズ対応
     items:
-    - name: オンラインのバックアップと復元
+    - name: オンラインのバックアップとオンデマンドの復元
       href: online-backup-and-restore.md
     - name: コンプライアンス
       href: compliance.md
@@ -264,7 +264,7 @@ items:
           href: how-to-use-stored-procedures-triggers-udfs.md
       - name: データの種類
         items:
-        - name: Datetime
+        - name: DateTime
           href: working-with-dates.md
         - name: GeoSpatial
           href: geospatial.md
@@ -467,19 +467,19 @@ items:
   expanded: true
 - name: ハウツー ガイド
   items:
-  - name: データベース アカウントの管理
+  - name: Azure Cosmos アカウントを管理する
     href: how-to-manage-database-account.md
   - name: グローバル配信
     items:
-    - name: 一貫性の管理
+    - name: 整合性レベルを管理する
       href: how-to-manage-consistency.md
-    - name: 競合の管理
+    - name: 競合解決ポリシーを構成する
       href: how-to-manage-conflicts.md
   - name: プロビジョニング スループット
     items:
-    - name: コンテナーのスループットのプロビジョニング
+    - name: コンテナーのスループットをプロビジョニングする
       href: how-to-provision-container-throughput.md
-    - name: データベースのスループットのプロビジョニング
+    - name: データベースのスループットをプロビジョニングする
       href: how-to-provision-database-throughput.md
   - name: コンテナーとアイテムの操作
     items:
@@ -489,9 +489,13 @@ items:
       href: how-to-query-container.md
     - name: Time to Live の構成
       href: how-to-time-to-live.md
+    - name: Azure Storage Explorer を使ってデータを操作する
+      href: storage-explorer.md
+    - name: Azure Cosmos Explorer を使ってデータを操作する
+      href: data-explorer.md
     - name: インデックス作成
       items:
-      - name: インデックス作成の構成
+      - name: インデックスを管理する
         href: how-to-manage-indexing-policy.md
   - name: セキュリティ
     items:
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: クロス オリジン リソース共有 (CORS) の構成
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Key Vault を使用したセキュリティ保護
+    - name: Key Vault を使用して Azure Cosmos キーをセキュリティ保護する
       href: access-secrets-from-keyvault.md
   - name: エンタープライズ対応
     items:
     - name: バックアップからデータを復元する
       href: how-to-backup-and-restore.md
-  - name: 管理
+  - name: Azure Cosmos DB リソースの管理
     items:
     - name: PowerShell を使用して管理する
       href: manage-account-with-powershell.md
     - name: Azure CLI を使用して管理する
       href: manage-with-cli.md
-    - name: ストレージ エクスプローラーを使用した管理
-      href: storage-explorer.md
-    - name: データ エクスプローラーを使用した管理
-      href: data-explorer.md
   - name: ログの記録
     items:
     - name: 診断ログの記録
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094480"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464876"

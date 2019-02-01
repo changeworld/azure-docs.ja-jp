@@ -22,8 +22,10 @@ items:
       href: terraform-slot-walkthru.md
   - name: Containers
     items:
-    - name: AKS と Terraform を使用して Kubernetes クラスターを作成する
+    - name: AKS を使用して Kubernetes クラスターを作成する
       href: terraform-create-k8s-cluster-with-tf-and-aks.md
+    - name: AKS を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する
+      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
   - name: インフラストラクチャ
     items:
     - name: MSI が有効な Terraform VM の作成
@@ -68,9 +70,9 @@ items:
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 332af09ce1ae94c94ed68efa269e190823c3916d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ca3121f8bdb63a49aa99ba9ed8ab2ad8bfbfefd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638360"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462514"

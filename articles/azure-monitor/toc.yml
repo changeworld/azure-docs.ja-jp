@@ -648,6 +648,8 @@ items:
     items:
     - name: メトリックス エクスプローラーでのメトリック グラフの作成
       href: platform/metrics-charts.md
+    - name: メトリックス エクスプローラーのグラフのサンプル
+      href: platform/metric-chart-samples.md
     - name: アクティビティ ログでのイベントの表示
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: サービスの通知を表示する
@@ -1019,9 +1021,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 8c78f79b08b389f7570d1a726e5ffcaef56bdfa3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1199720ddd3014c52c8436e06a638876a7ecb486
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104602"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297754"

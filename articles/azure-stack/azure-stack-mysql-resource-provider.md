@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 635948c28ffe5d5eaece372976e58d26e17214e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 03e429e1a40f9b23a2a3bedef5ef488d81392d9c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084232"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236906"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 

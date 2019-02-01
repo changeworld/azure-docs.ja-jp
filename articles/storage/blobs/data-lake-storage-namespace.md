@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 13483333c2135f858191f62b255e2887c0e61f01
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 967e24ae6e004fe6ce2b1c0aa6c039f46be2598c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976875"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244506"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 プレビューの階層構造の名前空間
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e45e06bdcc69dc88d8c979bfbb5a0974f7284b22
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a36da1787d5abd5f7dc1455823be55f1880c7ba5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266231"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227133"
 ---
 # <a name="manage-review-teams-and-subteams"></a>レビュー チームとサブチームを管理する
 

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ed8b2ec0c31adebac72e105ecfc4c5ec28e7b74b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 11ba10921f806776a0bdf17c370feb45bd962bdb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471873"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168891"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 

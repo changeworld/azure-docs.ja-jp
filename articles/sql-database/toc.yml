@@ -3,13 +3,13 @@ items:
   href: index.yml
 - name: SQL Database サービス
   items:
-  - name: SQL DB とは
+  - name: SQL Database とは
     href: sql-database-technical-overview.md
   - name: Azure SQL のバージョンを選択する
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: クイック スタート
   items:
-  - name: Single Database のクイック スタート ガイド
+  - name: 単一データベースのクイック スタート ガイド
     href: sql-database-quickstart-guide.md
   - name: Managed Instance のクイック スタート ガイド
     href: sql-database-managed-instance-quickstart-guide.md
@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: 構成
     items:
-    - name: 論理サーバーのファイアウォール規則
+    - name: SQL Database サーバーのファイアウォール規則
       href: sql-database-get-started-portal-firewall.md
     - name: マネージド インスタンスへのクライアント VM 接続
       href: sql-database-managed-instance-configure-vm.md
@@ -31,7 +31,7 @@ items:
     items:
     - name: BACPAC を新しいデータベースにインポートする
       href: sql-database-import.md
-    - name: データベース バックアップをマネージド インスタンスに復元する
+    - name: マネージド インスタンスにデータベースのバックアップを復元する
       href: sql-database-managed-instance-get-started-restore.md
   - name: Query
     href: sql-database-connect-query.md
@@ -75,9 +75,9 @@ items:
       href: sql-database-design-first-database-csharp.md
   - name: Azure SQL Database への移行
     items:
-    - name: DMS を使用した単一データベースへの移行
+    - name: DMS を使用して単一データベースまたはプール データベースに移行する
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-    - name: DMS を使用したマネージド インスタンスへの移行
+    - name: DMS を使用してマネージド インスタンスに移行する
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
   - name: Azure SQL Database のセキュリティ
     items:
@@ -115,11 +115,11 @@ items:
     items:
     - name: 概要
       href: sql-database-service-tiers-general-purpose-business-critical.md
-    - name: 汎用 / Standard
+    - name: General Purpose / Standard サービス レベル
       href: sql-database-service-tier-general-purpose.md
-    - name: ビジネスに不可欠 / Premium
+    - name: Business Critical / Premium サービス レベル
       href: sql-database-service-tier-business-critical.md
-    - name: ハイパースケール
+    - name: ハイパースケール サービス レベル
       href: sql-database-service-tier-hyperscale.md
     - name: ハイパースケールに関する FAQ
       href: sql-database-service-tier-hyperscale-faq.md
@@ -127,36 +127,40 @@ items:
     items:
     - name: 単一データベースの概要
       href: sql-database-single-index.yml
-    - name: Management API リファレンス
+    - name: SQL Database サーバー
+      items:
+      - name: データベース サーバーの概要
+        href: sql-database-servers.md
+      - name: データベース サーバーのリソース制限
+        href: sql-database-resource-limits-database-server.md
+    - name: 単一データベースのリソース
+      items:
+      - name: 仮想コアベースのリソース制限
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: DTU ベースのリソース制限
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: リソースのスケール
+        href: sql-database-single-database-scale.md
+    - name: サーバーとデータベースの作成と管理
       href: sql-database-single-databases-manage.md
-    - name: 論理サーバー
-      items:
-      - name: 作成と管理
-        href: sql-database-logical-servers.md
-      - name: リソース制限
-        href: sql-database-resource-limits-logical-server.md
-      - name: 接続のアーキテクチャ
-        href: sql-database-connectivity-architecture.md
+    - name: 接続のアーキテクチャ
+      href: sql-database-connectivity-architecture.md
+    - name: T-SQL の相違点
+      href: sql-database-transact-sql-information.md
+  - name: エラスティック プール
+    items:
     - name: エラスティック プール
+      href: sql-database-elastic-pool.md
+    - name: エラスティック プールのリソース
       items:
-      - name: エラスティック プール
-        href: sql-database-elastic-pool.md
-      - name: 作成と管理
-        href: sql-database-elastic-pool-manage.md
       - name: 仮想コアベースのリソース制限
         href: sql-database-vcore-resource-limits-elastic-pools.md
       - name: DTU ベースのリソース制限
         href: sql-database-dtu-resource-limits-elastic-pools.md
       - name: リソースのスケール
         href: sql-database-elastic-pool-scale.md
-    - name: 仮想コアベースのリソース制限
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: DTU ベースのリソース制限
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: リソースのスケール
-      href: sql-database-single-database-scale.md
-    - name: T-SQL の相違点
-      href: sql-database-transact-sql-information.md
+    - name: 作成と管理
+      href: sql-database-elastic-pool-manage.md
   - name: マネージド インスタンス
     items:
     - name: 複数のマネージド インスタンスの概要
@@ -209,9 +213,9 @@ items:
       href: sql-database-security-index.yml
     - name: セキュリティ機能
       href: sql-database-security-overview.md
-    - name: 高度な脅威保護
+    - name: Advanced Data Security
       items:
-      - name: 高度な脅威保護
+      - name: Advanced Data Security
         href: sql-advanced-threat-protection.md
       - name: データの検出と分類
         href: sql-database-data-discovery-and-classification.md
@@ -561,7 +565,7 @@ items:
           href: saas-tenancy-welcome-wingtip-tickets-app.md
         - name: 一般的なガイダンス
           href: saas-tenancy-wingtip-app-guidance-tips.md
-        - name: スタンドアロン アプリケーション
+        - name: 単一アプリケーション
           items:
           - name: サンプル アプリのデプロイ
             href: saas-standaloneapp-get-started-deploy.md
@@ -696,9 +700,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: b69adc5f54e2566f62049225ccb0fc438a33ca6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471030"

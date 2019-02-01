@@ -13,7 +13,7 @@ items:
     href: search-create-service-portal.md
   - name: ポータル
     items:
-    - name: ポータルベースのインポート、インデックス作成、およびクエリの実行に関するチュートリアル
+    - name: インデックスの読み込みとクエリ
       href: search-get-started-portal.md
     - name: AI によるエンリッチ (コグニティブ検索)
       href: cognitive-search-quickstart-blob.md
@@ -216,14 +216,14 @@ items:
         href: search-filters-facets.md
       - name: フィルター式の構文
         href: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-    - name: パフォーマンスと最適化
-      href: search-performance-optimization.md
   - name: 管理と分析
     items:
     - name: 管理 (ポータル)
       href: search-manage.md
     - name: PowerShell (Azure Search)
       href: search-manage-powershell.md
+    - name: パフォーマンスと最適化
+      href: search-performance-optimization.md
     - name: Monitor アクティビティとログ記録
       href: search-monitor-usage.md
     - name: 検索トラフィックの分析
@@ -297,9 +297,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: e65adf41bc6555e8e2bcd74be07e6a1b2b96514d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 133f3e44b7efc81f13aba5db68269678ddac9554
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203829"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464230"
