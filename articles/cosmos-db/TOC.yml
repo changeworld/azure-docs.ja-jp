@@ -254,14 +254,6 @@ items:
       items:
       - name: クエリ パフォーマンスの調整
         href: sql-api-query-metrics.md
-      - name: サーバー側プログラミング
-        items:
-        - name: ストアド プロシージャ、トリガー、UDF を書き込む
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: JavaScript クエリ API を使用してストアド プロシージャとトリガーを書き込む
-          href: how-to-write-javascript-query-api.md
-        - name: ストアド プロシージャ、トリガー、UDF の使用
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: データの種類
         items:
         - name: DateTime
@@ -337,7 +329,7 @@ items:
         - name: Node.js と React のアプリ
           href: tutorial-develop-mongodb-react.md
       - name: 2 - データの移行
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 - データのクエリ
         href: tutorial-query-mongodb.md
       - name: 4 - データのグローバル分散
@@ -497,6 +489,14 @@ items:
       items:
       - name: インデックスを管理する
         href: how-to-manage-indexing-policy.md
+  - name: サーバー側プログラミング
+    items:
+    - name: ストアド プロシージャ、トリガー、UDF を書き込む
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: JavaScript クエリ API を使用してストアド プロシージャとトリガーを書き込む
+      href: how-to-write-javascript-query-api.md
+    - name: ストアド プロシージャ、トリガー、UDF の使用
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: セキュリティ
     items:
     - name: IP ファイアウォールの構成
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464876"
+ms.locfileid: "55511923"
