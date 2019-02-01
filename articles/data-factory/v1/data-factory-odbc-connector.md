@@ -65,13 +65,13 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |[はい] |
-| connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |はい |
+| connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |はい |
 | credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ  |
-| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |[はい] |
+| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
-| gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |[はい] |
+| gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
 
@@ -138,7 +138,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |ODBC データ ストア内のテーブルの名前。 |[はい] |
+| tableName |ODBC データ ストア内のテーブルの名前。 |はい |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -149,7 +149,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |はい |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON の使用例:ODBC データ ストアから Azure BLOB にデータをコピーする
