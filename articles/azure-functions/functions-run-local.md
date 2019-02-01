@@ -479,5 +479,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure ポータル]: https://portal.azure.com 
+[Azure ポータル]: https://portal.azure.com
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
