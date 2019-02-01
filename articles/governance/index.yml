@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 78d5f767f137b8b1e925b95efb60136353401ce9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298622"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507428"
 documentType: LandingData
 title: Azure の管理 - ガバナンス
 metadata:
@@ -52,7 +52,7 @@ sections:
         src: ./media/policy-illustration.svg
       title: ポリシー
     - href: ./blueprints/
-      html: <p>一貫性のある反復可能な環境を作成するためにサブスクリプションに動的にデプロイできる、<i>成果物</i>の Azure ネイティブ パッケージ (リソース グループ、ポリシー、ロールの割り当て、リソース マネージャー テンプレートなど) を作成します。</p>
+      html: <p>一貫性のある反復可能な環境を作成するためにサブスクリプションに動的にデプロイできる、<i>成果物</i>の Azure ネイティブ パッケージ (リソース グループ、ポリシー、ロールの割り当て、Resource Manager テンプレートなど) を作成します。</p>
       image:
         src: ./media/blueprints-illustration.svg
       title: ブループリント

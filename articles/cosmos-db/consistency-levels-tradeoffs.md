@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 52f08511d16e216ced7e3d1de11eae960cdbaeb8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f56b1b06e8be46c1a111e920cfb98bc58d4f6636
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041868"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466865"
 ---
-# <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ
+# <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ 
 
 高可用性、短い待機時間、またはその両方のためにレプリケーションに依存している分散型データベースでは、トレードオフを考慮する必要があります。 読み取りの整合性と、可用性、待機時間、およびスループットとのトレードオフです。 
 

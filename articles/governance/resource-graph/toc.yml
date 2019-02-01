@@ -32,11 +32,16 @@ items:
   - name: Resource Graph を使用してご利用の Azure リソースを探索する
     displayName: vms, public ip
     href: ./concepts/explore-resources.md
+  - name: 大規模なデータ セットを処理する
+    displayName: page, first, skip, token
+    href: ./concepts/work-with-data.md
   expanded: true
 - name: リファレンス
   items:
   - name: Azure PowerShell
     href: /powershell/module/az.resourcegraph/
+  - name: Azure CLI
+    href: /cli/azure/ext/resource-graph/graph
   - name: REST API
     href: /rest/api/azureresourcegraph/resources/resources
 - name: リソース
@@ -49,9 +54,9 @@ items:
     href: https://feedback.azure.com/forums/915958-azure-governance
   - name: ガバナンスに関する YouTube チャンネル
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: b3721eb06144a65fcef23efdac8865e17b7d2e73
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1ec6153b3e80f3546ca15bbac27a280bfd8ce517
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846958"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506721"

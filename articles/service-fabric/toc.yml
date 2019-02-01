@@ -825,6 +825,8 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: トラブルシューティング ガイド
     href: https://github.com/Azure/Service-Fabric-Troubleshooting-Guides
+  - name: 一般的なセキュリティ属性
+    href: service-fabric-security-attributes.md
   - name: サンプル コード
     href: http://aka.ms/servicefabricsamples
   - name: サポート オプション
@@ -835,9 +837,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: a4337e82a5703b3ccfde9f77e4494ca042a79b64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: daa2e26fe5182364c9f1b1ea40d00cafa92e1a13
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163916"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508625"

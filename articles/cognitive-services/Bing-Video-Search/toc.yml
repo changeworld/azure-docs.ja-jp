@@ -5,6 +5,9 @@ items:
   items:
   - name: Bing Video Search とは
     href: search-the-web.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API のクイック スタート
   items:
   - name: 作業開始
@@ -46,8 +49,6 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search
 - name: ハウツー ガイド
   items:
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
   - name: ビデオの分析情報の取得
     href: video-insights.md
   - name: 急上昇中の動画の取得
@@ -76,6 +77,9 @@ items:
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/videosearch?view=azure-node-latest
     - name: Go
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch
+  - name: 使用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: リソース
   items:
   - name: 価格
@@ -98,9 +102,9 @@ items:
     href: video-search-endpoints.md
   - name: Bing Video Search API 用の分析
     href: bing-video-stats.md
-ms.openlocfilehash: 35d6b2a216c0d400b3263c2b599a982c6f3db911
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e8f0e84b405232ff7145f0a8fed4ab42d03a4c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790131"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509704"

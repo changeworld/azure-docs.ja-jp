@@ -11,7 +11,7 @@ items:
   items:
   - name: 単一データベースのクイック スタート ガイド
     href: sql-database-quickstart-guide.md
-  - name: Managed Instance のクイック スタート ガイド
+  - name: マネージド インスタンスのクイック スタート ガイド
     href: sql-database-managed-instance-quickstart-guide.md
   - name: Create
     items:
@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: 構成
     items:
-    - name: SQL Database サーバーのファイアウォール規則
+    - name: データベース サーバーのファイアウォール規則
       href: sql-database-get-started-portal-firewall.md
     - name: マネージド インスタンスへのクライアント VM 接続
       href: sql-database-managed-instance-configure-vm.md
@@ -83,7 +83,7 @@ items:
     items:
     - name: 単一データベース セキュリティ
       href: sql-database-security-tutorial.md
-    - name: Azure AD ログインによる Managed Instance のセキュリティ
+    - name: Azure AD ログインによるマネージド インスタンスのセキュリティ
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: 地理的に分散したデータベースの実装
     href: sql-database-implement-geo-distributed-database.md
@@ -127,12 +127,20 @@ items:
     items:
     - name: 単一データベースの概要
       href: sql-database-single-index.yml
-    - name: SQL Database サーバー
+    - name: 単一データベースの機能
+      href: sql-database-single-database.md
+    - name: Management API リファレンス
+      href: sql-database-single-databases-manage.md
+    - name: T-SQL の相違点
+      href: sql-database-transact-sql-information.md
+    - name: データベース サーバーとリソース
       items:
       - name: データベース サーバーの概要
         href: sql-database-servers.md
       - name: データベース サーバーのリソース制限
         href: sql-database-resource-limits-database-server.md
+      - name: 接続のアーキテクチャ
+        href: sql-database-connectivity-architecture.md
     - name: 単一データベースのリソース
       items:
       - name: 仮想コアベースのリソース制限
@@ -141,12 +149,6 @@ items:
         href: sql-database-dtu-resource-limits-single-databases.md
       - name: リソースのスケール
         href: sql-database-single-database-scale.md
-    - name: サーバーとデータベースの作成と管理
-      href: sql-database-single-databases-manage.md
-    - name: 接続のアーキテクチャ
-      href: sql-database-connectivity-architecture.md
-    - name: T-SQL の相違点
-      href: sql-database-transact-sql-information.md
   - name: エラスティック プール
     items:
     - name: エラスティック プール
@@ -223,7 +225,7 @@ items:
         href: sql-vulnerability-assessment.md
       - name: 脅威の検出
         href: sql-database-threat-detection-overview.md
-    - name: ファイアウォール規則
+    - name: データベース サーバー IP ファイアウォール規則
       items:
       - name: 作成と管理
         href: sql-database-firewall-configure.md
@@ -241,7 +243,7 @@ items:
       href: sql-database-aad-authentication.md
     - name: 監査
       items:
-      - name: 監査 - サーバー、プール、データベース
+      - name: 監査 - 単一データベースとエラスティック プール
         href: sql-database-auditing.md
       - name: 監査 - マネージド インスタンス
         href: sql-database-managed-instance-auditing.md
@@ -429,11 +431,11 @@ items:
       href: sql-database-managed-instance-migrate.md
     - name: マネージド インスタンスへの TDE 証明書の移行
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: Managed Instance サブネットのサイズの決定
+    - name: マネージド インスタンス サブネットのサイズの決定
       href: sql-database-managed-instance-determine-size-vnet-subnet.md
-    - name: Managed Instance 用の新しい VNet とサブネットの作成
+    - name: マネージド インスタンス用の新しい VNet とサブネットの作成
       href: sql-database-managed-instance-create-vnet-subnet.md
-    - name: Managed Instance 用の既存の VNet とサブネットの構成
+    - name: マネージド インスタンス用の既存の VNet とサブネットの構成
       href: sql-database-managed-instance-configure-vnet-subnet.md
     - name: カスタム DNS の構成
       href: sql-database-managed-instance-custom-dns.md
@@ -662,6 +664,8 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: リソース
   items:
+  - name: 用語集
+    href: sql-database-glossary-terms.md
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-sql-database
   - name: Azure のロードマップ
@@ -700,9 +704,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7530d0926cca2b89e532407d32e394e0b3018a60
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471030"
+ms.locfileid: "55512416"

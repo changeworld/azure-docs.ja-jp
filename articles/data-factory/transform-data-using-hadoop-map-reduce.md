@@ -74,6 +74,8 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 | arguments         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ        |
 | defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ        |
 
+
+
 ## <a name="example"></a>例
 HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 

@@ -78,14 +78,16 @@ items:
       href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: AzCopy on Linux (v8)
       href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+  - name: アカウントのフェールオーバーを開始する
+    href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: リソース
   items:
   - name: Table Storage REST API
     href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
     maintainContext: true
-ms.openlocfilehash: 229677b65ac833e3cd7b599c0111798f95ae61f3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 721bf797bcd280c67908aa53d62e82b2a0844cda
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428642"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507231"

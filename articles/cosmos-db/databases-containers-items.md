@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107737"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468140"
 ---
-# <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Azure Cosmos のデータベース、コンテナー、および項目の操作
+# <a name="work-with-databases-containers-and-items"></a>データベース、コンテナー、アイテムの操作
 
 Azure サブスクリプションで [Azure Cosmos DB アカウント](account-overview.md)を作成した後は、そのアカウントでデータベース、コンテナー、および項目を作成して、データを管理できます。 この記事では、データベース、コンテナー、項目の各エンティティについて説明します。 次の画像は、Azure Cosmos アカウントのさまざまなエンティティの階層を示しています。
 

@@ -5,6 +5,9 @@ items:
   items:
   - name: Bing Entity Search とは
     href: search-the-web.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API のクイック スタート
   items:
   - name: C#
@@ -44,12 +47,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search
 - name: ハウツー ガイド
   items:
-  - name: 使用と表示の要件
-    href: use-display-requirements.md
   - name: サムネイルのサイズ変更とトリミング
     href: resize-and-crop-thumbnails.md
 - name: リファレンス
   items:
+  - name: Bing Search API の利用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
   - name: Bing Entity Search API v7
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
   - name: SDK
@@ -86,9 +90,9 @@ items:
     href: entity-search-endpoint.md
   - name: Bing Entity Search API 用の分析
     href: bing-entity-stats.md
-ms.openlocfilehash: a0f92f5b3ef8f0ea24393da1199422b032a57f06
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 919d44bbf41397cf58c06cfe2eff56867546b61e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789545"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509934"

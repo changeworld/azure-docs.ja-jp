@@ -246,6 +246,8 @@ items:
     href: /azure/templates/microsoft.recoveryservices/allversions
 - name: リソース
   items:
+  - name: 一般的なセキュリティ属性
+    href: backup-security-attributes.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: MSDN フォーラム
@@ -258,9 +260,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: d104835e4324e1f066d0ad4942a64511d3f2492b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8b9e6d742cfa1b4d46599747c03b8e3c3ba8c101
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883791"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507962"

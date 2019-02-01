@@ -43,9 +43,9 @@ items:
         href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
       - name: アクセス レビューを完了する
         href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-    - name: リソース ロール
+    - name: Azure リソース ロール
       items:
-      - name: 自分のリソース ロールを確認する
+      - name: 自分の Azure リソース ロールを確認する
         href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
       - name: アクセス レビューを開始する
         href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
@@ -54,9 +54,9 @@ items:
   - name: 使用条件
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: b1c70e219aab05e8f8bd905cdc341ccd0d7b563a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dfd269d79cafbad2530e4cbd8125bacae4a06214
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261148"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508557"

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389099"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457940"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>データベース トランザクションとオプティミスティック同時実行制御
+# <a name="transactions-and-optimistic-concurrency-control"></a>トランザクションとオプティミスティック同時実行制御
 
 データベース トランザクションでは、データの同時変更に対応する、安全で予測可能なプログラミング モデルが提供されます。 SQL Server などの従来のリレーショナル データベースでは、ストアド プロシージャやトリガーを使用してビジネス ロジックを記述し、それをサーバーに送信することで、データベース エンジン内で直接実行することができます。 従来のリレーショナル データベースの場合、2 種類のプログラミング言語に対応することが求められます。その 1 つは、JavaScript、Python、C#、Java などの (非トランザクションの) アプリケーション プログラミング言語であり、もう 1 つはデータベースによってネイティブで実行されるトランザクションのプログラミング言語 (T-SQL) です。
 

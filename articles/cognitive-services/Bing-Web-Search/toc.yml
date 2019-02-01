@@ -6,6 +6,8 @@ items:
   - name: Bing Web Search とは
     href: overview.md
     expanded: true
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
 - name: クイック スタート
   items:
   - name: REST API
@@ -88,6 +90,8 @@ items:
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/websearch?view=azure-node-latest
     - name: Go
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch
+  - name: 使用と表示の要件
+    href: Use-display-requirements.md
 - name: リソース
   items:
   - name: FAQ
@@ -100,8 +104,6 @@ items:
     href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
   - name: 言語とリージョンのサポート
     href: language-support.md
   - name: Bing Web Search API 用の分析
@@ -116,9 +118,9 @@ items:
       href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 0e86f4433a79475089c9bb1dbe7a84ac3ebb9b51
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 31705085d83fa95fd0cedb28035ceaed0fef2c59
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793973"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507103"

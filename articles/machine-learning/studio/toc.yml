@@ -15,8 +15,6 @@ items:
   - name: よく寄せられる質問
     displayName: FAQ
     href: faq.md
-  - name: 新機能
-    href: whats-new.md
   expanded: true
 - name: チュートリアル
   items:
@@ -41,8 +39,6 @@ items:
     - name: 6 - Web サービスにアクセスする
       displayName: consume
       href: walkthrough-6-access-web-service.md
-  - name: R の概要
-    href: r-quickstart.md
 - name: サンプル
   items:
   - name: 使用可能なデータセット
@@ -120,6 +116,8 @@ items:
         href: debug-models.md
     - name: R と Python の使用
       items:
+      - name: R の概要
+        href: r-quickstart.md
       - name: R スクリプトを実行する
         href: extend-your-experiment-with-r.md
       - name: カスタム R モジュールを作成する
@@ -208,21 +206,25 @@ items:
     href: /rest/api/machinelearning
 - name: リソース
   items:
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
+  - name: サポートを受ける
+    href: support-aml-studio.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/regions/services/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: R 開発者ガイド
     href: ../r-developers-guide.md
-  - name: Net# によるカスタム ニューラル ネットワーク
+  - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: サポートを受ける
-    href: support-aml-studio.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 12fa71315c1cb43570505d2428804f4a5348a266
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 27cd57a52b80006482f50f96120e8eaf8a8cb00e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512195"

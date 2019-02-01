@@ -254,7 +254,7 @@ Azure Active Directory (Azure AD) B2C は、Azure Active Directory ユーザー�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Operation | [はい] | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 | 
+| Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ  | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 | 
 | UserMessageIfClaimsPrincipalDoesNotExist | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。
  値を[ローカライズ](localization.md)することができます。| 

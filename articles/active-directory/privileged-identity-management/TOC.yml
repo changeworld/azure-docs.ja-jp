@@ -29,7 +29,7 @@ items:
     items:
     - name: 自分のディレクトリ ロールをアクティブ化する
       href: pim-how-to-activate-role.md
-    - name: 自分のリソース ロールをアクティブ化する
+    - name: 自分の Azure リソース ロールをアクティブにする
       href: pim-resource-roles-activate-your-roles.md
   - name: PIM を構成する
     items:
@@ -53,7 +53,7 @@ items:
       href: pim-how-to-configure-security-alerts.md
     - name: 監査履歴を表示する
       href: pim-how-to-use-audit-log.md
-  - name: リソース ロールを管理する
+  - name: Azure リソース ロールの管理
     items:
     - name: ロールを割り当てる
       href: pim-resource-roles-assign-roles.md
@@ -81,18 +81,18 @@ items:
         href: pim-how-to-start-security-review.md
       - name: アクセス レビューを完了する
         href: pim-how-to-complete-review.md
-    - name: リソース ロール
+    - name: Azure リソース ロール
       items:
-      - name: 自分のリソース ロールを確認する
+      - name: 自分の Azure リソース ロールを確認する
         href: pim-resource-roles-perform-access-review.md
       - name: アクセス レビューを開始する
         href: pim-resource-roles-start-access-review.md
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 84c50c4d3fe6472f53d64ba42f462a6fdf2783fe
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a7c314bd6fd7fdc96900411db78a37b45b8c3e07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913123"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512346"

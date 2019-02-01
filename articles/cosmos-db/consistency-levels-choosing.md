@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c4523b5028aae5de565e517fea61c62e29a4e7a3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044078"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468871"
 ---
-# <a name="choose-the-right-consistency-level-for-your-application"></a>アプリケーションのための適切な整合性レベルを選択する
+# <a name="choose-the-right-consistency-level"></a>適切な整合性レベルの選択 
 
 分散型データベースでは高可用性もしくは低遅延、またはその両方がレプリケーションに依存するため、読み取りの整合性と、可用性、待機時間、およびスループットとの間に基本的なトレードオフが生じます。 市販のほとんどの分散型データベースでは、開発者は 2 つの極端な整合性モデル (厳密な整合性と最終的な整合性) のどちらかを選ぶことを求められます。 Azure Cosmos DB により開発者は、明確に定義された 5 種類の整合性モデルの中から選択することができます。具体的には、"厳密"、"有界整合性制約"、"セッション"、"一貫性のあるプレフィックス"、"結果的" の 5 つが用意されています。 これらの整合性モデルはそれぞれ、適切に定義されており、直感的に理解することができます。また、実際の具体的なシナリオで利用できます。 この 5 つの整合性モデルはそれぞれ、[可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)を提供し、包括的な SLA によってサポートされます。 次の単純な考慮事項は、多くの一般的なシナリオで最適な選択を行う際に役立ちます。
 

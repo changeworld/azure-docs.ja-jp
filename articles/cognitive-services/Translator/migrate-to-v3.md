@@ -43,8 +43,8 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 |:----------- |:-------------|
 | Translate     | [Translate](reference/v3-0-translate.md)          |
 | TranslateArray      | [Translate](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [言語](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [言語](reference/v3-0-languages.md)       |
+| GetLanguageNames      | [Languages](reference/v3-0-languages.md)         |
+| GetLanguagesForTranslate     | [Languages](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | Detect     | [Detect](reference/v3-0-detect.md)         |
@@ -76,7 +76,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 | V3 メソッド   | 課金対象となる文字数 |
 |:----------- |:-------------|
 | Languages     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
-| 翻訳     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
+| Translate     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
 | Transliterate     | 音訳のために送信された文字数が数えられます。         |
 | Dictionary の lookup と example     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
 | BreakSentence     | 課金はありません。       |
@@ -91,7 +91,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 ## <a name="v3-api-text-translations-methods"></a>V3 API テキスト翻訳メソッド
 
-[言語](reference/v3-0-languages.md)
+[Languages](reference/v3-0-languages.md)
 
 [Translate](reference/v3-0-translate.md)
 

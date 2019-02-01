@@ -21,14 +21,14 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022021"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-amazon-redshift.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Amazon Redshift コネクタ](../connector-amazon-redshift.md)に関するページをご覧ください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Redshift からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Redshift からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
 現在 Data Factory でサポートされているのは、Amazon Redshift から[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータ移動だけです。 他のデータ ストアから Amazon Redshift へのデータ移動はサポートされません。
 
@@ -44,13 +44,13 @@ ms.locfileid: "54022021"
 
 パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
 
-また、Azure Portal、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+また、Azure Portal、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
 1. リンクされたサービスを作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表すデータセットを作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。
+2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
 
 コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 [JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-amazon-redshift-to-azure-blob)のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
@@ -139,7 +139,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 ```
 
 ## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー
-このサンプルは、Amazon Redshift データベースから Azure Blob Storage にデータをコピーする方法を示します。 データは、コピー アクティビティを使用して、任意の[サポートされているシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に直接コピーできます。
+このサンプルは、Amazon Redshift データベースから Azure Blob Storage にデータをコピーする方法を示します。 データは、コピー アクティビティを使用して、任意の[サポートされているシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に直接コピーできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -350,7 +350,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行する再試行**ポリシー**をデータセットに構成することもできます。 何度スライスが実行されても同じデータが読み取られるようにしてください。 また、どのようにスライスを再実行するかに関係なく同じデータが読み取られるようにしてください。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
-コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 コピー アクティビティを使用したパイプライン作成の詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。

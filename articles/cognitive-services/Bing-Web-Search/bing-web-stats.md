@@ -6,17 +6,17 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 858c86eb17133d663d7f3398a68f292811f55aed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8ead2f18964f006851605789a7e4e3ade1dfbc4b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259734"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156379"
 ---
 # <a name="add-analytics-to-the-bing-web-search-api"></a>Bing Web Search API に分析を追加する
 

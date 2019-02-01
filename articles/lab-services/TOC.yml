@@ -62,6 +62,8 @@ items:
       href: classroom-labs/how-to-configure-student-usage.md
     - name: クラスルーム ラボへのアクセス
       href: classroom-labs/how-to-use-classroom-lab.md
+    - name: スケジュールの作成と管理
+      href: classroom-labs/how-to-create-schedules.md
   - name: DevTest ラボ
     items:
     - name: ラボを作成する
@@ -221,9 +223,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 58617af180ba908568377b7572449701e1e0df30
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1fc989f61f5c11e06e2651326e0e7e7f51092253
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118457"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496722"
