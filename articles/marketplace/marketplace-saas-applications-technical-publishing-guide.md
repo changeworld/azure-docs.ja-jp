@@ -39,9 +39,9 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | [はい] | いいえ  |  
-| **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
-| **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
+| **お問い合わせ** | はい | いいえ  |  
+| **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
+| **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
 ## <a name="saas-list"></a>SaaS のリスト
 
