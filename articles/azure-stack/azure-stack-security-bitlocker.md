@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 12/06/2018
 keywords: ''
-ms.openlocfilehash: f9e76b255647f62b273fef8336ed845e365261cf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 563534424cad7f3e02be07ad582be0b3966950b4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728512"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237984"
 ---
 # <a name="data-at-rest-encryption-in-azure-stack"></a>Azure Stack における保存データの暗号化
 

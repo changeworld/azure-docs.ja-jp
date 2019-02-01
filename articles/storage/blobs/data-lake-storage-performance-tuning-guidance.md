@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 のパフォーマンス チューニング 
 description: Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 403d60232f6b22161031dd4eb1af062336c370ee
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 7039df6dde25fd4ba9a8b9cb7670e72df7e68797
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401760"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245818"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 のパフォーマンス チューニング
 
@@ -133,7 +133,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 | ワークロード               | タスク数を設定するパラメーター                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| [HDInsight の Spark](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [HDInsight 上の Spark](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [HDInsight の Hive](data-lake-storage-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
 | [HDInsight の MapReduce](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight の Storm](data-lake-storage-performance-tuning-storm.md)|  | <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|

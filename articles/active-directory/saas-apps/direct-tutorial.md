@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 6bb197b820b9f4262eb5c93665c46c14f9497d0f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f45e3c5a3416c28ebe16fcf0ba1f016478c46c7c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822656"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル:Azure Active Directory と Direct の統合
 

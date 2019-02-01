@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e2bddb6ab2d7aeb801569102fa3387838f6c3104
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 34290704bf5220302a0ce73aa59c1a3b212f2723
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258102"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217664"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>C# で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>

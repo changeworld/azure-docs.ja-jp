@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: a74fb749e130b565c44c637bfc16ff09e3314a05
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/23/2019
+ms.openlocfilehash: c59f563adee3b5db7060b26906b51096cbd60212
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857167"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238681"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack のトラブルシューティング
 

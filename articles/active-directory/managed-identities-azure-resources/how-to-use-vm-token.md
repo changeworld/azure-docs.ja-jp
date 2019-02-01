@@ -3,23 +3,23 @@ title: 仮想マシン上で Azure リソースのマネージド ID を使用�
 description: 仮想マシン上で Azure リソースのマネージド ID を使用して OAuth アクセス トークンを取得する手順と例について説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422409"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166579"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -33,7 +33,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-この記事の Azure PowerShell の例を使用する場合は、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) の最新バージョンをインストールする必要があります。
+この記事の Azure PowerShell の例を使用する場合は、[Azure PowerShell](/powershell/azure/install-az-ps) の最新バージョンをインストールする必要があります。
 
 
 > [!IMPORTANT]

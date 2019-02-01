@@ -3,19 +3,19 @@ title: Azure MFA のバージョンと従量制の料金プラン | Microsoft Do
 description: Multi-Factor Authentication クライアント、各種認証方法、利用可能なバージョンに関する情報。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: ba4765ef530c3a4048adff85701795121e4a71c6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 790b2dc5743b392d884390d364770363bb0c7f97
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435738"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55074447"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 

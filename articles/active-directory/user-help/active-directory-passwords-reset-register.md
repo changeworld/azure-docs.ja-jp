@@ -7,17 +7,17 @@ manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: 2a9e65e36e31f4b2b382fac2bd9898580be18900
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c7291af37e0691c22d93ac84e66fabba91890726
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821670"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186809"
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 

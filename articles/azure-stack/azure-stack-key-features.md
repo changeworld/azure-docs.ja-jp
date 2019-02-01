@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: b07d8b115b966b9decdfa7379a908da4f9f2ee74
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303586"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243911"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。

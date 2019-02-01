@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 604e96d03d66cfde049316a1e6e99f07fee5032a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: bbb4f72e029a442362b792f3cdb4731e9563687b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362379"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244829"
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
 

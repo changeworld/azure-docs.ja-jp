@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: f851bd260c18509a3233bb3401383e0e04ba6259
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 42d8b131d4dde8d257c7ee7cb934fa8cfa814cc2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813663"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル:Azure Active Directory と Agiloft の統合
 

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 14aac6103f1a560a50bc9dd80e18d5e2fbaae3c4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 450f62cd3605656ff8907c0020775f634dba0b4a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264175"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148070"
 ---
 <!--author=alkohli last changed: 08/21/17-->
 
@@ -55,7 +55,7 @@ ms.locfileid: "51264175"
     >[!NOTE] 
     > まず、_HcsSoftwareUpdate.exe_ をインストールする必要があります。 このインストールが完了した後、_CisMdsAgentUpdate.exe_ をインストールします。
    
-        ````
+        ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
         \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
@@ -66,7 +66,7 @@ ms.locfileid: "51264175"
         be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
-        ````
+        ```
 5. 修正プログラムのインストールの確認を求められたら、「 **Y** 」と入力します。
 6. `Get-HcsUpdateStatus` コマンドレットを使用して、更新プログラムを監視します。 更新プログラムはまずパッシブ コントローラーで完了します。 パッシブ コントローラーが更新されると、フェイル オーバーが発生し、もう一方のコントローラーに更新プログラムが適用されます。 更新プログラムは両方のコントローラーが更新されると完了します。
    

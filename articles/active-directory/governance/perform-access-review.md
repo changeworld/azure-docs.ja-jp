@@ -1,6 +1,6 @@
 ---
-title: Azure AD のアクセス レビューを使ってアクセス権をレビューする | Microsoft Docs
-description: Azure Active Directory のアクセス レビューを使ってアクセス権をレビューする方法について説明します。
+title: Azure AD アクセス レビューでアクセス レビューを始める | Microsoft Docs
+description: Azure Active Directory アクセス レビューを使用してアクセス レビューを始める方法について説明します。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,18 +10,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 09247a430d2ece44c307297838b7f4dc2819d56d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bac5ddc1ee6f002781dc73845773379804a2ac1c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607032"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179397"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでアクセス権をレビューする
+# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Azure AD アクセス レビューでアクセス レビューを始める
 
 Azure Active Directory (Azure AD) には、Azure AD をはじめとする Microsoft Online Services 内のグループのメンバー管理やアプリケーションへのアクセス管理を省力化する "アクセス レビュー" という機能が備わっています。 皆さんには、アプリケーションへのアクセス権が付与されたユーザーまたはグループのメンバーに関して、そのアクセス権をレビューするよう求めるメールが Microsoft から送信される場合があります。 
 

@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 36496dd80111689b510bbbd27edc35a454d230a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.lastreviewed: 01/19/2019
+ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448294"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243891"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure Stack での GO による API バージョンのプロファイルの使用
 
@@ -33,9 +34,9 @@ ms.locfileid: "54448294"
 
 Go SDK では、プロファイルは、profiles パスでバージョンを **YYYY-MM-DD** 形式で指定することで利用できます。 現在の最新の Azure Stack API プロファイル バージョンは **2017-03-09** です。 特定のサービスをプロファイルからインポートするには、プロファイルから該当するモジュールをインポートします。 たとえば、**Compute** サービスを **2017-03-09** プロファイルからインポートするには、次のコードを使用します。
 
-````go
+```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute"
-````
+```
 
 ## <a name="install-azure-sdk-for-go"></a>GO 対応の Azure SDK をインストールする
 
@@ -51,7 +52,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compu
 
 Azure Go SDK の詳細については、次のリンク先をご覧ください。
 
-- 「[Azure SDK for Go のインストール](/azure/azure-sdk-go-install)」にある Azure での Go SDK。
+- 「[Azure SDK for Go のインストール](/go/azure/azure-sdk-go-install)」にある Azure での Go SDK。
 - Azure Go SDK は、GitHub の [azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) リポジトリに一般公開されています。
 
 ### <a name="go-autorest-dependencies"></a>Go-AutoRest 依存関係
@@ -125,7 +126,7 @@ Azure Stack でサンプルの Go コードを実行するには、次の手順�
 
 Go SDK プロファイルを使用して Azure Stack に仮想ネットワークを作成する詳細な例については、「[例](#example)」をご覧ください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 Go SDK を使って Azure Active Directory から **Authorizer** プロパティを取得するには、**Go-AutoRest** モジュールをインストールします。 これらのモジュールは、"Go SDK" のインストールで既にインストールされています。インストールされていない場合は、[GitHub から認証パッケージ](https://github.com/Azure/go-autorest/tree/master/autorest/adal)をインストールしてください。
 

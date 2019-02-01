@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: e917119e2d0f9b7b5cfa9ea145cc6e540486ac66
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: aeea0a0b00ceaa936352d549a86040c2cc460167
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052598"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153864"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
-> * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-csharp.md)
 >

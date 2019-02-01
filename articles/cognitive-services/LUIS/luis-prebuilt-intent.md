@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8fddbcf82bdbb052468b97754554da01bac7d82b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: abdbd0672fbb29f3936e4bda6f71e41c0f287329
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103729"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221226"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>一般的な意図の事前構築済み意図を追加する 
 

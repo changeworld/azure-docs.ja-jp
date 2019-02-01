@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: pim
+ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7d97f68c04656c1f8e227069bb3d33aba13d4b53
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a670b6f1e8c2298214e28de6183064d6db424b33
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191603"
 ---
 # <a name="start-using-pim"></a>PIM の使用を開始する
 

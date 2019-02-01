@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187336"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299135"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Azure Monitor の管理ソリューション
 管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
@@ -60,7 +60,7 @@ Log Analytics ワークスペースの **[概要]** ページを開くと、ワ�
 ## <a name="install-a-management-solution"></a>管理ソリューションのインストール
 Microsoft およびパートナーの管理ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
 
-1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-monitoring-solutions)で、**[追加]** をクリックします。 
+1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-management-solutions)で、**[追加]** をクリックします。 
 1. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 
 1. 目的の管理ソリューションを見つけ、その説明を読みます。
 1. **[作成]** をクリックして、インストール プロセスを開始します。

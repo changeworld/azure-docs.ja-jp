@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 26ce7139b856fc2f8d7d2cad549b3dd3c0f5e406
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: f20cd877e4cc53490016d251c5bdb343ab0cb4b0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304688"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250335"
 ---
 # <a name="manage-role-based-access-control"></a>ロールベースのアクセス制御の管理
 

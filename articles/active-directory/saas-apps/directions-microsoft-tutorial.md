@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: e0c8986f-2acd-418d-a306-437abc44b640
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e031a3893bff31814d81418692b84ef26d8f80a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6d8e061368de42d4adb1150e4ea740c3ce149661
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819715"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>チュートリアル:Azure Active Directory と Directions on Microsoft の統合
 

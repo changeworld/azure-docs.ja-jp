@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b0ec10bbf03e8a8d005eece4b6496b74b2943233
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831366"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173260"
 ---
 # <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Bing Autosuggest API についてよく寄せられる質問 (FAQ)
  

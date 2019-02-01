@@ -7,7 +7,7 @@ author: kalyankrishna1
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 575677cd3ace4d5d4948b1296d923b7703c3f20b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 92108f610fd86a9e2e2bbba864879e4b3289456c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968307"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103583"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>方法: ご利用のアプリをユーザーのセットに制限する
+# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>方法:ご利用のアプリを特定のユーザー セットに制限する
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。
 

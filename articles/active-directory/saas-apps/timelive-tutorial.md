@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: 34123629-4ad5-465c-a4c1-8299f857e720
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e9be0417e56339fa5c56a72c1b2bd27d5f955ea4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ae9d3c6df0d9ba96cc3052e2f384c9e12277f8c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820752"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>チュートリアル:Azure Active Directory と TimeLive の統合
 

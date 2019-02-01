@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 24aa6bf67b3b841b950e047a5c2509f04a3546b7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850860"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149596"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
