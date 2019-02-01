@@ -249,25 +249,25 @@ Network Watcher によって監視されているリージョン内のネット�
 
 | Category | ワークロード | IaaS | 専用 PaaS/仮想ネットワーク挿入  | サービス エンドポイント  |
 |---------|---------|---------|---------|--------|
-| Compute | Azure Linux 仮想マシン | [はい] | | |
-| Compute | Azure Windows ウィンドウ | [はい] | | |
-| Compute | 仮想マシン スケール セット | [はい] | | |
+| Compute | Azure Linux 仮想マシン | はい | | |
+| Compute | Azure Windows ウィンドウ | はい | | |
+| Compute | 仮想マシン スケール セット | はい | | |
 | Compute | Azure Functions | | App Service 環境 | |
 | Web とモバイル | 内部 Web アプリケーション | | App Service 環境| |
 | Web とモバイル | 内部モバイル アプリケーション | | App Service 環境 | |
 | Web とモバイル | API アプリケーション | | App Service 環境 | |
-| Containers | Azure Container Service | | | [はい] |
-| Containers | Azure Kubernetes Service (AKS) \* | | | [はい] |
+| Containers | Azure Container Service | | | はい |
+| Containers | Azure Kubernetes Service (AKS) \* | | | はい |
 | Database | Azure SQL Database | | Azure SQL Database Managed Instance \* | Azure SQL |
-| Database | Azure Database for MySQL | | | [はい] |
-| Database | Azure Database for PostgreSQL | | | [はい] |
-| Database | Azure SQL Data Warehouse | | | [はい] |
-| Database | Azure Cosmos DB | | | [はい] |
-| Database | Azure Cache for Redis | | [はい] | |
-| Storage | Azure BLOB ストレージ | [はい] | | |
-| Storage | Azure Files | [はい] | | |
-| Storage | Azure Queue Storage | [はい] | | |
-| Storage | Azure Table Storage | [はい] | | |
-| Storage | Azure Disk Storage | [はい] | | |
+| Database | Azure Database for MySQL | | | はい |
+| Database | Azure Database for PostgreSQL | | | はい |
+| Database | Azure SQL Data Warehouse | | | はい |
+| Database | Azure Cosmos DB | | | はい |
+| Database | Azure Cache for Redis | | はい | |
+| Storage | Azure BLOB ストレージ | はい | | |
+| Storage | Azure Files | はい | | |
+| Storage | Azure Queue Storage | はい | | |
+| Storage | Azure Table Storage | はい | | |
+| Storage | Azure Disk Storage | はい | | |
 
 \* 2018 年 5 現在、Azure Government ではパブリック プレビュー。
