@@ -1,4 +1,4 @@
----
+﻿---
 title: シングル サインオン - 非ギャラリー アプリケーション - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) の非ギャラリー アプリケーションへのシングル サインオンを構成する
 services: active-directory
@@ -25,6 +25,7 @@ ms.locfileid: "55153881"
 [この記事](what-is-single-sign-on.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
 
 使用許諾契約書に従ってこれらの機能を使用することもできます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。 
+[Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) ライセンスは、アプリケーションに割り当てられているユーザーの人数分必要です。
 
 - SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
 -  [パスワードベースの SSO](what-is-single-sign-on.md#password-based-sso)
