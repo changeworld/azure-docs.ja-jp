@@ -58,9 +58,9 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
 | URL | Azure Search サービスの URL。 | はい |
-| key | Azure Search サービスの管理者キー。 | [はい] |
+| key | Azure Search サービスの管理者キー。 | はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -69,7 +69,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
+| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | はい |
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
