@@ -371,10 +371,10 @@ Log Integration では現在、Azure アクティビティ ログ、Windows 仮�
 
 | ログのタイプ | Log Analytics による JSON (Splunk、ArcSight、 IBM QRadar) のサポート |
 | :------- | :-------------------------------------------------------- |
-|Azure AD 監査ログ|   [はい]|
-|アクティビティ ログ| [はい]|
-|Security Center のアラート |[はい]|
-|診断ログ (リソース ログ)|  [はい]|
+|Azure AD 監査ログ|   はい|
+|アクティビティ ログ| はい|
+|Security Center のアラート |はい|
+|診断ログ (リソース ログ)|  はい|
 |VM ログ|   はい (JSON 経由ではなく転送されたイベントの場合)|
 
 [Azure Log Integration の使用](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started):このチュートリアルでは、Azure Log Integration のインストールに加え、Azure Storage のログ、Azure アクティビティ ログ、Azure Security Center アラート、Azure AD 監査ログの統合について説明します。
