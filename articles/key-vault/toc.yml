@@ -98,6 +98,10 @@ items:
     href: key-vault-group-permissions-for-apps.md
   - name: ファイアウォールと仮想ネットワークの構成
     href: key-vault-network-security.md
+  - name: Java 開発
+    items:
+    - name: Spring Boot Starter を使用する
+      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: リファレンス
   items:
   - name: Azure PowerShell
@@ -164,9 +168,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 15db7be3409b36d12583df07e54f0d36cd845b6b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b2e32542929deb23d824d16b8d3e94fcac9efe58
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510720"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563798"

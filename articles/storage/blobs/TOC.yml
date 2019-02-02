@@ -316,6 +316,10 @@ items:
         href: storage-c-plus-plus-how-to-use-blobs.md
       - name: iOS
         href: storage-ios-how-to-use-blob-storage.md
+      - name: Java
+        items:
+        - name: Spring Boot Starter を使用する
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
       - name: Xamarin
         href: storage-xamarin-blob-storage.md
       - name: レガシ SDK
@@ -602,9 +606,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 014cd0d23584d76564d2ebf42ecfe2323b8085de
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ade835f9854efb943e1d6e69db806a811f18b252
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508421"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564172"
