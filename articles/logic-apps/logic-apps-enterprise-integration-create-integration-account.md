@@ -54,11 +54,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | プロパティ | 必須 | 値の例 | 説明 | 
    |----------|----------|---------------|-------------|
-   | Name | [はい] | test-integration-account | 統合アカウントの名前。 たとえば、指定された名前を使用します。 | 
-   | サブスクリプション | [はい] | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
-   | リソース グループ | [はい] | test-integration-account-rg | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、指定された名前の新しいリソース グループを作成します。 | 
-   | 価格レベル | [はい] | 無料 | 使用する価格レベル。 この例では、**[Free]** を選択します。詳しくは、「[LLogic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 | 
-   | リージョン | [はい] | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 | 
+   | Name | はい | test-integration-account | 統合アカウントの名前。 たとえば、指定された名前を使用します。 | 
+   | サブスクリプション | はい | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
+   | リソース グループ | はい | test-integration-account-rg | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、指定された名前の新しいリソース グループを作成します。 | 
+   | 価格レベル | はい | 無料 | 使用する価格レベル。 この例では、**[Free]** を選択します。詳しくは、「[LLogic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 | 
+   | リージョン | はい | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 | 
    | Log Analytics | いいえ  | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    ||||| 
 
