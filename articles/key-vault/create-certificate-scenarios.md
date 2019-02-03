@@ -428,7 +428,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |要素名|必須|type|Version|説明|  
 |------------------|--------------|----------|-------------|-----------------|  
-|x5c|[はい]|array|\<導入バージョン>|base 64 文字列配列としての X509 証明書チェーン。|  
+|x5c|はい|array|\<導入バージョン>|base 64 文字列配列としての X509 証明書チェーン。|  
 
 ### <a name="response"></a>Response  
 
