@@ -37,7 +37,7 @@ ms.locfileid: "54259786"
 | Structure |階層型ファイル システム |フラットな名前空間を使用するオブジェクト ストア |
 | API |HTTPS 経由の REST API |HTTP/HTTPS 経由の REST API |
 | サーバー側 API |[WebHDFS 互換の REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure BLOB ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Hadoop ファイル システム クライアント |[はい] |[はい] |
+| Hadoop ファイル システム クライアント |はい |はい |
 | データ操作 - 認証 |[Azure Active Directory ID](../active-directory/develop/authentication-scenarios.md) |共有シークレット ([アカウント アクセス キー](../storage/common/storage-account-manage.md#access-keys)と [Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) キー) に基づきます。 |
 | データ操作 - 認証プロトコル |OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 |ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/common/storage-account-manage.md#access-keys)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します |
