@@ -33,7 +33,7 @@ ms.locfileid: "46980170"
 > [!div class="mx-tableFixed"]
 > | プロパティ | 必須 | type | 説明 |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | [はい] | String | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
+> | `DenyAssignmentName` | はい | String | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
 > | `Description` | いいえ  | String | 拒否割り当ての説明。 |
 > | `Permissions.Actions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされる管理操作を指定する文字列の配列。 |
 > | `Permissions.NotActions` | いいえ  | String[] | 拒否割り当てから除外される管理操作を指定する文字列の配列。 |
@@ -41,7 +41,7 @@ ms.locfileid: "46980170"
 > | `Permissions.NotDataActions` | いいえ  | String[] | 拒否割り当てから除外されるデータ操作を指定する文字列の配列。 |
 > | `Scope` | いいえ  | String | 拒否割り当てが適用されるスコープを指定する文字列。 |
 > | `DoNotApplyToChildScopes` | いいえ  | Boolean | 拒否割り当てが子スコープに適用されるかどうかを指定します。 既定値は false です。 |
-> | `Principals[i].Id` | [はい] | String[] | 拒否割り当てが適用される Azure AD プリンシパル オブジェクト ID (ユーザー、グループ、またはサービス プリンシパル) の配列。 すべてのユーザー、グループ、サービス プリンシパルを表すために空の GUID `00000000-0000-0000-0000-000000000000` に設定されます。 |
+> | `Principals[i].Id` | はい | String[] | 拒否割り当てが適用される Azure AD プリンシパル オブジェクト ID (ユーザー、グループ、またはサービス プリンシパル) の配列。 すべてのユーザー、グループ、サービス プリンシパルを表すために空の GUID `00000000-0000-0000-0000-000000000000` に設定されます。 |
 > | `Principals[i].Type` | いいえ  | String[] | Principals[i].Id によって表されるオブジェクトの種類の配列。すべてのユーザー、グループ、サービス プリンシパルを表すために `Everyone` に設定されます。 |
 > | `ExcludePrincipals[i].Id` | いいえ  | String[] | 拒否割り当てが適用されない Azure AD プリンシパル オブジェクト ID (ユーザー、グループ、またはサービス プリンシパル) の配列。 |
 > | `ExcludePrincipals[i].Type` | いいえ  | String[] | ExcludePrincipals[i].Id によって表されるオブジェクトの種類の配列。 |
