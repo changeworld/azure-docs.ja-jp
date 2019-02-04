@@ -91,10 +91,10 @@ Security Center に接続して登録するエージェントには、ドメイ�
 
 | エージェントのリソース | ポート | バイパス HTTPS 検査 |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | [はい] |
-| *.oms.opinsights.azure.com | 443 | [はい] |
-| *.blob.core.windows.net | 443 | [はい] |
-| *.azure-automation.net | 443 | [はい] |
+| *.ods.opinsights.azure.com | 443 | はい |
+| *.oms.opinsights.azure.com | 443 | はい |
+| *.blob.core.windows.net | 443 | はい |
+| *.azure-automation.net | 443 | はい |
 
 エージェントのオンボードに関する問題が発生した場合は、「[Operations Management Suite オンボードに関する問題のトラブルシューティング方法](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)」の記事を参照してください。
 
