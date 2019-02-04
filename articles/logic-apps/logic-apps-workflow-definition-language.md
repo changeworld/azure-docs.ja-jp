@@ -40,7 +40,7 @@ ms.locfileid: "42140167"
   
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------| 
-| 定義 | [はい] | ワークフロー定義の開始要素 | 
+| 定義 | はい | ワークフロー定義の開始要素 | 
 | $schema | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
 | contentVersion | いいえ  | ワークフロー定義のバージョン番号。既定値は "1.0.0.0" です。 ワークフローを展開するときに正しい定義であることを識別して確認できるように、使用する値を指定します。 | 
 | parameters | いいえ  | ワークフローにデータを渡す 1 つ以上のパラメーターの定義 <p><p>パラメーターの最大個数: 50 | 
@@ -72,7 +72,7 @@ ms.locfileid: "42140167"
 
 | 要素 | 必須 | type | 説明 |  
 |---------|----------|------|-------------|  
-| type | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
+| type | はい | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
 | defaultValue | いいえ  | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 | 
 | allowedValues | いいえ  | `type` と同じ | パラメーターが受け取ることのできる値の配列 |  
 | metadata | いいえ  | JSON オブジェクト | 他のパラメーターの詳細。たとえば、ロジック アプリの名前や読み取り可能な説明、または Visual Studio や他のツールによって使用される設計時のデータ |  
@@ -102,9 +102,9 @@ ms.locfileid: "42140167"
 
 | 要素 | 必須 | type | 説明 | 
 |---------|----------|------|-------------| 
-| <*key-name*> | [はい] | String | 出力戻り値のキーの名前 |  
-| type | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 
-| value | [はい] | `type` と同じ | 出力の戻り値 |  
+| <*key-name*> | はい | String | 出力戻り値のキーの名前 |  
+| type | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 
+| value | はい | `type` と同じ | 出力の戻り値 |  
 ||||| 
 
 ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [ワークフローの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。 
