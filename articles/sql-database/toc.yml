@@ -545,6 +545,12 @@ items:
       href: sql-database-develop-cplusplus-simple.md
     - name: Excel
       href: sql-database-connect-excel.md
+    - name: Java
+      items:
+      - name: Spring Data JDBC の使用
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server
+      - name: Spring Data JPA の使用
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server
   - name: アプリケーションの設計
     items:
     - name: ディザスター リカバリーの設計
@@ -704,9 +710,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 7530d0926cca2b89e532407d32e394e0b3018a60
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1e0f7cb461441c500e3fd1b9b78ae6e829d9d578
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512416"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561452"

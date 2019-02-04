@@ -154,6 +154,8 @@ items:
         href: azure-to-azure-how-to-enable-replication.md
       - name: 暗号化された VM の Azure から Azure へのレプリケーションを有効にする
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
+      - name: S2D VM の Azure から Azure へのレプリケーションを有効にする
+        href: azure-to-azure-how-to-enable-replication-s2d-vms.md
       - name: フェールオーバー後に Azure VM を再保護する
         href: azure-to-azure-how-to-reprotect.md
       - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
@@ -452,9 +454,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: bd744e6d16f52c70ae70e7c90ca8ed011f02e275
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 10592c399414440c032d83b5fcdafa1ccee98956
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222747"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566858"

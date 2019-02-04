@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ff0b711e2c839f81f7f3b68603c2b9e46092316
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7f462bf635eeec0e7a7eba4467aa2567fc09cb83
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152962"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562404"
 documentType: LandingData
-title: Bing Video Search のドキュメント
+title: Bing Video Search API ドキュメント
 metadata:
-  title: Bing Video Search のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
-  description: Bing Video Search API を使用して、ユーザーのクエリに関連する Web からビデオを取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
+  title: Bing Video Search API ドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Bing Video Search API 検索を使用して、Web 全体から動画を見つける方法について説明します。
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -18,48 +18,69 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/31/2019
   ms.author: v-gedod
 abstract:
-  description: Bing Video Search API は、Bing によって特定される、クエリに関連するビデオを返すことによって、Bing Video と同様のエクスペリエンスを提供します。
+  description: Bing Video Search API を使用すると、アプリケーションに Bing の動画検索機能を統合できます。 検索クエリを API に送信することで、bing.com/videos のように関連性のある高品質の動画を取得して表示できます。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-video-search/overview
+      html: <p>Bing Video Search API について説明します</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Bing Video Search API とは
+    - href: /azure/cognitive-services/bing-video-search/concepts/sending-requests
+      html: <p>動画検索クエリを Bing に送信する方法について説明します</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 検索クエリの送信
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+      html: <p>検索結果のフィルター処理、動画サムネイルの取得、検索クエリの展開を行う方法について説明します</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Web からの動画の取得
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: クエリを作成して JSON 応答を表示することで、Bing Video Search API の使用を開始します。
+    text: 以下を使用して Web の動画を検索します。
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: quickstarts/sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: quickstarts/sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: quickstarts/nodejs
       text: Node.js
     - image:
         src: media/index/logo_php.svg
-      href: php
+      href: quickstarts/php
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: quickstarts/sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
-      href: ruby
+      href: quickstarts/ruby
       text: Ruby
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
     text: Bing Video Search API を使用してアプリケーションを開発します。
   - type: paragraph
-    text: <a href="tutorial-bing-video-search-single-page-app">シングルページの Web アプリ</a> &#124; <a href="tutorial-bing-video-search-single-page-app-source">ソース コード</a>
+    text: <a href="tutorial-bing-video-search-single-page-app">単一ページの Web アプリ</a>
 - title: サンプル
   items:
   - type: paragraph

@@ -104,6 +104,12 @@ items:
       href: concepts-connectivity.md
     - name: Azure Kubernetes Service (AKS) を使用した開発
       href: concepts-aks.md
+    - name: Java
+      items:
+      - name: Spring Data JDBC の構成
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+      - name: Spring Data JPA の構成
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
   - name: レプリケーション
     items:
     - name: 読み取りレプリカ
@@ -230,9 +236,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 61b78ac5b542e130fd7182b0c30810ff9c98ee78
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: e391ae71e7b840fc372f9b6116bab486845f92e6
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383044"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567232"

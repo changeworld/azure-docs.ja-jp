@@ -132,6 +132,12 @@ items:
       href: event-hubs-management-libraries.md
   - name: Event Hubs の接続文字列を取得する
     href: event-hubs-get-connection-string.md
+  - name: Java 開発
+    items:
+    - name: Spring Cloud Stream Binder アプリの作成
+      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+    - name: Apache Kafka 用の Spring Boot Starter の使用
+      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
   - name: トラブルシューティング
     items:
     - name: 例外
@@ -193,9 +199,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 16f34ab31adc7cb45ac9adf8b22123786d6f8b73
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 95e32aa7c38ba5cda4ac6a83bb72f5d28d5b5e9b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099245"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560789"

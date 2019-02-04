@@ -110,6 +110,8 @@ items:
     href: concept-tagging-images.md
   - name: オブジェクトの検出
     href: concept-object-detection.md
+  - name: ブランドの検出
+    href: concept-brand-detection.md
   - name: イメージの分類
     href: concept-categorizing-images.md
   - name: イメージの説明
@@ -196,9 +198,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: cf554121906493f7b1384a585f0e32f73b39cf5e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354537"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562353"

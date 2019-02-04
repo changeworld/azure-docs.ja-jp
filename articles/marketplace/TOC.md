@@ -67,8 +67,8 @@
 
 ### [プランの管理](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [プランの作成](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
-<!-- #### [Publish offer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)   -->
-#### [プランの状態の確認](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
+#### [プランの発行](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
+#### [オファーの状態の確認](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [プランの更新](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [プランの削除](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
 
@@ -140,6 +140,17 @@
 #### [IoT Edge モジュールの技術アセットの作成](./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md)
 #### [IoT Edge モジュール プランの公開](./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md)
 #### [既存のプランの更新](./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md)
+
+### [Power BI アプリ オファー](./cloud-partner-portal/power-bi/cpp-power-bi-offer.md)
+#### [前提条件](./cloud-partner-portal/power-bi/cpp-prerequisites.md)
+#### [Power BI アプリ オファーの作成](./cloud-partner-portal/power-bi/cpp-create-offer.md)
+##### [[プランの設定] タブ](./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md)
+##### [[技術情報] タブ](./cloud-partner-portal/power-bi/cpp-technical-info-tab.md)
+##### [[ネットショップの詳細] タブ](./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md)
+##### [[連絡先] タブ](./cloud-partner-portal/power-bi/cpp-contacts-tab.md)
+#### [Power BI アプリの技術資産の作成](./cloud-partner-portal/power-bi/cpp-create-technical-assets.md)
+#### [Power BI アプリ オファーの発行](./cloud-partner-portal/power-bi/cpp-publish-offer.md)
+#### [既存のプランの更新](./cloud-partner-portal/power-bi/cpp-update-existing-offer.md)
 
 ### [SaaS アプリケーション プラン](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 #### [前提条件](./cloud-partner-portal/saas-app/cpp-prerequisites.md)

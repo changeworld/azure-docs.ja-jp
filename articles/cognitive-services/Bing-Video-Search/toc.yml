@@ -1,48 +1,45 @@
 items:
-- name: Bing Video Search のドキュメント
+- name: Bing Video Search API ドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Bing Video Search とは
-    href: search-the-web.md
+  - name: Bing Video Search API とは
+    href: overview.md
   - name: Bing Search API を比較する
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
+  expanded: true
 - name: REST API のクイック スタート
   items:
-  - name: 作業開始
-    href: quick-start.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
+  - name: REST API
+    items:
+    - name: C# の使用
+      href: quickstarts/csharp.md
+    - name: Java の使用
+      href: quickstarts/java.md
+    - name: Node.js の使用
+      href: quickstarts/nodejs.md
+    - name: PHP の使用
+      href: quickstarts/php.md
+    - name: Python の使用
+      href: quickstarts/python.md
+    - name: Ruby の使用
+      href: quickstarts/ruby.md
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: quickstarts/sdk-csharp-quickstart.md
+    - name: Node.js の使用
+      href: quickstarts/sdk-node-quickstart.md
+    - name: Python の使用
+      href: quickstarts/sdk-python-quickstart.md
+    - name: Java の使用
+      href: quickstarts/sdk-java-quickstart.md
   expanded: true
-- name: SDK のクイック スタート
-  items:
-  - name: SDK のサンプルの概要
-    href: sdk.md
-  - name: Video Search SDK C# のクイック スタート
-    href: video-search-sdk-quickstart.md
-  - name: Video Search SDK Node のクイック スタート
-    href: video-search-sdk-node-quickstart.md
-  - name: Video Search SDK Python のクイック スタート
-    href: video-sdk-python-quickstart.md
-  - name: Video Search SDK Java のクイック スタート
-    href: video-sdk-java-quickstart.md
 - name: チュートリアル
   items:
-  - name: 単一ページの Web アプリ
+  - name: シングルページ Web アプリの作成
     href: tutorial-bing-video-search-single-page-app.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorial-bing-video-search-single-page-app-source.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -59,6 +56,12 @@ items:
     href: resize-and-crop-thumbnails.md
   - name: v5 から v7 へのアップグレード
     href: bing-video-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: Web からの動画の取得
+    href: concepts/get-videos.md
+  - name: 検索要求の送信
+    href: concepts/sending-requests.md
 - name: リファレンス
   items:
   - name: Bing Video Search API v7
@@ -98,13 +101,11 @@ items:
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
   - name: 試してみる
     href: https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8
-  - name: Bing Video Search エンドポイント
-    href: video-search-endpoints.md
   - name: Bing Video Search API 用の分析
     href: bing-video-stats.md
-ms.openlocfilehash: e8f0e84b405232ff7145f0a8fed4ab42d03a4c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9192f6aaa94d2aff310e8d12a66ac8ab75f772e2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509704"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568037"

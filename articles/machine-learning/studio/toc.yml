@@ -197,7 +197,7 @@ items:
 - name: リファレンス
   items:
   - name: アルゴリズムとモジュールのリファレンス
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
+    href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
   - name: Azure PowerShell モジュール
     href: powershell-module.md
   - name: Web サービスのエラー コード
@@ -222,9 +222,9 @@ items:
     href: azure-ml-netsharp-reference-guide.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 27cd57a52b80006482f50f96120e8eaf8a8cb00e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5a6d1f3492186831f5dd83f002c7c22a86de34d7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512195"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662985"

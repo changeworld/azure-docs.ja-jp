@@ -343,6 +343,8 @@ items:
           href: app/java-filter-telemetry.md
         - name: Micrometer メトリック
           href: app/micrometer-java.md
+        - name: Spring Boot Initializer アプリの構成
+          href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
       - name: Node.js アプリ
         items:
         - name: Node.js
@@ -1021,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 1199720ddd3014c52c8436e06a638876a7ecb486
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 751b6c7066a85258b7b7449969ea185cec354644
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297754"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564376"

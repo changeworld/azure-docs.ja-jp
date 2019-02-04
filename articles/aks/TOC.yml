@@ -191,7 +191,10 @@ items:
         - name: 1 - はじめに
           href: ../dev-spaces/get-started-java.md
           maintainContext: true
-        - name: 2 - チーム開発
+        - name: 2 - マルチサービス開発
+          href: ../dev-spaces/multi-service-java.md
+          maintainContext: true
+        - name: 3 - チーム開発
           href: ../dev-spaces/team-development-java.md
           maintainContext: true
       - name: .NET Core (VS Code と CLI)
@@ -199,7 +202,10 @@ items:
         - name: 1 - はじめに
           href: ../dev-spaces/get-started-netcore.md
           maintainContext: true
-        - name: 2 - チーム開発
+        - name: 2 - マルチサービス開発
+          href: ../dev-spaces/multi-service-netcore.md
+          maintainContext: true
+        - name: 3 - チーム開発
           href: ../dev-spaces/team-development-netcore.md
           maintainContext: true
       - name: .NET Core (Visual Studio 2017)
@@ -207,7 +213,10 @@ items:
         - name: 1 - はじめに
           href: ../dev-spaces/get-started-netcore-visualstudio.md
           maintainContext: true
-        - name: 2 - チーム開発
+        - name: 2 - マルチサービス開発
+          href: ../dev-spaces/multi-service-netcore-visualstudio.md
+          maintainContext: true
+        - name: 3 - チーム開発
           href: ../dev-spaces/team-development-netcore-visualstudio.md
           maintainContext: true
       - name: Node.js (VS Code と CLI)
@@ -215,7 +224,10 @@ items:
         - name: 1 - はじめに
           href: ../dev-spaces/get-started-nodejs.md
           maintainContext: true
-        - name: 2 - チーム開発
+        - name: 2 - マルチサービス開発
+          href: ../dev-spaces/multi-service-nodejs.md
+          maintainContext: true
+        - name: 3 - チーム開発
           href: ../dev-spaces/team-development-nodejs.md
           maintainContext: true
       maintainContext: true
@@ -300,9 +312,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: d91ca488b148eabffd7b6c80bb402b1f875eb329
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 52956dd55cbb78b074a7898d5415dc204975893b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453350"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656483"
