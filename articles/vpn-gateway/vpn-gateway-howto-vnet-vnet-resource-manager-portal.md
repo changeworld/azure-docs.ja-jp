@@ -1,5 +1,5 @@
 ---
-title: Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する | Microsoft Docs
+title: Azure ポータルを使用して VNet 対 VNet VPN ゲートウェイ接続を構成する | Microsoft Docs
 description: Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。
 services: vpn-gateway
 documentationcenter: na
@@ -65,7 +65,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 ### <a name="cross-region-geo-redundancy-and-geo-presence"></a>リージョン間の geo 冗長性および geo プレゼンス
 
-  * インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや geo 同期を設定することができます。
+  * インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや同期を設定することができます。
   * Azure Traffic Manager および Azure Load Balancer を使用し、複数の Azure リージョンをまたぐ geo 冗長性を備えた、可用性に優れたワークロードを設定することができます。 たとえば、複数の Azure リージョン間で SQL Server Always On 可用性グループを設定できます。
 
 ### <a name="regional-multi-tier-applications-with-isolation-or-administrative-boundaries"></a>特定のリージョン内で分離または管理境界を備えた多層アプリケーション
