@@ -66,7 +66,7 @@ Device Guard ポリシーは、Azure Stack インフラストラクチャでサ�
 Azure Stack の別の Windows Server 2016 セキュリティ機能として Windows Defender Credential Guard があります。この機能は、Azure Stack インフラストラクチャの資格情報を Pass-the-Hash および Pass-the-Ticket 攻撃から防護するために使用されます。
 
 ## <a name="antimalware"></a>マルウェア対策
-Azure Stack (HYPER-V ホストと Virtual Machines の両方) のすべてのコンポーネントは、Windows Defender Antivirus によって保護されています。
+Azure Stack のすべてのコンポーネント (Hyper-V ホストと Virtual Machines の両方) は、Windows Defender Antivirus によって保護されています。
 
 接続されているシナリオでは、ウイルス対策の定義とエンジンの更新プログラムが、1 日に複数回適用されます。 接続されていないシナリオでは、マルウェア対策の更新プログラムが、月次の Azure Stack 更新プログラムの一部として適用されます。 詳細については、「[Azure Stack 上で Windows Defender ウイルス対策を更新する](azure-stack-security-av.md)」を参照してください。
 
