@@ -162,7 +162,7 @@ SAP ECC からデータをコピーするとき、次の SAP ECC データの OD
 | OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |:--- |
 | Edm.Binary | String |
-| Edm.Boolean | ブール値 |
+| Edm.Boolean | Bool |
 | Edm.Byte | String |
 | Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |

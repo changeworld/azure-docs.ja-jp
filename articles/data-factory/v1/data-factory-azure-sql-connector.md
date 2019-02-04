@@ -639,7 +639,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -653,7 +653,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -661,7 +661,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

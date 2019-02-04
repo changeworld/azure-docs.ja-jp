@@ -481,7 +481,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -495,7 +495,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -503,7 +503,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
