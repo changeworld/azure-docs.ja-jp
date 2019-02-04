@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981163"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334229"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -319,5 +319,5 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 * [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
 * [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler REST API リファレンス](https://docs.microsoft.com/rest/api/schedule)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
 * [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)

@@ -26,7 +26,7 @@ ms.locfileid: "55210164"
 
 バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
 
-[![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![管理 セクションの バージョン ページ](./media/luis-how-to-manage-versions/versions-import.png "管理 セクションの バージョン ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
@@ -45,7 +45,7 @@ ms.locfileid: "55210164"
 
 一覧からバージョンを選択し、ツール バーから **[Make Active]\(アクティブにする\)** を選択します。 
 
-[![[管理] セクションの [バージョン] ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![管理 セクションの バージョン ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>バージョンをインポートする
 

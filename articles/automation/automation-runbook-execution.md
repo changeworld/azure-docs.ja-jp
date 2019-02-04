@@ -18,7 +18,7 @@ ms.locfileid: "54472128"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
-Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを、制御することはできません。 1 つの Runbook で、多数のジョブを同時に実行することができます。 同じ Automation アカウントからのジョブの実行環境を再利用できます。 同時に実行するジョブが多いほど、同じサンド ボックスにディスパッチする頻度が上がります。 同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。1 つの例は、`Disconnect-AzureRMAccount` コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 Runbook ごとにジョブの一覧を表示して、それぞれの状態を追跡できます。 ジョブのログは、最大 30 日間保存されます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
+Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを、制御することはできません。 1 つの Runbook で、多数のジョブを同時に実行することができます。 同じ Automation アカウントからのジョブの実行環境を再利用できます。 同時に実行するジョブが多いほど、同じサンドボックスにディスパッチする頻度が上がります。 同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。1 つの例は、`Disconnect-AzureRMAccount` コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 Runbook ごとにジョブの一覧を表示して、それぞれの状態を追跡できます。 ジョブのログは、最大 30 日間保存されます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -41,14 +41,14 @@ Azure Automation の Runbook は、Azure のサンドボックスまたは [Hybr
 |Azure リソースと統合する|Azure サンドボックス|Azure でホストされ、認証がより簡単です。 Azure VM で Hybrid Runbook Worker を使用している場合は、[Azure リソース用のマネージド ID](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) を使用できます|
 |最適なパフォーマンスで Azure リソースを管理する|Azure サンドボックス|スクリプトは同じ環境内で実行されます。それが、待ち時間がより短いことにつながります|
 |運用コストを最小限に抑える|Azure サンドボックス|コンピューティングのオーバーヘッドがなく、VM の必要がありません|
-|実行時間の長いスクリプト|Hybrid Runbook Worker|Azure のサンド ボックスには[リソースの制限](../azure-subscription-service-limits.md#automation-limits)があります|
+|実行時間の長いスクリプト|Hybrid Runbook Worker|Azure のサンドボックスには[リソースの制限があります](../azure-subscription-service-limits.md#automation-limits)|
 |ローカル サービスと相互作用する|Hybrid Runbook Worker|ホスト マシンに直接アクセスできます|
 |サード パーティ製ソフトウェアと実行可能ファイルが必要|Hybrid Runbook Worker|OS を管理し、ソフトウェアをインストールできます|
 |Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](automation-watchers-tutorial.md)を使用します|
-|多量のリソースを消費するスクリプト|Hybrid Runbook Worker| Azure のサンド ボックスには[リソースの制限](../azure-subscription-service-limits.md#automation-limits)があります|
+|多量のリソースを消費するスクリプト|Hybrid Runbook Worker| Azure のサンドボックスには[リソースの制限があります](../azure-subscription-service-limits.md#automation-limits)|
 |特定の要件でのモジュールの使用| Hybrid Runbook Worker|次に例をいくつか示します。</br> **WinSCP** - winscp.exe への依存関係 </br> **IISAdministration** - IIS を有効にする必要がある|
-|インストーラーが必要なモジュールをインストールする|Hybrid Runbook Worker|サンド ボックス用のモジュールは xcopy が可能な必要があります|
-|4.7.2 以外の .NET Framework が必要な Runbook またはモジュールの使用|Hybrid Runbook Worker|Automation のサンド ボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法がありません|
+|インストーラーが必要なモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールは xcopy が可能な必要があります|
+|4.7.2 以外の .NET Framework が必要な Runbook またはモジュールの使用|Hybrid Runbook Worker|Automation のサンドボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法がありません|
 
 ## <a name="runbook-behavior"></a>Runbook の動作
 

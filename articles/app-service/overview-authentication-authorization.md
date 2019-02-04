@@ -1,6 +1,6 @@
 ---
-title: 認証と承認 - Azure App Service | Microsoft Docs
-description: Azure App Service の認証/承認の機能の概念リファレンスと概要
+title: 認証と認可 - Azure App Service | Microsoft Docs
+description: Azure App Service の認証/認可の機能の概念リファレンスと概要
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -22,21 +22,21 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/30/2019
 ms.locfileid: "55297006"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
-Azure App Service は組み込みの認証と承認のサポートを提供するので、Web アプリ、RESTful API、モバイル バックエンド、さらには [Azure Functions](../azure-functions/functions-overview.md) でも、最小限のコードを記述するだけで、またはまったく記述せずに、ユーザーのサインインとデータへのアクセスを可能にできます。 この記事では、App Service によりアプリの認証と承認を簡略化する方法について説明します。 
+Azure App Service は組み込みの認証と認可のサポートを提供するので、Web アプリ、RESTful API、モバイル バックエンド、さらには [Azure Functions](../azure-functions/functions-overview.md) でも、最小限のコードを記述するだけで、またはまったく記述せずに、ユーザーのサインインとデータへのアクセスを可能にできます。 この記事では、App Service によりアプリの認証と認可を簡略化する方法について説明します。 
 
-安全な認証と承認には、フェデレーション、暗号化、[JSON Web トークン (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[付与タイプ](https://oauth.net/2/grant-types/)など、セキュリティについての深い理解が必要です。 App Service ではこれらのユーティリティが提供されているので、ビジネス価値を顧客に提供することにいっそうの時間と労力を費やすことができます。
+安全な認証と認可には、フェデレーション、暗号化、[JSON Web トークン (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[付与タイプ](https://oauth.net/2/grant-types/)など、セキュリティについての深い理解が必要です。 App Service ではこれらのユーティリティが提供されているので、ビジネス価値を顧客に提供することにいっそうの時間と労力を費やすことができます。
 
 > [!NOTE]
-> 認証と承認に App Service を必ず使う必要はありません。 多くの Web フレームワークにセキュリティ機能がバンドルされており、必要に応じてそれらを使うことができます。 App Service より高い柔軟性が必要な場合は、独自のユーティリティを記述することもできます。  
+> 認証と認可に App Service を必ず使う必要はありません。 多くの Web フレームワークにセキュリティ機能がバンドルされており、必要に応じてそれらを使うことができます。 App Service より高い柔軟性が必要な場合は、独自のユーティリティを記述することもできます。  
 >
 
-ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と承認](../app-service-mobile/app-service-mobile-auth.md)に関する記事をご覧ください。
+ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](../app-service-mobile/app-service-mobile-auth.md)に関する記事をご覧ください。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-認証と承認のモジュールは、アプリケーションのコードと同じサンドボックスで実行します。 有効になっている場合、すべての受信 HTTP 要求は、アプリケーション コードによって処理される前に、認証と承認のモジュールを通過します。
+認証と認可のモジュールは、アプリケーションのコードと同じサンドボックスで実行します。 有効になっている場合、すべての受信 HTTP 要求は、アプリケーション コードによって処理される前に、認証と認可のモジュールを通過します。
 
 ![](media/app-service-authentication-overview/architecture.png)
 
@@ -72,7 +72,7 @@ ID トークン、アクセス トークン、更新トークンは認証され�
 
 ### <a name="logging-and-tracing"></a>ログとトレース
 
-[アプリケーション ログを有効にする](troubleshoot-diagnostic-logs.md)と、認証と承認のトレースをログ ファイルで直接見ることができます。 予期しない認証エラーが発生した場合は、既存のアプリケーション ログを参照して、すべての詳細を簡単に確認できます。 [失敗した要求トレース](troubleshoot-diagnostic-logs.md)を有効にしてある場合は、失敗した要求で認証および承認モジュールが演じていた役割を正確に確認できます。 トレース ログでは、`EasyAuthModule_32/64` という名前のモジュールへの参照を探します。 
+[アプリケーション ログを有効にする](troubleshoot-diagnostic-logs.md)と、認証と認可のトレースをログ ファイルで直接見ることができます。 予期しない認証エラーが発生した場合は、既存のアプリケーション ログを参照して、すべての詳細を簡単に確認できます。 [失敗した要求トレース](troubleshoot-diagnostic-logs.md)を有効にしてある場合は、失敗した要求で認証および認可モジュールが演じていた役割を正確に確認できます。 トレース ログでは、`EasyAuthModule_32/64` という名前のモジュールへの参照を探します。 
 
 ## <a name="identity-providers"></a>ID プロバイダー
 
@@ -86,7 +86,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
-これらのプロバイダーのいずれかで認証と承認を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。 別の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合することもできます。
+これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。 別の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合することもできます。
 
 ## <a name="authentication-flow"></a>Authentication flow
 
@@ -96,7 +96,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 - プロバイダーの SDK を使う場合:アプリケーションは、ユーザーを手動でプロバイダーにサインインさせてから、検証のために App Service に認証トークンを送信します。 これはブラウザーレス アプリで通常のケースであり、プロバイダーのサインイン ページをユーザーに表示することはできません。 アプリケーションのコードがサインイン プロセスを管理するので、"_クライアント主導のフロー_" または "_クライアント フロー_" とも呼ばれます。 このケースは、REST API、[Azure Function](../azure-functions/functions-overview.md)、JavaScript ブラウザー クライアント、およびいっそう柔軟なサインイン プロセスを必要とするブラウザー アプリに適用されます。 また、プロバイダーの SDK を使ってユーザーをサインインさせるネイティブ モバイル アプリにも適用されます。
 
 > [!NOTE]
-> App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API を呼び出す App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳細については、「[Azure App Service での認証と承認のカスタマイズ](app-service-authentication-how-to.md)」を参照してください。
+> App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API を呼び出す App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳細については、「[Azure App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)」を参照してください。
 >
 
 次の表では、認証フローの手順を示します。
@@ -112,9 +112,9 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 <a name="authorization"></a>
 
-## <a name="authorization-behavior"></a>承認の動作
+## <a name="authorization-behavior"></a>認可の動作
 
-[Azure Portal](https://portal.azure.com) では、複数の動作で App Service の承認を構成することができます。
+[Azure Portal](https://portal.azure.com) では、複数の動作で App Service の認可を構成することができます。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
@@ -122,27 +122,27 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 ### <a name="allow-all-requests-default"></a>すべての要求を許可する (既定値)
 
-認証と承認は App Service によって管理されません (オフ)。 
+認証と認可は App Service によって管理されません (オフ)。 
 
-認証と承認を必要としない場合、または認証と承認のコードを独自に記述する場合は、このオプションを選びます。
+認証と認可を必要としない場合、または認証と認可のコードを独自に記述する場合は、このオプションを選びます。
 
 ### <a name="allow-only-authenticated-requests"></a>認証された要求のみを許可する
 
 オプションは **[\<プロバイダー> でのログイン]** です。 App Service は、すべての匿名要求を、選ばれたプロバイダーの `/.auth/login/<provider>` にリダイレクトします。 匿名要求がネイティブ モバイル アプリからのものである場合、返される応答は `HTTP 401 Unauthorized` です。
 
-このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 役割固有の承認などのさらに細かい承認は、ユーザーの要求を調べることで処理できます (「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください)。
+このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 役割固有の認可などのさらに細かい認可は、ユーザーの要求を調べることで処理できます (「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください)。
 
 ### <a name="allow-all-requests-but-validate-authenticated-requests"></a>すべての要求を許可するが、認証された要求を検証する
 
-オプションは **[匿名要求を許可する]** です。 このオプションは、App Service での認証と承認を有効にしますが、承認の決定をアプリケーション コードまで延期します。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
+オプションは **[匿名要求を許可する]** です。 このオプションは、App Service での認証と認可を有効にしますが、認可の決定をアプリケーション コードまで延期します。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
 
 このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン プロバイダーを提示する](app-service-authentication-how-to.md#use-multiple-sign-in-providers)ことができます。 ただし、コードを記述する必要があります。 
 
 ## <a name="more-resources"></a>その他のリソース
 
-[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)  
-[チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)  
-[App Service での認証と承認のカスタマイズ](app-service-authentication-how-to.md)
+[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)  
+[チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](containers/tutorial-auth-aad.md)  
+[App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)
 
 プロバイダー固有の手順ガイド:
 
