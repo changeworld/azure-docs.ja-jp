@@ -339,7 +339,7 @@ ms.locfileid: "54190827"
   
 | Response | 必須 | 説明 | 
 |----------|----------|-------------| 
-| 状態コード | [はい] | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
+| 状態コード | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
 | Location ヘッダー | いいえ  | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
@@ -2579,9 +2579,9 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **type** | [はい] | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
-| **username** | [はい] | "@parameters('userNameParam')" | ターゲット サービス エンドポイントにアクセスするために認証するユーザー名を渡すパラメーター |
-| **password** | [はい] | "@parameters('passwordParam')" | ターゲット サービス エンドポイントにアクセスするために認証するパスワードを渡すパラメーター |
+| **type** | はい | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
+| **username** | はい | "@parameters('userNameParam')" | ターゲット サービス エンドポイントにアクセスするために認証するユーザー名を渡すパラメーター |
+| **password** | はい | "@parameters('passwordParam')" | ターゲット サービス エンドポイントにアクセスするために認証するパスワードを渡すパラメーター |
 ||||| 
 
 たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
@@ -2610,9 +2610,9 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **type** | [はい] | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類 | 
-| **pfx** | [はい] | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **password** | [はい] | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター |
+| **type** | はい | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類 | 
+| **pfx** | はい | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **password** | はい | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター |
 ||||| 
 
 たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
@@ -2633,12 +2633,12 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **type** | [はい] | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") | 
+| **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") | 
 | **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |  
-| **tenant** | [はい] | <*tenant-ID*> | Azure AD テナントのテナント ID | 
-| **audience** | [はい] | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) | 
-| **clientId** | [はい] | <*client-ID*> | 承認を要求しているアプリのクライアント ID | 
-| **credentialType** | [はい] | "Secret" または "Certificate" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 | 
+| **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID | 
+| **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) | 
+| **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID | 
+| **credentialType** | はい | "Secret" または "Certificate" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 | 
 | **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター | 
 | **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
 | **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*secret-for-authentication*> | クライアントが承認を要求するために使用する base64 でエンコードされたシークレット |
