@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 文の長さを取得する (PHP) - Translator Text API'
+title: クイック スタート:文の長さを取得する (PHP) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 7c709c10d7944a53a557f6a1ce2a6d9b930cccce
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 51b7691b856181ec3f66b1de595fec05104229f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645392"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209453"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (PHP)
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>クイック スタート:Translator Text REST API を使用して文の長さを取得する (PHP)
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
 

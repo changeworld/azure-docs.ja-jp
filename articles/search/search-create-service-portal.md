@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6d71ad9bdc7744898480fb2cc6743e59131ec588
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8d3bc70b467cabfc5d45c51b79b43d2942d558ae
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423444"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885729"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Search は他の Azure サービスと簡単に統合できますが、単独で、またはネットワーク サーバー上のアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。 
+Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Search は他の Azure サービスと簡単に統合できますが、単独で、またはネットワーク サーバー上のアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。
 
-この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Search リソースを作成する方法を説明します。 
+この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Search リソースを作成する方法を説明します。
 
-[ ![アニメーション Gif](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif) ](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、[PowerShell を使用して Azure Search サービスを管理する方法](search-manage-powershell.md)に関するページを参照してください。
 
@@ -33,6 +33,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 [MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。 
 
 ## <a name="find-azure-search"></a>Azure Search を探す
+
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
 3. 検索バーを使用して "Azure Search" を検索するか、**[Web]** > **[Azure Search]** を使用してリソースに移動します。
@@ -46,29 +47,34 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 たとえば、エンドポイントを `https://my-app-name-01.search.windows.net` とする場合は、「`my-app-name-01`」と入力します。
 
 サービス名の要件:
-   * search.windows.net 名前空間内で一意である
-   * 2 ～ 60 文字である
-   * 小文字、数字、ダッシュ ("-") のみを使用する
-   * 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用していない
-   * 連続するダッシュ ("-") をどこにも使用していない
+
+* search.windows.net 名前空間内で一意である
+* 2 ～ 60 文字である
+* 小文字、数字、ダッシュ ("-") のみを使用する
+* 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用していない
+* 連続するダッシュ ("-") をどこにも使用していない
 
 ## <a name="select-a-subscription"></a>サブスクリプションの選択
+
 サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Search では、"[*インデクサー*](search-indexer-overview.md)" 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
 
 ## <a name="select-a-resource-group"></a>リソース グループの選択
+
 リソース グループとは、一緒に使用される Azure サービスとリソースのコレクションです。 たとえば、Azure Search を使用して SQL Database のインデックスを作成する場合、これら両方のサービスを同じリソース グループに含める必要があります。
 
 リソースを単一グループに結合していない場合、または関連のないソリューションで使用されるリソースが既存のリソース グループに格納されている場合は、Azure Search リソース用の新しいリソース グループを作成します。
 
 > [!TIP]
-> リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。 
+> リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
 
-## <a name="select-a-hosting-location"></a>ホストする場所の選択 
+## <a name="select-a-hosting-location"></a>ホストする場所の選択
+
 Azure サービスの 1 つである Azure Search は、世界中のデータ センターでホストできます。 地域によって[価格が異なる場合](https://azure.microsoft.com/pricing/details/search/)があります。
 
 Cognitive Search の使用を検討している場合は、[機能が提供されているリージョン](cognitive-search-quickstart-blob.md#supported-regions)を選択してください。
 
 ## <a name="select-a-pricing-tier-sku"></a>価格レベルの選択 (SKU)
+
 [Azure Search は現在、複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)(Free、Basic、Standard)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
 
 運用環境のワークロードでは通常 Standard を選ぶことになりますが、ほとんどのお客様は Free サービスから始めています。
@@ -85,7 +91,7 @@ Cognitive Search の使用を検討している場合は、[機能が提供さ�
 
 いくつかの例外はありますが、新しいサービスを使用するためには、URL エンドポイントと認可の API キーを指定する必要があります。 クイック スタート、チュートリアル ([Azure Search REST API の探索 (Postman)](search-fiddler.md) や [.NET から Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関するページなど)、サンプル、カスタム コードはいずれも、特定のリソースで実行するためにはエンドポイントとキーが必要です。
 
-1. サービス概要ページの左側から、URL エンドポイントを探してコピーします。 
+1. サービス概要ページの右側から、URL エンドポイントを探してコピーします。
 
    ![URL エンドポイントが表示されるサービス概要ページ](./media/search-create-service-portal/url-endpoint.png "URL エンドポイントと他のサービス詳細")
 
@@ -96,6 +102,7 @@ Cognitive Search の使用を検討している場合は、[機能が提供さ�
 ポータル ベースのタスクにエンドポイントとキーは必要ありません。 ポータルは、ご利用の Azure Search リソースにあらかじめ管理者権限付きでリンクされています。 ポータルのチュートリアルについては、[Azure Search でのインポート、インデックス付け、クエリに関するチュートリアル](search-get-started-portal.md)を参照してください。
 
 ## <a name="scale-your-service"></a>サービスを拡張する
+
 サービスを作成するのに数分かかる場合があります (レベルによっては 15 分以上)。 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択しているため、レプリカとパーティションの 2 つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
 ***パーティション***を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
@@ -113,7 +120,7 @@ Cognitive Search の使用を検討している場合は、[機能が提供さ�
 
 ![容量を追加する](./media/search-create-service-portal/settings-scale.png "レプリカとパーティションで容量を追加する")
 
-> [!Note] 
+> [!Note]
 > 1 つのサービスで許可される検索ユニットの総数の[制限](search-limits-quotas-capacity.md)は、レベルごとに異なります (レプリカ * パーティション数 = 検索ユニット合計)。
 
 ## <a name="when-to-add-a-second-service"></a>2 番目のサービスの追加が必要になる状況
@@ -122,17 +129,17 @@ Cognitive Search の使用を検討している場合は、[機能が提供さ�
 
 ほとんどのお客様はサービスを 1 つしか使いませんが、運用要件に次のことが含まれる場合、サービスの冗長性が必要になる場合があります。
 
-+ 障害復旧 (データ センターの停止)。 Azure Search では、停止時の即時フェールオーバーは提供されません。 推奨事項とガイダンスについては、「[Azure Portal での Azure Search のサービス管理](search-manage.md)」をご覧ください。
-+ マルチ テナント モデルの調査により、サービスを追加するのが最適な設計であると判断された場合。 詳しくは、「[マルチテナント SaaS アプリケーションと Azure Search の設計パターン](search-modeling-multitenant-saas-applications.md)」をご覧ください。
-+ グローバルにデプロイされるアプリケーションで、アプリケーションの国際トラフィックの待機時間を最小限に抑えるため、複数のリージョンに Azure Search のインスタンスが必要な場合。
+* 障害復旧 (データ センターの停止)。 Azure Search では、停止時の即時フェールオーバーは提供されません。 推奨事項とガイダンスについては、「[Azure Portal での Azure Search のサービス管理](search-manage.md)」をご覧ください。
+* マルチ テナント モデルの調査により、サービスを追加するのが最適な設計であると判断された場合。 詳しくは、「[マルチテナント SaaS アプリケーションと Azure Search の設計パターン](search-modeling-multitenant-saas-applications.md)」をご覧ください。
+* グローバルにデプロイされるアプリケーションで、アプリケーションの国際トラフィックの待機時間を最小限に抑えるため、複数のリージョンに Azure Search のインスタンスが必要な場合。
 
 > [!NOTE]
 > Azure Search では、インデックス作成とクエリのワークロードを分離することはできません。このため、ワークロードを分離するために複数のサービスを作成することはありません。 インデックスのクエリは常に、インデックスが作成されたサービスで行われます (あるサービスでインデックスを作成し、それを別のサービスにコピーすることはできません)。
->
 
 高可用性のために 2 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも 1 つのレプリカが動作しています。アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 Azure Search サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]

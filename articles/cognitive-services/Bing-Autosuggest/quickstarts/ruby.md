@@ -1,25 +1,25 @@
 ---
-title: 'クイック スタート: Bing Autosuggest API (Ruby)'
+title: クイック スタート:Bing Autosuggest API (Ruby)
 titlesuffix: Azure Cognitive Services
 description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 463ad901edeec3790586f9494a7411b678c4ecf8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831179"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183613"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>Ruby での Bing Autosuggest API のクイック スタート 
 
-この記事では、Ruby で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
+この記事では、Ruby で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/)  を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 

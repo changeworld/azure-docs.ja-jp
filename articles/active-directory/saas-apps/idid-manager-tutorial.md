@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf78fc0bc0941c9466f77a77ef922f3fe3d62b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823033"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>チュートリアル:Azure Active Directory と iDiD Manager の統合
 
@@ -70,10 +70,10 @@ Azure AD への iDiD Manager の統合を構成するには、ギャラリーか
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon**. というテスト ユーザーに基づいて、iDiD Manager で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと iDiD Manager 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
+iDiD Manager で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[iDiD Manager シングル サインオンの構成](#configure-idid-manager-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
@@ -86,7 +86,7 @@ Azure AD への iDiD Manager の統合を構成するには、ギャラリーか
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
+iDiD Manager で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com/) の **iDiD Manager** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
@@ -100,18 +100,20 @@ Azure AD への iDiD Manager の統合を構成するには、ギャラリーか
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[iDiD Manager のドメインと URL] のシングル サインオン情報](common/both-preintegrated-signon.png)
+    ![[iDiD Manager のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-    a. **[追加の URL を設定します]** をクリックします。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    b. **[サインオン URL]** ボックスに、`https://idid2.fi/saml/login/<domain>` という形式で URL を入力します。
+    ![[iDiD Manager のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+
+    **[サインオン URL]** ボックスに、`https://idid2.fi/saml/login/<domain>` という形式で URL を入力します。
 
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[iDiD Manager クライアント サポート チーム](mailto:support@idid.fi)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
+6. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
@@ -187,3 +189,4 @@ Azure AD への iDiD Manager の統合を構成するには、ギャラリーか
 - [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

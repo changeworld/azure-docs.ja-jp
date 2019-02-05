@@ -4,29 +4,32 @@ titleSuffix: Azure Machine Learning service
 description: Python で Azure Machine Learning service の作業を開始します。 Python SDK を使用して、機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなるワークスペースを作成します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8d45ca0f55b373970bfc0b1d146d5b3e2d6d66fa
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e0c235a9fd3898fa4525651d514c77432627603c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823404"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238960"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>クイック スタート:Python SDK を使用して Azure Machine Learning の利用を開始する
 
-この記事では、Azure Machine Learning SDK for Python を使用して Azure Machine Learning service の[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 ワークスペースは、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用する、クラウドでの基礎ブロックとなります。 
+この記事では、Azure Machine Learning SDK for Python 3 を使用して Azure Machine Learning service の[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 ワークスペースは、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用する、クラウドでの基礎ブロックとなります。
 
-まず、独自の Python 環境と Jupyter Notebook サーバーを構成します。 インストールなしで実行するには、「[クイック スタート:Azure portal を使用した Azure Machine Learning の基本操作](quickstart-get-started.md)」を参照してください。
+まず、独自の Python 環境と Jupyter Notebook サーバーを構成します。 インストールなしで実行するには、「[クイック スタート:Azure portal を使用した Azure Machine Learning の基本操作](quickstart-get-started.md)」を参照してください。 
+
+このクイック スタートの動画バージョンをご覧ください。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
-この記事では、次の内容について説明します。
+このクイック スタートでは次の作業を行います。
+
 * Python SDK をインストールする。
 * Azure サブスクリプションでワークスペースを作成します。
 * 後で他のノートブックやスクリプトで使用するために、そのワークスペースの構成ファイルを作成する。
@@ -42,25 +45,28 @@ ms.locfileid: "54823404"
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
+>[!NOTE]
+> この記事のコードには、Azure Machine Learning SDK バージョン 1.0.2 以降が必要です。また、コードはバージョン 1.0.8 を使用してテストされました。
+
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 ## <a name="install-the-sdk"></a>SDK のインストール
 
 > [!IMPORTANT]
-> 2018 年 9 月 27 日より後に作成されたデータ サイエンス仮想マシンを使用する場合は、このセクションをスキップします。
-> この日付より後に作成されたデータ サイエンス仮想マシンには、Python SDK がプレインストールされています。
-
-この記事のコードには、Azure Machine Learning SDK バージョン 1.0.2 以降が必要です。
+> Azure Data Science Virtual Machine または Azure Databricks を使用している場合、このセクションをスキップします。
+> * 2018 年 9 月 27 日より後に作成された Azure データ サイエンス仮想マシンには、Python SDK がプレインストールされています。
+> * Azure Databricks 環境では、代わりに [Databricks のインストール手順](how-to-configure-environment.md#azure-databricks)を使用します。
 
 SDK をインストールする前に、分離された Python 環境を作成することをお勧めします。 この記事では [Miniconda](https://docs.conda.io/en/latest/miniconda.html) を使用していますが、[Anaconda](https://www.anaconda.com/) をフルインストールしたり、[Python virtualenv](https://virtualenv.pypa.io/en/stable/) を使用したりすることもできます。
 
 ### <a name="install-miniconda"></a>Miniconda のインストール
 
-[Miniconda をダウンロードしてインストールします](https://conda.io/miniconda.html)。 Python 3.7 以降を選択します。 Python 2.x は選択しないでください。
+[Miniconda をダウンロードしてインストールします](https://docs.conda.io/en/latest/miniconda.html)。 Python 3.7 以降のバージョンを選択してインストールしてください。 Python 2.x バージョンは選択しないでください。  
 
-### <a name="create-an-isolated-python-environment"></a>分離された Python 環境の作成 
+### <a name="create-an-isolated-python-environment"></a>分離された Python 環境の作成
 
-1. コマンド ライン ウィンドウを開き、Python 3.6 を使用して *myenv* という名前の新しい conda 環境を作成します。
+1. コマンド ライン ウィンドウを開いて、*myenv* という名前の新しい conda 環境を作成し、Python 3.6 をインストールします。 Azure Machine Learning SDK は Python 3.5.2 以降で動作します。ただし、自動化された機械学習コンポーネントは、Python 3.7 で完全には機能しません。
 
     ```shell
     conda create -n myenv -y Python=3.6
@@ -74,34 +80,35 @@ SDK をインストールする前に、分離された Python 環境を作成�
 
 ### <a name="install-the-sdk"></a>SDK のインストール
 
-アクティブにした conda 環境に SDK をインストールします。 このコードによって、Machine Learning SDK の主要なコンポーネントがインストールされます。 conda 環境に Jupyter Notebook サーバーもインストールされます。 お使いのマシンの構成によっては、インストールが完了するまでに数分かかります。
+1. アクティブ化された conda 環境で、Jupyter Notebook 機能を備えた Machine Learning SDK の主要なコンポーネントをインストールします。  お使いのマシンの構成によっては、インストールが完了するまでに数分かかります。
 
-```shell
-# Install Jupyter
-conda install nb_conda
+  ```shell
+    pip install --upgrade azureml-sdk[notebooks]
+    ```
 
-# Install the base SDK and Jupyter Notebook
-pip install azureml-sdk[notebooks]
-```
+1. Jupyter Notebook サーバーを conda 環境にインストールします。
 
-追加のキーワードを使用して、SDK の他のコンポーネントをインストールできます。
+  ```shell
+    conda install nb_conda
+    ```
 
-```shell
-# Install the base SDK and auto ml components
-pip install azureml-sdk[automl]
+1. Azure Machine Learning チュートリアルにこの環境を使用するために、これらのパッケージをインストールします。
 
-# Install the base SDK and the model explainability component
-pip install azureml-sdk[explain]
+    ```shell
+    conda install -y cython matplotlib pandas
+    ```
 
-# Install the base SDK and experimental components
-pip install azureml-sdk[contrib]
-```
+1. Azure Machine Learning チュートリアルにこの環境を使用するために、自動化された機械学習コンポーネントをインストールします。
 
-Azure Databricks 環境では、代わりに [Databricks のインストール手順](how-to-configure-environment.md#azure-databricks
-)を使用します。
-
+    ```shell
+    pip install --upgrade azureml-sdk[automl]
+    ```
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
+
+Python SDK を使用して Jupyter Notebook にワークスペースを作成します。
+
+1. クイック スタートとチュートリアルに使用するディレクトリを作成します。または、cd を実行してそこに移動します。
 
 1. Jupyter Notebook を起動するには、次のコマンドを入力します。
 
@@ -123,7 +130,7 @@ Azure Databricks 環境では、代わりに [Databricks のインストール�
                          subscription_id='<azure-subscription-id>', 
                          resource_group='myresourcegroup',
                          create_resource_group=True,
-                         location='eastus2' # Or other supported Azure region   
+                         location='eastus2' 
                         )
    ```
 
@@ -138,7 +145,11 @@ Azure Databricks 環境では、代わりに [Databricks のインストール�
 
 構成ファイル内のワークスペースの詳細を現在のディレクトリに保存します。 このファイルは、*aml_config\config.json* という名前です。  
 
-`write_config()` API 呼び出しでは、構成ファイルが現在のディレクトリに作成されます。 *config.json* ファイルには、以下が含まれています。
+このワークスペース構成ファイルを使用すると、後で同じワークスペースを簡単に読み込むことができます。 同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。  
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+この `write_config()` API 呼び出しでは、構成ファイルが現在のディレクトリに作成されます。 *config.json* ファイルには、以下が含まれています。
 
 ```json
 {
@@ -148,15 +159,13 @@ Azure Databricks 環境では、代わりに [Databricks のインストール�
 }
 ```
 
-このワークスペース構成ファイルを使用すると、後で同じワークスペースを簡単に読み込むことができます。 同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-
-
 ## <a name="use-the-workspace"></a>ワークスペースの使用
 
-実験の実行を追跡するために、SDK の基本的な API が使用されるコードを記述します。
+実験の実行を追跡するために、SDK の基本的な API が使用されるコードを実行します。
+
+1. ワークスペースで実験を作成します。
+1. 1 つの値を実験にログ記録します。
+1. 値の一覧を実験にログ記録します。
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
@@ -182,19 +191,6 @@ print(run.get_portal_url())
 ## <a name="next-steps"></a>次の手順
 
 この記事では、モデルを実験してデプロイするために必要なリソースを作成しました。 ノートブックでコードを実行し、クラウドのワークスペースでそのコードの実行履歴を確認しました。
-
-そのコードを Machine Learning のチュートリアルで使用するには、他にもいくつかのパッケージが環境内に必要になります。
-
-1. ブラウザーで、ノートブックを閉じます。
-1. コマンド ライン ウィンドウで Ctrl+C キーを押して、Jupyter Notebook サーバーを停止します。
-1. 追加パッケージをインストールします。  前に `azureml-sdk[automl]` をインストールしなかった場合は、ここでインストールします。
-
-    ```shell
-    conda install -y cython matplotlib scikit-learn pandas numpy
-    pip install azureml-sdk[automl]
-    ```
-
-これらのパッケージのインストール後、モデルのトレーニングとデプロイを行うチュートリアルに進みます。 
 
 > [!div class="nextstepaction"]
 > [チュートリアル:画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)

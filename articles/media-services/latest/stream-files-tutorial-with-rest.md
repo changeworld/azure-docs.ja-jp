@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/19/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: fcce16ed3cf7009c596f30ebc33f58de02f018a0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811640"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883519"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -100,11 +100,11 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 このセクションでは、ファイルをストリーム配信できるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
 
 1. サービス プリンシパルの認証のために Azure AD トークンを取得する
-2. 出力資産を作成する
-3. 変換を作成する
-4. ジョブを作成する 
-5. ストリーミング ロケーターを作成する
-6. ストリーミング ロケーターのパスを一覧表示する
+2. 出力アセットを作成する
+3. **変換**を作成する
+4. **ジョブ**を作成する
+5. **ストリーミング ロケーター**を作成する
+6. **ストリーミング ロケーター**のパスを一覧表示する
 
 > [!Note]
 >  このチュートリアルでは、すべてのリソースを一意の名前で作成していることを前提としています。  
@@ -151,7 +151,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ### <a name="create-a-transform"></a>変換を作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transforms and jobs](transform-concept.md)」(変換とジョブ) をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transform と Job](transform-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
 
 新しい [Transform](https://docs.microsoft.com/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、**TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この記事で説明されているサンプルでは、**AdaptiveStreaming** という名前の組み込みプリセットを使っています。 プリセットは、入力ビデオを入力の解像度とビットレートに基づいて自動生成されるビットレート ラダー (ビットレートと解像度のペア) にエンコードし、ビットレートと解像度の各ペアに対応する、H.264 ビデオと AAC オーディオを含む ISO MP4 ファイルを生成します。 このプリセットについては、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページをご覧ください。
 
@@ -232,16 +232,16 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
-エンコード ジョブが完了したら、次に、出力アセット内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
+エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
 
-**StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
+**ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー **PredefinedStreamingPolicy.ClearStreamingOnly** が使用されます。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー **PredefinedStreamingPolicy.ClearStreamingOnly** が使用されます。
 
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 
 
-Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
+Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 **ストリーミング ロケーター**ごとに新しい**ストリーミング ポリシー**を作成しないでください。
 
 1. Postman の左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
 2. 次に、[Create a Streaming Locator]\(ストリーミング ロケーターの作成\) を選択します。
@@ -267,7 +267,7 @@ Media Service アカウントには、StreamingPolicy エントリの数に対�
 
 #### <a name="list-paths"></a>パスの一覧を取得する
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。
 
 1. Postman の左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
 2. [List Paths]\(パスの一覧表示\) を選択します。
@@ -338,7 +338,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> ストリーム配信元のストリーミング エンドポイントが実行されていることを確認してください。
+> ストリーム配信元の**ストリーミング エンドポイント**が実行されていることを確認してください。
 
 ストリーム配信をテストするため、この記事では Azure Media Player を使います。 
 
@@ -350,7 +350,7 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  
+一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、**Transform** は再利用し、**ストリーミング ロケーター**などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  
 
 リソースを削除するには、削除するリソースの [削除] 操作を選択します。
 

@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167156"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099160"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル: VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、VMware ESXi 6.0 または 6.5 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
+このチュートリアルでは、VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
+VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
 ### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway リソースの場合
 
@@ -53,7 +53,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
-* VMware (ESXi 6.0 または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* VMware (ESXi 6.0、6.5、または 6.7) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
   * 最小で 4 コア。
@@ -73,7 +73,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 仮想デバイスを作成するには、以下が必要です。
 
-* VMware ESXi Server 6.0 または 6.5 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
+* VMware ESXi Server 6.0、6.5、または 6.7 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
  
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 
@@ -89,7 +89,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージ (2 つのファイル) は、Azure portal からダウンロードしています。 このイメージは後で使用するため、コピー先はメモしておいてください。
 
-2. vSphere web client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
+2. vSphere web client を使用して、ESXi サーバーにサインインします。 仮想マシンを作成するには、管理者特権が必要です。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -192,7 +192,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、**Set-hcsipaddress コマンドレットを使用してネットワークを構成してください**という趣旨のメッセージが表示されます。 
+6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、"**ネットワークを構成するには、Set-HcsIPAddress コマンドレットを使用します**" という趣旨のメッセージが表示されます。 
    
 7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 

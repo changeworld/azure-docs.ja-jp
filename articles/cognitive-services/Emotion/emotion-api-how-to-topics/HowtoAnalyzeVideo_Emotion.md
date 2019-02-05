@@ -1,24 +1,24 @@
 ---
-title: '例: リアルタイムのビデオ分析 - Emotion API'
+title: 例:リアルタイムのビデオ分析 - Emotion API
 titlesuffix: Azure Cognitive Services
 description: ライブ ビデオ ストリームから取得したフレームに対し、Emotion API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 01/25/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: df955a23393c82565e8f31e59e148798a0f89bbf
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: ec36193e341cac899e696c642a1d600f3f80a5f2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236482"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224866"
 ---
-# <a name="example-how-to-analyze-videos-in-real-time"></a>例: リアルタイムでビデオを分析する方法
+# <a name="example-how-to-analyze-videos-in-real-time"></a>例:リアルタイムでビデオを分析する方法
 
 > [!IMPORTANT]
 > Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。
@@ -74,13 +74,13 @@ while (true)
 ```CSharp
 // Queue that will contain the API call tasks.
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread.
 while (true)
 {
     // Grab a frame.
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame.
     if (ShouldAnalyze(f))
     {
@@ -112,10 +112,10 @@ while (true)
 {
     // Get the oldest task.
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed.
     var output = await analysisTask;
-     
+     
     // Consume the exception or result.
     if (output.Exception != null)
     {
@@ -140,7 +140,7 @@ using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
-     
+     
 namespace VideoFrameConsoleApplication
 {
     class Program
@@ -195,7 +195,7 @@ namespace VideoFrameConsoleApplication
 2. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub リポジトリを複製します
 
 3. Visual Studio 2015 でサンプルを開き、サンプル アプリケーションをビルドして実行します。
-    - BasicConsoleSample の場合、Face API キーは、[BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
+    - BasicConsoleSample の場合、Face API キーは、 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
     - LiveCameraSample の場合、アプリの設定ウィンドウにキーを入力する必要があります。 これらは、セッションを移動してもユーザー データとして残されます。
 
 
@@ -213,4 +213,4 @@ VideoFrameAnalyzer のイメージ、音声、ビデオ、またはテキスト�
 ## <a name="summary"></a>まとめ
 このガイドでは、Face、Computer Vision、Emotion API を使用してライブ ビデオ ストリームでほぼリアルタイムの分析を実行する方法と、サンプル コードを使用して作業を開始する方法について説明しました。  [Azure Cognitive Services のサインアップ ページ](https://azure.microsoft.com/try/cognitive-services/)で取得した無料の API キーを使用して、アプリのビルドを開始できます。
 
-[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)では、お気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、[UserVoice サイト](https://cognitive.uservoice.com/)にお寄せください。
+[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)では、お気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、 [UserVoice サイト](https://cognitive.uservoice.com/)にお寄せください。

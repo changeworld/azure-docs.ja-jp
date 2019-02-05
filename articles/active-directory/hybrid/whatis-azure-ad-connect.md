@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
-ms.date: 11/28/2018
 ms.component: hybrid
+ms.date: 01/30/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c18200bb36b75a07d7b26e3ea0016ec35efdd87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cb1ba63a0f32d026d51507fe66432a520a6f6e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460509"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298976"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
@@ -49,6 +50,20 @@ Azure Active Directory (Azure AD) Connect Health では、オンプレミス ID 
 
 ## <a name="why-use-azure-ad-connect-health"></a>Azure AD Connect Health を使用する理由
 Azure AD を使用すると、クラウドとオンプレミスの両方のリソースに共通の ID でアクセスできるため、ユーザーの生産性が向上します。 ユーザーがこれらのリソースにアクセスできるように、環境を確実に信頼できるものにすることが課題となります。  Azure AD Connect Health は、オンプレミスの ID インフラストラクチャを監視して把握し、この環境の信頼性を確保するのに役立ちます。 オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
+
+Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 上の AD FS 2.0 がサポートされています。 また、エクストラネット アクセスの認証をサポートする AD FS プロキシまたは Web アプリケーション プロキシ サーバーの監視もサポートの対象に含まれます。 Health エージェントの簡単で迅速なインストールにより、Azure AD Connect Health for AD FS は一連の重要な機能を提供します。
+
+主な利点とベスト プラクティスは、次のとおりです。
+
+|主な利点|ベスト プラクティス|
+|-----|-----|
+|強化されたセキュリティ|[エクストラネットのロックアウトの傾向](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[失敗したサインインのレポート](how-to-connect-health-adfs.md#risky-ip-report-public-preview)</br>[プライバシー準拠](reference-connect-health-user-privacy.md)|
+|[すべての重大な ADFS システムの問題](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)に関するアラートを受信する|サーバー構成および可用性</br>[パフォーマンスおよび接続](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>定期的なメンテナンス|
+|デプロイおよび管理が容易|[迅速なエージェント インストール](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>最新版へのエージェントの自動アップグレード</br>ポータル内で数分以内に使用可能なデータ|
+豊富な[使用状況メトリック](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|上位のアプリケーション使用状況</br>ネットワークの場所と TCP 接続</br>サーバーごとのトークン要求|
+|優れたユーザー エクスペリエンス|Azure Portal からのダッシュボード方式</br>[電子メール経由のアラート](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
 
 
 ## <a name="next-steps"></a>次の手順

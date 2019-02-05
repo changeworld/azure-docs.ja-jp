@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391156"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902164"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 
@@ -50,7 +50,7 @@ ms.locfileid: "54391156"
 
 1. デバイスを調べて、開梱された形跡や、その他明らかな損傷がないか確認します。 開梱されている場合またはひどい損傷がある場合には、続行しないでください。 すぐに Microsoft サポートに問い合わせて、デバイスが正常に使用できる状態にあるかどうか、また交換ディスクを発送してもらう必要があるかどうかを評価してください。
 2. 電源と接続する場所にデバイスを運びます。 平らな場所にデバイスを置きます。 デバイスは標準のラック棚に設置することもできます。
-3. 電源ケーブルとネットワーク ケーブルを接続します。 一般的な構成用に接続したデバイスのバックプレーンを以下に示します。 
+3. 電源ケーブルとネットワーク ケーブルを接続します。 一般的な構成用に接続したデバイスのバックプレーンを以下に示します。 環境に応じて、他の[オプション](data-box-cable-options.md)から選択できます。
     
     ![ケーブル配線した Data Box デバイスのバックプレーン](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

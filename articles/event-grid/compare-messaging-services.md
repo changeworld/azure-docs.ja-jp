@@ -6,15 +6,15 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/07/2018
+ms.date: 01/30/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 80a2f9aa07f67c4d149a1ef8245f5e3269a751b3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0a71b88f6ad85cbd76f9bc789e87ad5b032418c9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469850"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297108"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
@@ -97,9 +97,10 @@ Service Bus はブローカー メッセージング システムです。 使�
 ![データ ストリーミングの概要](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>次の手順
+次の記事を参照してください。 
 
-* Azure のメッセージング サービスの詳細については、ブログ記事「[Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)」を参照してください。
-* Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
-* Event Grid の概要については、[Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関するページを参照してください。
-* Event Hubs の概要については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。
-* Service Bus の概要については、「[Azure Portal を使用して Service Bus 名前空間を作成する](../service-bus-messaging/service-bus-create-namespace-portal.md)」を参照してください。
+- [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)
+- [Storage キューと Service Bus キューの比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- Event Grid の概要については、[Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関するページを参照してください。
+- Event Hubs の概要については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。
+- Service Bus の概要については、「[Azure Portal を使用して Service Bus 名前空間を作成する](../service-bus-messaging/service-bus-create-namespace-portal.md)」を参照してください。

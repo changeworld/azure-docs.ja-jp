@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039061"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911892"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Azure で初めての Python 関数を作成する (プレビュー)
 
@@ -30,9 +30,9 @@ ms.locfileid: "54039061"
 
 ローカルでビルドしてテストするには、以下を行う必要があります。
 
-+ [Python 3.6](https://www.python.org/downloads/) のインストール
++ [Python 3.6](https://www.python.org/downloads/) のインストール。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 2.2.70 以降のインストール
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 2.2.70 以降のインストール (.NET Core 2.x SDK が必要)。
 
 Azure に発行して実行するには:
 

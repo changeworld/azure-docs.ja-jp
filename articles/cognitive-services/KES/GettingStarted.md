@@ -1,21 +1,21 @@
 ---
-title: '例: 使用開始 - Knowledge Exploration Service API'
+title: 例:使用開始 - Knowledge Exploration Service API
 titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API を使用して、教育パブリケーションにわたる対話形式の検索エクスペリエンスのためのエンジンを作成できます。
 services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124017"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208144"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
 
@@ -41,7 +41,7 @@ ms.locfileid: "46124017"
 }
 ```
 
-ここでは、*Title*、*Year*、および *Keyword* をそれぞれ文字列、整数および文字列属性として定義します。 著者は、ID、氏名、所属組織で表されるため、*Author* は、*Author.Id*、*Author.Name*、*Author.Affiliation* の 3 つのサブ属性の複合属性として定義します。
+ここでは、*Title*、*Year*、および *Keyword* をそれぞれ文字列、整数および文字列属性として定義します。 著者は、ID、氏名、所属組織で表されるため、*Author* は、3 つのサブ属性の複合属性として定義します (*Author.Id*、*Author.Name*、および *Author.Affiliation*)。
 
 既定では、属性は、*equals*、*starts_with*、および *is_between* を含む、そのデータ型で使用可能なすべての操作をサポートします。 author ID は識別子として内部でのみ使用されるため、既定値を上書きし、インデックス操作として *equals* のみを指定します。
 
@@ -110,7 +110,7 @@ Azure の外でプロトタイプを簡単に作成するために、[`kes.exe b
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">

@@ -1,21 +1,21 @@
 ---
-title: '例: Project Acoustics'
+title: 例:Project Acoustics
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、Project Acoustics の Unity サンプル シーン (デスクトップや VR へのデプロイを含む) について説明します。
 services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901160"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174263"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity サンプルのチュートリアル
 これは Project Acoustics サンプルのチュートリアルです。 Project Acoustics の詳細については、[Project Acoustics の概要](what-is-acoustics.md)に関するページを参照してください。 Project Acoustics パッケージを既存の Unity プロジェクトに追加する方法については、[ファースト ステップ ガイド](getting-started.md)を使用してください。
@@ -36,7 +36,7 @@ ms.locfileid: "48901160"
 
 このシーンは既にベイクされており、**階層**内の **MicrosoftAcoustics** プレハブに関連付けられた ACE ファイルが含まれています。 
 
-Unity エディターの再生ボタンをクリックして、このシーンがどのように聞こえるかを確認します。 デスクトップで、W、A、S、D、およびマウスを使用して場所を移動します。 音響があるシーンとないシーンがどのように聞こえるかを比較するには、オーバーレイ テキストが赤色で表示されるまで **R** ボタンを押して、「Acoustics: Disabled (音響: 無効)」と言います。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 すべてのコントロールは、右クリックして実行するアクションを選択し、左クリックしてアクションを実行することによって使用できます。
+Unity エディターの再生ボタンをクリックして、このシーンがどのように聞こえるかを確認します。 デスクトップで、W、A、S、D、およびマウスを使用して場所を移動します。 音響があるシーンとないシーンがどのように聞こえるかを比較するには、**R** ボタンを押し続けます (オーバーレイ テキストが赤色になり、[Acoustics: Disabled]\(音響: 無効\) と表示されるまで)。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 すべてのコントロールは、右クリックして実行するアクションを選択し、左クリックしてアクションを実行することによって使用できます。
 
 ## <a name="targeting-other-platforms"></a>他のプラットフォームをターゲットにする
 このサンプルには、Windows デスクトップ、UWP、Windows Mixed Reality、Android、および Oculus Go 上で実行するための設定が含まれています。 既定では、このプロジェクトは Windows デスクトップ用に構成されています。 VR プラットフォームをターゲットにするには、プレーヤー設定 (**[編集] > [プロジェクト設定] > [プレーヤー]**) に移動し、**[XR Settings] (XR 設定)** を見つけて、**[Virtual Reality Supported] (サポートされている仮想現実)** チェックボックスにチェックを入れます。

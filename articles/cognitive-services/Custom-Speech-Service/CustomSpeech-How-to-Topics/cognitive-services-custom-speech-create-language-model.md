@@ -5,18 +5,18 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0798fb16954d2d0b5e0d614d619cd772670d30c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339098"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218089"
 ---
-# <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
+# <a name="tutorial-create-a-custom-language-model"></a>チュートリアル:カスタム言語モデルを作成する
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
@@ -55,7 +55,7 @@ Azure Portal での Custom Search Service サブスクリプションの作成�
 
 | プロパティ | 値 |
 |----------|-------|
-| テキストのエンコード | en-US: US-ACSII または UTF-8、zh-CN: UTF-8|
+| テキストのエンコード | en-US: US-ACSII または UTF-8 または zh-CN: UTF-8|
 | 1 行あたりの発言の数 | 1 |
 | ファイルの最大サイズ | 200 MB |
 | 解説 | 文字の 4 回を超える繰り返し (例: 'aaaaa') は避けます|

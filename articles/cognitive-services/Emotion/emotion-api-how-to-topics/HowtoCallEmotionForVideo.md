@@ -1,24 +1,24 @@
 ---
-title: 'サンプル: ビデオ用に Emotion API を呼び出す'
+title: 例:Emotion API for Video を呼び出す
 titlesuffix: Azure Cognitive Services
 description: Cognitive Services で Emotion API for Video を呼び出す方法を説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd2df32ed43fd540a0516b7d5c1debc6a4f49f4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026264"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211170"
 ---
-# <a name="example-call-emotion-api-for-video"></a>サンプル: ビデオ用に Emotion API を呼び出す
+# <a name="example-call-emotion-api-for-video"></a>例:Emotion API for Video を呼び出す
 
 > [!IMPORTANT]
 > Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。 
@@ -28,7 +28,7 @@ ms.locfileid: "50026264"
 ### <a name="Prep">準備</a>
 Emotion API for Video を使用するには、人が映っているビデオが必要になります。望ましいのは、人がカメラに向いているビデオです。
 
-### <a name="Step1">手順 1: API 呼び出しを承認する</a>
+### <a name="Step1">手順 1:API 呼び出しを承認する</a>
 Emotion API for Video の呼び出しごとに、サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターによって渡すか、要求ヘッダー内で指定する必要があります。 クエリ文字列によってサブスクリプション キーを渡す場合は、例として、下記の Emotion API for Video の要求 URL を参照してください。
 
 ```
@@ -48,7 +48,7 @@ var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
 サブスクリプション キーを取得するには、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。
 
-### <a name="Step2">手順 2: サービスにビデオをアップロードして状態を確認する</a>
+### <a name="Step2">手順 2:サービスにビデオをアップロードして状態を確認する</a>
 Emotion API for Video のいずれかの呼び出しを実行する場合の最も基本的な方法は、ビデオを直接アップロードすることです。 これを行うには、コンテンツの種類を application/octet-stream と指定し、同時にデータの読み取りはビデオ ファイルからだと指定して、"POST" 要求を送信します。 ビデオの最大サイズは 100 MB です。
 
 クライアント ライブラリの使用時に、アップロードによる安定化は、ストリーム オブジェクトに入れて渡すことで行います。 次の例を見てください。
@@ -107,7 +107,7 @@ VideoOperationResult の状態が "Succeeded" と表示されている場合、�
 var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateRecognitionResult>)operationResult).ProcessingResult;
 ```
 
-### <a name="Step3">手順 3: 感情認識を取得して解釈し、JSON 出力を追跡する</a>
+### <a name="Step3">手順 3:感情認識を取得して解釈し、JSON 出力を追跡する</a>
 
 出力結果には顔のメタデータが含まれていて、JSON 形式の所定のファイル内にあります。
 

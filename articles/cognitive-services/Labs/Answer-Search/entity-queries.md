@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project Answer Search エンティティ クエリ'
+title: クイック スタート:Project Answer Search エンティティ クエリ
 titlesuffix: Azure Cognitive Services
 description: Project Answer Search を使ったエンティティ クエリ
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2ec11412b5b0e713742029f05c91a6ecbe78c344
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467414"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210694"
 ---
-# <a name="quickstart-query-for-entities"></a>クイック スタート: エンティティのクエリ
+# <a name="quickstart-query-for-entities"></a>クイック スタート:エンティティのクエリ
 
 クエリで特定の人物、場所、または物に関する情報が要求された場合には、応答に `entities` の回答を含めることができます。  クエリでは常に Web ページが返されます。これに対して、[事実](fact-queries.md)と[エンティティ](entity-queries.md)が返されるかどうかはクエリによって異なります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "49467414"
 -   Attraction 
  
 応答に含まれるエンティティの種類を指定するときは、ビル・ゲイツに関するクエリに示したように、`entityTypeHints` フィールドを使用します。
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ ms.locfileid: "49467414"
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 次に示したのは、スペース ニードルのクエリです。
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 応答には、`entities` 回答が含まれています。 `entityScenario` フィールドと `entityTypeHints` フィールドに注目してください。 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
       }
     ]
   },
-````
+```
 
 クエリでは、必要があれば一覧を返すことができます。
 
 **クエリ:** 次のクエリは、絶滅危惧種の一覧を検索するものです。
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
 **応答:** 応答には、表形式の値として表示できる整形されたリストが含まれています。
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>次の手順

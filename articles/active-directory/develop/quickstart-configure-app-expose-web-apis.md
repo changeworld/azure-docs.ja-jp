@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 589ad189a3a157d0116e3991f8df3d6b43afc167
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988778"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095704"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>クイック スタート: Web API を公開するようにアプリケーションを構成する (プレビュー)
+# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する (プレビュー)
 
 自ら Web API を開発し、クライアント アプリケーションで利用できるようにすることもできます。そのためには、[アクセス許可/スコープ](developer-glossary.md#scopes)と[ロール](developer-glossary.md#roles)を公開する必要があります。 Web API を適切に構成すれば、Graph API や Office 365 API など、他の Microsoft Web API と同じように利用できるようになります。
 

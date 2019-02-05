@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f37873fdbc26e1c82b6c1d9e6be8132641d94773
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809175"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>チュートリアル:Azure Active Directory と G Suite の統合
 
@@ -77,9 +77,9 @@ G Suite と Azure AD の統合を構成するには、次のものが必要で�
 
     メール属性は、有効な Exchange ライセンスを持つユーザーに自動的に設定されます。 メールが有効になっていないユーザーの場合、アプリケーションでアクセス権を付与するにはこの属性を取得する必要があるため、このエラーを受け取ります。
 
-    管理者アカウントで portal.office.com に移動し、管理センターで課金とサブスクリプションをクリックし、Office 365 サブスクリプションを選択し、ユーザーへの割り当てをクリックし、右側のウィンドウでサブスクリプションを確認するユーザーを選択し、ライセンスの編集をクリックします。
+    Exchange ライセンスを割り当てるには、管理者アカウントで portal.office.com に移動します。管理センターで [課金]、[サブスクリプション] の順にクリックし、対象の Office 365 サブスクリプションを選択します。[ユーザーへの割り当て] をクリックし、サブスクリプションを確認するユーザーを選択し、右側のウィンドウで [ライセンスの編集] をクリックします。
 
-    O365 ライセンスの割り当てが適用されるまで、数分かかる場合があります。 その後、user.mail 属性が自動的に設定されて、問題は解決します。
+    Exchange ライセンスの割り当てが適用されるまで、数分かかる場合があります。 その後、user.mail 属性が自動的に設定されて、問題は解決します。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

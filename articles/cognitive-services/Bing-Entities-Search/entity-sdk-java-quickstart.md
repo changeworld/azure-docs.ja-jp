@@ -1,30 +1,30 @@
 ---
-title: 'クイック スタート: Bing Entity Search SDK (Java)'
+title: クイック スタート:Bing Entity Search SDK (Java)
 titlesuffix: Azure Cognitive Services
 description: Bing Entity Search SDK コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: 291a307d4fd7c0fa723b8b17c13b3ef13cdeb8de
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: caa525df5091788ab8a5807272f895f46da9673a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316822"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149274"
 ---
-# <a name="quickstart-bing-entity-search-sdk-with-java"></a>クイック スタート: Bing Entity Search SDK (Java)
+# <a name="quickstart-bing-entity-search-sdk-with-java"></a>クイック スタート:Bing Entity Search SDK (Java)
 
 Bing Entity Search SDK には、エンティティのクエリと結果の解析に関する REST API 機能が用意されています。 
 
 Git Hub に [Java Bing Entity Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)があります。 
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 Maven、Gradle、または別の依存関係管理システムを使用して Bing Entity Search SDK の依存関係をインストールします。 Maven POM ファイルには、次の宣言が必要です。
 ```

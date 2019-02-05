@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing Entity Search 単一ページ Web アプリ (ソース コード)'
+title: チュートリアル:Bing Entity Search 単一ページ Web アプリ (ソース コード)
 titlesuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing Entity Search API を使用する方法を示すチュートリアルのソース コード。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 774c61f3a089b2ee54f60d654bb1ef7c251cbdb7
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6165bca1eff248f15cfce4638a6f9817db550c04
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165035"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156260"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>チュートリアル: 単一ページの Web アプリ ソース
+# <a name="tutorial-single-page-web-app-source"></a>チュートリアル:単一ページの Web アプリ ソース
 
 これは、[単一ページのアプリのチュートリアル](tutorial-bing-entities-search-single-page-app.md)で説明した、Bing Entity Search 用の完全なソース コードです。 アプリを実行するには、メモ帳または別のテキスト エディターにソース コードをコピーし、`bing.html` として保存します。 保存したファイルを、Microsoft Edge やその他一般的なブラウザーで開きます。
 

@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 898d663f3ef9a71944d96b0978947d10a3e26b06
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2e75ff08acdda03c0080f49c6616274a4b031075
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232789"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903725"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
-[Web App](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。
+[Azure App Service](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 「[言語](#languages)」セクションに、現在サポートされているアプリケーション スタックの一覧を示します。
 
 ## <a name="languages"></a>Languages
 
@@ -39,8 +39,6 @@ App Service on Linux では、開発者の生産性を向上させるために�
 | Python (プレビュー) | 2.7、3.6、3.7 |
 | .NET Core | 1.0、1.1、2.0、2.1 |
 | Ruby | 2.3 |
-
-詳細については、「[App Service on Linux で Java Web アプリを作成する](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)」を参照してください。
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -75,7 +73,9 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。 Windows アプリと Linux アプリを同じリソース グループ内でも混在させないという点において、現在の制限があります。
+App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。 
+
+また、現在の制限に基づき、Windows アプリと Linux アプリを同じリソース グループに混在させないでください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -84,9 +84,11 @@ App Service on Linux は [Basic、Standard、および Premium](https://azure.mi
 
 ![ログ記録の有効化][2]
 
-![Kudu を使用した Docker のログの表示][1]
+設定はすぐに有効になります。 App Service により設定の変更が検出され、自動的にコンテナーが再起動されます。
 
 SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
+
+![Kudu を使用した Docker のログの表示][1]
 
 ## <a name="next-steps"></a>次の手順
 
@@ -101,7 +103,7 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 * [Go](quickstart-docker-go.md)
 * [複数コンテナー アプリ](quickstart-multi-container.md)
 
-App Service on Linux の詳細については、以下の記事も参照してください。
+App Service on Linux の詳細については、次のページを参照してください。
 
 * [App Service on Linux の FAQ](app-service-linux-faq.md)
 * [App Service on Linux での SSH のサポート](app-service-linux-ssh-support.md)

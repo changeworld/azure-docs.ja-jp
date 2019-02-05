@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/16/2019
+ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449573"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077456"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -58,6 +58,9 @@ A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ�
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
 
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Q. Data Box を紛失しました。 デバイスを紛失した場合に料金は発生しますか?
+A. はい。 デバイスを紛失したり破損したりした場合は料金が発生します。 この料金については、[価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/)および[製品のサービス利用規約](https://www.microsoft.com/licensing/product-licensing/products)内で説明されています。
+
 
 ## <a name="order-device"></a>デバイスの注文
 
@@ -72,16 +75,16 @@ A. Data Box の注文を作成できなかった場合は、サブスクリプ�
 サポートされている種類のサブスクリプション プランをお持ちの場合は、サブスクリプションのアクセス レベルを確認してください。 注文を作成するには、サブスクリプションの共同作成者または所有者である必要があります。
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>Q. Data Box デバイスをいくつか注文しました。 追加注文を作成できません。 なぜでしょうか?
-A. 商取引の境界 (選択された国とリージョンの組み合わせ) ごとに、サブスクリプション当たり最大 5 件まで、有効な注文を作成できます。 デバイスをさらに注文する必要がある場合は、Microsoft サポートに連絡してサブスクリプションの上限を増やしてください。
+A. 商取引の境界 (選択された国とリージョンの組み合わせ) ごとに、サブスクリプションあたり最大 5 件まで、有効な注文を作成できます。 デバイスをさらに注文する必要がある場合は、Microsoft サポートに連絡してサブスクリプションの上限を増やしてください。
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>Q. 注文を作成しようとすると、Data Box サービスが利用できないという通知を受け取ります。 これはどういう意味でしょうか。
 A. これは、選択した国とリージョンの組み合わせでは Data Box サービスは利用できないことを意味しています。 この組み合わせを変更すると、Data Box サービスを利用できるようになるでしょう。 サービスが利用できるリージョンの一覧については、[Data Box が利用可能なリージョン](data-box-overview.md#region-availability)に関する記事を参照してください。
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>Q. 数日前に Data Box を注文しました。 Data Box はいつ届きますか?
-A. ご注文をいただくと、デバイスの在庫状況が確認されます。 デバイスが在庫にある場合は、10 日以内に配送されます。 需要が高い時期があることが考えられます。 この状況では、注文は待ち行列に入れられることになり、Azure portal で状況の変化を追跡できます。 90 日以内に注文が履行されない場合、その注文は自動的にキャンセルされます。 
+A. ご注文をいただくと、デバイスの在庫状況が確認されます。 デバイスが在庫にある場合は、10 日以内に配送されます。 需要が高い時期があることが考えられます。 この状況では、注文は待ち行列に入れられることになり、Azure portal で状況の変化を追跡できます。 90 日以内に注文が履行されない場合、その注文は自動的にキャンセルされます。
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. 自分の Data Box がデータでいっぱいになっており、もうひとつ注文する必要があります。 簡単に注文する方法はありますか?
-A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。 
+A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。
 
 ## <a name="configure-and-connect"></a>構成と接続
 
@@ -96,6 +99,9 @@ A.  注文をキャンセルできるのは、Data Box を注文してから、�
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Q. Data Box を複数のホスト コンピューターに同時に接続して、データを転送することはできますか?
 A. はい。 複数のホスト コンピューターを Data Box に接続してデータを転送したり、複数のコピー ジョブを並列で実行することができます。 詳細については、[チュートリアルの Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に関するページを参照してください。
+
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Q. Data Box の両方の 10 GbE インターフェイスに接続してデータを転送できますか?
+A. はい。 Data Box の両方の 10 GbE インターフェイスに接続して、同時にデータをコピーすることができます。 データをコピーする方法の詳細については、[チュートリアルの Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に関するページを参照してください。
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -202,19 +208,19 @@ A. デバイスが起動しない場合は、Azure portal で、該当する注�
 A.  **データのコピー**の注文状況が**完了**として表示されたら、データにはすぐにアクセスできるはずです。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
-A.  データを Data Box にコピーする場合は、そのデータがブロック BLOB、ページ BLOB、または Azure ファイルのいずれであるかに応じて、データは Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+A.  データを Data Box にコピーする場合、そのデータがブロック BLOB、ページ BLOB、または Azure ファイルのいずれであるかに応じて、データは Azure Storage アカウントの次のいずれかのパスにアップロードされます。
  - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
  -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
  あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
-A.  コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 名前が他の方式に準拠していない場合 (特殊文字やその他の言語など)、アップロードは失敗します。 共有、コンテナー、ファイルの名前付けに関するベスト プラクティスの詳細については、次を参照してください。 
+A.  コンテナー名に大文字が使われている場合、それらの名前は自動的に小文字へと変換されます。 名前が他の方式に準拠していない場合 (特殊文字やその他の言語など)、アップロードは失敗します。 共有、コンテナー、ファイルの名前付けに関するベスト プラクティスの詳細については、次を参照してください。
 - [Naming and referencing shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
 - [ブロック BLOB とページ BLOB の規則](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. Data Box にコピーしたデータを検証する方法を教えてください。
-A.  データのコピーが完了したら、**[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データでファイルに対してそれを検証できます。 詳細については、「[配送の準備](data-box-deploy-copy-data.md#prepare-to-ship)」を参照してください。
+A.  データのコピーが完了したら、**[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データ内のファイルに対してリストを検証できます。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>Q. Data Box を返却した後に、私のデータはどうなりますか?
 A.  Azure へのデータ コピーが完了すると、NIST SP 800-88 リビジョン 1 のガイドラインに従って、Data Box 上のディスクから、データは安全に消去されます。 詳細については、「[Data Box からのデータの消去](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)」を参照してください。

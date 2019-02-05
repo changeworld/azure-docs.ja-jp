@@ -3,7 +3,7 @@ title: チュートリアル - Jenkins を使用して Azure に開発パイプ�
 description: チュートリアル - このチュートリアルでは、毎回のコードのコミット時に GitHub からプルを実行し、アプリを実行する新しい Docker コンテナーをビルドする Jenkins 仮想マシンを Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470848"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189869"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル: Jenkins、GitHub、および Docker を使用して Azure 内の Linux VM 上に開発インフラストラクチャを作成する
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル:Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
 
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
 
@@ -75,7 +75,7 @@ VM を作成する前に、[az group create](/cli/azure/group#az_group_create) �
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
+ここで [az vm create](/cli/azure/vm) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \

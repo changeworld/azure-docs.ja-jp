@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1085be57583762e8f1d419e2aacc699032340d90
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054556"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169316"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -72,6 +72,8 @@ ms.locfileid: "54054556"
 仮想ネットワークのピアリングを確認するには、仮想ネットワークの任意のサブネットでネットワーク インターフェイスの[有効なルートを確認](diagnose-network-routing-problem.md)します。 仮想ネットワークのピアリングが存在する場合、仮想ネットワーク内のすべてのサブネットは、ピアリングされている各仮想ネットワークのアドレス空間ごとに、*VNet ピアリング*という種類の次ホップとのルートがあります。
 
 Network Watcher の[接続チェック](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使って、ピアリングされた仮想ネットワーク内の仮想マシンへの接続をトラブルシューティングすることもできます。 接続チェックを実行すると、接続元の仮想マシンのネットワーク インターフェイスから接続先の仮想マシンのネットワーク インターフェイスまでのトラフィックのルーティング方法がわかります。
+
+[仮想ネットワーク ピアリングの問題のトラブルシューティング ツール](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues)を試すこともできます。
 
 ## <a name="requirements-and-constraints"></a>要件と制約
 

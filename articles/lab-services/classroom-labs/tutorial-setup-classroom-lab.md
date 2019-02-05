@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: d0d02f491f14cc6e0664d79bcfd2cda44d433b5b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389961"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095755"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -32,7 +32,9 @@ ms.locfileid: "54389961"
 > * 登録リンクを学生に送信する
 
 ## <a name="prerequisites"></a>前提条件
-ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 ラボの作成者ロールには、ラボ所有者が「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」の記事の手順に従って他のユーザーを追加できます。
+ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおいて、所有者、ラボの作成者、または共同作成者ロールのメンバーである必要があります。 ラボ アカウントを作成するために使用したアカウントは、所有者ロールに自動的に追加されます。
+
+ラボの所有者は、他のユーザーを**ラボの作成者**ロールに追加できます。 たとえば、ラボの所有者は、ラボの作成者ロールに教授たちを追加します。 その後、教授は、クラス用に VM を使用してラボを作成します。 学生は、教授から受け取った登録リンクを使用してラボに登録します。 登録された学生は、ラボの VM を使用してクラスの課題や宿題をすることができます。 ラボの作成者ロールにユーザーを追加するための詳細な手順については、「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」を参照してください。
 
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する

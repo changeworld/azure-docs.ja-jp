@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: a363b5688e5fe915bd96393c35b3f39c69052d7c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ed2d1256508e588000970879dae7ac653797fbf9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359308"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883315"
 ---
-# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合 - プレビュー
+# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合
 
 この記事では、Azure Data Lake Storage Gen1 の仮想ネットワーク統合について紹介します。 仮想ネットワーク統合を使用すると、特定の仮想ネットワークとサブネットからのトラフィックのみを受け入れるようにアカウントを構成できます。 
 
@@ -83,7 +83,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
 
 ## <a name="configuration"></a>構成
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>手順 1: Azure AD サービス エンドポイントを使用するための仮想ネットワークを構成する
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>手順 1:Azure AD サービス エンドポイントを使用するための仮想ネットワークを構成する
 
 1.  Azure portal に移動し、ご利用の Azure アカウントにサインインします。
  
@@ -107,7 +107,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
  
     ![サービス エンドポイントの追加に成功](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>手順 2: Data Lake Storage Gen1 アカウントに対して許可する仮想ネットワークまたはサブネットを設定する
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>手順 2:Data Lake Storage Gen1 アカウントに対して許可する仮想ネットワークまたはサブネットを設定する
 
 1.  仮想ネットワークを構成した後、ご利用のサブスクリプションに[新しい Azure Data Lake Storage Gen1 アカウントを作成](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)します。 または、既存の Data Lake Storage Gen1 アカウントに移動できます。 Data Lake Storage Gen1 アカウントは、仮想ネットワークと同じリージョンに属している必要があります。
  

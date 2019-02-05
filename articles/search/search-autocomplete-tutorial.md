@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316184"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099110"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>チュートリアル: Azure Search を使用して検索ボックスにオートコンプリートを追加する
 

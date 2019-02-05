@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing Spell Check API を使用してスペル チェックの結果を取得する'
+title: チュートリアル:Bing Spell Check API を使用してスペル チェックの結果を取得する
 titlesuffix: Azure Cognitive Services
 description: 単一ページの Web アプリケーションで Bing Spell Check API を使用する方法を示すチュートリアルのソース コードです。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 0180c6f2924f921e358ea152c887c5c2e16c34dc
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8c3e520179d93632c1b69d2109d83197f76c549a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165579"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186520"
 ---
-# <a name="tutorial-single-page-web-app"></a>チュートリアル: 単一ページの Web アプリ
+# <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 これは、Bing Spell Check API に関する[単一ページ アプリのチュートリアル](spellcheck.md)で説明した完全なソース コードです。 アプリを実行するには、テキスト エディターにソース コードをコピーし、ファイルを `spellcheck.html` として保存します。 次に、保存したファイルを Web ブラウザーで開きます。
 

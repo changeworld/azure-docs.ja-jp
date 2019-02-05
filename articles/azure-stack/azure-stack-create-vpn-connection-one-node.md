@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078904"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247223"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
 ## <a name="overview"></a>概要
@@ -35,7 +36,7 @@ ms.locfileid: "49078904"
 ### <a name="before-you-begin"></a>開始する前に
 接続構成を行うには、作業開始前に次のものを用意する必要があります。
 
-* Azure Stack Development Kit のハードウェア要件を満たす 2 つのサーバーおよびその他の前提条件 (「[クイック スタート: Azure Stack Development Kit の評価](azure-stack-deploy-overview.md)」を参照)。 
+* Azure Stack Development Kit のハードウェア要件を満たす 2 つのサーバーおよびその他の前提条件 ([Azure Stack Development Kit の評価に関するクイック スタート](azure-stack-deploy-overview.md)を参照)。 
 * [Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) デプロイ パッケージ。
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack Development Kit 環境のデプロイ

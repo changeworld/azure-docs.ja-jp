@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project Answer Search のファクト クエリ'
+title: クイック スタート:Project Answer Search のファクト クエリ
 titlesuffix: Azure Cognitive Services
 description: Project Answer Search を使ったファクト クエリ
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210949"
 ---
-# <a name="quickstart-query-for-facts"></a>クイック スタート: ファクトのクエリ
+# <a name="quickstart-query-for-facts"></a>クイック スタート:ファクトのクエリ
 
 日付や識別可能な知識など、ファクトに向けたクエリの場合、応答には `facts` 回答を含むことができます。 ファクトの回答には、Web ドキュメント内の段落から抽出された関連する結果が含まれます。  これらのクエリでは常に Web ページが返されます。これに対して、[ファクト](fact-queries.md)と[エンティティ](entity-queries.md)のいずれかまたは両方が返されるかどうかはクエリによって異なります。
 
@@ -26,14 +26,14 @@ valentines+2016、when+is+ramadan のようなクエリは、日付関連のク�
 次の例は、日付関連の `facts` 回答です。 
 
 **クエリ:**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
-**応答:** `subjectName` フィールドには、ファクトを表示するときにラベルとして使用できるユーザーのクエリの表示バージョンが含まれます。 クエリ文字列が valentines+2016 の場合、Bing ではこれを Valentine's Day 2016 に変換できます。 [説明] フィールドには、ファクトが含まれます。
+**応答:**`subjectName` フィールドには、ファクトを表示するときにラベルとして使用できる、ユーザーのクエリの表示バージョンが含まれます。 クエリ文字列が valentines+2016 の場合、Bing ではこれを Valentine's Day 2016 に変換できます。 [説明] フィールドには、ファクトが含まれます。
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 クエリ "Why is the sky blue?" は、 知識関連の回答例を返します。
 
 **クエリ:**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
-**応答:** `value/description` フィールドには、クエリで要求された知識または情報が含まれます。
+**応答:**`value/description` フィールドには、クエリで要求された知識または情報が含まれます。
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>表形式データ" のような式に名前をバインドできます。
 一部のケースでは、ファクトが `_type: StructuredValue/TabularData` として返される場合があります。 次のクエリでは、コーヒーと紅茶に関する対照的な情報を含む表形式のデータを取得します。
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 `facts` 結果には、次の行とセルが含まれます。
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,7 +196,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt
     ]
   },
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [C# のクイック スタート](c-sharp-quickstart.md)

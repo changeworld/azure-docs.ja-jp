@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246366"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158844"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -109,7 +109,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Azure Container Registry にイメージをプッシュする
 
-このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Servic Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページをご覧ください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
+このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Service Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページを参照してください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
 
 ACR のインスタンスにイメージをプッシュするには、まずコンテナー イメージを用意する必要があります。 ローカル コンテナー イメージがまだない場合は、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、[WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) イメージと [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) イメージを Docker Hub からプルします。
 

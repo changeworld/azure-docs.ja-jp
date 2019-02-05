@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing Entity Search 単一ページ Web アプリ'
+title: チュートリアル:Bing Entity Search シングルページ Web アプリ
 titlesuffix: Azure Cognitive Services
 description: 単一ページの Web アプリで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: aahi
-ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f8aa6733748bbdf9ffff069126f6481c8b6788c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162009"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197434"
 ---
-# <a name="tutorial-single-page-web-app"></a>チュートリアル: 単一ページの Web アプリ
+# <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 Bing Entity Search API を使用すると、Web で*エンティティ*と*場所*に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
 

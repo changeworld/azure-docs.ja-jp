@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使って Azure に移行するため�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/11/2019
+ms.date: 01/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e922e9e7741eb3338503e02cd0ca78387e32b1f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824101"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298723"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、または 6.5 を実行している vCenter Server で管理される必要があります。 また、コレクター VM を展開するには、バージョン 5.0 以降を実行している 1 つの ESXi ホストが必要です。
+- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、または 6.5 を実行している vCenter Server で管理される必要があります。 また、コレクター VM をデプロイするには、バージョン 5.5 以降を実行している 1 つの ESXi ホストが必要です。
 - **vCenter Server アカウント**:vCenter Server にアクセスするには、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**:vCenter Server 上で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 
@@ -102,6 +102,14 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 3. 生成されたハッシュは、次の設定と一致する必要があります。
 
 #### <a name="continuous-discovery"></a>継続的な検出
+
+  OVA バージョン 1.0.10.11 の場合
+
+  **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | 5f6b199d8272428ccfa23543b0b5f600
+    SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
+    SHA256 | 85da50a21a7a6ca684418a87ccc1dd4f8aab30152c438a17b216ec401ebb3a21
 
   OVA バージョン 1.0.10.9 の場合
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 71f0ece2ff06ef000092485b8e7e11c5eedb38dd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263851"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174501"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>クイック スタート:Java と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -64,7 +64,7 @@ ms.locfileid: "54263851"
     }
     ```
 
-## <a name="construct-the-search-request-and-recieve-a-json-response"></a>検索要求を構築して JSON 応答を受信する
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>検索要求を構築して JSON 応答を受信する
 
 1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索用語は、要求に付加する前に URL エンコードする必要があるので注意してください。
 

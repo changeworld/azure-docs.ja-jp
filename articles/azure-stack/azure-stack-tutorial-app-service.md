@@ -16,12 +16,13 @@ ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.custom: mvc
-ms.openlocfilehash: f8a54436a61889e6d39c7e491e45c25e3b38236f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: e3ac94c91742f4a90f9ddd8c975d946bb918ac64
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036788"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244744"
 ---
 # <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>チュートリアル: Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
 
@@ -70,10 +71,10 @@ Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Fun
 1. **+** > **[データ + ストレージ]** > **[SQL Database]** の順に選択します。
 2. 次のフィールドを除き、既定値のままにします。
 
-    - **[データベース名]**: DNNdb
-    - **[Max Size in MB] (最大サイズ (MB))**: 100
-    - **[サブスクリプション]**: TestAppServiceOffer
-    - **[リソース グループ]**: DNN-RG
+    - **データベース名**: DNNdb
+    - **最大サイズ (MB)**: 100
+    - **サブスクリプション**:TestAppServiceOffer
+    - **リソース グループ**:DNN-RG
 
 3. **[Login Settings]\(ログイン設定\)** を選択し、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、このチュートリアルで後ほど使用します。
 4. **[SKU]** で、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。

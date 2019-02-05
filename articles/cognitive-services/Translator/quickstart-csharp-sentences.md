@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 文の長さを取得する (C#) - Translator Text API'
+title: クイック スタート:文の長さを取得する (C#) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text API を使用して、文の長さを調べる方法について説明します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: abdd87b9a86ed2482d5b53c10260fe28821b34ce
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: daa1afd2caf5d5bfa2452858501f550e4c7e387b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212020"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (C#)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>クイック スタート:Translator Text API と C# を使用して文の長さを調べる
 
 このクイック スタートでは、.NET Core と Translator Text API を使用して、文の長さを調べる方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52333290"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 

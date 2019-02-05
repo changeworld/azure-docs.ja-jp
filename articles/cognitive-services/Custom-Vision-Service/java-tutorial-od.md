@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する'
+title: クイック スタート:Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 titlesuffix: Azure Cognitive Services
 description: Java SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: d5dd481d32ede9a400def02d421a7cb8b816338a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8012dd484e769041ea235c33c334bfbbf8580800
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279587"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207651"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート: Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 
 この記事では、Custom Vision SDK と Java を使用して物体検出モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 この例は、独自の Java アプリケーションを構築するためのテンプレートとしてご利用ください。 
 

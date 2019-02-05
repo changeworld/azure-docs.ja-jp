@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Speech SDK for C# を使用して音声から意図を認識する'
+title: チュートリアル:Speech SDK for C# を使用して音声から意図を認識する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Speech SDK for C# を使用して音声から意図を認識する方法を学習します。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 64fa194225c7e9fa4c272ca8a9e95b44282ec1df
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e810450a8934a8df921c5d952a55ab0deaf853ec
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227975"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル: Speech SDK for C# を使用して音声から意図を認識する
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 
 [!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 

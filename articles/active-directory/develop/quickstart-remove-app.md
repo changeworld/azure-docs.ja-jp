@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 916d34a0af1490404cb9f7851b3117f1967c54d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61da59fd570b9acc58dce89907eb5a1726a28de9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240904"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104463"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート: Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
 
 アプリケーションを Microsoft ID プラットフォームに登録したエンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、アプリケーションの登録の削除が必要になる場合があります。
 

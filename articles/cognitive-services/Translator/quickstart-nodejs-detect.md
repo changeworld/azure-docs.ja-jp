@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を検出する (Node.js) - Translator Text API'
+title: クイック スタート:テキストの言語を検出する (Node.js) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js と Translator Text REST API を使用して、指定されたテキストの言語を認識します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: d70a420f01c7bf3486093951e89c9f48db148d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ecf762d47a5e8aa9762b67d5b6419bede91c142c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248763"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222050"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>クイック スタート: Translator Text API と Node.js を使用してテキストの言語を検出する
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してテキストの言語を検出する
 
 このクイック スタートでは、Node.js と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 要求モジュールに用意されている `request()` メソッドには、HTTP メソッド、URL、要求パラメーター、ヘッダー、JSON 本文を `options` オブジェクトとして渡すことができます。 このコード スニペットで、実際の要求を構成してみましょう。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)」をご覧ください。
 
 ```javascript
 let options = {

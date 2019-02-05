@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2018
+ms.date: 01/25/2019
 ms.author: pareshmu
-ms.openlocfilehash: 28c6382ba8749ae93125f73a14bef85e2477fb62
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f01e68a33be767f49c9ec87919c190bebf0b12c6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821942"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152010"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -44,9 +44,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- | --- | --- |
 | **オーストラリア政府** | 1 | オーストラリア中部、オーストラリア中部 2 |キャンベラ、キャンベラ2 |
 | **ヨーロッパ** | 1 |フランス中部、フランス南部、北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、アムステルダム 2、ダブリン、ロンドン、ロンドン 2、マルセイユ、ニューポート (ウェールズ)、パリ |
-| **北米** | 1 |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、サンアントニオ、シアトル、シリコン バレー、ワシントン DC、モントリオール、ケベックシティ、トロント |
-| **アジア** | 2 |東アジア、東南アジア |香港特別行政区、クアラルンプール、シンガポール、シンガポール 2 |
-| **オーストラリア** | 2 |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー | 
+| **北米** | 1 |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、サンアントニオ、シアトル、シリコン バレー、ワシントン DC、ワシントン DC2、モントリオール、ケベックシティ、トロント |
+| **アジア** | 2 |東アジア、東南アジア |香港特別行政区、クアラルンプール、シンガポール、シンガポール 2、台北 |
+| **オーストラリア** | 2 |オーストラリア東部、オーストラリア南東部 |メルボルン、パース、シドニー | 
 | **インド** | 2 |インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2 |
 | **日本** | 2 |西日本、東日本 |大阪、東京 |
 | **韓国** | 2 |韓国中部、韓国南部 |釜山、ソウル|
@@ -106,6 +106,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ニューポート (ウェールズ)** | Next Generation Data | Level 3 Communications、Next Generation Data |
 | **大阪** | Equinix | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **パリ** | Interxion | Colt、Intercloud、Interxion、Equinix、Orange |
+| **パース** | NextDC | NextDC |
 | **ケベック シティ** | 4Degrees | Bell Canada、Megaport |
 | **サンアントニオ** | CyrusOne | CenturyLink Cloud Connect、Megaport |
 | **サンパウロ** | Equinix | Aryaka Networks、Ascenty Data Centers、British Telecom、Equinix、Level 3 Communications、Neutrona Networks、Orange、Tata Communications、Telefonica、UOLDIVEO |
@@ -113,12 +114,13 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ソウル** | KINX | KINX、LG CNS、Sejong Telecom |
 | **シリコン バレー** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IX Reach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo |
 | **シンガポール** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
-| **シンガポール 2** | Global Switch | Megaport、SingTel |
+| **シンガポール 2** | Global Switch | Colt、Megaport、SingTel |
 | **シドニー** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
+| **台北** | Chief Telecom | Chief Telecom |
 | **東京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Softbank、Verizon |
 | **トロント** | Cologix | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、Megaport、Telus、Zayo |
 | **ワシントン DC** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
-
+| **ワシントン DC2** | Coresite | Coresite | 
  **+** は近日対応予定を表します
 
 ### <a name="national-cloud-environments"></a>国内のクラウド環境

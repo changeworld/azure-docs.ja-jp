@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: b211ede7ef90fb1aef3a6d6e9a82e0d52397afd3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: cb02c9067e4d672b0aace4caf13e4c8f0d718afb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220197"
 ---
 # <a name="what-is-project-answer-search"></a>Project Answer Search とは
 Project Answer Search API は、疑問文を使ったクエリに対する回答の取得に Bing v7 エンドポイントを使用します。 "地球の円周はどのくらいですか?" などの質問には、 事実情報を記載した回答を返します。  人物、場所、または物に関するクエリの場合には、そのクエリで特定されているエンティティに関する情報を返します。 会話ボット、メッセージング アプリ、リーダーなどのアプリケーションでは、このようなシナリオが有用になります。  
@@ -25,13 +25,13 @@ Project Answer Search API は、疑問文を使ったクエリに対する回答
 ## <a name="endpoint"></a>エンドポイント
 人、場所、または物に関する質問の回答または情報を取得するには、Answer Search API エンドポイントに要求を送信する必要があります。 ヘッダーと URL パラメーターは、さまざまな仕様に応じたものを使用します。  有効なトークンを指定した *Ocp-Apim-Subscription-Key* ヘッダーを含めるようにしてください。  マーケットに関するパラメーターは必須です。 現時点では、`en-us` マーケットのみサポートされています。
 
-次のクエリは、"地球の円周はどのくらいですか?" という質問に対する回答を取得するものです。
+次のクエリは、質問に対する回答を取得します。質問は、"地球の円周はどのくらいですか?" というものです。
 
 GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circumference+of+the=earth?&mkt=en-us
 
-````
+```
 
 検索の対象を指定するには、URL パラメーター `q=` が必要です。
 
@@ -39,7 +39,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circ
 
 応答には、HTTP ヘッダー、Web ページ、事実、および/またはエンティティが含まれます。
 
-````
+```
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
 X-MSEdge-ClientID: 1E48FC4F7B8768C80B14F7997A106906
 BingAPIs-SessionId: 0504DDD6DAE84861A4842306F8DA7A58
@@ -236,7 +236,7 @@ JSON Response:
   }
 }
 
-````
+```
 
 ## <a name="terms-of-use"></a>使用条件
 Project Answer Search と Project Video Trends には、[Bing Search の使用と表示に関する要件](use-display-requirements.md)が適用されます。

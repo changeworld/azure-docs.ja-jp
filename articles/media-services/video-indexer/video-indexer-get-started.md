@@ -1,5 +1,5 @@
 ---
-title: Video Indexer にサインアップして最初のビデオをアップロードする
+title: Video Indexer にサインアップして最初のビデオをアップロードする - Azure
 titlesuffix: Azure Media Services
 description: Video Indexer ポータルを使用して、サインアップと最初のビデオのアップロードを行う方法について説明します。
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e3ba1e12a8b058429f75b1d2aab3942cd843778
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823285"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090509"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>チュートリアル:サインアップして最初のビデオをアップロードする方法
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
 この入門チュートリアルでは、Video Indexer Web サイトにサインインする方法と、最初のビデオをアップロードする方法を示します。
 

@@ -3,23 +3,23 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM 上でシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: daveba
-ms.openlocfilehash: bd1fe465d085d79812f891195ab104f60c9ba5f3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 331e59e234b66f465189248c755ebf450adcb603
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429601"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150039"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -36,6 +36,8 @@ ms.locfileid: "54429601"
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 
@@ -63,16 +65,14 @@ Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていま
 Azure Resource Manager で PowerShell を使用して Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。  このチュートリアルでは、`Cosmos DB Account Reader Role` を割り当てます。
 
 ```azurepowershell
-$spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
-New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
+$spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
+New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
 ## <a name="get-an-access-token-using-the-windows-vm-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
 
 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
 
-ここでは、Azure Resource Manager PowerShell コマンドレットを使用する必要があります。  インストールしていない場合は、先に進む前に、[最新バージョンをダウンロード](https://docs.microsoft.com/powershell/azure/overview)してください。
-
-最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を Windows VM にインストールする必要もあります。
+最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 

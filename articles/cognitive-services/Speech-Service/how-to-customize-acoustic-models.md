@@ -1,27 +1,27 @@
 ---
-title: 'チュートリアル: Speech Service で音響モデルを作成する'
+title: チュートリアル:Speech Service を使用して音響モデルを作成する
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Speech Service を使用して音響モデルを作成する方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215244"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217630"
 ---
-# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル: カスタム音響モデルを作成する
+# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル:カスタム音響モデルの作成
 
 カスタム音響モデルの作成が役立つのは、アプリケーションが、使われる録音デバイスや使用状況がはっきりしている特定の環境 (自動車など) で使用されることや、特定のユーザーによって使用されることを想定した設計になっている場合です。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 > [!div class="checklist"]
 > * データを準備する
 > * 音響データセットをインポートする
@@ -147,7 +147,7 @@ Conversational モデルでの部分結果の待機時間は、Search and Dictat
 
 カスタマイズ プロセスの実行を開始する準備ができたら、**[作成]** を選択します。
 
-この新しいモデルに対応する新しいエントリが音響モデル テーブルに表示されます。 このテーブルには、プロセスの状態 (*[Waiting]\(待機中\)*、*[Processing]\(処理中\)*、または *[Complete]\(完了\)*) も表示されます。
+この新しいモデルに対応する新しいエントリが音響モデル テーブルに表示されます。 このテーブルには、プロセスの状態も表示されます (*[Waiting]\(待機中\)*、*[Processing]\(処理中\)*、または *[Complete]\(完了\)*)。
 
 ![[Acoustic Models]\(音響モデル\) ページ](media/stt/speech-acoustic-models-creating.png)
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの表記変換を実行する (Node.js) - Translator Text API'
+title: クイック スタート:テキストの表記変換を実行する (Node.js) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 このサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 9a9de1375e024bf4e74eafa3442e2cb818ad9c61
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2fe70e570cc5cb5b2572719c496f044c39b1bfa4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035817"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207923"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>クイック スタート: Node.js で Translator Text API を使用してテキストの表記を変換する
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>クイック スタート:Node.js で Translator Text API を使用してテキストの表記を変換する
 
 このクイック スタートでは、Node.js と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 ここに記載されているサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 要求モジュールに用意されている `request()` メソッドには、HTTP メソッド、URL、要求パラメーター、ヘッダー、JSON 本文を `options` オブジェクトとして渡すことができます。 このコード スニペットで、実際の要求を構成してみましょう。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」をご覧ください。
 
 ```javascript
 let options = {

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad34a5c3d72ec1f7fce0b56a85fd7c9cba007366
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ca3b25929a21e844b6350a79a3713d8e1b7ef0f8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824577"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168652"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>チュートリアル:サインイン ログにアクセスするためにスクリプトをダウンロードして使用する方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "54824577"
 
 * プレミアム (P1/P2) ライセンスがある Azure Active Directory テナント。 アップグレード前の時点でアクティビティ データがまったく存在しなかった場合、Premium ライセンスへのアップグレード後、データがレポートに表示されるまでに数日かかります。 
 * テナントの**グローバル管理者**、**セキュリティ管理者** **セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
-* ダウンロードしたスクリプトを Windows 10 マシンで実行するには、[AzureRM モジュールを設定し、実行ポリシーを設定](concept-sign-ins.md#running-the-script-on-a-windows-10-machine)します。
+* ダウンロードしたスクリプトを Windows 10 マシンで実行するには、[Azure PowerShell モジュールを設定し、実行ポリシーを設定](concept-sign-ins.md#running-the-script-on-a-windows-10-machine)します。
 
 ## <a name="tutorial"></a>チュートリアル
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331913"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903401"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -84,8 +84,6 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 ## <a name="next-steps"></a>次の手順
 
-スケジュールに基づいて実行する関数を作成しました。
+スケジュールに基づいて実行する関数を作成しました。 タイマー トリガーの詳細については、[Azure Functions を使用したコード実行のスケジュール設定](functions-bindings-timer.md)に関するページを参照してください。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-タイマー トリガーの詳細については、「[Azure Functions を使用したコード実行のスケジュール設定](functions-bindings-timer.md)」を参照してください。

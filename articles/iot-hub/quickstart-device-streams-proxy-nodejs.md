@@ -10,22 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 012fdfa4faf10cacaf85819517f358c1af1ab39d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830709"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887429"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタートでは、SSH および RDP トラフィックをデバイス ストリームを介してデバイスに送信できるようにするためのサービス側での Node.js プロキシ アプリケーションの実行について説明します。 設定の概要については、[このページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、サービス側プロキシを実行する手順についてのみ説明しています。 対応するデバイス側プロキシも実行する必要があり、それについては [C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されています。
+[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドでは、SSH および RDP トラフィックをデバイス ストリームを介してデバイスに送信できるようにするためのサービス側での Node.js プロキシ アプリケーションの実行について説明します。 設定の概要については、[こちら](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタート ガイドでは、サービスローカルのプロキシを実行する手順についてのみ説明しています。 対応するサービスローカルのプロキシも実行する必要があり、それについては [C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されています。
 
-まず、SSH (ポート `22` を使用) の設定について説明します。 その後、RDP (ポート 3389 を使用) の設定を変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、同じサンプルを他の種類のアプリケーション トラフィックに対応するように変更できます (通常は通信ポートを変更することによって)。
+まず、SSH (ポート 22 を使用) の設定について説明します。 その後、RDP (ポート 3389 を使用) の設定を変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、(通常は通信ポートを変更することによって) 同じサンプルを他の種類のクライアント/サーバー アプリケーション トラフィックに対応するように変更できます。
 
-コードは、デバイス ストリームの開始と使用の方法を示し、他のアプリケーションのトラフィック (RDP および SSH 以外) のために再利用することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -34,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
+このクイック スタートのサービスローカルのアプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
 
@@ -86,14 +85,14 @@ node --version
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 
-### <a name="run-the-device-side-proxy"></a>デバイス側プロキシの実行
+### <a name="run-the-device-local-proxy"></a>デバイスローカルのプロキシの実行
 
-前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイス側アプリケーションについては、[C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されている対応するデバイス プロキシ プログラムを使用してください。 次の手順に進む前に、デバイス側プロキシが実行されていることを確認します。
+前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイスローカルのアプリケーションについては、[C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されている対応するデバイス プロキシ プログラムを使用してください。 次の手順に進む前に、デバイスローカルのプロキシが実行されていることを確認します。
 
 
-### <a name="run-the-service-side-proxy"></a>サービス側プロキシの実行
+### <a name="run-the-service-local-proxy"></a>サービスローカルのプロキシの実行
 
-デバイス側プロキシが実行されているとして、Node.js で記述されたサービス側プロキシを実行するには、次の手順に従います。
+[デバイスローカルのプロキシ](#run-the-device-local-proxy)が実行されているとして、Node.js で記述されたサービスローカルのプロキシを実行するには、次の手順に従います。
 
 - サービス資格情報、SSH デーモンが実行されているターゲット デバイスの ID、およびデバイスで実行されているプロキシのポート番号を、環境変数として指定します。
 ```
@@ -107,7 +106,7 @@ node --version
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
 ```
-`MyDevice` を、デバイス用に選択したデバイス ID に変更します。
+実際のデバイス ID と接続文字列に合わせて上記の値を変更します。
 
 - 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` に移動し、サービスローカルのプロキシを実行します。
 ```
@@ -124,10 +123,10 @@ node --version
 ### <a name="ssh-to-your-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 Linux では、ターミナルで `ssh $USER@localhost -p 2222` を使用して SSH を実行します。 Windows では、任意の SSH クライアント (PuTTY など) を使用します。
 
-SSH セッションが確立された後のサービス側のコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH ターミナルの出力")
+SSH セッションが確立された後のサービスローカルのコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH ターミナルの出力")
 
 
-SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート <code>22</code> に接続することによって、SSH デーモンと通信します):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH クライアントの出力")
+SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH クライアントの出力")
 
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの RDP 接続

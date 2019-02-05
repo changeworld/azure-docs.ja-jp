@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: f1c2cd037539b3cf33f6c58c4ac8a3a1e8c304ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fc8d68b3412c2c43a88e3a9484dab3a150b811
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830527"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886273"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
@@ -95,7 +95,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -104,10 +104,10 @@ Windows では、Visual Studio 2015 または 2017 プロンプト用の開発�
 ```
     # In Windows
     # For VS2015
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    $ cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    $ cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -179,7 +179,6 @@ Windows では、Visual Studio 2015 または 2017 プロンプト用の開発�
     # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     $ ./iothub_client_c2d_streaming_proxy_sample
 
-
     # In Windows
     # Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
@@ -194,14 +193,14 @@ Windows では、Visual Studio 2015 または 2017 プロンプト用の開発�
 
 デバイスローカルとサービスローカルの両方のプロキシが実行されているとして、次にお客様の SSH クライアント プログラムを使用して、(SSH デーモンに直接ではなく) ポート 2222 でサービスローカルのプロキシに接続します。 
 
-```azurecli-interactive
+```
 ssh <username>@localhost -p 2222
 ```
 
 この時点で、お客様の資格情報を入力するための SSH ログイン プロンプトが表示されます。
 
 
-<code>IP_address:22</code> の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:![代替テキスト](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "デバイスローカルのプロキシの出力")
+`IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:![代替テキスト](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "デバイスローカルのプロキシの出力")
 
 SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):![代替テキスト](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH クライアントの出力")
 

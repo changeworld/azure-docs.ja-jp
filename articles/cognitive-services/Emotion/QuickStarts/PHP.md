@@ -1,24 +1,24 @@
 ---
-title: 'クイック スタート: 画像から顔の表情を認識する - Emotion API (PHP)'
+title: クイック スタート:画像から顔の表情を認識する - Emotion API (PHP)
 titlesuffix: Azure Cognitive Services
 description: Emotion API と PHP の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3dffa3c42df4a30b634417b551dd0e8af04145b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 3acf47ee26974ddff4f6063eef95bb29be61fce3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239508"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215497"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート: 画像から顔の表情を認識するアプリの作成
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート:画像から顔の表情を認識するアプリを作成する。
 
 > [!IMPORTANT]
 > Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。 

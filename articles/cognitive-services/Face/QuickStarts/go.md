@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: REST API と Go を使用して画像内の顔を検出する'
+title: クイック スタート:REST API と Go を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Face API を使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: pafarley
-ms.openlocfilehash: a66d50ac6984ea50eef1e34cc53db4d7e5bbdcad
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7b01acecb8ccf48ae9ba196671c156edfa688b3d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956206"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215097"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>クイック スタート: REST API と Go を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>クイック スタート:REST API と Go を使用して画像内の顔を検出する
 
 このクイック スタートでは、Face API を使って画像から人の顔を検出します。
 

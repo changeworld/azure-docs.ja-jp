@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: サポートされている言語を取得する (C#) - Translator Text API'
+title: クイック スタート:サポートされている言語の一覧を取得する (C#) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: cc5d9efd017ec2045cc94bbad98e26e8b95e071d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e638375c9c8316c00ee8da000ca5223330072985
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334688"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215573"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用してサポートされている言語を取得する (C#)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>クイック スタート:Translator Text API と C# を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334688"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 

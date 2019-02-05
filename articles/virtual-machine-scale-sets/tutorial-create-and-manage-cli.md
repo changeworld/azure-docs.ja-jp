@@ -3,7 +3,7 @@ title: チュートリアル - Azure 仮想マシン スケール セットの�
 description: Azure CLI を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 263a2ddd1cf42348678488a02ed0b97a7ed1304c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466139"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179482"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットの作成および管理
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-仮想マシン スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドを使用します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、存在しない場合は SSH キーを生成します。
+仮想マシン スケール セットを作成するには、[az vmss create](/cli/azure/vmss) コマンドを使用します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、存在しない場合は SSH キーを生成します。
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>接続情報を一覧表示する
 トラフィックを個々の VM インスタンスにルーティングするロード バランサーに、パブリック IP アドレスが割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
 
-スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用します。
+スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss) を使用します。
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -202,7 +202,7 @@ VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモ
 | [高性能](../virtual-machines/linux/sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
 
 ### <a name="find-available-vm-instance-sizes"></a>利用可能な VM インスタンス サイズを確認する
-特定のリージョンで利用可能な VM インスタンス サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) コマンドを使用します。
+特定のリージョンで利用可能な VM インスタンス サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm) コマンドを使用します。
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ az vm list-sizes --location eastus --output table
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>特定の VM インスタンス サイズのスケール セットを作成する
-チュートリアルの開始時にスケール セットを作成したとき、VM インスタンスに対して既定の VM SKU である *Standard_D1_v2* が提供されました。 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) の出力に基づいて、異なる VM インスタンス サイズを指定できます。 次の例では、`--vm-sku` パラメーターに VM インスタンス サイズ *Standard_F1* を指定して、スケール セットを作成します。 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかるため、次のスケール セットをデプロイする必要はありません。
+チュートリアルの開始時にスケール セットを作成したとき、VM インスタンスに対して既定の VM SKU である *Standard_D1_v2* が提供されました。 [az vm list-sizes](/cli/azure/vm) の出力に基づいて、異なる VM インスタンス サイズを指定できます。 次の例では、`--vm-sku` パラメーターに VM インスタンス サイズ *Standard_F1* を指定して、スケール セットを作成します。 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかるため、次のスケール セットをデプロイする必要はありません。
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
-チュートリアルの開始時にスケール セットを作成したとき、既定で 2 つの VM インスタンスがデプロイされました。 [az vmss create](/cli/azure/vmss#az_vmss_create) と共に `--instance-count` パラメーターを指定して、スケール セットに作成されるインスタンスの数を変更することができます。 既存のスケール セット内の VM インスタンスの数を増減するには、手動でその容量を変更します。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
+チュートリアルの開始時にスケール セットを作成したとき、既定で 2 つの VM インスタンスがデプロイされました。 [az vmss create](/cli/azure/vmss) と共に `--instance-count` パラメーターを指定して、スケール セットに作成されるインスタンスの数を変更することができます。 既存のスケール セット内の VM インスタンスの数を増減するには、手動でその容量を変更します。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
 
 スケール セット内の VM インスタンスの数を手動で増減させるには、[az vmss scale](/cli/azure/vmss#az_vmss_scale) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
 

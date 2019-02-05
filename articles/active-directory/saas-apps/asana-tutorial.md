@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b687f45221d968b3a75e6466ccb316273b9e0182
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd3817de9ad7773dd5179d550a8916cb346e6e6b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822860"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル:Azure Active Directory と Asana の統合
 

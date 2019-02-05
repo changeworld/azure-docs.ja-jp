@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: ナレッジ ベースから回答を取得する - REST (Node.js) - QnA Maker'
+title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Node.js) - QnA Maker
 titlesuffix: Azure Cognitive Services
 description: この Node.js REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9a3db996429bbbd0883643e2b7c6622dcff5480f
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 720d249321d20161b6a1ef19bb522ec6c2fc665e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977859"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216681"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Node.js を使用してナレッジ ベースから質問の回答を取得する
 

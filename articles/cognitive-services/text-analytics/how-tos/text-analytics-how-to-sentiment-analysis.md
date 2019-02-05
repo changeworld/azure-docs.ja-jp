@@ -5,18 +5,18 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632868"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212496"
 ---
-# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>例: Text Analytics でセンチメントを検出する方法
+# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>例:Text Analytics でセンチメントを検出する方法
 
 [Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) はテキスト入力を評価し、ドキュメントごとに 0 (負) から 1 (正) のセンチメント スコアを返します。
 
@@ -73,11 +73,11 @@ JSON ドキュメントは、id、text、language の形式である必要があ
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>手順 1: 要求を構造化する
+## <a name="step-1-structure-the-request"></a>手順 1:要求を構造化する
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については [Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) の API ドキュメントを確認してください。
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[感情分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
 + Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 そこには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
@@ -88,14 +88,14 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 > [!Tip]
 > [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
-## <a name="step-2-post-the-request"></a>手順 2: 要求を投稿する
+## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
 要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 
 
-## <a name="step-3-view-results"></a>手順 3: 結果を表示する
+## <a name="step-3-view-results"></a>手順 3:結果の表示
 
 センチメント アナライザーは、0 ～ 1 の範囲のスコアを割り当てて、テキストを主に正または負に分類します。 0.5 に近い値は、中立または不確定です。 0.5 のスコアは、中立性を示します。 文字列の感情分析をすることができない場合、またはセンチメントがない場合、スコアは必ず正確に 0.5 になります。 たとえば、英語の言語コードでスペイン語の文字列を渡した場合、スコアは 0.5 になります。
 

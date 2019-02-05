@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790176"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224243"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -444,7 +444,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)にも掲載されています。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 
@@ -483,7 +483,14 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 > このデータベースを同じ Azure リージョン内の SQL Server のインスタンスに復元することができます。 宛先サーバーが Recovery Services コンテナーに登録されている必要があります。
 >
 
-**[復元の構成]** メニューの **[サーバー]** ドロップダウン リスト ボックスには、Recovery Services コンテナーと共に登録された SQL Server インスタンスのみが表示されます。 目的のサーバーが一覧にない場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」を参照してサーバーを見つけます。 検出プロセスの間に、Recovery Services コンテナーに新しいサーバーが登録されます。
+**[復元の構成]** メニューの **[サーバー]** ドロップダウン リスト ボックスには、Recovery Services コンテナーと共に登録された SQL Server インスタンスのみが表示されます。 目的のサーバーが一覧にない場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」を参照してサーバーを見つけます。 検出プロセスの間に、Recovery Services コンテナーに新しいサーバーが登録されます。<br>
+SQL DB を復元するには、以下のアクセス許可が必要です。
+
+* 復元を実行している Recovery Services **コンテナー**に対する**バックアップ オペレーター** アクセス許可。
+* **ソース SQL VM** (バックアップされ、復元元にされようとしている VM) への**共同作成者 (書き込み)** アクセス。
+* ターゲット SQL VM (復元先の VM。Original Location Recovery (OLR) の場合は、ソース VM と同じ VM) への**共同作成者 (書き込み)** アクセス。
+
+別の場所に復元するには:
 
 1. **[復元の構成]** メニューで、次の手順を実行します。
 
@@ -721,7 +728,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)にも掲載されています。
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 

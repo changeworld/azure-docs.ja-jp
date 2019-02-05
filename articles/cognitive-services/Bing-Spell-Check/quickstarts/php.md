@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: Bing Spell Check API (PHP)'
+title: クイック スタート:Bing Spell Check API (PHP)
 titlesuffix: Azure Cognitive Services
 description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: 97332b063a649795cffd7ff0bf00829a554d98ac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 156c4414bbf7bda13e61c065e7b7100f6ae773b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312835"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166188"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-php"></a>Bing Spell Check API のクイック スタート (PHP) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "52312835"
 
 このコードを実行するには、[PHP 5.6.x](http://php.net/downloads.php) が必要です。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Spell Check API v7** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#lang)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Spell Check API v7** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#lang)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="get-spell-check-results"></a>スペル チェックの結果を取得する
 

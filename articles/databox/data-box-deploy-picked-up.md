@@ -6,34 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 158c2a8919bccea03f5c7b67aef23cd07022c259
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358560"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900512"
 ---
-# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル: Azure Data Box の返送と Azure へのデータ アップロードの確認
+# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box の返送と Azure へのデータ アップロードの確認
 
 このチュートリアルでは、Azure Data Box を返送し、Azure にアップロードされたデータを確認する方法について説明します。
 
 このチュートリアルでは、次のようなトピックについて説明します。
 
 > [!div class="checklist"]
+> * 前提条件
+> * 発送の準備をする
 > * Data Box を Microsoft に送付する
 > * Azure へのデータのアップロードを確認する
 > * Data Box からデータを消去する
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
+開始する前に次の点を確認します。
+
+- 「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。 
+- コピージョブが完了していること。 コピージョブが進行中の場合、発送準備を行うことはできません。
+
+## <a name="prepare-to-ship"></a>発送の準備をする
+
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
 1. デバイスの電源をオフにして、ケーブル類を取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-2. デバイスを米国で配送する場合、配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、または電子インク ディスプレイに表示されていない場合は、配送先住所ラベルを Azure portal からダウンロードして、デバイスに貼り付けてください。 **[概要] > [出荷ラベルをダウンロード]** に移動します。 
+2. デバイスを米国で配送する場合、配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、または電子インク ディスプレイに表示されていない場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスします。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
 
     デバイスをヨーロッパで配送する場合、電子インク ディスプレイは配送先住所ラベルを表示しません。 代わりに、先積み配送先住所ラベルの下のクリアポーチ内に返送用配送先住所ラベルがあります。 古い配送先住所ラベルを取り除き、配送先住所ラベルがはっきり見えることを確認してください。
     
@@ -43,7 +52,7 @@ ms.locfileid: "54358560"
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
-Microsoft がディスクを受け取ってスキャンすると、注文の状態は "**受取済み**" に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。 
+Microsoft がディスクを受け取ってスキャンすると、注文の状態は "**受取済み**" に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。
 
 検証が完了すると、Data Box は Azure データセンターのネットワークに接続されます。 データのコピーが自動的に開始されます。 データのサイズによっては、コピー処理が完了するまでに数時間から数日かかる場合があります。 コピー ジョブの進行状況は、ポータルで監視することができます。
 
@@ -65,6 +74,8 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+> * 前提条件
+> * 発送の準備をする
 > * Data Box を Microsoft に送付する
 > * Azure へのデータのアップロードを確認する
 > * Data Box からデータを消去する

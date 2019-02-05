@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Android SDK を使用して画像内の顔を検出し、フレームに収める'
+title: チュートリアル:Android SDK を使用して画像内の顔を検出し、フレームに収める
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2c28aa58e64253d5a25dbdfc8f1473e0e462af57
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852896"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220010"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める Android アプリの作成
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 
 このチュートリアルでは、Java SDK を介して Azure Face API を使用して画像内の顔を検出するシンプルな Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c15af0dcebdfcbe984d47b5c06f213e516ae3914
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345710"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149773"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Bing Spell Check API とは
 

@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing Autosuggest API を使用して自動提案の結果を取得する'
+title: チュートリアル:Bing Autosuggest API を使用して自動提案の結果を取得する
 titlesuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing Autosuggest API を使用する方法を示すチュートリアルのソース コードです。
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: a3eafe1c2ad6bb7a141b6c40c85f804d0f9b7395
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fdb72b92a444b889ddfafd0ceecbb4fab6570c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345625"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171254"
 ---
-# <a name="tutorial-single-page-web-app"></a>チュートリアル: シングルページ Web アプリ
+# <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 これは、Bing Autosuggest API に関する[ アプリのチュートリアル](autosuggest.md)で説明した完全なソース コードです。 アプリを実行するには、テキスト エディターにソース コードをコピーし、ファイルを `autosuggest.html` として保存します。 次に、保存したファイルを Web ブラウザーで開きます。
 

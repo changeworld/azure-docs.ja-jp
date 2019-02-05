@@ -5,18 +5,18 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216423"
 ---
-# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル: カスタム音響モデルを作成する
+# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル:カスタム音響モデルの作成
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
@@ -48,7 +48,7 @@ Azure Portal での Custom Search Service サブスクリプションの作成�
 <a name="Preparing data to customize the acoustic model"></a>
 *   1 人の話者に対するパフォーマンスを最適化する場合は (たとえば、FDR の炉辺談話をすべて文字起こしする場合など)、オーディオ ファイルはその話者だけの多くの例で構成される必要があります。
 
-音響モデルをカスタマイズするための音響データ セットは、2 つの部分で構成されます。(1) 音声データを含むオーディオ ファイルと、(2) すべてのオーディオ ファイルの文字起こしを含むファイルです。
+音響モデルをカスタマイズするための音響データセットは、2 つの部分で構成されます。(1) 音声データを含む一連のオーディオ ファイルと、(2) すべてのオーディオ ファイルの文字起こしを含むファイルです。
 
 ### <a name="audio-data-recommendations"></a>オーディオ データの推奨事項
 

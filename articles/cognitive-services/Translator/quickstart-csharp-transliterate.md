@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキスト スクリプトを変換する - C# - Translator Text'
+title: クイック スタート:テキスト スクリプトを変換する (C#) - Translator Text
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 このサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334312"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220163"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用してテキストを表記変換する (C#)
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>クイック スタート:C# と Translator Text API を使用してテキストの表記を変換する
 
 このクイック スタートでは、.NET Core (C#) と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 ここに記載されているサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334312"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 

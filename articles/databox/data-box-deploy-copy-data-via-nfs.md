@@ -6,25 +6,25 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 1cd88e24b945bc6ce627b25b0645bf961039037b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: cec96871d379f9484bf8e08a9d511146a80d45c6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359818"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095604"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする 
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
-このチュートリアルでは、ローカル Web UI を使用してホスト コンピューターに接続し、そこからデータをコピーして、Data Box を発送する準備をする方法について説明します。
+このチュートリアルでは、ローカル Web UI を使用してホスト コンピューターに接続し、そこからデータをコピーする方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+> * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-> * Data Box の発送を準備する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "54359818"
 2. Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配信済み]** に更新されていること。
 3. Data Box にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
-    - 高速ネットワークに接続していること。 少なくとも 1 本の 10 GbE 接続を利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
+    - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
 
 ## <a name="connect-to-data-box"></a>Data Box に接続する
 
@@ -72,17 +72,17 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *$root* フォルダーに直接ファイルをコピーすることはできません。
+    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
 
 ## <a name="copy-data-to-data-box"></a>Data Box にデータをコピーする
 
 Data Box の共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
-- 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 データ形式が適切な共有の種類と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
+- 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
 -  データのコピー中は、そのサイズが [Azure Storage と Data Box の制限](data-box-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。 
 - Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 - SMB と NFS の両方を同時に使用しないこと、または同じデータを Azure 上の同じ最終コピー先にコピーしないことをお勧めします。 このような場合は、最終的な結果がわからなくなります。
-- **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *$root* フォルダーに直接ファイルをコピーすることはできません。
+- **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
 
 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
@@ -126,18 +126,16 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
     
    ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-## <a name="prepare-to-ship"></a>発送の準備をする
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+> * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-> * Data Box の発送を準備する
+
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 

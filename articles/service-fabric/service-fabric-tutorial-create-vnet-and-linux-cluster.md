@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b494da1c87feafd1b9db8485d16a9dcf5b999e3d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831485"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101807"
 ---
-# <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
+# <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
 このチュートリアルは、シリーズの第 1 部です。 Azure CLI とテンプレートを使用して Linux Service Fabric クラスターを [Azure 仮想ネットワーク (VNET)](../virtual-network/virtual-networks-overview.md) にデプロイする方法を学習します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
 
@@ -46,7 +46,7 @@ ms.locfileid: "48831485"
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Service Fabric CLI をインストール](service-fabric-cli.md)します。
 * [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
