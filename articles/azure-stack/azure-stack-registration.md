@@ -309,7 +309,7 @@ Azure Stack の登録に成功したことは、**[Region management]\(リージ
 
 3. **[プロパティ]** を選択します。 このブレードには、環境の状態と詳細が表示されます。 **[登録済み]** 状態と **[未登録]** 状態とがあります。
 
-    [ ![[Region management]\(リージョン管理\) タイル](media/azure-stack-registration/admin1sm.png "[Region management]\(リージョン管理\) タイル") ](media/azure-stack-registration/admin1.png#lightbox)
+    [ ![Region management タイル](media/azure-stack-registration/admin1sm.png "Region management タイル") ](media/azure-stack-registration/admin1.png#lightbox)
 
     登録した場合、プロパティには以下が含まれます。
     
