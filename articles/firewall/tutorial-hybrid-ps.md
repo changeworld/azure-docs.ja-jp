@@ -1,21 +1,21 @@
 ---
 title: 'チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する'
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
+description: このチュートリアルでは、Azure PowerShell を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 511fb425c6b31d204c88094ec5b1a49316495a0a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431522"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458230"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
 オンプレミス ネットワークを Azure 仮想ネットワークに接続してハイブリッド ネットワークを作成する場合、ご利用の Azure ネットワーク リソースへのアクセスを制御する機能が、全体的なセキュリティ プランの中で重要な役割を果たします。
 
@@ -61,6 +61,8 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
+
+関連する Azure PowerShell リファレンス ドキュメントを確認するには、[Azure PowerShell リファレンス](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

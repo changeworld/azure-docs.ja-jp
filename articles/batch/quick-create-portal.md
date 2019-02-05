@@ -2,22 +2,22 @@
 title: Azure クイック スタート - Batch ジョブの実行 - ポータル
 description: Azure Portal で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7daaf042d22ba4ac0369b732b586a3760d8cd51c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471217"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート:Azure portal で最初の Batch ジョブを実行する
 
 このクイック スタートでは、Azure Portal を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで基本的な "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -25,7 +25,7 @@ ms.locfileid: "37859576"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 

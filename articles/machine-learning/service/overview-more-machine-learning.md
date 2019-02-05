@@ -1,7 +1,6 @@
 ---
-title: 機械学習製品オプションの比較
-titleSuffix: Microsoft
-description: 機械学習モデルを構築、デプロイ、および管理するための Microsoft のさまざまな製品を比較します。 ソリューションとしてどの製品を選択するかを決定します。
+title: Microsoft の機械学習テクノロジを選択する
+description: 機械学習モデルを構築、デプロイ、および管理するための選択肢を比較します。 ご自身のソリューションのためにどの Microsoft 製品を選択するかを決定します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +8,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 1/17/2019
-ms.openlocfilehash: d7c7c383f51d8bcc2b1691724e8f22b43782c5e8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.date: 1/30/2019
+ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242071"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451871"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft の機械学習製品とは
 

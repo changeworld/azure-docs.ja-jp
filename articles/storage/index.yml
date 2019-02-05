@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8d7df9093a10d4646c64186fe37f40c98219384b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 09b5f1fbc76f78d2b44fadca19f66b4096416bc2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465697"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700963"
 documentType: LandingData
 title: Azure Storage のドキュメント
 metadata:
@@ -67,8 +67,8 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
     - title: Data Lake Storage Gen2
       values:
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
       - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
       - href: 
       - href: 

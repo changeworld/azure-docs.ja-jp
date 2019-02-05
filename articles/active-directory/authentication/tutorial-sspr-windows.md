@@ -3,19 +3,19 @@ title: Windows 10 ログイン画面からの Azure AD SSPR
 description: このチュートリアルでは、Windows 10 のログイン画面でパスワードをリセットできるようにして、ヘルプデスクへの電話を減らします。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430674"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474872"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
@@ -28,11 +28,11 @@ ms.locfileid: "54430674"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 以下の条件を満たす Windows 10 April 2018 Update 以降のクライアント。
-   * [Azure AD 参加済みマシン](../device-management-azure-portal.md)または
-   * [Hybrid Azure AD 参加済みマシン](../device-management-hybrid-azuread-joined-devices-setup.md)と、ドメイン コントローラーへのネットワーク接続。
-* Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
-* お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、`passwordreset.microsoftonline.com` および `ajax.aspnetcdn.com` への HTTPS トラフィック (443) を許可する必要があります。
+* Windows 10 バージョン April 2018 Update 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
+   * [Azure AD 参加済み](../device-management-azure-portal.md)または
+   * [Hybrid Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)、さらにドメイン コントローラーへのネットワーク接続。
+* Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+* Windows 10 デバイスがプロキシ サーバーまたはファイアウォールの内側にある場合は、HTTPS トラフィック (ポート 443) の許可する URL の一覧に URL `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` を追加する必要があります。
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
 
@@ -54,9 +54,9 @@ ms.locfileid: "54430674"
       * **OMA-URI**: `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` に設定します。
       * **データ型**: **整数**に設定します。
       * **値**: **1** に設定します。
-      *  **[OK]**
-   *  **[OK]**
-4.  **[作成]**
+      * **[OK]** をクリックします
+   * **[OK]** をクリックします
+4. **[作成]** をクリックします
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Intune でデバイス構成ポリシーを割り当てる
 
@@ -67,7 +67,7 @@ ms.locfileid: "54430674"
 3. グループの名前を入力し、**[メンバーシップの種類]** で **[割り当て済み]** を選択します。
    * **[メンバー]** で、ポリシーの適用先となる Azure AD 参加済みの Windows 10 デバイスを選択します。
    * **[選択]** をクリックします。
-4.  **[作成]**
+4. **[作成]** をクリックします
 
 グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)」の記事を参照してください。
 

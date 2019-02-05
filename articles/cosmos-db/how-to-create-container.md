@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7434407c7d1afe197a560d9ed9c4f1e7e94b6c2b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 183f596c213f833a2ca633398d1102e86f328912
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033538"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468854"
 ---
-# <a name="create-a-container-in-azure-cosmos-db"></a>Azure Cosmos DB にコンテナーを作成する
+# <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
 この記事では、コンテナー (コレクション、テーブル、グラフ) を作成するいくつかの方法について説明します。 コンテナーは、Azure portal、Azure CLI、またはサポートされている SDK を使用して作成することができます。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 

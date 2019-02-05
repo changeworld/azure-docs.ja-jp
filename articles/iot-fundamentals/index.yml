@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f18c25d6d7692d5a0adff7e1efc69b25cdb31a0d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 678f18d04ba25b614f490170aa9c4ba36d94b9e0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069405"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694287"
 documentType: LandingData
 title: Azure IoT の基礎
 metadata:
@@ -50,14 +50,14 @@ sections:
     - html: <a href="/azure/iot-dps">IoT Hub Device Provisioning Services</a>
     - html: <a href="/azure/azure-maps">Azure Maps</a>
     - html: <a href="/azure/time-series-insights">Azure Time Series Insights</a>
-    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT サービス SDK</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks">IoT サービス SDK</a>
   - type: paragraph
     text: IoT デバイスとエッジ コンピューティングを使用してソリューションを構築します。
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/iot-edge">IoT Edge</a>
-    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks">IoT デバイス SDK</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks">IoT デバイス SDK</a>
 - title: サンプル
   items:
   - type: paragraph
