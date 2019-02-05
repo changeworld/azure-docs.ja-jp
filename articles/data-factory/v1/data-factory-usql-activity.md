@@ -48,8 +48,8 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |[はい] |
-| **accountName** |Azure Data Lake Analytics アカウント名。 |[はい] |
+| **type** |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
+| **accountName** |Azure Data Lake Analytics アカウント名。 |はい |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ  |
 | **subscriptionId** |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
 | **resourceGroupName** |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
@@ -64,9 +64,9 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
-| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
+| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | はい |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。 | はい |
+| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
 **例:サービス プリンシパルの認証**
 ```json
@@ -92,8 +92,8 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
-| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
+| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
+| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | はい |
 
 **例:ユーザー資格情報認証**
 ```json
@@ -208,8 +208,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 | プロパティ            | 説明                              | 必須                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
-| linkedServiceName   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | [はい]                                      |
+| type                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | はい                                      |
+| linkedServiceName   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | はい                                      |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |
 | script              | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 | いいえ (scriptPath と scriptLinkedService を使用する場合) |
