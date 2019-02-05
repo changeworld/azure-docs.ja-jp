@@ -1107,8 +1107,8 @@ ms.locfileid: "54884947"
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| managedInstances | [はい] |
-| managedInstances/databases | [はい] |
+| managedInstances | はい |
+| managedInstances/databases | はい |
 | managedInstances/databases/backupShortTermRetentionPolicies | いいえ  |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | いいえ  |
 | managedInstances/databases/vulnerabilityAssessments | いいえ  |
