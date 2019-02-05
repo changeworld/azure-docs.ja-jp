@@ -66,7 +66,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesCassandra** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesCassandra** |はい |
 | host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
 | port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |はい |
