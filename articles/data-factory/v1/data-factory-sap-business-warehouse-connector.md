@@ -87,7 +87,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | [はい] |
+| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON の使用例:SAP Business Warehouse から Azure BLOB にデータをコピーする
