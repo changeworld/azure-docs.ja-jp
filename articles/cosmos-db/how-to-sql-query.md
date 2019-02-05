@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452957"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459028"
 ---
-# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Azure Cosmos DB からのデータのクエリを実行するための SQL クエリの例
+# <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
 Azure Cosmos DB では、SQL API アカウントで JSON クエリ言語として SQL (構造化照会言語) を使用する項目のクエリがサポートされています。 Azure Cosmos DB 用のクエリ言語を設計では、次の 2 つの目標が考慮されています。
 
@@ -367,7 +367,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 これに
 |ビット    | \|、&、^、<<、>>、>>> (0 埋め右シフト) |
 |論理    | AND、OR、NOT      |
 |比較 | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|String     |  \|\| (連結) |
+|文字列     |  \|\| (連結) |
 
 2 項演算子を使用したクエリを見てみます。
 
@@ -403,15 +403,15 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 これに
 
 以下の表は、SQL API の 2 つの JSON 型で等値比較を実行した結果を示しています。
 
-| **演算子** | **Undefined** | **Null** | **Boolean** | **数値** | **文字列** | **Object** | **Array** |
+| **演算子** | **Undefined** | **Null** | **Boolean** | **数値** | **文字列** | **オブジェクト** | **配列** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined |
 | **数値** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
 | **文字列** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
+| **オブジェクト** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
+| **配列** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
 
 その他の比較演算子 (>、>=、! =、<、<=) については、以下のようになります。
 
@@ -448,7 +448,7 @@ SQL API と ANSI SQL の BETWEEN の使用に関する主な違いは、混合�
 
 **OR 演算子**
 
-| または | True | False | Undefined |
+| OR | True | False | Undefined |
 | --- | --- | --- | --- |
 | True |True |True |True |
 | False |True |False |Undefined |

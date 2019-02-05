@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: SSMS を使用した最初の Azure SQL データベースの設計 | Microsoft Docs'
+title: チュートリアル:Azure SQL Database で SSMS を使用して最初の単一データベースを設計する | Microsoft Docs
 description: SQL Server Management Studio を使用して、最初の Azure SQL データベースを設計する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -9,13 +9,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956059"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459538"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>チュートリアル: SSMS を使用した最初の Azure SQL データベースの設計
 
@@ -47,7 +47,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 
 ## <a name="create-a-blank-database"></a>空のデータベースの作成
 
-Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers-dtu.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL データベース論理サーバー](sql-database-features.md)内に作成されます。
+Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers-dtu.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database サーバー](sql-database-features.md)上に作成されます。
 
 空の SQL Database を作成するには、次の手順に従います。
 
@@ -59,16 +59,16 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
    1. 前の画像で示されているように、**[SQL Database]** のフォームに次の情報を入力します。
 
-      | Setting       | 推奨値 | 説明 |
+      | 設定       | 推奨値 | 説明 |
       | ------------ | ------------------ | ------------------------------------------------- |
       | **データベース名** | *yourDatabase* | 有効なデータベース名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
       | **サブスクリプション** | *yourSubscription*  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-      | **[リソース グループ]** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+      | **リソース グループ** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
       | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
    1. **[サーバー]** をクリックして、既存のサーバーを使用するか、お客様のデータベース用に新しいサーバーを作成して構成します。 サーバーを選択するか、または **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
-      | Setting       | 推奨値 | 説明 |
+      | 設定       | 推奨値 | 説明 |
       | ------------ | ------------------ | ------------------------------------------------- |
       | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
       | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -96,7 +96,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 ## <a name="create-a-firewall-rule"></a>ファイアウォール規則の作成
 
-SQL データベース サービスでは、サーバーレベルでファイアウォールが作成されます。 ファイアウォールは、外部のアプリケーションとツールがサーバーやサーバー上のデータベースに接続することを防止します。 お客様のデータベースに外部から接続できるようにするには、まず、お客様の IP アドレスに対するルールをファイアウォールに追加する必要があります。 以下の手順に従って、[SQL データベース サーバー レベルのファイアウォール規則](sql-database-firewall-configure.md)を作成してください。
+SQL データベース サービスでは、サーバーレベルでファイアウォールが作成されます。 ファイアウォールは、外部のアプリケーションとツールがサーバーやサーバー上のデータベースに接続することを防止します。 お客様のデータベースに外部から接続できるようにするには、まず、お客様の IP アドレスに対するルールをファイアウォールに追加する必要があります。 以下の手順に従って、[SQL Database のサーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成してください。
 
 > [!NOTE]
 > SQL データベースの通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、お客様の管理者によってポート 1433 が開放されない限り、お客様の Azure SQL Database サーバーに接続することはできません。
@@ -107,30 +107,30 @@ SQL データベース サービスでは、サーバーレベルでファイア
 
    ![サーバー名](./media/sql-database-design-first-database/server-name.png)
 
-1. ツール バーで **[Set server firewall]\(サーバー ファイアウォールの設定\)** をクリックします。 SQL データベース サーバーの **[ファイアウォール設定]** ページが開きます。
+1. ツール バーで **[Set server firewall]\(サーバー ファイアウォールの設定\)** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
    ![サーバーのファイアウォール規則](./media/sql-database-design-first-database/server-firewall-rule.png)
 
    1. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-   1. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+   1. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
    1. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 
-これでお客様の IP アドレスがファイアウォールを通過できるようになりました。 SQL Server Management Studio や他の任意のツールを使用して SQL データベース サーバーとそのデータベースに接続することができます。 必ず、お客様が先ほど作成したサーバー管理者アカウントを使用してください。
+これでお客様の IP アドレスがファイアウォールを通過できるようになりました。 SQL Server Management Studio や他の任意のツールを使用して、SQL Database サーバーとデータベースに接続できます。 必ず、お客様が先ほど作成したサーバー管理者アカウントを使用してください。
 
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL データベース ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** をクリックします。
 
 ## <a name="connect-to-the-database"></a>データベースへの接続
 
-[SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) を使用して、お客様の Azure SQL データベース サーバーに対する接続を確立します。
+[SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
 1. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting       | 推奨値 | 説明 |
+   | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
    | **サーバー名** | 完全修飾サーバー名 | たとえば、*yourserver.database.windows.net* などです。 |
@@ -155,9 +155,9 @@ SQL データベース サービスでは、サーバーレベルでファイア
 [Transact-SQL](/sql/t-sql/language-reference) を用いた大学の生徒管理システムを構成する、4 つのテーブルのデータベース スキーマを作成します。
 
 - Person
-- コース
-- 生徒
-- クレジット
+- Course
+- Student
+- Credit
 
 次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば *Student* テーブルは、*Person* テーブルの *PersonId* 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](https://msdn.microsoft.com/library/cc505842.aspx)を参照してください。 データ型の選択については、[データ型](/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
 

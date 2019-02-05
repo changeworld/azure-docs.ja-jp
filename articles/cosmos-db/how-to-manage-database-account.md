@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: d3ee6db382f848a029f3e0355abdfe5eecc80656
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1486ab3240036abedea2cbb3cbe93e5c061691d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035833"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467409"
 ---
-# <a name="manage-database-accounts-in-azure-cosmos-db"></a>Azure Cosmos DB でデータベース アカウントを管理する
+# <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
 この記事では、Azure Cosmos DB アカウントを管理する方法について説明します。 具体的には、マルチホームの設定、リージョンの追加/削除、複数の書き込みリージョンの構成、およびフェールオーバーの優先度の設定を行います。 
 

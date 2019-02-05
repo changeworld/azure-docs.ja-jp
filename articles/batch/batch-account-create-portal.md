@@ -3,7 +3,7 @@ title: Azure Portal で Batch アカウントを作成する | Microsoft Docs
 description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/18/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 89e41dc8e27cf39d9d0e6168dc7352267c321623
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724096"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460524"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -42,19 +42,19 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![Batch アカウントを作成する][account_portal]
 
-    a. **[アカウント名]**: 選択する名前は、アカウントが作成される Azure リージョン内で一意である必要があります (下の **[場所]** を参照)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
+    a. **アカウント名**:選択する名前は、アカウントが作成される Azure リージョン内で一意である必要があります (下の **[場所]** を参照)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
 
-    b. **サブスクリプション**: Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
+    b. **サブスクリプション**:Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
 
-    c. **リソース グループ**: 新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
+    c. **[リソース グループ]**:新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
 
-    d. **場所**: Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
+    d. **[場所]**:Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。 ポータルで、既存のストレージ アカウントを選択するか、必要に応じて新しいストレージ アカウントを作成します。
+    e. **ストレージ アカウント** (省略可能):Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。 ポータルで、既存のストレージ アカウントを選択するか、必要に応じて新しいストレージ アカウントを作成します。
 
       ![ストレージ アカウントの作成][storage_account]
 
-    f. **プール割り当てモード**: ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
+    f. **プール割り当てモード**:ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
 
 1. **[作成]** を選択して、アカウントを作成します。
 
@@ -65,7 +65,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ![Azure Portal の [Batch アカウント] ブレード][account_blade]
 
-* **Batch アカウントの名前、URL、およびキー**: [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウント URL およびキーが必要になります  (Batch では Azure Active Directory 認証もサポートされます)。
+* **Batch アカウント名、URL、およびキー**:[Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウントの URL とキーが必要です  (Batch では Azure Active Directory 認証もサポートされます)。
 
     Batch アカウント アクセス情報を表示するには、**[キー]** を選択します。
 

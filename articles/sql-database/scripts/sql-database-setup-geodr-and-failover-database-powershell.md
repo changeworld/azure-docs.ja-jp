@@ -1,6 +1,6 @@
 ---
-title: PowerShell サンプル - アクティブ geo レプリケーション - 単一 Azure SQL Database | Microsoft Docs
-description: 単一の Azure SQL Database のアクティブ geo レプリケーションをセットアップし、フェールオーバーする Azure PowerShell のサンプル スクリプト
+title: PowerShell サンプル - アクティブ geo レプリケーション - スタンドアロン Azure SQL Database | Microsoft Docs
+description: Azure SQL Database の単一のデータベースに対してアクティブ geo レプリケーションの設定とフェールオーバーを実行する Azure PowerShell のサンプル スクリプト。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: fd699c622c44cec3a0077314e5d2b43016c13d87
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 0fa689c91ed6844c2314b3b9d3bea2619540bc50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389710"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463788"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>PowerShell を使用し、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成する
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database の単一のデータベースに対してアクティブ geo レプリケーションを構成する
 
-この PowerShell サンプル スクリプトでは、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成し、そのデータベースを Azure SQL Database のセカンダリ レプリカにフェールオーバーします。
+この PowerShell サンプル スクリプトでは、単一のデータベースに対してアクティブ geo レプリケーションを構成し、そのデータベースのセカンダリ レプリカにフェールオーバーします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,8 +48,8 @@ Remove-AzureRmResourceGroup -ResourceGroupName $secondaryresourcegroupname
 | コマンド | メモ |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | 論理サーバー内にエラスティック プールを作成します。 |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | 単一のデータベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | エラスティック プールを作成します。 |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| 既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| 1 つまたは複数のデータベースを取得します。 |

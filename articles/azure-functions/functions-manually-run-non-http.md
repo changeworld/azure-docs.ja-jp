@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247114"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466884"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -35,6 +35,9 @@ HTTP によってトリガーされない関数を実行するには、関数を
 - **関数名:** 実行する関数の名前。
 
 関数を実行する Azure への要求で、関数のマスター キーと共に Postman でこの要求の場所を使用します。
+
+> [!NOTE]
+> ローカルで実行する場合、関数のマスター キーは必要ありません。 `x-functions-key` ヘッダーを省略して、直接[関数を呼び出す](#call-the-function)ことができます。
 
 ## <a name="get-the-functions-master-key"></a>関数のマスター キーを取得する
 

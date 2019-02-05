@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL データベース ファイアウォール規則の作成 | Microsoft Docs'
+title: Azure portal:SQL データベース ファイアウォール規則の作成 | Microsoft Docs
 description: SQL Database サーバーレベルのファイアウォール規則を作成する
 services: sql-database
 ms.service: sql-database
@@ -11,15 +11,15 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721903"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462258"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して SQL データベースのサーバーレベルのファイアウォール規則を作成する
+# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して SQL データベースのサーバーレベルのファイアウォール規則を作成する
 
 このクイック スタートでは、Azure SQL データベースのサーバーレベルのファイアウォール規則を作成し、オンプレミスのリソースから接続できるようにする方法について説明します。
 
@@ -57,7 +57,7 @@ SQL Database サービスは、サーバーレベルでファイアウォール�
    > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** を選択します。
    >
 
-5. **[保存]** を選択します。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[保存]** を選択します。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[ファイアウォール設定]** ページを閉じます。
 
@@ -66,7 +66,6 @@ SQL Server Management Studio やその他の任意のツールを使用して、
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 データベースに接続してクエリを実行するためのさまざまな方法を紹介した「[次のステップ](#next-steps)」に進む場合は、これらのリソースを保存しておいてください。 一方、このクイック スタートで作成したリソースを削除する場合は、次の手順に従います。
-
 
 1. Azure portal の左側のメニューで、**[リソース グループ]**、**[myResourceGroup]** の順に選択します。
 2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。

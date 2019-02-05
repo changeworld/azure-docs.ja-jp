@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150752"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461748"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する
 
@@ -30,7 +30,9 @@ ms.locfileid: "55150752"
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
+* 構成済みのサーバーレベルのファイアウォール規則。 詳細については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal-firewall.md)」を参照してください。
+
+## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
 
 開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。 
 
@@ -43,14 +45,14 @@ ms.locfileid: "55150752"
 SMSS で、Azure SQL Database サーバーに接続します。 
 
 > [!IMPORTANT]
-> Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの背後から論理サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
+> Azure SQL Database サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの外側から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
 >
 
 1. SSMS を開きます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
 
 2. 次の情報を入力します。
 
-   | Setting      | 推奨値    | 説明 | 
+   | 設定      | 推奨値    | 説明 | 
    | ------------ | ------------------ | ----------- | 
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
