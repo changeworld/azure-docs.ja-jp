@@ -45,7 +45,7 @@ items:
       href: role-assignments-cli.md
     - name: REST API
       href: role-assignments-rest.md
-    - name: テンプレート
+    - name: Template
       href: role-assignments-template.md
   - name: アクセス拒否
     items:
@@ -79,7 +79,7 @@ items:
   - name: RBAC の制限
     href: ../azure-subscription-service-limits.md#role-based-access-control-limits
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.resources
+    href: /powershell/module/az.resources
   - name: Azure CLI
     href: /cli/azure/role?view=azure-cli-latest
   - name: REST API
@@ -94,9 +94,9 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: fb2b7baea56a3dfc1b4fbc07c72262e09326c07a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 893c3f7ad2d86688a1a697fa00f06b0b3f4e09cc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422016"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700555"

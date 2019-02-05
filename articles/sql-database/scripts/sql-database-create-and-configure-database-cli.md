@@ -3,7 +3,7 @@ title: CLI サンプル - Azure SQL データベースの作成 | Microsoft Docs
 description: この Azure CLI サンプル スクリプトを使用して、SQL データベースを作成します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 09/20/2018
-ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: 24f45ea22a50e471a2947b926b817f06aefa9aa8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055477"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451786"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する
 
@@ -48,9 +48,9 @@ az group delete --name myResourceGroup
 | コマンド | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | SQL Database をホストする論理サーバーを作成します。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 論理サーバー内に SQL Database を作成します。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一のデータベースまたはエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 入力された IP アドレス範囲から、SQL Database サーバー上のすべての単一のデータベースまたはエラスティック プールへのアクセスを許可するファイアウォール規則を作成します。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 単一のデータベースまたはエラスティック プールを作成します。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
