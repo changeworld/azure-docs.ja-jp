@@ -102,8 +102,8 @@ Data Lake Storage Gen1 のデータの回復性のために、HA/DR の要件を
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**スケールの上限**     | ワーカー ノードによる制限あり        | 最大クラウド データ移動単位による上限あり        | 分析単位による制限あり        |
-|**デルタのコピーをサポートする**     |   [はい]      | いいえ          | いいえ          |
-|**オーケストレーションが組み込まれている**     |  いいえ (Oozie Airflow または cron ジョブを使用)       | [はい]        | いいえ (Azure Automation または Windows タスク スケジューラを使用)         |
+|**デルタのコピーをサポートする**     |   はい      | いいえ          | いいえ          |
+|**オーケストレーションが組み込まれている**     |  いいえ (Oozie Airflow または cron ジョブを使用)       | はい        | いいえ (Azure Automation または Windows タスク スケジューラを使用)         |
 |**サポートされるファイル形式**     | ADL、HDFS、WASB、S3、GS、CFS        |多数あり、[コネクタ](../data-factory/connector-azure-blob-storage.md)を参照。         | ADL から ADL、WASB から ADN (同じリージョンのみ)        |
 |**OS のサポート**     |Hadoop を実行しているすべての OS         | 該当なし          | Windows 10         |
    
