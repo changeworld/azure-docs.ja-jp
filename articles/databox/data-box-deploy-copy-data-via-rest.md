@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 85c9eeb60027ba44fd5e65d056864aa76a6e720a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215288"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900886"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -22,9 +22,9 @@ ms.locfileid: "54215288"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+> * 前提条件
 > * *http* 経由または *https* 経由で Data Box BLOB ストレージに接続する
 > * Data Box にデータをコピーする
-> * 発送の準備をする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -163,7 +163,7 @@ BLOB は常にコンテナーにアップロードされるため、最初の手
 
 AzCopy を使用して、フォルダー内のすべてのファイルを Windows または Linux 上の BLOB ストレージにアップロードします。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
     azcopy \
         --source /mnt/myfolder \
@@ -188,7 +188,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 
 宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに `--exclude-older` と `--exclude-newer` (Linux) または `/XO` と `/XN` (Windows) の両方のパラメーターを指定します。 AzCopy は、タイムスタンプに基づいて、更新されたデータのみをアップロードします。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
     azcopy \
     --source /mnt/myfolder \
     --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
@@ -201,18 +201,17 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
 
-## <a name="prepare-to-ship"></a>発送の準備をする
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
+次に、発送するデバイスを準備します。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+> * 前提条件
 > * *http* 経由または *https* 経由で Data Box BLOB ストレージに接続する
 > * Data Box にデータをコピーする
-> * 発送の準備をする
+
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 

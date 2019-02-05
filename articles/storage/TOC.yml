@@ -24,11 +24,9 @@ items:
     href: ../virtual-machines/windows/about-disks-and-vhds.md
   - name: Linux
     href: ../virtual-machines/linux/about-disks-and-vhds.md
-- name: 一般的なセキュリティ属性
-  href: storage-security-attributes.md
-ms.openlocfilehash: 8350cc95e317c75a423914cbbe22f4ad08bc08f8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2d0da22f81218d94c17527f46bd3bfddd0f49e58
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55505684"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734030"

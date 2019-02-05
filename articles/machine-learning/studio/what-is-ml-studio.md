@@ -10,18 +10,18 @@ ms.custom: seodec18
 ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: bb01db14cec73b8c5668915a9eaab5e7728724df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264362"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469119"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -39,10 +39,10 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 > [!TIP]
 > Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
-> 
-> 
+>
+>
 
-![Azure ML Studio の図:実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み][ml-studio-overview]
+![Azure Machine Learning Studio の図:実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
 [Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
@@ -104,7 +104,7 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 * [線形回帰][linear-regression] - オンライン傾斜降下に基づく線形回帰モデルを作成します。
 * [モデルのスコア付け][score-model] - トレーニングされた分類か回帰モデルをスコア付けします。
 
-利用可能なモジュールは、実験を作成するときにキャンバスの左側の一覧から選択できます。  
+利用可能なモジュールは、実験を作成するときにキャンバスの左側の一覧から選択できます。
 
 モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 モジュールのパラメーターは、キャンバスでモジュールを選択するとキャンバス右側の **[プロパティ]** ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。
 
@@ -162,7 +162,7 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 * **サンプル**:全体を代表するために使用するデータ セットの一部です。 サンプルはランダムに選択したり、データ セットの特定の機能に基づいて選択したりできます。
 
 ## <a name="next-steps"></a>次の手順
-[ステップ バイ ステップ チュートリアル](create-experiment.md)を使用し、また[サンプル上に構築](sample-experiments.md)することによって予測分析と機械学習の基礎について学習できます。  
+[ステップ バイ ステップ チュートリアル](create-experiment.md)を使用し、また[サンプル上に構築](sample-experiments.md)することによって予測分析と機械学習の基礎について学習できます。
 
 
 <!-- Module References -->
