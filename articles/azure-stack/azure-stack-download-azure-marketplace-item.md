@@ -55,7 +55,7 @@ Azure Stack デプロイは、インターネットに接続し、[Azure に登�
     
 3. Azure Stack Marketplace を開き、Azure に接続します。 そのためには、**[Marketplace management]\(Marketplace 管理\)** を選択し、**[Add from Azure]\(Azure から追加\)** を選択します。
 
-    [ ![[Add from Azure]\(Azure から追加\)](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "[Add from Azure]\(Azure から追加\)") ](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
+    [ ![Add From Azure](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "Add from Azure") ](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
 
     Azure Marketplace からダウンロードできる項目の一覧がポータルに表示されます。 各項目をクリックすると、項目の説明と、ダウンロード サイズなどの追加情報が表示されます。 
 
