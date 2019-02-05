@@ -82,7 +82,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | [はい] |
+| query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | はい |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON の使用例:SAP HANA から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP HANA から Azure Blob Storage にデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているシンクのいずれかにデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることもできます。  
