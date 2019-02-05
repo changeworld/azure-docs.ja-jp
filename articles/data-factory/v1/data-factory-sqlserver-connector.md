@@ -655,7 +655,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -669,7 +669,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -677,7 +677,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

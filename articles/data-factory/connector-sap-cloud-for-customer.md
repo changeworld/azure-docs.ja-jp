@@ -205,7 +205,7 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 | SAP C4C OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
-| Edm.Boolean | ブール値 |
+| Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |

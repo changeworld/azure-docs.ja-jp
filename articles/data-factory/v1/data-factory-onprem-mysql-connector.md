@@ -303,13 +303,13 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | --- | --- |
 | 符号なしの bigint |Decimal |
 | bigint |Int64 |
-| ビット |Decimal |
+| bit |Decimal |
 | BLOB |Byte[] |
 | bool |Boolean |
 | char |String |
 | date |DateTime |
 | Datetime |DateTime |
-| 小数点 |Decimal |
+| decimal |Decimal |
 | double precision |Double |
 | Double |Double |
 | enum |String |

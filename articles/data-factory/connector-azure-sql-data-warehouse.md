@@ -552,7 +552,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 |:--- |:--- |
 | bigint | Int64 |
 | binary | Byte[] |
-| ビット | ブール |
+| bit | Boolean |
 | char | String、Char[] |
 | date | Datetime |
 | DateTime | Datetime |
@@ -566,14 +566,14 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | money | Decimal |
 | nchar | String、Char[] |
 | ntext | String、Char[] |
-| 数値 | Decimal |
+| numeric | Decimal |
 | nvarchar | String、Char[] |
 | real | Single |
 | rowversion | Byte[] |
 | smalldatetime | Datetime |
 | smallint | Int16 |
 | smallmoney | Decimal |
-| sql_variant | オブジェクト |
+| sql_variant | Object |
 | text | String、Char[] |
 | time | timespan |
 | timestamp | Byte[] |

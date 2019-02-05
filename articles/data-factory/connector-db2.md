@@ -178,7 +178,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | BLOB |Byte[] |
 | Char |String |
 | Clob |String |
-| 日付 |DateTime |
+| Date |DateTime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -186,7 +186,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| 整数 |Int32 |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
