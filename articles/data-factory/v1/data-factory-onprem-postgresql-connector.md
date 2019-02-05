@@ -74,14 +74,14 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |はい |
 | server |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
-| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
-| gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。
