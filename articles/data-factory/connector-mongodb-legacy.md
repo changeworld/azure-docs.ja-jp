@@ -178,14 +178,14 @@ MongoDB からデータをコピーするとき、次の MongoDB のデータ型
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| 日付 |Datetime |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
 | String |String |
 | UUID |Guid |
-| オブジェクト |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
+| Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
 > [!NOTE]
 > 仮想テーブルを使用した配列に対するサポートの詳細については、[仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables)セクションをご覧ください。

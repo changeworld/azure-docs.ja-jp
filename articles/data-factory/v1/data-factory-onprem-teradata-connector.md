@@ -297,10 +297,10 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | ByteInt |Int16 |
 | Decimal |Decimal |
 | Double |Double |
-| 整数 |Int32 |
+| Integer |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
-| 日付 |Datetime |
+| Date |Datetime |
 | Time |timespan |
 | Time With Time Zone |String |
 | Timestamp |Datetime |

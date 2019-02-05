@@ -315,7 +315,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | SmallMoney | SmallMoney |
 | Binary | Binary |
 | Varbinary | Varbinary (最大 8000) |
-| 日付 | 日付 |
+| Date | Date |
 | Datetime | Datetime |
 | DateTime2 | DateTime2 |
 | Time | Time |
@@ -323,7 +323,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (最大 8000) |
 | NText | NVarChar (最大 4000) |
-| イメージ | VarBinary (最大 8000) |
+| Image | VarBinary (最大 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -347,7 +347,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -361,7 +361,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -369,7 +369,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

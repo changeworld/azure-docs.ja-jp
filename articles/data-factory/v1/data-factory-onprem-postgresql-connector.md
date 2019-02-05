@@ -311,7 +311,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[]、String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[]、String |
-| ブール値 |bool |boolean |
+| boolean |bool |boolean |
 | box | |Byte[]、String |&nbsp;
 | bytea | |Byte[]、String |&nbsp;
 | character [(n)] |char [(n)] |String |

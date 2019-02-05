@@ -172,7 +172,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 | OData データ型 | .NET 型 |
 | --- | --- |
 | Edm.Binary |Byte[] |
-| Edm.Boolean |ブール値 |
+| Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
 | Edm.DateTime |Datetime |
 | Edm.Decimal |Decimal |
