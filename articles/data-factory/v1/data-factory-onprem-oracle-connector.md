@@ -102,10 +102,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |[はい] |
+| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |はい |
 | driverType | Oracle データベースとの間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** と **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
-| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | [はい] |
-| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |[はい] |
+| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | はい |
+| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
 **例:Microsoft ドライバーの使用**
 
