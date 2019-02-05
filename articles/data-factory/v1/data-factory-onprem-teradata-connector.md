@@ -64,12 +64,12 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesTeradata** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesTeradata** |はい |
 | server |Teradata のサーバーの名前です。 |はい |
-| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
-| gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -85,7 +85,7 @@ source の種類が **RelationalSource** (Teradata を含む) である場合は
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |はい |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON の使用例:Teradata から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Teradata から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
