@@ -144,7 +144,7 @@ ASDK ホスト コンピューター上で Get-AzureStackLog を実行する際�
  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP   |
  |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |UsageBridge|
  |AzureBridge           |FRP                            |MonRP                          |VirtualMachines   |
- |AzureMonitor          |ゲートウェイ                        |NC                             |WAS|
+ |AzureMonitor          |Gateway                        |NC                             |WAS|
  |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
  |BRP                   |HintingServiceV2               |NRP                            |   |
  |CA                    |HRP                            |OboService                     |   |
