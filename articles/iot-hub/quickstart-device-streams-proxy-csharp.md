@@ -10,20 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7a6a9a96bbde24fa8340714a8078e015a83d8cfb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e7cb8b2d699418b4d70d60f19a3a60ce0c7b8d38
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830787"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888670"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタートには、IoT Hub を通じて確立されたデバイス ストリームを介して SSH および RDP トラフィックが送信されるようにすることができる、2 つの C# プログラムが含まれています。 設定の概要については、[このページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
+[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドには、IoT Hub を通じて確立されたデバイス ストリームを介してクライアント/サーバー アプリケーション トラフィック (SSH、RDP など) を送信できるようにする、2 つの C# プログラムが含まれています。 設定の概要については、[こちら](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
 
-まず、SSH (ポート 22 を使用) の設定について説明します。 その後、設定の RDP 用に構成されたポートを変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、同じサンプルを他の種類のアプリケーション トラフィックに対応するように変更できます (通常は通信ポートを変更することによって)。
+まず、SSH (ポート 22 を使用) の設定について説明します。 その後、設定の RDP 用のポートを変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、同じサンプルを他の種類のアプリケーション トラフィックに対応するように変更できます。 通常、この操作は、通信ポートを目的のアプリケーションで使用されるものに変更するだけで済みます。
+
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -31,13 +32,13 @@ ms.locfileid: "54830787"
 
 ![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "ローカル プロキシの設定")
 
-1. サービスローカルのプロキシによって IoT ハブへの接続が行われ、ターゲット デバイスへのデバイス ストリームが開始されます。
+1. サービスローカルのプロキシが IoT ハブに接続し、そのデバイス ID を使用してターゲット デバイスへのデバイス ストリームを開始します。
 
 2. デバイスローカルのプロキシによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT Hub のストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
 
-3. デバイスローカルのプロキシによって、デバイス上のポート 22 をリッスンする SSH デーモン (SSHD) への接続が行われます ([以下](#run-the-device-side-application)で説明するように、これは構成可能です)。
+3. デバイスローカルのプロキシが、デバイス上のポート 22 をリッスンする SSH デーモン (SSHD) に接続します ([以下](#run-the-device-side-application)で説明するように、このポートは構成可能です)。
 
-4. サービスローカルのプロキシは、指定されたポート (この場合はポート `2222`) をリッスンして、ユーザーからの新しい SSH 接続を待機します ([以下](#run-the-service-side-application)で説明するように、これも構成可能です)。 ユーザーが SSH クライアントを介して接続すると、トンネルによってアプリケーション トラフィックが SSH クライアントとサーバー プログラムの間で交換されるようになります。
+4. サービスローカルのプロキシは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します ([以下](#run-the-service-side-application)で説明するように、これも構成可能です)。 ユーザーが SSH クライアントを介して接続すると、トンネルによってアプリケーション トラフィックが SSH クライアントとサーバー プログラムの間で交換されるようになります。
 
 > [!NOTE]
 > ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT Hub のストリーミング エンドポイントを介してトンネリングされます。 このことには、[これらの利点](./iot-hub-device-streams-overview.md#benefits)があります。
@@ -115,9 +116,9 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `IotHubConnectionString` | IoT Hub のサービス接続文字列。 |
-| `DeviceId` | 前に作成したデバイスの識別子。 |
-| `Port` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート `2222` を使用していますが、これを他の任意の数に変更できます。 |
+| `iotHubConnectionString` | IoT Hub のサービス接続文字列。 |
+| `deviceId` | 前に作成したデバイスの識別子。 |
+| `localPortNumber` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート 2222 を使用していますが、これを他の任意の数に変更できます。 |
 
 次のようにコードをコンパイルして実行します。
 
@@ -139,11 +140,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 解凍したプロジェクト フォルダーの `device-streams-proxy/device` に移動します。 以下の情報が必要になります。
 
-| パラメーター名 | パラメーター値 |
+| 引数名 | 引数値 |
 |----------------|-----------------|
-| `DeviceConnectionString` | 前に作成したデバイスの接続文字列。 |
-| `RemoteHostName` | SSH サーバーの IP アドレス (デバイスローカルのプロキシが実行されているのと同じ IP の場合、これは `localhost` になります)。 |
-| `RemotePort` | アプリケーション プロトコルによって使用されるポート (既定では、これは SSH 用のポート 22)。  |
+| `deviceConnectionString` | 前に作成したデバイスの接続文字列。 |
+| `targetServiceHostName` | SSH サーバーがリッスンしている IP アドレス (デバイスローカルのプロキシが実行されているのと同じ IP の場合、これは `localhost` になります)。 |
+| `targetServicePort` | アプリケーション プロトコルによって使用されるポート (既定では、これは SSH 用のポート 22)。  |
 
 次のようにコードをコンパイルして実行します。
 
@@ -155,13 +156,13 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString localhost 22
+dotnet run $deviceConnectionString localhost 22
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 22
+dotnet run %deviceConnectionString% localhost 22
 ```
 
-次に SSH クライアント プログラムを使用してポート `2222` でサービスローカルのプロキシに接続します (SSH デーモンに直接ではなく)。 
+次に SSH クライアント プログラムを使用してポート 2222 でサービスローカルのプロキシに接続します (SSH デーモンに直接ではなく)。 
 
 ```
 ssh <username>@localhost -p 2222
@@ -169,11 +170,17 @@ ssh <username>@localhost -p 2222
 
 この時点で、お客様の資格情報を入力するための SSH ログイン プロンプトが表示されます。
 
-サービス側のコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):![代替テキスト](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "サービスローカルのプロキシの出力")
+サービス側のコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):
 
-<code>IP_address:22</code> の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "デバイスローカルのプロキシの出力")
+![代替テキスト](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "サービスローカルのプロキシの出力")
 
-SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):![代替テキスト](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH クライアント プログラムの出力")
+`IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:
+
+]代替テキスト(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")デバイスローカルのプロキシの出力")
+
+SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):
+
+![代替テキスト](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH クライアント プログラムの出力")
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの RDP 接続
 
@@ -185,9 +192,9 @@ RDP の設定は、SSH (上記) によく似ています。 基本的には、�
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `IotHubConnectionString` | IoT Hub のサービス接続文字列。 |
-| `DeviceId` | 前に作成したデバイスの識別子。 |
-| `Port` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート `2222` を使用していますが、これを他の任意の数に変更できます。 |
+| `iotHubConnectionString` | IoT Hub のサービス接続文字列。 |
+| `deviceId` | 前に作成したデバイスの識別子。 |
+| `localPortNumber` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート 2222 を使用していますが、これを他の任意の数に変更できます。 |
 
 次のようにコードをコンパイルして実行します。
 
@@ -209,11 +216,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 解凍したプロジェクト フォルダーの `device-streams-proxy/device` に移動します。 以下の情報が必要になります。
 
-| パラメーター名 | パラメーター値 |
+| 引数名 | 引数値 |
 |----------------|-----------------|
 | `DeviceConnectionString` | 前に作成したデバイスの接続文字列。 |
-| `RemoteHostName` | RDP サーバーの IP アドレス (デバイスローカルのプロキシが実行されているのと同じ IP の場合、これは `localhost` になります)。 |
-| `RemotePort` | アプリケーション プロトコルによって使用されるポート (既定では、これは RDP 用のポート 3389)。  |
+| `targetServiceHostName` | RDP サーバーが実行されているホストの名前または IP アドレス (デバイスローカルのプロキシが実行されているのと同じ IP の場合、これは `localhost` になります)。 |
+| `targetServicePort` | アプリケーション プロトコルによって使用されるポート (既定では、これは RDP 用のポート 3389)。  |
 
 次のようにコードをコンパイルして実行します。
 
@@ -228,7 +235,7 @@ dotnet run $DeviceConnectionString localhost 3389
 dotnet run %DeviceConnectionString% localhost 3389
 ```
 
-次に、RDP クライアント プログラムを使用し、ポート `2222` (これは、前に選択した任意の使用可能なポートです) でサービスローカルのプロキシに接続します。
+次に、RDP クライアント プログラムを使用し、ポート 2222 (これは、前に選択した任意の使用可能なポートです) でサービスローカルのプロキシに接続します。
 
 ![代替テキスト](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.PNG "RDP がサービスローカルのプロキシに接続する")
 

@@ -35,7 +35,7 @@ Studio 3T 接続マネージャーに Cosmos アカウントを追加するに�
 3. **[New Connection] (新しい接続)** ウィンドウの **[Server] (サーバー)** タブで、Azure Cosmos DB アカウントのホスト (FQDN) とポートを入力します。
 
     ![Studio 3T 接続マネージャーの [Server] (サーバー) タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
-4. **[New Connection] (新しい接続)** ウィンドウの **[認証]** タブで、**[Basic (MONGODB-CR or SCARM-SHA-1)] (基本 (MONGODB-CR または SCARM-SHA-1))** の認証モードを選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
+4. **[New Connection]\(新しい接続)** ウィンドウの **[認証]** タブで、**[Basic (MONGODB-CR or SCARM-SHA-1)] (基本 (MONGODB-CR または SCARM-SHA-1))** の認証モードを選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
 
     ![Studio 3T 接続マネージャーの [認証] タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. **[New Connection (新しい接続)]** ウィンドウの **[SSL]** タブで、**[Use SSL protocol to connect (SSL プロトコルを使用して接続する)]** チェック ボックスをオンにし、**[Accept server self-signed SSL certificates (サーバー自己署名 SSL 証明書を受け付ける)]** オプション ボタンをオンにします。

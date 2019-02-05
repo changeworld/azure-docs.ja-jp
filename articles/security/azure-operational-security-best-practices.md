@@ -102,7 +102,7 @@ Azure の DDoS 回復性のサービスをビルドするためのベスト プ�
 アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、[セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/en-us/sdl) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
 
 **ベスト プラクティス**: [水平方向にスケーリングする](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。  
-**詳細**: Azure App Service の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。
+**詳細**: [Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。
 
 Azure Cloud Services の場合は、[複数インスタンス](../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 
