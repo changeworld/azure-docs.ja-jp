@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Central Desktop の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Central Desktop の統合 | Microsoft Docs
 description: Azure Active Directory と Central Desktop の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 82a6911c85dd1438aa8f60cb36194a2916bc91e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bc8aec25d6493d87393a45549fb89f978c469912
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429048"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179159"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル: Azure Active Directory と Central Desktop の統合
+# <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル:Azure Active Directory と Central Desktop の統合
 
 このチュートリアルでは、Central Desktop と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -265,7 +265,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Central Desktop] タイルを選ぶと、自動的に Central Desktop アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

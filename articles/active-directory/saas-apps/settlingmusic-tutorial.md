@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と楽楽精算の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と楽楽精算の統合 | Microsoft Docs
 description: Azure Active Directory と楽楽精算の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6f86a8a2-4bd0-40cc-b1b4-752fce123328
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 900254e42410aafa0d8e58048c7d88efa94dfed5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449065"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178547"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル: Azure Active Directory と楽楽精算の統合
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル:Azure Active Directory と楽楽精算の統合
 
 このチュートリアルでは、楽楽精算と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -189,7 +189,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
  
 ### <a name="create-a-settling-music-test-user"></a>楽楽精算テスト ユーザーの作成
 
-このセクションでは、楽楽精算で Britta Simon というユーザーを作成します。 [楽楽精算クライアント サポート チーム](https://rakurakuseisan.jp/)と連携し、楽楽精算プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、楽楽精算で Britta Simon というユーザーを作成します。  [楽楽精算クライアント サポート チーム](https://rakurakuseisan.jp/)と連携し、楽楽精算プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -226,7 +226,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [楽楽精算] タイルをクリックすると、自動的に楽楽精算アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

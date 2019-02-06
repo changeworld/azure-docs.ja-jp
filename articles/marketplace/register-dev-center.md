@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834827"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179839"
 ---
 # <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
 個人用アカウントにサインインしていないことを確認するには、新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開きます。  
@@ -68,7 +68,7 @@ ms.locfileid: "52834827"
 
 9.  `Registration - Review` セクションで、アカウント情報を見直し、すべて正しいことを確認します。  
 
-    Microsoft Azure Marketplace 発行者契約の契約条件をお読みください。  
+    Microsoft Azure Marketplace [発行者契約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)の契約条件をお読みください。  
 
     チェック ボックスをクリックすると、条件を読んで同意したと見なされます。  
     

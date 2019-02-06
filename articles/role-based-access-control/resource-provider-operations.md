@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2018
+ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c841fb8676cff8d15f54384aac84721bc8fb163b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267523"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191541"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -102,6 +102,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | 指定されたテナントの 1 日の IPAddress あたりのユーザー名/パスワードの失敗した試行の頻度について、新しくエンキューされたレポート ジョブの状態と結果を含む BLOB SAS URI を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | DevOps が承認したテナントの一覧を取得します。 通常、カスタマー サポートに使用されます。 |
 > | Action | Microsoft.ADHybridHealthService/reports/isdevops/read | DevOps が承認したテナントかどうかを示す値を取得します。 |
+> | Action | Microsoft.ADHybridHealthService/reports/riskyIp/GetAllBlobUri/read | 過去 7 日間に特定のサービスに対して要求された危険な IP ダウンロード レポートのすべての BLOB URI を取得します。 |
+> | Action | Microsoft.ADHybridHealthService/reports/riskyIp/GetBlobUri/read | 特定のサービスに対して要求された現在の危険な IP ダウンロード レポートのみを取得します。 |
 > | Action | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | 選択されている DevOps テナントの userid (objectid) を更新します。 |
 > | Action | Microsoft.ADHybridHealthService/reports/selecteddeployment/read | 指定されたテナントの選択されている展開を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/reports/tenantassigneddeployment/read | テナント ID が指定されている場合、テナントの保存場所を取得します。 |
@@ -163,16 +165,20 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.AlertsManagement/actionRules/delete | 特定のサブスクリプション内のアクション ルールを削除します。 |
 > | Action | Microsoft.AlertsManagement/actionRules/read | 入力フィルターのすべてのアクション ルールを取得します。 |
 > | Action | Microsoft.AlertsManagement/actionRules/write | 特定のサブスクリプション内のアクション ルールを作成または更新します |
 > | Action | Microsoft.AlertsManagement/alerts/changestate/action | アラートの状態を変更します。 |
-> | Action | Microsoft.AlertsManagement/alerts/delete/action | 特定のサブスクリプション内のアクション ルールを削除します。 |
+> | Action | Microsoft.AlertsManagement/alerts/diagnostics/read | アラートのすべての診断を取得します |
+> | Action | Microsoft.AlertsManagement/alerts/history/read | アラートの履歴を取得します |
 > | Action | Microsoft.AlertsManagement/alerts/read | 入力フィルターのすべてのアラートを取得します。 |
 > | Action | Microsoft.AlertsManagement/alertsList/read | サブスクリプション間での入力フィルターのアラートをすべて取得します |
 > | Action | Microsoft.AlertsManagement/alertsSummary/read | アラートの概要を取得します。 |
 > | Action | Microsoft.AlertsManagement/alertsSummaryList/read | サブスクリプション間でのアラートの概要を取得します |
 > | Action | Microsoft.AlertsManagement/Operations/read | 提供された操作を読み取ります。 |
+> | Action | Microsoft.AlertsManagement/register/action | Microsoft Alerts Management にサブスクリプションを登録します。 |
 > | Action | Microsoft.AlertsManagement/smartGroups/changestate/action | スマート グループの状態を変更します。 |
+> | Action | Microsoft.AlertsManagement/smartGroups/history/read | スマート グループの履歴を取得します |
 > | Action | Microsoft.AlertsManagement/smartGroups/read | 入力フィルターのすべてのスマート グループを取得します。 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -255,10 +261,10 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ApiManagement/service/apis/tags/write | 新しい API/タグの関連付けを追加します。 |
 > | Action | Microsoft.ApiManagement/service/apis/write | 新しい API を作成するか、既存の API の詳細を更新します。 |
 > | Action | Microsoft.ApiManagement/service/apisByTags/read | API/タグの関連付けの一覧を取得します。 |
-> | Action | Microsoft.ApiManagement/service/api-version-sets/delete | 既存の VersionSet を削除します。 |
-> | Action | Microsoft.ApiManagement/service/api-version-sets/read | バージョン グループ エンティティの一覧を取得するか、VersionSet の詳細を取得します。 |
-> | Action | Microsoft.ApiManagement/service/api-version-sets/versions/read | バージョン エンティティの一覧を取得します。 |
-> | Action | Microsoft.ApiManagement/service/api-version-sets/write | 新しい VersionSet を作成するか、既存の VersionSet の詳細を更新します。 |
+> | Action | Microsoft.ApiManagement/service/apiVersionSets/delete | 既存の VersionSet を削除します。 |
+> | Action | Microsoft.ApiManagement/service/apiVersionSets/read | バージョン グループ エンティティの一覧を取得するか、VersionSet の詳細を取得します。 |
+> | Action | Microsoft.ApiManagement/service/apiVersionSets/versions/read | バージョン エンティティの一覧を取得します。 |
+> | Action | Microsoft.ApiManagement/service/apiVersionSets/write | 新しい VersionSet を作成するか、既存の VersionSet の詳細を更新します。 |
 > | Action | Microsoft.ApiManagement/service/applynetworkconfigurationupdates/action | 更新済みのネットワーク設定を選択するために、仮想ネットワークで実行されている Microsoft.ApiManagement リソースを更新します。 |
 > | Action | Microsoft.ApiManagement/service/authorizationServers/delete | 既存の承認サーバーを削除します。 |
 > | Action | Microsoft.ApiManagement/service/authorizationServers/read | 承認サーバーの一覧を取得するか、承認サーバーの詳細を取得します。 |
@@ -271,6 +277,10 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ApiManagement/service/certificates/delete | 既存の証明書を削除します。 |
 > | Action | Microsoft.ApiManagement/service/certificates/read | 証明書の一覧を取得するか、証明書の詳細を取得します。 |
 > | Action | Microsoft.ApiManagement/service/certificates/write | 新しい証明書を追加します。 |
+> | Action | Microsoft.ApiManagement/service/contentTypes/contentItems/delete | 指定されたコンテンツ項目を削除します。 |
+> | Action | Microsoft.ApiManagement/service/contentTypes/contentItems/read | コンテンツ項目の一覧を返すか、コンテンツ項目の詳細を返します |
+> | Action | Microsoft.ApiManagement/service/contentTypes/contentItems/write | 新しいコンテンツ項目を作成するか、指定されたコンテンツ項目を更新します |
+> | Action | Microsoft.ApiManagement/service/contentTypes/read | コンテンツの種類の一覧を返します |
 > | Action | Microsoft.ApiManagement/service/delete | API Management サービス インスタンスを削除します。 |
 > | Action | Microsoft.ApiManagement/service/diagnostics/delete | 既存の診断を削除します。 |
 > | Action | Microsoft.ApiManagement/service/diagnostics/read | 診断の一覧または診断の詳細を取得します。 |
@@ -371,6 +381,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ApiManagement/service/users/applications/delete | 既存のアプリケーションを削除します。 |
 > | Action | Microsoft.ApiManagement/service/users/applications/read | すべてのユーザー アプリケーションの一覧または API Management アプリケーションの詳細を取得します。 |
 > | Action | Microsoft.ApiManagement/service/users/applications/write | アプリケーションを API Management に登録するか、アプリケーションの詳細を更新します。 |
+> | Action | Microsoft.ApiManagement/service/users/confirmations/send/action | 確認を送信します |
 > | Action | Microsoft.ApiManagement/service/users/delete | ユーザー アカウントを削除します。 |
 > | Action | Microsoft.ApiManagement/service/users/generateSsoUrl/action | SSO URL を生成します。 この URL を使用して、管理ポータルにアクセスできます。 |
 > | Action | Microsoft.ApiManagement/service/users/groups/read | ユーザー グループの一覧を取得します。 |
@@ -588,12 +599,12 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Batch/batchAccounts/pools/disableAutoscale/action | Batch アカウント プールの自動スケーリングを無効にします。 |
 > | Action | Microsoft.Batch/batchAccounts/pools/read | Batch アカウントのプールを一覧表示するか、プールのプロパティを取得します。 |
 > | Action | Microsoft.Batch/batchAccounts/pools/stopResize/action | Batch アカウント プールで実行中のサイズ変更操作を停止します。 |
-> | Action | Microsoft.Batch/batchAccounts/pools/upgradeOs/action | Batch アカウント プールのオペレーティング システムをアップグレードします。 |
 > | Action | Microsoft.Batch/batchAccounts/pools/write | Batch アカウントに新しいプールを作成するか、既存のプールを更新します。 |
 > | Action | Microsoft.Batch/batchAccounts/read | Batch アカウントを一覧表示するか、Batch アカウントのプロパティを取得します。 |
 > | Action | Microsoft.Batch/batchAccounts/regeneratekeys/action | Batch アカウントのアクセス キーを再生成します。 |
 > | Action | Microsoft.Batch/batchAccounts/syncAutoStorageKeys/action | Batch アカウント用に構成された自動ストレージ アカウントのアクセス キーを同期します。 |
 > | Action | Microsoft.Batch/batchAccounts/write | 新しい Batch アカウントを作成するか、既存の Batch アカウントを更新します。 |
+> | Action | Microsoft.Batch/locations/accountOperationResults/read | Batch アカウントの実行時間の長い操作の結果を取得します。 |
 > | Action | Microsoft.Batch/locations/checkNameAvailability/action | アカウント名が有効であり、使用されていないことを確認します。 |
 > | Action | Microsoft.Batch/locations/quotas/read | 指定された Azure リージョンの指定されたサブスクリプションの Batch クォータを取得します。 |
 > | Action | Microsoft.Batch/operations/read | Microsoft.Batch リソース プロバイダーで使用できる操作を一覧表示します。 |
@@ -605,8 +616,13 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Billing/billingAccounts/departments/read | 請求先アカウント スコープの下にあるすべての部門を一覧表示します |
+> | Action | Microsoft.Billing/billingAccounts/enrollmentAccounts/read | 請求先アカウント スコープの下にあるすべての登録アカウントを一覧表示します |
+> | Action | Microsoft.Billing/billingAccounts/read | ユーザーがアクセス権を持つすべての請求先アカウントを一覧表示します |
 > | Action | Microsoft.Billing/billingPeriods/read | 使用可能な請求期間を一覧表示します。 |
+> | Action | Microsoft.Billing/departments/read | ユーザーがアクセス権を持つすべての部門を一覧表示します |
 > | Action | Microsoft.Billing/invoices/read | 使用可能な請求書を一覧表示します。 |
+> | Action | Microsoft.Billing/register/action | Microsoft.Billing リソース プロバイダーにサブスクリプションを登録します |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -626,6 +642,7 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Blueprint/blueprintAssignments/assignmentOperations/read | 任意のブループリント アーティファクトを読み取ります |
 > | Action | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |
 > | Action | Microsoft.Blueprint/blueprintAssignments/read | 任意のブループリント アーティファクトを読み取ります |
 > | Action | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
@@ -683,7 +700,6 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Cache/redis/patchSchedules/read | Azure Cache for Redis のパッチ スケジュールを取得します |
 > | Action | Microsoft.Cache/redis/patchSchedules/write | Azure Cache for Redis のパッチ スケジュールを変更します |
 > | Action | Microsoft.Cache/redis/read | 管理ポータルで Azure Cache for Redis の設定と構成を表示します |
-> | Action | Microsoft.Cache/redis/recommendations/read | Azure Cache for Redis に関する推奨事項を確認します |
 > | Action | Microsoft.Cache/redis/regenerateKey/action | 管理ポータルで Azure Cache for Redis のアクセス キーの値を変更します |
 > | Action | Microsoft.Cache/redis/start/action | キャッシュ インスタンスを開始します。 |
 > | Action | Microsoft.Cache/redis/stop/action | キャッシュ インスタンスを停止します。 |
@@ -696,16 +712,31 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Capacity/appliedreservations/read | すべての予約を読み取ります。 |
+> | Action | Microsoft.Capacity/calculateprice/action | 予約価格を計算します。 |
+> | Action | Microsoft.Capacity/catalogs/read | 予約のカタログを読み取ります。 |
+> | Action | Microsoft.Capacity/checkoffers/action | サブスクリプション オファーを確認します。 |
+> | Action | Microsoft.Capacity/checkscopes/action | サブスクリプションを確認します。 |
+> | Action | Microsoft.Capacity/commercialreservationorders/read | テナントで作成された予約注文を取得します。 |
+> | Action | Microsoft.Capacity/operations/read | 操作を読み取ります。 |
 > | Action | Microsoft.Capacity/register/action | キャパシティ リソース プロバイダーに登録し、キャパシティ リソースを作成できるようにします。 |
 > | Action | Microsoft.Capacity/reservationorders/action | 予約を更新します。 |
+> | Action | Microsoft.Capacity/reservationorders/availablescopes/action | 使用可能なスコープを検索します。 |
 > | Action | Microsoft.Capacity/reservationorders/delete | 予約を削除します。 |
+> | Action | Microsoft.Capacity/reservationorders/merge/action | 予約をマージします。 |
 > | Action | Microsoft.Capacity/reservationorders/read | すべての予約を読み取ります。 |
 > | Action | Microsoft.Capacity/reservationorders/reservations/action | 予約を更新します。 |
 > | Action | Microsoft.Capacity/reservationorders/reservations/delete | 予約を削除します。 |
 > | Action | Microsoft.Capacity/reservationorders/reservations/read | すべての予約を読み取ります。 |
 > | Action | Microsoft.Capacity/reservationorders/reservations/revisions/read | すべての予約を読み取ります。 |
 > | Action | Microsoft.Capacity/reservationorders/reservations/write | 予約を作成します。 |
+> | Action | Microsoft.Capacity/reservationorders/return/action | 予約を返します。 |
+> | Action | Microsoft.Capacity/reservationorders/split/action | 予約を分割します。 |
+> | Action | Microsoft.Capacity/reservationorders/swap/action | 予約を入れ替えます。 |
 > | Action | Microsoft.Capacity/reservationorders/write | 予約を作成します。 |
+> | Action | Microsoft.Capacity/tenants/register/action | テナントを登録します。 |
+> | Action | Microsoft.Capacity/unregister/action | テナントを登録解除します。 |
+> | Action | Microsoft.Capacity/validatereservationorder/action | 予約を検証します。 |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -1190,15 +1221,25 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.Consumption/balances/read | 管理グループの請求期間の使用状況の概要を一覧表示します。 |
+> | Action | Microsoft.Consumption/budgets/delete | サブスクリプションまたは管理グループごとに予算を削除します。 |
 > | Action | Microsoft.Consumption/budgets/read | サブスクリプションまたは管理グループごとに予算を一覧表示します。 |
-> | Action | Microsoft.Consumption/budgets/write | サブスクリプションまたは管理グループで予算を作成、更新、削除します。 |
+> | Action | Microsoft.Consumption/budgets/write | サブスクリプションまたは管理グループごとに予算を作成および更新します。 |
+> | Action | Microsoft.Consumption/charges/read | 料金を一覧表示します |
+> | Action | Microsoft.Consumption/credits/read | クレジットを一覧表示します |
+> | Action | Microsoft.Consumption/events/read | イベントを一覧表示します |
+> | Action | Microsoft.Consumption/forecasts/read | 予測を一覧表示します |
+> | Action | Microsoft.Consumption/lots/read | ロットを一覧表示します |
 > | Action | Microsoft.Consumption/marketplaces/read | EA および WebDirect サブスクリプションのスコープに対する Marketplace リソース使用状況の詳細を一覧表示します。 |
+> | Action | Microsoft.Consumption/operationresults/read | 操作結果を一覧表示します |
 > | Action | Microsoft.Consumption/operations/read | Microsoft.Consumption リソース プロバイダーによってサポートされるすべての操作を一覧表示します。 |
+> | Action | Microsoft.Consumption/operationstatus/read | 操作の状態を一覧表示します |
 > | Action | Microsoft.Consumption/pricesheets/read | サブスクリプションまたは管理グループの価格シート データを一覧表示します。 |
+> | Action | Microsoft.Consumption/register/action | 従量課金プラン RP に登録します |
 > | Action | Microsoft.Consumption/reservationDetails/read | 予約注文または管理グループごとに予約インスタンスの使用状況の詳細を一覧表示します。 詳細データは、インスタンス別の日レベル別です。 |
 > | Action | Microsoft.Consumption/reservationRecommendations/read | サブスクリプションの予約インスタンスに関する 1 つのレコメンデーションまたは共有のレコメンデーションの一覧を取得します。 |
 > | Action | Microsoft.Consumption/reservationSummaries/read | 予約注文または管理グループごとに予約インスタンスの使用状況の概要を一覧表示します。 概要データは、月レベル別または日レベル別です。 |
 > | Action | Microsoft.Consumption/reservationTransactions/read | 管理グループ別に予約インスタンスのトランザクション履歴を一覧表示します。 |
+> | Action | Microsoft.Consumption/tags/read | EA およびサブスクリプションのタグを一覧表示します。 |
 > | Action | Microsoft.Consumption/tenants/register/action | Microsoft.Consumption のスコープのアクションをテナントごとに登録します。 |
 > | Action | Microsoft.Consumption/terms/read | サブスクリプションまたは管理グループの条件を一覧表示します。 |
 > | Action | Microsoft.Consumption/usageDetails/read | EA および WebDirect サブスクリプションのスコープに対する使用状況の詳細を一覧表示します。 |
@@ -1208,6 +1249,7 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.ContainerInstance/containerGroups/containers/exec/action | 特定のコンテナーに向けて実行します。 |
 > | Action | Microsoft.ContainerInstance/containerGroups/containers/logs/read | 特定のコンテナーのログを取得します。 |
 > | Action | Microsoft.ContainerInstance/containerGroups/delete | 特定のコンテナー グループを削除します。 |
 > | Action | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/read | コンテナー グループの診断設定を取得します。 |
@@ -1218,6 +1260,10 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ContainerInstance/containerGroups/start/action | 特定のコンテナー グループを起動します。 |
 > | Action | Microsoft.ContainerInstance/containerGroups/stop/action | 特定のコンテナー グループを停止します。 コンピューティング リソースの割り当てが解除され、課金が停止されます。 |
 > | Action | Microsoft.ContainerInstance/containerGroups/write | 特定のコンテナー グループを作成または更新します。 |
+> | Action | Microsoft.ContainerInstance/locations/cachedImages/read | リージョン内のサブスクリプションに対してキャッシュされたイメージを取得します。 |
+> | Action | Microsoft.ContainerInstance/locations/capabilities/read | リージョンの機能を取得します。 |
+> | Action | Microsoft.ContainerInstance/locations/deleteVirtualNetworkOrSubnets/action | 仮想ネットワークまたはサブネットを削除していることを Microsoft.ContainerInstance に通知します。 |
+> | Action | Microsoft.ContainerInstance/locations/usages/read | 特定のリージョンの使用状況を取得します。 |
 > | Action | Microsoft.ContainerInstance/register/action | コンテナー インスタンス リソース プロバイダーのサブスクリプションを登録し、コンテナー グループの作成を有効にします。 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
@@ -1301,6 +1347,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
 > | Action | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
 > | Action | Microsoft.ContainerService/managedClusters/read | マネージド クラスターを取得します。 |
+> | Action | Microsoft.ContainerService/managedClusters/resetAADProfile/action | マネージド クラスターの AAD プロファイルをリセットします。 |
+> | Action | Microsoft.ContainerService/managedClusters/resetServicePrincipalProfile/action | マネージド クラスターのサービス プリンシパル プロファイルをリセットします。 |
 > | Action | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | クラスターのアップグレード プロファイルを取得します。 |
 > | Action | Microsoft.ContainerService/managedClusters/write | 新しいマネージド クラスターを作成するか、既存のものを更新します。 |
 > | Action | Microsoft.ContainerService/openShiftClusters/delete | Open Shift クラスターを削除します |
@@ -1334,6 +1382,10 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.CostManagement/dimensions/read | サポートされているすべてのディメンションをスコープ別に一覧表示します。 |
+> | Action | Microsoft.CostManagement/exports/action | 指定されたエクスポートを実行します。 |
+> | Action | Microsoft.CostManagement/exports/delete | 指定されたエクスポートを削除します。 |
+> | Action | Microsoft.CostManagement/exports/read | エクスポートをスコープ別に一覧表示します。 |
+> | Action | Microsoft.CostManagement/exports/write | 指定されたエクスポートを作成または更新します。 |
 > | Action | Microsoft.CostManagement/query/action | スコープ別に使用状況データをクエリをします。 |
 > | Action | Microsoft.CostManagement/query/read | スコープ別に使用状況データをクエリをします。 |
 > | Action | Microsoft.CostManagement/reports/action | スコープ別の使用状況データのレポートをスケジュールします。 |
@@ -1456,7 +1508,9 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataBox/jobs/read | 注文を一覧表示または取得します。 |
 > | Action | Microsoft.DataBox/jobs/write | 注文を作成または更新します。 |
 > | Action | Microsoft.DataBox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
+> | Action | Microsoft.DataBox/locations/operationResults/read | 操作結果を一覧表示または取得します。 |
 > | Action | Microsoft.DataBox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
+> | Action | Microsoft.DataBox/register/action | プロバイダー Microsoft.Databox を登録します |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
@@ -1534,6 +1588,7 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.DataFactory/checkazuredatafactorynameavailability/read | データ ファクトリ名が使用できるかどうかを確認します。 |
 > | Action | Microsoft.DataFactory/datafactories/activitywindows/read | 指定されたパラメーターを使用して、データ ファクトリのアクティビティ ウィンドウを読み取ります。 |
 > | Action | Microsoft.DataFactory/datafactories/datapipelines/activities/activitywindows/read | 指定されたパラメーターを使用して、パイプライン アクティビティのアクティビティ ウィンドウを読み取ります。 |
 > | Action | Microsoft.DataFactory/datafactories/datapipelines/activitywindows/read | 指定されたパラメーターを使用して、パイプラインのアクティビティ ウィンドウを読み取ります。 |
@@ -1571,17 +1626,20 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataFactory/factories/datasets/read | データセットを読み取ります。 |
 > | Action | Microsoft.DataFactory/factories/datasets/write | データセットを作成または更新します。 |
 > | Action | Microsoft.DataFactory/factories/delete | データ ファクトリを削除します。 |
+> | Action | Microsoft.DataFactory/factories/getGitHubAccessToken/action | GitHub アクセス トークンを取得します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/delete | 統合ランタイムを削除します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/getconnectioninfo/read | 統合ランタイムの接続情報を読み取ります。 |
+> | Action | Microsoft.DataFactory/factories/integrationruntimes/getObjectMetadata/action | 指定された統合ランタイムの SSIS 統合ランタイム メタデータを取得します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/getstatus/read | 統合ランタイムの状態を読み取ります。 |
+> | Action | Microsoft.DataFactory/factories/integrationruntimes/linkedIntegrationRuntime/action | 指定された共有統合ランタイム上にリンクされた統合ランタイムの参照を作成します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/listauthkeys/read | 統合ランタイムの認証キーの一覧を取得します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/monitoringdata/read | 統合ランタイムの監視データを取得します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/nodes/delete | 指定された統合ランタイムのノードを削除します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/nodes/ipAddress/action | 統合ランタイムの指定されたノードの IP アドレスを返します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/nodes/read | 指定された統合ランタイムのノードを読み取ります。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/nodes/write | 自己ホスト型統合ランタイム ノードを更新します。 |
-> | Action | Microsoft.DataFactory/factories/integrationruntimes/queryactivityruns/action | 指定された統合ランタイムに対してアクティビティの実行のクエリを行います。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/read | 統合ランタイムを読み取ります。 |
+> | Action | Microsoft.DataFactory/factories/integrationruntimes/refreshObjectMetadata/action | 指定された統合ランタイムの SSIS 統合ランタイム メタデータを更新します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/regenerateauthkey/action | 指定された統合ランタイムの認証キーを再生成します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/removelinks/action | 指定された Integration Runtime からリンクされた Integration Runtime の参照を削除します。 |
 > | Action | Microsoft.DataFactory/factories/integrationruntimes/start/action | 統合ランタイムを開始します。 |
@@ -1603,6 +1661,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataFactory/factories/pipelines/pipelineruns/read | パイプライン実行を読み取ります。 |
 > | Action | Microsoft.DataFactory/factories/pipelines/read | パイプラインを読み取ります。 |
 > | Action | Microsoft.DataFactory/factories/pipelines/write | パイプラインを作成または更新します。 |
+> | Action | Microsoft.DataFactory/factories/querydebugpipelineruns/action | デバッグ パイプライン実行を照会します。 |
 > | Action | Microsoft.DataFactory/factories/querypipelineruns/action | パイプライン実行を照会します。 |
 > | Action | Microsoft.DataFactory/factories/querypipelineruns/read | クエリ パイプライン実行の結果を読み取ります。 |
 > | Action | Microsoft.DataFactory/factories/querytriggerruns/action | トリガーの実行を照会します。 |
@@ -1617,6 +1676,10 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataFactory/factories/triggers/write | トリガーを作成または更新します。 |
 > | Action | Microsoft.DataFactory/factories/write | データ ファクトリを作成または更新します。 |
 > | Action | Microsoft.DataFactory/locations/configureFactoryRepo/action | ファクトリのリポジトリを構成します。 |
+> | Action | Microsoft.DataFactory/locations/getDataPlaneAccess/action | ADF DataPlane サービスへのアクセスを取得します。 |
+> | Action | Microsoft.DataFactory/locations/getDataPlaneAccess/read | ADF DataPlane サービスへのアクセスを読み取ります。 |
+> | Action | Microsoft.DataFactory/locations/getFeatureValue/action | 特定の場所に対する露出調整機能の値を取得します。 |
+> | Action | Microsoft.DataFactory/locations/getFeatureValue/read | 特定の場所に対する露出調整機能の値を読み取ります。 |
 > | Action | Microsoft.DataFactory/operations/read | Microsoft Data Factory プロバイダーのすべての操作を読み取ります。 |
 > | Action | Microsoft.DataFactory/register/action | データ ファクトリ リソース プロバイダーのサブスクリプションを登録します。 |
 > | Action | Microsoft.DataFactory/unregister/action | データ ファクトリ リソース プロバイダーへのサブスクリプションの登録を解除します。 |
@@ -1644,10 +1707,12 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataLakeAnalytics/accounts/storageAccounts/read | DataLakeAnalytics アカウントのリンクされたストレージ アカウントに関する情報を取得します。 |
 > | Action | Microsoft.DataLakeAnalytics/accounts/storageAccounts/write | DataLakeAnalytics アカウントのリンクされたストレージ アカウントを作成または更新します。 |
 > | Action | Microsoft.DataLakeAnalytics/accounts/TakeOwnership/action | 他のユーザーによって送信されたジョブを取り消すアクセス許可を付与します。 |
+> | Action | Microsoft.DataLakeAnalytics/accounts/transferAnalyticsUnits/action | DataLakeAnalytics アカウント間で SystemMaxAnalyticsUnits を転送します。 |
 > | Action | Microsoft.DataLakeAnalytics/accounts/write | DataLakeAnalytics アカウントを作成または更新します。 |
 > | Action | Microsoft.DataLakeAnalytics/locations/capability/read | DataLakeAnalytics の使用に関するサブスクリプションの機能の情報を取得します。 |
 > | Action | Microsoft.DataLakeAnalytics/locations/checkNameAvailability/action | DataLakeAnalytics アカウントの名前を使用できるかどうかを確認します。 |
 > | Action | Microsoft.DataLakeAnalytics/locations/operationResults/read | DataLakeAnalytics アカウントの操作の結果を取得します。 |
+> | Action | Microsoft.DataLakeAnalytics/locations/usages/read | DataLakeAnalytics の使用に関するサブスクリプションのクォータ使用状況の情報を取得します。 |
 > | Action | Microsoft.DataLakeAnalytics/operations/read | DataLakeAnalytics で使用可能な操作を取得します。 |
 > | Action | Microsoft.DataLakeAnalytics/register/action | DataLakeAnalytics にサブスクリプションを登録します。 |
 
@@ -1674,6 +1739,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DataLakeStore/locations/capability/read | DataLakeStore の使用に関するサブスクリプションの機能の情報を取得します。 |
 > | Action | Microsoft.DataLakeStore/locations/checkNameAvailability/action | DataLakeStore アカウントの名前を使用できるかどうかを確認します。 |
 > | Action | Microsoft.DataLakeStore/locations/operationResults/read | DataLakeStore アカウントの操作の結果を取得します。 |
+> | Action | Microsoft.DataLakeStore/locations/usages/read | DataLakeStore の使用に関するサブスクリプションのクォータ使用状況の情報を取得します。 |
 > | Action | Microsoft.DataLakeStore/operations/read | DataLakeStore で使用可能な操作を取得します。 |
 > | Action | Microsoft.DataLakeStore/register/action | DataLakeStore にサブスクリプションを登録します。 |
 
@@ -1724,9 +1790,12 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.DBforMariaDB/servers/firewallRules/write | 指定されたパラメーターでファイアウォール規則を作成するか、既存の規則を更新します。 |
 > | Action | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/read | リソースの診断設定を取得します。 |
 > | Action | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
+> | Action | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/logDefinitions/read | MariaDB サーバーの利用可能なログを取得します |
 > | Action | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/metricDefinitions/read | データベースの利用可能なメトリックの種類を返します。 |
 > | Action | Microsoft.DBforMariaDB/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Action | Microsoft.DBforMariaDB/servers/recoverableServers/read | 復旧可能な MariaDB サーバーの情報を返します |
+> | Action | Microsoft.DBforMariaDB/servers/securityAlertPolicies/read | 指定されたサーバーで構成されているサーバーの脅威検出ポリシーの詳細を取得します。 |
+> | Action | Microsoft.DBforMariaDB/servers/securityAlertPolicies/write | 指定されたサーバーの脅威検出ポリシーを変更します。 |
 > | Action | Microsoft.DBforMariaDB/servers/updateConfigurations/action | 指定されたサーバーの構成を更新します。 |
 > | Action | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | 既存の仮想ネットワーク ルールを削除します。 |
 > | Action | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | 仮想ネットワーク ルールの一覧を返すか、指定された仮想ネットワーク ルールのプロパティを取得します。 |
@@ -1867,7 +1936,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Devices/provisioningServices/certificates/verify/Action | 証明書リソースを確認します。 |
 > | Action | Microsoft.Devices/provisioningServices/certificates/Write | 証明書を作成または更新します。 |
 > | Action | Microsoft.Devices/provisioningServices/Delete | IotDps リソースを削除します。 |
-> | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/read | リソースの診断設定を取得します。 メモ: `Microsoft.Insights/diagnosticSettings/read` も必要な場合があります。  |
+> | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/read | リソースの診断設定を取得します。 メモ: `Microsoft.Insights/diagnosticSettings/read` も必要な場合があります。 |
 > | Action | Microsoft.Devices/provisioningServices/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
 > | Action | Microsoft.Devices/provisioningServices/keys/listkeys/Action | キー名の IotDps キーを取得します。 |
 > | Action | Microsoft.Devices/provisioningServices/listkeys/Action | すべての IotDps キーを取得します。 |
@@ -2091,13 +2160,6 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
-> | Action | Microsoft.EventGrid/domains/delete | ドメインを削除します |
-> | Action | Microsoft.EventGrid/domains/listKeys/action | ドメインのキーを一覧表示します |
-> | Action | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | ドメインの使用可能なメトリックを取得します |
-> | Action | Microsoft.EventGrid/domains/read | ドメインを読み取ります |
-> | Action | Microsoft.EventGrid/domains/regenerateKey/action | ドメインのキーを再生成します |
-> | Action | Microsoft.EventGrid/domains/topics/read | ドメインのトピックを読み取ります |
-> | Action | Microsoft.EventGrid/domains/write | ドメインを作成または更新します |
 > | Action | Microsoft.EventGrid/eventSubscriptions/delete | eventSubscription を削除します。 |
 > | Action | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | イベント サブスクリプションの完全な URL を取得します。 |
 > | Action | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | イベント サブスクリプションの診断設定を取得します。 |
@@ -2108,11 +2170,13 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/read | トピックの診断設定を取得します。 |
 > | Action | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/write | トピックの診断設定を作成または更新します。 |
 > | Action | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/metricDefinitions/read | トピックで使用可能なメトリックを取得します。 |
+> | Action | Microsoft.EventGrid/extensionTopics/read | extensionTopic を読み取ります。 |
 > | Action | Microsoft.EventGrid/locations/eventSubscriptions/read | リージョンのイベント サブスクリプションを一覧表示します |
 > | Action | Microsoft.EventGrid/locations/operationResults/read | リージョン操作の結果を読み取ります |
 > | Action | Microsoft.EventGrid/locations/operationsStatus/read | リージョン操作の状態を読み取ります |
 > | Action | Microsoft.EventGrid/locations/topictypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
 > | Action | Microsoft.EventGrid/operationResults/read | 操作の結果を読み取ります |
+> | Action | Microsoft.EventGrid/operations/read | EventGrid 操作を一覧表示します。 |
 > | Action | Microsoft.EventGrid/operationsStatus/read | 操作の状態を読み取ります |
 > | Action | Microsoft.EventGrid/register/action | EventGrid リソース プロバイダーのサブスクリプションを登録します。 |
 > | Action | Microsoft.EventGrid/topics/delete | トピックを削除する |
@@ -2126,6 +2190,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.EventGrid/topictypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
 > | Action | Microsoft.EventGrid/topictypes/eventtypes/read | topictype でサポートされている eventtype を読み取ります |
 > | Action | Microsoft.EventGrid/topictypes/read | topictype を読み取ります |
+> | Action | Microsoft.EventGrid/unregister/action | EventGrid リソース プロバイダーのサブスクリプションを登録解除します。 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -2133,12 +2198,12 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.EventHub/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
-> | Action | Microsoft.EventHub/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailabiltiy を使用してください。 |
+> | Action | Microsoft.EventHub/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
 > | Action | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | クラスターのメトリック リソースの説明一覧を取得します。 |
 > | Action | Microsoft.EventHub/clusters/read | クラスター リソースの説明を取得します。 |
 > | Action | Microsoft.EventHub/clusters/write | クラスター リソースの説明を取得します。 |
 > | Action | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | 指定した VNet について、 EventHub リソース プロバイダー内の VNet ルールを削除します |
-> | Action | Microsoft.EventHub/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は使用されていません。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
+> | Action | Microsoft.EventHub/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は非推奨です。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/delete | 名前空間の承認規則を削除します。 名前空間の既定の承認規則は削除できません。  |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/listkeys/action | 名前空間への接続文字列を取得します。 |
 > | Action | Microsoft.EventHub/namespaces/authorizationRules/read | 名前空間の承認規則の説明の一覧を取得します。 |
@@ -2493,6 +2558,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Insights/MetricDefinitions/Microsoft.Insights/Read | メトリック定義を読み取ります。 |
 > | Action | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | メトリック定義を読み取ります。 |
 > | Action | Microsoft.Insights/MetricDefinitions/Read | メトリック定義を読み取ります。 |
+> | Action | Microsoft.Insights/Metrics/Action | メトリックのアクション |
 > | Action | Microsoft.Insights/Metrics/providers/Metrics/Read | メトリックを読み取ります。 |
 > | Action | Microsoft.Insights/Metrics/Read | メトリックを読み取ります。 |
 > | DataAction | Microsoft.Insights/Metrics/Write | メトリックを書き込みます。 |
@@ -2576,13 +2642,13 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | データ接続リソースを削除します。 |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | データ接続リソースを削除します。 |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/read | データ接続リソースを読み取ります。 |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/read | データ接続リソースを読み取ります。 |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/write | データ接続リソースを書き込みます。 |
+> | Action | Microsoft.Kusto/Clusters/Databases/DataConnections/write | データ接続リソースを書き込みます。 |
 > | Action | Microsoft.Kusto/Clusters/Databases/delete | データベース リソースを削除します。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | データ接続リソースを削除します。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | データ接続リソースを削除します。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | データ接続リソースを読み取ります。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | データ接続リソースを読み取ります。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | データ接続リソースを書き込みます。 |
-> | Action | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | データ接続リソースを書き込みます。 |
 > | Action | Microsoft.Kusto/Clusters/Databases/read | データベース リソースを読み取ります。 |
 > | Action | Microsoft.Kusto/Clusters/Databases/write | データベース リソースを書き込みます。 |
 > | Action | Microsoft.Kusto/Clusters/delete | クラスター リソースを削除します。 |
@@ -2620,15 +2686,23 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/read | スケジュールを読み取ります。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/write | スケジュールを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | テンプレート内のすべてのリソースを開始してテンプレートを開始します。 |
-> | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | テンプレート内のすべてのリソースを開始してテンプレートを開始します。 |
+> | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | テンプレート内のすべてのリソースを停止してテンプレートを停止します。 |
+> | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/Upload/action | 現在のテンプレートを設定している環境をラボ アカウントで共有ギャラリーにアップロードします |
 > | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | 環境の設定を追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/read | ラボを読み取ります。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/Register/action | マネージド ラボに登録します。 |
+> | Action | Microsoft.LabServices/labAccounts/labs/SendEmail/action | ラボの登録リンクを含む電子メールを送信します |
 > | Action | Microsoft.LabServices/labAccounts/labs/users/delete | ユーザーを削除します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/users/read | ユーザーを読み取ります。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/users/write | ユーザーを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/write | ラボを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/read | ラボ アカウントを読み取ります。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedGalleries/delete | 共有ギャラリーを削除します。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedGalleries/read | 共有ギャラリーを読み取ります。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedGalleries/write | 共有ギャラリーを追加または変更します。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedImages/delete | 共有イメージを削除します。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedImages/read | 共有イメージを読み取ります。 |
+> | Action | Microsoft.LabServices/labAccounts/sharedImages/write | 共有イメージを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/write | ラボ アカウントを追加または変更します。 |
 > | Action | Microsoft.LabServices/locations/operations/read | 操作を読み取ります。 |
 > | Action | Microsoft.LabServices/register/action | サブスクリプションを登録します。 |
@@ -2981,9 +3055,14 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.MachineLearningServices/locations/computeoperationstatus/read | 特定のコンピューティング操作の状態を取得します。 |
+> | Action | Microsoft.MachineLearningServices/locations/usages/read | サブスクリプション内の AML コンピューティング リソースの使用状況レポート |
+> | Action | Microsoft.MachineLearningServices/locations/vmsizes/read | サポートされる VM のサイズを取得します。 |
+> | Action | Microsoft.MachineLearningServices/locations/workspaceOperationsStatus/read | 特定のワークスペース操作の状態を取得します。 |
 > | Action | Microsoft.MachineLearningServices/register/action | Machine Learning Services リソース プロバイダーのサブスクリプションを登録します。 |
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/delete | Machine Learning Services ワークスペースのコンピューティング リソースを削除します。 |
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/listKeys/action | Machine Learning Services ワークスペースのコンピューティング リソースについて、シークレットの一覧を取得します。 |
+> | Action | Microsoft.MachineLearningServices/workspaces/computes/listNodes/action | Machine Learning Services ワークスペースのコンピューティング リソースについて、ノードの一覧を取得します。 |
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/read | Machine Learning Services ワークスペースのコンピューティング リソースを取得します。 |
 > | Action | Microsoft.MachineLearningServices/workspaces/computes/write | Machine Learning Services ワークスペースのコンピューティング リソースを作成または更新します。 |
 > | Action | Microsoft.MachineLearningServices/workspaces/delete | Machine Learning Services ワークスペースを削除します。 |
@@ -2996,6 +3075,7 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.ManagedIdentity/register/action | マネージド ID リソース プロバイダーのサブスクリプションを登録します。 |
 > | Action | Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | 既存のユーザー割り当て ID をリソースに割り当てるための RBAC アクションです。 |
 > | Action | Microsoft.ManagedIdentity/userAssignedIdentities/delete | 既存のユーザー割り当て ID を削除します。 |
 > | Action | Microsoft.ManagedIdentity/userAssignedIdentities/read | 既存のユーザー割り当て ID を取得します。 |
@@ -3065,6 +3145,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | イメージをエンド ユーザーの ACR にインポートします。 |
 > | Action | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | 構成を返します。 |
 > | Action | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | 構成を保存します。 |
+> | Action | Microsoft.Marketplace/register/action | Microsoft.Marketplace リソース プロバイダーをサブスクリプションに登録します。 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -3097,9 +3178,16 @@ ms.locfileid: "54267523"
 > | --- | --- | --- |
 > | Action | Microsoft.Media/checknameavailability/action | Media Services のアカウント名が使用可能かどうかを確認します。 |
 > | Action | Microsoft.Media/locations/checkNameAvailability/action | Media Services のアカウント名が使用可能かどうかを確認します。 |
+> | Action | Microsoft.Media/mediaservices/accountfilters/delete | アカウント フィルターを削除します。 |
+> | Action | Microsoft.Media/mediaservices/accountfilters/read | アカウント フィルターを読み取ります。 |
+> | Action | Microsoft.Media/mediaservices/accountfilters/write | アカウント フィルターを作成または更新します。 |
+> | Action | Microsoft.Media/mediaservices/assets/assetfilters/delete | 資産フィルターを削除します。 |
+> | Action | Microsoft.Media/mediaservices/assets/assetfilters/read | 資産フィルターを読み取ります。 |
+> | Action | Microsoft.Media/mediaservices/assets/assetfilters/write | 資産フィルターを作成または更新します。 |
 > | Action | Microsoft.Media/mediaservices/assets/delete | 資産を削除します。 |
 > | Action | Microsoft.Media/mediaservices/assets/getEncryptionKey/action | 資産暗号化キーを取得します。 |
 > | Action | Microsoft.Media/mediaservices/assets/listContainerSas/action | 資産コンテナーの SAS URL の一覧を取得します。 |
+> | Action | Microsoft.Media/mediaservices/assets/listStreamingLocators/action | 資産のストリーミング ロケーターの一覧を取得します。 |
 > | Action | Microsoft.Media/mediaservices/assets/read | アセンブリを読み取ります |
 > | Action | Microsoft.Media/mediaservices/assets/write | 資産を作成または更新します。 |
 > | Action | Microsoft.Media/mediaservices/contentKeyPolicies/delete | コンテンツ キー ポリシーを削除します。 |
@@ -3157,6 +3245,9 @@ ms.locfileid: "54267523"
 > | --- | --- | --- |
 > | Action | Microsoft.Migrate/locations/assessmentOptions/read | 指定された場所で利用できるアセスメント オプションを取得します |
 > | Action | Microsoft.Migrate/locations/checknameavailability/action | 指定された場所において、指定されたサブスクリプションでリソース名を使用できるかどうかを確認します |
+> | Action | Microsoft.Migrate/migrateprojects/read | 移行プロジェクトのプロパティを取得します。 |
+> | Action | Microsoft.Migrate/migrateprojects/solutions/getconfig/action | 移行プロジェクト ソリューション構成を取得します |
+> | Action | Microsoft.Migrate/migrateprojects/solutions/read | 移行プロジェクト ソリューションのプロパティを取得します。 |
 > | Action | Microsoft.Migrate/Operations/read | Microsoft.Migrate リソース プロバイダーで使用できる操作を一覧表示します |
 > | Action | Microsoft.Migrate/projects/assessments/read | プロジェクトでの評価を一覧表示します |
 > | Action | Microsoft.Migrate/projects/delete | プロジェクトを削除します |
@@ -3179,19 +3270,20 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.NetApp/activeDirectories/delete |  |
+> | Action | Microsoft.NetApp/activeDirectories/read |  |
+> | Action | Microsoft.NetApp/activeDirectories/write |  |
 > | Action | Microsoft.NetApp/locations/operationresults/read | 操作結果リソースを読み取ります。 |
 > | Action | Microsoft.NetApp/locations/read | 利用可否の確認リソースを読み取ります。 |
 > | Action | Microsoft.NetApp/netAppAccounts/capacityPools/delete | プール リソースを削除します。 |
 > | Action | Microsoft.NetApp/netAppAccounts/capacityPools/read | プール リソースを読み取ります。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/delete | ボリューム リソースを削除します。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/MountTargets/delete | マウント ターゲット リソースを削除します。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/MountTargets/read | マウント ターゲット リソースを読み取ります。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/MountTargets/write | マウント ターゲット リソースを書き込みます。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/read | ボリューム リソースを読み取ります。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots/delete | スナップショット リソースを削除します。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots/read | スナップショット リソースを読み取ります。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots/write | スナップショット リソースを書き込みます。 |
-> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/write | ボリューム リソースを書き込みます。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete | ボリューム リソースを削除します。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/mountTargets/read | マウント ターゲット リソースを読み取ります。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read | ボリューム リソースを読み取ります。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete | スナップショット リソースを削除します。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | スナップショット リソースを読み取ります。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | スナップショット リソースを書き込みます。 |
+> | Action | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write | ボリューム リソースを書き込みます。 |
 > | Action | Microsoft.NetApp/netAppAccounts/capacityPools/write | プール リソースを書き込みます。 |
 > | Action | Microsoft.NetApp/netAppAccounts/delete | アカウント リソースを削除します。 |
 > | Action | Microsoft.NetApp/netAppAccounts/read | アカウント リソースを読み取ります。 |
@@ -3203,6 +3295,9 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Network/applicationGatewayAvailableRequestHeaders/read | Application Gateway の使用可能な要求ヘッダーを取得します。 |
+> | Action | Microsoft.Network/applicationGatewayAvailableResponseHeaders/read | Application Gateway の使用可能な応答ヘッダーを取得します。 |
+> | Action | Microsoft.Network/applicationGatewayAvailableServerVariables/read | Application Gateway の使用可能なサーバー変数を取得します。 |
 > | Action | Microsoft.Network/applicationGatewayAvailableSslOptions/predefinedPolicies/read | Application Gateway の SSL の定義済みポリシーです。 |
 > | Action | Microsoft.Network/applicationGatewayAvailableSslOptions/read | Application Gateway で使用可能な SSL オプションです。 |
 > | Action | Microsoft.Network/applicationGatewayAvailableWafRuleSets/read | アプリケーション ゲートウェイの利用可能な Waf ルール セットを取得します。 |
@@ -3216,6 +3311,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Network/applicationSecurityGroups/delete | アプリケーション セキュリティ グループを削除します。 |
 > | Action | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | IP 構成をアプリケーション セキュリティ グループに結合します。 |
 > | Action | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | セキュリティ ルールをアプリケーション セキュリティ グループに結合します。 |
+> | Action | Microsoft.Network/applicationSecurityGroups/listIpConfigurations/action | ApplicationSecurityGroup 内の IP 構成を一覧表示します |
 > | Action | Microsoft.Network/applicationSecurityGroups/read | アプリケーション セキュリティ グループ ID を取得します。 |
 > | Action | Microsoft.Network/applicationSecurityGroups/write | アプリケーション セキュリティ グループを作成するか、既存のアプリケーション セキュリティ グループを更新します。 |
 > | Action | Microsoft.Network/azureFirewallFqdnTags/read | Azure Firewall の FQDN タグを取得します |
@@ -3230,6 +3326,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Network/checkTrafficManagerNameAvailability/action | Traffic Manager の相対 DNS 名を使用できるかどうかを確認します。 |
 > | Action | Microsoft.Network/connections/delete | VirtualNetworkGatewayConnection を削除します。 |
 > | Action | Microsoft.Network/connections/read | VirtualNetworkGatewayConnection を取得します。 |
+> | Action | Microsoft.Network/connections/revoke/action | Express Route の接続状態を失効としてマークします。 |
 > | Action | Microsoft.Network/connections/sharedkey/action | VirtualNetworkGatewayConnection の SharedKey を取得します。 |
 > | Action | Microsoft.Network/connections/sharedKey/read | VirtualNetworkGatewayConnection の SharedKey を取得します。 |
 > | Action | Microsoft.Network/connections/sharedKey/write | VirtualNetworkGatewayConnection の SharedKey を作成するか、既存の SharedKey を更新します。 |
@@ -3288,6 +3385,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/connections/read | ExpressRouteCircuit の接続を取得します。 |
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/connections/write | ExpressRouteCircuit の接続リソースを作成するか、既存の接続リソースを更新します。 |
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/delete | ExpressRouteCircuit のピアリングを削除します。 |
+> | Action | Microsoft.Network/expressRouteCircuits/peerings/peerConnections/read | ピアの Express Route 回線の接続を取得します。 |
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/read | ExpressRouteCircuit のピアリングを取得します。 |
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/routeTables/action | ExpressRouteCircuit のピアリングの RouteTable を取得します。 |
 > | Action | Microsoft.Network/expressRouteCircuits/peerings/routeTablesSummary/action | ExpressRouteCircuit のピアリングの RouteTable の概要を取得します。 |
@@ -3536,6 +3634,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Network/virtualNetworks/subnets/delete | 仮想ネットワーク サブネットを削除します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 |
+> | Action | Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action | 必要なネットワーク ポリシーを適用してサブネットを準備します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/read | 仮想ネットワーク サブネットの定義を取得します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | 仮想ネットワーク サブネットのすべての仮想マシンへの参照を取得します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/write | 仮想ネットワーク サブネットを作成するか、既存の仮想ネットワーク サブネットを更新します。 |
@@ -3550,9 +3649,9 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Network/virtualNetworkTaps/read | 仮想ネットワーク タップを取得します。 |
 > | Action | Microsoft.Network/virtualNetworkTaps/write | 仮想ネットワーク タップを作成または更新します。 |
 > | Action | Microsoft.Network/virtualWans/delete | 仮想 WAN を削除します。 |
-> | Action | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/delete | 仮想 WAN の P2SVpnServerConfiguration を削除します |
-> | Action | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/read | 仮想 WAN の P2SVpnServerConfiguration 定義を取得します |
-> | Action | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/write | 仮想 WAN P2SVpnServerConfiguration を作成するか、または既存の仮想 WAN P2SVpnServerConfiguration を更新します |
+> | Action | Microsoft.network/virtualWans/p2sVpnServerConfigurations/delete | 仮想 WAN の P2SVpnServerConfiguration を削除します |
+> | Action | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/read | 仮想 WAN の P2SVpnServerConfiguration を取得します |
+> | Action | Microsoft.network/virtualWans/p2sVpnServerConfigurations/write | 仮想 WAN P2SVpnServerConfiguration を作成するか、または既存の仮想 WAN P2SVpnServerConfiguration を更新します |
 > | Action | Microsoft.Network/virtualWans/read | 仮想 WAN を取得します。 |
 > | Action | Microsoft.Network/virtualwans/supportedSecurityProviders/read | サポートされている VirtualWan セキュリティ プロバイダーを取得します。 |
 > | Action | Microsoft.Network/virtualWans/virtualHubs/read | 仮想 WAN を参照するすべての仮想ハブを取得します。 |
@@ -3601,8 +3700,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.NotificationHubs/Namespaces/write | 名前空間リソースを作成し、そのプロパティを更新します。 名前空間のタグとキャパシティは、更新できるプロパティです。 |
 > | Action | Microsoft.NotificationHubs/operationResults/read | Notification Hubs プロバイダーの操作の結果を返します |
 > | Action | Microsoft.NotificationHubs/operations/read | Notification Hubs プロバイダーでサポートされている操作の一覧を返します |
-> | Action | Microsoft.NotificationHubs/register/action | NotifciationHubs リソース プロバイダーにサブスクリプションを登録し、名前空間と NotificationHubs を作成できるようにします。 |
-> | Action | Microsoft.NotificationHubs/unregister/action | NotifciationHubs リソース プロバイダーのサブスクリプションを登録解除し、名前空間と NotificationHubs を作成できるようにします |
+> | Action | Microsoft.NotificationHubs/register/action | NotificationHubs リソース プロバイダーにサブスクリプションを登録し、名前空間と NotificationHubs を作成できるようにします。 |
+> | Action | Microsoft.NotificationHubs/unregister/action | NotificationHubs リソース プロバイダーのサブスクリプションを登録解除し、名前空間と NotificationHubs を作成できるようにします。 |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -3623,6 +3722,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.OffAzure/HyperVSites/jobs/read | Hyper-V ジョブのプロパティを取得します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/machines/read | Hyper-V マシンのプロパティを取得します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/machines/read | Hyper-V マシンのプロパティを取得します。 |
+> | Action | Microsoft.OffAzure/HyperVSites/machines/start/action | Hyper-V マシンを起動します。 |
+> | Action | Microsoft.OffAzure/HyperVSites/machines/start/action | Hyper-V マシンを起動します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/machines/stop/action | Hyper-V マシンを停止します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/machines/stop/action | Hyper-V マシンを停止します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/operationsstatus/read | Hyper-V 操作の状態のプロパティを取得します。 |
@@ -3638,12 +3739,16 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.OffAzure/HyperVSites/write | Hyper-V サイトを作成または更新します。 |
 > | Action | Microsoft.OffAzure/HyperVSites/write | Hyper-V サイトを作成または更新します。 |
 > | Action | Microsoft.OffAzure/Operations/read | 公開された操作を読み取ります。 |
+> | Action | Microsoft.OffAzure/register/action | Microsoft.OffAzure リソース プロバイダーにサブスクリプションを登録します |
+> | Action | Microsoft.OffAzure/register/action | Microsoft.OffAzure リソース プロバイダーにサブスクリプションを登録します |
 > | Action | Microsoft.OffAzure/VMwareSites/delete | VMware サイトを削除します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/delete | VMware サイトを削除します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/jobs/read | VMware ジョブのプロパティを取得します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/jobs/read | VMware ジョブのプロパティを取得します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/machines/read | VMware マシンのプロパティを取得します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/machines/read | VMware マシンのプロパティを取得します。 |
+> | Action | Microsoft.OffAzure/VMwareSites/machines/start/action | VMware マシンを起動します。 |
+> | Action | Microsoft.OffAzure/VMwareSites/machines/start/action | VMware マシンを起動します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/machines/stop/action | VMware マシンを停止します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/machines/stop/action | VMware マシンを停止します。 |
 > | Action | Microsoft.OffAzure/VMwareSites/operationsstatus/read | VMware 操作の状態のプロパティを取得します。 |
@@ -3746,6 +3851,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Heartbeat テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | IISAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | InboundConnection テーブルからデータを読み取ります。 |
+> | Action | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | IntuneAuditLogs テーブルからデータを読み取ります。 |
+> | Action | Microsoft.OperationalInsights/workspaces/query/IntuneOperationalLogs/read | IntuneOperationalLogs テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | KubeEvents テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubeNodeInventory/read | KubeNodeInventory テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/KubePodInventory/read | KubePodInventory テーブルからデータを読み取ります。 |
@@ -3922,9 +4029,15 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Portal/consoles/delete | Cloud Shell インスタンスを削除します。 |
+> | Action | Microsoft.Portal/consoles/write | Cloud Shell インスタンスを作成または更新します。 |
 > | Action | Microsoft.Portal/dashboards/delete | サブスクリプションからダッシュボードを削除します。 |
 > | Action | Microsoft.Portal/dashboards/read | サブスクリプションのダッシュボードを読み取ります。 |
 > | Action | Microsoft.Portal/dashboards/write | サブスクリプションのダッシュボードを追加または変更します。 |
+> | Action | Microsoft.Portal/register/action | ポータルに登録します |
+> | Action | Microsoft.Portal/usersettings/delete | Cloud Shell ユーザー設定を削除します。 |
+> | Action | Microsoft.Portal/usersettings/read | Cloud Shell ユーザー設定を読み取ります。 |
+> | Action | Microsoft.Portal/usersettings/write | Cloud Shell ユーザー設定を作成または更新します。 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
@@ -3951,9 +4064,10 @@ ms.locfileid: "54267523"
 > | --- | --- | --- |
 > | Action | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Action | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp は、サービスによって使用される内部操作です。 |
-> | Action | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
-> | Action | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
-> | Action | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
+> | Action | Microsoft.RecoveryServices/Locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Action | Microsoft.RecoveryServices/locations/checkNameAvailability/action | リソース名の可用性がリソース名を使用できるかどうかを確認するための API であることを確認します |
 > | Action | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Action | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | Action | Microsoft.RecoveryServices/register/action | 指定されたリソース プロバイダーにサブスクリプションを登録します。 |
@@ -3986,8 +4100,6 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Action | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
-> | Action | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 保護ポリシーを削除します。 |
@@ -4037,6 +4149,13 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/discoverProtectableItem/action | 保護可能な項目を検出します。 |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | 保護コンテナーを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/remove/action | 保護コンテナーを削除します。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/delete | 移行項目を削除します。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrate/action | 項目を移行します。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrationRecoveryPoints/read | 移行の復旧ポイントを読み取ります。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/read | 移行項目を読み取ります。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/action | 移行をテストします。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/action | 移行のクリーンアップをテストします。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/write | 移行項目を作成または更新します。 |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 保護可能な項目を読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 復旧ポイントを適用します。 |
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | 保護された項目をすべて削除します |
@@ -4077,6 +4196,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.RecoveryServices/vaults/replicationJobs/read | ジョブを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationJobs/restart/action | ジョブを再実行します。 |
 > | Action | Microsoft.RecoveryServices/vaults/replicationJobs/resume/action | ジョブを再開します。 |
+> | Action | Microsoft.RecoveryServices/vaults/replicationMigrationItems/read | 移行項目を読み取ります。 |
 > | Action | Microsoft.RecoveryServices/vaults/replicationNetworkMappings/read | ネットワーク マッピングを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationNetworks/read | ネットワークを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationPolicies/delete | ポリシーをすべて削除します |
@@ -4097,11 +4217,11 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.RecoveryServices/vaults/replicationRecoveryServicesProviders/read | Recovery Services プロバイダーを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationStorageClassificationMappings/read | ストレージ分類マッピングを読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationStorageClassifications/read | ストレージの分類を読み取ります |
+> | Action | Microsoft.RecoveryServices/vaults/replicationSupportedOperatingSystems/read | サポート対象のオペレーティング システムを読み取ります  |
 > | Action | Microsoft.RecoveryServices/vaults/replicationUsages/read | コンテナー レプリケーションの使用状況を読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationVaultHealth/read | コンテナー レプリケーションの正常性を読み取ります |
 > | Action | Microsoft.RecoveryServices/vaults/replicationVaultHealth/refresh/action | コンテナーの正常性を更新します |
 > | Action | Microsoft.RecoveryServices/vaults/replicationvCenters/read | vCenter を読み取ります |
-> | Action | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
 > | Action | Microsoft.RecoveryServices/vaults/usages/read | コンテナーの使用状況を読み取ります |
 > | Action | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
@@ -4113,8 +4233,8 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.Relay/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
-> | Action | Microsoft.Relay/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailabiltiy を使用してください。 |
-> | Action | Microsoft.Relay/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は使用されていません。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
+> | Action | Microsoft.Relay/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
+> | Action | Microsoft.Relay/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は非推奨です。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
 > | Action | Microsoft.Relay/namespaces/authorizationRules/delete | 名前空間の承認規則を削除します。 名前空間の既定の承認規則は削除できません。  |
 > | Action | Microsoft.Relay/namespaces/authorizationRules/listkeys/action | 名前空間への接続文字列を取得します。 |
 > | Action | Microsoft.Relay/namespaces/authorizationRules/read | 名前空間の承認規則の説明の一覧を取得します。 |
@@ -4324,9 +4444,9 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.ServiceBus/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
-> | Action | Microsoft.ServiceBus/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailabiltiy を使用してください。 |
+> | Action | Microsoft.ServiceBus/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
 > | Action | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | 指定した VNet について、ServiceBus リソース プロバイダー内の VNet ルールを削除します |
-> | Action | Microsoft.ServiceBus/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は使用されていません。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
+> | Action | Microsoft.ServiceBus/namespaces/authorizationRules/action | 名前空間の承認規則を更新します。 この API は非推奨です。 名前空間の承認規則を更新するには、代わりに PUT 呼び出しを使用してください。 この操作は、API バージョン 2017-04-01 ではサポートされていません。 |
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/delete | 名前空間の承認規則を削除します。 名前空間の既定の承認規則は削除できません。  |
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/listkeys/action | 名前空間への接続文字列を取得します。 |
 > | Action | Microsoft.ServiceBus/namespaces/authorizationRules/read | 名前空間の承認規則の説明の一覧を取得します。 |
@@ -4434,10 +4554,18 @@ ms.locfileid: "54267523"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
-> | Action | Microsoft.SignalRService/checknameavailability/action | 新しい SignalR サービスで名前を使用できるかどうかを確認します。 |
+> | Action | Microsoft.SignalRService/locations/checknameavailability/action | 新しい SignalR サービスで名前を使用できるかどうかを確認します。 |
+> | Action | Microsoft.SignalRService/locations/operationresults/signalr/read | 非同期操作の状態をクエリします。 |
+> | Action | Microsoft.SignalRService/locations/usages/read | Azure SignalR Service のクォータ使用状況を取得します。 |
+> | Action | Microsoft.SignalRService/operationresults/read | 非同期操作の状態をクエリします。 |
 > | Action | Microsoft.SignalRService/register/action | "Microsoft.SignalRService" リソース プロバイダーをサブスクリプションに登録します。 |
-> | Action | Microsoft.SignalRService/SignalR/delete | SignalR 全体を削除します。 |
+> | Action | Microsoft.SignalRService/SignalR/delete | SignalR Service 全体を削除します。 |
+> | Action | Microsoft.SignalRService/SignalR/listFeatures/read | SignalR Service のカスタマイズされた機能フラグを一覧表示します。 既定の機能フラグは除外されます。 |
+> | Action | Microsoft.SignalRService/SignalR/listkeys/action | 管理ポータルで、または API を使用して SignalR のアクセス キーの値を表示します。 |
 > | Action | Microsoft.SignalRService/SignalR/read | 管理ポータルで、または API を介して SignalR の設定と構成を表示します。 |
+> | Action | Microsoft.SignalRService/SignalR/regeneratekey/action | 管理ポータルで、または API を使用して SignalR のアクセス キーの値を変更します。 |
+> | Action | Microsoft.SignalRService/SignalR/restart/action | 管理ポータルで、または API を使用して Azure SignalR Service を再起動します。 特定のダウンタイムが発生します。 |
+> | Action | Microsoft.SignalRService/SignalR/switchFeatures/action | 管理ポータルで、または API を使用して、サポート対象のプロパティを含む SignalR の機能フラグのオン/オフを切り替えます。 |
 > | Action | Microsoft.SignalRService/SignalR/write | 管理ポータルで、または API を介して SignalR の設定と構成を変更します。 |
 > | Action | Microsoft.SignalRService/unregister/action | "Microsoft.SignalRService" リソース プロバイダーのサブスクリプションの登録を解除します。 |
 
@@ -4464,6 +4592,9 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.Sql/checkNameAvailability/action | 指定されたサブスクリプションの世界的なプロビジョニングに対して特定のサーバー名が使用可能かどうかを確認します。 |
+> | Action | Microsoft.Sql/instancePools/delete | インスタンス プールを削除します。 |
+> | Action | Microsoft.Sql/instancePools/read | インスタンス プールを取得します。 |
+> | Action | Microsoft.Sql/instancePools/write | インスタンス プールを作成または更新します。 |
 > | Action | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | 拡張サーバー BLOB 監査ポリシー設定操作の結果を取得します。 |
 > | Action | Microsoft.Sql/locations/auditingSettingsOperationResults/read | サーバー BLOB 監査ポリシーの設定操作の結果を取得します。 |
 > | Action | Microsoft.Sql/locations/capabilities/read | 指定された場所でのこのサブスクリプションの機能を取得します。 |
@@ -4484,6 +4615,8 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Sql/locations/instanceFailoverGroups/forceFailoverAllowDataLoss/action | 既存のインスタンス フェールオーバー グループで強制フェールオーバーを実行します。 |
 > | Action | Microsoft.Sql/locations/instanceFailoverGroups/read | インスタンス フェールオーバー グループの一覧を返すか、指定されたインスタンス フェールオーバー グループのプロパティを取得します。 |
 > | Action | Microsoft.Sql/locations/instanceFailoverGroups/write | 指定されたパラメーターでインスタンス フェールオーバー グループを作成するか、指定されたインスタンス フェールオーバー グループのプロパティまたはタグを更新します。 |
+> | Action | Microsoft.Sql/locations/instancePoolAzureAsyncOperation/read | インスタンス プール操作の状態を取得します。 |
+> | Action | Microsoft.Sql/locations/instancePoolOperationResults/read | インスタンス プール操作の結果を取得します。 |
 > | Action | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | 特定のインターフェイス エンドポイントの Azure 非同期操作の詳細を返します |
 > | Action | Microsoft.Sql/locations/interfaceEndpointProfileOperationResults/read | 指定されたインターフェイス エンドポイント プロファイル操作の詳細を返します |
 > | Action | Microsoft.Sql/locations/jobAgentAzureAsyncOperation/read | ジョブ エージェントの操作の状態を取得します。 |
@@ -4547,6 +4680,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/logDefinitions/read | マネージド インスタンスで使用可能なログを取得します |
 > | Action | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/metricDefinitions/read | マネージド インスタンスで使用可能なメトリックの種類を返します |
 > | Action | Microsoft.Sql/managedInstances/read | マネージド インスタンスの一覧を返すか、指定されたマネージド インスタンスのプロパティを取得します。 |
+> | Action | Microsoft.Sql/managedInstances/recoverableDatabases/read | 復元可能なマネージド データベースの一覧を返します |
 > | Action | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/read | ドロップされたマネージド データベースの短期保持ポリシーを取得します |
 > | Action | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/write | ドロップされたマネージド データベースの短期保持ポリシーを更新します |
 > | Action | Microsoft.Sql/managedInstances/restorableDroppedDatabases/read | 復元可能な削除されたマネージド データベースの一覧を返します。 |
@@ -4790,6 +4924,7 @@ ms.locfileid: "54267523"
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | 自動スナップショットの削除の結果を返します |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | BLOB コマンドの結果を返します |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/clearLegalHold/action | BLOB コンテナーの訴訟ホールドをクリアします。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
@@ -4798,13 +4933,19 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/lock/action | BLOB コンテナーの不変ポリシーをロックします。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/read | BLOB コンテナーの不変ポリシーを取得します。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/write | BLOB コンテナーの不変ポリシーを設定します。 |
-> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/lease/action | BLOB コンテナーのリースの結果を返します |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーを返します |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/containers/setLegalHold/action | BLOB コンテナーの訴訟ホールドを設定します。 |
-> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーのパッチ結果を返します |
+> | Action | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーのプット結果を返します |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service のユーザーの委任キーを返します |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/read | Blob service のプロパティまたは統計情報を返します。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/write | Blob service のプロパティの設定の結果を返します。 |
 > | Action | Microsoft.Storage/storageAccounts/delete | 既存のストレージ アカウントを削除します。 |
+> | Action | Microsoft.Storage/storageAccounts/fileServices/fileShare/delete | ユーザーがファイル共有を削除できるようにします。 |
+> | Action | Microsoft.Storage/storageAccounts/fileServices/fileShare/read | ユーザーがファイル共有を読み取ることができるようにします。 |
+> | Action | Microsoft.Storage/storageAccounts/fileServices/fileShare/write | ユーザーがファイル共有に書き込めるようにします。 |
 > | Action | Microsoft.Storage/storageAccounts/lastsynctime/read | ストレージ アカウントの最後の同期時刻を返します |
 > | Action | Microsoft.Storage/storageAccounts/listAccountSas/action | 指定されたストレージ アカウントのアカウント SAS トークンを返します。 |
 > | Action | Microsoft.Storage/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
@@ -4973,7 +5114,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.StorSimple/managers/devices/networkSettings/write | 新しいネットワーク設定を作成するか、ネットワーク設定を更新します。 |
 > | Action | Microsoft.StorSimple/managers/devices/operationResults/read | 操作結果を一覧表示するか、取得します。 |
 > | Action | Microsoft.StorSimple/managers/devices/publicEncryptionKey/action | デバイス マネージャーの公開暗号化キーを一覧表示します。 |
-> | Action | Microsoft.StorSimple/managers/devices/publishSupportPackage/action | Microsoft サポートによるトラブルシューティングのために、デバイスのサポート パッケージを発行します。 |
+> | Action | Microsoft.StorSimple/managers/devices/publishSupportPackage/action | 既存のデバイスのサポート パッケージを発行します。 StorSimple サポート パッケージは、Microsoft サポートが StorSimple デバイスの問題を解決するときに役立つ、すべての関連するログを収集する使いやすいメカニズムです。 |
 > | Action | Microsoft.StorSimple/managers/devices/read | デバイスを一覧表示または取得します。 |
 > | Action | Microsoft.StorSimple/managers/devices/scanForUpdates/action | デバイスで更新プログラムをスキャンします。 |
 > | Action | Microsoft.StorSimple/managers/devices/securitySettings/operationResults/read | 操作結果を一覧表示するか、取得します。 |
@@ -5011,7 +5152,6 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.StorSimple/Managers/extendedInformation/write | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
 > | Action | Microsoft.StorSimple/managers/features/read | 機能を一覧表示します。 |
 > | Action | Microsoft.StorSimple/managers/fileservers/read | ファイル サーバーを一覧表示または取得します。 |
-> | Action | Microsoft.StorSimple/managers/getActivationKey/action | デバイス マネージャーのアクティブ化キーを取得します。 |
 > | Action | Microsoft.StorSimple/managers/getEncryptionKey/action | デバイス マネージャーの暗号化キーを取得します。 |
 > | Action | Microsoft.StorSimple/managers/iscsiservers/read | iSCSI サーバーを一覧表示または取得します。 |
 > | Action | Microsoft.StorSimple/managers/jobs/read | ジョブを一覧表示または取得します。 |
@@ -5025,8 +5165,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.StorSimple/managers/provisionCloudAppliance/action | 新しいクラウド アプライアンスを作成します。 |
 > | Action | Microsoft.StorSimple/managers/read | デバイス マネージャーを一覧表示または取得します。 |
 > | Action | Microsoft.StorSimple/Managers/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
-> | Action | Microsoft.StorSimple/managers/regenarateRegistationCertificate/action | デバイス マネージャーの登録証明書を再生成します。 |
-> | Action | Microsoft.StorSimple/managers/regenerateActivationKey/action | デバイス マネージャーのアクティブ化キーを再生成します。 |
+> | Action | Microsoft.StorSimple/managers/regenerateActivationKey/action | 既存の StorSimple デバイス マネージャーのアクティブ化キーを再生成します。 |
 > | Action | Microsoft.StorSimple/managers/storageAccountCredentials/delete | ストレージ アカウントの資格情報を削除します。 |
 > | Action | Microsoft.StorSimple/managers/storageAccountCredentials/operationResults/read | 操作結果を一覧表示するか、取得します。 |
 > | Action | Microsoft.StorSimple/managers/storageAccountCredentials/read | ストレージ アカウントの資格情報を一覧表示または取得します。 |
@@ -5037,6 +5176,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.StorSimple/managers/storageDomains/write | ストレージ ドメインを作成または更新します。 |
 > | Action | Microsoft.StorSimple/managers/write | デバイス マネージャーを作成または更新します。 |
 > | Action | Microsoft.StorSimple/Managers/write | "コンテナーの作成" 操作では、"コンテナー" 型の Azure リソースを作成します。 |
+> | Action | Microsoft.StorSimple/operations/read | 操作を一覧表示または取得します。 |
 > | Action | Microsoft.StorSimple/register/action | プロバイダー Microsoft.StorSimple を登録します。 |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
@@ -5085,6 +5225,7 @@ ms.locfileid: "54267523"
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | Action | Microsoft.Subscription/CreateSubscription/action | Azure サブスクリプションを作成します。 |
+> | Action | Microsoft.Subscription/register/action | Microsoft.Subscription リソース プロバイダーにサブスクリプションを登録します。 |
 > | Action | Microsoft.Subscription/SubscriptionDefinitions/read | 管理グループ内の Azure サブスクリプションの定義を取得します。 |
 > | Action | Microsoft.Subscription/SubscriptionDefinitions/write | Azure サブスクリプションの定義を作成します。 |
 
@@ -5280,6 +5421,7 @@ ms.locfileid: "54267523"
 > | Action | microsoft.web/sites/config/snapshots/read | Web アプリ構成のスナップショットを取得します。 |
 > | Action | Microsoft.Web/sites/config/Write | Web アプリの構成設定を更新します。 |
 > | Action | microsoft.web/sites/containerlogs/action | Web アプリの zip 圧縮されたコンテナーのログを取得します。 |
+> | Action | microsoft.web/sites/containerlogs/download/action | Web アプリのコンテナー ログをダウンロードします。 |
 > | Action | microsoft.web/sites/continuouswebjobs/delete | Web アプリの継続的な Web ジョブを削除します。 |
 > | Action | microsoft.web/sites/continuouswebjobs/read | Web アプリの継続的な Web ジョブを取得します。 |
 > | Action | microsoft.web/sites/continuouswebjobs/start/action | Web アプリの継続的な Web ジョブを開始します。 |
@@ -5326,8 +5468,10 @@ ms.locfileid: "54267523"
 > | Action | microsoft.web/sites/hostnamebindings/delete | Web アプリのホスト名バインドを削除します。 |
 > | Action | microsoft.web/sites/hostnamebindings/read | Web アプリのホスト名バインドを取得します。 |
 > | Action | microsoft.web/sites/hostnamebindings/write | Web アプリのホスト名バインドを更新します。 |
+> | Action | microsoft.web/sites/hostruntime/functions/keys/read | Web アプリのホストランタイム関数のキーを取得します。 |
 > | Action | Microsoft.Web/sites/hostruntime/host/_master/read | 管理操作用の Function App のマスター キーを取得します |
 > | Action | Microsoft.Web/sites/hostruntime/host/action | トリガーの同期、関数の追加、関数の呼び出し、関数の削除など、Function App の実行時アクションを実行します。 |
+> | Action | microsoft.web/sites/hostruntime/host/read | Web アプリのホストランタイムのホストを取得します。 |
 > | Action | microsoft.web/sites/hybridconnection/delete | Web アプリのハイブリッド接続を削除します。 |
 > | Action | microsoft.web/sites/hybridconnection/read | Web アプリのハイブリッド接続を取得します。 |
 > | Action | microsoft.web/sites/hybridconnection/write | Web アプリのハイブリッド接続を更新します。 |
@@ -5339,8 +5483,10 @@ ms.locfileid: "54267523"
 > | Action | microsoft.web/sites/instances/deployments/delete | Web アプリのインスタンスデプロイを削除します。 |
 > | Action | microsoft.web/sites/instances/deployments/read | Web アプリのインスタンスのデプロイを取得します。 |
 > | Action | microsoft.web/sites/instances/extensions/log/read | Web アプリのインスタンス拡張機能ログを取得します。 |
+> | Action | microsoft.web/sites/instances/extensions/processes/read | Web アプリのインスタンス拡張機能のプロセスを取得します。 |
 > | Action | microsoft.web/sites/instances/extensions/read | Web アプリのインスタンス拡張機能を取得します。 |
 > | Action | microsoft.web/sites/instances/processes/delete | Web アプリのインスタンスのプロセスを削除します。 |
+> | Action | microsoft.web/sites/instances/processes/modules/read | Web アプリのインスタンスのプロセス モジュールを取得します。 |
 > | Action | microsoft.web/sites/instances/processes/read | Web アプリのインスタンスのプロセスを取得します。 |
 > | Action | microsoft.web/sites/instances/processes/threads/read | Web アプリのインスタンスのプロセス スレッドを取得します。 |
 > | Action | microsoft.web/sites/instances/read | Web アプリのインスタンスを取得します。 |
@@ -5397,6 +5543,7 @@ ms.locfileid: "54267523"
 > | Action | Microsoft.Web/sites/slots/config/Read | Web アプリ スロットの構成設定を取得します。 |
 > | Action | Microsoft.Web/sites/slots/config/Write | Web アプリ スロットの構成設定を更新します。 |
 > | Action | microsoft.web/sites/slots/containerlogs/action | Web アプリ スロットの zip 圧縮されたコンテナー ログを取得します。 |
+> | Action | microsoft.web/sites/slots/containerlogs/download/action | Web アプリ スロットのコンテナー ログをダウンロードします。 |
 > | Action | microsoft.web/sites/slots/continuouswebjobs/delete | Web アプリとスロットの継続的な Web ジョブを削除します。 |
 > | Action | microsoft.web/sites/slots/continuouswebjobs/read | Web アプリとスロットの継続的な Web ジョブを取得します。 |
 > | Action | microsoft.web/sites/slots/continuouswebjobs/start/action | Web アプリとスロットの継続的な Web ジョブを開始します。 |
@@ -5431,6 +5578,7 @@ ms.locfileid: "54267523"
 > | Action | microsoft.web/sites/slots/diagnostics/workeravailability/read | Web アプリ スロット診断の Workeravailability を取得します。 |
 > | Action | microsoft.web/sites/slots/diagnostics/workerprocessrecycle/read | Web アプリ スロット診断のワーカー プロセス リサイクルを取得します。 |
 > | Action | microsoft.web/sites/slots/domainownershipidentifiers/read | Web アプリ スロットのドメイン所有権識別子を取得します。 |
+> | Action | microsoft.web/sites/slots/functions/listsecrets/action | Web アプリ スロットの関数のシークレットを一覧表示します。 |
 > | Action | microsoft.web/sites/slots/functions/read | Web Apps スロット関数を取得します。 |
 > | Action | microsoft.web/sites/slots/hostnamebindings/delete | Web アプリとスロットのホスト名バインドを削除します。 |
 > | Action | microsoft.web/sites/slots/hostnamebindings/read | Web アプリとスロットのホスト名バインドを取得します。 |
@@ -5457,6 +5605,7 @@ ms.locfileid: "54267523"
 > | Action | microsoft.web/sites/slots/premieraddons/delete | Web アプリとスロットのプレミア アドオンを削除します。 |
 > | Action | microsoft.web/sites/slots/premieraddons/read | Web アプリとスロットのプレミア アドオンを取得します。 |
 > | Action | microsoft.web/sites/slots/premieraddons/write | Web アプリとスロットのプレミア アドオンを更新します。 |
+> | Action | microsoft.web/sites/slots/processes/read | Web アプリ スロットのプロセスを取得します。 |
 > | Action | microsoft.web/sites/slots/publiccertificates/delete | Web アプリ スロットのパブリック証明書を削除します。 |
 > | Action | microsoft.web/sites/slots/publiccertificates/read | Web アプリ スロットのパブリック証明書を取得します。 |
 > | Action | microsoft.web/sites/slots/publiccertificates/write | Web アプリ スロットのパブリック証明書を作成または更新します。 |

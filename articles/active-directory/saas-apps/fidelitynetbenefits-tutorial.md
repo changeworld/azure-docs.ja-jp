@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Fidelity NetBenefits の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Fidelity NetBenefits の統合 | Microsoft Docs
 description: Azure Active Directory と Fidelity NetBenefits の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 77dc8a98-c0e7-4129-ab88-28e7643e432a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: a1308035a8b758a9e2f824de3a78c03103c19931
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 00b90dae4acfae3f8250b94be1f8752aa72bcfe1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142350"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174892"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>チュートリアル: Azure Active Directory と Fidelity NetBenefits の統合
+# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>チュートリアル:Azure Active Directory と Fidelity NetBenefits の統合
 
 このチュートリアルでは、Fidelity NetBenefits と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -215,7 +215,7 @@ Fidelity NetBenefits で Azure AD のシングル サインオンを構成して
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Fidelity NetBenefits] タイルをクリックすると、自動的に Fidelity NetBenefits アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

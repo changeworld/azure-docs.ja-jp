@@ -7,16 +7,16 @@ author: bradumbaugh
 manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
-ms.openlocfilehash: ebe95c8ebad8c7d6b77d98dc0d590a4d38d76b94
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 90ad2ff87e9541c892262edb2e48366826b2a388
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465969"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188441"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
@@ -49,7 +49,7 @@ JSON.net では、API によって返される JSON 応答を使用すること�
 - **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理...]** を選びます。
 - **[参照]** タブで `Newtonsoft.Json` を検索します。 最新のバージョンを選択し、**[インストール]** をクリックします。
 - **[変更のレビュー]** ウィンドウで **[OK]** ボタンをクリックします。
-- **NuGet: MyConsoleSearchApp** という Visual Studio タブを閉じます。
+- 次に示す Visual Studio タブを閉じます。**NuGet:MyConsoleSearchApp**。
 
 ## <a name="add-a-reference-to-systemweb"></a>System.Web に参照を追加する
 
@@ -223,9 +223,9 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 `rankingResponse` JSON オブジェクト ([ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) には、検索結果の適切な表示順序が記されます。 そこには優先度が付けられた次の 1 つまたは複数のグループが含まれます。
 
-- `pole`: 最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
-- `mainline`: メインラインに表示する検索結果。
-- `sidebar`: サイドバーに表示する検索結果。 サイドバーがない場合、結果はメインラインの下に表示されます。
+- `pole`:最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
+- `mainline`:メインラインに表示される検索結果。
+- `sidebar`:サイドバーに表示される検索結果。 サイドバーがない場合、結果はメインラインの下に表示されます。
 
 優先度付け応答 JSON には、1 つまたは複数のグループが含まれる場合があります。
 

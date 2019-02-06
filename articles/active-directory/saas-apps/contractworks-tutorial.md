@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ContractWorks の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ContractWorks の統合 | Microsoft Docs
 description: Azure Active Directory と ContractWorks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7b269d6-3c4e-4bc4-a55f-5071d1f52591
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf012f276a300cb8f70590c306020993b448cc6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: faa1f4887502968e4deeee47e396b25480d0cd05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427743"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182287"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>チュートリアル: Azure Active Directory と ContractWorks の統合
+# <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>チュートリアル:Azure Active Directory と ContractWorks の統合
 
 このチュートリアルでは、ContractWorks と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -141,7 +141,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
     
     d. **[OK]** をクリックします。
 
-1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして  **[アプリのフェデレーション メタデータ URL]**  をコピーし、メモ帳に貼り付けます。
     
     ![Configure single sign-on](./media/contractworks-tutorial/tutorial_metadataurl.png)
      
@@ -185,7 +185,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
  
 ### <a name="create-a-contractworks-test-user"></a>ContractWorks テスト ユーザーの作成
 
-このセクションでは、ContractWorks で Britta Simon というユーザーを作成します。 [ContractWorks サポート チーム](mailto:support@contractworks.com)と連携し、ContractWorks プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、ContractWorks で Britta Simon というユーザーを作成します。  [ContractWorks サポート チーム](mailto:support@contractworks.com) と連携し、ContractWorks プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -222,7 +222,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ContractWorks] タイルをクリックすると、自動的に ContractWorks アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

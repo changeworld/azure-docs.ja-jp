@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と XaitPorter の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と XaitPorter の統合 | Microsoft Docs
 description: Azure Active Directory と XaitPorter の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 12fb8e5b2b940c48de766a48f59ed0cc342b5356
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fe89b64fb5f188591ce123e8ed7ed410d3c5ab48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421068"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170047"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
+# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル:Azure Active Directory と XaitPorter の統合
 
 このチュートリアルでは、XaitPorter と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -183,7 +183,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-xaitporter-test-user"></a>XaitPorter のテスト ユーザーを作成する
 
-このセクションでは、XaitPorter で Britta Simon というユーザーを作成します。 XaitPorter プラットフォームでユーザーを追加するには、[XaitPorter クライアント サポート チーム](https://www.xait.com/support/)に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、XaitPorter で Britta Simon というユーザーを作成します。 XaitPorter プラットフォームでユーザーを追加するには、 [XaitPorter クライアント サポート チーム](https://www.xait.com/support/) に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -220,7 +220,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [XaitPorter] タイルをクリックすると、自動的に XaitPorter アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

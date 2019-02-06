@@ -1,45 +1,45 @@
 ---
-title: チュートリアル:Azure Active Directory と MyWorkDrive の統合 | Microsoft Docs
-description: Azure Active Directory と MyWorkDrive の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Allbound SSO の統合 | Microsoft Docs
+description: Azure Active Directory と Allbound SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
 ms.reviewer: joflore
-ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
+ms.assetid: 15011ddf-941f-4da2-b993-40ad94a08e42
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: f0e2c499619df938bd6f4b05757ba607a9edf244
+ms.openlocfilehash: e0658841e121dc8ea5bd4c704d99fd6bac98a32f
 ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183358"
+ms.locfileid: "55171390"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>チュートリアル:Azure Active Directory と MyWorkDrive の統合
+# <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>チュートリアル:Azure Active Directory と Allbound SSO の統合
 
-このチュートリアルでは、MyWorkDrive と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Allbound SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-MyWorkDrive と Azure AD の統合には、次の利点があります。
+Allbound SSO と Azure AD を統合すると、次の利点が得られます。
 
-- MyWorkDrive にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に MyWorkDrive にサインオン (シングル サインオン) できるようにします。
+- Allbound SSO にアクセス可能な Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Allbound SSO にシングル サインオン (SSO) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-MyWorkDrive と Azure AD の統合を構成するには、次のものが必要です。
+Allbound SSO と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- MyWorkDrive でのシングル サインオンが有効なサブスクリプション
+- Allbound SSO でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -53,14 +53,14 @@ MyWorkDrive と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの MyWorkDrive の追加
+1. ギャラリーからの Allbound SSO の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-myworkdrive-from-the-gallery"></a>ギャラリーからの MyWorkDrive の追加
+## <a name="adding-allbound-sso-from-the-gallery"></a>ギャラリーからの Allbound SSO の追加
 
-Azure AD への MyWorkDrive の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MyWorkDrive を追加する必要があります。
+Azure AD への Allbound SSO の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Allbound SSO を追加する必要があります。
 
-**ギャラリーから MyWorkDrive を追加するには、次の手順に従います。**
+**ギャラリーから Allbound SSO を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
@@ -74,31 +74,31 @@ Azure AD への MyWorkDrive の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**MyWorkDrive**」と入力し、結果パネルで **MyWorkDrive** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Allbound SSO**」と入力し、結果パネルから **[Allbound SSO]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![結果リストの MyWorkDrive](./media/myworkdrive-tutorial/tutorial_myworkdrive_addfromgallery.png)
+    ![結果リスト内の Allbound SSO](./media/allbound-sso-tutorial/tutorial_allbound-sso_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、MyWorkDrive で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" というテスト ユーザーを基に、Allbound SSO で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する MyWorkDrive ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと MyWorkDrive の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Allbound SSO ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Allbound SSO の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-MyWorkDrive で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Allbound SSOで Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[MyWorkDrive テスト ユーザーの作成](#creating-a-myworkdrive-test-user)** - MyWorkDrive 内で Britta Simon に対応するユーザーを作成し、Azure AD 内の Britta Simon にリンクさせます。
+3. **[Procore SSO のテスト ユーザーの作成](#creating-an-allbound-sso-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Allbound SSO で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、MyWorkDrive アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Allbound SSO アプリケーションでシングル サインオンを構成します。
 
-**MyWorkDrive で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**Allbound SSO で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure portal の **MyWorkDrive** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure portal の **Allbound SSO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
@@ -112,45 +112,36 @@ MyWorkDrive で Azure AD のシングル サインオンを構成してテスト
 
 4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[MyWorkDrive Domain and URLs] (MyWorkDrive のドメインと URL) のシングル サインオン情報](./media/myworkdrive-tutorial/tutorial_myworkdrive_url.png)
+    ![[Allbound SSO のドメインと URL] のシングル サインオン情報](./media/allbound-sso-tutorial/tutorial_allbound-sso_url.png)
 
-    **[応答 URL]** ボックスに、`https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.allbound.com/` の形式で URL を入力します。
+
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.allbound.com/acs` のパターンを使用して URL を入力します。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[MyWorkDrive Domain and URLs] (MyWorkDrive のドメインと URL) のシングル サインオン情報](./media/myworkdrive-tutorial/tutorial_myworkdrive_url1.png)
+    ![[Allbound SSO のドメインと URL] のシングル サインオン情報](./media/allbound-sso-tutorial/tutorial_allbound-sso_url1.png)
 
-     **[サインオン URL]** ボックスに、`https://<SERVER.DOMAIN.COM>/Account/Login-saml` のパターンを使用して URL を入力します。 
+    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.allbound.com/` のパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。  自社の MyWorkDrive サーバーのホスト名を入力します。たとえば、次のようになります。
-    > 
-    > 応答 URL: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
-    > 
-    > サインオン URL: `https://yourserver.yourdomain.com/Account/Login-saml`
-    > 
-    > これらの値に対して独自のホスト名と SSL 証明書を設定する方法がわからない場合は、MyWorkDrive Client サポート チームにお問い合わせください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Allbound SSO クライアント サポート チーム](mailto:engineering@allbound.com)にお問い合わせください。
 
-6. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、コピー **アイコン**をクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
+6. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータの XML** をダウンロードし、メタデータ ファイルをコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/myworkdrive-tutorial/tutorial_myworkdrive_certificate.png)
+    ![証明書のダウンロードのリンク](./media/allbound-sso-tutorial/tutorial_allbound-sso_certificate.png) 
 
-7. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として MyWorkDrive にログインします。
+7. **[Allbound SSO のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-8. MyWorkDrive サーバー上の管理パネルで、**[ENTERPRISE]\(エンタープライズ\)** をクリックし、次の手順を実行します。
+    a. ログイン URL
 
-    ![管理](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
+    b. Azure AD 識別子
 
-    a. **[SAML/ADFS SSO]\(SAML/ADFS SSO\)** を有効にします。
+    c. ログアウト URL
 
-    b. **[SAML - Azure AD]\(SAML - Azure AD\)** を選択します
+    ![Allbound SSO の構成](common/configuresection.png)
 
-    c. **[Azure App Federation Metadata Url]\(Azure アプリのフェデレーション メタデータ URL\)** テキスト ボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
-
-    d. **[保存]**
-
-    >[!NOTE]
-    >追加情報については、[MyWorkDrive の Azure AD サポートに関する記事](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)をご覧ください。
+8. **Allbound SSO** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を [Allbound SSO サポート チーム](mailto:engineering@allbound.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -177,21 +168,23 @@ MyWorkDrive で Azure AD のシングル サインオンを構成してテスト
 
     d. **作成**を選択します。
 
-### <a name="creating-a-myworkdrive-test-user"></a>MyWorkDrive テスト ユーザーの作成
+### <a name="creating-an-allbound-sso-test-user"></a>Allbound SSO テスト ユーザーの作成
 
-このセクションでは、MyWorkDrive で Britta Simon というユーザーを作成します。  [MyWorkDrive サポート チーム](mailto:support@myworkdrive.com)と連携して、MyWorkDrive プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションの目的は、Allbound SSO で Britta Simon というユーザーを作成することです。 Allbound SSO では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Allbound SSO にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
+>[!Note]
+>ユーザーを手動で作成する必要がある場合は、 [Allbound SSO サポート チーム](mailto:engineering@allbound.com)にお問い合わせください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に MyWorkDrive へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Allbound SSO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![ユーザーの割り当て][201]
 
-2. アプリケーションの一覧で **[MyWorkDrive]** を選択します。
+2. アプリケーションの一覧で **[Allbound SSO]** を選択します。
 
-    ![Configure single sign-on](./media/myworkdrive-tutorial/tutorial_myworkdrive_app.png) 
+    ![Configure single sign-on](./media/allbound-sso-tutorial/tutorial_allbound-sso_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -209,7 +202,7 @@ MyWorkDrive で Azure AD のシングル サインオンを構成してテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [MyWorkDrive] タイルをクリックすると、自動的に MyWorkDrive アプリケーションにサインオンします。
+アクセス パネルで [Allbound SSO] タイルをクリックすると、自動的に Allbound SSO アプリケーションにサインオンします。
 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース

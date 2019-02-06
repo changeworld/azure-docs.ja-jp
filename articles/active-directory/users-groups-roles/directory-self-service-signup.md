@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394682"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195819"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 この記事では、セルフサービス サインアップの概要と、Azure Active Directory (Azure AD) でサポートする方法について説明します。 管理されていない Azure AD テナントからドメイン名を引き継ぐ場合は、[管理されていないディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。
@@ -31,9 +31,9 @@ ms.locfileid: "49394682"
 * セルフサービスで作成された Azure AD ディレクトリを、他のサービスで使用できる管理ディレクトリに変えることができる。
 
 ## <a name="terms-and-definitions"></a>用語と定義
-* **セルフサービス サインアップ**: ユーザーがこの方法でクラウド サービスにサインアップすると、電子メール ドメインに基づいた ID が Azure AD に自動的に作成されます。
-* **管理されていない Azure AD ディレクトリ**: これは、前述の ID が作成されるディレクトリです。 管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
-* **電子メール検証済みユーザー**: これは Azure AD のユーザー アカウントの 1 種です。 セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。 電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
+* **セルフサービス サインアップ**:ユーザーがこの方法でクラウド サービスにサインアップすると、電子メール ドメインに基づいた ID が Azure AD に自動的に作成されます。
+* **管理されていない Azure AD ディレクトリ**:これは、前述の ID が作成されるディレクトリです。 管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
+* **電子メール検証済みユーザー**:これは Azure AD のユーザー アカウントの一種です。 セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。 電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
 
 ## <a name="how-do-i-control-self-service-settings"></a>セルフサービス設定の管理方法
 管理者は、セルフサービスの 2 種類の管理を実行できます。 次の点を管理できます。
@@ -63,9 +63,9 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 ### <a name="how-do-the-controls-work-together"></a>これらの管理機能の連携について
 これらの 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。 たとえば、次のコマンドにより、ユーザーはセルフサービス サインアップを実行できますが、Azure AD のアカウントを既に持っている場合に限られます (つまり、電子メール検証済みのアカウントをまず作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。
 
-````powershell
+```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
-````
+```
 
 次のフローチャートは、これらのパラメーターのさまざまな組み合わせと、結果として得られるディレクトリとセルフサービス サインアップの状態を示しています。
 

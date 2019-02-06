@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 932517e3f1dc70e44727a6d165430dba6e63ae5a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808631"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187795"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -161,8 +161,8 @@ Azure portal の外部で操作する場合は、[サインイン データを�
 
 **Windows 10** マシン上でスクリプトを実行する場合は、最初にいくつかの手順を追加で実行する必要があります。 
 
-1. [AzureRM モジュール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l)をインストールします。
-2. PowerShell プロンプトを開き、コマンド **Import-Module AzureRM** を実行して、モジュールをインポートします。
+1. [Az モジュール](/powershell/azure/install-az-ps)をインストールします。
+2. PowerShell プロンプトを開き、コマンド **Import-Module Az** を実行して、モジュールをインポートします。
 3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
 4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
 

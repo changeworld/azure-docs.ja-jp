@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Dealpath の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Dealpath の統合 | Microsoft Docs
 description: Azure Active Directory と Dealpath の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 51ace608-5a4f-48c0-9446-d9f86ad2e890
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 8fa9014ec066e888e9c5cc9330d76c2487786530
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 97520460041d0a142cebdee843274793646321f5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427702"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188271"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>チュートリアル: Azure Active Directory と Dealpath の統合
+# <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>チュートリアル:Azure Active Directory と Dealpath の統合
 
 このチュートリアルでは、Dealpath と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -149,7 +149,7 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,7 +186,7 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
  
 ### <a name="create-a-dealpath-test-user"></a>Dealpath テスト ユーザーの作成
 
-このセクションでは、Dealpath で Britta Simon というユーザーを作成します。 [Dealpath クライアント サポート チーム](mailto:kenter@dealpath.com)と連携し、Dealpath プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Dealpath で Britta Simon というユーザーを作成します。  [Dealpath クライアント サポート チーム](mailto:kenter@dealpath.com) と連携し、Dealpath プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -223,7 +223,7 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Dealpath] タイルをクリックすると、Dealpath アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

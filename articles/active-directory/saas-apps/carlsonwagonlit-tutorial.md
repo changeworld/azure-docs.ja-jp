@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Carlson Wagonlit Travel の統合 | Microsoft Docs
 description: Azure Active Directory と Carlson Wagonlit Travel の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2745e165-94ab-43b1-970a-4547b4e5b501
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b1854b8e2c05fb2bcc5bd864c9ed8049250743b8
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 564f78b28be96209012542fd0d2e4de94872e583
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054116"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188078"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
+# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル:Azure Active Directory と Carlson Wagonlit Travel の統合
 
 このチュートリアルでは、Carlson Wagonlit Travel と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -123,7 +123,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
 6. **Carlson Wagonlit Travel** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Carlson Wagonlit Travel サポート チーム](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -160,7 +160,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
  
 ### <a name="create-a-carlson-wagonlit-travel-test-user"></a>Carlson Wagonlit Travel のテスト ユーザーの作成
 
-このセクションでは、Carlson Wagonlit Travel で Britta Simon というユーザーを作成します。 [Carlson Wagonlit Travel サポート チーム](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)と協力して、Carlson Wagonlit Travel プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Carlson Wagonlit Travel で Britta Simon というユーザーを作成します。  [Carlson Wagonlit Travel サポート チーム](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) と協力して、Carlson Wagonlit Travel プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +197,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Carlson Wagonlit Travel] タイルをクリックすると、自動的に Carlson Wagonlit Travel アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

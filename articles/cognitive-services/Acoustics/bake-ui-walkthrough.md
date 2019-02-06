@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169758"
 ---
 # <a name="bake-acoustics"></a>音響のベイク処理
 
@@ -255,10 +255,10 @@ Azure 資格情報はローカル コンピューターに安全に保存され�
 
 このプラグインでは、さまざまな時点で 4 つのデータ ファイルが作成されます。 実行時に必要なのはその中の 1 つだけです。そのため、残りの 3 つは "Editor" という名前のフォルダー内にあり、プロジェクトにコンパイルされることはありません。
 
-* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: このファイルには、ユーザーが Acoustics UI のフィールドに入力したデータが格納されます。 このファイルの場所と名前は変更できません。 このファイルには、ベイクに影響を与える他の値が保存されていますが、それらは上級ユーザー向けであるため、変更しないでください。
-* **Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes**: このファイルは、ベイクのシミュレーション中に作成されます。このファイルには、シーンの音響をレンダリングするためにランタイムが使用する参照データが含まれています。 このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
-* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: このファイルには、ボクセル化された音響ジオメトリとマテリアルのプロパティが格納されます。 [Probes]\(プローブ\) タブの **[Calculate...]\(計算...\)** ボタンを使用して計算されます。このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
-* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**: このファイルには、**[Probes]\(プローブ\)** タブの **[Calculate...]\(計算...\)** ボタンを使用して計算されたパラメーターが格納されます。このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
+* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**:このファイルには、ユーザーが Acoustics UI のフィールドに入力したデータが格納されます。 このファイルの場所と名前は変更できません。 このファイルには、ベイクに影響を与える他の値が保存されていますが、それらは上級ユーザー向けであるため、変更しないでください。
+* **Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes**:このファイルは、ベイクのシミュレーション中に作成されます。このファイルには、シーンの音響をレンダリングするためにランタイムが使用する参照データが含まれています。 このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
+* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**:このファイルには、ボクセル化された音響ジオメトリとマテリアルのプロパティが格納されます。 [Probes]\(プローブ\) タブの **[Calculate...]\(計算...\)** ボタンを使用して計算されます。このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
+* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**:このファイルには、**[Probes]\(プローブ\)** タブの **[Calculate...]\(計算...\)** ボタンを使用して計算されたパラメーターが格納されます。このファイルの場所と名前は、**[Probes]\(プローブ\)** タブのフィールドを使用して変更できます。
 
 ベイクからダウンロードした *.ace.bytes ファイルを削除しないように注意してください。 このファイルは、シーンを再ベイクしない限り回復できません。
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合| Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合| Microsoft Docs
 description: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 4ff282b3db4689ceaf5fa27b57c82cb05025712e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0b2d4acb3a717f51d0ff15868dea917806b5b604
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181964"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル:Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
 
 このチュートリアルでは、Veritas Enterprise Vault.cloud SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Veritas Enterprise Vault.cloud SSO で、Azure AD の **[ユーザー名]** の�
 
 Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Veritas Enterprise Vault.cloud SSO のテスト ユーザーの作成](#creating-a-veritas-enterprise-vaultcloud-sso-test-user)** - Veritas Enterprise Vault.cloud SSO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -148,7 +148,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
 1. **Veritas Enterprise Vault.cloud SSO** 側にシングルサインオンを構成するには、ダウンロードされた**証明書 (Base64)** および **SAML シングル サインオン サービス URL** を [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -184,7 +184,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
  
 ### <a name="creating-a-veritas-enterprise-vaultcloud-sso-test-user"></a>Veritas Enterprise Vault.cloud SSO のテスト ユーザーの作成
 
-このセクションでは、Veritas Enterprise Vault.cloud SSO で Britta Simon というユーザーを作成します。 [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)と連携して、Veritas Enterprise Vault.cloud SSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Veritas Enterprise Vault.cloud SSO で Britta Simon というユーザーを作成します。  [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html) と連携して、Veritas Enterprise Vault.cloud SSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/14/2019
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a23561e082736b7dfae6205e75fd1e9ccfab5f6c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 531ba32125479528b1a847b32d711049e699dda0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463391"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191663"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -205,21 +205,21 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 グループの書き戻しを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 または、 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 このコマンドレットは、次のアクセス許可を設定します。 
 
 |type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |グループの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |このオブジェクトとすべての子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |オブジェクトとそのすべての子の作成/削除 |このオブジェクトとすべての子孫オブジェクト|
+|ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|ALLOW |AD DS コネクタ アカウント |削除/ツリー オブジェクトの削除|オブジェクトの種類のグループとサブオブジェクトのすべての属性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange ハイブリッドのデプロイのアクセス許可 
 Exchange ハイブリッドのデプロイを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
