@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/20/2018
+ms.date: 01/28/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 48b9408a092b0e3a0fa6eb1b29822085ad8f8302
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: f576e4546c5024e14b0735867ed9ed8dc38e93aa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54363907"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205117"
 ---
 | Category | データ ストア |
 |:--- |:--- |
@@ -47,7 +47,8 @@ ms.locfileid: "54363907"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto (プレビュー)](../articles/data-factory/connector-presto.md) |
-| &nbsp; |[SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
+| &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
+| &nbsp; |[MDX を介した SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |

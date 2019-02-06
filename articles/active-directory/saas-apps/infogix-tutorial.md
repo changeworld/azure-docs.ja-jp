@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Infogix Data3Sixty Govern の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Infogix Data3Sixty Govern の統合 | Microsoft Docs
 description: Azure Active Directory と Infogix Data3Sixty Govern の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 3e54ade44828bf1e26c310a14ae401fe8ae33229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e9b805786346abd6dfe830c9ce6ae4cc341c9e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194272"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>チュートリアル: Azure Active Directory と Infogix Data3Sixty Govern の統合
+# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>チュートリアル:Azure Active Directory と Infogix Data3Sixty Govern の統合
 
 このチュートリアルでは、Infogix Data3Sixty Govern と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -199,7 +199,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
 このセクションの目的は、Infogix Data3Sixty Govern で Britta Simon というユーザーを作成することです。 Infogix Data3Sixty Govern では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Infogix Data3Sixty Govern にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Infogix Data3Sixty Govern サポート チーム](mailto:data3sixtysupport@infogix.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -236,7 +236,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Infogix Data3Sixty Govern のタイルをクリックすると、自動的に Infogix Data3Sixty Govern アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

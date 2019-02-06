@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 12/31/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: mayg
+ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478104"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212241"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -42,6 +42,9 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Azure アカウントには VM を作成するアクセス許可が必要ですか?
 サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
+
+### <a name="can-i-use-guest-os-server-license-on-azure"></a>Azure でゲスト OS のサーバー ライセンスを使用できますか?
+はい、マイクロソフト ソフトウェア アシュランスのお客様は、Azure ハイブリッド特典を使用して、Azure に移行する **Windows Server マシン**のライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery コンポーネントのアップグレード
 
@@ -250,7 +253,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。
 
 ### <a name="can-i-resize-the-azure-vm-after-failover"></a>フェールオーバー後に Azure VM をサイズ変更することはできますか?
-いいえ、フェールオーバー後にターゲット VM のサイズを変更することはできません。
+いいえ、フェールオーバー後にターゲット VM のサイズや種類を変更することはできません。
 
 
 ## <a name="automation-and-scripting"></a>自動化とスクリプト

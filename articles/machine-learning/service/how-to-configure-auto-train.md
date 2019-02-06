@@ -7,16 +7,16 @@ ms.author: nilesha
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823438"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242333"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>自動機械学習の実験を構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "54823438"
 * モデルを登録して展開する
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。 
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。
 
 自動機械学習の機能は一般提供されていますが、**予測機能はまだパブリック プレビュー段階にあります**。
 
@@ -59,7 +59,7 @@ ms.locfileid: "54823438"
 ## <a name="data-source-and-format"></a>データ ソースと形式
 自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、scikit-learn でサポートされているデータ形式に読み込むことができます。 次のものにデータを読み込めます。
 * Numpy 配列 X (特徴) と y (ターゲット変数、ラベルとも呼ばれます)
-* Pandas データフレーム 
+* Pandas データフレーム
 
 次に例を示します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "54823438"
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +75,9 @@ ms.locfileid: "54823438"
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +88,18 @@ ms.locfileid: "54823438"
 `get_data` の例を以下に示します。
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -117,7 +117,7 @@ X | Pandas データフレームまたは Numpy 配列 | data_train、label、co
 y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
 X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます
 y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、label | "_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます
-sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します 
+sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します
 sample_weight_valid | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |    "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます
 data_train |    Pandas データフレーム |  X、y、X_valid、y_valid |    トレーニングするすべてのデータ (機能 + ラベル)
 label | 文字列  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
@@ -136,7 +136,8 @@ cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用に
 >* フィルター処理
 >* カスタム Python 変換
 
-データ準備 SDK の詳細については、[モデル化のためのデータの準備方法に関する記事](how-to-load-data.md)をご覧ください。 データ準備 SDK を使用したデータの読み込みの例を次に示します。 
+データ準備 SDK の詳細については、[モデル化のためのデータの準備方法に関する記事](how-to-load-data.md)をご覧ください。
+データ準備 SDK を使用したデータの読み込みの例を次に示します。
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -189,22 +190,22 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
 2.  次の例は、100 回のイテレーションの後で終了するように設定された回帰実験です。各イテレーションは、5 個の検証クロス フォールドで 600 秒続きます。
 
-    ````python
+    ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         max_time_sec=600,
         iterations=100,
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
-    ````
+    ```
 
 次の表では、実験に使用できるパラメーター設定とその既定値の一覧を示します。
 
@@ -223,7 +224,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 `enable_cache`  | True または False <br/>これを True に設定すると、前処理を 1 回実行し、すべての繰り返しに同じ前処理されたデータを再利用できます。 | True |
 `blacklist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験から除外するように構成します。 アルゴリズムがデータセットに対してうまく動作しないことがわかっている場合に役立ちます。 アルゴリズムを除外すると、コンピューティング リソースとトレーニング時間を節約できます。<br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   なし
 `whitelist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験に含めるように構成します。 アルゴリズムが自分のデータセットに対してうまく動作することがわかっている場合に役立ちます。 <br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  なし
-`verbosity` |ログのレベルを制御します。INFO は最も詳細で、CRITICAL は最小限です。 詳細レベルは、Python ロギング パッケージで定義されているものと同じ値を取ります。 使用できる値は、以下のとおりです。<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
+`verbosity` |ログのレベルを制御します。INFO は最も詳細で、CRITICAL は最小限です。 詳細レベルは、Python ロギング パッケージで定義されているものと同じ値を取ります。 使用できる値は、以下のとおりです。<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li>
 `X` | トレーニングするすべての機能 |  なし
 `y` |   トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。|  なし
 `X_valid`|"_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます |   なし
@@ -233,7 +234,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 `run_configuration` |   RunConfiguration オブジェクト。  リモート実行に使用されます。 |なし
 `data_script`  |    get_data メソッドを含むファイルへのパス。  リモート実行に必要です。   |なし
 `model_explainability` | "_省略可能_" True または False <br/>  True を指定すると、実験でイテレーションごとに特徴の重要度が計算されます。 特定のイテレーションで explain_model() メソッドを使用して、実験の完了後にそのイテレーションの特徴の重要度を必要に応じて計算することもできます。 | False
-`enable_ensembling`|他のすべてのイテレーションの完了後に、アンサンブル イテレーションを有効にするフラグを設定します。| True 
+`enable_ensembling`|他のすべてのイテレーションの完了後に、アンサンブル イテレーションを有効にするフラグを設定します。| True
 `ensemble_iterations`|最後のアンサンブルに含める適合したパイプラインを選択するイテレーションの数。| 15
 `experiment_timeout_minutes`| 実験全体の実行にかけられる時間 (分) を制限します | なし
 
@@ -324,20 +325,20 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   すべてのイテレーションに対する特徴の重要度を確認するには、AutoMLConfig で `model_explainability` フラグを `True` に設定します。  
+*   すべてのイテレーションに対する特徴の重要度を確認するには、AutoMLConfig で `model_explainability` フラグを `True` に設定します。
 
     ```python
     automl_config = AutoMLConfig(task = 'classification',
@@ -346,7 +347,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -358,20 +359,20 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure ML ノートブックのサンプルに関する記事](samples-notebooks.md)ご覧ください。
+Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure Machine Learning service ノートブックのサンプルに関する記事](samples-notebooks.md)をご覧ください。
 
 ```python
 from azureml.widgets import RunDetails
@@ -383,4 +384,4 @@ RunDetails(local_run).show()
 
 [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-[自動機械学習を利用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。 
+[自動機械学習を利用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。

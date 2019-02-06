@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 12a9602ecd61da5dc497790ecca6d8d6f874252e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167738"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184293"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用
 
@@ -96,7 +96,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
 アクセス レビューを使用して条件付きアクセス ポリシーの除外を管理する 2 つの例について説明します。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>例 1: ブロックされている国からアクセスするユーザーのアクセス レビュー
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>例 1:ブロックされている国からアクセスするユーザーのアクセス レビュー
 
 特定の国からのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
@@ -117,7 +117,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![アクセス レビューの作成](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2:例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
 
 レガシ認証と古いバージョンのクライアントを使用しているユーザーのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
@@ -135,7 +135,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![アクセス レビューの作成](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro ヒント**: 多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合は、Microsoft Graph のベータ版エンドポイントの API で、それらをプログラムで作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
+**Pro ヒント**:多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合は、Microsoft Graph のベータ版エンドポイントの API で、それらをプログラムで作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
 
 ## <a name="access-review-results-and-audit-logs"></a>アクセス レビューの結果と監査ログ
 

@@ -12,19 +12,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5b6bef8194123ed6c83a48dd5e819085d4bc5424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434242"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453469"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 この記事では、Azure Data Factory (ADF) で Azure-SSIS 統合ランタイム (IR) をプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこの統合ランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。 
 
 「[チュートリアル:SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」は、Azure SQL Database サーバーを使用して SSIS カタログ データベース (SSISDB) をホストすることで Azure-SSIS IR を作成する方法を示しています。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。 
 
-- 必要に応じて、仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を使用して、SSISDB をホストします。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、[Azure SQL Database サーバーとマネージド インスタンスの比較](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)に関する記事を参照してください。 前提条件として、Azure-SSIS IR を仮想ネットワークに参加させ、仮想ネットワークのアクセス許可を設定し、必要に応じて構成する必要があります。 「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。 
+- 必要に応じて、仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を使用して、SSISDB をホストします。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、「[Azure SQL Database の単一データベース/エラスティック プールとマネージド インスタンスの比較](create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)」を参照してください。 前提条件として、Azure-SSIS IR を仮想ネットワークに参加させ、仮想ネットワークのアクセス許可を設定し、必要に応じて構成する必要があります。 「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。 
 
 - 必要に応じて、Azure Active Directory (AAD) 認証と ADF のマネージド ID を使用して、データベース サーバーに接続します。 前提条件として、Azure SQL Database サーバー/Managed Instance で SSISDB を作成できる包含データベース ユーザーとして、ADF のマネージド ID を追加する必要があります。「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」をご覧ください。 
 
@@ -55,11 +55,11 @@ Azure-SSIS IR をプロビジョニングすると、Azure Feature Pack for SSIS
 ### <a name="region-support"></a>リージョンのサポート
 ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧については、[リージョン別の ADF + SSIS IR の利用可能性](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)に関するページを参照してください。 
 
-### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>SQL Database 論理サーバーと SQL Database マネージ インスタンスを比較します。
+### <a name="compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance"></a>SQL Database の単一データベース/エラスティック プールと SQL Database Managed Instance の比較
 
 次の表では、Azure-SSIR IR に関連する Azure SQL Database サーバーと Managed Instance の一部の機能を比較しています。
 
-| 機能 | Azure SQL Database サーバー| マネージド インスタンス |
+| 機能 | 単一データベース/エラスティック プール| マネージド インスタンス |
 |---------|--------------|------------------|
 | **スケジュール設定** | SQL Server エージェントは使用できません。<br/><br/>[ADF パイプラインでのパッケージの実行のスケジュール](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)に関するページを参照してください。| マネージド インスタンス エージェントを使用できます。 |
 | **認証** | **db_owner** ロールのメンバーとして ADF のマネージド ID を持つ AAD グループを表す包含データベース ユーザーを使用して、SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | ADF のマネージド ID を表す包含データベース ユーザーを使用して、SSISDB を作成できます。 <br/><br/>[Azure SQL Database Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)に関するページを参照してください。 |
@@ -69,9 +69,11 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 | | | |
 
 ## <a name="azure-portal"></a>Azure ポータル
+
 このセクションでは、Azure portal、具体的には ADF ユーザー インターフェイス (UI)/アプリを使用して、Azure-SSIS IR を作成します。 
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。 
+
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。 
 1. [Azure Portal](https://portal.azure.com/) にログインします。 
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 

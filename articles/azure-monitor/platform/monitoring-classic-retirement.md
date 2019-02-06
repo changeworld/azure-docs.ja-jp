@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a910b0537234d1653be93eb406fe3b2261305ee5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3c1896dc756675b838b97d978cec40b4650760fe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461979"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298970"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -36,9 +36,9 @@ Application Insights での新しい監視とアラートの統合には、以�
 - **Application Insights カスタム メトリック** – 監視とアラート用の独自のメトリックを定義して発行できます。 詳細については、[新しい Azure Monitor での Application Insights のカスタム メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)の使用に関する記事を参照してください。
 - **Application Insights エラーの異常 (スマート検出の一部)** – Web アプリで HTTP 要求または依存する呼び出しの失敗率が異常に増加した場合に、ほぼリアルタイムで自動的に通知します。 新しい Azure Monitor の一部としての Application Insights のエラーの異常 (スマート検出の一部) は間もなく利用可能になる予定であり、数か月後に次のバージョンがロールアウトされたときに、このドキュメントもリンク付きで更新される予定です。
 
-## <a name="unified-metrics--alerts-for-other-azure-resources"></a>他の Azure リソースでのメトリックとアラートの統合
+## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>他の Azure リソースでのメトリックとアラートの統合
 
-2018 年 3 月以降、Azure リソースに対して、次世代のアラートと多次元監視を利用できるようになっています。 新しいメトリック プラットフォームとアラートは高速であり、ほぼリアルタイムの機能を提供するようになっています。 さらに重要なのは、新しいメトリック プラットフォームでは、アラートがより高い粒度で提供されることです。これは、新しいプラットフォームには、特定の値の組み合わせ、条件、または操作でフィルター処理できるディメンション オプションが含まれているためです。 新しい Azure Monitor のすべてのアラートと同じように、新しいメトリック アラートは、ActionGroups を使用して拡張でき、電子メールや Webhook による通知に加え、SMS、Voice、Azure Function、Automation Runbook などによる通知まで展開できます。
+2018 年 3 月以降、Azure リソースに対して、次世代のアラートと多次元監視を利用できるようになっています。 新しいメトリック プラットフォームとアラートは高速であり、ほぼリアルタイムの機能を提供するようになっています。 さらに重要なのは、新しいメトリック プラットフォームでは、アラートがより高い粒度で提供されることです。これは、新しいプラットフォームには、特定の値の組み合わせ、条件、または操作でフィルター処理できるディメンション オプションが含まれているためです。 新しい Azure Monitor のすべてのアラートと同じように、新しいメトリック アラートは、ActionGroups を使用して拡張でき、電子メールや Webhook による通知に加え、SMS、Voice、Azure Function、Automation Runbook などによる通知まで展開できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
 Azure リソースの新しいメトリックは、以下のように使用できます。
 
 - **Azure Monitor の標準プラットフォーム メトリック** – さまざまな Azure サービスと製品から一般的な設定済みのメトリックを提供します。 詳細については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)と[Azure Monitor でのメトリック アラートのサポート](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts)に関する記事を参照してください。
@@ -60,6 +60,10 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 - クラシック監視およびアラート サービスは廃止され、新しいアラート ルールの作成には使用可能できなくなります。
 - 2019 年 6 月の後もアラート (クラシック) に引き続き存在するアラート ルールはすべて、引き続き通知を実行して起動しますが、変更することはできなくなります。
 - 2019 年 7 月から、クラシック監視およびアラートのアラート ルールはすべて、Microsoft によって新しい Azure 監視プラットフォームにある同等のアラート ルールに自動的に移行されます。 このプロセスは、ダウンタイムなしでシームレスに実行され、お客様の監視範囲が失われることはありません。
+- 新しいアラート プラットフォームへのアラート ルールの移行によって、前のような監視範囲が実現されますが、新しいペイロードによる通知が発生します。 従来のアラート ルールに関連付けられた電子メール アドレス、Webhook エンドポイント、ロジック アプリ リンクはすべて、移行時に引き継がれますが、新しいプラットフォームではアラートのペイロードが異なるため、正常に機能しない可能性があります
+
+> [!IMPORTANT]
+> Microsoft Azure Monitor では、まもなく従来のアラート ルールを自動的に新しいプラットフォームに移行するツールをお客様に提供する予定です。 そして、2019 年 7 月より、まだ存在している従来のアラート ルールすべてに対して、それを強制的に実行します。 お客様は、従来のアラート ルールの移行後、従来のアラート ルールのペイロードを使用するオートメーションが、[Application Insights でのメトリックとアラートの統合](#unified-metrics-and-alerts-in-application-insights)または[他の Azure リソースでのメトリックとアラートの統合](#unified-metrics-and-alerts-for-other-azure-resources)からの新しいペイロードの処理に合わせて改変されたことを確認する必要があります。 
 
 お客様の意思で Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) から新しい Azure アラートに移行するためのツールは間もなく提供される予定です。 アラート (クラシック) 内に構成済みで新しい Azure Monitor に移行されるすべてのルールは無料のままであり、課金対象になりません。 移行後のクラシック アラート ルールでは、電子メール、Webhook、または LogicApp による通知のプッシュにも料金はかかりません。 ただし、新しい種類の通知またはアクション (SMS、音声通話、ITSM 統合など) の使用では、その使用が、移行後のアラートに追加されたか新しいアラートに追加されたかに応じて課金対象になります。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 
@@ -70,7 +74,7 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 - Application Insights によって実行されるすべてのマルチテスト Web テスト
 - Azure Monitor に含まれる無料ユニットを超えて格納されるすべてのカスタム メトリック
 
-この記事は、新しい Azure の監視とアラートに関するリンクと詳細に加え、ユーザーが新しい Azure Monitor プラットフォームを導入するために役立つツールを紹介するために継続的に更新される予定です。
+この記事は継続的に更新されて、新しい Azure の監視とアラートに関するリンクと詳細に加え、ユーザーが新しい Azure Monitor プラットフォームを導入するために役立つツールの提供状況が紹介される予定です。
 
 
 ## <a name="next-steps"></a>次の手順

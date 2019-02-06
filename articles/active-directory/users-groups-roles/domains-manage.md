@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 12c8b80b76c721962ca6180e531578b037997553
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854917"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294167"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -86,13 +86,13 @@ Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対�
 
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**Q: このドメイン名に Exchange マスター グループがあることを示すエラーでドメインの削除が失敗するのはなぜですか。** <br>
+**Q:このドメイン名に Exchange マスター グループがあることを示すエラーでドメインの削除が失敗するのはなぜですか。** <br>
 **A:** 現在、Exchange のメールが有効なセキュリティ グループや配布リストなどの特定のグループは、Exchange によってプロビジョニングされており、[Exchange 管理センター (EAC)](https://outlook.office365.com/ecp/) で手動によりクリーンアップする必要があります。 カスタム ドメイン名に依存していて、手動で別のドメイン名に更新する必要がある、残留 ProxyAddresses が存在する可能性があります。 
 
-**Q: admin@contoso.com としてログインしても、ドメイン名 "contoso.com" を削除できません。**<br>
+**Q:admin@contoso.com としてログインしても、ドメイン名 "contoso.com" を削除できません。**<br>
 **A:** ユーザー アカウント名で削除しようとしているカスタム ドメイン名を参照することはできません。 グローバル管理者アカウントで admin@contoso.onmicrosoft.com のような既定の初期ドメイン名 (. onmicrosoft.com) が使用されていることを確認してください。 admin@contoso.onmicrosoft.com などの別のグローバル管理者アカウント、またはアカウントが admin@fabrikam.com である "fabrikam.com" のような別のカスタム ドメイン名で、サインインしてください。
 
-**Q: [ドメインの削除] ボタンをクリックすると、`In Progress` という削除操作の状態が表示されます。どのくらいの時間がかかりますか?失敗するとどうなりますか。**<br>
+**Q:[ドメインの削除] ボタンをクリックすると、`In Progress` という削除操作の状態が表示されます。どのくらいの時間がかかりますか?失敗するとどうなりますか。**<br>
 **A:** ドメインの削除操作は、ドメイン名に対するすべての参照の名前を変更する非同期のバックグラウンド タスクです。 1 ～ 2 分で完了するはずです。 ドメインの削除が失敗する場合は、次のものがないことを確認してください。
 
 * appIdentifierURI のドメイン名で構成されているアプリ
@@ -112,5 +112,4 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 
 * [カスタム ドメイン名を追加する](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Exchange 管理センターで Exchange のメールが有効なセキュリティ グループを削除する、または Azure AD でカスタム ドメイン名を削除する](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Azure AD でアプリケーションの参照を別のドメインに更新する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad#updating-an-application)
 * [Microsoft Graph API でカスタム ドメイン名を強制削除する](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)

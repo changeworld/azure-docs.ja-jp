@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0a18931c037a1cf34d8a296a6330264bc8d38af
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fa53a7e598b42e93e86eb059c36ff89f38bb7093
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424524"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300593"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>PowerShell を使用して仮想マシンをバックアップし、復元する
 
@@ -355,11 +355,17 @@ $restorejob
 #### <a name="restore-managed-disks"></a>マネージド ディスクの復元
 
 > [!NOTE]
-> バックアップされた VM でマネージド ディスクが使用されている場合、それらをマネージド ディスクとして復元できるよう、Azure PowerShell バージョン 6.7.0 以降には新機能が導入されています。
+> バックアップされた VM でマネージド ディスクが使用されている場合、それらをマネージド ディスクとして復元できるよう、Azure PowerShell RM モジュール バージョン 6.7.0 以降には新機能が導入されています。
 >
 >
 
-追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。
+追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。 
+
+> [!NOTE]
+> パフォーマンスが大幅に向上するため、マネージド ディスクを復元する場合は **TargetResourceGroupName** を使用することを強くお勧めします。 また、Azure Powershell Az モジュール 1.0 以降では、マネージド ディスクを復元する場合、このパラメーターは必須です
+>
+>
+
 
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981027"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203591"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>VM の作成
 
-Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
+Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
 
 次の例では、myVM という名前の VM が作成されます。サイズは Standard_DS2_v2 で、50 GB のデータ ディスクが 4 つ装着されます。 これらがキーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -583,8 +583,8 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-[チュートリアル: Oracle DataGuard の構成](configure-oracle-dataguard.md)
+[チュートリアル:Oracle DataGuard の構成](configure-oracle-dataguard.md)
 
-[チュートリアル: Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
+[チュートリアル:Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
 
 [Oracle DB の構築](oracle-design.md)を確認する

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: お客様の Azure Machine Learning service モデルをデプロイする方法と場所について説明します (Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、フィールド プログラマブル ゲート アレイ)。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d62885743a4e50ece1c032c7b3405d8766d95cd
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e8b318626947c1d1147e43ca6c183ae724080a59
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850588"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251607"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -380,7 +380,7 @@ sudo chmod +x installIoTEdge
 sudo ./installIoTEdge
 ```
 
-IoT Edge ノードは、お客様の IoT ハブの接続文字列を受け入れる準備が整っています。 ```device_connection_string:``` の行を探して、引用符に囲まれた上記の接続文字列を貼り付けます。
+IoT Edge ノードは、お客様の IoT Hub の接続文字列を受け入れる準備が整っています。 ```device_connection_string:``` の行を探して、引用符に囲まれた上記の接続文字列を貼り付けます。
 
 また、お客様のデバイスを登録して IoT ランタイムをインストールする方法を詳しく確認するには、「[クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する](../../iot-edge/quickstart-linux.md)」のドキュメントに従ってください。
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Compliance ELF の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Compliance ELF の統合 | Microsoft Docs
 description: Azure Active Directory と Compliance ELF の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5a7bfc51bcd1931def202d701127de701afb595
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 509bec49840537dbb5bb7f0ec69cc4dfb750244a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042862"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189427"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル: Azure Active Directory と Compliance ELF の統合
+# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル:Azure Active Directory と Compliance ELF の統合
 
 このチュートリアルでは、Compliance ELF と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -106,22 +106,22 @@ Compliance ELF で Azure AD のシングル サインオンを構成してテス
 
     ![[シングル サインオン] ダイアログ ボックス](./media/complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
-3. **[Compliance ELF のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[Compliance ELF のドメインと URL]** セクションで、 **IDP**  開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[Compliance ELF のドメインと URL] のシングル サインオン情報](./media/complianceelf-tutorial/tutorial_complianceelf_url.png)
 
     **[識別子]** ボックスに、`https://sso.cordium.com` のように URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+4. アプリケーションを **SP** 開始モードで構成する場合は、 **[詳細な URL 設定の表示]** をオンにして次の手順を実行します。
 
     ![[Compliance ELF のドメインと URL] のシングル サインオン](./media/complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<subdomain>.complianceelf.com` のパターンを使用して URL を入力します。
+     **[サインオン URL]** ボックスに、 `https://<subdomain>.complianceelf.com` というパターンで URL を入力します。
     
     > [!NOTE] 
     > これは実際の値ではありません。 この値は実際のサインオン URL に変更します。 この値を取得するには、[Compliance ELF サポート チーム](mailto:support@complianceelf.com)に問い合わせてください。
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+5.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして  **[アプリのフェデレーション メタデータ URL]**  をコピーし、メモ帳に貼り付けます。
     
     ![Configure single sign-on](./media/complianceelf-tutorial/tutorial_metadataurl.png)
      
@@ -202,7 +202,7 @@ Compliance ELF で Britta Simon というユーザーを作成します。 [Comp
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Compliance ELF] タイルをクリックすると、自動的に Compliance ELF アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

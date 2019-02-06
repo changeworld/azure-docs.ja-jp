@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 215b780bc403ab2df40567c3eb5a7ae86c9fe130
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 17167271df81914c76882fc4d06717043e1befc1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127365"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214298"
 ---
 # <a name="glossary"></a>用語集
 
@@ -48,7 +48,7 @@ ms.locfileid: "46127365"
 
 信頼度は、[顔](#Face)や[人物](#Person)の類似性を数値化したもので、[特定](#Identification)や[検証](#Verification)において、検索、識別、検証された結果の類似性を示します。
 
-詳しくは、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)」の各ガイドをご覧ください。
+詳細については、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)の各ガイドをご覧ください。
 
 ## <a name="d"></a>D
 
@@ -72,7 +72,7 @@ ms.locfileid: "46127365"
 
 Face API は、顔検出および認証の最も高度なアルゴリズムを提供するクラウド ベースの API です。 Face API の主な機能は、[属性](#Face-Attributes-Facial-Attributes)による顔の[検出](#Detection-Face-Detection)と顔の[認識](#Recognition)の 2 つのカテゴリに分類できます。
 
-詳しくは、[Face API の概要](./Overview.md)に関するページ、「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出)、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)」の各ガイドをご覧ください。
+詳しくは、[Face API の概要](./Overview.md)に関するページ、「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出)、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)の各ガイドをご覧ください。
 
 #### <a name="face-attributesfacial-attributes"></a>顔の属性
 
@@ -336,7 +336,7 @@ PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用さ�
 
 ## <a name="w"></a>W
 
-## <a name="x"></a>○
+## <a name="x"></a>X
 
 ## <a name="y"></a>Y
 

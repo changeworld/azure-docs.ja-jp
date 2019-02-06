@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f31fccd2bf6d0daae03b025b53a41a0fad4ce2ef
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957693"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210133"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -53,7 +53,7 @@ Site Recovery による更新の管理は次の方法で選択できます。
 1. コンテナー内で、**[管理]** -> **[Site Recovery インフラストラクチャ]** の順に移動します。
 2. **[For Azure virtual Machines]\(Azure 仮想マシン\)** -> **[Extension Update Settings]\(拡張機能の更新設定\)** で、トグルをクリックして、"*更新を ASR で管理する*" か、"*手動で管理する*" かを選択します。 **[Save]** をクリックします。
 
-![vault-toggle-autuo-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important] 
 > "*ASR での管理*" を選択した場合は、対応するコンテナー内のすべての仮想マシンに設定が適用されます。

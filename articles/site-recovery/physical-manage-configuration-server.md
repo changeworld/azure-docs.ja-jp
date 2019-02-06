@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: ee5cc1f185640c9ea22ceb80b1fabb20df245fe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823082"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300440"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -128,7 +128,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>MYSQLCredsFilePath のファイル入力を作成する
 
 MySQLCredsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 MySQLCredsFilePath パラメーターとして渡します。
-```
+```ini
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
@@ -136,7 +136,7 @@ MySQLUserPassword = "Password"
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>ProxySettingsFilePath のファイル入力を作成する
 ProxySettingsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 ProxySettingsFilePath パラメーターとして渡します。
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -157,7 +157,7 @@ ProxyPassword="Password"
 5. 新しいプロキシの詳細を入力し、**[登録]** をクリックします。
 6. 管理者として PowerShell コマンド ウィンドウを開きます。
 7. 次のコマンドを実行します。
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -177,7 +177,7 @@ ProxyPassword="Password"
   6. 管理者の PowerShell コマンド ウィンドウを開きます。
   7. 次のコマンドを実行します。
 
-      ```
+      ```powershell
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
       net stop obengine
@@ -205,7 +205,7 @@ ProxyPassword="Password"
 6. プロキシ サーバーの詳細を入力し、**[登録]** をクリックします。  
 7. 管理者の PowerShell コマンド ウィンドウを開きます。
 8. 次のコマンドを実行します。
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
@@ -273,7 +273,7 @@ ProxyPassword="Password"
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  コンテナーのコンテキストを設定します。
     
-    ```
+    ```powershell
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```

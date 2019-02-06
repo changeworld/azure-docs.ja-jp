@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651047"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463754"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database を BACPAC ファイルにエクスポートする
 
@@ -47,7 +47,7 @@ ms.locfileid: "53651047"
 
 ![データベースのエクスポート](./media/sql-database-export/database-export.png)
 
-エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含む論理サーバーのページを開きます。 **[操作]** までスクロールして、**[インポート/エクスポート]** 履歴をクリックします。
+エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含む SQL Database サーバーのページを開きます。 **[操作]** までスクロールして、**[インポート/エクスポート]** 履歴をクリックします。
 
 ![エクスポート履歴](./media/sql-database-export/export-history.png)
 ![エクスポートの履歴の状態](./media/sql-database-export/export-history2.png)

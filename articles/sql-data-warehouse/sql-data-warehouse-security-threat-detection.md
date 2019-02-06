@@ -2,20 +2,20 @@
 title: 脅威の検出 - Azure SQL Data Warehouse | Microsoft Docs
 description: 脅威の検出を構成して、Azure SQL Data Warehouse 内の不審なイベントを調査します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2f07699b49b7791894d1f183b0686161375ea17a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300936"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295419"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での脅威の検出
 脅威の検出を構成して、Azure SQL Data Warehouse 内の不審なイベントを調査します。
@@ -54,7 +54,7 @@ ms.locfileid: "43300936"
    
     ![ナビゲーション ウィンドウ](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
 4. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。<br/>
-   **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です。
+   **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です
    
     ![ナビゲーション ウィンドウ](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
 5. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。 [プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。

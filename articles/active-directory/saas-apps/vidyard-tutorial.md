@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Vidyard の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Vidyard の統合 | Microsoft Docs
 description: Azure Active Directory と Vidyard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bed7df23-6e13-4e7c-b4cc-53ed4804664d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 871942db15d6a3cff45584e33b2191e21d2281a0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 683cdc43c8d671c14142d0770cd2594ad862b7ac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426457"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196244"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>チュートリアル: Azure Active Directory と Vidyard の統合
+# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>チュートリアル:Azure Active Directory と Vidyard の統合
 
 このチュートリアルでは、Vidyard と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -215,7 +215,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションの目的は、Vidyard で Britta Simon というユーザーを作成することです。 Vidyard では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、Vidyard にアクセスしようとすると、新しいユーザーが作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Vidyard サポート チーム](mailto:support@vidyard.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Vidyard サポート チーム](mailto:support@vidyard.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -252,7 +252,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Vidyard] タイルをクリックすると、自動的に Vidyard アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

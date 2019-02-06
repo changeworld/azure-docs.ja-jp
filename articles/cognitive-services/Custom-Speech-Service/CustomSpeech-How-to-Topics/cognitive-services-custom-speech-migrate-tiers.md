@@ -5,24 +5,24 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 71aa20c779ae0c73db3d7ce6f267524c5bf71ea5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340462"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214570"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>新しい価格モデルへ展開を移行する
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
-Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/)を提供します。 新しいモデルは*わかりやすく*、*より簡単にコストを計算でき*、スケーリングの観点から*より柔軟*です。 スケーリングについて、マイクロソフトは、スケール ユニットの概念を導入しました。 各スケール ユニットは、5 つの同時要求を処理できます。 同時要求のスケーリングは、古いモデルの S0 レベルでは同時要求が 5 つに、S1 レベルでは 12 の同時要求に設定されていました。 お客様のユース ケース要件の柔軟性を高めるために、これらの制限を撤廃しました。
+Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/)を提供します。 新しいモデルは*わかりやすく*、*より簡単にコストを計算でき*、スケーリングの観点から*より柔軟*です。 スケーリングについて、マイクロソフトは、スケール ユニットの概念を導入しました。 各スケール ユニットは、5 つの同時要求を処理できます。 同時要求のスケーリングは、古いモデルの S0 層では同時要求が 5 つに、S1 層では 12 の同時要求に設定されていました。 お客様のユース ケース要件の柔軟性を高めるために、これらの制限を撤廃しました。
 
-古い S0 レベルまたは S1 レベルを実行しているお客様には、既存の展開を新しい S2 レベルに移行することをお勧めします。 新しい S2 レベルは、S0 と S1 の両方のレベルに対応できます。 次の図で使用できるオプションをご確認ください。
+古い S0 層または S1 層を実行しているお客様には、既存の展開を新しい S2 層に移行することをお勧めします。 新しい S2 層は、S0 と S1 の両方の階層に対応できます。 次の図で使用できるオプションをご確認ください。
 
 !["価格レベルの選択" ページ](../../../media/cognitive-services/custom-speech-service/custom-speech-pricing-tier.png)
 
@@ -37,12 +37,12 @@ Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデ�
 
 新しい階層に移行するには、次の操作を行います。
 
-## <a name="step-1-check-your-existing-deployment"></a>手順 1: 既存の展開を確認する
-[Custom Speech Service ポータル](http://cris.ai)に移動し、既存の展開を確認します。 この例では、2 つの展開があります。 1 つの展開は S0 レベルで実行され、その他の展開は S1 レベルで実行されています。 展開は、次の表の**展開オプション**列に表示されています。
+## <a name="step-1-check-your-existing-deployment"></a>手順 1:既存の展開を確認する
+[Custom Speech Service ポータル](http://cris.ai)に移動し、既存の展開を確認します。 この例では、2 つの展開があります。 1 つの展開は S0 層で実行され、その他の展開は S1 層で実行されています。 展開は、次の表の**展開オプション**列に表示されています。
 
-![展開ページ](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments.png)
+![[デプロイ] ページ](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments.png)
 
-## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>手順 2: Azure Portal で新しい価格レベルを選択する
+## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>手順 2:Azure Portal で新しい価格レベルを選択する
 1. 新しいブラウザー タブで、[Azure Portal](http://ms.portal.azure.com/) にサインインします。 
 
 2. **[Cognitive Services]** ウィンドウの **[サブスクリプション]** 一覧で、カスタム音声サブスクリプションを選択します。 
@@ -57,7 +57,7 @@ Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデ�
 
     ![[Choose your pricing tier]\(価格レベルの選択\) ページ](../../../media/cognitive-services/custom-speech-service/custom-speech-update-pricing.png)
 
-## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>手順 3: Custom Speech Service ポータルで移行の状態を確認する
+## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>手順 3:Custom Speech Service ポータルで移行の状態を確認する
 Custom Speech Service ポータルに戻り、展開を確認します。 (ブラウザー ウィンドウがまだ開いている場合は、画面を更新します。) 
 
 関連する展開の状態が *[処理中]* に変わります。 移行は、**[展開オプション]** 列をチェックすることでも確認できます。 ここでは、スケール ユニットとログ記録に関する情報を確認できるようになりました。 スケール ユニットには、以前の価格レベルが反映されています。 ログ記録も表のようにオンにしてください。

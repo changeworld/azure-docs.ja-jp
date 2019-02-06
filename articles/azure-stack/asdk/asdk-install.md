@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 363e0868542f56df8c37639b2af7ac295be97da2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718227"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249907"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -54,15 +55,15 @@ ms.locfileid: "44718227"
     > BGPNAT01 VM は、Azure Stack 用の NAT 機能と VPN 機能を提供するエッジ ルーターです。
 
     - **[DHCP]** (既定): 仮想マシンが DHCP サーバーから IP ネットワークの構成を取得します。
-    - **[静的]**: DHCP が Azure Stack に、インターネットにアクセスするための有効な IP アドレスを割り当てることができない場合にのみこのオプションは使用されます。 **静的 IP アドレスは、CIDR 形式のサブネット マスク長を使って指定する必要があります (例: 10.0.0.5/24)**。
+    - **静的**:DHCP が Azure Stack に、インターネットにアクセスするための有効な IP アドレスを割り当てることができない場合にのみこのオプションは使用されます。 **静的 IP アドレスは、CIDR 形式のサブネット マスク長を使って指定する必要があります (例: 10.0.0.5/24)**。
     - 有効な**タイム サーバー IP** アドレスを入力します。 この必須フィールドでは、開発キットによって使われるタイム サーバーを設定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。
 
       > [!TIP]
       > タイム サーバーの IP アドレスを検索するには、[pool.ntp.org](http://pool.ntp.org) にアクセスするか、time.windows.com に ping を実行します。 
 
     - **任意で**、次の値を設定します。
-        - **[VLAN ID]**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用します。 
-        - **[DNS Forwarder]\(DNS フォワーダ\)**: DNS サーバーは Azure Stack のデプロイの一部として作成されます。 ソリューション内のコンピューターにスタンプ外の名前解決を許可するには、既存のインフラストラクチャの DNS サーバーを提供します。 スタンプ内の DNS サーバーが、このサーバーに不明な名前解決の要求を送信します。
+        - **VLAN ID**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用します。 
+        - **DNS フォワーダー**: DNS サーバーが Azure Stack のデプロイの一部として作成されます。 ソリューション内のコンピューターにスタンプ外の名前解決を許可するには、既存のインフラストラクチャの DNS サーバーを提供します。 スタンプ内の DNS サーバーが、このサーバーに不明な名前解決の要求を送信します。
 
     ![](media/asdk-install/4.PNG)
 
@@ -81,7 +82,7 @@ ms.locfileid: "44718227"
 
     ![](media/asdk-install/7.PNG)
 
-11. デプロイ処理には数時間かかります。その間に、ホスト コンピューターは自動的に 1 回再起動されます。 デプロイの進行状況を監視する場合は、開発キットのホストが再起動された後に、azurestack\AzureStackAdmin としてサインインします。 デプロイが成功した場合、PowerShell コンソールには、**[COMPLETE: Action 'Deployment']\(完了: アクション 'デプロイ'\)** と表示されます。 
+11. デプロイ処理には数時間かかります。その間に、ホスト コンピューターは自動的に 1 回再起動されます。 デプロイの進行状況を監視する場合は、開発キットのホストが再起動された後に、azurestack\AzureStackAdmin としてサインインします。 デプロイが成功した場合、PowerShell コンソールには、**[COMPLETE: Action 'Deployment'] (完了: アクション 'デプロイ')** と表示されます。 
     > [!IMPORTANT]
     > コンピューターがドメインに参加した後に、ローカル管理者としてサインインした場合、デプロイの進行状況は表示されません。 デプロイは再実行せず、代わりに azurestack\AzureStackAdmin としてサインインし、それが実行中であることを確認します。
 

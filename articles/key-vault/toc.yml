@@ -17,6 +17,7 @@ items:
     href: quick-create-net.md
   - name: シークレットの設定と取得 - Node.js
     href: quick-create-node.md
+  expanded: true
 - name: チュートリアル
   items:
   - name: 'Azure Web Apps '
@@ -168,9 +169,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: b2e32542929deb23d824d16b8d3e94fcac9efe58
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d45c81e50aca7dbfdcaac9a4094dd1158772d7b9
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563798"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746824"

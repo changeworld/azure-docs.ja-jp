@@ -5,19 +5,19 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432559"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252219"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
-アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。
+アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
 
 電子メールまたは SMS でユーザーに通知するようアクションが構成されている場合、ユーザーは自分がアクション グループに追加されたことを示す確認メッセージを受け取ります。
 
@@ -88,15 +88,18 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 **音声** - アクション グループには、最大 10 個の音声アクションがあります</dd>
 [レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を見る</dd>
 
-**Webhook** - アクション グループには、最大 10 個の webhook アクションがあります。 再試行ロジック - 応答のタイムアウト期間は 10 秒です。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。
+**Webhook** - アクション グループには、最大 10 個の webhook アクションがあります。
+再試行ロジック - 応答のタイムアウト期間は 10 秒です。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目の再試行は 100 秒後に実行されます。 2 回の失敗後、エンドポイントは 30 分間、どのアクション グループからも呼び出されません。
 
 発信元 IP アドレスの範囲
+    - 13.72.19.232
     - 13.106.57.181
     - 13.106.54.3
     - 13.106.54.19
     - 13.106.38.142
     - 13.106.38.148
     - 13.106.57.196
+    - 52.244.68.117
 
 これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視する[サービス正常性アラート](./../../azure-monitor/platform/service-notifications.md)を構成することをお勧めします。
 

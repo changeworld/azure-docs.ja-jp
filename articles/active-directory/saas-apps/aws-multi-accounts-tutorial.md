@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs
 description: Azure AD と Amazon Web Services (AWS) の複数のアカウントの間でシングルサインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197519"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル: Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
 このチュートリアルでは、Azure Active Directory (Azure AD) と Amazon Web Services (AWS) の複数のアカウントを統合する方法を説明します。
 
@@ -154,11 +154,11 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、当該行に対して示されている属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
     f. **[Save]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードして、コンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
 
@@ -182,7 +182,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a. **[Provider Type]** として **[SAML]** を選択します。
 
-    b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
+    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
@@ -202,13 +202,13 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
-    b. **[Choose a SAML 2.0 Provider section]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
+    b. **[Choose a SAML 2.0 Provider]\(SAML 2.0 プロバイダーの選択\)** セクションで、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d. **[Next: Permissions]** をクリックします。
+    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
-16. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログ ボックスで、任意のポリシーをアタッチする必要はありません。 **[次へ: レビュー]** をクリックします。  
+16. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログ ボックスで、任意のポリシーをアタッチする必要はありません。 **次へ: 確認\)** をクリックします。  
 
     ![シングル サインオン ポリシーの構成][33]
 
@@ -352,7 +352,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

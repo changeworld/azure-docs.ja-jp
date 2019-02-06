@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811861"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217987"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 

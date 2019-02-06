@@ -8,20 +8,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 73b76561829e6d50918881427894ea310920fce6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e08af577bec463263045a0f0355acffaad5e599
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465204"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244166"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -48,7 +48,7 @@ Microsoft は 10 年以上にわたってクラウド ベースの ID を保護�
 
 侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害された可能性があることを示す、異常と疑わしいインシデントを検出します。 Identity Protection は、このデータを使用してレポートとアラートを生成し、これにより、ユーザーは検出された問題を評価し、適切な修復または軽減のアクションを実行することができます。
 
-Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 指定したリスク レベルに達したときに、検出された問題が自動的に対処されるようにリスク ベースのポリシーを構成することで、組織の ID を保護できます。 こうしたポリシーと、Azure Active Directory および EMS によって提供される他の条件付きアクセス コントロールにより、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは開始できます。
+Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 指定したリスク レベルに達したときに、検出された問題が自動的に対処されるようにリスク ベースのポリシーを構成することで、組織の ID を保護できます。 こうしたポリシーと、Azure Active Directory および [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) によって提供される他の条件付きアクセス コントロールにより、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは開始できます。
 
 
 #### <a name="identity-protection-capabilities"></a>Identity Protection の機能
@@ -134,7 +134,7 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Channel 9:Azure AD and Identity Show:Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)
+- [Channel 9:Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)
 
 - [Azure Active Directory Identity Protection の有効化](enable.md)
 

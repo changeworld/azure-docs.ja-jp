@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e1a80de1e6d0deebaff81207717886a4a8bbcc63
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e524df191bc7e621d5b048a373a8c424fbe2a721
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259481"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214145"
 ---
 # <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>Translator Text API の動的ディクショナリ機能を使用する方法
 
@@ -27,9 +27,9 @@ ms.locfileid: "51259481"
 
 **例: en-de:**
 
-ソース入力: The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.
+ソース入力:The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.
 
-ターゲット出力: Das Wort "wordomatic" ist ein Wörterbucheintrag.
+ターゲット出力:Das Wort "wordomatic" ist ein Wörterbucheintrag.
 
 この機能は、HTML を使用する場合と使用しない場合で同じように動作します。
 

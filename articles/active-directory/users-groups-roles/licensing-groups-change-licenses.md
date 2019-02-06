@@ -1,27 +1,25 @@
 ---
-title: グループを使用して製品ライセンス間でユーザーを移行する方法 - Azure Active Directory | Microsoft Docs
-description: グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3 ) 間でユーザーを移行するために推奨されるプロセスについて説明します
+title: グループを使用して製品ライセンスにユーザーを移行する方法 - Azure Active Directory | Microsoft Docs
+description: グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3) にグループ内のユーザーを移行するために推奨されるプロセスについて説明します
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.openlocfilehash: f675ff0dfaf183c2efd177c7888549e6976fbe6d
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: ea6159f487b35192e0e2137662a664a2796843c0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389474"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294575"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>グループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法
 

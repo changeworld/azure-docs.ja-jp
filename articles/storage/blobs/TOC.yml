@@ -519,7 +519,7 @@ items:
   - name: チュートリアル
     items:
     - name: Azure Databricks を使ったデータの抽出、変換、読み込み
-      href: ../blobs/data-lake-storage-handle-data-using-databricks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Spark を使用した Databricks での Data Lake Storage のデータへのアクセス
       href: ../blobs/data-lake-storage-use-databricks-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
@@ -606,9 +606,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: ade835f9854efb943e1d6e69db806a811f18b252
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b6e90dc71e0bb5f81aeaf690217115e39531db93
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564172"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753183"

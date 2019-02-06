@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Supermood の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Supermood の統合 | Microsoft Docs
 description: Azure Active Directory と Supermood の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 98a39c52f206f19d3330695fd05f9a96c0bf4d36
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 54a1f4a8ef0ec4381374585df57dc62490337190
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443352"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173090"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>チュートリアル: Azure Active Directory と Supermood の統合
+# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>チュートリアル:Azure Active Directory と Supermood の統合
 
 このチュートリアルでは、Supermood と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -203,7 +203,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、Supermood で Britta Simon というユーザーを作成します。 Supermood では、Just-In-Time プロビジョニングがサポートされます。Just-In-Time プロビジョニングは、Supermood 側の構成中に追加されるドメインに属する電子メールを持つユーザーに対して既定で有効になります。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、Supermood にアクセスしようとすると、新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Supermood サポート チーム](mailto:hello@supermood.fr)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Supermood サポート チーム](mailto:hello@supermood.fr)にお問い合わせください。
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -241,7 +241,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Supermood] タイルをクリックすると、自動的に Supermood アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

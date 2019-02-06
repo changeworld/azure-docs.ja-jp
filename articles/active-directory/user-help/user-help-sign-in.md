@@ -7,48 +7,48 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 983bf77a157de539264a6437ffbebb291d310840
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810416"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181420"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 
-2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、職場または学校用のアカウントにサインインできるようになります。
+2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、アカウントにサインインできるようになります。
 
 >[!Note]
 >引き続き 2 段階認証を使用している場合は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の手順に従って認証方法を設定する必要があります。 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ ガイドを使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>モバイル デバイスの認証アプリの通知を使ってサインインする
 
-1. ユーザー名とパスワードを使って、職場または学校用のアカウントにサインインします。
+1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
 2. モバイル デバイスに送信された承認通知から、**[承認]** を選択します。
 
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>モバイル デバイスの認証アプリのコードを使ってサインインする
 
-1. ユーザー名とパスワードを使って、職場または学校用のアカウントにサインインします。
+1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
 2. 認証アプリを開き、アカウントに対してランダムに生成されたコードを、**[コードの入力]** ボックスに入力します。
 
 
 ## <a name="sign-in-using-your-phone-number"></a>電話番号を使ってサインインする
 
-1. ユーザー名とパスワードを使って、職場または学校用のアカウントにサインインします。
+1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
 2. 電話に応答し、指示に従います。
 
 
 ## <a name="sign-in-using-a-text-message"></a>テキスト メッセージを使ってサインインする
 
-1. ユーザー名とパスワードを使って、職場または学校用のアカウントにサインインします。
+1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
 2. テキスト メッセージを開き、テキスト メッセージにあるコードを **[コードの入力]** ボックスに入力します。
 

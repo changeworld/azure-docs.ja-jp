@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208637"
 ---
 # <a name="analyze-method"></a>Analyze メソッド
 
@@ -52,7 +52,7 @@ Name | type | 必須 | 説明
 
 Name | type | 説明
 -----|------|--------------
-analyzerId | string | 指定したアナライザーの GUID
+analyzerId | 文字列 | 指定したアナライザーの GUID
 result | オブジェクト | アナライザーの結果
 
 結果の種類は入力アナライザーの種類によって変わることに注意してください。
@@ -67,8 +67,8 @@ result[x].Len | int | 各文の文字数 |
 result[x].Tokens | トークン オブジェクトのリスト | 文内に指定されたトークンの境界 |
 result[x].Tokens[y].Offset | int | トークンの開始文字オフセット |
 result[x].Tokens[y].Len | int | 各トークンの文字数 |
-result[x].Tokens[y].RawToken | string | 正規化前のそのトークン内の文字 |
-result[x].Tokens[y].NormalizedToken | string | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
+result[x].Tokens[y].RawToken | 文字列 | 正規化前のそのトークン内の文字 |
+result[x].Tokens[y].NormalizedToken | 文字列 | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
 
 入力例: `This is a test. Hello.'
 JSON の応答例:
@@ -147,7 +147,7 @@ JSON の応答例:
 
 `POST /analyze`
 
-要求の本文: JSON ペイロード
+要求本文: JSON ペイロード
 ```json
 {
   "language": "en",
@@ -158,7 +158,7 @@ JSON の応答例:
 }
 ```
 
-応答: JSON
+応答:JSON
 ```json
 [
   {

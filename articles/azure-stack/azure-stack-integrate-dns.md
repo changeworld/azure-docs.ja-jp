@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339680"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252321"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
 Azure Stack の外部から Azure Stack エンドポイント (**portal**、**adminportal**、**management**、**adminmanagement** など) にアクセスできるようにするには、Azure Stack DNS サービスを、Azure Stack で使用したい DNS ゾーンをホストする DNS サーバーと統合する必要があります。
@@ -121,7 +122,7 @@ Azure Stack DNS サーバーの FQDN は次のような形式をとります。
 
 Azure Stack と DNS インフラストラクチャを統合する最も簡単で安全な方法は、親ゾーンをホストするサーバーから、ゾーンの条件付き転送を行うことです。 Azure Stack の外部 DNS 名前空間の親ゾーンをホストする DNS サーバーを直接制御できる場合は、この方法をお勧めします。
 
-DNS で条件付き転送を行う方法がわからない場合は、TechNet の記事「[Assign a Conditional Forwarder for a Domain Name (ドメイン名の条件付きフォワーダを割り当てる)](https://technet.microsoft.com/library/cc794735)」またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
+DNS で条件付き転送を行う方法がわからない場合は、TechNet の[ドメイン名の条件付きフォワーダーの割り当て](https://technet.microsoft.com/library/cc794735)に関する記事、またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
 
 会社のドメイン名の子ドメインのように見える Azure Stack 外部の DNS ゾーンを指定しているシナリオでは、条件付き転送は使用できません。 DNS 委任を構成する必要があります。
 

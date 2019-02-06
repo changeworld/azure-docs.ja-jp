@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: df919e23fd608cdf41e93844f13342ca00657adb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205146"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192975"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書を手動でロールオーバーする
-Service Fabric クラスター証明書の期限切れが近い場合は、証明書を更新する必要があります。  証明書のロール オーバーは、クラスターが (拇印ではなく) [共通名に基づく証明書を使用するように設定](service-fabric-cluster-change-cert-thumbprint-to-cn.md)されている場合は単純です。  証明機関から、新しい有効期限日の新しい証明書を取得します。  Azure Portal で、Service Fabric クラスターをデプロイするときに生成されるものを含め、自己署名証明書はサポートされません。  新しい証明書は、古い証明書と同じ共通名を持っている必要があります。 
+Service Fabric クラスター証明書の期限切れが近い場合は、証明書を更新する必要があります。  証明書のロール オーバーは、クラスターが (拇印ではなく) [共通名に基づく証明書を使用するように設定](service-fabric-cluster-change-cert-thumbprint-to-cn.md)されている場合は単純です。  証明機関から、新しい有効期限日の新しい証明書を取得します。  自己署名証明書は、Azure portal のクラスター作成ワークフロー中に生成された証明書を含めるため、運用環境の Service Fabric クラスターではサポートされません。 新しい証明書は、古い証明書と同じ共通名を持っている必要があります。 
 
-次のスクリプトは、キー コンテナーに新しい証明書をアップロードしてから、仮想マシン スケール セットに証明書をインストールします。  Service Fabric クラスターは、最新の有効期限日を持つ証明書を自動的に使用します。
+Service Fabric クラスターは、ホストに複数の有効な証明書がインストールされている場合、さらに将来の有効期限日を持つ宣言された証明書を自動的に使用します。 ベスト プラクティスは、Azure Resource Manager テンプレートを使用して Azure リソースをプロビジョニングすることです。 運用環境以外の環境では、次のスクリプトを使用して、キー コンテナーに新しい証明書をアップロードしてから、仮想マシン スケール セットに証明書をインストールすることができます。 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -78,6 +78,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 # Update the VM scale set 
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
+
+>[!NOTE]
+> Compute の仮想マシン スケール セットのシークレットでは、各シークレットはバージョン管理された一意のリソースであるため、2 つの個別のシークレットに対して同じリソース ID はサポートしていません。 
 
 詳細については、以下を参照してください。
 * [クラスター セキュリティ](service-fabric-cluster-security.md)について学習します。

@@ -1,6 +1,6 @@
 ---
-title: Kubernetes を Azure Stack にデプロイする場合のトラブルシューティング | Microsoft Docs
-description: Kubernetes を Azure Stack にデプロイする場合のトラブルシューティング方法について説明します。
+title: Kubernetes の Azure Stack へのデプロイのトラブルシューティング | Microsoft Docs
+description: Kubernetes の Azure Stack へのデプロイのトラブルシューティング方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,19 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390691"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237853"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Kubernetes (K8) を Azure Stack にデプロイする場合のトラブルシューティング
+# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Kubernetes の Azure Stack へのデプロイのトラブルシューティング
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。

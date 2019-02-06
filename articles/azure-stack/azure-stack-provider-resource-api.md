@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.lastreviewed: 01/25/2018
+ms.openlocfilehash: 9568ac58e646be03d367fe466ae972955f23488c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945588"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252236"
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 *プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、図に示したように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
@@ -86,7 +87,7 @@ meterID1",
 | *subscriptionId* |Azure Stack ユーザーのサブスクリプション識別子 |
 | *usageStartTime* |この使用状況集計が属する使用状況バケットの UTC 開始時間|
 | *usageEndTime* |この使用状況集計が属する使用状況バケットの UTC 終了時間 |
-| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br> *resourceUri*: 完全修飾リソース ID。リソース グループとインスタンス名が含まれます <br> *location*: このサービスが実行されたリージョン <br> *tags*: ユーザーによって指定されたリソース タグ <br> *additionalInfo*: OS のバージョンやイメージの種類など、使用されたリソースの詳細 |
+| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br> *resourceUri*:完全修飾リソース ID。リソース グループとインスタンス名が含まれます。 <br> *location*:このサービスが実行されたリージョン。 <br> *tags*:ユーザーによって指定されたリソース タグ。 <br> *additionalInfo*:OS のバージョンやイメージの種類など、使用されたリソースの詳細。 |
 | *quantity* |この期間に発生したリソース使用量 |
 | *meterId* |使用されたリソースの一意の ID (*ResourceID* とも呼ばれます) |
 

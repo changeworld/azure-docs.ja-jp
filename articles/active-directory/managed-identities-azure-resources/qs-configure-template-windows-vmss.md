@@ -3,23 +3,23 @@ title: テンプレートを使用して仮想マシン スケール セット�
 description: Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: daveba
-ms.openlocfilehash: 6498079950310e52fcb16172a34b9848e6a98e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 6fff8890a32cd6c3f0aeb506425964edcc841c5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429023"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193473"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -173,7 +173,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 > [!Note]
 > Azure Resource Manager テンプレートを使用してユーザー割り当てマネージド ID を作成するには、「[Create a user-assigned managed identity (ユーザー割り当てマネージド ID を作成する)](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)」をご覧ください。
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virutal-machine-scale-set"></a>仮想マシン スケール セットにユーザー割り当て マネージド ID を割り当てる
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>仮想マシン スケール セットにユーザー割り当て マネージド ID を割り当てる
 
 1. ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当てマネージド ID の名前に置き換えてください。
    

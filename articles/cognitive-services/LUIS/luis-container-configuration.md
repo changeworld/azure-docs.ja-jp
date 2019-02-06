@@ -7,20 +7,20 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5437e81397182ede37ef98ad40b54c64f94e2092
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468337"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294725"
 ---
-# <a name="configure-language-understanding-docker-containers"></a>Language Understanding の docker コンテナーの構成 
+# <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
-Language Understanding (LUIS) コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、入力[マウント設定](#mount-settings)と課金設定です。 
+**Language Understanding** (LUIS) コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、入力[マウント設定](#mount-settings)と課金設定です。 
 
 コンテナーの設定は[階層](#hierarchical-settings)になっていて、[環境変数](#environment-variable-settings)または Docker の[コマンドライン引数](#command-line-argument-settings)を使用して設定できます。
 
@@ -194,4 +194,4 @@ ApiKey={APPLICATION_ID} \
 
 * [コンテナーのインストール方法と実行方法](luis-container-howto.md)を確認する。
 * [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
-* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

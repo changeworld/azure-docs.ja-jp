@@ -2,18 +2,18 @@
 title: Azure への SharePoint ファームの DPM/Azure Backup サーバー保護
 description: この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します
 services: backup
-author: adigan
-manager: Nkolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 79b4962e1c37858fbd52d65aff56476e55ffa371
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946047"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296462"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 System Center Data Protection Manager (DPM) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 DPM では、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -23,7 +23,7 @@ DPM 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | バージョン | SharePoint のデプロイ | DPM のデプロイの種類 | DPM - System Center 2012 R2 | 保護と回復 |
 | --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn |物理サーバーまたはオンプレミスの Hyper-V 仮想マシン |更新プログラム ロールアップ 5 から、Azure へのバックアップをサポートする |SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn |物理サーバーまたはオンプレミスの Hyper-V 仮想マシン |更新プログラム ロールアップ 5 から、Azure へのバックアップをサポートする |SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
@@ -76,7 +76,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
 ### <a name="to-protect-a-sharepoint-farm"></a>SharePoint ファームを保護するには
 1. DPM 管理者コンソールの **[保護]** タブで **[新規]** をクリックします。
     ![新しい [保護] タブ](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. **新しい保護グループの作成**ウィザードの **[保護グループの種類の選択]** ページで **[サーバー]** を選択し、**[次へ]** をクリックします。
+2. **新しい保護グループの作成**ウィザードの **[保護グループの種類の選択]** ページで **[サーバー]** を選択し、 **[次へ]** をクリックします。
    
     ![保護グループの種類の選択](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
 3. **[グループ メンバーの選択]** 画面で、保護する SharePoint サーバーのチェック ボックスをオンにして、**[次へ]** をクリックします。
@@ -229,14 +229,14 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
 5. この時点で、 [この記事で前述した回復手順](#restore-a-sharepoint-item-from-disk-using-dpm) に従ってディスクから SharePoint コンテンツ データベースを回復します。
 
 ## <a name="faqs"></a>FAQ
-Q: SQL Server 2014 および SQL 2012 (SP2) は、DPM のどのバージョンでサポートされていますか。<br>
-A: 更新プログラム ロールアップ 4 を適用した DPM 2012 R2 では両方をサポートしています。
+Q:SQL Server 2014 および SQL 2012 (SP2) は、DPM のどのバージョンでサポートされていますか。<br>
+A:更新プログラム ロールアップ 4 を適用した DPM 2012 R2 では両方をサポートしています。
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
-A: はい、元の SharePoint サイトにアイテムを回復できます。
+Q:SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
+A:はい、元の SharePoint サイトにアイテムを回復できます。
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
-A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+Q:SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
+A:SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
 ## <a name="next-steps"></a>次の手順
 * SharePoint の DPM 保護に関する詳細 - [Video シリーズ「DPM Protection of SharePoint (SharePoint の DPM 保護)」](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)

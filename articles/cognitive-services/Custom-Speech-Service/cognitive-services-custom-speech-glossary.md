@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 02f6c3f81cbaa26eed8de8b7785b519ecbc3bf26
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 889eabf38f25923d9bd84ea6ceaa5567c74216df
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344253"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223818"
 ---
 # <a name="glossary"></a>用語集
 
@@ -24,7 +24,7 @@ ms.locfileid: "49344253"
 
 ### <a name="acoustic-model"></a>音響モデル
 
-音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類子です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
+音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類器です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
 
 ## <a name="b"></a>b
 
@@ -70,7 +70,7 @@ ms.locfileid: "49344253"
 
 ### <a name="normalization"></a>正規化
 
-正規化 (テキスト) : 結果のテキスト (文字起こし) を、システムで読み取れる標準の明確な形式に変換すること。
+正規化 (テキスト): 結果のテキスト (文字起こし) を、システムで読み取れる標準の明確な形式に変換すること。
 
 ## <a name="o"></a>O
 
@@ -102,7 +102,7 @@ ms.locfileid: "49344253"
 
 ## <a name="w"></a>W
 
-## <a name="x"></a>○
+## <a name="x"></a>X
 
 ## <a name="y"></a>Y
 

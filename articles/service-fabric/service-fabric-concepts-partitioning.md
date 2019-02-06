@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261572"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198216"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -129,11 +129,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 1. **Visual Studio** で、 > **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に開きます。
 2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
-4. **[Create a Service]** (サービスの作成) ダイアログ ボックスで、下図のように **[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
-       ![Visual Studio の [新しいサービス] ダイアログ][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. **[Create a Service] (サービスの作成)** ダイアログ ボックスで、**[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
 5. パーティション数を設定します。 AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing_PartitionCount を 26 に更新します。
    
     ```xml
@@ -167,7 +163,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
    
     このサービスの複数のレプリカは同じコンピューターでホストされる可能性があるので、レプリカに対するこのアドレスを一意にする必要があります。 そのため、パーティション ID + レプリカ ID を URL に含めています。 URL プレフィックスが一意であれば、HttpListener は同じポートでも複数のアドレスをリッスンできます。
    
-    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。 この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。 ここでは、レプリカがすべての使用可能なホスト (IP、FQDM、localhost など) でリッスンするように、 '+' がアドレスとして使用されています。コード例を次に示します。
+    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。 この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。 ここでは、レプリカがすべての使用可能なホスト (IP、FQDN、localhost など) でリッスンするように、 '+' がアドレスとして使用されていますコード例を次に示します。
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()

@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716028"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247733"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>ASDK をコマンド ラインからデプロイする
 ASDK は、Azure Stack の機能やサービスを評価したり実演したりするためにデプロイできるテスト/開発環境です。 この環境を準備するには、環境ハードウェアを用意し、いくつかのスクリプトを実行する必要があります (これには数時間かかります)。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。
@@ -105,7 +106,7 @@ ASDK のインストールを開始して数分後に、Azure AD 資格情報の
 
 AD FS デプロイでは、既定のスタンプ ディレクトリ サービスが ID プロバイダーとして使用されます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local で、パスワードは PowerShell のセットアップ コマンドの一部として指定したものに設定されます。
 
-デプロイ処理には数時間かかる場合があります。その間に、システムは自動的に 1 回再起動されます。 デプロイが成功した場合、PowerShell コンソールには、**[COMPLETE: Action ‘Deployment’]\(完了: アクション ‘デプロイ’\)** と表示されます。 デプロイが失敗した場合は、-rerun パラメーターを使用してスクリプトを再実行してみることができます。 または、最初から [ASDK を再デプロイ](asdk-redeploy.md)することもできます。
+デプロイ処理には数時間かかる場合があります。その間に、システムは自動的に 1 回再起動されます。 デプロイが成功した場合、PowerShell コンソールには、**[COMPLETE: Action 'Deployment'] (完了: アクション 'デプロイ')** と表示されます。 デプロイが失敗した場合は、-rerun パラメーターを使用してスクリプトを再実行してみることができます。 または、最初から [ASDK を再デプロイ](asdk-redeploy.md)することもできます。
 
 > [!IMPORTANT]
 > ASDK ホストの再起動後にデプロイの進行状況を監視する場合は、AzureStack\AzureStackAdmin としてサインインする必要があります。 ホスト コンピューターが再起動され、azurestack.local ドメインに参加した後、ローカル管理者としてサインインすると、デプロイの進行状況は表示されません。 デプロイを再実行せず、代わりに azurestack としてサインインし、デプロイが実行中であることを確認してください。

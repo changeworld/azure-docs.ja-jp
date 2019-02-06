@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TrackVia の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と TrackVia の統合 | Microsoft Docs
 description: Azure Active Directory と TrackVia の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7010023-bdda-4a19-a335-19904e75b813
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: fd17282783f9701f7365a5fb1d37f4a2263134e9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c4cc0517ad55cd3be862e974a0a707ef871d805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422343"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196380"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル: Azure Active Directory と TrackVia の統合
+# <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル:Azure Active Directory と TrackVia の統合
 
 このチュートリアルでは、TrackVia と Azure Active Directory (Azure AD) を統合する方法について説明します。
 

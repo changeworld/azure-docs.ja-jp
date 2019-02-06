@@ -21,7 +21,7 @@ items:
       href: create-sql-api-python.md
     - name: Xamarin
       href: create-sql-api-xamarin-dotnet.md
-  - name: MongoDB
+  - name: Azure Cosmos DB の MongoDB 用 API
     items:
     - name: .NET
       href: create-mongodb-dotnet.md
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: da87cea310f5bda952cfa014d7b45e23e555efcf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511923"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746185"

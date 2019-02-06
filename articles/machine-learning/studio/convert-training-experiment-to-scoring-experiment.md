@@ -1,14 +1,8 @@
 ---
-title: デプロイ用のモデルの準備
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.date: 03/28/2017
+title:デプロイ用のモデルの準備 titleSuffix:Azure Machine Learning Studio description:Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.date:03/28/2017
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 

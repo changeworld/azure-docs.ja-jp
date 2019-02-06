@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ab5a3b00d063dfdd42e67247bb2cdc37866d0164
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46293973"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164131"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>グループの動的メンバーシップのトラブルシューティング
 
@@ -33,9 +33,9 @@ ms.locfileid: "46293973"
 
 | ルール パーサー エラー | 間違った使用法 | 正しい使用法 |
 | --- | --- | --- |
-| エラー: 属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>該当する属性が、[サポートされているプロパティ一覧](groups-dynamic-membership.md#supported-properties)に記載されていることを確認してください。 |
-| エラー: 属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
-| エラー: クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2.-match に使用されている正規表現に誤りがあります。<br>(user.userPrincipalName -match ".*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
+| エラー:属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>該当する属性が、[サポートされているプロパティ一覧](groups-dynamic-membership.md#supported-properties)に記載されていることを確認してください。 |
+| エラー:属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
+| エラー:クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2.-match に使用されている正規表現に誤りがあります。<br>(user.userPrincipalName -match ".*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2B コラボレーションのトラブルシュ�
 description: Azure Active Directory B2B コラボレーションの一般的な問題の対処方法
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 29ebf91801478ab3d4790fafa0dfb099201e1595
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 764b5defd2fb647fd52e1e93441b68ffe492d0c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181267"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
@@ -76,6 +76,10 @@ Azure Active Directory を使用している組織のユーザーを招待して
 - appservice プリンシパルが招待を送信する場合
 
 これがお客様にとって重要なシナリオである場合は、API による招待メール送信を抑制し、選択した電子メール メカニズムを使用して送信できます。 お客様の組織の弁護士に相談して、この方法による電子メールの送信がプライバシーに関する法律を順守していることを確認してください。
+
+## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Just-In-Time または "バイラル” テナントを持つゲスト ユーザーは、自分のパスワードをリセットすることはできません
+
+ID テナントが Just-In-Time (JIT) テナントまたはバイラル テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
 
 ## <a name="next-steps"></a>次の手順
 

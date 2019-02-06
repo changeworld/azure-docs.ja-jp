@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e3b1655207f3baba6ea6e3cf2f00e3540a3602ad
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969371"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294830"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -40,12 +40,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 お客様のオンプレミス上のコンピューターを使用できるほか、次のような Azure 内の Docker ホスティング サービスを使用することもできます。
-
-* [Azure Kubernetes Service](../../../aks/index.yml)
-* [Azure Container Instances](../../../container-instances/index.yml)
-* [Azure Stack](../../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」をご覧ください。
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -77,6 +72,8 @@ Text Analytics コンテナーで使用可能なタグの詳しい説明につ�
 * [言語検出](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [感情分析](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>キー フレーズ抽出コンテナー用の docker pull
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>コンテナーの一覧表示
-
-[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
@@ -159,14 +150,7 @@ ApiKey={BILLING_KEY}
 
 ## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
 
-コンテナーには、エンドポイントの完全なドキュメント一式のほか、`Try it now` 機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりすることができます。 クエリから戻ると、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 
-
-> [!TIP]
-> [OpenAPI 仕様](https://swagger.io/docs/specification/about/)は、`/swagger` という相対 URI からご覧いただけます。コンテナーでサポートされる API 操作が説明されています。 例: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>課金
 

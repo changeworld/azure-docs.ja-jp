@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: ec7b56a7324f3c8c3e3459639e4fd00e92d93e8f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615400"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249750"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>ASDK ホスト コンピューターの準備
 ASDK をホスト コンピューターにインストールする前に、インストール用の ASDK 環境を準備する必要があります。 開発キットのホスト コンピューターが準備されると、CloudBuilder.vhdx 仮想マシンのハード ドライブから起動して ASDK のデプロイが開始します。
@@ -47,13 +48,13 @@ ASDK をホスト コンピューターにインストールする前に、ASDK 
 
     ![](media/asdk-prepare-host/1.PNG) 
 
-5. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、[前の手順](asdk-download.md)でダウンロードおよび展開した **cloudbuilder.vhdx** ファイルを探して選択します。 このページでは、開発キットのホスト コンピューターに他のドライバーを追加する必要がある場合、オプションで **[ドライバーの追加]** チェック ボックスをオンにすることもできます。  **[次へ]** をクリックします。  
+5. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、[前の手順](asdk-download.md)でダウンロードおよび展開した **cloudbuilder.vhdx** ファイルを探して選択します。 このページでは、開発キットのホスト コンピューターに他のドライバーを追加する必要がある場合、オプションで **[ドライバーの追加]** チェック ボックスをオンにすることもできます。 **[次へ]** をクリックします。  
 
     ![](media/asdk-prepare-host/2.PNG)
 
 6. **[オプション設定]** ページで、開発キットのホスト コンピューターのローカル管理者アカウント情報を指定し、**[次へ]** をクリックします。 次のオプションの設定の値を指定することもできます。
   - **[コンピューター名]**: このオプションでは、開発キットのホスト名が設定されます。 名前は FQDN の要件に準拠している必要があり、長さは 15 文字以下にする必要があります。 既定は、Windows によって生成されたランダムなコンピューター名です。
-  - **[Static IP configuration]\(静的 IP 構成\)**: デプロイが静的 IP アドレスを使用するよう設定されます。 それ以外の場合、インストーラーが cloudbuilder.vhdx から再起動されるときに、ネットワーク インターフェイスが DHCP と構成されます。
+  - **[Static IP configuration] (静的 IP 構成)**: デプロイが静的 IP アドレスを使用するよう設定されます。 それ以外の場合、インストーラーが cloudbuilder.vhdx から再起動されるときに、ネットワーク インターフェイスが DHCP と構成されます。
 
     ![](media/asdk-prepare-host/3.PNG)
 

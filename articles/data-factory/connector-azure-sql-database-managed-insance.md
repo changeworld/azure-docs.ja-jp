@@ -10,34 +10,38 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9cd2eaefb845b6ce9ca2f1cfcaf1234f8f96615c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025081"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300338"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure SQL Database Managed Instance からのデータをサポートされる任意のソース データ ストアにコピーしたり、サポートされる任意のシンク データ ストアからのデータを Managed Instance にコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Azure SQL Database Managed Instance のデータを、サポートされているシンク データ ストアにコピーできます。 サポートされている任意のソース データ ストアからマネージド インスタンスにデータをコピーすることもできます。 コピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表を参照してください。
 
 具体的には、この Azure SQL Database Managed Instance コネクタは以下の機能をサポートします。
 
-- **SQL** または **Windows** 認証を使用したデータのコピー
-- ソースとしての SQL クエリまたはストアド プロシージャを使用したデータの取得。
+- SQL または Windows 認証を使用したデータのコピー。
+- ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
+
+SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) は現在サポートされていません。 
 
 ## <a name="prerequisites"></a>前提条件
 
-VNET にある Azure SQL Database Managed Instance からのコピー データを使用するには、そのデータベースにアクセスできる同じ VNET にセルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+仮想ネットワークにある Azure SQL Database Managed Instance からのコピー データを使用するには、そのデータベースにアクセスできるセルフホステッド統合ランタイムを設定します。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関するセクションを参照してください。
 
-## <a name="getting-started"></a>使用の開始
+マネージド インスタンスと同じ仮想ネットワークで、セルフホステッド統合ランタイムをプロビジョニングする場合、統合ランタイム マシンが、マネージド インスタンスとは異なるサブネットにあることを確認します。 マネージド インスタンスとは異なる仮想ネットワークにセルフホステッド統合ランタイムをプロビジョニングする場合、仮想ネットワーク ピアリングまたは仮想ネットワーク間接続のどちらかを使用できます。 詳細については、「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
+
+## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,14 +53,14 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SqlServer** | はい |
-| connectionString |SQL 認証または Windows 認証を使用して、Managed Instance に接続するために必要な connectionString 情報を指定します。 以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
-| password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Managed Instance と同じ VNET にセルフホステッド統合ランタイムをプロビジョニングします。 |はい |
+| type | type プロパティを **SqlServer** に設定する必要があります。 | はい。 |
+| connectionString |このプロパティは、SQL 認証または Windows 認証を使用して、マネージド インスタンスに接続するために必要な connectionString 情報を指定します。 詳細については、次の例を参照してください。 **SecureString** を選択して connectionString を Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい。 |
+| userName |Windows 認証を使用する場合、このプロパティはユーザー名を指定します。 例: **domainname\\username**。 |いいえ。 |
+| password |このプロパティは、ユーザー名に指定したユーザー アカウントのパスワードを指定します。 **SecureString** を選択して connectionString を Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ。 |
+| connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 マネージド インスタンスと同じ仮想ネットワークにセルフホステッド統合ランタイムをプロビジョニングします。 |はい。 |
 
 >[!TIP]
->エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
+>"データベースのセッション制限 XXX に到達しています" のようなメッセージを伴う "UserErrorFailedToConnectToSqlServer" エラー コードが表示されることがあります。 このエラーが発生した場合は、`Pooling=false` を接続文字列に追加して、もう一度やり直してください。
 
 **例 1:SQL 認証を使用する**
 
@@ -91,17 +95,17 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
                 "type": "SecureString",
                 "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
             },
-             "userName": "<domain\\username>",
-             "password": {
+            "userName": "<domain\\username>",
+            "password": {
                 "type": "SecureString",
                 "value": "<password>"
-             }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
         }
-     }
+    }
 }
 ```
 
@@ -113,8 +117,8 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**SqlServerTable** | はい |
-| tableName |リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | ソースの場合はいいえ、シンクの場合ははい |
+| type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | はい。 |
+| tableName |このプロパティは、リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | ソースの場合、いいえ。 シンクの場合、はい。 |
 
 **例**
 
@@ -139,21 +143,21 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure SQL Database Managed Instance のソースとシンクでサポートされるプロパティの一覧を示します。
 
-### <a name="azure-sql-database-managed-instance-as-source"></a>ソースとしての Azure SQL Database Managed Instance
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>ソースとしての Azure SQL Database Managed Instance
 
-Azure SQL Database Managed Instance からデータをコピーする場合は、コピー アクティビティのソースの種類を **SqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Azure SQL Database Managed Instance からデータをコピーする場合は、コピー アクティビティのソースの種類を **SqlSource** に設定します。 コピー アクティビティの source セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SqlSource** | はい |
-| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
+| type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | はい。 |
+| SqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`。 |いいえ。 |
+| sqlReaderStoredProcedureName |このプロパティは、ソース テーブルからデータを読み取るストアド プロシージャの名前です。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ。 |
+| storedProcedureParameters |これらのパラメーターは、ストアド プロシージャ用です。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ。 |
 
-**注意する点**
+以下の点に注意してください。
 
-- SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Managed Instance ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
-- "sqlReaderQuery" や "sqlReaderStoredProcedureName" プロパティを指定しない場合は、Managed Instance に対して実行するクエリ (`select column1, column2 from mytable`) を作成するために、データセット JSON の "構造" セクションで定義された列が使用されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
+- **SqlSource** に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するためにマネージド インスタンス ソースに対してこのクエリを実行します。 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することもできます (ストアド プロシージャでパラメーターを使用する場合)。
+- **sqlReaderQuery** または **sqlReaderStoredProcedureName** プロパティを指定しない場合は、データセット JSON の "structure" セクションで定義されている列を使用して、クエリが作成されます。 クエリ `select column1, column2 from mytable` はマネージド インスタンスに対して実行されます。 データセット定義に "structure" がない場合は、すべての列がテーブルから選択されます。
 
 **例:SQL クエリの使用**
 
@@ -234,32 +238,32 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-sink"></a>シンクとしての Azure SQL Database Managed Instance
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>シンクとしての Azure SQL Database Managed Instance
 
-Azure SQL Database Managed Instance にデータをコピーする場合は、コピー アクティビティのシンクの種類を **SqlSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+Azure SQL Database Managed Instance にデータをコピーする場合は、コピー アクティビティのシンクの種類を **SqlSink** に設定します。 コピー アクティビティの sink セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **SqlSink** | はい |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値:10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ  |
-| preCopyScript |コピー アクティビティでデータを Managed Instance に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
-| sqlWriterStoredProcedureName |ソース データをターゲット テーブルに適用する方法、たとえば、独自のビジネス ロジックを使用してアップサートまたは変換を実行する方法を定義するストアド プロシージャの名前です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出される**ことに注意してください。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行する場合は、`preCopyScript` プロパティを使用します。 |いいえ  |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
-| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ  |
+| type | コピー アクティビティのシンクの type プロパティは、**SqlSink** に設定する必要があります。 | はい。 |
+| writeBatchSize |このプロパティは、バッファー サイズが writeBatchSize に達したら、SQL テーブルにデータを挿入します。<br/>使用可能な値は、行数の場合整数です。 |いいえ (既定値: 10,000)。 |
+| writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は、期間です。 たとえば "00:30:00" (30 分) を指定できます。 |いいえ。 |
+| preCopyScript |このプロパティは、コピー アクティビティでデータをマネージド インスタンスに書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ。 |
+| sqlWriterStoredProcedureName |この名前は、ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 プロシージャの例は、独自のビジネス ロジックを使用してアップサートまたは変換することです。 <br/><br/>このストアド プロシージャは*バッチごとに呼び出されます*。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行するには、`preCopyScript` プロパティを使用します。 |いいえ。 |
+| storedProcedureParameters |これらのパラメーターはストアド プロシージャに使います。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ。 |
+| sqlWriterTableType |このプロパティは、ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ。 |
 
 > [!TIP]
-> Azure SQL Database Managed Instance にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 UPSERT または追加のビジネス ロジックを実行するには、SqlSink でストアド プロシージャを使用します。 詳細については、「[SQL シンクのストアド プロシージャの呼び出し](#invoking-stored-procedure-for-sql-sink)」を参照してください。
+> Azure SQL Database Managed Instance にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 アップサートまたは追加のビジネス ロジックを実行するには、SqlSink でストアド プロシージャを使用します。 詳細については、「[SQL シンクからのストアド プロシージャの呼び出し](#invoke-a-stored-procedure-from-a-sql-sink)」を参照してください。
 
-**例 1:データの付加**
+**例 1:データを追加する**
 
 ```json
 "activities":[
@@ -291,9 +295,9 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 ]
 ```
 
-**例 2:upsert でコピー中にストアド プロシージャを呼び出す**
+**例 2:アップサートのコピー中にストアド プロシージャを呼び出す**
 
-詳細については、「[SQL シンクのストアド プロシージャの呼び出し](#invoking-stored-procedure-for-sql-sink)」を参照してください。
+詳しくは、「[SQL シンクからのストアド プロシージャの呼び出し](#invoke-a-stored-procedure-from-a-sql-sink)」をご覧ください。
 
 ```json
 "activities":[
@@ -332,15 +336,15 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 
 ## <a name="identity-columns-in-the-target-database"></a>ターゲット データベースの ID 列
 
-このセクションでは、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
+次の例では、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
 
 **ソース テーブル**
 
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 
@@ -349,9 +353,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -397,15 +401,15 @@ create table dbo.TargetTbl
 }
 ```
 
-ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
+ソース テーブルとターゲット テーブルのスキーマは異なることに注意してください。 ターゲット テーブルには ID 列があります。 このシナリオでは、ターゲット データセット定義で "structure" プロパティを指定します。ここでは、ID 列は含みません。
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> SQL シンクからのストアド プロシージャの呼び出し
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> SQL シンクからのストアド プロシージャの呼び出し
 
-データの Azure SQL Database Managed Instance へのコピー時に、ユーザーが指定したストアド プロシージャを構成し、追加のパラメーターと共に呼び出すことができます。
+データの Azure SQL Database Managed Instance へのコピー時に、ストアド プロシージャを構成し、ユーザーが指定した追加のパラメーターで呼び出すことができます。
 
-組み込みのコピー メカニズムが目的どおり機能しない場合は、ストアド プロシージャを使用できます。 通常は、宛先テーブルでのソース データの最終挿入前に、upsert (挿入 + 更新) または追加処理 (列の結合、追加の値の検索、複数のテーブルへの挿入など) を実行する必要があるときに使用します。
+組み込みのコピー メカニズムでは目的を達成できない場合は、ストアド プロシージャを使用できます。 通常、ストアド プロシージャは、アップサート (更新 + 挿入) またはターゲット テーブルへのソース データの最終挿入の前に追加処理を行う必要があるときに、使用されます。 追加の処理には、列の結合、追加の値の検索、複数のテーブルへの挿入などのタスクを含めることができます。
 
-次の例では、Managed Instance 内のテーブルに upsert を行うストアド プロシージャを使用する方法を示します。 入力データと、シンクの "Marketing" テーブルのそれぞれに 3 つの列 (ProfileID、State、Category) があると仮定します。 “ProfileID” 列に基づいて upsert を実行し、特定のカテゴリに対してのみ適用します。
+次の例では、マネージド インスタンス内のテーブルにアップサートを行うためにストアド プロシージャを使用する方法を示します。 例では、入力データと、シンクの "Marketing" テーブルのそれぞれに 3 つの列(ProfileID、State、Category) があると仮定します。 ProfileID 列に基づいてアップサートを実行し、特定のカテゴリに対してのみ適用します。
 
 **出力データセット**
 
@@ -441,7 +445,7 @@ create table dbo.TargetTbl
 }
 ```
 
-データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルに結合されます。 ストアド プロシージャ内のテーブル型のパラメーター名は、データセットで定義された "tableName" と同じにする必要があります。
+データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルにマージされます。 ストアド プロシージャ内のテーブル型のパラメーター名は、データセットで定義された "tableName" と同じにする必要があります。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -458,7 +462,7 @@ BEGIN
 END
 ```
 
-データベースで、sqlWriterTableType と同じ名前のテーブル型を定義します。 テーブル型のスキーマは、入力データから返されるスキーマと同じにする必要があります。
+データベースで、sqlWriterTableType と同じ名前のテーブル型を定義します。 テーブル型のスキーマは、入力データから返されるスキーマと同じです。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -471,17 +475,17 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ストアド プロシージャ機能は [テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
 
 >[!NOTE]
->ストアド プロシージャを呼び出すことで Money または Smallmoney のデータ型に書き込む場合、値が四捨五入される可能性があります。 緩和するには、Money または Smallmoney の代わりに Decimal として、TVP の対応するデータ型を指定します。 
+>ストアド プロシージャを呼び出すことで **Money または Smallmoney** のデータ型に書き込む場合、値が四捨五入される可能性があります。 この問題を緩和するには、**Money または Smallmoney** の代わりに **Decimal** として、テーブル値パラメーターに対応するデータ型を指定します。 
 
 ## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のデータ型のマッピング
 
-Azure SQL Database Managed Instance をコピー元またはコピー先としてデータをコピーするとき、次の Managed Instance のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Azure SQL Database Managed Instance をコピー元またはコピー先としてデータをコピーするとき、次の Azure SQL Database Managed Instance のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Azure SQL Database Managed Instance のデータ型 | Data Factory の中間データ型 |
+| Azure SQL Database Managed Instance のデータ型 | Azure Data Factory の中間データ型 |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| ビット |ブール |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -495,14 +499,14 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| numeric |Decimal |
+| 数値 |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object * |
+| sql_variant |オブジェクト |
 | text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
@@ -512,5 +516,8 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | varchar |String、Char[] |
 | xml |xml |
 
+>[!NOTE]
+> 10 進の中間型にマップされるデータ型の場合、現在 Azure Data Factory では最大 28 の有効桁数をサポートしています。 28 よりも大きな有効桁数を必要とするデータがある場合は、SQL クエリで文字列に変換することを検討してください。
+
 ## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)に関するページをご覧ください。

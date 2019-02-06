@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HeyBuddy の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HeyBuddy の統合 | Microsoft Docs
 description: Azure Active Directory と HeyBuddy の間でシングル サインオンを構成する方法について学びます。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d51b5af6-018e-4678-9a3f-b70438394f67
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ef345d866de16b856d3c8b56fa086b83b74ae0f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 123b74298ebb01e8ebcfd70d023b4e71a879e7f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289549"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197893"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>チュートリアル: Azure Active Directory と HeyBuddy の統合
+# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>チュートリアル:Azure Active Directory と HeyBuddy の統合
 
 このチュートリアルでは、HeyBuddy と Azure Active Directory (Azure AD) を統合する方法について学びます。
 

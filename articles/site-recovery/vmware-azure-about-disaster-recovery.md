@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 0984f53c70baa50916e125d096a612ad8f061228
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 38f344ef9e24816a17975c60a5863be46da1364b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972823"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210337"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM から Azure へのディザスター リカバリーの概要
 
@@ -72,7 +72,7 @@ Azure の設定方法については、[アカウントの確認](tutorial-prepa
 
 1. いくつかのアカウントを設定する必要があります。
 
-    - VMware VM をレプリケートする場合は、Site Recovery が vCenter SErver または vSphere ESXi ホストにアクセスして VM を自動的に検出できるアカウントが必要です。
+    - VMware VM をレプリケートする場合は、Site Recovery が vCenter Server または vSphere ESXi ホストにアクセスして VM を自動的に検出できるアカウントが必要です。
     - レプリケートする各物理マシンまたは VM に Site Recovery Mobility サービス エージェントをインストールするアカウントが必要です。
 
 2. VMware インフラストラクチャの互換性をまだ確認していない場合は、確認する必要があります。

@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 03d29b7f072aaab09b0677031ee34bd61d876ce6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354140"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242843"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 稼働準備済みの Azure App Service on Azure Stack のデプロイを設定するには、システムでサポートするキャパシティについて計画する必要があります。  
 
@@ -80,7 +81,7 @@ Azure App Service 管理ロールでは、App Service Azure Resource Manager お
 
 使用する共有 Web worker ロールの数を決定する場合、次の考慮事項を検討します。
 
-- **メモリ**: メモリは Web worker ロールの最も重要なリソースです。 メモリが不足していると、仮想メモリがディスクからスワップされるときの Web サイトのパフォーマンスに影響します。 各サーバーで、オペレーティング システム用に約 1.2 GB の RAM が必要となります。 このしきい値を超える RAM を Web サイトの実行で使用できます。
+- **メモリ**:メモリは Web worker ロールの最も重要なリソースです。 メモリが不足していると、仮想メモリがディスクからスワップされるときの Web サイトのパフォーマンスに影響します。 各サーバーで、オペレーティング システム用に約 1.2 GB の RAM が必要となります。 このしきい値を超える RAM を Web サイトの実行で使用できます。
 - **アクティブな Web サイトの割合**: 通常は、Azure App Service on Azure Stack デプロイ内のアプリケーションの約 5% がアクティブです。 ただし、特定の時点でのアクティブなアプリケーションの割合は、それよりも高い場合も低い場合もあります。 アクティブなアプリケーションの割合が 5% の場合、Azure App Service on Azure Stack のデプロイに配置するアプリケーションの最大数は、アクティブな Web サイトの数の 20 倍 (5 x 20 = 100) より少なくする必要があります。
 - **平均メモリ占有領域**: 運用環境で計測されるアプリケーションの平均メモリ占有領域は約 70 MB です。 この占有領域を使用して、すべての Web worker ロールのコンピューターまたは VM 全体で割り当てられるメモリは、次のように計算できます。
 

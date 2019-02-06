@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OpsGenie の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OpsGenie の統合 | Microsoft Docs
 description: Azure Active Directory と OpsGenie の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 715035072ddc2ceb087d003dd5da5bc47572e9b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52d976761ad5962f09f40565cfa04ae78386d1ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444353"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192394"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル:Azure Active Directory と OpsGenie の統合
 
 このチュートリアルでは、OpsGenie と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ OpsGenie で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 OpsGenie で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[OpsGenie テスト ユーザーの作成](#creating-a-opsgenie-test-user)** - OpsGenie で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。

@@ -8,20 +8,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 05d447a7d36e0e8ca9da35407e825eb8f49fb4a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448277"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299913"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
 
@@ -43,6 +43,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **Azure AD Premium エディションへのアクセス** - Azure AD の条件付きアクセスは Azure AD Premium の機能です。 
 
 - **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
+
+
+このクイック スタートのシナリオでは、テスト アカウントに対して、ユーザーごとの MFA が有効にされていない必要があります。 詳細については、「[ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)」を参照してください。
 
 
 ## <a name="test-your-sign-in"></a>サインインをテストする

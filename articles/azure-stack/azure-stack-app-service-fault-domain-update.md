@@ -1,5 +1,5 @@
 ---
-title: 'App Service on Azure Stack: 障害ドメインの更新プログラム | Microsoft Docs'
+title: 'Azure Stack 上の App Service: 障害ドメインの更新プログラム | Microsoft Docs'
 description: 障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 services: azure-stack
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267217"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246383"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 1802 更新プログラムにより、Azure Stack で、障害ドメイン間のワークロードの分散がサポートされるようになりました。この機能は高可用性のために重要です。
 

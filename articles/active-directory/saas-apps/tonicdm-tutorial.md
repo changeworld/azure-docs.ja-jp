@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TonicDM の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と TonicDM の統合 | Microsoft Docs
 description: Azure Active Directory と TonicDM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 19ea9a07-9ecf-43dc-91ba-593ce3c00b01
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b582af22707b7bff187ed93fb48ba96d15634ab3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8e92e97a27f36d37d30335b6eb8492f41ede7510
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433326"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190430"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>チュートリアル: Azure Active Directory と TonicDM の統合
+# <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>チュートリアル:Azure Active Directory と TonicDM の統合
 
 このチュートリアルでは、TonicDM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -160,7 +160,7 @@ TonicDM で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="create-a-tonicdm-test-user"></a>TonicDM テスト ユーザーの作成
 
-このセクションでは、TonicDM で Britta Simon というユーザーを作成します。 [TonicDM サポート チーム](mailto:support@tonicdm.com)と連携して、TonicDM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、TonicDM で Britta Simon というユーザーを作成します。  [TonicDM サポート チーム](mailto:support@tonicdm.com)と協力して、TonicDM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +197,7 @@ TonicDM で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [TonicDM] タイルをクリックすると、TonicDM アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: f658afa1a08a6b8779c2f1e18944eec40abdc465
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586259"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299998"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 

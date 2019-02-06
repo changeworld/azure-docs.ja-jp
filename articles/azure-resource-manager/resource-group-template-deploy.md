@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 083a318f008799713f4d8d9aeacfe2e27f6ad195
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a816542860a96a8b0dbbeaa63202b6cba4d24acc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085936"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294980"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -25,7 +25,7 @@ ms.locfileid: "50085936"
 
 デプロイする Resource Manager テンプレートとして、コンピューター上のローカル ファイル、または GitHub などのリポジトリに配置した外部ファイルを使用できます。 この記事でデプロイするテンプレートは、[GitHub のストレージ アカウントのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)として入手できます。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell モジュールをインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell モジュールをインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 <a id="deploy-local-template" />
 
@@ -42,12 +42,12 @@ ms.locfileid: "50085936"
 次の例では、リソース グループを作成し、ローカル コンピューターからテンプレートをデプロイします。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 
-Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
  
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
@@ -64,7 +64,7 @@ Resource Manager テンプレートは、ローカル コンピューターに�
 外部テンプレートをデプロイするには、**TemplateUri** パラメーターを使用します。 この例の URI を使用して、GitHub のサンプル テンプレートをデプロイします。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -storageAccountType Standard_GRS
 ```
@@ -76,8 +76,8 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 Cloud Shell で次のコマンドを使用します。
 
 ```powershell
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri <copied URL> `
   -storageAccountType Standard_GRS
 ```
@@ -88,17 +88,17 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
 
 <a id="parameter-file" />
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 パラメーター値を渡すには、インライン パラメーターまたはパラメーター ファイルのいずれかを使用できます。 この記事の先の例では、インライン パラメーターを示しています。
 
 ### <a name="inline-parameters"></a>インライン パラメーター
 
-インライン パラメーターを渡すには、`New-AzureRmResourceGroupDeployment` コマンドでパラメーターの名前を指定します。 たとえば、文字列と配列をテンプレートに渡すには、以下を使用します。
+インライン パラメーターを渡すには、`New-AzResourceGroupDeployment` コマンドでパラメーターの名前を指定します。 たとえば、文字列と配列をテンプレートに渡すには、以下を使用します。
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString "inline string" `
   -exampleArray $arrayParam
@@ -108,7 +108,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
@@ -141,7 +141,7 @@ parameters セクションに、テンプレートで定義したパラメータ
 ローカル パラメーター ファイルを渡すには、**TemplateParameterFile** パラメーターを使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
@@ -149,7 +149,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 外部パラメーター ファイルを渡すには、**TemplateParameterUri** パラメーターを使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
@@ -162,21 +162,21 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 
 ### <a name="parameter-name-conflicts"></a>パラメーター名の競合
 
-PowerShell コマンドのパラメーターのいずれかと名前が同じであるパラメーターがテンプレートに含まれている場合、PowerShell ではテンプレート内のパラメーター名の後ろに **FromTemplate** という文字を付加します。 たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 **ResourceGroupNameFromTemplate** の値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+PowerShell コマンドのパラメーターのいずれかと名前が同じであるパラメーターがテンプレートに含まれている場合、PowerShell ではテンプレート内のパラメーター名の後ろに **FromTemplate** という文字を付加します。 たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 **ResourceGroupNameFromTemplate** の値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 ## <a name="test-a-template-deployment"></a>テンプレートのデプロイをテストする
 
-リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[Test-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment) を使用します。 
+リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment) を使用します。 
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
 エラーが検出されなかった場合は、コマンドが応答なしで終了します。 エラーが検出された場合は、エラー メッセージが返されます。 たとえば、ストレージ アカウント SKU について間違った値を渡した場合は、次のエラーが返されます。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
 
 Code    : InvalidTemplate
@@ -189,7 +189,7 @@ Details :
 テンプレートに構文エラーがある場合は、テンプレートを解析できなかったことを示すエラー メッセージが返されます。 このメッセージには、解析エラーの行番号と位置が表示されます。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
+Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
   ". Path 'variables', line 31, position 3.
 ```
 

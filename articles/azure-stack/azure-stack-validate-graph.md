@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 0755f9d60bee8a57f9259a51cf54e8cda566175e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416241"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247019"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Azure Stack の Graph 統合を検証する
 
@@ -106,8 +107,8 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
 
 次のコマンドを使用します。
 
-* **-OutputPath**: 別のレポートの場所を指定するには、実行コマンドの末尾に *path* パラメーターを使用します。
-* **-CleanReport**: 前のレポート情報から *AzsReadinessCheckerReport.json* をクリアするには、実行コマンドの末尾にこのパラメーターを使用します。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
+* **-OutputPath**:別のレポートの場所を指定するには、実行コマンドの末尾に *path* パラメーターを使用します。
+* **-CleanReport**:前のレポート情報から *AzsReadinessCheckerReport.json* をクリアするために、実行コマンドの末尾に付けるパラメーターです。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
 
 ## <a name="validation-failures"></a>検証エラー
 

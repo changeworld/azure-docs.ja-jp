@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Elium の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Elium の統合 | Microsoft Docs
 description: Azure Active Directory と Elium の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: dfa90474632b2cf18055e0ba95994f120cb293ef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac88d3accad8aa9ec523ecce5eb11b6c10eb913c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447786"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181488"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-elium"></a>チュートリアル: Azure Active Directory と Elium の統合
+# <a name="tutorial-azure-active-directory-integration-with-elium"></a>チュートリアル:Azure Active Directory と Elium の統合
 
 このチュートリアルでは、Elium と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -233,7 +233,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
 このセクションの目的は、Elium で Britta Simon というユーザーを作成することです。 Elium では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Elium ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Elium サポート チーム](mailto:support@elium.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Elium サポート チーム](mailto:support@elium.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -270,7 +270,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Elium] タイルをクリックすると、Elium アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

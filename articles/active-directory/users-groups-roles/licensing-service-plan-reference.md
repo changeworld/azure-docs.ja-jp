@@ -7,21 +7,19 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.openlocfilehash: 9d229dfa11a317c1f3b3121cdc7c1cdfa7df9c5e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 3d2c15d3658ed93348c5ec23198d2cc97a94e0aa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321638"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297873"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 
@@ -29,8 +27,8 @@ ms.locfileid: "54321638"
 
 - **製品名**:管理ポータルで使用されます。
 - **文字列 ID**:ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。
-- **GUID ID**:Azure AD Graph および Microsoft Graph で使用される GUID です。
-- **含まれるサービス プラン**:文字列 ID および GUID に対応する製品のサービス プランの一覧です。
+- **GUID**:Azure AD Graph および Microsoft Graph で使用される GUID です。
+- **含まれるサービス プラン**:文字列 ID および GUID に対応する製品のサービス プランの一覧です
 
 >[!NOTE]
 >この情報は、2018 年 8 月 17 日の時点で正確です。

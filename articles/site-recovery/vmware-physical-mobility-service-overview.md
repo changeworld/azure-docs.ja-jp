@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6319ef908b5b040bf61285451448c08bb3960fe2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956518"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215012"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -64,7 +64,7 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 5. 選択したマシンごとに、モビリティ サービスの更新ジョブが開始されます。
 
-## <a name="update-the-acount-used-for-push-installation-of-the-mobility-service"></a>モビリティ サービスのプッシュ インストールに使用されるアカウントを更新する
+## <a name="update-the-account-used-for-push-installation-of-the-mobility-service"></a>モビリティ サービスのプッシュ インストールに使用されるアカウントを更新する
 
 Site Recovery をデプロイしたとき、モビリティ サービスのプッシュ インストールを有効にする目的で、アカウントを指定しました。このアカウントは、マシンで複製が有効になっているとき、マシンにアクセスし、サービスをインストールするために Site Recovery プロセス サーバーによって使用されます。 このアカウントの資格情報を更新する場合、[こちらの手順](vmware-azure-manage-configuration-server.md)に従ってください。
 

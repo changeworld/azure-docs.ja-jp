@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Skytap の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Skytap の統合 | Microsoft Docs
 description: Azure Active Directory と Skytap の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 754697682470ac3c1f982e6cb1fc5f6043f3b92c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6466e40fca954d41a32424c55b8ee465fb7ad7ec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438132"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195709"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル: Azure Active Directory と Skytap の統合
+# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル:Azure Active Directory と Skytap の統合
 
 このチュートリアルでは、Skytap と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -167,7 +167,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="create-a-skytap-test-user"></a>Skytap テスト ユーザーの作成
 
-このセクションでは、Skytap で Britta Simon というユーザーを作成します。 [Skytap サポート チーム](mailto:support@skytap.com)と連携して、Skytap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Skytap で Britta Simon というユーザーを作成します。  [Skytap サポート チーム](mailto:support@skytap.com)と協力して、Skytap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -204,7 +204,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skytap] タイルをクリックすると、Skytap アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

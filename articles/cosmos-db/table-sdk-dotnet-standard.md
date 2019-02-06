@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 7ccc9793bd1c4a345098892e66be15228efcc265
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: ce7cc489b107ce4bd95270b9a7f8cb560a2d2398
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844570"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249648"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -33,15 +33,18 @@ ms.locfileid: "54844570"
 
 ### <a name="a-name0101-preview0101-preview"></a><a name="0.10.1-preview"/>0.10.1-preview
 * Azure Storage Table エンドポイントに対する SAS トークン、TablePermissions、ServiceProperties、および ServiceStats の操作が追加されています。 
-   > [!NOTE] 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
+   > [!NOTE]
+   > 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
 
 ### <a name="a-name0100-preview0100-preview"></a><a name="0.10.0-preview"/>0.10.0-preview
 * Azure Storage Table エンドポイントに対するコア CRUD、バッチ、およびクエリ操作のサポートが追加されています。 
-   > [!NOTE] 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
+   > [!NOTE]
+   > 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
 
 ### <a name="a-name091-preview091-preview"></a><a name="0.9.1-preview"/>0.9.1-preview
 * Azure Cosmos DB Table .NET Standard SDK は、Cosmos DB 上の Table データ モデルに効率的にアクセスするためのクロスプラットフォーム対応 .NET ライブラリです。 この最初のリリースでは、テーブルおよびエンティティの CRUD とクエリの機能全体、および [Cosmos DB Table SDK For .NET Framework](table-sdk-dotnet.md) に類似する API がサポートされています。 
-   > [!NOTE] 0.9.1-preview バージョンでは、Azure Storage Table エンドポイントはまだサポートされていません。
+   > [!NOTE]
+   >  Azure Storage Table のエンドポイントは、0.9.1-preview バージョンではまだサポートされていません。
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。

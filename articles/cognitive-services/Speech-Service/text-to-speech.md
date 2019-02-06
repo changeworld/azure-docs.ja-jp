@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343209"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251556"
 ---
 # <a name="about-the-text-to-speech-api"></a>Text to Speech API について
 
@@ -37,6 +37,9 @@ ms.locfileid: "53343209"
 ## <a name="voice-support"></a>音声のサポート
 
 Microsoft **Text-to-Speech** サービスでは、45 を超える言語およびロケールで 75 を超える音声を提供しています。 このような標準の ”音声フォント” を使用するには、サービスの REST API を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。 サポートされている言語、ロケール、および音声の詳細については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 料金は、標準音声、カスタム音声、ニューラル音声によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
 
 ### <a name="neural-voices"></a>ニューラル音声
 

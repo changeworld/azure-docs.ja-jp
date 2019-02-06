@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c11cdd6d1cc24d639d837993e94f3b304228634a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307464"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299556"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 内のテーブルに関する統計の作成と更新
 Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
@@ -38,7 +38,7 @@ FROM sys.databases
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-結合が含まれていること､あるいは述語の存在が検出されると､SELECT､INSERT-SELECT､CTAS､UPDATE､ DELETE､および EXPLAIN ステートメントによって統計の自動作成がトリガーされmす｡ 
+結合が含まれていること､あるいは述語の存在が検出されると､SELECT､INSERT-SELECT､CTAS､UPDATE､ DELETE､および EXPLAIN ステートメントによって統計の自動作成がトリガーされます。 
 
 > [!NOTE]
 > 一時テーブルや外部テーブルに対して自動作成の統計が作成にされることはありません｡
@@ -50,7 +50,7 @@ SET AUTO_CREATE_STATISTICS ON
 > 統計の作成は､各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) にログ記録されます｡
 > 
 
-自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます｡ 作成済みの統計は、[DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) コマンドを実行して表示できます。
+自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます。 作成済みの統計は、[DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) コマンドを実行して表示できます。
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
@@ -125,7 +125,7 @@ WHERE
 
 詳細については、「[カーディナリティ推定](/sql/relational-databases/performance/cardinality-estimation-sql-server)」を参照してください。
 
-## <a name="examples-create-statistics"></a>例: 統計の作成
+## <a name="examples-create-statistics"></a>次に例を示します。統計を作成する
 以下の例では、さまざまなオプションを使用して統計を作成する方法を示します。 各列に使用するオプションは、データの特性とクエリでの列の使用方法によって異なります。
 
 ### <a name="create-single-column-statistics-with-default-options"></a>既定のオプションを使用した単一列統計の作成
@@ -337,7 +337,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 すべての列にサンプルの統計を作成するには 
 
-## <a name="examples-update-statistics"></a>例: 統計の更新
+## <a name="examples-update-statistics"></a>次に例を示します。統計を更新する
 統計を更新するには、次の操作を行います。
 
 - 統計オブジェクトを 1 つ更新します。 更新する統計オブジェクトの名前を指定します。
@@ -416,7 +416,7 @@ SELECT
         sm.[name]                           AS [schema_name]
 ,       tb.[name]                           AS [table_name]
 ,       st.[name]                           AS [stats_name]
-,       st.[filter_definition]              AS [stats_filter_defiinition]
+,       st.[filter_definition]              AS [stats_filter_definition]
 ,       st.[has_filter]                     AS [stats_is_filtered]
 ,       STATS_DATE(st.[object_id],st.[stats_id])
                                             AS [stats_last_updated_date]

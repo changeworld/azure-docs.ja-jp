@@ -3,7 +3,7 @@ title: Azure Docker VM 拡張機能を使用する | Microsoft Docs
 description: Docker VM 拡張機能を使用して、Resource Manager テンプレートと Azure CLI を使って Azure で Docker 環境をすばやく安全にデプロイする方法を説明する
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: f30305374b1fcaabfb36533195a098073d33b6c3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465935"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197604"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 
@@ -39,7 +39,7 @@ Docker マシンや Azure Container Service などの他のデプロイ方法に
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Azure Docker VM 拡張機能を使ってテンプレートをデプロイする
-Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、「[Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)」(Docker を使用した Ubuntu VM の簡単なデプロイ) で確認できます。 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。
+Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、[Docker を使用した Ubuntu VM の簡単なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)に関するページで確認できます。 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。
 
 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -58,7 +58,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="deploy-your-first-nginx-container"></a>最初の NGINX コンテナーのデプロイ
-DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#az_vm_show) を使用します。
+DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm) を使用します。
 
 ```azurecli
 az vm show \

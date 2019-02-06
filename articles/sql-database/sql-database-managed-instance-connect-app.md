@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ac0513e2298877c63bb25c26de32834c07a55474
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514963"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294150"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 

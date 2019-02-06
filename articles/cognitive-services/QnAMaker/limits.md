@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 443ecdeab057c863763501e5da7d36e9fb6a4eea
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084790"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223138"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 QnA Maker における制限の包括的な一覧です。
@@ -27,7 +27,9 @@ QnA Maker における制限の包括的な一覧です。
 
 |**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|許可される発行済みナレッジ ベースの最大数 (最大インデックス数 - 1 (テスト用に予約済み))|2|14|49|199|199|2,999|
+|許可される発行済みナレッジ ベースの最大数|2|14|49|199|199|2,999|
+
+ たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。 
 
 ## <a name="extraction-limits"></a>抽出の制限
 * 抽出できるファイルの最大数と最大のファイル サイズ: [QnA Maker の価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。
@@ -64,3 +66,11 @@ QnA Maker における制限の包括的な一覧です。
 * 追加または削除される代替の質問の最大数: 100
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
+
+## <a name="next-steps"></a>次の手順
+
+サービス レベルを変更するタイミングと方法について学びます。
+
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): 現在のレベルよりも多くの質問と回答をナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。
+* [Search](how-to/upgrade-qnamaker-service.md#upgrade-app-service) - ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
+* [App service](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): 多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。

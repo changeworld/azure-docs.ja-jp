@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf714e5bd47e244a410d1062488af623253bbee6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086421"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217783"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>作成者とコラボレーターを管理する方法 
 
@@ -67,7 +67,12 @@ LUIS では、Azure Active Directory (Azure AD) の標準的な同意フロー�
 
 ![アプリ Web サイトによる Azure Active Directory のアクセス許可](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-テナント管理者が特定のユーザーのみに LUIS の使用を許可する場合は、こちらの[ID ブログ](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/)を参照してください。
+テナント管理者が、特定のユーザーのみに LUIS を使わせたい場合は、いくつかの可能性のあるソリューションがあります。
+* "管理者の同意" を付与します (Azure AD のすべてのユーザーに同意する) が、エンタープライズ アプリケーションのプロパティの下の [ユーザーの割り当てが必要ですか] を [はい] に設定し、最後に目的のユーザーのみをアプリケーションに割り当て/追加します。 この方法では、管理者はアプリに "管理者の同意" を与えますが、それにアクセスできるユーザーを制御できます。
+* 2 つ目のソリューションは、[Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) を使用して、特定の各ユーザーに同意を与えることです。 
+
+Azure Active Directory ユーザーと同意の詳細を確認します。 
+* [ご利用のアプリを特定のユーザー セットに制限する](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>コラボレーター用の複数の電子メールを持つユーザー アカウント
 

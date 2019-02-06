@@ -11,19 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: ff7513f197b3035b88748e2e73c38789d9010d9c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300440"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251318"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
 
@@ -52,38 +53,38 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
     - 統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
     - 統合システム上で:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
     - ASDK を実行している場合:
      
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
-      - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
+      - **[ユーザー名]**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
+      - **Password**:インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
 
     > [!NOTE]
     > ERCS エンドポイントに接続できない場合は、まだ接続を試みていない ERCS VM の IP アドレスを使用して、手順 1 と手順 2 を再試行してください。
 
-3.  接続後、環境に応じて **[*IP アドレスまたは ERCS VM 名*]: PS>** または **[azs-ercs01]: PS>** プロンプトが変わります。 ここから `Get-Command` を実行して、利用可能なコマンドレットの一覧を表示します。
+3.  接続後、環境に応じて **[*IP アドレスまたは ERCS VM 名*]: PS>** または **[azs-ercs01]:PS>** プロンプトが変わります。 ここから `Get-Command` を実行して、利用可能なコマンドレットの一覧を表示します。
 
     これらのコマンドレットの多くは、統合システム環境での使用のみが意図されています (データセンター統合に関連するコマンドレットなど)。 ASDK では、次のコマンドレットが検証済みです。
 
@@ -124,38 +125,38 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
     統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
     - 統合システム上で:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
     - ASDK を実行している場合:
      
-      ````PowerShell
+      ```PowerShell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
-      - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
+      - **[ユーザー名]**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
+      - **Password**:インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
 
 3. ローカル コンピューターに PEP セッションをインポートします
-    ````PowerShell 
+    ```PowerShell 
         Import-PSSession $session
-    ````
+    ```
 4. これで、Azure Stack のセキュリティ対策を損なうことなく、PEP のすべての関数およびコマンドレットと共に、ローカルの PowerShell セッションで通常どおりにタブ補完を使用し、スクリプトを実行できるようになりました。 機能を有効にご活用ください。
 
 
@@ -178,4 +179,5 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure Stack の診断ツール](azure-stack-diagnostics.md)

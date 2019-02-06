@@ -3,25 +3,25 @@ title: Google を Azure Active Directory B2B の ID プロバイダーとして�
 description: Google とのフェデレーションを行って、ゲスト ユーザーが独自の Gmail アカウントを使用して Azure AD アプリにサインインできるようにします
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 329c12f76862addb6d14271f219b48089c615395
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bc0a4d4ce13c4013d634748503f98451e5fae9be
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428734"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216156"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
 Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成することなく、独自の Google アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。  
 > [!NOTE]
-> Google ゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/<tenant id>`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。
+> Google ゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/?tenantid=<tenant id>` または `https://portal.azure.com/<tenant id>`、または検証済みの既定のドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザーは、テナント コンテキストが含まれているリンクを使用して共有アプリまたはリソースにアクセスする必要があります。 Google に既にサインインしているかどうかによって、エクスペリエンスが異なります。

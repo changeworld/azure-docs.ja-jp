@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0c46ba3d2fcd59f43df2383c3e0471fa36217536
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551136"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300253"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
 
@@ -50,7 +50,7 @@ Azure SQL Database では、データベース内の多対多リレーション�
 
 リレーショナル データベースを使用して実現できないことのうち、グラフ データベースで実現できることは何もありません。 しかし、グラフ データベースでは、特定のクエリをより簡単に表現することができます。 優先事項の決定は、次の要因に基づいて行うことができます。
 
-- 1 つのノードが複数の親を持つ可能性があるため、HieararchyId を使用できない、モデル階層データ。
+- 1 つのノードが複数の親を持つ可能性があるため HierarchyId を使用できない、モデル階層データ
 - アプリケーションには、複雑な多対多リレーションシップが含まれます。アプリケーションの進化に伴って、新しいリレーションシップが追加されます。
 - 相互接続されたデータとリレーションシップを分析する必要があります。
 

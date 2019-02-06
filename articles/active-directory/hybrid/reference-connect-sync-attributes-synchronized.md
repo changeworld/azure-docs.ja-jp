@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1d6808f17116df033c2b001eff05bd83bc5f1d3d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468620"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196533"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -45,6 +45,7 @@ ms.locfileid: "54468620"
 | displayName |X | |
 | objectSID |X |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | pwdLastSet |X |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
+|samAccountName|X| |
 | sourceAnchor |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |

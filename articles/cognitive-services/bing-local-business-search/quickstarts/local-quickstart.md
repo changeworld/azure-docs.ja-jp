@@ -6,20 +6,20 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: f2545c7093d6ed9b4183cfd27bdfddcc1f79a75d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 37cb122503dba31ba57dd6445317f3c54db08084
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959190"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181454"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート: C# で Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
-このクイック スタートを使用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは C# で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
+このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは C# で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
 このサンプル アプリケーションでは、検索クエリ `hotel in Bellevue` に対する API からのローカルな応答データを取得します。
 
@@ -28,13 +28,13 @@ ms.locfileid: "50959190"
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版をアクティブ化するときに提供されるアクセス キーが必要になります。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="create-the-request"></a>要求を作成する 
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"restaurant in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-````
+```
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -42,15 +42,15 @@ ms.locfileid: "50959190"
 
     const string searchTerm = "restaurant in Bellevue";
     // Construct the URI of the search request
-    var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(searchQuery) + "appid=" + accessKey;
+    var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(searchQuery) + mkt=en-us;
 
     // Run the Web request and get response.
     WebRequest request = HttpWebRequest.Create(uriQuery);
-    //request.Headers["Ocp-Apim-Subscription-Key"] = accessKey; 
+    request.Headers["Ocp-Apim-Subscription-Key"] = accessKey; 
 
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-````
+```
 
 ## <a name="run-the-complete-application"></a>完全なアプリケーションを実行する
 
@@ -60,7 +60,7 @@ Bing Local Business Search API では、Bing 検索エンジンからのロー�
 3. accessKey 値を、ご利用のサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-````
+```
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -94,7 +94,7 @@ namespace localSearch
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Searching locally for: " + searchTerm);
 
-            SearchResult result = BingLocalSearch(searchTerm);
+            SearchResult result = BingLocalSearch(searchTerm, accessKey);
 
             Console.WriteLine("\nRelevant HTTP Headers:\n");
             foreach (var header in result.relevantHeaders)
@@ -110,15 +110,14 @@ namespace localSearch
         /// <summary>
         /// Performs a Bing Local business search and return the results as a SearchResult.
         /// </summary>
-        static SearchResult BingLocalSearch(string searchQuery)
+        static SearchResult BingLocalSearch(string searchQuery, string key)
         {
             // Construct the URI of the search request
-            var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(searchQuery) + 
-                                "&appid=" + accessKey + "&traffictype=Internal_monitor&market=en-us";
+            var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(searchQuery) + "&mkt=en-us";
 
             // Perform the Web request and get the response
             WebRequest request = HttpWebRequest.Create(uriQuery);
-            //request.Headers["Ocp-Apim-Subscription-Key"] = accessKey; 
+            request.Headers["Ocp-Apim-Subscription-Key"] = key; 
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
             string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -207,7 +206,7 @@ namespace localSearch
     }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)

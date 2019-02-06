@@ -1,15 +1,8 @@
 ---
-title: Excel での Web サービスの使用
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18
-ms.date: 02/01/2018
+title:Excel での Web サービスの使用 titleSuffix:Azure Machine Learning Studio description:Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/01/2018
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
 

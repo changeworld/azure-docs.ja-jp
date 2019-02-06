@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: db11ddc275b1e47b728cdc0f9b7d9bf6b6aa9652
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412820"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189529"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
 > [!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "54412820"
 
 まず次の手順を実行します。
 
-* 少なくとも 1 つのフォレストに Windows Server 2012R2 があることを確認します。 このデバイス オブジェクトの種類が必要です。
+* デバイスが存在するフォレストには、デバイス オブジェクトと関連属性が存在するように、Windows 2012 R2 レベルにアップグレードされたフォレスト スキーマが必要です。
 * インストール ウィザードが既に実行中の場合、変更があっても検出されません。 この場合は、インストール ウィザードを完了してから、再実行してください。
 * 初期化スクリプトで指定したアカウントが、Active Directory Connector に使用されている正しいユーザーであることを確認します。 確認する手順は次のとおりです。
   * [スタート] メニューから **[同期サービス]** を開きます。

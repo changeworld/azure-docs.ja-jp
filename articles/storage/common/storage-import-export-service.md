@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528558"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453384"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -29,7 +29,7 @@ Microsoft 提供のディスク ドライブを使用してデータを転送す
 
 * **クラウドへのデータの移行**: Azure に大量のデータを迅速にコスト効率よく移動します。
 * **コンテンツ配信**: 顧客サイトにデータを迅速に送信します。
-* **バックアップ**: Azure Storage に格納するオンプレミスのデータのバックアップを作成します。
+* **バックアップ**:Azure Storage に格納するオンプレミスのデータのバックアップを作成します。
 * **データの回復**: ストレージに格納された大量のデータを回復し、オンプレミスの場所に配信します。
 
 ## <a name="importexport-components"></a>Import/Export コンポーネント

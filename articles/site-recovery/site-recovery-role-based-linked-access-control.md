@@ -6,12 +6,12 @@ ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849532"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218072"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用して Site Recovery のアクセスを管理する
 

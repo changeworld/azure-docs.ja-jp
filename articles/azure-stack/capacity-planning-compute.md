@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
+ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: 8dcc64350e25be0c8131dc75d96f2a8938944eaf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e756b48003ebfaff98271d93a3d8f0231571b5f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962183"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242435"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Azure Stack コンピューティング能力の計画
 [Azure Stack でサポートされる VM サイズ](./user/azure-stack-vm-sizes.md)は、Azure でサポートされているもののサブセットです。 Azure では、リソース (サーバーのローカルおよびサービス レベル) の過剰消費を防ぐため、多くのベクターに沿ってリソースの制限を適用します。 テナントの消費量にいくつかの制限を適用しないと、あるテナントでリソースが過剰消費された場合に、別のテナントのエクスペリエンスに影響します。 VM からのネットワーク送信の場合、Azure Stack では Azure の制限と一致する帯域幅の上限が設けられます。 ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack にストレージ IOPS 制限が実装されています。  
@@ -29,10 +30,7 @@ ms.locfileid: "52962183"
 ## <a name="vm-placement-and-virtual-to-physical-core-overprovisioning"></a>VM の配置および仮想対物理コアのオーバープロビジョニング
 Azure Stack には、テナントで、VM 配置のために使用する特定のサーバーを指定する方法はありません。 VM を配置するときの唯一の考慮事項は、その VM の種類に対して十分なメモリがホスト上にあるかどうかです。 Azure Stack でメモリがオーバーコミットされることはありませんが、コア数のオーバーコミットは許可されます。 配置アルゴリズムでは、既存の仮想対物理コアのオーバープロビジョニングの比率を係数と見なさないため、各ホストの比率が異なる可能性があります。 
 
-Azure では、マルチ VM 運用システムの高可用性を実現するため、VM が複数の障害ドメインに分散される可用性セットに配置されます。 つまり、可用性セットに配置された VM は、次の図に示すように、障害からの回復性を考慮してラックで互いに物理的に分離されています。
-
-![障害ドメインと更新ドメイン](media/azure-stack-capacity-planning/domains.png)
-
+Azure では、マルチ VM 運用システムの高可用性を実現するため、VM が複数の障害ドメインに分散される可用性セットに配置されます。 Azure Stack では、可用性セット内の障害ドメインは、スケール ユニット内の 1 つのノードとして定義されます。
 
 Azure Stack のインフラストラクチャは障害に対する回復性を備えていますが、基盤となっているテクノロジ (フェールオーバー クラスタリング) では、ハードウェア障害が発生した場合にその影響を受ける物理サーバー上の VM に多少のダウンタイムが発生します。 現在、Azure Stack では、Azure との一貫性がある最大 3 つの障害ドメインを含む可用性セットを用意することがサポートされています。 可用性セットに配置された VM は、複数の障害ドメイン (Azure Stack ノード) にできる限り均等に分散させることによって、互いに物理的に分離されます。 ハードウェア障害が発生した場合、障害が発生した障害ドメインの VM は他のノードで再起動されますが、可能であれば、同じ可用性セット内の他の VM とは別の障害ドメインに保持されます。 ハードウェアがオンラインに戻ると、高可用性を維持するために VM の再配置が行われます。
 

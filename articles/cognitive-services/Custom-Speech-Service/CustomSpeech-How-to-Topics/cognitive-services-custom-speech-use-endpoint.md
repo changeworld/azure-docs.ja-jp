@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3f99172f486c374cdbd0b6ebd50fdf7bfec98ec3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341805"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227150"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>カスタム Speech-to-Text エンドポイントの使用
 
@@ -36,10 +36,10 @@ ms.locfileid: "49341805"
 
 音声クライアント ライブラリを使用してカスタム エンドポイントに要求を送信するには、認識クライアントを起動します。 [NuGet](http://nuget.org/) の Client Speech SDK を使用します。 *speech recognition* を検索し、使用しているプラットフォームの Microsoft の音声認識パッケージを選択します。 いくつかのサンプル コードが [GitHub](https://github.com/Microsoft/Cognitive-Speech-STT-Windows) にあります。 Client Speech SDK には、次のメソッドを提供するファクトリ クラス **SpeechRecognitionServiceFactory** があります。
 
-  *   ```CreateDataClient(...)```: データ認識クライアント。
-  *   ```CreateDataClientWithIntent(...)```: 意図を含むデータ認識クライアント。
-  *   ```CreateMicrophoneClient(...)```: マイク認識クライアント。
-  *   ```CreateMicrophoneClientWithIntent(...)```: 意図を含むマイク認識クライアント。
+  *   ```CreateDataClient(...)```:データ認識クライアント。
+  *   ```CreateDataClientWithIntent(...)```:意図を含むデータ認識クライアント。
+  *   ```CreateMicrophoneClient(...)```:マイク認識クライアント。
+  *   ```CreateMicrophoneClientWithIntent(...)```:意図を含むマイク認識クライアント。
 
 詳細なドキュメントについては、[Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home) に関するページを参照してください。 Custom Speech Service エンドポイントは、同じ SDK をサポートしています。
 

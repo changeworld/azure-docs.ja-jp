@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 61d2c82f875c4f40e370515fd249e23601e91678
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7ab8b66d516368bf866aa9d2a202ccd261394b93
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232058"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243149"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -51,12 +51,12 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
 1. EUS 以外のリポジトリを無効にします。
     ```bash
-    sudo yum --disablerepo=* remove rhui-azure-rhel7
+    sudo yum --disablerepo='*' remove 'rhui-azure-rhel7'
     ```
 
 1. EUS リポジトリを追加します。
     ```bash
-    yum --config=https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config install rhui-azure-rhel7-eus
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
 1. releasever 変数をロックします。
@@ -103,15 +103,10 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>VM 上の有効期限が切れた RHUI クライアント証明書を更新する
 
-RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた (2018 年 11 月 21 日時点) SSL クライアント証明書による RHUI への接続の問題が発生します。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
+RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた SSL クライアント証明書による RHUI への接続の問題が発生します。 _"SSL ピアは期限切れとして証明書を拒否しました"_ のようなエラーが表示される場合があります。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
 
 ```bash
-sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel7
-```
-
-RHEL VM が米国政府のクラウドに存在する場合は、次のコマンドを使用します。
-```bash
-sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-usgov-rhel7
+sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
 ```
 
 別の方法として、`sudo yum update` を実行した場合も、他のリポジトリに関して "有効期限が切れた SSL 証明書" のエラーは表示されますが、クライアント証明書パッケージが更新されます。 この更新に従うと、他の RHUI リポジトリへの正常な接続が復元されるため、`sudo yum update` を正常に実行できるようになります。

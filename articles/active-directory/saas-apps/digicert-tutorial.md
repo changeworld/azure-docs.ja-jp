@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と DigiCert の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と DigiCert の統合 | Microsoft Docs
 description: Azure Active Directory と DigiCert の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: f37ac37d80562a402d6891ffaa2a687e04c3a8c0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 68f62fb51559c4eac49041c7c9653e76de95ee9f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434882"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181080"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-digicert"></a>チュートリアル: Azure Active Directory と DigiCert の統合
+# <a name="tutorial-azure-active-directory-integration-with-digicert"></a>チュートリアル:Azure Active Directory と DigiCert の統合
 
 このチュートリアルでは、DigiCert と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ DigiCert で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 DigiCert で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[DigiCert テスト ユーザーの作成](#creating-a-digicert-test-user)** - DigiCert で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。

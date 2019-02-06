@@ -5,16 +5,16 @@ description: ドキュメントのアップロード機能を使用すると、�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633250"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217222"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 
@@ -40,19 +40,19 @@ ms.locfileid: "52633250"
     -  トレーニング: これらのドキュメントはトレーニング セットに使用されます。
     -  チューニング: これらのドキュメントはチューニング セットに使用されます。
     -  テスト: これらのドキュメントはテスト セットに使用されます。
-    -  Phrase Dictionary (フレーズ辞書): これらのドキュメントはフレーズ辞書に使用されます。
-    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます。
+    -  Phrase Dictionary (句辞書): これらのドキュメントは句辞書に使用されます。
+    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます
 
     b.  言語ペア
 
-    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェックボックスをオンにします。
+    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェック ボックスをオンにします。
 
     d.  関連するセクションに並列データまたは複合データを入力します。
 
     -  Parallel data (並列データ):
         -  ソース ファイル: ローカル コンピューターからソース言語ファイルを選択します。
         -  ターゲット ファイル: ローカル コンピューターからターゲット言語ファイルを選択します。
-        -  ドキュメント名: 並列ファイルをアップロードする場合にのみ使用されます。
+        -  Document name (ドキュメント名): 並列ファイルをアップロードする場合にのみ使用されます。
 
     - Combo data (複合データ):
         -  Combo File (複合ファイル): ローカル コンピューターから複合ファイルを選択します。 複合ファイルには、ソース言語とターゲット言語の両方の文があります。 複合ファイルには[名前付け規則](document-formats-naming-convention.md)が重要です。

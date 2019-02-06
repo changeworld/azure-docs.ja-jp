@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230558"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220392"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -44,7 +44,7 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | type  | SubType | 例 |
 |:-----------   |:------------- |:---------|
 | Person        | 該当なし\*         | "Jeff"、"Bill Gates"     |
-| Location      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
+| 場所      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
 | 数量      | Number        | "6"､"six"     | 
 | 数量      | 割合    | "50%"､"fifty percent"| 
@@ -54,14 +54,14 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | 数量      | 通貨      | "$10.99"     | 
 | 数量      | Dimension     | "10 miles"､"40 cm"     | 
 | 数量      | 気温   | "32 degrees"    |
-| Datetime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
-| Datetime      | 日付          | "May 2nd, 2017", "05/02/2017"   | 
+| DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
+| DateTime      | 日付          | "May 2nd, 2017", "05/02/2017"   | 
 | 日時     | Time          | "8am"､"8:00"  | 
-| Datetime      | Daterange     | "May 2nd to May 5th"    | 
-| Datetime      | TimeRange     | "6pm to 7pm"     | 
-| Datetime      | duration      | "1 minute and 45 seconds"   | 
-| Datetime      | Set           | "every Tuesday"     | 
-| Datetime      | TimeZone      |    | 
+| DateTime      | Daterange     | "May 2nd to May 5th"    | 
+| DateTime      | TimeRange     | "6pm to 7pm"     | 
+| DateTime      | duration      | "1 minute and 45 seconds"   | 
+| DateTime      | Set           | "every Tuesday"     | 
+| DateTime      | TimeZone      |    | 
 | URL           | 該当なし\*         | "http://www.bing.com"    |
 | 電子メール         | 該当なし\*         | "support@contoso.com" |
 \* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。
@@ -89,11 +89,11 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>手順 1: 要求を構造化する
+## <a name="step-1-structure-the-request"></a>手順 1:要求を構造化する
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください: [Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + エンティティ抽出用の HTTP エンドポイントを設定します。 そこには、`/entities` リソースが含まれている必要があります: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
@@ -104,13 +104,13 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 > [!Tip]
 > [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
-## <a name="step-2-post-the-request"></a>手順 2: 要求を投稿する
+## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
 要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 
-## <a name="step-3-view-results"></a>手順 3: 結果を表示する
+## <a name="step-3-view-results"></a>手順 3:結果の表示
 
 すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。
 

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362060"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239470"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 

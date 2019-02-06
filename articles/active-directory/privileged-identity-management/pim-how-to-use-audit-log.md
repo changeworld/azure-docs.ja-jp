@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ab5a072d845bfdbaafabe1e0e7bdce2dfce6184d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a4dbce678d5d3eac106363e958636810ea9040bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188181"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180213"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールの監査履歴を表示する
 Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](../reports-monitoring/overview-reports.md)
@@ -64,4 +64,4 @@ Privileged Identity Management (PIM) の監査履歴を使用すると、すべ�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールの監査履歴を表示する](pim-resource-roles-use-the-audit-log.md)
+- [PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する](azure-pim-resource-rbac.md)

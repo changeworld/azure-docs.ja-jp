@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Dome9 Arc の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Dome9 Arc の統合 | Microsoft Docs
 description: Azure Active Directory と Dome9 Arc の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4c12875f-de71-40cb-b9ac-216a805334e5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 0b6730d6c365484dc19273069785e6824218113e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a313acecf0660e527508f28e1ea86485996cc4f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387856"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191399"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>チュートリアル: Azure Active Directory と Dome9 Arc の統合
+# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>チュートリアル:Azure Active Directory と Dome9 Arc の統合
 
 このチュートリアルでは、Dome9 Arc と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -288,7 +288,7 @@ Azure AD ユーザーが Dome9 Arc にログインできるようにするには
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Dome9 Arc] タイルをクリックすると、Dome9 Arc アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

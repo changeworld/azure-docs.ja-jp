@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 765d93780ad45eaaca61d4deb5f6607ef70ee432
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413687"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247444"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -439,6 +439,9 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 
 * 音声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 * リージョン別の提供状況については、[リージョン](regions.md#text-to-speech)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 料金は、標準音声、カスタム音声、ニューラル音声によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
 
 ### <a name="request-headers"></a>要求ヘッダー
 

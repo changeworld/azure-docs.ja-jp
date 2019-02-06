@@ -7,37 +7,37 @@ author: j-martens
 ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5634a1aae32b3e9895bf5c5b72837f29223bca27
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381835"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238613"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
- 
-この記事は、Azure Machine Learning サービスの使用時に発生したエラーや障害を見つけて修正するのに役立ちます。 
+
+この記事は、Azure Machine Learning サービスの使用時に発生したエラーや障害を見つけて修正するのに役立ちます。
 
 ## <a name="sdk-installation-issues"></a>SDK のインストールに関する問題
 
-**エラー メッセージ:"Cannot uninstall 'PyYAML'" ('PyYAML' をアンインストールできません)** 
+**エラー メッセージ:"Cannot uninstall 'PyYAML'" ('PyYAML' をアンインストールできません)**
 
 Azure Machine Learning SDK for Python:PyYAML は distutils によってインストールされるプロジェクトです。 したがって、部分的なアンインストールが行われた場合、それに属しているファイルを正確に判別できません。 このエラーを無視して SDK のインストールを続行するには、次を使用します。
-```Python 
+```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning コンピューティングの作成に関する問題
 
-まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに Azure Machine Learning コンピューティングを作成できないことがあります。 サービスにサポート要求を送るか、ポータルまたは SDK を使って新しいワークスペースを作成してすぐにブロックを解除することができます。 
+まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに Azure Machine Learning コンピューティングを作成できないことがあります。 サービスにサポート要求を送るか、ポータルまたは SDK を使って新しいワークスペースを作成してすぐにブロックを解除することができます。
 
 ## <a name="image-building-failure"></a>イメージ ビルド エラー
 
-Web サービスのデプロイ時のイメージ ビルド エラー。 回避策は、イメージ構成のために pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加することです。  
+Web サービスのデプロイ時のイメージ ビルド エラー。 回避策は、イメージ構成のために pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加することです。
 
 ## <a name="deployment-failure"></a>デプロイの失敗
 
@@ -49,10 +49,10 @@ FPGA クォータを要求して承認されるまでは、FPGA にモデルを�
 ## <a name="databricks"></a>Databricks
 
 Databricks と Azure Machine Learning の問題。
- 
+
 1. インストールするパッケージを増やすと、Databricks で AML SDK インストールのエラーが発生します。
 
-   `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、lib バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連しており、Azure ML SDK には関係ありません。他のライブラリでも発生する可能性があります。 例:
+   `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、lib バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連しており、Azure Machine Learning service SDK には関係ありません。他のライブラリでも発生する可能性があります。 例:
    ```python
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
@@ -67,7 +67,8 @@ Databricks と Azure Machine Learning の問題。
 SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の概要ページを表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合の回避策としては、[Azure portal](https://portal.azure.com) に直接移動し、ワークスペース名を検索してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
-サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 ここにログ ファイルが保存されます。
+サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。
+ここにログ ファイルが保存されます。
 
 ## <a name="resource-quotas"></a>リソース クォータ
 

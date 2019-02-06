@@ -4,22 +4,40 @@ description: Update Management、Change Tracking、および Inventory ソリュ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879642"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228782"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
 Update Management または Change Tracking や Inventory などのソリューションをオンボードする際にエラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
 ## <a name="general-errors"></a>一般エラー
+
+### <a name="missing-write-permissions"></a>シナリオ:オンボードが失敗し、ソリューションを有効にできませんというメッセージが表示されます
+
+#### <a name="issue"></a>問題
+
+仮想マシンをソリューションにオンボードしようとすると、次のメッセージが表示されます。
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、仮想マシンに対して、またはユーザーのアクセス許可が正しくないか、不足しているために発生します。
+
+#### <a name="resolution"></a>解決策
+
+仮想マシンをオンボードする正しいアクセス許可を持つことを確認します。 [マシンをオンボードするために必要なアクセス許可](../automation-role-based-access-control.md#onboarding)を確認し、再度ソリューションをオンボードしてください。
 
 ### <a name="computer-group-query-format-error"></a>シナリオ:ComputerGroupQueryFormatError
 

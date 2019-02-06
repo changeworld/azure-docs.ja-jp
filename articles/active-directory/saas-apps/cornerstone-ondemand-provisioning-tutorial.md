@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Cornerstone OnDemand を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Cornerstone OnDemand を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Cornerstone OnDemand に自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -8,21 +8,21 @@ writer: zhchia
 manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 6a6cfb2cb1fd6b70be0437c8b6fa62f50e76e53b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9f18fcb38e6e0855a00ffb454211273dfb2041a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345415"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168500"
 ---
-# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル: Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル:Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
 
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Cornerstone OnDemand に追加または Cornerstone OnDemand から削除するように構成するために、Cornerstone OnDemand と Azure Active Directory (Azure AD) で実行される手順を示すことです。
@@ -112,7 +112,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     *   **[管理パスワード]** フィールドに、管理ユーザー名に対応するパスワードを入力します。
 
-    *   **[ドメイン]** フィールドに、Cornerstone OnDemand テナントの Web サービスの URL を入力します。 たとえば、サービスは `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` にあり、Contoso の場合、ドメインは `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` です。 Web サービスの URL を取得する方法の詳細については、[こちら](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf)を参照してください。
+    *   **[ドメイン]** フィールドに、Cornerstone OnDemand テナントの Web サービスの URL を入力します。 例:サービスは `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` にあり、Contoso の場合、ドメインは `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` です。 Web サービスの URL を取得する方法の詳細については、[こちら](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf)を参照してください。
 
 6. 手順 5 のフィールドに入力したら、**[テスト接続]** をクリックして Azure AD が Cornerstone OnDemand できることを確認します。 接続できない場合は、使用中の Cornerstone OnDemand アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

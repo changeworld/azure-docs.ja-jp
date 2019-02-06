@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453929"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Azure SQL の Virtual Network サービス エンドポイントとルールを使用する
 
@@ -162,7 +162,7 @@ Azure SQL Database クエリ エディターは、Azure の VM にデプロイ�
 
 ### <a name="impact-on-data-sync"></a>データ同期への影響
 
-Azure SQL Database には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している論理サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** のアクセス許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
+Azure SQL Database には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している SQL Database サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** のアクセス許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
@@ -173,17 +173,18 @@ Azure Storage は、Azure ストレージ アカウントへの接続を制限�
 PolyBase は、Azure ストレージ アカウントから Azure SQL Data Warehouse にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 VNet に結び付けられた Azure Storage に接続する Azure SQL Data Warehouse で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、次に示す手順に従います。
 
 #### <a name="prerequisites"></a>前提条件
+
 1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
 2.  汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
 3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、**[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
  
 #### <a name="steps"></a>手順
-1.  PowerShell で、Azure Active Directory (AAD) に**論理 SQL Server を登録します**。
+1.  PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
@@ -192,7 +193,7 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
     > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
     > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
     
-1.  お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを論理 SQL Server に割り当てます。
+1.  お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを SQL Database サーバーに割り当てます。
 
     > [!NOTE] 
     > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。

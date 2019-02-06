@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と People の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と People の統合 | Microsoft Docs
 description: Azure Active Directory と People の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 7c9b6202-11dd-4bb6-a679-8fb0a7a0ef4e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: eac41b0c3def42f2417e7c033c645d8785a5f08b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c33f7fc23865169d50de73d27a0c45bb8a9aba0a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431370"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176830"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-people"></a>チュートリアル: Azure Active Directory と People の統合
+# <a name="tutorial-azure-active-directory-integration-with-people"></a>チュートリアル:Azure Active Directory と People の統合
 
 このチュートリアルでは、People と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ People で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 People で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[People テスト ユーザーの作成](#creating-a-people-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを People で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -144,7 +144,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
     ![Configure single sign-on](./media/people-tutorial/tutorial_people_003.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -180,7 +180,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="creating-a-people-test-user"></a>People テスト ユーザーの作成
 
-このセクションでは、People で Britta Simon というユーザーを作成します。 [People クライアント サポート チーム](mailto:customerservices@peoplehr.com)と協力して、People プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、People で Britta Simon というユーザーを作成します。  [People クライアント サポート チーム](mailto:customerservices@peoplehr.com) と協力して、People プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

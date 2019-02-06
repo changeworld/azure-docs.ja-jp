@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 17826bb250f1cc7c4d512f76400eeb43c2637c73
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: b88f1ff84cc26e1db88027a55b506fd37476aae5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994795"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197689"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 

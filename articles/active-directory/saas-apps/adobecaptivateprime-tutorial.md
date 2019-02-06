@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Adobe Captivate Prime の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Adobe Captivate Prime の統合 | Microsoft Docs
 description: Azure Active Directory と Adobe Captivate Prime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jeedes
-ms.openlocfilehash: bbeae2cadde3e64f17b20eafabaf5e2dbf5a5cc6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa20e4544fcd78330c0daa15b9aa058ba80af2d5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171951"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
+# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル:Azure Active Directory と Adobe Captivate Prime
 
 このチュートリアルでは、Adobe Captivate Prime と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -160,7 +160,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
   
 ### <a name="create-an-adobe-captivate-prime-test-user"></a>Adobe Captivate Prime のテスト ユーザーの作成
 
-このセクションでは、Adobe Captivate Prime で Britta Simon というユーザーを作成します。 [Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)と協力して、Adobe Captivate Prime プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Adobe Captivate Prime で Britta Simon というユーザーを作成します。  [Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)と協力して、Adobe Captivate Prime プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +197,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Adobe Captivate Prime] タイルをクリックすると、自動的に Adobe Captivate Prime アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

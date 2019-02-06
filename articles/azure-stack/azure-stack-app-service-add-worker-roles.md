@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: f4a3cd7d09c18506a85317db7a360b8de3a9630b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 06/08/2018
+ms.openlocfilehash: 26981d50239ddd7da79919291f2accd8b8ed4fc0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077024"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241944"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure Stack 上の App Service: インフラストラクチャまたは worker ロールを追加する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*  
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*  
 
 ここでは、Azure Stack インフラストラクチャおよび worker ロールでの App Service を拡大縮小する手順について説明します。 任意のサイズのアプリケーションをサポートする追加の worker ロールを作成する手順について説明します。
 

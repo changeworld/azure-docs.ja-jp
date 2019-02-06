@@ -1,22 +1,22 @@
 ---
 title: サブスクリプション キー
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で_クォータ不足_エラーが表示される場合、キーを作成して、ご使用のアプリに割り当てる必要があります。
+description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で_クォータ不足_エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473386"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239181"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
@@ -43,7 +43,7 @@ HTTP 403 または 429 の形式で_クォータ不足_エラーが表示され�
 
     ![Azure API の選択](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. Language Understanding リソースを作成したら、**[リソース管理] -> [キー]** で生成されたアクセス キーを表示できます。 キーはしないでください。 次のセクションでは、LUIS ポータルの LUIS アプリにこの新しいリソースを接続する方法を説明します。 手順 3 からは、LUIS リソースの名前が必要です。
+1. Language Understanding リソースを作成したら、**[リソース管理] -> [キー]** で生成されたアクセス キーを表示できます。 次のセクションでは、LUIS ポータルの LUIS アプリにこの新しいリソースを接続する方法を説明します。 手順 3 からは、LUIS リソースの名前が必要です。
 
     ![Azure キー](./media/luis-azure-subscription/azure-keys.png)
 
@@ -71,7 +71,7 @@ HTTP 403 または 429 の形式で_クォータ不足_エラーが表示され�
 
     ![アプリにリソースを割り当てる](./media/luis-manage-keys/assign-key.png)
 
-1. ダイアログ ボックスで、LUIS Web サイトへのログインで使用したメール アドレスに関連付けられているテナントを選択します。  
+1. ダイアログ ボックスで、LUIS Web サイトへのサインインで使用したメール アドレスに関連付けられているテナントを選択します。  
 
 1. 追加する Azure リソースに関連付けられている**サブスクリプション名**を選択します。
 

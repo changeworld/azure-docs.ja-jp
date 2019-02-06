@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と BorrowBox の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と BorrowBox の統合 | Microsoft Docs
 description: Azure Active Directory と BorrowBox の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a8ed2f04bf3004907cdd6e33bfb30260233fb101
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: efb905364e5ae4736b058472e66b3a8850a99fe3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167839"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル: Azure Active Directory と BorrowBox の統合
+# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル:Azure Active Directory と BorrowBox の統合
 
 このチュートリアルでは、BorrowBox と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -155,7 +155,7 @@ BorrowBox で Azure AD のシングル サインオンを構成してテスト�
 
     ![image](./common/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./common/d_userproperties.png)
 
@@ -194,7 +194,7 @@ BorrowBox で Azure AD のシングル サインオンを構成してテスト�
 
     ![image](./common/d_assign_user.png)
 
-4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
@@ -203,7 +203,7 @@ BorrowBox で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [BorrowBox] タイルをクリックすると、BorrowBox アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

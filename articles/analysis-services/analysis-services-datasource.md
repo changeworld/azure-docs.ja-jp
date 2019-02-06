@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188404"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299046"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -23,17 +23,20 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   はい      |    はい      |
-|Azure SQL Data Warehouse     |   はい      |   はい       |
-|Azure Blob Storage*     |   はい       |    いいえ       |
-|Azure Table Storage*    |   はい       |    いいえ       |
-|Azure Cosmos DB*     |  はい        |  いいえ         |
-|Azure Data Lake Store*     |   はい       |    いいえ       |
-|Azure HDInsight HDFS*     |     はい     |   いいえ        |
-|Azure HDInsight Spark*     |   はい       |   いいえ        |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   [はい]      |    はい      |
+|Azure SQL Data Warehouse     |   はい      |   [はい]       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   [はい]       |    いいえ       |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  [はい]        |  いいえ         |
+|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     [はい]     |   いいえ        |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   [はい]       |   いいえ        |
 ||||
 
-\* 表形式 1400 モデルのみ。
+<a name="tab1400a">1</a> 1400 以上の表形式モデルのみ。   
+<a name="azsqlmanaged">2</a> Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。   
+<a name="databricks">3</a> Spark コネクタを使用する Azure Databricks は現在サポートされていません。
+
 
 **プロバイダー**   
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
@@ -57,31 +60,31 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |データソース  |  
 |---------|---------|
 |Access データベース     |  
-|Active Directory*     |  
+|Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
 |Analytics Platform System     |  
-|Dynamics CRM*     |  
+|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Excel ブック     |  
-|Exchange*     |  
-|フォルダー*     |
-|IBM Informix* (ベータ) |
-|JSON ドキュメント*     |  
-|バイナリからの行*     | 
+|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Folder<sup>[1](#tab1400b)</sup>     |
+|IBM Informix<sup>[1](#tab1400b)</sup> (ベータ) |
+|JSON ドキュメント<sup>[1](#tab1400b)</sup>     |  
+|バイナリからの行<sup>[1](#tab1400b)</sup>     | 
 |MySQL Database     | 
-|OData フィード*     |  
+|OData フィード<sup>[1](#tab1400b)</sup>     |  
 |ODBC クエリ     | 
 |OLE DB     |   
-|Postgre SQL データベース*    | 
-|Salesforce オブジェクト* |  
-|Salesforce レポート* |
-|SAP HANA*    |  
-|SAP Business Warehouse*    |  
-|SharePoint*     |   
+|Postgre SQL データベース<sup>[1](#tab1400b)</sup>    | 
+|Salesforce オブジェクト<sup>[1](#tab1400b)</sup> |  
+|Salesforce レポート<sup>[1](#tab1400b)</sup> |
+|SAP HANA<sup>[1](#tab1400b)</sup>    |  
+|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
+|SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase データベース     |  
-|XML テーブル*    |  
+|XML テーブル<sup>[1](#tab1400b)</sup>    |  
 |||
  
-\* 表形式 1400 モデルのみ。
+<a name="tab1400b">1</a> 1400 以上の表形式モデルのみ。
 
 ## <a name="specifying-a-different-provider"></a>別のプロバイダーを指定する
 

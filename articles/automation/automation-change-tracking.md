@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433018"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301443"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -108,7 +108,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>ワイルドカード、再帰、環境設定
 
-再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 再帰を構成するときに知っておくべき基本的な情報は次のとおりです。
+再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 次の一覧に、再帰を構成するときに知っておくべき基本的な情報を示します。
 
 * 複数のファイルを追跡するにはワイルドカードが必要です。
 * ワイルドカードは、パスの最後のセグメントでしか使用できません  (例: C:\folder\\**file**、/etc/*.conf など)。
@@ -154,8 +154,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 
 現在、Change Tracking ソリューションでは、以下の問題が発生しています。
 
-* Windows 10 Creators Update および Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
-* Windows ファイルの場合、現在のところ、追跡対象のフォルダー パスに新しいファイルが追加されたタイミングは Change Tracking によって検出されません
+* Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 
@@ -188,7 +187,7 @@ Windows サービスに対する既定の収集の頻度は 30 分です。 こ�
 
 ![Windows サービスのスライダー](./media/automation-change-tracking/windowservices.png)
 
-エージェントは変更のみを追跡します。これにより、エージェントのパフォーマンスが最適化されます。 しきい値を大きすぎる値に設定すると、サービスがその元の状態に戻した場合、変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更を捕まえることができます。
+エージェントは変更のみを追跡します。これにより、エージェントのパフォーマンスが最適化されます。 大きいしきい値を設定すると、サービスがその元の状態に戻した場合に変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更を捕まえることができます。
 
 > [!NOTE]
 > エージェントは変更を 10 秒の間隔まで追跡できますが、データがポータルに表示されるにはまだ数分かかります。 ポータルに表示される期間中の変更も引き続き追跡され、ログに記録されます。
@@ -270,6 +269,41 @@ Change Tracking には次のアドレスが明示的に必要です。 このア
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|
+
+## <a name="alert-on-changes"></a>変更に関するアラート
+
+Change Tracking と Inventory の重要な機能は、構成の状態と、ハイブリッド環境の構成の状態に対する変更のアラートを生成する機能です。  
+
+次の例では、スクリーンショットで、マシン上でファイル `C:\windows\system32\drivers\etc\hosts` が変更されていることを示しています。 Hosts ファイルは Windows でホスト名を IP アドレスに解決して DNS にも優先するようにするために使用され、それによって接続の問題や、悪質な Web サイトや危険な Web サイトへのトラフィックのリダイレクトが生じる可能性があるため、このファイルは重要です。
+
+![hosts ファイルの変更を示すグラフ](./media/automation-change-tracking/changes.png)
+
+この変更をさらに分析するには、**[Log Analytics]** をクリックしてログ検索に移動します。 ログ検索で、クエリ `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` を使って Hosts ファイルに対するコンテンツの変更を検索します。 このクエリは、完全修飾パスに "hosts" という単語が含まれているファイルのうち、ファイル コンテンツの変更が含まれている変更を検索します。 パスの部分を完全修飾された形式 (`FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"` など) に変更することで、特定のファイルを確認することもできます。
+
+クエリが目的の結果を返したら、ログ検索エクスペリエンスで **[新しいアラート ルール]** ボタンをクリックしてアラート作成ページを開きます。 このエクスペリエンスには Azure portal の **Azure Monitor** から移動することもできます。 アラート作成エクスペリエンスで、クエリをもう一度確認し、アラート ロジックを変更します。 この場合は、環境内のすべてのマシンで 1 つでも変更が検出されたら、アラートがトリガーされるようにします。
+
+![hosts ファイルに対する変更を追跡するための変更クエリを示すイメージ](./media/automation-change-tracking/change-query.png)
+
+条件ロジックを設定した後、トリガーされるアラートに対応するアクションを実行するアクション グループを割り当てます。 この場合は、電子メールの送信と ITSM チケットの作成を設定しています。  Azure 関数、Automation Runbook、Webhook、またはロジック アプリのトリガーなど、役に立つその他の多くのアクションも実行できます。
+
+![変更に関するアラートに対するアクション グループの構成のイメージ](./media/automation-change-tracking/action-groups.png)
+
+すべてのパラメーターとロジックを設定した後、アラートを環境に適用できます。
+
+### <a name="alert-suggestions"></a>アラートに関する推奨事項
+
+Hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
+
+|Query  |説明  |
+|---------|---------|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|システムの重要なサービスに対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|システムの重要なサービスに対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|ロックダウンされたソフトウェア構成が必要な環境で役立ちます|
+|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|古いソフトウェア バージョンや非準拠のソフトウェア バージョンがインストールされているマシンを確認するのに役立ちます。 変更ではなく、最後に報告された構成の状態を報告します。|
+|ConfigurationChange <br>&#124; where RegistryKey == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 重要なウイルス対策キーに対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where RegistryKey contains "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| ファイアウォール設定に対する変更を追跡するのに役立ちます|
 
 ## <a name="next-steps"></a>次の手順
 

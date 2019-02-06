@@ -13,16 +13,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037220"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239266"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 [特権エンドポイント](azure-stack-privileged-endpoint.md)を使用すると、Azure Stack 更新プログラムの実行の進行状況を監視し、Azure Stack ポータルが使用できなくなった場合に、失敗した更新プログラムの実行を成功した最後の手順から再開することができます。  Azure Stack ポータルの使用は、Azure Stack で更新プログラムを管理するための推奨される方法です。
 

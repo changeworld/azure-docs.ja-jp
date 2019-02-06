@@ -5,16 +5,16 @@ description: Custom Translator で設定を管理し、ワークスペースを�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 7b6dd0ec271d335d1055381a8cb7256600be283f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626913"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227082"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/02/2019
+ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024945"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244251"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 

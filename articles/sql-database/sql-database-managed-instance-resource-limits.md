@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450883"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219721"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -39,6 +39,7 @@ Azure SQL Database Managed Instance は、2 つのハードウェアの世代 (G
 | ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、高速 eNVM SSD、仮想コア=1 LP (ハイパー スレッド) |
 | Compute | 8、16、24 の仮想コア | 8、16、24、32、40、64、80 の仮想コア |
 | メモリ | 仮想コアあたり 7 GB | 仮想コアあたり 5.1 GB |
+| インメモリ OLTP メモリ | 仮想コアあたり 3 GB | 仮想コアあたり 2.6 GB |
 | 最大ストレージ容量 (汎用) |  8 TB | 1 TB (テラバイト) |
 | 最大ストレージ容量 (Business Critical) | 8 TB | コアの数に応じて 1 TB、2 TB 、または 4 TB |
 

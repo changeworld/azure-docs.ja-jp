@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025098"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221200"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -157,7 +157,7 @@ Azure で提供される名前解決を使用している場合、Azure の動�
 
 必要に応じて、PowerShell または API を使用して、内部 DNS サフィックスを調べることができます。
 
-* Azure Resource Manager デプロイ モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces/get)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI コマンドを通じてサフィックスを取得することができます。
+* Azure Resource Manager デプロイ モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI コマンドを通じてサフィックスを取得することができます。
 * クラシック デプロイ モデルの場合、[Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼び出しまたは [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) コマンドレットを通じてサフィックスを取得することができます。
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。 DNS 解決では次を行う必要があります。
@@ -195,6 +195,11 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 > 
 
 Azure Resource Manager デプロイ モデルを使用している場合は、仮想ネットワークとネットワーク インターフェイス用の DNS サーバーを指定できます。 詳細については、[仮想ネットワークの管理](manage-virtual-network.md)に関するページと[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページを参照してください。
+
+> [!NOTE]
+> 仮想ネットワークのカスタムの DNS サーバーを選択する場合は、DNS サーバーの少なくとも 1 つの IP アドレスを指定する必要があります。そうしないと、仮想ネットワークは構成を無視し、代わりに Azure で提供される DNS を使用します。
+> 
+> 
 
 クラシック デプロイ モデルを使用している場合は、Azure Portal または[ネットワーク構成ファイル](https://msdn.microsoft.com/library/azure/jj157100)を使用して仮想ネットワークの DNS サーバーを指定できます。 クラウド サービスでは、DNS サーバーは、[サービス構成ファイル](https://msdn.microsoft.com/library/azure/ee758710)または PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) を使用して指定できます。
 

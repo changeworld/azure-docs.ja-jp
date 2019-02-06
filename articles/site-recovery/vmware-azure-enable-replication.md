@@ -1,17 +1,17 @@
 ---
 title: Azure Site Recovery による Azure への VMware ディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用した Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します。
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424156"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226335"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -86,18 +86,20 @@ VMware 仮想マシンをレプリケートする場合:
 
 1. **[設定]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択します。 **[要点]** ページにマシンの設定と状態に関する情報が表示されます。
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
-3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、Azure の要件に準拠するように名前を変更します。
+3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、複数の VM を変更することができます。
+* Azure VM 名 - 必要に応じて、Azure の要件に準拠するように名前を変更します
+* ターゲット VM のサイズまたは種類 - 既定の VM サイズは、ソース VM のサイズに基づいて選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 詳細については、[Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) と [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) のディスクのサイズと IOPS を参照してください。
 
     ![コンピューティングとネットワークのプロパティ](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  フェールオーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
-5. マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+*  リソース グループ - フェールオーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
+* 可用性セット - マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
 
     * 指定されたリソース グループに属している可用性セットだけが一覧表示されます。  
     * 異なる仮想ネットワークに属するマシンが同じ可用性セットに属することはできません。
     * 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。
-5. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
-6. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
+4. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
+5. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
 
 ### <a name="configure-networks-and-ip-addresses"></a>ネットワークと IP アドレスを構成する
 
@@ -120,7 +122,7 @@ Azure ハイブリッド特典の詳細については[こちら](https://aka.ms
 
 ## <a name="common-issues"></a>一般的な問題
 
-* 各ディスクのサイズは 1 TB 未満である必要があります。
+* 各ディスクのサイズは 4 TB 未満である必要があります。
 * OS ディスクは、ダイナミック ディスクではなく、ベーシック ディスクである必要があります。
 * 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB 未満である必要があります。
 
@@ -128,4 +130,5 @@ Azure ハイブリッド特典の詳細については[こちら](https://aka.ms
 
 保護を完了し、マシンが保護された状態になったら、[フェールオーバー](site-recovery-failover.md)を実行して、アプリケーションが Azure で動作するかどうかを確認できます。
 
-保護を無効にする場合は、[登録と保護の設定をクリーンアップ](site-recovery-manage-registration-and-protection.md)する方法を確認します。
+* 保護を無効にする場合は、[登録と保護の設定をクリーンアップ](site-recovery-manage-registration-and-protection.md)する方法を確認してください。
+* [PowerShell を使用して仮想マシンのレプリケーションを自動化する](vmware-azure-disaster-recovery-powershell.md)方法を確認してください

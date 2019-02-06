@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: be3e408b3f5f6393786a35108202d51ae871ea3b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679734"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296972"
 ---
 # <a name="api-reference"></a>API リファレンス
 
@@ -28,5 +28,6 @@ Azure Face API は、顔検出および顔認識のアルゴリズムを提供�
 - [LargeFaceList 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): [類似アイテムの検索](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar)の LargeFaceList の管理に使用します。
 - [PersonGroup 人管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の PersonGroup の人の顔の管理に使用します。
 - [PersonGroup 管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): [識別](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify)の PersonGroup データセットの管理に使用します。
+- [スナップショット管理 API](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot):サブスクリプション間のデータ移行用のスナップショットを管理するために使用します。
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

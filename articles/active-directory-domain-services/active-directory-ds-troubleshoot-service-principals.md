@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: サービス プリンシパル構成のトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:サービス プリンシパル構成のトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services 向けのサービス プリンシパル構成のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2c39e8f172283f512037e0d991b2c22eb816c8f6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035037"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191331"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なサービス プリンシパル構成のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "51035037"
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>アラート AADDS102: サービス プリンシパルが見つかりません
 
-**アラート メッセージ:** "*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
+**アラート メッセージ:**"*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
 
 [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)は、Microsoft がマネージド ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。
 

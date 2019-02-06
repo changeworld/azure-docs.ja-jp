@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: ce16ab3b723b9a6c87c7b980e3cc76c389609da6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847910"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247818"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 

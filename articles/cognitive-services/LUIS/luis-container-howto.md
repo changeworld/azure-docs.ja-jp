@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463288"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296904"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -40,11 +40,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 お客様のオンプレミス上のコンピューターを使用できるほか、次のような Azure 内の Docker ホスティング サービスを使用することもできます。
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* [Azure Stack](../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」をご覧ください。
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -52,9 +48,11 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 |Setting| 最小値 | 推奨 |
 |-----------|---------|-------------|
-|コア<BR>`--cpus`|1 コア<BR>2.6 ギガヘルツ (GHz) 以上|1 コア|
+|コア<BR>`--cpus`|1 コア|1 コア|
 |メモリ<BR>`--memory`|2 GB|4 GB|
 |1 秒あたりのトランザクション数<BR>(TPS)|20 TPS|40 TPS|
+
+各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上の必要があります。
 
 `--cpus` と `--memory` の設定は、`docker run` コマンドの一部として使用されます。
 
@@ -66,17 +64,12 @@ LUIS コンテナーを実行するには、以下が必要です。
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
+
 上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) に関するページを参照してください。
 
-> [!TIP]
-> [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
@@ -325,14 +318,7 @@ LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint
 
 ## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
 
-コンテナーには、エンドポイントの完全なドキュメント一式のほか、`Try it now` 機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりすることができます。 クエリから戻ると、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 
-
-> [!TIP]
-> [OpenAPI 仕様](https://swagger.io/docs/specification/about/)は、`/swagger` という相対 URI からご覧いただけます。コンテナーでサポートされる API 操作が説明されています。 例: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>課金
 

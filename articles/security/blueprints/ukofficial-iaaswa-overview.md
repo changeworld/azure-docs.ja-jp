@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413398"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239921"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -204,7 +204,7 @@ Storage
 
 **懸念事項の分離**: この参照アーキテクチャは、VNet を管理操作用とビジネス操作用に分離します。 分離された VNet とサブネットにより、「[Microsoft クラウド サービスとネットワーク セキュリティ](https://docs.microsoft.com/azure/best-practices-network-security)」のベスト プラクティスに従ってネットワーク セグメント間に NSG を使用して、トラフィックの受信と送信の制限などのトラフィック管理を実行できます。
 
-**リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
+**リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
 
 **アクセス制御の制限**: [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) を使用して、アプリケーション内のリソースを管理します。[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を使用すると、RBAC では DevOps が各階層に対して実行できる操作を制限できます。 権限を付与する場合は、[最小限の特権の原則](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)を使用します。 構成の変更がすべて計画されたものであることを確認するため、すべての管理操作をログに記録し、定期的な監査を実行します。
 

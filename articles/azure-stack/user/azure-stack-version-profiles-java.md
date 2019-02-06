@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886826"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246366"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Azure Stack での Java による API バージョンのプロファイルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack Resource Manager 向けの Java SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、コンピューティング、ネットワーク、ストレージ、アプリ サービス、および [KeyVault](../../key-vault/key-vault-whatis.md) が含まれます。 Java SDK は、.java ファイルに適切なモジュールを読み込む Pom.xml ファイルに依存関係を含めることで、API プロファイルを組み込みます。 ただし、依存関係として複数のプロファイル (**2018-03-01-hybrid** など) を追加したり、Azure プロファイルとして **latest** を追加したりできます。 これらの依存関係を使用すると適切なモジュールが読み込まれるため、リソースの種類を作成するときに、それらのプロファイルから使用したい API バージョンを選択することができます。 これにより、Azure Stack の最新の API バージョンに対する開発の際に、Azure で最新バージョンを使用することができます。 Java SDK を使用すると、真のハイブリッド クラウド開発者エクスペリエンスを実現できます。 Java SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
 
@@ -98,7 +99,7 @@ Azure Stack で Azure Java SDK を使用するには、次の値を指定した�
 | サブスクリプション ID           | AZURE_SUBSCRIPTION_ID      | [<span class="underline">サブスクリプション ID</span>](../azure-stack-plan-offer-quota-overview.md#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。                |
 | クライアント シークレット             | AZURE_CLIENT_SECRET        | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット 。                                                                                                                                   |
 | Resource Manager エンドポイント | ARM_ENDPOINT              | 「[<span class="underline">Azure Stack Resource Manager エンドポイント</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)」をご覧ください。 |
-| Location                  | RESOURCE_LOCATION    | Azure Stack 用のローカル                                                                                                                                                                                                |
+| 場所                  | RESOURCE_LOCATION    | Azure Stack 用のローカル                                                                                                                                                                                                |
 
 Azure Stack のテナント ID を確認するには、[こちら](../azure-stack-csp-ref-operations.md)の手順に従ってください。 環境変数を設定するには、次の手順に従います。
 
@@ -149,9 +150,9 @@ Microsoft Azure Resource Manager は、管理者が Azure リソースのデプ�
 
 ## <a name="existing-api-profiles"></a>既存の API プロファイル
 
-1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Azure Stack 用にビルドされた最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**:Azure Stack 用に作成された最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
 
-2.  **com.microsoft.azure**: すべてのサービスの最新バージョンで構成されているプロファイル。 すべてのサービスの最新バージョンを使用してください。
+2.  **com.microsoft.azure**:すべてのサービスの最新バージョンで構成されているプロンプトファイル。 すべてのサービスの最新バージョンを使用してください。
 
 Azure Stack および API プロファイルについて詳しくは、「[API プロファイルの概要](../user/azure-stack-version-profiles.md#summary-of-api-profiles)」をご覧ください。
 

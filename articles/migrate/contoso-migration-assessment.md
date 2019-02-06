@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853818"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300406"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso の移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -121,7 +121,7 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - バージョン 6.5、6.0、または 5.5 を実行しているオンプレミスの vCenter Server インスタンス。
 - vCenter Server の読み取り専用アカウント、またはそれを作成するためのアクセス許可。
 - .ova テンプレートを使用して vCenter Server インスタンス上に VM を作成するためのアクセス許可。
-- バージョン 5.0 以降を実行している少なくとも 1 つの ESXi ホスト。
+- バージョン 5.5 以降を実行している少なくとも 1 つの ESXi ホスト。
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
@@ -287,13 +287,7 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
     **例**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.15)。
-
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. 生成されたハッシュは、[こちら](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery)に示されているハッシュ値と一致する必要があります。
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044282"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454099"
 ---
-# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Azure Cosmos DB リソースのコストを予約容量で最適化する
+# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
 Azure Cosmos DB の予約容量は、リソースの料金 1 年分または 3 年分を前払いすることで経費を節減できるサービスです。 Azure Cosmos DB の予約容量では、Cosmos DB リソース用にプロビジョニングされたスループットで割引を受けることができます。 リソースとはたとえば、データベースやコンテナー (テーブル、コレクション、およびグラフ) です。
 

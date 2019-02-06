@@ -1,0 +1,164 @@
+---
+title: ナレッジ ベースを改善する - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: ''
+author: diberry
+manager: cgronlun
+displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
+ms.service: cognitive-services
+ms.subservice: qna-maker
+ms.topic: article
+ms.date: 01/29/2019
+ms.author: diberry
+ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463737"
+---
+# <a name="use-active-learning-to-improve-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
+
+アクティブ ラーニングを使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。 それらの提案を検討し、既存の質問に追加するか却下します。 
+
+ナレッジ ベースが自動的に変更されることはありません。 変更を有効にするためには、提案を受け入れる必要があります。 これらの提案によって質問が追加されますが、既存の質問の変更や削除は行われません。
+
+## <a name="active-learning"></a>アクティブ ラーニング
+
+QnA Maker は、暗黙的および明示的フィードバックによって、新しい質問のバリエーションを学習します。
+ 
+* 暗黙的フィードバック – ランカーは、ユーザーの質問に、スコアが非常に近い回答が複数ある状況を認識して、これをフィードバックと見なします。 
+* 明示的フィードバック – ナレッジ ベースから、スコアのバリエーションがほとんどない回答が複数返されると、クライアント アプリケーションはユーザーに、どの質問が正しい質問であるかを尋ねます。 ユーザーの明示的フィードバックは、Train API を使用して QnA Maker に送信されます。 
+
+どちらの方法でも、クラスター化されている類似のクエリがランカーに提供されます。
+
+類似のクエリがクラスター化されると、QnA Maker はナレッジ ベース デザイナーに、承認または却下するユーザー ベースの質問を提案します。
+
+## <a name="how-active-learning-works"></a>アクティブ ラーニングの動作方法
+
+アクティブ ラーニングは、特定のクエリに対して QnA Maker によって返される、上位いくつかの回答のスコアに基づいてトリガーされます。 スコアの違いが狭い範囲内にある場合、そのクエリは、回答の各候補についてあり得る_提案_であると見なされます。 
+
+すべての提案は類似度によって一緒にクラスター化され、エンドユーザーによる特定のクエリの頻度に基づいて、代わりの質問に対する上位の提案が表示されます。 アクティブ ラーニングでは、エンドポイントが、妥当な量で多様性のある使用状況クエリを受け取っている場合、可能な限り最適な提案が示されます。
+
+## <a name="upgrade-version-to-use-active-learning"></a>アクティブ ラーニングを使用するバージョンへのアップグレード
+
+アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)します。 
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+アクティブ ラーニングを使用する場合のベスト プラクティスについては、[ベスト プラクティス](../Concepts/best-practices.md#active-learning)に関するページを参照してください。
+
+## <a name="score-proximity-between-knowledge-base-questions"></a>ナレッジ ベースの質問間の近さのスコア付け
+
+質問のスコアの信頼度が高い (80% など) 場合、アクティブ ラーニング用に適すると見なされるスコアの範囲は広く、およそ 10% 以内です。 信頼度スコアが低下すると (40% など)、スコアの範囲も狭まり、約 4% 以内となります。 
+
+近さを判定するアルゴリズムは、単純な計算ではありません。 前述の例の範囲は、固定的なものではなく、アルゴリズムの影響を理解する指針としてのみ使用する必要があります。
+
+## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
+
+アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示しました。 
+
+1. アクティブ ラーニングを有効にするには、QnA Maker ポータルの右上隅にある、**[Service Settings] (サービス設定)** に移動します。  
+
+    ![サービスの設定ページでアクティブ ラーニングを切り替える](../media/improve-knowledge-base/Endpoint-Keys.png)
+
+
+1. QnA Maker サービスを見つけて **[Active Learning] (アクティブ ラーニング)** を切り替えます。 
+
+    [![サービスの設定ページで [Active Learning] (アクティブ ラーニング) を切り替える](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+
+    **[Active Learning] (アクティブ ラーニング)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジから定期的に新しい質問が提案されます。 設定を再度切り替えると、**[Active Learning] (アクティブ ラーニング)** を無効にできます。
+
+## <a name="add-active-learning-suggestion-to-knowledge-base"></a>アクティブ ラーニングの提案をナレッジ ベースに追加する
+
+1. 提案された質問を表示するには、ナレッジ ベースの **[Edit] (編集)** ページで **[Show Suggestions] (提案の表示)** を選択します。 
+
+    [![サービスの設定ページで [Show Suggestions] (提案の表示) ボタンを切り替える](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+
+1. **[Filter by Suggestions] (提案別にフィルターを適用)** を選択し、質問と回答のペアでナレッジ ベースをフィルター処理すると、提案だけが表示されます。
+
+    [![サービスの設定ページで提案によってフィルター処理し、質問/回答のペアだけを表示する](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+
+1.  提案を含む各質問のセクションには、質問を受け入れる `✔` チェックマークまたは却下する `x` チェック マークが付いた新しい質問が表示されます。 質問を追加するにはチェック マークを選択します。 
+
+    [![サービスの設定ページで [Active Learning] (アクティブ ラーニング) を切り替える](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+
+    **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択し、_すべての提案_を追加または削除できます。
+
+1. **[Save and train] (保存してトレーニング)** を選択し、ナレッジ ベースに変更を保存します。
+
+
+## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>似たスコアを持つ質問が複数ある場合に最適な選択肢を特定する
+
+ある質問のスコアが別の質問のスコアに近すぎる場合、クライアント アプリケーション開発者は、明確化を求めることを選択できます。
+
+### <a name="use-the-top-property-in-the-generateanswer-request"></a>GenerateAnswer 要求で最上位のプロパティを使用する
+
+回答のために QnA Maker に質問が送信されたときには、JSON 本文の一部で、上位の回答を複数返すことができます。
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
+
+チャット ボットなどのクライアント アプリケーションが応答を受け取ったときに、上位 3 つの質問が返されます。
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "Wi-Fi Direct Status Indicator"
+            ],
+            "answer": "**Wi-Fi Direct Status Indicator**\n\nStatus bar icons indicate your current Wi-Fi Direct connection status:  \n\nWhen your device is connected to another device using Wi-Fi Direct, '$  \n\n+ •+ ' Wi-Fi Direct is displayed in the Status bar.",
+            "score": 74.21,
+            "id": 607,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        },
+        {
+            "questions": [
+                "Wi-Fi - Connections"
+            ],
+            "answer": "**Wi-Fi**\n\nWi-Fi is a term used for certain types of Wireless Local Area Networks (WLAN). Wi-Fi communication requires access to a wireless Access Point (AP).",
+            "score": 74.15,
+            "id": 599,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        },
+        {
+            "questions": [
+                "Turn Wi-Fi On or Off"
+            ],
+            "answer": "**Turn Wi-Fi On or Off**\n\nTurning Wi-Fi on makes your device able to discover and connect to compatible in-range wireless APs.  \n\n1.  From a Home screen, tap ::: Apps > e Settings .\n2.  Tap Connections > Wi-Fi , and then tap On/Off to turn Wi-Fi on or off.",
+            "score": 69.99,
+            "id": 600,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        }
+    ]
+}
+```
+
+### <a name="client-application-follow-up-when-questions-have-similar-scores"></a>質問のスコアが類似しているときのクライアント アプリケーションのフォロー アップ
+
+クライアント アプリケーションは、ユーザーが自分の意図を最も適切に表している質問を選択するためのオプションを示して、すべての質問を表示します。 
+
+ユーザーが既存の質問の 1 つを選択すると、 ユーザーのフィードバックが QnA Maker の [Train](http://www.aka.ms/activelearningsamplebot) API に送信され、アクティブ ラーニングのフィードバック ループが続行されます。 
+
+```http
+POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
+Authorization: EndpointKey <endpoint-key>
+Content-Type: application/json
+{"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
+```
+
+アクティブ ラーニングを使用する方法については、[Azure Bot C# の例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)で詳細を説明しています
+
+## <a name="next-steps"></a>次の手順
+ 
+> [!div class="nextstepaction"]
+> [QnA Maker API の使用](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

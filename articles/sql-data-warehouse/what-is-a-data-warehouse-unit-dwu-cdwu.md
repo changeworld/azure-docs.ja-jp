@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c1a1da9fd0fff09bab027c4b4cc4e3085c5439f2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411118"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299896"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。 

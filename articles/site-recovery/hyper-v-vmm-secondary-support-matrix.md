@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cd26eef236063eff72d909c0cd86c7f9485bfc4d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793293"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210035"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -62,7 +62,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 ゲスト VM - NIC チーミング | いいえ 
 ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Gues VM - Windows/Linux - 静的 IP アドレス | はい
+Guest VM - Windows/Linux - 静的 IP アドレス | [はい]
 ゲスト VM - マルチ NIC | はい
 
 

@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/20/2018
+ms.date: 01/28/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: daf7e9ff536894995e880be66d47d5fbf68bf30e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c0c019f46683063c91215fed1ce0ef653025c25e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54363911"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205103"
 ---
 | Category | データ ストア | ソースとしてサポート | シンクとしてサポート | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -48,7 +48,8 @@ ms.locfileid: "54363911"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (プレビュー)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[MDX を介した SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  |

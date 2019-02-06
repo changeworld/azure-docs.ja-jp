@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976734"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215301"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -139,7 +139,7 @@ App Service for Linux で実行される Java アプリケーションは、他�
 
 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)に関する記事の手順に従います。
 
- Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable)を使用して、使い慣れた Spring Security の注釈と API を使用してアプリケーションをセキュリティで保護することができます。
+Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable)を使用して、使い慣れた Spring Security の注釈と API を使用してアプリケーションをセキュリティで保護することができます。 `application.properties` ファイルで最大ヘッダー サイズを大きくしてください。 `16384` の値をお勧めします。 
 
 ### <a name="configure-tlsssl"></a>TLS/SSL を構成する
 

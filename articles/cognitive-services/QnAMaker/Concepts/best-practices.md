@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d51cbc7bd88fd9f4baf066210e7b7da8cd175cd6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4adadf4951ffbb31a354284340a3716b194d864d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603125"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219279"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
@@ -95,6 +95,10 @@ QnA Maker の照合/優先度付けアルゴリズムはユーザーからの問
 
 ## <a name="collaborate"></a>協力
 QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
+
+## <a name="active-learning"></a>アクティブ ラーニング
+
+[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。
 
 ## <a name="next-steps"></a>次の手順
 

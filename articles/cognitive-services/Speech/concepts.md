@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219772"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -76,7 +76,7 @@ Microsoft Speech Service はこれらの状態の一部に関わっているた�
 Microsoft 音声認識サービスでは、開発者が音声認識機能をアプリに追加するための手段として、2 つの方法が提供されています。
 
 - [REST API](GetStarted/GetStartedREST.md): アプリからサービスへの HTTP 呼び出しを使用して音声認識を行います。
-- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md): 高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。
+- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md):高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。
 
 | ユース ケース | [REST API](GetStarted/GetStartedREST.md) | [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|

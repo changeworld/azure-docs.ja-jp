@@ -1,15 +1,21 @@
 ---
 title: アルゴリズムの使用例
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
 description: アルゴリズムの使用例を交えながら機械学習の基礎をわかりやすく概説します。 ダウンロード可能なインフォグラフィックで、機械学習に関するさまざまな疑問点に答えます。
 services: machine-learning
-ms.service: machine-learning
-ms.component: studio
+ms.service: machine-learning
+ms.subservice: studio
 ms.topic: article
 author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
+ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295578"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>ダウンロード可能なインフォグラフィック:機械学習の基礎とアルゴリズムの使用例
 機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。 機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。

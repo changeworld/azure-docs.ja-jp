@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853240"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246536"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -186,8 +187,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
 - [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
-
-これらの脆弱性の詳細については、上記のリンクをクリックするか、Microsoft サポート技術情報の記事 [4467684](https://support.microsoft.com/help/4467684) を参照してください。
+これらの脆弱性の詳細については、上記のリンクをクリックするか、Microsoft サポート技術情報の記事 [4478877](https://support.microsoft.com/help/4478877) を参照してください。
 
 ## <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
@@ -353,6 +353,8 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
     その他のオプションについては、Azure Stack ではソース タグとしてサポートされません。 同様に、送信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** を宛先として選択した場合も、**[Source Tag]\(ソース タグ\)** のリストに同じオプションが表示されます。 有効なオプションは、前述のリストで説明した **[Source Tag]\(ソース タグ\)** と同じものに限られます。
 
 - **New-AzureRmIpSecPolicy** PowerShell コマンドレットの `DHGroup` パラメーターでは、**DHGroup24** 設定がサポートされません。
+
+- ネットワーク セキュリティ グループ (NSG) は、Azure Stack ではグローバル Azure と同様に機能しません。 Azure では、1 つの NSG ルールに複数のポートを設定できます (ポータル、PowerShell、Resource Manager テンプレートを使用)。 Azure Stack では、ポータルを介して、1 つの NSG ルールに複数のポートを設定できません。 この問題を回避するには、Resource Manager テンプレートを使用して、これらの追加ルールを設定します。
 
 ### <a name="infrastructure-backup"></a>Infrastructure Backup
 

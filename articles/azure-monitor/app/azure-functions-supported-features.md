@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 9ad0579ff9c25753b1e4816b80948b4d8d1232f7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082341"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185815"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
@@ -39,7 +39,8 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | はい               | 
 | | | | 
 | **サポートされる機能**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | はい             | はい               | 
+| &bull; QuickPulse/LiveMetrics       | はい             | [はい]               | 
+| &nbsp;&nbsp;&nbsp;&mdash; コントロール チャネルの保護|                 | [はい]               | 
 | &bull; サンプリング                     | はい             | はい               | 
 | &bull; ハートビート                   |                 | はい               | 
 | | | | 
@@ -48,8 +49,12 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
 | **構成可否**                      |                   |                   |           
-| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
+| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | [はい]                   | 
 
+
+## <a name="live-metrics--secure-control-channel"></a>Live Metrics とコントロール チャネルの保護
+
+指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 シークレット API キーを使用してチャネルをセキュリティで保護できます。 手順については、「[コントロール チャネルの保護](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)」を参照してください。
 
 ## <a name="sampling"></a>サンプリング
 

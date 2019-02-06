@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Boxcryptor の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Boxcryptor の統合 | Microsoft Docs
 description: Azure Active Directory と Boxcryptor の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jeedes
-ms.openlocfilehash: ec9ebb5673a5bca9c5eda2b08baa1a825edcefe4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 43b761897d3db49da88bdb88f6ff01821bff8e58
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424872"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181097"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル: Azure Active Directory と Boxcryptor の統合
+# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル:Azure Active Directory と Boxcryptor の統合
 
 このチュートリアルでは、Boxcryptor と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -127,7 +127,7 @@ Boxcryptor で Azure AD のシングル サインオンを構成してテスト�
 1. **Boxcryptor** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**SAML シングル サインオン サービス URL**、および **SAML エンティティ ID** を [Boxcryptor サポート チーム](mailto:support@boxcryptor.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -164,7 +164,7 @@ Boxcryptor で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-boxcryptor-test-user"></a>Boxcryptor テスト ユーザーの作成
 
-このセクションでは、Boxcryptor で Britta Simon というユーザーを作成します。 [Boxcryptor サポート チーム](mailto:support@boxcryptor.com)と協力して、Boxcryptor プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは Boxcryptor プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Boxcryptor で Britta Simon というユーザーを作成します。  [Boxcryptor サポート チーム](mailto:support@boxcryptor.com) と協力して、Boxcryptor プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加してください。 ドメインがチームによって追加された場合、ユーザーは Boxcryptor プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -201,7 +201,7 @@ Boxcryptor で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Boxcryptor のタイルをクリックすると、Boxcryptor アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

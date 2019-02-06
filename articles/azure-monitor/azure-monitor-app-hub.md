@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: false
 title: Azure Monitor Application Insights のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-description: TBD
+description: Azure Monitor Application Insights では、コード レベルの詳細なアプリケーション パフォーマンスの監視を提供します。
 services: application-insights
 author: mrbullwinkle
 manager: carmonmills
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 713368ab02e72ad0b8e51d0bb312a20bd2df690c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f2c6475d67958e8ccd3e46598a46cc8bfee9ef54
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830118"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300678"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -220,7 +220,7 @@ ms.locfileid: "54830118"
                                                         <h3>プライバシー、セキュリティ、使用状況、コスト</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">個人データの処理</a><br>
-                                                            <a href="./app/data-retention-privacy.md">データの収集、保持、保存</a><br>
+                                                            <a href="./app/data-retention-privacy.md">データの収集、保持、&amp;保存</a><br>
                                                             <a href="./app/resources-roles-access-control.md">ロールベースのアクセス</a><br>
                                                             <a href="./app/ip-addresses.md">IP アドレス &amp; ファイアウォール例外</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用量と推定コスト</a>

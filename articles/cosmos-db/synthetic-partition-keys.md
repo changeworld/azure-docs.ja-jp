@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB での合成パーティション キー
+title: データとワークロードを均等に分散するために Azure Cosmos DB に合成パーティション キーを作成します。
 description: Azure Cosmos DB コンテナーで合成パーティション キーを使用する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: mjbrown
-ms.openlocfilehash: 37d220a13aec99de94afa3357db1462d11f8662c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 987bfe023e7355a2780af57dc5e5cac3129a5ca1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043370"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454150"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
 

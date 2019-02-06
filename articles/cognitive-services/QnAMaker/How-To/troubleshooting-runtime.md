@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 23216df139ba3bc4023d3a01c8e7b9914cccfba5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e607ca75f12cf81ac8ca177083ba8678aed02207
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261527"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223801"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>QnA Maker のサービスとランタイムをサポートするためのトラブルシューティングのヒント
 QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。
@@ -54,4 +54,4 @@ QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker API を使用する](./upgrade-qnamaker-service.md)
+> [アクティブ ラーニングを使用してナレッジ ベースを改善する](./improve-knowledge-base.md)

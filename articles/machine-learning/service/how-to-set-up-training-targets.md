@@ -7,37 +7,38 @@ author: heatherbshapiro
 ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246332"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250709"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
-Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-target)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  
+Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-target)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
 Azure Machine Learning SDK、Azure portal、または Azure CLI を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
  
-この記事では、さまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
+この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
 1. まだない場合は、コンピューティング先を__作成__します。
 2. コンピューティング先をワークスペースに__アタッチ__します。
 3. スクリプトに必要な Python 環境とパッケージ依存関係が含まれるように、コンピューティング先を__構成__します。
 
+
 >[!NOTE]
 > この記事のコードは、Azure Machine Learning SDK バージョン 1.0.6 を使用してテストされました。
 
-## <a name="supported-compute-targets"></a>サポートされているコンピューティング ターゲット
+## <a name="compute-targets-for-training"></a>モデル トレーニング用のコンピューティング先
 
 Azure Machine Learning service では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
 
-|コンピューティング ターゲット| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | パイプライン親和性|
+|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | パイプライン親和性|
 |----|:----:|:----:|:----:|:----:|
 |[ローカル コンピューター](#local)| 可能性あり | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning コンピューティング](#amlcompute)| ✓ | ✓ | ✓ | ✓ |

@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8ec9e5a50f2350a17d5845f5c52954df10fa1d10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856827"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176014"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ ms.locfileid: "54856827"
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" />
+      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -125,6 +125,7 @@ ms.locfileid: "54856827"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Scope (スコープ) | はい | シングル サインオン動作の範囲です。 可能な値: `Suppressed`、`Tenant`、`Application`、または`Policy`。 `Suppressed` の値は、動作が抑制されることを示します。 たとえば、シングル サインオン セッションの場合、ユーザーのセッションは維持されず、ユーザーは常に ID プロバイダーを選択するように求められます。 `TrustFramework` 値では、信頼フレームワークのすべてのポリシーに動作が適用されることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
+| KeepAliveInDays | [はい] | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](active-directory-b2c-reference-kmsi-custom.md)方法に関するページを参照してください。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
