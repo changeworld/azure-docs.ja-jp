@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242162"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478340"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -54,7 +54,7 @@ ms.locfileid: "51242162"
 | **ストレージ サイズ** | 単一データベース/エラスティック プール | 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
 | | マネージド インスタンス  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | 現在不明 | 5000 IOPS (最大 200,000 IOPS)|
-| | マネージド インスタンス | ファイル サイズに依存 | 該当なし | マネージド インスタンス: ファイル サイズに依存|
+| | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
 |**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 - 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 
@@ -73,11 +73,11 @@ ms.locfileid: "51242162"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>現在ハイパースケールをサポートしているリージョン
 
-現在、単一データベースでハイパースケールを利用できるリージョンは、米国西部1、米国西部2、米国東部1、米国中部、西ヨーロッパ、北ヨーロッパ、英国西部、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部です。
+現在、ハイパースケールは次のリージョンの単一データベースで使用できます。米国西部1、米国西部2、米国東部1、米国中部、西ヨーロッパ、北ヨーロッパ、英国西部、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部。
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>論理サーバーごとに複数のハイパースケール データベースを作成できるか
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL Database サーバーごとに複数のハイパースケール データベースを作成できるか
 
-はい。 論理サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、「[SQL Database resource limits for single and pooled databases on a logical server](sql-database-resource-limits-logical-server.md)」(論理サーバー上の単一データベースおよびプール データベースの SQL Database のリソース制限) をご覧ください。
+はい。 SQL Database サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、[SQL Database サーバー上の単一データベースおよびプールされたデータベースの SQL Database のリソース制限](sql-database-resource-limits-database-server.md)に関するページご覧ください。
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>ハイパースケール データベースのパフォーマンス特性とは
 
@@ -98,7 +98,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 ## <a name="deep-dive-questions"></a>具体的な質問
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>論理サーバー上でハイパースケールと単一データベースを混在できるか
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>SQL Database サーバー上でハイパースケールと単一データベースを混在できるか
 
 はい、できます。
 
@@ -235,7 +235,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (通常の単一データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 Polybase を実行するには、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を使用するか、[SQL 用 Spark コネクタ](sql-database-spark-connector.md)を使用して Spark ジョブを [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) で実行します。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
-単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一の Azure SQL Database と比較して、新しいログ アーキテクチャのためにデータ取り込み率が向上しています。
+単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一データベースと比較して、ログ アーキテクチャが新しくなっているため、データ取り込み率が向上しています。
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>SQL Database ハイパースケールは取り込むデータ容量を増やすために複数のノードをプロビジョニングできるか
 

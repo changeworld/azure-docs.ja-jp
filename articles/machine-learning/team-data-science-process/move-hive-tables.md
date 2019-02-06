@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390938"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477857"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -25,12 +25,12 @@ ms.locfileid: "54390938"
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」をご覧ください。
-* HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、「 [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md)」をご覧ください。
-* クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../../storage/common/storage-introduction.md)」をご覧ください。
+* HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、[HDInsight でのクラスターの設定](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+* クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、[Apache Hadoop クラスターの管理](../../hdinsight/hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
-[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../data-science-virtual-machine/setup-virtual-machine.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
+[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../../machine-learning/data-science-virtual-machine/overview.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが **圧縮されていない** 表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
@@ -38,7 +38,7 @@ ms.locfileid: "54390938"
 
 * **NYC タクシー乗車データ** ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) を [NYC タクシー乗車データ](http://www.andresmh.com/nyctaxitrips) します。
 * **解凍** します。
-* **Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする方法** に関する記事に記載されている手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルを [アップロード](customize-hadoop-cluster.md) します。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
+* これらを Azure ストレージ アカウントの既定値 (または適切なコンテナー) に**アップロード**します。このようなアカウント用のオプションは、「[Azure HDInsight クラスターで Azure Storage を使用する](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)」トピックに示されています。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
 
 ## <a name="submit"></a>Hive クエリを送信する方法
 Hive クエリは、以下のものを使用して送信できます。

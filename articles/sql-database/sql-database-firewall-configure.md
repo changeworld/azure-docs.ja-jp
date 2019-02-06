@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 0579746bc4dc554fd7e082f6258f2c13ce22f69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035272"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477677"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database と SQL Data Warehouse のファイアウォール規則
 
@@ -47,11 +47,11 @@ Azure SQL サーバーにある 1 つのデータベースにのみ選択的に�
 
 - **サーバー レベルのファイアウォール規則:**
 
-  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 これらの規則は、 **マスター** データベースに保存されます。 サーバー レベルのファイアウォール規則を構成するには、ポータルまたは Transact-SQL ステートメントを使用します。 Azure Portal または PowerShell を使用してサーバーレベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。 Transact-SQL を使用してサーバーレベルのファイアウォール規則を作成するには、サーバーレベルのプリンシパル ログインまたは Azure Active Directory 管理者として SQL Database インスタンスに接続する必要があります (つまり、サーバーレベルのファイアウォール規則は、最初に Azure レベルのアクセス許可を持つユーザーが作成する必要があります)。
+  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ SQL Database サーバー内のすべてのデータベースにアクセスできるようになります。 これらの規則は、 **マスター** データベースに保存されます。 サーバー レベルのファイアウォール規則を構成するには、ポータルまたは Transact-SQL ステートメントを使用します。 Azure Portal または PowerShell を使用してサーバーレベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。 Transact-SQL を使用してサーバーレベルのファイアウォール規則を作成するには、サーバーレベルのプリンシパル ログインまたは Azure Active Directory 管理者として SQL Database インスタンスに接続する必要があります (つまり、サーバーレベルのファイアウォール規則は、最初に Azure レベルのアクセス許可を持つユーザーが作成する必要があります)。
 
 - **データベース レベルのファイアウォール規則:**
 
-  これらの規則により、クライアントは、同じ論理サーバー内の特定の (セキュリティで保護された) データベースにアクセスできるようになります。 これらの規則は、データベースごと (**master** データベースを含む) に作成することができ、個々のデータベースに格納されます。 master データベースとユーザー データベースのデータベースレベルのファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバーレベルのファイアウォール規則を構成した後でのみ、作成および管理できます。 サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。 データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。 データベース レベルのファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
+  これらの規則により、クライアントは、同じ SQL Database サーバー内の特定の (セキュリティで保護された) データベースにアクセスできるようになります。 これらの規則は、データベースごと (**master** データベースを含む) に作成することができ、個々のデータベースに格納されます。 master データベースとユーザー データベースのデータベースレベルのファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバーレベルのファイアウォール規則を構成した後でのみ、作成および管理できます。 サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。 データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。 データベース レベルのファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
 
 ### <a name="recommendation"></a>推奨
 
@@ -94,7 +94,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 
 ## <a name="manage-firewall-rules-using-the-azure-portal"></a>Azure Portal を使ってファイアウォール規則を管理する
 
-Azure ポータルでサーバー レベルのファイアウォール規則を設定するには、Azure SQL Database または Azure Database 論理サーバーの [概要] ページに移動します。
+Azure portal でサーバー レベルのファイアウォール規則を設定するには、ご利用の Azure SQL Database の [概要] ページまたはご利用の SQL Database サーバーの [概要] ページに移動します。
 
 > [!TIP]
 > チュートリアルについては、「[Create a DB using the Azure portal (Azure Portal を使用した DB の作成)](sql-database-get-started-portal.md)」を参照してください。
@@ -165,7 +165,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> クイック スタートを念頭に置いた PowerShell の例については、「[DB の作成 - PowerShell](sql-database-powershell-samples.md)」と「[Create a single database and configure a firewall rule using PowerShell (PowerShell を使用して単一のデータベースを作成し、ファイアウォール規則を構成する)](scripts/sql-database-create-and-configure-database-powershell.md)」を参照してください。
+> クイック スタートのコンテキストでの PowerShell の例については、[DB の作成 - PowerShell](sql-database-powershell-samples.md) に関するページと [PowerShell を使用した単一データベースの作成と SQL Database の規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)に関するページを参照してください
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Azure CLI を使ってファイアウォール規則を管理する
 
@@ -185,7 +185,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> クイック スタートを念頭に置いた Azure CLI の例については、「[DB の作成 - Azure CLI](sql-database-cli-samples.md)」と「[CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md)」を参照してください。
+> クイック スタートのコンテキストでの Azure CLI の例については、[DB の作成 - Azure CLI](sql-database-cli-samples.md) に関するページと [Azure CLI を使用した単一データベースの作成と SQL Database のファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-cli.md)に関するページを参照してください
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>REST API を使ってファイアウォール規則を管理する
 

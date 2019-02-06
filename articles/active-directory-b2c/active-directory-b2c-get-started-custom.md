@@ -7,21 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852305"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298741"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要   
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[カスタム ポリシー](active-directory-b2c-overview-custom.md)は、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 この記事では、電子メール アドレスとパスワードを使用してローカル アカウント サインアップまたはサインインをサポートするカスタム ポリシーを作成します。 また、ID プロバイダー (Facebook や Azure Active Directory など) を追加するために環境を準備します。
+[カスタム ポリシー](active-directory-b2c-overview-custom.md)は、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 この記事では、電子メール アドレスとパスワードを使用してローカル アカウント サインアップまたはサインインをサポートするカスタム ポリシーを作成します。 また、ID プロバイダーを追加するために環境を準備します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,9 +31,6 @@ ms.locfileid: "54852305"
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
 
@@ -72,7 +69,7 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-1. Azure ポータルの左上隅にある**すべてのサービス**を選択し、**Azure Active Directory** を検索して選択し、**アプリの登録**を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、**[アプリの登録]** を検索して選択します。
 2. **[新しいアプリケーションの登録]** を選択します。
 3. **名前**には、`IdentityExperienceFramework`を入力します。
 4. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
@@ -105,8 +102,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 各スターター パックには以下が含まれています。
 
 - 基本ファイルです。 ベースにはいくつかの変更が必要です。
-* 拡張ファイルです。  このファイルは、ほとんどの構成変更が行われる場所です。
-* 証明書利用者ファイルです。 ご使用のアプリケーションによって呼び出される、タスク固有のファイルです。
+- 拡張ファイルです。  このファイルは、ほとんどの構成変更が行われる場所です。
+- 証明書利用者ファイルです。 ご使用のアプリケーションによって呼び出される、タスク固有のファイルです。
 
 >[!NOTE]
 >XML エディターが検証をサポートする場合、スターター パックのルート ディレクトリにある TrustFrameworkPolicy_0.3.0.0.xsd という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
@@ -117,17 +114,14 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. SocialAndLocalAccounts フォルダーで、`yourtenant.onmicrosoft.com`をテナントの名前に置き換えたすべてのファイルを編集します。 たとえば、「 `contosoTenant.onmicrosoft.com` 」のように入力します。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
+2. SocialAndLocalAccounts フォルダーで、`yourtenant`をテナントの名前に置き換えたすべてのファイルを編集します。 たとえば、「 `contosoTenant.onmicrosoft.com` 」のように入力します。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>カスタム ポリシーにアプリケーション ID を追加します。
 
 拡張子ファイル *TrustFrameworkExtensions.xml*  にアプリケーション ID を追加します。
 
 1. *TrustFrameworkExtensions.xml* ファイルを開き、要素`<TechnicalProfile Id="login-NonInteractive">`を検索します。
-2. `IdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。 `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Proxy Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。 次の例は、変更後の **login-NonInteractive** 技術プロファイルを示しています。
-
-    ![アプリケーション ID](./media/active-directory-b2c-get-started-custom/login-NonInteractive.png)
-
+2. `IdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。 `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Proxy Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。
 3. 拡張ファイルを保存します。
 
 ## <a name="upload-the-policies"></a>ポリシーをアップロードします。

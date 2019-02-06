@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231013"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239776"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -76,12 +76,12 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 | Attribute | 説明 |
 | --- | --- |
 | <service-name> |ストレージ サービスの名前。 例: blob、table、または queue |
-| YYYY |ログの 4 桁表記の年。 例: 2011 |
-| MM |ログの 2 桁表記の月。 例: 07 |
-| DD |ログの 2 桁表記の月。 例: 07 |
-| hh |ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: 18 |
+| YYYY |ログの 4 桁表記の年。 例: 2011。 |
+| MM |ログの 2 桁表記の月。 例: 07。 |
+| DD |ログの 2 桁表記の月。 例: 07。 |
+| hh |ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: 18. |
 | MM |ログの開始時刻 (分) を示す 2 桁の数字。 現在のバージョンの Storage Analytics ではこの値はサポートされず、常に 00 になります。 |
-| <counter> |1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は 000000 です。 例: 000001 |
+| <counter> |1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は 000000 です。 例: 000001。 |
 
 以上の例をすべて組み合わせたサンプルのログ名は、次のようになります。
 
@@ -99,8 +99,8 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 | Attribute | 説明 |
 | --- | --- |
 | LogType |読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。 例 1: write 例 2: read,write 例 3: read,write,delete |
-| StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z |
-| EndTime |ログに含まれる最も新しいエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:22:09Z |
+| StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z。 |
+| EndTime |ログに含まれる最も新しいエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:22:09Z。 |
 | LogVersion |ログのフォーマットのバージョン。 現在サポートされている値: 1.0 |
 
 以上の例を使用したサンプル メタデータを次に示します。
@@ -135,9 +135,9 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 容量データはストレージ アカウントの Blob service に対して毎日記録され、2 つのテーブル エンティティが書き込まれます。 一方のエンティティは、ユーザー データの統計情報です。もう一方のエンティティは、Storage Analytics によって使用される `$logs` BLOB コンテナーに関する統計情報です。 `$MetricsCapacityBlob` テーブルには、次の統計情報が含まれています。
 
-* **Capacity**: ストレージ アカウントの Blob service によって使用されているストレージの量 (バイト単位)。
-* **ContainerCount**: ストレージ アカウントの Blob service 内の BLOB コンテナーの数。
-* **ObjectCount**: ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
+* **Capacity**:ストレージ アカウントの Blob service によって使われているストレージの量 (バイト単位)。
+* **ContainerCount**:ストレージ アカウントの Blob service 内のコンテナーの数。
+* **ObjectCount**:ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
 
 容量メトリックの詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)」をご覧ください。
 
@@ -146,7 +146,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 | メトリック レベル | テーブル名 | サポートされているバージョン |
 | --- | --- | --- |
-| 時間単位のメトリック、1 次拠点 |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |2013-08-15 よりも前のバージョンのみ。 これらの名前はまだサポートされていますが、下に示すテーブルを使用するように切り替えることをお勧めします。 |
+| 時間単位のメトリック、1 次拠点 |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/>  $MetricsTransactionsQueue |2013-08-15 よりも前のバージョンのみ。 これらの名前はまだサポートされていますが、下に示すテーブルを使用するように切り替えることをお勧めします。 |
 | 時間単位のメトリック、1 次拠点 |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |2013-08-15 を含むすべてのバージョン。 |
 | 分単位のメトリック、1 次拠点 |$MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue |2013-08-15 を含むすべてのバージョン。 |
 | 時間単位のメトリック、2 次拠点 |$MetricsHourSecondaryTransactionsBlob  <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |2013-08-15 を含むすべてのバージョン。 読み取りアクセスの地理冗長レプリケーションを有効にする必要があります。 |

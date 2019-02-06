@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight クラスターを自動的にスケール調整する
+title: Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 description: HDInsight の自動スケール機能を使用してクラスターを自動的にスケール調整する
 services: hdinsight
 author: hrasheed-msft
@@ -9,33 +9,35 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd1ffcfd915fe9ece683ec88d27f54b3a9214621
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475681"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 
 Azure HDInsight のクラスター自動スケール機能は、事前に定義された範囲内の負荷に基づいて、クラスター内のワーカー ノードの数を自動的にスケールアップおよびスケールダウンします。 新しい HDInsight クラスターの作成中に、ワーカー ノードの最小数と最大数を設定できます。 自動スケールはその後、分析負荷のリソース要件を監視し、それに応じてワーカー ノードの数をスケールアップまたはスケールダウンします。 この機能に対して追加料金は発生しません。
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-### <a name="create-cluster-with-azure-portal"></a>Azure Portal を使用してクラスターを作成する
+### <a name="create-a-cluster-with-the-azure-portal"></a>Azure portal でのクラスターの作成
 
 > [!Note]
 > 自動スケールは現在、Azure HDInsight Hive、MapReduce、および Spark クラスター バージョン 3.6 でのみサポートされています。
 
-「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従い、手順 5 の「**クラスター サイズ**」に達したら、下に示すように **[Worker node Autoscale (preview)] (ワーカー ノードの自動スケール (プレビュー))** を選択します。 
+自動スケーリング機能を有効にするには、通常のクラスターの作成プロセスの一部として、次の操作を行ってください。
 
-![[Worker node Autoscale (preview)] (ワーカー ノードの自動スケール (プレビュー)) オプションを有効にする](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+1. **[簡易作成]** ではなく、**[カスタム (サイズ、設定、アプリ)]** を選択します。
+2. **カスタム**の手順 5 (**クラスター サイズ**) で、**[ワーカー ノードの自動スケーリング]** チェックボックスをオンにします。
+3. 以下の項目に目的の値を入力します。  
 
-このオプションをオンにすると、次の内容を指定できます。
+    * **ワーカー ノードの初期の数**  
+    * ワーカー ノードの**最小**数  
+    * ワーカー ノードの**最大**数  
 
-* ワーカー ノードの初期の数
-* ワーカー ノードの最小数
-* ワーカー ノードの最大数
+![[Worker node Autoscale (preview)] (ワーカー ノードの自動スケール (プレビュー)) オプションを有効にする](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は 1 以上である必要があります。
 
@@ -43,12 +45,14 @@ Azure HDInsight のクラスター自動スケール機能は、事前に定義�
 
 サブスクリプションには、リージョンごとに容量のクォータがあります。 ヘッド ノードのコアの総数とワーカー ノードの最大数の合計が容量のクォータを超えることはできません。 ただし、このクォータはソフト制限です。それを簡単に増やすためのサポート チケットをいつでも作成できます。
 
-> [!Note]
+> [!Note]  
 > 合計のコア クォータ制限を超えた場合は、'最大ノードがこのリージョン内の使用可能なコア数を超えました。別のリージョンを選択するか、またはサポートに連絡してクォータを増やしてください。' というエラー メッセージが表示されます。
 
-### <a name="create-cluster-with-an-resource-manager-template"></a>Resource Manager テンプレートを使用してクラスターを作成する
+Azure portal を使用した HDInsight クラスターの作成に関する詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。  
 
-Resource Manager テンプレートを使用して HDInsight クラスターを作成する場合は、"computeProfile" "worker node" セクションに次の設定を追加する必要があります。
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Resource Manager テンプレートでクラスターを作成する
+
+Azure Resource Manager テンプレートで HDInsight クラスターを作成するには、以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加します。
 
 ```json
 {                            
@@ -72,7 +76,9 @@ Resource Manager テンプレートを使用して HDInsight クラスターを�
 }
 ```
 
-### <a name="enable-and-disabling-autoscale-for-a-running-cluster"></a>実行中のクラスターの自動スケールの有効化および無効化
+Resource Manager テンプレートを使用してクラスターを作成する方法の詳細については、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。  
+
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>実行中のクラスターの自動スケーリングの有効化および無効化
 
 実行中のクラスターの自動スケールの有効化は、プライベート プレビュー中はサポートされません。 クラスターの作成中に有効にする必要があります。
 
@@ -80,7 +86,7 @@ Resource Manager テンプレートを使用して HDInsight クラスターを�
 
 ## <a name="monitoring"></a>監視
 
-クラスター メトリックの一部としてクラスターのスケールアップおよびスケールダウンの履歴を表示できます。 過去の 1 日、1 週間、またはそれより長い期間中のすべてのスケール アクションを一覧表示できます。
+クラスター メトリックの一部として、クラスターのスケールアップおよびスケールダウンの履歴を表示できます。 また、過去の 1 日、1 週間、またはそれより長い期間中のすべてのスケール アクションを一覧表示することもできます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -104,7 +110,7 @@ Resource Manager テンプレートを使用して HDInsight クラスターを�
 * 保留中の CPU の合計が空き CPU の合計を超えて 1 分以上が経過した。
 * 保留中のメモリの合計が空きメモリの合計を超えて 1 分以上が経過した。
 
-現在の CPU とメモリの要件を満たすには N 個の新しいワーカー ノードが必要であることを計算した後、N 個の新しいワーカー ノードを要求してスケールアップ要求を発行します。
+現在の CPU とメモリの要件を満たすために必要な新しいワーカー ノードの特定の数が計算された後、その数の新しいワーカー ノードを追加するスケールアップ要求が発行されます。
 
 ### <a name="cluster-scale-down"></a>クラスターのスケールダウン
 
@@ -113,7 +119,7 @@ Resource Manager テンプレートを使用して HDInsight クラスターを�
 * 保留中の CPU の合計が空き CPU の合計を下回って 10 分以上が経過した。
 * 保留中のメモリの合計が空きメモリの合計を下回って 10 分以上が経過した。
 
-ノードごとの AM コンテナーの数および現在の CPU とメモリの要件に基づいて、自動スケールは、どのノードが削除の潜在的な候補であるかを指定して N 個のノードを削除するための要求を発行します。 既定では、1 サイクルで 2 つのノードが削除されます。
+ノードごとの AM コンテナーの数および現在の CPU とメモリの要件に基づいて、自動スケーリングにより、どのノードが削除の潜在的な候補であるかが指定され、特定の数のノードを削除するための要求が発行されます。 既定では、1 サイクルで 2 つのノードが削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

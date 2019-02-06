@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43311029"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474175"
 ---
 # <a name="migrate-your-data"></a>データの移行
 さまざまなソースのデータを、さまざまなツールを使って SQL Data Warehouse に移動することができます。  この目的を果たすうえで、ADF コピー、SSIS、bcp はすべて使用できます。 ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。 これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -157,7 +157,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 3. Azure BLOB ストレージ コンテナーにデータを AZCopy します
 4. PolyBase を使用して SQL Data Warehouse にデータをロードします
 
-詳細なドキュメントは次から入手できます: [AZCopy][AZCopy]。
+完全なドキュメントは次から入手できます。[AZCopy][AZCopy]。
 
 ## <a name="optimizing-data-export"></a>データ エクスポートの最適化
 PolyBase によって生じる要件にエクスポートが準拠していることを確認するほかに、データのエクスポートを最適化してプロセスをさらに改善することもできます。

@@ -11,17 +11,18 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/18/2018
-ms.openlocfilehash: 399a0e6dd2b5c83a599aa50973417ba5a9be708d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/25/2019
+ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813357"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478358"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
 Azure SQL Database のインメモリ テクノロジにより、アプリケーションのパフォーマンスを向上させることができ、また、データベースのコストを削減できる可能性があります。 Azure SQL Database のインメモリ テクノロジを使用すれば、さまざまなワークロードでパフォーマンスの向上を実現できます。
+
 - **トランザクション** (オンライン トランザクション処理 (OLTP))。ほとんどの要求でより小さなデータ セットの読み取りや更新を行います (CRUD 操作など)。
 - **分析** (オンライン分析処理 (OLAP))。ほとんどのクエリにレポート目的の複雑な計算が含まれます。一定数のクエリでは、既存のテーブルに対するデータの読み込みや追加が行われたり (一括読み込みと呼ばれる)、テーブルからのデータの削除が行われたりします。 
 - **混合** (ハイブリッド トランザクション/分析処理 (HTAP))。OLTP と OLAP の両方のクエリが同じデータ セットで実行されます。
@@ -43,13 +44,13 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
 
 - インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
-    - DTU とは "*データベース トランザクション ユニット*" のことで、リソース使用量の測定値が含まれます。
+
+  - DTU とは "*データベース トランザクション ユニット*" のことで、リソース使用量の測定値が含まれます。
 - サンプル ワークロードでリソースの消費量が大幅に向上したことが、[Azure SQL Database のインメモリ OLTP に関するビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)で示されています。
-    - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+  - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
->  
->  インメモリ テクノロジは、Premium および Business Critical レベルの Azure SQL データベースと Premium エラスティック プールで使用できます。
+> インメモリ テクノロジは、Premium および Business Critical レベルの Azure SQL データベースと Premium エラスティック プールで使用できます。
 
 次のビデオでは、Azure SQL Database でのインメモリ テクノロジ使用によるパフォーマンス向上の可能性について説明します。 表示されるパフォーマンスの向上は、常にさまざまな要因 (ワークロードとデータの性質、データベースのアクセス パターンなど) に依存していることに注意してください。
 
@@ -58,11 +59,13 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 >
 
 この記事では、Azure SQL Database に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。
+
 - これらのテクノロジがストレージに及ぼす影響と、データ サイズの上限について説明します。
 - これらのテクノロジを活用するデータベースを、異なる価格レベルの間で移動する際の管理方法を説明します。
 - インメモリ OLTP と列ストア インデックスを Azure SQL Database で使用する方法を示す 2 つのサンプルを確認します。
 
 詳細については、次を参照してください。
+
 - [インメモリ OLTP の概要と使用シナリオ](https://msdn.microsoft.com/library/mt774593.aspx) (開始するためのお客様の導入事例と情報への参照)
 - [インメモリ OLTP のドキュメント](https://msdn.microsoft.com/library/dn133186.aspx)
 - [列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)
@@ -71,6 +74,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 ## <a name="in-memory-oltp"></a>インメモリ OLTP
 
 インメモリ OLTP テクノロジでは、メモリ内のすべてのデータを保持することで、非常に高速なデータ アクセス操作が提供されます。 また、特殊なインデックス、クエリのネイティブ コンパイル、ラッチフリーのデータ アクセスを使用して、OLTP ワークロードのパフォーマンスを向上させます。 インメモリ OLTP データを整理する方法には、次の 2 つがあります。
+
 - **メモリ最適化行ストア**形式。行はそれぞれ別のメモリ オブジェクトになります。 これは、高パフォーマンス OLTP ワークロード用に最適化されたクラシック インメモリ OLTP 形式です。 メモリ最適化行ストア形式で使用できるメモリ最適化テーブルには、次の 2 種類があります。
   - *持続的テーブル* (SCHEMA_AND_DATA)。メモリに配置された行が、サーバーの再起動後に保持されます。 この種のテーブルは、インメモリ最適化の他の利点がある従来の行ストア テーブルのように動作します。
   - *非持続的テーブル* (SCEMA_ONLY)。再起動後に行は保持されません。 この種のテーブルは一時データ用に設計されています (たとえば、一時テーブルの置換など)。つまり、データを一部の永続化されたテーブルに移動する前に迅速に読み込む必要があるテーブル (ステージング テーブルと呼ばれる) です。
@@ -137,6 +141,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 インメモリ列ストア テクノロジを使用することで、テーブルに大量のデータを格納してクエリを実行することができます。 列ストア テクノロジでは列ベースのデータ ストレージ形式とバッチ クエリ処理が使用され、OLAP ワークロードでは、従来の行指向型ストレージと比較して最大で 10 倍のクエリ パフォーマンスが得られます。 また、非圧縮データのサイズと比較して最大で 10 倍のデータ圧縮を実現できます。
 データの整理に使用できる列ストア モデルには、次の 2 種類があります。
+
 - **クラスター化列ストア**。列形式で、テーブル内のすべてのデータが整理されます。 このモデルでは、テーブル内のすべての行が列形式で配置され、データを高圧縮し、テーブルでの高速な分析クエリとレポートを実行することができます。 データの性質によっては、データのサイズが 10 倍から 100 倍小さくなる可能性があります。 また、クラスター化列ストア モデルでは、大量のデータを高速で取り込むことができます (一括読み込み)。これは、100,000 行を超えるデータの大きなバッチがディスクに格納される前に圧縮されるためです。 このモデルは、従来のデータ ウェアハウス シナリオに最適です。 
 - **非クラスター化列ストア**。データは従来の行ストア テーブルに格納され、インデックスは、分析クエリに使用される列ストア形式となります。 このモデルではハイブリッド トランザクション分析処理 (HTAP) が可能であり、従来のワークロードでパフォーマンスのリアルタイム分析を実行できます。 OLTP クエリは、小さな行セットにアクセスするために最適化されている行ストア テーブルで実行されますが、OLAP クエリは、スキャンと分析により適した選択肢である列ストア インデックスで実行されます。 Azure SQL Database クエリ オプティマイザーでは、クエリに基づき、動的に行ストアまたは列ストアを選択します。 非クラスター化列ストア インデックスではデータのサイズは小さくなりません。これは、元のデータセットが変更されずに元の行ストア テーブルで保持されるためです。 しかし、追加の列ストア インデックスのサイズは、同等の B ツリー インデックスより 1 桁小さくする必要があります。
 
@@ -144,6 +149,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 > メモリ内列ストア テクノロジでは、メモリでの処理に必要なデータのみが保持されますが、メモリに収まりきらないデータはディスク上に格納されます。 そのため、メモリ内列ストア構造のデータの量が、使用可能なメモリの量を超える場合があります。 
 
 テクノロジについての詳細なビデオ:
+
 - [列ストア インデックス:インメモリ分析のビデオ (Ignite 2016 から)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列ストア インデックスのデータ サイズとストレージ
@@ -170,39 +176,28 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx)
-
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](sql-database-in-memory-oltp-migration.md)
-
 - インメモリ OLTP の[インメモリ OLTP ストレージの監視](sql-database-in-memory-oltp-monitoring.md)
-
 - [Azure SQL Database でインメモリ機能を試す](sql-database-in-memory-sample.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-#### <a name="deeper-information"></a>詳細情報
+### <a name="deeper-information"></a>詳細情報
 
 - [Learn how Quorum doubles key database’s workload while lowering DTU by 70% with In-Memory OLTP in SQL Database (クォーラムが SQL Database でインメモリ OLTP を使用して DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする方法について)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
-
 - [Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-
 - [インメモリ OLTP の詳細情報](https://msdn.microsoft.com/library/dn133186.aspx)
-
 - [列ストア インデックスの詳細情報](https://msdn.microsoft.com/library/gg492088.aspx)
-
 - [リアルタイム運用分析の詳細情報](https://msdn.microsoft.com/library/dn817827.aspx)
-
 - (インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されている) [一般的なワークロード パターンと移行の考慮事項](https://msdn.microsoft.com/library/dn673538.aspx)に関するホワイトペーパーを参照してください
 
-#### <a name="application-design"></a>アプリケーションの設計
+### <a name="application-design"></a>アプリケーションの設計
 
 - [インメモリ OLTP (インメモリ最適化)](https://msdn.microsoft.com/library/dn133186.aspx)
-
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](sql-database-in-memory-oltp-migration.md)
 
-#### <a name="tools"></a>ツール
+### <a name="tools"></a>ツール
 
 - [Azure Portal](https://portal.azure.com/)
-
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

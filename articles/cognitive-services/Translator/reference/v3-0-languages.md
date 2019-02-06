@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129643"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470928"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -97,11 +97,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `translation` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストの翻訳先の言語または元の言語を識別します。 キーに関連付けられる値は、言語を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
   例を示します。
           
@@ -123,21 +123,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `transliteration` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストをある書記体系から別の書記体系に変換できる言語を示します。 キーに関連付けられる値は、言語とそのサポートされる書記体系を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `scripts`: 変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
+  * `scripts`:変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
 
-    * `code`: 書記体系を識別するコード。
+    * `code`:書記体系を識別するコード。
 
-    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
+    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
 
-    * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+    * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-    * `toScripts`: テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
+    * `toScripts`:テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
 
   例を示します。
 
@@ -188,21 +188,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `dictionary` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、代替翻訳と逆翻訳が利用可能な言語を識別します。 値は、ソース言語と利用可能な翻訳があるターゲット言語を記述する JSON オブジェクトです。
 
-  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
+  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
 
-  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-  * `translations`: 代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
+  * `translations`:代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
 
-    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
+    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
 
-    * `nativeName`: ターゲット言語にネイティブなロケールのターゲット言語の表示名。
+    * `nativeName`:ターゲット言語にネイティブなロケールのターゲット言語の表示名。
 
-    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
     
-    * `code`: ターゲット言語を識別する言語コード。
+    * `code`:ターゲット言語を識別する言語コード。
 
   例を示します。
 

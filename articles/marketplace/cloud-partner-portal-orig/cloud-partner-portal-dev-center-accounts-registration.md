@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254470"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168245"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================
@@ -106,7 +106,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
    ![国/リージョンの選択](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"販売元" の国: Azure Marketplace でサービスを販売するには、登録済みエンティティが、ドロップダウン リストに表示される承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳細については、Marketplace 参加ポリシーに関するページをご覧ください。
+    >"販売元" の国:Azure Marketplace でサービスを販売するには、登録済みエンティティが、ドロップダウン リストに表示される承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳細については、Marketplace 参加ポリシーに関するページをご覧ください。
 
 5. [アカウントの種類] として **[会社]** を選択し、**[次へ]** を選択します。
 
@@ -181,7 +181,8 @@ Microsoft デベロッパー センターは、会社情報を登録するため
     - **[次へ]** を選択します。
 4.  税金の詳細を入力し、**[次へ]** をクリックします。
 
->[警告!] Microsoft デベロッパー センター アカウントで銀行口座と税金の情報の入力を完了することなく、商用オファーを運用環境に移行することはできません。
+>[!WARNING]
+>Microsoft デベロッパー センター アカウントで銀行口座と税金の情報の入力を完了することなく、商用オファーを運用環境に移行することはできません。
 
 ### <a name="developer-center-registration-issues"></a>デベロッパー センターの登録に関する問題
 

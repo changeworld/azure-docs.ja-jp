@@ -3,7 +3,7 @@ title: Azure Batch プールの Azure ファイル共有 | Microsoft Docs
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 88d7c0d033d7b517a396df27468de8be7ae20be9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811790"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469568"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -51,7 +51,7 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
-* **ユーザー名**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
+* **[ユーザー名]**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
 * **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。

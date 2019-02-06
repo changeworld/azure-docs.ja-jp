@@ -4,17 +4,17 @@ description: Azure Policy でゲスト構成を使用して、Azure の仮想マ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856402"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295170"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -61,7 +61,17 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |オペレーティング システム|検証ツール|メモ|
 |-|-|-|
 | Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
-| Linux|[Chef InSpec](https://www.chef.io/inspec/)| ゲスト構成拡張機能によって、Ruby、Python がインストールされます。 |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| ゲスト構成拡張機能によって、Ruby、Python がインストールされます。 |
+
+### <a name="validation-frequency"></a>検証の頻度
+
+ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。
+ゲスト割り当てを受信すると、設定が 15 分間隔でチェックされます。
+監査が完了するとすぐに、結果がゲスト構成リソース プロバイダーに送信されます。
+ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。
+これにより、Azure Policy が Azure Resource Manager のプロパティを評価します。
+オンデマンドのポリシー評価により、ゲスト構成リソース プロバイダーから、最新の値が取得されます。
+ただし、仮想マシン内の構成の新しい監査はトリガーされません。
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
@@ -90,7 +100,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成によって実行される各監査には、**DeployIfNotExists** と **AuditIfNotExists** の 2 つのポリシー定義が必要です。 **DeployIfNotExists** は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
+ゲスト構成によって実行される各監査には、**DeployIfNotExists** と **Audit** の 2 つのポリシー定義が必要です。 **DeployIfNotExists** は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
 
 **DeployIfNotExists** ポリシー定義が検証し、次の項目を修正します。
 
@@ -99,14 +109,14 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
   -  **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
   - 必要とする場合、[検証ツール](#validation-tools)と依存関係をインストールする
 
- **DeployIfNotExists** が準拠している場合は、 **AuditIfNotExists** ポリシー定義はローカル検証ツールを使用して、割り当てられた構成の割り当てが準拠しているかどうかを決定します。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
+**DeployIfNotExists** が準拠している場合は、 **Audit** ポリシー定義はローカル検証ツールを使用して、割り当てられた構成の割り当てが準拠しているかどうかを判断します。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
 
 Azure Policy は、ゲスト構成リソースプロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/getting-compliance-data.md)を参照してください。
 
 > [!NOTE]
-> 各ゲスト構成定義のために、 **DeployIfNotExists** と **AuditIfNotExists** ポリシーの両方が存在する必要があります。
+> 各ゲスト構成定義に、**DeployIfNotExists** と **Audit** ポリシーの両方が存在する必要があります。
 
-割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows のために **DeployIfNotExists** と **AuditIfNotExists** の 6  つのペアがあって、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
+割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows 用に **DeployIfNotExists** と **Audit** の 6 つのペアがあり、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
 
 ## <a name="next-steps"></a>次の手順
 

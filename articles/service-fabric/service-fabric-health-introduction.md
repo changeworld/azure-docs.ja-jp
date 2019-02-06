@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215232"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194289"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
@@ -46,7 +46,7 @@ Service Fabric のコンポーネントは、この豊富な機能を持つ正�
 正常性エンティティと階層により、クラスターとアプリケーションのレポート作成、デバッグ、および監視が効果的に行えます。 正常性モデルにより、クラスター内にある数多くの変動要素の正常性を正確かつ *詳細に* 表すことができます。
 
 ![正常性エンティティ。][1]
-正常性エンティティは、親子関係に基づいて、階層に整理されます。
+ 正常性エンティティは、親子関係に基づいて、階層に整理されます。
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
 
@@ -233,7 +233,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 * 最後の X 分間に変更された条件のみに基づいてアラートを出す。 指定した時刻より前に既にエラーの状態にあったレポートについては、既に通知されているため、無視できます。
 * プロパティが警告とエラーの状態を行き来している場合、異常とする (つまり、OK ではない) 時間を決定します。 たとえば、プロパティが正常ではない状態で 5 分経過するとアラートを出す場合は、(HealthState != Ok and Now - LastOkTransitionTime > 5 minutes) のように記述できます。
 
-## <a name="example-report-and-evaluate-application-health"></a>例: アプリケーションの正常性をレポートおよび評価する
+## <a name="example-report-and-evaluate-application-health"></a>例:アプリケーションの正常性をレポートおよび評価する
 次の例では、PowerShell を使用して、**fabric:/WordCount** というアプリケーションの正常性レポートを **MyWatchdog** というソースから送信します。 正常性レポートには、エラーの正常性状態の正常性プロパティ "availability" に関する情報が、無限に設定された TimeToLive と共に含まれています。 次に、アプリケーションの正常性がクエリされ、集計された正常性状態のエラーおよびレポートされた正常性イベントが正常性イベントの一覧で返されます。
 
 ```powershell

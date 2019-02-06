@@ -1,15 +1,8 @@
 ---
-title: オンプレミス SQL Server
-titleSuffix: Azure Machine Learning Studio
-description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio で高度な分析を実行します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18
-ms.date: 03/13/2017
+title:オンプレミス SQL Server titleSuffix:Azure Machine Learning Studio description:オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio で高度な分析を実行します。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/13/2017
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio で分析を実行する
 
@@ -30,8 +23,7 @@ ms.date: 03/13/2017
 Azure Machine Learning でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio で接続を構成するときに、後で説明する **[Download and register data gateway]\(データ ゲートウェイのダウンロードと登録\)** ダイアログを使用して、統合ランタイム (IR) をダウンロードおよびインストールできます。
 
 
-[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から
-msI セットアップ パッケージをダウンロードして実行することにより、IR を事前にインストールすることもできます。MSI を使うと、すべての設定を保持したまま、既存の IR を最新バージョンにアップグレードすることもできます。
+[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することにより、IR を事前にインストールすることもできます。MSI を使うと、すべての設定を保持したまま、既存の IR を最新バージョンにアップグレードすることもできます。
 
 Data Factory セルフホステッド統合ランタイムには、次の前提条件があります。
 

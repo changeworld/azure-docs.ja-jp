@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354191"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478194"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances を Jenkins ビルド エージェントとして使用する
 
@@ -26,24 +26,24 @@ Azure Container Instances について詳しくは、[Azure Container Instances]
 
 2. **[基本]** フォームに次の情報を入力した後、**[OK]** を選びます。
 
-   - **[名前]**: Jenkins デプロイの名前を入力します。
+   - **[名前]**:Jenkins デプロイの名前を入力します。
    - **[ユーザー名]**: Jenkins 仮想マシンの管理ユーザーの名前を入力します。
    - **[認証の種類]**: 認証には SSH 公開キーをお勧めします。 このオプションを選んだ場合は、Jenkins 仮想マシンへのログインに使う SSH 公開キーを貼り付けます。
-   - **[サブスクリプション]**: Azure サブスクリプションを選択します。
-   - **リソース グループ**: リソース グループを作成するか、既存のリソース グループを選択します。
-   - **[場所]**: Jenkins サーバーの場所を選びます。
+   - **サブスクリプション**:Azure サブスクリプションを選択します。
+   - **[リソース グループ]**:リソース グループを作成するか、既存のリソース グループを選択します。
+   - **[場所]**:Jenkins サーバーの場所を選びます。
 
    ![Jenkins ポータル展開の基本設定](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. **[追加設定]** フォームに、次の項目を入力します。
 
-   - **[サイズ]**: Jenkins 仮想マシンの適切なサイズ オプションを選びます。
-   - **[VM ディスクの種類]**: Jenkins サーバーの **HDD** (ハード ディスク ドライブ) または **SSD** (ソリッドステート ドライブ) を指定します。
-   - **[仮想ネットワーク]**: 既定の設定を変更する場合、矢印を選びます。
-   - **[サブネット]**: 矢印を選び、情報を確認して、**[OK]** を選びます。
+   - **[サイズ]**:Jenkins 仮想マシンの適切なサイズ オプションを選びます。
+   - **VM ディスクの種類**: Jenkins サーバーの **HDD** (ハード ディスク ドライブ) または **SSD** (ソリッドステート ドライブ) を指定します。
+   - **仮想ネットワーク**:既定の設定を変更する場合、矢印を選びます。
+   - **サブネット**:矢印を選び、情報を確認して、**[OK]** を選びます。
    - **[パブリック IP アドレス]**: 矢印を選んでパブリック IP アドレスにカスタムの名前を付け、SKU を構成して、割り当て方法を設定します。
    - **[ドメイン名ラベル]**: 値を指定して Jenkins 仮想マシンの完全修飾 URL を作成します。
-   - **[Jenkins release type]\(Jenkins リリースの種類\)**: オプションから必要なリリースの種類を選びます (**[LTS]**、**[Weekly build]\(週次ビルド\)**、または **[Azure Verified]\(Azure 検証済み\)**)。
+   - **[Jenkins のリリースの種類]**: 次のオプションから必要なリリースの種類を選択します。(**[LTS]**、**[Weekly build]\(週次ビルド\)**、または **[Azure Verified]\(Azure 確認済み\)**)。
 
    ![Jenkins ポータル展開の追加設定](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -138,4 +138,4 @@ Azure 上の Jenkins について詳しくは、「[Azure と Jenkins][jenkins-a
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md
 [jenkins-azure]: ../jenkins/overview.md
-[managed-service-identity]: ../active-directory/managed-service-identity/overview.md
+[managed-identities-azure-resources]: ../active-directory/managed-identities-azure-resources/overview.md

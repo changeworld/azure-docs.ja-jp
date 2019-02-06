@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258733"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168415"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
@@ -34,7 +34,7 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 1. **[ファイル]**、 > **[新しいプロジェクト]** の順に選択し、Service Fabric アプリケーションを作成します。
 2. サービス テンプレートとして**ゲスト実行可能ファイル**を選択します。
 3. **[参照]** をクリックし、実行可能ファイルが含まれたフォルダーを選択します。残りのパラメーターを入力し、サービスを作成します。
-   * *Code Package Behavior* - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成するときは、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
+   * *Code Package Behavior*  - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成するときは、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
    * *Program* - サービスを開始するために実行する必要がある実行可能ファイルを指定します。
    * *Arguments* - 実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
    * *WorkingFolder* - 開始するプロセスの作業ディレクトリを指定します。 次の 3 つの値のいずれかを指定できます。
@@ -143,7 +143,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 
 `Name` 要素は、サービスのコードが含まれるアプリケーション パッケージ内のディレクトリ名を指定するために使用されます。 `CodePackage` にも `version` 属性があります。 この属性を使用すると、コードのバージョンを指定できます。また、Service Fabric のアプリケーション ライフサイクル管理インフラストラクチャを使用してサービスのコードをアップグレードするためにも使用できます。
 
-#### <a name="optional-update-setupentrypoint"></a>省略可能: SetupEntrypoint の更新
+#### <a name="optional-update-setupentrypoint"></a>省略可能:SetupEntrypoint の更新
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -302,4 +302,4 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
-* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
+* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-tutorial-create-dotnet-app.md)

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035425"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477813"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -42,7 +42,7 @@ SQL Database は、ポイントインタイム リストア (PITR) の目的で�
 
 ## <a name="how-long-are-backups-kept"></a>バックアップの保持期間
 
-各 SQL Database には、7 日～ 35 日まで (購入モデルとサービス レベルによって異なります) の既定のバックアップの保持期間があります。 Azure Logical Server 上のデータベースに対するバックアップ保持期間は更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-the-pitr-backup-retention-period)に関するセクションを参照してください。
+各 SQL Database には、7 日～ 35 日まで (購入モデルとサービス レベルによって異なります) の既定のバックアップの保持期間があります。 SQL Database サーバー上のデータベースに対するバックアップの保持期間は更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-the-pitr-backup-retention-period)に関するセクションを参照してください。
 
 データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間のリテンション期間のある基本的なデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
 
@@ -63,7 +63,7 @@ DTU ベースの購入モデルを使用して作成されたデータベース�
 
 #### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、既定のバックアップの保有期間は 7 日間です (単一、プール、およびマネージド インスタンス データベースの場合)。 すべての Azure SQL データベース (単一、プール、およびマネージド インスタンス データベース) の場合、[バックアップの保有期間を最大 35 日に変更](#how-to-change-the-pitr-backup-retention-period)できます。
+[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、既定のバックアップの保持期間は 7 日間です (スタンドアロン データベース、プールされたデータベース、インスタンス データベースの場合)。 すべての Azure SQL データベース (スタンドアロン データベース、プールされたデータベース、インスタンス データベース) の場合、[バックアップの保持期間を最大 35 日に変更](#how-to-change-the-pitr-backup-retention-period)できます。
 
 > [!WARNING]
 > 現在のリテンション期間を短縮した場合、新しいリテンション期間より古いすべての既存のバックアップは、使用できなくなります。 現在のリテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
@@ -80,7 +80,7 @@ PITR バックアップは、geo 冗長であり、[Azure Storage のリージ�
 
 ### <a name="backups-for-long-term-retention"></a>長期保有のためのバックアップ
 
-論理サーバーでホストされる SQL Database には、Azure Blob Storage での最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
+スタンドアロン データベースとプールされたデータベースには、Azure BLOB ストレージに対する最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
 
 PITR と同じように、LTR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
 
@@ -111,7 +111,7 @@ Azure portal、PowerShell、または REST API を使用して、既定の PITR 
 
 Azure portal を使用して PITR バックアップ保持期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
-#### <a name="change-pitr-for-a-logical-server"></a>論理サーバーの PITR の変更
+#### <a name="change-pitr-for-a-sql-database-server"></a>SQL Database サーバーの PITR の変更
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 

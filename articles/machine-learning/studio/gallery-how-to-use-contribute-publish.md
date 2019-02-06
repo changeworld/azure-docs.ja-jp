@@ -1,6 +1,6 @@
 ---
-title:Azure AI ギャラリー titleSuffix: Azure Machine Learning Studio description:Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:Azure AI ギャラリー titleSuffix:Azure Machine Learning Studio description:Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2019/01/11
 ---
@@ -107,7 +107,7 @@ Studio 内からリソースをダウンロードするには:
 
 * 実験名
 * 要約または説明
-* タグ
+* Tags
 * イメージ
 * 可視性の設定 (**[公開]** または **[非公開]**)
 

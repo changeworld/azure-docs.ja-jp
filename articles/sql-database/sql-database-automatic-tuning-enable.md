@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/25/2019
+ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382781"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478255"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のための自動チューニングの有効化
 
@@ -26,9 +26,11 @@ Azure SQL Database は自動的に管理されるデータ サービスです。
 自動チューニングは、[Azure portal](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) の呼び出し、[T-SQL](sql-database-automatic-tuning-enable.md#t-sql) コマンドを使用してサーバーまたはデータベース レベルで有効にすることができます。
 
 ## <a name="enable-automatic-tuning-on-server"></a>サーバーでの自動チューニングの有効化
+
 自動チューニングの構成を [Azure の既定値] から継承するかどうかをサーバー レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効で、DROP_INDEX が無効です。
 
 ### <a name="azure-portal"></a>Azure ポータル
+
 Azure SQL Database 論理**サーバー**で自動チューニングを有効にするには、Azure portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。
 
 ![サーバー](./media/sql-database-automatic-tuning-enable/server.png)
@@ -44,7 +46,6 @@ Azure SQL Database 論理**サーバー**で自動チューニングを有効に
 ### <a name="rest-api"></a>REST API
 
 REST API を使用してサーバー上で自動チューニングを有効にする方法については、[SQL Server の自動チューニングの UPDATE メソッドと GET HTTP メソッド](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)に関するページを参照してください。
-
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>個々のデータベースで自動チューニングを有効にする
 
@@ -74,27 +75,28 @@ REST API を使用して単一のデータベース上で自動チューニン�
 
 T-SQL から単一データベースの自動チューニングを有効にするには、データベースに接続して次のクエリを実行します。
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
+```
+
 自動チューニングを AUTO に設定すると、"Azure の既定値" が適用されます。 INHERIT に設定した場合は、自動チューニングの構成が親サーバーから継承されます。 CUSTOM を選択した場合は、自動チューニングを手動で構成する必要があります。
 
 T-SQL で個々の自動チューニング オプションを構成するには、データベースに接続して、たとえば次のクエリを実行します。
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
+```
+
 個々のチューニング オプションを ON に設定した場合、データベースによって継承された設定がオーバーライドされて、そのチューニング オプションが有効になります。 個々のチューニング オプションを OFF に設定した場合は、データベースによって継承された設定が同じようにオーバーライドされたうえで、そのチューニング オプションが無効になります。 自動チューニング オプションに DEFAULT を指定した場合、データベース レベルの自動チューニング設定から構成が継承されます。  
 
 > [!IMPORTANT]
 > [アクティブ geo レプリケーション](sql-database-auto-failover-group.md)の場合、プライマリ データベースのみで自動チューニングを構成する必要があります。 インデックスの作成や削除など、自動的に適用されるチューニング アクションは、読み取り専用のセカンダリに自動的にレプリケートされます。 読み取り専用のセカンダリで T-SQL を使用して自動チューニングを有効にしようとすると、その読み取り専用のセカンダリで別のチューニング構成を使用することはサポートされていないため、失敗します。
 >
 
-自動チューニングを構成する T-SQL のオプションの詳細については、[SQL Database 論理サーバーの ALTER DATABASE SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) に関するページを参照してください。
+自動チューニングを構成する T-SQL のオプションの詳細については、[SQL Database サーバーの ALTER DATABASE SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) に関するページを参照してください。
 
 ## <a name="disabled-by-the-system"></a>システムによる無効化
+
 自動チューニングがデータベースに対して作用するあらゆる操作は監視されていて、ときにはデータベースに対して適切に作用しない可能性があると判断される場合があります。 そのような状況では、チューニング オプションがシステムによって無効化されます。 その原因はほとんどの場合、クエリ ストアが有効になっていないか、特定のデータベースに対して読み取り専用状態になっていることにあります。
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
@@ -102,6 +104,7 @@ T-SQL で個々の自動チューニング オプションを構成するには�
 [メール通知の自動チューニング](sql-database-automatic-tuning-email-notifications.md)に関するガイドを参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 * [自動チューニングに関する記事](sql-database-automatic-tuning.md)を読み、自動チューニングと、パフォーマンスの向上にいかに役立つかを確認します。
 * Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。

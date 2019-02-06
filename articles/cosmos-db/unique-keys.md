@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 20e5c96110f07d8eaec218ed167c87a48fd65782
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 73d4ba0c82f26a6249528f2dbef1fd30f99ccedb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037380"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475875"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 
 一意なキーを使用すると、Cosmos コンテナーにデータ整合性のレイヤーを追加できます。 一意キー ポリシーは、Cosmos コンテナーの作成時に作成します。 一意キーを使用することで、論理パーティション内にある 1 つ以上の値の一意性を確保することができます (一意性は[パーティション キー](partition-data.md)ごとに確保できます)。 一意キー ポリシーを使用したコンテナーを作成すると、論理パーティション内に新しい重複項目を作成することができなくなります (一意キー制約で指定されているため)。 パーティション キーと一意キーを組み合わせることで、コンテナーのスコープ内にある項目の一意性が確保されます。
 

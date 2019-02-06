@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452141"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302106"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -53,6 +53,8 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Azure Information Protection - [詳細](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
 - Azure RemoteApp
+
+- Azure SQL Database - [詳細](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 
 - Microsoft Dynamics 365
 
@@ -242,7 +244,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 - **[承認されたクライアント アプリが必要です]** 要件:
 
-    - [デバイス プラットフォームの条件](#device-platforms-condition)については iOS と Android のみをサポートしています。
+    - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
 
 
 ## <a name="next-steps"></a>次の手順

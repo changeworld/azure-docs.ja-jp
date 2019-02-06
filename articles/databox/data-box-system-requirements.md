@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794007"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206749"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 
@@ -37,7 +37,7 @@ Data Box デバイスに接続されたクライアント経由でデータの�
 | --- | --- | 
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
 |  Windows |7、8、10 | 
-| Linux    |         |
+|Linux    |         |
 
 ### <a name="supported-file-systems-for-linux-clients"></a>Linux クライアントでサポートされるファイル システム
 
@@ -48,13 +48,18 @@ Data Box デバイスに接続されたクライアント経由でデータの�
 
 ### <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
-Data Box デバイスでサポートされるストレージの種類の一覧を次に示します。
+Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 ストレージ アカウントのすべての種類とそれらの完全な機能のすべての一覧については、「[ストレージ アカウントの種類](/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
 
-| **ストレージ アカウント** | **メモ** |
-| --- | --- |
-| クラシック | 標準 |
-| 汎用  |標準。V1 と V2 の両方がサポートされます。 |
-| BLOB |ホットとクールの両方がサポートされます。 |
+| **ストレージ アカウント/サポートされるストレージの種類** | **ブロック BLOB** |**ページ BLOB*** |**Azure Files** |**メモ**|
+| --- | --- | -- | -- | -- |
+| クラシック Standard | Y | Y | Y |
+| 汎用 v1 Standard  | Y | Y | Y | ホットとクールの両方がサポートされます。|
+| 汎用 v1 Premium  |  | Y| | |
+| 汎用 v2 Standard  | Y | Y | Y | ホットとクールの両方がサポートされます。|
+| 汎用 v2 Premium  |  |Y | | |
+| Blob ストレージ Standard |Y | | |ホットとクールの両方がサポートされます。 |
+
+\* *- ページ BLOB にアップロードされるデータは、VHD などの 512 バイトで整列されている必要があります。*
 
 >[!NOTE]
 > Azure Data Lake Storage Gen 2 アカウントはサポートされていません。
@@ -85,7 +90,7 @@ Data Box デバイスでサポートされるストレージの種類の一覧�
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 
-お客様のデータセンターには、高速ネットワークが必要です。 少なくとも 1 本の 10 GbE 接続を利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用してデータをコピーできますが、コピーの速度が影響を受けます。
+お客様のデータセンターには、高速ネットワークが必要です。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用してデータをコピーできますが、コピーの速度が影響を受けます。
 
 ## <a name="next-step"></a>次のステップ
 

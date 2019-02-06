@@ -11,17 +11,17 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 60c7483e698a07fcf86438798f6bb5013a7417ce
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 474e8d708a335b27899e818dcdba1fb469ad94a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391138"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469238"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure SQL の Transparent Data Encryption:Bring Your Own Key のサポート
 
-[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に対する Bring Your Own Key (BYOK) サポートにより、TDE 保護機能と呼ばれる非対称キーを使用してデータベース暗号化キー (DEK) を暗号化することが可能になります。  TDE 保護機能は、ユーザーの管理下で、Azure のクラウドベースの外部キー管理システムである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納されます。 Azure Key Vault は、TDE に BYOK のサポートが統合された最初のキー管理サービスです。 TDE の DEK は、データベースのブート ページに格納され、TDE 保護機能によって暗号化および暗号化解除されます。 TDE 保護機能は Azure Key Vault に格納され、キー コンテナーの外部に移動されることはありません。 キー コンテナーへのサーバーのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。 Azure SQL Database の場合、TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての*暗号化された*データベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
+[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に対する Bring Your Own Key (BYOK) サポートにより、TDE 保護機能と呼ばれる非対称キーを使用してデータベース暗号化キー (DEK) を暗号化することが可能になります。  TDE 保護機能は、ユーザーの管理下で、Azure のクラウドベースの外部キー管理システムである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納されます。 Azure Key Vault は、TDE に BYOK のサポートが統合された最初のキー管理サービスです。 TDE の DEK は、データベースのブート ページに格納され、TDE 保護機能によって暗号化および暗号化解除されます。 TDE 保護機能は Azure Key Vault に格納され、キー コンテナーの外部に移動されることはありません。 キー コンテナーへのサーバーのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。 Azure SQL Database の場合、TDE 保護機能は SQL Database サーバー レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての*暗号化された*データベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 BYOK がサポートされているので、Azure Key Vault 機能を使用して、キーの交換、キー コンテナーのアクセス許可、キーの削除、すべての TDE 保護機能の監査/レポートの有効化などのキー管理タスクをユーザーが制御できます。 Key Vault はキーの一元管理を提供し、厳しく監視されたハードウェア セキュリティ モジュール (HSM) を利用します。また、キー管理とデータ管理の職務の分離を可能にすることで規制順守への対応を支援します。  
 
@@ -51,7 +51,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 
 - Azure Key Vault と Azure SQL Database/Managed Instance が必ず同じテナントに属するようにします。  キー コンテナーとサーバーのテナント間の対話は**サポートされていません**。
 - 必要なリソースに使用するサブスクリプションを決定します。後でサーバーをサブスクリプション間で移動するには、BYOK 対応 TDE の新しいセットアップが必要になります。 リソースの移動の詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)をご覧ください。
-- BYOK 対応 TDE を構成するときは、ラップ/ラップ解除操作の繰り返しによってキー コンテナーにかかる負荷を考慮することが重要です。 たとえば、論理サーバーに関連付けられているすべてのデータベースで同じ TDE 保護機能が使用されるため、そのサーバーのフェールオーバーが発生すると、サーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされます。 これまでの経験と文書化されている [Key Vault サービスの制限](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)に基づき、コンテナー内の TDE 保護機能にアクセスするときに高可用性を常に確保するために、1 つのサブスクリプションの 1 つの Azure Key Vault に関連付けるデータベースの数を、Standard/General Purpose データベースの場合は最大 500 個、Premium/Business Critical データベースの場合は最大 200 個にすることをお勧めします。
+- BYOK 対応 TDE を構成するときは、ラップ/ラップ解除操作の繰り返しによってキー コンテナーにかかる負荷を考慮することが重要です。 たとえば、SQL Database サーバーに関連付けられているすべてのデータベースで同じ TDE 保護機能が使用されるため、そのサーバーのフェールオーバーが発生すると、サーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされます。 これまでの経験と文書化されている [Key Vault サービスの制限](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)に基づき、コンテナー内の TDE 保護機能にアクセスするときに高可用性を常に確保するために、1 つのサブスクリプションの 1 つの Azure Key Vault に関連付けるデータベースの数を、Standard/General Purpose データベースの場合は最大 500 個、Premium/Business Critical データベースの場合は最大 200 個にすることをお勧めします。
 - 推奨:TDE 保護機能のコピーをオンプレミスに保持します。  これには、TDE 保護機能をローカルに作成するための HSM デバイスと、TDE 保護機能のローカル コピーを格納するためのキー エスクロー システムが必要です。  ローカル HSM から Azure Key Vault にキーを転送する方法については、[こちら](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)をご覧ください。
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Azure Key Vault の構成に関するガイドライン
@@ -61,7 +61,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
   - **recover** アクションと **purge** アクションには、キー コンテナーのアクセス ポリシーに独自のアクセス許可が関連付けられています。
 - キー コンテナーにリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。  リソース ロックの詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)をご覧ください。
 
-- Azure Active Directory (Azure AD) ID を使用して、論理サーバーにキー コンテナーへのアクセス権を付与します。  ポータル UI を使用すると、Azure AD ID が自動的に作成され、キー コンテナーのアクセス許可がサーバーに付与されます。  PowerShell を使用して BYOK 対応 TDE を構成する場合は、Azure AD ID を作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)と [Managed Instance 用 BYOK 対応 TDE の構成](http://aka.ms/sqlmibyoktdepowershell)に関する記事を参照してください。
+- Azure Active Directory (Azure AD) ID を使用して、SQL Database サーバーにキー コンテナーへのアクセス権を付与します。  ポータル UI を使用すると、Azure AD ID が自動的に作成され、キー コンテナーのアクセス許可がサーバーに付与されます。  PowerShell を使用して BYOK 対応 TDE を構成する場合は、Azure AD ID を作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)と [Managed Instance 用 BYOK 対応 TDE の構成](http://aka.ms/sqlmibyoktdepowershell)に関する記事を参照してください。
 
   > [!NOTE]
   > Azure AD ID が**誤って削除された場合や、サーバーのアクセス許可が取り消された場合** (キー コンテナーのアクセス ポリシーを使用)、サーバーはキー コンテナーにアクセスできなくなり、TDE で暗号化されたデータベースは 24 時間以内に削除されます。
@@ -72,7 +72,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
  > TDE で暗号化された SQL データベースがファイアウォールをバイパスできないために、キー コンテナーへのアクセスを失った場合、データベースは 24 時間以内に削除されます。
 
 - すべての暗号化キーの監査およびレポートを有効にします。Key Vault が提供するログは、他のセキュリティ情報およびイベント管理 (SIEM) ツールに簡単に挿入できます。 Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) は、既に統合されているサービスの一例です。
-- 暗号化されたデータベースの高可用性を確保するには、異なるリージョンに存在する 2 つの Azure Key Vault で 各論理サーバーを構成します。
+- 暗号化されたデータベースの高可用性を確保するには、異なるリージョンに存在する 2 つの Azure Key Vault で各 SQL Database サーバーを構成します。
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>TDE 保護機能 (非対称キー) の構成に関するガイドライン
 
@@ -96,9 +96,9 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
 
-Azure Key Vault で高可用性を構成する方法は、使用しているデータベースと論理サーバーの構成によって異なります。ここでは、2 つの異なるケースの推奨される構成について説明します。  1 つ目のケースは、geo 冗長が構成されていないスタンドアロンのデータベースまたは論理サーバーです。  2 つ目のケースは、フェールオーバー グループまたは geo 冗長で構成されたデータベースまたは論理サーバーです。この場合、geo フェールオーバーが機能するように、各 geo 冗長コピーには、フェールオーバー グループ内のローカル Azure Key Vault が含まれている必要があります。
+Azure Key Vault で高可用性を構成する方法は、使用しているデータベースと SQL Database サーバーの構成によって異なります。ここでは、2 つの異なるケースの推奨される構成について説明します。  1 つ目のケースは、geo 冗長が構成されていないスタンドアロンのデータベースまたは SQL Database サーバーです。  2 つ目のケースは、フェールオーバー グループまたは geo 冗長で構成されたデータベースまたは SQL Database サーバーです。この場合、geo フェールオーバーが確実に機能するように、各 geo 冗長コピーには、フェールオーバー グループ内のローカル Azure Key Vault が含まれている必要があります。
 
-最初のケースで、geo 冗長が構成されていないデータベースおよび論理サーバーの高可用性が必要な場合は、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 これを実現するには、論理サーバーと同じリージョンに併置されたプライマリ キー コンテナーを使用して TDE 保護機能を作成し、別の Azure リージョンのキー コンテナーにキーを複製します。これにより、データベースの稼働中にプライマリ キー コンテナーが停止した場合に、サーバーはもう 1 つのキー コンテナーにアクセスできます。 Backup-AzureKeyVaultKey コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、Restore-AzureKeyVaultKey コマンドレットを使用して、2 つ目のリージョンのキー コンテナーを指定します。
+最初のケースで、geo 冗長が構成されていないデータベースおよび SQL Database サーバーの高可用性が必要な場合は、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 これを実現するには、SQL Database サーバーと同じリージョンに併置されたプライマリ キー コンテナーを使用して TDE 保護機能を作成し、別の Azure リージョンのキー コンテナーにキーを複製します。これにより、データベースの稼働中にプライマリ キー コンテナーが停止した場合に、サーバーはもう 1 つのキー コンテナーにアクセスできます。 Backup-AzureKeyVaultKey コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、Restore-AzureKeyVaultKey コマンドレットを使用して、2 つ目のリージョンのキー コンテナーを指定します。
 
 ![1 台のサーバーの HA (Geo-DR なし)](./media/transparent-data-encryption-byok-azure-sql/SingleServer_HA_Config.PNG)
 
@@ -131,13 +131,13 @@ geo レプリケートされた Azure SQL Database の場合、Azure Key Vault �
 
 **新しいデプロイの手順**:
 
-- 以前に作成したキー コンテナーと同じ 2 つのリージョンに、2 つの論理 SQL サーバーを作成します。
-- 論理サーバーの TDE ウィンドウを選択し、論理 SQL サーバーごとに次の操作を行います。  
+- 以前に作成したキー コンテナーと同じ 2 つのリージョンに、2 つの SQL Database サーバーを作成します。
+- SQL Database サーバーの TDE ウィンドウを選択し、SQL Database サーバーごとに次の操作を行います。  
   - 同じリージョン内の AKV を選択します。
   - TDE 保護機能として使用するキーを選択します。各サーバーでは、TDE 保護機能のローカル コピーが使用されます。
-  - ポータルでこれを行うと、論理 SQL サーバーの [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が作成されます。この ID は、キー コンテナーにアクセスするために、論理 SQL サーバーのアクセス許可を割り当てるときに使用されるので、削除しないでください。 アクセスを取り消すには、論理 SQL サーバー のアクセス許可ではなく、Azure Key Vault のアクセス許可を削除します。これは、キー コンテナーにアクセスするために論理 SQL サーバー のアクセス許可を割り当てるときに使用されます。
+  - ポータルでこれを行うと、SQL Database サーバーの [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が作成されます。この ID は、キー コンテナーにアクセスするために、SQL Database サーバーのアクセス許可を割り当てるときに使用されるので、削除しないでください。 アクセスを取り消すには、SQL Database サーバーのアクセス許可ではなく、Azure Key Vault のアクセス許可を削除します。これは、キー コンテナーにアクセスするために SQL Database サーバーのアクセス許可を割り当てるときに使用されます。
 - プライマリ データベースを作成します。
-- [アクティブ geo レプリケーションのガイダンス](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)に従ってシナリオを完了します。この手順により、セカンダリ データベースが作成されます。
+- [アクティブ geo レプリケーションのガイダンス](sql-database-geo-replication-overview.md)に従ってシナリオを完了します。この手順により、セカンダリ データベースが作成されます。
 
 ![フェールオーバー グループと Geo-DR](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
 
@@ -146,12 +146,12 @@ geo レプリケートされた Azure SQL Database の場合、Azure Key Vault �
 
 **Geo-DR デプロイを使用した既存の SQL DB の手順**:
 
-論理 SQL サーバーが既に存在し、プライマリ データベースとセカンダリ データベースが既に割り当てられているため、Azure Key Vault の構成手順は、次の順序で実行する必要があります。
+SQL Database サーバーが既に存在し、プライマリ データベースとセカンダリ データベースが既に割り当てられているため、Azure Key Vault の構成手順は、次の順序で実行する必要があります。
 
-- セカンダリ データベースをホストする論理 SQL サーバーから始めます。
+- セカンダリ データベースをホストする SQL Database サーバーから始めます。
   - 同じリージョンにあるキー コンテナーを割り当てる
   - TDE 保護機能を割り当てる
-- 次に、プライマリ データベースをホストする論理 SQL サーバーに移ります。
+- 次に、プライマリ データベースをホストする SQL Database サーバーに移ります。
   - セカンダリ DB に使用したものと同じ TDE 保護機能を選択する
 
 ![フェールオーバー グループと Geo-DR](./media/transparent-data-encryption-byok-azure-sql/geo_DR_ex_config.PNG)
@@ -161,7 +161,7 @@ geo レプリケートされた Azure SQL Database の場合、Azure Key Vault �
 
 SQL Database Geo-DR シナリオで、Azure Key Vault のユーザー管理のキーを使用して TDE を有効にする前に、SQL Database の geo レプリケーションに使用されるリージョンに、同じ内容の 2 つの Azure Key Vault を作成して管理することが重要です。  "同じ内容" とは、具体的には、すべてのデータベースで使用される TDE 保護機能に両方のサーバーがアクセスできるように、どちらのキー コンテナーにも同じ TDE 保護機能のコピーが含まれている必要があることを意味します。  今後、2 つのキー コンテナーを同期させておく必要があります。つまり、キーの交換後に 2 つのキー コンテナーに TDE 保護機能の同じコピーが含まれており、ログ ファイルまたはバックアップに使用されるキーの古いバージョンが保持されている必要があります。また、TDE 保護機能は同じキー プロパティを保持する必要があり、キー コンテナーは SQL の同じアクセス許可を保持する必要があります。  
 
-[アクティブ geo レプリケーションの概要](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)に関する記事の手順に従ってテストを行い、フェールオーバーをトリガーします。2 つのキー コンテナーに対する SQL のアクセス許可が保持されていることを確認するために、この作業を定期的に行う必要があります。
+[アクティブ geo レプリケーションの概要](sql-database-geo-replication-overview.md)に関する記事の手順に従ってテストを行い、フェールオーバーをトリガーします。2 つのキー コンテナーに対する SQL のアクセス許可が保持されていることを確認するために、この作業を定期的に行う必要があります。
 
 ### <a name="backup-and-restore"></a>バックアップと復元
 
@@ -179,6 +179,6 @@ Get-AzureRmSqlServerKeyVaultKey `
   -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-SQL Database のバックアップの回復の詳細については、[Azure SQL Database の復旧](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups)に関する記事をご覧ください。 SQL Data Warehouse のバックアップの回復の詳細については、[Azure SQL Data Warehouse の復元](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-overview)に関する記事をご覧ください。
+SQL Database のバックアップの回復の詳細については、[Azure SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください。 SQL Data Warehouse のバックアップの回復の詳細については、[Azure SQL Data Warehouse の復元](../sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。
 
 バックアップ ログ ファイルに関するその他の考慮事項:TDE 保護機能が交換され、データベースが新しい TDE 保護機能を使用している場合でも、バックアップ ログ ファイルは元の TDE 暗号化機能で暗号化されたままになっています。  復元時に、データベースを復元するには両方のキーが必要になります。  サービス管理 TDE を使用するようにデータベースが変更された場合でも、Azure Key Vault に格納されている TDE 保護機能がログ ファイルで使用されている場合は、復元時にこのキーが必要になります。

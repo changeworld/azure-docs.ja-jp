@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478656"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296605"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
@@ -28,6 +28,34 @@ ms.locfileid: "54478656"
 
 >[!IMPORTANT]
 >Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](tshoot-connect-objectsync.md)を使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 
+
+## <a name="synchronization-process"></a>同期プロセス
+
+同期の問題を調査する前に、**Azure AD Connect** の同期プロセスについて理解しておきましょう。
+
+  ![Azure AD Connect の同期プロセス](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**用語集**
+
+* **CS:** コネクタ スペース。データベース内のテーブルです。
+* **MV:** メタバース。データベース内のテーブルです。
+* **AD:** Active Directory
+* **AAD:** Azure Active Directory
+
+### <a name="synchronization-steps"></a>**同期のステップ**
+同期プロセスには、次のステップが伴います。
+
+1. **AD からインポートする:** **Active Directory** オブジェクトが **AD CS** に取り込まれます。
+
+2. **AAD からインポートする:** **Azure Active Directory** オブジェクトが **AAD CS** に取り込まれます。
+
+3. **同期:** **受信同期規則**と**送信同期規則**は、優先順位の番号の低い方から順に実行されます。 同期規則は、デスクトップ アプリケーションから**同期規則エディター**にアクセスして表示することができます。 **受信同期規則**は、CS から MV にデータを取り込みます。 **送信同期規則**は、MV から CS にデータを移動します。
+
+4. **AD にエクスポートする:** 同期の実行後、AD CS から **Active Directory** にオブジェクトがエクスポートされます。
+
+5. **AAD にエクスポートする:** 同期の実行後、AAD CS から **Azure Active Directory** にオブジェクトがエクスポートされます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
 
 エラーを探すには、いくつかの異なる場所を次の順序で参照します。
 
@@ -123,7 +151,28 @@ ms.locfileid: "54478656"
 
 **[検索結果]** ウィンドウで、オブジェクトをクリックします。
 
-オブジェクトが見つからなかった場合、それはまだメタバースに届いていません。 Active Directory [コネクタ スペース](#connector-space-object-properties)でオブジェクトの検索を続行します。 オブジェクトがメタバースに届くのを阻止している同期のエラーがあるか、フィルターが適用されている可能性があります。
+オブジェクトが見つからなかった場合、それはまだメタバースに届いていません。 **Active Directory** [コネクタ スペース](#connector-space-object-properties)でオブジェクトの検索を続行します。 **Active Directory** コネクタ スペースにオブジェクトが見つかった場合は、オブジェクトがメタバースに届くのを阻止している同期のエラーがあるか、同期規則のスコープ フィルターが適用されている可能性があります。
+
+### <a name="object-not-found-in-the-mv"></a>オブジェクトが MV に見つからない
+オブジェクトが **Active Directory** CS には存在するものの、MV には存在しない場合、スコープ フィルターが適用されています。 
+
+* スコープ フィルターを調べるには、デスクトップ アプリケーションのメニューに移動して、**[同期規則エディター]** をクリックします。 以下のフィルターを調整して、オブジェクトに該当する規則をフィルタリングしてください。
+
+  ![受信同期規則の検索](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* 上のリストで各規則を表示し、**[スコープ フィルター]** を確認します。 下のスコープ フィルターで、**isCriticalSystemObject** 値が null (または FALSE) または空である場合、範囲内にあるということです。
+
+  ![受信同期規則の検索](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* [[CS Import]\(CS インポート\)](#cs-import) 属性リストに移動して、MV へのオブジェクトの移動をブロックしているフィルターを確認します。 一方、**[コネクタ スペース]** 属性リストには、null 以外でかつ空以外の属性だけが表示されます。 たとえば、**isCriticalSystemObject** がリストに表示されない場合、この属性の値が null または空であることを意味します。
+
+### <a name="object-not-found-in-the-aad-cs"></a>オブジェクトが AAD CS に見つからない
+オブジェクトが **Azure Active Directory** の**コネクタ スペース**には存在しないものの、 MV には存在する場合は、対応する**コネクタ スペース**の**送信**規則のスコープ フィルターを調べます。[MV の属性](#mv-attributes)が基準を満たしていないためにオブジェクトがフィルターで除外されているかどうかを確認してください。
+
+* 送信スコープ フィルターを調べるには、以下のフィルターを調整してオブジェクトに該当する規則を選択します。 それぞれの規則を表示して、対応する [MV 属性](#mv-attributes)の値を調べてください。
+
+  ![送信同期規則の検索](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>MV 属性
  [属性] タブには、値と、値を提供したコネクタが表示されます。  

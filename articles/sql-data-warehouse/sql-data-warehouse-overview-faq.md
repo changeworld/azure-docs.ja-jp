@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306742"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462547"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 
@@ -82,21 +82,21 @@ Q. どのようなクライアント ドライバーをサポートしていま�
 
 A. DW 用のドライバー サポートについては、[接続文字列に関するページ]をご覧ください。
 
-Q: SQL Data Warehouse の PolyBase ではどのようなファイル形式がサポートされていますか。
+Q:SQL Data Warehouse の PolyBase ではどのようなファイル形式がサポートされていますか。
 
-A: Orc、RC、Parquet、およびフラット区切りテキストです。
+A:Orc、RC、Parquet、およびフラット区切りテキストです。
 
-Q: PolyBase を使うと SQL DW から何に接続できますか。 
+Q:PolyBase を使うと SQL DW から何に接続できますか。 
 
-A: [Azure Data Lake Store] と [Azure Storage Blobs] です。
+A:[Azure Data Lake Store] と [Azure Storage Blobs] です。
 
-Q: Azure Storage Blob または ADLS に接続するとき、計算プッシュダウンは可能ですか。 
+Q:Azure Storage Blob または ADLS に接続するとき、計算プッシュダウンは可能ですか。 
 
-A: いいえ、SQL DW PolyBase は記憶域コンポーネントのみを操作します。 
+A:いいえ、SQL DW PolyBase は記憶域コンポーネントのみを操作します。 
 
-Q: HDI に接続できますか。
+Q:HDI に接続できますか。
 
-A: HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
+A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
 
 ## <a name="next-steps"></a>次の手順
 SQL Data Warehouse 全体について詳しくは、[概要に関するページ]をご覧ください。

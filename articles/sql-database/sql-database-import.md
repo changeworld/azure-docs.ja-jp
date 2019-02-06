@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 9e79aa2315118bcd9ce4328e74d51d7a22ea6247
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744566"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478221"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>クイック スタート:BACPAC ファイルを新しい Azure SQL Database にインポートする
 
@@ -33,7 +33,7 @@ ms.locfileid: "53744566"
 > [!NOTE]
 > [Azure SQL Database Managed Instance](sql-database-managed-instance.md) では、この記事の他の方法で BACPAC ファイルをインポートできますが、現在のところ、Azure portal を利用した移行には対応していません。
 
-Azure portal でデータベースをインポートするには、インポートをホストする論理サーバーのページを開き、ツールバーで **[データベースのインポート]** を選択します。  
+Azure portal でデータベースをインポートするには、インポートをホストする SQL Database サーバーのページを開き、ツールバーで **[データベースのインポート]** を選択します。  
 
    ![データベースのインポート](./media/sql-database-import/import.png)
 
@@ -41,7 +41,7 @@ Azure portal でデータベースをインポートするには、インポー�
 
 ### <a name="monitor-imports-progress"></a>インポートの進行状況を監視する
 
-インポートの進行状況を監視するには、インポートされたデータベースの論理サーバーのページを開き、**[設定]** の **[インポート/エクスポート履歴]** を選択します。 成功すると、インポートは**完了**状態になります。
+インポートの進行状況を監視するには、インポートされたデータベースのサーバーのページを開き、**[設定]** の **[インポート/エクスポート履歴]** を選択します。 成功すると、インポートは**完了**状態になります。
 
 データベースがサーバーで稼働していることを確認するには、**[SQL データベース]** を選択し、新しいデータベースが **[オンライン]** であることを確認します。
 
@@ -51,14 +51,14 @@ Azure portal でデータベースをインポートするには、インポー�
 
 スケールとパフォーマンスを考慮して、ほとんどの運用環境では SqlPackage の使用をお勧めします。 BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。
 
-次の SqlPackage コマンドは、**AdventureWorks2008R2** データベースを、ローカル ストレージから **mynewserver20170403** という Azure SQL Database 論理サーバーにインポートします。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
+次の SqlPackage コマンドにより、**AdventureWorks2008R2** データベースが、ローカル ストレージから **mynewserver20170403** という Azure SQL Database サーバーにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの背後から論理サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
+> SQL Database サーバーにより、ポート 1433 でリッスンされます。 企業のファイアウォールの背後から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
 >
 
 この例では、SqlPackage と Active Directory ユニバーサル認証を使用してデータベースをインポートする方法を示します。
@@ -107,7 +107,7 @@ $importStatus
 
 ## <a name="limitations"></a>制限事項
 
-エラスティック プール内のデータベースへのインポートはサポートされていません。 データを単一データベースにインポートしてから、そのデータベースをプールに移動することはできます。
+エラスティック プール内のデータベースへのインポートはサポートされていません。 データを単一データベースにインポートしてから、そのデータベースをエラスティック プールに移動することはできます。
 
 ## <a name="import-using-wizards"></a>ウィザードを使用したインポート
 

@@ -2,20 +2,20 @@
 title: Azure Machine Learning を使用したデータの分析 | Microsoft Docs
 description: Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 4324b1ac343a0e2b77c21d7834beffae08403953
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247528"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477660"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "43247528"
 
 1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、実験をクリックします。
 2. **[+新規]** をクリックし、**[Blank Experiment (空の実験)]** を選択します。
-3. 実験の名前として「対象を絞ったマーケティング」と入力します。
+3. 実験の名前を入力します: Targeted Marketing。
 4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
 5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ** を指定します。
@@ -80,18 +80,18 @@ FROM [dbo].[vTargetMail]
 1. **[プロジェクト列]** モジュールをキャンバスにドラッグします。
 2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。
    ![[プロジェクト列]][4]
-3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。
+3. 2 つの列が除外されます: CustomerAlternateKey と GeographyKey。
    ![不要な列を削除する][5]
 
 ## <a name="3-build-the-model"></a>手順 3.モデルを構築する
-データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。 今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
+データが 80 対 20 に分割されます。80% が機械学習モデルのトレーニングに、20% はモデルのテストに使用されます。 今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
 2. [プロパティ] ウィンドウの [Fraction of rows in the first output dataset (最初の出力データセットにおける列の割合)] に「0.8」と入力します。
    ![データをトレーニング セットとテスト セットに分割する][6]
 3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
 4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。 次に、[プロパティ] ウィンドウで **[Launch column selector (列セレクターの起動)]** をクリックします。
-   * 1 つ目の入力: ML アルゴリズム。
+   * 1 つ目の入力: Machine Learning アルゴリズム。
    * 2 つ目の入力: アルゴリズムをトレーニングするためのデータ。
      ![[モデルのトレーニング] モジュールを接続する][7]
 5. 予測する列として **[BikeBuyer]** 列を選択します。
@@ -101,7 +101,7 @@ FROM [dbo].[vTargetMail]
 ここでは、テスト データに対するモデルのパフォーマンスをテストします。 選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
 1. **[Score Model (モデルのスコア付け)]** モジュールをキャンバスにドラッグします。
-    1 つ目の入力: トレーニング済みのモデル、2 つ目の入力: テスト データ。![[Score Model (モデルのスコア付け)]][9]
+    1 つ目の入力: トレーニング済みのモデル 2 つ目の入力: テスト データ ![モデルにスコアを付ける][9]
 2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
 3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。
 4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。

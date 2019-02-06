@@ -63,7 +63,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | UnknownError |はい |はい |はい |いいえ  |
 | ReceiveFailure |はい |はい |はい |いいえ  |
 | RequestCanceled |はい |はい |はい |いいえ  |
-| Timeout |はい |はい |はい |いいえ  |
+| タイムアウト |はい |はい |はい |いいえ  |
 | ProtocolError <br/>ProtocolError の再試行は、HTTP 状態コード処理によって制御されます。 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |はい |はい |はい |はい |
 
 ### <a name="HTTPStatusCode"></a> HTTP エラー状態コード
@@ -87,3 +87,4 @@ Media Services SDK for .NET 再試行ロジックの実際の実装を確認す�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+

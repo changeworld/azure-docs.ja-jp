@@ -3,19 +3,19 @@ title: Azure Active Directory セルフ サービス パスワードの詳細情
 description: セルフサービスによるパスワードのリセットの動作
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: be7aa43ec6001be78fb405290914f19174559530
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435721"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475180"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -84,7 +84,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 #### <a name="mobile-app-and-sspr-preview"></a>モバイル アプリおよび SSPR (プレビュー)
 
-Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、管理者はパスワードのリセット方法として、次を理解する必要があります。
+Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、パスワードのリセット方法として、次の注意事項を理解しておく必要があります。
 
 * 管理者がパスワードのリセットに 1 つの方法の使用を必須にすると、使用できる選択肢は確認コードのみになります。
 * 管理者がパスワードのリセットに 2 つの方法の使用を必須にすると、ユーザーは、通知**または**確認コードの**いずれか**と、他の有効な方法を使用できるようになります。
@@ -119,7 +119,7 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
 
-ユーザーが Azure AD を使用してアプリケーションにサインインする場合、このオプションを有効にするには、ユーザーがパスワード リセットの登録を完了する必要があります。 これには、次のアプリケーションが含まれます。
+ユーザーが Azure AD を使用してアプリケーションにサインインする場合、このオプションを有効にするには、ユーザーがパスワード リセットの登録を完了する必要があります。 このワークフローには、次のアプリケーションが含まれます。
 
 * Office 365
 * Azure ポータル
@@ -132,7 +132,7 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 > [!NOTE]
 > ユーザーは、**[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
 >
-> ユーザーがすでにサインインしている場合、これにより、その接続は切断されません。
+> ユーザーが既にサインインしている場合、この中断によりその接続が切断されることはありません。
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>ユーザーが認証情報を再確認するように求められるまでの日数を設定する
 
@@ -169,7 +169,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>オンプレミス ディレクトリへのパスワード ライトバック
 
-このコントロールにより、このディレクトリに対してパスワード ライトバックが有効になっているかどうかが決まります。 ライトバックがオンの場合、オンプレミスのライトバック サービスの状態を示します。 これは、Azure AD Connect を再構成せずにパスワード ライトバックを一時的に無効にする場合に便利です。
+このコントロールにより、このディレクトリに対してパスワード ライトバックが有効になっているかどうかが決まります。 ライトバックがオンの場合、オンプレミスのライトバック サービスの状態を示します。 このコントロールは、Azure AD Connect を再構成せずに、パスワード ライトバックを一時的に無効にする場合に便利です。
 
 * スイッチが **[はい]** に設定されている場合、ライトバックは有効になり、フェデレーション、パススルー認証、またはパスワード ハッシュ同期のユーザーは、パスワードをリセットできます。
 * スイッチが **[いいえ]** に設定されている場合、ライトバックは無効になり、フェデレーション、パススルー認証、またはパスワード ハッシュ同期のユーザーは、パスワードをリセットできません。
@@ -180,6 +180,10 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 
 * **[はい]** に設定すると、ユーザーは、パスワードをリセットしてアカウントのロックを解除するか、パスワードをリセットせずにアカウントのロックを解除するかを選択できます。
 * **[いいえ]** に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できません。
+
+### <a name="on-premises-active-directory-password-filters"></a>オンプレミスの Active Directory のパスワード フィルター
+
+Azure AD のセルフサービス パスワード リセットでは、Active Directory の管理者によるものと同等のパスワード リセットが実行されます。 カスタムのパスワード ルールを提供するためにサードパーティのパスワード フィルターを使用していて、Azure AD のセルフサービス パスワード リセット中にこのパスワード フィルターを確認する必要がある場合、サードパーティのパスワード フィルターのソリューションが確実に管理者のパスワード リセット シナリオで適用されるように構成します。 [Windows Server Active Directory での Azure AD パスワード保護](concept-password-ban-bad-on-premises.md)は、既定でサポートされます。
 
 ## <a name="password-reset-for-b2b-users"></a>B2B ユーザーのパスワードのリセット
 

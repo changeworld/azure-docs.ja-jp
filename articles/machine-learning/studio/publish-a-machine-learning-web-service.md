@@ -1,15 +1,8 @@
 ---
-title: Machine Learning Studio Web サービスをデプロイする
-titleSuffix: Azure Machine Learning Studio
-description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.date: 01/06/2017
+title:Machine Learning Studio Web サービスをデプロイする titleSuffix:Azure Machine Learning Studio description:トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:01/06/2017
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
-ms.openlocfilehash: cfd46f8178f36213ecc16db0e092e81ac2d0eff1
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 01/19/2019
+ms.openlocfilehash: 9a14c819acbc46d8a281f73fd4f3185caa8a1e02
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54414757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478153"
 ---
-# <a name="configure-ipsecike-policy-for-site-to-site-vpn-or-vnet-to-vnet-connections"></a>サイト対サイト VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する
+# <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>サイト間 VPN 接続の IPsec/IKE ポリシーを構成する
 
 この記事では、Azure Stack でサイト対サイト (S2S) VPN 接続用の IPsec/IKE ポリシーを構成する手順について説明します。
 
@@ -102,10 +103,10 @@ IPsec/IKE 標準プロトコルでは、幅広い暗号アルゴリズムがさ�
 |----------------------|-----------|---------------|---------------|
 | 1                    | DHGroup1  | PFS1          | 768 ビット MODP  |
 | 2                    | DHGroup2  | PFS2          | 1024 ビット MODP |
-| 14                   | DHGroup14 |               |               |
-| DHGroup2048          | PFS2048   | 2048 ビット MODP |               |
+| 14                   | DHGroup14<br/>DHGroup2048 | PFS2048       | 2048 ビット MODP |
 | 19                   | ECP256    | ECP256        | 256 ビット ECP   |
-| 20                   | ECP384    | ECP284        | 384 ビット ECP   |
+| 20                   | ECP384    | ECP384        | 384 ビット ECP   |
+| 24                   | DHGroup24 | PFS24         | 2048 ビット MODP |
 
 詳細については、 [RFC3526](https://tools.ietf.org/html/rfc3526)  と  [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 

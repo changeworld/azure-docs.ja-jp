@@ -1,5 +1,5 @@
 ---
-title:Azure Resource Manager を使用して Studio ワークスペースをデプロイする titleSuffix: Azure Machine Learning Studio description:Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio 用のワークスペースをデプロイする services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:Azure Resource Manager を使用して Studio ワークスペースをデプロイする titleSuffix:Azure Machine Learning Studio description: Azure Resource Manager テンプレート サービスを使用して Azure Machine Learning 用のワークスペースをデプロイする方法: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/05/2018
 ---
@@ -64,7 +64,7 @@ Machine Learning ワークスペースには Azure ストレージ アカウン�
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>テンプレートに基づいてリソース グループをデプロイ
 * PowerShell を開きます
-* Azure Resource Manager と Azure サービス管理をインストールします  
+* Azure Resource Manager と Azure サービス管理をインストールします
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -74,9 +74,9 @@ Install-Module AzureRM -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   この手順では、残りの手順を完了するのに必要なモジュールをダウンロードしてインストールします。 これは、PowerShell コマンドを実行している環境で一度だけ実行する必要があります。   
+   この手順では、残りの手順を完了するのに必要なモジュールをダウンロードしてインストールします。 これは、PowerShell コマンドを実行している環境で一度だけ実行する必要があります。
 
-* Azure に対して認証します  
+* Azure に対して認証します
 
 ```
 # Authenticate (enter your credentials in the pop-up window)
@@ -110,22 +110,22 @@ $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\ml
 デプロイが完了すると、デプロイしたワークスペースのプロパティに簡単にアクセスできます。 たとえば、プライマリ キー トークンにアクセスできます。
 
 ```
-# Access Azure ML Workspace Token after its deployment.
+# Access Azure Machine Learning studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
 既存のワークスペースのトークンを取得するもう 1 つの方法として、Invoke-AzureRmResourceAction コマンドを使用します。 たとえば、すべてのワークスペースのプライマリ トークンとセカンダリ トークンを一覧表示できます。
 
-```  
+```
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)について確認します。 
-* [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。 
-* [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)のビデオを見ます。 
+* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)について確認します。
+* [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。
+* [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)のビデオを見ます。
 * 「[Resource Manager template reference help](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 <!--Image references--> [1]: ./media/deploy-with-resource-manager-template/azuresubscription.png [2]: ./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png」 (Resource Manager テンプレート リファレンス ヘルプ) を参照してください
 

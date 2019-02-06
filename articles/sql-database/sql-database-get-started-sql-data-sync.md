@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/08/2018
-ms.openlocfilehash: eb788c07ed9424ae6d5beed5be11c71a11c62265
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/25/2018
+ms.openlocfilehash: 03ea4a7db27e32b370be89adf308ded9a22f9e37
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304280"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478425"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>チュートリアル:Azure SQL Database とオンプレミスの SQL Server 間の SQL データ同期を設定する
 
@@ -49,7 +49,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
   **[データ同期グループの作成]** ページで、次の設定を変更します。
 
-  | 設定                        | 説明 |
+  | Setting                        | 説明 |
   | ------------------------------ | ------------------------------------------------- |
   | **同期グループ名** | 新しい同期グループの名前を入力します。 この名前は、データベース自体の名前とは異なります。 |
   | **同期メタデータ データベース** | データベースを作成する (推奨) か、既存のデータベースを使用するかを選択します。<br/><br/>**[新しいデータベース]** を選択した場合は、**[新しいデータベースの作成]** を選択します。 次に、**[SQL データベース]** ページで、新しいデータベースの名前を指定して構成し、**[OK]** を選択します。<br/><br/>**[既存のデータベースを使用する]** を選択した場合は、一覧からデータベースを選択します。 |
@@ -71,13 +71,13 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 ### <a name="to-add-an-azure-sql-database"></a>Azure SQL データベースを追加するには
 
-**[メンバー データベース]** セクションで、必要に応じて **[Azure データベースを追加]** を選択して、Azure SQL Database を同期グループに追加します。 **[Azure データベースの構成]** ページが開きます。
+**[メンバー データベース]** セクションで、必要に応じて **[Add an Azure SQL Database]\(Azure SQL Database を追加\)** を選択して、Azure SQL Database を同期グループに追加します。 **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページが開きます。
 
   ![手順 2 - データベースの構成](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  **[Azure データベースの構成]** ページで、次の設定を変更します。
+  **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページで、次の設定を変更します。
 
-  | 設定                       | 説明 |
+  | Setting                       | 説明 |
   | ----------------------------- | ------------------------------------------------- |
   | **同期メンバー名** | 新しい同期メンバーの名前を指定します。 この名前は、データベース自体の名前とは異なります。 |
   | **サブスクリプション** | 課金のために関連付ける Azure サブスクリプションを選択します。 |
@@ -192,7 +192,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 **同期後にデータは収束しますか?**
 
-必ずそうなるとは限りません。 ハブと 3 つのスポーク (A、B、C) を持つ同期グループがあり、同期は ハブから A、ハブから B、ハブから C に対して行われるものとします。ハブから A への同期が実行された "*後*" でデータベース A が変更された場合、その変更は、次の同期タスクが実行されるまで、データベース B またはデータベース C には書き込まれません。
+必ずしもその必要はありません。 ハブと 3 つのスポーク (A、B、C) を持つ同期グループがあり、同期は ハブから A、ハブから B、ハブから C に対して行われるものとします。ハブから A への同期が実行された "*後*" でデータベース A が変更された場合、その変更は、次の同期タスクが実行されるまで、データベース B またはデータベース C には書き込まれません。
 
 **スキーマの変更を同期グループに反映するにはどうすればよいですか?**
 
