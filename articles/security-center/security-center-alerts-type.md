@@ -87,7 +87,7 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
     * SSH ログインが複数回失敗しました。
     * SSH ログインが複数回試行され、その一部が成功しました。
 * **Suspicious WindowPosition registry value (疑わしい WindowPosition レジストリ値)**: このアラートは、WindowPosition レジストリ構成の変更が試行されたことを示します。これは、デスクトップの非表示セクションにアプリケーション ウィンドウを隠していることを示す可能性があります。
-* **Potential attempt to bypass AppLocker (AppLocker をバイパスする可能性のある試行)**: AppLocker は、Windows 上で実行できるプロセスを制限し、マルウェアに対する露出を制限するために使用できます。 このアラートは、信頼できないコードを実行するために、(AppLocker ポリシーによって許可された) 信頼できる実行可能ファイルを使用して AppLocker の制限のバイパスが試行された可能性があることを示します。
+* **Potential attempt to bypass AppLocker (AppLocker をバイパスする潜在的試行)**: AppLocker は、Windows 上で実行できるプロセスを制限し、マルウェアに対する露出を制限するために使用できます。 このアラートは、信頼できないコードを実行するために、(AppLocker ポリシーによって許可された) 信頼できる実行可能ファイルを使用して AppLocker の制限のバイパスが試行された可能性があることを示します。
 * **Suspicious named pipe communications (疑わしい名前付きパイプ通信)**: このアラートは、Windows コンソール コマンドからローカルの名前付きパイプにデータが書き込まれたことを示します。 名前付きパイプは、攻撃者が悪意のあるインプラントを使用し、通信するために使用されることがわかっています。
 * **Decoding of an executable using built-in certutil.exe tool (組み込みの certutil.exe ツールを使用した実行可能ファイルのデコード)**: このアラートは、組み込みの管理者ユーティリティ certutil.exe が実行可能ファイルのデコードに使用されたことを示します。 攻撃者は、正規の管理者ツールの機能を悪用して悪意のある操作を実行することがわかっています。たとえば、悪意のある実行ファイルのデコードに certutil.exe などのツールが使用され、デコード後のファイルが実行されることがあります。
 * **An event log was cleared (イベント ログがクリアされました)**: このアラートは、疑わしいイベント ログのクリア操作を示します。これは、痕跡を隠そうとする攻撃者によってよく使用されます。
@@ -109,13 +109,13 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Suspicious execution via rundll32.exe (rundll32.exe による疑わしい実行)**: このアラートは、通常とは異なる名前のプロセスを実行するために rundll32.exe が使用されたことを示します。これは、攻撃者が侵害したホストに第 1 段階のインプラントをインストールするために使用されるプロセスの命名スキームと一致します。
 * **Suspicious combination of HTA and PowerShell (HTA と PowerShell の疑わしい組み合わせ)**: このアラートは、Microsoft HTML アプリケーション ホスト (HTA) が PowerShell コマンドを起動していることを示します。 これは攻撃者が悪質な PowerShell スクリプトを起動するときに使う手法です。
 * **Change to a registry key that can be abused to bypass UAC (UAC のバイパスに悪用される可能性があるレジストリ キーの変更)**: このアラートは、UAC (ユーザー アカウント制御) のバイパスに悪用される可能性があるレジストリ キーが変更されたことを示します。これは、侵害されたホスト上で特権を持たない (標準ユーザー) アクセス権から特権のある (たとえば管理者) アクセス権に移行するために攻撃者によってよく使用されます。
-* **Use of suspicious domain name within command line (コマンド ラインでの疑わしいドメイン名の使用)**: このアラートは、疑わしいドメイン名が使用されたことを示します。これは、攻撃者が、コマンドと制御およびデータの取り出しのエンドポイントとして悪意のあるツールをホストしている証拠である可能性があります。
+* **Use of suspicious domain name within command line (コマンド ラインでの疑わしいドメイン名の使用)**: このアラートは、疑わしいドメイン名が使用されたことを示します。これは、攻撃者が、指揮管理とデータの取り出しのエンドポイントとして悪意のあるツールをホストしている証拠である可能性があります。
 * **An account was created on multiple hosts within a 24-hour time period (24 時間以内に複数のホストにアカウントが作成されました)**: このアラートは、複数のホストに同じユーザー アカウントの作成が試みられたことを示します。これは、攻撃者が、1 つ以上のネットワーク エンティティを侵害した後に、ネットワーク全体を横断している証拠である可能性があります。
 * **Suspicious use of CACLS to lower the security state of the system (システムのセキュリティ状態を低下させる CACLS の疑わしい使用)**: このアラートは、Change Access Control List (CACLS) が変更されたことを示します。 この手法は、攻撃者が ftp.exe、net.exe、wscript.exe などのシステム バイナリに完全アクセス権を付与するためによく使われます。
 * **Suspected Kerberos Golden Ticket attack parameters (疑わしい Kerberos ゴールデン チケット攻撃パラメーター)**: このアラートは、Kerberos ゴールデン チケット攻撃と一致するコマンド ライン パラメーターが実行されたことを示します。 攻撃者は侵害した krbtgt キーを使用して、目的の任意のユーザーになりすますことができます。
 * **Enabling of the WDigest UseLogonCredential registry key (WDigest UseLogonCredential レジストリ キーの有効化)**: このアラートは、サインイン資格情報がクリア テキストで LSA メモリに格納されるようにレジストリ キーが変更され、その結果、資格情報をメモリから取得できるようになったことを示します。
 * **Potentially suspicious use of Telegram tool (Telegram ツールの疑わしい可能性がある使用方法)**: このアラートは、Telegram がインストールされたことを示します。これは、悪意のあるバイナリを他のコンピューター、電話、またはタブレットに転送するために攻撃者が使用する無料のクラウドベースのインスタント メッセージング サービスです。
-* **New ASEP creation (新しい ASEP の作成)**: このアラートは、新しい ASEP (Start Extensibility Point) が作成されたことを示します。これによって、コマンド ラインで指定された名前のプロセスが自動的に開始され、攻撃者が永続化を達成するために使用する可能性があります。
+* **New ASEP creation (新しい ASEP の作成)**: このアラートは、新しい ASEP (Auto Start Extensibility Point) が作成されたことを示します。これによって、コマンド ラインで指定された名前のプロセスが自動的に開始され、攻撃者が永続化を達成するために使用する可能性があります。
 * **Suspicious Set-ExecutionPolicy and WinRM changes (疑わしい Set-ExecutionPolicy と WinRM の変更)**: このアラートは、悪意のある ChinaChopper webshell の使用に関連する構成の変更を示します。
 * **Disabling of critical services (重要なサービスの無効化)**: このアラートは、"net.exe stop" コマンドが SharedAccess や Windows Security Center などの重要なサービスを停止するために使用されたことを示します。
 * **Suspicious use of FTP -s switch (FTP -s スイッチの疑わしい使用)**: このアラートは、FTP の "-s" スイッチが使用されたことを示します。これは、マルウェアがリモート FTP サーバーに接続し、悪意のあるバイナリをさらにダウンロードするために使用されることがあります。

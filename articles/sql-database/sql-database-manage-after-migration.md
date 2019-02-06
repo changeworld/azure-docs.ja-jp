@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052719"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478476"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -83,7 +83,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 - [Azure Active Directory 認証](sql-database-aad-authentication.md)
 - SQL 認証
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の論理サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の SDL Database サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
 |---|---|
@@ -106,7 +106,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 #### <a name="firewall"></a>ファイアウォール
 
-ファイアウォールは、論理サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、論理サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、論理サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
+ファイアウォールは、SDL Database サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、SDL Database サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、SDL Database サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
 
 サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルのファイアウォール ルールは、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database でのファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
 
@@ -240,7 +240,7 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
 #### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、単一データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
+Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
 
 ![監視グラフ](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -250,7 +250,7 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 #### <a name="dynamic-management-views"></a>動的管理ビュー
 
-リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、sys.resource_stats システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
+リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
 
 #### <a name="query-performance-insight"></a>Query Performance Insight
 
@@ -287,7 +287,7 @@ SQL Database には、Basic、Standard、Premium というさまざまなサー�
 
 コンピューティング サイズが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のコンピューティング サイズへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のコンピューティング サイズからのスケールダウンを検討します。
 
-SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 Elastic Pool を使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)に関するページをご覧ください。
+SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 エラスティック プールを使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)に関するページをご覧ください。
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>どのくらいの頻度でデータベースの整合性チェックを実行する必要がありますか
 
