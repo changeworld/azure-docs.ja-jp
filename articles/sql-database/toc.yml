@@ -218,7 +218,7 @@ items:
     - name: Advanced Data Security
       items:
       - name: Advanced Data Security
-        href: sql-advanced-threat-protection.md
+        href: sql-database-advanced-data-security.md
       - name: データの検出と分類
         href: sql-database-data-discovery-and-classification.md
       - name: 脆弱性評価
@@ -710,9 +710,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 1e0f7cb461441c500e3fd1b9b78ae6e829d9d578
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fc900fc17f4dbd1ee1527fc8a84053408d83d98d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561452"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731293"

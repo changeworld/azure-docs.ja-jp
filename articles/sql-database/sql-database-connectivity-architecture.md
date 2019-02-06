@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388330"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469117"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -34,7 +34,7 @@ ms.locfileid: "54388330"
 >
 > サービス エンドポイントのユーザーは、次のシナリオでも影響を受ける可能性があります。
 > - アプリケーションがめったに既存のサーバーに接続しないため、テレメトリがこれらのアプリケーションに関する情報を取得しなかった場合
-> - サービス エンドポイント接続の既定の動作が `Proxy` であるとしたときに、自動デプロイ ロジックが論理サーバーを作成する場合
+> - サービス エンドポイント接続の既定の動作が `Proxy` であるとしたときに、自動デプロイ ロジックが SQL データベース サーバーを作成する場合
 >
 > Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 12000 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内の Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
 > [!NOTE]

@@ -124,6 +124,8 @@ items:
     href: cloudevents-schema.md
   - name: イベント ドメインを使用したトピックの管理
     href: how-to-event-domains.md
+  - name: クライアント側のフェールオーバーの実装
+    href: custom-disaster-recovery.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -173,9 +175,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: b6b011471b9cc73161312786d7f961951a533100
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e88de075666f8565be9f977d24b038899604970d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081474"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692899"

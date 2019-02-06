@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846185"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476398"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -34,7 +34,7 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 > [!NOTE]
 > クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 仮想マシンは、異なる複数のクラウド サービスでまだ並列に処理されています。
 >
-> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [**External_EnableClassicVMs**](#variables) 変数を **False** に変更する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    - 新しい **Log Analytics ワークスペース**の名前 ("ContosoLAWorkspace" など) を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
-   - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、および**西ヨーロッパ**のみです。
+   - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、**西ヨーロッパ**、および**米国西部 2** のみです。
    - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Log Analytics は[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
 
 5. **[Log Analytics ワークスペース]** ページで必要な情報を入力したら、**[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、**[ソリューションの追加]** ページに戻ります。
@@ -90,6 +90,9 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 8. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
+> [!NOTE]
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションがある場合、デプロイ完了後に、Automation アカウントで、**[共有リソース]** の **[変数]** に移動し、[**External_EnableClassicVMs**](#variables) 変数を **False** に設定してください。 これにより、ソリューションによるクラシック VM リソースの検索が停止します。
+
 ## <a name="scenarios"></a>シナリオ
 
 ソリューションには 3 つのシナリオがあります。 そのシナリオを次に示します。
@@ -108,8 +111,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループに対する起動および停止アクションを対象にする
 
 1. **External_Stop_ResourceGroupNames** 変数と **External_ExcludeVMNames** 変数を構成して対象の VM を指定します。
-1. **Scheduled-StartVM** スケジュールと **Scheduled-StopVM** スケジュールを有効にして、更新します。
-1. ACTION パラメーターを **start** に設定し、WHATIF パラメーターを **True** に設定して、**ScheduledStartStop_Parent** Runbook を実行し、ご自身の変更をプレビューします。
+2. **Scheduled-StartVM** スケジュールと **Scheduled-StopVM** スケジュールを有効にして、更新します。
+3. ACTION パラメーターを **start** に設定し、WHATIF パラメーターを **True** に設定して、**ScheduledStartStop_Parent** Runbook を実行し、ご自身の変更をプレビューします。
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
@@ -205,6 +208,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_Threshold | 変数 _External_AutoStop_MetricName_ で指定される Azure アラート ルールのしきい値。 パーセンテージの値の範囲は 1 ～ 100 です。|
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
+|External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。|
 |External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
@@ -279,7 +283,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-|クエリ | 説明|
+|Query | 説明|
 |----------|----------|
 |正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 |正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|

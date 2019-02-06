@@ -81,6 +81,8 @@ items:
       href: stream-analytics-job-reliability.md
     - name: マネージド ID による認証
       href: stream-analytics-managed-identities-adls.md
+    - name: SQL リファレンスを使用する
+      href: sql-reference-data.md
   - name: ソリューションを構築する
     items:
     - name: Twitter センチメントの分析
@@ -427,9 +429,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: afaa9f2a88a6ac3f93ffb58747381ae93ccd677a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 63ca98d968397f7626341e9cfdece664bdde971e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886545"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695306"

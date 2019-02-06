@@ -66,8 +66,10 @@ items:
       href: manage-database-permissions.md
     - name: クラスターの正常性を確認する
       href: check-cluster-health.md
-    - name: クラスター スケーリングを管理する
-      href: manage-cluster-scaling.md
+    - name: クラスターのスケールアウトの管理
+      href: manage-cluster-scale-out.md
+    - name: クラスターのスケールアップの管理
+      href: manage-cluster-scale-up.md
     - name: データの削除
       href: delete-data.md
     - name: 重複したデータを処理する
@@ -120,9 +122,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: a3ebd0582761ed9f0ee69cb8eaed637e46049d4d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 298df030448f1410ef687405586d4e97827076e9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295459"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727777"

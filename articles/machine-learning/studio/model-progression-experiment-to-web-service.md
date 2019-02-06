@@ -1,15 +1,21 @@
 ---
-title: Machine Learning Studio モデルが Web サービスになるまでの過程
-titleSuffix: Azure Machine Learning Studio
+title: Machine Learning モデルが Web サービスになるまでの過程
+titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
+ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477983"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning Studio モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
@@ -26,9 +32,9 @@ Azure Machine Learning Studio によって提供される対話形式のキャ�
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
 > [!NOTE]
-> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure ML を使用した予測 Web Apps の開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
-> 
-> 
+> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure Machine Learning Studio を使用した予測 Web Apps の開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
+>
+>
 
 Azure Machine Learning Studio は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio の機能を網羅することにします。
 
@@ -57,8 +63,8 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 > [!NOTE]
 > **[Predictive Web Service (予測 Web サービス)]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。 トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。 詳細については、[Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>Web サービス
 予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
@@ -91,7 +97,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 1. **Web サービスの実行中にモデルを再トレーニングする**: 予測 Web サービスの実行中にモデルを再トレーニングするには、トレーニング実験にいくつか変更を加えて "***再トレーニング実験***" にすることで実行できます。さらにそれを "***再トレーニング Web* サービス**" としてデプロイできます。 この方法の手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」を参照してください。
 2. **元のトレーニング実験に戻り、さまざまなトレーニング データを使用してモデルを開発する**: 予測実験は Web サービスにリンクされますが、この方法では、トレーニング実験は直接リンクされません。 元のトレーニング実験を変更し、**[Web サービスの設定]** をクリックすると、"*新しい*" 予測実験が作成されます。これをデプロイすると、"*新しい*" Web サービスが作成されます。 単に元の Web サービスを更新するのではありません。
-   
+
    トレーニング実験を変更する必要がある場合は、トレーニング実験を開き、 **[名前を付けて保存]** をクリックしてコピーを作成します。 これにより、元のトレーニング実験、予測実験、Web サービスはそのままの状態で維持されます。 そのうえで、変更を加えることにより、新しい Web サービスを作成できます。 新しい Web サービスをデプロイした後で、前の Web サービスを停止するか、新しい Web サービスと共に実行し続けるかを決定できます。
 
 **別のモデルをトレーニングする必要がある場合**

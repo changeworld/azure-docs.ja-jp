@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2010
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852390"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296174"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -128,6 +128,12 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 ---
 
+**Q:UPN の変更後、Azure AD 参加済みデバイスでユーザーに問題が生じるのはなぜですか?**
+
+**A:** 現在、Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 そのため、UPN の変更後に Azure AD での認証が失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するために、ユーザーは新しい UPN を使用して [他のユーザー] タイルから Windows にサインインする必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
+
+---
+
 **Q:ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすればそれらのデバイスからの印刷を有効にできますか?**
 
 **A:** Azure AD 参加済みデバイス用にプリンターをデプロイするには、[事前認証を使用した Windows Server ハイブリッド クラウド印刷のデプロイ](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)に関するページを参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
@@ -170,7 +176,7 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **Q:PC を Azure AD に参加させようとしたときに、*[申し訳ありません。エラーが発生しました]* ダイアログが表示されるのはなぜですか?**
 
-**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment)」をご覧ください。  
+**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment)」をご覧ください。  
 
 ---
 
@@ -179,6 +185,19 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 **A:** ユーザーがローカルのあらかじめ登録された Administrator アカウントを使用してデバイスにサインインしていることが原因と考えられます。 Azure Active Directory Join を使用してセットアップを完了する前に、別のローカル アカウントを作成してください。 
 
 ---
+
+**Q: Windows 10 デバイスに存在する MS-Organization-P2P-Access 証明書とは何ですか?**
+
+**A:** MS-Organization-P2P-Access 証明書は、Azure AD によって Azure AD 参加済みデバイスとハイブリッド Azure AD 参加済みデバイスの両方に発行されます。 これらの証明書を使用して、リモート デスクトップのシナリオで同じテナント内のデバイス間の信頼を可能にします。 1 つの証明書はデバイスに発行され、もう 1 つはユーザーに発行されます。 デバイス証明書は `Local Computer\Personal\Certificates` 内に存在し、1 日間有効です。 この証明書は、デバイスが Azure AD でアクティブなままの場合、(新しい証明書を発行することで) 更新されます。 ユーザー証明書は `Current User\Personal\Certificates` 内に存在します。この証明書も 1 日間有効ですが、ユーザーが別の Azure AD 参加済みデバイスへのリモート デスクトップ セッションを試みたときに、オンデマンドで発行されます。 これは期限切れ時に更新されません。 これらの証明書は、両方とも、`Local Computer\AAD Token Issuer\Certificates` 内に存在する MS-Organization-P2P-Access を使用して発行されます。 この証明書は、デバイスの登録時に Azure AD によって発行されます。 
+
+---
+
+**Q: Windows 10 デバイス上に MS-Organization-P2P-Access によって発行された有効期限切れの証明書が複数表示されるのはなぜですか?どうすれば削除できますか?**
+
+**A:** Windows 10 バージョン 1709 以前では、暗号化の問題のために、有効期限切れの MS-Organization-P2P-Access 証明書が引き続き存在するという問題が確認されました。 多数の有効期限切れの証明書を処理できない VPN クライアント (Cisco AnyConnect など) を使用している場合、ユーザーにはネットワーク接続に関する問題が発生する可能性がありました。 この問題は、Windows 10 1803 リリースで、MS-Organization-P2P-Access 証明書が自動的に削除されるように修正されました。 この問題は、デバイスを Windows 10 1803 に更新することで解決できます。 更新できない場合は、悪影響を及ぼすことなく、これらの証明書を削除できます。  
+
+---
+
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Hybrid Azure AD Join の FAQ
 
@@ -196,7 +215,15 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されます。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加とみなされます。 Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 [Windows 10 コンピューターでこの二重状態を回避またはクリーンアップする](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)方法を確認してください。 
 
+
 ---
+
+**Q:UPN の変更後、Windows 10 のハイブリッド Azure AD 参加済みデバイスでユーザーに問題が生じるのはなぜですか?**
+
+**A:** 現在、ハイブリッド Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 UPN の変更後、ユーザーはデバイスにサインインして、オンプレミス アプリケーションにアクセスできますが、Azure AD での認証は失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するには、Azure AD からデバイスの参加を解除 (昇格された特権を使用して "dsregcmd /leave" を実行) し、再度参加する (自動的に行われる) 必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
+
+---
+
 
 ## <a name="azure-ad-register-faq"></a>Azure AD の登録の FAQ
 
@@ -217,15 +244,3 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
----
-
-
-**Q: Windows 10 デバイスに存在する MS-Organization-P2P-Access 証明書とは何ですか?**
-
-**A:** MS-Organization-P2P-Access 証明書は、Azure AD によって Azure AD 参加済みデバイスとハイブリッド Azure AD 参加済みデバイスの両方に発行されます。 これらの証明書を使用して、リモート デスクトップのシナリオで同じテナント内のデバイス間の信頼を可能にします。 1 つの証明書はデバイスに発行され、もう 1 つはユーザーに発行されます。 デバイス証明書は `Local Computer\Personal\Certificates` 内に存在し、1 日間有効です。 この証明書は、デバイスが Azure AD でアクティブなままの場合、(新しい証明書を発行することで) 更新されます。 ユーザー証明書は `Current User\Personal\Certificates` 内に存在します。この証明書も 1 日間有効ですが、ユーザーが別の Azure AD 参加済みデバイスへのリモート デスクトップ セッションを試みたときに、オンデマンドで発行されます。 これは期限切れ時に更新されません。 これらの証明書は、両方とも、`Local Computer\AAD Token Issuer\Certificates` 内に存在する MS-Organization-P2P-Access を使用して発行されます。 この証明書は、デバイスの登録時に Azure AD によって発行されます。 
-
----
-
-**Q: Windows 10 デバイス上に MS-Organization-P2P-Access によって発行された有効期限切れの証明書が複数表示されるのはなぜですか?どうすれば削除できますか?**
-
-**A:** Windows 10 バージョン 1709 以前では、暗号化の問題のために、有効期限切れの MS-Organization-P2P-Access 証明書が引き続き存在するという問題が確認されました。 多数の有効期限切れの証明書を処理できない VPN クライアント (Cisco AnyConnect など) を使用している場合、ユーザーにはネットワーク接続に関する問題が発生する可能性がありました。 この問題は、Windows 10 1803 リリースで、MS-Organization-P2P-Access 証明書が自動的に削除されるように修正されました。 この問題は、デバイスを Windows 10 1803 に更新することで解決できます。 更新できない場合は、悪影響を及ぼすことなく、これらの証明書を削除できます。  

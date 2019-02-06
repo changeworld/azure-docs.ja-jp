@@ -11,24 +11,24 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 301b0179c8222bfdff3b07f7962a74a4cc83b8f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.date: 01/25/2019
+ms.openlocfilehash: 8d2cac7635b9d97561b3cebf517c95855407cbe3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432287"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462785"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 
 既定で、SQL Database のバックアップは Geo レプリケートされている Blob ストレージ (RA-GRS) に格納されます。 [自動データベース バックアップ](sql-database-automated-backups.md)を使用したデータベースの復旧には、次のオプションを使用できます。
 
-- 保有期間内の特定の時点に復旧された、同じ論理サーバー上に新しいデータベースを作成する。
-- 削除済みデータベースの削除時に復旧された、同じ論理サーバー上にデータベースを作成する。
-- 最新のバックアップの時点に復旧された、同じリージョンの論理サーバー上に新しいデータベースを作成する。
-- 最後にレプリケートされたバックアップの時点に復旧された、任意の他のリージョンの論理サーバー上に新しいデータベースを作成する。
+- 保有期間内の特定の時点に復旧された、同じ SQL Database サーバー上に新しいデータベースを作成する。
+- 削除済みデータベースの削除時点に復旧された、同じ SQL Database サーバー上にデータベースを作成する。
+- 最新のバックアップの時点に復旧された、同じリージョンの SQL Database サーバー上に新しいデータベースを作成する。
+- 最後にレプリケートされたバックアップの時点に復旧された、任意の他のリージョンの SQL Database サーバー上に新しいデータベースを作成する。
 
-[長期保有期間のバックアップ](sql-database-long-term-retention.md)を構成している場合、任意のリージョンの任意の論理サーバー上に任意の LTR バックアップから新しいデータベースを作成することもできます。
+[長期保有期間のバックアップ](sql-database-long-term-retention.md)を構成している場合、任意のリージョンの任意の SQL Database サーバー上に任意の LTR バックアップから新しいデータベースを作成することもできます。
 
 > [!IMPORTANT]
 > 復元中に既存のデータベースを上書きすることはできません。
@@ -71,7 +71,7 @@ Standard または Premium サービス レベルを使用している場合、�
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用し、同じサーバー上の新しいデータベースとして、単一のデータベース、プールされたデータベース、または Managed Instance データベースを以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用して、スタンドアロン データベース、プールされたデータベース、またはインスタンス データベースを、同じサーバーに新しいデータベースとして、以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
 
 通常、以前の時点へのデータベースの復元は、復旧の目的で行います。 その場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得して元のデータベースの更新に使用できます。
 
@@ -83,7 +83,7 @@ Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm
 
   ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースから元のデータベースにデータを抽出するのに必要なデータ復旧のスクリプトを書き込み、実行する必要があります。 復元操作が完了するまでに時間がかかる可能性がありますが、復元プロセスを通して、復元しているデータベースがデータベース一覧に表示されます。 復元中にデータベースを削除すると、復元操作は取り消され、復元が完了していないデータベースの料金はかかりません。
 
-Azure portal を使用して単一のデータベース、プールされたデータベース、または Managed Instance データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
+Azure portal を使用してスタンドアロン データベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
 
 ![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -92,7 +92,7 @@ Azure portal を使用して単一のデータベース、プールされたデ�
 
 ## <a name="deleted-database-restore"></a>削除されたデータベースの復元
 
-Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、削除されたデータベースを同じ論理サーバー上の削除されたデータベースの削除時刻に復元できます。 [PowerShell を使用して Managed Instance 上の削除されたデータベースを復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance)できます。 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) を使った復元の間に、削除されたデータベースを以前の時点に復元することができます。
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、同じ SQL Database サーバーに、削除されたデータベースを、そのデータベースの削除時点に復元できます。 [PowerShell を使用して Managed Instance 上の削除されたデータベースを復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance)できます。 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) を使った復元の間に、削除されたデータベースを以前の時点に復元することができます。
 
 > [!TIP]
 > 削除されたデータベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
@@ -139,7 +139,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 
 ### <a name="powershell"></a>PowerShell
 
-- 単一のデータベースまたはプールされたデータベースを復元するには、「[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)」を参照してください
+- スタンドアロン データベースまたはプールされたデータベースを復元するには、「[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)」を参照してください。
 
   | コマンドレット | 説明 |
   | --- | --- |
@@ -155,7 +155,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 
 ### <a name="rest-api"></a>REST API
 
-REST API を使用して単一のデータベースまたはプールされたデータベースを復元するには:
+REST API を使用してスタンドアロン データベースまたはプールされたデータベースを復元するには、以下を実行します。
 
 | API | 説明 |
 | --- | --- |
@@ -164,7 +164,7 @@ REST API を使用して単一のデータベースまたはプールされた�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+Azure CLI を使用してスタンドアロン データベースまたはプールされたデータベースを復元するには、「[az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 

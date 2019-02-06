@@ -1,15 +1,8 @@
 ---
-title: Machine Learning Studio ジョブ用の Azure Batch サービス
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
-ms.date: 04/19/2017
+title:Machine Learning Studio ジョブ用の Azure Batch サービス titleSuffix:Azure Machine Learning Studio description:Machine Learning ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs' ms.date:04/19/2017
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Machine Learning Studio ジョブ用の Azure Batch サービス
 

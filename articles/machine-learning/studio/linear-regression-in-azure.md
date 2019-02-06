@@ -1,5 +1,5 @@
 ---
-title:Excel から Azure Machine Learning Studio に分析を移行する titleSuffix: Azure Machine Learning Studio description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:Excel から Azure Machine Learning Studio に分析を移行する titleSuffix:Azure Machine Learning Studio description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
 ---

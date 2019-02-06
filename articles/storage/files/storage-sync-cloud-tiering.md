@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623653"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470452"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。
@@ -21,7 +21,7 @@ ms.locfileid: "51623653"
 ユーザーが階層化されたファイルを開くと、Azure File Sync によってファイル データが Azure Files からシームレスに再呼び出しされます。ユーザーは、ファイルが実際に Azure に格納されていることを知る必要はありません。 
  
  > [!Important]  
-    > 重要: クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
+    > 重要:クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
     
 Azure File Sync では 64 KiB よりも小さいファイルの階層化はサポートされていません。そのようなファイルを階層化および再呼び出することで生じるパフォーマンスのオーバーヘッドが領域の節約を上回るからです。
 
@@ -86,7 +86,7 @@ Azure File Sync エージェントのバージョン 4.0 以上では、ファ�
         fsutil reparsepoint query <your-file-name>
         ```
 
-        ファイルに再解析ポイントがある場合、**Reparse Tag Value : 0x8000001e** と表示されることが想定されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
+        ファイルに再解析ポイントがある場合、"**Reparse Tag Value: 0x8000001e**" と表示されることが想定されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
 
         > [!WARNING]  
         > `fsutil reparsepoint` ユーティリティ コマンドには、再解析ポイントを削除する機能も含まれています。 Azure File Sync のエンジニア チームによって指示されない限り、このコマンドは実行しないでください。 このコマンドを実行すると、データが失われる可能性があります。 

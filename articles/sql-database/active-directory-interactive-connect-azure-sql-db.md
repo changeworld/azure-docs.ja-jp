@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958819"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464553"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>ActiveDirectoryInteractive モードを使用した Azure SQL Database への接続
 
 この記事では、Microsoft Azure SQL Database に接続するための実行可能な C# コードの例を紹介します。 この C# プログラムでは、Azure AD Multi-Factor Authentication (MFA) をサポートする対話モードの認証を使用します。 たとえば、携帯電話に送信される確認コードを接続試行に含めることができます。
 
 SQL ツールでの MFA のサポートの詳細については、「[Azure Active Directory support in SQL Server Data Tools (SSDT) (SQL Server Data Tools (SSDT) での Azure Active Directory のサポート)](https://docs.microsoft.com/sql/ssdt/azure-active-directory)」をご覧ください。
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod .ActiveDirectoryInteractive 列挙値
 
@@ -54,11 +51,9 @@ MFA を要求するように Azure AD を構成する方法については、「
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>Azure portal を使用した C# の準備
 
 [Azure SQL Database サーバーが既に作成され](sql-database-get-started-portal.md)、使用可能であることを前提としています。
-
 
 ### <a name="a-create-an-app-registration"></a>A. アプリの登録を作成する
 
@@ -87,7 +82,7 @@ Azure AD Authentication を使用するには、C# クライアント プログ�
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. SQL Database サーバーの Azure AD 管理者を設定する
 
-各 Azure SQL Database サーバーには、Azure AD の独自の SQL 論理サーバーがあります。 この C# シナリオでは、Azure SQL サーバーの Azure AD 管理者を設定する必要があります。
+それぞれの Azure SQL 単一データベースとエラスティック プールには、Azure AD の独自の SQL Database サーバーがあります。 この C# シナリオでは、Azure SQL サーバーの Azure AD 管理者を設定する必要があります。
 
 1. **[SQL Server]** &gt; **[Active Directory 管理者]** &gt; **[管理者の設定]**
 

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530478"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473767"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。
@@ -130,8 +130,8 @@ CORS ルールは、次のように評価されます。
 | Request |  |  | Response |  |
 | --- | --- | --- | --- | --- |
 | **メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |最初のルール |成功 |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |2 番目のルール |成功 |
+| **PUT** |http://www.contoso.com |x-ms-blob-content-type |最初のルール |Success |
+| **GET** |http://www.contoso.com |x-ms-blob-content-type |2 番目のルール |Success |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
 
 最初の要求は最初のルールと一致します (元のドメインが許可される元のドメインと一致し、メソッドが許可されるメソッドと一致し、ヘッダーが許可されるヘッダーと一致します)。そのため、成功します。

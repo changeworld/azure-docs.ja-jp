@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726033"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472016"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database の購入モデル
 
 Azure SQL Database では、パフォーマンスとコストのニーズに合ったフル マネージド PaaS データベース エンジンを簡単に購入できます。 Azure SQL Database のデプロイ モデルに応じて、ニーズに合った購入モデルを選択できます。
+
 - [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。これによりワークロードのニーズに合わせて正確な量のストレージ容量を選択し、計算することができます。
 - [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)。一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージを選択できます。
 
 Azure SQL Database のデプロイ モデルでは、次のようなさまざまな購入モデルを利用できます。
-- [Azure SQL Database](sql-database-technical-overview.md) の[論理サーバー](sql-database-logical-servers.md)は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の両方を提供します。 この購入モデル内で、[単一データベース](sql-database-single-databases-manage.md)または[エラスティック プール](sql-database-elastic-pool.md)を選択できます。
+
+- [Azure SQL Database](sql-database-technical-overview.md) の[単一データベース](sql-database-single-databases-manage.md)と[エラスティック プール](sql-database-elastic-pool.md)は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)の両方を提供します。 
 - [Azure SQL Database](sql-database-service-tiers-vcore.md) の[マネージド インスタンス](sql-database-managed-instance.md)に用意されている購入モデルは仮想コア ベースのみです。
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 
 ### <a name="database-transaction-units-dtus"></a>データベース トランザクション ユニット (DTU)
 
-[サービス レベル](sql-database-single-database-scale.md)内の特定のコンピューティング サイズの単一の Azure SQL Database の場合、Microsoft では、そのデータベース (Azure クラウド内の他のデータベースから独立した) に対し、特定のレベルのリソースと予測可能なレベルのパフォーマンスの提供を保証します。 リソースの量は、データベース トランザクション ユニット (DTU) の数として計算され、コンピューティング、ストレージ、および IO リソースのバンドルされたメジャーです。 これらのリソース間の比率は、最初に一般的な現実の OLTP ワークロードとして設計された [OLTP ベンチマーク ワークロード](sql-database-benchmark-overview.md)によって特定されます。 ワークロードがこれらのいずれかのリソースの量を超えると、スループットが調整され、パフォーマンスが低下し、タイムアウトが発生します。 ワークロードによって使用されるリソースは、Azure クラウド内の他の SQL Database で使用できるリソースには影響せず、他のワークロードによって使用されるリソースは、SQL Database で使用できるリソースに影響しません。
+[サービス レベル](sql-database-single-database-scale.md)内の特定のコンピューティング サイズの単一データベースの場合、Microsoft では、そのデータベース (Azure クラウド内の他のデータベースから独立した) に対し、特定のレベルのリソースと予測可能なレベルのパフォーマンスの提供を保証します。 リソースの量は、データベース トランザクション ユニット (DTU) の数として計算され、コンピューティング、ストレージ、および IO リソースのバンドルされたメジャーです。 これらのリソース間の比率は、最初に一般的な現実の OLTP ワークロードとして設計された [OLTP ベンチマーク ワークロード](sql-database-benchmark-overview.md)によって特定されます。 ワークロードがこれらのいずれかのリソースの量を超えると、スループットが調整され、パフォーマンスが低下し、タイムアウトが発生します。 ワークロードによって使用されるリソースは、Azure クラウド内の他の SQL Database で使用できるリソースには影響せず、他のワークロードによって使用されるリソースは、SQL Database で使用できるリソースに影響しません。
 
 ![境界ボックス](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

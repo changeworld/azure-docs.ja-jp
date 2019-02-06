@@ -76,15 +76,9 @@ items:
       href: deploy-with-resource-manager-template.md
   - name: トレーニング データをインポートする
     items:
-    - name: 概要
+    - name: Import data
       href: import-data.md
-    - name: ローカル ファイルから
-      href: import-data-from-local-file.md
-    - name: オンライン ソースから
-      href: import-data-from-online-sources.md
-    - name: 実験から
-      href: import-data-from-an-experiment.md
-    - name: オンプレミスの SQL を使用する
+    - name: オンプレミス SQL からのデータの使用
       displayName: on-premises
       href: use-data-from-an-on-premises-sql-server.md
   - name: モデルの作成とトレーニング
@@ -222,9 +216,9 @@ items:
     href: azure-ml-netsharp-reference-guide.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 5a6d1f3492186831f5dd83f002c7c22a86de34d7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662985"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731429"

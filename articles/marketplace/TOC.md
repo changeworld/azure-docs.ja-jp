@@ -1,7 +1,7 @@
 # [Azure Marketplace と AppSource のドキュメント](index.md)
+## [Azure Marketplace と AppSource のロードマップ](./marketplace-roadmap.md)
 
 ## [Azure Marketplace と AppSource の概要とベネフィット](./marketplace-publishers-guide.md)  
-
 ### [マーケットプレースで公開元になる](./become-publisher.md)  
 #### [Microsoft アカウントを作成する](./guidelines.md)
 #### [デベロッパー センターに登録する](./register-dev-center.md) 

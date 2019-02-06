@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330162"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467698"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL Database の単一およびプールされたデータベースへのレプリケーション
 
-Azure SQL Database の[論理サーバー](sql-database-logical-servers.md)で単一またはプールされたデータベースに対して SQL Server レプリケーションを構成できます。  
+Azure SQL Database の [SQL Database サーバー](sql-database-servers.md)で単一またはプールされたデータベースに対して SQL Server レプリケーションを構成できます。  
 
 ## <a name="supported-configurations"></a>**サポートされている構成:**
   
@@ -65,7 +65,7 @@ Azure SQL Database の[論理サーバー](sql-database-logical-servers.md)で�
 
 1. オンプレミスの SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
 2. オンプレミスの SQL Server で、**新しいサブスクリプション ウィザード**または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
-3. Azure SQL Database の単一およびプールされたデータベースでは、初期データ セットはスナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 Azure SQL Database Managed Instance では、データベース バックアップを使用してサブスクライバー データベースをシードすることもできます。
+3. Azure SQL Database の単一およびプールされたデータベースでは、初期データ セットはスナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 マネージド インスタンスのデータベースでは、データベース バックアップを使用してサブスクライバー データベースをシードすることもできます。
 
 ### <a name="data-migration-scenario"></a>データ移行シナリオ  
 
@@ -107,7 +107,7 @@ Azure SQL Database の[論理サーバー](sql-database-logical-servers.md)で�
 パブリケーションおよびプッシュ サブスクリプションを作成します。 詳細については、次を参照してください。
   
 - [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。Azure SQL データベース論理サーバー名をサブスクライバーとして (**N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL データベース名を宛先データベースとして (**AdventureWorks** など) 使用します。  
+- [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。Azure SQL Database サーバー名をサブスクライバーとして (**N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL データベース名を宛先データベースとして (**AdventureWorks** など) 使用します。  
 
 ## <a name="see-also"></a>関連項目  
 

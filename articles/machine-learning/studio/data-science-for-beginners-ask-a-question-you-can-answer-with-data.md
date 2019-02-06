@@ -1,15 +1,8 @@
 ---
-title: データで回答できる質問をする
-titleSuffix: Azure Machine Learning Studio
-description: 初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: garyericson
-ms.author: garye
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 01/03/2018
+title:データで回答できる質問をする titleSuffix:Azure Machine Learning Studio description:初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/03/2018
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ

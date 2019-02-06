@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830007"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458127"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリでシャード マルチテナント Azure SQL データベースのパフォーマンスを監視および管理する
 
@@ -161,7 +161,7 @@ Wingtip Tickets SaaS マルチテナント データベースは SaaS アプリ�
 
 このスクリプトは、個別のデータベース内のこのテナントをプロビジョニングし、データベースとテナントをカタログに登録してから、そのテナントの [イベント] ページをブラウザーで開きます。 [Events Hub] (イベント ハブ) ページを更新すると、会場として "Salix Salsa" が追加されたことを確認できます。
 
-## <a name="manage-performance-of-a-single-database"></a>1 つのデータベースのパフォーマンス管理
+## <a name="manage-performance-of-an-individual-database"></a>個々のデータベースのパフォーマンス管理
 
 マルチテナント データベース内の 1 つのテナントで高負荷が持続している場合は、それがデータベース リソースを占有する傾向にあって、同じデータベース内の他のテナントに影響を与える可能性があります。 そのアクティビティがしばらく続行しそうな場合は、このテナントをデータベースから独自のシングルテナント データベースに一時的に移動できます。 これにより、そのテナントに必要な追加のリソースを提供し、それを他のテナントから完全に分離できます。
 

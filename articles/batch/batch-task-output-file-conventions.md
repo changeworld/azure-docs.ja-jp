@@ -3,7 +3,7 @@ title: .NET 用のファイル規則ライブラリを使用した Azure Storage
 description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal で永続化された出力を表示する方法を説明します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f6ac523d7944f80da1b75993bfd05d617eb8f85
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706604"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472985"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
@@ -115,7 +115,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 一覧の表示と出力の取得については、この記事の後ろのセクションの「 [出力の取得](#retrieve-output) 」で詳しく説明します。
 
 > [!TIP]
-> 出力の種類によって、特定のファイルが Azure Portal のどこに表示されるかも指定されます。 *TaskOutput* に分類されたファイルは **[Task output files]\(タスク出力ファイル)** に表示され、 *TaskLog* に分類されたファイルは **[Task logs]\(タスクのログ\)** に表示されます。
+> 出力の種類によって、特定のファイルが Azure portal のどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは **[Task output files]\(タスク出力ファイル\)** に表示され、 *TaskLog* に分類されたファイルは **[Task logs]\(タスク ログ\)** に表示されます。
 
 ### <a name="store-job-outputs"></a>ジョブの出力の格納
 

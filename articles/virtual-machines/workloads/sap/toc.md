@@ -74,6 +74,7 @@
 ### 高可用性アーキテクチャ
 #### [HA アーキテクチャとシナリオ](sap-high-availability-architecture-scenarios.md)
 #### [さらに高い可用性アーキテクチャとシナリオ](sap-higher-availability-architecture-scenarios.md)
+#### [Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows の HA](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA](sap-high-availability-guide-wsfc-file-share.md)
 #### [(A)SCS インスタンス用の SUSE Linux の HA](high-availability-guide-suse.md)

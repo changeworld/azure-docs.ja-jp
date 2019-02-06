@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301084"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466984"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
@@ -68,7 +68,7 @@ WHERE   [label] = 'My Query';
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-**中断** 状態のクエリは、同時実行の制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 同時実行の制限に関する情報については、[パフォーマンス レベル](performance-tiers.md)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
+**中断** 状態のクエリは、コンカレンシーの制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 コンカレンシーの制限に関する情報については、[パフォーマンス レベル](performance-tiers.md)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
 
 sys.dm_pdw_exec_requests テーブルのクエリの検索を単純化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 
@@ -97,7 +97,7 @@ DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手
 1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、**手順インデックス**を書き留めます。
 
 * 手順 3a の **SQL 操作**(OnOperation、RemoteOperation、ReturnOperation) に進みます。
-* 手順 3b の **Data Movement 操作**(ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation) に進みます。
+* 手順 3b の **Data Movement 操作** (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation) に進みます。
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>手順 3a: 分散データベースでの SQL を調査する
 要求 ID と手順インデックスを使用して、[sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] から詳細情報を取得します。これには、すべての分散データベースに対するクエリ手順の実行情報が含まれます。
@@ -119,7 +119,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>手順 3b: 分散データベース上のデータ移動を調査する
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>手順 3 b: 分散データベース上のデータ移動を調査する
 要求 ID と手順インデックスを利用して、[sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] から、各ディストリビューションで実行されているデータ移動手順に関する情報を取得します。
 
 ```sql

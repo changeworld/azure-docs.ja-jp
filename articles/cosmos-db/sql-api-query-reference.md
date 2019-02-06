@@ -8,14 +8,14 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354469"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475189"
 ---
-# <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 言語リファレンス 
+# <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
 Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL クエリ言語の構文のドキュメントを提供します。これは、SQL API アカウントと互換性があります。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリ](how-to-sql-query.md)に関するページを参照してください。  
   
@@ -2169,7 +2169,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `num_expr`  
   
-     任意の有効な数値式です。  
+     任意の有効な数値式です。 num_expr が負の数値である場合、または有限の数値でない場合、結果は未定義になります。
+
+  > [!NOTE]
+  > 結果の最大長は 10,000 文字、つまり (length(str_expr) * num_expr) <= 10,000 です。
   
  **戻り値の型**  
   
@@ -2723,7 +2726,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **例**  
   
- 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 にも掲載されています。  
+ 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 。  
   
 ```  
 SELECT f.id   

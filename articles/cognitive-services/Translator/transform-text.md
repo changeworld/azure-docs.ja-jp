@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9586ffac2fc1f4d3e0a03d0e20052ad16b88cbe9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 66371fcdc3afba7a5974d8db047242c0c1646bc0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684787"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476861"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
@@ -30,7 +30,7 @@ TransformText メソッドは、ソーシャル メディア用のテキスト�
 
 | パラメーター | 説明 |
 |:---|:---|
-| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 キーとして "Authorization" を、値として "Bearer" + " " + アクセス トークンを使用します。 詳細については、ここを参照してください。|
+| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 次のキーを使用:“Authorization” と値:"Bearer" + " " + アクセス トークン。 詳細については、ここを参照してください。|
 | language | **必須**: 言語コードを表す文字列。 このパラメーターは、言語名として **en** を指定する英語のみをサポートしています。|
 | category | **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション **general** のみをサポートしています。|
 | sentence | **必須**: 修正する文。 |

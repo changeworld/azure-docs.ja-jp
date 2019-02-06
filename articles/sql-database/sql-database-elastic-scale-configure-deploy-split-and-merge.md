@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969585"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458059"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 
@@ -204,7 +204,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>PowerShell でのデプロイの確認
 1. 新しい PowerShell ウィンドウを開き、分割-結合パッケージをダウンロードしたディレクトリに移動し、"powershell" ディレクトリに移動します。
-2. Azure SQL データベース サーバーを作成 (または既存のサーバーを選択) します。ここでシャード マップ マネージャーとシャードが作成されます。
+2. Azure SQL Database サーバーを作成 (または既存のサーバーを選択) します。ここでシャード マップ マネージャーとシャードが作成されます。
    
    > [!NOTE]
    > SetupSampleSplitMergeEnvironment.ps1 スクリプトは、これらのデータベースをすべて同じサーバー上に既定で作成します。これはスクリプトの簡潔さを維持するためです。 Split-Merge サービス自体の制約ではありません。

@@ -309,7 +309,7 @@ QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | String
-UNIT | String
+ユニット | String
 DATS | String
 NUMC | String
 TIMS | String

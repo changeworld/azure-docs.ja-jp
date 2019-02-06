@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3b3f1268866c936ae4674188f8e3297702167415
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599435"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473427"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -46,7 +46,7 @@ SQL Database には、自動バックアップやオプションのデータベ�
 
 - [テンポラル テーブル](sql-database-temporal-tables.md)では、任意の時点から行バージョンを復元することができます。
 - [組み込み自動バックアップ](sql-database-automated-backups.md)と[ポイントイン タイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)では、過去 35 日以内のいずれかの時点にデータベース全体を復元することができます。
-- **論理サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に戻す](sql-database-recovery-using-backups.md#deleted-database-restore)ことができます。
+- **SQL Database サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に戻す](sql-database-recovery-using-backups.md#deleted-database-restore)ことができます。
 - [長期的なバックアップ保有期間](sql-database-long-term-retention.md)では、バックアップを 10 年間保持することができます。
 - データ センターの停止またはアプリケーションのアップグレードが発生した場合に、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使って、読み取り可能レプリカを作成し、手動で任意のレプリカにフェールオーバーできます。
 - [自動フェールオーバー グループ](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)を使用すると、データ センターの機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。
@@ -63,7 +63,7 @@ SQL Database には、自動バックアップやオプションのデータベ�
 
 ## <a name="recover-a-database-to-the-existing-server"></a>既存のサーバーにデータベースを復旧する
 
-SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (通常は 12 時間ごと)、およびトランザクション ログのバックアップ (5 - 10 分ごと) を組み合わせて自動的に実行します。 バックアップは、Basic DTU サービス レベルを除くすべてのサービス レベルで 35 日間 RA-GRS ストレージに保持されます。Basic DTU サービス レベルのバックアップは 7 日間保持されます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。 Azure portal、PowerShell、または REST API を使用して、既存のデータベースを同じ論理サーバー上の新しいデータベースとして、自動バックアップから以前の時点に復元できます。 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
+SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (通常は 12 時間ごと)、およびトランザクション ログのバックアップ (5 - 10 分ごと) を組み合わせて自動的に実行します。 バックアップは、Basic DTU サービス レベルを除くすべてのサービス レベルで 35 日間 RA-GRS ストレージに保持されます。Basic DTU サービス レベルのバックアップは 7 日間保持されます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。 Azure portal、PowerShell、または REST API を使用して、既存のデータベースを同じ SQL Database サーバー上の新しいデータベースとして、自動バックアップから以前の時点に復元できます。 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
 
 サポートされているポイントインタイム リストア (PITR) リテンション期間がアプリケーションにとって十分でない場合は、データベースの長期リテンション期間 (LTR) ポリシーを構成することで、リテンション期間を拡張できます。 詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 

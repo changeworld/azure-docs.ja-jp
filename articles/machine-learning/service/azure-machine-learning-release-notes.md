@@ -4,35 +4,62 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service と Machine Learning および Data Prep Python SDK の最新情報について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304100"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473104"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。 
+この記事では、Azure Machine Learning service の各リリースについて説明します。  各 SDK の詳細については、以下に関するリファレンス ドキュメントを参照してください。
++ Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
++ Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Azure Machine Learning SDK for Python v1.0.10
+
++ **変更点**: 
+  + Azure ML SDK では、依存関係としての azure-cli パッケージは不要になりました。 具体的には、azureml-core から azure-cli-core 依存関係と azure-cli-profile 依存関係が削除されました。 ユーザーに影響がある変更を以下に示します。
+    + "az login" を実行し、その後 azureml-sdk を使用すると、この SDK はブラウザーまたはデバイス コードのログインをもう一度行います。 "az login" によって作成された資格情報の状態は使用されません。
+    + "az login" を使用するなどの Azure CLI 認証の場合、_azureml.core.authentication.AzureCliAuthentication_ クラスを使用します。 Azure CLI 認証では、azureml-sdk をインストールした Python 環境で _pip install azure-cli_ を実行します。
+    + 自動化のためのサービス プリンシパルを使用して "az login" を実行する場合、azureml-sdk では、azure CLI によって作成された資格情報の状態が使用されないため、_azureml.core.authentication.ServicePrincipalAuthentication_ クラスを使用することをお勧めします。 
+
++ **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning Data Prep SDK v1.0.8
+
++ **バグの修正**
+  + データ プロファイルの取得におけるパフォーマンスが大幅に向上しました。
+  + エラー報告に関連する軽微なバグが修正されました。
+  
+### <a name="azure-portal-new-features"></a>Azure portal: 新機能
++ レポート作成のためのドラッグ アンド ドロップによる新しいグラフ作成エクスペリエンス。 ユーザーは、列または属性を元の場所からグラフ領域にドラッグできます。ドラッグすると、データの種類に基づき、ユーザーに対して適切なグラフの種類が自動的に選択されます。 ユーザーは、グラフの種類を別の適用可能な種類に変更することや、属性をさらに追加することができます。
+
+    サポートされるグラフの種類:
+    - 折れ線グラフ
+    - ヒストグラム
+    - 積み上げ横棒グラフ
+    - 箱ひげ図
+    - 散布図
+    - バブル プロット
 
 ## <a name="2019-01-14"></a>2019-01-14
 
 ### <a name="azure-machine-learning-sdk-for-python-v108"></a>Azure Machine Learning SDK for Python v1.0.8
 
-+ **SDK リファレンス ドキュメント**: https://aka.ms/aml-sdk
-
 + **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning Data Prep SDK v1.0.7
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/data-prep-sdk
 
 + **新機能**
   + データストアの機能強化 ([データストアのハウツーガイド](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)参照)
@@ -44,22 +71,15 @@ ms.locfileid: "54304100"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure Machine Learning Data Prep SDK v1.0.6
 
-+ **SDK リファレンス ドキュメント**: https://aka.ms/data-prep-sdk
-
 + **バグの修正**
   + Spark 上のパブリックに読み取り可能な Azure BLOB コンテナーからの読み取りでのバグを修正しました
 
 ## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>Azure Machine Learning SDK for Python v1.0.6
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/aml-sdk
-
 + **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure Machine Learning Data Prep SDK v1.0.4
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/data-prep-sdk
 
 + **新機能**
   + `to_bool` 関数では、一致しない値を Error 値に変換できるようになりました。 これは、`to_bool` および `set_column_types` の新しい既定の不一致動作です。一方、以前の既定の動作では一致しない値を False に変換していました。

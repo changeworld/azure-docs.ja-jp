@@ -315,7 +315,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | SmallMoney | SmallMoney |
 | Binary | Binary |
 | Varbinary | Varbinary (最大 8000) |
-| Date | Date |
+| 日付 | 日付 |
 | Datetime | Datetime |
 | DateTime2 | DateTime2 |
 | Time | Time |
