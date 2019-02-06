@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329707"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466355"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -55,7 +55,7 @@ sections:
       html: <p>Database Migration Service を使用して、最小限のダウンタイムで複数のデータベースを移行します。</p>
     - title: 価格
       href: https://azure.microsoft.com/pricing/hybrid-benefit/
-      html: <p>既存のオンプレミスのライセンスと Azure ハイブリッド特典 (AHB) を利用して、最大 40% 節約できます。</p>
+      html: <p>ご使用の既存のオンプレミスのライセンスと Azure ハイブリッド特典 (AHB) を利用して、最大 40% 節約できます。</p>
     - title: PaaS の機能
       href: /azure/sql-database/sql-database-paas
       html: <p>Azure PaaS では、99.99% の可用性を持つインスタンスを最小限の管理で利用できます。</p>
@@ -78,7 +78,7 @@ sections:
     - html: ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-tde-byok">暗号化キーの持ち込み</a>を行いながら、Transparent Data Encryption (TDE) が既に有効になっているオンプレミス データベースを移行します。
-    - html: Managed Instance が<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">組み込みのファイアウォール</a>で保護されます。
+    - html: Managed Instance が<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>で保護されます。
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -134,7 +134,7 @@ sections:
     - html: マネージド インスタンスがデプロイされる Azure VNet を<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">構成します</a>。
     - html: マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">検証します</a>。
     - html: <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。
-    - html: <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してデータベースを移行できることを確認します。
+    - html: <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してご使用のデータベースを移行できることを確認します。
     - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブ復元</a>または<a href="/azure/dms/tutorial-sql-server-managed-instance-online">データ移行サービス</a>を使用して、データベースを Managed Instance に移行します。
     - html: お使いの SSIS パッケージを <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a> に、SSAS 表形式モデルを <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a> に、SSRS レポートを <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premium</a> に移動します。
     - html: <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">ストレージ パフォーマンスのベスト プラクティスおよび General Purpose サービス レベルに関する考慮事項</a>を適用します。

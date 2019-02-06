@@ -1,15 +1,8 @@
 ---
-title: Machine Learning Studio Web サービスをスケーリングする
-titleSuffix: Azure Machine Learning Studio
-description: エンドポイントの追加によって Azure Machine Learning Studio Web サービスのコンカレンシー数を増やす方法を説明します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.date: 01/23/2017
+title:Machine Learning Studio Web サービスをスケーリングする titleSuffix:Azure Machine Learning Studio description:エンドポイントの追加によって Azure Machine Learning Studio Web サービスのコンカレンシー数を増やす方法を説明します。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:01/23/2017
 ---
 # <a name="scaling-an-azure-machine-learning-studio-web-service-by-adding-additional-endpoints"></a>エンドポイントの追加による Azure Machine Learning Studio Web サービスのスケーリング
 > [!NOTE]
@@ -27,9 +20,7 @@ Web サービスのスケーリングは一般的なタスクです。 スケー
 
 コンカレンシーの数を増やす場合、これに相当する高いレートで API を呼び出さないと悪影響が出ることがありますのでご注意ください。 高い負荷で構成された API に比較的低い負荷を割り当てた場合、不規則なタイムアウトや待機時間の急増が発生することがあります。
 
-同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50
-ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50
-ms と想定されます。
+同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50 ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
 
 <!--Image references-->
 [1]: ./media/scaling-webservice/machlearn-1.png

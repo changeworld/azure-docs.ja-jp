@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/29/2019
+ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232989"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466594"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 
@@ -28,7 +28,7 @@ ms.locfileid: "50232989"
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
-データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) (ATP) の一部です。 データの検出と分類は、SQL ATP ポータルを使って一元的にアクセスおよび管理できます。
+データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [SQL Advanced Data Security](sql-advanced-threat-protection.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 > [!NOTE]
 > このドキュメントは、Azure SQL Database にのみ関係があります。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification](https://go.microsoft.com/fwlink/?linkid=866999)」(SQL のデータの検出と分類) をご覧ください。
@@ -77,7 +77,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-2. [Azure SQL Database] ウィンドウの [セキュリティ] で、**[Advanced Threat Protection]** に移動します。 [Advanced Threat Protection] をクリックして有効にし、**[データの検出と分類 (プレビュー)]** カードをクリックします。
+2. [Azure SQL Database] ウィンドウの [セキュリティ] で、**[Advanced Data Security]** に移動します。 [Advanced Data Security] をクリックして有効にし、**[データの検出と分類 (プレビュー)]** カードをクリックします。
 
    ![データベースのスキャン](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -123,7 +123,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 ## <a id="subheading-3"></a>機密データへのアクセスの監査
 
-機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。 [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
+機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。 [Azure SQL Database Auditing](sql-database-auditing.md) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
 
 ![監査ログ](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -134,8 +134,8 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 > [!NOTE]
 > T-SQL を使ってラベルを管理するとき、列に追加されるラベルが組織の情報保護ポリシー (ポータルのレコメンデーションに表示されるラベルのセット) に存在することの検証は行われません。 したがって、その検証はユーザーが行う必要があります。
 
-- 1 つまたは複数の列の分類の追加/更新: [ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- 1 つまたは複数の列の分類の削除: [DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- 1 つ以上の列の分類の追加/更新:[ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- 1 つ以上の列の分類の削除:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
@@ -147,8 +147,8 @@ REST API を使用して、分類をプログラムで管理することもで�
 
 ## <a id="subheading-5"></a>次のステップ
 
-- [Azure SQL Database の Advanced Threat Protection](sql-advanced-threat-protection.md) についてさらに詳しく学習します。
-- 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) を構成することを検討します。
+- [SQL Advanced Data Security](sql-advanced-threat-protection.md) の詳細について学習します。
+- 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](sql-database-auditing.md) を構成することを検討します。
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

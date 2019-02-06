@@ -8,13 +8,13 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234716"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467970"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
 
@@ -55,7 +55,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 プレビューのサイズについては、[FAQ](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) を参照して、それらを使用できるリージョンを確認してください。
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard非管理ディスクでの TRIM の使用
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項:Standard 非管理ディスクでの TRIM の使用
 
 Standard 非管理ディスク (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。
 
@@ -72,7 +72,7 @@ fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> 注: Trim は Windows Server 2012/Windows 8 以上でサポートされます。「[New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)」(新しい API を使用してアプリで "TRIM および Unmap" のヒントをストレージ メディアに送る方法) を参照してください。
+> 注:Trim は Windows Server 2012/Windows 8 以上でサポートされています。[新しい API を使用してアプリで "TRIM および Unmap" のヒントをストレージ メディアに送る方法](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)に関するページを参照してください。
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->

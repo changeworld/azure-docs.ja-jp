@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 011bb74a10b12c5170579d3b4c507fcfe0fc01b1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 95fd5b753d2018ebf422c4d9c88c2e3f6aba7bd8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452262"
 ---
-# <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
 Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos DB コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。 
 

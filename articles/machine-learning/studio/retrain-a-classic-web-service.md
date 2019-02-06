@@ -1,15 +1,8 @@
 ---
-title: 従来の Web サービスの再トレーニングを行う
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.date: 04/19/2017
+title:従来の Web サービスの再トレーニングを行う titleSuffix:Azure Machine Learning Studio description:Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:04/19/2017
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>従来の Azure Machine Learning Studio の Web サービスの再トレーニング
 デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。

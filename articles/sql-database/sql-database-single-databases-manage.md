@@ -1,9 +1,9 @@
 ---
-title: Azure SQL サーバーと単一データベースの作成と管理 | Microsoft Docs
-description: 論理サーバーと単一データベースの作成と管理について説明します。
+title: Azure SQL Database サーバーと単一データベースの作成と管理 | Microsoft Docs
+description: SQL Database サーバーと単一データベースの作成と管理について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,29 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 32b532cab7e970d01c3963729658c32ac4a020b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388588"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465046"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database での論理サーバーと単一データベースの作成と管理
+# <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database での SQL Database サーバーと単一データベースの作成と管理
 
-Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使用して、Azure SQL Database の論理サーバーと単一データベースを作成および管理することができます。
+SQL Database サーバーと単一データベースを作成および管理するには、Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使用します。
 
-## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure portal:論理サーバーとデータベースを管理する
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure portal:SQL Database サーバーと単一データベースの管理
 
 サーバー自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループを作成できます。 新しい SQL サーバーのフォームは新しい SQL サーバーか新しいデータベースを作成するときに表示されます。
 
-### <a name="create-a-blank-sql-server-logical-server"></a>空の SQL サーバー (論理サーバー) を作成する
+### <a name="create-a-blank-sql-database-server"></a>空の SQL Database サーバーを作成する
 
-[Azure ポータル](https://portal.azure.com)を利用して Azure SQL Database サーバーを作成するには、空の SQL サーバー (論理サーバー) フォームに移動します。  
+[Azure portal](https://portal.azure.com) を利用して SQL Database サーバーを作成するには、空の SQL サーバー (論理サーバー) のフォームに移動します。  
 
-### <a name="create-a-blank-or-sample-sql-database"></a>空またはサンプルの SQL データベースを作成する
+### <a name="create-a-blank-or-sample-sql-single-database"></a>空またはサンプルの SQL の単一データベースを作成する
 
-[Azure ポータル](https://portal.azure.com)を利用して Azure SQL データベースを作成するには、空の SQL データベース フォームに移動し、要求された情報を指定します。 データベース自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループや論理サーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
+[Azure portal](https://portal.azure.com) を利用して単一の Azure SQL データベースを作成するには、空の SQL Database のフォームに移動し、要求された情報を指定します。 Azure SQL Database のリソース グループや SQL Database サーバーは、単一データベース自体を作成する前に、あるいは作成するときに作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
 
   ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,9 +42,9 @@ Azure portal、PowerShell、Azure CLI、REST API、および Transact-SQL を使
 
 Azure SQL Database マネージド インスタンスを作成する方法については、[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)を参照してください。
 
-## <a name="manage-an-existing-sql-server"></a>既存の SQL Server を管理する
+## <a name="manage-an-existing-sql-database-server"></a>既存の SQL Database サーバーを管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。
+既存の SQL Database サーバーを管理するときにサーバーに移動するには、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動するなど、さまざまな方法があります。
 
 既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
@@ -55,12 +55,12 @@ Azure SQL Database マネージド インスタンスを作成する方法につ
 > [!TIP]
 > Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」を参照してください。
 
-## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell:論理サーバーとデータベースを管理する
+## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell:SQL Database サーバーと単一データベースの管理
 
-Azure PowerShell を利用して、Azure SQL の論理サーバー、単一データベースおよびプールされたデータベース、論理サーバーのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+Azure PowerShell を利用して、Azure SQL Database サーバー、スタンドアロンおよびプールされたデータベース、SQL Database サーバーのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 > [!TIP]
-> PowerShell のスクリプトの例については、「[PowerShell を使用して Azure SQL データベースを 1 つ作成し、論理サーバーのファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-powershell.md)」および「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。
+> PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL の単一データベースの作成と、SQL Database サーバーのファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)および [PowerShell を使用した単一の SQL データベースの監視およびスケーリング](scripts/sql-database-monitor-and-scale-database-powershell.md)に関するページを参照してください。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -79,12 +79,12 @@ Azure PowerShell を利用して、Azure SQL の論理サーバー、単一デ�
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|サーバーからファイアウォール規則を削除します。|
 | New-AzureRmSqlServerVirtualNetworkRule | Virtual Network のサービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](sql-database-vnet-service-endpoint-rule-overview.md)を作成します。 |
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI:論理サーバーとデータベースを管理する
+## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure CLI:SQL Database サーバーと単一データベースの管理
 
 [Azure CLI](/cli/azure) を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
 > [!TIP]
-> Azure CLI クイックスタートについては、「[Azure CLI を使用して単一の Azure SQL データベースを作成する](sql-database-cli-samples.md)」を参照してください。 Azure CLI のスクリプトの例については、「[CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md)」および「[CLI を使用して単一の SQL データベースを監視し、スケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md)」を参照してください。
+> Azure CLI クイックスタートについては、[Azure CLI を使用した単一の Azure SQL データベースの作成](sql-database-cli-samples.md)に関するページを参照してください。 Azure CLI のスクリプトの例については、[CLI を使用した単一の Azure SQL データベースの作成と、SQL Database サーバーのファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-cli.md)および [CLI を使用した単一の Azure SQL データベースの監視およびスケーリング](scripts/sql-database-monitor-and-scale-database-cli.md)に関するページを参照してください。
 >
 
 | コマンドレット | 説明 |
@@ -109,7 +109,7 @@ Azure PowerShell を利用して、Azure SQL の論理サーバー、単一デ�
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|ファイアウォール規則を更新します。|
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|ファイアウォール規則を削除します。|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL:論理サーバーとデータベースを管理する
+## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>Transact-SQL:SQL Database サーバーと単一データベースの管理
 
 Transact-SQL を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の T-SQL コマンドレットを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 エラスティック プールの管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
@@ -135,7 +135,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Microsoft Azure SQL Database に関連付けられているデータベースレベルのファイアウォール設定に関する情報を返します。 |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database または SQL Data Warehouse からデータベースレベルのファイアウォール設定を削除します。 |
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API:論理サーバーとデータベースを管理する
+## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST API:SQL Database サーバーと単一データベースの管理
 
 Azure SQL のサーバー、データベース、ファイアウォールを作成して管理するには、以下の REST API 要求を使います。
 

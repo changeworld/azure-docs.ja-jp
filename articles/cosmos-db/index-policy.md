@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 0fb2c3daf19ce07d9641cbc5504cb3b598ad5b0d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034457"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460235"
 ---
-# <a name="indexing-policy-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
+# <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
 Azure Cosmos コンテナー上の既定のインデックス作成ポリシーは、次のパラメーターを構成することでオーバーライドできます。
 

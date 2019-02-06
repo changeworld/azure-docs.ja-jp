@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465175"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462343"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
 Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの以前の復元ポイントに復旧またはコピーするには、データ ウェアハウスのスナップショットを使用します。 異なる地理的リージョンに復元するには、データ ウェアハウスの geo 冗長バックアップを使用します。 
@@ -73,7 +73,7 @@ geo バックアップは既定で有効です。 データ ウェアハウス�
 
 
 ## <a name="backup-and-restore-costs"></a>バックアップと復元のコスト
-Azure の課金には、ストレージの明細項目とディザスター リカバリー ストレージの明細項目があることがわかります。 ストレージの料金は、プライマリ リージョンでのデータの格納と、スナップショットによってキャプチャされた増分変更のコストの合計です。 スナップショットの現在の取得方法について詳しくは、こちらの[ドキュメント](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios)をご覧ください。 geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  
+Azure の課金には、ストレージの明細項目とディザスター リカバリー ストレージの明細項目があることがわかります。 ストレージの料金は、プライマリ リージョンでのデータの格納と、スナップショットによってキャプチャされた増分変更のコストの合計です。 スナップショットの課金方法については、「[Understanding how Snapshots Accrue Charges](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios)」 (スナップショットの料金が発生するしくみについて) を参照してください。 geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  
 
 プライマリ データ ウェアハウスと 7 日間のスナップショット変更の総コストは、TB 単位で四捨五入されます。 たとえば、データ ウェアハウスが 1.5 TB で、スナップショットが 100 GB をキャプチャする場合、Azure Premium Storage の料金で 2 TB のデータが課金されます。 
 

@@ -1,15 +1,7 @@
 ---
-title: Machine Learning Studio ワークスペースの管理
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 02/27/2017
+title:Machine Learning Studio ワークスペースの管理 titleSuffix:Azure Machine Learning Studio description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:02/27/2017
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの管理
 

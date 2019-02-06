@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 121fa87cb295799fdcd3de5e627fb894efc24c49
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2f463620f43ae95535a55005ebe9732495b89dc9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456665"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL Data Warehouse でのトランザクションの使用
 ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
@@ -175,5 +175,5 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 * ユーザー定義トランザクション内では CREATE TABLE のような DDL はサポートされません。
 
 ## <a name="next-steps"></a>次の手順
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。
+トランザクションの最適化の詳細については、 [トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関するページを参照してください。 SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。
 

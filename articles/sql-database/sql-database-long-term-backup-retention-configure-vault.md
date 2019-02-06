@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma,carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: d8ff07d43d1efbadf1ddd397b6690c93c54c4f27
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 5100ef307bc125b21e1c42c87856492a4a496065
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603550"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455638"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して長期的なバックアップ保有期間を構成する
 
@@ -71,7 +71,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
    ![コンテナーの作成](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > コンテナーは、Azure SQL 論理サーバーと同じリージョンに配置する必要があります。また、論理サーバーと同じリソース グループを使用する必要があります。
+   > コンテナーは、SQL Database サーバーと同じリージョンに配置する必要があります。また、SQL Database サーバーと同じリソース グループを使用する必要があります。
 
 10. 新しいコンテナーが作成されたら、必要な手順を実行して **[Recovery Services コンテナー]** ページに戻ります。
 
@@ -154,7 +154,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) を使用して Recovery Services コンテナーを作成します。
 
 > [!IMPORTANT]
-> コンテナーは、Azure SQL 論理サーバーと同じリージョンに配置する必要があります。また、論理サーバーと同じリソース グループを使用する必要があります。
+> コンテナーは、SQL Database サーバーと同じリージョンに配置する必要があります。また、SQL Database サーバーと同じリソース グループを使用する必要があります。
 
 ```PowerShell
 # Create a recovery services vault

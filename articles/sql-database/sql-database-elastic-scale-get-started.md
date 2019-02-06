@@ -11,24 +11,28 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603051"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462972"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
+
 このドキュメントでは、サンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Azure SQL Database の Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .NET と Java で使用できます。 
 
 ## <a name="elastic-database-tools-for-java"></a>Java 用 Elastic Database ツール
+
 ### <a name="prerequisites"></a>前提条件
+
 * Java Developer Kit (JDK) バージョン 1.8 以降
 * [Maven](http://maven.apache.org/download.cgi)
-* Azure の論理サーバーまたは SQL Server のローカル インスタンス
+* Azure の SQL Database サーバーまたは SQL Server のローカル インスタンス
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
+
 JAR ファイルをビルドし、サンプル プロジェクトを始めるには、以下のようにします。 
 1. クライアント ライブラリとサンプル アプリを含む [GitHub リポジトリ](https://github.com/Microsoft/elastic-db-tools-for-java)を複製します。 
 
@@ -65,12 +69,15 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>.NET 用 Elastic Database ツール 
+## <a name="elastic-database-tools-for-net"></a>.NET 用 Elastic Database ツール
+
 ### <a name="prerequisites"></a>前提条件
+
 * Visual Studio 2012 以降 (C#)。 「 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
 * NuGet 2.7 以降。 最新版を入手するには、「[Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)(NuGet のインストール)」をご覧ください。
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
+
 ライブラリをインストールするには、 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)に移動します。 ライブラリは、次のセクションで説明するサンプル アプリと共にインストールされます。
 
 サンプルをダウンロードして実行するには、次の手順を実行します。 
@@ -91,10 +98,9 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 > [!IMPORTANT]
 > 最新バージョンの Management Studio を常に使用して、Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
-> 
-> 
 
 ## <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
+
 * **シャードとシャード マップの管理**:このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
 
 * **データ依存ルーティング**:トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。 
@@ -104,11 +110,13 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 * **空のシャードの追加**:新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
 
 ## <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
+
 * **既存のシャードの分割**:シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
 * **既存のシャードのマージ**:シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。   
 
 ## <a name="cost"></a>コスト
+
 Elastic Database ツール ライブラリは無料です。 Elastic Database ツールを使っても、Azure の利用料以外の追加料金は発生しません。 
 
 たとえば、サンプル アプリケーションは新しいデータベースを作成します。 この機能のコストは、選んだ SQL Database のエディションと、アプリケーションによる Azure の使用状況に応じて異なります。
@@ -116,6 +124,7 @@ Elastic Database ツール ライブラリは無料です。 Elastic Database �
 料金情報については、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 Elastic Database ツールについて詳しくは、以下の記事をご覧ください。
 
 * コード サンプル 

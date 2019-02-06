@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database Managed Instance の概要 | Microsoft Docs
-description: このトピックでは、Azure SQL Database マネージド インスタンスについて説明し、さらにそのしくみと Azure SQL Database の単一データベースとの相違点についても説明します。
+description: このトピックでは、Azure SQL Database Managed Instance について、そのしくみと Azure SQL Database の単一データベースまたはプールされたデータベースとの相違点について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465709"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Managed Instance の仮想ネットワークでの使用と 100% に近い互換性
 
@@ -34,7 +34,7 @@ Azure SQL Database Managed Instance は、多数のアプリをオンプレミ�
 
 マネージド インスタンスでは一般提供までに段階的リリース計画に基づいて、最新のオンプレミスの SQL Server バージョンとの 100% 近いセキュリティ、外部からのアクセス互換性を実現することを目的としています。
 
-Azure SQL Database Single Database、Azure SQL Database Managed Instance、仮想マシンでホストされる SQL Server IaaS のいずれにするかを決定するには、[Azure クラウドで適切なバージョンの SQL Server を選択する方法](sql-database-paas-vs-sql-server-iaas.md)に関するページを参照してください。
+Azure SQL Database の単一データベース、プールされたデータベース、マネージド インスタンス、仮想マシンでホストされる SQL Server のどれにするかを決定するには、[Azure クラウドで適切なバージョンの SQL Server を選択する方法](sql-database-paas-vs-sql-server-iaas.md)に関するページを参照してください。
 
 ## <a name="key-features-and-capabilities"></a>主な機能
 
@@ -185,7 +185,7 @@ Managed Instance 認証とは、データベースへの接続時にユーザー
 - URL からの復元については、「[URL からのネイティブ復元](sql-database-managed-instance-migrate.md#native-restore-from-url)」を参照してください。
 
 > [!IMPORTANT]
-> Managed Instance からのバックアップは、別のマネージド インスタンスにのみ復元できます。 オンプレミスの SQL Server または Azure SQL Database 論理サーバーの単一またはプールされたデータベースに復元することはできません。
+> Managed Instance からのバックアップは、別のマネージド インスタンスにのみ復元できます。 オンプレミスの SQL Server に、または単一データベースまたはエラスティック プールに復元することはできません。
 
 ### <a name="data-migration-service"></a>データ移行サービス
 
@@ -210,7 +210,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 - マネージド インスタンスでは完全な物理パスを指定できないため、すべての対応するシナリオを異なる方法でサポートする必要があります。たとえば、RESTORE DB は WITH MOVE をサポートせず、CREATE DB では物理パスを使用できず、BULK INSERT は Azure BLOB にしか機能しません。
 - マネージド インスタンスでは、Windows 認証に代わるクラウドでの別の手段として、[Azure AD 認証](sql-database-aad-authentication.md)をサポートします。
 - マネージド インスタンスでは、インメモリ OLTP オブジェクトを含むデータベース用の XTP ファイル グループおよびファイルを自動的に管理します。
-- Managed Instance は SQL Server Integration Services (SSIS) をサポートし、SSIS パッケージを格納する SSIS カタログ (SSISDB) をホストできますが、パッケージは Azure Data Factory (ADF) 上のマネージド Azure-SSIS Integration Runtime (IR) で実行されます。[ADF での Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページをご覧ください。 SQL Database と Managed Instance の SSIS 機能を比較するには、[SQL Database 論理サーバーと Managed Instance の比較](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)に関する記事を参照してください。
+- Managed Instance は SQL Server Integration Services (SSIS) をサポートし、SSIS パッケージを格納する SSIS カタログ (SSISDB) をホストできますが、パッケージは Azure Data Factory (ADF) 上のマネージド Azure-SSIS Integration Runtime (IR) で実行されます。[ADF での Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページをご覧ください。 SQL Database と Managed Instance の SSIS 機能を比較するには、[Azure SQL Database の単一データベース/エラスティック プールおよび Managed Instance の比較](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)に関するページを参照してください。
 
 ### <a name="managed-instance-administration-features"></a>マネージド インスタンスの管理機能
 

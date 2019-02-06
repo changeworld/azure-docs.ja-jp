@@ -8,13 +8,13 @@ ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.component: disks
-ms.openlocfilehash: 5a5b29de7c87317c88257c783120f4fe9a28edf4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: c9c01bfc53ccba7ede1b64153e8fbbac18370716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250681"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455636"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-premium-storage.md)]
 

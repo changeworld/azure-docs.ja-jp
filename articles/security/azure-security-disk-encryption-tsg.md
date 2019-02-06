@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/08/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103167"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468395"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -33,7 +33,23 @@ Linux オペレーティング システム (OS) ディスクの暗号化には�
 - データ ドライブは、/mnt/ ディレクトリ下に、または相互に再帰的にマウントされます (例: /mnt/data1、/mnt/data2、/data3 + /data3/data4)。
 - Linux 用のその他の Azure Disk Encryption の[前提条件](azure-security-disk-encryption-prerequisites.md)が満たされていない。
 
-## <a name="unable-to-encrypt"></a>暗号化できない
+## <a name="bkmk_Ubuntu14"></a> Ubuntu 14.04 LTS の既定のカーネルの更新
+
+Ubuntu 14.04 LTS のイメージは、カーネルの既定のバージョン 4.4 に付属します。 このカーネル バージョンには、OS の暗号化の処理中に Out of Memory Killer により dd コマンドが不正に終了してしまう既知の問題があります。 このバグは、Azure 用にチューニングされた最新の Linux カーネルで修正されています。 このエラーを回避するには、イメージで暗号化を有効にする前に、次のコマンドを使用して [Azure 用にチューニングされたカーネル 4.15](https://packages.ubuntu.com/trusty/linux-azure) 以降に更新します。
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+新しいカーネルで VM が再起動されたら、新しいカーネル バージョンは次を使用して確認できます。
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>Linux のディスクを暗号化できない
 
 場合によっては、ディスクの暗号化が「OS ディスクの暗号化が開始されました」というメッセージが表示されたまま先へ進まず、SSH が無効になっているように見えることがあります。 暗号化プロセスは、ストック ギャラリー イメージで終了するまでに 3 ～ 16 時間かかる可能性があります。 数テラバイトのデータ ディスクを追加した場合、プロセスは数日かかることもあります。
 
@@ -71,7 +87,7 @@ VM を再起動するように求められた後と VM の再開後、再起動�
 適用されるネットワーク セキュリティ グループ設定で、ディスクの暗号化のために規定されている、ネットワーク構成の[前提条件](azure-security-disk-encryption-prerequisites.md#bkmk_GPO)を満たすようエンドポイントが設定されている必要があります。
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault
-VM は、キー コンテナーにアクセスできる必要があります。 [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) チームが管理しているファイアウォール内からのキー コンテナーへのアクセスに関するガイダンスを参照してください。 
+[Azure AD の資格情報](azure-security-disk-encryption-prerequisites-aad.md)を使用して暗号化を有効にしている場合、ターゲットの VM には Azure AD の認証エンドポイントと Key Vault のエンドポイントへのアクセスを許可する必要があります。  この手順の詳細については、[Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) チームが管理しているファイアウォールからのキー コンテナーへのアクセスに関するガイダンスを参照してください。 
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../virtual-machines/windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。

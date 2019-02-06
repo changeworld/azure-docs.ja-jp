@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 5e2a485630b7e3c9cc5977170d7e7e7eeb3e6ff5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467913"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure VM を Azure Managed Disks に移行する
 
@@ -37,7 +37,7 @@ Azure Managed Disks を使用すると、ストレージ アカウントを個�
 | 移行シナリオ                                            | ドキュメント リンク                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | スタンドアロン VM と可用性セット内の VM をマネージド ディスクに変換する   | [VM を非管理対象ディスクからマネージド ディスクに変換する](convert-unmanaged-to-managed-disks.md) |
-| 1 つの VM をクラシックからマネージド ディスク上の Resource Manager に移行する     | [1 つの VM を移行する](migrate-single-classic-to-resource-manager.md)方法に関する記事  | 
+| 1 つの VM をクラシックからマネージド ディスク上の Resource Manager に移行する     | [クラシック VHD から VM を作成する](create-vm-specialized-portal.md)  | 
 | VNet 内のすべての VM をクラシックからマネージド ディスク上の Resource Manager に移行する     | [IaaS リソースをクラシックから Resource Manager に移行する](migration-classic-resource-manager-ps.md)方法に関する記事の参照後、[VM を非管理対象ディスクからマネージド ディスクに変換する](convert-unmanaged-to-managed-disks.md)方法に関する記事 | 
 
 

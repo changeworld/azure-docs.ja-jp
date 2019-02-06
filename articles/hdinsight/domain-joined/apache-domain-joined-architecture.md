@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462431"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -55,9 +55,41 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 自分のドメインにオンプレミス Active Directory インスタンスまたはより複雑な Active Directory 設定がある場合、Azure AD Connect を使用してそれらの ID を Azure AD と同期することができます。 その後、Active Directory テナント上で Azure AD DS を有効にできます。 
 
-Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必要があります。 Active Directory フェデレーション サービス (AD FS) でフェデレーションを使用していると、AD FS インフラストラクチャで障害が発生した場合のバックアップとして、オプションでパスワード ハッシュ同期を設定できます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。 
+Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必要があります。 
+
+Active Directory Federation Services (ADFS) でフェデレーションを使用している場合、パスワード ハッシュ同期を有効にする必要があります (推奨設定については、[こちら](https://youtu.be/qQruArbu2Ew)をご覧ください)。これを有効にしておくと、ADFS インフラストラクチャにエラーが発生し、保護している資格情報が漏洩するような事態になったとき、ディザスター リカバリーに役立ちます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。 
 
 Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミスの Azure AD または Azure AD DS を使用する構成は、ESP を使用する HDInsight クラスターではサポートされていません。
+
+フェデレーションの使用時、パスワード ハッシュが正しく同期されているが、認証エラーが発生する場合、PowerShell サービス プリンシパル クラウド パスワード認証が有効になっているか確認してください。有効になっていない場合、AAD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
+
+ 1. AzureAD PowerShell モジュールをインストールします
+
+ ```
+  Install-Module AzureAD
+ ```
+
+ 2. グローバル管理者 (テナント管理者) の資格情報を使用して ```Connect-AzureAD``` を実行します
+
+ 3. "Microsoft Azure PowerShell" サービス プリンシパルが既に作成されているかどうかを確認します
+
+```
+ $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+```
+
+ 4. サービス プリンシパルがない場合 (つまり、($powershellSPN -q $null) の場合) は作成します
+
+```
+ $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+```
+
+ 5. ポリシーを作成し、このサービス プリンシパルにアタッチします 
+
+```
+ $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+ Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+```
 
 ## <a name="next-steps"></a>次の手順
 

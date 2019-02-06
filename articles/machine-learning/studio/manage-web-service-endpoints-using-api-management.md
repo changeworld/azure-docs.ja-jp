@@ -1,15 +1,8 @@
 ---
-title: API Management を使用して Machine Learning Studio Web サービスを管理する
-titleSuffix: Azure Machine Learning Studio
-description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: seodec18
-ms.date: 11/03/2017
+title:API Management を使用して Machine Learning Studio Web サービスを管理する titleSuffix:Azure Machine Learning Studio description:API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:11/03/2017
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
 ## <a name="overview"></a>概要

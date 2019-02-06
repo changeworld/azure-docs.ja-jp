@@ -1,15 +1,8 @@
 ---
-title: '手順 1:ワークスペースを作成する'
-titleSuffix: Azure Machine Learning Studio
-description: '予測ソリューションの開発チュートリアルの手順 1:新しい Azure Machine Learning Studio ワークスペースを設定する方法について説明します。'
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: garyericson
-ms.author: garye
-ms.custom: seodec18
-ms.date: 03/23/2017
+title:'手順 1:ワークスペースを作成する' titleSuffix:Azure Machine Learning Studio description:'予測ソリューションの開発チュートリアルの手順 1:新しい Azure Machine Learning Studio ワークスペースを設定する方法について説明します。'
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/23/2017
 ---
 # <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>チュートリアル手順 1:Azure Machine Learning Studio ワークスペースの作成
 これは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」の最初の手順です。

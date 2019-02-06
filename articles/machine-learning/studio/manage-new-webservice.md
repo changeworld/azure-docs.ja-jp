@@ -1,15 +1,8 @@
 ---
-title: Azure Machine Learning Studio Web サービス ポータルを使用する
-titleSuffix: Azure Machine Learning Studio
-description: Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
-services: machine-learning
-ms.service: machine-learning
-ms.component: studio
-ms.topic: article
-author: ericlicoding
-ms.author: amlstudiodocs
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.date: 02/28/2017
+title:Azure Machine Learning Studio Web サービス ポータルを使用する titleSuffix:Azure Machine Learning Studio description:Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017 年 2 月 28 日
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Azure Machine Learning Studio Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。

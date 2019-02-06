@@ -2,20 +2,20 @@
 title: SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Docs
 description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3aca356b9caadc3a4ffee98ca7dc330eb1c520d8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7c940b10e88e50988b574dbc1fa365dc9d8fd7d5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962947"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452398"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Stream Analytics の使用
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「[Stream Analytics とは][Introduction to Azure Stream Analytics]」を参照してください。 その後で、「[Azure Stream Analytics の使用][Get started using Azure Stream Analytics]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
@@ -32,7 +32,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 次に、Azure SQL Data Warehouse データベースを作成します
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>ジョブの出力の指定: Azure SQL Data Warehouse データベース
+## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>ジョブの出力の指定:Azure SQL Data Warehouse データベース
 ### <a name="step-1"></a>手順 1
 Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。
 
@@ -44,18 +44,18 @@ SQL Database を選択し、[次へ] をクリックします。
 ### <a name="step-3"></a>手順 3.
 次の値を次のページに入力します。
 
-* *出力のエイリアス*: このジョブの出力のフレンドリ名を入力します。
+* *[出力のエイリアス]*:このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
   * SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
   * データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
-* *データベース*: 宛先データベースの名前を指定します。
-* *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。 これは、Azure Portal を使って見つけることができます。
+* *データベース*:宛先データベースの名前を指定します。
+* *[サーバー名]*: 指定したデータベース用のサーバー名を指定します。 これは、Azure Portal を使って見つけることができます。
 
 ![][server-name]
 
-* *ユーザー名*: データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
-* *パスワード*: 指定したユーザー アカウントのパスワードを入力します。
-* *テーブル*: データベース内の対象テーブルの名前を指定します。
+* *User Name*:データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
+* *Password*:指定したユーザー アカウントのパスワードを入力します。
+* *テーブル*:データベース内の対象テーブルの名前を指定します。
 
 ![][add-database]
 

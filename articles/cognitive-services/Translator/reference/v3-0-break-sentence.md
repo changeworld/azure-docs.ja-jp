@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a97c55c7caa7b0b2c4aa10b01abd2714b8ace7a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124985"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458528"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -94,13 +94,13 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `sentLen`: テキスト要素内の文の長さを表す整数の配列です。 配列の長さは文の数であり、値は各文の長さです。 
+  * `sentLen`:テキスト要素内の文の長さを表す整数の配列です。 配列の長さは文の数であり、値は各文の長さです。 
 
-  * `detectedLanguage`: 次のプロパティによって、検出された言語を説明するオブジェクトです。
+  * `detectedLanguage`:次のプロパティによって、検出された言語を説明するオブジェクトです。
 
-     * `language`: 検出された言語のコードです。
+     * `language`:検出された言語のコードです。
 
-     * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+     * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
      
     `detectedLanguage` プロパティは、言語の自動検出が要求された場合に限り、結果オブジェクト内に存在することに注意してください。
 

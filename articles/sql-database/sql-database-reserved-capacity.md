@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: e9edbc2a3bbc878f7a3cf99a3ca6efb4e69797ad
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/25/2019
+ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394717"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455750"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
 
@@ -34,9 +34,9 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>購入する前に適切な SQL サイズを決定する
 
-特定のリージョン内で、同じパフォーマンス階層とハードウェア世代を使用する、既存またはすぐにデプロイされる予定の 単一の SQL データベースやエラスティック プールで使用される計算の合計に基づいて予約のサイズを決める必要があります。 
+特定のリージョン内で、同じパフォーマンス階層とハードウェア世代を使用する、既存またはすぐにデプロイされる予定の単一のデータベースやエラスティック プールで使用される計算の合計に基づいて予約のサイズを決める必要があります。 
 
-たとえば、1 つの汎用の Gen5 - 16 仮想コア エラスティック プールと、2 つのビジネス クリティカルな Gen5 - 4 仮想コア単一データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 16 仮想コア エラスティック プールを 1 つとビジネス クリティカルな Gen5 - 32 仮想コア エラスティック プールを 1 つ追加する予定だとします。 また、少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、SQL Database Single/Elastic Pool General Purpose - Compute Gen5 用に 32 (2x16) 仮想コアを 1 年間分と、SQL Database Single/Elastic Pool Business Critical - Compute Gen5 用に 40 (2x4 + 32) 仮想コアを 1 年間分を購入する必要があります。
+たとえば、1 つの汎用の Gen5 - 16 仮想コア エラスティック プールと、2 つのビジネス クリティカルな Gen5 - 4 仮想コア単一データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 16 仮想コア エラスティック プールを 1 つとビジネス クリティカルな Gen5 - 32 仮想コア エラスティック プールを 1 つ追加する予定だとします。 また、少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、SQL Database standalone/elastic pool General Purpose - Compute Gen5 用に 32 (2x16) 仮想コアを 1 年間分と、SQL Database standalone/elastic pool Business Critical - Compute Gen5 用に 40 (2x4 + 32) 仮想コアを 1 年間分を購入する必要があります。
 
 ## <a name="buy-sql-database-reserved-capacity"></a>SQL Database の予約容量の購入
 
@@ -50,12 +50,12 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
     | フィールド      | 説明|
     |:------------|:--------------|
     |Name        |この予約の名前。| 
-    |サブスクリプション|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、Enterprise Agreement (オファー番号: MS-AZR-0017P) または従量課金制 (オファー番号: MS-AZR-0003P) である必要があります。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
+    |サブスクリプション|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号: MS-AZR-0017P) または従量課金制 (プラン番号: MS-AZR-0003P) である必要があります。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
     |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 仮想コアの予約割引はこのサブスクリプションの SQL Database インスタンスに適用されます。 </li><li>共有 - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている SQL Database インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|    
     |デプロイの種類|予約を購入する SQL リソースの種類。|
     |パフォーマンス レベル|SQL Database インスタンスのサービス レベル。
-    |期間        |1 年間または 3 年間。|
+    |用語        |1 年間または 3 年間。|
     |数量    |SQL Database の予約容量の予約内で購入されるインスタンス数。 数量は、課金の割引を受けられる実行中の SQL Database インスタンス数です。 たとえば、米国東部で SQL Database インスタンスを 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
 
 5. **[コスト]** セクションで、SQL Database の予約容量の予約コストを確認します。
@@ -87,7 +87,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 

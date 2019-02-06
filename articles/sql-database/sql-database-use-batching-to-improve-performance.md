@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 01/25/2019
+ms.openlocfilehash: f347543bbea11329cf4bb7c03dac6ccf7f04ac77
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455390"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
+
 Azure SQL Database に対する操作は、バッチ処理で行うことによりアプリケーションのパフォーマンスとスケーラビリティを大幅に高めることができます。 その利点をわかりやすく解説するために、SQL Database に対する要求を逐次処理で行った場合とバッチ処理で行った場合とを比較するサンプル テストの結果をこの記事の冒頭でいくつか取り上げます。 その後、Azure アプリケーションでバッチ処理を正しく使用するための手法、シナリオ、考慮事項について説明します。
 
 ## <a name="why-is-batching-important-for-sql-database"></a>SQL Database のバッチ処理が重要である理由
+
 リモート サービスの呼び出しをバッチ処理で行う手法は、パフォーマンスとスケーラビリティを高める戦略としてよく知られています。 リモート サービスとの対話には、シリアル化、ネットワーク転送、逆シリアル化など固定的な処理コストが発生します。 ばらばらに存在する多数のトランザクションを 1 つのバッチにまとめることで、こうしたコストを最小限に抑えることができます。
 
 この記事では、SQL Database のバッチ処理に関するさまざまな戦略とシナリオについて詳しく取り上げます。 これらの戦略は、SQL Server を使用するオンプレミス アプリケーションでも重要ですが、SQL Database でバッチ処理を大きく取り上げるのには、いくつかの理由があります。
@@ -36,13 +38,14 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 この記事の冒頭では、SQL Database を使った .NET アプリケーション用のさまざまなバッチ処理手法について検討します。 最後の 2 つのセクションでは、バッチ処理のガイドラインとシナリオを取り上げます。
 
 ## <a name="batching-strategies"></a>バッチ処理の戦略
+
 ### <a name="note-about-timing-results-in-this-article"></a>この記事に記載されている時間測定の結果について
+
 > [!NOTE]
 > 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい [DTU サービス レベル](sql-database-service-tiers-dtu.md)または[仮想コア サービス レベル](sql-database-service-tiers-vcore.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
-> 
-> 
 
 ### <a name="transactions"></a>トランザクション
+
 バッチ処理を検証するための足掛かりとして、トランザクションに触れるのは奇妙に思えるかもしれません。 しかし、クライアント側でトランザクションを使用することにより、パフォーマンス向上につながるバッチ処理の効果がサーバー側に生まれます。 トランザクションはわずか数行のコードで追加できるので、シーケンシャルな操作のパフォーマンスを簡単に高めることができます。
 
 次の C# コードには、単純なテーブルに対する一連の挿入操作と更新操作が記述されています。
@@ -90,7 +93,7 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 
 **オンプレミスから Azure へ**:
 
-| [操作] | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
+| 操作 | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -99,7 +102,7 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 
 **Azure から Azure へ (同じデータ センター)**:
 
-| [操作] | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
+| 操作 | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -118,6 +121,7 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 ADO.NET におけるトランザクションの詳細については、 [ADO.NET のローカル トランザクション](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)に関するページを参照してください。
 
 ### <a name="table-valued-parameters"></a>テーブル値パラメーター
+
 テーブル値パラメーターは、Transact-SQL のステートメント、ストアド プロシージャ、関数の中で、ユーザー定義テーブル型をパラメーターとして使用する際に使用します。 これはクライアント側のバッチ処理手法で、テーブル値パラメーターに複数行のデータを含めて送信することができます。 テーブル値パラメーターを使用するにはまず、テーブル型を定義します。 次の Transact-SQL ステートメントは、 **MyTableType**という名前のテーブル型を作成しています。
 
     CREATE TYPE MyTableType AS TABLE 
@@ -178,7 +182,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 
 以下の表は、テーブル値パラメーターの使用に関するアドホック テストの結果です (単位はミリ秒)。
 
-| [操作] | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
+| 操作 | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -196,6 +200,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 テーブル値パラメーターの詳細については、 [テーブル値パラメーター](https://msdn.microsoft.com/library/bb510489.aspx)に関するページを参照してください。
 
 ### <a name="sql-bulk-copy"></a>SQL 一括コピー
+
 データベースに大量のデータを挿入する手段としては、SQL 一括コピーを使った方法もあります。 .NET アプリケーションから **SqlBulkCopy** クラスを使用して挿入操作を一括実行することができます。 **SqlBulkCopy** の機能は、コマンドライン ツールの **Bcp.exe** や Transact-SQL ステートメントの **BULK INSERT** に似ています。 次のコード例では、 **DataTable**テーブルから SQL Server にあるテーブル MyTable に行を一括コピーしています。
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -215,7 +220,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 
 次の表は、 **SqlBulkCopy** を使ったバッチ処理のパフォーマンスを示すアドホック テストの結果です (単位はミリ秒)。
 
-| [操作] | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
+| 操作 | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -233,6 +238,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 ADO.NET での一括コピーの詳細については、 [SQL Server での一括コピー操作](https://msdn.microsoft.com/library/7ek5da1a.aspx)に関するページを参照してください。
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>複数行パラメーター化 INSERT ステートメント
+
 バッチ サイズが小さいときは、複数行を挿入する包括的なパラメーター化 INSERT ステートメントを作成するのも一つの方法です。 その手法を次のコード例に示します。
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -258,7 +264,7 @@ ADO.NET での一括コピーの詳細については、 [SQL Server での一�
 
 次の表は、このタイプの挿入ステートメントのパフォーマンスを示すアドホック テストの結果 (ミリ秒単位) を示しています。
 
-| [操作] | テーブル値パラメーター (ミリ秒) | 単一ステートメントでの挿入 (ミリ秒) |
+| 操作 | テーブル値パラメーター (ミリ秒) | 単一ステートメントでの挿入 (ミリ秒) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -272,12 +278,15 @@ ADO.NET での一括コピーの詳細については、 [SQL Server での一�
 バッチ サイズが 100 行未満である場合は、このアプローチの方がわずかに高速です。 改善の幅は小さいものの、アプリケーションで想定される状況によっては、この手法で高い効果が期待できる場合もあります。
 
 ### <a name="dataadapter"></a>DataAdapter
+
 **DataAdapter** クラスを使用すると、**DataSet** オブジェクトに変更を加えたうえで、その変更を各種の操作 (INSERT、UPDATE、DELETE) として送信することができます。 この方法で **DataAdapter** を使用する場合、それぞれの操作について個別に呼び出しが行われることに注意してください。 パフォーマンスを強化するためには、 **UpdateBatchSize** プロパティを使用して、一回のバッチで処理する操作の数を指定します。 詳細については、 [DataAdapter を使用したバッチ操作の実行](https://msdn.microsoft.com/library/aadf8fk2.aspx)に関するページを参照してください。
 
 ### <a name="entity-framework"></a>Entity framework
+
 Entity Framework では現在、バッチ処理がサポートされていません。 関連するコミュニティのさまざまな開発者によって、 **SaveChanges** メソッドをオーバーライドするなどの回避策を実現する試みがなされてきました。 しかし、その解決策は複雑であることが多く、また、アプリケーションやデータ モデルに合わせてカスタマイズする必要があります。 この機能のリクエストに関して、Entity Framework CodePlex プロジェクトが現在、意見交換のページを開設しています。 この意見交換については、 [デザイン ミーティングの議事録 (2012 年 8 月 2 日)](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)をご覧ください。
 
 ### <a name="xml"></a>XML
+
 片手落ちにならないように、バッチ処理の戦略としての XML についても取り上げたいと思います。 ただし XML の使用には、他の手法に勝るメリットはなく、むしろ、デメリットがいくつかあります。 このアプローチは、テーブル値パラメーターと似ていますが、ストアド プロシージャに渡すのはユーザー定義テーブルではなく XML ファイルまたは XML 文字列です。 ストアド プロシージャが、そうして受け取ったコマンドを解析します。
 
 このアプローチにはいくつかのデメリットがあります。
@@ -289,14 +298,17 @@ Entity Framework では現在、バッチ処理がサポートされていませ
 以上の理由から、バッチ クエリに XML を使用することはお勧めできません。
 
 ## <a name="batching-considerations"></a>バッチ処理の考慮事項
+
 SQL Database アプリケーションでバッチ処理を使用する場合の指針を以降のセクションで詳しく取り上げます。
 
 ### <a name="tradeoffs"></a>トレードオフ
+
 アーキテクチャによっては、パフォーマンスと回復性のトレードオフがバッチ処理に伴うこともあります。 たとえば、使用中のロールが不意にダウンしたとします。 失ったデータが 1 行である場合、バッチ処理の対象となる未送信の行が大量に失われるより、その影響は小さくなります。 行をバッファーに蓄積してから特定の時間枠でデータベースに送信した方がリスクが大きいのです。
 
 このトレードオフを踏まえて、バッチ処理の対象にする操作の種類を判断してください。 重要性の低いデータの方が、バッチ処理は積極的に行うことができます (バッチ サイズを大きくする、時間枠を長くする)。
 
 ### <a name="batch-size"></a>バッチ サイズ
+
 私たちが行ったテストでは、大きなバッチを小さなまとまりに分割するメリットはほとんどありませんでした。 実際、このように細かく分割した場合、1 つの大きなバッチで送信するときに比べ、パフォーマンスが低下するケースも往々にしてありました。 たとえば、挿入する行が 1,000 件ある状況を考えてみましょう。 次の表は、テーブル値パラメーターを使って 1,000 行のデータを挿入するとき、バッチ サイズを小さく分割していったときにかかる時間を示しています。
 
 | バッチ サイズ | 反復回数 | テーブル値パラメーター (ミリ秒) |
@@ -318,6 +330,7 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 最終的には、バッチのサイズとバッチ処理に伴うリスクとのバランスを図ることになります。 一過性のエラーやロールの障害が発生する場合は、操作を再試行することによる影響や、まとまったデータが失われることの重大性を考慮に入れてください。
 
 ### <a name="parallel-processing"></a>並列処理
+
 バッチ サイズを小さくしながらも、複数のスレッドを使ってその処理を実行した場合はどうなるのでしょうか。 今回のテストの範囲では、やはり、バッチ サイズを小さくしてマルチスレッドで処理した場合、概して大きなバッチ サイズのまま実行したときよりもパフォーマンスが低くなりました。 以下のテストは、1,000 行を 1 回または複数回のバッチに分割し、並列処理で挿入したものです。 同時に処理するバッチを増やしていったとき、パフォーマンスが実際に低下するようすを示しています。
 
 | バッチ サイズ [反復回数] | 2 スレッド (ミリ秒) | 4 スレッド (ミリ秒) | 6 スレッド (ミリ秒) |
@@ -346,14 +359,17 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 並列実行を使用する場合、最大数のワーカー スレッドを使うべきかどうか、よく検討してください。 スレッド数は少ない方が、競合が少なく実行時間が短い場合もあります。 また、対象データベースの接続とトランザクションの両方に関して、新たにかかる負荷も考慮する必要があります。
 
 ### <a name="related-performance-factors"></a>関連するパフォーマンスの要因
+
 データベースのパフォーマンスに関する一般的な指針は、バッチ処理にも当てはまります。 たとえば、大きなプライマリ キーや多数の非クラスター化インデックスが存在するテーブルでは、挿入操作のパフォーマンスが低下します。
 
 テーブル値パラメーターでストアド プロシージャを使っている場合、その冒頭で **SET NOCOUNT ON** をコマンドを使用してください。 通常、プロシージャで処理された行数が返されますが、このステートメントを記述することで、その出力を抑制することができます。 ただし、テストした限りでは、 **SET NOCOUNT ON** を使ったからといって、パフォーマンスが向上することも、低下することもありませんでした。 テストに使ったストアド プロシージャは、テーブル値パラメーターからの単一の **INSERT** コマンドを含んだ単純なものでした。 もっと複雑なストアド プロシージャであれば、このステートメントが有利に作用する可能性があります。 とはいえ、 **SET NOCOUNT ON** をストアド プロシージャに追加するだけで、自動的にパフォーマンスが向上するとは考えないでください。 その効果を理解するためには、 **SET NOCOUNT ON** ステートメントを記述した場合とそうでない場合とでストアド プロシージャをテストする必要があります。
 
 ## <a name="batching-scenarios"></a>バッチ処理のシナリオ
+
 以降のセクションでは、アプリケーションのシナリオを 3 つ想定して、テーブル値パラメーターの使い方を説明します。 1 つ目のシナリオでは、バッファリングとバッチ処理の連携方法を紹介しています。 2 つ目は、マスター/詳細の操作を 1 回のストアド プロシージャ呼び出しで実行することによってパフォーマンスを高めるシナリオです。 最後のシナリオでは、"UPSERT" 操作におけるテーブル値パラメーターの使い方を紹介します。
 
 ### <a name="buffering"></a>バッファリング
+
 バッチ処理には明確な候補となる状況がいくつか存在しますが、処理の先送りによってバッチ処理を有効活用できるケースは少なくありません。 しかし処理を先送りすれば、予期しない障害が発生した場合にデータが失われる危険性もそれだけ大きくなります。 リスクを把握し、その影響を考慮することが大切です。
 
 たとえば、個々のユーザーのナビゲーション履歴を追跡する Web アプリケーションがあるとします。 ページ要求があるたびに、アプリケーションがデータベースを呼び出し、ユーザーのページ ビューを記録します。 しかし、ユーザーのナビゲーション アクティビティをバッファリングし、そのデータをまとめてデータベースに送れば、パフォーマンスとスケーラビリティを高めることができます。 データベースの更新は、経過時間やバッファー サイズ、またはその両方によってトリガーすることができます。 たとえば、20 秒経過したときや、バッファーに格納された項目数が 1,000 個に達したときにバッチが処理されるようなルールを指定することができます。
@@ -362,6 +378,7 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 
 このユーザー ナビゲーションの詳細をモデル化したものが次の NavHistoryData クラスです。 ユーザー ID、アクセス URL、アクセス時刻など基本的な情報は、このクラスによって保持されます。
 
+```c#
     public class NavHistoryData
     {
         public NavHistoryData(int userId, string url, DateTime accessTime)
@@ -370,9 +387,11 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
         public string URL { get; set; }
         public DateTime AccessTime { get; set; }
     }
+```
 
 データベースに格納するユーザー ナビゲーション データをバッファリングするのは、NavHistoryDataMonitor クラスの役割です。 このクラスには、RecordUserNavigationEntry というメソッドがあります。戻り値のないメソッドであり、その応答は **OnAdded** イベントを発生させることによって行います。 Rx を使用し、このイベントに基づいて、監視可能なコレクションを作成するコンストラクターのロジックを示したのが以下のコードです。 この監視可能なコレクションを Buffer メソッドでサブスクライブします。 このメソッドのオーバーロードを使用して、バッファーへの送信間隔を 20 秒または 1000 エントリに指定しています。
 
+```c#
     public NavHistoryDataMonitor()
     {
         var observableData =
@@ -380,9 +399,11 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 
         observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
     }
+```
 
 イベント ハンドラーは、バッファーに格納されたすべての項目を特定のテーブル値の型に変換し、バッチ処理のストアド プロシージャにその型を渡します。 以下のコードは、NavHistoryDataEventArgs クラスと NavHistoryDataMonitor クラスの定義全体を示したものです。
 
+```c#
     public class NavHistoryDataEventArgs : System.EventArgs
     {
         public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
@@ -439,12 +460,15 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
             }
         }
     }
+```
 
 このバッファリング クラスを使用するアプリケーションは、NavHistoryDataMonitor の静的オブジェクトを作成することになります。 ユーザーがページにアクセスするたびに、アプリケーションから NavHistoryDataMonitor.RecordUserNavigationEntry メソッドを呼び出します。 それらのエントリをまとめてデータベースに送信する処理は、バッファリングのロジックによって行われます。
 
 ### <a name="master-detail"></a>マスター/詳細
-テーブル値パラメーターは、単純な挿入シナリオには適しています。 しかし複数のテーブルが関係する一括挿入については、そう簡単にはいきません。 その典型的な例が "マスター/詳細" のシナリオです。 マスター テーブルは、プライマリ エンティティを識別します。 エンティティに関するその他のデータは、1 つまたは複数の詳細テーブルに格納されます。 この場合、詳細テーブルと一意のマスター エンティティとの関係が外部キー リレーションシップによって強制的に適用されます。 単純化した PurchaseOrder テーブルとそれに関連付けられた OrderDetail テーブルを考えてみます。 次の Transact-SQL は、4 つの列 (OrderID、OrderDate、CustomerID、Status) から成る PurchaseOrder テーブルを作成しています。
 
+テーブル値パラメーターは、単純な挿入シナリオには適しています。 しかし複数のテーブルが関係する一括挿入については、そう簡単にはいきません。 その典型的な例が "マスター/詳細" のシナリオです。 マスター テーブルは、プライマリ エンティティを識別します。 エンティティに関するその他のデータは、1 つまたは複数の詳細テーブルに格納されます。 この場合、詳細テーブルと一意のマスター エンティティとの関係が外部キー リレーションシップによって強制的に適用されます。 単純化した PurchaseOrder テーブルとそれに関連付けられた OrderDetail テーブルを考えてみます。 次の Transact-SQL では、4 つの列 (OrderID、OrderDate、CustomerID、Status) から成る PurchaseOrder テーブルが作成されます。
+
+```sql
     CREATE TABLE [dbo].[PurchaseOrder](
     [OrderID] [int] IDENTITY(1,1) NOT NULL,
     [OrderDate] [datetime] NOT NULL,
@@ -452,9 +476,11 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
     [Status] [nvarchar](50) NOT NULL,
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
+```
 
-それぞれの注文は、少なくとも 1 つの商品購入を含んでいます。 この情報を PurchaseOrderDetail テーブルに記録します。 次の Transact-SQL は、5 つの列 (OrderID、OrderDetailID、ProductID、UnitPrice、OrderQty) から成る PurchaseOrderDetail テーブルを作成しています。
+それぞれの注文は、少なくとも 1 つの商品購入を含んでいます。 この情報を PurchaseOrderDetail テーブルに記録します。 次の Transact-SQL では、5 つの列 (OrderID、OrderDetailID、ProductID、UnitPrice、OrderQty) から成る PurchaseOrderDetail テーブルが作成されます。
 
+```sql
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
     [OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
@@ -463,15 +489,19 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
     [OrderQty] [smallint] NULL,
      CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
     ( [OrderID] ASC, [OrderDetailID] ASC ))
+```
 
 PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブルの注文と対応関係にあることが必要です。 この制約を強制的に適用する外部キーの定義は次のようになります。
 
+```sql
     ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
     CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
     REFERENCES [dbo].[PurchaseOrder] ([OrderID])
+```
 
 テーブル値パラメーターを使用するには、対象となる各テーブルについてユーザー定義テーブル型が必要です。
 
+```sql
     CREATE TYPE PurchaseOrderTableType AS TABLE 
     ( OrderID INT,
       OrderDate DATETIME,
@@ -485,9 +515,11 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
       UnitPrice MONEY,
       OrderQty SMALLINT );
     GO
+```
 
 そのうえで、これらの型のテーブルを受け取るストアド プロシージャを定義します。 このプロシージャによって、アプリケーションは一連の注文と注文明細をローカルから 1 回の呼び出しでバッチ処理することができます。 次の Transact-SQL は、この注文処理の例に使用されるストアド プロシージャの宣言全体です。
 
+```sql
     CREATE PROCEDURE sp_InsertOrdersBatch (
     @orders as PurchaseOrderTableType READONLY,
     @details as PurchaseOrderDetailTableType READONLY )
@@ -528,11 +560,13 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
     FROM @details D
     JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
     GO
+```
 
 この例では、新しく挿入された行の実際の OrderID 値が、ローカルに定義されている @IdentityLink テーブルに格納されます。 これらの注文 ID は、テーブル値パラメーターの @orders や @details にある一時的な OrderID 値とは異なります。 そのため、@orders パラメーターから得た OrderID の値と、PurchaseOrder テーブル内の新しい行に使用される実際の OrderID の値とが、@IdentityLink テーブルによって結び付けられます。 このステップの後は、外部キー制約を満たす実際の OrderID を持った注文明細の挿入処理が、@IdentityLink テーブルを介して効率的に実行されます。
 
 このストアド プロシージャは、コードから使用することも、他の Transact-SQL の呼び出しから使用することもできます。 コード例については、この記事のテーブル値パラメーターのセクションを参照してください。 次の Transact-SQL は、sp_InsertOrdersBatch を呼び出しています。
 
+```sql
     declare @orders as PurchaseOrderTableType
     declare @details as PurchaseOrderDetailTableType
 
@@ -550,16 +584,19 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
     (3, 4, $10.00, 1)
 
     exec sp_InsertOrdersBatch @orders, @details
+```
 
 この方法によって、1 から始まる一連の OrderID 値をそれぞれのバッチが使用できるようになります。 これらの一時的な OrderID 値はそのバッチ内の関係を表すものであり、実際の OrderID 値は挿入操作の時点で決まります。 先ほどの例で同じステートメントを繰り返し実行し、一意の注文をデータベースに生成することができます。 このため、このバッチ処理手法を用いるときは、注文の重複を防止するためのコードまたはデータベース ロジックを追加することを検討してください。
 
 この例は、複雑なデータベース操作 (マスター/詳細操作など) であっても、テーブル値パラメーターを使用すればバッチ処理で対応できることを示しています。
 
 ### <a name="upsert"></a>UPSERT
+
 バッチ処理のシナリオをもう 1 つ紹介します。既存の行の更新と新しい行の挿入を同時に実行するというものです。 この操作を "UPSERT" (update + insert) と呼ぶことがあります。 この作業には、INSERT と UPDATE を別々に呼び出して実行するよりも、MERGE ステートメントを使ったやり方が最適です。 MERGE ステートメントは、挿入と更新の両方の操作を 1 回の呼び出しで実行することができます。
 
 テーブル値パラメーターと MERGE ステートメントとを組み合わせることによって、更新と挿入を実行できます。 たとえば、EmployeeID、FirstName、LastName、SocialSecurityNumber の列を含んだ単純な Employee テーブルがあるとします。
 
+```sql
     CREATE TABLE [dbo].[Employee](
     [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
     [FirstName] [nvarchar](50) NOT NULL,
@@ -567,18 +604,22 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
     [SocialSecurityNumber] [nvarchar](50) NOT NULL,
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
+```
 
 この例では、SocialSecurityNumber が一意であることを利用して、複数の従業員の MERGE を実行できます。 まず、ユーザー定義テーブル型を作成します。
 
+```sql
     CREATE TYPE EmployeeTableType AS TABLE 
     ( Employee_ID INT,
       FirstName NVARCHAR(50),
       LastName NVARCHAR(50),
       SocialSecurityNumber NVARCHAR(50) );
     GO
+```
 
 次に、MERGE ステートメントで更新と挿入を行うコードを記述するか、ストアド プロシージャを作成します。 次の例では、EmployeeTableType 型のテーブル値パラメーター @employees に対して MERGE ステートメントを使っています。 @employees テーブルの内容は、ここには記載していません。
 
+```sql
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
     AS source ([FirstName], [LastName], [SocialSecurityNumber])
@@ -590,10 +631,12 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
     WHEN NOT MATCHED THEN
        INSERT ([FirstName], [LastName], [SocialSecurityNumber])
        VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
+```
 
 詳細については、MERGE ステートメントのドキュメントと例を参照してください。 INSERT 操作と UPDATE 操作を個別に使用した複数のステップから成るストアド プロシージャで同じ作業を実行することもできますが、MERGE ステートメントの方が効率的です。 直接 MERGE ステートメントを使った Transact-SQL の呼び出しをデータベース コードで作成することもできます。そうすれば、INSERT 用と UPDATE 用の 2 つのデータベース呼び出しは必要ありません。
 
 ## <a name="recommendation-summary"></a>推奨事項のまとめ
+
 この記事で説明したバッチ処理の推奨事項は以下のとおりです。
 
 * SQL Database アプリケーションのパフォーマンスとスケーラビリティを高めるには、バッファリングとバッチ処理を使用する。
@@ -614,5 +657,6 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 * その他さまざまなシナリオでバッチ処理を実装するための手段として、バッファー サイズや経過時間によって作動するバッファリングを検討する。
 
 ## <a name="next-steps"></a>次の手順
+
 この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
 

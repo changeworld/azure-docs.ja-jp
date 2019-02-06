@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: files
+ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809193"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452738"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -283,3 +283,4 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files をデプロイする](storage-files-deployment-guide.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+* [Azure File Sync の監視](storage-sync-files-monitoring.md)

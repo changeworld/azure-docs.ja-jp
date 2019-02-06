@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/16/2019
-ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/25/2019
+ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467665"
 ---
 # <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にレプリケーションを構成する
 
-トランザクション レプリケーションを使用すると、SQL Server または Azure SQL Database の Managed Instance データベースからマネージド インスタンスにデータをレプリケートし、Managed Instance のデータベースに対しておこなった変更を他の SQL Server、Azure Single Database、または他の Managed Instance にプッシュできます。 レプリケーションは、[Azure SQL Database Managed Instance](sql-database-managed-instance.md) のパブリック プレビューにあります。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 使用可能な構成については、[トランザクション レプリケーションの構成](sql-database-managed-instance-transactional-replication.md#common-configurations)に関する記事をご覧ください。
+トランザクション レプリケーションを使用すると、SQL Server または Azure SQL Database Managed Instance データベースから Managed Instance にデータをレプリケートし、Managed Instance のご使用のデータベースに行った変更を他の SQL サーバー、SQL Database 単一データベースまたはエラスティック プール、または他の Managed Instance にプッシュできます。 レプリケーションは、[Azure SQL Database Managed Instance](sql-database-managed-instance.md) のパブリック プレビューにあります。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 使用可能な構成については、[トランザクション レプリケーションの構成](sql-database-managed-instance-transactional-replication.md#common-configurations)に関する記事をご覧ください。
 
 ## <a name="requirements"></a>必要条件
 
@@ -46,7 +46,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
 - オンプレミスおよび Azure SQL Database Managed Instance インスタンスのトランザクション レプリケーションとスナップショット レプリケーションの組み合わせ。
 
-- サブスクライバーには、オンプレミス、Azure SQL Database 内の単一データベース、または Azure SQL Database エラスティック プール内のプールされたデータベースを使用できます。
+- サブスクライバーには、オンプレミス、Azure SQL Database 内の単一データベース、または Azure SQL Database エラスティック プール内のプール済みデータベースを使用できます。
 
 - 一方向または双方向のレプリケーション。
 
@@ -71,7 +71,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
    下記のサンプル スクリプトでは、`<SQL_USER>` と `<PASSWORD>` にこの SQL Server アカウントのデータベース ユーザーとパスワードを使用します。
 
-5. [SQL Database Managed Instance に接続](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)します。
+5. [SQL Database Managed Instance に接続](sql-database-connect-query-ssms.md)します。
 
 6. 次のクエリを実行して、ディストリビューターとディストリビューション データベースを追加します。
 
@@ -172,4 +172,4 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 ## <a name="see-also"></a>関連項目
 
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)
-- [マネージド インスタンスとは](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [マネージド インスタンスとは](sql-database-managed-instance.md)

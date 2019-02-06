@@ -3,7 +3,7 @@ title: Azure SQL Database の仮想コアベースのリソース制限 - 単一
 description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な仮想コアベースのリソース制限について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,24 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 894922a80ab874e5304ef441571e03ef559a34b0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: e38f90acf1ffb0b63379727287f7451f99b6dd0d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215424"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460167"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限
 
 この記事では、仮想コアベースの購入モデルを使用した、Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
-論理サーバー上の 1 つのデータベースに対する DTU ベースの購入モデルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関する記事をご覧ください。
+SQL Database サーバー上の 1 つのデータベースに対する DTU ベースの購入モデルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-[Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
+[Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
 

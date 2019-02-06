@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126124"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464995"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>_One authorization_<br/>_header_</td>
     <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
@@ -85,15 +85,15 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `language`: 検出された言語のコード。
+  * `language`:検出された言語のコードです。
 
-  * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+  * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
 
-  * `isTranslationSupported`: 検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値。
+  * `isTranslationSupported`:検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値です。
 
-  * `isTransliterationSupported`: 検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値。
+  * `isTransliterationSupported`:検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値です。
   
-  * `alternatives`: 利用可能な他の言語の配列。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
+  * `alternatives`:利用可能な他の言語の配列です。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
 
 JSON 応答の例を次に示します。
 

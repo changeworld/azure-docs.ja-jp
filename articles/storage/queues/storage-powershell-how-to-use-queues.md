@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: queues
+ms.openlocfilehash: 10b85b2efd4359617ea9aab5838129e7e96ed605
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213231"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463210"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
@@ -35,7 +35,7 @@ Azure キュー ストレージは、HTTP または HTTPS を介して世界中�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
 
 ```powershell
 Connect-AzAccount
@@ -63,7 +63,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>ストレージ アカウントの作成
 
-[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) を利用し、ローカル冗長ストレージ (LRS) で標準の汎用ストレージ アカウントを作成します。 使用されるストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。
+[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) を使用して、ローカル冗長ストレージ (LRS) で標準の汎用ストレージ アカウントを作成します。 使用されるストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -111,15 +111,15 @@ Get-AzStorageQueue -Context $ctx | select Name
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 1"
 # Add a new message to the queue
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue 
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 2"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 3"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
 [Azure Storage Explorer](http://storageexplorer.com) を使用する場合、Azure アカウントに接続し、ストレージ アカウントのキューを表示し、キューにドリルダウンし、そのキューに関するメッセージを表示できます。 
@@ -140,25 +140,29 @@ $queue.CloudQueue.AddMessage($QueueMessage)
 $invisibleTimeout = [System.TimeSpan]::FromSeconds(10)
 
 # Read the message from the queue, then show the contents of the message. Read the other two messages, too.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
 
 # After 10 seconds, these messages reappear on the queue. 
 # Read them again, but delete each one after reading it.
 # Delete the message.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
 ```
 
 ## <a name="delete-a-queue"></a>キューを削除する
+
 キューとキューに含まれるすべてのメッセージを削除するには、Remove-AzStorageQueue コマンドレットを呼び出します。 次の例は、Remove-AzStorageQueue コマンドレットを使用し、この演習で使用したキューを削除する方法を示しています。
 
 ```powershell
@@ -187,7 +191,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 > * キューを削除する
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage コマンドレット
+
 * [Storage PowerShell コマンドレット](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320363"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463567"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 8 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 8 月に導入された新しい機能と変更点について説明します。
@@ -32,7 +32,7 @@ Azure Advisor ポータルで推奨事項を確認できます。![Azure Advisor
 
 | タイトル | 説明 |
 |:---|:---|
-| **Potential Query failures when the split count exceeds max limit** (分割数が上限を超えたときのクエリ エラーの可能性があります) |100 万個のファイル分割上限を超えると、未処理の例外によって SQL エンジンがダンプされ、すべてのクエリは失敗します。 この修正では、例外を正しく処理し、クエリが失敗することなくエラーを返すようにすることで問題を解決します。 |
+| **Potential Query failures when the split count exceeds max limit** (分割数が上限を超えたときのクエリ エラーの可能性があります) |100 万個のファイル分割上限を超えると、未処理の例外によって SQL エンジンがダンプされ、すべてのクエリは失敗します。 この修正では、例外を正しく処理し、クエリが失敗することなくエラーを返すようにすることで問題を解決しました。 |
 | **Increased ExternalMoveReadersPerNode default value to improve load performance** (読み込みのパフォーマンスを改善するために ExternalMoveReadersPerNode の既定値を増やしました) |この問題は、ExternalMoveReadersPerNode プロパティの設定がサービス ファブリック設定と同期していないために発生しました。 この回帰によって Gen2 の負荷パフォーマンスが低下しました。 この修正により、Gen2 の負荷パフォーマンスは最適化された設計パラメーター内に戻ります。|
 
 

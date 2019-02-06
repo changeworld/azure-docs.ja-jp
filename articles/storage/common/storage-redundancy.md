@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455509"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -48,7 +48,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
-> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。
+> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage の詳細については、[Premium Storage の Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ (Premium Storage)](../../virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 [Azure Portal](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、多くの [Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。
@@ -63,10 +63,10 @@ GRS から LRS に変更する場合、追加のコストは発生しません�
 
 ## <a name="see-also"></a>関連項目
 
-- [ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
-- [ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
-- [geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
+- [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
+- [ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
+- [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [SOSP ペーパー - Azure Storage:強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

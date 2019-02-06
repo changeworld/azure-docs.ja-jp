@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231365"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454945"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -24,12 +24,12 @@ Azure Storage のようなクラウドベースのインフラストラクチャ
 
 この記事では、GRS と RA-GRS に重点を置いて説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS は、セカンダリ コピーに対する読み取りアクセス権を持つ geo 冗長ストレージを提供します。
 
-どのプライマリ リージョンがどのセカンダリ リージョンとペアになっているかについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。
+どのプライマリ リージョンがどのセカンダリ リージョンとペアになっているかについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」をご覧ください。
 
 この記事にはコード スニペットが含まれています。また、記事の最後には、ダウンロードして実行できる完全なサンプルへのリンクも記載されています。
 
 > [!NOTE]
-> Azure Storage は、高可用性アプリケーションを構築するためのゾーン冗長ストレージ (ZRS) をサポートするようになりました。 ZRS は、多くのアプリケーションの冗長性ニーズに対してシンプルなソリューションを提供します。 ZRS は、単一のデータ センターに影響するハードウェア障害または壊滅的災害からの保護を提供します。 詳しくは、「[ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」をご覧ください。
+> Azure Storage は、高可用性アプリケーションを構築するためのゾーン冗長ストレージ (ZRS) をサポートするようになりました。 ZRS は、多くのアプリケーションの冗長性ニーズに対してシンプルなソリューションを提供します。 ZRS は、単一のデータ センターに影響するハードウェア障害または壊滅的災害からの保護を提供します。 詳細については、「[ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」をご覧ください。
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS の主な特長
 

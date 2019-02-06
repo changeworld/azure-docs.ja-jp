@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653551"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465625"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
@@ -53,7 +53,7 @@ ms.locfileid: "53653551"
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -96,7 +96,7 @@ SetupEntryPoint の構成方法について詳しくは、「[エントリ ポ�
 </Settings>
 ```
 
-エンドポイントなどの **Resources** は、コンパイルしたコードを変更することなくリソースを宣言/変更するためにサービスによって使われます。  サービス マニフェストで指定したリソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。  サービス マニフェストで **Endpoint** リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。  詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
+Service Fabric サービス **エンドポイント**は、Service Fabric のリソースの例です。Service Fabric のリソースは、コンパイル済みのコードを変更せずに、宣言および変更できます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
 
 
 <!--
