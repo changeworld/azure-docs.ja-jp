@@ -10,19 +10,19 @@ editor: cgronlun
 ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157175"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245835"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -180,10 +180,10 @@ R を使って、データを確認し、基本的な機械学習を実行して
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Azure ML にモデルをデプロイする
-[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 AzureML の便利な機能の 1 つに、任意の R 関数を Web サービスとして発行する機能があります。 AzureML R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Azure Machine Learning Studio にモデルをデプロイする
+[Azure Machine Learning Studio](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio の便利な機能の 1 つに、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
 
-前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
+前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で Azure Machine Learning の変数を初期化するには、次を実行します。
 
 左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ Python を使用して開発するために、DSVM には Anaconda Python ディ
 scikit-learn のサポート ベクター マシンを使用して、spambase データセットの一部を読み取り、メールを分類してみましょう。
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

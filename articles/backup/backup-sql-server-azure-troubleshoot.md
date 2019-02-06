@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339520"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296123"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
@@ -37,6 +37,15 @@ ms.locfileid: "53339520"
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 
 次の表の情報を参考にして、SQL Server を Azure に保護する際に発生した問題とエラーを解決します。
+
+## <a name="alerts"></a>アラート
+
+### <a name="backup-type-unsupported"></a>バックアップの種類がサポートされていません
+
+| severity | 説明 | 考えられる原因 | 推奨される操作 |
+|---|---|---|---|
+| 警告 | このデータベースの現在の設定は、関連付けられているポリシーに存在する特定のバックアップ タイプをサポートしていません。 | <li>**Master DB**: マスター データベースに対して実行できるのは、データベースの完全バックアップ操作だけです。**差分**バックアップやトランザクション **ログ** バックアップは実行できません。 </li> <li>**単純復旧モデル**のデータベースは、トランザクション **ログ** バックアップを実行できません。</li> | ポリシー内のバックアップ タイプがすべてサポートされるようにデータベースの設定を変更してください。 または、サポート対象のバックアップ タイプだけを含むように現在のポリシーを変更してもかまいません。 それ以外の場合、スケジュールされたバックアップ中、サポート対象外のバックアップ タイプはスキップされるか、アドホック バックアップのバックアップ ジョブでエラーが発生します。
+
 
 ## <a name="backup-failures"></a>バックアップ エラー
 

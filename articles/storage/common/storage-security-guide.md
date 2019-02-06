@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243796"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454489"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -89,7 +89,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 * [Azure Active Directory のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)
 
   この記事では、Azure Active Directory のロールベースのアクセス制御とそのしくみについて説明しています。
-* [RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)
+* [RBAC: 組み込みロール](../../role-based-access-control/built-in-roles.md)
 
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
 * [リソース マネージャー デプロイと従来のデプロイを理解する](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -240,7 +240,7 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
 * .NET クライアント ライブラリを使用して Shared Access Signature と Stored Access Policy を作成する方法のチュートリアルです。
 
   * [Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Shared Access Signature、第 2 部: BLOB サービスによる SAS の作成および使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+  * [Shared Access Signature、パート 2: BLOB サービスによる SAS の作成および使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
 
@@ -328,7 +328,7 @@ Azure Disk Encryption は、新しい機能です。 この機能を使用する
 
 
 > [!NOTE]
-> 現時点では、Linux OS ディスク暗号化は、RHEL 7.2、CentOS 7.2n、Ubuntu 16.04 の各 Linux ディストリビューションでサポートされています。
+> 現時点では、Linux OS ディスク暗号化は、RHEL 7.2、CentOS 7.2n、および Ubuntu 16.04 の Linux ディストリビューションでサポートされています。
 >
 >
 
@@ -504,6 +504,6 @@ CORS と CORS を有効にする方法については、次のリソースをご
 * [FIPS 140 Validation (FIPS 140 の検証)](https://technet.microsoft.com/library/cc750357.aspx)
 
   この記事では、Microsoft の製品と暗号化モジュールが、どのように米国連邦政府の FIPS 標準に準拠しているかを説明しています。
-* [“System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing” security settings effects in Windows XP and in later versions of Windows (Windows XP 以降のバージョンの Windows での [システム暗号化: 暗号化、ハッシュ、署名に FIPS 準拠アルゴリズムを使う] セキュリティ設定の効果)](https://support.microsoft.com/kb/811833)
+* ["System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing" security settings effects in Windows XP and in later versions of Windows (Windows XP 以降のバージョンの Windows での "システム暗号化: 暗号化、ハッシュ、署名に FIPS 準拠アルゴリズムを使う" セキュリティ設定の効果)](https://support.microsoft.com/kb/811833)
 
   この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。

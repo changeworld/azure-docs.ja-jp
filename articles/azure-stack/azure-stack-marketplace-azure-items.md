@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: d006deb83ca16860eb669548ae8563304f7937fa
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/29/2019
+ms.openlocfilehash: c9f6ad48f6c2e3b2ed60833f0cba111cc96a8a54
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306609"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240762"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -97,10 +98,11 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 | ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 15。 | SUSE |
 
-## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>サードパーティの BYOL、無料、および試用版のイメージとソリューション テンプレート
+## <a name="third-party-byol-free-trial-images-and-solution-templates"></a>サードパーティの BYOL、無料、試用版のイメージ、ソリューション テンプレート
 
 |  | 項目名 | 説明 | 発行元 |
 | --- | --- | --- | --- |
+| ![A10 vThunder ADC](media/azure-stack-marketplace-azure-items/a10.png) | [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) | A10 Networks vThunder Application Delivery Controller for Microsoft Azure は、ハイパフォーマンス、柔軟性、デプロイの容易性を備えたアプリケーション デリバリーとサーバー負荷分散を意図して専用設計されており、Azure クラウド内でネイティブに動作するよう最適化されています。 | A10 Networks |
 | ![Arista vEOS Router](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS Router](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | Arista vEOS ルーターはマルチクラウド対応かつマルチ ハイパーバイザー対応の機能豊富な仮想ルーターで、企業やクラウド プロバイダーが一貫性のある安全性が高くスケーラブルなハイブリッド ネットワークを構築するために役立ちます。 | Arista Networks |
 | ![Barracuda Application Security Control Center](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Application Security Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | 複数の Barracuda Web Application Firewalls (WAF) を一元管理します。 | Barracuda Networks, Inc. |
 | ![Barracuda Email Security Gateway](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Email Security Gateway](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | 受信電子メールによる脅威から保護する電子メール セキュリティ ゲートウェイです。 | Barracuda Networks, Inc. |

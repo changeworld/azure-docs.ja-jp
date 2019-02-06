@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449403"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458093"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>1 つのデータベースを除外する
+## <a name="exclude-an-individual-database"></a>データベースを個別に除外する
 
-次の例では、*MappingDB* という名前のデータベースを除く、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
+次の例では、*MappingDB* という名前のデータベースを除く、SQL Database サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
 "[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -1032,10 +1032,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、シャード マップ内のすべてのデータベース、または個々のデータベースです。 target_type は nvarchar(128) であり、既定値はありません。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。 
 
 [ **@refresh_credential_name =** ] 'refresh_credential_name'  
-論理サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
+SQL Database サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
 
 [ **@server_name =** ] 'server_name'  
-指定したターゲット グループに追加する必要のある論理サーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
+指定したターゲット グループに追加する必要のある SQL Database サーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
 
 [ **@database_name =** ] 'database_name'  
 指定したターゲット グループに追加する必要があるデータベースの名前。 target_type が 'SqlDatabase' の場合は、database_name を指定する必要があります。 database_name は nvarchar(128) であり、既定値はありません。
@@ -1051,7 +1051,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 リターン コードの値 0 (成功) または 1 (失敗)
 
 #### <a name="remarks"></a>解説
-論理サーバーまたはエラスティック プールがターゲット グループに含まれている場合、実行時にはサーバーまたはエラスティック プール内のすべてのデータベースでジョブが実行されます。
+SQL Database サーバーまたはエラスティック プールがターゲット グループに含まれている場合、実行時には SQL Database サーバーまたはエラスティック プール内のすべての単一データベースでジョブが実行されます。
 
 #### <a name="permissions"></a>アクセス許可
 既定では、sysadmin 固定サーバー ロールのメンバーは、このストアド プロシージャを実行できます。 これにより、ジョブの監視しか行えないようにユーザーが制限されます。そのユーザーには、ジョブ エージェントを作成するときに、指定されたジョブ エージェント データベースの次のデータベース ロールのいずれかを許可できます。
@@ -1229,7 +1229,7 @@ GO
 |**target_type**|   nvarchar(128)   |ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、またはデータベースです。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、または 'SqlDatabase' です。 NULL は、これが親ジョブの実行であることを示します。
 |**target_id**  |uniqueidentifier|  ターゲット グループ メンバーの一意の ID。  NULL は、これが親ジョブの実行であることを示します。
 |**target_group_name**  |nvarchar(128)  |ターゲット グループの名前。 NULL は、これが親ジョブの実行であることを示します。
-|**target_server_name**|    nvarchar(256)|  ターゲット グループに含まれる論理サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
+|**target_server_name**|    nvarchar(256)|  ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
 |**target_database_name**   |nvarchar(128)| ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
 
 
@@ -1253,7 +1253,7 @@ GO
 
 ### <a name="jobversions-view"></a>job_versions ビュー
 
-[jobs].[job_verions]
+[jobs].[job_versions]
 
 すべてのジョブのバージョンを表示します。
 
@@ -1332,7 +1332,7 @@ GO
 |**refresh_credential_name**    |nvarchar(128)  |ターゲット グループ メンバーへの接続に使われるデータベース スコープの資格情報の名前。|
 |**subscription_id**    |uniqueidentifier|  サブスクリプションの一意の ID。|
 |**resource_group_name**    |nvarchar(128)| ターゲット グループ メンバーが存在するリソース グループの名前。|
-|**server_name**    |nvarchar(128)  |ターゲット グループに含まれる論理サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 |
+|**server_name**    |nvarchar(128)  |ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 |
 |**database_name**  |nvarchar(128)  |ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。|
 |**elastic_pool_name**  |nvarchar(128)| ターゲット グループに含まれるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合にのみ指定されます。|
 |**shard_map_name** |nvarchar(128)| ターゲット グループに含まれるシャード マップの名前。 target_type が 'SqlShardMap' の場合にのみ指定されます。|

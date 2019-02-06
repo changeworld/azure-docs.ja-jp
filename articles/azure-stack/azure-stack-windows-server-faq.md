@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613097"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249682"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace の Windows Server に関する FAQ
 
@@ -38,9 +39,9 @@ ms.locfileid: "51613097"
 Microsoft は、次の 2 つのバージョンの Windows Server イメージを Azure Stack Marketplace で提供しています。
 
 - **従量課金制**: これらのイメージでは、正規の価格の Windows メーターが実行されます。 
-   "*使用量課金モデル*" を利用するマイクロソフト エンタープライズ契約 (EA) のお客様や、SPLA ライセンスの使用を希望しない CSP にお勧めします。
+   対象ユーザーとしては、"*使用量課金モデル*" を利用するマイクロソフト エンタープライズ契約 (EA) のお客様や、SPLA ライセンスの使用を希望しない CSP にお勧めします。
 - **ライセンス持ち込み (BYOL)**: これらのイメージでは、基本メーターが実行されます。
-   Windows Server ライセンスを所有する EA のお客様や、SPLA ライセンスを使用する CSP にお勧めします。
+   対象ユーザーとしては、Windows Server ライセンスを所有する EA のお客様や、SPLA ライセンスを使用する CSP にお勧めします。
 
 Azure Stack では、Azure ハイブリッド使用特典 (AHUB) はサポートされません。 "容量" モデルを通じてライセンスを受けるお客様は、BYOL イメージを使用する必要があります。 Azure Stack Development Kit (ASDK) を使ってテストを行う場合は、どちらのオプションを使用してもかまいません。
 
@@ -62,7 +63,7 @@ Azure Stack では、Azure ハイブリッド使用特典 (AHUB) はサポート
 
 ### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>私はマイクロソフト エンタープライズ契約 (EA) を所有しており、EA Windows Server ライセンスを使う予定です。イメージに対して正しく課金されるようにするには、どうすればよいですか?
 
-Azure Resource Manager テンプレートに **licenseType: Windows_Server** を追加してください。 この設定は、個々の仮想マシンのリソース ブロックに追加する必要があります。
+**licenseType: Windows_Server** を Azure Resource Manager テンプレートに追加してください。 この設定は、個々の仮想マシンのリソース ブロックに追加する必要があります。
 
 ## <a name="activation"></a>アクティブ化
 

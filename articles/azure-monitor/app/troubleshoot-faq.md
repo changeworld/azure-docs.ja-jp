@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156291"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457090"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -245,42 +245,51 @@ Microsoft の SDK と [SDK API](../../azure-monitor/app/api-custom-events-metric
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>イントラネット Web サーバーを監視できますか?
 
-以下に 2 つの方法を示します。
+はい。ただし、ファイアウォールの例外またはプロキシによるリダイレクトを使用して、Microsoft のサービスへのトラフィックを許可する必要があります。
+- QuickPulse `rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
-### <a name="firewall-door"></a>ファイアウォール ドア
 
-ご利用の Web サーバーから Microsoft のエンドポイント https://dc.services.visualstudio.com:443 および https://rt.services.visualstudio.com:443 への利用統計情報の送信を許可します。 
+[ここ](../../azure-monitor/app/ip-addresses.md)でサービスと IP アドレスの一覧を確認できます。
 
-### <a name="proxy"></a>プロキシ
+### <a name="firewall-exception"></a>ファイアウォールの例外
 
-例の ApplicationInsights.config に含まれるこれらの設定を上書きして、サーバーからイントラネット上のゲートウェイにトラフィックをルーティングします。これらの "Endpoint" プロパティが config に存在しない場合、以下の例のように、これらのクラスは既定値を使用します。
+ご利用の Web サーバーから Microsoft のエンドポイントへの利用統計情報の送信を許可します。 
 
-#### <a name="example-applicationinsightsconfig"></a>ApplicationInsights.config の例:
+### <a name="proxy-redirect"></a>プロキシによるリダイレクト
+
+構成内のエンドポイントを上書きすることによって、ご利用のサーバーからのトラフィックをイントラネット上のゲートウェイにルーティングします。
+これらの "Endpoint" プロパティが config に存在しない場合、これらのクラスは、次の ApplicationInsights.config の例に示されているように、既定値を使用します。 
+
+ご利用のゲートウェイは、Microsoft のエンドポイントのベース アドレスにトラフィックをルーティングする必要があります。 構成内の既定値を `http://<your.gateway.address>/<relative path>` に置き換えてください。
+
+
+#### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>既定のエンドポイントを使用する ApplicationInsights.config の例:
 ```xml
 <ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
     ...
-    <TelemetryChannel>
-         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
-    </TelemetryChannel>
-    ...
-    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
-        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
-    </ApplicationIdProvider>
-    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
 </ApplicationInsights>
 ```
 
 _ApplicationIdProvider は v2.6.0 以降で使用できます_
 
-ご利用のゲートウェイはトラフィックを https://dc.services.visualstudio.com:443 にルーティングする必要があります。
 
-上記の値を `http://<your.gateway.address>/<relative path>` に置き換えます。
  
-例: 
-```
-http://<your.gateway.endpoint>/v2/track 
-http://<your.gateway.endpoint>/api/profiles/{0}/apiId
-```
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?
 

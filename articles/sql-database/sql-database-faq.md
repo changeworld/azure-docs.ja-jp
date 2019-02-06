@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541620"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463958"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database に関してよく寄せられる質問 (FAQ)
 
@@ -43,7 +43,7 @@ Microsoft は、サービス レベルに関係なく、お使いの Microsoft A
 
 ## <a name="is-moving-to-the-vcore-based-model-required"></a>仮想コアベースのモデルへの移行は必須ですか
 
-いいえ。Elastic Pool と単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要ありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。
+いいえ。エラスティック プールと単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要ありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。
 
 多くの場合、アプリケーションは、事前構成済みリソース バンドルのシンプルさからメリットを得られます。 したがって、Microsoft では、これらの DTU ベースのオプションを引き続きお客様に提供し、サポートしています。 このオプションをご使用中で、それがご自分のビジネス要件を満たしている場合は、このまま使用し続けてください。
 
@@ -141,9 +141,9 @@ Microsoft の目標は、アプリケーションのニーズに近いパフォ�
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>単一データベースのサービス階層またはコンピューティング サイズの変更や、エラスティック プールからのデータベースの出し入れには、どれくらいの時間がかかりますか
 
-データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-service-tiers-dtu.md)」を参照してください。
+データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-single-database-scale.md)」を参照してください。
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Single Database と Elastic Database はどのように使い分けできますか
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>単一データベースとエラスティック プールはどのように使い分けできますか
 
 一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに 1 つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。 詳しくは、「[エラスティック プールの使用に適した状況](sql-database-elastic-pool.md)」をご覧ください。
 

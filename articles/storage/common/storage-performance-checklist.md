@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231790"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460830"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -147,7 +147,7 @@ Azure CDN の詳細については、「 [Azure CDN](https://azure.microsoft.com
 どちらのテクノロジも、Web アプリケーションに不要な負荷 (およびボトルネック) をかけずに運用するために役立ちます。  
 
 #### <a name="useful-resources"></a>有用な情報
-SAS の詳細については、「 [共有アクセス署名、パート 1:SAS モデルについて](../storage-dotnet-shared-access-signature-part-1.md)」を参照してください。  
+SAS の詳細については、[Shared Access Signature に関する記事のパート 1 の SAS モデル](../storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。  
 
 CORS の詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。  
 
@@ -178,7 +178,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 他のプログラミング言語については、対象の言語のドキュメントで接続数の上限の設定方法を確認してください。  
 
-詳細については、ブログの投稿「 [Web Services: Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)」を参照してください。  
+詳細については、ブログ記事「[Web Services: Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)」を参照してください。  
 
 #### <a name="subheading10"></a>非同期タスクを伴う同期コードを使用する場合は、スレッド プールの最小スレッド数 (ThreadPool Min Threads) を増やす
 このコードはスレッド プールの最小スレッド数を増やします:  
@@ -255,9 +255,9 @@ BLOB を迅速にアップロードするには、まず、アップロードす
 #### <a name="subheading21"></a>1 つの大きな BLOB を迅速にアップロードする
 1 つの大きな BLOB を迅速にアップロードするには、クライアント アプリケーションがブロックやページを並列アップロードする必要があります (個々の BLOB とストレージ アカウント全体に関するスケーラビリティ ターゲットに注意してください)。  Microsoft が提供する公式の RTM ストレージ クライアント ライブラリ (.NET、Java) で、このアップロードを実行できます。  ライブラリごとに指定されている以下のオブジェクトまたはプロパティを使用して、コンカレンシーのレベルを設定します。  
 
-* .NET: BlobRequestOptions オブジェクトで ParallelOperationThreadCount の使用を設定します。
-* Java/Android: BlobRequestOptions.setConcurrentRequestCount() を使用します。
-* Node.js: 要求オプションまたは BLOB サービスのいずれかで、parallelOperationThreadCount を使用します。
+* .NET:使用する BlobRequestOptions オブジェクトで ParallelOperationThreadCount を設定します。
+* Java/Android: BlobRequestOptions.setConcurrentRequestCount() を使用します
+* Node.js:要求オプションまたは BLOB サービスのいずれかで、parallelOperationThreadCount を使用します。
 * C++: blob_request_options::set_parallelism_factor メソッドを使用します。
 
 #### <a name="subheading22"></a>多数の BLOB をすばやくアップロードする
@@ -286,7 +286,7 @@ Azure Storage がサポートしている BLOB には、*ページ* BLOB と*ブ
 #### <a name="subheading25"></a>JSON の使用
 ストレージ サービス Version 2013-08-15 より、テーブル サービスでは、テーブル データの転送用に、XML ベースの AtomPub 形式に代えて JSON を使用できるようになりました。 これにより、ペイロード サイズが 75% 程度に抑えられ、アプリケーションのパフォーマンスを大幅に引き上げることができます。
 
-詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
+詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[Payload Format for Table Service Operations (Table サービス操作のペイロード形式)](https://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
 #### <a name="subheading26"></a>Nagle のオフ
 Nagle のアルゴリズムは、ネットワーク パフォーマンスを向上させる方法として、TCP/IP ネットワークで広く使用されています。 しかし、すべての状況に適しているわけではありません (高度な対話形式の環境などには不向き)。 Azure Storage では、Nagle のアルゴリズムがテーブル サービスやキュー サービスに対する要求のパフォーマンスにマイナスの影響を及ぼすため、可能な場合は無効にしてください。  
@@ -303,7 +303,7 @@ Nagle のアルゴリズムは、ネットワーク パフォーマンスを向�
 #### <a name="subheading27"></a>テーブルとパーティション
 テーブルはパーティションに分割されます。 同じパーティションに格納されるエンティティは、いずれも同じパーティション キーを共有し、一意の行キーによってパーティション内で識別されます。 パーティションには利点もありますが、スケーラビリティ限界ももたらします。  
 
-* 利点: 最大 100 個のストレージ操作 (総サイズの上限は 4 MB) を含む単一のアトミック バッチ トランザクションで、同じパーティション内のエンティティを更新できます。 また、取得するエンティティが同数であれば、複数のパーティションにまたがるデータのクエリよりも、単一パーティションに含まれるデータのクエリの方が効率的に実行できます (ただし、テーブル データのクエリに関する推奨事項を参照してください)。
+* メリット:最大 100 個のストレージ操作 (総サイズの上限は 4 MB) を含む単一のアトミック バッチ トランザクションで、同じパーティション内のエンティティを更新できます。 また、取得するエンティティが同数であれば、複数のパーティションにまたがるデータのクエリよりも、単一パーティションに含まれるデータのクエリの方が効率的に実行できます (ただし、テーブル データのクエリに関する推奨事項を参照してください)。
 * スケーラビリティ限界: パーティションはアトミック バッチ トランザクションをサポートしているため、単一パーティションに格納されているエンティティへのアクセスは、負荷分散の対象になりません。 したがって、個々のテーブル パーティションのスケーラビリティ ターゲットは、テーブル サービス全体のターゲットよりも低くなります。  
 
 テーブルとパーティションにはこうした特徴があるため、以下の設計原理を適用します。  
@@ -395,7 +395,7 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 ### <a name="subheading44"></a>UpdateMessage
 **UpdateMessage** を使用すると、非常時タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。 この機能は効果的ですが、各 **UpdateMessage** 操作はスケーラビリティ ターゲットにカウントされることに留意してください。 しかし、それでもジョブの手順が完了するごとに、次のキューにジョブを渡すワークフローに比べると、はるかに効率的な方法です。 **UpdateMessage** 操作を使用すると、アプリケーションは、ジョブの各手順が完了するたびに次の手順に関するメッセージをキューから取得するのではなく、ジョブ状態をメッセージに保存して、処理を継続できるようになります。  
 
-詳細については、「 [方法: キューに配置されたメッセージの内容を変更する](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)」を参照してください。  
+詳細については、[キューに配置されたメッセージの内容を変更する方法](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)に関する記事を参照してください。  
 
 ### <a name="subheading45"></a>アプリケーションのアーキテクチャ
 アプリケーション アーキテクチャの拡張性を確保するには、キューを使用します。 以下のリストは、キューを使用して、アプリケーションの拡張性を高めるための方法を示しています。  
