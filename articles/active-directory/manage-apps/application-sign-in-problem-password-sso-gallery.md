@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5ae7643123552eaa17d51e6cd1ed9c0293292ed0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184973"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822529"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題
 
@@ -88,7 +88,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 
 Azure AD ギャラリーからアプリケーションを構成するには、以下の手順を実行する必要があります。
 
--   [Azure AD ギャラリーからアプリケーションを追加する](#_Add_an_application)
+-   Azure AD ギャラリーからアプリケーションを追加する
 
 -   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 
@@ -140,7 +140,7 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 8.  **[パスワード ベースのサインオン]** モードを選択します。
 
-9.  [アプリケーションにユーザーを割り当てます](#_How_to_assign)。
+9.  アプリケーションにユーザーを割り当てます。
 
 10. さらに、ユーザーの行を選び、**[資格情報の更新]** をクリックしてユーザーに代わってユーザー名とパスワードを入力すると、ユーザーに代わって資格情報を提供することもできます。 そうしないと、起動時に自分で資格情報を入力するように求めるプロンプトがユーザーに表示されます。
 

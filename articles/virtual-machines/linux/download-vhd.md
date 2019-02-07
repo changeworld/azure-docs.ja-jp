@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6d827e1142fa17b29633c98c062fd204f7a49e36
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953703"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729732"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -42,7 +42,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
     exit 
     ```
 
-2. [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) で Azure アカウントにサインインします。
+2. [az login](https://docs.microsoft.com/cli/azure/reference-index) で Azure アカウントにサインインします。
 3. VM を停止し、割り当てを解除します。
 
     ```azurecli

@@ -6,17 +6,16 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
-ms.component: hybrid
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb1ba63a0f32d026d51507fe66432a520a6f6e71
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0e71fea6046a9a7f7101566bda3eb927943ef103
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489123"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 

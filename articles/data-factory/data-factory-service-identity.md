@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017686"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814202"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
@@ -44,7 +44,7 @@ Data Factory サービス ID は、次の機能に役立ちます。
 
 - [PowerShell を使用したサービス ID の生成](#generate-service-identity-using-powershell)
 - [REST API を使用したサービス ID の生成](#generate-service-identity-using-rest-api)
-- [Azure Resource Manager テンプレートを使用してサービス ID を生成する](#generate-service-identity-using-azure-resource-manager-template)
+- Azure Resource Manager テンプレートを使用してサービス ID を生成する
 - [SDK を使用したサービス ID の生成](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -192,4 +192,4 @@ Type                  : ServicePrincipal
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
 - [Azure リソース認証用のマネージド ID を使用して Azure Data Lake Store との間でデータを双方向にコピーする](connector-azure-data-lake-store.md)
 
-データ ファクトリ サービス ID の基になっている Azure リソースのマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](~/articles/active-directory/msi-overview.md)」をご覧ください。 
+データ ファクトリ サービス ID の基になっている Azure リソースのマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](/azure/active-directory/managed-identities-azure-resources/overview)」をご覧ください。 

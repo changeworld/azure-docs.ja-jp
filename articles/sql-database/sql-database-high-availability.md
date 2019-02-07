@@ -3,7 +3,7 @@ title: 高可用性 - Azure SQL Database サービス | Microsoft Docs
 description: Microsoft Azure SQL Database サービスの高可用性機能および特色について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ce232332413a0b859b82ebfa7bd5b3505bd923bb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 91f49adbc922e96bf3cf250735ebfe96e6b39868
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453129"
+ms.locfileid: "55512263"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 

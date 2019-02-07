@@ -10,20 +10,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8402d0228e062aed60adee1c4622ade31771584d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210949"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700283"
 ---
 # <a name="quickstart-query-for-facts"></a>クイック スタート:ファクトのクエリ
 
 日付や識別可能な知識など、ファクトに向けたクエリの場合、応答には `facts` 回答を含むことができます。 ファクトの回答には、Web ドキュメント内の段落から抽出された関連する結果が含まれます。  これらのクエリでは常に Web ページが返されます。これに対して、[ファクト](fact-queries.md)と[エンティティ](entity-queries.md)のいずれかまたは両方が返されるかどうかはクエリによって異なります。
 
-valentines+2016、when+is+ramadan のようなクエリは、日付関連のクエリと見なされます。 クエリが日付関連であると Bing が判断した場合、応答には `facts` 回答が含まれます。 
+valentines+2016、when+is+ramadan のようなクエリは、日付関連のクエリと見なされます。 クエリが日付関連であると Bing が判断した場合、応答には `facts` 回答が含まれます。
 
-次の例は、日付関連の `facts` 回答です。 
+次の例は、日付関連の `facts` 回答です。
 
 **クエリ:**
 ```
@@ -34,28 +34,29 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 **応答:**`subjectName` フィールドには、ファクトを表示するときにラベルとして使用できる、ユーザーのクエリの表示バージョンが含まれます。 クエリ文字列が valentines+2016 の場合、Bing ではこれを Valentine's Day 2016 に変換できます。 [説明] フィールドには、ファクトが含まれます。
 
 ```
-{   
-    "_type" : "SearchResponse",   
-    "queryContext" : {   
-        "originalQuery" : "valentines 2016" 
-    },   
-    "facts" : {   
-        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",   
-        "value" : [{   
-            "description" : "Valentine's Day was on Sunday, February 14, 2016.",   
-            "subjectName" : "Valentine's Day 2016"   
-        }]   
-    },   
-    "rankingResponse" : {   
-        "mainline" : {   
-            "items" : [{   
-                "answerType" : "Facts",   
-                "value" : {   
-                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"                   }   
-            }]   
-        }   
-    }   
-}   
+{
+    "_type" : "SearchResponse",
+    "queryContext" : {
+        "originalQuery" : "valentines 2016"
+    },
+    "facts" : {
+        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",
+        "value" : [{
+            "description" : "Valentine's Day was on Sunday, February 14, 2016.",
+            "subjectName" : "Valentine's Day 2016"
+        }]
+    },
+    "rankingResponse" : {
+        "mainline" : {
+            "items" : [{
+                "answerType" : "Facts",
+                "value" : {
+                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"
+                }
+            }]
+        }
+    }
+}
 
 ```
 
@@ -118,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 一部のケースでは、ファクトが `_type: StructuredValue/TabularData` として返される場合があります。 次のクエリでは、コーヒーと紅茶に関する対照的な情報を含む表形式のデータを取得します。
 
 ```
-https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
+https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us
 
 ```
 `facts` 結果には、次の行とセルが含まれます。

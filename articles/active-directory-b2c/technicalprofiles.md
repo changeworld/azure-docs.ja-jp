@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c197ead3a7b0f61b9dd5f1e3ea0bd197c23a2778
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180774"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568177"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -97,7 +97,7 @@ ms.locfileid: "55180774"
 | OutputClaimsTransformations | 0:1 | クレーム プロバイダーから要求を受け取った後に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | ValidationTechnicalProfiles | 0:n | 技術プロファイルが検証目的で使用する、他の技術プロファイルへの参照の一覧。 詳細については、「[検証技術プロファイル](validation-technical-profile.md)」を参照してください。|
 | SubjectNamingInfo | 0:1 | サブジェクト名が要求とは別に指定されているトークンのサブジェクト名の生成を制御します。 たとえば、OAuth または SAML です。  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 |
 | IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイル内に存在する必要があります。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | セッション管理に使用される別の技術プロファイル。 |
 |EnabledForUserJourneys| 0:1 |ユーザー体験で技術プロファイルを実行するかどうかを制御します。  |
@@ -168,7 +168,7 @@ ms.locfileid: "55180774"
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
-#### <a name="inputclaim"></a>InputClaim 
+#### <a name="inputclaim"></a>InputClaim
 
 **InputClaim** 要素には、次の属性が含まれています。
 
@@ -186,7 +186,7 @@ ms.locfileid: "55180774"
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 保持する要求の種類。 |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** 要素には、次の属性が含まれています。
 
@@ -204,7 +204,7 @@ ms.locfileid: "55180774"
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 予想される出力要求の種類。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
@@ -275,9 +275,9 @@ ms.locfileid: "55180774"
 ユーザー体験の **ClaimsProviderSelections** は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
 
 - **Always**、技術プロファイルを実行します。
-- **Never**、技術プロファイルをスキップします。 
-- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。 
-- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。 
+- **Never**、技術プロファイルをスキップします。
+- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。
+- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。
 - **OnItemAbsenceInStringCollectionClaim**、文字列コレクション要求に項目が存在しない場合にのみ実行します。
 
 **OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります。**ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
@@ -289,22 +289,10 @@ ms.locfileid: "55180774"
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

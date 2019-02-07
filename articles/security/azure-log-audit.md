@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306252"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697920"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -194,9 +194,9 @@ Storage Analytics では、次の種類の認証済み要求と匿名要求が�
 
 Azure でのネットワーク ログおよび監視が指す意味は広く、大まかに次の 2 つのカテゴリを対象としています。
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher):シナリオベースのネットワーク監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):シナリオベースのネットワーク監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
 
-* [リソース監視](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring):リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、リソース正常性という 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
+* [リソース監視](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、リソース正常性という 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
 
 ![Azure のネットワーク ログ](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -238,7 +238,7 @@ Network Watcher には現在、前述のログ機能に加えて、次の機能�
 
 * [Virtual Network ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest):仮想ネットワーク ゲートウェイと接続のトラブルシューティングに役立ちます。
 
-* [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
+* [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 
 ### <a name="application-insights"></a>Application Insights
 

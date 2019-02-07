@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 1f3aaf34283f4e7c81f97b8e2ec4987749f3935c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 12/19/2018
+ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465284"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563951"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 

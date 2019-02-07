@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: d57a7baafc533aee52ec8012d410d5f25b510b60
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359954"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663191"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -57,7 +57,7 @@ Chef ワークステーションは、ポリシーを作成したり、管理コ
 
 C:\chef というディレクトリを作成します。
 
-Azure PowerShell [パブリッシュ設定](https://docs.microsoft.com/en-us/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information)をダウンロードします。
+Azure PowerShell [パブリッシュ設定](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information)をダウンロードします。
 
 ## <a name="setup-chef-server"></a>Chef サーバーの設定
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: be1e7ab953c55581645a9702fc4759cb603e7ecc
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c0ec8b98ff711f8e5746d6d4731266ed4b09cc8f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357863"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658846"
 ---
 # <a name="using-chef-with-azure"></a>Azure で Chef を使用する
 [Chef](http://www.chef.io) は、Azure 上の仮想マシン インフラストラクチャをコードに変換する強力な自動化プラットフォームです。 Chef は、インフラストラクチャがそのサイズに関係なく、ネットワーク経由で構成、デプロイ、および管理される方法を自動化します。
@@ -21,7 +21,7 @@ ms.locfileid: "54357863"
 この記事では、Chef を使用して Azure インフラストラクチャを管理する利点について説明します。
 
 ## <a name="chef-extension-on-azure"></a>Azure での Chef 拡張機能
-Azure Portal 上の [Chef 拡張機能](https://docs.microsoft.com/en-us/azure/chef/chef-extension-portal)でバックグラウンド サービスとして実行されている Chef Client を使用して仮想マシンをプロビジョニングします。 プロビジョニングが済むと、これらの仮想マシンは Chef サーバーで管理できるようになります。
+Azure Portal 上の [Chef 拡張機能](https://docs.microsoft.com/azure/chef/chef-extension-portal)でバックグラウンド サービスとして実行されている Chef Client を使用して仮想マシンをプロビジョニングします。 プロビジョニングが済むと、これらの仮想マシンは Chef サーバーで管理できるようになります。
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 Azure Cloud Shell で Chef ワークステーションを直接使用します。 すべての Chef ユーティリティと InSpec を Cloud Shell から実行します。 以下から Chef コマンドを使用できます。

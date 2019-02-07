@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dfed8ce93a97b31380b44f0ac7057c0cff60901e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464716"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497283"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 リソースの種類には、移動操作がサポートされていても、リソースが移動されることを妨げている条件がある可能性があります。 移動操作に影響する条件の詳細については、[新しいリソース グループまたはサブスクリプションへリソースを移動](resource-group-move-resources.md)を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="find-resource-provider-and-resource-type"></a>リソース プロバイダーとリソースの種類を検索します。
 
@@ -29,7 +31,7 @@ ms.locfileid: "54464716"
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
+Get-AzResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
 ```
 
 Azure CLI では、次を使用します。
@@ -565,7 +567,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| クラスター | はい | はい |
+| clusters | はい | はい |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | リソースの種類 | リソース グループ | サブスクリプション |

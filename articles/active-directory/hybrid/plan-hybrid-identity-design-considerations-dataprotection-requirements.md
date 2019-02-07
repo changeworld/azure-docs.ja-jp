@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: c31f104b3a7ae37d768a2a483a70385852dc47ca
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ae7610b18a8ec09332612e6608f76e196376fdce
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156821"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495965"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>強力な ID ソリューションによりデータ セキュリティを強化するための計画
 データを保護する最初の手順は、そのデータにアクセスできるユーザーを特定することです。 また、認証および承認機能を提供するようにシステムと統合可能なIDソリューションが必要です。 認証と承認は混同され、その役割が誤解されることがよくあります。 実際には、次の図のように、大変異っています：

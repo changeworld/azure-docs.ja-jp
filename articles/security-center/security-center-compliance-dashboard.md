@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: dbff728c888e9e2f83d9a82ca9819bf9dd0b89e9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 252337c0d2bc162d418d20ca4641673d1564daa6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54268153"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660428"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 ---
@@ -37,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルが必要です。 Security Center Standard は無料でお試しいただけます。
-詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](https://docs.microsoft.com/en-us/azure/security-center/security-center-get-started)に関するクイックスタートを参照してください。
+詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](https://docs.microsoft.com/azure/security-center/security-center-get-started)に関するクイックスタートを参照してください。
 
 ##  <a name="assess-your-regulatory-compliance"></a>規制に対するコンプライアンスを評価する
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718504"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700980"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -73,7 +73,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 #### <a name="identity-and-authentication"></a>ID と認証
 
-このブループリントは、ディレクトリおよび ID 管理サービスを使用してリソースへのアクセスを確実に保護しています。 このアーキテクチャは、[セキュリティ境界としての ID](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter) をフルに活用しています。 
+このブループリントは、ディレクトリおよび ID 管理サービスを使用してリソースへのアクセスを確実に保護しています。 このアーキテクチャは、[セキュリティ境界としての ID](https://docs.microsoft.com/azure/security/security-paas-deployments) をフルに活用しています。 
 
 次のテクノロジによって、Azure 環境に ID 管理機能が提供されます。
 

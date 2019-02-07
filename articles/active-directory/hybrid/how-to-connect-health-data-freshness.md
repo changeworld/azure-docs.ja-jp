@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 93f0d31f5daa13d0598367e2a4ddab67ff3dbc66
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3f97e9696a5138d9102037103a45c86988a7506c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279719"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489277"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236932"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661090"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -84,7 +84,7 @@ Body
 
 ```
 
-SDK には、アプリケーション トークンの作成を容易にするメソッドが用意されています。 たとえば、.NET では、[Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) クラスと [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) メソッドを使用できます。
+SDK には、アプリケーション トークンの作成を容易にするメソッドが用意されています。 たとえば、.NET では、[Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) クラスと [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) メソッドを使用できます。
 
 .NET SDK については、[Scopes](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes) に関するページを参照してください。
 
@@ -176,7 +176,7 @@ Body
 
 ## <a name="see-also"></a>関連項目
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Microsoft Power BI ワークスペース コレクションのサンプルの使用](get-started-sample.md)  
 [Microsoft Power BI ワークスペース コレクションの一般的なシナリオ](scenarios.md)  
 [Microsoft Power BI ワークスペース コレクションの概要](get-started.md)  

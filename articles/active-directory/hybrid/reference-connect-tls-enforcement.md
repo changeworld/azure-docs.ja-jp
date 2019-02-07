@@ -8,18 +8,18 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: dbd99a67574b2712b5388042872b66635c35e9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 207fa3bad26175b4165e78da58d9523ab20d2040
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157399"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491418"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Azure AD Connect に対する TLS 1.2 の強制
 

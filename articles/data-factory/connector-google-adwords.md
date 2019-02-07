@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 65d6685947c5796a65985aff0b789223736df0b8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f68627e2db3c08049f0273045906057526bd6aa
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354282"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568054"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Google AdWords からデータをコピーする (プレビュー)
 
@@ -66,21 +66,21 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
         "typeProperties": {
             "clientCustomerID" : "<clientCustomerID>",
             "developerToken": {
-                 "type": "SecureString",
-                 "value": "<developerToken>"
+                "type": "SecureString",
+                "value": "<developerToken>"
             },
             "authenticationType" : "ServiceAuthentication",
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refreshToken>"
+                "type": "SecureString",
+                "value": "<refreshToken>"
             },
             "clientId": {
-                 "type": "SecureString",
-                 "value": "<clientId>"
+                "type": "SecureString",
+                "value": "<clientId>"
             },
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             },
             "email" : "<email>",
             "keyFilePath" : "<keyFilePath>",

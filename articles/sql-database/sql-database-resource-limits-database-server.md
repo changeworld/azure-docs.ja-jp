@@ -3,7 +3,7 @@ title: Azure SQL Database サーバーのリソース制限 | Microsoft Docs
 description: この記事では、単一データベースとエラスティック プール用の Azure SQL Database サーバーのリソース制限について概要を示します。 また、これらのリソース制限に達した場合、または制限を超えた場合の動作に関する情報も提供します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
 ms.date: 11/13/2018
-ms.openlocfilehash: 57ff6025cd60d786931177f8bc0cc22e9baa60e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f2e71736d25003e6b4e9640a5f82dd1d92b0d95
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479121"
+ms.locfileid: "55508302"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database サーバーの SQL Database リソース制限
 

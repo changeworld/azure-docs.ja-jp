@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 395ff654bcacf1a4f70a9032492deb2a9d5202f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454761"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756752"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  
@@ -81,7 +81,7 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ## <a name="using-repairexport-to-validate-drive-contents"></a>RepairExport を使用してドライブの内容を検証する  
 Azure Import/Export を **RepairExport** オプションと一緒に使用して、ドライブの内容が正しいことを検証することもできます。 各エクスポート ドライブのマニフェスト ファイルには、ドライブの内容に関する MD5 が含まれています。  
   
-また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、[ サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)に関する記事をご覧ください。  
+また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、[ サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)に関する記事をご覧ください。  
   
 次の例では、**/ManifestFile** パラメーターと **/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
   
