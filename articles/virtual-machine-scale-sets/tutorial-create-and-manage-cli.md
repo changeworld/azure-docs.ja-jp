@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179482"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751023"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシン スケール セットの前にリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシン スケール セットの前にリソース グループを作成する必要があります。 [az group create](/cli/azure/group) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ az vmss create \
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを表示する
-スケール セット内の VM インスタンスの一覧を表示するには、次のように [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) を使用します。
+スケール セット内の VM インスタンスの一覧を表示するには、次のように [az vmss list-instances](/cli/azure/vmss) を使用します。
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -85,7 +85,7 @@ az vmss list-instances \
 ```
 
 
-出力の最初の列には、*InstanceId* が表示されます。 特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) に追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+出力の最初の列には、*InstanceId* が表示されます。 特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss) に追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>VM インスタンス イメージについて
-チュートリアルの開始時にスケール セットを作成したとき、VM インスタンスとして `--image` に *UbuntuLTS* を指定しました。 Azure Marketplace には、VM インスタンスの作成に使用できる多くのイメージが用意されています。 [az vm image list](/cli/azure/vm/image#az_vm_image_list) コマンドを使用して、よく使用されるイメージのリストを表示します。
+チュートリアルの開始時にスケール セットを作成したとき、VM インスタンスとして `--image` に *UbuntuLTS* を指定しました。 Azure Marketplace には、VM インスタンスの作成に使用できる多くのイメージが用意されています。 [az vm image list](/cli/azure/vm/image) コマンドを使用して、よく使用されるイメージのリストを表示します。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -243,7 +243,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
 チュートリアルの開始時にスケール セットを作成したとき、既定で 2 つの VM インスタンスがデプロイされました。 [az vmss create](/cli/azure/vmss) と共に `--instance-count` パラメーターを指定して、スケール セットに作成されるインスタンスの数を変更することができます。 既存のスケール セット内の VM インスタンスの数を増減するには、手動でその容量を変更します。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
 
-スケール セット内の VM インスタンスの数を手動で増減させるには、[az vmss scale](/cli/azure/vmss#az_vmss_scale) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
+スケール セット内の VM インスタンスの数を手動で増減させるには、[az vmss scale](/cli/azure/vmss) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
 
 ```azurecli-interactive
 az vmss scale \
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-スケール セットの容量を更新するには数分かかります。 スケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss#az_vmss_show) と *sku.capacity* に対するクエリを使います。
+スケール セットの容量を更新するには数分かかります。 スケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss) と *sku.capacity* に対するクエリを使います。
 
 ```azurecli-interactive
 az vmss show \
@@ -267,27 +267,27 @@ az vmss show \
 これで、スケール セットを作成し、接続情報を一覧表示し、VM インスタンスに接続することができます。 VM インスタンスに異なる OS イメージを使用する方法、別の VM サイズを選択する方法、インスタンス数を手動でスケーリングする方法についても学習しました。 日常の管理の一環として、スケール セット内の VM インスタンスの停止、起動、または再起動が必要になる場合があります。
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを停止および割り当て解除する
-スケール セット内の 1 つ以上の VM インスタンスを停止するには、[az vmss stop](/cli/azure/vmss#az_vmss_stop) を使用します。 `--instance-ids` パラメーターには、停止する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しないと、スケール セット内のすべての VM インスタンスが停止されます。 次の例では、インスタンス *1* を停止します。
+スケール セット内の 1 つ以上の VM インスタンスを停止するには、[az vmss stop](/cli/azure/vmss) を使用します。 `--instance-ids` パラメーターには、停止する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しないと、スケール セット内のすべての VM インスタンスが停止されます。 次の例では、インスタンス *1* を停止します。
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
-停止した VM インスタンスは割り当てられたままであり、引き続きコンピューティングの料金が発生します。 VM インスタンスの割り当てを解除してストレージの料金のみが課金されるようにするには、[az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate) を使用します。 次の例では、インスタンス *1* を停止および割り当て解除します。
+停止した VM インスタンスは割り当てられたままであり、引き続きコンピューティングの料金が発生します。 VM インスタンスの割り当てを解除してストレージの料金のみが課金されるようにするには、[az vmss deallocate](/cli/azure/vmss) を使用します。 次の例では、インスタンス *1* を停止および割り当て解除します。
 
 ```azurecli-interactive
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを起動する
-スケール セット内の 1 つ以上の VM インスタンスを起動するには、[az vmss start](/cli/azure/vmss#az_vmss_start) を使用します。 `--instance-ids` パラメーターには、起動する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM インスタンスが起動されます。 次の例では、インスタンス *1* を起動します。
+スケール セット内の 1 つ以上の VM インスタンスを起動するには、[az vmss start](/cli/azure/vmss) を使用します。 `--instance-ids` パラメーターには、起動する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM インスタンスが起動されます。 次の例では、インスタンス *1* を起動します。
 
 ```azurecli-interactive
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを再起動する
-スケール セット内の 1 つ以上の VM インスタンスを再起動するには、[az vmss restart](/cli/azure/vmss#az_vm_restart) を使用します。 `--instance-ids` パラメーターには、再起動する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM インスタンスが再起動されます。 次の例では、インスタンス *1* を再起動します。
+スケール セット内の 1 つ以上の VM インスタンスを再起動するには、[az vmss restart](/cli/azure/vmss) を使用します。 `--instance-ids` パラメーターには、再起動する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM インスタンスが再起動されます。 次の例では、インスタンス *1* を再起動します。
 
 ```azurecli-interactive
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 1

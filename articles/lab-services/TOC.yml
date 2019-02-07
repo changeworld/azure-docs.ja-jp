@@ -66,12 +66,8 @@ items:
       href: classroom-labs/how-to-create-schedules.md
   - name: DevTest ラボ
     items:
-    - name: ラボを作成する
-      href: devtest-lab-create-lab.md
-    - name: ラボで VM を作成する
-      href: devtest-lab-create-first-vm.md
-    - name: ラボまたはラボ内の VM を削除する
-      href: devtest-lab-delete-lab-vm.md
+    - name: ラボ仮想マシンのリソース グループを指定する
+      href: resource-group-control.md
     - name: ラボのポリシーを設定する
       href: devtest-lab-get-started-with-lab-policies.md
     - name: Azure Key Vault にシークレットを格納する
@@ -101,6 +97,10 @@ items:
           href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: ラボでの VM の使用
       items:
+      - name: ラボを作成する
+        href: devtest-lab-create-lab.md
+      - name: ラボまたはラボ内の VM を削除する
+        href: devtest-lab-delete-lab-vm.md
       - name: VM の作成
         href: devtest-lab-add-vm.md
       - name: クレーム可能 VM の作成と管理
@@ -223,9 +223,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 1fc989f61f5c11e06e2651326e0e7e7f51092253
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 783aec352d79c56525751142e4e5e95697149dbc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496722"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747285"

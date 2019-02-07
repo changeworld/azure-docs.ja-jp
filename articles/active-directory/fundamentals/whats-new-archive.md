@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba538aed855667417e14bef12b708e80f34cd8c4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7478921d55e6851f06e3d806bf05fd51c66b9202
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243928"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664218"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -715,7 +715,7 @@ Workday から Active Directory と Azure AD への受信プロビジョニン�
 グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
 Azure AD 管理センターが更新されて、この機能がサポートされるようになりました。 現在では、ユーザーは、動的なメンバーシップから割り当て済みのメンバーシップに、またはその逆に、既存のグループを変換できます。 既存の PowerShell コマンドレットも引き続き使用できます。
 
-詳しくは、「[動的メンバーシップを静的に変更する、またはその逆の変更を行う](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal#changing-dynamic-membership-to-static-and-vice-versa)」をご覧ください
+詳しくは、「[動的メンバーシップを静的に変更する、またはその逆の変更を行う](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)」をご覧ください
 
 ---
 

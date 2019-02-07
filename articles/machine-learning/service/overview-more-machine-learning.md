@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451871"
+ms.locfileid: "55505701"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft の機械学習製品とは
 
@@ -27,7 +27,7 @@ Azure クラウドでの機械学習には、次の選択肢があります。
 
 | クラウド&nbsp;の選択肢 | 説明 | この製品でできること |
 |-|-|-|
-| [Azure Machine Learning サービス](#azure-machine-learning-services) | ML 用のマネージド クラウド サービス  | Python と CLI を使用して Azure でモデルをトレーニング、デプロイ、および管理する |
+| [Azure Machine Learning サービス](#azure-machine-learning-service) | ML 用のマネージド クラウド サービス  | Python と CLI を使用して Azure でモデルをトレーニング、デプロイ、および管理する |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio) | &ndash;ML 用のドラッグ アンド ドロップ式のビジュアル インターフェイス&ndash; | 事前に構成されたアルゴリズムを使用してモデルを構築、実験、およびデプロイする (Python および R)|
 | [Azure Databricks](#azure-databricks) | Spark ベースの分析プラットフォーム | モデルとデータ ワークフローを構築およびデプロイする |
 | [Azure Cognitive Services](#azure-cognitive-services) | AI および ML モデルが事前に構築された Azure サービス | インテリジェントな機能をアプリに簡単に追加する |

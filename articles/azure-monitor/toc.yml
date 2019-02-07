@@ -200,7 +200,7 @@ items:
           href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
         - name: Operations Manager
           href: platform/om-agents.md
-        - name: OMS ゲートウェイ
+        - name: Log Analytics ゲートウェイ
           href: platform/gateway.md
         - name: エージェント管理
           href: platform/agent-manage.md
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 751b6c7066a85258b7b7449969ea185cec354644
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d972d54cd81609ae16f7966795f16e5efe41e863
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564376"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752026"

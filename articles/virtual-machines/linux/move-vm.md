@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: c451377d6274c50f22e3b1d4cd32fb0f3edd9d9e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220402"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734183"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへの Linux VM の移動
 この記事では、リソース グループまたはサブスクリプション間で Linux の仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
@@ -35,7 +35,7 @@ ms.locfileid: "55220402"
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Azure CLI を使用して VM を移動する
 
 
-Azure CLI を使用して VM を移動するには、先に、移動元と移動先のサブスクリプションが同じテナント内に存在することを確認する必要があります。 両方のサブスクリプションのテナント ID が同じであることを確認するには、[az account show](/cli/azure/account#az_account_show) を使用します。
+Azure CLI を使用して VM を移動するには、先に、移動元と移動先のサブスクリプションが同じテナント内に存在することを確認する必要があります。 両方のサブスクリプションのテナント ID が同じであることを確認するには、[az account show](/cli/azure/account) を使用します。
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
@@ -43,13 +43,13 @@ az account show --subscription myDestinationSubscription --query tenantId
 ```
 移動元と移動先のサブスクリプションのテナント ID が同じでない場合、新しいテナントにリソースを移動するには、[サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に問い合わせる必要があります。
 
-VM を適切に移動するには、VM とそのすべての関連リソースを移動する必要があります。 [az resource list](/cli/azure/resource#az_resource_list) コマンドを使用して、リソース グループ内のすべてのリソースとその ID を表示します。 これはコマンドの出力をファイルにパイプするときに便利で、ID をコピーして、この後のコマンドに貼り付けることができます。
+VM を適切に移動するには、VM とそのすべての関連リソースを移動する必要があります。 [az resource list](/cli/azure/resource) コマンドを使用して、リソース グループ内のすべてのリソースとその ID を表示します。 これはコマンドの出力をファイルにパイプするときに便利で、ID をコピーして、この後のコマンドに貼り付けることができます。
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-VM とそのリソースを他のリソース グループに移動するには、[az resource move](/cli/azure/resource#az_resource_move) を使用します。 次の例では、VM と、その VM に必要な最も一般的なリソースを移動する方法について説明します。 **-ids** パラメーターを使用して、移動するリソースの ID のコンマ区切りのリスト (スペースなし) を渡します。
+VM とそのリソースを他のリソース グループに移動するには、[az resource move](/cli/azure/resource) を使用します。 次の例では、VM と、その VM に必要な最も一般的なリソースを移動する方法について説明します。 **-ids** パラメーターを使用して、移動するリソースの ID のコンマ区切りのリスト (スペースなし) を渡します。
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM

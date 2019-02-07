@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: efa97c18a63954239475338c85f2145b8c6c6ac6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819341"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767271"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 

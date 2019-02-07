@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016650"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661243"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
@@ -27,9 +27,6 @@ ms.locfileid: "54016650"
 ## <a name="prerequisites"></a>前提条件
 
 この機能は、データ ファクトリのサービス ID に依存しています。 [データ ファクトリのサービス ID](data-factory-service-identity.md) からの使用方法と、データ ファクトリに関連付けられていることを確認する方法について説明します。
-
->[!TIP]
->Azure Key Vault でシークレットを作成するときには、**ADF のリンクされたサービスで要求されるシークレット プロパティの値全体 (例: 接続文字列/パスワード/サービス プリンシパル キー/その他)** を指定します。 たとえば、Azure Storage のリンクされたサービスの場合、`DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` を AKV シークレットとして指定し、次に ADF からの "connectionString" フィールドで参照します。Dynamics のリンクされたサービスの場合は、AKV シークレットとして `myPassword` を指定し、次に ADF からの "password" フィールドで参照します。 サポートされているプロパティの詳細については、各コネクタとコンピューティングの記事を参照してください。
 
 ## <a name="steps"></a>手順
 

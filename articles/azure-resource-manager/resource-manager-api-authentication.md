@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103893"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498252"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
-## <a name="introduction"></a>はじめに
+
 この記事では、顧客の Azure リソースを管理するアプリを作成する必要があるソフトウェア開発者向けに、Azure Resource Manager API を使用して認証し、他のサブスクリプションのリソースにアクセスできるようにする方法について説明します。
 
 アプリケーションは、次の 2 とおりの方法で Resource Manager API にアクセスできます。
@@ -32,7 +32,10 @@ ms.locfileid: "54103893"
 
 この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、[https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) で入手できます。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
+
 Web アプリケーションで実行する内容は次のとおりです。
 
 1. Azure ユーザーをサインインさせます。
@@ -74,7 +77,7 @@ Web アプリケーションのフローを次に示します。
 次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
 
 ```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 ```
 
 AD アプリケーションとしてサインインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。

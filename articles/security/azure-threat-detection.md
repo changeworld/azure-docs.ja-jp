@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fe98caa2a78722d621c43f1ef708e24add0efb56
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228799"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664116"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -29,7 +29,7 @@ Azure では、アプリのデプロイ要件を満たすセキュリティを�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、[Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) エディションの機能であり、リスク イベントと組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection では、[Azure AD 異常アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)を通じて利用できる既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しい種類のリスク イベントを導入します。
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、[Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) エディションの機能であり、リスク イベントと組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection は、[Azure AD 異常アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)を通じて利用できる、既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しいリスク イベントの種類を紹介します。
 
 ![Azure AD Identity Protection の図](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150550"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751499"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) で、1 つのサブネットを含む仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) で、1 つのサブネットを含む仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする 
 
-サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [az network vnet list-endpoint-services](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services) を使って、Azure の場所で使えるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使える、サービス エンドポイント対応サービスの一覧が返されます。 返されるサービスの一覧は、サービス エンドポイント対応の Azure サービスが増えるにつれて、時間の経過と共に大きくなります。
+サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [az network vnet list-endpoint-services](/cli/azure/network/vnet) を使って、Azure の場所で使えるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使える、サービス エンドポイント対応サービスの一覧が返されます。 返されるサービスの一覧は、サービス エンドポイント対応の Azure サービスが増えるにつれて、時間の経過と共に大きくなります。
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) でセキュリティ規則を作成します。 次の規則は、Azure Storage サービスに割り当てられたパブリック IP アドレスへの送信アクセスを許可します。 
+[az network nsg rule create](/cli/azure/network/nsg/rule) でセキュリティ規則を作成します。 次の規則は、Azure Storage サービスに割り当てられたパブリック IP アドレスへの送信アクセスを許可します。 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-ストレージ アカウントを作成した後、[az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) を使って、ストレージ アカウントの接続文字列を変数に取得します。 接続文字列は、後の手順でファイル共有を作成するときに使います。
+ストレージ アカウントを作成した後、[az storage account show-connection-string](/cli/azure/storage/account) を使って、ストレージ アカウントの接続文字列を変数に取得します。 接続文字列は、後の手順でファイル共有を作成するときに使います。
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>最初の仮想マシンを作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、*パブリック* サブネット内に VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+[az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
 ```azurecli-interactive
 az vm create \
@@ -322,7 +322,7 @@ sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-sh
 
 *myVmPublic* VM への SSH セッションを終了します。
 
-お使いのコンピューターから、[az storage share list](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
+お使いのコンピューターから、[az storage share list](/cli/azure/storage/share?view=azure-cli-latest) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
 
 ```azurecli-interactive
 az storage share list \

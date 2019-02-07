@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2c14cdf963d1d6c792e6101d8a2179a560dcf096
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911892"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731259"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Azure で初めての Python 関数を作成する (プレビュー)
 
@@ -179,7 +179,7 @@ Http Functions:
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Azure に Linux の関数アプリを作成する
 
-関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用して、**Linux 上で動作する Python 関数アプリ**を作成します。
+関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 [az functionapp create](/cli/azure/functionapp) コマンドを使用して、**Linux 上で動作する Python 関数アプリ**を作成します。
 
 `<app_name>` プレースホルダーに一意の関数アプリ名を、ストレージ アカウント名として `<storage_name>` を使用して、次のコマンドを実行します。 `<app_name>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
 

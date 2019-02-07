@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: e2fd6f88f34ac34ea304b5298940f317b4c0d37e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1983ecbdee3d15efc73ad395fd07cbc7cd4f279c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472492"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769727"
 ---
 # <a name="what-is-translator-speech-api"></a>Translator Speech API とは
 
@@ -23,7 +23,7 @@ ms.locfileid: "55472492"
 
 Translator Speech API は、対象となる OS や開発言語に関係なく、多言語音声翻訳を必要とするアプリケーション、ツール、ソリューションに、エンドツーエンドのリアルタイム音声翻訳を追加するために使用できます。 この API は、音声間の翻訳と、音声テキスト変換の両方に使用できます。
 
-Translator Text API は Azure のサービスで、機械学習と AI のアルゴリズムをクラウドで提供する [Azure Cognitive Services API コレクション](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)の一部です。この API は、開発プロジェクトですぐに利用できます。
+Translator Text API は Azure のサービスで、機械学習と AI のアルゴリズムをクラウドで提供する [Azure Cognitive Services API コレクション](https://docs.microsoft.com/azure/)の一部です。この API は、開発プロジェクトですぐに利用できます。
 
 Translator Speech API を使用するクライアント アプリケーションは、音声オーディオをサービスにストリーミングして、テキスト ベースと音声ベースの結果のストリームを受け取ります。このストリームには、ソース言語での認識されたテキストと、ターゲット言語での翻訳が含まれます。 テキストでの結果は、受信オーディオ ストリームにディープ ニューラル ネットワークを利用する自動音声認識 (ASR) を適用して生成されます。 ユーザーの意図をより忠実に反映させるため、TrueText と呼ばれる新しい手法によって、生の ASR 出力がさらに改善されます。 たとえば TrueText では、吃音 (うーんといった声や咳) や繰り返しの言葉を取り除き、正しい句読法と、大文字および小文字の区別を復元します。 不適切な表現をマスクしたり除外したりする機能も含まれています。 認識エンジンおよび翻訳エンジンは、会話音声を処理するように特にトレーニングされます。 
 
@@ -66,6 +66,6 @@ NMT の動作方法の詳細については、[こちら](https://www.microsoft.
 > [コーディングを始める](quickstarts/csharp.md)
 
 ## <a name="see-also"></a>関連項目
-- [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/)
 - [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)
 - [ソリューションと価格情報](https://www.microsoft.com/en-us/translator/home.aspx) 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 35c5731d260fb63dece3d2b8ae4f4a4522fb91b8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153406"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564793"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -23,7 +23,7 @@ ms.locfileid: "55153406"
 
 この記事では、Azure Active Directory (Azure AD) B2C の Identity Experience Framework スキーマの日付要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
-## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
+## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
 ある日時要求 (文字列データ型) が 2 番目の日時要求 (文字列データ型) よりも後であることを確認し、例外をスローします。
 
@@ -85,7 +85,6 @@ ms.locfileid: "55153406"
     - **rightOperand**: 2018-10-01T14:00:00.0000000Z
 - 結果:エラーがスローされます
 
-
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
 **Date** ClaimType を **DateTime** ClaimType に変換します。 要求変換によって時間形式が変換され、日付に午前 12 時 00 分 00 秒が追加されます。
@@ -98,7 +97,7 @@ ms.locfileid: "55153406"
 次の例では、要求 `dateOfBirth` (date データ型) から別の要求 `dateOfBirthWithTime` (dateTime データ型) への変換を示します。
 
 ```XML
-<ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
+  <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
     </InputClaims>
@@ -163,7 +162,7 @@ ms.locfileid: "55153406"
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="result" />
-  </OutputClaims>      
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -175,6 +174,5 @@ ms.locfileid: "55153406"
 - 入力パラメーター:
     - **演算子**: later than
     - **timeSpanInSeconds**: 7776000 (90 日間)
-- 出力要求: 
+- 出力要求:
     - **result**: true
-

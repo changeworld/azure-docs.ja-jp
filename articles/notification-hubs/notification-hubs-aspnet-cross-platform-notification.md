@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 637bae0a3f6bba712662e894b75c8bd663e91b4a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 7514f33662359ee9181e9efe6954ccec5c7b6f8f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446633"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561112"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>通知ハブによるユーザーへのクロスプラットフォーム通知の送信
 
@@ -61,9 +61,9 @@ ms.locfileid: "54446633"
             var alertTemplate = "{\"aps\":{\"alert\":\"$(message)\"}}";
             registration = new AppleTemplateRegistrationDescription(deviceUpdate.Handle, alertTemplate);
             break;
-        case "gcm":
+        case "fcm":
             var messageTemplate = "{\"data\":{\"message\":\"$(message)\"}}";
-            registration = new GcmTemplateRegistrationDescription(deviceUpdate.Handle, messageTemplate);
+            registration = new FcmTemplateRegistrationDescription(deviceUpdate.Handle, messageTemplate);
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

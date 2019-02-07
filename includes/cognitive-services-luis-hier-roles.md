@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 10/23/2018
 ms.author: diberry
-ms.openlocfilehash: 0ad3b360611a12b95568e9a20f13a57c93b2e603
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: dee31fca841ea309128681637cc41fa0fb1e7aea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51208306"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480258"
 ---
 ## <a name="roles-versus-hierarchical-entities"></a>ロールと階層エンティティ
 

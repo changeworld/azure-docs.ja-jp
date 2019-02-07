@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352956"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811037"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -32,20 +32,14 @@ ms.locfileid: "54352956"
 
 SQL API Java SDK は、同期操作をサポートしています。 非同期サポートの場合は、[SQL API Async Java SDK](sql-api-sdk-async-java.md) を使用してください。 
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)</td></tr>
-
-<tr><td>**サポートされている最小ランタイム**</td><td>[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**API ドキュメント**|[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)|
+|**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**作業開始**|[Java SDK の開始](sql-api-java-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -218,7 +212,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [2.1.1](#2.1.1) |2018 年 11 月 21 日 |--- |
+| 2.1.1 |2018 年 11 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
 | [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
 | [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |
@@ -249,7 +243,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.3.0](#1.3.0) |2015 年 10 月 5 日 |--- |
 | [1.2.0](#1.2.0) |2015 年 8 月 5 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 7 月 9 日 |--- |
-| [1.0.1](#1.0.1) |2015 年 5 月 12 日 |--- |
+| 1.0.1 |2015 年 5 月 12 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 7 日 |--- |
 | 0.9.5-prelease |2015 年 3 月 9 日 |2016 年 2 月 29 日 |
 | 0.9.4-prelease |2015 年 2 月 17 日 |2016 年 2 月 29 日 |

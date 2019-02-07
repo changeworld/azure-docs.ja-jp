@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753967"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656836"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 
 この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
 
 >[!Note]
->Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
+>Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
 
 このガイドでは、次のトピックについて説明します。 
 *   Marketplace の概要とそのしくみ 

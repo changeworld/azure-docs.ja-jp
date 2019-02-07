@@ -11,18 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/21/2018
-ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/25/2018
+ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196652"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567130"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
+
 テンポラル テーブルは、Azure SQL Database の新しいプログラミング機能です。テンポラル テーブルを使用することで、データに対する詳細な変更履歴を追跡、分析することができ、独自にコーディングする必要がありません。 テンポラル テーブルは、保存されている情報が特定の期間に限り有効と解釈されるように、データを常に時間のコンテキストと密接に関連付けます。 テンポラル テーブルが持つこの特性によって、時間に基づいた効率的な分析が可能となり、データの経時的変化に隠れた本質を見極めることができます。
 
 ## <a name="temporal-scenario"></a>テンポラル テーブルのシナリオ
+
 この記事では、アプリケーションのシナリオでテンポラル テーブルを活用する手順を解説しています。 ゼロから開発した新しい Web サイトか、ユーザー アクティビティの分析機能を追加して拡張した既存の Web サイトでユーザー アクティビティを追跡することになったとします。 この例で分析対象となるインジケーターは、特定の期間にアクセスのあった Web ページの数です。Azure SQL Database にホストされている Web サイトのデータベースでこれを収集し、監視するものとします。 ユーザー アクティビティの履歴を分析することで、Web サイトのデザインを変更するうえで役立つデータを得ると共に、訪問者の使用感を高めるのがねらいです。
 
 このシナリオのデータベース モデルはごくシンプルです。ユーザー アクティビティのメトリックは **PageVisited** という単一の整数フィールドで表され、該当するユーザー プロファイルの基本的な情報と共に収集されます。 また、時間に基づく分析ということで、ユーザーごとに一連の行を保持することになるでしょう。ひとつひとつの行で、特定の期間に特定のユーザーが訪問したページ数を表します。

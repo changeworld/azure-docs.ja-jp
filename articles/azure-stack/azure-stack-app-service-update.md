@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: anwestg
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 7a273dc9267c276ba587d98c86b02c824a1b1b5a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a784fd1b4b03fa2f6574926481351046a65d7611
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250080"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769282"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を更新する
 

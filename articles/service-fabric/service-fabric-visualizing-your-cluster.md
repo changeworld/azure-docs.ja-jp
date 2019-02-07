@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972334"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093259"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -29,7 +29,7 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 
 デスクトップ アプリケーションとして Service Fabric Explorer をダウンロードするには、次のリンクを使ってください。
 
-- Windows
+-  Windows
   - https://aka.ms/sfx-windows
 
 - Linux
@@ -49,6 +49,11 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エンドポイントでもホストされています。 Web ブラウザーで SFX を起動するには、任意のブラウザーからクラスターの HTTP 管理エンドポイント (例: https://clusterFQDN:19080 ) を参照します。
 
 開発者ワークステーションのセットアップでは、 https://localhost:19080/Explorer に移動することにより、ローカル クラスターで Service Fabric Explorer を起動できます。 詳しくは、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
+
+> [!NOTE]
+> クラスターが自己署名証明書によってセキュリティで保護されている場合は、Web ブラウザーから、"This site is not secure (このサイトはセキュリティで保護されていません)" というエラー メッセージが表示されます。 ほとんどの最新の Web ブラウザーでは、この警告をオーバーライドすることによって単純に続行できます。 運用環境では、共通名と証明機関によって発行された証明書を使用して、クラスターをセキュリティで保護する必要があります。 
+>
+>
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Service Fabric クラスターに接続する
 Service Fabric クラスターに接続するには、クラスター管理エンドポイント (FQDN/IP) と HTTP 管理エンドポイント ポート (既定では 19080) が必要です。 たとえば、「 https://mysfcluster.westus.cloudapp.azure.com:19080 」のように指定します。 ワークステーションでローカル クラスターに接続するには、[ローカルホストに接続] チェック ボックスを使います。
@@ -95,7 +100,7 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 ### <a name="view-the-clusters-nodes"></a>クラスターのノードを表示する
 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、 正確に言うと、そこで現在実行されているレプリカを調べることができます。
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
 
 たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、**[アクション]** > **[アプリケーションの削除]** の順に選択します。
@@ -118,6 +123,18 @@ Service Fabric Explorer を使用して、特定のアプリケーションの�
 >
 >
 
+## <a name="event-store"></a>EventStore
+EventStore は Service Fabric Explorer と REST API で使用可能な Service Fabric プラットフォーム イベントを提供する、プラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」で、EventStore の詳細を確認することもできます。   
+
+![EventStore][sfx-eventstore]
+
+>[!NOTE]
+>Service Fabric バージョン 6.4 の時点で、 EventStore は既定では有効になりません。Resource Manager テンプレートで有効にする必要があります。
+
+>[!NOTE]
+>Service Fabric バージョン 6.4 の時点で、 EventStore API は現在、Azure 上で実行されている Windows クラスターでに対してのみ使用できます。 この機能を Linux およびスタンドアロン クラスターに移植する作業を進めています。
+
+
 ## <a name="next-steps"></a>次の手順
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
@@ -129,3 +146,4 @@ Service Fabric Explorer を使用して、特定のアプリケーションの�
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png

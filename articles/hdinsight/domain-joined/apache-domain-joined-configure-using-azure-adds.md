@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158827"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660920"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -28,7 +28,7 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
 
 > [!NOTE]  
-> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage (ADLS) Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Multi-Factor Authentication (MFA) を無効にする必要があります。 [信頼済み IP](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) または[条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview)を使用して特定のユーザーの MFA を無効にすることができるのは、HDInsight クラスターの VNET IP 範囲にアクセスしている場合のみです。 条件付きアクセスを使用している場合は、AD サービス エンドポイントが HDInsight VNET 上で有効になっていることを確認してください。
+> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage (ADLS) Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Multi-Factor Authentication (MFA) を無効にする必要があります。 [信頼済み IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) または[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して特定のユーザーの MFA を無効にすることができるのは、HDInsight クラスターの VNET IP 範囲にアクセスしている場合のみです。 条件付きアクセスを使用している場合は、AD サービス エンドポイントが HDInsight VNET 上で有効になっていることを確認してください。
 >
 >クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
 
@@ -87,7 +87,7 @@ VNET がピアリングされたら、HDInsight VNET を カスタム DNS サー
 
 ![ピアリングされた VNET のカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) を許可する必要があります。 
+お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) を許可する必要があります。 
 
 ネットワークが正しく設定されているかどうかを**テストする**には、Windows VM を HDInsight VNET/サブネットに参加させて、ドメイン名に対して ping を実行し (IP に解決されます)、**ldp.exe** を実行して、Azure AD-DS ドメインにアクセスします。 次に、**この Windows VM をドメインに参加**させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。 **nslookup** を使って、ストレージ アカウント、または使用する任意の外部 DB (外部の Hive metastore、Ranger DB など) へのネットワーク アクセスを確認することもできます。
 AAD-DS が NSG によって保護されている場合、[必須ポート](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)がすべて、AAD-DS サブネット ネットワーク セキュリティ グループ ルールのホワイトリストに含まれていることを確認してください。 この Windows VM のドメイン参加に成功した場合、次の手順に進んで ESP クラスターを作成することができます。

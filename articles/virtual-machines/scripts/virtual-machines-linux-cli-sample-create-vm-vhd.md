@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478316"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696737"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>仮想ハード ディスクを使用した VM の作成
 
@@ -53,16 +53,16 @@ az group delete -n az-cli-vhd
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | ストレージ アカウントの一覧を表示します。 |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | ストレージ アカウントの名前が有効で、存在していないことを確認します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの一覧を表示します。 |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの名前が有効で、存在していないことを確認します。 |
 | [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | ストレージ アカウントのキーの一覧を表示します。 |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | BLOB が存在するかどうかを確認します。 |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | ストレージ アカウントにコンテナーを作成します。 |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | VHD をアップロードすることで、コンテナーに BLOB を作成します。 |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | `--query` チェックと併用して VM 名が使用中かどうかを確認します。 | 
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob) | BLOB が存在するかどうかを確認します。 |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container) | ストレージ アカウントにコンテナーを作成します。 |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | VHD をアップロードすることで、コンテナーに BLOB を作成します。 |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | `--query` チェックと併用して VM 名が使用中かどうかを確認します。 | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 仮想マシンを作成します。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | 作成した VM の IP アドレスを取得します。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | 作成した VM の IP アドレスを取得します。 |
 
 ## <a name="next-steps"></a>次の手順
 

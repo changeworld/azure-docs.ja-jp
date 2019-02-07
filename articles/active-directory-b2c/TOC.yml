@@ -23,7 +23,9 @@ items:
     href: tutorial-register-applications.md
   - name: 3 - ユーザー フローの作成
     href: tutorial-create-user-flows.md
-  - name: 4 - UI のカスタマイズ
+  - name: ID プロバイダーの追加
+    href: tutorial-add-identity-providers.md
+  - name: UI のカスタマイズ
     href: tutorial-customize-ui.md
   - name: アカウントの認証
     items:
@@ -75,7 +77,11 @@ items:
   items:
   - name: 監査ログにアクセスする
     href: active-directory-b2c-reference-audit-logs.md
-  - name: 年齢制限
+  - name: Web API アプリケーションを追加する
+    href: add-web-application.md
+  - name: ネイティブ クライアント アプリケーションを追加する
+    href: add-native-application.md
+  - name: 年齢制限を構成する
     href: basic-age-gating.md
   - name: トークンを構成する
     href: active-directory-b2c-token-session-sso.md
@@ -318,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8aa1d5bf118330f6f04cfd35a59f2b60ce6e1ee8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240847"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751788"

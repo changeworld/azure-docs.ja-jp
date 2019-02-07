@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075296"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662291"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -32,7 +32,7 @@ ms.locfileid: "54075296"
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET Core と .NET Core アプリケーション
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>ソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに保存する
-クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) がどのように機能するかを示します。
+クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) がどのように機能するかを示します。
 
 ![User Secret ではシークレット設定はソース管理の外部に保持される](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 

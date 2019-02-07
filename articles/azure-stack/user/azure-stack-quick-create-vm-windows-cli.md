@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 1ba612a90ffb4c767ca333faee4b7d97180a2025
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d2e29e183ab898635f550290b6ebd6eddd42c4d2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249022"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659203"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>クイック スタート: Azure Stack で Azure CLI を使用して Windows Server 仮想マシンを作成する
 
@@ -72,7 +72,7 @@ VM が作成されると、出力の **PublicIPAddress** パラメーターに�
 
 この VM は IIS Web サーバーを実行することになるので、インターネット トラフィックに対してポート 80 を開く必要があります。
 
-[az vm open-port](/cli/azure/vm#open-port) コマンドを使用して、ポート 80 を開きます。
+[az vm open-port](/cli/azure/vm) コマンドを使用して、ポート 80 を開きます。
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

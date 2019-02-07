@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 2a2d37978c4a37769315958a4ad9d8fb403e4069
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2d5bb5458388918ab9ff3ccdbdba3da80598e062
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972212"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488035"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health のアラート カタログ 
 

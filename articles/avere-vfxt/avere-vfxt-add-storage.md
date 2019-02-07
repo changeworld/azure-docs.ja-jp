@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8cd9bece53cd7fb961c5d81ae0c709dc89300ab9
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299454"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813230"
 ---
 # <a name="configure-storage"></a>ストレージの構成
 

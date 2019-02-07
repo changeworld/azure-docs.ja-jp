@@ -3,7 +3,7 @@ title: Azure SQL Database サービス レベル - DTU | Microsoft Docs
 description: 単一のデータベースとプールされたデータベースに対してコンピューティング サイズとストレージ サイズを提供するサービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 911380539e3558e8bb1384449e415a6f0c1cd69b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465233"
+ms.locfileid: "55507656"
 ---
 # <a name="dtu-based-service-tiers"></a>DTU ベースのサービス レベル
 

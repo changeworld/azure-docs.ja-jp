@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267387"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697189"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: Azure VM および SQL Server AlwaysOn 可用性グループでオンプレミス アプリをリホストする
 
@@ -549,7 +549,7 @@ Contoso の管理者は、DMA を使用して SmartHotel360 データベース�
 ## <a name="step-8-migrate-the-database-with-dma"></a>ステップ 8: DMA を使用してデータベースを移行する
 
 1. DMA で、新しい移行 **SmartHotel** を実行します。
-2. **[Target server type]\(対象サーバーの種類\)** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
+2. **[Target server type]\(ターゲット サーバーの種類\)** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
 
     ![DMA](media/contoso-migration-rehost-vm-sql-ag/dma-1.png)
 
@@ -698,7 +698,7 @@ Contoso のセキュリティ チームは、Azure VM (WEBVM、SQLAOG1 および
 - チームは、ディスク上のデータ保護のために、Azure Disk Encryption と KeyVault の使用も検討します。
 - チームは、Transparent Data Encryption (TDE) を評価してから、新しい SQL AOG で実行されている SmartHotel360 データベース上で有効にします。 [詳細情報](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。
 
-VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)を参照してください。
+VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)を参照してください。
 
 
 ## <a name="bcdr"></a>BCDR

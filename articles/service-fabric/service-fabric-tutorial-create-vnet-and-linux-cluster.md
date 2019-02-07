@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: b494da1c87feafd1b9db8485d16a9dcf5b999e3d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 265e99d18d8660f149d33b1b4a37a7d32eae794d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101807"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755197"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -137,7 +137,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>既存の証明書を使用したクラスターの作成
 
-次のスクリプトでは、既存の証明書で保護された新しいクラスターをデプロイするために、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) コマンドとテンプレートを使用しています。 また、このコマンドを使用して、Azure に新しいキー コンテナーを作成し、証明書をアップロードします。
+次のスクリプトでは、既存の証明書で保護された新しいクラスターをデプロイするために、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) コマンドとテンプレートを使用しています。 また、このコマンドを使用して、Azure に新しいキー コンテナーを作成し、証明書をアップロードします。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -163,7 +163,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>新しい自己署名証明書を使用したクラスターの作成
 
-次のスクリプトでは、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) コマンドとテンプレートを使用して、Azure に新しいクラスターがデプロイされます。 また、このコマンドでは、Azure に新しいキー コンテナーが作成され、新しい自己署名証明書がそのキー コンテナーに追加されて、証明書ファイルがローカルにダウンロードされます。
+次のスクリプトでは、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) コマンドとテンプレートを使用して、Azure に新しいクラスターがデプロイされます。 また、このコマンドでは、Azure に新しいキー コンテナーが作成され、新しい自己署名証明書がそのキー コンテナーに追加されて、証明書ファイルがローカルにダウンロードされます。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

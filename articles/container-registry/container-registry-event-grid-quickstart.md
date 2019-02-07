@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: dc3f61760dce6375a64b338fb230ee704863de06
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260251"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755686"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート: プライベート コンテナー レジストリから Event Grid にイベントを送信する
 
@@ -242,7 +242,7 @@ Azure Container Registry イベント メッセージのスキーマ リファ�
 [sample-app]: https://github.com/dbarkol/azure-event-grid-viewer
 
 <!-- LINKS - Internal -->
-[az-acr-create]: /cli/azure/acr/repository#az-acr-create
+[az-acr-create]: /cli/azure/acr/repository
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
 [az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create
 [az-group-create]: /cli/azure/group#az-group-create

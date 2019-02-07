@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f4abacb42cfd5efe22d29b58b36eca0a7a1f5ba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161318"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662892"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。
@@ -46,7 +46,7 @@ ms.locfileid: "55161318"
 * ID プロバイダーによっては、**ソーシャル ユーザー ID** は、アプリケーションごとの特定のユーザーまたは開発アカウントの一意の値です。 ソーシャル プロバイダーによって割り当てられたのと同じアプリケーション ID で Azure AD B2C ポリシーを構成します。 または、同じ開発アカウント内の別のアプリケーションです。
 
 ## <a name="use-graph-api-to-migrate-users"></a>Graph API を使ってユーザーを移行する
-[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。 Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users)に関する記事の手順 1. の指示に従います。
+[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。 Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration)に関する記事の手順 1. の指示に従います。
 
 ## <a name="required-properties"></a>必須プロパティ
 次の一覧は、ユーザーを作成するときに必要なプロパティを示しています。

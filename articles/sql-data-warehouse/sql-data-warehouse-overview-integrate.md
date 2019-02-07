@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478000"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661940"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>他のサービスを SQL Data Warehouse と統合する
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを統合できます。 次のようなサービスがあります。
@@ -41,7 +41,7 @@ Azure Data Factory は、抽出と読み込みの複雑なパイプラインを�
 * **ストアド プロシージャ**:SQL Data Warehouse でのストアド プロシージャの実行を調整します。
 * **コピー**:ADF を使用して、SQL Data Warehouse にデータを移動します。 この操作では、内部で ADF の標準的なデータ移行メカニズムまたは PolyBase を使用できます。 
 
-詳しくは、[Azure Data Factory との統合](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)に関する記事をご覧ください。
+詳しくは、[Azure Data Factory との統合](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)に関する記事をご覧ください。
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning は、フル マネージドの分析サービスで、大規模な予測ツール セットを使用する複雑なモデルを作成できます。 SQL Data Warehouse は、次の機能により、これらのモデルのソースと変換先の両方としてサポートされています。

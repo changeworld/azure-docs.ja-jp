@@ -6,6 +6,8 @@ items:
   - name: Machine Learning Studio
     displayName: overview
     href: what-is-ml-studio.md
+  - name: Microsoft の ML 製品の比較
+    href: ../service/overview-more-machine-learning.md
   - name: ML Studio の機能
     displayName: overview
     href: studio-overview-diagram.md
@@ -93,10 +95,6 @@ items:
     - name: AI Gallery での実験の試行
       displayName: gallery
       href: sample-experiments.md
-    - name: アルゴリズムを選択する
-      href: algorithm-choice.md
-    - name: アルゴリズム チート シート
-      href: algorithm-cheat-sheet.md
     - name: 結果を評価し解釈する
       items:
       - name: パフォーマンスの評価
@@ -118,6 +116,12 @@ items:
         href: custom-r-modules.md
       - name: Python スクリプトを実行する
         href: execute-python-scripts.md
+  - name: アルゴリズムを選択する
+    items:
+    - name: アルゴリズムを選択する
+      href: algorithm-choice.md
+    - name: アルゴリズム チート シート
+      href: algorithm-cheat-sheet.md
   - name: モデルをデプロイする
     items:
     - name: Web サービスのデプロイ
@@ -210,15 +214,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: R 開発者ガイド
-    href: ../r-developers-guide.md
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: Microsoft の ML 製品の比較
-    href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d6d4020d76c8eab2418b3b7ac5d26eaf93363870
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731429"
+ms.locfileid: "55746168"

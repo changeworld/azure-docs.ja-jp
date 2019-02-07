@@ -10,19 +10,19 @@ items:
 - name: クイック スタート
   items:
   - name: 単一データベースのクイック スタート ガイド
-    href: sql-database-quickstart-guide.md
+    href: sql-database-single-database-quickstart-guide.md
   - name: マネージド インスタンスのクイック スタート ガイド
     href: sql-database-managed-instance-quickstart-guide.md
   - name: Create
     items:
     - name: 単一データベース
-      href: sql-database-get-started-portal.md
+      href: sql-database-single-database-get-started.md
     - name: マネージド インスタンス
       href: sql-database-managed-instance-get-started.md
   - name: 構成
     items:
-    - name: データベース サーバーのファイアウォール規則
-      href: sql-database-get-started-portal-firewall.md
+    - name: サーバーレベルの IP ファイアウォール規則
+      href: sql-database-server-level-firewall-rule.md
     - name: マネージド インスタンスへのクライアント VM 接続
       href: sql-database-managed-instance-configure-vm.md
     - name: マネージド インスタンスへのポイント対サイト接続
@@ -97,6 +97,8 @@ items:
     href: sql-database-cli-samples.md
   - name: Azure PowerShell
     href: sql-database-powershell-samples.md
+  - name: Azure Resource Manager
+    href: sql-database-resource-manager-samples.md
 - name: 概念
   items:
   - name: モデルの購入
@@ -225,7 +227,7 @@ items:
         href: sql-vulnerability-assessment.md
       - name: 脅威の検出
         href: sql-database-threat-detection-overview.md
-    - name: データベース サーバー IP ファイアウォール規則
+    - name: サーバーレベルの IP ファイアウォール規則
       items:
       - name: 作成と管理
         href: sql-database-firewall-configure.md
@@ -710,9 +712,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: fc900fc17f4dbd1ee1527fc8a84053408d83d98d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 9a04e463a7324b1021594a8fbefc5988ad8471f2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731293"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756735"

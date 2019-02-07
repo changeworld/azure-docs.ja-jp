@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195603"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663640"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 
@@ -33,7 +33,7 @@ LargeObject エラーは、その他の AD 属性が原因で発生する場合�
 
 LargeObject エラーに関するテナント内のオブジェクトの一覧を取得するには、次のメソッドのいずれかを使用します。
 
- * Azure AD Connect Health for Sync でテナントが有効になっている場合、提供される[同期エラー レポート](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview)を参照できます。
+ * Azure AD Connect Health for Sync でテナントが有効になっている場合、提供される[同期エラー レポート](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)を参照できます。
  
  * 各同期サイクルの最後に送信される、ディレクトリ同期エラーの通知メールには、LargeObject エラーのあるオブジェクトのリストが含まれています。 
  * 最新の [Export to Azure AD] \(Azure AD へのエクスポート) 操作をクリックすると、[Synchronization Service Manager の [操作] タブ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations)に、LargeObject エラーのあるオブジェクトの一覧が表示されます。

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 75869de67d006b2053e9c3f9eed2fd8166a0e8e1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: af269085550f71323c8098b4cdf3c88ec8035dfe
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200991"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563305"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 
@@ -96,7 +96,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. **remote_monitoring.js** ファイルに次の `require` ステートメントを追加します。
 
-    ```nodejs
+    ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
@@ -105,13 +105,13 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. `require` ステートメントの後に次の変数宣言を追加します。 プレースホルダー値 `{device connection string}` を、リモート監視ソリューションでプロビジョニングしたデバイス用の値に置き換えます。
 
-    ```nodejs
+    ```javascript
     var connectionString = '{device connection string}';
     ```
 
 1. 基本のテレメトリをいくつか定義するために、次の変数を追加します。
 
-    ```nodejs
+    ```javascript
     var temperature = 50;
     var temperatureUnit = 'F';
     var humidity = 50;
@@ -122,7 +122,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. プロパティ値を定義するには、次の変数を追加します。
 
-    ```nodejs
+    ```javascript
     var schema = "real-chiller;v1";
     var deviceType = "RealChiller";
     var deviceFirmware = "1.0.0";
@@ -135,7 +135,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. ソリューションに送信する、報告対象プロパティを定義するには、次の変数を追加します。 これらのプロパティには、Web UI に表示するメタデータが含まれます。
 
-    ```nodejs
+    ```javascript
     var reportedProperties = {
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
@@ -153,7 +153,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. 操作結果を出力するには、次のヘルパー関数を追加します。
 
-    ```nodejs
+    ```javascript
     function printErrorFor(op) {
         return function printError(err) {
             if (err) console.log(op + ' error: ' + err.toString());
@@ -163,7 +163,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. テレメトリの値をランダム化するために使用する次のヘルパー関数を追加します。
 
-    ```nodejs
+    ```javascript
     function generateRandomIncrement() {
         return ((Math.random() * 2) - 1);
     }
@@ -171,7 +171,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. ソリューションからのダイレクト メソッドの呼び出しを処理するため、次の汎用関数を追加します。 この関数は、呼び出されたダイレクト メソッドに関する情報を表示しますが、このサンプルではデバイスを変更しません。 ソリューションは、次のようにデバイスで動作するダイレクト メソッドを使用します。
 
-    ```nodejs
+    ```javascript
     function onDirectMethod(request, response) {
       // Implement logic asynchronously here.
       console.log('Simulated ' + request.methodName);
@@ -186,7 +186,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. ソリューションからの **FirmwareUpdate** ダイレクト メソッドの呼び出しを処理するために、次の関数を追加します。 この関数は、ダイレクト メソッドのペイロードで渡されたパラメーターを検証し、ファームウェア更新シミュレーションを非同期に実行します。
 
-    ```nodejs
+    ```javascript
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -215,7 +215,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. ソリューションに進行状況を報告する実行時間の長いファームウェア更新フローをシミュレートするために、次の関数を追加します。
 
-    ```nodejs
+    ```javascript
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -293,7 +293,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. ソリューションにテレメトリを送信する次のコードを追加します。 クライアント アプリでは、次のようにメッセージ スキーマを識別するためのプロパティをメッセージに追加します。
 
-    ```nodejs
+    ```javascript
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();
@@ -312,7 +312,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 1. クライアント インスタンスを作成するために次のコードを追加します。
 
-    ```nodejs
+    ```javascript
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
@@ -324,7 +324,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     * ダイレクト メソッドのハンドラーを登録します。 このサンプルでは、ファームウェア更新ダイレクト メソッドに別のハンドラーを使用しています。
     * テレメトリの送信を開始します。
 
-    ```nodejs
+    ```javascript
     client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);

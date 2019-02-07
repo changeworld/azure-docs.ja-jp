@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213129"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900444"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics のデータ インジェスト時間
 Azure Log Analytics は、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する、Azure Monitor 内の高スケールのデータ サービスです。 データが収集されてから、Log Analytics でそのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -45,8 +45,15 @@ Azure Log Analytics は、毎月増加するテラバイト単位のデータを
 ### <a name="agent-upload-frequency"></a>エージェントのアップロードの頻度
 Log Analytics エージェントを軽量にするため、エージェントはログをバッファーし、それらを定期的に Log Analytics にアップロードします。 アップロードの頻度は、データの型に応じて 30 秒から 2 分間の範囲で異なります。 ほとんどのデータは、1 分未満でアップロードされます。 ネットワークの状態は、このデータが Log Analytics のインジェスト ポイントに達するまでの待機時間に悪影響を及ぼす可能性があります。
 
-### <a name="azure-logs-and-metrics"></a>Azure ログとメトリック 
-アクティビティ ログ データが Log Analytics で利用可能になるまで、約 5 分かかります。 診断ログとメトリックのデータは、Azure サービスに応じて、処理可能になるまでに 1 分から 15 分かかります。 処理可能になると、さらに、ログに 30 秒から 60 秒、Log Analytics のインジェスト ポイントに送信されるデータのメトリックに 3 分が追加でかかります。
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure のアクティビティ ログ、診断ログ、およびメトリック
+Azure データが Log Analytics のインジェスト ポイントで使用可能になるまでには、処理のための追加の時間がかかります。
+
+- 診断ログのデータの場合、Azure サービスによって異なりますが 2 分から 15 分かかります。 ご利用の環境におけるこの待機時間を調べる方法については、[下のクエリ](#checking-ingestion-time)を参照してください。
+- Azure プラットフォームのメトリックが Log Analytics のインジェスト ポイントに送信されるまでには 3 分かかります。
+- アクティビティ ログ データが Log Analytics のインジェスト ポイントに送信されるまでには 約 10 分から 15 分かかります。
+
+インジェスト ポイントで使用可能になったデータがクエリに使用できるようになるまでには、さらに 2 分から 5 分かかります。
+
 
 ### <a name="management-solutions-collection"></a>管理ソリューションのコレクション
 一部のソリューションでは、エージェントからデータを収集せず、さらに待機時間がかかるコレクション メソッドを使用する場合があります。 一部のソリューションでは、ほぼリアルタイムでの収集を試みることなく、一定の間隔でデータを収集します。 具体的な例を次に示します。

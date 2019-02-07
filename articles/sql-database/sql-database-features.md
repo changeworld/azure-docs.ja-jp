@@ -3,7 +3,7 @@ title: Azure SQL Database の機能の比較 | Microsoft Docs
 description: この記事では、各種 Azure SQL Database で使用できる SQL Server の機能を比較します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cda0b5a06eb4299c439b58ecf721971288fa5fb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7445496154d9fc2ca59e19059a87a794a1361b14
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455084"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747409"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較:Azure SQL Database と SQL Server
 
@@ -52,7 +52,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [変更データのキャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ  | はい |
 | [変更の追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | はい |はい |
 | [照合順序 - データベース](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | はい | はい |
-| [照合順序 - サーバー/インスタンス](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | いいえ  | [はい (プレビュー)](/scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
+| [照合順序 - サーバー/インスタンス](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | いいえ  | [はい (プレビュー)](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
 | [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベル、Standard レベル - S3 以上、General Purpose レベル、および Business Critical レベル](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |はい |
 | [共通言語ランタイム (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ  | はい - [CLR の相違点](sql-database-managed-instance-transact-sql-information.md#clr)に関する記事を参照してください |
 | [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | はい | はい |

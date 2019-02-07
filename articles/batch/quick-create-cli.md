@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470962"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752349"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
@@ -139,7 +139,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>タスク出力の表示
 
-コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。 
+コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。 
+出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。 
 
 ```azurecli-interactive
 az batch task file download \

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 223b32d3947ca0f663565a90b15e9c24e5ddeb96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883213"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754219"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-linux-vm"></a>Linux VM の作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、Azure CLI を使用して *myResourceGroupMEAN* という名前のリソース グループを *eastus* に作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、SSH キーと共に *myVM* という名前の VM も作成します。 特定のキーのセットを使用するには、--ssh-key-value オプションを使用します。
 

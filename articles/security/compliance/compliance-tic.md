@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017101"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751924"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -49,7 +49,7 @@ DHS の "Trusted Internet Connections (TIC) Reference Architecture Document, Ver
 
 **省庁または機関 (D/A)** の TIC を通過するようにトラフィックをルーティングすることなく、D/A から Azure または Office 365 への接続を有効にするには、D/A は暗号化トンネルかクラウド サービス プロバイダー (CSP) への専用接続を利用する必要があります。 CSP サービスは、機関の人間に直接アクセスするとき、D/A クラウド アセットへの接続が公共のインターネットに確実に提供されないようにします。
 
-Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
+Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
 
 Azure の場合のみ、2 番目のオプション (VPN) と 3 番目のオプション (ExpressRoute) は、インターネットへのアクセスを制限するサービスと併用するとき、これらの要件を満たすことができます。
 
@@ -211,7 +211,7 @@ Azure Policy は、サブスクリプション レベルを対象としていま
 
 次のサンプル ポリシーを TIC コンプライアンス シナリオに使用できます。
 
-|ポリシー  |サンプル シナリオ  |テンプレート  |
+|ポリシー  |サンプル シナリオ  |Template  |
 |---------|---------|---------|
 |ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table)で今すぐ開始。 |
 |リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled)で今すぐ開始。 |

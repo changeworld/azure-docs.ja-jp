@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8e63b9854d9491ed2cbb2107c93237526a7f1ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243891"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766943"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure Stack での GO による API バージョンのプロファイルの使用
 
@@ -68,7 +68,7 @@ Azure Stack でサンプルの Go コードを実行するには、次の手順�
 
    > [!NOTE]  
    > Azure Stack Development Kit (ASDK) の **ResourceManagerUrl** は `https://management.local.azurestack.external/` になります。  
-   > 統合システムの **ResourceManagerUrl** は `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` になります。  
+   > 統合システムの **ResourceManagerUrl** は `https://management.<region>.<fqdn>/` になります。  
    > 必要なメタデータを取得するには、`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` になります。
   
    サンプルの JSON ファイルは、次のようになります。
@@ -86,7 +86,7 @@ Azure Stack でサンプルの Go コードを実行するには、次の手順�
 
 3. 使用できない場合は、サブスクリプションを作成し、サブスクリプション ID を保存して後で使用します。 サブスクリプションの作成方法の詳細については、「[Azure Stack でオファーのサブスクリプションを作成する](../azure-stack-subscribe-plan-provision-vm.md)」をご覧ください。
 
-4. **サブスクリプション** スコープと**所有者**ロールを使って、サービス プリンシパルを作成します。 サービス プリンシパルの ID とシークレットを保存します。 Azure Stack のサービス プリンシパルの作成の詳細については、[サービス プリンシパルの作成](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad)に関するページをご覧ください。 これで、使用する Azure Stack 環境が設定されました。
+4. **サブスクリプション** スコープと**所有者**ロールを使って、サービス プリンシパルを作成します。 サービス プリンシパルの ID とシークレットを保存します。 Azure Stack のサービス プリンシパルの作成の詳細については、[サービス プリンシパルの作成](azure-stack-create-service-principals.md)に関するページをご覧ください。 これで、使用する Azure Stack 環境が設定されました。
 
 5. コード内で Go SDK プロファイルからサービス モジュールをインポートします。 Azure Stack プロファイルの現在のバージョンは **2017-03-09** です。 たとえば、**2017-03-09** プロファイルの種類からネットワーク モジュールをインポートするには、次のコードを使用します。
 

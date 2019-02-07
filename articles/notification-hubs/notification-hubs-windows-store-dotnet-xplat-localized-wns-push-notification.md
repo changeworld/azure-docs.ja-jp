@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 3da3519895c30bdb40c679b832eb7fe11484d1d7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d93ede450ca9d11618d22ad22d3f22d355fcf91e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099885"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568071"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
 
@@ -216,7 +216,7 @@ private static async void SendTemplateNotificationAsync()
 
     // Sending the notification as a template notification. All template registrations that contain
     // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications.
-    // This includes APNS, GCM, WNS, and MPNS template registrations.
+    // This includes APNS, FCM, WNS, and MPNS template registrations.
     Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
     // Create an array of breaking news categories.

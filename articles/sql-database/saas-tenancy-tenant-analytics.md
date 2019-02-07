@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: f63a42afd9dc629bd87dfb23e07e14737ea42a2f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 12/18/2018
+ms.openlocfilehash: f7c482a0308d3c2b2583d99cf4079040065b80c0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299845"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561379"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
  

@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: tulasim88
-ms.openlocfilehash: e6c7cb4ca4265166a516adfda0fb9f70f4548a2e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6665efed53c7864467d7a6a72d109841c3a02b53
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213052"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747545"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -36,7 +36,7 @@ ms.locfileid: "55213052"
         requests
         | where url endswith "generateAnswer"
         | project timestamp, id, name, resultCode, duration
-        | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
         | join kind= inner (
         traces | extend id = operation_ParentId
         ) on id
@@ -57,7 +57,7 @@ ms.locfileid: "55213052"
     //Total Traffic
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
@@ -70,7 +70,7 @@ ms.locfileid: "55213052"
     requests
     | where timestamp <= endDate and timestamp >=startDate
     | where url endswith "generateAnswer" and name startswith "POST" 
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by KbId
 ```
 
@@ -81,7 +81,7 @@ ms.locfileid: "55213052"
     requests
     | where url endswith "generateAnswer"
     | project timestamp, id, name, resultCode, duration
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer"
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | join kind= inner (
     traces | extend id = operation_ParentId 
     ) on id
@@ -95,7 +95,7 @@ ms.locfileid: "55213052"
     //Latency distribution of questions
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
-    | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
     | project timestamp, id, name, resultCode, performanceBucket, KbId
     | summarize count() by performanceBucket, KbId
 ```

@@ -11,13 +11,13 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/22/2018
-ms.openlocfilehash: ee9e9389962cd454f9861e561dd76c96d019a1f0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 12/18/2018
+ms.openlocfilehash: eeca88a53e05b5ad89eaa99d14914e77cf06d107
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469339"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566290"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 

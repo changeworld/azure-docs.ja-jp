@@ -10,12 +10,12 @@ ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 071d58f53389367833df6379c68c27ecc4771fa1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 857e12664defb1fc0106dd0d3012b77a89f826c2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238824"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495107"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
@@ -124,7 +124,7 @@ public static final String storageConnectionString =
 
 Azure Stack のエンドポイントのサフィックスは、宣言のインスタンスに指定されています。
 
-```nodejs
+```javascript
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```

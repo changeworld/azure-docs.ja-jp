@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 10bda16531ddf6dff050d0a4c9fdb549623dbc88
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: aac0de0e39245835122ede1d99a14ce523bdd8ca
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171016"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498286"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect:デバイス オプション
 

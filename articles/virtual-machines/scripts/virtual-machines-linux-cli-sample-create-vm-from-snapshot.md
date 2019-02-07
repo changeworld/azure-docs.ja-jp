@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: db0aa1781c3e35b68a59082cf7a1760f7e9a34b4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239572"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694535"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>CLI でスナップショットから仮想マシンを作成する
 
@@ -49,9 +49,9 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | スナップショット名とリソース グループ名を使用して、スナップショットを取得します。 返されたオブジェクトの Id プロパティは、マネージド ディスクを作成するために作成されます。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | スナップショット ID、ディスク名、記憶域の種類、およびサイズを使用して、スナップショットからマネージド ディスクを作成します。  |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショット名とリソース グループ名を使用して、スナップショットを取得します。 返されたオブジェクトの Id プロパティは、マネージド ディスクを作成するために作成されます。  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | スナップショット ID、ディスク名、記憶域の種類、およびサイズを使用して、スナップショットからマネージド ディスクを作成します。  |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 管理 OS ディスクを使用して VM を作成する |
 
 ## <a name="next-steps"></a>次の手順
 

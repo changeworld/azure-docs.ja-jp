@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 250f03809a182e541fb58f73469f46d2b281b69f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194306"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756048"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL Database に照会する
 
@@ -41,7 +41,7 @@ ms.locfileid: "55194306"
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
-> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure portal を使用してサーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)を作成してください。
+> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure portal を使用してサーバー レベルのファイアウォール規則](sql-database-server-level-firewall-rule.md)を作成してください。
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 

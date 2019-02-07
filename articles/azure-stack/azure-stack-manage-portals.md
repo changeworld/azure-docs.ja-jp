@@ -17,12 +17,12 @@ ms.date: 01/07/2019
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.lastreviewed: 01/07/2019
-ms.openlocfilehash: dacd628098d263234f56b20879a5ac2fdf87a809
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bda4edeb610fd786307a751afc5b397a2f597e54
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243166"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767471"
 ---
 # <a name="quickstart-use-the-azure-stack-administration-portal"></a>クイック スタート: Azure Stack 管理ポータルを使用する
 

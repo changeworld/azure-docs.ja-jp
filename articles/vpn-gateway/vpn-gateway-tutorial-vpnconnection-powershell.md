@@ -17,11 +17,11 @@ ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509475"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用して S2S VPN 接続を作成および管理する
 

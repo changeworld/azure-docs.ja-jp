@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321337"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491010"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>構文の詳細
@@ -67,7 +67,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | getDebugInfo        | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ        |
 | arguments           | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ        |
 | defines             | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ        |
-| queryTimeout        | クエリのタイムアウト値 (分単位)。  HDInsight クラスターで Enterprise セキュリティ パッケージが有効になっているときに適用できます。 | いいえ        |
+| queryTimeout        | クエリのタイムアウト値 (分単位)。 HDInsight クラスターで Enterprise セキュリティ パッケージが有効になっているときに適用できます。 | いいえ        |
 
 ## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
@@ -80,4 +80,3 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0ba18b1ef0ba6c0a73759577c83ab80550baa6f8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157719"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754746"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroupAG --location eastus
 
 仮想ネットワークを作成すると、アプリケーション ゲートウェイが他のリソースと通信できるようになります。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。 この例では、2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つは仮想マシン用です。 アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。
 
-仮想ネットワークとサブネットを作成するには、[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用します。 パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) を実行します。
+仮想ネットワークとサブネットを作成するには、[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用します。 パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip) を実行します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 すると、Azure により、ネットワーク インターフェイスのプライベート IP アドレスが、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 すると、Azure により、ネットワーク インターフェイスのプライベート IP アドレスが、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

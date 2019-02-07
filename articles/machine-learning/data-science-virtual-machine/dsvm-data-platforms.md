@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478085"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733435"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -105,5 +105,5 @@ Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-nameno
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Azure BLOB または Azure Data Lake Storage (ADLS) から、またマイクロソフトの MMLSpark 機械学習ライブラリを使用してデータにアクセスするためのライブラリは、$SPARK_HOME/jars にプレインストールされています。 これらの JAR は Spark の起動時に自動的に読み込まれます。 既定では、Spark はローカル ディスク上のデータを使用します。 DSVM 上の Spark インスタンスから Azure BLOB または ADLS に格納されたデータにアクセスするためには、$SPARK_HOME/conf/core-site.xml.template (BLOB および ADLS 構成のためのプレースホルダーがある場所) にあるテンプレートをベースに `core-site.xml` ファイルを作成/構成し、Azure Blob および Azure Data Lake Storage への適切な資格情報を使用する必要があります。 ADLS サービス資格情報の作成手順の詳細については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application)を参照してください。 Azure BLOB または ADLS の資格情報が core-site.xml ファイルに入力されたら、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照することができます。 
+Azure BLOB または Azure Data Lake Storage (ADLS) から、またマイクロソフトの MMLSpark 機械学習ライブラリを使用してデータにアクセスするためのライブラリは、$SPARK_HOME/jars にプレインストールされています。 これらの JAR は Spark の起動時に自動的に読み込まれます。 既定では、Spark はローカル ディスク上のデータを使用します。 DSVM 上の Spark インスタンスから Azure BLOB または ADLS に格納されたデータにアクセスするためには、$SPARK_HOME/conf/core-site.xml.template (BLOB および ADLS 構成のためのプレースホルダーがある場所) にあるテンプレートをベースに `core-site.xml` ファイルを作成/構成し、Azure Blob および Azure Data Lake Storage への適切な資格情報を使用する必要があります。 ADLS サービス資格情報の作成手順の詳細については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)を参照してください。 Azure BLOB または ADLS の資格情報が core-site.xml ファイルに入力されたら、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照することができます。 
 

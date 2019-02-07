@@ -14,12 +14,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6d494cbc53ce83cfe4aaef63653eab2da9b35937
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b27dd1b9aec89f259649b313d3ba7f944ea647f1
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249945"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765719"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -148,7 +148,7 @@ CLI を使用して仮想マシンを作成するには、Azure Stack のオペ�
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
-    d. AD FS 環境にユーザーを登録するには、次のコマンドを使用します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 AD FS 環境にユーザーを登録するには、次のコマンドを使用します。
 
       ```azurecli
       az cloud register \
