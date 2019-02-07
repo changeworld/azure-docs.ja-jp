@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7d79e7aca0e8aa506abba174668c60fcd2fd4bc2
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: d274642c8e35374dee2d584e6285165a15cd3128
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065445"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747035"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -49,6 +49,7 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
+|米国西部 2|米国西部 2|
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
@@ -140,7 +141,7 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 2. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)にも掲載されています。
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)。
 
    続行するかどうかを確認するプロンプトが表示されます。
 

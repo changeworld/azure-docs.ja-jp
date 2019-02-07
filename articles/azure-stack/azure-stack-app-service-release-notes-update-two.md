@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: ec0c80925770c75ee1f23df29f1724444c1e7337
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0fa938b02b24bd79017bede5346b882e6587bd5d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249665"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766926"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service on Azure Stack update 2 のリリース ノート
 

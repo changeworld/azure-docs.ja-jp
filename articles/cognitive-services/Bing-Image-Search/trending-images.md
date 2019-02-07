@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188322"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756480"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する
 
@@ -90,7 +90,7 @@ Trending Images API では、現在、次の市場のみがサポートされて
 
 各タイルには、画像と、関連画像を取得するオプションが含まれています。 関連画像を取得するには、クエリ `text` を使用して [Image Search API](./search-the-web.md) を呼び出し、関連画像を自分で表示します。 または、`webSearchUrl` 内の URL を使用して、関連画像を含む Bing の画像検索結果ページに移動することもできます。
 
-Image Search API を呼び出して関連画像を取得する場合は、[id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) クエリ パラメーターを `id` フィールド内の ID に設定します。 ID を指定すると、応答に画像 (応答内の最初の画像) とその関連画像が含まれます。 また、[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) クエリ パラメーターを `query` オブジェクトの `text` フィールドのテキストに設定します。
+Image Search API を呼び出して関連画像を取得する場合は、[id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) クエリ パラメーターを `id` フィールド内の ID に設定します。 ID を指定すると、応答に画像 (応答内の最初の画像) とその関連画像が含まれます。 また、[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) クエリ パラメーターを `query` オブジェクトの `text` フィールドのテキストに設定します。
 
 次の例は、画像 ID を使用して、前の Trending Images API の応答の Mr. Smith の関連画像を取得する方法を示します。
 

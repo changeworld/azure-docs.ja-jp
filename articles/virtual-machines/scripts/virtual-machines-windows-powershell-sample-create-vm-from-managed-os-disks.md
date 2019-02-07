@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 4fa3babbf8e757b6d40170440754c43e25ba83f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4e1695eb85988b74bf968ebe08602164c94f01dd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252032"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696060"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
@@ -62,7 +62,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 マーケットプレース イメージの場合は、[Set-AzureRmVMPlan](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmplan?view=azurermps-6.7.0) を使用してプラン情報を設定します。
 ```powershell
-Set-AzureRmVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame
+Set-AzureRmVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Name
 ```
 
 ## <a name="next-steps"></a>次の手順

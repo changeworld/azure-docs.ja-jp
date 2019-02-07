@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c92b71a8f2b9fbeae9afc5f06b6d5412f6421a6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021798"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822648"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -83,11 +83,11 @@ VNet の使用時に Azure Cache for Redis インスタンスに接続するに�
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Azure Cache for Redis VNet の FAQ
 次の一覧は、Azure Cache for Redis のスケーリングに関するよく寄せられる質問への回答です。
 
-* [Azure Cache for Redis と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* Azure Cache for Redis と VNet の誤った構成に関してよく見られる問題を教えてください
 * [VNET で自分のキャッシュの動作を確認するにはどうすればよいですか](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [VNET で自分の Azure Cache for Redis への接続を試行すると、リモート証明書が無効であることを示すエラーが表示されるのはなぜですか](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
-* [Azure Cache for Redis の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+* Azure Cache for Redis の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか
 * [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
 * [VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 

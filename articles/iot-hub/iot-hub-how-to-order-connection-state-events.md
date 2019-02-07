@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184051"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730078"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -341,7 +341,7 @@ IoT Hub を残しておく場合でも、作成したイベント サブスク�
 
 3. **[削除]** を選択します。 
 
-Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete)するための詳細な手順を参照してください。
+Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account)するための詳細な手順を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

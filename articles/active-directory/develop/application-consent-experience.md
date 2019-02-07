@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 233b77de4a034b5e87aeea2152a3fb6a71aeb8e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097947"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755386"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 
@@ -83,5 +83,5 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
     1. 管理者以外のユーザーに、上記の 2.ii と同じ画面が表示されます。
 
 ## <a name="next-steps"></a>次の手順
-- [Azure AD の同意フレームワークの実装方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework)の詳細な手順を入手します。
+- [Azure AD の同意フレームワークの実装方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)の詳細な手順を入手します。
 - 詳細については、[マルチテナント アプリケーションが同意フレームワークを使用して](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)多層アプリケーションのパターンのサポートが強化されている、"user" と "admin" の同意を実装する方法について学習します。

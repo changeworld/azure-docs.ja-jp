@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3bf3dd325af48f99e109f651628883d8f946fdc8
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649841"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512484"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -167,7 +167,7 @@ VPN Gateway 構成に対して REST API、PowerShell コマンドレット、ま
 
 | **クラシック** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](/powershell/module/azure#networking) |[PowerShell](/powershell/module/azurerm.network#vpn) |
+| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/azurerm.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 

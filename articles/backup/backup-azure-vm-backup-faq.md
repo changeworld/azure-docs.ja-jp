@@ -2,18 +2,18 @@
 title: Azure VM バックアップの FAQ
 description: '一般的な質問への回答: Azure VM バックアップの動作、制限、ポリシーの変更があったときに起こること'
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
-ms.author: trinadhk
-ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.author: sogup
+ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332253"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494903"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>よく寄せられる質問 - Azure Backup
 

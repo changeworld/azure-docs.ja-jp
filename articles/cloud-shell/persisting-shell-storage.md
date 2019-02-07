@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4671287d78dafce9b662a167ba99a680d2fa70d2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163279"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734077"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -105,5 +105,5 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
-[Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

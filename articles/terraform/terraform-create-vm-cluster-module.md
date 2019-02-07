@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077200"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696168"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>モジュール レジストリを使用した Terraform での VM クラスターの作成
 
@@ -31,7 +31,7 @@ Terraform の詳細については、[Terraform のドキュメント](https://w
 ## <a name="set-up-authentication-with-azure"></a>Azure で認証を設定する
 
 > [!TIP]
-> [Terraform 環境変数を使用する](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
+> [Terraform 環境変数を使用する](/azure/virtual-machines/linux/terraform-install-configure)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
 
  Azure サービス プリンシパルを作成するには、「[Install Terraform and configure access to Azure (Terraform のインストールおよび Azure へのアクセスの構成)](/azure/virtual-machines/linux/terraform-install-configure)」を確認してください。 このサービス プリンシパルを使用して、空のディレクトリ内の新しいファイル `azureProviderAndCreds.tf` に次のコードを入力します。
 

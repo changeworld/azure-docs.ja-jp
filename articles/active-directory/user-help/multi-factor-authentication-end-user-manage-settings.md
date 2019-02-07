@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: ab3de9b010c0356dea17520b497235e0bf7c818e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2129b1f70ea19bdb2144f0f2a9ca4a6dbac0acbd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181318"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766820"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -74,7 +74,7 @@ ms.locfileid: "55181318"
 2. 任意のデバイスで次回サインインするときに、2 段階認証を実行するよう求められます。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
-デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](microsoft-authenticator-app-how-to.md)」参照してください。
+デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](user-help-auth-app-download-install.md)」参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * 「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」でトラブルシューティングのヒントとヘルプを習得します。

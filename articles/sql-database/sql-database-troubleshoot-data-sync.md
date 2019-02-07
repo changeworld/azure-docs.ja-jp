@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723894"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563186"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
@@ -178,7 +178,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
     a. **[スタート]** メニューを選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果ウィンドウの **[プログラム]** セクションで、**[サービス]** をダブルクリックします。  
-    d. **[SQL データ同期]** サービスを右クリックします。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SQL データ同期]** サービスを右クリックします。  
     e. サービスが実行中の場合は、停止します。  
     f. サービスを右クリックして、**[開始]** を選択します。  
     g. データベースがまだ登録されているかどうかを確認します。 登録が解除されている場合は、作業は終了です。 それ以外の場合は、次の手順に進みます。

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5b8277c0688d0fd08dfa81cb7d5f7155840843c0
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f75b14ce2ca860ee894fe0a2ef501066b91f8e8a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413585"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755647"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -172,7 +172,7 @@ CNAME レコードは、次の形式にする必要があります。ここで *
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)に関するセクションを参照してください。
+CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)に関するセクションを参照してください。
 
 CNAME レコードが正しい形式である場合、DigiCert は自動的にそのカスタム ドメイン名を検証し、ご利用のドメイン名に使用する専用の証明書を作成します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 

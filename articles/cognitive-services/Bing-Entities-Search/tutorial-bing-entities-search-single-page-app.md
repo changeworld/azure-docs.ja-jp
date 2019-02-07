@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/08/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: f8aa6733748bbdf9ffff069126f6481c8b6788c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ccc94f5fa44cc177db62af3d7318a8f3071e9098
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197434"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752638"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 

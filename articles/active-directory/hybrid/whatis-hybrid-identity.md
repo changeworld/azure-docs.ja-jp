@@ -8,16 +8,16 @@ manager: daveba
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b6bb3f950c4a442e898a6251a89246b31af78bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160425"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494666"
 ---
 # <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは 
 

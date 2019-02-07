@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 9992d93f689663e859315dd55d248866d88b4a25
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 67cfa45d602b6bf9de27a0b559c58e28b79d1c84
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903602"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732823"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -67,7 +67,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 ## <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 
-読み取りレプリカ サーバーの削除は、**[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** コマンドを使用して行うことができます。
+読み取りレプリカ サーバーの削除は、**[az mysql server delete](/cli/azure/mysql/server)** コマンドを使用して行うことができます。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -78,7 +78,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserv
 > [!IMPORTANT]
 > マスター サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、マスター サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
-マスター サーバーを削除するには、**[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** コマンドを実行します。
+マスター サーバーを削除するには、**[az mysql server delete](/cli/azure/mysql/server)** コマンドを実行します。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247750"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751397"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -90,7 +90,7 @@ BlobCreated イベントの例を次に示します。
 詳しくは、[Blob Storage のイベント スキーマに関する記事](../../event-grid/event-schema-blob-storage.md)をご覧ください。
 
 ## <a name="filtering-events"></a>イベントのフィルター処理
-BLOB イベントのサブスクリプションは、イベントの種類に基づき、作成または削除されたオブジェクトのコンテナー名と BLOB 名で、フィルター処理することができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create)中、または[作成後](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update)に、イベント サブスクリプションをフィルター処理することができます。 Event Grid のサブジェクト フィルターは、"次で始まる" と "次で終わる" という一致条件によって動作し、サブジェクトが一致するイベントはサブスクライバーに配信されます。 
+BLOB イベントのサブスクリプションは、イベントの種類に基づき、作成または削除されたオブジェクトのコンテナー名と BLOB 名で、フィルター処理することができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)中、または[作成後](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)に、イベント サブスクリプションをフィルター処理することができます。 Event Grid のサブジェクト フィルターは、"次で始まる" と "次で終わる" という一致条件によって動作し、サブジェクトが一致するイベントはサブスクライバーに配信されます。 
 
 Blob Storage イベントのサブジェクトには次の形式が使われます。
 

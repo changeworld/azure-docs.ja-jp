@@ -13,12 +13,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c7560dc6c3c5237a056a9468d3ab4f440e8e6dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190787"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820319"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -49,8 +49,6 @@ ms.locfileid: "55190787"
 
 監査レポートで高度なフィルター処理を使用すると、**[アクティビティ カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、セルフサービスによるパスワードのリセットに関連するすべてのアクティビティを表示するには、**[Self-service password management]\(セルフ サービスによるパスワード管理\)** カテゴリを選択します。 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
-
 アクティビティのカテゴリには、以下が含まれます。
 
 - Core Directory (コア ディレクトリ)
@@ -62,8 +60,6 @@ ms.locfileid: "55190787"
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
 **[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況**レポートが表示されます。 アプリケーションの使用状況に関する情報は、**[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 サインイン レポートにアクセスするには:
 

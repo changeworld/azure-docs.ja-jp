@@ -2,19 +2,18 @@
 title: Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
 description: Azure Backup で PowerShell を使用して Key Vault のキーとシークレットを復元する方法を説明します。
 services: backup
-author: sogup
+author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: sogup
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 85c284c2a0e49d7fa20c0ec342878ffdf9d47387
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: geetha
+ms.openlocfilehash: 233325f0032dc31445bbaa9d9e522f401f43c093
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488766"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
 この記事では、キーとシークレットが Key Vault に存在しない場合に、暗号化された Azure VM の復元を Azure VM Backup を使用して実行する方法を説明します。 次に示す手順は、復元した VM のキー (Key 暗号化キー) とシークレット (BitLocker 暗号化キー) の個別のコピーを保持する場合にも使用できます。

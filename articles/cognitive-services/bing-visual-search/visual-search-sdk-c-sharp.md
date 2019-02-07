@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 5884c7df37ef4bd67f85ec614bdefe87522b6bc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe6ec751ed18af24e8a38d6993d8047b62eeed44
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172002"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769761"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>クイック スタート:Bing Visual Search SDK for C# を使用して画像に関する分析情報を取得する
 
@@ -26,7 +26,7 @@ ms.locfileid: "55172002"
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
 * NuGet Visual Search パッケージ。 
-    - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。
+    - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.VisualSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -48,7 +48,7 @@ ms.locfileid: "55172002"
 2. サブスクリプション キーを使用して、クライアントをインスタンス化します。
     
     ```csharp
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
     
 ## <a name="send-a-search-request"></a>検索要求を送信する 
@@ -56,7 +56,7 @@ ms.locfileid: "55172002"
 1. 画像への `FileStream` を作成します (この場合は `TestImages/image.jpg`)。 その後、クライアントを使用し、`client.Images.VisualSearchMethodAsync()` を使用して検索要求を送信します。 
     
     ```csharp
-     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open;
+     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open);
      // The knowledgeRequest parameter is not required if an image binary is passed in the request body
      var visualSearchResults = client.Images.VisualSearchMethodAsync(image: stream, knowledgeRequest: (string)null).Result;
     ```
@@ -77,13 +77,13 @@ ms.locfileid: "55172002"
     // List of tags
     if (visualSearchResults.Tags.Count > 0)
     {
-        var firstTagResult = visualSearchResults.Tags.First();
+        var firstTagResult = visualSearchResults.Tags[0];
         Console.WriteLine($"Visual search tag count: {visualSearchResults.Tags.Count}");
     
         // List of actions in first tag
         if (firstTagResult.Actions.Count > 0)
         {
-            var firstActionResult = firstTagResult.Actions.First();
+            var firstActionResult = firstTagResult.Actions[0];
             Console.WriteLine($"First tag action count: {firstTagResult.Actions.Count}");
             Console.WriteLine($"First tag action type: {firstActionResult.ActionType}");
         }
@@ -91,6 +91,7 @@ ms.locfileid: "55172002"
         {
             Console.WriteLine("Couldn't find tag actions!");
         }
+    }
     ```
 
 ## <a name="next-steps"></a>次の手順

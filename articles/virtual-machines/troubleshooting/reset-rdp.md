@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 99b915f14aaa7d306d1bceb5bd4f6bb23abdb929
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77eb372bbe3647e03919aae21087d3270c22148a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245377"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506559"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
@@ -79,7 +79,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 1. [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。
 
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
+    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]

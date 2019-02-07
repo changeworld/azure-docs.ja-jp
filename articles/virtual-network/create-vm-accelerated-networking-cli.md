@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8c913d618313a72f6fb05ea45847a220f6070d42
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214489"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765740"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -42,7 +42,7 @@ ms.locfileid: "54214489"
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。 
-* **Ubuntu 16.04** 
+* **Ubuntu 16.04+** 
 * **SLES 12 SP3** 
 * **RHEL 7.4**
 * **CentOS 7.4**
@@ -76,9 +76,9 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
+最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
 
-[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *centralus* に作成します。
+[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *centralus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -86,7 +86,7 @@ az group create --name myResourceGroup --location centralus
 
 「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」(Linux 高速ネットワーク) に記載されているサポート対象の Linux リージョンを選択します。
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、1 つのサブネットで *myVnet* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して仮想ネットワークを作成します。 次の例では、1 つのサブネットで *myVnet* という名前の仮想ネットワークを作成します。
 
 ```azurecli
 az network vnet create \
@@ -98,7 +98,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 az network nsg create \
@@ -106,7 +106,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-ネットワーク セキュリティ グループには、既定の規則がいくつか含まれています。そのうちの 1 つは、インターネットからのすべての着信アクセスを無効にします。 ポートを開き、[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、仮想マシンに SSH アクセスできるようにします。
+ネットワーク セキュリティ グループには、既定の規則がいくつか含まれています。そのうちの 1 つは、インターネットからのすべての着信アクセスを無効にします。 ポートを開き、[az network nsg rule create](/cli/azure/network/nsg/rule) を使用して、仮想マシンに SSH アクセスできるようにします。
 
 ```azurecli
 az network nsg rule create \
@@ -125,7 +125,7 @@ az network nsg rule create \
 
 ### <a name="create-a-network-interface-with-accelerated-networking"></a>高速ネットワークを使ったネットワーク インターフェイスの作成
 
-パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) で作成します。 インターネットから仮想マシンにアクセスする計画がない場合、パブリック IP アドレスは不要ですが、この記事の手順を完了するには必要です。
+パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip) で作成します。 インターネットから仮想マシンにアクセスする計画がない場合、パブリック IP アドレスは不要ですが、この記事の手順を完了するには必要です。
 
 ```azurecli
 az network public-ip create \
@@ -133,7 +133,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-高速ネットワークを有効にし、[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用してネットワーク インターフェイスを作成します。 次の例では、*myVnet* 仮想ネットワークの *mySubnet* サブネットの *myNic* というネットワーク インターフェイスを作成し、*myNetworkSecurityGroup* ネットワーク セキュリティ グループをネットワーク インターフェイスに関連付けます。
+高速ネットワークを有効にし、[az network nic create](/cli/azure/network/nic) を使用してネットワーク インターフェイスを作成します。 次の例では、*myVnet* 仮想ネットワークの *mySubnet* サブネットの *myNic* というネットワーク インターフェイスを作成し、*myNetworkSecurityGroup* ネットワーク セキュリティ グループをネットワーク インターフェイスに関連付けます。
 
 ```azurecli
 az network nic create \
@@ -149,7 +149,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>VM を作成して NIC を接続する
 VM を作成するとき、`--nics` を使用して作成した NIC を指定します。 「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」(Linux 高速ネットワーク) に記載されているサイズとディストリビューションを選択します。 
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、UbuntuLTS イメージと高速ネットワークをサポートするサイズ (*Standard_DS4_v2*) を使用して、*myVM* という VM を作成します。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、UbuntuLTS イメージと高速ネットワークをサポートするサイズ (*Standard_DS4_v2*) を使用して、*myVM* という VM を作成します。
 
 ```azurecli
 az vm create \

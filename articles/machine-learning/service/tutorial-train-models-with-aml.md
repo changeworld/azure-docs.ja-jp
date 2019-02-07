@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6811888b5113a2cf5a06811f0e1b1bcee57d864b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a15d37615ec6052ab63457a7814f70433be68c87
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298060"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509560"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
@@ -175,16 +175,16 @@ MNIST データセットをダウンロードし、ファイルを `data` ディ
 
 
 ```python
-import os
 import urllib.request
+import os
 
-data_path = os.path.join(os.getcwd(), 'data')
-os.makedirs(data_path, exist_ok = True)
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok = True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename='./data/train-images.gz')
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename='./data/train-labels.gz')
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/test-images.gz')
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/test-labels.gz')
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename=os.path.join(data_folder, 'train-images.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename=os.path.join(data_folder, 'train-labels.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename=os.path.join(data_folder, 'test-images.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename=os.path.join(data_folder, 'test-labels.gz'))
 ```
 出力は、```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)``` のようになります。
 
@@ -199,13 +199,12 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data('./data/train-images.gz', False) / 255.0
-y_train = load_data('./data/train-labels.gz', True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
+X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
+y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
 
-X_test = load_data('./data/test-images.gz', False) / 255.0
-y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
-# now let's show some randomly chosen images from the training set.
+# now let's show some randomly chosen images from the traininng set.
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
@@ -235,7 +234,7 @@ MNIST ファイルは、データストアのルートにある `mnist` とい�
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 
-ds.upload(src_dir=data_path, target_path='mnist', overwrite=True, show_progress=True)
+ds.upload(src_dir=data_folder, target_path='mnist', overwrite=True, show_progress=True)
 ```
 これで、モデルのトレーニングを開始するために必要なものがすべて揃いました。 
 

@@ -5,16 +5,16 @@ author: billmath
 ms.subservice: hybrid
 ms.author: billmath
 ms.date: 06/26/2018
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.service: active-Directory
 manager: daveba
-ms.openlocfilehash: b2043ae15cd99b50e33fa6cf896af73f03ef6b66
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4270aa6feed7574c2e74ca885c6e150eda3b0fad
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197808"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494530"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 

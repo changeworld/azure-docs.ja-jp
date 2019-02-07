@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 4bee57abe6de8e80ddf6f788fb17bb8b7d82849d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 357b22e4d4a6bf42ba165e49fc3cc01762268297
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913106"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756514"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
@@ -57,7 +57,7 @@ az postgres server update --name mydemoserver --resource-group myresourcegroup -
 ## <a name="server-point-in-time-restore"></a>サーバーのポイントインタイム リストア
 サーバーを以前の状態に復元できます。 復元されたデータは新しいサーバーにコピーされ、既存のサーバーはそのまま残されます。 たとえば、今日の正午にテーブルが誤って削除された場合、正午の直前に復元できます。 その後、不足しているテーブルとデータを、サーバーの復元されたコピーから取得できます。 
 
-サーバーを復元するには、Azure CLI コマンド [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore) を使用します。
+サーバーを復元するには、Azure CLI コマンド [az postgres server restore](/cli/azure/postgres/server) を使用します。
 
 ### <a name="run-the-restore-command"></a>復元コマンドを実行する
 

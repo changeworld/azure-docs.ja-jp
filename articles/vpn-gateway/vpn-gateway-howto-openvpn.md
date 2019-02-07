@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 07dae60d1d4ab43194f88f44bde498d9fa19ce81
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388099"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508540"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する (プレビュー)
 

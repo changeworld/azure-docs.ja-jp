@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301256"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564954"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -55,7 +55,7 @@ A:左ウィンドウで [フィルター] をクリックすると、新しい�
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Q. エラーが発生する理由:VM からドリルインした後、ログに "このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
 
-A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。
+A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Q. VM ページからログにアクセスするときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 

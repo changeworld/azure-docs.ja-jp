@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 66a9ea5abcff4609288e9ce7c93912313db6e163
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cde06aaf149785f464cd354c95c8f39575bad73b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850605"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698238"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

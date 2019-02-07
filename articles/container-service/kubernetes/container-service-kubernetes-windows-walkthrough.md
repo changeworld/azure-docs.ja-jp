@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 90608e95cee6b5b7231419c2c65c39741f106b0f
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412642"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659390"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(非推奨) Windows コンテナー用の Kubernetes クラスターをデプロイする
 
@@ -76,7 +76,7 @@ az acs kubernetes install-cli
 
 ## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。 次の例では、Kubernetes クラスターのクラスター構成がダウンロードされます。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) コマンドを実行します。 次の例では、Kubernetes クラスターのクラスター構成がダウンロードされます。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster

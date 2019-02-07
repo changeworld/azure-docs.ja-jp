@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3036c53fa95b40ac0bfc7dbe5bed69581236918d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8ce1383717b59cc7b7a43ca707fbe5ebba897f20
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411885"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730324"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
 
@@ -35,7 +35,7 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、VM に接続するときに必要です。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、VM に接続するときに必要です。
 
 ```azurecli-interactive
 az vm create \
@@ -73,7 +73,7 @@ VM とサポート リソースを作成するには数分かかります。 次
 
 ## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
 
-既定では、Azure において Windows VM を作成すると RDP 接続のみが開かれます。 IIS Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使います。
+既定では、Azure において Windows VM を作成すると RDP 接続のみが開かれます。 IIS Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm) を使います。
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

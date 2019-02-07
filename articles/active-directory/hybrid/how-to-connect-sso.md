@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f89fde9040a106546e55f77e4a34e1ac861e46c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 46035da09bc2d02e89659e3c18fa313e947e1280
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195462"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489753"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 

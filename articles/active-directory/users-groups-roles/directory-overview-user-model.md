@@ -12,12 +12,12 @@ ms.service: active-directory
 ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: 2e8fc0cd0321fb59a641e5527b1609c85802dc63
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d578794a258faa9ad0222207f73e108e11f3281f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295187"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770454"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
 

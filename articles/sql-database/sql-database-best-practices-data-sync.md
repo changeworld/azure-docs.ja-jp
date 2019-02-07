@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: a7289ba5ab1f4e94adc099978591d69cac6ff786
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: cd4c5dc877bf565e5218d431506bbeccd5dc6382
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721599"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567271"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 

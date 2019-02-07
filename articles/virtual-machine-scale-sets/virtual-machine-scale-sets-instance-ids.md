@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8f85ded20470ecc5a7868c094e88a149c88b7f39
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855314"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749568"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -33,7 +33,7 @@ REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 Powershell: `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm)をご覧ください)
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage)をご覧ください)。
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
 
 インスタンス ID の一覧を取得するには、スケール セット内のすべてのインスタンスを一覧表示します。
 

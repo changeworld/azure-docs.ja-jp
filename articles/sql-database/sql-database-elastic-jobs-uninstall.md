@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: f717c0c656c5a80b14ef09a10cda18bd12500eeb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 2131aa63f0f5cdbbc9e0b4eb7c1f57604fe75cdb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869026"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754956"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>エラスティック データベース ジョブ コンポーネントのアンインストール
 
@@ -44,25 +44,23 @@ ms.locfileid: "52869026"
 
 または、単純に、コンポーネントのインストール時に使用された既定値があるという想定で、次のスクリプトを実行します。
 
-        $ResourceGroupName = "__ElasticDatabaseJob"
-        Switch-AzureMode AzureResourceManager
+```powershell
+$ResourceGroupName = "__ElasticDatabaseJob"
+Switch-AzureMode AzureResourceManager
 
-        $resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
-        if(!$resourceGroup)
-        {
-            Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
-            return
-        }
+$resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
+if(!$resourceGroup)
+{
+     Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
+     return
+}
 
-        Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
-        Remove-AzureResourceGroup -Name $ResourceGroupName -Force
-        Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
+Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
+Remove-AzureResourceGroup -Name $ResourceGroupName -Force
+Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job components are now uninstalled."
+```
 
 ## <a name="next-steps"></a>次の手順
 エラスティック データベース ジョブを再インストールする方法については、「 [エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)
 
 エラスティック データベース ジョブの概要については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
-
-<!--Image references-->
-
-

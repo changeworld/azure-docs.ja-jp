@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438814"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822682"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
 
@@ -99,7 +99,7 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
     フィルターの作成の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](../../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれたログ
-[Azure テーブルに書き込まれたログ](#log-written-to-azure-tables)は、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
+Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
 
 ログを表示するには、「[Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](../hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
 

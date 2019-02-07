@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 00d5cb48053fe3f34152f29fb20fec8c4a20166f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34dc6fbd1cca30f86b3fa825932983a01c4c8250
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426167"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730188"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -87,14 +87,14 @@ ms.locfileid: "54426167"
     - **ダイアグラム**:このダイアグラムには、仮想ネットワークに接続されているすべてのデバイスを視覚的に表現したものが表示されます。 ダイアグラムには、デバイスに関する重要な情報が含まれます。 このビューでダイアグラム内のデバイスを管理するには、デバイスを選択します。
     - **Azure の一般的な設定**:Azure の一般的な設定の詳細については、次の情報を参照してください。
         *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
-        *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+        *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
         *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
 **コマンド**
 
-- Azure CLI: [az network vnet show](/cli/azure/network/vnet#az_network_vnet_show)
+- Azure CLI: [az network vnet show](/cli/azure/network/vnet)
 - PowerShell:[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)
 
 ## <a name="add-or-remove-an-address-range"></a>アドレス範囲の追加または削除
@@ -162,7 +162,7 @@ ms.locfileid: "54426167"
 
 **コマンド**
 
-- Azure CLI: [azure network vnet delete](/cli/azure/network/vnet#az_network_vnet_delete)
+- Azure CLI: [azure network vnet delete](/cli/azure/network/vnet)
 - PowerShell:[Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork)
 
 ## <a name="permissions"></a>アクセス許可

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: cc322f44760ddf0a7cd28751c895a7c4938dbbc0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867242"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565481"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 

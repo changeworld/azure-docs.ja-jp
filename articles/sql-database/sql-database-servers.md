@@ -3,7 +3,7 @@ title: Azure SQL Database サーバー | Microsoft Docs
 description: Azure SQL Database サーバーとその管理の詳細について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f3378c43c225152ebdcf2e92de6d4fc65c047c31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479127"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756650"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database サーバーとその管理
 
@@ -78,7 +78,7 @@ SQL Database サーバー:
 > [!IMPORTANT]
 > データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 > [!TIP]
-> Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」を参照してください。
+> Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-single-database-get-started.md)」を参照してください。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>PowerShell を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
@@ -102,7 +102,7 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 | New-AzureRmSqlServerVirtualNetworkRule | Virtual Network のサービス エンドポイントであるサブネットに基づいて、[*仮想ネットワーク規則*](sql-database-vnet-service-endpoint-rule-overview.md)を作成します。 |
 
 > [!TIP]
-> PowerShell のクイックスタートについては、[PowerShell を使用した単一の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関するページを参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した単一の Azure SQL データベースの作成と、ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)および [PowerShell を使用した単一の Azure SQL データベースの監視およびスケーリング](scripts/sql-database-monitor-and-scale-database-powershell.md)に関するページを参照してください。
+> PowerShell のクイックスタートについては、[PowerShell を使用した単一の Azure SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。 PowerShell のスクリプトの例については、[PowerShell を使用した単一の Azure SQL データベースの作成と、ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)および [PowerShell を使用した単一の Azure SQL データベースの監視およびスケーリング](scripts/sql-database-monitor-and-scale-database-powershell.md)に関するページを参照してください。
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Azure CLI を利用して Azure SQL Server、データベース、ファイアウォールを管理します。

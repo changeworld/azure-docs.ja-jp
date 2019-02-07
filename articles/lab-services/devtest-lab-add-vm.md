@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 05e68e13ab5aa526362e71413c105340ad07426f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 69c0ce73fa5c29a2d0e49d9c4bb15a855fadc75b
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082080"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746791"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに VM を追加する
-[最初の VM 作成](devtest-lab-create-first-vm.md)の作業を行った方は、おそらくプレインストールされている[マーケットプレイス イメージ](devtest-lab-configure-marketplace-images.md)から VM を追加したことと思います。 その後さらに VM をラボに追加する必要が生じた場合は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)または[数式](devtest-lab-manage-formulas.md)) を選択することもできます。 このチュートリアルでは、Azure Portal を使用して、DevTest Labs でラボに VM を追加します。
+[最初の VM 作成](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)の作業を行った方は、おそらくプレインストールされている[マーケットプレイス イメージ](devtest-lab-configure-marketplace-images.md)から VM を追加したことと思います。 その後さらに VM をラボに追加する必要が生じた場合は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)または[数式](devtest-lab-manage-formulas.md)) を選択することもできます。 このチュートリアルでは、Azure Portal を使用して、DevTest Labs でラボに VM を追加します。
 
 この記事では、ラボで VM のアーティファクトを管理する方法についても説明します。
 
@@ -41,6 +41,8 @@ ms.locfileid: "55082080"
     2. **[ユーザー名]** に、仮想マシンの管理者権限を付与するユーザー名を入力します。 マシンの**ユーザー名**は、自動生成された一意の名前で事前入力されます。 この名前は、電子メール アドレス内のユーザー名に対応しています。 この機能により、新しいマシンを作成するたびにユーザー名を決める時間を節約できます。 ここでも、必要に応じて、任意のユーザー名でこの自動入力されるフィールドをオーバーライドすることができます。 ユーザー名の自動入力される値をオーバーライドするには、**[ユーザー名]** テキスト ボックスに値を入力します。 このユーザーには、仮想マシンの**管理者**権限が付与されます。
     3. ラボで最初の VM を作成する場合は、ユーザーの**パスワード**を入力します。 このパスワードをラボに関連付けられている Azure Key Vault での既定のパスワードとして保存するには、**[既定のパスワードとして保存する]** を選択します。 既定のパスワードは、次の名前でキー コンテナーに保存されます:**VmPassword**。 ラボで次の VM を作成しようとすると、**VmPassword** が**パスワード**に自動的に選択されます。 値をオーバーライドするには、**[保存されているシークレットを使用する]** チェック ボックスをオフにして、パスワードを入力します。 
 
+        ![ベースの選択](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+
         最初にシークレットをキー コンテナーに保存してから、ラボで VM を作成するときにそれを使用することもできます。 詳細については、「[Azure DevTest Labs でキー コンテナーにシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)」を参照してください。 キー コンテナーに格納されているパスワードを使用するには、**[保存されているシークレットを使用する]** を選択し、シークレット (パスワード) に対応するキー値を指定します。
     4. **[その他のオプション]** セクションで、**[サイズの変更]** を選択します。 定義済みの項目のいずれかを選択して、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定します。
     5. **[成果物を追加または削除]** を選択します。 基本イメージに追加する成果物を選択して構成します。
@@ -52,9 +54,13 @@ ms.locfileid: "55082080"
     4. VM を自動的に削除するには、**有効期限の日付と時刻**を指定します。 
     5. ラボ ユーザーが VM を要求できるようにするには、**[このマシンを要求可能にする]** オプションで **[はい]** を選択します。 
     6. ラボ ユーザーが使用できる **VM のインスタンス**の数を指定します。 
-3. **[作成]** を選択して、指定した VM をラボに追加します。
+
+        ![ベースの選択](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
+1. **[作成]** を選択して、指定した VM をラボに追加します。
 
    ラボのページには VM の作成状況が表示されます。最初は **[作成中]**、VM が起動した後は **[実行中]** と表示されます。
+
+    ![VM の作成の状態](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
 ## <a name="add-an-existing-artifact-to-a-vm"></a>既存のアーティファクトの VM への追加
 VM を作成するときに、既存のアーティファクトを追加できます。 各ラボには、パブリック DevTest ラボ アーティファクト リポジトリのアーティファクトと、独自のアーティファクト リポジトリに作成または追加されたアーティファクトが含まれます。

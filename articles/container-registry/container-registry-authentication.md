@@ -9,20 +9,18 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66f9c41e2551dffc32932f1cfa53fa444251b303
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301052"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661634"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
 Azure コンテナー レジストリでの認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
 
 [個々のログイン](#individual-login-with-azure-ad)によって直接レジストリにログインするか、またはアプリケーションやコンテナー オーケストレーターで Azure Active Directory (Azure AD) [サービス プリンシパル](#service-principal)を使用して無人 ("ヘッドレス") 認証を実行することができます。
-
-Azure Container Registry では、認証されていない Docker 操作と匿名アクセスはサポートされていません。 パブリック イメージでは、[Docker Hub](https://docs.docker.com/docker-hub/) をご利用いただけます。
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
@@ -69,7 +67,7 @@ docker login myregistry.azurecr.io
 いったんログインすると Docker によって資格情報がキャッシュに格納されるため、アプリ ID を覚えておく必要はありません。
 
 > [!TIP]
-> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
+> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
 >
 
 ## <a name="admin-account"></a>管理者アカウント

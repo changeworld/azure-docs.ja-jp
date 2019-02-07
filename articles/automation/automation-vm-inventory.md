@@ -7,19 +7,19 @@ ms.subservice: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 03/30/2018
+ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fabaa2be850e5b15f10fc78adb14dfd5c112906
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426048"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765383"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
-Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
+Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 コンピューター上のソフトウェア、ファイル、Linux デーモン、Windows サービス、Windows レジストリ キーのインベントリを収集し、表示することができます。 この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 443bf5694515720b1b865c310e70ca9c45add262
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465590"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733123"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -79,7 +79,7 @@ HTTP Status 429,
 
 累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `DocumentClientException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む DocumentClientException が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

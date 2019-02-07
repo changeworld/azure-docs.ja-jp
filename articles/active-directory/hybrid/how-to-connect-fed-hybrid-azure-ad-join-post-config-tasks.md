@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 393a649d79037623f66a8c55ba896b6ac4c77b15
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a8c3a586835a0eb8cdcfffaddaa771ffc161b7fc
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164233"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495566"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 

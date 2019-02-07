@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: dda4f68046b81d96cfe92d5e8b09eab23df0003b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e26ae189b6b0bdcbfdcf225772cb3fd0361abca2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846313"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698991"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -140,7 +140,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
   ```azurecli
   az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
   ```
-3. バックエンド サブネット用に追加のアドレス空間を作成します。 この手順では、先ほど作成したアドレス空間と追加するアドレス空間の両方を指定することに注意してください。 これは、[az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_update) コマンドによって前の設定が上書きされるためです。 このコマンドを使用する際は、必ずすべてのアドレス プレフィックスを指定するようにしてください。
+3. バックエンド サブネット用に追加のアドレス空間を作成します。 この手順では、先ほど作成したアドレス空間と追加するアドレス空間の両方を指定することに注意してください。 これは、[az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) コマンドによって前の設定が上書きされるためです。 このコマンドを使用する際は、必ずすべてのアドレス プレフィックスを指定するようにしてください。
 
   ```azurecli
   az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -384,5 +384,5 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ## <a name="next-steps"></a>次の手順
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](https://docs.microsoft.com/azure/)を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e6d95d44dbfe2d66189be5103552d841ccbdf690
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117420"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729525"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
 デバイスとセンサーによって送信されるテレメトリ データが、IoT ソリューションのバックボーンを形成します。 これらのさまざまなリソースを表し、場所のコンテキスト内でそれらを管理する方法は、IoT アプリの開発における主な考慮事項です。 Azure Digital Twins は、デバイスやセンサーと空間インテリジェンス グラフを統合することにより、IoT ソリューションの開発のプロセスを簡単にします。
 
-まず、空間グラフのルートに Azure IoT Hub のリソースを作成します。 IoT Hub のリソースにより、メッセージを送信するルート空間の下ですべてのデバイスが許可されます。 IoT ハブが作成されたら、Digital Twins のインスタンス内のセンサーにデバイスを登録します。 デバイスは、[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 経由で Digital Twins サービスにデータを送信することができます。
+まず、空間グラフのルートに Azure IoT Hub のリソースを作成します。 IoT Hub のリソースにより、メッセージを送信するルート空間の下ですべてのデバイスが許可されます。 IoT ハブが作成されたら、Digital Twins のインスタンス内のセンサーにデバイスを登録します。 デバイスは、[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 経由で Digital Twins サービスにデータを送信することができます。
 
 デバイスをオンボードする方法の詳しい手順については、[Digital Twins のデプロイと構成に関するチュートリアル](tutorial-facilities-setup.md)の記事をご覧ください。 手順の概要は次のとおりです。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466858"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749144"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux VM の作成と管理
 
@@ -40,7 +40,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
+[az group create](https://docs.microsoft.com/cli/azure/group) コマンドでリソース グループを作成します。 
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupVM --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドを使用します。 
+仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm) コマンドを使用します。 
 
 仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 次の例では、Ubuntu Server を実行する *myVM* という名前の VM を作成します。 VM には、*azureuser* という名前のユーザー アカウントが作成されます。また、既定のキーの場所 (*~/.ssh*) に SSH キーが存在しない場合は、SSH キーが生成されます。
 
@@ -98,7 +98,7 @@ exit
 
 Azure Marketplace には、VM の作成に使用できる多くのイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。 
 
-[az vm image list](/cli/azure/vm/image#az_vm_image_list) コマンドを使用して、よく使用されるイメージのリストを表示します。
+[az vm image list](/cli/azure/vm/image) コマンドを使用して、よく使用されるイメージのリストを表示します。
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -167,7 +167,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する
 
-特定の地域で利用可能な VM サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) コマンドを使用します。 
+特定の地域で利用可能な VM サイズのリストを確認するには、[az vm list-sizes](/cli/azure/vm) コマンドを使用します。 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -198,7 +198,7 @@ az vm list-sizes --location eastus --output table
 
 ### <a name="create-vm-with-specific-size"></a>サイズを指定して VM を作成する
 
-上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に `--size` 引数を付けて [az vm create](/cli/azure/vm#az_vm_create) を使用することで指定できます。 
+上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に `--size` 引数を付けて [az vm create](/cli/azure/vm) を使用することで指定できます。 
 
 ```azurecli-interactive 
 az vm create \
@@ -217,12 +217,12 @@ az vm create \
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-VM のサイズを変更する前に、現在の Azure クラスターで目的のサイズを利用可能であるか確認します。 [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) コマンドでは、サイズのリストが返されます。 
+VM のサイズを変更する前に、現在の Azure クラスターで目的のサイズを利用可能であるか確認します。 [az vm list-vm-resize-options](/cli/azure/vm) コマンドでは、サイズのリストが返されます。 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-目的のサイズが使用可能な場合は電源を入れた状態で VM のサイズを変更できます。ただし、この操作中に再起動が行われます。 [az vm resize]( /cli/azure/vm#az_vm_resize) コマンドを使用してサイズ変更を実行します。
+目的のサイズが使用可能な場合は電源を入れた状態で VM のサイズを変更できます。ただし、この操作中に再起動が行われます。 [az vm resize]( /cli/azure/vm) コマンドを使用してサイズ変更を実行します。
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
@@ -264,7 +264,7 @@ Azure VM は、次のいずれかの電源状態になります。 この状態�
 
 ### <a name="find-the-power-state"></a>電源の状態を確認する
 
-特定の VM の状態を取得するには、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
+特定の VM の状態を取得するには、[az vm get-instance-view](/cli/azure/vm) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 
 ```azurecli-interactive 
 az vm get-instance-view \

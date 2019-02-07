@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171458"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813349"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
 ASP.NET Core Web フロント エンドとステートフルなバックエンドを持つ Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Service Fabric .NET クイック スタート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) のマニフェストに基づいています。
@@ -28,8 +28,8 @@ ASP.NET Core Web フロント エンドとステートフルなバックエン�
 |Manifest|機能|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [リソース ガバナンス](service-fabric-resource-governance.md)、[ローカル管理者アカウントとしてサービスを実行する](service-fabric-application-runas-security.md)、[すべてのサービス コード パッケージに既定のポリシーを適用する](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[ユーザーとグループのプリンシパルを作成する](service-fabric-application-runas-security.md)、サービス インスタンス間でデータ パッケージを共有する、[サービス エンドポイントをオーバーライドする](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|[FrontEndService サービス マニフェスト](#frontendservice-service-manifest)| [サービスの起動時にスクリプトを実行する](service-fabric-run-script-at-service-startup.md)、[HTTPS エンドポイントを定義する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
-|[BackEndService サービス マニフェスト](#backendservice-service-manifest)| [構成パッケージを宣言する](service-fabric-application-and-service-manifests.md)、[データ パッケージを宣言する](service-fabric-application-and-service-manifests.md)、[エンドポイントを構成する](service-fabric-service-manifest-resources.md)| 
+|FrontEndService サービス マニフェスト| [サービスの起動時にスクリプトを実行する](service-fabric-run-script-at-service-startup.md)、[HTTPS エンドポイントを定義する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
+|BackEndService サービス マニフェスト| [構成パッケージを宣言する](service-fabric-application-and-service-manifests.md)、[データ パッケージを宣言する](service-fabric-application-and-service-manifests.md)、[エンドポイントを構成する](service-fabric-service-manifest-resources.md)| 
 
 特定の XML 要素の詳細については、「[アプリケーション マニフェスト要素](#application-manifest-elements)」、「[VotingWeb サービス マニフェスト要素](#votingweb-service-manifest-elements)」、および「[VotingData サービス マニフェスト要素](#votingdata-service-manifest-elements)」を参照してください。
 

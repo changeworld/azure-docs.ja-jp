@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
-ms.subservice: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 42a32562eccc86d2516af14a529967a08108c94c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d3d279b8bd3bfaf26e5e173f71e202bbfb89834d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155291"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767564"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。

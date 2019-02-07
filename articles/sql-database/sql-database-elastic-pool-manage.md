@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 38f0d9cc6f507aa7d521aba0ff737f7bbaf2b211
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2a719fcbe2180e366060fba11bf64ad9770aa672
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468123"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756123"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
 
@@ -39,7 +39,7 @@ ms.locfileid: "55468123"
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell:エラスティック プールとプールされたデータベースの管理
 
-Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プール用の SQL Database サーバーを作成および管理する方法については、[SQL Database サーバーの作成と管理](sql-database-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell)に関する記事を参照してください。
+Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プール用の SQL Database サーバーを作成および管理する方法については、[SQL Database サーバーの作成と管理](sql-database-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell)に関する記事を参照してください。
 
 > [!TIP]
 > PowerShell のサンプル スクリプトについては、「[Create elastic pools and move databases between pools and out of a pool using PowerShell (エラスティック プールを作成し、PowerShell を使用してデータベースをプール間で、およびプールから外に移動する)](scripts/sql-database-move-database-between-pools-powershell.md)」および「[Use PowerShell to monitor and scale a SQL elastic pool in Azure SQL Database (PowerShell を使用して、Azure SQL Database 内の SQL エラスティック プールを監視およびスケーリングする)](scripts/sql-database-monitor-and-scale-pool-powershell.md)」を参照してください。
@@ -79,7 +79,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL:プールされたデータベースの管理
 
-Transact-SQL を使用して既存のエラスティック プール内のデータベースを作成および移動するか、または SQL Database エラスティック プールに関する情報を返すには、次の T-SQL コマンドを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 T-SQL を使用してファイアウォール ルールを作成および管理する方法については、[Transact-SQL を使用したファイアウォール ルールの管理](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql)に関する記事を参照してください。
+Transact-SQL を使用して既存のエラスティック プール内のデータベースを作成および移動するか、または SQL Database エラスティック プールに関する情報を返すには、次の T-SQL コマンドを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 T-SQL を使用してファイアウォール ルールを作成および管理する方法については、[Transact-SQL を使用したファイアウォール ルールの管理](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > Transact-SQL を使用して Azure SQL Database エラスティック プールを作成、更新、または削除するすることはできません。 データベースをエラスティック プールに追加または削除したり、DMV を使用して既存のエラスティック プールに関する情報を返したりすることができます。

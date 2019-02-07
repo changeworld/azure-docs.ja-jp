@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fdbae70718ad62f96dda85e2d9574c7ec2d5ef23
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021868"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561095"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "54021868"
 
 
 > [!NOTE]
-> この記事で説明されている統合は、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に依存しています。 サブスクリプションが Event Grid リソース プロバイダーに登録されていることを確認してください。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。
+> この記事で説明されている統合は、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に依存しています。 サブスクリプションが Event Grid リソース プロバイダーに登録されていることを確認してください。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -67,7 +67,7 @@ ms.locfileid: "54021868"
 
 次の表に、イベントベースのトリガーに関連するスキーマ要素の概要を示します。
 
-| **JSON 要素** | **説明** | **種類** | **使用できる値** | **必須** |
+| **JSON 要素** | **説明** | **Type** | **使用できる値** | **必須** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **scope** | ストレージ アカウントの Azure Resource Manager リソース ID。 | String | Azure Resource Manager ID | はい |
 | **events** | このトリガーを起動するイベントの種類。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | はい、これらの値の任意の組み合わせが必須です。 |

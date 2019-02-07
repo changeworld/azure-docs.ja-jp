@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 6a4dedc2478b2f8c5fa754e3736dbfb983cfb7a2
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 1b772fdbda8e58db9414e09ef3ef7c98fc9f86b8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079819"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486981"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
 [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を契約されているお客様の場合、EA (MS-AZR-0017P) および EA Dev/Test (MS-AZR-0148P) サブスクリプションをプログラミングによって作成できます。 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 
 この API から Azure サブスクリプションを作成した場合は、お客様が Microsoft または正規の販売代理店と締結した Microsoft Azure サービスの契約によって、サブスクリプションが統制されます。 詳細については、「[Microsoft Azure の法的情報](https://azure.microsoft.com/support/legal/)」を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

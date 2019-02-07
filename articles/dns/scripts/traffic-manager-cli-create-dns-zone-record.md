@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5015bd59a417481303c6ef2156feec9092a95a5b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 59ec8d4f93b18469818c9ead2e965679e41360ae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464597"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694654"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI スクリプトの例: DNS ゾーンとレコードの作成
 
@@ -76,7 +76,7 @@ az group delete -n myResourceGroup
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Azure DNS ゾーンを作成します。 |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | DNS ゾーンに *A* レコードを追加します。 |
-| [az network dns record-set list](/cli/azure/network/dns/record-set#az-network-dns-record-set-a-list) | DNS ゾーン内のすべての *A* レコード セットを一覧表示します。 |
+| [az network dns record-set list](/cli/azure/network/dns/record-set) | DNS ゾーン内のすべての *A* レコード セットを一覧表示します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

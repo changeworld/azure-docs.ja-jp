@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: ed7242a254064ceada05ed40a88e8f2ebabdf57a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251233"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662960"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
 
@@ -110,12 +110,11 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 ```azurepowershell
 $SubscriptionID = "<Your Azure Subscription ID>"
 $ResourceGroupName = "<New Azure Resource Group Name>"
-$Location = "WEST US 2"
+$Location = "westus2"
 
 $StorageAccountName = "<New Azure Storage Account Name>"
 $containerName = "<New Azure Blob Container Name>"
 
-Connect-AzAccount
 Select-AzSubscription -SubscriptionId $SubscriptionID
 
 # Create resource group
@@ -123,11 +122,11 @@ New-AzResourceGroup -name $ResourceGroupName -Location $Location
 
 # Create default storage account
 New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
-  -Name StorageAccountName `
+  -Name $StorageAccountName `
   -Location $Location `
   -SkuName Standard_LRS `
-  -Kind StorageV2 
-  -HierarchialNamespace $True
+  -Kind StorageV2 `
+  -EnableHierarchicalNamespace $True
 
 # Create default blob containers
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value

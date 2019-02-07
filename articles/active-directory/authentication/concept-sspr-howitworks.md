@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4b636b78c3992c6647def47cf3005ceb41e0d5ba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475180"
+ms.locfileid: "55495294"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 

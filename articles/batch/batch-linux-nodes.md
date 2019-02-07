@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a841fae791648d179975c2a5330bb41d48d388dd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1e11f5cfcd80d3aa29530736a7e334c9af741322
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453554"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733724"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -350,6 +350,6 @@ GitHub の [azure-batch-samples][github_samples] リポジトリにある [Pytho
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
 [py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
-[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python#list-node-agent-skus
+[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

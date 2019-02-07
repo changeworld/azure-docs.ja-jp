@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475620"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731396"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのエクスポート ジョブの作成
 REST API を使用して Microsoft Azure Import/Export サービスのエクスポート ジョブを作成するには、次の手順を実行します。
@@ -45,21 +45,21 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 
 -   ストレージ アカウント内のすべての BLOB とスナップショットをエクスポートする。
 
- エクスポートする BLOB の指定方法について詳しくは、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) をご覧ください。
+ エクスポートする BLOB の指定方法について詳しくは、[Put Job](/rest/api/storageimportexport/jobs) をご覧ください。
 
 ## <a name="obtaining-your-shipping-location"></a>送付先を取得する
 エクスポート ジョブを作成する前に、[Get Location](https://portal.azure.com) または [List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。
 
 次の手順に従って、送付先を取得します。
 
--   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
+-   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts) 操作を使用して照会することができます。
 
 -   `Get Location` 操作を呼び出して、このストレージ アカウントを処理できる場所を取得します。
 
 -   場所の `AlternateLocations` プロパティにその場所自体が含まれていれば、その場所を使用できます。 そうでない場合は、別の場所を使用して `Get Location` 操作をもう一度呼び出します。 保守作業のために、元の場所が一時的に閉鎖されている場合もあります。
 
 ## <a name="creating-the-export-job"></a>エクスポート ジョブを作成する
- エクスポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出します。 次の情報を指定する必要があります。
+ エクスポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs) 操作を呼び出します。 次の情報を指定する必要があります。
 
 -   ジョブの名前。
 
@@ -82,10 +82,10 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 >  ドライブは、サポートされている配送サービスを通じて発送する必要があります。そうすることで、パッケージの追跡番号が提供されます。
 
 ## <a name="updating-the-export-job-with-your-package-information"></a>エクスポート ジョブのパッケージ情報を更新する
- 追跡番号を入手したら、[Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出して、ジョブの配送業者名や追跡番号を更新します。 オプションで、ドライブ数、返送先住所、および発送日を指定することもできます。
+ 追跡番号を入手したら、[Update Job Properties](/rest/api/storageimportexport/jobs) 操作を呼び出して、ジョブの配送業者名や追跡番号を更新します。 オプションで、ドライブ数、返送先住所、および発送日を指定することもできます。
 
 ## <a name="receiving-the-package"></a>パッケージを受け取る
- エクスポート ジョブの処理が完了したら、データが暗号化された状態で、ドライブが返送されます。 お客様は、[Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作呼び出すことで各ドライブの BitLocker キーを取得できます。 その後、そのキーを使用してドライブのロックを解除できます。 各ドライブのドライブ マニフェスト ファイルには、ドライブ上のファイルの一覧と、各ファイルの元の BLOB アドレスが含まれています。
+ エクスポート ジョブの処理が完了したら、データが暗号化された状態で、ドライブが返送されます。 お客様は、[Get Job](/rest/api/storageimportexport/jobs) 操作呼び出すことで各ドライブの BitLocker キーを取得できます。 その後、そのキーを使用してドライブのロックを解除できます。 各ドライブのドライブ マニフェスト ファイルには、ドライブ上のファイルの一覧と、各ファイルの元の BLOB アドレスが含まれています。
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

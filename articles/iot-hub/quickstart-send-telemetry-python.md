@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/07/2018
+ms.date: 01/22/2019
 ms.author: dobett
-ms.openlocfilehash: 98dea8d28834f722af13ee21cc075c612eb73f2a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 104be28d1b438dc862b2b8a2effd51be4b9b2bc9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243408"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510920"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 
@@ -113,7 +113,7 @@ IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エン�
 Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id MyPythonDevice --hub-name YourIoTHubName
+az iot hub monitor-events --hub-name YourIoTHubName --device-id MyPythonDevice 
 ```
 
 次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。

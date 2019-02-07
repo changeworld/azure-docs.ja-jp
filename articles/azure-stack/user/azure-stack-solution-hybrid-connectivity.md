@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 84e952514b88620af565cf7e9775c055476fb530
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247563"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752662"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack でハイブリッド クラウド接続を構成する
 
@@ -61,7 +61,7 @@ Azure Stack オペレーターが、App Service のデプロイ、プランと�
 ### <a name="azure"></a>Azure
 
  - Azure サブスクリプションをお持ちでない場合は、始める前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。 
- - Azure で [Web アプリ](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal)を作成します。 このチュートリアルで必要になるため、Web アプリの URL を書き留めておきます。
+ - Azure で [Web アプリ](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts)を作成します。 このチュートリアルで必要になるため、Web アプリの URL を書き留めておきます。
 
 ### <a name="azure-stack"></a>Azure Stack
 

@@ -10,12 +10,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 13454e7dfb18e4d0e87b9b041b53dbef155153a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd42a347de236de2e3374d7ac854779f4c222a00
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251641"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768148"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 仮想マシンの概要
 

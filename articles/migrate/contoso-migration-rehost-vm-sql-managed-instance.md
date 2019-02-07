@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826617"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694484"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Database Managed Instance にリホストする
 
@@ -173,7 +173,7 @@ Azure SQL Database Managed Instance を設定するため、Contoso には次の
 - サブネットにはユーザー定義のルーティング (UDR) ルート テーブルが必要です。 割り当てられている唯一のルートが 0.0.0.0/0 の次ホップ インターネットである必要があります。 
 - 省略可能なカスタム DNS: カスタム DNS が Azure 仮想ネットワークで指定されている場合、Azure の再帰的なリゾルバーの IP アドレス (168.63.129.16 など) をリストに追加する必要があります。 [Managed Instance のカスタム DNS の構成方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 - サブネットにサービス エンドポイント (ストレージまたは SQL) を関連付けることはできません。 仮想ネットワークではサービス エンドポイントを無効にする必要があります。
-- サブネットには 16 個以上の IP アドレスが必要です。 [Managed Instance サブネットのサイズを指定する方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances)。
+- サブネットには 16 個以上の IP アドレスが必要です。 [Managed Instance サブネットのサイズを指定する方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - Contoso のハイブリッド環境では、カスタム DNS 設定が必要です。 Contoso は、自社の 1 つ以上の Azure DNS サーバーを使用するように DNS 設定を構成します。 [DNS のカスタマイズの詳細については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>Managed Instance 用の仮想ネットワークを設定する
@@ -207,7 +207,7 @@ Contoso の管理者は仮想ネットワークを次のように設定します
 *さらにサポートが必要な場合*
 
 - [SQL Database Managed Instance の概要については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)。
-- [SQL Database Managed Instance 用の仮想ネットワークを作成する方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances)。
+- [SQL Database Managed Instance 用の仮想ネットワークを作成する方法については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)。
 - [ピアリングを設定する方法については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering)。
 - [Azure Active Directory DNS 設定を更新する方法については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)。
 
@@ -609,7 +609,7 @@ Contoso セキュリティ チームは、Azure VM と SQL Database Managed Inst
 
      ![Managed Instance のセキュリティ - 脅威の検出](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-VM のセキュリティに関する作業の詳細については、「[Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)」を参照してください。
+VM のセキュリティに関する作業の詳細については、「[Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)」を参照してください。
 
 ### <a name="bcdr"></a>BCDR
 

@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 292bcf5974f8c51f99a676786c66316e9cde0748
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215919"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492234"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>チュートリアル: Bot Framework 4.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 Node.js を使用すると、Language Understanding (LUIS) と統合されたチャット ボットを作成することができます。 このボットは、HomeAutomation アプリを使用してボット ソリューションを実装します。 このボットは、[Bot Framework バージョン](https://github.com/Microsoft/botbuilder-js) v4 と Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/)で作成します。
@@ -114,7 +114,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 6. bot.js ファイルを開き、`const results = await this.luisRecognizer.recognize(context);` を検索します。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。
 
-    ```nodejs
+   ```javascript
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -247,7 +247,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 1. ファイルの先頭で **[Supported LUIS Intents]\(サポートされている LUIS の意図)** セクションを見つけて、HomeAutomation の意図の定数を追加します。
 
-    ```nodejs
+   ```javascript
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -261,7 +261,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 2. 発話の LUIS の予測を受信する **isTurnInterrupted** を見つけて、結果をコンソールに出力するための行を追加します。
 
-    ```nodejs
+   ```javascript
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -309,7 +309,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 3. `DialogTurnStatus.empty` の場合の onTurn メソッドの switch ステートメントに、意図を追加します。
 
-    ```nodejs
+   ```javascript
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);

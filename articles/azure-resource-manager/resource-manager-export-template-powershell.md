@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: cca81bf3f5a46b32cc901a0ac6024eb7888685f7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0313266c9e9bf7814d4581dc04d70cf80e1f8172
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081607"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494716"
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>PowerShell を使用した Azure Resource Manager テンプレートのエクスポート
 
@@ -30,6 +30,8 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 * **リソース グループの現在の状態を表す生成済みのテンプレート**をエクスポートできます。 エクスポートしたテンプレートは、デプロイに使用したテンプレートに基づいていません。 代わりに、リソース グループの "スナップショット" または "バックアップ" であるテンプレートが作成されます。 エクスポートしたテンプレートにはハードコーディングされた多くの値が含まれ、おそらく、通常定義するのと同程度のパラメーターは含まれません。 このオプションは、同じリソース グループにリソースを再デプロイする場合に使います。 別のリソース グループにこのテンプレートを使うには、大幅な変更が必要になる場合があります。
 
 このトピックでは、両方の方法を説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-a-solution"></a>ソリューションのデプロイ
 

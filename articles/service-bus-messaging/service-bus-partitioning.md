@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: 48b7d7450503b27b5515e655be3f048f57c2238d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856589"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818075"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -39,7 +39,7 @@ Azure Service Bus でパーティション分割されたキューとトピッ�
 
 ### <a name="standard"></a>標準
 
-Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定した GB 数に対して 1 GB ごとにエンティティの 4 個のコピー (4 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 4 個であるため、最大キュー サイズは 5 \* 4 = 20 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
+Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定した GB 数に対して 1 GB ごとにエンティティの 16 個のコピー (16 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
 
 ### <a name="premium"></a>Premium
 

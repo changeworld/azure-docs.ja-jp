@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: dddcf9a07ffb03e9dfb1c6ac8f8cc544adc5f815
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6378a4000cb933e862b4df6b0538f9494d04ce2d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178921"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486692"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 

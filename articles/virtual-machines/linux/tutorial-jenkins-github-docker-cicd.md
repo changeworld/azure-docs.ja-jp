@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189869"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751125"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル:Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
 
@@ -69,7 +69,7 @@ runcmd:
   - service jenkins restart
 ```
 
-VM を作成する前に、[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
@@ -88,7 +88,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 VM が作成されて構成されるには､数分､時間がかかります｡
 
-VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm#az_vm_open_port) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
+VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -160,7 +160,7 @@ Jenkins との GitHub の統合をテストするには､フォークの変更�
 
 GitHub の Web UI に戻り、フォークしたレポジトリを選択して、**index.js** ファイルを選択します。 鉛筆アイコンを選択して、このファイルを編集し、6 行目を次のように変更します。
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 

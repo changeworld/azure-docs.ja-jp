@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 87dacdfa6df4021607953efd61fe9b4f49b30383
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402270"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756837"
 ---
 # <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 | ツール               | 設定     | 詳細                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell) |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
 | AdlCopy    | Azure Data Lake Analytics ユニット  |   [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (マッパー)   | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../data-factory/copy-activity-performance.md)                          |

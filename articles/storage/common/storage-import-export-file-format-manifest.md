@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463244"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692478"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export サービスのマニフェスト ファイルの形式
 ドライブ マニフェスト ファイルは、Azure Blob Storage の BLOB とインポートまたはエクスポート ジョブを構成するドライブ上のファイル間のマッピングを表します。 インポート操作の場合、マニフェスト ファイルはドライブの準備プロセスの一部として作成され、ドライブが Azure データ センターに送信される前にそのドライブに格納されます。 エクスポート操作の場合、マニフェストは Azure Import/Export サービスによって作成され、ドライブに保存されます。  
@@ -97,7 +97,7 @@ block-list ::=
 |`Drive`|入れ子になった XML 要素|各ドライブのマニフェストが含まれています。|  
 |`DriveId`|String|ドライブの一意のドライブ識別子です。 ドライブ識別子は、そのドライブのシリアル番号を照会して確認します。 ドライブのシリアル番号は通常、ドライブの外側にも印刷されています。 `DriveID` 要素は、マニフェスト ファイルで `BlobList` 要素の前に表示される必要があります。|  
 |`StorageAccountKey`|String|`ContainerSas` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連した Azure Storage アカウントのアカウント キーです。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  
-|`ContainerSas`|String|`StorageAccountKey` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。 形式については「[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)」をご覧ください。この要素は、エクスポート操作ではマニフェストから省略されます。|  
+|`ContainerSas`|String|`StorageAccountKey` が指定されていない場合に限り、インポート ジョブで必須となります。 ジョブに関連付けられている BLOB にアクセスするためのコンテナー SAS です。 形式については「[Put Job](/rest/api/storageimportexport/jobs)」をご覧ください。この要素は、エクスポート操作ではマニフェストから省略されます。|  
 |`ClientCreator`|String|XML ファイルを作成したクライアントを指定します。 この値は Import/Export サービスによって解釈されることはありません。|  
 |`BlobList`|入れ子になった XML 要素|インポート ジョブまたはエクスポート ジョブの 一部である BLOB の一覧が含まれています。 BLOB 一覧内の各 BLOB は、同じメタデータとプロパティを共有します。|  
 |`BlobList/MetadataPath`|String|省略可能。 インポート操作の BLOB 一覧で、BLOB に設定される既定のメタデータを含むディスク上のファイルの相対パスを指定します。 このメタデータは、必要に応じて BLOB ごとにオーバーライドできます。<br /><br /> この要素は、エクスポート操作ではマニフェストから省略されます。|  

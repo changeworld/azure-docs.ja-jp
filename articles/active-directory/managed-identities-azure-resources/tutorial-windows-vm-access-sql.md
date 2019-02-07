@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
-ms.openlocfilehash: a4e860d4207eebb993b26bb45e531a6be734c5fc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b655624b4bd611198eddcdcc79c75a52267b6dde
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167191"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756614"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -48,7 +48,7 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>SQL サーバーに対する Azure AD 認証を有効にする
 
-次の手順を使用して、[SQL サーバーに対する Azure AD 認証を構成](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)します。
+次の手順を使用して、[SQL サーバーに対する Azure AD 認証を構成](/azure/sql-database/sql-database-aad-authentication-configure)します。
 
 1.  Azure ポータルで、左側のナビゲーションから **[SQL サーバー]** を選択します。
 2.  Azure AD 認証で有効にする SQL サーバーをクリックします。

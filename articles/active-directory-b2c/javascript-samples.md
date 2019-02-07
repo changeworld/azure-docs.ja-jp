@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2a0fc7cc4e76c4a93f6ff71767d3074ea8ac6564
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168211"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729270"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
@@ -49,7 +49,7 @@ ms.locfileid: "55168211"
 
 JavaScript を使用して、アプリケーションのインターフェイスをカスタマイズするときに、次のガイドラインに従います。
 
-- `<a>` HTML 要素ではクリック イベントをバインドしないでください。 
+- `<a>` HTML 要素ではクリック イベントをバインドしないでください。
 - Azure AD B2C コードやコメントへの依存関係は使用しないでください。
 - Azure AD B2C の HTML 要素の順序や階層は変更しないでください。 UI 要素の順序を制御するには、Azure AD B2C のポリシーを使用します。
 - 任意の RESTful サービスを呼び出すことができますが、次の考慮事項があります。
@@ -113,9 +113,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>利用規約の追加 
+### <a name="add-terms-of-use"></a>利用規約の追加
 
-次のコードを、**[利用規約]** チェックボックスを組み込むページに含めます。 通常、このチェック ボックスは、ローカル アカウントのサインアップとソーシャル アカウント サインアップ ページで必要になります。  
+次のコードを、**[利用規約]** チェックボックスを組み込むページに含めます。 通常、このチェック ボックスは、ローカル アカウントのサインアップとソーシャル アカウント サインアップ ページで必要になります。
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -124,18 +124,18 @@ function addTermsOfUseLink() {
     if (!termsOfUseLabel) {
         return;
     }
-      
+
     // get the label text
     var termsLabelText = termsOfUseLabel.innerHTML;
-      
-    // create a new <a> element with the same inner text 
+
+    // create a new <a> element with the same inner text
     var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
     termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
 
-    // replace the label text with the new element 
+    // replace the label text with the new element
     termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
 }
 ```
@@ -145,4 +145,3 @@ function addTermsOfUseLink() {
 ## <a name="next-steps"></a>次の手順
 
 アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。
-

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b83542a11ce2351214ac8f15a6902d1a90f871ee
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c5cb5a821d9bae6841c3229155c69fd2aa20e13
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242265"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698311"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -53,7 +53,7 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、ま
     print(service.scoring_uri)
     ```
 
-* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) のリファレンス ドキュメントを参照してください。
+* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) のリファレンス ドキュメントを参照してください。
 
     ```python
     services = Webservice.list(ws)

@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 05dd112c3e2ac2ffde56dd7e355e1fe695968ed0
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e19f9acef256cdd0c690195bd56f971e3ec88c01
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078170"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494733"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
 [!INCLUDE [Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="understand-scope"></a>スコープを理解する
 

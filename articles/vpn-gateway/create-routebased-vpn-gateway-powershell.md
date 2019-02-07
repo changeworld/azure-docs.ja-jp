@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: 9460f184e3da6769048b30ca743169c5a6044bd0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431850"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55505531"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell を使用してルートベースの VPN ゲートウェイを作成します
 

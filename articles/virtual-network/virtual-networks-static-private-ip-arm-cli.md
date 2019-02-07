@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6e217194508feae3b227b5ef65b02d0305a22a7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 06016cf7a8ba10a9a8f49f90da99a26aaa072441
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852900"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695520"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "54852900"
 
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
 
-1. まだ行っていない場合は、最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。
+1. まだ行っていない場合は、最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールして構成し、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインします。
 
 2. [az network public-ip create](/cli/azure/network/public-ip) コマンドを使用して VM のパブリック IP を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
@@ -75,7 +75,7 @@ ms.locfileid: "54852900"
    * `--name`:パブリック IP の名前です。
    * `--location`:パブリック IP を作成する Azure リージョン。
 
-3. [az network nic create](/cli/azure/network/nic#az_network_nic_create) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
+3. [az network nic create](/cli/azure/network/nic) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
    
     ```azurecli
     az network nic create \
@@ -127,7 +127,7 @@ ms.locfileid: "54852900"
     * `--vnet-name`:NIC を作成する VNet の名前です。
     * `--subnet`:NIC を作成するためのサブネットの名前です。
 
-4. [azure vm create](/cli/azure/vm/nic#az_vm_nic_create) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+4. [azure vm create](/cli/azure/vm/nic) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
    
     ```azurecli
     az vm create \
@@ -155,7 +155,7 @@ ms.locfileid: "54852900"
     }
     ```
    
-   基本的な [az vm create](/cli/azure/vm#az_vm_create) パラメーター以外のパラメーター。
+   基本的な [az vm create](/cli/azure/vm) パラメーター以外のパラメーター。
 
    * `--nics`:VM が接続されている NIC の名前です。
    

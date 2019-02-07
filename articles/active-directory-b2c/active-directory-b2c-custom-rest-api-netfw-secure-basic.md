@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 061987105eac976e40a003a8108921ed0008630d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169163"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733690"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。 
+[関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。
 
-この記事では、RESTful サービスに HTTP 基本認証を追加して、B2C を含む検証済みのユーザーのみが API にアクセスできるようにします。 HTTP 基本認証では、ユーザーの資格情報 (アプリ ID とアプリ シークレット) をカスタム ポリシーに設定します。 
+この記事では、RESTful サービスに HTTP 基本認証を追加して、B2C を含む検証済みのユーザーのみが API にアクセスできるようにします。 HTTP 基本認証では、ユーザーの資格情報 (アプリ ID とアプリ シークレット) をカスタム ポリシーに設定します。
 
 詳細については、「[Basic authentication in ASP.NET web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)」(ASP.NET Web API における基本認証) を参照してください。
 
@@ -33,7 +33,7 @@ ms.locfileid: "55169163"
 ## <a name="step-1-add-authentication-support"></a>手順 1:認証サポートの追加
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>手順 1.1: アプリケーション設定をプロジェクトの web.config ファイルに追加する
-1. 作成済みの Visual Studio プロジェクトを開きます。 
+1. 作成済みの Visual Studio プロジェクトを開きます。
 
 2. 次のアプリケーション設定を web.config ファイルの `appSettings` 要素の下に追加します。
 
@@ -205,7 +205,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
         {
             public void Configuration(IAppBuilder app)
             {
-                    app.Use<ClientAuthMiddleware>();
+                app.Use<ClientAuthMiddleware>();
             }
         }
     }
@@ -220,7 +220,7 @@ Controllers\IdentityController.cs を開き、`[Authorize]` タグをコント�
 プロジェクトを発行するには、ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックし、**[発行]** を選択します。
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>手順 3:RESTful サービス アプリのアプリ ID とアプリ シークレットを Azure AD B2C に追加する
-RESTful サービスがクライアント ID (ユーザー名) とシークレットで保護された後、Azure AD B2C テナントに資格情報を格納する必要があります。 RESTful サービスを呼び出すときに、カスタム ポリシーによって資格情報が提供されます。 
+RESTful サービスがクライアント ID (ユーザー名) とシークレットで保護された後、Azure AD B2C テナントに資格情報を格納する必要があります。 RESTful サービスを呼び出すときに、カスタム ポリシーによって資格情報が提供されます。
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>手順 3.1: RESTful サービスのクライアント ID を追加する
 1. Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\)** > **[Identity Experience Framework]** の順に選択します。
@@ -275,7 +275,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. `<Metadata>` 要素の終了直後に、次の XML スニペットを追加します。 
+5. `<Metadata>` 要素の終了直後に、次の XML スニペットを追加します。
 
     ```xml
     <CryptographicKeys>

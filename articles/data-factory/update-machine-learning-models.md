@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: e2aa82143b8e58e36509ee5d3adf99b34be89c69
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f6d5f2d7df483e0884779c3eac6a77f976e173c3
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076614"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567038"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
@@ -57,19 +57,15 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 }
 ```
 
-
-
-
 | プロパティ                      | 説明                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | パイプラインのアクティビティの名前。     | [はい]      |
+| name                          | パイプラインのアクティビティの名前。     | はい      |
 | description                   | アクティビティの動作を説明するテキスト。  | いいえ        |
 | type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
 | linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
 | trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | [はい]      |
 | trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | [はい]      |
 | trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | [はい]      |
-
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 
@@ -114,14 +110,14 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000  000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
             "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint1"
+                "type": "SecureString",
+                "value": "APIKeyOfEndpoint1"
             },
             "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview",
             "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
             "servicePrincipalKey": {
-            "type": "SecureString",
-            "value": "servicePrincipalKey"
+                "type": "SecureString",
+                "value": "servicePrincipalKey"
             },
             "tenant": "mycompany.com"
         }
@@ -147,7 +143,7 @@ Azure Storage には次のデータが格納されています。
 ```JSON
 {
     "name": "StorageLinkedService",
-      "properties": {
+    "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=name;AccountKey=key"
@@ -162,13 +158,13 @@ Azure Storage には次のデータが格納されています。
 ```JSON
 {
     "name": "trainingEndpoint",
-      "properties": {
+    "properties": {
         "type": "AzureML",
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--training experiment--/jobs",
-              "apiKey": "myKey"
+            "apiKey": "myKey"
         }
-      }
+    }
 }
 ```
 
@@ -255,9 +251,9 @@ Azure Storage には次のデータが格納されています。
                 "typeProperties": {
                     "trainedModelName": "ADFV2Sample Model [trained model]",
                     "trainedModelLinkedServiceName": {
-                                "type": "LinkedServiceReference",
-                                "referenceName": "StorageLinkedService"
-                            },
+                        "type": "LinkedServiceReference",
+                        "referenceName": "StorageLinkedService"
+                    },
                     "trainedModelFilePath": "azuremltesting/output/newModelForArm.ilearner"
                 },
                 "dependsOn": [
@@ -265,8 +261,7 @@ Azure Storage には次のデータが格納されています。
                         "activity": "amlbeGetilearner",
                         "dependencyConditions": [ "Succeeded" ]
                     }
-                 ]
-
+                ]
             }
         ]
     }

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e0afa4566896af98932ccd7a99ecf109ff2e56e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 35f158b97bdae897cd851463449f1f45e5e35867
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150859"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498184"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル:単一の AD フォレスト環境をクラウドに統合する
 

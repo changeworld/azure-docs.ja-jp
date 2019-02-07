@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 5d03b7075b1ae590c400eb96525ab84d8487fa3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7b7a239d6c96d1d5b257828ebd49c25c5bafc827
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840097"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700810"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 
@@ -229,7 +229,7 @@ _deployment-container-image-name_ パラメーターは、Function App を作成
 
 関数が既定のストレージ アカウントに接続するには接続文字列が必要です。 カスタム イメージをプライベート コンテナー アカウントに発行するときは、[ENV 命令](https://docs.docker.com/engine/reference/builder/#env)などを使用して、代わりにこれらのアプリケーション設定を Dockerfile の環境変数として設定する必要があります。
 
-ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
+ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

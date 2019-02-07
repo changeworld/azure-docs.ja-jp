@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 319803a8b6c07de6efafa80789248c60a9cdad06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241443"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695238"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>CLI で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
@@ -52,8 +52,8 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | ディスク名とリソース グループ名を使用して、マネージド ディスクのプロパティを取得します。 Id プロパティは、マネージド ディスクを新しい VM に接続するために使用されます。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk) | ディスク名とリソース グループ名を使用して、マネージド ディスクのプロパティを取得します。 Id プロパティは、マネージド ディスクを新しい VM に接続するために使用されます。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 管理 OS ディスクを使用して VM を作成する |
 ## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

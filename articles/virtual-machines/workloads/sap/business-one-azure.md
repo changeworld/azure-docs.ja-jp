@@ -3,7 +3,7 @@ title: Azure Virtual Machines 上の SAP Business One | Microsoft Docs
 description: Azure 上の SAP Business One。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949535"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745352"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。

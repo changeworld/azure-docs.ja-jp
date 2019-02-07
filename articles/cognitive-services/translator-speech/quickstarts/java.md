@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1fb6eeb30b8ba348ce90916955bd8ffbb2cbb7c5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0e9545a6bc8ec56bc5ae9c9532d80822bfe3505
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459172"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753131"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート:Translator Speech API (Java) 
 <a name="HOLTop"></a>
@@ -39,7 +39,7 @@ ms.locfileid: "55459172"
 - [javax-websocket-client-impl-9.4.11.v20180605.jar (以降)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar (以降)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) から取得できます。
+下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 このような .wav ファイルは、[Text to Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) から取得できます。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft Translator Speech API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 

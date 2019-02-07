@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 7fbbcefde583d7e464633d9011e591b4c9bf6f65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2787353230408d6374db36eb5621f98285245364
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460320"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766522"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -201,7 +201,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 * PowerShell を使用し、ストレージ メトリックのデータを有効にして表示する方法については、「[Azure のストレージ メトリックの有効化とメトリック データの表示](storage-enable-and-view-metrics.md#how-to-enable-metrics-using-powershell)」を参照してください。
 
-* PowerShell を使用してストレージ ログを有効にする方法とログ データを取得する方法については、「[PowerShell を使用してストレージ ログを有効にする方法](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#how-to-enable-storage-logging-using-powershell)」および「[ストレージ ログのログ データの検索](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#finding-your-storage-logging-log-data)」をご覧ください。
+* PowerShell を使用してストレージ ログを有効にする方法とログ データを取得する方法については、「[PowerShell を使用してストレージ ログを有効にする方法](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)」および「[ストレージ ログのログ データの検索](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)」をご覧ください。
 
 * ストレージ メトリックとストレージ ログを使用してストレージの問題のトラブルシューティングを行う方法の詳細については、 [Microsoft Azure Storage の監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)に関するページを参照してください。
 

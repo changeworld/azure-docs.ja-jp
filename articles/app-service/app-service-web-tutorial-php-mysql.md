@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d26f51d05ef97e15c47183e87f44aecec247723c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8c3ba3a077920d58a94fe3f4df1b0a81039439d5
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722330"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747647"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -361,7 +361,7 @@ Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/ap
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](http://www.php.net/manual/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](http://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [

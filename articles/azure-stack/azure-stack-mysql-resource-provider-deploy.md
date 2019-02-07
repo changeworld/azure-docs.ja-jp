@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 118eeadb3611f6f176bd866f98c52545e4e6d7e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: f89bd59d321a7d2ca8a50e23dab246c966f6fa29
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247631"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770233"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 

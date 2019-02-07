@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: bryanla
-ms.openlocfilehash: 261a735a94aca23fe10bdab461a9619250f67f41
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 794e22b6fce77c0564a4db1b802c81513a36542f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884983"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747239"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -49,38 +49,41 @@ ms.locfileid: "54884983"
          Message = "Your application description page.";
          int retries = 0;
          bool retry = false;
-         do 
+         try
          {
-             try
-             {
-                 AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-                 KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                 var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
-                         .ConfigureAwait(false);
-                 Message = secret.Value;
-             }
-             /// <exception cref="KeyVaultErrorException">
-             /// Thrown when the operation returned an invalid status code
-             /// </exception>
-             catch (KeyVaultErrorException keyVaultException)
-             {
-                 Message = keyVaultException.Message;
-                 if ((int)keyVaultException.Response.StatusCode == 429)
-                 {
-                    retry = true;
+             /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
+             AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+             KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+             var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
+                     .ConfigureAwait(false);
+             Message = secret.Value;
 
-                    long waitTime = Math.Min(getWaitTime(retries), 2000000);
-                    Thread.Sleep(new TimeSpan(waitTime));
-                }
-             }
-         } while(retry && (retries++ < 10));         
-         
+             /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
+             do
+             {
+                 long waitTime = Math.Min(getWaitTime(retries), 2000000);
+                 secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
+                     .ConfigureAwait(false);
+                 retry = false;
+             } 
+             while(retry && (retries++ < 10));
+         }
+         /// <exception cref="KeyVaultErrorException">
+         /// Thrown when the operation returned an invalid status code
+         /// </exception>
+         catch (KeyVaultErrorException keyVaultException)
+         {
+             Message = keyVaultException.Message;
+             if((int)keyVaultException.Response.StatusCode == 429)
+                 retry = true;
+         }
      }
 
-     // This method implements exponential backoff in case of 429 errors from Azure Key Vault
+     // This method implements exponential backoff incase of 429 errors from Azure Key Vault
      private static long getWaitTime(int retryCount)
      {
-        return (long)Math.Pow(2, retryCount) * 100L;
+         long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
+         return waitTime;
      }
 ```
 

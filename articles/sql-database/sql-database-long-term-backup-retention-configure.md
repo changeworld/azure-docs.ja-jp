@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 44797227c0bff745575318fcb5c19cb187862ac0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 01/07/2019
+ms.openlocfilehash: 8f88579a5fcdb96622a32c5b55bf8fee744d916e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299403"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567181"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
@@ -27,6 +27,7 @@ Azure SQL Database では、[長期的なバックアップ保有期間](sql-dat
 > [Azure SQL Database Managed Instance](sql-database-managed-instance.md) は現在長期的なバックアップ保有期間をサポートしていません。
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Azure Portal を使用して長期保存ポリシーを構成し、バックアップを復元する
+
 以下のセクションでは、Azure Portal を使用して長期保存を構成し、長期保存のバックアップを表示し、長期保存からバックアップを復元する方法について説明します。
 
 ### <a name="configure-long-term-retention-policies"></a>長期保存ポリシーを構成する

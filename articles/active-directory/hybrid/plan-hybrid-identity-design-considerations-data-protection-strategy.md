@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 4bc79e9492f4f1c27bd374949bea4f17e4475139
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a3f72b40a25d1504188956bc61f9c0aa91fe943e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154043"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497385"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。

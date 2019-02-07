@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0b9f6e440140edbec59d1bf837a0dfb16ab44d5f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 10e8a7dd256f796160b81b8ec1f566c5ed7e4cad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323424"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750207"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -124,7 +124,7 @@ az storage blob upload-batch \
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.3.1"
+      "version": "1.3.2"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-このタスクにより、*dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 例: 
+このタスクにより、*dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 例: 
 
 ```azurecli-interactive
 az storage blob download-batch \

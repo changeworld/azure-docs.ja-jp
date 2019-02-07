@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1aac294eef90649bb05f1af9856760b2f7e03f2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 01ac3feb4f3479c77b73f8bb2fa694bd7cf22ce1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465012"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817650"
 documentType: LandingData
 title: Azure SQL Database - スケーラビリティ
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 

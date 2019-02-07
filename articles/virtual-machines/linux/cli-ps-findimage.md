@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 443020bd6ca024cb5a04b2a8be5b7cbe7122efac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169692"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734141"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける
 
@@ -35,7 +35,7 @@ ms.locfileid: "55169692"
 
 ## <a name="list-popular-images"></a>よく使われるイメージを一覧表示する
 
-`--all` オプションを指定せずに [az vm image list](/cli/azure/vm/image#az_vm_image_list) コマンドを実行して、Azure Marketplace でよく使われる VM イメージの一覧を確認します。 たとえば、次のコマンドを実行して、よく使用されるイメージのキャッシュされた一覧を表形式で表示します。
+`--all` オプションを指定せずに [az vm image list](/cli/azure/vm/image) コマンドを実行して、Azure Marketplace でよく使われる VM イメージの一覧を確認します。 たとえば、次のコマンドを実行して、よく使用されるイメージのキャッシュされた一覧を表形式で表示します。
 
 ```azurecli
 az vm image list --output table
@@ -152,7 +152,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 
 ## <a name="navigate-the-images"></a>イメージの移動
  
-任意の場所にあるイメージを検索する別の方法として、[az vm image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers)、[az vm image list-offers](/cli/azure/vm/image)、および[az vm image list-skus](/cli/azure/vm/image#az_vm_image_list_skus) コマンドを連続で実行します。 これらのコマンドを使用する際は、以下の値を決定します。
+任意の場所にあるイメージを検索する別の方法として、[az vm image list-publishers](/cli/azure/vm/image)、[az vm image list-offers](/cli/azure/vm/image)、および[az vm image list-skus](/cli/azure/vm/image) コマンドを連続で実行します。 これらのコマンドを使用する際は、以下の値を決定します。
 
 1. イメージの発行元を一覧表示する。
 2. 指定された発行元について、そのプランを一覧表示する。
@@ -278,7 +278,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-これで、URN 値をメモして、使用するイメージを正確に選べるようになりました。 [az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成するときに、この値を `--image` パラメーターを使用して渡します。 必要に応じて URN のバージョン番号を "latest" に置き換えられることに注意してください。 このバージョンは常に、イメージの最新バージョンです。 
+これで、URN 値をメモして、使用するイメージを正確に選べるようになりました。 [az vm create](/cli/azure/vm) コマンドで VM を作成するときに、この値を `--image` パラメーターを使用して渡します。 必要に応じて URN のバージョン番号を "latest" に置き換えられることに注意してください。 このバージョンは常に、イメージの最新バージョンです。 
 
 Resource Manager テンプレートを使って VM をデプロイする場合は、`imageReference` プロパティでイメージ パラメーターを個別に設定します。 [テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
@@ -337,7 +337,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 
 ### <a name="accept-the-terms"></a>使用条件への同意
 
-ライセンス条項を表示し、それらに同意するには、[az vm image accept-terms](/cli/azure/vm/image?#az_vm_image_accept_terms) コマンドを使用します。 使用条件に同意すると、サブスクリプション内で、プログラムによるデプロイが有効になります。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 例: 
+ライセンス条項を表示し、それらに同意するには、[az vm image accept-terms](/cli/azure/vm/image?) コマンドを使用します。 使用条件に同意すると、サブスクリプション内で、プログラムによるデプロイが有効になります。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 例: 
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest

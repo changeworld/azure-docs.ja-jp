@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 98ae15307b6d2859b583042ca788b825890a40be
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238773"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766505"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 

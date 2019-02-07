@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826175"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563934"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -146,7 +146,7 @@ IoT Hub では、[X.509](iot-hub-devguide-security.md#supported-x509-certificate
 
 次の Node.js スニペットは、`resourceUri, signingKey, policyName, expiresInMins` の入力からトークンを計算する **generateSasToken** という名前の関数を示しています。 以降のセクションでは、さまざまなトークンの使用例の各種入力を初期化する方法について詳しく説明します。
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -260,7 +260,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 上の Node.js 関数を使用した例を次に示します。
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var deviceKey ="...";
 
@@ -294,7 +294,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 上の Node.js 関数を使用した例を次に示します。
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var policyName = 'device';
 var policyKey = '...';
@@ -328,7 +328,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 * ポリシー名: `registryRead`
 * 任意の有効期間
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices";
 var policyName = 'registryRead';
 var policyKey = '...';

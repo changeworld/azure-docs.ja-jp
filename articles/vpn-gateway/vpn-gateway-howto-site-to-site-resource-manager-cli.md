@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: f7c07dbffaa179434fd30b2fdbc92fa661cdc516
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412123"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730358"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成
 
@@ -101,7 +101,7 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
-ゲートウェイ サブネットを作成するには、[azure network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) コマンドを使用します。
+ゲートウェイ サブネットを作成するには、[azure network vnet subnet create](/cli/azure/network/vnet/subnet) コマンドを使用します。
 
 ```azurecli-interactive
 az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
@@ -128,7 +128,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 
 
 VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
-動的パブリック IP アドレスを要求するには、[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) コマンドを使用します。
+動的パブリック IP アドレスを要求するには、[az network public-ip create](/cli/azure/network/public-ip) コマンドを使用します。
 
 ```azurecli-interactive
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
@@ -144,7 +144,7 @@ az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocati
 * *--vpn-type* には、*RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *PolicyBased* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。 設定は、接続するデバイスの要件によって異なります。 VPN Gateway の種類の詳細については、「[VPN ゲートウェイの構成設定について](vpn-gateway-about-vpn-gateway-settings.md#vpntype)」を参照してください。
 * 使用するゲートウェイ SKU を選択します。 特定の SKU には構成の制限があります。 詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
-VPN ゲートウェイの作成には、[az network vnet-gateway create](/cli/azure/network/vnet-gateway#az_network_vnet_gateway_create) コマンドを使用します。 このコマンドの実行時に "--no-wait" パラメーターを使用した場合には、フィードバックや出力が表示されなくなります。 このパラメーターは、ゲートウェイをバックグラウンドで作成するためのものです。 ゲートウェイの作成には約 45 分かかります。
+VPN ゲートウェイの作成には、[az network vnet-gateway create](/cli/azure/network/vnet-gateway) コマンドを使用します。 このコマンドの実行時に "--no-wait" パラメーターを使用した場合には、フィードバックや出力が表示されなくなります。 このパラメーターは、ゲートウェイをバックグラウンドで作成するためのものです。 ゲートウェイの作成には約 45 分かかります。
 
 ```azurecli-interactive
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
@@ -155,7 +155,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 この手順では、VPN デバイスを構成します。 VPN デバイスを構成する際に、次の情報が必要になります。
 
 - 共有キー。 サイト間 VPN 接続を作成するときにも、これと同じ共有キーを指定します。 ここで紹介している例では、基本的な共有キーを使用しています。 実際には、もっと複雑なキーを生成して使用することをお勧めします。
-- 仮想ネットワーク ゲートウェイのパブリック IP アドレス。 パブリック IP アドレスは、Azure Portal、PowerShell、または CLI を使用して確認できます。 仮想ネットワーク ゲートウェイのパブリック IP アドレスを探すときには、[az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list) コマンドを使用します。 読みやすいように、出力は書式設定され、パブリック IP の一覧が表形式で表示されます。
+- 仮想ネットワーク ゲートウェイのパブリック IP アドレス。 パブリック IP アドレスは、Azure Portal、PowerShell、または CLI を使用して確認できます。 仮想ネットワーク ゲートウェイのパブリック IP アドレスを探すときには、[az network public-ip list](/cli/azure/network/public-ip) コマンドを使用します。 読みやすいように、出力は書式設定され、パブリック IP の一覧が表形式で表示されます。
 
   ```azurecli-interactive
   az network public-ip list --resource-group TestRG1 --output table
@@ -169,10 +169,10 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 
 仮想ネットワーク ゲートウェイとオンプレミス VPN デバイスとの間にサイト間 VPN 接続を作成します。 共有キーの値は VPN デバイスの構成された共有キーの値と一致する必要があるため、特に注意してください。
 
-接続の作成には、[az network vpn-connection create](/cli/azure/network/vpn-connection#az_network_vpn_connection_create) コマンドを使用します。
+接続の作成には、[az network vpn-connection create](/cli/azure/network/vpn-connection) コマンドを使用します。
 
 ```azurecli-interactive
-az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
+az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
 ```
 
 しばらくすると、接続が確立されます。
@@ -195,7 +195,7 @@ az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --v
 
 ## <a name="next-steps"></a>次の手順
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。
 * 高可用性のアクティブ/アクティブ接続については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」を参照してください。

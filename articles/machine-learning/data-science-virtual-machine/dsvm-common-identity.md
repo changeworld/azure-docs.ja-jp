@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452857"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754602"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -31,7 +31,7 @@ Active Directory は一般的な ID プロバイダーであり、サービス�
 
 ID を管理する Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 Active Directory がない場合は、[Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) というサービスを使って、Azure 上で管理された Active Directory インスタンスを実行できます。 
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続など、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)が説明されています。 
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続など、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)が説明されています。 
 
 この記事では、Azure AD DS を使って Azure 上に完全に管理された Active Directory ドメイン サービスを設定する手順について説明します。 その後、管理された Active Directory ドメインに DSVM を参加させて、ユーザーが共通のユーザー アカウントと資格情報を使って DSVM (および他の Azure リソース) のプールにアクセスできるようにすることができます。 
 
@@ -51,7 +51,7 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
       
       ![[ユーザー] ウィンドウ](./media/add-user.png)
     
-   d. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     
    e. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
     

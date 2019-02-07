@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2018
-ms.openlocfilehash: 679a02c760d8b37d94a734bc9b023ed8fe59acad
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/10/2019
+ms.openlocfilehash: 11c1f34176e7852806464781e80d6dc0fd5345a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198186"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750343"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル:地理的に分散したデータベースの実装
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Azure SQL Database。 次の方法で作成します。
-  - [ポータル](sql-database-get-started-portal.md)
+  - [ポータル](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!IMPORTANT]
 > このチュートリアルの手順を実行しているコンピューターのパブリック IP アドレスを使用するようにファイアウォール規則を確実に設定してください。 データベース レベルのファイアウォール ルールは、セカンダリ サーバーに自動的にレプリケートされます。
 >
-> 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバー レベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](sql-database-get-started-portal-firewall.md)に関するページを参照してください。  
+> 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバー レベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](sql-database-server-level-firewall-rule.md)に関するページを参照してください。  
 
 ## <a name="create-a-failover-group"></a>フェールオーバー グループを作成する
 

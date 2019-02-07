@@ -17,11 +17,11 @@ ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 17c8a55c27a276fa1e2e04ebb9f748fa6d59a9dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55204067"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55505973"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した VPN ゲートウェイの作成と管理
 

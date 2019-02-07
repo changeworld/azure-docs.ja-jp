@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82f7d69120cf3d6f44c981f985ae29f467ee0655
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7afa64ebedb38b4514bbd155bf8f29268d420d18
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198912"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745760"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "55198912"
 自己テスト API には、POST メソッドのみをサポートする 1 つのエンドポイントが含まれています。  その構造を次に示します。
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -215,7 +215,7 @@ cURL を使用して API を呼び出すには、次の手順に従います。
 ```
 CURL POST -H "Content-Type:application/json" 
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest 
+https://isvapp.azurewebsites.net/selftest-vm 
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 
 ```
@@ -260,7 +260,7 @@ https://isvapp.azurewebsites.net/selftest
 
    - **名前** - アプリのフレンドリ名を入力します。 たとえば、"SelfTestClient" です。
    - **アプリケーションの種類** - **[Web App/API]\(Web アプリ/API\)** を選択します
-   - **サインオン URL** - 「 https://isvapp.azurewebsites.net/selftest」と入力します
+   - **サインオン URL** - 「 https://isvapp.azurewebsites.net/selftest-vm」と入力します
 
 4. **作成**を選択します。
 5. **[アプリの登録]** または **[登録済みのアプリ]** の下に **[アプリケーション ID]** をコピーします。
@@ -410,7 +410,7 @@ $token.AccessToken
 承認ヘッダーに次のコードを使用して、トークンを自己テスト API に渡します。
 
 ```
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest’
+$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"

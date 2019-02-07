@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ad90c2d13ebeaa077dc6264f84a4ebd8a340a8c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38825f7815713678946e86252d4c8a1bee0abbc6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159085"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752689"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL サーバーの復元
 この CLI サンプル スクリプトでは、単一の Azure Database for MySQL サーバーを過去の特定時点の状態に復元します。
@@ -37,7 +37,7 @@ CLI をローカルにインストールして使用する場合、このサン�
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az mysql server create](/cli/azure/mysql/server) | データベースのホストとなる MySQL サーバーを作成します。 |
-| [az mysql server restore](/cli/azure/mysql/server#restore) | バックアップからサーバーを復元します。 |
+| [az mysql server restore](/cli/azure/mysql/server) | バックアップからサーバーを復元します。 |
 | [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

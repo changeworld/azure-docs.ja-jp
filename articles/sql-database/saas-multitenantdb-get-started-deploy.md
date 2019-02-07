@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
-ms.date: 04/02/2018
-ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/16/2018
+ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352213"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567385"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 

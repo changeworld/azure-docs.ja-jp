@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823353"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694501"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso の移行: オンプレミス アプリを Azure VM にリホストする
 
@@ -460,7 +460,7 @@ Contoso のセキュリティ チームは、Azure VM を再調査して、セ�
 - アクセスを制御するために、VM のネットワーク セキュリティ グループ (NSG) を見直します。 NSG は、許可されたトラフィックのみがアプリに到達できるようにするために使用されます。
 - また、このチームは、ディスク上のデータ保護のために、Azure Disk Encryption と KeyVault の使用も検討します。
 
-VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)を参照してください。
+VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms)を参照してください。
 
 ## <a name="bcdr"></a>BCDR
 

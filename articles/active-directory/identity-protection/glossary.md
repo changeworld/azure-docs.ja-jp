@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
-ms.subservice: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 71ec7c67271dc7e924b3aef86a8b711153786c5c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 282daba47d106cd46c351084b9c2deb55c768a62
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160680"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695289"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 ### <a name="at-risk-user"></a>危険 (ユーザー)

@@ -2,18 +2,18 @@
 title: Azure Backup Server からデータを回復する
 description: Recovery Services コンテナーに保護しているデータを、そのコンテナーに登録されている任意の Azure Backup Server から回復します。
 services: backup
-author: nkolli1
-manager: shreeshd
+author: kasinh
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: adigan
-ms.openlocfilehash: 66d78be296d0786626325df36aa133d277131b3b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: kasinh
+ms.openlocfilehash: a0960cba58817a6d340998933fe315d6fca887e4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267098"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488446"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。

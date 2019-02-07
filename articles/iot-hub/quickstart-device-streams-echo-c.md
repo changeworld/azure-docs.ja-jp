@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 24b00a589454bfa8413cd98407c2022671cb92ce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 61c1afbe6252d1feefc9bc648457ef21a57d23d5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887956"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733996"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C でデバイス アプリケーションと通信する (プレビュー)
 
@@ -64,7 +64,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 2. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
     
     ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
     このリポジトリのサイズは現在約 220 MB です。
@@ -73,7 +73,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ```
     cd azure-iot-sdk-c
-    git checkout public-preview
     mkdir cmake
     cd cmake
     ```
@@ -89,14 +88,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 Windows では、Visual Studio 2015 または 2017 プロンプト用の開発者コマンド プロンプトで、次のコマンドを実行します。
 
 ```
-    # In Windows
-    # For VS2015
+    rem In Windows
+    rem For VS2015
     cmake .. -G "Visual Studio 15 2015"
     
-    # Or for VS2017
-    cmake .. -G "Visual Studio 15 2017
+    rem Or for VS2017
+    cmake .. -G "Visual Studio 15 2017"
 
-    # Then build the project
+    rem Then build the project
     cmake --build . -- /m /p:Configuration=Release
 ```
 

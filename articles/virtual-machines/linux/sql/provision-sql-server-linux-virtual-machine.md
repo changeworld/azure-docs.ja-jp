@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4087cd93b7342958717a20a08832daba1123417f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330740"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729474"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -129,7 +129,7 @@ Windows を使用していて BASH シェルがない場合は PuTTY などの S
 
 1. **[Open]\(開く\)** を選択し、プロンプトでユーザー名とパスワードを入力します。
 
-Linux VM への接続の詳細については、[ポータルを使用して Azure に Linux VM を作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal#ssh-to-the-vm)に関するページを参照してください。
+Linux VM への接続の詳細については、[ポータルを使用して Azure に Linux VM を作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)に関するページを参照してください。
 
 > [!Note]
 > サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、**[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、**[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、**[Cancel]\(キャンセル\)** を選択して接続を破棄します。

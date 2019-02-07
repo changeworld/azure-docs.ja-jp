@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.openlocfilehash: 8e46058432743febd70a017ee5131081a052364b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1b3dde1b2d638f6dd6c19ce173c7f9f071868d23
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195394"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734217"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した仮想ネットワークの作成
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>リソース グループと仮想ネットワークを作成する
 
-仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
+仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -53,7 +53,7 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 この例では、*myVm1* という名前の VM を作成します。
+[az vm create](/cli/azure/vm) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 この例では、*myVm1* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \

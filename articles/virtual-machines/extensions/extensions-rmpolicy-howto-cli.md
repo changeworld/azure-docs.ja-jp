@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 529758a7b9fe4c8b669ade72273335389020fb65
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451205"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770586"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -98,7 +98,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create) を使用して作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) を使用して作成します。
 
 この例において、規則とパラメーターは、使用しているクラウド シェル内で、.json ファイルとして作成、格納したファイルです。
 
@@ -115,9 +115,9 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>ポリシーを割り当てる
 
-この例では、[az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、Linux VM Access や Linux 用のカスタム スクリプト拡張機能をインストールできません。 ポリシーを割り当てるには、必ずリソース グループが存在している必要があります。
+この例では、[az policy assignment create](/cli/azure/policy/assignment) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、Linux VM Access や Linux 用のカスタム スクリプト拡張機能をインストールできません。 ポリシーを割り当てるには、必ずリソース グループが存在している必要があります。
 
-[az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
+[az account list](/cli/azure/account?view=azure-cli-latest) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
 
 
 ```azurecli-interactive

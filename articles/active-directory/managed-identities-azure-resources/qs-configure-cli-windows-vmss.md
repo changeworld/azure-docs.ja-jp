@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
-ms.openlocfilehash: 03e22ae9aaa3ab967b55443ccbd933c265510227
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 42b0ab15f43d301629b9fbb3208ba24eae8c227e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180111"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694603"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -113,7 +113,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨となる予定) を削除するには、[az vmss identity remove](/cli/azure/vmss/identity/#az-vmss-remove-identity) コマンドを使用してシステム割り当てマネージド ID を VMSS から削除します。
+Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨となる予定) を削除するには、[az vmss identity remove](/cli/azure/vmss/identity/) コマンドを使用してシステム割り当てマネージド ID を VMSS から削除します。
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -190,7 +190,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-2. [az vmss identity assign](/cli/azure/vmss/identity#az-vm-assign-identity) を使用して、ユーザー割り当てマネージド ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
+2. [az vmss identity assign](/cli/azure/vmss/identity) を使用して、ユーザー割り当てマネージド ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>

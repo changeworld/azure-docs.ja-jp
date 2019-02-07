@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705281"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749765"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -248,7 +248,7 @@ ms.locfileid: "51705281"
         datasource.add(routeLine, 0);
     });
     ```
-    上記のコード スニペットは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドを通じて Azure Maps ルーティング サービスへのクエリを実行し、[getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) を使用してその応答を解析し、GeoJSON 形式にします。 その後、返されたルートの座標の配列を作成し、それをデータ ソースに追加します。ただし、それがデータ ソース内の他のどの線よりも先にレンダリングされるよう、インデックス 0 も追加します。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。 
+    上記のコード スニペットは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) メソッドを通じて Azure Maps ルーティング サービスへのクエリを実行し、[getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) を使用してその応答を解析し、GeoJSON 形式にします。 その後、返されたルートの座標の配列を作成し、それをデータ ソースに追加します。ただし、それがデータ ソース内の他のどの線よりも先にレンダリングされるよう、インデックス 0 も追加します。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。 
 
 4. 次の JavaScript コードを追加して、乗用車のルートを要求し、結果を表示します。
 
@@ -267,7 +267,7 @@ ms.locfileid: "51705281"
         datasource.add(routeLine);
     });
     ```
-    このコード スニペットでは、乗用車に対して、トラックと同じルートのクエリを使用します。 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドを通して Azure Maps ルーティング サービスへのクエリを実行し、[getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) を使用してその応答を解析して、GeoJSON 形式にします。 その後、返されたルートの座標の配列を作成し、それをデータ ソースに追加します。 乗用車のルートの線には、2 つのプロパティを追加します。ストローク カラー (紫色) とストロークの幅 (5 ピクセル) です。 
+    このコード スニペットでは、乗用車に対して、トラックと同じルートのクエリを使用します。 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) メソッドを通して Azure Maps ルーティング サービスへのクエリを実行し、[getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) を使用してその応答を解析して、GeoJSON 形式にします。 その後、返されたルートの座標の配列を作成し、それをデータ ソースに追加します。 乗用車のルートの線には、2 つのプロパティを追加します。ストローク カラー (紫色) とストロークの幅 (5 ピクセル) です。 
 
 5. **MapTruckRoute.html** ファイルを保存し、ブラウザーを更新して結果を表示します。 Maps の API と正常に接続されると、次のようなマップが表示されます。
 

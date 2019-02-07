@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 7b94c53d8a084ae49b0b9f68d57c408ed10ac507
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 051c34c631795479cb5e5d0f67209bae89e82940
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247172"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766743"
 ---
 # <a name="update-the-sql-resource-provider"></a>SQL リソース プロバイダーの更新
 

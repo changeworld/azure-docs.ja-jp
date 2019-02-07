@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104677"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819843"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -57,7 +57,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
     * [プロパティ](#properties)
     * [ロック](#locks)
     * [Automation スクリプト](#automation-script)
-* [管理](#administration)
+* 管理
     * [データのインポート](#importexport)
     * [データのエクスポート](#importexport)
     * [Reboot](#reboot)
@@ -65,7 +65,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
     * [Redis メトリック](#redis-metrics)
     * [アラート ルール](#alert-rules)
     * [診断](#diagnostics)
-* [サポートおよびトラブルシューティング設定](#support-amp-troubleshooting-settings)
+* サポートおよびトラブルシューティング設定
     * [リソース ヘルス](#resource-health)
     * [新しいサポート要求](#new-support-request)
 
@@ -82,7 +82,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 **[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
 **[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)に関するページを参照してください。
 

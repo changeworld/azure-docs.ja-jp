@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: 2b8a0db21ab4beb2128ae0a1cebbf9fb42691f3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177409"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768185"
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 
@@ -36,7 +36,7 @@ Microsoft は、2 段階認証を提供していますが、その機能を使�
 
 - **携帯電話を紛失した、または新しい電話番号を取得した。** 携帯電話を紛失した、または新しい番号を取得した場合は、別の方法を使用してサインインするか、管理者に設定を消去するよう依頼してください。 アカウントを適切に更新できるように、携帯電話を紛失した、または携帯電話が盗難にあったことを管理者に知らせることを強くお勧めします。 設定が消去されると、次回のサインイン時に [2 段階認証の登録](multi-factor-authentication-end-user-first-time.md)を求めるメッセージが表示されます。
 
-- **認証テキストが受信できない、または電話呼び出しが着信できない。** テキストまたは電話呼び出しが受信できない理由はいくつか考えられます。 過去に同じ電話器でテキストまたは通話を正常に受け取っている場合は、アカウントではなく携帯電話会社に問題がある可能性があります。 多くの場合、電波状態が悪いと時間がかかります。この場合、モバイル デバイスで [Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)を使用することをお勧めします。 このアプリは、電波またはインターネット接続を一切必要とせず、サインイン用のランダムなセキュリティ コードを生成できます。<br><br>テキスト メッセージを受信しようとしている場合は、テキストを受信できることをテストするために友人にテキストを送信するよう頼んでください。また、複数のメッセージを受信した場合は、必ず最近のものからのコードを使用してください。
+- **認証テキストが受信できない、または電話呼び出しが着信できない。** テキストまたは電話呼び出しが受信できない理由はいくつか考えられます。 過去に同じ電話器でテキストまたは通話を正常に受け取っている場合は、アカウントではなく携帯電話会社に問題がある可能性があります。 多くの場合、電波状態が悪いと時間がかかります。この場合、モバイル デバイスで [Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)を使用することをお勧めします。 このアプリは、電波またはインターネット接続を一切必要とせず、サインイン用のランダムなセキュリティ コードを生成できます。<br><br>テキスト メッセージを受信しようとしている場合は、テキストを受信できることをテストするために友人にテキストを送信するよう頼んでください。また、複数のメッセージを受信した場合は、必ず最近のものからのコードを使用してください。
 
 - **アプリのパスワードが機能しない場合** 2 段階認証をサポートしていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも解決しない場合は、[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)するか、新しいアプリ パスワードを作成できるよう[既存のアプリ パスワードを削除](../authentication/howto-mfa-userdevicesettings.md)するよう管理者に依頼してください。
 
@@ -61,4 +61,4 @@ Microsoft は、2 段階認証を提供していますが、その機能を使�
 
 * [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
-* [Microsoft Authenticator アプリケーションに関する FAQ](microsoft-authenticator-app-faq.md)
+* [Microsoft Authenticator アプリケーションに関する FAQ](user-help-auth-app-faq.md)

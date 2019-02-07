@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 191afec8733258519370d11942c0f6d18da6b603
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180400"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766063"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>認証アプリを使用するようにセキュリティ情報を設定する (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "55180400"
 
 組織の設定によっては、サインインするとき、Microsoft Authenticator アプリを設定するように求められることがあります。 それ以外の場合は、「[Manage your security info (セキュリティ情報の管理)](security-info-manage-settings.md)」の手順に従って、セキュリティ情報に Microsoft Authenticator アプリを設定します。
 
-Microsoft Authenticator アプリのダウンロード方法と詳細については、「[Microsoft Authenticator アプリの概要](microsoft-authenticator-app-how-to.md)」をご覧ください。
+Microsoft Authenticator アプリのダウンロード方法と詳細については、「[Microsoft Authenticator アプリの概要](user-help-auth-app-download-install.md)」をご覧ください。
 
 >[!Note]
 >Microsoft Authenticator アプリを使用しない場合は、設定時に別のアプリを設定することもできます。 この記事では、Microsoft Authenticator アプリを使用します。 認証アプリ オプションが表示されない場合、検証に認証アプリを使用することを組織が許可していない可能性があります。 その場合、別の方法を選択するか、管理者に支援を要請する必要があります。

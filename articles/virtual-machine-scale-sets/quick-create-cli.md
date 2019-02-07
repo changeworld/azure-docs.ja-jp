@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 04c59cac8cd55acad0504337c57767c938835021
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b42c32936d6973468ace58572ee61eaad66053c2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884896"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733180"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure CLI を使用して仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
@@ -40,7 +40,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#az_vmss_create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成します。このスケール セットは、変更が適用されると自動的に更新するように設定され、SSH キーが *~/.ssh/id_rsa* に存在しない場合は生成します。 これらの SSH キーは、VM インスタンスにログインする必要がある場合に使用されます。 SSH キーの既存のセットを使用するには、代わりに `--ssh-key-value` パラメーターを使用して、キーの場所を指定します。
+ここでは、[az vmss create](/cli/azure/vmss) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成します。このスケール セットは、変更が適用されると自動的に更新するように設定され、SSH キーが *~/.ssh/id_rsa* に存在しない場合は生成します。 これらの SSH キーは、VM インスタンスにログインする必要がある場合に使用されます。 SSH キーの既存のセットを使用するには、代わりに `--ssh-key-value` パラメーターを使用して、キーの場所を指定します。
 
 ```azurecli-interactive
 az vmss create \
@@ -58,7 +58,7 @@ az vmss create \
 ## <a name="deploy-sample-application"></a>サンプル アプリケーションをデプロイする
 スケール セットをテストするには、基本的な Web アプリケーションをインストールします。 VM インスタンスにアプリケーションをインストールするスクリプトをダウンロードして実行するために、Azure カスタム スクリプト拡張機能が使用されます。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/linux/extensions-customscript.md)」を参照してください。
 
-カスタム スクリプト拡張機能を使用して、基本的な NGINX Web サーバーをインストールします。 次のように、[az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) を使用して、NGINX をインストールするカスタム スクリプト拡張機能を適用します。
+カスタム スクリプト拡張機能を使用して、基本的な NGINX Web サーバーをインストールします。 次のように、[az vmss extension set](/cli/azure/vmss/extension) を使用して、NGINX をインストールするカスタム スクリプト拡張機能を適用します。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -72,7 +72,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>アプリケーションへのトラフィックを許可する
-スケール セットが作成されたとき、Azure ロード バランサーが自動的にデプロイされました。 ロード バランサーは、スケール セット内の VM インスタンスにトラフィックを分散します。 トラフィックがサンプル Web アプリケーションに到達できるようにするには、[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使用してロード バランサー規則を作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
+スケール セットが作成されたとき、Azure ロード バランサーが自動的にデプロイされました。 ロード バランサーは、スケール セット内の VM インスタンスにトラフィックを分散します。 トラフィックがサンプル Web アプリケーションに到達できるようにするには、[az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network public-ip show \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、次のように [az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
+必要がなくなったら、次のように [az group delete](/cli/azure/group) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

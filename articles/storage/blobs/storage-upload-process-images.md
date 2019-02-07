@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 7c32a572f1090783e5da53ae2b6103ac8c9a8b77
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753338"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752553"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -48,7 +48,7 @@ ms.locfileid: "53753338"
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成 
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  
 
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。
 
@@ -58,7 +58,7 @@ az group create --name myResourceGroup --location southeastasia
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-サンプルでは、Azure Storage アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
+サンプルでは、Azure Storage アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [az storage account create](/cli/azure/storage/account) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
 
 > [!IMPORTANT]
 > このチュートリアルの第 2 部では、BLOB ストレージで Azure Event Grid を使用します。 Event Grid がサポートされている Azure リージョンにストレージ アカウントを作成してください。 サポートされているリージョンの一覧は、[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)に関するページをご覧ください。
@@ -75,7 +75,7 @@ az storage account create --name <blob_storage_account> \
 
 アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB を格納します。 "*images*" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半で、Azure 関数アプリで、サイズ変更した画像を *thumbnails* コンテナーにアップロードします。
 
-[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、このキーを使用して、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドで 2 つのコンテナーを作成します。  
+[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、このキーを使用して、[az storage container create](/cli/azure/storage/container) コマンドで 2 つのコンテナーを作成します。  
 
 ここでは、`<blob_storage_account>` は、作成した BLOB ストレージ アカウントの名前です。 *images* コンテナーのパブリック アクセスは、`off` に設定されています。 *thumbnails* コンテナーのパブリック アクセスは、`container` に設定されています。 `container` パブリック アクセスに設定すると、Web ページにアクセスしたユーザーはサムネイルを表示できます。
 
@@ -101,7 +101,7 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 [App Service プラン](../../app-service/overview-hosting-plans.md)は、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定します。
 
-[az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) コマンドで、App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan) コマンドで、App Service プランを作成します。
 
 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
+Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"_指定された名前 `<web_app>` の Web サイトは既に存在します_" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
@@ -123,12 +123,12 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
+App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
 
 サンプル プロジェクトには、[ASP.NET MVC](https://www.asp.net/mvc) アプリが含まれています。 そのアプリは、画像を受け取り、ストレージ アカウントに保存して、サムネイル コンテナーから画像を表示します。 その Web アプリは、Azure Storage クライアント ライブラリの [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet)、[Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet)、および [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) 名前空間を使用して、Azure Storage と対話します。
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
+App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
 
 ---
 
@@ -140,7 +140,7 @@ az webapp deployment source config --name <web_app> \
 
 ## <a name="configure-web-app-settings"></a>Web アプリの設定を構成する
 
-サンプル Web アプリでは、[Azure Storage Client Library](/dotnet/api/overview/azure/storage?view=azure-dotnet) を使用して、画像をアップロードするために使用するアクセス トークンを要求します。 ストレージ SDK によって使用されるストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
+サンプル Web アプリでは、[Azure Storage Client Library](/dotnet/api/overview/azure/storage?view=azure-dotnet) を使用して、画像をアップロードするために使用するアクセス トークンを要求します。 ストレージ SDK によって使用されるストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
 次のコマンドでは、`<blob_storage_account>` を BLOB ストレージ アカウントの名前に置き換え、`<blob_storage_key>` を関連付けられているキーに置き換えます。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
 

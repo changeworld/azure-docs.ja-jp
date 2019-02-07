@@ -11,18 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: d86a1591c81c6343ec376c080945b4bf1f97638a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471778"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744400"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
 通常、Azure リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、サブスクリプション レベルで Azure リソース グループを作成し、Azure リソースを作成することもできます。 サブスクリプション レベルでテンプレートをデプロイするには、Azure CLI と Azure PowerShell を使用します。 Azure portal は、サブスクリプション レベルでのデプロイをサポートしていません。
 
-Azure Resource Manager テンプレートでリソース グループを作成するには、[**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions.md) リソースを定義してリソース グループの名前と場所を指定します。 同じテンプレートでリソース グループを作成し、そのリソース グループにリソースをデプロイすることができます。 サブスクリプション レベルでデプロイできるリソースには、[ポリシー](../azure-policy/azure-policy-introduction.md)、[ロールベースのアクセス制御](../role-based-access-control/overview.md)などがあります。
+Azure Resource Manager テンプレートでリソース グループを作成するには、[**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions) リソースを定義してリソース グループの名前と場所を指定します。 同じテンプレートでリソース グループを作成し、そのリソース グループにリソースをデプロイすることができます。 サブスクリプション レベルでデプロイできるリソースには、[ポリシー](../azure-policy/azure-policy-introduction.md)、[ロールベースのアクセス制御](../role-based-access-control/overview.md)などがあります。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
@@ -99,7 +101,7 @@ New-AzDeployment `
 }
 ```
 
-テンプレートのスキーマは[こちら](/azure/templates/microsoft.resources/allversions.md)に掲載されています。 同様のテンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) に掲載されています。
+テンプレートのスキーマは[こちら](/azure/templates/microsoft.resources/allversions)に掲載されています。 同様のテンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) に掲載されています。
 
 ## <a name="create-multiple-resource-groups"></a>複数のリソース グループを作成する
 

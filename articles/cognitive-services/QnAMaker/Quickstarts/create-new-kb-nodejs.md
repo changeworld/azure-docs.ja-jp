@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 470d0f80612bef31eca02856bd3bc6391c064035
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7a9217797382a31e17e0381a639387ccbf3c094d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227405"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729695"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>クイック スタート:Node.js を使用して QnA Maker のナレッジ ベースを作成する
 

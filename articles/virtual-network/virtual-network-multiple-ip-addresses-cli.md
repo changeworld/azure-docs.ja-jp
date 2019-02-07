@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: c51ac79ce1ee6835b8ce125c5f7a5f227e428668
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: fcc21f4abade8cb90e16b3dd8728a86f4b84c101
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449046"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692826"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -123,13 +123,13 @@ az network nic ip-config create \
 VmName="myVm"
 
 # Replace the value for the following **VmSize** variable with a value from the
-# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes rticle. The script fails if the VM size
-# is not supported in the location you select. Run the `azure vm sizes --location estcentralus` command to get a full list
+# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. The script fails if the VM size
+# is not supported in the location you select. Run the `azure vm sizes --location eastcentralus` command to get a full list
 # of VMs in US West Central, for example.
 
 VmSize="Standard_DS1"
 
-# Replace the value for the OsImage variable value with a value for *urn* from the utput returned by entering the
+# Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
 # `az vm image list` command.
 
 OsImage="credativ:Debian:8:latest"

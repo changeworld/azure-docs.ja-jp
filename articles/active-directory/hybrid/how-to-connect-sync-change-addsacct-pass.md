@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ac0237ebc9c6d9ffc6e66291f648b0176f386205
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f4e23f05d2b9ee8396826e0321a00d95cc13bd99
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168705"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486114"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
 AD DS アカウントとは、Azure AD Connect でオンプレミスの Active Directory との通信に使用したユーザー アカウントを指します。 AD DS アカウントのパスワードを変更する場合は、新しいパスワードを使用して Azure AD Connect 同期サービスを更新する必要があります。 それ以外の場合、同期サービスではオンプレミスの Active Directory と正しく同期できなくなり、次のエラーが発生します。

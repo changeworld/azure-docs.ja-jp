@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473512"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750972"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure ファイル共有の作成および管理
 このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -34,7 +34,7 @@ az login
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 まだ Azure リソース グループがない場合は、[az group create](/cli/azure/group#create) コマンドを使用して作成できます。 
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 まだ Azure リソース グループがない場合は、[az group create](/cli/azure/group) コマンドを使用して作成できます。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを "*米国東部*" の場所に作成します。
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できるファイル共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
-次の例では、[az storage account create](/cli/azure/storage/account#create) コマンドを使用して *mystorageaccount\<ランダムな数字\>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を `$STORAGEACCT` 変数に設定します。 ストレージ アカウント名は一意である必要があります。 `$RANDOM` を使用することで、ストレージ アカウント名に数字を追加して一意な名前にすることができます。 
+次の例では、[az storage account create](/cli/azure/storage/account) コマンドを使用して *mystorageaccount\<ランダムな数字\>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を `$STORAGEACCT` 変数に設定します。 ストレージ アカウント名は一意である必要があります。 `$RANDOM` を使用することで、ストレージ アカウント名に数字を追加して一意な名前にすることができます。 
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -57,7 +57,7 @@ STORAGEACCT=$(az storage account create \
 ```
 
 ### <a name="get-the-storage-account-key"></a>ストレージ アカウント キーを取得する
-ストレージ アカウント キーは、ストレージ アカウント内のリソースへのアクセスを制御するために使用されます。 キーは、ストレージ アカウントの作成時に自動的に作成されます。 ストレージ アカウントのストレージ アカウント キーは、[az storage account keys list](/cli/azure/storage/account/keys#list) コマンドを使用して取得できます。 
+ストレージ アカウント キーは、ストレージ アカウント内のリソースへのアクセスを制御するために使用されます。 キーは、ストレージ アカウントの作成時に自動的に作成されます。 ストレージ アカウントのストレージ アカウント キーは、[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用して取得できます。 
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
-これで、最初の Azure ファイル共有を作成できます。 [az storage share create](/cli/azure/storage/share#create) コマンドを使用してファイル共有を作成します。 この例では、*myshare* という名前の Azure ファイル共有を作成します。 
+これで、最初の Azure ファイル共有を作成できます。 [az storage share create](/cli/azure/storage/share) コマンドを使用してファイル共有を作成します。 この例では、*myshare* という名前の Azure ファイル共有を作成します。 
 
 ```azurecli-interactive
 az storage share create \
@@ -98,7 +98,7 @@ Azure Files のほとんどのユーザーは、SMB プロトコルを介して 
 次の例は、Azure CLI を使用してファイル REST プロトコルでお客様の Azure ファイル共有を操作する方法を示しています。 
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
-Azure ファイル共有のルートに *myDirectory* という名前の新しいディレクトリを作成するには、[`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) コマンドを使用します。
+Azure ファイル共有のルートに *myDirectory* という名前の新しいディレクトリを作成するには、[`az storage directory create`](/cli/azure/storage/directory) コマンドを使用します。
 
 ```azurecli-interactive
 az storage directory create \
@@ -109,7 +109,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
-[`az storage file upload`](/cli/azure/storage/file#az_storage_file_upload) コマンドを使用してファイルをアップロードする方法を示すために、最初に Cloud Shell のスクラッチ ドライブ上に、アップロードするファイルを作成します。 次の例では、ファイルを作成してアップロードします。
+[`az storage file upload`](/cli/azure/storage/file) コマンドを使用してファイルをアップロードする方法を示すために、最初に Cloud Shell のスクラッチ ドライブ上に、アップロードするファイルを作成します。 次の例では、ファイルを作成してアップロードします。
 
 ```azurecli-interactive
 date > ~/clouddrive/SampleUpload.txt
@@ -124,7 +124,7 @@ az storage file upload \
 
 Azure CLI をローカルで実行している場合は、`~/clouddrive` を実際のマシンに存在するパスに置き換えてください。
 
-ファイルのアップロード後、[`az storage file list`](/cli/azure/storage/file#az_storage_file_list) コマンドを使用して、ファイルが Azure ファイル共有にアップロードされたことを確認できます。
+ファイルのアップロード後、[`az storage file list`](/cli/azure/storage/file) コマンドを使用して、ファイルが Azure ファイル共有にアップロードされたことを確認できます。
 
 ```azurecli-interactive
 az storage file list \
@@ -136,7 +136,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>ファイルをダウンロードする
-[`az storage file download`](/cli/azure/storage/file#az_storage_file_download) コマンドを使用して、アップロードしたファイルのコピーを Cloud Shell のスクラッチ ドライブにダウンロードできます。
+[`az storage file download`](/cli/azure/storage/file) コマンドを使用して、アップロードしたファイルのコピーを Cloud Shell のスクラッチ ドライブにダウンロードできます。
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -191,7 +191,7 @@ Azure ファイル共有で実行できるもう 1 つの便利なタスクと�
 
 - Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット
 - macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット
-- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)。[`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) コマンドを使用して、共有スナップショットを作成できます。
+- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)。[`az storage share snapshot`](/cli/azure/storage/share) コマンドを使用して、共有スナップショットを作成できます。
 
 ```azurecli-interactive
 SNAPSHOT=$(az storage share snapshot \
@@ -250,7 +250,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
-[`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) コマンドを使用して、共有スナップショットを削除できます。 `--snapshot` パラメーターへの `$SNAPSHOT` 参照を含む変数を使用します。
+[`az storage share delete`](/cli/azure/storage/share) コマンドを使用して、共有スナップショットを削除できます。 `--snapshot` パラメーターへの `$SNAPSHOT` 参照を含む変数を使用します。
 
 ```azurecli-interactive
 az storage share delete \
@@ -261,7 +261,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-完了したら、[`az group delete`](/cli/azure/group#delete) コマンドを使用して、リソース グループとすべての関連リソースを削除できます。 
+完了したら、[`az group delete`](/cli/azure/group) コマンドを使用して、リソース グループとすべての関連リソースを削除できます。 
 
 ```azurecli-interactive 
 az group delete --name "myResourceGroup"

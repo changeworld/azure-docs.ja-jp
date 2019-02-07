@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 29b76620494fbb325f8c43bf90a07c9df0faff56
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266335"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746865"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -105,7 +105,7 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 
 ![[DNS セキュリティ] ブレード](./media/dns-analytics/dns-security-blade.png)
 
-一覧のクライアント IP をクリックすると、ログ検索が開き、それぞれのクエリのルックアップの詳細が表示されます。 次の例では、[IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot) との通信が行われたことが DNS 分析によって検出されています。
+一覧のクライアント IP をクリックすると、ログ検索が開き、それぞれのクエリのルックアップの詳細が表示されます。 次の例では、[IRCbot](https://www.microsoft.com/wdsi/threats/threat-search?query=Win32/IRCbot) との通信が行われたことが DNS 分析によって検出されています。
 
 ![IRCbot を示すログ検索結果](./media/dns-analytics/ircbot.png)
 

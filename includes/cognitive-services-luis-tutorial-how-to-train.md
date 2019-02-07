@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 54f49fca4a771dfe178c28df84b574022084d581
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 30dd91c8adf478804c4abf4309cd24764adf6589
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53107295"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480312"
 ---
 1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。 
 

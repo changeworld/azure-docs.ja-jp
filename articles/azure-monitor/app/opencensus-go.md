@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 935119f2efe40ee22d2d11005fa79b12c712b7c2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104575"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694114"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go から分散トレースを収集する (プレビュー)
 
@@ -24,7 +24,7 @@ Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の
 
 - Azure サブスクリプションが必要です。
 - Go をインストールする必要があります、この記事では、バージョン 1.11 の [Go ダウンロード](https://golang.org/dl/)を使用します。
-- 手順に従って[ローカル フォワーダーを Windows サービスとして](./opencensus-local-forwarder.md#windows-service)インストールします。
+- 手順に従って[ローカル フォワーダーを Windows サービスとして](./opencensus-local-forwarder.md)インストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
-   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | 全般 | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
    | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インストルメンテーション キーのスクリーンショット](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. `LocalForwarder.config` ファイルを編集し、インストルメンテーション キーを追加します。 [前提条件](./opencensus-local-forwarder.md#windows-service)の手順に従った場合、このファイルは `C:\LF-WindowsServiceHost` にあります。
+2. `LocalForwarder.config` ファイルを編集し、インストルメンテーション キーを追加します。 [前提条件](./opencensus-local-forwarder.md)の手順に従った場合、このファイルは `C:\LF-WindowsServiceHost` にあります。
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,7 +186,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. シンプルな Go アプリが実行したら、`http://localhost:50030` に移動します。 ブラウザーの更新のたび、テキスト "hello world" と、ローカル フォワーダーで取得される対応するスパン データが生成されます。
 
-4. **ローカル フォワーダー**がトレースを取得していることを確認するには、`LocalForwarder.config` ファイルを確認します。 [前提条件](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service)の手順に従った場合は、`C:\LF-WindowsServiceHost` にあります。
+4. **ローカル フォワーダー**がトレースを取得していることを確認するには、`LocalForwarder.config` ファイルを確認します。 [前提条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)の手順に従った場合は、`C:\LF-WindowsServiceHost` にあります。
 
     ログ ファイルの以下の画像では、追加した 2 つ目のスクリプトを実行する前に、エクスポーター `OpenCensus input BatchesReceived` は 0 だったことがわかります。 更新されたスクリプトの実行を開始すると、増分された `BatchesReceived` が入力した値の数に等しくなります。
     

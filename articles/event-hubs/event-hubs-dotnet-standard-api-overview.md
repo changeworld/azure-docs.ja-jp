@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450457"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728421"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 
@@ -35,7 +35,7 @@ ms.locfileid: "54450457"
 var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-接続文字列をプログラムで編集するには、[EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) クラスを使用して、接続文字列をパラメーターとして [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_) に渡します。
+接続文字列をプログラムで編集するには、[EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) クラスを使用して、接続文字列をパラメーターとして [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) に渡します。
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
@@ -65,7 +65,7 @@ Event Hubs からイベントを受信する場合は、[イベント プロセ�
 
 #### <a name="create-a-receiver"></a>受信側の作成
 
-受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) メソッドを使用します。
+受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) メソッドを使用します。
 
 ```csharp
 // Create a list to keep track of the receivers

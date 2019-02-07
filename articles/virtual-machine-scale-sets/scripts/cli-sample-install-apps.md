@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9c1b0d4ea794e5b3ed4f899addef18da2465562a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b63a4ed26688b73b9a8b1568433c7ae7606e6c6a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882193"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698966"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットにアプリケーションをインストールする
 このスクリプトでは、Ubuntu を実行する仮想マシン スケール セットを作成し、カスタム スクリプト拡張機能を使用して基本的な Web アプリケーションをインストールします。 スクリプトを実行すると、Web ブラウザーで Web アプリにアクセスできるようになります。
@@ -47,10 +47,10 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](/cli/azure/ad/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vmss create](/cli/azure/vmss#az_vmss_create) | 仮想マシン スケール セットを作成し、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 複数の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 このコマンドでは、使用する VM イメージと管理者の資格情報も指定します。  |
-| [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) | Azure カスタム スクリプト拡張機能をインストールして、各 VM インスタンス上にデータ ディスクを準備するスクリプトを実行します。 |
-| [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) | TCP ポート 80 のトラフィックをスケール セット内の VM インスタンスに分散するロード バランサー規則を作成します。 |
-| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) | ロード バランサーによって使用される、割り当てられたパブリック IP アドレスについての情報を取得します。 |
-| [az group delete](/cli/azure/ad/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az vmss extension set](/cli/azure/vmss/extension) | Azure カスタム スクリプト拡張機能をインストールして、各 VM インスタンス上にデータ ディスクを準備するスクリプトを実行します。 |
+| [az network lb rule create](/cli/azure/network/lb/rule) | TCP ポート 80 のトラフィックをスケール セット内の VM インスタンスに分散するロード バランサー規則を作成します。 |
+| [az network public-ip show](/cli/azure/network/public-ip) | ロード バランサーによって使用される、割り当てられたパブリック IP アドレスについての情報を取得します。 |
+| [az group delete](/cli/azure/ad/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。

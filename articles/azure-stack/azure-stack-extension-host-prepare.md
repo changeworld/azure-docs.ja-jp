@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 840c230ae3b2fc167c0d59a4a9a0155fe5deb661
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3e838f932299a9ea7f837570f9d15725230eb4f8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238259"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660087"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack の拡張機能ホストを準備する
 
@@ -141,7 +141,7 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 
 ### <a name="publish-new-endpoints"></a>新しいエンドポイントの公開
 
-ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要のある次のコードを使用して取得できます。
+ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要のある次のコードを使用して取得できます。
 
 ```PowerShell
 # Create a PEP Session
@@ -188,7 +188,7 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 | エンドポイント (VIP) | Protocol | ポート |
 |----------------|----------|-------|
 | AdminHosting | HTTPS | 443 |
-| ホスティング | HTTPS | 443 |
+| Hosting | HTTPS | 443 |
 
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>既存の公開規則の更新 (拡張機能ホストの今後の有効化)
 

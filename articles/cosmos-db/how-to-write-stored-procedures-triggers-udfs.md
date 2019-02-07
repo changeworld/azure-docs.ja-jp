@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f11579988d965723fedb3d7900f12979ad0feb1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b6b83d944aed2f42f0309eec8a05e65f6fe3eaf6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043908"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746882"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -96,7 +96,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
+    var filterQuery = 
+    {     
+        'query' : 'SELECT * FROM Players p where p.id = @playerId1',
+        'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
+    };
+            
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -104,7 +109,11 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
+            var filterQuery2 = 
+            {     
+                'query' : 'SELECT * FROM Players p where p.id = @playerId2',
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+            };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
                     if (err2) throw new Error("Error" + err2.message);

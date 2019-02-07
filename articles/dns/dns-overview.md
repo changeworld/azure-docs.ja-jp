@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716278"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770522"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -32,7 +32,7 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
 * [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control): 組織のユーザーがアクセスできるアクションを制御できます。
 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
+* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
 * [リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources): サブスクリプション、リソース グループ、またはリソースをロックできます。 ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。
 

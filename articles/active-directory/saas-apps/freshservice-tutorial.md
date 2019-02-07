@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 2621918896131864b6183df420f51bab50f0e474
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ab1d083d7fea59284815276d030181ac1e435f72
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811232"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル:Azure Active Directory と Freshservice の統合
 
@@ -151,7 +151,7 @@ Freshservice で Azure AD シングル サインオンを構成するには、�
 
     c. **[SAML Login URL]\(SAML ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[Security Certificate Fingerprint]\(セキュリティ証明書フィンガープリント\)** ボックスに、Azure portal からコピーした証明書の**拇印**の値を貼り付けます。
 

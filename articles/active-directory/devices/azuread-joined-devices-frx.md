@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: eb948a0cccd0f9272311a16e366be5ea89a2939b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b3dd14aefc929e14ce22a701013c2be84a4ef01c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101593"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695658"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>チュートリアル:最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
 

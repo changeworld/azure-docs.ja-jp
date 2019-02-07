@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228255"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754875"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "55228255"
 
 **Q:標準音声モデルを使用する場合は、どこから開始すればよいですか。**
 
-**A**: 45 以上の言語の 80 を超える標準音声モデルが HTTP 要求経由で使用できます。 最初に、[サブスクリプション キー](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)を取得します。 展開済みの音声モデルに REST 呼び出しを実行するには、「[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech)」を参照してください。
+**A**: 45 以上の言語の 80 を超える標準音声モデルが HTTP 要求経由で使用できます。 最初に、[サブスクリプション キー](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)を取得します。 展開済みの音声モデルに REST 呼び出しを実行するには、「[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)」を参照してください。
 
 **Q:カスタム音声モデルを使用する場合、API は標準音声と同じですか。**
 

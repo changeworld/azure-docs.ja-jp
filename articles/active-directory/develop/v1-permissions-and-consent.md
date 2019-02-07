@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 887134f7d790e5ed7e878a94caa9ef2fb9356ae3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1387e5c1efd85ab0b944f7cffc4fe215eb73f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102157"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734489"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OI
 
 Azure AD では、次の 2 種類のアクセス許可が定義されています。
 
-* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)になります。
+* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)になります。
 * **アプリケーションのアクセス許可** - サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。 通常、アプリケーションのアクセス許可は非常に強力であり、ユーザー境界を越えるデータや管理者に限定されたデータへのアクセスを許可するため、これらのアクセス許可には[管理者だけが同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)できます。
 
 有効なアクセス許可は、アプリが API に要求を行うときに付与されるアクセス許可です。 
