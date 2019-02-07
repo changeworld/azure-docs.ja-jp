@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d9800ff3fc82636c5cae12167738667ec84326ee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec7b71c7da19ecefc14696c029e63a074b498ec8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855553"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696739"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan-preview"></a>Azure App Service プランで Linux 上に 関数アプリを作成する (プレビュー)
 
@@ -84,7 +84,7 @@ az functionapp create --resource-group myResourceGroup --plan myAppServicePlan \
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Linux でホストされた関数アプリを Azure 上で作成する方法について説明しました。 この関数アプリには、[関数プロジェクトをデプロイ](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest)することができます。 Azure Functions Core Tools を使用すると、ローカル コンピューター上で [Functions プロジェクトを作成](functions-run-local.md#create-a-local-functions-project)し、それを新しい Linux 関数アプリにデプロイすることができます。  
+この記事では、Linux でホストされた関数アプリを Azure 上で作成する方法について説明しました。 この関数アプリには、[関数プロジェクトをデプロイ](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest)することができます。 Azure Functions Core Tools を使用すると、ローカル コンピューター上で [Functions プロジェクトを作成](functions-run-local.md)し、それを新しい Linux 関数アプリにデプロイすることができます。  
 
 > [!div class="nextstepaction"] 
 > [Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)

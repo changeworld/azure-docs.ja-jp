@@ -9,6 +9,8 @@ items:
   items:
   - name: クラスターを作成する - Azure portal
     href: create-cluster-database-portal.md
+  - name: クラスターを作成する - Azure CLI
+    href: create-cluster-database-cli.md
   - name: データの取り込み
     items:
     - name: データのストリーミング - イベント ハブ
@@ -122,9 +124,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 298df030448f1410ef687405586d4e97827076e9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 161696689c6cb0e5aecc63d69d8e8c27c35552b8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727777"
+ms.locfileid: "55744213"

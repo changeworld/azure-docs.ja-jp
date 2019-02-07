@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 278935ae7d29680e4fa741d59370e75ee0e1e93d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0374db9ae207d3d9c713e6f1a2e2a25c96505b74
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197706"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490415"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Azure AD とのフェデレーションとは
 

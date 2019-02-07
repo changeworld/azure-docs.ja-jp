@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 8fa161f82cf73e61127ab67aba6ca3408c8e7c10
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/02/2019
+ms.openlocfilehash: 30174051c0d26595c65a79724cf3d08465a4cab7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197825"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566970"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL Database に照会する
 

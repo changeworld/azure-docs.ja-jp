@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729165"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730171"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
 
@@ -57,7 +57,7 @@ AFS への移行中は、次の点を考慮する必要があります。
 - ローカルにキャッシュされたご自身のデータを保持できるだけのローカル ストレージがホストにある。
 - Azure File Sync のデプロイに使用する Azure サブスクリプションへの所有者レベルのアクセス。所有者または管理者レベルのアクセス許可がない場合、ご自身の同期グループに対してクラウド エンドポイントを作成すると、問題が発生する可能性があります。
 - 同期対象の Azure ファイル共有を持つ [General Purpose v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview)へのアクセス。 詳しくは、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」をご覧ください。
- - [Azure ファイル共有を作成](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal)する方法。
+ - [Azure ファイル共有を作成](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)する方法。
 
 ## <a name="migration-process"></a>移行プロセス
 

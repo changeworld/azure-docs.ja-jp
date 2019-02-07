@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: fc38cc6aaffbe9353ab55dcee2b0ba73abb4ebd6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8e1566d7b1be429146dc3ce919ffd5f57b1b99d2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171985"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770505"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>クイック スタート:Bing Visual Search SDK for Node.js を使用して画像に関する分析情報を取得する
 
@@ -52,7 +52,7 @@ ms.locfileid: "55171985"
 2. クライアントをインスタンス化します。
 
     ```javascript
-    let visualSearchApiClient = new Search.VisualSearchAPIClient(credentials);
+    let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
 ## <a name="search-for-images"></a>画像を検索する
@@ -64,7 +64,7 @@ ms.locfileid: "55171985"
     let visualSearchRequest = JSON.stringify({});
     let visualSearchResults;
     try {
-        visualSearchResults = await visualSearchApiClient.images.visualSearch({
+        visualSearchResults = await visualSearchClient.images.visualSearch({
             image: fileStream,
             knowledgeRequest: visualSearchRequest
         });

@@ -11,12 +11,12 @@ ms.subservice: qna-maker`
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 428aea5775c1777f38d7ea563cfe3af700c27f02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1e1152f810bffb2ab4dfe230c2d3b3c2a8198492
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211833"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811921"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
 
@@ -96,9 +96,6 @@ ms.locfileid: "55211833"
     - まだの場合は、ナレッジ ベースを**発行**します。
 
     ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-> [!NOTE]
-> ナレッジ ベースのプレビュー バージョンを QnA ボットと接続する場合は、**Ocp-Apim-Subscription-Key** の値を **QnAAuthKey** に設定します。 **QnAEndpointHostName** は空のままにします。
 
 ## <a name="test-the-bot"></a>ボットのテスト
 

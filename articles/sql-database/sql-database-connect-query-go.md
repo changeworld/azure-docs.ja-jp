@@ -11,13 +11,13 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 12/07/2018
-ms.openlocfilehash: e6b24e89297b875d0c4547ffe3200b1d5e2e58c2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 12/21/2018
+ms.openlocfilehash: 6e2465927f748e5538935a87aaadc84b5c2b4d1f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161532"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561935"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL Database に照会する
 

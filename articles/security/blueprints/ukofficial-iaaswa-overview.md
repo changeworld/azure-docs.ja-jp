@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239921"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699144"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -186,7 +186,7 @@ Storage
 
 [Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) を使用できます。
+**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) を使用できます。
 
 ### <a name="security"></a>セキュリティ
 
