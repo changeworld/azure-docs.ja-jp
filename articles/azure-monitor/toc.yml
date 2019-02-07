@@ -61,7 +61,7 @@ items:
 - name: 概念
   items:
   - name: Azure の管理
-    href: azure-management.md?toc=/azure/azure-monitor/toc.json
+    href: azure-management.md
   - name: 継続的な監視
     href: continuous-monitoring.md
   - name: データの監視
@@ -135,7 +135,7 @@ items:
     - name: アクティビティ ログ アラート
       href: platform/activity-log-alerts.md
   - name: データの視覚化
-    href: visualizations.md?toc=/azure/azure-monitor/toc.json
+    href: visualizations.md
   - name: パートナー統合
     href: platform/partners.md
   - name: FAQ
@@ -195,9 +195,9 @@ items:
         - name: Windows エージェント
           href: platform/agent-windows.md
         - name: Windows 用の VM 拡張機能
-          href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machines/windows/extensions-oms.md
         - name: Linux 用の VM 拡張機能
-          href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machines/linux/extensions-oms.md
         - name: Operations Manager
           href: platform/om-agents.md
         - name: Log Analytics ゲートウェイ
@@ -287,7 +287,7 @@ items:
           - name: Profiler に関するトラブルシューティング
             href: app/profiler-troubleshooting.md
         - name: 診断
-          href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: ../application-insights/app-insights-azure-diagnostics.md
         - name: プレビュー
           href: app/previews.md
       - name: ASP.NET アプリ
@@ -354,7 +354,7 @@ items:
         - name: JavaScript
           href: app/javascript.md
       - name: Azure Functions を監視する
-        href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
+        href: ../azure-functions/functions-monitoring.md
       - name: 分散トレース
         items:
         - name: ローカル フォワーダー
@@ -397,7 +397,7 @@ items:
         - name: .NET のデータがない
           href: app/asp-net-troubleshoot-no-data.md
         - name: スナップショット デバッガー
-          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md
         - name: Analytics
           href: app/analytics-troubleshooting.md
         - name: Java
@@ -604,7 +604,7 @@ items:
       - name: Key Vault Analytics
         href: insights/azure-key-vault.md
       - name: Service Fabric 分析
-        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md?toc=/azure/azure-monitor/toc.json
+        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
     - name: その他のリソースの監視
       items:
       - name: AD の正常性の評価
@@ -653,7 +653,7 @@ items:
     - name: メトリックス エクスプローラーのグラフのサンプル
       href: platform/metric-chart-samples.md
     - name: アクティビティ ログでのイベントの表示
-      href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
+      href: ../azure-resource-manager/resource-group-audit.md
     - name: サービスの通知を表示する
       href: platform/service-notifications.md
     - name: ログ データのクエリ
@@ -819,7 +819,7 @@ items:
       - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: VM スケール セットでのマシンの自動スケール
-        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
       - name: 自動スケールで webhook と電子メール通知を構成する
         href: platform/autoscale-webhook-email.md
     - name: サービスの通知
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: d972d54cd81609ae16f7966795f16e5efe41e863
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 96f79397b16212fe0897e0d03f57ffb7248118c8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752026"
+ms.locfileid: "55767124"

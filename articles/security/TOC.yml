@@ -242,17 +242,6 @@ items:
       href: ./blueprints/ffiec-iaaswa-overview.md
     - name: PaaS Web アプリケーション
       href: ./blueprints/ffiec-paaswa-overview.md
-  - name: GDPR
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/gdpr-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/gdpr-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/gdpr-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
     displayName: blueprint, privacy, certifications
     items:
@@ -364,9 +353,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 47882afaa66f510238a236235a1be1152ae26de2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5cb4cbbbeb1773874a0de976f600dbb694cd7bcb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301239"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766967"

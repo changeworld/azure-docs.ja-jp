@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807458"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211440"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure での R 開発者向けガイド
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -85,21 +85,21 @@ Databricks は Spark 上に構築され、コラボレーションを特に重�
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) は、クラウドの予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。  新しいデータ サイエンティストが多くのコードを記述することなく機械学習モデルを作成してデプロイできるようになります。
 
-ML Studio は、R と Python の両方をサポートしています。  ML Studio では 2 つの方法で R を使用できます。
+Azure Machine Learning Studio は、R と Python の両方をサポートしています。  Azure Machine Learning Studio では 2 つの方法で R を使用できます。
 
 ### <a name="custom-r-scripts-in-your-experiments"></a>実験でのカスタム R スクリプト
 まず、カスタム R スクリプトを記述することで ML Studio のデータ操作と機械学習の機能を拡張することができます。
 ML Studio にはデータの準備および分析用のさまざまなモジュールが含まれていますが、R などの成熟した言語の機能と適合しません。そのため、このサービスは指定されたモジュールがニーズを満たさない場合に独自のカスタム R スクリプトを導入できるように設計されています。
 
-この機能を活用するには、"R スクリプトの実行" モジュールを自分の実験にドラッグ アンド ドロップします。  次に、"プロパティ" ウィンドウのコード エディターを使用して新しい R スクリプトを記述するか、既存のスクリプトを貼り付けます。  スクリプト内では、外部の R パッケージを参照することができます。  このスクリプトを使用してデータを操作したり、標準の ML Studio モデル ライブラリに含まれない複雑な ML モデルをトレーニングしたりできます。
+この機能を活用するには、"R スクリプトの実行" モジュールを自分の実験にドラッグ アンド ドロップします。  次に、"プロパティ" ウィンドウのコード エディターを使用して新しい R スクリプトを記述するか、既存のスクリプトを貼り付けます。  スクリプト内では、外部の R パッケージを参照することができます。  このスクリプトを使用してデータを操作したり、標準の Azure Machine Learning Studio モデル ライブラリに含まれない複雑な ML モデルをトレーニングしたりできます。
 
-ML Studio の実験内での R の使用に関する完全な概要については、「[Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)」を参照してください。
+ML Studio の実験内での R の使用に関する完全な概要については、「[Azure Machine Learning Studio 向け R プログラミング言語クイック スタート チュートリアル](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)」を参照してください。
 
 ### <a name="create-manage-and-deploy-experiments-from-your-local-r-environment"></a>ローカルの R 環境から実験を作成、管理、デプロイする
-ML Studio で R を使用する別の方法が、
-<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> パッケージを使用して R プログラミング環境で実験プロセスを監視し、制御する方法です。  Microsoft が管理するこのパッケージでは、Azure ML との間でデータセットをアップロード/ダウンロードしたり、実験を照会したり、R 関数を Azure ML の Web サービスとして発行したり、既存の Web サービスから R データを実行して出力を取得したりできます。
+Azure Machine Learning Studio で R を使用する別の方法が、
+<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> パッケージを使用して R プログラミング環境で実験プロセスを監視し、制御する方法です。  Microsoft が管理するこのパッケージでは、Azure Machine Learning Studio との間でデータセットをアップロード/ダウンロードしたり、実験を照会したり、R 関数を Web サービスとして発行したり、既存の Web サービスから R データを実行して出力を取得したりできます。
 
-このパッケージにより、Azure ML をご自分の R コードのスケーラブルなデプロイ プラットフォームとしてはるかに簡単に使用できるようになります。  UI をクリックしてドラッグする代わりに、よく知っているツールを使用してデプロイ プロセス全体を自動化できます。
+このパッケージにより、Azure Machine Learning Studio をご自分の R コードのスケーラブルなデプロイ プラットフォームとしてはるかに簡単に使用できるようになります。  UI をクリックしてドラッグする代わりに、よく知っているツールを使用してデプロイ プロセス全体を自動化できます。
 
 ## <a name="azure-batch"></a>Azure Batch
 大規模な R ジョブの場合は、[Azure Batch](https://azure.microsoft.com/services/batch/) を使用できます。  このサービスは、クラウド規模のジョブ スケジューリングとコンピューティング管理を提供するため、仮想マシンの数の増加に合わせて R ワークロードを拡張することができます。  これは汎用的なコンピューティング プラットフォームであるため、Azure Batch で R ジョブを実行するためのオプションがいくつかあります。
@@ -114,7 +114,7 @@ Azure Batch で R スクリプトを実行する別のオプションが、Azure
 
 [Azure Notebooks](https://notebooks.azure.com) はノートブックを使用して Azure にコードを実装することを好む R 開発者向けの低コストで問題の少ない方法です。  これは、マークダウンの文、実行可能コード、グラフィックを 1 つのキャンバスに統合できるオープンソースのプロジェクトである [Jupyter](https://jupyter.org/) を使用して自分のブラウザーでコードを開発し、実行するすべてのユーザーのための無料サービスです。
 
-Azure Notebooks の無料サービス階層は、各ノートブックのプロセスを 4 GB のメモリと 1 GB のデータ セットに制限するため、小規模のプロジェクトに実行可能なオプションです。 これらの制限を超えるコンピューティングおよびデータ能力を必要とする場合は、Data Science Virtual Machine インスタンスでノートブックを実行できます。 詳細については、「[Manage and configure Azure Notebooks projects - Compute tier](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)」(Azure Notebooks プロジェクトの管理と構成 - コンピューティング階層) を参照してください。
+Azure Notebooks の無料サービス階層は、各ノートブックのプロセスを 4 GB のメモリと 1 GB のデータ セットに制限するため、小規模のプロジェクトに実行可能なオプションです。 これらの制限を超えるコンピューティングおよびデータ能力を必要とする場合は、Data Science Virtual Machine インスタンスでノートブックを実行できます。 詳細については、「[Manage and configure Azure Notebooks projects - Compute tier](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)」(Azure Notebooks プロジェクトの管理と構成 - コンピューティング階層) を参照してください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) はフル マネージドで完全にインテリジェントな Microsoft のリレーショナル クラウド データベース サービスです。  インフラストラクチャのセットアップの手間なく SQL Server のすべての機能を使用することができます。  これには、最近 SQL Service に追加された [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017) が含まれます。

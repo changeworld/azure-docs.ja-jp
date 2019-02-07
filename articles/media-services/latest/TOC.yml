@@ -191,8 +191,6 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=web-mobile
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=media-services
   - name: OpenAPI の仕様 (Swagger)
@@ -219,9 +217,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: cadf1d0b73c7d04b2748cb5fa60de7cca23beadc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e92d8c5a5d6ccf11205608a9e887b6636a584786
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744809"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819928"

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Ziflow の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Ziflow の統合 | Microsoft Docs
 description: Azure Active Directory と Ziflow の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 84e60fa4-36fb-49c4-a642-95538c78f926
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ca687f15187d4dd485d2c59e3c46fa3158802ff4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626695"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180004"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
+# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル:Azure Active Directory と Ziflow の統合
 
 このチュートリアルでは、Ziflow と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -133,11 +133,11 @@ Ziflow で Azure AD のシングル サインオンを構成してテストす�
 
     ![Ziflow の構成の管理](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-9. 左上の **[シングル サインオン]** をクリックします。
+9. 左上の **シングル サインオン** をクリックします。
 
     ![Ziflow の構成 - サイン](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-10. **[シングル サインオン]** ページで、次の手順を実行します。
+10. **Single sign-on**(シングル サインオン) ページで、次の手順を実行します。
 
     ![Ziflow の構成 - シングル](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
@@ -251,7 +251,7 @@ Azure AD ユーザーが Ziflow にログインできるようにするには、
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Ziflow] タイルをクリックすると、Ziflow アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

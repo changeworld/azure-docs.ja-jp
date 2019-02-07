@@ -10,12 +10,12 @@ ms.subservice: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 510ecfc217c5e3b3e1ac6cd285fcaf7001199aa4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d69f4cbf78cf75cf018070a0d02c4b109689449
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149716"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769490"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
@@ -87,10 +87,10 @@ ms.locfileid: "55149716"
                         <h3>Microsoft Authenticator アプリのヘルプ</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/user-help-auth-app-overview">概要</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">アプリのダウンロードとインストール</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">アカウントの追加</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">アプリを使用したサインイン</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">アカウント資格情報のバックアップと復旧</a>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">アプリのダウンロードとインストール</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">アカウントの追加</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">アプリを使用したサインイン</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">アカウント資格情報のバックアップと復旧</a>
                         </p>
                     </div>
                 </div>
