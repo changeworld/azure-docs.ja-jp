@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: cf06be778fb1bd251b55adcc503db63a2adf3f8b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197927"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658268"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -134,7 +134,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 メッセージに対するロックは、その転送が *accepted*、*rejected*、*released* のいずれかの状態に解決されると解除されます。 終端の状態が *accepted* であるとき、メッセージは Service Bus から削除されます。 転送の状態がそれ以外になった場合、メッセージは Service Bus に残り、次の受信者に配信されます。 たび重なる reject または release でエンティティに割り当てられた最大配信カウントに達すると、メッセージは、Service Bus によって自動的にそのエンティティの配信不能キューに移動されます。
 
-現時点の Service Bus API にそのようなオプションは直接公開されていませんが、それよりも低レベルの AMQP プロトコル クライアントでは、リンク クレジット モデルを使用すれば、receive 要求ごとに 1 単位のクレジットを発行する "プル式" の対話を "プッシュ式" のモデルに変えることができます。つまり、リンク クレジットを大量に発行しておき、メッセージが利用可能になったときに、それ以上の対話操作を行わなくてもそれらのメッセージを受信できるようなモデルを実現できます。 プッシュは、[MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) プロパティまたは [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) プロパティの設定を通じてサポートされます。 これらの設定が 0 以外であるとき、AMQP クライアントでリンク クレジットとして使用されます。
+現時点の Service Bus API にそのようなオプションは直接公開されていませんが、それよりも低レベルの AMQP プロトコル クライアントでは、リンク クレジット モデルを使用すれば、receive 要求ごとに 1 単位のクレジットを発行する "プル式" の対話を "プッシュ式" のモデルに変えることができます。つまり、リンク クレジットを大量に発行しておき、メッセージが利用可能になったときに、それ以上の対話操作を行わなくてもそれらのメッセージを受信できるようなモデルを実現できます。 プッシュは、[MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) プロパティまたは [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) プロパティの設定を通じてサポートされます。 これらの設定が 0 以外であるとき、AMQP クライアントでリンク クレジットとして使用されます。
 
 このとき、エンティティ内のメッセージに対するロックの有効期限は、メッセージが通信回線上に送り出されたときではなく、エンティティからメッセージを取得したときを起点として計時されることに注意してください。 メッセージを受信する用意ができていることをクライアントがリンク クレジットを発行することによって表明したときは常に、当然そのネットワークを介して能動的にメッセージをプルしようとしていること、またそれらを処理する準備が整っているものと解釈されます。 それ以外の場合、メッセージが配信される前に、メッセージに対するロックの有効期限が切れます。 リンク クレジットによるフロー制御は、送り出された有効なメッセージを受信側がすぐに処理できることを前提としています。
 
@@ -214,7 +214,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | --- | --- | --- |
 | durable |- |- |
 | priority |- |- |
-| ttl |このメッセージの有効期限 |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| ttl |このメッセージの有効期限 |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,17 +222,17 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
-| message-id |このメッセージに対するアプリケーション定義の自由形式 ID。 重複検出に使用されます。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| message-id |このメッセージに対するアプリケーション定義の自由形式 ID。 重複検出に使用されます。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |アプリケーション定義のユーザー ID。Service Bus では解釈されません。 |Service Bus API を介してアクセスすることはできません。 |
-| to |アプリケーション定義の送信先 ID。Service Bus では解釈されません。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| subject |アプリケーション定義のメッセージ用途 ID。Service Bus では解釈されません。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| reply-to |アプリケーション定義の応答パス ID。Service Bus では解釈されません。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| to |アプリケーション定義の送信先 ID。Service Bus では解釈されません。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |アプリケーション定義のメッセージ用途 ID。Service Bus では解釈されません。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |アプリケーション定義の応答パス ID。Service Bus では解釈されません。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |アプリケーション定義の相関関係 ID。Service Bus では解釈されません。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-type |アプリケーション定義の本文コンテンツ タイプ ID。Service Bus では解釈されません。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |アプリケーション定義の本文コンテンツ エンコーディング ID。Service Bus では解釈されません。 |Service Bus API を介してアクセスすることはできません。 |
-| absolute-expiry-time |メッセージの有効期限が切れる絶対時刻を宣言します。 入力時には無視され (ヘッダーの TTL が優先され)、出力時に強制力を持ちます。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
+| absolute-expiry-time |メッセージの有効期限が切れる絶対時刻を宣言します。 入力時には無視され (ヘッダーの TTL が優先され)、出力時に強制力を持ちます。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | creation-time |メッセージが作成された時刻を宣言します。 Service Bus では使用されません。 |Service Bus API を介してアクセスすることはできません。 |
-| group-id |関連する一連のメッセージに対するアプリケーション定義の ID。 Service Bus のセッションに使用されます。 |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
+| group-id |関連する一連のメッセージに対するアプリケーション定義の ID。 Service Bus のセッションに使用されます。 |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | group-sequence |セッション内のメッセージの相対シーケンス番号を識別するカウンター。 Service Bus では無視されます。 |Service Bus API を介してアクセスすることはできません。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 

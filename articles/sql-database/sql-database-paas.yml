@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d52d2aa5e218007aed4510f537fb061ef8d1fbe
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e3fdd99066f8e46c8f209b0a5947d999ff246a10
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301562"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811547"
 documentType: LandingData
 title: Azure SQL Database - サービスとしてのプラットフォーム
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 

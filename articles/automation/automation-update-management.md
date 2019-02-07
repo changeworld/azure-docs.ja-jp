@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/28/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: adc780577e8c83411e173a5bfad75c3555119f11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 94171da3c60de3efc4e2a234494816899c3d2f05
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093519"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511855"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -214,9 +214,9 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
-| 名前 |更新プログラムの展開を識別する一意の名前。 |
+| Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するグループ (プレビュー)|サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。|
 | 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
@@ -239,9 +239,9 @@ $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$sched = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="view-missing-updates"></a>不足している更新プログラムを表示する
@@ -556,7 +556,7 @@ Update Management では、Azure VM の動的グループを更新プログラ�
 * サブスクリプション
 * リソース グループ
 * 場所
-* タグ
+* Tags
 
 ![グループを選択する](./media/automation-update-management/select-groups.png)
 

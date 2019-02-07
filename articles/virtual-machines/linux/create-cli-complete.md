@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7090f9da1ec1bd1453b6f0ddb327abe2f1374844
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180366"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697052"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
 
-[Azure CLI ](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index#az_login) で Azure アカウントにログインしていることを確認します。
+[Azure CLI ](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index) で Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
-次に、VM の作成場所となる Azure の仮想ネットワークとサブネットを作成します。 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、アドレス プレフィックスが *192.168.0.0/16* である *myVnet* という名前の仮想ネットワークを作成します。 また、アドレス プレフィックスが *192.168.1.0/24* である *mySubnet* という名前のサブネットも追加します。
+次に、VM の作成場所となる Azure の仮想ネットワークとサブネットを作成します。 [az network vnet create](/cli/azure/network/vnet) を使用して、アドレス プレフィックスが *192.168.0.0/16* である *myVnet* という名前の仮想ネットワークを作成します。 また、アドレス プレフィックスが *192.168.1.0/24* である *mySubnet* という名前のサブネットも追加します。
 
 ```azurecli
 az network vnet create \
@@ -103,7 +103,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-次に、[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
+次に、[az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
 
 ```azurecli
 az network public-ip create \
@@ -142,7 +142,7 @@ az network public-ip create \
 
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-VM で送受信されるトラフィック フローを制御するために、仮想 NIC またはサブネットにネットワーク セキュリティ グループを適用します。 次の例では [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) を使用して、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+VM で送受信されるトラフィック フローを制御するために、仮想 NIC またはサブネットにネットワーク セキュリティ グループを適用します。 次の例では [az network nsg create](/cli/azure/network/nsg) を使用して、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 az network nsg create \
@@ -150,7 +150,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-特定のトラフィックを許可または拒否する規則を定義します。 ポート 22 での受信接続を許可するために (SSH アクセスを有効にするため)、[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、受信規則を作成します。 次の例では、*myNetworkSecurityGroupRuleSSH* という名前の規則を作成します。
+特定のトラフィックを許可または拒否する規則を定義します。 ポート 22 での受信接続を許可するために (SSH アクセスを有効にするため)、[az network nsg rule create](/cli/azure/network/nsg/rule) を使用して、受信規則を作成します。 次の例では、*myNetworkSecurityGroupRuleSSH* という名前の規則を作成します。
 
 ```azurecli
 az network nsg rule create \
@@ -176,7 +176,7 @@ az network nsg rule create \
     --access allow
 ```
 
-[az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) で、ネットワーク セキュリティ グループと規則を調べます。
+[az network nsg show](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループと規則を調べます。
 
 ```azurecli
 az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
@@ -445,7 +445,7 @@ az network nic create \
 
 Azure では、VM を可用性セットに配置すると障害ドメインと更新ドメイン間で自動的に分散されます。 詳細については、[VM の可用性管理](manage-availability.md)に関する記事を参照してください。
 
-[az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) で、VM の可用性セットを作成します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
+[az vm availability-set create](/cli/azure/vm/availability-set) で、VM の可用性セットを作成します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
 
 ```azurecli
 az vm availability-set create \
@@ -478,11 +478,11 @@ az vm availability-set create \
 
 
 ## <a name="create-a-vm"></a>VM の作成
-これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#az_vm_image_list) を使用すると他のイメージを検索できます。
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image) を使用すると他のイメージを検索できます。
 
 認証に使用する SSH キーを指定します。 SSH 公開キーのペアが無い場合は、[自分で作成する](mac-create-ssh-keys.md)か、`--generate-ssh-keys` パラメーターを使用して自動で作成できます。 このパラメーターでは、キーのペアが既にある場合は `~/.ssh` にある既存のキーが使用されます。
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
+[az vm create](/cli/azure/vm) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -567,7 +567,7 @@ az group export --name myResourceGroup > myResourceGroup.json
 
 このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
 
-テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使います。
+テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment) を使います。
 
 ```azurecli
 az group deployment create \

@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1b303fb66e71ffb1834c5b5fb4796867a0944
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097046"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819418"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -38,7 +38,7 @@ ms.locfileid: "55097046"
 1. [アプリケーション登録をマルチテナントに更新する](#update-registration-to-be-multi-tenant)
 2. [/common エンドポイントに要求を送信するようにコードを更新する](#update-your-code-to-send-requests-to-common)
 3. [複数の issuer 値を処理するようにコードを更新する](#update-your-code-to-handle-multiple-issuer-values)
-4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understanding-user-and-admin-consent)
+4. ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える
 
 それでは、各手順の詳細を見ていきましょう。 すぐに、[こちらのマルチテナント サンプルの一覧][AAD-Samples-MT]を参照してもかまいません。
 

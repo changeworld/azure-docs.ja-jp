@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300406"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697451"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso の移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -125,7 +125,7 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
-    - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
+    - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector) へのインターネット アクセスを制限できます。  
     - VM がインターネットに接続できない場合、VM に Azure [Log Analytics Gateway](../azure-monitor/platform/gateway.md) をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
 - SQL Server インスタンスを実行している VM の FQDN (データベース評価用)。
 - SQL Server VM 上で実行されている Windows ファイアウォールでは、TCP ポート 1433 (既定値) で外部接続が許可されている必要があります。 このセットアップにより、Data Migration Assistant の接続が可能になります。

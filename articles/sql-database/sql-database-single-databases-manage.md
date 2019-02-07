@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 32b532cab7e970d01c3963729658c32ac4a020b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7d1f11abbe88bff5a7e16984aacd4953ad4f9e12
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465046"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751193"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database での SQL Database サーバーと単一データベースの作成と管理
 
@@ -53,7 +53,7 @@ Azure SQL Database マネージド インスタンスを作成する方法につ
 > [!IMPORTANT]
 > データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 > [!TIP]
-> Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」を参照してください。
+> Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-single-database-get-started.md)」を参照してください。
 
 ## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell:SQL Database サーバーと単一データベースの管理
 
@@ -156,7 +156,7 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 |[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
 |[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
 |[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
-|[ファイアウォール規則 - サーバーで一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
+|[ファイアウォール規則 - サーバーごとに一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次の手順
 

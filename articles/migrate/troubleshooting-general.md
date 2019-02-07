@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102126"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751907"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -117,7 +117,7 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 
 **証明書の検証に失敗したためコレクターがインターネットに接続できない**
 
-この問題は、インターネットへの接続にインターセプト プロキシを使用していて、かつプロキシの証明書をまだコレクター VM にインポートしていない場合に発生することがあります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity)に説明されている手順でインポートできます。
+この問題は、インターネットへの接続にインターセプト プロキシを使用していて、かつプロキシの証明書をまだコレクター VM にインポートしていない場合に発生することがあります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)に説明されている手順でインポートできます。
 
 **ポータルからコピーしたプロジェクト ID とキーを使用しても、コレクターがプロジェクトに接続できません。**
 
@@ -162,7 +162,7 @@ VMware PowerCLI のインストールに関する問題が原因で発生する�
    c. 次の場所から 'VMware' で始まるすべてのフォルダーを削除します。C:\Program Files\WindowsPowerShell\Modules  
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
-   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
    
    e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
 
@@ -172,7 +172,7 @@ VMware PowerCLI のインストールに関する問題が原因で発生する�
 
 vCenter Server "Servername.com:9443" に接続できません。原因となったエラー: メッセージを受信できる https://Servername.com:9443/sdk でリッスンしているエンドポイントがありませんでした。
 
-コレクター アプライアンスの最新バージョンが実行されているかどうかを確認します。そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)にアップグレードしてください。
+コレクター アプライアンスの最新バージョンが実行されているかどうかを確認します。そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector)にアップグレードしてください。
 
 最新バージョンでも引き続き問題が発生する場合は、指定された vCenter Server 名をコレクター マシンで解決できないか、または指定されたポートが間違っている可能性があります。 ポートが指定されていない場合、コレクターは既定でポート番号 443 に接続を試みます。
 

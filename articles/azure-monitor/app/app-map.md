@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063116"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755892"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -199,7 +199,7 @@ cloud_RoleName プロパティをテレメトリ初期化子でオーバーラ�
 
 3. C# で Azure Functions を使用している場合は、[Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) にアップグレードします。
 
-4. [cloud_RoleName](app-map.md#Set-cloud-RoleName) が正しく構成されていることを確認します。
+4. [cloud_RoleName](app-map.md#set-cloudrolename) が正しく構成されていることを確認します。
 
 5. 依存関係が欠落している場合は、[自動収集された依存関係](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)の一覧にあることを確認します。 ない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
 

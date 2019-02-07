@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: fee93d01f0462cbee1a3e1110c56fb57220f8004
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c2c23b6709552d053ca8db5e32a045b416c1acfc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956859"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733418"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Azure Automation を使用した Azure API Management の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure API Management の管理を簡略化する方法について紹介します。
@@ -32,7 +32,7 @@ Azure Automation は、ニーズに対応可能な信頼性と可用性の高い
 Azure Automation によってクラウド管理タスクを自動的に実行することにより、運用上のオーバーヘッドが削減され、ビジネス価値の向上に重点的に取り組む IT と DevOps スタッフの負担が軽くなります。
 
 ## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Azure Automation を Azure API Management の管理に役立てる方法
-[Azure API Management API 用 Windows PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/?view=azurermps-5.5.0#api_management/)を使用することによって、Azure Automation で API Management を管理できます。 Azure Automation 内では、コマンドレットを使用して API Management タスクの多くを実行する PowerShell ワークフロー スクリプトを記述できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure API Management API 用 Windows PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/?view=azurermps-5.5.0)を使用することによって、Azure Automation で API Management を管理できます。 Azure Automation 内では、コマンドレットを使用して API Management タスクの多くを実行する PowerShell ワークフロー スクリプトを記述できます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 Powershell で API Management を使用する例については、次を参照してください。
 

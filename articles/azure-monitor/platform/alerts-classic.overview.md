@@ -7,17 +7,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 9a12ca5deeadfb7272532f404cc9cf7c030fb6c0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994353"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661719"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
 > [!NOTE]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 クラシック アラートは[廃止される予定です](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement)。  
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 クラシック アラートは[廃止される予定です](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)。  
 >
 
 アラートを使用してデータに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受け取ることができます。

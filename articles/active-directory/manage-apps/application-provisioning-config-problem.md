@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2d1a449511ce944783c8d93b79d59be263b20fa3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163945"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822274"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題
 
@@ -41,7 +41,7 @@ ms.locfileid: "55163945"
 次の一覧は、どこから始めるべきかわかっている場合に詳しく確認できる一般的問題を示しています。
 
 * [プロビジョニング サービスが開始されない](#provisioning-service-does-not-appear-to-start)
-* [アプリの資格情報が機能していないため、構成を保存できない](#can’t-save-configuration-due-to-app-credentials-not-working)
+* アプリの資格情報が機能していないため、構成を保存できない
 * [ユーザーを割り当てたにもかかわらず、ユーザーが "スキップ" されておりプロビジョニングされていないと監査ログに表示される](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>プロビジョニング サービスが開始されない

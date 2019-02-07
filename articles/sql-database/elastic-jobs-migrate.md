@@ -11,13 +11,13 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 75138979dc5f8ad7b86671267845a7a21af40f54
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: e8293f9ddeb112a6632779e44a0e5d84ae78e045
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607525"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564070"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
 

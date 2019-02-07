@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390920"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697587"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
 

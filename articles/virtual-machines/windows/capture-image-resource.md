@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.openlocfilehash: ff2352005470755c8ca0f472c4a790a820fea6b6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215522"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754389"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 

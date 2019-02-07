@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 25546c37db7e1117ed73c17f2f7b2a5211d48d51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1fadf186176c8bc82aaefe9a908f25f9c8a7e35a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162618"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755462"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -164,14 +164,6 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
  
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso17.png)
-
-6. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** > **[イントラネット ゾーン]** の順に移動します。 次に、**[スクリプトを介したステータス バーの更新を許可する]** を選択します。
-
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso11.png)
-
-7. ポリシー設定を有効にしてから、**[OK]** を選択します。
-
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="browser-considerations"></a>ブラウザーの考慮事項
 

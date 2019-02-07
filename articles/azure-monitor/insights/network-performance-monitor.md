@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229848"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729797"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -52,14 +52,14 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 英国南部
 * 米国政府バージニア州
 
-ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)で確認できます。
+ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)で確認できます。
 
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
-「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
+「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/agent-windows.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
 
 ### <a name="where-to-install-the-agents"></a>エージェントをインストールする場所 
 

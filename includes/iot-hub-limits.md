@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: e1618ded270cddca13145195522d7b42a00d6585
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e6dbfe225b6957406b7143d5db4a28cb50f13e7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841430"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480420"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -57,7 +57,7 @@ ms.locfileid: "54841430"
 
 
 > [!NOTE]
-> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、1,000,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 IoT Hub サービスは、次のクォータを超えた場合に、要求を調整します。
 

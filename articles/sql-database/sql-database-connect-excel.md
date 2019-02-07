@@ -12,18 +12,18 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 318dce78059a169ede2f19f6aadaab9d61e07086
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474957"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754583"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 
 Excel をクラウドの SQL データベースに接続し、データをインポートして、データベース内の値に基づいてテーブルおよびグラフを作成します。 このチュートリアルでは、Excel とデータベース テーブル間の接続をセットアップし、データと Excel の接続情報を格納するファイルを保存して、データベースの値からピボット グラフを作成します。
 
-作業を開始する前に、Azure 内に SQL データベースが必要です。 SQL データベースがない場合は、「 [最初の SQL Database を作成する](sql-database-get-started-portal.md) 」を参照することで、サンプル データを含むデータベースを数分で作成して実行できます。 この記事では、記事のサンプル データを Excel にインポートしますが、独自のデータでも同様の手順を実行できます。
+作業を開始する前に、Azure 内に SQL データベースが必要です。 SQL データベースがない場合は、「 [最初の SQL Database を作成する](sql-database-single-database-get-started.md) 」を参照することで、サンプル データを含むデータベースを数分で作成して実行できます。 この記事では、記事のサンプル データを Excel にインポートしますが、独自のデータでも同様の手順を実行できます。
 
 また、Excel も必要です。 この記事では、 [Microsoft Excel 2016](https://products.office.com/)を使用します。
 

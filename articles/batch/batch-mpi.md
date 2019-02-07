@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 06/12/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2c7d6f75b9f2d6932ae3c8de863ad277fea8ffe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 420f69e246b322eff28b56237613cea250be7530
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460541"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766556"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -49,7 +49,7 @@ Batch では、通常、各タスクは単一のコンピューティング ノ�
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>マルチインスタンス タスクの要件
-マルチインスタンス タスクには、**ノード間通信が有効**であり、**同時実行タスクの実行が無効になっている**プールが必要です。 同時実行タスクの実行を無効にするには、[CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) プロパティを 1 に設定します。
+マルチインスタンス タスクには、**ノード間通信が有効**であり、**同時実行タスクの実行が無効になっている**プールが必要です。 同時実行タスクの実行を無効にするには、[CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) プロパティを 1 に設定します。
 
 > [!NOTE]
 > Batch は、ノード間通信が有効になっているプールのサイズを[制限](batch-quota-limit.md#other-limits)します。

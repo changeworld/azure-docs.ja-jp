@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 16684619ccf542783e425852a075eaa74e96e592
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/15/2019
+ms.openlocfilehash: c806357cfb5cbcc67185473e490ebc1f37a12838
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332185"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564274"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する
 

@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244370"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691169"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure から切断されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
@@ -47,7 +47,7 @@ Azure Stack は Azure に接続されているときに最適に機能するよ�
 |Docker コマンドを実行するための Docker 拡張機能を備えた VM デプロイ|損なわれる – Docker は最新バージョンがないかどうかインターネットをチェックするため、このチェックは失敗します。|
 |Azure Stack ポータルでのドキュメント リンク|使用できない – インターネット URL を使用するリンク ([フィードバックのご提供]、[ヘルプ]、[クイック スタート] など) は機能しません。|
 |オンライン修復ガイドを参照する、アラートによる修復/軽減|使用できない – インターネット URL を使用するアラート修復リンクはすべて機能しません。|
-|Marketplace – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|損なわれる - Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、[マーケットプレース シンジケーション ツール](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)を使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。|
+|Marketplace – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|損なわれる - Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、[マーケットプレース シンジケーション ツール](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)を使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。|
 |Azure Stack デプロイを管理するための Azure Active Directory フェデレーション アカウントの使用|使用できない – この機能には Azure への接続が必要です。 代わりに、ローカルの Active Directory インスタンスによる AD FS を使用する必要があります。|
 |アプリケーション サービス|損なわれる - WebApps では、コンテンツの更新のためにインターネットへのアクセスが必要です。|
 |コマンド ライン インターフェイス (CLI)|損なわれる – CLI は、サービス プリンシパルの認証およびプロビジョニングの点で機能が削減されます。|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 32571d88ffc08c19f819335254b4f5dda521bdb0
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885923"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695701"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps でマップ スタイルを選択する
 
@@ -33,7 +33,7 @@ Azure Maps には、選択できるマップ スタイルが 4 種類ありま�
 
 上記のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-2 つ目のコード ブロックでは、マップの [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) メソッドが使用され、マップ スタイルが satellite に設定されます。
+2 つ目のコード ブロックでは、マップの [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドが使用され、マップ スタイルが satellite に設定されます。
 
 ## <a name="add-the-style-picker"></a>スタイル選択機能を追加する
 
@@ -42,9 +42,9 @@ Azure Maps には、選択できるマップ スタイルが 4 種類ありま�
 
 最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが grayscale_dark に事前に設定されたマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-2 つ目のコード ブロックでは、atlas の [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) コンストラクターを使用してスタイル セレクターが構築されます。
+2 つ目のコード ブロックでは、atlas の [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) コンストラクターを使用してスタイル セレクターが構築されます。
 
-スタイル選択機能を使用すると、マップのスタイルを選択できます。 3 つ目のコード ブロックでは、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) メソッドを使用してスタイル選択機能がマップに追加されます。 マップが完全に読み込まれた後に読み込まれるようにするために、スタイル セレクターはマップ **イベント リスナー**内にあります。
+スタイル選択機能を使用すると、マップのスタイルを選択できます。 3 つ目のコード ブロックでは、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してスタイル選択機能がマップに追加されます。 マップが完全に読み込まれた後に読み込まれるようにするために、スタイル セレクターはマップ **イベント リスナー**内にあります。
 
 ## <a name="next-steps"></a>次の手順
 

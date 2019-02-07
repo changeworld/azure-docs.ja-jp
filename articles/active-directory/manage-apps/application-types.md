@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 441821ae422fb4cbddbca5b4c30d68484ce6bc1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186979"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755385"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>アプリケーション リストに予期しないアプリケーションがある
 
@@ -63,15 +63,15 @@ ms.locfileid: "55186979"
 
 4.  [アプリケーション レジストリ](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 
-5.  [V2.0 アプリケーション登録ポータル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
+5.  [V2.0 アプリケーション登録ポータル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 
 6.  Visual Studio の [ASP.net の認証方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)を使用して開発しているアプリケーションを追加する場合
 
 7.  [Azure AD PowerShell モジュール](/powershell/azure/install-adv2?view=azureadps-2.0)を使用してサービス プリンシパル オブジェクトを作成する場合
 
-8.  管理者としてテナントのデータを[アプリケーションが使用することに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)する場合
+8.  管理者としてテナントのデータを[アプリケーションが使用することに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)する場合
 
-9.  テナントのデータを[アプリケーションが使用することにユーザーが同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)する場合
+9.  テナントのデータを[アプリケーションが使用することにユーザーが同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)する場合
 
 10. 特定のサービスがテナントにデータを格納できるようにする場合。 一例として、パスワード リセット ポリシーを安全に格納するためにサービス プリンシパルとしてモデル化されるパスワード リセットがあります。
 
@@ -107,7 +107,7 @@ ms.locfileid: "55186979"
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする必要がある
 
-ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)」をご覧ください。
+ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)」をご覧ください。
 
 **ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、次の手順に従います。
 

@@ -4,17 +4,17 @@ description: この記事では、Azure Policy のポリシーをプログラム
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/26/2019
+ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: afdd6a238671bf41252eae8b55f1b6e61f358336
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101789"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510828"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -96,8 +96,9 @@ ms.locfileid: "55101789"
    _ContosoRG_ を対象とするリソース グループの名前に置き換えます。
 
    `New-AzPolicyAssignment` の **Scope** パラメーターも、サブスクリプションと管理グループで使用できます。 このパラメーターは、`Get-AzResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。
-   `{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。
+   `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
+   - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - リソース グループ - `/subscriptions/{subId}/resourceGroups/{rgName}`
    - サブスクリプション - `/subscriptions/{subId}/`
    - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 7281e6bb2dda5dc3fddb5f39bf271293ebb88a73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163788"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732016"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Node.js を使用して Azure Event Hubs にイベントを送信する
 
@@ -44,7 +44,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 ## <a name="install-nodejs-package"></a>Node.js パッケージをインストールする
 Azure Event Hubs 用の Node.js パッケージをお使いのコンピューターにインストールします。 
 
-```nodejs
+```shell
 npm install @azure/event-hubs
 ```
 
@@ -59,13 +59,13 @@ GitHub から[サンプル](https://github.com/Azure/azure-event-hubs-node/tree/
 3. 自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 – プライマリ]** からご自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-create.md#create-an-event-hubs-namespace)に関するページを参照してください。
 4. Azure CLI で、**client** フォルダー パスに移動します。 次のコマンドを実行して、ノード パッケージをインストールし、プロジェクトをビルドします。
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. 次のコマンドを実行して、イベントの送信を開始します。 
 
-    ```nodejs
+    ```shell
     node dist/examples/simpleSender.js
     ```
 
@@ -74,7 +74,7 @@ GitHub から[サンプル](https://github.com/Azure/azure-event-hubs-node/tree/
 Node.js を使用してイベント ハブにイベントを送信するサンプル コードを次に示します。 手動で sampleSender.js ファイルを作成して実行し、イベント ハブにイベントを送信できます。 
 
 
-```nodejs
+```javascript
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
 const client = EventHubClient.createFromConnectionString(process.env["EVENTHUB_CONNECTION_STRING"], process.env["EVENTHUB_NAME"]);
@@ -95,7 +95,7 @@ main().catch((err) => {
 
 スクリプトを実行する前に、環境変数を設定することを忘れないでください。 次の例に示すように、コマンド ラインでこれを構成するか、[dotenv パッケージ](https://www.npmjs.com/package/dotenv#dotenv)を使用することができます。 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

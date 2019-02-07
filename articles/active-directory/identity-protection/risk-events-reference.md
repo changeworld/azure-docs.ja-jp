@@ -7,7 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
-ms.subservice: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: afbe2b5ae89b3b573fbae6f4ae5f00e423ac3746
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d8daa1747323abe8115e2b1b06db906a48199426
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456718"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692649"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection のリスク イベント リファレンス
 

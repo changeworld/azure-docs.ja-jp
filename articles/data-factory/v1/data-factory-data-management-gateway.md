@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 101385b23d8ea683dc5762d491e6a4bef91bbed4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022310"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813767"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -246,7 +246,7 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
+ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、「資格情報とセキュリティの設定」に関するセクションを参照してください。
 
 ## <a name="update"></a>アップデート
 既定では、データ管理ゲートウェイの新しいバージョンが利用可能になると、自動的に更新されます。 ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。 更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。 更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
@@ -362,7 +362,7 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 監視のプロパティ | 説明
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
-[Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン/オフライン/制限/ など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
+[Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン、オフライン、制限あり、など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
 Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。 

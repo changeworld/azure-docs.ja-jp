@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188875"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700096"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -54,7 +54,7 @@ VM の WALA による構成は、VM の最大プロビジョニング時間内�
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>cloud-init 対応の仮想マシンのデプロイ
 cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロイの間に cloud-init が有効なディストリビューションを参照するだけです。  Linux ディストリビューションのメンテナンス担当者は、cloud-init を有効にし、Azure で発行された基本イメージに cloud-init を統合する必要があります。 デプロイするイメージが cloud-init 対応であることを確認した後は、Azure CLI を使ってイメージをデプロイできます。 
 
-このイメージをデプロイする最初のステップは、[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成することです。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+このイメージをデプロイする最初のステップは、[az group create](/cli/azure/group) コマンドでリソース グループを作成することです。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -71,7 +71,7 @@ packages:
 ```
 `ctrl-X` キーを押してファイルを終了し、「`y`」と入力してファイルを保存して、`enter` キーを押して終了時にファイル名を確認します。
 
-最後のステップでは、[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
+最後のステップでは、[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
 次の例では、*centos74* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*centos74* という名前の VM を作成します。
 

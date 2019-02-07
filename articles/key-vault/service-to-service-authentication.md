@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f740e6b16426f34adf391af37d365e0d6d672dfe
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413755"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755103"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -232,4 +232,4 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 ## <a name="next-steps"></a>次の手順
 
 - 詳細については、「[Azure リソースの管理 ID について](/azure/active-directory/managed-identities-azure-resources/)」を参照してください。
-- [Azure AD の認証シナリオ](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application)について詳細を参照する。
+- [Azure AD の認証シナリオ](/azure/active-directory/develop/active-directory-authentication-scenarios)について詳細を参照する。

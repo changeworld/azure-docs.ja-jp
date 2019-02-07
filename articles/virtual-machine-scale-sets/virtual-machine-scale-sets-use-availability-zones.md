@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886239"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816239"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -65,7 +65,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 
@@ -81,7 +81,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成する必要があります。
 
-`--zones` パラメーターを [az vmss create](/cli/azure/vmss#az_vmss_create) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
+`--zones` パラメーターを [az vmss create](/cli/azure/vmss) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
 
 ```azurecli
 az vmss create \

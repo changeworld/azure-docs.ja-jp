@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 2aaab17f3ba9352e2ee9448acbbc2d2ca2b9d077
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: b15a884821fa067c329766169cb4c704e9ed069a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607644"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563067"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 

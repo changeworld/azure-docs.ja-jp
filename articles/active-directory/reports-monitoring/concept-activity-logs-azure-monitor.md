@@ -17,10 +17,10 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 4bbe436632b2fac91658292f33ce391eea090412
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
+ms.lasthandoff: 02/04/2019
 ms.locfileid: "55169724"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor の Azure AD アクティビティ ログ (プレビュー)

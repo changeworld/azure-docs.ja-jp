@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077942"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490381"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -25,6 +25,8 @@ ms.locfileid: "55077942"
 Azure サブスクリプションを管理する方法に関する推奨事項については、「[Azure エンタープライズ スキャフォールディング:規範的なサブスクリプション ガバナンス](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)」を参照してください。
 
 すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="parameters"></a>parameters
 このセクションの情報は、[パラメーター](resource-manager-templates-parameters.md)を使用するときに役に立ちます。

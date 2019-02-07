@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5fe2cab3ac9f9e5f3bbba17b8ab9467a298b24ea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227979"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817684"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -37,7 +37,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [1 つの API で複数の環境をセットアップするにはどうすればよいですか。](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [API Management で SOAP を使用することはできますか。](#can-i-use-soap-with-api-management)
 * [API Management ゲートウェイ IP アドレスは一定ですか。それをファイアウォール ルールで使用できますか。](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [AD FS セキュリティを使用して OAuth 2.0 承認サーバーを構成できますか。](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
+* AD FS セキュリティを使用して OAuth 2.0 承認サーバーを構成できますか。
 * [複数の地理的な場所へのデプロイでは、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)

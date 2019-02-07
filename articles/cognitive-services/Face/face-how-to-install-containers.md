@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/06/2019
 ms.author: diberry
-ms.openlocfilehash: 0ed7a007f4d39b36ecc9669d97379323b91a3a09
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d738f089ff7af59c340a2ea9f67918c1298f9e47
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477439"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769795"
 ---
 # <a name="install-and-run-containers"></a>コンテナーのインストールと実行
 
@@ -92,7 +92,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-containerpreview.azurecr.io/microsoft/ognitive-services-face \
+containerpreview.azurecr.io/microsoft/cognitive-services-face \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY}

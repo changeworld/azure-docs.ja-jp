@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095793"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750360"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>REST API を使用して Resource Health を取得する 
 
@@ -44,7 +44,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 | Name | 説明 |
 | :--- | :---------- |
-| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)を参照してください｡ |
+| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2015-04-01` を使用し、上記の URL に含まれています。  |
 | $filter | 返される結果のセットを減らすフィルター処理オプション。 このパラメーターの使用可能なパターンは、[アクティビティ ログ操作の参照で](/rest/api/monitor/activitylogs/list#uri-parameters)使用できます。 この例は 2018-05-16 と 2018-06-20 の間の時間範囲のすべてのイベントをキャプチャします |
 | &nbsp; | &nbsp; |

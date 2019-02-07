@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436689"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812499"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -56,10 +56,10 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 
 HDInsight には、次の高度な分析ワークフロー向けの、いくつかの機械学習オプションがあります。
 
-* [Machine Learning と Apache Spark](#machine-learning-and-spark)
-* [R および ML Services](#r-and-r-server)
-* [Azure Machine Learning と Apache Hive](#azure-machine-learning-and-hive)
-* [Apache Spark とディープ ラーニング](#spark-and-deep-learning)
+* Machine Learning と Apache Spark
+* R および ML Services
+* Azure Machine Learning と Apache Hive
+* Apache Spark とディープ ラーニング
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning と Apache Spark
 

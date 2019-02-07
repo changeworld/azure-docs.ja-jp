@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d84881d4c86fd91fce430956705791097e200937
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100276"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753420"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -78,20 +78,20 @@ SSH 構成をリセットするには、上のスクリーンショットのよ�
 Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-next-hop-portal.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-routing-problem.md)」を参照してください。
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
-まだインストールしていない場合は、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにサインインします。
+まだインストールしていない場合は、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにサインインします。
 
 カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../extensions/agent-windows.md) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
 
 ### <a name="reset-ssh-configuration"></a>SSH 構成をリセットする
 最初に SSH 構成を既定値にリセットして、VM 上の SSH サーバーを再起動します。 ユーザー アカウントの名前、パスワード、または SSH キーは変更されません。
-次の例は、[az vm user reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSH 構成をリセットします。 実際の値を次のように使用します。
+次の例は、[az vm user reset-ssh](/cli/azure/vm/user) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSH 構成をリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>ユーザーの SSH 資格情報をリセットする
-次の例は、[az vm user update](/cli/azure/vm/user#az_vm_user_update) を使用して、`myResourceGroup` にある `myVM` という名前の VM で、`myUsername` の資格情報を `myPassword` に指定された値にリセットします。 実際の値を次のように使用します。
+次の例は、[az vm user update](/cli/azure/vm/user) を使用して、`myResourceGroup` にある `myVM` という名前の VM で、`myUsername` の資格情報を `myPassword` に指定された値にリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -117,7 +117,7 @@ Linux 用の VM アクセス拡張機能は、実行するアクションを定�
 }
 ```
 
-Azure CLI を使用した後、json ファイルを指定して `VMAccessForLinux` 拡張機能を呼び出すことで SSHD 接続をリセットできます。 次の例は、[az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSHD をリセットします。 実際の値を次のように使用します。
+Azure CLI を使用した後、json ファイルを指定して `VMAccessForLinux` 拡張機能を呼び出すことで SSHD 接続をリセットできます。 次の例は、[az vm extension set](/cli/azure/vm/extension) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSHD をリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ Azure portal を使用して VM を再起動するには、次の例のように
 ![Azure Portal で VM を再起動する](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-次の例では、[az vm restart](/cli/azure/vm#az_vm_restart) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
+次の例では、[az vm restart](/cli/azure/vm) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -218,7 +218,7 @@ Azure Portal を使用して VM を再デプロイするには、VM を選択し
 ![Azure Portal で VM を再デプロイする](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-次の例では、[az vm redeploy](/cli/azure/vm#az_vm_redeploy) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
+次の例では、[az vm redeploy](/cli/azure/vm) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

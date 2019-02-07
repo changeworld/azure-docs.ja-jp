@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: acc2790f935eae9bcb68c9fa3c443d7449922e71
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f4a9b4aba54f3968584187e108e87177c44bbc8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192470"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815798"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -81,7 +81,7 @@ ms.locfileid: "55192470"
 2. [プロパティの型ごと](#by-property-type)
 3. [競合する値ごと](#by-conflicting-value)
 4. [文字列検索を使用](#using-a-string-search)
-5. [並べ替え](#sorted)
+5. 並べ替え
 6. [制限した数、またはすべて](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>すべて表示
@@ -161,7 +161,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
    
     c. **ユーザー B** の UPN が **User1234@contoso.onmicrosoft.com** に変更され、**User@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
    
-    d. **ユーザー B** のエラー メッセージには、**ユーザー A** が既に **User@contoso.com** を UPN として持っていることを示す必要がありますが、実際には**ユーザー B** 自身の displayName が表示されます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **ユーザー B** のエラー メッセージには、**ユーザー A** が既に **User@contoso.com** を UPN として持っていることを示す必要がありますが、実際には**ユーザー B** 自身の displayName が表示されます。
 
 **ID 同期のエラー レポート**:
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164063"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770471"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由
 組織内部の Web アプリやサービスにアクセスするとき、「**ここからアクセスすることはできません**」というエラー メッセージが出力されることがあります。 このメッセージは、デバイスが組織のリソースにアクセスできないようにするポリシーが組織で設定されていることを意味します。 最終的にはヘルプデスクに連絡してこの問題を解決してもらうことになりますが、まず最初に試すことができるいくつかの操作を以下に示します。
@@ -68,4 +68,4 @@ ms.locfileid: "55164063"
 ## <a name="next-steps"></a>次の手順
 - [MyApps ポータルとは](active-directory-saas-access-panel-introduction.md)
 
-- [パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)
+- [パスワードではなく携帯電話でサインインする](user-help-auth-app-sign-in.md)

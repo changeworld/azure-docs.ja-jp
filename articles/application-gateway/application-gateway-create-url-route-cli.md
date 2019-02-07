@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: a43f90a5218109b0592c2b52dfb450c19462a543
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a1fadb098fdb4262ee73725ec96c3c9602b1b68d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843839"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734234"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Azure CLI を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -38,7 +38,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#create) を使用してリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
 次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet#az-net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -70,7 +70,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway-with-url-map"></a>URL マップを含んだアプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>イメージおよびビデオのバックエンド プールとポートの追加
 
-*imagesBackendPool* および *videoBackendPool* という名前のバックエンド プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create) を使用して追加します。 
+*imagesBackendPool* および *videoBackendPool* という名前のバックエンド プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/network/application-gatewaywork_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/network/application-gatewaywork_application_gateway_frontend_port_create) を使用して追加します。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -133,7 +133,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-url-path-map"></a>URL パス マップの追加
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/network/application-gateway) と [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -157,7 +157,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>ルーティング規則の追加
 
-ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) を使用して、*rule2* という名前の規則を追加することができます。
+ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 [az network application-gateway rule create](/cli/azure/network/application-gatewaywork_application_gateway_rule_create) を使用して、*rule2* という名前の規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \

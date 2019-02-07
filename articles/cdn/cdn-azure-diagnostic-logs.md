@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6fca764c191c801cbca86c573339b397e61ead07
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256731"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700232"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -290,7 +290,7 @@ Log Analytics 管理ソリューションを追加するには、次の手順に
 
 ### <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で管理ソリューションのプランと価格レベルを確認できます。
+[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)で管理ソリューションのプランと価格レベルを確認できます。
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 

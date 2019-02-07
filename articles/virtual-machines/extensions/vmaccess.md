@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413840"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731310"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>VMAccess 拡張機能と Azure CLI を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON ファイルと VMAccess 拡張機能の使用
-次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
+次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
 
 ### <a name="reset-user-access"></a>ユーザー アクセスのリセット
 Linux VM 上でルートへのアクセスが失われた場合は、VMAccess スクリプトを起動して、ユーザーの SSH キーまたはパスワードを更新できます。
