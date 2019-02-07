@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c43130465320173a82d73d663a72c1e1b9d5bea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2a2acbe9e4de20c0ccf6101fbcc8cacf95f1251a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181913"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493575"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証:現時点での制限事項
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6efccdb3034bb25e60904c858f346ff9a5695fc0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019726"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567035"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
@@ -33,7 +33,7 @@ ms.locfileid: "54019726"
 ## <a name="tumbling-window-trigger-type-properties"></a>タンブリング ウィンドウのトリガーの種類のプロパティ
 タンブリング ウィンドウには、次のトリガーの種類のプロパティがあります。
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,31 +47,30 @@ ms.locfileid: "54019726"
             "delay": "<<timespan – optional>>",
             “maxConcurrency”: <<int>> (required, max allowed: 50),
             "retryPolicy": {
-                "count":  <<int - optional, default: 0>>,
+                "count": <<int - optional, default: 0>>,
                 “intervalInSeconds”: <<int>>,
             }
         },
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "parameter1": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "parameter1": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter2": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
-                }
+                "parameter2": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
+                },
+                "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 次の表に、タンブリング ウィンドウ トリガーの繰り返しとスケジュール設定に関連する主な JSON 要素の概要を示します。
 
@@ -81,8 +80,8 @@ ms.locfileid: "54019726"
 | **runtimeState** | トリガー実行時の現在の状態。<br/>**メモ**:この要素は \<readOnly> です。 | String | "Started"、"Stopped"、"Disabled" | はい |
 | **frequency** | トリガーが繰り返される頻度の単位 (分または時間) を表す文字列。 **startTime** の日付値が **frequency** 値よりも細かい場合、ウィンドウの境界を計算するときに **startTime** の日付が考慮されます。 たとえば、**frequency** 値が時間単位で、**startTime** 値が 2017-09-01T10:10:10Z の場合、最初のウィンドウは (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z) になります。 | String | "minute"、"hour"  | はい |
 | **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "hour" の場合、トリガーは 3 時間ごとに繰り返されます。 | 整数 | 正の整数。 | はい |
-| **startTime**| 最初の発生。これは過去の場合があります。 最初のトリガー間隔は、(**startTime**、**startTime** + **interval**) になります。 | Datetime | DateTime 値。 | はい |
-| **endTime**| 最後の発生。これは過去の場合があります。 | Datetime | DateTime 値。 | はい |
+| **startTime**| 最初の発生。これは過去の場合があります。 最初のトリガー間隔は、(**startTime**、**startTime** + **interval**) になります。 | DateTime | DateTime 値。 | はい |
+| **endTime**| 最後の発生。これは過去の場合があります。 | DateTime | DateTime 値。 | はい |
 | **delay** | ウィンドウのデータ処理の開始の遅延時間。 パイプライン実行は、予想される実行時間 + **delay** の時間が経過してから開始されます。 **delay** は、トリガーが期限を過ぎてから新しい実行をトリガーするまでの待機時間を定義します。 **delay** によってウィンドウの **startTime** が変更されるわけではありません。 たとえば、**delay** 値が 00:10:00 の場合、10 分の遅延を意味します。 | Timespan<br/>(hh:mm:ss)  | 期間の値。既定値は 00:00:00 です。 | いいえ  |
 | **maxConcurrency** | 準備ができているウィンドウに対して発生する同時トリガー実行の数。 たとえば、前日の実行を 1 時間ごとにバックフィルすると、24 ウィンドウになります。 **maxConcurrency** = 10 の場合、トリガー イベントは最初の 10 ウィンドウ (00:00-01:00 - 09:00-10:00) に対してのみ発生します。 最初の 10 回がトリガーされたパイプライン実行が完了すると、次の 10 ウィンドウ (10:00-11:00 - 19:00-20:00) に対してトリガー実行が発生します。 **maxConcurrency** = 10 のこの例を続けると、準備ができているウィンドウが 10 個ある場合、パイプライン実行は合計 10 回になります。 準備ができているウィンドウが 1 つしかない場合、パイプライン実行は 1 回だけになります。 | 整数 | 1 ～ 50 の整数。 | はい |
 | **retryPolicy:Count** | パイプライン実行前の再試行回数は "Failed" とマークされます。  | 整数 | 整数。既定値は 0 (再試行なし) です。 | いいえ  |
@@ -92,32 +91,31 @@ ms.locfileid: "54019726"
 
 **パイプライン**定義 (つまり、クエリの一部) で、タンブリング ウィンドウ トリガーの **WindowStart** および **WindowEnd** システム変数を使用できます。 システム変数は、**トリガー**定義でパイプラインにパラメーターとして渡します。 次の例は、これらの変数をパラメーターとして渡す方法を示しています。
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
         "type": "TumblingWindowTrigger",
             ...
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "MyWindowStart": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "MyWindowStart": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "MyWindowEnd": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    }
+                "MyWindowEnd": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 }
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 パイプライン定義で **WindowStart** および **WindowEnd** システム変数値を使用するには、"MyWindowStart" パラメーターと "MyWindowEnd" パラメーターを適宜使用します。
 
@@ -135,10 +133,10 @@ ms.locfileid: "54019726"
 
 1. 次の内容が含まれた **MyTrigger.json** という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダーに作成します。
 
-   > [!IMPORTANT]
-   > JSON ファイルを保存する前に、**startTime** 要素の値を現在の UTC 時間に設定します。 **endTime** 要素の値を現在の UTC 時間の 1 時間後に設定します。
+    > [!IMPORTANT]
+    > JSON ファイルを保存する前に、**startTime** 要素の値を現在の UTC 時間に設定します。 **endTime** 要素の値を現在の UTC 時間の 1 時間後に設定します。
 
-    ```json   
+    ```json
     {
       "name": "PerfTWTrigger",
       "properties": {
@@ -167,7 +165,7 @@ ms.locfileid: "54019726"
         "runtimeState": "Started"
       }
     }
-    ```  
+    ```
 
 2. **Set-AzureRmDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
 

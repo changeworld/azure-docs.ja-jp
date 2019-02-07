@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e38e71d72a62399512e348d97d4770ea48afd146
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e4b1e9bcdedd802b1937aad25027a1ab8546f674
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495498"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -117,7 +117,7 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 index.js ファイルを開き、ファイルの先頭にあるこれらの値を変更します。
 
 
-```nodejs
+```javascript
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";

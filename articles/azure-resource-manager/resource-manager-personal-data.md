@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 01e2b1608d55d7852db947181482d34d6d8010d2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: db4e1b8705b879fd5716763869462bafdf1f905c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215047"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495209"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Manager に関連する個人データを管理する
 
 機密情報の漏洩を回避するために、展開、リソース グループ、またはタグに含まれている個人情報を削除します。 Azure Resource Manager では、展開、リソース グループ、またはタグに含まれている個人データを管理する操作が提供されています。
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="delete-personal-data-in-deployment-history"></a>展開履歴内の個人データを削除する
 

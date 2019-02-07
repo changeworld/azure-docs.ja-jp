@@ -1,8 +1,21 @@
 ---
-title:プログラムによる Machine Learning Studio のモデルの再トレーニング titleSuffix: Azure Machine Learning Studio description: C# と Machine Learning バッチ実行サービスを使用してモデルをプログラムにより再トレーニングする方法について説明します。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:04/19/2017
+title: プログラムによる Machine Learning Studio のモデルの再トレーニング
+titleSuffix: Azure Machine Learning Studio
+description: C# と Machine Learning バッチ実行サービスを使用してモデルをプログラムにより再トレーニングする方法について説明します。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 04/19/2017
+ms.openlocfilehash: fe7825922d9333d058d9a33d5643850c368d3457
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511396"
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>プログラムにより Machine Learning Studio のモデルを再トレーニングする
 このチュートリアルでは、C# および Machine Learning バッチ実行サービスを使用して、Azure Machine Learning Studio Web サービスをプログラムによって再トレーニングする方法を説明します。

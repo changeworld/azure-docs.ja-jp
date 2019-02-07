@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: e1df8b486a6e57d4c0a860652ef7e71e4dc76f9e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 7a351901a4453bc15b42900e5eb99d17afce5384
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451818"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568551"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -104,7 +104,7 @@ ms.locfileid: "54451818"
                             Content="1. Login and register" Click="LoginAndRegisterClick" Margin="0,0,0,20"/>
 
                 <ToggleButton Name="toggleWNS" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="WNS" IsChecked="True" />
-                <ToggleButton Name="toggleGCM" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="GCM" />
+                <ToggleButton Name="toggleFCM" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="FCM" />
                 <ToggleButton Name="toggleAPNS" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Content="APNS" />
 
                 <TextBlock Grid.Row="6" Grid.ColumnSpan="3" Text="Username Tag To Send To" FontSize="24" Margin="20,0,20,0"/>
@@ -144,9 +144,9 @@ ms.locfileid: "54451818"
         {
             await sendPush("wns", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
         }
-        if (toggleGCM.IsChecked.Value)
+        if (toggleFCM.IsChecked.Value)
         {
-            await sendPush("gcm", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
+            await sendPush("fcm", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
         }
         if (toggleAPNS.IsChecked.Value)
         {

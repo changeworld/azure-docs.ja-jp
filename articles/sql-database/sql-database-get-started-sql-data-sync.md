@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/25/2018
-ms.openlocfilehash: 03ea4a7db27e32b370be89adf308ded9a22f9e37
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 01/14/2019
+ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478425"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567929"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>チュートリアル:Azure SQL Database とオンプレミスの SQL Server 間の SQL データ同期を設定する
 

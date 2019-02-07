@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/17/2018
 ms.author: alzam
-ms.openlocfilehash: 53f7adcfbaaf84f50a6b724ef143b833a5f9bf78
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 1f89d6a33346abc8a84f5bc5c0e46e5431fb80ec
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887131"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510941"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>PowerShell を使用して VPN デバイス テンプレートをダウンロードする
 

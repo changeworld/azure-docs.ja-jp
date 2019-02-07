@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a0774c69c074698383e9c6f7f7cf9331e8939f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164437"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508812"
 ---
-# <a name="claimsproviders"></a>ClaimsProviders 
+# <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -35,7 +35,6 @@ ms.locfileid: "55164437"
         ...
     </TechnicalProfiles>
   </ClaimsProvider>
-</ClaimsProvider>
   ...
 </ClaimsProviders>
 ```
@@ -56,7 +55,7 @@ ms.locfileid: "55164437"
 | DisplayName | 0:1 | ユーザーに表示できるクレーム プロバイダーの名前を含む文字列。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | クレーム プロバイダーによってサポートされている技術プロファイルのセット |
 
-**ClaimsProvider** は、そのクレーム プロバイダーに関係がある技術プロファイルをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。 
+**ClaimsProvider** は、そのクレーム プロバイダーに関係がある技術プロファイルをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。
 
 ```XML
 <ClaimsProvider>
@@ -82,7 +81,7 @@ ms.locfileid: "55164437"
       ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-      ...    
+      ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
       ...
@@ -109,4 +108,3 @@ ms.locfileid: "55164437"
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
- 

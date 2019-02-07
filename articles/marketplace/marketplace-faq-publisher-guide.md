@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247121"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658336"
 ---
 # <a name="marketplace-faqs"></a>Marketplace に関する FAQ
 
@@ -358,7 +358,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 
 **リードとは何であり、それが Marketplace での発行元にとって重要なのはなぜですか?**
 
-リードとは、Marketplace から製品をデプロイしょうとしている顧客のことです。 製品が [Azure Marketplace](https://azuremarketplace.microsoft.com) または [AppSource](https://appsource.microsoft.com) のどちらに一覧表示されているかにかかわらず、その製品に関心があるお客様からリードを受信できます。  オファーに対するリードの宛先を設定できます。 詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)」を参照してください。
+リードとは、Marketplace から製品をデプロイしょうとしている顧客のことです。 製品が [Azure Marketplace](https://azuremarketplace.microsoft.com) または [AppSource](https://appsource.microsoft.com) のどちらに一覧表示されているかにかかわらず、その製品に関心があるお客様からリードを受信できます。  オファーに対するリードの宛先を設定できます。 詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照してください。
 
 **リードの送信先の設定方法に関するヘルプはどこで入手できますか?**
 

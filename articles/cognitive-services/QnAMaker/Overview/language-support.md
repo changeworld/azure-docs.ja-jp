@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/04/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 9d173fa6786778584abed30be0743559e691bde2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5a4938ec37cf006e5cd6342687e2c50cadd5272e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221948"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731072"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>QnA Maker の言語と地域のサポート
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: a7f09341c1362850409a940810a4e2dd20aa7f74
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 886c41f669d0b0363f4484b24ba3b9975904d9f7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745042"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492217"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 
@@ -132,6 +132,6 @@ Azure Portal にログインし、関連する Azure Recovery Services コンテ
 
 復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。
 
-仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。
+仮想マシンの保護に関する情報については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。
 
 VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

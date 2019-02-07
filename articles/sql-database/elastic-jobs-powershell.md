@@ -11,13 +11,13 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/03/2019
+ms.openlocfilehash: 04a4c23808489e17d1759904cb6df01cd15eaafa
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452753"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656687"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 

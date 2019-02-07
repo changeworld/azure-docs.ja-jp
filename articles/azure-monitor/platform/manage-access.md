@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 6c8f48ce71e11d1de0c28b4dab5327ab03e54f28
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231786"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656755"
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションごとに複数のワークスペースを用�
 
 * データ ストレージの地理的な場所
 * 異なるユーザー アクセス権を定義するためのデータの分離
-* [価格レベル](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#daily-cap)などの設定の構成のスコープ 
+* [価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)などの設定の構成のスコープ 
 
 消費の観点から、作成するワークスペースの数はできるだけ少なくすることをお勧めします。 これにより、管理とクエリのエクスペリエンスがより簡単かつ迅速になります。 ただし、上記の特性に基づき、次の条件に当てはまる場合は複数のワークスペースを作成してみてください。
 
