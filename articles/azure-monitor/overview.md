@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1c53dfb1447b0abd5b96d109a657eae5f5947118
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401437"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098032"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -66,7 +66,7 @@ Azure Monitor では、[Data Collector API](platform/data-collector-api.md) を�
 
 
 ## <a name="insights"></a>洞察
-データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 Azure Monitor には、アプリケーションやそれが依存するリソースに対する貴重な洞察を提供するいくつかの機能やツールが含まれています。 [監視ソリューション](insights/solutions.md)や [Application Insights](app/app-insights-overview.md) および Container Insights などの機能は、アプリケーションや特定の Azure サービスのさまざまな側面に対する深い洞察を提供します。 
+データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 Azure Monitor には、アプリケーションやそれが依存するリソースに対する貴重な洞察を提供するいくつかの機能やツールが含まれています。 [Application Insights](app/app-insights-overview.md) や[コンテナーに対する Azure Monitor](insights/container-insights-overview.md) などの[監視ソリューション](insights/solutions.md)と機能では、アプリケーションや特定の Azure サービスのさまざまな側面に対する詳細な分析情報が提供されます。 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) は、クラウドとオンプレミスのどちらにホストされているかにかかわらず、Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Azure Monitor の強力なデータ分析プラットフォームを利用し、ユーザーの報告を待つことなく、アプリケーション運用やエラー診断に対する深い洞察を提供します。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。
@@ -74,12 +74,12 @@ Azure Monitor では、[Data Collector API](platform/data-collector-api.md) を�
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
-コンテナーに対する Azure Monitor は、Azure Kubernetes Service (AKS) にホストされたマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。 Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを可視化します。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してこれらのメトリックとログが自動的に収集されます。
+[コンテナー向けの Azure Monitor](insights/container-insights-overview.md) は、Azure Kubernetes Service (AKS) でホストされるマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。 Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを可視化します。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してこれらのメトリックとログが自動的に収集されます。
 
 ![コンテナー正常性](media/overview/container-insights.png)
 
 ### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
-Azure Monitor VM Insights は、別のプロセスや、その他のリソースおよび外部プロセスと相互接続された依存関係まで含め、Windows および Linux VM のパフォーマンスと正常性を分析することによって、Azure 仮想マシン (VM) の大規模な監視を行います。 このソリューションでは、オンプレミスまたは別のクラウド プロバイダーにホストされた VM に対するパフォーマンスの監視およびアプリケーションの依存関係もサポートされています。  
+[Azure Monitor for VMs](insights/vminsights-overview.md) では、お使いの Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、その他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 このソリューションでは、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。  
 
 
 ![VM Insights](media/overview/vm-insights.png)

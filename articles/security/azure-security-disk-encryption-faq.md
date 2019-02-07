@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/21/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815236"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096851"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -40,10 +40,10 @@ Azure Disk Encryption は、[A、D、DS、G、GS、および F](https://azure.mi
 
 Azure Disk Encryption は、以下の Linux サーバーのディストリビューションおよびバージョンでサポートされます。
 
-| Linux ディストリビューション | Version | 暗号化がサポートされているボリュームの種類|
+| Linux ディストリビューション | バージョン | 暗号化がサポートされているボリュームの種類|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | OS とデータ ディスク |
-| Ubuntu | 14.04.5-DAILY-LTS | OS とデータ ディスク |
+| Ubuntu | 16.04| OS とデータ ディスク |
+| Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
 | RHEL | 7.5 | OS とデータ ディスク* |
 | RHEL | 7.4 | OS とデータ ディスク* |
 | RHEL | 7.3 | OS とデータ ディスク* |
@@ -59,12 +59,10 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | CentOS | 6.7 | データ ディスク |
 | CentOS | 6.6 | データ ディスク |
 | CentOS | 6.5 | データ ディスク |
-| openSUSE | 13.2 | データ ディスク |
-| SLES | 12 SP1 | データ ディスク |
-| SLES | 優先順位:12-SP1 | データ ディスク |
-| SLES | HPC 12 | データ ディスク |
-| SLES | 優先順位:11-SP4 | データ ディスク |
-| SLES | 11 SP4 | データ ディスク |
+| openSUSE | SUSE:openSUSE-Leap:42.3:latest | データ ディスク |
+| SLES | SUSE:SLES-Priority:12-SP4:latest | データ ディスク |
+| SLES | SUSE:SLES-HPC:12-SP3:latest | データ ディスク |
+| SLES | SUSE:SLES-Priority:12-SP3:latest | データ ディスク |
 
 
 *__RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。詳細については、[Linux での Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関する記事も参照してください。__

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: e51d31035a8b05238ef0f8d13dd6b6c3f9ad02e8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26374204"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099398"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
@@ -36,7 +36,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [FortiGate の構成](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-サイト間構成を構成するための詳細なステップ バイ ステップ ガイダンスについては、「[Azure Portal を使用したサイト間接続を持つ VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」をご覧ください。
+サイト対サイト構成を構成するための詳細なガイダンスについては、[Azure portal を使用したサイト対サイト接続を含む VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。
 
 最も重要な構成の手順の 1 つは、IPsec コミュニケーション パラメーターの構成です。いかなる構成の誤りでも、オンプレミス ネットワークと Azure との間の接続は失われます。 Azure VPN Gateway は現在、以下のフェーズ 1 の IPsec パラメーターをサポートするように構成されています。 既に説明したように、これらの設定は修正できないことに注意してください。  次の表に示すように、Azure VPN Gateway でサポートされている暗号化アルゴリズムは、AES256、AES128、3DES です。
 
@@ -81,13 +81,13 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
-| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
-| PlatformInActive | プラットフォームに問題があります。 | なし|
-| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ|
-| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| なし|
+| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ |
+| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ |
+| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ  |
+| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ  |
+| PlatformInActive | プラットフォームに問題があります。 | いいえ |
+| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
+| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| いいえ |
 | ConnectionsNotConnected | どの接続も接続されていません。 これはただの警告です。| はい|
 | GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
@@ -96,20 +96,20 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
-| PlannedMaintenance | ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
-| ConnectionEntityNotFound | 接続の構成がありません。 | なし |
-| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
+| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ |
+| PlannedMaintenance | ゲートウェイ インスタンスはメンテナンス中です。  |いいえ |
+| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ  |
+| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ  |
+| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
+| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
 | ConnectionNotConfiguredOnGateway | 基になるサービスで接続が構成されていません。 | はい |
-| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
-| 認証 | 事前共有キーが一致しません。 | はい|
+| ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
+| Authentication | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
 | WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 PowerShell と Azure Automation を使用した VPN Gateway の接続の確認については、[Azure Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視](network-watcher-monitor-with-azure-automation.md)に関する記事をご覧ください。
 

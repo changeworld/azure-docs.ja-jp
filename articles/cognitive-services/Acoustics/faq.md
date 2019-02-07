@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 07e65e6ff544d6372197010a2b9d7f3f647eeb0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166562"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -69,7 +69,7 @@ Project Acoustics は、アーキテクチャのすべての側面を考慮に�
 
 ## <a name="what-exactly-happens-during-baking"></a>"ベイク" の間、正確には何が起きているのですか?
 
-システムは潜在的なプレイヤー位置を考慮して、一定間隔の "プローブ" サンプル位置を生成します。 レベルのベイクは、プローブごとの独立したタスクで構成されます: システムはプローブを中心にした直方体の "シミュレーション領域" を考慮し、その領域内で最大 25 cm の解像度で詳細な波動シミュレーションを行います。
+システムは潜在的なプレイヤー位置を考慮して、一定間隔の "プローブ" サンプル位置を生成します。 レベルのベイクは、プローブごとの独立したタスクで構成されます。システムはプローブを中心にした直方体の "シミュレーション領域" を考慮し、その領域内で最大 25 cm の解像度で詳細な波動シミュレーションを行います。
 
 ## <a name="next-steps"></a>次の手順
 * [サンプル シーン](sample-walkthrough.md)を調査する

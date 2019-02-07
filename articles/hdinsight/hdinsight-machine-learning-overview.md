@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84ce13f78a9c597c780cb0dfa0fa5d16e6175b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743002"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077728"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -42,13 +42,13 @@ Azure Machine Learning は、予測分析をモデル化するためのツール
 
 ![Microsoft Azure Machine Learning により高度な分析で Hadoop にアクセスできるようにする](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure ML から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/studio/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
+[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/studio/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [ディープ ラーニング](https://www.microsoft.com/en-us/research/group/dltc/)は、人間の脳の生物学的プロセスから着想を得た、ニューラル ネットワークを使用する機械学習の 1 分野です。 多くの研究者がディープ ラーニングを、人工知能を拡張するための将来性のあるアプローチとして見ています。 ディープ ラーニングの例には、音声言語翻訳機、画像認識システム、および機械推論があります。
 
-ディープ ラーニングにおける独自の機能の進歩に役立つように、Microsoft は無料で、使いやすい、オープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、ディープ ラーニングを大規模に展開する必要がある世界中の企業や、最新のアルゴリズムと手法に関心がある学生によって、さまざまな Microsoft 製品で使用されています。 
+ディープ ラーニングにおける独自の機能の進歩に役立つように、Microsoft は無料で、使いやすい、オープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、ディープ ラーニングを大規模に展開する必要がある世界中の企業や、最新のアルゴリズムと手法に関心がある学生によって、さまざまな Microsoft 製品で使用されています。
 
 ## <a name="see-also"></a>関連項目
 

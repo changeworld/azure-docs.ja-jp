@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Docs
 description: Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ddc8a42f4e0454061fa645b8c5d465e9e8dd9bf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2100e2fcc085efc50a72e0f9d339621800563bb3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445171"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153285"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
+# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル:Azure Active Directory と SciQuest Spend Director の統合
 
 このチュートリアルでは、SciQuest Spend Director と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -130,7 +130,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 1. **SciQuest Spend Director** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SciQuest Spend Director サポート チーム](https://www.jaggaer.com/contact-us/)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -211,7 +211,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで SciQuest Spend Director のタイルをクリックすると、自動的に SciQuest Spend Director アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

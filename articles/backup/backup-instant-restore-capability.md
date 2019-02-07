@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a5afdd0dca55a5df075acb99e488c932196d95c5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351398"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092300"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
-> **VM バックアップ スタック V2** を Azure スタックと混同してしまうというユーザーからのフィードバックに基づき、**インスタント リストア**に名前を変更しました。これにより、アップグレードされたより優れたエクスペリエンスが提供されます。
+> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を**VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 

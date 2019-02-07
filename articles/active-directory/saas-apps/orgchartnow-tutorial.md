@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OrgChart Now の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OrgChart Now の統合 | Microsoft Docs
 description: Azure Active Directory と OrgChart Now の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e23d76074f4b428b672e0cd5aeeaba99d080a4cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 65f11b5a65adf86b4115b54b49b10c57ebf21a98
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435936"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154135"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル: Azure Active Directory と OrgChart Now の統合
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル:Azure Active Directory と OrgChart Now の統合
 
 このチュートリアルでは、OrgChart Now と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -240,7 +240,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [OrgChart Nowt] タイルをクリックすると、自動的に OrgChart Now アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

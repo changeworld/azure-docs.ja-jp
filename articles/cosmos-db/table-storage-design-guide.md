@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331964"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913599"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -252,7 +252,7 @@ Table service は 1 つのクラスター化インデックス内の **Partition
 
 ### <a name="sorting-data-in-the-table-service"></a>Table service でデータを並べ替える
 
-クエリ結果は、**PartitionKey** 次に **RowKey** に基づいた昇順で並べ替えられます。
+Table service によって返されるクエリ結果は、最初に **PartitionKey**、次に **RowKey** に基づいて、昇順に並べ替えられます。
 
 > [!NOTE]
 > Azure Cosmso DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b4b49cd679ee5d770696b4fa5cc29ebdd908cecf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816346"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093123"
 ---
 # <a name="application-types-in-v10"></a>v1.0 でのアプリケーションの種類
 
@@ -33,11 +33,11 @@ Azure Active Directory (Azure AD) は、さまざまな最新アプリ アーキ
 
 Azure AD でサポートされる 5 つの主要なアプリケーション シナリオは、次のとおりです。
 
-- **[シングル ページ アプリケーション (SPA)](single-page-application.md)**: ユーザーは、Azure AD によって保護されたシングル ページ アプリケーションにサインインする必要があります。
-- **[Web ブラウザー対 Web アプリケーション](web-app.md)**: ユーザーは、Azure AD によって保護された Web アプリケーションにサインインする必要があります。
-- **[ネイティブ アプリケーション対 Web API](native-app.md)**: スマートフォン、タブレット、または PC で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するために、ユーザーを認証する必要があります。
-- **[Web アプリケーション対 Web API](web-api.md)**: Web アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
-- **[デーモンまたはサーバー アプリケーション対 Web API](service-to-service.md)**: Web ユーザー インターフェイスを備えていないデーモン アプリケーションまたはサーバー アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
+- **[シングルページ アプリケーション (SPA)](single-page-application.md)**:ユーザーは、Azure AD によって保護されたシングル ページ アプリケーションにサインインする必要があります。
+- **[Web ブラウザー対 Web アプリケーション](web-app.md)**:ユーザーは、Azure AD によって保護された Web アプリケーションにサインインする必要があります。
+- **[ネイティブ アプリケーション対 Web API](native-app.md)**:スマートフォン、タブレット、または PC で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するために、ユーザーを認証する必要があります。
+- **[Web アプリケーション対 Web API](web-api.md)**:Web アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
+- **[デーモンまたはサーバー アプリケーション対 Web API](service-to-service.md)**:Web ユーザー インターフェイスを備えていないデーモン アプリケーションまたはサーバー アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 
 コードの作業を始める前に、各アプリの種類の詳細を学習し、シナリオの概要を理解するには、リンクに従ってください。 v1.0 エンドポイントまたは v2.0 エンドポイントで動作する特定のアプリの作成時に知っておく必要がある相違点について学習することもできます。
 

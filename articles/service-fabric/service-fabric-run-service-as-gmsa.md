@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 5f93285061708172b9b6ac40dc97fce08f7b2a86
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 56a7478ab7221a1ccb4394a245540d3181e4ad8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206715"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155580"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>グループ管理サービス アカウントでのサービスの実行
 Windows Server のスタンドアロン クラスターで、RunAs ポリシーを使用してサービスをグループ管理サービスアカウント (gMSA) として実行できます。  既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 これは、ドメイン内のオンプレミスの Active Directory を使用しており、Azure Active Directory (Azure AD) ではないことに注意してください。 gMSA を使用することで、パスワードや暗号化されたパスワードがアプリケーション マニフェストに格納されることがなくなります。  また、[Active Directory ユーザーまたはグループ](service-fabric-run-service-as-ad-user-or-group.md)としてサービスを実行することもできます。
@@ -32,7 +32,7 @@ Windows Server のスタンドアロン クラスターで、RunAs ポリシー�
 
 1. Active Directory ドメイン管理者に、`New-ADServiceAccount` コマンドレットを使用してグループ管理サービス アカウントを作成してもらい、すべてのサービス ファブリック クラスター ノードが `PrincipalsAllowedToRetrieveManagedPassword` に含まれるようにします。 `AccountName`、`DnsHostName`、および `ServicePrincipalName` は一意である必要があります。
 
-    ```poweshell
+    ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
@@ -68,8 +68,7 @@ Windows Server のスタンドアロン クラスターで、RunAs ポリシー�
 > サービスに RunAs ポリシーを適用し、サービス マニフェストで HTTP プロトコルのエンドポイント リソースを宣言する場合は、**SecurityAccessPolicy** を指定する必要があります。  詳細については、[HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる](service-fabric-assign-policy-to-endpoint.md)をご覧ください。 
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-次の手順については、次の記事を参照してください。
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged--> 次の手順については、次の記事を参照してください。
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)

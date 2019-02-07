@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469751"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912784"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -119,9 +119,9 @@ ms.locfileid: "54469751"
 
 | Name | 制限 | メモ |
 |------|-------|-------|
-| FTP | 50 MB | この制限を超えるには、[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
-| SFTP | 50 MB | この制限を超えるには、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用するか、または[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
-| SFTP-SSH | 1 GB | このコネクタにより最大 1 GB が処理されますが、そのデータが転送される際は、1 GB 単位ではなく、50 MB 単位です。 | 
+| FTP | 50 MB | アクションに対してのみこの制限を超えるには、[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 <p>**メモ**:チャンクはトリガーには適用されません。 また、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP | 50 MB | アクションに対してのみこの制限を超えるには、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用するか、または[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 <p>**メモ**:チャンクはトリガーには適用されません。 また、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP-SSH | 1 GB | このコネクタにより最大 1 GB が処理されますが、そのデータが転送される際は、1 GB 単位ではなく、50 MB 単位です。 アクションに対してのみこの制限を超えるには、[チャンクを使用した大きなメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページを参照してください。 <p>**メモ**:チャンクはトリガーには適用されません。 | 
 |||| 
 
 <a name="request-limits"></a>

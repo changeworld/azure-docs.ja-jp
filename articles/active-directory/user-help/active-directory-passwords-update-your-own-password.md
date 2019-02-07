@@ -7,18 +7,18 @@ manager: daveba
 ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 22cb3b908301c298bd7d37f39fbcb1ffa1d0d3ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ccafd3c93130b137573a1b143d182c4861693577
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168908"
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 

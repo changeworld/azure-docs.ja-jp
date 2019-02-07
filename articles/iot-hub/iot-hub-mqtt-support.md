@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052038"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913574"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -198,20 +198,18 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 要求 ID には、[IoT Hub メッセージング開発者ガイド][lnk-messaging]に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
 
-応答本文には、デバイス ツインのプロパティ セクションが含まれます。 次のスニペットは、"properties" メンバーに限定された ID レジストリ エントリの本文を示します。以下に例を示します。
+次の応答の例で示されているように、応答本文にはデバイス ツインのプロパティ セクションが含まれます。
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -220,7 +218,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 |Status | 説明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功 (コンテンツは返されません) |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 

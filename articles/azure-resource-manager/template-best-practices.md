@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730721"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077942"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -82,7 +82,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * `allowedValues` は慎重に使用してください。 許可されているオプションに、ある値が含まれていないことを確認する必要がある場合にのみ使用します。 `allowedValues` を盛大に使用しすぎると、ご自身の一覧が最新の状態に保たれなくなり、有効なデプロイをブロックしてしまう可能性があります。
 
-* お使いのテンプレートのパラメーター名と PowerShell デプロイ コマンドのパラメーターが同じ場合は、Resource Manager によって、ポストフィックス **FromTemplate** がテンプレート パラメーターに追加され、この名前の競合が解決されます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
+* お使いのテンプレートのパラメーター名と PowerShell デプロイ コマンドのパラメーターが同じ場合は、Resource Manager によって、ポストフィックス **FromTemplate** がテンプレート パラメーターに追加され、この名前の競合が解決されます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
 
 ### <a name="security-recommendations-for-parameters"></a>パラメーターに関するセキュリティの推奨事項
 

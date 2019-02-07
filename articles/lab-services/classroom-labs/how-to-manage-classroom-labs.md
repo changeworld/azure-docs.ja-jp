@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1207b1b21e2d2ee229f5bea068b99f3b3218b1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 9576854fbad88724f3d229d239b9d3e263fb7492
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389116"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912403"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -32,7 +32,7 @@ ms.locfileid: "54389116"
 2. **[サインイン]** をクリックします。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
-    2. ラボ内で許可される**ユーザー数**を指定します。 
+    2. ラボでの**仮想マシンの数**の最大値を指定します。 ラボの仮想マシンの数は、後で増やしたり減らしたりできます。 
     6. **[保存]** を選択します。
 
         ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)

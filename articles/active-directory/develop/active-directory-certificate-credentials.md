@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d9e877fd648c28564f5eccc46f9c20741fe446f8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578672"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076317"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
@@ -45,12 +45,12 @@ Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情
 
 | パラメーター |  解説 |
 | --- | --- |
-| `aud` | 対象ユーザー: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** である必要があります。 |
+| `aud` | Audience:**https://login.microsoftonline.com/*tenant_Id*/oauth2/token** でなければなりません |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 | `jti` | GUID: JWT ID |
 | `nbf` | 期間の開始時刻: トークンの使用開始日。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |
-| `sub` | 件名: `iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
+| `sub` | 件名:`iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 
 ### <a name="signature"></a>署名
 

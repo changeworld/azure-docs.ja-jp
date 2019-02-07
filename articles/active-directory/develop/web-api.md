@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,19 +16,19 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: e4ed0db3a08937c3c8b51e2c8af5e566b59df4c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970959"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097301"
 ---
 # <a name="web-api"></a>Web API
 
 Web API アプリケーションは、Web API からリソースを取得する必要がある Web アプリケーションです。 このシナリオでは、Web アプリケーションは、認証と Web API の呼び出しに 2 種類の ID を使用できます。
 
 - **アプリケーション ID**: このシナリオでは OAuth 2.0 クライアント資格情報付与を使用して、アプリケーションとして認証し、Web API にアクセスできます。 アプリケーション ID を使用すると、Web API はユーザーに関する情報を受け取らないので、Web アプリケーションから呼び出されていることだけを検出できます。 アプリケーションがユーザーに関する情報を受け取った場合、その情報はアプリケーション プロトコルによって送信されるので、Azure AD による署名は行われません。 Web API は、Web アプリケーションがユーザーを認証済みであることを信頼します。 そのため、このパターンは信頼されたサブシステムと呼ばれます。
-- **委任ユーザー ID**: OpenID Connect と、秘密のクライアントを使用した OAuth 2.0 認証コード付与の 2 とおりの方法でシナリオを実行できます。 Web アプリケーションは、ユーザーのアクセス トークンを取得することで、ユーザーが Web アプリケーションに対して正常に認証されたことと、Web アプリケーションが Web API を呼び出すために委任ユーザー ID を取得できたことを Web API に証明します。 このアクセス トークンが要求で Web API に送信されます。Web API がユーザーを認証し、目的のリソースを返します。
+- **委任ユーザー ID** - このシナリオは、OpenID Connect と、OAuth 2.0 Confidential クライアントで付与される承認コードという 2 つの方法で実現できます。 Web アプリケーションは、ユーザーのアクセス トークンを取得することで、ユーザーが Web アプリケーションに対して正常に認証されたことと、Web アプリケーションが Web API を呼び出すために委任ユーザー ID を取得できたことを Web API に証明します。 このアクセス トークンが要求で Web API に送信されます。Web API がユーザーを認証し、目的のリソースを返します。
 
 以下のフローでは、アプリケーション ID と委任ユーザー ID の両方について説明します。 これらの ID の重要な違いは、委任ユーザー ID では、まず承認コードを取得しておかないと、ユーザーがサインインし、Web API にアクセスすることはできない点です。
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Accredible の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Accredible の統合 | Microsoft Docs
 description: Azure Active Directory と Accredible の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: b997d03534fdd7c5075b1bd483dac9ad5e1ddbd3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c5eaa0944210e701c306180709bf97abdbb3b9e3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048329"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151279"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル: Azure Active Directory と Accredible の統合
+# <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル:Azure Active Directory と Accredible の統合
 
 このチュートリアルでは、Accredible と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +132,7 @@ Accredible で Azure AD のシングル サインオンを構成してテスト�
 6. **Accredible** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,7 +168,7 @@ Accredible で Azure AD のシングル サインオンを構成してテスト�
   
 ### <a name="create-an-accredible-test-user"></a>Accredible テスト ユーザーの作成
 
-このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーの emailid を [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
+このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーの emailid を  [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
  
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -205,7 +205,7 @@ Accredible で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Accredible] タイルをクリックすると、自動的に Accredible アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

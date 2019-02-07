@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Montage Online の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Montage Online の統合 | Microsoft Docs
 description: Azure Active Directory と Montage Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e11c97ecb33c1b1a37891a521c0375b39ad8a956
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439920"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158708"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>チュートリアル: Azure Active Directory と Montage Online の統合
+# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>チュートリアル:Azure Active Directory と Montage Online の統合
 
 このチュートリアルでは、Montage Online と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -171,7 +171,7 @@ Montage Online で Azure AD のシングル サインオンを構成してテス
  
 ### <a name="create-a-montage-online-test-user"></a>Montage Online のテスト ユーザーの作成
 
-このセクションでは、Montage Online で Britta Simon というユーザーを作成します。 [Montage Online サポート チーム](https://www.montage.co.nz/contact-us/)と連携し、Montage Online プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Montage Online で Britta Simon というユーザーを作成します。  [Montage Online サポート チーム](https://www.montage.co.nz/contact-us/)と連携し、Montage Online プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -208,7 +208,7 @@ Montage Online で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Montage Online] タイルをクリックすると、自動的に Montage Online アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

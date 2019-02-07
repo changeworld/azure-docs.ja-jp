@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728042"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912035"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 
@@ -124,8 +124,8 @@ REST の例については、[REST を使用したファイルのアップロー
 |---|---|
 |**endTimestamp**|終了時間の絶対的境界です。 ビデオ オン デマンド (VOD) が対象となります。 ライブ プレゼンテーションでは暗黙的に無視され、プレゼンテーションが終了してストリームが VOD になったときに適用されます。<br/><br/>この値は、ストリームの絶対的な終了点を表します。 最も近い次の GOP 開始に丸められます。<br/><br/>プレイリスト (マニフェスト) をトリミングするには、startTimestamp と endTimestamp を使用します。 たとえば、startTimestamp を 40000000、endTimestamp を 100000000 とした場合、startTimestamp から endTimestamp までのメディアを含んだプレイリストが生成されます。 その境界をフラグメントがまたいだ場合、フラグメント全体がマニフェストに含められます。<br/><br/>この後の「**forceEndTimestamp**」の定義も参照してください。|
 |**forceEndTimestamp**|ライブ フィルターが対象となります。<br/><br/>**forceEndTimestamp** は、**endTimestamp** が有効な値に設定されたかどうかを示すブール値です。 <br/><br/>この値が **true** である場合、**endTimestamp** の値を指定する必要があります。 指定しなかった場合、無効な要求が返されます。<br/><br/>たとえば、入力ビデオの 5 分の位置を起点としてストリームの最後まで持続するフィルターを定義したいとします。その場合、**forceEndTimestamp** を false に設定し、**endTimestamp** の設定は省略することになります。|
-|**liveBackoffDuration**|ライブのみが対象となります。 このプロパティは、ライブ再生位置を定義するために使用します。 このルールを使用すると、ライブ再生位置を遅らせ、プレーヤーのためにサーバー側のバッファーを作成することができます。 LiveBackoffDuration は、ライブ位置を基準とします。 最大ライブ バックオフ期間は 60 秒です。|
-|**presentationWindowDuration**|ライブが対象となります。 プレイリストにスライディング ウィンドウを適用するには、**presentationWindowDuration** を使用します。 たとえば、2 分のスライディング ウィンドウを適用するには、presentationWindowDuration を 1200000000 に設定します。 ライブ エッジの 2 分以内のメディアがプレイリストに含められます。 その境界をフラグメントがまたいだ場合、フラグメント全体がプレイリストに含められます。 最小プレゼンテーション ウィンドウ期間は 120 秒です。|
+|**liveBackoffDuration**|ライブのみが対象となります。 このプロパティは、ライブ再生位置を定義するために使用します。 このルールを使用すると、ライブ再生位置を遅らせ、プレーヤーのためにサーバー側のバッファーを作成することができます。 LiveBackoffDuration は、ライブ位置を基準とします。 最大ライブ バックオフ期間は 300 秒です。|
+|**presentationWindowDuration**|ライブが対象となります。 プレイリストにスライディング ウィンドウを適用するには、**presentationWindowDuration** を使用します。 たとえば、2 分のスライディング ウィンドウを適用するには、presentationWindowDuration を 1200000000 に設定します。 ライブ エッジの 2 分以内のメディアがプレイリストに含められます。 その境界をフラグメントがまたいだ場合、フラグメント全体がプレイリストに含められます。 最小プレゼンテーション ウィンドウ期間は 60 秒です。|
 |**startTimestamp**|VOD またはライブ ストリームが対象となります。 この値は、ストリームの絶対的な開始点を表します。 この値は最も近い次の GOP 開始に丸められます。<br/><br/>プレイリスト (マニフェスト) をトリミングするには、**startTimestamp** と **endTimestamp** を使用します。 たとえば、startTimestamp を 40000000、endTimestamp を 100000000 とした場合、startTimestamp から endTimestamp までのメディアを含んだプレイリストが生成されます。 その境界をフラグメントがまたいだ場合、フラグメント全体がマニフェストに含められます。|
 |**timescale**|VOD またはライブ ストリームが対象となります。 上記のタイムスタンプと期間によって使用されるタイムスケールです。 既定のタイムスケールは 10000000 です。 代替タイムスケールを使用できます。 既定値は 10000000 HNS (Hundred NanoSecond: 100 ナノ秒) です。|
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Zoho One の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Zoho One の統合 | Microsoft Docs
 description: Azure Active Directory と Zoho One の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 81e86df270a7286426363c26a0e8a87b99082428
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 22563ec52459d4cd332a6e97df95348a74c3ae16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438275"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152350"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル: Azure Active Directory と Zoho One の統合
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル:Azure Active Directory と Zoho One の統合
 
 このチュートリアルでは、Zoho One と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -264,7 +264,7 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Zoho One のタイルをクリックすると、自動的に Zoho One アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

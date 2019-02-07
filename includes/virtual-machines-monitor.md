@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404684"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147994"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -41,7 +41,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 [Azure Resource Health](../articles/service-health/resource-health-overview.md) によって、Azure で発生した問題がお客様のリソースに影響を及ぼす場合に、診断とサポートを受けられます。 リソースの現在と過去の正常性に関する情報が表示され、問題を軽減するのに役立ちます。 Resource Health は、Azure のサービスの問題についてサポートが必要な場合にテクニカル サポートを提供します。
 
-## <a name="logs"></a>ログ
+## <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
 
 [Azure アクティビティ ログ](../articles/azure-monitor/platform/activity-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 このログには、Azure Resource Manager の運用データからサービス正常性イベントの更新まで、さまざまなデータが含まれています。 Azure Portal で [アクティビティ ログ] をクリックすると、VM のログを表示できます。
 
@@ -64,11 +64,13 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) または [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) に拡張機能をインストールできます。この拡張機能によって、Log Analytics エージェントがインストールされ、VM が既存の Log Analytics ワークスペースに登録されます。
+- [Azure Monitor](../articles/azure-monitor/overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 クラウドおよびオンプレミス環境のテレメトリを収集、分析し、対応する包括的なソリューションを提供します。 このツールは、ご利用のアプリケーションがどのように実行されているかを把握するのに役立ちます。さらに、このツールにより、そのアプリケーションに影響している問題点およびアプリケーションが依存しているリソースを事前に明らかにしておくことができます。 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) または [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) に拡張機能をインストールできます。この拡張機能によって、ログ データの収集と Log Analytics ワークスペースへの保存を行う Log Analytics エージェントがインストールされます。
 
-    Windows VM および Linux VM の場合、ログとメトリックを収集するための推奨される方法は、Log Analytics エージェントをインストールすることです。 VM に Log Analytics エージェントをインストールする方法としては、[Log Analytics VM 拡張機能](../articles/log-analytics/log-analytics-azure-vm-extension.md)を使用するのが最も簡単です。 この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
+    Windows VM および Linux VM の場合、ログを収集するための推奨される方法は、Log Analytics エージェントをインストールすることです。 VM に Log Analytics エージェントをインストールする方法としては、[Log Analytics VM 拡張機能](../articles/log-analytics/log-analytics-azure-vm-extension.md)を使用するのが最も簡単です。 この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
 
 - [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) を使用すると、VM とその関連リソースをそれらが属しているネットワークの観点から監視することができます。 Network Watcher Agent 拡張機能は、[Linux VM](../articles/virtual-machines/linux/extensions-nwa.md) または [Windows VM](../articles/virtual-machines/windows/extensions-nwa.md) にインストールできます。
+
+- [Azure Monitor for VMs](../articles/azure-monitor/insights/vminsights-overview.md) では、Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、その他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 
 
 ## <a name="next-steps"></a>次の手順
 - 「[Azure PowerShell を使用した Windows 仮想マシンの監視](../articles/virtual-machines/windows/tutorial-monitoring.md)」または [Azure CLI を使用した Linux 仮想マシンの監視](../articles/virtual-machines/linux/tutorial-monitoring.md)に関するページの手順を参照します。

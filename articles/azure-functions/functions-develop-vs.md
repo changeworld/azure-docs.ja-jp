@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515377"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098083"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -78,12 +78,12 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 Functions 1.x の対象は .NET Framework で、Functions 2.x の対象は .NET Standard です。 新しいプロジェクトには次のファイルが含まれます。
 
-* **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+* **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な変数のアプリ設定を指定します。  プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な変数のアプリ設定を指定します。  プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
 
     >[!IMPORTANT]
-    >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定は、常に **[新しい場合はコピーする]** である必要があります。 
+    >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定は、常に **[新しい場合はコピーする]** にする必要があります。 
 
 詳細については、「[関数クラス ライブラリ プロジェクト](functions-dotnet-class-library.md#functions-class-library-project)」を参照してください。
 
@@ -115,7 +115,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
     たとえば、次の C# クラスは基本的な Queue Storage トリガー関数を表します。
 
-    ````csharp
+    ```csharp
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
@@ -132,7 +132,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
             }
         }
     }
-    ````
+    ```
     バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして **QueueTrigger** 属性に渡されます。 詳細については、[Azure Functions での Azure Queue ストレージのバインド](functions-bindings-storage-queue.md#trigger---c-example)に関する記事を参照してください。
     
 上記の手順を使用して、複数の関数を関数アプリ プロジェクトに追加できます。 プロジェクト内の各関数で異なるトリガーを使用できますが、1 つの関数には 1 つのトリガーのみを使用する必要があります。 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。

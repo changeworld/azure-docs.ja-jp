@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb82ef542db09b3b7f864c4901107e1c5c0827f6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464784"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094720"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 

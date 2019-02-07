@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: c626601d9eae7732779020b153c624f80605b56a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fcf18731bd5b9bbe91541931ac68effd9de6debf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051877"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104696"
 ---
 # <a name="connect-to-a-data-source"></a>データ ソースへの接続
 

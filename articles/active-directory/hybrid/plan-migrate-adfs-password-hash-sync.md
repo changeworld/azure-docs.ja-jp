@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a24281f2b01b53ddb165d15bca4d8d43c26c5c05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463339"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159856"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -30,7 +30,8 @@ AD FS の使用からパスワード ハッシュ同期の使用に移行する�
 
 ### <a name="update-azure-ad-connect"></a>Azure AD Connect を更新する
 
-パスワード ハッシュ同期の使用への移行手順を正常に完了するには、[Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 以降のバージョンが必要です。 Azure AD Connect 1.1.819.0 では、サインイン変換の実行方法が大幅に変更されています。 このバージョンでは、AD FS からクラウド認証への移行にかかる時間が、全体で数時間から数分に短縮できる可能性があります。
+パスワード ハッシュ同期に移行する手順を正常に実行するには、最低でも [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0 が必要です。 このバージョンでは、サインイン変換の実行方法が大幅に変更されており、フェデレーションからクラウド認証への移行にかかる時間全体が数時間から数分に短縮できる可能性があります。
+
 
 > [!IMPORTANT]
 > 古いドキュメント、ツール、およびブログでは、ドメインをフェデレーション ID からマネージド ID に変換する際に、ユーザーの変換が必要であると記載されている場合があります。 "*ユーザーの変換*" は必要なくなりました。 Microsoft では、この変更を反映するようにドキュメントやツールを更新しています。
@@ -180,7 +181,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 ### <a name="plan-the-maintenance-window"></a>メンテナンス期間の計画
 
-ドメイン変換プロセスは比較的高速ですが、Azure AD ではドメイン変換の終了後も最大 4 時間、何らかの認証要求を AD FS サーバーに送信し続ける可能性があります。 この 4 時間の間に、さまざまなサービス側のキャッシュによっては、これらの認証が Azure AD で受け入れられない可能性があります。 ユーザーはエラーを受け取る可能性があります。 ユーザーはまだ AD FS に対して正常に認証できますが、フェデレーションの信頼は削除されるため、Azure AD ではユーザーの発行したトークンを受け入れなくなります。
+ドメイン変換プロセスは比較的高速ですが、Azure AD ではドメイン変換の終了後も最大 4 時間、何らかの認証要求を AD FS サーバーに送信し続ける可能性があります。 この 4 時間の期間に、さまざまなサービス側のキャッシュによっては、これらの認証が Azure AD で受け入れられない可能性があります。 ユーザーはエラーを受け取る可能性があります。 ユーザーはまだ AD FS に対して正常に認証できますが、フェデレーションの信頼は削除されるため、Azure AD ではユーザーの発行したトークンが受け入れられなくなります。
 
 この変換後の期間に、サービス側のキャッシュがクリアされるまでに Web ブラウザーを介してサービスにアクセスするユーザーのみが影響を受けます。 レガシ クライアント (Exchange ActiveSync、Outlook 2010/2013) に影響することはありません。Exchange Online では、一定の期間、それらの資格情報のキャッシュが保持されるためです。 キャッシュは、ユーザーを自動的に再認証するために使用されます。 ユーザーが AD FS に戻る必要はありません。 これらのクライアントのためにデバイスに格納されている資格情報は、このキャッシュがクリアされた後、自身を自動的に再認証するために使用されます。 ドメイン変換プロセスの結果として、パスワードの入力を求めるメッセージがユーザーに表示されることはありません。 
 
@@ -261,7 +262,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 デバイスでシームレス SSO を使用する場合は、Active Directory のグループ ポリシーを使って、ユーザーのイントラネット ゾーン設定に Azure AD URL を追加する必要があります。
 
-既定では、Web ブラウザーで、URL から適切なゾーン (インターネットまたはイントラネット) を自動的に判断します。 たとえば、**http:\/\/contoso/** はイントラネット ゾーンにマップされ、**http:\/\/intranet.contoso.com** はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、URL をブラウザーのイントラネット ゾーンに明示的に追加した場合にのみ、ブラウザーから Kerberos チケットがクラウド エンドポイントに送信されます。
+既定では、Web ブラウザーで、URL から適切なゾーン (インターネットまたはイントラネット) が自動的に判断されます。 たとえば、**http:\/\/contoso/** はイントラネット ゾーンにマップされ、**http:\/\/intranet.contoso.com** はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、URL をブラウザーのイントラネット ゾーンに明示的に追加した場合にのみ、ブラウザーから Kerberos チケットがクラウド エンドポイントに送信されます。
 
 必要な変更をデバイスに[ロールアウト](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)する手順を完了してください。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4688acbb2742579e0f9f3fbb2604ffd8ef12bfd5
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468689"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081043"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 
@@ -41,10 +41,10 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
-リージョンで利用可能な SKU を特定するには、[Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) コマンドを使用します。 結果を場所でフィルター処理します。 このコマンドには、PowerShell の最新バージョンが必要です。
+リージョンで利用可能な SKU を特定するには、[Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) コマンドを使用します。 結果を場所でフィルター処理します。 このコマンドには、PowerShell の最新バージョンが必要です。
 
 ```azurepowershell-interactive
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
+Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
 結果には、目的の場所で利用可能な SKU の一覧とその SKU に関する制約事項が含まれます。 SKU は `NotAvailableForSubscription` として表示される場合があります。

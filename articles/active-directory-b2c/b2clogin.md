@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する | Microsoft Docs
+title: b2clogin.com にリダイレクト URL を設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C のリダイレクト URL での b2clogin.com の使用について説明します。
 services: active-directory-b2c
 author: davidmu1
@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 147d8e80c66bd47ed56400deca024532fc7e39c7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844928"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160906"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -23,8 +23,8 @@ Azure Active Directory (Azure AD) B2C アプリケーションへのサインア
 
 b2clogin.com を使用すると、次のような利点が加わります。
 
-- Cookie は、他の Microsoft サービスと共有されなくなりました。
-- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 」のように入力します。
+- Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
+- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp` 」のように入力します。
 
 b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
 
@@ -60,7 +60,9 @@ ID プロバイダーの設定情報については、次の記事を参照し�
 
 ## <a name="set-the-validateauthority-property"></a>ValidateAuthority プロパティの設定
 
-MSAL を使用している場合は、**ValidateAuthority** を `false` に設定します。 次の例は、このプロパティを設定する方法を示しています。
+MSAL を使用している場合は、**ValidateAuthority** プロパティを `false` に設定します。 **ValidateAuthority** が `false` に設定されると、b2clogin.com へのリダイレクトが許可されます。 
+
+次の例は、このプロパティを設定する方法を示しています。
 
 [MSAL for .Net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) の場合:
 

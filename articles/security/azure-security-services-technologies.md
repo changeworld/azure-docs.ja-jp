@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2018
+ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6f571655bb0501f8ef4018bf47588c8db4cc2a3e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384889"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097667"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -30,7 +30,7 @@ ms.locfileid: "49384889"
 時間の経過と共に、このリストは Azure と同様に変更および増加します。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
 ## <a name="general-azure-security"></a>Azure の全般的なセキュリティ
-|Service|説明|
+|サービス|説明|
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| ハイブリッド クラウド ワークロード全体でセキュリティ管理と高度な脅威保護を実現するクラウドのワークロードを保護するソリューションです。|
 |[Azure Key Vault](../key-vault/key-vault-overview.md)| パスワード、接続文字列およびアプリの動作に必要なその他の情報を格納するセキュリティで保護された機密データ ストアです。 |
@@ -40,7 +40,7 @@ ms.locfileid: "49384889"
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>ストレージのセキュリティ
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Storage&nbsp;Service&nbsp;Encryption](../storage/common/storage-service-encryption.md)|Azure ストレージのデータを自動的に暗号化するセキュリティ機能です。   |
 |[StorSimple のハイブリッド ストレージの暗号化](../storsimple/storsimple-ova-overview.md)| オンプレミスのデバイスと Azure クラウド ストレージ間のストレージ タスクを管理する統合ストレージ ソリューションです。|
@@ -53,7 +53,7 @@ ms.locfileid: "49384889"
 <!------>
 
 ## <a name="database-security"></a>データベースのセキュリティ
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
 |[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
@@ -64,7 +64,7 @@ ms.locfileid: "49384889"
 
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](../active-directory/role-based-access-control-configure.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
@@ -73,18 +73,22 @@ ms.locfileid: "49384889"
 | [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| セキュリティで保護された情報へのアクセスを許可する前に、いくつかの異なる認証および検証形式が使用されるセキュリティ対応の機能です。 |
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Backup](../backup/backup-introduction-to-azure-backup.md)| Azure クラウドのデータをバックアップおよび復元するために使用される Azure ベースのサービスです。 |
 | [Azure&nbsp;Site&nbsp;Recovery](../site-recovery/site-recovery-overview.md)|物理マシンと仮想マシン (VM) で実行中のワークロードでエラーが発生した場合にその復旧を可能にする、プライマリ サイトからセカンダリ ロケーションにワークロードをレプリケートするオンライン サービスです。 |
 
 ## <a name="networking"></a>ネットワーク
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Network&nbsp;Security&nbsp;Groups](../virtual-network/virtual-networks-nsg.md)| タプルが 5 つ使用された、意思決定を許可または拒否することができるネットワーク ベースのアクセス制御機能です。  |
 | [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Azure Virtual Network へのクロスプレミス アクセスを許可する VPN エンドポイントとして使用されるネットワーク デバイスです。  |
 | [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)|URL に基づいてルーティングし、SSL オフロードを実行できる、高度な Web アプリケーション ロード バランサーです。 |
+|[Web アプリケーション ファイアウォール](../application-gateway/waf-overview.md) (WAF)|一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。|
 | [Azure Load Balancer](../load-balancer/load-balancer-overview.md)|TCP/UDP アプリケーション ネットワーク ロード バランサーです。 |
 | [Azure ExpressRoute](../expressroute/expressroute-introduction.md)| オンプレミス ネットワークと Azure Virtual Network 間の専用 WAN リンクです。 |
 | [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)| グローバルな DNS ロード バランサーです。|
 | [Azure アプリケーション プロキシ](../active-directory/active-directory-application-proxy-get-started.md)| オンプレミスでホストされている Web アプリケーションのリモート アクセスをセキュリティで保護するための認証フロントエンドです。 |
+|[Azure Firewall](../firewall/overview.md)|Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。|
+|[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)|アプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
+|[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)|直接接続によって、仮想ネットワークのプライベート アドレス空間と VNet の ID が Azure サービスまで拡張されます。|

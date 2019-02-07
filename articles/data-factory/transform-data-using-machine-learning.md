@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 333750e4959e0bdfea05347ef0e9a1d968b8f13c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 052839c679fc3efa61fca612b5139ede1991890c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214713"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080244"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,19 +25,19 @@ ms.locfileid: "54214713"
 
 [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、およびデプロイできます。 大まかに次の 3 つの手順で行われます。
 
-1. **トレーニング実験を作成する**。 この手順を実行するには、Azure ML Studio を使用します。 ML Studio は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
+1. **トレーニング実験を作成する**。 この手順を実行するには、Azure Machine Learning Studio を使用します。 Azure Machine Learning Studio は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
 3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory と Machine Learning
-Azure Data Factory を使用すると、公開済みの [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで **バッチ実行アクティビティ** を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。
+Azure Data Factory を使用すると、公開済みの [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure Machine Learning Studio Web サービスを呼び出して、データの予測をバッチで行うことができます。
 
-時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインから Azure ML モデルを再トレーニングできます。
+時間の経過と共に、Azure Machine Learning Studio スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインからモデルを再トレーニングできます。
 
-1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順を Azure ML Studio で行います。
-2. Azure ML バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、Azure ML バッチ実行アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
+1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順を Azure Machine Learning Studio で行います。
+2. Azure Machine Learning Studio バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、Azure Machine Learning Studio バッチ実行アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
 
-再トレーニングを実行したら、**Azure ML 更新リソース アクティビティ**を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio 更新リソース アクティビティ**を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
 
@@ -127,20 +127,20 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | パイプラインのアクティビティの名前。     | はい      |
+| name              | パイプラインのアクティビティの名前。     | [はい]      |
 | description       | アクティビティの動作を説明するテキスト。  | いいえ        |
-| type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | はい      |
-| linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
+| type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | [はい]      |
+| linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | webServiceInputs  | Azure Machine Learning Web サービスの入力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている入力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、入力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
 | webServiceOutputs | Azure Machine Learning Web サービスの出力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている出力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、出力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
-| globalParameters  | Azure ML バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure ML Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure ML バッチ実行要求の GlobalParameters プロパティに渡されます。 | いいえ        |
+| globalParameters  | Azure Machine Learning Studio バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure Machine Learning Studio Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure Machine Learning Studio バッチ実行要求の GlobalParameters プロパティに渡されます | いいえ        |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ 1:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
 
-このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して Azure ML Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。
+このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して Azure Machine Learning Studio Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。
 
 > [!IMPORTANT]
-> Azure ML の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、Azure ML エンドポイントで必要なマッピングを確認することができます。
+> Azure Machine Learning Studio の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、Azure Machine Learning Studio エンドポイントで必要なマッピングを確認することができます。
 >
 >
 
@@ -190,12 +190,12 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>シナリオ 2:リーダー/ライター モジュールを使用したさまざまなストレージのデータの参照を実験する
-Azure ML の実験を作成するときのもう 1 つの一般的なシナリオは、データ インポート モジュールとデータ出力モジュールを使用することです。 データ インポート モジュールは実験にデータを読み込むために使用し、データ出力モジュールは実験からデータを保存するために使用します。 データ インポート モジュールとデータ出力モジュールの詳細については、MSDN ライブラリの[データのインポート](https://msdn.microsoft.com/library/azure/dn905997.aspx)に関するトピックおよび[データの出力](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するトピックをご覧ください。
+Azure Machine Learning Studio の実験を作成するときのもう 1 つの一般的なシナリオは、データ インポート モジュールとデータ出力モジュールを使用することです。 データ インポート モジュールは実験にデータを読み込むために使用し、データ出力モジュールは実験からデータを保存するために使用します。 データ インポート モジュールとデータ出力モジュールの詳細については、MSDN ライブラリの[データのインポート](https://msdn.microsoft.com/library/azure/dn905997.aspx)に関するトピックおよび[データの出力](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するトピックをご覧ください。
 
 データ インポート モジュールとデータ出力モジュールを使用するときは、これらのモジュールの各プロパティに Web サービスのパラメーターを使用することをお勧めします。 これらの Web パラメーターを使用すると、実行時に値を構成できます。 たとえば、次の Azure SQL Database を使用するデータ インポート モジュールで実験を作成できます: XXX.database.windows.net。 Web サービスをデプロイしたら、Web サービスのコンシューマーが `YYY.database.windows.net` という別の Azure SQL Server を指定できるようにします。 Web サービスのパラメーターを使用して、この値を構成できます。
 
 > [!NOTE]
-> Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。 最初のシナリオでは、Azure ML Web サービスに対して入力と出力を指定する方法を説明しました。 このシナリオでは、データ インポート/データ出力モジュールのプロパティに対応する Web サービスのパラメーターを渡します。
+> Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。 最初のシナリオでは、Azure Machine Learning Studio Web サービスに対して入力と出力を指定する方法を説明しました。 このシナリオでは、データ インポート/データ出力モジュールのプロパティに対応する Web サービスのパラメーターを渡します。
 >
 >
 
@@ -216,7 +216,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 > Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 >
 
-再トレーニングを実行したら、**Azure ML 更新リソース アクティビティ**を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio 更新リソース アクティビティ**を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。

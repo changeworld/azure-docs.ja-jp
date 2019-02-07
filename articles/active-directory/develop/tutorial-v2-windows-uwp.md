@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986544"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097063"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -357,9 +357,9 @@ Windows 統合認証を、フェデレーション Azure Active Directory ドメ
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|
-|**名前** |ユーザーのフルネーム|ユーザーの姓と名。|
+|**Name** |ユーザーのフルネーム|ユーザーの姓と名。|
 |**ユーザー名** |<span>user@domain.com</span> |ユーザーを識別するユーザー名。|
-|**Token Expires** |Datetime |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
+|**Token Expires** |DateTime |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
 |**Access Token** |String |*Authorization ヘッダー*を必要とする HTTP 要求に送信されるトークン文字列。|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>アクセス トークンの内容の確認 (省略可能)
@@ -384,13 +384,13 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 **原因:** エンタープライズ機能および証明書機能が有効になっていません。
 
-**対処:** [フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
+**解決策:**[フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
 
 ### <a name="issue-2"></a>問題 2
 [フェデレーション ドメインの統合認証](#enable-integrated-authentication-on-federated-domains-optional)を有効にし、Windows 10 コンピューターで Windows Hello を使用して、多要素認証が構成されている環境でサインインしようとします。 証明書の一覧が表示されます。 しかし、PIN の使用を選択すると、PIN ウィンドウが表示されません。
 
 **原因:** この問題は、Windows 10 デスクトップで実行される UWP アプリケーションの Web 認証ブローカーに関する既知の制限です。 Windows 10 Mobile では正常に動作します。
 
-**回避策:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
+**対処法:****[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -7,7 +7,7 @@ author: kkrishna
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 6321823eed00cffc6565471ec1ba3b4d846cd027
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b44aa35765cba33a85519fcd53f0df365c26be6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948708"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093421"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
 ロールベースのアクセス制御 (RBAC) は、アプリケーションにおいて承認を実施する一般的なメカニズムです。 RBAC を使用するとき、管理者は、個々のユーザーまたはグループではなく、ロールにアクセス許可を付与します。 その後、管理者はロールをさまざまなユーザーやグループに割り当てて、コンテンツや機能にだれがアクセスできるかを制御できます。
 
@@ -117,7 +117,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 1. **[割り当ての追加]** ウィンドウで **[ロールの選択]** セレクターを選択します。 アプリケーション マニフェストで前に宣言したすべてのロールが表示されます。
 1. ロールを選択して、**[選択]** ボタンをクリックします。
 1. 一番下の **[割り当て]** ボタンをクリックすると、ユーザーとグループのアプリへの割り当てが完了します。
-1. 追加したユーザーとグループが、更新された **[ユーザーとグループ]** リストに表示されていることを確認します。
+1. 追加したユーザーとグループが、更新された **[ユーザーとグループ]** のリストに表示されていることを確認します。
 
 ## <a name="more-information"></a>詳細情報
 

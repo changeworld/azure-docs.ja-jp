@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465891"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094106"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>C# IoT Edge モジュールを開発してファイルを Data Box Edge (プレビュー) に移動する
 
@@ -21,7 +21,7 @@ ms.locfileid: "49465891"
 
 Azure IoT Edge モジュールを Data Box Edge とともに使用して、データを変換して Azure に移動することができます。 この記事で使用されるモジュールでは、Data Box Edge デバイス上でファイルをローカル共有からクラウド共有にコピーするロジックを実装します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * モジュールを格納して管理するコンテナー レジストリを作成する (Docker イメージ)。
@@ -97,7 +97,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 独自のコードでカスタマイズできる C# ソリューション テンプレートを作成します。
 
 1. Visual Studio Code で、**[表示] > [コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
-2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、指示に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
+2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。
 
     1. ソリューションの作成先フォルダーを選択します。
@@ -143,7 +143,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > `InputFolderPath` と `OutputFolderPath` を書き留めておきます。 このモジュールをデプロイする際にこれらのパスを指定する必要があります。
@@ -269,7 +269,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
     次の警告が表示されますが、無視できます。
 
-    *Program.cs(77,44): warning CS1998: This async method lacks 'await' operators and will run synchronously.Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.* (この非同期メソッドには 'await' 演算子がないため、同期的に実行されます。'await' 演算子を使用して非ブロッキング API 呼び出しを待機するか、'await Task.Run(...)' を使用してバックグラウンドのスレッドに対して CPU 主体の処理を実行することを検討してください。)
+    *Program.cs(77,44): warning CS1998:This async method lacks 'await' operators and will run synchronously.Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.* (この非同期メソッドには 'await' 演算子がないため、同期的に実行されます。'await' 演算子を使用して非ブロッキング API 呼び出しを待機するか、'await Task.Run(...)' を使用してバックグラウンドのスレッドに対して CPU 主体の処理を実行することを検討してください。)
 
 4. タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで確認できます。 イメージ アドレスは、`<repository>:<version>-<platform>` の形式で、module.json ファイルの情報から作成されます。 この記事では、`mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` のようになります。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064833"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104645"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -229,7 +229,7 @@ $restoreResponse | Format-List
     ```
     
 3. **成功**、**失敗**、または**タイムアウト**:要求された復元は、次の状態のいずれかで完了する可能性があります。 各状態の重要性と応答の詳細は次のとおりです。
-    - **成功**:"_成功_" の復元状態は、回復したパーティション状態を示します。 パーティションは、_RestoreEpoch_ および _RestordLSN_ の状態を UTC 時刻とともに報告します。
+    - **成功**:"_成功_" の復元状態は、回復したパーティション状態を示します。 パーティションは、_RestoredEpoch_ および _RestoredLSN_ の状態を UTC 時刻とともに報告します。
 
         ```
         RestoreState  : Success

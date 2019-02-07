@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259966"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095560"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -36,7 +36,7 @@ PowerShell を使用してポリシーを設定する手順については、「
 
 Azure Security Center から取得するセキュリティに関する推奨事項は、ご使用のセキュリティ ポリシーによって駆動されます。 ユーザーは、それへの準拠を監視して、潜在的な脆弱性を特定し、脅威を軽減することができます。 自分に合った選択肢を判断する方法の詳細については、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照してください。
 
-Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーは、Azure Policy で、Security Center カテゴリの組み込みイニシアティブとして反映されます。 組み込みイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーは、Azure Policy で、Security Center カテゴリの組み込みイニシアティブとして反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 
 
 
 ### <a name="management-groups"></a>管理グループ
@@ -212,7 +212,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 |セキュリティ構成 |OS の脆弱性の Azure Security Center での監視 |systemConfigurationsMonitoringEffect| 
 |エンドポイント保護 |Endpoint Protection の不足の Azure Security Center での監視 |endpointProtectionMonitoringEffect |
 |ディスクの暗号化 |暗号化されていない VM ディスクの Azure Security Center での監視 |diskEncryptionMonitoringEffect|
-|脆弱性評価 |VM の脆弱性の Azure Security Center での監視 |vulnerabilityAssesmentMonitoringEffect|
+|脆弱性評価 |VM の脆弱性の Azure Security Center での監視 |vulnerabilityAssessmentMonitoringEffect|
 |Web アプリケーション ファイアウォール |保護されていない Web アプリケーションの Azure Security Center での監視 |webApplicationFirewallMonitoringEffect |
 |次世代のファイアウォール |保護されていないネットワーク エンドポイントの Azure Security Center での監視| |
 

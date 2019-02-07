@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ChronicX® の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ChronicX® の統合 | Microsoft Docs
 description: Azure Active Directory と ChronicX® の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f3f19be6-6ee8-413c-919c-4884ffe685ca
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 51eab8099aee6378893f24e0cea6aa37a4995495
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 982a639fe7a57c2db484acc6b272e5314637d1c4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428150"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167667"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>チュートリアル: Azure Active Directory と ChronicX® の統合
+# <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>チュートリアル:Azure Active Directory と ChronicX® の統合
 
 このチュートリアルでは、ChronicX® と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -162,7 +162,7 @@ ChronicX® で Azure AD のシングル サインオンを構成してテスト�
 このセクションの目的は、ChronicX® で Britta Simon というユーザーを作成することです。 ChronicX® では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、ChronicX® にアクセスしようとすると、新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[ChronicX® サポート チーム](https://www.casebank.com/contact-us/)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [ChronicX® のサポート チーム](https://www.casebank.com/contact-us/)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -199,7 +199,7 @@ ChronicX® で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ChronicX®] タイルをクリックすると、自動的に ChronicX® アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

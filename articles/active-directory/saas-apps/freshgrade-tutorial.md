@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と FreshGrade の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と FreshGrade の統合 | Microsoft Docs
 description: Azure Active Directory と FreshGrade の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c6439b31d2f8c95e0dc1526b92f21aee2966f12f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1861dfb23d105fa6b403095b5fc36d1f2a894fe9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436361"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152557"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>チュートリアル: Azure Active Directory と FreshGrade の統合
+# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>チュートリアル:Azure Active Directory と FreshGrade の統合
 
 このチュートリアルでは、FreshGrade と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ FreshGrade で、Azure AD の **[ユーザー名]** の値を **[Username]** の
 
 FreshGrade で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[FreshGrade テスト ユーザーの作成](#creating-a-freshgrade-test-user)** - FreshGrade で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -127,7 +127,7 @@ FreshGrade で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[FreshGrade クライアント サポート チーム](mailTo:support@freshgrade.com)に問い合わせてください。
 
-1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして  **[アプリのフェデレーション メタデータ URL]**  をコピーし、メモ帳に貼り付けます。
     
     ![Configure single sign-on](./media/freshgrade-tutorial/tutorial_metadataurl.png)
      

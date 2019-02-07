@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,18 +17,18 @@ ms.date: 11/13/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ecf837af735b97e269eb3fdc01d2e56ec40fb6e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 090f9771bf8d1010e4249d97d5768891f02c54b3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624507"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096604"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](http://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*デーモン*または*サービス アカウント*と呼ばれます。
+RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*デーモン*または*サービス アカウント*と呼ばれます。
 
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Azure Active Directory (Azure AD) により、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
 
@@ -80,7 +80,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 2. **Microsoft Graph のアクセス許可**セクションを検索し、その後、アプリに必要な**アプリケーション許可**を追加します。
 3. アプリの登録を**保存**します。
 
-#### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨: アプリへのユーザーのサインイン
+#### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨:アプリへのユーザーのサインイン
 
 通常、アプリケーションのアクセス許可を使用するアプリケーションを構築する場合は、アプリ側に管理者がアプリのアクセス許可を承認するページまたはビューが必要です。 このページは、アプリのサインイン フローやアプリの設定の一部にするか、専用の "接続" フローにすることができます。 多くの場合、職場または学校の Microsoft アカウントでユーザーがサインインした後にのみ、”接続" ビューが表示されます。
 
@@ -149,7 +149,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 アプリケーションに必要な承認を獲得後、API のアクセス トークンの取得を開始します。 クライアント資格情報の許可を使用してトークンを取得するには、次のように `/token` v2.0 エンドポイントに POST 要求を送信します。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 
 ```
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -174,7 +174,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_secret` | 必須 | アプリケーション登録ポータルでアプリ用に生成したアプリケーション シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
 | `grant_type` | 必須 | `client_credentials`である必要があります。 |
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 
 ```
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: cc71aba3e884214b054e0ac4e888a52e38b1c390
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812541"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079258"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -33,7 +33,7 @@ Azure Migrate は、オンプレミスのワークロードを検出し、Azure 
 
 ### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>Azure Migrate をアセスメントに使用することと Map Toolkit を使用することの違いは何ですか。
 
-[Azure Migrate](migrate-overview.md) が提供する移行アセスメントは、具体的には、オンプレミス ワークロードを Azure に移行するための準備および評価を支援します。 [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) には他の機能があります。 たとえば、Windows クライアントおよびサーバー オペレーティング システムの新しいバージョンの移行計画、ソフトウェア使用状況の追跡などです。そのような目的には、引き続き MAP Toolkit を使用します。
+[Azure Migrate](migrate-overview.md) が提供する移行アセスメントは、具体的には、オンプレミス ワークロードを Azure に移行するための準備および評価を支援します。 [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) には、新しいバージョンの Windows クライアントおよびサーバー オペレーティング システムに対する移行計画や、ソフトウェア使用状況の追跡など、他の機能があります。 そのような目的には、引き続き MAP Toolkit を使用します。
 
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Azure Migrate と Azure Site Recovery Deployment Planner の違いは何ですか。
@@ -198,7 +198,7 @@ Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microso
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Microsoft Monitoring Agent (MMA) と依存関係エージェントのインストールを自動化するには、どうすればよいですか。
 
-依存関係エージェントのインストールには、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)のスクリプトをご利用ください。 MMA については、TechNet で提供されている[こちら](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)のスクリプトをご活用ください。
+依存関係エージェントのインストールには、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)のスクリプトをご利用ください。 [こちら](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)は、コマンド ラインまたは自動化された方法を使用して MMA をインストールする方法の手順です。 MMA では、Technet の[こちら](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)から入手できるスクリプトを利用することもできます。
 
 スクリプトに加え、System Center Configuration Manager (SCCM)、[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) などのデプロイ ツールを利用して、エージェントをデプロイすることもできます。
 
@@ -213,10 +213,10 @@ MMA でサポートされる Linux オペレーティング システムの一�
 依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Azure Migrate で 1 時間を超えて依存関係を視覚化することはできますか。
-いいえ。Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。
+いいえ。Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Log Analytics を使用すると、長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)ことができます。
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>依存関係の視覚化では、10 を超える VM を含むグループはサポートされていますか。
-最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
+最大 10 個の VM を含む[グループの依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。 グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
 
 
 ## <a name="next-steps"></a>次の手順

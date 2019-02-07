@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447216"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095721"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -63,7 +63,7 @@ ms.locfileid: "52447216"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
+|名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|はい|該当なし|  
 |failed-check-httpcode|ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。|はい|該当なし|  
@@ -111,7 +111,7 @@ ms.locfileid: "52447216"
   
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|はい|  
 |api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
@@ -119,7 +119,7 @@ ms.locfileid: "52447216"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
+|名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |name|レート制限の適用対象になる API の名前。|はい|該当なし|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|はい|該当なし|  
@@ -171,7 +171,7 @@ ms.locfileid: "52447216"
   
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|はい|  
   
@@ -214,7 +214,7 @@ ms.locfileid: "52447216"
   
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |ip-filter|ルート要素。|はい|  
 |address|フィルターを適用する単一の IP アドレスを指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
@@ -222,7 +222,7 @@ ms.locfileid: "52447216"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
+|名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |address-range from="address" to="address"|アクセスを許可または拒否する IP アドレスの範囲。|`address-range` 要素を使用する場合は必須です。|該当なし|  
 |ip-filter action="allow &#124; forbid"|指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。|はい|該当なし|  
@@ -267,7 +267,7 @@ ms.locfileid: "52447216"
   
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |quota|ルート要素。|はい|  
 |api|製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
@@ -275,7 +275,7 @@ ms.locfileid: "52447216"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
+|名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |name|クォータを適用する API または操作の名前。|はい|該当なし|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
@@ -329,7 +329,7 @@ ms.locfileid: "52447216"
   
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |quota|ルート要素。|はい|  
   
@@ -350,11 +350,12 @@ ms.locfileid: "52447216"
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
 ##  <a name="ValidateJWT"></a> JWT を検証する  
- `validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JWT が存在し、有効であることを必須にします。  
+ `validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JWT が存在し、有効であることを必須にします。
   
 > [!IMPORTANT]
 >  `validate-jwt` ポリシーは、`require-expiration-time` 属性を指定し `false` に設定した場合を除いて、`exp` 登録クレームが JWT トークンに含まれていることを必須にします。  
-> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイントを介して指定する必要があります。  
+> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイントを介して指定する必要があります。
+> `validate-jwt` ポリシーでは、暗号化アルゴリズム A128CBC-HS256、A192CBC-HS384、A256CBC-HS512 を使用して対称キーで暗号化されたトークンがサポートされます。
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -370,7 +371,11 @@ ms.locfileid: "52447216"
   <issuer-signing-keys>  
     <key>base64 encoded signing key</key>  
     <!-- if there are multiple keys, then add additional key elements -->  
-  </issuer-signing-keys>  
+  </issuer-signing-keys>
+  <decryption-keys>
+    <key>base64 encoded signing key</key>  
+    <!-- if there are multiple keys, then add additional key elements -->  
+  </decryption-keys>
   <audiences>  
     <audience>audience string</audience>  
     <!-- if there are multiple possible audiences, then add additional audience elements -->  
@@ -444,7 +449,7 @@ ms.locfileid: "52447216"
 ```  
   
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>トークン クレームに基づいて操作へのアクセスを承認する  
- 次の例では、[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。  
+ 次の例では、[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。  
   
 ```xml  
 <!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->  
@@ -491,6 +496,7 @@ ms.locfileid: "52447216"
 |validate-jwt|ルート要素。|はい|  
 |audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。|いいえ |  
 |issuer-signing-keys|署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|いいえ |  
+|decryption-keys|トークンの暗号化を解除するために使用される Base64 でエンコードされたキーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功するまで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|いいえ |  
 |issuers|トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。|いいえ |  
 |openid-config|署名キーと発行者を取得可能な準拠している Open ID 構成エンドポイントを指定するために使用する要素。|いいえ |  
 |required-claims|トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも 1 つのクレームがトークン内に存在する必要があります。|いいえ |  
@@ -498,7 +504,7 @@ ms.locfileid: "52447216"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
+|名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |clock-skew|期間。 トークンの発行者と API Management インスタンスのシステム クロックの間に予想される最大時間差を指定するために使用します。|いいえ |0 秒|  
 |failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|いいえ |既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  

@@ -7,7 +7,7 @@ author: barbkess
 manager: daveba
 editor: yossib
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d6030c2bf169d74959279b9c05298db90138a94f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478146"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163094"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -89,7 +89,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 ### <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス
 
-たとえば、Contoso ネットワーク上のユーザーが、Outlook Online などの共有 SaaS アプリケーションの Fabrikam インスタンスにアクセスしようとしているとします。 Contoso がそのインスタンスの許可されていないテナントの場合、ユーザーには次のページが表示されます。
+たとえば、Contoso ネットワーク上のユーザーが、Outlook Online などの共有 SaaS アプリケーションの Fabrikam インスタンスにアクセスしようとしているとします。 Fabricam が Contoso インスタンスの許可されていないテナントの場合、ユーザーには次のページが表示されます。
 
 ![許可されていないテナントのユーザーに対してアクセスが拒否されたことを示すページ](./media/tenant-restrictions/end-user-denied.png)
 

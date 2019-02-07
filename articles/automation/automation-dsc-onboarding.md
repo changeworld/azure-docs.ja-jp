@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436401"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096706"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -168,7 +168,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [PowerShell Desired State Configuration for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされていることを確認します。
 1. [PowerShell DSC Local Configuration Manager の既定値](/powershell/dsc/metaconfig4) がユース ケースに適しており、 **両方とも** Azure Automation State Configuration とデータをやり取りするマシンをオンボードするには、次のようにします。
 
-   - Azure Automation State Configuration にオンボードする各 Linux マシンで、`Register.py` を使用し、PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
+   - Azure Automation State Configuration にオンボードする各 Linux マシンで、`Register.py` と PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と FiscalNote の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と FiscalNote の統合 | Microsoft Docs
 description: Azure Active Directory と FiscalNote の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 55274f26-be7e-4514-964c-7186ecb55c4a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2dfc450fe53c543c1d5119cd9c6954aadaa3b3ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cea5c6ad57d8c391bd1d5264abbc1397fbad0f30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421425"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162007"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>チュートリアル: Azure Active Directory と FiscalNote の統合
+# <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>チュートリアル:Azure Active Directory と FiscalNote の統合
 
 このチュートリアルでは、FiscalNote と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -192,7 +192,7 @@ FiscalNote で Azure AD のシングル サインオンを構成してテスト�
 
 このセクションの目的は、FiscalNote で Britta Simon というユーザーを作成することです。 FiscalNote では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 まだ存在しない FiscalNote ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[FiscalNote サポート チーム](mailto:support@fiscalnote.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [FiscalNote のサポート チーム](mailto:support@fiscalnote.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -229,7 +229,7 @@ FiscalNote で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [FiscalNote] タイルをクリックすると、自動的に FiscalNote アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

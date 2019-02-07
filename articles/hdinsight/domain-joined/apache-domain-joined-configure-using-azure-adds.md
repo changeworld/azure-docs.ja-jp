@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 115604d9b2aa21018742bbedbc737405b52599e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188948"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158827"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -28,7 +28,11 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
 
 > [!NOTE]  
-> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Store (ADLS) Gen1 または Gen2 の場合、クラスターにアクセスする必要があるユーザーに対してのみ Multi-Factor Authentication (MFA) を無効にします。 クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
+> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage (ADLS) Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Multi-Factor Authentication (MFA) を無効にする必要があります。 [信頼済み IP](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) または[条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview)を使用して特定のユーザーの MFA を無効にすることができるのは、HDInsight クラスターの VNET IP 範囲にアクセスしている場合のみです。 条件付きアクセスを使用している場合は、AD サービス エンドポイントが HDInsight VNET 上で有効になっていることを確認してください。
+>
+>クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
+
+
 
 前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」を参照してください。 
 
@@ -108,11 +112,11 @@ ESP で HDInsight クラスターを作成するときは、次のパラメー�
 
 次のスクリーンショットは、Azure portal における適切な構成を示しています。
 
-![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)にも掲載されています。
+![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)。
 
 作成したマネージド ID は、新しいクラスターを作成するときに、ユーザー割り当てマネージド ID ドロップダウンから選択できます。
 
-![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png)にも掲載されています。
+![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png)。
 
 
 ## <a name="next-steps"></a>次の手順

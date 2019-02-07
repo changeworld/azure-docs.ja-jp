@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Andromeda の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Andromeda の統合 | Microsoft Docs
 description: Azure Active Directory と Andromeda の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 047e1ea6a474d95c57ffc2bdff5ad8a5c45e0d36
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6d280a7e0e10b00e4d8d8f631d0d5987f2fbecb4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048567"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157875"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル:Azure Active Directory と Andromeda の統合
 
 このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -200,7 +200,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
     i. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

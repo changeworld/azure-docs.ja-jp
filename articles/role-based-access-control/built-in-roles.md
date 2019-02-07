@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558925"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081230"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -37,6 +37,8 @@ ms.locfileid: "53558925"
 | [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
 | [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
+| [AcrPull](#acrpull) | acr のプル |
+| [AcrPush](#acrpush) | acr のプッシュ |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
 | [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます |
@@ -66,6 +68,7 @@ ms.locfileid: "53558925"
 | [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
 | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
 | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
+| [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
 | [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 |
 | [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
 | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
@@ -76,8 +79,8 @@ ms.locfileid: "53558925"
 | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
-| [EventGrid EventSubscription 共同作成者 (プレビュー)](#eventgrid-eventsubscription-contributor-preview) | EventGrid のイベント サブスクリプション操作を管理できます。 |
-| [EventGrid EventSubscription 閲覧者 (プレビュー)](#eventgrid-eventsubscription-reader-preview) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
+| [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 |
+| [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
 | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
@@ -98,7 +101,7 @@ ms.locfileid: "53558925"
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
-| [Azure Cache for Redis の共同作成者](#redis-cache-contributor) | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
+| [Redis Cache Contributor](#redis-cache-contributor) | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -114,7 +117,7 @@ ms.locfileid: "53558925"
 | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント キー オペレーターは、ストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
 | [ストレージ BLOB データ共同作成者 (プレビュー)](#storage-blob-data-contributor-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
-| [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
+| [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
 | [ストレージ BLOB データ閲覧者 (プレビュー)](#storage-blob-data-reader-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 | [ストレージ キュー データ共同作成者 (プレビュー)](#storage-queue-data-contributor-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
 | [ストレージ キュー データ閲覧者 (プレビュー)](#storage-queue-data-reader-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
@@ -169,6 +172,25 @@ ms.locfileid: "53558925"
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **アクション** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | コンテナー レジストリのコンテンツの信頼メタデータをプッシュ/プルします。 |
+
+## <a name="acrpull"></a>AcrPull
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | acr のプル |
+> | **Id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | **アクション** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
+
+## <a name="acrpush"></a>AcrPush
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | acr のプッシュ |
+> | **Id** | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | **アクション** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
+> | Microsoft.ContainerRegistry/registries/push/write | コンテナー レジストリにイメージをプッシュするか書き込みます。 |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -385,7 +407,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | バックアップの管理に関連するメタ データの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | バックアップ ポリシーの作成および管理 |
@@ -445,8 +467,8 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
@@ -506,8 +528,8 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
@@ -754,6 +776,16 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
+## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
+> | **Id** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | **アクション** |  |
+> | Microsoft.DocumentDB/databaseAccounts/backup/action | バックアップを構成するための要求を送信します |
+> | Microsoft.DocumentDB/databaseAccounts/restore/action | 復元要求を送信します |
+
 ## <a name="cost-management-contributor"></a>Cost Management 共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -940,7 +972,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 共同作成者 (プレビュー)
+## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -957,7 +989,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 閲覧者 (プレビュー)
+## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription 閲覧者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1201,6 +1233,7 @@ ms.locfileid: "53558925"
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
+> | Microsoft.Insights/activityLogAlerts/* |  |
 > | Microsoft.Insights/AlertRules/* | アラート ルールの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/components/* | Application Insights コンポーネントの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/DiagnosticSettings/* | 診断設定の読み取り/書き込み/削除を実行します。 |
@@ -1285,7 +1318,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 
-## <a name="azure-cache-for-redis-contributor"></a>Azure Cache for Redis の共同作成者
+## <a name="redis-cache-contributor"></a>Redis Cache Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1370,6 +1403,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Security/pricings/delete | スコープの価格設定を削除します。 |
 > | Microsoft.Security/securityContacts/delete | セキュリティ連絡先を削除します。 |
 > | Microsoft.Security/securityContacts/write | セキュリティ連絡先を更新します。 |
+> | Microsoft.Security/InformationProtectionPolicies/write | リソースの情報保護ポリシーを更新します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="security-manager-legacy"></a>セキュリティ マネージャー (レガシ)
@@ -1430,7 +1464,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/* | レプリケーション ポリシーの作成と管理 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/* | 復旧計画の作成と管理 |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* | Recovery Services コンテナーのストレージ構成の作成と管理 |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
@@ -1497,7 +1531,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -1540,7 +1574,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | ポリシーを読み取ります |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | 復旧計画を読み取ります |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
@@ -1565,6 +1599,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
 > | Microsoft.Sql/servers/databases/auditRecords/read | データベースの BLOB 監査レコードを取得します。 |
@@ -1578,6 +1613,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="sql-security-manager"></a>SQL Security Manager
 > [!div class="mx-tableFixed"]
@@ -1593,6 +1629,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
 > | Microsoft.Sql/servers/extendedAuditingSettings/read | 指定されたサーバーで構成されている拡張サーバー BLOB 監査ポリシーの詳細を取得します。 |
@@ -1616,6 +1653,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Sql/servers/firewallRules/* |  |
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーの作成と管理 |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="sql-server-contributor"></a>SQL Server Contributor
@@ -1637,6 +1675,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
@@ -1654,6 +1693,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーは編集できません |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Storage Account Contributor
 > [!div class="mx-tableFixed"]
@@ -1690,8 +1730,8 @@ ms.locfileid: "53558925"
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーのプット結果を返します |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
@@ -1701,16 +1741,12 @@ ms.locfileid: "53558925"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
+> | **説明** | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>ストレージ BLOB データ閲覧者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1719,7 +1755,7 @@ ms.locfileid: "53558925"
 > | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
 

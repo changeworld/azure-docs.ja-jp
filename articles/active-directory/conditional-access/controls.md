@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4e6912d13b4192b1f938acf5a9808221f5aa42f7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452515"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077660"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 
@@ -71,9 +71,15 @@ ms.locfileid: "54452515"
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、[マネージド デバイス](require-managed-devices.md)のみに許可することです。 準拠しているデバイスの要求は、マネージド デバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、Azure Active Directory に[登録](../devices/overview.md)されていうデバイスのうち、(デバイス OS の) Intune または Windows 10 デバイスのサードパーティ MDMシステムによって準拠としてマークされているデバイスで実行されたアクセス試行へのアクセスが、条件付きアクセス ポリシーによって許可されます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、選択したクラウド アプリへのアクセスを、[マネージド デバイス](require-managed-devices.md)のみに許可することです。 デバイスが準拠としてマークされていることを要求するのは、マネージド デバイスへのアクセスを制限するための 1 つのオプションです。 デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。 
 
-詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](require-managed-devices.md)を参照してください。
+デバイスは準拠としてマークするには、その前にデバイスを Azure AD に登録する必要があります。 デバイスを登録するには、次の 3 つのオプションがあります。 
+
+- [Azure AD 登録済みデバイス](../devices/overview.md#azure-ad-registered-devices)
+- [Azure AD 参加済みデバイス](../devices/overview.md#azure-ad-joined-devices)  
+- [Hybrid Azure AD 参加済みデバイス](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](require-managed-devices.md)に関するページを参照してください。
 
 ### <a name="hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みデバイス
 

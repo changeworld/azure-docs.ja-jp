@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338534"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093450"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -31,7 +31,7 @@ Security Center のファイルの整合性の監視では、Windows ファイ�
 
 - ファイルとレジストリの作成と削除
 - ファイルの変更 (ファイル サイズ、アクセス制御リスト、およびコンテンツのハッシュの変更)
-- レジストリの変更 (サイズ、アクセス制御リスト、種類、およびコンテンツ)
+- レジストリの変更 (サイズ、アクセス制御リスト、種類、およびコンテンツの変更)
 
 Security Center が監視することをお勧めする、FIM を簡単に有効にすることができるエンティティがあります。 独自の FIM ポリシーまたは監視するエンティティを定義することもできます。 このチュートリアルでは、その実行方法を示します。
 

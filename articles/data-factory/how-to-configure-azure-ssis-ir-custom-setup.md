@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/3/2018
+ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ec1c24e4a9714506a4107fd5bfd53d1a562c8781
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022361"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098733"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
@@ -27,6 +27,8 @@ Azure SSIS 統合ランタイムのカスタム セットアップ インター�
 
 無料 (ライセンスなし) コンポーネントおよび有料 (ライセンスあり) コンポーネントの両方をインストールできます。 ISV の場合は、[Azure SSIS IR の有料 (ライセンスあり) コンポーネントを開発する方法](how-to-develop-azure-ssis-ir-licensed-components.md)に関するページをご覧ください。
 
+> [!IMPORTANT]
+> Azure-SSIS IR の v2 シリーズ ノードはカスタムセットアップには適していないため、代わりに v3 シリーズ ノードを使用してください。  既に v2 シリーズ ノードを使用している場合は、できるだけ早く v3 シリーズ ノードを使用するように切り替えてください。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
@@ -50,7 +52,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 -   [Azure Storage アカウント](https://azure.microsoft.com/services/storage/)。 カスタム セットアップの場合は、カスタム セットアップ スクリプトとその関連ファイルをアップロードして BLOB コンテナーに格納します。 また、カスタム セットアップ処理では、同じ BLOB コンテナーに実行ログもアップロードします。
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>手順
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) (バージョン 5.4 以降) をダウンロードしてインストールします。
 
@@ -78,7 +80,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
        ![BLOB コンテナーを作成する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-    1.  新しいコンテナーを選択し、カスタム セットアップ スクリプトとその関連ファイルをアップロードします。 任意のフォルダーではなく、必ずコンテナーの最上位に `main.cmd` をアップロードしてください。 
+    1.  新しいコンテナーを選択し、カスタム セットアップ スクリプトとその関連ファイルをアップロードします。 任意のフォルダーではなく、必ずコンテナーの最上位に `main.cmd` をアップロードしてください。 後で Azure-SSIS IR にダウンロードする時間を短縮できるように、コンテナーには必要なカスタム セットアップ ファイルのみが含まれていることを確認してください。
 
        ![BLOB コンテナーにファイルをアップロードする](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -140,15 +142,15 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
        1. `.NET FRAMEWORK 3.5` フォルダー。Azure-SSIS IR の各ノードのカスタム コンポーネントに必要となる可能性がある、.NET Framework の以前のバージョンをインストールするためのカスタム設定が格納されています。
 
-       1. `AAS` フォルダー。Azure SSIS IR の各ノードにクライアント ライブラリをインストールして、Analysis Services タスクで、サービス プリンシパル認証を使用して Azure Analysis Services (AAS) インスタンスに接続できるようにするための 1 個のカスタム セットアップが格納されています。 まず、最新の **MSOLAP (amd64)** と **AMO**クライアント ライブラリまたは Windows インストーラー (`x64_15.0.900.108_SQL_AS_OLEDB.msi` や `x64_15.0.900.108_SQL_AS_AMO.msi` など) を[ここ](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers)からダウンロードし、`main.cmd` と共にそれらをすべてまとめてコンテナーにアップロードします。  
-
        1. `BCP` フォルダー。Azure SSIS IR の各ノード上に、一括コピー プログラム (`bcp`) を含む SQL Server コマンドライン ユーティリティ (`MsSqlCmdLnUtils.msi`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
        1. `EXCEL` フォルダー。Azure SSIS IR の各ノード上にオープンソース アセンブリ (`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll`、および `ExcelDataReader.dll`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
        1. `ORACLE ENTERPRISE` フォルダー。Azure SSIS IR Enterprise Edition の各ノードに Oracle コネクタおよび OCI ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) とサイレント インストール構成ファイル (`client.rsp`) が格納されています。 このセットアップによって、Oracle 接続マネージャー、接続元、および接続先を使用できるようになります。 まず、Oracle 用 Microsoft Connectors v5.0 (`AttunitySSISOraAdaptersSetup.msi` と `AttunitySSISOraAdaptersSetup64.msi`) を[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55179)から、および最新の Oracle クライアント (`winx64_12102_client.zip` など) を [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) からダウンロードし、次に `main.cmd` と `client.rsp` と共にそれらをすべてまとめてコンテナーにアップロードします。 TNS を使用して Oracle に接続する場合、`tnsnames.ora` をダウンロードし、編集し、コンテナーにアップロードする必要があります。そのため、セットアップ時にこのファイルを Oracle インストール フォルダーにコピーできます。
 
-       1. `ORACLE STANDARD` フォルダー。Azure SSIS IR の各ノード上に Oracle ODP.NET ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、ADO.NET 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) から最新の Oracle ODP.NET ドライバーを、たとえば、`ODP.NET_Managed_ODAC122cR1.zip` をダウンロードし、`main.cmd` と共にコンテナーにアップロードします。
+       1. `ORACLE STANDARD ADO.NET` フォルダー。Azure SSIS IR の各ノード上に Oracle ODP.NET ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、ADO.NET 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) から最新の Oracle ODP.NET ドライバーを、たとえば、`ODP.NET_Managed_ODAC122cR1.zip` をダウンロードし、`main.cmd` と共にコンテナーにアップロードします。
+       
+       1. `ORACLE STANDARD ODBC` フォルダー。Azure-SSIS IR の各ノード上に Oracle ODBC ドライバーをインストールし、DSN を構成するためのカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップでは、ODBC Connection Manager/Source/Destination または Power Query Connection Manager/Source と ODBC データ ソースの種類を使用して Oracle サーバーに接続できます。 最初に、最新の Oracle Instant Client (Basic Package または Basic Lite Package) と ODBC Package をダウンロードします。たとえば、64 ビット パッケージを[こちら](https://www.oracle.com/technetwork/topics/winx64soft-089540.html)から (Basic Package: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`、Basic Lite Package: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`、ODBC Package: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`)、32 ビット パッケージを[こちら](https://www.oracle.com/technetwork/topics/winsoft-085727.html)から (Basic Package: `instantclient-basic-nt-18.3.0.0.0dbru.zip`、Basic Lite Package: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`、ODBC Package: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) ダウンロードした後、`main.cmd` を使用して、コンテナーにまとめてアップロードします。
 
        1. `SAP BW` フォルダー。Azure SSIS IR Enterprise Edition の各ノードに SAP .NET コネクター アセンブリ (`librfc32.dll`) をインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、SAP BW 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、64 ビットまたは 32 ビットバージョンの `librfc32.dll`を `main.cmd`と共に、 SAP インストール フォルダーからコンテナーにアップロードします。 その後、セットアップ中に、スクリプトによって SAP アセンブリが `%windir%\SysWow64` または `%windir%\System32` フォルダーにコピーされます。
 

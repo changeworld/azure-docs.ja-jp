@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と moconavi の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と moconavi の統合 | Microsoft Docs
 description: Azure Active Directory と moconavi の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 3467b823e6c91d34ebd48c7f8bc29558a79c59e5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3009cb42ac477b18d45ab5968d6f5793ce1cd36c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229548"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165899"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル: Azure Active Directory と moconavi の統合
+# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル:Azure Active Directory と moconavi の統合
 
 このチュートリアルでは、moconavi と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,7 +113,7 @@ moconavi で Azure AD のシングル サインオンを構成してテストす
 
     b. **[識別子]** ボックスに、`https://<yourserverurl>/moconavi-saml2` の形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、`https://<yourserverurl>/moconavi-saml2/saml/SSO` のパターンを使用して URL を入力します。
+    C. **[応答 URL]** ボックスに、`https://<yourserverurl>/moconavi-saml2/saml/SSO` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[moconavi クライアント サポート チーム](mailto:support@recomot.co.jp)に連絡してください。
@@ -162,7 +162,7 @@ moconavi で Azure AD のシングル サインオンを構成してテストす
 
 ### <a name="create-a-moconavi-test-user"></a>moconavi テスト ユーザーの作成
 
-このセクションでは、moconavi で Britta Simon というユーザーを作成します。 [moconavi サポート チーム](mailto:support@recomot.co.jp)と連携して、moconavi プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、moconavi で Britta Simon というユーザーを作成します。  [moconavi サポート チーム](mailto:support@recomot.co.jp) と連携して、moconavi プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

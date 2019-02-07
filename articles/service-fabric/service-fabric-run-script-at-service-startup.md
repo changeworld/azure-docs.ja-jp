@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210496"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098614"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
-Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要がありません。
+Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要はありません。
 
 セットアップ エントリ ポイント ([サービス マニフェスト](service-fabric-application-and-service-manifests.md)の **SetupEntryPoint**) は特権エントリ ポイントで、既定では、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行されます (通常は *NetworkService* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは、通常は実行時間の長いサービス ホストです。 **EntryPoint** 実行可能ファイルは、**SetupEntryPoint** 実行可能ファイルが正常に終了した後に実行されます。 結果のプロセスは監視されて再起動され、終了またはクラッシュした場合に、**SetupEntryPoint** でもう一度開始されます。 
 

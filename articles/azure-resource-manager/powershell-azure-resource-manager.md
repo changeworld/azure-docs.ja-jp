@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 933c7e5b73abf533250072680160d5a5caab6523
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 05dd112c3e2ac2ffde56dd7e355e1fe695968ed0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435438"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078170"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
@@ -27,7 +27,7 @@ ms.locfileid: "54435438"
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="understand-scope"></a>スコープを理解する
 
@@ -38,8 +38,8 @@ PowerShell をローカルにインストールして使用することを選択
 リソース グループを作成しましょう。
 
 ```azurepowershell-interactive
-Set-AzureRmContext -Subscription <subscription-name>
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+Set-AzContext -Subscription <subscription-name>
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 現在、リソース グループは空です。
@@ -65,7 +65,7 @@ $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
   -MailNickName vmDemoGroup `
   -MailEnabled $false `
   -SecurityEnabled $true
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+New-AzRoleAssignment -ObjectId $adgroup.ObjectId `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
@@ -77,7 +77,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 [Azure Policy](../azure-policy/azure-policy-introduction.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を確認するには、次を使用します。
 
 ```azurepowershell-interactive
-(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
+(Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
 既存のポリシー定義が表示されます。 ポリシーの種類は、**[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
@@ -90,21 +90,21 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 $locations ="eastus", "eastus2"
 $skus = "Standard_DS1_v2", "Standard_E2s_v2"
 
-$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+$rg = Get-AzResourceGroup -Name myResourceGroup
 
-$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
-$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
-$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+$locationDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
 
-New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+New-AzPolicyAssignment -Name "Set permitted locations" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $locationDefinition `
   -listOfAllowedLocations $locations
-New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+New-AzPolicyAssignment -Name "Set permitted VM SKUs" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $skuDefinition `
   -listOfAllowedSKUs $skus
-New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+New-AzPolicyAssignment -Name "Audit unmanaged disks" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $auditDefinition
 ```
@@ -114,7 +114,7 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
 ロールとポリシーを割り当てたため、ソリューションをデプロイする準備ができました。 既定のサイズは Standard_DS1_v2 です。これは、許可される SKU の 1 つです。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、仮想マシンのユーザー名とパスワードとして構成されます。
 
 ```azurepowershell-interactive
-New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+New-AzVm -ResourceGroupName "myResourceGroup" `
      -Name "myVM" `
      -Location "East US" `
      -VirtualNetworkName "myVnet" `
@@ -135,12 +135,12 @@ New-AzureRmVm -ResourceGroupName "myResourceGroup" `
 仮想マシンとネットワーク セキュリティ グループをロックするには、次を使用します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
@@ -160,10 +160,10 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
 仮想マシンにタグを適用するには、次を使用します。
 
 ```azurepowershell-interactive
-$r = Get-AzureRmResource -ResourceName myVM `
+$r = Get-AzResource -ResourceName myVM `
   -ResourceGroupName myResourceGroup `
   -ResourceType Microsoft.Compute/virtualMachines
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
+Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
 ### <a name="find-resources-by-tag"></a>タグでリソースを見つける
@@ -171,13 +171,13 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 タグ名と値でリソースを見つけるには、次を使用します。
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Find-AzResource -TagName Environment -TagValue Test).Name
 ```
 
 返される値は、タグ値ですべての仮想マシンを停止するような管理タスクで使用できます。
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Find-AzResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する
@@ -199,20 +199,20 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを削除するには、次を使用します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceLock -LockName LockVM `
+Remove-AzResourceLock -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
-Remove-AzureRmResourceLock -LockName LockNSG `
+Remove-AzResourceLock -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
   -ResourceGroupName myResourceGroup
 ```
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191837"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104662"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>Log Analytics クエリでの app() 式
 
@@ -48,6 +48,7 @@ ms.locfileid: "53191837"
 * アプリケーションへの読み取りアクセスが必要です。
 * アプリケーションをその名前で識別することで、アクセス可能なすべてのサブスクリプション全体で一意であるとみなされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
 * 関連する[ワークスペース](workspace-expression.md)の式を使用して、Log Analytics ワークスペースにわたってクエリを実行します。
+* Application Insights アプリケーションがアラート ルールのリソースとして使用されていない限り、Azure portal を使用して[カスタム ログ検索アラート ルール](../platform/alerts-log.md)を作成する場合、現在のところ検索クエリには app() 式を使用できません。
 
 ## <a name="examples"></a>例
 

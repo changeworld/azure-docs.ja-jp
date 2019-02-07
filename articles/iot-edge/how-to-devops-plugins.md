@@ -8,12 +8,12 @@ ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 016d1c5d389cf1b9e82194e9d273863da1138d2b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830038"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910836"
 ---
 # <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Azure IoT Edge と Jenkins パイプラインの統合
 
@@ -23,4 +23,4 @@ Jenkins 用の Azure IoT Edge プラグインでは、継続的インテグレ�
 
 Jenkins 用の Azure IoT Edge プラグインの使用を開始する前に、Azure 内に IoT ハブとコンテナー イメージを保持するコンテナー レジストリが必要です。 Azure サービス プリンシパルを使用して、プラグインがご使用の IoT Edge デバイスにデプロイを作成できるように、Jenkins の共同作業作成者アクセス許可を IoT ハブに付与します。 
 
-開始する準備ができたら、インストールを探して、[Jenkinx 用 Azure IoT Edge プラグイン](https://plugins.jenkins.io/azure-iot-edge)の詳細を使用します。
+開始する準備ができたら、インストールを探して、[Jenkins 用 Azure IoT Edge プラグイン](https://plugins.jenkins.io/azure-iot-edge)の詳細を使用します。

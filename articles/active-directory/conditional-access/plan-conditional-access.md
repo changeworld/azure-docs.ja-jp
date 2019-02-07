@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450509"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081026"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -54,9 +54,9 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 
 |"*これ*" が発生した場合:|"*これ*" を実行する:|
 |-|-|
-|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、サインイン リスク)|アプリケーションへのアクセスをブロックする|
-|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、サインイン リスク)|次の条件でアクセスを付与する (AND):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
-|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、サインイン リスク)|次の条件でアクセスを付与する (OR):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
+|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、デバイスのプラットフォーム)|アプリケーションへのアクセスをブロックする|
+|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、デバイスのプラットフォーム)|次の条件でアクセスを付与する (AND):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
+|以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する*<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、デバイスのプラットフォーム)|次の条件でアクセスを付与する (OR):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
 
 少なくとも「**これが発生した場合**」では、クラウド アプリへのアクセスを試行する (**何を**) プリンシパル (**だれが**) を定義します。 必要に応じて、アクセス試行の実行**方法**も含めることができます。 条件付きアクセスでは、だれが、何を、そして方法を定義する要素は条件と呼ばれます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](conditions.md)」を参照してください。 
 
@@ -76,22 +76,36 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 - 適用先のクラウド アプリ
 - 応答
 - 適用されるユーザー
-- 適用されるタイミング 
+- いつ適用するか (該当する場合)
  
 ![名前付け基準](./media/plan-conditional-access/11.png)
 
-
+わかりやすい名前は条件付きアクセスの実装の概要を保持するに役立ちますが、シーケンス番号は会話でポリシーを参照する必要がある場合に便利です。 たとえば、同僚の管理者と電話で話す場合、問題を解決するためにポリシー EM063 を開いてほしいと頼むことができます。
 
 
 
 たとえば、次の名前は、Dynamics CRP アプリを使用して外部ネットワーク上のユーザーのマーケティングのために、このポリシーに MFA が必須であることを示しています。
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-また、アクティブ ポリシーに加えて、[機能停止/緊急状況のシナリオでセカンダリの回復性があるアクセスの制御](../authentication/concept-resilient-controls.md)として機能する停止時のポリシーも実装するようにします。 名前付け基準には、機能停止時に簡単に有効にすることができるように、この用途も含めます。 例: 
+また、アクティブ ポリシーに加えて、[機能停止/緊急状況のシナリオでセカンダリの回復性があるアクセスの制御](../authentication/concept-resilient-controls.md)として機能する停止時のポリシーも実装することをお勧めします。 コンティンジェンシー ポリシーの命名規則には、さらにいくつかの項目を含める必要があります。 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- 他のポリシーから名前が目立つようにするため、先頭に `ENABLE IN EMERGENCY`。
+
+- 適用する必要のある中断の名前。
+
+- 管理者がポリシーを有効にする順序を理解できるようにするための、順序シーケンス番号。 
+
+
+たとえば、次の名前は、このポリシーが MFA の中断時に有効にする必要がある 4 つのポリシーのうちの最初のポリシーであることを示します。
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>ポリシーの計画
@@ -118,7 +132,7 @@ MFA を必要とする一般的なユースケースはアクセスです。
 
 - [管理者による](baseline-protection.md#require-mfa-for-admins)
 - [特定のアプリに対する](app-based-mfa.md) 
-- [信頼していないネットワークの場所から](untrusted-networks.md)
+- [信頼していないネットワークの場所から](untrusted-networks.md)。
 
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>侵害された可能性があるアカウントへの応答
@@ -183,7 +197,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 |[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいるときに "*アプリ*" にサインインする|ユーザーに MFA は求められません| |
 |[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいないときに "*アプリ*" にサインインする|ユーザーには MFA が求められ、正常にサインインできます| |
 |[(管理者に) MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|全体管理者が "*アプリ*" にサインインする|管理者に MFA が求められます| |
-|[危険なサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|ユーザーが [Tor ブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)を使用して "*アプリ*" にサインインする|管理者に MFA が求められます| |
+|[リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|ユーザーが [Tor ブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)を使用して "*アプリ*" にサインインする|管理者に MFA が求められます| |
 |[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認済みデバイスからサインインしようとする|アクセスが許可されます| |
 |[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認されていないデバイスからサインインしようとする|アクセスはブロックされます| |
 |[危険なユーザーのパスワード変更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)|ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます| |
@@ -232,7 +246,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 ## <a name="move-to-production"></a>運用環境に移行する
 
-新しいポリシーをご利用環境に展開する準備ができたら、段階的に展開します。
+新しいポリシーを環境で使用する準備が整ったら、段階的に展開します。
 
 - エンド ユーザーに内部的な変更通知を提供します。
 

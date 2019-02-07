@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Spacio の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Spacio の統合 | Microsoft Docs
 description: Azure Active Directory と Spacio の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: aa5c91265a832ef8a66948086b407688fdcbbbc2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 76507fab4050f3ff762713081d2e588dc04f3f1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435476"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157824"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル: Azure Active Directory と Spacio の統合
+# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル:Azure Active Directory と Spacio の統合
 
 このチュートリアルでは、Spacio と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -159,7 +159,7 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
  
 ### <a name="create-a-spacio-test-user"></a>Spacio テスト ユーザーを作成する
 
-このセクションでは、Spacio で Britta Simon というユーザーを作成します。 [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Spacio で Britta Simon というユーザーを作成します。  [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -196,7 +196,7 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Spacio のタイルをクリックすると、自動的に Spacio アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

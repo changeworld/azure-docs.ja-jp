@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と dmarcian の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と dmarcian の統合 | Microsoft Docs
 description: Azure Active Directory と dmarcian の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039889"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095653"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>チュートリアル: Azure Active Directory と dmarcian の統合
+# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>チュートリアル:Azure Active Directory と dmarcian の統合
 
 このチュートリアルでは、dmarcian と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -157,15 +157,15 @@ dmarcian で Azure AD のシングル サインオンを構成してテストす
 
     ![認証 ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * **[Add dmarcian to your Identity Provider] (ID プロバイダーへの dmarcian の追加)** セクションで、**[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure Portal の **[dmarcian Domain and URLs] (dmarcian のドメインと URL)** セクションにある **[応答 URL]** テキスト ボックスに貼り付けます。
+    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、 **[Copy]\(コピー\)**  をクリックしてインスタンスの **[Assertion Consumer Service URL]\(アサーション コンシューマー サービス URL\)** をコピーし、それを Azure portal の  **[dmarcian のドメインと URL]** セクションにある  **[応答 URL]** ボックスに貼り付けます。
 
-    * **[Add dmarcian to your Identity Provider] (ID プロバイダーへの dmarcian の追加)** セクションで、**[コピー]** をクリックしてインスタンスの **[エンティティ ID]** をコピーし、それを Azure Portal の **[dmarcian Domain and URLs] (dmarcian のドメインと URL)** セクションにある **[識別子]** テキスト ボックスに貼り付けます。
+    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、 **[Copy]\(コピー\)**  をクリックしてインスタンスの **[Entity ID]\(エンティティ ID\)** をコピーし、それを Azure portal の  **[dmarcian のドメインと URL]** セクションにある  **[識別子]** ボックスに貼り付けます。
 
     * **[Set up Authentication] (認証の設定)** セクションの **[Identity Provider Metadata] (ID プロバイダーのメタデータ)** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
 
     * **[Set up Authentication] (認証の設定)** セクションの **[Attribute Statements] (属性ステートメント)** テキスト ボックスに、URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
 
-    * **[Set up Login URL] (ログイン URL の設定)** セクションで、インスタンスの **[ログイン URL]** をコピーし、それを Azure Portal の **[dmarcian Domain and URLs] (dmarcian のドメインと URL)** セクションにある **[サインオン URL]** テキスト ボックスに貼り付けます。
+    * **[Set up Login URL]\(ログイン URL の設定\)** セクションで、インスタンスの **[Login URL]\(ログイン URL\)** をコピーし、それを Azure portal の  **[dmarcian のドメインと URL]** セクションにある  **[サインオン URL]** ボックスに貼り付けます。
 
         > [!Note]
         > **[ログイン URL]** は、組織に応じて変更できます。
@@ -265,7 +265,7 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで dmarcian のタイルをクリックすると、自動的に dmarcian アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210598"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096910"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたはオンライン サービスの管理とは、特定の物理コンピューターまたは仮想マシンを特定のサービスまたはシステム専用にすることを意味していました。 サービスは階層として設計されていました。 "Web" 階層と、"データ" または "ストレージ" 階層があります。 アプリケーションには、要求が出入りするメッセージング階層と、キャッシュ専用の一連のコンピューターがあります。 ワークロードの階層または種類にはそれぞれ専用のコンピューターが使用されていました。データベースには 2 個の専用コンピューターが、Web サーバーには数個が使用されました。 特定の種類のワークロードがそのワークロード用のコンピューターの能力を超えた場合は、そのワークロード用に構成されたコンピューターの数をその階層に増やしていました。 ただし、すべてのワークロードを簡単にスケール アウトできる訳ではありません。通常はコンピューターを大きなコンピューターで置き換えるデータ層では特にそうですが、 簡単です。 マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。 まだ (楽しくはないにしても) 十分に簡単です。
@@ -60,7 +60,7 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 ## <a name="next-steps"></a>次の手順
 - クラスター リソース マネージャー内のアーキテクチャと情報フローの詳細については、[この記事](service-fabric-cluster-resource-manager-architecture.md)を確認してください。
 - Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 メトリックの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
-- サービスの構成の詳細については、[サービスの構成](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md) に関する記事を参照してください。
+- サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 - クラスター リソース マネージャーは Service Fabric の管理機能と連動します。 その統合の詳細については、 [この記事](service-fabric-cluster-resource-manager-management-integration.md)
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)

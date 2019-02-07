@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032682"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913310"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
 
 ネットワーク セキュリティ グループのイングレス IP トラフィックとエグレス IP トラフィックの情報は、ネットワーク セキュリティ グループのフロー ログで確認できます。 これらのフロー ログには、規則ごとの送信フローと受信フロー、フローの適用先の NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル) のほか、トラフィックが許可されたか拒否されたかどうかの情報が記録されます。
 
 フローのログ データに関して、ログ ファイルを手動で検索することによって洞察を得るのは、あまり現実的ではありません。 この記事では、直近のフロー ログを視覚化してネットワークのトラフィックを把握する方法について取り上げます。
+
+> [!Warning]  
+> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -43,7 +46,7 @@ ms.locfileid: "47032682"
 
 ## <a name="setup"></a>セットアップ
 
-最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフローをログに記録する方法)](network-watcher-nsg-flow-logging-overview.md)」の記事をご覧ください。
+最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」の記事を参照してください。
 
 また、ご利用のコンピューターに Power BI Desktop クライアントがインストールされていること、そしてストレージ アカウントに存在するログ データをダウンロードして読み込めるだけの空き領域がそのコンピューターにあることが必要です。
 
@@ -120,7 +123,7 @@ ms.locfileid: "47032682"
 
 ## <a name="next-steps"></a>次の手順
 
-Elastick Stack で NSG フロー ログを視覚化する方法については、「[オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)」を参照してください。
+Elastick Stack で NSG フロー ログを視覚化する方法については、「[オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)」を参照してください
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

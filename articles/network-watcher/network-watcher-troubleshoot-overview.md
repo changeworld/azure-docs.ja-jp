@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779262"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099783"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -74,7 +74,7 @@ ms.locfileid: "32779262"
 | ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
 | ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
-| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
+| ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
 | Authentication | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
@@ -107,7 +107,7 @@ ms.locfileid: "32779262"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

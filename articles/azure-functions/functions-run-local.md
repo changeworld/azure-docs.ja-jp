@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103691"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094245"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -40,13 +40,13 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 ### <a name="v2"></a>バージョン 2.x
 
-バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。
+バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。 .NET Core 2.x SDK を先にインストールしておく必要があります。
 
 #### <a name="windows-npm"></a>Windows
 
 次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
 
-1. [Windows 用 .NET Core 2.1](https://www.microsoft.com/net/download/windows) をインストールします。
+1. [Windows 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows) をインストールします。
 
 2. [Node.js]をインストールします。これには、npm が同梱されています。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
 
@@ -60,7 +60,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
 
-1. [macOS 用 .NET Core 2.1](https://www.microsoft.com/net/download/macos) をインストールします。
+1. [macOS 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos) をインストールします。
 
 2. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
 
@@ -75,7 +75,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
 
-1. [Linux 用 .NET Core 2.1](https://www.microsoft.com/net/download/linux) をインストールします。
+1. [Linux 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux) をインストールします。
 
 2. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
 
@@ -181,7 +181,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 }
 ```
 
-| Setting      | 説明                            |
+| 設定      | 説明                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
@@ -371,7 +371,7 @@ HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、
 {
     "input": "<trigger_input>"
 }
-````
+```
 
 `<trigger_input>` 値には、関数が必要とする形式でデータが含まれています。 次の cURL の例は、`QueueTriggerJS` 関数に対する POST です。 この場合、入力は、キューにあることが期待されるメッセージに相当する文字列です。
 
@@ -479,5 +479,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure ポータル]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

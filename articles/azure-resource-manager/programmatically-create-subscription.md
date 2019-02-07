@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 90823eded03f298dd912735fb0170fd8002328f3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6a4dedc2478b2f8c5fa754e3736dbfb983cfb7a2
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715892"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079819"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
@@ -75,10 +75,10 @@ GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[Get-AzureRmEnrollmentAccount command](/powershell/module/azurerm.billing/get-azurermenrollmentaccount)を使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
+[Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) コマンドレットを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
 ```azurepowershell-interactive
-Get-AzureRmEnrollmentAccount
+Get-AzEnrollmentAccount
 ```
 
 アカウントのオブジェクト ID とメール アドレスの一覧が Azure から返されます。
@@ -161,24 +161,24 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-このプレビュー モジュールを使用するには、まず `Install-Module AzureRM.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
+このプレビュー モジュールを使用するには、まず `Install-Module Az.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
 
-新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID を パラメーター `EnrollmentAccountObjectId` に設定し、[New-AzureRmSubscription](/powershell/module/azurerm.subscription) を使用します。 
+新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID を パラメーター `EnrollmentAccountObjectId` に設定し、[New-AzSubscription](/powershell/module/az.subscription) を使用します。 
 
 ```azurepowershell-interactive
-New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
+New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
 | 要素名  | 必須 | type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | いいえ       | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `OfferType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
-| `EnrollmentAccountObjectId`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzureRmEnrollmentAccount` から取得する GUID です。 |
+| `EnrollmentAccountObjectId`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzEnrollmentAccount` から取得する GUID です。 |
 | `OwnerObjectId`      | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `OwnerSignInName`    | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
 | `OwnerApplicationId` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。| 
 
-すべてのパラメーターの完全な一覧については、[New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) を参照してください。
+すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription.preview) を参照してください。
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 

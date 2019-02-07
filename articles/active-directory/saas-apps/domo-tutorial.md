@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Domo の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Domo の統合 | Microsoft Docs
 description: Azure Active Directory と Domo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 058626e4-73b3-4dc2-86ca-b060d002d70a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 9c6a8585033cc9ba8db763e053f63cef47fdcd02
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e0be067195e6bac1df2206c396faaf4d907f7469
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443298"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152623"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル: Azure Active Directory と Domo の統合
+# <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル:Azure Active Directory と Domo の統合
 
 このチュートリアルでは、Domo と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -172,7 +172,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 1. **デモ**側でシングル サインオンを構成するには、[こちら](http://knowledge.domo.com?cid=azuread)からデモのサポート技術情報の記事に移動し、指示に従います。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431199"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079989"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -40,17 +40,16 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 グローバル管理者/共同管理者は、すべてのタスクを完了できます。 職務権限を分離している状況では、タスク、相当するコマンドレット、および必要なアクセス許可の一覧を次の表に示します。
 
-|タスク|コマンドレット  |最小限のアクセス許可  |
-|---|---------|---------|
-|Azure AD アプリケーションを作成する|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | アプリケーション開発者ロール        |
-|資格情報をアプリケーションに追加します。|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | アプリケーション管理者または全体管理者         |
-|Azure AD サービス プリンシパルを作成および取得する|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | アプリケーション管理者または全体管理者        |
-|指定されたプリンシパルの RBAC ロールを割り当てるまたは取得する|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | ユーザー アクセス管理者または所有者        |
-|Automation の証明書を作成または削除する|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | リソース グループの共同作成者         |
-|Automation の接続を作成または削除する|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|リソース グループの共同作成者 |
+|タスク|コマンドレット  |最小限のアクセス許可  |アクセス許可を設定する場所|
+|---|---------|---------|---|
+|Azure AD アプリケーションを作成する|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | アプリケーション開発者ロール<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録] |
+|資格情報をアプリケーションに追加します。|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | アプリケーション管理者または全体管理者<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録]|
+|Azure AD サービス プリンシパルを作成および取得する|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | アプリケーション管理者または全体管理者        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録]|
+|指定されたプリンシパルの RBAC ロールを割り当てるまたは取得する|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | ユーザー アクセス管理者または所有者        | [サブスクリプション](../role-based-access-control/role-assignments-portal.md)</br>[ホーム] > [サブスクリプション] > [\<サブスクリプション名\>-アクセス制御 (IAM)]|
+|Automation の証明書を作成または削除する|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | リソース グループの共同作成者         |Automation アカウントのリソース グループ|
+|Automation の接続を作成または削除する|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|リソース グループの共同作成者 |Automation アカウントのリソース グループ|
 
-* 「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md#contributor)」の記事に記載されている Microsoft.Automation リソースの共同作成者ロールに相当するアクセス許可を備えた AD ユーザー アカウント。  
-* **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが[AD アプリケーションを登録](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。
+<sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。
 
 サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
 

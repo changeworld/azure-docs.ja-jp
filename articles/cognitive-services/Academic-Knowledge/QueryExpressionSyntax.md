@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901279"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150875"
 ---
 # <a name="query-expression-syntax"></a>クエリ式の構文
 
@@ -25,39 +25,39 @@ ms.locfileid: "48901279"
 
 クエリ式に含めることのできる各エンティティ属性には、特定のデータ型と、使用できるクエリ演算子のセットがあります。 エンティティ属性および各属性でサポートされている演算子のセットが、[エンティティ属性](EntityAttributes.md)で指定されます。 単一値クエリには、*Equals* 演算をサポートするための属性が必要です。 プレフィックス クエリには、*StartsWith* 演算をサポートするための属性が必要です。 数値範囲クエリには、*IsBetween* 演算をサポートするための属性が必要です。
 
-エンティティ データの一部は、属性名のドット '.' で示される複合属性として格納されます。 たとえば、著者/所属情報は、複合属性として表されます。 これには、AuN、AuId、AfN、AfId の 4 つのコンポーネントが含まれます。 これらのコンポーネントは、単一のエンティティ属性値を形成するデータの個別の部分です。
+エンティティ データの一部は、属性名のドット '.' で示される複合属性として格納されます。 たとえば、著者/所属情報は、複合属性として表されます。 これには 4 つのコンポーネントが含まれます。AuN、AuId、AfN、AfId です。 これらのコンポーネントは、単一のエンティティ属性値を形成するデータの個別の部分です。
 
 
-**文字列属性: 単一値** (シノニムとの一致を含む)  
+**文字列属性:単一値** (シノニムとの一致を含む)  
 Ti='indexing by latent semantic analysis'  
 Composite(AA.AuN='sue dumais')
 
-**文字列属性: 厳密に 1 つの値** (基準の値のみと一致)  
+**文字列属性:厳密に 1 つの値** (基準の値のみと一致)  
 Ti=='indexing by latent semantic analysis'  
 Composite(AA.AuN=='susan t dumais')
      
-**文字列属性: プレフィックス値**   
+**文字列属性:プレフィックス値**   
 Ti='indexing by latent seman'...  
 Composite(AA.AuN='sue du'...)
 
-**数値属性: 単一値**  
+**数値属性:単一値**  
 Y=2010
  
-**数値属性: 範囲値**  
+**数値属性:範囲値**  
 Y>2005  
 Y>=2005  
 Y<2010  
 Y<=2010  
-Y =\[2010、2012\) (左の境界値のみを含む: 2010、2011)  
-Y=\[2010, 2012\] (両方の境界値を含む: 2010、2011、2012)
+Y =\[2010、2012\) (左の境界値のみを含む:2010、2011)  
+Y=\[2010, 2012\] (両方の境界値を含む:2010、2011、2012)
  
-**数値属性: プレフィックス値**  
+**数値属性:プレフィックス値**  
 Y='19'... (19 で始まる任意の数値) 
  
-**日付属性: 単一値**  
+**日付属性:単一値**  
 D='2010-02-04'
 
-**日付属性: 範囲値**  
+**日付属性:範囲値**  
 D>'2010-02-03'  
 D=['2010-02-03','2010-02-05']
 
@@ -85,7 +85,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>このバージョンでは、Composite() が And() より前に著者と所属に個別に適用されるので、著者の 1 人が "Mike Smith" で、著者の 1 人の所属が "Harvard" であるすべての論文を取得します。 これは、前のクエリ例と同じに思えますが、同じものではありません。
 
-一般に、次の例を検討してください: A と B の 2 つのコンポーネントを持つ複合属性 C があります。エンティティには、C に対して複数の値がある場合があります。これらは次のエンティティです。
+一般的な例として、次の例を考えてみましょう。A と B の 2 つのコンポーネントを持つ複合属性 C があります。エンティティには、C に対して複数の値がある場合があります。これらは次のエンティティです。
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

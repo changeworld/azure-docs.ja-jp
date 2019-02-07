@@ -5,15 +5,15 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 19b7cebd1c75e1a2bbfe34e3ab4e657051e8a6d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813581"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159534"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
@@ -1215,7 +1215,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>Description
 Set-ADSyncUnifiedGroupWritebackPermissions 関数は、次を含む必要なアクセス許可を AD 同期アカウントに付与します。
 1.
-すべてのオブジェクトの種類またはサブ オブジェクトの汎用の読み取り/書き込み、削除、ツリーの削除および子の作成\削除
+すべてのグループ オブジェクトの種類またはサブ オブジェクトの汎用の読み取り/書き込み、削除、ツリーの削除および子の作成\削除
 
 これらのアクセス許可は、フォレスト内のすべてのドメインに適用されます。
 必要に応じて ADobjectDN パラメーターに DistinguishedName を指定し、これらのアクセス許可をその AD オブジェクトのみに設定できます (サブ オブジェクトへの継承を含む)。

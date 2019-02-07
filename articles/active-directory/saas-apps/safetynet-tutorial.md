@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SafetyNet の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SafetyNet の統合 | Microsoft Docs
 description: Azure Active Directory と SafetyNet の間のシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7756e943d25a02b3ec3e5a9150bb5eec8485eda7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4fb21f96c682775b4f7360abcdac7b64c78f76d9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158283"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>チュートリアル: Azure Active Directory と SafetyNet の統合
+# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>チュートリアル:Azure Active Directory と SafetyNet の統合
 
 このチュートリアルでは、SafetyNet と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -121,7 +121,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SafetyNet クライアント サポート チーム](mailto:dev@predictivesolutions.com)に問い合わせてください。
 
-1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+1.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
@@ -165,7 +165,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-safetynet-test-user"></a>SafetyNet テスト ユーザーの作成
 
-このセクションでは、SafetyNet で Britta Simon というユーザーを作成します。 [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)と連携し、SafetyNet プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、SafetyNet で Britta Simon というユーザーを作成します。  [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)と連携し、SafetyNet プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -202,7 +202,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SafetyNet] タイルをクリックすると、自動的に SafetyNet アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

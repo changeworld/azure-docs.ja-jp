@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725968"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076828"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -308,7 +308,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 ## <a id="hdinsight-ports"></a>必須ポート
 
-ネットワークの**仮想アプライアンス ファイアウォール**を使用して、仮想ネットワークを保護する予定の場合は、次のポートで送信トラフィックを許可する必要があります。 
+**ファイアウォール**を使用して、仮想ネットワークをセキュリティで保護し、特定のポートでクラスターにアクセスすることを計画している場合は、シナリオに必要なポートでトラフィックを許可する必要があります。 既定では、これらのポートをホワイトリストに登録する必要はありません。
 
 * 53
 * 443

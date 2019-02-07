@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437608"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081247"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 次の制限事項が適用されます。
 
-- 既存の RBAC 非対応 AKS クラスターは現在、RBAC 用途のために更新できません。
+- Azure AD は、RBAC が有効なクラスターを新しく作成するときにのみ有効にできます。 既存の AKS クラスターで Azure AD を有効にすることはできません。
 - 別のディレクトリからフェデレーション ログインを使用している場合など、Azure AD の "*ゲスト*" ユーザーはサポートされていません。
 
 ## <a name="authentication-details"></a>認証の詳細

@@ -79,11 +79,11 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Office 365** | [はい] |
-| office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | [はい] |
-| servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Office 365** | はい |
+| office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | はい |
+| servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | はい |
 | connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 >[!NOTE]
@@ -119,8 +119,8 @@ Office 365 からのデータ コピーについては、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **Office365Table** に設定する必要があります。 | [はい] |
-| tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets)をご覧ください。 | [はい] |
+| type | データセットの type プロパティは **Office365Table** に設定する必要があります。 | はい |
+| tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets)をご覧ください。 | はい |
 | predicate | Office 365 から抽出する行をフィルター処理するために使用できる述語式です。  各テーブルの述語フィルターに使用できる列とフィルター式の形式については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters)をご覧ください。 | いいえ <br>(述語が指定されていない場合は、既定の動作として、過去 30 日間のデータが抽出されます) |
 
 **例**

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: fa6d46186ad833b68e60c24f742d210b7845759a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207912"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097913"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -38,7 +38,7 @@ API レベルの信頼性を判断するために、最初に行う手順は認�
 
 ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)ための主なしくみは、ASP.NET Core Identity メンバーシップ システムです。 ASP.NET Core Identity では、開発者によって構成されたデータ ストアにユーザー情報 (サインイン情報、ロール、要求など) が格納されます。 ASP.NET Core Identity は、2 要素認証をサポートしています。  外部認証プロバイダーもサポートされているため、ユーザーは、Microsoft、Google、Facebook、Twitter などのプロバイダーによる既存の認証プロセスを使用してログインすることができます。 
 
-### <a name="authorization"></a>承認
+### <a name="authorization"></a>Authorization
 認証後、サービスはユーザー アクセスを承認するか、ユーザーの実行できる操作を判断する必要があります。 このプロセスにより、サービスはすべてのユーザーではなく一部の認証されたユーザーだけに API の使用を許可することができます。 承認は、ユーザーがだれであるかを確認するプロセスである認証とは独立して直交しています。 承認では、現在のユーザーのために 1 つ以上の ID を作成する場合があります。
 
 [ASP.NET Core の承認](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)は、ユーザーのロールに基づいて、またはカスタム ポリシーに基づいて行うことができます。カスタム ポリシーには、要求やその他のヒューリスティックの調査を含めることができます。
@@ -46,7 +46,7 @@ ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microser
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>API ゲートウェイを使用してアクセスを制限し、セキュリティで保護する
 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 [API ゲートウェイ](/azure/architecture/microservices/gateway)は、クライアントとサービスの間に存在し、アプリケーションによって提供されるすべてのサービスへのエントリ ポイントになっています。 それは、要求をクライアントからサービスにルーティングするリバース プロキシとして機能します。 また、認証と承認、SSL 終了、レート制限などのさまざまな横断的タスクを実行することもできます。 ゲートウェイをデプロイしない場合、クライアントは、フロント エンド サービスに直接要求を送信する必要があります。
 
-Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Træfik](https://docs.traefik.io/)、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、[IoT Hub](https://docs.microsoft.com/azure/iot-hub/)、[Azure API Management](https://docs.microsoft.com/azure/api-management) など、トラフィック受信用に設計された別のサービスを使用することもできます。
+Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Traefik](https://docs.traefik.io/)、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、[IoT Hub](https://docs.microsoft.com/azure/iot-hub/)、[Azure API Management](https://docs.microsoft.com/azure/api-management) など、トラフィックをイングレスするために設計された別のサービスを使用することもできます。
 
 API Management は Service Fabric と直接統合されるので、バックエンドの Service Fabric サービスへのルーティング規則を豊富に備えた API を公開することができます。  バックエンド サービスへのアクセスを保護したり、調整機能を使用して DOS 攻撃を防いだり、API キー、JWT トークン、証明書、およびその他の資格情報を検証したりすることができます。 詳細については、「[Azure Service Fabric と API Management の概要](service-fabric-api-management-overview.md)」を参照してください。
 

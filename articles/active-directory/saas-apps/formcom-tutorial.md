@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Form.com の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Form.com の統合 | Microsoft Docs
 description: Azure Active Directory と Form.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: faa89ffd572733c580235b1c6dec58893de20503
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5748cad11e8e0e4bdfd1000b312ab44fc304059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449623"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161063"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル: Azure Active Directory と Form.com の統合
+# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル:Azure Active Directory と Form.com の統合
 
 このチュートリアルでは、Form.com と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -123,11 +123,11 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、応答 URL、および識別子で値を更新します。 これらの値を取得するには、[Form.com クライアント サポート チーム](https://form.com/about/company/contact-us/)に問い合わせてください。
 
-1. **[SAML 署名証明書]** セクションで、次の手順を実行します。
+1.  **[SAML 署名証明書]**  セクションで、次の手順を実行します。
     
     ![Configure single sign-on](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+    a. コピー ボタンをクリックして  **[アプリのフェデレーション メタデータ URL]**  をコピーし、メモ帳に貼り付けます。
 
     b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
      
@@ -212,7 +212,7 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Form.com] タイルをクリックすると、自動的に Form.com アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

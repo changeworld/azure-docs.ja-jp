@@ -7,22 +7,22 @@ documentationcenter: ''
 author: MarkusVi
 manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 466e12877a63a32f461267a489573183b9da9734
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451308"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076845"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -120,6 +120,15 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 その他のクライアント条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
 
 その他のクライアント条件の横にあるその他の条件はすべて、構成可能です。
+たとえば、モバイル デバイスに対する従来の認証をブロックすることだけが必要な場合は、以下を選択して**デバイス プラットフォーム**の条件を設定します。
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+![サポートされていないポリシー構成](./media/block-legacy-authentication/06.png)
 
 
 
