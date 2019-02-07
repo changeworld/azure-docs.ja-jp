@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a7c823493369735df23360645004b0bec85dbd7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421577"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885509"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Log Analytics を使用した Azure PaaS リソース メトリックの収集を構成する
 
@@ -67,7 +67,7 @@ Azure 診断によるメトリックの収集をサポートし、Log Analytics 
 
 スクリプトは、選択された条件と一致するすべてのリソースに対して実行され、それらのメトリック収集を有効にします。 この操作が終了すると、構成が完了したことを示すメッセージが表示されます。  
 
-完了直後に、Log Analytics リポジトリ内の Azure PaaS リソースからのデータの表示が開始されます。  `AzureMetrics` 型のレコードが作成されます。これらのレコードの分析は、[Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) と [Azure Web Apps Analytics](../../azure-monitor/insights/azure-web-apps-analytics.md) 管理ソリューションによってサポートされます。   
+完了直後に、Log Analytics リポジトリ内の Azure PaaS リソースからのデータの表示が開始されます。  `AzureMetrics` 型のレコードが作成されます。これらのレコードの分析は、[Azure SQL Analytics](../insights/azure-sql.md) と [Azure Web Apps Analytics](../insights/azure-web-apps-analytics.md) 管理ソリューションによってサポートされます。   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>別のワークスペースにデータを送信するようにリソースを更新する
 Log Analytics ワークスペースに既にデータを送信しているリソースがあるときに、別のワークスペースを参照するようにそのリソースを再構成する場合は、`-Update` パラメーターを指定してスクリプトを実行できます。  
@@ -79,8 +79,8 @@ Log Analytics ワークスペースに既にデータを送信しているリソ
 
 ## <a name="next-steps"></a>次の手順
 
-* [ログ検索](../../azure-monitor/log-query/log-query-overview.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ検索](../log-query/log-query-overview.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
-* [カスタム フィールド](../../azure-monitor/platform/custom-fields.md)を使用して、イベント レコードを個別のフィールドに解析します。
+* [カスタム フィールド](custom-fields.md)を使用して、イベント レコードを個別のフィールドに解析します。
 
-* 「[Log Analytics で使用するカスタム ダッシュボードの作成](../../azure-monitor/platform/dashboards.md)」で、組織にとって意味のある方法でログ検索を視覚化する方法を理解します。
+* 「[Log Analytics データのダッシュボードを作成して共有する](../learn/tutorial-logs-dashboards.md)」を参照して、組織にとって意味のある方法でログ検索を視覚化する方法を理解します。

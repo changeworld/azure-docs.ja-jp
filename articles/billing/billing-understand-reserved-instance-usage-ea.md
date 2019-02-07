@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: a33a360d25930f1468f1c9240be2d0f306d682c7
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: banders
+ms.openlocfilehash: 0f29544890fe10f4914de393a4b153cfe393a2ec
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585749"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904303"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>エンタープライズ加入契約に適用される Azure の予約の使用状況について
 
@@ -55,7 +55,7 @@ ms.locfileid: "47585749"
 
 以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。 
 
-あなたは SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
+SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
 
 | フィールド | 値 |
 |---| --- |
@@ -76,7 +76,7 @@ ms.locfileid: "47585749"
 
 ## <a name="usage-summary-page-in-enterprise-portal"></a>Enterprise Portal の使用状況の概要ページ
 
-Azure の予約の使用状況は、Enterprise Portal の使用状況の概要セクションにも表示されます。![Enterprise Agreement (EA) の使用状況の概要](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+Azure の予約の使用状況は、Enterprise portal の使用状況の概要セクションにも表示されます。![Enterprise Agreement (EA) 使用状況の概要](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
 
 1. VM のハードウェア コンポーネントは、予約によって充当されるため、料金は発生しません。 SQL Database の予約の場合、Azure SQL Database の予約容量として **Service Name** 行が表示されます。
 2. この例では、Azure ハイブリッド特典がないため、VM で使用される Windows ソフトウェアには課金されます。
@@ -93,7 +93,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847545"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904371"
 ---
 # <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
 
@@ -41,9 +41,9 @@ Azure Notebooks のプロジェクトは、基本的には、Jupyter ノート�
 
 ![プロジェクト ダッシュ ボードのコンピューティング レベル ドロップダウン リスト](media/project-compute-tier-list.png)
 
-これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 その仮想マシンには、Jupyter もインストールする必要があります。 Data Science Virtual Machine イメージは、既定で Jupyter が含まれるため、適切な選択です。
+これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 その仮想マシン上で、JupyterHub をインストールして実行する必要があります。 Data Science Virtual Machine イメージ (オペレーティング システムは任意) は、既定で JupyterHub が含まれるため、適切な選択です。
 
-ドロップダウン リストの **[Direct Compute]\(直接コンピューティング\)** オプションを使用して、適切に構成されている任意の Azure 仮想マシンに接続できます。 このオプションを選択すると、名前 (一覧に表示される)、VM の IP アドレスとポート (通常は 8000、JupyterHub がリッスンする既定のポート)、および VM 資格情報の入力が求められます。
+適切に構成された Azure 仮想マシンを用意したら、ドロップダウン リストで **[Direct Compute]\(直接コンピューティング\)** オプションを選択します。すると、名前 (一覧に表示する名前)、VM の IP アドレスとポート (通常は 8000、JupyterHub がリッスンする既定のポート)、および VM 資格情報の入力を求められます。
 
 ![[Direct Compute]\(直接コンピューティング\) オプションのサーバー情報を収集するプロンプト](media/project-compute-tier-direct.png)
 
@@ -51,13 +51,13 @@ Azure Notebooks のプロジェクトは、基本的には、Jupyter ノート�
 
 - 会社のアカウントなどの Azure Active Directory (AAD) を使用するアカウントで、Azure Notebooks にサインインしている。
 - アカウントが Azure サブスクリプションに接続されている。
-- そのサブスクリプションに、少なくとも閲覧者アクセス権を持ち、Data Science Virtual Machine for Linux (Ubuntu) イメージを使用する 1 つ以上の仮想マシンがある。
+- そのサブスクリプションに、少なくとも閲覧者アクセス権を持ち、Data Science Virtual Machine for Linux (Ubuntu) イメージを使用する 1 つ以上の仮想マシンが含まれている。
 
 ![プロジェクト ダッシュボードのドロップダウン リストの Data Science Virtual Machine インスタンス](media/project-compute-tier-dsvm.png)
 
 DSVM インスタンスを選択すると、Azure Notebooks によって、VM を作成したときに使用した特定のマシン資格情報が求められることがあります。
 
-新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 Azure Notebooks には、Windows イメージまたは CentOS イメージを使用する DSVM が表示されないため、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用する*必要があります*。
+新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 Azure Notebooks 内のドロップダウン リストに DSVM が表示されるようにする場合は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用します。  その他の理由で Windows または CentOS イメージを使用する必要がある場合は、**[Direct Compute]\(直接コンピューティング\)** オプションを使用して手動で DSVM に接続できます。
 
 ## <a name="edit-project-metadata"></a>プロジェクト メタデータを編集する
 

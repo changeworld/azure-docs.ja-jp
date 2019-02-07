@@ -3,7 +3,7 @@ title: サンプルの Azure インフラストラクチャによるチュート
 description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469852"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888962"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -72,15 +72,15 @@ Adventure Works Cycles では、Azure Managed Disks を使用する必要があ�
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-* 名前: AZOS-USE-VN01
-* 場所: East US 2
-* 仮想ネットワークのアドレス空間: 10.0.0.0/8
+* 名前:AZOS-USE-VN01
+* 場所:米国東部 2
+* 仮想ネットワークのアドレス空間:10.0.0.0/8
 * 1 番目のサブネット:
-  * 名前: FrontEnd
-  * アドレス空間: 10.0.1.0/24
+  * 名前:FrontEnd
+  * アドレス空間:10.0.1.0/24
 * 2 番目のサブネット:
-  * 名前: BackEnd
-  * アドレス空間: 10.0.2.0/24
+  * 名前:BackEnd
+  * アドレス空間:10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。

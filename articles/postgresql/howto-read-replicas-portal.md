@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383865"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902663"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Azure portal で読み取りレプリカを作成および管理する方法
+
+> [!IMPORTANT]
+> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
+
+
 この記事では、Azure portal を使用して Azure Database for PostgreSQL サービスの読み取りレプリカを作成および管理する方法を学習します。 読み取りレプリカの詳細については、[概念のドキュメントを読んでください](concepts-read-replicas.md)。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,6 +46,7 @@ ms.locfileid: "54383865"
    ![Azure Database for PostgreSQL - 保存の通知](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. 保存後、サーバーを再起動して変更を適用します。 サーバーの再起動方法については、[再起動に関するドキュメント](howto-restart-server-portal.md)を参照してください。
+
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 読み取りレプリカは、次の手順を使用して作成できます。

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816757"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104237"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -59,7 +59,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **手順 1:[復元ポイントのリソース グループのロックを解除する](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **手順 2:[復元ポイント コレクションをクリーンアップする](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionNotConfigured - Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするには十分ではありません
 
 **エラー コード**:UserErrorKeyvaultPermissionsNotConfigured <br>
 **エラー メッセージ**:Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 <br>
@@ -105,7 +105,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません <br>
 
-コンテナーがインスタント リストアにアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 インスタント リストアにアップグレードすると、最大 4 TB がサポートされます。こちらの[記事](backup-instant-restore-capability.md)を参照してください。  
+コンテナーがインスタント リストアにアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 インスタント リストアにアップグレードすると、最大 4 TB がサポートされます。こちらの[記事](backup-instant-restore-capability.md#upgrading-to-instant-restore)を参照してください。 アップグレード後に、サブスクリプションでこの機能を利用できるようになるまでには最大 2 時間かかります。 操作を再試行する前に十分なバッファーを用意してください。  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 現在、Azure Backup では Standard SSD ディスクはサポートされていません
 
@@ -114,7 +114,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 現在、Azure Backup では、[インスタント リストア](backup-instant-restore-capability.md)にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。
 
-## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません。
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 
 **エラー コード**:UserErrorBackupOperationInProgress <br>
 **エラー メッセージ**:別のバックアップ操作が進行中であるためバックアップを開始できません<br>
@@ -132,7 +132,6 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 4. バックアップ操作を再試行してください。
 
 スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、[復元に関する考慮事項](backup-azure-vms-introduction.md#restore-considerations)について確認してください。
-
 
 
 ## <a name="causes-and-solutions"></a>原因とソリューション

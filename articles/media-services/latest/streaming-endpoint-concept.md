@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359639"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104567"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 
-Microsoft Azure Media Services (AMS) では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) エンティティは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 アカウントで追加のストリーミング エンドポイントを作成できます。 ビデオのストリーミングを開始するには、ビデオをストリーミングするストリーミング エンドポイントを開始する必要があります。 
+Microsoft Azure Media Services (AMS) では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) エンティティは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 **ストリーミング エンドポイント** サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 アカウントで追加のストリーミング エンドポイントを作成できます。 
+
+> [!NOTE]
+> ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。 
 
 ## <a name="naming-convention"></a>命名規則
 

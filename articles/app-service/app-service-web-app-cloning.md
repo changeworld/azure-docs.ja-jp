@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 9d4b664c9b1fc0deb10794a5f0b29c2b600d19e2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17ea8545855cd926a393e9e40d3eccaabd6dba53
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712665"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886528"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが `New-AzureRMWebApp` に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の App Service アプリを複製できるようになりました。 このオプションにより、リージョンをまたいでさまざまなアプリを迅速かつ簡単に展開できるようになります。
@@ -28,7 +28,7 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。 この新機能には App Service バックアップ機能と同じ制限が適用されます。[Azure App Service でのアプリのバックアップ](manage-backup.md)に関するページを参照してください。
 
 ## <a name="cloning-an-existing-app"></a>既存のアプリの複製
-シナリオ:ユーザーは、米国中南部リージョンに既存のアプリを持っており、そのコンテンツを米国中北部の新しいアプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使って新しいアプリを作成します (`-SourceWebApp` オプションを指定)。
+シナリオ: ユーザーは、米国中南部リージョンに既存のアプリを持っており、そのコンテンツを米国中北部の新しいアプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使って新しいアプリを作成します (`-SourceWebApp` オプションを指定)。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -61,7 +61,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName NewAzureResourceGroup -Name dest
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service 環境への既存のアプリの複製
-シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
+シナリオ: 米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -78,7 +78,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -N
 `Location` パラメーターは従来の理由により必要ですが、ASE にアプリを作成するときは無視されます。 
 
 ## <a name="cloning-an-existing-app-slot"></a>既存のアプリ スロットの複製
-シナリオ:アプリの既存のデプロイ スロットを新しいアプリまたは新しいスロットに複製したいと考えています。 新しいアプリは、元のアプリ スロットと同じリージョン内にあるものでも、別のリージョンにあるものでもかまいません。
+シナリオ: アプリの既存のデプロイ スロットを新しいアプリまたは新しいスロットに複製したいと考えています。 新しいアプリは、元のアプリ スロットと同じリージョン内にあるものでも、別のリージョンにあるものでもかまいません。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使って、`source-app` に関連付けられたソース アプリ スロット (この場合の名前は `source-appslot`) の情報を取得できます。
 
@@ -96,14 +96,14 @@ $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -N
 複数リージョンのアプリを作成し、これらのアプリすべてにトラフィックをルーティングするように Azure Traffic Manager を構成することは、アプリの高可用性を確保するための重要なシナリオです。 既存のアプリを複製するときは、両方のアプリを新しい Traffic Manager プロファイルまたは既存の Traffic Manager プロファイルのどちらに接続するかを選ぶことができます。 Azure Resource Manager バージョンの Traffic Manager のみがサポートされています。
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>アプリの複製時における新しい Traffic Manager プロファイルの作成
-シナリオ:ユーザーは、アプリを別のリージョンに複製しつつ、両方のアプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。 新しい Traffic Manager プロファイルを構成しつつ、ソース アプリの複製を新しいアプリに作成するコマンドを次に示します。
+シナリオ: ユーザーは、アプリを別のリージョンに複製しつつ、両方のアプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。 新しい Traffic Manager プロファイルを構成しつつ、ソース アプリの複製を新しいアプリに作成するコマンドを次に示します。
 
 ```PowerShell
 $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-app-to-an-existing-traffic-manager-profile"></a>既存の Traffic Manager プロファイルへの新しい複製アプリの追加
-シナリオ:ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方のアプリをエンドポイントとして追加したいと考えています。 そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。 サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要です。
+シナリオ: ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方のアプリをエンドポイントとして追加したいと考えています。 そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。 サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要です。
 
 ```PowerShell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
@@ -116,7 +116,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest
 ```
 
 ## <a name="current-restrictions"></a>現在の制限
-現在、この機能はプレビュー段階であり、今後新しい機能が追加されます。 次に示すのは、現在のバージョンのアプリ複製に関する既知の制限です。
+アプリ複製に関する既知の制限を次に示します。
 
 * 自動スケールの設定は複製されない
 * バックアップ スケジュールの設定は複製されない

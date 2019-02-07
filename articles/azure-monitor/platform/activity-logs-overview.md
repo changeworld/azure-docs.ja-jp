@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439070"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883774"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -45,7 +45,7 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 * **自動スケール** - このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 * **推奨** - このカテゴリには、Azure Advisor からの推奨イベントが含まれます。
 * **セキュリティ** - このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
-* **ポリシー** - このカテゴリにはイベントは含まれません。これは将来の使用のために予約されています。 
+* **ポリシー** - このカテゴリには、Azure Policy によって実行されるすべての効果アクション操作のレコードが含まれます。 このカテゴリで表示されるイベントの種類の例として、監査と拒否があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。
 
 ## <a name="event-schema-per-category"></a>カテゴリごとのイベント スキーマ
 [カテゴリごとのアクティビティ ログ イベント スキーマの詳細については、この記事を参照してください。](../../azure-monitor/platform/activity-log-schema.md)

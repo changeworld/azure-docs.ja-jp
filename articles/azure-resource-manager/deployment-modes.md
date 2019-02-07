@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 105a836f609859825c273ed9fba9dd46237bcaa9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9120e5f283f8d8da8da2c80959a335965a643409
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447940"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903895"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -24,14 +24,11 @@ ms.locfileid: "54447940"
 
 ## <a name="incremental-and-complete-deployments"></a>増分デプロイと完全デプロイ
 
-リソースをデプロイするときは、以下の手順に従います。
+いずれのモードでも、Resource Manager はテンプレートで指定されたすべてのリソースの作成を試みます。 リソースが既にリソース グループ内に存在しており、その設定が変更されていない場合、そのリソースに対しては何の操作も行われません。 リソースのプロパティ値を変更した場合、リソースはそれらの新しい値で更新されます。 既存のリソースの場所または種類を更新しようとすると、デプロイがエラーで失敗します。 その代わり、必要な場所または種類で新しいリソースをデプロイできます。
 
-* 完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 ただし、指定されたままであっても、条件が false と評価されるためにデプロイされないそれらのリソースは、削除されません。
-* 増分モードでは、Resource Manager はリソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**。
+完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](resource-manager-templates-resources.md#condition)が false と評価されるためにデプロイされないリソースは、削除されません。
 
-いずれのモードでも、Resource Manager はテンプレートで指定されたすべてのリソースの作成を試みます。 リソースが既にリソース グループに存在しており、その設定が変更されていない場合、操作の結果に変わりはありません。 リソースのプロパティ値を変更した場合、リソースはそれらの新しい値で更新されます。 既存のリソースの場所または種類を更新しようとすると、デプロイがエラーで失敗します。 その代わり、必要な場所または種類で新しいリソースをデプロイできます。
-
-リソースを増分モードで再デプロイする場合は、更新するものだけでなく、リソースのすべてのプロパティ値を指定してください。 特定のプロパティを指定しなかった場合、Resource Manager は更新によってそれらの値を上書きするものと解釈します。
+増分モードでは、Resource Manager はリソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**。 リソースを増分モードで再デプロイする場合は、更新するものだけでなく、リソースのすべてのプロパティ値を指定してください。 特定のプロパティを指定しなかった場合、Resource Manager は更新によってそれらの値を上書きするものと解釈します。
 
 ## <a name="example-result"></a>結果の例
 

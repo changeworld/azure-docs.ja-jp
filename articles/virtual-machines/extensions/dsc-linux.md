@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632859"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888993"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -64,11 +64,11 @@ DSCForLinux 拡張機能では、ターゲット仮想マシンがインター�
 
 * `FileUri`: (省略可能、文字列) MOF ファイル/メタ MOF ファイル/カスタム リソース ZIP ファイルの URI。
 * `ResourceName`: (省略可能、文字列) カスタム リソース モジュールの名前
-* `ExtensionAction`: (省略可能、文字列) 拡張機能で実行されるアクションを指定します。 有効な値は、Register、Push、Pull、Install、Remove です。 これは、指定されていない場合に既定で Push アクションと見なされます。
+* `ExtensionAction`: (省略可能、文字列) 拡張機能で実行されるアクションを指定します。 有効な値は次のとおりです。Register、Push、Pull、Install、Remove。 これは、指定されていない場合に既定で Push アクションと見なされます。
 * `NodeConfigurationName`: (省略可能、文字列) 適用するノード構成の名前。
 * `RefreshFrequencyMins`: (省略可能、整数) プル サーバーからの構成の取得が DSC によって試行される頻度 (分単位) を指定します。 
        プル サーバー上の構成がターゲット ノード上の現在の構成と異なる場合、その構成は保留中ストアにコピーされてから適用されます。
-* `ConfigurationMode`: (省略可能、文字列) DSC によって構成が適用される方法を指定します。 有効な値は ApplyOnly、ApplyAndMonitor、ApplyAndAutoCorrect です。
+* `ConfigurationMode`: (省略可能、文字列) DSC によって構成が適用される方法を指定します。 有効な値は次のとおりです。ApplyOnly、ApplyAndMonitor、ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`: (省略可能、整数) DSC によって構成が望ましい状態にされる頻度 (分単位) を指定します。
 
 > [!NOTE]
@@ -424,8 +424,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-エラー コード: 51 は、サポートされていないディストリビューションとサポートされていない拡張機能アクションのいずれかを表します。
-場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します  (エラー応答: (000003) ダウングレードは許可されていません)。
+エラー コード:51 は、サポートされていないディストリビューションまたはサポートされていない拡張機能アクションのいずれかを表します。
+場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します  [エラー応答:(000003) ダウングレードは許可されていません]
 
 
 

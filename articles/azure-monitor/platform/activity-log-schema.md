@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438237"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888143"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./tutorial-dashboards.md)へのマッピングについては、この記事の最後で紹介します。
+**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
 
 ## <a name="administrative"></a>管理
 このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
@@ -274,8 +274,8 @@ ms.locfileid: "54438237"
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。|
-| properties.title | リソースの正常性状態を説明するわかりやすい文字列。 |
-| properties.details | イベントの詳細を説明する理解やすい文字列。 |
+| properties.title | リソースの正常性状態を説明するユーザー フレンドリな文字列。 |
+| properties.details | イベントの詳細を説明するユーザー フレンドリな文字列。 |
 | properties.currentHealthStatus | リソースの現在の正常性状態。 次のいずれかの値です。"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
 | properties.previousHealthStatus | リソースの前回の正常性状態。 次のいずれかの値です。"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
 | properties.type | リソース正常性イベントの種類の説明。 |
@@ -356,9 +356,9 @@ ms.locfileid: "54438237"
 | description |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
 | level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、および "Informational" |
-| resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
-| resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 その他のアラートの場合、これはアラート自体のリソース プロバイダーの名前です。 |
-| resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
+| resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 他の種類のアラートの場合は、アラート自体を含むリソース グループの名前です。 |
+| resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 他の種類のアラートの場合は、アラート自体のリソース プロバイダーの名前です。 |
+| resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 他の種類のアラートの場合は、アラート リソース自体のリソース ID です。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
@@ -757,7 +757,7 @@ ms.locfileid: "54438237"
 | resourceType | 新しいリソースの場合は、評価される種類です。 既存のリソースの場合は、"Microsoft.Resources/checkPolicyCompliance" を返します。 |
 | resourceId | 評価されるリソースのリソース ID。 |
 | status | Policy の評価結果の状態を説明する文字列。 ほとんどの Policy の評価は "Succeeded" を返しますが、Deny 効果は "Failed" を返します。 auditIfNotExists または deployIfNotExists でのエラーも "Failed" を返します。 |
-| subStatus | このフィールドは、Policy イベントの場合は空白です。 |
+| subStatus | Policy イベントの場合、フィールドは空白です。 |
 | submissionTimestamp | イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId | Azure サブスクリプション ID。 |
 | properties.isComplianceCheck | 新しいリソースをデプロイされたり、既存のリソースのリソース マネージャーのプロパティが更新されたりしたときに、"False" を返します。 他のすべての[評価トリガー](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)では "True" になります。 |
@@ -768,7 +768,7 @@ ms.locfileid: "54438237"
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>診断ログのスキーマへのマッピング
 
-Azure アクティビティ ログをストレージ アカウントまたは Event Hubs 名前空間にストリーミングする場合、データは [Azure 診断ログ スキーマ](./tutorial-dashboards.md)に従います。 上記のスキーマから診断ログ スキーマへのプロパティのマッピングを次に示します。
+Azure アクティビティ ログをストレージ アカウントまたは Event Hubs 名前空間にストリーミングする場合、データは [Azure 診断ログ スキーマ](./diagnostic-logs-schema.md)に従います。 上記のスキーマから診断ログ スキーマへのプロパティのマッピングを次に示します。
 
 | 診断ログ スキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | メモ |
 | --- | --- | --- |

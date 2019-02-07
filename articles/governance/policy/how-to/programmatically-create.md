@@ -4,17 +4,17 @@ description: この記事では、Azure Policy のポリシーをプログラム
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847052"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101789"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -201,17 +201,34 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
   }
   ```
 
+   ポリシー定義の作成方法の詳細については、「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を参照してください。
+
 1. 次のコマンドを実行してポリシー定義を作成します。
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
+   このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
+   使用できるその他のパラメーターの詳細については、「[az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)」を参照してください。
+
+   場所のパラメーターを指定せずに呼び出す場合、`az policy definition creation` は、既定により、セッション コンテキストの選択されたサブスクリプションにポリシー定義を保存することになります。 定義を別の場所に保存するには、次のパラメーターを使用します。
+
+   - **--subscription** - 別のサブスクリプションに保存します。 サブスクリプション ID の _GUID_ 値、またはサブスクリプション名の _string_ 値を指定する必要があります。
+   - **--management-group** - 管理グループに保存します。 _string_ 値が必要です。
+
 1. 次のコマンドを使用して、ポリシー割り当てを作成します。 例の &lt;&gt; 記号内の情報を独自の値に置き換えます。
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
+
+   `az policy assignment create` の **- scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **--scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+
+   - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - リソース グループ - `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - サブスクリプション - `/subscriptions/{subID}`
+   - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 ポリシー定義 ID は、PowerShell で次のコマンドを実行して取得できます。
 

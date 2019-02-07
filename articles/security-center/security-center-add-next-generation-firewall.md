@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs
-description: このドキュメントでは、Azure Security Center の推奨事項、"**次世代ファイアウォールの追加**" および "**NGFW 経由に限定したトラフィックのルーティング**" を実装する方法について説明します。
+description: このドキュメントでは、Azure Security Center の推奨事項、**次世代ファイアウォールの追加**および **NGFW 経由に限定したトラフィックのルーティング**を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a71f2044b799fb47e4ab8991d76f92a1ccc049f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341153"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102449"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Azure Security Center で次世代ファイアウォールを追加する
 Azure Security Center では、セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。 このドキュメントでは、追加方法の例を紹介します。

@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 0c7d0980c928ecefebeabff555378230453c742f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827943"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102126"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -153,8 +153,20 @@ PowerCLI は、Azure Migrate Collector によってダウンロードされ、�
 VMware PowerCLI のインストールに関する問題が原因で発生する可能性があります。 この問題を解決するには、以下の手順に従ってください。
 
 1. コレクターアプライアンスのバージョンが最新でない場合は、コレクターを[最新バージョン](https://aka.ms/migrate/col/checkforupdates)にアップグレードして、問題が解決されるかどうかを確認します。
-2. 既にコレクターの最新バージョンを使用している場合は、[VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) を手動でインストールして、問題が解決されるかどうかを確認します。
-3. 上記によって問題が解決されなければ、C:\Program Files\ProfilerService フォルダーに移動し、フォルダーにある VMware.dll  と VimService65.dll ファイルを削除し、Windows Services Manager で 「Azure Migrate Collector」サービスを再起動します ( Windows Services Manager を開くには、「実行」を開き、 「services.msc」を入力する)。
+2. 最新のコレクター バージョンを既にお持ちの場合は、次の手順に従って PowerCLI をクリーン インストールします。
+
+   a. アプライアンスで Web ブラウザーを閉じます。
+
+   b. Windows サービス マネージャーに移動して、'Azure Migrate Collector' サービスを停止します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[停止] をクリックします。
+
+   c. 次の場所から 'VMware' で始まるすべてのフォルダーを削除します。C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules
+
+   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+   
+   e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
+
+3. 上の方法で問題が解決しない場合は、手動で [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) をインストールし、問題が解決されるかどうかを確認します。
 
 ### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
 
@@ -210,7 +222,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>1 時間以上経っても、Azure Migrate で依存関係を視覚化することができません。
-Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。
+Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Log Analytics を使用すると、長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)ことができます。
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>10 個を超える VM を持つグループの依存関係の視覚化ができません。
 最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。

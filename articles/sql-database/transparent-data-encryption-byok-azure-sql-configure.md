@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell と CLI: SQL TDE の有効化 - 独自のキー - Azure SQL Database | Microsoft Docs'
+title: PowerShell と CLI:SQL TDE の有効化 - 独自のキー - Azure SQL Database | Microsoft Docs
 description: PowerShell または CLI を使用して、保存時の暗号化に Transparent Data Encryption (TDE) を使用するように Azure SQL Database と Data Warehouse を構成する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 87ffc4619f2ad864113db3b3aed42aa23535cb83
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165077"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900326"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell と CLI: Azure Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする
+# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする
 
 この記事では、SQL Database または Data Warehouse で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) をサポートする TDE の詳細については、[Azure SQL の TDE Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。 
 
@@ -186,8 +186,8 @@ ms.locfileid: "47165077"
 
 ## <a name="next-steps"></a>次の手順
 
-- セキュリティ要件に準拠するためにサーバーの TDE 保護機能を交換する方法を確認する: [PowerShell を使用して Transparent Data Encryption 保護機能を交換する](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- セキュリティ リスクが発生した場合に備えて、侵害された可能性のある TDE 保護機能を削除する方法を確認する: [侵害された可能性のあるキーを削除する](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- セキュリティ要件に準拠するためにサーバーの TDE 保護機能をローテーションする方法を確認する:[PowerShell を使用して Transparent Data Encryption (TDE) 保護機能をローテーションする](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- セキュリティ リスクに備えて、侵害された可能性のある TDE 保護機能を削除する方法を確認する:[侵害された可能性のあるキーを削除する](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
 ## <a name="prerequisites-for-cli"></a>CLI の前提条件
 
@@ -208,7 +208,7 @@ ms.locfileid: "47165077"
 ## <a name="step-1-create-a-server-and-assign-an-azure-ad-identity-to-your-server"></a>手順 1. サーバーを作成し、Azure AD ID をサーバーに割り当てる
       cli
       # create server (with identity) and database
-      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -I 
+      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -i 
       az sql db create -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
       
 

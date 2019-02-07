@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539791"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103396"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでの自動バキュームの最適化 
 この記事では、Azure Database for PostgreSQL で自動バキュームを効率的に最適化する方法について説明します。
@@ -63,7 +63,7 @@ autovacuum_max_workers|任意の時点で実行されている可能性がある
 
 自動バキュームからのクリーンアップは、データベースの負荷に応じて行われる必要があります。そうでないと、ストレージが不足し、クエリの全般的な速度低下が起きることがあります。 時間の経過と共に調整を進めて、バキュームで使用不能タプルをクリーンアップする速度が、使用不能タプルが作られる速度と等しくなる必要があります。
 
-更新/削除の数が多いデータベースでは、使用不能タプルが多くなり、より多くの領域が必要です。 一般に、更新/削除の数が多いデータベースでは、使用不能タプルが長時間にわたって蓄積しないように、autovacuum_vacuum_scale_factor の値と、autovacuum_vacuum_threshold の値を小さくする価値があります。 小さなデータベースでは、バキュームが必要な緊急度が低いため、どちらのパラメーターにもより大きな値を使用できます。 頻繁なバキュームは、コンピューティングとメモリのコストによって実現されることを思い出してください。
+更新/削除の数が多いデータベースでは、使用不能タプルが多くなり、より多くの領域が必要です。 一般に、更新/削除の数が多いデータベースでは、使用不能タプルが長時間にわたって蓄積しないように、autovacuum_vacuum_scale_factor の値と、autovacuum_vacuum_threshold の値を小さくする価値があります。 小さなデータベースでは、バキュームが必要な緊急度が低いため、どちらのパラメーターにもより大きな値を使用できます。 頻繁にバキュームすると、コンピューティングとメモリのコストがかかる点に注意してください。
 
 既定の割合である 20% は、使用不能タプルの割合が高いテーブルではなく、使用不能タプルの割合が低いテーブルで適切に機能します。 たとえば、20 GB のテーブルでは、これは 4 GB の使用不能タプルになり、1 TB のテーブルでは 200 GB の使用不能タプルになります。
 

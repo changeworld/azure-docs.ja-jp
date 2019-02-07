@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439155"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884930"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -47,7 +47,7 @@ ms.locfileid: "54439155"
     3.  ビジネス継続性とディザスター リカバリーのアーキテクチャ
     4.  OS、DB、カーネル、SAP サポート パック バージョンの詳細。 SAP NetWeaver または S/4HANA でサポートされているすべての OS リリースが Azure VM でもサポートされているとは限りません。 DBMS のリリースについても同じです。 整合していることを確認し、必要であれば SAP リリース、DBMS リリース、または OS リリースをアップグレードして SAP と Azure すのサポート対象期間内にするには、以下のソースをチェックする必要があります。 SAP と Microsoft による完全なサポートを受けるには、SAP と Azure のサポート対象リリースの組み合わせになっている必要があります。 必要に応じて、一部のソフトウェア コンポーネントのアップグレードを計画する必要があります。 サポートされている SAP、OS、DBMS ソフトウェアの詳細については、次の場所に記載されています:
         1.  SAP サポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533)。 このノートでは、Azure VM でサポートされる最小の OS リリースが定義されています。 また、ほとんどの非 HANA データベースに必要な最小のデータベース リリースも定義されています。 また、ノートでは、SAP でサポートされるさまざまな Azure VM の 種類に対する SAP のサイズ設定も示されています。
-        2.  SAP サポート ノート [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 ノートでは、Azure での Oracle サポートのマトリックスが定義されています。 Oracle では、Azure for SAP ワークロードでのゲスト OS として、Windows と Oracle Linux のみがサポートされていることに注意してください。 このサポートに関する声明は、SAP インスタンスを実行する SAP アプリケーション層にも適用されます。 ただし、Oracle では、Oracle Linux で SAP セントラル サービスの高可用性はサポートされていません。 Windows では、SAP がサポートする SAP セントラル サービスの Windows フェールオーバー クラスター ソリューションが、DBMS レイヤーとして Oracle と共にサポートされています。 
+        2.  SAP サポート ノート [#2039619](https://launchpad.support.sap.com/#/notes/2039619)。 ノートでは、Azure での Oracle サポートのマトリックスが定義されています。 Oracle では、Azure for SAP ワークロードでのゲスト OS として、Windows と Oracle Linux のみがサポートされていることに注意してください。 このサポートに関する声明は、SAP インスタンスを実行する SAP アプリケーション層にも適用されます。 ただし、Oracle では、Pacemaker による Oracle Linux での SAP セントラル サービスの高可用性はサポートされていません。 Oracle Linux 上での ASCS の高可用性が必要な場合は、SIOS Protection Suite for Linux を利用する必要があります。 詳細な SAP 認定データについては、SAP サポート ノート [#1662610 - Support details for SIOS Protection Suite for Linux (SIOS Protection Suite for Linux のサポートの詳細)](https://launchpad.support.sap.com/#/notes/1662610) をご覧ください。 Windows では、SAP がサポートする SAP セントラル サービスの Windows フェールオーバー クラスター ソリューションが、DBMS レイヤーとして Oracle と共にサポートされています。 
         3.  SAP サポート ノート [#2235581](https://launchpad.support.sap.com/#/notes/2235581) では、さまざまな OS リリースでの SAP HANA のサポート マトリックスを入手できます
         4.  SAP HANA でサポートされる Azure VM と [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) の一覧は、[こちら](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)をご覧ください
         5.  [SAP 製品の可用性マトリックス](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ ms.locfileid: "54439155"
     2.  小さなデータベースに対してはバックアップ/復元を使用します
     3.  SAP SWPM ツールに実装されている SAP Migration モニターを使用して、異種の移行を実行します
     4.  SAP リリースのアップグレードと組み合わせる必要がある場合は、[SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスを使用します。 ソース DBMS とターゲット DBMS のすべての組み合わせがサポートされているわけではないことに留意してください。 詳細については、DMO の各種リリースに対する特定の SAP サポート ノートをご覧ください。 たとえば、[SUM 2.0 SP04 のデータベース移行オプション (DMO)](https://launchpad.support.sap.com/#/notes/2644872)などです
-    5.  バックアップまたは SAP エクスポート ファイルを移動する必要がある場合は、インターネット経由と ExpressRoute 経由のどちらの方がデータ転送スループットが高いかをテストします。 インターネット経由でデータを移動する場合は、将来の運用システムで適用する必要がある NSG/ASG セキュリティ ルールの一部を変更することが必要になる場合があることに注意してください
+    5.  バックアップまたは SAP エクスポート ファイルを移動する必要がある場合は、インターネット経由と ExpressRoute 経由のどちらの方がデータ転送スループットが高いかをテストします。 インターネット経由でデータを移動する場合は、将来の運用システムで適用する必要がある NSG/ASG セキュリティ ルールの一部を変更することが必要になる場合があります。
 3.  古いプラットフォームから Azure にシステムを移行する前に、CPU 使用率、ストレージのスループット、IOPS データなどのリソース消費データを収集します。 DBMS レイヤーのユニットからは特に収集しますが、アプリケーション レイヤーのユニットからも行います。 また、ネットワークとストレージの待機時間を測定します。
 4.  SAP サポート ノート、SAP HANA ハードウェア ディレクトリ、および再び SAP PAM のリソースを検証し、Azure でサポートされる VM、それらの VM でサポートされる OS のリリース、サポートされる SAP および DBMS のリリースに、変更がないことを確認します 
 4.  VM の種類と Azure の機能について決定した最新の変更に合わせてデプロイ スクリプトを調整します
@@ -224,7 +224,7 @@ ms.locfileid: "54439155"
     
 
 ## <a name="go-live-phase"></a>運用開始フェーズ
-運用開始フェーズでは、前のフェーズで作成したプレイブックに従う必要があります。 テストおよびトレーニングした手順を実行します。 構成とプロセスの直前の変更は受け付けません。 さらに、次のことを適用します。
+運用開始フェーズでは、前のフェーズで作成したプレイブックに従う必要があります。 テストおよびトレーニングした手順を実行します。 構成とプロセスの直前の変更は受け付けません。 さらに、次の措置を適用します。
 
 1. Azure portal の監視および他の監視ツールが動作していることを確認します。  推奨されるツールは、Perfmon (Windows) または SAR (Linux) です。 
     1.  CPU カウンター 

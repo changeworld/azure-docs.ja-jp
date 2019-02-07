@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/15/2018
 ms.author: aljo
-ms.openlocfilehash: 75ba2ee378e9eddfeaeb2346b4d5bb584844afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636677"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903504"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -33,7 +33,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 > [!NOTE]
 > クラスターを作成する前に、次の手順を完了する必要があります。 スクリプトはクラスター名とエンドポイントを想定しているため、値は作成済みのものではなく、計画する必要があります。
 
-1. コンピューターに[スクリプトをダウンロード][sf-aad-ps-script-download]します。
+1. コンピューターに[スクリプトをダウンロード](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)します。
 2. zip ファイルを右クリックし、**[プロパティ]** を選択して **[ブロック解除]** チェックボックスをオンにし、**[適用]** をクリックします。
 3. zip ファイルを解凍します。
 4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、WebApplicationReplyUrl を指定します。 例: 
@@ -108,16 +108,16 @@ Service Fabric Explorer で Azure AD に正常にサインインすると、ブ�
 #### <a name="solution"></a>解決策
 次の説明に従って Azure AD をセットアップしてユーザー ロールを割り当てます。 また、`SetupApplications.ps1` のように [アプリにアクセスするにはユーザー割り当てが必要] をオンにすることをお勧めします。
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>PowerShell を使用した接続が失敗し、"指定した資格情報が無効です" というエラーが返される
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>PowerShell を使用した接続が失敗し、次のエラーが返される:"指定した資格情報が無効です"
 #### <a name="problem"></a>問題点
-"AzureActiveDirectory" セキュリティ モードで PowerShell を使用してクラスターに接続すると、Azure AD に正常にサインインした後で接続に失敗し、"指定した資格情報が無効です" というエラーが返されます。
+"AzureActiveDirectory" セキュリティ モードで PowerShell を使用してクラスターに接続すると、Azure AD に正常にサインインした後で接続に失敗し、次のエラーが返されます:"指定した資格情報が無効です"。
 
 #### <a name="solution"></a>解決策
 前の問題の解決策と同じです。
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>サインインするときに Service Fabric Explorer で "AADSTS50011" エラーが返される
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>サインインするときに Service Fabric Explorer で次のエラーが返される:"AADSTS50011"
 #### <a name="problem"></a>問題点
-Service Fabric Explorer で Azure AD へのサインインを試行すると、"AADSTS50011: 応答アドレス &lt;url&gt; が、アプリケーションに対して構成された応答アドレス &lt;guid&gt; と一致していません" というエラーが返されます。
+Service Fabric Explorer で Azure AD にサインインしようとすると、次のエラーが返されます:"AADSTS50011:応答アドレス &lt;url&gt; が、アプリケーションに対して構成された応答アドレス: &lt;guid&gt; と一致していません"。
 
 ![SFX の応答アドレスが一致しない][sfx-reply-address-not-match]
 

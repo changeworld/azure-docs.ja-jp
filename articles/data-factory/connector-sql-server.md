@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6da3a9bceaee67d0101abb0837580f4e35e160b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306167"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885134"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,6 +36,8 @@ SQL Server データベースにデータをコピーする、SQL Server デー�
 - **SQL** または **Windows** 認証を使用したデータのコピー
 - ソースとしての SQL クエリまたはストアド プロシージャを使用したデータの取得。
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
+
+SQL Server での [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) は現在サポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -485,7 +487,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| ビット |ブール |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -499,14 +501,14 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| numeric |Decimal |
+| 数値 |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object * |
+| sql_variant |オブジェクト |
 | text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
@@ -515,6 +517,9 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | varbinary |Byte[] |
 | varchar |String、Char[] |
 | xml |xml |
+
+>[!NOTE]
+> 10 進の中間型にマップされるデータ型の場合、現在 ADF では最大 28 の有効桁数をサポートしています。 28 よりも大きな有効桁数のデータがある場合は、SQL クエリで文字列に変換することを検討してください。
 
 ## <a name="troubleshooting-connection-issues"></a>接続の問題のトラブルシューティング
 

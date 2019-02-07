@@ -4,7 +4,7 @@ description: 仮想マシン、SQL データベース、Azure Cosmos DB、その
 services: billing
 documentationcenter: ''
 author: yashesvi
-manager: yashesvi
+manager: yashar
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: a0fb5eccf14aee07005ab345f1af293f341f9215
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.author: banders
+ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422951"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902059"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -36,9 +36,9 @@ Azure の予約は、仮想マシン、SQL Database のコンピューティン�
 
 ## <a name="what-charges-does-a-reservation-cover"></a>予約には何の料金が含まれますか
 
-- 予約仮想マシン インスタンス: 予約の対象は仮想マシンのコンピューティング コストのみです。 その他のソフトウェア、ネットワーク、ストレージの料金は含まれません。
-- SQL Database の予約された仮想コア: 予約にはコンピューティング コストのみが含まれます。 ライセンスの料金は別途請求されます。
-- Azure Cosmos DB の予約容量: 予約には、リソースに対してプロビジョニングされたスループットは含まれますが、ストレージとネットワークの料金は含まれません。 
+- 予約仮想マシン インスタンス:予約には仮想マシンのコンピューティング コストのみが含まれます。 その他のソフトウェア、ネットワーク、ストレージの料金は含まれません。
+- SQL Database 予約仮想コア:予約にはコンピューティング コストのみが含まれます。 ライセンスの料金は別途請求されます。
+- Azure Cosmos DB 予約容量:予約には、リソースに対してプロビジョニングされたスループットは含まれますが、ストレージとネットワークの料金は含まれません。 
 
 Windows 仮想マシンと SQL Database については、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)でライセンス コストを賄うことができます。
 
@@ -77,10 +77,10 @@ Windows 仮想マシンと SQL Database については、[Azure ハイブリッ
 
 予約を購入するときに、同じサイズのグループ内にある属性を持つ他のインスタンスに割引を適用できます。 割引範囲の柔軟性は、予約のタイプと、予約を購入するときに選択する属性によって異なります。
 
-- 予約された VM インスタンス: 予約を購入するときに、**[最適化の対象**: **インスタンス サイズの柔軟性]** を選択した場合、割引範囲は選択する仮想マシンのサイズによって決まります。 予約は同じサイズの系列グループの仮想マシン (VM) のサイズに適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
-- SUSE Linux Enterprise ソフトウェア プラン: 割引範囲は、SUSE ソフトウェアを実行する仮想マシンの vCPU によって異なります。 詳細については、[SUSE Linux Enterprise ソフトウェアのプラン割引が適用されるしくみ](billing-understand-suse-reservation-charges.md)に関するページを参照してください。
-- SQL Database の予約容量: 割引範囲は、選択したパフォーマンス層によって異なります。 詳細については、「[Azure の予約割引の適用方法](billing-understand-reservation-charges.md)」を参照してください。
-- Azure Cosmos DB の予約容量: 割引範囲は、プロビジョニングされたスループットによって異なります。 詳細については、「[Azure Cosmos DB の予約割引の適用方法](billing-understand-cosmosdb-reservation-charges.md)」を参照してください。
+- 予約 VM インスタンス:予約を購入するときに、**[最適化の対象**: **インスタンス サイズの柔軟性]** を選択した場合、割引範囲は選択する仮想マシンのサイズによって決まります。 予約は同じサイズの系列グループの仮想マシン (VM) のサイズに適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+- SUSE Linux Enterprise ソフトウェア プラン:割引範囲は、SUSE ソフトウェアを実行する仮想マシンの vCPU によって異なります。 詳細については、[SUSE Linux Enterprise ソフトウェアのプラン割引が適用されるしくみ](billing-understand-suse-reservation-charges.md)に関するページを参照してください。
+- SQL Database 予約容量:割引範囲は、選択したパフォーマンス層によって異なります。 詳細については、「[Azure の予約割引の適用方法](billing-understand-reservation-charges.md)」を参照してください。
+- Azure Cosmos DB 予約容量:割引範囲は、プロビジョニングされたスループットによって異なります。 詳細については、「[Azure Cosmos DB の予約割引の適用方法](billing-understand-cosmosdb-reservation-charges.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -94,6 +94,6 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a6fc5f353eceab5ac02895e110aec6e11ddc5d0c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159102"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101903"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
@@ -26,26 +26,26 @@ ms.locfileid: "47159102"
 
 リテンション ポリシーを定義すると、自動データ クリーンアップの対象となる履歴行があるかどうかを Azure SQL Database が定期的にチェックするようになります。 一致する行の特定と履歴テーブルからの削除は、システムによってスケジュールが設定され、実行されるバックグラウンド タスクで透過的に実行されます。 SYSTEM_TIME 期間終了を表す列に基づいて、履歴テーブルの行の有効期間の条件がチェックされます。 たとえば、リテンション期間を 6 か月間に設定すると、次の条件を満たすテーブル行がクリーンアップの対象となります。
 
-````
+```
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
-````
+```
 
 上の例では、**[ValidTo]** 列が SYSTEM_TIME 期間終了と一致するという前提になっています。
 
 ## <a name="how-to-configure-retention-policy"></a>リテンション ポリシーの構成方法
 テンポラル テーブルのリテンション ポリシーを構成する前に、テンポラル履歴のリテンション期間が*データベース レベルで*有効になっているかどうかを確認します。
 
-````
+```
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
-````
+```
 
 データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-recovery-using-backups.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
 
-````
+```
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
-````
+```
 
 > [!IMPORTANT]
 > **is_temporal_history_retention_enabled** がオフの場合であっても、テンポラル テーブルのリテンション期間を構成できますが、この場合は、期限切れの行の自動クリーンアップはトリガーされません。
@@ -54,7 +54,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 リテンション ポリシーは、テーブルの作成時に HISTORY_RETENTION_PERIOD パラメーターの値を指定することによって構成します。
 
-````
+```
 CREATE TABLE dbo.WebsiteUserInfo
 (  
     [UserID] int NOT NULL PRIMARY KEY CLUSTERED
@@ -72,16 +72,16 @@ CREATE TABLE dbo.WebsiteUserInfo
         HISTORY_RETENTION_PERIOD = 6 MONTHS
      )
  );
-````
+```
 
-Azure SQL Database では、DAYS、WEEKS、MONTHS、YEARS のさまざまな時間単位を使用してリテンション期間を指定できます。 HISTORY_RETENTION_PERIOD を省略すると、リテンション期間が INFINITE であると判断されます。 INFINITE キーワードを明示的に使用することもできます。
+Azure SQL Database では、さまざまな時間単位を使用してリテンション期間を指定できます(DAYS、WEEKS、MONTHS、YEARS)。 HISTORY_RETENTION_PERIOD を省略すると、リテンション期間が INFINITE であると判断されます。 INFINITE キーワードを明示的に使用することもできます。
 
 一部のシナリオでは、テーブルの作成後にリテンション期間の構成が必要になったり、構成済みの値の変更が必要になることがあります。 その場合は、ALTER TABLE ステートメントを使用します。
 
-````
+```
 ALTER TABLE dbo.WebsiteUserInfo
 SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
-````
+```
 
 > [!IMPORTANT]
 > SYSTEM_VERSIONING をオフに設定したときには、リテンション期間の値は*保持されません*。 HISTORY_RETENTION_PERIOD を明示的に指定せずに SYSTEM_VERSIONING をオンに設定すると、リテンション期間が INFINITE に設定されます。
@@ -90,7 +90,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 
 リテンション ポリシーの現在の状態を確認するには、データベース レベルのテンポラル リテンション期間の有効化フラグを、個々のテーブルのリテンション期間に結合する次のクエリを使用します。
 
-````
+```
 SELECT DB.is_temporal_history_retention_enabled,
 SCHEMA_NAME(T1.schema_id) AS TemporalTableSchema,
 T1.name as TemporalTableName,  SCHEMA_NAME(T2.schema_id) AS HistoryTableSchema,
@@ -101,7 +101,7 @@ OUTER APPLY (select is_temporal_history_retention_enabled from sys.databases
 where name = DB_NAME()) AS DB
 LEFT JOIN sys.tables T2   
 ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
-````
+```
 
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>SQL Database によって期限切れの行が削除されるしくみ
@@ -127,7 +127,7 @@ Azure SQL Database で作成した既定の履歴テーブルには、既に、�
 
 システム バージョンの操作によって自然に作成された行グループ内の順序が変更されることがあるため、有限のリテンション期間を持つ履歴テーブルのクラスター化列ストア インデックスは再構築しないでください。 履歴テーブルのクラスター化列ストア インデックスの再構築が必要な場合は、準拠している B ツリー インデックスの最上部に再作成してください。そうすることで、通常のデータ クリーンアップに必要な行グループの順番が保持されます。 データの順番を気にせずに、クラスター化列インデックスを持つ既存の履歴テーブルを持つテンポラル テーブルを作成する場合も、同じ方法で実行します。
 
-````
+```
 /*Create B-tree ordered by the end of period column*/
 CREATE CLUSTERED INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoHistory (ValidTo)
 WITH (DROP_EXISTING = ON);
@@ -135,13 +135,13 @@ GO
 /*Re-create clustered columnstore index*/
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON);
-````
+```
 
 クラスター化列ストア インデックスを持つ履歴テーブルに有限のリテンション期間を構成するときは、そのテーブルにクラスター化されていない B ツリーを追加で作成することはできません。
 
-````
+```
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
-````
+```
 
 上記のステートメントを実行すると、次のエラーが表示されて失敗します。
 
@@ -152,9 +152,9 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 次の図は、シンプルなクエリのクエリ プランを示しています。
 
-````
+```
 SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
-````
+```
 
 クエリ プランには、履歴テーブル (ハイライト表示) での「Clustered Index Scan」操作の期間終了列 (ValidTo) に適用される追加のフィルターが含まれます。 この例では、WebsiteUserInfo テーブルに 1 か月のリテンション期間が設定されていると想定しています。
 
@@ -173,10 +173,10 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 テンポラル リテンション期間のクリーンアップを有効にする場合は、ポイントインタイム リストアの後に次の Transact-SQL ステートメントを実行します。
 
-````
+```
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 アプリケーションでテンポラル テーブルを使用する方法については、「[Azure SQL Database のテンポラル テーブルの概要](sql-database-temporal-tables.md)」をご覧ください。
