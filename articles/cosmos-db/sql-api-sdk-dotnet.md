@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e9378fd1e7fd0d8c6b3f913ec3d8f629a2c3be37
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354581"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770688"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -30,20 +30,14 @@ ms.locfileid: "54354581"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
-
-<tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
+|**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
+|**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -58,9 +52,9 @@ ms.locfileid: "54354581"
 
 * StoredProcedure 実行呼び出しに対するフェールオーバー中の再試行ロジックの改善。
 
-* Made DocumentClientEventSource シングルトンを作成しました。 
+* DocumentClientEventSource シングルトンを作成しました。 
 
-* ConnectionPolicy RequestTimeout を守っていない GatewayAddressCache タイムアウトを修正しました。
+* ConnectionPolicy RequestTimeout を守っていない、GatewayAddressCache タイムアウトを修正しました。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 

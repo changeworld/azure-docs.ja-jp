@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: dc44394bda1208eb2dab0a02dd73152e51788d4c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b2c3e8d7c465ca4fa9427c3a14ef04e4f69d17d6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424901"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661566"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -538,7 +538,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 >
 > 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](https://msdn.microsoft.com/library/hh825084.aspx) を使用します。
 >
-> ![ Linux][Logo_Linux]  Linux
+> ![Linux][Logo_Linux] Linux
 >
 > 複数の仮想マシンをデプロイするために使用できる Linux イメージを準備するには、オンプレミス VM で一部の Linux 設定を抽象化または汎用化する必要があります。 これを行うには、`waagent -deprovision` を使用します。 詳細については、[Azure で実行されている Linux 仮想マシンのキャプチャ][virtual-machines-linux-capture-image]に関する記事、および「[Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide-command-line-options]」をご覧ください。
 >
@@ -678,7 +678,7 @@ Azure VM エージェントの詳細については、次のリソースを参�
 >
 > [Azure 仮想マシン エージェントの概要][virtual-machines-windows-agent-user-guide]
 >
-> ![ Linux][Logo_Linux]  Linux
+> ![Linux][Logo_Linux] Linux
 >
 > [Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide]
 >
@@ -719,7 +719,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
 
     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
-      * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
   * **[OS disk VHD URI] (OS ディスク VHD の URI)** (非管理ディスク テンプレートのみ): プライベート OS ディスクの URI (https://&lt; アカウント名>.blob.core.windows.net/vhds/osdisk.vhd など)。
@@ -884,7 +884,7 @@ Azure VM エージェントを更新する際にユーザーの操作は不要�
 1. **[Advanced] \(詳細設定)**  ボタンを選択します。
 1. **[例外]** ボックスに、IP アドレスとして「**168.63.129.16**」と入力します。 **[OK]** を選択します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagent.conf) で適切なプロキシを構成します。
 
@@ -1203,7 +1203,7 @@ Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Wind
 
 SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![ Linux][Logo_Linux]  Azure パフォーマンス カウンターまったく表示されない
+#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux]  Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
@@ -1236,7 +1236,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 このメッセージの原因は、Standard Azure Storage アカウントの統計情報を確認するための監視拡張機能によって使用される API を、Standard Managed Disks が提供しないためです。 これは、重要な問題ではありません。 Standard Disk Storage アカウントで監視が導入されたのは、頻繁に発生する I/O の調整のためでした。 Managed Disks では、ストレージ アカウント内のディスクの数を制限することによってこのような調整は回避されます。 そのため、この種の監視データは重要ではありません。
 
 
-#### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![ Linux][Logo_Linux]  一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux]  一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure 診断から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログから使用されます。
 

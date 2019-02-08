@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198846"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695374"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Azure を通じた SaaS の販売 - API
 
@@ -176,13 +176,13 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 *応答本文*
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **パラメーター名** | **データの種類** | **説明**                       |
@@ -246,9 +246,9 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 *本文*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **要素名** | **データの種類** | **説明**                      |
@@ -307,15 +307,13 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | authorization           | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
 
-
 *本文*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **要素名** |  **データの種類**  | **説明**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -370,7 +368,6 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
- 
 
 *応答コード*
 
@@ -413,7 +410,6 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | api-version         | この要求で使用する操作のバージョン。 |
 |  |  |
 
-
 *ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                                                                                                                                                  |
@@ -422,18 +418,17 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  | 
-  
 
 *応答本文*
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **パラメーター名** | **データの種類** | **説明**                                                                                                                                               |
@@ -494,16 +489,16 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 *応答本文*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
@@ -539,7 +534,6 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | eTag               | はい          | 操作状態を取得するリソースへのリンク。                                                        |
 |  |  |  |
 
-
 ### <a name="get-subscriptions"></a>サブスクリプションの取得
 
 サブスクリプション エンドポイントでの GET アクションにより、ユーザーはすべてのオファーに関するすべてのサブスクリプションを ISV から取得することができます。
@@ -564,19 +558,18 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
 
-
 *応答本文*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **パラメーター名**     | **データの種類** | **説明**                               |
@@ -615,7 +608,6 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 ### <a name="saas-webhook"></a>SaaS Webhook
 
 SaaS の webhook は、SaaS サービスに事前に変更を通知するために使用されます。 この POST API は未認証であることが期待され、Microsoft サービスによって呼び出されます。 SaaS サービスは、webhook 通知のアクションを実行する前に、検証および承認するために API を呼び出すことが期待されます。 
-
 
 *本文*
 

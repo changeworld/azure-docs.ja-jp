@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459844"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730011"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -551,7 +551,7 @@ Batch .NET の場合、プールで行われた最近の自動スケールの実
 * [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
 * [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-REST API の場合、[プールに関する情報を取得する](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)要求によって、プールに関する情報が返されます。この情報の [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool#bk_autrun) プロパティに、最新の自動スケールの実行に関する情報が含まれています。
+REST API の場合、[プールに関する情報を取得する](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)要求によって、プールに関する情報が返されます。この情報の [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) プロパティに、最新の自動スケールの実行に関する情報が含まれています。
 
 次の C# コード スニペットでは、Batch .NET ライブラリを使用して、プール "_myPool_" の最新の自動スケール実行に関する情報を出力します。
 

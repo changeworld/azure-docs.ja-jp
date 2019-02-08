@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553447"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757572"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -118,7 +118,7 @@ PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論
 
 | カウンター | 説明 | PerfMon | iostat |
 | --- | --- | --- | --- |
-| **1 秒あたりの IOPS またはトランザクション数** |1 秒あたりにストレージ ディスクに発行された I/O 要求の数。 |Disk Reads/sec  <br>  Disk Writes/sec |tps  <br> r/s  <br>  w/s |
+| **1 秒あたりの IOPS またはトランザクション数** |1 秒あたりにストレージ ディスクに発行された I/O 要求の数。 |Disk Reads/sec  <br> Disk Writes/sec |tps  <br> r/s  <br>  w/s |
 | **ディスク読み取り回数/書き込み回数** |ディスク上で実行された読み取り操作と書き込み操作の割合。 |% Disk Read Time  <br>  % Disk Write Time |r/s  <br>  w/s |
 | **スループット** |1 秒あたりにディスクに対して読み書きされたデータの量。 |Disk Read Bytes/sec  <br>  Disk Write Bytes/sec |kB_read/s <br> kB_wrtn/s |
 | **待機時間** |ディスク IO 要求を完了するまでの合計時間。 |Average Disk sec/Read  <br>  Average disk sec/Write |await  <br>  svctm |
@@ -464,7 +464,7 @@ apt-get install fio
 *最大書き込み IOPS*  
  最大書き込み IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fiowrite.ini" にします。
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -504,7 +504,7 @@ sudo fio --runtime 30 fiowrite.ini
 *最大読み取り IOPS*  
  最大読み取り IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioread.ini" にします。
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -544,7 +544,7 @@ sudo fio --runtime 30 fioread.ini
 *最大読み取り/書き込み IOPS*  
  読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
 
-```
+```ini
 [global]
 size=30g
 direct=1
