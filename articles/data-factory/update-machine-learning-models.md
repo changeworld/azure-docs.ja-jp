@@ -61,11 +61,11 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | パイプラインのアクティビティの名前。     | はい      |
 | description                   | アクティビティの動作を説明するテキスト。  | いいえ        |
-| type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
-| linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
-| trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | [はい]      |
-| trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | [はい]      |
-| trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | [はい]      |
+| type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | はい      |
+| linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | はい      |
+| trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | はい      |
+| trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | はい      |
+| trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | はい      |
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 

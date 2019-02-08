@@ -106,18 +106,9 @@ items:
   - name: Azure データ エクスプローラー
     tocHref: /azure/data-explorer/
     topicHref: /azure/data-explorer/
-  - name: Application Insights
+  - name: Azure Monitor
     tocHref: /azure/azure-monitor/
-    topicHref: /azure/application-insights/
-  - name: Log Analytics
-    tocHref: /azure/azure-monitor/
-    topicHref: /azure/log-analytics/
-  - name: 監視
-    tocHref: /azure/azure-monitor/
-    topicHref: /azure/monitoring/
-  - name: Monitoring and Diagnostics
-    tocHref: /azure/azure-monitor/
-    topicHref: /azure/monitoring-and-diagnostics/
+    topicHref: /azure/azure-monitor/
   - name: Container Registry
     tocHref: /azure/container-registry/
     topicHref: /azure/container-registry/
@@ -415,6 +406,9 @@ items:
     - name: Storm
       tocHref: /azure/hdinsight/storm
       topicHref: /azure/hdinsight/storm/apache-storm-overview
+  - name: FHIR 用の Azure API
+    tocHref: /azure/healthcare-apis
+    topicHref: /azure/healthcare-apis
   - name: モノのインターネット (IoT)
     tocHref: /azure/iot-fundamentals/
     topicHref: /azure/iot-fundamentals/
@@ -649,9 +643,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 6114b5830c0e1779db1fef9cde3554ae1c6f0992
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 75ec90f429e16ebcc0b63bfbdde0e9e9954b3513
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209173"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814080"

@@ -118,7 +118,7 @@ items:
         href: virtual-nodes-portal.md
     - name: Virtual Kubelet の使用
       href: virtual-kubelet.md
-    - name: クラスター オートスケーラーの使用
+    - name: クラスター オートスケーラーの使用 (プレビュー)
       href: cluster-autoscaler.md
     - name: Terraform を使用した AKS のデプロイ
       href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -316,9 +316,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: ea35745cdab3cc5a0c1521c03b32c4038fa9fff5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c657d805188d5c5760e65290437414ab98f83a05
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692556"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768751"

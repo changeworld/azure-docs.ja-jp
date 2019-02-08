@@ -17,7 +17,7 @@ items:
     href: apache-spark-jupyter-spark-sql-use-portal.md
   - name: Apache Spark クラスターの作成 - PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: Apache Spark クラスターの作成 - テンプレート
+  - name: Apache Spark クラスターの作成 - Resource Manager テンプレート
     href: apache-spark-jupyter-spark-sql.md
 - name: チュートリアル
   items:
@@ -460,9 +460,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9f6cad17d2263d250ff1bfad53a0756b5007209d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d901700ee00d3abb6b9e20e0d1dcd02bd849077b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427459"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820081"

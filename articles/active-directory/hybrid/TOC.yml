@@ -255,6 +255,8 @@ items:
       href: how-to-connect-sync-configure-filtering.md
     - name: スケジューラの管理
       href: how-to-connect-sync-feature-scheduler.md
+    - name: 同期規則の作成とカスタマイズ
+      href: how-to-connect-create-custom-sync-rule.md
     - name: Azure AD Connect 同期サービス マネージャー
       items:
       - name: サービス マネージャーの [操作] タブの管理
@@ -289,6 +291,10 @@ items:
       href: tshoot-connect-recover-from-localdb-10gb-limit.md
     - name: SQL 接続
       href: tshoot-connect-tshoot-sql-connectivity.md
+    - name: 属性の同期
+      href: tshoot-connect-attribute-not-syncing.md
+    - name: インストールに関する問題
+      href: tshoot-connect-install-issues.md
 - name: リファレンス
   items:
   - name: ハイブリッド ID で必要なポートとプロトコル
@@ -327,9 +333,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: df7f0256af71ecfa751fd459e4e1e6c285a779ed
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3baf6790640a8504089fc47472f3f8a9fc22a873
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301715"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765810"

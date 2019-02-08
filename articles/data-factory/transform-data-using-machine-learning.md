@@ -127,10 +127,10 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | パイプラインのアクティビティの名前。     | [はい]      |
+| name              | パイプラインのアクティビティの名前。     | はい      |
 | description       | アクティビティの動作を説明するテキスト。  | いいえ        |
-| type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | [はい]      |
-| linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | はい      |
+| linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | webServiceInputs  | Azure Machine Learning Web サービスの入力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている入力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、入力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
 | webServiceOutputs | Azure Machine Learning Web サービスの出力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている出力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、出力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
 | globalParameters  | Azure Machine Learning Studio バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure Machine Learning Studio Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure Machine Learning Studio バッチ実行要求の GlobalParameters プロパティに渡されます | いいえ        |

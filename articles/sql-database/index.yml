@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7a6372f90cde75cb3314a049de41a4826510bd3f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 437ab5fe8eec2a7c097805f3328df4dd9a2398c6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752247"
+ms.locfileid: "55769951"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -110,18 +110,18 @@ sections:
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: マネージド インスタンスの作成
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: エラスティック プールの作成
       values:
       - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: マネージド インスタンスの作成
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -129,11 +129,11 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: クイック スタート ガイドを使用して、<a href="/azure/sql-database/sql-database-quickstart-guide">単一データベース</a>と<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">マネージド インスタンス</a>の使用を開始する。
+    - html: クイック スタート ガイドを使用して、<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">単一データベース</a>と<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">マネージド インスタンス</a>の使用を開始する。
     - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい単一データベースのスキーマを作成および設計する
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">データベースの復元</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して、既存のデータベースを Azure に移行する
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブな SQL Server バックアップ ファイル</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC ファイルのインポート</a>を使用して、既存のデータベースを Azure に移行する
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散する
+    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geo 分散型データベース</a>を使用してデータをグローバルに分散する
 - title: Microsoft Learn でスキルを身に付ける
   items:
   - type: list

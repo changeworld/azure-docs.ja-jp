@@ -191,6 +191,8 @@ items:
       href: sql-database-automated-backups.md
     - name: 長期のバックアップ リテンション期間
       href: sql-database-long-term-retention.md
+    - name: 計画メンテナンス イベント
+      href: sql-database-planned-maintenance.md
     - name: フェールオーバー グループと geo レプリケーション
       items:
       - name: アクティブ geo レプリケーション
@@ -295,8 +297,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: エラスティック トランザクション
       href: sql-database-elastic-transactions-overview.md
-  - name: SQL 機能の比較
-    href: sql-database-features.md
   - name: 監視とチューニング
     items:
     - name: 監視とチューニングの概要
@@ -321,24 +321,28 @@ items:
         href: sql-database-performance.md
       - name: データベース アドバイザーのパフォーマンスに関する推奨事項
         href: sql-database-advisor.md
-  - name: データの読み込みと移動
-    items:
-    - name: SQL データ同期
-      href: sql-database-sync-data.md
-    - name: トランザクション レプリケーション
-      href: sql-database-managed-instance-transactional-replication.md
   - name: データベース機能
     items:
-    - name: データベース機能
-      href: sql-database-develop-overview.md
+    - name: SQL 機能の比較
+      href: sql-database-features.md
     - name: マルチモデル機能
       href: sql-database-multi-model-features.md
     - name: メモリ内
       href: sql-database-in-memory.md
+    - name: トランザクション レプリケーション
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: SQL データ同期
+      href: sql-database-sync-data.md
     - name: テンポラル テーブル
       href: sql-database-temporal-tables.md
     - name: ジョブの自動化
       href: sql-database-job-automation-overview.md
+    - name: 機械学習
+      items:
+      - name: Machine Learning の概要
+        href: sql-database-machine-learning-services-overview.md
+      - name: 主な相違点
+        href: sql-database-machine-learning-services-differences.md
 - name: ハウツー ガイド
   items:
   - name: 概要
@@ -523,8 +527,8 @@ items:
       href: sql-database-manage-automation.md
   - name: アプリの開発
     items:
-    - name: 接続
-      href: sql-database-libraries.md
+    - name: 概要
+      href: sql-database-develop-overview.md
     - name: JSON データの使用
       href: sql-database-json-features.md
     - name: Spark コネクタの使用
@@ -712,9 +716,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9a04e463a7324b1021594a8fbefc5988ad8471f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1b32688e6e9ed6b826dd9191c8d58e85b1b2b128
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756735"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813680"

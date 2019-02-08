@@ -17,7 +17,7 @@ items:
     href: apache-kafka-get-started.md
   - name: Apache Kafka クラスターの作成 - PowerShell
     href: apache-kafka-quickstart-powershell.md
-  - name: Apache Kafka クラスターの作成 - テンプレート
+  - name: Apache Kafka クラスターの作成 - Resource Manager テンプレート
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: チュートリアル
   items:
@@ -278,9 +278,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: a28b21e923f4278f74e5f6656c1c96ac203c280e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 11468d52eb07180abc6624772d69a3c0cd122ae7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351037"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814301"
