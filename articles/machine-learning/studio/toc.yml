@@ -8,12 +8,6 @@ items:
     href: what-is-ml-studio.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-  - name: ML Studio の機能
-    displayName: overview
-    href: studio-overview-diagram.md
-  - name: ML Studio の基本 (インフォグラフィック)
-    displayName: algorithm, algorithms
-    href: basics-infographic-with-algorithm-examples.md
   - name: よく寄せられる質問
     displayName: FAQ
     href: faq.md
@@ -122,6 +116,9 @@ items:
       href: algorithm-choice.md
     - name: アルゴリズム チート シート
       href: algorithm-cheat-sheet.md
+    - name: アルゴリズムの使用例
+      displayName: infographic, studio basics
+      href: basics-infographic-with-algorithm-examples.md
   - name: モデルをデプロイする
     items:
     - name: Web サービスのデプロイ
@@ -216,9 +213,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: d6d4020d76c8eab2418b3b7ac5d26eaf93363870
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 59fb65ee260e65bbbe4d3d8b18097c14a0a652f7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746168"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892654"

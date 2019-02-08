@@ -542,8 +542,6 @@ items:
       href: service-fabric-how-to-specify-environment-variables.md
     - name: アプリケーションをデプロイまたは削除する
       items:
-      - name: ノード タイプを削除する
-        href: service-fabric-how-to-remove-node-type.md
       - name: Azure Resource Manager
         href: service-fabric-application-arm-resource.md
       - name: Azure PowerShell
@@ -614,6 +612,8 @@ items:
           href: service-fabric-cluster-programmatic-scaling.md
         - name: 仮想マシン スケール セット ノード タイプのスケールアウト
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
+        - name: ノード タイプを削除する
+          href: service-fabric-how-to-remove-node-type.md
       - name: アップグレード
         items:
         - name: Service Fabric バージョンのアップグレード
@@ -837,9 +837,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: daa2e26fe5182364c9f1b1ea40d00cafa92e1a13
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 28faaf7c5f36dd9c606707c8fdb9b8381b5ed695
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508625"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893274"

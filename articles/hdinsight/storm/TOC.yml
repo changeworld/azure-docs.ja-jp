@@ -121,6 +121,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: Azure リソース マネージャー テンプレートの使用
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
@@ -272,6 +273,7 @@ items:
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
   - name: Resource Manager テンプレート
+    displayName: resource manager template, arm template, resource manager group
     href: /azure/templates/microsoft.hdinsight/allversions
 - name: 関連項目
   items:
@@ -318,9 +320,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 7429b43ad4e617b1d92247f80ffeaacaa0f12c9a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 6859775d1f05bde7dd9ae8bc7bd3c10c0dd2073b
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320754"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894141"

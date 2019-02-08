@@ -4,17 +4,17 @@ title: Azure Cognitive Services のドキュメント
 description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したり、解釈したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、API の使用方法を紹介しています。
 services: cognitive-services
 author: nitinme
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 3c67a6fc7345cb533ad0c7088ac09fb02d3da1f2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 389dd4e8b6f2157c1c53528506435a97a07a493e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213977"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872936"
 ---
 <h1>Azure Cognitive Services のドキュメント</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。</p>
