@@ -101,7 +101,7 @@ ms.locfileid: "55243642"
 
    | パラメーター | 説明 |
    | --- | --- |
-   | サブスクリプション ID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
+   | SubscriptionID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
    | GalleryItemUri |ストレージに既にアップロードされた、ギャラリー パッケージの BLOB URI。 |
    | ApiVersion |**2015-04-01** と設定します。 |
 
@@ -132,7 +132,7 @@ ms.locfileid: "55243642"
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | Name |X |String |[A-Za-z0-9]+ | |
-| 発行元 |X |String |[A-Za-z0-9]+ | |
+| Publisher |X |String |[A-Za-z0-9]+ | |
 | Version |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
@@ -142,9 +142,9 @@ ms.locfileid: "55243642"
 | DisplayName |X |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
 | PublisherDisplayName |X |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
 | PublisherLegalName |X |String |最大 256 文字 | |
-| まとめ |X |String |60 ～ 100 文字 | |
+| Summary |X |String |60 ～ 100 文字 | |
 | LongSummary |X |String |140 ～ 256 文字 |Azure Stack ではまだ適用なし。 |
-| 説明 |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
+| Description |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
 
 ### <a name="images"></a>イメージ
 
@@ -152,11 +152,11 @@ Marketplace では、次のアイコンを使用します。
 
 | Name | 幅 | 高さ | メモ |
 | --- | --- | --- | --- |
-| ワイド |255 px |115 px |常に必要 |
+| Wide |255 px |115 px |常に必要 |
 | Large |115 px |115 px |常に必要 |
 | Medium |90 px |90 px |常に必要 |
 | Small |40 px |40 px |常に必要 |
-| スクリーンショット |533 px |32 px |省略可能 |
+| Screenshot |533 px |32 px |省略可能 |
 
 ### <a name="categories"></a>Categories
 
@@ -178,7 +178,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大 25 文字 | |
-| 値 |X |String |最大 30 文字 | |
+| Value |X |String |最大 30 文字 | |
 
 ### <a name="html-sanitization"></a>HTML のサニタイズ
 
