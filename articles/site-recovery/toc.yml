@@ -60,8 +60,12 @@ items:
       href: migrate-tutorial-aws-azure.md
   - name: Azure VM の移動
     items:
+    - name: 概要
+      href: azure-to-azure-move-overview.md
     - name: Azure VM を別のリージョンに移動する
       href: azure-to-azure-tutorial-migrate.md
+    - name: Azure VM を Availability Zones に移動する
+      href: move-Azure-VMs-AVset-Azone.md
 - name: 概念
   items:
   - name: Site Recovery に関する一般的な質問
@@ -454,9 +458,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 10592c399414440c032d83b5fcdafa1ccee98956
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 89271625d4c05dd7e639cc3fef1ebfe97b710f03
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566858"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821799"
