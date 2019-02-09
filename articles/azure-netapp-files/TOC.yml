@@ -35,15 +35,19 @@ items:
     href: azure-netapp-files-manage-snapshots.md
   - name: 容量プールまたはボリュームをサイズ変更する
     href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+  - name: 開発
+    items:
+    - name: REST
+      href: azure-netapp-files-develop-with-rest-api.md
 - name: リファレンス
   items:
   - name: REST
     href: https://docs.microsoft.com/rest/api/netapp/
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 613c0b38cca5608b30a3450a13343f0b86179777
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ec453db38182dd256a154f85fafc7c08f5bdfa6a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197503"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959648"
