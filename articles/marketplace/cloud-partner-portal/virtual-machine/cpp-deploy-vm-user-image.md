@@ -37,7 +37,7 @@ ms.locfileid: "54265058"
 | userStorageAccountName     | ストレージ アカウントの名前                                                    |
 | sNameForPublicIP           | パブリック IP の DNS 名。 小文字にする必要があります。                                  |
 | subscriptionId             | Azure サブスクリプションの識別子。                                                  |
-| 場所                   | リソース グループの標準的な Azure 地理的場所                       |
+| location                   | リソース グループの標準的な Azure 地理的場所                       |
 | vmName                     | 仮想マシンの名前                                                    |
 | vaultName                  | Key Vault の名前                                                          |
 | vaultResourceGroup         | Key Vault のリソース グループ
