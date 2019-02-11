@@ -218,10 +218,6 @@ items:
       href: functions-bindings-event-grid.md
     - name: Event Hubs
       href: functions-bindings-event-hubs.md
-    - name: 外部ファイル
-      href: functions-bindings-external-file.md
-    - name: 外部テーブル
-      href: functions-bindings-external-table.md
     - name: HTTP と webhook
       href: functions-bindings-http-webhook.md
     - name: Microsoft Graph
@@ -279,9 +275,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 7528b43987cebcad064f77ba64f9b3e658ba189c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 88a0dc35c7a1d3836c21d237bc7a5b3c98555aec
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727821"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983578"
