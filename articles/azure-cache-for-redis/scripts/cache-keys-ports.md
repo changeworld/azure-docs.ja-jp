@@ -39,7 +39,7 @@ ms.locfileid: "55754457"
 
 | コマンド | メモ |
 |---|---|
-| [az redis の表示](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスの詳細を取得します。 |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスの詳細を取得します。 |
 | [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスのアクセス キーを取得します。 |
 
 
