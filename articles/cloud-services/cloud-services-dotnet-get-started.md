@@ -391,7 +391,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 8. **[ContosoAdsWorker [Role]]** プロパティ ウィンドウで、もう 1 つ接続文字列を追加します。
 
    * 名前:ContosoAdsDbConnectionString
-   * 次のコマンドを入力します: String
+   * 型: String
    * 値:Web ロール プロジェクトに使用したのと同じ接続文字列を貼り付けます  (次の例は Visual Studio 2013 用です。 Visual Studio 2015 以降を使用していて、この例をコピーする場合は、忘れずにデータ ソースを変更してください)。
 
        ```

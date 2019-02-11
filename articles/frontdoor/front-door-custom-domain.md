@@ -68,7 +68,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
     - ソース:afdverify サブドメインを含めて、カスタム ドメイン名を afdverify._&lt;カスタム ドメイン名&gt;_ の形式で入力します。 たとえば、afdverify.www.contoso.com などです。
 
-    - 次のコマンドを入力します: 「*CNAME*」と入力します。
+    - [Type]: 「*CNAME*」と入力します。
 
     - 変換先:afdverify サブドメインを含む既定の Front Door フロントエンド ホストを、_&lt;エンドポイント名&gt;_.azurefd.net の形式で入力します。 たとえば、afdverify.contoso.azurefd.net などです。
 
@@ -86,7 +86,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
 5. CNAME エントリの次のフィールドに入力します。
 
-    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
+    - [Type]: *[CNAME]* を選択したままにします。
 
     - [Host]\(ホスト\):afdverify サブドメイン名を含めて、使用するカスタム ドメインのサブドメインを入力します。 たとえば、afdverify.www などです。
 
@@ -145,7 +145,7 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
     - ソース:カスタム ドメイン名 (例: www.contoso.com) を入力します。
 
-    - 次のコマンドを入力します: 「*CNAME*」と入力します。
+    - [Type]: 「*CNAME*」と入力します。
 
     - 変換先:既定の Front Door フロントエンド ホストを入力します。 名前は、_&lt;ホスト名&gt;_.azurefd.net の形式である必要があります。 たとえば、contoso.azurefd.net などです。
 
@@ -167,7 +167,7 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 5. CNAME エントリのフィールドに入力します。
 
-    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
+    - [Type]: *[CNAME]* を選択したままにします。
 
     - [Host]\(ホスト\):使用するカスタム ドメインのサブドメインを入力します。 たとえば、www または profile とします。
 
