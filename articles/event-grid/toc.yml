@@ -155,6 +155,8 @@ items:
       href: event-schema-resource-groups.md
     - name: Service Bus
       href: event-schema-service-bus.md
+    - name: Azure Maps
+      href: event-schema-azure-maps.md
   - name: Template resources
     items:
     - name: イベントのサブスクリプション
@@ -175,9 +177,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: e88de075666f8565be9f977d24b038899604970d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ac839b3f9eca6a4abee95e55be3679d4f854eb48
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692899"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989221"

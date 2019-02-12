@@ -212,6 +212,8 @@ items:
       href: backup-azure-upgrade-backup-to-recovery-services.md
     - name: Recovery Services コンテナーを削除する
       href: backup-azure-delete-vault.md
+    - name: Recovery Services コンテナーを移動する
+      href: backup-azure-move-recovery-services-vault.md
   - name: トラブルシューティング
     items:
     - name: Azure VM
@@ -260,9 +262,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 8b9e6d742cfa1b4d46599747c03b8e3c3ba8c101
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ce83f8b6b1a0c7ccd9f00672f9aaf9bb33152fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507962"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997236"
