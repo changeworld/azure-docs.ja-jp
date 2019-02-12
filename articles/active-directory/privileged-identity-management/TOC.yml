@@ -23,6 +23,8 @@ items:
     href: pim-apis.md
 - name: ハウツー ガイド
   items:
+  - name: PIM をデプロイする
+    href: pim-deployment-plan.md
   - name: PIM の使用を開始する
     href: pim-getting-started.md
   - name: ロールをアクティブ化する
@@ -90,9 +92,9 @@ items:
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: a7c314bd6fd7fdc96900411db78a37b45b8c3e07
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 29eebb03aebec9dae7232df95a63e9a633ab109d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512346"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979481"

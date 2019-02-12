@@ -42,7 +42,7 @@ items:
     items:
     - name: Azure CLI を使用したマネージド ストレージ アカウント キー
       href: key-vault-ovw-storage-keys.md
-    - name: Azure Storage Key Vault 統合 - マネージド ストレージ アカウント キー - PowerShell
+    - name: PowerShell を使用したマネージド ストレージ アカウント キー
       href: key-vault-overview-storage-keys-powershell.md
   - name: Azure コンテナー
     href: ../container-instances/container-instances-managed-identity.md
@@ -171,9 +171,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 842530e7925388acec38ac04ee01bded101d5329
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 80596412906fd1fd661ee8ccafa2836b058b6866
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815457"
+ms.locfileid: "55873345"

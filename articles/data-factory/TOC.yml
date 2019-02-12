@@ -304,6 +304,8 @@ items:
     items:
     - name: コピー アクティビティを使用したデータのコピー
       href: copy-activity-overview.md
+    - name: 削除アクティビティを使用したファイルの削除
+      href: delete-activity.md
     - name: データのコピー ツール
       href: copy-data-tool.md
     - name: Data Lake Storage Gen2 の読み込み
@@ -458,8 +460,22 @@ items:
       href: how-to-create-schedule-trigger.md
     - name: タンブリング ウィンドウ トリガーの作成
       href: how-to-create-tumbling-window-trigger.md
+    - name: タンブリング ウィンドウ トリガーの依存関係の作成
+      href: tumbling-window-trigger-dependency.md
     - name: イベントベースのトリガーの作成
       href: how-to-create-event-trigger.md
+  - name: テンプレート
+    items:
+    - name: テンプレートの概要
+      href: solution-templates-introduction.md
+    - name: 複数のコンテナーからのファイルのコピー
+      href: solution-template-copy-files-multiple-containers.md
+    - name: 制御テーブルを使用した一括コピー
+      href: solution-template-bulk-copy-with-control-table.md
+    - name: 制御テーブルを使用した差分コピー
+      href: solution-template-delta-copy-with-control-table.md
+    - name: Databricks を使用したデータ変換
+      href: solution-template-databricks-notebook.md
 - name: リファレンス
   items:
   - name: .NET
@@ -490,9 +506,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: fd664db6e5f4bfbf0a86d9984559a1e5eabf262d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c73a736dadee91f344da32fb5569d5809a382f1b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567249"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960243"

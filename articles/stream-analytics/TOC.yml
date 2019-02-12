@@ -47,6 +47,8 @@ items:
       href: stream-analytics-sql-output-perf.md
     - name: BLOB のカスタム パス パターン
       href: stream-analytics-custom-path-patterns-blob-storage-output.md
+  - name: ジョブの状態
+    href: job-states.md
   - name: ウィンドウ関数
     href: stream-analytics-window-functions.md
   - name: 地理空間の関数
@@ -429,9 +431,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 63ca98d968397f7626341e9cfdece664bdde971e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d2038b8a663db50f4b2341ae3b2c39b499bb00c2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695306"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882350"

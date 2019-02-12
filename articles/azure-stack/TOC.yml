@@ -9,14 +9,14 @@ items:
     items:
     - name: 最新の更新
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: 1901 更新プログラム
+      href: azure-stack-update-1901.md
     - name: 1811 更新プログラム
       href: azure-stack-update-1811.md
     - name: 1809 更新プログラム
       href: azure-stack-update-1809.md
     - name: 1808 更新プログラム
       href: azure-stack-update-1808.md
-    - name: 1807 更新プログラム
-      href: azure-stack-update-1807.md
 - name: クイック スタート
   items:
   - name: 管理ポータルの使用
@@ -395,9 +395,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 91c476e8e65642e490c3a42de7d5a340964f3ae5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: eaed1b2c9a2e3ebad5b87873cfe646b4f40e2c79
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411715"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961807"

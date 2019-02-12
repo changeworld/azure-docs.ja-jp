@@ -23,6 +23,9 @@ items:
   - name: Azure Policy の作成と管理
     displayName: assign, definition, compliance, exempt, exclusion
     href: ./tutorials/create-and-manage.md
+  - name: カスタム ポリシー定義の作成
+    displayName: disabled, parameters, rule, mode
+    href: ./tutorials/create-custom-policy-definition.md
   - name: ハンズオン ラボ - Azure Policy の探索
     displayName: create, policy, training, learn
     href: https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy
@@ -324,9 +327,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 75d384a6e8a7e5592b2b5d37948d7863a41d5f78
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9255a819340e2aa4e8f5af6752ddac3cd375705b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102653"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867258"

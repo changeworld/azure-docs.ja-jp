@@ -43,6 +43,8 @@ items:
       href: power-bi-sql-query.md
 - name: チュートリアル
   items:
+  - name: コードを使用せずにデータを取り込む
+    href: ingest-data-no-code.md
   - name: Power BI でのデータの視覚化
     href: visualize-power-bi.md
 - name: 概念
@@ -126,9 +128,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: fac029da2b1adc8295f89f1cf730079659554142
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bb323692e7f21d1cbdffb8b70ea2e9c4165678e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818551"
+ms.locfileid: "55863722"

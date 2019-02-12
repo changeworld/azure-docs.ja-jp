@@ -96,6 +96,8 @@ items:
       href: how-to-install-iot-edge-linux-arm.md
     - name: Windows X64
       href: how-to-install-iot-edge-windows.md
+    - name: Ubuntu VM
+      href: how-to-install-iot-edge-ubuntuvm.md
     - name: ランタイム バージョンの更新
       href: how-to-update-iot-edge.md
   - name: DPS による自動プロビジョニング
@@ -212,9 +214,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 666e7b08b5def68847f30813a6bdc051ebbf50ea
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 544eb67262994ee67885b86b532427df68d8c1d5
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078051"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893845"

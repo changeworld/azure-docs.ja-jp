@@ -56,6 +56,8 @@ items:
       href: container-registry-get-started-docker-cli.md
     - name: リポジトリの表示
       href: container-registry-repositories.md
+    - name: コンテナー イメージのインポート
+      href: container-registry-import-images.md
     - name: コンテナー イメージの削除
       href: container-registry-delete.md
     - name: コンテンツの信頼 (プレビュー)
@@ -133,9 +135,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 7a4fcd5615c8ad9ffdc9cd50cc919b9e6916a70d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 2f622c23a3278f202fceb177459f8cf81d334f57
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844452"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870692"

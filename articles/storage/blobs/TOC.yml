@@ -512,14 +512,14 @@ items:
       href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: クイック スタート
     items:
-    - name: Data Lake Storage Gen2 対応のストレージ アカウントの作成
+    - name: ストレージ アカウントの作成
       href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Databricks アカウントの作成/接続
+    - name: Storage Explorer を使用したデータの管理
+      href: ../blobs/data-lake-storage-explorer.md
+    - name: Databricks を使用したデータの分析
       href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: HDInsight クラスターの作成
       href: ../blobs/data-lake-storage-quickstart-create-connect-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure Storage Explorer の使用開始
-      href: ../blobs/data-lake-storage-explorer.md
   - name: チュートリアル
     items:
     - name: Azure Databricks を使ったデータの抽出、変換、読み込み
@@ -530,9 +530,9 @@ items:
       href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 概念
     items:
-    - name: Hadoop 用 Azure BLOB ファイルシステム ドライバー
+    - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
       href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure BLOB ファイル システム URI の概要
+    - name: Azure BLOB ファイル システムの URI
       href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 階層型名前空間サービス
       href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -546,53 +546,57 @@ items:
         href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: カスタマー キーを使用した保存データの暗号化
         href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Azure Data Lake Storage Gen2 のアクセス制御
+      - name: Access Control
         href: data-lake-storage-access-control.md
-      - name: ファイアウォールと仮想ネットワークの構成
-        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Authentication
-        items:
-        - name: RBAC を使用したアクセス権の管理
-          href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 方法
     items:
-    - name: Azure Storage Explorer を使用してアクセス許可を設定する
-      href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
-    - name: Azure HDInsight クラスターで Data Lake Storage Gen2 を使用する
-      href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Data Lake Storage Gen2 で Hadoop ファイル システム CLI を使用する
-      href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Data Lake Storage Gen1 からアップグレードする
-      href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: データの取り込み
       items:
-      - name: Distcp を使用して Data Lake Storage Gen2 にデータをコピーする
+      - name: Distcp を使用する
         href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Azure Data Factory を使用して Data Lake Storage Gen2 にデータをコピーする
+      - name: Azure Data Factory を使用する
         href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: パフォーマンス
+    - name: データのセキュリティ保護
+      items:
+      - name: ファイアウォールと仮想ネットワークの構成
+        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: RBAC を使用したアクセス権の管理
+        href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: ファイルレベルおよびディレクトリレベルのアクセス許可の設定
+        href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+    - name: Azure サービスと統合する
+      items:
+      - name: HDInsight クラスターで使用する
+        href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Hadoop ファイル システム CLI で使用する
+        href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Azure Databricks で使用する
+        href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
+      - name: Azure SQL Data Warehouse で使用する
+        href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: パフォーマンスを最適化する
       items:
       - name: 概要
         href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: HDInsight での Spark の使用
+      - name: HDInsight の Apache Spark を最適化する
         href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: HDInsight での Hive の使用
+      - name: HDInsight の Hive を最適化する
         href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: HDInsight での MapReduce の使用
+      - name: HDInsight の MapReduce を最適化する
         href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: HDInsight での Storm の使用
+      - name: HDInsight の Storm を最適化する
         href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure Databricks に接続する
-      href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
-    - name: Azure SQL Data Warehouse への接続
-      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: データの移行
+      items:
+      - name: Data Lake Storage Gen1 からアップグレードする
+        href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: リファレンス
     items:
     - name: REST
       href: https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2
   - name: リソース
     items:
-    - name: Data Lake Storage Gen2 の既知の問題
+    - name: 既知の問題
       href: data-lake-storage-known-issues.md
     - name: Azure のロードマップ
       href: https://azure.microsoft.com/roadmap/?category=storage
@@ -610,9 +614,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: dec146846ac3bf889ac0d694fc769c899ab1d12e
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 546184e0552bbd0a5a3cc8ba864fba8794428dec
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767668"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870522"
