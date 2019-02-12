@@ -1,8 +1,21 @@
 ---
-title:Web サービス用の Excel アドイン titleSuffix:Azure Machine Learning Studio description:コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/01/2018
+title: Web サービス用の Excel アドイン
+titleSuffix: Azure Machine Learning Studio
+description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 02/01/2018
+ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486896"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。

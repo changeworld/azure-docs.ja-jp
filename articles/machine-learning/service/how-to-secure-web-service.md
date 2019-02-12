@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 10/02/2018
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c82c39de9b403e2e35f40c0290c8642c702790f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248063"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769323"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL を使用して Azure Machine Learning service による Web サービスをセキュリティで保護する
 
@@ -103,5 +103,6 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
 FPGA にデプロイされたサービスでの SSL の使用は現在サポートされていません。
 
 ## <a name="next-steps"></a>次の手順
-
-[Web サービスとしてデプロイされる ML モデルを使用する](how-to-consume-web-service.md)方法を学習します。
+以下の項目について説明します。
++ [Web サービスとしてデプロイされた機械学習モデルを使用する](how-to-consume-web-service.md)
++ [Azure Virtual Network 内での実験と推論の安全な実行](how-to-enable-virtual-network.md)

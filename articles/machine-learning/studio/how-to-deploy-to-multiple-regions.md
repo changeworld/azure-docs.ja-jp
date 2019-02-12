@@ -1,8 +1,21 @@
 ---
-title:複数のリージョンへの Studio Web サービスのデプロイ titleSuffix:Azure Machine Learning Studio description:新しい Web サービスを他のリージョンにデプロイ (コピー) する手順。 複数のサブスクリプションやワークスペースがなくても、複数のリージョンに Web サービスを簡単にデプロイできます。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:04/19/2017
+title: 複数のリージョンへの Studio Web サービスのデプロイ
+titleSuffix: Azure Machine Learning Studio
+description: 新しい Web サービスを他のリージョンにデプロイ (コピー) する手順。 複数のサブスクリプションやワークスペースがなくても、複数のリージョンに Web サービスを簡単にデプロイできます。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 04/19/2017
+ms.openlocfilehash: 536a4ae0b740eae7f6072cbd23d96e199e1598e7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487072"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service-to-multiple-regions"></a>複数のリージョンに Azure Machine Learning Studio Web サービスをデプロイする
 

@@ -3,7 +3,7 @@ title: Azure Security Center でのマシンとアプリケーションの保護
 description: このドキュメントでは、仮想マシン、コンピューター、Web アプリ、および App Service 環境を保護するのに役立つ、Security Center の推奨事項について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181471"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487745"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -42,7 +42,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 - **[概要]**: Security Center によって特定された監視および推奨事項。
 - **[VM およびコンピューター]**: VM およびコンピューターの一覧と、それぞれの現在のセキュリティ状態。
 - **[Cloud Services]\(クラウド サービス\)**: Security Center によって監視されている Web および worker ロールの一覧。
-- **[App Services (プレビュー)]**: アプリ サービス環境の一覧と、それぞれの現在のセキュリティ状態。
+- **[アプリ サービス]**: アプリ サービス環境の一覧と、それぞれの現在のセキュリティ状態。
 - **[コンテナー (プレビュー)]**: IaaS Linux マシン上でホストされているコンテナーや Docker 構成のセキュリティ評価の一覧。
 - **[コンピューティング リソース (プレビュー)]**: Service Fabric クラスターやイベント ハブなど、コンピューティング リソースの推奨事項の一覧。
 
@@ -124,12 +124,11 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 
 ![OS バージョンの更新](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>App Service (プレビュー)
+### <a name="app-services"></a>App Services
+App Service 情報を表示するには、App Service をサブスクリプションで有効にする必要があります。 この機能を有効にする方法については、[Azure Security Center での App Service の保護](security-center-app-services.md)に関する記事を参照してください。
+[!NOTE]
+> App Service の監視はプレビュー段階であり、Security Center の Standard レベルでのみ利用できます。
 
-> [!NOTE]
-> App Service の監視はプレビュー段階であり、Security Center の Standard レベルでのみ利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
->
->
 
 **[App Service]** には、App Service 環境の一覧と、Security Center によって実行された評価に基づく正常性についての概要が表示されます。
 
@@ -171,19 +170,9 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 |App Service|10|Web アプリケーションのリモート デバッグを無効にする|使用する必要がなくなった場合は、Web アプリケーションのデバッグを無効にします。 リモート デバッグを実行するには、受信ポートが Function App 上で開かれている必要があります。|
 |App Service|10|Function App のリモート デバッグを無効にする|使用する必要がなくなった場合は、Function App のデバッグを無効にします。 リモート デバッグを実行するには、受信ポートが Function App 上で開かれている必要があります。|
 |App Service|10|Web アプリケーションに対する IP 制限を構成する|アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義します。 IP 制限を使用することで、一般的な攻撃から Web アプリケーションを保護します。|
-|App Service|10|Function App に対する IP 制限を構成する| アプリケーションへのアクセスを許可されている IP アドレスの一覧を定義します。 IP 制限を使用することで、一般的な攻撃から Function App を保護します。|
 |App Service|10|すべての ('*') リソースにアプリケーションへのアクセスを許可しない| WEBSITE_LOAD_CERTIFICATES パラメーターでは "" という設定を許可しないでください。 このパラメーターを "" に設定することは、すべての証明書が Web アプリケーションの個人証明書ストアに読み込まれることを意味します。 実行時にサイトがすべての証明書へのアクセスを必要とすることは考えにくいため、これでは、最小限の権限という原理をうまく活用できないことになります。|
-|App Service|5|Web アプリケーションで Web ソケットを無効にする|Web アプリケーション内での Web ソケットの使用を見直します。 Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。|
-|App Service|5|Function App で Web ソケットを無効にする|Function Apps 内での Web ソケットの使用を見直します。 Web ソケット プロトコルは、さまざまな種類のセキュリティの脅威に対して脆弱です。|
-|App Service|5|Web アプリケーションにカスタム ドメインを使用する|カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から Web アプリケーションを保護します。|
-|App Service|5|Function App にカスタム ドメインを使用する|カスタム ドメインを使用して、フィッシングや他の DNS 関連攻撃などの一般的な攻撃から関数アプリを保護します。|
 |App Service|20|CORS で、すべてのリソースが Web アプリケーションにアクセスすることを許可しない|Web アプリケーションの操作に必要なドメインのみを許可します。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Web アプリケーションへのアクセスを許可してはいけません。|
 |App Service|20|すべてのリソースが Function App にアクセスすることを CORS で許可しない| お使いの関数アプリケーションの操作に必要なドメインのみを許可します。 クロス オリジン リソース共有 (CORS) で、すべてのドメインに Function Application へのアクセスを許可してはいけません。|
-|App Service|10|Web アプリケーションでサポートされている最新の .NET Framework を使用する|最新のセキュリティ クラスには、最新バージョンの .NET Framework を使用します。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。|
-|App Service|10|Web アプリケーションでサポートされている最新の Java バージョンを使用する|最新のセキュリティ クラスには、最新バージョンの Java を使用します。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。|
-|App Service|10|Web アプリケーションでサポートされている最新の PHP バージョンを使用する|最新のセキュリティ クラスには、最新バージョンの PHP を使用します。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。|
-|App Service|10|Web アプリケーションでサポートされている最新の Node.js バージョンを使用する|最新のセキュリティ クラスには、最新バージョンの Node.js を使用します。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。|
-|App Service|10|Web アプリケーションでサポートされる最新のバージョンの Python を使用する|最新のセキュリティ クラスには、最新バージョンの Python を使用します。 古いクラスや型を使用すると、アプリケーションが脆弱になる可能性があります。|
 |コンピューティング リソース (Batch)|1|Batch アカウントでメトリックのアラート ルールを構成します|Batch アカウントでメトリックのアラート ルールを構成し、プール削除の完了イベントおよびプールの削除の開始イベントのメトリックを有効にします|
 |コンピューティング リソース (Service Fabric)|10|Service Fabric でクライアント認証に Azure Active Directory を使用する|Service Fabric では、Azure Active Directory によるクライアント認証のみを実行します。|
 |コンピューティング リソース (Automation アカウント)|5| Automation アカウントの暗号化を有効にする|機密データを格納するときには Automation アカウント変数資産の暗号化を有効にします。|

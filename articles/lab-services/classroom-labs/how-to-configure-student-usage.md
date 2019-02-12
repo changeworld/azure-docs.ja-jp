@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388300"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490449"
 ---
 # <a name="configure-usage-settings-and-policies"></a>使用設定とポリシーを構成する
 この記事では、ラボへのユーザーの追加、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。 
@@ -71,6 +71,9 @@ ms.locfileid: "54388300"
 5. 次のように、ツール バーに時間数が表示されるようになりました: **[Quota per user: &lt;number of hours&gt;]\(ユーザーあたりのクォータ: <時間数>\)**。 
 
     ![ユーザーあたりのクォータ](../media/how-to-configure-student-usage/quota-per-user.png)
+
+> [!IMPORTANT]
+> [スケジュールされている VM の実行時間](how-to-create-schedules.md)は、ユーザーに割り当てられるクォータにカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>CSV ファイルをアップロードしてユーザーを追加する
 また、ユーザーのメール アドレスを指定した CSV ファイルをアップロードしてユーザーを追加することもできます。

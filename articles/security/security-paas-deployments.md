@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6bc1df7acf7ce711e106983f8084f168152fc51e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728484"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488409"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -48,7 +48,7 @@ ms.locfileid: "53728484"
 
 - データ
 - エンドポイント
-- Account
+- アカウント
 - アクセス管理
 
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS クラウド サービス モデルのセキュリティ上の利点
@@ -109,14 +109,14 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 
 次の表は STRIDE 脅威の一覧と Azure の機能が使用する軽減策の例です。 これらの軽減策はあらゆる状況で機能するわけではありません。
 
-| Threat | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
+| 脅威 | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
 | --- | --- | --- |
-| なりすまし | Authentication | HTTPS 接続を要求する。 |
+| なりすまし | 認証 | HTTPS 接続を要求する。 |
 | 改ざん | 整合性 | SSL 証明書を検証する。 |
 | 否認 | 否認防止 | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。 |
 | 情報漏えい | 機密情報 | [サービス証明書](https://docs.microsoft.com/rest/api/appservice/certificates)を使用して保存データを暗号化する。 |
 | Denial of service (サービス拒否) | 可用性 | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 |
-| 特権の昇格 | Authorization | [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md) を使用する。 |
+| 特権の昇格 | 承認 | [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md) を使用する。 |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service での開発
 PaaS である [Azure App Service](../app-service/overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 156c977e197084d18d8fd32f55e58c512a66ef9d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 59b190065c678ef61b3e0dec8df13db4215a8229
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156413"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486302"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -147,7 +147,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 | リソース グループ | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 | リソースの種類 | 1 つ以上のリソースの種類を選択します。 このビューには、選択された種類のターゲットを含むアラートのみが含まれます。 この列は、リソース グループを指定した後でのみ使用できます。 |
 | リソース | リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 |
-| severity | アラートの重大度を選択するか、または *[すべて]* を選択してすべての重大度のアラートを含めます。 |
+| 重大度 | アラートの重大度を選択するか、または *[すべて]* を選択してすべての重大度のアラートを含めます。 |
 | 監視条件 | 監視条件を選択するか、または *[すべて]* を選択してすべての条件のアラートを含めます。 |
 | アラートの状態 | アラートの状態を選択するか、または *[すべて]* を選択してすべての状態のアラートを含めます。 |
 | サービスの監視 | サービスを選択するか、または *[すべて]* を選択してすべてのサービスを含めます。 そのサービスをターゲットとして使用してルールによって作成されたアラートのみが含まれます。 |

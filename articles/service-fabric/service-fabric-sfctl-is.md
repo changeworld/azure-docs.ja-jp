@@ -24,9 +24,9 @@ ms.locfileid: "53276334"
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | command | 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。 |
 | query | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。 |

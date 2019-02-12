@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884964"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770790"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -82,8 +82,22 @@ SDK を使用するデバイス ストリームのプログラムによる作成
 または、`property.hostname` および `property.deviceStreams` キーなど、ハブのプロパティ セクションの下にある Azure CLI を使用して、エンドポイント情報を取得することができます。
 
 ```azurecli-interactive
-az iot hub show --name <YourIoTHubName>
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+出力は、ハブのデバイスとサービスが、状況によってはデバイス ストリームを確立するために接続する必要があるすべてのエンドポイントの JSON オブジェクトです。
+
+```json
+{
+  "streamingEndpoints": [
+    "https://<YourIoTHubName>.<region-stamp>.streams.azure-devices.net"
+  ]
+}
+```
+
+> [!NOTE]
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは [こちら](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)からダウンロードできます。
+> 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>デバイス ストリーミング エンドポイントをホワイトリストに登録する
 
@@ -92,9 +106,14 @@ az iot hub show --name <YourIoTHubName>
 デバイス ストリーミング エンドポイントのホスト名は、Azure IoT Hub ポータルの [概要] タブで確認できます。![代替テキスト](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "デバイス ストリーム エンドポイント")
 
 または、Azure CLI を使用して、この情報を見つけることができます。
-```cmd/sh
-az iot hub show --name <YourIoTHubName>
+
+```azurecli-interactive
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+> [!NOTE]
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは [こちら](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)からダウンロードできます。
+> 
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>デバイス ストリーム アクティビティ ログを使用してトラブルシューティングを行う
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717213"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488385"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -51,6 +51,9 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 ユーザーまたはグループに必要最小限の特権を付与する場合と同様に、コンテナーも必要なアクションとプロセスのみに制限するようにします。 攻撃のリスクを最小限に抑えるには、上位の特権やルート アクセスが必要なアプリケーションやコンテナーを構成しないでください。 たとえば、ポッドのマニフェストには `allowPrivilegeEscalation: false` を設定します。 このような "*ポッドのセキュリティ コンテキスト*" は Kubernetes に組み込まれているので、実行するユーザーやグループ、公開する Linux 機能など、追加のアクセス許可を定義できます。 その他のベスト プラクティスについては、[リソースへのポッドのアクセスをセキュリティで保護する方法][pod-security-contexts]に関する記事を参照してください。
 
 コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。
+
+> [!NOTE]
+> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 *AppArmor*、*seccomp*、*Pod Security Policy* などの他のセキュリティ機能やノードに対するきめの細かいロールベースのアクセス制御 (RBAC) によって、悪用しにくくします。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
 
 ### <a name="app-armor"></a>App Armor
 

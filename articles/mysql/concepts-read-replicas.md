@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/23/2019
-ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 1/30/2019
+ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903759"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493050"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -86,6 +86,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 - レプリカのレプリカの作成はサポートされていません。
 - インメモリ テーブルを使用すると、レプリカの同期が解除される可能性があります。これは、MySQL レプリケーション テクノロジの制限事項です。 詳細については、[MySQL のリファレンス ドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html)をお読みください。
 - レプリカ サーバーの作成後にマスター サーバー上の [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) パラメーターをチューニングすると、レプリカの同期が解除される可能性があります。レプリカ サーバーでは異なるテーブル スペースが認識されません。
+- マスター サーバーのテーブルに主キーがあることを確認します。 主キーがないと、マスターとレプリカ間でレプリケーションの待機時間が発生する可能性があります。
 - MySQL レプリケーションの制限事項の完全な一覧については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)をご確認ください。
 
 

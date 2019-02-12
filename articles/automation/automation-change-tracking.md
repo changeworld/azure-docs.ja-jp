@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301443"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487236"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -74,10 +74,10 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[変更の追跡]** ページで、**[Linux ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
+|項目名     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
@@ -97,10 +97,10 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
+|項目名     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
@@ -111,7 +111,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 次の一覧に、再帰を構成するときに知っておくべき基本的な情報を示します。
 
 * 複数のファイルを追跡するにはワイルドカードが必要です。
-* ワイルドカードは、パスの最後のセグメントでしか使用できません  (例: C:\folder\\**file**、/etc/*.conf など)。
+* ワイルドカードを使用する場合は、パスの最後のセグメントでのみ使用できます  (`c:\folder\*file*`や `/etc/*.conf` など)。
 * 環境変数に無効なパスが存在する場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
 * パスを設定するとき、漠然としたパス (`c:\*.*` など) は避けてください。走査の対象になるフォルダーが膨大な数に上ります。
 
@@ -129,12 +129,12 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows レジストリ]** を選択し、**[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | ファイル確認のためのパス。 例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|項目名     | 追跡するレジストリ キーのフレンドリ名。        |
+|グループ     | レジストリ キーを論理的にグループ化するためのグループ名。        |
+|Windows レジストリ キー   | レジストリ キーを確認するためのパス。 例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>制限事項
 
@@ -278,13 +278,13 @@ Change Tracking と Inventory の重要な機能は、構成の状態と、ハ�
 
 ![hosts ファイルの変更を示すグラフ](./media/automation-change-tracking/changes.png)
 
-この変更をさらに分析するには、**[Log Analytics]** をクリックしてログ検索に移動します。 ログ検索で、クエリ `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` を使って Hosts ファイルに対するコンテンツの変更を検索します。 このクエリは、完全修飾パスに "hosts" という単語が含まれているファイルのうち、ファイル コンテンツの変更が含まれている変更を検索します。 パスの部分を完全修飾された形式 (`FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"` など) に変更することで、特定のファイルを確認することもできます。
+この変更をさらに分析するには、**[Log Analytics]** をクリックしてログ検索に移動します。 ログ検索で、クエリ `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` を使って Hosts ファイルに対するコンテンツの変更を検索します。 このクエリは、完全修飾パスに "hosts" という単語が含まれているファイルのうち、ファイル コンテンツの変更が含まれている変更を検索します。 パスの部分を完全修飾された形式 (`FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` など) に変更することで、特定のファイルを確認することもできます。
 
 クエリが目的の結果を返したら、ログ検索エクスペリエンスで **[新しいアラート ルール]** ボタンをクリックしてアラート作成ページを開きます。 このエクスペリエンスには Azure portal の **Azure Monitor** から移動することもできます。 アラート作成エクスペリエンスで、クエリをもう一度確認し、アラート ロジックを変更します。 この場合は、環境内のすべてのマシンで 1 つでも変更が検出されたら、アラートがトリガーされるようにします。
 
 ![hosts ファイルに対する変更を追跡するための変更クエリを示すイメージ](./media/automation-change-tracking/change-query.png)
 
-条件ロジックを設定した後、トリガーされるアラートに対応するアクションを実行するアクション グループを割り当てます。 この場合は、電子メールの送信と ITSM チケットの作成を設定しています。  Azure 関数、Automation Runbook、Webhook、またはロジック アプリのトリガーなど、役に立つその他の多くのアクションも実行できます。
+条件ロジックを設定した後、トリガーされるアラートに対応するアクションを実行するアクション グループを割り当てます。 この場合は、電子メールの送信と ITSM チケットの作成を設定しています。  Azure 関数、Automation Runbook、Webhook、ロジック アプリのトリガーなど、役に立つその他の多くのアクションも実行できます。
 
 ![変更に関するアラートに対するアクション グループの構成のイメージ](./media/automation-change-tracking/action-groups.png)
 
@@ -294,7 +294,7 @@ Change Tracking と Inventory の重要な機能は、構成の状態と、ハ�
 
 Hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
 
-|Query  |説明  |
+|クエリ  |説明  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|

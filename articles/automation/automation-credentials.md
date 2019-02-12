@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498167"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
@@ -47,11 +47,11 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 | [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential?view=azurermps-4.4.0) |Automation 資格情報を削除します。 |
 | [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential?view=azurermps-4.4.0) |既存の Automation 資格情報のプロパティを設定します。 |
 
-## <a name="activities"></a>アクティビティ
+## <a name="activities"></a>Activities
 
 次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
 
-| アクティビティ | 説明 |
+| Activities | 説明 |
 |:--- |:--- |
 | Get-AutomationPSCredential |Runbook または DSC 構成で使用する資格情報を取得します。 [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを返します。 |
 
@@ -73,10 +73,9 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Azure ポータルで新しい資格情報資産を作成するには
 
-1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
-2. **[資格情報]** 部分をクリックして、**[資格情報]** ブレードを開きます。
-3. ブレード上部の **[資格情報の追加]** をクリックします。
-4. フォームに入力し、 **[作成]** をクリックして新しい資格情報を保存します。
+1. Automation アカウントから、**[共有リソース]** の下の **[資格証明]** を選択します。
+1. **[+ 資格情報の追加]** をクリックします。
+1. フォームに入力し、 **[作成]** をクリックして新しい資格情報を保存します。
 
 > [!NOTE]
 > 多要素認証を使用するユーザー アカウントは、Azure Automation での使用がサポートされていません。

@@ -1,8 +1,21 @@
 ---
-title:Web サービス エンドポイントを作成する titleSuffix:Azure Machine Learning Studio description:Azure Machine Learning で Web サービス エンドポイントを作成する。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:10/04/2016
+title: Web サービスのエンドポイントの作成
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning で Web サービス エンドポイントを作成する。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 10/04/2016
+ms.openlocfilehash: fc3a92aaf13f13682cfc56333618436ffe3d65ef
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493373"
 ---
 # <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
 > [!NOTE]

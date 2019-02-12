@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412393"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769492"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
@@ -46,17 +46,17 @@ Azure Stream Analytics ジョブが問題を生じることなく常に実行し
 
    ![Azure Streaming Analytics ジョブのアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **[リソース]**、**[条件]**、**[アクション グループ]** がすべて入力されている必要があります。
+7. **[リソース]**、**[条件]**、**[アクション グループ]** がすべて入力されている必要があります。 起動するアラートの順に、定義されている条件が満たされる必要がある点に注意してください。 たとえば、直近 15 分間のメトリックの平均値を 5 分ごとに測定できます。
 
    ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    **[アラートの詳細]** に **[アラート ルール名]**、**[説明]**、**[リソース グループ]** を追加し、**[アラート ルールの作成]** をクリックして、Stream Analytics ジョブ用のルールを作成します。
 
    ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>監視するシナリオ
 
-Stream Analytics ジョブのパフォーマンス監視には、以下のアラートが推奨されます。 これらのメトリックを、1 分間隔で直近 5 分間にわたって評価することをお勧めします。 対象のジョブにパフォーマンスの問題が生じている場合は、クエリの並列処理を使用して最適化したり、ストリーミング ユニット数を増やしたりしてみてください。
+Stream Analytics ジョブのパフォーマンス監視には、以下のアラートが推奨されます。 これらのメトリックを、1 分間隔で直近 5 分間にわたって評価することをお勧めします。
 
 |メトリック|条件|時間の集計|Threshold|是正措置|
 |-|-|-|-|-|

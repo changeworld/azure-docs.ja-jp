@@ -1,7 +1,7 @@
 ---
-title: トレーニングのためにデータストア内のデータにアクセスする
+title: トレーニングのためにデータストア/BLOB 内のデータにアクセスする
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でトレーニング中にデータストアを使用してデータ ストレージにアクセスする方法について説明します
+description: Azure Machine Learning service でトレーニング中にデータストアを使用して BLOB データ ストレージにアクセスする方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a4960f3e29011948ec30fbc24222d8a6dccf6b8a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 759ae1c077a2c93ee4450843a796b84d95701a10
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252117"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769897"
 ---
 # <a name="access-data-during-training-from-your-datastores"></a>トレーニング中にデータストアのデータにアクセスする
 Azure Machine Learning ワークフローでは、データストアにアクセスしてデータを操作します。
@@ -76,8 +76,8 @@ ds = Datastore.get(ws, datastore_name='your datastore name')
 
 ワークスペースのすべてのデータストアを取得することもできます。
 ```Python
-datastores = ws.datastores()
-for name, ds in datastores.items(),
+datastores = ws.datastores
+for name, ds in datastores.items():
     print(name, ds.datastore_type)
 ```
 

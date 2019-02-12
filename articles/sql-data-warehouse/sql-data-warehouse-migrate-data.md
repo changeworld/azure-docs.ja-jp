@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474175"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770654"
 ---
 # <a name="migrate-your-data"></a>データの移行
 さまざまなソースのデータを、さまざまなツールを使って SQL Data Warehouse に移動することができます。  この目的を果たすうえで、ADF コピー、SSIS、bcp はすべて使用できます。 ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。 これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -29,11 +29,7 @@ ms.locfileid: "55474175"
 
 PolyBase には、データをロードするための非常に高いパフォーマンスのオプションも用意されています。 ただし、これは 1 つではなく、2 つのツールを使用するという意味です。 最高のパフォーマンスが必要であれば、PolyBase を使用してください。 1 つのツールのみを使用する場合は (および、データが大規模ではない場合は)、ADF を使用してください。
 
-
-> 
-> 
-
-それでは、いくつかのすばらしい [ADF の例][ADF の例]に関する次の記事に進みましょう。
+ADF を使用してデータをデータ ウェアハウスに読み込む方法については、[このチュートリアル]( /articles/data-factory/load-azure-sql-data-warehouse.md)を参照してください。
 
 ## <a name="integration-services"></a>Integration Services
 Integration Services (SSIS) は、強力で柔軟な抽出、変換、ロード (ETL) ツールであり、複雑なワークフロー、データの変換、およびいくつかのデータ ロード オプションをサポートします。 SSIS を使用して単にデータを Azure に転送したり、より広範囲にわたる移行の一部として転送したりします。
@@ -182,7 +178,7 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 
 <!--Article references-->
 [AZCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy]: ../data-factory/load-azure-sql-data-warehouse.md 
 [ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [スキーマの移行]: sql-data-warehouse-migrate-schema.md

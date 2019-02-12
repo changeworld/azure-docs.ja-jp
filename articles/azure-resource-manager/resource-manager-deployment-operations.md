@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8fee1e29ab3a267d77e4e43beb2c42587da5314d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103861"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770216"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 
@@ -26,7 +26,10 @@ ms.locfileid: "54103861"
 
 監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方の方法を説明します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="portal"></a>ポータル
+
 デプロイ操作を表示するには、次の手順に従います。
 
 1. デプロイに含まれるリソース グループには、最後のデプロイの状態を確認します。 この状態を選択して、詳細を取得することができます。
@@ -53,28 +56,28 @@ ms.locfileid: "54103861"
     ![see events](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. **Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体のステータスを取得できます。 
+1. **Get-AzResourceGroupDeployment** コマンドを使用すると、デプロイ全体のステータスを取得できます。 
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
    または、失敗したデプロイのみの結果をフィルター処理できます。
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
 1. 相関 ID を取得するには、以下を使用します。
 
   ```powershell
-  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、 **Get-AzureRmResourceGroupDeploymentOperation**で確認できます。
+1. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、**Get-AzResourceGroupDeploymentOperation** で確認できます。
 
   ```powershell 
-  Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
+  Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
     このコマンドレットを実行すると、複数の操作がそれぞれ次の形式で返されます。
@@ -92,7 +95,7 @@ ms.locfileid: "54103861"
 1. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
     このコマンドレットを実行すると、失敗したすべての操作がそれぞれ次の形式で返されます。
@@ -115,7 +118,7 @@ ms.locfileid: "54103861"
 1. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
   ```powershell
-  ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
+  ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
   ```
 
     次のような結果が返されます。
@@ -130,9 +133,9 @@ ms.locfileid: "54103861"
   次の PowerShell コマンドを使用すると、ログから情報を取得して、ローカルに保存できます。
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
 
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
   ```
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -157,7 +160,7 @@ ms.locfileid: "54103861"
 
 ## <a name="rest"></a>REST
 
-1. [テンプレート デプロイに関する情報を取得する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get)操作を行って、デプロイに関する情報を取得します。
+1. [テンプレート デプロイに関する情報を取得する](https://docs.microsoft.com/rest/api/resources/deployments)操作を行って、デプロイに関する情報を取得します。
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -180,7 +183,7 @@ ms.locfileid: "54103861"
   }
   ```
 
-2. [すべてのテンプレート デプロイを一覧表示する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List)操作を行って、デプロイに関する情報を取得します。 
+2. [すべてのテンプレート デプロイを一覧表示する](https://docs.microsoft.com/rest/api/resources/deployments)操作を行って、デプロイに関する情報を取得します。 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}

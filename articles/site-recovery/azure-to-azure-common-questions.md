@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449556"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770488"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>一般的な質問:Azure から Azure へのレプリケーション
 
 この記事では、Azure Site Recovery を使用して Azure VM のディザスター リカバリー (DR) を別の Azure リージョンにデプロイするときによくある質問に回答します。 この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 
+## <a name="in-this-article"></a>この記事の内容 
+1.  **[Azure から Azure に関する一般的な質問](#general)** 
+1.  **[レプリケーション](#replication)** 
+1.  **[レプリケーション ポリシー](#replication-policy)** 
+1.  **[マルチ VM 整合性](#multi-vm-consistency)** 
+1.  **[復旧計画](#recovery-plan)** 
+1.  **[再保護とフェールバック](#reprotection-and-failback)** 
+1.  **[セキュリティ](#security)** 
+
+
 ## <a name="general"></a>全般
+
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery の価格
 詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)」をご覧ください。
 
@@ -59,7 +70,7 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 
 いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
-## <a name="replication-policy"></a>Replication policy
+## <a name="replication-policy"></a>レプリケーション ポリシー
 
 ### <a name="what-is-a-replication-policy"></a>レプリケーション ポリシーとは何ですか?
 復旧ポイントの保持履歴と、アプリ整合性スナップショットの頻度の設定が定義されています。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
@@ -198,7 +209,7 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>フェールバックにはどのくらい時間がかかりますか?
 再保護の後、フェールバックにかかる時間は、通常、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーの時間と同程度です。 
 
-## <a name="security"></a>セキュリティ
+## <a name="a-namesecuritysecurity"></a><a name="security">セキュリティ
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンでの実行内容に関するどのような情報を持つこともありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
 Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けており、SOC2 および FedRAMP JAB の評価が進行中です。

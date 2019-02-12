@@ -99,7 +99,7 @@ ms.locfileid: "55243642"
    https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    ```
 
-   | パラメーター | 説明 |
+   | パラメーター | Description |
    | --- | --- |
    | SubscriptionID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
    | GalleryItemUri |ストレージに既にアップロードされた、ギャラリー パッケージの BLOB URI。 |
@@ -129,7 +129,7 @@ ms.locfileid: "55243642"
 
 ### <a name="identity-information"></a>ID 情報
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | Name |X |String |[A-Za-z0-9]+ | |
 | Publisher |X |String |[A-Za-z0-9]+ | |
@@ -137,7 +137,7 @@ ms.locfileid: "55243642"
 
 ### <a name="metadata"></a>Metadata
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
 | PublisherDisplayName |X |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
@@ -166,7 +166,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 
 各 Marketplace アイテムには、追加コンテンツへのさまざまなリンクを含めることができます。 これらのリンクは、次の名前と URI の一覧として指定されます。
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大 64 文字 | |
 | Uri |X |URI | | |
@@ -175,7 +175,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 
 前述のメタデータに加えて、Marketplace 作成者は次の形式でカスタムのキー/値のペアでデータを指定することができます。
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大 25 文字 | |
 | Value |X |String |最大 30 文字 | |

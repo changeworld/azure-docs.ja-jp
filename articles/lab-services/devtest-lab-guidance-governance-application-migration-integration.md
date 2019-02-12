@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4bab3413b3e3cfcf1972b6cf721120d95851f7cd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978617"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498201"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -62,9 +62,9 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
-- [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [概要:Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
 - [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [イメージ ファクトリ – パート 3:カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
@@ -72,7 +72,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>質問
 開発用とテスト用の仮想マシンがパブリック インターネットに接続できないようにするにはどうすればよいですか。 ネットワーク構成の設定に推奨されるパターンはありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 はい。 受信トラフィックと送信トラフィックの 2 つの側面を考慮する必要があります。
 
 **受信トラフィック** – 仮想マシンがパブリック IP アドレスを持っていない場合、その仮想マシンにはインターネットから到達できません。 ユーザーがパブリック IP アドレスを作成できないように、サブスクリプション レベルのポリシーを設定するのが、一般的なアプローチです。
@@ -89,7 +89,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>質問
 どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 VM で既存のインフラストラクチャとやりとりする必要がある場合は、DevTest Labs 環境内の既存の仮想ネットワークの使用を検討する必要があります。 さらに、ExpressRoute を使用する場合は、サブスクリプションで割り当てられている IP アドレス空間がフラグメント化しないように、VNet/サブネットの量を最小限に抑えることが必要な場合があります。 また、ここでは VNET ピアリング パターンの使用も考慮する必要があります (ハブ - スポーク モデル)。 この方法では、特定のリージョン内のサブスクリプション間で VNET/サブネット通信できますが、リージョンをまただピアリングは将来の Azure ネットワークで可能になります。
 
 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 ただし、サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-subscription-service-limits.md)があることに注意してください。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。

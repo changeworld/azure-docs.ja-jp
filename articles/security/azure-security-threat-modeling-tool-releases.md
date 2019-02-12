@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 322e3d08812a75f67995c1e29ae40f168d56869c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c8a852e4e69ccfed0e8210bf6872c891b017a046
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297125"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496638"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool のリリース
 
@@ -36,9 +36,9 @@ Microsoft Threat Modeling Tool は現在、Windows 用に無料で[クリック�
 
 ## <a name="release-notes"></a>リリース ノート
 
+- [Microsoft Threat Modeling Tool GA リリース バージョン 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) - 1/29/2019
+- [Microsoft Threat Modeling Tool GA リリース バージョン 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) - 11/01/2018
 - [Microsoft Threat Modeling Tool GA リリース バージョン 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) - 9/12/2018
-- [Microsoft Threat Modeling Tool 更新プログラム リリース バージョン 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) - 11/01/2018
-- [Microsoft Threat Modeling Tool 更新プログラム リリース バージョン 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) - 1/29/2019
 
 ## <a name="next-steps"></a>次の手順
 
