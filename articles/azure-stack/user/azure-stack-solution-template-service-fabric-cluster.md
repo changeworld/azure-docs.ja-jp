@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351851"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248046"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -55,7 +56,7 @@ Service Fabric クラスターをデプロイするには、Service Fabric ク�
 > [!IMPORTANT]  
 > Service Fabric で使用するシークレットは、PowerShell を使用して KeyVault に追加する必要があります。 ポータルは使用しないでください。  
 
-KeyVault を作成してそこに "*クラスター証明書*" を追加するには、以下のスクリプトを使用します  (「[前提条件](#prerequisites)」を参照してください)。このスクリプトを実行する前に、サンプル スクリプトを確認し、前述のパラメーターを実際の環境に合わせて更新してください。 また、このスクリプトでは、Azure Resource Manager テンプレートに渡す必要のある値が出力されます。 
+KeyVault を作成してそこに "*クラスター証明書*" を追加するには、以下のスクリプトを使用します  (「[前提条件](#prerequisites)」を参照してください。)このスクリプトを実行する前に、サンプル スクリプトを確認し、前述のパラメーターを実際の環境に合わせて更新してください。 また、このスクリプトでは、Azure Resource Manager テンプレートに渡す必要のある値が出力されます。 
 
 > [!TIP]  
 > このスクリプトを正常に実行するためには、Compute、Network、Storage、KeyVault の各サービスを含んだパブリック オファーが必要です。 
@@ -136,7 +137,7 @@ KeyVault を作成してそこに "*クラスター証明書*" を追加する�
 
 1. *[セキュリティ]* ページには、[Azure KeyVault の作成](#add-a-secret-to-key-vault)とシークレットのアップロードによって得られた値を追加します。
 
-   *[Admin Client Certificate Thumbprint]\(管理用クライアント証明書の拇印\)* には、"*管理用クライアント証明書*" の拇印を入力します  ([前提条件](#prerequisites)を参照してください)。
+   *[Admin Client Certificate Thumbprint]\(管理用クライアント証明書の拇印\)* には、"*管理用クライアント証明書*" の拇印を入力します  (「[前提条件](#prerequisites)」を参照してください。)
    
    - [ソース Key Vault]: スクリプトの実行結果から得られる *keyVault id* 文字列全体を指定します。 
    - [Cluster Certificate URL]\(クラスター証明書 URL\): スクリプトの実行結果から得られる *Secret Id* の URL 全体を指定します。 
@@ -210,7 +211,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
 
 1. 環境変数の順序を変更したら、PowerShell を再起動し、次の PowerShell スクリプトを実行して Service Fabric クラスターにアクセスします。
 
-   ````PowerShell  
+   ```PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 
@@ -221,8 +222,11 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
     0272251171BA32CEC7938A65B8A6A553AA2D3283 \`
 
     -StoreLocation CurrentUser -StoreName My -Verbose
-   ````
+   ```
    
    > [!NOTE]  
    > スクリプトでは、クラスター名の前に *https://* を付けません。 ポート 19000 は必須です。
- 
+
+## <a name="next-steps"></a>次の手順
+
+[Kubernetes を Azure Stack にデプロイする](azure-stack-solution-template-kubernetes-deploy.md)

@@ -106,8 +106,8 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=redis-cache
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.rediscache
-  - name: Azure CLI プレビュー
+    href: /powershell/module/az.rediscache
+  - name: Azure CLI
     href: /cli/azure/redis
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.redis
@@ -135,9 +135,9 @@ items:
     href: https://www.youtube.com/results?search_query=azure+redis+cache
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc
-ms.openlocfilehash: fe23f0058eb6921fd1a6321c5e28bd7b5e1d3c45
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: cab487bbd862e79f96ea8901760ad9757b248279
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245890"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100399"
