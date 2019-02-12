@@ -132,7 +132,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval. 時間間隔を変更してみるか、別のワークスペースを選択してください"。
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval. Try changing the time interval or select a different workspace. (選択した時間内のデータがこのワークスペースで見つかりませんでした。時間間隔を変更してみるか、別のワークスペースを選択してください。)"
 
 次の方法を試してください。
 - 上部のバーで期間を変更します。

@@ -151,8 +151,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| いいえ。 オンプレミスでデプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
-| いいえ。 Azure portal で構成する Workday to AD User Provisioning アプリの数 | 1 |
+| オンプレミスで デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
+| オンプレミスで 構成する Workday to AD User Provisioning アプリの数 | 1 |
 
   ![シナリオ 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -162,8 +162,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| いいえ。 オンプレミスでデプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
-| いいえ。 Azure portal で構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
+| オンプレミスで デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
+| オンプレミスで 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
 
   ![シナリオ 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -173,8 +173,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| いいえ。 オンプレミスでデプロイするプロビジョニング エージェントの数 | 1 つの分離された AD フォレストあたり 3 |
-| いいえ。 Azure portal で構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
+| オンプレミスで デプロイするプロビジョニング エージェントの数 | 1 つの分離された AD フォレストあたり 3 |
+| オンプレミスで 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
 
   ![シナリオ 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
