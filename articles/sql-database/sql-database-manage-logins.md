@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7cb2e4214e868bdf9f585d6b0f4468a6c8375191
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459234"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754015"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -49,13 +49,13 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
 - これらのアカウントは、`dbo` ユーザーとしてユーザー データベースにアクセスし、ユーザー データベースに対するすべてのアクセス許可を持ちます  (ユーザー データベースの所有者も、`dbo` ユーザーとしてデータベースにアクセスします)。 
 - `master` データベースを `dbo` ユーザーとして入力しないでください。master にはアクセス許可の制限があります。 
 - 標準 SQL Server `sysadmin` 固定サーバー ロールのメンバーでは**ありません**。このロールは SQL Database では使用できません。  
-- データベース、ログイン、master のユーザー、およびサーバーレベルのファイアウォール規則を作成、変更、削除できます。
+- データベース、ログイン、master のユーザー、およびサーバー レベルの IP ファイアウォール規則を作成、変更、削除できます。
 - `dbmanager` ロールと `loginmanager` ロールに対して、メンバーの追加と削除を実行できます。
 - `sys.sql_logins` システム テーブルを表示できます。
 
 ### <a name="configuring-the-firewall"></a>ファイアウォールの構成
 
-個々の IP アドレスまたは範囲に対してサーバーレベルのファイアウォールを構成すると、**SQL サーバー管理者**と **Azure Active Directory 管理者**は、master データベースとすべてのユーザー データベースに接続できます。 初期状態のサーバー レベルのファイアウォールは、[PowerShell](sql-database-powershell-samples.md) または [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) を使用して、[Azure Portal](sql-database-get-started-portal.md) で構成できます。 接続が確立されると、[Transact-SQL](sql-database-configure-firewall-settings.md) を使用して、サーバー レベルのファイアウォール規則を追加で構成することもできます。
+個々の IP アドレスまたは範囲に対してサーバーレベルのファイアウォールを構成すると、**SQL サーバー管理者**と **Azure Active Directory 管理者**は、master データベースとすべてのユーザー データベースに接続できます。 初期状態のサーバー レベルのファイアウォールは、[PowerShell](sql-database-powershell-samples.md) または [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) を使用して、[Azure Portal](sql-database-single-database-get-started.md) で構成できます。 接続が確立されると、[Transact-SQL](sql-database-configure-firewall-settings.md) を使用して、サーバー レベルの IP ファイアウォール規則を追加で構成することもできます。
 
 ### <a name="administrator-access-path"></a>Administrator access path
 
@@ -67,7 +67,7 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>SQL Server Management Studio を使用したデータベースへの接続
 
-サーバー、データベース、サーバー レベルのファイアウォール規則の作成や、SQL Server Management Studio を使用したデータベースの照会に関するチュートリアルについては、[Azure Portal と SQL Server Management Studio を通じた Azure SQL Database のサーバー、データベース、ファイアウォール規則の使用](sql-database-get-started-portal.md)に関するページを参照してください。
+サーバー、データベース、サーバー レベルの IP ファイアウォール規則の作成や、SQL Server Management Studio を使用したデータベースの照会に関するチュートリアルについては、「[Azure portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる](sql-database-single-database-get-started.md)」をご覧ください。
 
 > [!IMPORTANT]
 > 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。

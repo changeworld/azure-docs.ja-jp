@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473811"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822138"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -57,7 +57,7 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**[診断構成]**、**[メトリック]**、**[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**診断構成****、** > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
 
 特定のメトリックのデータがない場合は、**[診断構成]**、**[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
@@ -105,7 +105,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 
 解決方法:診断構成を修正し、診断を再インストールします。
 
-ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「[Azure 診断が起動しない](#azure-diagnostics-is-not-starting)」の手順に従ってください。
+ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「Azure 診断が起動しない」の手順に従ってください。
 
 プロセスが実行されている場合、「[データがローカルでキャプチャされているか](#is-data-getting-captured-locally)」に進み、そこの手順に従ってください。
 
@@ -119,7 +119,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 - **パフォーマンス カウンター**:perfmon を開き、カウンターを確認します。
 
 - **トレース ログ**:VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 https://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
-トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
+トレース ログが生成されていない場合、「トレース ログが見つからない場合 (詳細)」をご覧ください。
 
 - **ETW トレース**:VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
@@ -127,13 +127,13 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 
 #### <a name="is-data-getting-captured-locally"></a>データはローカルでキャプチャされているか
 次に、データがローカルでキャプチャされていることを確認します。
-データは、[診断データのローカル ストア](#log-artifacts-path)の `*.tsf` ファイルにローカルに保存されます。 ログは、種類ごとに異なる `.tsf` ファイルに収集されます。 名前は、Azure Storage のテーブル名に類似しています。
+データは、診断データのローカル ストアの `*.tsf` ファイルにローカルに保存されます。 ログは、種類ごとに異なる `.tsf` ファイルに収集されます。 名前は、Azure Storage のテーブル名に類似しています。
 
 たとえば、`Performance Counters` は `PerformanceCountersTable.tsf` で収集されます。 イベント ログは `WindowsEventLogsTable.tsf` で収集されます。 「[ローカル ログの抽出](#local-log-extraction)」の手順に従って、ローカルの収集ファイルを開き、ファイルがディスク上で収集されていることを確認します。
 
 ログがローカルで収集されておらず、ホストがデータを生成していることを確認済みの場合は、構成に問題がある可能性があります。 構成を注意深く見直します。
 
-MonitoringAgent [MaConfig.xml](#log-artifacts-path) に生成された構成も確認します。 関連ログ ソースについて説明するセクションがあることを確認します。 次に、診断構成と監視エージェント構成の間の変換で失われていないことを確認します。
+MonitoringAgent MaConfig.xml に生成された構成も確認します。 関連ログ ソースについて説明するセクションがあることを確認します。 次に、診断構成と監視エージェント構成の間の変換で失われていないことを確認します。
 
 #### <a name="is-data-getting-transferred"></a>データは転送されているか
 ローカルでキャプチャされていることを確認済みのデータがストレージ アカウントに表示されない場合、次の手順に従ってください。
@@ -142,10 +142,10 @@ MonitoringAgent [MaConfig.xml](#log-artifacts-path) に生成された構成も�
 
 - 指定したストレージ アカウントが正しいことを確認してください。 コンポーネントによるパブリック ストレージのエンドポイントへのアクセスがネットワーク制限で禁止されていないことを確認してください。 そのための方法の 1 つとして、マシンにリモート アクセスし、同じストレージ アカウントに何らかの書き込みを行います。
 
-- 最後に、監視エージェントによって報告されたエラーを確認できます。 監視エージェントは、[診断データのローカル ストア](#log-artifacts-path)にある `maeventtable.tsf` にそのログを書き込みます。 「[ローカル ログの抽出](#local-log-extraction)」セクションにある方法でこのファイルを開きます。 ローカル ファイルの読み込みやストレージへの書き込みで発生したエラーを示す `errors` がないか探してみてください。
+- 最後に、監視エージェントによって報告されたエラーを確認できます。 監視エージェントは、診断データのローカル ストアにある `maeventtable.tsf` にそのログを書き込みます。 「[ローカル ログの抽出](#local-log-extraction)」セクションにある方法でこのファイルを開きます。 ローカル ファイルの読み込みやストレージへの書き込みで発生したエラーを示す `errors` がないか探してみてください。
 
 ### <a name="capturing-and-archiving-logs"></a>ログのキャプチャ/アーカイブ
-サポートに問い合わせることを検討している場合、最初にマシンのログを収集するように求められることがあります。 この作業を自分で行うことで時間を節約できます。 [ログ コレクション ユーティリティ パス](#log-artifacts-path)で `CollectGuestLogs.exe` ユーティリティを実行します。 すべての関連 Azure ログを含む .zip ファイルが同じフォルダーに生成されます。
+サポートに問い合わせることを検討している場合、最初にマシンのログを収集するように求められることがあります。 この作業を自分で行うことで時間を節約できます。 ログ コレクション ユーティリティ パスで `CollectGuestLogs.exe` ユーティリティを実行します。 すべての関連 Azure ログを含む .zip ファイルが同じフォルダーに生成されます。
 
 ## <a name="diagnostics-data-tables-not-found"></a>診断データ テーブルが見つからない
 ETW イベントを保持する Azure Storage 内のテーブルの名前には、次のコードを使います。
@@ -213,7 +213,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>診断拡張機能の構成を確認する方法
 拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](http://resources.azure.com) に移動し、Azure 診断拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
 
-または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、[ログ アーティファクト パス セクション](#log-artifacts-path)にあります。
+または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
 
 どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7156042243b1ba28cea712dc3722600b9fc46c42
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360642"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490671"
 ---
 # <a name="what-is-azure-backup"></a>Azure Backup とは
 

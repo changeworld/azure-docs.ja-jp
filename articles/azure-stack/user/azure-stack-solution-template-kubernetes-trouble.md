@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237853"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752298"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Kubernetes の Azure Stack へのデプロイのトラブルシューティング
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack の切断されたシナリオは、プレビューでは現在サポートされていません。
 
 以下の記事では、Kubernetes クラスターのトラブルシューティングについて説明します。 デプロイのアラートを確認し、デプロイに必要な要素によってデプロイの状態を確認することができます。 場合によっては、Azure Stack または Kubernetes をホストする Linux VM からデプロイ ログを収集する必要があります。 また、場合によっては、管理エンドポイントからログを取得するために Azure Stack 管理者と連携する必要があります。
 

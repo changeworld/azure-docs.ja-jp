@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 93894f9c45ac8b2cfcec23cf6a9ccd4d8e6f6824
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7efa2f19aedfbd00ccced8b755d3b02847b31444
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121726"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508608"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
@@ -60,15 +60,15 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | [説明] | 
    |---------|-------|-------------| 
-   | **名前** | attachmentstorageacct | ストレージ アカウントの名前 | 
+   | **Name** | attachmentstorageacct | ストレージ アカウントの名前 | 
    | **デプロイ モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **アカウントの種類** | 汎用 | [ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **場所** | 米国西部 | ストレージ アカウントに関する情報の保存先となるリージョン | 
-   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[レプリケーション](../storage/common/storage-introduction.md#replication)」を参照してください。 | 
+   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy-lrs.md)」を参照してください。 | 
    | **パフォーマンス** | 標準 | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
    | **安全な転送が必須** | Disabled | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
+   | **リソース グループ** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
    | **仮想ネットワークの構成** | Disabled | このチュートリアルでは **[無効]** のままにしてください。 | 
    |||| 
 
@@ -231,9 +231,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
-   | **名前** | LA-ProcessAttachment | ロジック アプリの名前 | 
+   | **Name** | LA-ProcessAttachment | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
-   | **[リソース グループ]** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
+   | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
    | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
    | **Log Analytics** | オフ | このチュートリアルでは、**[オフ]** を選択します。 | 
    |||| 
@@ -267,7 +267,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | チェックするメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
-      | **頻度** | [分] | チェックの間隔に使う時間の単位 | 
+      | **頻度** | 分 | チェックの間隔に使う時間の単位 | 
       |  |  |  | 
   
    2. **[詳細オプションを表示する]** を選択し、次の設定を指定します。

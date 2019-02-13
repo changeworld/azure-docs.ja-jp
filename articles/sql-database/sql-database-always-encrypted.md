@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: a54fa92e248cb75be315327f7389e62904c7c777
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231721"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754874"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: 機密データを保護し、Windows 証明書ストアに暗号化キーを格納する
 
@@ -47,7 +47,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]** > **[データ + ストレージ]** > **[SQL データベース]** をクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-single-database-get-started.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 
@@ -98,7 +98,7 @@ SSMS に用意されているウィザードを使用すると、CMK、CEK、お
    
     ![[列の暗号化]](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Always Encrypted ウィザードには、**[列の選択]**、**[マスター キーの構成]** (CMK)、**[検証]**、および **[概要]** セクションがあります。
+Always Encrypted ウィザードには、**[列の選択]**、**[マスター キー構成]** (CMK)、**[検証]**、および **[まとめ]** のセクションがあります。
 
 ### <a name="column-selection"></a>列の選択
 **[説明]** ページの **[次へ]** をクリックして、**[列の選択]** ページを開きます。 このページで、暗号化する列、 [暗号化の種類、使用する列暗号化キー (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) を選択します。

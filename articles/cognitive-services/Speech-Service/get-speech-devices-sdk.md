@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 875240b779f05c1b13f71bf2133b9abfaa209239
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8861b581c0e02bb78d80817cb2242a38e8aac40
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223359"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733469"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK を取得する
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 登録時に指定したメール アドレスを使用して、以下の手順で Azure AD に参加します。 このプロセスによって、Speech Devices SDK の[ダウンロード サイト](https://shares.datatransfer.microsoft.com/)へのアクセスが許可されます。
 
-1. 受信した電子メール メッセージに記載されている **[開始]** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、サインインするように求められ、手順 8. に進むことができます。
+1. 受信した電子メール メッセージに記載されている **[開始]** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、サインインするように求められ、手順 7 に進むことができます。
 
 2. 表示されるブラウザー ウィンドウで **[次へ]** を選択します。
 

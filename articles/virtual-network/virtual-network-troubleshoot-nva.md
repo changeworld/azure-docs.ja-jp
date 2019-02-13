@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 0d5b345936f6c931f4210e6dc50f94544a52f571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678442"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700572"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -40,7 +40,7 @@ Microsoft Azure でサードパーティのネットワーク仮想アプライ�
 - NVA から直接通信する仮想ネットワークのサブネット上の UDR
 - NVA 内のテーブルとルールのルーティング (例: NIC1 から NIC2)
 - ネットワーク トラフィックの送受信を確認するための NVA NIC のトレース
-- Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
+- Standard SKU とパブリック IP を使用するときは、NSG が作成されていて、NVA へのトラフィックのルーティングを許可する明示的なルールが存在する必要があります。
 
 ## <a name="basic-troubleshooting-steps"></a>基本的なトラブルシューティングの手順
 
@@ -78,7 +78,7 @@ PowerShell の使用
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
 
-**Standard SKU と Pubilc IP の使用時に NVA を確認する** Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
+**Standard SKU とパブリック IP の使用時に NVA を確認する** Standard SKU とパブリック IP を使用するときは、NSG が作成されていて、NVA へのトラフィックを許可する明示的なルールが存在する必要があります。
 
 **トラフィックを NVA にルーティングできるかどうかを確認する**
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559044"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698242"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Azure Database for PostgreSQL によるビジネス継続性の概要
 
@@ -49,6 +49,6 @@ Azure Database for PostgreSQL で提供されるビジネス継続性機能に�
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの pg_dump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-- 自動バックアップについて詳しくは、[Azure Database for PostgreSQL でのバックアップ](concepts-backup.md)に関するページをご覧ください。 
-- Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
-- Azure CLI を使用して特定の時点に復元する方法については、 [CLI を使用したデータベースのポイントインタイム リストア](howto-restore-server-cli.md)に関するページをご覧ください。
+- [Azure Database for PostgreSQL での自動バックアップ](concepts-backup.md)の詳細を確認する。 
+- [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。
+- [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認する。

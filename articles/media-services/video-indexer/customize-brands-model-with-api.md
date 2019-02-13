@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827586"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734319"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 
@@ -26,17 +26,17 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="create-a-brand"></a>ブランドを作成する
 
-新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。 
+新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。
 
 ### <a name="request-url"></a>要求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
 
-### <a name="request-parameters"></a>要求パラメーター 
+### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
@@ -95,7 +95,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
@@ -117,17 +117,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-a-specific-brand"></a>特定のブランドを取得する
 
-ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。 
+ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="request-url"></a>要求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
 
-### <a name="request-parameters"></a>要求パラメーター 
+### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
@@ -167,14 +167,14 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="update-a-specific-brand"></a>特定のブランドを更新する
 
-ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。 
+ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="request-url"></a>要求 URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
@@ -237,7 +237,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
@@ -270,7 +270,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,7 +297,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
 
 ### <a name="request-parameters"></a>要求パラメーター
@@ -330,14 +330,14 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 指定されたアカウントのブランド モデル設定が更新されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
 
-### <a name="request-url"></a>要求 URL: 
+### <a name="request-url"></a>要求 URL:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
 
-### <a name="request-parameters"></a>要求パラメーター 
+### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|

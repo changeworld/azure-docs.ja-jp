@@ -4,17 +4,17 @@ description: Azure Blueprint を使用して、成果物を作成、定義、デ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315300"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566314"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>ポータルで Azure ブループリントを定義して割り当てる
 
@@ -42,10 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![ブループリントを作成する](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 'MyBlueprint' などの**ブループリントの名前**をブループリントに指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。  **[定義の場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)を選択し、**[選択]** をクリックします。
-
-   > [!NOTE]
-   > ブループリントの定義は、管理グループにのみ保存できます。 最初の管理グループを作成するには、[次の手順](../management-groups/create.md)に従います。
+1. 'MyBlueprint' などの**ブループリントの名前**をブループリントに指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。  **[定義の場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)またはサブスクリプションを選択し、**[選択]** をクリックします。
 
 1. 情報が正しいことを確認します (**[ブループリントの名前]** と **[定義場所]** フィールドは後で変更することはできません)。ページの下部にある **[次へ:成果物]** またはページの上部にある **[成果物]** タブをクリックします。
 
@@ -154,7 +151,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="assign-a-blueprint"></a>ブループリントを割り当てる
 
-ブループリントが発行されたら、サブスクリプションに割り当てることができます。 作成したブループリントを管理グループ階層内のいずれかのサブスクリプションに割り当てます。
+ブループリントが発行されたら、サブスクリプションに割り当てることができます。 作成したブループリントを、管理グループ階層下のいずれかのサブスクリプションに割り当てます。 ブループリントは、サブスクリプションに保存された場合、そのサブスクリプションに対してのみ割り当てることができます。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 

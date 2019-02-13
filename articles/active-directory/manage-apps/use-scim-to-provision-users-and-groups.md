@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161768"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732585"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -120,7 +120,7 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 ### <a name="getting-started"></a>Getting Started (概要)
 Azure AD からのプロビジョニング要求を受信できる SCIM エンドポイントを実装する最も簡単な方法は、プロビジョニングするユーザーをコンマ区切り値 (CSV) ファイルに出力するコード サンプルをビルドしてデプロイすることです。
 
-**サンプルの SCIM エンドポイントを作成するには:**
+#### <a name="to-create-a-sample-scim-endpoint"></a>サンプルの SCIM エンドポイントを作成するには
 
 1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) で、コード サンプル パッケージをダウンロードします。
 2. パッケージを解凍し、Windows コンピューターの C:\AzureAD-BYOA-Provisioning-Samples\ などの場所に配置します。
@@ -142,7 +142,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 8. **[Windows の設定] の [ネットワークとインターネット]** 設定で、**[Windows ファイアウォール]、[詳細設定]** の順に選択し、ポート 9000 への入力方向のアクセスを許可する**受信規則**を作成します。
 9. Windows コンピューターがルーターの内側にある場合は、インターネットに公開されているルーターのポート 9000 と Windows コンピューターのポート 9000 の間でネットワーク アクセス変換を実行するようにルーターを構成する必要があります。 この構成は、Azure AD がクラウド上にあるこのエンドポイントにアクセスするために必要です。
 
-**Azure AD にサンプルの SCIM エンドポイントを登録するには:**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Azure AD にサンプルの SCIM エンドポイントを登録するには
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
 2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。

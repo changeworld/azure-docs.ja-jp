@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f83a0cf97acfd0bed990cc832ac08eb23c29ef1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434460"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744519"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hybrid Runbook Worker のトラブルシューティング
 
@@ -46,7 +46,7 @@ Runbook は、3 回実行を試みると、短時間中断されます。 Runboo
 
 * Runbook がローカル リソースで認証できない
 
-* Hybrid Runbook Worker の機能を実行するように構成されているコンピューターがハードウェアの最小要件を満たしている
+* Hybrid Runbook Worker の機能を実行するように構成されているコンピューターが、ハードウェアの最小要件を満たしていない。
 
 #### <a name="resolution"></a>解決策
 
@@ -81,14 +81,23 @@ At line:3 char:1
 
 Hybrid Runbook Worker が Azure VM の場合は、[Azure リソース用のマネージド ID](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) を代わりに使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を行うことで、認証を簡素化できます。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、[Export-RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) Runbook を実行するための手順を参照してください。
 
-## <a name="linux"></a> Linux
+## <a name="linux"></a>Linux
 
 Linux Hybrid Runbook Worker は、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、および状態の報告を行うために OMS エージェント for Linux に依存しています。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
 
 ### <a name="oms-agent-not-running"></a>シナリオ:OMS エージェント for Linux が実行されていない
 
+#### <a name="issue"></a>問題
 
-OMS エージェント for Linux が実行されていない場合、Linux Hybrid Runbook Worker は Azure Automation と通信できません。 次のコマンドを入力して、このエージェントが実行されていることを確認します: `ps -ef | grep python`。 次のように、**nxautomation** ユーザー アカウントの python プロセスが出力されます。 Update Management または Azure Automation ソリューションが有効でない場合、次のどのプロセスも実行されません。
+OMS エージェント for Linux が実行されていない
+
+#### <a name="cause"></a>原因
+
+OMS エージェント for Linux が実行されていない場合、Linux Hybrid Runbook Worker は Azure Automation と通信できません。 さまざまな理由で、エージェントが実行されていない可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+ 次のコマンドを入力して、このエージェントが実行されていることを確認します: `ps -ef | grep python`。 次のように、**nxautomation** ユーザー アカウントの python プロセスが出力されます。 Update Management または Azure Automation ソリューションが有効でない場合、次のどのプロセスも実行されません。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -115,7 +124,7 @@ OMS エージェント for Linux が実行されていない場合、次のコ�
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
 Windows Hybrid Runbook Worker は、Automation アカウントと通信して worker の登録、Runbook ジョブの受信、および状態の報告を行うために Microsoft Monitoring Agent に依存しています。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
 

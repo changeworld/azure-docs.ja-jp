@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5bbe0709f89ca198b0571526291f700c99e9e59f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966828"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700742"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
@@ -51,8 +51,8 @@ Azure リージョンおよびサブスクリプションでパブリック IP �
 
 |リソース|シナリオ|手順|
 |---|---|---|
-|Virtual Machines| プレフィックスのパブリック IP アドレスを、Azure の仮想マシンに関連付けると、ファイアウォールで IP アドレスをホワイトリストに登録するときの管理オーバーヘッドが軽減されます。 単一のファイアウォール規則でプレフィックス全体をホワイトリストに簡単に登録できます。 Azure で仮想マシンをスケーリングするときは、同じプレフィックスから IP アドレスを関連付けることで、コスト、時間、管理オーバーヘッドを節約できます。| プレフィックスから仮想マシンに IP アドレスを関連付けるには: 1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. [仮想マシンのネットワーク インターフェイスに IP アドレスを関連付けます。](virtual-network-network-interface-addresses.md#add-ip-addresses)
-| ロード バランサー | プレフィックスのパブリック IP アドレスを、ロード バランサーのフロントエンド IP 構成またはアウトバウンド規則に関連付けると、Azure のパブリック IP アドレス空間が単純化されます。 パブリック IP アドレス プレフィックスによって定義されている連続した IP アドレスの範囲から発信されるように送信接続をグルーミングすることで、シナリオを単純化できます。 | プレフィックスからロード バランサーに IP アドレスを関連付けるには: 1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. ロード バランサーを作成するときに、ロード バランサーのフロントエンド IP アドレスとして、上の手順 2 で作成した IP アドレスを選択または更新します。 |
+|Virtual Machines| プレフィックスのパブリック IP アドレスを、Azure の仮想マシンに関連付けると、ファイアウォールで IP アドレスをホワイトリストに登録するときの管理オーバーヘッドが軽減されます。 単一のファイアウォール規則でプレフィックス全体をホワイトリストに簡単に登録できます。 Azure で仮想マシンをスケーリングするときは、同じプレフィックスから IP アドレスを関連付けることで、コスト、時間、管理オーバーヘッドを節約できます。| プレフィックスから仮想マシンに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. [仮想マシンのネットワーク インターフェイスに IP アドレスを関連付けます。](virtual-network-network-interface-addresses.md#add-ip-addresses)
+| ロード バランサー | プレフィックスのパブリック IP アドレスを、ロード バランサーのフロントエンド IP 構成またはアウトバウンド規則に関連付けると、Azure のパブリック IP アドレス空間が単純化されます。 パブリック IP アドレス プレフィックスによって定義されている連続した IP アドレスの範囲から発信されるように送信接続をグルーミングすることで、シナリオを単純化できます。 | プレフィックスからロード バランサーに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. ロード バランサーを作成するときに、ロード バランサーのフロントエンド IP アドレスとして、上の手順 2 で作成した IP アドレスを選択または更新します。 |
 | Azure Firewall | 送信 SNAT に対してプレフィックスのパブリック IP アドレスを使用できます。 これは、すべての送信仮想ネットワーク トラフィックが [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のパブリック IP アドレスに変換されることを意味します。 この IP アドレスは事前に決定されたプレフィックスのものなので、Azure でのパブリック IP アドレスのフットプリントがどのようになるかが、事前に非常に簡単にわかります。 | 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. [Azure Firewall をデプロイする](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ときに、前にプレフィックスから割り当てた IP アドレスを選択します。|
 
 ## <a name="constraints"></a>制約

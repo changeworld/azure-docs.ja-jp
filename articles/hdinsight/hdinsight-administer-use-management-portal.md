@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: dd94330835c52b27c61c484d44991152d092fbe7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632027"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811700"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用した HDInsight での Windows ベースの Apache Hadoop クラスターの管理
 
@@ -120,7 +120,7 @@ HDInsight は、広範囲の Apache Hadoop コンポーネントで動作しま�
    * **[データの作成日]**。
    * **[オペレーティング システム]**:**[Windows]** または **[Linux]**。
    * **[タイプ]**:Hadoop、HBase、Storm、Spark。
-   * **[バージョン]**。  [HDInsight のバージョン](hdinsight-component-versioning.md)
+   * **[バージョン]**。 [HDInsight のバージョン](hdinsight-component-versioning.md)
    * **サブスクリプション**:サブスクリプションの名前。
    * **[サブスクリプション ID]**。
    * **[プライマリ データ ソース]**。 既定の Hadoop ファイル システムとして使用される Azure BLOB ストレージ アカウント。
@@ -203,7 +203,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>クラスターのユーザー名の変更
-HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。 HDInsight クラスターのユーザー アカウントは、作成プロセスで作成されます。 RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。 「[リモート デスクトップを有効にする](#connect-to-hdinsight-clusters-by-using-rdp)」を参照してください。
+HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。 HDInsight クラスターのユーザー アカウントは、作成プロセスで作成されます。 RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。 リモート デスクトップを有効にする方法に関するセクションを参照してください。
 
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 

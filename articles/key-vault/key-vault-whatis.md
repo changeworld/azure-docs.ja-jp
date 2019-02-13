@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: f8826f0c0cb63068313a570b050531511126dbc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: db2e2e80ecc98eba0f1bba18abad8b561b16036c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422925"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745862"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -82,5 +82,8 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 ## <a name="next-steps"></a>次の手順
 
-[コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法について学ぶ
-<!--Image references--> [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png Azure Key Vault はほとんどのリージョンで利用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
+[コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法を学習する
+
+<!--Image references-->
+[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。

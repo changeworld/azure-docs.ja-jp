@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: e9baf8c838da2201fbb588d278cbf1ce5bbe6354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/04/2019
+ms.openlocfilehash: 041d9b76c899c33e551b57bbbf42d0fa82b5e537
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713321"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692921"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>チュートリアル: DMS を使用してオフラインで SQL Server を Azure SQL Database Managed Instance に移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) にデータベースを移行することができます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
@@ -107,7 +107,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、**[対象サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、**[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、**[ターゲット サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、**[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。
 
    ![DMS のプロジェクトを作成する](media/tutorial-sql-server-to-managed-instance/dms-create-project2.png)
 
@@ -131,6 +131,9 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 4. **[ソース データベースの選択]** 画面で、移行する **Adventureworks2012** データベースを選択します。
 
    ![ソース データベースを選択する](media/tutorial-sql-server-to-managed-instance/dms-source-database1.png)
+
+    > [!IMPORTANT]
+    > SQL Server Integration Services (SSIS) を使用する場合、DMS では現在、SQL Server から Azure SQL Database Managed Instance への SSIS プロジェクト/パッケージ (SSISDB) 用のカタログ データベースの移行がサポートされていません。 ただし、Azure Data Factory (ADF) に SSIS をプロビジョニングし、Azure SQL Database Managed Instance によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
 5. **[保存]** を選択します。
 

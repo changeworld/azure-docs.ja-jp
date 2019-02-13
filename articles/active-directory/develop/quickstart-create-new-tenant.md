@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 02/05/2019
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0ffde84a39ef2955f14af66a05195e35109d41bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101262"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692139"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
 
@@ -64,8 +64,11 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 Azure AD テナントがない場合、または開発用の新しいテナントを作成したい場合は、[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)に従ってください。 新しいテナントを作成するには、次の情報を提供する必要があります。
 
 - **組織名**
-- **初期ドメイン** - これは *. onmicrosoft.com の一部となります。 ドメインは後でカスタマイズできます。 
+- **初期ドメイン** - これは *. onmicrosoft.com の一部となります。 ドメインは後でカスタマイズできます。
 - **国または地域**
+
+> [!NOTE]
+> テナントに名前を付けるときは、英数字を使用してください。 特殊文字は使用できません。 名前は 256 文字を超えてはいけません。
 
 ## <a name="social-and-local-accounts"></a>ソーシャル アカウントとローカル アカウント
 

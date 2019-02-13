@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382915"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730936"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -29,7 +29,7 @@ Webhook は、Azure Event Grid からイベントを受信する多数ある方�
 
 Webhook をサポートする他の多くのサービスと同様に、Event Grid を使用するには、Webhook エンドポイントへのイベントの配信を開始する前に、そのエンドポイントの所有権を証明する必要があります。 この要件により、悪意のあるユーザーはエンドポイントをイベントで氾濫させることができなくなります。 以下に示す 3 つの Azure サービスのいずれかを使用すると、Azure インフラストラクチャはこの検証を自動的に処理します。
 
-* [Event Grid コネクタ](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)を使用した Azure Logic Apps
+* [Event Grid コネクタ](https://docs.microsoft.com/connectors/azureeventgrid/)を使用した Azure Logic Apps
 * [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) を使用した Azure Automation
 * [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用した Azure Functions
 
@@ -50,7 +50,7 @@ Webhook をサポートする他の多くのサービスと同様に、Event Gri
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
 * イベントの eventType プロパティは、`Microsoft.EventGrid.SubscriptionValidationEvent` です。
 * イベントの data プロパティには、ランダムに生成された文字列を持つ `validationCode` プロパティが含まれています。 たとえば、"validationCode: acb13…" のようなプロパティです。
-* API バージョン 2018-05-01-preview を使用する場合、イベント データには `validationUrl` プロパティと、サブスクリプションを手動で検証するための URL も含まれます。
+* イベント データには、`validationUrl` プロパティと、サブスクリプションを手動で検証するための URL も含まれます。
 * 配列には、検証イベントのみが含まれています。 その他のイベントは、検証コードをエコーで返した後、別の要求で送信されます。
 * EventGrid DataPlane SDK には、サブスクリプション検証イベント データとサブスクリプション検証の応答に対応するクラスがあります。
 

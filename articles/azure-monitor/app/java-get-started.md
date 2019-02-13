@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260059"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699324"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [パフォーマンスの問題や例外を検出および診断](../../azure-monitor/app/detect-triage-diagnose.md)したり、アプリケーションで何が実行されているかを追跡する[コードを記述][api]したりすることができます。
+[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [要求の自動的なインストルメント化、依存関係の追跡、パフォーマンス カウンターの収集](auto-collect-dependencies.md#java)、[パフォーマンスの問題と例外の診断](../../azure-monitor/app/detect-triage-diagnose.md)、ユーザーがアプリで行っていることを追跡するための[コードの作成][api]に使用します。 
 
 ![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
 

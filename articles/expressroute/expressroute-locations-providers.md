@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: pareshmu
-ms.openlocfilehash: f01e68a33be767f49c9ec87919c190bebf0b12c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 457eb6335c5a67d381250861a4009225cf04fc25
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152010"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488052"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -173,7 +173,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
-| **アムステルダム** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、Telecom Italia Sparkle、Telia |
+| **アムステルダム** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telia |
 | **ケープタウン** | Teraco | MTN |
 | **シカゴ** | Equinix | Lightower、Windstream |
 | **ダラス** | Equinix、Megaport | Axtel、C3ntro Telecom、Cox Business、Data Foundry、Transtelco |

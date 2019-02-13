@@ -1,6 +1,6 @@
 ---
-title: Azure AD でデバイスのライフサイクルを管理する方法 | Microsoft Docs
-description: デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+title: Azure AD で古いデバイスを管理する方法 | Microsoft Docs
+description: デバイスの紛失、盗難、破損、OS の再インストールなどの理由で、環境には古いデバイスが存在しているのが一般的です。 Azure Active Directory (Azure AD) の登録済みデバイスのデータベースから古いデバイスを削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092179"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493315"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
 ライフサイクルを完了するためには、不要になった時点で登録済みデバイスを登録解除するのが理想的です。 しかし、紛失、盗難、デバイスの破損、OS の再インストールなどの理由で、古いデバイスが環境に存在しているのが一般的です。 実際に管理が必要なデバイスの管理に IT 管理者がリソースを集中できるよう、古いデバイスを削除する方法が必要です。
 

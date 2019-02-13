@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 1698b89cd32fd7fd90a178ece25ee6869c1aa3e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7fa72df04b0507a915a75688b38e26ed0f21e5a5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229695"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486012"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager について
 Azure Traffic Manager は、世界中の Azure リージョン間でサービスへのトラフィックを最適に配分しつつ、高可用性と応答性を実現する DNS ベースのトラフィック ロード バランサーです。
@@ -26,9 +26,9 @@ Azure Traffic Manager は、世界中の Azure リージョン間でサービス
 Traffic Manager は、DNS を使用し、トラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なサービス エンドポイントにクライアント要求を誘導します。 エンドポイントは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Traffic Manager には、さまざまなアプリケーション ニーズと自動フェールオーバー モデルに対応する、さまざまな[トラフィック ルーティング方法](traffic-manager-routing-methods.md)と[エンドポイント監視オプション](traffic-manager-monitoring.md)が用意されています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
 
 >[!NOTE]
-> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。 リージョン内での負荷分散が必要な場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) に関するページをご覧ください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。 リージョン内での負荷分散が必要な場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) に関するページを参照してください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 
-Traffic Manager には、次の機能が含まれています。
+Traffic Managerには、次の機能が用意されています。
 
 ## <a name="increase-application-availability"></a>アプリケーションの可用性の向上
 
@@ -40,7 +40,7 @@ Azure では、クラウド サービスや Web サイトを世界各地に配�
 
 ## <a name="perform-service-maintenance-without-downtime"></a>ダウンタイムなしでのサービス メンテナンスの実行
 
-ダウンタイムを発生させることなく、アプリケーションで定期的なメンテナンスを行うことができます。 メンテナンス中は、Traffic Manager がトラフィックを別のエンドポイントに送信します。
+ダウンタイムを発生させることなく、アプリケーションで定期的なメンテナンスを行うことができます。 メンテナンス中は、Traffic Manager で別のエンドポイントにトラフィックを誘導することができます。
 
 ## <a name="combine-hybrid-applications"></a>ハイブリッド アプリケーションの結合
 
@@ -48,7 +48,7 @@ Traffic Manager は、Azure 以外の外部エンドポイントをサポート�
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>複雑なデプロイのトラフィック分散
 
-[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使用することにより、トラフィック ルーティング方法を組み合わせて、柔軟で洗練されたトラフィック ルーティング スキームを作成し、より大規模で複雑なデプロイのニーズに対応するようスケーリングできます。
+[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使用することにより、複数のトラフィック ルーティング方法を組み合わせて、柔軟で洗練されたトラフィック ルーティング スキームを作成し、より大規模で複雑なデプロイのニーズに対応するようスケーリングできます。
 
 ## <a name="pricing"></a>価格
 

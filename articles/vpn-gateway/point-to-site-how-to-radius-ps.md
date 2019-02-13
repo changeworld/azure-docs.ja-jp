@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 01ce4bb7b48e2f1331ebb57dc503c79b31bcc8b0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200906"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700035"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -148,7 +148,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
  
 * -RadiusServer は名前または IP アドレスで指定できます。 サーバーがオンプレミスに存在する場合に名前を指定すると、VPN ゲートウェイはその名前を解決できない可能性があります。 この場合、サーバーの IP アドレスを指定することをお勧めします。 
 * -RadiusSecret は、RADIUS サーバーで構成したものと一致している必要があります。
-* -VpnCientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
+* -VpnClientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
 
 1. RADIUS シークレットのセキュリティで保護された文字列を作成します。
 
@@ -243,4 +243,4 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="next-steps"></a>次の手順
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。

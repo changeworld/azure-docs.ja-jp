@@ -13,17 +13,17 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 7d622b834cef31552cac60b359cdd8404592eda9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 135189c576c67212dac6afc1388a6ef9fb045346
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255559"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512371"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル:Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、テンプレート ジェネレーター ツール (Yeoman) を使用して、Service Fabric アプリケーションの定義を作成します。 このアプリケーションを使用して、コンテナーを Service Fabric にデプロイすることもできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -227,28 +227,53 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
 
-Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
+Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。 次のコマンドは、5 ノードのクラスターを Azure に作成します。  また、自己署名証明書を作成してキー コンテナーに追加し、証明書を PEM ファイルとしてローカルにダウンロードします。 新しい証明書は、デプロイ時にクラスターをセキュリティで保護す目的で使用されるほか、クライアントの認証にも使用されます。
 
-パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](https://aka.ms/tryservicefabric)。
+```azurecli
+#!/bin/bash
 
-セキュリティで保護されたパーティ クラスターに対する管理操作は、Service Fabric Explorer、CLI、Powershell のいずれかを使用して実行できます。 Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトから PFX ファイルをダウンロードし、ご使用の証明書ストア (Windows または Mac) またはブラウザー本体 (Ubuntu) に証明書をインポートする必要があります。 パーティ クラスターの自己署名証明書についてはパスワードは不要です。
+# Variables
+ResourceGroupName="containertestcluster" 
+ClusterName="containertestcluster" 
+Location="eastus" 
+Password="q6D7nN%6ck@6" 
+Subject="containertestcluster.eastus.cloudapp.azure.com" 
+VaultName="containertestvault" 
+VmPassword="Mypa$$word!321"
+VmUserName="sfadminuser"
 
-PowerShell または CLI で管理操作を実行するには、PFX (PowerShell) または PEM (CLI) が必要となります。 PFX を PEM ファイルに変換するには、次のコマンドを実行してください。
+# Login to Azure and set the subscription
+az login
 
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+az account set --subscription <mySubscriptionID>
+
+# Create resource group
+az group create --name $ResourceGroupName --location $Location 
+
+# Create secure five node Linux cluster. Creates a key vault in a resource group
+# and creates a certficate in the key vault. The certificate's subject name must match 
+# the domain that you use to access the Service Fabric cluster.  
+# The certificate is downloaded locally as a PEM file.
+az sf cluster create --resource-group $ResourceGroupName --location $Location \ 
+--certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject \ 
+--cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName \ 
+--vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
 ```
 
-独自のクラスターの作成については、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページをご覧ください。
+> [!Note]
+> Web フロントエンド サービスは、ポート 80 で受信トラフィックをリッスンする構成になっています。 クラスターの VM および Azure Load Balancer では、ポート 80 が既定で開放されています。
+>
+
+独自のクラスターの作成について詳しくは、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページを参照してください。
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>アプリケーションをクラスターにビルドおよびデプロイする
 
 Service Fabric CLI を使用して、アプリケーションを Azure クラスターにデプロイできます。 Service Fabric CLI がマシンにインストールされていない場合は、[こちら](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli)の指示に従ってインストールしてください。
 
-Azure の Service Fabric クラスターに接続します。 サンプルのエンドポイントは独自のエンドポイントに置き換えてください。 エンドポイントは、次のような完全な URL にする必要があります。
+Azure の Service Fabric クラスターに接続します。 サンプルのエンドポイントは独自のエンドポイントに置き換えてください。 エンドポイントは、次のような完全な URL にする必要があります。  この PEM ファイルは、前もって作成しておいた自己署名証明書です。
 
 ```bash
-sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
 **TestContainer** ディレクトリに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
@@ -257,11 +282,11 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
 ./install.sh
 ```
 
-ブラウザーを開いて､Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
+ブラウザーを開いて､Service Fabric Explorer (http://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
 
 ![Service Fabric Explorer][sfx]
 
-実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
+実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://containertestcluster.eastus.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
 
 ![Voting アプリケーション][votingapp]
 

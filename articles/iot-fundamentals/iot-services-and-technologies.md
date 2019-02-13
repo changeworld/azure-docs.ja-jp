@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288715"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694008"
 ---
-# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>IoT (モノのインターネット) のテクノロジとソリューション: PaaS と SaaS
+# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>モノのインターネット (IoT) テクノロジとソリューション: PaaS と SaaS
 
 Microsoft には、デジタル変換の特典へのアクセスを有効にして、すべての顧客のニーズをサポートするポートフォリオが構築されています。 Azure IoT 製品群は、使用可能な PaaS/SaaS テクノロジとソリューションの概要です。 これには、独自のソリューションをビルドするために使用できる 2 つのパスが表示されます:
 
@@ -58,7 +58,7 @@ Azure IoT Central (SaaS) はフル マネージドの SaaS ソリューション
 
 ### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Azure IoT ソリューション アクセラレータと Azure IoT Central の比較
 
-一般的な [IoT ソリューションアーキテクチャ](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)を実装するため、Azure IoT は、[Azure IoT ソリューション アクセラレータ](/azure/iot-suite)や [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)などの複数のオプションを提供しており、顧客のさまざまな要求のセットのそれぞれに対応しています。
+一般的な [IoT ソリューションアーキテクチャ](/azure/iot-fundamentals/iot-introduction)を実装するため、Azure IoT は、[Azure IoT ソリューション アクセラレータ](/azure/iot-suite)や [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)などの複数のオプションを提供しており、顧客のさまざまな要求のセットのそれぞれに対応しています。
 
 [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、Azure IoT Central と Azure IoT ソリューション アクセラレータの両方によって使用されるコア Azure PaaS です。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
 

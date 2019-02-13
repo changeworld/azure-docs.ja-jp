@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473427"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755171"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -107,7 +107,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 使用するビジネス継続性機能に関係なく、次の操作を行う必要があります。
 
-- サーバー レベルのファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
+- サーバー レベルの IP ファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
 - クライアントとクライアント アプリケーションを、新しいサーバーにリダイレクトする方法を決めます
 - 監査の設定、アラートなど、他の依存関係を文書化します
 
@@ -132,7 +132,7 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 復旧にどちらのメカニズムを使ったとしても、ユーザーおよびアプリケーションの動作を元に戻す前に、次の追加タスクを実行する必要があります。
 
 - クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルのファイアウォール規則が適用されていることを確認する (または [データベース レベルのファイアウォール](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)を使用する)
+- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal)を使用して、適切な規則を有効にする。
 - 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確認する (または [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)
 - 必要に応じて、監査を構成する
 - 必要に応じて、アラートを構成する

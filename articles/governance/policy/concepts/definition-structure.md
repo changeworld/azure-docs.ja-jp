@@ -4,17 +4,17 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296666"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698294"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -46,7 +46,8 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
                     "description": "The list of locations that can be specified when deploying resources",
                     "strongType": "location",
                     "displayName": "Allowed locations"
-                }
+                },
+                "defaultValue": "westus2"
             }
         },
         "displayName": "Allowed locations",
@@ -87,8 +88,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
 > [!NOTE]
-> ポリシーまたはイニシアティブ定義のパラメーター定義は、ポリシーまたはイニシアティブの初期作成時にのみ構成できます。 パラメーター定義を後で変更することはできません。
-> これにより、ポリシーまたはイニシアティブの既存の割り当てが間接的に無効になることを防ぎます。
+> パラメーターは、既存の割り当て済み定義に追加できます。 新しいパラメーターには、**defaultValue** プロパティを含める必要があります。 これにより、ポリシーまたはイニシアティブの既存の割り当てが間接的に無効になることを防ぎます。
 
 たとえば、リソースをデプロイできる場所を制限するポリシーを定義できます。
 ポリシーを作成するときに、次のパラメーターを宣言します。
@@ -101,7 +101,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
             "description": "The list of allowed locations for resources.",
             "displayName": "Allowed locations",
             "strongType": "location"
-        }
+        },
+        "defaultValue": "westus2"
     }
 }
 ```

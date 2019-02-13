@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: pareshmu
-ms.openlocfilehash: c64e73fb30f1f7c18ec1bb1fe8dc9e6bf7857b94
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f3b8ab2d40cf077d856b506a54ef98dbb5b699fe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184600"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746542"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -237,6 +237,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | フランクフルト |  
 | **Rogers** | Cologix、Equinix | モントリオール、トロント |
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | ロンドン | 
+| **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | アムステルダム | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | アムステルダム |
 | **[Telia](https://www.telia.se/foretag/losningar/produkter-tjanster/datanet)** | Equinix | アムステルダム |
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | トロント | 
@@ -246,7 +247,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Webair](https://www.webair.com/microsoft-express-route-partnership/)**| Megaport | ニューヨーク |
 | **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | シカゴ、シリコン バレー、ワシントン DC |
 | **Zain** |Equinix |ロンドン|
-| **[Zertia](http://www.zertia.es/index.php/novedades)**| レベル 3 | マドリッド |
+| **[Zertia](http://www.zertia.es)**| レベル 3 | マドリッド |
 | **[Zirro](https://zirro.com/services/)**| Equinix | モントリオール、トロント |
 
 ## <a name="connectivity-through-datacenter-providers"></a>データセンター プロバイダー経由の接続

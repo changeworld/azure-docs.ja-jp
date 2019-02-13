@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227779"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699926"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
@@ -109,7 +109,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用されます。 そのため、Microsoft Translator Hub では使用できません。 Translator Hub は、従来の統計的な機械翻訳のみをサポートしています。 ニューラル翻訳のカスタマイゼーションは、Custom Translator を使用してご利用いただけるようになりました。 [ニューラル機械翻訳のカスタマイゼーションに関する詳細](custom-translator/overview.md)
 
-V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、text、generalnn) を使用できません。
+V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、tech、generalnn) を使用できません。
 
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|

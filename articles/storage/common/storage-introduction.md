@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474804"
+ms.locfileid: "55507775"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -130,13 +130,13 @@ SSE は、すべてのパフォーマンス レベル (Standard および Premiu
 
 クライアント側の暗号化の詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)に関するページを参照してください。
 
-## <a name="replication"></a>レプリケーション
+## <a name="redundancy"></a>冗長性
 
-Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 レプリケーションの種類は、ストレージ アカウントをセットアップするときに選択します。 この設定は、ほとんどの場合、ストレージ アカウントが作成された後で変更することができます。 
+Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-ディザスター リカバリーについては、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
+ディザスター リカバリーの詳細については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Azure Storage との間のデータ転送
 

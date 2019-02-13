@@ -3,7 +3,7 @@ title: Azure Service Fabric パッチ オーケストレーション アプリ�
 description: Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。
 services: service-fabric
 documentationcenter: .net
-author: novino
+author: khandelwalbrijeshiitr
 manager: timlt
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155308"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732313"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -131,7 +131,7 @@ Azure クラスターの持続性層がシルバーの場合、修復マネー�
     ],
     ```
 
-3. これらの変更によってクラスター マニフェストを更新し、更新済みのクラスター マニフェストを使用して、[新しいクラスターを作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)するか、[クラスター構成をアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration)します。 更新済みのクラスター マニフェストを使用してクラスターを実行したら、クラスターで修復マネージャー システム サービスが実行されていることを確認できます。このサービスは、Service Fabric Explorer のシステム サービス セクションに `fabric:/System/RepairManagerService` という名前で表示されます。
+3. これらの変更によってクラスター マニフェストを更新し、更新済みのクラスター マニフェストを使用して、[新しいクラスターを作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)するか、[クラスター構成をアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)します。 更新済みのクラスター マニフェストを使用してクラスターを実行したら、クラスターで修復マネージャー システム サービスが実行されていることを確認できます。このサービスは、Service Fabric Explorer のシステム サービス セクションに `fabric:/System/RepairManagerService` という名前で表示されます。
 
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>すべてのノードで Windows Update の自動更新を無効にする
 
@@ -413,3 +413,6 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 - Windows Server 2012 R2 以前のバージョンで、自動更新の無効化に失敗するために POA 1.3.0 が機能しない回帰を修正しました。 
 - InstallWindowsOSOnlyUpdates の構成が常に True として選択されるバグを修正しました。
 - InstallWindowsOSOnlyUpdates の既定値を False に変更します。
+
+### <a name="version-132"></a>バージョン 1.3.2
+- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルの影響を与える問題を修正しました。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。 

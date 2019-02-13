@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 956a374a66c765168f0c872999611318e1b7bdac
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cbccab219e7b610c9ff51013a2d79764c2243e26
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166191"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736137"
 ---
 <!--author=SharS last changed: 9/17/15-->
 

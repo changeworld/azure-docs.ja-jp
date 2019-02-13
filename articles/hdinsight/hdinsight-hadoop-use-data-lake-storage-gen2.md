@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 01/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: a44e53d7a32ab151fa951d1bc89b741390a70dfb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fae92f8e09cc2ad6b63cb15599e0b1ab72588ed8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464791"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728845"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -40,7 +40,7 @@ Azure Data Lake Storage Gen2 は、ほぼすべての Azure HDInsight クラス�
 
     ![Azure portal でのストレージ アカウントの作成を示したスクリーンショット](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
  
-1. ストレージ アカウントでマネージド ID を**ストレージ BLOB データ共同作成者 (プレビュー)** ロールに割り当てます。 「[RBAC を使用して Azure BLOB およびキューのデータへのアクセス権を管理する (プレビュー)](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)」をご覧ください。
+1. ストレージ アカウントでマネージド ID を**ストレージ BLOB データ所有者 (プレビュー)** ロールに割り当てます。 「[RBAC を使用して Azure BLOB およびキューのデータへのアクセス権を管理する (プレビュー)](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)」をご覧ください。
 
     1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
     1. ストレージ アカウントを選択し、**[アクセス制御 (IAM)]** を選択してアカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
@@ -48,9 +48,9 @@ Azure Data Lake Storage Gen2 は、ほぼすべての Azure HDInsight クラス�
         ![ストレージのアクセス制御設定を示すスクリーンショット](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
     1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
-    1. **[ロール割り当ての追加]** ウィンドウで、**[ストレージ Blob データ共同作成者 (プレビュー)]** ロールを選択します。 次に、マネージド ID とストレージ アカウントを持つサブスクリプションを選択します。 次に、以前作成したユーザー割り当てマネージド ID を検索して見つけます。 最後に、マネージド ID を選択すると、その ID が **[選択したメンバー]** の下に一覧表示されます。
+    1. **[ロール割り当ての追加]** ウィンドウで、**[ストレージ BLOB データ所有者 (プレビュー)]** ロールを選択します。 次に、マネージド ID とストレージ アカウントを持つサブスクリプションを選択します。 次に、以前作成したユーザー割り当てマネージド ID を検索して見つけます。 最後に、マネージド ID を選択すると、その ID が **[選択したメンバー]** の下に一覧表示されます。
     
-        ![RBAC ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role2.png)
+        ![RBAC ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
     1. **[Save]** をクリックします。 選択したユーザー割り当て ID が、**共同作成者**ロールの下に一覧表示されています。
 

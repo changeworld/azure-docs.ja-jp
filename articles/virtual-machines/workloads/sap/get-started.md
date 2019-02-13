@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0988a6367eb1a1bacaab61f8bc5924a2c9f0a58c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474719"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744826"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 
@@ -35,6 +35,8 @@ Azure for SAP HANA の独自性は、Azure を他社と一線を画すものに�
 Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
 ## <a name="latest-changes"></a>最新の変更
+
+[Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)のリリース
 
 [SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)のリリース
 

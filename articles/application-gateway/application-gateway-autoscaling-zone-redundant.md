@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/31/2019
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461442"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743652"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -34,7 +34,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-自動スケーリング SKU は、eastus2、westus2、westeurope、southeastasia、centralus、francecentral、eastus、japaneast、northeurope、southcentralus、ukwest、northcentralus、westus、eastus (BL)、centralus (DM)、japanwest (OS) のリージョンで利用できます。
+自動スケーリング SKU は、次のリージョンで利用できます:米国中北部、米国中南部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東南アジア、フランス中部、英国西部、東日本、西日本。
 
 ## <a name="pricing"></a>価格
 

@@ -1,21 +1,18 @@
 ---
-title: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+title: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure PowerShell
 description: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure PowerShell で作成する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/25/2018
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 215543246057a59c80bf63910c7e90b7b5d041b4
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 09434c0b20845fcc790f1861a55b9c7d8b8046ac
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438441"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55748746"
 ---
 # <a name="create-an-application-gateway-and-virtual-machine-scale-set-using-azure-powershell"></a>アプリケーション ゲートウェイと仮想マシン スケール セットを Azure PowerShell で作成する
 
@@ -170,6 +167,7 @@ $vmssConfig = New-AzureRmVmssConfig `
   -SkuName Standard_DS2 `
   -UpgradePolicyMode Automatic
 Set-AzureRmVmssStorageProfile $vmssConfig `
+  -OsDiskCreateOption "FromImage" -OsDiskCaching "None"
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `

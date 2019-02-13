@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491741"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは 
 Azure Active Directory (Azure AD) は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 Azure AD を使用すると、従業員が次のリソースにサインインおよびアクセスしやすくなります。
@@ -72,7 +72,7 @@ Azure AD とそのドキュメントについてより深く理解するため�
 |Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行することができます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。<br><br>**注**<br>この管理者ロールは、Azure portal では全体管理者と呼ばれますが、Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では**会社の管理者**と呼ばれます。<br><br>さまざまな管理者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。|
 |Microsoft アカウント (別称: MSA)|Outlook、OneDrive、Xbox LIVE、Office 365 など、コンシューマー向けの Microsoft 製品とクラウド サービスへのアクセスを提供する個人アカウントです。 お使いの Microsoft アカウントは、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成、保存されます。|
 
-## <a name="what-features-work-in-azure-ad"></a>Azure AD で利用できる機能
+## <a name="which-features-work-in-azure-ad"></a>Azure AD で利用できる機能
 Azure AD ライセンスを選択すると、組織向けの次の機能の一部またはすべてにアクセスできるようになります。
 
 |Category|説明|

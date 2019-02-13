@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240116"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753114"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Visual Studio Code を使用して機械学習モデルをトレーニングおよびデプロイする
 
@@ -108,9 +108,9 @@ Azure Machine Learning for VS Code (プレビュー) を使用して、コード
 
 #### <a name="the-conda-dependencies-file"></a>conda の依存関係ファイル
 
-既定では、新しい conda 環境が自動的に作成され、インストールの依存関係が管理されます。 ただし、`aml_config/conda_dependencies.yml` ファイルで実際の依存関係を指定する必要があります。
+既定では、新しい conda 環境が自動的に作成され、インストールの依存関係が管理されます。 ただし、`aml_config/conda_dependencies.yml` ファイルで実際の依存関係とそのバージョンを指定する必要があります。 
 
-これは、既定の "aml_config/conda_dependencies.yml" からのスニペットです。
+これは、既定の "aml_config/conda_dependencies.yml" からのスニペットです。 たとえば、次に示すように "tensorflow=1.12.0" と指定できます。 依存関係のバージョンを指定しない場合、最新のバージョンが使用されます。  
 構成ファイルで他の依存関係を追加できます。
 
 ```yaml
@@ -123,7 +123,7 @@ dependencies:
   # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
-- tensorflow
+- tensorflow=1.12.0
 
 - pip:
     # Required packages for Azure Machine Learning service execution, history, and data preparation.

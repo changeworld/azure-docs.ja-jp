@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:音声を認識する、Node.js - Speech Services
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Node.js 用 Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
+description: このガイドでは、Node.js 用 Speech SDK を使用して音声テキスト変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: fmegen
 manager: cgronlun
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: c9f83368a540003e8bcc35282c664ec23e4ff068
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 99938f8b64339556c0ee4b9caa9124c609159af6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226504"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747274"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>クイック スタート:Node.js 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、音声をテキストに文字起こしする Node.js プロジェクトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、Microsoft [Cognitive Services Speech SDK](https://aka.ms/csspeech/npmpackage) が基になっています。
+この記事では、Azure Cognitive Services 用 Speech SDK の JavaScript バインドを使用して、音声をテキストに変換する Node.js プロジェクトを作成する方法について説明します。
+このアプリケーションは、[JavaScript 用 Speech SDK](https://aka.ms/csspeech/npmpackage) が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * 最新バージョンの [Node.js](https://nodejs.org)。
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
@@ -37,7 +37,7 @@ ms.locfileid: "55226504"
 npm init -f
 ```
 
-これにより、package.json ファイルが既定値で初期化されます。 後でこのファイルを編集する場合があります。
+このコマンドは、**package.json** ファイルを既定値で初期化します。 後でこのファイルを編集する場合があります。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -47,32 +47,32 @@ Node.js プロジェクトに Speech SDK を追加します。
 npm install microsoft-cognitiveservices-speech-sdk
 ```
 
-これにより、npmjs から Speech SDK の最新バージョンと必要な前提条件がダウンロードされ、インストールされます。 SDK は、プロジェクト フォルダー内の `node_modules` ディレクトリにインストールされます。
+このコマンドは、**npmjs** から Speech SDK の最新バージョンと必要な前提条件をダウンロードし、インストールします。 SDK は、プロジェクト フォルダー内の `node_modules` ディレクトリにインストールされます。
 
 ## <a name="use-the-speech-sdk"></a>Speech SDK を使用する
 
 フォルダーに `index.js` という名前の新しいファイルを作成し、テキスト エディターでこのファイルを開きます。
 
 > [!NOTE]
-> Node.js では、Speech SDK はマイクまたはファイルのデータの種類をサポートしていないことに注意してください。 どちらもブラウザーでのみサポートされています。 代わりに、`AudioInputStream.createPushStream()` または `AudioInputStream.createPullStream()` を通じて、Speech SDK への Stream インターフェイスを使用します。
+> Node.js では、Speech SDK はマイクまたは**ファイル**のデータの種類をサポートしていません。 どちらもブラウザーでのみサポートされています。 代わりに、`AudioInputStream.createPushStream()` または `AudioInputStream.createPullStream()` を通じて、Speech SDK への **Stream** インターフェイスを使用します。
 
 この例では、`PushAudioInputStream` インターフェイスを使用します。
 
-次の JavaScript コードを追加します。
+この JavaScript コードを追加します。
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-アプリを起動するには、`YourSubscriptionKey`、`YourServiceRegion`、および `YourAudioFile.wav` を構成に合わせて調整します。 その後、次のコマンドを呼び出すと、アプリを実行できます。
+アプリを開くには、`YourSubscriptionKey`、`YourServiceRegion`、および `YourAudioFile.wav` を構成に合わせて調整します。 次に、このコマンドを呼び出して実行します。
 
 ```sh
 node index.js
 ```
 
-指定したファイル名を使用して認識が開始され、出力がコンソールに表示されます。
+指定したファイル名を使用して、認識がトリガーされます。 出力がコンソールに表示されます。
 
-以下に、サブスクリプション キーを更新し、`whatstheweatherlike.wav` ファイルを使用して `index.js` を実行した場合のサンプル出力を示します。
+このサンプルは、サブスクリプション キーを更新した後で `index.js` を実行し、ファイル `whatstheweatherlike.wav` を使用した場合の出力です。
 
 ```json
 SpeechRecognitionResult {
@@ -94,35 +94,35 @@ SpeechRecognitionResult {
 
 ## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Speech SDK と Visual Studio Code をインストールして使用する
 
-Visual Studio Code からもサンプルを実行できます。 クイック スタートをインストールし、開き、実行するには、以下の手順に従います。
+Visual Studio Code からサンプルを実行することもできます。 以下の手順に従って、クイック スタートをインストールし、開いて実行します。
 
-1. Visual Studio Code を起動し、[フォルダーを開く] をクリックして、クイック スタートのフォルダーに移動します
+1. Visual Studio Code を起動します。 **[フォルダーを開く]** を選択します。 クイック スタートのフォルダーに移動します。
 
-   ![[フォルダーを開く] のスクリーンショット](media/sdk/qs-js-node-01-open_project.png)
+   ![フォルダーを開く](media/sdk/qs-js-node-01-open_project.png)
 
-1. Visual Studio Code でターミナルを開きます
+1. Visual Studio Code でターミナルを開きます。
 
-   ![ターミナル ウィンドウのスクリーンショット](media/sdk/qs-js-node-02_open_terminal.png)
+   ![ターミナル ウィンドウ](media/sdk/qs-js-node-02_open_terminal.png)
 
-1. npm を実行して、依存関係をインストールします
+1. `npm` を実行して依存関係をインストールします。
 
-   ![npm のインストールのスクリーンショット](media/sdk/qs-js-node-03-npm_install.png)
+   ![npm インストール](media/sdk/qs-js-node-03-npm_install.png)
 
-1. これで、`index.js` を開き、ブレークポイントを設定する準備が整いました
+1. これで、`index.js` を開き、ブレークポイントを設定する準備が整いました。
 
-   ![16 行目にブレークポイントを設定した index.js のスクリーンショット](media/sdk/qs-js-node-04-setup_breakpoint.png)
+   ![16 行目にブレークポイントを設定した index.js](media/sdk/qs-js-node-04-setup_breakpoint.png)
 
-1. デバッグを開始するには、F5 キーを押すか、メニューで [デバッグ]、[デバッグの開始] の順に選択します
+1. デバッグを開始するには、F5 キーを押すか、メニューで **[デバッグ]、[デバッグの開始]** の順に選択します。
 
-   ![デバッグ メニューのスクリーンショット](media/sdk/qs-js-node-05-start_debugging.png)
+   ![デバッグ メニュー](media/sdk/qs-js-node-05-start_debugging.png)
 
-1. ブレークポイントがヒットしたら、呼び出し履歴と変数を検査することができます
+1. ブレークポイントがヒットしたら、呼び出し履歴と変数を検査することができます。
 
-   ![デバッガーのスクリーンショット](media/sdk/qs-js-node-06-hit_breakpoint.png)
+   ![デバッガー](media/sdk/qs-js-node-06-hit_breakpoint.png)
 
-1. 出力は、デバッグ コンソール ウィンドウに表示されます
+1. 出力は、デバッグ コンソール ウィンドウに表示されます。
 
-   ![デバッグ コンソールのスクリーンショット](media/sdk/qs-js-node-07-debug_output.png)
+   ![デバッグ コンソール](media/sdk/qs-js-node-07-debug_output.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.openlocfilehash: a6beba81bf76549010bbf586cfbd0f018ee0a0dd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 853ca60ac10272062a1eb61c5f8763e4d9e120f7
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166613"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55748218"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure Multi-Factor Authentication とは何ですか
 お客様のアカウントに対して追加のセキュリティ確認が加えられたという電子メールを IT 部門のだれかまたは上司から受け取りました。  これはどういう意味でしょうか。
@@ -44,4 +44,4 @@ ms.locfileid: "55166613"
 | [サインイン エクスペリエンス](multi-factor-authentication-end-user-signin.md) |電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。 |
 | [設定の変更](multi-factor-authentication-end-user-manage-settings.md) |電話番号や優先登録方法など、設定の変更方法を示します。 |
 | [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md) |アプリ パスワードの作成と使用に関する情報があります。 |
-| [モバイル アプリの使用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。 |
+| [モバイル アプリの使用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594) および [iOS](https://go.microsoft.com/fwlink/?linkid=866594) で利用できます。|

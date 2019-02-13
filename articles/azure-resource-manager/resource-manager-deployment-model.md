@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382792"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486811"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -30,6 +30,8 @@ ms.locfileid: "54382792"
 リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。
 
 これまでに Resource Manager を使用したことがない場合は、まず「[Azure Resource Manager の概要](resource-group-overview.md)」で定義されている用語をご確認ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>デプロイメント モデルの歴史
 Azure では当初、クラシック デプロイ モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。 ソリューションをデプロイするには、ポータル経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。 ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。 関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。 そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
@@ -57,7 +59,7 @@ Resource Manager が追加されたとき、すべてのリソースが遡及的
 場合によっては、Resource Manager コマンドを使用することで、クラシック デプロイメントで作成したリソースに関する情報を取得したり、クラシック リソースを別のリソース グループに移動するなどの管理タスクを実行したりできます。 しかしこれらのケースから、その種類が Resource Manager の操作に対応しているという印象を持たないようにしてください。 たとえば、クラシック デプロイメントで作成された仮想マシンを含むリソース グループがあるとします。 例として、次の Resource Manager PowerShell コマンドを実行したとします。
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 仮想マシンが返されます。
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-ただし、Resource Manager コマンドレット **Get-AzureRmVM** を実行した場合は、Resource Manager でデプロイされた仮想マシンのみが返されます。 次のコマンドでは、クラシック デプロイメントで作成された仮想マシンは返されません。
+ただし、Resource Manager コマンドレット **Get-AzVM** を実行した場合は、Resource Manager でデプロイされた仮想マシンのみが返されます。 次のコマンドでは、クラシック デプロイメントで作成された仮想マシンは返されません。
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Resource Manager で作成したリソースだけがタグに対応しています。 従来のリソースにタグを適用することはできません。

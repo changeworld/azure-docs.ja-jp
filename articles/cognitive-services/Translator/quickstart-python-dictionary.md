@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458269"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691472"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>クイック スタート:Python を使用して 2 か国語辞書で単語を検索する
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 `params` は、ソース言語と出力言語を設定するために使用されます。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) を使用します。
 

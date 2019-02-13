@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567952"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750326"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -38,7 +38,7 @@ ms.locfileid: "51567952"
 
 ![ID セキュリティ スコア](media/azure-ad/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>開始する前に: MFA で特権アカウントを保護する
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>作業を開始する前に、次のことを行います。MFA で特権アカウントを保護します
 
 このチェックリストを読み始める前に、読んでいる間にセキュリティが侵害されないようにしてください。 まず、特権アカウントを保護する必要があります。
 
@@ -78,6 +78,9 @@ Azure AD で直接 ID を作成した場合、[PowerShell を使用してユー�
 
 [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)のしくみについて、詳しくご確認ください。
 
+> [!NOTE]
+> パスワード ハッシュ同期を有効にしているときに Azure AD Domain Services を使用すると、Kerberos (AES 256) ハッシュとオプションで NTLM (RC4、ソルトなし) ハッシュも暗号化され、Azure AD と同期されます。 
+
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>AD FS エクストラネットのスマート ロックアウトを実装する
 
 Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の[エクストラネット ロックアウト保護](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 で AD FS を使っている場合は、[エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 AD FS スマート エクストラネット ロックアウトは、ユーザーが Active Directory からロックアウトされないようにしながら、AD FS に対するブルート フォース攻撃を防ぎます。
@@ -96,7 +99,7 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 1. [AD FS を使用している場合はレガシ認証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)をブロックする。
 2. [最新の認証を使用するよう SharePoint Online と Exchange Online](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication) を設定する。
-3. [レガシ認証をブロックするために条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)を使用する。
+3. [レガシ認証をブロックするために条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)を使用する。
 
 ### <a name="block-invalid-authentication-entry-points"></a>無効な認証エントリ ポイントをブロックする
 

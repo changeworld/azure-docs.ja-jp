@@ -12,12 +12,12 @@ ms.reviewer: ''
 ms.author: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d4c71aafb947622e54f6d9fda2f539c304e528f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5e94771706e5d7c95e4f08c06dee8a707bbfe356
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458195"
+ms.locfileid: "55488001"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>PowerShell を使用してエラスティック プールを作成し、エラスティック プール間でデータベースを移動する
 

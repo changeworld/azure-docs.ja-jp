@@ -1,6 +1,6 @@
 ---
 title: バッチ処理を使用して Azure SQL Database アプリケーションのパフォーマンスを強化する方法
-description: このトピックでは、データベースの操作をバッチ処理で行うことによって、Azure SQL Database アプリケーションの速度とスケーラビリティが大幅に向上することを実証しています。 紹介しているバッチ処理手法は SQL Server データベースにも有効ですが、この記事では Azure に焦点を絞って取り上げています。
+description: このトピックでは、データベースの操作をバッチ処理で行うことによって、Azure SQL Database アプリケーションの速度とスケーラビリティが大幅に向上することを実証します。 紹介しているバッチ処理手法は SQL Server データベースにも有効ですが、この記事では Azure に焦点を絞って取り上げています。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f347543bbea11329cf4bb7c03dac6ccf7f04ac77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455390"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751635"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 
@@ -50,42 +50,47 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 
 次の C# コードには、単純なテーブルに対する一連の挿入操作と更新操作が記述されています。
 
-    List<string> dbOperations = new List<string>();
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 2");
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 3");
-    dbOperations.Add("insert MyTable values ('new value',1)");
-    dbOperations.Add("insert MyTable values ('new value',2)");
-    dbOperations.Add("insert MyTable values ('new value',3)");
-
+```csharp
+List<string> dbOperations = new List<string>();
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 2");
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 3");
+dbOperations.Add("insert MyTable values ('new value',1)");
+dbOperations.Add("insert MyTable values ('new value',2)");
+dbOperations.Add("insert MyTable values ('new value',3)");
+```
 次の ADO.NET コードは、以上の操作を連続実行します。
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-    {
-        conn.Open();
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    conn.Open();
 
-        foreach(string commandString in dbOperations)
-        {
-            SqlCommand cmd = new SqlCommand(commandString, conn);
-            cmd.ExecuteNonQuery();                   
-        }
+    foreach(string commandString in dbOperations)
+    {
+        SqlCommand cmd = new SqlCommand(commandString, conn);
+        cmd.ExecuteNonQuery();
     }
+}
+```
 
 このコードを最適化するにはどうすればよいでしょうか。一番の方法は、クライアント側でこれらの操作をバッチ処理する何らかの機構を実装することです。 このコードのパフォーマンスを高める簡単な方法があります。それは単純に一連の呼び出しをトランザクションの中に投入することです。 以下に示したのは、先ほどと同じ操作をトランザクションで行うコードです。
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    conn.Open();
+    SqlTransaction transaction = conn.BeginTransaction();
+
+    foreach (string commandString in dbOperations)
     {
-        conn.Open();
-        SqlTransaction transaction = conn.BeginTransaction();
-
-        foreach (string commandString in dbOperations)
-        {
-            SqlCommand cmd = new SqlCommand(commandString, conn, transaction);
-            cmd.ExecuteNonQuery();
-        }
-
-        transaction.Commit();
+        SqlCommand cmd = new SqlCommand(commandString, conn, transaction);
+        cmd.ExecuteNonQuery();
     }
+
+    transaction.Commit();
+}
+```
 
 実際には、両方の例にトランザクションが使われています。 1 つ目の例では、個々の呼び出しがそれぞれ暗黙的なトランザクションとなっています。 2 つ目の例では、トランザクションを明示的に指定して、その中にすべての呼び出しを投入しています。 [write-ahead トランザクション ログ](https://msdn.microsoft.com/library/ms186259.aspx)のドキュメントによれば、トランザクションがコミットされたときにログ レコードがディスクにフラッシュされます。 したがって、より多くの呼び出しをトランザクションに含めることで、その分、トランザクションがコミットされるまでの間、トランザクション ログへの書き込みを先送りすることができます。 実質的に、サーバーのトランザクション ログに対する書き込みに関して、バッチ処理を有効にしたことになります。
 
@@ -124,59 +129,66 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 
 テーブル値パラメーターは、Transact-SQL のステートメント、ストアド プロシージャ、関数の中で、ユーザー定義テーブル型をパラメーターとして使用する際に使用します。 これはクライアント側のバッチ処理手法で、テーブル値パラメーターに複数行のデータを含めて送信することができます。 テーブル値パラメーターを使用するにはまず、テーブル型を定義します。 次の Transact-SQL ステートメントは、 **MyTableType**という名前のテーブル型を作成しています。
 
+```sql
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
-
+```
 
 このテーブル型とまったく同じ名前と型を持つ **DataTable** をコード内で作成します。 テキスト クエリまたはストアド プロシージャを呼び出す際にパラメーターとして、この **DataTable** を渡します。 この手法を使った例を次に示します。
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
+
+    DataTable table = new DataTable();
+    // Add columns and rows. The following is a simple example.
+    table.Columns.Add("mytext", typeof(string));
+    table.Columns.Add("num", typeof(int));
+    for (var i = 0; i < 10; i++)
     {
-        connection.Open();
-
-        DataTable table = new DataTable();
-        // Add columns and rows. The following is a simple example.
-        table.Columns.Add("mytext", typeof(string));
-        table.Columns.Add("num", typeof(int));    
-        for (var i = 0; i < 10; i++)
-        {
-            table.Rows.Add(DateTime.Now.ToString(), DateTime.Now.Millisecond);
-        }
-
-        SqlCommand cmd = new SqlCommand(
-            "INSERT INTO MyTable(mytext, num) SELECT mytext, num FROM @TestTvp",
-            connection);
-
-        cmd.Parameters.Add(
-            new SqlParameter()
-            {
-                ParameterName = "@TestTvp",
-                SqlDbType = SqlDbType.Structured,
-                TypeName = "MyTableType",
-                Value = table,
-            });
-
-        cmd.ExecuteNonQuery();
+        table.Rows.Add(DateTime.Now.ToString(), DateTime.Now.Millisecond);
     }
+
+    SqlCommand cmd = new SqlCommand(
+        "INSERT INTO MyTable(mytext, num) SELECT mytext, num FROM @TestTvp",
+        connection);
+
+    cmd.Parameters.Add(
+        new SqlParameter()
+        {
+            ParameterName = "@TestTvp",
+            SqlDbType = SqlDbType.Structured,
+            TypeName = "MyTableType",
+            Value = table,
+        });
+
+    cmd.ExecuteNonQuery();
+}
+```
 
 この例では、テーブル値パラメーター **@TestTvp** からの行を **SqlCommand** オブジェクトで挿入しています。 このパラメーターに、先ほど作成した **DataTable** オブジェクトを **SqlCommand.Parameters.Add** メソッドで割り当てます。 これらの挿入操作を 1 回の呼び出しでバッチ処理すれば、挿入操作を逐次的に実行した場合と比べ、大幅にパフォーマンスを高めることができます。
 
 先ほどの例をさらに改良するには、テキスト ベースのコマンドをストアド プロシージャに置き換えます。 次の Transact-SQL コマンドでは、 **SimpleTestTableType** テーブル値パラメーターを引数として受け取るストアド プロシージャを作成しています。
 
-    CREATE PROCEDURE [dbo].[sp_InsertRows] 
-    @TestTvp as MyTableType READONLY
-    AS
-    BEGIN
-    INSERT INTO MyTable(mytext, num) 
-    SELECT mytext, num FROM @TestTvp
-    END
-    GO
+```sql
+CREATE PROCEDURE [dbo].[sp_InsertRows] 
+@TestTvp as MyTableType READONLY
+AS
+BEGIN
+INSERT INTO MyTable(mytext, num) 
+SELECT mytext, num FROM @TestTvp
+END
+GO
+```
 
 そのうえで、先ほどのコード例の **SqlCommand** オブジェクトの宣言を次のように変更します。
 
-    SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
-    cmd.CommandType = CommandType.StoredProcedure;
+```csharp
+SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
+cmd.CommandType = CommandType.StoredProcedure;
+```
 
 テーブル値パラメーターのパフォーマンスは、他のバッチ処理手法と同等か、優れている場合がほとんどです。 他の方法に比べて柔軟性が高いため、テーブル値パラメーターは広く利用されています。 たとえば、SQL 一括コピーなど、他の手法では、新しい行の挿入しか認められていません。 一方、テーブル値パラメーターを使用すると、どの行が更新で、どの行が挿入であるかを、ストアド プロシージャのロジックを使って調べることができます。 このテーブル型に変更を加え、行ごとの操作の種類 (挿入、更新、削除) を示す "Operation" 列を追加することもできます。
 
@@ -203,18 +215,20 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 
 データベースに大量のデータを挿入する手段としては、SQL 一括コピーを使った方法もあります。 .NET アプリケーションから **SqlBulkCopy** クラスを使用して挿入操作を一括実行することができます。 **SqlBulkCopy** の機能は、コマンドライン ツールの **Bcp.exe** や Transact-SQL ステートメントの **BULK INSERT** に似ています。 次のコード例では、 **DataTable**テーブルから SQL Server にあるテーブル MyTable に行を一括コピーしています。
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-    {
-        connection.Open();
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
 
-        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
-        {
-            bulkCopy.DestinationTableName = "MyTable";
-            bulkCopy.ColumnMappings.Add("mytext", "mytext");
-            bulkCopy.ColumnMappings.Add("num", "num");
-            bulkCopy.WriteToServer(table);
-        }
+    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+    {
+        bulkCopy.DestinationTableName = "MyTable";
+        bulkCopy.ColumnMappings.Add("mytext", "mytext");
+        bulkCopy.ColumnMappings.Add("num", "num");
+        bulkCopy.WriteToServer(table);
     }
+}
+```
 
 テーブル値パラメーターよりも一括コピーの方が好ましいケースもいくつかあります。 [テーブル値パラメーター](https://msdn.microsoft.com/library/bb510489.aspx)に関する記事でテーブル値パラメーターと BULK INSERT 操作の比較表を参照してください。
 
@@ -241,24 +255,25 @@ ADO.NET での一括コピーの詳細については、 [SQL Server での一�
 
 バッチ サイズが小さいときは、複数行を挿入する包括的なパラメーター化 INSERT ステートメントを作成するのも一つの方法です。 その手法を次のコード例に示します。
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
+
+    string insertCommand = "INSERT INTO [MyTable] ( mytext, num ) " +
+        "VALUES (@p1, @p2), (@p3, @p4), (@p5, @p6), (@p7, @p8), (@p9, @p10)";
+
+    SqlCommand cmd = new SqlCommand(insertCommand, connection);
+
+    for (int i = 1; i <= 10; i += 2)
     {
-        connection.Open();
-
-        string insertCommand = "INSERT INTO [MyTable] ( mytext, num ) " +
-            "VALUES (@p1, @p2), (@p3, @p4), (@p5, @p6), (@p7, @p8), (@p9, @p10)";
-
-        SqlCommand cmd = new SqlCommand(insertCommand, connection);
-
-        for (int i = 1; i <= 10; i += 2)
-        {
-            cmd.Parameters.Add(new SqlParameter("@p" + i.ToString(), "test"));
-            cmd.Parameters.Add(new SqlParameter("@p" + (i+1).ToString(), i));
-        }
-
-        cmd.ExecuteNonQuery();
+        cmd.Parameters.Add(new SqlParameter("@p" + i.ToString(), "test"));
+        cmd.Parameters.Add(new SqlParameter("@p" + (i+1).ToString(), i));
     }
 
+    cmd.ExecuteNonQuery();
+}
+```
 
 この例の意図は基本的な概念の紹介です。 現実には、必要なエンティティをループで処理しながら、クエリ文字列とコマンド パラメーターを同時に構築するのが一般的です。 追加できるクエリ パラメーターの上限は 2,100 個です。そのため、この方法で処理できる行の総数には制限があります。
 
@@ -378,88 +393,92 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 
 このユーザー ナビゲーションの詳細をモデル化したものが次の NavHistoryData クラスです。 ユーザー ID、アクセス URL、アクセス時刻など基本的な情報は、このクラスによって保持されます。
 
-```c#
-    public class NavHistoryData
-    {
-        public NavHistoryData(int userId, string url, DateTime accessTime)
-        { UserId = userId; URL = url; AccessTime = accessTime; }
-        public int UserId { get; set; }
-        public string URL { get; set; }
-        public DateTime AccessTime { get; set; }
-    }
+```csharp
+public class NavHistoryData
+{
+    public NavHistoryData(int userId, string url, DateTime accessTime)
+    { UserId = userId; URL = url; AccessTime = accessTime; }
+    public int UserId { get; set; }
+    public string URL { get; set; }
+    public DateTime AccessTime { get; set; }
+}
 ```
 
 データベースに格納するユーザー ナビゲーション データをバッファリングするのは、NavHistoryDataMonitor クラスの役割です。 このクラスには、RecordUserNavigationEntry というメソッドがあります。戻り値のないメソッドであり、その応答は **OnAdded** イベントを発生させることによって行います。 Rx を使用し、このイベントに基づいて、監視可能なコレクションを作成するコンストラクターのロジックを示したのが以下のコードです。 この監視可能なコレクションを Buffer メソッドでサブスクライブします。 このメソッドのオーバーロードを使用して、バッファーへの送信間隔を 20 秒または 1000 エントリに指定しています。
 
-```c#
+```csharp
+public NavHistoryDataMonitor()
+{
+    var observableData =
+        Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
+
+    observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);
+}
+```
+
+イベント ハンドラーは、バッファーに格納されたすべての項目を特定のテーブル値の型に変換し、バッチ処理のストアド プロシージャにその型を渡します。 以下のコードは、NavHistoryDataEventArgs クラスと NavHistoryDataMonitor クラスの定義全体を示したものです。
+
+```csharp
+public class NavHistoryDataEventArgs : System.EventArgs
+{
+    public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
+    public NavHistoryData Data { get; set; }
+}
+
+public class NavHistoryDataMonitor
+{
+    public event EventHandler<NavHistoryDataEventArgs> OnAdded;
+
     public NavHistoryDataMonitor()
     {
         var observableData =
             Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
 
-        observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
+        observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);
     }
 ```
 
 イベント ハンドラーは、バッファーに格納されたすべての項目を特定のテーブル値の型に変換し、バッチ処理のストアド プロシージャにその型を渡します。 以下のコードは、NavHistoryDataEventArgs クラスと NavHistoryDataMonitor クラスの定義全体を示したものです。
 
-```c#
+```csharp
     public class NavHistoryDataEventArgs : System.EventArgs
     {
-        public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
-        public NavHistoryData Data { get; set; }
+        if (OnAdded != null)
+            OnAdded(this, new NavHistoryDataEventArgs(data));
     }
 
-    public class NavHistoryDataMonitor
+    protected void Handler(IList<EventPattern<NavHistoryDataEventArgs>> items)
     {
-        public event EventHandler<NavHistoryDataEventArgs> OnAdded;
-
-        public NavHistoryDataMonitor()
+        DataTable navHistoryBatch = new DataTable("NavigationHistoryBatch");
+        navHistoryBatch.Columns.Add("UserId", typeof(int));
+        navHistoryBatch.Columns.Add("URL", typeof(string));
+        navHistoryBatch.Columns.Add("AccessTime", typeof(DateTime));
+        foreach (EventPattern<NavHistoryDataEventArgs> item in items)
         {
-            var observableData =
-                Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
-
-            observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
+            NavHistoryData data = item.EventArgs.Data;
+            navHistoryBatch.Rows.Add(data.UserId, data.URL, data.AccessTime);
         }
 
-        public void RecordUserNavigationEntry(NavHistoryData data)
-        {    
-            if (OnAdded != null)
-                OnAdded(this, new NavHistoryDataEventArgs(data));
-        }
-
-        protected void Handler(IList<EventPattern<NavHistoryDataEventArgs>> items)
+        using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
         {
-            DataTable navHistoryBatch = new DataTable("NavigationHistoryBatch");
-            navHistoryBatch.Columns.Add("UserId", typeof(int));
-            navHistoryBatch.Columns.Add("URL", typeof(string));
-            navHistoryBatch.Columns.Add("AccessTime", typeof(DateTime));
-            foreach (EventPattern<NavHistoryDataEventArgs> item in items)
-            {
-                NavHistoryData data = item.EventArgs.Data;
-                navHistoryBatch.Rows.Add(data.UserId, data.URL, data.AccessTime);
-            }
+            connection.Open();
 
-            using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-            {
-                connection.Open();
+            SqlCommand cmd = new SqlCommand("sp_RecordUserNavigation", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand cmd = new SqlCommand("sp_RecordUserNavigation", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(
+                new SqlParameter()
+                {
+                    ParameterName = "@NavHistoryBatch",
+                    SqlDbType = SqlDbType.Structured,
+                    TypeName = "NavigationHistoryTableType",
+                    Value = navHistoryBatch,
+                });
 
-                cmd.Parameters.Add(
-                    new SqlParameter()
-                    {
-                        ParameterName = "@NavHistoryBatch",
-                        SqlDbType = SqlDbType.Structured,
-                        TypeName = "NavigationHistoryTableType",
-                        Value = navHistoryBatch,
-                    });
-
-                cmd.ExecuteNonQuery();
-            }
+            cmd.ExecuteNonQuery();
         }
     }
+}
 ```
 
 このバッファリング クラスを使用するアプリケーションは、NavHistoryDataMonitor の静的オブジェクトを作成することになります。 ユーザーがページにアクセスするたびに、アプリケーションから NavHistoryDataMonitor.RecordUserNavigationEntry メソッドを呼び出します。 それらのエントリをまとめてデータベースに送信する処理は、バッファリングのロジックによって行われます。
@@ -469,97 +488,97 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 テーブル値パラメーターは、単純な挿入シナリオには適しています。 しかし複数のテーブルが関係する一括挿入については、そう簡単にはいきません。 その典型的な例が "マスター/詳細" のシナリオです。 マスター テーブルは、プライマリ エンティティを識別します。 エンティティに関するその他のデータは、1 つまたは複数の詳細テーブルに格納されます。 この場合、詳細テーブルと一意のマスター エンティティとの関係が外部キー リレーションシップによって強制的に適用されます。 単純化した PurchaseOrder テーブルとそれに関連付けられた OrderDetail テーブルを考えてみます。 次の Transact-SQL では、4 つの列 (OrderID、OrderDate、CustomerID、Status) から成る PurchaseOrder テーブルが作成されます。
 
 ```sql
-    CREATE TABLE [dbo].[PurchaseOrder](
-    [OrderID] [int] IDENTITY(1,1) NOT NULL,
-    [OrderDate] [datetime] NOT NULL,
-    [CustomerID] [int] NOT NULL,
-    [Status] [nvarchar](50) NOT NULL,
-     CONSTRAINT [PrimaryKey_PurchaseOrder] 
-    PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
+CREATE TABLE [dbo].[PurchaseOrder](
+[OrderID] [int] IDENTITY(1,1) NOT NULL,
+[OrderDate] [datetime] NOT NULL,
+[CustomerID] [int] NOT NULL,
+[Status] [nvarchar](50) NOT NULL,
+CONSTRAINT [PrimaryKey_PurchaseOrder] 
+PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
 それぞれの注文は、少なくとも 1 つの商品購入を含んでいます。 この情報を PurchaseOrderDetail テーブルに記録します。 次の Transact-SQL では、5 つの列 (OrderID、OrderDetailID、ProductID、UnitPrice、OrderQty) から成る PurchaseOrderDetail テーブルが作成されます。
 
 ```sql
-    CREATE TABLE [dbo].[PurchaseOrderDetail](
-    [OrderID] [int] NOT NULL,
-    [OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
-    [ProductID] [int] NOT NULL,
-    [UnitPrice] [money] NULL,
-    [OrderQty] [smallint] NULL,
-     CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
-    ( [OrderID] ASC, [OrderDetailID] ASC ))
+CREATE TABLE [dbo].[PurchaseOrderDetail](
+[OrderID] [int] NOT NULL,
+[OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
+[ProductID] [int] NOT NULL,
+[UnitPrice] [money] NULL,
+[OrderQty] [smallint] NULL,
+CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
+( [OrderID] ASC, [OrderDetailID] ASC ))
 ```
 
 PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブルの注文と対応関係にあることが必要です。 この制約を強制的に適用する外部キーの定義は次のようになります。
 
 ```sql
-    ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
-    CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
-    REFERENCES [dbo].[PurchaseOrder] ([OrderID])
+ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
+CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
+REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 ```
 
 テーブル値パラメーターを使用するには、対象となる各テーブルについてユーザー定義テーブル型が必要です。
 
 ```sql
-    CREATE TYPE PurchaseOrderTableType AS TABLE 
-    ( OrderID INT,
-      OrderDate DATETIME,
-      CustomerID INT,
-      Status NVARCHAR(50) );
-    GO
+CREATE TYPE PurchaseOrderTableType AS TABLE 
+( OrderID INT,
+    OrderDate DATETIME,
+    CustomerID INT,
+    Status NVARCHAR(50) );
+GO
 
-    CREATE TYPE PurchaseOrderDetailTableType AS TABLE 
-    ( OrderID INT,
-      ProductID INT,
-      UnitPrice MONEY,
-      OrderQty SMALLINT );
-    GO
+CREATE TYPE PurchaseOrderDetailTableType AS TABLE 
+( OrderID INT,
+    ProductID INT,
+    UnitPrice MONEY,
+    OrderQty SMALLINT );
+GO
 ```
 
 そのうえで、これらの型のテーブルを受け取るストアド プロシージャを定義します。 このプロシージャによって、アプリケーションは一連の注文と注文明細をローカルから 1 回の呼び出しでバッチ処理することができます。 次の Transact-SQL は、この注文処理の例に使用されるストアド プロシージャの宣言全体です。
 
 ```sql
-    CREATE PROCEDURE sp_InsertOrdersBatch (
-    @orders as PurchaseOrderTableType READONLY,
-    @details as PurchaseOrderDetailTableType READONLY )
-    AS
-    SET NOCOUNT ON;
+CREATE PROCEDURE sp_InsertOrdersBatch (
+@orders as PurchaseOrderTableType READONLY,
+@details as PurchaseOrderDetailTableType READONLY )
+AS
+SET NOCOUNT ON;
 
-    -- Table that connects the order identifiers in the @orders
-    -- table with the actual order identifiers in the PurchaseOrder table
-    DECLARE @IdentityLink AS TABLE ( 
-    SubmittedKey int, 
-    ActualKey int, 
-    RowNumber int identity(1,1)
-    );
+-- Table that connects the order identifiers in the @orders
+-- table with the actual order identifiers in the PurchaseOrder table
+DECLARE @IdentityLink AS TABLE ( 
+SubmittedKey int, 
+ActualKey int, 
+RowNumber int identity(1,1)
+);
 
-          -- Add new orders to the PurchaseOrder table, storing the actual
-    -- order identifiers in the @IdentityLink table   
-    INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
-    OUTPUT inserted.OrderID INTO @IdentityLink (ActualKey)
-    SELECT [OrderDate], [CustomerID], [Status] FROM @orders ORDER BY OrderID;
+-- Add new orders to the PurchaseOrder table, storing the actual
+-- order identifiers in the @IdentityLink table   
+INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
+OUTPUT inserted.OrderID INTO @IdentityLink (ActualKey)
+SELECT [OrderDate], [CustomerID], [Status] FROM @orders ORDER BY OrderID;
 
-    -- Match the passed-in order identifiers with the actual identifiers
-    -- and complete the @IdentityLink table for use with inserting the details
-    WITH OrderedRows As (
-    SELECT OrderID, ROW_NUMBER () OVER (ORDER BY OrderID) As RowNumber 
-    FROM @orders
-    )
-    UPDATE @IdentityLink SET SubmittedKey = M.OrderID
-    FROM @IdentityLink L JOIN OrderedRows M ON L.RowNumber = M.RowNumber;
+-- Match the passed-in order identifiers with the actual identifiers
+-- and complete the @IdentityLink table for use with inserting the details
+WITH OrderedRows As (
+SELECT OrderID, ROW_NUMBER () OVER (ORDER BY OrderID) As RowNumber 
+FROM @orders
+)
+UPDATE @IdentityLink SET SubmittedKey = M.OrderID
+FROM @IdentityLink L JOIN OrderedRows M ON L.RowNumber = M.RowNumber;
 
-    -- Insert the order details into the PurchaseOrderDetail table, 
-          -- using the actual order identifiers of the master table, PurchaseOrder
-    INSERT INTO PurchaseOrderDetail (
-    [OrderID],
-    [ProductID],
-    [UnitPrice],
-    [OrderQty] )
-    SELECT L.ActualKey, D.ProductID, D.UnitPrice, D.OrderQty
-    FROM @details D
-    JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
-    GO
+-- Insert the order details into the PurchaseOrderDetail table, 
+-- using the actual order identifiers of the master table, PurchaseOrder
+INSERT INTO PurchaseOrderDetail (
+[OrderID],
+[ProductID],
+[UnitPrice],
+[OrderQty] )
+SELECT L.ActualKey, D.ProductID, D.UnitPrice, D.OrderQty
+FROM @details D
+JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
+GO
 ```
 
 この例では、新しく挿入された行の実際の OrderID 値が、ローカルに定義されている @IdentityLink テーブルに格納されます。 これらの注文 ID は、テーブル値パラメーターの @orders や @details にある一時的な OrderID 値とは異なります。 そのため、@orders パラメーターから得た OrderID の値と、PurchaseOrder テーブル内の新しい行に使用される実際の OrderID の値とが、@IdentityLink テーブルによって結び付けられます。 このステップの後は、外部キー制約を満たす実際の OrderID を持った注文明細の挿入処理が、@IdentityLink テーブルを介して効率的に実行されます。
@@ -567,23 +586,23 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 このストアド プロシージャは、コードから使用することも、他の Transact-SQL の呼び出しから使用することもできます。 コード例については、この記事のテーブル値パラメーターのセクションを参照してください。 次の Transact-SQL は、sp_InsertOrdersBatch を呼び出しています。
 
 ```sql
-    declare @orders as PurchaseOrderTableType
-    declare @details as PurchaseOrderDetailTableType
+declare @orders as PurchaseOrderTableType
+declare @details as PurchaseOrderDetailTableType
 
-    INSERT @orders 
-    ([OrderID], [OrderDate], [CustomerID], [Status])
-    VALUES(1, '1/1/2013', 1125, 'Complete'),
-    (2, '1/13/2013', 348, 'Processing'),
-    (3, '1/12/2013', 2504, 'Shipped')
+INSERT @orders 
+([OrderID], [OrderDate], [CustomerID], [Status])
+VALUES(1, '1/1/2013', 1125, 'Complete'),
+(2, '1/13/2013', 348, 'Processing'),
+(3, '1/12/2013', 2504, 'Shipped')
 
-    INSERT @details
-    ([OrderID], [ProductID], [UnitPrice], [OrderQty])
-    VALUES(1, 10, $11.50, 1),
-    (1, 12, $1.58, 1),
-    (2, 23, $2.57, 2),
-    (3, 4, $10.00, 1)
+INSERT @details
+([OrderID], [ProductID], [UnitPrice], [OrderQty])
+VALUES(1, 10, $11.50, 1),
+(1, 12, $1.58, 1),
+(2, 23, $2.57, 2),
+(3, 4, $10.00, 1)
 
-    exec sp_InsertOrdersBatch @orders, @details
+exec sp_InsertOrdersBatch @orders, @details
 ```
 
 この方法によって、1 から始まる一連の OrderID 値をそれぞれのバッチが使用できるようになります。 これらの一時的な OrderID 値はそのバッチ内の関係を表すものであり、実際の OrderID 値は挿入操作の時点で決まります。 先ほどの例で同じステートメントを繰り返し実行し、一意の注文をデータベースに生成することができます。 このため、このバッチ処理手法を用いるときは、注文の重複を防止するためのコードまたはデータベース ロジックを追加することを検討してください。
@@ -597,40 +616,40 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 テーブル値パラメーターと MERGE ステートメントとを組み合わせることによって、更新と挿入を実行できます。 たとえば、EmployeeID、FirstName、LastName、SocialSecurityNumber の列を含んだ単純な Employee テーブルがあるとします。
 
 ```sql
-    CREATE TABLE [dbo].[Employee](
-    [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
-    [FirstName] [nvarchar](50) NOT NULL,
-    [LastName] [nvarchar](50) NOT NULL,
-    [SocialSecurityNumber] [nvarchar](50) NOT NULL,
-     CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
-    ([EmployeeID] ASC ))
+CREATE TABLE [dbo].[Employee](
+[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
+[FirstName] [nvarchar](50) NOT NULL,
+[LastName] [nvarchar](50) NOT NULL,
+[SocialSecurityNumber] [nvarchar](50) NOT NULL,
+CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
+([EmployeeID] ASC ))
 ```
 
 この例では、SocialSecurityNumber が一意であることを利用して、複数の従業員の MERGE を実行できます。 まず、ユーザー定義テーブル型を作成します。
 
 ```sql
-    CREATE TYPE EmployeeTableType AS TABLE 
-    ( Employee_ID INT,
-      FirstName NVARCHAR(50),
-      LastName NVARCHAR(50),
-      SocialSecurityNumber NVARCHAR(50) );
-    GO
+CREATE TYPE EmployeeTableType AS TABLE 
+( Employee_ID INT,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    SocialSecurityNumber NVARCHAR(50) );
+GO
 ```
 
 次に、MERGE ステートメントで更新と挿入を行うコードを記述するか、ストアド プロシージャを作成します。 次の例では、EmployeeTableType 型のテーブル値パラメーター @employees に対して MERGE ステートメントを使っています。 @employees テーブルの内容は、ここには記載していません。
 
 ```sql
-    MERGE Employee AS target
-    USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
-    AS source ([FirstName], [LastName], [SocialSecurityNumber])
-    ON (target.[SocialSecurityNumber] = source.[SocialSecurityNumber])
-    WHEN MATCHED THEN 
-    UPDATE SET
-    target.FirstName = source.FirstName, 
-    target.LastName = source.LastName
-    WHEN NOT MATCHED THEN
-       INSERT ([FirstName], [LastName], [SocialSecurityNumber])
-       VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
+MERGE Employee AS target
+USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
+AS source ([FirstName], [LastName], [SocialSecurityNumber])
+ON (target.[SocialSecurityNumber] = source.[SocialSecurityNumber])
+WHEN MATCHED THEN 
+UPDATE SET
+target.FirstName = source.FirstName, 
+target.LastName = source.LastName
+WHEN NOT MATCHED THEN
+    INSERT ([FirstName], [LastName], [SocialSecurityNumber])
+    VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 ```
 
 詳細については、MERGE ステートメントのドキュメントと例を参照してください。 INSERT 操作と UPDATE 操作を個別に使用した複数のステップから成るストアド プロシージャで同じ作業を実行することもできますが、MERGE ステートメントの方が効率的です。 直接 MERGE ステートメントを使った Transact-SQL の呼び出しをデータベース コードで作成することもできます。そうすれば、INSERT 用と UPDATE 用の 2 つのデータベース呼び出しは必要ありません。

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f36ee3ce6a8d678cdd846474576fc049df0b4f88
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 14b3d62235cfcc8bbc8a929757a16cf99b860753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472305"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815763"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
 この記事では、他のデータベースから SQL Data Warehouse にコードを移行するときに一般に行う必要があるコードの変更について説明します。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
@@ -32,7 +32,7 @@ SQL Data Warehouse でサポートされていない最も一般的な機能を�
 * OUTPUT 句
 * インライン ユーザー定義関数
 * 複数ステートメント関数
-* [共通テーブル式](#Common-table-expressions)
+* 共通テーブル式
 * [再帰共通テーブル式 (CTE)](#Recursive-common-table-expressions-(CTE)
 * CLR 関数およびプロシージャ
 * $partition 関数

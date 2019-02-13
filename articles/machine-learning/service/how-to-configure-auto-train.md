@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bd61923dafb605e09c6ca6ab86dcd85fe60b37c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242333"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734659"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>自動機械学習の実験を構成する
 
@@ -174,7 +174,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 
 ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl)をご覧ください。
 
-<a name='configure-experiment'/>
+<a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>実験の設定を構成する
 
@@ -207,36 +207,48 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
         n_cross_validations=5)
     ```
 
-次の表では、実験に使用できるパラメーター設定とその既定値の一覧を示します。
+適用するアルゴリズムのリストを決定する 3 つの異なる `task` パラメーター値があります。  使用可能なアルゴリズムを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。
+* 分類
+    * LogisticRegression
+    * SGD
+    * MultinomialNaiveBayes
+    * BernoulliNaiveBayes
+    * SVM
+    * LinearSVM
+    * KNN
+    * DecisionTree
+    * RandomForest
+    * ExtremeRandomTrees
+    * LightGBM
+    * GradientBoosting
+    * TensorFlowDNN
+    * TensorFlowLinearClassifier
+* 回帰
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
+* 予測
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
 
-プロパティ |  説明 | 既定値
---|--|--
-`task`  |機械学習の問題の種類を指定します。 次の値を使用できます <li>分類</li><li>回帰</li><li>予測</li>    | なし |
-`primary_metric` |モデルの構築で最適化したいメトリック。 たとえば、primary_metric として精度を指定すると、自動機械学習は最大精度のモデルを探します。 実験ごとに指定できる primary_metric は 1 つのみです。 次の値を使用できます <br/>**分類**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**回帰**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | 分類の場合: accuracy <br/>回帰の場合: spearman_correlation <br/> |
-`experiment_exit_score` |   primary_metric に対するターゲット値を設定できます。 primary_metric ターゲットを満たすモデルが見つかると、自動機械学習はイテレーションを停止し、実験は終了します。 この値が設定されていない場合 (既定)、自動機械学習の実験はイテレーションで指定されている回数だけ実行を続けます。 double 値を受け取ります。 ターゲットに達しない場合は、自動機械学習はイテレーションで指定されている回数になるまで続行されます。| なし
-`iterations` |イテレーションの最大数。 各イテレーションは、パイプラインになるトレーニング ジョブと同じです。 パイプラインは、データの前処理とモデルです。 高品質のモデルを得るには、250 以上を使用します    | 100
-`max_concurrent_iterations`|    並列で実行するイテレーションの最大回数。 この設定は、リモート コンピューティングに対してのみ機能します。|   1
-`max_cores_per_iteration`   | 1 つのパイプラインのトレーニングに使用されるコンピューティング ターゲット上のコアの数を示します。 アルゴリズムが複数のコアを使用できる場合は、これによりマルチコア マシンでのパフォーマンスが向上します。 -1 に設定すると、マシンで利用可能なすべてのコアを使用できます。|  1
-`iteration_timeout_minutes` |   特定のイテレーションにかかる時間 (分) を制限します。 イテレーションが指定した時間を超えると、そのイテレーションはキャンセルされます。 設定しないと、イテレーションは完了するまで実行を続けます。 |   なし
-`n_cross_validations`   |クロス検証の分割の数| なし
-`validation_size`   |すべてのトレーニング サンプルの割合として設定する検証のサイズ。|  なし
-`preprocess` | True または False <br/>True を指定すると、実験は入力に対して前処理を実行できます。 前処理のサブセットを次に示します<li>不足データ:不足データの補完 - 平均での数値、ほとんどの発生でのテキスト </li><li>カテゴリ値:データ型が数値で、一意の値の数が 5% 未満の場合、ワンホット エンコードに変換します </li><li>その他。完全なリストについては [GitHub リポジトリ](https://aka.ms/aml-notebooks)を確認</li><br/>注: データが疎の場合は、preprocess = true を使用できません |  False |
-`enable_cache`  | True または False <br/>これを True に設定すると、前処理を 1 回実行し、すべての繰り返しに同じ前処理されたデータを再利用できます。 | True |
-`blacklist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験から除外するように構成します。 アルゴリズムがデータセットに対してうまく動作しないことがわかっている場合に役立ちます。 アルゴリズムを除外すると、コンピューティング リソースとトレーニング時間を節約できます。<br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   なし
-`whitelist_models`  | 自動機械学習の実験で試すアルゴリズムには、さまざまなものがあります。 特定のアルゴリズムを実験に含めるように構成します。 アルゴリズムが自分のデータセットに対してうまく動作することがわかっている場合に役立ちます。 <br/>分類に使用できる値<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回帰に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>予測に使用できる値<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  なし
-`verbosity` |ログのレベルを制御します。INFO は最も詳細で、CRITICAL は最小限です。 詳細レベルは、Python ロギング パッケージで定義されているものと同じ値を取ります。 使用できる値は、以下のとおりです。<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li>
-`X` | トレーニングするすべての機能 |  なし
-`y` |   トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。|  なし
-`X_valid`|"_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます |   なし
-`y_valid`   |"_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます    | なし
-`sample_weight` |   "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します |   なし
-`sample_weight_valid`   |   "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます   | なし
-`run_configuration` |   RunConfiguration オブジェクト。  リモート実行に使用されます。 |なし
-`data_script`  |    get_data メソッドを含むファイルへのパス。  リモート実行に必要です。   |なし
-`model_explainability` | "_省略可能_" True または False <br/>  True を指定すると、実験でイテレーションごとに特徴の重要度が計算されます。 特定のイテレーションで explain_model() メソッドを使用して、実験の完了後にそのイテレーションの特徴の重要度を必要に応じて計算することもできます。 | False
-`enable_ensembling`|他のすべてのイテレーションの完了後に、アンサンブル イテレーションを有効にするフラグを設定します。| True
-`ensemble_iterations`|最後のアンサンブルに含める適合したパイプラインを選択するイテレーションの数。| 15
-`experiment_timeout_minutes`| 実験全体の実行にかけられる時間 (分) を制限します | なし
+パラメーターの完全な一覧については、「[AutoMLConfig クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)」をご覧ください。  
 
 ## <a name="data-pre-processing-and-featurization"></a>データの前処理と特徴付け
 

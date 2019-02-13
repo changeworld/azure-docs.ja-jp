@@ -1,20 +1,20 @@
 ---
 title: Azure Search サービスとは - Azure Search
-description: Azure Search は完全に管理されたホスト型クラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と他の検索製品との比較、および開始する方法を確認します。
+description: Azure Search は、Microsoft が提供するフルマネージド ホストのクラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と Microsoft の他の検索製品との比較、および開始する方法を確認します。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 36d65e1ffab79c8f0866d60f4a133798d25e9dea
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630403"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562795"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。

@@ -6,23 +6,23 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 531ba32125479528b1a847b32d711049e699dda0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191663"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756286"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
 [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) という名前の PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
 
 ## <a name="overview"></a>概要 
-以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にするかのようにする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
+以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 

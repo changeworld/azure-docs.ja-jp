@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87cf0f09cbeeee90492e070b25b713546c6631e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438866"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565855"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使って Azure Container Instances でコンテナー アプリケーションを実行する
 
@@ -39,7 +39,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzureRmContainerGroup][New-AzureRmContainerGroup] コマンドレットに渡します。 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、DNS 名ラベルを指定して、Nano Server で実行されているインターネット インフォメーション サービス (IIS) をホストするコンテナーをデプロイします。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzureRmContainerGroup][New-AzureRmContainerGroup] コマンドレットに渡します。 このクイック スタートでは、パブリック Docker Hub レジストリにある `microsoft/iis:nanoserver` Windows イメージを使用します。 このイメージには、Nano Server で動作するインターネット インフォメーション サービス (IIS) がパッケージされています。
+
+1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、IIS にパブリックに到達できるよう、DNS 名ラベルを指定してコンテナーをデプロイします。
 
 次のコマンドを実行して、コンテナー インスタンスを開始します。 `-DnsNameLabel` の値は、インスタンスを作成する Azure リージョン内で一意である必要があります。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 29b2478844e8810cf2733e5477f4156942d69425
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 962631728f96e0551f9cc18d5d835928e5a7705a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074973"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567976"
 ---
 # <a name="terraform-with-azure"></a>Azure での Terraform
 

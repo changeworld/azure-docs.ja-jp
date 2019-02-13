@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9565401ba40f9a87db4f62e66f3d1ea6d0d2b954
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5cfda4ddbf51f51d76b4ede2e44f768bd3261780
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614652"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491758"
 ---
-# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する
+# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
 Azure Resource Manager テンプレートを作成して、複数のリソースをデプロイする方法を説明します。  テンプレートを作成したら、Azure Portal から Cloud Shell を使用してテンプレートをデプロイします。
 
@@ -35,6 +35,8 @@ Azure Resource Manager テンプレートを作成して、複数のリソース
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
@@ -45,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -145,8 +147,8 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-    New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
         -adminUsername $adminUsername `
         -adminPassword $adminPassword `
@@ -157,7 +159,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzureRmVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
     ```
 
     仮想マシンの名前は、テンプレート内に **SimpleWinVM** としてハードコーディングされています。

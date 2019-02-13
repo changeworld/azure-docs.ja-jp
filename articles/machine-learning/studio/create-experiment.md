@@ -1,10 +1,22 @@
 ---
-title:簡単な実験 titleSuffix:Azure Machine Learning Studio description:この機械学習のチュートリアルでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/20/2017
+title: 簡単な実験
+titleSuffix: Azure Machine Learning Studio
+description: この機械学習のチュートリアルでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488383"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>チュートリアル:Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
 **Azure Machine Learning Studio** の使用経験がない方は、このチュートリアルをご覧ください。

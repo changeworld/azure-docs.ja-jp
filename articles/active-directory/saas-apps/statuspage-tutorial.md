@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c3532ff5422ae35aa6bb079fcedf3a2a90d45349
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 77de3e554e20b5380656e33bd15c9174a1f36681
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181573"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734285"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル:Azure Active Directory と StatusPage の統合
 
@@ -198,7 +198,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
 

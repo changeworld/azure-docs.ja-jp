@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66d4c9fb3bce03248f5696d5a7b2b7b62b7ffd3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720970"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746373"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 
@@ -302,7 +302,7 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 メッセージを送信すると、アプリは接続されているすべてのクライアントに送信するか、特定のユーザーに認証されているクライアントにのみ送信するかをアプリが決定できます。
 
-1. VS Code で **SendMessage/function.json** を開きます。
+1. VS Code で **SignalRInfo/function.json** を開きます。
 
 1. `{headers.x-ms-client-principal-name}` のように、[バインド式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings#binding-expressions-and-patterns)を *SignalRConnectionInfo* バインドの *userId* プロパティに挿入します。 これで、認証済みユーザーのユーザー名に値が設定されます。 属性は次のようになります。
 

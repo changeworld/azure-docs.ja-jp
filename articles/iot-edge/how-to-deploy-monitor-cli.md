@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094153"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749850"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -138,14 +138,14 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 次のコマンドを使用して、デプロイを作成します。
 
    ```cli
-   az iot edge deployment create --deployment-id [deployment id] --labels [labels] --content [file path] --hub-name [hub name] --target-condition [target query] --priority [int]
+   az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
    ```
 
 * **--deployment-id** - IoT ハブに作成されるデプロイの名前です。 デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
-* **--labels** - デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1` のようにします。
-* **--content** - デプロイ マニフェスト JSON へのファイルパスです。 
 * **--hub-name** - デプロイが作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
-* **--target-condition** - どのデバイスがこのデプロイの対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。 
+* **--content** - デプロイ マニフェスト JSON へのファイルパスです。 
+* **--labels** - デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 ラベルの名前と値には、JSON 形式を使用します。 たとえば、`{"HostPlatform":"Linux", "Version:"3.0.1"}` のように指定します。
+* **--target-condition** - どのデバイスがこのデプロイの対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、「 `tags.environment='test' and properties.reported.devicemodel='4000x'` 」のように入力します。 
 * **--priority** - 正の整数にする必要があります。 同じデバイスで複数のデプロイがターゲットとなっている場合は、優先度の数値が最も大きいデプロイが適用されます。
 
 ## <a name="monitor-a-deployment"></a>デプロイの監視

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 31a12d43ba71f1a0eacbb12887b047f2fafe3b53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6079b68dc0f9a00ccb71683fc1d80cdbd8da6564
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784601"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730818"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
@@ -46,13 +46,13 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 この記事で定義されている関数では、アプリケーション設定に次の環境変数があることを前提としています。
 
-**AMSAADTenantDomain**: Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
+**AMSAADTenantDomain**:Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
 
-**AMSRESTAPIEndpoint**: REST API エンドポイントを表す URI。 
+**AMSRESTAPIEndpoint**:REST API エンドポイントを表す URI。 
 
-**AMSClientId**: Azure AD アプリケーション クライアント ID。
+**AMSClientId**:Azure AD アプリケーション クライアント ID。
 
-**AMSClientSecret**: Azure AD アプリケーション クライアント シークレット。
+**AMSClientSecret**:Azure AD アプリケーション クライアント シークレット。
 
 **StorageConnection**: Media Services アカウントに関連付けられているアカウントのストレージ接続。 この値は、**function.json** ファイルと **run.csx** ファイルで使用されます (下記参照)。
 
@@ -338,7 +338,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 4. **[アップロード]** をクリックして、アップロードする .mp4 ファイルを参照します。
 
 >[!NOTE]
-> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)」をご覧ください。
+> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

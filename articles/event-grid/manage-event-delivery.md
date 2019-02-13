@@ -7,20 +7,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 8660f09c41cf6226f2ffb173508d37c260522b80
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a15797e9b181aa877b6dfa3350e69b210af5885e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474253"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731769"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 
 イベント サブスクリプションの作成時には、イベント配信の設定をカスタマイズできます。 この記事では、配信不能の場所の設定方法と、再試行の設定のカスタマイズ方法を示します。 これらの機能については、「[Event Grid によるメッセージの配信と再試行](delivery-and-retry.md)」をご覧ください。
-
-## <a name="install-preview-feature"></a>プレビュー機能のインストール
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>配信不能の場所の設定
 
@@ -29,10 +25,6 @@ ms.locfileid: "54474253"
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 containername=testcontainer
 
 topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
@@ -47,13 +39,12 @@ az eventgrid event-subscription create \
 
 配信不能処理を無効にするには、コマンドを再実行してイベント サブスクリプションを作成しますが、`deadletter-endpoint` の値は指定しないでください。 イベント サブスクリプションを削除する必要はありません。
 
+> [!NOTE]
+> ローカル マシンで Azure CLI を使用する場合は、Azure CLI バージョン 2.0.56 以降を使用してください。 Azure CLI の最新バージョンをインストールする手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+
 ### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $containername = "testcontainer"
 
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -68,6 +59,9 @@ New-AzureRmEventGridSubscription `
 
 配信不能処理を無効にするには、コマンドを再実行してイベント サブスクリプションを作成しますが、`DeadLetterEndpoint` の値は指定しないでください。 イベント サブスクリプションを削除する必要はありません。
 
+> [!NOTE]
+> ローカル マシンで Azure PowerShell を使用する場合は、Azure PowerShell バージョン 1.1.0 以降を使用してください。 [Azure のダウンロード](https://azure.microsoft.com/downloads/) サイトから最新の Azure PowerShell をダウンロードしてインストールしてください。
+
 ## <a name="set-retry-policy"></a>再試行ポリシーの設定
 
 Event Grid サブスクリプションの作成時には、Event Grid がイベント配信を試行する期間の値を設定できます。 既定では、Event Grid は、24 時間 (1440 分)、または 30 回の試行を行います。 Event Grid サブスクリプションには、これらの値のいずれかを設定できます。 イベントの有効期限の値は 1 から 1440 までの整数にする必要があります。 最大再試行回数は 1 から 30 までの整数にする必要があります。
@@ -79,10 +73,6 @@ Event Grid サブスクリプションの作成時には、Event Grid がイベ�
 イベントの Time to Live を 1440 分以外の値に設定するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
@@ -109,10 +99,6 @@ az eventgrid event-subscription create \
 イベントの Time to Live を 1440 分以外の値に設定するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
 
 New-AzureRmEventGridSubscription `

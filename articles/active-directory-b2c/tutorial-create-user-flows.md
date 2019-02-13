@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Active Directory B2C 内にユーザー フローを作成する | Microsoft Docs
+title: チュートリアル - ユーザー フローを作成する - Azure Active Directory B2C | Microsoft Docs
 description: Azure portal を使用して Azure Active Directory B2C 内のアプリケーションのためのユーザー フローを作成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845600"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750292"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
@@ -39,29 +39,30 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 サインアップとサインイン ユーザー フローは、サインアップ エクスペリエンスとサインイン エクスペリエンスの両方を 1 つの構成で処理します。 アプリケーションのユーザーは、状況に応じて正しいパスに誘導されます。
 
-1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 
     ![サブスクリプション ディレクトリに切り替える](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-3. 左側のメニューで **[ユーザー フロー]** を選択し、**[新しいユーザー フロー]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. 左側のメニューで **[ユーザー フロー]** を選択し、**[新しいユーザー フロー]** を選択します。
 
     ![新しいユーザー フローを選択する](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. [Recommended]\(推奨\) タブで **[Sign-up and sign-in]\(サインアップとサインイン\)** ユーザー フローを選択します。
+5. [Recommended]\(推奨\) タブで **[Sign-up and sign-in]\(サインアップとサインイン\)** ユーザー フローを選択します。
 
     ![サインアップとサインイン ユーザー フローを選択する](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
-6. **[ID プロバイダー]** の **[電子メールのサインアップ]** を選択します。
+6. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
+7. **[ID プロバイダー]** の **[電子メールのサインアップ]** を選択します。
 
     ![フローのプロパティを設定する](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. **[ユーザー属性と要求]** で、サインアップ中にユーザーから収集して送信する要求と属性を選択します。 たとえば、**[Show more]\(さらに表示\)** を選択してから、**[国/リージョン]**、**[表示名]**、**[郵便番号]** を選択します。 Click **OK**.
+8. **[ユーザー属性と要求]** で、サインアップ中にユーザーから収集して送信する要求と属性を選択します。 たとえば、**[Show more]\(さらに表示\)** を選択してから、**[国/リージョン]**、**[表示名]**、**[郵便番号]** を選択します。 Click **OK**.
 
     ![属性と要求を選択する](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
+9. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 
 ### <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
@@ -123,4 +124,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * パスワードのリセット ユーザー フローを作成する
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 内のアプリケーションのユーザー インターフェイスをカスタマイズする](tutorial-customize-ui.md)
+> [Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)

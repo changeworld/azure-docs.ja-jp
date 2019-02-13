@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: cbd17ef81f5bcdf1c5c2f14f11388fd4f23e5da6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e5a1a17e60d73a041bf7850875287c753aeda16f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239923"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694169"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -29,15 +29,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 <a id="config"/>
 
-## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
-
-お客様のストレージ アカウントの名前とファイル システムのエンドポイント URI が必要です。
+## <a name="get-the-name-of-your-storage-account"></a>ストレージ アカウントの名前を取得する
 
 Azure portal でお客様のストレージ アカウントの名前を取得するには、**[すべてのサービス]** を選択し、「*ストレージ*」という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
 
-ファイル システムのエンドポイント URI を取得するには、**[プロパティ]** を選択し、プロパティ ウィンドウで **[プライマリ ADLS ファイル システムのエンドポイント]** フィールドの値を見つけます。
-
-これらの両方の値をテキスト ファイルに貼り付けます。 これらはすぐに必要になります。
+その名前をテキスト ファイルに貼り付けます。 この情報はすぐに必要になります。
 
 <a id="service-principal"/>
 
@@ -46,8 +42,6 @@ Azure portal でお客様のストレージ アカウントの名前を取得す
 こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
 この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
-
-:heavy_check_mark:記事の「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)」セクションの手順を実行するとき、**[作成]** ダイアログ ボックスの **[サインオン URL]** フィールドを、先ほど収集したエンドポイント URI に必ず設定してください。
 
 :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
 
@@ -136,7 +130,7 @@ Azure portal でお客様のストレージ アカウントの名前を取得す
     > [!NOTE]
     > このコード ブロックでは OAuth を使用して Data Lake Gen2 エンドポイントに直接アクセスしますが、Databricks ワークスペースをお客様の Data Lake Storage Gen2 アカウントに接続する方法は他にもあります。 たとえば、OAuth を使用してファイル システムをマウントしたり、共有キーによる直接アクセスを使用したりできます。 <br>これらの方法の例については、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」を参照してください。
 
-5. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウント構成を確保する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。  `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に設定します。
+5. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`コード、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウントの名前を取得する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。  `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に設定します。
 
 6. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 

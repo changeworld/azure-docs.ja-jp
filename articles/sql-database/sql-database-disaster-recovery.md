@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474787"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749037"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 
@@ -38,7 +38,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 フェールオーバー グループまたは geo 冗長バックアップのいずれかを使用して、他のデータ領域に適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
 - 他のリージョンで、新しいプライマリ サーバーとして使用する SQL Database サーバーを特定します。 geo リストアの場合は、通常、データベースが配置されているリージョンの[ペア リージョン](../best-practices-availability-paired-regions.md)にあるサーバーです。 これにより、geo 復元操作中の余分なトラフィック コストを排除できます。
-- ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
+- ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルの IP ファイアウォール規則を特定し、必要に応じて定義します。
 - 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 - 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
 - 更新して新しいプライマリ データベースにマップする必要があるアラート ルールを特定します。

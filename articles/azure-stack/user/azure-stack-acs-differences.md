@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/03/2018
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 947886a96ab31150cf81ebea0a3cdd69e0273b01
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305756"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486540"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ:相違点と考慮事項
 
@@ -67,16 +67,8 @@ Azure Storage サービスの API:
 
 1811 update 以降のバージョン:
 
- - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
- - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
- - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
- - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
- - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
-
-1802 update から 1809 update まで:
-
+- [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
@@ -85,35 +77,34 @@ Azure Storage サービスの API:
 
 以前のバージョン:
 
+- [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
 - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Azure Storage サービスの Management API:
 
-- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
-- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+1811 update 以降のバージョン:
+
+- [2017-10-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2017-06-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-12-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-05-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
 以前のバージョン:
 
- - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- 
-## <a name="sdk-versions"></a>SDK バージョン
+- [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-Azure Stack ストレージは、次のクライアント ライブラリをサポートしています。
-
-| クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link                                                                                                                                                                                                                                                                                                                                     | エンドポイントの指定       |
-|----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | 6.2.0 から 8.7.0          | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config ファイル              |
-| Java           | 4.1.0 から 6.1.0           | Maven パッケージ:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | 接続文字列の設定      |
-| Node.js        | 1.1.0 から 2.7.0           | NPM リンク:<br>https://www.npmjs.com/package/azure-storage<br>(たとえば "npm install azure-storage@2.7.0" を実行します)<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | サービス インスタンスの宣言 |
-| C++            | 2.4.0 から 3.1.0           | NuGet パッケージ:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | 接続文字列の設定      |
-| PHP            | 0.15.0 から 1.0.0          | GitHub リリース:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Composer 経由でインストールする (下記参照)                                                                                                                                                                                                                  | 接続文字列の設定      |
-| Python         | 0.30.0 から 1.0.0          | GitHub リリース:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | サービス インスタンスの宣言 |
-| Ruby           | 0.12.1 から 1.0.1          | RubyGems パッケージ:<br>共通:<br>https://rubygems.org/gems/azure-storage-common/<br>BLOB: https://rubygems.org/gems/azure-storage-blob/<br>キュー: https://rubygems.org/gems/azure-storage-queue/<br>テーブル: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-ruby/releases | 接続文字列の設定      |
+Azure Stack でサポートされるストレージ クライアント ライブラリの詳細については、「[Azure Stack ストレージの開発ツールの概要](azure-stack-storage-dev.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Stack Storage の開発ツールの概要](azure-stack-storage-dev.md)
+* [Azure Stack ストレージのデータ転送ツールの使用](azure-stack-storage-transfer.md)
 * [Azure Stack Storage の概要](azure-stack-storage-overview.md)

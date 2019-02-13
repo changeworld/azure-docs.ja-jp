@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: df84562c3ff95ac6fef65ea7c9911d5e12e558ef
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250437"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744965"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Active Directory フェデレーション サービスを使用して Azure Stack に Kubernetes をデプロイする
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack の切断されたシナリオは、プレビューでは現在サポートされていません。
 
 この記事の手順に従えば、Kubernetes のリソースをデプロイおよび設定することができます。 これらの手順は、Active Directory フェデレーション サービス (AD FS) が ID 管理サービスである場合に使用します。
 
@@ -94,7 +94,7 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
         New-AzureRmResourceGroup -Name $resource_group_name -Location $resource_group_location -Force
         
         # Note, Do not omit -EnabledForTemplateDeployment flag
-        New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location local -EnabledForTemplateDeployment
+        New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location $resource_group_location -EnabledForTemplateDeployment
         
         # Obtain the security identifier(SID) of the active directory user
         $adUser = Get-ADUser -Filter "Name -eq '$username'" -Credential $mycreds

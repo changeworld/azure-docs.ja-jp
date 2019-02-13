@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193813"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812721"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -37,7 +37,7 @@ ms.locfileid: "55193813"
 * Source (ソース): ソース オブジェクト
 * [Scope (スコープ)](#scope): スコープ内のすべての同期規則を特定
 * [Join (結合)](#join): コネクタ スペースとメタバースの間の関係を決定
-* [Transform (変換)](#transform): 属性の変換とフローの方法を計算
+* Transform (変換): 属性の変換とフローの方法を計算
 * [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
 * Target (ターゲット): ターゲット オブジェクト
 
@@ -48,7 +48,7 @@ ms.locfileid: "55193813"
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
 ![Scope (スコープ)](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
- この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
+この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
 
 スコープ モジュールでは、次の演算がサポートされています。
 
@@ -68,13 +68,13 @@ ms.locfileid: "55193813"
 ## <a name="join"></a>結合
 同期パイプライン内の結合モジュールは、ソース内のオブジェクトとターゲット内のオブジェクトの関係を特定するためのものです。 受信規則では、この関係は、メタバース内のオブジェクトに対する関係を見つけるためのコネクタ スペース内のオブジェクトです。  
 ![Join between cs and mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
- その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
+その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
 
 結合は、コネクタ スペース オブジェクトを同じメタバース オブジェクトに結合するために、主に受信規則で使用されます。
 
 結合は 1 つ以上のグループとして定義されます。 グループの中には句があります。 グループ内のすべての句の間で論理 AND が使用されます。 グループ間では 論理 OR が使用されます。 グループは上から下へ順番に処理されます。 1 つのグループに対してターゲット内に 1 つだけ一致するオブジェクトがあった場合、他の結合規則は評価されません。 オブジェクトが 1 つも見つからないか、複数のオブジェクトが見つかった場合は、次の規則のグループが処理されます。 そのため、規則を作成するときは、最もはっきりしたものを最初に作成し、最もあいまいなものを最後に作成してください。  
 ![Join definition](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
- この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
+この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
 
 すべての結合規則が評価されても一致するものが 1 つでない場合は、**[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
 ![Provision or join](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  

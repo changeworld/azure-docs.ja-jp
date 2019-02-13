@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 22b12349ac93f0c9dd595e01ecb4661e019c346b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ad5af3e43e1419246d1692c5028cb2453b04516c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458232"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696144"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>クイック スタート: クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`breaksentence` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`breaksentence` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 このサンプルでは、指定されたテキストの言語を設定するために、`params` を使用しています。 `breaksentence` ルートに必ずしも `params` は必要ありません。 要求に含めなかった場合、指定されたテキストの言語の検出を API が試み、その情報が信頼度スコアと一緒に応答として返されます。
 

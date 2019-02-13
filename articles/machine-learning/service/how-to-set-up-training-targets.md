@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250709"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756531"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
@@ -38,18 +38,14 @@ Azure Machine Learning SDK、Azure portal、または Azure CLI を使用して�
 Azure Machine Learning service では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
 
-|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | パイプライン親和性|
+|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | Azure Machine Learning パイプライン |
 |----|:----:|:----:|:----:|:----:|
 |[ローカル コンピューター](#local)| 可能性あり | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning コンピューティング](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[リモート VM](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-
-<a id="pipeline-only"></a>__*__ パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__です。 
-
->この記事で示すように機械学習パイプライン用のコンピューティング先を作成しますが、これらのコンピューティングはここで示されている方法ではなくパイプラインのステップで使用します。  また、この記事で説明されている実行構成が使用されるのは、一部のパイプライン ステップのみです。  パイプラインでのコンピューティング先の使用について詳しくは、[機械学習パイプラインの作成と実行](how-to-create-your-first-pipeline.md)に関する記事をご覧ください。
 
 ## <a name="whats-a-run-configuration"></a>実行構成とは
 
@@ -159,7 +155,7 @@ Azure Machine Learning では、独自のコンピューティング リソー�
 
 このシナリオ向けに選択する Azure VM としては、Data Science Virtual Machine (DSVM) を使用します。 この VM は、Azure での事前構成済みのデータ サイエンスおよび AI 開発環境です。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm)に関する記事をご覧ください。
 
-1. **作成**:モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)」をご覧ください。
+1. **作成**:モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)」をご覧ください。
 
     > [!WARNING]
     > Azure Machine Learning は、Ubuntu を実行する仮想マシンのみサポートします。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
@@ -384,5 +380,5 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 
 * [チュートリアル:モデルのトレーニング](tutorial-train-models-with-aml.md)に関する記事では、マネージド コンピューティング先を使用してモデルをトレーニングします。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [RunConfiguration クラス](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)の SDK リファレンスを確認します。
+* [RunConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)の SDK リファレンスを確認します。
 * [Azure Machine Learning サービスと Azure Virtual Networks を使用する](how-to-enable-virtual-network.md)

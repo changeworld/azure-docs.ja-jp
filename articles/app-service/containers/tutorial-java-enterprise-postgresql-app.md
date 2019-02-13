@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a6e6dfb70182d8b4924a184dcebd1d06695911a5
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539724"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747011"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -50,40 +50,24 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>Maven POM を更新する
 
-希望する名前とお客様のアプリ サービスのリソース グループを指定して、Maven POM を更新します。 これらの値は、Azure プラグインに挿入されます。これは、_pom.xml_ ファイルのかなり下の方にあります。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。
+希望する名前と App Service のリソース グループを指定して、Maven Azure プラグインを更新します。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。 
 
-_pom.xml_ の `<plugins>` セクションまで下へスクロールして、Azure プラグインを確認できます。 azure-webapp-maven-plugin の _pom.xml_ 内にある `<plugin>` 構成のセクションには、以下の構成が含まれている必要があります。
+_pom.xml_ の `<plugins>` セクション (200 行目) まで下へスクロールして、変更を行います。 
 
 ```xml
-      <!--*************************************************-->
-      <!-- Deploy to WildFly in App Service Linux           -->
-      <!--*************************************************-->
- 
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.0</version>
-        <configuration>
- 
-          <!-- Web App information -->
-          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-          <appName>${WEBAPP_NAME}</appName>
-          <region>${REGION}</region>
- 
-          <!-- Java Runtime Stack for Web App on Linux-->
-          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
- 
-        </configuration>
-      </plugin>
+<!-- Azure App Service Maven plugin for deployment -->
+<plugin>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-webapp-maven-plugin</artifactId>
+  <version>${version.maven.azure.plugin}</version>
+  <configuration>
+    <appName>YOUR_APP_NAME</appName>
+    <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup>
+    <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+  ...
+</plugin>  
 ```
-
-お客様が希望するリソース名を使用してプレースホルダーを置き換えます。
-```xml
-<azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
-<azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
-```
-
+`YOUR_APP_NAME` と `YOUR_RESOURCE_GROUP` を、App Service とリソース グループの名前に置き換えます。
 
 ## <a name="build-and-deploy-the-application"></a>アプリケーションをビルドしてデプロイする
 
@@ -139,12 +123,27 @@ az postgres server create -n <desired-name> -g <same-resource-group> --sku-name 
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>POM に Postgres 資格情報を追加する
 
-_pom.xml_ で、お客様の Postgres サーバー名、管理者ログイン名、パスワードを使用してプレースホルダーの値を置き換えます。 これらの値は、アプリケーションを再デプロイするときに、お客様の App Service インスタンスに環境変数として挿入されます。
+_pom.xml_ で、大文字のプレースホルダーの値を、Postgres サーバー名、管理者ログイン名、およびパスワードに置き換えます。 これらのフィールドは、Azure Maven プラグイン内にあります  (`<name>` タグ内ではなく、`<value>` タグ内の `YOUR_SERVER_NAME`、`YOUR_PG_USERNAME`、および `YOUR_PG_PASSWORD` を置き換えてください)。
 
 ```xml
-<azure.plugin.postgres-server-name>SERVER_NAME</azure.plugin.postgres-server-name>
-<azure.plugin.postgres-username>USERNAME@FIRST_PART_OF_SERVER_NAME</azure.plugin.postgres-username>
-<azure.plugin.postgres-password>PASSWORD</azure.plugin.postgres-password>
+<plugin>
+      ...
+      <appSettings>
+      <property>
+        <name>POSTGRES_CONNECTIONURL</name>
+        <value>jdbc:postgresql://YOUR_SERVER_NAME:5432/postgres?ssl=true</value>
+      </property>
+      <property>
+        <name>POSTGRES_USERNAME</name>
+        <value>YOUR_PG_USERNAME</value>
+      </property>
+      <property>
+        <name>POSTGRES_PASSWORD</name>
+        <value>YOUR_PG_PASSWORD</value>
+      </property>
+    </appSettings>
+  </configuration>
+</plugin>
 ```
 
 ### <a name="update-the-java-transaction-api"></a>Java トランザクション API を更新する

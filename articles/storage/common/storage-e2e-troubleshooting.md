@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473206"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746306"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,10 +98,10 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
 
-1. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
+1. [Add-AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
    
     ```powershell
-    Add-AzureAccount
+    Add-AzAccount
     ```
 
 2. **[Microsoft Azure へのサインイン]** ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。 Azure により資格情報が認証および保存され、ウィンドウが閉じます。
@@ -110,7 +110,7 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
     ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount'
-    Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
 4. Blob service のストレージ ログを有効にします。

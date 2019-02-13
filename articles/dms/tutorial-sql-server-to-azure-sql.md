@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 80f2a05c5a770043a8ff1da088be2ad4acb16768
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/04/2019
+ms.openlocfilehash: 6fce0bcf705fe5071092ef3d5103559b4540ff8b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716448"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691541"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>チュートリアル: DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) にデータベースを移行することができます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2016 (以降) のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。
@@ -41,6 +41,10 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 - [SQL Server 2016 以降](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション) をダウンロードしてインストールします。
 - SQL Server Express のインストール時に既定では無効になっている TCP/IP プロトコルを有効にします。有効にする手順については、[サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事を参照してください。
 - Azure SQL Database インスタンスを作成します。作成する場合は「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」の手順に従います。
+ 
+    > [!NOTE]
+    > SQL Server Integration Services (SSIS) を使用していて、SSIS プロジェクト/パッケージ (SSISDB) のカタログ データベースを SQL Server から Azure SQL Database に移行する場合は、SSIS を Azure Data Factory (ADF) にプロビジョニングしたときに移行先 SSISDB が自動的に作成および管理されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。 
+  
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールします。
 - Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
 - Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
@@ -67,6 +71,9 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 4.  **[ソースの選択]** 画面の **[サーバーへの接続]** ダイアログ ボックスで、SQL Server への接続詳細を入力し、**[接続]** を選択します。
 5.  **[Add sources]\(ソースの追加\)** ダイアログ ボックスで、**AdventureWorks2012**、**[追加]**、**[Start Assessment]\(評価の開始\)** の順に選択します。
 
+    > [!NOTE]
+    > SSIS を使用する場合、DMA は現在ソース SSISDB の評価をサポートしていません。 ただし、SSIS プロジェクト/パッケージは、Azure SQL Database によってホストされている移行先 SSISDB に再デプロイされるため、評価/検証されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
+
     評価が完了すると、次のグラフィックに結果が表示されます。
 
     ![データ移行の評価](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
@@ -83,6 +90,9 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 > [!NOTE]
 > Data Migration Assistant で移行プロジェクトを作成する前に、Azure SQL データベースが前提要件での説明に従って既にプロビジョニングされていることを確認してください。 このチュートリアルでは、Azure SQL Database の名前を **AdventureWorksAzure** としていますが、任意の名前を指定することもできます。
+
+> [!IMPORTANT]
+> SSIS を使用する場合、DMA は現在ソース SSISDB の移行をサポートしていませんが、Azure SQL Database によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
 **AdventureWorks2012** スキーマを Azure SQL Database に移行するには、次の手順を実行します。
 
@@ -113,7 +123,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
     ![スキーマ スクリプト](media/tutorial-sql-server-to-azure-sql/dma-schema-script.png)
 
-9.  **[Deploy schema]\(スキーマのデプロイ\)** を選択して Azure SQL データベースにスキーマをデプロイし、スキーマがデプロイされたら、対象サーバーに異常がないかをチェックします。
+9.  **[Deploy schema]\(スキーマのデプロイ\)** を選択して Azure SQL データベースにスキーマをデプロイし、スキーマがデプロイされたら、ターゲット サーバーに異常がないかをチェックします。
 
     ![スキーマをデプロイする](media/tutorial-sql-server-to-azure-sql/dma-schema-deploy.png)
 
@@ -171,7 +181,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
      ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **[SQL Server]** を選択した後、**[対象サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択し、**[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。 
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **[SQL Server]** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択し、**[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。 
 
     ![Database Migration Service プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)
 
@@ -190,6 +200,9 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
     > 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用した SSL を信頼しないでください。
 
    ![ソースの詳細](media/tutorial-sql-server-to-azure-sql/dms-source-details2.png)
+
+    > [!IMPORTANT]
+    > SSIS を使用する場合、DMS は現在ソース SSISDB の移行をサポートしていませんが、Azure SQL Database によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 1. **[保存]** を選択し、**[移行のターゲットの詳細]** 画面でターゲット Azure SQL Database Server の接続の詳細を指定します。これは、Data Migration Assistant を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。

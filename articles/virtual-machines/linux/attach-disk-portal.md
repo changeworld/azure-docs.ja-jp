@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 2c1b46f1c1726a473fe15e490f3000f3c5235a77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5995c896f02720d82862895795e1e8d43f6bb226
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477507"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756464"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -102,10 +102,10 @@ dmesg | grep SCSI
 ### <a name="partition-a-new-disk"></a>新しいディスクのパーティション分割
 データを含む既存のディスクを使用する場合、ディスクのマウントをスキップします。 新規ディスクをアタッチする場合、ディスクをパーティション分割する必要があります。
 
-`fdisk` を使用してディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
+`parted` を使用してディスクをパーティション分割します。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`parted` プロセスが */dev/sdc* 上で開始されます。
 
 ```bash
-sudo fdisk /dev/sdc
+sudo parted /dev/sdc
 ```
 
 `n` コマンドを使用して新しいパーティションを追加します。 この例では、プライマリ パーティションのために `p` も選択し、残りの既定値はそのまま使用します。 出力は次の例のようになります。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: f30305374b1fcaabfb36533195a098073d33b6c3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1bc250ac70e48a548d393c3bc6025868948dc022
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197604"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699161"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 
@@ -39,15 +39,15 @@ Docker マシンや Azure Container Service などの他のデプロイ方法に
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Azure Docker VM 拡張機能を使ってテンプレートをデプロイする
-Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、[Docker を使用した Ubuntu VM の簡単なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)に関するページで確認できます。 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。
+Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、次の場所で確認できます:[Docker を使用した Ubuntu VM の簡単なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)に関するページ。 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしている必要があります。
 
-最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 メッセージが表示されたら、*newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
+次に、[az group deployment create](/cli/azure/group/deployment) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 メッセージが表示されたら、*newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \

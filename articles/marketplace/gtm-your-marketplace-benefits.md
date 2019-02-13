@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: bf73c3226af5b2480d52d5010058f24d912bdab5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355313"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747528"
 ---
 # <a name="your-marketplace-benefits"></a>Marketplace のベネフィット
 
@@ -61,7 +61,7 @@ GTM サポートには、パートナーのビジネスをプロモーション�
 これらのベネフィットにアクセスするには、以下のことを行う必要があります。
 
 1. Azure Marketplace または AppSource でオファーを公開します。
-2. オファーの**連絡先情報**部分でマーケティング連絡先を入力します。 これは、キャッチオール エイリアスではなく、専用のマーケティング リソースでなければなりません。 (つまり、"support@"、"info@"、"marketing@" などは使用しないでください)
+2. オファーの**連絡先情報**部分でマーケティング連絡先を入力します。 これは、キャッチオール エイリアスではなく、専用のマーケティング リソースでなければなりません。 (つまり、"support\@"、"info\@"、"marketing\@" などは使用しないでください)
 
 ソリューションの状態に基づいて、セルフヘルプ リソースを含むメール、または専用の Engagement Manager のコンサルテーション呼び出しへの招待のいずれかを受け取ります。 呼び出しを開始するために何もする必要はありません。Marketplace Onboarding Team が、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で提供された情報に基づいてご連絡します。
 
