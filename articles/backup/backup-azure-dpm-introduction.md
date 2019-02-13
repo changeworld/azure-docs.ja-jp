@@ -48,7 +48,7 @@ Azure VM 上の DPM | System Center 2012 R2 の DPM 2012 R2 更新プログラ�
 物理サーバー上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。 
 HYPER-V VM 上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。 
 VMware VM 上の DPM | System Center 2012 R2 の更新プログラムのロールアップ 5 以降。
-コンポーネント | DPM サーバーには、Windows PowerShell および .Net Framework 4.5 がインストール済みである必要があります。
+コンポーネント | DPM サーバーには、Windows PowerShell および .NET Framework 4.5 がインストール済みである必要があります。
 サポート対象アプリ | DPM がバックアップできるものについて[学習](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)します。
 サポートされるファイルの種類 | Azure Backup では次のファイルの種類をバックアップできます。暗号化ファイル (完全バックアップのみ)、圧縮ファイル (増分バックアップがサポートされる)、スパース ファイル (増分バックアップがサポートされる)、圧縮されたスパース ファイル (スパースとして処理)。
 サポートされていないファイルの種類 | 大文字小文字を区別するファイル システム上のサーバー、ハード リンク (スキップされる)、再解析ポイント (スキップされる)、暗号化されている圧縮ファイル (スキップされる)。暗号化されているスパース ファイル (スキップされる)、圧縮ストリーム、解析ストリーム。
