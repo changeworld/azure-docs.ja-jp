@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022055"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814352"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -236,7 +236,7 @@ ms.locfileid: "54022055"
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **WebSource** に設定され、**sink** 型が **BlobSink** に設定されています。
 
-WebSource でサポートされるプロパティの一覧については、 [WebSource type プロパティに関するセクション](#copy-activity-type-properties) を参照してください。
+WebSource でサポートされるプロパティの一覧については、WebSource type プロパティに関するセクションを参照してください。
 
 ```json
 {  

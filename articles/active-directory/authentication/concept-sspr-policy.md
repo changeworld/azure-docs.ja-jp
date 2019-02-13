@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 45cd9188b420f9c6db3f1adaa4244b30cce0ccc6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 735bc2569436b99d3366d1ce5ff01f40ab7f587a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081893"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510461"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -86,7 +86,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 | パスワードの期限切れ |<ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
 | パスワード変更履歴 |ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは*できません*。 |
 | パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することは*できます*。 |
-| アカウントのロックアウト |正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 |
+| アカウントのロックアウト |正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。 |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Azure AD でパスワード有効期限ポリシーを設定する
 

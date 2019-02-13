@@ -1,5 +1,5 @@
 ---
-title: 'Azure のサイト間接続用に強制トンネリングを構成する: Resource Manager | Microsoft Docs'
+title: Azure のサイト対サイト接続用の強制トンネリングを構成する:Resource Manager | Microsoft Docs
 description: すべてのインターネットへのトラフィックをオンプレミスの場所に "強制的に" リダイレクトする方法。
 services: vpn-gateway
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: 00330f49d4acc9bd2d720a60b743b78c86b08f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 21004c29f1baf0346cd83d8483ff1862a98fc845
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308154"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506466"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 
 強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
 この記事では、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
 
@@ -52,7 +52,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 * 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
   
-  * **ローカル VNet ルート:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
+  * **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
   * **オンプレミス ルート:** Azure VPN ゲートウェイへ。
   * **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 * この手順ではユーザー定義ルート (UDR) を使用して、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
@@ -61,7 +61,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ## <a name="configuration-overview"></a>構成の概要
 
-次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワークである "MultiTier-VNet" には "Frontend"、"Midtier"、"Backend" という 3 つのサブネットがあり、"DefaultSiteHQ" と 3 つの Branch の計 4 つのクロスプレミス接続があります。
+次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワーク 'MultiTier-VNet' には 3 つのサブネット ('Frontend'、'Midtier'、'Backend') があり、クロスプレミス接続は 4 つ ('DefaultSiteHQ' および 3 つの分岐) 用意されています。
 
 以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように "Midtier" と "Backend" サブネットを構成します。
 

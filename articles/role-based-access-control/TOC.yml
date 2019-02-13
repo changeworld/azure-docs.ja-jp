@@ -68,6 +68,8 @@ items:
     href: elevate-access-global-admin.md
   - name: 外部ユーザーのアクセス権の管理
     href: role-assignments-external-users.md
+  - name: 従来の管理者
+    href: classic-administrators.md
   - name: トラブルシューティング
     href: troubleshooting.md
 - name: リファレンス
@@ -94,9 +96,9 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 893c3f7ad2d86688a1a697fa00f06b0b3f4e09cc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 46ff0e024e2c7dc466120054b4a8e69fa47c14cd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700555"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099209"

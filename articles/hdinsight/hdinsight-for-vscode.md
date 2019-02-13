@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/15/2018
-ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 230c5a50efe762b8f27e6a0a84c36c74403b8ecc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818525"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663878"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -31,6 +31,7 @@ Azure HDInsight Tools は、VSCode でサポートされている Windows、Linu
 - HDInsight クラスター。 クラスターを作成するには、[HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
 - [Mono](https://www.mono-project.com/docs/getting-started/install/)。 Mono は Linux と macOS にのみ必要です。
+- VS Code [Azure Account の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ## <a name="install-the-hdinsight-tools"></a>HDInsight Tools をインストールする
    

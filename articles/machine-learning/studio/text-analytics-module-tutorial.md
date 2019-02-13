@@ -1,7 +1,21 @@
 ---
-title:感情分析モデルを作成するtitleSuffix:Azure Machine Learning Studio description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/14/2018
+title: 感情分析モデルを作成する
+titleSuffix: Azure Machine Learning Studio
+description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/14/2018
+ms.openlocfilehash: 431aa2d379639b8daea2519ed643c9949102e117
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511362"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で感情分析モデルを作成する
 

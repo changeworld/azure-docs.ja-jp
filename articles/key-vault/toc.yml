@@ -108,7 +108,7 @@ items:
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.keyvault
+    href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
   - name: Azure CLI
     href: /cli/azure/keyvault
   - name: .NET
@@ -171,9 +171,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 80596412906fd1fd661ee8ccafa2836b058b6866
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2a9cfdb8614c651a667b5b9a07abab4c68bd82ed
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873345"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115829"

@@ -10,12 +10,13 @@ ms.service: active-directory
 ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
-ms.openlocfilehash: 5aa7ed5d67d61d3a99294440830e146dd799478a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80ae193bbb5bdd3de3e26a48fd38705ef8ca7082
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098767"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204561"
 ---
 <div id="main" class="v2">
     <div class="container">

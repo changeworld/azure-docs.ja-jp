@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814233"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -218,7 +218,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
         a. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。<br>
         b. **[追加]、[変更]、[削除]** を含む、3 つのすべてのチェック ボックスを選択します。<br>
         c. 変更がエクスポートされるオブジェクトを一覧表示するには、**[検索]** を選択します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。<br>
-        d. 変更が正しいことを確認します。
+        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 変更が正しいことを確認します。
 
 6. **Azure AD コネクタ**で **[エクスポート]** を実行します。
 
@@ -238,7 +238,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 ## <a name="step-8-verify-the-result"></a>ステップ 8:結果を確認する
 次に、構成を確認し、ユーザーに対して有効にします。
 
-1. ユーザーに対して選択した属性に geo を追加します。 使用できる geo の一覧については、[こちらの表](#enable-synchronization-of-preferreddatalocation)を参照してください。  
+1. ユーザーに対して選択した属性に geo を追加します。 使用できる geo の一覧については、こちらの表を参照してください。  
 ![ユーザーに追加される AD 属性のスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. 属性が Azure AD に同期されるまで待ちます。
 3. Exchange Online PowerShell を使用して、メールボックスのリージョンが適切に設定されていることを確認します。  

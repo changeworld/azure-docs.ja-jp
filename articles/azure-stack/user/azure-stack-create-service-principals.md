@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 6ac5a44f941f8ebcecc3a1d7e6b5e9dccf5704de
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242214"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813162"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
@@ -73,7 +73,7 @@ Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Por
 
 1. Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
-2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 [サンプル アプリケーション](#sample-applications)内にあるアプリケーションでは、**アプリケーション ID** を参照するときに**クライアント ID** を使用します。
+2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 サンプル アプリケーション内にあるアプリケーションでは、**アプリケーション ID** を参照するときに**クライアント ID** を使用します。
 
      ![アプリケーションのアプリケーション ID](./media/azure-stack-create-service-principal/image12.png)
 3. 認証キーを生成するには、**[キー]** を選択します。

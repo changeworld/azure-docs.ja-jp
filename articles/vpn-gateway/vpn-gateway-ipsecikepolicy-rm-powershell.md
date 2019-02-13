@@ -1,5 +1,5 @@
 ---
-title: 'S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する: Azure Resource Manager: PowerShell | Microsoft Docs'
+title: S2S VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する:Azure Resource Manager:PowerShell | Microsoft Docs
 description: Azure Resource Manager と PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: fa1aed76f63e500a6c2849fb9b62a918e85c9fb0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c07634e7c75e166b77ecb1defab02b2601af6bb0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31601153"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510104"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
-この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して、サイト間の VPN または VNet 間の接続の IPsec/IKE ポリシーを作成する手順について説明します。
+この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、サイト間の VPN または VNet 間の接続の IPsec/IKE ポリシーを作成する手順について説明します。
 
 ## <a name="about"></a>Azure VPN ゲートウェイの IPsec/IKE ポリシーのパラメーターについて
 IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさまざまな組み合わせでサポートしています。 このプロトコルがクロスプレミスと VNet-to-VNet 接続でコンプライアンスまたはセキュリティ要件を満たすためにどのように役立つかについては、「[About cryptographic requirements and Azure VPN gateways](vpn-gateway-about-compliance-crypto.md)」(暗号化要件と Azure VPN Gateway について) を参照してください。
@@ -195,8 +195,8 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 
 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
 
-* IKEv2: AES256、SHA384、DHGroup24
-* IPsec: AES256、SHA256、PFS なし、SA の有効期間 14,400 秒および 102,400,000 KB
+* IKEv2:AES256、SHA384、DHGroup24
+* IPsec:AES256、SHA256、PFS なし、SA の有効期間 14,400 秒および 102,400,000 KB
 
 ```powershell
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
@@ -281,8 +281,8 @@ S2S VPN 接続と同じように、IPsec/IKE ポリシーを作成し、新し�
 #### <a name="1-create-an-ipsecike-policy"></a>1.IPsec/IKE ポリシーの作成
 
 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して別の IPsec/IKE ポリシーを作成します。
-* IKEv2: AES128、SHA1、DHGroup14
-* IPsec: GCMAES128、GCMAES128、PFS14、SA の有効期間 14,400 秒および 102,400,000 KB
+* IKEv2:AES128、SHA1、DHGroup14
+* IPsec:GCMAES128、GCMAES128、PFS14、SA の有効期間 14,400 秒および 102,400,000 KB
 
 ```powershell
 $ipsecpolicy2 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000

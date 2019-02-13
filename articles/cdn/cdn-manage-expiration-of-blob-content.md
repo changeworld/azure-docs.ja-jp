@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 29e9bee5f7712252d95b9416ad5523b4dfdd4b94
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814318"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "33765638"
 
 Azure Storage の [Blob Storage サービス](../storage/common/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure Content Delivery Network (CDN) と統合されたサービスの 1 つです。 パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Azure Storage の BLOB で `Cache-Control` ヘッダーを設定する方法のいくつかを示します。
 
-[CDN キャッシュ規則](#setting-cache-control-headers-by-using-caching-rules)を設定して、Azure Portal からキャッシュの設定を制御することもです。 キャッシュ規則を作成し、そのキャッシュ動作を **[上書き]** または **[キャッシュのバイパス]** に設定すると、この記事で説明されている最初に示されたキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
+CDN キャッシュ規則を設定して、Azure portal からキャッシュの設定を制御することもです。 キャッシュ規則を作成し、そのキャッシュ動作を **[オーバーライド]** または **[キャッシュのバイパス]** に設定すると、この記事で説明されている最初に示されたキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
 
 > [!TIP]
 > BLOB に TTL を設定しないこともできます。 この場合は、Azure Portal でキャッシュ規則を設定していない限り、Azure CDN によって既定の 7 日間の TTL が自動的に適用されます。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
@@ -61,13 +61,13 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 **グローバル キャッシュ規則を使用して BLOB ストレージ サービスの Cache-Control ヘッダーを設定するには:**
 
-1. **[グローバル キャッシュ規則]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、**[キャッシュ動作]** を **[上書き]** に設定します。
+1. **[グローバル キャッシュ規則]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、**[キャッシュ動作]** を **[オーバーライド]** に設定します。
       
 2. **[キャッシュの有効期間]** として、**[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
 
    ![CDN グローバル キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   このグローバル キャッシュ規則は 1 時間のキャッシュ有効期間を設定し、エンドポイントへのすべての要求に影響を与えます。 これは、エンドポイントで指定された配信元サーバーによって送信されるすべての `Cache-Control` または `Expires` HTTP ヘッダーを上書きします。   
+   このグローバル キャッシュ規則は 1 時間のキャッシュ有効期間を設定し、エンドポイントへのすべての要求に影響を与えます。 これは、エンドポイントで指定された配信元サーバーによって送信されるすべての `Cache-Control` または `Expires` HTTP ヘッダーをオーバーライドします。   
 
 3. **[保存]** を選択します。
  
@@ -75,13 +75,13 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 1. **[Custom caching rules] (カスタム キャッシュ規則)** で、次の 2 つの一致条件を作成します。
 
-     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[上書き]** に設定し、**[時間]** ボックスに「4」と入力します。
+     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「4」と入力します。
 
-    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[上書き]** に設定し、**[時間]** ボックスに「2」と入力します。
+    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「2」と入力します。
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/blobcontainer1` フォルダー内のすべての BLOB ファイルに対して 4 時間のキャッシュ有効期間を設定します。 2 番目の規則は `blob1.txt` BLOB ファイルについてのみ最初の規則を上書きし、そのファイルに対して 2 時間のキャッシュ有効期間を設定します。
+    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/blobcontainer1` フォルダー内のすべての BLOB ファイルに対して 4 時間のキャッシュ有効期間を設定します。 2 番目の規則は `blob1.txt` BLOB ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 時間のキャッシュ有効期間を設定します。
 
 2. **[保存]** を選択します。
 

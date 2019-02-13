@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: anzaman
-ms.openlocfilehash: 7df709adbd8e45712c112b52fc76920f8b67fe91
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53282958"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815474"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer でのブランド モデルのカスタマイズ
 
-Video Indexer では、動画と音声コンテンツのインデックス作成および再作成中に、音声と視覚的テキストからのブランドの検出をサポートします。 ブランド検出機能を使用すると、Bing のブランドのデータベースによって示唆される製品、サービス、および企業が識別されます。 たとえば、動画または音声コンテンツで Microsoft に言及されている場合や、動画内の視覚テキストに表示される場合、Video Indexer は、そのコンテンツ内でブランドとして Microsoft を検出します。 ブランドは、コンテキストを使用して、他の用語と区別されます。
+Video Indexer では、動画と音声コンテンツのインデックス作成および再作成中に、音声と視覚的テキストからのブランドの検出をサポートします。 ブランド検出機能では、Bing のブランド データベースで提案される製品、サービス、および企業の説明が識別されます。 たとえば、動画または音声コンテンツで Microsoft に言及されている場合や、動画内の視覚テキストに表示される場合、Video Indexer は、そのコンテンツ内でブランドとして Microsoft を検出します。 ブランドは、コンテキストを使用して、他の用語と区別されます。
 
 ブランドの検出は、コンテンツのアーカイブと検出、コンテキストに応じた広告、ソーシャル メディア分析、小売りの競合分析などの多くのさまざまなビジネス シナリオで役立ちます。 Video Indexer のブランド検出機能を使用すると、Bing のブランド データベースを使って音声や視覚テキストでのブランドの言及にインデックスを付けたり、Video Indexer のアカウントごとにカスタム ブランド モデルを作成してカスタマイズしたりできます。 カスタム ブランド モデル機能を使用して、Video Indexer で Bing ブランド データベースのブランドを検出するかどうかの選択、検出される特定のブランドの除外 (実質的にブランドのブラック リストの作成)、Bing のブランド データベースにない可能性があるがモデルの一部にする必要のあるブランドの包含 (実質的にブランドのホワイト リストの作成) を行うことができます。
 
@@ -30,7 +30,7 @@ Video Indexer では、動画と音声コンテンツのインデックス作成
 
 コンテキストからあいまいさを解消する方法を熟知している高度な機械学習アルゴリズムに基づくため、建築のコンテキストで "windows" について話しても、"Windows" はブランドとして検出されません。Box、Apple、Fox などでも同様です。 ブランドの検出は、サポートされているすべての言語で機能します。 Microsoft Build 2017 Day 2 の基調講演の動画とインデックスの完全版については、[ここ](http://www.videoindexer.ai/media/ed6ede78ad/)をクリックしてください。
 
-独自のブランドを使用するには、「[次の手順](#next-stpes)」を確認してください。
+独自のブランドを使用するには、「次の手順」を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

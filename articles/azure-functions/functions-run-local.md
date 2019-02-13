@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094245"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813808"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -28,7 +28,7 @@ Azure Functions Core Tools を使用すると、ローカル コンピュータ�
 
 Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
++ バージョン 1.x: ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
 
 + [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
@@ -181,7 +181,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 }
 ```
 
-| 設定      | 説明                            |
+| Setting      | 説明                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |

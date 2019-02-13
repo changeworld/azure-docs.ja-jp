@@ -57,9 +57,11 @@ items:
     href: https://feedback.azure.com/forums/915958-azure-governance
   - name: ガバナンスに関する YouTube チャンネル
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 5ad9b86273ec51cfa609b1977d83b7107a247188
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+  - name: Azure Friday - Azure Blueprints の概要
+    href: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+ms.openlocfilehash: b80d3a22f17faf1b5759c603185c71ac17b416cd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321859"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996374"

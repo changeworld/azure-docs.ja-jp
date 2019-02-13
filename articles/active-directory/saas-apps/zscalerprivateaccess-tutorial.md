@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d150a91a00652d5af74253dfdf60eb728db97b5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8be5e94886237129824204ea166a2663e2f3110e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192836"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -95,7 +95,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Zscaler Private Access (ZPA) のテスト ユーザーの作成](#creating-a-zscaler-private-access-(zpa)-test-user)** - Zscaler Private Access (ZPA) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **Zscaler Private Access (ZPA) のテスト ユーザーの作成** - Zscaler Private Access (ZPA) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -193,7 +193,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 
 

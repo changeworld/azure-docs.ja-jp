@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: 901de2ac3d80b3ee529d89a22afae7e823437b9b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685210"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506874"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -125,8 +125,8 @@ VPN デバイスが任意の環境間のトラフィック セレクター (ル�
 
 
 このサンプル スクリプトでは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーが作成されます。
-* IKEv2: AES256、SHA384、DHGroup24
-* IPsec: AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
+* IKEv2:AES256、SHA384、DHGroup24
+* IPsec:AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
 
 このスクリプトでは、接続に IPsec/IKE ポリシーを適用して **UsePolicyBasedTrafficSelectors** オプションを有効にします。
 

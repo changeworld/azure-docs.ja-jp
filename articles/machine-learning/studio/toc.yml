@@ -12,29 +12,21 @@ items:
     displayName: FAQ
     href: faq.md
   expanded: true
-- name: チュートリアル
+- name: クイック スタート
   items:
   - name: 初めての実験を作成する
     displayName: quickstart
     href: create-experiment.md
-  - name: 例のチュートリアル
+- name: チュートリアル
+  items:
+  - name: 予測ソリューションを作成する
     items:
-    - name: 予測ソリューションを作成する
-      href: walkthrough-develop-predictive-solution.md
-    - name: 1 - ワークスペースを作成する
-      href: walkthrough-1-create-ml-workspace.md
-    - name: 2 - データをアップロードする
-      href: walkthrough-2-upload-data.md
-    - name: 3 - 実験を作成する
-      href: walkthrough-3-create-new-experiment.md
-    - name: 4 - トレーニングと評価
-      href: walkthrough-4-train-and-evaluate-models.md
-    - name: 5 - Web サービスをデプロイする
-      displayName: publish
-      href: walkthrough-5-publish-web-service.md
-    - name: 6 - Web サービスにアクセスする
-      displayName: consume
-      href: walkthrough-6-access-web-service.md
+    - name: 1 - 実験の作成
+      href: tutorial-part1-credit-risk.md
+    - name: 2 - トレーニングと評価
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3 - Web サービスのデプロイ
+      href: tutorial-part3-credit-risk-deploy.md
 - name: サンプル
   items:
   - name: 使用可能なデータセット
@@ -155,8 +147,6 @@ items:
       href: retrain-machine-learning-model.md
     - name: プログラムで再トレーニングを行う
       href: retrain-models-programmatically.md
-    - name: 従来の Web サービスの再トレーニングを行う
-      href: retrain-a-classic-web-service.md
     - name: PowerShell で再トレーニングを行う
       href: retrain-new-web-service-using-powershell.md
     - name: 既存の Wweb サービスの再トレーニングを行う
@@ -213,9 +203,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 59fb65ee260e65bbbe4d3d8b18097c14a0a652f7
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ac8621773366d7e6dff26f053172e2831fa2d2a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892654"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211480"

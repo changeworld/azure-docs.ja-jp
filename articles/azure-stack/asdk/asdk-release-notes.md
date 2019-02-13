@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/21/2018
-ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c60ba4f4106ddd0c3fc643288894fb55d3d27f8c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240346"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816460"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート 
  
@@ -60,7 +60,7 @@ ms.locfileid: "55240346"
 - ADFS の使用時に RBAC ポリシーをユーザー グループに適用できない問題が修正されました。
 
 <!--3463840 - IS, ASDK --> 
-- パブリック VIP ネットワークからファイル サーバーにアクセスできないことが原因で Infrastructure Backup に失敗する問題が修正されました。 この修正により、インフラストラクチャ バックアップ サービスはパブリック インフラストラクチャ ネットワークに戻されます。 この問題を解決する最新の [1809 用の Azure Stack 修正プログラム](#azure-stack-hotfixes)を提供してある場合、1811 更新プログラムによってそれ以上の変更が加えられることはありません。 
+- パブリック VIP ネットワークからファイル サーバーにアクセスできないことが原因で Infrastructure Backup に失敗する問題が修正されました。 この修正により、インフラストラクチャ バックアップ サービスはパブリック インフラストラクチャ ネットワークに戻されます。 この問題を解決する最新の 1809 用の Azure Stack 修正プログラムを提供してある場合、1811 更新プログラムによってそれ以上の変更が加えられることはありません。 
 
 <!-- 2967387 – IS, ASDK --> 
 - Azure Stack の管理ポータルまたはユーザー ポータルへのサインインに使用したアカウントが **[識別されないユーザー]** と表示されていた問題が修正されました。 このメッセージは、アカウントに "*名*" と "*姓*" がどちらも指定されていない場合に表示されていました。   

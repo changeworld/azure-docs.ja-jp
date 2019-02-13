@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/17/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425784"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657418"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -185,16 +185,18 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 ## <a name="job-behavior"></a>ジョブの動作
 
-Hybrid Runbook Worker で実行されるジョブの処理は、Azure サンドボックスで実行される場合の処理と少し異なります。 主な違いの 1 つは、Hybrid Runbook Worker ではジョブ期間に制限がないことです。 Azure サンドボックスで実行される Runbook は、[フェア シェア](automation-runbook-execution.md#fair-share)により 3 時間に制限されています。 実行時間の長い Runbook では、起こりうる再起動に対して回復性があることを確認します。 たとえば、ハイブリッド worker をホストしているマシンが再起動された場合です。 ハイブリッド worker のホスト マシンが再起動された場合、実行中の Runbook ジョブは最初から再起動されるか、PowerShell ワークフロー Runbook の最後のチェックポイントから再起動されます。 Runbook ジョブが 3 回以上再起動されると、そのジョブは中断されます。
+Hybrid Runbook Worker で実行されるジョブの処理は、Azure サンドボックスで実行される場合の処理と少し異なります。 主な違いの 1 つは、Hybrid Runbook Worker ではジョブ期間に制限がないことです。 Azure サンドボックスで実行される Runbook は、[フェア シェア](automation-runbook-execution.md#fair-share)により 3 時間に制限されています。 実行時間の長い Runbook では、可能性がある再起動に対して回復性があることを確認します。 たとえば、ハイブリッド worker をホストしているマシンが再起動された場合です。 ハイブリッド worker のホスト マシンが再起動された場合、実行中の Runbook ジョブは最初から再起動されるか、PowerShell ワークフロー Runbook の最後のチェックポイントから再起動されます。 Runbook ジョブが 3 回以上再起動されると、そのジョブは中断されます。
 
 ## <a name="run-only-signed-runbooks"></a>署名済み Runbook のみを実行する
 
-Hybrid Runbook Worker は、一部の構成を持つ署名済み Runbook のみを実行するように構成できます。 次のセクションでは、Hybrid Runbook Worker を署名済み Runbook を実行するように設定する方法と、Runbook に署名する方法を説明します。
+Hybrid Runbook Worker は、一部の構成を持つ署名済み Runbook のみを実行するように構成できます。 次のセクションでは、署名済みの [Windows Hybrid Runbook Worker](#windows-hybrid-runbook-worker) と [Linux Hybrid Runbook Worker](#linux-hybrid-runbook-worker) を実行するように、Hybrid Runbook Worker を設定する方法について説明します。
 
 > [!NOTE]
 > Hybrid Runbook Worker を署名済み Runbook のみを実行するように構成すると、**署名されていない** Runbook は worker で実行できなくなります。
 
-### <a name="create-signing-certificate"></a>署名証明書の作成
+### <a name="windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker
+
+#### <a name="create-signing-certificate"></a>署名証明書の作成
 
 次の例では、Runbook の署名に使用できる自己署名証明書を作成します。 このサンプルでは、証明書を作成してエクスポートします。 証明書は、後で Hybrid Runbook Worker にインポートされます。 拇印も返されます。この値は後で証明書を参照するために使用されます。
 
@@ -220,7 +222,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 $SigningCert.Thumbprint
 ```
 
-### <a name="configure-the-hybrid-runbook-workers"></a>Hybrid Runbook Worker の構成
+#### <a name="configure-the-hybrid-runbook-workers"></a>Hybrid Runbook Worker の構成
 
 作成された証明書をグループ内の各 Hybrid Runbook Worker にコピーします。 次のスクリプトを実行して証明書をインポートし、Runbook で署名の検証を使用するようにハイブリッド worker を構成します。
 
@@ -236,7 +238,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
 ```
 
-### <a name="sign-your-runbooks-using-the-certificate"></a>証明書を使用して Runbook に署名する
+#### <a name="sign-your-runbooks-using-the-certificate"></a>証明書を使用して Runbook に署名する
 
 署名済み Runbook のみを使用するように Hybrid Runbook Worker を構成したので、Hybrid Runbook Worker で使用される Runbook に署名する必要があります。 次のサンプルの PowerShell を使用して Runbook に署名します。
 
@@ -246,6 +248,64 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
 Runbook が署名されたら、Automation アカウントにインポートし、署名ブロックによって発行する必要があります。 Runbook のインポート方法については、「[ファイルから Azure Automation への Runbook のインポート](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)」をご覧ください。
+
+### <a name="linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker
+
+Linux Hybrid Runbook Worker で Runbook に署名するために、ご利用の Hybrid Runbook Worker ではマシン上に [GPG](https://gnupg.org/index.html) 実行可能ファイルが存在する必要があります。
+
+#### <a name="create-a-gpg-keyring-and-keypair"></a>GPG キーリングとキー ペアを作成する
+
+キーリングとキー ペアを作成するには、Hybrid Runbook Worker アカウント `nxautomation` を使用する必要があります。
+
+`sudo` を使用し、`nxautomation` アカウントとしてログインします。
+
+```bash
+sudo su – nxautomation
+```
+
+`nxautomation` アカウントを使用したら、gpg キー ペアを生成します。
+
+```bash
+sudo gpg --generate-key
+```
+
+GPG に従って操作すると、キー ペアを作成できます。 名前、メール アドレス、有効期限、パスフレーズを指定して、生成されるキーに対してマシン上のエントロピが十分になるまで待つ必要があります。
+
+GPG ディレクトリは sudo を使って生成されるため、その所有者を nxautomation に変更する必要があります。 
+
+次のコマンドを実行して、所有者を変更します。
+
+```bash
+sudo chown -R nxautomation ~/.gnupg
+```
+
+#### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>キーリングを Hybrid Runbook Worker で使用できるようにする
+
+キーリングが作成されると、Hybrid Runbook Worker に対して使用できるようにする必要があります。 設定ファイル `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` を、セクション `[worker-optional]` に次の例を含めるように変更します。
+
+```bash
+gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+```
+
+#### <a name="verify-signature-validation-is-on"></a>署名の検証がオンであることを確認する
+
+署名の検証がマシン上で無効になっている場合、オンにする必要があります。 次のコマンドを実行して、署名の検証を有効にします。 `<LogAnalyticsworkspaceId>` は自分のワークスペース ID に置き換えます。
+
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
+```
+
+#### <a name="sign-a-runbook"></a>Runbook に署名する
+
+署名の検証が構成されると、次のコマンドを使用して Runbook に署名できます。
+
+```bash
+gpg –clear-sign <runbook name>
+```
+
+署名済み Runbook は `<runbook name>.asc` という名前になります。
+
+署名済み Runbook は Azure Automation にアップロードされ、標準の Runbook のように実行できるようになりました。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

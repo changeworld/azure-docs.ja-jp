@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 34b70b1a6a77a20a034a7822d9c4961c36cdd51c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888993"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663963"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -40,17 +40,12 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、すべての[拡張機能のサポート対象 OS](https://azurewiki.cloudapp.netVMAgentExtension/extensionSupportedOSs) がサポートされます。
+DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
 
 | ディストリビューション | Version |
 |---|---|
-| CentOS Linux | 6.5 以上 |
-| Ubuntu| 12.04 LTS、14.04 LTS、16.04 LTS  |
-| RHEL| 6.5 以上  |
-| openSUSE| 13.1 以上  |
-| SUSE Linux Enterprise Server| 11 SP3 以上  |
-
-  
+| Debian | すべてのバージョン |
+| Ubuntu| 18.04 |
  
 ### <a name="internet-connectivity"></a>インターネット接続
 

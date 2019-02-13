@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c911a53f16e07b67a1ec22a9e0592df06c192325
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e5b23269c8c9d5aecd7ef8ba58100f17cc7973c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188186"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>チュートリアル:Azure Active Directory と Lessonly.com の統合
 
@@ -90,7 +90,7 @@ Lessonly.com で Azure AD のシングル サインオンを構成してテス�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Lessonly.com テスト ユーザーの作成](#creating-a-lessonly-test-user)** - Lessonly.com で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **Lessonly.com テスト ユーザーの作成** - Lessonly.com で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -155,7 +155,7 @@ Lessonly.com で Azure AD のシングル サインオンを構成してテス�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。     
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。     
 
 1. **[保存]** ボタンをクリックします。
 
@@ -199,7 +199,7 @@ Lessonly.com で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-lessonlycom-test-user"></a>Lessonly.com テスト ユーザーの作成
 

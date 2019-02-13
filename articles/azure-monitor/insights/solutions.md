@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299135"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816817"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Azure Monitor の管理ソリューション
 管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
@@ -101,7 +101,7 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 1. **[ワークスペース]** 設定が有効になっている場合、このアカウントは Log Analytics ワークスペースにリンクされます。 **[ワークスペース]** をクリックして、ワークスペースの詳細を表示できます。
 
 ## <a name="remove-a-management-solution"></a>管理ソリューションの削除
-インストール済みのソリューションを削除するには、[インストールされているソリューションの一覧](#list-installed-monitoring-solutions)で検索します。 ソリューション名をクリックして [概要] ページを開き、**[削除]** をクリックします。
+インストール済みのソリューションを削除するには、インストールされているソリューションの一覧で検索します。 ソリューション名をクリックして [概要] ページを開き、**[削除]** をクリックします。
 
 
 

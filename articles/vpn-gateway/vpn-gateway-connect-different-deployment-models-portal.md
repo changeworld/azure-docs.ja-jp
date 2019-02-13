@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405006"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508336"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -113,7 +113,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 2. **[ゲートウェイの構成 (オプション)]** をクリックして、**[ゲートウェイの構成]** ページを開きます。
 
   ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** で既に構成されています。
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**で既に構成されています。
 4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
 5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
 6. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
@@ -147,7 +147,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 ### <a name="2-create-a-gateway-subnet"></a>2.ゲートウェイ サブネットの作成
 
-**例の値:** GatewaySubnet = 192.168.0.0/26
+**値の例:** GatewaySubnet = 192.168.0.0/26
 
 仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 CIDR カウント /28 以上 (/27、/26 など) で、ゲートウェイ サブネットを作成します。 練習としてこれを作成している場合、例の値を使用できます。
 
@@ -171,7 +171,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 ### <a name="createlng"></a>4.ローカル ネットワーク ゲートウェイの作成
 
-**例の値:** ローカル ネットワーク ゲートウェイ = ClassicVNetLocal
+**値の例:** Local network gateway = ClassicVNetLocal
 
 | Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
 |:--- |:--- |:--- |:--- |:--- |
@@ -261,7 +261,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2.ネットワーク構成ファイルの値を表示する
 
-Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 つまり、実際には "Group ClassicRG ClassicVNet" のような名前である場合があります。 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
+Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 名前は次のように表示されます。'Group ClassicRG ClassicVNet' 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
 
 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 
