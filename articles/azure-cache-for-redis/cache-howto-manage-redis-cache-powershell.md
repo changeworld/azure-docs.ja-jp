@@ -126,16 +126,16 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | パラメーター | 説明 | 既定値 |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
-| 場所 |キャッシュの場所 | |
+| Location |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
-| サイズ |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| Size |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値は次のとおりです。1、2、3、4、5、6、7、8、9、10 | |
-| SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |標準 |
+| SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |Standard |
 | RedisConfiguration |Redis 構成の設定を指定します。 各設定の詳細については、次の「 [RedisConfiguration プロパティ](#redisconfiguration-properties) 」の表をご覧ください。 | |
 | EnableNonSslPort |非 SSL ポートが有効になっているかどうかを示します。 |False |
 | MaxMemoryPolicy |このパラメーターは非推奨となりました。代わりに、RedisConfiguration を使用します。 | |
 | StaticIP |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
-| サブネット |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
+| Subnet |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
 | VirtualNetwork |VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値は次のとおりです。Primary、Secondary | |
 
@@ -153,7 +153,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | set-max-intset-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | zset-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | zset-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| データベース |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
+| databases |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成するには
 Azure Cache for Redis インスタンスを新規作成するには、[New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用します。
