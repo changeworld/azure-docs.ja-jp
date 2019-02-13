@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 04acbb36b34a5e1eb0a0ead28cc7a1d40a50851c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807747"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697627"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015289"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696827"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -46,11 +46,11 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 3. **[パブリック IP アドレス プレフィックス]** の **[作成]** を選択します。
 4. **[Create public IP address prefix]\(パブリック IP アドレス プレフィックス\)** にある以下の設定に対して値を入力または選択して、**[作成]** を選択します。
 
-   |設定|必須|詳細|
+   |Setting|必須|詳細|
    |---|---|---|
    |サブスクリプション|はい|パブリック IP アドレスを関連付けるリソースと同じ[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内に存在する必要があります。|
    |リソース グループ|はい|所属する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)は、パブリック IP アドレスを関連付けるリソースと同じであっても異なっていてもかまいません。|
-   |名前|はい|選択したリソース グループ内で一意となる名前を使用してください。|
+   |Name|はい|選択したリソース グループ内で一意となる名前を使用してください。|
    |リージョン|はい|範囲からアドレスを割り当てるパブリック IP アドレスと同じ[リージョン](https://azure.microsoft.com/regions)に存在する必要があります。 プレフィックスは、現在、米国中西部、米国西部、米国西部 2、米国中部、北ヨーロッパ、西ヨーロッパ、および東南アジアでプレビュー段階です。|
    |プレフィックス サイズ|はい| 必要なプレフィックスのサイズ。 /28 または 16 の IP アドレスが既定値です。 
 
@@ -70,9 +70,9 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 3. 検索結果に表示されたら選択し、[概要] セクションの **[+ IP アドレスの追加]** をクリックします。 これが表示されない場合は、プレビューの正しいリンクを使用していることを確認してください。 https://aka.ms/publicipprefixportal
 4. **[パブリック IP アドレスの作成]** で次の設定の値を入力または選択します。 プレフィックスは Standard SKU、IPv4、かつ静的なので、次の情報を入力する必要があります。
 
-   |設定|必須|詳細|
+   |Setting|必須|詳細|
     |---|---|---|
-    |名前|はい|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
+    |Name|はい|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
    |アイドル タイムアウト (分)|いいえ |クライアントからキープアライブ メッセージを送信しなくても TCP 接続または HTTP 接続が開いたまま維持される時間 (分)。 |
    |DNS 名ラベル|いいえ |作成する Azure リージョン (すべてのサブスクリプション、すべての顧客) で一意の名前を付けます。 指定した名前を使用してリソースに接続できるよう、DNS 内の名前と IP アドレスが Azure によって自動的に登録されます。 指定した名前に既定のサブネット (*location.cloudapp.azure.com* など、"location" は選択した場所) が付加されて、完全修飾 DNS 名が作成されます。詳細については、[Azure パブリック IP アドレスで Azure DNS を使用する方法](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)に関するページを参照してください。|
 
@@ -95,7 +95,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 パブリック IP アドレス プレフィックスでタスクを実行するには、[ネットワークの共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションが割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-| アクション                                                                   | 名前                                                           |
+| Action                                                                   | Name                                                           |
 | ---------                                                                | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | パブリック IP アドレス プレフィックスの読み取り                                |
 | Microsoft.Network/publicIPPrefixes/write                          | パブリック IP アドレス プレフィックスの作成または更新                    |

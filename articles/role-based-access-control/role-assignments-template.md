@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206697"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696899"
 ---
 # <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用してアクセスを管理する
 
@@ -92,16 +92,18 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
 ## <a name="deploy-template-using-azure-powershell"></a>Azure PowerShell を使用してテンプレートを展開する
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Azure PowerShell を使用して前のテンプレートをデプロイするには、以下の手順のようにします。
 
 1. rbac-rg.json という名前の新しいファイルを作成し、前に示したテンプレートをコピーします。
 
 1. [Azure PowerShell](/powershell/azure/authenticate-azureps) にサインインします。
 
-1. ユーザー、グループ、またはアプリケーションの一意識別子を取得します。 たとえば、[Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) コマンドを使って Azure AD ユーザーの一覧を表示できます。
+1. ユーザー、グループ、またはアプリケーションの一意識別子を取得します。 たとえば、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) コマンドを使って Azure AD ユーザーの一覧を表示できます。
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. GUID ツールを使って、ロールの割り当てに使う一意識別子を生成します。 この識別子の形式は `11111111-1111-1111-1111-111111111111` になります。
@@ -109,21 +111,21 @@ Azure PowerShell を使用して前のテンプレートをデプロイするに
 1. リソース グループの例を作成します。
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドを使って、デプロイを開始します。
+1. [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドを使って、デプロイを開始します。
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     必要なパラメーターの指定を求められます。 出力の例を次に示します。
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222

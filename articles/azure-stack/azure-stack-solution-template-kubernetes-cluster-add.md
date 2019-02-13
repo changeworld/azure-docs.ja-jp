@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b7e293018f2dc248fae8de8bd9e82943606f4ead
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239504"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765485"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
 *適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack の切断されたシナリオは、プレビューでは現在サポートされていません。
 
 Kubernetes は、Marketplace 項目としてユーザーに提供できます。 ユーザーはその後、1 回の連携した操作で Kubernetes をデプロイできます。
 
@@ -57,7 +57,7 @@ Kubernetes の Marketplace 項目のプラン、オファー、サブスクリ�
 
     c. **[プロバイダーの説明]**
 
-    d. **[Directory tenant]** を Azure Stack の Azure AD テナントに設定します。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Directory tenant]** を Azure Stack の Azure AD テナントに設定します。 
 
     e. **[オファー]** を選択します。 作成したオファーの名前を選択します。 サブスクリプション ID をメモします。
 
