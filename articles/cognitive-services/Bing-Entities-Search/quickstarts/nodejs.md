@@ -1,94 +1,114 @@
 ---
-title: クイック スタート:Bing Entity Search API (Node.js)
+title: クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 titlesuffix: Azure Cognitive Services
-description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: このクイック スタートを使用すると、C# を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 18476b8fa272ea235526693a9e2bab577298244d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 37e00c6cdc5340607a4aabc446d87e1a8575c552
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174467"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755137"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Bing Entity Search API のクイック スタート (Node.js)
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 
-この記事では、Node.JS で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)  API を使用する方法について説明します。
+このクイック スタートを使用すると、Bing Entity Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 この簡単な JavaScript アプリケーションでは、新しい検索クエリを API に送信して、その応答を表示します。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js) で入手できます。
+
+このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには [Node.js 6](https://nodejs.org/en/download/) が必要です。
+* 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Entity Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+* [JavaScript Request ライブラリ](https://github.com/request/request)
 
-## <a name="search-entities"></a>エンティティの検索
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-このアプリケーションを削除するには、次の手順に従います。
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE で新しい Node.JS プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と https の要件を設定します。
 
-```nodejs
-'use strict';
+    ```javaScript
+    'use strict';
+    let https = require ('https');
+    ```
 
-let https = require ('https');
+2. API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    let subscriptionKey = 'ENTER YOUR KEY HERE';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/entities';
+    
+    let mkt = 'en-US';
+    let q = 'italian restaurant near me';
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+3. `query` という文字列の後に、市場とクエリ パラメーターを追加します。 忘れずに、`encodeURI()` でクエリを URL エンコードします。
+    ```javascript 
+    let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/entities';
+## <a name="handle-and-parse-the-response"></a>応答の処理と解析
 
-let mkt = 'en-US';
-let q = 'italian restaurant near me';
+1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で、次の手順を実行します。
 
-let params = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    1. JSON 応答の本文を含む変数を定義します。  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let body_ = JSON.parse (body);
-        let body__ = JSON.stringify (body_, null, '  ');
-        console.log (body__);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+    2. **data** フラグが呼び出されたときに応答の本文を格納する
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-let Search = function () {
-    let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    3. **end** フラグが通知されたら、JSON を解析して、それを表示します。
 
-    let req = https.request (request_params, response_handler);
-    req.end ();
-}
+        ```javascript
+        response.on ('end', function () {
+        let json = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log (json);
+        });
+        ```
 
-Search ();
-```
+## <a name="send-a-request"></a>要求を送信する
 
-**応答**
+1. 検索要求を送信するための `Search` という関数を作成します。 その中で、次の手順を実行します。
+
+    1. 要求パラメーターを含む JSON オブジェクトを作成します。メソッドとして `Get` を使用し、ホストとパスの情報を追加します。 お使いのサブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。 
+    2. `https.request()` を使用して、前に作成した応答ハンドラーと検索パラメーターを含む要求を送信します。
+    
+    ```javascript
+    let Search = function () {
+        let request_params = {
+            method : 'GET',
+            hostname : host,
+            path : path + query,
+            headers : {
+                'Ocp-Apim-Subscription-Key' : subscriptionKey,
+            }
+        };
+    
+        let req = https.request (request_params, response_handler);
+        req.end ();
+    }
+    ```
+
+2. `Search()` 関数を呼び出します。
+
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -153,11 +173,10 @@ Search ();
 }
 ```
 
-[先頭に戻る](#HOLTop)
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Entity Search のチュートリアル](../tutorial-bing-entities-search-single-page-app.md)
-> [Bing Entity Search の概要](../search-the-web.md )
-> [API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Bing Entity Search API とは](../overview.md )
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

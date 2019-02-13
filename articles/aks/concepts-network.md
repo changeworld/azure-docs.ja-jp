@@ -1,18 +1,18 @@
 ---
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
-description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。基本ネットワークと高度ネットワーク、イングレス コントローラー、ロード バランサー、および静的 IP アドレスの説明が含まれます。
+description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 62ba98f221041d5bbf9bb095a02d052218eb0fd0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380887"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820132"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -23,7 +23,7 @@ ms.locfileid: "49380887"
 - [サービス](#services)
 - [Azure 仮想ネットワーク](#azure-virtual-networks)
 - [イングレス コントローラー](#ingress-controllers)
-- [ネットワーク ポリシー](#network-policies)
+- ネットワーク ポリシー
 
 ## <a name="kubernetes-basics"></a>Kubernetes の基本
 
@@ -61,37 +61,32 @@ Azure プラットフォームは、AKS クラスターの仮想ネットワー�
 
 AKS では、次の 2 つのネットワーク モデルのいずれかを使用するクラスターをデプロイできます。
 
-- "*基本*" ネットワーク - AKS クラスターのデプロイ時にネットワーク リソースが作成され、構成されます。
-- "*高度*" ネットワーク - AKS クラスターは既存の仮想ネットワーク リソースに接続され、構成されます。
+- *Kubenet* ネットワーク - AKS クラスターのデプロイ時に、通常はネットワーク リソースが作成され、構成されます。
+- *Azure Container Networking Interface (CNI)* ネットワーク - AKS クラスターは、既存の仮想ネットワーク リソースと構成に接続されます。
 
-### <a name="basic-networking"></a>基本ネットワーク
+### <a name="kubenet-basic-networking"></a>Kubenet (基本) ネットワーク
 
-"*基本*" ネットワーク オプションは、AKS クラスターを作成するための既定の構成です。 クラスターとポッドのネットワーク構成はAzure プラットフォームが管理します。 基本ネットワークは、仮想ネットワークのカスタム構成を必要としないデプロイに適しています。 基本ネットワークでは、AKS クラスターに割り当てるサブネット名や IP アドレスの範囲などのネットワーク構成を定義することはできません。
+*kubenet* ネットワーク オプションは、AKS クラスターを作成するための既定の構成です。 *kubenet* を使用して、ノードでは Azure 仮想ネットワーク サブネットから IP アドレスを取得します。 ポッドでは、ノードの Azure 仮想ネットワーク サブネットとは倫理的に異なるアドレス空間から IP アドレスを受信します。 その後、ポッドで Azure 仮想ネットワークのリソースに到達できるように、ネットワーク アドレス変換 (NAT) が構成されます。 トラフィックの発信元 IP アドレスは、ノードのプライマリ IP アドレスに NAT 変換されます。
 
-基本ネットワーク用に構成された AKS クラスターのノードは、[kubenet][kubenet] Kubernetes プラグインを使用します。
+ノードでは、[kubenet][kubenet] Kubernetes プラグインを使用します。 Azure プラットフォームで仮想ネットワークを作成および構成させることができます。または、既存の仮想ネットワーク サブネットに AKS クラスターをデプロイするように選択できます。 ここでも、ルーティング可能な IP アドレスを受信するのはノードのみであり、ポッドでは NAT を使用して、AKS クラスター外の他のリソースと通信します。 この方法では、ポッドで使用するネットワーク空間で予約する必要がある IP アドレスの数が大幅に減ります。
 
-基本ネットワークには次の機能があります。
+詳細については、[AKS クラスター用の kubenet ネットワークの構成][aks-configure-kubenet-networking]に関するページを参照してください。
 
-- Azure Load Balancer を使用して、Kubernetes サービスを外部または内部に公開できます。
-- ポッドはパブリック インターネット上のリソースにアクセスできます。
+### <a name="azure-cni-advanced-networking"></a>Azure CNI (高度) ネットワーク
 
-### <a name="advanced-networking"></a>高度ネットワーク
+Azure CNI を使用して、すべてのポッドでサブネットから IP アドレスを取得します。ポッドには直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 そのノードに対して、ノードごとの同等数の IP アドレスが事前に予約されます。 この方法では詳細な計画が必要であり、多くの場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になります。
 
-"*高度*" ネットワークでは、構成する Azure 仮想ネットワーク内にポッドに配置します。 この仮想ネットワークでは、他の Azure リソースへの自動接続が行われ、豊富な機能セットが統合されます。 高度ネットワークは、既存のサブネットと接続を使用するような特別な仮想ネットワーク構成を必要とするデプロイに適しています。 高度ネットワークでは、サブネット名と IP アドレスの範囲を定義できます。
-
-高度ネットワーク用に構成された AKS クラスターのノードは、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。
+ノードでは [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインが使用されます。
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図][advanced-networking-diagram]
 
-高度ネットワークには基本ネットワークの機能に加え、次の機能があります。
+Azure CNI では、kubenet ネットワーク経由で以下の機能が提供されます。
 
-- AKS クラスターを既存の Azure 仮想ネットワークにデプロイするか、クラスター用の新しい仮想ネットワークとサブネットを作成します。
 - クラスター内のすべてのポッドに、仮想ネットワーク内の IP アドレスが割り当てられます。 ポッドは、クラスター内の他のポッドに加え、仮想ネットワーク内の他のノードと直接通信できます。
-- ポッドは、ピアリングされた仮想ネットワーク内の他のサービスに接続でき、ExpressRoute とサイト間 (S2S) VPN 接続経由でオンプレミス ネットワークと接続することもできます。 ポッドにはオンプレミスからも到達できます。
 - サービス エンドポイントが有効なサブネット内のポッドは、Azure サービス (Azure Storage や SQL DB など) に安全に接続できます。
 - ユーザー定義のルート (UDR) を使用して、ポッドのトラフィックをネットワーク仮想アプライアンスにルーティングできます。
 
-詳細については、[AKS クラスターの高度ネットワーク構成][aks-configure-advanced-networking]に関する説明を参照してください。
+詳細については、[AKS クラスター用の Azure CNI の構成][aks-configure-advanced-networking]に関するページを参照してください。
 
 ## <a name="ingress-controllers"></a>イングレス コントローラー
 
@@ -113,7 +108,7 @@ SSH などのトラフィック向けの既定のネットワーク セキュリ
 
 ## <a name="next-steps"></a>次の手順
 
-AKS ネットワーク を開始するには、[AKS クラスターの高度ネットワークの作成と構成][aks-configure-advanced-networking]に関する記事を参照してください。
+AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] または [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
 
 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
@@ -137,7 +132,8 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
 [aks-ingress-tls]: ingress.md
-[aks-configure-advanced-networking]: configure-advanced-networking.md
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-scale]: concepts-scale.md

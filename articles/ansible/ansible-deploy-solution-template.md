@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 705d23a93b25c513d413f2115c47d52ff6ef2bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229214"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770284"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 Azure 用の Ansible ソリューション テンプレートは、Azure と連携するよう構成された Ansible と一連のツールと共に、CentOS 仮想マシン上の Ansible インスタンスを構成するように設計されています。 ツールには次のものが含まれます。
@@ -53,7 +53,7 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
 1. **[追加設定]** タブで、必要な情報を入力します。
 
     - **[サイズ]** - 既定値は Azure portal によって標準のサイズに設定されます。 お客様固有のシナリオに対応できる別のサイズを指定するには、矢印を選択して別のサイズの一覧を表示します。
-    - **[VM ディスク サイズ]** - **[SSD]** (Premium ソリッドステート ドライブ) または **[HDD]** (ハード ディスク ドライブ) を選択します。 デモの目的で、パフォーマンス上の利点がある **[SSD]** が選択されています。 これらの各種ディスク ストレージの詳細については、次の記事を参照してください。
+    - **[VM ディスクの種類]** - **[SSD]** (Premium ソリッドステート ドライブ) または **[HDD]** (ハード ディスク ドライブ) を選択します。 デモの目的で、パフォーマンス上の利点がある **[SSD]** が選択されています。 これらの各種ディスク ストレージの詳細については、次の記事を参照してください。
         - [VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](/azure/virtual-machines/windows/premium-storage)
         - [Azure 仮想マシンのワークロード用の Standard SSD マネージド ディスク](/azure/virtual-machines/windows/disks-standard-ssd)
     - **[パブリック IP アドレス]** - 仮想マシンの外部から仮想マシンと通信したい場合にこの設定を指定します。 既定値は、`ansible-pip` という名前の新しいパブリック IP アドレスです。 別の IP アドレスを指定するには、矢印を選択して、その IP アドレスの属性 (名前、SKU、割り当てなど) を指定します。 

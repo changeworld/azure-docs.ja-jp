@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ffad78afd6acdfbcea8df970358c639706f14b8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298349"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814250"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -32,7 +32,7 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure DevOps Services](https://docs.microsoft.com/azure/devops/) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションとデプロイのツールからコンテナー レジストリを対象にします。
 
-ベース イメージが更新されたときに自動的にアプリケーションイメージをリビルドするように [ACR タスク](#azure-container-registry-build)を設定します。 Git レポジトリにコードが コミットされたときのイメージ ビルドを自動化するために、ACR タスクを利用します。
+ベース イメージが更新されたときに自動的にアプリケーションイメージをリビルドするように ACR タスクを設定します。 Git レポジトリにコードが コミットされたときのイメージ ビルドを自動化するために、ACR タスクを利用します。
 
 ## <a name="key-concepts"></a>主要な概念
 

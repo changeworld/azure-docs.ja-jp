@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 167dce168f9adfa59a96c09c62548c7c6e253b09
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211408"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820982"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -239,7 +239,7 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
     [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. フレーズ リストが使用されるように、アプリを再度[トレーニング](#train)して[発行](#publish)します。
+1. フレーズ リストが使用されるように、アプリを再度トレーニングして発行します。
 
 1. 同じ発話 `This is the lead welder paperwork.` を含むエンドポイントにクエリを再実行します。
 

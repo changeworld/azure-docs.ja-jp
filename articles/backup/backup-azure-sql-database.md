@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa154b79625fffb8174c510156b3a67df8bff785
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224243"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770437"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -202,6 +202,7 @@ IaaS VM で Azure Backup for SQL Server を使用してスムーズにバック�
 
   * 末尾/先頭のスペース
   * 末尾の "!"
+  * 右大かっこ "]"
 
 Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、それでも避けることをお勧めします。 詳細については、[こちらの記事](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)を参照してください。
 
@@ -721,6 +722,8 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 * 今後のバックアップ ジョブすべてを停止するが、復旧ポイントはそのままにする。
 
 データの保持についてバックアップの停止を選択した場合は、バックアップ ポリシーに従って復旧ポイントがクリーンアップされます。 すべての復旧ポイントがクリーンアップされるまでは、SQL で保護されたインスタンス価格が請求されるだけでなく、ストレージ容量も消費されます。 SQL に対する Azure Backup の価格設定の詳細情報については、[Azure Backup の価格のページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
+
+データを保持してバックアップを停止すると常に、復旧ポイントはアイテム保持ポリシーに従って有効期限が切れますが、Azure Backup では、ユーザーがバックアップ データを明示的に削除するまで、最後の 1 つの復旧ポイントは常に保持されます。 同様にバックアップの停止を実行しないでデータ ソースを削除した場合、新しいバックアップの開始は失敗し、古い復旧ポイントはアイテム保持ポリシーに従って有効期限が切れますが、ユーザーがデータを削除してバックアップを停止するまで、最後の 1 つの復旧ポイントは常に保持されます。
 
 データベースの保護を停止するには、次の手順を実行します。
 

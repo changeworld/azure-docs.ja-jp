@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c133ba5a95e0476c6d992e53776b384fdc8c97ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321479"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809801"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 
@@ -249,7 +249,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 ### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
 
-信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、[ルート証明書 .cer ファイルのアップロード](#upload-the-root-certificate-.cer-file)に関するページを参照してください。
+信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、ルート証明書 .cer ファイルのアップロードに関するページを参照してください。
 
 ### <a name="to-remove-a-trusted-root-certificate"></a>信頼されたルート証明書を削除するには
 
@@ -290,7 +290,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 ## <a name="next-steps"></a>次の手順
 
-- 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 
+- 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 
 
 - ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/network-overview.md)に関するページを参照してください。
 

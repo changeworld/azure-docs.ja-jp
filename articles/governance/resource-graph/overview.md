@@ -4,16 +4,16 @@ description: Azure Resource Graph は、リソースの複雑なクエリを大�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316201"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813281"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -45,6 +45,10 @@ Azure Resource Graph のクエリ言語が [Azure Data Explorer のクエリ言�
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph でのアクセス許可
 
 Resource Graph を使用するためには、最低限、照会したいリソースに読み取りアクセスできる適切な権限が、[ロール ベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を通じて付与される必要があります。 Azure のオブジェクトまたはオブジェクト グループに対する `read` 以上のアクセス許可がないと、結果は返されません。
+
+## <a name="throttling"></a>Throttling
+
+すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされされます。 大規模かつ頻繁なクエリに Resource Graph API を使用する場合は、Resource Graph のページからポータルの "フィードバック" を使用してください。 必ずビジネス ケースを明記し、チームが連絡できるように [Microsoft からフィードバックについてメールをお送りする場合があります] チェック ボックスをオンにしてください。
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 

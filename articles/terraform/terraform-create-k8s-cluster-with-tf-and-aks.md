@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078951"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814794"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
@@ -352,7 +352,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform plan" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「[Cloud Shell タイムアウトから復旧する](#recover-from-a-dloud-shell-timeout)」セクションの手順に従ってチュートリアルを完了できます。
+1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「Cloud Shell タイムアウトから復旧する」セクションの手順に従ってチュートリアルを完了できます。
 
     ```bash
     terraform apply out.plan
@@ -362,7 +362,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform apply" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Azure Portal で、左側のメニューの **[すべてのサービス]** を選択すると、新しい Kubernetese クラスターに対して作成されたリソースが表示されます。
+1. Azure portal で、左側のメニューの **[すべてのサービス]** を選択すると、新しい Kubernetes クラスターに対して作成されたリソースが表示されます。
 
     ![Cloud Shell のプロンプト](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 

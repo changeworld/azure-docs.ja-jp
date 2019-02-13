@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051313"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812346"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワークのサービス エンドポイント ポリシー (プレビュー)
 
@@ -154,7 +154,7 @@ __Azure Storage__:WestCentralUS、WestUS2。
 ### <a name="troubleshooting-scenarios"></a>トラブルシューティングのシナリオ
 - エンドポイント ポリシーにリストされていないストレージ アカウントに対するアクセスが許可される
   - ネットワーク セキュリティ グループで、他のリージョン内のインターネットまたは Azure Storage アカウントへのアクセスが許可されている可能性があります。
-  - ネットワーク セキュリティ グループは、すべての送信インターネット トラフィックを拒否して、特定の Azure Storage リージョンへのトラフィックのみを許可するように構成する必要があります。 詳細については、[ネットワーク セキュリティ グループ](#network-security-groups)に関する記述を参照してください。
+  - ネットワーク セキュリティ グループは、すべての送信インターネット トラフィックを拒否して、特定の Azure Storage リージョンへのトラフィックのみを許可するように構成する必要があります。 詳しくは、「ネットワーク セキュリティ グループ」をご覧ください。
 - エンドポイント ポリシーにリストされているアカウントに対するアクセスが拒否される
   - ネットワーク セキュリティ グループまたはファイアウォールのフィルター処理でアクセスがブロックされている可能性があります
   - ポリシーの削除または再適用によって接続が失われる場合:

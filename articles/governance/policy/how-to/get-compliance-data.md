@@ -4,17 +4,17 @@ description: Azure Policy の評価と効果によって、コンプライアン
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853631"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766414"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -45,6 +45,8 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - Resource Manager、REST、Azure CLI、または Azure PowerShell を介した割り当てで、リソースがスコープにデプロイされる。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
 
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 多くのリソースの大きなポリシーまたはイニシアティブでは時間がかかることがあるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
+
+- [ゲスト構成](../concepts/guest-configuration.md)リソース プロバイダーは、管理対象リソースによってコンプライアンスの詳細で更新されます。
 
 - オンデマンド スキャン
 
@@ -139,6 +141,26 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 詳細情報を収集するイベントの行を右クリックし、**[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
 
 ![ポリシー コンプライアンスのアクティビティ ログ](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>変更履歴 (プレビュー)
+
+新しい**パブリック プレビュー**の一部として、過去 14 日間の変更履歴を非準拠リソースに対して利用できます。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、非準拠リソースの Resource Manager のプロパティが追加、削除、または変更されるとトリガーされます。
+
+1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+
+1. **[概要]** ページまたは **[コンプライアンス]** ページで、"_準拠していない_" ポリシーを選択します。
+
+1. **[ポリシーへの準拠]** ページの **[リソース コンプライアンス]** タブで、"_準拠していない_" リソースを選択します。
+
+1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
+
+   ![ポリシー変更履歴 - タブ](../media/getting-compliance-data/change-history-tab.png)
+
+1. 検出された変更のいずれかを選択します。 準拠していないリソースの "_差分表示_" が、**[変更履歴]** ページに表示されます。
+
+   ![ポリシー変更履歴 - 差分表示](../media/getting-compliance-data/change-history-visual-diff.png)
+
+"_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更は、選択したポリシーに対してリソースが準拠しなくなった原因とは無関係である可能性があります。
 
 ## <a name="command-line"></a>コマンド ライン
 

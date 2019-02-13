@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: d77cdd7781f3a371d6089573a16ba642fb1c774c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912784"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769870"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -85,13 +85,13 @@ ms.locfileid: "54912784"
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
-| トリガーのコンカレンシー | コンカレンシーを制限する場合は 50 | トリガーに対するコンカレンシー制御を有効にした場合、既定の制限は 25 です。 この制限は、同時に (並行して) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 | 
-| 待機中の実行の最大数 | コンカレンシーを制限する場合は 100 | トリガーに対するコンカレンシー制御を有効にした場合、既定の制限は 10 です。 この制限は、ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 0 ～ 100 の値に変更するには、[待機中の実行の制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)に関する記事をご覧ください。 | 
+| トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 | 
+| 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 | 
 | Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](../connectors/connectors-native-query.md)を使用できます。 | 
-| Foreach のコンカレンシー | コンカレンシーを制限する場合は 50 | このループに対するコンカレンシー制御を有効にした場合、既定の制限は 20 です。 この制限は、同時に (並行して) 実行できる "for each" ループ イテレーションの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" のコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)に関するページまたは「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 | 
-| SplitOn 項目数 | 100,000 | | 
-| Until 反復数 | 5,000 | | 
-|||| 
+| Foreach のコンカレンシー | コンカレンシー制御がオフの場合、20 が既定値の制限となります。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できる "for each" ループ イテレーションの最大数です。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" のコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)に関するページまたは「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 | 
+| SplitOn 項目数 | 100,000 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 |
+| Until 反復数 | 5,000 | |
+||||
 
 <a name="throughput-limits"></a>
 
@@ -195,53 +195,58 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 | アーティファクト | 制限 | メモ | 
 |----------|-------|-------| 
-| EDI 取引先 | 25 | | 
-| EDI 取引契約 | 10 | | 
-| マップ | 25 | | 
-| スキーマ | 25 | 
 | アセンブリ | 10 | | 
 | バッチの構成 | 5 | 
 | 証明書 | 25 | | 
+| EDI 取引契約 | 10 | | 
+| EDI 取引先 | 25 | | 
+| マップ | 25 | | 
+| スキーマ | 25 | 
 |||| 
 
 *Basic レベル*
 
 | アーティファクト | 制限 | メモ | 
 |----------|-------|-------| 
-| EDI 取引先 | 2 | | 
-| EDI 取引契約 | 1 | | 
-| マップ | 500 | | 
-| スキーマ | 500 | 
 | アセンブリ | 25 | | 
 | バッチの構成 | 1 | | 
 | 証明書 | 2 | | 
+| EDI 取引契約 | 1 | | 
+| EDI 取引先 | 2 | | 
+| マップ | 500 | | 
+| スキーマ | 500 | 
 |||| 
 
 *Standard レベル*
 
 | アーティファクト | 制限 | メモ | 
 |----------|-------|-------| 
-| EDI 取引先 | 500 | | 
-| EDI 取引契約 | 500 | | 
-| マップ | 500 | | 
-| スキーマ | 500 | 
 | アセンブリ | 50 | | 
 | バッチの構成 | 5 |  
 | 証明書 | 50 | | 
+| EDI 取引契約 | 500 | | 
+| EDI 取引先 | 500 | | 
+| マップ | 500 | | 
+| スキーマ | 500 | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>アーティファクト容量制限
 
-| Name | 制限 | メモ | 
-| ---- | ----- | ----- | 
-| スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) を使用します。 | 
-| マップ (XSLT ファイル) | 2 MB | | 
-| ランタイム エンドポイント: 5 分あたりの読み取り呼び出し数 | 60,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
-| ランタイム エンドポイント: 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
-| ランタイム エンドポイント: 5 分あたりの追跡呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
-| ランタイム エンドポイント: ブロックされた同時呼び出し数 | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
+| アーティファクト | 制限 | メモ | 
+| -------- | ----- | ----- | 
+| アセンブリ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 | 
+| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) を使用します。 | 
+| スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 | 
+||||
+
+| ランタイム エンドポイント | 制限 | メモ |
+|------------------|-------|-------|
+| 5 分あたりの読み取り呼び出し数 | 60,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| 5 分あたりの追跡呼び出し数 | 45,000 | 必要に応じて複数のアカウントにワークロードを分散できます。 | 
+| ブロックされた同時呼び出し数 | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

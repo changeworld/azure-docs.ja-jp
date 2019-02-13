@@ -10,16 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7d6b942ea8b2bf61bee472811648e5089f280354
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102416"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745591"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
+
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
 
 ## <a name="template-format"></a>テンプレートの形式
@@ -40,7 +41,7 @@ ms.locfileid: "54102416"
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。<br><br> リソース グループ デプロイの場合、`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#` を使用します。<br><br>サブスクリプション デプロイの場合、`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` を使用します。 |
+| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。<br><br> リソース グループ デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | parameters |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
 | variables |いいえ  |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
@@ -161,6 +162,7 @@ ms.locfileid: "54102416"
 この記事では、テンプレートのセクションについて詳しく説明します。
 
 ## <a name="syntax"></a>構文
+
 テンプレートの基本的な構文は JSON です。 ただし、式や関数により、テンプレートで使用できる JSON 値が拡張されます。  式は、最初と最後の文字が角かっこ (`[` および `]`) の JSON 文字列リテラル内に記述されます。 式の値は、テンプレートのデプロイ時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、実際の式に応じて、配列、整数など、さまざまな JSON 型にすることができます。  角かっこ `[` で始まるリテラル文字列を使用するが、式として解釈されないようにするには、文字列が `[[` で始まるように追加の角かっこを追加します。
 
 通常、関数と式を使用してデプロイを構成する操作を実行します。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
@@ -176,6 +178,7 @@ ms.locfileid: "54102416"
 テンプレート関数の完全一覧が必要な場合、「 [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。 
 
 ## <a name="parameters"></a>parameters
+
 テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 特定の環境 (開発、テスト、運用など) に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 テンプレートでは必ずしもパラメーターを使用する必要はありませんが、パラメーターを使わなかった場合、常に同じリソースが同じ名前、同じ場所、同じプロパティでデプロイされます。
 
 単純なパラメーター定義の例を次に示します。
@@ -194,6 +197,7 @@ ms.locfileid: "54102416"
 パラメーター定義の詳細については、「[Azure Resource Manager テンプレートの parameters セクション](resource-manager-templates-parameters.md)」をご覧ください。
 
 ## <a name="variables"></a>variables
+
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
 
 単純な変数定義の例を次に示します。
@@ -294,6 +298,101 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 詳細については、「[Outputs section of Azure Resource Manager templates (Azure Resource Manager テンプレートの outputs セクション)](resource-manager-templates-outputs.md)」をご覧ください。
 
+## <a name="comments"></a>説明
+
+テンプレートにコメントを追加するためのオプションがいくつかあります。
+
+**パラメーター**の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
+
+```json
+"parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "User name for the Virtual Machine."
+      }
+    },
+```
+
+ポータルからテンプレートをデプロイする場合、説明で指定したテキストがそのパラメーターのヒントとして自動的に使用されます。
+
+![パラメーター ヒントの表示](./media/resource-group-authoring-templates/show-parameter-tip.png)
+
+**リソース**の場合、`comments` 要素またはメタデータ オブジェクトを追加します。 次の例は、コメント要素とメタデータ オブジェクトの両方を示しています。
+
+```json
+"resources": [
+  {
+    "comments": "Storage account used to store VM disks",
+    "apiVersion": "2018-07-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "location": "[parameters('location')]",
+    "metadata": {
+      "comments": "These tags are needed for policy compliance."
+    },
+    "tags": {
+      "Dept": "[parameters('deptName')]",
+      "Environment": "[parameters('environment')]"
+    },
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {}
+  }
+]
+```
+
+`metadata` オブジェクトは、テンプレート内のほとんどどこにでも追加できます。 このオブジェクトは、Resource Manager では無視されますが、お使いの JSON エディターによっては、プロパティが無効であると警告される場合があります。 オブジェクトで、必要なプロパティを定義します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
+
+**出力**の場合、メタデータ オブジェクトを出力値に追加します。
+
+```json
+"outputs": {
+    "hostname": {
+      "type": "string",
+      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
+      "metadata": {
+        "comments": "Return the fully qualified domain name"
+      }
+    },
+```
+
+メタデータ オブジェクトをユーザー定義関数に追加することはできません。
+
+インライン コメントの場合、`//` を使用できますが、この構文はすべてのツールで機能しません。 Azure CLI を使用してインライン コメントを使用したテンプレートをデプロイすることはできません。 また、インライン コメントを使用したテンプレートでの作業に、ポータルのテンプレート エディターは使用できません。 このスタイルのコメントを追加する場合は、ご使用のツールでインライン JSON コメントがサポートされていることを確認してください。
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ // storage account and network interface must be deployed first
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+VS Code では、コメントを使用した JSON に言語モードを設定できます。 インライン コメントは無効としてマークされなくなります。 モードを変更するには:
+
+1. 言語モードの選択を開きます (Ctrl + K M)
+
+1. **[JSON with Comments]\(コメントを使用した JSON\)** を選択します。
+
+   ![言語モードの選択](./media/resource-group-authoring-templates/select-json-comments.png)
+
 ## <a name="template-limits"></a>テンプレートの制限
 
 テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
@@ -314,5 +413,5 @@ resources セクションでは、デプロイまたは更新されるリソー�
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
-* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」をご覧ください。
-* グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。
+* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」を参照してください。
+* すべての Azure 環境および Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。

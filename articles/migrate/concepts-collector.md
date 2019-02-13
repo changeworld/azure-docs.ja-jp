@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262610"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813332"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -32,7 +32,7 @@ Collector アプライアンスは Azure Migrate プロジェクトに常に接�
 - このモデルは、パフォーマンス データを収集するために vCenter Server の統計設定に依存していません。
 - 継続的なプロファイルは、Collector からいつでも停止できます。
 
-**すぐに効果を実感:** 連続検出アプライアンスでは、検出が完了すると (VM の数によっては数時間かかります)、すぐに評価を作成できます。 検出を開始するとパフォーマンス データ コレクションが開始されるため、即時の満足を求める場合は、評価でサイズ設定基準を*オンプレミス*として選択する必要があります。 パフォーマンスベースの評価では、信頼できるサイズの推奨を得るには、検出を開始してから少なくとも 1 日待つことをお勧めします。
+**迅速な評価:** 連続検出アプライアンスでは、検出が完了すると (VM の数によっては数時間かかります)、すぐに評価を作成できます。 検出を開始するとパフォーマンス データ コレクションが開始されるため、迅速な評価を求める場合は、評価のサイズ設定基準として*オンプレミス*を選択する必要があります。 パフォーマンスベースの評価では、信頼できるサイズの推奨を得るには、検出を開始してから少なくとも 1 日待つことをお勧めします。
 
 アプライアンスはパフォーマンス データのみを継続的に収集し、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
 
@@ -65,7 +65,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 - **インターネット接続の確認**: Collector がインターネットに直接、またはプロキシ経由で接続できることを確認します。
     - 前提条件の確認によって、[必須および省略可能な URL](#urls-for-connectivity) への接続が検証されます。
     - インターネットへの直接接続があれば、Collector が必須の URL にアクセスできることを確認する以外は、特別のアクションは不要です。
-    - プロキシ経由で接続する場合には、[以下の要件](#connect-via-a-proxy)に注意してください。
+    - プロキシ経由で接続する場合には、以下の要件に注意してください。
 - **時刻の同期の確認**: サービスに対する要求が認証されるには、Collector の時刻がインターネット時刻サーバーに同期している必要があります。
     - 時刻を検証できるよう、portal.azure.com の URL にコレクターから接続できる必要があります。
     - マシンが同期していない場合は、Collector 仮想マシンのクロックの時刻を現在の時刻と一致するよう変更する必要があります。 これを実行するには、仮想マシン上で管理プロンプトを開き、**w32tm /tz** を実行してタイム ゾーンをチェックします。 時刻を同期するには、**w32tm /resync** を実行します。
@@ -75,7 +75,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
     - Collector サービスは、vCenter Server に接続し、仮想マシンのメタデータとパフォーマンス データを収集し、それを Azure Migrate サービスに送信します。
 - **VMware PowerCLI 6.5 のインストール状態の確認**: vCenter Server と通信できるように、Collector 仮想マシン上に VMware PowerCLI 6.5 PowerShell モジュールをインストールする必要があります。
     - Collector がモジュールをインストールするために必要な URL にアクセスできる場合、インストールは Collector のデプロイ中に自動的に実行されます。
-    - Collector がデプロイ中にモジュールをインストールできない場合は、[手動でインストール](#install-vwware-powercli-module-manually)する必要があります。
+    - Collector でデプロイ中にモジュールがインストールできない場合は、手動でインストールする必要があります。
 - **vCenter Server への接続の確認**: Collector は vCenter Server に接続し、仮想マシン、そのメタデータ、パフォーマンス カウンターのクエリを実行できなければなりません。 接続の[前提条件を確認](#connect-to-vcenter-server)します。
 
 
@@ -101,8 +101,6 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
     ![証明書ストア](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. 証明書が予期どおりインポートされていることを確認し、インターネット接続前提条件チェックが予期どおり機能していることを確認します。
-
-
 
 
 ### <a name="urls-for-connectivity"></a>接続の URL
@@ -150,6 +148,79 @@ Collector は、次の図と表にまとめたように通信します。
 Azure Migrate サービス | TCP 443 | Collector は、SSL 443 経由で Azure Migrate サービスと通信します。
 vCenter Server | TCP 443 | Collector は、vCenter Server と通信できる必要があります。<br/><br/> 既定では、443 経由で vCenter に接続します。<br/><br/> vCenter Server が別のポートをリッスンしている場合は、そのポートが Collector の送信ポートとして使用可能である必要があります。
 RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>収集されたメタデータ
+
+Collector アプライアンスでは、仮想マシンごとに次の構成メタデータが検出されます。 仮想マシンの構成データは、検出を開始してから 1 時間後に利用可能になります。
+
+- (vCenter Server 上の) 仮想マシンの表示名
+- 仮想マシンのインベントリ パス (vCenter Server 上のホストまたはフォルダー)
+- IP アドレス
+- MAC アドレス
+- オペレーティング システム
+- コア、ディスク、NIC の数
+- メモリ サイズ、ディスク サイズ
+- 仮想マシン、ディスク、およびネットワークのパフォーマンス カウンター。
+
+### <a name="performance-counters"></a>パフォーマンス カウンター
+
+ コレクター アプライアンスは 20 秒間隔で ESXi ホストから VM ごとに次のパフォーマンス カウンターを収集します。 これらのカウンターは vCenter カウンターであり、平均という用語が使われていますが、20 秒サンプルはリアルタイム カウンターです。 仮想マシンのパフォーマンス データは、検出の開始後、2 時間後にポータルで利用可能になります。 正確で適切なサイズ推奨を得るには、パフォーマンス ベースの評価を作成する前に、少なくとも 1 日待つことを強くお勧めします。 すぐに結果を見るには、サイジング条件を*オンプレミス*にして評価を作成する方法があります。オンプレミスの場合、正しいサイズの決定にパフォーマンス データが考慮されません。
+
+**カウンター** |  **評価への影響**
+--- | ---
+cpu.usage.average | 推奨される VM サイズとコスト  
+mem.usage.average | 推奨される VM サイズとコスト  
+virtualDisk.read.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
+virtualDisk.write.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
+virtualDisk.numberReadAveraged.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
+virtualDisk.numberWriteAveraged.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
+net.received.average | VM のサイズを計算します                          
+net.transmitted.average | VM のサイズを計算します     
+
+Azure Migrate によって収集される VMware カウンターの完全なリストは、以下のとおりです。
+
+**カテゴリ** |  **Metadata** | **vCenter データポイント**
+--- | --- | ---
+コンピューターの詳細 | VM ID | vm.Config.InstanceUuid
+コンピューターの詳細 | VM 名 | vm.Config.Name
+コンピューターの詳細 | vCenter Server ID | VMwareClient.InstanceUuid
+コンピューターの詳細 |  VM の説明 |  vm.Summary.Config.Annotation
+コンピューターの詳細 | ライセンス プロダクト名 | vm.Client.ServiceContent.About.LicenseProductName
+コンピューターの詳細 | オペレーティング システムの種類 | vm.Summary.Config.GuestFullName
+コンピューターの詳細 | オペレーティング システムのバージョン | vm.Summary.Config.GuestFullName
+コンピューターの詳細 | ブートの種類 | vm.Config.Firmware
+コンピューターの詳細 | コア数 | vm.Config.Hardware.NumCPU
+コンピューターの詳細 | メモリのメガバイト数 | vm.Config.Hardware.MemoryMB
+コンピューターの詳細 | ディスクの数 | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk).count
+コンピューターの詳細 | ディスク サイズのリスト | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk)
+コンピューターの詳細 | ネットワーク アダプターのリスト | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualEthernetCard)
+コンピューターの詳細 | CPU 使用率 | cpu.usage.average
+コンピューターの詳細 | メモリ使用率 | mem.usage.average
+ディスクの詳細 (ディスクごと) | ディスク キーの値 | disk.Key
+ディスクの詳細 (ディスクごと) | ディスク ユニット数 | disk.UnitNumber
+ディスクの詳細 (ディスクごと) | ディスク コントローラー キーの値 | disk.ControllerKey.Value
+ディスクの詳細 (ディスクごと) | プロビジョニングされたギガバイト数 | virtualDisk.DeviceInfo.Summary
+ディスクの詳細 (ディスクごと) | ディスク名 | この値は、disk.UnitNumber、disk.Key および disk.ControllerKey.Value を使用して生成されます
+ディスクの詳細 (ディスクごと) | 1 秒あたりの読み取り操作の数 | virtualDisk.numberReadAveraged.average
+ディスクの詳細 (ディスクごと) | 1 秒あたりの書き込み操作の数 | virtualDisk.numberWriteAveraged.average
+ディスクの詳細 (ディスクごと) | 読み取りスループットの 1 秒あたりのメガバイト数 | virtualDisk.read.average
+ディスクの詳細 (ディスクごと) | 書き込みスループットの 1 秒あたりのメガバイト数 | virtualDisk.write.average
+ネットワーク アダプターの詳細 (NIC ごと) | ネットワーク アダプターの名前 | nic.Key
+ネットワーク アダプターの詳細 (NIC ごと) | MAC アドレス | ((VirtualEthernetCard)nic).MacAddress
+ネットワーク アダプターの詳細 (NIC ごと) | IPv4 アドレス | vm.Guest.Net
+ネットワーク アダプターの詳細 (NIC ごと) | IPv6 アドレス | vm.Guest.Net
+ネットワーク アダプターの詳細 (NIC ごと) | 読み取りスループットの 1 秒あたりのメガバイト数 | net.received.average
+ネットワーク アダプターの詳細 (NIC ごと) | 書き込みスループットの 1 秒あたりのメガバイト数 | net.transmitted.average
+インベントリ パスの詳細 | Name | container.GetType().Name
+インベントリ パスの詳細 | 子オブジェクトの型 | container.ChildType
+インベントリ パスの詳細 | 参照の詳細 | container.MoRef
+インベントリ パスの詳細 | 完全なインベントリ パス | container.Name with complete path
+インベントリ パスの詳細 | 親の詳細 | Container.Parent
+インベントリ パスの詳細 | 各 VM のフォルダーの詳細 | ((Folder)container).ChildEntity.Type
+インベントリ パスの詳細 | 各 VM フォルダーのデータセンターの詳細 | ((Datacenter)container).VmFolder
+インベントリ パスの詳細 | 各ホスト フォルダーのデータセンターの詳細 | ((Datacenter)container).HostFolder
+インベントリ パスの詳細 | 各ホストのクラスターの詳細 | ((ClusterComputeResource)container).Host)
+インベントリ パスの詳細 | 各 VM のホストの詳細 | ((HostSystem)container).Vm
 
 
 ## <a name="securing-the-collector-appliance"></a>Collector アプライアンスのセキュリティ保護
@@ -200,34 +271,6 @@ OVA を再度ダウンロードせずに、Collector を最新バージョンに
 - 仮想マシンが検出され、そのメタデータとパフォーマンス データが Azure に送信されます。 これらのアクションは、コレクション ジョブの一部です。
     - Collector アプライアンスには、特定の Collector ID が付与されます。これは特定のマシンでの複数の検出で永続的に有効です。
     - 実行中のコレクション ジョブには特定のセッション ID が付与されます。 この ID はコレクション ジョブごとに変更され、トラブルシューティングに使用することができます。
-
-### <a name="collected-metadata"></a>収集されたメタデータ
-
-Collector アプライアンスでは、仮想マシンごとに次の構成メタデータが検出されます。 仮想マシンの構成データは、検出を開始してから 1 時間後に利用可能になります。
-
-- (vCenter Server 上の) 仮想マシンの表示名
-- 仮想マシンのインベントリ パス (vCenter Server 上のホストまたはフォルダー)
-- IP アドレス
-- MAC アドレス
-- オペレーティング システム
-- コア、ディスク、NIC の数
-- メモリ サイズ、ディスク サイズ
-- 仮想マシン、ディスク、およびネットワークのパフォーマンス カウンター。
-
-#### <a name="performance-counters"></a>パフォーマンス カウンター
-
- コレクター アプライアンスは 20 秒間隔で ESXi ホストから VM ごとに次のパフォーマンス カウンターを収集します。 これらのカウンターは vCenter カウンターであり、平均という用語が使われていますが、20 秒サンプルはリアルタイム カウンターです。 仮想マシンのパフォーマンス データは、検出の開始後、2 時間後にポータルで利用可能になります。 正確で適切なサイズ推奨を得るには、パフォーマンス ベースの評価を作成する前に、少なくとも 1 日待つことを強くお勧めします。 すぐに結果を見るには、サイジング条件を*オンプレミス*にして評価を作成する方法があります。オンプレミスの場合、正しいサイズの決定にパフォーマンス データが考慮されません。
-
-**カウンター** |  **評価への影響**
---- | ---
-cpu.usage.average | 推奨される VM サイズとコスト  
-mem.usage.average | 推奨される VM サイズとコスト  
-virtualDisk.read.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
-virtualDisk.write.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
-virtualDisk.numberReadAveraged.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
-virtualDisk.numberWriteAveraged.average | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
-net.received.average | VM のサイズを計算します                          
-net.transmitted.average | VM のサイズを計算します     
 
 ## <a name="next-steps"></a>次の手順
 

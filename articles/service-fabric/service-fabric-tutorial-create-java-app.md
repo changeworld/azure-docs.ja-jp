@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 619f77b6b50a005b4b5cc688bdbf32d1ce3dce26
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667219"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810816"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル: Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル:Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 
 このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\) -> [File]\(ファイル\)** の順に選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、**[Finish]\(完了\)** をクリックします。
 
-ファイルの内容を次のように置き換え、変更を保存します。  後の「[HttpCommunicationListener.java ファイルを更新する](#updatelistener_anchor)」では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
+ファイルの内容を次のように置き換え、変更を保存します。  後の HttpCommunicationListener.java ファイルの更新では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
 
 ```java
 // ------------------------------------------------------------
@@ -891,7 +891,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 2. ローカル Service Fabric クラスターを実行します。 この手順は開発環境 (Mac または Linux) によって異なります。
 
-    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。**-v** パラメーターに渡すコマンドを自分のワークスペースへのパスに置き換えてください。
+    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。**-v** パラメーターに渡すコマンドは、自分のワークスペースへのパスに置き換えます。
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox

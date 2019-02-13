@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458230"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815746"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -54,7 +54,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 - Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 - VNet-Hub を VNet-Spoke にピアリングするときは **AllowGatewayTransit** を設定し、VNet-Spoke を VNet-Hub にピアリングするときは **UseRemoteGateways** を設定してください。
 
-これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-routes)」セクションをご覧ください。
+これらのルートの作成方法については、このチュートリアルの「ルートを作成する」セクションをご覧ください。
 
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 ExpressRoute または Application Gateway 経由でのオンプレミスへの強制トンネリングを有効にしている場合は、UDR 0.0.0.0/0 を構成して **NextHopType** の値を **Internet** に設定し、それを **AzureFirewallSubnet** に割り当てる必要があります。

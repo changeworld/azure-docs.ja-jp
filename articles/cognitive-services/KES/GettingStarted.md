@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e2bb5550cfe07064d595151305955d87f9c61050
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208144"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819537"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
 
@@ -100,7 +100,7 @@ ms.locfileid: "55208144"
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-Azure の外でプロトタイプを簡単に作成するために、[`kes.exe build_index`](CommandLine.md#build_index-command) は、最大 10,000 個のオブジェクトを含むデータ ファイルから小型のインデックスをローカルに構築できます。 サイズが大きいデータ ファイルの場合は、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内から実行するか、または Azure でリモート ビルドを実行します。 詳細については、[スケールアップ](#scaling-up)に関する記事を参照してください。
+Azure の外でプロトタイプを簡単に作成するために、[`kes.exe build_index`](CommandLine.md#build_index-command) は、最大 10,000 個のオブジェクトを含むデータ ファイルから小型のインデックスをローカルに構築できます。 サイズが大きいデータ ファイルの場合は、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内から実行するか、または Azure でリモート ビルドを実行します。 詳細については、スケールアップに関する記事を参照してください。
 
 ## <a name="use-an-xml-grammar-specification"></a>XML 文法仕様を使用する
 
@@ -211,7 +211,7 @@ XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#bu
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-これにより、Web サービスのローカル インスタンスが開始されます。 ブラウザーから `http::localhost:<port>` にアクセスすることにより、対話形式でサービスをテストできます。 詳細については、[サービスのテスト](#testing-service)に関する記事をご覧ください。
+これにより、Web サービスのローカル インスタンスが開始されます。 ブラウザーから `http::localhost:<port>` にアクセスすることにより、対話形式でサービスをテストできます。 詳細については、サービスのテストに関する記事をご覧ください。
 
 また、さまざまな [web API](WebAPI.md) を直接呼び出すことによって、自然言語の解釈、クエリの完了、構造化されたクエリの評価、およびヒストグラムの計算をテストできます。 サービスを停止するには、`kes.exe host_service` コマンド プロンプトに "quit" と入力するか、または Ctrl キーを押しながら C キーを押します。 次に例をいくつか示します。
 
@@ -220,7 +220,7 @@ XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#bu
 * [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
 * [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Azure の外部では、[`kes.exe host_service`](CommandLine.md#host_service-command) は最大 10,000 個のオブジェクトのインデックスに制限されます。 その他の制限には、1 秒あたり要求 10 個の API 速度や、プロセスが自動的に終了する前に、合計 1000 要求が含まれます。 これらの制限を回避するには、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内からコマンドを実行するか、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) コマンドを使用して Azure クラウド サービスに展開します。 詳細については、[サービスの展開](#deploying-service)に関する記事を参照してください。
+Azure の外部では、[`kes.exe host_service`](CommandLine.md#host_service-command) は最大 10,000 個のオブジェクトのインデックスに制限されます。 その他の制限には、1 秒あたり要求 10 個の API 速度や、プロセスが自動的に終了する前に、合計 1000 要求が含まれます。 これらの制限を回避するには、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内からコマンドを実行するか、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) コマンドを使用して Azure クラウド サービスに展開します。 詳細については、サービスの展開に関する記事を参照してください。
 
 ## <a name="scale-up-to-host-larger-indices"></a>より大規模なインデックスをホストするためにスケールアップする
 
@@ -262,7 +262,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 ## <a name="test-the-service"></a>サービスをテストする
 
-ライブ サービスをデバッグするには、Web ブラウザーからホスト コンピューターを参照します。 [host_service](#hosting-service) 経由で展開されているローカル サービスの場合は、`http://localhost:<port>/` を参照してください。  [deploy_service](#deploying-service) 経由で展開されている Azure クラウド サービスの場合は、`http://<serviceName>.cloudapp.net/` を参照してください。
+ライブ サービスをデバッグするには、Web ブラウザーからホスト コンピューターを参照します。 host_service 経由で展開されているローカル サービスの場合は、`http://localhost:<port>/` にアクセスします。  deploy_service 経由で展開されている Azure クラウド サービスの場合は、`http://<serviceName>.cloudapp.net/` にアクセスします。
 
 このページには、基本的な API 呼び出しの統計情報だけでなく、このサービスでホストされている文法とインデックスに関する情報へのリンクが含まれています。 このページには、web API の使用方法を示す対話形式の検索インターフェイスも含まれています。 検索ボックスにクエリを入力し、API 呼び出しの[解釈](interpretMethod.md)、[評価](evaluateMethod.md)、および [calchistogram](calchistogramMethod.md) の結果を確認してください。 このページの基になる HTML ソースは、web API をアプリに統合し、対話型の多機能な検索エクスペリエンスを作成する方法の例としても機能します。
 

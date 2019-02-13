@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095857"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816273"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -64,9 +64,9 @@ ms.locfileid: "55095857"
 
 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードするには、次の手順に従います。
 1. [GitHub でプロジェクトをダウンロードします](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip)。
-1. [構成手順](#configure-your-webconfig-and-register-an-application)に進み、実行前にコード サンプルを構成します。
+1. 構成ステップに進み、実行前にコード サンプルを構成します。
 
-## <a name="step-2-create-your-aspnet-project"></a>手順 2: ASP.NET プロジェクトを作成する
+## <a name="step-2-create-your-aspnet-project"></a>手順 2:ASP.NET プロジェクトを作成する
 
 1. Visual Studio で、**[ファイル] > [新規] > [プロジェクト]** の順に移動します。
 2. **[Visual C#\Web]** で **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します。

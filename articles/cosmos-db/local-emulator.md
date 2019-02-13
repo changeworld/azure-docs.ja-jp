@@ -6,29 +6,16 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbdc57489eb7ebd50e3ce7e2b4e0e4081aef8e27
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038196"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770386"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
-<table>
-<tr>
-  <td><strong>バイナリ</strong></td>
-  <td>[MSI のダウンロード](https://aka.ms/cosmosdb-emulator)</td>
-</tr>
-<tr>
-  <td><strong>Docker</strong></td>
-  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
-</tr>
-<tr>
-  <td><strong>Docker ソース</strong></td>
-  <td>[GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
-</tr>
-</table>
+|**バイナリ**|[MSI をダウンロード](https://aka.ms/cosmosdb-emulator)| |**Docker**|[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)| |**Docker ソース** | [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)|
 
 Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos DB Emulator を使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 Azure Cosmos DB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 
@@ -162,133 +149,28 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `CosmosDB.Emulator.exe /?` 」と入力します。
 
-<table>
-<tr>
-  <td><strong>オプション</strong></td>
-  <td><strong>説明</strong></td>
-  <td><strong>コマンド</strong></td>
-  <td><strong>引数</strong></td>
-</tr>
-<tr>
-  <td>[引数なし]</td>
-  <td>既定の設定で Azure Cosmos DB Emulator を開始します。</td>
-  <td>CosmosDB.Emulator.exe</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[Help]</td>
-  <td>サポートされるコマンド ライン引数の一覧を表示します。</td>
-  <td>CosmosDB.Emulator.exe /?</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GetStatus</td>
-  <td>Azure Cosmos DB Emulator の状態を取得します。 この状態は、終了コードで示されます。終了コードは、1 = 開始中、2 = 実行中、3 = 停止済みです。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。</td>
-  <td>CosmosDB.Emulator.exe /GetStatus</td>
-  <td></td>
-<tr>
-  <td>Shutdown</td>
-  <td>Azure Cosmos DB Emulator をシャットダウンします。</td>
-  <td>CosmosDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DataPath</td>
-  <td>データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
-  <td>&lt;datapath&gt;:アクセスできるパス</td>
-</tr>
-<tr>
-  <td>ポート</td>
-  <td>エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
-  <td>&lt;port&gt;:単一のポート番号</td>
-</tr>
-<tr>
-  <td>MongoPort</td>
-  <td>MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。</td>
-  <td>CosmosDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
-  <td>&lt;mongoport&gt;:単一のポート番号</td>
-</tr>
-<tr>
-  <td>DirectPorts</td>
-  <td>直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。</td>
-  <td>CosmosDB.Emulator.exe /DirectPorts:&lt;directports&gt;</td>
-  <td>&lt;directports&gt;:4 つのポートのコンマ区切りリスト</td>
-</tr>
-<tr>
-  <td>キー</td>
-  <td>エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;key&gt;</td>
-  <td>&lt;key&gt;:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります</td>
-</tr>
-<tr>
-  <td>EnableRateLimiting</td>
-  <td>要求レート制限の動作の有効化を指定します。</td>
-  <td>CosmosDB.Emulator.exe /EnableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DisableRateLimiting</td>
-  <td>要求レート制限の動作の無効化を指定します。</td>
-  <td>CosmosDB.Emulator.exe /DisableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoUI</td>
-  <td>エミュレーターのユーザー インターフェイスを表示しません。</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoExplorer</td>
-  <td>起動時にデータ エクスプローラーを表示しません。</td>
-  <td>CosmosDB.Emulator.exe /NoExplorer</td>
-  <td></td>
-</tr>
-<tr>
-  <td>PartitionCount</td>
-  <td>パーティション分割コレクションの最大数を指定します。 詳細については、「[コレクションの数を変更する](#set-partitioncount)」を参照してください。</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
-  <td>&lt;partitioncount&gt;:単一パーティション コレクションで許容される最大の数です。 既定値は 25 です。 許容される最大値は 250 です。</td>
-</tr>
-<tr>
-  <td>DefaultPartitionCount</td>
-  <td>パーティション分割コレクションの既定のパーティション数を指定します。</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;defaultpartitioncount&gt;</td>
-  <td>&lt;defaultpartitioncount&gt; 既定値は 25 です。</td>
-</tr>
-<tr>
-  <td>AllowNetworkAccess</td>
-  <td>ネットワーク上でのエミュレーターへのアクセスを有効にします。 /Key=&lt;key_string&gt; または /KeyFile=&lt;file_name&gt; を渡して、ネットワーク アクセスを有効にする必要があります。</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;key_string&gt;<br><br>or<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;file_name&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoFirewall</td>
-  <td>/AllowNetworkAccess が使用されているときは、ファイアウォール ルールを調整しないでください。</td>
-  <td>CosmosDB.Emulator.exe /NoFirewall</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GenKeyFile</td>
-  <td>新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。</td>
-  <td>CosmosDB.Emulator.exe /GenKeyFile=&lt;キー ファイルへのパス&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>整合性</td>
-  <td>アカウントの既定の一貫性レベルを設定します。</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;consistency&gt;</td>
-  <td>&lt;consistency&gt;:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。</td>
-</tr>
-<tr>
-  <td>?</td>
-  <td>ヘルプ メッセージを表示します。</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+|**オプション** | **説明** | **コマンド**| **引数**|
+|---|---|---|---|
+|[引数なし] | 既定の設定で Azure Cosmos DB Emulator を開始します。 |CosmosDB.Emulator.exe| |
+|[Help] |サポートされるコマンド ライン引数の一覧を表示します。|CosmosDB.Emulator.exe /? | |
+| GetStatus |Azure Cosmos DB Emulator の状態を取得します。 この状態は、終了コードで示されます。終了コードは、1 = 開始中、2 = 実行中、3 = 停止済みです。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。 | CosmosDB.Emulator.exe /GetStatus| |
+| Shutdown| Azure Cosmos DB Emulator をシャットダウンします。| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:アクセスできるパス |
+|ポート | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
+| MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>:単一のポート番号|
+| DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
+| キー |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
+| EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |CosmosDB.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |要求レート制限の動作の無効化を指定します。 |CosmosDB.Emulator.exe /DisableRateLimiting | |
+| NoUI | エミュレーターのユーザー インターフェイスを表示しません。 | CosmosDB.Emulator.exe /NoUI | |
+| NoExplorer | 起動時にデータ エクスプローラーを表示しません。 |CosmosDB.Emulator.exe /NoExplorer | | 
+| PartitionCount | パーティション分割コレクションの最大数を指定します。 詳細については、「[コレクションの数を変更する](#set-partitioncount)」を参照してください。 | CosmosDB.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>:単一パーティション コレクションで許容される最大の数です。 既定値は 25 です。 許容される最大値は 250 です。|
+| DefaultPartitionCount| パーティション分割コレクションの既定のパーティション数を指定します。 | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 既定値は 25 です。|
+| AllowNetworkAccess | ネットワーク上でのエミュレーターへのアクセスを有効にします。 /Key=\<key_string\> または /KeyFile=\<file_name\> を渡して、ネットワーク アクセスを有効にする必要があります。 | CosmosDB.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> または CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| NoFirewall | /AllowNetworkAccess が使用されているときは、ファイアウォール ルールを調整しないでください。 |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | 新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。 | CosmosDB.Emulator.exe /GenKeyFile=\<キー ファイルへのパス\> | |
+| 整合性 | アカウントの既定の一貫性レベルを設定します。 | CosmosDB.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。 |
+| ? | ヘルプ メッセージを表示します。| | |
 
 ## <a id="set-partitioncount"></a>コレクションの数を変更する
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8ef1b2a2271106a382faf9e06d57b44ca1bf033b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993010"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810798"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -40,10 +40,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このタスクを実現するためには、次の手順が必要です。
 * [入力としての Event Hubs で Stream Analytics ジョブを作成する](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Azure Cache for Redis インスタンスを作成する](#create-an-azure-redis-cache-instance)  
-* [Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* Azure Cache for Redis インスタンスを作成する  
+* Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する    
 * [出力としての関数で Stream Analytics ジョブを更新する](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Azure Cache for Redis の結果を確認する](#check-azure-redis-cache-for-results)  
+* Azure Cache for Redis の結果を確認する  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>入力としての Event Hubs で Stream Analytics ジョブを作成する
 

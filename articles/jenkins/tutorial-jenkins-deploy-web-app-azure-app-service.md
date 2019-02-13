@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260129"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821305"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
@@ -45,7 +45,7 @@ ms.locfileid: "54260129"
 
   Jenkins サーバーがない場合は、まず、Azure portal で [Azure Linux VM での Jenkins サーバーの作成](/azure/jenkins/install-jenkins-solution-template)に関するページの手順を完了してください。
 
-* サンプル Java Web アプリ用の作業コピー ([フォーク](#fork)) を取得するための [GitHub](https://github.com) アカウント。 
+* サンプル Java Web アプリ用の作業コピー (フォーク) を取得するための [GitHub](https://github.com) アカウント。 
 
 * [Azure CLI](/cli/azure/install-azure-cli) (ローカルのコマンド ラインまたは [Azure Cloud Shell](/azure/cloud-shell/overview) で実行できます)
 

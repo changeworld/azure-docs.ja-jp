@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: c393942112f42dc0d56388b8beac44b4287bca23
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 86224b90f7a93eae41c127d4ba87f685f895e15a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475707"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820404"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、macOS El Capitan 10.11 以降で、業界標準の SMB 3 プロトコルを使ってマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
@@ -38,7 +38,7 @@ ms.locfileid: "55475707"
 1. **Finder を開きます**。macOS 上では既定で Finder が開かれていますが、ドック上の "macOS の顔アイコン" をクリックすると、Finder が現在選択されているアプリケーションであることを確認できます。  
     ![macOS の顔アイコン](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **[移動] メニューの [サーバーへ接続] を選択します**。[前提条件](#preq)の UNC パスを使用し、先頭の 2 つのバックスラッシュ (`\\`) は `smb://` に置き換え、他のすべてのバックスラッシュ (`\`) はスラッシュ (`/`) に置き換えます。 リンクは次のようになります。![[サーバーに接続] ダイアログ](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **[移動] メニューの [サーバーへ接続] を選択します**。前提条件の UNC パスを使用し、先頭の 2 つのバックスラッシュ (`\\`) は `smb://` に置き換え、他のすべてのバックスラッシュ (`\`) はスラッシュ (`/`) に置き換えます。 リンクは次のようになります。![[サーバーに接続] ダイアログ](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **ユーザー名とパスワードの入力を求められたら、共有名とストレージ アカウント キーを使用します**。[サーバーへ接続] ダイアログで [接続] をクリックすると、ユーザー名とパスワードの入力を求められます (macOS ユーザー名が自動的に設定されます)。 macOS キーチェーンにストレージ アカウント名/ストレージ アカウント キーを指定することもできます。
 

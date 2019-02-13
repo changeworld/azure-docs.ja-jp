@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198148"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816545"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Computer Vision API バージョン 1.0 とは
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198148"
 >- [Computer Vision API バージョン 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 クラウドベースの Computer Vision API を使用すると、開発者はイメージを処理し、情報を返すための高度なアルゴリズムにアクセスできます。 イメージをアップロードするか、イメージ URL を指定することで、Microsoft Computer Vision のアルゴリズムでは、入力とユーザーの選択に基づいてさまざまな方法でビジュアル コンテンツを分析できます。 Computer Vision API では、ユーザーはイメージを分析し、以下のことを行うことができます。
-* [コンテンツに基づいて、イメージにタグ付けする。](#Tagging)
-* [イメージを分類する。](#Categorizing)
-* [イメージの種類と品質を識別する。](#Identifying)
+* コンテンツに基づいて、イメージにタグ付けする。
+* イメージを分類する。
+* イメージの種類と品質を識別する。
 * [人間の顔を検出し、その座標を返す。](#Faces)
-* [ドメイン固有のコンテンツを認識する。](#Domain-Specific)
-* [コンテンツの説明を生成する。](#Descriptions)
-* [光学式文字認識を使用して、イメージで検出された、印刷テキストを識別する。](#OCR)
-* [手書きのテキストを認識する。](#RecognizeText)
-* [配色を区別する。](#Color)
-* [成人向けコンテンツにフラグを設定する。](#Adult)
-* [サムネイルとして使用する写真をトリミングする。](#Thumbnails)
+* ドメイン固有のコンテンツを認識する。
+* コンテンツの説明を生成する。
+* 光学式文字認識を使用して、イメージで検出された、印刷テキストを識別する。
+* 手書きのテキストを認識する。
+* 配色を区別する。
+* 成人向けコンテンツにフラグを設定する。
+* サムネイルとして使用する写真をトリミングする。
 
 ## <a name="requirements"></a>必要条件
 * サポートされる入力方法:アプリケーション/オクテット ストリーム形式の未加工画像バイナリまたは画像 URL。
@@ -99,7 +99,7 @@ Returned Json
 
 ![カテゴリの分析](./Images/analyze_categories.png)
 
-イメージ                                                  | Response
+Image                                                  | Response
 ------------------------------------------------------ | ----------------
 ![屋上にいる女性](./Images/woman_roof.png)                 | people
 ![家族写真](./Images/family_photo.png)             | people_crowd
@@ -120,7 +120,7 @@ Returned Json
 2     | 通常のクリップ アート
 3     | 良好なクリップアート
 
-イメージ|Response
+Image|Response
 ----|----
 ![Vision Analyze チーズのクリップ アート](./Images/cheese_clipart.png)|3 good-clip-art
 ![Vision Analyze 家の庭](./Images/house_yard.png)|0 Non-clip-art
@@ -128,7 +128,7 @@ Returned Json
 ### <a name="line-drawing-type"></a>線画タイプ
 イメージが線画であるかどうかを検出します。
 
-イメージ|Response
+Image|Response
 ----|----
 ![Vision Analyze ライオンの線画](./Images/lion_drawing.png)|True
 ![Vision Analyze 花](./Images/flower.png)|False
@@ -136,7 +136,7 @@ Returned Json
 ### <a name="faces"></a>顔
 写真内の人間の顔を検出し、顔の座標と、顔、性別、年齢の四角形を生成します。 これらの視覚特性は、顔に対して生成されるメタデータのサブセットです。 顔に対して生成されるより広範なメタデータの場合 (顔識別や姿勢検出など)、Face API を使用します。  
 
-イメージ|Response
+Image|Response
 ----|----
 ![Vision Analyze 屋上にいる女性の顔](./Images/woman_roof_face.png) | [ { "age":23, "gender":"Female", "faceRectangle": { "left":1379, "top":320, "width":310, "height":310 } } ]
 ![Vision Analyze 母親と娘の顔](./Images/mom_daughter_face.png) | [ { "age":28, "gender":"Female", "faceRectangle": { "left":447, "top":195, "width":162, "height":162 } }, { "age":10, "gender":"Male", "faceRectangle": { "left":355, "top":87, "width":143, "height":143 } } ]
@@ -202,7 +202,7 @@ Computer Vision API のアルゴリズムでは、イメージのコンテンツ
 ## <a name="perceiving-color-schemes"></a>配色の認識
 Computer Vision アルゴリズムでは、イメージから色を抽出します。 色は、前景、後景、全体の異なる 3 つのコンテキストで分析されます。 12 色のドミナント アクセント カラーにグループ分けされています。 そのアクセント カラーは、黒、青、茶色、灰色、緑、オレンジ、ピンク、紫、赤、青緑、白、黄色です。 イメージの色に応じて、シンプルな白黒またはアクセント カラーが 16 進数のカラー コードで返される場合があります。
 
-イメージ                                                       | 前景 |バックグラウンド| 色
+Image                                                       | 前景 |バックグラウンド| 色
 ----------------------------------------------------------- | --------- | ------- | ------
 ![屋外の山](./Images/mountain_vista.png)            | 黒     | 黒   | 白
 ![Vision Analyze 花](./Images/flower.png)               | 黒     | 白   | 白、黒、緑
@@ -211,7 +211,7 @@ Computer Vision アルゴリズムでは、イメージから色を抽出しま�
 ### <a name="accent-color"></a>アクセント カラー
 ドミナント カラーと彩度の組み合わせによって、最もユーザーの目を引く色を表すように設計された、イメージから抽出された色。
 
-イメージ                                                       | Response
+Image                                                       | Response
 ----------------------------------------------------------- | ----
 ![屋外の山](./Images/mountain_vista.png)            | #BC6F0F
 ![Vision Analyze 花](./Images/flower.png)               | #CAA501
@@ -221,7 +221,7 @@ Computer Vision アルゴリズムでは、イメージから色を抽出しま�
 ### <a name="black--white"></a>白黒
 イメージが白黒であるかどうかを示すブール型のフラグ。
 
-イメージ                                                      | Response
+Image                                                      | Response
 ---------------------------------------------------------- | ----
 ![Vision Analyze ビル](./Images/bw_buildings.png)      | True
 ![Vision Analyze 家の庭](./Images/house_yard.png)      | False

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure でアプリケーション データを高可用にする | Microsoft Docs
+title: チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する - Azure Storage
 description: 読み取りアクセス geo 冗長ストレージを使用してアプリケーション データを高可用にする
 services: storage
 author: tamram
@@ -9,14 +9,14 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 81cd6b073fb46b01b3b98543d8f92e2ef7b1ec1b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d2fef3a47cbcb4cfd8bce8978003eca1044d7de3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245388"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510635"
 ---
-# <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>チュートリアル:Azure Storage を使用してアプリケーション データを高可用にする
+# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
 このチュートリアルは、シリーズの第 1 部です。 ここでは、Azure でアプリケーション データを高可用にする方法について学習します。
 

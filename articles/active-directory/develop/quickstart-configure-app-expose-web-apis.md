@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5b72bd45299f636a208ab39be5b7eaade2730183
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095704"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814018"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する (プレビュー)
 
@@ -116,7 +116,7 @@ UI を通じて新しいスコープを公開するには:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>他のアプリケーションに Web API が公開されているかどうかを確認する
 
 1. Azure AD テナントに戻って、**[アプリの登録]** を選択し、構成するクライアント アプリケーションを見つけて選択します。
-1. [Web API にアクセスするためのクライアント アプリケーションの構成](#configure-a-client-application-to-access-web-apis)に関するページで説明されている手順をもう一度実行します。
+1. Web API にアクセスするためのクライアント アプリケーションの構成に関するページで説明されている手順をもう一度実行します。
 1. **API の選択**の手順で、リソースを選択します。 新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
 
 ## <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細

@@ -11,58 +11,42 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725745"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815543"
 ---
-# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>クイック スタート: Azure SQL Database で Machine Learning Services と R を使用する (プレビュー)
+# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>クイック スタート:Azure SQL Database で Machine Learning Services と R を使用する (プレビュー)
 
-この記事では、Azure SQL Database で Machine Learning Services のパブリック プレビューと R を使用する方法について説明します。 SQL データベースと R の間でデータを移動する基本的な方法を紹介します。また、整形された R コードをストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) にラップし、SQL データベースで機械学習モデルをビルド、トレーニング、使用する方法についても説明します。
+この記事では、[Azure SQL Database で Machine Learning Services と R](sql-database-machine-learning-services-overview.md) のパブリック プレビューを使用する方法について説明します。 SQL データベースと R の間でデータを移動する基本的な方法を紹介します。また、整形された R コードをストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) にラップし、SQL データベースで機械学習モデルをビルド、トレーニング、使用する方法についても説明します。
 
-SQL Database での機械学習は、R コードや関数を実行する目的で使用されます。そしてそのコードは、ストアド プロシージャや、R のステートメントを含んだ T-SQL スクリプトとして、または T-SQL を含んだ R コードとして、リレーショナル データから自在に利用することができます。 エンタープライズ R パッケージの強みを活かして、高度な分析を大規模に実施可能です。データが置かれている場所で計算や処理を実行できるため、ネットワーク経由でデータをプルする必要はありません。
+R 言語の機能を使用して、データベース内で高度な分析と機械学習を提供します。 この機能を使用すると、データが存在する場所で計算と処理を行うことができ、ネットワーク経由でデータをプルする必要がありません。 また、エンタープライズ R パッケージの機能を利用して、高度な分析を大規模に提供できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+Machine Learning Services には、R の基本ディストリビューションに、Microsoft 提供のエンタープライズ R パッケージがオーバーレイされたものが含まれます。 Microsoft の R 関数とアルゴリズムはスケールと実用性の両方を考慮して設計されており、予測分析、統計モデリング、データの視覚化、および最先端の機械学習アルゴリズムが提供されます。
 
-## <a name="sign-up-for-the-preview"></a>プレビューのサインアップ
+Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-SQL Database における Machine Learning Services のパブリック プレビューと R は、既定では無効になっています。 パブリック プレビューへのサインアップを希望される場合は、Microsoft ([sqldbml@microsoft.com](mailto:sqldbml@microsoft.com)) にメールをお送りください。
-
-プログラムへの登録が完了すると、Microsoft がパブリック プレビューへのお客様のオンボードを行い、R が有効になったサービス上に、お客様の既存のデータベースを移行するか、新しいデータベースを作成します。
-
-現時点では、SQL Database での Machine Learning Services と R は、単一データベースとプールされているデータベースを対象に、**General Purpose** サービス レベルと **Business Critical** サービス レベルの仮想コア ベースの購入モデルでのみご利用いただけます。 この初回パブリック プレビューでは、**ハイパースケール** サービス レベルと **Managed Instance** はどちらもサポートされません。 パブリック プレビューの期間中は、運用環境のワークロードに Machine Learning Services と R を使用することは避けてください。
-
-ご利用の SQL データベースで Machine Learning Services と R が有効になったら、こちらのページに戻り、ストアド プロシージャのコンテキストでの R スクリプトの実行方法をご覧ください。
-
-現在、サポートされている言語は R だけです。 現時点では、Python はサポートされていません。
+> [!NOTE]
+> Azure SQL Database での Machine Learning Services と R は、現在パブリック プレビュー期間です。 [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
 
 ## <a name="prerequisites"></a>前提条件
 
-以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services と R が有効になった SQL データベースを用意しておく必要があります。 前述のように、パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。
+以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services と R が有効になった SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
 
 SQL Database に接続して T-SQL クエリまたはストアド プロシージャを実行できるものであれば、どのようなデータベース管理ツールやクエリ ツールからでも、SQL Database に接続して R スクリプトを実行することができます。 このクイック スタートでは、[SQL Server Management Studio](sql-database-connect-query-ssms.md) を使用します。
 
 また、[パッケージの追加](#add-package)の演習では、お使いのローカル コンピューターに [R](https://www.r-project.org/) と [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) もインストールする必要があります。
 
-このクイック スタートでは、サーバーレベルのファイアウォール規則を構成することも必要です。 これを行う方法を示すクイック スタートについては、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal-firewall.md)」を参照してください。
-
-## <a name="different-from-sql-server"></a>SQL Server との違い
-
-Azure SQL Database における Machine Learning Services と R の機能は、[SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 ただし、いくつかの違いがあります。
-
-- R 限定です。 現時点では、Python はサポートされていません。
-- `sp_configure` で `external scripts enabled` を構成する必要はありません。
-- **sqlmlutils** でパッケージをインストールする必要があります。
-- 独立した外部のリソース ガバナンスは存在しません。 R のリソースは、SQL のリソースの一部です (割合はレベルによって異なります)。
+このクイック スタートでは、サーバーレベルのファイアウォール規則を構成することも必要です。 これを行う方法を示すクイック スタートについては、「[サーバーレベルのファイアウォール規則を作成する](sql-database-server-level-firewall-rule.md)」を参照してください。
 
 ## <a name="verify-r-exists"></a>R の存在を確認する
 
 ご利用の SQL データベースで Machine Learning Services と R が有効になっていることを確認できます。 次の手順に従ってください。
 
-1. SQL Server Management Studio を開き、SQL データベースに接続します。
+1. SQL Server Management Studio を開き、SQL データベースに接続します。 接続する方法について詳しくは、「[クイック スタート:SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 
 1. 次のコードを実行します。 
 
@@ -263,7 +247,6 @@ Microsoft では、SQL データベースに Machine Learning Services と共に
 
     ![インストールされている R のパッケージ](./media/sql-database-connect-query-r/r-installed-packages.png)
 
-
 ## <a name="create-a-predictive-model"></a>予測モデルを作成する
 
 R を使用してモデルをトレーニングし、お使いの SQL データベース内のテーブルにそのモデルを保存することができます。 この演習では、速度に基づいて自動車の停止距離を予測する単純な回帰モデルをトレーニングします。 R に付属する `cars` データセットが小さくて理解しやすいため、このデータセットを使用することにします。
@@ -293,7 +276,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     - モデルのトレーニングに使用する入力データを提供します。
 
     > [!TIP]
-    > 線形モデルについて復習する必要がある場合は、[線形モデルの当てはめ](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)に関するチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。
+    > 線形モデルについて復習する必要がある場合は、次のチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。「[Fitting Linear Models (線形モデルの当てはめ)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)」
 
     モデルをビルドするには、R コード内で式を定義し、そのデータを入力パラメーターとして渡します。
 
@@ -530,9 +513,10 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
 
 ## <a name="next-steps"></a>次の手順
 
-Machine Learning Services の詳細については、SQL Server Machine Learning Services に関する以下の記事を参照してください。 これらの記事は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
+Machine Learning Services について詳しくは、以下の記事をご覧ください。 これらの記事の一部は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
 
+- [Azure SQL Database の Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning サービス](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [チュートリアル: SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [チュートリアル:SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [チュートリアル: SQL Server データで RevoScaleR R 関数を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [チュートリアル:SQL Server データで RevoScaleR R 関数を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

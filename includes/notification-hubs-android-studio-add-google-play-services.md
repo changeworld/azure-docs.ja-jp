@@ -5,30 +5,37 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f00ca7ddf44a9d5b850cd47520970a0396a0c1b5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453092"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823296"
 ---
-1. Android Studio のツールバーのアイコンをクリックするか、またはメニューから **[ツール]**  >  **[Android]**  >  **[SDK マネージャー]** を順にクリックして、Android SDK マネージャーを開きます。 まだインストールしていない場合は、プロジェクトで使用する目的のバージョンの Android SDK を探し、**[Show Package Details]\(パッケージの詳細を表示\)** をクリックして開き、**[Google APIs]\(Google API\)** をオンにします。
-2. **[SDK Tools]** タブをクリックします。Google Play Services をまだインストールしていない場合は、次に示すように **[Google Play Services]** をクリックします。 次に、 **[適用]** をクリックしてインストールします。 SDK のパスは後の手順で使用するので、メモしておいてください。
+1. **Android Studio** で、メニューの **[Tools]\(ツール\)** を選択し、**[SDK Manager]\(SDK Manager\)** を選択します。 
+2. プロジェクトで使用する Android SDK のターゲット バージョンを選択し、**[Show Package Details]\(パッケージの詳細の表示\)** を選択します。 
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. アプリ ディレクトリの `build.gradle` ファイルを開きます。
+    ![Android SDK Manager - ターゲット バージョンを選択する](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. まだインストールされていない場合は、**[Google APIs]\(Google API\)** を選択します。
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
-4. 次の行を `dependencies` の下に追加します。
+    ![Android SDK Manager - Google API の選択](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. **[SDK Tools]\(SDK ツール\)** タブに切り替えます。Google Play 開発者サービスをまだインストールしていない場合は、次の図に示すように **[Google Play Services]\(Google Play Services\)** をクリックします。 次に、 **[適用]** をクリックしてインストールします。 SDK のパスは後の手順で使用するので、メモしておいてください。
+
+    ![Android SDK Manager - Google Play 開発者サービスの選択](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. **[Confirm Change]\(変更の確認\)** ダイアログ ボックスが表示される場合は、**[OK]** を選択します。 コンポーネント インストーラーによって、要求したコンポーネントがインストールされます。 コンポーネントがインストールされた後、**[Finish]\(完了\)** を選択します。
+4. **[OK]** を選択して、**[Settings for New Projects]\(新しいプロジェクトの設定\)** ダイアログ ボックスを閉じます。  
+5. **app** ディレクトリの `build.gradle` ファイルを開き、`dependencies` の下に次の行を追加します。 
 
     ```text
-    compile 'com.google.android.gms:play-services-gcm:12.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. ツール バーで **[Sync Project with Gradle Files]** をクリックします。
-6. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
+5. ツール バーの **[Sync Now]\(今すぐ同期\)** アイコンを選択します。
+
+    ![Gradle と同期する](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

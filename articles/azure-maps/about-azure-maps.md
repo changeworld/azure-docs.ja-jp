@@ -1,24 +1,24 @@
 ---
 title: Azure Maps の概要 | Microsoft Docs
 description: Azure Maps の概要
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 02/04/2019
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104269"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768581"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
-Azure Maps は一連の地理空間サービスであり、最新のマッピング データによってサポートされているため、精度の高い地理的なコンテキストを Web アプリケーションとモバイル アプリケーションに提供できます。 マップをレンダリングして目的地を検索するための REST API が含まれます。 また、API では目的地への経路、交通状況、タイム ゾーン、および IP アドレスからの位置を検索することも可能です。 API と共に使い慣れたツールを使用して、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行えます。 REST API に加えて、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-control)が提供されます。
+Azure Maps は地理空間サービスのコレクションであり、使用可能な最新のマッピング データによって、精度の高い地理的なコンテキストが Web アプリケーションとモバイル アプリケーションに提供されます。 Azure Maps を構成する REST API では、複数のスタイルと衛星画像での**マップ**のレンダリングや、世界中の関心のある住所、場所、ポイントの**検索**や、ポイント間、マルチポイント、マルチポイント最適化、等時線、商用車、影響を受ける交通、マトリックス ルーティングの**経路設定**や、最善の交通の流れとインシデントの表示や、**位置情報**によるユーザーの場所の特定や、場所から**タイム ゾーン**への変換や、場所での時刻の取得などを行うことができます。 さらに、Azure Maps では、**ジオフェンシング**、マップ **データ**ストレージ、Azure での場所情報のホスティング、地理空間分析によって場所のインテリジェンスを提供する**空間演算**などのためのサービスが提供されています。 Azure Maps サービスは、REST API として直接、あるいは堅牢な **Web SDK** または **Android SDK** を介して、使用できます。 これらのツールを使用して、開発者は、Azure クラウド内から位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行うことができます。 今すぐ無料の [Azure Maps アカウント](https://azure.microsoft.com/services/azure-maps/)にサインアップして、開発を始めてください。
 
 次の動画では、Azure Maps について詳しく説明しています。
 

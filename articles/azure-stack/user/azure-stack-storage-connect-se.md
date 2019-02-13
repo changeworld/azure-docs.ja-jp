@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2019
+ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d1bddc8331fc1a9ded37949a8065636947074852
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246737"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822835"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
@@ -45,20 +45,15 @@ Azure Stack Development Kit (ASDK) 用に、Azure Stack の証明機関のルー
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Azure Stack の証明書をエクスポートしインポートする
 
+ASDK 用の Azure Stack 証明書をエクスポートしてからインポートします。 統合システムの場合、証明書はパブリックに署名されています。 そのため、Azure Stack 統合システムへの Storage Explorer の接続を設定するときには、このステップは必要ありません。
+
 1. Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューターで `mmc.exe` を開きます。 
 
 2. **[ファイル]** の **[スナップインの追加と削除]** を選択し、**[ユーザー アカウント]** を管理するための **[証明書]** を追加します。
 
-3.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。
+3.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。 **AzureStackSelfSignedRootCert** を探します。
 
-    - ASDK の場合は、**AzureStackSelfSignedRootCert** を探します。
-
-        ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
-
-    - 統合システムの場合は、外部証明書のルート証明書を探します。 
-    
-        ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
-        
+    ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
 4. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。
 

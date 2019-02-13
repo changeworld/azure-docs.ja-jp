@@ -15,19 +15,19 @@ ms.topic: get-started-article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b7f9bda37d63956ea672528c28b81eaaac9891a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc4387dd56de96edd17fcd8e5672cfda96cf67b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243768"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816409"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
 リソースを管理するには、Azure Stack Development Kit に接続する必要があります。 この記事では、Development Kit に接続するために必要な手順について詳しく説明します。 次の接続方法のうちどちらかを使用できます。
 
-* [リモート デスクトップ](#connect-with-remote-desktop): Development Kit から、1 人の同時実行ユーザーのみがすばやく接続できます。
-* [仮想プライベート ネットワーク (VPN)](#connect-with-vpn): Azure Stack インフラストラクチャ以外のクライアントから、複数の同時実行ユーザーが接続できます (構成が必要です)。
+* リモート デスクトップ: Development Kit から、1 人の同時実行ユーザーのみがすばやく接続できます。
+* 仮想プライベート ネットワーク (VPN): Azure Stack インフラストラクチャ以外のクライアントから、複数の同時実行ユーザーが接続できます (構成が必要です)。
 
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>リモート デスクトップを使用して Azure Stack に接続する
 リモート デスクトップ接続では、1 人の同時実行ユーザーがポータルを使用してリソースを管理できます。

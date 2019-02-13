@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 022dd937ae0557ca848a329039703f3b94ad0885
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245356"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813876"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク記憶域を作成する
 
@@ -50,7 +50,7 @@ VM を作成するときは、新しい仮想マシンごとに同じストレ�
 
 | 方法 | オプション
 |-|-|
-|[ユーザー ポータル](#use-the-portal-to-add-additional-disks-to-a-vm)|- 既存の VM に新しいデータ ディスクを追加します。 新しいディスクは、Azure Stack によって作成されます。 </br> </br>- 前に作成した VM に既存のディスク (.vhd) ファイルを追加します。 これを行うには、.vhd ファイルを準備して、そのファイルを Azure Stack にアップロードする必要があります。 |
+|ユーザー ポータル|- 既存の VM に新しいデータ ディスクを追加します。 新しいディスクは、Azure Stack によって作成されます。 </br> </br>- 前に作成した VM に既存のディスク (.vhd) ファイルを追加します。 これを行うには、.vhd ファイルを準備して、そのファイルを Azure Stack にアップロードする必要があります。 |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - OS ディスクがある新しい VM を作成し、同時にその VM に 1 つまたは複数のデータ ディスクを追加します。 |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>ポータルを使用してディスクを VM に追加する

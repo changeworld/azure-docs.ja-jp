@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296174"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700385"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
 **Q:最近、デバイスを登録しました。Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?**
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、**[ユーザー デバイス]** には表示されません。
-Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
+Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
 
 **[ユーザー デバイス]** には、次のデバイスだけが表示されます。
 
@@ -176,7 +176,7 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **Q:PC を Azure AD に参加させようとしたときに、*[申し訳ありません。エラーが発生しました]* ダイアログが表示されるのはなぜですか?**
 
-**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment)」をご覧ください。  
+**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](https://docs.microsoft.com/intune/windows-enroll)」をご覧ください。  
 
 ---
 
@@ -221,6 +221,12 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 **Q:UPN の変更後、Windows 10 のハイブリッド Azure AD 参加済みデバイスでユーザーに問題が生じるのはなぜですか?**
 
 **A:** 現在、ハイブリッド Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 UPN の変更後、ユーザーはデバイスにサインインして、オンプレミス アプリケーションにアクセスできますが、Azure AD での認証は失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するには、Azure AD からデバイスの参加を解除 (昇格された特権を使用して "dsregcmd /leave" を実行) し、再度参加する (自動的に行われる) 必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
+
+---
+
+**Q:Windows 10 のハイブリッド Azure AD 参加済みデバイスには、クラウド リソースにアクセスするドメイン コントローラーへの通信経路が必要ですか?**
+
+**A:** いいえ。 Windows 10 のハイブリッド Azure AD の参加が完了した後に、ユーザーが少なくとも 1 回サインインすると、そのデバイスにはクラウド リソースにアクセスするためのドメイン コントローラーへの通信経路は不要になります。 Windows 10 では、インターネット接続があればどこからでも Azure AD アプリケーションへのシングル サインオンが実現できますが、パスワードが変更された場合は例外です。 パスワードが (たとえば Azure AD SSPR を使用して) 企業ネットワークの外側で変更された場合は、ユーザーが新しいパスワードを使用してデバイスにサインインするには、ドメイン コントローラーへの通信経路が必要になります。 ない場合、古いパスワードを使ってサインインするしかないため、Azure AD によって無効化され、シングル サインインができなくなります。 ただし、この問題は、Windows Hello for Business を使用しているときには発生しません。 Windows Hello for Business でサインインしているユーザーは、パスワード変更後、ドメイン コントローラーへの通信経路がなくても、引き続き Azure AD アプリケーションへのシングル サインオンを利用できます。 
 
 ---
 

@@ -6,25 +6,25 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/24/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421338"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507336"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Change Tracking とインベントリのトラブルシューティング
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>シナリオ:Change Tracking レコードが Azure portal に表示されません
+### <a name="records-not-showing-windows"></a>シナリオ:Windows マシンの Change Tracking レコードが表示されません
 
 #### <a name="issue"></a>問題
 
-Change Tracking のためにオンボーディングされているコンピューターに対してインベントリまたは Change Tracking が表示されません。
+Change Tracking 用にオンボーディングされている Windows マシンのインベントリまたは Change Tracking の結果が表示されません。
 
 #### <a name="cause"></a>原因
 
@@ -38,12 +38,13 @@ Change Tracking のためにオンボーディングされているコンピュ�
 #### <a name="resolution"></a>解決策
 
 1. **Microsoft Monitoring Agent** (HealthService.exe) がコンピューター上で実行されていることを確認します。
-2. [ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関するセクションで、Change Tracking を動作させるために許可する必要があるアドレスとポートを確認します。
-3. Change Tracking とインベントリの次の管理パックがローカルに存在することを確認します。
+1. マシン上で**イベント ビューアー**をチェックして、`changetracking` という単語が含まれているイベントを探します。
+1. [ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関するセクションで、Change Tracking を動作させるために許可する必要があるアドレスとポートを確認します。
+1. Change Tracking とインベントリの次の管理パックがローカルに存在することを確認します。
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-4. 複製イメージを使用する場合は、そのイメージを先に sysprep してから、Microsoft Monitoring Agent エージェントをインストールします。
+1. 複製イメージを使用する場合は、そのイメージを先に sysprep してから、Microsoft Monitoring Agent エージェントをインストールします。
 
 以上の解決策で問題が解決されず、サポートに連絡する場合、次のコマンドを実行し、エージェントで診断データを収集します。
 

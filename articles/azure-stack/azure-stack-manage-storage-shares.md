@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249097"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819520"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
@@ -51,7 +51,7 @@ Azure Stack ではストレージ容量の拡張はサポートされないた�
 
 ボリューム上の共有がテナント データを保持します。 テナント データには、ページ BLOB、ブロック BLOB、追加 BLOB、テーブル、キュー、データベース、および関連するメタデータ ストアが含まれます。 ストレージ オブジェクト (BLOB など) は、1 つの共有内に個別に格納されるため、各オブジェクトの最大サイズは、共有のサイズを超えることはできません。 新しいオブジェクトの最大サイズは、新しいオブジェクトの作成時に共有内に未使用の領域として残っている容量によって決まります。
 
-共有の空き領域が少ないときに、領域を[回収](#reclaim-capacity)するためのアクションが成功しないか使用できない場合、Azure Stack クラウド オペレーターは、ある共有から別の共有に BLOB コンテナーを[移行](#migrate-a-container-between)できます。
+共有の空き領域が少ないときに、領域を[回収](#reclaim-capacity)するためのアクションが成功しないか使用できない場合、Azure Stack クラウド オペレーターは、ある共有から別の共有に BLOB コンテナーを移行できます。
 
 - コンテナーと BLOB の詳細については、「Azure Stack の主要な機能と概念」の記事の「[BLOB ストレージ](azure-stack-key-features.md#blob-storage)」を参照してください。
 - テナント ユーザーによる Azure Stack 内での BLOB ストレージの操作方法については、「[Azure Stack Storage サービス](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services)」を参照してください。

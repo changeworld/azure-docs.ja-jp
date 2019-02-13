@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d51052f4e04a1497ccf2e91427e3465bdc5bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5117d426ac9595dfe25828013c1bd8c7fa81f92c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476827"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812363"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -63,7 +63,7 @@ Batch で Azure CLI を使用するには、ログインと認証を行う必要
 Azure にログインするには、いくつかの方法があります。詳しくは、「[Azure CLI 2.0 を使用してサインインする](/cli/azure/authenticate-azure-cli)」をご覧ください。
 
 1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
-2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
+2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
 
 この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/reference-index#az-login)」と入力します。
 
@@ -76,7 +76,7 @@ az login
 
 ![Azure にログインする](./media/batch-cli-get-started/az-login.png)
 
-「[サンプル シェル スクリプト](#sample-shell-scripts)」セクションの一覧にある例も、対話形式で Azure にログインして Azure CLI セッションを開始する方法を示しています。 ログインしたら、コマンドを呼び出して、Batch アカウント、キー、アプリケーション パッケージ、クォータなどの Batch 管理リソースを操作することができます。  
+「サンプル シェル スクリプト」セクションの一覧にある例でも、対話形式で Azure にログインして Azure CLI セッションを開始する方法が示されています。 ログインしたら、コマンドを呼び出して、Batch アカウント、キー、アプリケーション パッケージ、クォータなどの Batch 管理リソースを操作することができます。  
 
 ### <a name="log-in-to-your-batch-account"></a>Batch アカウントへのログイン
 
@@ -110,7 +110,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-「[サンプル シェル スクリプト](#sample-shell-scripts)」セクションの一覧にある例では、Azure CLI で Azure AD と共有キーの両方を使用して Batch アカウントにログインする方法を示しています。
+「サンプル シェル スクリプト」セクションの一覧にある例では、Azure CLI で Azure AD と共有キーの両方を使用して Batch アカウントにログインする方法が示されています。
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Azure Batch CLI 拡張機能のコマンド
 
@@ -168,7 +168,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 
 * `-h` を使用して、任意の CLI コマンドの **ヘルプ テキスト** を取得します。
 * `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
-* `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、 `--json-file` で使用できます (この記事の前半で説明した [JSON ファイル](#json-files) の項目を参照してください)。
+* `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した JSON ファイルの項目を参照してください)。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>次の手順

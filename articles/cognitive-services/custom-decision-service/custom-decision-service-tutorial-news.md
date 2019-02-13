@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212233"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819775"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>チュートリアル:コンテキストに応じた意思決定のための記事のパーソナル化
 
@@ -44,7 +44,7 @@ Custom Decision Service は、顧客によって提供される RSS フィード
 </channel></rss>
 ```
 
-記事の順序は重要です。 記事の順序は既定のランキングを指定します。これは、記事の順序に関する最も妥当な推測に基づいて決定します。 この既定のランキングは、[ダッシュボード](#performance-dashboard)でのパフォーマンス比較に使用されます。
+記事の順序は重要です。 記事の順序は既定のランキングを指定します。これは、記事の順序に関する最も妥当な推測に基づいて決定します。 この既定のランキングは、ダッシュボードでのパフォーマンス比較に使用されます。
 
 フィード形式の詳細については、[API リファレンス](custom-decision-service-api-reference.md#action-set-api-customer-provided)を参照してください。
 

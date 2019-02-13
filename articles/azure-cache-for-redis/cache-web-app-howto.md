@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556189"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822580"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -52,7 +52,7 @@ ms.locfileid: "53556189"
 
     c. **[ASP.NET Web アプリケーション]** を選択します。
 
-    d. **.NET Framework 4.5.2** 以降が選択されていることを確認します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **.NET Framework 4.5.2** 以降が選択されていることを確認します。
 
     e. **[名前]** ボックスで、プロジェクトに名前を付けます。 この例では、**ContosoTeamStats** という名前を使用しました。
 
@@ -98,9 +98,9 @@ ms.locfileid: "53556189"
 このセクションでは、Azure Cache for Redis に対する簡単なテストを表示する新しいビューをサポートするようにアプリケーションを更新します。
 
 * [キャッシュ用のアプリ設定で web.config ファイルを更新する](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [StackExchange.Redis クライアントを使うようにアプリケーションを構成する](#configure-the-application-to-use-stackexchangeredis)
-* [HomeController と Layout を更新する](#update-the-homecontroller-and-layout)
-* [新しい RedisCache ビューを追加する](#add-a-new-rediscache-view)
+* StackExchange.Redis クライアントを使うようにアプリケーションを構成する
+* HomeController と Layout を更新する
+* 新しい RedisCache ビューを追加する
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>キャッシュ用のアプリ設定で web.config ファイルを更新する
 
@@ -278,7 +278,7 @@ ms.locfileid: "53556189"
     | ------- | :---------------: | ----------- |
     | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 | 関連するホスティング料金は、このサブスクリプションに請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
-    | **[リソース グループ]** | キャッシュを作成したものと同じリソース グループを使います (*TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
+    | **リソース グループ** | キャッシュを作成したものと同じリソース グループを使います (*TestResourceGroup* など)。 | リソース グループは、すべてのリソースをグループとして管理するときに便利です。 後でアプリを削除する必要があるときは、グループを削除するだけで済みます。 |
     | **[App Service プラン]** | **[新規]** を選択し、*TestingPlan* という名前で新しい App Service プランを作成します。 <br />キャッシュを作成するときに使ったものと同じ **[場所]** を使います。 <br />サイズでは **[Free]** を選びます。 | App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 |
 
     ![[App Service] ダイアログ ボックス](./media/cache-web-app-howto/cache-create-app-service-dialog.png)

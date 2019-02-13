@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f9b09982e5552a85ce5800059b114f30b5f4bfad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8fede6907b2b5fac475758b1bb8b1493b86ed408
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178581"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756548"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -44,7 +44,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#create) を使用してリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
 次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
@@ -78,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#create) を使用して、アプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -106,8 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>バックエンド プールの追加
 
-[az network application-gateway address-pool create](/cli/azure/network/application-gatewaywork_application_gateway_address_pool_create) を使用して、バックエンド サーバーを含めるために必要なバックエンド プールを追加します。
-
+[az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) を使用して、バックエンド サーバーを含めるために必要なバックエンド プールを追加します
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -122,7 +121,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-backend-listeners"></a>バックエンド リスナーの追加
 
-[az network application-gateway http-listener create](/cli/azure/network/application-gateway) を使用して、トラフィックのルーティングに必要なバックエンド リスナーを追加します。
+[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) を使用して、トラフィックのルーティングに必要なバックエンド リスナーを追加します。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +145,7 @@ az network application-gateway http-listener create \
 
 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 
-この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 [az network application-gateway rule create](/cli/azure/network/application-gateway) を使用して、規則を追加することができます。
+この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) を使用して、規則を追加することができます。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -223,7 +222,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>ドメインの CNAME レコードの作成
 
-パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 [az network public-ip show](/cli/azure/network/public-ipwork_public_ip_show) を使用して、アプリケーション ゲートウェイの DNS アドレスを取得できます。 DNSSettings の *fqdn* 値をコピーし、作成した CNAME レコードの値として使用します。 
+パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用して、アプリケーション ゲートウェイの DNS アドレスを取得できます。 DNSSettings の *fqdn* 値をコピーし、作成した CNAME レコードの値として使用します。 
 
 ```azurecli-interactive
 az network public-ip show \
