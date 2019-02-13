@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 28f35fd1098e055b22dada703cd7e68de591eea7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192623"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811489"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -93,8 +93,8 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
 
 ドメイン ベースのフィルター処理構成は、次の手順から成ります。
 
-1. 同期の対象とする[ドメインを選択](#select-domains-to-be-synchronized)します。
-2. 追加または削除された各ドメインについて、 [実行プロファイル](#update-run-profiles)を調整します。
+1. 同期の対象とするドメインを選択します。
+2. 追加または削除された各ドメインについて、実行プロファイルを調整します。
 3. [変更の適用と検証](#apply-and-verify-changes)を行います。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>同期するドメインを選択する
@@ -110,7 +110,7 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
    オンプレミスの Active Directory インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、**[更新]** ボタンをクリックして一覧を最新の情報に更新します。 最新の情報に更新しようとすると資格情報を求められます。 Windows Server Active Directory に対する読み取りアクセス権を持った資格情報を指定します。 ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。  
    ![更新が必要](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。 フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。
-7. 続けて [実行プロファイル](#update-run-profiles)を調整します。
+7. 続けて実行プロファイルを調整します。
 
 ### <a name="update-the-run-profiles"></a>実行プロファイルを更新する
 ドメイン フィルターを更新した場合、実行プロファイルも更新する必要があります。

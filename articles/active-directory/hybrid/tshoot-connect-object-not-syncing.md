@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4336cabd256e492981e1bbff8d1b3b9e4ef07df1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296605"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820523"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
@@ -93,7 +93,7 @@ ms.locfileid: "55296605"
 
 * エラー元が **SyncRulesEngine**の場合、コール スタック情報の最初にオブジェクトの全属性の一覧が表示されます。 **InnerException =>** という見出しが表示されるまで下へスクロールします。  
   ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)  
-   その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
+  その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
 
 エラー自体から十分な情報が得られない場合、データ自体を見る必要があります。 オブジェクト識別子が付いたリンクをクリックし、[コネクタ スペースのインポート済みオブジェクト](#cs-import)のトラブルシューティングを続行できます。
 
@@ -114,7 +114,7 @@ ms.locfileid: "55296605"
 これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
 
 ### <a name="cs-import"></a>CS インポート
- cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
+cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
 ![CS オブジェクト](./media/tshoot-connect-object-not-syncing/csobject.png)    
 **[古い値]** には Connect に現在保存されているデータが、**[新しい値]** にはソース システムから受け取り、まだ適用されていないデータが表示されます。 オブジェクトにエラーがある場合、変更は処理されません。
 
@@ -123,7 +123,7 @@ ms.locfileid: "55296605"
 **[同期エラー]** タブは、オブジェクトに問題がある場合にのみ表示されます。 詳しくは、[同期エラーのトラブルシューティング](#troubleshoot-errors-in-operations-tab)に関するページをご覧ください。
 
 ### <a name="cs-lineage"></a>CS 系列
- [Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
+[Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
 ![CS 系列](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 **[アクション]** 列に、アクションが **[プロビジョニング]** である **[受信]** 同期規則が 1 つ表示されています。 これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。 同期規則の一覧に **[送信]** と **[Provision (プロビジョニング)]** が表示されている場合は、メタバース オブジェクトが削除されたときに、このオブジェクトが削除されることを示しています。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
@@ -143,7 +143,7 @@ ms.locfileid: "55296605"
 ログ ページを使用して、パスワード同期の状態と履歴を確認できます。 詳細については、[パスワード ハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md)に関するページをご覧ください。
 
 ## <a name="metaverse-object-properties"></a>メタバース オブジェクトのプロパティ
-通常は、ソースの Active Directory [コネクタ スペース](#connector-space)から検索を開始することをお勧めします。 メタバースから検索を開始することもできます。
+通常は、ソースの Active Directory コネクタ スペースから検索を開始することをお勧めします。 メタバースから検索を開始することもできます。
 
 ### <a name="search-for-an-object-in-the-mv"></a>MV 内のオブジェクトの検索
 **Synchronization Service Manager** で、**[メタバース検索]** をクリックします。 ユーザーが見つかるとわかっているクエリを作成します。 accountName (sAMAccountName) や userPrincipalName などの一般的な属性を検索できます。 詳しくは、[メタバース検索](how-to-connect-sync-service-manager-ui-mvsearch.md)に関する記事をご覧ください。
@@ -175,7 +175,7 @@ ms.locfileid: "55296605"
 
 
 ### <a name="mv-attributes"></a>MV 属性
- [属性] タブには、値と、値を提供したコネクタが表示されます。  
+[属性] タブには、値と、値を提供したコネクタが表示されます。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 オブジェクトが同期していない場合は、メタバースで次の属性を参照します。
@@ -183,7 +183,7 @@ ms.locfileid: "55296605"
 - 属性 **sourceAnchor** は存在しますか。 存在しない場合、アカウント リソース フォレスト トポロジはありますか。 オブジェクトがリンクされたメールボックスとして識別されている場合 (属性 **msExchRecipientTypeDetails** の値が 2)、sourceAnchor は有効になっている Active Directory アカウントを使用してフォレストによって提供されます。 マスター アカウントがインポートされ、正しく同期されていることを確認してください。 マスター アカウントがオブジェクトの[コネクタ](#mv-connectors)に一覧表示されている必要があります。
 
 ### <a name="mv-connectors"></a>MV コネクタ
- [コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
+[コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
 ![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 次のものに対するコネクタが必要です。
 
@@ -195,6 +195,5 @@ Azure AD にコネクタが存在しない場合は、[MV 属性](#mv-attributes
 このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、**[プロパティ]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
-
-「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。
+- [Azure AD Connect 同期](how-to-connect-sync-whatis.md)。
+- [ハイブリッド ID とは](whatis-hybrid-identity.md)。

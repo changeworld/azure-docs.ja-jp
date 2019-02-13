@@ -1,25 +1,23 @@
 ---
-title: グループの動的メンバーシップのトラブルシューティング | Microsoft Docs
+title: グループの動的メンバーシップに関する問題を修正する - Azure Active Directory | Microsoft Docs
 description: Azure AD でのグループの動的メンバーシップ管理に関する問題について、トラブルシューティングのヒントを紹介します。
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: ab5a3b00d063dfdd42e67247bb2cdc37866d0164
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d157595e5a3168f7807f015441fbcb770612e71
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164131"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510410"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>グループの動的メンバーシップのトラブルシューティング
 

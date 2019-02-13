@@ -10,12 +10,13 @@ ms.subservice: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 5d69f4cbf78cf75cf018070a0d02c4b109689449
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0af4cf345efe2180249f9c9491e9f66f75ac4514
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769490"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188717"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 

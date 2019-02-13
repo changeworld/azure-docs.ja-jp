@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cd99f8bce8eca622412b834b5a7b75fda3ceb1f7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222917"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812057"
 ---
 # <a name="project-url-preview-v7-reference"></a>Project URL Preview v7 のリファレンス
 
@@ -75,7 +75,7 @@ q - プレビューされる URL を特定するクエリ
 
 |Name|値|type|必須|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、[市場コード](#market-codes)に関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|String|はい|
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|String|はい|
 |<a name="query" />q|プレビューする URL|String|はい|
 |<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](http://json-ld.org/) に関するページを参照してください。|String|いいえ |
 |<a name="safesearch"/>safeSearch|違法な成人向けコンテンツや海賊版コンテンツはエラー コード 400 でブロックされ、*isFamilyFriendly* フラグは返されません。 <p>合法的な成人向けコンテンツの場合は、次のような動作になります。 状態コード 200 が返され、*isFamilyFriendly* フラグが false に設定されます。<ul><li>safeSearch=strict:タイトル、説明、URL、画像は返されません。</li><li>safeSearch=moderate: タイトル、URL、説明は取得しますが、説明的な画像は取得しません。</li><li>safeSearch=off: すべての応答オブジェクト/要素 (タイトル、URL、説明、画像) を取得します。</li></ul> |String|不要。 </br> 既定値は safeSearch=strict です。|
@@ -83,7 +83,7 @@ q - プレビューされる URL を特定するクエリ
 ## <a name="response-objects"></a>応答オブジェクト
 Web Search API では、応答スキーマは [WebPage] と ErrorResponse のいずれかです。 要求が失敗した場合、最上位レベルのオブジェクトは [ErrorResponse](#errorresponse) オブジェクトになります。
 
-|オブジェクト|説明|
+|Object|説明|
 |------------|-----------------|
 |[WebPage](#webpage)|プレビューの属性が含まれている最上位の JSON オブジェクト。|
 

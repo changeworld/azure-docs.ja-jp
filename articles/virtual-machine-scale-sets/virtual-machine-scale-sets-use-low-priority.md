@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85b974e954fd99f6f10426f1961ea9f4a5343c59
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953874"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811105"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>スケール セットでの低優先度の VM (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "46953874"
 
 スケール セットに低優先度の VM を展開するには、新しい *Priority* フラグを *Low* に設定します。 スケール セット内のすべての VM が、低優先度に設定されます。 低優先度の VM でスケール セットを作成するには、次のいずれかの方法を使います。
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 

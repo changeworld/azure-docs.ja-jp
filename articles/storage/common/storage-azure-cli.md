@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 707ee508b0615ab873b60b45eb1d9f0294313367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464570"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816851"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
@@ -38,7 +38,7 @@ ms.locfileid: "55464570"
 [Azure CLI のインストール](/cli/azure/install-az-cli2)に関するページに記載されている手順に従って、Azure CLI をダウンロードしてインストールします。
 
 > [!TIP]
-> インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2#installation-troubleshooting)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
+> インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
 >
 
 ## <a name="working-with-the-cli"></a>CLI の使用
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>ストレージ アカウントを管理する
 
 ### <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
-Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成して[サブスクリプションに接続](#connect-to-your-azure-subscription)できるようにすると、新しい Azure Storage アカウントを作成することができます。
+Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成してサブスクリプションに接続できるようにすると、新しい Azure ストレージ アカウントを作成することができます。
 
 ```azurecli
 az storage account create \
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB は、[az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) コマンドで一覧表示します。
+コンテナー内の BLOB は、[az storage blob list](/cli/azure/storage/blob) コマンドで一覧表示します。
 
 ```azurecli
 az storage blob list \

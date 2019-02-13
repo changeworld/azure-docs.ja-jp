@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN Gateways: Resource Manager: PowerShell で BGP を構成する | Microsoft Docs'
+title: Azure VPN Gateway 上で BGP を構成するResource Manager:PowerShell | Microsoft Docs
 description: この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632587"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813026"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続上で BGP を有効にする手順について説明します。
@@ -35,7 +35,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 この記事では、以下のタスクの手順を説明します。
 
 * [パート 1 - Azure VPN ゲートウェイで BGP を有効にする](#enablebgp)
-* [パート 2 - BGP を使用してクロスプレミス接続を確立する](#crossprembgp)
+* パート 2 - BGP を使用してクロスプレミス接続を確立する
 * [パート 3 - BGP を使用して VNet 間接続を確立する](#v2vbgp)
 
 各パートの手順は、ネットワーク接続で BGP を有効にするための基本的な構成要素を形成します。 3 つのパートをすべて完了すると、次の図のようなトポロジが構築されます。
@@ -174,7 +174,7 @@ $BGPPeerIP5 = "10.52.255.254"
 
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2.Site5 用のローカル ネットワーク ゲートウェイを作成する
 
-ローカル ネットワーク ゲートウェイを作成する前に、リソース グループが作成されていない場合は、必ず作成してください。 ローカル ネットワーク ゲートウェイ用の 2 つの追加パラメーターである Asn と BgpPeerAddress に注意してください。
+ローカル ネットワーク ゲートウェイを作成する前に、リソース グループが作成されていない場合は、必ず作成してください。 また、ローカル ネットワーク ゲートウェイ用の 2 つの追加パラメーターであるAsn と BgpPeerAddress にも注意してください。
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5

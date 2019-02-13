@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でタスク別の最小特権ロールを委任する | Microsoft Docs
+title: 管理タスク別の最小特権ロールを委任する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で ID タスク用に委任するロール
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 3b6c5b08fa3f915c541837abe5f52c7ec3d9b87e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6307fe4875d9fd5f55db8078ab9440f989fb58f3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185213"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508217"
 ---
-# <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory における ID タスク別の管理者ロール
+# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
 この記事では、Azure Active Directory (Azure AD) で最小特権ロールを割り当てることによってユーザーの管理者アクセス許可を制限するうえで必要な情報を取り上げます。 機能領域ごとの管理者タスクと、各タスクを実行するために必要な最小特権ロールのほか、そのタスクを実行できる非グローバル管理者ロールも別途記載しています。
 

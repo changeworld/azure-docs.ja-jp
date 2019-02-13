@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 17d8eff39eabb2f7b4968bf74d2482b980fe8060
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116621"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565957"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
-[Azure Portal](https://portal.azure.com) では、[Azure App Service](../../app-service/overview.md) の Web アプリ、モバイル バック エンド、および API アプリのアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
+[Azure portal](https://portal.azure.com) では、[Azure App Service](../../app-service/overview.md) の Web アプリ、モバイル バック エンド、および API アプリのアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
 
 ## <a name="run-time-or-build-time"></a>実行時またはビルド時
 監視は、アプリを次の 2 つの方法のどちらかでインストルメント化することによって構成できます。
@@ -42,14 +42,27 @@ Azure でアプリ サービスを既に実行している場合、要求率と�
 
     ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource.png)
 
-2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。
+2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます (ASP.NET アプリの監視は既定でオンであり、2 つの異なる収集レベルがあります)。
 
-    ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options.png)
+    ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new.png)
+
+    * .NET **基本収集**レベルの場合、必要なシングルインスタンス APM 機能が提供されます。
+    
+    * .NET **推奨収集**レベルの場合、
+        * CPU、メモリ、I/O の使用状況傾向が追加されます。
+        * 要求/依存関係の境界を越えてマイクロサービスが相互に関連付けられます。
+        * 使用状況傾向が収集され、可用性の結果とトランザクションを関連付けることができます。
+        * ホスト プロセスで処理されていない例外が収集されます。
+        * サンプリングが使用されるとき、負荷の下で APM メトリックの精度が上がります。
+    
+    .NET Core では、.NET Core 2.0 と 2.1 の場合、**推奨収集**か無効が提供されます。
 
 3. Application Insights をインストールしたら、**アプリ サービスをインストルメント化**します。
 
    ページ ビューとユーザー テレメトリに対する**クライアント側の監視を有効にします**。
 
+    (アプリ設定 'APPINSIGHTS_JAVASCRIPT_ENABLED' の有無に関係なく、.NET Core アプリと**推奨収集**の組み合わせの場合、これは既定で有効になります。 .NET Core では現在のところ、クライアント側の監視を詳細な UI で無効にすることはできません。)
+    
    * [設定]、[アプリケーションの設定] の順に選択します
    * [アプリ設定] で、新しいキー値ペアを追加します。
 
@@ -57,6 +70,7 @@ Azure でアプリ サービスを既に実行している場合、要求率と�
 
     値: `true`
    * 設定を **[保存]** し、アプリを **[再起動]** します。
+
 4. **[設定]** > **[Application Insights]** > **[Application Insights でさらに表示]** を選択して、アプリの監視データを探索します。
 
 後で必要に応じて、Application Insights でアプリを構築できます。
@@ -92,20 +106,25 @@ Application Insights では、アプリへの SDK のインストールによっ
 * [Web ページの読み込みデータ](../../azure-monitor/app/javascript.md)
 * [カスタムのテレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)
 
-## <a name="video"></a>ビデオ
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED により、NET CORE Web アプリケーションで HTML の不完全な応答が発生します。
 
 App Services で JavaScript を有効にすると、HTML の応答が切り捨てられる可能性があります。
 
-- 回避策 1: APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定を false に設定するか、完全に削除して、再起動します
-- 回避策 2: コードで SDK を追加して、拡張機能を削除します (プロファイラーとスナップショット デバッガーは、この構成ではありません)
+* 回避策 1: APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定を false に設定するか、完全に削除して、再起動します
+* 回避策 2: コードで SDK を追加して、拡張機能を削除します (プロファイラーとスナップショット デバッガーは、この構成ではありません)
 
 [こちら](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)でこの問題を追跡しています
+
+.NET Core では現在のところ、次は**サポートされていません**。
+
+* 自己完結型のデプロイ。
+* .NET Framework を対象とするアプリ。
+* .NET Core 2.2 アプリケーション。
+
+> [!NOTE]
+> .NET Core 2.0 と .NET Core 2.1 はサポートされています。 .NET Core 2.2 のサポートが追加されるときは、この記事も更新されます。
 
 ## <a name="next-steps"></a>次の手順
 * [実行中のアプリに対してプロファイラーを実行](../../azure-monitor/app/profiler.md)します。

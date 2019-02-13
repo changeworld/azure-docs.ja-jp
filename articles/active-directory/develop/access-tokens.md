@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7dd2b60a985291311328407b07ef290e962f147b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 110397e8399d153356a574b00d34a4cb781ec1b5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080567"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811564"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
@@ -239,6 +239,8 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 > ｢パスワード基づかない｣ログインは、ユーザーがそれを得るために、パスワードをタイプしなかった場合です。 たとえば、Windows Hello、FIDO キー、または PIN で自分の顔を使用する場合です。 
 >
 > 既知の問題は、Windows Primary 更新トークンに存在します。 PRT が、パスワードを使用して取得され、ユーザーが Hello を介して、ログインする場合、この PRT の発信元は変更されません。ユーザーが自分のパスワードが変更した場合、は取り消されます。
+>
+> 更新トークンは、新しいアクセス トークンと更新トークンのフェッチに使用されるときに無効になる、または取り消されることはありません。  
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249270"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566042"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 ## <a name="overview"></a>概要
@@ -168,16 +168,16 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 1. オートメーション アカウントで、**[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
    - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
-   - *RecoveryPlanName* **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
-   - *RecoveryPlanName* **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
-   - *RecoveryPlanName* **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
-   - *RecoveryPlanName* **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
-   - *RecoveryPlanName* **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
-   - *RecoveryPlanName* **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
-   - *RecoveryPlanName* **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、**[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
-   - *RecoveryPlanName* **-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
-   - *RecoveryPlanName* **-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
-   - *RecoveryPlanName* **-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
+   - *RecoveryPlanName***-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
+   - *RecoveryPlanName***-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
+   - *RecoveryPlanName***-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
+   - *RecoveryPlanName***-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
+   - *RecoveryPlanName***-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
+   - *RecoveryPlanName***-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
+   - *RecoveryPlanName***-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、**[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
+   - *RecoveryPlanName***-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
+   - *RecoveryPlanName***-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
+   - *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
     たとえば、復旧計画の名前が fileServerpredayRP である場合、すべての資産を追加し終えたら **[変数]**、**[接続]** および **[証明書]** タブは次のように表示されます。
 
@@ -208,7 +208,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
       
    1. StorSimple 8000 シリーズ デバイス管理用の Azure Automation Runbook モジュールを作成します。 次のコマンドを使用して、Automation モジュール zip ファイルを作成します。
          
-      ```
+      ```powershell
             # set path variables
             $downloadDir = "C:\scripts\StorSimpleSDKTools"
             $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"

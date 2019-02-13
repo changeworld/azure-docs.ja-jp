@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267293"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812040"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
@@ -44,7 +44,7 @@ StorSimple Virtual Array を構成およびセットアップする前に、以�
 StorSimple Virtual Array をセットアップして構成するには、次の手順を実行します。
 
 * [手順 1:ローカル Web UI の設定を完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [手順 2:必要なデバイスのセットアップを完了する](#step-2-complete-the-required-device-setup)
+* 手順 2:必要なデバイスのセットアップを完了する
 * [手順 3:ボリュームを追加する](#step-3-add-a-volume)
 * [手順 4:ボリュームをマウント、初期化、フォーマットする](#step-4-mount-initialize-and-format-a-volume)
 
@@ -88,7 +88,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
       > iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
       > 
       > 
-   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 操作を完了するには、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)にも掲載されています。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
+   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 操作を完了するには、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
       
        ![資格情報](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. **[Apply]** をクリックします。 これにより、デバイスの設定が適用、検証されます。

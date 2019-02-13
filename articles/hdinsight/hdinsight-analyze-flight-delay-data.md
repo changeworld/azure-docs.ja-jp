@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632893"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817667"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>HDInsight での Apache Hive を使用したフライトの遅延データの分析
 [Apache Hive](https://hive.apache.org/) では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) ジョブを実行します。大規模なデータの集約、クエリ、分析に Hive を利用できます。
@@ -25,7 +25,7 @@ ms.locfileid: "53632893"
 Azure HDInsight の大きな利点の 1 つに、データ ストレージとコンピューティングの分離があります。 HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 標準的なジョブは 3 つの部分で構成されます。
 
 1. **Azure BLOB ストレージにデータを保存する。**  たとえば、気象データ、センサー データ、Web ログを Azure BLOB ストレージに保存できます。ここではフライトの遅延データが保存対象となります。
-2. **ジョブを実行する。**  データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターを作成し、ジョブを実行して、クラスターを削除します。 このジョブによって、出力データが Azure BLOB ストレージに保存されます。 出力データは、クラスターの削除後も維持されます。 こうして、実際に消費した分だけが課金されることとなります。
+2. **ジョブを実行する。** データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターを作成し、ジョブを実行して、クラスターを削除します。 このジョブによって、出力データが Azure BLOB ストレージに保存されます。 出力データは、クラスターの削除後も維持されます。 こうして、実際に消費した分だけが課金されることとなります。
 3. **Azure BLOB ストレージから出力結果を取り出す。** ここでは、Azure SQL データベースにデータをエクスポートする過程がこれに相当します。
 
 このチュートリアルのシナリオと構成を示したのが次の図です。
@@ -239,8 +239,8 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 ## <a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
 データ ファイルと [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプト ファイルをアップロード ([付録 B](#appendix-b) を参照) する前に、いくつか計画を立てる必要があります。 データ ファイルと HiveQL ファイルを保存してから HDInsight クラスターを作成し、Hive ジョブを実行するという考え方です。 2 つのオプションがあります。
 
-* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを同じものにする。**  HDInsight クラスターにはストレージ アカウントのアクセス キーがあるため、追加の変更は不要です。
-* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを別のものにする。** この場合、ストレージ アカウントを追加のストレージ アカウントとしてリンクするために、「[HDInsight クラスターを作成して Apache Hive/Sqoop ジョブを実行する](#runjob)」に記載されている Windows PowerShell スクリプトの作成に関する部分を変更する必要があります。 手順については、「[HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision]」を参照してください。 ストレージ アカウントのアクセス キーが HDInsight クラスターで認識されるようになります。
+* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを同じものにする。** HDInsight クラスターにはストレージ アカウントのアクセス キーがあるため、追加の変更は不要です。
+* **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを別のものにする。** この場合、ストレージ アカウントを追加のストレージ アカウントとしてリンクするために、「HDInsight クラスターを作成して Apache Hive/Sqoop ジョブを実行する」に記載されている Windows PowerShell スクリプトの作成に関する部分を変更する必要があります。 手順については、「[HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision]」を参照してください。 ストレージ アカウントのアクセス キーが HDInsight クラスターで認識されるようになります。
 
 > [!NOTE]  
 > データ ファイルの BLOB ストレージ パスは、HiveQL スクリプト ファイルでハードコーディングされます。 このパスは適宜更新する必要があります。
@@ -367,7 +367,7 @@ HiveQL スクリプトは、次の作業を実行します。
 2. **delays_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。 このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\n" であることを指定しています。 この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN\_CITY\_NAME フィールドや DEST\_CITY\_NAME フィールドの値など)。 これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。
 3. **delays テーブルを削除します**(テーブルが既に存在する場合)。
 4. **delays テーブルを作成します**。 次へ進む前にデータをクリーンアップしておくと面倒がありません。 次のクエリは、delays_raw テーブルを基にして、新しい *delays* テーブルを作成します。 (前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。
-5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。**  さらに、結果を BLOB ストレージに出力します。 このクエリは、データからアポストロフィを削除し、**weather_delay** の値が null の行を除外します。 このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
+5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。** さらに、結果を BLOB ストレージに出力します。 このクエリは、データからアポストロフィを削除し、**weather_delay** の値が null の行を除外します。 このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
 
 HiveQL コマンドの完全な一覧については、[Apache Hive データ定義言語][hadoop-hiveql]に関するページを参照してください。 各 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) コマンドは、セミコロンで終了します。
 

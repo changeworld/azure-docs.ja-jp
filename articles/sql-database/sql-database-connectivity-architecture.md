@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469117"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809982"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -25,8 +25,7 @@ ms.locfileid: "55469117"
 
 > [!IMPORTANT]
 > **[今後の変更] Azure SQL サーバーへのサービス エンドポイントの接続の場合、`Default` の接続動作が `Redirect` に変わります。**
->
-> この変更は、2019 年 1 月 2 日までにすべてのリージョンで有効になります。
+> 接続のアーキテクチャに応じて、新しいサーバーを作成し、既存のサーバーの接続の種類を明示的に [リダイレクト] (推奨) または [プロキシ] に設定することをお勧めします。
 >
 > サービス エンドポイントを通じた接続が、この変更の結果として既存の環境で切断しないようにするために、以下の操作にテレメトリを使用します。
 > - 変更前にサービス エンドポイントからアクセスされたサーバーを検出した場合、接続タイプを `Proxy` に切り替えます。
@@ -38,7 +37,7 @@ ms.locfileid: "55469117"
 >
 > Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 12000 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内の Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
 > [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> このトピックは、単一データベースとエラスティック プールをホストする Azure SQL Database サーバーと、SQL Data Warehouse データベースに適用されます。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 

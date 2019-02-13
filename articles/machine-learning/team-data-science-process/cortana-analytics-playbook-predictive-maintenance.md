@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466831"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816647"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -325,7 +325,7 @@ PdM に対して推奨される方法は、"_時間に依存した_" 方法に�
 ### <a name="time-dependent-split"></a>時間に依存した分割
 このセクションでは、時間に依存した分割を実装するためのベスト プラクティスについて説明します。 以下では、トレーニング セットとテスト セット間での時間に依存した双方向の分割を説明します。
 
-さまざまなセンサーから収集した測定値のような、タイムスタンプ付きのイベントのストリームを想定します。 複数のイベントを含む期間全体で、トレーニング例とテスト例の特徴およびラベルを定義します。 たとえば、二項分類の場合、過去のイベントに基づいて特徴を作成し、将来の "X" 期間内のイベントに基づいてラベルを作成します ([特徴エンジニアリング](#Feature-engineering)および[モデリング手法](#Modeling-techniques-applied-to-PdM-use-cases)のセクションを参照)。 このため、例の期間のラベル付けは、その特徴の期間より後にきます。
+さまざまなセンサーから収集した測定値のような、タイムスタンプ付きのイベントのストリームを想定します。 複数のイベントを含む期間全体で、トレーニング例とテスト例の特徴およびラベルを定義します。 たとえば、二項分類の場合、過去のイベントに基づいて特徴を作成し、将来の "X" 期間内のイベントに基づいてラベルを作成します ([特徴エンジニアリング](#Feature-engineering)およびモデリング手法のセクションを参照)。 このため、例の期間のラベル付けは、その特徴の期間より後にきます。
 
 時間に依存した分割では、モデルをトレーニングする "_トレーニング分割時間 T<sub>c</sub>_" を選択します。これには、T<sub>c</sub> までの履歴データを使用して調整したハイパーパラメーターを使用します。 T<sub>c</sub> を超えた将来のラベルがトレーニング データに混入するのを回避するには、トレーニング例をラベル付けする最新の時間を、T<sub>c</sub> よりも X 単位分前にします。 図 7 に示す例では、各四角形が、前述の方法で特徴とラベルを計算したデータ セット内のレコードを表しています。 この図では、X=2、W=3 の場合にトレーニング セットとテスト セットに入るレコードを示しています。
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473165"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811530"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 診断 1.0 構成スキーマ
 > [!NOTE]
@@ -109,7 +109,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs 要素  
 基になる診断インフラストラクチャによって生成されるログのバッファー構成を定義します。
 
-親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+親要素:DiagnosticMonitorConfiguration 要素。  
 
 属性:
 
@@ -122,7 +122,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 要素  
  基本的な Azure ログのバッファー構成を定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+ 親要素:DiagnosticMonitorConfiguration 要素。  
 
 属性:  
 
@@ -135,7 +135,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directories-element"></a>Directories 要素  
 定義できるファイル ベースのログのバッファー構成を定義します。
 
-親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。  
+親要素:DiagnosticMonitorConfiguration 要素。  
 
 
 属性:  
@@ -148,7 +148,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
  クラッシュ ダンプ ディレクトリを定義します。
 
- 親要素:[Directories 要素](#Directories)。  
+ 親要素:Directories 要素。  
 
 属性:  
 
@@ -160,7 +160,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 要素  
  失敗した要求ログ ディレクトリを定義します。
 
- 親要素: [Directories 要素](#Directories)。  
+ 親要素: Directories 要素。  
 
 属性:  
 
@@ -172,7 +172,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ##  <a name="iislogs-element"></a>IISLogs 要素  
  IIS ログ ディレクトリを定義します。
 
- 親要素: [Directories 要素](#Directories)。  
+ 親要素: Directories 要素。  
 
 属性:  
 
@@ -184,12 +184,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>DataSources 要素  
  0 個以上の追加のログ ディレクトリを定義します。
 
- 親要素:[Directories 要素](#Directories)。
+ 親要素:Directories 要素。
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 要素  
  監視するログ ファイルのディレクトリを定義します。
 
- 親要素:[DataSources 要素](#DataSources)。
+ 親要素:DataSources 要素。
 
 属性:
 
@@ -201,7 +201,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="absolute-element"></a>Absolute 要素  
  省略可能な環境変数の展開を使用して監視するディレクトリの絶対パスを定義します。
 
- 親要素:[DirectoryConfiguration Element](#DirectoryConfiguration)。  
+ 親要素:DirectoryConfiguration 要素。  
 
 属性:  
 
@@ -213,7 +213,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="localresource-element"></a>LocalResource 要素  
  サービス定義で定義されているローカル リソースの相対パスを定義します。
 
- 親要素:[DirectoryConfiguration Element](#DirectoryConfiguration)。  
+ 親要素:DirectoryConfiguration 要素。  
 
 属性:  
 
@@ -225,7 +225,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  収集するパフォーマンス カウンターのパスを定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。
+ 親要素:DiagnosticMonitorConfiguration 要素。
 
 
  属性:  
@@ -238,7 +238,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 要素  
  収集するパフォーマンス カウンターを定義します。
 
- 親要素:[PerformanceCounters 要素](#PerformanceCounters)。  
+ 親要素:PerformanceCounters 要素。  
 
  属性:  
 
@@ -250,7 +250,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素  
  監視するイベント ログを定義します。
 
- 親要素:[DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration)。
+ 親要素:DiagnosticMonitorConfiguration 要素。
 
   属性:
 
@@ -263,7 +263,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasource-element"></a>DataSource 要素  
  監視するイベント ログを定義します。
 
- 親要素:[WindowsEventLog 要素](#windowsEventLog)。  
+ 親要素:WindowsEventLog 要素。  
 
  属性:
 

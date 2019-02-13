@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179839"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815238"
 ---
 # <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
 個人用アカウントにサインインしていないことを確認するには、新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開きます。  
@@ -78,7 +78,7 @@ ms.locfileid: "55179839"
     | 課金モデル | 次の手順 |  
     |:--- |:--- |  
     | 無料 | Cloud パートナー ポータルに移動します。<ul> <li>Azure Marketplace で公開するには、「Cloud パートナー ポータル」ページ ([cloudpartner.azure.com](https://cloudpartner.azure.com)) にアクセスしてください。</li> </ul> |  
-    | 商用 (トランザクション) | アカウント情報を更新します。<ul> <li>アカウント情報の追加に関する詳細については、「[銀行口座および税の情報を追加する方法](#how-to-add-bank-and-tax-information)」セクションを参照してください。</li> </ul> |  
+    | 商用 (トランザクション) | アカウント情報を更新します。<ul> <li>アカウント情報の追加に関する詳細については、「[銀行口座および税の情報を追加する方法](#add-bank-information)」セクションを参照してください。</li> </ul> |  
 
     *   商用プランの例は、時間単位の課金モデルの VM プランです。  
 
@@ -98,7 +98,7 @@ ms.locfileid: "55179839"
     
     [メールの開始] ボタンをクリックします。  
 1.  サインイン ページで、任意の Microsoft ID を使用してサインインします。 Microsoft ID をお持ちでない場合は、作成してください。  
-    *   Microsoft ID の作成の詳細については、「[Azure Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドライン](#guidelines-for-creating-a-microsoft-id-to-manage-an-azure-marketplace-account)」セクションを参照してください。  
+    *   Microsoft ID の作成の詳細については、Azure Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドラインのセクションを参照してください。  
 2.  問題の詳細を入力します。  
 3.  チケットを送信するには、[送信] ボタンをクリックします。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "55179839"
 > 次の登録リストの種類で発行している発行元です:VM、Azure アプリ: ソリューション テンプレートとマネージド アプリ。  
 
 *   **デベロッパー センター アカウントが必要なのはなぜですか?**
-> デベロッパー センター アカウントは、登録リストの種類について Microsoft が発行元に代わって顧客に請求できるようにするために必要です。 デベロッパー センター アカウントの登録により、Microsoft は貴社の法律、税務および銀行に関する情報を検証することができます。 詳しくは、[こちら](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)をクリックしてください。
+> デベロッパー センター アカウントは、登録リストの種類について Microsoft が発行元に代わって顧客に請求できるようにするために必要です。 デベロッパー センター アカウントの登録により、Microsoft は貴社の法律、税務および銀行に関する情報を検証することができます。 詳しくは、[こちら](https://docs.microsoft.com/azure/marketplace/become-publisher)をクリックしてください。
 
 *   **デベロッパー センターの登録を開始するにはどうすればよいですか?**
 > 重複を避けるために、貴社がまだデベロッパー センター アカウントを登録していないことをご確認ください。 開発者アカウントに関連付ける Microsoft アカウントを使用してサインインする必要があります。 Microsoft アカウントをまだお持ちでない場合は、[こちら](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)で新しいアカウントを作成できます。 (例: contoso_marketplace@live.com) サインインして登録するには、 https://dev.windows.com/en-us/registration?accountProgram=Azure にアクセスします
@@ -184,7 +184,7 @@ ms.locfileid: "55179839"
 > 一時的な会社名を割り当て、[developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) のサポートに連絡し、ビジネス登録ドキュメントをご提供ください。
 
 *   **税金と支払い情報はどのようにして追加しますか?**
-> デベロッパー センター アカウントに税金と銀行の情報を入力しないと、トランザクション オファーを発行することはできません。  アカウント情報の追加について詳しくは、[銀行口座および税の情報を追加する方法](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)に関するセクションをご覧ください。
+> デベロッパー センター アカウントに税金と銀行の情報を入力しないと、トランザクション オファーを発行することはできません。  アカウント情報の追加について詳しくは、[銀行口座および税の情報を追加する方法](https://docs.microsoft.com/azure/marketplace/register-dev-center)に関するセクションをご覧ください。
 
 *   **デベロッパー センターの Microsoft ログイン アカウントを変更することはできますか?**
 > いいえ。 デベロッパー センターが作成された後、所有者アカウントは変更できません。 目的の Microsoft アカウントを使用して新しいデベロッパー センター アカウントの作成を最初からやり直す必要があります。

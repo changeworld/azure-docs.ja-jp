@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 12a11e444372ad7004e566851532a98be63af8e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 15d5b824525bc19d83abfbf2c08e068bd3837350
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195360"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821203"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
@@ -34,7 +34,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 > [!NOTE]
 > Azure AD に対する変更の同期を新しい Azure AD Connect サーバーが開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
 
-DirSync からアップグレードしない場合は、「 [関連ドキュメント](#related-documentation) 」でその他のシナリオを確認してください。
+DirSync からアップグレードしない場合は、関連ドキュメントでその他のシナリオを確認してください。
 
 ## <a name="upgrade-from-dirsync"></a>DirSync からのアップグレード
 現在の DirSync のデプロイに応じて、アップグレードにはさまざまなオプションがあります。 予想されるアップグレード時間が 3 時間未満の場合は、インプレース アップグレードを実行することをお勧めします。 予想されるアップグレード時間が 3 時間を超える場合は、別のサーバーで並列デプロイを行うことをお勧めします。 オブジェクトの数が 50,000 を超える場合は、アップグレードに要する時間が 3 時間を超えることが予想されます。
@@ -48,12 +48,12 @@ DirSync からアップグレードしない場合は、「 [関連ドキュメ�
 > DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。 Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
 
 **インプレース アップグレード**  
- アップグレードが完了する予定時刻がウィザードに表示されます。 この推定値は、50,000 のオブジェクト (ユーザー、連絡先、グループ) を含むデータベースのアップグレードが完了するまでに 3 時間かかるという前提に基づいています。 データベース内のオブジェクトの数が 50,000 未満である場合は、Azure AD Connect ではインプレース アップグレードが推奨されています。 続行すると、現在の設定がアップグレード中に自動的に適用され、サーバーが自動的にアクティブな同期を再開します。
+アップグレードが完了する予定時刻がウィザードに表示されます。 この推定値は、50,000 のオブジェクト (ユーザー、連絡先、グループ) を含むデータベースのアップグレードが完了するまでに 3 時間かかるという前提に基づいています。 データベース内のオブジェクトの数が 50,000 未満である場合は、Azure AD Connect ではインプレース アップグレードが推奨されています。 続行すると、現在の設定がアップグレード中に自動的に適用され、サーバーが自動的にアクティブな同期を再開します。
 
 構成の移行を実行し、並列デプロイを実行する場合は、インプレース アップグレードに関する推奨事項をオーバーライドしてもかまいません。 たとえば、ハードウェアとオペレーティング システムを更新することができます。 詳細については、「[並列デプロイ](#parallel-deployment)」セクションを参照してください。
 
 **並列デプロイ**  
- オブジェクトの数が 50,000 を超える場合は、並列デプロイをお勧めします。 このデプロイでは、ユーザーに対して操作時の遅延が発生しません。 Azure AD Connect のインストールでは、アップグレードのためのダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
+オブジェクトの数が 50,000 を超える場合は、並列デプロイをお勧めします。 このデプロイでは、ユーザーに対して操作時の遅延が発生しません。 Azure AD Connect のインストールでは、アップグレードのためのダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
 
 ### <a name="supported-dirsync-configurations-to-be-upgraded"></a>アップグレード対象の、サポートされている DirSync の構成
 アップグレードされた DirSync では、次の構成の変更がサポートされています。
@@ -127,7 +127,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
 
 * **[設定のエクスポート]** をクリックします。 Azure AD Connect を別のサーバーにインストールすると、これらの設定が現在の DirSync から新しい Azure AD Connect のインストールに移行されます。
 
-設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。 次の手順に進み、 [別のサーバーに Azure AD Connect をインストール](#installation-of-azure-ad-connect-on-separate-server)
+設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。 次の手順に進み、別のサーバーに Azure AD Connect をインストールします。
 
 **並列デプロイメント - 50,000 未満のオブジェクト**
 
@@ -141,7 +141,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
 
 ![分析完了](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
-設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。 次の手順に進み、[別のサーバーに Azure AD Connect をインストール](#installation-of-azure-ad-connect-on-separate-server)します。
+設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。 次の手順に進み、別のサーバーに Azure AD Connect をインストールします。
 
 ### <a name="install-azure-ad-connect-on-separate-server"></a>別のサーバーに Azure AD Connect をインストールする
 Azure AD Connect を新しいサーバーにインストールする場合、Azure AD Connect のクリーン インストールを実行するものと見なされます。 DirSync の構成を使用する必要があるため、実行する手順が増えます。
@@ -187,7 +187,7 @@ Azure AD Connect で DirSync からの引き継ぎの準備ができているこ
 
 ### <a name="uninstall-dirsync-old-server"></a>DirSync (古いサーバー) をアンインストールする
 * **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
-*  **[Windows Azure Active Directory 同期ツール]**
+* **[Windows Azure Active Directory 同期ツール]**
 * アンインストールが完了するまで最大で 15 分かかる場合があります。
 
 後で DirSync をアンインストールする場合は、一時的にサーバーをシャットダウンするか、サービスを無効にしておくこともできます。 問題が生じた場合は、この方法で再び有効にすることができます。 ただし、次の手順は失敗しないものと思われますので、必ずしも必要になるとは限りません。

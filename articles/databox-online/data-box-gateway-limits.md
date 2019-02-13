@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388416"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815649"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway の制限 (プレビュー)
 
@@ -26,7 +26,7 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway サービスの制限
 
-- このリリースでは、米国、EU、アジア太平洋地域の特定のリージョンでのみサービスが利用可能です。 詳細については、「[利用可能なリージョン](#data-box-gateway-overview#region-availability)」を参照してください。 ストレージ アカウントは、デバイスがデプロイされたリージョンに物理的に最も近い場所にする必要があります (サービス地域と異なる場合があります)。
+- このリリースでは、米国、EU、アジア太平洋地域の特定のリージョンでのみサービスが利用可能です。 詳細については、利用可能なリージョンに関する記事をご覧ください。 ストレージ アカウントは、デバイスがデプロイされたリージョンに物理的に最も近い場所にする必要があります (サービス地域と異なる場合があります)。
 - Data Box Gateway リソースの別のサブスクリプションまたはリソース グループへの移動は、サポートされていません。 詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
 
 ## <a name="data-box-gateway-device-limits"></a>Data Box Gateway デバイスの制限

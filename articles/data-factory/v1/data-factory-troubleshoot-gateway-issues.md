@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022540"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813842"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -138,7 +138,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 このエラーは、インターネット リソースにアクセスするために HTTP プロキシを必要とする環境にゲートウェイが配置されている場合や、プロキシの認証パスワードが変更されているにもかかわらずゲートウェイでその情報が更新されていない場合に発生します。
 
 #### <a name="resolution"></a>解決策
-この記事の[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
+この記事のプロキシ サーバーに関する考慮事項セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>ゲートウェイはオンラインだが機能が制限されている
 ### <a name="1-problem"></a>1.問題点
@@ -169,8 +169,8 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 Windows イベント ログ (ID == 401) の"An attempt was made to access a socket in a way forbidden by its access permissions XX.XX.XX.XX:9350 (アクセス許可 XX.XX.XX.XX:9350 によって禁止されている方法でソケットへのアクセスが試みられました)" というメッセージから、IP アドレスを検出できます。
-* ゲートウェイのプロキシ設定を構成します。 詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
-* ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
+* ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
+* ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
 ### <a name="3-problem"></a>手順 3.問題点
 次のエラーが表示されます。

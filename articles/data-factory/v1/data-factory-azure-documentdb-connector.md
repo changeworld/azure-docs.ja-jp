@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af528f210f4464c973d88fab7eeb1572effc87bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812652"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -301,11 +301,11 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 ## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>例:Azure BLOB から Azure Cosmos DB にデータをコピーする
 下のサンプルで確認できる要素:
 
-1. [DocumentDB](#azure-documentdb-linked-service-properties)型のリンクされたサービス。
+1. DocumentDb 型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
 3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
+4. DocumentDbCollection 型の出力[データセット](data-factory-create-datasets.md)。
+5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と DocumentDbCollectionSink を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは、Azure BLOB から Azure Cosmos DB にデータをコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 

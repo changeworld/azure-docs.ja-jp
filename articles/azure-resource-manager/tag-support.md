@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884947"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509917"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。
@@ -666,6 +666,7 @@ ms.locfileid: "54884947"
 | logDefinitions | いいえ  | 
 | logprofiles | いいえ  | 
 | logs | いいえ  | 
+| metricAlerts | [はい] |
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
 | Query | いいえ  | 
@@ -684,7 +685,7 @@ ms.locfileid: "54884947"
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| IoTApps | はい | 
+| IoTApps | [はい] | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | リソースの種類 | タグのサポート |
@@ -1108,7 +1109,7 @@ ms.locfileid: "54884947"
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
 | managedInstances | はい |
-| managedInstances/databases | はい |
+| managedInstances/databases | はい (下記の「注」を参照) |
 | managedInstances/databases/backupShortTermRetentionPolicies | いいえ  |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | いいえ  |
 | managedInstances/databases/vulnerabilityAssessments | いいえ  |
@@ -1120,12 +1121,16 @@ ms.locfileid: "54884947"
 | servers | はい | 
 | servers/administrators | いいえ  | 
 | servers/communicationLinks | いいえ  | 
-| servers/databases | はい | 
+| servers/databases | はい (下記の「注」を参照) | 
 | servers/encryptionProtector | いいえ  | 
 | servers/keys | いいえ  | 
 | servers/restorableDroppedDatabases | いいえ  | 
 | servers/serviceobjectives | いいえ  | 
 | servers/tdeCertificates | いいえ  | 
+
+> [!NOTE]
+> マスター データベースではタグはサポートされませんが、その他のデータベースではタグがサポートされます。
+
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | リソースの種類 | タグのサポート |
@@ -1163,8 +1168,11 @@ ms.locfileid: "54884947"
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| streamingjobs | はい | 
+| streamingjobs | はい (下記の「注」を参照) | 
 | streamingjobs/diagnosticSettings | いいえ  | 
+
+> [!NOTE]
+> streamingjobs が実行されている場合、タグを追加することはできません。 タグを追加するにはリソースを停止します。
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | リソースの種類 | タグのサポート |

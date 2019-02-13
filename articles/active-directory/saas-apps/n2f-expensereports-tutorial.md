@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と N2F - Expense reports の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と N2F - Expense reports の統合 | Microsoft Docs
 description: Azure Active Directory と N2F - Expense reports の間のシングル サインオンの設定方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 27fb299bc3bbbbf75bdf40ae02eac627763ce6d4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d8d3d9c14ee1eaa5e5d6dc3245c0d4071306f12a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007596"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811632"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル: Azure Active Directory と N2F - Expense reports の統合
+# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル:Azure Active Directory と N2F - Expense reports の統合
 
 このチュートリアルでは、N2F - Expense reports と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -87,7 +87,7 @@ N2F - Expense reports で Azure AD のシングル サインオンを構成し�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[N2F - Expense reports のテスト ユーザーの作成](#create-a-n2f---expense-reports-test-use)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを N2F - Expense reports で作成します。
+3. **N2F - Expense reports のテスト ユーザーの作成** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを N2F - Expense reports で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -123,7 +123,7 @@ N2F - Expense reports で Azure AD のシングル サインオンを構成し�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/n2f-expensereports-tutorial/tutorial_general_400.png)
 
-7. **[N2F - Expense reports 構成]** セクションで、**[N2F - Expense reports の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **[SAML エンティティ ID]** をコピーします。
+7. **[N2F - Expense reports 構成]** セクションで、**[N2F - Expense reports の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
 
     ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_configure.png)
 
@@ -185,7 +185,7 @@ N2F - Expense reports で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-n2f---expense-reports-test-user"></a>N2F - Expense reports テストユーザーの作成
 
@@ -217,7 +217,7 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
     c. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
-    d. 組織の要件に応じて、**[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 組織の要件に応じて、**[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
 
     e. **[Validate and send invitation]\(検証して招待を送信\)** をクリックします。
 
@@ -259,7 +259,7 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで N2F - Expense reports のタイルをクリックすると、自動的に N2F - Expense reports アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

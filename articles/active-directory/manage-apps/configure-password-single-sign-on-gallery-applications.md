@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 141caeb180fd0f5663c0fd51aadb0a397665c6d3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 236ba7e2a76e95f3a78457fbdb0b49fd82e20b36
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168619"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815406"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する方法
 
-[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)からアプリケーションを追加する場合、そのアプリケーションへのユーザーのサインイン方法を選ぶことができます。 この選択肢は、[Azure Portal](https://portal.azure.com/) のエンタープライズ アプリケーションで **[シングル サインオン]** ナビゲーション項目を選択することによっていつでも構成できます。
+[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)からアプリケーションを追加する場合、そのアプリケーションへのユーザーのサインイン方法を選ぶことができます。 この選択肢は、[Azure Portal](https://portal.azure.com/) のエンタープライズ アプリケーションで **[シングル サインオン]** ナビゲーション項目を選択することによっていつでも構成できます。
 
-使用できるシングル サインオン方法の 1 つは、[[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) オプションです。 これは、Azure AD へのアプリケーションの統合を迅速に開始する優れた方法で、以下のことを実現します。
+使用できるシングル サインオン方法の 1 つは、[[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) オプションです。 これは、Azure AD へのアプリケーションの統合を迅速に開始する優れた方法で、以下のことを実現します。
 
 -   Azure AD と統合したアプリケーションのユーザー名とパスワードを安全に保存し、再生して、**ユーザーのシングル サインオン**を有効にする
 
@@ -41,7 +41,7 @@ ms.locfileid: "55168619"
 
 -   **管理者**が、[アプリケーションにグループを割り当てる](#assign-an-application-to-a-group-directly)ときに [資格情報の更新] 機能を使用して、グループで使用される共有ユーザー名とパスワードを指定できるようにする
 
-次のセクションでは、既に [Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)に存在するアプリケーションに対して [[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) を有効にする方法について説明します。
+次のセクションでは、既に [Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に存在するアプリケーションに対して [[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) を有効にする方法について説明します。
 
 ## <a name="overview-of-steps-required"></a>必要な手順の概要
 Azure AD ギャラリーからアプリケーションを構成するには、以下の手順を実行する必要があります。
@@ -50,7 +50,7 @@ Azure AD ギャラリーからアプリケーションを構成するには、�
 
 -   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 
--   [アプリケーションをユーザーまたはグループに割り当てる](#assign-the-application-to-a-user-or-a-group)
+-   アプリケーションをユーザーまたはグループに割り当てる
 
     -   [アプリケーションにユーザーを直接割り当てる](#assign-a-user-to-an-application-directly)
 

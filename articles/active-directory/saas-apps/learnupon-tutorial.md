@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a548f11b1f423fb738108d9314f2fc887ef02c52
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66953eaa4c42b419a5146ccc396fddda15a31c35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176847"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル:Azure Active Directory と LearnUpon の統合
 
@@ -151,7 +151,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Skip conditions]\(条件をスキップする\)** で **[いいえ]** を選択します。
 
-    d. **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます (**SAMLResponse** など)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます (**SAMLResponse** など)。
 
     e. **[Name Identifier Format (名前識別子形式)]** ボックスに、SAML アサーション内のユーザー ID (メール アドレス) の場所を示す値を入力します (**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** など)。
   
@@ -202,13 +202,13 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-learnupon-test-user"></a>LearnUpon テスト ユーザーの作成
 
 このセクションの目的は、LearnUpon で Britta Simon というユーザーを作成することです。 LearnUpon では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
-このセクションでは、ユーザー側で必要な操作はありません。 存在しない LearnUpon ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)
+このセクションでは、ユーザー側で必要な操作はありません。 存在しない LearnUpon ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。 Azure AD シングル サインオンを構成します。
 
 >[!NOTE]
 >ユーザーを手動で作成する必要がある場合は、[LearnUpon のサポート チーム](https://www.learnupon.com/features/support/)にお問い合わせください。 

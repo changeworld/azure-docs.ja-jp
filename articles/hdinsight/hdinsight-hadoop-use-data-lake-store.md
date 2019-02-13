@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052770"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816375"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage を使用する
 
@@ -69,7 +69,7 @@ Data Lake Storage を既定のストレージとして HDInsight がデプロイ
 - すべてのクラスター フォルダー用のフォルダー。  例: adl://mydatalakestore/clusters。
 - クラスター用のフォルダー。  例: adl://mydatalakestore/clusters/cluster1storage。
 
-サービス プリンシパルの作成とアクセスの許可の詳細については、「[Data Lake Storage のアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
+サービス プリンシパルの作成とアクセスの許可の詳細については、「Data Lake Storage のアクセスを構成する」を参照してください。
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>クラスターの作成で使用するために Azure Key Vault から証明書を抽出する
 
@@ -117,12 +117,12 @@ URL に **cluster_root_path** がないことに注意してください。 こ�
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-サービス プリンシパルの作成とアクセスの許可の詳細については、「[Data Lake Storage のアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
+サービス プリンシパルの作成とアクセスの許可の詳細については、「Data Lake Storage のアクセスを構成する」を参照してください。
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>複数の Data Lake Storage アカウントを使用する
 
-Data Lake Storage アカウントを追加ストレージとして使い、複数の Data Lake Storage アカウントを追加するには、1 つ以上の Data Lake Storage アカウント内のデータに HDInsight クラスターのアクセス許可を付与します。 「[Data Lake Storage のアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
+Data Lake Storage アカウントを追加ストレージとして使い、複数の Data Lake Storage アカウントを追加するには、1 つ以上の Data Lake Storage アカウント内のデータに HDInsight クラスターのアクセス許可を付与します。 「Data Lake Storage のアクセスを構成する」を参照してください。
 
 ## <a name="configure-data-lake-storage-access"></a>Data Lake Storage のアクセスを構成する
 

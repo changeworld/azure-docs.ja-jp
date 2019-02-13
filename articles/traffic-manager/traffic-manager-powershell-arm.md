@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816213"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -66,7 +66,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 | MonitorPort |エンドポイントの正常性の監視に使用する TCP ポートを指定します。 |
 | MonitorPath |エンドポイントの正常性のプローブに使用する、エンドポイントのドメイン名の相対パスを指定します。 |
 
-このコマンドレットは、Azure 内に Traffic Manager プロファイルを作成し、対応するプロファイル オブジェクトを PowerShell に返します。 この時点では、プロファイルにはエンドポイントがありません。 Traffic Manager プロファイルにエンドポイントを追加する方法の詳細については、「[Traffic Manager エンドポイントの追加](#adding-traffic-manager-endpoints)をご覧ください。
+このコマンドレットは、Azure 内に Traffic Manager プロファイルを作成し、対応するプロファイル オブジェクトを PowerShell に返します。 この時点では、プロファイルにはエンドポイントがありません。 Traffic Manager プロファイルにエンドポイントを追加する方法の詳細については、Traffic Manager エンドポイントの追加に関するセクションを参照してください。
 
 ## <a name="get-a-traffic-manager-profile"></a>Traffic Manager プロファイルの取得
 

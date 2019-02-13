@@ -192,6 +192,8 @@ items:
       href: automation-variables.md
     - name: Azure PowerShell モジュールの更新
       href: automation-update-azure-modules.md
+    - name: Runbook 内の Az モジュール
+      href: az-modules.md
   - name: シナリオ
     items:
     - name: Runbook ギャラリー
@@ -290,9 +292,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 4d46e7d2d58f864c6fb4650a34e74a57070fa832
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a5886c5af9db6945fe33efd8198b5527f580d297
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661277"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004577"

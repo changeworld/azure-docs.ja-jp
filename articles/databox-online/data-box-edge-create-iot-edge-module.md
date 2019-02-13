@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094106"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508710"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>C# IoT Edge モジュールを開発してファイルを Data Box Edge (プレビュー) に移動する
 
@@ -266,6 +266,13 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     ![IoT Edge ソリューションをビルドしてプッシュする](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Visual Studio Code でソリューションをビルドすると、統合ターミナルで 2 つのコマンドが実行されます。docker build と docker push です。 この 2 つのコマンドによって、ご自身のコードがビルドされ、CSharpModule.dll がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。
+
+    モジュール プラットフォームを選択するように求められます。 Linux に対応する *amd64* を選択します。
+
+    ![プラットフォームの選択](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+
+    > [!IMPORTANT] 
+    > Linux のモジュールのみがサポートされています。
 
     次の警告が表示されますが、無視できます。
 

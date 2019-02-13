@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015136"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816732"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
 
-コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 「[JSON の使用例:DB2 から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-db2-to-azure-blob)」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の例の「DB2 から Azure Blob Storage にデータをコピーする」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次の各セクションでは、DB2 データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -81,14 +81,14 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |はい |
-| **server** |DB2 サーバーの名前です。 |はい |
-| **database** |DB2 データベースの名前です。 |はい |
+| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |[はい] |
+| **server** |DB2 サーバーの名前です。 |[はい] |
+| **database** |DB2 データベースの名前です。 |[はい] |
 | **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ  |
-| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |はい |
+| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |[はい] |
 | **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ  |
 | **password** |ユーザー アカウントのパスワードです。 |いいえ  |
-| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の **structure**、**availability**、**policy** などのセクションは、データセットのすべての型 (Azure SQL、Azure Blob Storage、Azure Table Storage など) でほぼ同じです。
@@ -309,7 +309,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -317,8 +317,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
-| Time |timespan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |
@@ -335,7 +335,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | BLOB |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -343,8 +343,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
-| Time |timespan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |

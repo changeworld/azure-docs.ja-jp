@@ -2,19 +2,18 @@
 title: 暗号化された VM を Azure Backup でバックアップおよび復元する
 description: この記事では、Azure Disk Encryption を使用して暗号化した VM のバックアップと復元について説明します。
 services: backup
-author: sogup
+author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
-ms.author: sogup
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3a059e8edc286b2c1433c9b414dc275a433e2fd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: geetha
+ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217681"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809999"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>暗号化された仮想マシンを Azure Backup でバックアップおよび復元する
 この記事では、Azure Backup を使用して仮想マシン (VM) をバックアップおよび復元する手順を紹介します。 また、サポートされるシナリオ、前提条件のほか、エラーが発生した場合のトラブルシューティングの手順についても、詳しく説明します。
@@ -37,7 +36,7 @@ ms.locfileid: "55217681"
 
 * [バックアップのための環境の準備](backup-azure-arm-vms-prepare.md)に関する記事の手順に従って Recovery Services コンテナーが作成され、ストレージ レプリケーションが設定されている。
 
-* 暗号化された VM のキーとシークレットを含む[キー コンテナーにアクセスするためのアクセス許可](#provide-permissions-to-backup)が Backup に付与されている。
+* 暗号化された VM のキーとシークレットを含むキー コンテナーにアクセスするためのアクセス許可が Backup に付与されている。
 
 ## <a name="backup-encrypted-vm"></a>Backup によって暗号化された VM
 次の手順を使用して、バックアップ目標の設定、ポリシーの定義、項目の構成、バックアップのトリガーを行います。
@@ -77,7 +76,7 @@ ms.locfileid: "55217681"
 
    ![暗号化された VM のメッセージ](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-   **ゲスト ユーザー**である場合、バックアップを機能させるには、キー コンテナーにアクセスするためのアクセス許可をバックアップ サービスに付与する必要があります。 これらのアクセス許可を付与するには、[次のセクションに記載されている手順](#provide-permissions-to-backup)に従います。
+   **ゲスト ユーザー**である場合、バックアップを機能させるには、キー コンテナーにアクセスするためのアクセス許可をバックアップ サービスに付与する必要があります。 これらのアクセス許可を付与するには、次のセクションに記載されている手順に従います。
 
    ![暗号化された VM のメッセージ](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
 

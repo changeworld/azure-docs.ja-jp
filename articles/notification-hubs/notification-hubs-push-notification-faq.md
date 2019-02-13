@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: afc3b0022056d529c69eeaabd229b809623e66ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478588"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563985"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -80,7 +80,7 @@ Basic と Standard の Notification Hubs レベルでは、適切に構成され
 
 ### <a name="which-client-platforms-do-you-support"></a>どのクライアント プラットフォームをサポートしていますか。
 
-プッシュ通知がサポートされているのは、[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) と [Android](xamarin-notification-hubs-push-notifications-android-gcm.md))、[Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md)、[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) です。 詳細については、[Notification Hubs の使用チュートリアル]に関するページを参照してください。
+プッシュ通知がサポートされているのは、[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) と Android)、[Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md)、[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) です。 詳細については、[Notification Hubs の使用チュートリアル]に関するページを参照してください。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>テキスト メッセージ、電子メール、または Web 通知をサポートしていますか。
 
@@ -144,7 +144,7 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 
 #### <a name="geo-distribution"></a>地理的分散
 
-プッシュ通知のシナリオでは、地理的分散は常に重要というわけではありません。 デバイスにプッシュ通知を配信するさまざまな PNS (たとえば、APNS や GCM) は、均等に分散されていません。
+プッシュ通知のシナリオでは、地理的分散は常に重要というわけではありません。 デバイスにプッシュ通知を配信するさまざまな PNS (たとえば、APNS や FCM) は、均等に分散されていません。
 
 世界中で使用されるアプリケーションの場合は、Notification Hubs サービスを使用して、世界のさまざまな Azure リージョンでさまざまな名前空間にハブを作成することができます。
 
@@ -194,7 +194,7 @@ Microsoft 側でのメタデータ (Notification Hubs の名前、接続文字�
 
 ### <a name="is-there-audit-log-capability"></a>監査ログ機能はありますか。
 
-すべての Notification Hubs 管理操作は、操作ログに記録されます。このログは、[Azure Portal] で公開されます。
+はい。 すべての Notification Hubs 管理操作は、Azure アクティビティ ログに記録されます。このログは、[Azure portal] 上で公開されます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する分析情報が提供されます。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、いつ、誰が、何を行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 ただし、 アクティビティ ログには、読み取り (GET) 操作は含まれません。
 
 ## <a name="monitoring-and-troubleshooting"></a>監視とトラブルシューティング
 
@@ -207,7 +207,7 @@ Azure Notification Hubs には、トラブルシューティングを行うた�
 Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示できます。 使用できるメトリックの詳細については、[Notification Hubs のメトリック]に関するページを参照してください。
 
 > [!NOTE]
-> 通知の成功は、単にプッシュ通知が外部の PNS (たとえば Apple の APNS や Google の GCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
+> 通知の成功は、単にプッシュ通知が外部の PNS (たとえば Apple の APNS や Google の FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
 
 Microsoft では、プログラムによってテレメトリ データをエクスポートする機能も提供しています (Standard レベル)。 詳細については、[Notification Hubs のメトリックのサンプル]を参照してください。
 

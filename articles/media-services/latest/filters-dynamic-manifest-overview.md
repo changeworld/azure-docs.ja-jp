@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813421"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 
@@ -34,13 +34,13 @@ ms.locfileid: "54912035"
 - コンテンツの再生に使用するデバイスでサポートされている演奏や言語のトラックのみを指定して配信する ("演奏フィルタ―処理")。 
 - プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-このトピックでは、[概念](#concepts)を説明すると共に[フィルターの定義を紹介](#definitions)します。 その後、[一般的なシナリオ](#common-scenarios)について詳しく取り上げます。 この記事の最後には、プログラムを使ってフィルターを作成する方法を紹介したページへのリンクを掲載しています。  
+このトピックでは、[概念](#concepts)を説明すると共にフィルターの定義を紹介します。 次に一般的なシナリオについて詳しく取り上げます。 この記事の最後には、プログラムを使ってフィルターを作成する方法を紹介したページへのリンクを掲載しています。  
 
 ## <a name="concepts"></a>概念
 
 ### <a name="dynamic-manifests"></a>動的マニフェスト
 
-Media Services には、定義済みの**フィルター**に基づいた[動的マニフェスト](#filters)が用意されています。 フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーム配信できるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。 
+Media Services には、定義済みのフィルターに基づいた**動的マニフェスト**が用意されています。 フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーム配信できるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。 
 
 次の表に、フィルターを含んだ URL の例をいくつか示します。
 

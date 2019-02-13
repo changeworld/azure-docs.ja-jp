@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f6e0d2dece791ac4ece73acdf2e15e3c9be412f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477601"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812847"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -91,7 +91,7 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 
 統合認証を使用して認証するには、Batch サービス API に接続するために、アプリケーションのアクセス許可を付与する必要があります。 この手順では、アプリケーションで Azure AD を使用して、Batch サービスの API 呼び出しを認証できます。
 
-[アプリケーションを登録](#register-your-application-with-an-azure-ad-tenant)したら、Azure Portal で次の手順に従って、Batch サービスへのアクセス権をアプリケーションに付与します。
+アプリケーションを登録したら、Azure portal で次の手順に従って、Batch サービスへのアクセス権をアプリケーションに付与します。
 
 1. Azure Portal の左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
 2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。

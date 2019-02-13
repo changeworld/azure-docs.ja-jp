@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bcbb3d5d25fdc3de71045cedfd4634e47b3947bf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164811"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル:Azure Active Directory と Attendance Management Services の統合
 
@@ -86,7 +86,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Attendance Management Services テスト ユーザーの作成](#create-an-attendance-management-service-test-user)** - Attendance Management Services で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **Attendance Management Services テスト ユーザーの作成** - Attendance Management Services で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -143,7 +143,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     c. **[認証エンドポイント URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d. **[ファイル選択]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ファイル選択]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
 
     e. **[パスワード認証を無効する]** を選択します。
 
@@ -183,7 +183,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-attendance-management-services-test-user"></a>Attendance Management Services テスト ユーザーの作成
 

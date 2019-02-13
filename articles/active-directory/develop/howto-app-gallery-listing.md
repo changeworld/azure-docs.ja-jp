@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 01/30/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fd02c2d10d072f33fdc265feaadf9776e9c1d679
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f4caf0cde7225e2c93723f412c53259a5f5646a4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102036"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663283"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -45,7 +45,7 @@ ms.locfileid: "55102036"
 
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションがフォーム認証をサポートしてパスワード保管を実行できることを確認してください。
 
-- 自動ユーザー プロビジョニング要求の場合、上記のフェデレーション プロトコルのいずれかを使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+- 自動ユーザー プロビジョニング要求の場合、SAML 2.0/WS-Fed を使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 

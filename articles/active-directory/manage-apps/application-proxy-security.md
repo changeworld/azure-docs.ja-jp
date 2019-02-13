@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151619"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813825"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -48,7 +48,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 [条件付きアクセス](../conditional-access/overview.md)を使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
-条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
+条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](https://docs.microsoft.com/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
 
 ### <a name="traffic-termination"></a>トラフィックの終了
 
@@ -128,11 +128,11 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 
 ユーザーが公開されたアプリケーションにアクセスすると、アプリケーション プロキシ サービスとアプリケーション プロキシ コネクタの間で次のイベントが発生します。
 
-1. [サービスは、アプリケーションのユーザーを認証します。](#the-service-checks-the-configuration-settings-for-the-app)
-2. [サービスがコネクタのキューに要求を配置する](#The-service-places-a-request-in-the-connector-queue)
-3. [コネクタがキューの要求を処理する](#the-connector-receives-the-request-from-the-queue)
-4. [コネクタが応答のために待機する](#the-connector-waits-for-a-response)
-5. [サービスがユーザーにデータをストリーミングする](#the-service-streams-data-to-the-user)
+1. サービスは、アプリケーションのユーザーを認証します。
+2. サービスがコネクタのキューに要求を配置する
+3. コネクタがキューの要求を処理する
+4. コネクタが応答のために待機する
+5. サービスがユーザーにデータをストリーミングする
 
 これらの各手順の詳細について、この後説明します。
 

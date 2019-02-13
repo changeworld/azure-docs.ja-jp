@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197349"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル:Azure Active Directory と RFPIO の統合
 
@@ -88,11 +88,11 @@ RFPIO で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 RFPIO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[RFPIO のテスト ユーザーの作成](#creating-a-rfpio-test-user)** - RFPIO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能することを確認します。
+1. **Azure AD シングル サインオンの構成** -- ユーザーがこの機能を使用できるようにします。
+1. **Azure AD のテスト ユーザーの作成** -- Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **RFPIO のテスト ユーザーの作成** -- RFPIO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **Azure AD テスト ユーザーの割り当て** -- Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **シングル サインオンのテスト** -- 構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -165,7 +165,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     c. **[検証]** をクリックした後、**[SAML(Enabled)(SAML (有効))]** をフリップしてオンにします。
 
-    d. **[送信]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[送信]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -200,7 +200,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-rfpio-test-user"></a>RFPIO のテスト ユーザーの作成
 

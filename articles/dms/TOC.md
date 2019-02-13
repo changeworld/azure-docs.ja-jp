@@ -11,6 +11,7 @@
 ## [SQL Server をオンラインで Azure SQL DB に移行する](tutorial-sql-server-azure-sql-online.md)
 ## [SQL Server をオフラインで Azure SQL DB Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
 ## [SQL Server をオンラインで Azure SQL DB Managed Instance に移行する](tutorial-sql-server-managed-instance-online.md)
+## [RDS SQL Server をオンラインで Azure SQL DB または Azure SQL DB Managed Instance に移行する](tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md)
 ## [MySQL をオンラインで Azure DB for MySQL に移行する](tutorial-mysql-azure-mysql-online.md)
 ## [PostgreSQL をオンラインで Azure DB for PostgreSQL に移行する](tutorial-postgresql-azure-postgresql-online.md)
 ## [MongoDB をオフラインで Azure Cosmos DB Mongo API に移行する](tutorial-mongodb-cosmos-db.md)

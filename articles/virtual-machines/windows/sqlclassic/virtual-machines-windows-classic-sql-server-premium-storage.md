@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cbb15ff084c3639be801458d071f3966873c2509
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300270"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815654"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
@@ -1191,7 +1191,7 @@ SQL Server が 2 つだけであり、それらを同じサブネットのまま
 
 既存のプライマリをフェールオーバーする前に、移行されたセカンダリを起動し、新しいクラウド サービス用の新しい IP アドレス リソースを追加した後、クラスター フェールオーバー マネージャーで次の手順を実行します。
 
-IP アドレスの追加については、 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の手順 14 を参照してください。
+IP アドレスの追加については、「付録」の手順 14 を参照してください。
 
 1. 現在の IP アドレス リソースについて、実行可能な所有者を "既存のプライマリ SQL Server" に変更します。例では "dansqlams4" です。
 

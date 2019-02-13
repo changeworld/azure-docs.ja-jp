@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469398"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814114"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database でのスタンドアロン データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
-トランザクション レプリケーションは、Azure SQL Database または SQL Server のテーブルからリモート データベースに配置されているテーブルにデータをレプリケートするための、Azure SQL Database、マネージド インスタンス、SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。
+トランザクション レプリケーションは、Azure SQL Database または SQL Server のテーブルからリモート データベースに配置されているテーブルにデータをレプリケートするための、Azure SQL Database、SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。
 
 ## <a name="when-to-use-transactional-replication"></a>トランザクション レプリケーションを使用するタイミング
 
@@ -38,15 +38,15 @@ ms.locfileid: "55469398"
 ![SQL Database を使用したレプリケーション](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-**パブリッシャー**は、ディストリビューターに更新プログラムを送信することで一部のテーブル (アーティクル) で加えられた変更を発行するインスタンスまたはサーバーです。 オンプレミスの SQL Server から Azure SQL Database への発行は、次のバージョンの SQL Server でサポートされます。
+**パブリッシャー**は、ディストリビューターに更新プログラムを送信することで一部のテーブル (アーティクル) で加えられた変更を発行するインスタンスまたはサーバーです。 オンプレミスの SQL サーバーから Azure SQL データベースへの発行は、次のバージョンの SQL Server でサポートされます。
 
-    - SQL Server 2019 (プレビュー)
-    - SQL Server 2016 から SQL 2017
-    - SQL Server 2014 SP1 CU3 以上 (12.00.4427)
-    - SQL Server 2014 RTM CU10 (12.00.2556)
-    - SQL Server 2012 SP3 以上 (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - Azure でのオブジェクトへの発行をサポートしていないその他のバージョンの SQL Server では、[データの再発行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法を利用して新しいバージョンの SQL Server にデータを移動することができます。 
+   - SQL Server 2019 (プレビュー)
+   - SQL Server 2016 から SQL 2017
+   - SQL Server 2014 SP1 CU3 以上 (12.00.4427)
+   - SQL Server 2014 RTM CU10 (12.00.2556)
+   - SQL Server 2012 SP3 以上 (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - Azure でのオブジェクトへの発行をサポートしていないその他のバージョンの SQL Server では、[データの再発行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法を利用して新しいバージョンの SQL Server にデータを移動することができます。 
 
 **ディストリビューター**は、パブリッシャーからアーティクル内の変更を収集してサブスクライバーに配布するインスタンスまたはサーバーです。 ディストリビューターは、Azure SQL Database Managed Instance または SQL Server (パブリッシャーのバージョン以上の任意のバージョン) のいずれかになります。 
 

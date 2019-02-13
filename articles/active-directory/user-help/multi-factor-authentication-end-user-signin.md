@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810203"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]
@@ -31,8 +31,8 @@ ms.locfileid: "55157008"
 | --- |
 | [携帯電話また職場の電話の呼び出しを使用してサインインする](#signing-in-with-a-phone-call) |
 | [携帯電話へのテキストを使用してサインインする](#signing-in-with-a-text-message)
-| [Microsoft Authenticator アプリの通知を使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Microsoft Authenticator アプリの確認コードを使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Microsoft Authenticator アプリの通知を使用してサインインする |
+| Microsoft Authenticator アプリの確認コードを使用してサインインする |
 | [通常の方法を使用できないので、別の方法でサインインする](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>電話の呼び出しを使用してサインインする
@@ -87,4 +87,4 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 
 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
-SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](microsoft-authenticator-app-how-to.md)」を参照してください。
+SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](user-help-auth-app-download-install.md)」を参照してください。

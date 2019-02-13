@@ -1,5 +1,5 @@
 items:
-- name: SQL DB のドキュメント
+- name: SQL Database のドキュメント
   href: index.yml
 - name: SQL Database サービス
   items:
@@ -67,23 +67,23 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Azure SQL Database の設計
+  - name: SQL Database でのデータベースの設計
     items:
     - name: SSMS を使用したデータベースの設計
       href: sql-database-design-first-database.md
     - name: .NET を使用したデータベースの設計
       href: sql-database-design-first-database-csharp.md
-  - name: Azure SQL Database への移行
+  - name: SQL Database への移行
     items:
     - name: DMS を使用して単一データベースまたはプール データベースに移行する
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: DMS を使用してマネージド インスタンスに移行する
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: Azure SQL Database のセキュリティ
+  - name: SQL Database のセキュリティ
     items:
-    - name: 単一データベース セキュリティ
+    - name: 単一データベースとプールされたデータベースのセキュリティ
       href: sql-database-security-tutorial.md
-    - name: Azure AD ログインによるマネージド インスタンスのセキュリティ
+    - name: Managed Instance のセキュリティ
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: 地理的に分散したデータベースの実装
     href: sql-database-implement-geo-distributed-database.md
@@ -104,10 +104,10 @@ items:
   - name: モデルの購入
     items:
     - name: 概要
-      href: sql-database-service-tiers.md
+      href: sql-database-purchase-models.md
     - name: 仮想コアベースのモデル
       href: sql-database-service-tiers-vcore.md
-    - name: DTU モデル
+    - name: DTU サービス レベル
       href: sql-database-service-tiers-dtu.md
     - name: 予約容量の前払い
       href: sql-database-reserved-capacity.md
@@ -351,8 +351,8 @@ items:
     items:
     - name: 概要
       href: sql-database-howto-single-database.md
-    - name: SQL Database への移行
-      href: sql-database-cloud-migrate.md
+    - name: 単一データベース/プールされたデータベースへの移行
+      href: sql-database-single-database-migrate.md
     - name: 移行後の SQL Database の管理
       href: sql-database-manage-after-migration.md
     - name: レプリケーションの構成
@@ -405,7 +405,7 @@ items:
         href: sql-database-elastic-scale-add-a-shard.md
       - name: シャード マップに関する問題の解決
         href: sql-database-elastic-database-recovery-manager.md
-      - name: シャード化された DB の移行
+      - name: シャード化されたデータベースの移行
         href: sql-database-elastic-convert-to-use-elastic-tools.md
       - name: カウンターの作成
         href: sql-database-elastic-database-perf-counters.md
@@ -421,7 +421,7 @@ items:
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: スキーマが異なるテーブル間のクエリ
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Elastic Database ジョブ
+    - name: エラスティック ジョブ
       items:
       - name: 作成と管理 (PowerShell)
         href: elastic-jobs-powershell.md
@@ -459,11 +459,11 @@ items:
       href: sql-database-managed-instance-connect-app.md
   - name: データの読み込みと移動
     items:
-    - name: Azure 内での DB のコピー
+    - name: Azure 内でのデータベースのコピー
       href: sql-database-copy.md
-    - name: BACPAC からの DB のインポート
+    - name: BACPAC ファイルからのデータベースのインポート
       href: sql-database-import.md
-    - name: BACPAC への DB のエクスポート
+    - name: BACPAC ファイルへのデータベースのエクスポート
       href: sql-database-export.md
     - name: データ同期
       items:
@@ -605,9 +605,9 @@ items:
             href: saas-tenancy-cross-tenant-reporting.md
           - name: テナント分析
             items:
-            - name: SQL DB の場合
+            - name: SQL Database を使用した場合
               href: saas-tenancy-tenant-analytics.md
-            - name: SQL DW の場合
+            - name: SQL Data Warehouse を使用した場合
               href: saas-tenancy-tenant-analytics-adf.md
         - name: geo 復元を使用したディザスター リカバリー
           href: saas-dbpertenant-dr-geo-restore.md
@@ -682,8 +682,6 @@ items:
     href: /learn/browse/?products=azure-sql-database
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-  - name: FAQ
-    href: sql-database-faq.md
   - name: パブリック データ セット
     href: sql-database-public-data-sets.md
   - name: 接続のトラブルシューティング
@@ -716,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: c6c9ee0bc775073671bf6e23478426c4d6a7a260
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890877"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100042"

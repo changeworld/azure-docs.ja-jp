@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 40852b9457e703334350402489feb68ac92832a0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199632"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693789"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -156,10 +156,10 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 ## <a name="next-steps"></a>次の手順
 
- [Traffic Manager のしくみ](traffic-manager-how-it-works.md)
+[Traffic Manager のしくみ](traffic-manager-how-it-works.md)
 
 Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 
- [Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
+[Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
 
 [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を行う。

@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245271"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809250"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -38,10 +38,10 @@ Azure Stack 内の Azure Resource Manager を通じてリソースをデプロ�
 
 Azure Stack のデプロイ方法に応じて、サービス プリンシパルを作成して開始します。 このドキュメントでは、以下のもののサービス プリンシパルの作成について説明します。
 
-- [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad)。 Azure AD は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD は、接続された Azure Stack で使用できます。
-- [Active Directory フェデレーション サービス (AD FS)](#create-service-principal-for-ad-fs)。 AD FS は、シンプルかつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 AD FS は、接続された Azure Stack インスタンスでも、切断された Azure Stack インスタンスでも使用できます。
+- Azure Active Directory (Azure AD)。 Azure AD は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD は、接続された Azure Stack で使用できます。
+- Active Directory フェデレーション サービス (AD FS)。 AD FS は、シンプルかつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 AD FS は、接続された Azure Stack インスタンスでも、切断された Azure Stack インスタンスでも使用できます。
 
-サービス プリンシパルを作成したら、AD FS と Azure Active Directory の両方に共通する一連の手順を実行して、ロールに[アクセス許可を委任](#assign-role-to-service-principal)します。
+サービス プリンシパルを作成したら、AD FS と Azure Active Directory の両方に共通する一連の手順を実行して、ロールにアクセス許可を委任します。
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルの管理
 
@@ -63,7 +63,7 @@ ID 管理サービスとして Azure Active Directory (Azure AD) を使用して
 
 1. Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
-2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 「[サンプル アプリケーション](#sample-applications)」の各アプリケーションでは、この値をクライアント ID と呼んでいます。
+2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 サンプル アプリケーションの各アプリケーションでは、この値をクライアント ID と呼んでいます。
 
      ![クライアント ID](./media/azure-stack-create-service-principal/image12.png)
 3. Web アプリ/API に対して認証キーを生成するには、**[設定]** > **[キー]** の順に選択します。 
@@ -74,7 +74,7 @@ ID 管理サービスとして Azure Active Directory (Azure AD) を使用して
 
 ![保存されたキー](./media/azure-stack-create-service-principal/image15.png)
 
-完了したら、[アプリケーションにロールを割り当てる](#assign-role-to-service-principal)ことができます。
+完了したら、アプリケーションにロールを割り当てることができます。
 
 ## <a name="manage-service-principal-for-ad-fs"></a>AD FS のサービス プリンシパルの管理
 

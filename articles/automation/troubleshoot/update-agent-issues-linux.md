@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437495"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813111"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
 
@@ -28,7 +28,7 @@ Update Management でコンピューターに**準備完了**が表示されな�
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のコンピューターをトラブルシューティングするには、[オフラインの手順](#offline)を参照してください。
+Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、オフラインの手順を参照してください。
 
 ![VM リスト ページ](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ![トラブルシューティング ページ](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-完了すると、結果がウィンドウに返されます。 [チェック セクション](#pre-requisistes-checks)には、各チェックの対象が示されます。
+完了すると、結果がウィンドウに返されます。 チェック セクションには、各チェックの対象が示されます。
 
 ![Update エージェントのチェック ページ](../media/update-agent-issues-linux/update-agent-checks.png)
 

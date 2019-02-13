@@ -5,7 +5,7 @@ items:
   items:
   - name: Azure Monitor とは
     href: overview.md
-  - name: ブランドの変更
+  - name: 用語の変更
     href: azure-monitor-rebrand.md
 - name: クイック スタート
   items:
@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Log Analytics でデータを解析する
+  - name: Log Analytics でのデータの分析
     href: learn/tutorial-viewdata.md
-  - name: Log Analytics でデータを視覚化する
+  - name: Log Analytics でのデータの視覚化
     href: learn/tutorial-logs-dashboards.md
   - name: プラットフォーム メトリックとログ データのアーカイブ
     href: learn/tutorial-archive-data.md
@@ -64,6 +64,12 @@ items:
     href: azure-management.md
   - name: 継続的な監視
     href: continuous-monitoring.md
+  - name: ログ データの分析
+    items:
+    - name: ログ クエリ
+      href: log-query/log-query-overview.md
+    - name: ログ クエリ ポータル
+      href: log-query/portals.md
   - name: データの監視
     items:
     - name: メトリックとログ
@@ -106,18 +112,6 @@ items:
       href: insights/vminsights-overview.md
     - name: 監視ソリューション
       href: insights/solutions-inventory.md
-  - name: データを分析する
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: ログ クエリ ポータル
-      href: log-query/portals.md
-    - name: OMS ポータルの移行
-      items:
-      - name: 概要
-        href: platform/oms-portal-transition.md
-      - name: 一般的な質問
-        href: platform/oms-portal-faq.md
   - name: インシデントへの対応
     items:
     - name: アラート
@@ -138,6 +132,12 @@ items:
     href: visualizations.md
   - name: パートナー統合
     href: platform/partners.md
+  - name: OMS ポータルの移行
+    items:
+    - name: 概要
+      href: platform/oms-portal-transition.md
+    - name: 一般的な質問
+      href: platform/oms-portal-faq.md
   - name: FAQ
     items:
     - name: Log Analytics
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 96f79397b16212fe0897e0d03f57ffb7248118c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b1d837248f84eb3050788924f4bb0e0077845abe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767124"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993573"

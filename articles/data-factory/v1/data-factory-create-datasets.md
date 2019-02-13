@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332610"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811088"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
     "name": "<name of dataset>",
     "properties": {
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-        "external": <boolean flag to indicate external data. only for input datasets>,
+        "external": "<boolean flag to indicate external data. only for input datasets>",
         "linkedServiceName": "<Name of the linked service that refers to a data store.>",
         "structure": [
             {
@@ -86,7 +86,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ  |NA |
 | typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ  |false |
-| availability | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「[データセットの可用性](#Availability)」セクションを参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |はい |NA |
+| availability | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「データセットの可用性」を参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |はい |NA |
 | policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「[データセット ポリシー](#Policy)」セクションを参照してください。 |いいえ  |NA |
 
 ## <a name="dataset-example"></a>データセットの例

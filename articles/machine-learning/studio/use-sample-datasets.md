@@ -1,8 +1,21 @@
 ---
-title:サンプル データセットを使用する titleSuffix:Azure Machine Learning Studio description:Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/19/2018
+title: サンプル データセットの使用
+titleSuffix: Azure Machine Learning Studio
+description: Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/19/2018
+ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510172"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets

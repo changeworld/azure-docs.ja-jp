@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d6879c6b9be06af4bb289761cc8f26b7e56d18e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355342"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658710"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファー
 
@@ -47,6 +47,7 @@ ms.locfileid: "54355342"
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 営業、サービス、プロジェクト サービス、およびフィールド サービス モジュールによってこの顧客リソース管理 (CRM) システムを拡張するパッケージ。  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 高度な財務、経営、製造、およびサプライ チェーン管理をサポートするこのエンタープライズ リソース プランニング (ERP) サービスを拡張するパッケージ。 |
 | [IoT Edge モジュール](./iot-edge-module/cpp-offer-process-parts.md) | Azure | IoT Edge デバイス上で実行される Docker 互換コンテナー。  カスタム コード、他の Azure サービス、サード パーティのサービスの組み合わせを使用する小規模のコンピューティング モジュールが含まれています。 |
+| [Power BI アプリ](./power-bi/cpp-power-bi-offer.md) | AppSource | データフローを使用して一般的なデータ ストレージ内のデータにレポートとダッシュボードを接続するパッケージ。 |
 | [SaaS アプリ](./saas-app/cpp-saas-offer.md) | Azure | ソリューションは公開元によって管理されるサービスとしてのソフトウェア サブスクリプションであり、ユーザーは Azure Active Directory を利用するカスタマイズされたインターフェイスを使用してログオンします。 |
 | [仮想マシン](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | ソリューションは、顧客のサブスクリプションにデプロイされる 1 つの仮想マシンに含まれます。  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |

@@ -55,22 +55,55 @@
 ### [[監査履歴] ページ](./cloud-partner-portal/portal-tour/cpp-history-page.md)
 ### [[インサイト] ページ](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
+
 ## ポータル管理
 ### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO ガイダンス](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ### [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+
+
+## ビジネス管理
+### [SEO ガイダンス](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+### [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+<!--  Under development: 
+### Pricing considerations
+#### Simplified currency pricing
+#### Information on taxes and price
+#### Export-import pricing
+-->
+
+### リードの管理
+#### [潜在顧客の構成](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+#### [Azure テーブル](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+#### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+#### [HTTPS エンドポイント](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+#### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+#### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
+
+### Seller Insights
+#### [作業の開始](./cloud-partner-portal-orig/si-getting-started.md)
+#### [新機能](./cloud-partner-portal-orig/si-changes.md)
+#### [Web 分析](./cloud-partner-portal-orig/web-analytics.md)
+#### [定義](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
+#### [Insights の FAQ](./cloud-partner-portal-orig/si-faqs.md)
+
 
 ## [Marketplace のプラン](./cloud-partner-portal/cpp-marketplace-offers.md)
-
 ### [プランの管理](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [プランの作成](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
 #### [プランの発行](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [オファーの状態の確認](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [プランの更新](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [プランの削除](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
+
+### 体験版
+#### [体験版とは](./cloud-partner-portal-orig/what-is-test-drive.md)
+#### [Azure Resource Manager の体験版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
+#### [ホストされた体験版](./cloud-partner-portal-orig/hosted-test-drive.md)
+#### [ロジック アプリの体験版](./cloud-partner-portal-orig/logic-app-test-drive.md)
+#### [体験版の変換の例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
+#### [マーケティングとベスト プラクティス](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
 ### [Azure アプリケーション プラン](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [前提条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
@@ -82,6 +115,7 @@
 ##### [[サポート] タブ](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
 #### [技術資産の作成](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 #### [Azure アプリケーション プランの公開](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+#### [レビューのフィードバックの処理](./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md)
 #### [既存のプランの更新](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
 ### [コンサルティング サービス](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
@@ -195,29 +229,6 @@
 #### [VM プランの公開](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 #### [既存のプランの更新](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-
-## 体験版
-### [体験版とは](./cloud-partner-portal-orig/what-is-test-drive.md)
-### [Azure Resource Manager の体験版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-### [ホストされた体験版](./cloud-partner-portal-orig/hosted-test-drive.md)
-### [ロジック アプリの体験版](./cloud-partner-portal-orig/logic-app-test-drive.md)
-### [体験版の変換の例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-### [マーケティングとベスト プラクティス](./cloud-partner-portal-orig/marketing-and-best-practices.md)
-
-## リードの管理
-### [潜在顧客の構成](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Azure テーブル](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [HTTPS エンドポイント](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
-## Seller Insights
-### [作業の開始](./cloud-partner-portal-orig/si-getting-started.md)
-### [新機能](./cloud-partner-portal-orig/si-changes.md)
-### [Web 分析](./cloud-partner-portal-orig/web-analytics.md)
-### [定義](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
-### [Insights の FAQ](./cloud-partner-portal-orig/si-faqs.md)
 
 ## API リファレンス
 ### [概要](./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md)

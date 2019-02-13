@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119987"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812462"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定:依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -52,7 +52,7 @@ ms.locfileid: "54119987"
 * [アプリケーション マップ](#application-map)では、アプリと隣接コンポーネント間の依存関係が視覚化されます。
 * [[パフォーマンス]、[ブラウザー]、および [障害] ブレード](#performance-and-blades)では、サーバー依存関係データが示されます。
 * [[ブラウザー] ブレード](#ajax-calls)では、ユーザーのブラウザーからの AJAX 呼び出しが示されます。
-* [低速または失敗した要求からクリックしていき](#diagnose-slow-requests)、依存関係呼び出しを確認します。
+* 低速または失敗した要求からクリックしていき、依存関係呼び出しを確認します。
 * 依存関係データのクエリを実行するには、[Analytics](#analytics) を使用できます。
 
 ## <a name="application-map"></a>アプリケーション マップ

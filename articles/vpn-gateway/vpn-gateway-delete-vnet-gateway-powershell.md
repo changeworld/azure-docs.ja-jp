@@ -1,6 +1,6 @@
 ---
-title: '仮想ネットワーク ゲートウェイの削除: PowerShell: Azure Resource Manager | Microsoft Docs'
-description: Resource Manager デプロイメント モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
+title: 仮想ネットワーク ゲートウェイを削除する:PowerShell:Azure Resource Manager | Microsoft Docs
+description: Resource Manager デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: a23a969f1381e3a10c81a903793bad2870b436f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a0fc21c469658da637f15c820c105ec3ff31a04e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603642"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507928"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
@@ -66,9 +66,9 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 
 S2S 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
-VNet 名: VNet1<br>
-リソース グループ名: RG1<br>
-仮想ネットワーク ゲートウェイ名: GW1<br>
+VNet 名:VNet1<br>
+リソース グループ名:RG1<br>
+仮想ネットワーク ゲートウェイ名:GW1<br>
 
 次の手順は、Resource Manager デプロイ モデルに該当します。
 
@@ -149,9 +149,9 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
 V2V 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
-VNet 名: VNet1<br>
-リソース グループ名: RG1<br>
-仮想ネットワーク ゲートウェイ名: GW1<br>
+VNet 名:VNet1<br>
+リソース グループ名:RG1<br>
+仮想ネットワーク ゲートウェイ名:GW1<br>
 
 次の手順は、Resource Manager デプロイ モデルに該当します。
 
@@ -237,9 +237,9 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
 P2S 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
-VNet 名: VNet1<br>
-リソース グループ名: RG1<br>
-仮想ネットワーク ゲートウェイ名: GW1<br>
+VNet 名:VNet1<br>
+リソース グループ名:RG1<br>
+仮想ネットワーク ゲートウェイ名:GW1<br>
 
 次の手順は、Resource Manager デプロイ モデルに該当します。
 

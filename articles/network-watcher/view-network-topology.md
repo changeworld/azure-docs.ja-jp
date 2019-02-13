@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428171"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809897"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -56,7 +56,7 @@ ms.locfileid: "54428171"
 
 使用するアカウントは、必要な[アクセス許可](required-rbac-permissions.md)を持っている必要があります。
 
-1. トポロジを作成する仮想ネットワークと同じリージョンに既にネットワーク ウォッチャーがある場合は、手順 3 に進みます。 [az group create](/cli/azure/group#az_group_create) を使用して、ネットワーク ウォッチャーを含むリソース グループを作成します。 次の例では、*米国東部*リージョンにリソース グループを作成します。
+1. トポロジを作成する仮想ネットワークと同じリージョンに既にネットワーク ウォッチャーがある場合は、手順 3 に進みます。 [az group create](/cli/azure/group) を使用して、ネットワーク ウォッチャーを含むリソース グループを作成します。 次の例では、*米国東部*リージョンにリソース グループを作成します。
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
@@ -79,7 +79,7 @@ ms.locfileid: "54428171"
 
     トポロジ情報は、*MyResourceGroup* リソース グループと同じリソース グループ内にあり、ネットワーク ウォッチャーと同じリージョン内にあるリソースに対してのみ返されます。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
 
-  返される出力で、[リレーションシップ](#relationhips)と[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
+  返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
 
 ## <a name = "powershell"></a>トポロジを表示する - PowerShell
 
@@ -123,7 +123,7 @@ ms.locfileid: "54428171"
 
    トポロジ情報は、*MyResourceGroup* リソース グループと同じリソース グループ内にあり、ネットワーク ウォッチャーと同じリージョン内にあるリソースに対してのみ返されます。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
 
-  返される出力で、[リレーションシップ](#relationhips)と[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
+  返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
 
 ## <a name="relationships"></a>リレーションシップ
 

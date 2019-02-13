@@ -149,6 +149,11 @@ items:
   - name: データをエクスポートおよび削除する
     displayName: gdpr
     href: how-to-export-delete-data.md
+  - name: Resource Manager テンプレートを使用する
+    href: how-to-create-workspace-template.md
+  - name: ログの有効化
+    displayName: logging
+    href: how-to-enable-logging.md
 - name: リファレンス
   items:
   - name: Machine Learning SDK
@@ -177,9 +182,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 9aa4a2988ca4c20e04d1a09c2cd9895f7b061b21
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1d26c23ee6f3e74fce03b59d70e24049d6a10ecc
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765845"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107568"

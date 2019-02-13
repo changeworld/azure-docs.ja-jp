@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811666"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
@@ -162,7 +162,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-「[Blob service の概念](#blob-service-concepts)」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+Blob service の概念に関するセクションで説明したように、Blob Storage には、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
 次の例では、NSString からブロック BLOB をアップロードする方法を示します。 同じ名前の BLOB が既にこのコンテナーに存在する場合は、この BLOB の内容が上書きされます。
 

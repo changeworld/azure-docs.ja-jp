@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 88a657e30d3b30825a3fea21aa6e1162e8bc09b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411154"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004708"
 documentType: LandingData
 title: Azure Search のドキュメント
 metadata:
@@ -62,7 +62,7 @@ sections:
     - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
     - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
     - html: <a href="/azure/search/search-synonyms-tutorial-sdk">シノニムを追加して同等の語句に関する結果を返す</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">.NET で検索ボックスにオートコンプリートを追加する</a>
+    - html: <a href="/azure/search/search-autocomplete-tutorial">.NET を使用して検索ボックスにオートコンプリートを追加する</a>
     - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
 - title: リファレンス
   items:

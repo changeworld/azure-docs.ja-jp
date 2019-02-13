@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826481"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816324"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 
@@ -32,7 +32,7 @@ Azure DNS には次のような利点があります。
 
 * **カスタムの DNS ソリューションの必要がなくなります**。 以前は、多くのお客様は、仮想ネットワーク内の DNS ゾーンを管理するためにカスタムの DNS ソリューションを作成していました。 DNS ゾーンの管理は、Azure のネイティブ インフラストラクチャを使用してできるようになりました。これにより、カスタムの DNS ソリューションの作成と管理の負担がなくなります。
 
-* **すべての一般的な DNS レコードの種類を使用します**。 Azure DNS では、A、AAAA、CNAME、MX、NS、PTR、SOA、SRV、TXT のレコードをサポートしています。
+* **すべての一般的な DNS レコードの種類を使用します**。 Azure DNS では、A、AAAA、CNAME、MX、PTR、SOA、SRV、TXT のレコードをサポートしています。
 
 * **自動のホスト名レコード管理**。 Azure では、カスタムの DNS レコードをホストすると共に、指定された仮想ネットワーク内の VM のホスト名レコードを自動的に維持します。 このシナリオにより、カスタムの DNS ソリューションの作成またはアプリケーションの変更の必要なしで、使用するドメイン名を最適化することができます。
 

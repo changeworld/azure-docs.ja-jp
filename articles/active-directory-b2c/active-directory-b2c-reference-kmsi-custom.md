@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9002ab7396cd9beda767b4a9f81d9983ec74923d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163417"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812305"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -150,7 +150,7 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性を一意の値で更新します。 これがポリシーの名前になります。 たとえば、「 `SignUpOrSignInWithKmsi` 」のように入力します。
 3. **DefaultUserJourney** 要素の **ReferenceId** 属性を、作成した新しいユーザー体験の識別子と一致するように変更します。 たとえば、「 `SignUpOrSignInWithKmsi` 」のように入力します。
 
-    KMSI は、**UserJourneyBehaviors** 要素を使用して構成します。 **KeepAliveInDays** 属性は、ユーザーがサインインしている期間を制御します。 次の例では、KMSI セッションは、ユーザーがサイレント認証を実行する頻度に関係なく `7` 日後に自動的に期限が切れます。 **KeepAliveInDays** の値を `0` に設定すると、KMSI 機能がオフになります。 この値の既定値は `0` です。 **SessionExpiryType** の値が `Rolling` である場合は、ユーザーがサイレント認証を実行するたびに KMSI セッションが `7` 日延長されます。  `Rolling` を選択する場合は、日数を最小限にしておく必要があります。 
+    KMSI は、最初の子要素として **SingleSignOn**、**SessionExpiryType**、および **SessionExpiryInSeconds** を持つ **UserJourneyBehaviors** 要素を使用して構成されます。 **KeepAliveInDays** 属性は、ユーザーがサインインしている期間を制御します。 次の例では、KMSI セッションは、ユーザーがサイレント認証を実行する頻度に関係なく `7` 日後に自動的に期限が切れます。 **KeepAliveInDays** の値を `0` に設定すると、KMSI 機能がオフになります。 この値の既定値は `0` です。 **SessionExpiryType** の値が `Rolling` である場合は、ユーザーがサイレント認証を実行するたびに KMSI セッションが `7` 日延長されます。  `Rolling` を選択する場合は、日数を最小限にしておく必要があります。 
 
     **SessionExpiryInSeconds** の値は、SSO セッションの有効期限の時間を表します。 この値は、KMSI のセッションが期限切れかどうかを確認するために、Azure AD B2C によって内部的に使用されます。 **KeepAliveInDays** の値は、Web ブラウザーでの SSO Cookie の Expires/Max-Age の値を決定します。 **SessionExpiryInSeconds** とは異なり、**KeepAliveInDays** はブラウザーを閉じるときに Cookie がクリアされるのを防ぐために使用されます。 ユーザーは、SSO セッション Cookie が存在し (**KeepAliveInDays** によって制御)、有効期限 (**SessionExpiryInSeconds** によって制御) が切れていない場合にのみ、自動的にサインインできます。 
     

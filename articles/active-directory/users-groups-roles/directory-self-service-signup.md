@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のセルフサービス (試用版) サインアップ | Microsoft Docs
+title: セルフサービスまたは試用版のサインアップでユーザーを追加する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) テナントでセルフサービス サインアップを使用します。
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,19 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f02a628a55969dfbb883f53f005733482499a42b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195819"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506772"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
+
 この記事では、セルフサービス サインアップの概要と、Azure Active Directory (Azure AD) でサポートする方法について説明します。 管理されていない Azure AD テナントからドメイン名を引き継ぐ場合は、[管理されていないディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。
 
 ## <a name="why-use-self-service-signup"></a>セルフサービス サインアップを使用する理由

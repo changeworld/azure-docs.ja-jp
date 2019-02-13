@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: bf3302f4f7323307163ec540accb4cc652512463
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2bd47c7955625eb43de40e61515bf7814a8c8355
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178802"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -87,7 +87,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[HubSpot テスト ユーザーの作成](#creating-a-hubspot-saml-test-user)** - HubSpot で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **HubSpot テスト ユーザーの作成** - HubSpot で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -162,7 +162,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Identity Provider Identifier or Issuer URL] (ID プロバイダーの識別子または発行者 URL)** テキストボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
-    d. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
     e. ダウンロードした **証明書 (Base64)**  ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
@@ -191,7 +191,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-hubspot-test-user"></a>HubSpot のテスト ユーザーの作成
 

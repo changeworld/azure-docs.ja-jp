@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 7515d1d88e3652ba609286b1805e58853763434d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 28a699f62a97120a27ba4d6f555182f090249dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183231"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル:Azure Active Directory と Cezanne HR Software の統合
 
@@ -88,7 +88,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Cezanne HR Software のテスト ユーザーの作成](#create-a-cezannehrsoftware-test-user)** - Cezanne HR Software で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+1. **Cezanne HR Software のテスト ユーザーの作成** - Cezanne HR Software で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -159,7 +159,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     c. **[SAML Binding (SAML バインディング)]** を "POST" に変更します。
 
-    d. **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. [ユーザー ID の属性名] ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
     
@@ -205,7 +205,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-cezanne-hr-software-test-user"></a>Cezanne HR Software のテスト ユーザーの作成
 
@@ -229,7 +229,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
  
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
     
-    d. **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
 1.  **[Account Information (アカウント情報)]** セクションで、次の手順を実行します。
 
@@ -241,7 +241,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
     
     c. **[Security Role (セキュリティ ロール)]** で **[HR Professional (人事担当者)]** を選択します。
     
-    d. Click **OK**.
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
 
 1. **[Single Sign-On (シングル サインオン)]** タブに移動し、**[SAML 2.0 Identifiers (SAML 2.0 識別子)]** 領域で **[Add New (新規追加)]** を選択します。
 

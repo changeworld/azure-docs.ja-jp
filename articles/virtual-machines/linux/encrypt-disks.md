@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 2a057c311a8b080b695492664df0eaabc5609b35
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 15bd3cf2ab6ea5285662610c2c0a850bb180e2f8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856793"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658771"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを暗号化する方法
 
@@ -107,7 +107,7 @@ az keyvault key create \
 az vm create \
     --resource-group $resourcegroup \
     --name myVM \
-    --image UbuntuLTS \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
     --admin-username azureuser \
     --generate-ssh-keys \
     --data-disk-sizes-gb 5
@@ -119,7 +119,7 @@ az vm create \
 ## <a name="encrypt-the-virtual-machine"></a>仮想マシンを暗号化する
 
 
-[az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) を使用して VM を暗号化します。 次の例では、前の [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドの *$sp_id* 変数と *$sp_password* 変数を使用しています。
+[az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) を使用して VM を暗号化します。
 
 ```azurecli-interactive
 az vm encryption enable \

@@ -71,6 +71,8 @@ items:
     href: manage-user-data.md
   - name: ユーザー フロー
     href: active-directory-b2c-reference-policies.md
+  - name: JavaScript を使用したユーザー フロー
+    href: user-flow-javascript-overview.md
   - name: ユーザー インターフェイスのカスタマイズ
     href: customize-ui-overview.md
 - name: ハウツー ガイド
@@ -324,9 +326,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 8aa1d5bf118330f6f04cfd35a59f2b60ce6e1ee8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3c2af3c7f2208b7bbdfb3c5e3e16b9206637b159
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751788"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997925"

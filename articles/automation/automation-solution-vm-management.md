@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476398"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658388"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -136,7 +136,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
-1. **VMList** 変数に追加する VM に、正の整数値を持つ **sequencestart** および **sequencestop** タグを追加します。 
+1. **VMList** パラメーターに追加する VM に、正の整数値を持つ **sequencestart** および **sequencestop** タグを追加します。
 1. ACTION パラメーターを **start** に設定して **SequencedStartStop_Parent** Runbook を実行し、*VMList* パラメーターに VM のコンマ区切りリストを追加して、WHATIF パラメーターを **True** に設定します。 変更をプレビューします。
 1. **External_ExcludeVMNames** パラメーターを、VM のコンマ区切りリスト (VM1, VM2, VM3) で構成します。
 1. このシナリオでは、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupnames** 変数は考慮されていません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、「[Azure Automation の Runbook をスケジュール設定する](../automation/automation-schedules.md)」を参照してください。
@@ -319,13 +319,29 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>VM を追加/除外する
+
+ソリューションには、ソリューションの対象となる VM を追加する機能、ソリューションからマシンを除外する機能があります。
+
+### <a name="add-a-vm"></a>VM を追加する
+
+実行時に VM が開始/停止ソリューションに含まれるようにするためのオプションがいくつかあります。
+
+* ソリューションの親 [Runbook](#runbooks) ごとに、**VMList** パラメーターがあります。 自分の状況に合わせて適切な親 Runbook をスケジュールするときに VM 名のコンマ区切りのリストをこのパラメーターに渡すと、これらの VM はソリューションが実行されるときに含められます。
+
+* 複数の VM を選択するには、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を開始または停止する VM を含むリソース グループ名で設定します。 サブスクリプションのすべてのリソース グループに対してソリューションを実行するように、この値を `*` に設定することもできます。
+
+### <a name="exclude-a-vm"></a>VM を除外する
+
+ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りのリストです。
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 
-このソリューションの起動および停止スケジュールを管理するには、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。
+このソリューションの起動および停止スケジュールを管理するには、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。 VM の開始と停止それぞれについて、個別のスケジュールが存在する必要があります。
 
-特定の時刻に VM の停止のみを行うようにソリューションを構成できます。 そのためには、次の手順を実行する必要があります。
+特定の時刻に VM の停止のみを行うようにソリューションを構成できます。 このシナリオでは、**停止**スケジュールを作成するだけで、対応する**開始**はスケジュールされません。 そのためには、次の手順を実行する必要があります。
 
-1. シャットダウンする VM のリソース グループが、**External_Start_ResourceGroupNames** 変数に追加されていることを確認します。
+1. シャットダウンする VM のリソース グループが、**External_Stop_ResourceGroupNames** 変数に追加されていることを確認します。
 2. VM をシャットダウンする時刻の独自のスケジュールを作成します。
 3. **ScheduledStartStop_Parent** Runbook に移動し、**[スケジュール]** をクリックします。 これにより、前の手順で作成したスケジュールを選択できます。
 4. **[パラメーターと実行設定]** を選択し、ACTION パラメーターを "Stop" に設定します。

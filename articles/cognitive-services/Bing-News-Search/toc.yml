@@ -5,9 +5,9 @@ items:
   items:
   - name: Bing News Search API とは
     href: search-the-web.md
-    maintainContext: true
   - name: Bing Search API を比較する
     href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
 - name: クイック スタート
   items:
@@ -108,9 +108,9 @@ items:
     href: language-support.md
   - name: Bing News Search API 用の分析
     href: bing-news-stats.md
-ms.openlocfilehash: 01abbc899166a578f03a778956627c656eea445f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: fc75c7142e737cd9db7662946869aaf0f2ced714
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506109"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116373"

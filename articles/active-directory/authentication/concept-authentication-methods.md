@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077363"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510240"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -171,6 +171,8 @@ CSV ファイルとして適切な形式が整ったら、管理者は Azure por
 CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。
 
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。アクティブにするトークンの **[アクティブ化]** をクリックし、トークンに表示されている OTP を入力します。
+
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
 
 ## <a name="mobile-phone"></a>携帯電話
 

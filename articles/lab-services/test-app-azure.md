@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437794"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814894"
 ---
 # <a name="test-your-app-in-azure"></a>Azure でアプリをテストする 
 このアーティクルでは、DevTest Labs を使用して Azure のアプリケーションをテストするための手順を提供します。 最初に、ラボ内のファイル共有を設定して、ローカル開発用コンピューターとラボ内の VM にドライブとしてマウントします。 次に、Visual Studio 2017 を使用して、ラボの VM でアプリを実行できるように、ファイル共有にアプリをデプロイします。  
@@ -57,7 +57,7 @@ ms.locfileid: "54437794"
     ![ラボ VM を選ぶ](media/test-app-in-azure/select-lab-vm.png)
 2. ツールバーの**接続する**を選択して VM に接続します。 
 3. **コマンド ライン ツール**セクションの**Windows インストール**リンクを使用して[Azure PowerShell をインストール](https://azure.microsoft.com/downloads/)します。 Azure PowerShell をインストールする別の方法については、[このアーティクル](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1)を参照してください。
-4. [ファイル共有をマウントする](#mount-the-file-share)セクションの手順に従ってください。 
+4. ファイル共有のマウントに関するセクションの手順に従ってください。 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Visual Studio から アプリを発行する
 このセクションでは、Visual Studio からクラウド内のテスト VM にアプリを発行します。

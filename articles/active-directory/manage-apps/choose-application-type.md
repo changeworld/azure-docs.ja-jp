@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: e10784957365df62e64c306c97ea17fb6a5e7c49
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55202928"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814193"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションを追加するときにアプリケーションの種類を選択する
 Azure Active Directory (Azure AD) に追加できる 4 種類のアプリケーションについて説明します。 Azure Active Directory でアプリケーションを追加すると、4 種類のアプリケーションのいずれかを選択するように求められます。 
@@ -42,7 +42,7 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 -   **クイック スタート** – [簡単なデプロイ手順](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)に従って、アプリケーションのデプロイを速やかに開始します。
 
--   **全般プロパティの管理** – アプリケーションへの[直接のディープリンク](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users)を取得し、アプリケーションの[ブランドをカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)し、すべてのユーザーに対して[アプリケーションを無効](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)にします。
+-   **全般プロパティの管理** – アプリケーションへの[直接のディープリンク](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)を取得し、アプリケーションの[ブランドをカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal)し、すべてのユーザーに対して[アプリケーションを無効](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)にします。
 
 -   **ユーザーとグループの管理** – アプリケーションに対するユーザーとグループの[割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)や[削除](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)を行い、必要に応じてアプリケーションへのアクセスがあるユーザーとグループに特定のアプリケーション ロールを割り当てます。
 
@@ -95,7 +95,7 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>カスタム開発アプリケーションのシングル サインオン モード
 
-[カスタム開発アプリケーション](#_Custom-Developed_Applications) エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない、次のような追加のシングル サインオンもサポートします。
+カスタム開発アプリケーション エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない、次のような追加のシングル サインオンもサポートします。
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) ベースのサインオン
 
@@ -134,7 +134,7 @@ Azure AD アプリケーションに対してサポートされている**シン
 -   **自動プロビジョニング** – API ベースの自動プロビジョニングおよび/またはこのアプリケーションのユーザー アカウントのプロビジョニング解除を有効にする場合は、[自動](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**プロビジョニング モード**を選択します。 
 
    >[!NOTE]
-   >このオプションは、[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery)の**おすすめ**カテゴリ内のアプリケーションにのみ使用できます。
+   >このオプションは、[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal)の**おすすめ**カテゴリ内のアプリケーションにのみ使用できます。
    >
    >
 

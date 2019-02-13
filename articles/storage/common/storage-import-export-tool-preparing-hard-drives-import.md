@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cdcb7dbe726582e525b401bfa765ccc423928610
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454404"
+ms.locfileid: "55510138"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -81,7 +81,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**:ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>コピー先 BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ となります。  |
 | BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md)に関するページを参照してください。  |
-| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプション: rename&#124;overwite&#124;no-overwrite。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
+| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプションは rename&#124;overwite&#124;no-overwrite です。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 | PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 
@@ -319,7 +319,7 @@ WAImportExport ツールには、WAImportExport V1 ツールのすべての機�
 
 ツールの複数の実行にわたってコピー セッション名が同じ場合は、ログ ファイル (/logdir) とストレージ アカウント キー (/sk) も同じであると想定されます。
 
-セッション ID には文字、数字 (0 ～ 9)、アンダースコア (\_)、ダッシュ (-)、またはハッシュ (#) を使用できます。ID の長さは 3 ～ 30 文字にする必要があります。
+セッション ID には文字、数字 (0 - 9)、アンダースコア (\_)、ダッシュ (-)、またはハッシュ (#) を使用できます。ID の長さは 3 - 30 文字にする必要があります。
 
 例: session-1、session#1、session\_1
 

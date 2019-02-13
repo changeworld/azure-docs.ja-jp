@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8730070e1b235324a53ad81957339f4ef17db6dc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193697"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809631"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Log Analytics のログ検索結果から Automation Runbook を使用してアクションを実行する
 
-Azure Log Analytics のログ検索結果から、**[Take action] \(アクションの実行)** を選択して Automation Runbook を実行できるようになりました。  Runbook を使用すると、問題を修正したり、トラブルシューティング情報の収集、電子メールの送信、サービス要求の作成などのその他の何らかのアクションを実行したりできます。 
+Azure Log Analytics のログ検索結果から、**[Take action] \(アクションの実行)** を選択して Automation Runbook を実行できるようになりました。 Runbook を使用すると、問題を修正したり、トラブルシューティング情報の収集、電子メールの送信、サービス要求の作成などのその他の何らかのアクションを実行したりできます。 
 
 ## <a name="components-and-features-used"></a>使用されるコンポーネントと機能
 * [Azure Automation アカウント](../../automation/automation-quickstart-create-account.md)
@@ -30,11 +30,11 @@ Azure Log Analytics のログ検索結果から、**[Take action] \(アクショ
 
 ## <a name="to-initiate-runbook-from-log-search"></a>ログ検索から Runbook を開始するには
 
-イベントに対してアクションを実行し、ログ検索結果から Runbook を開始するには、ログ検索の作成から始め、その結果から Runbook をオンデマンドで呼び出すことができます。  これは、[Azure Portal](../../azure-monitor/log-query/log-query-overview.md) のログ検索機能から実現できます。  この例では、この機能の基本的なデモンストレーションを使用して Azure Portal からログ検索を実行します。
+イベントに対してアクションを実行し、ログ検索結果から Runbook を開始するには、ログ検索の作成から始め、その結果から Runbook をオンデマンドで呼び出すことができます。 これは、[Azure portal](../../azure-monitor/log-query/log-query-overview.md) のクラシック ログ検索機能から実現できます。 この例では、この機能の基本的なデモンストレーションを使用して Azure Portal からログ検索を実行します。
 
 1. Azure Portal で、**[すべてのサービス]** をクリックし、**[Log Analytics]** を選択します。  
 2. Log Analytics ワークスペースを選択します。
-3. ワークスペースで、**[ログ検索]** を選択します。  
+3. ワークスペースで、**[ログ (クラシック)]** を選択します。  
 4. [ログ検索] ページで、ログ検索を実行します。  
 5. ログ検索結果から、いずれかのフィールドの左にある省略記号ボタンをクリックし、ポップアップから **[Take action on] \(アクションの実行対象)** を選択します。<br><br> ![検索結果から [Take action] \(アクションの実行) を選択する](./media/take-action/log-search-takeaction-menuoption.png) 
 6. **[Run a runbook] (Runbook の実行)** を選択し、実行する Runbook を選択します。  Log Analytics ワークスペースにリンクされている Automation アカウントで任意の Runbook を選択できます。  以下の点に注意してください。

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267132"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658574"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -49,7 +49,7 @@ Stream Analytics では、オプティミスティック アップサート手�
 重複した ID を持つドキュメントを含め、<i>すべて</i>のドキュメントを保存する場合は、(AS キーワードを使用して) クエリ内の ID フィールドの名前を変更し、Cosmos DB により ID フィールドを作成するか、(AS キーワードか 'ドキュメント ID' 設定を使用して) 別の列の値と ID を置き換えます。
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB でのデータ パーティション分割
-Azure Cosmos DB はワークロードに基づいてパーティションを自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB がお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。
+Azure Cosmos DB ではワークロードに基づいてパーティションが自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB コンテナーがお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。
 > [!Note]
 > 現時点で、Azure Stream Analytics は最上位のパーティション キーを使用した無制限のコレクションのみをサポートしています。 たとえば、`/region` がサポートされています。 入れ子になったパーティション キー (たとえば、`/region/name`) はサポートされていません。 
 

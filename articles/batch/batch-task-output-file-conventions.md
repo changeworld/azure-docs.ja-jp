@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472985"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821186"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
@@ -112,7 +112,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 保持されたファイルは [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) メソッドの `kind` パラメーターによって分類されます。 [TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。`TaskOutput``TaskPreview``TaskLog``TaskIntermediate.` です。カスタム出力カテゴリを定義することもできます。
 
-これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 一覧の表示と出力の取得については、この記事の後ろのセクションの「 [出力の取得](#retrieve-output) 」で詳しく説明します。
+これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 出力の一覧表示と取得については、この記事の後ろのセクションの「出力の取得」で詳しく説明します。
 
 > [!TIP]
 > 出力の種類によって、特定のファイルが Azure portal のどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは **[Task output files]\(タスク出力ファイル\)** に表示され、 *TaskLog* に分類されたファイルは **[Task logs]\(タスク ログ\)** に表示されます。
@@ -197,7 +197,7 @@ Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azu
 
 ポータルで出力ファイルの表示を有効にするには、次の要件を満たす必要があります。
 
-1. [Link an Azure Storage account](#requirement-linked-storage-account) 必要があります。
+1. Azure ストレージ アカウントを Batch アカウントにリンクします。
 1. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。 出力の保持に [Azure Batch ファイル規則][nuget_package]ライブラリを使用した場合、ファイルはファイル規則の標準に従って保持されます。
 
 Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、**[保存された出力ファイル]** または **[保存されたログ]** をクリックします。 次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。

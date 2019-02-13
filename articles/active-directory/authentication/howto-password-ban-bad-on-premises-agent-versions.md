@@ -5,24 +5,62 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078765"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663623"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>更新:Azure AD パスワード保護エージェントのバージョン履歴
 
 |     |
 | --- |
-| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| Azure AD のパスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
+
+## <a name="12650"></a>1.2.65.0
+
+リリース日: 2/1/2019
+
+変更点:
+
+* DC エージェントとプロキシ サービスが Server Core でサポートされるようになりました。 OS の最小要件は前から変更されておらず、DC エージェントには Windows Server 2012、プロキシには Windows Server 2012 R2 です。
+* Register-AzureADPasswordProtectionProxy と Register-AzureADPasswordProtectionForest コマンドレットでは、デバイス コード ベースの Azure 認証モードがサポートされるようになりました。
+* Get-AzureADPasswordProtectionDCAgent コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるバグが解決されます。
+* Get-AzureADPasswordProtectionSummaryReport コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるというバグが解決されます。
+* プロキシの PowerShell モジュールが %ProgramFiles%\WindowsPowerShell\Modules から登録されるようになりました。 コンピューターの PSModulePath 環境変数は変更されなくなりました。
+* フォレストまたはドメイン内の登録されたプロキシの検出を支援するために、新しい Get-AzureADPasswordProtectionProxy コマンドレットが追加されました。
+* DC エージェントは、パスワード ポリシーやその他のファイルをレプリケートするために、Sysvol 共有内の新しいフォルダーを使用します。
+
+   古いフォルダーの場所:
+
+   `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
+
+   新しいフォルダーの場所:
+
+   `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
+
+   (この変更は、誤検知の "切り離された GPO" の警告を回避するために行われました。)
+
+   > [!NOTE]
+   > 古いフォルダーと新しいフォルダーの間でのデータの移行や共有は実行されません。 DC エージェントの古いバージョンは、このバージョン以降にアップグレードされるまで、引き続き古い場所を使用します。 すべての DC エージェントがバージョン 1.2.65.0 以降を実行するようになったら、古い Sysvol フォルダーを手動で削除できます。
+
+* DC エージェントとプロキシ サービスが、それぞれに対応するサービス接続ポイントの壊れたコピーを検出して削除するようになりました。
+* 各 DC エージェントは、DC エージェントとプロキシ サービスの両方の接続ポイントについて、そのドメイン内の壊れた古いサービス接続ポイントを定期的に削除します。 DC エージェントとプロキシ サービスの接続ポイントはどちらも、そのハートビートのタイムスタンプが 7 日より古い場合に古いと見なされます。
+* DC エージェントが、必要に応じてフォレスト証明書を更新するようになりました。
+* プロキシ サービスが、必要に応じてプロキシ証明書を更新するようになりました。
+* パスワード検証アルゴリズムの更新: グローバル禁止パスワード リストと顧客固有の禁止パスワード リスト (構成されている場合) がパスワード検証の前に結合されます。 グローバル リストと顧客固有のリストの両方のトークンが含まれている場合は、その特定のパスワードを拒否できるようになりました (失敗または監査のみ)。 イベント ログのドキュメントがこれを反映するように更新されました。[Azure AD のパスワード保護の監視](howto-password-ban-bad-on-premises-monitor.md)に関するページを参照してください。
+* パフォーマンスと堅牢性の修正
+* ログ記録の強化
+
+> [!WARNING]
+> 期間限定の機能: このリリース (1.2.65.0) の DC エージェント サービスは、2019 年 9 月 1 日の時点でパスワード検証要求の処理を停止します。  以前のリリース (下の一覧を参照) の DC エージェント サービスは、2019 年 7 月 1 日の時点でこの処理を停止します。 すべてのバージョンの DC エージェント サービスは、これらの期限までの 2 か月間に 10021 個のイベントを管理イベント ログに記録します。 期間限定のすべての制限は、今後予定されている GA リリースで削除されます。 プロキシ エージェント サービスはどのバージョンでも期間限定されていませんが、以降のバグ修正やその他の機能強化をすべて利用するには、やはり最新バージョンにアップグレードする必要があります。
 
 ## <a name="12250"></a>1.2.25.0
 
@@ -39,6 +77,7 @@ ms.locfileid: "55078765"
 変更点:
 
 * プロキシ サービスに必要な最低の OS レベルが、Windows Server 2012 R2 になりました。 DC エージェント サービスに必要な最低の OS レベルは、Windows Server 2012 のままです。
+* プロキシ サービスに .NET バージョン 4.6.2 が必要になりました。
 * パスワード検証アルゴリズムでは、拡張文字正規化テーブルが使用されます。 これにより、以前のバージョンでは受け入れられていたパスワードが拒否される可能性があります。
 
 ## <a name="12100"></a>1.2.10.0

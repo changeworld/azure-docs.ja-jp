@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory での管理者ロールの委任 | Microsoft Docs
+title: 管理者ロールの委任を理解する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory の委任モデル、例、およびロールのセキュリティ
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: cf26cd53340d00e057492b8625b1ff5d6dcde884
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4e904ee9b2ad96847b0ff22dd7350cc42c20db79
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195020"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507248"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 1/8/2018
+ms.date: 02/01/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: mmercuri
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 48e7de2798d9c34942df281febcc1d4ec443010d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103385"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662229"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -33,7 +33,7 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 要求には次のフィールドが必要です。
 
-| **名前**             | **説明**                                      |
+| **Name**             | **説明**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID                                |
 | firstName            | ユーザーの名                              |
@@ -61,7 +61,7 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **名前**              | **説明**                                                                                                             |
+| **Name**              | **説明**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID |
 | userId                | 作成されたユーザーの ID |
@@ -111,11 +111,12 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **名前**             | **説明**                                                                                                           |
+| **Name**             | **説明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID |
 | userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
 | applicationName      | アプリケーションの名前 |
+| version              | アプリケーションのバージョン。 複数のバージョンのアプリケーションを有効にしている場合は必須です。 それ以外の場合、バージョンは省略可能です。 アプリケーションのバージョン管理の詳細については、「[Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)」を参照してください。 |
 | workflowName         | ワークフローの名前 |
 | parameters           | コントラクト作成のために入力されたパラメーター |
 | connectionId         | ブロックチェーン接続の一意識別子 |
@@ -128,7 +129,8 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 { 
     "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
-    "applicationName": "AssetTransfer", 
+    "applicationName": "AssetTransfer",
+    "version": "1.0",
     "workflowName": "AssetTransfer", 
     "parameters": [ 
         { 
@@ -148,7 +150,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **名前**                 | **説明**                                                                   |
+| **Name**                 | **説明**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID                                                             |
 | contractId               | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -213,11 +215,12 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **名前**                 | **説明**                                                                                                           |
+| **Name**                 | **説明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID |
 | userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
 | contractLedgerIdentifier | 台帳のコントラクトのアドレス |
+| version                  | アプリケーションのバージョン。 複数のバージョンのアプリケーションを有効にしている場合は必須です。 それ以外の場合、バージョンは省略可能です。 アプリケーションのバージョン管理の詳細については、「[Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)」を参照してください。 |
 | workflowFunctionName     | ワークフロー関数の名前 |
 | parameters               | コントラクト作成のために入力されたパラメーター |
 | connectionId             | ブロックチェーン接続の一意識別子 |
@@ -231,6 +234,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
     "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "version": "1.0",
     "workflowFunctionName": "modify",
     "parameters": [
         {
@@ -250,7 +254,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **名前**              | **説明**                                                                   |
+| **Name**              | **説明**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID|
 | contractId            | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -357,7 +361,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 
 1. Workbench のリソース グループ内の Service Bus に移動します。
 2. **[トピック]** を選択します。
-3. **[egress-topic](エグレストピック)** を選択します。
+3. **[エグレストピック]** を選択します。
 4. このトピックに新しいサブスクリプションを作成します。 それのキーを取得します。
 5. このサブスクリプションからのイベントにサブスクライブするプログラムを作成します。
 

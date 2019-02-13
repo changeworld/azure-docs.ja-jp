@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ffbd785126bbc204191554e5d62d642a582a3c8d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105238"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822563"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -126,16 +126,16 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | パラメーター | 説明 | 既定値 |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
-| Location |キャッシュの場所 | |
+| 場所 |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
-| Size |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| サイズ |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値は次のとおりです。1、2、3、4、5、6、7、8、9、10 | |
-| SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |Standard |
+| SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |標準 |
 | RedisConfiguration |Redis 構成の設定を指定します。 各設定の詳細については、次の「 [RedisConfiguration プロパティ](#redisconfiguration-properties) 」の表をご覧ください。 | |
 | EnableNonSslPort |非 SSL ポートが有効になっているかどうかを示します。 |False |
 | MaxMemoryPolicy |このパラメーターは非推奨となりました。代わりに、RedisConfiguration を使用します。 | |
 | StaticIP |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
-| Subnet |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
+| サブネット |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
 | VirtualNetwork |VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値は次のとおりです。Primary、Secondary | |
 
@@ -143,17 +143,17 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | プロパティ | 説明 | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
-| rdb-storage-connection-string | [Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
-| rdb-backup-frequency | [Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
+| rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
+| rdb-backup-frequency |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
 | maxmemory-reserved |キャッシュ以外のプロセスに [予約済みのメモリ](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |Standard と Premium |
 | maxmemory-policy |キャッシュに [削除ポリシー](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |すべての価格レベル |
-| notify-keyspace-events | [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) |Standard と Premium |
+| notify-keyspace-events |[キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) |Standard と Premium |
 | hash-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | hash-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | set-max-intset-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | zset-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | zset-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| databases |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
+| データベース |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成するには
 Azure Cache for Redis インスタンスを新規作成するには、[New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用します。
@@ -260,7 +260,7 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-`databases` プロパティの詳細については、「[Default Azure Cache for Redis server configuration](cache-configure.md#default-redis-server-configuration)」 (既定の Azure Cache for Redis サーバー構成) をご覧ください。 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用してキャッシュを作成する方法の詳細については、上記の「[Azure Cache for Redis を作成するには](#to-create-a-redis-cache)」のセクションをご覧ください。
+`databases` プロパティの詳細については、「[Default Azure Cache for Redis server configuration](cache-configure.md#default-redis-server-configuration)」 (既定の Azure Cache for Redis サーバー構成) をご覧ください。 [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) コマンドレットを使用してキャッシュを作成する方法の詳細については、上記の「Azure Cache for Redis を作成するには」のセクションをご覧ください。
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Azure Cache for Redis を更新するには
 Azure Cache for Redis インスタンスを更新するには、[Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Set-AzureRmRedisCache?view=azurermps-6.6.0) コマンドレットを使用します。

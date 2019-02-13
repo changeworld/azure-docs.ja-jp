@@ -3,7 +3,7 @@ title: Azure SQL Database ハイパースケールに関する FAQ | Microsoft D
 description: ハイパースケール サービス レベルの Azure SQL Database (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478340"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810067"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -222,7 +222,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 はい。 BACPAC、トランザクション レプリケーション、論理データ読み込みなど、既存のすべての移行方法を使用して、ハイパースケールに移行できます。 「[Azure Database Migration Service とは](../dms/dms-overview.md)」もご覧ください。
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>オンプレミスまたは仮想マシン環境からハイパースケールへの移行時のダウンタウン、および最小限にするための方法
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>オンプレミスまたは仮想マシン環境からハイパースケールへの移行時のダウンタイム、および最小限にするための方法
 
 ダウンタイムは、データベースを Azure SQL Database 内の単一データベースに移行する際のダウンタイムと同じです。 [トランザクション レプリケーション](replication-to-sql-database.md#data-migration-scenario
 )を使用すると、サイズが数 TB までのデータベースについて移行時のダウンタイムを最小限に抑えることができます。 特に大規模なデータベース (10 TB 超) の場合は、ADF、Spark、またはその他のデータ移動方法を使用してデータを移行することを検討してください。

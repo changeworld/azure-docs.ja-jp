@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 02129fbddae2e3a82299eb3b03d6e73030b44c4d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477881"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811462"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -37,7 +37,7 @@ ms.locfileid: "55477881"
 
 * 各 Batch アカウントで追加構成なしで既定で有効になります。
 * 1 分ごとに生成されます。
-* 自動的に保存されることはありませんが、30 日間のローリング履歴があります。 [診断ログ](#work-with-diagnostic-logs)の一部として、アクティビティ メトリックを保存できます。
+* 自動的に保存されることはありませんが、30 日間のローリング履歴があります。 診断ログの一部として、アクティビティ メトリックを保存できます。
 
 ### <a name="view-metrics"></a>メトリックを表示する
 

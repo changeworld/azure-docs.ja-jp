@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244251"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660121"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -32,7 +32,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - デプロイ中にこれらの証明書を準備、検証、および使用する方法
 
 > [!Note]  
-> デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。 
+> デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、次の場所で確認できます。C:\CloudDeployment\Setup\Certificates 
 
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
@@ -49,7 +49,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。
 - 証明書の "Issued to:" フィールドは "Issued by:" フィールドと同じにしないでください。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
-- 証明書 pfx に対するパスワードは、複雑なパスワードである必要があります。
+- 証明書 pfx に対するパスワードは、複雑なパスワードである必要があります。 次のパスワードの複雑さの要件を満たしているパスワードを作成します。 8 文字の最小長。 パスワードに、大文字、小文字、0 - 9 の数字、特殊文字、および大文字でも小文字でもない英字のうち 3 種類以上が含まれている。 このパスワードを書き留めておいてください。 デプロイ パラメーターとして使用します。
 - サブジェクト名と、サブジェクトの別名の拡張子 (x509v3_config) のサブジェクトの別名が一致するようにします。 サブジェクトの別名フィールドでは、単一の SSL 証明書によって保護される追加のホスト名 (Web サイト、IP アドレス、共通名) を指定できます。
 
 > [!NOTE]  

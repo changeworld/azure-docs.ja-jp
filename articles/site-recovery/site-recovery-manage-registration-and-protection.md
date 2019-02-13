@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212190"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810322"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 
@@ -154,7 +154,7 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Hyper-V 仮想マシンの保護の無効化 (Hyper-V から Azure)
 
 > [!NOTE]
-> VMM サーバーを使用せずに Hyper-V VM を Azure にレプリケートしている場合は、この手順を使用します。 **System Center VMM から Azure へ**のシナリオを使用している場合は、「[System Center VMM から Azure へのシナリオを使用してレプリケートしている Hyper-V 仮想マシンの保護の無効化](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)」の手順に従ってください。
+> VMM サーバーを使用せずに Hyper-V VM を Azure にレプリケートしている場合は、この手順を使用します。 **System Center VMM から Azure へ**のシナリオを使用している場合は、「System Center VMM から Azure へのシナリオを使用してレプリケートしている Hyper-V 仮想マシンの保護の無効化」の手順に従ってください
 
 1. **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[レプリケーションの無効化]** をクリックします。
 2. **[レプリケーションの無効化]** では、次のオプションを選択できます。
