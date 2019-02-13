@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438917"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822444"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -66,7 +66,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](diagnose-network-traffic-filter-problem.md)に関する記事を参照してください。
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
     *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
-    *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
     *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
@@ -92,7 +92,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 
 ### <a name="delete-a-network-security-group"></a>ネットワーク セキュリティ グループを削除する
 
-ネットワーク セキュリティ グループは、いずれかのサブネットまたはネットワーク インターフェイスに関連付けられている場合は削除できません。 ネットワーク セキュリティ グループを削除する前に、すべてのサブネットとネットワーク インターフェイスからネットワーク セキュリティ グループの[関連付けを解除](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)してください。
+ネットワーク セキュリティ グループは、いずれかのサブネットまたはネットワーク インターフェイスに関連付けられている場合は削除できません。 ネットワーク セキュリティ グループを削除する前に、すべてのサブネットとネットワーク インターフェイスからネットワーク セキュリティ グループの関連付けを解除してください。
 
 1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
 2. 削除するネットワーク セキュリティ グループを一覧から選択します。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1b145b1162dcba5653c962f0af1969c1aa017f57
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054641"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819809"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -38,11 +38,12 @@ Resource Manager テンプレートを使用すると、1 つの調整された�
 
 HDInsight テンプレートのサンプルは、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight)」で見つけることができます。 [Resource Manager 拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)が付属しているクロスプラットフォームの [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) またはテキスト エディターを使用して、テンプレートをワークステーションのファイルに保存します。 
 
-Resource Manager テンプレートの詳細については、次の記事を参照してください。
+Resource Manager テンプレートの詳細については、次の記事と例を参照してください。
 
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) テンプレート リファレンス
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) テンプレート リファレンス
+* [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>テンプレートを生成する
 
@@ -51,7 +52,6 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 - Azure portal:「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](../azure-resource-manager/resource-manager-export-template.md)」を参照してください。
 - Azure PowerShell:「[PowerShell を使用した Azure Resource Manager テンプレートのエクスポート](../azure-resource-manager/resource-manager-export-template-powershell.md)」を参照してください。
 - Azure クラシック CLI:[Azure クラシック CLI を使用した Azure Resource Manager テンプレートのエクスポート](../azure-resource-manager/resource-manager-export-template-cli.md)に関するページを参照してください。
-
 
 ## <a name="deploy-using-the-portal"></a>ポータルを使用したデプロイ
 

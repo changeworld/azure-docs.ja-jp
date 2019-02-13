@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246536"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766097"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -153,6 +153,9 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 <!-- 3190553 - IS ASDK -->
 - インフラストラクチャ ロール インスタンスが利用できない、またはスケール ユニットがオフラインであることを示すわずらわしいアラートが表示される問題を修正しました。
+
+<!-- 2724961 - IS ASDK -->
+- VM の概要ページに VM のメトリック グラフが正しく表示されない問題が修正されました。 
 
 ## <a name="changes"></a>変更点
 
@@ -297,11 +300,6 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 <!-- 1662991 IS ASDK --> 
 - Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。  
-
-<!-- 2724961- IS ASDK --> 
-- サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページの CPU 使用率グラフにメトリック データが表示されません。
-
-   VM の CPU 使用率グラフなどのメトリック データを表示するには、**[メトリック]** ウィンドウに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks では、2 つの新しい[コンピューティング クォータの種類](azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2,048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。

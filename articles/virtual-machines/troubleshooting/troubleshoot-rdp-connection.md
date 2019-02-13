@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452457"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817329"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
@@ -50,8 +50,8 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP 問題をトラブルシューティングする方法
 次のメソッドのいずれかを使用して、Resource Manager デプロイ モデルを使用して作成された VM のトラブルシューティングを行うことができます。
 
-* [Azure Portal](#using-the-azure-portal) - RDP 構成またはユーザーの資格情報をすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
-* [Azure PowerShell](#using-azure-powershell) - PowerShell プロンプトに慣れている場合、Azure PowerShell コマンドレットを使用して、RDP の構成またはユーザーの資格情報をすばやくリセットします。
+* Azure portal - RDP 構成またはユーザーの資格情報をすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
+* Azure PowerShell - PowerShell プロンプトに慣れている場合、Azure PowerShell コマンドレットを使用して、RDP の構成またはユーザーの資格情報をすばやくリセットします。
 
 [クラシック デプロイ モデル](#troubleshoot-vms-created-using-the-classic-deployment-model)を使用して作成された VM のトラブルシューティングの手順も記載されています。
 
@@ -236,7 +236,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 * [ライセンスを提供するためのリモート デスクトップ ライセンス サーバーがないため、リモート セッションは切断されました](troubleshoot-specific-rdp-errors.md#rdplicense)。
 * [リモート デスクトップは、コンピューター "name" を見つけることができません](troubleshoot-specific-rdp-errors.md#rdpname)。
 * [認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](troubleshoot-specific-rdp-errors.md#rdpauth)
-* [Windows セキュリティ エラー: 資格情報が正しくありません](troubleshoot-specific-rdp-errors.md#wincred)。
+* [Windows セキュリティ エラー:お使いの資格情報は機能しませんでした](troubleshoot-specific-rdp-errors.md#wincred)。
 * [このコンピューターはリモート コンピューターに接続できません](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>その他のリソース

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 084784af256fdf31cf1661109c0535cb91ef1db5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082046"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817416"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 
-   - Microsoft Identity Manager (MIM) と [Microsoft Graph 用 MIM 管理エージェント](#create-b2b-guest-user-objects-through-mim-preview)。 
+   - Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント。 
    - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM を必要としない、より軽い解決策です。 
 
 次の図は、Azure AD アプリケーション プロキシと、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174995"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817786"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 このトピックでは、パスワード ハッシュ同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
@@ -237,7 +237,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 
 5. ハートビートが表示されない場合、または他に何も動作していない場合は、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」を実行します。 スクリプトは 1 回のみ実行してください。
 
-6. 「[パスワードを同期していない 1 つのオブジェクトのトラブルシューティング](#one-object-is-not-synchronizing-passwords)」セクションをお読みください。
+6. 「パスワードを同期していない 1 つのオブジェクトのトラブルシューティング」セクションをお読みください。
 
 ### <a name="connectivity-problems"></a>接続に関する問題
 
@@ -291,7 +291,7 @@ Azure AD との接続がありますか。
 
     c. ユーザーが存在する **Active Directory コネクタ**を選択します。
 
-    d. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
 
     e. **[スコープ]** ボックスで、**[DN or Anchor]\(DN またはアンカー\)** を選択し、トラブルシューティングを行うユーザーの完全な DN を入力します。
 
@@ -303,7 +303,7 @@ Azure AD との接続がありますか。
 
     ![オブジェクト ログの詳細](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 [接続エラー](#connectivity-errors)のトラブルシューティングに進みます。 **[成功]** 以外の値が表示される場合は、「[パスワード同期ログ](#password-sync-log)」の表をご覧ください。
+    オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 接続エラーのトラブルシューティングに進みます。 **[成功]** 以外の値が表示される場合は、「[パスワード同期ログ](#password-sync-log)」の表をご覧ください。
 
     h. **[系列]** タブを選択し、**[PasswordSync]** 列の少なくとも 1 つの同期規則が **True** であることを確認します。 既定の構成では、同期規則の名前は **[In from AD - User AccountEnabled]\(AD からの受信 - ユーザー AccountEnabled)** です。  
 

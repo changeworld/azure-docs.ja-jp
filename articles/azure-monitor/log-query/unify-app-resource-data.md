@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265211"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766014"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
-この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。  
+この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。  
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>複数の Application Insights リソースに対してクエリを実行するための推奨される方法 
 複数の Application Insights リソースを 1 つのクエリの中に指定するのは面倒であり、管理が難しくなる可能性があります。 代わりに、関数を活用して、クエリのロジックとアプリケーションのスコープを分離できます。  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >この例では、SourceApp プロパティからアプリケーション名を抽出する parse 演算子は省略できます。 
 
-これで、リソース間クエリで applicationsScoping 関数を使用する準備が整いました。 関数のエイリアスによって、定義したすべてのアプリケーションからの要求の和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。 ![クロスクエリの結果の例](media/unify-app-resource-data/app-insights-query-results.png)
+これで、リソース間クエリで applicationsScoping 関数を使用する準備が整いました。  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+関数のエイリアスによって、定義したすべてのアプリケーションからの要求の和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。
+
+![クロスクエリの結果の例](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights リソースとワークスペース データ間のクエリ 
 Connector を停止しているときに、Application Insights のデータ保有期間 (90 日間) によって切り取られた期間のクエリを実行する必要がある場合は、ワークスペースと Application Insights リソースに対して中間期間の[クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する必要があります。 これは、前述の新しい Application Insights のデータ保有期間でアプリケーション データが蓄積されるまで必要です。 Application Insights とワークスペースではスキーマが異なるため、クエリではいくつかの操作が必要です。 このセクションで後述する、スキーマの相違点を強調している表を参照してください。 
@@ -93,7 +106,7 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
+| ブラウザー | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
@@ -118,7 +131,7 @@ applicationsScoping //this brings data from Application Insights resources
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | success | 
+| RequestSuccess | 成功 | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |

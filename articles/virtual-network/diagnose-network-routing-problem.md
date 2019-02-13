@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819792"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 
@@ -116,7 +116,7 @@ az vm show \
 - 定義した任意のカスタム ルートを含むルート テーブルが、ネットワーク インターフェイスが存在するサブネットに関連付けられていることを確認します。 [サブネットへのルート テーブルの関連付け](manage-route-table.md#associate-a-route-table-to-a-subnet)の方法をご確認ください。
 - デプロイした Azure VPN ゲートウェイやネットワーク仮想アプライアンスなどのデバイスが動作していることを確認します。 Network Watcher の [VPN 診断](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json)機能を使用して、Azure VPN ゲートウェイの問題を特定します。
 
-通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「[追加の診断](#additional-dignosis)」をご覧ください。
+通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「追加の診断」をご覧ください。
 
 ## <a name="considerations"></a>考慮事項
 

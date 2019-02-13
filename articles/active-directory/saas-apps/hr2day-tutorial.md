@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149257"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 
@@ -88,11 +88,11 @@ HR2day by Merces で、Azure AD の **[ユーザー名]** を **[Username]\(ユ�
 
 HR2day by Merces で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on):ユーザーがこの機能を使用できるようにします。
-1. [Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user):Britta Simon を使用して Azure AD シングル サインオンをテストします。
-1. [HR2day by Merces のテスト ユーザーの作成](#creating-an-hr2day-by-merces-test-user):HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. [Azure AD のテスト ユーザーの割り当て](#assigning-the-azure-ad-test-user):Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. [シングル サインオンのテスト](#testing-single-sign-on):構成が機能するかどうかを確認します。
+1. Azure AD シングル サインオンの構成:ユーザーがこの機能を使用できるようにします。
+1. Azure AD のテスト ユーザーの作成:Britta Simon を使用して Azure AD シングル サインオンをテストします。
+1. HR2day by Merces のテスト ユーザーの作成:HR2day by Merces で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. Azure AD テスト ユーザーの割り当て:Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. シングル サインオンのテスト:構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -150,7 +150,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     c. **[値]** の一覧で、**[Join()]** を選択します。
 
-    d. **[文字列 1]** の一覧で、**[user.mail]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[文字列 1]** の一覧で、**[user.mail]** を選択します。
 
     e. **[文字列 2]** にで、HR2day チームから提供された一意識別子を入力します。
 
@@ -204,7 +204,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選び、パスワードを書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>HR2day by Merces テスト ユーザーの作成
 

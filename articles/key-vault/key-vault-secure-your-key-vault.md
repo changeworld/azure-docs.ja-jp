@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077336"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821617"
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
 
@@ -34,7 +34,7 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 取り上げるトピックの概要を次に示します。
 
-[Azure Active Directory を使用した認証](#authentication-using-azure-active-directory) - このセクションでは、管理プレーンとデータ プレーンを介してキー コンテナーにアクセスするために、呼び出し元が Azure Active Directory で認証する方法について説明します。 
+Azure Active Directory を使用した認証 - このセクションでは、管理プレーンとデータ プレーンを介してキー コンテナーにアクセスするために、呼び出し元が Azure Active Directory で認証する方法について説明します。 
 
 認証については、両方のプレーンで Azure Active Directory (Azure AD) が使用されます。 承認については、管理プレーンではロールベースのアクセス制御 (RBAC) を使用し、データ プレーンでは Key Vault アクセス ポリシーを使用します。
 

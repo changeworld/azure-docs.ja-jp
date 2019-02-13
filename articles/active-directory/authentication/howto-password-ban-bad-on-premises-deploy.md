@@ -1,21 +1,21 @@
 ---
-title: Azure AD パスワード保護のプレビューを展開する
+title: Azure AD パスワード保護のプレビューをデプロイする
 description: Azure AD パスワード保護のプレビューを展開して、オンプレミスでの間違ったパスワードの使用を禁止します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: efa684d75cd30dcbfc971d0ef0a3717cc15bd0e4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081281"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696865"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>更新:Azure AD のパスワード保護をデプロイする
 
@@ -41,18 +41,10 @@ Microsoft では、すべての展開を監査モードで開始することを�
 ## <a name="deployment-requirements"></a>デプロイ要件
 
 * Azure AD パスワード保護 DC エージェントがインストールされているドメイン コントローラーではすべて、Windows Server 2012 以降を実行している必要があります。
-
-   > [!NOTE]
-   > 現在、サーバー コアベースのオペレーティング システムはサポートされていません。 このサポートは一般提供が計画されています。
-
 * Azure AD パスワード保護プロキシ サービスがインストールされているマシンではすべて、Windows Server 2012 R2 以降を実行している必要があります。
-
-   > [!NOTE]
-   > 現在、サーバー コアベースのオペレーティング システムはサポートされていません。 このサポートは一般提供が計画されています。
-
 * ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。
 これは、Windows Update 経由でマシンに対する修正プログラムの適用を完全に行うことで実現することをお勧めします。 それ以外の場合は、適切な OS 固有の更新パッケージをインストールできます。「[Windows での汎用の C ランタイムの更新プログラム](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)」を参照してください。
-* 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護プロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー (135) および RPC サーバー ポートにアクセスできるようにする必要があります。  RPC サーバー ポートは、既定では動的 RPC ポートですが、静的ポートを使用するように構成することができます (下記参照)。
+* 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護プロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー (135) および RPC サーバー ポートにアクセスできるようにする必要があります。 RPC サーバー ポートは、既定では動的 RPC ポートですが、静的ポートを使用するように構成することができます (下記参照)。
 * Azure AD のパスワード保護プロキシ サービスをホストしているすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
 
     |エンドポイント |目的|
@@ -66,78 +58,121 @@ Microsoft では、すべての展開を監査モードで開始することを�
 
 ## <a name="single-forest-deployment"></a>1 つのフォレストへの展開
 
-Azure AD パスワード保護のプレビューは、最大 2 台のサーバー上に展開でき、DC エージェント サービスは、Active Directory フォレスト内のすべてのドメイン コントローラーに付加的に展開できます。
+次の図は、Azure AD パスワード保護の基本コンポーネントが、オンプレミスの Active Directory 環境でどのように連携し、機能するかを示したものです。  
 
 ![Azure AD パスワード保護コンポーネントの連携方法](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
 ### <a name="download-the-software"></a>ソフトウェアをダウンロードする
 
-Azure AD パスワード保護のために必要なインストーラーが 2 つあり、これらは [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)からダウンロードできます。
+Azure AD パスワード保護のために必要なインストーラーが 2 つあり、これらは [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)からダウンロードできます
 
 ### <a name="install-and-configure-the-azure-ad-password-protection-proxy-service"></a>Azure AD パスワード保護プロキシ サービスをインストールして構成する
 
 1. Azure AD パスワード保護プロキシ サービスをホストする 1 つまたは複数のサーバーを選択します。
-   * 各サービスは 1 つのフォレストにのみパスワード ポリシーを提供でき、ホスト コンピューターは、フォレスト内のドメインに対してドメイン参加済みである必要があります (ルートと子はどちらも同じようにサポートされます)。 Azure AD パスワード保護プロキシ サービスがその機能を発揮するには、フォレストの各ドメイン内の少なくとも 1 つの DC と Azure AD パスワード保護プロキシ ホスト コンピューターとの間にネットワーク接続が存在する必要があります。
-   * テスト目的でのドメイン コントローラーへの Azure AD パスワード保護プロキシ サービスのインストールと実行はサポートされていますが、その場合、ドメイン コントローラーはインターネット接続を必要とします。
+   * 各サービスは 1 つのフォレストにのみパスワード ポリシーを提供でき、ホスト コンピューターは、フォレスト内のドメインに対してドメイン参加済みである (ルート ドメインと子ドメインがどちらもサポートされている) 必要があります。 Azure AD パスワード保護プロキシ サービスがその機能を発揮するには、フォレストの各ドメイン内の少なくとも 1 つの DC と Azure AD パスワード保護プロキシ コンピューターとの間にネットワーク接続が存在する必要があります。
+   * Azure AD パスワード保護プロキシ サービスをテスト目的でドメイン コントローラーにインストールし、実行することはサポートされています。ただし、ドメイン コントローラーにインターネット接続が必要となるため、セキュリティ上の懸念事項になります。 この構成はテスト目的にのみ使用することをお勧めします。
+   * 冗長性を確保するには、少なくとも 2 つのプロキシ サーバーを使用することをお勧めします。 [高可用性に関する記事をご覧ください](howto-password-ban-bad-on-premises-deploy.md#high-availability)
 
-   > [!NOTE]
-   > パブリック プレビューでは、フォレストごとに最大 2 台のプロキシ サーバーをサポートします。
-
-2. AzureADPasswordProtectionProxy.msi MSI パッケージを使用して、パスワード ポリシー プロキシ サービス ソフトウェアをインストールします。
-   * このソフトウェアのインストールでは、再起動は必要ありません。 ソフトウェアのインストールは、標準 MSI プロシージャ (例: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`) を使用して自動化できます。
+2. AzureADPasswordProtectionProxySetup.msi MSI パッケージを使用して、Azure AD パスワード保護プロキシ サービスをインストールします。
+   * このソフトウェアのインストールでは、再起動は必要ありません。 ソフトウェアのインストールは、標準 MSI プロシージャ (例: `msiexec.exe /i AzureADPasswordProtectionProxySetup.msi /quiet /qn`) を使用して自動化できます。
 
       > [!NOTE]
-      > Windows Firewall サービスは必ず、AzureADPasswordProtectionProxy.msi の MSI パッケージをインストールする前に実行されている必要があります。そうでない場合は、インストール エラーが発生します。 Windows Firewall が実行されないように構成されている場合は、回避策として、インストール プロセスの間、一時的に Windows Firewall サービスを有効化して開始します。 インストール後は、プロキシ ソフトウェアでは Windows Firewall 上に特定の依存関係を保持しません。 サードパーティのファイアウォールを使用している場合は、やはりデプロイの要件を満たすように構成する必要があります (動的または静的を問わず、ポート 135 とプロキシ RPC サーバー ポートへの受信アクセスを許可します)。 「[デプロイ要件](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)」を確認してください。
+      > Windows Firewall サービスは必ず、AzureADPasswordProtectionProxySetup.msi の MSI パッケージをインストールする前に実行されている必要があります。そうでない場合は、インストール エラーが発生します。 Windows Firewall が実行されないように構成されている場合は、回避策として、インストール プロセスの間、一時的に Windows Firewall サービスを有効化して開始します。 インストール後は、プロキシ ソフトウェアでは Windows Firewall 上に特定の依存関係を保持しません。 サードパーティのファイアウォールを使用している場合は、やはりデプロイの要件を満たすように構成する必要があります (動的または静的を問わず、ポート 135 とプロキシ RPC サーバー ポートへの受信アクセスを許可します)。 「[デプロイ要件](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)」を確認してください。
 
 3. 管理者として PowerShell ウィンドウを開きます。
    * Azure AD パスワード保護プロキシ ソフトウェアには、AzureADPasswordProtection という名前の新しい PowerShell モジュールが含まれています。 次の手順は、この PowerShell モジュールのさまざまなコマンドレットの実行に基づいており、新しい PowerShell ウィンドウを開いて、新しいモジュールを次のようにインポートしていることを前提としています。
-      * `Import-Module AzureADPasswordProtection`
 
-      > [!NOTE]
-      > インストール ソフトウェアは、ホスト コンピューターの PSModulePath 環境変数を変更します。 この変更を有効にして、AzureADPasswordProtection powershell モジュールをインポートして使用できるようにするに、最新の PowerShell コンソール ウィンドウを開く必要がある場合があります。
+      ```PowerShell
+      Import-Module AzureADPasswordProtection
+      ```
 
    * 次の PowerShell コマンドを使用して、サービスが実行されていることを確認します。`Get-Service AzureADPasswordProtectionProxy | fl`
-      * [実行中] という**状態**を返す結果が生成されます。
+     [実行中] という**状態**を返す結果が生成されます。
 
 4. プロキシを登録します。
    * 手順 3 が完了すると、Azure AD パスワード保護プロキシ サービスがコンピューター上で実行されますが、Azure AD と通信するために必要な資格情報がまだ用意されていません。 `Register-AzureADPasswordProtectionProxy` PowerShell コマンドレットを使用してその機能を有効にするには、Azure AD の登録が必要です。 このコマンドレットは、Azure テナントのグローバル管理者資格情報と、フォレストのルート ドメイン内にオンプレミスの Active Directory ドメインの管理者特権を必要とします。 `Register-AzureADPasswordProtectionProxy` の呼び出しは、特定のプロキシ サービスで成功すれば、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
-      * コマンドレットは、次のように実行できます。
 
+      Register-AzureADPasswordProtectionProxy コマンドレットでは、次の 3 つの認証モードがサポートされています。
+
+      * 対話型認証モード:
+
+         ```PowerShell
+         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
          ```
-         $tenantAdminCreds = Get-Credential
-         Register-AzureADPasswordProtectionProxy -AzureCredential $tenantAdminCreds
+         > [!NOTE]
+         > このモードは、Server Core オペレーティング システムでは機能しません。 代わりに、以下に示すいずれかの代替認証モードを使用してください。
+
+         > [!NOTE]
+         > Internet Explorer の強化されたセキュリティ構成が有効になっている場合、このモードは失敗する可能性があります。 回避策として、IESC を無効にし、プロキシを登録して、もう一度 IESC を有効にします。
+
+      * デバイスコード認証モード:
+
+         ```PowerShell
+         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceMode
+         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
          ```
 
-         この例は、現在ログインしているユーザーがルート ドメインの Active Directory ドメイン管理者でもある場合にのみ有効です。 別の方法は、`-ForestCredential` パラメーターを使用して必要なドメイン資格情報を指定することです。
+         この後、別のデバイスに表示された手順に従って認証を完了することができます。
+
+      * サイレント (パスワードベース) 認証モード:
+
+         ```PowerShell
+         $globalAdminCredentials = Get-Credential
+         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
+         ```
+
+         > [!NOTE]
+         > このモードは、何らかの理由で認証に MFA が必要となる場合には失敗します。 その場合は、上記 2 つのモードのいずれか使用して、MFA ベースの認証を完了してください。
+
+      現時点では、今後提供される機能用に予約された ForestCredential パラメーターを指定する必要はありません。
 
    > [!NOTE]
-   > Internet Explorer の強化されたセキュリティ構成が有効になっている場合、この操作は失敗する可能性があります。 回避策として、IESC を無効にし、プロキシを登録して、もう一度 IESC を有効にします。
-
-   > [!NOTE]
-   > Azure AD パスワード保護プロキシ サービスの登録は、サービスの有効期間中に 1 回限り実行される手順であると想定されています。 この時点以降、他の必要なメンテナンスは、プロキシ サービスによって自動的に実行されます。 'Register-AzureADPasswordProtectionProxy' の呼び出しは、特定のフォレストで成功すれば、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
+   > Azure AD パスワード保護プロキシ サービスの登録は、サービスの有効期間中に 1 回限り実行される手順であると想定されています。 この時点以降、他の必要なメンテナンスは、プロキシ サービスによって自動的に実行されます。 'Register-AzureADPasswordProtectionProxy' の呼び出しは、特定のプロキシで成功すれば、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
 
    > [!TIP]
    > 特定の Azure テナントに対するこのコマンドレットの初回の実行では、コマンドレットの実行が完了するまで、かなりの遅延 (数十秒) が発生することがあります。 エラーが報告される場合を除き、この遅延について心配する必要はありません。
 
 5. フォレストを登録します。
-   * `Register-AzureADPasswordProtectionForest` Powershell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットは、Azure テナントのグローバル管理者資格情報と、フォレストのルート ドメイン内にオンプレミスの Active Directory ドメインの管理者特権を必要とします。 この手順は、フォレストごとに 1 回実行されます。
-      * コマンドレットは、次のように実行できます。
+   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットは、Azure テナントのグローバル管理者資格情報と、フォレストのルート ドメイン内にオンプレミスの Active Directory ドメインの管理者特権を必要とします。 この手順は、フォレストごとに 1 回実行されます。
 
-         ```
-         $tenantAdminCreds = Get-Credential
-         Register-AzureADPasswordProtectionForest -AzureCredential $tenantAdminCreds
-         ```
+      Register-AzureADPasswordProtectionForest コマンドレットでは、次の 3 つの認証モードがサポートされています。
 
-         この例は、現在ログインしているユーザーがルート ドメインの Active Directory ドメイン管理者でもある場合にのみ有効です。 別の方法は、-ForestCredential パラメーターを使用して、必要なドメイン資格情報を指定することです。
+      * 対話型認証モード:
+
+         ```PowerShell
+         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
+         ```
+         > [!NOTE]
+         > このモードは、Server Core オペレーティング システムでは機能しません。 代わりに、以下に示すいずれかの代替認証モードを使用してください。
 
          > [!NOTE]
-         > Internet Explorer の強化されたセキュリティ構成が有効になっている場合、この操作は失敗する可能性があります。 回避策として、IESC を無効にし、プロキシを登録して、もう一度 IESC を有効にします。
+         > Internet Explorer の強化されたセキュリティ構成が有効になっている場合、このモードは失敗する可能性があります。 回避策として、IESC を無効にし、プロキシを登録して、もう一度 IESC を有効にします。  
+
+      * デバイスコード認証モード:
+
+         ```PowerShell
+         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceMode
+         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
+         ```
+
+         この後、別のデバイスに表示された手順に従って認証を完了することができます。
+
+      * サイレント (パスワードベース) 認証モード:
+         ```PowerShell
+         $globalAdminCredentials = Get-Credential
+         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
+         ```
 
          > [!NOTE]
-         > 環境に複数のプロキシ サーバーがインストールされている場合、上記の手順でどのプロキシ サーバーが指定されているかの制限はありません。
+         > このモードは、認証に MFA が必要となる場合には失敗します。 その場合は、上記 2 つのモードのいずれか使用して、MFA ベースの認証を完了してください。
 
-         > [!TIP]
-         > 特定の Azure テナントに対するこのコマンドレットの初回の実行では、コマンドレットの実行が完了するまで、かなりの遅延 (数十秒) が発生することがあります。 エラーが報告される場合を除き、この遅延について心配する必要はありません。
+      上記の例は、現在ログインしているユーザーがルート ドメインの Active Directory ドメイン管理者でもある場合にのみ正常に機能します。 これに該当しない場合は、-ForestCredential パラメーターを使用して、代替のドメイン資格情報を指定できます。
+
+   > [!NOTE]
+   > 環境に複数のプロキシ サーバーがインストールされている場合、フォレストの登録にどのプロキシ サーバーが使用されても問題はありません。
+
+   > [!TIP]
+   > 特定の Azure テナントに対するこのコマンドレットの初回の実行では、コマンドレットの実行が完了するまで、かなりの遅延 (数十秒) が発生することがあります。 エラーが報告される場合を除き、この遅延について心配する必要はありません。
 
    > [!NOTE]
    > Active Directory フォレストの登録は、フォレストの有効期間中に 1 回のみ実行される手順であると想定されています。 この時点以降、他の必要なメンテナンスは、フォレストで実行されるドメイン コントローラー エージェントによって自動的に実行されます。 `Register-AzureADPasswordProtectionForest` の呼び出しは、特定のフォレストで成功すれば、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
@@ -145,10 +180,48 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
    > [!NOTE]
    > `Register-AzureADPasswordProtectionForest` を少なくとも 1 台の Windows Server 2012 以降で成功させるには、プロキシ サーバーのドメイン内でドメイン コントローラーを使用できる必要があります。 ただし、この手順に先立って、任意のドメイン コントローラーに DC エージェント ソフトウェアをインストールするという要件はありません。
 
-6. 省略可能:特定のポートでリッスンするように Azure AD パスワード保護プロキシ サービスを構成します。
-   * Azure AD パスワード保護プロキシ サービスと通信するために、ドメイン コントローラー上の Azure AD パスワード保護 DC エージェント ソフトウェアによって、TCP 経由で RPC が使用されます。 既定では、Azure AD パスワード保護パスワード ポリシー プロキシ サービスは、使用可能な動的 RPC エンドポイントでリッスンします。 ネットワーク トポロジまたはファイアウォールの要件応じて、必要であれば、特定の TCP ポートでリッスンするようにサービスを構成できます。
+6. HTTP プロキシを通じて通信するように Azure AD パスワード保護プロキシ サービスを構成します
+
+   ご使用の環境で、Azure との通信に特定の HTTP プロキシを使用する必要がある場合は、次の方法で対処できます。
+
+   `%ProgramFiles%\Azure AD Password Protection Proxy\Service` フォルダー内に `proxyservice.exe.config` というファイルを作成し、内容を次のようにします。
+
+      ```xml
+      <configuration>
+        <system.net>
+          <defaultProxy enabled="true">
+           <proxy bypassonlocal="true"
+               proxyaddress="http://yourhttpproxy.com:8080" />
+          </defaultProxy>
+        </system.net>
+      </configuration>
+      ```
+
+   HTTP プロキシで認証が必要な場合は、次のように useDefaultCredentials タグを追加します。
+
+      ```xml
+      <configuration>
+        <system.net>
+          <defaultProxy enabled="true" useDefaultCredentials="true">
+           <proxy bypassonlocal="true"
+               proxyaddress="http://yourhttpproxy.com:8080" />
+          </defaultProxy>
+        </system.net>
+      </configuration>
+      ```
+
+   いずれの場合も、`http://yourhttpproxy.com:8080` を特定の HTTP プロキシ サーバーのアドレスとポートに置き換えます。
+
+   HTTP プロキシが承認ポリシーを使用して構成されている場合は、Azure AD パスワード保護プロキシ サービスをホストしているコンピューターの Active Directory コンピューター アカウントに対するアクセス許可を取得する必要があります。
+
+   `proxyservice.exe.config` ファイルを作成または更新した後には、Azure AD パスワード保護プロキシ サービスを停止して再起動する必要があります。
+
+   Azure AD パスワード保護プロキシ サービスでは、HTTP プロキシへの接続に特定の資格情報を使用することはサポートされていません。
+
+7. 省略可能:特定のポートでリッスンするように Azure AD パスワード保護プロキシ サービスを構成します。
+   * Azure AD パスワード保護プロキシ サービスと通信するために、ドメイン コントローラー上の Azure AD パスワード保護 DC エージェント ソフトウェアによって、TCP 経由で RPC が使用されます。 既定では、Azure AD パスワード保護プロキシ サービスは、使用可能な動的 RPC エンドポイントでリッスンします。 ネットワーク トポロジまたはファイアウォールの要件応じて、必要であれば、特定の TCP ポートでリッスンするようにサービスを構成できます。
       * 静的ポートで実行するようにサービスを構成するには、`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
-         ```
+         ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
@@ -156,7 +229,7 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
          > これらの変更を有効にするには、サービスを停止して、再起動する必要があります。
 
       * 動的ポートで実行するようにサービスを構成するには、同じ手順を使用しますが、次のように StaticPort の設定を 0 に戻します。
-         ```
+         ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
@@ -168,24 +241,28 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 
    * サービスの現在の構成は、次の例に示すように `Get-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して確認できます。
 
-      ```
+      ```PowerShell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
 
       ServiceName : AzureADPasswordProtectionProxy
       DisplayName : Azure AD password protection Proxy
-      StaticPort  : 0 
+      StaticPort  : 0
       ```
 
 ### <a name="install-the-azure-ad-password-protection-dc-agent-service"></a>Azure AD パスワード保護 DC エージェント サービスをインストールする
 
-* `AzureADPasswordProtectionDCAgent.msi` MSI パッケージを使用して、Azure AD パスワード 保護 DC エージェント ソフトウェア サービスをインストールします。
-   * パスワード フィルター DLL のロードとアンロードは再起動時にのみ実行されるというオペレーティング システムの要件により、このソフトウェアのインストールでは、インストールとアンインストールの実行時に再起動する必要があります。
-   * ドメイン コントローラーではないコンピューターへの DC エージェント サービスのインストールがサポートされています。 この場合、サービスは開始して実行されますが、コンピューターがドメイン コントローラーにレベル上げされるまで、サービスはアクティブになりません。
+   `AzureADPasswordProtectionDCAgent.msi` MSI パッケージを使用して、Azure AD パスワード 保護 DC エージェント ソフトウェア サービスをインストールします
 
-   ソフトウェアのインストールは、標準 MSI プロシージャ (例: `msiexec.exe /i AzureADPasswordProtectionDCAgent.msi /quiet /qn`) を使用して自動化できます。
+   パスワード フィルター DLL のロードとアンロードは再起動時にのみ実行されるというオペレーティング システムの要件により、このソフトウェアのインストールでは、インストールとアンインストールの実行時に再起動する必要があります。
+
+   ドメイン コントローラーではないコンピューターへの DC エージェント サービスのインストールがサポートされています。 この場合、サービスは開始して実行されますが、コンピューターがドメイン コントローラーにレベル上げされるまで、サービスはアクティブになりません。
+
+   ソフトウェアのインストールは、標準 MSI プロシージャを使用して自動化できます。次に例を示します。
+
+   `msiexec.exe /i AzureADPasswordProtectionDCAgent.msi /quiet /qn`
 
    > [!WARNING]
-   > この msiexec コマンドの例を使用すると、すぐに再起動します。これは、`/norestart` フラグを指定することで回避できます。
+   > 上記の msiexec コマンドの例を使用すると、すぐに再起動します。これは、`/norestart` フラグを指定することで回避できます。
 
 ドメイン コントローラーにインストールして再起動されたら、Azure AD パスワード保護 DC エージェント ソフトウェアのインストールは完了です。 これ以外の構成は必要ないか、可能ではありません。
 
@@ -199,8 +276,9 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
 
 ## <a name="high-availability"></a>高可用性
 
-Azure AD パスワード保護の高可用性の確保に関する主要な関心事は、フォレストのドメイン コントローラーが Azure から新しいポリシーやその他のデータをダウンロードしようとしたときのプロキシ サーバーの可用性です。 このパブリック プレビューでは、フォレストごとに最大 2 台のプロキシ サーバーをサポートします。 各 DC エージェントは、どのプロキシ サーバーを呼び出すかを決定するときに、単純なラウンドロビン方式のアルゴリズムを使用し、応答しないプロキシ サーバーをスキップします。
-高可用性に関連する一般的な問題は、DC エージェント ソフトウェアの設計によって軽減されています。 DC エージェントは、ごく最近ダウンロードされたパスワード ポリシーのローカル キャッシュを保持します。 登録されているすべてのプロキシ サーバーが何らかの理由で使用できなくなった場合でも、DC エージェントは、キャッシュされたパスワード ポリシーを引き続き適用します。 大規模な展開でのパスワード ポリシーの妥当な更新頻度は、通常は日単位であり、時間やそれ以下の単位ではありません。   そのため、プロキシ サーバーの短時間の停止によって、Azure AD パスワード保護機能の運用やセキュリティ上の利点に大きな影響が出ることはありません。
+Azure AD パスワード保護の高可用性の確保に関する主要な関心事は、フォレストのドメイン コントローラーが Azure から新しいポリシーやその他のデータをダウンロードしようとしたときのプロキシ サーバーの可用性です。 各 DC エージェントは、どのプロキシ サーバーを呼び出すかを決定するときに、単純なラウンドロビン方式のアルゴリズムを使用し、応答しないプロキシ サーバーをスキップします。 (ディレクトリおよび sysvol 状態の両方の) 正常なレプリケーションを使用して完全に接続された Active Directory デプロイでは、ほとんどの場合、2 つのプロキシ サーバーで十分な可用性を確保できるため、新しいポリシーやその他のデータをタイムリーにダウンロードできます。 必要に応じて、追加のプロキシ サーバーをデプロイすることもできます。
+
+高可用性に関連する一般的な問題は、DC エージェント ソフトウェアの設計によって軽減されています。 DC エージェントは、ごく最近ダウンロードされたパスワード ポリシーのローカル キャッシュを保持します。 登録されているすべてのプロキシ サーバーが何らかの理由で使用できなくなった場合でも、DC エージェントは、キャッシュされたパスワード ポリシーを引き続き適用します。 大規模な展開でのパスワード ポリシーの妥当な更新頻度は、通常は日単位であり、時間やそれ以下の単位ではありません。 そのため、プロキシ サーバーの短時間の停止によって、Azure AD パスワード保護機能の運用やセキュリティ上の利点に大きな影響が出ることはありません。
 
 ## <a name="next-steps"></a>次の手順
 

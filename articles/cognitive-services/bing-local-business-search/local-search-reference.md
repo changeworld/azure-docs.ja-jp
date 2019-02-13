@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 22d83eb617c544a374f1f6b502803d4ead214492
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182236"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820744"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 
@@ -53,7 +53,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |ヘッダー|説明|  
 |------------|-----------------|  
 |Accept|省略可能な要求ヘッダー。<br /><br /> 既定のメディアの種類は application/json です。 応答で [JSON-LD](http://json-ld.org/) が使用されるよう指定するには、Accept ヘッダーを application/ld+json に設定します。|  
-|<a name="acceptlanguage" />Accept-Language|省略可能な要求ヘッダー。<br /><br /> ユーザー インターフェイス文字列に使用する言語のコンマ区切りリストです。 リストでは優先度の高いものから順に指定します。 有効な形式など、詳細については [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) を参照してください。<br /><br /> このヘッダーと [setLang](#setlang) クエリ パラメーターは相互に排他的なので、両方は指定しないでください。<br /><br /> このヘッダーを設定する場合は、[cc](#cc) クエリ パラメーターも指定する必要があります。 結果が返される市場を特定するために、Bing によってリストから検出された最初のサポート対象言語が使用され、それが `cc` パラメーター値と組み合わされます。 サポート対象言語がリストに含まれていない場合、要求がサポートされる最も近い言語と市場が Bing によって検出されるか、集計された市場または既定の市場が結果に使用されます。 Bing によって使用された市場を確認するには、BingAPIs-Market ヘッダーを調べます。<br /><br /> このヘッダーと `cc` クエリ パラメーターは、複数の言語を指定する場合にのみ使用します。 それ以外の場合は、[mkt](#mkt) クエリ パラメーターおよび [setLang](#setlang) クエリ パラメーターを使用します。<br /><br /> ユーザー インターフェイス文字列は、ユーザー インターフェイスでラベルとして使われる文字列です。 JSON 応答オブジェクトには、いくつかのユーザー インターフェイス文字列があります。 応答オブジェクト内の Bing.com プロパティへのリンクには、指定された言語が適用されます。|  
+|<a name="acceptlanguage" />Accept-Language|省略可能な要求ヘッダー。<br /><br /> ユーザー インターフェイス文字列に使用する言語のコンマ区切りリストです。 リストでは優先度の高いものから順に指定します。 有効な形式など、詳細については [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) を参照してください。<br /><br /> このヘッダーと [setLang](#setlang) クエリ パラメーターは相互に排他的なので、両方は指定しないでください。<br /><br /> このヘッダーを設定する場合は、cc クエリ パラメーターも指定する必要があります。 結果が返される市場を特定するために、Bing によってリストから検出された最初のサポート対象言語が使用され、それが `cc` パラメーター値と組み合わされます。 サポート対象言語がリストに含まれていない場合、要求がサポートされる最も近い言語と市場が Bing によって検出されるか、集計された市場または既定の市場が結果に使用されます。 Bing によって使用された市場を確認するには、BingAPIs-Market ヘッダーを調べます。<br /><br /> このヘッダーと `cc` クエリ パラメーターは、複数の言語を指定する場合にのみ使用します。 それ以外の場合は、[mkt](#mkt) クエリ パラメーターおよび [setLang](#setlang) クエリ パラメーターを使用します。<br /><br /> ユーザー インターフェイス文字列は、ユーザー インターフェイスでラベルとして使われる文字列です。 JSON 応答オブジェクトには、いくつかのユーザー インターフェイス文字列があります。 応答オブジェクト内の Bing.com プロパティへのリンクには、指定された言語が適用されます。|  
 |<a name="market" />BingAPIs-Market|応答ヘッダー。<br /><br /> 要求で使用された市場。 形式は \<言語コード\>-\<国番号\> です。 たとえば、en-US などです。|  
 |<a name="traceid" />BingAPIs-TraceId|応答ヘッダー。<br /><br /> 要求の詳細が含まれたログ エントリの ID。 エラーが発生した場合、この ID をキャプチャします。 問題を特定して解決できない場合は、その他の情報と共にこの ID をサポート チームに提供します。|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|必須の要求ヘッダー。<br /><br /> [Cognitive Services](https://www.microsoft.com/cognitive-services/) でこのサービスにサインアップしたときに受け取ったサブスクリプション キーです。|  
@@ -75,7 +75,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |----------|-----------|----------|--------------|
 |<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|String|いいえ |   
 |<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|String|いいえ |  
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、[市場コード](#market-codes)に関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|String|[はい]|
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|String|[はい]|
 |<a name="offset"/>offset|`count` パラメーターで指定された、結果を開始するインデックス。|整数|いいえ |  
 |<a name="query" />q|ユーザーの検索語句。|String|いいえ |  
 |<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />  JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](http://json-ld.org/) に関するページを参照してください。|String|いいえ |  
@@ -87,7 +87,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 次に、応答に含まれる可能性がある JSON 応答オブジェクトを示します。 要求が成功した場合、応答内の最上位レベルのオブジェクトは [SearchResponse](#searchresponse) オブジェクトです。 要求が失敗した場合、最上位レベルのオブジェクトは [ErrorResponse](#errorresponse) オブジェクトになります。
 
 
-|オブジェクト|説明|  
+|Object|説明|  
 |------------|-----------------|  
 |[Place](#place)|レストランやホテルなどの地元企業に関する情報を定義します。|  
 
@@ -154,8 +154,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |Name|値|type|  
 |----------|-----------|----------|  
 |_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|String|  
-|address|エンティティがある場所の住所。|[PostalAddress](#postaladdress)|  
-|entityPresentationInfo|エンティティの種類を特定するために使用できるヒントなどの、エンティティに関する追加情報。 たとえば、それがレストランであるかホテルであるか。 `entityScenario` フィールドは ListItem に設定されます。|[EntityPresentationInfo](#entitypresentationinfo)|  
+|address|エンティティがある場所の住所。|PostalAddress|  
+|entityPresentationInfo|エンティティの種類を特定するために使用できるヒントなどの、エンティティに関する追加情報。 たとえば、それがレストランであるかホテルであるか。 `entityScenario` フィールドは ListItem に設定されます。|EntityPresentationInfo|  
 |name|エンティティの名前。|String|  
 |telephone|エンティティの電話番号。|String|  
 |url|エンティティの Web サイトへの URL。<br /><br /> クリックされたときにハイパーリンクを作成するためにエンティティの名前と共にこの URL を使用して、ユーザーをエンティティの web サイトに移動します。|String|  

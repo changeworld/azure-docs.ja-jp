@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973130"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694270"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 
@@ -47,7 +47,7 @@ Azure Storage でのセキュリティの詳細については、「 [Azure Stor
 
 ## <a name="delegated-access-to-storage-objects"></a>ストレージ オブジェクトへの委任されたアクセス
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。 
+Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
@@ -73,7 +73,7 @@ SAS とは、ストレージ リソースへの認証アクセスに必要なす
 
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。 Azure には、保存時のデータの暗号化を提供する機能が 3 つあります。
 
-* [Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+* [Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) は常に有効化され、ストレージ サービス データが Azure Storage に書き込まれる際には、それらのデータが自動的に暗号化されます。
 * [クライアント側の暗号化](../storage/common/storage-security-guide.md#client-side-encryption)には、保存時の暗号化機能もあります。
 * [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
@@ -114,9 +114,9 @@ Data Box Edge と Data Box Gateway は、ネットワーク ストレージの�
 
 ## <a name="advanced-threat-protection"></a>高度な脅威保護
 
-Azure Storage では Advanced Threat Protection が提供され、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 Advanced Threat Protection は、BLOB ストレージに対する不審な読み取り、書込み、または削除要求がないか Azure Storage 診断ログを監視します。 
+Azure Storage では Advanced Threat Protection が提供され、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 Advanced Threat Protection は、BLOB ストレージに対する不審な読み取り、書込み、または削除要求がないか Azure Storage 診断ログを監視します。
 
-Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 Azure Security Center では、検出されたすべての疑わしいアクティビティについての詳細が提供され、潜在的な脅威を調査して修復する方法が推奨されます。 
+Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 Azure Security Center では、検出されたすべての疑わしいアクティビティについての詳細が提供され、潜在的な脅威を調査して修復する方法が推奨されます。
 
 詳細情報:
 

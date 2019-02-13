@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 58cff9be154e693a378f55941e8662563c366b27
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097301"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820217"
 ---
 # <a name="web-api"></a>Web API
 
@@ -47,7 +47,7 @@ Web API アプリケーションは、Web API からリソースを取得する�
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>委任ユーザー ID と OpenID Connect
 
-1. ユーザーが Azure AD を使用して Web アプリケーションにサインインしています (前述の「[Web ブラウザー対 Web アプリケーション](#web-browser-to-web-application)」セクションを参照)。 Web アプリケーションのユーザーは、Web アプリケーションがユーザーに代わって Web API を呼び出すことを許可することにまだ同意していない場合、これに同意する必要があります。 アプリケーションが必要なアクセス許可を表示します。そのいずれかが管理者レベルのアクセス許可の場合、ディレクトリ内の通常のユーザーが同意することはできません。 シングル テナント アプリケーションには、必要なアクセス許可が既にあると考えられるので、この同意プロセスはマルチテナント アプリケーションにのみ適用されます。 ユーザーがサインインしたときに、Web アプリケーションは、ユーザーに関する情報が含まれた ID トークンと、認証コードを受信しています。
+1. ユーザーが Azure AD を使用して Web アプリケーションにサインインしています (前述の「Web ブラウザー対 Web アプリケーション」セクションを参照)。 Web アプリケーションのユーザーは、Web アプリケーションがユーザーに代わって Web API を呼び出すことを許可することにまだ同意していない場合、これに同意する必要があります。 アプリケーションが必要なアクセス許可を表示します。そのいずれかが管理者レベルのアクセス許可の場合、ディレクトリ内の通常のユーザーが同意することはできません。 シングル テナント アプリケーションには、必要なアクセス許可が既にあると考えられるので、この同意プロセスはマルチテナント アプリケーションにのみ適用されます。 ユーザーがサインインしたときに、Web アプリケーションは、ユーザーに関する情報が含まれた ID トークンと、認証コードを受信しています。
 1. Azure AD によって発行された認証コードを使用して、Web アプリケーションは、認証コード、クライアント アプリケーションの詳細 (アプリケーション ID とリダイレクト URI)、目的のリソース (Web API のアプリケーション ID の URI) を要求に含めて Azure AD のトークン エンドポイントに送信します。
 1. 認証コードおよび Web アプリケーションと Web API に関する情報が Azure AD によって検証されます。 検証が正常に行われると、Azure AD は JWT アクセス トークンと JWT 更新トークンの 2 つのトークンを返します。
 1. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。

@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185972"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765682"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
 
-Azure Log Analytics (OMS) エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows と Linux のエージェントは、Log Analytics ワークスペースにアタッチして、さまざまなソースの他に、監視ソリューション内に定義されている一意のログまたはメトリックからデータを収集します。 
+Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows と Linux のエージェントは、Log Analytics ワークスペースにアタッチして、さまざまなソースの他に、監視ソリューション内に定義されている一意のログまたはメトリックからデータを収集します。 
 
 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。   
 
@@ -41,7 +41,7 @@ Linux と Windows のエージェントは、Log Analytics への接続だけで
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
-* Windows Server 2008 Service Pack 1 (SP1) 以降
+* Windows Server 2008 R2 以降
 * Windows 7 SP1 以降
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
@@ -97,7 +97,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 |プロパティ| 説明 |
 |--------|-------------|
-|プロトコル | https |
+|Protocol | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |

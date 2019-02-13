@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972041"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818126"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -57,7 +57,7 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
@@ -131,7 +131,7 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
@@ -199,7 +199,7 @@ Java コードを次に示します。
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来するパラメーター上で `@CosmosDBTrigger` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。
 
 
-[トリガーの例をスキップする](#trigger---attributes)
+トリガーの例をスキップする
 
 ### <a name="trigger---python-example"></a>トリガー - Python の例
 
@@ -276,7 +276,7 @@ Python コードを次に示します。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
 |**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに受信するアイテムの最大量がカスタマイズされます。
-|**startFromBeginning**| **StartFromBeginning**| (省略可能) 設定すると、変更の読み取りを現在の時刻ではなく、コレクションの履歴の最初から開始するようトリガーに指示されます。 後の実行ではチェックポイントが既に格納されているため、これは、初めてトリガーが起動される場合にのみ機能します。 既にリースが作成されているときにこれを `true` に設定しても効果はありません。
+|**startFromBeginning**| **StartFromBeginning**| (省略可能) 設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、トリガーが指示されます。 これは、初めてトリガーが起動される場合にのみ機能します。その後の実行では、チェックポイントが既に格納されているためです。 既にリースが作成されているときにこれを `true` に設定しても効果はありません。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1727,7 +1727,7 @@ public class DocsFromRouteSqlQuery {
 
 C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
 
-JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-example)を参照してください。
+JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 JavaScript の例を参照してください。
 
 ## <a name="output"></a>出力
 
@@ -2344,7 +2344,7 @@ public String cosmosDbQueryById(
 
 |プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
-|GatewayMode|ゲートウェイ|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
+|GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
 |Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください| 
 |leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。| 
 

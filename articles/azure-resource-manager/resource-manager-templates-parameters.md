@@ -4,21 +4,19 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc817302ab39d12ccd1d1a20d4dd72f94352c796
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722144"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695650"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの parameters セクション
 テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 特定の環境 (開発、テスト、運用など) に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 テンプレートでは必ずしもパラメーターを使用する必要はありませんが、パラメーターを使わなかった場合、常に同じリソースが同じ名前、同じ場所、同じプロパティでデプロイされます。
@@ -93,7 +91,7 @@ ms.locfileid: "53722144"
 | maxValue |いいえ  |int 型パラメーターの最大値。 |
 | minLength |いいえ  |string 型、securestring 型、array 型パラメーターの長さの最小値 (この値を含む)。 |
 | maxLength |いいえ  |string 型、securestring 型、array 型パラメーターの長さの最大値 (この値を含む)。 |
-| description |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
+| description |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 詳しくは、[テンプレート内のコメント](resource-group-authoring-templates.md#comments)に関するページをご覧ください。 |
 
 ## <a name="template-functions-with-parameters"></a>テンプレート関数とパラメーター
 
@@ -192,7 +190,7 @@ parameters セクションで `reference` 関数を使用することはでき�
 
 次のサンプル テンプレートでは、パラメーターを使用するいくつかのシナリオを例示します。 さまざまなシナリオでパラメーターがどのように処理されるかを、このサンプルをデプロイして試してください。
 
-|テンプレート  |説明  |
+|Template  |説明  |
 |---------|---------|
 |[既定値のための関数を含むパラメーター](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | パラメーターの既定値を定義する際のテンプレート関数の使用方法を説明します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
 |[パラメーター オブジェクト](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | パラメーターのオブジェクトの使用方法を示します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412871"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694059"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -230,7 +230,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 VNet ピアリング (仮想ネットワーク ピアリング) を使用して、仮想ネットワークに接続できます。 仮想ネットワーク間の VNet ピアリング接続では、IPv4 アドレスによってそれらの間でトラフィックをプライベートにルーティングできます。 ピアリングされた VNet 内の仮想マシンは、同じネットワーク内にあるかのように相互に通信できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 VNet ピアリング接続は、Azure サブスクリプション間で作成することもできます。
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>別のリージョンの VNet へのピアリング接続を作成できますか。
-はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウドにグローバルにピアリングすることはできません。 現在、グローバル ピアリングはナショナル クラウドでは使用できません。
+はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンと中国のクラウド リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウド リージョンにグローバルにピアリングすることはできません。 現在、グローバル ピアリングは Government クラウドでは使用できません。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>仮想ネットワークが別の Azure Active Directory テナント内のサブスクリプションに属する場合、VNet ピアリングを有効にできますか。
 はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、PowerShell または CLI を使用して行うことができます。 portal はまだサポートされていません。
@@ -329,7 +329,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にネットワーク側でサービス エンドポイントを有効にしてから、Azure サービス側で適切な VNet ACL を設定することによって、Azure サービス リソースへのアクセスをすべてのサブネットに限定します。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>仮想ネットワークから Azure サービスへの送信トラフィックをフィルター処理しながら、サービス エンドポイントを使用するには、どうすればよいですか。
-仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>仮想ネットワーク アクセス制御リスト (ACL) が有効になっている Azure サービス アカウントに、VNet の外部からアクセスするとどうなりますか。
 HTTP 403 または HTTP 404 エラーが返されます。

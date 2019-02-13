@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186125"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819860"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -55,7 +55,7 @@ System Center Operations Manager Health Check ソリューションを使用す�
 
  Operations Manager オペレーション コンソールで評価を構成するには、以下の手順を順番に実行します。
 1. [System Center Operations Manager Health Check で使用する実行アカウントを設定します](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [System Center Operations Manager Health Check ルールを構成します](#configure-the-assessment-rule)
+2. System Center Operations Manager Health Check ルールを構成します
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager Assessment によるデータ収集の詳細
 

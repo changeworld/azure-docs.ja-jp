@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023547"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820676"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 
@@ -98,7 +98,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="service-proxy-factory-lifetime"></a>サービス プロキシ ファクトリの有効期間
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 API `ServiceProxy.Create` を使用してプロキシを作成する場合、フレームワークによってシングルトン サービス プロキシが作成されます。
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 API `ServiceProxyFactory.CreateServiceProxy` を使用してプロキシを作成する場合、フレームワークによってシングルトン サービス プロキシが作成されます。
 手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリの作成は負荷の高い操作です。 サービス プロキシ ファクトリは、通信クライアントの内部キャッシュを管理します。
 サービス プロキシ ファクトリは、できるだけ長くキャッシュすることがベスト プラクティスです。
@@ -239,7 +239,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>リモート処理 V2 (インターフェイス互換) スタックを使用する
 
- リモート処理 V2 (インターフェイス互換、V2_1 と呼ばれます) スタックは、V2 リモート処理スタックのすべての機能を備えています。 そのインターフェイス スタックは、リモート処理 V1 スタックと互換性がありますが、V2 および V1 との下位互換性はありません。 サービスの可用性に影響を与えずに V1 から V2_1 にアップグレードするには、[V1 から V2 (インターフェイス互換) へのアップグレード](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible)に関する記事の手順に従ってください。
+ リモート処理 V2 (インターフェイス互換、V2_1 と呼ばれます) スタックは、V2 リモート処理スタックのすべての機能を備えています。 そのインターフェイス スタックは、リモート処理 V1 スタックと互換性がありますが、V2 および V1 との下位互換性はありません。 サービスの可用性に影響を与えずに V1 から V2_1 にアップグレードするには、V1 から V2 (インターフェイス互換) へのアップグレードに関する記事の手順に従ってください。
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>アセンブリ属性を利用してリモート処理 V2 (インターフェイス互換) スタックを使用する

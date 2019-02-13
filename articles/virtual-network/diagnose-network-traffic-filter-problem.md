@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424644"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821866"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -181,7 +181,7 @@ az vm show \
 
 Azure は、受信トラフィックを処理するとき、最初にサブネットに関連付けられている NSG の規則を処理し (関連付けられた NSG がある場合)、次にネットワーク インターフェイスに関連付けられている NSG の規則を処理します。 ネットワーク インターフェイスとサブネットに関連付けられている NSG がある場合、トラフィックが VM に到達するためには、両方の NSG でポートを開く必要があります。 管理と通信の問題を軽減するため、個々のネットワーク インターフェイスではなくサブネットに NSG を関連付けることをお勧めします。 サブネット内の VM で異なるセキュリティ規則が必要な場合は、アプリケーション セキュリティ グループ (ASG) のネットワーク インターフェイス メンバーを作成し、セキュリティ規則のソースとターゲットとして ASG を指定できます。 詳しくは、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」をご覧ください。
 
-通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「[追加の診断](#additional-dignosis)」をご覧ください。
+通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「追加の診断」をご覧ください。
 
 ## <a name="considerations"></a>考慮事項
 

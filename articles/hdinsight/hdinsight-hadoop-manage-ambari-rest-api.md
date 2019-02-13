@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bc9310eb3f7c8dd2b295405cea70c514d343d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715111"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820871"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -132,7 +132,7 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]  
-> このドキュメントのほとんどの例では `ConvertFrom-Json` を使用して応答ドキュメントの要素を表示していますが、「[Ambari 構成の更新](#example-update-ambari-configuration)」の例では jq を使用しています。 この例では、jq を使用して、JSON 応答ドキュメントから新しいテンプレートを構築します。
+> このドキュメントのほとんどの例では `ConvertFrom-Json` を使用して応答ドキュメントの要素を表示していますが、「Ambari 構成の更新」の例では jq を使用しています。 この例では、jq を使用して、JSON 応答ドキュメントから新しいテンプレートを構築します。
 
 REST API の完全なリファレンスについては、「[Apache Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 

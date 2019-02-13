@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: e3f44181ca1a5ea64815aadf52aa7ea792a21416
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7c854759e9a0ba13b698dd07dabb25100895bc85
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358577"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766879"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 仮想マシンの SQL Server リリース ノート
 
@@ -30,9 +30,9 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシンをデ
 
 | **変更点** | 詳細 |
 | --- | --- |
-| **新しい SQL クラスター グループ リソース プロバイダー** | Windows フェールオーバー クラスターに関するメタデータを定義する新しいリソース プロバイダー (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroup) があります。 SQL Server VM を *SqlVirtualMachineGroup* に参加させることで、Windows フェールオーバー クラスター サービスをブートストラップし、VM をクラスターに参加させます。  |
+| **新しい SQL クラスター グループ リソース プロバイダー** | Windows フェールオーバー クラスターに関するメタデータを定義する新しいリソース プロバイダー (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups) があります。 SQL Server VM を *SqlVirtualMachineGroups* に参加させることで、Windows フェールオーバー クラスター サービスをブートストラップし、VM をクラスターに参加させます。  |
 |**Azure クイック スタート テンプレートを使用して、可用性グループのデプロイの設定を自動化する** |2 つの Azure クイック スタート テンプレートを使用して、Windows フェールオーバー クラスターを作成し、SQL Server VM をそれに参加させ、リスナーを作成し、内部ロード バランサーを構成することができるようになりました。 詳細については、「[Create WSFC, listener, and configure ILB for an Always On availability group on a SQL Server VM with Azure Quickstart Template](virtual-machines-windows-sql-availability-group-quickstart-template.md)」(WSFC、リスナーを作成し、Azure クイック スタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する) をご覧ください。 | 
-| **SQL VM リソース プロバイダーの自動登録** | 今月以降にデプロイされる SQL Server VM は、自動的に新しい SQL Server リソース プロバイダーに登録されます。 今月より前にデプロイされた SQL Server VM は、手動で登録する必要があります。 詳細については、「[既存の SQL VM を新しいリソース プロバイダーに登録する](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-new-resource-provider)」をご覧ください。|
+| **SQL VM リソース プロバイダーの自動登録** | 今月以降にデプロイされる SQL Server VM は、自動的に新しい SQL Server リソース プロバイダーに登録されます。 今月より前にデプロイされた SQL Server VM は、手動で登録する必要があります。 詳細については、「[既存の SQL VM を新しいリソース プロバイダーに登録する](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider)」をご覧ください。|
 | &nbsp; | &nbsp; |
 
 
@@ -40,7 +40,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシンをデ
 
 | **変更点** | 詳細 |
 | --- | --- |
-| **新しい SQL VM リソース プロバイダー** |  SQL Server VM の管理が向上する、SQL Server VM 用の新しいリソース プロバイダー (Microsoft.SqlVirtualMachine) があります。 自分の VM を登録する方法の詳細については、「[既存の SQL VM を新しいリソース プロバイダーに登録する](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-new-resource-provider)」を参照してください。 |
+| **新しい SQL VM リソース プロバイダー** |  SQL Server VM の管理が向上する、SQL Server VM 用の新しいリソース プロバイダー (Microsoft.SqlVirtualMachine) があります。 自分の VM を登録する方法の詳細については、「[既存の SQL VM を新しいリソース プロバイダーに登録する](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider)」を参照してください。 |
 |**ライセンス モデルを切り替える** |Azure CLI または PowerShell を使用して、SQL VM のライセンス モデルを従量制と持ち込みの間で切り替えることができます。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 | 
 | &nbsp; | &nbsp; |
 

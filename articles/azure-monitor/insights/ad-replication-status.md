@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184120"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818738"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 
@@ -127,7 +127,7 @@ A:現時点ではありません。
 A:いいえ。ドメイン コントローラーは 1 つのみ追加します。 Log Analytics ワークスペースにドメイン コントローラーが複数ある場合、それらのすべてのデータが Log Analytics に送信されます。
 
 **Q:Log Analytics ワークスペースに、ドメイン コントローラーを追加したくありません。それでも AD レプリケーションの状態ソリューションを使用できますか?**
-A:はい。 レジストリ キー値を設定して、これを有効にできます。 「[ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
+A:はい。 レジストリ キー値を設定して、これを有効にできます。 「ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには」を参照してください。
 
 **Q:データ収集を行うプロセスの名前は何ですか?**
 A:AdvisorAssessment.exe です。
@@ -149,7 +149,7 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 1 つのドメイン コントローラーの接続に支援が必要な場合は、「 [Windows コンピューターを Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」のドキュメントを参照してください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、「 [System Center Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」のドキュメントを参照してください。
 
-ドメイン コントローラーを Log Analytics または System Center Operations Manager に直接接続しない場合は、「[ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
+ドメイン コントローラーを Log Analytics または System Center Operations Manager に直接接続しない場合は、「ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](../../azure-monitor/log-query/log-query-overview.md) 」を使用してください。

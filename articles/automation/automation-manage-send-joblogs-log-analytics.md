@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/12/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432967"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756633"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
 
@@ -64,11 +64,12 @@ Automation アカウントの "*名前*" の値を調べる必要がある場合
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-このスクリプトを実行すると、Log Analytics に 10 分以内に新しいジョブ ログやジョブ ストリームのレコードが書き込まれます。
+このスクリプトを実行した後、新しいジョブ ログやジョブ ストリームの Log Analytics 内のレコードの書き込みが始まるまでに、1 時間ほどかかる場合があります。
 
 ログを表示するには、Log Analytics のログ検索で次のクエリを実行します:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>構成の確認
+
 Automation アカウントから Log Analytics ワークスペースにログが送信されていることを確認するには、次の PowerShell を使用して、Automation アカウントに診断が正しく構成されていることを確認します。
 
 ```powershell-interactive
@@ -76,14 +77,16 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 出力で次の点を確認します。
-+ *Logs* の *Enabled* の値が *True* である。
-+ *WorkspaceId* の値が、Log Analytics ワークスペースの ResourceId に設定されている。
+
+* *Logs* の *Enabled* の値が *True* である。
+* *WorkspaceId* の値が、Log Analytics ワークスペースの ResourceId に設定されている。
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
 Azure Automation の診断から、Log Analytics に 2 種類のレコードが作成され、タグ **AzureDiagnostics** が付けられます。 次のクエリでは、Log Analytics にアップグレードされたクエリ言語が使用されています。 従来のクエリ言語と新しい Azure Log Analytics クエリ言語でよく使用されるクエリの比較については、「[Legacy to new Azure Log Analytics Query Language cheat sheet (従来のクエリ言語と新しい Azure Log Analytics クエリ言語の比較チート シート)](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)」を参照してください。
 
 ### <a name="job-logs"></a>ジョブ ログ
+
 | プロパティ | [説明] |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
@@ -128,6 +131,7 @@ Azure Automation の診断から、Log Analytics に 2 種類のレコードが�
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Log Analytics での Automation ログの確認
+
 Automation ジョブのログを Log Analytics に送信し始めたので、次は、Log Analytics 内でこれらのログに対して何ができるかを確認しましょう。
 
 ログを表示するには、次のクエリを実行します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
@@ -141,7 +145,7 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`次の内容を使用して、Runbook 名でグループ化することもできます。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は JobLogs の検索のリソース フィールドで確認できます。
-1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
+3. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 エラーに関するアラートだけでなく、Runbook ジョブが終了しないときにもエラーが表示されます。 このような場合、PowerShell ではエラー ストリームが生成されますが、ジョブが終了しないエラーでは、ジョブの中断や失敗は起こりません。    

@@ -1,5 +1,5 @@
 ---
-title: 'VNet 間接続を使用して Azure 仮想ネットワークを別の VNet に接続する: PowerShell | Microsoft Docs'
+title: VNet 対 VNet 接続を使用して Azure 仮想ネットワークを別の VNet に接続する:PowerShell | Microsoft Docs
 description: VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6624c28d686a584017d703889e57ef1a7126b16d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686961"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695518"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -68,11 +68,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 この演習では、構成を組み合わせるか、希望する方のみを選んでもかまいません。 どの構成でも、接続の種類として VNet 間を使用します。 ネットワーク トラフィックは、互いに直接接続されている VNet 間を行き来します。 この演習では、TestVNet4 からのトラフィックが TestVNet5 にルーティングされることはありません。
 
-* [同じサブスクリプション内に存在する VNet:](#samesub) この構成の手順では、TestVNet1 と TestVNet4 を使用します。
+* [同じサブスクリプション内にある VNet](#samesub):この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [別のサブスクリプション内に存在する VNet:](#difsub) この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+* [異なるサブスクリプション内にある VNet](#difsub):この構成の手順では、TestVNet1 と TestVNet5 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -90,34 +90,34 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 **TestVNet1 の値:**
 
-* VNet の名前: TestVNet1
-* リソース グループ: TestRG1
-* 場所: 米国東部
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
-* FrontEnd: 10.11.0.0/24
+* VNet 名: TestVNet1
+* リソース グループ:TestRG1
+* 場所:米国東部
+* TestVNet1: 10.11.0.0/16 と 10.12.0.0/16
+* FrontEnd:10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
-* ゲートウェイの名前: VNet1GW
+* GatewayName: VNet1GW
 * パブリック IP: VNet1GWIP
-* VPN の種類: RouteBased
-* 接続 (1 ～ 4): VNet1toVNet4
-* 接続 (1 ～ 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
-* 接続の種類: VNet2VNet
+* VPNType: RouteBased
+* 接続 (1 から 4): VNet1toVNet4
+* 接続 (1 から 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
+* ConnectionType: VNet2VNet
 
 **TestVNet4 の値:**
 
-* VNet の名前: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* FrontEnd: 10.41.0.0/24
+* VNet 名: TestVNet4
+* TestVNet2: 10.41.0.0/16 と 10.42.0.0/16
+* FrontEnd:10.41.0.0/24
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
-* リソース グループ: TestRG4
-* 場所: 米国西部
-* ゲートウェイの名前: VNet4GW
+* リソース グループ:TestRG4
+* 場所:米国西部
+* GatewayName: VNet4GW
 * パブリック IP: VNet4GWIP
-* VPN の種類: RouteBased
-* 接続: VNet4toVNet1
-* 接続の種類: VNet2VNet
+* VPNType: RouteBased
+* 接続:VNet4toVNet1
+* ConnectionType: VNet2VNet
 
 
 ### <a name="Step2"></a>手順 2 - TestVNet1 を作成し、構成する
@@ -303,18 +303,18 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
 
 **TestVNet5 の値:**
 
-* VNet の名前: TestVNet5
-* リソース グループ: TestRG5
-* 場所: 東日本
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
-* FrontEnd: 10.51.0.0/24
+* VNet 名: TestVNet5
+* リソース グループ:TestRG5
+* 場所:東日本
+* TestVNet5: 10.51.0.0/16 と 10.52.0.0/16
+* FrontEnd:10.51.0.0/24
 * BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
 * GatewayName: VNet5GW
 * パブリック IP: VNet5GWIP
-* VPN の種類: RouteBased
-* 接続: VNet5toVNet1
-* 接続の種類: VNet2VNet
+* VPNType: RouteBased
+* 接続:VNet5toVNet1
+* ConnectionType: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>手順 7 - TestVNet5 を作成し、構成する
 
@@ -476,5 +476,5 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
 
 ## <a name="next-steps"></a>次の手順
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) を参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/) を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

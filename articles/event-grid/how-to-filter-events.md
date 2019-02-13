@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477338"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816919"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid のイベントのフィルター処理
 
@@ -20,7 +20,7 @@ ms.locfileid: "54477338"
 
 ## <a name="filter-by-event-type"></a>イベントの種類でフィルター処理する
 
-Event Grid サブスクリプションを作成するときに、エンドポイントに送信する[イベントの種類](event-schema.md)を指定できます。 このセクションの例では、リソース グループのイベント サブスクリプションを作成しますが、送信されるイベントを `Microsoft.Resources.ResourceWriteFailure` と `Microsoft.Resources.ResourceWriteSuccess` に限定しています。 イベントの種類でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、[高度な演算子とデータ フィールドを使用したフィルター処理](#filter-by-advanced-operators-and-data-fields)に関するセクションを参照してください。
+Event Grid サブスクリプションを作成するときに、エンドポイントに送信する[イベントの種類](event-schema.md)を指定できます。 このセクションの例では、リソース グループのイベント サブスクリプションを作成しますが、送信されるイベントを `Microsoft.Resources.ResourceWriteFailure` と `Microsoft.Resources.ResourceWriteSuccess` に限定しています。 イベントの種類でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、高度な演算子とデータ フィールドを使用したフィルター処理に関するセクションを参照してください。
 
 PowerShell の場合は、サブスクリプションの作成時に `-IncludedEventType` パラメーターを使用します。
 
@@ -77,7 +77,7 @@ Resource Manager テンプレートの場合は、`includedEventTypes` プロパ
 
 ## <a name="filter-by-subject"></a>件名でフィルター処理する
 
-イベント データの件名でイベントをフィルター処理できます。 件名の先頭または末尾で照合する値を指定できます。 件名でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、[高度な演算子とデータ フィールドを使用したフィルター処理](#filter-by-advanced-operators-and-data-fields)に関するセクションを参照してください。
+イベント データの件名でイベントをフィルター処理できます。 件名の先頭または末尾で照合する値を指定できます。 件名でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、高度な演算子とデータ フィールドを使用したフィルター処理に関するセクションを参照してください。
 
 次の PowerShell の例では、件名の先頭でフィルター処理するイベント サブスクリプションを作成しています。 `-SubjectBeginsWith` パラメーターを使用して、イベントを特定のリソースのイベントに限定しています。 ネットワーク セキュリティ グループのリソース ID を渡します。
 

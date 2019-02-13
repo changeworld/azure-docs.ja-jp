@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320092"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817384"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -82,7 +82,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 [ルーティング ルール](#routing-rules)によって送信されたメッセージを配信するカスタム [エンドポイント](iot-hub-devguide-endpoints.md)を IoT hub に作成できます。 カスタム エンドポイントは、Event hub、Service Bus キュー、または Service Bus トピックに直接接続します。
 
 ## <a name="custom-gateway"></a>カスタム ゲートウェイ
-ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [Azure IoT Edge](#azure-iot-edge) を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
+ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 Azure IoT Edge を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
 
 ## <a name="data-point-message"></a>データ ポイント メッセージ
 データ ポイント メッセージは、風速や温度などの[テレメトリ](#telemetry) データを含む[デバイスからクラウドへの](#device-to-cloud)メッセージです。
@@ -147,7 +147,7 @@ IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)�
 ## <a name="free-account"></a>無料アカウント
 [無料の Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成して、IoT Hub チュートリアルを完了し、IoT Hub サービス (および他の Azure サービス) を試すことができます。
 
-## <a name="gateway"></a>ゲートウェイ
+## <a name="gateway"></a>Gateway
 ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 [フィールド ゲートウェイ](#field-gateway)、[クラウド ゲートウェイ](#cloud-gateway)および[カスタム ゲートウェイ](#custom-gateway)もご確認ください。
 
 ## <a name="identity-registry"></a>ID レジストリ
@@ -224,7 +224,7 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 デバイスからクラウドへのメッセージを、ソリューションのバックエンドで処理するために[組み込みエンドポイント](#built-in-endpoints)または[カスタム エンドポイント](#custom-endpoints)にルーティングする[ルーティング ルール](iot-hub-devguide-messages-read-custom.md)を IoT hub に構成します。
 
 ## <a name="sasl-plain"></a>SASL PLAIN
-SASL PLAIN は、[AMQP](#advanced-message-queue-protocol) プロトコルがセキュリティ トークンを転送するために使用するプロトコルです。
+SASL PLAIN は、AMQP プロトコルがセキュリティ トークンを転送するために使用するプロトコルです。
 
 ## <a name="service-rest-api"></a>サービス REST API
 ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
@@ -247,11 +247,11 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 ## <a name="system-properties"></a>システム プロパティ
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、システム プロパティは読み取り専用であり、最後のアクティビティの時刻や接続状態などのデバイスの使用状況に関する情報が含まれています。
 
-## <a name="tags"></a>タグ
+## <a name="tags"></a>Tags
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、タグは、ソリューション バックエンドによって JSON ドキュメントの形式で保存および取得されるデバイスのメタデータです。 タグは、デバイス上のアプリが認識することはありません。
 
 ## <a name="telemetry"></a>テレメトリ
-デバイスは風速や温度などのテレメトリ データを収集し、[データ ポイント メッセージ](#data-point-messages)を使用して IoT Hub にテレメトリを送信します。
+デバイスは風速や温度などのテレメトリ データを収集し、データ ポイント メッセージを使用して IoT ハブにテレメトリを送信します。
 
 ## <a name="token-service"></a>トークン サービス
 トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。

@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157246"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818687"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Bing Image Search API を利用してイメージに関する分析情報を取得する
 
@@ -221,7 +221,7 @@ Host: api.cognitive.microsoft.com
 -   右:290 / 300 = 0.9667...  
 -   下:150 / 200 = 0.75  
 
-Bing によって後続の分析情報呼び出しで返される領域を使用することができます。 たとえば、認識されたエンティティの視覚的に類似するイメージを取得する場合です。 詳細については、「[視覚的に類似するモジュールとエンティティ認識モジュールで使用するイメージのトリミング](#croppingimages)」を参照してください。 イメージのトリミングに使用する領域フィールドとクエリ パラメーター間のマッピングを以下に示します。  
+Bing によって後続の分析情報呼び出しで返される領域を使用することができます。 たとえば、認識されたエンティティの視覚的に類似するイメージを取得する場合です。 詳細については、「視覚的に類似するモジュールとエンティティ認識モジュールで使用するイメージのトリミング」を参照してください。 イメージのトリミングに使用する領域フィールドとクエリ パラメーター間のマッピングを以下に示します。  
 
 -   左: [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   上: [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  

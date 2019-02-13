@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076828"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821577"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -70,7 +70,7 @@ ms.locfileid: "55076828"
 
     マネージド サービスとして、HDInsight は Azure データ センターの複数の IP アドレスに制限なくアクセスできる必要があります。 これらの IP アドレスとの通信を可能にするために、既存のネットワーク セキュリティ グループやユーザー定義のルートを更新してください。
 
-    HDInsight では、さまざまなポートを使用する複数のサービスをホストします。 これらのポートへのトラフィックはブロックしないでください。 仮想アプライアンスのファイアウォールの通過を許可するポートの一覧については、「[セキュリティ](#security)」のセクションをご覧ください。
+    HDInsight では、さまざまなポートを使用する複数のサービスをホストします。 これらのポートへのトラフィックはブロックしないでください。 仮想アプライアンスのファイアウォールの通過を許可するポートの一覧については、「セキュリティ」のセクションをご覧ください。
 
     既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure クラシック CLI コマンドを使用します。
 

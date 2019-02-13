@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203948"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821828"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -96,7 +96,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
      
      ![ドメイン名](./media/google-apps-provisioning-tutorial/domain_3.png)
 
-    d. **[次へ]** を選択し、確認ページに移動します。 このドメインを所有していることを確認するために、このページに表示されている値に従ってドメインの DNS レコードを編集します。 **[レコードの種類]** オプションでの選択内容に応じて、**MX レコード**と **TXT レコード**のどちらを使用して確認するかを選択します。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** を選択し、確認ページに移動します。 このドメインを所有していることを確認するために、このページに表示されている値に従ってドメインの DNS レコードを編集します。 **[レコードの種類]** オプションでの選択内容に応じて、**MX レコード**と **TXT レコード**のどちらを使用して確認するかを選択します。 
     
     Azure AD でのドメイン名の確認に関する包括的な手順の詳細については、[Azure AD への独自のドメイン名の追加](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409)に関するトピックを参照してください。
      
@@ -122,12 +122,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
      
      ![Type in your domain name][22]
 
-    d. **[Continue and verify domain ownership]\(続行してドメインの所有権を確認\)** を選択します。 次に、手順に従って、ドメイン名を所有していることを確認します。 Google でドメインを確認する包括的な手順については、[Google Apps でサイトの所有者であることを確認する](https://support.google.com/webmasters/answer/35179)方法に関するページをご覧ください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Continue and verify domain ownership]\(続行してドメインの所有権を確認\)** を選択します。 次に、手順に従って、ドメイン名を所有していることを確認します。 Google でドメインを確認する包括的な手順については、[Google Apps でサイトの所有者であることを確認する](https://support.google.com/webmasters/answer/35179)方法に関するページをご覧ください。
 
     e. Google Apps に追加するすべての追加ドメインに対して、前述の手順を繰り返します。
      
      > [!WARNING]
-     > G Suite テナントのプライマリ ドメインを変更する場合や、Azure AD でシングル サインオンが構成済みである場合は、[手順 2:シングル サインオンを有効にする](#step-two-enable-single-sign-on)の手順 3 を繰り返す必要があります。
+     > G Suite テナントのプライマリ ドメインを変更する場合、Azure AD でシングル サインオンが構成済みである場合は、「手順 2:シングル サインオンを有効にする」の手順 3 を繰り返す必要があります。
        
 1. [Google Apps の管理コンソール](https://admin.google.com/)で、**[管理者ロール]** を選択します。
    

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: kgremban
-ms.openlocfilehash: dbe2ba6ce4e001f6e49fbbee9189fa5b4d99ec33
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 36514fe321fa352c2526db5a18ac8618d7af713e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514385"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756769"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 

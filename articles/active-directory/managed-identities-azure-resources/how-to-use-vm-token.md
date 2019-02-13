@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: eebc19f5bd14e835b8174695b2d0d87fe8ddc4bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822053"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -55,7 +55,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | [Go を使用してトークンを取得する](#get-a-token-using-go) | Go クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Azure PowerShell を使用してトークンを取得する](#get-a-token-using-azure-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [CURL を使用してトークンを取得する](#get-a-token-using-curl) | Bash/CURL クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
-| [トークンのキャッシュの処理](#handling-token-caching) | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
+| トークンのキャッシュの処理 | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
 | [エラー処理](#error-handling) | Azure リソース トークン エンドポイントのマネージド ID から返される HTTP エラーを処理するためのガイダンス |
 | [Azure サービスのリソース ID](#resource-ids-for-azure-services) | サポートされている Azure サービスのリソース ID を取得する場所 |
 
@@ -373,14 +373,14 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 | 状態コード | Error | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Bad Request | invalid_resource | AADSTS50001:*\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
-| 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
-| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
+| 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
+| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
 |           | invalid_request | 要求に必要なパラメーターが含まれていないか、要求に無効なパラメーター値が含まれているか、要求に複数回パラメーターが含まれているか、要求の形式が正しくないかのいずれかです。 |  |
 |           | unauthorized_client | クライアントには、このメソッドを使用してアクセス トークンを要求する権限がありません。 | 拡張機能の呼び出しにローカル ループバックを使用しなかった要求や、Azure リソースのマネージド ID が正しく構成されていない VM が原因です。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。 |
 |           | access_denied | リソース所有者または承認サーバーによって、要求が拒否されました。 |  |
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
-| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817531"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、マネージド ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
@@ -42,7 +42,7 @@ ms.locfileid: "55174035"
 | AADDS108 | *The subscription used by Azure AD Domain Services has been moved to another directory. (Azure AD Domain Services によって使用されるサブスクリプションは、別のディレクトリに移動されました。)Azure AD Domain Services needs to have an active subscription in the same directory to function properly. (Azure AD Domain Services を正常に機能させるには、アクティブなサブスクリプションを同じディレクトリに配置する必要があります。)* | [サブスクリプションのディレクトリが移動した](#aadds108-subscription-moved-directories) |
 | AADDS109 | *ご利用のマネージド ドメインに使用されているリソースが削除されています。このリソースは、Azure AD Domain Services が正しく動作するために必要です。* | [リソースが削除されている](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Azure AD Domain Services のデプロイ用に選択されたサブネットがいっぱいになり、作成する必要がある追加のドメイン コントローラー用の領域がありません。* | [サブネットが満杯](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | *A service principal that Azure AD Domain Services uses to service your domain is not authorized to manage resources on the Azure subscription. (ご使用のドメインへのサービス提供のために Azure AD Domain Services によって使用されるサービス プリンシパルに、Azure サブスクリプション上のリソースを管理する権限がありません。) The service principal needs to gain permissions to service your managed domain. (このサービス プリンシパルは、マネージド ドメインにサービスを提供するためのアクセス許可を取得する必要があります。) * | [サービス プリンシパルが承認されていない](#aadds111-service-principal-unauthorized) |
+| AADDS111 | *A service principal that Azure AD Domain Services uses to service your domain is not authorized to manage resources on the Azure subscription. (ご使用のドメインへのサービス提供のために Azure AD Domain Services によって使用されるサービス プリンシパルに、Azure サブスクリプション上のリソースを管理する権限がありません。) The service principal needs to gain permissions to service your managed domain. (このサービス プリンシパルは、マネージド ドメインにサービスを提供するためのアクセス許可を取得する必要があります。) * | サービス プリンシパルが承認されていない |
 | AADDS112 | *このドメインの仮想ネットワークのサブネットに十分な IP アドレスがない可能性があることを確認しました。Azure AD Domain Services では、それが有効にされているサブネット内に少なくとも 2 つの使用可能な IP アドレスが必要です。サブネット内に少なくとも 3 - 5 個のスペア IP アドレスを用意することをお勧めします。他の仮想マシンがサブネット内にデプロイされ、使用可能な数の IP アドレスがすべて使用されたか、サブネット内の使用可能 IP アドレスの数に制限がある場合にこの状況が発生した可能性があります。* | [十分な IP アドレスがない](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Azure AD Domain Services で使用されているリソースが、予期しない状態で検出され、復旧することができません。* | [リソースが復旧できない](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | *The subnet selected for deployment of Azure AD Domain Services is invalid, and cannot be used. (Azure AD Domain Services のデプロイ用に選択されたサブネットが無効であるため、使用できません。) * | [サブネットが無効](#aadds114-subnet-invalid) |
@@ -201,7 +201,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 **解決策:**
 
-1. テナントから[マネージド ドメインを削除](#active-directory-ds-disable-aadds.md)します。
+1. テナントからマネージド ドメインを削除します。
 2. サブネットの IP アドレス範囲を修正します。
   1. [Azure Portal の [仮想マシン] ページ](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks)に移動します。
   2. Azure AD Domain Services で使用する予定の仮想ネットワークを選択します。

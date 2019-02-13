@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015833"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822427"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -172,7 +172,7 @@ ms.locfileid: "54015833"
       4. **[資格情報の設定]** ダイアログ ボックスで、認証の種類、ユーザー名、およびパスワードを指定し、**[OK]** をクリックします。 接続が成功すると、暗号化された資格情報は JSON に格納され、ダイアログ ボックスが閉じられます。
       5. ダイアログ ボックスを起動した空のブラウザー タブが自動的に閉じられない場合は手動で閉じて、Azure Portal のタブに戻ります。
 
-         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「 [Set credentials securely (資格情報を安全に設定する)](#set-credentials-and-security)」を参照してください。    
+         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「Set credentials securely (資格情報を安全に設定する)」を参照してください。    
    3. コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。 リンクされたサービスは、ツリー ビューに表示されます。
 
       ![ツリー ビューでの SQL Server のリンクされたサービス](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    

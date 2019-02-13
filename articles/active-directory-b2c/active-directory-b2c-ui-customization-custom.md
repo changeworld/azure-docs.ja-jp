@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188493"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818874"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -86,7 +86,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 5. **$root** をクリックして、新しいコンテナーを開きます。
 6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
-8. 先ほど「[ページ UI のカスタマイズ](#the-page-ui-customization-feature)」セクションで作成した **customize-ui.html** に移動します。
+8. 先ほど「ページ UI のカスタマイズ」セクションで作成した **customize-ui.html** に移動します。
 9. **[アップロード]** をクリックします。
 10. アップロードした customize-ui.html BLOB を選択します。
 11. **[URL]** の横にある **[コピー]** をクリックします。
@@ -175,7 +175,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 | *unified.html* | このファイルは、統合されたサインアップ ページまたはサインイン ページのテンプレートとして使用します。 |
 | *updateprofile.html* | このファイルは、プロファイルの更新ページのテンプレートとして使用します。 |
 
-「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
+「サインアップまたはサインイン カスタム ポリシーを変更する」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
 | コンテンツ定義 ID | 説明 | 
 |-----------------------|-------------|

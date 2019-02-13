@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d513825cad397763792fdc9ffb833ba54e957e7d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096961"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822665"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Azure Cache for Redis のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Cache for Redis の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -131,7 +131,7 @@ Azure Cache for Redis インスタンスにあるはずの特定のデータが�
 このセクションでは、キャッシュ サーバーの状態が原因で発生する問題のトラブルシューティングについて説明します。
 
 * [サーバーのメモリ不足](#memory-pressure-on-the-server)
-* [CPU 使用率またはサーバーの負荷が高い](#high-cpu-usage-server-load)
+* CPU 使用率またはサーバーの負荷が高い
 * [サーバー側の帯域幅の超過](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>サーバーのメモリ不足
@@ -230,7 +230,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 5. サーバー上での処理に時間がかかるコマンドはありますか? Redis サーバーの処理に長い時間がかかるコマンドの実行時間が長いと、タイムアウトが発生する場合があります。 実行時間の長いコマンドの例として、キーの数が多い `mget`、`keys *`、適切に記述されていない lua スクリプトなどがあります。 redis-cli クライアントを使用して Azure Cache for Redis インスタンスに接続するか、[Redis コンソール](cache-configure.md#redis-console)を使用して [SlowLog](https://redis.io/commands/slowlog) コマンドを実行し、予想より時間がかかっている要求がないかを確認できます。 Redis サーバーと StackExchange.Redis は、少数の大きい要求ではなく、多数の小さい要求用に最適化されています。 データをより小さいチャンクに分割することで、この状態が改善される場合があります。 
    
     redis-cli と stunnel を使用する Azure Cache for Redis SSL エンドポイントへの接続については、「[Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」(Redis のプレビュー リリースの ASP.NET セッション状態プロバイダーの通知) というブログ投稿を参照してください。 詳細については、「 [SlowLog](https://redis.io/commands/slowlog)」を参照してください。
-6. Redis サーバーの負荷が高いとタイムアウトが生じる場合があります。 `Redis Server Load` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することで、サーバーの負荷を監視できます。 100 (最大値) のサーバーの負荷は、Redis サーバーが要求を処理しており、ビジー状態であり、アイドル時間がないことを示します。 特定の要求がサーバーを占有しているかどうかを確認するには、前の段落で説明したように、SlowLog コマンドを実行します。 詳細については、「 [CPU 使用率またはサーバーの負荷が高い](#high-cpu-usage-server-load)」を参照してください。
+6. Redis サーバーの負荷が高いとタイムアウトが生じる場合があります。 `Redis Server Load` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することで、サーバーの負荷を監視できます。 100 (最大値) のサーバーの負荷は、Redis サーバーが要求を処理しており、ビジー状態であり、アイドル時間がないことを示します。 特定の要求がサーバーを占有しているかどうかを確認するには、前の段落で説明したように、SlowLog コマンドを実行します。 詳細については、「CPU 使用率またはサーバーの負荷が高い」を参照してください。
 7. ネットワーク ブリップの原因と思われる、クライアント側のイベントは他にありますか?  クライアント (Web、worker ロールまたは IaaS VM) で、クライアント インスタンス数のスケール アップまたはダウンなどのイベントが存在するかどうか、あるいは新しいバージョンのクライアントまたは自動スケールのデプロイが有効になっているかどうかを確認してください。弊社のテストでは、自動スケールまたはスケール アップ/ダウンが原因で送信ネットワーク接続が数秒間失われたことが判明しました。 StackExchange.Redis コードはこのようなイベントに対応し、再接続します。 この再接続時間中に、キュー内の要求がタイムアウトになる場合があります。
 8. タイムアウトになった Azure Cache for Redis に対するいくつかの小さい要求の前に大きい要求がありましたか?  エラー メッセージの `qs` パラメーターは、クライアントからサーバーに送信されたが、まだ応答が処理されていない要求の数を示します。 StackExchange.Redis は単一の TCP 接続を使用し、一度に読み取ることができる応答は 1 つのみであるため、この値が増え続ける可能性があります。 最初の操作がタイムアウトになった場合でも、サーバーに対するデータの送受信は続行され、大きな要求が完了するまで他の要求はブロックされるため、タイムアウトになります。 1 つの解決策は、キャッシュがワークロードに対して十分な大きさであることを確認し、大きい値をより小さいチャンクに分割して、タイムアウトの可能性を最小限に抑えることです。 この他に考えられる解決策は、クライアントで `ConnectionMultiplexer` オブジェクトのプールを使用し、新しい要求の送信時に負荷が最も少ない `ConnectionMultiplexer` を選択することです。 そうすれば、1 つのタイムアウトが原因で他の要求もタイムアウトになることはありません。
 9. `RedisSessionStateProvider` を使用している場合には、再試行のタイムアウトを正しく設定していることを確認してください。 `retryTimeoutInMilliseconds` は `operationTimeoutInMilliseconds` よりも高くする必要があります。そうしないと、再試行が発生しません。 次の例では、`retryTimeoutInMilliseconds` は 3000 に設定されています。 詳細については、「[ASP.NET Session State Provider for Azure Cache for Redis ](cache-aspnet-session-state-provider.md)」(Azure Cache for Redis の ASP.NET セッション状態プロバイダー) と「[How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)」(セッション状態プロバイダーと出力キャッシュ プロバイダーの構成パラメーターの使用方法) を参照してください。

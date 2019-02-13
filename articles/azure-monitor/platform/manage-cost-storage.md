@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 3372d399c339133fc0ee3dbfd031ec3c4c03cc3b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901167"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821475"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Log Analytics の使用量とコストを管理する
 
@@ -112,7 +112,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
     ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
+ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
 
 > [!NOTE]
 > ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
@@ -128,7 +128,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 |収集が停止する原因| 解決策| 
 |-----------------------|---------|
 |レガシの無料価格レベルの 1 日の制限に到達している |収集が自動的に再開される次の日まで待つか、または有料の価格レベルに変更します。|
-|ワークスペースの 1 日あたりの上限に達した|収集が自動的に再開されるまで待つか、「[最大日次データ ボリュームを管理する](#manage-the-maximum-daily-volume)」で説明されているようにして 1 日のデータ ボリューム制限を増やします。 日次上限のリセット時間が **[データ ボリュームの管理]** ページに表示されます。 |
+|ワークスペースの 1 日あたりの上限に達した|収集が自動的に再開されるまで待つか、「最大日次データ ボリュームを管理する」で説明されているようにして 1 日のデータ ボリューム制限を増やします。 日次上限のリセット時間が **[データ ボリュームの管理]** ページに表示されます。 |
 |次のために、Azure サブスクリプションが中断された状態にある<br> 無料試用版が終了した<br> Azure パスの期限が切れた<br> 1 月の使用制限に達した (たとえば、MSDN または Visual Studio サブスクリプションで)|有料のサブスクリプションに変換する<br> 制限を削除するか、または制限がリセットされるまで待つ|
 
 データ収集が停止されたときに通知されるようにするには、説明されている手順を使用してデータ収集が停止したときに通知する "*日次データ上限のアラートを作成*" し、アラート ルールへのアクションの追加手順に従って、アラート ルールに対するメール、webhook、または Runbook のアクションを構成します。 
@@ -231,7 +231,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 
 | データ量の多いソース | データ量を削減する方法 |
 | -------------------------- | ------------------------- |
-| セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](https://docs.microsoft.com/en-us/azure/security-center/security-center-enable-data-collection#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [レジストリの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
+| セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [レジストリの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
 | イベント ログ                 | [イベント ログの構成](data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
 | syslog                     | [syslog の構成](data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |

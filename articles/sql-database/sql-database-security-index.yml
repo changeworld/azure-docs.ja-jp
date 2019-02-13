@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 708e5d2bdb3dd3ca259b6d7927b6ec24fc27dfea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455220"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820710"
 documentType: LandingData
 title: Azure SQL Database - 高度なセキュリティ
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 
@@ -76,9 +77,9 @@ sections:
       - href: 
     - title: 1 つのデータベースに対するデータベース サーバー ファイアウォール規則の設定
       values:
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-powershell
     - title: 脆弱性評価規則の管理
       values:
       - href: 
@@ -92,8 +93,8 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">マネージド インスタンス</a>と<a href="/azure/sql-database/sql-database-threat-detection">データベース</a>に対する脅威保護では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試みを示唆する異常なアクティビティが検出されます。
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-auditing">マネージド インスタンス</a>と<a href="/azure/sql-database/sql-database-auditing">データベース</a> の監査では、データベース イベントを追跡し、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs の監査ログにイベントが書き込まれます。
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-auditing">マネージド インスタンス</a>と<a href="/azure/sql-database/sql-database-auditing">データベース</a>の監査では、データベース イベントを追跡し、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs の監査ログにイベントが書き込まれます。
     - html: 1 つのデータベースに対する<a href="/azure/sql-database/sql-database-firewall-configure">データベース サーバー ファイアウォール規則</a>を使用して、お客様のデータベースにアクセスできる IP アドレスを制御できます。
-    - html: マネージド インスタンスに対する <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet 統合</a> を使用して、お客様のプライベート アドレス空間にデータベースを配置できます。
+    - html: マネージド インスタンスに対する <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet 統合</a>を使用して、お客様のプライベート アドレス空間にデータベースを配置できます。
     - html: 機微なデータは <a href="/azure/sql-database/sql-database-always-encrypted">Always Encrypted</a> によって暗号化され、サーバー上に保存されているときでも、クライアントとサーバー間を移動しているときでも、使用されているときでも、常に保護されます。データベース システム内で機微なデータがプレーンテキストとして表示されることはありません。
     - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">動的データ マスク</a>では、機微なデータをどの程度公開するかをお客様が指定できるようにすることで機微なデータに対する未承認のアクセスを防止して、アプリケーション レイヤーへの影響を最小限に抑えます。

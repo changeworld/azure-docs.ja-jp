@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162771"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822512"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
@@ -337,7 +337,7 @@ Microsoft Intune Enrollment アプリの条件付きアクセス ポリシーを
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q:ユーザーが利用規約に同意したかどうか、および同意した日時を確認するにはどうすればよいですか?**<br />
-A:[利用規約] ブレードで **[同意]** の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーのレポートの表示](#view-who-has-accepted-and-declined)」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
+A:[利用規約] ブレードで **[同意]** の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「同意したユーザーと拒否したユーザーのレポートの表示」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
 
 **Q:情報はどのくらいの期間保存されますか?**<br />
 A:利用規約レポートのユーザーの数および同意したユーザーと拒否したユーザーの数は、利用規約が有効な間、保存されます。 Azure AD 監査ログは 30 日間保存されます。

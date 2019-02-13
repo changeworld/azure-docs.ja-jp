@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332644"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822257"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -92,7 +92,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
 4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。
 
-ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、[JSON の例](#json-examples-for-copying-data-to-and-from-oracle-database)を参照してください。
+ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、JSON の例を参照してください。
 
 次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -601,7 +601,7 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以降のバージョンでのみサポートされています) |
 | CHAR |String |
 | CLOB |String |
-| DATE |Datetime |
+| DATE |DateTime |
 | FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
 | INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
 | INTERVAL YEAR TO MONTH |Int32 |
@@ -614,9 +614,9 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | 符号なし INTEGER |NUMBER |
 | VARCHAR2 |String |
 | XML |String |

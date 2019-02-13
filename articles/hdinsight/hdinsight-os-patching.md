@@ -8,25 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 402a4d59b57803b8a9c0094799ceee6a92df43f9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ef57608d092c05b30be63a54bb41ba87558eabc3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911355"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694620"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
 
 > [!IMPORTANT]
-> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスターに修正プログラムは自動適用**されません**。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。
+> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスターに修正プログラムは自動適用**されません**。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。 新しく作成されたクラスターには、利用可能な最新の更新プログラムが常に保持されます (最新のセキュリティ パッチを含む)。
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する方法
-HDInsight クラスターの仮想マシンは、重要なセキュリティ更新プログラムをインストールできるように、ときどき再起動する必要があります。 2016 年 8 月 1 日の時点で、新しい Linux ベースの HDInsight クラスター (バージョン 3.4 以降) は、次のスケジュールを使用して再起動します。
-
-1. 更新プログラムの適用のためにクラスター内の仮想マシンを再起動できるのは、多くても 30 日間で 1 回のみです。
-2. 再起動は、午前 12 時 (UTC) から実行されます。
-3. 再起動プロセスはクラスター内の仮想マシン間で時間をずらして実行されるため、再起動プロセス中でもクラスターを使用できます。
-4. 新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内は行われません。
+HDInsight クラスターの仮想マシンは、重要なセキュリティ更新プログラムをインストールできるように、ときどき再起動する必要があります。 
 
 この記事で説明するスクリプト アクションを使用して、次のように OS の修正プログラム適用スケジュールを変更することができます。
 1. 自動再起動を有効または無効にする

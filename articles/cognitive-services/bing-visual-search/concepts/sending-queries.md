@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: aahi
-ms.openlocfilehash: c569c44d358049605aa8bbe1cbc96d0028f7aea1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 07f471debad87a2fa2f6583db624e9ee204d02bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189691"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821169"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
 
@@ -112,7 +112,7 @@ Visual Search のエンドポイントは、https:\/\/api.cognitive.microsoft.co
 各要求には Content-Type ヘッダーを含める必要があります。 ヘッダーは、multipart/form-data; boundary=\<boundary string\> のように設定する必要があります。\<boundary string\> は、フォーム データの境界を示す一意の非透過的な文字列です。 たとえば、boundary=boundary_1234-abcd などと指定します。
 
 
-画像のトークンまたは URL を Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれ、その `name` パラメーターが "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトについて詳しくは、「[要求](#the-request)」をご覧ください。
+画像のトークンまたは URL を Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれ、その `name` パラメーターが "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトについて詳しくは、「要求」をご覧ください。
 
 
 ```

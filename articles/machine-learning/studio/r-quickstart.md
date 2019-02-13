@@ -1,8 +1,21 @@
 ---
-title:R 言語向けクイック スタート チュートリアル titleSuffix:Azure Machine Learning Studio description:この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/06/2017
+title: R 言語向けクイック スタート チュートリアル
+titleSuffix: Azure Machine Learning Studio
+description: この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/06/2017
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822376"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 向け R プログラミング言語クイック スタート チュートリアル
 
@@ -732,7 +745,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 `ts.detrend()` 関数ではさまざまなことが起こります。 このコードのほとんどは、引数に関して発生し得る問題をチェックするか、計算処理時に発生し得る例外に対処します。 このコードの少数の行のみが、実際に計算処理を行います。
 
-防衛的プログラミングの例については、既に [値の変換](#valuetransformations)で説明しました。 両方の計算ブロックは、 `tryCatch()`に含まれています。 一部のエラーについては、オリジナルの入力ベクトルを返すのが有効であり、別のケースでは、ゼロ ベクトルを返します。  
+防衛的プログラミングの例については、既に「値の変換」で説明しました。 両方の計算ブロックは、 `tryCatch()`に含まれています。 一部のエラーについては、オリジナルの入力ベクトルを返すのが有効であり、別のケースでは、ゼロ ベクトルを返します。  
 
 傾向除去で使用する線形回帰は、時系列回帰であることに注意してください。 予測変数は、時系列オブジェクトです。  
 

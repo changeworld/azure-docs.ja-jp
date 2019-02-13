@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 81501c79f00c2c0f8ef81532f3b8e7f61fc9eba0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250616"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694382"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -50,7 +50,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 - 再登録しなくても、リソース グループ間で Azure 上の[登録リソースを移動](azure-stack-registration.md#move-a-registration-resource)できるようになりました。 また、クラウド ソリューション プロバイダー (CSP) でも、新しいサブスクリプションと古いサブスクリプションが両方とも同じ CSP パートナー ID にマッピングされている限り、サブスクリプション間で登録リソースを移動することができます。 これは、既存の顧客テナントのマッピングには影響しません。 
 
-- ネットワーク インターフェイスごとに複数の IP アドレスを割り当てられるようになりました。  詳しくは、「[PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)」をご覧ください。
+- ネットワーク インターフェイスごとに複数の IP アドレスを割り当てられるようになりました。  詳しくは、「[PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)」をご覧ください。
 
 ### <a name="fixed-issues"></a>修正された問題
 

@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990180"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818823"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -50,7 +50,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 
 レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。 レコード セットを作成する際には、レコード セット名、ゾーン、Time to Live (TTL)、レコードの種類、作成するレコードを指定する必要があります。
 
-レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使う場合、`-IPv4Address` パラメーターを使って IP アドレスを指定する必要があります。 他のレコードの種類には他のパラメーターを使用します。 詳細については、[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションを参照してください。
+レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。 たとえば、"A" という種類のレコード セットを使う場合、`-IPv4Address` パラメーターを使って IP アドレスを指定する必要があります。 他のレコードの種類には他のパラメーターを使用します。 詳細については、その他のレコードの種類の例に関するセクションを参照してください。
 
 下の例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 レコードの種類は "A" で、TTL は 3,600 秒です。 レコード セットには、"1.2.3.4" という IP アドレスの 1 つのレコードが含まれています。
 
@@ -236,7 +236,7 @@ $recordsets = Get-AzureRmDnsRecordSet -Zone $zone
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`Add-AzureRmDnsRecordConfig` の `-Ipv4Address` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記の[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションに示したとおり、`New-AzureRmDnsRecordConfig` コマンドレットと同じです。
+上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`Add-AzureRmDnsRecordConfig` の `-Ipv4Address` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzureRmDnsRecordConfig` コマンドレットと同じです。
 
 種類が "CNAME" または "SOA" のレコード セットに複数のレコードを含めることはできません。 この制約は DNS 標準によるものです。 Azure DNS の制限ではありません。
 
@@ -270,7 +270,7 @@ Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-レコードの種類に固有の適切なパラメーターを `Remove-AzureRmDnsRecordSet` に渡すことで、さまざまなレコードの種類がサポートされます。 レコードの種類それぞれに対応したパラメーターは、上記の[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションに示したとおり、`New-AzureRmDnsRecordConfig` コマンドレットと同じです。
+レコードの種類に固有の適切なパラメーターを `Remove-AzureRmDnsRecordSet` に渡すことで、さまざまなレコードの種類がサポートされます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzureRmDnsRecordConfig` コマンドレットと同じです。
 
 
 ## <a name="modify-an-existing-record-set"></a>既存のレコード セットの変更

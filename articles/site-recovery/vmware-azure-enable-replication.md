@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226335"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822784"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -56,7 +56,7 @@ VMware 仮想マシンをレプリケートする場合:
     >   * Premium または Standard ストレージ アカウントを選択できます。 Premium アカウントを選択した場合は、継続的なレプリケーション ログ用に追加の Standard ストレージ アカウントを指定する必要があります。 アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
     >   * 異なるストレージ アカウントを使用する場合は、[作成](../storage/common/storage-create-storage-account.md)できます。 Resource Manager を使用してストレージ アカウントを作成する場合は、**[新規作成]** をクリックします。 
 
-8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
+8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、作成する必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
 
     ![レプリケーション ターゲットの設定を有効にする](./media/vmware-azure-enable-replication/enable-rep3.png)
 9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします 特定の仮想マシンを表示または選択できない場合は、[こちら](https://aka.ms/doc-plugin-VM-not-showing)をクリックして問題を解決してください。

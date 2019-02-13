@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635153"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821968"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "53635153"
 
 ### <a name="resolution-steps"></a>解決手順
 
-この手順の構成値は、既に HDInsight に設定されている値です。 Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。 
+この手順の構成値は、既に HDInsight に設定されている値です。 Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。 
 
 1. クラスターの一覧で **[Spark2]** を選択します。
 
@@ -92,7 +92,7 @@ ms.locfileid: "53635153"
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。
 
 2. **%%configure** ディレクティブの後にある最初の Jupyter Notebook セルに、Spark 構成を有効な JSON 形式で指定します。 必要に応じて、実際の値に変更します。
 
@@ -107,7 +107,7 @@ ms.locfileid: "53635153"
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。 
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。 
 
 2. cURL などの REST クライアントを使用して、Spark アプリケーションを Livy に送信します。 次のようなコマンドを使用します。 必要に応じて、実際の値に変更します。
 
@@ -124,7 +124,7 @@ ms.locfileid: "53635153"
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「[Apache Spark アプリケーションの OutOfMemoryError 例外の原因](#what-causes-a-spark-application-outofmemoryerror-exception)」を参照してください。
+1. Spark のどの構成をどのような値に設定する必要があるかを判断するには、「Apache Spark アプリケーションの OutOfMemoryError 例外の原因」を参照してください。
 
 2. 次のようなコマンドを使用して、spark-shell を起動します。 必要に応じて、構成を実際の値に変更します。 
 

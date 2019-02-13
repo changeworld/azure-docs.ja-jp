@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0a174c3de33b01f936eec599c1de68e2cebbf9c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745059"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820421"
 ---
 # <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での MapReduce サンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -54,7 +54,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
 MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
-ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
+ソース コードは「付録 A」にあります。
 
 Java MapReduce プログラムの開発手順については、「[HDInsight で Apache Hadoop 用の Java MapReduce プログラムを開発する](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)」を参照してください。
 
@@ -135,7 +135,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 **C# ストリーミング ワード カウント ジョブを送信するには**
 
-* 「[ワード カウント - Java](#word-count-java)」の手順に従って、ジョブ定義を次の行に置き換えます。
+* 「ワード カウント - Java」の手順に従って、ジョブ定義を次の行に置き換えます。
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -157,7 +157,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
 **Pi 推定ジョブを送信するには**
 
-* 「[ワード カウント - Java](#word-count-java)」の手順に従って、ジョブ定義を次の行に置き換えます。
+* 「ワード カウント - Java」の手順に従って、ジョブ定義を次の行に置き換えます。
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -185,7 +185,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
 **ジョブを送信するには**
 
-* 「[ワード カウント - Java](#word-count-java)」の手順に従って、以下のジョブ定義を使用します。
+* 「ワード カウント - Java」の手順に従って、以下のジョブ定義を使用します。
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `

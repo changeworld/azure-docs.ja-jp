@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187081"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819249"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 
@@ -155,7 +155,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
     **[App Service の作成]** ウィンドウが開きます。 ここで、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースの作成を開始できます。
 
     > [!NOTE]
-    > 発行の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)」を参照してください。
+    > 発行の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)」を参照してください。
 
 3. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、A-Z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は`http://<app_name>.azurewebsites.NET`です。`<app_name>` には Web アプリの名前を指定します。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
 
@@ -247,16 +247,18 @@ _campaignId_ という名前のクエリ文字列パラメーターに基づい�
 次のようにして、`ContentDefinitionParameters` 要素を追加します。
 1. ポリシーの *SignUpOrSignin* ファイル (*SignUpOrSignin.xml* など) を開きます。
 
-2. `<DefaultUserJourney>` ノードを検索します。 
-
-3. `<DefaultUserJourney>` ノードで、次の XML スニペットを追加します。  
+2. `<DefaultUserJourney>` ノードの下に `UserJourneyBehaviors` ノードを追加します。  
 
     ```XML
-    <UserJourneyBehaviors>
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <UserJourneyBehaviors>
         <ContentDefinitionParameters>
-            <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+          <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
         </ContentDefinitionParameters>
-    </UserJourneyBehaviors>
+      </UserJourneyBehaviors>
+      ...
+    </RelyingParty>
     ```
 
 ### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>手順 8.2:クエリ文字列パラメーターを受け入れるようにコードを変更し、背景イメージを置き換える
@@ -325,7 +327,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
     c. 新しいビュー *selfasserted* を作成します。
 
-    d. *selfasserted* を **ホーム** コントローラーに追加します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 *selfasserted* を **ホーム** コントローラーに追加します。
 
 2. "手順 4" に戻り、次の操作を行います。 
 
