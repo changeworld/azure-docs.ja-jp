@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 070a6ee4bc712b2dbec598cdb9be5c324895c033
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154983"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657656"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>チュートリアル: Azure IoT Central オペレーターのビューをカスタマイズする
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>チュートリアル:Azure IoT Central オペレーターのビューをカスタマイズする
 
 このチュートリアルでは、アプリケーションのオペレーター用ビューをカスタマイズする方法を作成者向けに説明します。 作成者としてアプリケーションに変更を行う場合、Microsoft Azure IoT Central アプリケーションのオペレーター用ビューをプレビューできます。
 
@@ -30,6 +30,8 @@ ms.locfileid: "50154983"
 > * オペレーターとしてデバイスをプレビューする
 > * 既定のホーム ページを構成する
 > * オペレーターとして既定のホーム ページをプレビューする
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

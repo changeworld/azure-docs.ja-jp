@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685357"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745811"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
 このチュートリアルでは、Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイスの接続をテストします。 このチュートリアルでは、デスクトップ マシンで実行する単純なデバイス シミュレーターも使用します。
 
@@ -75,7 +75,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
 IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
 
-開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に **iot-hub\Tutorials\ConnectivityTests\simulated-device** フォルダーに移動します。
+開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
 ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。 ポータルでデバイスを追加したときにメモしたデバイスの接続文字列を使用します。
 
@@ -154,7 +154,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 
 デバイスは、次のいずれかのプロトコルを使用して IoT ハブに接続できます。
 
-| プロトコル | 送信ポート |
+| Protocol | 送信ポート |
 | --- | --- |
 | MQTT |8883 |
 | WebSocket 経由の MQTT |443 |

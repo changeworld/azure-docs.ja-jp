@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d5633648ee94c4db20f095619871ac5cd9cec7da
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825181"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
 
@@ -164,7 +164,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -212,7 +212,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
-    d. ページの下部にある **[Next Step]**」を参照してください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ページの下部にある **[Next Step]**」を参照してください。
 
 6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
 
@@ -232,7 +232,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
 9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **次へ: 確認\)** をクリックします。  
 
@@ -248,7 +248,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Create Role]** をクリックします。
 
-    d. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
 11. Azure AD ユーザー プロビジョニングの AWS アカウントからロールをフェッチするには、AWS サービス アカウントの資格情報を使用します。 そのためには、AWS コンソール ホームを開きます。
 
@@ -376,7 +376,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[テスト接続]** をクリックすると、この接続を正常にテストできます。
 
-    d. 上部にある **[保存]** をクリックして、設定を保存します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 上部にある **[保存]** をクリックして、設定を保存します。
 
 23. スイッチをオンにしてから上部の **[保存]** をクリックして、[設定] セクションで [プロビジョニングの状態] を **[オン]** にします。
 
@@ -442,6 +442,12 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、SSO を設定した Amazon Web Services (AWS) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+## <a name="known-issues"></a>既知の問題
+
+ * **[準備中]** セクションの **[マッピング]** サブセクションには、"読み込み中..." というメッセージが表示され、属性マッピングは表示されません。 現在サポートされている唯一のプロビジョニング ワークフローは、ユーザー/グループ割り当て時の選択のために、AWS から Azure AD にロールをインポートすることです。 このための属性マッピングは事前に決定されており、構成はできません。
+ 
+ * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [servicePrincipal オブジェクト](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal)の appRoles プロパティに書き込まれます。 プロビジョニングのために、ギャラリーから Azure AD に複数の AWS テナント (servicePrincipals で表される) を追加できますが、プロビジョニングのために使用される複数の AWS servicePrincipals からインポートされたすべてのロールを、シングル サインオンに使用される単一の servicePrincipal に自動的に書き込むことができないという既知の問題があります。 回避策として、[Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) を使用して、プロビジョニングが構成されている各 AWS servicePrincipal にインポートされたすべての appRole を抽出できます。 これらのロール文字列は、後で、シングル サインオンが構成されている AWS servicePrincipal に追加できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

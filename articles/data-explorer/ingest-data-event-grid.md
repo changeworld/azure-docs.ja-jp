@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 8b56203b700d42f3fdec1b066ed05caf92eb53f1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462037"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743687"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に Azure BLOB を取り込む
 
@@ -37,7 +37,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | 名前 | *test-grid-connection* | 作成するイベント グリッドの名前。|
+    | Name | *test-grid-connection* | 作成するイベント グリッドの名前。|
     | イベント スキーマ | *イベント グリッド スキーマ* | イベント グリッドで使用するスキーマ。 |
     | トピックの種類 | *ストレージ アカウント* | イベント グリッド トピックの種類。 |
     | トピックのリソース | *gridteststorage* | ご利用のストレージ アカウントの名前。 |
@@ -88,7 +88,7 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
     ![データの取り込み](media/ingest-data-event-hub/data-ingestion-create.png)
 
-1. 接続の種類として、**[Blob Storage]** を選択します。
+1. 接続の種類として、**Blob Storage**。
 
 1. フォームに次の情報を入力し、**[作成]** をクリックします。
 
@@ -101,7 +101,7 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
     | データ接続名 | *test-hub-connection* | Azure データ エクスプローラーで作成する接続の名前。|
     | ストレージ アカウントのサブスクリプション | サブスクリプション ID | ストレージ アカウントが存在するサブスクリプション ID。|
     | ストレージ アカウント | *gridteststorage* | 作成済みのストレージ アカウントの名前。|
-    | イベント グリッド | *test-grid-connection* | 作成したイベント グリッドの名前。 |
+    | Event Grid | *test-grid-connection* | 作成したイベント グリッドの名前。 |
     | イベント ハブ名 | *test-hub* | 作成したイベント ハブ。 これは、イベント グリッドを選択すると、自動的に入力されます。 |
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
     | | |
@@ -111,7 +111,7 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | JSON 形式と CSV 形式がサポートされています。 |
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
     | | |
 

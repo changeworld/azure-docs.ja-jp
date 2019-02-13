@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cecb11494926444249c8061f1ec93622e4d6c78
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467137"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700701"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
 
@@ -99,13 +99,7 @@ VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes
 このセクションでは、ASP.NET Core Web アプリを作成し、Kubernetes のコンテナーで実行します。
 
 ### <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
-[.NET Core](https://www.microsoft.com/net) がインストールされている場合は、`webfrontend` という名前のフォルダーに ASP.NET Core Web アプリを迅速に作成できます。
-    
-```cmd
-dotnet new mvc --name webfrontend
-```
-
-または、 https://github.com/Azure/dev-spaces に移動して **GitHub からサンプル コードをダウンロード**し、**[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/dotnetcore/getting-started/webfrontend` にあります。
+[Azure Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製またはダウンロードします。 この記事では、*samples/dotnetcore/getting-started/webfrontend* ディレクトリのコードを使用します。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
 ここまでで、ローカルで実行できる基本的な Web アプリを用意しました。 ここで、アプリのコンテナーと、それを Kubernetes にデプロイする方法を定義するアセットを作成して、それをコンテナー化します。 このタスクは Azure Dev Spaces で行うのが容易です。 
@@ -245,4 +239,4 @@ public IActionResult About()
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [チーム開発について学ぶ](team-development-netcore.md)
+> [マルチサービス開発について学習する](multi-service-netcore.md)

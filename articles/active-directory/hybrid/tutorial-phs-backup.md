@@ -7,16 +7,16 @@ author: billmath
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/30/2019
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7e7c9ca30659fd1e99989bb77406b653a8ed9e7f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302978"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660410"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>チュートリアル:Azure AD Connect で AD FS のバックアップとして PHS を設定する
 
@@ -43,7 +43,7 @@ ms.locfileid: "55302978"
 10. これで完了です。  完了しました。  パスワード ハッシュの同期が行われるようになり、AD FS が使用できなくなった場合のバックアップとして使用できます。
 
 ## <a name="switch-to-password-hash-synchronization"></a>パスワード ハッシュの同期に切り替える
-次に、必要に応じてパスワード ハッシュの同期に切り替える方法を紹介します。  以下の手順を実行します。
+次に、パスワード ハッシュの同期に切り替える方法を紹介します。 作業を始める前に、どのような状況で切り替えるべきかを検討してください。 ネットワークの機能停止、軽微な AD FS の問題、ユーザーの一部に影響する問題など、一時的な理由で切り替えることは避けてください。 問題の解消に時間がかかりすぎることから切り替えに踏み切る場合は、次の手順に従います。
 
 1. デスクトップに作成された Azure AD Connect アイコンをダブルクリックします
 2.  **[構成]** をクリックします。

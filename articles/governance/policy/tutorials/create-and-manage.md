@@ -4,17 +4,17 @@ description: Azure Policy を使用して、標準を強制し、規制遵守お
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845624"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730273"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -322,7 +322,7 @@ az policy definition list
 
 ## <a name="create-and-assign-an-initiative-definition"></a>イニシアチブ定義の作成と割り当て
 
-イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブ定義を作成して、定義のスコープ内にあるリソースが、イニシアチブ定義を構成するポリシー定義に準拠し続けることを確認します。 イニシアティブ定義の詳細については、[Azure Policy の概要](../overview.md)に関するページを参照してください。
+イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブは、割り当てのスコープ内のリソースについて、含まれているポリシーに準拠しているかどうかを評価します。 イニシアティブ定義の詳細については、[Azure Policy の概要](../overview.md)に関するページを参照してください。
 
 ### <a name="create-an-initiative-definition"></a>イニシアチブ定義を作成する
 

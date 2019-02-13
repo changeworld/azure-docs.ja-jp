@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 11/02/2018
-ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239232"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697478"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Azure Stack 上に Ethereum ブロックチェーン ネットワークをデプロイする
 
@@ -25,7 +25,7 @@ Ethereum ソリューション テンプレートは、Azure と Ethereum の最
 
 Azure Stack テナント ポータルでわずかなユーザー入力とワンクリック デプロイを行うことで、各メンバーはネットワーク フットプリントをプロビジョニングできます。 各メンバーのネットワーク フットプリントは、アプリケーションまたはユーザーがトランザクションを送信するために対話できる一連の負荷分散型トランザクション ノード、トランザクションを記録する一連のマイニング ノード、および Network Virtual Appliance (NVA) から構成されます。 以降の接続手順では、NVA を接続して、完全に構成されたマルチメンバー ブロックチェーン ネットワークを作成します。
 
-これを設定するには、次のことを行います。
+設定するには:
 
 - デプロイ アーキテクチャを選択する
 - スタンドアロン、コンソーシアム リーダー、またはコンソーシアム メンバー ネットワークをデプロイする
@@ -157,7 +157,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
 
 ![メンバーのデプロイの概要](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-図に示すように、メンバーのノード状態は **[実行されていない]** です。 これは、メンバーとリーダーの間の接続が確立されていないためです。 メンバーとリーダーの間の接続は、双方向の接続です。 メンバーをデプロイすると、テンプレートによってメンバーからリーダーへの接続が自動的に作成されます。 リーダーからメンバーへの接続を作成するには、次の手順に進みます。
+図に示すように、メンバーのノード状態は **[実行されていない]** です。 この状態は、メンバーとリーダーの間の接続が確立されていないためです。 メンバーとリーダーの間の接続は、双方向の接続です。 メンバーをデプロイすると、テンプレートによってメンバーからリーダーへの接続が自動的に作成されます。 リーダーからメンバーへの接続を作成するには、次の手順に進みます。
 
 ### <a name="connect-member-and-leader"></a>メンバーとリーダーを接続する
 

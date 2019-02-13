@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461204"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752519"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>チュートリアル:スタンドアロンまたはプールされているデータベースをセキュリティで保護する
 
@@ -45,7 +45,7 @@ Azure SQL Database では、次の操作を行うことで、スタンドアロ�
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL サーバーと Azure SQL データベース
-  - [Azure portal](sql-database-get-started-portal.md)、[CLI](sql-database-cli-samples.md)、または [PowerShell](sql-database-powershell-samples.md) を使用して作成します
+  - [Azure portal](sql-database-single-database-get-started.md)、[CLI](sql-database-cli-samples.md)、または [PowerShell](sql-database-powershell-samples.md) を使用して作成します
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -64,7 +64,7 @@ SQL データベースは、Azure 内のファイアウォールによって保�
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>SQL Database サーバーのファイアウォール規則を設定する
 
-サーバーレベルのファイアウォール規則は、同じ SQL Database サーバー内のすべてのデータベースに適用されます。
+サーバーレベルの IP ファイアウォール規則は、同じ SQL Database サーバー内のすべてのデータベースに適用されます。
 
 サーバーレベルのファイアウォール規則を設定する手順は次のとおりです。
 
@@ -231,7 +231,7 @@ Azure AD 認証でユーザーを追加する手順は次のとおりです。
 
 ## <a name="enable-security-features"></a>セキュリティ機能の有効化
 
-Azure SQL Database は、Azure portal を使用してアクセスされるセキュリティ機能を提供します。 これらの機能は、データベースとサーバーの両方で利用可能です。ただし、データ マスクは例外で、データベースのみで利用可能です。 詳細については、[Advanced Data Security](sql-advanced-threat-protection.md)、[監査](sql-database-auditing.md)、[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)、[透過的なデータ暗号化](transparent-data-encryption-azure-sql.md)に関するページを参照してください。
+Azure SQL Database は、Azure portal を使用してアクセスされるセキュリティ機能を提供します。 これらの機能は、データベースとサーバーの両方で利用可能です。ただし、データ マスクは例外で、データベースのみで利用可能です。 詳細については、[Advanced Data Security](sql-database-advanced-data-security.md)、[監査](sql-database-auditing.md)、[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)、[透過的なデータ暗号化](transparent-data-encryption-azure-sql.md)に関するページを参照してください。
 
 ### <a name="advanced-data-security"></a>Advanced Data Security
 

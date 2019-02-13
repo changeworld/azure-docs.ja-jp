@@ -1,6 +1,6 @@
 ---
 title: Azure AD ログインを使用した Azure SQL Database マネージド インスタンスのセキュリティ | Microsoft Docs
-description: Azure SQL Database のマネージ インスタンスをセキュリティで保護し、Azure AD ログインを使用するための手法と機能について説明します。
+description: Azure SQL Database のマネージ インスタンスをセキュリティで保護し、Azure AD ログインを使用するための手法と機能について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: f96b2853b887836a94091dcba0ceaf6f8dd43d12
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/04/2019
+ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229136"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732772"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>チュートリアル:Azure AD ログインを使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
-Azure SQL Database マネージド インスタンスには、オンプレミスの最新の SQL Server (Enterprise Edition) データベース エンジンにあるセキュリティ機能がほとんどすべて備わっています。
+マネージド インスタンスには、オンプレミスの最新の SQL Server (Enterprise Edition) データベース エンジンにあるセキュリティ機能がほとんどすべて備わっています。
 
 - 分離環境におけるアクセスの制限
 - ID を要求する認証メカニズム (Azure AD、SQL 認証) の使用
@@ -38,9 +38,9 @@ Azure SQL Database マネージド インスタンスには、オンプレミス
 > - 脅威の防止、監査、データ マスク、暗号化などのセキュリティ機能について学習する
 
 > [!NOTE]
-> SQL Database マネージド インスタンスの Azure AD ログインは**パブリック プレビュー**段階にあります。
+> マネージド インスタンスの Azure AD ログインは、**パブリック プレビュー**段階にあります。
 
-詳細については、[Azure SQL Database Managed Instance の概要](sql-database-managed-instance-index.yml)と[機能](sql-database-managed-instance.md)に関する記事を参照してください。
+詳細については、[Azure SQL Database マネージド インスタンスの概要](sql-database-managed-instance-index.yml)と[機能](sql-database-managed-instance.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,25 +48,25 @@ Azure SQL Database マネージド インスタンスには、オンプレミス
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Azure SQL Database マネージド インスタンス
-    - 次の記事に従います。[クイック スタート:Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)
-- Azure SQL Database マネージド インスタンスにアクセスでき、[マネージド インスタンスの Azure AD 管理者をプロビジョニング済み](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)であること。 詳細については、次を参照してください。
-    - [Azure SQL Database Managed Instance にアプリケーションを接続する](sql-database-managed-instance-connect-app.md) 
-    - [Azure SQL Database Managed Instance の接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)
+  - 次の記事に従います。[クイック スタート:Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)
+- マネージド インスタンスにアクセスでき、[マネージド インスタンスの Azure AD 管理者をプロビジョニング済み](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)であること。 詳細については、次を参照してください。
+    - [マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関するページ 
+    - [マネージド インスタンスの接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページ
     - [SQL による Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md)
 
-## <a name="limiting-access-to-your-managed-instance"></a>マネージド インスタンスへのアクセスを制限する
+## <a name="limiting-access-to-your-managed-instance"></a>マネージド インスタンスへのアクセスの制限
 
-マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 マネージド インスタンスのネットワーク外からマネージド インスタンスに接続できるサービス エンドポイントはありません。 分離された SQL Server のオンプレミス環境とほぼ同様に、接続を確立するには、アプリケーションまたはユーザーがマネージド インスタンスのネットワーク (VNet) にアクセスする必要があります。 詳細については、「[Azure SQL Database Managed Instance にアプリケーションを接続する](sql-database-managed-instance-connect-app.md)」を参照してください。
+マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 マネージド インスタンスのネットワーク外からマネージド インスタンスに接続できるサービス エンドポイントはありません。 分離された SQL Server のオンプレミス環境とほぼ同様に、接続を確立するには、アプリケーションまたはユーザーがマネージド インスタンスのネットワーク (VNet) にアクセスする必要があります。 詳細については、[マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関する記事を参照してください。
 
 > [!NOTE] 
 > マネージド インスタンスにはその VNET の内部のみでアクセスできるため、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)は適用されません。 マネージド インスタンスには、[組み込みのファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)が独自に用意されています。
 
-## <a name="create-an-azure-ad-login-for-a-managed-instance-using-ssms"></a>SSMS を使用してマネージド インスタンスの Azure AD ログインを作成する
+## <a name="create-an-azure-ad-login-for-a-managed-instance-using-ssms"></a>SSMS を使用したマネージド インスタンス用の Azure AD ログインの作成
 
 最初の Azure AD ログインは、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` で作成する必要があります。 マネージド インスタンスに接続する例については、次の記事を参照してください。
 
-- [クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
-- [クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
+- [クイック スタート:マネージド インスタンスに接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
+- [クイック スタート:オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
 > マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD ログインの作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD ログインを作成する必要があります。 これは、Azure AD ログインが一般提供されると削除される一時的な制限です。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
@@ -107,7 +107,7 @@ Azure SQL Database マネージド インスタンスには、オンプレミス
 
 詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
-## <a name="granting-permissions-to-allow-the-creation-of-managed-instance-logins"></a>マネージド インスタンスのログインを作成できるようにアクセス許可を付与する
+## <a name="granting-permissions-to-allow-the-creation-of-managed-instance-logins"></a>マネージド インスタンスのログインを作成できるようにするためのアクセス許可の付与
 
 他の Azure AD ログインを作成するには、SQL Server のロールまたはアクセス許可をプリンシパル (SQL または Azure AD) に付与する必要があります。
 
@@ -146,7 +146,7 @@ Azure SQL Database マネージド インスタンスには、オンプレミス
 
 Azure AD ログインが作成され、`sysadmin` の特権が付与されると、そのログインは、**CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
 
-1. SQL Server Management Studio を使用して、Azure AD ログインでマネージド インスタンス サーバーに接続します。 マネージド インスタンス サーバー名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
+1. SQL Server Management Studio を使用して、Azure AD ログインでマネージド インスタンスに接続します。 マネージド インスタンスのホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
 
     - Active Directory - MFA サポートで汎用
     - Active Directory - パスワード
@@ -381,7 +381,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 > - EXECUTE AS USER
 > - EXECUTE AS LOGIN
 
-## <a name="using-cross-database-queries-in-managed-instances"></a>マネージド インスタンスでデータベース間クエリを使用する
+## <a name="using-cross-database-queries-in-managed-instances"></a>マネージド インスタンスでの複数データベース間クエリの使用
 
 データベース間クエリは、Azure AD ログインを使用する Azure AD アカウントでサポートされています。 Azure AD グループでデータベース間クエリをテストするには、データベースとテーブルをもう 1 つ作成する必要があります。 データベースとテーブルが既にもう 1 つ存在する場合はその作成をスキップできます。
 
@@ -439,10 +439,10 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
 ### <a name="enable-security-features"></a>セキュリティ機能の有効化
 
-データベースをセキュリティで保護する方法をまとめた一覧については、次の [マネージド インスタンスのセキュリティ機能](sql-database-managed-instance.md#azure-sql-database-security-features)に関する記事を参照してください。 次のセキュリティ機能について説明しています。
+データベースをセキュリティで保護する方法をまとめた一覧については、次の[マネージド インスタンスのセキュリティ機能](sql-database-managed-instance.md#azure-sql-database-security-features)に関する記事を参照してください。 次のセキュリティ機能について説明しています。
 
 - [マネージド インスタンスの監査](sql-database-managed-instance-auditing.md) 
-- [常に暗号化](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [脅威の検出](sql-database-managed-instance-threat-detection.md) 
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security) 
@@ -450,7 +450,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
 ### <a name="managed-instance-capabilities"></a>マネージド インスタンスの機能
 
-Azure SQL Database マネージド インスタンスの機能の概要については、以下を参照してください。
+マネージド インスタンスの機能全体の概要については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [マネージド インスタンスの機能](sql-database-managed-instance.md)

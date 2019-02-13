@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
-ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.reviewer: trbye
+ms.date: 02/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a293389b8175406d9036cd95c14748e5a626fb91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244277"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752536"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -34,7 +34,6 @@ Azure Machine Learning service を使用してお客様のモデルの構築を�
 > * 回帰モデルを自動トレーニングする。
 > * カスタム パラメーターを使用してモデルをローカルで実行する。
 > * 結果を調べる。
-> * 最高のモデルを登録する。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
@@ -43,36 +42,74 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-> * [データ準備のチュートリアルを実行する](tutorial-data-prep.md)。
-> * 自動化された機械学習が構成されている環境。 たとえば、[Azure Notebooks](https://notebooks.azure.com/) やローカルの Python 環境、Data Science Virtual Machine です。 [自動化された機械学習を設定します](samples-notebooks.md)。
+「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
 
-## <a name="get-the-notebook"></a>ノートブックを入手する
+* [データ準備のチュートリアルを実行する](tutorial-data-prep.md)。
+* 以下のものがインストールされている Python 3.6 ノートブック サーバー。
+    * Azure Machine Learning SDK for Python と `automl` および `notebooks` の追加機能
+    * `matplotlib`
+* チュートリアル ノートブック
+* 機械学習ワークスペース
+* ノートブックと同じディレクトリにある、ワークスペースの構成ファイル
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb)として提供されています。 [Azure Notebooks](https://notebooks.azure.com/) または自分の Jupyter Notebook サーバーで、`regression-part2-automated-ml.ipynb` ノートブックを実行してください。
+以下のいずれかのセクションから、これらすべての前提条件を入手します。
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* [Azure Notebooks](#azure) を使用する
+* [独自のノートブック サーバー](#server)を使用する
 
-## <a name="import-packages"></a>パッケージをインポートする
+### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
+
+Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
+
+以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
+
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+
+1. [Azure Machine Learning Python のクイック スタート](quickstart-create-workspace-with-python.md)を完了して、Miniconda 環境とワークスペースを作成します。
+1. `pip install azureml-sdk[automl,notebooks]` を使用して、`automl` と `notebooks` の追加機能をご自分の環境にインストールします。
+1. `pip install maplotlib` を使用して `maplotlib` をインストールします。
+1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. 複製したディレクトリから、Notebook サーバーを起動します。
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+* Configure your workspace
+
+### Install and import packages
+
+If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+
+```shell
+pip install azureml-sdk[automl,notebooks] matplotlib
+```
+
 このチュートリアルで必要な Python パッケージをインポートします。
-
 
 ```python
 import azureml.core
 import pandas as pd
 from azureml.core.workspace import Workspace
-from azureml.train.automl.run import AutoMLRun
-import time
 import logging
 import os
 ```
 
-独自の Python 環境でチュートリアルを実行している場合は、次を使用して必要なパッケージをインストールします。
-
-```shell
-pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
-```
-
-## <a name="configure-workspace"></a>ワークスペースの構成
+### <a name="configure-workspace"></a>ワークスペースの構成
 
 既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
 
@@ -743,7 +780,6 @@ for run in children:
     metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
-import pandas as pd
 rundata = pd.DataFrame(metricslist).sort_index(1)
 rundata
 ```
@@ -1177,6 +1213,5 @@ print(1 - mean_abs_percent_error)
 > * 実験用のワークスペースと準備されたデータを構成しました。
 > * カスタム パラメーターを使って、自動化された回帰モデルをローカルで使用してトレーニングしました。
 > * トレーニング結果を調べて確認しました。
-> * 最高のモデルを登録しました。
 
 Azure Machine Learning を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。

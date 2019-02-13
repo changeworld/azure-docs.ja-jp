@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 3ddf98abf0c52d3bc1fb0a6ce43755d5adcf87fa
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e57142631668ba0b74573b2953e84f581023b24f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848633"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660648"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
@@ -139,4 +139,4 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails と MySQL](tutorial-ruby-postgres-app.md)
+> [Ruby on Rails と Postgres](tutorial-ruby-postgres-app.md)

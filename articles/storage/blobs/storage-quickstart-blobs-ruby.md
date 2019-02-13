@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: f6a163b151a6b9066ea58c5834204ed54e51cfc2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 7f6bd1857c056d7b3570d5d2367ade7e20a19108
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711227"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752618"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート: Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート:Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、Ruby を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "51711227"
 次の追加の前提条件がインストールされていることを確認してください。
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage) (rubygem パッケージを使用) 
+* [Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage) (rubygem パッケージを使用) 
 
     ```
     gem install azure-storage-blob

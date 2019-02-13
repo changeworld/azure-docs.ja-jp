@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 31d18d7ea4ee195f7ffcfa04fb247b5dfd525c6a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251481"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813604"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 プレビューのデータにアクセスする
 
@@ -24,29 +24,37 @@ ms.locfileid: "55251481"
 > [!div class="checklist"]
 > * Databricks クラスターを作成する
 > * 非構造化データをストレージ アカウントに取り込む
-> * Blob Storage 内でデータ分析を実行する
+> * Blob Storage 内のデータに対して分析を実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、航空便の定時運航データ ([米国運輸省](https://transtats.bts.gov/DL_SelectFields.asp)で入手できます) の使用方法と照会方法を示します。 
+* Azure Data Lake Storage Gen2 アカウントを作成します。
 
-1. **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。
-2. **[ダウンロード]** を選択して、ご使用のマシンに結果を保存します。
-3. ダウンロードしたファイルの名前とパスは必ずメモしておいてください。この情報は後の手順で必要になります。
+  [Azure Data Lake Storage Gen2 アカウントの作成](data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
 
-このチュートリアルを完了するには、分析機能を含んだストレージ アカウントが必要です。 その作成方法に関する[クイック スタート](data-lake-storage-quickstart-create-account.md)を済ませておくことをお勧めします。 
+* ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)が割り当てられていることを確認します。
 
-## <a name="set-aside-storage-account-configuration"></a>ストレージ アカウント構成を確保する
+* AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-お客様のストレージ アカウントの名前とファイル システムのエンドポイント URI が必要です。
+### <a name="download-the-flight-data"></a>フライト データのダウンロード
 
-Azure portal でお客様のストレージ アカウントの名前を取得するには、**[すべてのサービス]** を選択し、「*ストレージ*」という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
+このチュートリアルでは、運輸統計局からのフライト データを使用して ETL 操作を実行する方法を示します。 チュートリアルを完了するには、このデータをダウンロードする必要があります。
 
-ファイル システムのエンドポイント URI を取得するには、**[プロパティ]** を選択し、プロパティ ウィンドウで **[プライマリ ADLS ファイル システムのエンドポイント]** フィールドの値を見つけます。
+1. [米国運輸省研究・革新技術庁/運輸統計局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)のページに移動します。
 
-これらの両方の値をテキスト ファイルに貼り付けます。 これらはすぐに必要になります。
+2. **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。
+
+3. **[ダウンロード]** ボタンを選択して、ご使用のコンピューターに結果を保存します。 
+
+4. ZIP ファイルの内容を解凍し、ファイル名とファイル パスをメモします。 この情報は後の手順で必要になります。
+
+## <a name="get-your-storage-account-name"></a>ストレージ アカウントの名前を取得する
+
+ストレージ アカウントの名前が必要となります。 [Azure portal](https://portal.azure.com/) にログインして **[すべてのサービス]** を選択し、"*ストレージ*" という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
+
+その名前をテキスト ファイルに貼り付けます。 この情報はすぐに必要になります。
 
 <a id="service-principal"/>
 
@@ -54,35 +62,75 @@ Azure portal でお客様のストレージ アカウントの名前を取得す
 
 こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
-この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
-
-:heavy_check_mark:記事の「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)」セクションの手順を実行するとき、**[作成]** ダイアログ ボックスの **[サインオン URL]** フィールドを、先ほど収集したエンドポイント URI に必ず設定してください。
+この記事の手順を実行する際に、いくつかの作業を行う必要があります。
 
 :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
 
 :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
-## <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
+## <a name="create-an-azure-databricks-service"></a>Azure Databricks サービスを作成する
 
-次の手順では、Databricks クラスターを作成して、データ ワークスペースを作成します。
+このセクションでは、Azure portal を使用して Azure Databricks サービスを作成します。
 
-1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
-2. 検索フィールドに「**Azure Databricks**」と入力します。
-3. [Azure Databricks] ブレードの **[作成]** を選択します。
-4. Databricks サービスに **myFlightDataService** という名前を付けます (このサービスを作成するときに、*[ダッシュボードにピン留めする]* チェック ボックスを必ずオンにします)。
-5. **[Launch Workspace]\(ワークスペースの起動\)** を選択して、新しいブラウザー ウィンドウでワークスペースを開きます。
-6. 左側のナビゲーション バーで **[クラスター]** を選択します。
-7. **[クラスターの作成]** を選択します。
-8. 「**myFlightDataCluster**」を **[クラスター名]** フィールドに入力します。
-9. **[ワーカー タイプ]** フィールドで **[Standard_D8s_v3]** を選択します。
-10. **[Min Workers]\(最小ワーカー\)** の値を **4** に変更します。
-11. ページ上部の **[クラスターの作成]** を選択します。 この処理は、完了までに 5 分ほどかかることがあります。
-12. 処理が完了したら、ナビゲーション バーの左上にある **[Azure Databricks]** を選択します。
-13. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
-14. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
-15. その他のフィールドはすべて既定値のままでかまいません。
-16. **作成**を選択します。
-17. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
+1. Azure portal で、**[リソースの作成]** > **[分析]** > **[Azure Databricks]** の順に選択します。
+
+    ![Azure Portal の Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure Portal の Databricks")
+
+2. **[Azure Databricks サービス]** で次の値を指定して、Databricks サービスを作成します。
+
+    |プロパティ  |[説明]  |
+    |---------|---------|
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。  |
+    |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
+    |**価格レベル**     |  **[Standard]** を選択します。     |
+
+    ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
+
+3. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、**[作成]** を選択します。
+
+4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Azure Databricks のデプロイを送信しています]** タイルが表示されます。 操作の状態を監視するには、上部の進行状況バーを確認します。
+
+    ![Databricks のデプロイのタイル](./media/data-lake-storage-use-databricks-spark/databricks-deployment-tile.png "Databricks のデプロイのタイル")
+
+## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks で Spark クラスターを作成する
+
+1. Azure portal で、作成した Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+
+2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
+
+    ![Azure の Databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure の Databricks")
+
+3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
+
+    ![Azure で Databricks Spark クラスターを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
+
+4. 次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
+
+    * クラスターの名前を入力します。
+
+    * この記事では、**5.1** ランタイムを使用してクラスターを作成します。
+
+    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスを必ずオンにします。 クラスターが使われていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
+
+    * **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+
+## <a name="create-a-file-system-and-mount-it"></a>ファイル システムを作成してマウントする
+
+このセクションでは、ストレージ アカウントにファイル システムとフォルダーを作成します。
+
+1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+
+2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、**[作成]** > **[ノートブック]** の順に選択します。
+
+    ![Databricks でノートブックを作成する](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks でノートブックを作成する")
+
+3. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Python]** を選んで、前に作成した Spark クラスターを選びます。
+
+4. **作成**を選択します。
+
+5. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -99,63 +147,66 @@ Azure portal でお客様のストレージ アカウントの名前を取得す
     ```
 18. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウント構成を確保する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。 `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
 
-19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
+19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。 
+
+    このノートブックは開いたままにしておいてください。後でコマンドを追加します。
 
 ## <a name="ingest-data"></a>データの取り込み
 
 ### <a name="copy-source-data-into-the-storage-account"></a>ソース データをストレージ アカウントにコピーする
 
-次のタスクでは、AzCopy を使用して、*.csv* ファイルから Azure storage にデータをコピーします。 コマンド プロンプト ウィンドウを開き、次のコマンドを入力します。 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_NAME>`、`<ACCOUNT_KEY>` の各プレースホルダーを、前の手順でメモしておいた対応する値で必ず置き換えてください。
+AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカウントにデータをコピーします。
 
-```bash
-set ACCOUNT_NAME=<ACCOUNT_NAME>
-set ACCOUNT_KEY=<ACCOUNT_KEY>
-azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbricks/folder1/On_Time --recursive 
-```
+1. コマンド プロンプト ウィンドウを開き、次のコマンドを入力してストレージ アカウントにログインします。
+
+   ```bash
+   azcopy login
+   ```
+
+   コマンド プロンプト ウィンドウに表示される指示に従って、ユーザー アカウントを認証します。
+
+2. *.csv* アカウントからデータをコピーするには、次のコマンドを入力します。
+
+   ```bash
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   ```
+   * プレースホルダー `<csv-folder-path>` の値を、*.csv* ファイルが格納されているディレクトリのパス (ファイルの名前を除く) に置き換えます。
+
+   * `storage-account-name` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+   * `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Databricks Notebook を使用して CSV を Parquet に変換する
 
-お使いのブラウザーで Databricks を再度開き、次の手順を実行します。
+前もって作成しておいたノートブックに新しいセルを追加し、そこに次のコードを貼り付けます。 このコード スニペット内のプレースホルダー `storage-account-name` の値は、CSV ファイルの保存先フォルダーの名前に置き換えてください。
 
-1. ナビゲーション バーの左上にある **[Azure Databricks]** を選択します。
-2. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
-3. **[名前]** フィールドに「**CSV2Parquet**」と入力します。
-4. その他のフィールドはすべて既定値のままでかまいません。
-5. **作成**を選択します。
-6. 次のコードを **Cmd 1** セルに貼り付けます。 このコードはエディターに自動保存されます。
+```python
+# Use the previously established DBFS mount point to read the data.
+# create a data frame to read data.
 
-    ```python
-    # Use the previously established DBFS mount point to read the data
-    # create a dataframe to read data
-    flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time_On_Time*.csv")
-    # read the all the airline csv files and write the output to parquet format for easy query
-    flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
-    print("Done")
-    ```
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+
+# read the airline csv file and write the output to parquet format for easy query.
+ flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+ print("Done")
+ ```
 
 ## <a name="explore-data"></a>データを調査する
 
-Databricks ワークスペースに戻り、左側のナビゲーション バーにある **[Recent]\(最近使った項目\)** アイコンを選択します。
-
-1. **[Flight Data Analytics]** ノートブックを選択します。
-2. **Ctrl + Alt + N** キーを押して新しいセルを作成します。
-
-次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
-
-AzCopy を使用してアップロードした CSV ファイルの一覧を取得するには、次のスクリプトを実行します。
+AzCopy 経由でアップロードされた CSV ファイルの一覧を取得するために、次のコードを新しいセルに貼り付けます。 プレースホルダー `<csv-folder-path>` の値は、先ほど使用したプレースホルダーと同じ値に置き換えてください。
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/temp/"))
+display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
 ```
 
 新しいファイルを作成して *parquet/flights* フォルダー内のファイルの一覧を作成するには、次のスクリプトを実行します。
 
 ```python
-dbutils.fs.put("/mnt/flightdata/temp/1.txt", "Hello, World!", True)
-dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
+dbutils.fs.put("/mnt/flightdata/1.txt", "Hello, World!", True)
+dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 ```
 
 上記のコード サンプルでは、Data Lake Storage Gen2 対応のストレージ アカウントに格納されたデータを使って HDFS の階層的な性質を調査しました。
@@ -164,16 +215,15 @@ dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
 
 これで、ストレージ アカウントにアップロードしたデータの照会を開始できます。 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
 
-### <a name="run-simple-queries"></a>単純なクエリを実行する
-
 データ ソースのデータフレームを作成するには、次のスクリプトを実行します。
 
-> [!IMPORTANT]
-> **<YOUR_CSV_FILE_NAME>** プレースホルダーを、このチュートリアルの始めにダウンロードしたファイル名で必ず置き換えてください。
+* プレースホルダー `<csv-folder-path>` の値を、*.csv* ファイルが格納されているディレクトリのパス (ファイルの名前を除く) に置き換えます。
+
+* プレースホルダー `<your-csv-file-name` の値は、実際の *CSV* ファイルの名前に置き換えます。
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/<YOUR_CSV_FILE_NAME>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier
@@ -196,7 +246,7 @@ flightDF.show(20, False)
 display(flightDF)
 ```
 
-データに対して分析クエリを実行するには、次のスクリプトを実行します。
+いくつかの基本的な分析クエリをデータに対して実行するために、次のスクリプトを入力します。
 
 ```python
 #Run each of these queries, preferably in a separate cmd cell for separate analysis
@@ -222,51 +272,8 @@ out = spark.sql("SELECT distinct(OriginCityName) FROM FlightTable where OriginSt
 print('Airports in Texas: ', out.show(100))
 
 #find all airlines that fly from Texas
-out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
+out1 = spark.sql("SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
-```
-
-### <a name="run-complex-queries"></a>複雑なクエリを実行する
-
-より複雑な以下のクエリを実行するには、ノートブックの各セグメントに対して同時に実行して結果を確認します。
-
-```python
-#find the airline with the most flights
-
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v")
-spark.sql("CREATE TEMPORARY VIEW v AS SELECT Carrier, count(*) as NumFlights from FlightTable group by Carrier, UniqueCarrier order by NumFlights desc LIMIT 10")
-output = spark.sql("SELECT AirlineName FROM AirlineCodes WHERE AirlineCode in (select Carrier from v)")
-
-#show the top row without truncation
-output.show(1, False)
-
-#show the top 10 airlines
-output.show(10, False)
-
-#Determine which is the least on time airline
-
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v")
-spark.sql("CREATE TEMPORARY VIEW v AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE DepDelay>60 or ArrDelay>60 group by Carrier, UniqueCarrier order by NumFlights desc LIMIT 10")
-output = spark.sql("select * from v")
-#output = spark.sql("SELECT AirlineName FROM AirlineCodes WHERE AirlineCode in (select Carrier from v)")
-#show the top row without truncation
-output.show(1, False)
-
-#which airline improved its performance
-#find the airline with the most improvement in delays
-#create a temporary view to hold the flight delay information aggregated by airline, then select the airline name from the Airlinecodes dataframe
-spark.sql("DROP VIEW IF EXISTS v1")
-spark.sql("DROP VIEW IF EXISTS v2")
-spark.sql("CREATE TEMPORARY VIEW v1 AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE (DepDelay>0 or ArrDelay>0) and Year=2016 group by Carrier order by NumFlights desc LIMIT 10")
-spark.sql("CREATE TEMPORARY VIEW v2 AS SELECT Carrier, count(*) as NumFlights from FlightTable WHERE (DepDelay>0 or ArrDelay>0) and Year=2017 group by Carrier order by NumFlights desc LIMIT 10")
-output = spark.sql("SELECT distinct ac.AirlineName, v1.Carrier, v1.NumFlights, v2.NumFlights from v1 INNER JOIN v2 ON v1.Carrier = v2.Carrier INNER JOIN AirlineCodes ac ON v2.Carrier = ac.AirlineCode WHERE v1.NumFlights > v2.NumFlights")
-#show the top row without truncation
-output.show(10, False)
-
-#display for visual analysis
-display(output)
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -277,4 +284,3 @@ display(output)
 
 [!div class="nextstepaction"] 
 > [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)
-

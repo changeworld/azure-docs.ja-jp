@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301460"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756871"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -105,7 +105,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 ## <a name="configure-the-function-app"></a>Function App を構成する
 
-この関数では、BLOB ストレージ アカウントに接続するために接続文字列が必要です。 次の手順で Azure にデプロイする関数コードは、アプリ設定 myblobstorage_STORAGE で接続文字列を探し、アプリ設定 myContainerName でサムネイル イメージ コンテナー名を探します。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) コマンドを使用して、アプリケーション設定を行います。
+この関数では、BLOB ストレージ アカウントに接続するために接続文字列が必要です。 次の手順で Azure にデプロイする関数コードは、アプリ設定 myblobstorage_STORAGE で接続文字列を探し、アプリ設定 myContainerName でサムネイル イメージ コンテナー名を探します。 [az storage account show-connection-string](/cli/azure/storage/account) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドを使用して、アプリケーション設定を行います。
 
 次の CLI コマンドの `<blob_storage_account>` は、前のチュートリアルで作成した BLOB ストレージ アカウントの名前です。
 
@@ -128,7 +128,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-C# スクリプト (.csx) のサイズ変更のサンプルは、[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。 
+C# スクリプト (.csx) のサイズ変更のサンプルは、[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。 
 
 次のコマンドの `<function_app>` は、先ほど作成した関数アプリの名前です。
 
@@ -137,7 +137,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
+Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
 
 次のコマンドの `<function_app>` は、先ほど作成した関数アプリの名前です。
 
@@ -184,8 +184,12 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。| 
     | **サブスクライバーの種類** |  自動生成 |  Web hook として事前定義されています。 |
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
-4. *省略可能:* 将来他の目的で同じ BLOB ストレージ内に追加のコンテナーを作成する必要がある場合は、**[フィルター]** タブの**サブジェクト フィルタリング**機能を使用して BLOB イベントをよりきめ細かくターゲット設定することで、特に BLOB が **images** コンテナーに追加されたときにのみ関数アプリが呼び出されるようにすることができます。 
-5. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
+4. **[フィルター]** タブに切り替えて、次の手順を実行します。     
+    1. **[サブジェクト フィルタリングを有効にする]** オプションを選択します。
+    2. **[次で始まるサブジェクト]** には、「**/blobServices/default/containers/images/blobs/**」と入力します。
+
+        ![イベント サブスクリプションのフィルターを指定する](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
+2. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
 
 バックエンド サービスの構成が済んだので、サンプル Web アプリでイメージ サイズ変更の機能をテストします。 
 

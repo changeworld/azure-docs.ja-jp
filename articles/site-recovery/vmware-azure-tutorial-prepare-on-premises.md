@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 505acdde07c23654ddd3875fa600046a67e04aea
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970816"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700113"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -111,7 +111,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 
 ## <a name="useful-links"></a>便利なリンク
 
-複数の VM をレプリケートする場合は、始める前に、容量と展開を計画する必要があります。 [詳細情報](site-recovery-deployment-planner.md)。
+複数の VM をレプリケートする場合は、始める前に、容量とデプロイを計画する必要があります。 [詳細情報](site-recovery-deployment-planner.md)。
 
 ## <a name="next-steps"></a>次の手順
 
