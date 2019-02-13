@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 021876306c435d3d15996c69ab3613c1d82e6993
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468888"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567657"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>方法:Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成
 
@@ -129,7 +129,7 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 ## <a name="user-risk-policy-settings"></a>ユーザー リスク ポリシーの設定
 
-サインイン リスク ポリシーを構成する場合は、次を設定する必要があります。
+ユーザー リスク ポリシーを構成する場合は、次を設定する必要があります。
 
 - ポリシーの適用先のユーザーとグループ:
 

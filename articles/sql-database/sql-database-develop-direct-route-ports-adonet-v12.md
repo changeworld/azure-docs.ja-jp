@@ -11,15 +11,16 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260025"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560891"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
+
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。 
 
 > [!IMPORTANT]
@@ -27,12 +28,15 @@ ms.locfileid: "51260025"
 >
 
 ## <a name="outside-vs-inside"></a>外部と内部
+
 Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューターで実行
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューター上で実行
+
 ポート 1433 が、SQL Database クライアント アプリケーションをホストするデスクトップ コンピューターで開く必要がある唯一のポートです。
 
-#### <a name="inside-client-runs-on-azure"></a>*内部:* クライアントを Azure で実行
+#### <a name="inside-client-runs-on-azure"></a>*内部:* クライアントを Azure 上で実行
+
 Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる *ダイレクト ルート* を使用して SQL Database とやり取りします。 接続が確立した後に、クライアントとデータベース間のやり取りに Azure SQL Database Gateway が関与することはありません。
 
 順序は次のとおりです。
@@ -76,6 +80,6 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
-* [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
+* [方法:SQL Database でファイアウォール設定を構成する](sql-database-configure-firewall-settings.md)
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 6d84c83efa194543ed10aaed82362021b7053476
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576206"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566239"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -88,7 +88,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 大規模な移行の多くで検出された問題を以下に示します。 これは包括的なリストではないため、詳しくは「[サポートされていない機能と構成](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations)」をご覧ください。  これらの技術的な問題が発生するかどうかはわかりませんが、問題が発生した場合は、移行の前に解決しておくと、移行をスムーズに行うことができます。
 
-- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には 3 つの主要な手順 (検証、準備、コミット) があります。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
+- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には、次の 3 つの主要ステップがあります:検証、準備、コミット。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
@@ -201,7 +201,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
-- [ロールベースのアクセス制御](../../azure-resource-manager/resource-group-overview.md#access-control)。
+- [ロールベースのアクセス制御](../../role-based-access-control/overview.md)。
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
 - [タグ](../../azure-resource-manager/resource-group-using-tags.md)。
 - [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)

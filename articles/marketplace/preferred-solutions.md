@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: fdb55cab87c3b04f814e7a5738da8c26d0c97166
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 6e6ffe4d32857e223ea6575598cffc4b0606d9cf
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077286"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565090"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の推奨ソリューション
 
-Microsoft 推奨ソリューションは、特定の業界またはソリューション領域で、品質、パフォーマンス、顧客ニーズ対処能力の優秀さによって選ばれたクラウド アプリケーションです。 Microsoft の業界および営業エキスパートのチームが、Microsoft Partner Network [Gold メンバーシップ](https://partner.microsoft.com/membership/core-benefits)のパートナーからソリューションを選出します。 これらのソリューションは、クラウド マーケットプレースのネットショップである Azure Marketplace と AppSource でフィーチャーされます。 推奨ソリューションは、AppSource では業界別に探すことができ、Azure Marketplace ではソリューション分野カテゴリ内でクリックしてアクセスできます。 
+Microsoft 推奨ソリューションは、特定の業界またはソリューション領域で、品質、パフォーマンス、顧客ニーズ対処能力の優秀さによって選ばれたクラウド アプリケーションです。 Microsoft の業界および営業エキスパートのチームが、Microsoft Partner Network の [Gold コンピテンシー](https://partner.microsoft.com/membership/competencies)のパートナーからソリューションを選出します。 これらのソリューションは、クラウド マーケットプレースの次のネットショップでフィーチャーされます:Azure Marketplace と AppSource。 推奨ソリューションは、AppSource では業界別に探すことができ、Azure Marketplace ではソリューション分野カテゴリ内でクリックしてアクセスできます。
 
 ソリューション プロバイダーのソリューションの 1 つ以上が推奨ソリューションに選ばれた場合、Microsoft から連絡があります。

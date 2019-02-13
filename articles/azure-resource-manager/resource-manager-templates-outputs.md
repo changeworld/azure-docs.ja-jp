@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725813"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691033"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの出力セクション
+
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
 
 ## <a name="define-and-use-output-values"></a>出力値の定義および使用
@@ -39,7 +40,7 @@ ms.locfileid: "53725813"
 デプロイ後、スクリプトを使用して値を取得できます。 PowerShell では、次を使用します。
 
 ```powershell
-(Get-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
 ```
 
 Azure CLI では、次を使用します。
@@ -81,10 +82,11 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
 | value |はい |評価され、出力値として返されるテンプレート言語式。 |
 
+コメントの追加について詳しくは、[テンプレート内のコメント](resource-group-authoring-templates.md#comments)に関するページをご覧ください。
 
 ## <a name="example-templates"></a>サンプル テンプレート
 
-|テンプレート  |説明  |
+|Template  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |

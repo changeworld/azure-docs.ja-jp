@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2018
+ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841431"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55648642"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -175,7 +175,7 @@ Azure Resource Manager テンプレート、SDK、PowerShell、または CLI を
 テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
 
 **既存のディスクを Standard SSD に変換できますか?**
- はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
+はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
 -AccountType StandardSSD_LRS
 
 **HDD ではなく Standard SSD ディスクを使用する利点は何ですか?**
@@ -347,7 +347,7 @@ Standard SSD と Standard HDD の、500 IOPS および 60 MiB/秒を超える大
 
 **どのリージョンで、 4 TiB よりも大きいマネージド ディスクのサイズがサポートされていますか?**
 
-プレビュー段階のこの時点で、マネージド ディスクのサイズは米国中西部でのみサポートされています。
+プレビューの現時点では、マネージド ディスクのサイズは、米国中西部、北ヨーロッパ、西ヨーロッパ、米国西部 2、米国東部 2、米国東部でサポートされます。
 
 **新しいディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 

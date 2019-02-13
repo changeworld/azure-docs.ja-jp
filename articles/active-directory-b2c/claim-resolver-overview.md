@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 99498646a65865add35ec4a86cb7a25b42dd5523
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162193"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692444"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -136,7 +136,7 @@ RESTful 技術プロファイルの例を次に示します。
 
 ### <a name="dynamic-ui-customization"></a>動的 UI のカスタマイズ
 
-Azue AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](active-directory-b2c-ui-customization-custom-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
+Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](active-directory-b2c-ui-customization-custom-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
 
 次の例では、名前が **campaignId** で値が `hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 

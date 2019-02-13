@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c207fb866cdd17e4db1796e415c159eb887eef08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8d2d8d0595099081498202a3103caa10df8cf67d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243557"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657843"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Azure Active Directory を使用して Azure Stack に Kubernetes をデプロイする
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack の切断されたシナリオは、プレビューでは現在サポートされていません。
 
 この記事の手順に従えば、Azure Active Directory (Azure AD) を ID 管理サービスとして 1 回の連携した操作で使用するときに、Kubernetes のリソースをデプロイおよび設定することができます。
 
@@ -67,7 +67,7 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
     c. **[Web アプリ / API]** を選択します。
 
-    d. **[サインオン URL]** に `http://localhost` と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** に `http://localhost` と入力します。
 
     c. **Create** をクリックしてください。
 

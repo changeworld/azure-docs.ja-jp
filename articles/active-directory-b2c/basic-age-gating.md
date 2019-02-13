@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e3e60a7ee435cb23bd6a7f78d409691c94d6c49e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f8309424b8e1eed97d66fbd168444418cc1f98fd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153268"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562438"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -103,7 +103,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 1. 年齢制限が有効になっているユーザー フローを作成します。
 2. ユーザー フローを作成した後、メニューで **[プロパティ]** を選択します。
 3. **[年齢制御]** セクションで、**[有効]** を選択します。
-4. その後、未成年者として識別されたユーザーの管理方法を決定します。 **[Sign-up or sign-in]\(サインアップまたはサインイン\)** では、[`Allow minors to access your application`] または [`Block minors from accessing your application`] を選択します。 未成年者のブロックを選択した場合は、[`Send a JSON bcak to the application`] または [`Show an error message`] を選択します。 
+4. その後、未成年者として識別されたユーザーの管理方法を決定します。 **[Sign-up or sign-in]\(サインアップまたはサインイン\)** では、[`Allow minors to access your application`] または [`Block minors from accessing your application`] を選択します。 未成年者のブロックを選択した場合は、[`Send a JSON back to the application`] または [`Show an error message`] を選択します。 
 
 
 

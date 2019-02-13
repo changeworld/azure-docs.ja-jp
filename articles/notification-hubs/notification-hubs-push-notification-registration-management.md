@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/23/2019
-ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d87cd174e3fca7ce2088ad270a74b08de4ac7cb5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817835"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566155"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -33,7 +33,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 ### <a name="registrations"></a>登録
 
-登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
+登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または FCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
 
 > [!NOTE]
 > Azure Notification Hubs では、登録ごとに最大 60 個のタグがサポートされます。
@@ -295,8 +295,8 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
         case "apns":
             installation.Platform = NotificationPlatform.Apns;
             break;
-        case "gcm":
-            installation.Platform = NotificationPlatform.Gcm;
+        case "fcm":
+            installation.Platform = NotificationPlatform.Fcm;
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

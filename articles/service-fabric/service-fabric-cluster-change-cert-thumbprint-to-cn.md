@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 0501ccbf2b5d9124a82cb1758e09236e8ad8455a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9c1f8507cfa1f21214428e852e6ffed4d7703254
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197978"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564325"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -47,7 +47,7 @@ $SubscriptionId  =  "<subscription ID>"
 Login-AzureRmAccount -SubscriptionId $SubscriptionId
 
 $region = "southcentralus"
-$KeyVaultResourceGroupName  = "mykeyvaultgropu"
+$KeyVaultResourceGroupName  = "mykeyvaultgroup"
 $VaultName = "mykeyvault"
 $certFilename = "C:\users\sfuser\myclustercert.pfx"
 $certname = "myclustercert"
@@ -126,7 +126,7 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 
     また、*certificateThumbprint* を削除することを検討します。これはもう不要の可能性があります。
 
-2. **Microsoft.Compute/virtualMachineScaleSets** リソースで、拇印ではなく証明書の設定の共通名を使用するように仮想マシン拡張機能を更新します。  **virtualMachineProfile**->**extenstionProfile**->**extensions**->**properties**->**settings**->**certificate** で、`"commonNames": ["[parameters('certificateCommonName')]"],` を追加し、`"thumbprint": "[parameters('certificateThumbprint')]",` を削除します。
+2. **Microsoft.Compute/virtualMachineScaleSets** リソースで、拇印ではなく証明書の設定の共通名を使用するように仮想マシン拡張機能を更新します。  **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate** に `"commonNames": ["[parameters('certificateCommonName')]"],` を追加し、`"thumbprint": "[parameters('certificateThumbprint')]",` を削除します。
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

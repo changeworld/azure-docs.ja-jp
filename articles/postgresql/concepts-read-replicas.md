@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904014"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657877"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の読み取りレプリカ
 
@@ -21,6 +21,8 @@ ms.locfileid: "54904014"
 読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバー (マスター) から、同じ Azure リージョン内にある最大 5 つの読み取り専用サーバー (読み取りレプリカ) にデータをレプリケートできます。 読み取りレプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
 
 レプリカは、通常のスタンドアロン Azure Database for PostgreSQL サーバーと似た方法で管理できる新しいサーバーです。 読み取りレプリカごとに、仮想コア内のプロビジョニング済みコンピューティングとプロビジョニング済みストレージ (GB/月) に対して課金されます。
+
+[レプリカの作成と管理の方法について説明している操作方法のページ](howto-read-replicas-portal.md)をご覧ください。
 
 ## <a name="when-to-use-read-replicas"></a>読み取りレプリカを使用する場合
 読み取りレプリカ機能の目的は、読み取り集中型ワークロードのパフォーマンスとスケールの向上に役立つことです。 たとえば、書き込みワークロードをマスターに振り向けながら、読み取りワークロードはレプリカに分離することができます。
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 メッセージが表示されたら、ユーザー アカウントのパスワードを入力します。
 
 ## <a name="monitoring-replication"></a>レプリケーションを監視する
-Azure Monitor では**レプリカ間の最大ラグ**メトリックが使用できます。 このメトリックは、マスター サーバーのみで使用できます。 そのメトリックでは、マスターと最も遅れているレプリカの間の時間差が示されます。 
+Azure Monitor では**レプリカ間の最大ラグ**メトリックが使用できます。 このメトリックは、マスター サーバーのみで使用できます。 そのメトリックでは、マスターと最も遅れているレプリカの間のラグがバイト単位で示されます。 
 
 また、Azure Monitor では**レプリカ ラグ** メトリックも提供されます。 このメトリックは、レプリカのみで使用できます。 
 
@@ -101,7 +103,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 マスター サーバーで **azure.replication_support** を REPLICA に設定してから、レプリカを作成する必要があります。 このパラメーターの変更を有効にするには、サーバーを再起動する必要があります。 このパラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
-マスターとレプリカの間のレプリケーションを停止すると、変更を適用するためにレプリカが再起動されます。 その後、それをもう一度レプリカにすることはできません。
+マスターとレプリカの間のレプリケーションを停止することを選択した場合、この変更を適用するためにレプリカが再起動されます。 レプリカは読み取り/書き込みサーバーになります。 その後、それをもう一度レプリカにすることはできません。
 
 ### <a name="replicas-are-new-servers"></a>レプリカは新規サーバー
 レプリカは、新しい Azure Database for PostgreSQL サーバーとして作成されます。 既存のサーバーをレプリカに変更することはできません。

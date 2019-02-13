@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597626"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513945"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -48,6 +48,7 @@ ms.locfileid: "51597626"
 | 仮想ネットワークあたりの DNS サーバー数 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |65536 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |
+| 仮想マシンごとのプライベート IP アドレス |256 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |500K |
 | ネットワーク インターフェイス (NIC) |65536 |
 | ネットワーク セキュリティ グループ (NSG) |5000 |
@@ -69,6 +70,7 @@ ms.locfileid: "51597626"
 | パブリック IP アドレス - 動的 |(Basic) 1000 |サポートにお問い合わせください |
 | パブリック IP アドレス - 静的 |(Basic) 200 |サポートにお問い合わせください |
 | パブリック IP アドレス - 静的 |(Standard) 200 |サポートにお問い合わせください |
+| パブリック IP プレフィックスのサイズ (プレビュー) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。

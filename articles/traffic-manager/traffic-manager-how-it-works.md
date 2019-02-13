@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 7edd6acc090e4a41939811497a21886d91631fdf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229253"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567844"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -47,7 +47,7 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 ![Traffic Manager の DNS 構成][1]
 
 > [!NOTE]
-> Azure Traffic Manager でバニティ ドメインを使用する場合は、CNAME を使用して、バニティ ドメイン名が、Traffic Manager ドメイン名を指すようにする必要があります。 DNS の標準では、ドメインの "頂点" (またはルート) で CNAME を作成できません。 したがって "contoso.com" ("ネイキッド" ドメインと呼ばれることがあります) の CNAME を作成することはできません。 CNAME は、"contoso.com" ("www.contoso.com" など) の下にあるドメインについてのみ作成できます。 この制限を回避するために、シンプルな HTTP リダイレクトを使用して、"contoso.com" に対する要求を、"www.contoso.com" などの代替名に転送することをお勧めします。
+> Azure Traffic Manager でバニティ ドメインを使用する場合は、CNAME を使用して、バニティ ドメイン名が、Traffic Manager ドメイン名を指すようにする必要があります。 DNS の標準では、ドメインの "頂点" (またはルート) で CNAME を作成できません。 したがって "contoso.com" ("ネイキッド" ドメインと呼ばれることがあります) の CNAME を作成することはできません。 CNAME は、"contoso.com" ("www.contoso.com" など) の下にあるドメインについてのみ作成できます。 この制限を回避するために、DNS ドメインを [Azure DNS](../dns/dns-overview.md) 上にホストし、[エイリアス レコード](../dns/tutorial-alias-tm.md)を使用して Traffic Manager プロファイルを指すことをお勧めします。 または、シンプルな HTTP リダイレクトを使用して、'contoso.com' に対する要求を、'www.contoso.com' などの代替名に転送することもできます。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Traffic Manager でのクライアントの接続方法
 

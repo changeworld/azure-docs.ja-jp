@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004886"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658116"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -23,6 +23,8 @@ ms.locfileid: "51004886"
 - デバイス インベントリを最新の状態に維持します。
 - デバイス プロパティに格納された値を変更することで、デバイスのメタデータを最新の状態に維持します。
 - **[設定]** ページで特定のデバイスの設定を更新することで、デバイスの動作を制御します。
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="view-your-devices"></a>デバイスを表示する
 
@@ -116,7 +118,7 @@ IoT Central に接続するデバイスをプロビジョニングするには�
 
     [![エクスポート - 成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスの主キー/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
+1. エクスポートされた CSV ファイルでは、次の列情報が得られます。**デバイス ID、デバイス名、デバイスのプライマリ/セカンダリ キー、およびプライマリ/セカンダリ証明書の拇印**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

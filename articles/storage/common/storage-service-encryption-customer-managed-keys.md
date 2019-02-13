@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2990ce7a555fae54b8628f11cd90124860a5b983
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457430"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656738"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
 
@@ -47,7 +47,7 @@ Azure Blob Storage と Azure Files 用の SSE は、Azure Key Vault に統合さ
 ユーザーが管理するキーを SSE に使用するには、ストレージ アカウント ID をストレージ アカウントに割り当てる必要があります。 ID を設定するには、以下の PowerShell または Azure CLI コマンドを実行します。
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName $resourceGroup -Name $accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -60,16 +60,14 @@ az storage account \
 [論理的な削除] および [Do Not Purge]\(消去しない\) を有効にするには、以下の PowerShell または Azure CLI コマンドを実行します。
 
 ```powershell
-($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
-$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
-enableSoftDelete -Value 'True'
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName $vaultName).ResourceId).Properties `
+    | Add-Member -MemberType NoteProperty -Name enableSoftDelete -Value 'True'
 
 Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
-$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
-enablePurgeProtection -Value 'True'
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName $vaultName).ResourceId).Properties `
+    | Add-Member -MemberType NoteProperty -Name enablePurgeProtection -Value 'True'
 
 Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
@@ -126,8 +124,16 @@ URI からキーを指定するには、以下のステップを実行します�
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 $keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy `
+    -VaultName $keyVault.VaultName `
+    -ObjectId $storageAccount.Identity.PrincipalId `
+    -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
+    -AccountName $storageAccount.StorageAccountName `
+    -KeyvaultEncryption `
+    -KeyName $key.Name `
+    -KeyVersion $key.Version `
+    -KeyVaultUri $keyVault.VaultUri
 ```
 
 ### <a name="step-5-copy-data-to-storage-account"></a>手順 5:ストレージ アカウントにデータをコピーする
@@ -174,7 +180,7 @@ SSE は、すべてのストレージ アカウントで有効であり、Azure 
 そのアカウントは、Azure Resource Manager ストレージ アカウントですか? ユーザーが管理するキーでは、クラシック ストレージ アカウントはサポートされていません。 また、ユーザーが管理するキーを使用する SSE は、Resource Manager ストレージ アカウントでのみ有効にすることができます。
 
 **[論理的な削除] および [Do Not Purge]\(消去しない\) とは何ですか?ユーザーが管理するキーで SSE を使用するには、この設定を有効にする必要はありますか。**  
-ユーザーが管理するキーで SSE を使用するには、[論理的な削除] と [Do Not Purge]\(消去しない\) を有効にする必要があります。 これらの設定により、キーが誤って削除されたり、意図的に削除されたりしなくなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。 この設定を無効にすることはできません。
+ユーザーが管理するキーで SSE を使用するには、[論理的な削除] と [Do Not Purge]\(消去しない\) を有効にする必要があります。 これらの設定により、キーが誤って削除されたり、意図的に削除されたりしなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。 この設定を無効にすることはできません。
 
 **ユーザーがキーを管理する SSE を使用できるリージョンは一部だけですか?**  
 お客様がキーを管理する SSE は、すべてのリージョンの Azure Blob Storage と Azure Files で利用できます。

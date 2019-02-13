@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473104"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564342"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -52,6 +52,7 @@ ms.locfileid: "55473104"
     - 箱ひげ図
     - 散布図
     - バブル プロット
++ ポータルでは、実験のレポートが動的に生成されるようになりました。 ユーザーが実験に対して実行を発行すると、ログに記録されたメトリックとグラフを含むレポートが自動的に生成され、異なる実行を比較できます。 
 
 ## <a name="2019-01-14"></a>2019-01-14
 

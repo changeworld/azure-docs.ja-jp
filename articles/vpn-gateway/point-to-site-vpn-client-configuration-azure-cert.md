@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 0a9c5b5f0fd47f2fcf0c9df02789abae5f07f023
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412067"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564988"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -79,7 +79,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。 Azure に接続するすべての Mac でこれらの手順を完了する必要があります。
 
-1. **VpnServerRoot** ルート証明書を Mac にインポートします。 これを行うには、ファイルを Mac にコピーしてダブルクリックします。  
+1. **VpnServerRoot** ルート証明書を Mac にインポートします。 これを行うには、ファイルを Mac にコピーしてダブルクリックします。
 **[追加]** をクリックしてインポートします。
 
   ![証明書の追加](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -113,10 +113,13 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="extract-the-key-and-certificate"></a>キーと証明書を抽出する
+### <a name="1-generate-the-key-and-certificate"></a>1:キーと証明書の生成
 
 strongSwan の場合、キーと証明書をクライアント証明書 (.pfx ファイル) から抽出し、個別の .pem ファイルに保存する必要があります。
-次の手順に従ってください。
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
+
+### <a name="2-extract-the-key"></a>2.キーの抽出
 
 1. [OpenSSL](https://www.openssl.org/source/) から OpenSSL をダウンロードしてインストールします。
 2. コマンド ライン ウィンドウを開き、OpenSSL をインストールしたディレクトリに移動します (例: 'c:\OpenSLL-Win64\bin\')。
@@ -126,12 +129,12 @@ strongSwan の場合、キーと証明書をクライアント証明書 (.pfx �
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
   ```
 4.  次のコマンドを実行して公開証明書を抽出し、新しいファイルに保存します。
-
+ 
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>インストールと構成
+### <a name="install"></a>3:インストールと構成
 
 次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
 
@@ -160,14 +163,13 @@ strongSwan の場合、キーと証明書をクライアント証明書 (.pfx �
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
-### <a name="install-strongswan"></a>strongSwan のインストール
+### <a name="1-generate-the-key-and-certificate"></a>1:キーと証明書の生成
 
 次の CLI コマンドを使用するか、[GUI](#install) の strongSwan の手順を使用して、strongSwan をインストールします。
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install-and-configure"></a>インストールと構成
+### <a name="2-install-and-configure"></a>2.インストールと構成
 
 1. Azure portal から VPNClient パッケージをダウンロードします。
 2. ファイルを抽出します。

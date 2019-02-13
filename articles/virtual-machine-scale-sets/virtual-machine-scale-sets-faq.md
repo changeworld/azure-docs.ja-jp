@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 6b470bfbb97cb14ccb1f63b34218575b64e686de
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 85b05e50dd989ef8db737df0a43f29b20aefb596
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812592"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657758"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -61,7 +61,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
 
-**A.** 直接的にではありませんが、カスタム スクリプト拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます 。 拡張機能の実行順序についての詳しいガイダンスについては、[Azure の仮想マシン スケール セットで拡張機能が実行される順序](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)に関するブログ記事を参照してください。
+**A.** はい、スケール セット[拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)を使用できます。
 
 **Q.** Scale Sets は、Azure 可用性セットと連携できますか?
 
@@ -176,7 +176,7 @@ az sf cluster create -h
 
 Azure の最新の API でサポートされる証明書操作については、Key Vault のドキュメントを参照してください。
 
-証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
+証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Resource Manager テンプレートから、Linux 仮想マシン スケール セットで SSH 認証に使用する SSH キー ペアを指定することはできますか。
 
@@ -230,6 +230,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
             }
         ]
     }
+}
 ```
 
 linuxConfiguration の要素名 | 必須 | type | 説明
@@ -392,13 +393,13 @@ Log Analytics と統合する仮想マシン スケール セット テンプレ
 - VM アクセス拡張機能を使用してパスワードをリセットする。
 
     次の PowerShell サンプルを使用します。
-    
+
     ```powershell
     $vmssName = "myvmss"
     $vmssResourceGroup = "myvmssrg"
     $publicConfig = @{"UserName" = "newuser"}
     $privateConfig = @{"Password" = "********"}
-    
+
     $extName = "VMAccessAgent"
     $publisher = "Microsoft.Compute"
     $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
@@ -630,7 +631,9 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
                     }
                 ]
             }
-        ],
+        ]
+    }
+}
 ```
 
 この例では、しきい値に達すると、アラートが Pagerduty.com に送信されます。

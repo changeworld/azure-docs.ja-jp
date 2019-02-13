@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4b9c57785b9b3176def495af6bc5956d70fa5c35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971122"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657911"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -228,16 +228,46 @@ _提供終了日_ とは、その日を過ぎると HDInsight でクラスター
 
 * ブラジル南部と西日本を除くすべてのサポートされているリージョン:
 
-  | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark  | ML Server |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
-  | ヘッド: 推奨される VM サイズ |D3 v2、<br/> D4 v2、<br/> D12 v2 |D3 v2、<br/> D4 v2、<br/> D12 v2  | D13、<br/> D14 |A4 v2、<br/> A8 v2、<br/> A2m v2 |D12 v2、<br/> D13 v2、<br/> D14 v2 |D12 v2、<br/> D13 v2、<br/> D14 v2 |
-  | worker: 既定の VM サイズ |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
-  | worker: 推奨される VM サイズ |D3 v2、<br/> D4 v2、<br/> D12 v2 |D3 v2、<br/> D4 v2、<br/> D12 v2  | D13、<br/> D14 |D3 v2、<br/> D4 v2、<br/> D12 v2 |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |
-  | ZooKeeper: 既定の VM サイズ | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
-  | ZooKeeper: 推奨される VM サイズ | |A4 v2、<br/> A8 v2、<br/> A2m v2 | | A2 v2、<br/> A4 v2、<br/> A8 v2 | | |
-  | エッジ: 既定の VM サイズ | | | | | |D4 v2 |
-  | エッジ: 推奨される VM サイズ | | | | | |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |
+<html><body><table width="100%">
+<tr align="left"><th>クラスターの種類</th><th>Hadoop</th><th>HBase&nbsp;&nbsp;</th><th>Interactive Query</th><th>Storm&nbsp;&nbsp;</th><th>Spark&nbsp;&nbsp;</th><th>ML Server&nbsp;</th><th>Kafka&nbsp;</th></tr>
+
+<tr><td>ヘッド: 既定の VM サイズ</td><td>D12 v2</td><td>D12 v2</td><td>D13 v2</td><td>A3</td><td>D12 v2</td><td>D12 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="4" valign="top">ヘッド: 推奨される VM サイズ</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>A4 v2</td><td>D12 v2</td><td>D12 v2</td><td>A2M v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>A8 v2</td><td>D13 v2</td><td>D13 v2</td><td>D3 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>A2m v2</td><td>D14 v2</td><td>D14 v2</td><td>D4 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E32 v3</td><td>E4 v3</td><td>E4 v3</td><td>E4 v3</td><td>D12 v2</td></tr>
+
+<tr><td>worker: 既定の VM サイズ</td><td>D4 v2</td><td>D4 v2</td><td>D14 v2</td><td>D3 v2</td><td>D13 v2</td><td>D4 v2</td><td>4 D12v2 (ブローカーあたり 2 S30 ディスク)</td></tr>
+
+<tr><td rowspan="8" valign="top">worker: 推奨される VM サイズ</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>D3 v2</td><td>D4 v2</td><td>D4 v2</td><td>D13 v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>D4 v2</td><td>D12 v2</td><td>D12 v2</td><td>DS12 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>D12 v2</td><td>D13 v2</td><td>D13 v2</td><td>DS13 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E20 v3</td><td>E4 v3</td><td>D14 v2</td><td>D14 v2</td><td>E4 v3</td></tr>
+<tr><td></td><td></td><td>E32 v3</td><td></td><td>E16 v3</td><td>E16 v3</td><td>ES4 v3</td></tr>
+<tr><td></td><td></td><td>E64 v3</td><td></td><td>E20 v3</td><td>E20 v3</td><td>E8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E32 v3</td><td>E32 v3</td><td>ES8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E64 v3</td><td>E64 v3</td><td></td></tr>
+
+<tr><td>ZooKeeper: 既定の VM サイズ</td><td></td><td>A4 v2</td><td>A4 v2</td><td>A4 v2</td><td></td><td>A2 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="3" valign="top">ZooKeeper: 推奨される VM サイズ</td><td></td><td>A4 v2</td><td></td><td>A2 v2</td><td></td><td></td><td>A2M v2</td></tr>
+<tr><td></td><td>A8 v2</td><td></td><td>A4 v2</td><td></td><td></td><td>D3 v2</td></tr>
+<tr><td></td><td>A2m v2</td><td></td><td>A8 v2</td><td></td><td></td><td>E8 v3</td></tr>
+
+<tr align="left"><td>エッジ: 既定の VM サイズ</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+
+<tr><td rowspan="8" valign="top">エッジ: 推奨される VM サイズ</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D12 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D13 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D14 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E16 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E20 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E32 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E64 v3</td><td></td></tr>
+
+</table></body></html>
+
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
   | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML サービス |

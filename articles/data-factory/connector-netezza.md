@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 676eac6853c8cead40cb702855090eac5e2ce7d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025657"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658523"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする 
+# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Netezza からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
@@ -42,7 +42,7 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティを **Netezza** に設定する必要があります。 | はい |
-| connectionString | Netezza に接続するための ODBC 接続文字列。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| connectionString | Netezza に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | [はい] |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure Integration Runtime (データ ストアがパブリックにアクセスできる場合) を選択できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` です。 次の表では、設定できる他のプロパティについて説明します。
@@ -61,8 +61,37 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
         "type": "Netezza",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例: パスワードを Azure Key Vault に格納する**
+
+```json
+{
+    "name": "NetezzaLinkedService",
+    "properties": {
+        "type": "Netezza",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
+            },
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -77,7 +106,7 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 
 このセクションでは、Netezza データセットでサポートされているプロパティの一覧を示します。
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関するページをご覧ください。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関するページをご覧ください。
 
 Netezza からデータをコピーするには、データセットの **type** プロパティを **NetezzaTable** に設定します。 次のプロパティがサポートされています。
 
@@ -106,7 +135,7 @@ Netezza からデータをコピーするには、データセットの **type**
 
 このセクションでは、Netezza ソースでサポートされているプロパティの一覧を示します。
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。
 
 ### <a name="netezza-as-source"></a>ソースとしての Netezza
 
