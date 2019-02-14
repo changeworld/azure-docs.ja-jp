@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: ec37ea10e1318fb707a656587c5f91637ed1cf55
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 42d31f2dd62868713d48a9f6095de160c4b06ffe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173829"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル:Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
 
@@ -164,7 +165,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-mercer-benefitscentral-mbc-test-user"></a>Mercer BenefitsCentral (MBC) テスト ユーザーを作成する
 

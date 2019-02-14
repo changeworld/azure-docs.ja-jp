@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a3488cb1d9a9574ba8ebf5ab59033e87804ef82f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 06d60b6d5ee5a00c24add39871e3611ea5cdfbff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>チュートリアル:Azure Active Directory と RedVector の統合
 
@@ -166,7 +167,7 @@ RedVector で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-redvector-test-user"></a>RedVector のテスト ユーザーの作成
 

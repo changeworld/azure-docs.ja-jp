@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 337e4ee0c0b60e4b505fa9e4a2654b1a30b4c71f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b66dcc834ab089f28e6bb47c2905e6a2a3907091
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194128"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208760"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM での Azure AD ロール セキュリティ ウィザード
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608632"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978070"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -127,7 +127,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
     * `key.converter=` と `value.converter=` の行を次の値に変更します。
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
@@ -189,7 +189,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
         `myhubname` は、お使いの IoT ハブの名前に置き換えます。 応答は次のテキストのようになります。
 
-        ```text
+        ```json
         "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
         "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
         "Partitions": 2
@@ -239,14 +239,14 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
     エディターで、次のエントリを検索し、変更します。
 
-    * `Kafka.Topic=PLACEHOLDER`:`PLACEHOLDER` を `iotin` で置き換え IoT ハブから受信したメッセージは `iotin` トピックに配置されます。
+    * `Kafka.Topic=PLACEHOLDER`: を `iotin` で置き換え IoT ハブから受信したメッセージは `iotin` トピックに配置されます。
     * `IotHub.EventHubCompatibleName=PLACEHOLDER`:`PLACEHOLDER` をイベント ハブ互換の名前に置き換えます。
     * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`:`PLACEHOLDER` をイベント ハブ互換エンドポイントに置き換えます。
     * `IotHub.Partitions=PLACEHOLDER`:`PLACEHOLDER` を前の手順のパーティション数に置き換えます。
-    * `IotHub.AccessKeyName=PLACEHOLDER`:`PLACEHOLDER` を `service` で置き換え
+    * `IotHub.AccessKeyName=PLACEHOLDER`: を `service` で置き換え
     * `IotHub.AccessKeyValue=PLACEHOLDER`:`PLACEHOLDER` を `service` ポリシーの主キーに置き換えます。
     * `IotHub.StartType=PLACEHOLDER`:`PLACEHOLDER` を UTC 日付に置き換えます。 この日付は、コネクタがメッセージの検査を開始した日です。 日付の形式は `yyyy-mm-ddThh:mm:ssZ` です。
-    * `BatchSize=100`:`100` を `5` で置き換え この変更により、コネクタは IoT ハブに 5 つの新しいメッセージが入った後にメッセージを Kafka に読み取ります。
+    * `BatchSize=100`: を `5` で置き換え この変更により、コネクタは IoT ハブに 5 つの新しいメッセージが入った後にメッセージを Kafka に読み取ります。
 
     構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) をご覧ください。
 
@@ -272,7 +272,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
     エディターで、次のエントリを検索し、変更します。
 
-    * `topics=PLACEHOLDER`:`PLACEHOLDER` を `iotout` で置き換え `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。
+    * `topics=PLACEHOLDER`: を `iotout` で置き換え `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。
     * `IotHub.ConnectionString=PLACEHOLDER`:`PLACEHOLDER` を `service` ポリシーの接続文字列に置き換えます。
 
     構成例については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
@@ -349,7 +349,7 @@ t.runtime.WorkerSinkTask:262)
     > [!IMPORTANT]  
     > `"deviceId"` エントリの値をデバイスの ID に設定する必要があります。 次の例では、デバイスの名前は `fakepi` です。
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 

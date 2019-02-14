@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2b7604fbe306e606e56c9dd0a2b09b4641257dbc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263677"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203356"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -72,7 +73,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     > [!Note]
     > クラウド アプリ管理者とアプリ管理者のロールは、このシナリオでは使用できません。ディレクトリの読み取りと書き込みのために全体管理者のアクセス許可が必要になるためです。
 
-    d. 同意を受け入れます。 システムにもう一度ログインされます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 同意を受け入れます。 システムにもう一度ログインされます。
 
     e. バージョンを**ベータ版**に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
 
@@ -169,7 +170,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     c. **[名前]** ボックスに、必要に応じて属性名を入力します。 この例では、要求名として**ロールの名前**を使用します。
 
-    d. **[名前空間]** ボックスは空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** ボックスは空白のままにします。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -213,7 +214,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     c. 必要に応じて、ロールの説明、ロール値、またはロールの表示名を更新することで、ロールの値を更新します。
 
-    d. 必要なすべてのロールを更新したら、**[クエリの実行]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 必要なすべてのロールを更新したら、**[クエリの実行]** を選択します。
 
 ## <a name="delete-an-existing-role"></a>既存のロールを削除する
 
@@ -251,7 +252,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     c. 削除するロールの **IsEnabled** の値を **false** に設定します。
 
-    d. **[クエリの実行]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[クエリの実行]** を選択します。
 
     > [!NOTE]
     > msiam_access ユーザー ロールを持っていること、および ID が生成されたロールと一致していることを確認してください。

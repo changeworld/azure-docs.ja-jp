@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: e47b8d6490ddc9620574c6834378471c8c02bac7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58fa10307544791e5d53877d0e66c02c55a08752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190056"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル:Azure Active Directory と Recognize の統合
 
@@ -151,7 +152,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
     
     c. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
-    d. **[Slo target url]\(SLO ターゲット URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Slo target url]\(SLO ターゲット URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。 
     
     e. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[証明書]** ボックスに貼り付けます。
     
@@ -198,7 +199,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-recognize-test-user"></a>Recognize テスト ユーザーの作成
 

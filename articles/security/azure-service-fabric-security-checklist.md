@@ -4,7 +4,7 @@ description: この記事では、Azure Service Fabric セキュリティに関�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 49c043853cede0a20e3d61011ded40e57d7a0303
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 06a1903e5e27d748310c1b7846105b8069b73437
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389423"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111376"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric セキュリティのチェックリスト
 この記事では、Azure Service Fabric 環境のセキュリティ保護を支援するための使いやすいチェックリストを提供します。

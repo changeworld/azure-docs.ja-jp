@@ -17,12 +17,13 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1bf20faaf0626566b248a8c5cdba653b8b4e5a20
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 086aee5aba5bd35faecde61c34735d2db5c3a320
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081060"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189941"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 

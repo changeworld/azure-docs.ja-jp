@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 7fa0ec222a8e08c5dda74dba0fe437062bb3f433
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e0f14ed72ae1609d4d6605e4a53e88b8fe33f28
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>チュートリアル:Azure Active Directory と Lynda.com の統合
 
@@ -156,7 +157,7 @@ Lynda.com で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-lyndacom-test-user"></a>Lynda.com テスト ユーザーの作成
 

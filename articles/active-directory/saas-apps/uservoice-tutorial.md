@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: a2b8faaf3ee7d8f5dfca35f860dbd003f9e6072b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94e077e07796fc111c35b6571459a5e316096ebc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194340"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>チュートリアル:Azure Active Directory と UserVoice の統合
 
@@ -149,7 +150,7 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
     c. Azure Portal からコピーした **[サインアウト URL]** の値を **[SSO Remote Sign-Out]\(SSO リモート サインアウト\)** ボックスに貼り付けます。
  
-    d. Azure Portal からコピーした **[拇印]**  の値を  **[Current certificate SHA1 fingerprint]\(現在の証明書 SHA1 のフィンガープリント\)**  ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からコピーした **[拇印]**  の値を  **[Current certificate SHA1 fingerprint]\(現在の証明書 SHA1 のフィンガープリント\)**  ボックスに貼り付けます。
     
     e. **[認証設定の保存]** をクリックします。
 
@@ -187,7 +188,7 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-uservoice-test-user"></a>UserVoice テスト ユーザーの作成
 

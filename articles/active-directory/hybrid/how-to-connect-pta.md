@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4a1f220085f3f1429e9457e09a0279f62696293
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0e84324456aef12070cf9355fb17e132f9f99b80
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496212"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202793"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 

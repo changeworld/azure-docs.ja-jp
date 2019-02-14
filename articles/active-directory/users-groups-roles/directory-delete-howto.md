@@ -13,12 +13,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 2fa8b6573952220b214294cfd0e89e978f6d00b5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509356"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188496"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
 

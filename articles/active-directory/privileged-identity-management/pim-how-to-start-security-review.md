@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1cf3d29bd3d7af56f3e20c1d2344ed90095229bf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 33f2e3249d1b7ad0efc16dd0b9ced26379c3cae7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196669"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174471"
 ---
 # <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールのアクセス レビューを開始する
 ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するには、特権ロール管理者またはグローバル管理者が定期的にアクセス レビューを作成して、ユーザーに付与されたロールの確認を管理者に依頼する必要があります。 このドキュメントでは、Azure AD Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。

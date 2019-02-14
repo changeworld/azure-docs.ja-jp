@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 790aba3f523cadce97caa4c5c044276c349e6045
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f4e537bb6aa3b9bc4555f7eefb3cac6acd579b64
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769306"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233967"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 
@@ -37,6 +37,6 @@ ms.locfileid: "55769306"
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**GitHub の BulkExecutor ライブラリ**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API ドキュメント**| [.NET API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**作業開始**|Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
+|**作業開始**|[Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 

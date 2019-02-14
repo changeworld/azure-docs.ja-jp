@@ -4,7 +4,7 @@ description: Azure Media Services を使用して、スムーズ ストリーム
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828317"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992145"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
 Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](http://playerframework.codeplex.com/)を参照してください。 
 
@@ -69,9 +69,9 @@ Windows ストア アプリケーションの開発の詳細については、�
 | Name | 値 |
 | --- | --- |
 | テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
-| テンプレート |新しいアプリケーション (XAML) |
+| Template |新しいアプリケーション (XAML) |
 | Name |SSPlayer |
-| 場所 |C:\SSTutorials |
+| Location |C:\SSTutorials |
 | ソリューション名 |SSPlayer |
 | ソリューションのディレクトリを作成 |(オン) |
 

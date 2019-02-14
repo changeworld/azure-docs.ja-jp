@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81cdde409841ad3f5952147a7d3ab2b1adbcbd59
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a68deb2cb6de90c577f2d828e24a1747662c7e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474192"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>チュートリアル:Azure Active Directory と Aha!
 
@@ -126,7 +127,7 @@ Aha! で Azure AD のシングル サインオンを構成するには、次の�
 
     c. ログアウト URL
 
-### <a name="configure-aha-single-sign-on"></a>Aha! の シングル サインオンの構成
+### <a name="configure-aha-single-sign-on"></a>Aha! の [Single Sign-On]
 
 1. 別の Web ブラウザー ウィンドウで、Aha! 企業サイトに管理者としてログインします。 企業サイトにログインします。
 
@@ -156,7 +157,7 @@ Aha! で Azure AD のシングル サインオンを構成するには、次の�
 
     c. ダウンロードしたメタデータ ファイルをアップロードするには、**[参照]** をクリックします。
 
-    d. **[Update]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Update]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

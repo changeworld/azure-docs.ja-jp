@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 4de968949e9c043d4a005f23b5bfa86dd87f5b70
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66a51fda8ae9a5520189231e12fc574030209dc9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170252"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル:Azure Active Directory と Neota Logic Studio の統合
 
@@ -164,7 +165,7 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-neota-logic-studio-test-user"></a>Neota Logic Studio のテスト ユーザーの作成
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096910"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203201"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたはオンライン サービスの管理とは、特定の物理コンピューターまたは仮想マシンを特定のサービスまたはシステム専用にすることを意味していました。 サービスは階層として設計されていました。 "Web" 階層と、"データ" または "ストレージ" 階層があります。 アプリケーションには、要求が出入りするメッセージング階層と、キャッシュ専用の一連のコンピューターがあります。 ワークロードの階層または種類にはそれぞれ専用のコンピューターが使用されていました。データベースには 2 個の専用コンピューターが、Web サーバーには数個が使用されました。 特定の種類のワークロードがそのワークロード用のコンピューターの能力を超えた場合は、そのワークロード用に構成されたコンピューターの数をその階層に増やしていました。 ただし、すべてのワークロードを簡単にスケール アウトできる訳ではありません。通常はコンピューターを大きなコンピューターで置き換えるデータ層では特にそうですが、 簡単です。 マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。 まだ (楽しくはないにしても) 十分に簡単です。
@@ -43,10 +43,6 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 1. ルールの強制
 2. 環境の最適化
 3. その他のプロセスの支援
-
-クラスター リソース マネージャーの機能については、次の Microsoft Virtual Academy のビデオをご覧ください。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>説明
 従来の N 層 アプリケーションには、常に[ロード バランサー](https://en.wikipedia.org/wiki/Load_balancing_(computing))があります。 通常は、ネットワーク スタック内での位置によりネットワーク ロード バランサー (NLB) またはアプリケーション ロード バランサー (ALB) と呼ばれていました。 ロード バランサーには、F5 の BigIP のようなハードウェア ベースのものと、Microsoft の NLB のようなソフトウェア ベースのものがあります。 他の環境では、このロールに HAProxy、nginx、Istio、Envoy のようなものがありました。 これらのアーキテクチャでの負荷分散の仕事は、すべての異なるステートレス ワークロードが、(ほぼ) 同じ量の作業を受け取るようにすることです。 負荷分散にはさまざまな戦略があります。 一部のロード バランサーは、異なるサーバーにそれぞれ異なる呼び出しを送信していました。 その他のロード バランサーは、セッションの固定や持続性を提供するものでした。 より高度なロード バランサーは、予想されるコストと現状のコンピューターの負荷に基づいて、実際の負荷の推定またはレポートを使用して呼び出しをルーティングします。
