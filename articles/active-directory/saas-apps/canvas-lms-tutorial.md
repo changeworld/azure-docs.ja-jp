@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d9f4a616c1f182c3073c0febf2ba5c251655dc5e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ecc3ad9fcf1bb1aee9392f0dfcf40807b0edf508
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824339"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -151,7 +152,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     c. **[Log Out URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
@@ -242,7 +243,7 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
    c. **[ログイン]** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス (**brittasimon@contoso.com** など) を入力します。
 
-   d. **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
 
    e. **[ユーザーの追加]** をクリックします。
 

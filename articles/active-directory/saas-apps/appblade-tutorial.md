@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c78c7211bf0dc09a57604bd2728a940fe1633379
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2ced260b535dede1cc504caabf9a4e5adcf37e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475501"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>チュートリアル:Azure Active Directory と AppBlade の統合
 

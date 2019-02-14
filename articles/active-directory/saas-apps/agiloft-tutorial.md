@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b846aa0392df7e8203cb1cf549e39b768970d34b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf3f06db3586d15e5bf87ecdcae7110277864b55
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698247"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル:Azure Active Directory と Agiloft の統合
 

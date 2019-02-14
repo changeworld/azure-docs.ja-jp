@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: e600d9eb0cd100b1c2ab24b2545320a3e4cf1b39
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8303781e38ab2cb5284731f6ab038f038212810d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461034"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199546"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>チュートリアル:Azure Active Directory と Apptio の統合
 
@@ -115,7 +116,7 @@ Apptio で Azure AD のシングル サインオンを構成するには、次�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | 名前 |  ソース属性|
+    | Name |  ソース属性|
     | -------------- | -------------------- |
     | fullname       | user.displayname |
     | mail           | User.mail |

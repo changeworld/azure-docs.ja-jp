@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 918f711002530735b9b4e09273fac3021a97a091
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 895dc6f3ea2c55330cac05396d8ce12f851e0bdb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189138"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184569"
 ---
 # <a name="security-info-preview-overview"></a>セキュリティ情報 (プレビュー) の概要
 

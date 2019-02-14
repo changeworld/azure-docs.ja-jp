@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c9d3e5f00c76d37afbe883535e262d5bad283a3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b2aeb635da3bbf058d0f1acdae73227d4f2598a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658965"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>チュートリアル:Azure Active Directory と 360 Online の統合
 

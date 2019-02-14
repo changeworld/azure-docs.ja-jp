@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e0fbf7678ddac76d1a31c4bde4d75545b429add
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 85cd76288b6d744a201008aadde98ac5bb31ff86
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700698"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>チュートリアル:Azure Active Directory と Comm100 Live Chat の統合
 

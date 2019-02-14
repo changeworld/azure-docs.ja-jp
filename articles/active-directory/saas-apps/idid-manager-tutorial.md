@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 524d1fbe69dc2f9c233834fa961c8a9e0b7c2d00
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100021"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>チュートリアル:Azure Active Directory と iDiD Manager の統合
 

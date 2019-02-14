@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: ab1d083d7fea59284815276d030181ac1e435f72
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d639b169a1a6df0b3b1f8d3956031dd27bd46ea
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820013"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>チュートリアル:Azure Active Directory と Freshservice の統合
 

@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 805a917cbb4d867ee866ec99c8e90ea883527856
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0038dcc10aafa191121b2797f68d66a3e32b3fa7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100956"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207451"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>クイック スタート:Azure Active Directory からアプリケーションを削除する
 

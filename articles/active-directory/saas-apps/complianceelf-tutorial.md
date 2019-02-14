@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f29b87a314974154076a81572eca4b5db2d4fb30
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9cac67edba57e78e75ae9205439a2851c52aee01
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567351"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル:Azure Active Directory と Compliance ELF の統合
 

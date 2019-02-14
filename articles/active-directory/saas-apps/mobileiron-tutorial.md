@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: c70d0d077bb3b3002226bc05eae1fedebe29b03f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c438dd898acb4be1c32da3539642c95c9b0b09cb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827484"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル:Azure Active Directory と MobileIron の統合
 
@@ -211,7 +212,7 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (例: Simon)。
 
-    d. **[Done]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Done]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

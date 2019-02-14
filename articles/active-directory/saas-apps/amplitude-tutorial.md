@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a716df2445ed652313e0853ac3378409951b597
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c96d78bf797365ef1336211753d9fffcaa227781
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476548"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>チュートリアル:Azure Active Directory と Amplitude の統合
 

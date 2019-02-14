@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b4ef3e0b85b651e7f95d507169ba94f0fa29cf52
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 212238a16a36179a63eec9f239799a716d13c57e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812269"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル:Azure Active Directory と AppDynamics の統合
 
@@ -149,7 +150,7 @@ AppDynamics で Azure AD シングル サインオンを構成するには、次
 
     c. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** テキストボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** テキストボックスに貼り付けます。
 
     e. **[Save]** をクリックします。
 

@@ -4,7 +4,7 @@ description: Azure Security Center の主な機能とそのしくみについて
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: d1c948527c919ed8f81f16cf30a986591b414662
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263564"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109046"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 1758eb20c1ad1351259eb416c9fa22d4ca11d1d8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f3efd22eefa839544392b75e985ff5d16f7611b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565753"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>チュートリアル:Azure Active Directory と Condeco の統合
 

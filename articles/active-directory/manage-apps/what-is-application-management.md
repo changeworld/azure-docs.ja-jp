@@ -2,21 +2,22 @@
 title: Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs
 description: この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 10/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvinh
-ms.openlocfilehash: e9cbc29950b1e5363691d44aa6e34391c541762b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a65c42ff2d03946c021497e350836623a408ce7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155905"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197523"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
 

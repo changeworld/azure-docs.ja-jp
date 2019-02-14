@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 1bf11bc93065c4c590b5224a805b8e1dbeadbb61
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bd6b66d010702ca2c3c4892aa47beea76dc18c8d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816910"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合
 
@@ -139,7 +140,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. RoleDescriptor タグと、タグ間のすべての情報をファイルから削除します。
 
-    d. このファイルは、このドキュメントで後ほど使用するため、わかりやすい場所に保存してください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 このファイルは、このドキュメントで後ほど使用するため、わかりやすい場所に保存してください。
 
 2. Qlik Sense Qlik Management Console (QMC) に、仮想プロキシ構成を作成できるユーザーとして移動します。
 
@@ -165,7 +166,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. **[Session inactivity timeout (minutes)]** は、この仮想プロキシを経由する接続のタイムアウトです。
 
-    d. **[Session cookie header name]** は、認証が成功した後にユーザーが受け取る Qlik Sense セッション用のセッション識別子を格納する Cookie 名です。  この名前は一意である必要があります。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Session cookie header name]** は、認証が成功した後にユーザーが受け取る Qlik Sense セッション用のセッション識別子を格納する Cookie 名です。  この名前は一意である必要があります。
 
 7. [Authentication (認証)] メニュー オプションをクリックして表示します。  [Authentication (認証)] 画面が表示されます。
 
@@ -177,7 +178,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. **[SAML host URI]** フィールドに、ユーザーが SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。  ホスト名は、Qlik Sense サーバーの URI です。
 
-    d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
     e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
 

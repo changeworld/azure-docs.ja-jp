@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 15f362386197c76de578e2ffffae4c165ba59c67
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 939a6443fb0993592d9640c83b985ce761f0fa61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568894"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>チュートリアル:Azure Active Directory と AlertOps の統合
 
@@ -251,4 +252,3 @@ AlertOps で Azure AD シングル サインオンを構成するには、次の
 - [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

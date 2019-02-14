@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d2220071a87fdc2ca49cce3cffdcb58a1a5aa68f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079940"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197659"
 ---
 # <a name="about-microsoft-identity-platform"></a>Microsoft ID プラットフォームについて
 

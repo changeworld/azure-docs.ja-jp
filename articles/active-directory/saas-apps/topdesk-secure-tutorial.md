@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: fa66651351278d9df2a98fb5a10b6cb0cb0beb47
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fdf8b2caadf61b09a7405e595b488d535c3e220a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821976"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197601"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル:Azure Active Directory と TOPdesk - Secure の統合
 
@@ -165,7 +166,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     c. **X509Certificate** ノードの値をコピーします。
 
-    d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
 7. **[Public]** セクションで、**[Add]** をクリックします。
 
@@ -181,7 +182,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](http://www.topdesk.com/us/support)に問い合わせて秘密キーを取得できます。
 
-    d. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
 
     e. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
@@ -263,7 +264,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
     c. **[Location]** セクションでアカウントの **[Site]** を選択します。
 
-    d. **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
 
     e. **[Save]** をクリックします。
 

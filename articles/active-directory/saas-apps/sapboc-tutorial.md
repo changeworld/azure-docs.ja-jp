@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: ae2a28dea5fe240bbf216e8ec92f29c186c92255
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 927b1b963c97dc62e1776acbe0b2fa103928a32c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825342"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193188"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル:Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -234,7 +235,7 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
     c. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
 
     e. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 44d4988ff68d5ccca575fc29ec3f0b7dce0bf948
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8afd2201d55dfed94cf8f0dd34ca26870c0cc324
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765434"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>チュートリアル:Azure Active Directory と Appraisd の統合
 

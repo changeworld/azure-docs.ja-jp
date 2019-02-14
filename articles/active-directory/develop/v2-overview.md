@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1f707351f5f5887155148b58d5ed145dde785b40
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fb269df035bcc11583ebb7cff7d1ee2c3f6d8bca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095415"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208301"
 ---
 # <a name="about-v20"></a>v2.0 について
 

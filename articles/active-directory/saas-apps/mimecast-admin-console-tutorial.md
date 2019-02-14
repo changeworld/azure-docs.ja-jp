@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9ad9be1d1573bd3c57a3462f1f6ab53152a4469d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5a99f4bebec45b8cd59f6fa867f7d18a51c121da
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809736"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル:Azure Active Directory と Mimecast Admin Console の統合
 
@@ -153,7 +154,7 @@ Mimecast Admin Console で Azure AD シングル サインオンを構成する�
     
     c. **[プロバイダー]** で **[Azure Active Directory]** を選択します。
     
-    d. **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
     
     e. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
 

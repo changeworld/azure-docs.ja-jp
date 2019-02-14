@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 51ae45b313cbe6b3cb61777a1571a75047632ca9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 43153edc3e10f15e0fd17e35fd98a7ddd11bdf6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818457"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル:Azure Active Directory と Absorb LMS の統合
 
@@ -159,7 +160,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     c. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
 
-    d. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     e. **[Id Property]\(ID プロパティ\)** ボックスで、Azure AD でユーザー ID として構成した属性を選択します。 たとえば、Azure AD で *userPrincipalName* が選択されている場合、**[ユーザー名]** を選択します。
 
@@ -252,7 +253,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
     c. **[ユーザー名]** ボックスに、ユーザーの氏名 (たとえば、**Britta Simon**) を入力します。
 
-    d. **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
 
     e. **[パスワードの確認]** ボックスに、パスワードを再度入力します。
 

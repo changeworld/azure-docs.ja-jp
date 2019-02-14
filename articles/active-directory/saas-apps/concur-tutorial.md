@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 930ecc6374d2be05867b28af624280f4617d6482
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3dc83ef66e633205527c4a41ec2a0ff71d42e89
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827960"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>チュートリアル:Azure Active Directory と Concur の統合
 

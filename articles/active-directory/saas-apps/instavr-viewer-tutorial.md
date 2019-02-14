@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b0548ec2bb580c2898f610f00fd5ba911b314114
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823050"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>チュートリアル:Azure Active Directory と InstaVR Viewer の統合
 
@@ -147,7 +148,7 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
     c. **[Entity ID]\(エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    d. ダウンロードした証明書ファイルをアップロードするには、**[Update]\(更新\)** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ダウンロードした証明書ファイルをアップロードするには、**[Update]\(更新\)** をクリックします。
 
     e. ダウンロードしたフェデレーション メタデータ ファイルをアップロードするには、**[Update]\(更新\)** をクリックします。
 

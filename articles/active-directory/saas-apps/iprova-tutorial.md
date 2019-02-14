@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: e07f893296ec20e8c722fc977f93a38a797fe5c9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6576366df214304bb30c46fa65a4bc8bc783cedf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490058"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>チュートリアル:Azure Active Directory と iProva の統合
 

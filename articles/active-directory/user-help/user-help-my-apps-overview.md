@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9c6a8df29fd360773880594962fb8048602746e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d78ca30dfbcd8b74868eabd2a3d1e55b2c29ffb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177238"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198543"
 ---
 # <a name="my-apps-portal-overview"></a>マイ アプリ ポータルの概要
 

@@ -3,19 +3,19 @@ title: クイック スタート:画像から顔の表情を認識する - Emoti
 description: Emotion API with Java for Android の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: a3250771c51495890c54060dc46b8bd88a8f54af
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9755507aa858289daff7f297c4013b27f8258b61
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228680"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233525"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート:画像から顔の表情を認識するアプリを作成する。
 

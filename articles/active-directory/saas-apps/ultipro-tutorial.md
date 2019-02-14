@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 1cefc69ee3fa997a5f8a924a6ed443a8d300ba0b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f1620f9e48602c6843692669d9f4c0e5e488e58d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808104"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>チュートリアル:Azure Active Directory と UltiPro の統合
 
