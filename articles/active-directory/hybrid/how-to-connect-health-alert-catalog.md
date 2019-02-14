@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 2d5bb5458388918ab9ff3ccdbdba3da80598e062
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4fd790550569fa34f6b2bb598221ab2e8ba3d784
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488035"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187727"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health のアラート カタログ 
 

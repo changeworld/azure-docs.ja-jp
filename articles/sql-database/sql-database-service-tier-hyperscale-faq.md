@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810067"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099780"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -243,7 +243,7 @@ Azure Storage からデータを読み取り、ハイパースケール デー�
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>SQL Database ハイパースケールへの移行がサポートされる最も古い SQL Server バージョンとは
 
-SQL Server 2005。 詳しくは、「[単一データベースまたはプール データベースに移行する](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
+SQL Server 2005。 詳しくは、「[単一データベースまたはプール データベースに移行する](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>SQL Database ハイパースケールで他のデータ ソース (Aurora、MySQL、Oracle、DB2、その他のデータベース プラットフォーム) からの移行がサポートされるか
 

@@ -11,12 +11,13 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a24281f2b01b53ddb165d15bca4d8d43c26c5c05
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159856"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204442"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 

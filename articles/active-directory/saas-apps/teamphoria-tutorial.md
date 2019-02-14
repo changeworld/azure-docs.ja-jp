@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: d7a0523a1e436a086be90896da4d16fab55ce9ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0f32a4ebd5a28c1054c19c578f3ba82e3b4951a9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174450"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル:Azure Active Directory と Teamphoria の統合
 
@@ -148,7 +149,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     c. **証明書**: Azure portal から先ほどダウンロードした証明書をメモ帳で開き、内容をコピーして、こちらのボックス内に貼り付けます。
 
-    d. **エントリ ポイント**: Azure portal から先ほどコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **エントリ ポイント**: Azure portal から先ほどコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
     e. オプションを **[ON (オン)]** に切り替え、**[保存]** をクリックします。
 
@@ -181,7 +182,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-teamphoria-test-user"></a>Teamphoria テスト ユーザーの作成
 
@@ -209,7 +210,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
     c. **[姓]** ボックスに「**Simon**」と入力します。
 
-    d. **[INVITE 1 USER (1 ユーザーを招待)]** をクリックします。 ユーザーをシステムに作成するには、そのユーザーが招待を受け入れる必要があります。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[INVITE 1 USER (1 ユーザーを招待)]** をクリックします。 ユーザーをシステムに作成するには、そのユーザーが招待を受け入れる必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

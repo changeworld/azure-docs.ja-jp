@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: d8daa1747323abe8115e2b1b06db906a48199426
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178840"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection のリスク イベント リファレンス
 

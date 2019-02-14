@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27a7a792c297d45f81efbda406761f3f4467be9d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158708"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>チュートリアル:Azure Active Directory と Montage Online の統合
 
@@ -167,7 +168,7 @@ Montage Online で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-montage-online-test-user"></a>Montage Online のテスト ユーザーの作成
 

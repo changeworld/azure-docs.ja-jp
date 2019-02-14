@@ -13,12 +13,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7e283127fa9effe04f59f31c836f471020c9dacc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5651d5e37613abcef8c8f5448af38637f91ebe30
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506944"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193630"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>動的グループの作成と状態チェックを行う
 

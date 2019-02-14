@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 80cca629ea49d8843580c23f74d1d2076aa623e3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246713"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201790"
 ---
 # <a name="infrastructure-backup-service-reference"></a>インフラストラクチャ バックアップ サービスのリファレンス
 

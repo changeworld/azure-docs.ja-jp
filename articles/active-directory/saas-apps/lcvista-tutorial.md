@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6265af8e013674d33d0f3db8c3e08b5779911742
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a511e17785898f7c52d942c057a67914e6fdfbca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190363"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル:Azure Active Directory と LCVista の統合
 
@@ -143,7 +144,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     c. Azure ポータルからダウンロードしたメタデータ (XML) から、値 **X509Certificate** をコピーして **[x509 Certificate (x509 証明書)]** セクションに貼り付けます。
 
-    d. **[First Name Attribute (名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[First Name Attribute (名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
 
     e. **[Last Name Attribute (姓属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を貼り付けます。
 
@@ -186,7 +187,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-lcvista-test-user"></a>LCVista テスト ユーザーの作成
 

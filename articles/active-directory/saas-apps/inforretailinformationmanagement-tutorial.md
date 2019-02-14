@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: ca5dc17391dd86444a43331c0b161bb375a1ab58
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 928fe956dbdc5020f273e59f4aaf3e4b690384f9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178564"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>チュートリアル:Azure Active Directory と Infor Retail - Information Management の統合
 
@@ -170,7 +171,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-infor-retail--information-management-test-user"></a>Infor Retail - Information Management テスト ユーザーの作成
 

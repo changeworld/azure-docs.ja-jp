@@ -148,7 +148,7 @@ items:
     - name: X-EC-Debug ヘッダー
       href: cdn-http-debug-headers.md
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.cdn
+    href: /powershell/module/az.cdn
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.cdn
   - name: Java
@@ -181,9 +181,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-cdn
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
-ms.openlocfilehash: 654405e764e7f37dd4d12b2bf55ddb035861f01f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: dbb216e848309dc696e1923166deced18827f08e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232193"

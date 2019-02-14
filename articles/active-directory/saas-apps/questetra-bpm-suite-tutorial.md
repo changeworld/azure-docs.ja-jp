@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 72932687df5efd09249bd144bf048b23d7c39f4c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: db8438bfa567c207e543ed716a2940bce991cc19
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル:Azure Active Directory と Questetra BPM Suite の統合
 
@@ -154,7 +155,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
     
     c. **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
-    d. **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
     
     e. **[NameID format]\(NameID の形式\)** ボックスに、「`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`」と入力します。
 
@@ -195,7 +196,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-questetra-bpm-suite-test-user"></a>Questetra BPM Suite テスト ユーザーの作成
 
@@ -215,7 +216,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
    
     c. **[Password]\(パスワード\)** ボックスに、そのユーザーの**パスワード**を入力します。
     
-    d. **[新しいユーザーの追加]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[新しいユーザーの追加]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

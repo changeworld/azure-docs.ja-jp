@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: e4a488dbcb4a980abfdc1433ae0c2b2f28f94308
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f42ff2fe8c3ff03019203eac7e6c02c495e5493
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177442"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>チュートリアル:Azure Active Directory と Heroku の統合
 
@@ -138,7 +139,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Single Sign On Page]** で、**[Upload Metadata]** をクリックします。
 
-    d. Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
     e. セットアップが成功すると、管理者には確認のダイアログ ボックスと、エンド ユーザー用の SSO ログインの URL が表示されます。 
 
@@ -182,7 +183,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-heroku-test-user"></a>Heroku テスト ユーザーの作成
 

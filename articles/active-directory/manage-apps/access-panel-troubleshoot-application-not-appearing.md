@@ -3,8 +3,8 @@ title: 割り当てたアプリケーションがアクセス パネルに表示
 description: アプリケーションがアクセス パネルに表示されない原因のトラブルシューティングを行います
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviwer: japere
-ms.openlocfilehash: 3a63f506b2b2072c385759044cd3a0c581a54185
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21ed169003caded8ef80689ceec61f6d2fc4305c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177714"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178993"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>割り当てたアプリケーションがアクセス パネルに表示されない
 
@@ -203,13 +204,13 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 ギャラリー以外のアプリケーションを構成するには、Azure AD Premium を用意する必要があり、アプリケーションが SAML 2.0 をサポートする必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
 
--   [Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)](#configuring-single-sign-on)
+-   [Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
 -   [ユーザー識別子を選択し、アプリケーションに送信するためのユーザー属性を追加する](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Azure AD メタデータと証明書を取得する](#download-the-azure-ad-metadata-or-certificate)
 
--   [アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)](#configuring-single-sign-on)
+-   [アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)](#configure-the-application-for-password-single-sign-on-1)
 
 #### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)
 

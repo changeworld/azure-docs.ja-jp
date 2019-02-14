@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ccb2e6be481c27661543ff0dc19e5b60b2aa8d8a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ce28f3667689134a2de177ed5c0dfae810dc1889
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178292"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル:Azure Active Directory と GaggleAMP の統合
 
@@ -147,7 +148,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
     
     c. **[Identity Provider Single Sign-On URL]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
     
-    d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
     
     e. **[Save]** をクリックします。
 
@@ -180,7 +181,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-gaggleamp-test-user"></a>GaggleAMP テスト ユーザーの作成
 

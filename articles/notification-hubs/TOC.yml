@@ -113,7 +113,7 @@ items:
   - name: .NET
     href: /dotnet/api/microsoft.azure.notificationhubs
   - name: PowerShell
-    href: /powershell/module/azurerm.notificationhubs
+    href: /powershell/module/az.notificationhubs
   - name: REST API
     href: /rest/api/notificationhubs
   - name: Resource Manager テンプレート
@@ -136,9 +136,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: ce941c63797a14d8fb629c958ad3fb741f34fc0c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b874aadd82357deff5fe6063e033c0702a49adad
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196788"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244283"

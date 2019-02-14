@@ -4,7 +4,7 @@ description: ビデオ要約では、ソース ビデオから興味深いスニ
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: aba01314b26f11df41aef25215697389bc7f46b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786011"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004810"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する  
 ## <a name="overview"></a>概要
 **Azure Media Video Thumbnails** メディア プロセッサ (MP) では、長いビデオの要約をプレビューするだけのお客様に役に立つビデオの要約を作成することができます。 たとえば、サムネイルにマウス ポインターを合わせたときに、お客者は短い "要約ビデオ" を参照できます。 構成プリセットを通じて **Azure Media Video Thumbnails** のパラメーターを調整することにより、MP の強力なショット検出と連結テクノロジを使用して、わかりやすいサブクリップをアルゴリズムに生成できます。  
 
@@ -53,10 +53,10 @@ ms.locfileid: "33786011"
 
 現在、次のパラメーターを変更できます。
 
-| Param | [説明] |
+| Param | 説明 |
 | --- | --- |
-| outputAudio |結果ビデオにオーディオが含まれているかどうかを指定します。 <br/>使用可能な値: True または False。 既定値は True です。 |
-| fadeInFadeOut |フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。  <br/>使用可能な値: True または False。  既定値は True です。 |
+| outputAudio |結果ビデオにオーディオが含まれているかどうかを指定します。 <br/>使用できる値は、以下のとおりです。True または False。 既定値は True です。 |
+| fadeInFadeOut |フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。  <br/>使用できる値は、以下のとおりです。True または False。  既定値は True です。 |
 | maxMotionThumbnailDurationInSecs |結果ビデオ全体の長さを指定する整数。  既定値は、元のビデオの再生時間によって異なります。 |
 
 次の表に、 **maxMotionThumbnailInSecs** が使用されていない場合の既定の再生時間を示します。

@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 52b0b552eaced0187adbf0fd1db612aa7eb23a5b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4a3127cde66ce7de9a3920d238193a3a3b2225be
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665763"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195789"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>更新:Azure AD パスワード保護の監視とログ記録
 

@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 09/17/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 43eb3a5e7c1d99c42f6690c0747d1599d6e1e19f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f9d0ab9c8d8e7fde8afeb479546857c732bd40
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493455"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210647"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 

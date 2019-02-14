@@ -145,10 +145,6 @@ items:
     items:
     - name: 概要
       href: retrain-machine-learning-model.md
-    - name: プログラムで再トレーニングを行う
-      href: retrain-models-programmatically.md
-    - name: PowerShell で再トレーニングを行う
-      href: retrain-new-web-service-using-powershell.md
     - name: 既存の Wweb サービスの再トレーニングを行う
       href: retrain-existing-resource-manager-based-web-service.md
     - name: トラブルシューティング
@@ -203,9 +199,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: ac8621773366d7e6dff26f053172e2831fa2d2a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 982f2794d22f830c967607108b31fbfe0d0de359
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211480"
+ms.locfileid: "56238438"

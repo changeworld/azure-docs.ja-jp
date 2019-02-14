@@ -439,12 +439,13 @@ items:
   - name: "\"Microsoft アカウントでのサインイン\" を試してみる"
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: ヘルプの表示
+    displayName: support, help options
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 667076d5bafc1b7cc3577a49446af58aee806b87
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9b02dc22bbe27b02d608130eac72a00c7d1471c3
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251709"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238455"

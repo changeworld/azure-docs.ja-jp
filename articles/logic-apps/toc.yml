@@ -331,7 +331,7 @@ items:
   - name: 使用量の測定
     href: logic-apps-pricing.md
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.logicapp
+    href: /powershell/module/az.logicapp
   - name: REST API
     href: /rest/api/logic/
   - name: Resource Manager テンプレート
@@ -375,9 +375,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 9b0690f760495af31b1afcee295c637cee17c228
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a0f802723c1c2c74dfb0599ace922ac61e1c2a64
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508251"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243928"

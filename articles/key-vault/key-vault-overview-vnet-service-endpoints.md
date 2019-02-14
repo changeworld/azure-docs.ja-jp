@@ -5,17 +5,17 @@ description: Key Vault の仮想ネットワーク サービス エンドポイ�
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: mbaldwin
+manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 2c035b7c6bbd687ca2922d5f52e2ddaa0c96e50c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351426"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108583"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 

@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 7a6c8ee2b7b54457f5b470858603088438f51c73
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a2f4ecbe8a183636bfc4e463e4c074ab94e2d01
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182818"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
@@ -86,7 +87,7 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
  c. **[SAML 署名証明書]** で、**[新しい証明書の作成]** をクリックします。
 
- d. Box.com テナントが Azure AD を ID プロバイダーとして使用するようにする構成を開始するには、メタデータ ファイルをダウンロードし、ローカル ドライブに保存します。
+ d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Box.com テナントが Azure AD を ID プロバイダーとして使用するようにする構成を開始するには、メタデータ ファイルをダウンロードし、ローカル ドライブに保存します。
 
  e. メタデータ ファイルを Box サポート チームに転送します。このチームが、シングル サインオンの構成を行ってくれます。
 

@@ -527,6 +527,8 @@ items:
           href: insights/container-insights-optout.md
         - name: コンテナー ライブ ログの表示
           href: insights/container-insights-live-logs.md
+        - name: アラート
+          href: insights/container-insights-alerts.md
         - name: エージェント管理
           href: insights/container-insights-manage-agent.md
         - name: トラブルシューティング
@@ -1023,9 +1025,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: b1d837248f84eb3050788924f4bb0e0077845abe
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 91909bef0803ad4046f605cda38a4a6dbb813f68
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993573"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236823"

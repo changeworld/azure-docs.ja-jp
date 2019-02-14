@@ -86,8 +86,6 @@ items:
       href: kqlmagic.md
     - name: Grafana でデータを視覚化する
       href: grafana.md
-    - name: Apache Spark コネクタ
-      href: spark-integration.md
   - name: トラブルシューティング
     items:
     - name: クラスターを作成する
@@ -128,9 +126,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: bb323692e7f21d1cbdffb8b70ea2e9c4165678e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae147580c4d1d4bca961adfcd7a01da3b71997f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863722"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233916"

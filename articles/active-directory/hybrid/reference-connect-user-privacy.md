@@ -14,12 +14,13 @@ ms.topic: reference
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cd28174a4e8719031d96016b88d5230d4490beb7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74cdbd704f589ca4c045f672bbc49fa4460003a0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485196"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175848"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097913"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116458"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -31,7 +31,7 @@ ms.locfileid: "55097913"
 ## <a name="authentication-and-authorization"></a>認証と権限承認
 多くの場合、サービスによって公開されるリソースや API は、特定の信頼できるユーザーやクライアントだけに制限する必要があります。 認証は、ユーザーの ID を確実に確認するためのプロセスです。  承認は、API またはサービスを一部の承認されたユーザーは利用できるようにし、他のユーザーは利用できないようにするプロセスです。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 API レベルの信頼性を判断するために、最初に行う手順は認証です。 認証は、ユーザーの ID を確実に確認するためのプロセスです。  マイクロサービスのシナリオでは、通常、認証は一元的に処理されます。 API ゲートウェイを使用している場合は、ゲートウェイに[認証をオフロード](/azure/architecture/patterns/gateway-offloading)することができます。 このアプローチを使用する場合は、メッセージがゲートウェイから送られて来たのかどうかを認証する追加のセキュリティが設定されていない限り、個々のサービスに直接 (API Gateway なしで) アクセスできないようにしてください。
 
 サービスに直接アクセスできる場合は、ユーザーを認証するために、Azure Active Directory のような認証サービスか、セキュリティ トークン サービス (STS) として機能する専用認証マイクロサービスを使用することができます。 信頼性の判断は、セキュリティ トークンまたは cookie を使用して、サービス間で共有されます。 
@@ -110,7 +110,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [クラスター セキュリティについて学習する](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

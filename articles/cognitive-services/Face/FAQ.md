@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Face API サービスに関してよく寄せられる質問に対する回答を紹介します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: sbowles
-ms.openlocfilehash: b4b2c09ef608da7c52d415d5f1f2215ddc31c41a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ceaffebde65402db385ff8b906d77c2ddadc6f97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223325"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860952"
 ---
 # <a name="face-api-frequently-asked-questions"></a>Face API についてよく寄せられる質問
 

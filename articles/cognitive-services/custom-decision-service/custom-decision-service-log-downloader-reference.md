@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Azure Custom Decision Service によって生成されたログ ファイルをダウンロードします。
 services: cognitive-services
 author: marco-rossi29
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 227caaa1b726210fd498596d716aa41365a63c7a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228119"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869672"
 ---
 # <a name="logdownloader"></a>LogDownloader
 

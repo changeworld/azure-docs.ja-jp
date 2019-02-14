@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: f0549fa20427e3d27f4638bdf9463d1ed46bd226
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 33a625e82f41bee1b8e3980192076d24a7471953
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189444"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>チュートリアル:Azure Active Directory と SensoScientific Wireless Temperature Monitoring System の統合
 
@@ -138,7 +139,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
     
     c. [Single Sign-On Service URL (シングル サインオン サービス URL )] ボックスに、Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
-    d. [Sign-Out URL (シングル サインアウト サービス URL )] ボックスに、Azure ポータルからコピーした**サインアウト URL** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [Sign-Out URL (シングル サインアウト サービス URL )] ボックスに、Azure ポータルからコピーした**サインアウト URL** を貼り付けます。
 
     e. Azure ポータルからダウンロードした証明書を参照してアップロードします。
     
@@ -176,7 +177,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>SensoScientific Wireless Temperature Monitoring System テスト ユーザーの作成
 

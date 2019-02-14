@@ -17,12 +17,13 @@ ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 5484f939cfc3e1187f282251fdc181a13af275b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 109ababa78292bf8b172144174af3216f3844941
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080652"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203660"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 このドキュメントでは、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)の各種機能のコンテキストと説明を提供します。

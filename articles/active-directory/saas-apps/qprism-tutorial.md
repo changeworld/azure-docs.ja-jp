@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b59efe3faa00a172e5948f18b06337eedd2a1f6b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 286af8b927f488acaf2877e753f6e4689c4b000f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184803"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル:Azure Active Directory と QPrism の統合
 

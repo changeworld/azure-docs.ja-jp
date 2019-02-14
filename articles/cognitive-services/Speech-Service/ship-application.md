@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してアプリを作成する方法について説明します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: b37ba55e0d9e1a93994f90630f92075deb4af7e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206444"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857942"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 

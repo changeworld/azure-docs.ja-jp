@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: aa995693f1b6b970c29c3c807667c7f730210fda
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d7bbedef98e82ab87a081e010093d9f2e6b59be
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル:Azure Active Directory と Bambu by Sprout Social の統合
 
@@ -172,7 +173,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-bambu-by-sprout-social-test-user"></a>Bambu by Sprout Social テスト ユーザーの作成
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Custom Decision Service の完全な API ガイド。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 3476c353a2b5c5eeaaa7406712bebd178ac5c1e7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2feaa6fa87b6e788683ad543bfb7780b0e517506
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227745"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867343"
 ---
 # <a name="api"></a>API
 

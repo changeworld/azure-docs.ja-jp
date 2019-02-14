@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7194565e760ca06c734e4e7e45191c3c321706a6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819639"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238387"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -16,6 +16,7 @@ metadata:
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
+  ms.subservice: managed-instance
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview

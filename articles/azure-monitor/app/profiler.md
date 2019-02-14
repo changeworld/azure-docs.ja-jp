@@ -3,21 +3,21 @@ title: Application Insights を使用したライブ Azure App Service アプリ
 description: Application Insights Profiler を使用して Azure App Service でライブ アプリをプロファイルします。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: daba72639e190bb255dd515237d25c20df433901
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: cweining
+ms.openlocfilehash: 58ee4b7d615c70845e1239d4ee98b086b2124c77
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075024"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874187"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 

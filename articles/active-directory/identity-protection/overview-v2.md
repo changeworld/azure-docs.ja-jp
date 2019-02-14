@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 9cb1c5ebf8809ca3f4f977b513ecaa7909b401c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452279"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204510"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection (更新版) とは
 
@@ -210,11 +211,11 @@ Identity Protection では、デプロイに関する管理アクティビティ
 
 | 機能 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
 | --- | --- | --- | --- |
-| ユーザー リスクのポリシー | [はい] | いいえ  | いいえ  |
-| サインインのリスク ポリシー | [はい] | いいえ  | いいえ  |
+| ユーザー リスクのポリシー | はい | いいえ  | いいえ  |
+| サインインのリスク ポリシー | はい | いいえ  | いいえ  |
 | 危険なユーザー レポート | フル アクセス | 限定的な情報 | 限定的な情報 |
 | リスクの高いサインイン レポート | フル アクセス | 限定的な情報 | 限定的な情報 |
-| MFA 登録ポリシー | [はい] | いいえ  | いいえ  |
+| MFA 登録ポリシー | はい | いいえ  | いいえ  |
 
 
 

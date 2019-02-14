@@ -12,12 +12,13 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 3db75187160be9a1e4ca985e207f84db71cf75d7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093208"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182240"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory を使用してグループのメンバーを追加または削除する
 Azure Active Directory を使用して、グループのメンバーの追加と削除を続けることができます。

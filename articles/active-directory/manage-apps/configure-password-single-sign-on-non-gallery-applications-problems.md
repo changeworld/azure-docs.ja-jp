@@ -3,8 +3,8 @@ title: ギャラリー以外のアプリケーションのパスワード シン
 description: ギャラリー以外の (Azure AD アプリケーション ギャラリーに表示されていない) カスタム アプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題についての説明
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: f7d6d381177bd2bd6b50e933b7a5157364fa0dfd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6bacefaada8ab0d63bb17d22f67b91c51a789de8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203999"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172333"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 

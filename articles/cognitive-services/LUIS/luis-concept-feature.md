@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 89d18ebd2f52467a19a76940044fea3ae254970a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770165"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882456"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 

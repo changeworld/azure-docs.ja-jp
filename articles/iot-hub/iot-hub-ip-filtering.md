@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734251"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232216"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -72,7 +72,7 @@ IP フィルター規則を削除するには、グリッド内で 1 つまた�
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLI を使用した IP フィルターの取得および更新
 
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) を使用して、IoT Hub の IP フィルターを取得および更新できます。 
+[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、IoT Hub の IP フィルターを取得および更新できます。 
 
 IoT Hub の現在の IP フィルターを取得するには、以下を実行します。
 
@@ -121,7 +121,7 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Azure PowerShell を使用した IP フィルターの取得および更新
 
-[Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0) を使用して、IoT Hub の IP フィルターを取得および設定できます。 
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) を使用して、IoT Hub の IP フィルターを取得および設定できます。 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,7 +145,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>REST を使用した IP フィルター規則の更新
 
-Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate)の `properties.ipFilterRules` を参照してください。
+Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)の `properties.ipFilterRules` を参照してください。
 
 
 ## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価

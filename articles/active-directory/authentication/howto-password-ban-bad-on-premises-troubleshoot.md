@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 7474027368949d5ad2202881ac68096fac2b8bd2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5727965373752d40e3ce508c1bc79046c2b3b70b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693906"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177753"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>更新:Azure AD パスワード保護のトラブルシューティング
 

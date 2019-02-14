@@ -4,24 +4,25 @@ description: この記事では、複数のストレージ アカウントで Me
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 8c67ce4fd9597c66e795269972d2048ddd5a60c1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b538e1b2d37c92e1712da517ab5f3c46f5e2c3a3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886341"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992187"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
-Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理  
+
+1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
 
 * アセットを複数のストレージ アカウントに負荷分散します。
 * 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
@@ -29,12 +30,13 @@ Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカ
 この記事では、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/azurerm.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
 
 ## <a name="considerations"></a>考慮事項
+
 Media Services アカウントに複数のストレージ アカウントをアタッチする場合は、次の考慮事項が適用されます。
 
-* Media Services アカウントにアタッチされているすべてのストレージ アカウントは、Media Services アカウントと同じデータ センターにある必要があります。
-* 現時点では、ストレージ アカウントが指定された Media Services アカウントにアタッチされると、デタッチできなくなります。
+* Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 Media Services アカウントと同じ場所にあるストレージ アカウントを使用することをお勧めします。
+* ストレージ アカウントは指定された Media Services アカウントにアタッチされると、デタッチできなくなります。
 * プライマリ ストレージ アカウントは、Media Services アカウントの作成時に示されているものです。 現時点では、既定のストレージ アカウントを変更することはできません。 
-* 現時点では、クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
+* クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
 
 その他の考慮事項
 

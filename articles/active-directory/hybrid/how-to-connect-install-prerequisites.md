@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 85b26190e16c9eb6e810c8463ce87a41fd9ad443
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9925f2ed9f5b24a4113c30f1d00eb3a5bbed8eb5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496800"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205343"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。

@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b5af004cda60111259e95e833d6661e1d9d67ff1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487253"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164330"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同期: 技術的概念
 この記事は、 [アーキテクチャの理解](how-to-connect-sync-technical-concepts.md)に関するトピックの概要です。

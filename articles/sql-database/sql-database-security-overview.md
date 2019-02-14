@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728404"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235990"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -98,7 +98,7 @@ SQL Database Auditing はデータベース アクティビティを追跡し、
 
 ### <a name="transport-layer-security-tls-encryption-in-transit"></a>トランスポート層セキュリティ TLS (転送中の暗号化)
 
-SQL Database では、[トランスポート層セキュリティ](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
+SQL Database では、[トランスポート層セキュリティ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
 
 > [!IMPORTANT]
 > Azure SQL Database では、すべての接続に対して常に暗号化 (SSL/TLS) が適用され、すべてのデータがデータベースとクライアントの間の "移動中" に暗号化されることが保証されます。 これは、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく行われます。

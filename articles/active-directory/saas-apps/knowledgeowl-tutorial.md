@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 84f6b42e932838413aafd7fa142067e1c72584ed
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168738"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory と KnowledgeOwl の統合
 
@@ -196,7 +197,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
     c. **[SP Login URL]\(SP ログイン URL\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[サインオン URL] および [応答 URL]** ボックスに貼り付けます。
 
-    d. **[IdP entityID]** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[IdP entityID]** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     e. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -248,7 +249,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-knowledgeowl-test-user"></a>KnowledgeOwl テスト ユーザーの作成
 

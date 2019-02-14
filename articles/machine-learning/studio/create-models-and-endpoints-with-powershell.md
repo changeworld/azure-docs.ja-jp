@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492829"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244300"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio モデルと Web サービス エンドポイントを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "55492829"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>トレーニング実験のセットアップ
-[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)にある[トレーニング実験](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio](https://studio.azureml.net) ワークスペースで開いてください。
+[Cortana Intelligence ギャラリー](http://gallery.azure.ai)にある[トレーニング実験](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio](https://studio.azureml.net) ワークスペースで開いてください。
 
 > [!NOTE]
 > この例に沿って理解するためには、無料ワークスペースではなく標準のワークスペースを使用する必要があります。 エンドポイントは顧客ごとに 1 つ作成します (合計 10 エンドポイント)。無料のワークスペースはエンドポイント数が 3 個に限定されているため、標準のワークスペースが必要となります。 無料のワークスペースしかない場合は、拠点数が 3 つのみとなるように以下のスクリプトを変更してください。
@@ -63,7 +63,7 @@ ms.locfileid: "55492829"
 そのためには、キャンバスの下にある **[Web サービスの設定]** をクリックし、**[予測 Web サービス]** を選びます。 これでスコア付け実験が作成されます。
 これを Web サービスとして利用するためには、若干の調整を加える必要があります。 入力データからラベル列 "cnt" を削除すると共に、出力内容はインスタンス ID および対応する予測値に限定します。
 
-この作業を省略する場合は、既に作成済みの[予測実験](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1)をギャラリーで開いてもかまいません。
+この作業を省略する場合は、既に作成済みの[予測実験](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1)をギャラリーで開いてもかまいません。
 
 Web サービスをデプロイするには、予測実験を実行し、キャンバスの下にある **[Deploy Web Service]** (Web サービスのデプロイ) ボタンをクリックします。 スコア付け Web サービスには "Bike Rental Scoring" という名前を付けます。
 

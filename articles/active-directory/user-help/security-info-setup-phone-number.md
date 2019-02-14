@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 494557ce3836fde295ac583821dbc7024207a8a4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c8daa50886c583f26a2d931854d7132eb2ece4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171917"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177208"
 ---
 # <a name="set-up-security-info-to-use-phone-calls-preview"></a>電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)
 

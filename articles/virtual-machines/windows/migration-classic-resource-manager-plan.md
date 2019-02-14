@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566239"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982898"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -131,23 +131,25 @@ Azure Resource Manager には多くの優れた機能が用意されています
     - ルート テーブル
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **コンピューティング** *(コア、可用性セット)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **ネットワーク** *(仮想ネットワーク、静的パブリック IP、パブリック IP、ネットワーク セキュリティ グループ、ネットワーク インターフェイス、ロード バランサー、ルート テーブル)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **ストレージ** *(ストレージ アカウント)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Azure Resource Manager API 調整制限** - 環境の規模が十分に大きい ( VNET に 400 台を超える VM がある環境など) 場合は、Azure Resource Manager における既定の書き込みの API 調整制限 (現時点では `1200 writes/hour`) に達する可能性があります。 移行を開始する前に、サブスクリプション用にこの制限を引き上げるためのサポート チケットを作成する必要があります。

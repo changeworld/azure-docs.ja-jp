@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: ed1104d3e5ddf54657fb1f7b5c84a85ea855d95c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 90b54a6a2a6e74e49e2401a288383e3de061a1a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55148590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167033"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>方法:多要素認証登録ポリシーを構成する
 

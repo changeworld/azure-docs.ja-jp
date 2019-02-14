@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627761"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245407"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
 このスクリプトは、請求額を見積もるために Azure Blob ストレージ内のコンテナーのサイズを計算します。 スクリプトは、コンテナー内の Blob のサイズを合計します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -85,7 +85,7 @@ For-Each Signed Identifier[512 bytes]
 
 * BLOB 毎に 124 のバイトのオーバーヘッドがありますが、これには次のものが含まれます。
     - 最終変更時刻
-    - サイズ
+    - Size
     - Cache-Control
     - Content-Type
     - Content-Language

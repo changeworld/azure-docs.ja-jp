@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765197"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982677"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -67,8 +67,6 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 
 カスタム DateTime パス パターンを使用すると Hive Streaming 規則に合致する出力形式を指定できます。これにより、Azure Stream Analytics は、ダウンストリーム処理するためのデータを Azure HDInsight と Azure Databricks に送信できるようになります。 カスタム DateTime パス パターンは、BLOB 出力の [パス プレフィックス] フィールドで `datetime` キーワードと書式指定子を使用することで、簡単に実装されます。 たとえば、「 `{datetime:yyyy}` 」のように入力します。
-
-この [Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) へのリンクを使用して、BLOB ストレージ出力のプレビューに対してカスタム DateTime パス パターンを有効にする機能フラグを切り替えます。 この機能は、メイン ポータルでまもなく有効になる予定です。
 
 ### <a name="supported-tokens"></a>サポートされているトークン
 

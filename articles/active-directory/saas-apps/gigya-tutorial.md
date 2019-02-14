@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: a4141dc5a4d7be663e382e5aadb80d42a653f807
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2ab947e17569f809ed4532c99dad7350b6b6814a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179262"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>チュートリアル:Azure Active Directory と Gigya の統合
 
@@ -147,7 +148,7 @@ Gigya で Azure AD のシングル サインオンを構成してテストする
    
     c. **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
    
-    d. **[Name ID Format]\(名前 ID 形式\)** ボックスに、Azure Portal からコピーした**名前識別子形式**の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Name ID Format]\(名前 ID 形式\)** ボックスに、Azure Portal からコピーした**名前識別子形式**の値を貼り付けます。
    
     e. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
    
@@ -187,7 +188,7 @@ Gigya で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-gigya-test-user"></a>Gigya テスト ユーザーの作成
 

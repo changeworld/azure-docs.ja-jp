@@ -317,7 +317,7 @@ structure:
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
-| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |[はい] |NA |
+| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
 | style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
 | anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency が Hour で interval が 1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
 | offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ  |NA |
@@ -590,7 +590,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
@@ -1398,7 +1398,7 @@ Azure Search インデックスにデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 **例:**
@@ -1420,7 +1420,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 |はい |
 
 **例:**
@@ -3316,7 +3316,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
-| host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。 |[はい] |
+| host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。 |はい |
 | userid |サーバーにアクセスするユーザーの ID を指定します。 |No (encryptedCredential を選択する場合) |
 | password |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
 | encryptedCredential |New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
@@ -3728,7 +3728,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | Url |HDFS への URL |はい |
-| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |[はい] |
+| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
@@ -3864,7 +3864,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- | --- |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ  |
-| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |[はい] |
+| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
@@ -3877,7 +3877,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4081,7 +4081,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4743,7 +4743,7 @@ Web データセットを定義するには、データセットの **type** を
 |:--- |:--- |:--- |
 | type |データセットの型。 **データセット** |はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| Index |リソースのテーブルのインデックス。 HTML ページでテーブルのインデックスを取得する手順については、「HTML ページのテーブルのインデックスを取得する」セクションを参照してください。 |[はい] |
+| Index |リソースのテーブルのインデックス。 HTML ページでテーブルのインデックスを取得する手順については、「HTML ページのテーブルのインデックスを取得する」セクションを参照してください。 |はい |
 
 #### <a name="example"></a>例
 
@@ -5636,9 +5636,9 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | [はい] |
-| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | [はい] |
-| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| [はい] |
+| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | はい |
+| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | はい |
+| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| はい |
 | PackageFile | zip ファイルの名前。 この例では **customactivitycontainer/MyDotNetActivity.zip** が該当します。 | はい |
 | extendedProperties | 独自に定義して .NET コードに渡すことができる拡張プロパティ。 この例では、**SliceStart** 変数に、SliceStart というシステム変数に基づいた値が設定されます。 | いいえ  |
 

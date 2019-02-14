@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API で構造化クエリ式を使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222698"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860136"
 ---
 # <a name="structured-query-expression"></a>構造化クエリ式
 
@@ -37,8 +37,8 @@ ms.locfileid: "55222698"
 | Int32/Int64/Double | equals | Year=2000 |
 | Int32/Int64/Double | starts_with | Year='20'... (any decimal value starting with "20") |
 | Int32/Int64/Double | is_between | Year&lt;2000 <br/> Year&lt;=2000 <br/> Year&gt;2000 <br/> Year&gt;=2000 <br/> Year=[2010,2012) *(左の境界値のみを含む: 2010、2011)* <br/> Year=[2000,2012] *(両方の境界値を含む: 2010、2011、2012)* |
-| 日付 | equals | BirthDate='1984-05-14' |
-| 日付 | is_between | BirthDate&lt;='2008/03/14' <br/> PublishDate=['2000-01-01','2009-12-31'] |
+| Date | equals | BirthDate='1984-05-14' |
+| Date | is_between | BirthDate&lt;='2008/03/14' <br/> PublishDate=['2000-01-01','2009-12-31'] |
 | Guid | equals | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 

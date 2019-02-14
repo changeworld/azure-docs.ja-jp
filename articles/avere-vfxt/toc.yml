@@ -49,9 +49,11 @@ items:
       href: avere-vfxt-configure-dns.md
     - name: Avere vFXT のデプロイを所有者以外に承認する
       href: avere-vfxt-non-owner.md
-ms.openlocfilehash: ee0f2be03f44e1d458c118f5d5d963824922f99a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+  - name: ホワイトペーパー
+    href: avere-vfxt-whitepapers.md
+ms.openlocfilehash: add9b123138ee1242426c2ced94ed4fd2d9a742e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300330"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246087"

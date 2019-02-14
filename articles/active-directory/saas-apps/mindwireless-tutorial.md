@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: deb7cf8368c5830bd575c617adf857448cfe2e48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f10e2bb6e6c3e3521d9a2f1257dae401fae674ee
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166495"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>チュートリアル:Azure Active Directory と mindWireless の統合
 
@@ -137,7 +138,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
     
     e. **[OK]** をクリックします。
     
@@ -185,7 +186,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-mindwireless-test-user"></a>mindWireless のテスト ユーザーの作成
 

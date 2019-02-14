@@ -13,12 +13,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510988"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194735"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -66,7 +67,7 @@ Azure AD ディレクトリ内にこのようなリソースがある場合は�
 
 ### <a name="forcedelete-option"></a>ForceDelete オプション
 
-[Azure AD 管理センター](https://aad.portal.azure.com)で、または [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete) を使用しで、ドメイン名を **ForceDelete** (強制削除) できます。 これらのオプションでは、非同期操作が使用され、"user@contoso.com" のようなカスタム ドメイン名からのすべての参照が、"user@contoso.onmicrosoft.com" などの既定の初期ドメイン名に更新されます。 
+[Azure AD 管理センター](https://aad.portal.azure.com)で、または [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta) を使用しで、ドメイン名を **ForceDelete** (強制削除) できます。 これらのオプションでは、非同期操作が使用され、"user@contoso.com" のようなカスタム ドメイン名からのすべての参照が、"user@contoso.onmicrosoft.com" などの既定の初期ドメイン名に更新されます。 
 
 Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対する参照が 1000 個未満であることを確認し、Exchange がプロビジョニング サービスであるすべての参照を、[Exchange 管理センター](https://outlook.office365.com/ecp/)で更新または削除する必要があります。 これには、Exchange のメールが有効なセキュリティ グループと配布リストが含まれます。詳しくは、「[Removing mail-enabled security groups](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)」(メールが有効なセキュリティ グループの削除) に関する記事をご覧ください。 また、次のいずれかの場合、**ForceDelete** 操作は成功しません。
 
@@ -112,4 +113,4 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 
 * [カスタム ドメイン名を追加する](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Exchange 管理センターで Exchange のメールが有効なセキュリティ グループを削除する、または Azure AD でカスタム ドメイン名を削除する](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Microsoft Graph API でカスタム ドメイン名を強制削除する](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)
+* [Microsoft Graph API でカスタム ドメイン名を強制削除する](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 41c31a987e766551682b2c90c00473ea44215dd5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c169f8d84ca5654af29f359bf8af20f2b8b58b5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150175"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>チュートリアル:Azure Active Directory と M-Files の統合
 
@@ -150,7 +151,7 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロトコル]** は **[HTTPS]** を選択します。 
 
-    d. **[認証]** フィールドで、**[特定の Windows ユーザー]** を選択します。 署名の入力を求められます。 Azure AD の資格情報を入力します。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[認証]** フィールドで、**[特定の Windows ユーザー]** を選択します。 署名の入力を求められます。 Azure AD の資格情報を入力します。 
 
     e. **[Vault on Server] \(サーバーの資格情報コンテナー)** は、サーバー上の対応する資格情報コンテナーを選択します。
  
@@ -189,7 +190,7 @@ M-Files で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-m-files-test-user"></a>M-Files のテスト ユーザーの作成
 

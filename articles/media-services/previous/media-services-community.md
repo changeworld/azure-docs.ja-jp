@@ -4,7 +4,7 @@ description: 'この Azure Media Services (AMS) コミュニティ ページで�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: dc6a1259eb3bb15793d0b48a883d4bbfb69e48c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 641218e6a9a366d8c3b0d269223a98c08b860bdb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782701"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001155"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
+# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
+
 この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われています。 新しいビデオとポッドキャストを参照したり、質問してフィードバックをもらったりすることができます。   
 
 ## <a name="videos-and-podcasts"></a>ビデオとポッドキャスト
@@ -54,7 +55,7 @@ Azure Media Services の主要なサポート メール アドレスは **amshel
 
 次の表は、機能のサブチームの電子メール アドレス一覧です。
 
-| Feature | 電子メール |
+| 機能 | 電子メール |
 | --- | --- |
 | Azure Media Analytics |amsanalytics@microsoft.com |
 | Azure Media Player |ampinfo@microsoft.com |

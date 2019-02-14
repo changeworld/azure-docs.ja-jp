@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 5898f084ea3de4e0f947283100bae55d4499d382
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ba4f1d41497af8f57a343eacc92c5da7d2488d07
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166885"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163701"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル:Azure Active Directory と Rally Software の統合
 
@@ -183,7 +184,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-rally-software-test-user"></a>Rally Software テスト ユーザーの作成
 
@@ -209,7 +210,7 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
     c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     e. **[Save & Close]** をクリックします。
 

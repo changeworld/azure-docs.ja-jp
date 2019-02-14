@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: f3190cb7f837464dd211acb127c4ab6f86e7a9f4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89412040fdea32746574d8ae5bada9c017617b80
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153302"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル:Azure Active Directory と TOPdesk - Public の統合
 
@@ -167,7 +168,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
     
     c. **X509Certificate** ノードの値をコピーします。
     
-    d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
 1. **[Public]** セクションで、**[Add]** をクリックします。
     
@@ -183,7 +184,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     c. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
 
-    d. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
     e. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
@@ -222,7 +223,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-topdesk---public-test-user"></a>TOPdesk - Public のテスト ユーザーの作成
 
@@ -246,7 +247,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
  
     c. アカウントの **[Site]** を選択します。
  
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!NOTE]
 > 他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

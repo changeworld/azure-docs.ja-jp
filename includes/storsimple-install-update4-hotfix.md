@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a775a38d15876850b8a821f9e827e0dd0c3772b6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 46cf3b01a3c5e653d5588e463f26540fef15f4e1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55147966"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889478"
 ---
-<!--author=alkohli last changed: 01/23/18-->
-
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
 次の手順を実行して、Microsoft Update カタログからソフトウェア更新プログラムをダウンロードします。

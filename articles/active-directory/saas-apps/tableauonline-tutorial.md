@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 6849787d0051d40e77b952da77eb61a7c7372751
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eee7adb7c4c0efc8a455d8dc74bc723644d006f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186928"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル:Azure Active Directory と Tableau Online の統合
 
@@ -148,7 +149,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
    ![Azure AD Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
     
-    d. **user.givenname** 値をクリックします 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **user.givenname** 値をクリックします 
     
     e. **[名前空間]** ボックスから値をコピーします。
 
@@ -192,7 +193,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-tableau-online-test-user"></a>Tableau Online のテスト ユーザーの作成
 

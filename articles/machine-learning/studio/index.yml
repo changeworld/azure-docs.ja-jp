@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52ac3f12fac5de3bbb772d943ea1bada5c18c1eb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b8ce62533af1cf8f921a8a8eafb8e781821c2604
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453452"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233814"
 documentType: LandingData
 title: Machine Learning Studio のドキュメント
 metadata:
@@ -40,7 +40,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="walkthrough-develop-predictive-solution">予測ソリューションを作成およびデプロイする</a>
+    - html: <a href="tutorial-part1-credit-risk">予測ソリューションを作成およびデプロイする</a>
     - html: <a href="azure-ml-customer-churn-scenario">顧客離れの例</a>
 - title: リファレンス
   items:

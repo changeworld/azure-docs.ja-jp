@@ -14,12 +14,13 @@ ms.subservice: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: bac5ddc1ee6f002781dc73845773379804a2ac1c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1a6a137796c24f97364b044484d2be739ae5412d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179397"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171175"
 ---
 # <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Azure AD アクセス レビューでアクセス レビューを始める
 

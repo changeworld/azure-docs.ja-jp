@@ -94,8 +94,6 @@ items:
     href: Use-display-requirements.md
 - name: リソース
   items:
-  - name: FAQ
-    href: bing-web-search-resource-faq.md
   - name: API キーを取得する
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
   - name: Bing Web Search エンドポイント
@@ -118,9 +116,9 @@ items:
       href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 31705085d83fa95fd0cedb28035ceaed0fef2c59
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 75b3f3b85150d4db586281c45a8ba3ff1f35971f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507103"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236041"

@@ -81,6 +81,7 @@ items:
 - name: 概念
   items:
   - name: ベスト プラクティス
+    displayName: phrase list, pattern, intent, utterance, version, do, don't, example utterances, iteration, cycle, correct, right
     href: luis-concept-best-practices.md
   - name: アプリの計画
     displayName: simple, hierarchical, composite, prebuilt, list, regex, regular expression
@@ -386,9 +387,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 905a208980407c6456d8ad36ed4e952a12f50435
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74dc0dff5127e1841de9515149d8ef0de68b34d6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200583"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244625"

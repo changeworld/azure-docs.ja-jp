@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 1a10bf35618d7f543957d1f839618397f08698d4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095431"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194990"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
