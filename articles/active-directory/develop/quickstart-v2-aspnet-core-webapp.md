@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 12/05/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88b17f5095d0335ef9c6eb180cd0e640681ae9a5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101432"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204714"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート: ASP.NET Core Web アプリに Microsoft サインインを追加する
 

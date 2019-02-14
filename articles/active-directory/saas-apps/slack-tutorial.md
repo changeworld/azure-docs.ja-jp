@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 934acf44fe2c36e9f7c2f2d2fdb3b191806d0014
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: da97fa9cba7fb89b7a326d20c70f2851ead0193d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769442"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル:Azure Active Directory と Slack の統合
 

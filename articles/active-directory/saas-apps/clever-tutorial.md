@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ed7306b172947131199646f6fb4b1801194ab5e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e033c5f3bf183fb52973a093a521ef9dc79297e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700147"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>チュートリアル:Azure Active Directory と Clever の統合
 
