@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d11674632599afa190237b2a4a516d7cce6e2150
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 849a7544995650d5e2b733d9787c96c3dab217c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810246"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>チュートリアル:Azure Active Directory と Firstbird の統合
 

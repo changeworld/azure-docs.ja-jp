@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f93f6d01019b38fc157732ee221a5f73a156e809
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58767438e7a1faf7e1e783fc95a33a35ece3774a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810399"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -131,7 +132,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     
     | Name | ソース属性 | 
     | ---------------| --------------- |
-    | アカウント  | `account id` |
+    | account  | `account id` |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -228,7 +229,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     c. **[New Role]** をクリックします。
 
-    d. 新しいロールの**名前**を入力します:
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しいロールの**名前**を入力します:
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-new-role.png)
 

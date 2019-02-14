@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: a6d768b9c5f0260d490c8fab95a4fb5913584f02
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27a2997d548bfed5190a12b82b960b3462ee0825
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568906"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>チュートリアル:Azure Active Directory と Brandfolder の統合
 

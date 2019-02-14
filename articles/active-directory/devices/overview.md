@@ -16,12 +16,13 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 950692a92152ac302ec573522fc5327f3acb91a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192474"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理とは
 

@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 3e16b9d77a881c98ff0a5ee26f405a64561f5c75
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8d25b6fa5101f8a19e30d68cb5ce58125b4e30f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080165"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178517"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル:多要素認証を B2B ゲスト ユーザーに適用する
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: f8f47201149ce2384eb0adcef86936dc9d017c85
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1f0165ae77a3f933b76a2e61e30414455ddcf06b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813595"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
 
@@ -176,7 +177,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     c. **[SAML Login URL]** \(SAML ログイン URL\) テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
@@ -264,7 +265,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

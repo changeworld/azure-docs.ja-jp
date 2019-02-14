@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: b67cf5b8c4f3973f2978742df32d7cd73ce0fc72
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e53afdfc4d2d8288a612cfb461751e6f78ebb2fa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812851"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179265"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリへのアカウント追加に関する概要
 

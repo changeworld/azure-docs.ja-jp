@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
-ms.openlocfilehash: cb639f04cec28596c528691066e60b087ca7b09a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 948121ad6b3a0f666fcc8fa64096bab91927b474
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808878"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>チュートリアル:Azure Active Directory と Dropbox for Business の統合
 
@@ -161,7 +162,7 @@ Dropbox for Business で Azure AD シングル サインオンを構成するに
 
     c. **[Upload certificate]\(証明書のアップロード\)** をクリックし、Azure portal からダウンロードした **Base64 でエンコードされた証明書ファイル**を参照します。
 
-    d. **[Copy link]\(リンクのコピー\)** をクリックし、コピーした値を Azure portal の **[Dropbox for Business のドメインと URL]** セクションの **[サインオン URL]** テキストボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Copy link]\(リンクのコピー\)** をクリックし、コピーした値を Azure portal の **[Dropbox for Business のドメインと URL]** セクションの **[サインオン URL]** テキストボックスに貼り付けます。
 
     e. **[Save]** をクリックします。
 

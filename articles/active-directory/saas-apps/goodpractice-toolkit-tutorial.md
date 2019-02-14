@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e5833c7eaf06a1c2b897aa13b0a742b845e0a227
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 538392c1812cfe6d703249fbe1802fd38b552bc2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820021"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>チュートリアル:Azure Active Directory と GoodPractice Toolkit の統合
 

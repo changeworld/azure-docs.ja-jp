@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 84f3c6cf7cba3d5678eb128acae6c72283c507bc
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9d6071b4c0034a9bd69e326205bda2ec3bcb377
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105449"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>チュートリアル:Azure Active Directory と IDrive の統合
 
