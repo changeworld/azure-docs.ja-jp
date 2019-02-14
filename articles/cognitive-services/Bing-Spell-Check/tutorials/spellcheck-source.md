@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 単一ページの Web アプリケーションで Bing Spell Check API を使用する方法を示すチュートリアルのソース コードです。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 8c3e520179d93632c1b69d2109d83197f76c549a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 80eed4872e0c5d0f19ed2e2ef7e2a56df51fad51
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186520"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869230"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 

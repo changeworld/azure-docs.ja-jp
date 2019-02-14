@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: bd84187d22b9c335a80a243c38a9a08054eab0f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 72dc8db48736d586a6db171d27f308339674d73c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458273"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル:Azure Active Directory と Autotask Workplace の統合
 
@@ -154,7 +155,7 @@ Autotask Workplace で Azure AD シングル サインオンを構成するに�
 
     c. **[I confirm this information is correct and I trust this IdP]\(この情報が正しいことを確認し、この IdP を信頼します\)** チェック ボックスをオンにします。
 
-    d. **[APPROVE]\(承認\)** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[APPROVE]\(承認\)** をクリックします。
 
 > [!Note]
 > Autotask Workplace の構成でサポートを必要とする場合は、[こちらのページ](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)を参照して、Workplace アカウントでサポートを受けてください。

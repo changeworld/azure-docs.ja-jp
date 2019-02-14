@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Entity Search SDK for Node.js を使用してエンティティを検索する場合は、このクイック スタートを使用します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: db906319c04c96fded7417c932beacf7feea5b5b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 04ec95e891b4e9333949a3a0f40dcc9df88e49e7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757821"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865857"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>クイック スタート:Bing Entity Search SDK for Node.js を使用して検索要求を送信する
 

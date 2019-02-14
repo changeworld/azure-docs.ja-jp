@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 07385089e64977243929de15ab53f84520029495
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13c7e4b42cc3de0910589af3091eab10500ecce5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54806889"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>チュートリアル:Azure Active Directory と Innoverse の統合
 
@@ -138,7 +139,7 @@ Innoverse で Azure AD シングル サインオンを構成するには、次�
 
     c. **[名前空間]** を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 

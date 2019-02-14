@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: fd1975239feb6d17d68e7932094a9a161a29f735
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5add648da98af6329e454e92f6e8db3b74d211b8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826515"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>チュートリアル:Azure Active Directory と Deskradar の統合
 

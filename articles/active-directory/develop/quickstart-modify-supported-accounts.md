@@ -16,12 +16,13 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 2d10dcde0a0e35a3e717cde34048437b6119fbf6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a2c68d607e7afc2e3eac675511734c8d054c427
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101234"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174199"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>クイック スタート:アプリケーションによってサポートされるアカウントを変更する (プレビュー)
 

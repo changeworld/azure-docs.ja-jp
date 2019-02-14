@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 1326dbfc4257f0b6634976ca76a0667c908f951f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e8c2d8ed5fdb2b79d1b5af4253351766422c9d93
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル:Azure Active Directory と Ariba の統合
 

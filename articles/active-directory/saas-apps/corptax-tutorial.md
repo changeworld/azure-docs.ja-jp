@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f372d0a1a9d16801103380559332bff282c7e096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fb436616d9e4da4a4de140c11bd1410893cd088e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818219"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>チュートリアル:Azure Active Directory と CorpTax の統合
 

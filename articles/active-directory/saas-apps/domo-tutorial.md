@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: b11daa7cd078fe8f828d39b7da34bb19d3970a74
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7c638b0d407ef4ea1563d138a7cb0716fdabfe46
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770135"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル:Azure Active Directory と Domo の統合
 

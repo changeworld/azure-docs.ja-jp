@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3231818bbc747ff5a8b9f3adc081071d6db13941
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b459e02ca0655e6965c8b68062f37b9950dce847
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182389"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appinux"></a>チュートリアル:Azure Active Directory と Appinux の統合
 
@@ -141,7 +142,7 @@ Appinux で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 

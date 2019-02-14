@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: b7c1ea5d4e2134f3bafc486fb0747025a2140b83
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b2a68c6b3e71e066c6bee8f1398e20b5fdcca844
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809005"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174709"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform の統合
 
@@ -167,7 +168,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     c. **[Local Provider Name (ローカル プロバイダー名)]** は既定値のままにします。 この値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[識別子]** フィールドに貼り付けます。
 
-    d. **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
 
     e. **[Principal Propagation (プリンシパル伝達)]** で **[無効]** を選択します。
 
@@ -303,7 +304,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
     c. **[User]** テキストボックスに、ユーザーのメール アドレスを入力します。
 
-    d. **[Assign]** をクリックしてユーザーをロールに割り当てます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Assign]** をクリックしてユーザーをロールに割り当てます。
 
     e. **[Save]** をクリックします。
 

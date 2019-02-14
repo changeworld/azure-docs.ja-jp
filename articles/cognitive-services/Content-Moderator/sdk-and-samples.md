@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Content Moderator 用の SDK とサンプルを取得する
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 02/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: e05058be5b1ea8aa8faee3f3328a1b84935a3ac7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 929655f257dced1e12645d4d751b1475e2497b49
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228578"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868363"
 ---
 # <a name="content-moderator-sdks-and-samples"></a>Content Moderator SDK とサンプル
 

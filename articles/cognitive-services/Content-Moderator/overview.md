@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: ユーザーによって生成されたコンテンツに含まれる不適切な素材の追跡、フラグ設定、評価、フィルタリングを Content Moderator を使用して行う方法について説明します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e0b5070a9ee5b8c8554505dcf81c8226a9fddc0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6fe69cc56ec874b73083aefab9df8994942368c6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227218"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872176"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 

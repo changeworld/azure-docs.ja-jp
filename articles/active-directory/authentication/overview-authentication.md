@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d14b44a45d9001e945e559dcd080683220c6a0b7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b054dd8c78968ffb65b92ab7ee4fe1b21501b0d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076402"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192519"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>認証には、どのような方式がありますか。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 981f4d78a351b6d2b61253407e5021dbeb285204
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80118cc1d111ddc11f35f57a96b61a5b940460cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819545"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190570"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル:Azure Active Directory と ADP の統合
 
@@ -98,7 +99,7 @@ ADP で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[ユーザーの割り当てが必要]** フィールドの値を **[はい]** に設定します。
 
-    d. **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
 
 2. [Azure portal](https://portal.azure.com/) の **ADP** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 

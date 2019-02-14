@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: adef572d9954443f24cfd1ab13c8c8a2e0ffa830
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9994232259231014c37beae81a5de007b142c732
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811810"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -175,7 +176,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD シングル サインオン�
     
     c. ID プロバイダーの**説明** (たとえば Azure AD) を追加します。
     
-    d. **[次へ]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします。
     
 11. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** ボタンをクリックします。
 
@@ -191,7 +192,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD シングル サインオン�
     
     c. インポートが成功するまでしばらく待ちます。
     
-    d. **[次へ]** ボタンをクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** ボタンをクリックします。
     
 13. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[次へ]** ボタンをクリックします。
 
@@ -291,7 +292,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 
     c. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
     e. **[Create user]\(ユーザーの作成\)** をクリックします。
 

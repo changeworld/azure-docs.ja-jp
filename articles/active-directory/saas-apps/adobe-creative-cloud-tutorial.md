@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 4907179b9cc333103a898056ff951decf81c0f6c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826806"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -178,7 +179,7 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
 
     c. **[IDP Login URL (IDP ログイン URL)]** ボックスで、Azure ポータルの **[サインオンの構成]** セクションからコピーした **SAML SSO サービスの URL** の値を入力します。
 
-    d. **[IDP Binding (IDP バインディング)]** として **[HTTP - Redirect (HTTP - リダイレクト)]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[IDP Binding (IDP バインディング)]** として **[HTTP - Redirect (HTTP - リダイレクト)]** を選択します。
 
     e. **[User Login Setting (ユーザー ログイン設定)]** として **[Email Address (電子メール アドレス])** を選択します。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3ec438132bc5e3dd035e199d0beca40dce9ff55f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 491140900dc74ade68109f3c9de586b0f3709b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453691"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>チュートリアル:Azure Active Directory と AppNeta Performance Monitor の統合
 
@@ -118,7 +119,7 @@ AppNeta Performance Monitor で Azure AD シングル サインオンを構成�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | --------| ----------------|
     | firstName| User.givenname|
     | lastName| User.surname|

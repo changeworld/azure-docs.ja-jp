@@ -14,12 +14,13 @@ ms.subservice: report-monitor
 ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8f9a4b95feadad873bb87cb9071dd98f597d839a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24b6a6a3dd3dab8d0c7fbfe5db3ae0f5efd621d2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194000"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179707"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal におけるリスクのフラグ付きユーザー レポート
 

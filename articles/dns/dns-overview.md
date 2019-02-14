@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770522"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893496"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -30,7 +30,7 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
-* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control): 組織のユーザーがアクセスできるアクションを制御できます。
+* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーがアクセスできるアクションを制御できます。
 
 * [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
