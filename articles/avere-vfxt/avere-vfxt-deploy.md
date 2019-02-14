@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296377"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745437"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -39,11 +39,11 @@ Blob Storage を使用する場合は、クラスターの作成後、お客様�
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Avere vFXT for Azure の作成
 
-Azure portal にある作成テンプレートにアクセスします。「Avere」を検索し、"Avere vFXT for Azure Deployment" を選択してください。 <!-- xxx update if that name changes xxx --> 
+Azure Portal にある作成テンプレートにアクセスします。「Avere」を検索し、"Avere vFXT ARM Deployment" を選択してください。 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![階層リンク [新規] > [Marketplace] > [すべて] がある Azure Portal を表示するブラウザー ウィンドウ。 [すべて] ページでは、検索フィールドに "avere"という語があり、2 番目の結果である "Avere vFXT ARM Deployment" は赤枠で囲まれて強調表示されます。](media/avere-vfxt-template-choose.png)
 
-**[作成]** をクリックして開始します。 
+Avere vFXT ARM Deployment ページで詳細を確認した後、**[作成]** をクリックして開始します。 
 
 ![Azure Marketplace (デプロイ テンプレートの先頭ページを表示したところ)](media/avere-vfxt-deploy-first.png)
 
@@ -80,7 +80,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 * **[サブスクリプション]** - Avere vFXT のサブスクリプションを選択します。 
 
-* **[リソース グループ]** - Avere vFXT クラスターのリソース グループを選択するか、[新規作成] をクリックして新しいリソース グループ名を入力します。 
+* **[リソース グループ]** - Avere vFXT クラスターの既存の空のリソース グループを選択するか、[新規作成] をクリックして新しいリソース グループ名を入力します。 
 
 * **[場所]** - お客様のクラスターとリソースに使用する Azure の場所を選択します。
 
@@ -123,9 +123,11 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 * **[サブネット]** -お客様の既存の仮想ネットワークにあるサブネットを選択するか、新しいものを作成します。 
 
-* **[Use blob storage]\(Blob Storage を使用する\)** - 新しい Azure BLOB コンテナーを作成して、それを新しい Avere vFXT クラスターのバックエンド ストレージとして構成するかどうかを選択します。 新しいコンテナーを作成する場合は、そのコンテナーに対してストレージ アカウントを指定する必要があります。 新しい BLOB コンテナーを作成しない場合は、クラスターの作成後にストレージをアタッチする必要があります (手順については、「[ストレージの構成](avere-vfxt-add-storage.md)」を参照)。 新しいコンテナーを作成したくない場合は、このフィールドを **[false]** に設定してください。
+* **[Use blob storage]\(Blob Storage を使用する\)** - 新しい Azure BLOB コンテナーを作成して、それを新しい Avere vFXT クラスターのバックエンド ストレージとして構成する場合は **true** を選択します。 このオプションでは、クラスターと同じリソース グループ内で新しいストレージ アカウントも作成されます。 
 
-* **[ストレージ アカウント]** - 新しい Azure BLOB コンテナーを作成する場合、ストレージ アカウントの名前を入力します。 ストレージ アカウントは、ローカル冗長ストレージおよびホット アクセス層で構成された Standard 汎用 V2 アカウントであることが必要です。 ストレージ アカウントの要件については、「[ストレージの構成](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer)」の記事で詳しく説明されています。
+  新しいコンテナーを作成したくない場合は、このフィールドを **[false]** に設定してください。 この場合、クラスターの作成後にストレージをアタッチし、構成する必要があります。 手順については、[ストレージの構成](avere-vfxt-add-storage.md)に関するページを参照してください。 
+
+* **[ストレージ アカウント]** - 新しい Azure BLOB コンテナーを作成する場合、新しいストレージ アカウントの名前を入力します。 
 
 ## <a name="validation-and-purchase"></a>確認と購入
 
@@ -161,7 +163,7 @@ Avere vFXT テンプレートは、クラスターの作成が完了すると、
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>ストレージ エンドポイントを作成する (Azure BLOB を使用する場合)
 
-バックエンド データ ストレージに Azure Blob Storage を使用する場合は、仮想ネットワークでストレージ サービス エンドポイントを作成する必要があります。 この[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、インターネット経由でルーティングするのではなく、Azure BLOB トラフィックをローカルで保持します。
+バックエンド データ ストレージに Azure Blob Storage を使用する場合は、仮想ネットワークでストレージ サービス エンドポイントを作成する必要があります。 この[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、仮想ネットワークの外部で Azure BLOB トラフィックをルーティングするのではなく、このトラフィックをローカルで保持します。
 
 1. ポータルで、左側にある **[仮想ネットワーク]** をクリックします。
 1. コントローラーの vnet を選択します。 

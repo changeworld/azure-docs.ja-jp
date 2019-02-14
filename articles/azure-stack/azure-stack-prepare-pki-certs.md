@@ -11,22 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 496a6c45c9f8930f77b3a3dab2f81db1b24c1801
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247206"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656721"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>デプロイまたはローテーション用の Azure Stack PKI 証明書の準備
+
 [任意の CA から取得した](azure-stack-get-pki-certs.md)証明書ファイルは、Azure Stack の証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。
 
-
 ## <a name="prepare-certificates-for-deployment"></a>デプロイ用の証明書を準備する
+
 次の手順を使用して、新しい Azure Stack 環境のデプロイまたは既存の Azure Stack 環境でのシークレットのローテーションに使用される Azure Stack PKI 証明書を準備および検証します。 
 
 ### <a name="import-the-certificate"></a>証明書のインポート
@@ -83,7 +84,9 @@ ms.locfileid: "55247206"
     
     ![いくつかのオプションが選択されている [Certificate export wizard]\(証明書のエクスポート ウィザード\)](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. **[パスワード]** を選択し、証明書のパスワードを指定します。 このパスワードはデプロイ パラメーターとして使用されるので、忘れないようにしてください。 **[次へ]** を選択します。
+1. **[パスワード]** を選択し、証明書のパスワードを指定します。 次のパスワードの複雑さの要件を満たしているパスワードを作成します。 8 文字の最小長。 パスワードに、大文字、小文字、0 - 9 の数字、特殊文字、および大文字でも小文字でもない英字のうち 3 種類以上が含まれている。 このパスワードを書き留めておいてください。 デプロイ パラメーターとして使用します。
+
+1. **[次へ]** を選択します。
 
 1. エクスポートする pfx ファイルのファイル名と場所を選択します。 **[次へ]** を選択します。
 

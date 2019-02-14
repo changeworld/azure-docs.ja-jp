@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151806"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル:Azure Active Directory と Infinite Campus の統合
 
@@ -111,7 +111,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     ![Configure single sign-on](common/editconfigure.png)
 
-5. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** (ステップ **11.c** にスキップ) がある場合は、次の手順に従います。
+4. **サービス プロバイダー メタデータ ファイル**がある場合、**[基本的な SAML 構成]** セクションで、手順 4.a から 4.d を実行し、その後、手順 11.c に進みます。 サービス プロバイダー メタデータ ファイルがない場合、手順 5 に進みます。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -125,12 +125,9 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
-    d. **[サインオン URL]** ボックスに、次のパターン (ホスティング モデルでは、ドメインが異なります) を使用して URL を入力します。 `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** ボックスに、次のパターン (ホスティング モデルでは、ドメインが異なります) を使用して URL を入力します。 `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > Infinite Campus SSO サービス プロバイダー構成ページで、**サービス プロバイダー メタデータ ファイル**を取得します。これについては後で説明します。 Infinite Campus で新しい SAML サービス プロバイダー構成を使用して開始する場合は、**手順 11** に進んで、サービス プロバイダー メタデータ ファイルのエクスポートを完了します。
-
-6. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います (ドメインはホスティング モデルによって異なることに注意してください)。
+5. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います (ドメインはホスティング モデルによって異なることに注意してください)。
 
     a. **[サインオン URL]** ボックスに、`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS` のパターンを使用して URL を入力します。
 
@@ -174,7 +171,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     c. **[Service Provider Metadata]\(サービス プロバイダー メタデータ\)** リンクをクリックして**サービス プロバイダー メタデータ ファイル**をコンピューターに保存し、それを Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** の値を自動的に設定します (アップロードと値の自動設定についてはステップ 4、手動入力についてはステップ 5 を参照)。
 
-    d. **[Sync]\(同期\)** をクリックすると、**[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sync]\(同期\)** をクリックすると、**[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。
 
     e. **[Save]** をクリックします。
 
@@ -201,7 +198,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-infinite-campus-test-user"></a>Infinite Campus テスト ユーザーの作成
 

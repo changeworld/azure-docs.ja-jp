@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 9c6cf70721169dfc35e49ec253d7aeb5deace794
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f78e978e80e27babcf8d2a2736eec06f35aa5e05
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185309"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル:Azure Active Directory と Namely の統合
 
@@ -155,7 +156,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
     
     c. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Identity provider certificate (ID プロバイダー証明書)]** ボックスに貼り付けます。
      
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -190,7 +191,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-namely-test-user"></a>Namely のテスト ユーザーの作成
 
@@ -220,7 +221,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[電子メール]** ボックスに、BrittaSimon の**電子メール アドレス**を入力します。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -15,17 +15,17 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c49e521e9bf7e04eeda47c6b27c0b63cca653006
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081230"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699264"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
 
-組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
+組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
 
 ## <a name="built-in-role-descriptions"></a>組み込みのロールの説明
 次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。
@@ -149,8 +149,8 @@ ms.locfileid: "55081230"
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
-> | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
-> | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
+> | Microsoft.Authorization/*/Delete | ロールとロール割り当ての削除 |
+> | Microsoft.Authorization/*/Write | ロールとロール割り当ての作成 |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
 > | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
 > | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |
@@ -1600,15 +1600,15 @@ ms.locfileid: "55081230"
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定の編集 |
 > | Microsoft.Sql/servers/databases/auditRecords/read | データベースの BLOB 監査レコードを取得します。 |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーを編集することはできません |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーの編集 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | セキュリティの警告のポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | セキュリティ基準を編集することはできません |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | セキュリティ警告ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | セキュリティ基準の編集 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -1676,23 +1676,23 @@ ms.locfileid: "55081230"
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
-> | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定は編集できません |
-> | Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードを読み取ることはできません |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーは編集できません |
+> | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの編集 |
+> | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の編集 |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定の編集 |
+> | Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードの読み取り |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーの編集 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベース セキュリティの警告のポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | SQL サーバー データベース セキュリティ基準は編集できません |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベースのセキュリティ警告ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | SQL サーバー データベースのセキュリティ基準の編集 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーは編集できません |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバーのセキュリティ警告ポリシーの編集 |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Storage Account Contributor

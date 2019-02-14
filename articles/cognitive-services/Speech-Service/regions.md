@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Speech Service のリージョンに関するリファレンスです。
 services: cognitive-services
 author: mahilleb-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: 32a8b4cbfd0d8b43d294155432a0feaf29036c4c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1a291a54389b678647f4a08ea03ec8c2f85a5917
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218140"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872835"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 

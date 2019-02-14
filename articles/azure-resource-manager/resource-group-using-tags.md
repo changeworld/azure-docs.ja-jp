@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: aa3cd0305c1ac2db269dcc46243ec3da1232e6f6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079530"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734438"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
@@ -29,9 +29,15 @@ ms.locfileid: "55079530"
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
+## <a name="policies"></a>ポリシー
+
+[Azure Policy](../governance/policy/overview.md) を使用して、タグ付けのルールと規則を強制できます。 ポリシーを作成することで、組織の必要なタグに準拠しないサブスクリプションにリソースがデプロイされるというシナリオを回避します。 タグの適用や非準拠リソースの検索を手動で行う代わりに、デプロイ時に必要なタグを自動的に適用するポリシーを作成できます。 次のセクションでは、タグのポリシーの例を示します。
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
+
 ## <a name="powershell"></a>PowerShell
 
-この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 バージョン 6.0 以降をご使用でない場合は、[バージョンを更新](/powershell/azure/install-az-ps)してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 *リソース グループ*の既存のタグを表示するには、次のコマンドを使用します。
 
@@ -273,5 +279,4 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 ## <a name="next-steps"></a>次の手順
 
 * すべてのリソースの種類で、タグがサポートされるわけではありません。 リソースの種類にタグを適用することができるかどうかを確認するには、[Azure リソースに対するタグのサポート](tag-support.md)に関する記事を参照してください。
-* カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 定義するポリシーには、すべてのリソースが特定のタグに値が指定されていることが必要になる場合があります。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
 * ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](resource-group-portal.md)」をご覧ください。  

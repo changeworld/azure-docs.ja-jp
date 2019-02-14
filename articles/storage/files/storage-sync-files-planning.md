@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452738"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751414"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -252,6 +252,9 @@ Azure File Sync は、ストレージ同期サービスと同じリージョン�
 
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
 Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
+
+> [!Warning]  
+> Azure ファイル共有を GRS ストレージ アカウントのクラウド エンドポイントとして使用している場合は、ストレージ アカウントのフェールオーバーを開始しないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。 Azure リージョンが失われた場合は、Azure File Sync との互換性のある方法でストレージ アカウントのフェールオーバーがトリガーされます。
 
 geo 冗長ストレージと Azure File Sync との間のフェールオーバーの統合をサポートするため、すべての Azure File Sync リージョンが、ストレージで使用されるセカンダリ リージョンと一致するセカンダリ リージョンとペアになります。 これらのペアは次のとおりです。
 

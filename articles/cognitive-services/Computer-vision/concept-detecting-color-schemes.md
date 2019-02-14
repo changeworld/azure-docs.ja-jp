@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したイメージの配色の検出に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d882ad89e68936d07ae4d76218c6e3ac450185a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151330"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880881"
 ---
 # <a name="detect-color-schemes-in-images"></a>イメージ内の配色を検出する
 
@@ -50,7 +50,7 @@ Computer Vision では、イメージから色を抽出します。 次に、前
 
 次の表は、Computer Vision によって返されるイメージの例それぞれの前景、背景、イメージのドミナント カラーを示しています。
 
-| イメージ | ドミナント カラー |
+| Image | ドミナント カラー |
 |-------|-----------------|
 |![白い花と緑の背景](./Images/flower.png)| 前景:黒<br/>背景:白<br/>色:黒、白、緑|
 ![駅を通過中の電車](./Images/train_station.png) | 前景:黒<br/>背景:黒<br/>色:黒 |
@@ -59,7 +59,7 @@ Computer Vision では、イメージから色を抽出します。 次に、前
 
  次の表は、Computer Vision によって返されるイメージの例それぞれのアクセント カラーを 16 進数の HTML カラー値で示しています。
 
-| イメージ | アクセント カラー |
+| Image | アクセント カラー |
 |-------|--------------|
 |![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | #BB6D10 |
 |![白い花と緑の背景](./Images/flower.png) | #C6A205 |
@@ -69,7 +69,7 @@ Computer Vision では、イメージから色を抽出します。 次に、前
 
 次の表は、Computer Vision によって返されるイメージの例それぞれが白黒であるかどうかを示しています。
 
-| イメージ | 白黒かどうか |
+| Image | 白黒かどうか |
 |-------|----------------|
 |![マンハッタンのビル群の白黒写真](./Images/bw_buildings.png) | true |
 |![青い家と前庭](./Images/house_yard.png) | false |

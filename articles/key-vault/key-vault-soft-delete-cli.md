@@ -1,20 +1,18 @@
 ---
-ms.assetid: ''
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
 description: CLI コード スニペットを使用した論理的な削除のユース ケース
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 02/01/2019
 ms.author: bryanla
-ms.openlocfilehash: af2d480e84ca69c0ecd795e38371375e6a71542b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 242398eb0bb4d4ddd2764bd66c99a7f9603ea1b9
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363641"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663946"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -72,7 +70,7 @@ az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>論理的な削除で保護されているキー コンテナーを削除する
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>論理的な削除で保護されているキー コンテナーを削除する
 
 キー コンテナーを削除するコマンドの動作は、論理的な削除が有効になっているかどうかによって変わります。
 
@@ -89,7 +87,7 @@ az keyvault delete --name ContosoVault
 
 - 削除されたキー コンテナーはそのリソース グループから削除され、予約された名前空間に配置されます。この名前空間はそれが作成された場所に関連付けられています。 
 - 削除されたオブジェクト (キー、シークレット、証明書など) にはアクセスできず、それらオブジェクトが含まれるキー コンテナーが削除されている状態にある間はアクセスできません。 
-- 削除されたキー コンテナーの DNS 名は予約されているため、新しいキー コンテナーを同じ名前で作成することはできません。  
+- 削除されたキー コンテナーの DNS 名は予約されているため、新しいキー コンテナーを同じ名前で作成することはできません。  
 
 サブスクリプションに関連付けられている削除された状態のキー コンテナーは、次のコマンドを使用して表示できます。
 
@@ -110,9 +108,9 @@ az keyvault recover --location westus --resource-group ContosoRG --name ContosoV
 
 キー コンテナーを復旧すると、そのキー コンテナーの元のリソース ID を持つ新しいリソースが作成されます。 元のリソース グループが削除された場合は、復旧を試行する前に、同じ名前のリソース グループを作成する必要があります。
 
-## <a name="key-vault-objects-and-soft-delete"></a>Key Vault のオブジェクトと論理的な削除
+## <a name="deleting-and-purging-key-vault-objects"></a>キー コンテナー オブジェクトを削除して消去する
 
-論理的な削除が有効な 'ContosoVault' という名前のキー コンテナーにあるキー 'ContosoFirstKey' を削除する方法は次のとおりです。
+次のコマンドを実行すると、論理的な削除が有効になっている、'ContosoVault' という名前のキー コンテナーから、'ContosoFirstKey' キーが削除されます。
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
@@ -192,17 +190,22 @@ az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-and-key-vaults"></a>消去とキー コンテナー
+## <a name="purging-a-soft-delete-protected-key-vault"></a>論理的な削除で保護されているキー コンテナーを消去する
 
-### <a name="key-vault-objects"></a>キー コンテナー オブジェクト
+> [!IMPORTANT]
+> キー コンテナーまたはそこに含まれているいずれかのオブジェクトを消去するとキー コンテナーは永続的に削除され、復旧できなくなります。
 
-キー、シークレット、または証明書は消去すると、それらは永続的に削除され、復旧できなくなります。 ただし、削除されたオブジェクトが含まれるキー コンテナーは、そのキー コンテナー内のすべてのオブジェクトと同様にそのまま残ります。 
+消去機能は、以前論理的に削除されたキー コンテナー オブジェクトまたはキー・コンテナー全体を完全に消去するために使用されます。 前のセクションで示したように、論理的な削除機能が有効になったキー・コンテナーに格納されているオブジェクトは、次の複数の状態を経る可能性があります。
 
-### <a name="key-vaults-as-containers"></a>コンテナーとしてのキー コンテナー
-キー コンテナーを消去すると、そのすべてのコンテンツ (キー、シークレット、証明書など) が完全に削除されます。 キー コンテナーを消去するには、`az keyvault purge` コマンドを使用します。 サブスクリプションから削除されたキー コンテナーの場所を見つけるには、`az keyvault list-deleted` コマンドを使用します。
+- **アクティブ**: 削除前。
+- **論理的に削除済み**: 削除後。一覧表示およびアクティブ状態への復旧が可能。
+- **完全に削除済み**: 消去後。復旧不可。
 
->[!IMPORTANT]
->キー コンテナーを消去するとキー コンテナーは永続的に削除され、復旧できなくなります。
+キー・コンテナーの場合も同様です。 論理的に削除されたキー コンテナーとその内容を完全に削除するには、キー・コンテナー自体を削除する必要があります。
+
+### <a name="purging-a-key-vault"></a>キー・コンテナーを消去する
+
+キー コンテナーを消去すると、そのすべてのコンテンツ (キー、シークレット、証明書など) が完全に削除されます。 論理的に削除されたキー コンテナーを消去するには、`az keyvault purge` コマンドを使用します。 サブスクリプションから削除されたキー コンテナーの場所を見つけるには、`az keyvault list-deleted` コマンドを使用します。
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault

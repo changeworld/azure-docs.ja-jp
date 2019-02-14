@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d3a810523807a46ca3f410c7cb5e11884f2b06b7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 68c04ef893e5e0826f03bffa93fb7c79b4959fdc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164358"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889037"
 ---
-<!--author=alkohli last changed: 08/04/17-->
-
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Azure ポータルから 更新プログラムをインストールするには
 
 1. StorSimple サービス ページでデバイスを選択します。

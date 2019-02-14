@@ -463,8 +463,12 @@ items:
     href: how-to-manage-database-account.md
   - name: グローバル配信
     items:
+    - name: マルチマスターを構成する
+      href: how-to-multi-master.md
     - name: 整合性レベルを管理する
       href: how-to-manage-consistency.md
+    - name: カスタム同期を実装する
+      href: how-to-custom-synchronization.md
     - name: 競合解決ポリシーを構成する
       href: how-to-manage-conflicts.md
   - name: プロビジョニング スループット
@@ -595,10 +599,10 @@ items:
     items:
     - name: Bulk Executor ライブラリについて
       href: bulk-executor-overview.md
-- name: トラブルシューティング ガイド
-  items:
-  - name: Java Async SDK のトラブルシューティング
-    href: troubleshoot-java-async-sdk.md
+  - name: トラブルシューティング
+    items:
+    - name: Java Async SDK のトラブルシューティング
+      href: troubleshoot-java-async-sdk.md
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -627,9 +631,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: da87cea310f5bda952cfa014d7b45e23e555efcf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 72a6dced29f09379453d0e33131f78e875b2c9f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746185"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163498"

@@ -17,20 +17,21 @@ ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 4ee2f0387ee3c56dda7cd1a89f5c808f55699856
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36a2fc9d1ab364d44bd5dd6e7930e5d8ae3fb78d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658625"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204748"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
 Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 3 つあります。最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 この記事では、[Microsoft Graph への接続](#Connect-to-Microsoft-Graph)と[これらの API のクエリ](#Query-the-APIs)の概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
 
-* [identityRiskEvents API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/identityriskevent)
-* [riskyUsers API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/riskyuser)
-* [signIn API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin)
+* [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph に接続する
@@ -217,7 +218,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 
 ## <a name="query-the-apis"></a>API のクエリを実行する
 
-これら 3 つの API によって、組織内の危険なユーザーとサインインに関する情報をさまざまな方法で取得できるようになります。 次に、これらの API と関連するサンプル要求の一般的なユース ケースをいくつか示します。 これらのクエリは、上記のサンプル コードを使用するか、[Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) を使用して実行できます。
+これら 3 つの API によって、組織内の危険なユーザーとサインインに関する情報をさまざまな方法で取得できるようになります。 次に、これらの API と関連するサンプル要求の一般的なユース ケースをいくつか示します。 これらのクエリは、上記のサンプル コードを使用するか、[Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用して実行できます。
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>高リスクと中リスクのイベントを取得する (identityRiskEvents API)
 
@@ -251,7 +252,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 これを応用すれば、思いどおりに ID リスク イベントを照会し、そのデータを活用することができます。
 
 
-Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、こちらの[ドキュメント](https://docs.microsoft.com/graph/overview)と [Microsoft Graph](https://developer.microsoft.com/en-us/graph) のサイトをご覧ください。 
+Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、こちらの[ドキュメント](https://docs.microsoft.com/graph/overview)と [Microsoft Graph](https://developer.microsoft.com/graph) のサイトをご覧ください。 
 
 
 関連情報については、以下をご覧ください。

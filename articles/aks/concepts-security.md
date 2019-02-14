@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e29b94f270b295725400103f288f3d3bd0c2a2eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380697"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818993"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -24,11 +24,11 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 - [ノードのセキュリティ](#node-security)
 - [クラスターのアップグレード](#cluster-upgrades)
 - [ネットワークのセキュリティ](#network-security)
-- [Kubernetes シークレット](#secrets)
+- Kubernetes シークレット
 
 ## <a name="master-security"></a>マスターのセキュリティ
 
-AKS では、Kubernetes マスター コンポーネントは、Microsoft から提供される管理されたサービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は Microsoft によって行われます
+AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は Microsoft によって行われます
 
 既定では、Kubernetes API サーバーは、パブリック IP アドレスを完全修飾ドメイン名 (FQDN) と一緒に使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
 
@@ -41,6 +41,8 @@ Azure プラットフォームでは、OS セキュリティ更新プログラ�
 ノードは、パブリック IP アドレスが割り当てられていないプライベート仮想ネットワーク サブネットにデプロイされます。 トラブルシューティングと管理のために、既定では SSH が有効になっています。 この SSH アクセスは、内部 IP アドレスでのみ使用できるようにします。 Azure ネットワーク セキュリティ グループ規則を使用すると、AKS ノードへの IP 範囲のアクセスをさらに制限できます。 既定のネットワーク セキュリティ グループ SSH 規則を削除して、ノード上の SSH サービスを無効にすると、Azure プラットフォームでメンテナンス タスクを実行できなくなります。
 
 ストレージを提供するために、ノードは Azure Managed Disks を使用します。 ほとんどの VM ノードのサイズでは、これらは高パフォーマンスの SSD によってサポートされる Premium ディスクです。 マネージド ディスクに格納されたデータは、Azure プラットフォームへの保存時に自動的に暗号化されます。 冗長性を高めるためには、これらのディスクも Azure データ センター内で安全にレプリケートされます。
+
+現在、AKS またはその他の場所にある Kubernetes 環境は、悪意のあるマルチテナント使用に対して完全に安全ではありません。 ノードに対して *Pod Security Policy* やより高度なロール ベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。 ワークロードを分離する方法については、「[AKS でのクラスターの分離に関するベスト プラクティス][cluster-isolation]」を参照してください。
 
 ## <a name="cluster-upgrades"></a>クラスターのアップグレード
 
@@ -96,3 +98,4 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[cluster-isolation]: operator-best-practices-cluster-isolation.md

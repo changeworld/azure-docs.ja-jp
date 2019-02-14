@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189461"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662470"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -154,8 +154,8 @@ VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で�
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID に関する既知の問題
 
-- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当てマネージド ID の作成はサポートされていません。
-- ユーザー割り当て ID の名前は 24 文字に制限されています。 名前が 24 文字より長い場合、ID のリソース (つまり仮想マシン) への割り当ては失敗します。
+- ユーザー割り当て ID 名は、最小 3 文字、最大 128 文字に制限されています。 名前が 128 文字より長い場合、リソース (つまり仮想マシン) への ID の割り当ては失敗します。
+- ユーザー割り当て ID 名には、次の文字を使用できます: a-z、A-Z、-、\_、0-9。 この文字セット以外に含まれていない文字 (アスタリスクなど) を使用したユーザー割り当てマネージド ID の作成はサポートされていません。
 - マネージド ID 仮想マシン拡張機能 (2019 年 1 月に非推奨になる予定) を使用している場合にサポートされるユーザー割り当てマネージド ID の制限値は 32 個です。 マネージド ID 仮想マシン拡張機能を使用していない場合にサポートされる制限値は 512 です。  
 - ユーザー割り当てマネージド ID を異なるリソース グループに移動すると、ID の破損が発生します。 結果として、その ID のトークンを要求できなくなります。 
 - サブスクリプションを別のディレクトリに転送すると、既存のユーザー割り当てマネージド ID は破損します。 

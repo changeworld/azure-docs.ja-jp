@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 0081946ff62e42e1fb601b135c7102dd83e84fe3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7c09947e6d34c5314e8ed4bc2744f07b199278a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158912"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory と SD Elements の統合
 
@@ -141,7 +142,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
  
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -173,7 +174,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     c. **[Identity Provider Single Sign-On Service]\(ID プロバイダー シングル サインオン サービス\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
    
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -208,7 +209,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sd-elements-test-user"></a>SD Elements テスト ユーザーの作成
 
@@ -236,7 +237,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
    
-    d. **[ロール]** として **[ユーザー]** を選びます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ロール]** として **[ユーザー]** を選びます。 
    
     e. **[Create User]** をクリックします。
 

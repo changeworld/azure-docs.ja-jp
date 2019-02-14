@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 10f8b6b2b1ab6249eff4776c8cba869d72f448c5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851676"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817089"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -39,7 +39,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 ## <a name="create-a-peering"></a>ピアリングの作成
 
-ピアリングを作成する前に、[要件と制約](#requirements-and-contstraints)、[必要なアクセス許可](#permissions)を十分に理解しておいてください。
+ピアリングを作成する前に、要件と制約、[必要なアクセス許可](#permissions)を十分に理解しておいてください。
 
 1. Azure Portal の上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。 一覧に **[仮想ネットワーク (クラシック)]** が表示されていても、これを選択しないでください。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークからピアリングを作成することはできません。
 2. ピアリングを作成する仮想ネットワークを一覧から選択します。
@@ -70,12 +70,12 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 ### <a name="commands"></a>コマンド
 
-- **Azure CLI**: [az network vnet peering create](/cli/azure/network/vnet/peering#create)
+- **Azure CLI**: [az network vnet peering create](/cli/azure/network/vnet/peering)
 - **PowerShell**:[Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>ピアリング設定の表示または変更
 
-ピアリングを変更する前に、[要件と制約](#requirements-and-contstraints)、[必要なアクセス許可](#permissions)を十分に理解しておいてください。
+ピアリングを変更する前に、要件と制約、[必要なアクセス許可](#permissions)を十分に理解しておいてください。
 
 1. ポータルの上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。 一覧に **[仮想ネットワーク (クラシック)]** が表示されていても、これを選択しないでください。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークからピアリングを作成することはできません。
 2. ピアリング設定を変更する仮想ネットワークを一覧から選択します。
@@ -87,8 +87,8 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 **コマンド**
 
-- **Azure CLI**: [az network vnet peering list](/cli/azure/network/vnet/peering) (仮想ネットワークのピアリングを一覧表示する)、[az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) (特定のピアリングの設定を表示する)、[az network vnet peering update](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) (ピアリング設定を変更する)|
-- **PowerShell**:Get-AzureRmVirtualNetworkPeering (ピアリング設定を取得する)、[Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) (設定を変更する)
+- **Azure CLI**: [az network vnet peering list](/cli/azure/network/vnet/peering) (仮想ネットワークのピアリングを一覧表示する)、[az network vnet peering show](/cli/azure/network/vnet/peering) (特定のピアリングの設定を表示する)、[az network vnet peering update](/cli/azure/network/vnet/peering) (ピアリング設定を変更する)|
+- **PowerShell**:[Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) (ピアリング設定を取得する)、[Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) (設定を変更する)
 
 ## <a name="delete-a-peering"></a>ピアリングの削除
 
@@ -96,7 +96,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 ピアリングを削除すると、仮想ネットワークからのトラフィックはピアリングされた仮想ネットワークに流れなくなります。 Resource Manager を使用してデプロイされた仮想ネットワークをピアリングしている場合、それぞれの仮想ネットワークにもう一方の仮想ネットワークとのピアリングが存在します。 一方の仮想ネットワークからピアリングを削除すると、仮想ネットワーク間の通信が無効になりますが、もう一方の仮想ネットワークからピアリングが削除されるわけではありません。 もう一方の仮想ネットワークに存在するピアリングの状態が "**切断**" になります。 1 つ目の仮想ネットワークのピアリングを再作成し、両方の仮想ネットワークのピアリングの状態が "*接続済み*" に変わるまで、ピアリングを再作成することはできません。 
 
-仮想ネットワーク間で通信することはあっても、常に通信するわけではない場合は、ピアリングを削除するのではなく、**[仮想ネットワーク アクセスを許可する]** を **[無効]** に設定します。 方法については、この記事の「[ピアリングの作成](#create-peering)」の手順 6. を参照してください。 ピアリングを削除し、再作成するよりも、ネットワーク アクセスを無効化/有効化する方が簡単な場合があります。
+仮想ネットワーク間で通信することはあっても、常に通信するわけではない場合は、ピアリングを削除するのではなく、**[仮想ネットワーク アクセスを許可する]** を **[無効]** に設定します。 方法については、この記事の「[ピアリングの作成](#create-a-peering)」の手順 6. を参照してください。 ピアリングを削除し、再作成するよりも、ネットワーク アクセスを無効化/有効化する方が簡単な場合があります。
 
 1. ポータルの上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。 一覧に **[仮想ネットワーク (クラシック)]** が表示されていても、これを選択しないでください。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークからピアリングを作成することはできません。
 2. ピアリングを削除する仮想ネットワークを一覧から選択します。
@@ -113,10 +113,10 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 ## <a name="requirements-and-constraints"></a>要件と制約 
 
 - <a name="cross-region"></a>同じリージョンまたは異なるリージョンの仮想ネットワークをピアリングできます。 異なるリージョン内の仮想ネットワークのピアリングは "*グローバル ピアリング*" とも呼ばれます。 
-- グローバル ピアリングの作成では、ピアリングされた仮想ネットワークは Azure パブリック クラウドの任意のリージョン内に存在できますが、Azure ナショナル クラウドに存在することはできません。 ナショナル クラウドでは、同じリージョン内の仮想ネットワークのみをピアリングできます。
+- グローバル ピアリングの作成では、ピアリングされた仮想ネットワークは Azure パブリック クラウドの任意のリージョン、または China クラウド リージョン内に存在できますが、Government クラウド リージョンに存在することはできません。 Azure Government クラウド リージョンでは、同じリージョン内の仮想ネットワークのみをピアリングできます。
 - 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーと、それと通信するリソースは、同じリージョン内の仮想ネットワークに存在する必要があります。 ただし、ピアリングされた仮想ネットワークが同じリージョン内にある場合、仮想ネットワークは、ピアリングされた他方の仮想ネットワーク内の Azure 内部ロードバランサーのフロントエンド IP アドレスと通信できます。
 - グローバルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用することはできず、ゲートウェイ転送を許可することもできません。 リモート ゲートウェイを使用する場合、またはゲートウェイ転送を許可する場合は、ピアリングされた仮想ネットワークが同じリージョン内に存在する必要があります。
-- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 ポータルでは、異なる Azure Active Directory テナントに関連付けられているサブスクリプションからの仮想ネットワーク間のピアリングはサポートされていません。 CLI、PowerShell、またはテンプレートを使用できます。
+- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)できます。 ポータルでは、異なる Azure Active Directory テナントに関連付けられているサブスクリプションからの仮想ネットワーク間のピアリングはサポートされていません。 CLI、PowerShell、またはテンプレートを使用できます。
 - ピアリングする仮想ネットワークの IP アドレス空間が重複していてはいけません。
 - 仮想ネットワークを別の仮想ネットワークとピアリングした後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 アドレス範囲を追加または削除するには、ピアリングを削除し、アドレス範囲を追加または削除してからピアリングを再作成します。 仮想ネットワークに対してアドレス範囲を追加または削除するには、[仮想ネットワークの管理](manage-virtual-network.md)に関するページを参照してください。
 - Resource Manager を使用してデプロイされた 2 つの仮想ネットワーク、または Resource Manager を使用してデプロイされた仮想ネットワークとクラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをピアリングできます。 クラシック デプロイ モデルを使用して作成された 2 つの仮想ネットワークをピアリングすることはできません。 Azure デプロイ モデルの知識がない場合は、[Azure デプロイ モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 クラシック デプロイ モデルを使って作成された 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。

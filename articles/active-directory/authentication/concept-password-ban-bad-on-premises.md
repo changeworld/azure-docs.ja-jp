@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 816c459ca6edd7204ccdcdf9d402f2d4499d9116
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077832"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662525"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>更新:Windows Server Active Directory に Azure AD パスワード保護を適用する
 
@@ -29,7 +29,7 @@ Azure AD パスワード保護は、Azure Active Directory (Azure AD) が提供�
 Azure AD パスワード保護を構成するソフトウェア コンポーネントは 3 つあります。
 
 * Azure AD パスワード保護プロキシ サービスは、現在の Active Directory フォレスト内のドメインに参加しているすべてのマシン上で実行されています。 要求はドメイン コントローラーから Azure AD に転送され、応答は Azure AD からドメイン コントローラーに返されます。
-* Azure AD パスワード保護 DC エージェント サービスは、DC エージェント パスワード フィルター dll からパスワード検証要求を受け取り、現在使用できるパスワード ポリシーを使用して要求を処理し、結果 (合格/失敗) を返します。 このサービスは、定期的に (1 時間に 1 回) Azure AD パスワード保護プロキシ サービスを呼び出し、新しいバージョンのパスワード ポリシーを取得します。 Azure AD パスワード保護プロキシ サービスとの間の呼び出しの通信は、RPC (Remote Procedure Call) over TCP を介して処理されます。 新しいポリシーが取得されると、sysvol フォルダーに格納されます。これらのポリシーは、他のドメイン コントローラーにレプリケートすることができます。 また、DC エージェント サービスは、他のドメイン コントローラーが新しいパスワード ポリシーを書き込んだ場合の変更について sysvol フォルダーを監視します。適切な最近のポリシーが既に使用できる場合、Azure AD パスワード保護プロキシ サービスのチェックはスキップされます。
+* Azure AD パスワード保護 DC エージェント サービスは、DC エージェント パスワード フィルター dll からパスワード検証要求を受け取り、現在使用できるパスワード ポリシーを使用して要求を処理し、結果 (合格/失敗) を返します。 このサービスは、定期的に (1 時間に 1 回) Azure AD パスワード保護プロキシ サービスを呼び出し、新しいバージョンのパスワード ポリシーを取得します。 Azure AD パスワード保護 DC エージェント サービスと Azure AD パスワード保護プロキシ サービス間の通信は、TCP を介した RPC (リモート プロシージャ コール) を使用して処理されます。 新しいポリシーが取得されると、sysvol フォルダーに格納されます。これらのポリシーは、他のドメイン コントローラーにレプリケートすることができます。 また、DC エージェント サービスは、他のドメイン コントローラーが新しいパスワード ポリシーを書き込んだ場合の変更について sysvol フォルダーを監視します。適切な最近のポリシーが既に使用できる場合、新しいポリシーのダウンロード要求はスキップされます。
 * DC エージェント パスワード フィルター dll は、オペレーティング システムからパスワード検証要求を受け取り、ドメイン コントローラーのローカルで実行されている Azure AD パスワード保護 DC エージェント サービスにそれらの要求を転送します。
 
 ![Azure AD パスワード保護コンポーネントの連携方法](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
@@ -57,7 +57,7 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 * 最小限の Active Directory ドメインまたはフォレスト機能レベル (DFL\FFL) の要件はありません。
 * このソフトウェアは、保護する Active Directory ドメイン内にアカウントを作成せず、要求もしません。
 * 増分デプロイはサポートされていますが、代わりに、ドメイン コントローラー エージェントがインストールされている場合にのみパスワード ポリシーが適用されます。
-* パスワード保護を確実に適用するには、すべての DC に DC エージェントをインストールすることをお勧めします。 
+* パスワード保護を確実に適用するには、すべての DC に DC エージェントをインストールすることをお勧めします。
 * Azure AD パスワード保護は、リアルタイム ポリシー アプリケーション エンジンではありません。 パスワード ポリシー構成の変更と、すべてのドメイン コントローラーに変更が到達して適用されるまでに遅延が生じることがあります。
 
 ## <a name="next-steps"></a>次の手順

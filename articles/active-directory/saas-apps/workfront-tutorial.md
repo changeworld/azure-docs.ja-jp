@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: bdb132deec61ff3d373b4c520a7c35d363818f6d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1815e56b54dc36e152336a79dec802c63541b7f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189495"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>チュートリアル:Azure Active Directory と Workfront の統合
 
@@ -145,7 +146,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
    
     c. **SAML シングル サインオン サービス URL** を **[Login Portal URL]\(ログイン ポータル URL\)** ボックスに貼り付けます。
    
-    d. **シングル サインアウト サービス URL** を **[Sign-Out URL]\(サインアウト URL\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **シングル サインアウト サービス URL** を **[Sign-Out URL]\(サインアウト URL\)** ボックスに貼り付けます。
    
     e. **パスワード変更 URL** を **[Change Password URL]\(パスワード変更 URL\)** ボックスに貼り付けます。
    
@@ -183,7 +184,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-workfront-test-user"></a>Workfront テスト ユーザーの作成
 
@@ -204,7 +205,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
    
     c. **[Email Address]** ボックスに、Britta Simon の Azure Active Directory の電子メール アドレスを入力します。
    
-    d. **[Add Person]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Add Person]** をクリックします。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

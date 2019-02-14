@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157705"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664031"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 この記事では、シングル サインオンの方法について説明します。アプリケーションを構成するときに最適な SSO 方法を選択するために役立ちます。
@@ -49,9 +49,7 @@ ms.locfileid: "55157705"
 | [ヘッダーベース](#header-based-sso) | オンプレミスのみ | アプリケーションが認証のためにヘッダーを使用する場合は、ヘッダー ベースのシングル サインオンを使用します。 ヘッダーベースのシングル サインオンには、Azure AD 用の PingAccess が必要です。 アプリケーション プロキシは、Azure AD を使用してユーザーを認証してから、コネクタ サービス経由でトラフィックを渡します。  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect と OAuth
-OpenID Connect と OAuth を使用すると、エンタープライズ アプリケーションを Azure AD に追加するプロセスが簡単になるシングル サインオン エクスペリエンスが実現します。 アプリケーション管理者がシングル サインオンを構成する必要はありません。 その代わり、管理者が[ユーザーの同意を承認する](configure-user-consent.md)ときに、Azure AD によってアプリケーションが追加されます。 
-
-OpenID Connect と OAuth 用の [SDK](../develop/reference-v2-libraries.md) は簡単に採用することができます。また、アプリケーションは MS Graph を使用できるようになります。 
+新しいアプリケーションを開発する場合、OpenID Connect、OAuth などの最新のプロトコルを使用して、複数のデバイス プラットフォームでアプリケーションの最適なシングル サイオン エクスペリエンスを実現します。 OAuth により、ユーザーまたは管理者は、[MS Graph](/graph/overview) などの保護されたリソースについて[同意する](configure-user-consent.md)ことができます。 アプリケーション用の [SDK](../develop/reference-v2-libraries.md) を簡単に導入でき、さらにアプリケーションで [MS Graph](/graph/overview) をただちに使用できます。
 
 詳細については、次を参照してください。
 

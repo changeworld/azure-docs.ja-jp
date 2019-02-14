@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bb890d8fa1c9a2fce0b2af1dae815f7ffde6af7d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ffc629df727adf9ae22a475ceb7e65b12fa5a0cc
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183745"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109233"
 documentType: LandingData
 title: Key Vault のドキュメント
 metadata:
   title: Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
   author: barclayn
-  manager: mbaldwin
+  manager: barbkess
   layout: LandingPage
   ms.service: key-vault
   ms.tgt_pltfrm: na
@@ -92,7 +92,7 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.keyvault/">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
+      html: <p><a href="/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
     - title: REST

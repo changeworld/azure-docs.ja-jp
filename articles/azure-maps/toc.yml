@@ -31,6 +31,8 @@ items:
     href: azure-maps-event-grid-integration.md
   - name: 適切な価格レベルの選択
     href: choose-pricing-tier.md
+  - name: Azure Maps での認証
+    href: azure-maps-authentication.md
   - name: 対象範囲
     items:
     - name: ジオコーディングの対象範囲
@@ -49,8 +51,10 @@ items:
   items:
   - name: Maps のアカウントを管理する
     items:
-    - name: アカウントとキーを管理する
+    - name: '[アカウントの管理]'
       href: how-to-manage-account-keys.md
+    - name: 認証を管理する
+      href: how-to-manage-authentication.md
     - name: 価格レベルを管理する
       href: how-to-manage-pricing-tier.md
     - name: 使用状況メトリックを表示する
@@ -59,6 +63,8 @@ items:
     items:
     - name: 住所を検索する
       href: how-to-search-for-address.md
+    - name: 静的マップ上にカスタム データをレンダリングする
+      href: how-to-render-custom-data.md
   - name: JavaScript のマップを作成する
     items:
     - name: マップ コントロールを使用する
@@ -99,6 +105,10 @@ items:
       href: map-events.md
     - name: アクセス可能なマップ アプリケーション
       href: map-accessibility.md
+  - name: Android マップの作成
+    items:
+    - name: Android マップ コントロールの使用方法
+      href: how-to-use-android-map-control-library.md
 - name: リファレンス
   items:
   - name: API とパラメーターの拡張子
@@ -183,9 +193,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 0fb1d864dd18a781d0eeba4c8dea610e3ccb07f2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a657596cb266db20404d7f2ec1074834d181772
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999455"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111052"

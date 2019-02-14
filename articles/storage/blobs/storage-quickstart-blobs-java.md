@@ -1,23 +1,26 @@
 ---
-title: Java Storage SDK v7 を使用して Azure Storage に BLOB を作成する方法 | Microsoft Docs
+title: Java v7 用のクライアント ライブラリを使用して Azure Storage 内に BLOB を作成する方法 | Microsoft Docs
 description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Java v7 用の Azure Storage クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: be994c9b3c9ee4f3c6ccd5c01e762c05f740be09
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469646"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753216"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Java SDK v7 を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
 
-この攻略ガイドでは、Java を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。
+この攻略ガイドでは、Java v7 用のクライアント ライブラリを使用して、Azure Blob Storage に対して、コンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法について説明します。
+
+> [!TIP]
+> Java 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 v10 の使用を開始する場合、[クイック スタート: Java Storage SDK V10 を使用した BLOB のアップロード、ダウンロード、および一覧表示](storage-quickstart-blobs-java-v10.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -130,7 +133,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
-ファイルをブロック BLOB にアップロードするには、ターゲット コンテナーの BLOB に対する参照を取得します。 BLOB の参照を取得した後は、[CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) を使ってそれにデータをアップロードできます。 この操作により、BLOB がまだ存在しない場合は作成され、既に存在する場合は上書きされます。
+ファイルをブロック BLOB にアップロードするには、ターゲット コンテナーの BLOB に対する参照を取得します。 BLOB の参照を取得した後は、[CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload) を使ってそれにデータをアップロードできます。 この操作により、BLOB がまだ存在しない場合は作成され、既に存在する場合は上書きされます。
 
 サンプル コードは、アップロードとダウンロードに使うローカル ファイルを作成し、アップロードするファイルを **source** として、BLOB の名前を **blob** に格納します。 次の例では、ファイルを **quickstartcontainer** という名前のコンテナーにアップロードします。
 
@@ -156,7 +159,7 @@ Blob Storage で使用できる `upload` メソッドには、[upload](/java/api
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内のファイルの一覧を取得するには、[CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs#com_microsoft_azure_storage_blob__cloud_blob_container_listBlobs) を使います。 次のコードは、BLOB の一覧を取得し、ループ処理して、見つかった BLOB の URI を表示します。 コマンド ウィンドウから URI をコピーしてブラウザーに貼り付けることで、ファイルを表示できます。
+コンテナー内のファイルの一覧を取得するには、[CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs) を使います。 次のコードは、BLOB の一覧を取得し、ループ処理して、見つかった BLOB の URI を表示します。 コマンド ウィンドウから URI をコピーしてブラウザーに貼り付けることで、ファイルを表示できます。
 
 ```java
 //Listing contents of container
@@ -182,7 +185,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-アップロードした BLOB が不要になった場合は、[CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists) を使ってコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
+アップロードした BLOB が不要になった場合は、[CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists) を使ってコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
 
 ```java
 try {
@@ -206,8 +209,6 @@ sourceFile.deleteOnExit();
 この記事では、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java) 
-> [API リファレンス](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
+> [Java 用の Microsoft Azure Storage SDK v10](https://github.com/azure/azure-storage-java) 
+> [Java API リファレンス](https://docs.microsoft.com/java/azure/)
 > [Java のコード サンプル](../common/storage-samples-java.md)
-
-* Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

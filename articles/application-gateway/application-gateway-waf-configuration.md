@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 11/6/2018
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: 6ea72c2caebeeb46b0973ba700d40670340204d7
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 24cb5d7ddb1bfbb64796d871aa79109dfdfa94be
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353194"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492931"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト
 
@@ -45,7 +45,7 @@ WAF の除外リストを使用すると、WAF の評価から特定の要求属
    * XML
    * JSON
 
-要求ヘッダー、本文、cookie、またはクエリ文字列属性については完全一致を指定することも、必要に応じて、部分一致を指定することもできます。
+要求ヘッダー、本文、cookie、またはクエリ文字列属性については完全一致を指定できます。  また、必要に応じて、部分一致を指定できます。 除外は常にヘッダー フィールドに適用され、その値には適用されません。 除外ルールは、スコープ内でグローバルであり、すべてのページとすべてのルールに適用されます。
 
 次に、サポートされている一致条件演算子を示します。
 

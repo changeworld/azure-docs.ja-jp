@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402049"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567276"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -102,6 +102,10 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 [Azure オンライン サービス条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、OST と Microsoft のプライバシーに関する声明に従って Video Indexer でお客様のコンテンツから抽出するメタデータと分析情報のみにアクセスします。
 
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>自分の Video Indexer アカウントで作成したカスタム モデルを他のアカウントで使用できますか?
+
+ いいえ、自分のアカウントで作成したカスタム モデルは、他のアカウントでは使用できません。 Video Indexer では、現在、自分のアカウントで[ブランド](customize-brands-model-overview.md)、[言語](customize-language-model-overview.md)、および[人](customize-person-model-overview.md)のカスタム モデルを作成できます。 これらのモデルは、モデルを作成したアカウントでのみ使用できます。
+  
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Video Indexer によってインデックスが付けられたコンテンツは、使用中の Video Indexer がある Azure リージョン内に保持されますか?
 
 はい、コンテンツとその分析情報は、その Azure リージョン内に保持されますが、複数の Azure リージョンを使用するように Azure サブスクリプションを手動構成した場合を除きます。 

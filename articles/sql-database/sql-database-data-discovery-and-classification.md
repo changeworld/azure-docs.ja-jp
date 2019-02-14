@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466594"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731854"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
+# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database のデータの検出と分類
 
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
 最も機微なデータの検出と分類 (ビジネス/金融、医療、個人を特定できる情報 (PII) など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
@@ -28,7 +28,7 @@ ms.locfileid: "55466594"
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
-データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [SQL Advanced Data Security](sql-advanced-threat-protection.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
+データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 > [!NOTE]
 > このドキュメントは、Azure SQL Database にのみ関係があります。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification](https://go.microsoft.com/fwlink/?linkid=866999)」(SQL のデータの検出と分類) をご覧ください。
@@ -147,11 +147,11 @@ REST API を使用して、分類をプログラムで管理することもで�
 
 ## <a id="subheading-5"></a>次のステップ
 
-- [SQL Advanced Data Security](sql-advanced-threat-protection.md) の詳細について学習します。
+- [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](sql-database-auditing.md) を構成することを検討します。
 
 <!--Anchors-->
-[SQL Data Discovery & Classification overview]: #subheading-1
+[SQL data discovery & classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
 [Automated/Programmatic classification]: #subheading-4

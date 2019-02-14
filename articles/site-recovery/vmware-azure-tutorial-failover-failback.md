@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973173"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822478"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 
@@ -56,7 +56,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[マネージド ディスクの設定](#managed-disk-considerations)を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます
 
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 
@@ -67,7 +67,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 1. **[設定]** > **[レプリケートされたアイテム]** で、対象の VM、**[フェールオーバー]** の順にクリックします。
 
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
-   - **最新**:最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
+   - **[最新]**: 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
    - **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO (目標復旧時間) を低くできます。
    - **最新のアプリ整合性**:Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントに VM をフェールオーバーします。
    - **カスタム**:復旧ポイントを指定します。
@@ -98,7 +98,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 > [!IMPORTANT]
 > オンプレミス環境と Azure との間に VPN 接続がある場合は、再保護とフェールバックに使用するプロセス サーバーとして Azure VM をセットアップする必要があります。 Azure でプロセス サーバーを設定するには、[この記事](vmware-azure-set-up-process-server-azure.md)の手順を実行してください。
 
-再保護とフェールバックの前提条件について詳しくは、こちらの[セクション] ](vmware-azure-reprotect.md##before-you-begin)を参照してください。 
+再保護とフェールバックの前提条件について詳しくは、こちらの[セクション](vmware-azure-reprotect.md##before-you-begin)を参照してください。 
 
 ### <a name="configure-the-master-target-server"></a>マスター ターゲット サーバーを構成する
 

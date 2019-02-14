@@ -4,7 +4,7 @@ description: Key Vault で証明書を作成する方法。
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: f2ba077b23a1fb12d1b547f8c9e3013135db1d87
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3258683b950b537dd106323fe95105289034f727
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114860"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 

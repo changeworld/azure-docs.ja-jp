@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085888"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730715"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>OpenShift Container Platform の Azure へのデプロイ
 
@@ -266,13 +266,13 @@ OpenShift Container Platform を Azure にデプロイするための最も簡�
 
 - **マスター ノード**: 構成可能なインスタンスの種類がある 3 つのマスター ノード。
 - **インフラストラクチャ ノード**: 構成可能なインスタンスの種類がある 3 つのインフラストラクチャ ノード。
-- **ノード**: ノードの数 (2 ～ 9) とインスタンスの種類は構成可能です。
+- **ノード数**: ノードの数 (2 ～ 9) とインスタンスの種類は構成可能です。
 - **ディスクの種類**: マネージド ディスクが使用されます。
-- **ネットワーク**: 新規または既存のネットワークと、カスタムの CIDR 範囲をサポートします。
+- **ネットワーク**:新規または既存のネットワークと、カスタムの CIDR 範囲をサポートします。
 - **CNS**: CNS を有効にできます。
-- **メトリック**: メトリックを有効にできます。
-- **ログ記録**: ログ記録を有効にできます。
-- **Azure クラウド プロバイダー**: 有効にできます。
+- **[メトリック]**:メトリックを有効にできます。
+- **ログ**: ログ記録を有効にできます。
+- **Azure Cloud Provider**: 有効化できます。
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
 
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して削除できます。
+リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group) コマンドを使用して削除できます。
 
 ```azurecli 
 az group delete --name openshiftrg

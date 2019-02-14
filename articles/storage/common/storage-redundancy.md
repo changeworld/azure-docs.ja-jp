@@ -1,29 +1,29 @@
 ---
-title: Azure Storage のデータ レプリケーション | Microsoft Docs
-description: Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。
+title: Azure Storage でのデータ冗長性 | Microsoft Docs
+description: Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 冗長オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455509"
+ms.locfileid: "55506789"
 ---
-# <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
+# <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
-Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常にレプリケートされています。 Azure Storage のレプリケーションでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) からデータが保護されるようにデータがコピーされます。 同じデータ センター内、同じリージョンのゾーンのデータ センター間、さらにはリージョン間でデータをレプリケートすることもできます。
+Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常にレプリケートされています。 Azure Storage では、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) から保護するためにデータがコピーされます。 同じデータ センター内、同じリージョン内の複数のゾーン データ センター間、または地理的に分離されたリージョン間でデータをレプリケートすることもできます。
 
 レプリケーションにより、障害が発生しても、ストレージ アカウントは[ストレージのサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) を満たすことができます。 Azure Storage の持続性と可用性の保証については、SLA をご覧ください。
 
-## <a name="choosing-a-replication-option"></a>レプリケーション オプションの選択
+## <a name="choosing-a-redundancy-option"></a>冗長オプションの選択
 
-ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
+ストレージ アカウントを作成するときは、次の冗長オプションのいずれかを選択できます。
 
 * [ローカル冗長ストレージ (LRS)](storage-redundancy-lrs.md)
 * [ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md)
@@ -64,7 +64,7 @@ GRS から LRS に変更する場合、追加のコストは発生しません�
 ## <a name="see-also"></a>関連項目
 
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
-- [ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
+- [ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)

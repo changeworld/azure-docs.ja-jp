@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/05/2019
+ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219721"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816596"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -36,12 +36,12 @@ Azure SQL Database Managed Instance は、2 つのハードウェアの世代 (G
 
 |   | **Gen 4** | **Gen 5** |
 | --- | --- | --- |
-| ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、高速 eNVM SSD、仮想コア=1 LP (ハイパー スレッド) |
+| ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、仮想コア=1 LP (ハイパー スレッド) |
 | Compute | 8、16、24 の仮想コア | 8、16、24、32、40、64、80 の仮想コア |
 | メモリ | 仮想コアあたり 7 GB | 仮想コアあたり 5.1 GB |
 | インメモリ OLTP メモリ | 仮想コアあたり 3 GB | 仮想コアあたり 2.6 GB |
 | 最大ストレージ容量 (汎用) |  8 TB | 1 TB (テラバイト) |
-| 最大ストレージ容量 (Business Critical) | 8 TB | コアの数に応じて 1 TB、2 TB 、または 4 TB |
+| 最大ストレージ容量 (Business Critical) | 1 TB (テラバイト) | コアの数に応じて 1 TB、2 TB 、または 4 TB |
 
 ### <a name="service-tier-characteristics"></a>サービス レベルの特性
 
@@ -50,17 +50,19 @@ Managed Instance には、General Purpose と Business Critical の 2 つのサ�
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
 | 仮想コアの数\* | Gen4: 8、16、24<br/>Gen5: 8、16、24、32、40、64、80 | Gen4: 8、16、24、32 <br/> Gen5: 8、16、24、32、40、64、80 |
-| メモリ | Gen4: 56 GB ～ 156 GB<br/>Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 | Gen4: 56 GB ～ 156 GB <br/> Gen5:41 GB ～ 408 GB<br/>\*仮想コアの数に比例 |
+| メモリ | Gen4:56 ～ 168 GB<br/>Gen5:40.8 ～ 408 GB<br/>\*仮想コアの数に比例 | Gen4:56 ～ 168 GB <br/> Gen5:40.8 ～ 408 GB<br/>\*仮想コアの数に比例 |
 | 最大ストレージ サイズ | 8 TB | Gen4: 1 TB (テラバイト) <br/> Gen 5: <br/>- 8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
-| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7500<br/>\*[ファイル サイズによって異なる] (https://docs.microsoft.com/azure/virtual-machines) ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>最大 48 MB/秒 |
+| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines)| 11 ～ 110 K (仮想コアあたり 1,375) |
+|ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>最大 48 MB/秒 |
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 仮想コアあたり 24 ～ 48 MB/秒 |
 | IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
-| 最大 tempDB サイズ | 192 ～ 1920 GB (vCore あたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
+| 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
 
 **注**:
+
 - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
 - スループットと IOPS も、Managed Instance によって明示的に制限されないページ サイズに依存します。
 

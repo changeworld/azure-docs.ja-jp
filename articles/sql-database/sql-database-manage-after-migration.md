@@ -3,7 +3,7 @@ title: 移行後の管理 - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478476"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751941"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -108,7 +108,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 ファイアウォールは、SDL Database サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、SDL Database サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、SDL Database サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
 
-サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルのファイアウォール ルールは、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database でのファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
+サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルの IP ファイアウォール ルールは、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database での IP ファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -134,7 +134,7 @@ SQL Database では、監査を有効にしてデータベース イベントを
 
 #### <a name="threat-detection"></a>脅威の検出
 
-[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 SQL Database の脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、「[SQL Database の脅威の検出を有効にする](sql-database-security-tutorial.md#enable-security-features)」を参照してください。
+[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、[脅威検出の有効化](sql-database-security-tutorial.md#enable-security-features)に関するページを参照してください。
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般に SQL Database 上のデータを保護するにはどうすればよいですか
 
@@ -220,7 +220,7 @@ Query Performance Insight を使うと、データベースのワークロード
 
 ### <a name="security-optimization"></a>セキュリティの最適化
 
-SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [SQL 脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
+SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
 
 Azure Security Center では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
 

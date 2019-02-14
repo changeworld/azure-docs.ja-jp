@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3e5f84a6f05e451b1eafa98c373f9d838421016e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229298"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746967"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery のサービスの更新情報
 組織として、機能が停止したときに、それが計画されたものであれ、計画外のものであれ、どのような方法でデータの安全性を確保し、アプリやワークロードの実行状態を維持するかを把握しておく必要があります。 Azure Site Recovery は、サイトがダウンした場合でも利用可能な VM や物理サーバー上でアプリの実行状態を維持することで、BCDR 戦略に貢献します。 VM や物理サーバー上で実行されているワークロードは、プライマリ サイトが利用できなくなった場合でもセカンダリ ロケーションで利用できるように、Site Recovery によってレプリケートされます。 ワークロードは、プライマリ サイトが稼働状態に戻った時点でプライマリ サイトに復元されます。
@@ -97,10 +97,13 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 ## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>オンプレミス VMware または物理サイトと Azure の間
 
-1. まず、オンプレミスの管理サーバーに更新プログラムをインストールします。 これは、構成サーバーとプロセス サーバーの役割を持つサーバーです。 
-2. スケールアウト プロセス サーバーがある場合は、次にそれらを更新します。
-3. Azure portal に移動し、**[保護されたアイテム]** > **[レプリケートされたアイテム]** ページに移動します。
-このページで VM を選択します。 各 VM のページの下部に表示される **[エージェントの更新]** ボタンを選択します。 これで、保護されているすべての VM でモビリティ サービス エージェントが更新されます。
+更新を実行する前に、アップグレード パスを理解するために、「[Site Recovery のサポートに関する声明」](#support-statement-for-azure-site-recovery)を参照します。
+
+1. 前述の現在のバージョンおよびサポートに関する声明に基づいて、[ここ](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)で提供されているガイドラインに従って、オンプレミス管理サーバーに最初に更新をインストールします。 これは、構成サーバーとプロセス サーバーの役割を持つサーバーです。
+2. スケールアウト プロセス サーバーがある場合は、[ここ](vmware-azure-manage-process-server.md#upgrade-a-process-server)で提供されているガイドラインに従って、次にそれらを更新します。
+3. 次に、保護されている各項目のモビリティ エージェントを更新するために、Azure portal に移動して、**[保護された項目 (Protected Items)]** > **[レプリケートされた項目 (Replicated Items)]** ページに移動します。 このページで VM を選択します。 各 VM のページの下部に表示される **[エージェントの更新]** ボタンを選択します。 これで、保護されているすべての VM でモビリティ サービス エージェントが更新されます。
+
+### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>モビリティ エージェントのアップグレード後のソース マシンの再起動
 
 最新のすべての変更がソース マシンに読み込まれるように、モビリティ エージェントをアップグレードするたびに再起動することをお勧めします。 ただし、これは**必須ではありません**。 前回の再起動時のエージェント バージョンと現在のバージョンの差が 4 を超える場合は、再起動が必須です。 詳細については、次の表を参照してください。
 
@@ -111,14 +114,12 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 | 9.16 | 9.20 | 必須ではない
  | 9.16 | 9.21 | はい。最初に 9.20 にアップグレードした後、バージョン間の差が 4 を超えるため (前回再起動時は 9.16、ターゲット バージョンは 9.21)、9.21 にアップグレードする前に再起動します。
 
-
-
 ## <a name="links-to-currently-supported-update-rollups"></a>現在サポートされている更新プログラム ロールアップへのリンク
-
 
 |更新プログラム ロールアップ  |プロバイダー  |統合セットアップ| OVF  |MARS|
 |---------|---------|---------|---------|--------|
-|[更新プログラム ロールアップ 32](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+|[更新プログラム ロールアップ 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
+|[更新プログラム ロールアップ 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[更新プログラム ロールアップ 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[更新プログラム ロールアップ 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0

@@ -117,6 +117,28 @@ items:
     href: concepts-pipeline-execution-triggers.md
   - name: 統合ランタイム
     href: concepts-integration-runtime.md
+  - name: マッピング データ フロー
+    items:
+    - name: マッピング データ フローの概念
+      href: concepts-data-flow-overview.md
+    - name: デバッグ モード
+      href: concepts-data-flow-debug-mode.md
+    - name: スキーマの誤差
+      href: concepts-data-flow-schema-drift.md
+    - name: '[検査] ウィンドウ'
+      href: concepts-data-flow-inspect-pane.md
+    - name: 列パターン
+      href: concepts-data-flow-column-pattern.md
+    - name: データ フローの監視
+      href: concepts-data-flow-monitoring.md
+    - name: ノードの移動
+      href: concepts-data-flow-move-nodes.md
+    - name: '[最適化] タブ'
+      href: concepts-data-flow-optimize-tab.md
+    - name: 式ビルダー
+      href: concepts-data-flow-expression-builder.md
+    - name: 参照ノード
+      href: concepts-data-flow-reference-node.md
   - name: ロールとアクセス許可
     href: concepts-roles-permissions.md
   - name: 価格について
@@ -506,9 +528,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: c73a736dadee91f344da32fb5569d5809a382f1b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 535abc50cd27693da90aaaddcfdf8950d6abc59d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174420"

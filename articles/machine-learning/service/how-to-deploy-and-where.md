@@ -11,16 +11,16 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8b318626947c1d1147e43ca6c183ae724080a59
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251607"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766624"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
-Azure Machine Learning service には、SDK を使用してお客様のトレーニング済みのモデルをデプロイする方法が複数用意されています。 このドキュメントでは、Web サービスとして Azure クラウドに、または IoT エッジ デバイスに、モデルをデプロイする方法を説明します。
+Azure Machine Learning service には、SDK を使用してお客様のトレーニング済みのモデルをデプロイする方法が複数用意されています。 このドキュメントでは、Web サービスとして Azure クラウドに、または IoT Edge デバイスに、モデルをデプロイする方法を説明します。
 
 > [!IMPORTANT]
 > モデルを Web サービスとしてデプロイするときのクロスオリジン リソース共有 (CORS) は、現在サポートされていません。
@@ -244,9 +244,6 @@ Azure Container Instances にデプロイするには、次の手順を使用し
 
     **推定所要時間**: 約 3 分です。
 
-    > [!TIP]
-    > デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
-
 詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 
 ### <a id="aks"></a>Azure Kubernetes Service へのデプロイ
@@ -334,9 +331,6 @@ print(service.state)
 
 **推定所要時間**: 約 3 分です。
 
-> [!TIP]
-> デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
-
 詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 
 ### <a id="fpga"></a>フィールド プログラマブル ゲート アレイ (FPGA) へのデプロイ
@@ -390,7 +384,7 @@ IoT Edge モジュールをお客様のデバイスにデプロイするには�
 
 次の 2 つの方法で、必要なコンテナー レジストリの資格情報を簡単に取得できます。
 
-+ **Azure portal**:
++ **Azure portal で次の操作を行います**。
 
   1. [Azure Portal](https://portal.azure.com/signin/index) にサインインします。
 
@@ -469,7 +463,7 @@ Web サービスは REST API なので、さまざまなプログラミング言
 
 ## <a id="update"></a> Web サービスを更新する
 
-Web サービスを更新するには、`update` メソッドを使用します。 次のコードは、Web サービスを更新して新しいイメージを使用する方法を示しています。
+新しいイメージを作成する場合、新しいイメージを使用する各サービスを手動で更新する必要があります。 Web サービスを更新するには、`update` メソッドを使用します。 次のコードは、Web サービスを更新して新しいイメージを使用する方法を示しています。
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> イメージの更新時に、Web サービスは自動的には更新されません。 新しいイメージを使用するには、各サービスを手動で更新する必要があります。
-
 詳細については、[Webservice クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)のリファレンス ドキュメントを参照してください。
 
 ## <a name="clean-up"></a>クリーンアップ
@@ -502,6 +493,19 @@ print(service.state)
 
 詳細については、[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)、[Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--)、および [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) のリファレンス ドキュメントを参照してください。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* __デプロイ中にエラーが発生した場合は__、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
+
+* ログには、__ログ レベルを DEBUG に設定__するよう指示するエラーが含まれる場合があります。 ログ レベルを設定するには、スコアリング スクリプトに次の行を追加し、イメージを作成し、その後そのイメージを使用してサービスを作成します。
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    この変更により、追加のログ記録が有効になり、エラー発生の原因について詳細情報が返されるようになります。
+
 ## <a name="next-steps"></a>次の手順
 
 * [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
@@ -511,3 +515,5 @@ print(service.state)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
 * [Azure Machine Learning service SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [Azure Machine Learning service と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
+* [推奨システムを構築するためのベスト プラクティス](https://github.com/Microsoft/Recommenders)
+* [Azure 上でリアルタイム レコメンデーション API を構築する](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

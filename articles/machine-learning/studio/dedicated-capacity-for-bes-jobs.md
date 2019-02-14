@@ -1,14 +1,30 @@
 ---
-title:Machine Learning Studio ジョブ用の Azure Batch サービス titleSuffix:Azure Machine Learning Studio description:Machine Learning ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs' ms.date:04/19/2017
+title: Machine Learning Studio ジョブ用の Azure Batch サービス
+titleSuffix: Azure Machine Learning Studio
+description: Machine Learning ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.date: 04/19/2017
+ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697502"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Machine Learning Studio ジョブ用の Azure Batch サービス
 
 Machine Learning の Batch プール処理では、Azure Machine Learning バッチ実行サービスのスケールをユーザーが管理できるようにしています。 Machine Learning のクラシック バッチ処理はマルチ テナント環境で実行され、送信できる同時実行ジョブの数が制限されており、ジョブは先入れ先出しベースでキューに配置されます。 この不確定性により、ユーザーはジョブがいつ実行されるかを正確に予測することはできません。
 
 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。 プールのサイズと、ジョブの送信先となるプールはユーザーが制御します。 BES ジョブは独自の処理領域で実行されるため、処理パフォーマンスを予測し、送信する処理の負荷に対応するリソース プールを作成することができます。
+
+> [!NOTE]
+> プールを作成するには、新しい Resource Manager ベースの Machine Learning Web サービスが必要です。 一度作成したら、プールで任意の BES Web サービス (新しい Resource Manager ベースとクラシックの両方) を実行できます。
 
 ## <a name="how-to-use-batch-pool-processing"></a>Batch プール処理を使用する方法
 
@@ -23,7 +39,7 @@ Batch プール処理では、バッチ ジョブを送信できるプールを�
 
 ![Batch プール サービスのアーキテクチャ](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-プールを作成するには、CSS から提供されたプール サービスの URL でプール作成操作を呼び出します。 プールを作成する場合は、VM の数と新しい Resource Manager ベースの Machine Learning Web サービスの swagger.json の URL を指定します。 この Web サービスは、料金の関連付けを確立するために提供されます。 Batch プール サービスでは、swagger.json を使用して、プールを料金プランに関連付けます。 プールで選択した任意の BES Web サービス (新しい Resource Manager ベースとクラシックの両方) を実行できます。
+プールを作成するには、CSS から提供されたプール サービスの URL でプール作成操作を呼び出します。 プールを作成する場合は、VM の数と新しい Resource Manager ベースの Machine Learning Web サービスの swagger.json の URL を指定します。 この Web サービスは、料金の関連付けを確立するために提供されます。 Batch プール サービスでは、swagger.json を使用して、プールを料金プランに関連付けます。 プールで任意の BES Web サービス (新しい Resource Manager ベースとクラシックの両方) を実行できます。
 
 新しい Resource Manager ベースの Web サービスを使用できますが、ジョブの料金はそのサービスに関連付けられている料金プランに基づいて課金される点に注意してください。 Batch プール ジョブの実行専用の Web サービスと新しい料金プランを作成できます。
 

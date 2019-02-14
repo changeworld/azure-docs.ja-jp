@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a508c8a2bb4a28372f5dd8f833f6e55adc3c39ed
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7ea13d08af924427b9e7dc5def72c19d560525b8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158742"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188258"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Log Analytics を使用した Azure AD アクティビティ ログの分析 (プレビュー)
 

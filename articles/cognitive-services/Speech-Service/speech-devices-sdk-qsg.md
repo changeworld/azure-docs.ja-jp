@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85e250f3dee3dbfc9e09524d5f3977a143ee8bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213261"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750377"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -46,12 +46,14 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
     [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://shares.datatransfer.microsoft.com/)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、**[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
 
 ## <a name="set-up-the-development-kit"></a>開発キットをセットアップする
-
-1. ミニ USB ケーブルを使用して開発キットを PC または電源アダプターに接続します。 キットが接続されると、上部のボードの下で緑色の電源インジケーターが点灯します。
-
-1. 2 本目のミニ USB ケーブルを使用して開発キットをコンピューターに接続します。
+    
+1. 開発キットには、2 つのマイクロ USB コネクタがあります。 左側のコネクタは開発キットに電源を供給するためのものです。下の画像では Power と強調表示されています。 右側のコネクタは開発キットを制御するためのものです。画像では Debug とマークされています。
 
     ![開発キットの接続](media/speech-devices-sdk/qsg-1.png)
+       
+1. マイクロ USB ケーブルを使用して電源ポートを PC または電源アダプターに接続して、開発キットに電源を供給します。 トップ ボードの下で緑色の電源インジケーターが点灯します。
+
+1. 開発キットを制御するために、2 本目のマイクロ USB ケーブルを使用してデバッグ ポートをコンピューターに接続します。 信頼性の高い通信を確保するためには、高品質のケーブルを使用することが不可欠になります。
 
 1. 直線または円形のいずれかの構成になるように開発キットの方向を指定します。
 
@@ -75,6 +77,8 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
     > [!NOTE]
     > これらのコマンドでは、Android Studio のインストールの一部である Android Debug Bridge `adb.exe` を使用します。 このツールは C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools にあります。 このディレクトリをパスに追加して、`adb` を呼び出しやすくすることができます。 それ以外の場合は、`adb` を呼び出すすべてのコマンドで adb.exe の完全なインストール パスを指定する必要があります。
+    >
+    > エラー `no devices/emulators found` が発生した場合は、USB ケーブルが接続されていること、および USB ケーブルが高品質のケーブルであることを確認してください。 `adb devices` を使用すると、デバイスの一覧が返されるため、コンピューターが開発キットと通信できることを確認できます。
 
     > [!TIP]
     > PC のマイクとスピーカーをミュートし、開発キットのマイクを操作していることがわかるようにします。 こうすることによって、PC からの音声によってデバイスが誤ってトリガされなくなります。

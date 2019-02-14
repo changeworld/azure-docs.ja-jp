@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) から抽出できるデータの種類について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 256eb258a4f689f768919f2cac41367493baf747
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 385e0065123b86f8f8b7c8503fe6de6daa7c6562
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224277"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874126"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>意図とエンティティからのデータ抽出
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -196,7 +196,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|親|子|値|
 |--|--|--|--|--|
-|階層構造エンティティ|場所|ToLocation|"paris"|
+|階層構造エンティティ|Location|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
 [複合](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 たとえば、次の発話で、事前構築済みの `number` と `Location::ToLocation` の複合エンティティを考えてみましょう。

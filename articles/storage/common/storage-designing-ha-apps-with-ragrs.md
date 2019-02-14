@@ -1,20 +1,20 @@
 ---
-title: Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
+title: 読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
 description: Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454945"
+ms.locfileid: "55512246"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -43,9 +43,7 @@ RA-GRS 用のアプリケーションを設計する際には、次の重要ポ�
 
 * ストレージ クライアント ライブラリを使用して、プライマリ リージョンまたはセカンダリ リージョンのデータと対話することができます。 プライマリ リージョンに対する読み取り要求がタイムアウトした場合に、その要求をセカンダリ リージョンに自動的にリダイレクトすることもできます。
 
-* プライマリ リージョンのデータのアクセシビリティに影響する重大な問題が発生した場合は、Azure チームが geo フェールオーバーをトリガーすることがあります。このとき、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。
-
-* geo フェールオーバーが行われると、Azure によって新しいセカンダリ リージョンの場所が選択され、その場所にデータがレプリケートされます。そして、セカンダリ DNS エントリがセカンダリ リージョンを指すよう変更されます。 セカンダリ エンドポイントは、ストレージ アカウントがレプリケートを完了するまで使用できなくなります。 詳細については、「[Azure Storage の停止が発生した場合の対処方法](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)」を参照してください。
+* プライマリ リージョンが使用できなくなった場合、アカウントのフェールオーバーを開始できます。 セカンダリ リージョンにフェールオーバーすると、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。 フェールオーバーが完了すると、GRS アカウントと RA-GRS アカウントの書き込みアクセスが復元されます。 詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>RA-GRS を使用する場合のアプリケーション設計に関する考慮事項
 
