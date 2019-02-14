@@ -3,19 +3,19 @@ title: Text Analytics API でエンティティ認識を利用する
 titleSuffix: Azure Cognitive Services
 description: Text Analytics REST API を使用してエンティティを認識する方法について説明します。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220392"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242754"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -44,7 +44,7 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | type  | SubType | 例 |
 |:-----------   |:------------- |:---------|
 | Person        | 該当なし\*         | "Jeff"、"Bill Gates"     |
-| 場所      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
+| Location      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
 | 数量      | Number        | "6"､"six"     | 
 | 数量      | 割合    | "50%"､"fifty percent"| 
@@ -55,7 +55,7 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | 数量      | Dimension     | "10 miles"､"40 cm"     | 
 | 数量      | 気温   | "32 degrees"    |
 | DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
-| DateTime      | 日付          | "May 2nd, 2017", "05/02/2017"   | 
+| DateTime      | Date          | "May 2nd, 2017", "05/02/2017"   | 
 | 日時     | Time          | "8am"､"8:00"  | 
 | DateTime      | Daterange     | "May 2nd to May 5th"    | 
 | DateTime      | TimeRange     | "6pm to 7pm"     | 

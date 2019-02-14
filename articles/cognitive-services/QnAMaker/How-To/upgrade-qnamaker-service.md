@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker スタックは、その初回作成後に、個々のコンポーネントを必要に応じてアップグレードすることができます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 5cef98fedc0e2e29582c8cde8c75837880f1cf58
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e37a903112f30917ff5051305bb2144981de1c9d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216066"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883272"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>QnA Maker サービスのアップグレード
 QnA Maker スタックは、その初回作成後に、個々のコンポーネントを必要に応じてアップグレードすることができます。 依存コンポーネントと SKU 選択の詳細については、[こちら](https://aka.ms/qnamaker-docs-capacity)を参照してください。

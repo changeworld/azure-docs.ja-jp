@@ -1,26 +1,26 @@
 ---
 title: Azure CLI スクリプト サンプル - Azure Cache for Redis を作成する | Microsoft Docs
 description: Azure CLI スクリプト サンプル - Azure Cache for Redis を作成します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 tags: azure-service-management
 ms.assetid: afd7f6e0-9297-4c98-a95e-597be939cef7
-ms.service: cache-redis
+ms.service: cache
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
-ms.author: wesmc
-ms.openlocfilehash: 0a103b2901e7296360601e8113e3a422aa763625
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: yegu
+ms.openlocfilehash: f4900242c9b6e5eecd5364d74bfcd8e2bc4efb2b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733215"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232013"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "55733215"
 
 このスクリプトでは、次のコマンドを使用して、リソース グループと Azure Cache for Redis を作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az redis create](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスを作成します。 |

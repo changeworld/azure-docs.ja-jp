@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: a60360d8268d43d920ad878d372014fa6d9cc875
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 292b7031377ecb20881dbb12fa6e259fcd49612c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176864"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
 
@@ -146,7 +147,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
    
    c. **[Logout landing URL]\(ログアウト ランディング URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-   d. **[変更を保存する]** をクリックします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[変更を保存する]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -182,7 +183,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-new-relic-test-user"></a>New Relic テスト ユーザーを作成する
 
