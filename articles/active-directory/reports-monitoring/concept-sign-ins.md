@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 932517e3f1dc70e44727a6d165430dba6e63ae5a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187795"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190366"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -99,7 +100,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - アプリケーション
 - サインインの状態
 - 条件付きアクセス
-- 日付
+- Date
 
 ![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
@@ -198,9 +199,9 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 - アプリケーション ID
 - アプリケーション
 - クライアント
-- 場所
+- Location
 - IP アドレス
-- 日付
+- Date
 - MFA が必要
 - サインインの状態
 

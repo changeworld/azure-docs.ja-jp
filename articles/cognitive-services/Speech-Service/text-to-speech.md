@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Text-to-Speech API では、45 を超える言語およびロケールで 75 を超える音声を提供しています。 標準の音声フォントを使用するには、Speech Service を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251556"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859336"
 ---
 # <a name="about-the-text-to-speech-api"></a>Text to Speech API について
 

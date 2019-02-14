@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994672"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997577"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
 | --- | --- | --- |
-| **名前**<br/><br/> 必須 |**xs:string** |メディア資産ファイルの名前。 |
+| **Name**<br/><br/> 必須 |**xs:string** |メディア資産ファイルの名前。 |
 | **サイズ**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
 | **Duration**<br/><br/> 必須 |**xs:duration** |コンテンツの再生時間。 |
 
@@ -76,7 +76,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
 | --- | --- | --- |
-| **名前**<br/><br/> 必須 |**xs:string** |入力ソース ファイルの名前。 |
+| **Name**<br/><br/> 必須 |**xs:string** |入力ソース ファイルの名前。 |
 
 ## <a name="VideoTracks "></a> VideoTracks 要素
 各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 **VideoTracks** 要素は、すべてのビデオ トラックのコレクションを表します。  

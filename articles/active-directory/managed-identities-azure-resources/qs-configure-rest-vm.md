@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
-ms.openlocfilehash: 7b44d58f14da06bdcbd7e9d9ada4976049969c81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158980"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195636"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -82,7 +83,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
    
    **要求本文**
 
@@ -170,7 +171,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
    
    **要求本文**
     
@@ -202,7 +203,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -237,7 +238,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
    **要求本文**
 
    ```JSON
@@ -279,7 +280,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -338,7 +339,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -419,7 +420,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -508,7 +509,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    **要求ヘッダー**
    |要求ヘッダー  |説明  |
    |---------|---------|
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
 
     応答の `identity` 値で識別される、ユーザーまたはシステム割り当てマネージド ID が VM に割り当てられている場合は、VM でユーザー割り当てマネージド ID を追加しながら、システム割り当てマネージド ID を保持する方法を示す手順 5 に進みます。
 
@@ -530,7 +531,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        |
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        |
  
    **要求本文**
 
@@ -562,7 +563,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -598,7 +599,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -637,7 +638,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -677,7 +678,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
  
    VM にマネージド ID が割り当てられている場合、応答の `identity` 値に一覧表示されます。
 
@@ -700,7 +701,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -732,7 +733,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
-   |*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
 
    **要求本文**
 
@@ -762,7 +763,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |要求ヘッダー  |説明  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
-|*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
+|*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
 
 **要求本文**
 
@@ -789,7 +790,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |要求ヘッダー  |説明  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
-|*Authorization*     | 必須。 有効な `Bearer` アクセス トークンを設定します。| 
+|*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。| 
 
 **要求本文**
 

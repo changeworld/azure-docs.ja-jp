@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0722cb2e583ae94b7c5dc8591e0c14ea1d359fe9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 214cd2ac20207e32d862086f82f6e3c775d88721
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183171"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210443"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>チュートリアル:Azure Active Directory と Jostle の統合
 
@@ -119,7 +120,7 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[詳細な URL 設定の表示]** チェック ボックスをオンにします。
 
-    d. **[応答 URL]** ボックスに、「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[応答 URL]** ボックスに、「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
 
 1. **[ユーザー属性]** セクションで、**[ユーザー識別子]** フィールドに「`user.userprincipalname`」と入力します。
 
@@ -166,7 +167,7 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-jostle-test-user"></a>Jostle のテスト ユーザーの作成
 

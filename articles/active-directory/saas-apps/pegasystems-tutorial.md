@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: abeffacedd8b3cae9802e5a8c264748df313abf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7a6fd51ad14395b3c195ae1ceb5a188dd2c708c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196737"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
 
@@ -154,7 +155,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -179,7 +180,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Short Description]\(簡単な説明\)** ボックスに、任意の説明を入力します  
 
-    d. **[Create and open]\(作成して開く\)** をクリックします 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Create and open]\(作成して開く\)** をクリックします 
     
 1. **[Identity Provider (IdP) information]\(ID プロバイダー (IdP) 情報\)** セクションで **[Import IdP metadata]\(IdP メタデータのインポート\)** をクリックし、Azure Portal からダウンロードしたメタデータ ファイルを参照します。 **[Submit]\(送信\)** をクリックして、メタデータを読み込みます。
 
@@ -234,7 +235,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-pega-systems-test-user"></a>Pega Systems テスト ユーザーの作成
 

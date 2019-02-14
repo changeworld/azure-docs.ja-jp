@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 89d5c9c4e553ac82b604c1d3a20eb67b4055e6c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 38ad75d22d21a141d48e9664ae580dfb5577a389
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492897"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184926"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
 以前の Azure AD Connect ビルドでは、SQL を必要とする構成をデプロイするとき、管理の委任はサポートされていませんでした。  Azure AD Connect をインストールするユーザーには、SQL サーバーにおけるサーバー管理者 (SA) アクセス許可が必要でした。
@@ -54,10 +55,7 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 ## <a name="additional-information"></a>追加情報
 データベースがプロビジョニングされたら、Azure AD Connect 管理者は、必要に応じてオンプレミスの同期をインストールおよび構成できます。  
 
-事前に作成されたデータベースを使用する場合は、**/UseExistingDatabase** フラグが必要です。  これは回復時に使用されるだけではありません。
-
-この機能は、Azure AD Connect の新規インストールをサポートするほか、**/UseExistingDatabase** フラグに関連するすべてシナリオについて委任を有効にできます。  既存のデータベースを使用した Azure AD Connect のインストールの詳細については、「[既存の ADSync データベースを使用して Azure AD Connect をインストールする](how-to-connect-install-existing-database.md)」を参照してください
-
+既存のデータベースを使用した Azure AD Connect のインストールの詳細については、「[既存の ADSync データベースを使用して Azure AD Connect をインストールする](how-to-connect-install-existing-database.md)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 - [簡単設定を使用した Azure AD Connect の開始](how-to-connect-install-express.md)

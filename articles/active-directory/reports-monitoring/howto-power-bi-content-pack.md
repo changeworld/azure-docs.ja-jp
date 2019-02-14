@@ -14,12 +14,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5b99348bcf5a5c90841dee3c0cff5baef59e850c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8adcbe4245a8b8cb6e422b31b3ed23ed42f55575
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166715"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180796"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -58,7 +59,7 @@ Azure AD Power BI コンテンツ パックには、次のレポートが付属�
 
 - ユーザー名
 - IP アドレス
-- 場所 
+- Location 
 - サインインの状態 
 
 **SSPR じょうご**:このレポートでは、組織内での SSPR ツールの使用状況を把握できます。 SSPR ツールを使ったパスワード リセットが試行された回数と、その中で成功した回数を確認できます。 また、パスワード リセットの失敗の詳細を調べ、具体的な失敗の理由を把握できます。 

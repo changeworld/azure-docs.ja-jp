@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: カスタム検索候補を使用して Custom Autosuggest を構成する方法について説明します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 2724f0562c9fe4887b1728127b12df5390993076
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bbad72b41a177bdbafd6cf98bfd2025190d98b16
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157357"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237639"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 

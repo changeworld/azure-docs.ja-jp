@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Microsoft Translator Text API を使用して N-Best の翻訳結果を返します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: ea409a4295cb07800e3f48ab408135071d0faea6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 41027cf83fd6074822c70b6039906592cb8698b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464818"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878648"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-Best の翻訳結果を返す方法
 

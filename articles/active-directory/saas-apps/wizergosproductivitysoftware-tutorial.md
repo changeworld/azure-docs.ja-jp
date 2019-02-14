@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: c59bacb9559239c572925ee73303bbb6a0a06353
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 217c8e9eed9e3e1edf2a6080afdf244ddc3fae94
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188832"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル:Azure Active Directory と Wizergos Productivity Software の統合
 
@@ -144,7 +145,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
     
     c. **[シングル サインオン URL]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
-    d. **[シングル サインアウト URL]** テキストボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[シングル サインアウト URL]** テキストボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
     
     e. **[保存]** ボタンをクリックします。
 
@@ -182,7 +183,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-wizergos-productivity-software-test-user"></a>Wizergos Productivity Software テスト ユーザーの作成
 

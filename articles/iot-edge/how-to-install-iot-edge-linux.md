@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 298acb446516a4cdc5057cd6bdcf10422d992ff3
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9d5d6fc436c48bd36e2da64d2b4c7c811e3ddc4f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900598"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993352"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Linux に Azure IoT Edge ランタイムをインストールする (x64)
 
@@ -41,8 +41,8 @@ sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 
-# Perform apt upgrade
-sudo apt-get upgrade
+# Perform apt update
+sudo apt-get update
 ```
 
 ## <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする

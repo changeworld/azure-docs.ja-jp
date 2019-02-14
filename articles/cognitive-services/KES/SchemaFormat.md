@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API のスキーマ形式について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227303"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860713"
 ---
 # <a name="schema-format"></a>スキーマ形式
 
@@ -47,7 +47,7 @@ ms.locfileid: "55227303"
 | Int32 | 符号付き 32 ビット整数 | equals、starts_with、is_between | 2016 |
 | Int64 | 符号付き 64 ビット整数 | equals、starts_with、is_between | 9876543210 |
 | Double | 倍精度浮動小数点数値 | equals、starts_with、is_between | 1.602e-19 |
-| 日付 | 日付 (1400-01-01 から 9999-12-31) | equals、is_between | '2016-03-14' |
+| Date | 日付 (1400-01-01 から 9999-12-31) | equals、is_between | '2016-03-14' |
 | Guid | グローバル一意識別子 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
 | BLOB | 内部的に圧縮された非インデックス データ | *なし* | "Empower every person and every organization on the planet to achieve more" |
 | 複合 | 複数のサブ属性の複合| *該当なし* | { "Name":"harry shum", "Affiliation":"microsoft" } |

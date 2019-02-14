@@ -3,8 +3,8 @@ title: スコープ フィルターを使用してアプリをプロビジョニ
 description: スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのにプロビジョニングされてしまうことを防ぐ方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ed3fef4f4f74939d503d5e6c8434d66f1d2a576
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176949"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208379"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -84,7 +85,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
    c. **IS TRUE**。 評価される属性にブール値 true が含まれる場合、句は "true" を返します。
 
-   d. **IS FALSE**。 評価される属性にブール値 false が含まれる場合、句は "true" を返します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **IS FALSE**。 評価される属性にブール値 false が含まれる場合、句は "true" を返します。
 
    e. **IS NULL**。 評価される属性が空の場合、句は "true" を返します。
 

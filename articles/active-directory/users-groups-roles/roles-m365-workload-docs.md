@@ -14,12 +14,13 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 9ef400a5c7b42f6782fefa28e2351b09d8667861
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7460c3a7d957634d14186d313994c65d89fa4a32
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470248"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217872"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>Microsoft 365 ワークロードの管理者ロール
 

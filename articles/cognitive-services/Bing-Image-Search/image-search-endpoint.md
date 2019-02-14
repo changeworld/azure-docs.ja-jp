@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API で利用できるエンドポイントの一覧。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: 7208f1b3f1658c23a6b38c661a37b050c92ca891
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5e5cf9fcf6f70449fef8237fc004332e36bcd3b4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55204084"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860271"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
 

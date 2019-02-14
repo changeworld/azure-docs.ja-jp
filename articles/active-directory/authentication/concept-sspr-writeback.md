@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f1e90e0499372f78b91f3e21284f37178aff70ff
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167135"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 

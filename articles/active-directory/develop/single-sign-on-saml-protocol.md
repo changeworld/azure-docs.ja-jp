@@ -17,12 +17,13 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: dd9bdc4638d1c055706026798acba08d6add08c7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098752"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184042"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -59,7 +60,7 @@ Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerService
 
 Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
-### <a name="issuer"></a>Issuer
+### <a name="issuer"></a>発行者
 
 `AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
 
@@ -96,7 +97,7 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 
 指定する場合は、`ProxyCount` 属性、`IDPListOption` 要素、または `RequesterID` 要素を使用しないでください。これらはサポートされていません。
 
-### <a name="signature"></a>Signature
+### <a name="signature"></a>署名
 `AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
 
 ### <a name="subject"></a>Subject
@@ -155,7 +156,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 * `Destination`:サインオンが正常に完了すると、サービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
 * `InResponseTo`:応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
 
-### <a name="issuer"></a>Issuer
+### <a name="issuer"></a>発行者
 
 Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
@@ -190,7 +191,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 `ID`、`IssueInstant`、および `Version` に加えて、Azure AD は応答の `Assertion` 要素の次の要素も設定します。
 
-#### <a name="issuer"></a>Issuer
+#### <a name="issuer"></a>発行者
 
 この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。<TenantIDGUID> は Azure AD テナントのテナント ID です。
 
@@ -198,7 +199,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### <a name="signature"></a>Signature
+#### <a name="signature"></a>署名
 
 Azure AD は、サインオンが成功すると応答のアサーションに署名します。 `Signature` 要素にはデジタル署名が含まれ、クラウド サービスはそれを使用してソースを認証し、アサーションの整合性を検証できます。
 
@@ -225,7 +226,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </Subject>
 ```
 
-#### <a name="conditions"></a>Conditions
+#### <a name="conditions"></a>条件
 
 この要素は、SAML アサーションの許容される使用方法を定義する条件を指定します。
 
@@ -242,7 +243,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 * `NotBefore` 属性の値は、`Assertion` 要素の `IssueInstant` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。 Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
 * `NotOnOrAfter` 属性の値は、`NotBefore` 属性の値より 70 分後です。
 
-#### <a name="audience"></a>Audience
+#### <a name="audience"></a>対象ユーザー
 
 この要素には、対象を識別する URI が含まれます。 Azure AD は、この要素の値に、サインオンを開始した `AuthnRequest` の `Issuer` 要素の値を設定します。 `Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
 

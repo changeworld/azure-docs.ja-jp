@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 0f11b8b91f1dad208e8d14e21a20c316fe46074c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9556c99e7e9655054ee5b834db36ba6e22e9e807
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191426"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182654"
 ---
 # <a name="set-up-security-info-to-use-text-messaging-preview"></a>テキスト メッセージを使用するようにセキュリティ情報を設定する (プレビュー)
 

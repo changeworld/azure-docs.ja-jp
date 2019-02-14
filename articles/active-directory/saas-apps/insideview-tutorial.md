@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 38749d9d920a3243c5fe63912c08cafa5834350c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aa0885a469877d0ea9f52f6191b4cd894ddbbce5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154153"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
 
@@ -145,7 +146,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
     
     c. Azure Portal からダウンロードした base-64 でエンコードされた証明書を開き、その内容をクリップボードにコピーして **[STS 証明書]** ボックスに貼り付けます。
 
-    d. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
         
     e. **[Crm Email Mapping]\(Crm 電子メール マッピング)\** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
 
@@ -188,7 +189,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-insideview-test-user"></a>InsideView テスト ユーザーの作成
 

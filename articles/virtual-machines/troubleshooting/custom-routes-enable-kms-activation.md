@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 71330e72ef27b62472622472b37e2ec8c78211d7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b121996530ea0618fc757f1ae12dfafde10ed7bb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075568"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979379"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題
 
@@ -51,21 +51,23 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
 
 ### <a name="for-resource-manager-vms"></a>Resource Manager VM の場合
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
 2. 次のコマンドを実行します。
 
     ```powershell
     # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
 
-    $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
 
     # Next, create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out:
 
-    $RouteTable = New-AzureRmRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
+    $RouteTable = New-AzRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
 
-    Add-AzureRmRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
+    Add-AzRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
 
-    Set-AzureRmRouteTable -RouteTable $RouteTable
+    Set-AzRouteTable -RouteTable $RouteTable
     ```
 3. ライセンス認証の問題がある VM に移動します。 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) を使用して、KMS サーバーにアクセスできるかどうかをテストします。
 

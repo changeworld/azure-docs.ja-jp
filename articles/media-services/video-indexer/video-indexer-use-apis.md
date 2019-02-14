@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: fcde97c76e11c6ecbdb22befcb1a8d1ce0437942
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299029"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55988053"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -74,7 +74,7 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
  
 これで API との統合を開始する準備が整いました。 [各 Video Indexer REST API の詳細な説明](http://api-portal.videoindexer.ai/)を参照してください。
 
-## <a name="location"></a>場所
+## <a name="location"></a>Location
 
 すべての操作 API には Location パラメーターが必要です。このパラメーターは、呼び出しがルーティングされ、アカウントが作成されたリージョンを示します。
 

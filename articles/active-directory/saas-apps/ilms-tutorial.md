@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 0a1de782b3b4502107c14282bdd4ce5ef2caa871
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf68f76f6ba451ff5f3e81b3aaabf3825155ba15
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165916"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>チュートリアル:Azure Active Directory と iLMS の統合
 
@@ -152,7 +153,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
@@ -178,7 +179,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     ![Configure single sign-on](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
 
-    d. JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
         
        - **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** をクリックします。
        
@@ -234,7 +235,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-ilms-test-user"></a>iLMS テスト ユーザーの作成
 
@@ -258,7 +259,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[Email ID (電子メール ID)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
-    d. **[Region (リージョン)]** ボックスの一覧からリージョンの値を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Region (リージョン)]** ボックスの一覧からリージョンの値を選択します。
 
     e. **[Division (事業部)]** ボックスの一覧からリージョンの値を選択します。
 

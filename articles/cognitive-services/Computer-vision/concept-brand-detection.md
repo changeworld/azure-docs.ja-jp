@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したブランド/ロゴの検出に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: pafarley
-ms.openlocfilehash: a8822eb773842df3ea6fd50cd2a6ba36c3c4cd88
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a5cf4a2b0f5e2e2c83e9fe6aa9237c943fa23ed9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569365"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864804"
 ---
 # <a name="brand-detection"></a>ブランド検出
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 80b1495153d77599a91713aa492688ce9f29d0f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8328fc5582fa9ebe38a23e5916ac0c3127575529
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160888"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory と Velpic SAML の統合
 
@@ -157,7 +158,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Provider Metadata Config] \(Provider メタデータ構成)** で、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
-    d. **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
 
     e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
@@ -192,7 +193,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-velpic-saml-test-user"></a>Velpic SAML のテスト ユーザーの作成
 
@@ -214,7 +215,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     c. **[User Name] \(ユーザー名)** テキストボックスに、Britta Simon のユーザーを入力します。
 
-    d. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
     e. その他の情報は省略可能です。必要に応じて入力してください。
     

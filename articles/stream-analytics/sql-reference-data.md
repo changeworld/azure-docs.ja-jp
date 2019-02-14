@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d79e423dd617a498aee09cff6b774bbe90eeaa83
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701592"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118022"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する (プレビュー)
 
@@ -154,7 +154,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **Azure Stream Analytics で SQL 参照データ入力を使用すると追加コストが発生しますか?**
 
-Stream Analytics ジョブでは[ストリーミング ユニットごとにコスト](https://azure.microsoft.com/pricing/details/stream-analytics/)が追加されることはありません。 ただし、Stream Analytics ジョブには、Azure ストレージ アカウントが関連付けられている必要があります。 Stream Analytics ジョブでは、SQL DB のクエリが実行されて (ジョブの開始時と定期更新時)、参照データ セットが取得され、そのスナップショットがストレージ アカウントに格納されます。 これらのスナップショットを格納するため、Azure ストレージ アカウントの[価格に関するページ](https://azure.microsoft.compricing/details/storage/)で詳しく説明されている追加料金が発生します。
+Stream Analytics ジョブでは[ストリーミング ユニットごとにコスト](https://azure.microsoft.com/pricing/details/stream-analytics/)が追加されることはありません。 ただし、Stream Analytics ジョブには、Azure ストレージ アカウントが関連付けられている必要があります。 Stream Analytics ジョブでは、SQL DB のクエリが実行されて (ジョブの開始時と定期更新時)、参照データ セットが取得され、そのスナップショットがストレージ アカウントに格納されます。 これらのスナップショットを格納するため、Azure ストレージ アカウントの[価格に関するページ](https://azure.microsoft.com/pricing/details/storage/)で詳しく説明されている追加料金が発生します。
 
 **参照データ スナップショットが SQL DB から照会され、Azure Stream Analytics ジョブで使用されていることは、どのようにすれば知ることができますか?**
 

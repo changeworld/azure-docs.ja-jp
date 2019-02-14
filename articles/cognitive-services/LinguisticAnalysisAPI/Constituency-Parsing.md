@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 構成素解析 ("語句構文解析" とも呼ばれます) で、テキスト内の語句を特定する方法について説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 778005ee321c981fec1d1271cee54229bb3a522f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7611f5f16111b5d8b0d2d293750f658125e50837
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214179"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878207"
 ---
 # <a name="constituency-parsing"></a>構成素解析
 

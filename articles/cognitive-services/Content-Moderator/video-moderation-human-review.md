@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: マシンによるビデオのモデレートと目視レビュー ツールを使用して、不適切なコンテンツをモデレートします
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: eb9f7fccfa5c759de154cb62ed866a02f619400a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208603"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867717"
 ---
 # <a name="video-moderation-with-human-review"></a>目視レビューによるビデオのモデレート
 

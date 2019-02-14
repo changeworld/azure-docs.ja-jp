@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746423"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234104"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -145,7 +146,7 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 - [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-managed-domains.md)
 
 
- Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual)に関するページを参照してください。 
+ Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)に関するページを参照してください。 
 
 
 ## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>Hybrid Azure AD 参加でのオンプレミスの AD UPN のサポート

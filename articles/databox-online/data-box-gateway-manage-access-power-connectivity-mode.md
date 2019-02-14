@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f9172418f15b129a71242038efd4cdb7683bbf7
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516542"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873021"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Azure Data Box Gateway (プレビュー) のアクセス、電源、接続モードを管理する
 
@@ -35,7 +35,7 @@ Data Box Gateway デバイスへのアクセスは、デバイス管理者のパ
 
 ### <a name="change-device-administrator-password"></a>デバイス管理者のパスワードを変更する
 
-パスワードを忘れた場合は、パスワードを変更することができます。 デバイス管理者のパスワードを変更するには、ローカル UI で次の手順のようにします。
+デバイス管理者のパスワードを変更するには、ローカル UI で次の手順のようにします。
 
 1. ローカル Web UI で、**[メンテナンス] > [Password change]\(パスワード変更\)** に移動します。
 2. 現在のパスワードを入力し、新しいパスワードを入力ます。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 新しいパスワードを確認入力します。

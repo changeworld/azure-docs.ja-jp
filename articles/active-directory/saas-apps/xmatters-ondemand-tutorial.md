@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5eab595c12fda25768a3bf8a04650870e1c4f57e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153549"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
 
@@ -163,7 +164,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[Single Sign On URL]\(シングル サインオン URL\)** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d. Azure portal からコピーした**サインアウト URL** を **[Single Logout URL]\(シングル ログアウト URL\)** テキストボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からコピーした**サインアウト URL** を **[Single Logout URL]\(シングル ログアウト URL\)** テキストボックスに貼り付けます。
 
     e. [会社の詳細] ページで、上部にある **[変更の保存]** をクリックします。
 
@@ -198,7 +199,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>xMatters OnDemand テスト ユーザーの作成
 
@@ -222,7 +223,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
     e. **[Site]\(サイト\)** ボックスに、プロビジョニングする有効な Azure AD アカウントの有効なサイトを入力します。
 

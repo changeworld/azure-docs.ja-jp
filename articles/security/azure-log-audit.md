@@ -4,7 +4,7 @@ description: ログ データを使用して、アプリケーションに関す
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 51376661530d5de67e0efeacbcfd0d3a56078511
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697920"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117954"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -347,7 +347,7 @@ Log Analytics の核となる機能は、Azure でホストされている Log A
 |Search サービス|   Microsoft.Search/<br>searchServices|    診断|    診断||
 |Service Bus 名前空間| Microsoft.ServiceBus/<br>namespaces|    診断|診断|    [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Storage||    [Service Fabric Analytics (プレビュー)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (v12)| Microsoft.Sql/<br>servers/<br>データベース||       診断||
+|SQL (v12)| Microsoft.Sql/<br>servers/<br>databases||       診断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Storage|||         スクリプト| [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Azure Virtual Machines|    Microsoft.Compute/<br>virtualMachines|  拡張機能|  拡張機能||

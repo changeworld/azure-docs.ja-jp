@@ -3,8 +3,8 @@ title: アクセス パネルにアプリケーションが表示される方法
 description: アプリケーションがアクセス パネルに表示される理由のトラブルシューティングを行う
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewr: japere
-ms.openlocfilehash: 83aa3b1b132c52944d350a9d2b5231857a10c7fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a488c30f5b9438a91d2eae429cf65689af992dcb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191763"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167084"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ff4a9b1576a63e8684e191f5814384a94e729fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a099967a1a455ab569c5934b0ae468aa94af6034
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173668"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>チュートリアル:Azure Active Directory と Skills Manager の統合
 
@@ -164,7 +165,7 @@ Skills Manager で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-skills-manager-test-user"></a>Skills Manager のテスト ユーザーを作成する
 

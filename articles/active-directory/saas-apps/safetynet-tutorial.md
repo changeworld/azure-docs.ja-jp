@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 4fb21f96c682775b4f7360abcdac7b64c78f76d9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4fadebc689f10b40131bb0feb12d846d3bdde704
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158283"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>チュートリアル:Azure Active Directory と SafetyNet の統合
 
@@ -161,7 +162,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-safetynet-test-user"></a>SafetyNet テスト ユーザーの作成
 

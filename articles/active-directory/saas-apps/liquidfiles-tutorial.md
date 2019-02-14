@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 7ee4894a96bc6d923bcb86529acf36ef4e27e6c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 20a3144f2a8727420803034426106a29a7924727
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152157"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>チュートリアル:Azure Active Directory と LiquidFiles の統合
 
@@ -147,7 +148,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
     c. **[IDP Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[IDP Cert Fingerprint]\(IDP 証明書の拇印)** ボックスに、Azure Portal からコピーした**拇印**値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[IDP Cert Fingerprint]\(IDP 証明書の拇印)** ボックスに、Azure Portal からコピーした**拇印**値を貼り付けます。
 
     e. [Name Identifier Format]\(名前識別子形式\) ボックスに、値「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」を入力します。
 
@@ -188,7 +189,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-liquidfiles-test-user"></a>LiquidFiles テスト ユーザーの作成
 

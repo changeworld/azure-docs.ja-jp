@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e95440f72580b928cd41b6d03f30459cfb70a510
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817667"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965394"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>HDInsight での Apache Hive を使用したフライトの遅延データの分析
 [Apache Hive](https://hive.apache.org/) では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) ジョブを実行します。大規模なデータの集約、クエリ、分析に Hive を利用できます。
@@ -66,13 +66,13 @@ PowerShell スクリプトの一部は、パブリック BLOB コンテナーか
 
 このチュートリアルで使用するファイルを次の表に示します。
 
-<table border="1">
-<tr><th>ファイル</th><th>説明</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive ジョブで使用する HiveQL スクリプト ファイル。 このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive ジョブの入力データ。 このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Hive ジョブの出力パス。 出力データの保存には、既定のコンテナーを使用します。</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>既定のコンテナーにある Hive ジョブのステータス フォルダー。</td></tr>
-</table>
+|ファイル|説明|  
+|----|----|   
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql|Hive ジョブで使用する HiveQL スクリプト ファイル。 このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。|
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data|Hive ジョブの入力データ。 このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。|
+|\tutorials\flightdelays\output|Hive ジョブの出力パス。 出力データの保存には、既定のコンテナーを使用します。|
+|\tutorials\flightdelays\jobstatus|既定のコンテナーにある Hive ジョブのステータス フォルダー。|
+
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>クラスターを作成して Hive/Sqoop ジョブを実行する
 Hadoop MapReduce はバッチ処理です。 Hive ジョブを実行する最もコスト効率の良い方法は、ジョブに使用するクラスターを作成し、ジョブの完了後、ジョブを削除することです。 以下のスクリプトは、その全過程をカバーしています。
@@ -250,12 +250,11 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 1. [米国運輸省研究・革新技術庁/運輸統計局][rita-website]のページに移動します。
 2. このページで、次の値を選択します。
 
-    <table border="1">
-    <tr><th>Name</th><th>値</th></tr>
-    <tr><td>Filter Year</td><td>2013 </td></tr>
-    <tr><td>Filter Period</td><td>January</td></tr>
-    <tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
-    </table>
+    |Name|値|
+    |---|---|
+    |Filter Year|2013|
+    |Filter Period|January|
+    |フィールド|*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)|
 
 3. **[Download]** をクリックします。
 4. ファイルを **C:\Tutorials\FlightDelay\2013Data** フォルダーに解凍します。 ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
@@ -266,11 +265,10 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 
 1. 次のパラメーターを準備します。
 
-    <table border="1">
-    <tr><th>変数名</th><th>メモ</th></tr>
-    <tr><td>$storageAccountName</td><td>データのアップロード先となる Azure ストレージ アカウント。</td></tr>
-    <tr><td>$blobContainerName</td><td>データのアップロード先となる BLOB コンテナー。</td></tr>
-    </table>
+    |変数名|メモ|
+    |---|---|
+    |$storageAccountName|データのアップロード先となる Azure ストレージ アカウント。|
+    |$blobContainerName|データのアップロード先となる BLOB コンテナー。|
     
 2. Azure PowerShell ISE を開きます。
 3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
@@ -375,11 +373,10 @@ HiveQL コマンドの完全な一覧については、[Apache Hive データ定
 
 1. 次のパラメーターを準備します。
 
-    <table border="1">
-    <tr><th>変数名</th><th>メモ</th></tr>
-    <tr><td>$storageAccountName</td><td>HiveQL スクリプトのアップロード先となる Azure ストレージ アカウント。</td></tr>
-    <tr><td>$blobContainerName</td><td>HiveQL スクリプトのアップロード先となる BLOB コンテナー。</td></tr>
-    </table>
+    |変数名|メモ|
+    |---|---|
+    |$storageAccountName|HiveQL スクリプトのアップロード先となる Azure ストレージ アカウント。|
+    |$blobContainerName|HiveQL スクリプトのアップロード先となる BLOB コンテナー。|
     
 2. Azure PowerShell ISE を開きます。  
 
@@ -564,14 +561,14 @@ HiveQL コマンドの完全な一覧については、[Apache Hive データ定
 
 1. 次のパラメーターを準備します。
 
-    <table border="1">
-    <tr><th>変数名</th><th>メモ</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Azure SQL Database サーバーの名前。 新しいサーバーを作成する場合は、何も入力しないでください。</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Azure SQL Database サーバーのログイン名。 $sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。 $sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Azure SQL Database サーバーのログイン パスワード。</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。 空白のままにすると、"HDISqoop" というデータベースが作成されます。 Sqoop ジョブ出力用のテーブル名は AvgDelays です。 </td></tr>
-    </table>
+    |変数名|メモ|
+    |---|---|
+    |$sqlDatabaseServerName|Azure SQL Database サーバーの名前。 新しいサーバーを作成する場合は、何も入力しないでください。|
+    |$sqlDatabaseUsername|Azure SQL Database サーバーのログイン名。 $sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。 $sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。|
+    |$sqlDatabasePassword|Azure SQL Database サーバーのログイン パスワード。|
+    |$sqlDatabaseLocation|この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。|
+    |$sqlDatabaseName|Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。 空白のままにすると、"HDISqoop" というデータベースが作成されます。 Sqoop ジョブ出力用のテーブル名は AvgDelays です。|
+
     
 2. Azure PowerShell ISE を開きます。
 

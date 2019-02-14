@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157467"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895637"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -44,7 +44,7 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
-ルート テーブルを作成するには、この記事で作成されるすべてのリソースのリソース グループを [az group create](/cli/azure/group#az_group_create) で作成しておきます。 
+ルート テーブルを作成するには、この記事で作成されるすべてのリソースのリソース グループを [az group create](/cli/azure/group) で作成しておきます。 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
-ルート テーブルをサブネットに関連付けるには、仮想ネットワークとサブネットを作成しておく必要があります。 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) で、1 つのサブネットを含む仮想ネットワークを作成します。
+ルート テーブルをサブネットに関連付けるには、仮想ネットワークとサブネットを作成しておく必要があります。 [az network vnet create](/cli/azure/network/vnet) で、1 つのサブネットを含む仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) で、*myRouteTablePublic* ルート テーブルを*パブリック* サブネットに関連付けます。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet) で、*myRouteTablePublic* ルート テーブルを*パブリック* サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -136,7 +136,7 @@ az vm create \
 
 VM の作成には数分かかります。 Azure が VM の作成を完了し、その VM に関する出力を返すまでは、次の手順に進まないでください。 
 
-ネットワーク インターフェイスが、自身に送信されてきたネットワーク トラフィックのうち、自身の IP アドレス宛てではないものを転送できるように、このネットワーク インターフェイスに対して IP 転送を有効にする必要があります。 [az network nic update](/cli/azure/network/nic#az_network_nic_update) でネットワーク インターフェイスの IP 転送を有効にします。
+ネットワーク インターフェイスが、自身に送信されてきたネットワーク トラフィックのうち、自身の IP アドレス宛てではないものを転送できるように、このネットワーク インターフェイスに対して IP 転送を有効にする必要があります。 [az network nic update](/cli/azure/network/nic) でネットワーク インターフェイスの IP 転送を有効にします。
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-VM 内では、オペレーティング システム、または VM 内で実行中のアプリケーションも、ネットワーク トラフィックを転送できる必要があります。 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して、VM のオペレーティング システム内で IP 転送を有効にします。
+VM 内では、オペレーティング システム、または VM 内で実行中のアプリケーションも、ネットワーク トラフィックを転送できる必要があります。 [az vm extension set](/cli/azure/vm/extension) を使用して、VM のオペレーティング システム内で IP 転送を有効にします。
 
 ```azurecli-interactive
 az vm extension set \
@@ -268,7 +268,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
+不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

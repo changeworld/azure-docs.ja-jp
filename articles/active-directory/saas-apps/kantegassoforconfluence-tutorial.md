@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 92df4ea39b4d94b78c528cb7c49d409cdfd6cfbe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 210d69256f2e7f4727ee866af71dd72e765fb0b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>チュートリアル:Azure Active Directory と Kantega SSO for Confluence の統合
 
@@ -258,7 +259,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-confluence-test-user"></a>Kantega SSO for Confluence テスト ユーザーの作成
 
@@ -282,7 +283,7 @@ Azure AD ユーザーが Confluence にログインできるようにするに�
 
     c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
     e. **[Confirm Password]\(パスワードの確認\)** をクリックし、パスワードを再入力します。
     

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: e743128932f6a136820819c21e0386eb678c4203
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0c89ed34b21ca0c41d4f7765d99d8fe8bf7c647d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165778"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888940"
 ---
-<!--author=jgerend last changed: 03/16/16-->
-
 ## <a name="preparing-for-updates"></a>更新プログラムの準備
 更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。
 

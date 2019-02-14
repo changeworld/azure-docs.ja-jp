@@ -6,19 +6,16 @@ description: Azure Monitor Application Insights では、コード レベルの�
 services: application-insights
 author: mrbullwinkle
 manager: carmonmills
-ms.assetid: ''
 ms.service: application-insights
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: f2c6475d67958e8ccd3e46598a46cc8bfee9ef54
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4bf1ccd3da83900208ab8f15b54ea110b1dbb2f4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300678"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244243"
 ---
 <div id="main" class="v2">
     <div class="container">

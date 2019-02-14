@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像タグ付け機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6724f95575e1f918fa29033cd53caaef8c97c81c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f5013c83f3575e7e1fbaa6dff614e4679abf09b6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149661"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882235"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 

@@ -15,12 +15,13 @@ ms.subservice: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0a20f1bf53a42487e3ce6b347cde8be9a343bc2e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78f4c978a04a7589e71ba39676e06ca5cc37f579
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166698"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170671"
 ---
 # <a name="manage-programs-and-their-controls"></a>プログラムとそのコントロールの管理 
 

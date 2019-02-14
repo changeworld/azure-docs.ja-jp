@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: fc114d59ae97813c0ce8f70a6ad58f0faf02a47c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8d80312acfa90690a0b0fe7b212a614945e1e5b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157620"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>チュートリアル:Azure Active Directory と TimeOffManager の統合
 
@@ -140,7 +141,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     
     c.  **[属性値]** テキスト ボックスで、その行に対して表示される属性値を選択します。
     
-    d.  **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **[OK]** をクリックします。
     
 1. **[保存]** ボタンをクリックします。
 
@@ -165,7 +166,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
    
    c. **[IdP Endpoint URL]\(IdP エンドポイント URL\)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-   d. **[Enforce SAML]** で **[No]** を選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Enforce SAML]** で **[No]** を選択します。
    
    e. **[Auto-Create Users]** で **[Yes]** を選択します。
    
@@ -210,7 +211,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-timeoffmanager-test-user"></a>TimeOffManager のテスト ユーザーの作成
 

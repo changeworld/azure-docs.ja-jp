@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 33bacb5d399e41e04a6c00225e7411cef0c20308
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 933ac9b8f7d381db0111ee50385f11e8a22d92f1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075307"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217821"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法:Windows 7、8、8.1 からパスワードのリセットを有効にする
 

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/24/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 58124ab5938c7bee9f83a8c37ab5c5618b4b7d54
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 78b362eb75ab4e0ca17045f8c32761a65897d449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789825"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000184"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 

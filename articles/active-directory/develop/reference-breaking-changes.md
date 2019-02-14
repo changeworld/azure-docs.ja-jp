@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3da99506d50ec12140c188cd86cde2556be4a308
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099143"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196027"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 

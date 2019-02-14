@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 900254e42410aafa0d8e58048c7d88efa94dfed5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0b7dee41b226cdacea1d9c7f1cf581d9f095977e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178547"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190774"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル:Azure Active Directory と楽楽精算の統合
 
@@ -151,7 +152,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     c. **[ID プロバイダーのログアウト URL]** ボックスに、Azure portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[Choose File]** をクリックして、Azure portal からダウンロードした**証明書 (Base64)** をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]** をクリックして、Azure portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
     e. **[保存]** ボタンをクリックします。
 
@@ -185,7 +186,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-settling-music-test-user"></a>楽楽精算テスト ユーザーの作成
 

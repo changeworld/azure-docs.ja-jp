@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用するイメージ サムネイルの生成に関する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 638a54a4cf902693dcdccecf4236e75569a677a9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8881a0c5e809dc75d1b9f4b6f6bd3af7142333cb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157603"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884632"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 
@@ -41,7 +41,7 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 
 次の表は、Computer Vision で生成される、イメージ例に対する一般的なサムネイルを示しています。 スマート トリミングが有効になっており、ターゲットの高さと幅が 50 ピクセルに指定されたサムネイルが生成されています。
 
-| イメージ | サムネイル |
+| Image | サムネイル |
 |-------|-----------|
 |![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | ![屋外の山のサムネイル](./Images/mountain_vista_thumbnail.png) |
 |![白い花と緑の背景](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |

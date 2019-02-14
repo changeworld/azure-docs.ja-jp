@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 372470ffb1c296ee30702a2df0d8e9d00480a492
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c25aef949b99bb4dc348bd2392ada325fcd466ea
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169617"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect データベースを SQL Server Express から SQL Server に移動する 
 

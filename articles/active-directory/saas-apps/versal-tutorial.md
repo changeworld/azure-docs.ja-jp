@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 91f069da5572394934da41039d7e9a5950089ea1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be4741f87e729435761b74b86655aa828ff873ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185109"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル:Azure Active Directory と Versal の統合
 
@@ -164,7 +165,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-versal-test-user"></a>Versal テスト ユーザーの作成
 

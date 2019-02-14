@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: a9efdc918340d127c554e84d29db2b2df784a4ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6b4d7cd40efe389ab772f5cc7adee7c35eee81b3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181624"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>チュートリアル:Azure Active Directory と IBM OpenPages の統合
 
@@ -161,7 +162,7 @@ IBM OpenPages で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-ibm-openpages-test-user"></a>IBM OpenPages テスト ユーザーを作成する
 

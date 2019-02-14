@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 59342aa95e50b29e58035892967be6d0407aae91
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bd49d97431efc3e1902e700a54627d5ee095cc74
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812966"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>チュートリアル:Azure Active Directory と Hightail の統合
 
@@ -149,7 +150,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
 
     e. **[OK]** をクリックします。
 
@@ -184,7 +185,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
     c. **[コピー]** をクリックして、インスタンスの SAML コンシューマー URL をコピーし、Azure portal の **[Hightail ドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[構成の保存]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[構成の保存]** をクリックします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -215,7 +216,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-hightail-test-user"></a>Hightail テスト ユーザーの作成
 

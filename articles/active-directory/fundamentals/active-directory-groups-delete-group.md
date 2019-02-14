@@ -12,12 +12,13 @@ ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61f6d68e873b6c8b8b901e5e065065ed42513572
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d9543908aafbb4ecd8f642f766f656f780706a36
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100209"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207213"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
 Azure Active Directory (Azure AD) グループはさまざまな理由で削除されますが、通常は次のために行います。

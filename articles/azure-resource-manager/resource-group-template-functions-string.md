@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 04a82d1ed8735954072f9549f3b2676df0935449
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 832c7b0b2aab3cbf09b7ea5e099fcf8be7cd1906
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489463"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118039"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 リソース マネージャーには、文字列を操作する次の関数が用意されています。
 
@@ -65,9 +67,9 @@ ms.locfileid: "55489463"
 
 入力文字列の base64 表現を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |文字列 |Base 64 形式として返す値。 |
 
@@ -118,7 +120,7 @@ base64 形式を含む文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -143,9 +145,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 base64 形式を JSON オブジェクトに変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |文字列 |JSON オブジェクトに変換する base64 形式。 |
 
@@ -196,7 +198,7 @@ JSON オブジェクト。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -221,9 +223,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 base64 形式を文字列に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |文字列 |文字列に変換する base64 形式。 |
 
@@ -274,7 +276,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -299,9 +301,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 複数の文字列値を結合して連結された文字列を返します。または複数の配列を結合して連結された配列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または配列 |連結の最初の値。 |
 | 残りの引数 |いいえ  |文字列 |連結する順の追加の値。 |
@@ -335,7 +337,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -388,7 +390,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -411,9 +413,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -477,7 +479,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | ブール値 | True |
 | stringFalse | Bool | False |
@@ -505,9 +507,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 値をデータ URI に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |はい |文字列 |データ URI に変換する値。 |
 
@@ -549,7 +551,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -573,9 +575,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 データ URI の形式で書式設定された値を文字列に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |はい |文字列 |変換するデータ URI 値。 |
 
@@ -617,7 +619,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -641,9 +643,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 配列、オブジェクト、または文字列が空かどうかを判断します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -694,7 +696,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -719,9 +721,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列が特定の値で終わるかどうかを判断します。 比較では大文字と小文字は区別されません。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |文字列 |検索対象の項目を含む値。 |
 | stringToFind |はい |文字列 |検索対象の値。 |
@@ -770,7 +772,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -798,9 +800,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列の最初の文字、または配列の最初の要素を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
@@ -839,7 +841,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -862,9 +864,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 パラメーターとして指定した値に基づき、グローバル一意識別子の形式で値を作成します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |文字列 |GUID を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じて追加のパラメーター |いいえ  |文字列 |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -946,9 +948,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列内の値の最初の位置を返します。 比較では大文字と小文字は区別されません。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |文字列 |検索対象の項目を含む値。 |
 | stringToFind |はい |文字列 |検索対象の値。 |
@@ -993,7 +995,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1020,9 +1022,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列の最後の文字、または配列の最後の要素を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -1061,7 +1063,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -1085,9 +1087,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列内の値の最後の位置を返します。 比較では大文字と小文字は区別されません。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |文字列 |検索対象の項目を含む値。 |
 | stringToFind |はい |文字列 |検索対象の値。 |
@@ -1132,7 +1134,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1159,9 +1161,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列の文字数、または配列の要素の数を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
@@ -1207,7 +1209,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1231,9 +1233,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |はい |文字列または整数 |右揃えにする値。 |
 | totalLength |はい |int |返される文字列の文字合計数。 |
@@ -1271,7 +1273,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -1294,9 +1296,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ある文字列のすべてのインスタンスを別の文字列で置き換えた、新しい文字列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalString |はい |文字列 |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
 | oldString |はい |文字列 |元の文字列から削除する文字列。 |
@@ -1336,7 +1338,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
@@ -1360,9 +1362,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定した文字数の後にあるすべての文字を含む文字列を返します。または、指定した数の要素の後にあるすべての要素を含む配列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
@@ -1417,7 +1419,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -1441,9 +1443,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |文字列 |分割する文字列。 |
 | delimiter |はい |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
@@ -1489,7 +1491,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1513,9 +1515,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列が特定の値で始まるかどうかを判断します。 比較では大文字と小文字は区別されません。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |文字列 |検索対象の項目を含む値。 |
 | stringToFind |はい |文字列 |検索対象の値。 |
@@ -1564,7 +1566,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1592,9 +1594,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定された値を文字列に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
@@ -1651,7 +1653,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -1676,9 +1678,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定した文字位置から始まる指定された文字数分の部分文字列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |はい |文字列 |部分文字列の抽出元となる文字列。 |
 | startIndex |いいえ  |int |部分文字列の 0 から始まる開始文字位置。 |
@@ -1727,7 +1729,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -1750,9 +1752,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 文字列の先頭から指定した数の文字を含む文字列を、または配列の先頭から指定した数の要素を含む配列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |はい |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
@@ -1807,7 +1809,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1831,9 +1833,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定された文字列を小文字に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |文字列 |小文字に変換する値。 |
 
@@ -1871,7 +1873,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1895,9 +1897,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定した文字列を大文字に変換します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |文字列 |大文字に変換する値。 |
 
@@ -1935,7 +1937,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1959,9 +1961,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 指定された文字列から先頭と末尾の空白文字をすべて削除します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |はい |文字列 |トリムする値。 |
 
@@ -1995,7 +1997,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | String | one two three |
 
@@ -2018,9 +2020,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。 
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |文字列 |一意の文字列を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じて追加のパラメーター |いいえ  |文字列 |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -2107,9 +2109,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseUri |はい |文字列 |ベース URI 文字列。 |
 | relativeUri |はい |文字列 |ベース URI 文字列に追加する相対 URI 文字列。 |
@@ -2159,7 +2161,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2184,9 +2186,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 URI をエンコードします。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |はい |文字列 |エンコード対象の値。 |
 
@@ -2227,7 +2229,7 @@ URI エンコードされた値の文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2252,9 +2254,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 URI エンコードされた値の文字列を返します。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |はい |文字列 |文字列に変換する URI エンコードされた値。 |
 
@@ -2295,7 +2297,7 @@ URI エンコードされた値のデコード済み文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |

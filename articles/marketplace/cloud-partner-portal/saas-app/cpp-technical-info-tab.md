@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451223"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895399"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS アプリケーションの [Technical Info]\(技術情報\) タブ
 
@@ -42,7 +42,7 @@ SaaS アプリは、次の両方のネットショップに対して提供でき
 このエクスペリエンスを作成するには、次の情報を構成する必要があります。
 
 - SaaS サービスの Web サイトを Microsoft の SaaS API と接続します。 この接続を作成する方法については、「[Azure を通じた SaaS の販売 - API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis)」をご覧ください。
-- Cloud パートナー ポータルの [Technical Configuration]\(技術構成\) フォームで Azure を通じた販売を有効にし、必要な情報を指定します。 この課金モデルとその実装方法について詳しくは、「[SaaS - Azure で販売する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions#overview)」をご覧ください。
+- Cloud パートナー ポータルの [Technical Configuration]\(技術構成\) フォームで Azure を通じた販売を有効にし、必要な情報を指定します。 この課金モデルとその実装方法について詳しくは、「[SaaS - Azure で販売する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions)」をご覧ください。
 
  ![[Sell through Microsoft]\(Microsoft を通じて販売\) フォーム](./media/saas-techinfo-sellthrough-ms.png)
 

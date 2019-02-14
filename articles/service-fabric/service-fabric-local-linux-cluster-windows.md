@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 26acb3a2a0cefdca74d2c761ccddf89e18aa909a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 60fd4a3ba83370327b6be775d7b2723fbb26de64
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388488"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983442"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -52,7 +52,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 
 2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
-    ```dockerfile
+    ```Dockerfile
     FROM microsoft/service-fabric-onebox
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh

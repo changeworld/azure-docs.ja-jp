@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS の画期的な特長として、アクティブ ラーニングの概念が挙げられます。 LUIS でエンドポイントにクエリを実行すると、アクティブ ラーニングが不確かな発話を選択することによって結果の品質を向上させます。 これらの発話にラベルを付け、トレーニングして公開すると、LUIS による発話の識別の精度が向上します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 13a9fba996ea2929bb7165c395176fbfb8c051c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 04590c447d6d4499d50115fbf7bed0a600fe3142
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208059"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864249"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>エンドポイント発話を LUIS ポータルで確認する方法
 

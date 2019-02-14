@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df722f305d60eb0ab53964bfc4e3f48961036708
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074535"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984853"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -26,7 +26,7 @@ ms.locfileid: "54074535"
 
 *トリガー*は、関数を呼び出す方法を定義します。 1 つの関数には 1 つのトリガーしか含められません。 トリガーにはデータが関連付けられていて、通常そのデータは、その関数をトリガーしたペイロードです。
 
-入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。
+入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。 
 
 トリガーとバインドを使用すると、操作するサービスの詳細をハードコードする必要がなくなります。 関数は、関数パラメーターでデータ (キュー メッセージの内容など) を受信します。 関数の戻り値を使用して、(たとえば、キュー メッセージを作成するために) データを送信します。 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを送信できます。
 
@@ -36,9 +36,9 @@ Visual Studio を使用してクラス ライブラリを作成して関数を�
 
 ## <a name="example-trigger-and-binding"></a>トリガーとバインディングの例
 
-Azure Queue Storage に新しいメッセージが表示されるたびに Azure Table Storage に新しい行を書き込むとします。 このシナリオは、Azure Queue Storage トリガーと Azure Table Storage の出力バインドを使用して実装できます。
+Azure Queue Storage に新しいメッセージが表示されるたびに Azure Table Storage に新しい行を書き込むとします。 このシナリオは、Azure Queue Storage トリガーと Azure Table Storage の出力バインドを使用して実装できます。 
 
-このシナリオ用の *function.json* ファイルを次に示します。
+このシナリオ用の *function.json* ファイルを次に示します。 
 
 ```json
 {
@@ -70,7 +70,7 @@ Azure ポータルで *function.json* の内容を表示して編集するには
 > [!NOTE]
 > `connection` の値は、接続文字列自体ではなく、接続文字列を含むアプリ設定の名前です。 "*function.json* にサービス シークレットを含めない" というベスト プラクティスを適用するために、バインドでは、アプリ設定に格納された接続文字列を使用します。
 
-このトリガーとバインドで動作する C# のスクリプト コードを次に示します。 キュー メッセージの内容を提供するパラメーターの名前が `order` であることに注意してください。*function.json* の `name` プロパティ値が `order` であるため、この名前が必要になります。
+このトリガーとバインドで動作する C# のスクリプト コードを次に示します。 キュー メッセージの内容を提供するパラメーターの名前が `order` であることに注意してください。*function.json* の `name` プロパティ値が `order` であるため、この名前が必要になります。 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -82,13 +82,13 @@ using Newtonsoft.Json.Linq;
 // The method return value creates a new row in Table Storage
 public static Person Run(JObject order, ILogger log)
 {
-    return new Person() {
-            PartitionKey = "Orders",
-            RowKey = Guid.NewGuid().ToString(),
+    return new Person() { 
+            PartitionKey = "Orders", 
+            RowKey = Guid.NewGuid().ToString(),  
             Name = order["Name"].ToString(),
-            MobileNumber = order["MobileNumber"].ToString() };
+            MobileNumber = order["MobileNumber"].ToString() };  
 }
-
+ 
 public class Person
 {
     public string PartitionKey { get; set; }
@@ -105,7 +105,7 @@ public class Person
 // The second parameter to context.done is used as the value for the new row
 module.exports = function (context, order) {
     order.PartitionKey = "Orders";
-    order.RowKey = generateRandomId();
+    order.RowKey = generateRandomId(); 
 
     context.done(null, order);
 };
@@ -169,7 +169,7 @@ public class Person
 
 関数を作成するか、またはバインディングを追加する場合に、トリガーまたはバインディングの拡張機能が登録を必要とするときは、プロンプトが表示されます。 **[インストール]** をクリックして拡張機能を登録することで、プロンプトに応答します。 従量課金プランで、インストールには最大 10 分かかる可能性があります。
 
-各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 ポータルで使用できないバインディングをサポートするか、またはインストールされている拡張機能を更新するために、[ポータルから Azure Functions バインディング拡張機能を手動でインストールまたは更新する](install-update-binding-extensions-manual.md)こともできます。
+各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 ポータルで使用できないバインディングをサポートするか、またはインストールされている拡張機能を更新するために、[ポータルから Azure Functions バインディング拡張機能を手動でインストールまたは更新する](install-update-binding-extensions-manual.md)こともできます。  
 
 ### <a name="local-development-azure-functions-core-tools"></a>ローカル開発の Azure Functions Core Tools
 
@@ -309,7 +309,7 @@ F# コードを次に示します。
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
-    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)
+    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
     log.LogInformation(sprintf "F# script processed queue message '%s'" json)
     json
 ```
@@ -402,7 +402,7 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 
 関数がローカルに実行されている場合、アプリ設定値は *local.settings.json* ファイルから来ます。
 
-トリガーとバインディングの `connection` プロパティは特殊なケースであり、値をアプリ設定 (パーセント記号なし) として自動的に解決することに注意してください。
+トリガーとバインディングの `connection` プロパティは特殊なケースであり、値をアプリ設定 (パーセント記号なし) として自動的に解決することに注意してください。 
 
 次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義する Azure Queue Storage トリガーです。
 
@@ -425,7 +425,7 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem,
+    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -470,17 +470,17 @@ BLOB トリガーの `path` は、他のバインディングや関数コード�
 
 ```csharp
 // C# example of binding to {filename}
-public static void Run(Stream image, string filename, Stream imageSmall, ILogger log)
+public static void Run(Stream image, string filename, Stream imageSmall, ILogger log)  
 {
     log.LogInformation($"Blob trigger processing: {filename}");
     // ...
-}
+} 
 ```
 
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の *function.json* の例と同じ `path` 値です。
+バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の *function.json* の例と同じ `path` 値です。 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -493,13 +493,14 @@ public static void Run(
     log.LogInformation($"Blob trigger processing: {filename}");
     // ...
 }
+
 ```
 
 また、拡張機能などのファイル名の一部のための式を作成することもできます。 式を使用する方法および BLOB パス文字列内のパターンの詳細については、[ストレージ BLOB バインディングのリファレンス](functions-bindings-storage-blob.md)に関するページを参照してください。
-
+ 
 ### <a name="binding-expressions---trigger-metadata"></a>バインディング式 - トリガー メタデータ
 
-トリガーによって提供されるデータ ペイロード (関数をトリガーしたキュー メッセージの内容など) に加え、多くのトリガーは追加のメタデータ値を提供します。 これらの値は、C# および F# で入力パラメーターとして使用したり、JavaScript で `context.bindings` オブジェクトのプロパティとして使用したりできます。
+トリガーによって提供されるデータ ペイロード (関数をトリガーしたキュー メッセージの内容など) に加え、多くのトリガーは追加のメタデータ値を提供します。 これらの値は、C# および F# で入力パラメーターとして使用したり、JavaScript で `context.bindings` オブジェクトのプロパティとして使用したりできます。 
 
 たとえば、Azure Queue Storage トリガーは、以下のプロパティをサポートしています。
 
@@ -531,7 +532,7 @@ public static void Run(
   ]
 ```
 
-各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue.md#trigger---message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。
+各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue.md#trigger---message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
 
 ### <a name="binding-expressions---json-payloads"></a>バインディング式 - JSON ペイロード
 
@@ -574,12 +575,12 @@ public class BlobInfo
 {
     public string BlobName { get; set; }
 }
-
+  
 public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents, ILogger log)
 {
     if (blobContents == null) {
         return req.CreateResponse(HttpStatusCode.NotFound);
-    }
+    } 
 
     log.LogInformation($"Processing: {info.BlobName}");
 
@@ -682,7 +683,7 @@ C# やその他の .NET 言語では、*function.json* の宣言型のバイン�
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-Functions でサポートされているさまざまなサービスに関連するすべてのエラー トピックへのリンクについては、概要トピック「[Azure Functions error handling (Azure Functions のエラー処理)](functions-bindings-error-pages.md)」の「[Binding error codes (バインド エラー コード)](functions-bindings-error-pages.md#binding-error-codes)」セクションを参照してください。
+Functions でサポートされているさまざまなサービスに関連するすべてのエラー トピックへのリンクについては、概要トピック「[Azure Functions error handling (Azure Functions のエラー処理)](functions-bindings-error-pages.md)」の「[Binding error codes (バインド エラー コード)](functions-bindings-error-pages.md#binding-error-codes)」セクションを参照してください。  
 
 ## <a name="next-steps"></a>次の手順
 
@@ -701,4 +702,3 @@ Functions でサポートされているさまざまなサービスに関連す�
 - [Twilio](functions-bindings-twilio.md)
 - [Notification Hubs](functions-bindings-notification-hubs.md)
 - [Mobile Apps](functions-bindings-mobile-apps.md)
-- [外部ファイル](functions-bindings-external-file.md)

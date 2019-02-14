@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158164"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965156"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -55,7 +55,7 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルの *buildscript* タグ内に追加します。
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 2. 次のコードを、"*モジュール アプリ*" レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ List<ToDoItem> results = mToDoTable
 
 前のコードの *listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。 次のコードではチェック ボックスおよび関連テキストを指定し、リストの項目ごとに 1 回インスタンス化しています。 このレイアウトでは **id** フィールドが表示されないため、さらに複雑なレイアウトで、表示する追加のフィールドを指定します。 このコードは、**row_list_to_do.xml** ファイルに含まれています。
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 アダプターの **getView** メソッドをオーバーライドします。 例: 
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -959,7 +959,7 @@ customtabs にプロジェクトを構成する必要もあります。  まず�
 
 **redirectUriScheme** を、アプリケーションの `build.gradle` ファイルに追加します。
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:23.0.1` を追加します。
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

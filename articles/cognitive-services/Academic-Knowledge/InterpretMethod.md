@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Interpret メソッドを使用して、Microsoft Cognitive Services の Academic Graph データと Academic Grammar に基づくユーザー クエリ文字列の解釈を書式設定して返します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171662"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860526"
 ---
 # <a name="interpret-method"></a>Interpret メソッド
 

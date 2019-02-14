@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5534122c53f811e3913e72b67a706c1e2260a26f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156991"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル:Azure Active Directory と 23 Video の統合
 
@@ -166,7 +167,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-23-video-test-user"></a>23 Video テスト ユーザーの作成
 

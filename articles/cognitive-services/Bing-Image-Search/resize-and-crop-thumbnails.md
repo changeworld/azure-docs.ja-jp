@@ -4,7 +4,7 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API からの応答に含まれるサムネイル画像のサイズを変更し、トリミングします。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: F4FFAE91-A003-4F7C-8E60-83A142485E28
 ms.service: cognitive-services
 ms.subservice: bing-image-search
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d6c59cc4a7f0a77db42ca5919f3af331c42762a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 18f915b8dfa8159e100d2708ad6ed9c5cf4eee58
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197128"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860798"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 

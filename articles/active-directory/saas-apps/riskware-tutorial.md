@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 3b4c979bf03b23280c9389a043375f088624efe6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163247"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
 
@@ -159,7 +160,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Description]\(説明\)** ボックスに説明を入力します (例:SSO 用 AZURE 構成)。
 
-    d. **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Sign out Page]\(サインアウト ページ\)** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -212,7 +213,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-riskware-test-user"></a>Riskware のテスト ユーザーの作成
 

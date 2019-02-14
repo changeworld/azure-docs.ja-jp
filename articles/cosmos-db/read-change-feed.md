@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Azure Cosmos DB 内の変更フィードへのアクセス
 description: この記事では、Azure Cosmos DB の Azure Cosmos DB 内の変更フィードの読み取りとアクセスに使用できるさまざまなオプションについて説明します。
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: ef7fde987eff2235b59feab5481fe3dc71edd859
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.author: rimman
+ms.openlocfilehash: 459ed4b6f16d3cfe5bb792be7f063a1253a3006e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039995"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242041"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 

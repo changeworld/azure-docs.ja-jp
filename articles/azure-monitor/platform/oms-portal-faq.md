@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883400"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990430"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -105,7 +105,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 ワークスペースの **[ソリューション]** メニューでソリューションを管理します。 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>管理ソリューションのインストールと削除の方法を教えてください
-OMS ポータルでは、ソリューション ギャラリーから管理ソリューションをインストールし、その削除は **[設定]** から行います。 Azure portal では、[管理ソリューションのインストール](../insights/solutions.md#install-a-management-solution)を Azure Marketplace から行います。 インストールされているソリューションの一覧から[ソリューションを削除](../insights/solutions.md#remove-a-management-solution)してください。
+OMS ポータルでは、ソリューション ギャラリーから管理ソリューションをインストールし、その削除は **[設定]** から行います。 Azure portal では、[管理ソリューションのインストール](../insights/solutions.md#install-a-monitoring-solution)を Azure Marketplace から行います。 インストールされているソリューションの一覧から[ソリューションを削除](../insights/solutions.md#remove-a-monitoring-solution)してください。
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>アラートの作成と管理の方法を教えてください
 Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../../azure-monitor/platform/alerts-metric.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../../azure-monitor/platform/alerts-extend-tool.md)に関するページを参照してください。

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: c08759f4682c6010c2338ff7aaf61cda92eb0484
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232089"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989340"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの比較
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの比較  
 
 このトピックでは、**Media Encoder Standard** と **Media Encoder Premium Workflow** のエンコード機能を比較します。
 
@@ -32,15 +32,15 @@ ms.locfileid: "50232089"
 |機能|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー|
 |---|---|---|
 |エンコード中に条件ロジックを適用する<br/>(たとえば、入力が HD の場合は、5.1 オーディオをエンコードする)|いいえ |はい|
-|クローズ キャプション|いいえ |はい(media-services-premium-workflow-encoder-formats.md#closed_captioning)|
+|クローズ キャプション|いいえ |[はい](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> (Dialogue Intelligence™ を採用)|いいえ |はい|
 |ノンインターレース、逆テレシネ|Basic|放送品質|
 |黒い境界線の検出と削除 <br/>(ピラーボックス、レターボックス)|いいえ |はい|
-|サムネイルの生成|はい(media-services-dotnet-generate-thumbnail-with-mes.md)|はい(media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
-|ビデオのクリッピング/トリミングおよび合成|はい(media-services-advanced-encoding-with-mes.md#trim_video)|はい|
-|オーディオまたはビデオのオーバーレイ|はい(media-services-advanced-encoding-with-mes.md#overlay)|はい(media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
+|サムネイルの生成|[はい](media-services-dotnet-generate-thumbnail-with-mes.md)|[はい](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
+|ビデオのクリッピング/トリミングおよび合成|[はい](media-services-advanced-encoding-with-mes.md#trim_video)|はい|
+|オーディオまたはビデオのオーバーレイ|[はい](media-services-advanced-encoding-with-mes.md#overlay)|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
 |グラフィックスのオーバーレイ|イメージ ソースから|イメージとテキスト ソースから|
-|複数のオーディオ言語トラック|制限あり|はい(media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
+|複数のオーディオ言語トラック|制限あり|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a id="billing"></a>各エンコーダーで使用される課金メーター
 | メディア プロセッサ名 | 適用される価格 | メモ |

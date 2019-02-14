@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359989"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996950"
 ---
-# <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要 
+# <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要  
 
 ## <a name="overview"></a>概要
 
@@ -80,7 +80,7 @@ type|説明
 
 ### <a name="features"></a>機能
 
-機能|標準|Premium
+機能|Standard|Premium
 ---|---|---
 最初の 15 日間無料| はい |いいえ 
 スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
@@ -99,7 +99,7 @@ IP フィルタリング/G20/カスタム ホスト|はい|はい
 
 ソース | ターゲット | Action
 ---|---|---
-クラシック|標準|オプトインが必要
+クラシック|Standard|オプトインが必要
 クラシック|Premium| スケール (追加のストリーミング ユニット)
 Standard/Premium|クラシック|利用不可 (ストリーミング エンドポイントのバージョンが 1.0 の場合。 scaleunits を「0」に設定してクラシックに変更することは可能)
 Standard (CDN あり/なし)|同じ構成の Premium|**開始済み**状態で可能。 (Azure Portal 使用)

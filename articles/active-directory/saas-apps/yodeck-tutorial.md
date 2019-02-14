@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2f767e813c2ba803cfafaaf6d9798ee2ea3f93d2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 071054e2ec5fead3ce6181925b3c5f4e99a26736
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165100"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル:Azure Active Directory と Yodeck の統合
 
@@ -140,7 +141,7 @@ Yodeck で Azure AD のシングル サインオンを構成してテストす�
     
     c. **[アプリのフェデレーション メタデータ URL]** をインポートすると、残りのフィールドが自動的に設定されます。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -172,7 +173,7 @@ Yodeck で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-yodeck-test-user"></a>Yodeck テスト ユーザーの作成
 
@@ -201,7 +202,7 @@ Yodeck の場合、プロビジョニングは手動で行います。
 
     c. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 
-    d. 組織の要件に従って、適切な **[アカウントのアクセス許可]** オプションを選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 組織の要件に従って、適切な **[アカウントのアクセス許可]** オプションを選択します。
     
     e. **[Save]** をクリックします。
 

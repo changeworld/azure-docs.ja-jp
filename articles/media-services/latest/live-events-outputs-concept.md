@@ -13,20 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: db7d47005b2855ffe3e28c43086a2bfa6b22c8f3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659509"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894056"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
 Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 Media Services v3 でライブ ストリーミング イベントを構成するには、この記事で説明されている概念を理解する必要があります。
 
 * [ライブ イベント](#live-events)
-* [ライブ イベントの種類](#live-vent-types)
-* [ライブ イベントの種類の比較](#live-event-types-comparison)
+* ライブ イベントの種類
+* ライブ イベントの種類の比較
 * [ライブ イベントの作成のオプション](#live-event-creation-options)
 * [ライブ イベントの取り込み URL](#live-event-ingest-urls)
 * [ライブ イベント プレビュー URL](#live-event-preview-url)

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: e9ad55c62ae4b53241d366a85f54851fc193f10b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631041"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100498"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
@@ -53,7 +53,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 シミュレーション デバイスは、ソリューションの IoT Hub から送信された次のコマンドを処理することができます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | StartTelemetry |シミュレーションの状態を制御します。<br/>デバイスのテレメトリ送信を開始します。 |
 | StopTelemetry |シミュレーションの状態を制御します。<br/>デバイスのテレメトリ送信を停止します。 |

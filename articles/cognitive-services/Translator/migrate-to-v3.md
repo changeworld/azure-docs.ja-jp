@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API を V2 から V3 に移行する方法について説明します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98d2d3a54ff2f0c4ef326f8aae26e5ba8845d603
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699926"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882340"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
@@ -114,7 +114,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
 |Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  [はい]|    いいえ | [はい]|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Video Search API によって返される動画をページングする方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5fd11088c84327325040a05de9616f19c3455b01
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d75a71fe5ba5a275aa8703bc59398cc8a7a5a622
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564903"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867139"
 ---
 # <a name="paging-through-video-search-results"></a>動画検索結果のページング
 

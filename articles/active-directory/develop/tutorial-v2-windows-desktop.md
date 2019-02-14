@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 22cfddef774cb4db6f22c99655e01a5d4863f448
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7da416d824dbb36a6694255a0300d278f41ef414
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101296"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207349"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-windesktop-setup.md)]

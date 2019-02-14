@@ -17,12 +17,13 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 82984687e1d51598b87c85564ebda74bf4b2daa2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 075df3d0834d70b8deb7c224c3f6b1cceb46fd7a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098049"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185963"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比較
 

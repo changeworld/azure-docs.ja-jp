@@ -6,19 +6,16 @@ description: Azure Monitor では、さまざまなソースをログ データ�
 services: azure-monitor
 author: mgoedtel
 manager: carmonm
-ms.assetid: ''
 ms.service: azure-monitor
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: hub-page
 ms.date: 01/29/2019
 ms.author: magoedte
-ms.openlocfilehash: a48e252d1dce2d9142249642a6221e8913c1d92d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223426"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244778"
 ---
 <div id="main" class="v2">
     <div class="container">

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: b5c1596066b02d5ad4f59ed553408d263acc825c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993564"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113850"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -34,7 +34,7 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 ### <a name="pre-requisite"></a>前提条件
 - [Microsoft Azure サブスクリプション](https://azure.microsoft.com/free/) - 無料でサブスクリプションを取得できます。  
 - Log Analytics ワークスペースのセットアップ - 下の「手順 3.」を参照
-- [DC/OS CLI](https://dcos.io/docs/1.8/usage/cli/install/) がインストールされていること。
+- [DC/OS CLI](http://docs.mesosphere.com/1.12/cli) がインストールされていること。
 
 1. DC/OS ダッシュボードで、次のように [Universe] をクリックし、"OMS" を検索します。
 

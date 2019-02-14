@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 80a78d12570e3da1371d2fc1cbb0270eb81fc6ce
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 29c3b83ded2ef996118ebd8d37b177b0334d3bae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766845"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211004"
 ---
 # <a name="manage-your-security-info-preview"></a>セキュリティ情報の管理 (プレビュー)
 

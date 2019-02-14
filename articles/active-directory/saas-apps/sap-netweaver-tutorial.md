@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a5817c428fb9ff87c2125427978c9c7ac3ff6bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66ad6ea26535190d2fc5798e1223c2196d3d5a5d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822334"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル:Azure Active Directory と SAP NetWeaver の統合
 
@@ -116,7 +117,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![証明書のダウンロードのリンク](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
-    d. 以下の SICF サービスをアクティブ化します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 以下の SICF サービスをアクティブ化します。
     ```
     /sap/public/bc/sec/saml2
     /sap/public/bc/sec/cdc_ext_service
@@ -192,7 +193,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     c. **[パラメーター 1]** の一覧で、**user.userprinicipalname** を選択します。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 14. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39a3164c27fa30250fe08e864db889eac844f646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173005"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107312"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C:OpenID Connect での Web サインイン
 OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
@@ -27,7 +27,7 @@ OpenID Connect は、ユーザーを Web アプリケーションに安全にサ
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ここでは、OpenID Connect とユーザー フローを使用してこれらの各エクスペリエンスを Web アプリケーション内に実装する方法について説明します。 また、Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
 
 次のセクションにある HTTP 要求例では、サンプル B2C ディレクトリ fabrikamb2c.onmicrosoft.com のほか、サンプル アプリケーション https://aadb2cplayground.azurewebsites.net およびユーザー フローを使用します。 これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。
-[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について説明します。
+[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-tenant)について説明します。
 
 ## <a name="send-authentication-requests"></a>認証要求を送信する
 ご利用の Web アプリでユーザーを認証し、ユーザー フローを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。 これはフローのインタラクティブな部分であり、ユーザーはここでユーザー フローに応じてアクションを実行します。

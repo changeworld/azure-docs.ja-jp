@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 6466e40fca954d41a32424c55b8ee465fb7ad7ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec6d34ec82d5239af653e69532703a931f9cb12a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195709"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182750"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル:Azure Active Directory と Skytap の統合
 
@@ -118,7 +119,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[サインオン URL]** ボックスに、`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>` のパターンを使用して URL を入力します。
      
-    d. **[リレー状態]** ボックスに、`https://pingone.com/1.0/<custom ID>` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://pingone.com/1.0/<custom ID>` のパターンで URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Skytap クライアント サポート チーム](mailto:support@skytap.com)に連絡してください。 
@@ -163,7 +164,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-skytap-test-user"></a>Skytap テスト ユーザーの作成
 

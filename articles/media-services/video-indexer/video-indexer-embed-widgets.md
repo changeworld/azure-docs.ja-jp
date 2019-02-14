@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 04acbb36b34a5e1eb0a0ead28cc7a1d40a50851c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cfefa8a1bfee03959d0f3b077d9915a6badb1ffd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697627"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55988087"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 

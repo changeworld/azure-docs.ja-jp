@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a92fb875202b9d153dfaedd65abf83ca6ceef9ee
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e9c7b1f737d0331ecd40ab318cec0c082a3f7ddd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495039"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181339"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>ユーザー プライバシーと Azure AD シームレス シングル サインオン
 
