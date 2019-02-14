@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Evaluate メソッドは、クエリ式に基づいてアカデミック エンティティのセットを返すために使用します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187302"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871321"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 

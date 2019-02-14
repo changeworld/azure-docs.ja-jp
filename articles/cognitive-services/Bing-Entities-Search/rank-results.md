@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Entity Search API が返す回答を、ランキングを使用して表示する方法を説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 56215bfa17343576b6bebec3a5dc5076ac56073c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867836"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>ランキングを使用したエンティティ検索結果の表示  
 

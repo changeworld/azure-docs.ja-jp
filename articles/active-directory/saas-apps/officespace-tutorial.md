@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: f31579746dc315381d501eb4559a81db329b0158
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d1c48c10d2c58e5cb2ffd7df296390bfaf765bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203761"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory と OfficeSpace Software の統合
 
@@ -140,7 +141,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
  
 1. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 
@@ -174,7 +175,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     c. Azure Portal からコピーした **[拇印]** の値を **[Client IDP certificate fingerprint]\(クライアント IDP 証明書フィンガープリント\)** ボックスに貼り付けます。 
 
-    d. **[設定の保存]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[設定の保存]** をクリックします。
 
 
 > [!TIP]
@@ -211,7 +212,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-officespace-software-test-user"></a>OfficeSpace Software のテスト ユーザーの作成
 

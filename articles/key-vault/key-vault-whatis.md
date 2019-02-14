@@ -4,7 +4,7 @@ description: Azure Key Vault は、クラウド アプリケーションやサ�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e759df6f-0638-43b1-98ed-30b3913f9b82
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: db2e2e80ecc98eba0f1bba18abad8b561b16036c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: cf45aeb88d9638dd2f0c93bbae0b8ff79b293435
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745862"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108111"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
