@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f01209909812cbf86fe5cf6dee7cedc52d85480c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a99488025dc79a16006af4088555a67b23704cb1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197400"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162817"
 ---
 # <a name="manage-my-devices-overview"></a>デバイスの管理の概要
 

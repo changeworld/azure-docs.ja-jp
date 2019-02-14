@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 9fe00ad1b567fff28301c981413d281869d2aec1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b1cda27ac27dc7ce76ffe525d002ec9443cb39aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808398"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>チュートリアル:Azure Active Directory と OpenAthens の統合
 
@@ -146,7 +147,7 @@ OpenAthens で Azure AD シングル サインオンを構成するには、次�
     
     c. **[Unique user mapping]\(一意のユーザー マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
-    d. **[Display name attribute]\(一意のユーザ属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Display name attribute]\(一意のユーザ属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
 
     e. **[状態]** で、3 つのチェック ボックスすべてをオンにします。
 

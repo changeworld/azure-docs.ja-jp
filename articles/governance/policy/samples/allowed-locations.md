@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: b129715a33c6dd777d4327c5dbf8be863d7ea2a3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a13f181e90f0435f23e22a7c4db42976bd0afb44
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095534"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243548"
 ---
 # <a name="allowed-locations"></a>許可される場所
 
@@ -80,7 +80,7 @@ PowerShell では、`-PolicyParameterObject` もサポートされます。こ�
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ### <a name="deploy-with-azure-powershell"></a>Azure PowerShell でのデプロイ
 
@@ -114,7 +114,7 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 
 デプロイおよび削除のスクリプトには、次のコマンドが使用されています。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | 新しい Azure Policy の定義を作成します。 |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | 単一のリソース グループを取得します。 |
@@ -156,7 +156,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 ### <a name="azure-cli-explanation"></a>Azure CLI の説明
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | 新しい Azure Policy の定義を作成します。 |
 | [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | 単一のリソース グループを取得します。 |

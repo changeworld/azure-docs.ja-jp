@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 3aa911bd0a13c3d58b792091260b7c5e52c1caae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2723df8e328decd30afe9255d6db9eab27009c9a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474889"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>チュートリアル:Azure Active Directory と ClearCompany の統合
 

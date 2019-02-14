@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 465bdf3aaa8ab6fecddef6784bf1adead7f0c585
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37130d71c3d8dfc9ad4cba68ce24fddf82c05959
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822214"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル:Azure Active Directory と SuccessFactors の統合
 
@@ -179,7 +180,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
 
     c. **[発行者の URL]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
-    d. **[Require Mandatory Signature]\(必須の署名が必要\)** として **[アサーション]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Require Mandatory Signature]\(必須の署名が必要\)** として **[アサーション]** を選択します。
 
     e. **[Enable SAML Flag (SAML フラグを有効にする)]** で **[Enabled (有効にする)]** を選択します。
 
@@ -204,7 +205,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
 
     c. **[Require sp must encrypt all NameID element (すべての NameID 要素で SP での暗号化を要求)]** で **[No (いいえ)]** を選択します。
 
-    d. **[NameID Format (NameID の形式)]** で **[unspecified (未指定)]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[NameID Format (NameID の形式)]** で **[unspecified (未指定)]** を選択します。
 
     e. **[Enable sp initiated login (AuthnRequest) (SP によって開始されたログインを有効にする (AuthnRequest))]** で **[Yes (はい)]** を選択します。
 

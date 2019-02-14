@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: efd3b888f78de511cfe4ae73e29b3087eb8d99bd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e85d1d429a65910034b91807b9e2933609430367
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768032"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162851"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>チュートリアル:Azure Active Directory と Allbound SSO の統合
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、機械学習ベースの Content Moderator を使用して Facebook の投稿とコメントをモデレートする方法について説明します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b43f3645a2fb9cc6ede4b27b4412b9e70e2b26f8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 86c89164e3ccd5bf5df303b98cf6d336f3916e2b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213839"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878056"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>チュートリアル:Content Moderator による Facebook コンテンツのモデレーション
 

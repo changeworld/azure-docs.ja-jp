@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、C# を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 44958a806d7476bfc347236421758d6f8c4bc5ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74ac8602e61404214f300682f5696100b8fa0c60
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150712"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868856"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>クイック スタート:C# と Bing News Search REST API を使用してニュースを検索する
 

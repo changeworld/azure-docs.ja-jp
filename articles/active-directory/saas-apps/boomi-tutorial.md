@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 9be16f7ce1fbe37eb823a33e4f8cf1b29acc4fd6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 049c2ad008bfeda0969087a8c08a08cd00f38d5e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>チュートリアル:Azure Active Directory と Boomi の統合
 
@@ -169,7 +170,7 @@ Boomi で Azure AD シングル サインオンを構成するには、次の手
 
     c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーションの構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d. **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
 
     e. **[保存]** ボタンをクリックします。
 
@@ -248,7 +249,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
-    d. ユーザーの**フェデレーション ID** を入力します。 各ユーザーには、アカウント内のユーザーを一意に識別するフェデレーション ID が必要です。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ユーザーの**フェデレーション ID** を入力します。 各ユーザーには、アカウント内のユーザーを一意に識別するフェデレーション ID が必要です。
 
     e. **標準ユーザー**の役割をユーザーに割り当てます。 シングル サインオンのアクセスのほかに、Boomi AtomSphere の通常のアクセスも付与することになるため、管理者の役割は割り当てないでください。
 

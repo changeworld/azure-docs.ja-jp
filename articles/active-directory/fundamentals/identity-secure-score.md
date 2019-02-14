@@ -17,12 +17,13 @@ ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: 5d1ad01c775c270b83b49ee5f6ba5cb4706ff97c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8617442c811dc2fe8f961038f35ebcf218a58302
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094072"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163957"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Azure Active Directory の ID セキュリティ スコアとは (パブリック プレビュー)
 

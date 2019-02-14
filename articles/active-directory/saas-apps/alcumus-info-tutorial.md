@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c2d07ba33e26b1b85225f0577754cd375e887db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 51ecb114c523c49d544bd47303cf6bdafe07454f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460303"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>チュートリアル:Azure Active Directory と Alcumus Info Exchange の統合
 

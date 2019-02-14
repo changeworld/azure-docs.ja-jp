@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する、単純な Java アプリケーションを作成します。 このガイドは、Windows および Linux ユーザー向けに設計されています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: d2408b894f58a17ab4f6423329114e0f0c0773c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 23582e25a7695f4573863b77b83d73408e77ac4e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216304"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105639"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を翻訳する
 
@@ -56,109 +56,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
 
 1. `Main.java` のすべてのコードを次のスニペットに置き換えます。
 
-   ```java
-   package speechsdk.quickstart;
-
-   import java.io.IOException;
-   import java.util.Map;
-   import java.util.Scanner;
-   import java.util.concurrent.ExecutionException;
-   import com.microsoft.cognitiveservices.speech.*;
-   import com.microsoft.cognitiveservices.speech.translation.*;
-
-   public class Main {
-
-       public static void translationWithMicrophoneAsync() throws InterruptedException, ExecutionException, IOException
-       {
-           // Creates an instance of a speech translation config with specified
-           // subscription key and service region. Replace with your own subscription key
-           // and service region (e.g., "westus").
-           SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-           // Sets source and target language(s).
-           String fromLanguage = "en-US";
-           config.setSpeechRecognitionLanguage(fromLanguage);
-           config.addTargetLanguage("de");
-
-           // Sets voice name of synthesis output.
-           String GermanVoice = "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)";
-           config.setVoiceName(GermanVoice);
-
-           // Creates a translation recognizer using microphone as audio input.
-           TranslationRecognizer recognizer = new TranslationRecognizer(config);
-           {
-               // Subscribes to events.
-               recognizer.recognizing.addEventListener((s, e) -> {
-                   System.out.println("RECOGNIZING in '" + fromLanguage + "': Text=" + e.getResult().getText());
-
-                   Map<String, String> map = e.getResult().getTranslations();
-                   for(String element : map.keySet()) {
-                       System.out.println("    TRANSLATING into '" + element + "': " + map.get(element));
-                   }
-               });
-
-               recognizer.recognized.addEventListener((s, e) -> {
-                   if (e.getResult().getReason() == ResultReason.TranslatedSpeech) {
-                       System.out.println("RECOGNIZED in '" + fromLanguage + "': Text=" + e.getResult().getText());
-
-                       Map<String, String> map = e.getResult().getTranslations();
-                       for(String element : map.keySet()) {
-                           System.out.println("    TRANSLATED into '" + element + "': " + map.get(element));
-                       }
-                   }
-                   if (e.getResult().getReason() == ResultReason.RecognizedSpeech) {
-                       System.out.println("RECOGNIZED: Text=" + e.getResult().getText());
-                       System.out.println("    Speech not translated.");
-                   }
-                   else if (e.getResult().getReason() == ResultReason.NoMatch) {
-                       System.out.println("NOMATCH: Speech could not be recognized.");
-                   }
-               });
-
-               recognizer.synthesizing.addEventListener((s, e) -> {
-                   System.out.println("Synthesis result received. Size of audio data: " + e.getResult().getAudio().length);
-               });
-
-               recognizer.canceled.addEventListener((s, e) -> {
-                   System.out.println("CANCELED: Reason=" + e.getReason());
-
-                   if (e.getReason() == CancellationReason.Error) {
-                       System.out.println("CANCELED: ErrorCode=" + e.getErrorCode());
-                       System.out.println("CANCELED: ErrorDetails=" + e.getErrorDetails());
-                       System.out.println("CANCELED: Did you update the subscription info?");
-                   }
-               });
-
-               recognizer.sessionStarted.addEventListener((s, e) -> {
-                   System.out.println("\nSession started event.");
-               });
-
-               recognizer.sessionStopped.addEventListener((s, e) -> {
-                   System.out.println("\nSession stopped event.");
-               });
-
-               // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
-               System.out.println("Say something...");
-               recognizer.startContinuousRecognitionAsync().get();
-
-               System.out.println("Press any key to stop");
-               new Scanner(System.in).nextLine();
-
-               recognizer.stopContinuousRecognitionAsync().get();
-           }
-       }
-
-       public static void main(String[] args) {
-           try {
-               translationWithMicrophoneAsync();
-           } catch (Exception ex) {
-               System.out.println("Unexpected exception: " + ex.getMessage());
-               assert(false);
-               System.exit(1);
-           }
-       }
-   }
-   ```
+   [!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/java-jre/src/speechsdk/quickstart/Main.java#code)]
 
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 

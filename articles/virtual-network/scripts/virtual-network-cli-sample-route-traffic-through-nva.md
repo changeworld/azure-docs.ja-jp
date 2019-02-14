@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 667d32c825f61751970bbcaa47045929ad708490
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e935aff95c0a37525de343e808cf2e88791fce30
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160272"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893879"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティングのスクリプト サンプル
 
@@ -47,19 +47,19 @@ az group delete --name MyResourceGroup --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想ネットワーク、およびネットワーク セキュリティ グループを作成します。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |
-| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | バックエンドおよび DMZ サブネットを作成します。 |
-| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | インターネットから VM にアクセスするためのパブリック IP アドレスを作成します。 |
-| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | 仮想ネットワーク インターフェイスを作成し、IP 転送を有効にします。 |
-| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | ネットワーク セキュリティ グループ (NSG) を作成します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |
+| [az network subnet create](/cli/azure/network/vnet/subnet) | バックエンドおよび DMZ サブネットを作成します。 |
+| [az network public-ip create](/cli/azure/network/public-ip) | インターネットから VM にアクセスするためのパブリック IP アドレスを作成します。 |
+| [az network nic create](/cli/azure/network/nic) | 仮想ネットワーク インターフェイスを作成し、IP 転送を有効にします。 |
+| [az network nsg create](/cli/azure/network/nsg) | ネットワーク セキュリティ グループ (NSG) を作成します。 |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | VM に対する着信 HTTP ポートと着信 HTTPS ポートを許可する NSG ルールを作成します。 |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| NSG とルート テーブルをサブネットに関連付けます。 |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| すべてのルートのルート テーブルを作成します。 |
 | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| サブネットや VM 経由のインターネットでトラフィックをルーティングするルートを作成します。 |
-| [az vm create](/cli/azure/vm#az_vm_create) | 仮想マシンを作成し、NIC をアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成し、NIC をアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
 | [az group delete](/cli/azure/group) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

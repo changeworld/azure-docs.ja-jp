@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
-ms.openlocfilehash: 290cec57f4394ed4f0f435e6032f72aad4a87aad
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53d9eed4d6fc157e19c4afb7902aedc000804d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821959"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>チュートリアル:Azure Active Directory と Coralogix の統合
 
@@ -131,7 +132,7 @@ Coralogix で Azure AD シングル サインオンを構成するには、次�
 
     c. **[ソース属性]** の一覧から、**[user.mail]** を選択します。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

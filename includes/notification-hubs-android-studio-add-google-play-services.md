@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fb27386881e89cd9056d0efccb7d3c301867bd83
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823296"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965989"
 ---
 1. **Android Studio** で、メニューの **[Tools]\(ツール\)** を選択し、**[SDK Manager]\(SDK Manager\)** を選択します。 
 2. プロジェクトで使用する Android SDK のターゲット バージョンを選択し、**[Show Package Details]\(パッケージの詳細の表示\)** を選択します。 
@@ -29,7 +29,7 @@ ms.locfileid: "55823296"
 4. **[OK]** を選択して、**[Settings for New Projects]\(新しいプロジェクトの設定\)** ダイアログ ボックスを閉じます。  
 5. **app** ディレクトリの `build.gradle` ファイルを開き、`dependencies` の下に次の行を追加します。 
 
-    ```text
+    ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
 5. ツール バーの **[Sync Now]\(今すぐ同期\)** アイコンを選択します。

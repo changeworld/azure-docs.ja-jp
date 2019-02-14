@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9acdc502dea3e069391d9706f13d14b4ee413863
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef5b05c263afa40d3ad8ff3e4c4f239c5a6e03c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>チュートリアル:Azure Active Directory と Aravo の統合
 

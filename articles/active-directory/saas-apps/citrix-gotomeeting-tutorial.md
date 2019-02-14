@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 619fb903040c6a16956f7e0b7ba0a0a9a0ce3829
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be72216f33912f8740979e11edc9427a83fb0350
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824288"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory と GoToMeeting の統合
 
@@ -110,7 +111,7 @@ GoToMeeting で Azure AD シングル サインオンを構成するには、次
 
     c. **[追加の URL を設定します]** をクリックして、以下の URL を構成します
 
-    d. **サインオン URL** (空白のまま)
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **サインオン URL** (空白のまま)
 
     e. **[RelayState]** ボックスに、次のパターンを使用して URL を入力します。
 

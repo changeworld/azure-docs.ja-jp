@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 731d99c84c9d34328ba7cc624610714c58ed00e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39fc807e54e92a504c0bac730cd59c0223fde4b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825397"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル:Azure Active Directory と Zscaler Beta の統合
 
@@ -177,7 +178,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
 
-    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
     e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
@@ -220,7 +221,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 

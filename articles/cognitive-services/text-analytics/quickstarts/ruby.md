@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: d757569f666f6a512b4f20b6c5753d65f1e65baf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6255052430acff142e3e2c7e686e1516741b6ebc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55205969"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863387"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Ruby を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>

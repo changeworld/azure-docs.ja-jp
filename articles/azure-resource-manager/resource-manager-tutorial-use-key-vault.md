@@ -14,14 +14,16 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 0e73177ca49a9a100b45712833b1310d54852680
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498014"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237180"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure Key Vault からシークレットを取得し、Resource Manager デプロイ時にシークレットをパラメーターとして渡す方法を説明します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./resource-manager-keyvault-parameter.md)」を参照してください
 
@@ -167,6 +169,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
         }
     },
     ```
+
     **id** を、最後の手順で作成したキー コンテナーのリソース ID に置き換えます。  
 
     ![Key Vault と Resource Manager テンプレートの仮想マシンのデプロイ パラメーター ファイルを統合する](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
@@ -181,12 +184,11 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 [テンプレートをデプロイする](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)の指示に従って、テンプレートをデプロイします。 テンプレートをデプロイするには**azuredeploy.json**と**azuredeploy.parameters.json**の両方をクラウドシェルにアップロードし、次の PowerShell スクリプトを使用する必要があります:
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json

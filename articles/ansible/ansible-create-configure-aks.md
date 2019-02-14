@@ -8,19 +8,19 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f4541bb9516855c4391188fb57e5ab64bc03c76e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727060"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890486"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Ansible を使用して、Azure 内に Azure Kubernetes Service クラスターを作成して構成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible では、Azure Kubernetes Service (AKS) の管理が可能です。 この記事では、Ansible を使用して、Azure Kubernetes Service クラスターを作成し、構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- **Azure サービス プリンシパル** - [サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)するときは、**appId**、**displayName**、**password**、および **tenant** の値に注意してください。
+- **Azure サービス プリンシパル** - [サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)するときは、**appId**、**displayName**、**password**、および **tenant** の値に注意してください。
 
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 

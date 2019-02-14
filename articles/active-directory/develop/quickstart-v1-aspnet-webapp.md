@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816273"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185318"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -229,7 +230,7 @@ Azure AD と統合されている会社または組織の職場および学校�
 アプリケーションが特定の Azure AD インスタンスに属するアカウント (そのインスタンスの *ゲスト アカウント* を含む) からのサインインのみを受け入れるようにする場合は、以下の手順を実行します。
 
 1. `Common` からの *web.config* の `Tenant` パラメーターを組織のテナント名前と置き換えます (例: *contoso.onmicrosoft.com*)。
-1. [*OWIN Startup クラス*](#configure-the-authentication-pipeline) 内の `ValidateIssuer` 引数を `true` に変更します。
+1. [*OWIN Startup クラス*](#step-4-configure-the-authentication-pipeline) 内の `ValidateIssuer` 引数を `true` に変更します。
 
 特定の組織の一覧のみからユーザーを許可するには、次の手順を実行します。
 

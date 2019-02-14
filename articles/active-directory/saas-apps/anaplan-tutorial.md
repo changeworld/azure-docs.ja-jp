@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ff6ebc9d6386bca95b45b79fa4d39dbd117b2f5a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 485f2cb0dd01a5e0499c826baba2908dc9754efe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474124"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>チュートリアル:Azure Active Directory と Anaplan の統合
 

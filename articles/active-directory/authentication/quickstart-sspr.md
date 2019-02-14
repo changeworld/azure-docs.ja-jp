@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 84d781bc0a42d75090f7c48480b4025269b9242e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079887"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176256"
 ---
 # <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 

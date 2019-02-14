@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819520"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960566"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
@@ -91,7 +91,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 2. **[すべてのサービス]** > **[ストレージ]** を選択してファイル共有の一覧を開きます。そこで使用状況情報を確認できます。 
 
-  ![例:ストレージ ファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![例:ストレージ ファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
   - **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。

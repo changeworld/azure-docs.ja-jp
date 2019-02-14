@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6c6553ace250aa9cbc06dfdfea77fc5e1637cd41
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6810818e48329d883961c840fa83857d84b98fd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384821"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112871"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>チュートリアル: Azure Data Box Edge (プレビュー) を使用してデータを転送する
 
@@ -65,7 +65,7 @@ ms.locfileid: "53384821"
     c. 共有が格納されるストレージ アカウントを指定します。  
     コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。 コンテナーが既に存在する場合は、そのコンテナーが使用されます。 
     
-    d. **[ストレージ サービス]** ドロップダウン リストで、**[ブロック BLOB]**、**[ページ BLOB]**、**[ファイル]** のいずれかを選択します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ストレージ サービス]** ドロップダウン リストで、**[ブロック BLOB]**、**[ページ BLOB]**、**[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データを BLOB ブロックとして Azure に格納したいため、**[ブロック BLOB]** を選択します。 ページ BLOB を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
    
     e. お客様が SMB 共有と NFS 共有のどちらを作成したかに応じて、次の手順のいずれかを実行します。 
@@ -135,14 +135,14 @@ ms.locfileid: "53384821"
 
 1. NFS クライアントがインストールされた後、次のコマンドを使用して、お客様が作成した NFS 共有をお客様の Data Box Edge デバイスにマウントします。
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
     > 共有をマウントする前に、ローカル コンピューター上のマウント ポイントとして機能するディレクトリが既に作成されていることを確認します。 これらのディレクトリに、ファイルやサブフォルダーを含めることはできません。
 
     NFS 経由で Edge デバイス上の共有に接続する方法の例を次に示します。 デバイスの IP アドレスは `10.10.10.60` です。 共有 `mylinuxshare2` は ubuntuVM にマウントされています。 共有マウント ポイントは `/home/databoxubuntuhost/edge` です。
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
 > 次の注意事項は、プレビュー リリースに適用されます。

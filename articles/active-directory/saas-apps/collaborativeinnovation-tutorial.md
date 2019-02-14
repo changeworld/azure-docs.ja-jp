@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a625e6677a706ddfffe1305c862b5a1a8e47c9ac
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 46bd7b265be204a70989fe0c726514485ac8c39c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769238"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>チュートリアル:Azure Active Directory と Collaborative Innovation の統合
 

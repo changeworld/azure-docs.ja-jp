@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このポータルベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b78c19d4fa6b2e5b69e5d7f46cea51d943b808fa
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608649"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882150"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>チュートリアル: QnA Maker ポータルでナレッジ ベースを作成して質問に回答する
 

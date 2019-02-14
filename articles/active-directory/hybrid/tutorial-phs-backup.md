@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660410"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178823"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>チュートリアル:Azure AD Connect で AD FS のバックアップとして PHS を設定する
 

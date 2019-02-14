@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d71b10e551a84763a299d2a85f44a818c785a21
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 197ceaf38a0a17e9ec876b3bd50abe0475736262
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>チュートリアル:Azure Active Directory と Consent2Go の統合
 

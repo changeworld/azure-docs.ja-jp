@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696737"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118260"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>仮想ハード ディスクを使用した VM の作成
 
@@ -51,7 +51,7 @@ az group delete -n az-cli-vhd
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの一覧を表示します。 |
@@ -62,7 +62,7 @@ az group delete -n az-cli-vhd
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | VHD をアップロードすることで、コンテナーに BLOB を作成します。 |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm) | `--query` チェックと併用して VM 名が使用中かどうかを確認します。 | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 仮想マシンを作成します。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | 作成した VM の IP アドレスを取得します。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | 作成した VM の IP アドレスを取得します。 |
 
 ## <a name="next-steps"></a>次の手順
 
