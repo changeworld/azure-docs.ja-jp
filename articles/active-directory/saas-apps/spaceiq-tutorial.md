@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e0f52a33f0213af7d361af77f4b2dcd1ab0fcd3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6695fe4854c6d91d3d2ba671104d1b481721356c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154203"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル:Azure Active Directory と SpaceIQ の統合
 
@@ -149,7 +150,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
     
     c. **[SAML Audience URI (read-only)]\(SAML オーディエンス URL (読み取り専用)\)** の値をコピーし、Azure ポータルの **[SpaceIQ のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    d. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーし、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーし、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
     
     e. **[Save]** をクリックします。
 
@@ -186,7 +187,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-spaceiq-test-user"></a>SpaceIQ テスト ユーザーを作成する
 

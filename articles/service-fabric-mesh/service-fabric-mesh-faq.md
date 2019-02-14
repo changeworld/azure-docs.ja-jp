@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 8d6dcdd4de8fb56935d2f66bfff045b2115d4004
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063575"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979753"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 
@@ -88,7 +88,7 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 - Windows - windowsservercore と nanoserver
     - Windows Server バージョン 1709
     - Windows Server バージョン 1803
--  Linux
+- Linux
     - 既知の制限事項はありません
 
 ## <a name="developer-experience-issues"></a>開発者エクスペリエンスの問題
@@ -101,7 +101,7 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 - サービス名だけでは機能しない場合は、完全修飾名を試してください:ServiceName.ApplicationName。
 - サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 例: 
 
-```DockerFile
+```Dockerfile
 EXPOSE 80
 ```
 

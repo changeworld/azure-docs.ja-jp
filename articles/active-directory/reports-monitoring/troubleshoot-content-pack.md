@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e786a2af8f86b69116b612c266dd40bbe7580e30
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161853"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210698"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
@@ -34,7 +35,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 - [更新が失敗しました](troubleshoot-content-pack.md#refresh-failed) 
 - [データ ソースの資格情報を更新できませんでした](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [データのインポートに時間がかかっています](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+- [データのインポートに時間がかかっています](#data-import-is-too-slow) 
 
 この記事では、考えられる原因とこれらのエラーを修正する方法について説明します。
  

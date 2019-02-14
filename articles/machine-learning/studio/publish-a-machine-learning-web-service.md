@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 89a54d99aa47af273e5955c2103ec696a985737e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8e9d41131228c2399277e59a6d0edd78efda307b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493747"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999115"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
@@ -34,7 +34,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 トレーニング実験を作成したり管理したりするプロセスはあらゆる場所でより包括的に使用できます。 詳細と例については、次の記事をご覧ください。
 
 * [Azure Machine Learning Studio での簡単な実験の作成](create-experiment.md)
-* [Azure Machine Learning を使用した予測ソリューションの開発](walkthrough-develop-predictive-solution.md)
+* [Azure Machine Learning を使用した予測ソリューションの開発](tutorial-part1-credit-risk.md)
 * [Azure Machine Learning Studio への学習データのインポート](import-data.md)
 * [Azure Machine Learning Studio での繰り返し学習の管理](manage-experiment-iterations.md)
 

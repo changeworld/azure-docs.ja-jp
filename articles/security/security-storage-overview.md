@@ -4,7 +4,7 @@ description: この記事では、Azure Storage で使用できる Azure のコ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5d8c9ae52152df6a0e016c12234afe4ae780b251
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694270"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115438"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 
@@ -128,5 +128,4 @@ Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/services
 
 詳細情報
 
-* [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
-* [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
+* [Azure Key Vault とは](../key-vault/key-vault-overview.md)

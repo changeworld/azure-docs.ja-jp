@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: d801ba8e7e720a2ef4efd67c7e08a5a6439049b4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d0054e805f4d07a92361079eeee391c8367b4117
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158538"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>チュートリアル:Azure Active Directory と Fuse の統合
 
@@ -168,7 +169,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-fuse-test-user"></a>Fuse のテスト ユーザーの作成
 

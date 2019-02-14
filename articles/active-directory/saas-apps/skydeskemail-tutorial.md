@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 71274bd49a2e1950e5b171f964630d399c8992c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8caad0a3c75ab269aa2be93e3b338695dd29caa6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル:Azure Active Directory と SkyDesk Email の統合
 
@@ -141,7 +142,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
     
       ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-    d. **[ドメインの追加]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ドメインの追加]** をクリックします。
     
       ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
@@ -170,7 +171,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワード変更 URL]** は省略可能なので、空白のままにします。
 
-    d. **[Get Key From File (ファイルからキーを取得)]** をクリックし、Azure portal からダウンロードした証明書を選択してから、**[開く]** をクリックして証明書をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Get Key From File (ファイルからキーを取得)]** をクリックし、Azure portal からダウンロードした証明書を選択してから、**[開く]** をクリックして証明書をアップロードします。
 
     e. **[アルゴリズム]** として **[RSA]** を選択します。
 
@@ -209,7 +210,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-skydesk-email-test-user"></a>SkyDesk Email テスト ユーザーの作成
 

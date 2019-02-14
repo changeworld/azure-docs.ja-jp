@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: db05ce33a9fb602d6d48d1a1606f48a7fbde246e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889271"
 ---
-<!--author=alkohli last changed: 12/15/15-->
-
 | 制限の種類 | 制限 | 説明 |
 | --- | --- | --- |
 | ストレージ アカウントの資格情報の最大数 |64 | |
