@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: f4c7efdb0a43c352450056a9f6f79e3e189c820c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581f0883757444a29a1d941305d055204167701a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
 
@@ -133,7 +134,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     ![ユーザー名の下にある [Settings (設定)] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
-1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
+1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、[Federated Authentication (フェデレーション認証)] の横の **[edit (編集)]** をクリックします。
 
     ![[Global Settings (グローバル設定)] タブ](./media/clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 
@@ -147,7 +148,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     c. **[Sign-in URL]\(サインイン URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログアウト URL]** の値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログアウト URL]** の値を入力します。
 
     e. **[POST を使用]** を選択します。
 

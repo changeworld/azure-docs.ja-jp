@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 1cd82188ef9f5a4e0078a8ea21882f99bb8b8f44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d72f4ac39ac992d0386b3971cd4d3bc6616f0a28
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171288"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -183,7 +184,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-procore-sso-test-user"></a>Procore SSO のテスト ユーザーの作成
 
@@ -205,7 +206,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     c. **[Email Address] \(メール アドレス)** テキストボックスに、ユーザーのメール アドレスを入力します (この例では **BrittaSimon@contoso.com**)。
 
-    d. **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
 
     e. **Create** をクリックしてください。
 

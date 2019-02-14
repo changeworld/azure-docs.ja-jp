@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a062cd7c56e3915d0b065474879ce679238c3779
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 04f66f10e0efa6d97dfa59ad7b920800296bf8f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187540"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル:Azure Active Directory と Igloo Software の統合
 
@@ -157,7 +158,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
    
     c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
     
-    d. **[POST]\(POST\)** として、**[Logout Response and Request HTTP Type]\(ログアウト応答と要求 HTTP のタイプ\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[POST]\(POST\)** として、**[Logout Response and Request HTTP Type]\(ログアウト応答と要求 HTTP のタイプ\)** を選択します。
    
     e. Azure Portal からダウンロードした **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
     
@@ -171,7 +172,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
 
       c. **[Email Attribute]** ボックスに、「**emailaddress**」と入力します。
 
-      d. **[First Name Attribute (名属性)]** ボックスに、「**givenname**」と入力します。
+      d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[First Name Attribute (名属性)]** ボックスに、「**givenname**」と入力します。
 
       e. **[Last Name Attribute (姓属性)]** ボックスに、「**surname**」と入力します。
 
@@ -217,7 +218,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-igloo-software-test-user"></a>Igloo Software のテスト ユーザーの作成
 

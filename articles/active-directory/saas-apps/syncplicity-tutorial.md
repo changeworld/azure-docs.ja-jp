@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: bd07786d40d23d63f1c9bb29cf3b14fb756b133a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>チュートリアル:Azure Active Directory と Syncplicity の統合
 
@@ -149,7 +150,7 @@ Syncplicity で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Entity Id]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    d. **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
     e. **[Logout page URL]\(ログアウト ページ URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** を貼り付けます。
 
@@ -190,7 +191,7 @@ Syncplicity で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-syncplicity-test-user"></a>Syncplicity テスト ユーザーの作成
 AAD ユーザーがサインインできるようにするには、ユーザーを Syncplicity アプリケーションにプロビジョニングする必要があります。 このセクションでは、Syncplicity で AAD ユーザー アカウントを作成する方法について説明します。

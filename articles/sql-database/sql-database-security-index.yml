@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 708e5d2bdb3dd3ca259b6d7927b6ec24fc27dfea
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3d82735a5fcfaaa16efec1578136531fd3a2dd91
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820710"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236862"
 documentType: LandingData
 title: Azure SQL Database - 高度なセキュリティ
 metadata:
@@ -12,6 +12,7 @@ metadata:
   title: Azure SQL Database - 高度なセキュリティ
   meta.description: Learn about the Advanced security capabilities of Azure SQL Database.
   services: sql-database
+  ms.subservice: security
   author: jovanpop-msft
   manager: craigg
   requires-business-manager-approval: false
@@ -19,7 +20,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 01/25/2019
+  ms.date: 02/07/2019
   ms.author: jovanpop-msft
 sections:
 - items:
@@ -77,9 +78,9 @@ sections:
       - href: 
     - title: 1 つのデータベースに対するデータベース サーバー ファイアウォール規則の設定
       values:
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-the-azure-portal
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-cli
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-powershell
+      - href: /azure/sql-database/sql-database-firewall-configure
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-azure-powershell
     - title: 脆弱性評価規則の管理
       values:
       - href: 

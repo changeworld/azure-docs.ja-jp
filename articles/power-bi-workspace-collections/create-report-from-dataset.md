@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 38be6d0212f4676add76abacf9f18f0a73eb44be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170421"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232765"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成
 
@@ -40,13 +40,13 @@ Power BI ワークスペース コレクションでは、埋め込みトーク�
 
 **NuGet パッケージのインストール**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **C# コード**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +65,16 @@ var token = embedToken.Generate("{access key}");
 
 **NuGet パッケージのインストール**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **JavaScript コード**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +86,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 *powerbi.createReport()* を呼び出すと、編集モードの空白のキャンバスが *div* 要素内に表示されます。
@@ -95,7 +97,7 @@ var embedCreateConfiguration = {
 
 レポートは、"**名前を付けて保存**" 操作を呼び出すまで作成されません。 この操作は、[ファイル] メニューから、または JavaScript から実行できます。
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +118,9 @@ var embedCreateConfiguration = {
 
 新しいレポートを操作するには、アプリケーションで通常のレポートを埋め込むのと同じ方法でレポートを埋め込む必要があります。つまり、新しいレポート用に新しいトークンを発行し、埋め込みメソッドを呼び出す必要があります。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +132,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>"saved" イベントを使用して新しいレポートの保存と読み込みを自動化する
 
 "名前を付けて保存" 操作の後に新しいレポートを読み込むプロセスを自動化するには、"saved" イベントを使用できます。 このイベントは、保存操作が完了すると起動され、新しい reportId、レポート名、古い reportId (存在する場合)、および操作が saveAs と save のどちらであるかを示す値を含む JSON オブジェクトを返します。
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +150,9 @@ var embedConfiguration = {
 
 このプロセスを自動化するには、"saved" イベントをリッスンし、新しい reportId を取得します。次に、新しいトークンを作成し、それを使用して新しいレポートを埋め込みます。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +195,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>関連項目

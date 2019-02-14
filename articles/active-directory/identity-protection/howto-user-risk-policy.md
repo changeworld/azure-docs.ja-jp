@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: c204c544e6e7062021eb30eb9f08abcd8f9c14fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 409c86556d8132cb913508518be7d5b9f9d35321
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170625"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180200"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>方法:ユーザー リスク ポリシーを構成する
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118994"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960737"
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -82,7 +82,7 @@ Azure App Service に移行した後は、価格設定がより自由になり�
 |:--- |:--- |
 | 無料 |F1 Free |
 | Basic |B1 Basic |
-| 標準 |S1 Standard |
+| Standard |S1 Standard |
 
 自分のアプリケーションに適した価格レベルを自由に選択できます。  App Service の価格に関する詳細については、 「 [App Service 価格] 」を参照してください。
 
@@ -321,7 +321,7 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 3. **[ツール]** ボタンをクリックします。
 4. [監視] メニューの **[ログ ストリーム]** を選択します。
 
-ログは、生成されるとウィンドウに表示されます。  ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。 詳細については、[ログ]に関するドキュメントを参照してください。
+ログは、生成されるとウィンドウに表示されます。  ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。 詳細については、[Logging]に関するドキュメントを参照してください。
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>移行したモバイル アプリの複製を削除すると、サイトが停止する
@@ -332,7 +332,7 @@ Azure PowerShell を使用して、移行したモバイル サービスを複�
 ### <a name="changing-webconfig-does-not-work"></a>Web.config の変更が機能しない
 ASP.NET サイトがある場合、`Web.config` ファイルの変更は適用されません。  Azure App Service は、Mobile Services ランタイムをサポートするために適切な `Web.config` ファイルを起動時に作成します。  XML 変換ファイルを使用することで特定の設定 (カスタム ヘッダーなど) をオーバーライドできます。  呼び出される `applicationHost.xdt` でファイルを作成します。このファイルは Azure Service の `D:\home\site` ディレクトリに格納されます。  カスタム デプロイ スクリプトで、または直接 Kudu を使用して、`applicationHost.xdt` ファイルをアップロードします。  次にドキュメントの例を示します。
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>
@@ -388,7 +388,7 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [Fiddler]: https://www.telerik.com/fiddler
 [Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[ログ]: ../app-service/troubleshoot-diagnostic-logs.md
+[Logging]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 01294ec8aa65a8405bc99be215008dad66a73d8d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816783"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960751"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -609,7 +609,7 @@ public async Task SyncAsync()
 
 クライアントで [InvokeApiAsync] メソッドのいずれかを呼び出して、カスタム API を呼び出します。 たとえば、次のコード行は、バックエンドの **completeAll** API に POST 要求を送信します。
 
-```
+```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 

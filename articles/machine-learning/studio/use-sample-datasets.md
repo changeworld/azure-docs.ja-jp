@@ -10,17 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510172"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244336"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
 
-Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 これらのサンプル データセットの多くは、[Azure AI ギャラリー](http://gallery.cortanaintelligence.com/)のサンプル モデルで使用されます。 その他のデータセットは、機械学習で通常使用されるさまざまなデータのサンプルとして含まれています。
+Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 これらのサンプル データセットの多くは、[Azure AI ギャラリー](http://gallery.azure.ai/)のサンプル モデルで使用されます。 その他のデータセットは、機械学習で通常使用されるさまざまなデータのサンプルとして含まれています。
 
 データセットの一部は、Azure Blob Storage で使用できます。 これらのデータセットでは、次の表に直接リンクが提供されています。 これらのデータセットは、[データのインポート][import-data] モジュールを使用して実験で使用できます。
 

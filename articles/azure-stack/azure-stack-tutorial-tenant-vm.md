@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: 59a113739734c5e1a29de7e5876f255906ef5323
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a24b7314775ea7667ab992742586e5b5c8bbb369
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252287"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205159"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>チュートリアル: Azure Stack ユーザーが仮想マシンを使用できるようにする
 
@@ -142,7 +142,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
       - **リソース グループ**を作成する (または既存のものを選択する) 
       - **[OK]** を選択してこのパターンを保存する
 
-   d. **[サイズの選択]** で、**[A1 標準]** を選択し、**[選択]** を選択します。  
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サイズの選択]** で、**[A1 標準]** を選択し、**[選択]** を選択します。  
 
    e. **[設定]** で、**[仮想ネットワーク]** を選択します。
 

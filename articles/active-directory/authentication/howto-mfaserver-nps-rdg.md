@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: e80b2fe9bfde7a2034877498897aff899234b58e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 01f8c2ecb4f72595398d5631d9545c2ebaa42533
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079445"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181623"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
 

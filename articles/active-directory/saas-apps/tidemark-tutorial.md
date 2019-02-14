@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e04f6801a8ed0343f964dbfe9eb66c8938218f3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be130c584ae05dd9b6935fa91fc0ddf4e62f0892
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188254"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>チュートリアル:Azure Active Directory と Tidemark の統合
 
@@ -173,7 +174,7 @@ Tidemark で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-tidemark-test-user"></a>Tidemark テスト ユーザーの作成
 

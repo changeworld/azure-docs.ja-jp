@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 9bf1cbd093e5261da08ea2a09289036de8f54eb7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed9a9a7118a79def9d61f17fa5ba22ebe6d4720a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189750"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176528"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>チュートリアル:Azure Active Directory と Yardi eLearning の統合
 
@@ -162,7 +163,7 @@ Yardi eLearning で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-yardi-elearning-test-user"></a>Yardi eLearning のテスト ユーザーの作成
 

@@ -14,12 +14,13 @@ ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: bf625b45fa47d4fa681521eb992bd2b07cc08946
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209729"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 

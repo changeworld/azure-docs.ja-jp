@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193766"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
 
 Service Fabric のコンポーネントは、この豊富な機能を持つ正常性モデルを使用して、現在の状態を報告します。 アプリケーションからの正常性レポートにも同じメカニズムを使用できます。 カスタム条件をキャプチャする高品質の正常性レポートに投資すれば、実行中のアプリケーションの問題をより簡単に検出し、修正できます。
-
-次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法についても説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > 正常性サブシステムは、そもそも監視付きアップグレードの必要性から生まれました。 Service Fabric では、アプリケーションとクラスターのアップグレードを監視し、完全な可用性、ダウンタイムの防止、ユーザー操作の最小化を実現できます。 このような目標を達成するには、構成したアップグレード ポリシーに基づいて、アップグレードで正常性をチェックします。 所定のしきい値を守っている正常性の場合にのみ、アップグレードを進めることができます。 それ以外の場合、アップグレードは自動的にロールバックするか、一時停止して管理者に問題を解決する機会を提供します。 アプリケーションのアップグレードの詳細については、 [この記事](service-fabric-application-upgrade.md)を参照してください。

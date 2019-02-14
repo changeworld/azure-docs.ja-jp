@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4336cabd256e492981e1bbff8d1b3b9e4ef07df1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 55668b8ef8019e1ee808bc0cba9d98c0db53c584
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820523"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198742"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 

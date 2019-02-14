@@ -11,12 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
-ms.openlocfilehash: 92b34a014a42f116a51b8fb1f5dcff531659bdb7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696882"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211599"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 

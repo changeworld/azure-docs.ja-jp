@@ -1,25 +1,25 @@
 ---
 title: Azure クラシック CLI を使用した Azure Cache for Redis の管理 | Microsoft Docs
 description: 任意のプラットフォームに Azure クラシック CLI をインストールする方法、Azure クラシック CLI を使って Azure アカウントに接続する方法、クラシック CLI で Azure Cache for Redis を作成および管理する方法。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: wesmc
-ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.author: yegu
+ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558704"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233202"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 | Virtual Network |-v、--virtual-network |VNET でキャッシュをホストする場合に、Azure Cache for Redis をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t、--key-type |更新するキーの種類です。 有効な値: [Primary、Secondary] |
 | StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
-| サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
+| Subnet |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Azure Cache for Redis をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
 

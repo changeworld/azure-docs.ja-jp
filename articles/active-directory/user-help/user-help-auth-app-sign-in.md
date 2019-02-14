@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 70e568923bd43783f1674fca17f0f62dd8d7b040
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817936"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186898"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 Microsoft Authenticator アプリは、2 要素認証を使用する場合に、アカウントにサインインするために役立ちます。 2 要素認証は、特に機密情報を閲覧する際に、アカウントにより安全にアクセスするために役立ちます。 パスワードは忘れたり、盗まれたり、侵害されたりすることがあるため、2 要素認証は、他のユーザーの侵入を困難にすることでお客様のアカウントの保護に役立つ追加のセキュリティ手順です。

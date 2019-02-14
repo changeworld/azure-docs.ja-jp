@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 74a46c4641612e7206e0f9f61796935380827b24
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d35d53cc75970f01f54a8d94b6111ed730a61c4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075961"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217651"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションのユーザー トークンについて
 

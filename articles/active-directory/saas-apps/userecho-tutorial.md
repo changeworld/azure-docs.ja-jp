@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 1aa092391f51d84a5219076ea3c63352718c2f3a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9f7c02fb395464c1b682a3cfb71cc072a807ef88
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173855"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>チュートリアル:Azure Active Directory と UserEcho の統合
 
@@ -155,7 +156,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
     
     c. Azure Portal からコピーした**サインアウト URL** を **[Remote logoout URL (リモート ログアウト URL)]** ボックスに貼り付けます。
     
-    d. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[X.509 Certificate]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[X.509 Certificate]** ボックスに貼り付けます。
     
     e. **[Save]** をクリックします。
 
@@ -192,7 +193,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-userecho-test-user"></a>UserEcho のテスト ユーザーの作成
 

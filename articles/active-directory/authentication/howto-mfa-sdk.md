@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b06f3c6560697ad65696af4939bc33ebf564386f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 46287e75a4f4717722c398cf4133b6409c75aa8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078340"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178925"
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 

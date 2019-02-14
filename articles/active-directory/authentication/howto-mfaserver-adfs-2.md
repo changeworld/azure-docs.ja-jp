@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 28e85c61c6febed3c3153a39feeae07d86527338
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f3064b3eb5f29e2b2d1ff8516dce97bbb3fb8062
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078187"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166268"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 

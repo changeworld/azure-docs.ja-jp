@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74ec404b1e116c3d52469f154309b41fd37dbc38
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4714a4ee5f90194a3be47b1e5878dfa8e230f42b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173489"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。

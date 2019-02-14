@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 7585950da518072abc7202e0139d2d36b6695a83
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d08b1f3889136fadee68b3aa95d879b0495bddb1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151041"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル:Azure Active Directory と Yonyx Interactive Guides の統合
 
@@ -165,7 +166,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-yonyx-interactive-guides-test-user"></a>Yonyx Interactive Guides テスト ユーザーの作成
 

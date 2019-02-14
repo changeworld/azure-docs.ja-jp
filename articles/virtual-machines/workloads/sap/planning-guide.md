@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f336f6fdb5cde638fe62d1410a9f993492be21ed
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747562"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118294"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -961,7 +961,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
 * *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
-* (省略可能) *az disk create* を使用して VHD から管理ディスクを作成 - https://docs.microsoft.com/cli/azure/disk#az_disk_create を参照
+* (省略可能) *az disk create* を使用して VHD から管理ディスクを作成 - https://docs.microsoft.com/cli/azure/disk を参照
 * *az vm create* とパラメーター *--attach-os-disk* を使用して、アップロードした VHD または管理ディスクを OS ディスクとして指定して新しい VM を作成する
 * *az vm disk attach* とパラメーター *--new* を使用してデータ ディスクを新しい VM に追加する
 
@@ -990,7 +990,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
 * *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
-* (省略可能) *az image create* を使用して VHD から管理ディスク イメージを作成する - https://docs.microsoft.com/cli/azure/image#az_image_create を参照
+* (省略可能) *az image create* を使用して VHD から管理ディスク イメージを作成する - https://docs.microsoft.com/cli/azure/image を参照
 * *az vm create* とパラメーター *--image* を使用して、アップロードした VHD または管理ディスク イメージを OS ディスクとして指定して新しい VM を作成する
 
 **テンプレート**

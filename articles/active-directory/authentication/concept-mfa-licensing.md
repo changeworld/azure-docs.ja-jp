@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 790b2dc5743b392d884390d364770363bb0c7f97
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074447"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217464"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 

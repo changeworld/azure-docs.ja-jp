@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 94bd0367b8626a83fd10fc51d8b606ab38f6182c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 10185f21ea396cc90e165a5132c33a0d7e695058
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178071"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル:Azure Active Directory と HappyFox の統合
 
@@ -184,7 +185,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-happyfox-test-user"></a>HappyFox テスト ユーザーを作成する
 

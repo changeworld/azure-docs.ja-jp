@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: e48c32d93da6cc84e35f2b2952827a5d06a5b319
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1fee91b857d9fd127839baaf7a70199c25cfab33
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149736"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル:Azure Active Directory と SumoLogic の統合
 
@@ -162,7 +163,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[発行者]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
-    d. **[Authn Request URL]\(認証要求 URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Authn Request URL]\(認証要求 URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
 
@@ -205,7 +206,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sumologic-test-user"></a>SumoLogic テスト ユーザーの作成
 
@@ -235,7 +236,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
   
     c. **[Status]** として、**[Active]** を選択します。
   
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 >[!NOTE]
 >SumoLogic から提供されている他の SumoLogic ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 

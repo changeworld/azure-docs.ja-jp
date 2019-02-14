@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
-ms.openlocfilehash: 8274909b40d872309230f9c9f6c045b4283fd6eb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2aa25d2e0fe4700eab69d383d1ec8b57fca86bd4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752332"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201552"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 

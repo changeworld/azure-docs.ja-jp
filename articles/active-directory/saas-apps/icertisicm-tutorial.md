@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: c68a5e054167635059b869ace10e8f62ec1bd65b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e5d83ab0c14da772551a8f33704e0e776be5ebb6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190855"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル:Azure Active Directory と Icertis Contract Management Platform の統合
 
@@ -166,7 +167,7 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-icertis-contract-management-platform-test-user"></a>Icertis Contract Management Platform テスト ユーザーの作成
 

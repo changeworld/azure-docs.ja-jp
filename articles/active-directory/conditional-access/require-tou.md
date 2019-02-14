@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 419368511065e6f45d7fb9b363f5806b47ce07e8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bea60b0de0cf21c1d23669543f3c1daa367aea7c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076188"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197936"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する 
 
@@ -100,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. 使用条件 PDF ファイルをアップロードします。
 
-    d. **[言語]** で **[英語]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[言語]** で **[英語]** を選択します。
 
     e. **[ユーザーは使用条件を展開する必要があります]** で、**[オン]** を選択します。
 
@@ -151,7 +152,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Isabella Simonsen]** を選択し、**[選択]** をクリックします。
 
-    d. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
 
 4. **[クラウド アプリ]** をクリックします。
 
@@ -167,7 +168,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
 
-    d. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[クラウド アプリ]** ページで、**[完了]** をクリックします。
 
 
 6. **[アクセス制御]** セクションで、**[許可]** をクリックします。
@@ -230,7 +231,7 @@ What If ポリシー評価ツールを初期化するには、次のように設
 
     c. **[選択]** をクリックします。
 
-    d. **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
 
     e. [クラウド アプリ] ページで、**[完了]** をクリックします。
 

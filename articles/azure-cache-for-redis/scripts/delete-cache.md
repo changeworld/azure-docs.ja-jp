@@ -1,26 +1,26 @@
 ---
 title: Azure CLI のサンプル スクリプト - Azure Cache for Redis を削除する | Microsoft Docs
 description: Azure CLI のサンプル スクリプト - Azure Cache for Redis を削除する
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 tags: azure-service-management
 ms.assetid: 7beded7a-d2c9-43a6-b3b4-b8079c11de4a
-ms.service: cache-redis
+ms.service: cache
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
-ms.author: wesmc
-ms.openlocfilehash: 4a7b239010d57e3f352ee29afe267273391ffbcd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: yegu
+ms.openlocfilehash: d02d3196c2cbc130a2e88061df514b0bf681b1bf
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461826"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238013"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Azure Cache for Redis を削除する
 
@@ -38,7 +38,7 @@ ms.locfileid: "54461826"
 
 このスクリプトでは、次のコマンドを使用して Azure Cache for Redis インスタンスを削除します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az redis delete](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスを削除する |
 

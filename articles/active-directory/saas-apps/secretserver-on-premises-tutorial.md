@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 447307c0c27fda9e7719e74e529f21d767c9f58d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152367"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル:Azure Active Directory と Secret Server (On-Premises) の統合
 
@@ -172,7 +173,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Secret Server (On-Premises) テスト ユーザーを作成する
 

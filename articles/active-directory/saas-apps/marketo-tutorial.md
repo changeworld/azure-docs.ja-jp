@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: dbdf66c71bf007b27751191d3818f8002a8c2614
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: abab9f6e38fcf69dcb04bfea0f84d883dc5267b7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172563"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル:Marketo と Azure Active Directory の統合
 
@@ -143,7 +144,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_11.png)
    
-    d. 画面に表示される Munchkin ID をコピーし、Azure AD の構成ウィザードで、応答 URL を完了します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 画面に表示される Munchkin ID をコピーし、Azure AD の構成ウィザードで、応答 URL を完了します。
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_12.png) 
 
@@ -159,7 +160,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_07.png) 
    
-    d. SAML 設定を有効にするには、**[編集]** ボタンをクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 SAML 設定を有効にするには、**[編集]** ボタンをクリックします。
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_08.png) 
    
@@ -200,7 +201,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_13.png)
    
-    d. **[SSO 必須]** オプションをオンにして、設定を**保存**します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO 必須]** オプションをオンにして、設定を**保存**します。
    
     ![Configure single sign-on](./media/marketo-tutorial/tutorial_marketo_14.png)
 
@@ -237,7 +238,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-marketo-test-user"></a>Marketo テスト ユーザーの作成
 
@@ -267,7 +268,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     c. テキスト ボックスに **[姓]** を入力します。
    
-    d. **[次へ]** をクリックします
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします
 
 1. **[アクセス許可]** タブで **[userRoles]** を選択して **[次へ]** をクリックします。
    

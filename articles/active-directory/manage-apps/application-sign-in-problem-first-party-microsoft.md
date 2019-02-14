@@ -3,8 +3,8 @@ title: Microsoft アプリケーションへのサインインに関する問題
 description: Azure AD を使用したファースト パーティの Microsoft アプリケーション (Office 365 など) にサインインする際に直面する一般的な問題をトラブルシューティングする
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3bc5143803c7d031071cccbb9c6c3842bbdacd9c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822767"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177191"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
@@ -204,7 +205,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 9.  ユーザーの一覧からユーザーを選択し、多要素認証を必要に応じて**有効**、**無効**、または**適用**します。
 
-  * **メモ**:ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
+  * **メモ**:ユーザーが適用状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
 
 ### <a name="check-a-users-authentication-contact-info"></a>ユーザーの認証の連絡先情報を確認する
 

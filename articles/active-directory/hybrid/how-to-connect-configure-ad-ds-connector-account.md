@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756286"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189050"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 

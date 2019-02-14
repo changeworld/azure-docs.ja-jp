@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1a36cca9c0735d32ef56bfefca6c1f8f278f8e11
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492506"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200362"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要

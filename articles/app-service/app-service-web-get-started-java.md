@@ -4,7 +4,7 @@ description: 基本の Java アプリをデプロイして、App Service で Web
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: mbaldwin
+manager: routlaw
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 45ee4a5310df699e37258996e654c87c88081266
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9044890c1bb4a662adecec0e94a220897af54557
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605145"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115115"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 

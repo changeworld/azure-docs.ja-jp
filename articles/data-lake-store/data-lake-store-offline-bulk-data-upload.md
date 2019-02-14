@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 98cad0873c4ba687948dc404abc19655319bdc36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104459"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232269"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Azure Data Lake Storage Gen1 へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
@@ -190,21 +190,24 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Storage Gen1 へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内でデータ ファイルを再構築する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Storage Gen1 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
 
 ```
 # Login to our account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List your subscriptions
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Switch to the subscription you want to work with
-Set-AzureRmContext -SubscriptionId
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+Set-AzContext -SubscriptionId
+Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
 ## <a name="next-steps"></a>次の手順

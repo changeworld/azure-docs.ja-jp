@@ -15,12 +15,13 @@ ms.subservice: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: a7d5f6c478776a58c9a4f9d92c5c5999addcca5d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 63acf3a91e7e121a807a44bed8506d05e71899d2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154222"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175185"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 

@@ -15,12 +15,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6c68070a9b94cf867f8c1c930874a5f02a685294
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 602fba95b3cc69521fe3fe17d8c89cc332131566
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096740"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190230"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする
 

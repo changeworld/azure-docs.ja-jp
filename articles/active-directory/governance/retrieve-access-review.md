@@ -15,12 +15,13 @@ ms.subservice: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ac90025ff617323e79fef21b286f8f612f55ce84
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173498"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210800"
 ---
 # <a name="retrieve-access-review-results"></a>アクセス レビュー結果の取得
 

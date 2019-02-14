@@ -13,12 +13,13 @@ ms.workload: identity
 ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.openlocfilehash: 4d84ff6a07c6536215a43a83cb614e0662c8cfb3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b98f7a11e37cd75a21ecc8c2b9dda1ecd634f39b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508269"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191930"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 

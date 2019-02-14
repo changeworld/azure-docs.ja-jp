@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 637988179228fbf0a6000de74a1185af98277e3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178955"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル:Azure Active Directory と Peakon の統合
 
@@ -165,7 +166,7 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Choose a File]\(ファイルの選択\)** を選択して、Azure portal からダウンロードした証明書を [Certificate]\(証明書\) ボックスにアップロードします。
 
-    d.  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
 
     e.  **アイコン** をクリックして **[Reply URL (ACS)]\(応答 URL (ACS)\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[応答 URL]** ボックスに貼り付けます。
 
@@ -194,7 +195,7 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-peakon-test-user"></a>Peakon テスト ユーザーの作成
 

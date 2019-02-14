@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 43ce034f2960f31d614636c77e8f30f05e8aa41e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9905e3d8b2e0760fca82e9d2c0bfb0164d8fc9fa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507106"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210426"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 

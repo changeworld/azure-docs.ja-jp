@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 5bbaa90554e09d27a3c521d4a13eda44021721c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9637212d97438d58a003ecf8d840ed887c7f5e35
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176898"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル:Azure Active Directory と Mozy Enterprise の統合
 
@@ -145,7 +146,7 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
    
    c. **[SAML 認証]** タブをクリックします。
    
-   d. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[認証 URL]** ボックスに貼り付けます。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[認証 URL]** ボックスに貼り付けます。
    
    e. Azure Portal からコピーした **SAML エンティティ ID** を **[SAML エンドポイント]** ボックスに貼り付けます。
    
@@ -188,7 +189,7 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-mozy-enterprise-test-user"></a>Mozy Enterprise テスト ユーザーの作成
 
@@ -218,7 +219,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
    
    c. **[User Name (ユーザー名)]** ボックスに、Azure AD ユーザーの名前を入力します。
    
-   d. **[Email (メール)]** ボックスに、Azure AD ユーザーのメール アドレスを入力します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email (メール)]** ボックスに、Azure AD ユーザーのメール アドレスを入力します。
    
    e. **[Send user instruction email (ユーザーに指示メールを送信する)]** を選択します。
    

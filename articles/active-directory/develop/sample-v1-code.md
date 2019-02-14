@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c6cf9681804f9576d6c13a52161843d64244b1e8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a05b1885871c83da79839448fce2814016f0c082
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097692"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194565"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 

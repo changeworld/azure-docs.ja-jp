@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245152"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176352"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Azure Stack ストレージ容量の計画
 次のセクションでは、ソリューションのストレージ ニーズに合わせて計画する場合に役立つ Azure Stack ストレージ容量の計画に関する情報を提供します。
@@ -48,9 +48,6 @@ Azure Stack のハイパーコンバージド構成では、物理ストレー�
 - 各 ReFS ファイル システムでは、保存データの暗号化のために BitLocker が有効になります。 
 
 自動的に作成される仮想ディスクとその容量は次のとおりです。
-
-
-
 
 |Name|容量の計算|説明|
 |-----|-----|-----|

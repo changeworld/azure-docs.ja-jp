@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e3fdd99066f8e46c8f209b0a5947d999ff246a10
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4eee19a13a7a518087a77ed49fbb533ce47f03c8
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811547"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238081"
 documentType: LandingData
 title: Azure SQL Database - サービスとしてのプラットフォーム
 metadata:
@@ -12,6 +12,7 @@ metadata:
   title: Azure SQL Database - サービスとしてのプラットフォーム
   meta.description: Learn about the PaaS capabilities of Azure SQL Database.
   services: sql-database
+  ms.subservice: service
   author: jovanpop-msft
   manager: craigg
   requires-business-manager-approval: false

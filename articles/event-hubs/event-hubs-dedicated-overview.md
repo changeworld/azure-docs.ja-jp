@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402338"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237129"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -28,17 +28,17 @@ ms.locfileid: "54402338"
 
 次の表では、Event Hubs で提供されるサービス レベルを比較しています。 Standard のほとんどの機能が従量課金であるのに対し、Event Hubs Dedicated プランは月額固定価格となっています。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量で提供されます。 
 
-| 機能 | 標準 | 専用 |
+| 機能 | Standard | 専用 |
 | --- |:---:|:---:|:---:|
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | スループット単位 (1 MB/秒イングレス、2 MB/秒エグレス) | 1 時間ごとの課金 | あり |
 | メッセージ サイズ | 1 MB | 1 MB |
-| パブリッシャー ポリシー | [はい] | [はい] |   
+| パブリッシャー ポリシー | はい | はい |   
 | コンシューマー グループ | 20 | 20 |
-| メッセージ リプレイ | [はい] | [はい] |
+| メッセージ リプレイ | はい | はい |
 | 最大スループット ユニット | 20 (～ 100)   | 1 容量ユニット (CU) ≈ 50 |
 | 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
-| 追加の仲介型接続 | [はい] | [はい] |
+| 追加の仲介型接続 | はい | はい |
 | メッセージのリテンション期間 | 1 日分が含まれます | 最大 7 日分が含まれます |
 | キャプチャ | 1 時間ごとの課金 | あり |
 

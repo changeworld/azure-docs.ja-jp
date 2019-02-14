@@ -16,12 +16,13 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663640"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217355"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 

@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 653b9aa0d6083436a394cf886f8c7d8d1ed2e2ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e62e5a1df2b5ad3099d2ef7e5dc33b0d11683988
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465522"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245934"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio の実験を作成する
 
-機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
+機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.azure.ai/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
 
 ギャラリーには、Microsoft Azure Machine Learning チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "55465522"
 
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Azure AI ギャラリーでコピーする実験を探す
-どのような実験を利用できるかを確認するには、 [ギャラリー](https://gallery.cortanaintelligence.com/) に移動して、ページの上部の **[Experiments (実験)]** をクリックします。
+どのような実験を利用できるかを確認するには、 [ギャラリー](https://gallery.azure.ai/) に移動して、ページの上部の **[Experiments (実験)]** をクリックします。
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>最も新しい実験または最も人気のある実験を探す
 このページでは、**最近追加された**実験を確認できます。そのほか、**人気のある実験**や、**人気のある Microsoft の実験の最新**バージョンまで下へスクロールして確認することができます。

@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f1aa037afd0fa1cbe37add24a354e4dc62c13b9a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/12/2018
+ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310132"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755154"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
+
 これは Azure SQL DB に接続を試みる C および C++ の開発者向けの投稿です。 セクションに分かれているため、興味のあるセクションから読み進めてください。
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>C/C++ チュートリアルの前提条件
+
 以下のものがそろっていることを確認してください。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -32,13 +34,13 @@ ms.locfileid: "53310132"
 ## <a id="AzureSQL"></a>Azure SQL Database と仮想マシン上の SQL Server
 Azure SQL は Microsoft SQL Server 上に構築されており、高可用性、パフォーマンス、拡張性の高いサービスを提供できます。 オンプレミスで実行されている専用のデータベースでの SQL Azure の使用は、多くのメリットがあります。 SQL Azure があれば、データベースのインストール、設定、メンテナンス、管理は必要なく、必要なのはコンテンツとデータベースの構造のみになります。 通常、データベースについて懸案されるフォールト トレランスや冗長性といった機能は、すべて組み込み済みです。
 
-現在、Azure には、SQL サーバー ワークロードをホストする機能として、サービスとしてのデータベースである Azure SQL Database と、仮想マシン (VM) 上の SQL サーバーの2つのオプションがあります。 これら 2 つの違いについて細かくは見ていきませんが、クラウド サービスで提供するコスト削減とパフォーマンスの最適化を利用できる、新しいクラウド ベースのアプリケーションには Azure SQL Database が最適です。 オンプレミス アプリケーションのクラウドへの移行または拡張を検討している場合は、Azure 仮想マシン上の SQL サーバーがお勧めです。 記事の内容をわかりやすくするために、Azure SQL Database を作成しましょう。
+現在、Azure には、SQL Server ワークロードをホストするためのオプションが 2 つあります。サービスとしてのデータベースである Azure SQL Database と仮想マシン (VM) 上の SQL Server です。 これら 2 つの違いについて細かくは見ていきませんが、クラウド サービスで提供するコスト削減とパフォーマンスの最適化を利用できる、新しいクラウド ベースのアプリケーションには Azure SQL Database が最適です。 オンプレミス アプリケーションのクラウドへの移行または拡張を検討している場合は、Azure 仮想マシン上の SQL サーバーがお勧めです。 記事の内容をわかりやすくするために、Azure SQL Database を作成しましょう。
 
-## <a id="ODBC"></a>データ アクセス テクノロジ: ODBC および OLE DB
-Azure SQL DB に接続することに違いはありませんが、現在、データベースへの接続方法として、ODBC (Open Database connectivity) と OLE DB (オブジェクトのリンクと埋め込みデータベース) の 2 つがあります。 近年、Microsoft は、[ネイティブのリレーショナル データベースにおいて ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/)と連携してきました。 ODBC は比較的シンプルであり、OLE DB よりも動作が速くなります。 ただし、ODBC は以前の C スタイルの API を使用しているという点で注意が必要です。
+## <a id="ODBC"></a>データ アクセス テクノロジ:ODBC および OLE DB
+Azure SQL DB への接続も変わりはなく、現在、データベースに接続するには次の 2 つの方法があります。ODBC (Open Database Connectivity) と OLE DB (Object Linking and Embedding Database)。 近年、Microsoft は、[ネイティブのリレーショナル データベースにおいて ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/)と連携してきました。 ODBC は比較的シンプルであり、OLE DB よりも動作が速くなります。 ただし、ODBC は以前の C スタイルの API を使用しているという点で注意が必要です。
 
 ## <a id="Create"></a>手順 1:Azure SQL Database を作成する
-「 [作業の開始](sql-database-get-started-portal.md) 」ページで、サンプル データベースを作成する方法についてご確認ください。  または、こちらの[ 2 分ほどの短い動画](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)に従えば、Azure Portal を使用して Azure SQL Database を作成できます。
+「 [作業の開始](sql-database-single-database-get-started.md) 」ページで、サンプル データベースを作成する方法についてご確認ください。  または、こちらの[ 2 分ほどの短い動画](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)に従えば、Azure Portal を使用して Azure SQL Database を作成できます。
 
 ## <a id="ConnectionString"></a>手順 2:接続文字列を取得する
 Azure SQL Database がプロビジョニングされたら、次の手順に従って接続情報を指定し、ファイアウォール アクセスのクライアント IP アドレスを追加する必要があります。

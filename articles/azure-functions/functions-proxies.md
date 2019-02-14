@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766216"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895620"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -94,7 +94,7 @@ ms.locfileid: "55766216"
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
-[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
+[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
 たとえば、*https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 

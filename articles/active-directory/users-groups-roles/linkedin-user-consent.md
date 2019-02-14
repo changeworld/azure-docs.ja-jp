@@ -12,12 +12,13 @@ ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: ab0663ef40c61a4d8aced9050c8147b1ec4d81b0
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e96c7da9ac53927ed48003370f40f5861f48d3d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506501"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204775"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn 統合のデータ共有と同意
 

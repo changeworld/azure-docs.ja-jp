@@ -4,7 +4,7 @@ description: この記事では、Azure Security Center でセキュリティ �
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095560"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114962"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 

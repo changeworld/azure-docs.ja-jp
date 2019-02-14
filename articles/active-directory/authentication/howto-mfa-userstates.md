@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f85ce3424598044292de3b2b5cb073cc3c510225
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dbfffa94c76de2c7c4e9f4f2e67c9744e52f22c7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077167"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194191"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 

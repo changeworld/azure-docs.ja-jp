@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: caca01411b5bd5f41a35dd99b36b21accba47e5c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0d8183f7fa55a410b44d33295ad24f0f07adb145
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078000"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185929"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 

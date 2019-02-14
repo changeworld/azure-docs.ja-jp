@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0894b1ccf976cfa1a932b76f6ed06e1bd45ee1b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180910"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>チュートリアル:Azure Active Directory と Wdesk の統合
 
@@ -157,7 +158,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
        
       c. **[Consumer url]\(コンシューマー URL\)** をコピーし、Azure Portal の **[応答 URL]** ボックスに貼り付けます。
    
-      d. Azure Portal の **[保存]** をクリックして、変更を保存します。      
+      d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal の **[保存]** をクリックして、変更を保存します。      
 
 1. **[Configure IdP Settings]\(IdP の設定の構成\)** をクリックして、**[Edit IdP Settings]\(IdP の設定の編集\)** ダイアログを開きます。 **[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal から保存した **Metadata.xml** ファイルを選択して、アップロードします。
     
@@ -199,7 +200,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-wdesk-test-user"></a>Wdesk テスト ユーザーの作成
 

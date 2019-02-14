@@ -1,25 +1,25 @@
 ---
 title: Cache の ASP.NET セッション状態プロバイダー | Microsoft Docs
 description: Azure Cache for Redis を使用して ASP.NET セッション状態を格納する方法を説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: tysonn
 ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/01/2017
-ms.author: wesmc
-ms.openlocfilehash: a7f3e23cd74baa2e1fdef178be8c5b213a3905ef
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 3b10a471aafc4799fde8cb2e42b7c21c8d1eb9c4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232068"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 Azure Cache for Redis には、セッション状態プロバイダーが用意されています。セッション状態プロバイダーを使用すると、セッション状態を SQL Server データベースにではなく Azure Cache for Redis でメモリ内に格納することができます。 キャッシュ セッション状態プロバイダーを使用するには、まず対象のキャッシュを構成し、Azure Cache for Redis Session State NuGet パッケージを使用して、キャッシュに必要な構成を ASP.NET アプリケーションに対して行います。

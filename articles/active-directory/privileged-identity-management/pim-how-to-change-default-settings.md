@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 28958627ee66d0586fabff30aa3e5d041fb7dd80
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162545"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>PIM で Azure AD ディレクトリ ロールの設定を構成する
 

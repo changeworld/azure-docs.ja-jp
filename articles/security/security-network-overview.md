@@ -4,7 +4,7 @@ description: この記事では、ネットワーク セキュリティの中核
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: bedf411a-0781-47b9-9742-d524cf3dbfc1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 66243574a259f15f58f3b215e716d24dc6fa6e6d
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 30a7eea751a9fbfa0ee95a7edb039a13860be7f8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115472"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 

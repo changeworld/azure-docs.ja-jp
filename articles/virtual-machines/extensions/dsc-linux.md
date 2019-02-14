@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 34b70b1a6a77a20a034a7822d9c4961c36cdd51c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 2e30f3bb40e23e5b0b1951759bdff3a9f02cc9d5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663963"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236065"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
-
-## <a name="overview"></a>概要
 
 Desired State Configuration (DSC) は、コードで構成を行って IT および開発インフラストラクチャを管理できる管理プラットフォームです。
 
@@ -36,11 +34,13 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
+DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
 
 | ディストリビューション | Version |
 |---|---|
@@ -366,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 Azure アカウント (Azure Resource Manager モード) にログインするには、次を実行します。
 
 ```powershell>
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 Azure Resource Manager で Azure PowerShell を使用する方法について詳しく確認するには、[**こちら**](../../azure-resource-manager/powershell-azure-resource-manager.md)をクリックしてください。
@@ -398,7 +398,7 @@ $publicConfig = '{
 ```
 
 ```
-Set-AzureRmVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
+Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```

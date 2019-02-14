@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 7f94921126900c8e124cd41bd2e4f913b28396a2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 61603ad5920b6242c3e36429173744125b9eb59e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153676"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>チュートリアル:Azure Active Directory と Palo Alto Networks - Aperture の統合
 
@@ -154,7 +155,7 @@ Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構
 
     c. **[ファイルの選択]** をクリックして、Azure AD からダウンロードした証明書を **[ID プロバイダー証明書]** フィールドにアップロードします。
 
-    d. **[ID プロバイダー SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ID プロバイダー SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Aperture 情報]** セクションで IdP 情報を確認し、**[Aperture キー]** フィールドから証明書をダウンロードします。
 
@@ -193,7 +194,7 @@ Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-palo-alto-networks---aperture-test-user"></a>Palo Alto Networks - Aperture テスト ユーザーの作成
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: bfba86ba453c40a7612c28aa2f84365f03b9e3a6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c507635894ab7712fe61a97b666daebb23f61c8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル:Azure Active Directory と SmarterU の統合
 
@@ -138,7 +139,7 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
   
       c. **[User Default Login]** セクションで、**[SmarterU]** タブを選択します。
   
-      d. **[Enable SAML]** を選択します。
+      d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Enable SAML]** を選択します。
   
       e. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[IdP Metadata]\(IdP メタデータ\)** テキスト ボックスに貼り付けます。
       
@@ -179,7 +180,7 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-smarteru-test-user"></a>SmarterU テスト ユーザーの作成
 
@@ -203,7 +204,7 @@ SmarterU の場合、プロビジョニングは手動で行います。
     
     c. **[Active]** をクリックします。 
     
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 >[!NOTE]
 >SmarterU から提供されている他の SmarterU ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: c7291af37e0691c22d93ac84e66fabba91890726
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186809"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184314"
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 

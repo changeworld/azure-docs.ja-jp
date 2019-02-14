@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022480"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233016"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,6 @@ ms.locfileid: "54022480"
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Salesforce コネクタ](../connector-salesforce.md)に関するページを参照してください。
-
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する表のシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -51,19 +50,19 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Salesforce からデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Salesforce からデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: Salesforce から Azure BLOB にデータをコピーする](#json-example-copy-data-from-salesforce-to-azure-blob)」のセクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Salesforce からデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: Salesforce から Azure BLOB にデータをコピーする](#json-example-copy-data-from-salesforce-to-azure-blob)」のセクションを参照してください。
 
-次のセクションでは、Salesforce に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+次のセクションでは、Salesforce に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Salesforce のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -99,7 +98,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 (例: `select * from MyTable__c`)。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
@@ -125,7 +124,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 * 既存および削除済みを含むすべてのレコードを検索するには、"select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**" と指定します。
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON の使用例:Salesforce から Azure BLOB にデータをコピーする
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Salesforce から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
+次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Salesforce から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 このシナリオの実現にあたって作成する必要のある Data Factory のアーティファクトは次のとおりです。 これらの手順については、箇条書きの後に続く各セクションで詳しく説明します。
 
@@ -137,7 +136,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 
 **Salesforce のリンクされたサービス**
 
-この例では、 **Salesforce** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Salesforce のリンクされたサービス](#linked-service-properties) に関するセクションをご覧ください。  セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。
+この例では、 **Salesforce** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Salesforce のリンクされたサービス](#linked-service-properties) に関するセクションをご覧ください。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。
 
 ```json
 {
@@ -160,10 +159,10 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
-    "typeProperties": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-    }
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+        }
     }
 }
 ```
@@ -176,7 +175,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
         "linkedServiceName": "SalesforceLinkedService",
         "type": "RelationalTable",
         "typeProperties": {
-            "tableName": "AllDataType__c"  
+            "tableName": "AllDataType__c"
         },
         "availability": {
             "frequency": "Hour",
@@ -232,13 +231,13 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 RelationalSource でサポートされるプロパティの一覧については、「 [RelationalSource type プロパティ](#copy-activity-properties) 」をご覧ください。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "SalesforceToAzureBlob",
             "description": "Copy from Salesforce to an Azure blob",
@@ -256,7 +255,7 @@ RelationalSource でサポートされるプロパティの一覧については
             "typeProperties": {
                 "source": {
                     "type": "RelationalSource",
-                    "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"                
+                    "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"
                 },
                 "sink": {
                     "type": "BlobSink"
@@ -289,8 +288,8 @@ RelationalSource でサポートされるプロパティの一覧については
 | オート ナンバー |String |
 | チェックボックス |Boolean |
 | 通貨 |Decimal |
-| 日付 |Datetime |
-| 日付/時刻 |Datetime |
+| Date |DateTime |
+| 日付/時刻 |DateTime |
 | 電子メール |String |
 | Id |String |
 | 参照リレーションシップ |String |

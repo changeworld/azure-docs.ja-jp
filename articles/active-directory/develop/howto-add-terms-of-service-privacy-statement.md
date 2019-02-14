@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 3e3dc6dd00d03f8154d9281424c98cff90a8ebd8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193511"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>登録済み Azure Active Directory アプリのサービス利用規約とプライバシーに関する声明
 

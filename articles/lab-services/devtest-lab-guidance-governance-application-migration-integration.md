@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 4bab3413b3e3cfcf1972b6cf721120d95851f7cd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: c57385bc398544e786aec77dae9886784e3a0b3c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498201"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243622"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -72,7 +73,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>質問
 開発用とテスト用の仮想マシンがパブリック インターネットに接続できないようにするにはどうすればよいですか。 ネットワーク構成の設定に推奨されるパターンはありますか。
 
-### <a name="answer"></a>回答
+### <a name="answer"></a>Answer
 はい。 受信トラフィックと送信トラフィックの 2 つの側面を考慮する必要があります。
 
 **受信トラフィック** – 仮想マシンがパブリック IP アドレスを持っていない場合、その仮想マシンにはインターネットから到達できません。 ユーザーがパブリック IP アドレスを作成できないように、サブスクリプション レベルのポリシーを設定するのが、一般的なアプローチです。
@@ -89,7 +90,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>質問
 どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 
-### <a name="answer"></a>回答
+### <a name="answer"></a>Answer
 VM で既存のインフラストラクチャとやりとりする必要がある場合は、DevTest Labs 環境内の既存の仮想ネットワークの使用を検討する必要があります。 さらに、ExpressRoute を使用する場合は、サブスクリプションで割り当てられている IP アドレス空間がフラグメント化しないように、VNet/サブネットの量を最小限に抑えることが必要な場合があります。 また、ここでは VNET ピアリング パターンの使用も考慮する必要があります (ハブ - スポーク モデル)。 この方法では、特定のリージョン内のサブスクリプション間で VNET/サブネット通信できますが、リージョンをまただピアリングは将来の Azure ネットワークで可能になります。
 
 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 ただし、サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-subscription-service-limits.md)があることに注意してください。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。

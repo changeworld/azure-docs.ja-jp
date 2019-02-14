@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 74242d5e539824b913a68a7a1116b16565fd1253
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 25711bd09adf17fa82f9177f4badad723e590b12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170118"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル:Azure Active Directory と iQualify LMS の統合
 
@@ -158,7 +159,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
     e. 表の次の行についても "a" ～ "d" の手順を繰り返します。 
 
@@ -200,7 +201,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     
     c. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、**[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
     
-    d. **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
     
     e. **[保存]** をクリックします。
 
@@ -239,7 +240,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-iqualify-lms-test-user"></a>IQualify LMS テスト ユーザーを作成する
 

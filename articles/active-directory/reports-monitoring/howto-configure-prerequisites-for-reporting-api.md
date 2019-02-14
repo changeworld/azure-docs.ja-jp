@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae2ed2ed2f82b3f01643db7603961c83f1723ed1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d8ba7dfcb9eb6f2f90d7f1ae7e41518f0816d8f0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154968"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180251"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -81,7 +82,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     c. **[サインオン URL]** ボックスに、「`https://localhost`」と入力します。
 
-    d. **作成**を選択します。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。 
 
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する 
@@ -212,7 +213,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     c. **[Save]** をクリックします。
 
-    d. キー値をコピーします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 キー値をコピーします。
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>レポート API でのエラーのトラブルシューティング
 

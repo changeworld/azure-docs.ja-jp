@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88c7a5c8f0a5e17d3b96c6176135bc8167d87ba6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50b223e428c8f0b1f0c26e7c73e79a503a7c0121
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092299"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211055"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 

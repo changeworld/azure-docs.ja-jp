@@ -10,31 +10,33 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295578"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242898"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>ダウンロード可能なインフォグラフィック:機械学習の基礎とアルゴリズムの使用例
+
 機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。 機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Machine Learning Studio でよく使用されるアルゴリズム
-[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析の多様なアルゴリズムのライブラリが用意されています。 このインフォグラフィックは、回帰、異常検出、クラスタリング、分類という、よく使用される 4 つのアルゴリズム ファミリを明らかにして、[Azure AI Gallery](https://gallery.cortanaintelligence.com/) の実行例へのリンクを提供しています。 ギャラリーには、実際の多くのソリューションでこれらのアルゴリズムをどのように適用できるかを示す実行例とチュートリアルが用意されています。
+
+[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析の多様なアルゴリズムのライブラリが用意されています。 このインフォグラフィックは、回帰、異常検出、クラスタリング、分類という、よく使用される 4 つのアルゴリズム ファミリを明らかにして、[Azure AI Gallery](https://gallery.azure.ai/) の実行例へのリンクを提供しています。 ギャラリーには、実際の多くのソリューションでこれらのアルゴリズムをどのように適用できるかを示す実行例とチュートリアルが用意されています。
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>インフォグラフィックとアルゴリズムの例をダウンロードする
+
 **ダウンロード[:機械学習の基礎に関するインフォグラフィックとアルゴリズム使用例へのリンク (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![インフォグラフィック:機械学習の基礎とアルゴリズムの使用例。 Popular algorithms. Machine learning for beginners.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>アルゴリズムの初級ユーザーと上級ユーザーのための追加情報
+
 * 機械学習の各種アルゴリズムの詳細とその使用方法、問題解決に適したアルゴリズムの選択方法については、「 [Microsoft Azure Machine Learning のアルゴリズムを選択する方法](algorithm-choice.md)」を参照してください。
 * Machine Learning Studio で使用できる機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページをご覧ください。
 * Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」をご覧ください。
-* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
 * Azure AI Gallery とそこで利用できる、コミュニティで生成された多くのリソースの概要については、「[Azure AI ギャラリーでリソースなどを共有し、発見する](gallery-how-to-use-contribute-publish.md)」をご覧ください。
-
 
 
 <!-- Module References -->

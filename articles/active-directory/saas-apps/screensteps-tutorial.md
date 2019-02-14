@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 820446ba30e8743bc80b46fbebf60408c21ea43d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 07abc79979bcb557b6513ff16472ff5c95d0e12f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164726"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル:Azure Active Directory と ScreenSteps の統合
 
@@ -165,7 +166,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     
     c. Azure Portal からコピーした **サインアウト URL** を **[Logout URL]\(ログアウト URL\)** ボックスに貼り付けます。
     
-    d. **[グループ]** を選択し、プロビジョニングされたときにユーザーを割り当てます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[グループ]** を選択し、プロビジョニングされたときにユーザーを割り当てます。
     
     e. **[Update]** をクリックします。
 
@@ -209,7 +210,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-screensteps-test-user"></a>ScreenSteps テスト ユーザーの作成
 
