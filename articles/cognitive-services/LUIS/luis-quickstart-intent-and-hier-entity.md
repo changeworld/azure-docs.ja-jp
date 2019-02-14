@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: コンテキストに基づいて関連するデータを検索します。 たとえば、あるビルやオフィスから別のビルやオフィスへの物理的な移動の出発地と到着地が関連します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: dc8b9831b89aade7ca5dfd3e1f53b9dccc15e66b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dea623684454d4b14a370251df10599eb03bbb34
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856922"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 2235c281b5b25390838a8f201481cfbdc9e5c223
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478978"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891983"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service と Terraform を使用して Application Gateway のイングレス コントローラーを備えた Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) では、ホストされている Kubernetes 環境を管理します。 AKS では、コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションを迅速かつ簡単にデプロイして管理できます。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
@@ -35,7 +35,7 @@ ms.locfileid: "55478978"
 
 - **Terraform の構成**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
-- **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、および password の値を書き留めます。
+- **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、および password の値を書き留めます。
     - 次のコマンドを実行して、サービス プリンシパルのオブジェクト ID をメモします
 
     ```bash
@@ -328,7 +328,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       tags = "${var.tags}"
     }
     ```
-    d. Application Gateway のリソースを作成します
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Application Gateway のリソースを作成します
     ```JSON
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
@@ -617,7 +617,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform plan" の結果例](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「[Cloud Shell タイムアウトから復旧する](#recover-from-a-dloud-shell-timeout)」セクションの手順に従ってチュートリアルを完了できます。
+1. `terraform apply` コマンドを実行して、プランを適用し、Kubernetes クラスターを作成します。 Kubernetes クラスターを作成するプロセスに数分間かかり、Cloud Shell セッションがタイムアウトになる場合があります。Cloud Shell セッションがタイムアウトした場合は、「Cloud Shell タイムアウトから復旧する」セクションの手順に従ってチュートリアルを完了できます。
 
     ```bash
     terraform apply out.plan

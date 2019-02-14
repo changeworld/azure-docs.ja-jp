@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で REST を使用して Computer Vision API を呼び出す方法について説明します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4cca3db778347e9bd8c8b881d85f0882f6b90f72
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: abbdda96acabb44a225ce16b4750726d37ff86b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216253"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882864"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 

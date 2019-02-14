@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: d859d2815f47d753c56002a9484f97149e71f1e4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a61e2a1c1457e0f64f4d1e1b11b98c26827481a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159250"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854882"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-java"></a>Bing Spell Check API のクイック スタート (Java) 
 

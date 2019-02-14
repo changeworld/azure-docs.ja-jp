@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 単一ページの Web アプリで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: ccc94f5fa44cc177db62af3d7318a8f3071e9098
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: eb1784374914846229b18fd6ee92068b4e8a7589
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858759"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 

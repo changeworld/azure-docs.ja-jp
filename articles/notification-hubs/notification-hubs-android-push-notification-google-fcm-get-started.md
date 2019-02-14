@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: 9467197715d79527699eac0acf9c23f204b0e639
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814901"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959838"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -91,14 +91,14 @@ ms.locfileid: "55814901"
 
 1. **[app (アプリ)]** の `Build.Gradle` ファイルの **dependencies** セクションに次の行を追加します。
 
-    ```text
+    ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. **[dependencies]** セクションの後に次のリポジトリを追加します。
 
-    ```text
+    ```gradle
     repositories {
         maven {
             url "http://dl.bintray.com/microsoftazuremobile/SDK"
@@ -110,13 +110,13 @@ ms.locfileid: "55814901"
 
 1. **アプリ**の `Build.Gradle` ファイルで、**dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
 
-    ```text
+    ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.0'
     ```
 
 2. ファイルの最後に次のプラグインを追加します (まだ存在しない場合)。 
 
-    ```text
+    ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e7d271ce37209a49e1c75d6114ed07b11558df44
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486811"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104994"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -48,6 +48,9 @@ Azure では当初、クラシック デプロイ モデルのみ用意されて
 Resource Manager が追加されたとき、すべてのリソースが遡及的に既定のリソース グループに追加されました。 今、従来のデプロイでリソースを作成すると、デプロイ時にリソース グループを指定していなくても、リソースはそのサービスの既定のリソース グループ内に自動的に作成されます。 ただし、リソース グループ内に存在するだけでは、リソースが Resource Manager モデルに変換されたことになりません。
 
 ## <a name="understand-support-for-the-models"></a>モデルのサポートについて
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次の 3 種類のシナリオに注意してください。
 
 1. Cloud Services では、Resource Manager デプロイ モデルはサポートされていません。

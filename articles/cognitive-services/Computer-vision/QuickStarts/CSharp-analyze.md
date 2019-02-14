@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# と Computer Vision API を使用してローカル画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4de419abfa72f9423111ebc0a8ba5a0d2e8a96e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8e974852c0394eb7fd9e3e13eb8cde42a23977a6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171815"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862090"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および C&#35; を使用してローカル画像を分析する
 

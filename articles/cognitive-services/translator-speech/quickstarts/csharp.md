@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d650be954770fae4924c8e65a8d8f4e17acbafa1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: de0fbf7b273777672c95a3466405cef95da64353
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459623"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874296"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート:Translator Speech API (C#) 
 <a name="HOLTop"></a>

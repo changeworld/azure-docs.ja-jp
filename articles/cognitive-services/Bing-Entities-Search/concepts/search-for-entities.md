@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Entity Search API を使用して、検索クエリからエンティティと場所を抽出して検索します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b1d46d125d390f8612c5708e1964e0626acde343
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757793"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895365"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing Entity API でのエンティティの検索
 
@@ -174,7 +174,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 
 ## <a name="find-places"></a>場所を探す
 
-`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
+`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
 
 場所には、レストラン、ホテル、または地元企業が含まれます。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、ローカル エンティティの型を識別するためのヒントが含まれています。 リストには、Place、LocalBusiness、Restaurant などのヒントのリストが含まれています。 配列内の連続する各ヒントにより、エンティティの型が絞り込まれます。 可能な型のリストについては、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
 

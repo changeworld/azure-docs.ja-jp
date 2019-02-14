@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Video Search API に検索クエリを送信する方法について説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: dd085d51f1031bc6fb462292fb6d32f547f820d7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 08e8050fde6d2cf6249826911117dad9f595b6e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569184"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879601"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
 

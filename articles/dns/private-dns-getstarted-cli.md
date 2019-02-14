@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/25/2018
 ms.author: victorh
-ms.openlocfilehash: 27a27cfb81362b070deb0bad367ff62e8c39460c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5559e2fc9b9cce95bd7d5d02a64d134e5eaa03be
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964391"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100627"
 ---
 # <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS プライベート ゾーンを作成する
 
@@ -58,7 +58,7 @@ az network vnet create \
   --location eastus \
   --address-prefix 10.2.0.0/16 \
   --subnet-name backendSubnet \
-  --subnet-prefix 10.2.0.0/24
+  --subnet-prefixes 10.2.0.0/24
 
 az network dns zone create -g MyAzureResourceGroup \
    -n contoso.local \

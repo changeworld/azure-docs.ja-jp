@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Project Answer Search の概要。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: cb02c9067e4d672b0aace4caf13e4c8f0d718afb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1898a4576b86d7abb302e325aef827bab6b9d7dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877421"
 ---
 # <a name="what-is-project-answer-search"></a>Project Answer Search とは
 Project Answer Search API は、疑問文を使ったクエリに対する回答の取得に Bing v7 エンドポイントを使用します。 "地球の円周はどのくらいですか?" などの質問には、 事実情報を記載した回答を返します。  人物、場所、または物に関するクエリの場合には、そのクエリで特定されているエンティティに関する情報を返します。 会話ボット、メッセージング アプリ、リーダーなどのアプリケーションでは、このようなシナリオが有用になります。  

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、Project Acoustics の Unity サンプル シーン (デスクトップや VR へのデプロイを含む) について説明します。
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ecd19ec343b2744a70456fd1d3ad226856768d71
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174263"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880713"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity サンプルのチュートリアル
 これは Project Acoustics サンプルのチュートリアルです。 Project Acoustics の詳細については、[Project Acoustics の概要](what-is-acoustics.md)に関するページを参照してください。 Project Acoustics パッケージを既存の Unity プロジェクトに追加する方法については、[ファースト ステップ ガイド](getting-started.md)を使用してください。

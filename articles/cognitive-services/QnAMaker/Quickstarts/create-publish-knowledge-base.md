@@ -3,18 +3,18 @@ title: ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この例では、BitLocker キー回復に関する単純なよくあるご質問の Web ページから QnA Maker KB を作成します。
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 41a8f11f817ec550ef3423d85eb107796bdd1b28
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216950"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876999"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成、トレーニング、発行
 

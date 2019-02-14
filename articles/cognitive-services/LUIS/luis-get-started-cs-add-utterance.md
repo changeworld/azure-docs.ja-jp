@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 77c85e5f2734c07f4a9fb91450cacd14b3a0151c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fb976842f3ea6f5df81c795b3be775ed57798b90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213159"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870947"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -37,7 +37,7 @@ ms.locfileid: "55213159"
 
 ## <a name="create-quickstart-code"></a>クイック スタート コードの作成 
 
-Visual Studio で .NET Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
+Visual Studio で .Net Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
 
 ![Visual Studio プロジェクトの種類](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 

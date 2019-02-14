@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 41f0b1237ad88ad730893d2f219109f724626a4b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ca11c25f5e2dc793bc3c8a4ee10b4a89139ce1f3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214066"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879226"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるテキストの抽出
 

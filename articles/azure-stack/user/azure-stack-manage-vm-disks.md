@@ -3,7 +3,7 @@ title: Azure Stack の VM ディスクを管理する | Microsoft Docs
 description: Azure Stack で仮想マシンのディスクを作成します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813876"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961400"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク記憶域を作成する
 

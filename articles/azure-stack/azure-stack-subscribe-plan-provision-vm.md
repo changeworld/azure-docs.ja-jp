@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2019
-ms.author: sethm
+ms.author: efemmano
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: c0dd183700fe8af24750746dd3d10d40027c9a36
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6f91d011e9f15b80c2efd6ad1c6bbcd549786882
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239385"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976845"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack でオファーのサブスクリプションを作成する
 

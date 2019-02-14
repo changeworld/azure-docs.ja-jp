@@ -13,26 +13,27 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 25a1913fba3e66e65b3c785eb6ce1738c5f00a26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9846422405df491124a101a7898f356a1d9fb1d8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247927"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998673"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-dot-net.md)
 
-このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。
+このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 この記事のチュートリアルでは、Visual Studio 2017 を使用します。 Visual Studio 2013 または 2015 を使用することもできます。
@@ -41,10 +42,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure .NET SDK](https://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
-[こちらの記事](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。
+[こちらの記事](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。 
 
 1. **Azure Active Directory アプリケーションを作成します**。 このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを Azure Active Directory に作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
-2. **アプリケーション ID** と **認証キー**を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。
+2. **アプリケーション ID** と **認証キー**を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
 3. **テナント ID** を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
 4. アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
 
@@ -67,7 +68,6 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
     Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-
     ```
 
 ## <a name="create-a-data-factory-client"></a>データ ファクトリ クライアントを作成する
@@ -85,7 +85,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーを独自の値に置き換えます。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーを独自の値に置き換えます。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
     // Set variables
@@ -98,7 +98,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     string dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
     string storageAccount = "<your storage account name to copy data>";
     string storageKey = "<your storage account key>";
-    // specify the container and input folder from which all files need to be copied to the output folder.
+    // specify the container and input folder from which all files need to be copied to the output folder. 
     string inputBlobPath = "<the path to existing blob(s) to copy data from, e.g. containername/foldername>";
     //specify the contains and output folder where the files are copied
     string outputBlobPath = "<the blob path to copy data to, e.g. containername/foldername>";
@@ -121,7 +121,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
+**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。 
 
 ```csharp
 // Create a data factory
@@ -192,7 +192,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.Serializat
 
 **コピー アクティビティが含まれているパイプライン**を作成する次のコードを **Main** メソッドに追加します。
 
-この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを参照します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。
+この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを参照します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。 
 
 ```csharp
 // Create a pipeline with a copy activity
@@ -282,9 +282,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ```csharp
     // Check the copy activity run details
     Console.WriteLine("Checking copy activity run details...");
-
+   
     List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList();
+    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
     if (pipelineRun.Status == "Succeeded")
         Console.WriteLine(activityRuns.First().Output);
     else
@@ -299,7 +299,8 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 コンソールに、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況が表示されます。 その後、パイプラインの実行状態が確認されます。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
 
-### <a name="sample-output"></a>サンプル出力:
+### <a name="sample-output"></a>サンプル出力
+
 ```json
 Creating data factory SPv2Factory0907...
 {
@@ -407,18 +408,18 @@ Press any key to exit...
 ```
 
 ## <a name="verify-the-output"></a>出力を検証する
-このパイプラインは、adftutorial BLOB コンテナーに対して output フォルダーを自動的に作成します。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。
+このパイプラインは、adftutorial BLOB コンテナーに対して output フォルダーを自動的に作成します。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。 
 
-1. Azure Portal の **adftutorial** コンテナー ページで **[最新の情報に更新]** をクリックして出力フォルダーを表示します。
+1. Azure Portal の **adftutorial** コンテナー ページで **[最新の情報に更新]** をクリックして出力フォルダーを表示します。 
     
     ![更新](media/quickstart-create-data-factory-dot-net/output-refresh.png)
-2. フォルダー一覧の **[output]** をクリックします。
-2. **emp.txt** が output フォルダーにコピーされていることを確認します。
+2. フォルダー一覧の **[output]** をクリックします。 
+2. **emp.txt** が output フォルダーにコピーされていることを確認します。 
 
     ![更新](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-プログラムによって実行するには、データ ファクトリを削除し、次のコード行をプログラムに追加します。
+プログラムによって実行するには、データ ファクトリを削除し、次のコード行をプログラムに追加します。 
 
 ```csharp
             Console.WriteLine("Deleting the data factory");
@@ -426,4 +427,4 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。
+このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。 

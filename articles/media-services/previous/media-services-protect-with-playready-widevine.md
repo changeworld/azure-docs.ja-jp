@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 90302b8fdc486312dd8b4f8ae96e34487d2f7ae2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e783dc8848a5aa7db17e3cb4d9019fd7f284e79e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188064"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003757"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 

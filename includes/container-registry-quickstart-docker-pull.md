@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: a97bcf371efc42ff6ff12ba5921eba53abf519bc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302255"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985460"
 ---
 ## <a name="run-image-from-registry"></a>レジストリからイメージを実行する
 
 ここで、[docker run][docker-run] を使用して、コンテナー レジストリから `hello-world:v1` コンテナー イメージをプルして実行できます。
 
-```Docker
+```
 docker run <acrLoginServer>/hello-world:v1  
 ```
 

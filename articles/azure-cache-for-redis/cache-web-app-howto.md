@@ -1,26 +1,26 @@
 ---
 title: Azure Cache for Redis を使用して ASP.NET Web アプリを作成する | Microsoft Docs
 description: このクイック スタートでは、Azure Cache for Redis を使用して ASP.NET Web アプリを作成する方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822580"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237826"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 

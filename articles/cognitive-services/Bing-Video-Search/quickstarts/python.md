@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 2027797e6eeb73e6e1da3e778aaed265c89a565f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 1ac4a2ce5027606706367b43eea759fb953994c6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569244"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876866"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>クイック スタート:Bing Video Search REST API と Python を使用して動画を検索する
 

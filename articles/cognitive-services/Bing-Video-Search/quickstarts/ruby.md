@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: c006d6ace5441c16e7ff20a604340f833db59884
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 837a47b0eb1eff37eeafc1cdaad6370b8abc595f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569247"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860206"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>クイック スタート:Bing Video Search REST API と Ruby を使用して動画を検索する
 

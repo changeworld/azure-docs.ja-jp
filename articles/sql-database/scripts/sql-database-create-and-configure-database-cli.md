@@ -3,7 +3,7 @@ title: CLI サンプル - Azure SQL データベースの作成 | Microsoft Docs
 description: この Azure CLI サンプル スクリプトを使用して、SQL データベースを作成します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: standalone-database
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 01/25/2019
-ms.openlocfilehash: 24f45ea22a50e471a2947b926b817f06aefa9aa8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 0dcbecfa9148c30b398e9b2b10f898045e08befd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451786"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989289"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一のデータベースまたはエラスティック プールをホストする SQL Database サーバーを作成します。 |

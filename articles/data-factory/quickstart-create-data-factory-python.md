@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745250"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001870"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>Python を使用してデータ ファクトリとパイプラインを作成する
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2.  [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **input** フォルダーを作成します。 次に、**input** フォルダーに **input.txt** ファイルをアップロードします。
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
+
 1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
@@ -104,7 +106,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
@@ -165,9 +166,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>データセットを作成する
+
 このセクションでは、ソース用とシンク用の 2 つのデータセットを作成します。
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>ソース Azure BLOB のためのデータセットを作成する
+
 Azure BLOB データセットを作成する次のコードを Main メソッドに追加します。 Azure BLOB データセットのプロパティの詳細については、[Azure BLOB コネクタ](connector-azure-blob-storage.md#dataset-properties)に関する記事を参照してください。
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照します。
@@ -184,6 +187,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>シンク Azure BLOB のためのデータセットを作成する
+
 Azure BLOB データセットを作成する次のコードを Main メソッドに追加します。 Azure BLOB データセットのプロパティの詳細については、[Azure BLOB コネクタ](connector-azure-blob-storage.md#dataset-properties)に関する記事を参照してください。
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照します。
@@ -218,7 +222,6 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
 **パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
@@ -232,6 +235,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>パイプラインの実行を監視する
+
 パイプラインの実行を監視するには、次のコードを **Main** メソッドに追加します。
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>完全なスクリプト
+
 完全な Python コードを次に示します。
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>コードの実行
+
 アプリケーションをビルドして起動し、パイプラインの実行を確認します。
 
 コンソールは、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況を表示します。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
 データ ファクトリを削除するには、プログラムに次のコードを追加します。
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。

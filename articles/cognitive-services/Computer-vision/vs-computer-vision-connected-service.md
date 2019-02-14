@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Visual Studio 接続済みサービス機能を使用して、ASP.NET Core Web アプリケーションから Computer Vision API に接続します。
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 8f8f668e9e603eee74aed1f3d99014f9827133fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a67b4b7eee30d4bdcabee4fdcfe2e4a37ed6c718
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876115"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Visual Studio で接続済みサービスを使用して Computer Vision API に接続する
 

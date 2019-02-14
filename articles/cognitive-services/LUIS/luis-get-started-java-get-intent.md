@@ -3,19 +3,19 @@ title: 意図の取得、Java
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: この Java のクイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fc86a11310142bd403f0550997fccbbb8edc54f1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f7ecf2aaedfda9f7c78146b6e355cf4d8be02003
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213064"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879730"
 ---
 # <a name="quickstart-get-intent-using-java"></a>クイック スタート: Java を使用した意図の取得
 

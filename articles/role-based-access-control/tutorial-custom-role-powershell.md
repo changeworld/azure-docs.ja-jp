@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7ea9ce47b82dd4ad31caf935fd10e04daa07faba
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699981"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106429"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する
 
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
 1. JSON ファイルを編集して、`Actions` プロパティに `"Microsoft.Support/*"` 操作を追加します。 read 操作の後に必ずコンマを追加してください。 このアクションによって、ユーザーがサポート チケットを作成できるようになります。
 
-1. [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) コマンドを使用して、サブスクリプションの ID を取得します。
+1. [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドを使用して、サブスクリプションの ID を取得します。
 
     ```azurepowershell
     Get-AzSubscription

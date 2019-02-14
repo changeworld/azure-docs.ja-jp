@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Azure Content Moderator SDK for .NET を使用して Content Moderator クライアントを取得する方法
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 08902df231fedd2c1c5653052540cb1cdabba9cf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 94a16d03e47a9bec29e5e1c4326beab376dd33dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224943"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864402"
 ---
 # <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>クイック スタート:Content Moderator クライアントを返すヘルパー コード
 

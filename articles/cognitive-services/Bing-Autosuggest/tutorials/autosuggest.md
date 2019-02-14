@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Autosuggest の使用方法を示します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 09/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: a9a0dab47a13c349f11181f25b086b70031e08af
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 47115159501195209257e4657f09ae1f93039c5e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190141"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869910"
 ---
 # <a name="tutorial-build-a-web-page-autosuggest-client"></a>チュートリアル:Web ページの Autosuggest クライアントを構築する
 

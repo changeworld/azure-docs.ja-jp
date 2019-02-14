@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: e57142631668ba0b74573b2953e84f581023b24f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660648"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870437"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 最初の手順では、必要な gem をインストールします。 `Gemfile` がサンプルに含まれているため、インストールする gem を指定する必要はありません。 これには bundler を使用します。
 
-```
+```bash
 bundle install
 ```
 

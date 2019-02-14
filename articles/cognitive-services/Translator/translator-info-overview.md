@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1fb608f6715d3f48446451d437535b3ddfb0677a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df0f1570b4f876cbfb542a5571c8bec7e80e6895
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455254"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857723"
 ---
 # <a name="what-is-translator-text-api"></a>Translator Text API とは
 

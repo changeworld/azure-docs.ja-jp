@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: このクイック スタートでは、LUIS エンドポイントに発話を渡して、意図とエンティティを取得します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 93ae7e0cc6898648e8b49677070512b919890d29
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 043b31aaaad30e9f2663b0a53273874e8c84ff6d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218225"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884020"
 ---
 # <a name="quickstart-get-intent-using-python"></a>クイック スタート: Python を使用した意図の取得
 このクイック スタートでは、LUIS エンドポイントに発話を渡して、意図とエンティティを取得します。

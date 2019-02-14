@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: a51485e383be4c7a492328064d0afcf92a385242
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7ab37122697170d62789ef5872a2815cd8c55bb0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218633"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884683"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>クイック スタート:C# を使用して 2 か国語辞書で単語を検索する
 

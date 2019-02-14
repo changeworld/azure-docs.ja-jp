@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 このサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 45ecb3bb17f0064853e8e31bb96a04c62afa9608
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220163"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881238"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>クイック スタート:C# と Translator Text API を使用してテキストの表記を変換する
 

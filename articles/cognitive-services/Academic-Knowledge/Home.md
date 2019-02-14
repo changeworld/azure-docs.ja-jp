@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API を使用してユーザーのクエリを解釈し、Academic Graph から豊富な情報を取得します。
 services: cognitive-services
 author: darrine
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 8575b51bfc3f9013e984ac6c81352a7559439ff2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 975c36451f0f00ce374a0bbf0a6dd87ec39eb912
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154552"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871559"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 

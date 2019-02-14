@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像に顔を追加します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: f443eb13650483bc3ee63dad59cc40b8042bc35b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 722a09b782c902642b599460835151928c16c5f4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222816"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859030"
 ---
 # <a name="example-how-to-add-faces"></a>例:顔を追加する方法
 
