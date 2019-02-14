@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: db8186595524de193b881b59636cac6a0d414fb3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eea60c8bb4281221fdcd7455e9d5fa5612dc95b3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>チュートリアル:Azure Active Directory と ContractWorks の統合
 

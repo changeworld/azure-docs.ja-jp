@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: priyamo
-ms.openlocfilehash: e266ebca40ac9a3c1d6c1a77e30fed717f4b1b51
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8a5b5b2e50950967b1cb8ae1aa22587244ad67a8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753455"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203932"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 

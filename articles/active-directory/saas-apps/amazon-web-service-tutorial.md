@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e377cf749119c23d37bb4db8ab78abb1ce8c82ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199750"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
 
@@ -447,7 +448,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
  * **[準備中]** セクションの **[マッピング]** サブセクションには、"読み込み中..." というメッセージが表示され、属性マッピングは表示されません。 現在サポートされている唯一のプロビジョニング ワークフローは、ユーザー/グループ割り当て時の選択のために、AWS から Azure AD にロールをインポートすることです。 このための属性マッピングは事前に決定されており、構成はできません。
  
- * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [servicePrincipal オブジェクト](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal)の appRoles プロパティに書き込まれます。 プロビジョニングのために、ギャラリーから Azure AD に複数の AWS テナント (servicePrincipals で表される) を追加できますが、プロビジョニングのために使用される複数の AWS servicePrincipals からインポートされたすべてのロールを、シングル サインオンに使用される単一の servicePrincipal に自動的に書き込むことができないという既知の問題があります。 回避策として、[Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) を使用して、プロビジョニングが構成されている各 AWS servicePrincipal にインポートされたすべての appRole を抽出できます。 これらのロール文字列は、後で、シングル サインオンが構成されている AWS servicePrincipal に追加できます。
+ * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [servicePrincipal オブジェクト](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)の appRoles プロパティに書き込まれます。 プロビジョニングのために、ギャラリーから Azure AD に複数の AWS テナント (servicePrincipals で表される) を追加できますが、プロビジョニングのために使用される複数の AWS servicePrincipals からインポートされたすべてのロールを、シングル サインオンに使用される単一の servicePrincipal に自動的に書き込むことができないという既知の問題があります。 回避策として、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) を使用して、プロビジョニングが構成されている各 AWS servicePrincipal にインポートされたすべての appRole を抽出できます。 これらのロール文字列は、後で、シングル サインオンが構成されている AWS servicePrincipal に追加できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

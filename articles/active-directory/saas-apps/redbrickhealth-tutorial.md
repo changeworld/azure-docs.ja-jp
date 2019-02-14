@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 66ff2e7c2f9fb71bcf54cc5946afed34628809b2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 211bdc27162ddf868b47efb67623faf035cbf96b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816689"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>チュートリアル:Azure Active Directory と RedBrick Health の統合
 
@@ -116,7 +117,7 @@ RedBrick Health との Azure AD シングル サインオンを構成するに�
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1` のパターンで URL を入力します。
 
     > [!NOTE]
     > リレー状態の値は実際のものではありません。 実際のリレー状態でこの値を更新します。 この値を取得するには、[RedBrick Health クライアント サポート チーム](https://home.redbrickhealth.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

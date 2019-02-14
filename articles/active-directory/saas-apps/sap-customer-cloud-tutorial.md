@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: c25196f03d9c4e70a43b9ea8c3a24ed6c0e39ead
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8efa99ff8dfad555ea881dd38dc70c2914b923a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816009"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>チュートリアル:Azure Active Directory と SAP Cloud for Customer の統合
 
@@ -127,7 +128,7 @@ SAP Cloud for Customer で Azure AD シングル サインオンを構成する�
 
     c. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 
-    d. **[パラメーター 1]** 一覧から、実装で使用するユーザー属性を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パラメーター 1]** 一覧から、実装で使用するユーザー属性を選択します。
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、[user.extensionattribute2] を選択します。
 
     e. **[Save]** をクリックします。

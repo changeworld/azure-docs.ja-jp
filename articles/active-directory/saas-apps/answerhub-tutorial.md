@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 41a1eef4ff417890114addcac00e2df3e49dc529
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: df88eee14ea8f3d7d7f8365a77750da67904793d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453265"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル:Azure Active Directory と AnswerHub の統合
 
@@ -150,7 +151,7 @@ AnswerHub で Azure AD のシングル サインオンを構成するには、�
 
     c. **[IDP Name Identifier Format] \(IDP 名前識別子形式)** テキスト ボックスに、Azure Portal の **[ユーザー属性]** セクションで選択したのと同じユーザー識別子の値を入力します。
   
-    d. **[Keys and Certificates]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Keys and Certificates]** をクリックします。
 
 7. **[Keys and Certificates]\(キーと証明書\)** タブで、次の手順を実行します。
 

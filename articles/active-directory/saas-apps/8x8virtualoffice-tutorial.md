@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 11e316d2dc0811faaf3a9daab219386441fb3bb8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c92d4fe683ae483ba6384c66dedfa8c1fdd75f8b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル:Azure Active Directory と 8x8 Virtual Office の統合
 
@@ -159,7 +160,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
     c. **[Issuer URL]\(発行者 URL\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
-    d. **[Browse]\(参照\)** ボタンをクリックして、Azure portal からダウンロードした証明書をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Browse]\(参照\)** ボタンをクリックして、Azure portal からダウンロードした証明書をアップロードします。
 
     e. **[保存]** ボタンをクリックします。
 

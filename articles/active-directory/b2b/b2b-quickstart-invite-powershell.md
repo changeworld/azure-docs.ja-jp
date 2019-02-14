@@ -9,12 +9,13 @@ ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: 28a2177089fb3c93670d61da62815ff67bfd544d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3cb34fa0552eaa8f0d567ff85843e4b7df3fa967
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094803"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205377"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート:PowerShell を使用してゲスト ユーザーを追加する
 

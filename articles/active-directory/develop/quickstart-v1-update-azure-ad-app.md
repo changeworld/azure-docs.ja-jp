@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819095"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191730"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート:Azure Active Directory のアプリケーションを更新する
 
@@ -144,7 +145,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 前に説明したように、独自のアプリケーションのための API を公開してそれにアクセスするだけでなく、クライアント アプリケーションを登録して、Microsoft のリソースにより公開されている API にアクセスすることもできます。 Microsoft Graph API (ポータルのリソース/API 一覧では "Microsoft Graph") は、Azure AD に登録されているすべてのアプリケーションが利用できます。 Office 365 サブスクリプションにサインアップしたアカウントが存在するテナントにクライアント アプリケーションを登録した場合には、さまざまな Office 365 リソースにより公開されているスコープにもアクセスできます。
 
-Microsoft Graph API により公開されているスコープの全容については、[Microsoft Graph のアクセス許可に関するリファレンス](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference)を参照してください。
+Microsoft Graph API により公開されているスコープの全容については、[Microsoft Graph のアクセス許可に関するリファレンス](https://docs.microsoft.com/graph/permissions-reference)を参照してください。
 
 > [!NOTE]
 > 現時点では、ネイティブ クライアント アプリケーションに [Access your organization's directory]\(組織のディレクトリにアクセスする\) アクセス許可を使用した場合、そのアプリケーションで Azure AD Graph API しか呼び出すことができなくなるという制約があります。 この制約は、Web アプリケーションには適用されません。

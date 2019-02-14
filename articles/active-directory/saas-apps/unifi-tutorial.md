@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 5de5c649282c4612bbe24563abab5889f0678f84
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b31358e72449d1ec73d50ad1f2583609c10f9e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815108"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル:Azure Active Directory と UNIFI の統合
 
@@ -149,7 +150,7 @@ UNIFI で Azure AD シングル サインオンを構成するには、次の手
 
     c. Azure Portal からダウンロードした証明書をメモ帳で開き、**---BEGIN CERTIFICATE---** タグおよび **---END CERTIFICATE---** タグを削除して、残りの内容を **[証明書]** テキストボックスに貼り付けます。
 
-    d. **[is Default Provider(既定のプロバイダーにする)]** チェックボックスをオンします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[is Default Provider(既定のプロバイダーにする)]** チェックボックスをオンします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
