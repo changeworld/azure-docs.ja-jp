@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509577"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236262"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Azure Machine Learning Studio モデルの再トレーニング
 Azure Machine Learning における Machine Learning のモデル運用プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。 
@@ -53,8 +53,6 @@ Web サービスを再トレーニングします。
 * Web サービスの再トレーニングをデプロイする
 * バッチ実行サービス コードを使用して、モデルを再トレーニングする
 
-前述のチュートリアルの手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」を参照してください。
-
 > [!NOTE] 
 > 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
 
@@ -63,8 +61,6 @@ Web サービスを再トレーニングします。
 * 予測 Web サービスに新しいエンドポイントを作成する
 * URL とコードの更新プログラムを取得する
 * URL の更新プログラムを使用して、再トレーニング済みのモデルで新しいエンドポイントをポイントする 
-
-前述のチュートリアル手順については、「[従来の Web サービスの再トレーニング](retrain-a-classic-web-service.md)」を参照してください。
 
 従来の Web サービスの再トレーニングで問題が発生した場合は、「[Azure Machine Learning の従来の Web サービスにおける再トレーニングに関するトラブルシューティング](troubleshooting-retraining-models.md)」を参照してください。
 
@@ -76,8 +72,6 @@ Web サービスを再トレーニングします。
 * JSON で `ilearner` BLOB への参照を更新する
 * JSON を Web サービス定義にインポートします。
 * Web サービスを新しい Web サービス定義で更新します。
-
-前述のチュートリアル手順については、「[Machine Learning 管理 PowerShell コマンドレットを使用した新規 Web サービスの再トレーニング](retrain-new-web-service-using-powershell.md)」を参照してください。
 
 従来の Web サービスの再トレーニングを設定するプロセスには、次の手順が含まれます。
 

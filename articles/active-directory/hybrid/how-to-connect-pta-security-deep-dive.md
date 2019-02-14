@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6378a4000cb933e862b4df6b0538f9494d04ce2d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 23e1d3058600bca6630c3efcbb860b7f8eeeaf57
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486692"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176834"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 

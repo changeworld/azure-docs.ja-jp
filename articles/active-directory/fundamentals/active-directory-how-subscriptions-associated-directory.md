@@ -12,12 +12,13 @@ ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 86ba8f77121e6d4f6358887e13b8f86a5e020f1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a116355c8140d30f8297cde067a82f37f72e02a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103702"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165860"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 Azure サブスクリプションには、Azure Active Directory (Azure AD) との間に信頼関係があります。つまり、サブスクリプションは Azure AD を信頼することでユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じ Azure AD ディレクトリを信頼することはできますが、1 つのサブスクリプションが信頼できるディレクトリは 1 つに限られます。

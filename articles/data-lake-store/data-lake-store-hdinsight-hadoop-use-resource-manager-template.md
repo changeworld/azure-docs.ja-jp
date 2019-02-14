@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e08e7ae0a97b206a692dd47e91c4c94847cb9833
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035905"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235174"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -43,6 +43,9 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
 この記事では、追加のストレージとして Data Lake Storage Gen1 を使用して Hadoop クラスターをプロビジョニングします。 既定のストレージとして Data Lake Storage Gen1 を使用する Hadoop クラスターの作成方法については、[Azure portal を使用して Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する方法](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -58,13 +61,13 @@ Resource Manager テンプレートおよびテンプレート使用の前提条
 
 ```
 # Log in to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List all the subscriptions associated to your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select a subscription
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 テンプレートでは、次のリソースの種類をデプロイします。

@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 222f17541de902ee2180b66563857ccd2193ba54
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50448cc5d4fe6714aa0cd29216209506eccf7a7c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178309"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201620"
 ---
 # <a name="how-to-close-active-risk-events"></a>方法:アクティブなリスク イベントを閉じる
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f0701a7f046666a135c3325eb22d1d12cbd59ba0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a59766ce6572ef9ccd767122676667ad44ea58f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156889"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル:Azure Active Directory と Qumu Cloud の統合
 
@@ -144,7 +145,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** ボックスは空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** ボックスは空白のままにします。
     
     e. **[OK]** をクリックします。
 
@@ -191,7 +192,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-qumu-cloud-test-user"></a>Qumu Cloud テスト ユーザーの作成
 

@@ -4,17 +4,17 @@ description: Azure Policy の定義には、コンプライアンスが管理お
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912511"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562302"
 ---
 # <a name="understand-policy-effects"></a>Policy の効果について
 
@@ -50,7 +50,7 @@ Append は、作成中または更新中に要求されたリソースにフィ�
 
 ### <a name="append-evaluation"></a>Append の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、**[\*]** バージョンの別名を使用します。
 
 Append 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -89,7 +89,8 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 3:[別名](definition-structure.md#aliases)と **value** の配列を使用して、ストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。
+例 3:非 **[\*]**
+[別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+例 4:**[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列はまだが存在しない場合は作成されます。
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
 - **DeploymentScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
-  - 実行する必要があるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
+  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
   - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
   - 既定値は _ResourceGroup_ です。
 - **Deployment** [必須]

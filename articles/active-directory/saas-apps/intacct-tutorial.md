@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 20d469348838b0dd9ef6089f8a0b040e7cb0b6be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f5d30bae699a69bed893e36e24b6f8370db4f8b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187965"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>チュートリアル:Azure Active Directory と Intacct の統合
 
@@ -153,7 +154,7 @@ Intacct で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[発行者のURL]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
    
-    d. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[証明書]** ボックスに貼り付けます。
    
@@ -192,7 +193,7 @@ Intacct で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-intacct-test-user"></a>Intacct テスト ユーザーの作成
 

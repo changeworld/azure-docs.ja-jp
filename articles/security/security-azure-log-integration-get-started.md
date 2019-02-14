@@ -4,7 +4,7 @@ description: Azure Log Integration サービスをインストールし、Azure 
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: 53f67a7c-7e17-4c19-ac5c-a43fabff70e1
 ms.service: security
@@ -15,18 +15,18 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: bf39e22c0edc23d2e452d96103c8933e0a47af9e
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 93a4595ce0b36c8d0f447177bda69d2d8cab12c8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304412"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117530"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
 
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは 2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 セキュリティ情報イベント管理 (SIEM) ベンダーから [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) コネクタを入手できない場合は、Azure Log Integration しか使用できません。
 

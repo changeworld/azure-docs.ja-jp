@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440465"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246985"
 ---
 さまざまな組織が、大規模なコンピューティングに対するニーズを抱えています。 大規模なコンピューティングを必要とするワークロードとしては、エンジニアリング設計と分析、金融分野のリスク計算、画像レンダリング、複雑なモデリング、モンテカルロ シミュレーションなどが挙げられます。 
 
@@ -25,12 +25,12 @@ Azure クラウドを使用して、並列バッチ ジョブから従来の HPC
     * Azure 仮想マシンまたは[仮想マシンのスケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)に独自のクラスター環境を設定します。 
     * オンプレミスのクラスターをリフト アンドシフトするか、容量を増やしたい場合は Azure に新しいクラスターをデプロイします。 
     * Azure Resource Manager テンプレートを使って、業界をリードする[ワークロード マネージャー](#workload-managers)、インフラストラクチャ、および[アプリケーション](#hpc-applications)をデプロイします。 
-    * [HPC および GPU の VM サイズ](#hpc-and-gpu-sizes)を選択します。これには、MPI ワークロードまたは GPU ワークロードのための特別なハードウェアとネットワーク接続が含まれます。 
+    * [HPC および GPU の VM サイズ](#hpc-and-gpu-vm-sizes)を選択します。これには、MPI ワークロードまたは GPU ワークロードのための特別なハードウェアとネットワーク接続が含まれます。 
     * I/O が集中するワークロードのための[高性能ストレージ](#hpc-storage)を追加します。
 * **ハイブリッド ソリューション**
     * オンプレミスのソリューションを拡張し、Azure インフラストラクチャに対するピーク時のワークロードを軽減 ("バースト") します。
-    * 既存の[ワークロード マネージャー](#workload-manager)とともにクラウド コンピューティングをオンデマンドで使用します。
-    * MPI ワークロードまたは GPU ワークロードのために [HPC および GPU の VM サイズ](#hpc-and-gpu-sizes)を利用します。
+    * 既存の[ワークロード マネージャー](#workload-managers)とともにクラウド コンピューティングをオンデマンドで使用します。
+    * MPI ワークロードまたは GPU ワークロードのために [HPC および GPU の VM サイズ](#hpc-and-gpu-vm-sizes)を利用します。
 * **サービスとしての大規模なコンピューティング ソリューション**
     * [Azure CycleCloud](#azure-cyclecloud)、[Azure Batch](#azure-batch)、および関連する [Azure サービス](#related-azure-services)を使用して、カスタムの大規模コンピューティング ソリューションとワークフローを開発します。
     * [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/)、[Cycle Computing](https://cyclecomputing.com/) (現在は [Microsoft と統合](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)) などのベンダーが提供する、Azure 対応のエンジニアリングおよびシミュレーション ソリューションを実行します。

@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8269e06d3e2fd92e0d20fbc3dc84d0a1b6761cda
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c9a5359303c1feecfbc905099a1bed2fc10fa52d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658438"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245798"
 ---
 # <a name="key-vault-vaults-with-no-virtual-network-endpoints"></a>仮想ネットワーク エンドポイントがない Key Vault コンテナー
 
@@ -56,7 +56,7 @@ ms.locfileid: "55658438"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ### <a name="deploy-with-azure-powershell"></a>Azure PowerShell でのデプロイ
 
@@ -87,7 +87,7 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 
 デプロイおよび削除のスクリプトには、次のコマンドが使用されています。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | 新しい Azure Policy の定義を作成します。 |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | 単一のリソース グループを取得します。 |
@@ -126,7 +126,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 ### <a name="azure-cli-explanation"></a>Azure CLI の説明
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | 新しい Azure Policy の定義を作成します。 |
 | [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | 単一のリソース グループを取得します。 |

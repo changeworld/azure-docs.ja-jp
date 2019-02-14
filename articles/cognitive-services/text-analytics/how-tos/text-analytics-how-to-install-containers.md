@@ -4,19 +4,19 @@ titleSuffix: Text Analytics -  Azure Cognitive Services
 description: このチュートリアルでの Text Analytics のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294830"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977102"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -77,19 +77,19 @@ Text Analytics コンテナーで使用可能なタグの詳しい説明につ�
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>キー フレーズ抽出コンテナー用の docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
 
 ### <a name="docker-pull-for-the-language-detection-container"></a>言語検出コンテナー用の docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
 ### <a name="docker-pull-for-the-sentiment-container"></a>感情コンテナー用の docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
@@ -156,18 +156,7 @@ ApiKey={BILLING_KEY}
 
 Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ リソースを使用して、Azure に課金情報を送信します。 
 
-Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データが送信されることはありません。 
-
-`docker run` コマンドでは、次の引数が課金の目的に使用されます。
-
-| オプション | 説明 |
-|--------|-------------|
-| `ApiKey` | 課金情報を追跡するために使用される _Text Analytics_ リソースの API キー。 |
-| `Billing` | 課金情報を追跡するために使用される _Text Analytics_ リソースのエンドポイント。|
-| `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
-
-> [!IMPORTANT]
-> 3 つすべてのオプションに有効な値が指定されている必要があります。そうでないと、コンテナーが起動しません。
+[!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](../text-analytics-resource-container-config.md)」を参照してください。
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jeedes
-ms.openlocfilehash: ace619e5eba8d5f1b4f1740f2c88fbce7bc83790
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ae9481f6d8b4b54bd90ad0dd54a29b43c9e20531
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150517"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>チュートリアル:Azure Active Directory と ThirdPartyTrust の統合
 
@@ -159,7 +160,7 @@ ThirdPartyTrust で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-thirdpartytrust-test-user"></a>ThirdPartyTrust のテスト ユーザーの作成
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 8f85ded20470ecc5a7868c094e88a149c88b7f39
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749568"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981657"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "55749568"
 
 REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)をご覧ください)
 
-Powershell: `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm)をご覧ください)
+Powershell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)をご覧ください)
 
 CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
 
@@ -39,7 +39,7 @@ CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {
 
 REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)をご覧ください)
 
-Powershell: `Get-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm)をご覧ください)
+Powershell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)をご覧ください)
 
 CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
 

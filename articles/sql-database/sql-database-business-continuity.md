@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755171"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960879"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -101,6 +101,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 アクションを実行するタイミング、復旧にかかる時間、および発生するデータ損失の量は、ビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。 実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと [Elastic Pool のディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
+
 以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートしてディザスター リカバリー訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ### <a name="prepare-for-an-outage"></a>障害に備える
@@ -132,7 +133,7 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 復旧にどちらのメカニズムを使ったとしても、ユーザーおよびアプリケーションの動作を元に戻す前に、次の追加タスクを実行する必要があります。
 
 - クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal)を使用して、適切な規則を有効にする。
+- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)を使用して、適切な規則を有効にする。
 - 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確認する (または [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)
 - 必要に応じて、監査を構成する
 - 必要に応じて、アラートを構成する

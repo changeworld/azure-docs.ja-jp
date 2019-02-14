@@ -12,12 +12,13 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d43c7943eedcfdf839303a6a55d7727a8483441
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081026"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175814"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 

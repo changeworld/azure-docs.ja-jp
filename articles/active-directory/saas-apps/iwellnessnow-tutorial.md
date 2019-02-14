@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5c7a578320beb57858ff93c848345f7f5a21caf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 441a00f066e897ee78476100b0fb34d411e86ac1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183494"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル:Azure Active Directory と iWellnessNow の統合
 
@@ -175,7 +176,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-iwellnessnow-test-user"></a>iWellnessNow テスト ユーザーの作成
 

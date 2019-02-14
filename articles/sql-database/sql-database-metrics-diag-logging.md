@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734625"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893598"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -65,14 +65,14 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 
 | データベースの監視テレメトリ | 単一データベースとプールされたデータベースのサポート | マネージド インスタンスのサポート |
 | :------------------- | ------------------- | ------------------- |
-| [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ  |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | はい | はい |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | はい | はい |
-| [エラー](sql-database-metrics-diag-logging.md#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | [はい] | [はい] |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ  |
-| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ  |
-| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ  |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset):パフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
+| [すべてのメトリック](#all-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ  |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | はい | はい |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | はい | はい |
+| [エラー](#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | はい | はい |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ  |
+| [Timeouts](#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ  |
+| [Blocks](#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ  |
+| [SQLInsights](#intelligent-insights-dataset):パフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -169,7 +169,7 @@ Azure portal で単一データベース、プールされたデータベース�
 
 | リソース | 監視テレメトリ |
 | :------------------- | ------------------- |
-| **マネージド インスタンス** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
+| **マネージド インスタンス** | [ResourceUsageStats](#logs-for-managed-instances) には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
 
 マネージド インスタンス リソースに対して診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 

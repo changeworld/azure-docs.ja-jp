@@ -15,12 +15,13 @@ ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 74f90a84bbf58edb719ccbdc9603aa3f1574681d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c83fe4655b3b3d4de04be74c0f3ced1ddac5ec2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493312"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185555"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
@@ -108,3 +109,4 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 - [Azure AD Connect とフェデレーション](how-to-connect-fed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](how-to-connect-fed-management.md)
+

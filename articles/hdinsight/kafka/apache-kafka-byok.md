@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041511"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109491"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む (プレビュー)
 
@@ -39,7 +39,7 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
    HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キーには [論理的な削除] と [Do Not Purge]\(削除しない\) を有効にする必要があります。 [論理的な削除] 機能と [Do Not Purge]\(削除しない\) 機能は、REST、.NET/C#、PowerShell、Azure CLI の各インターフェイスで利用できます。
 
-   新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-get-started.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
+   新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-overview.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
    新しいキーを作成するには、**[設定]** の下にある **[キー]** メニューから **[生成/インポート]** を選択します。
 
@@ -83,7 +83,7 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
    クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
-## <a name="faq-for-byok-to-kafka"></a>Kafka の BYOK についてよく寄せられる質問
+## <a name="faq-for-byok-to-apache-kafka"></a>Apache Kafka の BYOK についてよくあるご質問
 
 **Kafka クラスターはキー コンテナーにどのようにしてアクセスしますか?**
 
@@ -120,4 +120,4 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 ## <a name="next-steps"></a>次の手順
 
 * Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-whatis.md)」をご覧ください。
-* Azure Key Vault の概要については、「[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)」を参照してください。
+* Azure Key Vault の概要については、「[Azure Key Vault の概要](../../key-vault/key-vault-overview.md)」を参照してください。

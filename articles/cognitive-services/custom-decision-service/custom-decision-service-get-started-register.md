@@ -4,25 +4,25 @@ titlesuffix: Azure Cognitive Services
 description: Azure Custom Decision Service で新しいアプリを登録する方法に関するステップバイステップ ガイド。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: f642e0d4e21c180a92b4b76d05fb2c9bac9f2976
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219738"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980688"
 ---
 # <a name="register-your-application"></a>アプリケーションの登録
 
 アプリケーションで Custom Decision Service を使用するには、ポータルでこのサービスを登録します。 この記事では、その方法について説明します。
 
-1. Custom Decision Service の[フロント ページ](https://ds.microsoft.com/)に移動します。 次の図に強調表示されているように、リボンの **[My Portal]\(マイ ポータル\)** をクリックします。
+1. Custom Decision Service の[フロント ページ](https://portal.ds.microsoft.com/)に移動します。 次の図に強調表示されているように、リボンの **[My Portal]\(マイ ポータル\)** をクリックします。
 
     ![[My Portal]\(マイ ポータル\)](./media/portal.png)
 

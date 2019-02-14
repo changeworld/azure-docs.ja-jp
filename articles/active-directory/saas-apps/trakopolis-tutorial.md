@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: d14c5eeec741dce90820aea1d772065c78fab948
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d1cd7bf90483bca2b2e6eb6185b48e02a1cf65bc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190464"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>チュートリアル:Azure Active Directory と Trakopolis の統合
 
@@ -165,7 +166,7 @@ Trakopolis で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-trakopolis-test-user"></a>Trakopolis のテスト ユーザーの作成
 

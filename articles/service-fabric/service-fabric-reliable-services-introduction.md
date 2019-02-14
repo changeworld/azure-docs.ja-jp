@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: bc4e4c9137003dad9cfd96772b7ebe231cd6eace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999035"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171725"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 Azure Service Fabric により、ステートレスおよびステートフルな Reliable Service の作成と管理が簡素化されます。 このトピックの内容は次のとおりです。
@@ -45,12 +45,6 @@ Reliable Services は、重要な機能をアプリケーションに組み込�
 * 使い慣れたプログラミング モデルに似た、独自のコードを実行するためのシンプルなモデル。 コードには、適切に定義されたエントリ ポイントと管理が簡単なライフサイクルが含まれます。
 * プラグ可能な通信モデル。 HTTP と [Web API](service-fabric-reliable-services-communication-webapi.md)、WebSocket、カスタム TCP プロトコルなど、あらゆるトランスポートを選んで使用できます。 Reliable Services には、すぐに使用できる優れたオプションも用意されていますが、独自のオプションを指定することもできます。
 * ステートフル サービスの場合、Reliable Services プログラミング モデルを使用すると、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) によって状態がサービス内に一貫して確実に格納されます。 Reliable Collection は、C# コレクションを使用したことがあるユーザーには馴染みのある可用性が高く信頼できる一連のコレクション クラスです。 これまでは、サービスにおいて確かな方法で状態を管理するには、外部システムが必要でした。 Reliable Collection を使用するとユーザーのコンピューターの隣に状態を格納できるようになると同時に、高可用性の外部ストアと同じレベルの高い可用性と確実性を実現できます。 このモデルでは、機能に必要な計算と状態を併置できるため、待機時間も短縮します。
-
-Reliable Services の概要については、Microsoft Virtual Academy の動画 をご覧ください。<center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
-<img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
-</a>
-</center>
 
 ## <a name="what-makes-reliable-services-different"></a>Reliable Services の特長
 Service Fabric の Reliable Service は、以前に作成されたことがあるサービスとは異なります。 Service Fabric は信頼性、可用性、整合性、およびスケーラビリティを提供します。

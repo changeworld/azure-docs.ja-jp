@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 2a222e66b896886d724572982626fd0bc2c277a8
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 33f79569a2478c7e234b04ba2dee4e9b8883abae
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809966"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895892"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -127,7 +127,7 @@ BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、
 `Stream` にバインドする C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(Stream myBlob, ILogger log)
+public static void Run(Stream myBlob, string name, ILogger log)
 {
    log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 }

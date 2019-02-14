@@ -4,7 +4,7 @@ description: この記事は、Azure ログ統合について寄せられる質�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,19 +15,19 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 928c7921ce184f5f17916c3b9e182ce3754b0115
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306269"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114928"
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
 
 この記事では、Azure ログ統合についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは 2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 Azure ログ統合は Windows オペレーティング システムのサービスです。このサービスを利用すると、未加工のログを Azure リソースからオンプレミスの Security Information and Event Management (SIEM) システムに統合できます。 この統合によって、オンプレミスでもクラウド上でも、すべての資産を一元化されたダッシュボードで利用できるようになります。 そうすることで、お使いのアプリケーションに関連するセキュリティ イベントの集計、関連付け、分析、および警告を行えます。
 

@@ -3,21 +3,21 @@ title: Azure Application Insights を使用して要求を追跡するコード�
 description: 要求のプロファイルを取得できるように、Application Insights を使用して要求を追跡するコードを記述します。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: 978f9a341eec2f16b9f6fe3d164e97805d7a8e93
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.author: cweining
+ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359642"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882065"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights を使用して要求を追跡するコードを記述する
 

@@ -15,12 +15,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1117ffa94a30a55b7b2a7477bf2770d21dcb5441
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5ed1b7dfa19644fa558cafd8df5fed72490f24ff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746508"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195687"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 

@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: e5c035c4bcf449ecf20a9dfb072ce3ab480110a9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0f500ec776d90755d6738af80c34866105d354f5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364331"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999404"
 ---
-# <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理 
+# <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理  
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-manage-entities.md)
 > * [.NET](media-services-dotnet-manage-entities.md)

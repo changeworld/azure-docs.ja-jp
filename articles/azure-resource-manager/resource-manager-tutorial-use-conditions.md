@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0695a705d436430edda0c6bf88e18b0a4b36ee4f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 04b3ebac6406f4a6e5ec07f1806b48e3b2062470
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496773"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235429"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -129,12 +129,13 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [テンプレートをデプロイする](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)の指示に従って、テンプレートをデプロイします。
 
 Azure PowerShell を使用してテンプレートをデプロイする場合、1 つの追加パラメーターを指定する必要があります。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
@@ -144,7 +145,7 @@ $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUsername $vmAdmin `
     -adminPassword $vmPassword `

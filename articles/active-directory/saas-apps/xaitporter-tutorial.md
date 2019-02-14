@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: fe89b64fb5f188591ce123e8ed7ed410d3c5ab48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6cd4f9e561a55c010273b48fb4232348baad3582
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170047"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル:Azure Active Directory と XaitPorter の統合
 
@@ -147,7 +148,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Enable Autocreation of Users]\(ユーザーの自動作成を有効にする\)** を選択します。
 
-    d. Click **OK**.
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -179,7 +180,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-xaitporter-test-user"></a>XaitPorter のテスト ユーザーを作成する
 

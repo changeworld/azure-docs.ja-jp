@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: b04e4a83862cdec26e0432eb7d8b3419e36d5a7a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: feb6cebca0fe165315215813eb939dc2d5d120cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176422"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル:Azure Active Directory と Salesforce Sandbox の統合
 
@@ -263,7 +264,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Salesforce Sandbox のテスト ユーザーの作成
 

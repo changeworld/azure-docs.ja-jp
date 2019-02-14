@@ -14,21 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cb44311ecdf6a2c9284b14884184863237422f96
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1e714faa04717ac8e6687db3c074b8a77d649fb2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754542"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217209"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric アプリケーションのライフサイクル
 通常は、その他のプラットフォームと同様に、Azure Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを通過します。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 この記事では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズでさまざまなロールがその API をどのように使用するかを示します。
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
-
-次の Microsoft Virtual Academy のビデオでは、アプリケーション ライフサイクルを管理する方法を説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
-<img src="./media/service-fabric-application-lifecycle/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ## <a name="service-model-roles"></a>サービス モデルのロール
 サービス モデルのロールは、次のとおりです。
@@ -58,7 +54,7 @@ ms.locfileid: "55754542"
 
 ## <a name="test"></a>テスト
 1. ローカル開発クラスターまたはテスト クラスターにデプロイした後、"*サービス開発者*" は [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters)、[**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) クラス、[**Invoke-ServiceFabricFailoverTestScenario** コマンドレット](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps)を使用して、組み込みのフェールオーバー テスト シナリオを実行します。 フェールオーバー テスト シナリオで、重要な切り替えとフェールオーバーを通して指定したサービスを実行して、引き続き利用可能で動作していることを確認します。
-2. 次に、"*サービス開発者*" は、[**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) と [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) クラスまたは [**Invoke-ServiceFabricChaosTestScenario** コマンドレット](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)を使用して、組み込みの chaos テスト シナリオを実行します。 chaos テスト シナリオは、複数のノード、コード パッケージ、レプリカのエラーをクラスターにランダムに誘導します。
+2. 次に、"*サービス開発者*" は、[**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) と [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) クラスまたは [**Invoke-ServiceFabricChaosTestScenario** コマンドレット](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)を使用して、組み込みの chaos テスト シナリオを実行します。 chaos テスト シナリオは、複数のノード、コード パッケージ、レプリカのエラーをクラスターにランダムに誘導します。
 3. *service developer* [サービス対サービスの通信をテスト](service-fabric-testability-scenarios-service-communication.md) します。
 
 詳細については、「 [Introduction to the Fault Analysis Service (Fault Analysis サービスの概要)](service-fabric-testability-overview.md) 」を参照してください。

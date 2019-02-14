@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 90c8af9b09a5050cc090725665501d60091c9ae5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b6d821f8c4f2fa66e24e6a2409f58406820ef6d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509169"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100776"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 
-SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-cloud-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
+SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-single-database-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
 
 ## <a name="overview"></a>概要
 

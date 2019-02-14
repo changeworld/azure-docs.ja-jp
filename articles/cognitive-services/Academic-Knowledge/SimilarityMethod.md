@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Similarity メソッドを使用すると、2 つの文字列の学術的な類似度を計算できます。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 0e42d5e05268d4a572376f2bdf25d0ce6f8f4be7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490126"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868686"
 ---
 # <a name="similarity-method"></a>Similarity メソッド
 
@@ -34,16 +34,16 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 **s2**        |String   |はい  |比較する文字列*
 <sub> *比較する文字列の長さは最大 1 MB です。</sub>
 <br>
-## <a name="response"></a>応答
-名前 | 説明
+## <a name="response"></a>Response
+Name | 説明
 --------|---------
 **SimilarityScore**        |s1 と s2 のコサイン類似度を表す浮動小数点数値で、値が 1.0 に近いほど類似度が高く、値が -1.0 に近いほど類似度が低くなります
 <br>
 
 ## <a name="successerror-conditions"></a>成功/エラー条件
-HTTP の状態 | 理由 | 応答
+HTTP の状態 | 理由 | Response
 -----------|----------|--------
-**200**         |成功 | 浮動小数点数
+**200**         |Success | 浮動小数点数
 **400**         | 不適切な要求または要求が無効です | エラー メッセージ      
 **500**         |内部サーバー エラー | エラー メッセージ
 **Timed out**     | 要求がタイムアウトしました。  | エラー メッセージ

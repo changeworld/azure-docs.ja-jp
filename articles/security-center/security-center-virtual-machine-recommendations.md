@@ -4,7 +4,7 @@ description: このドキュメントでは、仮想マシン、コンピュー�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f5ce7f62-7b12-4bc0-b418-4a2f9ec49ca1
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: 32ca3fc87c91deba26e63a5938536d488e7dc5a8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488742"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104823"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Azure Security Center リソースの推奨事項を理解する
 

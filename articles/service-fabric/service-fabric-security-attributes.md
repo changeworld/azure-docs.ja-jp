@@ -4,17 +4,17 @@ description: Azure Service Fabric を評価するための一般的なセキュ�
 services: service-fabric
 documentationcenter: ''
 author: msmbaldwin
-manager: mbaldwin
+manager: barbkess
 ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c997bf4f7eaac032bd1e28614c66c21b502d983f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0e6e0040577723955a4a9a0d8c3e966d1df5e788
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513377"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110645"
 ---
 # <a name="security-attributes-for-azure-service-fabric"></a>Azure Service Fabric のセキュリティ属性
 

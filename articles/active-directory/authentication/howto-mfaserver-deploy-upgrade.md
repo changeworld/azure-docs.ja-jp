@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 2e7aa6dd71cfe191300c1739690f9e5a72543995
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: faf04c870ec72f7ff62234b5bcaadde0b8a0a144
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076351"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190077"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 

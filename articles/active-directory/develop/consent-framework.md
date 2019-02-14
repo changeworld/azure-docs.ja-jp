@@ -16,12 +16,13 @@ ms.date: 11/30/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: d31c54da82a8580fee9ad3d681c449aff74b14c4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dbac6fe421864f9479c9a4ee7eecde97c13f6052
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097846"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200532"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 

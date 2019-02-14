@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 75c8952b1fa7003b6a2c12c7e3e6be4983a25bba
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0023ac374ef70593d0ab2d9589c99d0f37e19ff8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174110"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189601"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>PIM で自分の Azure AD ディレクトリ ロールをアクティブにする
 

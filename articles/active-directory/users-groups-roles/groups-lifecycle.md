@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 内の Office 365 グループの有効期限 | Microsoft Docs
+title: Office 365 グループの有効期限の設定 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で Office 365 グループの有効期限を設定する方法
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166171"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658251"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -53,15 +53,16 @@ User | 所有する Office 365 グループを更新できます<br>所有する
   
   ![[有効期限] ブレード](./media/groups-lifecycle/expiration-settings.png)
 
-4. **[有効期限]** ブレードで、次のことができます。
+3. **[有効期限]** ブレードで、次のことができます。
 
   * グループの有効期間を日数で設定する。 プリセット値かカスタム値 (31 日以上である必要があります) のいずれかを選択する。 
   * グループに所有者がいない場合に、更新と有効期限の通知を送信する電子メール アドレスを指定する。 
   * どの Office 365 グループを有効期限切れにするかを選択する。  **[すべて]**  を選択してすべての Office 365 グループの有効期限を有効にするか、**[選択済み]** を選択して、選択された Office 365 グループのみを有効にするか、 **[なし]**  を選択してすべてのグループの有効期限を無効にできます。
   * **[保存]** を選択して完了し、設定を保存する。
 
+## <a name="email-notifications"></a>電子メール通知
 
-次のような電子メール通知が、グループの有効期限の 30 日前、15 日前、1 日前に Office 365 グループの所有者に送信されます。
+次のような電子メール通知が、グループの有効期限の 30 日前、15 日前、1 日前に Office 365 グループの所有者に送信されます。 メールの言語は、グループ所有者の優先言語またはテナントの言語によって決まります。 グループの所有者が優先言語を定義している場合、または複数の所有者が同じ優先言語を持っている場合は、その言語が使用されます。 その他のすべてのケースでは、テナントの言語が使用されます。
 
 ![有効期限に関する電子メール通知](./media/groups-lifecycle/expiration-notification.png)
 

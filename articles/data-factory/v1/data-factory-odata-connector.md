@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb2d3bc128a3508f85ac349242d9a33f2a88424e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022752"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108808"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "54022752"
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、OData ソースからデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-OData ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、他のデータ ストアから OData ソースへのデータの移動ではなく、OData ソースから他のデータ ストアへのデータの移動のみをサポートします。 
+OData ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、他のデータ ストアから OData ソースへのデータの移動ではなく、OData ソースから他のデータ ストアへのデータの移動のみをサポートします。
 
 ## <a name="supported-versions-and-authentication-types"></a>サポートされているバージョンと認証の種類
 この OData コネクタは OData バージョン 3.0 および 4.0 をサポートしているため、クラウド OData とオンプレミス OData のどちらのソースのデータもコピーできます。 後者の場合は、Data Management Gateway のインストールが必要になります。 Data Management Gateway の詳細については、 [オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事を参照してください。
@@ -44,17 +44,17 @@ OData ストアから、サポートされている任意のシンク データ 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、OData ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: OData ソースから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odata-source-to-azure-blob)」のセクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: OData ソースから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odata-source-to-azure-blob)」のセクションを参照してください。
 
 次のセクションでは、OData ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -78,7 +78,7 @@ OData ストアから、サポートされている任意のシンク データ 
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
@@ -93,7 +93,7 @@ OData ストアから、サポートされている任意のシンク データ 
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
         "typeProperties":
@@ -112,7 +112,7 @@ OData ストアから、サポートされている任意のシンク データ 
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "<endpoint of on-premises OData source e.g. Dynamics CRM>",
             "authenticationType": "Windows",
@@ -174,7 +174,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |Datetime |
+| Edm.DateTime |DateTime |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
 | Edm.Single |Single |
@@ -184,7 +184,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
 | Edm.String |String |
-| Edm.Time |timespan |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
@@ -206,15 +206,15 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
-            }
         }
+    }
 }
 ```
 
@@ -222,13 +222,13 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 
 ```json
 {
-        "name": "AzureStorageLinkedService",
+    "name": "AzureStorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
-        }
+    }
 }
 ```
 
@@ -244,7 +244,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
         "type": "ODataResource",
         "typeProperties":
         {
-                "path": "Products"
+            "path": "Products"
         },
         "linkedServiceName": "ODataLinkedService",
         "structure": [],
@@ -256,7 +256,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
         "policy": {
             "retryInterval": "00:01:00",
             "retryTimeout": "00:10:00",
-            "maximumRetry": 3                
+            "maximumRetry": 3
         }
     }
 }
@@ -266,7 +266,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -324,7 +324,6 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 }
 ```
 
-
 **OData ソースおよび BLOB シンクを使用するパイプラインでのコピー アクティビティ:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定された SQL クエリは、OData ソースの最新のデータを選択します。
@@ -376,7 +375,6 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 ```
 
 パイプライン定義での **クエリ** の指定は省略可能です。 Data Factory サービスでデータの取得に使用する **URL** は次の形式になります: リンクされたサービスに指定した URL (必須) + データセットに指定したパス (オプション) + パイプラインのクエリ (オプション)。
-
 
 ### <a name="type-mapping-for-odata"></a>OData の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。

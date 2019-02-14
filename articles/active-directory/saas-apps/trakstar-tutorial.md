@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: fdcc3f4aa5c7f2b972736a31018ae76a4a81767a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fe5c8d0e4d814244d31fb293fa19e979683bd1ee
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173039"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル:Azure Active Directory と Trakstar の統合
 
@@ -168,7 +169,7 @@ Trakstar で Azure AD のシングル サインオンを構成およびテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-trakstar-test-user"></a>Trakstar テスト ユーザーの作成
 

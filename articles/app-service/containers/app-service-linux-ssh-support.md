@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251308"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984472"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -58,7 +58,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     > [!NOTE]
     > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイト経由でのみアクセスでき、公開されている資格情報を使用して認証されます。
 
-    ```docker
+    ```Dockerfile
     # ------------------------
     # SSH Server support
     # ------------------------
@@ -74,13 +74,13 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     > * `Ciphers` には次の値を少なくとも 1 つ指定する必要あります。`aes128-cbc,3des-cbc,aes256-cbc`
     > * `MACs` には次の値を少なくとも 1 つ指定する必要あります。`hmac-sha1,hmac-sha1-96`
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
 3. Dockerfile の [`EXPOSE` 命令](https://docs.docker.com/engine/reference/builder/#expose)に、ポート 2222 を含めます。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部専用ポートです。
 
-    ```docker
+    ```Dockerfile
     EXPOSE 2222 80
     ```
 
@@ -93,7 +93,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
 
 Dockerfile では、[`ENTRYPOINT` 命令](https://docs.docker.com/engine/reference/builder/#entrypoint)を使用してスクリプトを実行します。
 
-    ```docker
+    ```Dockerfile
     COPY init_container.sh /opt/startup
     ...
     RUN chmod 755 /opt/startup/init_container.sh

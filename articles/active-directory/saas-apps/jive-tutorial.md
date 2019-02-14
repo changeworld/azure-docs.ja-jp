@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f2b9d59e85593047feb8d243c7c874786864b4d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f6155f348a8e5698c9c7792f45536c94f6ead81
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>チュートリアル:Azure Active Directory と Jive の統合
 
@@ -183,7 +184,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-jive-test-user"></a>Jive テスト ユーザーの作成
 

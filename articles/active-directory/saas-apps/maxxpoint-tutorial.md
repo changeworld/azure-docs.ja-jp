@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: bc83c67a2f5cbe0f0ccaaabb0c5fafd60828fd45
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 23801a796473d7985c17ffcf8a9f1350c1b0e8e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192861"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル:Azure Active Directory と MaxxPoint の統合
 
@@ -166,7 +167,7 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 ### <a name="creating-a-maxxpoint-test-user"></a>MaxxPoint のテスト ユーザーの作成
 

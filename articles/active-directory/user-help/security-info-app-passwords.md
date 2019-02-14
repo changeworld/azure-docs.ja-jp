@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 185c6e18a84369702de3bd0c398a9cc0c64b8217
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 62dcdfe3aef40942dd61fe604e179b61dbdd747c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191382"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211888"
 ---
 # <a name="manage-app-passwords-using-security-info-preview"></a>セキュリティ情報を使用したアプリ パスワードの管理 (プレビュー)
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: a13a14ffbc88b655293cb35e72541df76551de62
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 007989d51ad111fb6a3ef21daee6a7c484bd154d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172393"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル:Azure Active Directory と Sequr の統合
 
@@ -152,7 +153,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     c. 構成を保存した後に、[リレー状態] の値が生成されます。 **[リレー状態]** の値をコピーして、Azure Portal の **[Sequr のドメインと URL]** セクションの **[リレー状態]** テキスト ボックスに貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -187,7 +188,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-sequr-test-user"></a>Sequr テスト ユーザーを作成する
 

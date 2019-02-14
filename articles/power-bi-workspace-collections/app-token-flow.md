@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1dd6be61aab91bb15cc42939689e3c7399bee3db
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661090"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236534"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -106,7 +106,7 @@ Power BI ワークスペース コレクションで使用可能なスコープ�
 
 次のようにスコープ間をスペースで区切ると、複数のスコープを指定できます。
 
-```
+```csharp
 string scopes = "Dataset.Read Workspace.Report.Create";
 ```
 

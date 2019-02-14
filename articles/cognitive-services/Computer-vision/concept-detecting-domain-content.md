@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 画像に関する詳細な情報を返すための画像分類ドメインを指定する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 76484a2340e527dc016f321dbafa29adb7c358b5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: df7e61bb9d064c4530c0212cc02fbdd849017612
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157535"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872001"
 ---
 # <a name="detecting-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 

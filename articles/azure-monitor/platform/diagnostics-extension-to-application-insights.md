@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: a808dc3e924d3f1800790bdb83cb4ce65112480b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470139"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892856"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure 診断拡張機能を使用してデータを収集します。  Azure 診断のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure 診断拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -215,7 +215,7 @@ Application Insights のシンクの構成の例を以下に示します。
 - **Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次の手順
-* Application Insights で [Azure 診断情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events)方法について説明します。
+* Application Insights で [Azure 診断情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)方法について説明します。
 * [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 * [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 

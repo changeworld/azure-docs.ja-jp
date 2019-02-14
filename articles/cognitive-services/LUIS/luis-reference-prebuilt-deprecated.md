@@ -5,18 +5,18 @@ description: この記事には、Language Understanding (LUIS) での非推奨�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f7071d34f6167786012bd50be7b778fa08b46371
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 576acb0c03d6701018cefa26118a334d3b9c83b8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217001"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869604"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。

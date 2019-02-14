@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 884cee735f6bf9f383b525890acf295040cc0c63
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a293535bbda5960dc39640fad1704ddd7390089f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194629"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
 
@@ -201,7 +202,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sprinklr-test-user"></a>Sprinklr テスト ユーザーの作成
 
@@ -229,7 +230,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Language]\(言語\)** を選択します。
 
-    d. **[User Type]\(ユーザー タイプ\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[User Type]\(ユーザー タイプ\)** を選択します。
 
     e. **[Update]** をクリックします。
    

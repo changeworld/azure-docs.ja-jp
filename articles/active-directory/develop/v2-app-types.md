@@ -17,12 +17,13 @@ ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: bee59155a8b8a03064b658c2657a7540c53a8874
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100769"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162936"
 ---
 # <a name="application-types-for-v20"></a>v2.0 用のアプリケーションの種類
 

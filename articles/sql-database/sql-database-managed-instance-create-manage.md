@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 26445017553435454e929d9852dfd9fc173c3b2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d9952581049198131e30cd7d0ba0ebf6a14cc54
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460099"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098870"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Database Managed Instance のマネージド API リファレンス
 
@@ -73,7 +73,7 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 > [!IMPORTANT]
 > Transact-SQL を使用して、マネージド インスタンスを作成または削除することはできません。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|新しいマネージド インスタンス データベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Azure SQL Database Managed Instance データベースを変更します。|
@@ -82,7 +82,7 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 
 マネージド インスタンスを作成して管理するには、以下の REST API 要求を使用します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|マネージド インスタンスを作成または更新します。|
 |[Managed Instances - Delete](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|マネージド インスタンスを削除します。|
@@ -93,5 +93,5 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 
 ## <a name="next-steps"></a>次の手順
 
-- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-cloud-migrate.md)」を参照してください。
+- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

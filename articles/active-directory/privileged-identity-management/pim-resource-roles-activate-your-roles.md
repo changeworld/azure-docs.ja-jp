@@ -14,12 +14,13 @@ ms.subservice: pim
 ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e37435b0f2d52e2015caf3d2e0db6db0dba60c75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 07d9d6eaf0426512e93574d733e7daee1cab1ddb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187353"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183515"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
 

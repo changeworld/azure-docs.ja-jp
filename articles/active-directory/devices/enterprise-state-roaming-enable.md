@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: a4f1e45f25e00a000127499f86d941501fc54138
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7ce6dc4cf98f2886eb4eed7049048d67599ac42e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098682"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207485"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。

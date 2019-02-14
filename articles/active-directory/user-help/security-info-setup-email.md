@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 62b6f7306cb2492d4232b3b42021db721a0b374c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8c18124286d78520e8b89a61c5d12760c9ad784c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189291"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197217"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>メールを使用するようにセキュリティ情報を設定する (プレビュー)
 

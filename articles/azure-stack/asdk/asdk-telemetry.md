@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 8eb02eadba68f4e226e09e8e243e6c88eb0dc9fe
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6c4527f88e10e652ebcaf94a153cf30cebb54841
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239198"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177463"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 

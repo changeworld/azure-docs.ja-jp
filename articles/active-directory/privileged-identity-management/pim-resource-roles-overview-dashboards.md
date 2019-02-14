@@ -15,12 +15,13 @@ ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 149b51707989f6f6e0bf81fea9a2971f4823bec3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30cfafec770aec72faf01563018fbd478e73ab2f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196550"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202594"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>アクセス レビューを実行するためのリソース ダッシュボードの使用
 

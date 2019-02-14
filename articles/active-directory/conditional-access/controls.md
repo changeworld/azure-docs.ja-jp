@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4e6912d13b4192b1f938acf5a9808221f5aa42f7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53187bfbc32d618663f1c8e3e6fb232d748b6b99
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077660"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169124"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 

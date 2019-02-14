@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベースをテストすることは、回答の正確性を高めるという反復的なプロセスの重要な要素です。 ナレッジ ベースのテストは、編集機能も備えた強化された会話インターフェイスを通じて行うことができます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: dceeb17d8d56de37bc21790283ab73478b6d3076
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218599"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861242"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>QnA Maker のナレッジ ベースを対話形式でテストする
 

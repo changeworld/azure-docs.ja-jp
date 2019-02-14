@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105799"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999370"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -53,7 +53,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ## <a name="parameters"></a>parameters
 [パラメーター](../../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
-ユーザーが [Azure Marketplace](solutions.md#install-a-management-solution) または Azure クイック スタート テンプレートから管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
+ユーザーが [Azure Marketplace](solutions.md#install-a-monitoring-solution) または Azure クイック スタート テンプレートから管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
 
 
 サンプル パラメーターを次に示します。  

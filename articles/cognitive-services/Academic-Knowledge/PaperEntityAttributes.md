@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API で論文エンティティに使用できる属性について説明します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168381"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873089"
 ---
 # <a name="paper-entity"></a>論文エンティティ
 
@@ -28,7 +28,7 @@ Id      |エンティティ ID                                          |Int64  
 Ti      |論文のタイトル                                        |String     |Equals、<br/>StartsWith
 L       |"\@@@" で区切られた論文の言語コード            |String     |等しい
 Y       |論文の年                                         |Int32      |Equals、<br/>IsBetween
-D       |論文の日付                                         |日付       |Equals、<br/>IsBetween
+D       |論文の日付                                         |Date       |Equals、<br/>IsBetween
 CC      |引用数                                     |Int32      |なし  
 ECC     |推定引用数                           |Int32      |なし
 AA.AuN  |著者名                                        |String     |Equals、<br/>StartsWith

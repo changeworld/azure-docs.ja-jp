@@ -13,12 +13,13 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: ccafd3c93130b137573a1b143d182c4861693577
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d16b54df5b8392a294036978e0b917ecdb3ce1ca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168908"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184246"
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 

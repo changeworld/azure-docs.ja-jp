@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091205"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982762"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -42,9 +42,8 @@ ms.locfileid: "53091205"
 * ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* という名前を付ける必要があります。
     * ゲートウェイ サブネットのアドレス空間 = "192.168.200.0/26"
 * ゲートウェイ名 = "ERGW"
-* ゲートウェイの IP 名 = "MyERGWVIP"
-* ゲートウェイの種類 = "ExpressRoute"。ExpressRoute 構成には、この種類が必須です。
 * ゲートウェイのパブリック IP 名 = "MyERGWVIP"
+* ゲートウェイの種類 = "ExpressRoute"。ExpressRoute 構成には、この種類が必須です。
 
 構成を開始する前に、これらの手順の[ビデオ](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)を表示できます。
 

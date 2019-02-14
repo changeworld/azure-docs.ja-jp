@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このドキュメントでは、Project Acoustics ワークフローの全 3 フェーズで設計の意図を表現する方法について説明します。
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: cf38b2096e958a7484e5161277a608ec2cb88224
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb5f309a96feac2caea85fbe81b7216eecfc4b79
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470487"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873939"
 ---
 # <a name="design-process-overview"></a>設計プロセスの概要
 Project Acoustics ワークフローの全 3 フェーズ (ベイク前のシーン設定、音源配置、ベイク後設計) で設計の意図を表現できます。 プロセスでは、リバーブ ボリュームの配置に関連したマークアップはそれほど必要ありませんが、シーンの聞こえ方に対するデザイナーの制御は維持されています。

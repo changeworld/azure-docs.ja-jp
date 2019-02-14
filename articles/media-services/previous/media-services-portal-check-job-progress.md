@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e15113e1af92dd6f8c5962a7223fa4f928e3b5a2
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 303177cdbc0f9727e5b440b06816a47f88c63dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037712"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000866"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
 > [!div class="op_single_selector"]

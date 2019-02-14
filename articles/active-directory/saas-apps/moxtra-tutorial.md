@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e0674c0bd3e5244b76d35e05057aee3b75249703
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0f613c7768b92ce97dcc16a757a066dd5796879b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197111"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>チュートリアル:Azure Active Directory と Moxtra の統合
 
@@ -139,7 +140,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
     
 1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -169,7 +170,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
  
     c. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
  
-    d. **[AuthnContextClassRef]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:ac:classes:Password**」と入力します。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[AuthnContextClassRef]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:ac:classes:Password**」と入力します。 
  
     e. **[NameID 形式]** ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。 
  
@@ -214,7 +215,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-moxtra-test-user"></a>Moxtra テスト ユーザーの作成
 
@@ -236,7 +237,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
   
     c. **[電子メール]** ボックスに、Azure Portal と同じ Britta の電子メール アドレスを入力します。
   
-    d. **[Division (事業部)]** ボックスに「**Dev**」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Division (事業部)]** ボックスに「**Dev**」と入力します。
   
     e. **[Department (部門)]** ボックスに「**IT**」と入力します。
   

@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f28bbe4ea0e1aa33a8b46815231db170493c5d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078952"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185946"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 

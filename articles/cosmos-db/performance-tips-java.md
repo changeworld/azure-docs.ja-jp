@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 221dd8a26f0d01d79d066c214bd53f7e881e5554
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 747f58ba5062bd8bcc3995bbfa73cea49e8ddc4b
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201225"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892900"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB と Java のパフォーマンスに関するヒント
 
@@ -103,11 +103,11 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
    <a id="tune-page-size"></a>
 8. **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
-    読み取りフィード機能 ([readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments#com.microsoft.azure.documentdb.documentclient.readDocumentsStringFeedOptionsc) など) を使ってドキュメントの一括読み取りを実行するときや、SQL クエリを発行するときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
+    読み取りフィード機能 ([readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments) など) を使ってドキュメントの一括読み取りを実行するときや、SQL クエリを発行するときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 
     該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、[x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 要求ヘッダーを使って、ページ サイズを最大 1,000 まで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
-    また、[setPageSize メソッド](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize#com.microsoft.azure.documentdb.feedoptionsbase.setPageSizeInteger)を使ってページ サイズを設定することもできます。
+    また、[setPageSize メソッド](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize)を使ってページ サイズを設定することもできます。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
  

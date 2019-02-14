@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 95b5bbb6c227b5001865a751abddddc4924e7b2d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259633"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981079"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Apache Solr をインストールして使用する
 
@@ -46,17 +46,12 @@ ms.locfileid: "54259633"
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
-    <table border='1'>
-        <tr><th>プロパティ</th><th>値</th></tr>
-        <tr><td>Name</td>
-            <td>スクリプト アクションの名前を指定します。 たとえば、<b>Install Solr</b> のような名前にします。</td></tr>
-        <tr><td>スクリプト URI</td>
-            <td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 たとえば、<i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i> のように指定します。</td></tr>
-        <tr><td>ノードの種類</td>
-            <td>カスタマイズ スクリプトが実行されるノードを指定します。 <b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
-        <tr><td>parameters</td>
-            <td>スクリプトで必要な場合は、パラメーターを指定します。 Solr をインストールするスクリプトにパラメーターは必要ないため、この部分は空白のままにすることもできます。</td></tr>
-    </table>
+    |プロパティ|値|
+    |---|---|
+    |Name|スクリプト アクションの名前を指定します。 たとえば、**Install Solr** のような名前にします。|
+    |スクリプト URI|クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 たとえば、*https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1* のように指定します。|
+    |ノードの種類|カスタマイズ スクリプトが実行されるノードを指定します。 **[すべてのノード]**、**[ヘッド ノードのみ]**、**[ワーカー ノードのみ]** から選択できます。
+    |parameters|スクリプトで必要な場合は、パラメーターを指定します。 Solr をインストールするスクリプトにパラメーターは必要ないため、この部分は空白のままにすることもできます。|
 
     複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。 スクリプトの追加後、チェックマークをクリックしてクラスターの作成を開始します。
 

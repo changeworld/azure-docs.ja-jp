@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Custom Search が返すことができるすべての Web ページをページングする方法を示します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 50c4389830c6a9c131610e9091f7166097b1e728
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 891d0f88158b7d315b5908a7e1c0f73215b4b09e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235243"
 ---
 # <a name="paging-webpages"></a>Web ページのページング 
 

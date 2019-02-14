@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8838cb2479078a8b6b4f031128501f09284b6bdd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fb6e130b772afabe939516ffa37ae292e2db5859
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159276"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>チュートリアル:Azure Active Directory と DocuSign の統合
 
@@ -171,7 +172,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[Sign AuthN request]\(AuthN 要求に署名する\)** を選択します。
 
@@ -231,7 +232,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-docusign-test-user"></a>DocuSign テスト ユーザーの作成
 

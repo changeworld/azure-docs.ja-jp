@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: cbeec5a62129b71b8a8ec5739e09cab5c126463e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194034"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル:Azure Active Directory と SCC LifeCycle の統合
 
@@ -170,7 +171,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-scc-lifecycle-test-user"></a>SCC LifeCycle テスト ユーザーの作成
 

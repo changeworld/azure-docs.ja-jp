@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Custom Speech Service は Speech Service の一部になっています。 Speech Service に切り替えると、最新の品質と機能の更新のベネフィットがあります。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 594233b9e345f9578c218b042a64ea167d50addb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211034"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856896"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Custom Speech Service から Speech Service に移行する
 
@@ -40,12 +40,6 @@ Speech Service の価格モデルは時間ベースになっており、より�
 3. クイック スタート ガイドと SDK サンプルに従って、適切な API を使用します。 REST API を使用する場合は、正しいエンドポイントとリソース キーを使用する必要もあります。
 
 4. Speech Service とその API を使用するようにクライアント アプリケーションを更新します。
-
-> [!NOTE]
-> * Language Understanding (LUIS) で音声を有効にした場合は、同じリージョン内の 1 つの LUIS リソースで、LUIS だけでなく、すべての音声サービスに対応できます。 詳細については、「[音声から意図を認識する](how-to-recognize-intents-from-speech-csharp.md)」を参照してください。
-> * テキストからテキストへの翻訳は Speech Service の一部ではありません。 この機能には、専用の Azure リソース サブスクリプションが必要です。
- 
-
 
 ## <a name="migration-for-existing-customers"></a>既存のお客様の移行
 

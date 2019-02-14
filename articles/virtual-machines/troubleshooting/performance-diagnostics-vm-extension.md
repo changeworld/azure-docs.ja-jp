@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096791"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980025"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -77,7 +77,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
-|xperfTrace|○|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
+|xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
@@ -210,7 +210,7 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
 ```
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
-`Set-AzureRmVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
+`Set-AzVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
 
 PowerShell
 
@@ -218,7 +218,7 @@ PowerShell
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
-Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
+Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Performance.Diagnostics" `

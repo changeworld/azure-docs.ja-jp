@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1407df2dbc0cc590ea919ca0ead727959b1e08b4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55772352"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172435"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>同期規則をカスタマイズする方法
 

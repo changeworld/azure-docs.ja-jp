@@ -3,8 +3,8 @@ title: アプリケーション リストに予期しないアプリケーショ
 description: テナントのすべてのアプリケーションを表示し、[エンタープライズ アプリケーション] の [All Applications (すべてのアプリケーション)] リストにアプリケーションが表示される方法を理解する
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3037d1de83e34aa8489498c65dbc5fd3423b081b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755385"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162664"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>アプリケーション リストに予期しないアプリケーションがある
 

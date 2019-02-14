@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a66584aa1cd3f335111774ef1df37cddc630f69d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047958"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233372"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでのレポートの保存
 
@@ -47,9 +47,10 @@ Power BI ワークスペース コレクション内で既存のレポートを�
 
 JavaScript の例:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -75,6 +76,7 @@ JavaScript の例:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 これで、レポートが編集モードでアプリに埋め込まれます。
@@ -83,7 +85,7 @@ JavaScript の例:
 
 適切なトークンとアクセス許可を使用してレポートを編集モードで埋め込んだ後、[ファイル] メニューまたは JavaScript を使用してレポートを保存できます。
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
 
@@ -93,7 +95,7 @@ JavaScript の例:
 
 ## <a name="save-as"></a>名前を付けて保存
 
-```
+```javascript
 // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -110,9 +112,9 @@ JavaScript の例:
 
 次に、"*名前を付けて保存*" した後に、新しいレポートを読み込む必要があります。 新しいレポートの読み込みは、他のレポートを埋め込む場合と同様です。
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -124,6 +126,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="see-also"></a>関連項目

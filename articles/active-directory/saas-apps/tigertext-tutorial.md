@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: a3d03690107ca28ce961383c53e7e80468005de1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 20bb003fbb8c6e7c1592618a8742f9b88882e358
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152911"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerText Secure Messenger の統合
 
@@ -158,7 +159,7 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-tigertext-secure-messenger-test-user"></a>TigerText Secure Messenger のテストユーザーの作成
 

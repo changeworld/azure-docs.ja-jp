@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fbe7809a4b83c9cf7133511048ded87cc7fdcf82
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197506"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>認証アプリを使用するようにセキュリティ情報を設定する (プレビュー)
 

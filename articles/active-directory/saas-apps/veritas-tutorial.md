@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b2d4acb3a717f51d0ff15868dea917806b5b604
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 70adbcd8c25b3acb4408447070d3b0397d258847
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181964"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル:Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
 
@@ -180,7 +181,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-veritas-enterprise-vaultcloud-sso-test-user"></a>Veritas Enterprise Vault.cloud SSO のテスト ユーザーの作成
 

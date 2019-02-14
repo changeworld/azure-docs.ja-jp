@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 4bc522915b302c7875ca77213a39fce52f0736a1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f62e6e620dc88894b946ea9ce9e297be1b741841
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162244"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>チュートリアル:Azure Active Directory と Image Relay の統合
 
@@ -165,7 +166,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Name Id Format]** として **[urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress]** を選択します。
 
-    d. **[Binding Options for Requests from the Service Provider (Image Relay)]** で **[POST Binding]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Binding Options for Requests from the Service Provider (Image Relay)]** で **[POST Binding]** を選択します。
 
     e. **[x.509 Certificate]** の下にある **[Update Certificate]** をクリックします。
 
@@ -218,7 +219,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-image-relay-test-user"></a>Image Relay の テスト ユーザーの作成
 

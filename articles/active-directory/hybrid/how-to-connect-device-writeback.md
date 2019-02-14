@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2ed7cee529b1142576c4a8e480923f1e993bde3a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7ed6fd0a4a1de3fb02b3d8583c0e5c0cecac211
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493645"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205513"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
 > [!NOTE]

@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/10/2019
 ms.author: dwgeo
-ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4bcc1bbed732e09f4c4d915342a422ce6c36901
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254623"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002073"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>クライアントが Azure Media Services キー配信サービスにトークンを渡す方法
 プレーヤーがキーを取得できるよう検証を受けるために Azure Media Services キー配信サービスにトークンを渡す方法についてお客様から質問を受けることがよくあります。 Media Services は、単純 Web トークン (SWT) 形式と JSON Web トークン (JWT) 形式をサポートしています。 システムで共通暗号化または Advanced Encryption Standard (AES) エンベロープ暗号化のどちらが使われていても、すべての種類のキーにトークン認証が適用されます。

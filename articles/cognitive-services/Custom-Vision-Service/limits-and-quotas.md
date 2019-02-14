@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Custom Vision Service の制限とクォータについて説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: anroth
-ms.openlocfilehash: 296f9046b8409de2626296e5b6e654c015d4c962
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8e96447f2a1b5b68ebf99ab4006fe43937f4c75f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215267"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884428"
 ---
 # <a name="pricing-and-limits"></a>料金と制限
 

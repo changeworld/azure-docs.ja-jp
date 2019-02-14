@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468395"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694094"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -87,7 +87,8 @@ VM を再起動するように求められた後と VM の再開後、再起動�
 適用されるネットワーク セキュリティ グループ設定で、ディスクの暗号化のために規定されている、ネットワーク構成の[前提条件](azure-security-disk-encryption-prerequisites.md#bkmk_GPO)を満たすようエンドポイントが設定されている必要があります。
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault
-[Azure AD の資格情報](azure-security-disk-encryption-prerequisites-aad.md)を使用して暗号化を有効にしている場合、ターゲットの VM には Azure AD の認証エンドポイントと Key Vault のエンドポイントへのアクセスを許可する必要があります。  この手順の詳細については、[Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) チームが管理しているファイアウォールからのキー コンテナーへのアクセスに関するガイダンスを参照してください。 
+
+[Azure AD の資格情報](azure-security-disk-encryption-prerequisites-aad.md)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、「[Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)」ドキュメンテーションのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../key-vault/key-vault-access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../virtual-machines/windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。

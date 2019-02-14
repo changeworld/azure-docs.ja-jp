@@ -11,12 +11,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 90b085ca0cf57391d24ddfbdfe56776afb26cc64
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 90e156f1d1d7bbbb6c4f65a4762977d28a5a0b89
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075875"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182597"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>招待を使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 

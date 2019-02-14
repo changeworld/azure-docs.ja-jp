@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 0ce14b3d78b020bbb8872661351794e82944205e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 26216131b461a395d3c87895a055d3ae30abf87c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081842"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198815"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 

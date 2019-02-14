@@ -17,12 +17,13 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: 2b25f2da7c512b58133a58ad07e5efedc5f79c95
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077688"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173893"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 

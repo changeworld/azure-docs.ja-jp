@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 10ddfa2f7b2b17c23da1e67474a4b464780bc2e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e56dc54c2c296ee17b04070ac8ee68d2180b7046
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163647"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル:Azure Active Directory と Picturepark の統合
 
@@ -158,7 +159,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
    
     c. **[Set as default]** を選びます。
    
-    d. **[Issuer URI]\(発行者 URI\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer URI]\(発行者 URI\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。 
 
@@ -201,7 +202,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-picturepark-test-user"></a>Picturepark テスト ユーザーの作成
 
@@ -229,7 +230,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
    
     c. **[First Name]\(名\)** ボックスに、ユーザーの**名**を「**Britta**」と入力します。 
    
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの**姓**を「**Simon**」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの**姓**を「**Simon**」と入力します。
    
     e. **[Company]\(会社\)** ボックスに、ユーザーの**会社名**を入力します。 
    

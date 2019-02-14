@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 3009cb42ac477b18d45ab5968d6f5793ce1cd36c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 76d1621834c5096743f6d37dad94754ec8b259a4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165899"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル:Azure Active Directory と moconavi の統合
 
@@ -158,7 +159,7 @@ moconavi で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-moconavi-test-user"></a>moconavi テスト ユーザーの作成
 

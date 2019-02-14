@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462020"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728404"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -35,12 +35,12 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 
-[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、Azure バックボーン経由で仮想ネットワーク接続を拡張し、Azure SQL Database でトラフィック元の仮想ネットワーク サブネットを識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
+[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure バックボーンで仮想ネットワークの接続を拡張し、トラフィックの発信元である仮想ネットワーク サブネットを Azure SQL Database が識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
 
-[仮想ネットワークの規則](sql-database-vnet-service-endpoint-rule-overview.md)では、Azure SQL Database で、仮想ネットワーク内の選択されたサブネットから送信される通信のみが受け入れられるようにします。
+[仮想ネットワークの規則](sql-database-vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れることができます。
 
 > [!NOTE]
-> ファイアウォール規則でのアクセスの制御は、**Azure SQL Database Managed Instance** には適用され*ません*。 必要なネットワーク構成について詳しくは、[Managed Instance への接続](sql-database-managed-instance-connect-app.md)に関するページを参照してください
+> ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)」を参照してください
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -64,7 +64,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
     使用できる追加の Azure AD 認証オプションには、[多要素認証](../active-directory/authentication/concept-mfa-howitworks.md)と[条件付きアクセス](sql-database-conditional-access.md)を含む、[SQL Server Management Studio 用の Active Directory ユニバーサル認証](sql-database-ssms-mfa-authentication.md)接続があります。
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**Azure SQL Database Managed Instance** には適用され*ません*。 必要なネットワーク構成について詳しくは、[Managed Instance への接続](sql-database-managed-instance-connect-app.md)に関する記事をご覧ください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関する次の記事をご覧ください。
 
 承認は、Azure SQL Database 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可は、データベース レベルのアクセス許可を定義する[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加するか、ユーザーに特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)を付与することで、制御されます。 詳細については、[ログインとユーザー](sql-database-manage-logins.md)に関するページを参照してください
 
@@ -86,11 +86,11 @@ SQL Database では、監査と脅威検出機能を提供することで、顧�
 
 ### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Log Analytics と Event Hubs での SQL 監査
 
-SQL Database Auditing ではデータベース アクティビティを追跡し、データベース イベントを顧客が所有する Azure ストレージ アカウントの監査ログに記録することによって、セキュリティ標準の遵守を保持できるようにします。 Auditing を使用することで、ユーザーは進行中のデータベース アクティビティを監視し、過去のアクティビティを分析および調査して、潜在的な脅威や疑わしい不正使用、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
+SQL Database Auditing はデータベース アクティビティを追跡し、顧客が所有する Azure ストレージ アカウントの監査ログにデータベース イベントを記録することによって、セキュリティ標準のコンプライアンスを維持できるようにします。 Auditing を使用することで、ユーザーは進行中のデータベース アクティビティを監視し、過去のアクティビティを分析および調査して、潜在的な脅威や疑わしい不正使用、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
 
-### <a name="sql-threat-detection"></a>SQL の脅威検出
+### <a name="threat-detection"></a>脅威の検出
 
-脅威検出では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる動作および害を及ぼす可能性のある試みに関する監査ログを分析することで、監査を強化します。 SQL インジェクション攻撃、潜在的なデータ侵入、ブルート フォース パスワード攻撃など、疑わしいアクティビティまたは異常なアクセス パターンに対して、アラートが作成されます。 脅威検出アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のための推奨事項が示されます。 脅威の検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「 [SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
+脅威検出では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる動作および害を及ぼす可能性のある試みがないか監査ログを分析することで、監査を強化します。 SQL インジェクション攻撃、潜在的なデータ侵入、ブルート フォース パスワード攻撃など、疑わしいアクティビティまたは異常なアクセス パターンに対して、アラートが作成されます。 脅威検出アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 脅威検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「[SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -137,19 +137,19 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ## <a name="security-management"></a>セキュリティ管理
 
-### <a name="sql-vulnerability-assessment"></a>SQL の脆弱性評価
+### <a name="vulnerability-assessment"></a>脆弱性評価
 
-[SQL の脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである、SQL Advanced Data Security (ADS) オファリングの一部です。 脆弱性評価は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
+[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである、Advanced Data Security (ADS) オファリングの一部です。 脆弱性評価は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 ### <a name="data-discovery--classification"></a>データの検出と分類
 
-データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付け、保護を行う高度な機能が用意されます。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付け、および保護を行うための、Azure SQL Database に組み込まれた高度な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
 
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 - データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
 
-詳細については、[SQL DB データの検出と分類の概要](sql-database-data-discovery-and-classification.md)に関するページを参照してください。
+詳細については、「[データの検出と分類の概要](sql-database-data-discovery-and-classification.md)」を参照してください。
 
 ### <a name="compliance"></a>コンプライアンス
 

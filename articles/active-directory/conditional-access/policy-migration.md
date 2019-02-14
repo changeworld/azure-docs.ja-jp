@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2290dc8bca92bb1ecf31f56110ee3adc1c609438
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f93b9d6fb6e79ce348dc9bed64452536d5132f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081077"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169277"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのポリシー移行の概要 
 

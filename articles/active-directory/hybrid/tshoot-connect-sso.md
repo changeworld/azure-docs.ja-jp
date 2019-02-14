@@ -12,12 +12,13 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d2e5f852678298a7916cf745ece6cd5711ee57ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198284"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175916"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 

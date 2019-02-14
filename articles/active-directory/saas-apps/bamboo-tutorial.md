@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 027f5a9f02a0580fce61091e8be9ece9069fb34f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5353cc921d4fc07770737bb70d02361fa0e5f438
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156181"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
@@ -155,7 +156,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     c. **[Description]\(説明\)** ボックスに、説明を入力します。
 
-    d. **[次へ]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします。
 
 1. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[Next]\(次へ\)** をクリックします。
 
@@ -204,7 +205,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>SAML SSO for Bamboo by resolution GmbH のテスト ユーザーの作成
 

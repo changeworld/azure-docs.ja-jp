@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d4dba956ecd88683b124d4faf997a5fde6603727
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d0e8f8526d866c308be8684546397f282dcce51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184779"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル:Azure Active Directory と vxMaintain の統合
 
@@ -157,7 +158,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに生成された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 

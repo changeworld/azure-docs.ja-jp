@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: a659b4d25581153228cff6102b2835ef2e012981
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 70cae464531dee86f7a4c9ec2396b90787825ec2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154781"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172299"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>個人デバイスを組織のネットワークに登録する
 個人デバイス (通常は電話またはタブレット) を組織のネットワークに登録します。 デバイスが登録されたら、そのデバイスは組織の制限されたリソースにアクセスできるようになります。

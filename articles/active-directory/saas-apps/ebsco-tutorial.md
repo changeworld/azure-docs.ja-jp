@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 984c5ceab0115d464633094d20deb35761eb80f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0973001cda4a817ab464f825ad50deb52019f65
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>チュートリアル:Azure Active Directory と EBSCO の統合
 
@@ -150,7 +151,7 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -195,7 +196,7 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-ebsco-test-user"></a>EBSCO テスト ユーザーの作成
 

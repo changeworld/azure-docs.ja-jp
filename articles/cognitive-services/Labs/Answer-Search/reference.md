@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Project Answer Search エンドポイントのリファレンス。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 5e9ae8fcd756619c83ebde12df9f8405f1a39bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e0d005725730680798b78acab0c90e1c0a02a7b8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812577"
+ms.locfileid: "55876354"
 ---
 # <a name="project-answer-search-v7-reference"></a>Project Answer Search v7 のリファレンス
 

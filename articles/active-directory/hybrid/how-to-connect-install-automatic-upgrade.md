@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 09/26/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ebc0357c2a0af29aa6c91bae69d45f808d6fe7d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488665"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208828"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。

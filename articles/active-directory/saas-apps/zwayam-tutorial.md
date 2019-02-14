@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e3b70c7c7ef50b536618517c6b8f2e670322a881
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91d5bbe66c7eb74dbd3f9a441ffffdc9a0153f0f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180859"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>チュートリアル:Azure Active Directory と Zwayam の統合
 
@@ -163,7 +164,7 @@ Zwayam で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-zwayam-test-user"></a>Zwayam テスト ユーザーの作成
 

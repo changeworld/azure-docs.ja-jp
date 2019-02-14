@@ -4,7 +4,7 @@ description: Azure Security Center の設定を構成します。
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: fa9b6821e1e35f7631907a029a2576d5949ac6d3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f61f5ebf4c0658ff846421682d50ea346c699e01
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339639"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107925"
 ---
 # <a name="security-center-settings"></a>Security Center の設定
 この記事では、Security Center の設定の概要について説明します。

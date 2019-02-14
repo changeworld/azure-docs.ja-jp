@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197553"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991278"
 ---
 # <a name="create-highlights-from-existing-videos"></a>既存のビデオからハイライトを作成する
 
@@ -27,17 +27,14 @@ ms.locfileid: "55197553"
     ビデオの要約された分析情報がページに表示されます。 
 
     ![洞察](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. **[編集]** ボタンを押します。
 
     このページには、ビデオの完全な内訳が表示されます。 内訳はブロックに分割されています。 ブロックは、データ内の移動を簡単にするために使用されています。 たとえば、話者が変わったり、長い休止があるときにブロックが分割されます。 必要な行のみを含む独自のプレイリストを作成できます。 ソース ビデオの特定の部分のみを表示するには、トピック/キーワード、センチメント、人物、話者でフィルター処理することができます。 ビデオのトランスクリプトや OCR のみを表示することもできます。    
 
     ![洞察](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. プレイリストを作成します。
 
     プレイリストの行の追加/削除を行うには、**+**/**-** を押します。
-
 5. プレイリストをプレビューします。
 
     プレイリストの作成が完了したら、**[プレビュー]** を押します。

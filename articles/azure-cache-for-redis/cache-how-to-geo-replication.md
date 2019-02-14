@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis の geo レプリケーションの構成方法 | Microsoft Docs
 description: 地理的リージョンに関係なく Azure Cache for Redis インスタンスをレプリケートする方法を説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.author: wesmc
-ms.openlocfilehash: 51a367c4809452d9b42222b263883b6adc18b4a4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: e5e60e3370cc813685403cc979e6ef8dc043b7ac
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021698"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233270"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの構成方法
 

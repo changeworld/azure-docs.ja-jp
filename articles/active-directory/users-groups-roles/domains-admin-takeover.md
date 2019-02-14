@@ -14,12 +14,13 @@ ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: 9cef490d22a013b952d6692d0ac0e932a35c9ba3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0af2628e1da24bd790e94306703aab797a0d56a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297635"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164772"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」をご覧ください

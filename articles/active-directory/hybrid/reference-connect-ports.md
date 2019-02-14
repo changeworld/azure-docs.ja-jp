@@ -15,12 +15,13 @@ ms.topic: reference
 ms.date: 08/02/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b9384ae328bf4c1e155d559e888931a7155aff26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485995"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184086"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。

@@ -17,12 +17,13 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: a3115aef45c17dc11d4176486b6ad69a55f0ac0a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172167"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 

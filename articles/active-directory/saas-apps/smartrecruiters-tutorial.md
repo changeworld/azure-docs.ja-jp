@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3e316f0bf81d2ccc9ecdf86baceb641faacf074d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2d2fc7e79e92f3a1c9e069a652b2a3c21183bf1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178445"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル:Azure Active Directory と SmartRecruiters の統合
 
@@ -192,7 +193,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-smartrecruiters-test-user"></a>SmartRecruiters テスト ユーザーの作成
 

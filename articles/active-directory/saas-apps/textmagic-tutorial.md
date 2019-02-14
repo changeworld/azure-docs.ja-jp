@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ed5107d581c880d130901bfb31d34afb9e986635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec8085d2d3ac4cc338ab9c0c36eec481a5d4fbc9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190090"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル:Azure Active Directory と TextMagic の統合
 
@@ -141,7 +142,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    d. **[名前空間]** 値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** 値を入力します。
 
     e. [ソース] として **[属性]** を選択します。
 
@@ -181,7 +182,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c.  **[Identity provider SLO URL:]\(ID プロバイダー SLO URL\)**  ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[Public x509 certificate:]\(パブリック x509 証明書:\)**  ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[Public x509 certificate:]\(パブリック x509 証明書:\)**  ボックスに貼り付けます。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -206,7 +207,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="creating-a-textmagic-test-user"></a>TextMagic テスト ユーザーを作成する
 

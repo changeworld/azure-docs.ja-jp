@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: edc15f573017fe57db0540da63eff7f2ed723dd7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162953"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での SQL 接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と SQL Server の間の接続に関する問題のトラブルシューティング方法について説明します。 

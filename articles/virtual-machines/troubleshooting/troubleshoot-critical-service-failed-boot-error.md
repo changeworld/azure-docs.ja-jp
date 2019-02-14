@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071032"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813791"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Azure VM 起動時に Windows が "CRITICAL SERVICE FAILED" をブルー スクリーンに表示する
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "CRITICAL SERVICE FAILED" エラーについて説明します。 また、この問題の解決するためのトラブルシューティング手順について説明します。 
 
 > [!NOTE] 
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptom"></a>症状 
 
 Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) のブート スクリーンショットを確認すると、ブルー スクリーンに次のいずれかのエラー メッセージが表示されます。
 
-- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 http://windows.com/stopcode を参照してください。 サポート担当者に連絡する場合は、この情報を伝えてください: 停止コード: CRITICAL SERVICE FAILED" 
+- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 http://windows.com/stopcode を参照してください。 サポート担当者に電話をかける場合、次の情報を伝えます。停止コード: CRITICAL SERVICE FAILED" 
 - "問題が発生したため、PC を再起動する必要があります。 エラー情報を収集しています。自動的に再起動します。 詳細については、次のエラーを後からオンラインで検索してください: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>原因
@@ -93,7 +93,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。 VM がセーフ モードで起動します。 依然としてエラーが発生する場合は、[省略可能な手順](#optional-analysis-the-dump-logs-in-boot-debug-mode)を実行します。
+2. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。 VM がセーフ モードで起動します。 依然としてエラーが発生する場合は、省略可能な手順を実行します。
 3. **[実行]** ボックスを開き、**verifier** を実行して、ドライバーの検証マネージャー ツールを起動します。
 4. **[署名されていないドライバーを自動的に選択する]** を選択し、**[次へ]** をクリックします。
 5. 署名されていないドライバー ファイルの一覧が表示されます。 ファイル名を覚えます。
@@ -104,7 +104,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  VM を再起動します。 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>オプション: ダンプ クラッシュ モードでのダンプ ログの分析
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>省略可能: ダンプ クラッシュ モードでのダンプ ログの分析
 
 ダンプ ログを分析するには、次の手順に従います。
 
@@ -138,7 +138,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 9. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。
 10. VM を起動し、ダンプの分析が表示されないことを確認します。 読み込みに失敗したファイルを見つけます。 作業用 VM のファイルでこのファイルを置き換える必要があります。 
 
-    ダンプ分析の例を次に示します。 filecrypt.sys に **FAILURE** が表示されます ("FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys")。
+    ダンプ分析の例を次に示します。 filecrypt.sys に **FAILURE** が付加されていることを確認できます。"FAILURE_BUCKET_ID:0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

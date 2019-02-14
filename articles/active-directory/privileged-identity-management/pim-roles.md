@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 80fbad64cda9267e468f9385d48dd5d40468eaca
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 666b534c3ab07be2b1e2335015fc4723782a1249
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203421"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181577"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>PIM で管理できないロール
 
@@ -43,6 +44,5 @@ Exchange 管理者と SharePoint 管理者を除く Exchange Online または Sh
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM の使用を開始する](pim-getting-started.md)
 - [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)

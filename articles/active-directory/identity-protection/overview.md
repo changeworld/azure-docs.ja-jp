@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 1e08af577bec463263045a0f0355acffaad5e599
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eecdf4382fff441ca7c7d6bd4c63d12b87a73ccf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244166"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169702"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 

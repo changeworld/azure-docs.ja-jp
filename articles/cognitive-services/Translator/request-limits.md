@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: この記事では、Translator Text API に対する要求の制限を示します。 料金は、要求ごとに 5,000 文字に制限された要求の頻度ではなく、文字数に基づいて発生します。 文字の制限はサブスクリプションに基づき、F0 では 1 時間あたり 200 万文字に制限されます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: erhopf
-ms.openlocfilehash: 2115baae3f13c6ca6c0b9aca73d6fd43f5fcdbb4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f89e7e674efe3a823b7c969840772565650d8d07
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455713"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859472"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 

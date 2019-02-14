@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e932fd59fb888d73fb2ad9aee3f440b4aca3e662
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820047"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 

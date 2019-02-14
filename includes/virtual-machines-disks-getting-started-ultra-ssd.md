@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e55058d6b1f76b4afcb847b946df85d5ab69971b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381561"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985452"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Azure Ultra SSD の有効化
 
@@ -23,15 +23,15 @@ Azure Ultra SSD は、Azure IaaS VM 用に高スループット、高 IOPS、一
 
 承認された後、次のいずれかのコマンドを実行して、Ultra SSD をデプロイする米国東部 2 内のゾーンを決定します。
 
-PowerShell: `Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
 CLI: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
 
 応答は下のフォームのようになります。X は、米国東部 2 でのデプロイに使用するゾーンです。 X は 1、2、3 のいずれかになります。
 
-|ResourceType  |Name  |場所  |ゾーン  |制限  |機能  |値  |
+|ResourceType  |Name  |Location  |ゾーン  |Restriction  |機能  |値  |
 |---------|---------|---------|---------|---------|---------|---------|
-|ディスク     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 コマンドから応答がなかった場合は、機能に対する登録がまだ保留中か、まだ承認されていないことを意味します。
 

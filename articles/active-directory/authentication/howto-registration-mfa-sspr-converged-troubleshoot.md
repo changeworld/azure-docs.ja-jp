@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: c7cdd2e62c76011f2ff4ada33353b85dcf564ef5
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89423793dd7a93dfa1f324678fccb0b3ac17a8f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186057"
 ---
 # <a name="disable-azure-ad-converged-registration-public-preview"></a>Azure AD の集中型登録を無効にする (パブリック プレビュー)
 

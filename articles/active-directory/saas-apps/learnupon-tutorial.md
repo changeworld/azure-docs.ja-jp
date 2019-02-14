@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 66953eaa4c42b419a5146ccc396fddda15a31c35
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 70d4e507087e645c9bfd41e7ef6b90098079ab1d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811360"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル:Azure Active Directory と LearnUpon の統合
 

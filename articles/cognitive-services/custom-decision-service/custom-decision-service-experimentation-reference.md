@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: この記事は、Custom Decision Service による実験のガイドです。
 services: cognitive-services
 author: marco-rossi29
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219823"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870267"
 ---
 # <a name="experimentation"></a>実験
 

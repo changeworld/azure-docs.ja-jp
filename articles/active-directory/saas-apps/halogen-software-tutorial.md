@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 108667cbaaf52c9c85dffff51c3f9d012f54122b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec1ef8db71a6a9765eac4ec6ac8cae1d731e296b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153556"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>チュートリアル:Azure Active Directory と Halogen Software の統合
 
@@ -151,7 +152,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
   
      c. ダウンロードしたメタデータ ファイルをアップロードするには、**[Browse]** をクリックしてファイルを選択し、**[Upload File]** をクリックします。
  
-     d. 構成をテストするには、**[Run Test]** をクリックします。 
+     d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 構成をテストするには、**[Run Test]** をクリックします。 
     
     >[!NOTE]
     >"*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。 次に、開いているブラウザー ウィンドウを閉じます。 **[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。 
@@ -194,7 +195,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-halogen-software-test-user"></a>Halogen Software のテスト ユーザーの作成
 
@@ -218,7 +219,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
     c. **[Username]** ボックスに、Azure Portal でのユーザー名「**Britta Simon**」を入力します。
 
-    d. **[Password]** ボックスに Britta のパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]** ボックスに Britta のパスワードを入力します。
     
     e. **[Save]** をクリックします。
 

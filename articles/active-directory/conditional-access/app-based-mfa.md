@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 68593087c1fbb912cafb9c886f43f947744c5651
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299913"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189380"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
 
@@ -114,7 +115,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Isabella Simonsen]** を選択し、**[選択]** をクリックします。
 
-    d. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
 
 8. **[クラウド アプリ]** をクリックします。
 
@@ -130,7 +131,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
 
-    d. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[クラウド アプリ]** ページで、**[完了]** をクリックします。
 
 
 10. **[アクセス制御]** セクションで、**[許可]** をクリックします。
@@ -192,7 +193,7 @@ What If ポリシー評価ツールを初期化するには、次のように設
 
     c. **[選択]** をクリックします。
 
-    d. **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
 
     e. [クラウド アプリ] ページで、**[完了]** をクリックします。
 

@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7bc687d339a3089b8285078f7ad23c172452c5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 31a4f5028cc6711ec92a495b19a17e8a0fbf11aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183443"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170461"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを Splunk と統合する
 

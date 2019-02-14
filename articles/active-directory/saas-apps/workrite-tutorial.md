@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 1e593d66e7f293a5e84200eff0980b1cdf6d55dd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203132"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル:Azure Active Directory と Workrite の統合
 
@@ -163,7 +164,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-workrite-test-user"></a>Workrite テスト ユーザーの作成
 
@@ -191,7 +192,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
     
-    d. **[ロールの選択]** で **[クライアント管理者]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ロールの選択]** で **[クライアント管理者]** を選択します。
     
     e. **[Save]** をクリックします。   
 

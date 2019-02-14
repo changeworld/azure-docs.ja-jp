@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 2b033cae63668c1b2af968d5c5b9df4e7b42dc35
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 67ace84ae3c919fdb3ed54d92e63e203d66102c1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812924"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>チュートリアル:Azure Active Directory と ChronicX® の統合
 

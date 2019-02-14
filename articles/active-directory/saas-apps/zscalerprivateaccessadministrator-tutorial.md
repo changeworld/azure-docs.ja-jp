@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 6eca534f933742e4797ca164637e7d536d194ba3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5ba2bde039cec65a1afe33efac58752d26f22c2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181505"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Private Access Administrator の統合
 
@@ -114,7 +115,7 @@ Zscaler Private Access Administrator で Azure AD のシングル サインオ�
 
     c. **[詳細な URL 設定の表示]** をクリックします。
 
-    d. **[RelayState]** ボックスに、値 `idpadminsso` を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[RelayState]** ボックスに、値 `idpadminsso` を入力します。
 
 1.  **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -153,7 +154,7 @@ Zscaler Private Access Administrator で Azure AD のシングル サインオ�
 
     c. **[Administrator]** として **[Single Sign On]** を選択します。
 
-    d. **[Domains]** フィールドから自分のドメインを選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Domains]** フィールドから自分のドメインを選択します。
     
     e. **[Save]** をクリックします。
 
@@ -190,7 +191,7 @@ Zscaler Private Access Administrator で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-zscaler-private-access-administrator-test-user"></a>Zscaler Private Access Administrator のテスト ユーザーの作成
 
@@ -222,7 +223,7 @@ Azure AD ユーザーが Zscaler Private Access Administrator にログインで
 
     c. **[Confirm Password]** ボックスに、パスワードを入力します。
 
-    d. **[Role]** に **[Zscaler Private Access Administrator]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Role]** に **[Zscaler Private Access Administrator]** を選択します。
 
     e. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
 

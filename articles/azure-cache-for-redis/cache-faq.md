@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis に関する FAQ | Microsoft Docs
 description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402397"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234358"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -133,7 +133,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 400 万 (400,000 * 10) RPS となります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| 価格レベル  | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| 価格レベル  | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 |250 MB |共有 |100 / 12.5 |15,000 |7,500 |

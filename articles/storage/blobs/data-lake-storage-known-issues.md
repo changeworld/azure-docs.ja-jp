@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: cbd58c0873a4a46d175c6d7cbdf2d004da304c06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247240"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731548"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "55247240"
 
 Blob Storage API と Azure Data Lake Gen2 API 間には相互運用性がありません。
 
-アカウントにアップロードするすべてのコンテンツの操作に同じツールを使用する必要がある場合、このような API 間の相互運用が可能になるまでは、BLOB ストレージ アカウントで階層型名前空間を有効にしないでください。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイルシステムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
+BLOB API を使用するカスタム ツール、アプリケーション、またはスクリプトがあり、それらを使用して、アカウントにアップロードするすべてのコンテンツを処理する場合、BLOB API が Azure Data Lake Gen2 API と相互運用可能になるまで、BLOB ストレージ アカウントで階層型名前空間は有効にしないでください。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイルシステムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
 
 ## <a name="blob-storage-apis"></a>BLOB ストレージ API
 
@@ -79,16 +79,14 @@ Azure Data Lake Storage Gen2 アカウントでは、ソフト削除とスナッ
 
 ## <a name="object-level-storage-tiers"></a>オブジェクト レベルのストレージ層
 
-Azure Data Lake Storage Gen 2 アカウントでは、オブジェクト レベルのストレージ層 (ホット、コールド、アーカイブ) をまだ使用できませんが、階層型空間が有効ではないストレージ アカウントでは使用できます。
+Azure Data Lake Storage Gen 2 アカウントでは、オブジェクト レベルのストレージ層 (ホット、コールド、アーカイブ) をまだ使用できませんが、階層型名前空間が有効ではないストレージ アカウントでは使用できます。
 
 ## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Azure Blob Storage ライフサイクル管理 (プレビュー) ポリシー
 
 Azure Data Lake Storage Gen2 アカウントでは、Azure Blob Storage ライフサイクル管理 (プレビュー) ポリシーをまだ使用できません。
 
-このようなポリシーは、階層型空間が有効ではないストレージ アカウントに使用できます。
+このようなポリシーは、階層型名前空間が有効ではないストレージ アカウントに使用できます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
 診断ログは、Azure Data Lake Storage Gen2 アカウントでは使用できません。
-
-診断ログを要求するには、Azure サポートにお問い合わせください。 ログが必要なアカウント名と期間を伝えてください。

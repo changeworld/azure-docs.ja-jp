@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 4fb0d0d91dbdbb437bedd0ea58d95e08694dcaab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154255"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル:Azure Active Directory と ServiceChannel の統合
 
@@ -144,7 +145,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
     
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -187,7 +188,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 ### <a name="creating-a-servicechannel-test-user"></a>ServiceChannel テスト ユーザーの作成
 

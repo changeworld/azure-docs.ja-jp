@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 53538fe741a37312fa2cb2860582ae46ef430853
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef05adede0efff209c4aabab266a1c1c552d2b77
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167361"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル:Azure Active Directory と IdeaScale の統合
 
@@ -159,7 +160,7 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Logout Success URL]\(ログアウト成功 URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    d. **[変更を保存]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[変更を保存]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -194,7 +195,7 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-ideascale-test-user"></a>IdeaScale テスト ユーザーの作成
 

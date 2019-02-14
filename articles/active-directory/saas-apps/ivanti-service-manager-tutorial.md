@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a125ea70a891d8db0ec652844a99153f19253bd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c8859c0363a738c744f5c9b496cf77f5aaf1ba61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150293"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203507"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル:Azure Active Directory と Ivanti Service Manager (ISM) の統合
 
@@ -171,7 +172,7 @@ Ivanti Service Manager (ISM) で Azure AD のシングル サインオンを構�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-an-ivanti-service-manager-ism-test-user"></a>Ivanti Service Manager (ISM) テスト ユーザーの作成
 

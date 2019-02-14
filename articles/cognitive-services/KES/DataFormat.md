@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API のデータ形式について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: c06a90b7c53067723280b6a1573ada9fbf65e10d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223240"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854797"
 ---
 # <a name="data-format"></a>データ形式
 

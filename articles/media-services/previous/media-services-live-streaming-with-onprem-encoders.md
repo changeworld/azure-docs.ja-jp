@@ -4,7 +4,7 @@ description: このトピックでは、オンプレミスのエンコーダー�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: b0a047c4bf2c0c95896699e50e943277a138ecca
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809032"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990218"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
 
@@ -194,7 +194,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ## <a id="cc_and_ads"></a>クローズド キャプションと広告の挿入
 次の表は、サポートされているクローズド キャプションや広告挿入の標準を示しています。
 
-| 標準 | メモ |
+| Standard | メモ |
 | --- | --- |
 | CEA-708 と EIA-608 (708/608) |CEA-708 と EIA-608 は、米国とカナダのクローズド キャプションの標準です。<p><p>現時点では、キャプションがサポートされるのはエンコードされた入力ストリームに含まれる場合のみです。 Media Services に送信されるエンコードされたストリームに 608 または 708 キャプションを挿入できるライブ メディア エンコーダーを使用する必要があります。 Media Services はキャプションが挿入されたコンテンツをユーザーに配信します。 |
 | .ismt (スムーズ ストリーミング テキスト トラック) 内の TTML |Media Services のダイナミック パッケージ機能では、クライアントが DASH、HLS、スムーズ ストリーミングの任意の形式でコンテンツをストリームできます。 ただし、.ismt (スムーズ ストリーミング テキスト トラック) 内のキャプションのあるフラグメント化 MP4 を取り込む場合は、スムーズ ストリーミング クライアントに対してのみストリーミングを配信できます。 |

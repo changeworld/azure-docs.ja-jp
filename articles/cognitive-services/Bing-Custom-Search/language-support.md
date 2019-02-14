@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Custom Search API でサポートされる言語と地域の一覧。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 24b14c4f0ca185a7916aeb19671a22ff46a23ee2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194850"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859439"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Custom Search API の言語と地域のサポート
 

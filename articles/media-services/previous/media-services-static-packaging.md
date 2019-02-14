@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1ea4639d547616f2cfdf1d5e2b78c1388ef09dc4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80c9f1c7e2bec3e3f3fa696134a23f0760598a29
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826124"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001138"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する  
 > [!NOTE]
 > Microsoft Azure Media Packager と Microsoft Azure Media Encryptor の有効期限が 2017 年 3 月 1 日まで延長されました。 有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。 お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。 また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
 > 

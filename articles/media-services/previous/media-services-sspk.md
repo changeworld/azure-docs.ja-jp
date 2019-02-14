@@ -4,7 +4,7 @@ description: Microsoft® Smooth Streaming Client Porting Kit のライセンス�
 services: media-services
 documentationcenter: ''
 author: xpouyat
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243898"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000075"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit 
 ## <a name="overview"></a>概要
 Microsoft Smooth Streaming Client Porting Kit (**SSPK** ) は、組み込みデバイスのメーカーやケーブル テレビ事業者、携帯電話会社、コンテンツ サービス プロバイダー、携帯電話端末メーカー、独立系ソフトウェア ベンダー (ISV)、ソリューション プロバイダーが、アダプティブ コンテンツをスムーズ ストリーミング形式で配信するための製品やサービスを構築できるように最適化されたスムーズ ストリーミング クライアントの実装です。 SSPK は、デバイスやプラットフォームに依存しないスムーズ ストリーミング クライアントの実装であり、ライセンシーは任意のデバイスやプラットフォームに移植できます。 
 

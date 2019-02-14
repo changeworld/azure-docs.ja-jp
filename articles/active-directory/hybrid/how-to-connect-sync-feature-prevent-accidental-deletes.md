@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 55f208b6fda85d82456694279cf22537a423782e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495481"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188548"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同期: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。

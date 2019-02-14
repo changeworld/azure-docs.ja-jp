@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で_クォータ不足_エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd05e2dd5b55dd590af24f0757229bead041b6d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239181"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859115"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 

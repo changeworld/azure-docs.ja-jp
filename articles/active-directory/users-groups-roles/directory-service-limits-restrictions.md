@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
-ms.openlocfilehash: 6a984c641608d5fd84a2fc6a88e30fd7f457ce9c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e4364f025dcfdceb724dd251d2df89acf9f9a2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506092"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182733"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD サービスの制限と制約
 この記事では、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。 Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../../azure-subscription-service-limits.md)」を参照してください。

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: a6cc65feb49052a00fed94fb318570182dd9a49b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 54cbcb19e400f08e1e1d8e97afaa2e2e1cff133c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154628"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル:Azure Active Directory と FilesAnywhere の統合
 
@@ -157,7 +158,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[保存]** ボタンをクリックします。
 
@@ -204,7 +205,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 
 

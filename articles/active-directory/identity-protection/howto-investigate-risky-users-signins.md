@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.reviewer: raluthra
-ms.openlocfilehash: f72819bacd7c65ced7ccff3665789d3b96c5e30f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 546d9f6771ea75c2601630850f4e9ef082fd5623
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478369"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210987"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>方法:危険なユーザーとサインインの調査 
 
@@ -165,7 +166,7 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 
 
 
-## <a name="risky-sign-ins-report"></a>危険なサインイン レポート
+## <a name="risky-sign-ins-report"></a>リスクの高いサインイン レポート
 
 危険なサインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
@@ -180,11 +181,11 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 
 このレポートへの最初のエントリ ポイントは、セキュリティ ページの **[調査]** セクションです。
 
-![危険なサインイン レポート](./media/howto-investigate-risky-users-signins/02.png)
+![リスクの高いサインイン レポート](./media/howto-investigate-risky-users-signins/02.png)
 
 危険なサインイン レポートの既定のビューには、以下が表示されます。
 
-- 日付
+- Date
 
 - User
 
@@ -257,10 +258,10 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 - リスク レベル (集計)
 - リスク レベル (リアルタイム)
 - 条件付きアクセス
-- 日付
+- Date
 - リスク レベルの種類
 
-![危険なサインイン レポート](./media/howto-investigate-risky-users-signins/14.png)
+![リスクの高いサインイン レポート](./media/howto-investigate-risky-users-signins/14.png)
 
 
 

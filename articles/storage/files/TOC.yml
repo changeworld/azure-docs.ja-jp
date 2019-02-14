@@ -121,6 +121,8 @@ items:
         href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 移行
     items:
+    - name: Azure File Sync への移行
+      href: storage-sync-offline-data-transfer.md
     - name: Azure Storage との間のデータの移動
       href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: AzCopy on Windows
@@ -253,9 +255,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: 822e7e791818beef66bd0fab57537af6d1c1ae76
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 425b1de6d94825c43994dbe883ce1e2464dfa260
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770301"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176613"

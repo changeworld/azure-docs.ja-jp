@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492999"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241446"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5:初心者向けデータ サイエンス シリーズ
@@ -52,7 +52,7 @@ ms.locfileid: "55492999"
 
 Microsoft では、[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) という、無料で試用できるクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、**[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
+このサービスの一部として、**[Azure AI ギャラリー](https://gallery.azure.ai/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
 
 ![Azure AI ギャラリー](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -82,11 +82,11 @@ Microsoft では、[Azure Machine Learning Studio](https://azure.microsoft.com/s
 これで自分の作業の出発点が得られました。 後は独自のデータに交換し、必要に応じてモデルを調整するだけです。 実験の内容について詳しく把握している人の作業を足掛かりとすることができます。
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>機械学習の手法を示した実験を探す
-[Azure AI ギャラリー](https://gallery.cortanaintelligence.com)には、データ サイエンスに初めて取り組む方々のために、その具体的な方法を例示することに特化して投稿された実験も存在します。 たとえばギャラリーには、欠損値の扱い方を紹介した実験として、「[Methods for handling missing values (欠損値の扱い方)](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)」が存在します。 欠損値を置き換える 15 とおりの方法が紹介され、それぞれどのような利点があって、どのようなときに使用すべきかが説明されています。
+[Azure AI ギャラリー](https://gallery.azure.ai)には、データ サイエンスに初めて取り組む方々のために、その具体的な方法を例示することに特化して投稿された実験も存在します。 たとえばギャラリーには、欠損値の扱い方を紹介した実験として、「[Methods for handling missing values (欠損値の扱い方)](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)」が存在します。 欠損値を置き換える 15 とおりの方法が紹介され、それぞれどのような利点があって、どのようなときに使用すべきかが説明されています。
 
 ![ギャラリー実験が Machine Learning Studio で開く - 欠損値のための方法](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Azure AI ギャラリー](https://gallery.cortanaintelligence.com)は、独自のソリューションの出発点として使用できる動作している実験を検索するための場所です。
+[Azure AI ギャラリー](https://gallery.azure.ai)は、独自のソリューションの出発点として使用できる動作している実験を検索するための場所です。
 
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
 

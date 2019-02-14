@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: ''
-ms.openlocfilehash: a7937e6a532883c2808160fd88096bdfc1b4f4c2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7b194b8aeb6df54814069a3acd2e2f0f3ad1a13
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180677"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 

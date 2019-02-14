@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Node.js を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築する
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 74ad3110faabb6618ffe91e5a896b9b7f4bc0d3a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c9a772af79cba8b5bfb592eaf03efa37520d5e48
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221251"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870607"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>LUIS の結果を Application Insights と Azure Functions に追加する
 このチュートリアルでは、LUIS 要求と応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBi を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。

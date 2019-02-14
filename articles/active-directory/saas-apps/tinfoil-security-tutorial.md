@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ae136c9aa0e21b2a5dabf06b050727871bddf03b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8ed0912e8d4705b6cbefa9eb8f7a712a37d8b0be
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191977"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル:Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -132,7 +133,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
     
     c. **[属性値]** ボックスに、後で取得するアカウント ID の値を貼り付けます。
     
-    d. **[OK]** をクリックします。    
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。    
 
 1. **[保存]** ボタンをクリックします。
 
@@ -162,7 +163,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
    
     c. **[SAML Post URL]\(SAML POST の URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-    d. **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure Portal の **[属性の追加]** セクションの **[属性値]** ボックスに値を貼り付けます。
    
@@ -201,7 +202,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-tinfoil-security-test-user"></a>TINFOIL SECURITY テスト ユーザーの作成
 

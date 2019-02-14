@@ -1,25 +1,24 @@
 ---
-title: Azure Active Directory での管理者ロールのアクセス許可 | Microsoft Docs
+title: 管理者ロールの説明とアクセス許可 - Azure Active Directory | Microsoft Docs
 description: 管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
+search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 16f238114b56bd4e13358de34dfb33d93dbb1890
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301290"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731514"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -40,6 +39,20 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   <b>重要</b>:このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
 
 * **[アプリケーション開発者](#application-developer)**:このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
+
+* **[認証管理者](#authentication-administrator)**:このロールのユーザーは、現在の認証方法に関する情報を表示し、パスワード以外の資格情報を設定またはリセットできます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、「デバイスの MFA の記憶」を取り消して、管理者や次のロールのメンバーでない他のユーザーが次回ログインするときに MFA の入力を求めることができます。
+  * 認証管理者
+  * ディレクトリ リーダー
+  * ゲスト招待元
+  * メッセージ センター閲覧者
+  * レポート閲覧者
+  
+  <b>重要</b>:このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 例: 
+  * 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、認証管理者に付与されていないAzure AD およびその他の場所への特権アクセス許可がある場合があります。 認証管理者は、このパスからアプリケーション所有者の ID を引き受け、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を引き受けられる場合があります。
+  * 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+  * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+  * Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+  * 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 * **[課金管理者](#billing-administrator)**:購入、サブスクリプションの管理、サポート チケットの管理、サービスの正常性の監視を行います。
 
@@ -275,6 +288,19 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/appRoleAssignments/createAsOwner | Azure Active Directory での appRoleAssignments の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Azure Active Directory での oAuth2PermissionGrants の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Azure Active Directory での servicePrincipals の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
+
+### <a name="authentication-administrator"></a>認証管理者
+管理者以外のユーザーの認証方法の情報を表示、設定、リセットできます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
+| microsoft.aad.directory/users/strongAuthentication/update | MFA 資格情報などの強力な認証プロパティを更新します。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="billing-administrator"></a>課金管理者
 支払情報の更新など、よく利用する課金関連タスクを実行できます。

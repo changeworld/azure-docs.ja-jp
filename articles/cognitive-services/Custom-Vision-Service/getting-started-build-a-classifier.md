@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 088ca29a2b10845730e986995256eed99caa7401
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210224"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873633"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
 

@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663623"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188037"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>更新:Azure AD パスワード保護エージェントのバージョン履歴
 

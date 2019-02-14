@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: af76ddf6cb4b44e605d6da485df8ec932239e993
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c2650bdf70c160e848703daca824bf54e897a64e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151381"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル:Azure Active Directory と Workstars の統合
 
@@ -151,7 +152,7 @@ Workstars で Azure AD のシングル サインオンを構成してテスト�
 
     c. ダウンロードした証明書をメモ帳で開き内容をコピーして、**[x509 Certificate]\(x509 証明書\)** ボックスに貼り付けます。 
 
-    d. **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
     e. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。 
 
@@ -192,7 +193,7 @@ Workstars で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-workstars-test-user"></a>Workstars テスト ユーザーの作成
 

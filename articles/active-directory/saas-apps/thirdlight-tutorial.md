@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 86da2438b7b8f35f2bcf988c30fefe261535f4cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f01c870316a4e7c9424bd63766fec0fed1dce7a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176762"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル:Azure Active Directory と ThirdLight の統合
 
@@ -143,7 +144,7 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
  
      c. ダウンロードしたメタデータ ファイルを開き、内容をコピーしてから、 **[IdP Metadata XML]** テキストボックスに貼り付けます。 
      
-     d. **[Save SAML2 settings]** をクリックします。
+     d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save SAML2 settings]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -177,7 +178,7 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-thirdlight-test-user"></a>ThirdLight テスト ユーザーの作成
 

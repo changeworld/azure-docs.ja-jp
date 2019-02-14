@@ -17,12 +17,13 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 09e748f39cd5c31433e30cfa60527ce082fb07c6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e90a2fc0bb5e040e0c1a3179df1e4bef758d7ee
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080788"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173013"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 

@@ -4,7 +4,7 @@ description: SCIM 2.0 をサポートするギャラリー以外のアプリケ�
 services: active-directory
 documentationcenter: ''
 author: asmalser
-manager: daveba
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: 48328a3ee379fc76fa6e70ea082395b37751d235
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181114"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190519"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -59,7 +60,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 1. Azure portal (https://portal.azure.com) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで、既存の SCIM アプリケーションを検索して選択します。
 3.  既存 SCIM アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
-4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/en-us/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
+4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、プロビジョニング ジョブの ID を確認します。 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +100,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 1.  Azure portal (https://portal.azure.com) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション] > [アプリケーションの作成]** セクションで、**ギャラリー以外の**新しいアプリケーションを作成します。
 3.  新しいカスタム アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
-4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/en-us/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
+4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、アプリのプロビジョニング構成を初期化します。
 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
 

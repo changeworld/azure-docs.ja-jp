@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: bcbb3d5d25fdc3de71045cedfd4634e47b3947bf
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7b8b157b890bcdda8c06a0dd1b208a82f7f9058
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811956"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル:Azure Active Directory と Attendance Management Services の統合
 

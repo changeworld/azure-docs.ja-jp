@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 9a12940f08a11b66a0d09937d5ab8fab7304734f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 892ea129a57e77c59f37b305b96b42aa85dba32b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754338"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232709"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える
 
@@ -30,7 +30,7 @@ Power BI ワークスペース コレクションでレポートの表示モー�
 > [!NOTE]
 > これにより、既存のレポートを編集して変更を保存できます。 さらに、"**名前を付けて保存**" 操作をサポートする場合は、追加のアクセス許可を指定する必要があります。 詳細については、[Scopes](app-token-flow.md#scopes) に関するページを参照してください。
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +46,10 @@ var token = embedToken.Generate("{access key}");
 
 JavaScript の例:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +75,7 @@ JavaScript の例:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 これは、**models.ViewMode.View** に設定されている **viewMode** に基づいて表示モードでレポートを埋め込むことを示します。
@@ -82,7 +84,7 @@ JavaScript の例:
 
 次の JavaScript を使用すると、モードが編集モードのときに表示モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +100,7 @@ report.switchMode("view");
 
 次の JavaScript を使用すると、モードが表示モードのときに編集モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 

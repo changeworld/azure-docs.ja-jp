@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での url 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: f9e331abd31ef37e9214214118748ebda3eb9470
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3e5f6edf213838345c21598213b4fc2065e66335
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225799"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884139"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの url 作成済みエンティティ
 url エンティティは、ドメイン名または IP アドレスを含む URL を抽出します。 このエンティティは既にトレーニングされているので、URL を含む発話の例をアプリケーションに追加する必要はありません。 url エンティティは、`en-us` カルチャでのみサポートされます。 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358985"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767340"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -86,7 +86,7 @@ ms.locfileid: "54358985"
 
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
-   はい。 最初にデプロイされたイメージに関係なく、2 つのライセンス モデル間を簡単に移動することができます。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
+   はい。 従量課金ギャラリー イメージを最初に使用した場合、2 つのライセンス モデルを簡単に切り替えることができます。 ただし、BYOL イメージを最初に使用した場合、ライセンスを PAYG に切り替えることはできません。 詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
 
 1. **新しい SQL VM を作成するには、BYOL イメージまたは SQL VM RP を使用する必要がありますか。**
 
@@ -94,11 +94,11 @@ ms.locfileid: "54358985"
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
-   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 
+   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が前提条件です。SQL IaaS 拡張機能をインストールすると、SQL Server サービスが再起動します。 このため、SQL IaaS 拡張機能をインストールする必要がある場合、メンテナンス期間中に行う必要があります。 
 
 1. **CSP サブスクリプションで Azure ハイブリッド特典をアクティブ化できますか。**
 
-   はい。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、CSP サブスクリプションで使用できます。 
+   はい。CSP サブスクリプションで Azure ハイブリッド特典を利用できます。 CSP のお客様は、最初に従量課金イメージをデプロイし、次にライセンス持ち込みに[ライセンス モデルを変更する](virtual-machines-windows-sql-ahb.md)必要があります。  
 
 1. **新しい SQL VM リソース プロバイダーへの VM の登録には、追加のコストがかかりますか。**
 

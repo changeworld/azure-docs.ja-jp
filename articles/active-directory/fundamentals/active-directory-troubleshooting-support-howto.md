@@ -14,12 +14,13 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 2063f9fcd3e001f4f8f175bd6031c9d31313f9e6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb89d3eee87c0796bcd21914e719784756bc288e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092192"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165741"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 

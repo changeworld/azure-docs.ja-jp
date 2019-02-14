@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fadf186176c8bc82aaefe9a908f25f9c8a7e35a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178092"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 

@@ -15,12 +15,13 @@ ms.subservice: compliance
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ce791e2b230360a04a3051a8964e39c6d5a457ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191365"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192270"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを Azure AD で完了する
 

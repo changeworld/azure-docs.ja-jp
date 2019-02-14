@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e519e20d9e0eb100a05b32b0e902bb56782f3ef9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a95b9bc6637526ef0d975815cc88dd084360397
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075059"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196911"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure Active Directory B2B コラボレーション
 

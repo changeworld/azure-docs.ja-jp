@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: bc8aec25d6493d87393a45549fb89f978c469912
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d389a9675f7d4de56a03026c0d392b9988f6b0da
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179159"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル:Azure Active Directory と Central Desktop の統合
 
@@ -151,7 +152,7 @@ Central Desktop で Azure AD のシングル サインオンを構成してテ�
     
     c. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
-    d. **[SSO Logout URL]\(SSO ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO Logout URL]\(SSO ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
 1. **[Message Signature Verification Method]\(メッセージ署名検証方法\)** セクションで、次の手順を実行します。
 
@@ -161,7 +162,7 @@ Central Desktop で Azure AD のシングル サインオンを構成してテ�
     
     c. ダウンロードした証明書をメモ帳で開きます。 証明書の内容をコピーして、**[SSO Certificate]\(SSO 証明書\)** フィールドに貼り付けます。
         
-    d. **[Display a link to your SAMLv2 login page]** チェック ボックスをオンにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Display a link to your SAMLv2 login page]** チェック ボックスをオンにします。
     
     e. **[Update]\(更新\)** を選択します。
 

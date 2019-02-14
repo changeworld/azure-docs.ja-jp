@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f5826bf5266214d76648f3850b8e3deb478c8022
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496705"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106156"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 リソース マネージャーには、整数を操作する次の関数が用意されています。
 
@@ -49,8 +51,8 @@ ms.locfileid: "55496705"
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- | 
-|operand1 |[はい] |int |加算する最初の整数。 |
-|operand2 |[はい] |int |加算する 2 つ目の整数。 |
+|operand1 |はい |int |加算する最初の整数。 |
+|operand2 |はい |int |加算する 2 つ目の整数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -166,8 +168,8 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |[はい] |int |除算される整数。 |
-| operand2 |[はい] |int |除算に使用される整数。 0 にすることはできません。 |
+| operand1 |はい |int |除算される整数。 |
+| operand2 |はい |int |除算に使用される整数。 0 にすることはできません。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -271,7 +273,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |[はい] |文字列または整数 |整数に変換する値。 |
+| valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -459,8 +461,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |[はい] |int |除算される整数。 |
-| operand2 |[はい] |int |除算に使用される整数。0 にすることはできません。 |
+| operand1 |はい |int |除算される整数。 |
+| operand2 |はい |int |除算に使用される整数。0 にすることはできません。 |
 
 ### <a name="return-value"></a>戻り値
 剰余を表す整数。
@@ -529,8 +531,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |[はい] |int |乗算する最初の整数。 |
-| operand2 |[はい] |int |乗算する 2 つ目の整数。 |
+| operand1 |はい |int |乗算する最初の整数。 |
+| operand2 |はい |int |乗算する 2 つ目の整数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -600,8 +602,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |[はい] |int |減算される整数。 |
-| operand2 |[はい] |int |減算する整数。 |
+| operand1 |はい |int |減算される整数。 |
+| operand2 |はい |int |減算する整数。 |
 
 ### <a name="return-value"></a>戻り値
 減算を表す整数。

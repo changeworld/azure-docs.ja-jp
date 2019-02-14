@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: ff70b1f8eda7bd48f0fba25aa66db42c15acab54
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252134"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729936"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
@@ -37,6 +37,9 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 - 対応する`<PackageName>.bin`ファイル。 これらのファイルは、*PackageName*.exe ファイルに関連付けられているペイロードの圧縮を提供します。
 
 - `Metadata.xml`ファイル。 このファイルには、更新プログラムに関する重要な情報 (発行元、名前、前提条件、サイズ、サポート パス URL など) が含まれます。
+
+> [!IMPORTANT]  
+> Azure Stack 1901 更新プログラム パッケージの適用後、Azure Stack の更新プログラム パッケージのパッケージ形式は、.exe、.bin、.xml の形式から .zip および .xml の形式に変わります。 スタンプが接続された Azure Stack オペレーターは影響を受けません。 切断されている Azure Stack オペレーターは、以下の説明にあるプロセスと同じプロセスを使用して、.xml ファイルと .zip ファイルをインポートできます。
 
 ## <a name="import-and-install-updates"></a>更新プログラムをインポートしてインストールする
 

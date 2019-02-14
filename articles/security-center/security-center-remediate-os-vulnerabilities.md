@@ -4,7 +4,7 @@ description: このドキュメントでは、"セキュリティ構成の修復
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5de0c975b21131b50155a6e86f5710f741a3c7f7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a951e60b417167f2e1566efb689ea0f2d4e65374
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344144"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111426"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -56,8 +56,8 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
   - **[規則の重要度]**: CCE の値 ("*重大*"、"*重要*"、または "*警告*")。
   - **[状態]**: 推奨事項の現在の状態。
 
-    - **[オープン]**: 推奨事項への対処がまだ行われていない。
-    - **[処理中]**: 現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要。
+    - **[オープン]**:推奨事項への対処がまだ行われていない。
+    - **[処理中]**: 現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要です。
     - **[解決済み]**: 推奨事項が適用されています。 問題が解決されると、エントリが淡色表示になります。
 
 3. 失敗した規則の詳細を表示するには、一覧から選択します。

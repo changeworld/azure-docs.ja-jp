@@ -13,12 +13,13 @@ ms.workload: identity
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a670b6f1e8c2298214e28de6183064d6db424b33
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 09914de48df09dabd4069cd33e7acbea328fa89d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191603"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193154"
 ---
 # <a name="start-using-pim"></a>PIM の使用を開始する
 

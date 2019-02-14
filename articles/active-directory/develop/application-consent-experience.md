@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: 233b77de4a034b5e87aeea2152a3fb6a71aeb8e6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86424a7c797dfd7e73ad5f0e56929616d9653b3d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755386"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170977"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 

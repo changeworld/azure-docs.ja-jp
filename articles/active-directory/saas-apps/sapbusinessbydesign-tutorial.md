@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 62a448c5a0994dc549d06808c6ece520eabefc3e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9846fe8078403d064f226c121383fc191397d321
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193320"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル:Azure Active Directory と SAP Business ByDesign の統合
 
@@ -147,7 +148,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
    
     ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
    
-    d. **Assertion Consumer Service URL** を SAML 要求に追加するには、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Assertion Consumer Service URL** を SAML 要求に追加するには、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
    
     e. **[Activate Single Sign-On (シングル サインオンを有効にする)]** をクリックします。
    
@@ -214,7 +215,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-sap-business-bydesign-test-user"></a>SAP Business ByDesign のテスト ユーザーの作成
 

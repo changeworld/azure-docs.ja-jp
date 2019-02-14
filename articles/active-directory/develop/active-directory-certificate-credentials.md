@@ -17,12 +17,13 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d9e877fd648c28564f5eccc46f9c20741fe446f8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4ee1ce56723e4a2c9ab80c12456bbc1b66f6d5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076317"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162800"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 

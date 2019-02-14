@@ -5,15 +5,15 @@ services: storage
 author: tolandmike
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/12/2019
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 8c0d23ef14b671541af2eeeec0fe50c321450c09
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 30470f7313fb198aedd89f5dd37325359f0d7a9e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465403"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232947"
 ---
 # <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 90fda216fc1e4bd4e96714c625aaa9c01d11a70c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cddd239bba7d9b0f0a90e23f146263777806b187
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160159"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル:Azure Active Directory と LoginRadius の統合
 
@@ -158,7 +159,7 @@ LoginRadius で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-loginradius-test-user"></a>LoginRadius テスト ユーザーの作成
 

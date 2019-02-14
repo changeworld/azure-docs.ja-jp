@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: ca687f15187d4dd485d2c59e3c46fa3158802ff4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 175e678365016bafd3d18f590a5434c32ac9fadd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180004"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル:Azure Active Directory と Ziflow の統合
 
@@ -147,7 +148,7 @@ Ziflow で Azure AD のシングル サインオンを構成してテストす�
 
     c. Azure Portal からダウンロードした base 64 でエンコードされた証明書を **X509 署名証明書**にアップロードします。
 
-    d. **[Sign Out URL (サインアウト URL)]** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign Out URL (サインアウト URL)]** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
     e. **[Configuration Settings for your Identifier Provider (ID プロバイダーの構成設定)]** セクションで、強調表示されている一意の ID 値をコピーし、Azure Portal の **[Ziflow Domain and URLs (Ziflow ドメインと URL)]** セクションで、ID とサインオン URL に追加します。
 
@@ -181,7 +182,7 @@ Ziflow で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-ziflow-test-user"></a>Ziflow のテスト ユーザーの作成
 
@@ -209,7 +210,7 @@ Azure AD ユーザーが Ziflow にログインできるようにするには、
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (例: Simon)。
 
-    d. Ziflow のロールを選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Ziflow のロールを選択します。
 
     e. **[1 ユーザーの追加]** をクリックします。
 

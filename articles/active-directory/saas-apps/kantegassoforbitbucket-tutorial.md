@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b0389147c79bbb15c5034b4885fd7ab0141e72b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7f24c211e057447782c7fab596c9be73106c552
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196635"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル:Azure Active Directory と Kantega SSO for Bitbucket の統合
 
@@ -250,7 +251,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-bitbucket-test-user"></a>Kantega SSO for Bitbucket テスト ユーザーの作成
 
@@ -282,7 +283,7 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
     
     c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。  
 
     e. **[Confirm Password]\(パスワードの確認\)** ボックスに、ユーザーのパスワードを再入力します。
 

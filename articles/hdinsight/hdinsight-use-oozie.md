@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 983ea87a7387c4ce6bb0c1c67bf46d81c717e69a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993085"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984258"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Apache Oozie と Apache Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -123,26 +123,23 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 RunHiveScript には、変数がいくつかあります。 その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
-<table border = "1">
-<tr><th>ワークフローの変数</th><th>説明</th></tr>
-<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
-<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
-</table>
+|ワークフローの変数|説明|
+|---|---|
+|${jobTracker}|Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では **jobtrackerhost:9010** を使用します。|
+|${nameNode}|Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、*wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net*) を使用します。|
+|${queueName}|ジョブの送信先になるキュー名を指定します。 **既定値**を使用します。|
 
-<table border = "1">
-<tr><th>Hive アクションの変数</th><th>説明</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリを指定します。</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダーを指定します。</td></tr>
-<tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前を指定します。</td></tr>
-</table>
+|Hive アクションの変数|説明|
+|---|---|
+|${hiveDataFolder}|Hive の CREATE TABLE コマンドのソース ディレクトリを指定します。|
+|${hiveOutputFolder}|INSERT OVERWRITE ステートメントの出力フォルダーを指定します。|
+|${hiveTableName}|log4j データ ファイルを参照する Hive テーブルの名前を指定します。|
 
-<table border = "1">
-<tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Azure SQL データベースの接続文字列を指定します。</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブルを指定します。</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
-</table>
+|Sqoop アクションの変数|説明|
+|---|---|
+|${sqlDatabaseConnectionString}|Azure SQL データベースの接続文字列を指定します。|
+|${sqlDatabaseTableName}|データのエクスポート先となる Azure SQL データベース テーブルを指定します。|
+|${hiveOutputFolder}|Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。|
 
 Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 77c4453603cc82d89f79316b64463ca7dc4274ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル:Azure Active Directory と Workday の統合
 
@@ -161,7 +162,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     c. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** をコピーし、**[Logout Redirect URL]\(ログアウト リダイレクト URL\)** ボックスに貼り付けます。
 
-    d. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。  
 
     >[!NOTE]
     > [環境] 属性の値が、テナント URL の値に関連付けられます。  
@@ -188,7 +189,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     c. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに貼り付けます。
 
-    d. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
 
     e. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。
 
@@ -215,7 +216,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
     >
     >
 
-    d.  Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
 
     e.  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
 
@@ -233,7 +234,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![認証要求署名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "Authentication Request Signature Method") 
 
-    d. Click **OK**.
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
 
     ![OK](./media/workday-tutorial/IC782933.png "OK")
 
@@ -270,7 +271,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-workday-test-user"></a>Workday テスト ユーザーの作成
 

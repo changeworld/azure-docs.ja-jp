@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167565"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567164"
 ---
 # <a name="object-detection"></a>オブジェクトの検出
 
@@ -87,6 +87,15 @@ Detect API は、画像内で特定されたオブジェクトや生物に応じ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="limitations"></a>制限事項
 
-[イメージの分類](concept-categorizing-images.md)および[イメージの説明](concept-describing-images.md)に関する概念を確認します。
+検知漏れ (見落とされたオブジェクト) や詳細の利用制限の影響を回避または軽減できるように、オブジェクト検出機能の制限事項に注意することが重要です。
+* オブジェクトが非常に小さい (画像の 5 % 未満) 場合、通常、それらのオブジェクトは検出されません。
+* オブジェクトが非常に近くに配置されている場合 (積み重ねられた皿など)、通常、それらのオブジェクトは検出されません。
+* オブジェクトは、ブランド名や製品名 (店の棚にある各種のソーダなど) によって区別されません。 ただし、[ブランド検出](concept-brand-detection.md)機能を使用すると画像からブランド情報を取得できます。
+
+## <a name="use-the-api"></a>API の使用
+オブジェクト検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 完全な JSON 応答が得られたら、`"objects"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート:画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

@@ -15,6 +15,7 @@
 ## [MySQL をオンラインで Azure DB for MySQL に移行する](tutorial-mysql-azure-mysql-online.md)
 ## [PostgreSQL をオンラインで Azure DB for PostgreSQL に移行する](tutorial-postgresql-azure-postgresql-online.md)
 ## [MongoDB をオフラインで Azure Cosmos DB Mongo API に移行する](tutorial-mongodb-cosmos-db.md)
+## [MongoDB をオンラインで Azure Cosmos DB Mongo API に移行する](tutorial-mongodb-cosmos-db-online.md)
 
 # ハウツー ガイド
 ## [PowerShell を使用した SQL Server から Azure SQL DB への移行](howto-sql-server-to-azure-sql-powershell.md)

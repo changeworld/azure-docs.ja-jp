@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c3e094fedae0a395df6862feceec0e60c66ee042
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 096f251c776f87a2ab119ce394aa4825e77ee65c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196229"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>チュートリアル:Azure Active Directory と The Funding Portal の統合
 
@@ -139,7 +140,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
 
     c. **[属性値]** 一覧で、実装で使用する属性を選択します。 たとえば、ExtensionAttribute1 に StudentID の値を格納した場合、user.extensionattribute1 を選択します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
  
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -184,7 +185,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-the-funding-portal-test-user"></a>The Funding Portal テスト ユーザーの作成
 

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: feb74b923a1f15105a2d80f8fefb09184162cb9b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810705"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990464"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>v2 API によって生成される Video Indexer の出力を調べる
 

@@ -12,12 +12,13 @@ ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 5780090f155b3e09792aeb78c4e1d573808028ca
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f29331ccdde7db56639ed443e5dca7336f5e9dbd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299352"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181594"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロール メンバーシップ](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。

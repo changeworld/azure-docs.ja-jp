@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e4f8b99cfeaa35644ed51fd8ad712fe4744c0226
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751499"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890945"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使って、追加のサブネットを仮想ネットワークに作成します。 次の例では、*Microsoft.Storage* のサービス エンドポイントをサブネットに作成します。 
+[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使って、追加のサブネットを仮想ネットワークに作成します。 次の例では、*Microsoft.Storage* のサービス エンドポイントをサブネットに作成します。 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>サブネットのネットワーク アクセスを制限する
 
-[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使って、ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet) を使って、ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ az network nsg rule create \
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) で Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。
+[az storage account create](/cli/azure/storage/account) で Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -197,7 +197,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>ストレージ アカウントへのすべてのネットワーク アクセスを拒否する
 
-既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選んだネットワークへのアクセスを制限するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) で既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
+既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選んだネットワークへのアクセスを制限するには、[az storage account update](/cli/azure/storage/account) で既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
 
 ```azurecli-interactive
 az storage account update \
@@ -208,7 +208,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>サブネットからのネットワーク アクセスを有効にする
 
-[az storage account network-rule add](/cli/azure/storage/account/network-rule#az_storage_account_network_rule_add) を使って、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
+[az storage account network-rule add](/cli/azure/storage/account/network-rule) を使って、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -334,7 +334,7 @@ az storage share list \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
+不要になったら、[az group delete](/cli/azure) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

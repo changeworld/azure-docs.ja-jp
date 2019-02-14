@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 2e2bc0c7e590796a533d9f593eb61e57def91fc8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188000"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164151"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -159,7 +160,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[Collaboration item]\(コラボレーション項目\)** ボックスに、先ほど Azure Portal からコピーした要求の値 (**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**) を貼り付けます。
 
-    d. **[Issuer (entity ID)]\(発行者 (エンティティ ID)\)** ボックスに、Azure Portal の **[E Sales Manager Remix のドメインと URL]** セクションからコピーしておいた識別子の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer (entity ID)]\(発行者 (エンティティ ID)\)** ボックスに、Azure Portal の **[E Sales Manager Remix のドメインと URL]** セクションからコピーしておいた識別子の値を貼り付けます。
 
     e. Azure Portal からダウンロードした証明書をアップロードするには、**[File selection]\(ファイルの選択\)** を選択します。
 
@@ -203,7 +204,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix のテスト ユーザーの作成
 
@@ -227,7 +228,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     
     c. SAML を有効にしている場合、管理者はサインイン ページからサインインできません。 **[Admin Login]\(管理ログイン\)** チェック ボックスを選択して、ユーザーに管理者サインイン特権を付与します。
 
-    d. **[Registration]\(登録\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Registration]\(登録\)** を選択します。
 
 1. 今後、管理者としてサインインするには、管理者権限を持っているユーザーとしてサインインします。その後、右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
 

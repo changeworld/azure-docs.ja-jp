@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 118cdf11b08b1cd964bfae7ae2b3c5600b27fb7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 46466ac85a8be1dec273440751489833f12c00db
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192147"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166813"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
@@ -141,7 +142,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
    c. **+** をクリックして、**[metaDataConfiguration]** セクションを展開します。
 
-   d. **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -173,7 +174,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-replicon-test-user"></a>Replicon テスト ユーザーの作成
 
@@ -201,7 +202,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Department]** テキストボックスに、ユーザーの所属を入力します。
 
-    d. **[Employee Type]** として **[Administrator]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Employee Type]** として **[Administrator]** を選択します。
 
     e. **[Save User Profile]** をクリックします。
 

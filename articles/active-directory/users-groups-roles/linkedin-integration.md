@@ -12,12 +12,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 6b62fde7f9b01fbeb133c92b1306f70f56d71d7a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d86b8dc271eead1196d946895ec7676935135cef
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509628"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202488"
 ---
 # <a name="linkedin-integration"></a>LinkedIn の統合
 

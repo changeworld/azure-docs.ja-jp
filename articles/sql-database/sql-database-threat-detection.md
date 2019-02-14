@@ -11,21 +11,21 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 032146742c1a49fc8cdbda24d5c732add3cc5ea7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 64302a04050196b4299be45d910f7136f3ecaaa6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465352"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734268"
 ---
-# <a name="azure-sql-database-threat-detection-for-standalone-or-pooled-database"></a>スタンドアロンまたはプールされたデータベース用の Azure SQL Database の脅威検出
+# <a name="azure-sql-database-threat-detection-for-standalone-or-pooled-databases"></a>スタンドアロンまたはプールされたデータベース用の Azure SQL Database の脅威検出
 
-スタンドアロンおよびプールされたデータベース用の Azure SQL [脅威検出](sql-database-threat-detection-overview.md)では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。 脅威検出によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[脅威検出アラート](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts)に関する記事を参照してください。
+スタンドアロンおよびプールされたデータベース用の[脅威検出](sql-database-threat-detection-overview.md)では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。 脅威検出によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[脅威検出アラート](sql-database-threat-detection-overview.md#threat-detection-alerts)に関する記事を参照してください。
 
 検出された脅威に関する通知は、[電子メールの通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)または [Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal) で受け取ることができます。
 
-[脅威検出](sql-database-threat-detection-overview.md)は、高度な SQL セキュリティ機能の統合パッケージである [SQL Advanced Data Security](sql-advanced-threat-protection.md) (ADS) オファリングの一部です。 脅威検出は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。 Advanced Data Security パッケージの料金は、論理サーバーごとに毎月 15 ドルです (最初の 30 日間は無料です)。
+[脅威検出](sql-database-threat-detection-overview.md)は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 脅威検出は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。 Advanced Data Security パッケージの料金は、論理サーバーごとに毎月 15 ドルです (最初の 30 日間は無料です)。
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出を設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "55465352"
 2. 保護する Azure SQL Database サーバーの構成ページに移動します。 セキュリティの設定で、**[Advanced Data Security]** を選びます。
 3. **[Advanced Data Security]** の構成ページで、
 
-   - サーバーで Advanced Data Security を有効にします
+   - サーバーで Advanced Data Security を有効にします。
    - **[脅威検出の設定]** の **[アラートの送信先]** テキスト ボックスで、異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取るメール アドレスの一覧を指定します。
   
    ![脅威検出の設定](./media/sql-database-threat-detection/set_up_threat_detection.png)
@@ -46,7 +46,7 @@ ms.locfileid: "55465352"
 
 - [脅威の検出](sql-database-threat-detection-overview.md)の詳細について学習します。
 - [Managed Instance の脅威検出](sql-database-managed-instance-threat-detection.md)の詳細について学習します。  
-- [SQL Advanced Data Security](sql-advanced-threat-protection.md) の詳細について学習します。
-- [Azure SQL Database 監査](sql-database-auditing.md)の詳細について参照してください
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
-- 価格の詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください  
+- [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
+- [監査](sql-database-auditing.md)の詳細について学習します。
+- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。
+- 価格の詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。  

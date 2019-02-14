@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API で不適切な表現のフィルターを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5ff6666eceeaee2296c6323eaa4e7201841a1526
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 82bb77d261c428171fec1f54fbbc42559fe5c637
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212462"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884836"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Text API で不適切な表現のフィルターを追加する
 

@@ -2,21 +2,22 @@
 title: アプリケーションに対するユーザーの同意を構成する - Azure Active Directory | Microsoft Docs
 description: ユーザーがアプリケーションのアクセス許可に同意する方法を管理する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 これらの方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 8f2d1580cfbf23bd54498243a8bfac43c32973ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183018"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203728"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 

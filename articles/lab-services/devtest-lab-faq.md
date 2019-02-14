@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262031"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700031"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -60,12 +60,12 @@ DevTest Labs は無料サービスです。 DevTest Labs でのラボの作成�
 
 * **アクセス許可**: アクセス許可とは、特定のアクションへのアクセスを定義したものです。 たとえば、すべての VM への読み取りアクセス許可などがあります。
 * **ロール**: ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、サブスクリプション所有者ロールが割り当てられたユーザーは、サブスクリプション内のすべてのリソースにアクセスできます。
-* **スコープ**: スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
+* **[スコープ]**: スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
 
 DevTest Labs のスコープ内には、ユーザーのアクセス許可を定義する次の 2 種類のロールがあります。
 
-* **ラボ所有者**: ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 ポリシーの変更、任意の VM に対する読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
-* **ラボ ユーザー**: ラボ ユーザーは、VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できます。 ただし、他のユーザーが作成したポリシーや VM を変更することはできません。 
+* **ラボ所有者**:ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 ポリシーの変更、任意の VM に対する読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
+* **ラボ ユーザー**:ラボ ユーザーは、VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できます。 ただし、他のユーザーが作成したポリシーや VM を変更することはできません。 
 
 DevTest Labs にカスタム ロールを作成することもできます。 DevTest Labs にカスタム ロールを作成する方法については、「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。
 
@@ -227,7 +227,7 @@ Microsoft アカウントは、Microsoft のデバイスとサービスで実行
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングしたときに、"親リソースが見つからない" ことを示すエラーが発生するのはなぜですか。
 リソースが別のリソースの親である場合、子リソースを作成するには、親リソースが存在している必要があります。 親リソースが存在しない場合、**ParentResourceNotFound** メッセージが表示されます。 親リソースに依存関係を指定していない場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)に関する記事をご覧ください。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
 VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics]\(仮想マシン診断\)** で確認できます (VM ブレードは、**[My virtual machines]\(マイ仮想マシン\)** の一覧から VM を選択すると表示されます)。

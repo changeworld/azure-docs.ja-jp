@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 4060e385fabe10490c6ccfe77a4f67e705a1d0d0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfef1371b7ac61712c0f70efd48c0e791c4c729d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158793"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル:Azure Active Directory と RunMyProcess の統合
 
@@ -145,7 +146,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Logout redirect (ログアウト リダイレクト)]** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
 
     e. ダウンロードした証明書ファイルのコンテンツをコピーし、**[Certificate (証明書)]** ボックスに貼り付けます。 
  
@@ -184,7 +185,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-runmyprocess-test-user"></a>RunMyProcess のテスト ユーザーの作成
 
@@ -208,7 +209,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
     c. **[アカウント作成の電子メールを自分に送信]** を選択します。 
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
    
     >[!NOTE]
     >他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 

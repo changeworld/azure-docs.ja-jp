@@ -12,12 +12,13 @@ ms.workload: identity
 ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 905dc11e15e9a3bfbf20d9afdc67513337ca30ed
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4acabd4b583766ac730558fd07c424ce97a1299a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168874"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192514"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールを割り当てる
 

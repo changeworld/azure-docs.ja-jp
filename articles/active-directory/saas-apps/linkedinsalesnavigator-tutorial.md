@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: ca27b0a911e179ef8447163d34ce1b06db941521
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 63e3e98c2c3dc8f99e733174c86965304fe483ce
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169639"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>チュートリアル:Azure Active Directory と LinkedIn Sales Navigator の統合
 
@@ -157,7 +158,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **name** 属性で以下の手順を実行します。
 
@@ -219,7 +220,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-linkedin-sales-navigator-test-user"></a>LinkedIn Sales Navigator テスト ユーザーの作成
 

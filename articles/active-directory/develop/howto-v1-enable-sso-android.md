@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 9f0cc19ae220d27de620e5bd347fe78d9bfab2d5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e27ecc73c19b92f8dcf77849c2f91a5eb57ac8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093293"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168041"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法:Android で ADAL を使用してクロス アプリ SSO を有効にする
 

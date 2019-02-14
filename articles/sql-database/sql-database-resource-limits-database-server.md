@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 11/13/2018
-ms.openlocfilehash: 5f2e71736d25003e6b4e9640a5f82dd1d92b0d95
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508302"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990106"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database サーバーの SQL Database リソース制限
 
@@ -76,7 +76,6 @@ ms.locfileid: "55508302"
 
 ## <a name="next-steps"></a>次の手順
 
-- よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
-- DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-service-tiers.md#dtu-based-purchasing-model)」をご覧ください。
+- DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-purchase-models.md#dtu-based-purchasing-model)」をご覧ください。
 - tempdb のサイズ制限については、「[SQL Database の Tempdb データベース](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」をご覧ください。

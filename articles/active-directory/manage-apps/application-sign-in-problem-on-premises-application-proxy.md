@@ -3,8 +3,8 @@ title: Azure AD アプリケーション プロキシを使用してオンプレ
 description: Azure AD と統合しているオンプレミスのアプリケーションにAzure AD アプリケーション プロキシでサインインできない場合の一般的な問題のトラブルシューティング
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 9c90a3ea053795fe50b226524af4b7f95e5dd256
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf5e198dff2dd3cd93455d5cca25428723bf1ce9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170370"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171980"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない
 

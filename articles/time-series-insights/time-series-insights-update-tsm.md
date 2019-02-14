@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099902"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507819"
 ---
 # <a name="time-series-model"></a>タイム シリーズ モデル
 
@@ -152,9 +152,11 @@ Time Series Insights の種類には変数があります。これは、イベ�
 
 インスタンスは、タイム シリーズ自体を表します。 ほとんどの場合、*deviceId* または *assetId* が、環境内での資産の一意識別子となります。 インスタンスには説明情報が関連付けられます。これは、インスタンス プロパティと呼ばれます。 インスタンス プロパティには、少なくとも階層情報が含まれます。 製造元、運営元、前回のサービス データなど、有用な説明データを含めることもできます。
 
-インスタンスは、"*timeSeriesId*"、"*typeId*"、"*hierarchyId*"、および "*instanceFields*" によって定義されます。 各インスタンスは、1 つの "*種類*" だけにマップし、1 つまたは複数の階層を持ちます。 インスタンスは、階層からすべてのプロパティを継承します。*instanceFields* を追加して、インスタンス プロパティの定義を拡張することもできます。
+インスタンスは、*typeId*、*timeSeriesId*、*name*、*description*、*hierarchyIds*、および *instanceFields* によって定義されます。 各インスタンスは、1 つの "*種類*" だけにマップし、1 つまたは複数の階層を持ちます。 インスタンスは、階層からすべてのプロパティを継承します。*instanceFields* を追加して、インスタンス プロパティの定義を拡張することもできます。
 
 *instanceFields* は、インスタンスと、インスタンスを定義する静的データのプロパティです。 これらによって、階層プロパティや非階層プロパティの値が定義されます。また、検索操作を実行するためのインデックスを作成することもできます。
+
+*name* プロパティは、オプションであり、大文字小文字が区別されます。 *name* は、使用できない場合、既定でタイム シリーズ ID になります。 *name* を指定しても、タイム シリーズ ID も Well で使用可能になります (エクスプローラーのチャートの下のグリッド)。 
 
 ## <a name="time-series-model-instance-json-example"></a>タイム シリーズ モデルのインスタンスの JSON サンプル
 
@@ -164,6 +166,7 @@ Time Series Insights の種類には変数があります。これは、イベ�
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 95b6565885435aeb964dd37bd49ae5a05c06be94
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7edc02f6291decf28c4b3d27277545b9ad31c537
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175470"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル:Azure Active Directory と Front の統合
 
@@ -195,7 +196,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-front-test-user"></a>Front テスト ユーザーの作成
 

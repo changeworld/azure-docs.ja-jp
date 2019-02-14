@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ee7f87a9c358f2b6ee655d13b74297a96b25cfcc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 71f96420fe99ec230c9b25936fb6af4c993f615c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233788"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000986"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
+# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成  
 
 このチュートリアルでは、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 チュートリアルでは、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
@@ -30,7 +30,7 @@ ms.locfileid: "50233788"
 
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、AMS REST チュートリアルの一部で示されている REST API を実行します。 
 
-    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
+    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
 
 ## <a name="configure-the-environment"></a>環境の構成 
 

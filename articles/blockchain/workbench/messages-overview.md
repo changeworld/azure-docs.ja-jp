@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 48e7de2798d9c34942df281febcc1d4ec443010d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662229"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55896011"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -568,7 +568,7 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 | contractLedgerIdentifier    | 台帳でのコントラクトの一意の識別子 |
 | functionName                | 関数の名前 |
 | parameters                  | [パラメータ情報](#parameter-information) |
-| transaction                 | [トランザクション情報](#eventmessage-transaction-information) |
+| transaction                 | トランザクション情報 |
 | inTransactionSequenceNumber | ブロック内のトランザクションのシーケンス番号 |
 | connectionId                | 接続の一意の識別子 |
 | messageSchemaVersion        | メッセージング スキーマ バージョン |

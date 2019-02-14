@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b2302e69c9412170b55df4bfd8c1df5a9f75ef3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479135"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754645"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -63,6 +63,9 @@ az extension add --name aks-preview
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AKS クラスターの作成とクラスター オートスケーラーの有効化
 
 AKS クラスターを作成する必要がある場合は、[az aks create][az-aks-create] コマンドを使用します。 前述の「[開始する前に](#before-you-begin)」セクションで概説されている必須の最小バージョン番号以上の *--kubernetes-version* を指定します。 クラスター オートスケーラーを有効にして構成するには、*--enable-cluster-autoscaler* パラメーターを使用し、ノードの *--min-count* と *--max-count* を指定します。
+
+> [!IMPORTANT]
+> クラスター オートスケーラーは、Kubernetes のコンポーネントです。 AKS クラスターは、ノードに仮想マシン スケール セットを使用しますが、Azure portal で、または Azure CLI を使用して、スケール セットの自動スケーリングの設定を手動で有効にしたり編集したりしないでください。 必要なスケール設定の管理は、Kubernetes クラスター オートスケーラーが行います。 詳細については、「[MC_ リソース グループ内の AKS リソースを変更できますか?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)」を参照してください。
 
 以下の例は、仮想マシン スケール セットとクラスター オートスケーラーを有効にして AKS クラスターを作成し、最小 *1* つ、最大 *3* つのノードを使用します。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: fe15a1aa0d284913c77d62e254b8827d9d60c850
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 744d18b39ffc696d0973628c60687c6b70fbcaad
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188237"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル:Azure Active Directory と Flatter Files の統合
 
@@ -151,7 +152,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     c.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
 
-    d. **[Update]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Update]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -186,7 +187,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-flatter-files-test-user"></a>Flatter Files テスト ユーザーの作成
 
@@ -212,7 +213,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     c. **[Email Address]\(電子メール アドレス\)** ボックスに、Britta の Azure Portal の電子メール アドレスを入力します。
    
-    d. **[送信]** をクリックします。   
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[送信]** をクリックします。   
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て

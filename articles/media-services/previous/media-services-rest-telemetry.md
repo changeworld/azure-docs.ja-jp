@@ -4,7 +4,7 @@ description: この記事では、REST API を使用して Azure Media Services 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: ceb2eafdb3df0d24a98d0d3b4afc7d1d9424b4de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b2028b16c395b770e935fdba47dc0e965284fc2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785841"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993668"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 
@@ -46,7 +46,7 @@ ms.locfileid: "33785841"
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Media Services に関連付けられたストレージ アカウントを取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.13
@@ -74,7 +74,7 @@ ms.locfileid: "33785841"
 
 ## <a name="get-the-notification-endpoints"></a>通知エンドポイントを取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -107,7 +107,7 @@ ms.locfileid: "33785841"
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>監視するための通知エンドポイントを作成する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -149,7 +149,7 @@ ms.locfileid: "33785841"
  
 ## <a name="get-the-monitoring-configurations"></a>監視構成を取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.13
@@ -179,7 +179,7 @@ ms.locfileid: "33785841"
 
 ## <a name="add-a-monitoring-configuration"></a>監視構成を追加する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.13
@@ -222,7 +222,7 @@ ms.locfileid: "33785841"
 
 ## <a name="stop-telemetry"></a>テレメトリを停止する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.13

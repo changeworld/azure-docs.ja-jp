@@ -5,14 +5,14 @@ ms.service: key-vault
 ms.topic: conceptual
 author: bryanla
 ms.author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.date: 09/25/2017
-ms.openlocfilehash: 12b14b87a02619b21e80436c80a284c4011f8b33
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 02d08f4334f1e20a3f635868fb053ffb44388d9c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300321"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108027"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 

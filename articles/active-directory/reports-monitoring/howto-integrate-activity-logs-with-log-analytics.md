@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad01784f3a808be4a27c97934b7ce4e83de8cdc2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 51db96523a96015822f4507731bad2a398521530
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168483"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165843"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを Log Analytics と統合する
 

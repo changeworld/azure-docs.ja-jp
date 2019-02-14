@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 85f119b2a0aaa49fa02ad579a89ce2a0b6e72007
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7a0962e5381a6e0a8da96bc7379c38aae73ee400
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756285"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207026"
 ---
 # <a name="how-to-configure-endpoints"></a>エンドポイントの構成方法
 

@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353041"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822614"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する
+
+>[!NOTE]
+>Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ゲートウェイは Log Analytics ゲートウェイと呼ばれます。 
+>
+
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
 
 Log Analytics ゲートウェイでは、以下をサポートしています。
@@ -29,7 +34,7 @@ Log Analytics ゲートウェイでは、以下をサポートしています。
 * Azure Automation の Hybrid Runbook Worker  
 * Microsoft Monitoring Agent がインストールされており、同エージェントが Log Analytics ワークスペースに直接接続している Windows コンピューター
 * Log Analytics エージェント for Linux が Log Analytics ワークスペースに直接接続されている Linux コンピューター  
-* System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016、Operations Manager Version 1801 の管理グループのうち、Log Analytics と統合しているもの。  
+* System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 以降の管理グループは Log Analytics に統合されました。  
 
 販売時点管理 (POS) デバイスや IT サービスをサポートするサーバーなど、ネットワーク上にあっても IT セキュリティ ポリシーによりインターネットに接続することが禁止されているコンピューターを使用している場合に、そのコンピューターを管理および監視するにあたり Azure Automation または Log Analytics に接続する必要がある局面を考えてみましょう。この場合、そのコンピューターには、直接通信する相手を Log Analytics ゲートウェイとし、データの転送は OMS ゲートウェイに任せるという構成が可能です。  これに対して、コンピューターに Log Analytics ワークスペースと直接接続している Log Analytics エージェントを構成した場合には、全部のコンピューターが Log Analytics ゲートウェイと通信します。  ゲートウェイは、エージェントから収集したデータをサービスに直接転送します。ゲートウェイが転送されるデータを分析することはありません。
 
@@ -86,7 +91,7 @@ Log Analytics ゲートウェイは、トランスポート層セキュリティ
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 次の表に、ゲートウェイ サーバーと通信するエージェントがサポートされる数を示します。  このサポートは、6 秒ごとに最大 200 KB のデータをアップロードするエージェントに基づいています。 テストされるエージェントごとのデータ量は、1 日あたり約 2.7 GB です。
 
-|ゲートウェイ |サポートされるエージェントのおおよその数|  
+|Gateway |サポートされるエージェントのおおよその数|  
 |--------|----------------------------------|  
 |- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 2 コア<br> - メモリ: 4 GB<br> - ネットワーク帯域幅: 1 Gbps| 600|  
 |- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 4 コア<br> - メモリ: 8 GB<br> - ネットワーク帯域幅: 1 Gbps| 1,000|  

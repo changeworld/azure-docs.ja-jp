@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6cc342cce40bcadf1ed899fd2ac3c40ab672cd9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2df3982d69cc168638b4e0cd3840c76c98720fab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159559"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル:Azure Active Directory と Mobile Xpense の統合
 
@@ -166,7 +167,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-mobile-xpense-test-user"></a>Mobile Xpense テスト ユーザーの作成
 

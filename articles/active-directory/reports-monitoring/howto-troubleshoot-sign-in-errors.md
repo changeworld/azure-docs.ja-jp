@@ -13,12 +13,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7225ebd91c4c236b5f54574f1657239420c9f541
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22126114f2d4fcb865485d9cebc69f0e35f70201
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165406"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198475"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法:Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 

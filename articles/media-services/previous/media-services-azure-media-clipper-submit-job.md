@@ -6,17 +6,18 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821449"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002141"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Azure Media Clipper からのクリッピング ジョブの送信
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Azure Media Clipper からのクリッピング ジョブの送信 
+
 Azure Media Clipper には、クリッピング ジョブの送信を処理するために実装された **submitSubclipCallback** メソッドが必要です。 この関数は、Clipper 出力の Web サービスへの HTTP POST を実装するためのものです。 この Web サービスで、エンコード ジョブを送信できます。 Clipper の出力は、レンダリング ジョブでの Media Encoder Standard エンコーディング プリセット、または動的マニフェスト フィルター呼び出しでの REST API ペイロードのいずれかになります。 メディア サービス アカウントの資格情報が、クライアントのブラウザーでは安全でないために、このパススルー モデルが必要となります。
 
 次のシーケンス図は、ブラウザー クライアント、Web サービス、および Azure Media Services の間のワークフローを示したものです。![Azure Media Clipper のシーケンス図](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)

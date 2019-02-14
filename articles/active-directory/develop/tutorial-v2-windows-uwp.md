@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176715"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 

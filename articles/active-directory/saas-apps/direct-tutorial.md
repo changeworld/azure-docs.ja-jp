@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: f45e3c5a3416c28ebe16fcf0ba1f016478c46c7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 576a79c79d7c3990140b93543bc30f833207a6ba
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176235"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル:Azure Active Directory と Direct の統合
 
@@ -160,7 +161,7 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-direct-test-user"></a>Direct テスト ユーザーの作成
 

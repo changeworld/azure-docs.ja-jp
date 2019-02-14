@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 393494410b14bd54f1878cc372e76ad8a7ee3c7d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2752588ded56962b3d49785f44c128136090b48
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164760"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>チュートリアル:Azure Active Directory と Useall の統合
 
@@ -150,7 +151,7 @@ Useall で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="creating-useall-test-user"></a>Useall テスト ユーザーの作成
 

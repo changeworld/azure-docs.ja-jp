@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ddb21ea26098d8c45d335ca6765cf3654ce13e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 871fcd120ee1afa936723d63532c58b2cda34fb6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166596"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル:Azure Active Directory と Humanity の統合
 
@@ -151,7 +152,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
     c. **SAML シングル サインオン サービス URL** 値を **[SAML Issuer URL]\(SAML 発行者 URL\)** ボックスに貼り付けます。
 
-    d. **サインアウト URL** 値を **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **サインアウト URL** 値を **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに貼り付けます。
    
     e. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
@@ -190,7 +191,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-humanity-test-user"></a>Humanity テスト ユーザーの作成
 

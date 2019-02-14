@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 703bc11ec7b0de0e8b0cfe3b99b7516afe8cac0b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c68fdadcf115f57ba524b1b4dc8a2c800cbfaf8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810025"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル:Azure Active Directory と PagerDuty の統合
 
@@ -148,7 +149,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
   
     c. **[Logout URL]** ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
 
-    d. **[Allow username/password login]**(ユーザー名/パスワードによるログインを許可) を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Allow username/password login]**(ユーザー名/パスワードによるログインを許可) を選択します。
 
     e. **[Require EXACT authentication context comparison]**(認証コンテキストの正確な比較を要求する) チェック ボックスを選択します。
 
@@ -184,7 +185,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-pagerduty-test-user"></a>PagerDuty のテスト ユーザーの作成
 

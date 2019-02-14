@@ -13,12 +13,13 @@ ms.workload: identity
 ms.subservice: pim
 ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: e6548c2635afd8e1ac784a1930c2277548647cfd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a90bd76470f5c06eb0e73615a358312b46d8be4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192759"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195398"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>PIM で管理する Azure リソースを検出する
 

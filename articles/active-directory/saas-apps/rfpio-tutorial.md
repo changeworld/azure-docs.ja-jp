@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3af5c3d5d92dea804221b2285d4fa5b9cedae665
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815695"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル:Azure Active Directory と RFPIO の統合
 

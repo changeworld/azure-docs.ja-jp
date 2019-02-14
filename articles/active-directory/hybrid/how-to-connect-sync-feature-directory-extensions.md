@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2b8892873541b4f792caa3538bfc51fff6c2d15b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495619"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167203"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[Azure AD Graph API ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://developer.microsoft.com/graph/) を通じて利用できます。 使用可能な属性を表示するには、それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用します。

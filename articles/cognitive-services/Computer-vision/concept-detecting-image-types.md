@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像の種類の検出機能に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: da7cce0cd69823f254cd6b666dc468f155b9e097
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156277"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872137"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Computer Vision での画像の種類の検出
 

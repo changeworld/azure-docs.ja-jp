@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f136a53767703e0358f0cc7e5b0354609b740c6e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66fc890e72c32cbe605d49f458a875cb692e6182
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149086"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174335"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 

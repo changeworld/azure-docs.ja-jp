@@ -2,18 +2,18 @@
 title: Resource Manager によってデプロイされた仮想マシン バックアップの管理
 description: Resource Manager によってデプロイされた仮想マシンのバックアップを管理したり監視したりする方法について説明します。
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk
-ms.openlocfilehash: 0e599c95f40e62a4bb01a7ab698fe0ce1f738e49
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.author: sogup
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635767"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564138"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップの管理
 
@@ -137,10 +137,12 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 ## <a name="stop-protecting-virtual-machines"></a>仮想マシンの保護を停止する
 仮想マシンの保護を中止するように選択した場合、復旧ポイントを保持するかどうかを確認するメッセージが表示されます。 仮想マシンの保護を中止する方法は 2 つあります。
 
-* 将来のバックアップ ジョブをすべて停止したうえで、すべての復旧ポイントを削除する方法と、
-* 将来のバックアップ ジョブをすべて停止して、復旧ポイントを保持する方法です。
+* 今後のバックアップ ジョブすべてを停止し、すべての復旧ポイントを削除する
+* 今後のバックアップ ジョブすべてを停止するが、復旧ポイントはそのままにする
 
 復旧ポイントを記憶域に保持するためにはコストが発生します。 一方、復旧ポイントを保持する利点は、仮想マシンを必要に応じて後から復元できることです。 復旧ポイントを保持するためのコストについては、「[価格の詳細](https://azure.microsoft.com/pricing/details/backup/)」を参照してください。 すべての復旧ポイントを削除するように選択した場合、仮想マシンを復元することはできません。
+
+データを保持してバックアップを停止すると常に、復旧ポイントはアイテム保持ポリシーに従って有効期限が切れますが、Azure Backup では、ユーザーがバックアップ データを明示的に削除するまで、最後の 1 つの復旧ポイントは常に保持されます。 同様にバックアップの停止を実行しないでデータ ソースを削除した場合、新しいバックアップの開始は失敗し、古い復旧ポイントはアイテム保持ポリシーに従って有効期限が切れますが、ユーザーがデータを削除してバックアップを停止するまで、最後の 1 つの復旧ポイントは常に保持されます。
 
 仮想マシンに対する保護を停止するには、次の手順に従います。
 

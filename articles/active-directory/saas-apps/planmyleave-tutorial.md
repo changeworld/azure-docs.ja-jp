@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 890a4ee42afc7800baa31a99da30455d9634a35e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d578367ef3b1f55715841bf51a3baeef28f198e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181437"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>チュートリアル:Azure Active Directory と PlanMyLeave の統合
 
@@ -148,7 +149,7 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Is Enable (有効)]** を **[はい]** に設定します。
 
-    d. **[Save]** をクリックします。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。 
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -183,7 +184,7 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-planmyleave-test-user"></a>PlanMyLeave テスト ユーザーの作成
 

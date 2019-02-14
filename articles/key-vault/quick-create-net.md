@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 300ee1b01f346f7e1c118b76d64d0eda6e4d7934
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8127a7a10c117edaefc4a215366990d847a165ec
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565549"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238285"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -176,7 +176,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、**[削除]** を選択します。
 
-キー コンテナーは、[az keyvault delete](https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) コマンドを使用して削除します。
+キー コンテナーは、[az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) コマンドを使用して削除します。
 
 ```azurecli
 az keyvault delete --name

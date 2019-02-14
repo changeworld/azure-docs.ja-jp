@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813502"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196588"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API のグラフ検索メソッドを使用して、特定のグラフ パターンに基づいてアカデミック エンティティのセットを返します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: e8472323d99de9d0d81130eac5fbe3ec9e11c590
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864470"
 ---
 # <a name="graph-search-method"></a>グラフ検索メソッド
 

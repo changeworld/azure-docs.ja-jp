@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770216"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111307"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 デプロイの操作は、Azure ポータルから確認することができます。 最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。 Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
 
@@ -68,13 +70,13 @@ ms.locfileid: "55770216"
   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-1. 相関 ID を取得するには、以下を使用します。
+2. 相関 ID を取得するには、以下を使用します。
 
   ```powershell
   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、**Get-AzResourceGroupDeploymentOperation** で確認できます。
+3. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、**Get-AzResourceGroupDeploymentOperation** で確認できます。
 
   ```powershell 
   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -92,7 +94,7 @@ ms.locfileid: "55770216"
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-1. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
+4. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
 
   ```powershell
   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -115,7 +117,7 @@ ms.locfileid: "55770216"
   ```
 
     操作の serviceRequestId と trackingId に注目してください。 serviceRequestId は、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。 trackingId は、次の手順で特定の操作に対象を絞り込むために必要となります。
-1. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
+5. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
   ```powershell
   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -128,7 +130,7 @@ ms.locfileid: "55770216"
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-1. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
+6. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
 
   次の PowerShell コマンドを使用すると、ログから情報を取得して、ローカルに保存できます。
 
@@ -146,13 +148,13 @@ ms.locfileid: "55770216"
   az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-1. 値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
+2. 値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
 
   ```azurecli
   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-1. デプロイ操作を表示するには、次のコマンドを使用します。
+3. デプロイ操作を表示するには、次のコマンドを使用します。
 
   ```azurecli
   az group deployment operation list -g ExampleGroup -n ExampleDeployment

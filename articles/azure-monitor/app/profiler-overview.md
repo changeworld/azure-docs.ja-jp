@@ -3,21 +3,21 @@ title: Application Insights Profiler を使用して Azure で運用アプリケ
 description: フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: 7f212d7dafb4aaf88fc226f702b068a3711f81b6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.author: cweining
+ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359512"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859727"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-application-insights-profiler-for-your-application"></a>アプリケーションに対して Application Insights Profiler を有効にする

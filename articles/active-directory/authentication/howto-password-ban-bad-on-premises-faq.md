@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 62bda3a1c9cb9d53578c2d471b9e63d1f0873234
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078697"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663300"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>更新:オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
 |     |
 | --- |
-| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| Azure AD のパスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 ## <a name="general-questions"></a>一般的な質問
 
 **Q:Azure AD パスワード保護はいつ一般提供 (GA) されますか?**
 
-一般提供の日付はまだ発表していません。
+GA は、Q1 CY2019 を予定しています (2019 年 3 月末より前)。 今までこの機能に関するフィードバックを提供してくださった皆さん、どうもありがとうございました。感謝しております。
 
 **Q:オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
 

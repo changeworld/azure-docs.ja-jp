@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f72a74696cdab60297bdb2dbd1b07235547b6b35
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39e0ec3a69997541c926c5da58ed9d24df5498c9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169588"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル:Azure Active Directory と Small Improvements の統合
 
@@ -151,7 +152,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
     c. ユーザーが SSO およびログイン フォーム認証オプションを使用できるようにするには、**[Enable access via login/password too (ログイン/パスワードによるアクセスも有効にする)]** オプションをオンにします。  
 
-    d. **[SAML プロンプト]** ボックスに、SSO ログイン ボタンの名前として適切な値を入力します。  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML プロンプト]** ボックスに、SSO ログイン ボタンの名前として適切な値を入力します。  
 
     e. **[Save]** をクリックします。
 
@@ -188,7 +189,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-small-improvements-test-user"></a>Small Improvements テスト ユーザーの作成
 
@@ -218,7 +219,7 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
     c. <strong>brittasimon@contoso.com</strong> のように、ユーザーの **[メール]** を入力します。 
 
-    d. **[通知電子メールを送信する]** ボックスに、個人のメッセージを入力することもできます。 通知を送信しない場合は、このチェックボックスをオフにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[通知電子メールを送信する]** ボックスに、個人のメッセージを入力することもできます。 通知を送信しない場合は、このチェックボックスをオフにします。
 
     e. **[ユーザーの作成]** をクリックします。
 

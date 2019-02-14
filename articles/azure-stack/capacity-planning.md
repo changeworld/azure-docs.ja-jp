@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 10a333e8521c781a223c767660ae6acaa1286929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b8bd57953845278aa75e8cbdf41ae28300edad58
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251828"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184909"
 ---
 # <a name="azure-stack-capacity-planning"></a>Azure Stack の容量計画
 Azure Stack ソリューションを評価するときに、Azure Stack クラウドのキャパシティ全体に直接影響するハードウェア構成を選択することができます。 CPU、メモリ密度、ストレージ構成、全体的なソリューションの規模 (つまり、サーバー数) といった従来の選択肢があります。 以前の仮想化ソリューションとは異なり、これらのコンポーネントを単純に計算して使用可能なキャパシティを決定することはできません。 その 1 つ目の理由は、Azure Stack が、ソリューション自体の中でインフラストラクチャまたは管理コンポーネントをホストするように設計されているためです。 2 つ目の理由は、ソリューションのキャパシティの一部が、回復性をサポートするために予約されることです。つまり、テナントのワークロードの中断を最小限に抑える方法で、ソリューションのソフトウェアが更新されます。

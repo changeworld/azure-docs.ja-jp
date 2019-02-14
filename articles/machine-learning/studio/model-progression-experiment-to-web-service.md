@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477983"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992281"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning Studio モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
@@ -46,7 +46,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 *図 1 - 一般的な予測分析モデルの段階*
 
 ### <a name="the-training-experiment"></a>トレーニング実験
-"***トレーニング実験***" は、Machine Learning Studio で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、「 [信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」を参照してください。
+"***トレーニング実験***" は、Machine Learning Studio で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、「 [信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](tutorial-part1-credit-risk.md)」を参照してください。
 
 ### <a name="the-predictive-experiment"></a>予測実験
 トレーニング実験でモデルをトレーニングした後で、Machine Learning Studio で **[Web サービスの設定]** をクリックし、**[Predictive Web Service (予測 Web サービス)]** を選択すると、トレーニング実験を "***予測実験***" に変換する処理が開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
@@ -114,5 +114,5 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 プロセス全体の例については、以下を参照してください。
 
 * [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)
-* [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
+* [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](tutorial-part1-credit-risk.md)
 

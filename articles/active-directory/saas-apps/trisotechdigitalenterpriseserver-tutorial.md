@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e3f90da177f46246d1a7453796b7b9a9c93f4a21
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c4ed44bff002ed8422f199c24a566fe6ff606af8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193168"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル:Azure Active Directory と Trisotech Digital Enterprise Server の統合
 
@@ -143,7 +144,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     c. **[アプリケーション ID]** テキストボックスに、次のパターンを使って URL を入力します: `https://<companyname>.trisotech.com`。
 
-    d. **[保存]**
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[保存]**
 
     e. **[Allowed Domains (empty means everyone)]\(許可されているドメイン (空の場合はすべてのユーザー))\** テキストボックスにドメイン名を入力します。許可されているドメインに一致するユーザーのライセンスが自動的に割り当てられます
 
@@ -179,7 +180,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-trisotech-digital-enterprise-server-test-user"></a>Trisotech Digital Enterprise Server テスト ユーザーの作成
 

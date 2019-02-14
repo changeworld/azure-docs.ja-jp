@@ -11,33 +11,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428122"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696763"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ロールを作成する
 
 [組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 カスタム ロールを作成するには、次のものが必要です。
 
 - [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
-- ローカルにインストールされた [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
+- ローカルにインストールされた [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
-特定のスコープで割り当て可能なロールを一覧表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドを使用します。 次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
+特定のスコープで割り当て可能なロールを一覧表示するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) コマンドを使用します。 次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
 
 ```azurepowershell
-Get-AzureRmRoleDefinition | FT Name, IsCustom
+Get-AzRoleDefinition | FT Name, IsCustom
 ```
 
 ```Example
@@ -54,7 +56,7 @@ API Management Service Contributor                   False
 次の例では、選択したサブスクリプションで割り当て可能なカスタム ロールだけが一覧表示されます。
 
 ```azurepowershell
-Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
 ```
 
 ```Example
@@ -67,20 +69,20 @@ Virtual Machine Operator     True
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 
-カスタム ロールを作成するには、[New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) コマンドを使用します。 ロールを構成する方法は 2 つあります。`PSRoleDefinition` オブジェクトを使用するか JSON テンプレートを使用します。 
+カスタム ロールを作成するには、[New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) コマンドを使用します。 ロールを構成する方法は 2 つあります。`PSRoleDefinition` オブジェクトを使用するか JSON テンプレートを使用します。 
 
 ### <a name="get-operations-for-a-resource-provider"></a>リソース プロバイダー操作を取得する
 
 カスタム ロールを作成するときは、リソース プロバイダーから可能なすべての操作を理解しておくことが重要です。
-この情報を取得するには、[リソース プロバイダー操作](resource-provider-operations.md)のリストを表示するか、[Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) コマンドを使用します。
+この情報を取得するには、[リソース プロバイダー操作](resource-provider-operations.md)のリストを表示するか、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) コマンドを使用します。
 たとえば、仮想マシンで使用可能なすべての操作を確認する場合は、次のコマンドを使います。
 
 ```azurepowershell
-Get-AzureRMProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
+Get-AzProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
 ```
 
 ```Example
-PS C:\> Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
+PS C:\> Get-AzProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
 
 OperationName                                  Operation                                                      Description
 -------------                                  ---------                                                      -----------
@@ -98,7 +100,7 @@ PowerShell を使ってカスタム ロールを作成する場合は、[組み�
 以下の例では、[仮想マシンの共同作業者](built-in-roles.md#virtual-machine-contributor)組み込みロールを土台として、*仮想マシン オペレーター*というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
 
 ```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
+$role = Get-AzRoleDefinition "Virtual Machine Contributor"
 $role.Id = $null
 $role.Name = "Virtual Machine Operator"
 $role.Description = "Can monitor and restart virtual machines."
@@ -115,7 +117,7 @@ $role.Actions.Add("Microsoft.Support/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
 $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111")
-New-AzureRmRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 次の例では、*仮想マシン オペレーター* カスタム ロールを作成する別の方法を示しています。 まず、新しい `PSRoleDefinition` オブジェクトを作成します。 このアクション操作は、`perms` 変数で指定され、`Actions` プロパティに設定されます。 `NotActions` プロパティは、[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)組み込みロールから `NotActions` を読み取ることで設定されます。 [仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)には `NotActions` がないため、この行は必要ありませんが、別のロールから情報を取得する方法を示しています。
@@ -130,10 +132,10 @@ $perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/vi
 $perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
 $perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
 $role.Actions = $perms
-$role.NotActions = (Get-AzureRmRoleDefinition -Name 'Virtual Machine Contributor').NotActions
+$role.NotActions = (Get-AzRoleDefinition -Name 'Virtual Machine Contributor').NotActions
 $subs = '/subscriptions/00000000-0000-0000-0000-000000000000','/subscriptions/11111111-1111-1111-1111-111111111111'
 $role.AssignableScopes = $subs
-New-AzureRmRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="create-a-custom-role-with-json-template"></a>JSON テンプレートを使用したカスタム ロールの作成
@@ -151,8 +153,7 @@ New-AzureRmRoleDefinition -Role $role
     "Microsoft.Storage/*/read",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-  ],
+  "NotActions": [],
   "AssignableScopes": [
     "/subscriptions/00000000-0000-0000-0000-000000000000",
     "/subscriptions/11111111-1111-1111-1111-111111111111"
@@ -163,7 +164,7 @@ New-AzureRmRoleDefinition -Role $role
 ロールをサブスクリプションに追加するには、次の PowerShell コマンドを実行します。
 
 ```azurepowershell
-New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="update-a-custom-role"></a>カスタム ロールの更新
@@ -172,20 +173,20 @@ New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>PSRoleDefinition オブジェクトを使用したカスタム ロールの更新
 
-カスタム ロールを修正するには、まず [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドを使用してロール定義を取得します。 次に、必要に応じてロール定義を変更します。 最後に、[Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) コマンドを使用して変更したロール定義を保存します。
+カスタム ロールを修正するには、まず [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) コマンドを使用してロール定義を取得します。 次に、必要に応じてロール定義を変更します。 最後に、[Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) コマンドを使用して変更したロール定義を保存します。
 
 次の例では、 `Microsoft.Insights/diagnosticSettings/*` 操作が *仮想マシン オペレーター* カスタム ロールに追加されます。
 
 ```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
 $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-Set-AzureRmRoleDefinition -Role $role
+Set-AzRoleDefinition -Role $role
 ```
 
 ```Example
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
 PS C:\> $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
+PS C:\> Set-AzRoleDefinition -Role $role
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -201,24 +202,24 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 次の例では、Azure サブスクリプションが *仮想マシン オペレーター* カスタム ロールの割り当て可能なスコープに追加されます。
 
 ```azurepowershell
-Get-AzureRmSubscription -SubscriptionName Production3
+Get-AzSubscription -SubscriptionName Production3
 
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
 $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-Set-AzureRmRoleDefinition -Role $role
+Set-AzRoleDefinition -Role $role
 ```
 
 ```Example
-PS C:\> Get-AzureRmSubscription -SubscriptionName Production3
+PS C:\> Get-AzSubscription -SubscriptionName Production3
 
 Name     : Production3
 Id       : 22222222-2222-2222-2222-222222222222
 TenantId : 99999999-9999-9999-9999-999999999999
 State    : Enabled
 
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
 PS C:\> $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
+PS C:\> Set-AzRoleDefinition -Role $role
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -234,7 +235,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 
 ### <a name="update-a-custom-role-with-a-json-template"></a>JSON テンプレートを使用したカスタム ロールの更新
 
-前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 次の例のように、JSON テンプレートを更新し、ネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されません。つまり、ロールは、テンプレートに指定したとおりに表れます。 また、Id フィールドをロールの ID で更新する必要もあります。 この値が不明な場合は、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用してこの情報を取得できます。
+前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 次の例のように、JSON テンプレートを更新し、ネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されません。つまり、ロールは、テンプレートに指定したとおりに表れます。 また、Id フィールドをロールの ID で更新する必要もあります。 この値が不明な場合は、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) コマンドレットを使用してこの情報を取得できます。
 
 ```json
 {
@@ -248,8 +249,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
     "Microsoft.Network/*/read",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-  ],
+  "NotActions": [],
   "AssignableScopes": [
     "/subscriptions/00000000-0000-0000-0000-000000000000",
     "/subscriptions/11111111-1111-1111-1111-111111111111"
@@ -260,22 +260,22 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 既存のロールを更新するには、次の PowerShell コマンドを実行します。
 
 ```azurepowershell
-Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
 
-カスタム ロールを削除するには、[Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) コマンドを使用します。
+カスタム ロールを削除するには、[Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) コマンドを使用します。
 
 次の例では、 *仮想マシン オペレーター* カスタム ロールが削除されます。
 
 ```azurepowershell
-Get-AzureRmRoleDefinition "Virtual Machine Operator"
-Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+Get-AzRoleDefinition "Virtual Machine Operator"
+Get-AzRoleDefinition "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
 ```Example
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator"
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -287,7 +287,7 @@ NotActions       : {}
 AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | Remove-AzRoleDefinition
 
 Confirm
 Are you sure you want to remove role definition with name 'Virtual Machine Operator'.

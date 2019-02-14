@@ -17,12 +17,13 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: cd695419cca5df6b729a2ada31743e7de9c0a177
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e4daf43ed1cf757e95ba2963e2a2f395788aed17
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101610"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179316"
 ---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
 Azure Active Directory (Azure AD) は、Azure AD が発行するセキュリティ トークンを受け入れるように構成されているサービスのフェデレーション メタデータ ドキュメントを発行します。 フェデレーション メタデータ ドキュメントの形式は、「[Web Services Federation Language (WS-Federation) Version 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)」で説明されています。これは、[OASIS SAML (Security Assertion Markup Language) v2.0 のメタデータ](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)の拡張です。

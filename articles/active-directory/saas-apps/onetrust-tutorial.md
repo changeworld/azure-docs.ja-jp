@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 46480119579513839024d89e7657661e12e5509c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d907ec5cc40bcf9127fc20fbbc8e2e0aca476c3b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167293"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル:Azure Active Directory と OneTrust Privacy Management Software の統合
 
@@ -166,7 +167,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-onetrust-privacy-management-software-test-user"></a>OneTrust Privacy Management Software テスト ユーザーの作成
 

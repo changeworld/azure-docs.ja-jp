@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e9b805786346abd6dfe830c9ce6ae4cc341c9e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1346ce0526a6b45b6bca0f15c2b5e71afc4ae381
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194272"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>チュートリアル:Azure Active Directory と Infogix Data3Sixty Govern の統合
 
@@ -143,7 +144,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
     e. **[OK]** をクリックします。
 
@@ -191,7 +192,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-infogix-data3sixty-govern-test-user"></a>Infogix Data3Sixty 制御テスト ユーザーを作成する
 

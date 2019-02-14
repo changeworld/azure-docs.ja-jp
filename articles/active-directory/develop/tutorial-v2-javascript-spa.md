@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 3cd9c44a23d148a3eefb1223d487b0c832aa0a5c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f22d3696a9f7f2c49abecfecdeeb7eb678b6e5f1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091895"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174284"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-javascriptspa-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-javascriptspa-setup.md)]

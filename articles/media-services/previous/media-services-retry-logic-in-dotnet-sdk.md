@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: a5171484bb4377e0f9cd84dc0a517f4ea84123e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 909a68ff0fd78fbdd4870506d1ad579392036dbf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228319"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999200"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック  
+
 Microsoft Azure サービスの使用中に、一時的な障害が発生することがあります。 一時的な障害が発生しても、多くの場合は、何度か再試行すれば操作に成功します。 Media Services SDK for .NET には、例外とエラーに関連する一時的な障害を処理するための再試行ロジックが実装されています。そのような例外とエラーは、Web 要求、クエリの実行、変更の保存、ストレージ操作によって発生します。  既定では、Media Services SDK for .NET はアプリケーションに例外を再びスローする前に、再試行を 4 回実行します。 アプリケーションのコードは、この例外を正しく処理する必要があります。  
 
  Web Request、Storage、Query、SaveChanges ポリシーの簡単なガイドラインを次に示します。  
@@ -36,7 +37,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 ## <a name="exception-types"></a>例外の種類
 次の表では、一時的な障害を引き起こす可能性のあるいくつかの操作について、Media Services SDK for .NET が処理する、または処理しない例外について説明します。  
 
-| 例外 | Web Request | Storage | クエリ | SaveChanges |
+| 例外 | Web Request | Storage | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>詳細については、「[WebException 状態コード](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)」のセクションを参照してください。 |はい |はい |はい |はい |
 | DataServiceClientException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ  |可能  |はい |はい |
@@ -51,7 +52,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 ### <a name="WebExceptionStatus"></a> WebException 状態コード
 次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) の列挙型は、状態コードを定義します。  
 
-| Status | Web Request | Storage | クエリ | SaveChanges |
+| Status | Web Request | Storage | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |はい |はい |はい |はい |
 | NameResolutionFailure |はい |はい |はい |はい |
@@ -69,7 +70,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 ### <a name="HTTPStatusCode"></a> HTTP エラー状態コード
 Query および SaveChanges 操作が DataServiceClientException、DataServiceQueryException、または DataServiceQueryException をスローすると、StatusCode プロパティに HTTP エラー状態コードが返されます。  次の表では、再試行ロジックが実装されるエラー コードを示します。  
 
-| Status | Web Request | Storage | クエリ | SaveChanges |
+| Status | Web Request | Storage | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |いいえ  |はい |いいえ  |いいえ  |
 | 403 |いいえ  |はい<br/>長い待機時間で再試行を処理します。 |いいえ  |いいえ  |

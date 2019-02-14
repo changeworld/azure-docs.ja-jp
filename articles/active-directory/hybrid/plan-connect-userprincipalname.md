@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.service: active-Directory
 manager: daveba
-ms.openlocfilehash: 4270aa6feed7574c2e74ca885c6e150eda3b0fad
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2040248bfd9ac2defde9bfa90a6b876b133aec64
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494530"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185538"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 

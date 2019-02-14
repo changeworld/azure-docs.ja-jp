@@ -17,12 +17,13 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: b1979f9b13774855ebcb33efad8ffcaf087bbfb7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a286b3578cc159b6771df3f91bcd3f2fd35a161
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097080"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201680"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 

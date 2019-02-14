@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55825028"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237486"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Azure SQL Database と SQL Server の Machine Learning Services の主な違い
 
@@ -25,7 +25,7 @@ Azure SQL Database における Machine Learning Services と R の機能は、[
 
 ## <a name="language-support"></a>言語のサポート
 
-SQL Server では、[拡張性フレームワーク](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework)を介して、R と Python がサポートされます。 SQL Database では、両方の言語がサポートされません。 主な違いは次のとおりです。
+SQL Server では、[拡張性フレームワーク](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework)を介して、R と Python がサポートされます。 SQL Database では、両方の言語がサポートされません。 主な違いは次のとおりです。
 
 - SQL Database でサポートされている言語は R のみです。 現時点では、Python はサポートされていません。
 - R のバージョンは 3.4.4 です。

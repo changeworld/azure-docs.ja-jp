@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f83c05f4d1dcb93bd424a733866f85edf04bbd05
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745268"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116917"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -76,7 +76,6 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
-|米国西部 2|米国西部 2|
 
 有効にしない仮想マシンの横のチェックボックスをオフにします。 有効にできない仮想マシンは既に選択解除されています。
 

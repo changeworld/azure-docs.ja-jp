@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699892"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208352"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 

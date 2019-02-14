@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 8eba3c35c9c9f0063506b5427c8b1d7b75e09995
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5693a89bbe6f906fe5f6421830e0030a0586c008
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100905"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200243"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 

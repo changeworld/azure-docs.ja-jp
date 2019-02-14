@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159742"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005456"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
+# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 **Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
@@ -71,7 +71,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 | ヘッダー | type | 値 |
 | --- | --- | --- |
-| 日付 |RFC 1123 の日付 |要求のタイムスタンプ |
+| Date |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注:大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
@@ -87,7 +87,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
-| 日付 |RFC 1123 の日付 |要求が処理された日時。 |
+| Date |RFC 1123 の日付 |要求が処理された日時。 |
 | Content-Type |多様 |応答本文のコンテンツの種類。 |
 | Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
 

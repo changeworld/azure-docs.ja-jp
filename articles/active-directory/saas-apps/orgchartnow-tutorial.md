@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65f11b5a65adf86b4115b54b49b10c57ebf21a98
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9f044b6fcefc0c0345ea6c83212da31c7c03c11f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154135"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル:Azure Active Directory と OrgChart Now の統合
 
@@ -163,7 +164,7 @@ OrgChart Now で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-orgchart-now-test-user"></a>OrgChart Now のテスト ユーザーの作成
 
@@ -183,7 +184,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 
     ![OrgChart Now のフォルダー](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. 管理者ユーザーのみが変更できるようにフォルダーを**ロックします**。 **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 管理者ユーザーのみが変更できるようにフォルダーを**ロックします**。 **[OK]** をクリックします。
 
     ![OrgChart Now のロック機能](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 

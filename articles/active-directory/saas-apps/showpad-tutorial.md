@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 41246717758493257abdce82d34f84c93fd76222
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec16aabeb1c8b956b4e525aca4e1c2eb7b133686
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167548"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>チュートリアル:Azure Active Directory と Showpad の統合
 
@@ -151,7 +152,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
    
     c. Azure Portal からダウンロードしたメタデータ XML ファイルの内容をコピーし、**[メタデータ XML]** ボックスに貼り付けます。
    
-    d. **[Auto-provision accounts for new users when they log in]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Auto-provision accounts for new users when they log in]** を選択します。
    
     e. **[送信]** をクリックします。
 
@@ -188,7 +189,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-showpad-test-user"></a>Showpad テスト ユーザーの作成
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295782"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982847"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -37,7 +37,7 @@ az acr login --name myregistry
 
 [docker login](https://docs.docker.com/engine/reference/commandline/login/) でログインすることもできます。 たとえば、オートメーション シナリオで、[レジストリにサービス プリンシパルを割り当てる](container-registry-authentication.md#service-principal)ことができます。 次のコマンドを実行するときは、サービス プリンシパルの appID (ユーザー名) とパスワードの入力を求められたら、対話形式で入力します。 ログイン資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -50,7 +50,7 @@ docker login myregistry.azurecr.io
 
 まず、公開 Nginx イメージをローカル コンピューターにプルします。
 
-```Docker
+```
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 次の [docker run](https://docs.docker.com/engine/reference/run/) コマンドを実行して、Nginx コンテナーのローカル インスタンスを 対話形式でポート 8080 で起動します (`-it`)。 `--rm` 引数は、コンテナーが停止されたときに、それを削除するように指定します。
 
-```Docker
+```
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ docker run -it --rm -p 8080:80 nginx
 
 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) でレジストリへの完全修飾パスを使用して、イメージのエイリアスを作成します。 この例では、レジストリのルートが煩雑にならないように、`samples` 名前空間を指定しています。
 
-```Docker
+```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ docker tag nginx myregistry.azurecr.io/samples/nginx
 
 これで、完全修飾パスを使用してイメージにプライベート レジストリへのタグが付けられたので、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用してレジストリにプッシュできます。
 
-```Docker
+```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 レジストリからイメージをプルするには、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用します。
 
-```Docker
+```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 レジストリからプルしたイメージを実行するには、[docker run](https://docs.docker.com/engine/reference/run/) コマンドを使用します。
 
-```Docker
+```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 
 Nginx イメージが不要になった場合は、[docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) コマンドを使用して、ローカルに削除できます。
 
-```Docker
+```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 

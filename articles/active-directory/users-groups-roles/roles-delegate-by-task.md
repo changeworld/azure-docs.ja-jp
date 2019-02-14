@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6307fe4875d9fd5f55db8078ab9440f989fb58f3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2fdede1308ac2c4c036d835a7be28b0e5ee180d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508217"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207078"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 

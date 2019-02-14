@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: e44308f38a138c0e186e41fc8310f8b480cd4e09
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aba7d2ff73fc1fdca6f57742582b38662177012d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783431"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995120"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する 
 
 ## <a name="overview"></a>概要
 **Azure Media Content Moderator** メディア プロセッサ (MP) を使用すると、マシンによるモデレートをビデオに使用できます。 たとえば、成人向けやわいせつな可能性のあるビデオ コンテンツを検出し、フラグが設定されたコンテンツを人間のモデレート チームがレビューすることができます。
@@ -44,7 +44,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 
 ### <a name="root-json-elements"></a>ルート JSON 要素
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | --- | --- |
 | version |Content Moderator のバージョンです。 |
 | timescale |ビデオの 1 秒あたりの "ティック数" です。 |
@@ -57,7 +57,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 
 ### <a name="fragments-json-elements"></a>フラグメント JSON 要素
 
-|要素|[説明]|
+|要素|説明|
 |---|---|
 | start |最初のイベントの開始時間です ("ティック数")。 |
 | duration |フラグメントの長さです ("ティック数")。 |
@@ -66,7 +66,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 
 ### <a name="events-json-elements"></a>イベント JSON 要素
 
-|要素|[説明]|
+|要素|説明|
 |---|---|
 | reviewRecommended | **adultScore** または **racyScore** が内部しきい値を超えているかどうかに応じて `true` または `false` です。 |
 | adultScore | 成人向けの可能性のあるコンテンツの信頼度スコアです。0.00 から 0.99 の間の値です。 |

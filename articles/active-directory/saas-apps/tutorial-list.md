@@ -16,12 +16,13 @@ ms.date: 09/26/2018
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 3f29e0c621d35ad5f226c5b0e111d45e7cb6b2e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eeb3ff27ba7dc8ea59eb67b2589964fb4333e889
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198199"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191709"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 

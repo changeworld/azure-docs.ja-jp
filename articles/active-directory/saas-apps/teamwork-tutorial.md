@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 7775c8ae92ebf6015f12bdebf0934752a5240f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d3b9cd5fd359d0b75bfc08242a0b36a8647bff0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172410"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル:Azure Active Directory と Teamwork.com の統合
 
@@ -162,7 +163,7 @@ Teamwork.com で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-teamworkcom-test-user"></a>Teamwork.com テスト ユーザーの作成
 

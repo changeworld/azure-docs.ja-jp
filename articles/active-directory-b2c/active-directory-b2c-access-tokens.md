@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86c62c021c6668783b3f843a908f4b17845f8c72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0ea781188e40d6389da8188379d792c922d3bdca
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172988"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768345"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C:アクセス トークンの要求
 
@@ -78,8 +78,15 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 > [!NOTE]
 > 現在、カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenantName.onmicrosoft.com ドメインを使用する必要があります。
 
+次の例では、これらの値を置き換えます。
+
+- `<tenant-name>` - Azure AD B2C テナントの名前。
+- `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
+- `<application-ID>` - 登録したクライアント アプリケーションのアプリケーション識別子。
+- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した**リダイレクト URI**。
+
 ```
-https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?client_id=<application-ID>&nonce=anyRandomValue&redirect_uri=<redirect_uri>&scope=https%3A%2F%2F<tenant-name>.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 

@@ -4,7 +4,7 @@ description: キー、シークレット、証明書に関する Azure Key Vault
 services: key-vault
 documentationcenter: ''
 author: BryanLa
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078373"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106978"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -334,7 +334,7 @@ Key Vault 証明書には次の属性があります。
 > [!Note] 
 > Key Vault 証明書の期限が切れると、アドレス指定可能なキーとシークレットは機能しなくなります。  
 
-#### <a name="tags"></a>タグ
+#### <a name="tags"></a>Tags
 
  キーとシークレットのタグに似た、クライアントによって指定されたキーと値のペアのディクショナリです。  
 

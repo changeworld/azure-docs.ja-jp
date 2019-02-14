@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 9677f6e7f78f241c863fdd9cc88fcfb7298d9164
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7687cb4eb6cacd604a05a820e04f71755e0b66b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563740"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201416"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
