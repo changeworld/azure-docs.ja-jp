@@ -103,7 +103,7 @@ SQL DB では、一意の AAD 表示名が必要です。 これにより、ユ�
 
 Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。  SQL への接続を作成する**アクセス トークン** メソッドを使用します。  これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
-アクセス トークンを使用して SQL への接続を開く .Net のコード例を次に示します。  このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。  アクセス トークン メソッドを使用するには、**.Net Framework 4.6** 以降が必要です。  AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。  Azure SQL のリソース ID が "https://database.windows.net/" であることにご注意ください。
+アクセス トークンを使用して SQL への接続を開く .NET のコード例を次に示します。  このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。  アクセス トークン メソッドを使用するには、**.NET Framework 4.6** 以降が必要です。  AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。  Azure SQL のリソース ID が "https://database.windows.net/" であることにご注意ください。
 
 ```csharp
 using System.Net;

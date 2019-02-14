@@ -37,7 +37,7 @@ ms.locfileid: "55870947"
 
 ## <a name="create-quickstart-code"></a>クイック スタート コードの作成 
 
-Visual Studio で .Net Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
+Visual Studio で .NET Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
 
 ![Visual Studio プロジェクトの種類](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
