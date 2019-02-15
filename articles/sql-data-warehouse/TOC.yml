@@ -20,8 +20,10 @@ items:
 - name: リリース ノート
   href: release-notes.md
   items:
-  - name: バージョン 10.0.10106.0
+  - name: 最新のリリース
     href: release-notes-10-0-10106-0.md
+  - name: Gen2 のリージョン移行のスケジュール
+    href: gen2-migration-schedule.md
   - name: アーカイブされたリリース ノート
     items:
     - name: 2018 年 12 月
@@ -309,9 +311,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: fb943b243319517da70db85a43804084724501d1
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 90b07d04766a1add27383ff3eca5cb30b25c057e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297057"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243129"

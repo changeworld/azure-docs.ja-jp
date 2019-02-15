@@ -142,9 +142,6 @@ items:
       href: cli-azure-resource-manager.md
     - name: リソースの移動
       href: resource-group-move-resources.md
-      items:
-      - name: 移動操作のサポートについて (リソースの種類別)
-        href: move-support-resources.md
     - name: タグを使用したリソースの編成
       href: resource-group-using-tags.md
     - name: リソースのロック
@@ -218,8 +215,12 @@ items:
       href: resource-group-template-functions-resource.md
     - name: 文字列関数
       href: resource-group-template-functions-string.md
-  - name: タグのサポート
-    href: tag-support.md
+  - name: リソースの機能
+    items:
+    - name: 移動のサポート
+      href: move-support-resources.md
+    - name: タグのサポート
+      href: tag-support.md
   - name: REST - Resource Manager
     href: /rest/api/resources/
   - name: REST - Deployment Manager
@@ -248,9 +249,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 0256bc1bf00680a36d1a8f4286757e56243e54f5
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 3f42a8db14c953aa97f9cd7990ac7602d1d6b719
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329157"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235803"

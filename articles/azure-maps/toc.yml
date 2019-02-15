@@ -123,6 +123,8 @@ items:
       href: supported-search-categories.md
   - name: REST
     items:
+    - name: データ サービス
+      href: https://docs.microsoft.com/rest/api/maps/data
     - name: 位置情報サービス
       href: https://docs.microsoft.com/rest/api/maps/geolocation
     - name: Render Service
@@ -131,6 +133,8 @@ items:
       href: https://docs.microsoft.com/rest/api/maps/route
     - name: 検索サービス
       href: https://docs.microsoft.com/rest/api/maps/search
+    - name: 空間サービス
+      href: https://docs.microsoft.com/rest/api/maps/spatial
     - name: タイムゾーン サービス
       href: https://docs.microsoft.com/rest/api/maps/timezone
     - name: Traffic Service
@@ -193,9 +197,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 6a657596cb266db20404d7f2ec1074834d181772
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 114647e85aa775d37dab827daef2e55867e5a47b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111052"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234392"
