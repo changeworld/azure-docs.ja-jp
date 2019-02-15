@@ -36,6 +36,7 @@ items:
   - name: 回帰 (ニューヨーク市のタクシー データ)
     items:
     - name: 1. モデリング用にデータを準備する
+      displayName: data prep
       href: tutorial-data-prep.md
     - name: 2. ML モデルを自動トレーニングする
       displayName: automl, automated, auto ml,
@@ -182,9 +183,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 1d26c23ee6f3e74fce03b59d70e24049d6a10ecc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: eb803b44bbe72b80f4414a4de66bce519591dea7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107568"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268823"

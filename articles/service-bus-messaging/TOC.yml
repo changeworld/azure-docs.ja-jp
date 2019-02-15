@@ -143,8 +143,6 @@ items:
         href: service-bus-auto-forwarding.md
       - name: トランザクション処理
         href: service-bus-transactions.md
-      - name: ペアの名前空間の実装
-        href: service-bus-paired-namespaces.md
     - name: エンドツーエンドのトレースと診断
       href: service-bus-end-to-end-tracing.md
     - name: 多層 Service Bus アプリケーションを構築する
@@ -230,9 +228,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: d1caf87168de73bcf91f23fccd1a81f374c63e51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 00411282f2d455ded92f3a093b9c0a6d14e6076c
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295136"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301436"

@@ -8,17 +8,12 @@ items:
     href: what-is-ml-studio.md
   - name: Microsoft の ML 製品の比較
     href: ../service/overview-more-machine-learning.md
-  - name: よく寄せられる質問
-    displayName: FAQ
-    href: faq.md
   expanded: true
-- name: クイック スタート
+- name: チュートリアル
   items:
   - name: 初めての実験を作成する
     displayName: quickstart
     href: create-experiment.md
-- name: チュートリアル
-  items:
   - name: 予測ソリューションを作成する
     items:
     - name: 1 - 実験の作成
@@ -199,9 +194,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 982f2794d22f830c967607108b31fbfe0d0de359
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238438"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266869"

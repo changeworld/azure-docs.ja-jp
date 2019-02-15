@@ -3,8 +3,8 @@ title: Azure AD アプリ プロキシを使用したリモート デスクト�
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 2bd87b69b332cf9acfdf7cbaa80900c9559c2c8e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159780"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162104"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 

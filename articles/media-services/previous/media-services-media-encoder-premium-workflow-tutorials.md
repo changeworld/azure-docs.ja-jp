@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: f0290a5f04a396c1d66e2dd1873eb313dcb3f66d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e0f4506afee134f2f6453ea1b1298925ff00084c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818398"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004599"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
 ## <a name="overview"></a>概要

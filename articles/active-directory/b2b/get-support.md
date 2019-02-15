@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e1c40af9a3a923d8158b2f333d21b880a07f101
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d2ae596315b65d3f738a48dc3ad7e1d7c90f68d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55073937"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169294"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
 
