@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 3ed8c9b12bbccd0e31df4874a3798f0244666e62
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4ae03eedb96ecd1b460b06df3a80a7349c04e099
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301630"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330717"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1066,7 +1066,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
+                                            <a href="/azure/virtual-machines/windows/managed-disks-overview">
                                                 <img src="media/index/Disks-color.svg" alt="" />
                                                 <p>Disk Storage</p>
                                             </a>
@@ -2404,7 +2404,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
+                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

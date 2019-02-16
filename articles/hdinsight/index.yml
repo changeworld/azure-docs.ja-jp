@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5e98c459551691fb0bf6a126304b5d38e92d6d0f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975801"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326893"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
@@ -88,6 +88,6 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.hdinsight">Azure PowerShell</a></p>
     - title: 言語
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p><p><a href="https://archive.codeplex.com/?p=hadoopsdk">.NET (Avro)</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>
     - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/hdinsight/">REST API</a></p><p><a href="https://docs.microsoft.com/rest/api/hdinsightspark/">REST API (Spark)</a></p>

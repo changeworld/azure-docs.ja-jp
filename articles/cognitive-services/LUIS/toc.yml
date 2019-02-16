@@ -375,8 +375,8 @@ items:
     href: https://aka.ms/luis-roadmap
   - name: 用語集
     href: luis-glossary.md
-  - name: FAQ
-    href: luis-resources-faq.md
+  - name: トラブルシューティング
+    href: troubleshooting.md
   - name: 料金と制限
     href: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
   - name: スタック オーバーフロー
@@ -389,9 +389,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 1eb6e2d707f0f2d7a0d135adeeae9bd5c15c151c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8df7ced2d6be3901c1fbd4bd3426828f60adbcd8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267191"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330496"
