@@ -146,9 +146,9 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
         }
     }
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [単一ページの Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Bing Entity Search API とは](../overview.md )
