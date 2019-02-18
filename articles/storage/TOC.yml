@@ -21,12 +21,12 @@ items:
 - name: ディスク
   items:
   - name: " Windows"
-    href: ../virtual-machines/windows/about-disks-and-vhds.md
+    href: ../virtual-machines/windows/managed-disks-overview.md
   - name: Linux
-    href: ../virtual-machines/linux/about-disks-and-vhds.md
-ms.openlocfilehash: 2d0da22f81218d94c17527f46bd3bfddd0f49e58
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+    href: ../virtual-machines/linux/managed-disks-overview.md
+ms.openlocfilehash: 44904cb09b3865da6040fa581cf43dccf722db20
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734030"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329833"

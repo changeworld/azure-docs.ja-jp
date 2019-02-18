@@ -33,6 +33,10 @@ items:
   items:
   - name: v5 から v7 へのアップグレード
     href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: 検索語句の提案
+    href: concepts/get-suggestions.md
 - name: リファレンス
   items:
   - name: Bing Autosuggest API v7
@@ -76,9 +80,9 @@ items:
     href: language-support.md
   - name: Bing Autosuggest API 用の分析
     href: bing-autosuggest-stats.md
-ms.openlocfilehash: 072a551846ccefa05ba5b938fd75cd15bb003c8d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 19443b5bf95bd2e9aa982c53612297a63f4110b8
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509695"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269789"
