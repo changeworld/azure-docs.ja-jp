@@ -98,12 +98,12 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: テキストを抽出します
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: Python SDK の使用
+    href: quickstarts-sdk/python-sdk.md
 - name: チュートリアル
   items:
   - name: Azure の画像のメタデータを取得する
     href: Tutorials/storage-lab-tutorial.md
-  - name: 画像処理アプリのビルド
-    href: Tutorials/CSharpTutorial.md
 - name: 概念
   items:
   - name: イメージへのタグ付け
@@ -183,7 +183,11 @@ items:
 - name: リソース
   items:
   - name: サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: 画像処理アプリの探索
+      href: Tutorials/CSharpTutorial.md
+    - name: Computer Vision の他のサンプル
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: FAQ
     href: FAQ.md
   - name: 料金と制限
@@ -198,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562353"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310715"

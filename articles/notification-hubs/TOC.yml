@@ -5,6 +5,12 @@ items:
   items:
   - name: Notification Hubs について
     href: notification-hubs-push-notification-overview.md
+- name: クイック スタート
+  items:
+  - name: 通知ハブの作成 - Azure portal
+    href: create-notification-hub-portal.md
+  - name: 通知ハブの構成 - Azure portal
+    href: configure-notification-hub-portal-pns-settings.md
 - name: チュートリアル
   items:
   - name: 1 - すべての登録済みデバイスにプッシュ通知を送信する
@@ -138,9 +144,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 55dc84493eca49cce1abe9184daec2687d3e5d56
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 9035ed7f81639770b1c962e4cf254e18fd3b46bd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301521"
+ms.locfileid: "56311002"

@@ -109,7 +109,7 @@ items:
   - name: モデルをデプロイする
     items:
     - name: Web サービスのデプロイ
-      displayName: publish
+      displayName: publish, multiple regions
       href: publish-a-machine-learning-web-service.md
     - name: 動作のしくみ
       href: model-progression-experiment-to-web-service.md
@@ -118,9 +118,6 @@ items:
     - name: 外部データを使用する
       displayName: import, export
       href: web-services-that-use-import-export-modules.md
-    - name: 複数のリージョンにデプロイする
-      displayName: multiple regions
-      href: how-to-deploy-to-multiple-regions.md
     - name: Web サービス パラメーターを使用する
       href: web-service-parameters.md
     - name: ログの有効化
@@ -133,17 +130,14 @@ items:
       displayName: endpoint, endpoints
       href: manage-web-service-endpoints-using-api-management.md
     - name: エンドポイントを作成する
+      displayName: scale, scaling
       href: create-endpoint.md
-    - name: スケーリング
-      href: scaling-webservice.md
   - name: モデルの再トレーニング
     items:
-    - name: 概要
+    - name: 新しい Web サービスの再トレーニングとデプロイ
       href: retrain-machine-learning-model.md
-    - name: 既存の Wweb サービスの再トレーニングを行う
-      href: retrain-existing-resource-manager-based-web-service.md
-    - name: トラブルシューティング
-      href: troubleshooting-retraining-models.md
+    - name: 従来の Web サービスの再トレーニングとデプロイ
+      href: retrain-classic-web-service.md
   - name: モデルを使用する
     items:
     - name: 概要
@@ -194,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266869"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327682"

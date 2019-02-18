@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490449"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964816"
 ---
 # <a name="configure-usage-settings-and-policies"></a>使用設定とポリシーを構成する
 この記事では、ラボへのユーザーの追加、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。 
@@ -29,7 +29,9 @@ ms.locfileid: "55490449"
 
 1. 左側のメニューの **[ユーザー]** を選択します。
 2. ツール バーの **[ユーザーの追加]** を選択します。 
-3. **[ユーザーの追加]** ページで、ユーザーのメール アドレスを入力します。複数のメール アドレスは別々の行に入力するか、1 つの行にセミコロンで区切って入力します。 
+
+    ![[ユーザーの追加] ボタン](../media/how-to-configure-student-usage/add-users-button.png)
+1. **[ユーザーの追加]** ページで、ユーザーのメール アドレスを入力します。複数のメール アドレスは別々の行に入力するか、1 つの行にセミコロンで区切って入力します。 
 
     ![ユーザーのメール アドレスを追加](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. **[保存]** を選択します。 ユーザーのメール アドレスとそのステータス (登録または未登録) がリストに表示されます。 
@@ -64,11 +66,14 @@ ms.locfileid: "55490449"
 
 1. 左側のメニューの **[ユーザー]** を選択します。
 2. ツールバーの **[Quota per user: unlimited]\(ユーザーあたりのクォータ: 無制限\)** を選択します。 
-3. **[Quota per user]\(ユーザーあたりのクォータ\)** ページで **[Limit the number of hours a user can use a VM]\(ユーザーが VM を使用できる時間数を制限する)** を選択します。 
-4. **[How many hours do you want to give to each user]\(各ユーザーに許可する時間数)** に時間数を入力し、**[Save]\(保存\)** を選択します。 
+3. **[ユーザーあたりのクォータ]** ページで、次のいずれかのオプションを選択します。 
+    1. **なし**。 ユーザーは、スケジュールされた時間中か、ラボ所有者がユーザーに対して仮想マシンを有効にした場合にのみ、バーチャル マシンを使用できます。
+    2. **無制限 (既定値)**。 ユーザーは、時間の制限なく仮想マシンを使用できます。
+    3. **ユーザーあたりの時間数を指定する**。 ユーザーは、スケジュールされた時間に加え、設定された時間数 (下記の画面で指定します) の間、仮想マシンを使用できます。 このオプションを選ぶ場合は、テキスト ボックスに**時間数**を入力します。 
 
-    ![ユーザーあたりの時間数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. 次のように、ツール バーに時間数が表示されるようになりました: **[Quota per user: &lt;number of hours&gt;]\(ユーザーあたりのクォータ: <時間数>\)**。 
+        ![ユーザーあたりの時間数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. **[保存]** を選択します。 
+5. ツールバーに変更後の値が表示されます。**[Quota per user: &lt;number of hours&gt;]\(ユーザーあたりのクォータ: <時間数>\)**。 
 
     ![ユーザーあたりのクォータ](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -78,8 +83,19 @@ ms.locfileid: "55490449"
 ### <a name="add-users-by-uploading-a-csv-file"></a>CSV ファイルをアップロードしてユーザーを追加する
 また、ユーザーのメール アドレスを指定した CSV ファイルをアップロードしてユーザーを追加することもできます。
 
-1. ツールバーの **[CSV のアップロード]** を選択します。
-2. ユーザーのメール アドレスを指定した CSV ファイルを選択します。 すべてのメール アドレスは、Excel で開いたときに 1 列に収まるようにします。 
+1. CSV ファイルを作成し、1 つの列にユーザーの電子メール アドレスを列記します。
+
+    ![ユーザーあたりのクォータ](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. ラボの **[ユーザー]** ページで、ツールバーの **[CSV のアップロード]** を選択します。
+
+    ![[CSV のアップロード] ボタン](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. ユーザーのメール アドレスを指定した CSV ファイルを選択します。 CSV ファイルを選択した後に **[開く]** を選択すると、次のような **[ユーザーの追加]** ウィンドウが表示されます。 電子メール アドレスの一覧には、CSV ファイルから取得された電子メール アドレスが表示されます。 
+
+    ![CSV ファイルからの電子メール アドレスが表示された [ユーザーの追加] ウィンドウ](../media/how-to-configure-student-usage/add-users-window.png)
+4. **[ユーザーの追加]** ウィンドウで **[保存]** を選択します。 
+5. ユーザーの一覧にユーザーが表示されていることを確認します。 
+
+    ![追加されたユーザーの一覧](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>ユーザー VM を管理する
 提供された登録リンクを使用して学生が Azure Lab Services に登録すると、**[仮想マシン]** タブに学生に割り当てられた VM が表示されます。 

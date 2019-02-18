@@ -49,11 +49,11 @@ items:
     - name: Azure Storage を使用する
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Azure Data Lake Storage を使用する
-      href: ../hdinsight-hadoop-use-data-lake-store.md
-      maintainContext: true
-    - name: Azure Data Lake Store Gen2 を使用する
+    - name: Azure Data Lake Storage Gen2 の使用
       href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+      maintainContext: true
+    - name: Azure Data Lake Storage Gen1 の使用
+      href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: バッチ クエリへの Apache Hadoop の使用
     items:
@@ -128,8 +128,6 @@ items:
       href: apache-hadoop-streaming-python.md
     - name: JSON ドキュメントを処理および分析する
       href: using-json-in-hive.md
-    - name: Avro Library でデータをシリアル化する
-      href: apache-hadoop-dotnet-avro-serialization.md
     - name: C# ユーザー定義関数を使用する
       href: apache-hadoop-hive-pig-udf-dotnet-csharp.md
     - name: Apache Hive と Apache Pig で Python を使用する
@@ -477,8 +475,6 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
@@ -560,9 +556,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2646a89812733f114f21e616f09e913adf1ae6e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e23219c5e2edebaaee4327f4b11350868c50f5d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178075"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328811"

@@ -6,23 +6,29 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 01/18/2019
-ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/07/2019
+ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411749"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895688"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
 モビリティ サービスのインストールは、レプリケーションを有効にする際の重要な手順です。 前提条件を満たしていて、サポート対象の構成を使用していれば、この手順は成功します。 モビリティ サービスのインストール時に直面する最も一般的な問題の原因は次のとおりです。
 
-* 資格情報/特権のエラー
-* ログイン エラー
-* 接続エラー
-* サポート対象外のオペレーティング システム
-* VSS インストール エラー
+* [資格情報/特権のエラー](#credentials-check-errorid-95107--95108)
+* [ログイン エラー](#login-failures-errorid-95519-95520-95521-95522)
+* [接続エラー](#connectivity-failure-errorid-95117--97118)
+* [ファイルとプリンターの共有エラー](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [WMI エラー](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [サポート対象外のオペレーティング システム](#unsupported-operating-systems)
+* [サポートされていないブート構成](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [VSS インストール エラー](#vss-installation-failures)
+* [GRUB 構成でデバイス UUID ではなくデバイス名が使用されている](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [LVM ボリューム](#lvm-support-from-920-version)
+* [再起動の警告](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
 レプリケーションを有効にすると、Azure Site Recovery はモビリティ サービス エージェントを仮想マシンにプッシュ インストールしようとします。 その一環として、構成サーバーは仮想マシンとの接続およびエージェントのコピーを試行します。 インストールを成功させるには、以下に示す段階的なトラブルシューティング ガイダンスに従ってください。
 
@@ -56,12 +62,14 @@ ms.locfileid: "54411749"
 
 選択したユーザー アカウントの資格情報を変更する場合は、[ここ](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)に示す手順に従ってください。
 
-## <a name="login-failure-errorid-95519"></a>ログイン エラー (ErrorID: 95519)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>ログイン エラー (エラー ID:95519、95520、95521、95522)
+
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>ユーザー アカウントの資格情報が無効になっている (エラー ID:95519)
 
 レプリケーションを有効にする際に選択したユーザー アカウントが無効になっています。 ユーザー アカウントを有効にするには、[こちらの記事](https://aka.ms/enable_login_user)を参照するか、次のコマンドのテキスト *username* を実際のユーザー名に置き換えて実行してください。
 `net user 'username' /active:yes`
 
-## <a name="login-failure-errorid-95520"></a>ログイン エラー (ErrorID: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>ログイン試行が複数回失敗したために資格情報がロックアウトされた (エラー ID:95520)
 
 コンピューターにアクセスするための再試行が複数回失敗すると、ユーザー アカウントがロックされます。 このエラーは以下が原因である可能性があります。
 
@@ -70,11 +78,11 @@ ms.locfileid: "54411749"
 
 そのため、選択されている資格情報を[こちら](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)の手順に従って変更し、しばらくしてから操作を再試行してください。
 
-## <a name="login-failure-errorid-95521"></a>ログイン エラー (ErrorID: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>ソース マシン上でログオン サーバーを利用できない (エラー ID:95521)
 
 このエラーは、ソース マシン上でログオン サーバーを利用できない場合に発生します。 ログオン サーバーを利用できないと、ログイン要求エラーが発生します。その結果、モビリティ エージェントをインストールできません。 ログインを成功させるには、ソース マシン上でログオン サーバーが利用可能であり、ログオン サービスが開始されていることを確認します。 詳細な手順については、[こちら](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available)をクリックしてください。
 
-## <a name="login-failure-errorid-95522"></a>ログイン エラー (ErrorID: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>ソース マシン上でログオン サービスが実行されていない (エラー ID:95522)
 
 ソース マシン上でログイン サービスが実行されていないため、ログイン要求エラーが発生しています。 そのため、モビリティ エージェントをインストールできません。 問題を解決してログインを成功させるには、ソース マシン上でログオン サービスが実行されていることを確認します。 ログオン サービスを開始するには、コマンド プロンプトから "net start Logon" コマンドを実行するか、タスク マネージャーから "NetLogon" サービスを開始します。
 
@@ -138,15 +146,17 @@ WMI のトラブルシューティングに関するその他の記事を次に�
 問題が発生するもう 1 つの最も一般的な理由は、サポート対象外のオペレーティング システムです。 モビリティ サービスのインストールを成功させるには、サポート対象のオペレーティング システム/カーネルのバージョンを使用してください。 プライベート修正プログラムは使用しないでください。
 Azure Site Recovery でサポートされているオペレーティング システムとカーネルのバージョンのリストを表示する場合は、[サポート マトリックス ドキュメント](vmware-physical-azure-support-matrix.md#replicated-machines)を参照してください。
 
-## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>ブートおよびシステムのパーティション/ボリュームが同じディスクではありません (ErrorID: 95309)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>サポートされていないブート ディスク構成 (エラー ID:95309、95310、95311)
+
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>ブートおよびシステムのパーティション/ボリュームが同じディスクではありません (ErrorID: 95309)
 
 9.20 より前のバージョンでは、異なるディスク上のブートおよびシステムのパーティション/ボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
 
-## <a name="boot-disk-not-found-errorid-95310"></a>ブート ディスクが見つかりません (ErrorID:95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>ブート ディスクが使用できない (エラー ID:95310)
 
 ブート ディスクのない仮想マシンは保護されません。 これは、フェールオーバーの操作中に、仮想マシンを確実にスムーズに復旧させるためです。 ブート ディスクがないと、フェールオーバー後、マシンの起動に失敗します。 確実に仮想マシンにブート ディスクを搭載させ、操作をもう一度お試しください。 また、同じマシンに複数のブート ディスクを搭載させることはできません。
 
-## <a name="multiple-boot-disks-found-errorid-95311"></a>複数のブート ディスクが見つかりました (ErrorID:95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>ソース マシンに複数のブート ディスクが存在する (エラー ID:95311)
 
 1 つの仮想マシンに複数のブート ディスクが存在する状態は[サポートされている構成](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)ではありません。
 
@@ -154,9 +164,45 @@ Azure Site Recovery でサポートされているオペレーティング シ�
 
 9.20 より前のバージョンでは、複数のディスク上に存在するルート パーティションまたはボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
 
-## <a name="grub-uuid-failure-errorid-95320"></a>GRUB UUID エラー (ErrorID: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>GRUB 構成で UUID ではなくデバイス名が指定されているため、保護を有効にできなかった (エラー ID:95320)
 
-ソース マシンの GRUB で、UUID ではなくデバイス名が使用されている場合は、モビリティ エージェントのインストールが失敗します。 GRUB ファイルを変更するようにシステム管理者に連絡してください。
+**考えられる原因:** </br>
+GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例:  </br>
+
+
+- GRUB ファイル **/boot/grub2/grub.cfg** の次の行。 <br>
+*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+
+
+- GRUB ファイル **/boot/grub/menu.lst** の次の行。
+*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+上記の太字の文字列がある場合、GRUB では、UUID ではなく、"resume" パラメーターと "root" パラメーターの実際のデバイス名が使用されています。
+ 
+**修正方法:**<br>
+デバイス名を対応する UUID に置き換える必要があります。<br>
+
+
+1. "blkid <device name>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
+```
+blkid /dev/sda1
+/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+blkid /dev/sda2 
+/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```
+
+2. 次に、"root=UUID=<UUID>" のような形式で、デバイス名を UUID に置き換えます。 たとえば、"/boot/grub2/grub.cfg"、"/boot/grub2/grub.cfg" または "/etc/default/grub" ファイルで、デバイス名を上記の root および resume パラメーターの UUID に置き換えた場合、ファイル内の行は次のようになります。 <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+3. 保護を再起動します
+
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>モビリティ サービスのインストールが完了する際に再起動の警告が返された (エラー ID:95265 および 95266)
+
+Site Recovery モビリティ サービスには多数のコンポーネントがありますが、そのうちの 1 つに、フィルター ドライバーと呼ばれるものがあります。 フィルター ドライバーは、システムの再起動時にのみ、システム メモリ内に読み込まれます。 つまり、フィルター ドライバーの修正は、新しいフィルター ドライバーが読み込まれたときにのみ実現できます。そしてその読み込みは、システムの再起動時にのみ発生します。
+
+なお、これは警告であり、既存のレプリケーションは、新しいエージェントの更新後にも動作することに**注意してください**。 再起動はいつでも実行でき、それにより新しいフィルター ドライバーのメリットを享受できますが、再起動しなかった場合も、古いフィルター ドライバーは動作を継続します。 そのため、更新後に再起動をしなかった場合は、フィルター ドライバーとは別に、**モビリティ サービスの他の機能強化や修正のメリットが実現**されます。 したがって、アップグレード後に毎回再起動を行うことは、推奨はされますが、必須ではありません。 再起動が必須となる場合について詳しくは、[こちら](https://aka.ms/v2a_asr_reboot)をクリックしてください。
+
+> [!TIP]
+>メンテナンス期間中のアップグレードのスケジュールに関するベスト プラクティスについては、[こちら](https://aka.ms/v2a_asr_upgrade_practice)をご覧ください。
 
 ## <a name="lvm-support-from-920-version"></a>9.20 以降のバージョンでの LVM のサポート
 

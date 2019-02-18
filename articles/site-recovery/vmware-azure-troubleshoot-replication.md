@@ -1,22 +1,61 @@
 ---
 title: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーする場合のレプリケーションの問題のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーする際の一般的なレプリケーションの問題のトラブルシューティングについて説明します。
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/18/2019
-ms.author: ramamill
-ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/7/2019
+ms.author: mayg
+ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411477"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964775"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
 VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、[Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM および物理サーバーを Azure にレプリケートする際に起きることがある一般的な問題について説明します。
+
+## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>レプリケーションの問題を回避するためにプロセス サーバーの正常性を監視する
+
+関連付けられたソース マシンに対してレプリケーションが進行していることを確認するために、ポータル上でプロセス サーバー (PS) の正常性を監視することをお勧めします。 コンテナーで、[管理] > [Site Recovery インフラストラクチャ] > [構成サーバー] に移動します。 [構成サーバー] ブレードで、[関連付けられたサーバー] の [プロセス サーバー] をクリックします。 [プロセス サーバー] ブレードが開き、正常性の統計情報が表示されます。 追跡できるのは、CPU 使用率、メモリ使用量、レプリケーションに必要な PS サービスの状態、証明書の有効期限日、および使用可能な空き領域です。 統計の状態はすべて緑色になっている必要があります。 
+
+**メモリ使用量と CPU 使用率が 70% 未満で、25% 以上の空き領域がある状態に維持することを推奨します**。 空き領域とは、プロセス サーバー内のキャッシュ ディスク領域のことを指します。これは、ソース マシンからのレプリケーション データを Azure にアップロードする前に、それらのデータを格納する目的で使用されます。 空き領域が 20% 以下になった場合は、関連付けられたすべてのソース マシンに対して、レプリケーションが調整されます。 [容量のガイダンス](./site-recovery-plan-capacity-vmware.md#capacity-considerations)に従って、ソース マシンのレプリケートに必要な構成を把握してください。
+
+PS コンピューターで、次のサービスが実行されていることを確認してください。 実行されていないサービスがあれば、そのサービスを起動または再起動します。
+
+**組み込みのプロセス サーバー**
+
+* cxprocessserver
+* InMage PushInstall
+* ログ アップロード サービス (LogUpload)
+* InMage Scout アプリケーション サービス
+* Microsoft Azure Recovery Services エージェント (obengine)
+* InMage Scout VX Agent - Sentinel/Outpost (svagents)
+* tmansvc
+* World Wide Web 発行サービス (W3SVC)
+* MySQL
+* Microsoft Azure Site Recovery サービス (dra)
+
+**スケールアウト プロセス サーバー**
+
+* cxprocessserver
+* InMage PushInstall
+* ログ アップロード サービス (LogUpload)
+* InMage Scout アプリケーション サービス
+* Microsoft Azure Recovery Services エージェント (obengine)
+* InMage Scout VX Agent - Sentinel/Outpost (svagents)
+* tmansvc
+
+**フェールバック用の Azure 内プロセス サーバー**
+
+* cxprocessserver
+* InMage PushInstall
+* ログ アップロード サービス (LogUpload)
+
+すべてのサービスの StartType が、**[自動] または [自動 (遅延開始)]** に設定されていることを確認します。 Microsoft Azure Recovery Services エージェント (obengine) サービスについては、StartType を上記の設定にする必要はありません。
 
 ## <a name="initial-replication-issues"></a>初期レプリケーションの問題
 
@@ -26,7 +65,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 ソース マシンの確認方法を次に示します。
 
-*  Telnet を使用して、HTTPS ポート経由でプロセス サーバーを ping します (既定の HTTPS ポートは 9443)。これを行うには、ソース サーバー上のコマンド ラインで、以下のコマンドを実行します。 このコマンドでは、ネットワーク接続の問題と、ファイアウォール ポートをブロックする問題がないかが確認されます。
+*  Telnet を使用して、HTTPS ポート経由でプロセス サーバーを ping します。これを行うには、ソース サーバー上のコマンド ラインで、以下のコマンドを実行します。 HTTPS ポート 9443 は、レプリケーション トラフィックを送受信するためにプロセス サーバーによって使用される既定のポートです。 このポートは、登録時に変更することもできます。 次のコマンドでは、ネットワーク接続の問題と、ファイアウォール ポートをブロックする問題がないかが確認されます。
 
 
    `telnet <process server IP address> <port>`
@@ -35,13 +74,42 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
    > [!NOTE]
    > 接続をテストする際は、Telnet を使用します。 `ping` は、使用しないでください。 Telnet がインストールされていない場合は、「[Install Telnet Client (Telnet クライアントのインストール)](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)」に記載されている手順を実行してください。
 
+   Telnet が PS ポートに正常に接続できる場合は、空白の画面が表示されます。
+
    プロセス サーバーに接続できない場合は、プロセス サーバー上の受信ポート 9443 を許可します。 たとえば、お使いのネットワークに境界ネットワークやスクリーンド サブネットがある場合は、プロセス サーバー上で受信ポート 9443 を許可することが必要になる場合があります。 この後、問題が引き続き発生するかどうかを確認します。
 
-*  **InMage Scout VX Agent – Sentinel/OutpostStart** サービスの状態を確認します。 サービスが稼働していない場合は、サービスを起動して、問題が引き続き発生するかどうかを確認します。   
+*  Telnet が正常であるにもかかわらず PS にアクセスできないことがソース マシンによって報告された場合は、ソース マシン上で Web ブラウザーを開き、アドレス https://<PS_IP>:<PS_Data_Port>/ にアクセスできるかどうか確認してください。
+
+    このアドレスにアクセスすると、通常は HTTPS 証明書エラーが返されます。 証明書のエラーを無視して続行すると、"400 – Bad Request" が発生し、サーバーがブラウザーの要求を処理できなくなって、サーバーへの標準 HTTPS 接続が正常に機能しなくなります。
+
+    これについて問題が発生した場合は、ブラウザーのエラー メッセージで詳しいガイダンスを確認してください。 たとえば、プロキシ認証が正しくない場合は、プロキシ サーバーから "407 – プロキシの認証が必要です" が返され、エラー メッセージ内に必要な操作が示されます。 
+
+*  ソース VM の次のログを見て、ネットワーク アップロードに関連するエラーを確認してください。
+
+       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
 ### <a name="check-the-process-server"></a>プロセス サーバーの確認
 
 プロセス サーバーの確認方法を次に示します。
+
+> [!NOTE]
+> プロセス サーバーには静的な IPv4 アドレスが必要です。NAT IP を構成しないようにしてください。
+
+* **ソース マシンとプロセス サーバーの間のネットワーク接続を確認する**
+1. ソース マシンからの Telnet 接続が可能であるにもかかわらず、ソースから PS にアクセスすることができない場合は、ソース VM で cxpsclient ツールを実行して、ソース VM から cxprocessserver へのエンド ツー エンド接続をチェックしてください。
+
+       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+
+    PS で生成されたログを次のディレクトリから参照し、対応するエラーの詳細を確認してください。
+
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+       and
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+2. PS からのハートビートがない場合は、PS で次のログを確認してください。
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 *  **プロセス サーバーにより、データが Azure にアクティブにプッシュされているかどうかを確認します**。
 

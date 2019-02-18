@@ -120,19 +120,15 @@ items:
     href: ../virtual-machines/windows/maintenance-and-updates.md
     maintainContext: true
   - name: Disk Storage
-    href: ../virtual-machines/windows/about-disks-and-vhds.md
     items:
     - name: Managed Disks
       href: ../virtual-machines/windows/managed-disks-overview.md
       maintainContext: true
-    - name: Premium Storage
-      href: ../virtual-machines/windows/premium-storage.md
+    - name: ディスクの種類の選択
+      href: ../virtual-machines/windows/disks-types.md
       maintainContext: true
     - name: Premium Storage のパフォーマンス
       href: ../virtual-machines/windows/premium-storage-performance.md
-      maintainContext: true
-    - name: Standard Storage
-      href: ../virtual-machines/windows/standard-storage.md
       maintainContext: true
     - name: ディスクのスケーラビリティ ターゲット
       href: ../virtual-machines/windows/disk-scalability-targets.md
@@ -140,7 +136,6 @@ items:
     - name: ディスクのバックアップとディザスター リカバリー
       href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
       maintainContext: true
-    maintainContext: true
   - name: ネットワーク
     href: ../virtual-machines/windows/network-overview.md
     maintainContext: true
@@ -288,9 +283,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: 55a4801bd3763ce56f123c33c38610c0eff1ed66
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6750e7687634119b9a1219260640d54f9bbe2e7b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496382"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327750"

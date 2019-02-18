@@ -7,8 +7,10 @@ items:
     href: media-services-overview.md
 - name: クイック スタート
   items:
-  - name: .NET を使用したビデオ ファイルのストリーミング
+  - name: ビデオ ファイルのストリーミング - .NET
     href: stream-files-dotnet-quickstart.md
+  - name: ビデオ ファイルのストリーム配信 - CLI
+    href: stream-files-cli-quickstart.md
   expanded: true
 - name: チュートリアル
   items:
@@ -217,9 +219,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: e92d8c5a5d6ccf11205608a9e887b6636a584786
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0ca98ea27a77418ee5a111a67bd013ab6ad40e55
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819928"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330020"
