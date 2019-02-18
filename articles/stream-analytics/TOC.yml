@@ -135,7 +135,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: Azure PowerShell の使用
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: API の使用
+    - name: Edge ジョブへの API の使用
       href: stream-analytics-cicd-api.md
   - name: Visual Studio Tools
     items:
@@ -216,14 +216,16 @@ items:
       items:
       - name: 分析関数の概要
         href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: AnomalyDetection_SpikeAndDip
+        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+      - name: AnomalyDetection_ChangePoint
+        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
       - name: ISFIRST
         href: /stream-analytics-query/isfirst-azure-stream-analytics
       - name: LAG
         href: /stream-analytics-query/lag-azure-stream-analytics
       - name: LAST
         href: /stream-analytics-query/last-azure-stream-analytics
-      - name: AnomalyDetection
-        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
     - name: 配列関数
       items:
       - name: 配列関数の概要
@@ -433,9 +435,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 00a80228f20c172c5584ca18a9789ed458c864aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ee7eb6f1a92e5e3af603dab2e38eff5debaf3e9f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997976"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300722"

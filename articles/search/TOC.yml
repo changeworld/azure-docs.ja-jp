@@ -118,7 +118,7 @@ items:
       href: search-create-index-portal.md
     - name: アナライザー
       items:
-      - name: テキスト アナライザーの追加
+      - name: アナライザーの追加
         href: search-analyzers.md
       - name: 言語アナライザーの追加
         href: index-add-language-analyzers.md
@@ -196,17 +196,17 @@ items:
       href: search-query-overview.md
     - name: Search エクスプローラー (ポータル)
       href: search-explorer.md
-    - name: 単純な構文の例
+    - name: 単純なクエリ構文
+      href: query-simple-syntax.md
+    - name: Full Lucene クエリ構文
+      href: query-lucene-syntax.md
+    - name: クエリの例 (簡単な構文)
       href: search-query-simple-examples.md
-    - name: Lucene 構文の例
+    - name: クエリの例 (完全な Lucene)
       href: search-query-lucene-examples.md
-    - name: クエリ構文
-      items:
-      - name: 単純なクエリ構文
-        href: query-simple-syntax.md
-      - name: Lucene クエリ構文
-        href: query-lucene-syntax.md
-    - name: ページングの結果
+  - name: 結果の処理
+    items:
+    - name: ページ関連の機能
       href: search-pagination-page-layout.md
   - name: データのフィルター処理と並べ替え
     items:
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: eeac3c7bf976bf1a3ccc44c30127420e00c7a776
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a38dd0b739b5f34826798370b4ffa4ad84cc525d
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099056"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299481"

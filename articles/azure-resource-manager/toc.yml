@@ -217,6 +217,8 @@ items:
       href: resource-group-template-functions-string.md
   - name: リソースの機能
     items:
+    - name: 完全モードの削除
+      href: complete-mode-deletion.md
     - name: 移動のサポート
       href: move-support-resources.md
     - name: タグのサポート
@@ -249,9 +251,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 3f42a8db14c953aa97f9cd7990ac7602d1d6b719
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 44ba1f922400b9e61d9c40f849b8cb923ef75ddf
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235803"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301946"

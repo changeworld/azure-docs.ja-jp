@@ -25,6 +25,8 @@ items:
     href: quickstart-create-data-factory-rest-api.md
   - name: データ ファクトリの作成 - Resource Manager テンプレート
     href: quickstart-create-data-factory-resource-manager-template.md
+  - name: データ フローの作成
+    href: data-flow-create.md
   expanded: true
 - name: チュートリアル
   items:
@@ -408,6 +410,42 @@ items:
       href: control-flow-wait-activity.md
     - name: Web アクティビティ
       href: control-flow-web-activity.md
+  - name: データ フローの変換
+    items:
+    - name: 集計
+      href: data-flow-aggregate.md
+    - name: 条件分割
+      href: data-flow-conditional-split.md
+    - name: 派生列
+      href: data-flow-derived-column.md
+    - name: Exists
+      href: data-flow-exists.md
+    - name: filter
+      href: data-flow-filter.md
+    - name: 結合
+      href: data-flow-join.md
+    - name: 参照
+      href: data-flow-lookup.md
+    - name: 新しいブランチ
+      href: data-flow-new-branch.md
+    - name: ピボット
+      href: data-flow-pivot.md
+    - name: 選択
+      href: data-flow-select.md
+    - name: シンク
+      href: data-flow-sink.md
+    - name: 並べ替え
+      href: data-flow-sort.md
+    - name: ソース
+      href: data-flow-source.md
+    - name: 代理キー
+      href: data-flow-surrogate-key.md
+    - name: 和集合
+      href: data-flow-union.md
+    - name: ピボット解除
+      href: data-flow-unpivot.md
+    - name: ウィンドウ
+      href: data-flow-window.md
   - name: パラメーター化
     items:
     - name: リンクされたサービスをパラメーター化する
@@ -528,9 +566,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 535abc50cd27693da90aaaddcfdf8950d6abc59d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ee5cd120a8f1ecb8a1f685c1fa2332a9d9c5dd1
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174420"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270421"

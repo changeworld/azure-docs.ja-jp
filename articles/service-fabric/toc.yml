@@ -614,7 +614,9 @@ items:
           href: service-fabric-cluster-scale-up-down.md
         - name: プログラムによるスケールアウト
           href: service-fabric-cluster-programmatic-scaling.md
-        - name: 仮想マシン スケール セット ノード タイプのスケールアウト
+        - name: プライマリ ノード タイプのスケールアップ
+          href: service-fabric-scale-up-node-type.md
+        - name: ノード タイプの追加
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
         - name: ノード タイプを削除する
           href: service-fabric-how-to-remove-node-type.md
@@ -841,9 +843,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 74fccc181b6199a9f5441f1ee977d2a798eb7f2f
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: ab29f0f543afe1c5d5bfc5c159f3bee7a8ac8c11
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965139"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301657"

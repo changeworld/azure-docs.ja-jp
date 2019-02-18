@@ -9,26 +9,26 @@ items:
   items:
   - name: 1 - すべての登録済みデバイスにプッシュ通知を送信する
     items:
-    - name: Android (Firebase Cloud Messaging)
+    - name: Android ネイティブ (Firebase Cloud Messaging)
       href: notification-hubs-android-push-notification-google-fcm-get-started.md
-    - name: Android (Google Cloud Messaging)
+    - name: Android ネイティブ (Google Cloud Messaging)
       href: notification-hubs-android-push-notification-google-gcm-get-started.md
+    - name: Android Xamarin
+      href: xamarin-notification-hubs-push-notifications-android-gcm.md
     - name: Baidu
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: Chrome
       href: notification-hubs-chrome-push-notifications-get-started.md
     - name: iOS
       href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+    - name: iOS Xamarin
+      href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
     - name: Kindle
       href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows
       href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
     - name: Windows Phone
       href: notification-hubs-windows-mobile-push-notifications-mpns.md
-    - name: Xamarin.Android
-      href: xamarin-notification-hubs-push-notifications-android-gcm.md
-    - name: Xamarin.iOS
-      href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
   - name: 2 - 特定のデバイスにプッシュ通知を送信する
     items:
     - name: Android
@@ -60,7 +60,7 @@ items:
 - name: サンプル
   items:
   - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=notification-hubs
+    href: https://github.com/azure/azure-notificationhubs-samples
   - name: PowerShell
     href: samples-powershell.md
 - name: 概念
@@ -122,6 +122,8 @@ items:
   items:
   - name: FAQ
     href: notification-hubs-push-notification-faq.md
+  - name: SDK
+    href: notification-hubs-sdks.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 価格
@@ -136,9 +138,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: b874aadd82357deff5fe6063e033c0702a49adad
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 55dc84493eca49cce1abe9184daec2687d3e5d56
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244283"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301521"
