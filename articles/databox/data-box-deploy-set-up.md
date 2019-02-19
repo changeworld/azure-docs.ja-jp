@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902164"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982405"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 
@@ -40,7 +40,7 @@ ms.locfileid: "54902164"
     - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
 6. Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
 7. Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
-    - 10 GbE SFP+ Twinax 銅線ケーブル 2 本 (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば社内テストでは、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M ケーブルが使用されています。
+    - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば社内テストでは、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M ケーブルが使用されています。
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
 
@@ -57,7 +57,7 @@ ms.locfileid: "54902164"
     1. ラベルで表示された電源入力端子に電源ケーブルを接続します。 電源ケーブルのもう一方の端は、電力配分装置に接続してください。
     2. RJ-45 CAT 6 ケーブルを使用して、一方の端を MGMT ポート、もう一方の端をノート PC に接続します。            
     3. RJ-45 CAT 6A ケーブルを使用し、一方の端を DATA 3 ポートに接続します。 DATA 3 は、RJ-45 CAT 6A ケーブルで接続すると 10 GbE として、RJ-45 CAT 6 ケーブルで接続すると 1 GbE として構成されます。
-    4. 10 GbE SFP+ Twinax 銅線ケーブルを使用して、DATA 1 ポートと DATA 2 ポートをそれぞれ接続します。 
+    4. データ転送用に接続するネットワーク インターフェイスに応じて、最大 2 本の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブルを使用して、それぞれ DATA 1 ポートまたは DATA 2 ポートを接続します。 
     5. データ ポートからのケーブルのもう一方の端を、10 GbE スイッチ経由でホスト コンピューターに接続します。
 
 4. デバイス前面の操作パネルの電源ボタンを確認します。 デバイスの電源を入れます。

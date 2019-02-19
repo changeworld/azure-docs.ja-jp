@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 23c53982919ad29c639a6441f206abb35ddb7a1b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2ef6d855c422095995278716c82ebd4e8795b268
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430793"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978002"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -29,23 +29,23 @@ ms.locfileid: "54430793"
 
 可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
 
-最新の Azure PowerShell モジュールがインストールされていることを確認してください。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
 提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](sizes.md)に関するページを参照してください。
 
-提供されている VM SKU は、[Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) コマンドで確認できます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
+使用可能な VM SKU は、[Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) コマンドで確認できます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
 
 ```powershell
-Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("eastus2")};
+Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
 ```
 
 次に示したのは、その出力例の抜粋です。これは各 VM サイズが提供されている可用性ゾーンを確認できます。
@@ -69,10 +69,10 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus2* リージョンに作成されます。 
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus2* リージョンに作成されます。 
 
 ```powershell
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS2
+New-AzResourceGroup -Name myResourceGroup -Location EastUS2
 ```
 
 ## <a name="create-networking-resources"></a>ネットワーク リソースの作成
@@ -82,14 +82,14 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS2
 
 ```powershell
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus2 `
+$vnet = New-AzVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus2 `
     -Name myVNet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
 
 # Create a public IP address in an availability zone and specify a DNS name
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
+$pip = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
     -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
 ```
 
@@ -98,26 +98,26 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location e
 
 ```powershell
 # Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
     -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
     -DestinationPortRange 3389 -Access Allow
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleWWW  -Protocol Tcp `
+$nsgRuleWeb = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleWWW  -Protocol Tcp `
     -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
     -DestinationPortRange 80 -Access Allow
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location eastus2 `
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location eastus2 `
     -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>仮想マシン用のネットワーク カードを作成する 
-[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して仮想マシン用のネットワーク カードを作成します。 ネットワーク カードは、仮想マシンをサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
+[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想マシン用のネットワーク カードを作成します。 ネットワーク カードは、仮想マシンをサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGroup -Location eastus2 `
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName myResourceGroup -Location eastus2 `
     -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 ```
 
@@ -130,24 +130,24 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
-    Set-AzureRmVMOperatingSystem -Windows -ComputerName myVM -Credential $cred | `
-    Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
-    -Skus 2016-Datacenter -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
+$vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
+    Set-AzVMOperatingSystem -Windows -ComputerName myVM -Credential $cred | `
+    Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
+    -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、仮想マシンを作成します。
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。
 
 ```powershell
-New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
+New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 ```
 
 ## <a name="confirm-zone-for-managed-disk"></a>マネージド ディスクのゾーンの確認
 
-VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM のマネージド ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) で確認できます。
+VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM のマネージド ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) で確認できます。
 
 ```powershell
-Get-AzureRmDisk -ResourceGroupName myResourceGroup
+Get-AzDisk -ResourceGroupName myResourceGroup
 ```
 
 この出力は、マネージド ディスクが VM と同じ可用性ゾーン内にあることを示しています。

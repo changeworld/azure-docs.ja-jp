@@ -7,14 +7,14 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 10/23/2018
+ms.date: 02/15/2019
 ms.topic: hub-page
-ms.openlocfilehash: ceb5bb59f65e0f01d04d1aa9726b2494384b4a67
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 12957121d386afdc911bb0be954c0066d580e83e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998946"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338038"
 ---
 <h1>Azure Cognitive Services のドキュメント</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。</p>
@@ -133,7 +133,7 @@ ms.locfileid: "55998946"
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">C# の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">Java の使用</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">Node.js の使用</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/python-analyze">Python の使用</a></p>
+                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk#analyze-an-image">Python の使用</a></p>
                     </div>
                 </div>
             </div>
@@ -301,7 +301,6 @@ ms.locfileid: "55998946"
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/"><span>Custom Vision Service&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/face/">Face API</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
-                        <p><a href="/azure/cognitive-services/emotion/home"><span>Emotion API&nbsp;<sup style="font-size:70%">廃止予定</sup></span></a></p>
                     </div>
                 </div>
             </div>

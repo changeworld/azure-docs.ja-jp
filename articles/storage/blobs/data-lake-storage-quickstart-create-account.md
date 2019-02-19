@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b49c69a488402e593573e7f9e4fda81057519149
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732449"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884462"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -93,7 +93,7 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 6. ストレージ アカウントを作成するサブスクリプションを選択します。
 7. **[次へ] > [詳細]** の順に選択します。
 8. **[セキュリティ]** および **[仮想ネットワーク]** フィールド下の値は既定の設定のままにします。
-9. **[Data Lake Storage Gen2 (preview)]\(Data Lake Storage Gen2 (プレビュー)\)** セクションで、**[Hierarchical namespace]\(階層構造の名前空間\)** を **[有効]** に設定します。
+9. **[Data Lake Storage Gen2]** セクションで、**[階層構造の名前空間]** を **[有効]** に設定します。
 10. **[確認および作成]** をクリックして、ストレージ アカウントを作成します。
 
     ![Azure Portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)

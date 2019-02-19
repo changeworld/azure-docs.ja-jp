@@ -4,17 +4,17 @@ description: Azure Blueprint は、Azure 環境でアーティファクトを作
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 29670b94450e9f145a96b737ef96970db40aeed8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563373"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998554"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -112,6 +112,12 @@ Resource Manager テンプレートとブループリントのどちらかを選
 
 > [!NOTE]
 > Azure Blueprint のサービス プリンシパルにより、デプロイを有効にするには、割り当てられたサブスクリプションで**所有者**のロールが必要です。 ポータルを使用する場合、デプロイに対するこのロールの付与と取り消しは自動的に行われます。 REST API を使用する場合はこのロールを手動で付与する必要がありますが、取り消しはデプロイ完了後に自動的に行われます。
+
+## <a name="video-overview"></a>ビデオの概要
+
+Azure Blueprints に関する次の概要は、Azure Fridays のものです。 ビデオのダウンロードについては、Channel 9 の「[Azure Fridays - An overview of Azure Blueprints (Azure Fridays - Azure Blueprints の概要)](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints)」をご覧ください。
+
+> [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
 ## <a name="next-steps"></a>次の手順
 

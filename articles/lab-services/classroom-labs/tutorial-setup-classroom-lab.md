@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095755"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998520"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -28,7 +28,7 @@ ms.locfileid: "55095755"
 
 > [!div class="checklist"]
 > * クラスルーム ラボを作成する
-> * クラスルーム ラボを構成する
+> * ラボへのユーザーの追加
 > * 登録リンクを学生に送信する
 
 ## <a name="prerequisites"></a>前提条件
@@ -43,13 +43,12 @@ ms.locfileid: "55095755"
 2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
-    2. ラボ内で許可される**ユーザーの最大数**を指定します。 
+    2. ラボでの**仮想マシンの数**の最大値を指定します。 ラボの作成後、または既存のラボで、VM の数を増やしたり減らしたりできます。 詳しくは、「[ラボ内の仮想マシンの数を更新する](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)」をご覧ください
     6. **[保存]** を選択します。
 
         ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. **[Select virtual machine specifications]** \(仮想マシンの仕様の選択\) ページで、次の手順を実行します。
     1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 
-    2. VM を作成する**リージョン**を選択します。 
     3. ラボで VM の作成に使用する **VM イメージ**を選択します。 
     4. **[次へ]** を選択します。
 
@@ -69,17 +68,15 @@ ms.locfileid: "55095755"
 7. テンプレートの構成が完了すると、次のページが表示されます。 
 
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. このチュートリアルでは、以下の手順は省略可能です。 
+8. **[Configure template]\(テンプレートの構成\)** ページで、次の手順のようにします。これらの手順は、チュートリアルでは**省略可能**です。
     1. **[開始]** を選択してテンプレート VM を開始します。
     2. **[接続]** を選択してテンプレート VM に接続します。 
     3. テンプレート VM にソフトウェアをインストールして構成します。 
     4. VM を**停止**します。  
     5. テンプレートの**説明**を入力します。
-
-        ![[Configure template]\(テンプレートの構成\) ページの [次へ]](../media/tutorial-setup-classroom-lab/configure-template-next.png)
 9. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
 10. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
-    1. テンプレートをすぐに発行するには、*[I understand I can't modify the template after publishing.This process can only be done once and can take up to an hour]* \(発効したらテンプレートを変更できなくなること、このプロセスは一度のみ実行でき最大 1 時間かかる可能性があることを理解しています\) チェックボックスをオンにし、**[発行]** を選択します。  
+    1. テンプレートをすぐに発行するには、**[Publish]\(発行\)** を選択します。  
 
         > [!WARNING]
         > 一度発行すると、再発行することはできません。 
@@ -103,7 +100,9 @@ ms.locfileid: "55095755"
 
 1. 左側のメニューの **[ユーザー]** を選択します。 既定では、**[アクセスを制限する]** オプションが有効になっています。 この設定がオンの場合、ユーザーは、ユーザーの一覧に存在しない限り、登録リンクを持っていてもラボに登録できません。 リストに存在するユーザーだけが、受け取った登録リンクを使用してラボに登録できます。 この手順では、ユーザーをリストに追加します。 または、**[アクセスを制限する]** をオフにすることもできます。その場合ユーザーは、登録リンクさえあればラボに登録することができます。 
 2. ツール バーの **[ユーザーの追加]** を選択します。 
-3. **[ユーザーの追加]** ページで、ユーザーのメール アドレスを入力します。複数のメール アドレスは別々の行に入力するか、1 つの行にセミコロンで区切って入力します。 
+
+    ![[ユーザーの追加] ボタン](../media/how-to-configure-student-usage/add-users-button.png)
+1. **[ユーザーの追加]** ページで、ユーザーのメール アドレスを入力します。複数のメール アドレスは別々の行に入力するか、1 つの行にセミコロンで区切って入力します。 
 
     ![ユーザーのメール アドレスを追加](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. **[保存]** を選択します。 ユーザーのメール アドレスとそのステータス (登録または未登録) がリストに表示されます。 

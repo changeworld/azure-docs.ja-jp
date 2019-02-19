@@ -10,6 +10,10 @@ items:
   items:
   - name: 事前構築済みのドメイン アプリの構築
     href: luis-get-started-create-app.md
+  - name: .NET SDK の使用
+    items:
+    - name: 予測エンドポイントに対するクエリの実行
+      href: sdk-csharp-quickstart-query-prediction-endpoint.md
   - name: REST API の使用
     items:
     - name: 意図の取得
@@ -389,9 +393,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 8df7ced2d6be3901c1fbd4bd3426828f60adbcd8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 5fc7a290d14ba1de59be758905fdd934ab772745
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330496"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340368"

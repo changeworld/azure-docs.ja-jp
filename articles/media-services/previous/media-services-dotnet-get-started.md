@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 40057f6d7ab792557f17c777276091e7c7c05c3c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 34a6676444c4723f64264e41cb0e3c4842486bf6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233618"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003093"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要
+# <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要  
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure Media Services .NET SDK を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
@@ -87,7 +88,7 @@ ms.locfileid: "50233618"
 
 Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (アセット、アセットファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、 **CloudMediaContext** クラスが必要となります。
 
-既定の Program クラスを次のコードで上書きします。このコードは、App.config ファイルから接続値を読み取り、**CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 詳細については、[Media Services API への接続](media-services-use-aad-auth-to-access-ams-api.md)に関するページを参照してください。
+既定の Program クラスを次のコードで上書きします。このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 詳細については、[Media Services API への接続](media-services-use-aad-auth-to-access-ams-api.md)に関するページを参照してください。
 
 メディア ファイルのある場所に合わせて、ファイル名とパスを更新してください。
 
@@ -189,7 +190,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます。
 
-冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services では、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
+冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services は、一連のアダプティブ ビットレート MP4 ファイルを次のいずれかの形式に動的にパッケージ化できます:HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH。
 
 ダイナミック パッケージを活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする必要があります。  
 
@@ -237,7 +238,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
-アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを「発行」する必要があります。 資産に含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
+アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを「発行」する必要があります。 アセットに含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングする (MPEG DASH、HLS、Smooth Streaming など) ために使用される OnDemandOrigin ロケーター、およびメディア ファイルをダウンロードするために使用される Access Signature (SAS) ロケーター。
 
 ### <a name="some-details-about-url-formats"></a>URL 形式の詳細
 

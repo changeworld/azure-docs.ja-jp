@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488096"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997331"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -66,12 +66,12 @@ SKU の導入前に作成されたすべてのパブリック IP アドレスは
 - ネットワーク インターフェイス、VPN ゲートウェイ、アプリケーション ゲートウェイ、およびインターネットに接続するロード バランサーなどのパブリック IP アドレスを割り当てることができる Azure のリソースに割り当てられます。
 - 可用性ゾーンのシナリオはサポートしません。  可用性ゾーンのシナリオには、Standard SKU のパブリック IP を使用する必要があります。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
-#### <a name="standard"></a>標準
+#### <a name="standard"></a>Standard
 
 Standard SKU のパブリック IP アドレスは次のとおりです。
 
 - 必ず静的割り当て方法を使用してください。
-- インバウンドから発生するフローとアウトバウンドから発生するフローの調整可能なアイドル タイムアウトとして、4 分から 66 分 (既定値は 4 分) が割り当てられます。
+- インバウンドから発生するフローとアウトバウンドから発生するフローの調整可能なアイドル タイムアウトとして、4 ～ 30 分 (既定値は 4 分) が割り当てられます。
 - 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、許可された受信トラフィックを明示的なホワイト リストに登録する必要があります。
 - ネットワーク インターフェイス、Standard パブリック ロード バランサー、アプリケーション ゲートウェイ、VPN ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
 - 既定ではゾーン冗長ですが、必要に応じてゾーンのパブリック IP にすることができます (ゾーンのパブリック IP アドレスとして作成でき、特定の可用性ゾーンで保証できます)。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。

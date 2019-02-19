@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 416566ac52e8df6324cbf6146919df160deb0f98
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6965379aadefd110ce6e46e105bbde10626b63c1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220996"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892169"
 ---
 # <a name="configure-your-python-app-for-azure-app-service"></a>Azure App Service 向けに Python アプリを構成する
 この記事では、[Azure App Service](app-service-linux-intro.md) で Python アプリが実行される方法と、必要に応じて App Service の動作をカスタマイズする方法について説明します。 Python アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。 App Service デプロイ エンジン (Kudu) は、自動的に仮想環境をアクティブ化し、[Git リポジトリ](../deploy-local-git.md)をデプロイするとき、またはビルド プロセスがオンになっている [Zip パッケージ](../deploy-zip.md)をデプロイするときに、`pip install -r requirements.txt` を実行します。
@@ -82,7 +82,7 @@ Django アプリの場合、App Service によってお客様のアプリ コー
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-スタートアップ コマンドをより細かく制御したい場合は、[カスタム スタートアップ コマンド](#custom-startup-command)を使用し、`<module>` を、*wsgi.py* が含まれているモジュールの名前に置き換えます。
+スタートアップ コマンドをより細かく制御したい場合は、カスタム スタートアップ コマンドを使用し、`<module>` を、*wsgi.py* が含まれているモジュールの名前に置き換えます。
 
 ### <a name="flask-app"></a>Flask アプリ
 
@@ -95,7 +95,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```
 
-お客様のメイン アプリ モジュールが別のファイルに含まれている場合は、アプリ オブジェクトに別の名前を使用します。また、Gunicorn に追加の引数を指定したい場合は、[カスタム スタートアップ コマンド](#custom-startup-command)を使用します。
+メイン アプリ モジュールが別のファイルに含まれている場合は、アプリ オブジェクトに別の名前を使用します。または、Gunicorn に追加の引数を指定したい場合は、カスタム スタートアップ コマンドを使用します。
 
 ### <a name="default-behavior"></a>既定の動作
 
@@ -160,7 +160,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - App Service を再起動し、15 から 20 秒待って、アプリをもう一度確認します。
 - Windows ベースのインスタンスではなく、App Service for Linux が使用されていることを確認してください。 Azure CLI から `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` コマンドを実行します。`<resource_group_name>` と `<app_service_name>` は適宜置き換えてください。 出力として `app,linux` が表示されるはずです。それ以外の場合は、App Service を再作成し、Linux を選択してください。
 - SSH または Kudu コンソールを使用して App Service に直接接続し、お客様のファイルが *site/wwwroot* に存在することを確認します。 ファイルが存在しない場合は、デプロイ プロセスを見直してアプリを再デプロイします。
-- ファイルが存在する場合は、お客様固有のスタートアップ ファイルを App Service が識別できていません。 [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#custom-startup-command)を使用します。
+- ファイルが存在する場合は、お客様固有のスタートアップ ファイルを App Service が識別できていません。 [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにアプリが構造化されていることを確認します。または、カスタム スタートアップ コマンドを使用します。
 - **ブラウザーに "サービスは利用できません" というメッセージが表示される。** ブラウザーは App Service からの応答を待ってタイムアウトしました。これは、App Service によって Gunicorn サーバーが起動されたもののアプリ コードを指定する引数が正しくないことを示しています。
 - ブラウザーを最新の情報に更新します (特に、お客様が App Service プランの最も低い価格レベルを使用している場合)。 たとえば、無料のレベルを使用しているときは、アプリの起動にかかる時間が長くなることがあります。その場合、ブラウザーを最新の情報に更新すると、応答が速くなります。
 - [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#customize-startup-command)を使用します。

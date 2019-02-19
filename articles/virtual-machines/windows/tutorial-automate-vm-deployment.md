@@ -13,29 +13,30 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ab4c5c744733ac25243f0edbc7c9a760fc0682f6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 354625accb39344d07a22f2d3935cf4cf022d491
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883043"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977662"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
 
-仮想マシン (VM) を迅速かつ一貫した方法で構成するには、一般的に、何らかの形で自動化することが望ましいです。 Windows VM をカスタマイズする一般的なアプローチとして、[Windows のカスタム スクリプト拡張機能](extensions-customscript.md)を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
+迅速かつ一貫した方法で仮想マシン (VM) を構成するには、[Windows 用のカスタム スクリプト拡張機能](extensions-customscript.md)を使用することができます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * カスタム スクリプト拡張機能を使用して IIS をインストールする
 > * カスタム スクリプト拡張機能を使用する仮想マシンを作成する
 > * 拡張機能の適用後に実行中の IIS サイトを表示する
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
 ## <a name="custom-script-extension-overview"></a>カスタム スクリプト拡張機能の概要
 カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。
@@ -46,16 +47,16 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成できるようになりました。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupAutomate* と関連ネットワーク リソースが作成されます。 Web トラフィックを許可するには、このコマンドレットでポート *80* も開きます。
+これで、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupAutomate* と関連ネットワーク リソースが作成されます。 Web トラフィックを許可するには、このコマンドレットでポート *80* も開きます。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupAutomate" `
     -Name "myVM" `
     -Location "East US" `
@@ -71,10 +72,10 @@ New-AzureRmVm `
 
 
 ## <a name="automate-iis-install"></a>IIS のインストールを自動化する
-[Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
+[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
 
 ```azurepowershell-interactive
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupAutomate" `
+Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
     -ExtensionName "IIS" `
     -VMName "myVM" `
     -Location "EastUS" `
@@ -86,10 +87,10 @@ Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Web サイトをテストする
-ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIPAddress* の IP アドレスを取得します。
+ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIPAddress* の IP アドレスを取得します。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress `
+Get-AzPublicIPAddress `
     -ResourceGroupName "myResourceGroupAutomate" `
     -Name "myPublicIPAddress" | select IpAddress
 ```

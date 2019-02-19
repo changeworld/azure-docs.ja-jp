@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Python で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 6f52df9166da371b38069138bc4389a9be6b0121
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 099485f37cc188307b6c04343ef174740acf07cb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692224"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891575"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>クイック スタート: Translator Text API と Python を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Python と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
-
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
 * Python 2.7.x または 3.x
-* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -44,25 +41,7 @@ import os, requests, uuid, json
 
 最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator Text API から返された JSON 応答の処理を行っています。
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>サブスクリプション キー、ベース URL、パスの設定
-
-このサンプルでは、環境変数 `TRANSLATOR_TEXT_KEY` から Translator Text のサブスクリプション キーが読み取られるよう試行されます。 環境変数を使い慣れていない場合は、`subscriptionKey` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
-
-このコードをプロジェクトにコピーします。
-
-```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
-```
+## <a name="set-the-base-url-and-path"></a>ベース URL とパスを設定する
 
 Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`languages` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
@@ -77,13 +56,12 @@ constructed_url = base_url + path
 
 ## <a name="add-headers"></a>ヘッダーの追加
 
-要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。 詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
+サポートされている言語を取得するための要求では、認証は必要ありません。 `Content-type` を `application/json` に設定し、要求を一意に識別するための `X-ClientTraceId` を追加します。
 
 このコード スニペットをプロジェクトにコピーします。
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

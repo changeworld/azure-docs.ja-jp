@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b009e7501609ec3650bf15f2ab5051dbec0ada76
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 903a4d1a9864a9ab19df7c453adc002a8bd0f576
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659373"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983187"
 ---
-# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用してゾーン冗長仮想マシン スケール セットを作成する
+# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Azure CLI を使用してゾーン冗長仮想マシン スケール セットを作成する
 このスクリプトでは、複数の可用性ゾーンにわたって Ubuntu を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -43,7 +43,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン スケール セット、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/ad/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vmss create](/cli/azure/vmss) | 仮想マシン スケール セットを作成し、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 複数の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 このコマンドでは、使用する VM イメージと管理者の資格情報も指定します。  |

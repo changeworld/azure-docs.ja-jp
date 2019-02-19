@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075500"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160579"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances のクォータとリージョンの可用性
 
@@ -26,15 +26,15 @@ ms.locfileid: "54075500"
 
 Azure Container Instances は、指定された CPU とメモリ制限を備えた以下のリージョンで利用できます。 値は公開時現在のものです。 最新情報については、[一覧表示機能](/rest/api/container-instances/listcapabilities/listcapabilities) API を使用します。 Azure Container Instances と[仮想ネットワーク](container-instances-vnet.md) (プレビュー) または [GPU リソース](container-instances-gpu.md) (プレビュー) を使用する場合、可用性とリソースの制限は異なる場合があります。
 
-| 場所 | OS | CPU | メモリ (GB) |
+| Location | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| カナダ中部 |  Linux | 4 | 16 |
-| 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 |  Linux | 4 | 14 |
-| 東日本 |  Linux | 2 | 8 |
-| オーストラリア東部、米国東部 2、東南アジア |  Linux | 2 | 7 |
-| インド中部、東アジア、米国中北部、米国中南部、インド南部 |  Linux | 2 | 3.5 |
-| 米国東部、西ヨーロッパ、米国西部 |  Windows | 4 | 14 |
-| オーストラリア東部、カナダ中部、インド中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、インド南部、東南アジア、米国西部 2 |  Windows | 2 | 3.5 |
+| カナダ中部、米国中部、米国東部 2 | Linux | 4 | 16 |
+| 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 14 |
+| 東日本 | Linux | 2 | 8 |
+| オーストラリア東部、東南アジア | Linux | 2 | 7 |
+| インド中部、東アジア、米国中北部、米国中南部、インド南部 | Linux | 2 | 3.5 |
+| 米国東部、西ヨーロッパ、米国西部 | Windows | 4 | 14 |
+| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、インド南部、東南アジア、米国西部 2 | Windows | 2 | 3.5 |
 
 これらのリソース制限内で作成されたコンテナー インスタンスは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低い CPU とメモリの設定でインスタンスをデプロイしてみるか、デプロイを後で試してみてください。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database のスタンドアロンまたはプールされているデータベースをセキュリティで保護する | Microsoft Docs
-description: Azure SQL Database のスタンドアロンまたはプールされているデータベースをセキュリティで保護するための手法と機能について説明します。
+title: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護する | Microsoft Docs
+description: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護するための手法と機能について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752519"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004584"
 ---
-# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>チュートリアル:スタンドアロンまたはプールされているデータベースをセキュリティで保護する
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
-Azure SQL Database では、次の操作を行うことで、スタンドアロンまたはプールされているデータベース内のデータをセキュリティで保護できます。
+Azure SQL Database では、次の操作を行うことで、単一データベースまたはプールされたデータベース内のデータをセキュリティで保護できます。
 
 - ファイアウォール規則を使用したアクセス制限
 - ID の入力を求める認証メカニズムの使用

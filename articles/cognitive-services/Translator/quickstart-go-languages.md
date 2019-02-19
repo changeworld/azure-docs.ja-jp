@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Go で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 45dcd87910e0dbfc57aa09751cbdaa7a043d7cf1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f750bfb07ee273f7b1d355657bfd3c4808f84ef5
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226657"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891720"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>クイック スタート: Translator Text API と Go を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Go と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
-
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
 * [Go](https://golang.org/doc/install)
-* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -43,43 +40,32 @@ import (
     "log"
     "net/http"
     "net/url"
-    "os"
 )
 ```
 
 ## <a name="create-the-main-function"></a>main 関数を作成する
 
-このサンプルでは、環境変数 `TRANSLATOR_TEXT_KEY` から Translator Text のサブスクリプション キーが読み取られるよう試行されます。 環境変数を使い慣れていない場合は、`subscriptionKey` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator Text 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
 
 このコードをプロジェクトにコピーします。
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
-    }
-    /*
      * This calls our getLanguages function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    getLanguages(subscriptionKey)
+    getLanguages()
 }
 ```
 
 ## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>サポートされている言語の一覧を取得する関数を作成する
 
-サポートされている言語の一覧を取得する関数を作成しましょう。 この関数では、単一の引数である Translator Text サブスクリプション キーを使用します。
+サポートされている言語の一覧を取得する関数を作成しましょう。
 
 ```go
-func getLanguages(subscriptionKey string) {
+func getLanguages() {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -93,8 +79,9 @@ func getLanguages(subscriptionKey string) {
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages?api-version=3.0")
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages")
 q := u.Query()
+q.Add("api-version", "3.0")
 u.RawQuery = q.Encode()
 ```
 
@@ -112,7 +99,6 @@ if err != nil {
     log.Fatal(err)
 }
 // Add required headers
-req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
 // Call the Translator Text API

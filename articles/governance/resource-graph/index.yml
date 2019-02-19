@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7b18c11762f0be08017c7b151b9deede0a7b1c3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a07c165a2fc3023187ca35323e304b6943ef7318
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506961"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343444"
 documentType: LandingData
 title: Azure Resource Graph のドキュメント
 metadata:
@@ -28,10 +28,12 @@ sections:
     style: icon48
     items:
     - image:
+        alt: Azure CLI
         src: ./media/cli.svg
       text: Azure CLI
       href: first-query-azurecli.md
     - image:
+        alt: Azure PowerShell
         src: ./media/powershell.svg
       text: Azure PowerShell
       href: first-query-powershell.md

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする | Microsoft Docs
+title: チュートリアル:Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 のデータにアクセスする | Microsoft Docs
 description: このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を説明します。
 services: storage
 author: dineshmurthy
@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813604"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891659"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 プレビューのデータにアクセスする
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
-このチュートリアルでは、Azure Data Lake Storage Gen2 (プレビュー) 対応の Azure Storage アカウントにある格納データに Azure Databricks クラスターを接続する方法を説明します。 この接続を使用することで、必要なデータに関するクエリや分析をクラスターからネイティブに実行することができます。
+このチュートリアルでは、Azure Data Lake Storage Gen2 対応の Azure ストレージ アカウント内の格納データに Azure Databricks クラスターを接続する方法を説明します。 この接続を使用することで、必要なデータに関するクエリや分析をクラスターからネイティブに実行することができます。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -145,7 +145,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウント構成を確保する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。 `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+18. このコード ブロックでは、`storage-account-name`、`application-id`、`authentication-id`、`tenant-id` の各プレースホルダーの値を、この記事の「ストレージ アカウント構成を確保する」および「[サービス プリンシパルの作成](#service-principal)」のステップを実行したときに収集した値に置き換えます。 `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
 
 19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。 
 

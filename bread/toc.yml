@@ -228,9 +228,6 @@ items:
     - name: Custom Vision Service
       tocHref: /azure/cognitive-services/custom-vision-service/
       topicHref: /azure/cognitive-services/custom-vision-service/
-    - name: Emotion
-      tocHref: /azure/cognitive-services/emotion/
-      topicHref: /azure/cognitive-services/emotion/home
     - name: Entity Linking
       tocHref: /azure/cognitive-services/entitylinking/
       topicHref: /azure/cognitive-services/entitylinking/home
@@ -640,9 +637,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 5665c0f30e548f7f8ff6fd8e8b10c56c0e416a4e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d50d8e32e49170f246d4b919cf8d23c6a892de02
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990361"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343816"

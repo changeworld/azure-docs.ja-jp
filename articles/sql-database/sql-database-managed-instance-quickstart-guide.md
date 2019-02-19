@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a70e83737c6b56aee3279375ec653f12810b13b4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749816"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892029"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "55749816"
 
 以下のクイック スタートを使用すると、マネージド インスタンスの迅速な作成、クライアント アプリケーション用の仮想マシンやポイント対サイト VPN 接続の構成のほか、`.bak` ファイルを使用した新しいマネージド インスタンスへのデータベースの復元を行うことができます。
 
-- [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal では、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークを所有していてそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、マネージド インスタンス用に[ネットワーク環境を構成する](#configure-network-environment)方法を参照してください。
+- [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal では、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークを所有していてそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、マネージド インスタンス用にネットワーク環境を構成する方法を参照してください。
 - マネージド インスタンスは、パブリック エンドポイントを持たない独自の VNet に作成されます。 クライアント アプリケーションのアクセスのために、以下のクイック スタートのいずれかを使用して、同じ VNet (異なるサブネット) 内に VM を作成するか、クライアント コンピューターから VNet へのポイント対サイト VPN 接続を作成できます。
   - SQL Server Management Studio などのクライアント アプリケーションの接続用に、[マネージド インスタンス VNet に Azure 仮想マシン](sql-database-managed-instance-configure-vm.md)を作成します。
   - SQL Server Management Studio およびその他のクライアント接続アプリケーションがあるクライアント コンピューターから[マネージド インスタンスへのポイント対サイト VPN 接続](sql-database-managed-instance-configure-p2s.md)を設定します。 これは、マネージド インスタンスとその VNet への接続に関する 2 つのオプションのうちのもう一方です。
@@ -44,7 +44,7 @@ ms.locfileid: "55749816"
 
 これらのクイック スタートを使用すると、データベース バックアップを迅速に作成、構成し、マネージド インスタンスに復元できます。 シナリオによっては、マネージド インスタンスと必要なネットワーク環境のデプロイをカスタマイズまたは自動化する必要があります。 ここでは、これらのシナリオについて説明します。
 
-## <a name="customizing-network-environment"></a>ネットワーク環境のカスタマイズ
+## <a name="customize-network-environment"></a>ネットワーク環境をカスタマイズする
 
 Azure portal を使用してインスタンスを作成するときに、VNet/サブネットを自動的に構成できますが、VNet およびサブネットのパラメーターを構成できるように、マネージド インスタンスの作成を開始する前に VNet/サブネットを作成したい場合があります。 ネットワーク環境を作成および構成するときの最も簡単な方法は、[Azure リソース デプロイ](sql-database-managed-instance-create-vnet-subnet.md) テンプレートを使用して、マネージド インスタンスのネットワークとサブネットを作成および構成する方法です。 必要な操作は、Azure Resource Manager のデプロイ ボタンを押し、フォームにパラメーターを入力することのみです。 
 
