@@ -1,34 +1,34 @@
 ---
-title: 'チュートリアル: Azure Active Directory と EFI Digital StoreFront の統合 | Microsoft Docs'
-description: Azure Active Directory と EFI Digital StoreFront の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と SmartFile の統合 | Microsoft Docs
+description: Azure Active Directory と SmartFile の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 33c148fc-d490-4bb9-90c1-d5933679ce4e
+ms.assetid: 25610bd7-8943-4e04-8cbb-5e90ff3c054d
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/04/2019
+ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c14e73819b561aa7ab8f6f91d65a9d34ee0cab5
+ms.openlocfilehash: f3a68a651ec62305f396dff07526d071bae82cc0
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200635"
+ms.locfileid: "56170232"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>チュートリアル: Azure Active Directory と EFI Digital StoreFront の統合
+# <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>チュートリアル:Azure Active Directory と SmartFile の統合
 
-このチュートリアルでは、EFI Digital StoreFront と Azure Active Directory (Azure AD) を統合する方法について説明します。
-EFI Digital StoreFront と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、SmartFile と Azure Active Directory (Azure AD) を統合する方法について説明します。
+SmartFile と Azure AD の統合には、次の利点があります。
 
-* EFI Digital StoreFront にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に EFI Digital StoreFront にサインイン (シングル サインオン) できるようにします。
+* SmartFile にアクセスするユーザーを Azure AD で管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して SmartFile に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -36,22 +36,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-EFI Digital StoreFront と Azure AD の統合を構成するには、次のものが必要です。
+SmartFile と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* EFI Digital StoreFront のシングル サインオンが有効なサブスクリプション
+* SmartFile でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* EFI Digital StoreFront では、**SP** によって開始される SSO がサポートされます
+* SmartFile では、**SP** によって開始される SSO がサポートされます
 
-## <a name="adding-efi-digital-storefront-from-the-gallery"></a>ギャラリーからの EFI Digital StoreFront の追加
+## <a name="adding-smartfile-from-the-gallery"></a>ギャラリーからの SmartFile の追加
 
-Azure AD への EFI Digital StoreFront の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に EFI Digital StoreFront を追加する必要があります。
+Azure AD への SmartFile の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SmartFile を追加する必要があります。
 
-**ギャラリーから EFI Digital StoreFront を追加するには、次の手順に従います。**
+**ギャラリーから SmartFile を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -65,31 +65,31 @@ Azure AD への EFI Digital StoreFront の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**EFI Digital StoreFront**」と入力し、結果パネルで **[EFI Digital StoreFront]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SmartFile**」と入力し、結果ウィンドウで **[SmartFile]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の EFI Digital StoreFront](common/search-new-app.png)
+     ![結果一覧の SmartFile](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、EFI Digital StoreFront で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンが機能するには、Azure AD ユーザーと EFI Digital StoreFront の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SmartFile で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと SmartFile 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-EFI Digital StoreFront で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+SmartFile で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[EFI Digital StoreFront のシングル サインオンの構成](#configure-efi-digital-storefront-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[SmartFile のシングル サインオンの構成](#configure-smartfile-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[EFI Digital StoreFront テスト ユーザーの作成](#create-efi-digital-storefront-test-user)** - EFI Digital StoreFront で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[SmartFile テスト ユーザーの作成](#create-smartfile-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを SmartFile で作成します。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-EFI Digital StoreFront で Azure AD シングル サインオンを構成するには、次の手順に従います。
+SmartFile で Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **EFI Digital StoreFront** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SmartFile** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -103,20 +103,20 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[EFI Digital StoreFront のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    ![[SmartFile のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.myprintdesk.net/DSF`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.smartfile.com/ftp/login`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.myprintdesk.net/DSF/asp4/`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<SUBDOMAIN>.smartfile.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[EFI Digital StoreFront クライアント サポート チーム](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[SmartFile クライアント サポート チーム](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[EFI Digital StoreFront のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+6. **[SmartFile のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
     c. ログアウト URL
 
-### <a name="configure-efi-digital-storefront-single-sign-on"></a>EFI Digital StoreFront のシングル サインオンの構成
+### <a name="configure-smartfile-single-sign-on"></a>SmartFile のシングル サインオンの構成
 
-**EFI Digital StoreFront** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [EFI Digital StoreFront クライアント サポート チーム](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SmartFile** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SmartFile サポート チーム](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -157,15 +157,15 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、EFI Digital StoreFront へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に SmartFile へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[EFI Digital StoreFront]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SmartFile]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[EFI Digital StoreFront]** を選択します。
+2. アプリケーションの一覧で **[SmartFile]** を選択します。
 
-    ![アプリケーションの一覧の [EFI Digital StoreFront] リンク](common/all-applications.png)
+    ![アプリケーションの一覧の [SmartFile] リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -181,15 +181,15 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
 7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="create-efi-digital-storefront-test-user"></a>EFI Digital StoreFront のテスト ユーザーの作成
+### <a name="create-smartfile-test-user"></a>SmartFile テスト ユーザーの作成
 
-このセクションでは、EFI Digital StoreFront で Britta Simon というユーザーを作成します。  [EFI Digital StoreFront サポート チーム](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)と連携し、EFI Digital StoreFront プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SmartFile で Britta Simon というユーザーを作成します。  [SmartFile サポート チーム](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication)と連携し、SmartFile プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [EFI Digital StoreFront] タイルをクリックすると、SSO を設定した EFI Digital StoreFront に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SmartFile] タイルをクリックすると、SSO を設定した SmartFile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -4,26 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Go を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 11f15d37830bb177031ff90d93ea1053b66013ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203238"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186864"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>クイック スタート:Bing Web Search REST API と Go を使用して Web を検索する
 
-このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Go アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Go で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
@@ -34,6 +32,8 @@ ms.locfileid: "55203238"
 * サブスクリプション キー
 
 このクイック スタートでは、**コア** ライブラリだけが必要であり、外部との依存関係はありません。  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>プロジェクトの作成とコア ライブラリのインポート
 

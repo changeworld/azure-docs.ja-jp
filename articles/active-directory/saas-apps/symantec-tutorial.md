@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: b1aa60b028efb4bf4820f1f084a7cf0eea6e9639
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf4d2d18971948e15cca2e1b91d9d55a73cefe4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808121"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル:Azure Active Directory と Symantec Web Security Service (WSS) の統合
 
@@ -71,21 +72,21 @@ Azure AD への Symantec Web Security Service (WSS) の統合を構成するに�
 
      ![結果一覧の Symantec Web Security Service (WSS)](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Symantec Web Security Service (WSS) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Symantec Web Security Service (WSS) 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Symantec Web Security Service (WSS) での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Symantec Web Security Service (WSS) のシングル サインオンの構成](#configure-symantec-web-security-service-(wss)-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **Symantec Web Security Service (WSS) のシングル サインオンの構成** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[Symantec Web Security Service (WSS) テスト ユーザーの作成](#create-symantec-web-security-service-wss-test-user)** - Symantec Web Security Service (WSS) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
@@ -157,7 +158,7 @@ Symantec Web Security Service (WSS) 側にシングル サインオンを構成�
 
 2. アプリケーションの一覧で、「**Symantec Web Security Service (WSS)**」と入力して選択します。
 
-    ![アプリケーションの一覧の Symantec Web Security Service (WSS) リンク](common/all-applications.png)
+    ![アプリケーションの一覧の [Symantec Web Security Service (WSS)] リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 

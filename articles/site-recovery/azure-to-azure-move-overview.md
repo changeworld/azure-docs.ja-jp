@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824613"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112548"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -33,7 +33,7 @@ Azure は顧客ベースと共に大規模に拡大しており、需要の増�
 ユーザーが VM を移動する理由としては、次のケースが考えられます。
 
 - 既にデプロイ済みのリージョンがあるとき、既存のアプリケーションまたはサービスのエンド ユーザーにより近いリージョンが新たにサポートされた場合、待ち時間の短縮を図るために、**既存のVM をそのまま新しいリージョン**に移動したいと考えるでしょう。 サブスクリプションを統合したい場合や、ガバナンス/組織のルール上、移動が必要となる場合にも、同じ手法が用いられます。 
-- 単一インスタンスのVM として、または可用性セットの一部として VM がデプロイされているとき、可用性の SLA を強化したい場合、**既存の VM を可用性セットに移動**することができます。 
+- 単一インスタンスの VM として、または可用性セットの一部として VM がデプロイされているとき、可用性の SLA を強化するには、**既存の VM を可用性ゾーンに移動**することができます。 
 
 ## <a name="how-to-move-azure-vms"></a>Azure VM を移動する方法
 VM の移動には、次の手順が伴います。
@@ -97,7 +97,7 @@ VM の移動には、次の手順が伴います。
 
 2. **各階層の VM を可用性セットにデプロイ** - Azure Site Recovery を使用した VM のレプリケーションを有効にした場合、可用性セット内の VM を別個の可用性ゾーンに配置するように構成できます。 移動操作の完了後、可用性の SLA は 99.9% になります。
 
-      ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
 
 
 ## <a name="next-steps"></a>次の手順

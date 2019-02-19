@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c4989016d31880e1c1990c0eb46091c8f50018bc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211868"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078578"
 ---
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "54211868"
 | HA ポート | 内部ロード バランサー | 使用できません。 |
 | 既定でのセキュリティ保護 | パブリック IP、パブリック ロード バランサー エンドポイント、内部ロード バランサー エンドポイントへのインバウンド フローは、ネットワーク セキュリティ グループによってホワイトリストに登録されない限り禁止されます。 | 既定でオープン、ネットワーク セキュリティ グループは任意。 |
 | [送信接続 (アウトバウンド接続)](../articles/load-balancer/load-balancer-outbound-connections.md) | [送信規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md)を使用して、プールに基づく送信 NAT を明示的に定義できます。 負荷分散規則のオプトアウトごとに複数のフロントエンドを使用できます。仮想マシン、可用性セット、仮想マシン スケール セットが送信接続 (アウトバウンド接続) を使用するためには、送信シナリオを明示的に作成する "_必要があります_"。  仮想ネットワーク サービス エンドポイントは、送信接続 (アウトバウンド接続) を定義しなくても到達でき、処理されたデータにはカウントされません。  VNet サービス エンドポイントとして使用できない Azure PaaS サービスなどのすべてのパブリック IP アドレスは、送信接続 (アウトバウンド接続) を介して到達する必要があり、処理されたデータにカウントされます。 仮想マシン、可用性セット、または仮想マシン スケール セットの負荷分散を担うのが内部ロード バランサーだけであるときは、既定の SNAT による送信接続は利用できません。代わりに [アウトバウンド規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md)を使用してください。 送信 SNAT プログラミングは、受信負荷分散ルールのプロトコルに基づくトランスポート プロトコル固有です。 | 単一のフロントエンド。複数のフロントエンドが存在する場合は、ランダムに選ばれます。  仮想マシン、可用性セット、または仮想マシン スケール セットの負荷分散を担うのが内部ロード バランサーだけであるときは、既定の SNAT が使用されます。 |
-| [送信規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | 宣言型の送信 NAT 構成、パブリック IP アドレスかパブリック IP プレフィックスまたは両方の使用、構成可能な送信アイドル タイムアウト、カスタム SNAT ポートの割り当て | 使用できません。 |
+| [送信規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | 宣言型の送信 NAT 構成、パブリック IP アドレスかパブリック IP プレフィックスまたは両方の使用、構成可能な送信アイドル タイムアウト (4 - 120 分)、カスタム SNAT ポートの割り当て | 使用できません。 |
 |  [アイドルの TCP リセット](../articles/load-balancer/load-balancer-tcp-reset.md) | 任意のルールの TCP アイドル タイムアウト に対する TCP リセット (TCP RST) を有効にする | 使用できません。 |
 | [複数のフロントエンド](../articles/load-balancer/load-balancer-multivip-overview.md) | 受信および[送信](../articles/load-balancer/load-balancer-outbound-connections.md) | 受信のみ |
 | 管理操作 | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上。 |

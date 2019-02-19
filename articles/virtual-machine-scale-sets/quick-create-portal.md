@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 7644940418b7322e5ec4b02b793219b44ae3aa97
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ed17d7cd887df6d8bd749ba4426d1a791b58d457
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885151"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171232"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Portal で仮想マシン スケール セットを作成します。
@@ -46,11 +46,12 @@ Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu�
     - **パスワード**は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)を参照してください。
     - Linux OS ディスク イメージを選択した場合は、代わりに **[SSH public key]\(SSH 公開キー\)** を選択できます。 公開キーのみを指定してください (*~/.ssh/id_rsa.pub* など)。 ポータルから Azure Cloud Shell を使用して、[SSH キー](../virtual-machines/linux/mac-create-ssh-keys.md)を作成および使用することができます。
 
-7. **パブリック IP アドレス名**を入力します (*myPublicIP* など)。
-8. 一意の**ドメイン名ラベル**を入力します (*myuniquedns* など)。 この DNS ラベルが、スケール セットの前のロード バランサーの FQDN のベースになります。
-9. スケール セットのオプションを確認するために、**[作成]** を選択します。
+    ![Azure portal で仮想マシン スケール セットを作成する基本的な詳細](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+1. **[負荷分散オプションの選択]** で *[ロード バランサー]* などの負荷分散オプションを選択します。 負荷分散オプションのその他の詳細を入力します。 たとえば、*[ロード バランサー]* の場合、**[パブリック IP アドレス名]** と **[ドメイン名ラベル]** を入力する必要があります。
+1. **[仮想ネットワークを構成します]** で仮想ネットワークの詳細を入力します。 たとえば、新しい仮想ネットワーク *myVirtualNetwork* と新しいサブネット *default* を作成できます。
+1. スケール セットのオプションを確認するために、**[作成]** を選択します。
+    ![Azure portal で仮想マシン スケール セットを作成するネットワークの詳細](./media/virtual-machine-scale-sets-create-portal/create-scale-set-networking-details.png)
 
-    ![Azure Portal での仮想マシン スケール セットの作成](./media/virtual-machine-scale-sets-create-portal/create-scale-set.png)
 
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>スケール セットの VM に接続する

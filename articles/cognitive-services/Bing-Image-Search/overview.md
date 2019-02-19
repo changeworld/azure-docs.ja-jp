@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: Bing Image Search API では、アプリケーションで Bing の認知画像検索機能を使用できます。 この API を使用してユーザーの検索クエリを送信すると、Bing Images のような関連性のある高品質の画像を取得して表示できます。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 10/11/2017
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4ae9c0c1fb6cd341e812f9e8b35eaff789637561
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237316"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Bing Image Search API とは
 
-Bing Image Search API では、アプリケーションで Bing の認知画像検索機能を使用できます。 この API を使用してユーザーの検索クエリを送信すると、[Bing Images](https://www.bing.com/images) のような関連性のある高品質の画像を取得して表示できます。
+Bing Image Search API では、アプリケーションで Bing の画像検索機能を使用できます。 この API に検索クエリを送信すると、[bing.com/images](https://www.bing.com/images) のように高品質の画像を取得できます。
 
-Bing Image Search API では、画像の検索結果のみが提供される点に注意してください。 他の種類の Web コンテンツについては、[Bing Web Search API](../bing-web-search/search-the-web.md)、[Video Search API](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search)、[News Search API](https://review.docs.microsoft.com/azure/cognitive-services/bing-news-search) を使用します。
+Bing Image Search API では画像のみの検索結果が提供されますが、他の利用できる [Bing Search API](../bing-web-search/bing-api-comparison.md) を組み合わせたり使用したりして Web 上のさまざまな種類のコンテンツを見つけることができます。
 
 ## <a name="bing-image-search-features"></a>Bing Image Search の機能
-
-Bing Image Search は、検索クエリから主に関連する画像を検索して返します。また、Web 上での高度で集中的な画像検索のための追加機能もいくつか提供されています。
-
 
 | 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,10 +57,12 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
+* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
+
+* [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) のリファレンス セクションには、API のエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する情報が含まれています。
 
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
 
-* 「[Bing Image Search API で Web から画像を取得する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)」トピックでは、Web から画像を検索して取得する方法について説明しています。
+* 「[Bing Image Search API で Web から画像を取得する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)」の記事では、Web から画像を検索して取得する方法について説明しています。
 
-* [検索クエリの送信と使用](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)に関するトピックでは、クエリの作成、カスタマイズ、およびピボットの方法について説明しています。
+* [検索クエリの送信と使用](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)に関する記事では、クエリの作成、カスタマイズ、およびピボット検索の方法について説明しています。

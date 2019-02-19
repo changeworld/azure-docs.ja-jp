@@ -3,7 +3,7 @@ title: Azure クイック スタート - Azure CLI を使用して Key Vault と
 description: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う方法を紹介したクイック スタート
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: a78cc79031a8dc9b0c98beddf759fbc8674c6dd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8065f670da6614db8c3524fd351a31ad095f8257
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168262"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113041"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -67,12 +67,12 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 
-シークレットをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 このパスワードは、アプリケーションによって使用される可能性があります。 パスワードは **ExamplePassword** と呼ばれ、値 **Pa$$w0rd** がその中に格納されます。
+シークレットをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 このパスワードは、アプリケーションによって使用される可能性があります。 パスワードは **ExamplePassword** と呼ばれ、値 **hVFkk965BuUv** がその中に格納されます。
 
-次のコマンドを入力して、値 **Pa$$w0rd** を保存する **ExamplePassword** というキー コンテナーにシークレットを作成します。
+次のコマンドを入力して、値 **hVFkk965BuUv** を保存する **ExamplePassword** という Key Vault にシークレットを作成します。
 
 ```azurecli
-az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
 これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** を使用して、現在のバージョンを取得します。 

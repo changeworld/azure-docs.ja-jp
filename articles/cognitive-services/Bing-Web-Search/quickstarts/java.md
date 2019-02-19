@@ -4,27 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Java を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a8844e339f439de4e5446e00f8e40e9a0fd1a3de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0d20d147bc77698e97630ad3bd5e58348db45f5b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172138"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187476"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>クイック スタート:Bing Web Search REST API と Java を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Java アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
@@ -32,6 +28,8 @@ ms.locfileid: "55172138"
 * [JDK 7 または 8](https://aka.ms/azure-jdks)
 * [Gson ライブラリ](https://github.com/google/gson)
 * サブスクリプション キー
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-import-dependencies"></a>プロジェクトの作成と依存関係のインポート
 

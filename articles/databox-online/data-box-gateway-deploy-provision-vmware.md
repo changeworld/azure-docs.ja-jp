@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099160"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117750"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
@@ -66,7 +66,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-requirements)に関する記事を参照してください。
+- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 - インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 ## <a name="check-the-host-system"></a>ホスト システムをチェックする
@@ -77,7 +77,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
  
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 
-  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
+  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。
   * 250 GB の OS ディスク。
   * データ用の 2 TB の仮想ディスク。
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
@@ -89,7 +89,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージ (2 つのファイル) は、Azure portal からダウンロードしています。 このイメージは後で使用するため、コピー先はメモしておいてください。
 
-2. vSphere web client を使用して、ESXi サーバーにサインインします。 仮想マシンを作成するには、管理者特権が必要です。
+2. ブラウザーで URL `https://<IP address of the ESXi server>` にアクセスして ESXi サーバーにサインインします。 仮想マシンを作成するには、管理者特権が必要です。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -149,20 +149,24 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。 **[次へ]** をクリックします。
+    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。 
+17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、**[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。 
+これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-次はこのマシンを起動して IP アドレスを取得します。
+次はこの VM を起動して IP アドレスを取得します。
 
 > [!NOTE]
 > (上でプロビジョニングした) 仮想デバイスには VMware ツールをインストールしないことをお勧めします。 VMware ツールをインストールすると、サポートされていない構成になります。

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46ea73e0a0c2dd14dcafcaa332c7feb1c70445df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602649"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098887"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート:工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、**[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
-**[ソリューションの作成]** をクリックして、デプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
+**[作成]** をクリックしてデプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
 
 ![接続済みファクトリ ソリューションの詳細](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ![新しいソリューションの選択](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-表示されるパネルで、接続済みファクトリ ソリューション アクセラレータに関する情報を確認できます。 **[ソリューション ダッシュボード]** を選択して、接続済みファクトリ ソリューション アクセラレータを表示します。
+表示されるページで、接続済みファクトリ ソリューション アクセラレータに関する情報を確認できます。 **[Go to your Solution accelerator]\(ソリューション アクセラレータに移動\)** を選択して、接続済みファクトリ ソリューション アクセラレータを表示します。
 
 ![ソリューション パネル](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 

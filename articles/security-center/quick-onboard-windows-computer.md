@@ -4,7 +4,7 @@ description: このクイック スタートでは、Windows コンピュータ�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 57560a035f4d0468625e4c8f3ad6b7a7e516590f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115863"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイック スタート:Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
 
 このクイック スタートでは、Windows コンピューターに Microsoft Monitoring Agent をインストールする方法を示します。
@@ -100,7 +100,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
+> [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
