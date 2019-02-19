@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: db642fea6dbf1bd1ebc53f5066d01dc4f9a5490f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095635"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244557"
 ---
 # <a name="what-is-authentication"></a>認証とは
 
@@ -47,7 +48,7 @@ ID が必要とされる最も基本的なシナリオについて考えてみ�
 
 * Azure AD は ID プロバイダーです。 ID プロバイダーは、組織のディレクトリに存在するユーザーとアプリケーションの ID を確認し、それらのユーザーやアプリケーションの認証が成功したらセキュリティ トークンを発行する役割を担います。
 * Azure AD に認証を委託するアプリケーションを、Azure AD に登録する必要があります。 Azure AD は、アプリをディレクトリに登録し、一意に識別します。
-* 開発者は、オープン ソース Azure AD 認証ライブラリを使用して、プロトコルの詳細を処理することで認証を容易にすることができます。 詳細については、Azure AD の [v2.0 認証ライブラリ](reference-v2-libraries.md)と[v1.0 認証ライブラリ](active-directory-authentication-libraries.md)を参照してください。
+* 開発者は、オープン ソース Azure AD 認証ライブラリを使用して、プロトコルの詳細を処理することで認証を容易にすることができます。 詳細については、Azure AD の [v2.0 認証ライブラリ](reference-v2-libraries.md)と [v1.0 認証ライブラリ](active-directory-authentication-libraries.md)を参照してください。
 * ユーザーが認証されたら、アプリケーションは認証が成功したことを確認するために、ユーザーのセキュリティ トークンを検証する必要があります。 さまざまな言語やフレームワークのクイック スタート、チュートリアル、およびコード サンプルを参照できます。これらは、アプリケーションが何を行う必要があるかを示しています。
   * 迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加するには、このドキュメントの「**クイック スタート**」のセクションを参照してください。
   * アクセス トークンの取得と Microsoft Graph API などの API への呼び出しでの使用、OpenID Connect を使用する従来の Web ブラウザー ベースのアプリでの Microsoft によるサインインの実装など、認証開発者の上位のタスクの詳細なシナリオ ベースの手順を取得するには、このドキュメントの「**チュートリアル**」のセクションを参照してください。

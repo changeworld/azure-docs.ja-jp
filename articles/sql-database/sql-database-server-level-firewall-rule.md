@@ -1,6 +1,6 @@
 ---
 title: サーバーレベルのファイアウォール規則を作成する - Azure SQL Database | Microsoft Docs
-description: 単一データベースまたはプールされたデータベースのために、SQL Database のサーバーレベルのファイアウォール規則を作成します
+description: 単一データベースおよびプールされたデータベースのために、SQL Database のサーバーレベルのファイアウォール規則を作成します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,17 +11,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 2374707d3fdf4d389a7c96c18767d3c52a9efb2f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/11/2019
+ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757230"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108961"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-in-azure-sql-database-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure SQL Database のサーバーレベルのファイアウォール規則を作成する
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して単一データベースおよびプールされたデータベースに対するサーバーレベルのファイアウォール規則を作成する
 
-このクイック スタートでは、Azure portal を使用して Azure SQL Database のサーバーレベルのファイアウォール規則を作成し、オンプレミスのリソースから接続できるようにする方法について説明します。
+このクイック スタートでは、Azure portal を使用して、Azure SQL Database の単一データベースおよびプールされているデータベースに対する[サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成し、データベース サーバー、単一データベース、エラスティック プールとそのデータベースに接続できるようにする方法を説明します。 他の Azure リソースやオンプレミスのリソースから接続するためには、ファイアウォール規則が必要となります。
 
 ## <a name="prerequisites"></a>前提条件
 

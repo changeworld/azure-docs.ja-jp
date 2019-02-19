@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766505"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895061"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 
@@ -67,7 +67,7 @@ ms.locfileid: "55766505"
 
 Azure Stack では、これを行う簡単な方法があります。
 
-1. ストレージ アカウント リストを参照します。 詳細については、この記事の「[ストレージ アカウントの検索](#find)」を参照してください。
+1. ストレージ アカウント リストを参照します。 詳細については、この記事の「ストレージ アカウントの検索」を参照してください。
 2. そのリストで特定のアカウントを検索します。 場合によっては、フィルターを使用する必要があります。
 3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
 4. アカウントを選択して、その詳細ウィンドウを開きます。
@@ -113,7 +113,7 @@ Azure Stack では、これを行う簡単な方法があります。
 ポータルまたは PowerShell のいずれかを使用して、容量の回収ができます。
 
 **ポータルを使用して容量を回収するには:**
-1. [ストレージ アカウント] ウィンドウに移動します。 「[ストレージ アカウントの検索](#find)」を参照してください。
+1. [ストレージ アカウント] ウィンドウに移動します。 「ストレージ アカウントの検索」を参照してください。
 2. ウィンドウの上部の **[Reclaim space]\(領域の回収\)** を選択します。
 3. メッセージを確認し、**[OK]** を選択します。
 

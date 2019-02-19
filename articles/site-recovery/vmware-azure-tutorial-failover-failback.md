@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 783f8006ba19622761beef0ff931bcbb80edde46
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822478"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115897"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 
@@ -98,7 +98,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 > [!IMPORTANT]
 > オンプレミス環境と Azure との間に VPN 接続がある場合は、再保護とフェールバックに使用するプロセス サーバーとして Azure VM をセットアップする必要があります。 Azure でプロセス サーバーを設定するには、[この記事](vmware-azure-set-up-process-server-azure.md)の手順を実行してください。
 
-再保護とフェールバックの前提条件について詳しくは、こちらの[セクション](vmware-azure-reprotect.md##before-you-begin)を参照してください。 
+再保護とフェールバックの前提条件の詳細については、こちらの[セクション](vmware-azure-reprotect.md##before-you-begin)を参照してください。 
 
 ### <a name="configure-the-master-target-server"></a>マスター ターゲット サーバーを構成する
 

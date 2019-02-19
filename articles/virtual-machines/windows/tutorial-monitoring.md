@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/04/2017
+ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2e7e67236a2f9709bafc0a0383f6ac12b26ca57e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428887"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984190"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンの監視と更新を行う
 
@@ -40,7 +40,11 @@ Azure Monitoring では、エージェントを使用して Azure VM からブ�
 > * 変更とインベントリを監視する
 > * 高度な監視をセットアップする
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
+
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
@@ -50,10 +54,10 @@ Azure Monitoring では、エージェントを使用して Azure VM からブ�
 $cred = Get-Credential
 ```
 
-次に、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupMonitorMonitor* と関連ネットワーク リソースが作成されます。
+次に、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupMonitorMonitor* と関連ネットワーク リソースが作成されます。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupMonitor" `
     -Name "myVM" `
     -Location "East US" `
@@ -66,10 +70,10 @@ New-AzureRmVm `
 
 Windows 仮想マシンが起動すると、ブート診断エージェントは画面出力をキャプチャします。これをトラブルシューティングに使用することができます。 この機能は既定で有効になっています。 キャプチャしたスクリーン ショットは、既定で作成される Azure Storage アカウントに格納されます。
 
-[Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
+[Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
+Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>ホストのメトリックを表示する
@@ -259,13 +263,13 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 
 使用している VM をさらに詳しく監視するには、[Azure Automation](../../automation/automation-intro.md) で提供される変更やインベントリ、Update Management などのソリューションを使用します。
 
-Log Analytics ワークスペースにアクセスして、ワークスペース キーとワークスペース識別子を確認するには、**[設定]** の **[詳細設定]** を選択します。 [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) コマンドを使用して、Microsoft Monitoring Agent 拡張機能を VM に追加します。 以下のサンプルの変数値を更新して、お使いの Log Analytics ワークスペース キーとワークスペース ID を反映させます。
+Log Analytics ワークスペースにアクセスして、ワークスペース キーとワークスペース識別子を確認するには、**[設定]** の **[詳細設定]** を選択します。 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) コマンドを使用して、Microsoft Monitoring Agent 拡張機能を VM に追加します。 以下のサンプルの変数値を更新して、お使いの Log Analytics ワークスペース キーとワークスペース ID を反映させます。
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
+Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
   -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

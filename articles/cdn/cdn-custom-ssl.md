@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f75b14ce2ca860ee894fe0a2ef501066b91f8e8a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755647"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236313"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -45,6 +45,8 @@ ms.locfileid: "55755647"
 > - カスタム ドメインで HTTPS プロトコルを無効にする。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 このチュートリアルの手順を完了するには、最初に CDN プロファイルと少なくとも 1 つの CDN エンドポイントを作成する必要があります。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
 
@@ -103,11 +105,11 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 
 PowerShell を使用して、Azure Active Directory に Azure CDN をアプリとして登録します。
 
-1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) をインストールします。
+1. 必要があれば、ローカル コンピューターに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
 2. PowerShell で次のコマンドを実行します。
 
-     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+     `New-AzADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
 
     ![PowerShell で Azure CDN を登録する](./media/cdn-custom-ssl/cdn-register-powershell.png)
               

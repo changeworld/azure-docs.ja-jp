@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 1328835714086dcec71b0e9dd4d1916794f557a6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 2e34aef9a6f184c60fbb23023f798941a1fc11da
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390181"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894430"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
@@ -32,10 +32,10 @@ ms.locfileid: "54390181"
 
 ## <a name="use-the-registration-link"></a>登録リンクを使用する
 
-1. 教師から受け取った**登録 URL** に移動します。 
-2. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
-3. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
-2. 仮想マシンの準備が完了するのを待って VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
+1. 教師から受け取った**登録 URL** に移動します。 登録完了後は、登録 URL を使用する必要はありません。 代わりに [https://labs.azure.com](https://labs.azure.com) という URL を使用します。 
+1. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
+2. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
+3. 仮想マシンの準備が完了するのを待って VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
 
     ![VM を起動する](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 

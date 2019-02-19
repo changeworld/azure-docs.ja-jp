@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/08/2019
+ms.date: 02/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e192449858d6cbd2d054fa7c70276739cfe1143
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189481"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243856"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -140,17 +140,19 @@ DirectQuery モード* では、ストレージとクエリの実行でバック
 
 \* 利用できる機能はレベルによって異なります。
 
-## <a name="supported-datasources"></a>サポートされるデータ ソース
+## <a name="supported-data-sources"></a>サポートされるデータ ソース
 
 Azure Analysis Services の表形式モデルは、単純なテキスト ファイルから Azure Data Lake Store 内のビッグ データに至るまでの多種多様なデータ ソースをサポートします。 詳細については、「[Azure Analysis Services でサポートされるデータ ソース](analysis-services-datasource.md)」を参照してください。
 
 ## <a name="your-data-is-secure"></a>データのセキュリティを確保
 
-Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 サーバー レベル: ファイアウォール、Azure 認証、サーバー管理者ロール、およびサーバー側暗号化。 データ モデル レベルでは、ユーザー ロール、行レベルとオブジェクト レベルのセキュリティによってデータの安全性が確保され、意図したユーザーのみにデータが表示されることが保証されます。
+Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Azure サービスとして、Analysis Services は **Basic** レベルの分散型サービス拒否 (DDoS) 攻撃からの保護を提供します。これは、Azure プラットフォームの一部として自動的に有効にされます。 詳細については、「[Azure DDoS Protection Standard の概要](../virtual-network/ddos-protection-overview.md)」を参照してください。 
+
+サーバー レベルでは、Analysis Services はファイアウォール、Azure 認証、サーバー管理者ロール、およびサーバー側暗号化を提供します。 データ モデル レベルでは、ユーザー ロール、行レベルとオブジェクトレベルのセキュリティによってデータの安全性が確保され、意図したユーザーのみにデータが表示されることが保証されます。
 
 ### <a name="firewall"></a>ファイアウォール
 
-Azure Analysis Services ファイアウォールは、ルールに指定されている IP アドレス以外のすべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 ファイアウォールとルールは、ポータルまたは PowerShell を使用して構成します。 詳細については、[サーバー ファイアウォールの構成](analysis-services-qs-firewall.md)に関するページをご覧ください。
+Azure Analysis Services ファイアウォールは、ルールに指定されている IP アドレス以外のすべてのクライアント接続をブロックします。 既定では、新しいサーバーに対してファイアウォールによる保護は有効になっていません。 ファイアウォール保護を有効にし、規則をサーバー プロビジョニング スクリプトの一部として構成するか、サーバーの作成直後にポータルで構成することをお勧めします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 ファイアウォールとルールは、ポータルまたは PowerShell を使用して構成します。 詳細については、[サーバー ファイアウォールの構成](analysis-services-qs-firewall.md)に関するページをご覧ください。
 
 ### <a name="authentication"></a>Authentication
 

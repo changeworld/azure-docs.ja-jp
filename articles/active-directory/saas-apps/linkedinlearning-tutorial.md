@@ -4,7 +4,7 @@ description: Azure Active Directory と LinkedIn Learning の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d5857070-bf79-4bd3-9a2a-4c1919a74946
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: be5dd0a0fd1eb45c505a2f0ddf1489d21bfd38e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9328564b082ba3eb0cff94652271fcd64cf2630c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821193"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>チュートリアル:Azure Active Directory と LinkedIn Learning の統合
 
@@ -118,11 +119,11 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成するに
     > [!NOTE]
     > これらの値は実際の値ではありません。 これらの値は、実際の識別子と応答 URL に更新します。これについては、このチュートリアルの「**LinkedIn Learning シングル サインオンの構成**」セクションで後述します。
 
-5. LinkedIn Learning アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、LinkedIn Learning では、これがユーザーのメール アドレスにマップされるものと想定します。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。 
+5. LinkedIn Learning アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 LinkedIn Learning アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. その他に、LinkedIn Learning アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
     | Name | ソース属性 |
     | ---------------| --------------- |
@@ -133,9 +134,9 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成するに
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](./media/linkedinlearning-tutorial/tutorial_usermail.png)
+    ![image](common/new-save-attribute.png)
 
-    ![image](./media/linkedinlearning-tutorial/tutorial_usermailedit.png)
+    ![image](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 

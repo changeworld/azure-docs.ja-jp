@@ -7,22 +7,24 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/24/2018
 ms.author: victorh
-ms.openlocfilehash: 872227e0521bd54e6bf7fdbe3626dfca34170863
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 73b8dfd741543560cd6ebf26178618a70bdae5f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257727"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992774"
 ---
-# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure DNS プライベート ゾーンを作成する
+# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure DNS プライベート ゾーンを作成する
 
 このチュートリアルでは、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*解決仮想ネットワーク*" と呼びます。 VM が作成されたときや IP が変更されたとき、または VM が削除されたときに絶えず Azure DNS によってホスト名レコードが維持される仮想ネットワークを指定することもできます。  これを "*登録仮想ネットワーク*" と呼びます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * DNS プライベート ゾーンの作成
@@ -46,25 +48,25 @@ These instructions assume you have already installed and signed in to Azure Powe
 最初に、DNS ゾーンが含まれるリソース グループを作成します。 
 
 ```azurepowershell
-New-AzureRMResourceGroup -name MyAzureResourceGroup -location "eastus"
+New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-private-zone"></a>DNS プライベート ゾーンの作成
 
-`New-AzureRmDnsZone` コマンドレットを使用し、**ZoneType** パラメーターに *Private* という値を指定して DNS ゾーンを作成します。 次の例では、**MyAzureResourceGroup** というリソース グループに **contoso.local** という DNS ゾーンを作成し、その DNS ゾーンを **MyAzureVnet** という仮想ネットワークで利用できるようにします。
+`New-AzDnsZone` コマンドレットを使用し、**ZoneType** パラメーターに *Private* という値を指定して DNS ゾーンを作成します。 次の例では、**MyAzureResourceGroup** というリソース グループに **contoso.local** という DNS ゾーンを作成し、その DNS ゾーンを **MyAzureVnet** という仮想ネットワークで利用できるようにします。
 
 **ZoneType** パラメーターを省略した場合、そのゾーンはパブリック ゾーンとして作成されます。そのため、プライベート ゾーンを作成する場合はこのパラメーターが必須です。 
 
 ```azurepowershell
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
-$vnet = New-AzureRmVirtualNetwork `
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName MyAzureResourceGroup `
   -Location eastus `
   -Name myAzureVNet `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
    -ZoneType Private `
    -RegistrationVirtualNetworkId @($vnet.Id)
 ```
@@ -76,16 +78,16 @@ New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
 
 ### <a name="list-dns-private-zones"></a>DNS プライベート ゾーンの一覧表示
 
-`Get-AzureRmDnsZone`からゾーン名を省略することで、リソース グループ内のすべてのゾーンを列挙できます。 この操作により、ゾーン オブジェクトの配列が返されます。
+`Get-AzDnsZone`からゾーン名を省略することで、リソース グループ内のすべてのゾーンを列挙できます。 この操作により、ゾーン オブジェクトの配列が返されます。
 
 ```azurepowershell
-Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-`Get-AzureRmDnsZone` でゾーン名とリソース グループ名の両方を省略すると、Azure サブスクリプションにすべてのゾーンを列挙できます。
+`Get-AzDnsZone` でゾーン名とリソース グループ名の両方を省略すると、Azure サブスクリプションにすべてのゾーンを列挙できます。
 
 ```azurepowershell
-Get-AzureRmDnsZone
+Get-AzDnsZone
 ```
 
 ## <a name="create-the-test-virtual-machines"></a>テスト用仮想マシンの作成
@@ -93,7 +95,7 @@ Get-AzureRmDnsZone
 次に、プライベート DNS ゾーンをテストできるように 2 つの仮想マシンを作成します。
 
 ```azurepowershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myAzureResourceGroup" `
     -Name "myVM01" `
     -Location "East US" `
@@ -102,7 +104,7 @@ New-AzureRmVm `
     -addressprefix 10.2.0.0/24 `
     -OpenPorts 3389
 
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myAzureResourceGroup" `
     -Name "myVM02" `
     -Location "East US" `
@@ -116,12 +118,12 @@ New-AzureRmVm `
 
 ## <a name="create-an-additional-dns-record"></a>追加の DNS レコードの作成
 
-レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **contoso.local** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.contoso.local** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
+レコード セットは、`New-AzDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **contoso.local** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.contoso.local** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
 
 ```azurepowershell
-New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
-   -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.2.0.4")
+   -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
 ### <a name="view-dns-records"></a>DNS レコードの表示
@@ -129,7 +131,7 @@ New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
 ゾーン内の DNS レコードを一覧表示するには、次のコマンドを実行します。
 
 ```azurepowershell
-Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
 ```
 ただし、2 台のテスト用仮想マシンに対して自動的に作成された A レコードは表示されません。
 
@@ -198,7 +200,7 @@ MyVM02 についても同じ手順を繰り返します。
 このチュートリアルで作成したリソースが不要になったときに削除するには、**myresourcegroup** リソース グループを削除します。
 
 ```azurepowershell
-Remove-AzureRMResourceGroup -Name MyAzureResourceGroup
+Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: tutorial
 ms.service: event-hubs-messaging
 ms.custom: mvc
-ms.openlocfilehash: bd76d8a7f3f41a8aa6b2e614d37f361a98ac4efd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e47c2af353a7f365534ba4cf9ce574c16a0ea4ca
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53281315"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233141"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>チュートリアル: Event Hubs 名前空間で仮想ネットワークの統合とファイアウォールを有効にする
 
@@ -30,9 +30,9 @@ ms.locfileid: "53281315"
 > * Event Hubs 名前空間でファイアウォール (IP フィルタリング) を設定する方法。
 
 >[!WARNING]
-> 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。
+> 仮想ネットワーク統合を実装すると、他の Azure サービスが Event Hubs と対話するのを防ぐことができます。
 >
-> 仮想ネットワークが有効になっているときはファースト パーティ統合はサポートされませんが、近日中に使用できるようになります。
+> 仮想ネットワークが有効になっているときはファースト パーティ統合はサポートされません。
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです。
 > * Azure 診断とログ記録
 > * Azure Stream Analytics

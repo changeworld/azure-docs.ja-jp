@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c907af8e91a7463c74e0bb14b0d8e0862c4e0fa3
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3727d2db375847c8df0a96d5721ea3135584eeec
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887259"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976250"
 ---
-# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル
+# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル。
 
 次の表には、Azure PowerShell を使用して構築された Bash スクリプトへのリンクが含まれています。
 
@@ -41,3 +41,6 @@ ms.locfileid: "54887259"
 | [単一ゾーン スケール セットを作成する](scripts/powershell-sample-single-availability-zone-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | 単一の可用性ゾーンを使用する仮想マシン スケールを作成します。 |
 | [ゾーン冗長スケール セットを作成する](scripts/powershell-sample-zone-redundant-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | 複数の可用性ゾーンにわたる仮想マシン スケールを作成します。 |
 | | |
+
+
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]    

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 02/08/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 14678ed789b611c0226d98fe11b3c9bacb993208
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226487"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991482"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "55226487"
 * <a href="https://www.python.org/downloads/" target="_blank">Python 3.7 をインストールする</a>
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
 
-## <a name="download-the-sample"></a>サンプルのダウンロード
+## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
 ターミナル ウィンドウで、次のコマンドを実行して、ローカル コンピューターにサンプル アプリケーションを複製し、サンプル コードのあるディレクトリに移動します。
 
@@ -79,49 +79,80 @@ Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプ�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
+## <a name="download-the-sample"></a>サンプルのダウンロード
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
+Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
+```bash
+mkdir quickstart
+
+cd quickstart
+```
+
+次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
+
+```bash
+git clone https://github.com/Azure-Samples/python-docs-hello-world
+```
+
+実行中、次の例のような情報が表示されます。
+
+```bash
+Cloning into 'python-docs-hello-world'...
+remote: Enumerating objects: 43, done.
+remote: Total 43 (delta 0), reused 0 (delta 0), pack-reused 43
+Unpacking objects: 100% (43/43), done.
+Checking connectivity... done.
+```
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
 
-サイトを参照して、お客様が新しく作成した組み込みのイメージによるアプリを確認します。 _&lt;app name>_ は、アプリの名前に置き換えます。
+次の例で、<app_name> を一意のアプリ名に置き換えます。
 
 ```bash
-http://<app_name>.azurewebsites.net
+cd python-docs-hello-world
+
+az webapp up -n <app_name>
 ```
 
-新しいアプリは次のようになります。
+このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
 
-![空のアプリ ページ](media/quickstart-php/app-service-web-service-created.png)
+```json
+The behavior of this command has been altered by the following extension: webapp
+Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
+Resource group creation complete
+Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
+App service plan creation complete
+Creating app '<app_name>' ....
+Webapp creation complete
+Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
+Preparing to deploy contents to app.
+All done.
+{
+  "app_url": "https:/<app_name>.azurewebsites.net",
+  "location": "Central US",
+  "name": "<app_name>",
+  "os": "Linux",
+  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
+  "serverfarm": "appsvc_asp_Linux_CentralUS",
+  "sku": "BASIC",
+  "src_path": "/home/username/quickstart/python-docs-hello-world ",
+  "version_detected": "-",
+  "version_to_create": "python|3.7"
+}
+```
 
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
+`az webapp up` コマンドは、次の処理を実行します。
 
-```bash
-Counting objects: 42, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (39/39), done.
-Writing objects: 100% (42/42), 9.43 KiB | 0 bytes/s, done.
-Total 42 (delta 15), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'c40efbb40e'.
-remote: Generating deployment script.
-remote: Generating deployment script for python Web Site
-.
-.
-.
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
- * [new branch]      master -> master
- ```
+- 既定のリソース グループを作成する。
+
+- 既定の App Service プランを作成する。
+
+- 指定された名前でアプリを作成する。
+
+- 現在の作業ディレクトリからアプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/deploy-zip)する。
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
@@ -139,17 +170,22 @@ App Service on Linux で組み込みのイメージを使用して Python サン
 
 ## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
 
-ローカル リポジトリで `application.py` ファイルを開き、テキストの最後の行を少し変更します。
+Cloud Shell で、「`code application.py`」と入力して Cloud Shell エディターを開きます。
+
+![Code application.py](media/quickstart-python/code-applicationpy.png)
+
+ `return` を呼び出すテキストに小さな変更を加えます。
 
 ```python
 return "Hello Azure!"
 ```
 
-Git で変更をコミットしてから、コード変更を Azure にプッシュします。
+変更内容を保存し、エディターを終了します。 コマンド `^S` を使用して保存し、`^Q` を使用して終了します。
+
+これでアプリを再デプロイします。 `<app_name>` をお客様のアプリに置き換えます。
 
 ```bash
-git commit -am "updated output"
-git push azure master
+az webapp up -n <app_name>
 ```
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。

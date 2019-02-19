@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 1486ab3240036abedea2cbb3cbe93e5c061691d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9283b0abed62f26192fae30face8721a81f546e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467409"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108569"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -32,61 +32,56 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ## <a name="configure-clients-for-multi-homing"></a>マルチホームに関するクライアントの構成
 
-### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK
+### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK v2
 
 ```csharp
-// Create a new connection policy.
 ConnectionPolicy policy = new ConnectionPolicy
     {
-        // Note: These aren't required settings for multi-homing,
-        // just suggested defaults.
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp,
-        UseMultipleWriteLocations = true,
+        UseMultipleWriteLocations = true
     };
-// Add regions to preferred locations.
-// The name of the location will match what you see in the portal, etc.
-policy.PreferredLocations.Add("East US");
-policy.PreferredLocations.Add("North Europe");
+policy.SetCurrentLocation("West US 2");
 
 // Pass the connection policy with the preferred locations on it to the client.
 DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
+```
+
+### <a id="configure-clients-multi-homing-dotnet-v3"></a>.NET SDK v3 (プレビュー)
+
+```csharp
+CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
+config.UseCurrentRegion("West US");
+CosmosClient client = new CosmosClient(config);
 ```
 
 ### <a id="configure-clients-multi-homing-java-async"></a>Java Async SDK
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
-policy.setPreferredLocations(Collections.singleton("West US"));
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Collections.singletonList(region));
+
 AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKey(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy).build();
-```
-
-### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync SDK
-
-```java
-ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-Collection<String> preferredLocations = new ArrayList<String>();
-preferredLocations.add("Australia East");
-connectionPolicy.setPreferredLocations(preferredLocations);
-DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy);
+    new AsyncDocumentClient.Builder()
+        .withMasterKeyOrResourceToken(this.accountKey)
+        .withServiceEndpoint(this.accountEndpoint)
+        .withConsistencyLevel(ConsistencyLevel.Eventual)
+        .withConnectionPolicy(policy).build();
 ```
 
 ### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
-// Set up the connection policy with your preferred regions.
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
-connectionPolicy.PreferredLocations = ["West US", "Australia East"];
+connectionPolicy.UseMultipleWriteLocations = true;
+connectionPolicy.PreferredLocations = [region];
 
-// Pass that connection policy to the client.
 const client = new CosmosClient({
   endpoint: config.endpoint,
   auth: { masterKey: config.key },
-  connectionPolicy
+  connectionPolicy,
+  consistencyLevel: ConsistencyLevel.Eventual
 });
 ```
 
@@ -94,9 +89,10 @@ const client = new CosmosClient({
 
 ```python
 connection_policy = documents.ConnectionPolicy()
-connection_policy.PreferredLocations = ['West US', 'Japan West']
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy)
+connection_policy.UseMultipleWriteLocations = True
+connection_policy.PreferredLocations = [region]
 
+client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除

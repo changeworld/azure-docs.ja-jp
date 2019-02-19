@@ -13,12 +13,13 @@ ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 022fd8e1ab8445954b205f471cd1aa4d18e11545
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167140"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178160"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -60,11 +61,13 @@ PIM とそのドキュメントについてより深く理解するためには�
 | active | type | ロールを使用するためにユーザーが何のアクションも実行する必要がないロールの割り当て。 アクティブとして割り当てられたユーザーは、そのロールに割り当てられた特権を持ちます。 |
 | アクティブ化 |  | ユーザーに資格のあるロールを使用するために、1 つまたは複数のアクションを実行するプロセス。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。 |
 | 割り当て済み | 状態 | アクティブなロールの割り当てを持つユーザー。 |
-| アクティブ化済み | 状態 | ロールの割り当ての資格を持ち、ロールをアクティブ化するためのアクションを実行して、アクティブになったユーザー。 |
+| アクティブ化済み | 状態 | ロールの割り当ての資格を持ち、ロールをアクティブ化するためのアクションを実行して、アクティブになったユーザー。  アクティブになったユーザーは、事前構成済みの期間、そのロールを使用することができ、その期間の経過後は再度アクティブ化する必要があります。 |
 | 永続的に有資格 | duration | ロールをアクティブ化する資格が常にユーザーにあるロールの割り当て。 |
 | 永続的にアクティブ | duration | 何もアクションを実行しなくても、ユーザーがロールを常に使用できるロールの割り当て。 |
 | 有効期限付きの有資格 | duration | ユーザーに、指定された開始日と終了日の範囲内でロールをアクティブ化する資格があるロールの割り当て。 |
 | 有効期限付きアクティブ | duration | 指定された開始日と終了日の範囲内であれば、何もアクションを実行しなくてもユーザーがロールを使用できるロールの割り当て。 |
+| Just-In-Time (JIT) アクセス |  | 特権タスクを実行する一時的なアクセス許可をユーザーに与えるモデル。悪意のあるユーザーや未承認ユーザーがアクセス許可の有効期限が切れた後にアクセスすることを防止します。 ユーザーが必要な場合にのみ、アクセスが許可されます。 |
+| 最小限の特権アクセスの原則 |  | 推奨されるセキュリティ プラクティス。承認されているタスクを実行するのに必要な最小限の特権のみを各ユーザーに与えます。 このプラクティスではグローバル管理者の数を最小限にし、代わりに、特定のシナリオで特定の管理者ロールが使用されます。 |
 
 ## <a name="what-does-pim-look-like"></a>実際の PIM の画面
 
@@ -104,6 +107,6 @@ PIM は、次のシナリオをサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM の使用を開始する](pim-getting-started.md)
 - [PIM を使用するためのライセンスの要件](subscription-requirements.md)
 - [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [PIM をデプロイする](pim-deployment-plan.md)

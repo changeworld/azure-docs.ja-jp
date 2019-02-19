@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d86cbcf4f5c5029f215cd6c327e05fb93f7144
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b31d22990b79cb37ea5b3b89c699b9511f8d87cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453895"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>チュートリアル: Azure Active Directory と Expensify の統合
 
@@ -104,9 +105,12 @@ Expensify で Azure AD シングル サインオンを構成するには、次�
 
     ![[Expensify のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.expensify.com/authentication/saml/loginCallback?domain=[yourdomain]`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://www.expensify.com` という URL を入力します。
+
+    > [!NOTE]
+    > サインオン URL は実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -125,18 +129,18 @@ Expensify で Azure AD シングル サインオンを構成するには、次�
 ### <a name="configure-expensify-single-sign-on"></a>Expensify のシングル サインオンの構成
 
 Expensify で SSO を有効にするには、まず、アプリケーションで **Domain Control** を有効にする必要があります。 Domain Control は、[こちら](https://help.expensify.com/domain-control)で説明されている手順を使ってアプリケーションで有効にできます。 さらにサポートが必要な場合は、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Domain Control を有効にしたら、以下の手順に従います。
-   
+
 ![Configure single sign-on](./media/expensify-tutorial/tutorial_expensify_51.png)
-    
+
 1. Expensify アプリケーションにサインオンします。
-    
+
 2. 左側のパネルで **[設定]** をクリックし、**[SAML]** に移動します。
-    
+
 3. **[SAML ログイン]** オプションを **[有効]** に切り替えます。
-    
+
 4. Azure AD からダウンロードしたフェデレーション メタデータをメモ帳で開き、その内容をコピーして、**[Identity Provider Metadata]\(ID プロバイダー メタデータ\)** ボックスに貼り付けます。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -191,7 +195,7 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 このセクションでは、Expensify で Britta Simon というユーザーを作成します。 [Expensify クライアント サポート チーム](mailto:help@expensify.com)と協力して、Expensify プラットフォームにユーザーを追加します。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -204,4 +208,3 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 - [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

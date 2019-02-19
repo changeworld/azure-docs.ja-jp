@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6581c389cb7b1aa9c6ce6b9e84b56017264822f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232955"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976267"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>Azure Media Services 用 Java クライアント SDK の概要 (レガシ)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 このチュートリアルでは、Java クライアント SDK を使用して Azure Media Services で基本的なビデオ コンテンツ配信サービスを実装する手順について説明します。
@@ -34,7 +35,7 @@ ms.locfileid: "50232955"
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * 最新の [Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>方法: Azure Media Services Java クライアント SDK パッケージをインポートする
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>方法:Azure Media Services Java クライアント SDK パッケージをインポートする
 
 Java 用 Media Services SDK の使用を開始するには、[Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest) の最新バージョン (0.9.8) の `azure-media` パッケージへの参照を追加します。
 
@@ -48,7 +49,7 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 >[!NOTE]
 >Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 master ブランチではなく、必ず 0.9 ブランチに切り替えてください。 
 
-## <a name="how-to-use-azure-media-services-with-java"></a>方法: Java で Azure Media Services を使用する
+## <a name="how-to-use-azure-media-services-with-java"></a>方法:Java で Azure Media Services を使用する
 
 >[!NOTE]
 >Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
@@ -58,10 +59,10 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 このコードを使用する前に、Media Services アカウントを設定します。 アカウントの設定方法については、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 
 このコードでは、Azure AD サービス プリンシパル認証を使用して、Azure Media Services API に接続します。 Azure AD アプリケーションを作成し、コードで次の変数の値を指定します。
-* `tenant`: Azure AD アプリケーションが存在する Azure AD テナント ドメイン
-* `clientId`: Azure AD アプリケーションのクライアント ID
-* `clientKey`: Azure AD アプリケーションのクライアント キー
-* `restApiEndpoint`: Azure Media Services アカウントの REST API エンドポイント
+* `tenant`:Azure AD アプリケーションが存在する Azure AD テナント ドメイン
+* `clientId`:Azure AD アプリケーションのクライアント ID
+* `clientKey`:Azure AD アプリケーションのクライアント キー
+* `restApiEndpoint`:Azure Media Services アカウントの REST API エンドポイント
 
 Azure AD アプリケーションを作成し、Azure Portal から前の構成値を取得できます。 詳細については、[Azure Portal での Azure AD 認証の開始](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)に関するページの「**サービス プリンシパル認証**」をご覧ください。
 

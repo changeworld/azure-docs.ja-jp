@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 70dfc03c37b2e7a93218ff7e710dbd22f622d418
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e55a50a1a4ae1db995a6054cf9dc13382236b8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813306"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル:Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -78,7 +79,7 @@ Azure AD への Keeper Password Manager & Digital Vault の統合を構成する
 Keeper Password Manager & Digital Vault で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Keeper Password Manager & Digital Vault でのシングル サインオンの構成](#configure-keeper-password-manager-&-digital-vault-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **Keeper Password Manager & Digital Vault でのシングル サインオンの構成** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[Keeper Password Manager & Digital Vault テスト ユーザーの作成](#create-keeper-password-manager--digital-vault-test-user)** - Keeper Password Manager & Digital Vault で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。

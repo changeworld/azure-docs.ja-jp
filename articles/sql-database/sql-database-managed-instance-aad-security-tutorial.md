@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732772"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984513"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>チュートリアル:Azure AD ログインを使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -32,7 +32,7 @@ ms.locfileid: "55732772"
 > - マネージド インスタンス用に Azure Active Directory (AD) ログインを作成する
 > - マネージド インスタンスの Azure AD ログインにアクセス許可を付与する
 > - Azure AD ログインから Azure AD ユーザーを作成する
-> - Azure AD ユーザーとマネージド データベース セキュリティにアクセス許可を割り当てる
+> - Azure AD ユーザーにアクセス許可を割り当ててデータベースのセキュリティを管理する
 > - Azure AD ユーザーで偽装を使用する
 > - Azure AD ユーザーでデータベース間クエリを使用する
 > - 脅威の防止、監査、データ マスク、暗号化などのセキュリティ機能について学習する

@@ -11,13 +11,13 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: 6e2465927f748e5538935a87aaadc84b5c2b4d1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: 597a870f98d8218d86fa601fe83d524f3a370f05
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561935"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236517"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL Database に照会する
 
@@ -27,17 +27,37 @@ ms.locfileid: "55561935"
 
 このチュートリアルを完了するには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
+
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
 - インストールされているオペレーティング システムに応じた、以下の Golang と関連ソフトウェア。
 
-    - **MacOS**: Homebrew と Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
-    - **Ubuntu**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
-    - **Windows**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
+  - **MacOS**: Homebrew と Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
+  - **Ubuntu**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
+  - **Windows**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 ## <a name="create-golang-project-and-dependencies"></a>Golang プロジェクトと依存関係の作成
 

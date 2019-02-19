@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c70c7e8b893c511aae36f122c5983fd0958eac8e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 161778c921026547c532b05474a60dd0d3e9fa7a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975391"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237802"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Azure App Service で Python と PostgreSQL アプリを構築する
 
@@ -33,6 +33,9 @@ ms.locfileid: "53975391"
 > * Azure にアプリケーションをデプロイする
 > * 診断ログを表示する
 > * Azure Portal でアプリを管理する
+
+> [!NOTE]
+> Azure Database for PostgreSQL を作成する前に、[こちら](https://docs.microsoft.com/en-us/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)を参照して、ご利用のリージョンで提供されているコンピューティング世代を確認してください。
 
 この記事の手順は macOS で実行できます。 Linux および Windows でも手順はほとんど同じですが、このチュートリアルでは相違点について詳しく説明していません。
 
@@ -407,7 +410,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 [Azure portal](https://portal.azure.com) に移動し、作成したアプリを表示します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
 ![Azure アプリへのポータル ナビゲーション](./media/tutorial-python-postgresql-app/app-resource.png)
 
@@ -428,7 +431,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 > * 診断ログを表示する
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)

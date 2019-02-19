@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241602"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106983"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング 
 
@@ -22,7 +22,7 @@ ms.locfileid: "50241602"
 > [!IMPORTANT]
 > - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 診断の実行
@@ -103,6 +103,7 @@ ms.locfileid: "50241602"
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    アカウントまたは共有が無効になっているため、アカウントにデータをアップロードできませんでした。                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    アカウントのアクセス許可が正しくないか期限切れであるために、コンテナーに接続できませんでした。 アクセスを確認してください。                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    コンテナーがいっぱいであるため、新しいデータを追加できませんでした。 コンテナーの種類ごとのサポートされているサイズについては、Azure の仕様を確認してください。 たとえば、Azure Files では、5 TB の最大ファイル サイズのみがサポートされています。                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    予期しないエラーが発生しました。 これは、自然に解決する一時的なエラーです。                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    予期しないエラーが発生しました。 エラーは自動的に解決される可能性がありますが、24 時間たっても解決しない場合は、Microsoft サポートにお問い合わせください。                                                                                                     |
     |    16000           |    RefreshException                                        |    このファイルを停止できませんでした。                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    このファイルは既にローカル システムに存在するため、停止できませんでした。                                                                                                                                                         |

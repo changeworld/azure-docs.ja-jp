@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323802"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985458"
 ---
 お客様がポイント対サイト接続を使用して VNet に接続する各クライアント コンピューターには、クライアント証明書がインストールされていなければなりません。 ルート証明書からそれを生成し、各クライアント コンピューターにインストールします。 有効なクライアント証明書をインストールしないと、クライアントが VNet への接続を試行したときに認証が失敗します。
 
@@ -31,4 +31,8 @@ ms.locfileid: "53323802"
   * [MakeCert の手順](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): 証明書を生成する Windows 10 コンピューターにアクセスできない場合は、MakeCert を使用します。 MakeCert は非推奨になりましたが、まだ証明書の生成に使用することができます。 生成される証明書は、サポートされている任意の P2S クライアントにインストールできます。
   * [Linux の手順](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  自己署名ルート証明書からクライアント証明書を生成した場合、お客様が生成に使用したコンピューターにそれが自動的にインストールされます。 クライアント証明書を別のクライアント コンピューターにインストールしたい場合は、それを .pfx ファイルとして、証明書チェーン全体と共にエクスポートします。 そうすることで、クライアントの認証に必要なルート証明書情報が含まれている .pfx ファイルが作成されます。 証明書をエクスポートする手順については、「[PowerShell を使用したポイント対サイトの証明書の生成とエクスポート](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)」を参照してください。
+  自己署名ルート証明書からクライアント証明書を生成した場合、お客様が生成に使用したコンピューターにそれが自動的にインストールされます。 クライアント証明書を別のクライアント コンピューターにインストールしたい場合は、それを .pfx ファイルとして、証明書チェーン全体と共にエクスポートします。 そうすることで、クライアントの認証に必要なルート証明書情報が含まれている .pfx ファイルが作成されます。 
+
+**証明書をエクスポートするには**
+
+証明書をエクスポートする手順については、「[PowerShell を使用したポイント対サイトの証明書の生成とエクスポート](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)」を参照してください。

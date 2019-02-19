@@ -1,22 +1,22 @@
 ---
-title: Text Analytics REST API でキー フレーズを抽出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、キー フレーズを抽出する方法を説明します。
+title: Text Analytics REST API を使用したキー フレーズ抽出 | Microsoft Docs
+description: Azure Cognitive Services の Text Analytics REST API を使用してキー フレーズを抽出する方法。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: bbca745da1fe657c1316d9e4e5fbeeeabfa5e1ef
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216746"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245611"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>例:Text Analytics でキー フレーズを抽出する方法
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
 [キー フレーズ抽出](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。 
 
@@ -29,13 +29,13 @@ ms.locfileid: "55216746"
 
 ## <a name="preparation"></a>準備
 
-キー フレーズの抽出は、操作するテキストのチャンクが大きい場合に最適です。 感情分析では逆で、テキスト ブロックが 小さいほどパフォーマンスが向上します。 両方の操作から最良の結果を得るには、両方の操作に応じて入力を再構築することを検討してください。
+キー フレーズ抽出は、扱うテキストの量が多いほど効果を発揮します。 感情分析では逆で、テキストの量が少ないほどパフォーマンスが向上します。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 
 JSON ドキュメントは、id、text、language の形式である必要があります。
 
 ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。
 
-```
+```json
     {
         "documents": [
             {
@@ -94,9 +94,9 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
 
-キー フレーズの抽出の出力例を次に示します。
+キー フレーズ抽出の出力例を次に示します。
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [

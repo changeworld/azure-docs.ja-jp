@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 70229a0b211acd08d285ad7a943f39285fad8012
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f6713326045ebd84f1cd484803fbc725ad798d7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810424"
+ms.locfileid: "55882269"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -31,7 +31,7 @@ ms.locfileid: "55810424"
 > * [ソース リージョンのリソースを破棄する](#discard-the-resource-in-the-source-region) 
 
 > [!IMPORTANT]
-> このドキュメントでは、Azure VM をそのまま別のリージョンに移動する手順を説明しています。可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することによって可用性を高めることが要件である場合は、こちらのチュートリアルを参照してください。
+> このドキュメントでは、Azure VM をそのまま別のリージョンに移動する手順を説明しています。可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することによって可用性を高めることが要件である場合は、[こちら](move-azure-VMs-AVset-Azone.md)のチュートリアルを参照してください。
 
 ## <a name="verify-prerequisites"></a>前提条件を確認する
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 82e80b9dd4d20709fc8598e0fed3323046c21cfa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751125"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189414"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル:Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
 
@@ -59,7 +59,7 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - apt install default-jre -y
+  - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
   - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
@@ -109,6 +109,21 @@ az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publi
 ssh azureuser@<publicIps>
 ```
 
+`service` コマンドを使用して、Jenkins が実行されていることを確認します。
+
+```bash
+$ service jenkins status
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Tue 2019-02-12 16:16:11 UTC; 55s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 4103)
+   CGroup: /system.slice/jenkins.service
+
+Feb 12 16:16:10 myVM systemd[1]: Starting LSB: Start Jenkins at boot time...
+...
+```
+
 Jenkins インストール用の `initialAdminPassword` を表示し､コピーします｡
 
 ```bash
@@ -125,7 +140,7 @@ Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します�
 - **[Save and Finish]\(保存して終了する\)** を選択します
 - Jenkins が準備ができたら、**[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
   - Jenkins の使用を開始したときに Web ブラウザーに空白のページが表示された場合は、Jenkins サービスを再起動します。 SSH セッションから「`sudo service jenkins restart`」と入力し、Web ブラウザーを最新の情報に更新します。
-- 作成したユーザー名とパスワードを使用して Jenkins にログインします。
+- 必要な場合は、作成したユーザー名とパスワードを使用して Jenkins にログインします。
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook を作成する
@@ -133,11 +148,13 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 
 作成したフォーク内に webhook を作成します｡
 
-- **[Settings]** を選択して、左側の **[Integrations & services]** を選択します。
-- **[Add service]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
-- *Jenkins (GitHub plugin)* を選択します｡
-- **Jenkins フック用 URL** として `http://<publicIps>:8080/github-webhook/` を入力します｡ 末尾のスラッシュ (/) を含めていることを確認します。
-- **[Add service]** を選択します。
+- **[Settings]\(設定\)** を選択して、左側の **[Integrations & services]\(統合とサービス\)** を選択します。
+- **[Webhook の追加]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
+- **[Payload URL]\(ペイロード URL\)** に、「`http://<publicIps>:8080/github-webhook/`」と入力します。 末尾のスラッシュ (/) を含めていることを確認します。
+- **[コンテンツの種類]** で、*[application/x-www-form-urlencoded]* を選択します。
+- **[Which events would you like to trigger this webhook?]\(この Webhook でトリガーするイベント\)** で、*[Just the push event]\(プッシュ イベントのみ\)* を選択します。
+- **[アクティブ]** をオンにします。
+- **[Webhook の追加]** を選択します。
 
 ![フォークしたレポジトリに GitHub webhook を追加します｡](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -166,7 +183,7 @@ response.end("Hello World!");
 
 変更をコミットするには、下部にある **[変更をコミット]** ボタンを選択します。
 
-Jenkins ジョブ ページ左下隅の **[Build history]** セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに、webhook は Jenkins にアクセスし、新しいビルドをトリガーします。
+Jenkins ジョブ ページ左下隅の **[Build history]** セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Test` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに、webhook は Jenkins にアクセスし、新しいビルドをトリガーします。
 
 
 ## <a name="define-docker-build-image"></a>Docker ビルド イメージを定義する

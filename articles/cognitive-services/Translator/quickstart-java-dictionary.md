@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: a1e59b8a6ceae3e2379a271a9ff55030f14a5622
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5e9c24d1f128267bcfd201de3aac27b81eb8b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223223"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961275"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>クイック スタート:Java を使用して 2 か国語辞書で単語を検索する
 
@@ -171,6 +171,12 @@ public static void main(String[] args) {
 
 ```console
 gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/05/2018
+ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 1db4dd2f1aa550ea4ccac55882f147c0585cdd0c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 50470edff81194b9c8885aa94d1eab1e6c18ad88
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466729"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984088"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -81,10 +81,10 @@ Azure では、2 種類のディスクを提供しています。
 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
 
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupDisk" `
     -Name "myVM" `
     -Location "East US" `
@@ -95,34 +95,34 @@ New-AzureRmVm `
 ```
 
 
-[New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
+[New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) を使用して、初期構成を作成します。 次の例では、サイズが 128 ギガバイトのディスクを構成します。
 
 ```azurepowershell-interactive
-$diskConfig = New-AzureRmDiskConfig `
+$diskConfig = New-AzDiskConfig `
     -Location "EastUS" `
     -CreateOption Empty `
     -DiskSizeGB 128
 ```
 
-[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) コマンドを使用して、データ ディスクを作成します。
+[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) コマンドを使用して、データ ディスクを作成します。
 
 ```azurepowershell-interactive
-$dataDisk = New-AzureRmDisk `
+$dataDisk = New-AzDisk `
     -ResourceGroupName "myResourceGroupDisk" `
     -DiskName "myDataDisk" `
     -Disk $diskConfig
 ```
 
-[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドを使用して、データ ディスクを追加する仮想マシンを取得します。
+[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドを使用して、データ ディスクを追加する仮想マシンを取得します。
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-[Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) コマンドを使用して、データ ディスクを仮想マシンの構成に追加します。
+[Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、データ ディスクを仮想マシンの構成に追加します。
 
 ```azurepowershell-interactive
-$vm = Add-AzureRmVMDataDisk `
+$vm = Add-AzVMDataDisk `
     -VM $vm `
     -Name "myDataDisk" `
     -CreateOption Attach `
@@ -130,10 +130,10 @@ $vm = Add-AzureRmVMDataDisk `
     -Lun 1
 ```
 
-[Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) コマンドを使用して、仮想マシンを更新します。
+[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) コマンドを使用して、仮想マシンを更新します。
 
 ```azurepowershell-interactive
-Update-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
+Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
 ```
 
 ## <a name="prepare-data-disks"></a>データ ディスクを準備する

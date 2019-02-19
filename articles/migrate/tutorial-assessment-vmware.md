@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730766"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235837"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、または 6.5 を実行している vCenter Server で管理される必要があります。 また、コレクター VM をデプロイするには、バージョン 5.5 以降を実行している 1 つの ESXi ホストが必要です。
+- **VMware**:移行する予定の VM は、バージョン 5.5、6.0、6.5、または 6.7 を実行している vCenter Server で管理される必要があります。 また、コレクター VM をデプロイするには、バージョン 5.5 以降を実行している 1 つの ESXi ホストが必要です。
 - **vCenter Server アカウント**:vCenter Server にアクセスするには、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**:vCenter Server 上で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 
@@ -182,7 +182,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - 予定している移行先の Azure クラウド (Azure Global または Azure Government) を選択します。
     - ライセンス条項に同意し、サード パーティの情報を確認します。
     - VM がインターネットにアクセスできることをコレクターがチェックします。
-    - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites)をご覧ください。コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls)をご覧ください。
+    - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites)をご覧ください。コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)をご覧ください。
 
       > [!NOTE]
       > プロキシのアドレスを、 http://ProxyIPAddress または http://ProxyFQDN の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。 インターセプトするプロキシがあるときに、プロキシ証明書をインポートしていない場合は、初回のインターネット接続は失敗することがあります。プロキシ証明書を信頼された証明書としてコレクター VM にインポートすることでこの問題を修正する方法について、[詳細を学習](https://docs.microsoft.com/azure/migrate/concepts-collector)してください。

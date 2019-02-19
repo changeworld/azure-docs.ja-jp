@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ea1afbfb90a55ec1c34f5c59cf38ea5417118ff
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390911"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965020"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボにアクセスし、ラボの VM に接続して、VM を停止する方法について説明します。 
@@ -44,10 +44,8 @@ ms.locfileid: "54390911"
 
 ## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>クラスルーム ラボの仮想マシンに接続する
 
-1. VM をまだ起動していない場合は起動し、**[開始]** を選択します。
+1. VM をまだ起動していない場合は起動し、タイルで **[開始]** を選択します。 
 2. アクセスするラボの仮想マシンを表すタイルの **[接続]** を選びます。 
-
-    ![すべてのラボを表示する](../media/how-to-use-classroom-lab/connect-button.png)
 3. RDP ファイル (Windows VM の場合) をハード ディスクに保存して開きます。 
 4. マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
 

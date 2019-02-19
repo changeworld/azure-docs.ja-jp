@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c89a239cd3abbdd59813626f4b64596ee8a1fd7e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e2dd02ada2c22fa8d6c2d79387ea01f3ec97dd7e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756803"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108128"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
@@ -78,6 +78,8 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 [Dockerfile-base][dockerfile-base]:`Dockerfile-app` によってそのベースとして指定されるイメージ。 これ自体が [Node][base-node] イメージに基づき、`NODE_VERSION` 環境変数を含みます。
 
 以降のセクションでは、タスクを作成し、基本イメージ Docker ファイルで値 `NODE_VERSION` を更新してから、ACR Tasks を使用して基本イメージをビルドします。 ACR タスクによって新しい基本イメージがレジストリにプッシュされると、アプリケーション イメージのビルドが自動的にトリガーされます。 必要に応じて、アプリケーション コンテナー イメージをローカルで実行して、ビルドされたイメージの別のバージョンの文字列を表示します。
+
+このチュートリアルでは、ACR タスクによって、Dockerfile で指定された単一のコンテナー イメージが作成されプッシュされます。 ACR タスクは、[複数ステップ タスク](container-registry-tasks-multi-step.md) (現在プレビュー中) を実行することもできます。その場合は、YAML ファイルを使用して、複数のコンテナーを構築、プッシュ、およびテスト (オプション) するステップを定義します。
 
 ## <a name="build-the-base-image"></a>基本イメージをビルドする
 
@@ -257,7 +259,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build-run
 [az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr-run
+[az-acr-task-run]: /cli/azure/acr#az-acr-run
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr

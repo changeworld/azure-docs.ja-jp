@@ -3,25 +3,25 @@ title: Text Analytics とは
 titleSuffix: Azure Cognitive Services
 description: センチメント分析、キー フレーズ抽出、言語検出、エンティティのリンクのための Azure Cognitive Services の Text Analytics。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227881"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242929"
 ---
 # <a name="what-is-text-analytics"></a>Text Analytics とは
 
 Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、言語検出、エンティティ リンク設定の 4 つを備えています。
 
-この API を支援するのが [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) のリソースです。これは機械学習と AI のアルゴリズムをクラウドに集めたものであり、開発プロジェクトですぐに利用できます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。
 
 ## <a name="capabilities-in-text-analytics"></a>テキスト分析の機能
 

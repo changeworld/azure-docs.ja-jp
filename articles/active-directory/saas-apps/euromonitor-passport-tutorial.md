@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab9439cbf46fd77a24aa07cab1884e4e50720e43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478990"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>チュートリアル:Azure Active Directory と Euromonitor Passport の統合
 
@@ -66,7 +67,7 @@ Azure AD への Euromonitor Passport の統合を構成するには、ギャラ�
 
 4. 検索ボックスに「**Euromonitor Passport**」と入力し、結果ウィンドウから **[Euromonitor Passport]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧にある Euromonitor Passport](common/search-new-app.png)
+    ![結果一覧にある Euromonitor Passport](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -104,17 +105,17 @@ Euromonitor Passport によって Azure AD のシングル サインオンを構
 
     ![[Euromonitor Passport のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. **SP** 開始モードでアプリケーションを構成する場合は、[Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)からサインオン URL を入手する必要があります。 Euromonitor Passport サポート チームからサインオン URL を入手したら、**[追加の URL を設定します]** をクリックして、次の手順を実行します。
 
     ![[Euromonitor Passport のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://portal.euromonitor.com`」と入力します。
+    Euromonitor Passport サポート チームから入手したサインオン URL の値を [サインオン URL] ボックスに貼り付けます。
 
 6. Euromonitor Passport は、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性|
     | ---------------| --------- |

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249882"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108757"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway でデータを転送する (プレビュー)
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway でデータを転送する (プレビュー)
 
 
 ## <a name="introduction"></a>はじめに
@@ -121,13 +121,13 @@ Data Box Edge に接続されている Linux クライアントで次の手順�
 
 2. NFS クライアントをインストールした後、次のコマンドを使用して、作成した NFS 共有を Data Box Gateway デバイスにマウントします。
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     マウントを設定する前に、ローカル コンピューターのマウント ポイントとして機能するディレクトリが既に作成されており、ファイルやサブフォルダーが含まれていないことを確認します。
 
     NFS 経由で Gateway デバイス上の共有に接続する方法の例を次に示します。 仮想デバイスの IP は `10.10.10.60` で、共有 `mylinuxshare2` は ubuntuVM にマウントされており、マウント ポイントは `/home/databoxubuntuhost/gateway` です。
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
 > 次の注意事項は、プレビュー リリースに適用されます。

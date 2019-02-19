@@ -11,12 +11,13 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 33bab4b66532a4cdcbd33c2f8594476d07985f4b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39a5ef9d929899ac5e66c5a0e342040fc3c5074b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096944"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194820"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -34,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
 
 ### <a name="to-create-a-new-tenant"></a>新しいテナントを作成するには
-1. **[Azure Active Directory]**、**[リソースの作成]**、**[ID]**、**[Azure Active Directory]** の順に選択します。
+1. **[リソースの作成]**、**[ID]**、**[Azure Active Directory]** の順に選択します。
 
     **[ディレクトリの作成]** ページが表示されます。
 

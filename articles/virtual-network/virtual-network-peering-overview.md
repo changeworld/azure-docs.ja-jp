@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169316"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175729"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -78,7 +78,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 ## <a name="requirements-and-constraints"></a>要件と制約
 
 仮想ネットワークがグローバルにピアリングされている場合、次の制約が適用されます。
-- 仮想ネットワークは、任意の Azure パブリック クラウド リージョンに存在できますが、Azure ナショナル クラウドには存在できません。
+- 仮想ネットワークは、Azure パブリック クラウドの任意のリージョンまたは Azure 中国クラウド リージョン内に存在できますが、Azure Government クラウドに存在することはできません。
 - ある仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じリージョン内に存在する必要があります。
 - リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングされた仮想ネットワークが同じリージョンに存在する必要があります。
 

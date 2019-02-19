@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 06/11/2018
+ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3f7b1349788ad2bbd0ffe7b146074947364ce1e4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ebb1a3fba95ed5794b3737d75c4ec182163a32fb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835932"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984428"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Windows 仮想マシンを監視する
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Windows 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
 
@@ -41,7 +41,7 @@ Azure ポータルから Security Center ダッシュボードにアクセスす
 
 ![Security Center ダッシュボード](./media/tutorial-azure-security/asc-dash.png)
 
-Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。 修復は自動化されており、Security Center 上で実行できます。  
+Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。 修復は自動化されており、Security Center を離れる必要はありません。  
 
 ![Recommendations](./media/tutorial-azure-security/recommendations.png)
 

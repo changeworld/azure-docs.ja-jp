@@ -12,12 +12,13 @@ ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494666"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190468"
 ---
 # <a name="what-is-hybrid-identity"></a>ハイブリッド ID とは 
 
@@ -42,14 +43,14 @@ Microsoft の ID ソリューションは、オンプレミスおよびクラウ
 |必要事項|PHS および SSO<sup>1</sup>| PTA と SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |新しいユーザー、連絡先、およびオンプレミスの Active Directory で作成したグループ アカウントを自動的にクラウドに同期|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|テナントを Office 365 ハイブリッド シナリオにセット アップ|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|ユーザーがオンプレミスのパスワードを使用してサインインしたりクラウド サービスにアクセスしたりすることを有効化|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|企業の資格情報を使用したシングル サインオンの実装|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|  
-|クラウドにパスワード ハッシュを保存しないことを確認| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|クラウドの多要素認証ソリューションを有効化| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|オンプレミスの Multi-factor Authentication ソリューションを有効化| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|ユーザー<sup>4</sup>のスマートカード認証をサポート| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
-|Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|テナントを Office 365 ハイブリッド シナリオ用にセット アップする。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|ユーザーがオンプレミスのパスワードを使用してサインインしたりクラウド サービスにアクセスしたりすることを有効化する。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|企業の資格情報を使用したシングル サインオンを実装する。|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|  
+|クラウドにパスワード ハッシュが保存されないようにする。| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|クラウドの多要素認証ソリューションを有効化する。| |![推奨](./media/whatis-hybrid-identity/ic195031.png)|![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|オンプレミスの Multi-factor Authentication ソリューションを有効化する。| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|ユーザーのスマートカード認証をサポートする。<sup>4</sup>| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
+|Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示する。| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> シングル サインオンによるパスワード ハッシュ同期。 
 > 
