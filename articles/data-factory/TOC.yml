@@ -143,6 +143,8 @@ items:
       href: concepts-data-flow-expression-builder.md
     - name: 参照ノード
       href: concepts-data-flow-reference-node.md
+    - name: 式言語
+      href: data-flow-expression-functions.md
   - name: ロールとアクセス許可
     href: concepts-roles-permissions.md
   - name: 価格について
@@ -568,9 +570,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 848833c7e5524d8bad46150d4c3a8c560e2ef790
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 19193a4bcd00a0f4e96dc465d0130b3ec96a7ca2
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330530"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408461"

@@ -1,6 +1,6 @@
 ---
-title: Azure 管理グループでリソースを整理する
-description: 管理グループとその使用方法について説明します。
+title: Azure 管理グループでリソースを整理する - Azure Governance
+description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
 author: rthorn17
 manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 9d606a46bd08ce3e999806bed2357968e5ffd914
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584607"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339289"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -105,7 +105,7 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 |リソース ポリシー共同作成者 |        |        |      |        |               | X             |       |
 |User Access Administrator   |        |        |      |        | X             |               |       |
 
-*: MG Contributor と MG Reader は、管理グループのスコープでのみ、ユーザーによるそれらのアクションの実行を許可します。  
+*: MG Contributor と MG Reader は、管理グループのスコープのみでのこれらのアクションの実行をユーザーに許可します。  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>カスタム RBAC ロールの定義と割り当て
 
@@ -118,7 +118,7 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../../role-based-access-control/elevate-access-global-admin.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
 1. 監査ユーザーは、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を呼び出して、管理グループのアクティビティを確認します。 管理グループのアクティビティすべてを対象としてリソース プロバイダーの **Microsoft.Management** でフィルター処理を行います。  例:
 
-```
+```http
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 

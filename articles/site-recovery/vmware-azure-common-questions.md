@@ -1,19 +1,19 @@
 ---
 title: よくある質問 - Azure Site Recovery を使用した VMware から Azure へのディザスター リカバリー | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用してオンプレミスの VMware VM の Azure へのディザスター リカバリーを設定する場合のよくある質問をまとめています
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212241"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235226"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -31,8 +31,6 @@ ms.locfileid: "55212241"
 - **ディザスター リカバリー** :完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスのインフラストラクチャが使用できなくなった場合は、Azure にフェールオーバーできます。 フェールオーバーの際は、レプリケートされたデータを使って Azure VM が作成されます。 オンプレミスのデータ センターが再び使用可能になるまでは、Azure VM のアプリとワークロードにアクセスできます。 その後、Azure からオンプレミスのサイトにフェールバックできます。
 - **移行**:Site Recovery を使って、オンプレミスの VMware VM を Azure に移行できます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスから Azure にフェールオーバーします。 フェールオーバーの後は、Azure VM で実行しているアプリとワークロードを利用できます。
 
-
-
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Azure で必要なものは何ですか?
 Azure サブスクリプション、Recovery Services コンテナー、ストレージ アカウント、仮想ネットワークが必要です。 コンテナー、ストレージ アカウント、ネットワークは、同じリージョンに存在する必要があります。
@@ -44,7 +42,33 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Azure でゲスト OS のサーバー ライセンスを使用できますか?
-はい、マイクロソフト ソフトウェア アシュランスのお客様は、Azure ハイブリッド特典を使用して、Azure に移行する **Windows Server マシン**のライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
+はい、マイクロソフト ソフトウェア アシュランスのお客様は、[Azure ハイブリッド特典](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/)を使用して、Azure に移行する **Windows Server マシン**のライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
+
+## <a name="pricing"></a>価格
+
+### <a name="how-are-licensing-charges-handled-during-replication-after-failover"></a>フェールオーバー後、レプリケーションの間にライセンス料金はどのように処理されますか?
+
+詳しくは、[こちら](https://aka.ms/asr_pricing_FAQ)のラインセンスに関する FAQ をご覧ください。
+
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Site Recovery の使用中は、どのようにして概算料金を計算できますか?
+
+Azure Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もることが可能です。 コストの詳細な見積のためには、デプロイ プランナー ツールを実行して (https://aka.ms/siterecovery_deployment_planner))、[コスト見積レポート](https://aka.ms/asr_DP_costreport)を分析します。
+
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Azure Site Recovery のユーザーになって 1 か月以上が経過しました。 保護されたインスタンスはすべて、引き続き最初の 31 日間無料の対象になりますか?
+
+はい。どのくらい長く Azure Site Recovery を利用しているかは関係ありません。 保護されたインスタンスはすべて、最初の 31 日間は Azure Site Recovery の料金が発生しません。 たとえば、過去 6 か月間に 10 個のインスタンスを保護していて、11 個目のインスタンスを Azure Site Recovery に接続した場合、11 個目のインスタンスに対する Azure Site Recovery の料金は、最初の 31 日間は発生しません。 最初の 10 個のインスタンスは、既に 31 日間を超えて保護されているので、継続して Azure Site Recovery の料金が発生します。
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、その他の Azure 料金は発生しますか?
+
+はい。Azure Site Recovery では、保護されたインスタンスは最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、およびデータ転送については料金が発生する場合があります。 また、復旧された仮想マシンも、Azure のコンピューティングの料金が発生する場合があります。
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Azure Site Recovery を使うと、どのような料金が発生しますか?
+
+詳しくは、[発生するコストに関する FAQ ](https://aka.ms/asr_pricing_FAQ)に関するページをご覧ください。
+
+### <a name="is-there-a-cost-associated-to-perform-dr-drillstest-failover"></a>DR ドリル/テスト フェールオーバーの実行に関連するコストはありますか?
+
+DR ドリルに対しては、別個のコストはかかりません。 テスト フェールオーバー後に仮想マシンが作成されると、以降はコンピューティングの料金がかかります。
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery コンポーネントのアップグレード
 
@@ -87,8 +111,12 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 
 ## <a name="replication"></a>レプリケーション
 
-### <a name="what-apps-can-i-replicate"></a>どのようなアプリをレプリケートできますか?
+### <a name="what-applications-can-i-replicate"></a>どのアプリケーションをレプリケートできますか?
 [レプリケーション要件](vmware-physical-azure-support-matrix.md##replicated-machines)に準拠する VMware VM で実行しているすべてのアプリまたはワークロードをレプリケートできます。 また、アプリケーションに対応したレプリケーションもサポートしているため、アプリをインテリジェントな状態にフェールオーバーおよびフェールバックできます。 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合し、Oracle、SAP、IBM、Red Hat などの主要なベンダーと緊密に連携します。 [詳細情報](site-recovery-workload.md) を参照してください。
+
+### <a name="can-i-protect-a-virtual-machine-that-has-docker-disk-configuration"></a>Docker ディスク構成を備えた仮想マシンを保護できますか?
+
+いいえ、これはサポートされていないシナリオです。
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>サイト間 VPN で Azure にレプリケートできますか?
 Site Recovery は、パブリック エンドポイントまたは ExpressRoute のパブリック ピアリングを使って、オンプレミスから Azure ストレージにデータをレプリケートします。 サイト間 VPN ネットワーク経由のレプリケーションはサポートされていません。
@@ -96,11 +124,13 @@ Site Recovery は、パブリック エンドポイントまたは ExpressRoute 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
 はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery は、パブリック エンドポイント経由で Azure Storage アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしていることを確認してください。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
+### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>コンピューターが保護された後は、どのようにストレージ アカウントを変更できますか?
+
+ストレージ アカウントは、Premiun にのみアップグレードできます。 別のストレージ アカウントを使用したい場合、ソース コンピューターのレプリケーションを無効にしてから、新しいストレージ アカウントを使用して保護を再度有効にする必要があります。 これ以外に、保護が有効になった後にストレージ アカウントを変更する方法はありません。
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
 
 Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage アカウントのパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
-
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
 
@@ -108,6 +138,9 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 VMware VM を Azure にレプリケートするときは、レプリケーションは継続的に行われます。
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>フェールオーバーの際に IP アドレスを保持することはできますか?
+はい、フェールオーバーの際に IP アドレスを保持することは可能です。 フェールオーバー前に [コンピューティングとネットワーク] ブレード上で対象となる IP アドレスを必ず指定してください。 また、フェールオーバー時には必ずコンピューターをシャットダウンして、フェールバック時の IP の競合を避けてください。
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。

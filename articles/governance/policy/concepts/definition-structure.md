@@ -4,17 +4,17 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698294"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237419"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -90,8 +90,20 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 > [!NOTE]
 > パラメーターは、既存の割り当て済み定義に追加できます。 新しいパラメーターには、**defaultValue** プロパティを含める必要があります。 これにより、ポリシーまたはイニシアティブの既存の割り当てが間接的に無効になることを防ぎます。
 
-たとえば、リソースをデプロイできる場所を制限するポリシーを定義できます。
-ポリシーを作成するときに、次のパラメーターを宣言します。
+### <a name="parameter-properties"></a>パラメーターのプロパティ
+
+パラメーターには、ポリシー定義内で使用される次のプロパティがあります。
+
+- **name**:お使いのパラメーターの名前。 ポリシー規則内の `parameters` デプロイ関数によって使用されます。 詳しくは、[パラメーター値の使用](#using-a-parameter-value)に関するページをご覧ください。
+- `type`:パラメーターが**文字列**または**配列**のどちらかを判定します。
+- `metadata`:Azure portal によって主に使用されるサブプロパティを定義して、ユーザー フレンドリな情報を表示します。
+  - `description`:パラメーターが何に使用されるかの説明。 許可される値の例を提示するために使用できます。
+  - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
+  - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
+- `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。 割り当てられている既存のポリシー定義を更新するときは、必須です。
+- `allowedValues`:(省略可能) 割り当て中にパラメーターにおいて許可される値の一覧を提供します。
+
+たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-パラメーターの型は、文字列または配列のどちらも可能です。 メタデータ プロパティは、Azure Portal などのツールでわかりやすい情報を表示するために、使用されます。
-
-メタデータ プロパティの中で **strongType** を使用して、Azure portal 内にオプションの複数選択リストを用意できます。 現時点で **strongType** で使用できる値には、以下が含まれます。
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>パラメーター値の使用
 
 ポリシー規則では、次に示す `parameters` 関数とデプロイ値の構文でパラメーターを参照します。
 
@@ -126,6 +134,19 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+このサンプルでは、「[パラメーターのプロパティ](#parameter-properties)」に示されていた **allowedLocations** パラメーターを参照します。
+
+### <a name="strongtype"></a>strongType
+
+`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 現時点で **strongType** で使用できる値には、以下が含まれます。
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>定義の場所
 
@@ -187,7 +208,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="conditions"></a>条件
 
-条件は、**フィールド**が特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
+条件では、**field** または **value** アクセサーが特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -231,7 +252,53 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
   - このかっこ構文では、ピリオドを含むタグ名がサポートされます。
   - **\<tagName\>** は、条件を検証するタグの名前です。
   - 例: `tags[Acct.CostCenter]`。**Acct.CostCenter** がタグの名前です。
+
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
+
+### <a name="value"></a>値
+
+条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。
+**value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
+
+#### <a name="value-examples"></a>値の例
+
+このポリシー規則の例では、**value** を使用して `resourceGroup()` 関数の結果と `*netrg` の **like** 条件に対して返された **name** プロパティを比較します。 規則では、名前が `*netrg` で終わる任意のリソース グループ内で `Microsoft.Network/*` の **type** ではないリソースをすべて拒否します。
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+このポリシー規則の例では、**value** を使用して、複数の入れ子になった関数の結果が `true` と **equals** になるかをチェックします。 規則では、3 つ以上のタグを持たないリソースをすべて拒否します。
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>効果
 
@@ -274,12 +341,15 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="policy-functions"></a>ポリシー関数
 
-さまざまな [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)をポリシー規則内で使用できます。 現在サポートされている関数は次のとおりです。
+次のデプロイ関数およびリソース関数を除く、すべての [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)は、ポリシー規則内で使用するために利用可能です。
 
-- [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [サブスクリプション](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- deployment()
+- list*
+- providers()
+- reference()
+- resourceId()
+- variables()
 
 さらに、`field` 関数もポリシー規則で使用できます。 `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 

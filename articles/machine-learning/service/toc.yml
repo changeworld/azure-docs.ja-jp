@@ -59,7 +59,11 @@ items:
 - name: ハウツー ガイド
   items:
   - name: ワークスペースを管理する
-    href: how-to-manage-workspace.md
+    items:
+    - name: ワークスペースにポータルを使用する
+      href: how-to-manage-workspace.md
+    - name: Resource Manager テンプレートを使用する
+      href: how-to-create-workspace-template.md
   - name: 開発環境をセットアップする 
     items:
     - name: 開発環境を構成する
@@ -119,8 +123,6 @@ items:
       href: how-to-deploy-fpga-web-service.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-deployment.md
-    - name: SSL を使用して Web サービスをセキュリティで保護する
-      href: how-to-secure-web-service.md
   - name: Web サービスを使用する
     items:
     - name: リアルタイムで使用する
@@ -136,25 +138,27 @@ items:
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
+  - name: セキュリティ
+    items:
+    - name: 仮想ネットワークの使用
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: SSL を使用して Web サービスをセキュリティで保護する
+      href: how-to-secure-web-service.md
   - name: 最初のパイプラインの作成
     href: how-to-create-your-first-pipeline.md
+  - name: ログの有効化
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: 仮想ネットワークを使用してセキュリティ保護する
-    displayName: vnet
-    href: how-to-enable-virtual-network.md
   - name: Machine Learning CLI の使用
     displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: データをエクスポートおよび削除する
     displayName: gdpr
     href: how-to-export-delete-data.md
-  - name: Resource Manager テンプレートを使用する
-    href: how-to-create-workspace-template.md
-  - name: ログの有効化
-    displayName: logging
-    href: how-to-enable-logging.md
 - name: リファレンス
   items:
   - name: Machine Learning SDK
@@ -166,8 +170,6 @@ items:
   - name: Monitoring SDK
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -183,9 +185,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: eb803b44bbe72b80f4414a4de66bce519591dea7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 041a4b0f3ebecdaedb041ceb25f426a6e1825292
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268823"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338095"

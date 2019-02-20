@@ -136,7 +136,7 @@ items:
       href: search-example-adventureworks-modeling.md
     - name: 多層構造ファセットをモデル化する
       href: search-example-adventureworks-multilevel-faceting.md
-  - name: データのインデックス作成
+  - name: データを読み込む
     items:
     - name: データ インポートの概要
       href: search-what-is-data-import.md
@@ -190,7 +190,7 @@ items:
       href: cognitive-search-concept-troubleshooting.md
     - name: ドキュメント リンク
       href: cognitive-search-resources-documentation.md
-  - name: データのクエリ実行
+  - name: データのクエリを実行する
     items:
     - name: 基本的なクエリの作成
       href: search-query-overview.md
@@ -204,7 +204,7 @@ items:
       href: search-query-simple-examples.md
     - name: クエリの例 (完全な Lucene)
       href: search-query-lucene-examples.md
-  - name: 結果の処理
+  - name: 結果を処理する
     items:
     - name: ページ関連の機能
       href: search-pagination-page-layout.md
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: a38dd0b739b5f34826798370b4ffa4ad84cc525d
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 786dd21f4f8783dee3739beaa4c916793cfc7404
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299481"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337843"

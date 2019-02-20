@@ -15,12 +15,15 @@ items:
 - name: チュートリアル
   items:
   - name: リモート ファイルのエンコードとビデオのストリーミング – REST
+    displayName: encoding, job, transform
     href: stream-files-tutorial-with-rest.md
   - name: アップロードされたファイルのエンコードとビデオのストリーミング – .NET
+    displayName: encode, encoding, job, transform
     href: stream-files-tutorial-with-api.md
   - name: ライブ ストリーム配信 - .NET
     href: stream-live-tutorial-with-api.md
   - name: ビデオの分析 - .NET
+    displayName: job, transform
     href: analyze-videos-tutorial-with-api.md
   expanded: true
 - name: サンプル
@@ -31,33 +34,55 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: 取り込み
+  - name: クラウドのアップロードとストレージ
+    href: storage-account-concept.md
     items:
     - name: アセット
       href: assets-concept.md
   - name: エンコード
-    href: encoding-concept.md
     items:
+    - name: 概要
+      displayName: Presets
+      href: encoding-concept.md
     - name: Transform と Job
       href: transforms-jobs-concept.md
     - name: Media Encoder Standard の形式
       href: media-encoder-standard-formats.md
     - name: Autogen アダプティブ ビットレート ラダー
       href: autogen-bitrate-ladder.md
-  - name: 分析
-    href: analyzing-video-audio-files-concept.md
+  - name: メディア分析
     items:
+    - name: 概要
+      displayName: Presets
+      href: analyzing-video-audio-files-concept.md
     - name: Transform と Job
       href: transforms-jobs-concept.md
-  - name: ストリーム
+  - name: パッケージ化、デリバリー、保護
     items:
+    - name: 梱包
+      items:
+      - name: 動的パッケージ
+        href: dynamic-packaging-overview.md
+      - name: フィルター
+        href: filters-concept.md
+      - name: 動的マニフェスト
+        href: filters-dynamic-manifest-overview.md
+    - name: コンテンツ保護
+      href: content-protection-overview.md
+      items:
+      - name: アクセス制御を使用したマルチ DRM システム
+        href: design-multi-drm-system-with-access-control.md
     - name: ストリーミング エンドポイント
+      displayName: Origins
       href: streaming-endpoint-concept.md
     - name: ストリーミング ロケーター
+      displayName: URLs
       href: streaming-locators-concept.md
     - name: ストリーミング ポリシー
       href: streaming-policy-concept.md
-  - name: ライブ ストリーム配信
+    - name: コンテンツ キー ポリシー
+      href: content-key-policy-concept.md
+  - name: ライブ ストリーミング
     href: live-streaming-overview.md
     items:
     - name: ライブ イベントとライブ出力
@@ -72,36 +97,19 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
-  - name: 配信
-    items:
-    - name: フィルターと動的マニフェスト
-      href: filters-dynamic-manifest-overview.md
   - name: 監視
     items:
-    - name: Event Grid
+    - name: Event Grid を使用したイベント
       href: reacting-to-media-services-events.md
-  - name: 保護
-    href: content-protection-overview.md
+  - name: Player クライアント
     items:
-    - name: コンテンツ キー ポリシー
-      href: content-key-policy-concept.md
-    - name: ストリーミング ポリシー
-      href: streaming-policy-concept.md
-    - name: ストリーミング ロケーター
-      href: streaming-locators-concept.md
-    - name: アクセス制御を使用したマルチ DRM システム
-      href: design-multi-drm-system-with-access-control.md
-  - name: 再生
-    href: use-azure-media-player.md
-  - name: アカウント
+    - name: Azure Media Player
+      href: use-azure-media-player.md
+  - name: Media Services エンティティ
     items:
-    - name: クォータと制限
-      href: limits-quotas-constraints.md
-    - name: ストレージ アカウント
-      href: storage-account-concept.md
-  - name: エンティティのフィルター、並べ替え、ページング
-    href: entities-overview.md
-  - name: v2 から v3 への移行
+    - name: エンティティの並べ替え、フィルター処理、ページング
+      href: entities-overview.md
+  - name: v2 から v3 への移行ガイダンス
     href: migrate-from-v2-to-v3.md
 - name: ハウツー ガイド
   items:
@@ -113,19 +121,34 @@ items:
       href: access-api-cli-how-to.md
     - name: メディア占有ユニットのスケーリング - CLI
       href: media-reserved-units-cli-how-to.md
-  - name: Postman を構成する
-    href: media-rest-apis-with-postman.md
+    - name: 開発を始める
+      href: developers-guide.md
+    - name: Postman を構成する
+      href: media-rest-apis-with-postman.md
   - name: コンテンツをアップロードする
     items:
-    - name: HTTP(s) から - .NET
+    - name: HTTPS から - .NET
+      displayName: upload
       href: job-input-from-http-how-to.md
     - name: ローカル ファイルから - .NET
+      displayName: upload
       href: job-input-from-local-file-how-to.md
     - name: ローカル ファイルから - REST
+      displayName: upload
       href: upload-files-rest-how-to.md
   - name: コンテンツのエンコード
     items:
-    - name: 変換プリセットのカスタマイズ - .NET
+    - name: ジョブ入力としての HTTPS - .NET
+      displayName: encode, encoding
+      href: job-input-from-http-how-to.md
+    - name: ジョブ入力としてのローカル ファイル - .NET
+      displayName: encode, encoding
+      href: job-input-from-local-file-how-to.md
+    - name: ジョブ入力としてのローカル ファイル - REST
+      displayName: encode
+      href: upload-files-rest-how-to.md
+    - name: カスタム変換の使用 - .NET
+      displayName: encode, encoding, tranform
       href: customize-encoder-presets-how-to.md
   - name: Event Grid の使用
     items:
@@ -215,13 +238,15 @@ items:
     href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: リリース ノート
     href: release-notes.md
+  - name: クォータと制限
+    href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0ca98ea27a77418ee5a111a67bd013ab6ad40e55
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 05b20d905a5848cfcfd0f9c6d20e4addb5c776fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330020"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340435"

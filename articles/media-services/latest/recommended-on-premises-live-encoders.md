@@ -1,5 +1,5 @@
 ---
-title: Media Services で推奨されるライブ ストリーミング オンプレミス エンコーダーについて知る - Azure | Microsoft Docs
+title: Media Services で推奨されるライブ ストリーミング エンコーダー - Azure | Microsoft Docs
 description: Media Services で推奨されるライブ ストリーミング オンプレミス エンコーダーについて知る
 services: media-services
 keywords: エンコード;エンコーダー;メディア
@@ -9,18 +9,18 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c3e42ba9fe84ded8c60fc71f19de785945852116
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a165fac2de89d5510b21b9185d4bc61e730b09ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656670"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960124"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 
-Media Services では、[Live Event](https://docs.microsoft.com/rest/api/media/liveevents) (チャネル) は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 Live Event は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
+Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents) (チャネル) は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 ライブ イベントは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーではパススルー チャネルにシングルビットレート ストリームを送信することができますが、クライアントへのアダプティブ ビットレート ストリーミングができなくなるため、この構成は推奨されません。
+* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーは、パススルー チャネルに単一ビットレートのストリームを送信できます。 この構成は、クライアントへのアダプティブ ビットレート ストリーミングができないため推奨されません。
 
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
@@ -72,12 +72,12 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 ### <a name="configuration-tips"></a>構成上のヒント
 
 - 可能な限り、有線のインターネット接続を使用します。
-- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
+- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 必須ではありませんが、この単純なルールはネットワークの混雑による影響を軽減するのに役立ちます。
 - ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
-- プッシュが開始したら、エンコーダー構成を変更しないでください。 イベントに悪影響が出ます。イベントが不安定になることがあります。 
+- プッシュの開始後にエンコーダーの構成を変更すると、イベントに悪影響を与えます。 構成を変更すると、イベントが不安定になる可能性があります。 
 - 十分な時間をかけてイベントを設定してください。 高スケールのイベントの場合、イベントの 1 時間前に設定を開始することをお勧めします。
 
-## <a name="how-to-become-an-on-premises-encoder-partner"></a>オンプレミス エンコーダー パートナーになる方法
+## <a name="becoming-an-on-premises-encoder-partner"></a>オンプレミス エンコーダー パートナーになる
 
 Media Services は、Azure Media Services オンプレミス エンコーダー パートナーとして企業のお客様にエンコーダーを推奨することで、製品の販売を促進します。 オンプレミス エンコーダー パートナーになるには、オンプレミス エンコーダーと Media Services との互換性を確認する必要があります。 これを行うには、次の検証を実行します。
 
@@ -95,10 +95,10 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
 11. ライブ エンコーダーを約 10 分間実行します。
 12. ライブ イベントを停止します。 
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用し、すべての品質レベルで再生に目に見える異常がないことを確認するため、アーカイブされた資産を監視します (または、ライブ セッションでプレビュー URL を使用して監視と検証を行います)。
+13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルで目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
 14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
 15. 各サンプルの作成後に、Live Event の状態をリセットします。
-16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号/キャプション/異なるエンコード速度を使用します)。
+16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
 
 ### <a name="live-encoding-live-event-verification"></a>ライブ エンコード Live Event 検証
 
@@ -114,14 +114,14 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
 11. ライブ エンコーダーを約 10 分間実行します。
 12. ライブ イベントを停止します。
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用し、すべての品質レベルで再生に目に見える異常がないことを確認するため、アーカイブされた資産を監視します (または、ライブ セッションでプレビュー URL を使用して監視と検証を行います)。
+13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルについて目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
 14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
 15. 各サンプルの作成後に、Live Event の状態をリセットします。
-16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号/キャプション/異なるエンコード速度を使用します)。
+16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
 
 ### <a name="longevity-verification"></a>持続時間の検証
 
-[パススルー ライブ イベント検証](#pass-through-live-event-verification)と同じ手順です。ただし、手順 11 を除きます。 <br/>10 分ではなく、1 週間以上ライブ エンコーダーを実行します。 再生に目に見える異常がないことを確認するため、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用して、時折ライブ ストリーミング (またはアーカイブされた資産) を監視します。
+[パススルー ライブ イベント検証](#pass-through-live-event-verification)と同じ手順に従います。ただし、手順 11 を除きます。 <br/>10 分ではなく、1 週間以上ライブ エンコーダーを実行します。 再生に目に見える異常がないことを確認するため、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用して、時折ライブ ストリーミング (またはアーカイブされた資産) を監視します。
 
 ### <a name="email-your-recorded-settings"></a>記録した設定をメールで送信する
 

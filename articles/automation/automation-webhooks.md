@@ -6,22 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/06/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438849"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245866"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
 *Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure DevOps Services、GitHub、Azure Log Analytics などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
+[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
 ## <a name="details-of-a-webhook"></a>Webhook の詳細
 
@@ -38,7 +38,7 @@ ms.locfileid: "54438849"
 
 Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。 Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。 Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。 1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
-Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値をオーバーライドできません。 クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
+Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値をオーバーライドできません。 クライアントからデータを受け取るために、Runbook が **$WebhookData** という名前の単一のパラメーターを受け入れることができます。 このパラメーターの型は [object] で、これにはクライアントによって POST 要求に含められるデータが含まれます。
 
 ![Webhookdata プロパティ](media/automation-webhooks/webhook-data-properties.png)
 
@@ -189,7 +189,7 @@ else {
 
 次の例では、Windows PowerShell を使用して Webhook で Runbook を開始します。 webhook は、HTTP 要求を実行できる任意の言語で使用できます。ここでは、例として Windows PowerShell を使用します。
 
-Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要です。 Runbook では、Webhook の呼び出し元が有効であることを検証するために具体的に定義されたメッセージがヘッダーに含まれることも検証されます。
+Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要です。 Runbook では、Webhook の呼び出し元が有効であることを検証するために定義されたメッセージがヘッダーに含まれることも検証されます。
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -200,11 +200,11 @@ $vms  = @(
         )
 $body = ConvertTo-Json -InputObject $vms
 $header = @{ message="StartedbyContoso"}
-$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body -Headers $header
+$response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $header
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-次の例は、**WebhookData** の **RequestBody** プロパティで Runbook に利用できる要求の本文を示しています。 要求の本文に含まれていた形式が JSON であったため、この形式は JSON になります。
+次の例は、**WebhookData** の **RequestBody** プロパティで Runbook に利用できる要求の本文を示しています。 要求の本文に含まれていた形式が JSON であったため、この値の形式は JSON になります。
 
 ```json
 [

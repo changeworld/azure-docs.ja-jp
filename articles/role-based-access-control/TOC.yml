@@ -1,5 +1,5 @@
 items:
-- name: ロールベースのアクセス制御に関するドキュメント
+- name: Azure リソースの RBAC に関するドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -9,15 +9,15 @@ items:
     href: rbac-and-directory-admin-roles.md
 - name: クイック スタート
   items:
-  - name: ユーザーのロールの表示
+  - name: ユーザーのアクセス権の表示
     href: check-access.md
 - name: チュートリアル
   items:
-  - name: ユーザーのアクセス権の付与 - ポータル
+  - name: ユーザーへのアクセス権の付与 - ポータル
     href: quickstart-assign-role-user-portal.md
-  - name: ユーザーのアクセス権の付与 - PowerShell
+  - name: ユーザーへのアクセス権の付与 - PowerShell
     href: tutorial-role-assignments-user-powershell.md
-  - name: グループのアクセス権の付与 - PowerShell
+  - name: グループへのアクセス権の付与 - PowerShell
     href: tutorial-role-assignments-group-powershell.md
   - name: カスタム ロールの作成 - PowerShell
     href: tutorial-custom-role-powershell.md
@@ -29,7 +29,7 @@ items:
     href: role-definitions.md
   - name: 拒否割り当てについて
     href: deny-assignments.md
-  - name: RBAC のための Privileged Identity Management (PIM)
+  - name: Azure リソース向けの PIM
     href: pim-azure-resource.md
   - name: Azure 管理の条件付きアクセス
     href: conditional-access-azure-management.md
@@ -96,9 +96,9 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 46ff0e024e2c7dc466120054b4a8e69fa47c14cd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 20500ad90e710b2c0e4359832a24a352c14ea0b2
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099209"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408767"

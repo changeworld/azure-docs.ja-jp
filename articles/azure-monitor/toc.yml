@@ -519,6 +519,8 @@ items:
         items:
         - name: 概要
           href: insights/container-insights-overview.md
+        - name: FAQ
+          href: insights/container-insights-faq.md
         - name: 利用開始
           href: insights/container-insights-onboard.md
         - name: 分析
@@ -1025,9 +1027,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 91909bef0803ad4046f605cda38a4a6dbb813f68
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 79a0748ad69348d9eec2954731ef88232c253c64
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236823"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416974"
