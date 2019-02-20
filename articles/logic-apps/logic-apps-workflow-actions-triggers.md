@@ -2617,7 +2617,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
 | プロパティ | 必須 | 値 | 説明 |
 |----------|----------|-------|-------------|
 | **type** | はい | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
-| **pfx** | [はい] | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **pfx** | はい | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
 | **password** | はい | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
 ||||| 
 
@@ -2655,7 +2655,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
 | **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
-| **credentialType** | [はい] | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
+| **credentialType** | はい | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
 | **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
 | **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
 | **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | "@parameters('secretParam')" | 承認を要求しているクライアント シークレット |
