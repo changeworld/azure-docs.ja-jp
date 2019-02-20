@@ -49,12 +49,12 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります | [はい] |
-| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net ` です。 | [はい] |
-| database | データベースの名前。 | [はい] |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | [はい] |
+| type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります | はい |
+| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net ` です。 | はい |
+| database | データベースの名前。 | はい |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 
 **リンクされたサービスのプロパティの例:**
 
@@ -87,7 +87,7 @@ Azure Data Explorer にデータをコピーするには、データセットの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは、**AzureDataExplorerTable** に設定する必要があります | [はい] |
+| type | **type** プロパティは、**AzureDataExplorerTable** に設定する必要があります | はい |
 | table | リンクされたサービスが参照するテーブルの名前。 | シンクの場合は Yes、ソースの場合は No |
 
 **データセットのプロパティの例**
@@ -118,8 +118,8 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを、次の値に設定する必要があります:**AzureDataExplorerSource** | [はい] |
-| query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | [はい] |
+| type | コピー アクティビティのソースの **type** プロパティを、次の値に設定する必要があります:**AzureDataExplorerSource** | はい |
+| query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | はい |
 | queryTimeout | クエリ要求がタイムアウトするまでの待機時間。既定値は 10 分 (00:10:00)、許容される最大値は 1 時間 (01:00:00) です。 | いいえ  |
 
 **例:**
@@ -161,7 +161,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | [はい] |
+| type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
 | ingestionMappingName | Kusto テーブルで事前作成済みの [csv マッピング](/azure/kusto/management/mappings#csv-mapping)の名前。 ソースから Azure Data Explore に列をマップするには、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md)も使用できます。 | いいえ  |
 
 **例:**
