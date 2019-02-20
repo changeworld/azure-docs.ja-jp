@@ -31,8 +31,8 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | | | | 
 | **自動収集の対象**        |                 |                   |               
 | &bull; 要求                     | はい             | はい               | 
-| &bull; 例外                   | はい             | [はい]               | 
-| &bull; パフォーマンス カウンター         | [はい]             |                   |
+| &bull; 例外                   | はい             | はい               | 
+| &bull; パフォーマンス カウンター         | はい             |                   |
 | &bull; 依存関係                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | はい               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | はい               | 
@@ -40,8 +40,8 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | はい               | 
 | | | | 
 | **サポートされる機能**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | はい             | [はい]               | 
-| &nbsp;&nbsp;&nbsp;&mdash; コントロール チャネルの保護|                 | [はい]               | 
+| &bull; QuickPulse/LiveMetrics       | はい             | はい               | 
+| &nbsp;&nbsp;&nbsp;&mdash; コントロール チャネルの保護|                 | はい               | 
 | &bull; サンプリング                     | はい             | はい               | 
 | &bull; ハートビート                   |                 | はい               | 
 | | | | 
@@ -50,7 +50,7 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
 | **構成可否**                      |                   |                   |           
-| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | [はい]                   | 
+| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
 
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
