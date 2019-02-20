@@ -666,7 +666,7 @@ ms.locfileid: "55509917"
 | logDefinitions | いいえ  | 
 | logprofiles | いいえ  | 
 | logs | いいえ  | 
-| metricAlerts | [はい] |
+| metricAlerts | はい |
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
 | Query | いいえ  | 
@@ -685,7 +685,7 @@ ms.locfileid: "55509917"
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| IoTApps | [はい] | 
+| IoTApps | はい | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | リソースの種類 | タグのサポート |
