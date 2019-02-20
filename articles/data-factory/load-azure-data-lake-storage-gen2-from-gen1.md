@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーする
-description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーします
+title: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
+description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーします
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 40cf8dcf6729d577c4fff694b0380833fccb142d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: da42e0bf86aca571fb26367f18bbf07f90f5531b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679360"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884615"
 ---
-# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーする
+# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
-Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 現在 Azure Data Lake Storage Gen1 を使用している場合、Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーすることで、Gen2 の新機能を評価できます。
 
@@ -92,7 +92,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2 (Preview)]\(Azure Data Lake Storage Gen2 (プレビュー)\)** を選択して、**[続行]** を選択します。
+7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2]** を選択して、**[続行]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 

@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755664"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110168"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
 
@@ -53,7 +53,7 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
 ## <a name="create-a-key-vault-to-store-your-keys"></a>キーを格納する Key Vault を作成する
 これで、クライアント アプリの構成が完了したので、アプリケーション ID の Key Vault を作成し、ユーザーおよびアプリケーションが資格情報コンテナーの機密情報 (Always Encrypted キー) にアクセスすることを許可するアクセス ポリシーを構成できます。 新しい列のマスター キーを作成したり、SQL Server Management Studio で暗号化を設定したりするには、*create* *get* *list* *sign* *verify* *wrapKey*、および *unwrapKey* 権限が必要です。
 
-次のスクリプトを実行して、Key Vault をすばやく作成できます。 これらのコマンドレットの詳細、および Key Vault の作成と構成の詳細については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
+次のスクリプトを実行して、Key Vault をすばやく作成できます。 これらのコマンドレットの詳細、および Key Vault の作成と構成の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-overview.md)」をご覧ください。
 
 ```powershell
     $subscriptionName = '<your Azure subscription name>'

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462462"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118226"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
@@ -30,6 +30,7 @@ ms.locfileid: "55462462"
 
 - アラート ルールの[クロス ワークスペース ログ検索](../log-query/cross-workspace-query.md)を行い、Log Analytics ワークスペースや Application Insights アプリなどの外部リソースまで拡張する機能
 - クエリでのグループ化に複数のフィールドを使用するとき、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用すると、Azure portal での集計フィールドを指定できます
+- [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して作成されたログ アラートには、最大 48 時間の期間を定義でき、以前より長い期間でデータをフェッチできます
 - 単一リソースとして 1 回でアラート ルールを作成でき、[従来の Log Analytics Alert API](api-alerts.md) のように 3 レベルのリソースを作成する必要はありません
 - Azure のクエリ ベースのログ アラートのすべてのバリエーションに対する 1 つのプログラム インターフェイス - 新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) は、Log Analytics と Application Insights のルールを管理するために使用できます
 - ログ アラートのすべての新機能と将来の開発は、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でのみ利用できます
@@ -57,6 +58,13 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 }
 ```
 
+この API には、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインからアクセスすることもできます。 下に示すように、サンプル PUT 呼び出しで ARMclient ツールを使用して、特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えます。
+
+```PowerShell
+$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
+```
+
 Log Analytics ワークスペース内のすべてのアラート ルールが新しい [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用するように正常に切り替えられた場合、次の応答が表示されます。
 
 ```json
@@ -70,6 +78,12 @@ Log Analytics ワークスペース内のすべてのアラート ルールが�
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+```
+
+[ARMClient](https://github.com/projectkudu/ARMClient)ツールで、PowerShell コマンドラインを使用して上記を実行するには、下のサンプルを参照してください。
+
+```PowerShell
+armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
 指定した Log Analytics ワークスペースが [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のみを使用するように切り替えられている場合、応答の JSON は次のようになります。

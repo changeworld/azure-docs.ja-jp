@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 60c4b22fb34a66a0ff68db26030be0e0ea3c0066
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470250"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113772"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge のシステム要件 (プレビュー)
 
@@ -47,13 +47,15 @@ Data Box Edge のシステム要件は次のとおりです。
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="port-configuration-for-data-box-edge"></a>Data Box Edge のポート構成
+## <a name="networking-port-requirements"></a>ネットワーク ポートの要件
+
+### <a name="port-requirements-for-data-box-edge"></a>Data Box Edge ポートの要件
 
 SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Data Box Edge デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-## <a name="port-configuration-for-iot-edge"></a>IoT Edge のポート構成
+### <a name="port-requirements-for-iot-edge"></a>IoT Edge ポートの要件
 
 Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミスの Edge デバイスから Azure クラウドへのアウトバウンド通信が許可されています。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュ ダウンする必要がある特定のシナリオのみです (たとえば、クラウドからデバイスへのメッセージング)。
 
@@ -80,18 +82,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ### <a name="url-patterns-for-gateway-feature"></a>ゲートウェイ機能の URL パターン
 
-|    URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    コンポーネントまたは機能                                                                           |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Edge サービス<br>Azure Service Bus<br>認証サービス                           |
-|    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    デバイスのアクティブ化                                                                                    |
-|    http://crl.microsoft.com/pki/\*<br>http://www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    証明書の失効                                                                               |
-|    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Azure ストレージ アカウントと監視                                                                |
-|    http://windowsupdate.microsoft.com<br>http://\*.windowsupdate.microsoft.com<br>https://\*.windowsupdate.microsoft.com<br>http://\*.update.microsoft.com<br>https://\*.update.microsoft.com<br>http://\*.windowsupdate.com<br>http://download.microsoft.com<br>http://\*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://\*.ws.microsoft.com<br>https://\*.ws.microsoft.com<br>http://\*.mp.microsoft.com |    Microsoft Update サーバー                                                                             |
-|    http://\*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                                          |    Akamai CDN                                                                                           |
-|    https://\*.partners.extranet.microsoft.com/\*                                                                                                                                                                                                                                                                                                                                                                                                                    |    サポート パッケージ                                                                                      |
-|    http://\*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    Windows のテレメトリ サービス (「顧客満足度及び診断テレメトリのための更新プログラム」を参照)      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                         |
-
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
 ### <a name="url-patterns-for-compute-feature"></a>コンピューティング機能の URL パターン
 
@@ -107,4 +98,4 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ## <a name="next-step"></a>次のステップ
 
-* [Azure Data Box Edge をデプロイする](data-box-Edge-deploy-prep.md)
+- [Azure Data Box Edge をデプロイする](data-box-Edge-deploy-prep.md)

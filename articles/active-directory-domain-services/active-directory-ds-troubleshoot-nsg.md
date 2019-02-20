@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181896"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112498"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
@@ -36,7 +36,7 @@ ms.locfileid: "55181896"
 2. テーブルから、マネージド ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
 3. 左側のウィンドウの **[設定]** の下で、**[受信セキュリティ規則]** をクリックします。
 4. 現在の規則を確認し、どのルールが[これらのポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスをブロックしているか確認します
-5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または[準拠している新しい NSG の作成](#create-a-nsg-for-azure-ad-domain-services-using-powershell)方法は以下のとおりです
+5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または準拠している新しい NSG の作成方法は以下のとおりです
 
 ## <a name="sample-nsg"></a>NSG のサンプル
 次の表では、マネージド ドメインのセキュリティ保護を維持しながら、Microsoft が情報を監視、管理、更新できるようにする、NSG の例を示します。

@@ -4,16 +4,16 @@ description: Azure Automation Runbook のエラーをトラブルシューティ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1500fc5826b50e97e7fd51d18e672933275a9533
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468201"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991295"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -172,6 +172,32 @@ while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout
 
 $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
+
+### <a name="get-serializationsettings"></a>シナリオ:ジョブ ストリームで get_SerializationSettings メソッドについてのエラーが表示される
+
+#### <a name="issue"></a>問題
+
+ジョブ ストリームで、次のメッセージと共に Runbook のエラーが表示されます。
+
+```
+Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
+'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
+'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
+does not have an implementation.
+At line:16 char:1
++ Connect-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Connect-AzureRmAccount], TypeLoadException
+    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、Runbook で AzureRM と Az の両方のコマンドレットを使用することで発生します。 `AzureRM` のインポート前に `Az` をインポートすると発生します。
+
+#### <a name="resolution"></a>解決策
+
+Az と AzureRM のコマンドレットは同じ Runbook にインポートして使用できません。Azure Automation での Az のサポートに関する詳細については、[Azure Automation での Az モジュールのサポート](../az-modules.md)に関するページを参照してください。
 
 ### <a name="task-was-cancelled"></a>シナリオ:Runbook がエラーで失敗:タスクはキャンセルされました
 

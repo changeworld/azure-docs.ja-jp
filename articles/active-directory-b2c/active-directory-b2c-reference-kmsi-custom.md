@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812305"
+ms.locfileid: "55870964"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -154,7 +154,7 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 
     **SessionExpiryInSeconds** の値は、SSO セッションの有効期限の時間を表します。 この値は、KMSI のセッションが期限切れかどうかを確認するために、Azure AD B2C によって内部的に使用されます。 **KeepAliveInDays** の値は、Web ブラウザーでの SSO Cookie の Expires/Max-Age の値を決定します。 **SessionExpiryInSeconds** とは異なり、**KeepAliveInDays** はブラウザーを閉じるときに Cookie がクリアされるのを防ぐために使用されます。 ユーザーは、SSO セッション Cookie が存在し (**KeepAliveInDays** によって制御)、有効期限 (**SessionExpiryInSeconds** によって制御) が切れていない場合にのみ、自動的にサインインできます。 
     
-    ユーザーがサインアップおよびサインイン ページで **[サインインしたままにする]** を有効にしていない場合は、**SessionExpiryInSeconds** で指定された時間が経過するか、ブラウザーを閉じると、セッションの有効期限が切れます。 ユーザーが **[サインインしたままにする]** を有効にしている場合は、**KeepAliveInDays** の値が **SessionExpiryInSeconds** の値より優先され、セッションの有効期限が示されます。 ユーザーは、ブラウザーを閉じて再度開いても、**KeepAliveInDays** の時間内であれば、引き続き自動的にサインインできます。 次の例に示すように、**KeepAliveInDays** の値は比較的長い期間 (7 日間) に設定できますが、**SessionExpiryInSeconds** の値は短期間 (1200 秒) に設定することをお勧めします。
+    ユーザーがサインアップおよびサインイン ページで **[サインインしたままにする]** を有効にしていない場合は、**SessionExpiryInSeconds** で指定された時間が経過するか、ブラウザーを閉じると、セッションの有効期限が切れます。 ユーザーが **[サインインしたままにする]** を有効にしている場合は、**KeepAliveInDays** の値が **SessionExpiryInSeconds** の値より優先され、セッションの有効期限が示されます。 ユーザーがブラウザーを閉じて再度開いた場合でも、**KeepAliveInDays** の時間内であれば、引き続き自動的にサインインできます。 次の例に示すように、**KeepAliveInDays** の値は比較的長い期間 (7 日間) に設定できますが、**SessionExpiryInSeconds** の値は短期間 (1200 秒) に設定することをお勧めします。
 
     ```XML
     <RelyingParty>

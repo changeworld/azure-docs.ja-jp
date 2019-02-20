@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486896"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997070"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
@@ -24,8 +24,8 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 
 1. [サンプルの Excel ファイル](https://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。 
  
-> [!NOTE]
-> ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
+    > [!NOTE]
+    > ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
 
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    
@@ -37,7 +37,7 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
    
     ![[予測] セクション][02]
 
-Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
+Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 
 Web サービスの API キーを取得します。 取得元は、クラシック Machine Learning Web サービスを発行したか、新しい Machine Learning Web サービスを発行したかによって異なります。
 
@@ -65,7 +65,7 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 ## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
 
-1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
+1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 4. Excel で、**[Web サービス]** セクションに移動します (**[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。

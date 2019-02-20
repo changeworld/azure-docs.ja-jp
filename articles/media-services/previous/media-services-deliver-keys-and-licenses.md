@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bb64aff27aaacc3523552beb9eada12bdeb37ca8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366371"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995715"
 ---
-# <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する 
 
 Azure Media Services を使用すると、コンテンツの取り込み、エンコード、保護の追加、およびストリーミングを行うことができます。 詳細については、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」をご覧ください。 お客様によっては、ライセンスまたはキーの配信のみに Media Services を使用し、エンコード、暗号化、ストリーミングにはオンプレミスのサーバーを使用する場合があります。 この記事では、Media Services を使用して PlayReady または Widevine のライセンスを配信するが、残りの処理はオンプレミスのサーバーで行う方法について説明します。 
 

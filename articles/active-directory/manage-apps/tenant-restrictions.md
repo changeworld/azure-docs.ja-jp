@@ -3,9 +3,8 @@ title: テナントを制限してクラウド アプリへのアクセスを管
 description: テナント制限を使用して、Azure AD テナントに基づいてアプリにアクセスできるユーザーを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: yossib
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: richagi
-ms.openlocfilehash: d6030c2bf169d74959279b9c05298db90138a94f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2dc03b329ce8a4b42f44b958aee96654dafb098
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163094"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197744"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -89,7 +89,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 ### <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス
 
-たとえば、Contoso ネットワーク上のユーザーが、Outlook Online などの共有 SaaS アプリケーションの Fabrikam インスタンスにアクセスしようとしているとします。 Fabricam が Contoso インスタンスの許可されていないテナントの場合、ユーザーには次のページが表示されます。
+たとえば、Contoso ネットワーク上のユーザーが、Outlook Online などの共有 SaaS アプリケーションの Fabrikam インスタンスにアクセスしようとしているとします。 Fabrikam が Contoso インスタンスの許可されていないテナントである場合は、ユーザーに次のページが表示されます。
 
 ![許可されていないテナントのユーザーに対してアクセスが拒否されたことを示すページ](./media/tenant-restrictions/end-user-denied.png)
 

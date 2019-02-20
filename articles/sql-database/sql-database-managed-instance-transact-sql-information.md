@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734608"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894311"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -27,7 +27,7 @@ ms.locfileid: "55734608"
 
 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。 <a name="Differences"></a>
 - [Always On](#always-on-availability)と[バックアップ](#backup)の相違点を含む[可用性](#availability)、
-- [監査](#auditing)、[証明書](#certificates)、[資格情報](#credentials)、[暗号化プロバイダー](#cryptographic-providers)、[ログイン/ユーザー](#logins--users)、[サービス キーとサービス マスター キー](#service-key-and-service-master-key)の相違点を含む[セキュリティ](#security)、
+- [監査](#auditing)、[証明書](#certificates)、[資格情報](#credential)、[暗号化プロバイダー](#cryptographic-providers)、[ログイン/ユーザー](#logins--users)、[サービス キーとサービス マスター キー](#service-key-and-service-master-key)の相違点を含む[セキュリティ](#security)、
 - [バッファー プール拡張機能](#buffer-pool-extension)、[照合順序](#collation)、[互換性レベル](#compatibility-levels)、[データベース ミラーリング](#database-mirroring)、[データベース オプション](#database-options)、[SQL Server エージェント](#sql-server-agent)、[テーブル オプション](#tables)の相違点を含む[構成](#configuration)、
 - [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分散トランザクション](#distributed-transactions)、 [拡張イベント](#extended-events)、[外部ライブラリ](#external-libraries)、[Filestream と Filetable](#filestream-and-filetable)、[フルテキスト セマンティック検索](#full-text-semantic-search)、[リンク サーバー](#linked-servers)、[PolyBase](#polybase)、[レプリケーション](#replication)、[RESTORE](#restore-statement)、[Service Broker](#service-broker)、[ストアド プロシージャ、関数、およびトリガー](#stored-procedures-functions-triggers)を含む[機能](#functionalities)、
 - [マネージド インスタンスで動作が異なる機能](#Changes)
@@ -74,13 +74,13 @@ T-SQL を使用したバックアップについては、[BACKUP](https://docs.m
 
 Azure SQL Database のデータベースと SQL Server のデータベースにおける監査の主な相違点は、次のとおりです。
 
-- Azure SQL Database でマネージド インスタンスのデプロイ オプションを使用すると、監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ログ ファイルが保存されます。
+- Azure SQL Database でマネージド インスタンスのデプロイ オプションを使用すると、監査はサーバー レベルで機能し、`.xel` ログ ファイルを Azure Blob Storage に格納します。
 - Azure SQL Database で単一データベースとエラスティック プールのデプロイ オプションを使用すると、監査はデータベース レベルで機能します。
 - オンプレミス/仮想マシンの SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
   
-マネージド インスタンスの XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログはサポートされていません。
+マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログはサポートされていません。
 
-Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次のとおりです。
+Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 
 - 新しい `TO URL` 構文が用意されています。この構文を使用して、`.xel` ファイルを配置する Azure blob Storage コンテナーの URL を指定できます。
 - マネージド インスタンスは Windows ファイル共有にアクセスできないため、`TO FILE` 構文はサポートされていません。
@@ -170,7 +170,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 - インメモリ オブジェクトは、General Purpose サービス レベルではサポートされていません。  
 - インスタンスあたり 280 ファイル (データベースあたり最大 280 ファイル) の制限があります。 データ ファイルとログ ファイルの両方がこの制限にカウントされます。  
 - filestream データを含むファイル グループをデータベースに含めることはできません。  .bak に `FILESTREAM` データが含まれていると、復元は失敗します。  
-- すべてのファイルが Azure Premium Storage に配置されます。 Azure Premium Storage ディスクの場合と同様に、ファイルあたりの IO とスループットは個々のファイルのサイズによって異なります。 [Azure Premium ディスクのパフォーマンス](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)に関するセクションをご覧ください。  
+- すべてのファイルが Azure Blob Storage に配置されます。 ファイルあたりの IO およびスループットは、個々のファイルのサイズによって異なります。  
 
 #### <a name="create-database-statement"></a>CREATE DATABASE ステートメント
 
@@ -275,10 +275,10 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ### <a name="bulk-insert--openrowset"></a>一括挿入/openrowset
 
-マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。
+マネージド インスタンスはファイル共有や Windows フォルダーにアクセスできないため、ファイルは Azure Blob Storage からインポートする必要があります。
 
-- Azure Blob Storage からファイルをインポートするときは、`BULK INSERT` コマンドで `DATASOURCE` が必須になります。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
-- Azure Blob Storage からファイルの内容を読み取るときは、`OPENROWSET` 関数で `DATASOURCE` が必須になります。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- Azure Blob Storage からのファイルのインポート中、`BULK INSERT` コマンドには `DATASOURCE` が必要です。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
+- Azure Blob Storage からのファイルの内容を読み取る場合、`OPENROWSET` 関数には `DATASOURCE` が必要です。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 
 ### <a name="clr"></a>CLR
 
@@ -305,7 +305,7 @@ MSDTC も[エラスティック トランザクション](sql-database-elastic-t
 
 XEvents の一部の Windows 固有のターゲットはサポートされていません。
 
-- `etw_classic_sync target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[etw_classic_sync ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target)」をご覧ください。
+- `etw_classic_sync target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[etw_classic_sync ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)」をご覧ください。
 - `event_file target` はサポートされていません。 Azure Blob Storage に `.xel` ファイルを保存します。 「[event_file ターゲット](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)」をご覧ください。
 
 ### <a name="external-libraries"></a>外部ライブラリ
@@ -365,7 +365,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - ソース  
-  - サポートされているオプションは、`FROM URL` (Azure Blob Storage) だけです。
+  - サポートされているオプションは `FROM URL` (Azure Blob Storage) だけです。
   - `FROM DISK`/`TAPE`/バックアップ デバイスはサポートされていません。
   - バックアップ セットはサポートされていません。
 - `WITH` オプションはサポートされていません (`DIFFERENTIAL`、`STATS` などは使用不可)。

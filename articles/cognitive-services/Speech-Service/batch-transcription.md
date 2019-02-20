@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228663"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867122"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
@@ -49,7 +49,7 @@ Batch 文字起こし API では、次の形式がサポートされています
 > [!NOTE]
 > Batch 文字起こし API を使用するには、S0 キー (有料レベル) が必要です。 無料の (f0) キーでは使用できません。
 
-ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 次の JSON サンプルは、チャネルの出力を示したものです。これには、不適切な単語フィルターと句読点モデルを設定するためのプロパティが含まれています。
+ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 次の JSON は、不適切な単語のフィルター、句読点モデル、および単語レベルのタイムスタンプを設定するためのプロパティが含まれる、サンプル要求を示しています
 
 ```json
 {
@@ -60,7 +60,8 @@ Batch 文字起こし API では、次の形式がサポートされています
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 この記事のサンプルは、[GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) で見つけることができます。
 
 > [!NOTE]
-> 通常、オーディオの文字起こしには、オーディオ ファイルの長さにオーバーヘッドの 2 ～ 3 分を加えた時間が必要です。
+> バッチによるオーディオ文字起こしについては、時間の SLA は提供されません。 ただし、文字起こしジョブが (実行状態で) 処理されるときには、一般に実時間よりも高速に処理されます。
 
 ## <a name="next-steps"></a>次の手順
 

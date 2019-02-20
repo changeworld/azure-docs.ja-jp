@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f785e9e540af01b74678cf75159775cd2888e09e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815649"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959580"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway の制限 (プレビュー)
 
@@ -26,8 +26,7 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway サービスの制限
 
-- このリリースでは、米国、EU、アジア太平洋地域の特定のリージョンでのみサービスが利用可能です。 詳細については、利用可能なリージョンに関する記事をご覧ください。 ストレージ アカウントは、デバイスがデプロイされたリージョンに物理的に最も近い場所にする必要があります (サービス地域と異なる場合があります)。
-- Data Box Gateway リソースの別のサブスクリプションまたはリソース グループへの移動は、サポートされていません。 詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
+[!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
 ## <a name="data-box-gateway-device-limits"></a>Data Box Gateway デバイスの制限
 
@@ -37,48 +36,24 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 |---|---|
 |いいえ。 デバイスあたりのファイル数 |1 億 <br> 制限は、2 TB のディスク領域ごとに最大 2500 万ファイルであり、上限は 1 億です |
 |いいえ。 デバイスあたりの共有数 |24 |
+|いいえ。 コンテナーあたりの共有数 |1 |
 |1 つの共有に書き込まれる最大サイズ ファイル|2 TB の仮想デバイスの場合、最大ファイル サイズは 500 GB です。 <br> 最大ファイル サイズは、最大 5 TB に達するまで、前の比率でデータ ディスク のサイズと増加します。 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 
-ここでは、Data Box Gateway/Data Box Edge サービスに適用される Azure Storage サービスの制限および Azure Files、Azure ブロック BLOB、Azure ページ BLOB に必要な名前付け規則について説明します。 ストレージの制限を十分に確認し、すべての推奨事項に従ってください。
-
-Azure Storage サービスの制限と共有、コンテナー、およびファイルの名前付けのベスト プラクティスに関する最新情報については、以下のページをご覧ください。
-
-- [Naming and referencing containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (コンテナーの名前付けと参照)
-- [Naming and referencing shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
-- [Block blobs and page blob conventions](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (ブロック BLOB とページ BLOB に関する規則)
-
-> [!IMPORTANT]
-> Azure Storage サービスの制限を超えているファイル/ディレクトリ、または Azure Files/BLOB の名前付け規則に準拠していないファイル/ディレクトリは、Data Box Gateway/Data Box Edge サービスを通じて Azure Storage に取り込まれません。
+[!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
 ## <a name="data-upload-caveats"></a>データのアップロードに関する注意事項
 
-Azure にデータを移動する際には、次の注意事項がデータに適用されます。
-
-- 複数のデバイスが同じコンテナーに書き込まないようにすることをお勧めします。
-- コピー対象のオブジェクトと同じ名前の既存の Azure オブジェクト (BLOB やファイルなど) がクラウド内にある場合、デバイスはクラウド内のファイルを上書きします。
-- 共有フォルダーの下に作成される空のディレクトリ階層 (ファイルを含まない) は、BLOB コンテナーにアップロードされません。
-- デバイス サイズより大きいファイルをコピーする場合、*Robocopy* または *rsync* を使用して、エラーがないことを確認することをお勧めします。
+[!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Azure ストレージ アカウント サイズとオブジェクト サイズの制限
 
-ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限の最新情報については、「[Azure Blob Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets)」および「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets)」をご覧ください。
-
-| Azure ストレージ アカウントにコピーするデータのサイズ                      | 既定の制限          |
-|---------------------------------------------------------------------|------------------------|
-| ブロック BLOB とページ BLOB                                            | ストレージ アカウントあたり 500 TB|
-
+[!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限
 
-ここでは、書き込むことのできる Azure オブジェクトのサイズを示します。 アップロードするすべてのファイルがこれらの制限に準拠していることを確認してください。
-
-| Azure オブジェクトの種類 | 既定の制限                                             |
-|-------------------|-----------------------------------------------------------|
-| ブロック BLOB        | 8 TB 以下                                                 |
-| ページ BLOB         | 1 TB (テラバイト) <br> ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトがアラインされます。 |
-
+[!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
 ## <a name="next-steps"></a>次の手順
 

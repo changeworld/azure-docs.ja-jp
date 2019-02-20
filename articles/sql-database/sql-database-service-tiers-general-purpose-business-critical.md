@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: bdb4db2d1a9447e8e328728288c1cf425c65a988
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/13/2019
+ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511830"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243831"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database で使用されているアーキテクチャ モデルは 3 つあります。
+
 - ほとんどの一般的なワークロード向けに設計された [General Purpose](sql-database-service-tier-general-purpose.md)。
 - 1 つの読み取り可能レプリカを使用する低待機時間ワークロード向けに設計された [Business Critical](sql-database-service-tier-business-critical.md)。
 - 複数の読み取り可能レプリカを使用する非常に大規模なデータベース (最大 100 TB) 向けに設計された [Hyperscale](sql-database-service-tier-hyperscale.md)。
@@ -29,7 +30,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 この記事では、仮想コアベースの購入モデルにおける汎用サービス レベルと Business Critical サービス レベルに対するストレージおよびバックアップに関する考慮事項について説明します。
 
 > [!NOTE]
-> 仮想コアベースの購入モデルにおけるハイパースケール サービス レベルの詳細については、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)に関するページを参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-service-tiers.md)に関する記事をご覧ください。
+> 仮想コアベースの購入モデルにおけるハイパースケール サービス レベルの詳細については、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)に関するページを参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
 
 ## <a name="data-and-log-storage"></a>データとログのストレージ
 
@@ -40,8 +41,8 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 - 必要な単一データベース サイズ (MDF のサイズ) を構成するとき、LDF をサポートするために、その 30% の追加ストレージが自動的に追加されます
 - Managed Instance でのストレージ サイズは、32 GB の倍数で指定する必要があります。
 - 10 GB と、サポートされている最大サイズの間で、任意の単一データベース サイズを選択できます
-  - Standard Storage の場合は、10 GB の増分でサイズを増減します
-  - Premium Storage の場合は、250 GB の増分でサイズを増減します
+  - 標準または汎用サービス レベルのストレージの場合は、10 GB 単位でサイズを増減します
+  - Premium または Business Critical レベルのストレージの場合は、250 GB 単位でサイズを増減します
 - General Purpose サービス レベルでは、`tempdb` には、接続されている SSD を使用します。このストレージ コストは、仮想コア価格に含まれます。
 - Business Critical サービス レベルでは、`tempdb` は、接続されている SSD を MDF ファイルおよび LDF ファイルと共有します。tempDB ストレージ コストは、仮想コア価格に含まれます。
 

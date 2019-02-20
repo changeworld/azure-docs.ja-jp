@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: aa9f3b42bbbe8255be328240d26ed4b8740cc5f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507814"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958492"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS サービス レベル (プレビュー) の廃止 - 移行のオプション
 
@@ -70,10 +70,10 @@ Microsoft の価格およびドキュメントと共にこの記事のガイダ�
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|
-|Premium RS 1|(プレビュー) ハイパースケール 1 仮想コア (Gen 4) または Business Critical 1 仮想コア (Gen 4)|Premium 1|
-|Premium RS 2|(プレビュー) ハイパースケール 2 仮想コア (Gen 4) または Business Critical 2 仮想コア (Gen 4)|Premium 2|
-|Premium RS 4|(プレビュー) ハイパースケール 4 仮想コア (Gen 4) または Business Critical 4 仮想コア (Gen 4)|Premium 4
-|Premium RS 6|(プレビュー) ハイパースケール 6 仮想コア (Gen 4) または Business Critical 6 仮想コア (Gen 4)|Premium 6|
+|Premium RS 1|(プレビュー) ハイパースケール 1 仮想コア (Gen4) または Business Critical 1 仮想コア (Gen4)|Premium 1|
+|Premium RS 2|(プレビュー) ハイパースケール 2 仮想コア (Gen4) または Business Critical 2 仮想コア (Gen4)|Premium 2|
+|Premium RS 4|(プレビュー) ハイパースケール 4 仮想コア (Gen4) または Business Critical 4 仮想コア (Gen4)|Premium 4
+|Premium RS 6|(プレビュー) ハイパースケール 6 仮想コア (Gen4) または Business Critical 6 仮想コア (Gen4)|Premium 6|
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|

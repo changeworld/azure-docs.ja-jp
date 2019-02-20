@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468871"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116846"
 ---
 # <a name="choose-the-right-consistency-level"></a>適切な整合性レベルの選択 
 
@@ -33,6 +33,8 @@ ms.locfileid: "55468871"
 - セッションの整合性で提供されるよりも厳密でない整合性の保証を必要とする場合は、一貫性のあるプレフィックスの整合性レベルを使用することをお勧めします。
 
 - 最高レベルの可用性と最も短い待機時間が必要な場合は、最終的な整合性レベルを使用します。
+
+- パフォーマンスを損なうことなく、さらに高いデータの耐久性が必要な場合は、アプリケーション層でカスタムの整合性レベルを作成できます。 詳細については、[アプリケーションにカスタムの同期を実装する方法](how-to-custom-synchronization.md)に関するページを参照してください。
 
 ## <a name="cassandra-mongodb-and-gremlin-api"></a>Cassandra、MongoDB、Gremlin API
 

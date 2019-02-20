@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker で作成したナレッジ ベースを新しいナレッジ ベースに移動します。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 73f355a6e8c9373a5c31dd7cfebd4455aa324302
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809744"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245917"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
@@ -56,7 +56,7 @@ ms.locfileid: "55809744"
     この時点で、ナレッジ ベースのすべてのコンテンツ、つまり、質問、回答、メタデータと、ソース ファイルの名前、URL が新しいナレッジ ベースにインポートされています。 
 
 ## <a name="chat-logs-and-alterations"></a>チャットログと変更
-変更 (シノニム) は自動的にはインポートされません。 古いナレッジから変更をエクスポートするには [V2 API](https://aka.ms/qnamaker-v2-apis) を使用し、新しいナレッジ ベースに変更を移動するには [V4 API](https://aka.ms/qnamaker-v4-apis) を使用します。
+大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 古いナレッジから変更をエクスポートするには [V2 API](https://aka.ms/qnamaker-v2-apis) を使用し、新しいナレッジ ベースに変更を移動するには [V4 API](https://aka.ms/qnamaker-v4-apis) を使用します。
 
 チャットログを移行することはできません。新しいナレッジ ベースでは Application Insights を使ってチャットログが格納されているためです。 
 

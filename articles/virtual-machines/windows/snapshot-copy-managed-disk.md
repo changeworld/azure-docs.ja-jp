@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 059c90df16a46c2575635d7c729ec563ef1130c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1015e6774dac1258820e3ca4b3d06786046a8554
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459725"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980858"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -42,9 +42,9 @@ ms.locfileid: "55459725"
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
+次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
 
-始める前に、AzureRM.Compute PowerShell モジュールの最新バージョン (バージョン 5.7.0 以降) があることを確認してください。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) を実行して Azure との接続を作成することも必要です。
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 1. パラメーターを設定します。 
 
@@ -58,7 +58,7 @@ $snapshotName = 'mySnapshot'
 2. VM を取得します。
 
  ```azurepowershell-interactive
-$vm = get-azurermvm `
+$vm = get-azvm `
    -ResourceGroupName $resourceGroupName 
    -Name $vmName
 ```
@@ -66,7 +66,7 @@ $vm = get-azurermvm `
 3. スナップショットの構成を作成します。 この例では、スナップショットは OS ディスクのものです。
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig 
+$snapshot =  New-AzSnapshotConfig 
    -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
    -Location $location 
    -CreateOption copy
@@ -78,7 +78,7 @@ $snapshot =  New-AzureRmSnapshotConfig
 4. スナップショットを取得します。
 
  ```azurepowershell-interactive
-New-AzureRmSnapshot 
+New-AzSnapshot 
    -Snapshot $snapshot 
    -SnapshotName $snapshotName 
    -ResourceGroupName $resourceGroupName 

@@ -14,12 +14,13 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: 708ec047a1c9883e34f2e255cd7a0f1237ded2bf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4a8311e359b5afa84020227de309e8b153a7ccda
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096876"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238064"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -136,7 +137,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![[アプリの登録] を表示する](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
-アプリの登録設定が **[いいえ]** に設定されている場合は、[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)だけがアプリを登録できます。 アカウントがユーザー ロールに割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、管理者に自分をグローバル管理者ロールに割り当てるか、またはユーザーがアプリを登録できるようにするよう依頼してください。
+アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)と[ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)に関するページを参照してください。 アカウントがユーザー ロールに割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、管理者に、アプリの登録のすべての側面を作成および管理できるいずれかの管理者ロールに自分を割り当てるか、ユーザーがアプリを登録できるようにするよう依頼してください。
 
 ### <a name="check-azure-subscription-permissions"></a>Azure サブスクリプションのアクセス許可を確認する
 

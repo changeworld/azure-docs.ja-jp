@@ -1,26 +1,18 @@
 ---
-title: 'クロスプレミス接続の計画と設計: Azure VPN Gateway| Microsoft Docs'
+title: 'クロスプレミス接続の計画と設計: Azure VPN Gateway | Microsoft Docs'
 description: クロスプレミス、ハイブリッド、および VNet 間接続のための VPN ゲートウェイの計画と設計について説明します。
 services: vpn-gateway
-documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 07/27/2017
-ms.author: cherylmc
-ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yushwang
+ms.openlocfilehash: 7802061ba09a30ca34ed3804ace846118c5edb9b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23125480"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235367"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>VPN ゲートウェイの計画と設計
 
@@ -30,7 +22,7 @@ ms.locfileid: "23125480"
 
 ### <a name="compare"></a>クロスプレミス接続オプション
 
-オンプレミスのサイトを仮想ネットワークに安全に接続するには、サイト間、ポイント対サイト、および ExpressRoute の 3 つのオプションがあります。 利用可能なさまざまなクロスプレミス接続を比較します。 選択するオプションは、次のようなさまざまな考慮事項によって異なります。
+オンプレミスのサイトを仮想ネットワークに安全に接続するには、3 つのオプションがあります。サイト間、ポイント対サイト、および ExpressRoute です。 利用可能なさまざまなクロスプレミス接続を比較します。 選択するオプションは、次のようなさまざまな考慮事項によって異なります。
 
 * ソリューションにどのようなスループットが必要か。
 * セキュリティで保護された VPN 経由のパブリックなインターネットで通信するか、またはプライベートな接続で通信するか。
@@ -83,11 +75,11 @@ VPN Gateway では、ゲートウェイ サブネットと呼ばれる特定の�
 
 #### <a name="local"></a>ローカル ネットワーク ゲートウェイについて
 
-ローカル ネットワーク ゲートウェイは通常、オンプレミスの場所を指します。 クラシック デプロイメント モデルでは、ローカル ネットワーク ゲートウェイはローカル ネットワーク サイトとして参照されます。 ローカル ネットワーク ゲートウェイを構成する場合には、名前とオンプレミス VPN デバイスのパブリック IP アドレスを指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 アドレス プレフィックスは、必要に応じて変更できます。 詳細については、「 [ローカル ネットワーク ゲートウェイ](vpn-gateway-about-vpn-gateway-settings.md#lng)」のセクションを参照してください。
+ローカル ネットワーク ゲートウェイは通常、オンプレミスの場所を指します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル ネットワーク サイトとして参照されます。 ローカル ネットワーク ゲートウェイを構成する場合には、名前とオンプレミス VPN デバイスのパブリック IP アドレスを指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 アドレス プレフィックスは、必要に応じて変更できます。 詳細については、「 [ローカル ネットワーク ゲートウェイ](vpn-gateway-about-vpn-gateway-settings.md#lng)」のセクションを参照してください。
 
 #### <a name="gwtype"></a>ゲートウェイの種類について
 
-トポロジに適したゲートウェイの種類を選択することは重要です。 間違った種類を選択すると、ゲートウェイは正しく動作しません。 ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager のデプロイ モデルに必要な構成設定です。
+トポロジに適したゲートウェイの種類を選択することは重要です。 間違った種類を選択すると、ゲートウェイは正しく動作しません。 ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager デプロイ モデルに必要な構成設定です。
 
 ゲートウェイには、次の種類があります。
 
@@ -136,7 +128,7 @@ VPN デバイスの構成経験が必要です。構成経験がない場合は�
 
 ![Azure VPN Gateway の強制トンネリングの図](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 設計に役立つ詳しい情報については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」と「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」の記事を参照してください。
 

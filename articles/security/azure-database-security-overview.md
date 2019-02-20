@@ -4,7 +4,7 @@ description: この記事では、Azure のデータベース セキュリティ
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584776"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116322"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -114,8 +114,8 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。
 
--   **SQL Server 認証**: 論理 SQL インスタンスを作成すると、SQL Database サブスクライバー アカウントと呼ばれる 1 つのログイン アカウントが作成されます。 このアカウントは、[SQL Server 認証](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (ユーザー名とパスワード) を使用して接続します。 このアカウントは、論理サーバー インスタンスと、そのインスタンスに接続されているすべてのユーザー データベースの管理者です。 サブスクライバー アカウントのアクセス許可を制限することはできません。 これらのアカウントのうち、存在できるのは 1 つだけです。
--   **Azure Active Directory 認証**: [Azure AD 認証](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)は、Azure AD の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 これを使用して、データベース ユーザーの ID を一元的に管理できます。
+-   **SQL Server 認証**:論理 SQL インスタンスを作成すると、SQL Database サブスクライバー アカウントと呼ばれる 1 つのログイン アカウントが作成されます。 このアカウントは、[SQL Server 認証](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (ユーザー名とパスワード) を使用して接続します。 このアカウントは、論理サーバー インスタンスと、そのインスタンスに接続されているすべてのユーザー データベースの管理者です。 サブスクライバー アカウントのアクセス許可を制限することはできません。 これらのアカウントのうち、存在できるのは 1 つだけです。
+-   **Azure Active Directory 認証**:[Azure AD 認証](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)は、Azure AD の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 これを使用して、データベース ユーザーの ID を一元的に管理できます。
 
 ![SQL Database による Azure AD 認証](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,8 +176,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 監査方法は 2 つあります。
 
--   **BLOB の監査**: Azure Blob ストレージにログが書き込まれます。 これは新しい監査方法です。 パフォーマンスが高く、細かなオブジェクト レベルの監査が可能であり、対費用効果が高くなります。
--   **テーブルの監査**: Azure Table Storage にログが書き込まれます。
+-   **BLOB の監査**:ログは Azure Blob Storage に書き込まれます。 これは新しい監査方法です。 パフォーマンスが高く、細かなオブジェクト レベルの監査が可能であり、対費用効果が高くなります。
+-   **テーブルの監査**:Azure Table Storage にログが書き込まれます。
 
 ### <a name="threat-detection"></a>脅威の検出
 

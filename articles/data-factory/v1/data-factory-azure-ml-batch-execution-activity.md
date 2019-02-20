@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081196"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894107"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 
@@ -54,7 +54,7 @@ Data Factory サービスでは、データを移動して変換するデータ 
 Azure Data Factory サービスについては、[Azure Data Factory の概要](data-factory-introduction.md)と [Azure Data Factory を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline.md)に関するページを参照してください。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory と Machine Learning
-Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure Machine Learning Studio Web サービスを呼び出して、データの予測をバッチで行うことができます。 詳細については、「[バッチ実行アクティビティを使用して、Azure Machine Learning Studio Web サービスを呼び出す](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity)」を参照してください。
+Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure Machine Learning Studio Web サービスを呼び出して、データの予測をバッチで行うことができます。 詳細については、「バッチ実行アクティビティを使用して、Azure Machine Learning Studio Web サービスを呼び出す」を参照してください。
 
 時間の経過と共に、Azure Machine Learning Studio スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインから Azure Machine Learning Studio モデルを再トレーニングできます。
 

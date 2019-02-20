@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4536048db4abc25decf1dbf02c75833c570e41af
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818126"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118209"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -992,7 +992,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
 
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-javascript)
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1200,7 +1200,7 @@ JavaScript コードを次に示します。
 
 このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
 
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-python)
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-python)
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-python)
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-python)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-python)
@@ -2288,7 +2288,7 @@ public String cosmosDbQueryById(
     }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+完全な例については、「出力 - C# の例」を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 

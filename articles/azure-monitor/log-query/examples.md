@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics クエリの例 |Microsoft Docs
-description: Kusto 言語を使用した Log Analytics でのクエリの例。
+title: Azure Monitor の Azure Monitor ログ クエリの例 | Microsoft Docs
+description: Data Explorer クエリ言語を使用する Azure Monitor でのログ クエリの例。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885810"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993199"
 ---
-# <a name="log-analytics-query-examples"></a>Log Analytics クエリの例
-この記事には、[Kusto 言語](https://docs.microsoft.com/azure/kusto/query/)を使用して Log Analytics から複数の種類のデータを取得するさまざまな[クエリ](../../azure-monitor/log-query/log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
+# <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
+この記事には、[Data Explorer クエリ言語](https://docs.microsoft.com/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
-これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Log Analytics を利用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)をご覧ください。
+これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
 ## <a name="events"></a>events
 
@@ -170,7 +170,7 @@ NetworkMonitoring
 | distinct Computer
 ```
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 ### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>メモリと CPU を関連付けるためにコンピューターのパフォーマンス レコードを結合する
 次の例は、特定のコンピューターの **perf** レコードを関連付け、平均 CPU と最大メモリの 2 つの時間グラフを作成します。
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>次の手順
 
 - 言語の詳細については、[Kusto 言語リファレンス](/azure/kusto/query)を参照してください。
-- [Log Analytics でのクエリの記述](get-started-queries.md)に関するレッスンをご覧ください。
+- [Azure Monitor でのログ クエリの記述に関するレッスン](get-started-queries.md)を行います。

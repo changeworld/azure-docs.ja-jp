@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Screencast-O-Matic の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Screencast-O-Matic の統合 | Microsoft Docs
 description: Azure Active Directory と Screencast-O-Matic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 20c0acebde232bd50e6e5befed0facc96ee11b4d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040951"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190825"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>チュートリアル: Azure Active Directory と Screencast-O-Matic の統合
+# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory と Screencast-O-Matic の統合
 
 このチュートリアルでは、Screencast-O-Matic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -174,14 +175,14 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-screencast-o-matic-test-user"></a>Screencast-O-Matic テスト ユーザーの作成
 
 このセクションの目的は、Screencast-O-Matic で Britta Simon というユーザーを作成することです。 Screencast-O-Matic では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Screencast-O-Matic にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Screencast-O-Matic クライアント サポート チーム](mailto:support@screencast-o-matic.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Screencast-O-Matic クライアント サポート チーム](mailto:support@screencast-o-matic.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -218,7 +219,7 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Screencast-O-Matic] タイルをクリックすると、自動的に Screencast-O-Matic アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

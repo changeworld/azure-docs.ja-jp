@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database と SQL Data Warehouse の Virtual Network サービス エンドポイントとルール | Microsoft Docs
+title: Azure SQL の単一およびプール データベース用の VNet エンドポイントおよび規則 | Microsoft Docs
 description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 6fdcf0b5baf28aee931307b28e1f161fddaa4d8e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453929"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118379"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Azure SQL の Virtual Network サービス エンドポイントとルールを使用する
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
-*仮想ネットワーク規則*は、Azure [SQL Database](sql-database-technical-overview.md) または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク ルール機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
+*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク ルール機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
 
 > [!IMPORTANT]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 

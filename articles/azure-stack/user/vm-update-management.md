@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768547"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168144"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack の VM の更新と管理
 以下の Azure Automation ソリューション機能を使用すると、Azure Stack を使用してデプロイされている Windows および Linux の VM を管理できます。
@@ -100,4 +100,4 @@ Azure Stack の VM は、Azure VM と共に、スケジュールされた更新�
 Azure Stack の VM の数が多い場合は、[この Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)を使用して、さらに簡単に VM にソリューションをデプロイできます。 このテンプレートは、Microsoft Monitoring Agent 拡張機能を既存の VM にデプロイし、既存の Azure LogAnalytics ワークスペースにそれを追加します。
  
 ## <a name="next-steps"></a>次の手順
-[SQL Server のパフォーマンスを最適化する](azure-stack-sql-server-vm-considerations.md)
+[SQL Server VM のパフォーマンスを最適化する](azure-stack-sql-server-vm-considerations.md)

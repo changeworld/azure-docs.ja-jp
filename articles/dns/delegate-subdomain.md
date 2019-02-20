@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452719"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895482"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS サブドメインを委任する
 
-Azure portal を使用して DNS サブドメインを委任することができます。 たとえば、contoso.com ドメインを所有している場合は、*engineering* というサブドメインを contoso.com ゾーンとは別に管理できる別の別のゾーンに委任できます。
+Azure portal を使用して DNS サブドメインを委任することができます。 たとえば、contoso.com ドメインを所有している場合は、*engineering* というサブドメインを contoso.com ゾーンとは別に管理できる別のゾーンに委任できます。
+
+必要に応じて、[Azure PowerShell](delegate-subdomain-ps.md) を使用して、サブドメインを委任できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure DNS サブドメインを委任するには、まずパブリック ドメインを Azure DNS に委任する必要があります。 ネーム サーバーを委任のために構成する方法については、[Azure DNS へのドメインの委任](./dns-delegate-domain-azure-dns.md)に関するページを参照してください。 ドメインが Azure DNS ゾーンに委任された後は、サブドメインを委任できるようになります。
 
-この記事の例では、contoso.com ドメインを使用します。 これらの手順を使用するときは、実際のドメインに置き換える必要があります。
+> [!NOTE]
+> この記事では、contoso.com を例として使用します。 contoso.com を独自のドメイン名に置き換えてください。
 
 ## <a name="create-a-zone-for-your-subdomain"></a>サブドメインのゾーンを作成する
 
@@ -38,10 +41,13 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 
 ## <a name="note-the-name-servers"></a>ネーム サーバーをメモする
 
-次に、サブドメインの 4 つのネーム サーバーをコピーします。
+次に、engineering サブドメインの 4 つのネーム サーバーをメモします。
 
-1. **engineering** ゾーン ウィンドウで、ゾーンの 4 つのネーム サーバーをメモします。 これらのネーム サーバーは後で使用します。
-2. テストに使用する **A** レコードを作成します。 たとえば、**www** A レコードを作成し、**10.10.10.10** IP アドレスを使用してそれを構成します。
+**engineering** ゾーン ウィンドウで、ゾーンの 4 つのネーム サーバーをメモします。 これらのネーム サーバーは後で使用します。
+
+## <a name="create-a-test-record"></a>テスト レコードを作成する
+
+テストに使用する **A** レコードを作成します。 たとえば、**www** A レコードを作成し、**10.10.10.10** IP アドレスを使用してそれを構成します。
 
 ## <a name="create-an-ns-record"></a>NS レコードの作成
 
@@ -59,10 +65,8 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 nslookup を使用して委任をテストします。
 
 1. PowerShell ウィンドウを開きます。
-2. コマンド プロンプトに「`nslookup www.engineering.<your domain name>.`」と入力します。
+2. コマンド プロンプトに「`nslookup www.engineering.contoso.com.`」と入力します。
 3. アドレス **10.10.10.10** を示す権限のない回答を受け取ります。
-
-
 
 ## <a name="next-steps"></a>次の手順
 

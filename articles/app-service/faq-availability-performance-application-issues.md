@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721565"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108740"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -43,7 +43,7 @@ CPU 使用量が多い一部のシナリオでは、アプリが実際により�
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 
-PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0)」を参照してください。
+PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[Az.Websites](/powershell/module/az.websites)」を参照してください。
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Web アプリのイベント ログを表示するにはどうすればよいですか?
 

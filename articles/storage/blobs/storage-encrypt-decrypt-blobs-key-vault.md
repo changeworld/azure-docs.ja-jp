@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239409"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116101"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに
@@ -43,7 +43,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 4. 暗号化されたデータは、Azure Storage サービスにアップロードされます。
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
-このチュートリアルを続けるには、チュートリアル「[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)」で説明されている以下の手順を実行する必要があります。
+このチュートリアルを続けるには、チュートリアル「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」で説明されている以下の手順を実行する必要があります。
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。

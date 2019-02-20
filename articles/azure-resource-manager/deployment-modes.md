@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: c0875861a90080c649596880804fe6538c04bc51
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497616"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233601"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
 リソースをデプロイするときには、デプロイが増分更新と完全更新のどちらであるかを指定する必要があります。  これら 2 つのモードの主な違いは、テンプレートにないリソース グループの既存のリソースを Resource Manager が処理する方法にあります。 既定のモードは増分です。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+完全デプロイ モードがサポートされるのはルートレベルのテンプレートのみです。 [リンクされたテンプレートまたは入れ子になったテンプレート](resource-group-linked-templates.md)には、増分モードを使用する必要があります。 
 
 ## <a name="incremental-and-complete-deployments"></a>増分デプロイと完全デプロイ
 
@@ -84,7 +84,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-[リンクされたテンプレートまたは入れ子になったテンプレート](resource-group-linked-templates.md)を使用するときは、`mode` プロパティを `Incremental` に設定する必要があります。 完全デプロイ モードがサポートされるのはルートレベルのテンプレートのみです。
+次の例は、増分デプロイ モードに設定された、リンクされたテンプレート セットを示しています。
 
 ```json
 "resources": [

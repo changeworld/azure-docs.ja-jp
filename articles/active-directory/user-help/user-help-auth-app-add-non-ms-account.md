@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55772232"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192134"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft 以外のアカウントを追加する
 2 要素検証のために Microsoft Authenticator アプリに、Google、Facebook、GitHub などの、Microsoft 以外のアカウントを追加します。 Microsoft Authenticator アプリは、2 要素認証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
@@ -55,7 +56,7 @@ ms.locfileid: "55772232"
 4. デバイスのカメラを使用して、PC の **[Set up Authenticator]\(Authenticator の設定\)** ページから QR コードをスキャンします。
 
     >[!Note]
-    >カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
+    >カメラが適切に動作しない場合は、QR コードと URL を手動で入力できます。
 
 5. デバイス上の Microsoft Authenticator アプリの **[アカウント]** ページを調べ、アカウント情報が正しく、6 桁の確認コードが関連付けられていることを確認します。
 
@@ -94,7 +95,7 @@ ms.locfileid: "55772232"
 3. デバイスのカメラを使用して、PC の **[2 要素認証]** ページから QR コードをスキャンします。
 
     >[!Note]
-    >カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
+    >カメラが適切に動作しない場合は、QR コードと URL を手動で入力できます。
 
 4. デバイス上の Microsoft Authenticator アプリの **[アカウント]** ページを調べ、アカウント情報が正しく、6 桁の確認コードが関連付けられていることを確認します。
 
@@ -165,7 +166,7 @@ ms.locfileid: "55772232"
 6. デバイスのカメラを使用して、PC の **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから QR コードをスキャンします。
 
     >[!Note]
-    >カメラが適切に動作しない場合は、[QR コードと URL を手動で入力](#add-an-account-to-the-app-manually)できます。
+    >カメラが適切に動作しない場合は、QR コードと URL を手動で入力できます。
 
 5. デバイス上の Microsoft Authenticator アプリの **[アカウント]** ページを調べ、アカウント情報が正しく、6 桁の確認コードが関連付けられていることを確認します。
 

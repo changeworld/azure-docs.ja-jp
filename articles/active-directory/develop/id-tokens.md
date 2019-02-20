@@ -16,24 +16,25 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 74f071d91003c63fd8db590572a7c9dea1b8915b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c92472d276b3f03e5a3855587de4ca8a045bfec2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092772"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234427"
 ---
 # <a name="id-tokens"></a>ID トークン
 
-`id_tokens` は、[OpenID Connect](v1-protocols-openid-connect-code.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。 
+`id_tokens` は、[OpenID Connect](v1-protocols-openid-connect-code.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
 
 ## <a name="using-the-idtoken"></a>id_token を使用する
 
-ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用しないでください。 これによって提供される要求は、アプリケーション内の UX、データベースのキー設定、およびクライアント アプリケーションへのアクセス提供のために使用できます。 
+ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用しないでください。 これによって提供される要求は、アプリケーション内の UX、データベースのキー設定、およびクライアント アプリケーションへのアクセス提供のために使用できます。
 
 ## <a name="claims-in-an-idtoken"></a>id_token の要求
 
-Microsoft Identity の`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーとペイロードを使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
+Microsoft Identity の`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
 
 ### <a name="v10"></a>v1.0
 

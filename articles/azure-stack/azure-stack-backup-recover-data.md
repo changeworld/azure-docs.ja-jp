@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246485"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207417"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 
 *適用対象: Azure Stack 統合システム*
 
-Azure Stack は、お客様の自社データセンターで Azure サービスを実行します。 Azure Stack は、1 つのラックにインストールされている 4 つのノード程度の小さい環境でも実行できます。 これに対し Azure は、40 を超えるリージョンで、各リージョンにある複数のデータセンターと複数のゾーンで実行されます。 ユーザー リソースは、複数のサーバーやラック、データセンター、リージョンにまたがることができます。 現在 Azure Stack では、クラウド全体を 1 つのラックにしか展開できません。 これでは、自社データセンターでの致命的なイベントの危険や、製品の重大なバグによるエラーといった危険に、クラウドをさらしてしまうことになります。 障害が発生すると、Azure Stack インスタンスはオフラインになります。 このデータはすべて、本質的に回復できるものではありません。
+Azure Stack は、データセンターで Azure サービスを実行し、1 つのラックにインストールされているノードが 4 つ程度の小さい環境でも実行できます。 これに対し Azure は、40 を超えるリージョンで、各リージョンにある複数のデータセンターと複数のゾーンで実行されます。 ユーザー リソースは、複数のサーバーやラック、データセンター、リージョンにまたがることができます。 現在 Azure Stack では、クラウド全体を 1 つのラックにしか展開できません。 これでは、自社データセンターでの致命的なイベントの危険や、製品の重大なバグによるエラーといった危険に、クラウドをさらしてしまうことになります。 障害が発生すると、Azure Stack インスタンスはオフラインになります。 このデータはすべて、本質的に回復できるものではありません。
 
 データ損失の根本原因によっては、インフラストラクチャ サービスを 1 つ修復するだけで済む場合もあれば、Azure Stack インスタンス全体の復元が必要な場合もあります。 同じ場所や別の場所にある別のハードウェアに復元する必要がある場合もあります。
 

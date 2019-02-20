@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fecd5cf3b5a6aac1133f94b4dc220eec826392f6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056552"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993420"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
 
@@ -77,7 +77,7 @@ Workbooks は次のようなシナリオで便利です。
 
 * 使用状況が減少したのと同じ期間にサイトが投げた例外の数はいくつですか?
 * あるページを閲覧しているユーザーのページ読み込み時間の分布は何でしたか?
-* サイトのある一連のページを閲覧したユーザーのうち、ある別の一連のページを閲覧しなかったユーザーの数は? これは、サイトの機能の異なるサブセットを使用する (Log Analytics クエリ言語で `join` 演算子を `kind=leftanti` 修飾子とともに使用する) ユーザーのクラスターが存在する場合に理解するのに便利です。
+* サイトのある一連のページを閲覧したユーザーのうち、ある別の一連のページを閲覧しなかったユーザーの数は? これは、サイトの異なる機能のサブセットを使用する (Data Explorer クエリ言語で `join` 演算子を `kind=leftanti` 修飾子とともに使用する) ユーザーのクラスターが存在する場合に理解するのに便利です。
 
 ブックを起動したアプリケーションのコンテキストからのクエリだけに限定されているわけではありません。 Application Insight によって監視される複数のアプリや Log Analytics ワークスペースでクエリを実行できます (ただし、これらのリソースへのアクセス許可が必要です)。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766014"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237673"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-union 演算子とアプリケーションの一覧を使用して関数を作成した後、クエリを *applicationsScoping* というエイリアスの関数として保存します。  
+union 演算子とアプリケーションの一覧を使用して関数を作成した後、クエリを *applicationsScoping* というエイリアスの関数としてワークスペースに保存します。  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->アプリケーションの一覧は、Logs ポータルでクエリ エクスプローラーに移動して関数を編集するか、`SavedSearch` PowerShell コマンドレットを使用することで、いつでも変更できます。 `withsource= SourceApp` コマンドを使用すると、ログを送信したアプリケーションを示す列が結果に追加されます。 
+>アプリケーションの一覧は、ポータルでワークスペースのクエリ エクスプローラーに移動して、編集する関数を選択して保存するか、または `SavedSearch` PowerShell コマンドレットを使用することで、いつでも変更できます。 `withsource= SourceApp` コマンドを使用すると、ログを送信したアプリケーションを示す列が結果に追加されます。 
 >
 >このクエリでは、Application Insights のスキーマが使用されます。ただし、applicationsScoping 関数で Application Insights データ構造が返されるため、クエリはワークスペース内で実行されます。 
 >

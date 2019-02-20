@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/23/2019
+ms.date: 02/13/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 30d9cef89bed1c43fa1d058ff90fe2d9a52260f7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096689"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234290"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード
 
@@ -190,7 +191,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90016 | MissingRequiredClaim - アクセス トークンが無効です。 必要な要求がありません。 |
 | AADSTS90019 | MissingTenantRealm - Azure AD で要求からテナント識別子を特定できませんでした。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - プリンシパル名の形式が無効、または予期される形式 `name[/host][@realm]` を満たしていません。 プリンシパル名は必須です。ホストと領域は省略可能で、null に設定できます。 |
-| AADSTS90023 | InvalidRequest |
+| AADSTS90023 | InvalidRequest - 認証サービス要求が有効ではありません。 |
 | AADSTS90024 | RequestBudgetExceededError - 一時的なエラーが発生しました。 やり直してください。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) が使用できません。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS によってホストされる WCF サービスから再試行できない予期しないエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |

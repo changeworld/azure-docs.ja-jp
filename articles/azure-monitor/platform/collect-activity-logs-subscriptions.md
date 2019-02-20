@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580945"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984581"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>異なる Azure Active Directory テナントの複数のサブスクリプションにわたって Azure アクティビティ ログを Log Analytics に収集する
 
-この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Log Analytics ワークスペースに収集する方法の手順を説明します。 別の Azure Active Directory のワークスペースにログを送信する必要があるときに、この記事のプロセスを使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
+この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Log Analytics ワークスペースに収集する方法の手順を説明します。 異なる Azure Active Directory テナントのワークスペースにログを送信する必要があるときには、この記事の手順を使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
 
 Log Analytics ワークスペースが同一の Azure サブスクリプションにある場合、または同じ Azure Active Directory 内の別のサブスクリプションにある場合は、[Azure アクティビティ ログ ソリューション](collect-activity-logs.md)に関する記事の手順を使用して Azure アクティビティ ログを収集します。
 
@@ -131,7 +131,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
    | Name           | ロジック アプリの一意の名前。 |
    | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
-   | 場所       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
+   | Location       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
    | Log Analytics  | ロジック アプリを実行するたびにその状態を Log Analytics に記録する場合に選択します。  |
 
     

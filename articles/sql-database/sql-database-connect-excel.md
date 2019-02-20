@@ -1,6 +1,6 @@
 ---
-title: SQL Database への Excel の接続 | Microsoft Docs
-description: Microsoft Excel をクラウド内の Azure SQL データベースに接続する方法について説明します。 レポートの作成およびデータの探索を目的として、データを Excel にインポートします。
+title: Excel を Azure SQL Database の単一データベースに接続する | Microsoft Docs
+description: Microsoft Excel を Azure SQL Database の単一データベースに接続する方法について説明します。 レポートの作成およびデータの探索を目的として、データを Excel にインポートします。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,21 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754583"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237015"
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL Database の単一データベースに接続してレポートを作成する
 
-Excel をクラウドの SQL データベースに接続し、データをインポートして、データベース内の値に基づいてテーブルおよびグラフを作成します。 このチュートリアルでは、Excel とデータベース テーブル間の接続をセットアップし、データと Excel の接続情報を格納するファイルを保存して、データベースの値からピボット グラフを作成します。
+Excel を Azure SQL Database の単一データベースに接続し、データをインポートし、データベース内の値に基づいてテーブルとグラフを作成します。 このチュートリアルでは、Excel とデータベース テーブル間の接続をセットアップし、データと Excel の接続情報を格納するファイルを保存して、データベースの値からピボット グラフを作成します。
 
-作業を開始する前に、Azure 内に SQL データベースが必要です。 SQL データベースがない場合は、「 [最初の SQL Database を作成する](sql-database-single-database-get-started.md) 」を参照することで、サンプル データを含むデータベースを数分で作成して実行できます。 この記事では、記事のサンプル データを Excel にインポートしますが、独自のデータでも同様の手順を実行できます。
+作業を開始する前に、単一データベースが必要です。 ない場合は、[単一データベースの作成](sql-database-single-database-get-started.md)および[サーバー レベル IP ファイアウォールの作成](sql-database-server-level-firewall-rule.md)に関する記事を参照して、サンプル データを含む単一データベースを数分で作成して実行できます。
+
+この記事では、記事のサンプル データを Excel にインポートしますが、独自のデータでも同様の手順を実行できます。
 
 また、Excel も必要です。 この記事では、 [Microsoft Excel 2016](https://products.office.com/)を使用します。
 

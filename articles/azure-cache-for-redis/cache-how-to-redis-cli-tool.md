@@ -1,24 +1,24 @@
 ---
 title: Azure Cache for Redis で redis-cli を使用する方法 | Microsoft Docs
 description: Azure Cache for Redis で redis-clis を使用する方法を説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
-ms.author: wesmc
-ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106326"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237571"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 
@@ -30,10 +30,12 @@ Windows プラットフォームでこのツールを利用するには､[Redis
 
 ## <a name="gather-cache-access-information"></a>キャッシュ アクセス情報を収集する
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 キャッシュにアクセスするために必要な情報を収集する方法は 3 通りあります｡
 
 1. Azure CLI から [az redis list-keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) を使用する
-2. Azure PowerShell から [Get-AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Get-AzureRmRedisCacheKey?view=azurermps-4.4.1) を使用する
+2. Azure PowerShell から [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey) を使用する
 3. Azure Portal を使用する
 
 このセクションでは､Azure Portal からキーを取得します｡

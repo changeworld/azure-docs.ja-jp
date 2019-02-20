@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Nuclino の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Nuclino の統合 | Microsoft Docs
 description: Azure Active Directory と Nuclino の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a5346b98de48b1a2f8928c3c2bf30730588e9c1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 655ac490e528680f779eeca54899a022ddf3b89a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145390"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>チュートリアル: Azure Active Directory と Nuclino の統合
+# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>チュートリアル:Azure Active Directory と Nuclino の統合
 
 このチュートリアルでは、Nuclino と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -146,7 +147,7 @@ Nuclino で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 7. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -184,7 +185,7 @@ Nuclino で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Entity ID (You need to copy and paste this to your SSO provider)]\(エンティティ ID (この値をコピーして SSO プロバイダーにコピーしてください)\)** 値をコピーして、Azure portal の **[Nuclino のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    d. **[SSO URL]** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO URL]** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -222,14 +223,14 @@ Nuclino で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-nuclino-test-user"></a>Nuclino テスト ユーザーの作成
 
 このセクションの目的は、Nuclino で Britta Simon というユーザーを作成することです。 Nuclino では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Nuclino ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Nuclino サポート チーム](mailto:contact@nuclino.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、 [Nuclino のサポート チーム](mailto:contact@nuclino.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -266,7 +267,7 @@ Nuclino で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Nuclino] タイルをクリックすると、Nuclino アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

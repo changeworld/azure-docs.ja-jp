@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094191"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113228"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway のシステム要件 (プレビュー)
 
@@ -42,22 +42,11 @@ Data Box Gateway の基になっているホスト システムでは、仮想�
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>デバイスに接続されるクライアントでサポートされている OS
 
-Data Box Gateway に接続されるクライアントまたはホストでサポートされているオペレーティング システムの一覧を次に示します。
-
-| **オペレーティング システム/プラットフォーム** | **バージョン** |
-| --- | --- |
-| Windows Server |2012 R2 <br> 2016 <br> 2019 |
-|  Windows |8、10 |
-| SUSE Linux |Enterprise Server 12 (x86_64)|
-| Ubuntu |16.04.3 LTS|
-| CentOS | 7.0 |
+[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
 ## <a name="supported-protocols-for-clients-accessing-device"></a>デバイスにアクセスするクライアントでサポートされるプロトコル
 
-|**プロトコル** |**バージョン**   |**メモ**  |
-|---------|---------|---------|
-|SMB    | 2.X、3.X      | SMB 1 はサポートされていません。|
-|NFS     | V3 と V4        |         |
+[!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
 ## <a name="supported-virtualization-platforms-for-device"></a>デバイスでサポートされている仮想化プラットフォーム
 
@@ -69,49 +58,22 @@ Data Box Gateway に接続されるクライアントまたはホストでサポ
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
-Data Box Gateway でサポートされるストレージ アカウントの一覧を次に示します。
-
-| **ストレージ アカウント** | **メモ** |
-| --- | --- |
-| クラシック | 標準 |
-| 汎用  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+[!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
 ## <a name="supported-storage-types"></a>サポートされるストレージの種類
 
-Data Box Gateway でサポートされるストレージの種類の一覧を次に示します。
-
-| **ファイル形式** | **メモ** |
-| --- | --- |
-| Azure ブロック BLOB | |
-| Azure ページ BLOB  | |
-| Azure Files | |
+[!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
 ## <a name="supported-browsers-for-local-web-ui"></a>ローカル Web UI 用にサポートされているブラウザー
 
-仮想デバイスのローカル Web UI 用にサポートされているブラウザーの一覧を次に示します。
+[!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-|ブラウザー  |バージョン  |その他の要件/注意事項  |
-|---------|---------|---------|
-|Google Chrome   |最新バージョン         |         |
-|Microsoft Edge    | 最新バージョン        |         |
-|Internet Explorer     | 最新バージョン        |         |
-|FireFox    |最新バージョン         |         |
-
-
-## <a name="networking-requirements"></a>ネットワーク要件
+## <a name="networking-port-requirements"></a>ネットワーク ポートの要件
 
 SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Data Box Gateway デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| ポート番号| インまたはアウト | ポート範囲| 必須|   メモ                                                             |                                                                                     |
-|--------|---------|----------|--------------|----------------------|---------------|
-| TCP 80 (HTTP)|アウト|WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br>送信 Web プロキシは、ユーザーが構成できます。 |                          
-| TCP 443 (HTTPS)|アウト|WAN|はい|送信ポートは、クラウドのデータへのアクセスに使用します。<br>送信 Web プロキシは、ユーザーが構成できます。|   
-| UDP 53 (DNS)|アウト|WAN|場合により必須<br>メモを参照|このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。<br>ローカル DNS サーバーを使用することをお勧めします。 |
-| UDP 123 (NTP)|アウト|WAN|場合により必須<br>メモを参照|このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。  |
-| UDP 67 (DHCP)|アウト|WAN|場合により必須<br>メモを参照|このポートは、DHCP サーバーを使用する場合にのみ必要です。  |
-| TCP 80 (HTTP)|イン|LAN|はい|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 <br>HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。  | 
-| TCP 443 (HTTPS)|イン|LAN|はい|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 | 
+[!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
@@ -123,26 +85,11 @@ SMB、クラウド、または管理トラフィックを許可するために�
 > - デバイスの (送信元) IP は、常にすべてのクラウド対応ネットワーク インターフェイスに合わせて設定します。
 > - 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
 
-|     URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                       |     コンポーネント/機能                                                                             |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Azure Data Box Gateway サービス<br>Azure Service Bus<br>認証サービス    |
-|    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    デバイスのアクティブ化                                                                                    |
-|    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    証明書の失効                                                                               |
-|    https://*.core.windows.net/*   https://*.data.microsoft.com   http://*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Azure ストレージ アカウントと監視                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    Microsoft Update サーバー                                                                             |
-|    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
-|    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    サポート パッケージ                                                                                      |
-|    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Windows のテレメトリ サービス (「顧客満足度及び診断テレメトリのための更新プログラム」を参照)      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
-
-
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 
-次の要件は、Data Box Gateway デバイスで使用できるインターネットの最小帯域幅に適用されます。
-
-- Data Box Gateway で 20 Mbps 以上の専用インターネット帯域幅が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。 
-- 帯域幅調整を使用した場合、Data Box Gateway で専用の 32 Mbps インターネット帯域幅 (またはそれ以上) が利用できること。
+[!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
 ## <a name="next-step"></a>次のステップ
 

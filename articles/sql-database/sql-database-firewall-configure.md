@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753063"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894702"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と SQL Data Warehouse の IP ファイアウォール規則
 
@@ -92,7 +92,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 > [!TIP]
 > [SQL Database 監査](sql-database-auditing.md)を使用して、サーバー レベルおよびデータベース レベルのファイアウォールの変更を監査できます。
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>Azure portal を使って IP ファイアウォール規則を管理する
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Azure portal を使用してサーバー レベルの IP ファイアウォール規則を管理する
 
 Azure portal でサーバー レベルの IP ファイアウォール規則を設定するには、ご利用の Azure SQL Database の [概要] ページまたはご利用の SQL Database サーバーの [概要] ページに移動します。
 
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [ファイアウォール規則の削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
 | [ファイアウォール規則の取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | サーバー | サーバー レベルの IP ファイアウォール規則を取得する |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>サーバー レベルの IP ファイアウォール規則とデータベース レベルの IP ファイアウォール規則の違い
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>サーバー レベルとデータベース レベルの IP ファイアウォール規則
 
 Q. 個々のデータベースのユーザーを別のデータベースから完全に分離する必要がありますか?
 分離する必要がある場合は、データベース レベルの IP ファイアウォール規則を使用してアクセスを許可します。 これにより、サーバー レベルの IP ファイアウォール規則の使用を回避できます。サーバー レベルの IP ファイアウォール規則では、すべてのデータベースへのファイアウォール経由のアクセスが許可されるので、セキュリティが低下します。

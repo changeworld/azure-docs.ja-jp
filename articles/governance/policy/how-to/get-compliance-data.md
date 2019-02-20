@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766414"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114112"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -428,11 +428,11 @@ PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="log-analytics"></a>Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた `AzureActivity` ソリューションを持つ [Log Analytics](../../../log-analytics/log-analytics-overview.md) ワークスペースがある場合は、単純な Azure Data Explorer クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Log Analytics で詳細情報を使用すると、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた `AzureActivity` ソリューションを持つ [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Azure Data Explorer クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
-![Log Analytics を使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
+![Azure Monitor ログを使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>次の手順
 

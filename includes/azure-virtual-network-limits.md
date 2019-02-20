@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513945"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55904961"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -76,11 +76,12 @@ ms.locfileid: "55513945"
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 |
-| --- | --- | --- |
+| --- | --- |
 | ロード バランサー | 1,000 | 
 | リソースあたりのルール数、Basic | 250 |
 | リソースあたりのルール数、Standard | 1500 | 
 | IP 構成あたりのルール数 | 299 |
+| NIC あたりのルール数 | 500 |
 | フロントエンド IP の構成、Basic | 200 |
 | フロントエンド IP の構成、Standard | 600 |
 | バックエンド プール、Basic | 100、1 つの可用性セット |
@@ -88,7 +89,5 @@ ms.locfileid: "55513945"
 | ロード バランサーあたりのバックエンド リソース数、Standard* | 150 |
 | HA ポート、Standard | 内部フロント エンドごとに 1 個 |
 
-** 最大 150 のリソース (スタンドアロン仮想マシン、可用性セット、および仮想マシン スケール セットの任意の組み合わせ)。
-
-制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/resource-manager-core-quotas-request.md )ください。
+** 最大 150 のリソース (スタンドアロン仮想マシン リソース、可用性セット リソース、および仮想マシン スケール セット リソースの任意の組み合わせ)。
 

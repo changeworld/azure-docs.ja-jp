@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの結合 | Microsoft Docs
-description: この記事には、Log Analytics クエリ言語の結合の使用に関するレッスンが含まれています。
+title: Azure Monitor ログ クエリでの結合 | Microsoft Docs
+description: この記事には、Azure Monitor ログ クエリでの結合の使用に関するレッスンが含まれています。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c1f578c11fff963ee4bec47bd3737cd224b14720
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885425"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004643"
 ---
-# <a name="joins-in-log-analytics-queries"></a>Log Analytics クエリの結合
+# <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
 
 > [!NOTE]
-> このレッスンを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
+> このレッスンを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -105,7 +105,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics クエリ言語の使用については、他のレッスンをご覧ください。
+Azure Monitor ログ クエリの使用に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [集計関数](aggregations.md)

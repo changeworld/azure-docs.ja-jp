@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Certain Admin SSO の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Certain Admin SSO の統合 | Microsoft Docs
 description: Azure Active Directory と Certain Admin SSO の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 40bdba8e7ce699f0fd6ca589c753f51b550fae05
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d85e8dbac47bd41c759e9c225df5544c659cc05
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439455"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205530"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>チュートリアル: Azure Active Directory と Certain Admin SSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>チュートリアル:Azure Active Directory と Certain Admin SSO の統合
 
 このチュートリアルでは、Certain Admin SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -158,11 +159,11 @@ Certain Admin SSO で Azure AD のシングル サインオンを構成および
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-certain-admin-sso-test-user"></a>Certain Admin SSO のテスト ユーザーの作成
 
-このセクションでは、Certain Admin SSO で Britta Simon というユーザーを作成します。 [Certain Admin SSO サポート チーム](mailto:integrations@certain.com)と協力して、Certain Admin SSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Certain Admin SSO で Britta Simon というユーザーを作成します。  [Certain Admin SSO サポート チーム](mailto:integrations@certain.com)と協力して、Certain Admin SSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -199,7 +200,7 @@ Certain Admin SSO で Azure AD のシングル サインオンを構成および
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Certain Admin SSO のタイルをクリックすると、自動的に Certain Admin SSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

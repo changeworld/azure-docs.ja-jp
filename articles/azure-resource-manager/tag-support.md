@@ -4,17 +4,19 @@ description: タグをサポートしている Azure リソースの種類を示
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509917"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246053"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。
+
+コンマ区切りの値のファイルと同じデータを取得するには、[tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv) をダウンロードします。
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | リソースの種類 | タグのサポート |
@@ -666,7 +668,7 @@ ms.locfileid: "55509917"
 | logDefinitions | いいえ  | 
 | logprofiles | いいえ  | 
 | logs | いいえ  | 
-| metricAlerts | [はい] |
+| metricAlerts | はい |
 | migrateToNewPricingModel | いいえ  | 
 | myWorkbooks | いいえ  | 
 | Query | いいえ  | 
@@ -685,7 +687,7 @@ ms.locfileid: "55509917"
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | リソースの種類 | タグのサポート |
 | ------------- | ----------- |
-| IoTApps | [はい] | 
+| IoTApps | はい | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | リソースの種類 | タグのサポート |
@@ -1123,13 +1125,14 @@ ms.locfileid: "55509917"
 | servers/communicationLinks | いいえ  | 
 | servers/databases | はい (下記の「注」を参照) | 
 | servers/encryptionProtector | いいえ  | 
+| servers/firewallRules | いいえ  | 
 | servers/keys | いいえ  | 
 | servers/restorableDroppedDatabases | いいえ  | 
 | servers/serviceobjectives | いいえ  | 
 | servers/tdeCertificates | いいえ  | 
 
 > [!NOTE]
-> マスター データベースではタグはサポートされませんが、その他のデータベースではタグがサポートされます。
+> マスター データベースではタグはサポートされませんが、データ ウェアハウス データベースを含むその他のデータベースではタグがサポートされます。
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

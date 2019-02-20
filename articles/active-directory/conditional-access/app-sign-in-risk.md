@@ -16,16 +16,17 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e950450a1ebe710a56ccfa0e8abefc7104602ec5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081961"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206176"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
-環境を保護された状態で維持するために、疑わしいユーザーによるサインイン アクティビティをブロックすることができます。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、[サインイン リスク レベル](conditions.md#sign-in-risk)と呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じた条件付きアクセス ポリシーを構成できます。 
+環境を保護された状態で維持するために、疑わしいユーザーによるサインインをブロックすることができます。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、[サインイン リスク レベル](conditions.md#sign-in-risk)と呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じた条件付きアクセス ポリシーを構成できます。 
 
 このクイック スタートでは、構成されたサインイン リスク レベルが検出されたときにサインインをブロックする[条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)を構成する方法を説明します。 
 
@@ -113,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Alain Charon]** を選択し、**[選択]** をクリックします。
 
-    d. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
 
 8. **[クラウド アプリ]** をクリックします。
 
@@ -141,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. [サインイン リスク レベル] で **[中]** を選択します。
 
-    d. **[選択]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[選択]** をクリックします。
 
     e. **[条件]** ページで、**[完了]** をクリックします。
 

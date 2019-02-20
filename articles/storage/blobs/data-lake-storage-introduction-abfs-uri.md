@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 プレビューの URI を使用する
-description: Azure Data Lake Storage Gen2 プレビューの URI を使用する
+title: Azure Data Lake Storage Gen2 の URI を使用する
+description: Azure Data Lake Storage Gen2 の URI を使用する
 services: storage
 author: jamesbak
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 63dcea94fd880102a784e6f776855c44d4e97c87
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe020ab1091b91ba21174b59d0ce25ab0c6122ca
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243319"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878308"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
 
-Azure Data Lake Storage Gen2 プレビューと互換性のある [Hadoop ファイル システム](http://www.aosabook.org/en/hdfs.html) ドライバーは、そのスキーム識別子 `abfs` (Azure Blob ファイル システム) によって認識されます。 他の Hadoop ファイル システム ドライバーと整合性のある ABFS ドライバーでは、Data Lake Storage Gen2 対応アカウント内のファイルとディレクトリをアドレス指定するために URI 形式が使用されています。
+Azure Data Lake Storage Gen2 と互換性のある [Hadoop ファイル システム](http://www.aosabook.org/en/hdfs.html) ドライバーは、そのスキーム識別子 `abfs` (Azure BLOB ファイル システム) によって認識されます。 他の Hadoop ファイル システム ドライバーと整合性のある ABFS ドライバーでは、Data Lake Storage Gen2 対応アカウント内のファイルとディレクトリをアドレス指定するために URI 形式が使用されています。
 
 ## <a name="uri-syntax"></a>URI 構文
 

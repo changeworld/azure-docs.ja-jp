@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870340"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858264"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -26,14 +26,18 @@ geo レプリケートされたレジストリには次の利点があります�
 * コンテナー ホストと同じリージョンにあるレプリケートされたローカルのレジストリからイメージがプルされるので、追加のエグレス料金が発生しない
 * 複数のリージョンにまたがってレジストリを一元管理できる
 
+> [!NOTE]
+> コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
+>
+
 ## <a name="example-use-case"></a>ユース ケースの例
-Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Container Service](/azure/container-service/kubernetes/) (ACS) Kubernetes クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
+Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Kubernetes Service](/azure/aks/) (AKS) クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
 
 開発チームは、米国西部データ センターを利用するワシントン州シアトルを拠点としています。
 
 ![複数のレジストリへのプッシュ](media/container-registry-geo-replication/before-geo-replicate.png)<br />*複数のレジストリへのプッシュ*
 
-Contoso では、geo レプリケーション機能を使用する前は、米国西部では米国ベースのレジストリを使用し、西ヨーロッパでは追加のレジストリを使用していました。 これらの異なるリージョンに対応するために、開発チームは 2 つの異なるレジストリにイメージをプッシュする必要がありました。
+Contoso では、geo レプリケーション機能を使用する前は、米国西部では米国ベースのレジストリを使用し、西ヨーロッパでは追加のレジストリを使用していました。 これらの異なるリージョンに対応するために、開発チームは 2 つの異なるレジストリにイメージをプッシュしていました。
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2

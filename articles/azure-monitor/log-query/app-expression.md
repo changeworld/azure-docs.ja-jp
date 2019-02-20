@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの app() 式 | Microsoft Docs
-description: app 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータを取得するために、Log Analytics クエリで使用します。
+title: Azure Monitor ログ クエリの app() 式 | Microsoft Docs
+description: app 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor ログ クエリで使用します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104662"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998537"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>Log Analytics クエリでの app() 式
+# <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
-`app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータを取得するために、Log Analytics クエリで使用します。 これは、Log Analytics クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションのデータをクエリしたりする場合に便利です。
+`app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor クエリで使用します。 これは、Azure Monitor ログ クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションにわたるデータをクエリしたりする場合に便利です。
 
 
 
@@ -78,5 +78,6 @@ union
 
 ## <a name="next-steps"></a>次の手順
 
-- Log Analytics ワークスペースについては、[ワークスペースの式](workspace-expression.md)を参照してください。
-- [Log Analytics データ](../../azure-monitor/log-query/log-query-overview.md)の保存方法をご覧ください。
+- [ワークスペースの式](workspace-expression.md)に関するページを見て、Log Analytics ワークスペースについて参照します。
+- [Azure Monitor データ](../../azure-monitor/log-query/log-query-overview.md)の格納方法を確認します。
+- [Data Explorer クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。

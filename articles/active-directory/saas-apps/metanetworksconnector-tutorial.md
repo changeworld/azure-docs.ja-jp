@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Meta Networks Connector の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Meta Networks Connector の統合 | Microsoft Docs
 description: Azure Active Directory と Meta Networks Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a3f40624e51ef287d70bed547eba7ec9e0882b0e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669197"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199716"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル: Azure Active Directory と Meta Networks Connector の統合
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル:Azure Active Directory と Meta Networks Connector の統合
 
 このチュートリアルでは、Meta Networks Connector と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -240,7 +241,7 @@ Meta Networks Connector で Azure AD のシングル サインオンを構成し
 このセクションの目的は、Meta Networks Connector で Britta Simon というユーザーを作成することです。 Meta Networks Connector では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Meta Networks Connector ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Meta Networks Connector クライアント サポート チーム](mailto:support@metanetworks.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Meta Networks Connector クライアント サポート チーム](mailto:support@metanetworks.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -277,7 +278,7 @@ Meta Networks Connector で Azure AD のシングル サインオンを構成し
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Meta Networks Connector] タイルをクリックすると、自動的に Meta Networks Connector アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

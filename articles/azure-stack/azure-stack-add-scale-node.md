@@ -12,23 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172401"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack のスケール ユニット ノードを追加する
 
 Azure Stack オペレーターは、物理コンピューターを追加することによって、既存のスケール ユニットの全体的な容量を引き上げることができます。 物理コンピューターは、"スケール ユニット ノード" とも呼ばれます。 新たに追加する各スケール ユニット ノードは、CPU の種類、メモリ、ディスク数、ディスク サイズの点で、スケール ユニットの既存のノードと同質であることが必要です。
-
-> [!NOTE]  
-新たにスケール ユニット ノードを追加するには、Azure Stack 1807 以降を実行している必要があります。
 
 スケール ユニット ノードを追加するには、Azure Stack で、お使いのハードウェア機器メーカー (OEM) から提供されるツールを実行する必要があります。 OEM のツールは、新しい物理コンピューターのファームウェア レベルが既存のノードと同じであることを確認するために、ハードウェア ライフサイクル ホスト (HLH) で実行されます。
 

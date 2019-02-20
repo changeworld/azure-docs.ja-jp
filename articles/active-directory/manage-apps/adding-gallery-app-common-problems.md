@@ -3,8 +3,8 @@ title: Azure AD ギャラリーのアプリケーションの追加に関する�
 description: Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容の説明
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 3621ca390add5c4a50cae6ed8f2baa5e3b1e2339
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173277"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237873"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
 
@@ -27,13 +28,13 @@ ms.locfileid: "55173277"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されるまでに長い時間がかかる
 
-状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、**[進行中]** または **[アプリケーションを作成]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
+状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、**[進行中]** または **[アプリケーションの追加]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
 
 アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、**[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されない
 
-一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure portal の右上隅にある **[通知]** アイコン (ビープ音) をクリックしたときに、**[アプリケーションの作成]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
+一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure portal の右上隅にある **[通知]** アイコン (ベル) をクリックしたときに、**[アプリケーションの追加]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
 
 エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
@@ -47,9 +48,9 @@ ms.locfileid: "55173277"
 
 ポータルの通知の詳細を確認するには、次の手順に従います。
 
-1.  Azure Portal の右上隅にある **[通知]** アイコン (ベル) をクリックします。
+1.  Azure portal の右上隅にある **[通知]** アイコン (ベル) を選択します
 
-2.  **[エラー]** 状態 (横に赤い (!) が付記) でいずれかの通知を選択します。
+2.  **エラー**状態のいずれかの通知 (横に赤い (!) が表示されているもの) を選択します。
 
     >[!NOTE]
     >**[成功]** または **[進行中]** 状態の通知をクリックすることはできません。
@@ -60,7 +61,7 @@ ms.locfileid: "55173277"
 
 5.  サポートが必要な場合は、この情報をサポート エンジニアや製品グループと共有して支援を受けることもできます。
 
-6.  **[コピー エラー]** ボックスの右にある **[コピー]** **アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有することができます。
+6.  **[エラーのコピー]** ボックスの右にある **[コピー]** **アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有することができます。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>通知の詳細をサポート エンジニアに送信して支援を受ける方法
 

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827450"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991329"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
-Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下をしらべることができる Microsoft Azure ポータルのコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。
+Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下を調べることができる Microsoft Azure portal のコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。
 
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
-Microsoft Azure におけるメトリックは、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
+[Azure Monitor におけるメトリック](data-collection.md#metrics)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
 
 ## <a name="create-a-new-chart"></a>新しいグラフを作成する
 

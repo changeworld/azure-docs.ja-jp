@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Nimblex の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Nimblex の統合 | Microsoft Docs
 description: Azure Active Directory と Nimblex の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7b5dc6d892741f63596589a48ad5d45891b14c21
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7801b5ea73cf94439ae2974f91d2032f9bf8a3b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040407"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166744"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル: Azure Active Directory と Nimblex の統合
+# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル:Azure Active Directory と Nimblex の統合
 
 このチュートリアルでは、Nimblex と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -148,11 +149,11 @@ Nimblex で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[説明]** テキストボックスに、インスタンス名を入力します。
 
-    b. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[証明書]** ボックスに貼り付けます。
+    b. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[証明書]**  ボックスに貼り付けます。
 
     c. **[Identity Provider SSO Target URL]\(ID プロバイダーの SSO ターゲット URL\)** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -184,14 +185,14 @@ Nimblex で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-nimblex-test-user"></a>Nimblex テスト ユーザーの作成
 
 このセクションの目的は、Nimblex で Britta Simon というユーザーを作成することです。 Nimblex では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Nimblex ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Nimblex クライアント サポート チーム](mailto:support@ebms.com.au)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Nimblex クライアント サポート チーム](mailto:support@ebms.com.au)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -228,7 +229,7 @@ Nimblex で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Nimblex] タイルをクリックすると、Nimblex アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

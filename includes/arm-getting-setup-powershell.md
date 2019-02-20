@@ -4,12 +4,12 @@ ms.service: azure-powershell
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sewhee
-ms.openlocfilehash: 5f224ab3b0040bcba6b99d8db744e9dbde4a63c9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b93722147959881dfbffbb47b7a3e4b140044525
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572399"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246988"
 ---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>リソース マネージャー テンプレート向けの PowerShell の設定
 リソース マネージャーで Azure PowerShell を使用する前に、適切なバージョンの Windows PowerShell と Azure PowerShell を用意する必要があります。
@@ -63,5 +63,5 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](/powershell/azureps-cmdlets-docs#step-3-connect)に関するトピックを参照してください。
+Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](/powershell/azureps-cmdlets-docs)に関するトピックを参照してください。
 

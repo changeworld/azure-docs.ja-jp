@@ -3,7 +3,7 @@ title: Azure SQL Database サーバーと単一データベースの作成と管
 description: SQL Database サーバーと単一データベースの作成と管理について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: standalone-database
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7d1f11abbe88bff5a7e16984aacd4953ad4f9e12
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: 0a43414ef446beb3f5d6c8e357390363a95ac31c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751193"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099345"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database での SQL Database サーバーと単一データベースの作成と管理
 
@@ -57,7 +57,7 @@ Azure SQL Database マネージド インスタンスを作成する方法につ
 
 ## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell:SQL Database サーバーと単一データベースの管理
 
-Azure PowerShell を利用して、Azure SQL Database サーバー、スタンドアロンおよびプールされたデータベース、SQL Database サーバーのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+Azure PowerShell を利用して、Azure SQL Database サーバー、単一のプールされたデータベース、SQL Database サーバーのファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 > [!TIP]
 > PowerShell のスクリプトの例については、[PowerShell を使用した Azure SQL の単一データベースの作成と、SQL Database サーバーのファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)および [PowerShell を使用した単一の SQL データベースの監視およびスケーリング](scripts/sql-database-monitor-and-scale-database-powershell.md)に関するページを参照してください。
@@ -118,7 +118,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 > [!IMPORTANT]
 > Transact-SQL を利用してサーバーを作成または削除することはできません。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|新しい単一データベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Azure SQL データベースを変更します。 |
@@ -139,7 +139,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 
 Azure SQL のサーバー、データベース、ファイアウォールを作成して管理するには、以下の REST API 要求を使います。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
 |[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
@@ -160,5 +160,5 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 
 ## <a name="next-steps"></a>次の手順
 
-- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-cloud-migrate.md)」を参照してください。
+- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

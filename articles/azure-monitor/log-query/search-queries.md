@@ -1,6 +1,6 @@
 ---
-title: Log Analytics の検索クエリ | Microsoft Docs
-description: この記事では、Log Analytics で検索クエリの基本的な記述方法のチュートリアルを提供します。
+title: Azure Monitor ログでの検索クエリ | Microsoft Docs
+description: この記事では、Azure Monitor ログ クエリで検索の使用を開始するためのチュートリアルを提供します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885305"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004453"
 ---
-# <a name="search-queries-in-log-analytics"></a>Log Analytics の検索クエリ
+# <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Log Analytics のクエリの概要](get-started-queries.md)」を完了する必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Azure Log Analytics のクエリは、テーブル名または search コマンドから始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
+Azure Monitor ログ クエリは、テーブル名または search コマンドで始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
 
 テーブル ベースのクエリは、クエリの範囲を設定することから始まるので、検索クエリよりも効率的になる傾向があります。 検索クエリはあまり構造化されていないため、複数の列やテーブル全体で特定の値を検索するときに適しています。 **search** を使用すると、指定されたテーブルまたはすべてのテーブルのすべての列をスキャンし、指定した値を見つけることができます。 処理されるデータの量は膨大になる可能性があります。そのため、このようなクエリの処理には時間がかかり、非常に多数の結果セットが返される可能性があります。
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>次の手順
 
-- その他のチュートリアルについては、[Log Analytics のクエリ言語サイト](https://aka.ms/LogAnalyticsLanguage)を参照してください。
+- その他のチュートリアルについては、[Data Explorer クエリ言語サイト](/azure/kusto/query/)を参照してください。

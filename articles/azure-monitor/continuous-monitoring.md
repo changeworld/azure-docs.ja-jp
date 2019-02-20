@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452821"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994018"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -64,7 +64,7 @@ ms.locfileid: "54452821"
 
 - [Azure Pipelines](/azure/devops/pipelines) を使用して継続的配置を実装し、お客様の CI/CD テストに基づいて、コードのコミットから運用までお客様のプロセス全体を自動化します。
 - [品質ゲート](/azure/devops/pipelines/release/approvals/gates)を使用して、お客様のデプロイの前後に監視を統合します。 これにより、お客様のアプリケーションが開発から運用に移行する際に正常性とパフォーマンスの主要指標 (KPI) を確実に満たし、インフラストラクチャ環境の違いやスケールの違いがお客様の KPI に悪い影響を及ぼさないようにできます。
-- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](../azure-monitor/app/separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](../azure-monitor/platform/metrics-charts.md)を使用するか、[Log Analytics のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
+- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](../azure-monitor/app/separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](../azure-monitor/platform/metrics-charts.md)を使用するか、[Azure Monitor のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>アクションにつながる実用的なアラートを作成する

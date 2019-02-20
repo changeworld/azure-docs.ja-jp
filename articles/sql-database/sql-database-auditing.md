@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 0c79554d2db4c1dc17cfbdeed052c1ae16cd68c2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/07/2019
+ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297686"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234664"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -125,6 +125,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 監査ログをイベント ハブに書き込む場合:
 
 - イベント ハブの監査ログ データを使用するには、イベントを処理し、そのイベントをターゲットに書き込むようにストリームを設定する必要があります。 詳細については、「[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)」を参照してください。
+- イベント ハブの監査ログは [Apache Avro](http://avro.apache.org/) イベントの本体でキャプチャされ、UTF-8 エンコードの JSON 形式を使用して格納されます。 監査ログを読み取るために、[Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) またはこの形式を処理する同様のツールを使用できます。
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 

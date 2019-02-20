@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820438"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236976"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -253,3 +253,6 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 5. **[削除]** をクリックして、復元ポイント コレクションを消去します。
 6. バックアップ操作を再試行します。
+
+> [!NOTE]
+ >リソース (RP コレクション) に多数の復元ポイントがある場合、同じものをポータルから削除するとタイムアウトして失敗する可能性があります。 これは既知の CRP 問題であり、規定の時間内にすべての復元ポイントが削除されず、操作がタイムアウトします。ただし、削除操作は通常、2 ～ 3 回の再試行後に成功します。

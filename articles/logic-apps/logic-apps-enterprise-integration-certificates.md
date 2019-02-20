@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140783"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244931"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>証明書を使用して B2B メッセージをセキュリティで保護する
 
@@ -30,6 +30,8 @@ B2B 通信の機密性を確保する必要がある場合は、統合アカウ�
 * [パブリック証明書](https://en.wikipedia.org/wiki/Public_key_certificate): これはパブリック インターネットの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から購入する必要がありますが、キーは必要ありません。 
 
 * プライベート証明書または[*自己署名証明書*](https://en.wikipedia.org/wiki/Self-signed_certificate): これはお客様自身が作成して発行する必要がありますが、やはり秘密キーは不要です。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>パブリック証明書のアップロード
 
@@ -47,7 +49,7 @@ B2B 機能を備えたロジック アプリで "*パブリック証明書*" を
 
    | プロパティ | 値 | [説明] | 
    |----------|-------|-------------|
-   | **名前** | <*証明書名*> | 証明書の名前 (この例では "publicCert") | 
+   | **Name** | <*証明書名*> | 証明書の名前 (この例では "publicCert") | 
    | **証明書の種類** | パブリック | 証明書の種類 |
    | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、**[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 |
    ||||
@@ -67,11 +69,11 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 > [!NOTE]
 > プライベート証明書の場合、メッセージの署名と暗号化のため [AS2 契約](logic-apps-enterprise-integration-as2.md)の**送信と受信**の設定に表示される、対応するパブリック証明書を追加する必要があります。
 
-1. [Azure Key Vault に秘密キーを追加](../key-vault/key-vault-get-started.md#add)し、**[キー名]** を指定します。
+1. [Azure Key Vault に秘密キーを追加](../key-vault/certificate-scenarios.md#import-a-certificate)し、**[キー名]** を指定します。
    
-2. Azure Logic Apps が Azure Key Vault で操作を実行することを承認します。 Logic Apps サービス プリンシパルへのアクセスを許可するには、次の例のように、PowerShell コマンド [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) を使います。
+2. Azure Logic Apps が Azure Key Vault で操作を実行することを承認します。 Logic Apps サービス プリンシパルへのアクセスを許可するには、次の例のように、PowerShell コマンド [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) を使います。
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、**[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
@@ -86,7 +88,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 
    | プロパティ | 値 | [説明] | 
    |----------|-------|-------------|
-   | **名前** | <*証明書名*> | 証明書の名前 (この例では "privateCert") | 
+   | **Name** | <*証明書名*> | 証明書の名前 (この例では "privateCert") | 
    | **証明書の種類** | プライベート | 証明書の種類 |
    | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、**[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 | 
    | **リソース グループ** | <*統合アカウントのリソース グループ*> | 統合アカウントのリソース グループ (この例では "MyResourceGroup") | 

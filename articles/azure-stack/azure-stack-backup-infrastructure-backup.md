@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 607356bb59550626c9fe5f71d4609b9c3e2b2fe0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251301"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097387"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
@@ -52,12 +52,16 @@ ms.locfileid: "55251301"
   7 個のバックアップを保存できる、Azure Stack からアクセス可能なファイル共有が必要です。 各バックアップは約 10 GB です。 共有には 140 GB のバックアップを保存できる必要があります。 Azure Stack インフラストラクチャ バックアップ サービスの保存場所の選択の詳細については、「[Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements)」(バックアップ コントローラーの要件) を参照してください。
 - **資格情報**  
   ドメイン ユーザー アカウントと資格情報が必要です。たとえば、Azure Stack 管理者の資格情報を使用できます。
-- **暗号化キー**  
-  バックアップ ファイルはこのキーを使用して暗号化されます。 このキーは安全な場所に保存してください。 初めて事前共有キーを設定する場合、または今後キーを交換する場合には、このインターフェイスでキーを表示することはできません。 事前共有キーの生成手順の詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)」のスクリプトを参照してください。
+- **暗号化証明書**  
+  バックアップ ファイルは証明書内の公開キーを使用して暗号化されます。 必ず、この証明書は安全な場所に保存してください。 
+
 
 ## <a name="next-steps"></a>次の手順
 
-- [管理ポータルで Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-console.md)方法を学びます。
-- [PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)方法を学びます。
-- [Azure Stack のバックアップ](azure-stack-backup-back-up-azure-stack.md )方法を学びます。
-- [致命的なデータの損失からの復旧](azure-stack-backup-recover-data.md)方法を学びます。
+[管理ポータルで Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-console.md)方法を学びます。
+
+[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)方法を学びます。
+
+[Azure Stack のバックアップ](azure-stack-backup-back-up-azure-stack.md )方法を学びます。
+
+[致命的なデータの損失からの復旧](azure-stack-backup-recover-data.md)方法を学びます。

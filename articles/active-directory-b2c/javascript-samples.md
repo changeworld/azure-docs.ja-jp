@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729270"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000815"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md) を変更してスクリプトの実行を有効にする方法について説明します。
+独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 この記事では、[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](active-directory-b2c-overview-custom.md)を変更してスクリプトの実行を有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-アプリケーションのユーザー インターフェイスの要素に[ページ コントラクト](page-contract.md) を選択します。 JavaScript を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
+アプリケーションのユーザー インターフェイスの要素に[ページ コントラクト](page-contract.md) を選択します。 JavaScript を使用する場合は、ユーザー フローまたはカスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution 要素を追加する
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor Log Analytics レコードでの標準プロパティ | Microsoft Docs
-description: Azure Monitor Log Analytics で複数のデータ型に共通するプロパティについて説明します。
+title: Azure Monitor ログ レコードの標準プロパティ | Microsoft Docs
+description: Azure Monitor ログの複数のデータ型に共通するプロパティについて説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381947"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997041"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Log Analytics レコードでの標準プロパティ
-[Log Analytics](../log-query/log-query-overview.md) のデータは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、レコードのセットとして格納されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor ログ レコードの標準プロパティ
+Azure Monitor のログ データは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、[レコードのセットとして格納](../log-query/log-query-overview.md)されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
 
 これらのプロパティの一部は、まだ実装の途中ですので、いくつかのデータ型では表示され、他のデータ型では表示されない可能性があります。
 
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics データの格納方法](../log-query/log-query-overview.md)に関するページをご覧ください。
-- [Log Analytics でのクエリの記述](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンをご覧ください。
-- [Log Analytics クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンをご覧ください。
+- [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
+- [ログ クエリの作成](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンを参照する。
+- [ログ クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンを参照する。

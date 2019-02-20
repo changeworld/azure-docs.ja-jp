@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Gra-Pe の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Gra-Pe の統合 | Microsoft Docs
 description: Azure Active Directory と Gra-Pe の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e642cba3354f4f8589e44d975c0cecf5692c5b5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433544"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188530"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>チュートリアル: Azure Active Directory と Gra-Pe の統合
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>チュートリアル:Azure Active Directory と Gra-Pe の統合
 
 このチュートリアルでは、Gra-Pe と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,7 +114,7 @@ Gra-Pe で Azure AD シングル サインオンを構成してテストする�
 
     ![image](./media/grape-tutorial/tutorial_grape_url.png)
 
-5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書(Base64)** をダウンロードして、コンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/grape-tutorial/tutorial_grape_certficate.png)
 
@@ -141,22 +142,22 @@ Gra-Pe で Azure AD シングル サインオンを構成してテストする�
 
     ![image](./media/grape-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/grape-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-gra-pe-test-user"></a>Gra-Pe テスト ユーザーの作成
 
-このセクションでは、Gra-Pe で Britta Simon というユーザーを作成します。 [Gra-Pe サポート チーム](https://www.toppantravel.com/inquiry/)と協力して、Gra-Pe プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Gra-Pe で Britta Simon というユーザーを作成します。  [Gra-Pe サポート チーム](https://www.toppantravel.com/inquiry/)と協力して、Gra-Pe プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -187,7 +188,7 @@ Gra-Pe で Azure AD シングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Gra-Pe] タイルをクリックすると、自動的に Gra-Pe アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

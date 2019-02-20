@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822512"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163769"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
@@ -333,6 +334,9 @@ Azure Information Protection アプリの条件付きアクセス ポリシー�
 Microsoft Intune Enrollment アプリの条件付きアクセス ポリシーを構成し、Intune にデバイスを登録する前に利用規約を強制することができます。 詳しくは、[組織に適した利用規約ソリューションの選択に関するブログ投稿](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)をご覧ください。
 
 ![Microsoft Intune クラウド アプリ](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> [デバイスごとの利用規約](#per-device-terms-of-use)では、Intune Enrollment アプリはサポートされていません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

@@ -14,13 +14,16 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599912"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877288"
 ---
+> [!NOTE]
+> 各 App Service Enviornment には仮想 IP (VIP) があり、これを使用して App Service Environment と通信できます。
+>
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成 #
 
 Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
@@ -34,7 +37,7 @@ Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内の
 
 ASE を作成した後は、次の変更は行えません。
 
-- 場所
+- Location
 - サブスクリプション
 - リソース グループ
 - 使用する VNet
@@ -93,7 +96,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
-    d. サブネット IP の範囲を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 サブネット IP の範囲を選択します。
 
 10. **[作成]** を選択して、ASE を作成します。 このプロセスにより、App Service プランとアプリも作成されます。 ASE、App Service プラン、およびアプリはすべて同じサブスクリプションの下に作成され、同じリソース グループに入ります。 ご使用の ASE に別のリソース グループが必要な場合、または ILB ASE が必要な場合は、単独で ASE を作成する手順に進みます。
 
@@ -129,7 +132,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
-    d. サブネット IP の範囲を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 サブネット IP の範囲を選択します。
 
 1.  [コンテナーの構成] を選択します。
     * カスタム イメージ名を入力します (Azure Container Registry、Docker Hub、および独自のプライベート レジストリを使用できます)。 独自のカスタム コンテナーを使用しない場合は、上記の手順に従って、コードを持ち込み、App Service on Linux と組み込みイメージを使用します。 

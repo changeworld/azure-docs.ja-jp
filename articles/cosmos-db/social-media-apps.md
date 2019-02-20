@@ -4,14 +4,14 @@ description: Azure Cosmos DB のストレージの柔軟性と他の Azure サ�
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/11/2019
 ms.author: maquaran
-ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042685"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100365"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 
@@ -222,7 +222,7 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 最後に触れなければならない重要な項目は**スケーラビリティ**です。 アーキテクチャを設計するときは、各コンポーネントが自動的に拡張できるようにする必要があります。 最終的に、データの処理量の増加や、地理的範囲の拡大に対応する必要があります。 Cosmos DB を使用すると、両方のタスクを**ターンキー エクスペリエンス**として実現できます。
 
-Cosmos DB では、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)をすぐに使用できます。 ドキュメントの属性として定義されている特定の**パーティション キー**に基づいて、パーティションが自動的に作成されます。 正しいパーティション キーの定義は、設計時に行う必要があります。 詳しくは、[正しいパーティション キーの選択](partitioning-overview.md#choose-partitionkey)に関する記事をご覧ください。
+Cosmos DB では、動的なパーティション分割をすぐに使用できます。 ドキュメントの属性として定義されている特定の**パーティション キー**に基づいて、パーティションが自動的に作成されます。 正しいパーティション キーの定義は、設計時に行う必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partitioning-overview.md)に関するページを参照してください。
 
 ソーシャル エクスペリエンスでは、パーティション分割戦略をクエリおよび書き込みの方法と整合させる必要があります。 (たとえば、同じパーティション内の読み取りが望ましい、書き込みを複数のパーティションに分散させることによって "ホット スポット" を回避する、など。)たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割できます。 すべては、データのクエリ方法と、ソーシャル エクスペリエンスでのデータの表示方法に依存します。
 

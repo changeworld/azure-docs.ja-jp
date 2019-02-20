@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658388"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979651"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -209,7 +209,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
 |External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。|
-|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。|
+|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。 これは 140 個の VM までに制限されています。 140 を超える VM を追加した場合、除外対象として追加した VM が意図せず起動またはシャットダウンされることがあります|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |Internal_AutomationAccountName | Automation アカウントの名前を指定します。|
@@ -333,7 +333,7 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ### <a name="exclude-a-vm"></a>VM を除外する
 
-ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りのリストです。
+ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りのリストです。 このリストは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 

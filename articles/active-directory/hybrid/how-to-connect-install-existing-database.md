@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494189"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191352"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
@@ -59,6 +60,10 @@ Azure AD Connect には、データを格納する SQL Server データベース
 2.  MSI のインストールが完了すると、Azure AD Connect ウィザードが簡易モードの設定で開始されます。 [終了] アイコンをクラスター リソースして画面を閉じます。
 ![ようこそ](./media/how-to-connect-install-existing-database/db1.png)
 3.  新しいコマンド プロンプトまたは PowerShell セッションを開始します。 フォルダー <drive>\program files\Microsoft Azure AD Connect に移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
+
+> [!NOTE]
+> データベースに既に、以前の Azure AD Connect のインストールからのデータが含まれる場合のみ、**/UseExistingDatabase** スイッチを使用します。 たとえば、ローカル データベースから完全な SQL Server データベースに移行しようとしている場合や、Azure AD Connect サーバーが再構築されて、Azure AD Connect の以前のインストールから ADSync データベースの SQL バックアップを復元した場合です。 空のデータベースを作成し、それをインストールに使用する場合は、この手順をスキップします。
+
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、**[続行]** をクリックします。
 ![ようこそ](./media/how-to-connect-install-existing-database/db3.png)

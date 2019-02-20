@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs
 description: Azure Active Directory と Award Points Top Sub/Top Team 間でのシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ed1c12768eed0265f65388984a5859b8f0630b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247756"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210732"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Azure Active Directory と Award Points Top Sub/Top Team の統合
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合
 
 このチュートリアルでは、Award Points Top Sub/Top Team と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -157,11 +158,11 @@ Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>My Award Points Top Sub/Top Team テスト ユーザーの作成
 
-このセクションでは、Award Points Top Sub/Top Team で Britta Simon というユーザーを作成します。 [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)と一緒に作業して、My Award Points Top Sub/Top Team プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Award Points Top Sub/Top Team で Britta Simon というユーザーを作成します。  [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com) と一緒に作業して、My Award Points Top Sub/Top Team プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -198,7 +199,7 @@ Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [My Award Points Top Sub/Top Team] タイルをクリックすると、My Award Points Top Sub/Top Team アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

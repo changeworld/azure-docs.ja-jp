@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435976"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245730"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -60,7 +60,7 @@ ms.locfileid: "54435976"
 
 ## <a name="vcenter-discovery-failures"></a>vCenter の検出エラー
 
-VCenter の検出のエラーを解決するには、その vCenter サーバーがバイパス リストのプロキシ設定に追加されていることを確認します。このアクティビティを実行するには、
+vCenter の検出エラーを解決するには、バイパス リスト プロキシ設定に vCenter サーバーを追加します。 
 
 - システム ユーザーのコンテンツにアクセスするために、[こちら](https://aka.ms/PsExec)から PsExec ツールをダウンロードします。
 - コマンド ライン psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" を実行して、インターネット エクスプローラーでシステム ユーザーのコンテンツを開きます。
@@ -80,6 +80,11 @@ VCenter の検出のエラーを解決するには、その vCenter サーバー
 
 Site Recovery の認証に必要な証明書を作成できません。 ローカル管理者として設定を実行していることを確認してから、設定を再実行します。
 
+## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Server Standard 評価版から Server Standard への Windows ライセンスのアクティブ化が失敗する
+
+1. OVF を通じた構成サーバーのデプロイの一部として、評価ライセンスが使用されます。このライセンスは 180 日間有効です。 この有効期限が切れる前に、このライセンスをアクティブ化する必要があります。 そうしないと、構成サーバーが頻繁にシャットダウンされ、それによりレプリケーション アクティビティが妨げられることがあります。
+2. Windows ライセンスをアクティブ化できない場合、問題を解決するために [Windows サポート チーム](https://aka.ms/Windows_Support)にお問い合わせください。
+
 ## <a name="register-source-machine-with-configuration-server"></a>ソース マシンを構成サーバーに登録する
 
 ### <a name="if-the-source-machine-runs-windows"></a>ソース マシン上で Windows が実行されている場合
@@ -89,9 +94,9 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
   UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /PassphraseFilePath <passphrase file path>
-  ```
+```
 
-設定 | 詳細
+Setting | 詳細
 --- | ---
 使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address\> /PassphraseFilePath <passphrase file path\>
 エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下にあります。
@@ -106,9 +111,146 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <configuration server IP address> -P /var/passphrase.txt
   ```
 
-設定 | 詳細
+Setting | 詳細
 --- | ---
 使用法 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <configuration server IP address\> -P <passphrase file path\>
 -i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
 -P |  必須。 パスフレーズが保存されているファイルの完全なファイル パス。 任意の有効なフォルダーを使用します。
 
+## <a name="unable-to-configure-the-configuration-server"></a>構成サーバーを構成できない
+
+仮想マシンに構成サーバー以外のアプリケーションをインストールすると、マスター ターゲットを構成できない場合があります。 
+
+構成サーバーは専用のサーバーである必要があります。共有サーバーとしての使用はサポートされません。 
+
+詳細については、[構成サーバーのデプロイ](vmware-azure-deploy-configuration-server.md#faq)に関するページの構成 FAQ を参照してください。 
+
+## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>構成サーバー データベースから保護項目の古いエントリを削除する 
+
+構成サーバーで古い保護マシンを削除するには、次の手順を使用します。 
+ 
+1. 古いエントリのソース マシンと IP アドレスを特定するには:  
+
+    1. MYSQL コマンドラインを管理者モードで開きます。 
+    2. 次のコマンドを実行します。 
+   
+        ```
+        mysql> use svsdb1;
+        mysql> select id as hostid, name, ipaddress, ostype as operatingsystem, from_unixtime(lasthostupdatetime) as heartbeat from hosts where name!='InMageProfiler'\G;
+        ```
+
+        これにより、登録されているマシンとそれらの IP アドレスおよび直近のハート ビートの一覧が返されます。 古いレプリケーション ペアのあるホストを検索します。
+
+2. 管理者特権でのコマンド プロンプトを開き、C:\ProgramData\ASR\home\svsystems\bin に移動します。 
+4. 構成サーバーから登録されているホストの詳細と古いエントリ情報を削除するには、古いエントリのソース マシンと IP アドレスを使用して次のコマンドを実行します。 
+   
+    `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
+ 
+    IP アドレスが 10.0.0.4 の "OnPrem-VM01" というソース サーバー エントリがある場合、代わりに次のコマンドを使用します。
+ 
+    `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
+ 
+5. ソース マシンで次のサービスを再起動して構成サーバーに登録します。 
+ 
+    - InMage Scout アプリケーション サービス
+    - InMage Scout VX Agent - Sentinel/Outpost
+
+## <a name="upgrade-fails-when-the-services-fail-to-stop"></a>サービスの停止に失敗するときにアップグレードが失敗する
+
+特定のサービスが停止していない場合、構成サーバーのアップグレードは失敗します。 
+
+問題を特定するために、構成サーバーで C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile に移動します。 次のエラーが見つかった場合、次の手順を使用して問題を解決します。 
+
+    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+    2018-06-28 14:28:12.944   Stopping svagents service.
+    2018-06-28 14:31:32.949   Unable to stop svagents service.
+    2018-06-28 14:31:32.949   Stopping svagents service.
+    2018-06-28 14:34:52.960   Unable to stop svagents service.
+    2018-06-28 14:34:52.960   Stopping svagents service.
+    2018-06-28 14:38:12.971   Unable to stop svagents service.
+    2018-06-28 14:38:12.971   Rolling back the install changes.
+    2018-06-28 14:38:12.971   Upgrade has failed.
+
+この問題を解決するには:
+
+次のサービスを手動で停止します。
+
+- cxprocessserver
+- InMage Scout VX Agent – Sentinel/Outpost 
+- Microsoft Azure Recovery Services エージェント 
+- Microsoft Azure Site Recovery サービス 
+- tmansvc
+  
+構成サーバーを更新するために、[統合セットアップ](service-updates-how-to.md#links-to-currently-supported-update-rollups)を再実行します。
+
+## <a name="azure-active-directory-application-creation-failure"></a>Azure Active Directory アプリケーションの作成が失敗する
+
+[Open Virtualization Application (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+) テンプレートを使用して Azure Active Directory (AAD) でアプリケーションを作成するためのアクセス許可が不十分です。
+
+この問題を解決するには、Azure portal にサインインし、次のいずれかを行います。
+
+- AAD でアプリケーション開発者ロールを要求します。 アプリケーション開発者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>プロセス サーバー/マスター ターゲットが構成サーバーと通信できない 
+
+プロセス サーバー (PS) とマスター ターゲット (MT) モジュールが構成サーバー (CS) と通信できず、それらの状態が未接続として Azure portal に表示されます。
+
+通常、これはポート 443 でのエラーが原因です。 次の手順を使用して、ポートのブロックを解除し、CS との通信を再度有効にしてください。
+
+**MARS エージェントがマスター ターゲット エージェントによって呼び出されているか確認する**
+
+マスター ターゲット エージェントが構成サーバー IP の TCP セッションを作成できるか確認するには、マスター ターゲット エージェントのログで次のようなトレースを探します。
+
+TCP <Replace IP with CS IP here>:52739 <Replace IP with CS IP here>:443 SYN_SENT 
+
+TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // ここでは IP は CS IP に置き換えます
+
+MT エージェントのログで次のようなトレースが見つかった場合、MT エージェントはポート 443 でのエラーを報告しています。
+
+    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+ 
+このエラーは、他のアプリケーションもポート 443 を使用している場合、またはファイアウォール設定によってポートがブロックされている場合に発生する可能性があります。
+
+この問題を解決するには:
+
+- ポート 443 がファイアウォールによってブロックされていないことを確認します。
+- このポートを使用している別のアプリケーションが原因でこのポートに到達できない場合、そのアプリを停止し、アンインストールします。
+  - アプリを停止できない場合は、新しいクリーン CS をセットアップします。
+- 構成サーバーを再起動します。
+- IIS サービスを再起動します。
+
+### <a name="configuration-server-is-not-connected-due-to-incorrect-uuid-entries"></a>UUID エントリが正しくないため構成サーバーに接続されない
+
+このエラーは、データベースに複数の構成サーバー (CS) インスタンス UUID のエントリがある場合に発生することがあります。 この問題は、構成サーバー VM を複製したときによく発生します。
+
+この問題を解決するには:
+
+1. vCenter から古い CS VM を削除します。 詳細については、[サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)に関するページを参照してください。
+2. 構成サーバー VM にサインインし、MySQL svsdb1 データベースに接続します。 
+3. 次のクエリを実行します。
+
+    > [!IMPORTANT]
+    >
+    > 複製した構成サーバーの UUID 詳細を入力しているか、または仮想マシンを保護するために使用しなくなった構成サーバーの古いエントリを入力しているか確認します。 正しくない UUID を入力すると、既存のすべての保護項目の情報が失われることになります。
+   
+    ```
+        MySQL> use svsdb1;
+        MySQL> delete from infrastructurevms where infrastructurevmid='<Stale CS VM UUID>';
+        MySQL> commit; 
+    ```
+4. ポータル ページを更新します。
+
+## <a name="an-infinite-sign-in-loop-occurs-when-entering-your-credentials"></a>資格情報の入力時に無限サインイン ループが発生する
+
+構成サーバー OVF で正しいユーザー名とパスワードを入力した後、Azure サインインで引き続き正しい資格情報の入力を求めるプロンプトが表示されます。
+
+この問題は、システム時刻が正しくない場合に発生することがあります。
+
+この問題を解決するには:
+
+コンピューターで正しい時刻を設定し、サインインを再試行します。 
+ 

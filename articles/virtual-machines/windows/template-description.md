@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e32e2833edc7027a984bb27b34608e4b1b898113
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6821c2000efa4a03f803871d9b33272175f1265c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767082"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113245"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
 この記事では、仮想マシンに適用される、Azure Resource Manager テンプレートの側面について説明します。 仮想マシンを作成するための完全なテンプレートについては、この記事では説明しません。完全なテンプレートには、ストレージ アカウント、ネットワーク インターフェイス、パブリック IP アドレス、および仮想ネットワークのリソース定義が必要です。 これらのリソースをまとめて定義できる方法の詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」を参照してください。
 
 VM リソースを含め、[ギャラリーにはテンプレート](https://azure.microsoft.com/documentation/templates/?term=VM)が多数あります。 テンプレートに含めることができるすべての要素をここで説明するわけではありません。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 次の例では、指定された数の VM を作成するためのテンプレートの典型的なリソース セクションを示しています。
 
@@ -163,8 +165,9 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 最新の API バージョンを取得するには、次の方法を使用してください。
 
 - REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
+- PowerShell - [Get AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
 - Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
@@ -442,7 +445,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ![拡張機能の状態の確認](./media/template-description/virtual-machines-show-extensions.png)
 
-また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
+また、**Get-AzVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
 
 ## <a name="deployments"></a>デプロイメント
 

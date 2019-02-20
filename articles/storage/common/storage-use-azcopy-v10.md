@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467120"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244608"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>AzCopy v10 (プレビュー) を使用してデータを転送する
 
@@ -54,8 +54,11 @@ AzCopy v10 では、インストールは必要ありません。 任意のコ�
 ## <a name="authentication-options"></a>認証オプション
 
 AzCopy v10 では、Azure Storage での認証時に、次のオプションを使用することができます。
-- **Azure Active Directory [BLOB と ADLS Gen2 でサポート]**。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。
-- **SAS トークン [BLOB およびファイル サービスでサポート]**。 SAS トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure Portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+- **Azure Active Directory [BLOB と ADLS Gen2 サービスでサポート]**。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。
+- **SAS トークン [BLOB とファイル サービスでサポート]**。 SAS トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure Portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+
+> [!IMPORTANT]
+> Microsoft サポートにサポート要求を送信する (またはいずれかのサード パーティが関わる問題のトラブルシューティングを行う) ときには、SAS が誤って誰かと共有されないように、実行しようとしているコマンドの修正済みバージョンを共有してください。 修正済みバージョンは、ログ ファイルの先頭にあります。 詳細については、この記事の後半の「トラブルシューティング」セクションを参照してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -206,11 +209,33 @@ set AZCOPY_CONCURRENCY_VALUE=<value>
 export AZCOPY_CONCURRENCY_VALUE=<value>
 # For MacOS
 export AZCOPY_CONCURRENCY_VALUE=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-AzCopy v10 では、すべてのジョブに対してログ ファイルとプラン ファイルが作成されます。 ログを使用することで、潜在的な問題を調査してトラブルシューティングできます。 ログには、エラーの状態 (UPLOADFAILED、COPYFAILED、DOWNLOADFAILED)、完全なパス、エラーの理由が含まれます。 ジョブのログとプラン ファイルは、%USERPROFILE\\.azcopy フォルダーにあります。
+AzCopy v10 では、すべてのジョブに対してログ ファイルとプラン ファイルが作成されます。 ログを使用することで、潜在的な問題を調査してトラブルシューティングできます。 ログには、エラーの状態 (UPLOADFAILED、COPYFAILED、DOWNLOADFAILED)、完全なパス、エラーの理由が含まれます。 ジョブ ログとプラン ファイルは、Windows では %USERPROFILE\\.azcopy フォルダーに、Mac および Linux では $HOME\\.azcopy フォルダーにあります。
+
+> [!IMPORTANT]
+> Microsoft サポートにサポート要求を送信する (またはいずれかのサード パーティが関わる問題のトラブルシューティングを行う) ときには、SAS が誤って誰かと共有されないように、実行しようとしているコマンドの修正済みバージョンを共有してください。 修正済みバージョンは、ログ ファイルの先頭にあります。
+
+### <a name="change-the-location-of-the-log-files"></a>ログ ファイルの場所を変更する
+
+必要な場合や、OS ディスクがいっぱいにならないように、ログ ファイルの場所を変更できます。
+
+```cmd
+# For Windows:
+set AZCOPY_LOG_LOCATION=<value>
+# For Linux:
+export AZCOPY_LOG_LOCATION=<value>
+# For MacOS
+export AZCOPY_LOG_LOCATION=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
+```
 
 ### <a name="review-the-logs-for-errors"></a>ログでエラーを確認する
 
