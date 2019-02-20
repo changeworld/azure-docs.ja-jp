@@ -23,14 +23,14 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   [はい]      |    はい      |
-|Azure SQL Data Warehouse     |   はい      |   [はい]       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   [はい]       |    いいえ       |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  [はい]        |  いいえ         |
-|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     [はい]     |   いいえ        |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   [はい]       |   いいえ        |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   はい      |    はい      |
+|Azure SQL Data Warehouse     |   はい      |   はい       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   はい       |    いいえ       |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   はい       |    いいえ       |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  はい        |  いいえ         |
+|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   はい       |    いいえ       |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     はい     |   いいえ        |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   はい       |   いいえ        |
 ||||
 
 <a name="tab1400a">1</a> 1400 以上の表形式モデルのみ。   
