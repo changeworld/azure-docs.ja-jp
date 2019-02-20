@@ -3,19 +3,19 @@ title: ナレッジ ベースを改善する - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
-manager: cgronlun
+manager: nitinme
 displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6feb521aa47ca813b3067451c8c77111deb60e73
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874007"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -56,7 +56,7 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
 ## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示しました。 
+アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示します。 
 
 1. アクティブ ラーニングを有効にするには、自分の**名前**をクリックし、QnA Maker ポータルの右上隅にある [**[Service Settings]\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。  
 

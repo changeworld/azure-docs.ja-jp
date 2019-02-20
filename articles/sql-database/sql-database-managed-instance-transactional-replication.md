@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database でのトランザクション レプリケーション | Microsoft Docs
-description: Azure SQL Database でスタンドアロン データベース、プールされたデータベース、インスタンス データベースを使用した SQL Server のトランザクション レプリケーションの使用について学習します。
+description: Azure SQL Database で単一データベース、プールされたデータベース、インスタンス データベースを使用した SQL Server のトランザクション レプリケーションの使用について学習します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,15 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/08/2019
+ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814114"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993811"
 ---
-# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database でのスタンドアロン データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database での単一データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
 トランザクション レプリケーションは、Azure SQL Database または SQL Server のテーブルからリモート データベースに配置されているテーブルにデータをレプリケートするための、Azure SQL Database、SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。
 
@@ -37,22 +37,21 @@ ms.locfileid: "55814114"
 
 ![SQL Database を使用したレプリケーション](media/replication-to-sql-database/replication-to-sql-database.png)
 
-
 **パブリッシャー**は、ディストリビューターに更新プログラムを送信することで一部のテーブル (アーティクル) で加えられた変更を発行するインスタンスまたはサーバーです。 オンプレミスの SQL サーバーから Azure SQL データベースへの発行は、次のバージョンの SQL Server でサポートされます。
 
-   - SQL Server 2019 (プレビュー)
-   - SQL Server 2016 から SQL 2017
-   - SQL Server 2014 SP1 CU3 以上 (12.00.4427)
-   - SQL Server 2014 RTM CU10 (12.00.2556)
-   - SQL Server 2012 SP3 以上 (11.0.6020)
-   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-   - Azure でのオブジェクトへの発行をサポートしていないその他のバージョンの SQL Server では、[データの再発行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法を利用して新しいバージョンの SQL Server にデータを移動することができます。 
+- SQL Server 2019 (プレビュー)
+- SQL Server 2016 から SQL 2017
+- SQL Server 2014 SP1 CU3 以上 (12.00.4427)
+- SQL Server 2014 RTM CU10 (12.00.2556)
+- SQL Server 2012 SP3 以上 (11.0.6020)
+- SQL Server 2012 SP2 CU8 (11.0.5634.0)
+- Azure でのオブジェクトへの発行をサポートしていないその他のバージョンの SQL Server では、[データの再発行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法を利用して新しいバージョンの SQL Server にデータを移動することができます。 
 
 **ディストリビューター**は、パブリッシャーからアーティクル内の変更を収集してサブスクライバーに配布するインスタンスまたはサーバーです。 ディストリビューターは、Azure SQL Database Managed Instance または SQL Server (パブリッシャーのバージョン以上の任意のバージョン) のいずれかになります。 
 
-**サブスクライバー**は、パブリッシャーで加えられた変更を受信しているインスタンスまたはサーバーです。 Azure SQL Database または SQL Server サーバーでは、サブスクライバーはスタンドアロン データベース、プールされたデータベース、インスタンス データベースのいずれかになります。 スタンドアロン データベースまたはプールされたデータベース上のサブスクライバーは、プッシュ サブスクライバーとして構成する必要があります。 
+**サブスクライバー**は、パブリッシャーで加えられた変更を受信しているインスタンスまたはサーバーです。 Azure SQL Database または SQL Server データベースでは、サブスクライバーは単一データベース、プールされたデータベース、インスタンス データベースのいずれかになります。 単一データベースまたはプールされたデータベース上のサブスクライバーは、プッシュ サブスクライバーとして構成する必要があります。 
 
-| Role | スタンドアロン データベースおよびプールされたデータベース | インスタンス データベース |
+| Role | 単一データベースとプールされたデータベース | インスタンス データベース |
 | :----| :------------- | :--------------- |
 | **発行元** | いいえ  | はい | 
 | **ディストリビューター** | いいえ  | はい|
@@ -63,7 +62,7 @@ ms.locfileid: "55814114"
 さまざまな[レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017)があります。
 
 
-| レプリケーション | スタンドアロン データベースおよびプールされたデータベース | インスタンス データベース|
+| レプリケーション | 単一データベースとプールされたデータベース | インスタンス データベース|
 | :----| :------------- | :--------------- |
 | [**トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
 | [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
@@ -107,11 +106,11 @@ ms.locfileid: "55814114"
 - 2 つのマネージド インスタンスが同じ場所にあります。
 - 発行および配布されたデータベースをホストしているマネージド インスタンスは、[自動フェールオーバー グループを使用して Geo レプリケーション](sql-database-auto-failover-group.md)することはできません。
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>オンプレミスのパブリッシャーおよびディストリビューターと、スタンドアロン データベース、プールされたデータベース、インスタンス データベース上のサブスクライバー 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>オンプレミスのパブリッシャーおよびディストリビューターと、単一データベース、プールされたデータベース、インスタンス データベース上のサブスクライバー 
 
 ![サブスクライバーとしての Azure SQL DB](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-この構成では、Azure SQL Database (スタンドアロン データベース、プールされたデータベース、インスタンス データベース) がサブスクライバーです。 この構成では、オンプレミスから Azure への移行がサポートされます。 サブスクライバーがスタンドアロン データベースまたはプールされたデータベース上にある場合は、プッシュ モードにする必要があります。  
+この構成では、Azure SQL Database (単一データベース、プールされたデータベース、インスタンス データベース) がサブスクライバーです。 この構成では、オンプレミスから Azure への移行がサポートされます。 サブスクライバーが単一データベースまたはプールされたデータベース上にある場合は、プッシュ モードにする必要があります。  
 
 ## <a name="next-steps"></a>次の手順
 

@@ -2,21 +2,22 @@
 title: アプリケーションへのシングル サインオン - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) でアプリケーションを構成するときに、シングル サインオンの方法を選択する方法について説明します。 ユーザーがすべてのアプリケーションのパスワードを覚えておく必要がないようにシングル サインオンを使用し、アカウント管理の管理を簡素化します。
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664031"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163072"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 この記事では、シングル サインオンの方法について説明します。アプリケーションを構成するときに最適な SSO 方法を選択するために役立ちます。
@@ -27,7 +28,7 @@ ms.locfileid: "55664031"
 
 ## <a name="choosing-a-single-sign-on-method"></a>シングル サインオンの方法の選択
 
-シングル サインオンのためにアプリケーションを構成する方法はいくつかあります。 シングル サインオン方法の選択は、アプリケーションが認証についてどのように構成されているかによって変わります。 
+シングル サインオンのためにアプリケーションを構成する方法はいくつかあります。 シングル サインオンの方法の選択は、そのアプリケーションが認証に関してどのように構成されているかによって異なります。 
 
 - クラウド アプリケーションでは、OpenID Connect、OAuth、SAML、パスワードベース、リンク、または無効化の方法をシングル サインオンに使用できます。 
 - オンプレミスのアプリケーションでは、シングル サインオンのために、パスワード ベースの統合 Windows 認証、ヘッダー ベースの方法、リンクされる方法、または無効化の方法を使用できます。 オンプレミスの選択肢は、アプリケーションのアプリケーション プロキシが構成されている場合に機能します。
@@ -58,7 +59,7 @@ ms.locfileid: "55664031"
 - [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
 ## <a name="saml-sso"></a>SAML SSO
-**SAML によるシングル サインオン**では、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます
+**SAML によるシングル サインオン**では、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。
 
 アプリケーションでサポートされている場合は、SAML ベースのシングル サインオンを選択してください。
 
@@ -85,7 +86,7 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 パスワードベースのシングル サインオンは、HTML ベースのサインイン ページを持つどのクラウド ベース アプリケーションでもサポートされます。 ユーザーは、以下の任意のブラウザーを使用できます。
 
 - Internet Explorer 11 - Windows 7 以降
-- Microsoft Edge - Windows 10 Anniversary Edition 以降 
+- Microsoft Edge - Windows 10 Anniversary Edition 以降
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 

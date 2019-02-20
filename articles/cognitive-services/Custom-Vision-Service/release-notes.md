@@ -3,21 +3,23 @@ title: リリース ノート - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: bba65a495963142e8b3201a026dc13a8cfff8e70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207362"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894413"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
 
+## <a name="january-22-2019"></a>2019 年 1 月 22 日
+- 新しい Azure リージョンのサポートが追加されました。米国西部 2、米国東部、米国東部 2、西ヨーロッパ、北ヨーロッパ、東南アジア、オーストラリア東部、インド中部、英国南部、東日本、および米国中北部です。 米国中南部のサポートは継続されます。 
 
 ## <a name="december-12-2018"></a>2018 年 12 月 12 日
 - オブジェクトの検出モデル用のエクスポートがサポートされるようになりました (オブジェクトの検出コンパクト ドメインを導入)。

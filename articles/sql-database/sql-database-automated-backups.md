@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477813"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997132"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -63,7 +63,7 @@ DTU ベースの購入モデルを使用して作成されたデータベース�
 
 #### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、既定のバックアップの保持期間は 7 日間です (スタンドアロン データベース、プールされたデータベース、インスタンス データベースの場合)。 すべての Azure SQL データベース (スタンドアロン データベース、プールされたデータベース、インスタンス データベース) の場合、[バックアップの保持期間を最大 35 日に変更](#how-to-change-the-pitr-backup-retention-period)できます。
+[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、既定のバックアップの保有期間は 7 日間です (単一、プール、およびインスタンス データベースの場合)。 すべての Azure SQL データベース (単一、プール、およびインスタンス データベース) の場合、[バックアップの保有期間を最大 35 日に変更](#how-to-change-the-pitr-backup-retention-period)できます。
 
 > [!WARNING]
 > 現在のリテンション期間を短縮した場合、新しいリテンション期間より古いすべての既存のバックアップは、使用できなくなります。 現在のリテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
@@ -80,7 +80,7 @@ PITR バックアップは、geo 冗長であり、[Azure Storage のリージ�
 
 ### <a name="backups-for-long-term-retention"></a>長期保有のためのバックアップ
 
-スタンドアロン データベースとプールされたデータベースには、Azure BLOB ストレージに対する最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
+単一データベースとプールされたデータベースには、Azure Blob Storage に対する最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
 
 PITR と同じように、LTR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
 

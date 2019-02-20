@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Hornbill の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Hornbill の統合 | Microsoft Docs
 description: Azure Active Directory と Hornbill の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 30fdb55758d5fbac41452236ebaa9f96ab9bba6b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f23a1520175827f775553e1ba949c62567cf83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163773"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201926"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>チュートリアル: Azure Active Directory と Hornbill の統合
+# <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>チュートリアル:Azure Active Directory と Hornbill の統合
 
 このチュートリアルでは、Hornbill と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -188,14 +189,14 @@ Hornbill で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-hornbill-test-user"></a>Hornbill テスト ユーザーの作成
 
 このセクションの目的は、Hornbill で Britta Simon というユーザーを作成することです。 Hornbill では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Hornbill ユーザーにアクセスしようとすると、新しいユーザーが作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Hornbill クライアント サポート チーム](https://www.hornbill.com/support/?request/)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、 [Hornbill クライアント サポート チーム](https://www.hornbill.com/support/?request/)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -232,7 +233,7 @@ Hornbill で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Hornbill] タイルをクリックすると、Hornbill アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と join.me の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と join.me の統合 | Microsoft Docs
 description: Azure Active Directory と join.me の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: dc393b8701bd72ea7f9de543de33116ea3cb5653
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f61520994bdeeab75b6d26731dee9af15b4ccda6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872276"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209542"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>チュートリアル: Azure Active Directory と join.me の統合
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>チュートリアル:Azure Active Directory と join.me の統合
 
 このチュートリアルでは、join.me と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -139,16 +140,16 @@ join.me で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="create-a-joinme-test-user"></a>join.me テスト ユーザーの作成
 
-このセクションでは、join.me で Britta Simon というユーザーを作成します。 [join.me サポート チーム](https://help.join.me/s/?language)と連携し、join.me プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、join.me で Britta Simon というユーザーを作成します。  [join.me サポート チーム](https://help.join.me/s/?language)と連携し、join.me プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -170,7 +171,7 @@ join.me で Azure AD のシングル サインオンを構成してテストす�
 
     ![image](./media/joinme-tutorial/d_assign_user.png)
 
-4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
@@ -179,7 +180,7 @@ join.me で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [join.me] タイルをクリックすると、自動的に join.me アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -11,12 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: e296606d219623c29bedca4fb0906a955a394b30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013419"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003943"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -78,7 +78,7 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
   このシナリオでは、2 種類のロールの割り当てが必要です。
 
   1. データ ファクトリ レベルで**共同作成者**組み込みロールを割り当てます。
-  2. *Microsoft.Resources/deployments/** のアクセス許可でカスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
+  2. **Microsoft.Resources/deployments/** のアクセス許可を使用して、カスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
 
 - ユーザーが PowerShell または SDK からデータ ファクトリを更新できるようにし、Azure portal では更新を行えないようにします。
 

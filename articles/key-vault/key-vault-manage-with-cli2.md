@@ -4,7 +4,7 @@ description: この記事を活用し、Azure CLI を使用した Key Vault で�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822495"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115625"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -145,18 +145,18 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-.pem ファイルに既存のキーがある場合は、Azure Key Vault にアップロードできます。 ソフトウェアまたは HSM でキーを保護することを選択できます。 次を使用し、.pem ファイルからキーをインポートし、ソフトウェアでそれを保護します。
+.pem ファイルに既存のキーがある場合は、Azure Key Vault にアップロードできます。 ソフトウェアまたは HSM でキーを保護することを選択できます。 この例では、.pem ファイルからキーをインポートし、パスワード "hVFkk965BuUv" を使用してソフトウェアでそれを保護します。
 
 ```azurecli
-az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、常に現在のバージョンを取得します。 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] を使用し、この特定のバージョンを取得します。 たとえば、**https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** です。 
 
-資格情報コンテナーにシークレットを追加します (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)。 
+資格情報コンテナーにシークレットを追加します (SQLPassword という名前のパスワードで、Azure Key Vault に "hVFkk965BuUv" の値を設定)。 
 
 ```azurecli
-az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 その URI を使用し、このパスワードを参照します。 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用して常に最新バージョンを取得し、 https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] を使用してこの特定のバージョンを取得します。 たとえば、**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** です。
@@ -164,7 +164,7 @@ az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --val
 .pem または .pfx を使用して資格情報コンテナーに証明書をインポートします。
 
 ```azurecli
-az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 それでは、作成したキー、シークレット、または証明書を見てみましょう。
@@ -203,7 +203,7 @@ Azure Active Directory にアプリケーションを登録する手順の詳細
 Azure Active Directory にアプリケーションを登録するには:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 

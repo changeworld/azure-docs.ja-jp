@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/11/2019
+ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732755"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098359"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
-この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Database Managed Instance](sql-database-managed-instance.md) に移行する方法について説明します。
+この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Database Managed Instance](sql-database-managed-instance.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、「[単一データベースまたはプールされたデータベースへの移行する](sql-database-cloud-migrate.md)」を参照してください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
 大まかには、データベースの移行プロセスは次のようになります。
 
@@ -34,7 +34,7 @@ ms.locfileid: "55732755"
 - [アプリケーションの監視](#monitor-applications)
 
 > [!NOTE]
-> 個々のデータベースを単一データベースまたはエラスティック プールに移行するには、[Azure SQL Database への SQL Server データベースの移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
+> 個々のデータベースを単一データベースまたはエラスティック プールに移行するには、[Azure SQL Database への SQL Server データベースの移行](sql-database-single-database-migrate.md)に関する記事をご覧ください。
 
 ## <a name="assess-managed-instance-compatibility"></a>マネージド インスタンスの互換性を評価する
 
@@ -47,7 +47,7 @@ ms.locfileid: "55732755"
 - オペレーティング システムやファイル システムへの直接アクセスが必要な場合、たとえばサード パーティ製のエージェントやカスタム エージェントを SQL Server と同じ仮想マシンにインストールする場合。
 - FileStream/FileTable、PolyBase、クロス インスタンス トランザクションなど、まだサポートされていない機能に対する厳密な依存関係がある場合。
 - 特定バージョンの SQL Server (たとえば 2012 など) を確実に維持する必要がある場合。
-- コンピューティング要件がパブリック プレビューでマネージド インスタンスによって提供されるものよりはるかに低く (1 つの vCore など)、データベース統合が許容可能なオプションではない場合。
+- コンピューティング要件がマネージド インスタンスによって提供されるものよりはるかに低く (1 つの vCore など)、データベース統合が許容可能なオプションではない場合。
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>最適なサイズに設定されたマネージド インスタンスにデプロイする
 

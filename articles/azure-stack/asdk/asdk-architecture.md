@@ -12,24 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238345"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958807"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit のアーキテクチャ
-Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイです。 すべてのコンポーネントは、1 台のホスト マシンで実行されている仮想マシンにインストールされます。 
+Azure Stack Development Kit (ASDK) は、1 台のホスト コンピューター上で実行される Azure Stack の単一ノード デプロイです。 Azure Stack に NAT および VPN 機能を提供するために、ホスト コンピューターにエッジ ルーティング コンポーネントがインストールされます。 Azure Stack インフラストラクチャ ロールは、物理ホスト コンピューターの Hyper-V レイヤーで実行されます。
 
-## <a name="logical-architecture-diagram"></a>論理アーキテクチャ図
-次の図は、ASDK とそのコンポーネントの論理アーキテクチャを示しています。
-
-![ASDK アーキテクチャ](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>仮想マシンのロール
 ASDK は、開発キットのホスト コンピューターにホストされている次の VM を使ってサービスを提供します。
@@ -38,7 +34,6 @@ ASDK は、開発キットのホスト コンピューターにホストされ�
 | ----- | ----- |
 | **AzS-ACS01** | Azure Stack ストレージ サービス。|
 | **AzS-ADFS01** | Active Directory フェデレーション サービス (ADFS)。  |
-| **AzS-BGPNAT01** | エッジ ルーター。Azure Stack 用の NAT 機能と VPN 機能を提供します。 |
 | **AzS-CA01** | Azure Stack ロール サービス用の証明機関サービス。|
 | **AzS-DC01** | Microsoft Azure Stack 用の Active Directory、DNS、DHCP サービス。|
 | **AzS-ERCS01** | 緊急回復コンソールの VM。 |

@@ -4,7 +4,7 @@ description: Key Vault の調整では同時呼び出しの数を制限して、
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: bryanla
-ms.openlocfilehash: 794e22b6fce77c0564a4db1b802c81513a36542f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: aa71eac9bdcc841337891a1a8c281f5c18efbf13
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747239"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107720"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -44,48 +44,97 @@ ms.locfileid: "55747239"
 
 エクスポネンシャル バックオフを実装するコードを次に示します。 
 ```
-     public async Task OnGetAsync()
-     {
-         Message = "Your application description page.";
-         int retries = 0;
-         bool retry = false;
-         try
-         {
-             /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
-             AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-             KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-             var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
-                     .ConfigureAwait(false);
-             Message = secret.Value;
+    public sealed class RetryWithExponentialBackoff
+    {
+        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
 
-             /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
-             do
-             {
-                 long waitTime = Math.Min(getWaitTime(retries), 2000000);
-                 secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
-                     .ConfigureAwait(false);
-                 retry = false;
-             } 
-             while(retry && (retries++ < 10));
-         }
-         /// <exception cref="KeyVaultErrorException">
-         /// Thrown when the operation returned an invalid status code
-         /// </exception>
-         catch (KeyVaultErrorException keyVaultException)
-         {
-             Message = keyVaultException.Message;
-             if((int)keyVaultException.Response.StatusCode == 429)
-                 retry = true;
-         }
-     }
+        public RetryWithExponentialBackoff(int maxRetries = 50,
+            int delayMilliseconds = 200,
+            int maxDelayMilliseconds = 2000)
+        {
+            this.maxRetries = maxRetries;
+            this.delayMilliseconds = delayMilliseconds;
+            this.maxDelayMilliseconds = maxDelayMilliseconds;
+        }
 
-     // This method implements exponential backoff incase of 429 errors from Azure Key Vault
-     private static long getWaitTime(int retryCount)
-     {
-         long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
-         return waitTime;
-     }
+        public async Task RunAsync(Func<Task> func)
+        {
+            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
+                this.delayMilliseconds,
+                this.maxDelayMilliseconds);
+            retry:
+            try
+            {
+                await func();
+            }
+            catch (Exception ex) when (ex is TimeoutException ||
+                ex is System.Net.Http.HttpRequestException)
+            {
+                Debug.WriteLine("Exception raised is: " +
+                    ex.GetType().ToString() +
+                    " –Message: " + ex.Message +
+                    " -- Inner Message: " +
+                    ex.InnerException.Message);
+                await backoff.Delay();
+                goto retry;
+            }
+        }
+    }
+
+    public struct ExponentialBackoff
+    {
+        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
+        private int m_retries, m_pow;
+
+        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
+            int maxDelayMilliseconds)
+        {
+            m_maxRetries = maxRetries;
+            m_delayMilliseconds = delayMilliseconds;
+            m_maxDelayMilliseconds = maxDelayMilliseconds;
+            m_retries = 0;
+            m_pow = 1;
+        }
+
+        public Task Delay()
+        {
+            if (m_retries == m_maxRetries)
+            {
+                throw new TimeoutException("Max retry attempts exceeded.");
+            }
+            ++m_retries;
+            if (m_retries < 31)
+            {
+                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
+            }
+            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
+                m_maxDelayMilliseconds);
+            return Task.Delay(delay);
+        }
+    }
 ```
+
+
+このコードはクライアント C\# アプリケーション (別の Web API クライアント マイクロサービス、ASP.NET MVC アプリケーション、さらには C\# Xamarin アプリケーション) で簡単に使用できます。 次の例では HttpClient クラスを使用して方法を示します。
+
+```csharp
+public async Task<Cart> GetCartItems(int page)
+{
+    _apiClient = new HttpClient();
+    //
+    // Using HttpClient with Retry and Exponential Backoff
+    //
+    var retry = new RetryWithExponentialBackoff();
+    await retry.RunAsync(async () =>
+    {
+        // work with HttpClient call
+        dataString = await _apiClient.GetStringAsync(catalogUrl);
+    });
+    return JsonConvert.DeserializeObject<Cart>(dataString);
+}
+```
+
+このコードは概念実証にしか適していないことに注意してください。 
 
 ### <a name="recommended-client-side-throttling-method"></a>推奨されるクライアント側のスロットル手法
 

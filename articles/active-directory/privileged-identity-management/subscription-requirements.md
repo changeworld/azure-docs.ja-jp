@@ -16,12 +16,13 @@ ms.subservice: pim
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ad64fba0288aa5663e008484d6f0d2cbdff0bca6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177253"
 ---
 # <a name="license-requirements-to-use-pim"></a>PIM を使用するためのライセンスの要件
 
@@ -33,6 +34,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
+- Microsoft 365 M5
 
 詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください。
 
@@ -63,5 +65,6 @@ Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限�
 
 ## <a name="next-steps"></a>次の手順
 
+- [PIM をデプロイする](pim-deployment-plan.md)
 - [PIM の使用を開始する](pim-getting-started.md)
 - [PIM で管理できないロール](pim-roles.md)

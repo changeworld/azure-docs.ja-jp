@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214829"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005048"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Azure Search でのクエリの種類と構成
+# <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
-Azure Search では、クエリにラウンドトリップ処理すべてが指定されます。 パラメーターによって、インデックスでドキュメントを探すための一致条件、エンジンのための実行指示、応答を形成するための命令を指定します。 具体的には、範囲に含まれるフィールド、検索方法、返すフィールド、ソートまたはフィルタリングするかどうかなどを指定できます。 明示的に指定しなかった場合は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
+Azure Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求のパラメーターによって、インデックスでドキュメントを探すための一致条件、エンジンのための実行指示、応答を形成するための命令を指定します。 
+
+クエリ要求はリッチな構造であり、範囲に含まれるフィールド、検索方法、返すフィールド、ソートまたはフィルタリングするかどうかなどを指定します。 明示的に指定しなかった場合は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
+
+### <a name="apis-and-tools-for-testing"></a>テスト用の API とツール
+
+次の表は、API とツールを使ってクエリを送信する手法の一覧です。
+
+| 手法 | 説明 |
+|-------------|-------------|
+| [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
+| [Postman などの HTTP テスト ツール](search-fiddler.md) | Azure Search にクエリを送信するために HTTP 要求ヘッダーと要求本文を設定する方法について説明します。  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 
 ## <a name="a-first-look-at-query-requests"></a>クエリ要求の概要
 
@@ -52,7 +65,7 @@ Azure Search では、クエリ実行の対象となるのは常に、要求に�
 
 次のクエリ文字列をエクスプローラーの検索バーに貼り付けます。`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>インデックスによってクエリ操作が有効になる仕組み
+## <a name="how-query-operations-are-enabled-by-the-index"></a>インデックスによってクエリ操作が有効になる仕組み
 
 Azure Search ではインデックスの設計とクエリの設計は密接に関連しています。 事前に知っておくべき基本的な事実は、各フィールドに属性が設定された*インデックス スキーマ* によって、構築できるクエリの種類が決まるということです。 
 
@@ -148,17 +161,6 @@ Azure Search では、検索結果のページングを簡単に実装できま�
 
 ### <a name="hit-highlighting"></a>検索結果の強調表示
 Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、**`highlight`**、**`highlightPreTag`**、**`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
-
-## <a name="apis-and-tools-for-testing"></a>テスト用の API とツール
-
-次の表は、API とツールを使ってクエリを送信する手法の一覧です。
-
-| 手法 | 説明 |
-|-------------|-------------|
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
-| [Fiddler や Postman などの HTTP テスト ツール](search-fiddler.md) | Azure Search にクエリを送信するために要求ヘッダーと要求本文を設定する方法について説明します。  |
-| [Azure portal の Search エクスプローラー](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>関連項目
 

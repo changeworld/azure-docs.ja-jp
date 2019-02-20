@@ -81,14 +81,14 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |[はい] |
-| **server** |DB2 サーバーの名前です。 |[はい] |
-| **database** |DB2 データベースの名前です。 |[はい] |
+| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |はい |
+| **server** |DB2 サーバーの名前です。 |はい |
+| **database** |DB2 データベースの名前です。 |はい |
 | **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ  |
-| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |[はい] |
+| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |はい |
 | **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ  |
 | **password** |ユーザー アカウントのパスワードです。 |いいえ  |
-| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の **structure**、**availability**、**policy** などのセクションは、データセットのすべての型 (Azure SQL、Azure Blob Storage、Azure Table Storage など) でほぼ同じです。

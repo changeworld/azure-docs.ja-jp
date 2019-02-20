@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468276"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995060"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>アクティブ geo レプリケーションを使用して、読み取り可能なセカンダリ データベースを作成します。
 
@@ -46,6 +46,14 @@ ms.locfileid: "55468276"
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
 アクティブ geo レプリケーションは SQL Server の [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) テクノロジーを活用し、スナップショット分離を使用してプライマリ データベース上のコミットされたトランザクションを非同期的にレプリケートします。 自動フェールオーバー グループにはアクティブ geo レプリケーションに加えてグループ セマンティックが用意されていますが、同じ非同期レプリケーション メカニズムを使用します。 特定の時点におけるセカンダリ データベースは、プライマリ データベースよりもわずかに古い可能性がありますが、セカンダリ データには部分トランザクションが含まれないことが保証されます。 リージョン間で冗長性が確保されるため、自然災害、致命的なヒューマン エラー、または悪意のある行為によってデータセンター全体またはその一部の機能が完全に失われた場合でも、アプリケーションをすばやく復旧できます。 特定の RPO データについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください。
+
+> [!NOTE]
+> 2 つのリージョン間でネットワーク障害が発生すると、接続を再確立するために 10 秒ごとに再試行します。
+> [!IMPORTANT]
+> プライマリ データベースでの重要な変更が、フェールオーバー前にセカンダリに確実にレプリケートされるようにするには、強制同期を実行して、重要な変更 (パスワードの更新など) のレプリケーションを確実に行わせることができます。 強制同期を実行すると、コミットされたトランザクションがすべてレプリケートされるまで呼び出しスレッドがブロックされるため、パフォーマンスに影響します。 詳細については、[sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) に関するページをご覧ください。 プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するには、「[sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)」を参照してください。
+
+
+
 
 次の図は、プライマリが米国中北部リージョン、セカンダリが米国中南部リージョンに構成されたアクティブ Geo レプリケーションの例を示しています。
 
@@ -94,7 +102,7 @@ ms.locfileid: "55468276"
 
 - **セカンダリ データベースの構成可能なコンピューティング サイズ**
 
-  プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 セカンダリのコンピューティング サイズが小さいと、レプリケーション遅延が大きくなる、セカンダリが利用きない、といったリスクが発生し、その結果、フェールオーバー後に重大なデータ損失が発生するリスクが高くなります。 結果として、公開済み RPO = 5 秒を保証できなくなります。 また、より大きいコンピューティング サイズにアップグレードされるまでは、フェールオーバー後にアプリケーションのパフォーマンスが、新しいプライマリのコンピューティング容量不足の影響を受けるリスクもあります。 アップグレードの時間はデータベースのサイズよって異なります。 また、現在このようなアップグレードでは、プライマリとセカンダリの両方のデータベースがオンラインである必要があるため、機能停止に対処するまで完了できません。 小さいコンピューティング サイズでセカンダリを作成する場合は、Azure portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小コンピューティング サイズを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 ログ IO データは、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) または [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) データベース ビューを使用しても取得できます。  SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください。
+  プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 セカンダリのコンピューティング サイズが小さいと、レプリケーション遅延が大きくなる、セカンダリが利用きない、といったリスクが発生し、その結果、フェールオーバー後に重大なデータ損失が発生するリスクが高くなります。 結果として、公開済み RPO = 5 秒を保証できなくなります。 また、より大きいコンピューティング サイズにアップグレードされるまでは、フェールオーバー後にアプリケーションのパフォーマンスが、新しいプライマリのコンピューティング容量不足の影響を受けるリスクもあります。 アップグレードの時間はデータベースのサイズよって異なります。 また、現在このようなアップグレードでは、プライマリとセカンダリの両方のデータベースがオンラインである必要があるため、機能停止に対処するまで完了できません。 小さいコンピューティング サイズでセカンダリを作成する場合は、Azure portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小コンピューティング サイズを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 ログ IO データは、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) または [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) データベース ビューを使用しても取得できます。  SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](sql-database-purchase-models.md)に関するページをご覧ください。
 
 - **ユーザー制御のフェールオーバーとフェールバック**
 
@@ -122,12 +130,12 @@ ms.locfileid: "55468276"
 
 前に説明したように、アクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
 
-### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: スタンドアロンおよびプールされたデータベースのフェールオーバーを管理する
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: 単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
 
 > [!IMPORTANT]
 > これらの Transact-SQL コマンドは、アクティブ geo レプリケーションにのみ適用され、フェールオーバー グループには適用されません。 そのため、それらのコマンドは、フェールオーバー グループしかサポートしていない Managed Instance にも適用されません。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
@@ -138,7 +146,7 @@ ms.locfileid: "55468276"
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |コミットされたすべてのトランザクションがレプリケートされ、アクティブ セカンダリ データベースによって認識されるまで、アプリケーションが待機状態になります。 |
 |  | |
 
-### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell:スタンドアロンおよびプールされたデータベースのフェールオーバーを管理する
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -152,7 +160,7 @@ ms.locfileid: "55468276"
 > [!IMPORTANT]
 > サンプル スクリプトについては、[アクティブ geo レプリケーションを使用した単一データベースの構成およびフェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)に関するページ、および[アクティブ geo レプリケーションを使用したプールされたデータベースの構成およびフェールオーバー](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)に関するページをご覧ください。
 
-### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API:スタンドアロンおよびプールされたデータベースのフェールオーバーを管理する
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
 
 | API | 説明 |
 | --- | --- |

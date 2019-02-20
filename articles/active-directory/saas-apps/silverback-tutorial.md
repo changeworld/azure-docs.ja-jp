@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Silverback の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Silverback の統合 | Microsoft Docs
 description: Azure Active Directory と Silverback の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b5614c061586c39e44f04f3542285e55e07f14d9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123855"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172713"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル: Azure Active Directory と Silverback の統合
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル:Azure Active Directory と Silverback の統合
 
 このチュートリアルでは、Silverback と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -134,7 +135,7 @@ Silverback で Azure AD のシングル サインオンを構成してテスト�
 
     c.  **[Import from URL]\(URL からインポートする\)** をクリックします。
     
-    d.  コピーしたメタデータ URL を貼り付け、**[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  コピーしたメタデータ URL を貼り付け、**[OK]** をクリックします。
     
     e.  **[OK]** をクリックして確定すると、値が自動的に入力されます。
     
@@ -180,7 +181,7 @@ Silverback で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-silverback-test-user"></a>Silverback テスト ユーザーを作成する
 
@@ -202,7 +203,7 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
 
     c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-    d. **[E-mail Address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[E-mail Address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (例: **Brittasimon@contoso.com**)。
 
     e. **[Password]\(パスワード\)** ボックスにパスワードを入力します。
     
@@ -248,7 +249,7 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Silverback] タイルをクリックすると、自動的に Silverback アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

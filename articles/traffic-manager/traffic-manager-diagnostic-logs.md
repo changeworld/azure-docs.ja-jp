@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: abdc50d6d3d27ab7611994089345a997afc72cae
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082644"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106463"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Azure Traffic Manager で診断ログを有効にする
 
@@ -26,29 +26,31 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
 
 ## <a name="enable-diagnostic-logging"></a>診断ログの有効化
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール 6.13.1 以降が必要です。 `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認できます。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカル環境で実行している場合は、`Login-AzureRmAccount` を実行して Azure にサインインする必要もあります。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール 1.0.0 以降が必要です。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認できます。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカル環境で実行している場合は、`Login-AzAccount` を実行して Azure にサインインする必要もあります。
 
 1. **Traffic Manager プロファイルを取得する:**
 
-    診断ログを有効にするには、Traffic Manager プロファイルの ID が必要です。 [Get-AzureRmTrafficManagerProfile](/powershell/module/AzureRM.TrafficManager/Get-AzureRmTrafficManagerProfile) を使用して、診断ログを有効にする Traffic Manager プロファイルを取得します。 出力には、Traffic Manager プロファイルの ID 情報が含まれます。
+    診断ログを有効にするには、Traffic Manager プロファイルの ID が必要です。 [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) を使用して、診断ログを有効にする Traffic Manager プロファイルを取得します。 出力には、Traffic Manager プロファイルの ID 情報が含まれます。
 
     ```azurepowershell-interactive
-    Get-AzureRmTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
+    Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
 2. **Traffic Manager プロファイルの診断ログを有効にする:**
 
-    前のステップで取得した ID を使用して Traffic Manager プロファイルの診断ログを有効にするには、[Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
+    前のステップで取得した ID を使用して Traffic Manager プロファイルの診断ログを有効にするには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
 
       ```azurepowershell-interactive
-    Set-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
+    Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **診断の設定を検証する:**
 
-      [Get-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermdiagnosticsetting?view=latest) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
+      [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
 
      ```azurepowershell-interactive
-     Get-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
+     Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
       Traffic Manager プロファイル リソースに関連付けられているすべてのログ カテゴリが有効と表示されることを確認します。 また、ストレージ アカウントが正しく設定されていることを検証します。
 

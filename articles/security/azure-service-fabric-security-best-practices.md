@@ -4,7 +4,7 @@ description: この記事は、Azure Service Fabric のセキュリティに関�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391226"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114707"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -173,7 +173,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
     キー コンテナーは、デプロイが有効になっている必要があります。 デプロイが有効になっていないと、コンピューティング リソース プロバイダーがコンテナーから証明書を取得し、VM インスタンスに証明書をインストールすることができなくなります。
 
-キー コンテナーを設定する方法の詳細については、「[Azure Key Vault の概要](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)」を参照してください。
+キー コンテナーを設定する方法の詳細については、「[Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)」を参照してください。
 
 ## <a name="assign-users-to-roles"></a>ユーザーをロールに割り当てる
 クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (読み取り専用と管理者) にユーザーを割り当てます。ロールの割り当てには、Azure Portal を使用します。

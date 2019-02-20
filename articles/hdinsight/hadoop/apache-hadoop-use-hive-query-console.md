@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e568a8b7cfb21483f447b8244056de292e21093f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409702"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169403"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -80,10 +80,7 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
-Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
-
-* [Windows ベースの HDInsight で Apache Tez UI を使用する](../hdinsight-debug-tez-ui.md)
-* [Linux ベースの HDInsight で Apache Ambari Tez ビューを使用する](../hdinsight-debug-ambari-tez-view.md)
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください:[Linux ベースの HDInsight で Apache Ambari Tez ビューを使用する](../hdinsight-debug-ambari-tez-view.md)。
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

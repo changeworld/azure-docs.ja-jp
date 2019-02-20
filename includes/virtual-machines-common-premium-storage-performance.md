@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757572"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213095"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -63,7 +63,7 @@ Premium Storage ディスクを高スケール VM に接続すると、そのデ
 
 ## <a name="latency"></a>Latency
 
-待機時間は、アプリケーションが 1 つの要求を受信し、その要求をストレージ ディスクに送信して、クライアントに応答を送信するまでの所要時間です。 これは、IOPS とスループットに加え、アプリケーションのパフォーマンスの重要な評価基準となります。 Premium Storage ディスクの待機時間は、ディスクが要求の情報を取得し、それをアプリケーションに伝えるまでの所要時間です。 Premium Storage は、一貫した低待機時間を実現します。 Premium Storage ディスクの ReadOnly ホスト キャッシュを有効にすると、読み取り待機時間をさらに短縮できます。 ディスク キャッシュについては、後述の「 *アプリケーションのパフォーマンスの最適化*」で詳しく説明します。
+待機時間は、アプリケーションが 1 つの要求を受信し、その要求をストレージ ディスクに送信して、クライアントに応答を送信するまでの所要時間です。 これは、IOPS とスループットに加え、アプリケーションのパフォーマンスの重要な評価基準となります。 Premium Storage ディスクの待機時間は、ディスクが要求の情報を取得し、それをアプリケーションに伝えるまでの所要時間です。 Premium Storage は、一貫した低待機時間を実現します。 Premium ディスクは、ほとんどの IO 操作で待ち時間が 10 ミリ秒未満となるように設計されています。 Premium Storage ディスクの ReadOnly ホスト キャッシュを有効にすると、読み取り待機時間をさらに短縮できます。 ディスク キャッシュについては、後述の「 *アプリケーションのパフォーマンスの最適化*」で詳しく説明します。
 
 IOPS とスループットを向上させるためにアプリケーションを最適化すると、アプリケーションの待機時間に影響します。 アプリケーションのパフォーマンスを調整したら、予期しない待機時間の長い動作を回避するために、アプリケーションの待機時間を必ず評価してください。
 

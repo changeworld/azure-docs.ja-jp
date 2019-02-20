@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245975"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962249"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
@@ -41,8 +41,9 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシン ディスクのパフォーマンス | ディスクの種類とサイズによって異なります。 | ディスクが接続されている VM のサイズによって異なります。「[Azure Stack でサポートされている仮想マシンのサイズ](azure-stack-vm-sizes.md)」を参照してください。
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
 | Azure Instance Metadata Service | Azure Instance Metadata Service は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができます。  | Azure Stack では、Instance Metadata Service がサポートされません。 |
-|仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
-|仮想マシン スケール セット|自動スケール サポート|自動スケールはサポートされていません。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
+| 仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)|
+| 仮想マシン スケール セット|自動スケール サポート|自動スケールはサポートされていません。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。 |
+| 仮想マシンの診断 | Linux の VM 診断 | Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 
@@ -54,7 +55,7 @@ Azure Stack は、リソースの過剰消費を防ぐため、(サーバー ロ
 
 次の表は、Azure Stack でサポートされている VM とその構成の一覧です。
 
-| type           | サイズ          | サポートされるサイズの範囲 |
+| type           | Size          | サポートされるサイズの範囲 |
 | ---------------| ------------- | ------------------------ |
 |汎用 |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |汎用 |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
@@ -71,7 +72,7 @@ Azure Stack は、リソースの過剰消費を防ぐため、(サーバー ロ
 
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 
- Azure Stack には、拡張機能の小規模なセットが含まれています。 更新プログラムおよび追加の拡張機能は、Marketplace シンジケーションを通じて入手できます。
+Azure Stack には、拡張機能の小規模なセットが含まれています。 更新プログラムおよび追加の拡張機能は、Marketplace シンジケーションを通じて入手できます。
 
 実際の Azure Stack 環境で利用できる仮想マシン拡張機能の一覧を取得するには、次の PowerShell スクリプトを使用します。
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+VM のデプロイで拡張機能のプロビジョニングに時間がかかりすぎる場合は、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。
 
 ## <a name="api-versions"></a>API のバージョン
 

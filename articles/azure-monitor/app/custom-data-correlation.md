@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103114"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994818"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -28,19 +28,19 @@ Application Insights は、例外、トレース、ページ ビューなど、�
 
 - データ エンリッチメントやルックアップ テーブル: たとえば、サーバー名を補う情報として、サーバーの所有者やそのサーバーがあるラボの場所を追加します。 
 - Application Insights 以外のデータ ソースとの関連付け: たとえば Web ストアでの購入に関するデータと、購入フルフィルメント サービスからの情報とを関連付けることで、出荷予定時刻がどの程度正確であったかを調査します。 
-- まったく独自のデータ: Application Insights を支えている Log Analytics データ プラットフォームのクエリ言語とパフォーマンスは、Microsoft の多くのお客様に支持されており、そうしたお客様が Application Insights とはまったく関係のないデータも照会したいと考えています。 たとえば、[こちら]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)に記載されているようなスマート ホーム導入の一環として、ソーラー パネルのパフォーマンスを追跡する用途が考えられます。
+- まったく独自のデータ: Application Insights を支えている Azure Monitor ログ プラットフォームのクエリ言語とパフォーマンスは、Microsoft の多くのお客様に支持されており、そうしたお客様が Application Insights とはまったく関係のないデータも照会したいと考えています。 たとえば、[こちら]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)に記載されているようなスマート ホーム導入の一環として、ソーラー パネルのパフォーマンスを追跡する用途が考えられます。
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>カスタム データを Application Insights のデータと関連付ける方法 
 
-Application Insights は Log Analytics の強力なデータ プラットフォームによって支えられているため、データの取り込みには、Log Analytics の機能をフル活用することができます。 さらに、Log Analytics からアクセスできるデータとカスタム データとを関連付ける "join" 演算子を使ってクエリを記述することになります。 
+Application Insights は Azure Monitor の強力なログ プラットフォームによって支えられているため、データの取り込みには、Azure Monitor の機能をフル活用することができます。 さらに、Azure Monitor ログからアクセスできるデータとカスタム データとを関連付ける "join" 演算子を使ってクエリを記述することになります。 
 
 ## <a name="ingesting-data"></a>データの取り込み
 
-このセクションでは、Log Analytics にデータを取り込む方法について確認します。
+このセクションでは、Azure Monitor ログにデータを取り込む方法について確認します。
 
-Log Analytics ワークスペースがまだない場合は、[こちらの指示]( https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm) (「ワークスペースの作成」の手順を含む) に従って、新たにプロビジョニングします。
+Log Analytics ワークスペースがまだない場合は、[こちらの指示](../learn/quick-collect-azurevm.md) (「ワークスペースの作成」の手順を含む) に従って、新たにプロビジョニングします。
 
-Log Analytics へのデータの送信を開始するにあたって、 いくつかのオプションがあります。
+Azure Monitor へのログ データの送信を開始するには、 いくつかのオプションがあります。
 
 - 同期メカニズムを使用する場合は、[データ コレクター API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) を直接呼び出すか、または Microsoft のロジック アプリ コネクタを使用できます。[Azure Log Analytics] から [データを送信する] オプションを選択してください。
 
@@ -50,9 +50,9 @@ Log Analytics へのデータの送信を開始するにあたって、 いく�
 
 ## <a name="correlating-data"></a>データの関連付け
 
-Application Insights は、Log Analytics のデータ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)を使用して、Log Analytics に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
+Application Insights は、Azure Monitor のログ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)を使用して、Azure Monitor に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
 
-たとえば、"myLA" という Log Analytics ワークスペースの "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所とを関連付けたければ、Application Insights または Log Analytics のコンテキストから次のクエリを実行します。
+たとえば、"myLA" という Log Analytics ワークスペースの "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所を関連付けたい場合は、Application Insights または Azure Monitor のコンテキストから次のクエリを実行します。
 
 ```
 app('myAI').requests

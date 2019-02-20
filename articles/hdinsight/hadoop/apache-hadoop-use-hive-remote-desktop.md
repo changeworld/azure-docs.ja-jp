@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e0641f2d9427133f951ef63720b4efdac4defe5
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 60bed4786b61bc96b918511b63ae89daa1cba1c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409056"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217430"
 ---
 # <a name="use-apache-hive-with-apache-hadoop-on-hdinsight-with-remote-desktop"></a>HDInsight 上の Apache Hadoop で、リモート デスクトップを使用して Apache Hive を使用する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -55,8 +55,8 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     これらのステートメントは次のアクションを実行します。
 
-   * **DROP TABLE**:テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-   * **CREATE EXTERNAL TABLE**:新しい "外部" テーブルを Hive に作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+   * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+   * **CREATE EXTERNAL TABLE**: 新しい "外部" テーブルを Hive に作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
      > [!NOTE]  
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
@@ -64,7 +64,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
      >
      >
-   * **ROW FORMAT**:Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+   * **ROW FORMAT**: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION**:Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
    * **SELECT**:**t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
@@ -103,10 +103,7 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
-Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
-
-* [Windows ベースの HDInsight で Apache Tez UI を使用して Tez ジョブをデバッグする](../hdinsight-debug-tez-ui.md)
-* [Linux ベースの HDInsight で Apache Ambari ビューを使用して Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください:[Linux ベースの HDInsight で Apache Ambari Tez ビューを使用する](../hdinsight-debug-ambari-tez-view.md)。
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

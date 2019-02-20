@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250769"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998707"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する 
 
@@ -238,15 +238,15 @@ ms.locfileid: "50250769"
 * 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
 * Jpg/Png/BmpImage 要素には、Start、Step、Range の各文字列属性があります。これらは次のように解釈できます。
 
-  * 負ではない整数の場合はフレーム番号 (例: "Start": "120")
-  * % サフィックス付きで表現されている場合は、ソース期間に対する相対値 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  (例: "Start": "00:01:00")
+  * 負でない整数である場合は、フレーム番号 (例: "Start": "120")
+  * % サフィックス付きで表現されている場合は、ソース期間に相対的 (例: "Start": "15%")
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  たとえば、"Start": "00:01:00"
 
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
 
-    また、Start は特殊なマクロの {Best} もサポートしています。このマクロは、コンテンツの最初の "関連する" フレームを決定しようと試みます。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
-  * 既定: Start:{Best}
-* 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
+    さらに、Start は、コンテンツの最初の "関連する" フレームを決定しようとする特殊なマクロ {Best} もサポートしています。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
+  * 既定値: Start:{Best}
+* 画像の形式ごとに出力形式を明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
 ## <a id="trim_video"></a>動画をトリミングする (クリッピング)
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。 エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[こちらのブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
@@ -752,7 +752,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 
 ## <a id="audio_only"></a>オーディオのみのプリセット
-このセクションでは、2 つのオーディオのみの MES プリセット (AAC Audio と AAC Good Quality Audio) を示します。
+このセクションでは、AAC Audio と AAC Good Quality Audio という 2 つのオーディオのみの MES プリセットを示します。
 
 ### <a name="aac-audio"></a>AAC Audio
     {

@@ -13,27 +13,29 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: aac58cc0887c566c7377edf08f5a86e2d12cdf28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299642"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993236"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
-この記事には、Microsoft で利用可能な[管理ソリューションの](solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
+この記事には、Microsoft で利用可能な[管理ソリューションの](solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Azure Monitor へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="list-of-management-solutions"></a>管理ソリューションの一覧
 
-次の表に、Microsoft が提供する Azure の[管理ソリューション](solutions.md)を示します。 列のエントリは、該当のソリューションではその手法を使用して Log Analytics にデータを収集することを意味します。  ソリューションのどの列にも印がない場合は、別の Azure サービスから直接 Log Analytics に書き込みが行われます。 詳細については、各ソリューションの詳しいドキュメントへのリンクを確認してください。
+次の表に、Microsoft が提供する Azure の[管理ソリューション](solutions.md)を示します。 列のエントリは、該当のソリューションではその手法を使用して Azure Monitor にデータを収集することを意味します。  ソリューションのどの列にも印がない場合は、別の Azure サービスから直接 Azure Monitor に書き込みが行われます。 詳細については、各ソリューションの詳しいドキュメントへのリンクを確認してください。
 
 列の説明を次に示します。
 
-- **Microsoft Monitoring Agent** - Windows および Linux 上で使用される、SCOM から管理パックを、また、Azure から管理ソリューションを実行するエージェント。 この構成では、エージェントは Operations Manager 管理グループに接続されずに、直接 Log Analytics に接続されます。 
-- **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Log Analytics に接続されている [Operations Manager 管理グループに接続](../../azure-monitor/platform/om-agents.md)されます。 
+- **Microsoft Monitoring Agent** - Windows および Linux 上で使用される、SCOM から管理パックを、また、Azure から管理ソリューションを実行するエージェント。 この構成では、エージェントは Operations Manager 管理グループに接続されずに、直接 Azure Monitor に接続されます。 
+- **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Azure Monitor に接続されている [Operations Manager 管理グループに接続](../../azure-monitor/platform/om-agents.md)されます。 
 -  **Azure Storage** - ソリューションは、Azure ストレージ アカウントからデータを収集します。 
 - **Operations Manager が必要か** - 接続された Operations Manager 管理グループが、該当の管理ソリューションによるデータ収集を必要とします。 
-- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../../azure-monitor/platform/om-agents.md)場合、データは管理サーバーから Log Analytics へ送信されます。 この場合、エージェントが直接、Log Analytics に接続される必要はありません。 このボックスに印がない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Log Analytics に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)経由で Log Analytics と通信できる必要があります。
+- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../../azure-monitor/platform/om-agents.md)場合、データは管理サーバーから Azure Monitor に送信されます。 この場合、エージェントが直接 Azure Monitor に接続される必要はありません。 このボックスにチェックマークがない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Azure Monitor に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)経由で Azure Monitor と通信できる必要があります。
 - **収集の頻度** - 管理ソリューションによってデータが収集される頻度を示します。 
 
 

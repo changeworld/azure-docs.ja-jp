@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765485"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997093"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
@@ -65,15 +65,15 @@ Kubernetes の Marketplace 項目のプラン、オファー、サブスクリ�
 
 ID 管理サービスのために Active Directory Federated Services (AD FS) を使用する場合は、Kubernetes クラスターをデプロイするユーザーのサービス プリンシパルを作成する必要があります。
 
-1. サービス プリンシパルの作成に使用する証明書を作成し、エクスポートします。 下記のコード スニペットは、自己署名証明書を作成する方法を示しています。 
+1. サービス プリンシパルを作成するために使用される自己署名証明書を作成してエクスポートします。 
 
     - 次の情報が必要です。
 
        | 値 | 説明 |
        | ---   | ---         |
-       | パスワード | 証明書のパスワード。 |
-       | ローカルの証明書パス | 証明書のパスとファイル名。 次に例を示します。`path\certfilename.pfx` |
-       | 証明書名 | 証明書の名前。 |
+       | パスワード | 証明書の新しいパスワードを入力します。 |
+       | ローカルの証明書パス | 証明書のパスとファイル名を入力します。 次に例を示します。`c:\certfilename.pfx` |
+       | 証明書名 | 証明書の名前を入力します。 |
        | 証明書ストアの場所 |  たとえば、`Cert:\LocalMachine\My` のように指定します。 |
 
     - 管理者特権のプロンプトで PowerShell を開きます。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
@@ -82,8 +82,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. 証明書を使用したサービス プリンシパルの作成。
+2.  PowerShell セッションに表示される新しい証明書 ID `1C2ED76081405F14747DC3B5F76BB1D83227D824` を書きとめます。 この ID は、サービス プリンシパルを作成するときに使用されます。
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. 証明書を使用したサービス プリンシパルの作成。
 
     - 次の情報が必要です。
 
        | 値 | 説明                     |
        | ---   | ---                             |
        | ERCS IP | ASDK では、特権エンドポイントは通常 `AzS-ERCS01` です。 |
-       | アプリケーション名 | アプリケーションのサービス プリンシパルの簡易名。 |
-       | 証明書ストアの場所 | 証明書を保存したコンピューター上のパス。 次に例を示します。`Cert:\LocalMachine\My\<someuid>` |
+       | アプリケーション名 | アプリケーションのサービス プリンシパルの簡易名を入力します。 |
+       | 証明書ストアの場所 | 証明書を保存したコンピューター上のパス。 これは、最初の手順で生成されたストアの場所と証明書 ID によって示されます。 次に例を示します。`Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - 管理者特権のプロンプトで PowerShell を開きます。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
+       メッセージが表示されたら、次の資格情報を使用して特権エンドポイントに接続します。 
+        - ユーザー名: CloudAdmin アカウントを <Azure Stack domain>\cloudadmin の形式で指定します。 (ASDK の場合、ユーザー名は azurestack\cloudadmin です。)
+        - Password (パスワード):インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
+
+    - 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ ID 管理サービスのために Active Directory Federated Services (AD FS) �
 
 1. **+ Add from Azure**(+ Azure から追加) を選択します。
 
-1. 「 `UbuntuServer` 」を入力します。
+1. 「 `Ubuntu Server` 」を入力します。
 
 1. サーバーの最新バージョンを選択します。 通常版を確認して、最新バージョンがインストールされていることを確認してください。
     - **発行元**: Canonical

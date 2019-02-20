@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302123"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883136"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Azure Data Box Gateway (プレビュー) リリース ノート
 
@@ -52,9 +52,8 @@ ms.locfileid: "55302123"
 | **7.** |更新 | アクセス許可とアクセス制御リスト (ACL) は、更新操作の間で保持されません。  | |
 | **8.** |コピー | データのコピーが次のエラーで失敗します。ファイル システム制限のため、要求された操作を完了できませんでした。  |このエラーは、ファイルに関連付けられている代替データ ストリーム (ADS) が、128 KB (ReFS の上限) を超えたときに発生します。  |
 | **9.** |シンボリック リンク |シンボリック リンクはサポートされていません。  |ディレクトリへのシンボリック リンクにより、ディレクトリがオフラインとマークされなくなります。 その結果、ディレクトリがオフラインであり、関連付けられているすべてのコンテンツが Azure に完全にアップロードされたことを示す灰色のクロスがディレクトリに表示されなくなることがあります。 |
-| **10.** |オンライン ヘルプ |Azure portal の [ヘルプ] リンクがドキュメントにリンクしないことがあります。|[ヘルプ] リンクは一般公開リリースでは機能します。 |
-
-
+| **10.** |共有 |ブロック BLOB の共有に対して、ページ BLOB を使用して既存のコンテナーを更新すると (またはその逆)、ファイルの変更でのアップロード エラーにつながります。  |この動作は、以下の手順に従う場合に見られます。 <li> デバイスにブロック BLOB の共有を作成します。 </li><li> 共有と、ページ BLOB がある既存のクラウド コンテナーを関連付けます。</li><li>その共有を更新します。 </li><li>クラウドにページ BLOB として既に保存されている、更新されたファイルの一部を変更します。</li> アップロード エラーが表示されます。 |
+| **11.** |オンライン ヘルプ |Azure portal の [ヘルプ] リンクがドキュメントにリンクしないことがあります。|[ヘルプ] リンクは一般公開リリースでは機能します。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 1664e19f3a238b2986af4669c3853a54d7c7e328
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6825524667c473496b62cecbce54f6e249742bae
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250825"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977713"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 
@@ -52,11 +52,10 @@ Microsoft は、毎月ソフトウェア更新プログラム パッケージを
 更新を計画し、更新プログラムを管理する方法と、現在のバージョンを確認する方法については、[更新プログラムの管理の概要](azure-stack-updates.md)にあるドキュメントをご確認ください。
 
 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。
-
+- [Azure Stack 1901 更新プログラム](azure-stack-update-1901.md)
 - [Azure Stack 1811 更新プログラム](azure-stack-update-1811.md)
 - [Azure Stack 1809 更新プログラム](azure-stack-update-1809.md)
 - [Azure Stack 1808 更新プログラム](azure-stack-update-1808.md)
-- [Azure Stack 1807 更新プログラム](azure-stack-update-1807.md)
 
 ## <a name="hotfixes"></a>修正プログラム
 

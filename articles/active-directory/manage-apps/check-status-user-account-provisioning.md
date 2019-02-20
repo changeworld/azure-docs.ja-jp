@@ -3,8 +3,8 @@ title: SaaS アプリケーションへの Azure Active Directory 自動ユー�
 description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203914"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206992"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -64,7 +65,7 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 * [初期同期](user-provisioning.md#what-happens-during-provisioning)が完了したかどうか。
 
-* プロビジョニング プロセスが検疫の対象となったかどうかと、検疫状態になった理由 (たとえば、無効な管理者資格情報のためにターゲット システムとの通信に失敗した)
+* プロビジョニング プロセスが検疫の対象となったかどうかと、検疫状態になった理由 (たとえば、無効な管理者資格情報のためにターゲット システムとの通信に失敗した)。
 
 プロビジョニング概要レポートは、プロビジョニング ジョブの操作の正常性をチェックするために、管理者が最初に確認するものです。
 

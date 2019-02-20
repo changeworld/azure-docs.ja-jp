@@ -1,25 +1,18 @@
 ---
 title: Azure Resource Health の FAQ | Microsoft Docs
 description: Azure Resource Health の概要
-services: Resource health
-documentationcenter: dev-center-name
-author: BernardoAMunoz
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.date: 01/29/2019
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146204"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884540"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -38,9 +31,9 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>正常性状態はそれぞれ何を意味しますか。
 正常性状態には次の 3 種類があります。
-- 使用可能: このリソースに影響を与える可能性のある既知の問題は、この Azure プラットフォームにはありません。
-- 使用不可: リソースに影響を与えている問題が Resource Health によって検出されました。
-- 不明: リソースの正常性に関する情報の受信が停止されているため、リソースの正常性を Resource Health で判断できません。 
+- 使用可能:このリソースに影響を与える可能性のある既知の問題は、この Azure プラットフォームにはありません
+- 使用不可:リソースに影響を与えている問題が Resource Health によって検出されました
+- 不明:リソースの正常性に関する情報の受信が停止されているため、リソースの正常性を Resource Health で判断できません。 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>不明な状態とはどういう状態ですか。 リソースに何か問題がありますか。
 正常性状態が "不明" に設定されるのは、Resource Health で特定のリソースに関する情報の受信が停止されているときです。 この状態はリソースの状態を明確に示しているわけではありませんが、問題が発生している場合は、Azure の問題を示している可能性があります。

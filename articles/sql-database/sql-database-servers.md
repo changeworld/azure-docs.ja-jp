@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: db82c109e6ae807addafd4d188a24609c4066cd9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756650"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100678"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database サーバーとその管理
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Azure SQL Database サーバーとは
 
-SQL Database サーバーは、複数のスタンドアロン データベース、または[プールされた](sql-database-elastic-pool.md)データベース、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-auto-failover-group.md)などの中央管理ポイントとして機能する論理構築物です。SQL Database サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL データベースを作成するには、先に SQL Database サーバーが存在している必要があります。 SQL Database サーバーによって管理されるすべてのデータベースは、SQL Database サーバーと同じリージョン内で作成されます。
+SQL Database サーバーは、複数の単一データベースまたは[プールされた](sql-database-elastic-pool.md)データベース、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-auto-failover-group.md)の中央管理ポイントとして機能する論理構築物です。SQL Database サーバーは、そのリソース グループと別のリージョンに存在していてもかまいません。 Azure SQL データベースを作成するには、先に SQL Database サーバーが存在している必要があります。 SQL Database サーバーによって管理されるすべてのデータベースは、SQL Database サーバーと同じリージョン内で作成されます。
 
 SQL Database サーバーは、オンプレミスでなじみのある SQL Server インスタンスとは異なります。 具体的には、SQL Database サービスは、データベースを管理する SQL Database サーバーに関連したそれらのデータベースの場所について保証しません。また、インスタンス レベルのアクセスまたは機能を公開しません。 対照的に、マネージド インスタンスのインスタンス データベースは、オンプレミス環境の SQL Server と同じ方法で、すべて同じ場所に配置されます。
 
@@ -143,7 +143,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 > Transact-SQL を利用してサーバーを作成または削除することはできません。
 >
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL データベースを変更します。 |
@@ -168,7 +168,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 
 Azure SQL のサーバー、データベース、ファイアウォールを作成して管理するには、以下の REST API 要求を使います。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
 |[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
@@ -189,5 +189,5 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 
 ## <a name="next-steps"></a>次の手順
 
-- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-cloud-migrate.md)」を参照してください。
+- SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

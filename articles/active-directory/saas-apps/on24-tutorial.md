@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ON24 Virtual Environment SAML Connection の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ON24 Virtual Environment SAML Connection の統合 | Microsoft Docs
 description: Azure Active Directory と ON24 Virtual Environment SAML Connection の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ec18f0013a7fa640395a8b8bedd9df8b0924c3a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0827895d58b0b7633ee4543495014c62b5394312
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071064"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209491"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル: Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
+# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル:Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
 
 このチュートリアルでは、ON24 Virtual Environment SAML Connection と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -157,11 +158,11 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
     c. **[追加の URL を設定します]** をクリックします。 
 
-    d. **[リレー状態]** テキスト ボックスに、URL `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>` を入力します
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** テキスト ボックスに、URL `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>` を入力します
 
     e. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** テキスト ボックスに次の URL を入力します: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 
-6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
+6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定)** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
 
     ![image](./media/on24-tutorial/tutorial_on24_certificate.png) 
 
@@ -179,22 +180,22 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
     ![image](./media/on24-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/on24-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-an-on24-virtual-environment-saml-connection-test-user"></a>ON24 Virtual Environment SAML Connection テスト ユーザーの作成
 
-このセクションでは、ON24 Virtual Environment SAML Connection に Britta Simon というユーザーを作成します。 [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)と協力して、ON24 Virtual Environment SAML Connection プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ON24 Virtual Environment SAML Connection に Britta Simon というユーザーを作成します。  [ON24 Virtual Environment SAML Connection サポート チーム](https://www.on24.com/about-us/support/)と協力して、ON24 Virtual Environment SAML Connection プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -225,7 +226,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [ON24 Virtual Environment SAML Connection]\(ON24 Virtual Environment SAML Connection\) タイルをクリックすると、ON24 Virtual Environment SAML Connection アプリケーションに自動的にサインインします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

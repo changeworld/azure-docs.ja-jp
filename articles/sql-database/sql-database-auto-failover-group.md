@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468701"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004249"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
 自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、(現在、マネージド インスタンスのパブリック プレビュー段階である) マネージド インスタンスのすべてのデータベースの別のリージョンへのレプリケーションおよびフェールオーバーを管理することができます。 [アクティブ geo レプリケーション](sql-database-active-geo-replication.md)と同じ基礎となるテクノロジが使用されます。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて SQL Database サービスにデリゲートすることもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL データベース サービスの可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 フェールオーバー グループ内にあるデータベース用のプライマリ サーバーとセカンダリ サーバーは両方とも、同一のサブスクリプションである必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを別のリージョンの 1 つのセカンダリ サーバーにのみレプリケートできます。
 
 > [!NOTE]
-> SQL Database サーバー上のスタンドアロンまたはプールされたデータベースの操作時に、同じまたは異なるリージョンで複数のセカンダリが必要な場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用します。
+> SQL Database サーバー上の単一またはプールされたデータベースの操作時に、同じまたは異なるリージョンで複数のセカンダリが必要な場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用します。
 
 自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、グループ内で 1 つ以上のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 さらに、自動フェールオーバー グループには、フェールオーバー中にそのまま残る読み取り/書き込みリスナー エンドポイントと読み取り専用リスナー エンドポイントが用意されています。 手動または自動フェールオーバーのどちらをアクティブ化するにしても、フェールオーバーはグループ内のすべてのデータベースをプライマリに切り替えます。 データベースのフェールオーバーが完了した後、DNS レコードが自動的に更新され、エンドポイントが新しいリージョンにリダイレクトされます。 特定の RPO および RTO データについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
@@ -331,7 +331,7 @@ ms.locfileid: "55468701"
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API:スタンドアロン データベースまたはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 
 | API | 説明 |
 | --- | --- |

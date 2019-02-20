@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f3a98af11d551a94b79e2b326657b0bc1f4c803e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ca88af6b62b984e0a61326cdebcb2d7411e49ed3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249967"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998469"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 Multiple Bitrate 4x3 for iOS
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
@@ -29,7 +29,7 @@ ms.locfileid: "50249967"
  このプリセットにより、GOP 単位でアラインメントされた 8,500 kbps から 200 kbps までの一連の MP4 ファイル 8 個と、ステレオ AAC オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 たとえば、1920 x 1080、1280 x 720、1080 x 576、640 x 360 のようにします。 1280 x 720、720 x 480、640 x 360 などの縦横比を組み合わせて使用しないでください。  
+>  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 例: 1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
   
  XML  
   

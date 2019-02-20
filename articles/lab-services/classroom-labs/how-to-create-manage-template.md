@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815246"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960192"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボ テンプレートを作成し、管理する
 ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。 ラボ ユーザーに表示されるテンプレートの名前と説明を指定できます。 その後、テンプレートを発行し、ラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。 テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。
@@ -103,7 +103,12 @@ ms.locfileid: "55815246"
 1. 警告を確認し、**[開始]** を選択します。 
 
     ![テンプレートの開始 - 警告](../media/how-to-create-manage-template/start-template-warning.png)
+2. **[テンプレート]** セクションのラボ タイルに状態が表示されます。
+
+    ![テンプレートの開始 - 状態](../media/how-to-create-manage-template/template-start-status.png)
 1. 開始後、VM に接続するには、**[接続]** を選択して指示に従います。 
+
+    ![テンプレート VM への接続または停止](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. 学生がラボの作業を行うために必要なソフトウェア (Visual Studio、Azure Storage Explorer など) をインストールします。 
 2. テンプレート VM から切断 (リモート デスクトップ セッションを終了) します。 
 3. **[停止]** を選択してテンプレート VM を**停止**します。 

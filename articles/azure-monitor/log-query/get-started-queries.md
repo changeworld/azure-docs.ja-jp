@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics のクエリの概要 | Microsoft Docs
-description: この記事では、Log Analytics のクエリの基本的な記述方法のチュートリアルを提供します。
+title: Azure Monitor でログ クエリの使用を開始する | Microsoft Docs
+description: この記事では、Azure Monitor でログ クエリの記述を開始するためのチュートリアルを提供します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885500"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994889"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>Log Analytics のクエリの概要
+# <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの使用を開始する
 
 
 > [!NOTE]
-> このチュートリアルを完了する前に、[Analytics ポータルの概要](get-started-portal.md)に関するチュートリアルを完了する必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」を終えておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-このチュートリアルでは、Azure Log Analytics クエリの記述方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure Monitor ログ クエリの記述方法について説明します。 以下の方法について説明します。
 
 - クエリの構造の概要
 - クエリ結果を並べ替える
@@ -43,10 +43,10 @@ ms.locfileid: "52885500"
 クエリは、テーブル名または *search* コマンドから始めることができます。 まずテーブル名から始めます。これは、テーブル名でクエリの明確な範囲が定義され、クエリのパフォーマンスと結果の関連性の両方が向上するためです。
 
 > [!NOTE]
-> Azure Log Analytics のクエリ言語では大文字と小文字が区別されます。 通常、言語のキーワードは小文字で記述されます。 クエリ内でテーブルまたは列の名前を使用する場合は、スキーマ ウィンドウの表示に従って大文字と小文字を正しく指定します。
+> Azure Monitor によって使用される Data Explorer クエリ言語では、大文字と小文字が区別されます。 通常、言語のキーワードは小文字で記述されます。 クエリ内でテーブルまたは列の名前を使用する場合は、スキーマ ウィンドウの表示に従って大文字と小文字を正しく指定します。
 
 ### <a name="table-based-queries"></a>テーブルベースのクエリ
-Azure Log Analytics では、データはテーブルに編成され、各テーブルは複数の列で構成されます。 すべてのテーブルと列は、Analytics ポータルのスキーマ ウィンドウに表示されます。 目的のテーブルを指定子、データの一部を見てみます。
+Azure Monitor では、ログ データはテーブルに編成され、各テーブルは複数の列で構成されます。 Analytics ポータルでは、すべてのテーブルと列は Log Analytics のスキーマ ウィンドウに表示されます。 目的のテーブルを指定子、データの一部を見てみます。
 
 ```Kusto
 SecurityEvent
@@ -164,7 +164,7 @@ SecurityEvent
 
 前述の例では、次の出力が生成されます。
 
-![Log Analytics の project の結果](media/get-started-queries/project.png)
+![プロジェクトの結果をクエリする](media/get-started-queries/project.png)
 
 また、**project** を使用して列の名前を変更し、新しい列を定義することもできます。 次の例では、project を使用して次の処理を行います。
 
@@ -236,7 +236,7 @@ Perf
 
 出力をよりわかりやすくするには、時系列で空きメモリを示す時間グラフとして表示するように選択します。
 
-![時系列の Log Analytics メモリ](media/get-started-queries/chart.png)
+![時系列でのメモリのクエリ](media/get-started-queries/chart.png)
 
 
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745591"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237844"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -46,7 +46,7 @@ ms.locfileid: "55745591"
 | parameters |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
 | variables |いいえ  |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
 | functions |いいえ  |テンプレート内で使用できるユーザー定義関数。 |
-| resources |はい |リソース グループ内でデプロイまたは更新されるリソースの種類。 |
+| resources |はい |リソース グループまたはサブスクリプション内でデプロイまたは更新されるリソースの種類。 |
 | outputs |いいえ  |デプロイ後に返される値。 |
 
 各要素には、設定できるプロパティがあります。 次の例には、テンプレートの完全な構文があります。
@@ -217,7 +217,7 @@ ms.locfileid: "55745591"
 ユーザー関数を定義するときに、適用される制限がいくつかあります。
 
 * 関数は変数にアクセスできません。
-* 関数は、テンプレート パラメーターにアクセスできません。 つまり、[パラメーター関数](resource-group-template-functions-deployment.md#parameters)は、関数のパラメーターに制限されます。
+* 関数は、関数内で定義されているパラメーターのみを使用できます。 ユーザー定義関数内で[パラメーター関数](resource-group-template-functions-deployment.md#parameters)を使用する場合、その関数のパラメーターに制限されます。
 * 関数は、その他のユーザー定義関数を呼び出すことはできません。
 * 関数は [reference 関数](resource-group-template-functions-resource.md#reference)を使用できません。
 * 関数のパラメーターでは既定値を指定できません。
@@ -298,9 +298,23 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 詳細については、「[Outputs section of Azure Resource Manager templates (Azure Resource Manager テンプレートの outputs セクション)](resource-manager-templates-outputs.md)」をご覧ください。
 
-## <a name="comments"></a>説明
+<a id="comments" />
 
-テンプレートにコメントを追加するためのオプションがいくつかあります。
+## <a name="comments-and-metadata"></a>コメントとメタデータ
+
+テンプレートにコメントとメタデータを追加するためのオプションがいくつかあります。
+
+`metadata` オブジェクトは、テンプレート内のほとんどどこにでも追加できます。 このオブジェクトは、Resource Manager では無視されますが、お使いの JSON エディターによっては、プロパティが無効であると警告される場合があります。 オブジェクトで、必要なプロパティを定義します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 **パラメーター**の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
 
@@ -342,18 +356,6 @@ resources セクションでは、デプロイまたは更新されるリソー�
     "properties": {}
   }
 ]
-```
-
-`metadata` オブジェクトは、テンプレート内のほとんどどこにでも追加できます。 このオブジェクトは、Resource Manager では無視されますが、お使いの JSON エディターによっては、プロパティが無効であると警告される場合があります。 オブジェクトで、必要なプロパティを定義します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 **出力**の場合、メタデータ オブジェクトを出力値に追加します。

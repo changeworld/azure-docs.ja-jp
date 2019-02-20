@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリ内の文字列の操作 | Microsoft Docs
-description: この記事では、Log Analytics で Analytics ポータルを使用してクエリを作成する方法のチュートリアルを提供します。
+title: Azure Monitor ログ クエリ内の文字列を操作する | Microsoft Docs
+description: この記事では、Azure Monitor ログ クエリの文字列に対して、編集、比較、検索、およびさまざまなその他の操作を実行する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186244"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995409"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Log Analytics クエリ内の文字列の操作
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
 
 > [!NOTE]
-> このチュートリアルを完了する前に、[Analytics ポータルの概要](get-started-portal.md)および[クエリの概要](get-started-queries.md)に関するチュートリアルを完了する必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-この記事では、文字列での編集、比較、検索、およびその他さまざまな操作を実行する方法について説明します。 
+この記事では、文字列での編集、比較、検索、およびその他さまざまな操作を実行する方法について説明します。
 
 文字列内の文字にはそれぞれ、その場所に従ってインデックス番号が付いています。 最初の文字はインデックス 0、次の文字は 1、以降、同様に続きます。 以降のセクションで示すように、さまざまな文字列関数でインデックス番号が使用されています。 特定のデータ ソースを使用せずに文字列操作を示すために、次の例の多くで **print** コマンドが使用されています。
 

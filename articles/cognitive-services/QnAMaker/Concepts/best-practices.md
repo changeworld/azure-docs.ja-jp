@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4adadf4951ffbb31a354284340a3716b194d864d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219279"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245543"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
@@ -74,7 +74,7 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 [メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、メタデータ タグに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
-英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
+英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、大文字と小文字が区別される[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
 
 |元の語|シノニム|
 |--|--|

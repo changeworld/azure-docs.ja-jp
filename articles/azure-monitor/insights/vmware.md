@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887412"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993369"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
@@ -34,7 +34,7 @@ Log Analytics の VMware の監視ソリューションは、大規模な VMware
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-* 「[管理ソリューションのインストール](../insights/solutions.md#install-a-management-solution)」で説明されているプロセスを使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
+* [監視ソリューションのインストール](../insights/solutions.md#install-a-monitoring-solution)に関するページで説明されている手順を使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
 
 #### <a name="supported-vmware-esxi-hosts"></a>サポートされる VMware ESXi ホスト
 vSphere ESXi Host 5.5、6.0、6.5
@@ -201,7 +201,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 
     c. `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf` のように、適切なユーザーおよびグループ設定が有効であることを確認します。
 
-    d. このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
 
 ## <a name="next-steps"></a>次の手順
 * Log Analytics の[ログ クエリ](../log-query/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。

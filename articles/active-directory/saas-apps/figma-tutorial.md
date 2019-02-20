@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Figma の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Figma の統合 | Microsoft Docs
 description: Azure Active Directory と Figma の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b57fdb3f039a9395133854f8b4d4f2095e3a4f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3885f579e4543f25c409010c0aae970c26d2b9c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095247"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183976"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-figma"></a>チュートリアル: Azure Active Directory と Figma の統合
+# <a name="tutorial-azure-active-directory-integration-with-figma"></a>チュートリアル:Azure Active Directory と Figma の統合
 
 このチュートリアルでは、Figma と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -192,7 +193,7 @@ Azure AD への Figma の統合を構成するには、ギャラリーから管�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-figma-test-user"></a>Figma テスト ユーザーの作成
 
@@ -227,7 +228,7 @@ Azure AD への Figma の統合を構成するには、ギャラリーから管�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Figma のタイルをクリックすると、Figma アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」をご覧ください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

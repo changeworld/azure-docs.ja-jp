@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 31e6fa596bb053ee8cd19f641349f02ee169b6eb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6b168efc2314e21f381d55f6ac79cda8b426e66d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472339"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110304"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>競合のタイプと解決ポリシー
 
@@ -50,6 +50,7 @@ Azure Cosmos DB では、更新の競合を解決するための柔軟なポリ�
 
 競合解決ポリシーを構成する方法について学習します。 次の記事を参照してください。
 
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [LWW 競合解決ポリシーを使用する](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
 * [カスタム競合解決ポリシーを使用する](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
 * [競合フィードを使用する](how-to-manage-conflicts.md#read-from-conflict-feed)

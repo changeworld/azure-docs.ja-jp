@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901192"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980110"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
+
+> [!IMPORTANT]
+> [Log Analytics のアラートが Azure Monitor に拡張された](../platform/alerts-extend.md)ため、ここに記載されていた、Resource Manager テンプレートを使用したアラートの作成の詳細は古くなりました。 Resource Manager テンプレートを使用したログ アラートの作成の詳細については、「[Azure リソース テンプレートを使用したログ アラートの管理](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)」を参照してください。
 
 > [!NOTE]
 > 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。

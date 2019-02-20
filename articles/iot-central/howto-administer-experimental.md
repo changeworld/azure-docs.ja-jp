@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ebca3060e902c0a45619c2bd64240537cd95308d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811853"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117733"
 ---
 # <a name="administer-your-iot-central-application"></a>IoT Central アプリケーションを管理する
 
@@ -141,15 +141,15 @@ IoT Central アプリケーションを作成したら、**[管理]** セクシ�
 
 ## <a name="export-data"></a>データのエクスポート
 
-**[Continuous data export]\(連続データ エクスポート\)** を有効にすることで、測定、デバイス、デバイス テンプレートのデータを、Azure Blob ストレージ アカウントにエクスポートできます。 詳細については、[データをエクスポートする方法](#howto-export-data)に関する記述を参照してください。
+**[Continuous data export]\(連続データ エクスポート\)** を有効にすることで、測定、デバイス、デバイス テンプレートのデータを、Azure Blob ストレージ アカウントにエクスポートできます。 詳細については、[データをエクスポートする](#export-data)方法に関する記述を参照してください。
 
 ## <a name="manage-device-connection"></a>デバイス接続の管理
 
-ここではキーと証明書を使用して、アプリケーションで数多くのデバイスを接続します。 詳細については、[デバイスの接続](#concepts-connectivity)に関する記述を参照してください。
+ここではキーと証明書を使用して、アプリケーションで数多くのデバイスを接続します。 詳細については、[デバイスの接続](/azure/iot-central/concepts-connectivity-experimental?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)に関する記述を参照してください。
 
 ## <a name="use-access-tokens"></a>アクセス トークンの使用
 
-アクセス トークンを生成し、開発者ツールで使用します。 現時点では、利用できる開発者ツール (デバイス メッセージ、およびプロパティと設定の変更を監視するための IoT Central エクスプローラー) が 1 つあります。 詳細については、[IoT Central エクスプローラー](#howto-use-iotc-explorer)に関する記述を参照してください。 
+アクセス トークンを生成し、開発者ツールで使用します。 現時点では、利用できる開発者ツール (デバイス メッセージ、およびプロパティと設定の変更を監視するための IoT Central エクスプローラー) が 1 つあります。 詳細については、IoT Central エクスプローラーに関する記述を参照してください。 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Azure SDK を使用して制御プレーンを操作する
 

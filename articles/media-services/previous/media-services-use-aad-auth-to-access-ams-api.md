@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230626"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994103"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
  
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
@@ -138,9 +138,9 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-例外: "リモート サーバーがエラーを返しました: (401) 未承認"
+例外:"リモート サーバーがエラーを返しました: (401) 許可されていません"
 
-解決策: Media Services REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの共同作成者ロールまたは所有者ロールが付与されている必要があります。 詳細については、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」セクションを参照してください。
+解決方法:Media Services REST 要求が成功するには、呼び出し元のユーザーは、アクセスしようとしている Media Services アカウントの共同作成者または所有者ロールである必要があります。 詳細については、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」セクションを参照してください。
 
 ## <a name="resources"></a>リソース
 

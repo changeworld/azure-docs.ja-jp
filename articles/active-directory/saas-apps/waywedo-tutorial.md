@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Way We Do の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Way We Do の統合 | Microsoft Docs
 description: Azure Active Directory と Way We Do の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: bc415ec7c577e221a1ab5af585dff5b4fc9ab7dc
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5dc6d8e2cf7ac4786f30484325406a1fe696dff3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165129"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>チュートリアル: Azure Active Directory と Way We Do の統合
+# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>チュートリアル:Azure Active Directory と Way We Do の統合
 
 このチュートリアルでは、Way We Do と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -146,7 +147,7 @@ Way We Do で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    d. **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Certificate]\(証明書\)** の横にある**選択**ボタンをクリックして、証明書をアップロードします。
 
@@ -191,14 +192,14 @@ Way We Do で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-way-we-do-test-user"></a>Way We Do テスト ユーザーを作成する
 
 このセクションの目的は、Way We Do で Britta Simon というユーザーを作成することです。 Way We Do では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Way We Do ユーザーにアクセスしようとすると、新しいユーザーが作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、 [Way We Do クライアント サポート チーム](mailto:support@waywedo.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -235,7 +236,7 @@ Way We Do で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Way We Do] タイルをクリックすると、自動的に Way We Do アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

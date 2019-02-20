@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics の DNS 分析ソリューション | Microsoft Docs
-description: Log Analytics の DNS 分析ソリューションをセットアップおよび使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集します。
+title: Azure Monitor の DNS Analytics ソリューション | Microsoft Docs
+description: Azure Monitor の DNS Analytics ソリューションをセットアップして使用し、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746865"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992723"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
 ![DNS 分析のシンボル](./media/dns-analytics/dns-analytics-symbol.png)
 
-この記事では、Azure Log Analytics の Azure DNS 分析ソリューションをセットアップし、このソリューションを使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集する方法について説明します。
+この記事では、Azure Monitor の Azure DNS Analytics ソリューションをセットアップして使用し、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集する方法について説明します。
 
 DNS 分析により、次のことができます。
 
@@ -42,21 +42,21 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
-| [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
-| [Azure Storage アカウント](../../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage は使用されません。 |
+| [Windows エージェント](../platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [System Center Operations Manager 管理グループ](../platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
-DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 このデータが Log Analytics にアップロードされ、ソリューション ダッシュボードに表示されます。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](https://technet.microsoft.com/library/dn800669.aspx#enhanc)からほぼリアルタイムで収集されます。
+DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 その後このデータが Azure Monitor にアップロードされ、ソリューション ダッシュボードに表示されます。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](https://technet.microsoft.com/library/dn800669.aspx#enhanc)からほぼリアルタイムで収集されます。
 
 ## <a name="configuration"></a>構成
 
 次の情報を使用して、ソリューションを構成します。
 
-- 監視対象の各 DNS サーバーに [Windows](../../azure-monitor/platform/agent-windows.md) エージェントまたは [Operations Manager](../../azure-monitor/platform/om-agents.md) エージェントが必要です。
-- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページの手順も使用できます。
+- 監視対象の各 DNS サーバーに [Windows](../platform/agent-windows.md) エージェントまたは [Operations Manager](../platform/om-agents.md) エージェントが必要です。
+- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [Solutions Gallery からの Azure Monitor ソリューションの追加](solutions.md)に関するページで説明されている手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。
 
@@ -64,7 +64,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
 
-- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Log Analytics に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
+- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Azure Monitor に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
 
  このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
 
@@ -83,13 +83,14 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 - Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
 
 ## <a name="use-the-dns-analytics-solution"></a>DNS 分析ソリューションを使用する
 
-このセクションでは、すべてのダッシュボード機能とそれらの使用方法について説明します。
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-ソリューションをワークスペースに追加すると、Azure portal の Log Analytics の概要ページに DNS インフラストラクチャの簡単な概要への **[ソリューションの表示]** リンクが示されます。 この概要には、データを収集した DNS サーバーの数が示されています。 また、過去 24 時間以内の、悪意のあるドメインを解決しようとしているクライアントからの要求の数も示されています。 タイルをクリックすると、ソリューション ダッシュボードが開きます。
+
+DNS タイルには、データ収集中の DNS サーバーの数が含まれています。 また、過去 24 時間以内の、悪意のあるドメインを解決しようとしているクライアントからの要求の数も示されています。 タイルをクリックすると、ソリューション ダッシュボードが開きます。
 
 ![[DNS 分析] タイル](./media/dns-analytics/dns-tile.png)
 
@@ -188,4 +189,4 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 
 ## <a name="next-steps"></a>次の手順
 
-[ログを検索](../../azure-monitor/log-query/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。
+[ログをクエリ](../log-query/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。

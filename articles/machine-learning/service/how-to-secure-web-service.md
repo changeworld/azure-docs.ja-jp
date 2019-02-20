@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769323"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098104"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL を使用して Azure Machine Learning service による Web サービスをセキュリティで保護する
 
@@ -82,6 +82,16 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
++ **フィールド プログラマブル ゲート アレイ (FPGA) に展開する**
+
+  FPGA に展開するときには、コード スニペットに示したように、SSL 関連のパラメーターの値を指定します。
+
+    ```python
+    from azureml.contrib.brainwave import BrainwaveWebservice
+
+    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
+    ```
+
 ## <a name="update-your-dns"></a>DNS を更新する
 
 次に、Web サービスを指すように DNS を更新する必要があります。
@@ -97,10 +107,6 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
   イメージに示したように、AKS クラスターの [パブリック IP アドレス] の [構成] タブで DNS を更新します。 パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成される、リソースの種類の 1 つとして見つかります。
 
   ![Azure Machine Learning service:SSL を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)
-
-+ **FPGA の場合**:
-
-FPGA にデプロイされたサービスでの SSL の使用は現在サポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 以下の項目について説明します。

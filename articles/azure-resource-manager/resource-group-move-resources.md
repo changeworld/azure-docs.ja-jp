@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810288"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108774"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -28,7 +28,7 @@ ms.locfileid: "55810288"
 リソースを移動しても、新しいリソース グループに移動されるだけです。 移動操作でリソースの場所を変更することはできません。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更する場合 (無料から従量課金制へのアップグレードなど)、お使いのサブスクリプションを変換する必要があります。
+> この記事では、既存の Azure サブスクリプション間でリソースを移動する方法について説明します。 実際に Azure サブスクリプションをアップグレードする場合 (無料から従量課金制への切り替えなど)、お使いのサブスクリプションを変換する必要があります。
 > * 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](..//billing/billing-upgrade-azure-subscription.md)」をご覧ください。
 > * 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../billing/billing-how-to-switch-azure-offer.md)」をご覧ください。
 > * サブスクリプションを変換できない場合は、[Azure サポート要求を作成](../azure-supportability/how-to-create-azure-support-request.md)してください。 問題の種類として **[サブスクリプション管理]** を選択します。
@@ -102,7 +102,7 @@ ms.locfileid: "55810288"
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - [プライベート プレビュー](#recovery-services-limitations)に登録します。
+* Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -310,7 +310,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
- Recovery Services コンテナーを移動するには、プライベート プレビューへの登録が必要となります。 お試しになる場合は、AskAzureBackupTeam@microsoft.com までメールでご連絡ください。
+ Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](../backup/backup-azure-move-recovery-services-vault.md)への登録が必要となります。
 
 現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 

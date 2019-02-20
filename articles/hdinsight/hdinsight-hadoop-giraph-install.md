@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260492"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978870"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Apache Giraph をインストールして使用する
 
@@ -46,17 +46,12 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
-    <table border='1'>
-        <tr><th>プロパティ</th><th>値</th></tr>
-        <tr><td>Name</td>
-            <td>スクリプト アクションの名前を指定します。 たとえば、「<b>Install Giraph</b>」と入力します。</td></tr>
-        <tr><td>スクリプト URI</td>
-            <td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 たとえば、<i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i> のように指定します。</td></tr>
-        <tr><td>ノードの種類</td>
-            <td>カスタマイズ スクリプトが実行されるノードを指定します。 <b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
-        <tr><td>parameters</td>
-            <td>スクリプトで必要な場合は、パラメーターを指定します。 Giraph をインストールするスクリプトではパラメーターが必要ないため、空白のままにすることができます。</td></tr>
-    </table>
+    |プロパティ|値|  
+    |---|---|  
+    |Name|スクリプト アクションの名前を指定します。 たとえば、「**Install Giraph**」と入力します|
+    |スクリプト URI|クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 たとえば、*https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1* のように指定します。|
+    |ノードの種類|カスタマイズ スクリプトが実行されるノードを指定します。 **[すべてのノード]**、**[ヘッド ノードのみ]**、**[ワーカー ノードのみ]** から選択できます。
+    |parameters|スクリプトで必要な場合は、パラメーターを指定します。 Giraph をインストールするスクリプトではパラメーターが必要ないため、空白のままにすることができます。|  
 
     複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。 スクリプトの追加後、チェックマークをクリックしてクラスターの作成を開始します。
 
@@ -78,6 +73,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
     この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
     ![円で表した tiny_graph.txt (線はオブジェクト間の距離)](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. SimpleShortestPathsComputation サンプルを実行します。 tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。
 
     > [!IMPORTANT]  

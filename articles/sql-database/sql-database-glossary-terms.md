@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753301"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990072"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 
@@ -28,9 +28,9 @@ ms.locfileid: "55753301"
 ||エラスティック プール|[エラスティック プール](sql-database-elastic-pool.md)|
 ||マネージド インスタンス|[マネージド インスタンス](sql-database-managed-instance.md)|
 |サーバー オブジェクト|SQL Database サーバーまたはデータベース サーバー|[データベース サーバー](sql-database-servers.md)|
-||SQL Database マネージド インスタンスまたはマネージド インスタンス|[マネージド インスタンス](sql-database-managed-instance.md)|
+||SQL Database マネージド インスタンス サーバー、マネージド インスタンス サーバー、またはインスタンス サーバー|[マネージド インスタンス](sql-database-managed-instance.md)|
 データベース オブジェクト|Azure SQL データベース|Azure SQL Database 内の任意のデータベース|
-||単一データベース|単一データベース デプロイ オプションを使用してスタンドアロン データベースとして作成されたデータベース|
+||単一データベース|単一データベース デプロイ オプションを使用して作成されたデータベース|
 ||プールされたデータベース|エラスティック プール内で作成されたデータベース、またはエラスティック プールに移動されたデータベース|
 ||インスタンス データベース|マネージド インスタンス内で作成されたデータベース|
 ||Basic データベース|DTU ベースの購入モデルの Basic サービス レベル内で作成されたデータベース、または Basic サービス レベルに移動されたデータベース|
@@ -39,7 +39,7 @@ ms.locfileid: "55753301"
 ||General Purpose データベース|仮想コアベースの購入モデルの General Purpose サービス レベル内で作成されたデータベース、または General Purpose サービス レベルに移動されたデータベース|
 ||ハイパースケール データベース|仮想コアベースの購入モデルのハイパースケール サービス レベル内で作成されたデータベース、またはハイパースケール サービス レベルに移動されたデータベース|
 ||Business Critical データベース|仮想コアベースの購入モデルの Business Critical サービス レベル内で作成されたデータベース、または Business Critical サービス レベルに移動されたデータベース|
-|[購入モデルとリソース](sql-database-service-tiers.md)|DTU ベースの購入モデル|[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)|
+|[購入モデルとリソース](sql-database-purchase-models.md)|DTU ベースの購入モデル|[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)|
 ||仮想コアベースの購入モデル|[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)|
 ||仮想コア|ハイパーバイザーによってゲスト OS に提供されるコア。|
 ||サービス階層|購入モデル内でのサービスのレベル|

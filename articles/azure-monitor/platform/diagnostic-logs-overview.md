@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885849"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001989"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -40,7 +40,9 @@ ms.locfileid: "54885849"
 
 * 監査や手動での検査に使用するために診断ログを[**ストレージ アカウント**](../../azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 **リソース診断設定**を使用して、リテンション期間 (日数) を指定できます。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](diagnostic-logs-stream-event-hubs.md)する。
-* これを [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md) で分析する。ここでは、データが Log Analytics に即座に書き込まれ、データを最初にストレージに出力する必要はありません。  
+* これを [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md) で分析する。ここでは、データが Azure Monitor に即座に書き込まれ、データを最初にストレージに出力する必要はありません。  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは Event Hubs 名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
@@ -56,7 +58,7 @@ ms.locfileid: "54885849"
 
 リソース診断ログは、リソース診断設定を使用して構成します。 テナント診断ログは、テナント診断設定を使用して構成します。 サービス コントロールの**診断設定**:
 
-* 診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
+* 診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Azure Monitor)。
 * 送信されるログ カテゴリ、メトリック データが送信されるかどうか。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
     - リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 2147483647 日の間の任意の日数を値として指定できます。
@@ -235,5 +237,4 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 * [リソース診断ログを **Event Hubs** にストリーミングする](diagnostic-logs-stream-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)
-* [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [Azure Monitor を使用した、Azure ストレージからのログの分析](collect-azure-metrics-logs.md)

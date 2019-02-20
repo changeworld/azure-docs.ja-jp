@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: cb4b063d17555084f4065d7d7df931b96b95d9a4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751482"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990447"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -106,8 +106,7 @@ ms.locfileid: "55751482"
 
     数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
-ユーザーは、[Azure portal の [Log Analytics] ページ](../../azure-monitor/log-query/portals.md#log-analytics-page
-)で分析クエリを最終処理し、[+ 新しいアラート ルール] ボタンを押してアラートを作成し、上記のチュートリアルの手順 6 以降の指示に従います。
+ユーザーは、[Log Analytics](../log-query/portals.md) で分析クエリを最終処理し、[アラートの設定] ボタンでアラートを作成するようにプッシュし、上記のチュートリアルの手順 6 以降の指示に従います。
 
  ![Log Analytics - アラートの設定](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -317,12 +316,12 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 > Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) や [Log Analytics の保存された検索とアラート](../../azure-monitor/insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
 
 
-現在、ログ アラートには専用の PowerShell コマンドや CLI コマンドはありません。ただし、[リソース テンプレートのセクション](#azure-resource-template-for-application-insights)で前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager PowerShell コマンドレットを介して以下のように使用できます。
+現在、ログ アラートには専用の PowerShell コマンドや CLI コマンドはありません。ただし、リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager PowerShell コマンドレットを介して以下のように使用できます。
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
-[リソース テンプレートのセクション](#azure-resource-template-for-application-insights)で前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対する Azure Resource Manager コマンドの Azure CLI での使い方を以下に示します。
+リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対する Azure Resource Manager コマンドの Azure CLI での使い方を以下に示します。
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

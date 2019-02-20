@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2ad525ee0e10064d4d606dc1f899ef813fe92ab5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273504"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232605"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -29,7 +29,7 @@ Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイン�
 >[!WARNING]
 > 仮想ネットワーク統合を実装すると、他の Azure サービスが Event Hubs と対話するのを防ぐことができます。
 >
-> 仮想ネットワークが実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
+> 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
 >
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
 > - Azure Monitor

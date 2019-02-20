@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729508"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001887"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL Database の脅威の検出
 
@@ -77,8 +77,8 @@ Azure SQL Database の脅威の検出では、データベースへのアクセ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [スタンドアロンのデータベースおよびプールされたデータベースの脅威検出](sql-database-threat-detection.md)の詳細について学習します。
-- [マネージド インスタンスの脅威検出](sql-database-managed-instance-threat-detection.md)の詳細について学習します。
+- [単一のデータベースおよびプールされたデータベースの脅威検出](sql-database-threat-detection.md)の詳細について学習します。
+- [Managed Instance の脅威検出](sql-database-managed-instance-threat-detection.md)の詳細について学習します。
 - [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - [Azure SQL Database 監査](sql-database-auditing.md)の詳細について参照してください
 - [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。

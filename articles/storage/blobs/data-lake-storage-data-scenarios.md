@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1c50a6e14955b2c31222ff1317aa99ad28866ec8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864735"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -82,6 +82,8 @@ Web サーバー ログ データをアップロードする場合、または�
 Data Lake Storage Gen2 でデータが利用できるようになったら、サポートされているビッグ データ アプリケーションを使用して、そのデータの分析を実行できます。 現在、Data Lake Storage Gen2 に格納されたデータに対してデータ分析ジョブを実行する場合は、Azure HDInsight と Azure Databricks を使用できます。
 
 ![Data Lake Storage Gen2 のデータを分析する](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2 のデータを分析する")
+
+たとえば、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」を参照してください。
 
 
 ## <a name="download-data-from-data-lake-storage-gen2"></a>Data Lake Storage Gen2 からデータをダウンロードする

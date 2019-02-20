@@ -4,7 +4,7 @@ description: この記事は、ストレージ アクセス キーをローリ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: e8d8067fcf30b16dd3dbc7f6cf50129d837aa3a5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306858"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005167"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する 
 
 新しく Azure Media Services (AMS) アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。 Media Services アカウントには複数のストレージ アカウントを追加できます。 この記事では、ストレージ キーを入れ換える方法を示します。 また、メディア アカウントにストレージ アカウントを追加する方法も示します。 
 
-この記事で説明している操作を実行するには、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) と [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/powershell-azure-resource-manager.md)に関するページをご覧ください。
+この記事で説明している操作を実行するには、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) と [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/powershell-azure-resource-manager.md)に関するページをご覧ください。
 
 ## <a name="overview"></a>概要
 
@@ -68,7 +68,7 @@ Media Services は、指定されたストレージ キーに依存します。 
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>AMS アカウントにストレージ アカウントを追加する手順
 
-次の記事は、AMS アカウントにストレージ アカウントを追加する方法を示しています。[複数のストレージ アカウントを Media Services アカウントにアタッチする](meda-services-managing-multiple-storage-accounts.md)
+次の記事は、AMS アカウントにストレージ アカウントを追加する方法を示しています。[複数のストレージ アカウントを Media Services アカウントにアタッチする](meda-services-managing-multiple-storage-accounts.md)。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -77,4 +77,4 @@ Media Services は、指定されたストレージ キーに依存します。 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>謝辞
-この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
+この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、Seva Titov に感謝します。

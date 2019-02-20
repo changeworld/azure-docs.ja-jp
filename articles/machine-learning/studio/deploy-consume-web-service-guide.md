@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497674"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997253"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web サービス:デプロイと使用
 Azure Machine Learning を使用すると、機械学習のワークフローとモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
@@ -31,10 +31,10 @@ Machine Learning Studio と Microsoft Azure Machine Learning Web サービス �
 
 * Azure Resource Manager に基づいた新しい Web サービスのデプロイの概要については、「 [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)」をご覧ください。
 * Web サービスのデプロイのチュートリアルについては、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
-* Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、「[チュートリアル手順 1:Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)」をご覧ください。
+* Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
 
-  * 「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」
+  * [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
   * [複数のリージョンに Web サービスをデプロイする方法](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
@@ -84,7 +84,7 @@ Azure Machine Learning Web サービス ポータルから Web サービスを�
 
 * [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)
 * [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
-* 「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」
+* [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excel から
 Excel テンプレートをダウンロードできます。このテンプレートにより Web サービスを使用できます。

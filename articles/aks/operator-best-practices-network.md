@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699127"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175457"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -120,6 +120,34 @@ Web アプリケーション ファイアウォール (WAF) は、着信トラ�
 
 ロード バランサーまたはイングレス リソースは、AKS クラスターで持続的に実行されて、トラフィックの分散をさらにきめ細かく調整します。 App Gateway は、リソース定義でイングレス コントローラーとして一元的に管理できます。 最初に、[Application Gateway イングレス コントローラーを作成します][app-gateway-ingress]。
 
+## <a name="control-traffic-flow-with-network-policies"></a>ネットワーク ポリシーを使用してトラフィック フローを制御する
+
+**ベスト プラクティス ガイダンス** - ネットワーク ポリシーを使用して、ポッドへのトラフィックを許可または拒否します。 既定では、1 つのクラスター内でポッド間のすべてのトラフィックが許可されます。 セキュリティを強化するには、ポッドの通信を制限するルールを定義します。
+
+ネットワーク ポリシーは、ポッド間のトラフィック フローを制御できる Kubernetes の機能です。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択できます。 トラフィックのフローを制御するには、ネットワーク ポリシーを使用するのがクラウドネイティブな方法です。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。 ポッド間のトラフィック制御には Azure ネットワーク セキュリティ グループを使用せず、ネットワーク ポリシーを使用してください。
+
+ネットワーク ポリシーを使用するには、AKS クラスターを作成するときにこの機能を有効にする必要があります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。 クラスター上でネットワーク ポリシーを有効にして、必要に応じて使用できるように、事前に計画してください。
+
+ネットワーク ポリシーは、YAML マニフェストを使用して Kubernetes リソースとして作成されます。 ポリシーが定義済みのポッドに適用され、次にイングレス ルールまたはエグレス ルールによってトラフィックのフロー方法が定義されます。 次の例では、*app: backend* ラベルが適用されたポッドにネットワーク ポリシーを適用します。 次に、イングレス ルールでは、*app: frontend* ラベルが適用されたポッドからのトラフィックのみを許可します。
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+ポリシーの概要については、「[Secure traffic between pods using network policies in Azure Kubernetes Service (AKS) (Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護)][use-network-policies]」を参照してください。
+
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>要塞ホストを介してノードに安全に接続する
 
 **ベスト プラクティス ガイダンス** - AKS ノードへのリモート接続は公開しないでください。 管理仮想ネットワーク内に要塞ホスト (jump box) を作成します。 要塞ホストを使用すると、AKS クラスターへのトラフィックをリモート管理タスクに安全にルーティングできます。
@@ -155,5 +183,6 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
+[use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md

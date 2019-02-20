@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177034"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098223"
 ---
 # <a name="publish-azure-application-offer"></a>Azure アプリケーション オファーを公開する
 
@@ -46,7 +46,6 @@ ms.locfileid: "55177034"
 | ライブ                           | 1 日未満 | オファーがリリースされ、指定されたリージョンに複製され、一般公開されます。 |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
- 
 Cloud パートナー ポータルのオファーの **[状態]** タブで発行プロセスを監視できます。
 
 ![Azure アプリ オファーの [状態] タブ](./media/offer-status-tab.png)
@@ -54,38 +53,13 @@ Cloud パートナー ポータルのオファーの **[状態]** タブで発�
 発行プロセスが完了した後、オファーが [Microsoft Azure Marketplace のアプリケーション カテゴリ](https://azuremarketplace.microsoft.com/marketplace/apps/)に一覧表示されます。
 
 
-
 ## <a name="errors-and-review-feedback"></a>エラーとフィードバックの確認
 
-**[状態]** タブには、オファーの発行状態の表示に加え、エラー メッセージと **Microsoft レビュー**手順のフィードバックも表示されます。  通常、レビューの問題はプル要求 (PR) と呼ばれます。  各 PR は、問題に関する詳細を含むオンラインの Visual Studio Team Services (VSTS、[Azure DevOps](https://azure.microsoft.com/services/devops/) に名称変更) 項目にリンクされています。  次の図に、レビュー PR の参照の例を示します。  より複雑な状況では、レビューおよびサポート チームからお客様にメールが送信されることがあります。 
-
-![レビューのフィードバックが表示される [状態] タブ](./media/status-tab-ms-review.png)
-
-オファーの発行プロセスを続行するには、報告された各問題を解決する必要があります。  次の図は、このフィードバック プロセスと発行プロセスの関係を示しています。
-
-![発行手順と VSTS フィードバック](./media/pub-flow-vsts-access.png)
-
-
-### <a name="vsts-access"></a>VSTS アクセス
-
-レビュー フィードバックで参照されている VSTS 項目を表示するには、パブリッシャーに適切な承認が付与されている必要があります。  そうしないと、新しいパブリッシャーは `401 - Not Authorized` 応答ページを受け取ります。  オファー レビュー VSTS システムへのアクセスを要求するには、次の手順を実行します。
-
-1. 次の情報を収集します。
-    - パブリッシャー名または ID
-    - オファーの種類 (Azure アプリ)、オファー名、SKU ID
-    - プル要求リンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
-    - アクセスを付与する発行元組織の個人のメール アドレス。  これらには、Cloud パートナー ポータルでパブリッシャーとして登録するときに指定した所有者アドレスを含める必要があります。
-2. サポート インシデントを作成する  Cloud パートナー ポータルのタイトル バーで **[ヘルプ]** ボタンを選択し、メニューから **[サポート]** を選択します。  既定の Web ブラウザーが起動し、Microsoft の新しいサポート インシデント ページに移動します  (場合によっては、最初にサインインする必要があります)。
-3. **[問題の種類]** に **[Marketplace Onboarding]\(マーケットプレースのオンボード\)**、**[カテゴリ]** に **[Access problem]\(アクセスの問題\)** を指定し、**[Start request]\(要求の開始\)** を選択します。
-
-    ![サポート チケットのカテゴリ](./media/support-incident1.png)
-
-4. **[手順 1/2]** ページに連絡先情報を入力し、**[続行]** を選択します。
-5. **[手順 2/2]** ページにインシデントのタイトル (`Request VSTS access` など) を指定し、最初の手順 (前述) で収集した情報を入力します。  条項を読み、同意してから、**[送信]** を選択します。
-
-インシデントの作成に成功すると、確認ページが表示されます。  後で参照できるように確認情報を保存します。  Microsoft サポートは、数営業日以内にお客様のアクセス要求に返信します。
+**[状態]** タブには、オファーの発行状態の表示に加え、問題が発生した発行ステップからのエラー メッセージとフィードバックも表示されます。  重大な問題の場合、発行は取り消されます。  その場合は、報告された問題を解決して、オファーを再発行する必要があります。  **Microsoft によるレビュー**のステップには、オファーの広範なレビューとそれに関連する技術資産 (特に Azure Resource Manager テンプレートの場合) が含まれるため、通常、問題は pull request (PR) のリンクとして示されます。  これらの PR を表示してそれに対応する方法については、「[レビュー フィードバックの処理](./cpp-handling-review-feedback.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-Azure アプリが発行された後は、[既存のオファーを更新](./cpp-update-existing-offer.md)して、ビジネスや技術面の要件の変更を反映することができます。 
+発行手順のどこかでエラーが発生した場合は、それらを修正し、オファーを再発行する必要があります。  **Microsoft によるレビュー**のステップで重大な問題が発生した場合は、Microsoft レビュー チームの Azure DevOps リポジトリにアクセスして、[レビューのフィードバックを処理する](./cpp-handling-review-feedback.md)必要があります。
+
+Azure アプリが正常に発行された後は、[既存のオファーを更新](./cpp-update-existing-offer.md)して、ビジネスや技術面の要件の変更を反映することができます。 

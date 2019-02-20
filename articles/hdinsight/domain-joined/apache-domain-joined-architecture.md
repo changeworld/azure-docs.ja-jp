@@ -9,18 +9,18 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: acae8076350c26e7a7157fd2063f64220b167771
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185385"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
 標準的な Azure HDInsight クラスターは、シングル ユーザー クラスターです。 これは、大規模なデータ ワークロードを構築する小規模なアプリケーション チームを抱えているほとんどの企業に適しています。 ユーザーごとにオンデマンドの専用クラスターを作成し、不要になったときに破棄することができます。 
 
-多くの企業では、IT チームが管理するクラスターを複数のアプリケーション チームが共有するモデルに移行しています。 これらの大規模企業は、Azure HDInsight での各クラスターへのマルチユーザー アクセスが必要です。
+多くの企業では、IT チームがクラスターを管理し、複数のアプリケーション チームがクラスターを共有するモデルに移行しています。 これらの大規模企業は、Azure HDInsight での各クラスターへのマルチユーザー アクセスが必要です。
 
 HDInsight は、管理されている方法で、一般的な ID プロバイダーである Active Directory に依存します。 HDInsight を [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md) と統合することによって、ドメイン資格情報を使用してクラスターにアクセスできます。 
 
@@ -28,12 +28,13 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>HDInsight を Active Directory と統合する
 
-オープンソースの Apache Hadoop は、認証とセキュリティのために Kerberos に依存しています。 したがって、Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター ノードは、Azure AD DS によって管理されるドメインに参加済みです。 クラスター上の Hadoop コンポーネントには Kerberos セキュリティが構成されます。 
+オープンソースの Apache Hadoop は、認証とセキュリティのために Kerberos プロトコルに依存しています。 したがって、Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター ノードは、Azure AD DS によって管理されるドメインに参加済みです。 クラスター上の Hadoop コンポーネントには Kerberos セキュリティが構成されます。 
 
 自動的に以下のものが作成されます。
-- 各 Hadoop コンポーネントのサービス プリンシパル 
+
+- 各 Hadoop コンポーネントのサービス プリンシパル
 - ドメインに参加している各マシンのマシン プリンシパル
-- このようなサービスおよびマシンのプリンシパルを格納する各クラスターの組織単位 (OU) 
+- このようなサービスおよびマシンのプリンシパルを格納する各クラスターの組織単位 (OU)
 
 これらの点を総合すると、次の要素から成る環境をセットアップする必要があります。
 
@@ -47,7 +48,7 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
 [Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメインを提供します。 Microsoft は、高可用性 (HA) 設定のドメインの管理、修正プログラムの適用、監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 
 
-ユーザー、グループ、パスワードは、Azure Active Directory (Azure AD) から同期されます。 Azure AD インスタンスから Azure AD DS への一方向の同期により、同じ会社の資格情報を使用して、ユーザーがクラスターにサインインできます。 
+ユーザー、グループ、パスワードは、Azure AD から同期されます。 Azure AD インスタンスから Azure AD DS への一方向の同期により、同じ会社の資格情報を使用して、ユーザーがクラスターにサインインできます。 
 
 詳細については、[Azure AD DS を使用する ESP への HDInsight クラスター構成](./apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。
 
@@ -57,38 +58,38 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必要があります。 
 
-Active Directory Federation Services (ADFS) でフェデレーションを使用している場合、パスワード ハッシュ同期を有効にする必要があります (推奨設定については、[こちら](https://youtu.be/qQruArbu2Ew)をご覧ください)。これを有効にしておくと、ADFS インフラストラクチャにエラーが発生し、保護している資格情報が漏洩するような事態になったとき、ディザスター リカバリーに役立ちます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。 
+Active Directory フェデレーション サービス (AD FS) によるフェデレーションを使用している場合は、パスワード ハッシュ同期を有効にする必要があります(推奨される設定については、[こちらのビデオ](https://youtu.be/qQruArbu2Ew)をご覧ください)。パスワード ハッシュ同期は、AD FS インフラストラクチャに障害が発生した場合のディザスター リカバリーに役立ちます。また、漏えいした資格情報を保護するためにも役立ちます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。 
 
 Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミスの Azure AD または Azure AD DS を使用する構成は、ESP を使用する HDInsight クラスターではサポートされていません。
 
-フェデレーションの使用時、パスワード ハッシュが正しく同期されているが、認証エラーが発生する場合、PowerShell サービス プリンシパル クラウド パスワード認証が有効になっているか確認してください。有効になっていない場合、AAD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
+フェデレーションの使用時、パスワード ハッシュが正常に同期されていても認証エラーが発生する場合は、PowerShell サービス プリンシパルのクラウド パスワード認証が有効かどうかを確認します。 有効でない場合は、Azure AD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
 
- 1. AzureAD PowerShell モジュールをインストールします
-
- ```
-  Install-Module AzureAD
- ```
-
- 2. グローバル管理者 (テナント管理者) の資格情報を使用して ```Connect-AzureAD``` を実行します
-
- 3. "Microsoft Azure PowerShell" サービス プリンシパルが既に作成されているかどうかを確認します
+ 1. Azure AD PowerShell モジュールをインストールします。
 
  ```
-  $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+    Install-Module AzureAD
  ```
 
- 4. サービス プリンシパルがない場合 (つまり、($powershellSPN -q $null) の場合) は作成します
+ 2. グローバル管理者 (テナント管理者) の資格情報を使用して `Connect-AzureAD` を入力します。
+
+ 3. Microsoft Azure PowerShell サービス プリンシパルが既に作成されているかどうかを確認します。
 
  ```
-  $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
  ```
 
- 5. ポリシーを作成し、このサービス プリンシパルにアタッチします 
+ 4. 存在しない場合 (つまり `($powershellSPN -eq $null)` の場合) はサービス プリンシパルを作成します
 
  ```
- $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ ```
 
- Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+ 5. ポリシーを作成し、このサービス プリンシパルにアタッチします
+
+ ```
+    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
  ```
 
 ## <a name="next-steps"></a>次の手順

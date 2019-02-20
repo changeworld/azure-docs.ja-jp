@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751550"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964153"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Advanced Data Security の仮想ネットワークでの使用と 100% に近い互換性
 
@@ -93,8 +93,8 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 次のリストで、汎用サービス階層の主な特徴を説明します。
 
 - 標準的なパフォーマンス要件を持つ大多数のビジネス アプリケーション向けの設計
-- 高パフォーマンスの Azure Premium Storage (8 TB)
-- 信頼性の高い Azure Premium Storage と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づいた組み込みの[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
+- 高パフォーマンスの Azure Blob Storage (8 TB)
+- 信頼性の高い Azure Blob Storage と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づいた組み込みの[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
 
 詳しくは、「[storage layer in general purpose tier (General Purpose レベルでのストレージ レイヤー)](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)」および「[storage performance best practices and considerations for managed instances (general purpose) (マネージド インスタンス (General Purpose) のストレージ パフォーマンスのベスト プラクティスおよび考慮事項)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)」 をご覧ください。
 
@@ -107,9 +107,9 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 次のリストで、Business Critical サービス レベルの主な特徴を説明します。
 
 - 最高のパフォーマンスと HA の要件を持つビジネス アプリケーション向けに設計されています。
-- 超高速の SSD ストレージ (Gen 4 で最大 1 TB、Gen 5 で最大 4 TB) が付属します
-- [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)と [Azure Service Fabric](../service-fabric/service-fabric-overview.md)に基づいた組み込みの[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
-- レポートやその他の読み取り専用ワークロードに使用することができる、組み込みの追加[読み取り専用データベース レプリカ](sql-database-read-scale-out.md)
+- 超高速のローカル SSD ストレージ (Gen4 で最大 1 TB、Gen5 で最大 4 TB) が付属します
+- [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)と [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づいた組み込みの[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
+- レポートやその他の読み取り専用ワークロードに使用できる、組み込みの追加の[読み取り専用データベース レプリカ](sql-database-read-scale-out.md)
 - 高パフォーマンス要件のワークロードに使用することができる[インメモリ OLTP](sql-database-in-memory.md)  
 
 サービス レベルの違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)に関する記事をご覧ください。
@@ -179,7 +179,7 @@ AAD ログイン (**パブリック プレビュー**) を作成するための�
 
 ### <a name="back-up-and-restore"></a>バックアップおよび復元  
 
-移行方法では、Azure BLOB ストレージへの SQL バックアップが活用されます。 Azure Storage Blob に格納されたバックアップは、[T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)を使用して、マネージド インスタンスに直接復元できます。
+移行のアプローチでは、Azure Blob Storage への SQL バックアップが活用されます。 Azure Storage Blob に格納されたバックアップは、[T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)を使用して、マネージド インスタンスに直接復元できます。
 
 - Wide World Importers - Standard データベースのバックアップ ファイルを復元する方法を説明したクイック スタートについては、[バックアップ ファイルをマネージド インスタンスに復元する](sql-database-managed-instance-get-started-restore.md)方法に関するページを参照してください。 このクイック スタートでは、バックアップ ファイルを Azure ブログ ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
 - URL からの復元については、「[URL からのネイティブ復元](sql-database-managed-instance-migrate.md#native-restore-from-url)」を参照してください。

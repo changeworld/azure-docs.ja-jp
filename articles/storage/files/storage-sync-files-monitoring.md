@@ -5,17 +5,17 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467460"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243656"
 ---
-# <a name="monitor-azure-file-sync"></a>Azure File Sync を監視する
+# <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
@@ -29,7 +29,7 @@ Azure portal では、登録済みサーバーの正常性、サーバー エン
 
 ### <a name="storage-sync-service"></a>ストレージ同期サービス
 
-登録済みサーバーとサーバー エンドポイントの正常性を表示するには、Azure portal でストレージ同期サービスに移動します。 登録済みサーバーの正常性は、[登録済みサーバー] ブレードで表示できます。 サーバー エンドポイントの正常性は、[同期グループ] ブレードで表示できます。
+登録済みサーバーの正常性、サーバー エンドポイントの正常性とメトリックを表示するには、Azure portal でストレージ同期サービスに移動します。 登録済みサーバーの正常性は、[登録済みサーバー] ブレードで表示できます。 サーバー エンドポイントの正常性は、[同期グループ] ブレードで表示できます。
 
 登録済みサーバーの正常性
 - 登録済みサーバーの状態が [オンライン] である場合、サーバーは正常にサービスと通信しています。
@@ -38,6 +38,23 @@ Azure portal では、登録済みサーバーの正常性、サーバー エン
 サーバー エンドポイントの正常性
 - ポータルのサーバー エンドポイントの正常性は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 同期セッションが一時的なエラーにより失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である限り、ポータルに同期の正常性が引き続き表示される可能性があります (ファイルが適用されているかどうかを判断するために、イベント ID 9302 が使用されます)。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。
 - 同期が進行していないために、同期エラーがポータルに表示される場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
+
+メトリック
+- ストレージ同期サービス ポータルでは、次のメトリックを表示できます。
+
+  | メトリックの名前 | 説明 | ポータル ブレード | 
+  |-|-|-|
+  | 同期したバイト数 | 転送された (アップロードとダウンロード) データのサイズ | 同期グループ、サーバー エンドポイント |
+  | クラウドを使った階層化の呼び戻し | 呼び戻されたデータのサイズ | 登録済みサーバー |
+  | ファイルが同期していない | 同期に失敗しているファイルの数 | サーバー エンドポイント |
+  | 同期されたファイル数 | 転送された (アップロードとダウンロード) ファイルの数 | 同期グループ、サーバー エンドポイント |
+  | サーバーのオンライン状態 | サーバーから受信したハートビートの数 | 登録済みサーバー |
+
+- 詳細については、[Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) セクションを参照してください。 
+
+  > [!Note]  
+  > ストレージ同期サービス ポータルのグラフには、24 時間の時間範囲があります。 異なる時間範囲やディメンションを表示するには、Azure Monitor を使用します。
+
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -52,8 +69,8 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 | 同期したバイト数 | データ転送 (アップロードとダウンロード) のサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
 | クラウドを使った階層化の呼び戻し | 呼び戻されたデータのサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー名 |
 | ファイルが同期していない | 同期に失敗しているファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
-| 同期されたファイル数 | アップロードおよびダウンロードされたファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
-| サーバーのハートビート | サーバーから受信したハートビートの数。<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー名 |
+| 同期されたファイル数 | 転送された (アップロードとダウンロード) ファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
+| サーバーのオンライン状態 | サーバーから受信したハートビートの数。<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー名 |
 | 同期セッションの結果 | 同期セッションの結果 (1=成功した同期セッション; 0=失敗した同期セッション)<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
 
 ## <a name="windows-server"></a>Windows Server

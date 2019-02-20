@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766097"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099141"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -118,6 +118,18 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 - Azure Stack ポータルを使用して仮想マシンを作成するときに、今後は Managed Disks が既定で有効になります。 Managed Disks で VM 作成エラーを回避するために必要な追加の手順については、[既知の問題](#known-issues-post-installation)に関するセクションを参照してください。
 
 - このリリースでは、Azure Stack オペレーター向けにアラートの**修復**操作が採用されています。 1811 のいくつかのアラートには、**[修復]** ボタンが表示され、そのボタンを選択することで問題を解決できます。 詳細については、「[Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)」を参照してください。
+
+- Azure Stack で更新プログラムのエクスペリエンスに更新します。 更新プログラムの機能強化には以下が含まれます。 
+    - 進行中の更新および完了した更新の追跡向上のために、更新履歴から更新を分割するタブ。
+    - 現在のバージョンと OEM バージョンおよび最終更新日に対する新しいアイコンとレイアウトによる、要点セクションの強化された状態の視覚化。
+    - リリース ノート列の **[表示]** リンクでは、一般的な更新プログラム ページではなく、その更新プログラムに固有のドキュメントに直接移動します。
+    - 各更新プログラムの実行日時を特定するために使用される **[更新の履歴]** タブと、強化されたフィルター処理機能。  
+    - オンラインの Azure Stack スケール ユニットでは、更新プログラムが利用可能になると**利用可能な更新プログラム**を自動的に受け取ります。
+    - オフラインの Azure Stack スケール ユニットでは、前と同じように、更新プログラムをインポートできます。 
+    - ポータルから JSON ログをダウンロードするプロセスに変更はありません。 Azure Stack オペレーターは、手順を展開して進行状況を見ることができます。
+
+    詳しくは、「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」をご覧ください。
+
 
 ## <a name="fixed-issues"></a>修正された問題
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 8d2cac7635b9d97561b3cebf517c95855407cbe3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 27a8e160fc33729c5b5266dffeb346f0296276fd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462785"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005286"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 
@@ -71,7 +71,7 @@ Standard または Premium サービス レベルを使用している場合、�
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用して、スタンドアロン データベース、プールされたデータベース、またはインスタンス データベースを、同じサーバーに新しいデータベースとして、以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用し、同じサーバー上の新しいデータベースとして、単一のデータベース、プールされたデータベース、またはインスタンス データベースを以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
 
 通常、以前の時点へのデータベースの復元は、復旧の目的で行います。 その場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得して元のデータベースの更新に使用できます。
 
@@ -83,7 +83,7 @@ Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm
 
   ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースから元のデータベースにデータを抽出するのに必要なデータ復旧のスクリプトを書き込み、実行する必要があります。 復元操作が完了するまでに時間がかかる可能性がありますが、復元プロセスを通して、復元しているデータベースがデータベース一覧に表示されます。 復元中にデータベースを削除すると、復元操作は取り消され、復元が完了していないデータベースの料金はかかりません。
 
-Azure portal を使用してスタンドアロン データベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
+Azure portal を使用して単一のデータベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
 
 ![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -139,7 +139,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 
 ### <a name="powershell"></a>PowerShell
 
-- スタンドアロン データベースまたはプールされたデータベースを復元するには、「[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)」を参照してください。
+- 単一のデータベースまたはプールされたデータベースを復元するには、「[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)」を参照してください
 
   | コマンドレット | 説明 |
   | --- | --- |
@@ -155,7 +155,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 
 ### <a name="rest-api"></a>REST API
 
-REST API を使用してスタンドアロン データベースまたはプールされたデータベースを復元するには、以下を実行します。
+REST API を使用して単一のデータベースまたはプールされたデータベースを復元するには:
 
 | API | 説明 |
 | --- | --- |
@@ -164,7 +164,7 @@ REST API を使用してスタンドアロン データベースまたはプー�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用してスタンドアロン データベースまたはプールされたデータベースを復元するには、「[az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 

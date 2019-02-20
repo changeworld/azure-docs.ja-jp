@@ -16,12 +16,13 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185453"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>方法:Azure AD アプリに省略可能な要求を提供する (パブリック プレビュー)
 
@@ -76,7 +77,7 @@ ms.locfileid: "55077249"
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
 |`email`                     | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|  
 | `acct`             | テナント内のユーザー アカウントの状態。 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
-| `upn`                      | UserPrincipalName 要求。 | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 <br> 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
+| `upn`                      | UserPrincipalName 要求。 | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 
 ### <a name="v20-optional-claims"></a>v2.0 の省略可能な要求
 
@@ -85,30 +86,28 @@ ms.locfileid: "55077249"
 **表 3:V2.0 のみの省略可能な要求**
 
 | JWT の要求     | Name                            | 説明                                | メモ |
-|---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
+|---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP アドレス                      | ログインしたクライアントの IP アドレス。   |       |
 | `onprem_sid`  | オンプレミスのセキュリティ ID |                                             |       |
 | `pwd_exp`     | パスワードの有効期限        | パスワードの有効期限が切れる日時。 |       |
-| `pwd_url`     | パスワードの変更 URL             | ユーザーがパスワードを変更するためにアクセスできる URL。   |       |
-| `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |       |
-| `nickname`    | ニックネーム                        | ユーザーの追加の名前。姓または名とは別の名前です。 |       |                                                                                                                |       |
+| `pwd_url`     | パスワードの変更 URL             | ユーザーがパスワードを変更するためにアクセスできる URL。   |   |
+| `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |  MFA の[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) の設定に基づきます。    |
+| `nickname`    | ニックネーム                        | ユーザーの追加の名前。姓または名とは別の名前です。 | 
 | `family_name` | 姓                       | Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字を示します。 <br>"family_name":"Miller" |       |
 | `given_name`  | 名                      | Azure AD ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   |       |
+| `upn`       | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、重要なデータには使用しないでください。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 |
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
-一部の省略可能な要求は、要求が返される方法を変更するように構成することができます。 このような追加のプロパティは、ほとんどの場合、異なるデータが期待されるオンプレミス アプリケーションの移行のために使用されます (たとえば、`include_externally_authenticated_upn_without_hash` は UPN 内のハッシュマーク (`#`) を処理できないクライアントで役立ちます)。
+一部の省略可能な要求は、要求が返される方法を変更するように構成することができます。 これらの追加のプロパティは、ほとんどの場合、さまざまなデータが予測されるオンプレミス アプリケーションの移行を容易にするために使用されます (たとえば、`include_externally_authenticated_upn_without_hash` は UPN 内のハッシュ マーク (`#`) を処理できないクライアントで役立ちます)。
 
-**表 4:標準の省略可能な要求を構成する値**
+**表 4:省略可能な要求を構成するための値**
 
-| プロパティ名                                     | 追加のプロパティ名                                                                                                             | 説明 |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |  SAML 応答と JWT 応答の両方に使用できます。        |
-| | `include_externally_authenticated_upn`              | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。                            |             
-| | `include_externally_authenticated_upn_without_hash` | 前項と同じですが、ハッシュマーク (`#`) はアンダースコア (`_`) に置き換えられます (例: `foo_hometenant.com_EXT_@resourcetenant.com`)。 |             
-
-> [!Note]
->追加のプロパティを指定せずに省略可能な要求 upn を指定しても、動作は変わりません。トークンで発行された新しい要求を表示するには、追加のプロパティのうち少なくとも 1 つを追加する必要があります。 
+| プロパティ名  | 追加のプロパティ名 | 説明 |
+|----------------|--------------------------|-------------|
+| `upn`          |                          | SAML 応答と JWT 応答の両方や、v1.0 および v2.0 トークンに使用できます。 |
+|                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。 |             
+|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです (たとえば、`foo_hometenant.com_EXT_@resourcetenant.com`) |
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
@@ -151,12 +150,12 @@ ms.locfileid: "55077249"
 "saml2Token": [ 
               { 
                     "name": "upn", 
-                    "essential": true
+                    "essential": false
                },
                { 
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
-                    "essential": true
+                    "essential": false
                }
        ]
    }

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081247"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099260"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -220,7 +220,9 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 
 完了すると、認証トークンがキャッシュされます。 トークンの有効期限が切れたとき、または Kubernetes の構成ファイルが再作成されたときにのみ、ログインを再び求められます。
 
-正常にサインインした後に承認エラー メッセージが表示される場合、サインインしようとしているユーザーが Azure AD で Guest ではないことを確認してください (これは、異なるディレクトリからのフェデレーション ログインを使用している場合によく発生する状況です)。
+正常にサインインした後に承認エラー メッセージが表示される場合は、以下に該当するかどうかをチェックしてください。
+1. サインインしようとしているユーザーが、その Azure AD インスタンスで Guest ではない (これに該当することが多いのは、異なるディレクトリからのフェデレーション ログインを使用している場合です)。
+2. ユーザーが 200 を超えるグループのメンバーにはなっていない。
 
 ```console
 error: You must be logged in to the server (Unauthorized)

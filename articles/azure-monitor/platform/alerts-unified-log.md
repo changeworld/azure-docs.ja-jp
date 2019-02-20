@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745711"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106406"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
-この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
+この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](../platform/alerts-overview.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
 
-ログ アラートは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 用に作成されたログ検索ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)に関するページをご覧ください
+ログ アラートは、[Azure Monitor](../learn/tutorial-viewdata.md) または [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) 用に作成されたログ クエリ ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](../platform/alerts-log.md)に関するページをご覧ください
 
 > [!NOTE]
-> Azure Monitor のメトリック プラットフォームでは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) の一般的なログ データも利用できるようになっています。 詳細ビューについては、[ログのメトリック アラート](../../azure-monitor/platform/alerts-metric-logs.md)に関するページをご覧ください
+> [Azure Monitor](../learn/tutorial-viewdata.md) のメトリック プラットフォームでは、Azure Monitor の一般的なログ データも利用できるようになっています。 詳細ビューについては、[ログのメトリック アラート](../platform/alerts-metric-logs.md)に関するページをご覧ください
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>ログ検索アラート ルールの定義と種類
@@ -41,7 +41,7 @@ ms.locfileid: "55745711"
 
 - **しきい値**:   ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、ログ検索アラート ルールの種類によって異なります。
 
-ログ検索ルールには、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 用と [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 用のいずれについても、2 つの種類があります。 どちらについても、後のセクションで詳しく説明します。
+ログ クエリ ルールには、[Azure Monitor](../learn/tutorial-viewdata.md) 用と [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) 用のいずれについても、2 つの種類があります。 どちらについても、後のセクションで詳しく説明します。
 
 - **[結果の数](#number-of-results-alert-rules)**。 ログ検索によって返されるレコードの数が指定された数を超えた場合に、アラートが 1 回生成されます。
 - **[メトリック測定](#metric-measurement-alert-rules)**。  ログ検索の結果の値が指定されたしきい値を超えた場合に、オブジェクトごとにアラートが生成されます。
@@ -99,14 +99,28 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 - **クエリ:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **期間:** 30 分<br>
 - **アラート頻度:** 5 分<br>
-- **集計値:** 90 より大きい<br>
+- **アラート ロジック - 条件としきい値:** 90 より大きい<br>
+- **グループ フィールド (集計):** Computer
 - **アラートをトリガーする基準:** 総違反数が 2 より多い<br>
 
-このクエリは、各コンピューターの平均値を 5 分間隔で算出します。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。  コンピューターが 3 台の場合、サンプル データは以下のようになります。
+このクエリは、各コンピューターの平均値を 5 分間隔で算出します。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。 選択されたグループ フィールド (集計) は列指向の "Computer" であるため、AggregatedValue は "Computer" のさまざまな値に対応して分割され、各コンピューターの平均的なプロセッサ使用率は 5 分の時間ビンに対して特定されます。  たとえば、3 台のコンピューターのサンプル クエリの結果は次のようになります。
+
+
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|...     |   ...      |    ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+クエリ結果をグラフで表すと、次のようになります。
 
 ![サンプル クエリの結果](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-この例では、指定された期間内に srv02 と srv03 の 2 台がしきい値 (90 %) に合計 3 回抵触しています。このため、この 2 台について個別にアラートが生成されます。  **[アラートをトリガーする基準]** を **[Consecutive (連続)]** に変更した場合、3 回連続でしきい値に違反した srv03 についてのみアラートが生成されます。
+この例では、3 台の各コンピューターが 5 分のビンで示されています。つまり、平均的なプロセッサ使用率が 5 分単位で計算されています。 srv01 は、1:25 のビンでしきい値 90 に 1 回だけ抵触しています。 比較すると、srv02 はしきい値 90 に 1:10、1:15、および 1:25 のビンで抵触しており、srv03 はしきい値 90 に 1:10、1:15、1:20、および 1:30 のビンで抵触しています。 合計違反回数 (3 回以上) に基づいてトリガーするようにアラートが構成されているので、条件を満たしているのは srv02 と srv03 のみです。 複数の時間ビンにわたって srv02 と srv03 の 2 台がしきい値 (90 %) に 2 回抵触しています。このため、この 2 台について個別にアラートが生成されます。*[アラートをトリガーする基準]* パラメーターが *[Continuous breaches]\(継続的な違反\)* オプション用に構成されている場合は、srv03 に対して**のみ**アラートが発生します。これは、1:10 から 1:20 までの 3 つの連続する時間ビンで srv03 がしきい値に抵触しているためです。 srv02 は 1:10 から 1:15 までの 2 つの連続する時間ビンでしきい値に抵触しているため、**該当しません**。
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>ログ検索アラート ルール - 起動と状態
 
@@ -114,11 +128,11 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 [結果の数タイプのログ アラートの例](#example-of-number-of-records-type-log-alert)で指定された構成に従って、*Contoso-Log-Alert* というログ アラート ルールがあるとします。 
 - 午後 1 時 05分に、Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 0 個のレコードが生成されました。これはしきい値を下回っているため、アラートは発生しません。 
-- 次のイテレーションである午後 1 時 10 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 5 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../../azure-monitor/platform/action-groups.md)が直後にトリガーされました。 
-- 午後 1 時 15 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 2 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../../azure-monitor/platform/action-groups.md)が直後にトリガーされました。
+- 次のイテレーションである午後 1 時 10 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 5 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../platform/action-groups.md)が直後にトリガーされました。 
+- 午後 1 時 15 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 2 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../platform/action-groups.md)が直後にトリガーされました。
 - 次のイテレーションである午後 1 時 20 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により再度 0 個のレコードが提供されました。これはしきい値を下回っているため、アラートは発生しません。
 
-ただし、上にあげたケースでは、午後 1 時 15 分の時点で、Azure アラートでは、1 時 10 分に見られた問題の根本原因が継続しているかどうか、また新たな障害が発生しているかどうかが判断できません。ユーザーが提供したクエリで前のレコードが考慮されている可能性もあるためですが、Azure アラートでは認識できません。 このため慎重を期して、Contoso-Log-Alert が午後 1 時 15 分に実行されるときに、構成済みの[アクション グループ](../../azure-monitor/platform/action-groups.md)が再びトリガーされます。 午後 1 時 20 分にはレコードがありませんが、Azure アラートでは、レコードの原因が解決されたかどうかを確信できません。このため、Azure アラート ダッシュボードでは Contoso-Log-Alert が "解決済み" に変更されませんし、アラートの解決を示す通知も送信されません。
+ただし、上にあげたケースでは、午後 1 時 15 分の時点で、Azure アラートでは、1 時 10 分に見られた問題の根本原因が継続しているかどうか、また新たな障害が発生しているかどうかが判断できません。ユーザーが提供したクエリで前のレコードが考慮されている可能性もあるためですが、Azure アラートでは認識できません。 このため慎重を期して、Contoso-Log-Alert が午後 1 時 15 分に実行されるときに、構成済みの[アクション グループ](../platform/action-groups.md)が再びトリガーされます。 午後 1 時 20 分にはレコードがありませんが、Azure アラートでは、レコードの原因が解決されたかどうかを確信できません。このため、Azure アラート ダッシュボードでは Contoso-Log-Alert が "解決済み" に変更されませんし、アラートの解決を示す通知も送信されません。
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>ログ アラートの価格と課金
@@ -133,9 +147,8 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
     > `<, >, %, &, \, ?, /` のような無効な文字が存在する場合、請求書では `_` に置き換えられます。 [レガシ Log Analytics API](api-alerts.md) を使用してアラート ルールの課金用に作成された scheduleQueryRules リソースを削除するには、[レガシ Log Analytics API](api-alerts.md) を使用して、元のスケジュールとアラート アクションを削除する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)について学習します。
+* [Azure でのログ アラートの作成](../platform/alerts-log.md)について学習します。
 * [Azure のログ アラートの Webhook](alerts-log-webhook.md) について理解する。
-* [Azure アラート](../../azure-monitor/platform/alerts-overview.md)について学習します。
-* [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。    
-
+* [Azure アラート](../platform/alerts-overview.md)について学習します。
+* [Application Insights](../app/analytics.md) についてさらに学習します。
+* [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についてさらに学習します。    

@@ -51,7 +51,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
-| type | type プロパティを `Sftp` に設定する必要があります。 |[はい] |
+| type | type プロパティを `Sftp` に設定する必要があります。 |はい |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ  |
 | authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |はい |
@@ -67,7 +67,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 #### <a name="example-basic-authentication"></a>例:基本認証
 ```json

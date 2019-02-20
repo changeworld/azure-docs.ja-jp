@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics と OMS ポータルでワークスペースを管理する |Microsoft ドキュメント
-description: ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Azure Log Analytics と OMS ポータルでワークスペースを管理できます。
+title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
+description: ユーザー、アカウント、ワークスペース、Azure アカウントでのさまざまな管理タスクを使用して、Azure Monitor で Log Analytics ワークスペースを管理できます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656755"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005371"
 ---
-# <a name="manage-workspaces"></a>ワークスペースを管理する
-
-Log Analytics へのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行する必要があります。 この記事では、ワークスペースを管理するためのアドバイスと手順について説明します。 ワークスペースは基本的にはアカウント情報とアカウントの単純な構成情報が含まれるコンテナーです。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースを管理する
+Azure Monitor のログ データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
 
 ワークスペースを作成するには、次のことを実行する必要があります。
 
@@ -32,11 +31,11 @@ Log Analytics へのアクセスを管理するには、ワークスペースに
 4. 地理的な場所を選択する。
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>必要なワークスペースの数を決定する
-ワークスペースは、Azure のリソースであり、収集、集計、分析され、Azure Portal に表示されるデータのコンテナーです。
+Log Analytics ワークスペースは、Azure のリソースであり、データが収集、集計、分析されて、Azure Monitor に表示されるコンテナーです。
 
-Azure サブスクリプションごとに複数のワークスペースを用意できるほか、複数のワークスペースにアクセスして、容易にクエリを実行できます。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
+1 つの Azure サブスクリプションで複数のワークスペースを使用でき、複数のワークスペースにアクセスして、容易にクエリを実行できます。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
 
-現時点では、ワークスペースに次の情報が示されます。
+Log Analytics ワークスペースには次の情報が示されます。
 
 * データ ストレージの地理的な場所
 * 異なるユーザー アクセス権を定義するためのデータの分離
@@ -44,7 +43,7 @@ Azure サブスクリプションごとに複数のワークスペースを用�
 
 消費の観点から、作成するワークスペースの数はできるだけ少なくすることをお勧めします。 これにより、管理とクエリのエクスペリエンスがより簡単かつ迅速になります。 ただし、上記の特性に基づき、次の条件に当てはまる場合は複数のワークスペースを作成してみてください。
 
-* 世界規模の企業が、データ主権またはコンプライアンス上の理由から特定のリージョンにデータを格納する必要がある。
+* 世界規模の企業が、データ主権またはコンプライアンス上の理由から特定のリージョンにログ データを格納する必要がある。
 * Azure を使用しているときに、管理対象の Azure リソースと同じリージョンにワークスペースを配置することによって送信データ転送の料金が生じるのを回避したい。
 * 独自の Azure サブスクリプション内の部門またはビジネス グループごとにワークスペースを作成することで、請求金額を使用量に基づいて異なる部門またはビジネス グループに割り当てたい。
 * マネージド サービス プロバイダーが、管理する各顧客の Log Analytics データを他の顧客のデータから切り離しておく必要がある。
@@ -55,16 +54,14 @@ Windows エージェントを使用してデータを収集する場合は、[1 
 System Center Operations Manager を使用している場合、各 Operations Manager 管理グループを 1 つのワークスペースのみに接続できます。 Operations Manager を使って管理するコンピューターに Microsoft Monitoring Agent をインストールし、Operations Manager と別の Log Analytics ワークスペースの両方にレポートを生成するようにエージェントを構成できます。
 
 ## <a name="workspace-information"></a>ワークスペース情報
+Log Analytics ワークスペース内のデータの分析は Azure portal の **[Azure Monitor]** メニューで行いますが、ワークスペースの作成と管理は **[Log Analytics ワークスペース]** メニューで行います。
+ 
 
-ワークスペースに関する詳細情報は Azure Portal で表示できます。 
-
-1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com)にサインインします。
-
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
+1. [Azure portal](https://portal.azure.com) にサインインし、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** ワークスペースを選択します。  
 
     ![Azure ポータル](media/manage-access/azure-portal-01.png)  
 
-3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択します。
+3. 一覧からお使いのワークスペースを選択します。
 
 4. ワークスペースのページに、作業開始と構成に関する詳細と、その他の情報へのリンクが表示されます。  
 
@@ -84,10 +81,10 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 | Azure Portal でのワークスペースの作成                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics へのアクセスの管理
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics ワークスペースへのアクセスの管理
 Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。
 
-Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー ロールがあります。
+Azure には、Log Analytics ワークスペース用に、次の 2 つの組み込みユーザー ロールがあります。
 - Log Analytics 閲覧者
 - Log Analytics 共同作成者
 
@@ -149,5 +146,4 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 ## <a name="next-steps"></a>次の手順
 * [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 * 「[Azure Virtual Machines に関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。  
-* [Add Log Analytics solutions from the Solutions Gallery](../../azure-monitor/insights/solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 

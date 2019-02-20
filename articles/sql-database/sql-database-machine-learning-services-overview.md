@@ -11,20 +11,24 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: e2159e7cc59830c3d0d10f1c5b9697ab5b45b666
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/06/2019
+ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55825108"
+ms.locfileid: "55875605"
 ---
 # <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Azure SQL Database での Machine Learning Services と R (プレビュー)
 
 Machine Learning Services は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 その機能には、高パフォーマンスの予測分析と機械学習のための Microsoft R パッケージが含まれています。 ストアド プロシージャ、R ステートメントを含む T-SQL、または T-SQL を含む R コードにより、R スクリプトでリレーショナル データを使用できます。
 
-> [!NOTE]
-> Azure SQL Database での Machine Learning Services と R は、現在パブリック プレビュー期間です。 後で示す方法で[プレビューにサインアップしてください](#signup)。
+> [!IMPORTANT]
+> 現時点では、Azure SQL Database での Machine Learning Services と R は、**General Purpose** サービス レベルと **Business Critical** サービス レベルの仮想コアベースを使用した単一データベースおよびエラスティック プールのパブリック プレビューでのみご利用いただけます。 この初回パブリック プレビューでは、**ハイパースケール** サービス レベルと**マネージド インスタンス** デプロイ オプションは、サポートされていません。 現在、サポートされている言語は R だけです。 現時点では、Python はサポートされていません。 
+>
+> 現在、プレビューは、西ヨーロッパ、北ヨーロッパ、米国西部 2、米国東部、米国中南部、米国中北部、カナダ中部、東南アジア、インド南部、およびオーストラリア南東部の各リージョンで利用できます。 
+>
+> 後で示す方法で[プレビューにサインアップしてください](#signup)。
 
 ## <a name="what-you-can-do-with-r"></a>R でできること
 
@@ -55,10 +59,6 @@ Machine Learning Services には、R の基本ディストリビューション�
 2. パブリック プレビューへのサインアップを希望される場合は、Microsoft ([sqldbml@microsoft.com](mailto:sqldbml@microsoft.com)) にメールをお送りください。 SQL Database における Machine Learning Services のパブリック プレビューと R は、既定では無効になっています。
 
 プログラムへの登録が完了すると、Microsoft がパブリック プレビューへのお客様のオンボードを行い、既存または新規のデータベースに R を使用できるようになります。
-
-現時点では、SQL Database での Machine Learning Services と R は、スタンドアロンおよびエラスティック プールの展開で、**General Purpose** サービス レベルと **Business Critical** サービス レベルの仮想コアベースの購入モデルでのみご利用いただけます。 この初回パブリック プレビューでは、**ハイパースケール** サービス レベルと **Managed Instance** の展開は、サポートされていません。
-
-現在、サポートされている言語は R だけです。 現時点では、Python はサポートされていません。 当初、プレビューは、西ヨーロッパ、北ヨーロッパ、米国西部 2、米国東部、米国中南部、米国中北部、カナダ中部、東南アジア、インド南部、およびオーストラリア南東部の各リージョンで利用できます。 対象リージョンは今後追加予定です。
 
 パブリック プレビューの期間中は、運用環境のワークロードに Machine Learning Services と R を使用することは避けてください。
 

@@ -62,7 +62,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 ゲスト VM - NIC チーミング | いいえ 
 ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Guest VM - Windows/Linux - 静的 IP アドレス | [はい]
+Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 

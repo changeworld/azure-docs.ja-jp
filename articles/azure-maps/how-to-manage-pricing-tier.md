@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f08f4cc74c37ccbbcab071b82f67f912e9fd9fd1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b87fa166f82e4302b5430064d41c293731c60470
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065326"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107703"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure Maps アカウントの価格レベルを管理する
 
@@ -34,7 +34,7 @@ Azure Maps アカウントを作成すると、Azure Maps アカウントの価�
 ![価格レベルの変更](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Azure Maps アカウントの価格レベルをアップグレードまたはダウングレードした場合、新しいサブスクリプション キーを生成する必要はありません。
+> Azure Maps アカウントの価格レベルをアップグレードまたはダウングレードした場合、新しいサブスクリプション キーやクライアント ID (Azure AD の認証用) を生成する必要はありません。
 
 ## <a name="next-steps"></a>次の手順
 

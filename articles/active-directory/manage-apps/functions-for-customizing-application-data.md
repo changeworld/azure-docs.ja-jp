@@ -3,8 +3,8 @@ title: Azure Active Directory における属性マッピングの式の書き�
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 7b69929b210f0f30db28b18073893505d2977051
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179040"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164636"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -34,10 +35,10 @@ SaaS アプリケーションに対してプロビジョニングを構成する
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
   2. 文字列定数。二重引用符で囲む必要があります。 例: "米国"
   3. 他の関数 例: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "会社名:\"Contoso\""
+* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "会社名:\\"Contoso\\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Append
@@ -105,7 +106,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String | 通常は、名または姓の属性 |
+| **source セクション** |必須 |String | 通常は、名または姓の属性です。 |
 
 - - -
 ### <a name="not"></a>Not
@@ -167,7 +168,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧 |
+| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
 
 - - -
@@ -181,6 +182,19 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
+
+- - -
+### <a name="split"></a>Split
+**関数:**<br> Split(source, delimiter)
+
+**説明:**<br> 指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | type | メモ |
+| --- | --- | --- | --- |
+| **source セクション** |必須 |String |**source** 値。 |
+| **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -282,8 +296,18 @@ NormalizeDiacritics([givenName])
 * **入力** (givenName):"Zoë"
 * **出力**:"Zoe"
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
+### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
+コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
 
+**Expression:** <br>
+Split([extensionAttribute5], ",")
+
+**サンプル入力/出力:** <br>
+
+* **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
+* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
 SaaS アプリケーションに特定の形式で日付を送信します。 <br>
 たとえば、ServiceNow 向けに日付の書式を設定します。
 
@@ -302,7 +326,6 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
 
 **Expression:** <br>
-
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **サンプル入力/出力:**
@@ -310,8 +333,19 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * **入力** (state):"QLD"
 * **出力**:"Australia/Brisbane"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
+### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
+正規表現の値と一致する文字を見つけて削除する必要があります。
 
+**Expression:** <br>
+
+Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
+
+**サンプル入力/出力:**
+
+* **INPUT** (mailNickname: "john_doe72"
+* **出力**:"72"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
 次の例では、PreferredFirstName および PreferredLastName ソース フィールドを連結することで UPN 値が生成され、ToLower 関数は、すべての文字を小文字に変換するために、生成された文字列で機能します。 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -323,7 +357,6 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * **出力**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
-
 ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
 
 **Expression:** <br>
@@ -349,4 +382,3 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](use-scim-to-provision-users-and-groups.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
-

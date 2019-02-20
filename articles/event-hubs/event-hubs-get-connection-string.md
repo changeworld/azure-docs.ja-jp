@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535276"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238149"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
@@ -51,13 +51,16 @@ Event Hubs 名前空間を作成したら、下に示すように、ポータル
 ![Event Hubs の接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Azure PowerShell を使用した接続文字列の取得
-以下に示すように、Get-AzureRmEventHubNamespaceKey を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+以下に示すように、Get-AzEventHubNamespaceKey を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
-詳細については、[Azure Event Hubs の PowerShell モジュール](https://docs.microsoft.com/powershell/module/azurerm.eventhub/get-azurermeventhubkey)に関するページを参照してください。
+詳細については、[Azure Event Hubs の PowerShell モジュール](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey)に関するページを参照してください。
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Azure CLI を使用した接続文字列の取得
 次を使用して、名前空間の接続文字列を取得できます。

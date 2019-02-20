@@ -3,8 +3,8 @@ title: Azure AD での SaaS アプリ ユーザー プロビジョニングの�
 description: Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190923"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186354"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 
 * ソース システムとターゲット システムとの間で既存の ID を一致させる機能。
 * ソース システムからターゲット システムにフローするユーザー データを定義する、カスタマイズ可能な属性マッピング。
-* プロビジョニング エラーの電子メール通知 (オプション)
+* プロビジョニング エラーのためのオプションの電子メール通知。
 * 監視とトラブルシューティングに役立つレポートとアクティビティ ログ。
 
 ## <a name="why-use-automated-provisioning"></a>自動プロビジョニングを使用する理由
@@ -214,13 +215,13 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
     
 **初期同期**の完了に要する時間に影響する要因のまとめ
 
-* プロビジョニングのスコープ内のユーザーとグループの合計数
+* プロビジョニングのスコープ内のユーザーとグループの合計数。
 
-* ソース システム (Azure AD) に存在するユーザー、グループ、およびグループのメンバーの合計数
+* ソース システム (Azure AD) に存在するユーザー、グループ、およびグループのメンバーの合計数。
 
 * プロビジョニングのスコープ内のユーザーがターゲット アプリケーション内の既存のユーザーと一致するかどうか、または新たに作成する必要があるかどうか。 すべてのユーザーを初めて作成する同期ジョブはすべてのユーザーが既存ユーザーと一致する同期ジョブの約 *2 倍*の時間がかかります。
 
-* [監査ログ](check-status-user-account-provisioning.md)内のエラー数。 多くのエラーが発生し、プロビジョニング サービスが検疫状態に移行した場合、パフォーマンスは低下します 
+* [監査ログ](check-status-user-account-provisioning.md)内のエラー数。 多くのエラーが発生し、プロビジョニング サービスが検疫状態に移行した場合、パフォーマンスは低下します。    
 
 * ターゲット システムによって実装される要求レートの制限および調整。 ターゲット システムによって、要求レートの制限および調整が実装される場合があり、大規模な同期動作中にパフォーマンスに影響する可能性があります。 このような条件下では、高速で大量の要求を受信するアプリは応答レートが遅くなったり、接続が閉じたりする場合があります。 パフォーマンスを向上するために、アプリが処理できるよりも速くアプリ要求を送信しないようにコネクタによって調整する必要があります。 Microsoft がビルドしたプロビジョニング コネクタはこの調整を行います。 
 

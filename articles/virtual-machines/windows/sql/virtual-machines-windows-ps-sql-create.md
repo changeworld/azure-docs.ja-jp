@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60f04ac857079a1019ca744f3b26b0d05ae6ca6c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c37347928e75986fa8aee0d3d0a4db2667312f56
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426932"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984377"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -29,14 +29,14 @@ ms.locfileid: "54426932"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-この記事では、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-your-subscription"></a>サブスクリプションの構成
 
-1. PowerShell を開いて **Connect-AzureRmAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
+1. PowerShell を開き、**Connect-AzAccount** コマンドを実行することで、Azure アカウントへのアクセスを確立します。
 
    ```PowerShell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 1. 資格情報を入力するための画面が表示されます。 Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
@@ -64,7 +64,7 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Network properties
+### <a name="network-properties"></a>ネットワークのプロパティ
 仮想マシンのネットワークで使用するプロパティを定義します。 
 
 - Linux
@@ -104,10 +104,10 @@ $OSDiskName = $VMName + "OSDisk"
 
 仮想マシンに使用するイメージは、以下の変数を使用して定義します。 
 
-1. まず、`Get-AzureRmVMImageOffer` コマンドを使用して、提供されているすべての SQL Server イメージを一覧表示します。 このコマンドにより、Azure Portal で提供されている現在のイメージが一覧表示されます。また、PowerShell でのみインストールできる古いイメージも一覧表示されます。
+1. まず、`Get-AzVMImageOffer` コマンドを使用して、提供されているすべての SQL Server イメージを一覧表示します。 このコマンドにより、Azure Portal で提供されている現在のイメージが一覧表示されます。また、PowerShell でのみインストールできる古いイメージも一覧表示されます。
 
    ```PowerShell
-   Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
+   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
    ```
 
 1. このチュートリアルでは、次の変数を使用して、Windows Server 2016 上の SQL Server 2017 を指定します。
@@ -121,7 +121,7 @@ $OSDiskName = $VMName + "OSDisk"
 1. 次に、お使いのサービスで使用可能なエディションを一覧表示します。
 
    ```PowerShell
-   Get-AzureRmVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
+   Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
 1. このチュートリアルでは、SQL Server 2017 Developer エディション (**SQLDEV**) を使用します。 Developer エディションはテストと開発のために無料でライセンスされます。VM を実行するコストのみを支払います。
@@ -131,21 +131,21 @@ $OSDiskName = $VMName + "OSDisk"
    ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。 前に初期化した、リソース グループの名前と場所の変数を指定します。
+Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。 前に初期化した、リソース グループの名前と場所の変数を指定します。
 
 このコマンドレットを実行し、新しいリソース グループを作成します。
 
 ```PowerShell
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
 
 このコマンドレットを実行し、新しいストレージ アカウントを作成します。
 
 ```PowerShell
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
    -Name $StorageName -SkuName $StorageSku `
    -Kind "Storage" -Location $Location
 ```
@@ -161,7 +161,7 @@ $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupNam
 * パブリックまたはプライベートの IP アドレスを持つネットワーク インターフェイスが定義されている必要があります。
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>仮想ネットワークのサブネット構成の作成
-まず、仮想ネットワークのサブネット構成を作成します。 このチュートリアルでは、[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) コマンドレットを使用して既定のサブネットを作成します。 前に初期化した、サブネット名とアドレス プレフィックスの変数を指定します。
+まず、仮想ネットワークのサブネット構成を作成します。 このチュートリアルでは、[New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、既定のサブネットを作成します。 前に初期化した、サブネット名とアドレス プレフィックスの変数を指定します。
 
 > [!NOTE]
 > サブネット名とアドレス プレフィックス以外のプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。
@@ -169,22 +169,22 @@ $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupNam
 このコマンドレットを実行して、仮想サブネットの構成を作成します。
 
 ```PowerShell
-$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-次に、[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) コマンドレットを使用して、新しいリソース グループ内に仮想ネットワークを作成します。 前に初期化した、名前、場所、およびアドレス プレフィックスの変数を指定します。 前の手順で定義したサブネット構成を使用します。
+次に、[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) コマンドレットを使用して、新しいリソース グループ内に仮想ネットワークを作成します。 前に初期化した、名前、場所、およびアドレス プレフィックスの変数を指定します。 前の手順で定義したサブネット構成を使用します。
 
 このコマンドレットを実行して、仮想ネットワークを作成します。
 
 ```PowerShell
-$VNet = New-AzureRmVirtualNetwork -Name $VNetName `
+$VNet = New-AzVirtualNetwork -Name $VNetName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
 ```
 
 ### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
-これで仮想ネットワークが定義されたので、仮想マシンへの接続用の IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) コマンドレットを使用して、新しいリソース グループ内にパブリック IP アドレスを作成します。 前に初期化した、名前、場所、割り当て方法、および DNS ドメイン名ラベルの変数を指定します。
+これで仮想ネットワークが定義されたので、仮想マシンへの接続用の IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) コマンドレットを使用して、新しいリソース グループ内にパブリック IP アドレスを作成します。 前に初期化した、名前、場所、割り当て方法、および DNS ドメイン名ラベルの変数を指定します。
 
 > [!NOTE]
 > パブリック IP アドレスのプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。 またプライベート アドレスや静的アドレスを作成することもできますが、このチュートリアルの範囲を超えるため、同様に説明を省略します。
@@ -192,7 +192,7 @@ $VNet = New-AzureRmVirtualNetwork -Name $VNetName `
 このコマンドレットを実行して、パブリック IP アドレスを作成します。
 
 ```PowerShell
-$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName `
+$PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
 ```
@@ -203,14 +203,14 @@ VM と SQL Server トラフィックを保護するには、ネットワーク �
 1. まず、リモート デスクトップ接続のための RDP 用ネットワーク セキュリティ グループ ルールを作成します。
 
    ```PowerShell
-   $NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
+   $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
    ```
 1. TCP ポート 1433 でトラフィックを許可するネットワーク セキュリティ グループ ルールを構成します。 そうすることで、インターネット経由での SQL Server への接続が可能になります。
 
    ```PowerShell
-   $NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
+   $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
       -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
    ```
@@ -218,18 +218,18 @@ VM と SQL Server トラフィックを保護するには、ネットワーク �
 1. ネットワーク セキュリティ グループを作成します。
 
    ```PowerShell
-   $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
+   $Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
       -Location $Location -Name $NsgName `
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
    ```
 
 ### <a name="create-the-network-interface"></a>ネットワーク インターフェイスの作成
-これで、仮想マシンのネットワーク インターフェイスを作成する準備が整いました。 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) コマンドレットを使用して、新しいリソース グループ内にネットワーク インターフェイスを作成します。 前に定義した名前、場所、サブネット、およびパブリック IP アドレスを指定します。
+これで、仮想マシンのネットワーク インターフェイスを作成する準備が整いました。 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) コマンドレットを使用して、新しいリソース グループ内にネットワーク インターフェイスを作成します。 前に定義した名前、場所、サブネット、およびパブリック IP アドレスを指定します。
 
 このコマンドレットを実行して、ネットワーク インターフェイスを作成します。
 
 ```PowerShell
-$Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
+$Interface = New-AzNetworkInterface -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id `
    -NetworkSecurityGroupId $Nsg.Id
@@ -244,12 +244,12 @@ $Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
 - オペレーティング システム ディスクを指定します。
 
 ### <a name="create-the-vm-object"></a>VM オブジェクトの作成
-まず、仮想マシンのサイズを指定します。 このチュートリアルでは DS13 を指定します。 [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) コマンドレットを使用して、構成可能な仮想マシン オブジェクトを作成します。 前に初期化した、名前とサイズの変数を指定します。
+まず、仮想マシンのサイズを指定します。 このチュートリアルでは DS13 を指定します。 [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) コマンドレットを使用して、構成可能な仮想マシン オブジェクトを作成します。 前に初期化した、名前とサイズの変数を指定します。
 
 このコマンドレットを実行して、仮想マシン オブジェクトを作成します。
 
 ```PowerShell
-$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 ```
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>ローカル管理者の資格情報の名前とパスワードを保持する資格情報オブジェクトを作成する
@@ -262,7 +262,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して仮想マシンのオペレーティング システムのプロパティを設定する準備ができました。
+[Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) コマンドレットを使用して仮想マシンのオペレーティング システムのプロパティを設定する準備ができました。
 
 - オペレーティング システムの種類は Windows として設定します。
 - [仮想マシン エージェント](../../extensions/agent-windows.md)がインストールされる必要があります。
@@ -272,18 +272,18 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 このコマンドレットを実行し、仮想マシンのオペレーティング システムのプロパティを設定します。
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
    -Windows -ComputerName $ComputerName -Credential $Credential `
    -ProvisionVMAgent -EnableAutoUpdate
 ```
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>仮想マシンにネットワーク インターフェイスを追加する
-次に、[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) コマンドレットを使用し、前に定義した変数を使用してネットワーク インターフェイスを追加します。
+次に、前に定義した変数を使用して [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) コマンドレットを実行して、ネットワーク インターフェイスを追加します。
 
 このコマンドレットを実行し、仮想マシンのネットワーク インターフェイスを設定します。
 
 ```PowerShell
-$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 ```
 
 ### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>仮想マシンで使用するディスクの Blob Storage の場所を設定する
@@ -296,7 +296,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 ```
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのディスクのプロパティ設定
-次に、[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) コマンドレットを使用して、仮想マシンのオペレーティング システム ディスクのプロパティを設定します。 
+次に、[Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) コマンドレットを使用して、仮想マシンのオペレーティング システム ディスクのプロパティを設定します。 
 
 - 仮想マシンのオペレーティング システムはイメージから取得することを指定します。
 - キャッシュは読み取り専用に設定します (同じディスクに SQL Server がインストールされるため)。
@@ -305,23 +305,23 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 このコマンドレットを実行し、仮想マシンのオペレーティング システム ディスクのプロパティを設定します。
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name `
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
    $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 ```
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>仮想マシンのプラットフォーム イメージを指定する
-最後の構成手順は、仮想マシン用のプラットフォーム イメージを指定することです。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 前に定義した変数を指定して [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) コマンドレットを使用し、このイメージを使用します。
+最後の構成手順は、仮想マシン用のプラットフォーム イメージを指定することです。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 前に定義した変数を使用して [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) コマンドレットを実行して、このイメージを使用します。
 
 このコマンドレットを実行し、仮想マシンのプラットフォーム イメージを指定します。
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine `
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
    -PublisherName $PublisherName -Offer $OfferName `
    -Skus $Sku -Version $Version
 ```
 
 ## <a name="create-the-sql-vm"></a>SQL VM の作成
-これで構成手順を終えたので、仮想マシンを作成する準備が整いました。 定義済みの変数を使用して [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットを実行し、仮想マシンを作成します。
+これで構成手順を終えたので、仮想マシンを作成する準備が整いました。 定義した変数を使用して [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを実行して、仮想マシンを作成します。
 
 > [!TIP]
 > VM の作成には数分かかることがあります。
@@ -329,7 +329,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine `
 このコマンドレットを実行して仮想マシンを作成します。
 
 ```PowerShell
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 ```
 
 これで仮想マシンが作成されました。
@@ -342,7 +342,7 @@ SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張�
 
 
    ```PowerShell
-   Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
 ## <a name="stop-or-remove-a-vm"></a>VM の停止または削除
@@ -350,13 +350,13 @@ SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張�
 VM を継続的に実行する必要がない場合は、使用中でないときに停止することで、不要な料金の発生を回避できます。 次のコマンドでは、VM を停止しますが、後から使用できるように残しておきます。
 
 ```PowerShell
-Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-仮想マシンに関連付けらているすべてのリソースは、**Remove-AzureRmResourceGroup** コマンドを使用して完全に削除することもできます。 そのようにすると仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
+**Remove-AzResourceGroup** コマンドを使用して、仮想マシンに関連付けられているすべてのリソースを完全に削除することもできます。 そのようにすると仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
 
 ## <a name="example-script"></a>サンプル スクリプト
-このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 使用する Azure サブスクリプションは、**Connect-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドで、既に設定してあると想定しています。
+このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 使用する Azure サブスクリプションは、**Connect-AzAccount** コマンドと **Select-AzSubscription** コマンドによって既に設定されていることを前提とします。
 
 ```PowerShell
 # Variables
@@ -392,36 +392,36 @@ $Sku = "SQLDEV"
 $Version = "latest"
 
 # Resource Group
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
 # Network
-$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
-$VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
-$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
-$NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
-$NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
-$Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location -Name $NsgName -SecurityRules $NsgRuleRDP,$NsgRuleSQL
-$Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id -NetworkSecurityGroupId $Nsg.Id
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+$VNet = New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
+$PublicIp = New-AzPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
+$NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
+$NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
+$Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location -Name $NsgName -SecurityRules $NsgRuleRDP,$NsgRuleSQL
+$Interface = New-AzNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id -NetworkSecurityGroupId $Nsg.Id
 
 # Compute
-$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
-$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
-$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 
 # Image
-$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
 
 # Create the VM in Azure
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
 # Add the SQL IaaS Extension
-Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
 ```
 
 ## <a name="next-steps"></a>次の手順

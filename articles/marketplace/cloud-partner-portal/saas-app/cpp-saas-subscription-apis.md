@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695374"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893342"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Azure を通じた SaaS の販売 - API
 
@@ -68,7 +68,7 @@ Azure portal を使用して新しいアプリケーションを登録するに�
     -   **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http://localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
     -   **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http://MyFirstAADApp** など、ご自分のアプリケーションに固有の値を入力してください。
 
-        ![SaaS AD アプリの登録](./media/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
+        ![SaaS AD アプリの登録](./media/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
 
 5.  完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
 
@@ -148,7 +148,9 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 ### <a name="resolve-subscription"></a>サブスクリプションの解決
 
-解決エンドポイントでの POST アクションにより、ユーザーはトークンを永続的なリソース ID に解決できます。
+解決エンドポイントでの POST アクションにより、ユーザーはマーケットプレース トークンを永続的なリソース ID に解決できます。  リソース ID は、SAAS サブスクリプションの一意の識別子です。 
+
+ユーザーが ISV の Web サイトにリダイレクトされると、URL に、クエリ パラメーターのトークンが含まれます。 ISV は、このトークンを使用し、それを解決するための要求を行うことが期待されます。 応答には、リソースの一意の SAAS サブスクリプション ID、名前、オファーID、およびプランが含まれます。 このトークンは、1 時間だけ有効です。
 
 *要求*
 

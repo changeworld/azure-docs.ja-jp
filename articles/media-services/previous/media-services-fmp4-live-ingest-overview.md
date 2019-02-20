@@ -4,7 +4,7 @@ description: この仕様では、Azure Media Services 用 Fragmented MP4 ベー
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228880"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984836"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 (レガシ)
+
 この仕様では、Azure Media Services 用 Fragmented MP4 ベースのライブ ストリーミング インジェストのプロトコルと形式について説明します。 Media Services は、顧客が Azure をクラウド プラットフォームとして使用して、ライブ イベントをストリーム配信し、リアルタイムでコンテンツをブロードキャストできるライブ ストリーミング サービスを提供しています。 このドキュメントでは、冗長性の高い、堅牢なライブ インジェスト メカニズムを構築する上でのベスト プラクティスについても説明します。
 
 ## <a name="1-conformance-notation"></a>1.適合性の表記
@@ -82,17 +83,17 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 
 オーディオ – 128 kbps
 
-### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1: すべてのトラックを 1 つのストリームに配置する
+### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1:すべてのトラックを 1 つのストリームに配置する
 このオプションでは、1 つのエンコーダーですべてのオーディオ トラックとビデオ トラックを生成し、1 つの Fragmented MP4 ビットストリームにバンドルします。 Fragmented MP4 ビットストリームは、その後、1 つの HTTP POST 接続を経由して送信されます。 この例では、このライブ プレゼンテーションには 1 つのストリームだけがあります。
 
 ![1 ストリームのトラック][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>オプション 2: 各トラックを個別のストリームに配置する
+### <a name="option-2-each-track-in-a-separate-stream"></a>オプション 2:各トラックを個別のストリームに配置する
 このオプションでは、エンコーダーは各 Fragment MP4 ビットストリームにトラックを 1 つずつ配置して、すべてのストリームを個別の HTTP 接続を経由して送信します。 これは、1 つのエンコーダーでも複数のエンコーダーでも実行できます。 ライブ インジェストの観点では、このライブ プレゼンテーションは次の 4 つのストリームで構成されます。
 
 ![個別ストリームのトラック][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3: 最も低いビットレートのビデオ トラックにオーディオ トラックをバンドルし 1 つのストリームに配置する
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3: オーディオ トラックを最も低いビットレートのビデオ トラックにバンドルして 1 つのストリームに配置する
 このオプションでは、顧客は最も低いビットレートのビデオ トラックとオーディオ トラックを 1 つの Fragment MP4 ビットストリームにバンドルし、その他の 2 つのビデオ トラックは個別のストリームとして残しています。 
 
 ![オーディオ トラックとビデオ トラックのストリーム][image4]
@@ -117,7 +118,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
   
     c. 新しい HTTP POST URL には、最初の POST と同じストリーム ヘッダー (**ftyp**、**Live Server Manifest Box**、**moov** ボックス) が含まれていなければなりません。
   
-    d. 各トラックに送信された最後の 2 つのフラグメントを再送信し、メディア タイムラインに不連続性を発生させずにストリーミングを再開しなければなりません。 HTTP POST 要求間であっても、MP4 フラグメントのタイムスタンプは継続的に増加しなければなりません。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 各トラックに送信された最後の 2 つのフラグメントを再送信し、メディア タイムラインに不連続性を発生させずにストリーミングを再開しなければなりません。 HTTP POST 要求間であっても、MP4 フラグメントのタイムスタンプは継続的に増加しなければなりません。
 1. エンコーダーは、MP4 フラグメントの継続時間と同等の速度でデータが送信されていない場合、HTTP POST 要求を終了する必要があります。  データを送信しない HTTP POST 要求により、サービス更新時に Media Services がエンコーダーから即時に切断されるのを防止できます。 この理由から、スパース (ad 信号) トラックの HTTP POST は、スパース フラグメントが送信されるとすぐに終了するように短期間に設定する必要があります。
 
 ## <a name="8-encoder-failover"></a>8.エンコーダーのフェールオーバー
@@ -167,7 +168,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
    
     c. シグナル化データが利用できない間は、エンコーダーは HTTP POST 要求を終了する必要があります。 POST 要求がアクティブな間は、エンコーダーは、データを送信する必要があります。
 
-    d. スパース フラグメントを送信する場合、エンコーダーはコンテンツ長ヘッダー (使用可能な場合) を明示的に設定できます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 スパース フラグメントを送信する場合、エンコーダーはコンテンツ長ヘッダー (使用可能な場合) を明示的に設定できます。
 
     e. 新しい接続でスパース フラグメントを送信する場合、エンコーダーは、新しいフラグメントが後に続くヘッダー ボックスから送信を開始する必要があります。 これは、スパース トラックがまだ確認されたことのない新しいサーバーへの新しいスパースの接続が確立されている間にフェールオーバーが発生した場合に対応するためです。
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 208526b745a117c9ee14bab21f8a5ce05accd1fe
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382243"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997185"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
@@ -54,6 +54,8 @@ set PCS
 このコマンドは、**start.cmd** スクリプトによって設定されたすべての環境変数を表示します。
 
 ローカル コンピューターで Docker が実行されていることを確認します。
+> [!NOTE]
+> Docker は、Windows で実行されている場合は [Linux コンテナー](https://docs.docker.com/docker-for-windows/)を実行している必要があります。
 
 ローカルの Docker コンテナーで実行されているマイクロサービスは、Azure クラウド サービスにアクセスする必要があります。 次のコマンドを使用して、お使いの Docker 環境のインターネット接続をテストできます。このコマンドは、コンテナー内からインターネット アドレスを ping します。
 
@@ -66,6 +68,9 @@ docker run --rm -ti library/alpine ping google.com
 ```cmd/sh
 docker-compose up
 ```
+
+> [!NOTE] 
+> `docker-compose up` を実行する前に、Docker と[ローカル ドライブを共有している](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ことを確認します。
 
 このコマンドを初めて実行すると、Docker は Docker ハブからマイクロサービス イメージをダウンロードして、コンテナーをローカルに構築します。 以降の実行では、Docker はコンテナーを直ちに実行します。
 

@@ -2,7 +2,7 @@
 title: REST を使用して Azure Media Services コンテンツを発行する
 description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 8385dedd494c0cef968cb869ded3e92ce213da5e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 185e047bb1877d5ee4660653c0e7b6b32f273a0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785861"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991601"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する
+# <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
@@ -140,13 +140,13 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ### <a name="build-streaming-urls"></a>ストリーミング URL を作成します。
 ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。 
 
-Smooth Streaming: **Path** + マニフェスト ファイル名 + "/manifest"
+スムーズ ストリーミング:**Path** + マニフェスト ファイル名 + "/manifest"
 
 例:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **Path** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
+HLS:**Path** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
 
 例:
 
@@ -163,7 +163,7 @@ DASH: **Path** + マニフェスト ファイル名 + "/manifest(format=mpd-time
 ### <a name="build-progressive-download-urls"></a>プログレッシブ ダウンロード URL を作成します。
 ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。   
 
-URL: **Path** + アセット ファイル mp4 名
+URL:**Path** + アセット ファイル mp4 名
 
 例:
 

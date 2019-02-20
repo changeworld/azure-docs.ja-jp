@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471319"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109760"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -58,11 +58,25 @@ Cosmos アカウントが N 個の Azure リージョンに分散している場
 
 ## <a name="building-highly-available-applications"></a>高可用性アプリケーションの構築
 
-- 書き込みと読み込みの高可用性を確保するために、複数書き込みリージョンを持つ少なくとも 2 つのリージョンにまたがるように Cosmos アカウントを構成します。 この構成により、SLA で裏付けられた、読み取りと書き込みの両方についての可用性、最も低い待機時間、およびスケーラビリティが提供されます。 詳しくは、[複数書き込みリージョンで Cosmos アカウントを構成する](tutorial-global-distribution-sql-api.md)方法をご覧ください。
+- 書き込みと読み込みの高可用性を確保するために、複数書き込みリージョンを持つ少なくとも 2 つのリージョンにまたがるように Cosmos アカウントを構成します。 この構成により、SLA で裏付けられた、読み取りと書き込みの両方についての可用性、最も低い待機時間、およびスケーラビリティが提供されます。 詳しくは、[複数書き込みリージョンで Cosmos アカウントを構成する](tutorial-global-distribution-sql-api.md)方法をご覧ください。 アプリケーションでマルチマスターを構成するには、[マルチマスターを構成する方法](how-to-multi-master.md)に関するページを参照してください。
 
 - 単一書き込みリージョンで構成されている複数リー ジョンの Cosmos アカウントでは、[Azure CLI または Azure portal を使用して自動フェールオーバーを有効にします](how-to-manage-database-account.md#automatic-failover)。 自動フェールオーバーを有効にすると、リージョンで災害が発生するたびに Cosmos DB はアカウントを自動的にフェールオーバーします。  
 
 - Cosmos アカウントの可用性が高くても、アプリケーションが高可用性を維持するよう正しく設計できていないこともあります。 アプリケーションのエンド ツー エンドの高可用性をテストするには、アプリケーションのテストまたはディザスター リカバリー (DR) の訓練の一部として、[Azure CLI または Azure portal を使用して手動フェールオーバー](how-to-manage-database-account.md#manual-failover)を定期的に呼び出してください。
+
+
+ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。
+
+次の表は、最も一般的なシナリオでの RPO と RTO を示しています。
+
+|リージョン数 |構成 |整合性レベル|RPO |RTO |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | 240 分未満 | 1 週間未満 |
+|>1     | シングルマスター レプリケーション | セッション、一貫性のあるプレフィックス、最終的 | 15 分未満 | 15 分未満 |
+|>1     | シングルマスター レプリケーション | Bounded Staleness | K & T | 15 分未満 |
+|>1     | マルチマスター レプリケーション | セッション、一貫性のあるプレフィックス、最終的 | 15 分未満 | 0 |
+|>1     | マルチマスター レプリケーション | Bounded Staleness | K & T | 0 |
+|>1     | * | Strong | 0 | 15 分未満 |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -72,3 +86,4 @@ Cosmos アカウントが N 個の Azure リージョンに分散している場
 * [プロビジョニング スループットのグローバルなスケーリング](scaling-throughput.md)
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
 * [Azure Cosmos DB の整合性レベル](consistency-levels.md)
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)

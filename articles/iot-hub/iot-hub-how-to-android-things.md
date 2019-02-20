@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: b213642b093c3b5f79e5993af91ae51517f09c70
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747916"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981674"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK を利用したモバイル デバイス向け開発
-[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) では、Windows、Linux、OSX、MBED、および Android や iOS などのモバイル プラットフォームといった人気のある広範なプラットフォーム向けの、最上位のサポートを提供します。  IoT の展開において選択の幅を広げ、柔軟性を高めるための取り組みの一環として、Java SDK では [Android Things](https://developer.android.com/things/) プラットフォームもサポートされています。  開発者は、デバイス側では Android Things オペレーティング システムの利点を活用しながら、数百万台のデバイスの同時接続までスケーリングする中央メッセージ ハブとして [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) を使用できます。 
+# <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK を使用した Android Things プラットフォーム向けの開発
+[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) では、Windows、Linux、OSX、MBED、および Android や iOS のようなモバイル プラットフォームなどの人気のあるプラットフォーム向けの、最上位のサポートを提供します。  IoT の展開において選択の幅を広げ、柔軟性を高めるための取り組みの一環として、Java SDK では [Android Things](https://developer.android.com/things/) プラットフォームもサポートされています。  開発者は、デバイス側では Android Things オペレーティング システムの利点を活用しながら、数百万台のデバイスの同時接続までスケーリングする中央メッセージ ハブとして [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) を使用できます。 
 
 このチュートリアルでは、Azure IoT Java SDK を使用して Android Things 上のデバイス側アプリケーションをビルドする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-* Android Things OS が実行されている、Android Things でサポートされるハードウェア。  Android Things をフラッシュする方法については、[Android Things のドキュメント](https://developer.android.com/things/get-started/kits#flash-at)をご覧ください。  Android Things デバイスがインターネットに接続されていて、キーボード、ディスプレイ、マウスなどの必要な周辺機器が取り付けられていることを確認します。  このチュートリアルでは、Raspberry Pi 3 を使用します。
+* Android Things OS が実行されている、Android Things でサポートされるハードウェア。  Android Things OS をフラッシュする方法については、[Android Things のドキュメント](https://developer.android.com/things/get-started/kits#flash-at)をご覧ください。  Android Things デバイスがインターネットに接続されていて、キーボード、ディスプレイ、マウスなどの必要な周辺機器が取り付けられていることを確認します。  このチュートリアルでは、Raspberry Pi 3 を使用します。
 * 最新バージョンの [Visual Studio](https://developer.android.com/studio/)
 * 最新バージョンの [Git](https://git-scm.com/)
 
@@ -69,12 +69,13 @@ ms.locfileid: "55747916"
     ```
 4.  Android Studio で、"\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" にある Android プロジェクトを開きます。
 5.  gradle.properties ファイルを開き、"Device_connection_string" を前に書き留めた実際のデバイス接続文字列に置き換えます。
+    ![リポジトリのマスター ブランチのスクリーンショット](./media/how-to-android-things/connection-string.png)
 6.  [Run]\(実行\) > [Debug]\(デバッグ\) をクリックして、このコードを Android Things デバイスに展開するためのデバイスを選択します。
 7.  アプリケーションが正常に開始されると、Android Things デバイスで実行されているアプリケーションを確認できます。  このサンプル アプリケーションでは、ランダムに生成された温度の測定値が送信されます。
 
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
 
-XCode エミュレーターで実行したサンプル アプリは、デバイスから送信されたメッセージに関するデータを表示します。 データの受信時に IoT ハブを経由するデータを表示することもできます。 IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
+データの受信時に IoT ハブを経由するデータを表示できます。 IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
 Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
 

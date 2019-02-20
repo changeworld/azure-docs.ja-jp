@@ -1,26 +1,26 @@
 ---
-title: Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
-description: Azure Data Lake Storage Gen2 プレビューのデータに対してクエリを実行し、分析結果を格納する方法について説明します。
+title: Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
+description: Azure Data Lake Storage Gen2 のデータに対してクエリを実行し、分析結果を格納する方法について説明します。
 author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662960"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964579"
 ---
-# <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
+# <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
-HDInsight クラスターのデータを分析するには、Azure Blob Storage、Azure Data Lake Storage Gen2 プレビュー対応の Azure Blob Storage、Azure Data Lake Storage Gen1 のいずれかの組み合わせでデータを格納します。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
+HDInsight クラスターのデータを分析するには、Azure Blob Storage、Azure Data Lake Storage Gen2 対応の Azure Blob Storage、Azure Data Lake Storage Gen1 のいずれかの組み合わせでデータを格納します。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
 Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、既定のファイル システムとして Azure Storage の BLOB コンテナーまたは Data Lake Storage Gen2 で利用できる階層型名前空間を指定できます。 また、HDInsight 3.5 を使用して、コンテナーまたは階層型名前空間のいずれかを既定のファイル システムとして選択することもできますが、いくつか例外があります。
 
-この記事では、HDInsight クラスターでの Data Lake Storage Gen2 の動作について説明します。 HDInsight クラスターの作成方法の詳細については、[Azure Data Lake Storage と Hadoop、Spark、Kafka などを使用した HDInsight クラスターの設定](data-lake-storage-quickstart-create-connect-hdi-cluster.md)に関する記事を参照してください。
+この記事では、HDInsight クラスターでの Data Lake Storage Gen2 の動作について説明します。 HDInsight クラスターの作成方法の詳細については、[Azure Data Lake Storage と Hadoop、Spark、Kafka などを使用した HDInsight クラスターの設定](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に関する記事を参照してください。
 
 Azure Storage は、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。 HDInsight は Azure Data Lake Storage をクラスターの既定のファイル システムとして使用できます。 Hadoop 分散ファイル システム (HDFS) のインターフェイスを利用して、HDInsight のコンポーネントすべてが、Azure Data Lake Storage のファイルに対して直接操作できます。
 
@@ -154,7 +154,7 @@ az storage account create \
 ```
 
 > [!NOTE]
-> Data Lake Storage Gen2 のパブリック プレビュー期間中は、`--sku Standard_LRS` のみがサポートされています。
+> Data Lake Storage Gen2 の公開時は、`--sku Standard_LRS` のみがサポートされています。
 
 ストレージ アカウントの作成先となる地理的リージョンを指定するよう要求されます。 ストレージ アカウントは、HDInsight クラスターの作成を計画しているリージョンと同じリージョンに作成してください。
 
@@ -209,7 +209,6 @@ HDInsight クラスターを作成しているときに、そのクラスター�
 
 * [Azure Data Lake Storage Gen2 用の ABFS Hadoop ファイルシステム ドライバー](data-lake-storage-abfs-driver.md)
 * [Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)
-* [Azure Data Lake Storage Gen2 と Hadoop、Spark、Kafka などを使用して HDInsight クラスターを設定する](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [distcp を使用して Azure Data Lake Storage Gen2 にデータを取り込む](data-lake-storage-use-distcp.md)
 
 [powershell-install]: /powershell/azure/install-az-ps

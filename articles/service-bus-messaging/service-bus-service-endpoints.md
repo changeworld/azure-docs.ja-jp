@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103634"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234069"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -29,7 +29,7 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 >[!WARNING]
 > 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。
 >
-> 仮想ネットワークが実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
+> 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
 >
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
 > - Azure Monitor

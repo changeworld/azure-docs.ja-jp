@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: コンテナーの構成設定。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 218343db4d8ac7e35f58951ee177f5c288aed3d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476419"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979107"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -45,7 +45,7 @@ ms.locfileid: "55476419"
 
 ## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Face_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Face_ リソースの有効なエンドポイント URI である必要があります。
+`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Face_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Face_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
 この設定は次の場所で確認できます。
 
@@ -112,7 +112,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ### <a name="basic-example"></a>基本的な例 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
@@ -122,7 +122,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ### <a name="logging-example-with-command-line-arguments"></a>コマンドライン引数を使用したログの例
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
@@ -131,7 +131,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ### <a name="logging-example-with-environment-variable"></a>環境変数を使用したログの例
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \

@@ -11,22 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
-ms.reviewer: wfayed
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.reviewer: justini
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729936"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099294"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
 *適用対象: Azure Stack 統合システム*
 
-管理者ポータルの **[更新]** タイルを使用して、Azure Stack 用の Microsoft または OEM 更新プログラム パッケージを適用できます。 更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。
+管理者ポータルの **[更新]** タイルを使用して、Azure Stack 用の Microsoft または OEM 更新プログラム パッケージを適用できます。
+
+統合システム バージョン 1807 以前を使用している場合は、更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。 手順については、「[パッケージをダウンロードして Azure Stack を更新する](#update-azure-stack-by-downloading-the-package)」をご覧ください
+
+このアップグレードの説明は、Azure Stack 統合システムに適用されます。 Azure Stack 開発システムを使用している場合は、現在のバージョンのインストール パッケージをダウンロードする必要があります。 方法については、「[Azure Stack Development Kit のインストール](.\asdk\asdk-install.md)」をご覧ください
+
+## <a name="update-azure-stack"></a>Azure Stack の更新
+
+### <a name="select-and-apply-an-update-package"></a>更新プログラム パッケージを選択して適用する
+
+1. 管理ポータルを開きます。
+
+2. **[ダッシュボード]** を選択します。 **[更新プログラム]** タイルを選択します。
+
+    ![Azure Stack の更新プログラムが使用可能](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
+
+3. お使いの Azure Stack の現在のバージョンを記録しておきます。 次の完全バージョンに更新することができます。 たとえば、Azure Stack 1811 を実行している場合、次のリリース バージョンは 1901 です。
+
+    ![Azure Stack の更新プログラムを適用する](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+
+4. [更新プログラム] の一覧で、使用可能な次のバージョンを選択します。 バージョンの変更点を確認したい場合は、リリース ノート列の **[表示]** を選択して、バージョンのリリース ノート トピックを開くことができます。
+
+5. [今すぐ更新] を選択します。 更新が開始されます。
+
+### <a name="review-update-history"></a>更新履歴を確認する
+
+1. 管理ポータルを開きます。
+
+2. **[ダッシュボード]** を選択します。 **[更新プログラム]** タイルを選択します。
+
+3. **[更新の履歴]** を選択します。
+
+![Azure Stack の更新履歴](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
+
+## <a name="update-azure-stack-by-downloading-the-package"></a>パッケージをダウンロードして Azure Stack を更新する
+
+統合システム バージョン 1807 以前を使用している場合は、更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。
 
 ## <a name="download-the-update-package"></a>更新プログラム パッケージをダウンロードする
 

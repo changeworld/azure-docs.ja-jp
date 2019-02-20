@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 5edf301ffc87a17963c3c32c7ea1b559e0834cf7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244472"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244795"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のアルゴリズムの選択方法
 
@@ -41,12 +41,10 @@ ms.locfileid: "55244472"
 どれも完全に一致しない場合もあります。 大まかな推奨事項なので、正確さは気にしないでください。
 複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 
-[Azure AI Gallery](http://gallery.cortanaintelligence.com/) からは、同じデータに対して複数のアルゴリズムを試し、その結果を比較した実験の例として次を利用できます: 「[Compare Multi-class Classifiers: Letter recognition](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識)。
+[Azure AI Gallery](http://gallery.azure.ai/) からは、同じデータに対して複数のアルゴリズムを試し、その結果を比較した実験の例として次を利用できます: 「[Compare Multi-class Classifiers: Letter recognition](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識)。
 
 > [!TIP]
-> Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
-> 
-> 
+> 機械学習の基礎の概要については、わかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。「[機械学習の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md)」を参照してください。
 
 ## <a name="flavors-of-machine-learning"></a>機械学習の種類
 
@@ -242,13 +240,11 @@ Microsoft Research の John Langford によって開発が進められた VW は
 
 ## <a name="next-steps"></a>次の手順
 
-* アルゴリズムに関する説明と使用例が記載されたインフォグラフィックのダウンロードについては、「[インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md)」をご覧ください。
+* 機械学習の基礎の概要については、わかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。「[機械学習の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md)」を参照してください。
 
 * Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model)に関するページを参照してください。
 
 * Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[A-Z list of Machine Learning Studio modules (Machine Learning Studio モジュールの一覧 (アルファベット順))](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list)」を参照してください。
-
-* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
 
 <!-- Media -->
 

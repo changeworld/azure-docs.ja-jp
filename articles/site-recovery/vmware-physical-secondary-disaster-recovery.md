@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105187"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895841"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -218,7 +218,7 @@ Scout 更新プログラム 5 は累積的な更新プログラムです。 更�
 
 #### <a name="new-platform-support"></a>新しいプラットフォームのサポート
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
-* SLES 11 SP4 64 ビット **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** は、Scout GA 基本パッケージ (**InMage_Scout_Standard_8.0.1 GA.zip**) でパッケージ化されています。 「[コンテナーの作成](#create-a-vault)」の説明に従って、ポータルから GA パッケージをダウンロードします。
+* SLES 11 SP4 64 ビット **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** は、Scout GA 基本パッケージ (**InMage_Scout_Standard_8.0.1 GA.zip**) でパッケージ化されています。 「コンテナーの作成」の説明に従って、ポータルから GA パッケージをダウンロードします。
 
 
 #### <a name="bug-fixes-and-enhancements"></a>バグ修正と機能強化
@@ -252,7 +252,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 ビット **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** は、Scout GA 基本パッケージ (**InMage_Scout_Standard_8.0.1 GA.zip**) でパッケージ化されています。 「[コンテナーの作成](#create-a-vault)」の説明に従って、ポータルから Scout GA パッケージをダウンロードします。
+> RHEL/CentOS 7 64 ビット **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** は、Scout GA 基本パッケージ (**InMage_Scout_Standard_8.0.1 GA.zip**) でパッケージ化されています。 「コンテナーの作成」の説明に従って、ポータルから Scout GA パッケージをダウンロードします。
 
 #### <a name="bug-fixes-and-enhancements"></a>バグ修正と機能強化
 

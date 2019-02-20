@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ddf08c69b5ef06d6243230230bcfdb56965aef4d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239946"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893683"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
@@ -65,7 +65,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 登録に成功した場合は、次の出力が返されます。
 
-![登録](media/azure-stack-key-vault-manage-powershell/image2.png) キー コンテナーのコマンドを呼び出すと、"サブスクリプションが名前空間 'Microsoft.KeyVault' を使用するように登録されていません" のようなエラーが発生する場合があります。このエラーが発生したら、前に説明した手順に従って、[Key Vault リソース プロバイダーが有効](#enable-your-tenant-subscription-for-vault-operations)になっていることを確認してください。
+![登録](media/azure-stack-key-vault-manage-powershell/image2.png) キー コンテナーのコマンドを呼び出すと、"サブスクリプションが名前空間 'Microsoft.KeyVault' を使用するように登録されていません" のようなエラーが発生する場合があります。このエラーが発生したら、前に説明した手順に従って、Key Vault リソース プロバイダーが有効になっていることを確認してください。
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 

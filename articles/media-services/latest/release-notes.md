@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817624"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242807"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -34,6 +34,10 @@ ms.locfileid: "54817624"
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
 
+## <a name="february-2019"></a>2019 年 2 月
+
+Media Services v3 が Azure 国内クラウドでサポートされるようになりました。 まだすべてのクラウドですべての機能が使用できるわけではありません。 詳細については、「[Azure Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
+
 ## <a name="january-2019"></a>2019 年 1 月
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard および MPI ファイル 
@@ -46,7 +50,7 @@ MPI ファイルを変更または削除したり、サービスにこのよう�
 
 V3 API の GA リリースの更新プログラム:
        
-* **AssetFilters** と **AccountFilters** に関しては、**PresentationTimeRange** のプロパティは "必須" でなくなりました。 
+* **資産フィルター**と**アカウント フィルター**では **PresentationTimeRange** プロパティが '必須' でなくなりました。 
 * **Jobs** と **Transforms** のクエリ オプション、$top と $skip が削除され、$orderby が追加されました。 新しい順序付け機能を追加する手順の一部で、実装されていない $top オプションと $skip オプションが、以前は偶発的に公開されていたことが判明しました。
 * 列挙型の拡張性が再有効化されました。 この機能はプレビュー版の SDK で有効になりましたが、GA 版で偶発的に無効になりました。
 * 定義済みの 2 つのストリーミング ポリシーの名前が変更されました。 **SecureStreaming** が **MultiDrmCencStreaming** になりました。 **SecureStreamingWithFairPlay** が **Predefined_MultiDrmStreaming** になりました。
@@ -67,7 +71,7 @@ CLI 2.0 モジュールが、[Azure Media Services v3 GA](https://docs.microsoft
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - メディア占有ユニットを管理できます
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ### <a name="new-features-and-breaking-changes"></a>新機能と重大な変更
 
@@ -141,7 +145,7 @@ Media Services v3 でサポートされる言語: .NET Core、Java、Node.js、R
 - RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
 - RTMPS のセキュアな取り込み。
 
-    LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。 
+    ライブ イベントを作成すると、4 つの取り込み URL が取得されるようになりました。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。 
 - 24 時間のコード変換サポート。 
 - SCTE35 経由の RTMP での広告シグナル サポートの強化。
 
@@ -149,7 +153,7 @@ Media Services v3 でサポートされる言語: .NET Core、Java、Node.js、R
 
 Event Grid のサポートが次のように強化されています。
 
-- Logic Apps および Azure Functions を使用した開発が容易になる Azure EventGrid の統合。 
+- Logic Apps と Azure Functions を使用した開発を容易にするための Azure Event Grid の統合。 
 - エンコーディングやライブ チャンネルなどでイベントをサブスクライブ。
 
 ### <a name="cmaf-support"></a>CMAF のサポート
@@ -179,11 +183,11 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 .Net SDK には次の機能があります。
 
 * **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
-* **StreamingLocator**: コンテンツのエンドユーザー デバイスへの公開とストリーミングを行います。
-* **StreamingPolicy** と **ContentKeyPolicy**: コンテンツ配信時のキーの配信とコンテンツの保護 (DRM) を構成します。
-* **LiveEvent** と **LiveOutput**: ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
+* **ストリーミング ロケーター**: コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
+* **ストリーミング ポリシー**および**コンテンツ キー ポリシー**: コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
+* **ライブ イベント**および**ライブ出力**: ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
 * **Asset**: メディア コンテンツの Azure Storage への格納と発行を行います。 
-* **StreamingEndpoints**: ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツの構成とストリーミングを行います。
+* **ストリーミング エンドポイント**: ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツのストリーミングを構成およびスケーリングします。
 
 ### <a name="known-issues"></a>既知の問題
 
