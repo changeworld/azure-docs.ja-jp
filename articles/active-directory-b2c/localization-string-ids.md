@@ -102,7 +102,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **cancel_message** | セルフ アサート情報の入力がユーザーによって取り消されました |
 | **preloader_alt** | お待ちください |
 | **ver_but_send** | 確認コードを送信する |
-| **alert_yes** | [はい] |
+| **alert_yes** | はい |
 | **error_fieldIncorrect** | 1 つ以上のフィールドが正しく入力されていません。 入力を確認してから、やり直してください。 |
 | **year** | 年 |
 | **verifying_blurb** | 情報の処理が終わるまでお待ちください。 |
