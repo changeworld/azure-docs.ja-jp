@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 95206d0e3cb7bdb619524237ca1e466414c5acf5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492881"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989425"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
 
@@ -26,7 +26,7 @@ Excel 2013 (またはそれ以降) または Excel Online を使用している�
 
 
 ## <a name="steps"></a>手順
-Web サービスを発行します。 [このページ](walkthrough-5-publish-web-service.md) では、その方法を説明しています。 現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 
+Web サービスを発行します。 [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)でその方法を説明しています。 現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 
 
 Web サービスを作成したら、Studio の左側の **[WEB サービス]** セクションをクリックして、Excel から使用する Web サービスを選択します。
 

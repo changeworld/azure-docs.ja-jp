@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756582"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875493"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 のよく寄せられる質問
 
@@ -36,17 +36,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 ### <a name="how-does-pagination-work"></a>改ページはどのように機能しますか?
 
-Media Services では、OData をサポートするリソースに対する $top はサポートされますが、$top に渡される値は 1000 未満である必要があります (改ページのページ サイズなど)。
-
-これにより、$top を使用して、項目の小さなサンプル (最近使った 100 件の項目など) を取得したり、改ページ位置の自動修正を使用して、すべての項目のページングを行ったりすることができます。 
-
-Media Services では、ユーザーが指定したページ サイズでのデータのページングはサポートされません。
-
-詳細については、「[フィルター処理、順序付け、ページングのサポート](entities-overview.md)」を参照してください。
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Media Services v3 ではエンティティをどのように取得するのですか?
-
-v3 は、**Azure Resource Manager** 上に構築された管理と操作の両方の機能を公開する、統一された API サーフェスに基づいています。 **Azure Resource Manager** に従って、リソース名は常に一意となります。 そのため、リソースには一意識別子の文字列 (GUID など) を使用できます。
+改ページを使用している場合は、常に次のリンクを使用してコレクションを列挙し、特定のページ サイズには依存しないようにする必要があります。 詳細および例については、[フィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
 
 ## <a name="live-streaming"></a>ライブ ストリーミング 
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299046"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893733"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -23,19 +23,20 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   [はい]      |    はい      |
-|Azure SQL Data Warehouse     |   はい      |   [はい]       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   [はい]       |    いいえ       |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  [はい]        |  いいえ         |
-|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   [はい]       |    いいえ       |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     [はい]     |   いいえ        |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   [はい]       |   いいえ        |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   はい      |    はい      |
+|Azure SQL Data Warehouse     |   はい      |   はい       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   はい       |    いいえ       |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   はい       |    いいえ       |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  はい        |  いいえ         |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>、<sup>[4](#gen2)</sup>      |   はい       |    いいえ       |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     はい     |   いいえ        |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   はい       |   いいえ        |
 ||||
 
-<a name="tab1400a">1</a> 1400 以上の表形式モデルのみ。   
-<a name="azsqlmanaged">2</a> Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。   
-<a name="databricks">3</a> Spark コネクタを使用する Azure Databricks は現在サポートされていません。
+<a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。   
+<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。   
+<a name="databricks">3</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
+<a name="gen2">4</a> - ADLS Gen2 は現在サポートされていません。
 
 
 **プロバイダー**   

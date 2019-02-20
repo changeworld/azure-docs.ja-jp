@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488545"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997007"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 内でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
@@ -74,7 +74,7 @@ Azure Machine Learning には、これらの分類を処理するモジュール
 
 **Web サービスの発行**
 
-予測結果を理解し、結果の妥当性が確認できたら、実験を Web サービスとして発行できます。発行すると、さまざまなアプリケーションでデプロイして呼び出し、新しいあやめに関するクラスの予測を取得できます。 トレーニング実験をスコア付け実験に変換し、Web サービスとして発行する方法については、[Azure Machine Learning Web サービスの発行](walkthrough-5-publish-web-service.md)に関するページをご覧ください。 この手順に従うと、図 3 で示すスコア付け実験を実行できます。
+予測結果を理解し、結果の妥当性が確認できたら、実験を Web サービスとして発行できます。発行すると、さまざまなアプリケーションでデプロイして呼び出し、新しいあやめに関するクラスの予測を取得できます。 トレーニング実験をスコア付け実験に変換し、Web サービスとして発行する方法については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。 この手順に従うと、図 3 で示すスコア付け実験を実行できます。
 
 ![スコア付け実験のスクリーンショット](./media/interpret-model-results/3.png)
 

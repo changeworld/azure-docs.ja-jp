@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733145"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980076"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
+
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
 
 
@@ -50,8 +51,8 @@ PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケ
 
 - GitHub から DSC パッケージをダウンロードするように VM インスタンスに指示する - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - インストール スクリプトを実行するよう拡張機能を設定する - `configure-http.ps1`
-- [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) を使用して、スケール セットに関する情報を取得する
-- [Update-AzureRmVms](/powershell/module/azurerm.compute/update-azurermvmss) を使用して、VM インスタンスに拡張機能を適用する
+- [Get-AzVmss](/powershell/module/az.compute/get-azvmss) を使用して、スケール セットに関する情報を取得する
+- [Update-AzVmss](/powershell/module/az.compute/update-azvmss) を使用して、VM インスタンスに拡張機能を適用する
 
 *myResourceGroup* という名前のリソース グループ内の *myScaleSet* VM インスタンスに DSC 拡張機能が適用されます。 独自の名前を次のように入力します。
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
+スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>cloud-init を使用して Linux VM にアプリをインストールする

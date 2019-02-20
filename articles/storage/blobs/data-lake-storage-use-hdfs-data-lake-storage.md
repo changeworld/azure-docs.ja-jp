@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 プレビューで HDFS CLI を使用する
-description: Data Lake Storage Gen2 プレビューの HDFS CLI の概要
+title: Azure Data Lake Storage Gen2 で HDFS CLI を使用する
+description: Data Lake Storage Gen2 の HDFS CLI の概要
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2691346433b3cc29b22446152ea797cefb02a380
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241272"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874186"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
-Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
+Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDInsight での HDFS CLI
 

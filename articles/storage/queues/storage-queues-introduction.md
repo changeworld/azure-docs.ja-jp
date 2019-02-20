@@ -1,22 +1,21 @@
 ---
-title: Azure キュー ストレージの概要 | Microsoft Docs
-description: Azure キュー ストレージの概要
+title: Azure キューの概要 | Microsoft Docs
+description: Azure キューの概要
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/06/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: b173934db17b8c3ac5a48e599b75478fb214c240
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ae0d3993df54e1c9e5a9bf93619e8f9faa8a917
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458399"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873599"
 ---
-# <a name="introduction-to-queues"></a>キューの概要
+# <a name="what-are-azure-queues"></a>Azure キューとは
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
 

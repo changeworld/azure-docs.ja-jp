@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V2.0 Translator Text API のリファレンス ドキュメント。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463227"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861716"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -327,7 +327,7 @@ binary
 |text|(空)   |必須。 wave ストリームの読み上げに指定されている言語の文または文章を含む文字列。 読み上げるテキストのサイズは、2,000 文字以内にする必要があります。|query|文字列|
 |language|(空)   |必須。 テキストを読み上げるサポートされる言語コードを表す文字列。 コードは、`GetLanguagesForSpeak` メソッドから返されるコードの一覧に存在している必要があります。|query|文字列|
 |format|(空)|省略可能。 content-type ID を指定する文字列。 現在、`audio/wav` と `audio/mp3` が使用できます。 既定値は `audio/wav` です。|query|文字列|
-|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality` と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー ` を使用|` to include multiple options. For example  `MaxQuality|Male`。</li></li></ul> |query|文字列|
+|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality` と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー `|` を使用して複数のオプションを含めます。 例: `MaxQuality|Male`。</li></li></ul> |query|文字列|
 |Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|header|文字列|
 

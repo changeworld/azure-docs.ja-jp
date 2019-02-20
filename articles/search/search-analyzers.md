@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 008a24fe9822ca51b81e1f6979a3731d794a8867
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631944"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964340"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -92,7 +92,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 * アナライザーは、検索可能なフィールドのフィールド クラスのプロパティです。
 * カスタム アナライザーは、インデックス定義の一部です。 軽くカスタマイズされているか (1 つのフィルターの 1 つのオプションがカスタマイズされているなど)、複数個所でカスタマイズされている可能性があります。
 * この例で、カスタム アナライザーは "my_analyzer" です。このアナライザーはカスタマイズされた標準トークナイザー "my_standard_tokenizer" と、小文字とカスタマイズされた asciifolding フィルターである "my_asciifolding" という 2 つのトークン フィルターを使用しています。
-* また、トークン化前にすべてのダッシュをアンダースコアに置換するカスタム "map_dash" 文字フィルターも定義します (標準のトークナイザーはダッシュで停止しますが、アンダースコアでは停止しません)。
+* 2 つのカスタム文字フィルター "map_dash" および "remove_whitespace" も定義します。 1 つ目はすべてのダッシュをアンダースコアに置き換え、2 つ目はすべてのスペースを削除します。 マッピング規則でスペースを UTF-8 エンコードする必要があります。 文字フィルターはトークン化よりも先に適用され、結果のトークンに影響を及ぼします (標準トークナイザーはダッシュとスペースで区切りますが、アンダースコアでは区切りません)。
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

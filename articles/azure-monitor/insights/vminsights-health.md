@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563339"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961264"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用して Azure 仮想マシンの正常性を把握する
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Log Analytics または Azure Monitor を使用してさまざまな条件を監視することはできますが、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
@@ -44,7 +44,7 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 >
 >Azure Monitor for VMs の正常性機能で現在提供されている機能に退行的な影響はありません。
 
->この変更の結果として、サービスおよび正常性の履歴で短い停止期間が発生します。 正常性診断の 2 つのエクスペリエンスが影響を受けます。状態変化履歴はリセットされ、正常性基準の以前の状態変化は、[正常性の診断] ページの [State Change]\(状態の変化\) 列で確認できなくなります。 ミッション クリティカルな VM の履歴データが必要な場合は、参照用として正常性基準データと対応する状態変化のスクリーンショットを作成できます。 
+>この変更の結果として、正常性診断の 2 つのエクスペリエンスが影響を受けます。状態変化履歴はリセットされ、正常性基準の以前の状態変化は、[正常性の診断] ページの [State Change]\(状態の変化\) 列で確認できなくなります。 ミッション クリティカルな VM の履歴データが必要な場合は、参照用として正常性基準データと対応する状態変化のスクリーンショットを作成できます。 
 
 ## <a name="monitoring-configuration-details"></a>監視の構成の詳細
 このセクションでは、Azure の Windows および Linux 仮想マシンを監視するために定義されている既定の正常性基準について説明します。 すべての正常性条件は、非正常状態になったら通知するように事前に構成されています。 
@@ -106,7 +106,7 @@ Azure VM の正常性を表示するには、仮想マシンの左側のウィ�
 
 ![選択した Azure 仮想マシン正常性の概要が表示されている VM の Azure Monitor](./media/vminsights-health/vminsights-directvm-health.png)
 
-**[Health]\(正常性\)** タブの **[ゲスト VM の正常性]** セクションのテーブルには、仮想マシンの現在の正常性状態と、異常なコンポーネントによって生成された VM 正常性アラートの合計数が示されます。 アラート エクスペリエンスの詳細については、「[アラート](#alerting-and-alert-management)」セクションを参照してください。  
+**[Health]\(正常性\)** タブの **[ゲスト VM の正常性]** セクションのテーブルには、仮想マシンの現在の正常性状態と、異常なコンポーネントによって生成された VM 正常性アラートの合計数が示されます。 アラート エクスペリエンスの詳細については、「アラート」セクションを参照してください。  
 
 VM に対して定義されている正常性状態の説明をまとめたものが次の表です。 
 

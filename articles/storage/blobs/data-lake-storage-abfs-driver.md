@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 プレビュー用の Azure BLOB ファイルシステム ドライバー
+title: Azure Data Lake Storage Gen2 用の Azure BLOB ファイルシステム ドライバー
 description: ABFS Hadoop ファイルシステム ドライバー
 services: storage
 author: jamesbak
@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f50723fa494df0ff1490bf27451394a6e13da467
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240881"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962436"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 
-Azure Data Lake Storage Gen2 プレビュー内のデータの主要なアクセス方法の 1 つは、[Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) です。 Data Lake Storage Gen2 により、Azure Blob Storage のユーザーは、新しいドライバーである Azure BLOB ファイル システム ドライバー (`ABFS`) にアクセスできます。 ABFS は、Apache Hadoop の一部であり、Hadoop の商用ディストリビューションの多くに含まれています。 このドライバーを使用すると、多くのアプリケーションとフレームワークは、Data Lake Storage Gen2 を明示的に参照するコードがなくても Azure Blob Storage 内のデータにアクセスできます。
+Azure Data Lake Storage Gen2 内のデータの主要なアクセス方法の 1 つは、[Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) です。 Data Lake Storage Gen2 により、Azure Blob Storage のユーザーは、新しいドライバーである Azure BLOB ファイル システム ドライバー (`ABFS`) にアクセスできます。 ABFS は、Apache Hadoop の一部であり、Hadoop の商用ディストリビューションの多くに含まれています。 このドライバーを使用すると、多くのアプリケーションとフレームワークは、Data Lake Storage Gen2 を明示的に参照するコードがなくても Azure Blob Storage 内のデータにアクセスできます。
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能:Windows Azure Storage Blob ドライバー
 
@@ -62,6 +62,5 @@ ABFS ドライバーについては、[公式 Hadoop ドキュメント](http://
 
 ## <a name="next-steps"></a>次の手順
 
-- [HDInsight クラスターの設定](./data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 - [Azure Databricks クラスターの作成](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Azure Data Lake Storage Gen2 URI の使用](./data-lake-storage-introduction-abfs-uri.md)

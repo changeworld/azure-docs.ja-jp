@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 7d409db839f94e27ac036550c22302188f37cc90
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: 28e99f64fdee414549c55f9666bfd53f07fb3efb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545875"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892696"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -48,4 +48,4 @@ ms.locfileid: "53545875"
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート: Azure portal を使用して Azure Database for PostgreSQL サーバーを作成する](./quickstart-create-server-database-portal.md)
+[クイック スタート:Azure portal を使用して Azure Database for PostgreSQL サーバーを作成する](./quickstart-create-server-database-portal.md)

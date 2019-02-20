@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 83e862aea5b1f2de5a3f80970c2331fc9d81704e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: cd9275e9e112d24d9dbb3d1d5a60c871d7d8ae5c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540270"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890460"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーを再起動する
 このトピックでは、Azure Database for MySQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -34,7 +34,7 @@ ms.locfileid: "53540270"
 
    ![Azure Database for MySQL - [概要] - [再起動] ボタン](./media/howto-restart-server-portal/2-server.png)
 
-3. **[はい]** をクリックして、サーバーを再起動することを確認します。 
+3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
    ![Azure Database for MySQL - 再起動の確認 ](./media/howto-restart-server-portal/3-restart-confirm.png)
 
@@ -48,4 +48,4 @@ ms.locfileid: "53540270"
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート: Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[クイック スタート:Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)

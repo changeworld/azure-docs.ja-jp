@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567276"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002359"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -66,7 +66,7 @@ Video Indexer の Web ベース ポータルでは、ファイルのアップロ
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Video Indexer がメディアから分析情報を抽出するには、どの程度の時間がかかりますか?
 
-ビデオまたはオーディオ ファイルにインデックスを付けるために要する時間は、Video Indexer API または Video Indexer の Web ベース インターフェイスのどちらを使用する場合も、複数のパラメーターによって決まります。パラメーターには、ファイルの長さと品質、ファイルから見つかる分析情報の数、使用可能な[予約ユニット](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)の数、[ストリーミング エンドポイント](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)が有効かどうかなどがあります。 ほとんどの種類のコンテンツでは、タイプ S3 の 10 個の予約ユニットが有効になっていると仮定すると、インデックスの作成にはオーディオ ファイルやビデオ ファイルの 1/3 から半分の時間 (たとえば、10 分のソース ビデオでは 3.5 ～ 5 分) がかかると予想されます。 ただし、予想を確かなものにするには、独自のコンテンツを含むいくつかのテスト ファイルを実行して平均を取ることをお勧めします。
+ビデオまたはオーディオ ファイルにインデックスを付けるために要する時間は、Video Indexer API または Video Indexer の Web ベース インターフェイスのどちらを使用する場合も、複数のパラメーターによって決まります。パラメーターには、ファイルの長さと品質、ファイルから見つかる分析情報の数、使用可能な[予約ユニット](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)の数、[ストリーミング エンドポイント](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)が有効かどうかなどがあります。 予想を確かなものにするには、独自のコンテンツを含むいくつかのテスト ファイルを実行して平均を取ることをお勧めします。
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Video Indexer でプロセスを自動化するカスタマイズされたワークフローを作成できますか?
 

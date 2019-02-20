@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: この記事では、Speech Service SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217179"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859319"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Speech Service SDK のトラブルシューティング
 
@@ -67,6 +67,8 @@ ms.locfileid: "55217179"
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+有効なサブスクリプション キーを入力した場合、このコマンドで承認トークンが返されます。それ以外の場合はエラーが返されます。
+
 ### <a name="validate-an-authorization-token"></a>承認トークンを検証する
 
 認証に承認トークンを使用している場合は、次のコマンドのいずれかを実行して、認証トークンがまだ有効であることを確認します。 トークンは 10 分間有効です。
@@ -101,6 +103,8 @@ ms.locfileid: "55217179"
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+有効な承認トークンを入力した場合、このコマンドでオーディオ ファイルのトランスクリプトが返されます。それ以外の場合はエラーが返されます。
 
 ---
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746787"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984734"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
@@ -62,17 +62,12 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
-    <table border='1'>
-        <tr><th>プロパティ</th><th>値</th></tr>
-        <tr><td>Name</td>
-            <td>スクリプト アクションの名前を指定します。</td></tr>
-        <tr><td>スクリプト URI</td>
-            <td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。 s</td></tr>
-        <tr><td>ヘッド/ワーカー</td>
-            <td>カスタマイズ スクリプトが実行されるノード (**[ヘッド]** または **[ワーカー]**) を指定します。</b>
-        <tr><td>parameters</td>
-            <td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
-    </table>
+      |プロパティ|値|  
+      |---|---|
+      |Name|スクリプト アクションの名前を指定します。|
+      |スクリプト URI|クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。|
+      |ヘッド/ワーカー|カスタマイズ スクリプトが実行されるノード (**[ヘッド]** または **[ワーカー]**) を指定します。|
+      |parameters|スクリプトで必要な場合は、パラメーターを指定します。|
 
     クラスターに複数のコンポーネントをインストールするには、Enter キーを押して複数のスクリプト アクションを追加します。
 3. **[選択]** をクリックしてスクリプト アクションの構成を保存し、クラスターの作成を続行します。
@@ -80,7 +75,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 ## <a name="call-scripts-using-azure-powershell"></a>Azure PowerShell を使用してスクリプトを呼び出す
 次の PowerShell スクリプトでは、Windows ベースの HDInsight クラスターに Spark をインストールする方法を示します。  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 その他のソフトウェアをインストールするには、スクリプトのスクリプト ファイルを置換する必要があります。
 
@@ -172,12 +167,14 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 1. Visual Studio で、C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ マネージャー コンソールから、次のコマンドを実行します。
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. Program.cs ファイルで次の using ステートメントを使用します。
+
+1. Program.cs ファイルで次の using ステートメントを使用します。
 
     ```csharp
         using System;

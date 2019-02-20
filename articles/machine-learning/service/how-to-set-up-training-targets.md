@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756531"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981453"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
@@ -47,6 +47,11 @@ Azure Machine Learning service では、異なるコンピューティング先�
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
+**すべてのコンピューティング ターゲットは、複数のトレーニング ジョブで再利用できます**。 たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。
+
+> [!NOTE]
+> Azure Machine Learning コンピューティングは、永続的なリソースとして作成するか、実行を要求するときに動的に作成できます。 実行ベースの作成では、トレーニングの実行の完了後にコンピューティング ターゲットが削除されるため、この方法で作成されたコンピューティング ターゲットは再利用できません。
+
 ## <a name="whats-a-run-configuration"></a>実行構成とは
 
 トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning service では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。 
@@ -65,7 +70,7 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 
 行う必要があるのは、[CondaDependency クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)を使用して各パッケージ依存関係を指定することだけです。後は、Conda によって、お使いのワークスペースの **aml_config** ディレクトリに、パッケージの依存関係のリストが含まれる **conda_dependencies.yml** という名前のファイルが作成され、トレーニング実験を送信するときに Python 環境がセットアップされます。 
 
-新しい環境の初期セットアップには、必要な依存関係のサイズによっては数分かかることがあります。 パッケージのリストが変更されない限り、セットアップが行われるのは 1 回だけです。
+新しい環境の初期セットアップは、必要な依存関係のサイズによっては数分かかる可能性があります。 パッケージの一覧が変更されない限り、セットアップ時間が発生するのは 1 回だけです。
   
 次のコードでは、Scikit-learn を必要とするシステム管理環境の例を示します。
     
@@ -73,7 +78,7 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 
 #### <a name="user-managed-environment"></a>ユーザー管理環境
 
-ユーザー管理環境の場合は、ユーザーが環境を設定し、トレーニング スクリプトで必要なすべてのパッケージをコンピューティング先にインストールする必要があります。 トレーニング環境が既に構成されている場合 (ローカル コンピューターなど)、`user_managed_dependencies` を True に設定することで、セットアップ手順をスキップできます。 Conda で自動的に環境やインストールの確認が行われることはありません。
+ユーザー管理環境の場合は、ユーザーが環境を設定し、トレーニング スクリプトで必要なすべてのパッケージをコンピューティング ターゲットにインストールする必要があります。 トレーニング環境が (ローカル コンピューター上などに) 既に構成されている場合は、`user_managed_dependencies` を True に設定することで、セットアップ手順をスキップできます。 Conda で自動的に環境やインストールの確認が行われることはありません。
 
 次のコードでは、ユーザー管理環境用のトレーニング実行構成の例を示します。
 
@@ -242,7 +247,7 @@ Azure portal でワークスペースに関連付けられたコンピューテ�
 
 * ワークスペースにアタッチされている[コンピューティング先を表示する](#portal-view)
 * ワークスペースに[コンピューティング先を作成する](#portal-create)
-* [既存のコンピューティング先を再利用する](#portal-reuse)
+* ワークスペースの外部に作成された[コンピューティング ターゲットにアタッチする](#portal-reuse)
 
 コンピューティング先を作成してワークスペースにアタッチした後は、`ComputeTarget` オブジェクトを使用して実行構成でそれを使用します。 
 
@@ -293,9 +298,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 
 
-### <a id="portal-reuse"></a>既存のコンピューティング先を再利用する
+### <a id="portal-reuse"></a>コンピューティング ターゲットにアタッチする
 
-コンピューティング先の一覧を表示するには、前に説明した手順に従います。 その後、次の手順を使用してコンピューティング先を再利用します。 
+Azure Machine Learning service ワークスペースの外部に作成されたコンピューティング ターゲットを使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。
+
+コンピューティング先の一覧を表示するには、前に説明した手順に従います。 その後、次の手順を使用して、コンピューティング ターゲットをアタッチします。 
 
 1. プラス記号 (+) を選択して、コンピューティング先を追加します。 
 1. コンピューティング ターゲットの名前を入力します。 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 18d6478763fd6551cc8baac6ea54e8d91f1a28e6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629970"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980603"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -35,16 +35,16 @@ DSC 拡張機能を Automation DSC サービスから独立して使用するこ
 
 ## <a name="prerequisites"></a>前提条件
 
-- **ローカル マシン**: Azure VM 拡張機能を利用するには、Azure Portal または Azure PowerShell SDK のいずれかを使用する必要があります。
-- **ゲスト エージェント**: DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 以降をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)を参照してください。
+- **ローカル マシン**:Azure VM 拡張機能を利用するには、Azure portal または Azure PowerShell SDK のいずれかを使用する必要があります。
+- **ゲスト エージェント**:DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 以降をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)を参照してください。
 
 ## <a name="terms-and-concepts"></a>用語と概念
 
 このガイドでは、読者が次の概念を理解していることを想定しています。
 
-- **構成** - DSC 構成ドキュメント。
-- **ノード** - DSC 構成のターゲット。 このドキュメントでは、*ノード* は常に Azure VM を指します。
-- **構成データ** - 構成に関する環境データが格納されている .psd1 ファイル。
+- **構成**:DSC 構成ドキュメント。
+- **ノード**:DSC 構成のターゲット。 このドキュメントでは、*ノード* は常に Azure VM を指します。
+- **構成データ**:構成に関する環境データが格納されている .psd1 ファイル。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -70,17 +70,17 @@ Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオン
 
 対話型のトラブルシューティングや情報収集のシナリオには、DSC 拡張機能を管理するために使用される PowerShell コマンドレットが最適です。 このコマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。 DSC 拡張機能用のコマンドレットは、[既定の構成スクリプト](#default-configuration-script)で動作するようにはまだ更新されていません。
 
-**Publish-AzureRmVMDscConfiguration** コマンドレットは構成ファイルを取り込み、構成ファイルをスキャンして依存 DSC リソースを探し、.zip ファイルを作成します。 .zip ファイルには、構成と、構成を適用するために必要な DSC リソースが含まれています。 コマンドレットは *-OutputArchivePath* パラメーターを使用してローカルでパッケージを作成することもできます。 それ以外の場合は、コマンドレットは Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
+**Publish-AzVMDscConfiguration** コマンドレットは構成ファイルを取り込み、構成ファイルをスキャンして依存 DSC リソースを探し、.zip ファイルを作成します。 .zip ファイルには、構成と、構成を適用するために必要な DSC リソースが含まれています。 コマンドレットは *-OutputArchivePath* パラメーターを使用してローカルでパッケージを作成することもできます。 それ以外の場合は、コマンドレットは Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
 
 このコマンドレットによって作成された .ps1 構成スクリプトは、アーカイブ フォルダーのルートの .zip ファイル内にあります。 モジュール フォルダーは、リソースのアーカイブ フォルダーに配置されます。
 
-**Set-AzureRmVMDscExtension** コマンドレットは、PowerShell DSC 拡張機能が必要とする設定を VM 構成オブジェクトに挿入します。
+**Set-AzVMDscExtension** コマンドレットは、PowerShell DSC 拡張機能が必要とする設定を VM 構成オブジェクトに挿入します。
 
-**Get-AzureRmVMDscExtension** コマンドレットは、特定の VM の DSC 拡張機能の状態を取得します。
+**Get-AzVMDscExtension** コマンドレットは、特定の VM の DSC 拡張機能の状態を取得します。
 
-**Get-AzureRmVMDscExtensionStatus** コマンドレットは、DSC 拡張機能ハンドラーによって適用された DSC 構成の状態を取得します。 この処理は、単一の VM または VM のグループに対して実行できます。
+**Get-AzVMDscExtensionStatus** コマンドレットは、DSC 拡張機能ハンドラーによって適用された DSC 構成の状態を取得します。 この処理は、単一の VM または VM のグループに対して実行できます。
 
-**Remove-AzureRmVMDscExtension** コマンドレットは、特定の VM から拡張機能ハンドラーを削除します。 このコマンドレットによって、構成の削除、WMF のアンインストール、または VM に適用されている設定の変更が *行われることはありません*。 拡張機能ハンドラーが削除されるだけです。 
+**Remove-AzVMDscExtension** コマンドレットは、特定の VM から拡張機能ハンドラーを削除します。 このコマンドレットによって、構成の削除、WMF のアンインストール、または VM に適用されている設定の変更が *行われることはありません*。 拡張機能ハンドラーが削除されるだけです。 
 
 Resource Manager DSC 拡張機能コマンドレットに関する重要な情報:
 
@@ -117,9 +117,9 @@ $location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage
-Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
+Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-portal-functionality"></a>Azure ポータルの機能
@@ -133,21 +133,21 @@ Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMN
 
 このポータルでは次の入力を収集します。
 
-- **[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script) 用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
+- **[Configuration Modules or Script]\(構成モジュールまたはスクリプト\)**:このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script)用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
 
-- **[構成のモジュール修飾名]**: .ps1 ファイルに複数の構成関数を含めることができます。 .ps1 構成スクリプトの名前に続けて \\ と構成関数の名前を入力します。 たとえば、.ps1 スクリプトの名前が configuration.ps1 であり、構成が **IisInstall** であれば、**configuration.ps1\IisInstall** と入力します。
+- **[Module-qualified Name of Configuration]\(モジュールで修飾された構成の名前\)**:.ps1 ファイルに複数の構成関数を含めることができます。 .ps1 構成スクリプトの名前に続けて \\ と構成関数の名前を入力します。 たとえば、.ps1 スクリプトの名前が configuration.ps1 であり、構成が **IisInstall** であれば、**configuration.ps1\IisInstall** と入力します。
 
-- **[構成引数]**: 構成関数が引数を受け取る場合は、**argumentName1=value1,argumentName2=value2** という形式でここに入力します。 この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
+- **[Configuration Arguments]\(構成の引数\)**:構成関数が引数を受け取る場合は、**argumentName1=value1,argumentName2=value2** という形式でここに入力します。 この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
-- **[Configuration Data PSD1 File (構成データ PSD1 ファイル)]**: このフィールドはオプションです。 .psd1 の構成データ ファイルが必要な構成では、このフィールドを使用してデータ フィールドを選択し、ユーザーの Blob Storage にアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
+- **[Configuration Data PSD1 File]\(構成データの PSD1 ファイル\)**:このフィールドは省略可能です。 .psd1 の構成データ ファイルが必要な構成では、このフィールドを使用してデータ フィールドを選択し、ユーザーの Blob Storage にアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
 
-- **WMF バージョン**: VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを latest に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0、5.0、5.1、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。
+- **[WMF Version]\(WMF のバージョン\)**:VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを latest に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0、5.0、5.1、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。
 
-- **データ収集**: 拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
+- **[Data Collection]\(データ収集\)**:拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
 
-- **バージョン**: インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)に関するページを参照してください。
+- **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)に関するページを参照してください。
 
-- **マイナー バージョンの自動アップグレード**: このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、拡張機能をインストール時に最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。**[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、**[いいえ]** を選択することと同じです。
+- **[自動アップグレードのマイナー バージョン]**:このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。**[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、**[いいえ]** を選択することと同じです。
 
 ## <a name="logs"></a>ログ
 

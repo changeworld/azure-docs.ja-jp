@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247801"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211446"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "55247801"
 プレビュー段階のライフサイクル管理機能は無料です。 お客様には、[List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) および [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="register-for-preview"></a>プレビューの利用登録 
-パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 要求は通常 2 週間以内に承認されます。 承認されると、次のリージョンのすべての既存および新規 GPv2 または BLOB ストレージ アカウントには、以下の機能が含まれます。米国西部 2、米国中西部、米国東部 2、および西ヨーロッパで使用できます。 プレビューでサポートされるのは、ブロック BLOB のみです。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
+パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 要求は通常 72 時間以内に承認されます。 承認されると、次のリージョンのすべての既存および新規 GPv2 または BLOB ストレージ アカウントには、以下の機能が含まれます。米国西部 2、米国中西部、米国東部 2、および西ヨーロッパで使用できます。 プレビューでサポートされるのは、ブロック BLOB のみです。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
 
 要求を送信するには、次の PowerShell または CLI コマンドを実行します。
 
@@ -202,7 +202,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 現在ホット層にある BLOB をサポートします         | サポートされていません |
 | tierToArchive | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
-| 削除        | サポートされています                                   | サポートされています     |
+| delete        | サポートされています                                   | サポートされています     |
 
 >[!NOTE] 
 同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。

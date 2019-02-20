@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/06/2019
 ms.author: juliako
-ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153965"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878359"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
@@ -45,7 +45,7 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 | 出力ビデオの最大ビデオ解像度|入力と同じ|720p (30 フレーム/秒)|
 | 入力プロトコル|RTMP、フラグメント化された MP4 (スムーズ ストリーミング)|RTMP、フラグメント化された MP4 (スムーズ ストリーミング)|
 | 料金|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|
-| 最長実行時間|24 時間 365 日 線形ライブ|24 時間 365 日|
+| 最長実行時間| 24 時間 365 日、ライブ リニア | 最大 24 時間|
 | キャプション データから埋め込まれた CEA 608/708 をパス スルーする機能|はい|はい|
 | スレートの挿入のサポート|いいえ |いいえ |
 | API による広告信号のサポート| いいえ |いいえ |

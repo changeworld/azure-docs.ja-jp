@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475059"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106870"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
@@ -22,6 +22,8 @@ Azure Cosmos DB は、待機時間の短縮、スループットのエラステ�
 お客様は、そのデータベースを構成してグローバルに分散し、Azure リージョンのどこからでも利用できるようにできます。 待機時間を短縮するには、データをユーザーの所在地の近くに配置してください。 どのリージョンを選択するかは、アプリケーションのグローバル リーチと、ユーザーの所在地によって決まります。 Azure Cosmos DB では、アカウント内のデータが、アカウントに関連付けられている全リージョンに対して透過的にレプリケートされます。 グローバルに分散された Azure Cosmos データベースとコンテナーの単一のシステム イメージが利用できるようになっており、アプリケーションからは、読み取りと書き込みをローカルに実行することができます。 
 
 Azure Cosmos DB に関してご利用のアカウントに関連付けられるリージョンは、いつでも追加したり削除したりすることができます。 リージョンの追加や削除のために、アプリケーションを一時停止したり再デプロイしたりする必要はありません。 サービスではマルチホーム機能が提供されるため、高い可用性が常に維持されます。
+
+![高可用性デプロイ トポロジ](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>グローバル分散の主な利点
 
@@ -50,6 +52,7 @@ Azure Cosmos DB のマルチホーム API を使用すると、ご利用のア�
 以下の記事でグローバル分散の詳細についてご覧ください。
 
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API アカウント用のカスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

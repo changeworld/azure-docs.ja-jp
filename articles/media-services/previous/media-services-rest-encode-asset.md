@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254436"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005150"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -30,6 +30,7 @@ ms.locfileid: "51254436"
 >
 
 ## <a name="overview"></a>概要
+
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。 デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。 エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
 エンコード ジョブは Azure Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。 さらに、Media Services パートナーで提供されるエンコーダーを使用することもできます。 サード パーティのエンコーダーは Azure Marketplace から入手できます。 エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。 使用できるプリセットの種類を確認する場合は、「[Task Presets for Media Encoder Standard (Media Encoder Standard のタスク プリセット)](https://msdn.microsoft.com/library/mt269960)」を参照してください。
@@ -54,12 +55,13 @@ Media Services でエンティティにアクセスするときは、HTTP 要求
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>1 つのエンコード タスクを持つジョブの作成
+
 > [!NOTE]
 > Media Services REST API を使用する場合は、次のことに考慮します。
 >
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 >
-> JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
+> JSON を使用しており、(たとえば、リンクされたオブジェクトを参照するために) 要求で **__metadata** キーワードを使用することを指定する場合は、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 >
 >
 

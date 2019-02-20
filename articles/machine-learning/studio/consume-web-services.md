@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464383"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998089"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスを使用する方法
 
@@ -70,7 +70,7 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 ## <a id="connect"></a>Machine Learning Web サービスに接続する
 HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Machine Learning Web サービスに接続することができます。 Machine Learning Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
 
-**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。 「 [Azure Machine Learning チュートリアル - Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」を参照してください。
+**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。 [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 Machine Learning API ヘルプには、予測 Web サービスの詳細が含まれます。
 
 1. 使用する Web サービスをクリックします。

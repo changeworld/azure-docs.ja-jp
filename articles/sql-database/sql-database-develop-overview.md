@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820353"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964799"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 
@@ -49,14 +49,16 @@ Azure SQL Database へのアクセスは、ログインとファイアウォー�
 
 ## <a name="resiliency"></a>回復性
 
-Azure SQL Database はクラウド サービスであり、基になるインフラストラクチャで、またはクラウド エンティティ間の通信で発生する一時エラーが想定される場合があります。
-Azure SQL Database は推移的なインフラストラクチャ エラーに対する回復性がありますが、これらのエラーが接続に影響する場合があります。 SQL Database への接続中に一時エラーが発生した場合は、コードで[呼び出しを再試行する](sql-database-connectivity-issues.md)必要があります。 再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。 再試行ロジックは、[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)によって異なります。
+Azure SQL Database はクラウド サービスであり、基になるインフラストラクチャで、またはクラウド エンティティ間の通信で発生する一時エラーが想定される場合があります。 Azure SQL Database は推移的なインフラストラクチャ エラーに対する回復性がありますが、これらのエラーが接続に影響する場合があります。 SQL Database への接続中に一時エラーが発生した場合は、コードで[呼び出しを再試行する](sql-database-connectivity-issues.md)必要があります。 再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。 再試行ロジックは、[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)によって異なります。
+
+Azure SQL データベースの計画メンテナンス イベントに備える方法の詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 
 - クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細情報: [Azure SQL Database ファイアウォールの構成](sql-database-configure-firewall-settings.md)。
 - クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細情報: 「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 - Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](sql-database-connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
+- マネージド インスタンス向けのネットワーク構成については、[マネージド インスタンス向けのネットワーク構成](sql-database-howto-managed-instance.md#network-configuration)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

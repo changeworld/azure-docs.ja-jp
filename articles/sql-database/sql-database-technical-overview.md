@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755427"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982269"
 ---
-# <a name="the-azure-sql-database-service"></a>Azure SQL Database サービス
+# <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
 SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database は、2 つの異なる購入モデル (仮想コアベースの購入モデルと DTU ベースの購入モデル) の中で動的かつスケーラブルなパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
 
@@ -67,10 +67,10 @@ SQL Database は、パフォーマンスを予測できる複数のリソース�
 SQL Database には、2 つの購入モデルが用意されています。
 
 - [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)では、軽量から重量までのデータベース ワークロードをサポートするために、コンピューティング、メモリ、IO の各リソースの組み合わせを 3 つのサービス レベルで提供します。 各レベルにおけるコンピューティング サイズでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
-- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
+- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。 また、仮想コアベースの購入モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。 Azure ハイブリッド特典の詳細については、[よく寄せられる質問](#sql-database-frequently-asked-questions-faq)を参照してください。
 
   > [!IMPORTANT]
-  > [ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)は現在パブリック プレビュー段階です。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
+  > 単一データベース向けの[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)は現在パブリック プレビュー段階です。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
@@ -195,6 +195,41 @@ SQL Database は、アプリケーションの開発と管理をより簡単で�
   Linux、macOS、および Windows 用の無料でダウンロードできるオープン ソースのコード エディターです。Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。
 
 SQL Database は、MacOS、Linux、および Windows での Python、Java、Node.js、PHP、Ruby、および .NET によるアプリケーションの構築をサポートします。 SQL Database は、SQL Server と同じ[接続ライブラリ](sql-database-libraries.md)をサポートします。
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database に関してよく寄せられる質問 (FAQ)
+
+### <a name="what-is-the-current-version-of-sql-database"></a>SQL Database の現在のバージョンは何ですか
+
+SQL Database の現在のバージョンは V12 です。 バージョン V11 は廃止されました。
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか。
+
+いいえ。 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 Azure SQL データベースの計画メンテナンス イベントに備える方法の詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
+
+### <a name="azure-hybrid-benefit-questions"></a>Azure ハイブリッド特典に関する質問
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、二重使用権がサポートされていますか
+
+確実かつシームレスに移行を行うために、180 日間はライセンスの二重使用権があります。 この 180 日を過ぎると、SQL Server ライセンスは、SQL Database のクラウドでしか使用できません。オンプレミスとクラウドでの二重使用権はなくなります。
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>SQL Server 向け Azure ハイブリッド特典とライセンス モビリティの違いは何ですか
+
+現在、Microsoft では、SQL Server のお客様に、ソフトウェア アシュアランスのライセンス モビリティ特典を提供しています。これにより、サード パーティ共有サーバーへのライセンスの再割り当てが可能になります。 この特典は、Azure IaaS および AWS EC2 でご利用いただけます。
+SQL Server 向け Azure ハイブリッド特典は、次の 2 つの重要な点において、ライセンス モビリティとは異なります。
+
+- 高度に仮想化されたワークロードを Azure に移動することで、コスト面でメリットがもたらされます。 SQL EE のお客様は、高度に仮想化されたアプリケーション用にオンプレミスで所有するコアごとに、Azure の General Purpose SKU で 4 つのコアを取得できます。 ライセンス モビリティの場合、仮想化されたワークロードをクラウドに移動しても、コスト上のメリットは特にありません。
+- オンプレミスの SQL Server と高い互換性がある PaaS 移行先を Azure (SQL Database マネージド インスタンス) に提供します。
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、具体的にはどのような権限が付与されますか
+
+SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特典によって次の権限が付与されます。
+
+|ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
+|---|---|
+|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
+|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server エンジニアリング チームとの交流
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814539"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981929"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>WSFC、リスナーを作成し、Azure クイック スタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する
 この記事では、Azure クイック スタート テンプレートを使用して、Azure での SQL Server Virtual Machines 用の Always On 可用性グループ構成のデプロイを部分的に自動化する方法について説明します。 このプロセスでは、2 つの Azure クイック スタート テンプレートが使用されます。 
@@ -153,8 +153,8 @@ ILB を構成し、AG リスナーを作成するには、次の操作を行い�
 
 ```PowerShell
 # Remove the AG listener
-# example: Remove-AzureRmResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
-Remove-AzureRmResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
+# example: Remove-AzResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
+Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
 ## <a name="common-errors"></a>一般的なエラー
@@ -166,7 +166,7 @@ AG リスナーの Azure クイック スタート テンプレートで使用�
 ### <a name="connection-only-works-from-primary-replica"></a>プライマリ レプリカからの接続のみが機能する
 **101-sql-vm-aglistener-setup** テンプレートのデプロイに失敗し、ILB 構成が不整合な状態のままになっている場合にこのような動作になる可能性があります。 バックエンド プールで可用性セットがリストされ、正常性プローブの規則と負荷分散規則が存在することを確認します。 何かが不足している場合、ILB 構成は不整合状態になっています。 
 
-この動作を解決するには、[PowerShell](#remove-availability-group-listener) を使用してリスナーを削除し、Azure portal を介して内部ロード バランサーを削除し、再び、[手順 3](#step-3---manually-create-the-internal-load-balanced-ilb) から始めます。 
+この動作を解決するには、[PowerShell](#remove-availability-group-listener) を使用してリスナーを削除し、Azure portal を介して内部ロード バランサーを削除し、再び手順 3 から始めます。 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - SQL 仮想マシン リストしか更新できない
 このエラーは、リスナーが SQL Server Management Studio (SSMS) を介して削除されたが、SQL VM リソース プロバイダーからは削除されなかった場合に **101-sql-vm-aglistener-setup** テンプレートをデプロイしたときに発生する可能性があります。 SSMS を介してリスナーを削除しても、SQL VM リソース プロバイダーからはリスナーのメタデータは削除されません。[PowerShell](#remove-availability-group-listener) を使用して、リソース プロバイダーからリスナーを削除する必要があります。 

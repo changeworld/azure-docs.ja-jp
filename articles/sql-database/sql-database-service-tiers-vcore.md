@@ -11,25 +11,25 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 240715fe6d3e8344c15cddf80a23829ec84e81a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: da43d1261b0ba9bd65998fbaa9fe9e364e686071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511991"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992128"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
 
 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 
-- Gen 4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
-- Gen 5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、コアあたり 5.1 GB、高速 eNVM SSD
+- Gen4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
+- Gen5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
 
-また、仮想コア モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。
+Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
 
 > [!NOTE]
-> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
+> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 
 ## <a name="service-tier-characteristics"></a>サービス レベルの特性
 
@@ -58,8 +58,6 @@ ms.locfileid: "55511991"
 
 > [!IMPORTANT]
 > 必要なコンピューティング能力が仮想コア 1 つ分を下回る場合は、DTU ベースの購入モデルを使用します。
-
-よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
 
 ## <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 

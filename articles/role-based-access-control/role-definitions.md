@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700725"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991363"
 ---
 # <a name="understand-role-definitions"></a>ロール定義について
 
@@ -147,7 +147,7 @@ Owner
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Alice にはサブスクリプション スコープにワイルドカード (`*`) アクションがあるため、Alice のアクセス許可は継承され、すべての管理アクションを実行できます。 ただし、Alice はデータ操作を実行することはできません。 たとえば既定では、Alice はコンテナー内の BLOB を読み取ることはできませんが、コンテナーを読み取り、書き込み、および削除することは可能です。
+Alice にはサブスクリプション スコープにワイルドカード (`*`) アクションがあるため、Alice のアクセス許可は継承され、すべての管理アクションを実行できます。 Alice は、コンテナーの読み取り、書き込み、および削除を行うことができます。 ただし、Alice は追加の手順を経ずにデータ操作を実行することはできません。 たとえば、既定では、Alice はコンテナー内の BLOB を読み取ることができません。 BLOB を読み取るには、Alice はストレージ アクセス キーを取得し、それを使用して BLOB にアクセスする必要があります。
 
 Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プレビュー)](built-in-roles.md#storage-blob-data-contributor-preview) ロールで指定された `Actions` および `DataActions` のみに制限されます。 Bob はロールに基づいて、管理操作とデータ操作の両方を実行できます。 たとえば、Bob は指定されたストレージ アカウントのコンテナーを読み取り、書き込み、および削除でき、また BLOB も読み取り、書き込み、および削除できます。
 

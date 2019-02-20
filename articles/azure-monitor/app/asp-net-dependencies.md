@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812462"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996306"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定:依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -133,7 +133,7 @@ ms.locfileid: "55812462"
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analytics
-依存関係は [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguage)によって追跡できます。 次に例をいくつか示します。
+依存関係は [Data Explorer クエリ言語](https://aka.ms/LogAnalyticsLanguage)によって追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
 

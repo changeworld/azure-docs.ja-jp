@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 9689854d9a28debbfbcf908391806fffac6a2006
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450185"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005524"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、プラットフォーム メトリック、[カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)、[Log Analytics からの一般的なログのメトリックへの変換](../../azure-monitor/platform/alerts-metric-logs.md)、Application Insights の標準的なメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、プラットフォーム メトリック、[カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリックへの変換](../../azure-monitor/platform/alerts-metric-logs.md)、Application Insights の標準的なメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -77,7 +77,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - ターゲット リソース: myAppServicePlan
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- ディメンション
+- Dimensions
   - Instance = InstanceName1, InstanceName2
 - 累計時間: 平均
 - 期間: 直近 5 分間
@@ -92,7 +92,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - ターゲット リソース: myAppServicePlan
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- ディメンション
+- Dimensions
   - インスタンス = *
 - 累計時間: 平均
 - 期間: 直近 5 分間
@@ -109,7 +109,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - ターゲット リソース: myAppServicePlan
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- ディメンション
+- Dimensions
   - インスタンス = *
 - 累計時間: 平均
 - 期間: 直近 5 分間

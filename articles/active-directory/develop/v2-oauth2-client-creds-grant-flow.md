@@ -12,30 +12,31 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/13/2018
+ms.topic: conceptual
+ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 090f9771bf8d1010e4249d97d5768891f02c54b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096604"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207672"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*デーモン*または*サービス アカウント*と呼ばれます。
+RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*"デーモン"* または *"サービス アカウント"* と呼ばれます。
 
-OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Azure Active Directory (Azure AD) により、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
+OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
 
 > [!NOTE]
 > Azure AD のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](active-directory-v2-limitations.md)に関する記事を参照してください。
 
-より一般的な *3 本足の OAuth* では、特定のユーザーに代わり、クライアント アプリケーションにリソースへのアクセス許可が付与されます。 通常、[同意](v2-permissions-and-consent.md)プロセス中に、アクセス許可はユーザーからアプリケーションに委任されます。 ただし、クライアント資格情報フローでは、アクセス許可はアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示する場合、リソースはアプリ自体がアクションを実行する承認を行います。ユーザーが承認を行うわけではありません。
+より一般的な *3 本足の OAuth* では、特定のユーザーに代わり、クライアント アプリケーションにリソースへのアクセス許可が付与されます。 通常、[同意](v2-permissions-and-consent.md)プロセス中に、アクセス許可はユーザーからアプリケーションに委任されます。 ただし、クライアント資格情報 (*two-legged OAuth*) フローでは、アクセス許可はアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示する場合、リソースでは、ユーザーではなくアプリ自体がアクション実行の承認を行います。 
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -47,10 +48,10 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 アプリは通常、次の 2 つの方法のいずれかで、直接承認を受信してリソースにアクセスします。 
 
-* リソースのアクセス制御リスト (ACL) を利用する
-* Azure AD のアプリケーション許可の割り当てを利用する
+* [リソースのアクセス制御リスト (ACL) を利用する](#access-control-lists)
+* [Azure AD のアプリケーション許可の割り当てを利用する](#application-permissions)
 
-これらの 2 つの方法は、Azure AD で最も一般的であり、クライアント資格情報フローを実行するクライアントとリソースに対して推奨されています。 ただし、リソースは、他の方法でもそのクライアントを承認することができます。 各リソース サーバーでは、そのアプリケーションに最も適した方法を選択できます。
+これらの 2 つの方法は、Azure AD で最も一般的であり、クライアント資格情報フローを実行するクライアントとリソースに対して推奨されています。 リソースは、他の方法でそのクライアントを承認することもできます。 各リソース サーバーでは、そのアプリケーションに最も適した方法を選択できます。
 
 ### <a name="access-control-lists"></a>アクセス制御リスト
 
@@ -77,8 +78,8 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 
 1. [アプリケーション登録ポータル](quickstart-v2-register-an-app.md)または新しい[アプリの登録 (プレビュー) エクスペリエンス](quickstart-register-app.md)を利用して、アプリを登録および作成します。
 1. アプリの登録または作成に使用したポータルで、お使いのアプリケーションに移動します。 アプリを作成するときに、少なくとも 1 つのアプリケーション シークレットを使用する必要があります。
-2. **Microsoft Graph のアクセス許可**セクションを検索し、その後、アプリに必要な**アプリケーション許可**を追加します。
-3. アプリの登録を**保存**します。
+1. **[API のアクセス許可]** セクションを見つけて、アプリに必要な **[アプリケーションのアクセス許可]** を追加します。
+1. アプリの登録を**保存**します。
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨:アプリへのユーザーのサインイン
 
@@ -100,7 +101,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting the following request in a browser!
+// Pro tip: Try pasting the following request in a browser.
 ```
 
 ```
@@ -128,7 +129,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | --- | --- |
 | `tenant` | アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | `state` | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
-| `admin_consent` | **true**に設定します。 |
+| `admin_consent` | **True** に設定します。 |
 
 ##### <a name="error-response"></a>エラー応答
 
@@ -170,9 +171,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | `client_id` | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 アプリを登録したポータルで、この情報を確認できます。 |
-| `scope` | 必須 |この要求の `scope` パラメーターに渡された値は、`.default` サフィックスが付いた目的のリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、v2.0 エンドポイントに目的のリソースに関連付けられたトークンを発行することを通知します。 |
+| `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 </br>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、v2.0 エンドポイントに目的のリソースに関連付けられたトークンを発行することを通知します。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
 | `client_secret` | 必須 | アプリケーション登録ポータルでアプリ用に生成したアプリケーション シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
-| `grant_type` | 必須 | `client_credentials`である必要があります。 |
+| `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 
@@ -191,9 +192,9 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
-| `client_id` | 必須 |お使いのアプリに割り当てられたアプリケーション ID。 |
-| `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、v2.0 エンドポイントに目的のリソースに関連付けられたトークンを発行することを通知します。 |
-| `client_assertion_type` | 必須 | 値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
+| `client_id` | 必須 |お使いのアプリに割り当てられるアプリケーション (クライアント) ID。 |
+| `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、v2.0 エンドポイントに目的のリソースに関連付けられたトークンを発行することを通知します。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
+| `client_assertion_type` | 必須 | この値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` に設定する必要があります。 |
 | `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
 | `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
 
@@ -261,6 +262,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-samples-and-other-documentation"></a>コード サンプルとその他のドキュメント
 
-管理者の同意エンドポイントを使用するクライアント資格情報の許可を実装するアプリケーションの例を参照するには、[v2.0 デーモンのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)を参照してください。
+Microsoft 認証ライブラリの[クライアントの資格情報の概要に関するドキュメント](http://aka.ms/msal-net-client-credentials)を参照してください。
+
+| サンプル | プラットフォーム |説明 |
+|--------|----------|------------|
+|[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 コンソール | ユーザーの代理ではなく、アプリケーションの ID を使用して Microsoft Graph へのクエリを実行するテナントのユーザーを表示する単純な .NET Core アプリケーション。 このサンプルは、認証に証明書を使用するバリエーションも示しています。 |
+|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | ユーザーの代理ではなく、アプリケーションの ID を使用して Microsoft Graph のデータを同期する Web アプリケーション。 |

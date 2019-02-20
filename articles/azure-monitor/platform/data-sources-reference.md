@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885798"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001990"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
 Azure プラットフォーム全体にわたって、Azure Monitor パイプラインで監査データを 1 か所に集めていますが、現状、このパイプラインですべての監査データを利用できるわけではありません。 この記事では、プログラムで Azure サービスの監査データにアクセスする方法を説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>データの使用のオプション
 
@@ -40,7 +42,7 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | Azure Monitor メトリックのアラート | 通知 | [この一覧をご覧ください](metrics-supported.md) | <ul><li>**Webhook:** [Azure メトリックのアラート](alerts-webhooks.md)</li></ul> |
 | Azure Monitor アクティビティ ログのアラート | 通知 | すべての Azure サービス | <ul><li>**Webhook:** Azure アクティビティ ログのアラート</li></ul> |
 | 自動スケールの通知 | 通知 | [この一覧をご覧ください](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [自動スケーリング通知の Webhook ペイロード スキーマ](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| ログ検索クエリのアラート | 通知 | Log Analytics | <ul><li>**Webhook:** [ログ アラート ルールの Webhook アクション](alerts-log-webhook.md)</li></ul> |
+| ログ検索クエリのアラート | 通知 | Azure Monitor ログ | <ul><li>**Webhook:** [ログ アラート ルールの Webhook アクション](alerts-log-webhook.md)</li></ul> |
 | Application Insights メトリックのアラート | 通知 | Application Insights | <ul><li>**Webhook:** [Application Insights のアラート](../../azure-monitor/app/alerts.md)</li></ul> |
 | Application Insights の Web テスト | 通知 | Application Insights | <ul><li>**Webhook:** [Application Insights のアラート](../../azure-monitor/app/alerts.md)</li></ul> |
 

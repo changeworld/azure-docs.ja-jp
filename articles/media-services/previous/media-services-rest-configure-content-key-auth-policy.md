@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: bb24fcddf9218db491e8c2e486e29446d5d9c0ed
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 25aeb1f0f82be2ad575164d78106fd799d59c96d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365623"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003629"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy-legacy"></a>動的な暗号化:コンテンツ キー承認ポリシーを構成する (レガシ)
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概要

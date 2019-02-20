@@ -3,20 +3,20 @@ title: エンドポイント クォータを増やす
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 802a5cc629a467527c916c5a41a9c00d06e85600
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491724"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997908"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、**[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -362,6 +362,9 @@ LUIS エンドポイントによる正常な応答を次に示します。
 ## <a name="use-the-traffic-manager-parent-profile"></a>Traffic Manager 親プロファイルを使用する
 エンドポイント全体にわたってトラフィックを管理するには、Traffic Manager の DNS 呼び出しを挿入して、LUIS エンドポイントを検出する必要があります。 この呼び出しはすべての LUIS エンドポイント要求に対して行われます。呼び出しでは、LUIS クライアント アプリケーションのユーザーの地理的な場所をシミュレートする必要があります。 LUIS クライアント アプリケーションとエンドポイント予測のための LUIS への要求の間に DNS 応答コードを追加します。 
 
+## <a name="resolving-a-degraded-state"></a>機能低下状態の解決
+
+Traffic Manager の[診断ログ](../../traffic-manager/traffic-manager-diagnostic-logs.md)を有効にて、エンドポイントの状態が機能低下した理由を確認します。
 
 ## <a name="clean-up"></a>クリーンアップ
 2 つの LUIS エンドポイント キー、3 つの Traffic Manager プロファイル、およびこれらの 5 つのリソースが含まれていたリソース グループを削除します。 これは Azure portal から実行します。 リソースの一覧から 5 つのリソースを削除します。 次に、リソース グループを削除します。 

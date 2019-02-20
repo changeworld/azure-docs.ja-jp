@@ -12,47 +12,47 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 17774ea74c2462cb5b8a9dfe638b3dec02499d81
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457090"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999166"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
 ## <a name="configuration-problems"></a>構成の問題
 *次のセットアップで問題が発生しています。*
 
-* [.NET アプリ](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
-* [既に実行中のアプリの監視](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)
+* [.NET アプリ](asp-net-troubleshoot-no-data.md)
+* [既に実行中のアプリの監視](monitor-performance-live-website-now.md#troubleshoot)
 * [Azure 診断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Java Web アプリ](../../azure-monitor/app/java-troubleshoot.md)
+* [Java Web アプリ](java-troubleshoot.md)
 
 *サーバーからデータを取得できません。*
 
-* [ファイアウォール例外の設定](../../azure-monitor/app/ip-addresses.md)
-* [ASP.NET サーバーのセットアップ](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java サーバーのセットアップ](../../azure-monitor/app/java-agent.md)
+* [ファイアウォール例外の設定](ip-addresses.md)
+* [ASP.NET サーバーのセットアップ](monitor-performance-live-website-now.md)
+* [Java サーバーのセットアップ](java-agent.md)
 
 ## <a name="can-i-use-application-insights-with-"></a>Application Insights と共に使用できるもの
 
-* [オンプレミスの IIS サーバーまたは VM 内で動作する Web アプリ](../../azure-monitor/app/asp-net.md)
-* [Java Web アプリ](../../azure-monitor/app/java-get-started.md)
-* [Node.js アプリ](../../azure-monitor/app/nodejs.md)
-* [Azure で動作する Web アプリ](../../azure-monitor/app/azure-web-apps.md)
-* [Azure の Cloud Services](../../azure-monitor/app/cloudservices.md)
-* [Docker で実行中のアプリ サーバー](../../azure-monitor/app/docker.md)
-* [単一ページの Web アプリ](../../azure-monitor/app/javascript.md)
+* [オンプレミスの IIS サーバーまたは VM 内で動作する Web アプリ](asp-net.md)
+* [Java Web アプリ](java-get-started.md)
+* [Node.js アプリ](nodejs.md)
+* [Azure で動作する Web アプリ](azure-web-apps.md)
+* [Azure の Cloud Services](cloudservices.md)
+* [Docker で実行中のアプリ サーバー](docker.md)
+* [単一ページの Web アプリ](javascript.md)
 * [SharePoint](sharepoint.md)
-* [Windows デスクトップ アプリ](../../azure-monitor/app/windows-desktop.md)
-* [その他のプラットフォーム](../../azure-monitor/app/platforms.md)
+* [Windows デスクトップ アプリ](windows-desktop.md)
+* [その他のプラットフォーム](platforms.md)
 
 ## <a name="is-it-free"></a>これは無料ですか。
 
 はい、試験段階用です。 Basic 価格プランでは、アプリケーションは毎月無料で一定のデータ許容量を送信できます。 無料許容量は、開発や、少数のユーザー向けにアプリを発行するのに十分な大きさです。 指定した以上のデータ量が処理されることを防ぐために上限を設定できます。
 
-上限を超える量のテレメトリは GB 単位で課金されます。 課金額を制限する方法について、[こちら](../../azure-monitor/app/pricing.md)でいくつかのヒントを紹介しています。
+上限を超える量のテレメトリは GB 単位で課金されます。 課金額を制限する方法について、[こちら](pricing.md)でいくつかのヒントを紹介しています。
 
 Enterprise プランでは、テレメトリを送信した Web サーバー ノードごとに、1 日単位で料金が請求されます。 このプランは、連続エクスポートを大規模に使用する場合に適しています。
 
@@ -86,7 +86,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 * (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります)。これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。 たとえば、MVC アプリでは、Views/Shared/_Layout.cshtml マスター ページにコードが挿入されます。
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>以前のバージョンの SDK からアップグレードする方法。
-お使いのアプリケーションに適切な SDK については、「 [リリース ノート](../../azure-monitor/app/release-notes.md) 」をご覧ください。
+お使いのアプリケーションに適切な SDK については、「 [リリース ノート](release-notes.md) 」をご覧ください。
 
 ## <a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、**[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
@@ -95,33 +95,33 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 IIS Web サーバーで Web アプリ内の Application Insights を構成するために使用できるデスクトップ アプリです。 テレメトリは収集されないので、アプリの構成中以外は停止しておくことができます。 
 
-[詳細情報](../../azure-monitor/app/monitor-performance-live-website-now.md#questions)。
+[詳細情報](monitor-performance-live-website-now.md#questions)。
 
 ## <a name="what-telemetry-is-collected-by-application-insights"></a>Application Insights では、どのようなテレメトリが収集されますか?
 
 サーバーの Web アプリから:
 
 * HTTP 要求
-* [依存関係](../../azure-monitor/app/asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)とスタック トレース。
-* [パフォーマンス カウンター](../../azure-monitor/app/performance-counters.md) - [Status Monitor](../../azure-monitor/app/monitor-performance-live-website-now.md)、[Azure 監視](../../azure-monitor/app/azure-web-apps.md)、または [Application Insights collectd ライター](../../azure-monitor/app/java-collectd.md)を使用している場合。
-* コード化する[カスタム イベントとカスタム メトリック](../../azure-monitor/app/api-custom-events-metrics.md)。
-* [トレース ログ](../../azure-monitor/app/asp-net-trace-logs.md) (適切なコレクターを構成する場合)。
+* [依存関係](asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
+* [例外](asp-net-exceptions.md)とスタック トレース。
+* [パフォーマンス カウンター](performance-counters.md) - [Status Monitor](monitor-performance-live-website-now.md)、[Azure 監視](azure-web-apps.md)、または [Application Insights collectd ライター](java-collectd.md)を使用している場合。
+* コード化する[カスタム イベントとカスタム メトリック](api-custom-events-metrics.md)。
+* [トレース ログ](asp-net-trace-logs.md) (適切なコレクターを構成する場合)。
 
-[クライアントの Web ページ](../../azure-monitor/app/javascript.md)から:
+[クライアントの Web ページ](javascript.md)から:
 
 * [ページ ビュー数](usage-overview.md)
-* [AJAX 呼び出し](../../azure-monitor/app/asp-net-dependencies.md)。実行中のスクリプトから行われる要求。
+* [AJAX 呼び出し](asp-net-dependencies.md)。実行中のスクリプトから行われる要求。
 * ページ ビューの読み込みデータ
 * ユーザー数とセッション数
-* [認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)
+* [認証されたユーザー ID](api-custom-events-metrics.md#authenticated-users)
 
 その他のソースから (構成する場合):
 
-* [Azure 診断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Analytics へのインポート](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
-* [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
-* [Logstash](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Azure 診断](../platform/diagnostics-extension-to-application-insights.md)
+* [Analytics へのインポート](../platform/data-collector-api.md)
+* [Log Analytics](../platform/data-collector-api.md)
+* [Logstash](../platform/data-collector-api.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>一部のテレメトリを除外または変更することはできますか?
 
@@ -130,7 +130,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 * 選択されたテレメトリ項目に対して、それがアプリから送信される前にフィルター処理やプロパティの追加を行うテレメトリ プロセッサ。
 * テレメトリの全項目にプロパティを追加するテレメトリ初期化子。
 
-ASP.NET の場合は[こちら](../../azure-monitor/app/api-filtering-sampling.md)、Java の場合は[こちら](../../azure-monitor/app/java-filter-telemetry.md)で詳細を確認してください。
+ASP.NET の場合は[こちら](api-filtering-sampling.md)、Java の場合は[こちら](java-filter-telemetry.md)で詳細を確認してください。
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>市区町村や国などの geo ロケーション データはどのように計算されますか?
 
@@ -141,7 +141,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細情報](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
-[Power BI を使用する](../../azure-monitor/app/export-power-bi.md )と、要求テレメトリを地図上に表示できます。
+[Power BI を使用する](export-power-bi.md )と、要求テレメトリを地図上に表示できます。
 
 
 ## <a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
@@ -149,7 +149,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 ## <a name="could-personal-data-be-sent-in-the-telemetry"></a>テレメトリで個人データが送信されることはありますか?
 
-コードでそのようなデータを送信する場合は可能性があります。 また、スタック トレース内の変数に個人データが含まれている場合にも、送信される可能性があります。 その個人データの処理が適切に行われるように、開発チームでリスク評価を実施する必要があります。 [こちら](../../azure-monitor/app/data-retention-privacy.md)から、データ リテンション期間とプライバシーについての詳細を確認してください。
+コードでそのようなデータを送信する場合は可能性があります。 また、スタック トレース内の変数に個人データが含まれている場合にも、送信される可能性があります。 その個人データの処理が適切に行われるように、開発チームでリスク評価を実施する必要があります。 [こちら](data-retention-privacy.md)から、データ リテンション期間とプライバシーについての詳細を確認してください。
 
 geo ロケーション属性の検索後、クライアント Web アドレスの**すべて**のオクテットは常に 0 に設定されます。
 
@@ -173,35 +173,35 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 1 つのビジネス システム内のすべてのコンポーネントまたはロールに対しては、単一リソースを使用します。 開発、テスト、およびリリースのバージョン、および独立したアプリケーションに対しては、複数のリソースを使用します。
 
 * [こちら](separate-resources.md)の説明を参照してください
-* [例 - worker ロールと web ロールを使用したクラウド サービス](../../azure-monitor/app/cloudservices.md)
+* [例 - worker ロールと web ロールを使用したクラウド サービス](cloudservices.md)
 
 ## <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>インストルメンテーション キーを動的に変更するには、どうすればよいですか?
 
 * [こちら](separate-resources.md)で説明しています
-* [例 - worker ロールと web ロールを使用したクラウド サービス](../../azure-monitor/app/cloudservices.md)
+* [例 - worker ロールと web ロールを使用したクラウド サービス](cloudservices.md)
 
 ## <a name="what-are-the-user-and-session-counts"></a>ユーザー数とセッション数とは何ですか?
 
 * JavaScript SDK では、Web クライアントにユーザー Cookie を設定することで戻ってきたユーザーを識別し、セッション Cookie を設定することでグループ アクティビティを識別します。
 * クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)できます。
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
-* 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
+* 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
 
 ## <a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
 | 表示内容 | 表示方法 | 用途 |
 | --- | --- | --- |
-| 可用性グラフ |[Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) |Web アプリが稼働しているか確認する |
-| サーバー アプリ パフォーマンス: 応答時間、... |[Application Insights をプロジェクトに追加する](../../azure-monitor/app/asp-net.md)か、[AI Status Monitor をサーバーにインストールする](../../azure-monitor/app/monitor-performance-live-website-now.md) (または独自のコードを記述して[依存関係を追跡する](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)) |パフォーマンスの問題を検出する |
-| 依存関係テレメトリ |[AI Status Monitor をサーバーにインストールする](../../azure-monitor/app/monitor-performance-live-website-now.md) |データベースや、その他の外部コンポーネントの問題を診断する |
-| 例外からスタック トレースを取得する |[コード内に TrackException 呼び出しを挿入する](../../azure-monitor/app/asp-net-exceptions.md) (自動で報告されるものもある) |例外を検出して診断する |
-| ログ トレースの検索 |[ログ アダプターを追加する](../../azure-monitor/app/asp-net-trace-logs.md) |例外、パフォーマンスの問題を診断する |
-| クライアントの利用状況の基本情報: ページ ビュー、セッション、... |[Web ページの JavaScript の初期化子](../../azure-monitor/app/javascript.md) |Usage analytics |
-| クライアントのカスタム メトリック |[Web ページでの呼び出しの追跡](../../azure-monitor/app/api-custom-events-metrics.md) |ユーザー エクスペリエンスを向上させる |
-| サーバーのカスタム メトリック |[サーバーでの呼び出しの追跡](../../azure-monitor/app/api-custom-events-metrics.md) |Business intelligence |
+| 可用性グラフ |[Web テスト](monitor-web-app-availability.md) |Web アプリが稼働しているか確認する |
+| サーバー アプリ パフォーマンス: 応答時間、... |[Application Insights をプロジェクトに追加する](asp-net.md)か、[AI Status Monitor をサーバーにインストールする](monitor-performance-live-website-now.md) (または独自のコードを記述して[依存関係を追跡する](api-custom-events-metrics.md#trackdependency)) |パフォーマンスの問題を検出する |
+| 依存関係テレメトリ |[AI Status Monitor をサーバーにインストールする](monitor-performance-live-website-now.md) |データベースや、その他の外部コンポーネントの問題を診断する |
+| 例外からスタック トレースを取得する |[コード内に TrackException 呼び出しを挿入する](asp-net-exceptions.md) (自動で報告されるものもある) |例外を検出して診断する |
+| ログ トレースの検索 |[ログ アダプターを追加する](asp-net-trace-logs.md) |例外、パフォーマンスの問題を診断する |
+| クライアントの利用状況の基本情報: ページ ビュー、セッション、... |[Web ページの JavaScript の初期化子](javascript.md) |Usage analytics |
+| クライアントのカスタム メトリック |[Web ページでの呼び出しの追跡](api-custom-events-metrics.md) |ユーザー エクスペリエンスを向上させる |
+| サーバーのカスタム メトリック |[サーバーでの呼び出しの追跡](api-custom-events-metrics.md) |Business intelligence |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>検索グラフとメトリック グラフで数が等しくないのはなぜですか?
 
-[サンプリング](../../azure-monitor/app/sampling.md)により、アプリからポータルに実際に送信されたテレメトリ項目 (要求、カスタム イベントなど) の数が減少します。 検索グラフには、実際に受信した項目の数が表示されます。 イベント数を表示するメトリック グラフには、発生した元のイベントの数が表示されます。 
+[サンプリング](sampling.md)により、アプリからポータルに実際に送信されたテレメトリ項目 (要求、カスタム イベントなど) の数が減少します。 検索グラフには、実際に受信した項目の数が表示されます。 イベント数を表示するメトリック グラフには、発生した元のイベントの数が表示されます。 
 
 送信される各項目には、その項目が表す元のイベントの数を示す `itemCount` プロパティが含まれています。 Analytics で次のクエリを実行すると、サンプリング操作を確認できます。
 
@@ -214,7 +214,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 ### <a name="configuring-application-insights"></a>Application Insights の構成
 
-Azure Resource Monitor を使用して [PowerShell スクリプトを記述する](../../azure-monitor/app/powershell.md)ことにより、以下の操作を実行できます。
+Azure Resource Monitor を使用して [PowerShell スクリプトを記述する](powershell.md)ことにより、以下の操作を実行できます。
 
 * Application Insights リソースの作成と更新。
 * 価格プランの設定。
@@ -226,7 +226,7 @@ Azure Resource Monitor を使用して [PowerShell スクリプトを記述す�
 
 ### <a name="querying-the-telemetry"></a>テレメトリに対するクエリの実行
 
-[REST API](https://dev.applicationinsights.io/) を使用して [Analytics](../../azure-monitor/app/analytics.md) クエリを実行します。
+[REST API](https://dev.applicationinsights.io/) を使用して [Analytics](analytics.md) クエリを実行します。
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>イベントにアラートを設定するには、どうすればよいですか?
 
@@ -241,17 +241,17 @@ Azure アラートはメトリックにのみ設定できます。 イベント�
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>テレメトリを Application Insights ポータルに送信できますか?
 
-Microsoft の SDK と [SDK API](../../azure-monitor/app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](../../azure-monitor/app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
+Microsoft の SDK と [SDK API](api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>イントラネット Web サーバーを監視できますか?
 
 はい。ただし、ファイアウォールの例外またはプロキシによるリダイレクトを使用して、Microsoft のサービスへのトラフィックを許可する必要があります。
-- QuickPulse `rt.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
 - ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
 - TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
-[ここ](../../azure-monitor/app/ip-addresses.md)でサービスと IP アドレスの一覧を確認できます。
+[ここ](../../azure-monitor/app/ip-addresses.md)でサービスと IP アドレスのすべての一覧を確認できます。
 
 ### <a name="firewall-exception"></a>ファイアウォールの例外
 
@@ -293,9 +293,9 @@ _ApplicationIdProvider は v2.6.0 以降で使用できます_
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?
 
-Microsoft の [Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)は、世界中に分布する Points of Presence で実行されます。 以下に示す 2 つのソリューションがあります。
+Microsoft の [Web テスト](monitor-web-app-availability.md)は、世界中に分布する Points of Presence で実行されます。 以下に示す 2 つのソリューションがあります。
 
-* ファイアウォール ドア - [頻繁に変更される多数の Web テスト エージェント](../../azure-monitor/app/ip-addresses.md)からのサーバーへの要求を許可します。
+* ファイアウォール ドア - [頻繁に変更される多数の Web テスト エージェント](ip-addresses.md)からのサーバーへの要求を許可します。
 * イントラネット内部からサーバーに定期的な要求を送信する独自のコードを記述します。 Visual Studio Web テストを実行して、このコードをテストすることができます。 テストの結果は TrackAvailability() API を使用して Application Insights に送信できます。
 
 ## <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>テレメトリの収集にはどれくらいの時間がかかりますか?
@@ -307,7 +307,7 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 
 <!--Link references-->
 
-[data]: ../../azure-monitor/app/data-retention-privacy.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[data]: data-retention-privacy.md
+[platforms]: platforms.md
+[start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

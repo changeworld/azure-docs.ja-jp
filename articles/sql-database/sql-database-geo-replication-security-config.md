@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561393"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858282"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 
@@ -32,6 +32,9 @@ ms.locfileid: "55561393"
 ## <a name="how-to-configure-logins-and-users"></a>ログインとユーザーを構成する方法
 
 包含ユーザーではなくログインとユーザーを使用している場合は、追加の手順を実行して、マスター データベースに同じログインが存在することを確認する必要があります。 次のセクションでは、関連する手順とその他の考慮事項について概要を説明します。
+
+  >[!NOTE]
+  > Azure Active Directory (AAD) ログインを使用してデータベースを管理することもできます。 詳細については、[Azure SQL のログインとユーザー](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)に関する記事を参照してください。
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>セカンダリ データベースまたは復旧されたデータベースへのユーザー アクセスの設定
 

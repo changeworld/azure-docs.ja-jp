@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/23/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 5ae8297f8e189fbe9374cec826bf5e566e5403da
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aca051dd20ceaeb608baa144a81e0584043a1c52
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241952"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002049"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
@@ -60,7 +60,7 @@ Azure Stack と API プロファイルの詳細については、「[Azure Stack
 
 ### <a name="powershell"></a>PowerShell
 
-New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 テナントの追加方法の例を次に示します。
+テナントを追加するには、New-AzureRmResource コマンドレットを使用します。 [Azure Stack に接続](/azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを使用します。
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -91,7 +91,7 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="powershell"></a>PowerShell
 
-登録されているすべてのテナントを一覧表示するには、Get-AzureRmResource コマンドレットを使用します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にサインインします。 テナントの追加方法の例を次に示します。
+登録されているすべてのテナントを一覧表示するには、Get-AzureRmResource コマンドレットを使用します。 [Azure Stack に接続](/azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを使用します。
 
 ```powershell
   Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -99,7 +99,7 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="api-call"></a>API 呼び出し
 
-GET 操作を使用してすべてのテナント マッピングの一覧を取得することができます
+GET 操作を使用して、すべてのテナント マッピングの一覧を取得できます。
 
 **Operation**:GET  
 **要求 URI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
@@ -111,15 +111,15 @@ api-version=2017-06-01 HTTP/1.1`
 ```JSON  
 {
     "value": [{
-            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 1}”,
+            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 1}",
             "name": " cspSubscriptionId 1",
-            "type": “Microsoft.AzureStack\customerSubscriptions”,
+            "type": "Microsoft.AzureStack\customerSubscriptions",
             "properties": { "tenantId": "tId1" }
         },
         {
-            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 2}”,
+            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 2}",
             "name": " cspSubscriptionId2 ",
-            "type": “Microsoft.AzureStack\customerSubscriptions”,
+            "type": "Microsoft.AzureStack\customerSubscriptions",
             "properties": { "tenantId": "tId2" }
         }
     ],
@@ -141,6 +141,8 @@ api-version=2017-06-01 HTTP/1.1`
 | customerSubscriptionId     | 顧客サブスクリプション ID です。  |
 
 ### <a name="powershell"></a>PowerShell
+
+テナントを削除するには、Remove-AzureRmResource コマンドレットを使用します。 [Azure Stack に接続](/azure-stack-powershell-configure-admin.md)してから、管理者特権のプロンプトから次のコマンドレットを使用します。
 
 ```powershell
   Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
