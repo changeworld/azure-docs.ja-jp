@@ -30,7 +30,7 @@ ms.locfileid: "55823327"
     5. **作成**を選択します。 
 
         ![Azure Portal - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-4. **[通知]** (ベル アイコン) を選択して、**[リソースに移動]** を選択するか、または **[Notification Hubs]** ページで一覧を更新して、お使いの通知ハブを選択します。 
+4. **[通知]** \(ベル アイコン) を選択して、**[リソースに移動]** を選択するか、または **[Notification Hubs]** ページで一覧を更新して、お使いの通知ハブを選択します。 
 
       ![Azure Portal > [通知] > [リソースに移動]](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 5. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらの接続文字列は、後でプッシュ通知を処理するために必要になります。

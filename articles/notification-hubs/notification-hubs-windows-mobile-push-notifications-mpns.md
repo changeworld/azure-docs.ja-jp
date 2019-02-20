@@ -55,7 +55,7 @@ ms.locfileid: "54452481"
 ### <a name="configure-windows-phone-mpns-settings"></a>Windows Phone (MPNS) の設定を構成する
 
 1. **[通知設定]** で、**[Windows Phone (MPNS)]** を選択します。
-2. **[Enable authentication push] (認証プッシュを有効にする)** を選択します。
+2. **[Enable authentication push]\(認証プッシュを有効にする)** を選択します。
 3. ツールバーの **[保存]** を選択します。
 
     ![Azure Portal - [非認証プッシュを有効にする]](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)

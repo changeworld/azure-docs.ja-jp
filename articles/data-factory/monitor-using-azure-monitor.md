@@ -474,7 +474,7 @@ Azure portal にログインし、**[モニター] -&gt; [アラート]** の順
 
     ![新しいアラート ルール](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  **[Alert condition] (アラートの条件)** を定義します。
+2.  **[Alert condition]\(アラートの条件)** を定義します。
 
     > [!NOTE]
     > **[Filter by resource type] (リソースの種類でのフィルター処理)** では **[すべて]** を選択するようにしてください。

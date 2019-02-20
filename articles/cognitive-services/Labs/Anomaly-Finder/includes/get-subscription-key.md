@@ -17,4 +17,4 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2019
 ms.locfileid: "55228854"
 ---
-例を作成する前に、Microsoft Cognitive Services の一部である [Anomaly Finder API](https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder) にサブスクライブする必要があります。 [Subscribe](サブスクライブ) ボタンをクリックしてから、自分の Microsoft アカウント (Hotmail など) を使用してログインし、API にサブスクライブします。その後、[ここ](https://labs.cognitive.microsoft.com/en-us/subscriptions?productId=/products/AnomalyDetection.Preview&source=labs)で無料のサブスクリプション キーが見つかります。 キー 1 とキー 2 の両方を使用できます。 
+例を作成する前に、Microsoft Cognitive Services の一部である [Anomaly Finder API](https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder) にサブスクライブする必要があります。 [Subscribe]\(サブスクライブ) ボタンをクリックしてから、自分の Microsoft アカウント (Hotmail など) を使用してログインし、API にサブスクライブします。その後、[ここ](https://labs.cognitive.microsoft.com/en-us/subscriptions?productId=/products/AnomalyDetection.Preview&source=labs)で無料のサブスクリプション キーが見つかります。 キー 1 とキー 2 の両方を使用できます。 

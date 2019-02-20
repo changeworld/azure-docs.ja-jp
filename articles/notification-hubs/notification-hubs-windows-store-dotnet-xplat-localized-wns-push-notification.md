@@ -248,7 +248,7 @@ private static async void SendTemplateNotificationAsync()
 1. ユニバーサル Windows ストア アプリケーションを実行します。 **登録が成功しました**というメッセージが表示されるまで待ちます。
 
     ![モバイル アプリケーションと登録](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. **カテゴリ**と**ロケール**を選択し、**[Subscribe] (サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
+2. **カテゴリ**と**ロケール**を選択し、**[Subscribe]\(サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
 
     ![モバイル アプリケーション](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
 3. **サブスクリプション**に関する**確認**メッセージが表示されます。

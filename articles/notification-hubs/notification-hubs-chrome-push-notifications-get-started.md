@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 9. **[Google Cloud Messaging]** ページで、**[有効化]** を選択します。
 
     ![GCM の有効化](media/notification-hubs-chrome-get-started/enable-gcm.png)
-10. **[API & Services] (API とサービス)** ページで、**[資格情報]** タブに切り替えます。**[Create credentials] (資格情報の作成)** を選択してから、**[API キー]** を選択します。
+10. **[API & Services] (API とサービス)** ページで、**[資格情報]** タブに切り替えます。**[Create credentials]\(資格情報の作成)** を選択してから、**[API キー]** を選択します。
 
     ![[Create API key] (API キーの作成) ボタン](media/notification-hubs-chrome-get-started/create-api-key-button.png)
 11. **[API key created] (作成された API キー)** ダイアログ ボックスで、コピー ボタンを選択して、そのキーをクリップボードにコピーします。 それを別の場所に保存します。 この値は、次のセクションで通知ハブを構成して、GCM にプッシュ通知を送信できるようにするために使用します。

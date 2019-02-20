@@ -83,7 +83,7 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 
 ![3](./media/group-manager-tasks/create-account-1.PNG)
 
-**[Create your account] (アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。
+**[Create your account]\(アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。
 
 - **サーバー URL**:*mysamplegroup* を、独自の*サーバー名*に置き換えます。 サーバーの URL は、*https://\<servername\>.visualstudio.com* になります。
 - **コードの管理に次を使用:****_[Git]_** を選択します。
