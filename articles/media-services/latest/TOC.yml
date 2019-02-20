@@ -144,9 +144,6 @@ items:
     - name: ジョブ入力としてのローカル ファイル - .NET
       displayName: encode, encoding
       href: job-input-from-local-file-how-to.md
-    - name: ジョブ入力としてのローカル ファイル - REST
-      displayName: encode
-      href: upload-files-rest-how-to.md
     - name: カスタム変換の使用 - .NET
       displayName: encode, encoding, tranform
       href: customize-encoder-presets-how-to.md
@@ -244,9 +241,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: 05b20d905a5848cfcfd0f9c6d20e4addb5c776fc
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ca4ad36aab79f82c558c3d653a77ad5ec10b254c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340435"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416954"

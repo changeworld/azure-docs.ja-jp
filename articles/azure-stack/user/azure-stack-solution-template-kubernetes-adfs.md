@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: df84562c3ff95ac6fef65ea7c9911d5e12e558ef
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744965"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115404"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Active Directory フェデレーション サービスを使用して Azure Stack に Kubernetes をデプロイする
 
@@ -43,13 +43,19 @@ ms.locfileid: "55744965"
 
     Azure Stack **Administrator** サブスクリプションにクラスターを展開することはできません。 **User** サブスクリプションを使用する必要があります。 
 
-1. マーケットプレースに Kubernetes クラスターがない場合は、Azure Stack 管理者に連絡してください。
+1. Azure Stack サブスクリプションに Key Vault サービスが必要です。
+
+1. マーケットプレースに Kubernetes クラスターが必要です。 
+
+Key Vault サービスおよび Kubernetes クラスター マーケットプレース項目がない場合は、Azure Stack 管理者に連絡してください。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 AD FS を ID ソリューションとして使用する場合は、Azure Stack 管理者と協力してサービス プリンシパルを設定する必要があります。 サービス プリンシパルは、アプリケーションに Azure Stack リソースへのアクセス権を付与します。
 
-1. Azure Stack の管理者は、証明書とサービス プリンシパルの情報を提供します。 この情報は次のようになります。
+1. Azure Stack の管理者は、証明書とサービス プリンシパルの情報を提供します。
+
+    - サービス プリンシパルの情報は次のようになります。
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
-2. 新しいサービス プリンシパルにサブスクリプションの共同作成者としてのロールを割り当てます。 手順については、「[ロールの割り当て](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal#assign-role-to-service-principal)」を参照してください。
+    - 証明書は拡張子が `.pfx` のファイルになります。 キー コンテナーにシークレットとして証明書を格納します。
 
-3. デプロイの証明書を格納するためのキー コンテナーを作成します。
+2. 新しいサービス プリンシパルにサブスクリプションの共同作成者としてのロールを割り当てます。 手順については、「[ロールの割り当て](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)」を参照してください。
+
+3. デプロイの証明書を格納するためのキー コンテナーを作成します。 ポータルではなく、次の PowerShell スクリプトを使用します。
 
     - 次の情報が必要です。
 
@@ -70,12 +78,12 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
         | ---   | ---         |
         | Azure Resource Manager エンドポイント | Microsoft Azure Resource Manager は、管理者が Azure リソースのデプロイ、管理、監視を行えるようにするための管理フレームワークです。 Azure Resource Manager では、これらのタスクを個別に処理するのではなく、グループとして単一の操作で処理することができます。<br>Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
-        | ユーザー名 | ユーザー名。 |
+        | ユーザー名 | ドメイン名とユーザー名ではなく、ユーザー名だけ (`azurestack\username` ではなく `username`) を使用します。 |
         | リソース グループ名  | 新しいリソース グループの名前。または、既存のリソース グループを選択します。 リソース名は、英数字かつ小文字にする必要があります。 |
         | KeyVault 名 | コンテナーの名前。<br> 正規表現パターン: `^[a-zA-Z0-9-]{3,24}$` |
         | リソース グループの場所 | リソース グループの場所。 これは、Azure Stack のインストールに対して選択するリージョンです。 |
 
-    - 管理者特権のプロンプトで PowerShell を開きます。 実際の値に更新されたパラメーターを使用して、次のスクリプトを実行します。
+    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -103,7 +111,7 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
         Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
     ```
 
-4. 証明書を Key Vault にアップロードします。
+4. 証明書をキー コンテナーにアップロードします。
 
     - 次の情報が必要です。
 
@@ -111,12 +119,12 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
         | ---   | ---         |
         | 証明書パス | FQDN または証明書へのファイル パス。 |
         | Certificate password | 証明書のパスワード。 |
-        | シークレット名 | 前の手順で生成したシークレット。 |
-        | KeyVault 名 | 前の手順で作成した KeyVault の名前。 |
+        | シークレット名 | コンテナーに格納されている証明書を参照するために使用するシークレット名。 |
+        | キー コンテナー名 | 前の手順で作成したキー コンテナーの名前。 |
         | Azure Resource Manager エンドポイント | Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
 
-    - 管理者特権のプロンプトで PowerShell を開きます。 実際の値に更新されたパラメーターを使用して、次のスクリプトを実行します。
+    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
 
 1. **[Service Principal ClientId]\(サービス プリンシパル クライアント ID\)** を入力します。これは、Kubernetes Azure クラウド プロバイダーによって使用されます。 Azure Stack 管理者がサービス プリンシパルを作成したときにアプリケーション ID として識別されたクライアント ID。
 
-1. **Key Vault リソース グループ**を入力します。 
+1. 証明書を格納するキー コンテナーのソースである **Key Vault リソース グループ**を入力します。
 
-1. **Key Vault 名**を入力します。
+1. **Key Vault 名** (証明書をシークレットとして格納するキー コンテナーの名前) を入力します。 
 
-1. **Key Vault シークレット**を入力します。
+1. **Key Vault シークレット**を入力します。 このシークレット名によって証明書が参照されます。
 
 1. **Kubernetes Azure クラウド プロバイダーのバージョン**を入力します。 これは、Kubernetes Azure プロバイダーのバージョンです。 Azure Stack は、各 Azure Stack バージョンに対してカスタムの Kubernetes ビルドをリリースします。
 
