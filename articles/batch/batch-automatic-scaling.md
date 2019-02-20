@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730011"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869094"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 自動スケール対応のプールを作成する際には、**CreatePool** の呼び出しに _targetDedicatedComputeNodes_ パラメーターや _targetLowPriorityComputeNodes_ パラメーターを指定しないでください。 代わりに、プールの **AutoScaleEnabled** プロパティと **AutoScaleFormula** プロパティを指定します。 これらのプロパティの値は各種類のノードの目標数を決定します。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
+> 自動スケール対応のプールを作成する際には、**CreatePool** の呼び出しに _targetDedicatedNodes_ パラメーターや _targetLowPriorityNodes_ パラメーターを指定しないでください。 代わりに、プールの **AutoScaleEnabled** プロパティと **AutoScaleFormula** プロパティを指定します。 これらのプロパティの値は各種類のノードの目標数を決定します。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
 >
 >
 
@@ -412,7 +412,7 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
   * 自動スケールの数式と評価の間隔のいずれかを省略すると、引き続き Batch サービスではその設定の現在の値が使用されます。
 
 > [!NOTE]
-> .NET でプールを作成したときに **CreatePool** メソッドの *targetDedicatedComputeNodes* パラメーターと *targetLowPriorityComputeNodes* パラメーターの値を指定した、または別の言語の同等のパラメーターを指定した場合、自動スケールの数式が評価されるときにそれらの値は無視されます。
+> .NET でプールを作成したときに **CreatePool** メソッドの *targetDedicatedNodes* パラメーターと *targetLowPriorityNodes* パラメーターの値を指定した、または別の言語の同等のパラメーターを指定した場合、自動スケールの数式が評価されるときにそれらの値は無視されます。
 >
 >
 
