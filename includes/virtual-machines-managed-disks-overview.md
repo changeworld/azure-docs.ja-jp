@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 26268c892b0e900c410cd669454b8b6f02ee8886
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211869"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102209"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks の概要
 
@@ -63,7 +63,7 @@ Managed Disks を使用するときには、課金に関する次の考慮事項
 
 これらのオプションについて詳しく見ていきましょう。
 
-**[ストレージの種類]:** Managed Disks には、[Standard HDD](../articles/virtual-machines/windows/standard-storage.md)、[Standard SSD](../articles/virtual-machines/windows/disks-standard-ssd.md)、[Premium](../articles/virtual-machines/windows/premium-storage.md) の 3 つのパフォーマンス レベルが用意されています。 マネージド ディスクへの課金は、ディスク用に選択したストレージの種類によって異なります。
+**[ストレージの種類]:** Managed Disks には、[Standard HDD](../articles/virtual-machines/windows/standard-storage.md)、[Standard SSD](../articles/virtual-machines/windows/standard-storage.md)、[Premium](../articles/virtual-machines/windows/premium-storage.md) の 3 つのパフォーマンス レベルが用意されています。 マネージド ディスクへの課金は、ディスク用に選択したストレージの種類によって異なります。
 
 **ディスク サイズ**: マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す マネージド ディスク オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GB のプロビジョニング済みサイズを指定した場合、S15 ディスクの価格に従って課金されます。
 
@@ -75,9 +75,9 @@ Managed Disks を使用するときには、課金に関する次の考慮事項
 
 次に示すのは、Standard SSD マネージド ディスクで使用できるディスク サイズです。アスタリスクが付いているサイズは現在プレビュー段階です。
 
-| **Standard SSD マネージド<br>ディスクの種類** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
-|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| ディスク サイズ        | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
+| **Standard SSD マネージド<br>ディスクの種類** | **E4** | **E6** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| ディスク サイズ        | 32 GiB | 64 GiB | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 次に示すのは、Standard HDD マネージド ディスクで使用できるディスク サイズです。アスタリスクが付いているサイズは現在プレビュー段階です。
 

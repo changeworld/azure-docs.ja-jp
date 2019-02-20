@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: e9378fd1e7fd0d8c6b3f913ec3d8f629a2c3be37
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 92d5d458615b029553dee2f8047c85e3fb5f9696
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770688"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892601"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -47,6 +47,12 @@ ms.locfileid: "55770688"
 * 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
 * ストリームをサポートします。 
 * 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 環境変数設定 "POCOSerializationOnly" を追加しました。
+
+* DocumentDB.Spatial.Sql.dll が削除され、Microsoft.Azure.Documents.ServiceInterop.dll に含まれるようになりました
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
@@ -351,6 +357,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |2019 年 2 月 5 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |

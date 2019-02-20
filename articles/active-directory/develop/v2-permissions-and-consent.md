@@ -13,16 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 02/07/2019
 ms.author: celested
-ms.reviewer: hirsin, jesakowi, justhu
+ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 94a8cb5f0764ac1ed7330fb75131d3084d804f1e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94d0e469614204a7507ba666ac04e59774eebde7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091955"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204418"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのアクセス許可と同意
 
@@ -52,19 +53,19 @@ Microsoft ID プラットフォームと統合されたサードパーティの�
 
 これらの種類のアクセス許可を定義することで、リソースでは、データと、API 機能を公開する方法を、きめ細かく制御できます。 サード パーティのアプリでは、ユーザーや管理者にこれらのアクセス許可を要求でき、ユーザーや管理者が承認してからでなければ、アプリはデータにアクセスしたり、ユーザーの代理として動作したりできません。 リソースの機能を細かいアクセス許可セットにまとめることによって、サードパーティのアプリは、機能を実行するために必要な特定のアクセス許可のみを要求するように構築できます。 ユーザーや管理者は、アプリがアクセスできるデータを正確に知ることができ、アプリが悪意のある動作をしていないことを確信できます。 開発者は常に最小限の特権の概念に従って、アプリケーションが機能するために必要なアクセス許可のみを要求する必要があります。
 
-OAuth では、これらの種類のアクセス許可は "*スコープ*" と呼ばれています。 単に "*アクセス許可*" と呼ばれることもあります。 アクセス許可は、Microsoft ID プラットフォームでは文字列値として表現されます。 Microsoft Graph の例では、各アクセス許可の文字列値は次のようになります。
+OAuth 2.0 では、これらの種類のアクセス許可は "*スコープ*" と呼ばれます。 単に "*アクセス許可*" と呼ばれることもあります。 アクセス許可は、Microsoft ID プラットフォームでは文字列値として表現されます。 Microsoft Graph の例では、各アクセス許可の文字列値は次のようになります。
 
 * `Calendars.Read` を使用したユーザーの予定表の読み取り
 * `Calendars.ReadWrite` を使用したユーザーの予定表への書き込み
 * `Mail.Send` を使用したユーザーとしてのメールの送信
 
-アプリでは、通常、v2.0 承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、特定の高い特権アクセス許可は、管理者が同意することによってのみ付与され、一般に[管理者同意エンドポイント](v2-permissions-and-consent.md#admin-restricted-scopes)を使用して要求/付与できます。 詳細については、後の説明を参照してください。
+アプリでは、通常、v2.0 承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、特定の高い特権アクセス許可は、管理者が同意することによってのみ付与され、一般に[管理者同意エンドポイント](v2-permissions-and-consent.md#admin-restricted-permissions)を使用して要求/付与できます。 詳細については、後の説明を参照してください。
 
 ## <a name="permission-types"></a>アクセス許可の種類
 
 Microsoft ID プラットフォームでは、**委任されたアクセス許可**と**アプリケーションのアクセス許可**という 2 種類のアクセス許可がサポートされています。
 
-* **委任されたアクセス許可**は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、ターゲット リソースの呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 一部の委任されたアクセス許可には管理者以外のユーザーでも同意できますが、一部の高い特権のアクセス許可では[管理者の同意](v2-permissions-and-consent.md#admin-restricted-scopes)が必要です。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+* **委任されたアクセス許可**は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、ターゲット リソースの呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 一部の委任されたアクセス許可には管理者以外のユーザーでも同意できますが、一部の高い特権のアクセス許可では[管理者の同意](v2-permissions-and-consent.md#admin-restricted-permissions)が必要です。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 * **アプリケーションのアクセス許可**は、サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。  アプリケーションのアクセス許可には、[管理者だけが同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)できます。
 
@@ -77,7 +78,7 @@ Microsoft ID プラットフォームでは、**委任されたアクセス許�
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect のスコープ
 
-OpenID Connect の v2.0 実装には、特定のリソースには適用されない、適切に定義されたスコープ `openid`、`email`、`profile`、`offline_access` があります。
+OpenID Connect の v2.0 実装には、特定のリソースには適用されない、適切に定義されたスコープ `openid`、`email`、`profile`、`offline_access` があります。 `address` と `phone` の OpenID Connect スコープはサポートされていません。
 
 ### <a name="openid"></a>openid
 
@@ -93,9 +94,9 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 
 ### <a name="offlineaccess"></a>offline_access
 
-[ `offline_access`スコープ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)を使用すると、アプリはユーザーの代わりに、長期間にわたってリソースにアクセスできます。 このスコープは、職場アカウントの同意ページには、"データへの常時アクセス" アクセス許可として表示されます。 個人用 Microsoft アカウントの同意ページには、"あなたの情報にいつでもアクセスする" アクセス許可として表示されます。 ユーザーが `offline_access` スコープを承認すると、アプリは v2.0 トークン エンドポイントから更新トークンを取得できます。 更新トークンの有効期間は長期です。 アプリは、古いアクセス トークンの有効期限が切れると、新しいアクセス トークンを取得できます。
+[ `offline_access`スコープ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)を使用すると、アプリはユーザーの代わりに、長期間にわたってリソースにアクセスできます。 同意ページで、このスコープは、"アクセス権を与えたデータへのアクセスを管理する" アクセス許可として表示されます。 ユーザーが `offline_access` スコープを承認すると、アプリは v2.0 トークン エンドポイントから更新トークンを取得できます。 更新トークンの有効期間は長期です。 アプリは、古いアクセス トークンの有効期限が切れると、新しいアクセス トークンを取得できます。
 
-アプリが `offline_access` スコープを要求しない場合、更新トークンを受け取ることはありません。 つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)の承認コードを使用すると、`/token` エンドポイントからアクセス トークンだけが取得されます。 アクセス トークンの有効期間は短期です。 アクセス トークンは、通常、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
+アプリは、`offline_access` スコープを明示的に要求しない場合、更新トークンを受け取ることはありません。 つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)の承認コードを使用すると、`/token` エンドポイントからアクセス トークンだけが取得されます。 アクセス トークンの有効期間は短期です。 アクセス トークンは、通常、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。  `offline_access` スコープはサーバーによって自動的に要求されますが、更新トークンを受け取るにはクライアントがスコープを要求する必要があるということに注意してください。 
 
 更新トークンの取得方法と使用方法の詳細については、[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
 
@@ -118,6 +119,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 `scope` パラメーターは、アプリが要求している委任されたアクセス許可の、空白文字で区切られた一覧です。 各アクセス許可は、リソースの識別子 (アプリケーション ID URI) にアクセス許可の値を追加することによって示されます。 上の要求では、ユーザーの予定表を読み取り、ユーザーとしてメールを送信するためのアクセス許可をアプリが必要としています。
 
 ユーザーが資格情報を入力すると、v2.0 エンドポイントが*ユーザーの同意*の一致するレコードを確認します。 ユーザーが過去に要求されたどのアクセス許可にも同意しておらず、管理者も組織全体の代わりにそれらのアクセス許可に同意していない場合、v2.0 エンドポイントは要求されたアクセス許可の付与をユーザーに求めます。
+
+> [!NOTE]
+> この時点で、`offline_access` ("アクセス権を与えたデータへのアクセスを管理する") と `user.read` ("サインインとプロファイルの読み取り") のアクセス許可が、アプリケーションへの初期同意に自動的に組み込まれます。  一般に、これらのアクセス許可は、適切なアプリの機能に必要です。`offline_access` は、ネイティブおよび Web のアプリに不可欠の更新トークンへのアクセスをアプリに提供し、`user.read` は、クライアントまたはアプリが長期間にわたってユーザーを適切に識別し、基本的なユーザー情報にアクセスできるようにする `sub` 要求へのアクセスを提供します。  
 
 ![職場アカウントの同意](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -164,11 +168,11 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 2. **Microsoft Graph のアクセス許可**セクションを検索し、アプリに必要なアクセス許可を追加します。
 3. アプリの登録を**保存**します。
 
-### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨:アプリへのユーザーのサインイン
+### <a name="recommended-sign-the-user-into-your-app"></a>推奨:ユーザーをアプリにサインインさせる
 
 通常、管理者の同意エンドポイントを使用するアプリケーションを構築する場合は、アプリ側に管理者がアプリのアクセス許可を承認できるページやビューが必要です。 このページは、アプリのサインアップ フローやアプリの設定の一部にするか、専用の "接続" フローにすることができます。 多くの場合、職場または学校の Microsoft アカウントでユーザーがサインインした後にのみ、”接続" ビューが表示されます。
 
-ユーザーをアプリにサインインさせると、必要なアクセス許可の承認をユーザーに依頼する前に、管理者が所属する組織を識別できます。 必須ではありませんが、組織のユーザーに向けたより直観的なエクスペリエンスの作成に役立ちます。 ユーザーのサインインを行うには、 [v2.0 プロトコル チュートリアル](active-directory-v2-protocols.md)に従ってください。
+ユーザーをアプリにサインインさせるとき、必要なアクセス許可の承認をユーザーに依頼する前に、管理者が所属する組織を識別できます。 必須ではありませんが、組織のユーザーに向けたより直観的なエクスペリエンスの作成に役立ちます。 ユーザーのサインインを行うには、 [v2.0 プロトコル チュートリアル](active-directory-v2-protocols.md)に従ってください。
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>ディレクトリ管理者にアクセス許可を要求する
 
@@ -193,8 +197,8 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように "common" で包括的に参照できます。 |
-| `client_id` | 必須 | [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
+| `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `common` で総称的に参照できます。 |
+| `client_id` | 必須 | [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)または[新しいアプリ登録 (プレビュー) ポータル](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)がアプリに割り当てたアプリケーション (クライアント) ID。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
 
@@ -212,7 +216,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | --- | --- | --- |
 | `tenant` | アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | `state` | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
-| `admin_consent` | **true** に設定されます。 |
+| `admin_consent` | `True`に設定されます。 |
 
 #### <a name="error-response"></a>エラー応答
 
@@ -224,8 +228,8 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | パラメーター | 説明 |
 | --- | --- | --- |
-| `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
-| `error_description` |エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
+| `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| `error_description` | エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 管理者の同意エンドポイントから成功応答を受信した後で、アプリは要求したアクセス許可を獲得しています。 次に、必要なリソースのトークンを要求できます。
 
@@ -252,6 +256,52 @@ Content-Type: application/json
 
 OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細については、[v2.0 エンドポイント プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="the-default-scope"></a>/.default スコープ
+
+`/.default` スコープを使用すると、v1.0 エンドポイントから v2.0 エンドポイントにアプリを移行するのに役立ちます。 これは、アプリケーション登録で構成されたアクセス許可の静的一覧を参照するすべてのアプリケーションの組み込みスコープです。 `https://graph.microsoft.com/.default` の `scope` 値は、v1.0 エンドポイント `resource=https://graph.microsoft.com` と機能的に同じです。つまり、これは、アプリケーションが Azure portal で登録した Microsoft Graph のスコープでトークンを要求します。
+
+/.default スコープは、どの OAuth 2.0 フローでも使用できますが、[On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow .md) と [クライアントの資格情報フロー](v2-oauth2-client-creds-grant-flow.md)では特に必要です。  
+
+> [!NOTE]
+> クライアントは、静的 (`/.default`) と動的の同意を 1 つの要求に結合することはできません。 そうした場合、スコープの種類の結合が原因で `scope=https://graph.microsoft.com/.default+mail.read` はエラーになります。
+
+### <a name="default-and-consent"></a>/.default と同意
+
+`/.default` スコープは、`prompt=consent` に対しても v1.0 エンドポイントの動作をトリガーします。 リソースに関係なく、アプリケーションによって登録されたすべてのアクセス許可に対して同意が要求されます。 要求の一部として含まれている場合、`/.default` スコープは、具体的に要求されたリソースのスコープを含むトークンを返します。
+
+### <a name="default-when-the-user-has-already-given-consent"></a>ユーザーが既に同意している場合の /.default
+
+`/.default` は、機能的には `resource` 中心の v1.0 エンドポイントの動作と同じであるため、v1.0 エンドポイントの同意の動作も行います。 つまり、`/.default` は、ユーザーによってクライアントとリソース間のアクセス許可が付与されていない場合にのみ、同意プロンプトをトリガーします。 そのような同意が存在する場合は、ユーザーがそのリソースに対して付与したすべてのスコープを含むトークンが返されます。 ただし、アクセス許可が付与されていない場合や `prompt=consent` パラメーターが指定されている場合は、クライアント アプリケーションによって登録されたすべてのスコープに対して同意プロンプトが表示されます。 
+
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>例 1:ユーザーまたはテナント管理者がアクセス許可を付与している
+
+ユーザー (またはテナント管理者) が、Microsoft Graph のアクセス許可 `mail.read` と `user.read` をクライアントに付与しています。 クライアントが `scope=https://graph.microsoft.com/.default` の要求を行うと、Microsoft Graph に対するクライアント アプリケーションの登録済みアクセス許可の内容に関係なく、同意プロンプトは表示されません。 スコープ `mail.read` と `user.read` を含むトークンが返されます。
+
+#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>例 2:ユーザーがクライアントとリソース間のアクセス許可を付与していない
+
+クライアントと Microsoft Graph 間のユーザーの同意は存在しません。 クライアントは `user.read` と `contacts.read` のアクセス許可、および Azure Key Vault スコープ `https://vault.azure.net/user_impersonation` を登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` のトークンを要求すると、`user.read`、`contacts.read`、および Key Vault `user_impersonation` のスコープの同意画面がユーザーに表示されます。 返されるトークンには、`user.read` と `contacts.read` のスコープだけが含まれます。
+
+#### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>例 3:ユーザーは同意済みで、クライアントが追加のスコープを要求する
+
+ユーザーは、クライアントの `mail.read` に既に同意しています。 クライアントは、登録で `contacts.read` スコープを登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` を使用してトークンを要求し、`prompt=consent` を介して同意を要求すると、アプリケーションによって登録された唯一かつすべてのアクセス許可の同意画面がユーザーに表示されます。 `contacts.read` は同意画面に表示されますが、`mail.read` は表示されません。 返されたトークンは Microsoft Graph 用であり、`mail.read` と `contacts.read` が含まれます。
+
+### <a name="using-the-default-scope-with-the-client"></a>クライアントで /.default スコープを使用する
+
+クライアントがそれ自体の `/.default` スコープを要求するという `/.default` スコープの特殊なケースがあります。 このシナリオを以下の例で説明します。
+
+```
+// Line breaks are for legibility only.
+
+GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+response_type=token            //code or a hybrid flow is also possible here
+&client_id=9ada6f8a-6d83-41bc-b169-a306c21527a5
+&scope=9ada6f8a-6d83-41bc-b169-a306c21527a5/.default
+&redirect_uri=https%3A%2F%2Flocalhost
+&state=1234
+```
+
+これにより、登録されているすべてのアクセス許可の同意画面が生成され (同意と `/.default` の前述の説明に基づいて適用される場合)、アクセス トークンではなく、id_token が返されます。  この動作は、ADAL から MSAL に移行する特定のレガシー クライアントに対して存在するものであり、v2.0 エンドポイントを対象とする新しいクライアントでは使用しないでください。  
+
+## <a name="troubleshooting-permissions-and-consent"></a>アクセス許可と同意のトラブルシューティング
 
 アプリケーションの所有者やユーザーによる同意プロセスの間に予期しないエラーが発生する場合は、こちらの記事「[アプリケーションに同意すると、予期しないエラーが発生する](../manage-apps/application-sign-in-unexpected-user-consent-error.md)」のトラブルシューティング手順をご覧ください。
