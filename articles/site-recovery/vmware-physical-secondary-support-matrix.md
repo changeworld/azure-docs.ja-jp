@@ -64,7 +64,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 ゲスト VM - NIC チーミング | いいえ 
 ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Guest VM - Windows/Linux - 静的 IP アドレス | [はい]
+Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 
