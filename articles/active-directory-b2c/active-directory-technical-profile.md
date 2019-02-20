@@ -256,8 +256,7 @@ Azure Active Directory (Azure AD) B2C は、Azure Active Directory ユーザー�
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ  | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 | 
-| UserMessageIfClaimsPrincipalDoesNotExist | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。
- 値を[ローカライズ](localization.md)することができます。| 
+| UserMessageIfClaimsPrincipalDoesNotExist | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
 | RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ  | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。| 
 | UserMessageIfClaimsPrincipalAlreadyExists | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
 | ApplicationObjectId | いいえ  | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 | 

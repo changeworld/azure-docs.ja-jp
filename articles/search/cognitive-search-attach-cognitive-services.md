@@ -94,7 +94,7 @@ Cognitive Services APIs を呼び出すスキルに対してのみ課金され�
 
 1. **[サービスの概要]** ページで、**[スキルセット]** をクリックします。
 
-   (./media/cognitive-search-attach-cognitive-services/attach-existing1.png "[スキルセット] タブ")(./media/cognitive-search-attach-cognitive-services/attach-existing1.png "[スキルセット] タブ")
+   ![スキルセット タブ](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "スキルセット タブ")
 
 1. スキルセットの名前をクリックし、既存のリソースを選択するか、新しいリソースを作成します。 **[OK]** をクリックして変更を確認します。 
 
