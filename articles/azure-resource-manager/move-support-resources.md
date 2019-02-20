@@ -372,7 +372,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| vaults | はい | [はい] |
+| vaults | はい | はい |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | リソースの種類 | リソース グループ | サブスクリプション |
