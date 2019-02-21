@@ -445,7 +445,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: 書き込みアクセラレータの使用
       href: how-to-enable-write-accelerator.md
-    - name: Ultra Disks を有効にする
+    - name: ウルトラ SSD を有効にする
       href: disks-enable-ultra-ssd.md
     - name: パフォーマンスを最適化する
       href: optimization.md
@@ -557,9 +557,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 3c7ef0b41167e396828063950a63574ad5b3a7c9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 201f0834f2e2f61d1e6521838add251bc486fc75
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330802"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429810"

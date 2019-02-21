@@ -81,28 +81,49 @@ items:
     - name: ロールベースのアクセス制御を管理する
       displayName: RBAC
       href: automation-role-based-access-control.md
-  - name: Runbook を作成する
+  - name: Runbooks
     items:
+    - name: Runbook を管理する
+      href: manage-runbooks.md
     - name: Runbook の種類
       displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
-    - name: Runbook を作成およびインポートする
-      href: automation-creating-importing-runbook.md
-    - name: グラフィカル Runbook を作成する
-      href: automation-first-runbook-graphical.md
-    - name: PowerShell Runbook を作成する
-      href: automation-first-runbook-textual-powershell.md
-    - name: PowerShell Workflow Runbook を作成する
-      href: automation-first-runbook-textual.md
-    - name: Python Runbook を作成する
-      href: automation-first-runbook-textual-python2.md
-    - name: テキスト形式の Runbook を編集する
-      displayName: powershell
-      href: automation-edit-textual-runbook.md
-    - name: グラフィック Runbook を編集する
-      href: automation-graphical-authoring-intro.md
-    - name: Runbook をテストする
-      href: automation-testing-runbook.md
+    - name: Runbook を作成する
+      items:
+      - name: グラフィック Runbook
+        href: automation-first-runbook-graphical.md
+      - name: PowerShell Runbook
+        href: automation-first-runbook-textual-powershell.md
+      - name: PowerShell ワークフロー Runbook
+        href: automation-first-runbook-textual.md
+      - name: Python Runbook
+        href: automation-first-runbook-textual-python2.md
+      - name: グラフィカル Runbook SDK による Runbook の作成
+        href: graphical-runbook-sdk.md
+    - name: Runbook を編集する
+      items:
+      - name: テキスト形式の Runbook を編集する
+        displayName: powershell
+        href: automation-edit-textual-runbook.md
+      - name: グラフィック Runbook を編集する
+        href: automation-graphical-authoring-intro.md
+    - name: Runbook を開始する
+      href: start-runbooks.md
+    - name: webhook から Runbook を開始する
+      href: automation-webhooks.md
+    - name: Runbook の入力パラメーター
+      displayName: input,json
+      href: runbook-input-parameters.md
+    - name: グラフィック Runbook でのエラー処理
+      href: automation-runbook-graphical-error-handling.md
+    - name: Runbook ジョブの追跡
+      displayName: fair share, activity log
+      href: automation-runbook-execution.md
+    - name: Azure Automation データを管理する
+      displayName: backup
+      href: automation-managing-data.md
+    - name: Python 2 パッケージの管理
+      href: python-packages.md
     - name: PowerShell ワークフローについての説明
       href: automation-powershell-workflow.md
     - name: 子 Runbook
@@ -116,28 +137,6 @@ items:
     - name: ソース管理の統合 - レガシ
       href: automation-source-control-integration-legacy.md
       displayname: github
-    - name: グラフィカル Runbook SDK による Runbook の作成
-      href: graphical-runbook-sdk.md
-  - name: 自動化
-    items:
-    - name: Runbook を開始する
-      href: automation-starting-a-runbook.md
-    - name: webhook から Runbook を開始する
-      href: automation-webhooks.md
-    - name: Runbook の入力パラメーターを構成する
-      href: automation-runbook-input-parameters.md
-    - name: グラフィック Runbook でのエラー処理
-      href: automation-runbook-graphical-error-handling.md
-    - name: Runbook ジョブの追跡
-      displayName: fair share, activity log
-      href: automation-runbook-execution.md
-    - name: Azure Automation データを管理する
-      displayName: backup
-      href: automation-managing-data.md
-    - name: Azure Automation Runbook に JSON オブジェクトを渡す
-      href: automation-pass-json-string.md
-    - name: Python 2 パッケージの管理
-      href: python-packages.md
   - name: Hybrid Runbook Worker
     items:
     - name: Hybrid Runbook Worker の概要
@@ -205,12 +204,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Amazon Web Service VM を作成する
       href: automation-scenario-aws-deployment.md
-    - name: GitHub Enterprise によるソース管理の統合
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Azure DevOps によるソース管理の統合
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
       href: automation-deploy-template-runbook.md
     - name: Azure Automation を Event Grid および Microsoft Teams と統合する
@@ -292,9 +285,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: a5886c5af9db6945fe33efd8198b5527f580d297
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e35c51bb1d82f2c5eda708ab8bce71c2bf5b69b7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004577"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417025"

@@ -3,24 +3,24 @@ title: Azure AD で削除された Office 365 グループを復元する | Micr
 description: Azure Active Directory で、削除されたグループを復元する方法、復元可能なグループを表示する方法、およびグループを完全に削除する方法
 services: active-directory
 documentationcenter: ''
-author: eross-msft
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: fundamentals
+ms.subservice: users-groups-roles
 ms.topic: quickstart
 ms.date: 08/28/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d521ac384ef0264e62e3af2e106099f369231c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d2e756676ee1abde88f75a1629640239f3162ea
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206159"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430643"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Office 365 グループを復元する
 

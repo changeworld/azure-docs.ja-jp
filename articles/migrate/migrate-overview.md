@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808359"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415767"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 

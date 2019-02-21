@@ -1,5 +1,7 @@
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure のドキュメント
 
+> MicrosoftDocs/azure-docs リポジトリでは、2019 年 3 月 5 日から 3 月 9 日にかけて、現在のマークダウン エンジンから [Markdig](https://github.com/lunet-io/markdig) マークダウン エンジンに移行する作業を実施する予定です。 移行を完了させるため、この期間中はパブリック pull request のマージを一時停止する機能がオフになります。
+
 [Microsoft Azure](https://azure.microsoft.com) のオープン ソース [ドキュメント](https://docs.microsoft.com/azure)にようこそ。 この README ファイルを読み、Microsoft Azure のドキュメントの共同作成に参加する方法をよく理解しておくようにしてください。
 
 ## <a name="getting-started"></a>Getting Started (概要)
