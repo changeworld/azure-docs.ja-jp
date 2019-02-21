@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: ab307548853a545c4aa8ee5a573ca5b1ca67c91d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266486"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310259"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -65,7 +65,7 @@ ms.locfileid: "54266486"
 
 9. 回復先の *WindowsImageBackup* ディレクトリを、サーバーの重要ではないボリュームにコピーします。 通常は、Windows OS ボリュームが重要なボリュームです。
 
-10. 回復が正常に完了したら、「[復元されたシステム状態を Windows Server に適用する](backup-azure-restore-system-state.md#apply-restored-system-state-files-to-the-windows-server)」の手順に従って、システム状態回復プロセスを完了します。
+10. 回復が正常に完了したら、「[復元されたシステム状態を Windows Server に適用する](backup-azure-restore-system-state.md)」の手順に従って、システム状態回復プロセスを完了します。
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>システム状態ファイルを別のサーバーに回復する
 
