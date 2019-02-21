@@ -327,6 +327,12 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "samples-iot-distributed-tracing",
+      "url": "https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
       "path_to_root": "AIVisualProvision",
       "url": "https://github.com/Microsoft/AIVisualProvision",
       "branch": "master",
@@ -355,9 +361,9 @@
     ]
   },
   "need_generate_pdf_url_template": false,
-  "Targets": {
+  "targets": {
     "Pdf": {
-      "template_folder": "_themes.pdf"
+      "template_folder": "_themes.pdf"	
     }
   }
 }
