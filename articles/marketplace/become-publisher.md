@@ -35,7 +35,7 @@ ms.locfileid: "54077557"
 | 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
-## <a name="1-register-in-microsoft-partner-network"></a>1.Microoft Partner Network に登録する  
+## <a name="1-register-in-microsoft-partner-network"></a>1.Microsoft Partner Network に登録する  
 | 15 分 |  
 Microsoft のクラウド マーケットプレースへの参加には、Microsoft Partner Network (MPN) のメンバーシップが必要です。このメンバーシップで、主な利点、プログラム、パートナー パフォーマンスの追跡機能も利用できるようになります。 所属する組織がまだメンバーになっていない場合は、Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、マーケットプレースに公開するための追加の利点とサポートを受けてください。 
 
