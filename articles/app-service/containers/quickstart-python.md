@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/08/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 14678ed789b611c0226d98fe11b3c9bacb993208
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 24d282b6e6e6f627d5893bb3514a77e4f82968e1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991482"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309443"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
 

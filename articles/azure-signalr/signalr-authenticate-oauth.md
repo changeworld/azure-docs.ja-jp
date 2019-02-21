@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 2e6540dd88c2ae3f841aa4cb0d7529b29e28ef14
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103793"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311275"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル:Azure SignalR Service の認証
 
@@ -443,21 +443,14 @@ ResourceGroupName=SignalRTestResources
 SignalRServiceResource=mySignalRresourcename
 WebAppName=myWebAppName
 
-# Get the SignalR Service resource hostName
-signalRhostname=$(az signalr show --name $SignalRServiceResource \
-    --resource-group $ResourceGroupName --query hostName -o tsv)
-
-# Get the SignalR primary key
-signalRprimarykey=$(az signalr key list --name $SignalRServiceResource \
-    --resource-group $ResourceGroupName --query primaryKey -o tsv)
-
-# Form the connection string to the service resource
-connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
+# Get the SignalR primary connection string 
+primaryConnectionString=$(az signalr key list --name $SignalRServiceResource \
+  --resource-group $ResourceGroupName --query primaryConnectionString -o tsv)
 
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure__SignalR__ConnectionString=$connstring"
+    --settings "Azure__SignalR__ConnectionString=$primaryConnectionString"
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \

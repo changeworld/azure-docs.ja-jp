@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e1eced2d00737a950ed441bd83614d9d6d0b9230
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731276"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267752"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート:SignalR Service を使ってチャット ルームを作成する
 
@@ -79,7 +79,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -92,7 +92,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     シークレット マネージャーは、ローカルでホストされているときの、Web アプリのテスト用にのみ使用されます。 この後のチュートリアルでは、Azure にチャット Web アプリをデプロイします。 この Web アプリが Azure にデプロイされた後は、シークレット マネージャーで接続文字列を保存するのではなく、アプリケーション設定を使用します。

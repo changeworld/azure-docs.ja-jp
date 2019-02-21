@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 11/12/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 18e7323f16970b5ab365688b2af896b2c90b9099
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858707"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312530"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 

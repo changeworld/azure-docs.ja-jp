@@ -1,15 +1,16 @@
 ---
 author: PatrickFarley
 ms.service: cognitive-services
+ms.subservice: custom-vision
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 4f33b9ae459fe6db1a64faef9e6c5a2f7d733da1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0b94a877ba3dc8389e8655e7c5f24efaf9bbe795
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284840"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323378"
 ---
 ## <a name="get-the-sample-images"></a>サンプル画像を取得する
 

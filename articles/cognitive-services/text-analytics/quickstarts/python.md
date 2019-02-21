@@ -3,19 +3,19 @@ title: クイック スタート:Python を使用して Text Analytics API を�
 titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 99aa1db8979f6eb58d3d21c89e647937076c572d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: 1219a5f43d8abd78c4840e824c2f4c69a6fa7939
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878019"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330139"
 ---
 # <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
