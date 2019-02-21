@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbc9fa5586b848de79c52142f75b22b744fdae38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105952"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343019"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Azure Security Center により監視される Azure セキュリティ ポリシー
 この記事では、Security Center 内で監視できる Azure ポリシーの定義の一覧を示します。 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
@@ -96,4 +96,4 @@ Security Center によって監視される組み込みのポリシーについ�
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md):このサービスの使用に関してよく寄せられる質問とその回答を紹介しています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-Azure Policy について詳しくは、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。
+Azure Policy について詳しくは、「[Azure Policy とは](../governance/policy/overview.md)」をご覧ください。
